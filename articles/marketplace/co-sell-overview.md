@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: b626012ad825b263e4f837159a067ed1d817d93a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/15/2021
+ms.openlocfilehash: ff67d5150e6bb95e900d3a81e0025216ffb19471
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608596"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133383"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Co-Selling mit Microsoft-Vertriebsteams und -Partnern: Übersicht
 
@@ -80,13 +80,13 @@ Angebote, die den Status _Azure IP Co-Sell Incentivized_ erzielen, profitieren v
 - Die Marketplace-Servicegebühr wird von 20 % auf 10 % reduziert. Dieser Rabatt gilt für Ihre IaaS- (Infrastructure-as-a-Service) oder SaaS-Lösung (Software-as-a-Service), die über den kommerziellen Marketplace verkauft wird. Weitere Informationen finden Sie unter [Dienstgebühren im kommerziellen Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - CSP-Partner (Cloud Solution Provider) erhalten für den Verkauf Ihrer IaaS-Lösung oder Ihres SaaS-Angebots einen Anreiz in Höhe von 10 %. Weitere Informationen über das CSP-Programm finden Sie unter [Programm für Cloud-Lösungsanbieter](cloud-solution-providers.md).
 - Der Verkauf Ihres Angebots über Azure Marketplace trägt zu den Azure Consumption Commitments der Kunden bei. Für berechtigte Kunden ist das Angebot im Azure-Portal mit **Für Azure-Vorteil berechtigt** gekennzeichnet. Weitere Informationen finden Sie unter [Vorteil eines Prepaidtarifs für den Azure-Verbrauch](azure-consumption-commitment-benefit.md).
-- Angebote, die den Status _Azure IP Co-Sell Incentivized_ erreichen oder beim [Microsoft Business Applications ISV Connect Program](business-applications-isv-program.md) mit Co-Selling-Status registriert sind, erhalten in den Onlineshops auf der Angebotsseite den Badge **Bevorzugte Microsoft-Lösung**. Der Badge bewirbt die Qualität und Leistung eines Angebots sowie dessen Fähigkeit, Kundenbedürfnisse in bestimmten Schlüsselbranchen oder in einem bestimmten Lösungsbereich zu erfüllen.
+- Angebote, die den Status _Azure IP Co-Sell Incentivized_ erreichen oder beim [Microsoft Business Applications ISV Connect Program](business-applications-isv-program.md) mit Co-Selling-Status registriert sind, erhalten in den folgenden Onlineshops auf der Angebotsseite den Badge **Bevorzugte Microsoft-Lösung**: [Azure Marketplace](https://azuremarketplace.microsoft.com/) und [AppSource](https://appsource.microsoft.com/).  Nachdem ein Angebot den entsprechenden Status erreicht hat, kann es bis zu 30 Tage dauern, bis der Badge „Bevorzugte Lösung“ im Onlineshop angezeigt wird. Der Badge bewirbt die Qualität und Leistung eines Angebots sowie dessen Fähigkeit, Kundenbedürfnisse in bestimmten Schlüsselbranchen oder in einem bestimmten Lösungsbereich zu erfüllen.
 
 Informationen dazu, wie Sie den Status „Co-Sell Ready“ bzw. „Co-Sell Incentivized“ erreichen, finden Sie unter [Anforderungen für „Co-Sell Ready“ und „Co-Sell Incentivized“](co-sell-requirements.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu Anforderungen finden Sie unter [Anforderungen für „Co-Sell Ready“ und „Co-Sell Incentivized“](co-sell-requirements.md).
-- Informationen zum Konfigurieren eines Angebots für das Co-Selling finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](commercial-marketplace-co-sell.md).
+- Informationen zum Konfigurieren eines Angebots für das Co-Selling finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](./co-sell-configure.md).
 - Informationen zum Überprüfen des Co-Selling-Status finden Sie unter [Überprüfen des Co-Selling-Status für ein Angebot im kommerziellen Marketplace](co-sell-status.md).
 - Erfahren Sie mehr zum [Co-Selling mit Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).

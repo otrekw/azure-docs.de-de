@@ -10,15 +10,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2020
+ms.date: 4/16/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92ef2e59dab1921eae8e7d88249e75116601c597
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a243b348c01e6d1297a6a1fe016e3b6bc8d98d47
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670869"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719077"
 ---
 # <a name="know-the-terms"></a>Informationen zu Begriffen
 
@@ -42,11 +42,10 @@ Im Handbuch zur Architektur und technischen Bereitstellung werden mehrere allgem
     - **Typ II-Klasse**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm und S960m
 - **Stamp**: Definiert die interne Microsoft-Bereitstellungsgröße von SAP HANA (große Instanzen). Bevor Einheiten von SAP HANA (große Instanzen) bereitgestellt werden können, muss ein Stamp von SAP HANA (große Instanzen), der aus Compute-, Netzwerk- und Speicherracks besteht, an einem Rechenzentrumsstandort bereitgestellt werden. Eine solche Bereitstellung wird als Stamp für SAP HANA (große Instanzen) bezeichnet. Seit Revision 4 (siehe unten) wird alternativ der Begriff **Reihe für große Instanzen** verwendet.
 - **Revision**: Es gibt zwei unterschiedliche Stamprevisionen für Stamps von SAP HANA (große Instanzen). Diese unterscheiden sich in der Architektur und in der Nähe zu Hosts für virtuelle Computer in Azure.
-    - „Revision 3“ (Rev 3) ist der ursprüngliche Entwurf, der von Mitte des Jahres 2016 an bereitgestellt wurde.
-    - „Revision 4“ (Rev 4) ist ein neuer Entwurf, der größere Nähe zu Hosts für virtuelle Computer in Azure und damit geringere Netzwerklatenz zwischen Azure-VMS und Einheiten von SAP HANA (große Instanzen) bieten kann. 
-    - „Revision 4.2“ (Rev 4.2): Für vorhandene DCs der Revision 4 werden Ressourcen in BareMetal-Infrastruktur umbenannt.  Kunden können über das Azure-Portal auf Ihre Ressourcen als BareMetal-Instanzen zugreifen. 
+    - „Revision 3“ (Rev 3) ist der ursprüngliche Entwurf, der ab Mitte des Jahres 2016 bereitgestellt wurde.
+    - „Revision 4.2“ (Rev 4.2) ist ein neuer Entwurf, der sich näher an den Hosts für virtuelle Computer in Azure befindet. Rev 4.2 bietet extrem niedrige Netzwerklatenz zwischen virtuellen Azure-Computern und Einheiten von SAP HANA (große Instanzen). Ressourcen im Azure-Portal werden als Bare-Metal-Infrastruktur bezeichnet. Kunden können über das Azure-Portal auf Ihre Ressourcen als BareMetal-Instanzen zugreifen. 
 
 Es sind viele weitere Ressourcen zum Bereitstellen einer SAP-Workload in der Cloud verfügbar. Die Planung einer Bereitstellung von SAP HANA in Azure erfordert, dass Sie mit den Prinzipien von Azure-IaaS und der Bereitstellung von SAP-Workloads in Azure-IaaS vertraut sind. Bevor Sie fortfahren, sollten Sie den Artikel zur [Verwendung von SAP-Lösungen auf Azure-VMs](get-started.md) lesen. 
 
-**Nächste Schritte**
-- Lesen Sie [HLI-Zertifizierung](hana-certification.md).
+## <a name="next-steps"></a>Nächste Schritte
+- Lesen Sie die Informationen zur [HLI-Zertifizierung](hana-certification.md).

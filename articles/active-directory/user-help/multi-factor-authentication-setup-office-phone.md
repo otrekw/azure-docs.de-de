@@ -10,19 +10,21 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 9dd9853bae324a047c673852f14d2b4c1639d914
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c77672ce895cc63a04973c4cb3e752ca319e269d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "83739208"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553412"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>Einrichten einer Bürotelefonnummer als Methode für die zweistufige Überprüfung
 
 Sie können Ihre Bürotelefonnummer als Methode für die zweistufige Überprüfung einrichten.
 
->[!Note]
-> Wird die Bürotelefonoption nicht angezeigt, lässt Ihre Organisation unter Umständen die Nutzung einer Bürotelefonnummer für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an Ihren Administrator wenden, um weitere Unterstützung zu erhalten.
+> [!Note]
+> Wird die **Office-Telefonoption** nicht zur Auswahl angezeigt, lässt Ihre Organisation unter Umständen die Nutzung einer Bürotelefonnummer für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an Ihren Administrator wenden, um weitere Unterstützung zu erhalten. 
+> 
+> Benutzern der kombinierten Registrierung wird die Option zum Verwenden einer Erweiterung mit der **Office-Telefonoption** nicht angezeigt.
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>Einrichten Ihrer Bürotelefonnummer als Überprüfungsmethode
 

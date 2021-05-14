@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: bbf94b6e000d5c082debd6a0d41a8d62b8b3f26e
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 479c12ca00614b2d34bd08f41e3451826a253035
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491098"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001812"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>Tutorial: Erstellen einer Clientanwendung und Verbinden dieser Anwendung mit Ihrer Azure IoT Central-Anwendung
 
@@ -83,7 +83,7 @@ Wenn Sie mit den Tutorials zu IoT Central fortfahren und mehr über das Erstell
 > [!div class="nextstepaction"]
 > [Erstellen einer Gatewaygerätevorlage](./tutorial-define-gateway-device-type.md)
 
-Als Geräteentwickler haben Sie hier die Grundlagen zur Erstellung eines Geräts mithilfe von Java kennengelernt. Vorschläge für die nächsten Schritte:
+Als Geräteentwickler haben Sie hier die Grundlagen zur Erstellung eines Geräts kennengelernt. Vorschläge für die nächsten Schritte:
 
 * Unter [Was sind Gerätevorlagen?](./concepts-device-templates.md) erfahren Sie mehr über die Rolle von Gerätevorlagen beim Implementieren Ihres Gerätecodes.
 * Weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md).

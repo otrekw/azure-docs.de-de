@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 98b312066294f2c4ed7f9b089e0f8ea1a68fe4be
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2799e25dbd84ff07b375c6fa1b103789aae82b49
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059699"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538421"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät (Vorschau)
 
@@ -42,7 +42,7 @@ In diesem Artikel werden die Schritte zum Einrichten von IoT Edge auf einem Wind
 
   * Windows 10 ab Version 1809, Build 17763 oder höher
   * Professional, Enterprise oder Server Edition
-  * Mindestens erforderlicher freier Arbeitsspeicher: 2 GB
+  * Mindestens erforderlicher freier Arbeitsspeicher: 1 GB
   * Mindestens erforderlicher freier Speicherplatz: 10 GB
   * Wenn Sie eine neue Bereitstellung mit Windows 10 erstellen, stellen Sie sicher, dass Sie Hyper-V aktivieren. Weitere Informationen finden Sie unter [Installieren von Hyper-V auf Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
   * Wenn Sie eine neue Bereitstellung mithilfe von Windows Server erstellen, müssen Sie sicherstellen, dass Sie die Hyper-V-Rolle installieren. Weitere Informationen finden Sie unter [Installieren der Hyper-V-Rolle auf Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).

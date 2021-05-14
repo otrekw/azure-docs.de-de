@@ -3,12 +3,12 @@ title: Ändern von Azure Service Fabric-Clustereinstellungen
 description: Dieser Artikel beschreibt die Fabric-Einstellungen und Fabric-Upgraderichtlinien, die Sie anpassen können.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 65ae2337ac7dbe4370411a154463a6ddc37f83b2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232051"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255970"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -60,6 +60,12 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |SecretEncryptionCertX509StoreName|Zeichenfolge, empfohlener Wert ist „My“ (kein Standardwert) |    Dynamisch|    Gibt das Zertifikat für das Ver- und Entschlüsseln von Anmeldeinformationen und den Namen des X.509-Zertifikatspeichers für das Ver- und Entschlüsseln von Speicheranmeldeinformationen für den Sicherungs- und Wiederherstellungsdienst an |
 |TargetReplicaSetSize|Ganze Zahl, Standardwert ist „0“|statischen| TargetReplicaSetSize für BackupRestoreService |
 
+## <a name="centralsecretservice"></a>CentralSecretService
+
+| **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
+| --- | --- | --- | --- |
+|DeployedState |wstring, Standardwert „Disabled“ |Statisch |Zweistufige Entfernung von CSS |
+
 ## <a name="clustermanager"></a>ClusterManager
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -95,6 +101,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
+|AllowCreateUpdateMultiInstancePerNodeServices |Boolesch, Standardwert „false“ |Dynamisch|Ermöglicht das Erstellen mehrerer zustandsloser Instanzen eines Diensts pro Knoten. Diese Funktion steht derzeit als Vorschau zur Verfügung. |
 |PerfMonitorInterval |Zeit in Sekunden, Standardwert 1 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Intervall für die Leistungsüberwachung. Mit 0 oder einem negativen Wert wird die Überwachung deaktiviert. |
 
 ## <a name="defragmentationemptynodedistributionpolicy"></a>DefragmentationEmptyNodeDistributionPolicy
@@ -304,6 +311,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |Boolesch, Standardwert „false“ |statischen|Evaluierungsrichtlinie für die Clusterintegrität, wird für die Integritätsevaluierung pro Anwendungstyp aktiviert. |
+|EnableNodeTypeHealthEvaluation |Boolesch, Standardwert „false“ |statischen|Evaluierungsrichtlinie für die Clusterintegrität. Wird für die Integritätsevaluierung pro Knotentyp aktiviert. |
 |MaxSuggestedNumberOfEntityHealthReports|Ganze Zahl, Standardwert ist 100 |Dynamisch|Die maximale Anzahl von Integritätsberichten, die es für eine Entität geben kann, bevor Bedenken in Bezug auf die Integritätsberichtslogik des Watchdogs wirksam werden. Für jede Integritätsentität wird vorausgesetzt, dass sie eine relativ kleine Anzahl von Integritätsberichten hat. Wenn die Anzahl der Berichte diese Anzahl überschreitet gibt es möglicherweise Probleme mit der Watchdogimplementierung. Eine Entität mit zu vielen Berichten wird durch einen Warnungsintegritätsbericht gekennzeichnet, wenn die Entität ausgewertet wird. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
@@ -349,7 +357,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |DisableContainers|Boolesch, Standardwert FALSE|statischen|Konfiguration für das Deaktivieren von Containern – wird anstelle von „DisableContainerServiceStartOnContainerActivatorOpen“ verwendet, der veralteten Konfigurationsoption. |
 |DisableDockerRequestRetry|Boolesch, Standardwert FALSE |Dynamisch| Standardmäßig kommuniziert SF mit dem DD (Docker-Daemon) mit dem Timeout „DockerRequestTimeout“ für jede an ihn gesendete HTTP-Anforderung. Reagiert der DD nicht innerhalb dieses Zeitraums, sendet SF die Anforderung erneut, sofern für den übergeordneten Vorgang noch Zeit bleibt.  Bei Hyper-V-Containern benötigt der DD manchmal erheblich mehr Zeit zum Aufrufen oder Deaktivieren des Containers. In diesem Fall fordert der DD aus Sicht von SF ein Timeout an, und SF wiederholt den Vorgang. Manchmal scheint dies den Druck auf den DD zu erhöhen. Diese Konfiguration ermöglicht es, die Wiederholung zu deaktivieren und auf eine Reaktion des DD zu warten. |
 |DnsServerListTwoIps | Boolesch, Standardwert ist „false“ | statischen | Durch diese Flags wird der lokale DNS-Server zwei Mal hinzugefügt, um zeitweilig auftretende Probleme zu beheben. |
-| DockerTerminateOnLastHandleClosed | Boolesch, Standardwert FALSE | statischen | Wenn in der Standardeinstellung FabricHost „dockerd“ verwaltet (basierend auf: SkipDockerProcessManagement = FALSE), wird mit dieser Einstellung konfiguriert, welche Aktion nach einem Absturz von FabricHost oder „dockerd“ ausgeführt werden soll. Bei Festlegung auf `true` werden im Fall eines Absturzes eines der beiden Prozesse alle ausgeführten Container von HCS beendet. Bei Festlegung auf `false` werden die Container weiter ausgeführt. Hinweis: Vor Version 8.0 war dieses Verhalten die unbeabsichtigte Entsprechung von `false`. Die Standardeinstellung `true` entspricht der erwarteten Standardvorgehensweise, bei der die Bereinigungslogik weiter durchlaufen wird, um beim Neustart dieser Prozesse wirksam zu werden. |
+| DockerTerminateOnLastHandleClosed | Boolesch, Standardwert TRUE | statischen | Wenn in der Standardeinstellung FabricHost „dockerd“ verwaltet (basierend auf: SkipDockerProcessManagement = FALSE), wird mit dieser Einstellung konfiguriert, welche Aktion nach einem Absturz von FabricHost oder „dockerd“ ausgeführt werden soll. Bei Festlegung auf `true` werden im Fall eines Absturzes eines der beiden Prozesse alle ausgeführten Container von HCS beendet. Bei Festlegung auf `false` werden die Container weiter ausgeführt. Hinweis: Vor Version 8.0 war dieses Verhalten die unbeabsichtigte Entsprechung von `false`. Die Standardeinstellung `true` entspricht der erwarteten Standardvorgehensweise, bei der die Bereinigungslogik weiter durchlaufen wird, um beim Neustart dieser Prozesse wirksam zu werden. |
 | DoNotInjectLocalDnsServer | Boolesch, Standardwert FALSE | statischen | Verhindert, dass die Runtime die lokale IP-Adresse als DNS-Server für Container einbindet. |
 |EnableActivateNoWindow| Boolesch, Standardwert FALSE|Dynamisch| Der aktivierte Prozess wird im Hintergrund ohne Konsole erstellt. |
 |EnableContainerServiceDebugMode|Boolesch, Standardwert TRUE|statischen|Aktivieren/Deaktivieren der Protokollierung für Docker-Container.  Nur Windows|
@@ -552,6 +560,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |MovementPerPartitionThrottleCountingInterval | Zeit in Sekunden, Standardwert 600 |statischen| Geben Sie die Zeitspanne in Sekunden an. Geben Sie die Länge des letzten Intervalls an, für das Datenverschiebungen pro Replikat für jede Partition nachverfolgt werden sollen (wird zusammen mit MovementPerPartitionThrottleThreshold verwendet). |
 |MovementPerPartitionThrottleThreshold | Uint, Standardwert 50 |Dynamisch| Für eine Partition werden keine Datenverschiebungen im Zusammenhang mit dem Lastenausgleich ausgeführt, wenn die Anzahl der Datenverschiebungen im Zusammenhang mit dem Lastenausgleich für Replikate dieser Partition im letzten von MovementPerPartitionThrottleCountingInterval angegebenen Intervall den Wert von MovementPerFailoverUnitThrottleThreshold erreicht oder überschritten hat. |
 |MoveParentToFixAffinityViolation | Boolesch, Standardwert „false“ |Dynamisch| Einstellung, die festlegt, ob übergeordnete Replikate verschoben werden können, um Affinitätseinschränkungen zu beheben.|
+|NodeTaggingEnabled | Boolesch, Standardwert „false“ |Dynamisch| Bei „true“ wird das Knotentagging-Feature aktiviert. |
+|NodeTaggingConstraintPriority | Ganze Zahl, Standardwert 0 |Dynamisch| Konfigurierbare Priorität des Knotentaggings. |
 |PartiallyPlaceServices | Boolesch, Standardwert „true“ |Dynamisch| Bestimmt, ob alle Dienstreplikate im Cluster „ganz oder gar nicht“ platziert werden, wenn nur beschränkt geeignete Knoten vorhanden sind.|
 |PlaceChildWithoutParent | Boolesch, Standardwert „true“ | Dynamisch|Einstellung, die festlegt, ob untergeordnete Dienstreplikate platziert werden können, wenn kein übergeordnetes Replikat ausgeführt wird. |
 |PlacementConstraintPriority | Ganze Zahl, Standardwert 0 | Dynamisch|Bestimmt die Priorität der Platzierungseinschränkung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
@@ -572,7 +582,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |UpgradeDomainConstraintPriority | Ganze Zahl, Standardwert 1| Dynamisch|Bestimmt die Priorität der Einschränkung für die Upgradedomäne: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |UseMoveCostReports | Boolesch, Standardwert „false“ | Dynamisch|Weist LB an, das Kostenelement der Bewertungsfunktion zu ignorieren. Dies führt möglicherweise zu mehr Datenverschiebungen für eine Platzierung mit besserem Lastenausgleich. |
 |UseSeparateSecondaryLoad | Boolesch, Standardwert „true“ | Dynamisch|Hierbei handelt es sich um eine Einstellung, die festlegt, ob für sekundäre Replikate eine separate Auslastung verwendet werden soll. |
-|UseSeparateSecondaryMoveCost | Boolesch, Standardwert „false“ | Dynamisch|Hierbei handelt es sich um eine Einstellung, die festlegt, ob für sekundäre Replikate separate Verschiebungskosten verwendet werden sollen. |
+|UseSeparateSecondaryMoveCost | Boolesch, Standardwert „true“ | Dynamisch|Einstellung, die steuert, ob von PLB unterschiedliche Verschiebungskosten für das sekundäre Replikat auf jedem Knoten verwendet werden sollen. Wenn „UseSeparateSecondaryMoveCost“ deaktiviert ist, gilt: - Die gemeldeten Verschiebungskosten für das sekundäre Replikat auf einem Knoten haben die Überschreibung der Kosten für jedes sekundäre Replikat (auf allen anderen Knoten) zur Folge. Wenn „UseSeparateSecondaryMoveCost“ aktiviert ist, gilt: - Die gemeldeten Verschiebungskosten für das sekundäre Replikat auf einem Knoten haben nur Auswirkungen auf dieses sekundäre Replikat und keine Auswirkungen auf sekundäre Replikate auf anderen Knoten. - Im Falle von Replikatausfällen gilt: - Das neue Replikat wird mit den auf Dienstebene angegebenen Standardverschiebungskosten erstellt. - Wenn das vorhandene Replikat von PLB verschoben wird, gilt: - Die Verschiebungskosten werden ebenfalls übertragen. |
 |ValidatePlacementConstraint | Boolesch, Standardwert „true“ |Dynamisch| Gibt an, ob der PlacementConstraint-Ausdruck für einen Dienst überprüft wird, wenn ServiceDescription für einen Dienst aktualisiert wird. |
 |ValidatePrimaryPlacementConstraintOnPromote| Boolesch, Standardwert TRUE |Dynamisch|Gibt an, ob der Ausdruck „PlacementConstraint“ für einen Dienst beim Failover für die primäre Einstellung ausgewertet werden soll oder nicht. |
 |VerboseHealthReportLimit | Ganze Zahl, Standardwert 20 | Dynamisch|Definiert, wie häufig ein Replikat nicht platziert werden muss, bevor eine Integritätswarnung dafür gemeldet wird (wenn ausführliche Integritätsberichte aktiviert sind). |
@@ -767,6 +777,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |RecoverServicePartitions |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die Wiederherstellung von Dienstpartitionen. |
 |RecoverSystemPartitions |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die Wiederherstellung von Systemdienstpartitionen. |
 |RemoveNodeDeactivations |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Zurücksetzen der Deaktivierung mehrerer Knoten. |
+|ReportCompletion |wstring, Standardwert: „Admin“ |Dynamisch| Sicherheitskonfiguration für Abschlussmeldung. |
 |ReportFabricUpgradeHealth |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Fortsetzen von Clusterupgrades mit der aktuellen Upgradedomäne. |
 |ReportFault |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für Fehlerberichte. |
 |ReportHealth |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für Integritätsberichte. |

@@ -5,14 +5,15 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c00205e2931400caa64f35db962d94a732f2524
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 055e212e0f8fcd53f74c7e1b99dd0a217412c21f
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714492"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166755"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
+
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die Sicherungen so konfigurieren, dass Sie für einen bis zu unbestimmten Zeitraum aufbewahrt werden. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen.
 
 Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unter [Wiederherstellen einer App in Azure](web-sites-restore.md).
@@ -20,19 +21,19 @@ Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unte
 <a name="whatsbackedup"></a>
 
 ## <a name="what-gets-backed-up"></a>Was wird gesichert?
-App Service kann die folgenden Informationen in einem Azure-Speicherkonto und einem Container sichern, für deren Verwendung Sie die App konfiguriert haben. 
+
+App Service kann die folgenden Informationen in einem Azure-Speicherkonto und einem Container sichern, für deren Verwendung Sie die App konfiguriert haben.
 
 * App-Konfiguration
 * Dateiinhalte
 * Datenbank, die mit Ihrer App verbunden ist.
 
-Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt: 
+Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 
 - [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure-Datenbank für PostgreSQL](https://azure.microsoft.com/services/postgresql)
 - [MySQL In-App](https://azure.microsoft.com/blog/mysql-in-app-preview-app-service/)
- 
 
 > [!NOTE]
 > Jede Sicherung ist eine vollständige Offlinekopie Ihrer App. Es gibt keine inkrementellen Aktualisierungen.
@@ -41,6 +42,7 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>Anforderungen und Einschränkungen
+
 * Die Funktion zum Sichern und Wiederherstellen erfordert einen App Service-Plan im Tarif **Standard**, **Premium** oder **Isoliert**. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung eines höheren Tarifs finden Sie unter [Hochskalieren einer App in Azure](manage-scale-up.md). Im Tarif **Premium** und **Isoliert** ist eine größere Anzahl täglicher Sicherungen zulässig als im Tarif **Standard**.
 * Sie benötigen ein Azure-Speicherkonto und einen Container im selben Abonnement wie die App, die Sie sichern möchten. Weitere Informationen zu Azure-Speicherkonten finden Sie unter [Azure Storage-Konto – Übersicht](../storage/common/storage-account-overview.md).
 * Sicherungen können bis zu 10GB an App- und Datenbankinhalten umfassen. Wenn die Sicherungsgröße diesen Grenzwert überschreitet, erhalten Sie eine Fehlermeldung.
@@ -49,10 +51,10 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 * In-App-MySQL-Datenbanken werden automatisch ohne Konfiguration gesichert. Wenn Sie manuell Einstellungen für In-App-MySQL-Datenbanken festlegen (beispielsweise durch Hinzufügen von Verbindungszeichenfolgen), funktionieren die Sicherungen unter Umständen nicht ordnungsgemäß.
 * Die Verwendung eines Speicherkontos mit aktivierter Firewall als Ziel für Ihre Sicherungen wird nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
 
-
 <a name="manualbackup"></a>
 
 ## <a name="create-a-manual-backup"></a>Erstellen einer manuellen Sicherung
+
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Seite Ihrer App, und wählen Sie **Sicherungen** aus. Die Seite **Sicherungen** wird angezeigt.
 
     ![Seite 'Sicherungen'](./media/manage-backup/access-backup-page.png)
@@ -61,8 +63,8 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
     > Wenn die folgende Meldung angezeigt wird, klicken Sie darauf, um Ihren App Service-Plan zu aktualisieren, damit Sie mit Sicherungen fortfahren können.
     > Weitere Informationen finden Sie unter [Hochskalieren einer App in Azure](manage-scale-up.md).
     > :::image type="content" source="./media/manage-backup/upgrade-plan.png" alt-text="Screenshot: Banner mit einer Meldung zum Aktualisieren des App Service-Plans für den Zugriff auf das Feature „Backup and Restore“ (Sichern und Wiederherstellen)":::
-    > 
-    > 
+    >
+    >
 
 2. Wählen Sie auf der Seite **Sicherung** die Option **Sicherung ist nicht konfiguriert. Klicken Sie hier, um die Sicherung für Ihre App zu konfigurieren** aus.
 
@@ -82,8 +84,8 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
     > Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge auf der Seite **Anwendungseinstellungen** für Ihre App im Abschnitt **Verbindungszeichenfolgen** angegeben sein. 
     >
     > In-App-MySQL-Datenbanken werden automatisch ohne Konfiguration gesichert. Wenn Sie Einstellungen für In-App-MySQL-Datenbanken manuell festlegen (beispielsweise durch Hinzufügen von Verbindungszeichenfolgen), funktionieren die Sicherungen unter Umständen nicht ordnungsgemäß.
-    > 
-    > 
+    >
+    >
 
 6. Klicken Sie auf der Seite **Sicherungskonfiguration** auf **Speichern**.
 7. Klicken Sie auf der Seite **Sicherungen** auf **Sichern**.
@@ -97,7 +99,8 @@ Sobald Speicherkonto und Container konfiguriert sind, können Sie jederzeit eine
 <a name="automatedbackups"></a>
 
 ## <a name="configure-automated-backups"></a>Konfigurieren automatischer Sicherungen
-1. Legen Sie auf der Seite **Sicherungskonfiguration** die Option **Geplante Sicherung** auf **Ein** fest. 
+
+1. Legen Sie auf der Seite **Sicherungskonfiguration** die Option **Geplante Sicherung** auf **Ein** fest.
 
     ![Automatisierte Sicherungen aktivieren](./media/manage-backup/scheduled-backup.png)
 
@@ -106,6 +109,7 @@ Sobald Speicherkonto und Container konfiguriert sind, können Sie jederzeit eine
 <a name="partialbackups"></a>
 
 ## <a name="configure-partial-backups"></a>Konfigurieren von Teilsicherungen
+
 Mitunter möchten Sie nicht alles in Ihrer App sichern. Hier sind einige Beispiele:
 
 * Sie [richten wöchentliche Sicherungen](#configure-automated-backups) der App ein, die statische Inhalte enthält, die sich nie ändern, z.B. alte Blogbeiträge oder Bilder.
@@ -118,7 +122,8 @@ Bei Teilsicherungen können Sie genau auswählen, welche Dateien gesichert werde
 > Einzelne Datenbanken in der Sicherung können maximal 4 GB groß sein, die maximale Gesamtgröße der Sicherung beträgt aber 10 GB.
 
 ### <a name="exclude-files-from-your-backup"></a>Ausschließen von Dateien aus der Sicherung
-Angenommen, Sie verfügen über eine App mit Protokolldateien und statischen Images, die einmal gesichert wurden und sich nicht ändern werden. In solchen Fällen können Sie diese Ordner und Dateien von der Speicherung in zukünftigen Sicherungen ausschließen. Um Dateien und Ordner von Ihren Sicherungen auszuschließen, erstellen Sie eine `_backup.filter`-Datei im `D:\home\site\wwwroot`-Ordner Ihrer App. Geben Sie die Liste von Dateien und Ordnern an, die Sie in dieser Datei ausschließen möchten. 
+
+Angenommen, Sie verfügen über eine App mit Protokolldateien und statischen Images, die einmal gesichert wurden und sich nicht ändern werden. In solchen Fällen können Sie diese Ordner und Dateien von der Speicherung in zukünftigen Sicherungen ausschließen. Um Dateien und Ordner von Ihren Sicherungen auszuschließen, erstellen Sie eine `_backup.filter`-Datei im `D:\home\site\wwwroot`-Ordner Ihrer App. Geben Sie die Liste von Dateien und Ordnern an, die Sie in dieser Datei ausschließen möchten.
 
 Sie können auf Ihre Dateien zugreifen, indem Sie zu `https://<app-name>.scm.azurewebsites.net/DebugConsole` navigieren. Melden Sie sich nach Aufforderung bei Ihrem Azure-Konto an.
 
@@ -128,7 +133,7 @@ Geben Sie die Ordner an, die Sie von Ihren Sicherungen ausschließen möchten. S
 
 Erstellen Sie eine Datei namens `_backup.filter`, und fügen Sie die oben aufgeführte Liste in die Datei ein, aber entfernen Sie `D:\home`. Geben Sie ein Verzeichnis oder eine Datei pro Zeile an. Der Inhalt der Datei sollte folgendermaßen aussehen:
 
- ```
+```
 \site\wwwroot\Images\brand.png
 \site\wwwroot\Images\2014
 \site\wwwroot\Images\2013
@@ -136,26 +141,24 @@ Erstellen Sie eine Datei namens `_backup.filter`, und fügen Sie die oben aufgef
 
 Laden Sie die `_backup.filter`-Datei in das `D:\home\site\wwwroot\`-Verzeichnis Ihrer Website hoch. Verwenden Sie dazu [ftp](deploy-ftp.md) oder eine andere Methode. Wenn Sie möchten, können Sie die Datei direkt mithilfe der Kudu-`DebugConsole` erstellen und den Inhalt dort einfügen.
 
-Führen Sie die Sicherungen wie gewohnt aus: [manuell](#create-a-manual-backup) oder [automatisch](#configure-automated-backups). Jetzt sind alle in `_backup.filter` angegebenen Dateien und Ordner von zukünftigen geplanten oder manuell initiierten Sicherungen ausgeschlossen. 
+Führen Sie die Sicherungen wie gewohnt aus: [manuell](#create-a-manual-backup) oder [automatisch](#configure-automated-backups). Jetzt sind alle in `_backup.filter` angegebenen Dateien und Ordner von zukünftigen geplanten oder manuell initiierten Sicherungen ausgeschlossen.
 
 > [!NOTE]
 > Sie stellen Teilsicherungen Ihrer Website genauso wieder her, wie Sie eine [normale Sicherung wiederherstellen](web-sites-restore.md)würden. Der Wiederherstellungsvorgang wird richtig ausgeführt.
-> 
+>
 > Bei der Wiederherstellung einer vollständigen Sicherung wird der gesamte Inhalt der Website durch den Inhalt der Sicherung ersetzt. Wenn eine Datei auf der Website vorhanden ist, aber nicht in der Sicherung, wird sie gelöscht. Wenn aber eine Teilsicherung wiederhergestellt wird, bleiben alle Inhalte von eingeschränkten Verzeichnissen bzw. alle eingeschränkten Dateien unverändert.
-> 
-
+>
 
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>Speichern von Sicherungen
+
 Nachdem Sie eine oder mehrere Sicherungen für Ihre App vorgenommen haben, werden die Sicherungen auf der Seite **Container** in Ihrem Speicherkonto sowie in Ihrer App angezeigt. Im Speicherkonto besteht jede Sicherung aus einer `.zip`-Datei mit den gesicherten Daten und einer `.xml`-Datei, die ein Manifest des `.zip`-Dateiinhalts enthält. Sie können diese Dateien extrahieren und durchsuchen, wenn Sie auf die Sicherungen zugreifen möchten, ohne eine App-Wiederherstellung auszuführen.
 
 Die Datenbanksicherung für die App wird im Stammverzeichnis der ZIP-Datei gespeichert. Bei SQL-Datenbank ist dies eine BACPAC-Datei (ohne Dateierweiterung), die importiert werden kann. Schritte zum Erstellen einer Datenbank in Azure SQL-Datenbank auf Basis des BACPAC-Exports finden Sie unter [Importieren einer BACPAC-Datei zum Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/database-import.md).
 
 > [!WARNING]
 > Wenn Sie die Dateien im Container **websitebackups** ändern, kann die Sicherung ungültig werden und nicht mehr wiederhergestellt werden.
-> 
-> 
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 
@@ -169,4 +172,5 @@ Beispiele finden Sie unter:
 <a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unter [Wiederherstellen einer App in Azure](web-sites-restore.md).

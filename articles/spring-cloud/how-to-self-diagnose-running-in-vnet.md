@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 5407213b62902326d53b73e42ee3af1ba9b11524
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f2b2dcc7e22ce904035a6805d78e59ad14f9bff1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877534"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134787"
 ---
 # <a name="self-diagnose-running-azure-spring-cloud-in-vnet"></a>Selbstdiagnose beim Ausführen von Azure Spring Cloud im VNET
 Die Azure Spring Cloud-Diagnose unterstützt in virtuellen Netzwerken ausgeführte interaktive Problembehandlungs-Apps ohne Konfiguration. Durch die Azure Spring Cloud-Diagnose werden Probleme identifiziert und Informationen bereitgestellt, die Sie bei der Problembehandlung und -behebung unterstützen.
@@ -61,7 +61,7 @@ Wenn Sie **Erforderlicher ausgehender Datenverkehr** auswählen, geben die Ergeb
 * *Required outbound traffic resolved with no issues in subnet 'subnet01'. (Der erforderliche ausgehende Datenverkehr wurde ohne Probleme im Subnetz „subnet01“ aufgelöst.)
 * *Required outbound traffic resolved with no issues in subnet 'subnet02'. (Der erforderliche ausgehende Datenverkehr wurde ohne Probleme im Subnetz „subnet02“ aufgelöst.)
 
-Wenn ein Subnetz durch NSG- oder Firewallregeln blockiert wird und Sie das Protokoll nicht blockiert haben, finden Sie die folgenden Fehler. Sie können überprüfen, ob Sie [Kundenzuständigkeiten](spring-cloud-vnet-customer-responsibilities.md) übersehen haben.
+Wenn ein Subnetz durch NSG- oder Firewallregeln blockiert wird und Sie das Protokoll nicht blockiert haben, finden Sie die folgenden Fehler. Sie können überprüfen, ob Sie [Kundenzuständigkeiten](./vnet-customer-responsibilities.md) übersehen haben.
     
    ![Endpunktfehler](media/spring-cloud-self-diagnose-vnet/self-diagostic-endpoint-failed.png)
 
@@ -70,4 +70,4 @@ Falls in `Required Outbound Traffic Table Renderings` innerhalb von 30 Minuten 
    ![Unbekannter Diagnoseendpunkt](media/spring-cloud-self-diagnose-vnet/self-diagostic-endpoint-unknown.png)
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Selbstdiagnose und Lösung von Problemen in Azure Spring Cloud](spring-cloud-howto-self-diagnose-solve.md)
+* [Selbstdiagnose und Lösung von Problemen in Azure Spring Cloud](./how-to-self-diagnose-solve.md)

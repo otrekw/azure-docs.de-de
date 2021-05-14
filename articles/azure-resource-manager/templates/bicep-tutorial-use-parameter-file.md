@@ -2,15 +2,16 @@
 title: 'Tutorial: Verwenden der Parameterdatei zum Bereitstellen einer Azure Resource Manager-Bicep-Datei'
 description: Verwenden Sie Parameterdateien, die die Werte enthalten, die Sie für die Bereitstellung Ihrer Azure Resource Manager-Bicep-Datei verwenden möchten.
 author: mumian
-ms.date: 03/10/2021
+ms.date: 04/27/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ca3a73cde9549bfcdfd47bc4f1955904fac69d1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 73fabbc92d1e1476619cc73e0e1f13e5d9b164b8
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632355"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319285"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-azure-resource-manager-bicep-file"></a>Tutorial: Verwenden von Parameterdateien zum Bereitstellen einer Azure Resource Manager-Bicep-Datei
 
@@ -112,7 +113,7 @@ New-AzResourceGroup `
 New-AzResourceGroupDeployment `
   -Name prodenvironment `
   -ResourceGroupName myResourceGroupProd `
-  -TemplateFile $templateFile `
+  -TemplateFile $bicepFile `
   -TemplateParameterFile $parameterFile
 ```
 
@@ -126,7 +127,7 @@ az group create \
 az deployment group create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
-  --template-file $templateFile \
+  --template-file $bicepFile \
   --parameters $prodParameterFile
 ```
 

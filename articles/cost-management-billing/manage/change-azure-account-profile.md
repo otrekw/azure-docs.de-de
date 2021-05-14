@@ -1,21 +1,21 @@
 ---
 title: Ändern der Kontaktinformationen für ein Azure-Abrechnungskonto
 description: In diesem Artikel wird beschrieben, wie Sie die Kontaktinformationen Ihres Azure-Abrechnungskontos ändern.
-author: genlin
-ms.reviewer: dcscontentpm
+author: bandersmsft
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 04/08/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 776c207387ee55b998615131baf77e6c13655b49
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f394b6b44b2030253f7b78ec68459819c82c3c27
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033936"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480901"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Ändern der Kontaktinformationen für ein Azure-Abrechnungskonto
 
@@ -64,6 +64,21 @@ Wenn Sie Ihre Azure Active Directory-Benutzerprofilinformationen aktualisieren m
     ![Screenshot: Aktualisieren der Adresse](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
 1. Geben Sie die neue Adresse ein, und wählen Sie dann **Speichern** aus.  
     ![Screenshot, in dem das Aktualisieren der Adresse gezeigt wird](./media/change-azure-account-profile/update-bill-to-save-mca.png)
+
+## <a name="update-a-po-number"></a>Aktualisieren einer Auftragsnummer
+
+Standardmäßig ist einer Rechnung für das Abrechnungsprofil keine Auftragsnummer zugeordnet. Nachdem Sie eine Auftragsnummer für ein Abrechnungsprofil hinzugefügt haben, wird sie auf Rechnungen für das Abrechnungsprofil angezeigt.
+
+Wenn Sie die Auftragsnummer für ein Abrechnungsprofil hinzufügen oder ändern möchten, führen Sie die folgenden Schritte aus:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie nach **Cost Management + Billing**, und wählen Sie **Abrechnungsbereiche** aus.
+1. Wählen Sie Ihren Abrechnungsbereich aus.
+1. Wählen Sie im Menü auf der linken Seite unter **Abrechnung** die Option **Abrechnungsprofile** aus.
+1. Wählen Sie das entsprechende Abrechnungsprofil aus.
+1. Wählen Sie im linken Menü unter **Einstellungen** die Option **Eigenschaften** aus.
+1. Wählen Sie **Auftragsnummer aktualisieren** aus.
+1. Geben Sie eine Auftragsnummer ein, und wählen Sie dann **Aktualisieren** aus.
 
 ## <a name="service-and-marketing-emails"></a>Dienst- und Marketing-E-Mails
 

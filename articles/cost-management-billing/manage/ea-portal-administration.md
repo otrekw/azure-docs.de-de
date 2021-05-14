@@ -3,18 +3,18 @@ title: Azure EA-Portalverwaltung
 description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die Administratoren im Azure EA-Portal durchführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/13/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3ce13a103b605ea7b6066e8b2868fa974f4e64e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 787f902311437e6ca8a679299ef7a28b34cee4ab
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050565"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728408"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -36,7 +36,9 @@ Nur vorhandene Azure-Unternehmensadministratoren können andere Unternehmensadmi
 
 ### <a name="create-another-enterprise-administrator"></a>Erstellen eines weiteren Unternehmensadministrators
 
-So fügen Sie einen weiteren Unternehmensadministrator hinzu
+Wählen Sie basierend auf Ihrer Situation eine der folgenden Optionen aus:
+
+#### <a name="if-youre-already-an-enterprise-administrator"></a>Sie sind bereits Unternehmensadministrator:
 
 1. Melden Sie sich beim [Azure Enterprise Portal](https://ea.azure.com) an.
 1. Wechseln Sie zu **Verwalten** > **Registrierungsdetail**.
@@ -44,7 +46,11 @@ So fügen Sie einen weiteren Unternehmensadministrator hinzu
 
 Stellen Sie sicher, dass Sie über die E-Mail-Adresse und die bevorzugte Authentifizierungsmethode des Benutzers verfügen, wie etwa ein Geschäfts-, Schul-, Uni- oder Microsoft-Konto.
 
-Wenn Sie kein Unternehmensadministrator sind, bitten Sie einen Unternehmensadministrator, Sie einer Registrierung hinzuzufügen. Nachdem Sie einer Registrierung hinzugefügt wurden, erhalten Sie eine Aktivierungs-E-Mail.
+#### <a name="if-youre-not-an-enterprise-administrator"></a>Sie sind kein Unternehmensadministrator:
+
+Wenn Sie kein Unternehmensadministrator sind, bitten Sie einen Unternehmensadministrator, Sie einer Registrierung hinzuzufügen. Der Unternehmensadministrator führt die vorherigen Schritte aus, um Sie als Unternehmensadministrator hinzuzufügen. Nachdem Sie einer Registrierung hinzugefügt wurden, erhalten Sie eine Aktivierungs-E-Mail.
+
+#### <a name="if-your-enterprise-administrator-cant-help-you"></a>Ihr Unternehmensadministrator kann Ihnen nicht helfen:
 
 Wenn Ihr Unternehmensadministrator Ihnen nicht helfen kann, erstellen Sie eine [Supportanfrage für das Azure Enterprise Portal](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c). Geben Sie die folgenden Informationen ein:
 
@@ -418,51 +424,6 @@ Vorbereitung:
 1. Für das Microsoft-Konto sollten nun keine aktiven Abonnements mehr vorhanden sein, sodass es gelöscht werden kann.
 1. Aus Abrechnungsgründen werden gelöschte Konten im Portal weiterhin angezeigt, sie haben allerdings den Status „Inaktiv“.  Wenn Sie sie aus der Ansicht herausfiltern möchten, können Sie durch Aktivieren eines Kontrollkästchens festlegen, dass nur aktive Konten angezeigt werden sollen.
 
-## <a name="account-subscription-ownership-faq"></a>Häufige gestellte Fragen zum Kontoabonnementbesitz
-
-In diesem Dokument werden häufig gestellte Fragen im Zusammenhang mit dem Kontoabonnementbesitz beantwortet.
-
-### <a name="can-i-associate-my-existing-azure-account-to-azure-ea-enrollment"></a>Kann ich der Azure EA-Registrierung mein vorhandenes Azure-Konto zuordnen?
-
-Ja. Alle Azure-Abonnements, für die Sie als Kontobesitzer fungieren, werden in Ihr Enterprise Agreement konvertiert. Dazu gehören Abonnements, die ein monatliches Guthaben verwenden, z. B. Visual Studio, AzurePass, MPN, BizSpark usw. Beim Konvertieren solcher Abonnements verlieren Sie das monatliche Guthaben.
-
-### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Wie viele Azure-Kontobesitzer sind pro Abonnement zulässig?
-
-Pro Abonnement ist immer nur ein einzelner Kontobesitzer zulässig.  Weitere Rollen können mithilfe des rollenbasierten Zugriffs oder der Zugriffssteuerung (IAM) im [Azure-Portal](https://portal.azure.com) auf der Registerkarte „Abonnement“ (links oben auf der Seite) hinzugefügt werden.
-
-### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Kann der Abonnementbesitz auf ein anderes Konto übertragen werden?
-
-Ja, Sie können den Abonnementbesitz auf ein anderes Konto übertragen. Wenn das Konto A beispielsweise über drei Abonnements verfügt, kann der Unternehmensadministrator ein Abonnement auf das Konto B, ein Abonnement auf das Konto C und ein Abonnement auf das Konto D oder aber alle Abonnements auf das Konto E übertragen.
-
-So übertragen Sie Abonnements
-
-1. Wählen Sie im Azure Enterprise Portal **Verwalten** > **Konto** aus.
-1. Zeigen Sie ganz rechts auf **Konto**, um die Optionen **Besitz übertragen** (Personensymbol) und **Abonnement übertragen** (Listensymbol) anzuzeigen. Diese Optionen sind nur für aktive Konten sichtbar.
-
-### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Kann ein Azure-Kontobesitzer unter mehreren Abteilungen aufgeführt werden?
-
-Nein. Ein Kontobesitzer kann immer nur einer einzelnen Abteilung zugeordnet sein. Durch diese Richtlinie wird eine korrekte Überwachung und Zuordnung von Kosten und Ausgaben im Zusammenhang mit der entsprechenden Abteilung unter der EA-Registrierung im Azure EA Portal sichergestellt.
-
-### <a name="can-an-azure-account-owner-be-listed-as-a-security-group"></a>Kann ein Azure-Kontobesitzer als Sicherheitsgruppe aufgeführt werden?
-
-Nein. Bei einem Abonnementbesitzer muss es sich um eine eindeutige Authentifizierung vom Typ Microsoft-Konto (MSA) oder Azure Active Directory (Azure AD) handeln. Zur Regelung der Nachfolge in Ihrer Organisation können Sie ggf. generische Konten erstellen und den Abonnementzugriff mithilfe von Azure AD verwalten.
-
-### <a name="can-an-individual-user-own-multiple-subscriptions"></a>Kann ein einzelner Benutzer mehrere Abonnements besitzen?
-
-Ein Azure-Kontobesitzer kann eine unbegrenzte Anzahl von Abonnements erstellen und verwalten.
-
-### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>Wie kann ich auf alle Abonnements meiner Organisation zugreifen bzw. diese anzeigen?
-
-Hierzu muss aktuell eine Richtlinie verwendet werden. Ihr Konto muss also für jedes erstellte Abonnement mithilfe des rollenbasierten Zugriffs einer Abonnementrolle hinzugefügt werden.
-
-### <a name="where-do-i-go-to-create-a-subscription"></a>Wo kann ich ein Abonnement erstellen?
-
-Wenn Sie ein Abonnement für ein EA-Angebot (Enterprise Azure) erstellen möchten, muss Ihr Konto zunächst im Azure EA Portal durch den Administrator Ihrer EA-Registrierung der Rolle „Kontobesitzer“ hinzugefügt werden. Anschließend müssen Sie sich beim Azure EA Portal anmelden, um Ihre Berechtigung zum Erstellen von Abonnements für den EA-Angebotstyp zu erhalten. Das erste EA-Abonnement sollte über den Link „+ Abonnement hinzufügen“ auf der Registerkarte „Abonnement“ des EA Portals erstellt werden.  Sobald Ihr Konto allerdings über die nötige Berechtigung verfügt, ist es unter Umständen einfacher, Abonnements unter „portal.azure.com“ auf der Registerkarte „Abonnement“ (links oben auf der Seite) zu erstellen, da Sie Ihr Abonnement dort in einem einzelnen Schritt erstellen und umbenennen können.
-
-### <a name="who-can-create-a-subscription"></a>Wer kann ein Abonnement erstellen?
-
-Abonnements für den Enterprise Azure-Angebotstyp können nur von Benutzern erstellt werden, die im [EA-Portal](https://ea.azure.com) über die Rolle „Kontobesitzer“ verfügen.
-
 ## <a name="azure-ea-term-glossary"></a>Glossar für Azure EA-Begriffe
 
 - **Konto:** Eine Organisationseinheit im Azure Enterprise Portal. Sie wird zur Abonnementverwaltung und Berichterstellung verwendet.
@@ -504,3 +465,4 @@ Abonnements für den Enterprise Azure-Angebotstyp können nur von Benutzern ers
 
 - Erfahren Sie, wie Sie mit [Reservierungen virtueller Computer](ea-portal-vm-reservations.md) Geld sparen können.
 - Hilfe zu Problemen im Azure EA-Portal finden Sie unter [Beheben von Zugriffsproblemen beim Azure EA-Portal](ea-portal-troubleshoot.md).
+- In den [häufig gestellten Fragen zu Cost Management + Billing](../cost-management-billing-faq.yml) finden Sie Fragen zum Besitz von EA-Abonnements.

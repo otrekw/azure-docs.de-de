@@ -3,12 +3,12 @@ title: Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlag
 description: In diesem Artikel erfahren Sie, wie Sie die geschachtelte Virtualisierung auf einem Vorlagencomputer in Azure Lab Services einrichten.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 319695088e967dc3156ecab5c1b9458e77fcc186
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1f981602adcf90762258a2921b996507f56f3a2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91251473"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125569"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer in Azure Lab Services
 
@@ -23,7 +23,7 @@ Die geschachtelte Virtualisierung ermöglicht es Ihnen, virtuelle Computer inner
 Weitere Informationen zur geschachtelten Virtualisierung finden Sie in den folgenden Artikeln:
 
 - [Nested Virtualization in Azure (Geschachtelte Virtualisierung in Azure)](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
-- [Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM](../virtual-machines/windows/nested-virtualization.md)
+- [Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)
 
 ## <a name="considerations"></a>Überlegungen
 

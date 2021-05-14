@@ -3,12 +3,12 @@ title: Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integra
 description: Schützen Ihrer Azure VMware Solution-VMs über das Azure Security Center-Dashboard mit den nativen Sicherheitstools von Azure
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2917fbc5d93447dcdde6385576a2a404e95d250
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578253"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205849"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integration
 
@@ -24,7 +24,7 @@ Im Folgenden finden Sie eine kurze Übersicht über die nativen Azure-Dienste:
 
 ## <a name="topology"></a>Topologie
 
-![Ein Diagramm mit der Architektur der integrierten Sicherheit in Azure.](media/azure-security-integration/azure-integrated-security-architecture.png)
+:::image type="content" source="media/azure-security-integration/azure-integrated-security-architecture.png" alt-text="Diagramm: Architektur der integrierten Azure-Sicherheit" border="false":::
 
 Der Log Analytics-Agent ermöglicht die Sammlung von Protokolldaten aus Azure, Azure VMware Solution und lokalen VMs. Die erfassten Daten werden an Azure Monitor-Protokolle gesendet und in einem Log Analytics-Arbeitsbereich gespeichert. Sie können den Log Analytics-Agent mithilfe der [Unterstützung Arc-fähiger Server für VM-Erweiterungen](../azure-arc/servers/manage-vm-extensions.md) für neue und vorhandene VMs bereitstellen. 
 
@@ -72,11 +72,11 @@ Azure Defender erweitert den erweiterten Bedrohungsschutz von Azure Security Cen
 
 2. Klicken Sie unter „Ressourcen“ auf **Server** und dann auf **+Hinzufügen**.
 
-    :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="Screenshot der Azure Arc-Seite „Server“ zum Hinzufügen einer Azure VMware Solution-VM zu Azure":::
+   :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="Screenshot der Azure Arc-Seite „Server“ zum Hinzufügen einer Azure VMware Solution-VM zu Azure":::
 
 3. Wählen Sie **Skript generieren** aus.
  
-    :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="Screenshot einer Azure Arc-Seite mit der Option zum Hinzufügen eines Servers mithilfe eines interaktiven Skripts"::: 
+   :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="Screenshot einer Azure Arc-Seite mit der Option zum Hinzufügen eines Servers mithilfe eines interaktiven Skripts"::: 
  
 4. Klicken Sie auf der Registerkarte **Voraussetzungen** auf **Weiter**.
 
@@ -101,13 +101,13 @@ Azure Defender erweitert den erweiterten Bedrohungsschutz von Azure Security Cen
 
 2. Wählen Sie als Ressourcentyp **Server – Azure Arc** aus.
  
-     :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="Screenshot der Azure Security Center-Seite „Inventar“ mit der unter „Ressourcentyp“ ausgewählten Option „Server – Azure Arc“":::
+   :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="Screenshot der Azure Security Center-Seite „Inventar“ mit der unter „Ressourcentyp“ ausgewählten Option „Server – Azure Arc“":::
 
 3. Wählen Sie den Namen Ihrer Ressource aus. Daraufhin wird eine Seite geöffnet, auf die Details zur Sicherheitsintegrität Ihrer Ressource angezeigt werden.
 
 4. Wählen Sie unter **Empfehlungsliste** die Registerkarten **Empfehlungen**, **Bestandene Bewertungen** und **Nicht verfügbare Bewertungen** aus, um die jeweiligen Details anzuzeigen.
 
-    :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="Screenshot von Azure Security Center mit Sicherheitsempfehlungen und -bewertungen":::
+   :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="Screenshot von Azure Security Center mit Sicherheitsempfehlungen und -bewertungen":::
 
 ## <a name="deploy-an-azure-sentinel-workspace"></a>Bereitstellen eines Azure Sentinel-Arbeitsbereichs
 

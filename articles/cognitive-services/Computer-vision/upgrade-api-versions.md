@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7a05b04872b4f957e879d93972edc45e2932d059
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 3ff345131f6a589db8c758ea4346b77f49c1a9a3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364089"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139415"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>Upgraden von Read 2.x auf Read 3.x
 
@@ -27,7 +27,7 @@ Verwenden Sie die folgende Tabelle, um die **Versionszeichenfolge** im API-Pfad 
 
 |Produkttyp| Version | Versionszeichenfolge im API-Pfad der Version 3.x |
 |:-----|:----|:----|
-|Dienst | Read 3.0 oder 3.1 | **v3.0** bzw. **v3.1** |
+|Dienst | Read 3.0, 3.1 oder 3.2 | **v3.0**, **v3.1** bzw. **v3.2** |
 |Dienst | Read 3.2 (Vorschau) | **v3.2-preview.1** |
 |Container | Read 3.0 (Vorschau) oder Read 3.1 (Vorschau) | **v3.0** bzw. **v3.1-preview.2** |
 

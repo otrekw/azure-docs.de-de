@@ -12,17 +12,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: 1d8859f4790610e72ad517f74bbbbf0cf77d9316
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fe39e0ff9acc0c092199ab2dd199cf396f67d01
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97705199"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874763"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database"></a>Schnellstart: Herstellen einer Verbindung mit einer Datenbank und Abfragen der Datenbank mit .NET und C# in Visual Studio
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mit [.NET Framework](https://www.microsoft.com/net/) und C#-Code in Visual Studio eine Datenbank in Azure SQL oder Synapse SQL mit Transact-SQL-Anweisungen abfragen.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mit [.NET Framework](https://dotnet.microsoft.com) und C#-Code in Visual Studio eine Datenbank in Azure SQL oder Synapse SQL mit Transact-SQL-Anweisungen abfragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

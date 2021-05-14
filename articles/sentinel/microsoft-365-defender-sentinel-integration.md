@@ -1,6 +1,6 @@
 ---
 title: Microsoft 365 Defender-Integration in Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie die Integration von Microsoft 365 Defender in Azure Sentinel Ihnen die Möglichkeit eröffnet, Azure Sentinel als universelle Warteschlange für Vorfälle zu verwenden und gleichzeitig die Stärken von M365D zu nutzen, um bei der Untersuchung von M365-Sicherheitsvorfällen zu helfen, und informieren Sie sich, wie Sie die erweiterten Huntingdaten der Defender-Komponenten in Azure Sentinel erfassen.
+description: Erfahren Sie, wie Sie Microsoft 365 Defender zusammen mit Azure Sentinel verwenden können, um Azure Sentinel als universelle Queue für Vorfälle zu nutzen und gleichzeitig die Stärken von Microsoft 365 Defender nahtlos für die Untersuchung von Microsoft 365 Sicherheitsvorfällen einzusetzen. Außerdem erfahren Sie, wie Sie erweiterte Hunting-Daten von Defender-Komponenten in Azure Sentinel erfassen.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/02/2021
+ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: abace18db51a7a571ecc66d50253277fbd2296d3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 164bb6ca0c84120dbef2ab8307e723ed5723cf2f
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101743496"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107991997"
 ---
 # <a name="microsoft-365-defender-integration-with-azure-sentinel"></a>Microsoft 365 Defender-Integration in Azure Sentinel
 
@@ -36,60 +36,60 @@ ms.locfileid: "101743496"
 
 ## <a name="incident-integration"></a>Vorfallsintegration
 
-Die Vorfallsintegration [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) von Azure Sentinel ermöglicht es Ihnen, alle M365D-Vorfälle in Azure Sentinel zu streamen und sie zwischen beiden Portalen synchron zu halten. Vorfälle aus M365D (früher bekannt als Microsoft Threat Protection oder MTP) enthalten alle zugehörigen Warnungen, Entitäten und relevanten Informationen, die Ihnen genügend Kontext bieten, um Triage und erste Untersuchungen in Azure Sentinel durchzuführen. Sobald sie in Sentinel enthalten sind, bleiben Vorfälle bidirektional mit M365D synchronisiert, sodass Sie die Vorteile beider Portale bei Ihrer Vorfallsuntersuchung nutzen können.
+Die [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection)-Vorfallintegration von Azure Sentinel ermöglicht es Ihnen, alle Microsoft 365 Defender-Vorfälle in Azure Sentinel zu streamen und sie zwischen beiden Portalen synchron zu bewahren. Vorfälle aus Microsoft 365 Defender (vormals bekannt als Microsoft Threat Protection oder MTP) enthalten alle zugehörigen Warnungen, Entitäten und relevanten Informationen, die Ihnen genügend Kontext bieten, um Triagen und vorläufige Untersuchungen in Azure Sentinel durchzuführen. Sobald sie in Sentinel enthalten sind, bleiben Vorfälle bidirektional mit Microsoft 365 Defender synchronisiert, sodass Sie die Vorteile beider Portale bei Ihrer Vorfallsuntersuchung nutzen können.
 
-Diese Integration ermöglicht die Verwaltung von Microsoft 365-Sicherheitsvorfällen in Azure Sentinel als Teil der primären Warteschlange für Vorfälle im gesamten Unternehmen, sodass Sie M365-Vorfälle zusammen mit Vorfällen aus allen anderen Cloud- und lokalen Systemen sehen und korrelieren können. Gleichzeitig können Sie die einzigartigen Stärken und Möglichkeiten von M365D für tiefgreifende Untersuchungen und eine M365-spezifische Benutzererfahrung im gesamten M365-Ökosystem nutzen. M365 Defender ergänzt und gruppiert Warnungen aus mehreren M365-Produkten, wodurch sowohl die Größe der Warteschlange für Vorfälle im SOC reduziert als auch die Zeit bis zur Lösung des Problems verkürzt wird. Die folgenden Komponentendienste sind Teil des M365 Defender-Stapels:
+Diese Integration ermöglicht Microsoft 365-Sicherheitsvorfälle die Übersicht um von Azure Sentinel aus verwaltet zu werden, als Teil der primären Queue für Vorfälle über die gesamte Organisation, so dass Sie Microsoft 365-Vorfälle zusammen mit denen von all Ihren anderen Cloud- und On-Premises-Systemen sehen - und korrelieren - können. Gleichzeitig können Sie die einzigartigen Stärken und Fähigkeiten von Microsoft 365 Defender für eingehende Untersuchungen und eine Microsoft 365-spezifische Erfahrung im gesamten Microsoft 365-Ökosystem nutzen. Microsoft 365 Defender bereichert und gruppiert Warnmeldungen aus mehreren Microsoft 365-Produkten, wodurch sowohl die Größe der Queue für Vorfälle des SOC reduziert als auch die Zeit zur Behebung verkürzt wird. Die folgenden Komponentendienste sind Teil des Microsoft 365 Defender-Stapels:
 
-- **Microsoft Defender für Endpunkt** (MDE, vormals MDATP)
-- **Microsoft Defender for Identity** (MDI, vormals AATP)
-- **Microsoft Defender für Office 365** (MDO, vormals O365ATP)
-- **Microsoft Cloud App Security (MCAS)**
+- **Microsoft Defender for Endpoint** (vormals Microsoft Defender ATP)
+- **Microsoft Defender for Identity** (vormals Azure ATP)
+- **Microsoft Defender for Office 365** (vormals Office 365 ATP)
+- **Microsoft Cloud App Security**
 
-Zusätzlich zum Erfassen von Warnungen von diesen Komponenten generiert M365 Defender eigene Warnungen. Die Anwendung erstellt Vorfälle aus allen diesen Warnungen und sendet sie an Azure Sentinel.
+Zusätzlich zur Erfassung von Warnungen von diesen Komponenten erstellt Microsoft 365 Defender eigene Warnungen. Die Anwendung erstellt Vorfälle aus allen diesen Warnungen und sendet sie an Azure Sentinel.
 
 ### <a name="common-use-cases-and-scenarios"></a>Gängige Anwendungsfälle und -szenarien
 
-- One-Click-Verbindung von M365 Defender-Vorfällen, einschließlich aller Warnungen und Entitäten aus M365 Defender-Komponenten, in Azure Sentinel.
+- Die Ein-Klick-Verbindung von Microsoft 365 Defender-Vorfällen, einschließlich aller Warnungen und Entitäten von Microsoft 365 Defender-Komponenten, in Azure Sentinel.
 
-- Bidirektionale Synchronisierung zwischen Sentinel- und M365D-Vorfällen bezüglich Status, Besitzer und Schließungsgrund.
+- Bidirektionale Synchronisierung zwischen Sentinel- und Microsoft 365 Defender-Vorfällen bezüglich Status, Besitzer und Schließungsgrund.
 
-- Nutzen der Funktionen zur Gruppierung und Anreicherung von M365 Defender-Warnungen in Azure Sentinel, wodurch sich die Zeit bis zur Lösung des Problems verkürzt.
+- Nutzen der Funktionen zur Gruppierung und Anreicherung von Microsoft 365 Defender-Warnungen in Azure Sentinel, wodurch sich die Zeit der Problemlösung verkürzt.
 
-- In-Context Deep Link zwischen einem Azure Sentinel-Vorfall und seinem parallelen M365 Defender-Vorfall, um Untersuchungen über beide Portale hinweg zu erleichtern.
+- Kontextbezogener Deep Link zwischen einem Azure Sentinel-Vorfall und seinem parallelen Microsoft 365 Defender-Vorfall, um die Untersuchung über beide Portale hinweg zu erleichtern.
 
 ### <a name="connecting-to-microsoft-365-defender"></a>Herstellen einer Verbindung mit Microsoft 365 Defender
 
-Sobald Sie den Microsoft 365 Defender-Datenconnector zum [Erfassen von Vorfällen und Warnungen](connect-microsoft-365-defender.md) aktiviert haben, werden M365D-Vorfälle in der Azure Sentinel-Vorfallswarteschlange mit **Microsoft 365 Defender** im Feld **Produktname** angezeigt, kurz nachdem sie in M365 Defender generiert wurden.
-- Es kann bis zu 10 Minuten ab dem Zeitpunkt dauern, an dem ein Vorfall, der in M365 Defender generiert wird, in Azure Sentinel angezeigt wird.
+Sobald Sie den Microsoft 365 Defender-Datenverbinder zum [Erfassen von Vorfällen und Warnungen](connect-microsoft-365-defender.md) aktiviert haben, werden Microsoft 365 Defender-Vorfälle in der Azure Sentinel-Vorfalls-Queue mit **Microsoft 365 Defender** im Feld **Produktname** angezeigt, kurz nachdem sie in Microsoft 365 Defender erstellt wurden.
+- Es kann bis zu 10 Minuten ab dem Zeitpunkt dauern, an dem ein Vorfall, der in Microsoft 365 Defender erstellt wird, in Azure Sentinel angezeigt wird.
 
 - Vorfälle werden ohne zusätzliche Kosten erfasst und synchronisiert.
 
-Sobald die M365 Defender-Integration verbunden ist, werden alle Komponentenwarnungsconnectors (MDE, MDI, MDO, MCAS) automatisch im Hintergrund verbunden, wenn dies nicht bereits geschehen ist. Wenn nach der Verbindung von M365 Defender Komponentenlizenzen erworben wurden, werden die Warnungen und Vorfälle aus dem neuen Produkt weiterhin ohne zusätzliche Konfiguration oder Gebühren an Azure Sentinel weitergeleitet.
+Sobald die Microsoft 365 Defender-Integration verbunden ist, werden alle Komponenten-Warnungsverbinder (Defender für Endpunkt, Defender für Identität, Defender für Office 365 Cloud App Security) automatisch im Hintergrund verbunden, sofern sie es vorher noch nicht waren. Wenn nach der Verbindung von Microsoft 365 Defender Komponenten-Lizenzen erworben wurden, werden die Warnungen und Vorfälle aus dem neuen Produkt weiterhin ohne zusätzliche Konfiguration oder Gebühren an Azure Sentinel weitergeleitet.
 
-### <a name="m365-defender-incidents-and-microsoft-incident-creation-rules"></a>M365 Defender-Vorfälle und Microsoft-Regeln für die Erstellung von Vorfällen
+### <a name="microsoft-365-defender-incidents-and-microsoft-incident-creation-rules"></a>Microsoft 365 Defender-Vorfälle und Microsoft-Regeln zur Erstellung von Vorfällen
 
-- Vorfälle, die von M365 Defender generiert werden, werden auf der Basis von Warnungen, die aus M365-Sicherheitsprodukten stammen, mithilfe von benutzerdefinierter M365-Logik erstellt.
+- Von Microsoft 365 Defender generierte Incidents, die auf Warnungen von Microsoft 365 Sicherheitsprodukten basieren, werden mit benutzerdefinierter Microsoft 365 Defender-Logik erstellt.
 
 - Die Microsoft-Regeln für die Erstellung von Vorfällen in Azure Sentinel erstellen ebenfalls Vorfälle aus denselben Warnungen, wobei eine (andere) benutzerdefinierte Azure Sentinel-Logik verwendet wird.
 
-- Die gemeinsame Verwendung beider Mechanismen wird vollständig unterstützt, und diese Konfiguration kann verwendet werden, um den Übergang zur neuen M365 Defender-Logik für die Erstellung von Vorfällen zu erleichtern. Dies führt jedoch zu **duplizierten Ereignissen** für dieselben Warnungen.
+- Die gemeinsame Verwendung beider Mechanismen wird vollständig unterstützt, und diese Konfiguration kann verwendet werden, um den Übergang zur neuen Microsoft 365 Defender-Logik für die Erstellung von Vorfällen zu erleichtern. Dies führt jedoch zu **duplizierten Vorfällen** für dieselben Warnungen.
 
-- Um die Erstellung doppelter Vorfälle für dieselben Warnungen zu vermeiden, empfehlen wir Kunden, alle **Microsoft-Vorfallerstellungsregeln** für M365-Produkte (MDE, MDI und MDO – siehe MCAS unten) zu deaktivieren, wenn sie M365 Defender verbinden. Markieren Sie hierzu das entsprechende Kontrollkästchen auf der Seite „Connector“. Beachten Sie, dass in diesem Fall alle Filter, die durch die Regeln zur Vorfallerstellung angewendet wurden, nicht auf die M365 Defender-Vorfallsintegration angewendet werden.
+- Um die Erstellung von duplizierten Vorfällen für dieselben Alarme zu vermeiden, empfehlen wir Kunden, alle **Regeln zur Erstellung von Microsoft-Vorfällen** für Microsoft 365-Produkte (Defender für Endpoint, Defender für Identity und Defender für Office 365 - siehe Cloud App Security unten) zu deaktivieren, wenn sie den Microsoft 365 Defender verbinden. Dies kann durch das Deaktivieren der Vorfall-Erstellung auf der Verbinder-Seite erfolgen. Beachten Sie bitte, dass in diesem Fall alle Filter, die durch die Regeln zur Vorfallerstellung angewendet wurden, nicht auf die Microsoft 365 Defender-Vorfallintegration angewendet werden.
 
-- Für Microsoft Cloud App Security-Warnungen (MCAS-Warnungen) werden derzeit nicht alle Warnungstypen in M365 Defender übernommen. Um sicherzustellen, dass Sie weiterhin Vorfälle für alle MCAS-Warnungen erhalten, müssen Sie die **Microsoft-Regeln für die Erstellung von Vorfällen** für die Warnungstypen beibehalten oder erstellen, die *nicht in M365D übernommen werden*.
+- Für die Microsoft Cloud App Security-Warnungen sind derzeit nicht alle Warnmeldungstypen im Microsoft 365 Defender integriert. Um sicherzustellen, dass Sie weiterhin Vorfälle für alle Cloud App Sicherheitswarnungen erhalten, müssen Sie die **Microsoft-Regeln zur Erstellung von Vorfällen** für die [Alarmtypen *, die nicht in* Microsoft 365 Defender](microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md) integriert sind, beibehalten oder erstellen.
 
-### <a name="working-with-m365-defender-incidents-in-azure-sentinel-and-bi-directional-sync"></a>Arbeiten mit M365 Defender-Vorfällen in Azure Sentinel und bidirektionale Synchronisierung
+### <a name="working-with-microsoft-365-defender-incidents-in-azure-sentinel-and-bi-directional-sync"></a>Mit Microsoft 365 Defender-Vorfällen in Azure Sentinel und der bidirektionalen Synchronisierung arbeiten
 
-M365 Defender-Vorfälle werden in der Azure Sentinel-Vorfallswarteschlange mit dem Produktnamen **Microsoft 365 Defender** und mit ähnlichen Details und Funktionen wie alle anderen Sentinel-Vorfälle angezeigt. Jeder Vorfall enthält einen Link, der zurück zum parallelen Vorfall im M365 Defender-Portal führt.
+M365 Defender-Vorfälle werden in der Azure Sentinel-Vorfalls-Queue mit dem Produktnamen **Microsoft 365 Defender** und mit ähnlichen Details und Funktionen wie alle anderen Sentinel-Vorfälle angezeigt. Jeder Vorfall enthält einen Link, der zurück zum parallelen Vorfall im Microsoft 365 Defender-Portal führt.
 
-Wenn sich der Vorfall in M365 Defender weiterentwickelt und weitere Warnungen oder Entitäten hinzugefügt werden, wird der Azure Sentinel-Vorfall entsprechend aktualisiert.
+In dem Maß, in dem sich der Vorfall in Microsoft 365 Defender weiterentwickelt und weitere Alarme oder Entitäten hinzugefügt werden, wird der Azure Sentinel-Vorfall entsprechend aktualisiert.
 
-Änderungen am Status, am Schließungsgrund oder an der Zuweisung eines M365-Vorfalls, die entweder in M365D oder in Azure Sentinel vorgenommen werden, werden auch in der Warteschlange des jeweils anderen Vorfalls entsprechend aktualisiert. Die Synchronisierung erfolgt in beiden Portalen ohne Verzögerung sofort nach der Änderung des Vorfalls. Möglicherweise ist eine Aktualisierung erforderlich, um die neuesten Änderungen anzuzeigen.
+Änderungen am Status, am Schließungsgrund oder an der Zuweisung eines Microsoft 365-Vorfalls, die entweder in Microsoft 365 Defender oder in Azure Sentinel vorgenommen werden, werden auch in der Queue des jeweils anderen Vorfalls entsprechend aktualisiert. Die Synchronisierung erfolgt in beiden Portalen ohne Verzögerung sofort nach der Änderung des Vorfalls. Möglicherweise ist eine Aktualisierung erforderlich, um die neuesten Änderungen anzuzeigen.
 
-In M365 Defender können alle Warnungen aus einem Vorfall in einen anderen übertragen werden, was zu einer Zusammenführung der Vorfälle führt. Wenn dies geschieht, spiegeln die Azure Sentinel-Vorfälle die Änderungen wider. Ein Vorfall enthält alle Warnungen der beiden ursprünglichen Vorfälle, und der andere Vorfall wird automatisch geschlossen und mit dem Tag „umgeleitet“ versehen.
+Im Microsoft 365 Defender können alle Warnungen aus einem Vorfall in einen anderen übertragen werden, was zu einer Zusammenführung der Vorfälle führt. Wenn diese Zusammenführung erfolgt, spiegeln die Azure Sentinel-Vorfälle die Änderungen wider. Ein Vorfall enthält alle Warnungen der beiden ursprünglichen Vorfälle, und der andere Vorfall wird automatisch geschlossen und mit dem Tag „umgeleitet“ versehen.
 
 > [!NOTE]
-> Vorfälle in Azure Sentinel können maximal 150 Warnungen enthalten. M365D Vorfälle können eine größere Anzahl aufweisen. Wenn ein M365D-Vorfall mit mehr als 150 Warnungen mit Azure Sentinel synchronisiert wird, wird der Sentinel-Vorfall mit „150+“ Warnungen angezeigt und bietet einen Link zum parallelen Vorfall in M365D, wo Sie den vollständigen Satz von Warnungen anzeigen können.
+> Vorfälle in Azure Sentinel können maximal 150 Warnungen enthalten. Microsoft 365 Defender-Vorfälle können aus mehr als dies bestehen. Wenn ein Microsoft 365 Defender-Vorfall mit mehr als 150 Alarmen mit Azure Sentinel synchronisiert wird, wird der Sentinel-Vorfall als mit "150+" Alarmen angezeigt und bietet einen Link zu dem parallelen Vorfall in Microsoft 365 Defender, wo Sie den vollständigen Alarmsatz sehen können.
 
 ## <a name="advanced-hunting-event-collection"></a>Erfassung erweiterter Huntingereignisse
 
@@ -97,7 +97,7 @@ Mit dem Microsoft 365 Defender-Connector können Sie auch **erweiterte Huntinge
 
 - Einfaches Kopieren Ihrer vorhandenen erweiterten Huntingabfragen für Microsoft Defender für Endpunkt in Azure Sentinel.
 
-- Verwenden der Ereignisrohprotokolle zum Gewinnen zusätzlicher Erkenntnisse für Ihre Warnungen, Hunting und Untersuchungen sowie Korrelieren dieser Ereignisse mit anderen Ereignissen aus zusätzlichen Datenquellen in Azure Sentinel.
+- Verwenden Sie die rohen Ereignisprotokolle, um weitere Erkenntnisse für Ihre Warnungen, die Suche und die Untersuchung zu gewinnen, und diese Ereignisse mit Ereignissen aus anderen Datenquellen im Azure Sentinel korrelieren zu können.
 
 - Speichern der Protokolle mit verlängerter Aufbewahrungsdauer, jenseits der Standardaufbewahrungsdauer von 30 Tagen in Microsoft Defender for Endpoint oder Microsoft 365 Defender. Dies erreichen Sie durch Konfigurieren der Aufbewahrungsdauer Ihres Arbeitsbereichs oder der tabellenweisen Aufbewahrung in Log Analytics.
 

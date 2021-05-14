@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 04/09/2021
 ms.author: alkohli
-ms.openlocfilehash: bd90a16c09dce65115cea2f097d18f2e0ced931a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f4f7e5f69e6b496395b74dbdcd58b3ada0a7f349
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632032"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285196"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Sicherheit und Schutz von Daten für Azure Stack Edge Pro R und Azure Stack Edge Mini R
 
@@ -100,17 +100,23 @@ Die Daten auf Ihren Datenträgern sind durch zwei Verschlüsselungsebenen gesch�
 > [!NOTE]
 > Für den Betriebssystemdatenträger wird für die Softwareverschlüsselung nur eine Ebene vom Typ „BitLocker XTS-AES-256“ genutzt.
 
-Beim Aktivieren des Geräts werden Sie aufgefordert, eine Schlüsseldatei mit Wiederherstellungsschlüsseln zu speichern, mit denen die Daten auf dem Gerät wiederhergestellt werden können, wenn es nicht gestartet werden kann. Die Datei enthält zwei Schlüssel:
+Bevor Sie das Gerät aktivieren, müssen Sie die Verschlüsselung ruhender Daten auf Ihrem Gerät konfigurieren. Dies ist eine erforderliche Einstellung. Das Gerät kann erst aktiviert werden, wenn diese Einstellung erfolgreich konfiguriert wurde. 
 
-- Mit einem Schlüssel wird die Gerätekonfiguration auf den Betriebssystemvolumes wiederhergestellt.
-<!-- - Second key is to unlock the BitLocker on the data disks. -->
-- Mit dem zweiten Schlüssel wird die Hardwareverschlüsselung auf den Datenträgern entsperrt.
+Im Werk wird die BitLocker-Verschlüsselung auf Volumeebene aktiviert, nachdem die Geräte mit einem Image versehen wurden. Nachdem Sie das Gerät erhalten haben, müssen Sie die Verschlüsselung ruhender Daten konfigurieren. Speicherpool und Volumes werden neu erstellt, und Sie können BitLocker-Schlüssel angeben, um die Verschlüsselung ruhender Daten zu aktivieren und so eine weitere Verschlüsselungsebene für Ihre ruhenden Daten zu erhalten. 
+
+Der Schlüssel für die Verschlüsselung ruhender Daten ist ein von Ihnen bereitgestellter Base64-codierter Schlüssel mit einer Länge von 32 Zeichen und wird zum Schutz des eigentlichen Verschlüsselungsschlüssels verwendet. Microsoft hat keinen Zugriff auf diesen Verschlüsselungsschlüssel für ruhende Daten, durch den Ihre Daten geschützt werden. Der Schlüssel wird in einer Schlüsseldatei auf der Seite **Clouddetails** gespeichert, nachdem das Gerät aktiviert wurde.
+
+Beim Aktivieren des Geräts werden Sie aufgefordert, die Schlüsseldatei mit Wiederherstellungsschlüsseln zu speichern, mit denen die Daten auf dem Gerät wiederhergestellt werden können, falls es nicht gestartet werden kann. Bei bestimmten Wiederherstellungsszenarien werden Sie zur Eingabe der von Ihnen gespeicherten Schlüsseldatei aufgefordert. Die Schlüsseldatei verfügt über folgende Wiederherstellungsschlüssel:
+
+- Einen Schlüssel zum Entsperren der ersten Verschlüsselungsebene
+- Einen Schlüssel zum Entsperren der Hardwareverschlüsselung auf den Datenträgern
+- Einen Schlüssel zum Wiederherstellen der Gerätekonfiguration auf den Betriebssystemvolumes
+- Einen Schlüssel zum Schutz der Daten, die den Azure-Dienst durchlaufen
 
 > [!IMPORTANT]
 > Speichern Sie die Schlüsseldatei an einem sicheren Ort außerhalb des Geräts. Wenn das Gerät nicht gestartet werden kann und Sie nicht über den Schlüssel verfügen, kann dies unter Umständen zu Datenverlust führen.
 
-- Bei bestimmten Wiederherstellungsszenarien werden Sie zur Eingabe der von Ihnen gespeicherten Schlüsseldatei aufgefordert. 
-<!--- If a node isn't booting up, you will need to perform a node replacement. You will have the option to swap the data disks from the failed node to the new node. For a 4-node device, you won't need a key file. For a 1-node device, you will be prompted to provide a key file.-->
+
 
 #### <a name="restricted-access-to-data"></a>Eingeschränkter Zugriff auf Daten
 
@@ -132,7 +138,6 @@ Wenn für das Gerät ein Kaltstart erfolgt, wird auf dem Gerät ein geschützter
 ### <a name="protect-data-in-storage-accounts"></a>Schützen von Daten in Speicherkonten
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-protect-data-storage-accounts.md)]
-
 - Rotieren und [synchronisieren Sie Ihre Speicherkontoschlüssel](azure-stack-edge-gpu-manage-storage-accounts.md) regelmäßig, um zu vermeiden, dass nicht autorisierte Benutzer auf Ihr Speicherkonto zugreifen können.
 
 ## <a name="manage-personal-information"></a>Verwalten persönlicher Informationen

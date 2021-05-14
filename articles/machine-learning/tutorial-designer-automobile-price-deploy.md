@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: ec563371ab505113117707f56c31f506f7fdf377
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1846b5478c824caa954b85ea6346d773f46b279c
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659506"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315667"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer
 
@@ -140,6 +140,8 @@ Weitere Informationen zur Nutzung Ihres Webdiensts finden Sie unter [Nutzen eine
 
 ## <a name="limitations"></a>Einschränkungen
 
+### <a name="update-inference-pipeline"></a>Aktualisieren der Rückschlusspipeline
+
 Wenn Sie in Ihrer Trainingspipeline einige Änderungen vornehmen, sollten Sie die Trainingspipeline erneut übermitteln, die Rückschlusspipeline **aktualisieren** und die Rückschlusspipeline erneut ausführen.
 
 Beachten Sie, dass nur trainierte Modelle in der Rückschlusspipeline aktualisiert werden, die Datentransformation wird hingegen nicht aktualisiert.
@@ -153,6 +155,10 @@ Ersetzen Sie dann manuell das Modul **TD-** in der Rückschlusspipeline durch da
 ![Screenshot: Ersetzen des Transformationsmoduls](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
 
 Anschließend können Sie die Rückschlusspipeline mit dem aktualisierten Modell und der aktualisierten Transformation übermitteln und bereitstellen.
+
+### <a name="deploy-real-time-endpoint"></a>Bereitstellen eines Echtzeitendpunkts
+
+Enthält Ihre Rückschlusspipeline das Modul **Import Data** (Daten importieren) oder **Export Data** (Daten exportieren), werden diese aufgrund der Datenspeicher-Zugriffsbeschränkung automatisch entfernt, wenn sie auf einem Echtzeitendpunkt bereitgestellt werden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

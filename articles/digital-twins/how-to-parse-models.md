@@ -8,24 +8,24 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 155566a125485fda326f9f5e02d4aead0ffe30e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc6c6e4d97bb90cdf88c50b1d3fbc4e27b5a9a0a
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100560739"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208399"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Analysieren und Validieren von Modellen mit der DTDL-Parserbibliothek
 
 [Modelle](concepts-models.md) in Azure Digital Twins werden mithilfe der auf JSON-LD basierenden Sprache DTDL (Digital Twins Definition Language) definiert. **Es wird empfohlen, Ihre Modelle offline zu validieren, bevor Sie sie in Ihre Azure Digital Twins-Instanz hochladen.**
 
-Um dies zu unterstützen, wird eine clientseitige .NET DTDL-Bibliothek auf NuGet bereitgestellt: [**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). 
+Um dies zu unterstützen, wird eine clientseitige .NET DTDL-Bibliothek auf NuGet bereitgestellt: [Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). 
 
-Sie können die Parserbibliothek direkt in Ihrem C#-Code verwenden, oder Sie verwenden das Beispielprojekt für die sprachagnostische Codeerstellung, das auf der Parserbibliothek basiert: [**DTDL-Validierungssteuerelement (Beispiel)**](/samples/azure-samples/dtdl-validator/dtdl-validator).
+Sie können die Parserbibliothek direkt in Ihrem C#-Code verwenden, oder Sie verwenden das Beispielprojekt für die sprachagnostische Codeerstellung, das auf der Parserbibliothek basiert: [DTDL-Validierungssteuerelement (Beispiel)](/samples/azure-samples/dtdl-validator/dtdl-validator) .
 
 ## <a name="use-the-dtdl-validator-sample"></a>Verwenden des Beispiels des DTDL-Validierungssteuerelements
 
-[**DTDL Validator**](/samples/azure-samples/dtdl-validator/dtdl-validator) ist ein Beispielprojekt für die Überprüfung von Modelldokumenten, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der .NET-Parserbibliothek und ist sprachunabhängig. Sie können es über die Schaltfläche *Download ZIP* (ZIP-Datei herunterladen) im Beispiellink abrufen.
+[DTDL Validator](/samples/azure-samples/dtdl-validator/dtdl-validator) ist ein Beispielprojekt für die Überprüfung von Modelldokumenten, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der .NET-Parserbibliothek und ist sprachunabhängig. Sie können es über die Schaltfläche *Download ZIP* (ZIP-Datei herunterladen) im Beispiellink abrufen.
 
 Der Quellcode zeigt Beispiele für die Verwendung der Parserbibliothek. Sie können das Validierungsbeispiel als Befehlszeilenhilfsprogramm zum Überprüfen einer Verzeichnisstruktur mit DTDL-Dateien verwenden. Außerdem stellt es einen interaktiven Modus bereit.
 
@@ -53,7 +53,7 @@ Weitere Informationen zu diesem Beispiel finden Sie im Quellcode, oder führen S
 
 ## <a name="use-the-net-parser-library"></a>Verwenden der .NET-Parserbibliothek 
 
-Die [**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)-Bibliothek ermöglicht den Zugriff des Modells auf die DTDL-Definitionen und fungiert im Wesentlichen als Äquivalent der C#-Reflexion für DTDL. Diese Bibliothek kann unabhängig von jedem [Azure Digital Twins SDK](how-to-use-apis-sdks.md) verwendet werden, insbesondere für die DTDL-Validierung in einem grafischen- oder Texteditor. Sie ist nützlich, um sicherzustellen, dass Ihre Modelldefinitionsdateien gültig sind, ehe Sie versuchen, sie in den Dienst hochzuladen.
+Die [Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)-Bibliothek ermöglicht den Zugriff des Modells auf die DTDL-Definitionen und fungiert im Wesentlichen als Äquivalent der C#-Reflexion für DTDL. Diese Bibliothek kann unabhängig von jedem [Azure Digital Twins SDK](how-to-use-apis-sdks.md) verwendet werden, insbesondere für die DTDL-Validierung in einem grafischen- oder Texteditor. Sie ist nützlich, um sicherzustellen, dass Ihre Modelldefinitionsdateien gültig sind, ehe Sie versuchen, sie in den Dienst hochzuladen.
 
 Um die Parserbibliothek verwenden zu können, müssen Sie ihr eine Gruppe von DTDL-Dokumenten zur Verfügung stellen. Normalerweise würden Sie diese Musterdokumente aus dem Dienst abrufen, aber Sie könnten sie auch lokal verfügbar haben, wenn Ihr Client in erster Linie für das Hochladen in den Dienst zuständig ist. 
 
@@ -87,4 +87,4 @@ Der folgende Code zeigt ein Beispiel für die Verwendung der Parserbibliothek, u
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Sie mit dem Schreiben Ihrer Modelle fertig sind, erfahren Sie, wie Sie sie mit den DigitalTwinsModels-APIs hochladen (und andere Verwaltungsvorgänge durchführen):
-* [*Vorgehensweise: Verwalten von DTDL-Modellen*](how-to-manage-model.md)
+* [Vorgehensweise: Verwalten von DTDL-Modellen](how-to-manage-model.md)

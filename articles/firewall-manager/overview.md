@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 03/29/2021
+ms.date: 04/29/2021
 ms.author: victorh
-ms.openlocfilehash: 6725bea562d3e7841b5ab82acc0a54f91f0488b4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9f63b41afebc12566c8cc2e04664850203f1e5a
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732923"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279926"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Was ist Azure Firewall Manager?
 
@@ -88,7 +88,6 @@ Für Azure Firewall Manager sind die folgenden Probleme bekannt:
 |Fehler beim Massenhinzufügen von IP-Adressen|Die Firewall des geschützten Hubs wird in einen Fehlerzustand versetzt, wenn Sie eine größere Zahl von öffentlichen IP-Adressen hinzufügen.|Fügen Sie öffentliche IP-Adressen in kleineren Schritten hinzu. Fügen Sie beispielsweise nur zehn gleichzeitig hinzu.|
 |DDoS Protection Standard wird bei geschützten virtuellen Hubs nicht unterstützt.|DDoS Protection Standard ist nicht in vWANs integriert.|Wird untersucht|
 |Aktivitätsprotokolle werden nicht vollständig unterstützt.|Firewallrichtlinie unterstützt derzeit keine Aktivitätsprotokolle.|Wird untersucht|
-|Bei der Migration der Firewall zur Verwendung der Firewallrichtlinie werden einige Firewalleinstellungen nicht migriert.|Bei der Migration zur Azure-Firewallrichtlinie werden Verfügbarkeitszonen und private SNAT-Adressen nicht migriert.|Wird untersucht| 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

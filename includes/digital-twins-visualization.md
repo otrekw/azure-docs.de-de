@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/10/2020
 ms.author: baanders
-ms.openlocfilehash: 37bccbcd92f627fd45a7f786725afe5b2e475f3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1b277b9c2b62ea90a51f9489deb276b473348c1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94533886"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773021"
 ---
 ## <a name="visualization"></a>Visualisierung
 
-Die primäre Methode für die Interaktion mit ihrer Azure Digital Twins-Instanz sind [APIs und SDKs](../articles/digital-twins/how-to-use-apis-sdks.md), jedoch kann eine Visualisierung der Zwillinge und Diagramme hilfreich sein, die Sie in Ihrer Instanz erstellen.
+Die primäre Methode für die Interaktion mit ihrer Azure Digital Twins-Instanz sind [APIs und SDKs](../articles/digital-twins/concepts-apis-sdks.md), jedoch kann eine Visualisierung der Zwillinge und Diagramme hilfreich sein, die Sie in Ihrer Instanz erstellen.
 
-Der [**Azure Digital Twins-Explorer (ADT)**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) ist eine Beispielanwendung für die Visualisierung von Azure Digital Twins und das Arbeiten mit ihnen. Befolgen Sie die im Beispiel bereitgestellten Anweisungen, um den Anwendungscode herunterzuladen und auszuführen. 
+Der [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) ist eine Beispielanwendung für die Visualisierung von Azure Digital Twins und die Arbeit mit ihnen. Befolgen Sie die im Beispiel bereitgestellten Anweisungen, um den Anwendungscode herunterzuladen und auszuführen. 
 
 Mit diesem Beispiel können Sie eine visuelle Darstellung Ihrer digitalen Zwillinge und des Diagramms anzeigen, das sie erstellen, und zwar neben anderen Erstellungs- und Verwaltungsaktivitäten.
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: db7c0f2dbc547d78e3caa9ab37450c86278929bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13ba043582efe4a9e8d52f96f279b02ad8dab963
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555940"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141359"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Tutorial: Überwachen von Änderungen und Aktualisieren eines virtuellen Windows-Computers in Azure
 
@@ -109,7 +109,7 @@ Planen Sie zum Installieren von Updates eine Bereitstellung, die Ihrem Releaseze
 
 Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicken Sie am oberen Rand des Fensters **Updateverwaltung** auf **Updatebereitstellung planen**. Geben Sie im Fenster **Neue Updatebereitstellung** die folgenden Informationen an:
 
-| Option | Beschreibung |
+| Option | BESCHREIBUNG |
 | --- | --- |
 | **Name** |Geben Sie einen eindeutigen Namen zur Identifizierung der Updatebereitstellung ein. |
 |**Betriebssystem**| Wählen Sie **Linux** oder **Windows** aus.|
@@ -178,7 +178,7 @@ Die verfügbaren Einstellungsoptionen für Windows sind:
 * Windows-Registrierung
 * Windows-Dateien
 
-Ausführliche Informationen zur Änderungsnachverfolgung finden Sie unter [Problembehandlung für Änderungen in Ihrer Umgebung](../../automation/automation-tutorial-troubleshoot-changes.md).
+Ausführliche Informationen zur Änderungsnachverfolgung finden Sie unter [Problembehandlung für Änderungen in Ihrer Umgebung](../../automation/troubleshoot/change-tracking.md).
 
 ### <a name="view-inventory"></a>Anzeigen des Bestands
 

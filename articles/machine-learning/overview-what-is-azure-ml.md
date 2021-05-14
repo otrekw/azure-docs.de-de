@@ -10,12 +10,12 @@ author: BlackMist
 ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 4f97883c157d04358322b01cab7049dcbbabdc4f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: cd395f0ff29eed1e09f5bdac882482b201052c90
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031085"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814824"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -78,14 +78,14 @@ Mit dem SDK können Sie auch [Modelltraining und -optimierung](tutorial-auto-tra
 
 + **Nachverfolgen von Experimenten**
 
-  Erfahren Sie, wie Sie [Data Science-Experimenten in Studio nachverfolgen und visualisieren](tutorial-first-experiment-automated-ml.md). 
+  Erfahren Sie, wie Sie [Data Science-Experimenten in Studio nachverfolgen und visualisieren](how-to-track-monitor-analyze-runs.md). 
 
-    ![Ausführungsdetails in Azure Machine Learning Studio](media/how-to-track-experiments/experimentation-tab.gif)
+    :::image type="content" source="media/how-to-track-monitor-analyze-runs/run-history.png" alt-text="Ausführungsdetails in Azure Machine Learning Studio":::
 
 
 + **Und vieles mehr...**
 
-  Besuchen Sie Azure Machine Learning Studio auf [ml.azure.com](https://studio.azureml.net). 
+  Besuchen Sie Azure Machine Learning Studio auf [ml.azure.com](https://studio.azureml.net).
 
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: Bereitstellung und Lebenszyklusverwaltung

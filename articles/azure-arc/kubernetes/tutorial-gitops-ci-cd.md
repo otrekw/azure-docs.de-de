@@ -6,13 +6,13 @@ ms.author: tcare
 ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
-ms.custom: template-tutorial
-ms.openlocfilehash: a94784f2f3fc622e0232033d63bc957279a7d34c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: template-tutorial, devx-track-azurecli
+ms.openlocfilehash: e27923ff1f29163f5d3390c2c92a11f3adfa5c87
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076308"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126613"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Tutorial: Implementieren von Continuous Integration und Continuous Delivery (CI/CD) mit GitOps unter Verwendung von Kubernetes-Clustern mit Azure Arc-Unterstützung
 
@@ -28,7 +28,7 @@ In diesem Tutorial richten Sie eine CI/CD-Lösung mithilfe von GitOps und Kubern
 > * Bereitstellen der `dev`- und `stage`-Umgebungen.
 > * Testen der Anwendungsumgebungen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Sollten Sie über kein Azure-Abonnement verfügen, können Sie [ein kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -47,18 +47,18 @@ In diesem Tutorial wird davon ausgegangen, dass Sie mit Azure DevOps, Azure Repo
 
   ```azurecli
   az extension add --name connectedk8s
-  az extension add --name k8s-configuration
+  az extension add --name k8sconfiguration
   ```
   * Führen Sie die folgenden Befehle aus, um diese Erweiterungen auf die aktuelle Version zu aktualisieren:
 
     ```azurecli
     az extension update --name connectedk8s
-    az extension update --name k8s-configuration
+    az extension update --name k8sconfiguration
     ```
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>Importieren von Anwendungs- und GitOps-Repositorys in Azure Repos
 
-Importieren Sie ein [Anwendungsrepository](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#application-repo) und ein [GitOps-Repository](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#gitops-repo) in Azure Repos. Verwenden Sie für dieses Tutorial die folgenden Beispielrepositorys:
+Importieren Sie ein [Anwendungsrepository](./conceptual-gitops-ci-cd.md#application-repo) und ein [GitOps-Repository](./conceptual-gitops-ci-cd.md#gitops-repo) in Azure Repos. Verwenden Sie für dieses Tutorial die folgenden Beispielrepositorys:
 
 * das Anwendungsrepository **arc-cicd-demo-src**
    * URL: https://github.com/Azure/arc-cicd-demo-src
@@ -166,8 +166,7 @@ kubectl create secret docker-registry <secret-name> \
     --docker-password=<service-principal-password>
 ```
 
-> [!TIP]
-> Um zu vermeiden, dass für jeden Pod ein Geheimnis für Imagepullvorgänge festgelegt werden muss, kann das Geheimnis für Imagepullvorgänge gegebenenfalls zum Dienstkonto in den Namespaces `dev` und `stage` hinzugefügt werden. Weitere Informationen finden Sie im [Kubernetes-Tutorial](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account).
+Um zu vermeiden, dass für jeden Pod ein Geheimnis für Imagepullvorgänge festgelegt werden muss, kann das Geheimnis für Imagepullvorgänge gegebenenfalls zum Dienstkonto in den Namespaces `dev` und `stage` hinzugefügt werden. Weitere Informationen finden Sie im [Kubernetes-Tutorial](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account).
 
 ## <a name="create-environment-variable-groups"></a>Erstellen von Gruppen aus Umgebungsvariablen
 
@@ -338,4 +337,4 @@ In diesem Tutorial haben Sie einen vollständigen CI/CD-Workflow eingerichtet, b
 Fahren Sie mit unserem konzeptionellen Artikel fort, um mehr über GitOps und Konfigurationen mit Kubernetes mit Azure Arc-Unterstützung zu erfahren.
 
 > [!div class="nextstepaction"]
-> [CI/CD-Workflow mit GitOps: Kubernetes mit Azure Arc-Unterstützung](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd)
+> [CI/CD-Workflow mit GitOps: Kubernetes mit Azure Arc-Unterstützung](./conceptual-gitops-ci-cd.md)

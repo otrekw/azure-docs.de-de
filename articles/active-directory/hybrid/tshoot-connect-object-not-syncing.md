@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a0c8a42edad08308095469039c048f8dd8552af
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94413461"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Beheben von Problemen mit einem Objekt, das nicht mit Azure Active Directory synchronisiert wird
@@ -64,7 +64,7 @@ Um Fehler zu finden, müssen Sie in folgender Reihenfolge an unterschiedlichen S
 
 Starten Sie [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) vor dem Beginn der folgenden Schritte.
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>Vorgänge
 Sie sollten mit Ihrer Problembehandlung auf der Registerkarte **Vorgänge** in Synchronization Service Manager beginnen. Diese Registerkarte zeigt die Ergebnisse der letzten Vorgänge. 
 
 ![Screenshot von Synchronization Service Manager mit ausgewählter Registerkarte „Vorgänge“](./media/tshoot-connect-object-not-syncing/operations.png)  
@@ -87,7 +87,7 @@ Wenn Sie eine Zeile auswählen, wird der untere Bereich der Registerkarte **Vorg
 Wenn Fehler auftreten, werden in Synchronization Service Manager sowohl das fehlerhafte Objekt als auch der Fehler selbst als Links dargestellt, über die weitere Informationen abgerufen werden können.
 
 ![Screenshot von Fehlern in Synchronization Service Manager](./media/tshoot-connect-object-not-syncing/errorsync.png)  
-Wählen Sie zunächst die Fehlerzeichenfolge aus. (In der Abbildung oben lautet die Fehlerzeichenfolge **sync-rule-error-function-triggered**.) Eine Übersicht über das Objekt wird angezeigt. Wählen Sie zum Anzeigen des tatsächlichen Fehlers **Stapelüberwachung** aus. Dadurch werden für den Fehler Informationen der Debugebene angezeigt.
+Wählen Sie zunächst die Fehlerzeichenfolge aus. (In der vorangegangenen Abbildung lautet die Fehlerzeichenfolge **sync-rule-error-function-triggered**.) Sie erhalten zunächst eine Übersicht über das Objekt. Wählen Sie zum Anzeigen des tatsächlichen Fehlers **Stapelüberwachung** aus. Dadurch werden für den Fehler Informationen der Debugebene angezeigt.
 
 Klicken Sie im Feld **Call Stack Information** (Aufruflisteninformationen) mit der rechten Maustaste auf **Alle auswählen**, und wählen Sie anschließend **Kopieren** aus. Sie können dann den Stapel kopieren und den Fehler in Ihrem bevorzugten Editor, z. B. Windows-Editor, anzeigen.
 
@@ -143,7 +143,7 @@ Sie können in der obigen Abbildung in der Spalte **PasswordSync** (Kennwortsync
 Auf der Registerkarte **Herkunft** gelangen Sie zum Metaverse, indem Sie [**Metaverse Object Properties**](#mv-attributes) (Eigenschaften der Metaverseobjekte) auswählen.
 
 ### <a name="preview"></a>Vorschau
-In der linken unteren Ecke des Fensters **Connector Space Object Properties** (Eigenschaften der Objekte des Connectorbereichs) befindet sich die Schaltfläche **Vorschau**. Wählen Sie diese Schaltfläche aus, um die Seite **Vorschau** zu öffnen, auf der Sie ein einzelnes Objekt synchronisieren können. Diese Seite ist nützlich, wenn Sie Probleme mit einigen benutzerdefinierten Synchronisierungsregeln behandeln und die Auswirkungen einer Änderung auf ein einzelnes Objekt sehen möchten. Sie können eine **vollständige Synchronisierung** oder eine **Deltasynchronisierung** auswählen. Sie können auch **Generate Preview** (Vorschau generieren) auswählen, um die Änderung nur im Arbeitsspeicher beizubehalten. Wählen Sie stattdessen **Commit Preview** (Vorschau ausführen) aus, um die Metaverse zu aktualisieren und alle Änderungen in den Zielconnectorbereichen bereitzustellen.  
+In der linken unteren Ecke des Fensters **Connector Space Object Properties** (Eigenschaften der Objekte des Connectorbereichs) befindet sich die Schaltfläche **Vorschau**. Wählen Sie diese Schaltfläche aus, um die Seite **Vorschau** zu öffnen, auf der Sie ein einzelnes Objekt synchronisieren können. Diese Seite ist nützlich, wenn Sie Probleme mit einigen benutzerdefinierten Synchronisierungsregeln behandeln und die Auswirkungen einer Änderung auf ein einzelnes Objekt sehen möchten. Sie können eine **Vollsynchronisation** oder eine **Deltasynchronisation** auswählen. Sie können auch **Vorschau erstellen** wählen, wodurch die Änderung nur im Speicher verbleibt. Wählen Sie stattdessen **Commit Preview** (Vorschau ausführen) aus, um die Metaverse zu aktualisieren und alle Änderungen in den Zielconnectorbereichen bereitzustellen.  
 
 ![Screenshot der Seite „Vorschau“ mit ausgewählter Option „Vorschau starten“](./media/tshoot-connect-object-not-syncing/preview.png)  
 

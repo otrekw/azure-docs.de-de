@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c7901dd4a238b27a31f95f1e22ddf9dc1ae5327a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98762405"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813062"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -78,11 +79,14 @@ Alle Aufgaben, die Sie mithilfe von Azure Resource Manager für Ressourcen ausf�
 5. Klicken Sie auf **Azure Service Management** (Azure-Dienstverwaltung).
 6. Drücken Sie **Auswählen**.
 
-    ![Hinzufügen von Berechtigungen](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/add-app-permission.png" alt-text="Screenshot: Hinzufügen von App-Berechtigungen"::: 
 
 7. Klicken Sie neben der neu hinzugefügten Anwendung auf **Delegierte Berechtigungen**, und aktivieren Sie das Kontrollkästchen **Access Azure Service Management (Vorschau)** .
+
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/delegated-app-permission.png" alt-text="Screenshot: Hinzufügen von delegierten App-Berechtigungen":::
+
 8. Drücken Sie **Auswählen**.
-9. Klicken Sie auf **Berechtigungen erteilen**.
+9. Klicken Sie auf **Berechtigungen hinzufügen**.
 
 ### <a name="configuring-your-app"></a>Konfigurieren der App
 
@@ -227,7 +231,7 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 -   Konfiguration der [verwalteten Identität](api-management-howto-use-managed-service-identity.md)
 -   [Azure Monitor-Diagnosekonfiguration](api-management-howto-use-azure-monitor.md)
 -   Einstellungen für [Protokolle und Verschlüsselungsverfahren](api-management-howto-manage-protocols-ciphers.md)
--   Inhalt des [Entwicklerportals](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management).
+-   Inhalt des [Entwicklerportals](developer-portal-faq.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management).
 
 Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das Ziel Ihres Wiederherstellungspunkts aus. Um die Auswirkungen zu minimieren, empfehlen wir, regelmäßige Sicherungen zu implementieren und bei Bedarf Sicherungen durchzuführen, wenn Sie Änderungen an Ihrem API Management-Dienst vorgenommen haben.
 

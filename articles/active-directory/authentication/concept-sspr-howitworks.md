@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94077a1c6329aa1fecf9593f2df41fa77afc8a44
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703274"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765915"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -72,7 +72,7 @@ Nutzen Sie das folgende Tutorial, um sich mit SSPR vertraut zu machen:
 
 ## <a name="require-users-to-register-when-they-sign-in"></a>Erzwingen der Registrierung für Benutzer bei der Anmeldung
 
-Sie können diese Option aktivieren, damit Benutzer die Registrierung für den SSPR abschließen müssen, wenn sie sich mit Azure AD in einer Anwendung anmelden. Dieser Workflow schließt die folgenden Anwendungen ein:
+Sie können diese Option aktivieren, damit Benutzer die SSPR-Registrierung abschließen müssen, wenn sie sich mit der modernen Authentifizierung oder einem Webbrowser bei Anwendungen, die Azure AD verwenden, anmelden. Dieser Workflow schließt die folgenden Anwendungen ein:
 
 * Microsoft 365
 * Azure-Portal
@@ -93,7 +93,7 @@ Wenn die Registrierung nicht erzwungen wird, werden Benutzer nicht während der 
 
 Sie können erzwingen, dass Benutzer ihre registrierten Informationen nach einem bestimmten Zeitraum bestätigen müssen, um sicherzustellen, dass die Authentifizierungsmethoden im Falle einer Kennwortzurücksetzung oder -änderung korrekt sind. Diese Option ist nur verfügbar, wenn Sie die Option **Registrierung von Benutzern bei der Anmeldung verlangen?** aktivieren.
 
-Gültige Werte für die Aufforderung zur Bestätigung der registrierten Authentifizierungsmethoden reichen von *0* bis *730* Tagen. Wenn Sie den Wert auf *0* festlegen, werden Benutzer nie aufgefordert, ihre Authentifizierungsinformationen zu bestätigen.
+Gültige Werte für die Aufforderung zur Bestätigung der registrierten Authentifizierungsmethoden reichen von *0* bis *730* Tagen. Wenn Sie den Wert auf *0* festlegen, werden Benutzer nie aufgefordert, ihre Authentifizierungsinformationen zu bestätigen. Bei Verwendung der kombinierten Registrierung müssen Benutzer ihre Identität bestätigen, bevor sie ihre Informationen erneut bestätigen.
 
 ## <a name="authentication-methods"></a>Authentifizierungsmethoden
 

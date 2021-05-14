@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: bfecc88dc0c504cee615f1a3d35f9208aeb724f8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 79ccd1f8107eb5d287cf74084978b92715b936fa
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309190"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133743"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>Tutorial: Erstellen einer Hierarchie für IoT Edge-Geräte
 
@@ -77,7 +77,7 @@ Sie benötigen Folgendes, um eine Hierarchie mit IoT Edge-Geräten zu erstellen:
     --query "properties.outputs.[publicFQDN.value, publicSSH.value]" -o tsv
    ```
 
-   Der virtuelle Computer nutzt SSH-Schlüssel für die Authentifizierung der Benutzer. Falls Sie sich mit der Erstellung und Verwendung von SSH-Schlüsseln noch nicht auskennen, hilft Ihnen die [Kurzanleitung zum Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) weiter.
+   Der virtuelle Computer nutzt SSH-Schlüssel für die Authentifizierung der Benutzer. Falls Sie sich mit der Erstellung und Verwendung von SSH-Schlüsseln noch nicht auskennen, hilft Ihnen die [Kurzanleitung zum Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../virtual-machines/linux/mac-create-ssh-keys.md) weiter.
 
    Da Version 1.2 von IoT Edge mit dieser ARM-Vorlage vorinstalliert wird, müssen Sie die Ressourcen nicht manuell auf den einzelnen virtuellen Computern installieren. Informationen zur Installation von IoT Edge auf Ihren eigenen Geräten finden Sie unter [Installieren oder Deinstallieren von Azure IoT Edge für Linux (Version 1.2)](how-to-install-iot-edge.md) oder [Sonderfall: Update von 1.0 oder 1.1 auf 1.2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 
@@ -309,7 +309,7 @@ Wenn Sie `iotedge check` auf der unteren Ebene ausführen, versucht das Programm
 Da wir in diesem Tutorial Port 8000 nutzen, müssen wir ihn angeben:
 
 ```bash
-sudo iotedge check --diagnostics-image-name $upstream:8000/azureiotedge-diagnostics:1.2.0-rc4
+sudo iotedge check --diagnostics-image-name $upstream:8000/azureiotedge-diagnostics:1.2
 ```
 
 Der Wert `azureiotedge-diagnostics` wird aus der Containerregistrierung gepullt, die mit dem Registrierungsmodul verknüpft ist. In diesem Tutorial ist er standardmäßig auf https://mcr.microsoft.com: festgelegt.

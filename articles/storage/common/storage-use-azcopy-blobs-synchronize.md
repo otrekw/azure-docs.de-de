@@ -4,18 +4,18 @@ description: Dieser Artikel enthält eine Sammlung von AzCopy-Beispielbefehlen, 
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ec341243811eaa271511baba04ea1c48a4fefdab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b3340c00d856b13edefc7728d5baa327399a441
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728894"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502928"
 ---
-# <a name="synchronize-with-azure-blob-storage-by-using-azcopy-v10"></a>Synchronisieren mit Azure Blob Storage mithilfe von AzCopy v10
+# <a name="synchronize-with-azure-blob-storage-by-using-azcopy"></a>Synchronisieren mit Azure Blob Storage mithilfe von AzCopy
 
 Sie können lokalen Speicher mit Azure Blob Storage synchronisieren, indem Sie das Befehlszeilenprogramm AzCopy v10 verwenden. 
 
@@ -41,7 +41,11 @@ Lesen Sie den Artikel [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md), um
 
 - Wenn Sie das Flag `--delete-destination` auf `true` festlegen, löscht AzCopy Dateien, ohne zur Bestätigung aufzufordern. Wenn eine Bestätigungsaufforderung angezeigt werden soll, bevor AzCopy eine Datei löscht, legen Sie das `--delete-destination`-Flag auf `prompt` fest.
 
+- Wenn Sie das Flag `--delete-destination` auf `prompt` oder `false` festlegen möchten, sollten Sie den Befehl [copy](storage-ref-azcopy-copy.md) anstelle des Befehls [sync](storage-ref-azcopy-sync.md) verwenden und den Parameter `--overwrite` auf `ifSourceNewer` festlegen. Der Befehl [copy](storage-ref-azcopy-copy.md) verbraucht weniger Arbeitsspeicher und verursacht weniger Abrechnungskosten, weil die Quelle oder das Ziel bei einem Kopiervorgang vor dem Verschieben von Dateien nicht indiziert werden muss. 
+
 - Um ein versehentliches Löschen zu verhindern, aktivieren Sie das Feature [Vorläufiges Löschen](../blobs/soft-delete-blob-overview.md), bevor Sie das Flag `--delete-destination=prompt|true` verwenden.
+
+- Der Computer, auf dem Sie den Synchronisierungsbefehl ausführen, sollte über eine genaue Systemuhr verfügen, weil die Zeiten der letzten Änderung maßgeblich sind, um über die Übertragung einer Datei zu entscheiden. Wenn die Zeit Ihres Systems erheblich abweicht, sollten Sie Dateien am Ziel nicht zu nahe an dem Zeitpunkt ändern, zu dem Sie einen Synchronisierungsbefehl ausführen möchten.
 
 ## <a name="update-a-container-with-changes-to-a-local-file-system"></a>Aktualisieren eines Containers mit Änderungen an einem lokalen Dateisystem
 
@@ -50,10 +54,15 @@ In diesem Fall ist der Container das Ziel und das lokale Dateisystem die Quelle.
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
-| Syntax / Beispiel  |  Code |
-|--------|-----------|
-| **Syntax** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **Beispiel** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
+**Syntax**
+
+`azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
+
+**Beispiel**
+
+```azcopy
+azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive
+```
 
 ## <a name="update-a-local-file-system-with-changes-to-a-container"></a>Aktualisieren eines lokalen Dateisystems mit Änderungen an einem Container
 
@@ -62,10 +71,15 @@ In diesem Fall ist das lokale Dateisystem das Ziel und der Container die Quelle.
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
-| Syntax / Beispiel  |  Code |
-|--------|-----------|
-| **Syntax** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
-| **Beispiel** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
+**Syntax**
+
+`azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive`
+
+**Beispiel**
+
+```azcopy
+azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive
+```
 
 ## <a name="update-a-container-with-changes-in-another-container"></a>Aktualisieren eines Containers mit Änderungen in einem anderen Container
 
@@ -74,10 +88,15 @@ Der erste Container in diesem Befehl ist die Quelle. Das zweite ist das Ziel.
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
-| Syntax / Beispiel  |  Code |
-|--------|-----------|
-| **Syntax** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **Beispiel** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+**Syntax**
+
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
+
+**Beispiel**
+
+```azcopy
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
+```
 
 ## <a name="update-a-directory-with-changes-to-a-directory-in-another-container"></a>Aktualisieren eines Verzeichnisses mit Änderungen in einem Verzeichnis in einem anderen Container
 
@@ -86,10 +105,15 @@ Das erste Verzeichnis in diesem Befehl ist die Quelle. Das zweite ist das Ziel.
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
-| Syntax / Beispiel  |  Code |
-|--------|-----------|
-| **Syntax** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
-| **Beispiel** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
+**Syntax**
+
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive`
+
+**Beispiel**
+
+```azcopy
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive
+```
 
 ## <a name="synchronize-with-optional-flags"></a>Synchronisieren mit optionalen Flags
 
@@ -101,7 +125,10 @@ Sie können den Synchronisierungsvorgang mit optionalen Flags optimieren. Hier s
 |Ausschließen von Dateien basierend auf einem Muster|**--exclude-path**|
 |Angeben, wie detailliert die synchronisierungsbezogenen Protokolleinträge sein sollen|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
 
-Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-sync.md#options).
+Eine vollständige Liste der Flags finden Sie unter [Optionen](storage-ref-azcopy-sync.md#options).
+
+> [!NOTE]
+> Standardmäßig ist das Flag `--recursive` auf `true` festgelegt. Die Flags `--exclude-pattern` und `--include-pattern` gelten nur für Dateinamen und nicht für andere Teile des Dateipfads. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -111,6 +138,13 @@ Weitere Beispiele finden Sie in diesen Artikeln:
 - [Beispiele: Herunterladen](storage-use-azcopy-blobs-download.md)
 - [Beispiele: Kopieren zwischen Konten](storage-use-azcopy-blobs-copy.md)
 - [Beispiele: Amazon S3-Buckets](storage-use-azcopy-s3.md)
+- [Beispiele: Google Cloud Storage](storage-use-azcopy-google-cloud.md)
 - [Beispiele: Azure Files](storage-use-azcopy-files.md)
 - [Tutorial: Migrieren von lokalen Daten zum Cloudspeicher mithilfe von AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
+
+Lesen Sie diese Artikel, um Einstellungen zu konfigurieren, die Leistung zu optimieren und Probleme zu beheben:
+
+- [AzCopy-Konfigurationseinstellungen (Azure Storage)](storage-ref-azcopy-configuration-settings.md)
+- [Optimieren der Leistung von AzCopy mit Azure Storage](storage-use-azcopy-optimize.md)
 - [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
+

@@ -8,29 +8,41 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 86f40944af9fb49b0402a33e5009b99d60be61f0
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: a56f8339535c64c6eeac1b06c04aa7c89cd38356
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489184"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886386"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Benutzerdefinierte E-Mail-Überprüfung mit SendGrid
 
-Verwenden Sie benutzerdefinierte E-Mails in Azure Active Directory B2C (Azure AD B2C), um angepasste E-Mails an Benutzer zu senden, die sich für die Verwendung Ihrer Anwendungen registrieren. Mithilfe von [Anzeigesteuerelementen](display-controls.md) (derzeit in der Vorschauphase) und dem E-Mail-Drittanbieter SendGrid können Sie eigene E-Mail-Vorlagen sowie *Absenderadressen* und Betreffzeilentexte verwenden. Darüber hinaus werden die Lokalisierung und benutzerdefinierte Einstellungen für Einmalkennwörter (One-Time Password, OTP) unterstützt.
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Verwenden Sie benutzerdefinierte E-Mails in Azure Active Directory B2C (Azure AD B2C), um angepasste E-Mails an Benutzer zu senden, die sich für die Verwendung Ihrer Anwendungen registrieren. Mithilfe des E-Mail-Drittanbieters SendGrid können Sie eigene E-Mail-Vorlagen sowie *Absenderadressen* und Betreffzeilentexte verwenden. Darüber hinaus werden Lokalisierung und benutzerdefinierte Einstellungen für Einmalkennwörter (One-Time Passwords, OTPs) unterstützt.
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Für die benutzerdefinierte E-Mail-Überprüfung ist die Verwendung eines E-Mail-Drittanbieters wie [SendGrid](https://sendgrid.com), [Mailjet](https://Mailjet.com) oder [SparkPost](https://sparkpost.com), einer benutzerdefinierten REST-API oder eines HTTP-basierten E-Mail-Anbieters (einschließlich Ihres eigenen Anbieters) erforderlich. In diesem Artikel wird die Einrichtung einer Lösung beschrieben, bei der SendGrid verwendet wird.
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-sendgrid-account"></a>Erstellen eines SendGrid-Kontos
 
 Beginnen Sie mit dem Einrichten eines SendGrid-Kontos, wenn Sie noch über keines verfügen. (Azure-Kunden können monatlich 25.000 kostenlose E-Mails freischalten.) Anweisungen zum Einrichten finden Sie im Abschnitt [Erstellen eines SendGrid-Kontos](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account) unter [Senden von E-Mails in Azure mit SendGrid](../sendgrid-dotnet-how-to-send-email.md).
 
 Führen Sie die Schritte zum [Erstellen eines SendGrid-API-Schlüssels](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key) aus. Notieren Sie sich den API-Schlüssel zur Verwendung in einem späteren Schritt.
+
+> [!IMPORTANT]
+> Mit SendGrid können Kunden E-Mails von freigegebenen und [dedizierten IP-Adressen](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/) senden. Bei Verwendung dedizierter IP-Adressen müssen die IP-Adressen zunächst „aufgewärmt“ werden, um Ihre eigene Reputation aufzubauen. Weitere Informationen finden Sie unter [Aufwärmen einer IP-Adresse](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/).
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Erstellen des Azure AD B2C-Richtlinienschlüssels
 
@@ -43,7 +55,7 @@ Speichern Sie als Nächstes den SendGrid-API-Schlüssel in einem Azure AD B2C-R
 1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
 1. Wählen Sie unter **Optionen** die Option **Manuell** aus.
 1. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `SendGridSecret`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
-1. Geben Sie im Feld **Geheimnis** den geheimen Clientschlüssel ein, den Sie zuvor notiert haben.
+1. Geben Sie im Feld **Secret** den SendGrid-API-Schlüssel ein, den Sie zuvor notiert haben.
 1. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
 1. Klicken Sie auf **Erstellen**.
 
@@ -290,6 +302,9 @@ Fügen Sie der Richtlinie unter „content definitions“ in `<BuildingBlocks>` 
 ## <a name="add-otp-technical-profiles"></a>Hinzufügen technischer Profile für Einmalkennwörter
 
 Mit dem technischen Profil `GenerateOtp` wird ein Code für die E-Mail-Adresse generiert. Mit dem technischen Profil `VerifyOtp` wird der der E-Mail-Adresse zugeordnete Code überprüft. Sie können die Konfiguration des Formats und den Ablauf des Einmalkennworts ändern. Weitere Informationen zu technischen Profilen für Einmalkennwörter finden Sie unter [Definieren eines technischen Einmalkennwortprofils](one-time-password-technical-profile.md).
+
+> [!NOTE]
+> Durch das Web.TPEngine.Providers.OneTimePasswordProtocolProvider-Protokoll generierte OTP-Codes sind an die Browsersitzung gebunden. Das bedeutet, dass ein Benutzer eindeutige OTP-Codes in verschiedenen Browsersitzungen generieren kann, die jeweils für die entsprechenden Sitzungen gültig sind. Ein durch den integrierten Benutzerflow generierter OTP-Code ist dagegen unabhängig von der Browsersitzung. Wenn ein Benutzer also einen neuen OTP-Code in einer neuen Browsersitzung generiert, ersetzt dieser den vorherigen OTP-Code.
 
 Fügen Sie dem `<ClaimsProviders>`-Element die folgenden technischen Profile hinzu.
 
@@ -556,3 +571,5 @@ Ein Beispiel für eine Richtlinie für die benutzerdefinierte E-Mail-Überprüfu
 
 - [Custom email verification - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol) (Benutzerdefinierte E-Mail-Überprüfung – Display Controls)
 - Informationen zur Verwendung einer benutzerdefinierten REST-API oder eines HTTP-basierten SMTP-E-Mail-Anbieters finden Sie unter [Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Azure AD B2C-Richtlinie](restful-technical-profile.md).
+
+::: zone-end

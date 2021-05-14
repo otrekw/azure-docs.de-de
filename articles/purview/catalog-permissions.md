@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: b351be1e7212dc9923f701599dd951a73254afe0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c27287f661c133641f7b3da45784478c8fc597e
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98610368"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016004"
 ---
 # <a name="role-based-access-control-in-azure-purviews-data-plane"></a>Rollenbasierte Zugriffssteuerung auf der Datenebene von Azure Purview
 
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, wie die rollenbasierte Zugriffssteuerung (Ro
 
 ## <a name="azure-purviews-pre-defined-data-plane-roles"></a>Vordefinierte Datenebenenrollen von Azure Purview
 
-In Azure Purview wird eine Gruppe mit vordefinierten Datenebenenrollen definiert, mit denen gesteuert werden kann, worauf Benutzer in Azure Purview zugreifen können. Die folgenden Rollen sind vorhanden:
+In Azure Purview wird eine Gruppe von vordefinierten Datenebenenrollen definiert, mit denen gesteuert werden kann, worauf Benutzer in Azure Purview zugreifen können. Die folgenden Rollen sind vorhanden:
 
 * **Rolle „Datenleseberechtigter für Purview“** : Verfügt über Zugriff auf das Purview-Portal und kann den gesamten Inhalt in Azure Purview lesen, mit Ausnahme von Scanbindungen.
 * **Rolle „Azure Purview-Datenkurator“** : Verfügt über Zugriff auf das Purview-Portal und kann den gesamten Inhalt in Azure Purview lesen (mit Ausnahme von Scanbindungen), Informationen zu Ressourcen sowie Klassifizierungsdefinitionen und Glossarbegriffe bearbeiten und Klassifizierungen und Glossarbegriffe auf Ressourcen anwenden.

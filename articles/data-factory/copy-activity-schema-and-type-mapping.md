@@ -1,17 +1,17 @@
 ---
 title: Schema- und Datentypzuordnung in Kopieraktivität
 description: Erfahren Sie, wie Kopieraktivität in Azure Data Factory Schemas und Datentypen aus Quelldaten Senkendaten zuordnet.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.author: jingwang
-ms.openlocfilehash: 0aee6030e5608b5413864d6a32dc8442dd346f42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 2bd616ddec207d2aad47608c6f0200c7b629471e
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392781"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482523"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema- und Datentypzuordnung in Kopieraktivität
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie die Kopieraktivität in Azure Data Facto
 
 ### <a name="default-mapping"></a>Standardmäßige Zuordnung
 
-Die Kopieraktivität ordnet standardmäßig einer Senke Quelldaten **nach Spaltennamen** und unter Beachtung der Groß-/Kleinschreibung zu. Wenn beispielsweise beim Schreiben in Dateien keine Senke vorhanden ist, werden die Quellfeldnamen als Senkennamen verwendet. Bei einer Standardzuordnung dieser Art werden flexible Schemas und Schemaabweichungen von Quelle zu Senke und von Ausführung zu Ausführung unterstützt. Dabei können alle vom Quelldatenspeicher zurückgegebenen Daten in die Senke kopiert werden.
+Die Kopieraktivität ordnet standardmäßig einer Senke Quelldaten **nach Spaltennamen** und unter Beachtung der Groß-/Kleinschreibung zu. Wenn beispielsweise beim Schreiben in Dateien keine Senke vorhanden ist, werden die Quellfeldnamen als Senkennamen verwendet. Wenn die Senke bereits vorhanden ist, muss sie alle Spalten enthalten, die aus der Quelle kopiert werden. Bei einer Standardzuordnung dieser Art werden flexible Schemas und Schemaabweichungen von Quelle zu Senke und von Ausführung zu Ausführung unterstützt. Dabei können alle vom Quelldatenspeicher zurückgegebenen Daten in die Senke kopiert werden.
 
 Wenn es sich bei Ihrer Quelle um eine Textdatei ohne Headerzeile handelt, ist eine [explizite Zuordnung](#explicit-mapping) erforderlich, da die Quelle keine Spaltennamen enthält.
 

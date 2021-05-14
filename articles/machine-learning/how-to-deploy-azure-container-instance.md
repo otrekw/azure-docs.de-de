@@ -5,18 +5,18 @@ description: Erfahren Sie, wie Sie Ihre Azure Machine Learning-Modelle mithilfe 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, deploy
+ms.topic: how-to
+ms.custom: deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 1eaf58f4f951547e6e4e461803e79844f99e630a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 4e682615ae4807611711307b5c9181c14d5c1dc4
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501738"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885468"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Bereitstellen eines Modells in Azure Container Instances
 
@@ -94,7 +94,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]
 
-Weitere Informationen finden Sie in der [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy)-Referenz. 
+Weitere Informationen finden Sie in der [az ml model deploy](/cli/azure/ml/model#az_ml_model_deploy)-Referenz. 
 
 ## <a name="using-vs-code"></a>Verwenden von VS Code
 

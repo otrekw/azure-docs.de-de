@@ -3,12 +3,12 @@ title: Sichern und Wiederherstellen von Active Directory
 description: Hier erfahren Sie, wie Sie Active Directory-Domänencontroller sichern und wiederherstellen können.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 8db2dab605e90e4748b11a632d6651c23d631b6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bc6458895965d4c37667e0cff3051a4e4e8288e
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98733552"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107898205"
 ---
 # <a name="back-up-and-restore-active-directory-domain-controllers"></a>Sichern und Wiederherstellen von Active Directory-Domänencontrollern
 
@@ -23,7 +23,13 @@ In diesem Artikel werden die richtigen Verfahren zum Sichern und Wiederherstelle
 
 - Sorgen Sie dafür, dass mindestens ein Domänencontroller gesichert wird. Wenn Sie mehrere Domänencontroller sichern, sorgen Sie dafür, dass alle mit den [FSMO-Rollen (Flexible Single Master Operation)](/windows-server/identity/ad-ds/plan/planning-operations-master-role-placement) gesichert werden.
 
-- Sichern Sie Active Directory häufig. Die Sicherung sollte nie mehr als die Tombstone-Lebensdauer (standardmäßig 60 Tage) sein, weil Objekte, die älter als die Tombstone-Lebensdauer sind, als „veraltet“ markiert und nicht mehr als gültig betrachtet werden.
+- Sichern Sie Active Directory häufig. Das Alter der Sicherung sollte nie älter als die Tombstone-Lebensdauer (TSL) sein, weil Objekte, die älter als die TSL sind, als „veraltet“ markiert und nicht mehr als gültig betrachtet werden.
+  - Die Standard-TSL für Domänen, die auf Windows Server 2003 SP2 und höher basieren, beträgt 180 Tage.
+  - Sie können die konfigurierte TSL mithilfe des folgenden PowerShell-Skripts überprüfen:
+
+    ```powershell
+    (Get-ADObject $('CN=Directory Service,CN=Windows NT,CN=Services,{0}' -f (Get-ADRootDSE).configurationNamingContext) -Properties tombstoneLifetime).tombstoneLifetime
+    ```
 
 - Sorgen Sie für einen klaren Plan zur Notfallwiederherstellung mit Anleitungen dazu, wie Ihre Domänencontroller wiederhergestellt werden. Informationen zum Vorbereiten der Wiederherstellung einer Active Directory-Gesamtstruktur finden Sie im [Active Directory Forest Recovery Guide](/windows-server/identity/ad-ds/manage/ad-forest-recovery-guide) (Handbuch zur Wiederherstellung der Active Directory-Gesamtstruktur).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 3b4d66525ec52ef2382dfbe97bc09278e35b31fb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f2771284925e35cea975febdabe2ca377a192df8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102124668"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127117"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Einrichten des DPDK auf einem virtuellen Linux-Computer
 
@@ -36,17 +36,18 @@ DPDK kann auf Azure-VMs ausgeführt werden, die mehrere Betriebssystemverteilung
 **Mehr Pakete pro Sekunde (pps)** : Das Umgehen des Kernels und das Steuern der Pakete auf Benutzerseite verringern die Zyklen, da keine Kontextwechsel notwendig sind. Zudem wird die Rate der pro Sekunde verarbeiteten Pakete auf Linux-VMs in Azure verbessert.
 
 
-## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
+## <a name="supported-operating-systems-minimum-versions"></a>Unterstützte Mindestversionen von Betriebssystemen
 
 Die folgenden Distributionen aus dem Azure Marketplace werden unterstützt:
 
 | Linux-Betriebssystem     | Kernelversion               | 
 |--------------|---------------------------   |
-| Ubuntu 16.04 | 4.15.0-1014-azure+           | 
 | Ubuntu 18.04 | 4.15.0-1014-azure+           |
 | SLES 15 SP1  | 4.12.14-8.19-azure+          | 
 | RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
 | CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
+
+Die aufgeführten Versionen sind die Mindestanforderungen. Neuere Versionen werden ebenfalls unterstützt.
 
 **Benutzerdefinierte Kernelunterstützung**
 
@@ -60,22 +61,26 @@ Alle Azure-Regionen unterstützen DPDK.
 
 Auf der Linux-VM muss der beschleunigte Netzwerkbetrieb aktiviert sein. Die VM sollte mindestens zwei Netzwerkschnittstellen haben, davon eine für die Verwaltung. Die Aktivierung des beschleunigten Netzwerks auf der Verwaltungsschnittstelle wird nicht empfohlen. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](create-vm-accelerated-networking-cli.md).
 
-## <a name="install-dpdk-dependencies"></a>Installieren von DPDK-Abhängigkeiten
-
-### <a name="ubuntu-1604"></a>Ubuntu 16.04
-
-```bash
-sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
-sudo apt-get update
-sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
-```
+## <a name="install-dpdk"></a>Installieren von DPDK
 
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
-sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
+sudo add-apt-repository ppa:canonical-server/server-backports -y
 sudo apt-get update
-sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
+sudo apt-get install -y dpdk
+```
+
+### <a name="ubuntu-2004-and-newer"></a>Ubuntu 20.04 und höher
+
+```bash
+sudo apt-get install -y dpdk
+```
+
+### <a name="debian-10-and-newer"></a>Debian 10 und höher
+
+```bash
+sudo apt-get install -y dpdk
 ```
 
 ### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
@@ -255,3 +260,4 @@ Wenn Sie die vorherigen Befehle auf einer VM ausführen, ändern Sie *IP_SRC_ADD
 
 * [EAL-Optionen](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options) (in englischer Sprache)
 * [Testpmd-Befehle](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options) (in englischer Sprache)
+* [Befehle für Paketsicherung](https://doc.dpdk.org/guides/tools/pdump.html#pdump-tool)

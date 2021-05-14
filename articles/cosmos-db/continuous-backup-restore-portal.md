@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie den Wiederherstellungspunkt identifizier
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 707ef9f60891c1da7c13638e233ee74e78fc20dd
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381867"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283936"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>Konfigurieren und Verwalten von fortlaufender Sicherung und Zeitpunktwiederherstellung (Vorschau) – Verwenden des Azure-Portals
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -31,6 +31,10 @@ In diesem Artikel wird beschrieben, wie Sie den Wiederherstellungspunkt identifi
 Wählen Sie beim Erstellen eines neuen Azure Cosmos DB-Kontos für die Option **Sicherungsrichtlinie** den Modus **Fortlaufend** aus, um die Funktion „Zeitpunktwiederherstellung“ für das neue Konto zu aktivieren. Nachdem dieses Feature für das Konto aktiviert wurde, stehen alle Datenbanken und Container für die fortlaufende Sicherung zur Verfügung. Bei der Zeitpunktwiederherstellung werden Daten immer in einem neuen Konto wiederhergestellt. Zurzeit können Sie keine Daten in einem vorhandenen Konto wiederherstellen.
 
 :::image type="content" source="./media/continuous-backup-restore-portal/configure-continuous-backup-portal.png" alt-text="Bereitstellen eines Azure Cosmos DB-Kontos mit fortlaufender Sicherung." border="true":::
+
+## <a name="backup-storage-redundancy"></a>Redundanz für Sicherungsspeicher
+
+Standardmäßig speichert Azure Cosmos DB Sicherungsdaten im kontinuierlichen Modus in lokal redundanten Speicherblobs. In Regionen, in denen Zonenredundanz konfiguriert ist, wird die Sicherung in zonenredundanten Speicherblobs gespeichert. In diesem Modus können Sie die Redundanz für den Sicherungsspeicher nicht aktualisieren.
 
 ## <a name="restore-a-live-account-from-accidental-modification"></a><a id="restore-live-account"></a>Wiederherstellen eines aktiven Kontos nach versehentlicher Änderung
 

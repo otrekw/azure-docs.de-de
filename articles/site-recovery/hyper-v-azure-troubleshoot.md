@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: c804e13029dcec42a43885cbf0d9b227b3d0338f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9b6589484c9512d7eb66d3f35dc5a1e7f2fc8c9
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96750801"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107952636"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problembehandlung bei der Hyper-V-zu-Azure-Replikation und Failover
 
@@ -130,7 +130,7 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
         - Die Datenänderungsrate erhöht sich oder bleibt hoch, abhängig von der Auslastung des virtuellen Computers oder der zugehörigen Apps.
         - Die durchschnittliche Datenänderung des Quelldatenträgers beläuft sich für den Standardspeicher für Site Recovery auf 2 MB/s. [Weitere Informationen](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - Darüber hinaus können Sie [Skalierbarkeitsziele überprüfen](../storage/common/scalability-targets-standard-account.md).
-8. Stellen Sie bei Verwendung eines Linux-basierten Servers sicher, auf dem Server App-Konsistenz zu aktivieren. [Weitere Informationen](./site-recovery-faq.md#replication)
+8. Stellen Sie bei Verwendung eines Linux-basierten Servers sicher, auf dem Server App-Konsistenz zu aktivieren. [Weitere Informationen](/azure/site-recovery/site-recovery-faq#replication)
 9. Führen Sie den [Bereitstellungsplaner](hyper-v-deployment-planner-run.md) aus.
 10. Sehen Sie die Empfehlungen für das [Netzwerk](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) und den [Speicher](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) durch.
 

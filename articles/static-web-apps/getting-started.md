@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 335f78bba24947b1b6c3d6132bc38f237b3298b9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: fb874c25ab688cc5e6723d1023157b8acd9478b9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449136"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483842"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Schnellstart: Erstellen Ihrer ersten statischen Website mit Azure Static Web Apps
 
@@ -58,21 +58,35 @@ Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kost
     # <a name="no-framework"></a>[Kein Framework](#tab/vanilla-javascript)
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Anwendungsvoreinstellungen: kein Framework":::
 
-    Geben Sie **./** als Speicherort für die Anwendungsdateien ein
+    Geben Sie **./** als Speicherort für die Anwendungsdateien ein.
 
     :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Speicherort der Anwendungsdateien":::
 
-    Wählen Sie **Vorerst überspringen** als Speicherort für die Azure Functions-API aus
+    Wählen Sie beim Speicherort für die Azure Functions-API **Vorerst überspringen** aus.
 
     :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API-Speicherort":::
 
-    Geben Sie **./** des Ausgabespeicherorts für den Build ein
+    Geben Sie **./** als Ausgabespeicherort für den Build ein.
 
     :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="Ausgabespeicherort des Anwendungsbuilds":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    :::image type="content" source="media/getting-started/extension-presets-angular.png" alt-text="Anwendungsvoreinstellungen: Angular":::
+    Es gibt zwar eine Angular-Voreinstellung, Sie sollten aber die Option **Benutzerdefiniert** auswählen, damit Sie einen geeigneten Ausgabespeicherort für diese Anwendung angeben können.
+
+    :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Anwendungsvoreinstellungen: Angular":::
+
+    Geben Sie **./** als Speicherort für die Anwendungsdateien ein.
+
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Speicherort der Anwendungsdateien: Angular":::
+
+    Wählen Sie beim Speicherort für die Azure Functions-API **Vorerst überspringen** aus.
+
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API-Speicherort: Angular":::
+
+    Geben Sie **dist/angular-basic** als Speicherort für die Buildausgabe ein.
+
+    :::image type="content" source="media/getting-started/extension-angular.png" alt-text="Ausgabespeicherort des Anwendungsbuilds: Angular":::
 
     # <a name="react"></a>[React](#tab/react)
 

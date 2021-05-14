@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 985cbe1128d1dd64fda86ef062750dc5dd068ffe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1bb2b8bc7e55dde7c6fa9098640109f85bebce23
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751731"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065419"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>VNET-Dienstendpunkte für Azure Key Vault
 
@@ -26,7 +26,7 @@ Es gibt eine wichtige Ausnahme dieser Einschränkung. Wenn ein Benutzer entschie
 Sie können [Key Vault-Firewalls und virtuelle Netzwerke](network-security.md) so konfigurieren, dass der Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) standardmäßig verweigert wird. Sie können Zugriff auf Datenverkehr aus bestimmten virtuellen Azure-Netzwerken und IP-Adressbereichen des öffentlichen Internets gewähren, sodass Sie eine sichere Netzwerkgrenze für Ihre Anwendungen erstellen können.
 
 > [!NOTE]
-> Key Vault-Firewalls und VNET-Regeln gelten nur für die [Datenebene](security-overview.md#privileged-access) von Key Vault. Vorgänge auf Key Vault-Steuerungsebene (z. B. Vorgänge zum Erstellen, Löschen und Ändern, das Festlegen von Zugriffsrichtlinien, Festlegen von Firewalls und VNET-Regeln und Bereitstellen von Geheimnissen oder Schlüsseln durch ARM-Vorlagen) sind von Firewalls und VNET-Regeln nicht betroffen.
+> Key Vault-Firewalls und VNET-Regeln gelten nur für die [Datenebene](security-features.md#privileged-access) von Key Vault. Vorgänge auf Key Vault-Steuerungsebene (z. B. Vorgänge zum Erstellen, Löschen und Ändern, das Festlegen von Zugriffsrichtlinien, Festlegen von Firewalls und VNET-Regeln und Bereitstellen von Geheimnissen oder Schlüsseln durch ARM-Vorlagen) sind von Firewalls und VNET-Regeln nicht betroffen.
 
 Hier finden Sie einige Beispiele dafür, wie Sie Dienstendpunkte verwenden können:
 
@@ -59,6 +59,7 @@ Es folgt eine Liste der vertrauenswürdigen Dienste, denen Zugriff auf einen Sch
 |Azure Import/Export| [Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für den Import/Export-Dienst](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure Container Registry|[Registrierungsverschlüsselung mithilfe kundenseitig verwalteter Schlüssel](../../container-registry/container-registry-customer-managed-keys.md)
 |Azure Application Gateway |[Verwenden von Key Vault-Zertifikaten für HTTPS-fähige Listener](../../application-gateway/key-vault-certs.md)
+|Azure Front Door|[Verwendung der Key Vault-Zertifikate für HTTPS](../../frontdoor/front-door-custom-domain-https.md#prepare-your-azure-key-vault-account-and-certificate)
 
 > [!NOTE]
 > Sie müssen die relevanten Key Vault-Zugriffsrichtlinien so einrichten, dass die entsprechenden Dienste Zugriff auf den Schlüsseltresor erhalten.
@@ -66,4 +67,4 @@ Es folgt eine Liste der vertrauenswürdigen Dienste, denen Zugriff auf einen Sch
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Schrittanleitungen finden Sie unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](network-security.md).
-- Weitere Informationen finden Sie in der [Azure Key Vault-Sicherheitsübersicht](security-overview.md).
+- Weitere Informationen finden Sie in der [Azure Key Vault-Sicherheitsübersicht](security-features.md).

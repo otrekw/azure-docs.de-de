@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 9d4aac17ca823f4eaa0f52ab260b1daca3f52f94
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: e1d96dd885fafcd95af1ae9d4757fb5c6ee4a3ef
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109746"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315307"
 ---
 # <a name="programmatically-manage-workbooks"></a>Programmgesteuertes Verwalten von Arbeitsmappen
 
@@ -205,6 +205,102 @@ Arbeitsmappentypen geben an, unter welchem Arbeitsmappenkatalogtyp die neue Arbe
 | `workbook` | Der in den meisten Berichten verwendete Standardwert, einschließlich des Arbeitsmappenkatalogs von Application Insights, Azure Monitor usw.  |
 | `tsg` | Der Katalog „Leitfäden zur Problembehandlung“ in Application Insights |
 | `usage` | Der Katalog _Mehr_ unter _Nutzung_ in Application Insights |
+
+### <a name="working-with-json-formatted-workbook-data-in-the-serializeddata-template-parameter"></a>Verwenden von Arbeitsmappendaten im JSON-Format im Vorlagenparameter „serializedData“
+
+Beim Exportieren einer Azure Resource Manager-Vorlage für eine Azure-Arbeitsmappe sind häufig feste Ressourcenlinks in den exportierten Vorlagenparameter `serializedData` eingebettet. Dazu gehören potenziell vertrauliche Werte wie Abonnement-ID und Ressourcengruppenname sowie andere Arten von Ressourcen-IDs.
+
+Das folgende Beispiel veranschaulicht die Anpassung einer exportierten Azure Resource Manager-Vorlage für Arbeitsmappen ohne Zeichenfolgenbearbeitung. Das in diesem Beispiel gezeigte Muster ist für die Verwendung mit den unveränderten Daten vorgesehen, die aus dem Azure-Portal exportiert wurden. Es empfiehlt sich außerdem, eingebettete vertrauliche Werte beim programmgesteuerten Verwalten von Arbeitsmappen zu maskieren. Daher wurden die Abonnement-ID und die Ressourcengruppe hier ebenfalls maskiert. Es wurden keine weiteren Änderungen am eingehenden `serializedData`-Rohwert vorgenommen.
+
+```json
+{
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workbookDisplayName": {
+      "type": "string"
+    },
+    "workbookSourceId": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().id]"
+    },
+    "workbookId": {
+      "type": "string",
+      "defaultValue": "[newGuid()]"
+    }
+  },
+  "variables": {
+    // serializedData from original exported Azure Resource Manager template
+    "serializedData": "{\"version\":\"Notebook/1.0\",\"items\":[{\"type\":1,\"content\":{\"json\":\"Replace with Title\"},\"name\":\"text - 0\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"{\\\"version\\\":\\\"ARMEndpoint/1.0\\\",\\\"data\\\":null,\\\"headers\\\":[],\\\"method\\\":\\\"GET\\\",\\\"path\\\":\\\"/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups\\\",\\\"urlParams\\\":[{\\\"key\\\":\\\"api-version\\\",\\\"value\\\":\\\"2019-06-01\\\"}],\\\"batchDisabled\\\":false,\\\"transformers\\\":[{\\\"type\\\":\\\"jsonpath\\\",\\\"settings\\\":{\\\"tablePath\\\":\\\"$..*\\\",\\\"columns\\\":[]}}]}\",\"size\":0,\"queryType\":12,\"visualization\":\"map\",\"tileSettings\":{\"showBorder\":false},\"graphSettings\":{\"type\":0},\"mapSettings\":{\"locInfo\":\"AzureLoc\",\"locInfoColumn\":\"location\",\"sizeSettings\":\"location\",\"sizeAggregation\":\"Count\",\"opacity\":0.5,\"legendAggregation\":\"Count\",\"itemColorSettings\":null}},\"name\":\"query - 1\"}],\"isLocked\":false,\"fallbackResourceIds\":[\"/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/XXXXXXX\"]}",
+
+    // parse the original into a JSON object, so that it can be manipulated
+    "parsedData": "[json(variables('serializedData'))]",
+
+    // create new JSON objects that represent only the items/properties to be modified
+    "updatedTitle": {
+      "content":{
+        "json": "[concat('Resource Group Regions in subscription \"', subscription().displayName, '\"')]"
+      }
+    },
+    "updatedMap": {
+      "content": {
+        "path": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups')]"
+      }
+    },
+
+    // the union function applies the updates to the original data
+    "updatedItems": [
+      "[union(variables('parsedData')['items'][0], variables('updatedTitle'))]",
+      "[union(variables('parsedData')['items'][1], variables('updatedMap'))]"
+    ],
+
+    // copy to a new workbook object, with the updated items
+    "updatedWorkbookData": {
+      "version": "[variables('parsedData')['version']]",
+      "items": "[variables('updatedItems')]",
+      "isLocked": "[variables('parsedData')['isLocked']]",
+      "fallbackResourceIds": ["[parameters('workbookSourceId')]"]
+    },
+
+    // convert back to an encoded string
+    "reserializedData": "[string(variables('updatedWorkbookData'))]"
+  },
+  "resources": [
+    {
+      "name": "[parameters('workbookId')]",
+      "type": "microsoft.insights/workbooks",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2018-06-17-preview",
+      "dependsOn": [],
+      "kind": "shared",
+      "properties": {
+        "displayName": "[parameters('workbookDisplayName')]",
+        "serializedData": "[variables('reserializedData')]",
+        "version": "1.0",
+        "sourceId": "[parameters('workbookSourceId')]",
+        "category": "workbook"
+      }
+    }
+  ],
+  "outputs": {
+    "workbookId": {
+      "type": "string",
+      "value": "[resourceId( 'microsoft.insights/workbooks', parameters('workbookId'))]"
+    }
+  },
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#"
+}
+```
+
+In diesem Beispiel erleichterten die folgenden Schritte die Anpassung einer exportierten Azure Resource Manager-Vorlage:
+1. Exportieren Sie die Arbeitsmappe als Azure Resource Manager-Vorlage, wie im obigen Abschnitt erläutert.
+2. Gehen Sie im Abschnitt `variables` der Vorlage wie folgt vor:
+    1. Analysieren Sie den Wert `serializedData` in einer JSON-Objektvariablen, die eine JSON-Struktur mit einem Array von Elementen erstellt, die den Inhalt der Arbeitsmappe darstellen.
+    2. Erstellen Sie neue JSON-Objekte, die nur die Elemente/Eigenschaften darstellen, die geändert werden sollen.
+    3. Projektieren Sie mithilfe der Funktion `union()` einen neuen Satz von JSON-Inhaltselementen (`updatedItems`), um die Änderungen auf die ursprünglichen JSON-Elemente anzuwenden.
+    4. Erstellen Sie ein neues Arbeitsmappenobjekt (`updatedWorkbookData`), das `updatedItems` und die Daten vom Typ `version`/`isLocked` aus den ursprünglichen analysierten Daten sowie einen korrigierten Satz von `fallbackResourceIds` enthält.
+    5. Serialisieren Sie den neuen JSON-Inhalt wieder in eine neue Zeichenfolgenvariable (`reserializedData`).
+3. Verwenden Sie die neue Variable `reserializedData` anstelle der ursprünglichen Eigenschaft `serializedData`.
+4. Stellen Sie die neue Arbeitsmappenressource mithilfe der aktualisierten Azure Resource Manager-Vorlage bereit.
 
 ### <a name="limitations"></a>Einschränkungen
 Aus technischen Gründen können mit diesem Mechanismus keine Arbeitsmappeninstanzen im Katalog _Arbeitsmappen_ von Application Insights erstellt werden. Wir arbeiten derzeit an einer Lösung für diese Einschränkung. In der Zwischenzeit empfehlen wir, den Katalog „Leitfaden zur Problembehandlung“ (workbookType: `tsg`) zum Bereitstellen von Application Insights-bezogenen Arbeitsmappen zu verwenden.

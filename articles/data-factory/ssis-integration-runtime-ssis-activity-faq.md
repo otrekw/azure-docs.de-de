@@ -3,17 +3,17 @@ title: Behandeln von Problemen bei der Paketausführung in der SSIS Integration 
 description: Dieser Artikel enthält Anleitungen zur Problembehandlung bei der Ausführung von SSIS-Paketen in der SSIS Integration Runtime.
 ms.service: data-factory
 ms.topic: conceptual
-ms.author: wenjiefu
-author: RodgeFu
+ms.author: sawinark
+author: swinarko
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 6eecedbc28bcb8bc0bd46534a2c2692636f6f2c1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 17ab31faa24f2267b9d804e9820bdfc32fbfc76c
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934001"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001446"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime
 
@@ -150,10 +150,14 @@ Stellen Sie sicher, dass der entsprechende Anbieter, der von Ihren OLE DB-Connec
 
 Eine mögliche Ursache ist, dass Ihre selbstgehosteter Integration Runtime nicht ordnungsgemäß installiert oder aktualisiert wurde. Laden Sie die neueste selbstgehostete Integration Runtime herunter, und installieren Sie sie erneut. Weitere Informationen finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](create-self-hosted-integration-runtime.md#installation-best-practices).
 
+### <a name="error-message-staging-task-failed-taskstatus-failed-errorcode-2906-errormessage-package-execution-failed-for-more-details-select-the-output-of-your-activity-run-on-the-same-row-output-operationerrormessages-4142021-71035-am-0000---failed-to-start-named-pipe-proxy"></a>Fehlermeldung: „Fehler bei der Stagingaufgabe. TaskStatus: Fehler, ErrorCode: 2906, ErrorMessage: Fehler bei der Paketausführung. Wählen Sie zur Anzeige weiterer Details die Ausgabe der Aktivitätsausführung in derselben Zeile aus. Ausgabe: {"OperationErrorMessages": "4/14/2021 7:10:35 AM +00:00 : = Fehler beim Starten des Named Pipe-Proxys...“
+
+Überprüfen Sie, ob die Sicherheitsrichtlinien dem Konto, auf dem der selbstgehostete IR-Dienst ausgeführt wird, ordnungsgemäß zugewiesen sind. Wenn für die Aktivität „SSIS-Paket ausführen“ die Windows-Authentifizierung verwendet wird oder die Anmeldeinformationen für die Ausführung im SSIS-Katalog (SSISDB) festgelegt sind, müssen dem verwendeten Windows-Konto dieselben Sicherheitsrichtlinien zugewiesen werden. Weitere Details finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-windows-authentication-for-on-premises-tasks).
+
 ### <a name="error-message-a-connection-is-required-when-requesting-metadata-if-you-are-working-offline-uncheck-work-offline-on-the-ssis-menu-to-enable-the-connection"></a>Fehlermeldung: „Eine Verbindung ist erforderlich, wenn Metadaten angefordert werden. Wenn Sie offline arbeiten, deaktivieren Sie im SSIS-Menü ‚Offline arbeiten‘, um die Verbindung zu aktivieren“
 
 * Mögliche Ursache und empfohlene Maßnahme:
-  * Wenn im Ausführungsprotokoll auch die Warnmeldung „Die Komponente unterstützt die Verwendung des Verbindungs-Managers nicht, wenn ConnectByProxy auf TRUE festgelegt ist“ enthalten ist, bedeutet dies, dass ein Verbindungs-Manager für eine Komponente verwendet wird, die „ConnectByProxy“ noch nicht unterstützt. Die unterstützten Komponenten finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy).
+  * Wenn im Ausführungsprotokoll auch die Warnmeldung „Die Komponente unterstützt die Verwendung des Verbindungs-Managers nicht, wenn ConnectByProxy auf TRUE festgelegt ist“ enthalten ist, bedeutet dies, dass ein Verbindungs-Manager für eine Komponente verwendet wird, die „ConnectByProxy“ noch nicht unterstützt. Die unterstützten Komponenten finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-use-a-proxy).
   * Das Ausführungsprotokoll befindet sich im [SSMS-Bericht](/sql/integration-services/performance/monitor-running-packages-and-other-operations#reports) oder in dem Protokollordner, den Sie in der SSIS-Paketausführungsaktivität angegeben haben.
   * Alternativ kann ein VNet für den Zugriff auf lokale Daten verwendet werden. Weitere Informationen finden Sie unter [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk](join-azure-ssis-integration-runtime-virtual-network.md).
 

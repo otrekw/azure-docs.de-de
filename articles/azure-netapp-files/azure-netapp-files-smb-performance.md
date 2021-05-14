@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ec58b056bd610773500c8ace1fb12d268b980e0
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91929455"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726716"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Häufig gestellte Fragen zur Leistung von SMB für Azure NetApp Files
 
@@ -153,6 +153,9 @@ SMB Signing wirkt sich negativ auf die SMB-Leistung aus. Neben anderen mögliche
 
 ![Diagramm: Auswirkung von SMB Signing auf die Leistung](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
 
+## <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a>Wie wirkt sich die SMB-Verschlüsselung auf die Clientworkloads aus?
+
+Siehe [Häufig gestellte Fragen zur SMB-Verschlüsselung](azure-netapp-files-faqs.md#smb_encryption_impact).
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

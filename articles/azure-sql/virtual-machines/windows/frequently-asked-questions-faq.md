@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 014bbe4421bf00f35b2d80505cea288e75f8ca94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c8a50f419fbf80d9159bbe3748bbe000ef4b369
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224672"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134193"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Häufig gestellte Fragen für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -171,7 +171,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
    Ja. Die SQL Server-Installationsmedien befinden sich in einem Ordner auf dem Laufwerk **C** . Führen Sie **Setup.exe** von diesem Speicherort aus, um neue SQL Server-Instanzen hinzuzufügen oder andere installierte Features von SQL Server auf dem Computer zu ändern. Beachten Sie, dass einige Funktionen wie automatisierte Sicherung, automatisiertes Patchen und Azure Key Vault-Integration nur für die Standardinstanz oder eine ordnungsgemäß konfigurierte benannte Instanz (siehe Frage 3) ausgeführt werden können. Kunden, die [Software Assurance über den Azure-Hybridvorteil](licensing-model-azure-hybrid-benefit-ahb-change.md) oder das Lizenzierungsmodell mit **nutzungsbasierter Bezahlung** verwenden, können ohne zusätzliche Lizenzkosten mehrere Instanzen von SQL Server auf dem virtuellen Computer installieren. Zusätzliche SQL Server-Instanzen können Systemressourcen belasten, wenn sie nicht ordnungsgemäß konfiguriert sind. 
 
 1. **Wie hoch ist die maximale Anzahl der Instanzen auf einer VM?**
-   SQL Server 2012 bis SQL Server 2019 unterstützen bis zu [50 Instanzen](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP) auf einem eigenständigen Server. Diese maximale Anzahl gilt für Azure und lokale Umgebungen gleichermaßen. Informationen zu einer besseren Vorbereitung der Umgebung finden Sie unter [bewährte Methoden](performance-guidelines-best-practices.md#multiple-instances). 
+   SQL Server 2012 bis SQL Server 2019 unterstützen bis zu [50 Instanzen](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP) auf einem eigenständigen Server. Diese maximale Anzahl gilt für Azure und lokale Umgebungen gleichermaßen. Informationen zu einer besseren Vorbereitung der Umgebung finden Sie unter [bewährte Methoden](./performance-guidelines-best-practices-checklist.md). 
 
 1. **Kann ich die Standardinstanz von SQL Server deinstallieren?**
 
@@ -193,6 +193,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
    1. Deinstallieren Sie SQL Server vollständig, einschließlich der SQL-IaaS-Erweiterung (sofern vorhanden).
    1. Installieren Sie die kostenlose [SQL Express-Edition](https://www.microsoft.com/sql-server/sql-server-downloads).
    1. Registrieren Sie die VM mit der SQL-IaaS-Agent-Erweiterung im [Modus „Lightweight“](sql-agent-extension-manually-register-single-vm.md).
+   1. [Ändern Sie die Edition von SQL Server](change-sql-server-edition.md#change-edition-in-portal) im [Azure-Portal](https://portal.azure.com) in Express, um die Abrechnung zu beenden.  
    1. (Optional) Deaktivieren Sie den Express SQL Server-Dienst, indem Sie den Dienststart deaktivieren. 
 
 1. **Kann ich über das Azure-Portal mehrere Instanzen auf derselben VM verwalten?**
@@ -346,7 +347,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 * [Bereitstellen von SQL Server auf einer Windows-VM](create-sql-vm-portal.md)
 * [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](migrate-to-vm-from-sql-server.md)
 * [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](business-continuity-high-availability-disaster-recovery-hadr-overview.md)
-* [Bewährte Methoden für die Leistung von SQL Server auf virtuellen Azure-Computern](performance-guidelines-best-practices.md)
+* [Bewährte Methoden für die Leistung von SQL Server auf virtuellen Azure-Computern](./performance-guidelines-best-practices-checklist.md)
 * [Anwendungsmuster und Entwicklungsstrategien für SQL Server auf virtuellen Azure-Computern](application-patterns-development-strategies.md)
 
 **Virtuelle Linux-Computer:**

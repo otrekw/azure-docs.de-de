@@ -4,14 +4,14 @@ description: Erstellen von clientseitigen Pfaden für den Back-End-Speicher mit 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 04/22/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5549670dbd1f302bdb17b8b94cbd1fb5c4c1a1d9
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 3eddd53d8b1d4ff59f27535a070924cf0e86c5a7
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760537"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904413"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Einrichten des aggregierten Namespace
 
@@ -30,6 +30,8 @@ Sie können die Tabellenspalten sortieren und sich mit dem aggregierten Namespac
 ## <a name="add-or-edit-namespace-paths"></a>Hinzufügen oder Bearbeiten des Namespacepfads
 
 Sie müssen mindestens einen Namespacepfad erstellen, damit Clients auf das Speicherziel zugreifen können. (Weitere Informationen zum Clientzugriff finden Sie unter [Einbinden einer Azure HPC Cache-Instanz](hpc-cache-mount.md).)
+
+Wenn Sie kürzlich ein Speicherziel hinzugefügt oder eine Zugriffsrichtlinie angepasst haben, kann es ein oder zwei Minuten dauern, bis Sie einen Namespace-Pfad erstellen können.
 
 ### <a name="blob-namespace-paths"></a>Blob-Namespacepfade
 
@@ -63,7 +65,7 @@ Befolgen Sie die nachstehenden Anweisungen, um den Pfad über das Azure-Portal o
 
 Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden, müssen Sie beim Erstellen des Speicherziels einen Namespacepfad hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen eines neuen Azure Blob Storage-Ziels](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target).
 
-Verwenden Sie den Befehl [az hpc-cache blob-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update), um den Namespacepfad eines Ziels zu aktualisieren. Die Argumente für den update-Befehl ähneln den Argumenten vom create-Befehl, mit dem Unterschied, dass der Containername oder das Speicherkonto nicht übergeben werden.
+Verwenden Sie den Befehl [az hpc-cache blob-storage-target update](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update), um den Namespacepfad eines Ziels zu aktualisieren. Die Argumente für den update-Befehl ähneln den Argumenten vom create-Befehl, mit dem Unterschied, dass der Containername oder das Speicherkonto nicht übergeben werden.
 
 Über die Azure-Befehlszeilenschnittstelle können Sie einen Namespacepfad nicht aus einem Blob Storage-Ziel löschen, Sie können aber den Pfad mit einem anderen Wert überschreiben.
 
@@ -75,27 +77,7 @@ Ein NFS-Speicherziel kann mehrere virtuelle Pfade aufweisen, solange jeder Pfad 
 
 Wenn Sie den Namespace für ein NFS-Speicherziel planen, beachten Sie, dass jeder Pfad eindeutig sein muss und kein Unterverzeichnis eines anderen Namespacepfads sein darf. Bei dem Namespacepfad ``/parent-a`` können Sie beispielsweise keine Namespacepfade wie ``/parent-a/user1`` und ``/parent-a/user2`` erstellen. Diese Verzeichnispfade sind im Namespace bereits als Unterverzeichnisse von ``/parent-a`` verfügbar.
 
-Alle Namespacepfade für ein NFS-Speichersystem werden in einem Speicherziel erstellt. Die meisten Cachekonfigurationen können bis zu zehn Namespacepfade pro Speicherziel unterstützen, größere Konfigurationen sogar bis zu 20.
-
-Im Folgenden ist die maximale Anzahl der Namespacepfade pro Konfiguration aufgeführt.
-
-* Bei einem Durchsatz von bis zu 2 GB/s:
-
-  * 3 TB Cache – 10 Namespacepfade
-  * 6 TB Cache – 10 Namespacepfade
-  * 12 TB Cache – 20 Namespacepfade
-
-* Bei einem Durchsatz von bis zu 4 GB/s:
-
-  * 6 TB Cache – 10 Namespacepfade
-  * 12 TB Cache – 10 Namespacepfade
-  * 24 TB Cache – 20 Namespacepfade
-
-* Bei einem Durchsatz von bis zu 8 GB/s:
-
-  * 12 TB Cache – 10 Namespacepfade
-  * 24 TB Cache – 10 Namespacepfade
-  * 48 TB Cache – 20 Namespacepfade
+Alle Namespacepfade für ein NFS-Speichersystem werden in einem Speicherziel erstellt.
 
 Geben Sie für jeden NFS-Namespacepfad den clientseitigen Pfad, das Verzeichnis für den Speichersystemexport und optional ein Exportunterverzeichnis an.
 
@@ -127,11 +109,35 @@ Geben Sie diese Werte für die einzelnen Namespacepfade ein:
 
 Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden, müssen Sie beim Erstellen des Speicherziels mindestens einen Namespacepfad hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen eines neuen NFS-Speicherziels](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target).
 
-Verwenden Sie den Befehl [az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update), um den Namespacepfad des Ziels zu aktualisieren oder weitere Pfade hinzuzufügen. Verwenden Sie die Option ``--junction``, um alle gewünschten Namespacepfade anzugeben.
+Verwenden Sie den Befehl [az hpc-cache nfs-storage-target update](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update), um den Namespacepfad des Ziels zu aktualisieren oder weitere Pfade hinzuzufügen. Verwenden Sie die Option ``--junction``, um alle gewünschten Namespacepfade anzugeben.
 
 Die für den update-Befehl verwendeten Optionen ähneln denen vom create-Befehl, mit dem Unterschied, dass die Informationen zum Speichersystem (IP-Adresse oder Hostname) nicht übergeben werden und dass das Verwendungsmodell optional ist. Weitere Informationen zur Syntax der Option ``--junction`` finden Sie unter [Hinzufügen eines neuen NFS-Speicherziels](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target).
 
 ---
+
+### <a name="adls-nfs-namespace-paths-preview"></a>ADLS-NFS-Namespacepfade (Vorschau)
+
+Wie bei einem regulären Blob Storage-Ziel hat ein ADLS-NFS-Speicherziel nur einen Export, sodass es auch nur einen Namespacepfad aufweisen kann.
+
+Befolgen Sie die nachstehenden Anweisungen, um den Pfad über das Azure-Portal festzulegen oder zu ändern.
+
+Öffnen Sie die Einstellungsseite **Namespace**.
+
+* **Hinzufügen eines neuen Pfads:** Klicken Sie oben auf die Schaltfläche **+ Hinzufügen**, und geben Sie die entsprechenden Informationen im Bearbeitungsbereich ein.
+
+  ![Screenshot der Bearbeitungsfelder des hinzugefügten Namespace mit einem ausgewählten ADLS-NFS-Speicherziel Die Export- und Unterverzeichnispfade werden auf „/“ festgelegt und können nicht bearbeitet werden.](media/namespace-add-adls.png)
+
+  * Geben Sie den Pfad ein, den Clients für den Zugriff auf dieses Speicherziel verwenden werden.
+
+  * Wählen Sie die Zugriffsrichtlinie aus, die für diesen Pfad verwendet werden soll. Erfahren Sie mehr über das Anpassen des Clientzugriffs in [Verwenden von Clientzugriffsrichtlinien](access-policies.md).
+
+  * Wählen Sie in der Dropdownliste das Speicherziel aus. Wenn ein ADLS-NFS-Speicherziel bereits über einen Namespacepfad verfügt, kann es nicht ausgewählt werden.
+
+  * Für ein ADLS-NFS-Speicherziel werden die Export- und Unterverzeichnispfade automatisch auf ``/`` festgelegt.
+
+* **Ändern eines vorhandenen Pfads:** Klicken Sie auf den Namespacepfad. Der Bearbeitungsbereich wird geöffnet. Sie können den Pfad und die Zugriffsrichtlinie ändern, aber nicht zu einem anderen Speicherziel wechseln.
+
+* **Löschen eines Namespacepfads:** Aktivieren Sie das Kontrollkästchen links neben dem Pfad, und klicken Sie auf die Schaltfläche **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

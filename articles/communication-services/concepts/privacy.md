@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: beb8b81710cf4728259a8eb1df920cd74efce3ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ccc192bb5cf4c5e183e21add8e73d9e096d281c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728129"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136011"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionale Verfügbarkeit und Datenresidenz
 
@@ -49,7 +49,7 @@ Durch die Verwendung des Azure-Portals oder der Azure Resource Manager-APIs mi
 
 ### <a name="telephone-number-management"></a>Telefonnummernverwaltung
 
-Von Azure Communication Services wird ein Verzeichnis mit Telefonnummern gepflegt, die einer Communication Services-Ressource zugeordnet sind. Verwenden Sie die [APIs zur Verwaltung von Telefonnummern](/rest/api/communication/phonenumberadministration), um Telefonnummern abzurufen und zu löschen:
+Von Azure Communication Services wird ein Verzeichnis mit Telefonnummern gepflegt, die einer Communication Services-Ressource zugeordnet sind. Verwenden Sie die [APIs zur Verwaltung von Telefonnummern](/rest/api/communication/phonenumbers), um Telefonnummern abzurufen und zu löschen:
 
 - `Get All Phone Numbers`
 - `Release Phone Number`

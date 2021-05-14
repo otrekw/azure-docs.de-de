@@ -2,20 +2,20 @@
 title: 'Tutorial: Hinzufügen von Funktionen zu Azure Resource Manager-Bicep-Dateien'
 description: Fügen Sie Ihren Bicep-Dateien Funktionen hinzu, um Werte zu erstellen.
 author: mumian
-ms.date: 03/10/2021
+ms.date: 04/20/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
-ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 43dec6ceb21a6604bc0034b3f14b79ffd2cbe263
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102633154"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773799"
 ---
 # <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>Tutorial: Hinzufügen von Funktionen zu Azure Resource Manager-Bicep-Dateien
 
-In diesem Tutorial erfahren Sie, wie Sie Ihrer Bicep-Datei [Vorlagenfunktionen](template-functions.md) hinzufügen. Sie verwenden Funktionen, um dynamisch Werte zu erstellen. Zusätzlich zu diesen vom System bereitgestellten Vorlagenfunktionen können Sie auch [benutzerdefinierte Funktionen](./template-user-defined-functions.md) (User-Defined Functions, UDFs) erstellen. Dieses Tutorial dauert ungefähr **7 Minuten**.
+In diesem Tutorial erfahren Sie, wie Sie Ihrer Bicep-Datei [Vorlagenfunktionen](template-functions.md) hinzufügen. Sie verwenden Funktionen, um dynamisch Werte zu erstellen. Derzeit unterstützt Bicep keine benutzerdefinierten Funktionen. Dieses Tutorial dauert ungefähr **7 Minuten**.
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 

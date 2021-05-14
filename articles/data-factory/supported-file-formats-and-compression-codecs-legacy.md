@@ -1,17 +1,17 @@
 ---
 title: In Azure Data Factory unterstützte Dateiformate (Legacy)
 description: In diesem Thema werden die Dateiformate und Komprimierungscodecs beschrieben, die von dateibasierten Connectors in Azure Data Factory unterstützt werden.
-author: linda33wj
-ms.author: jingwang
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: d95927a9ea7d3084387a9aedb0dcdd86f84b8e7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 960c2a995a6e68b2f15e553121bc860f9ac29890
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384825"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488517"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory (Legacy)
 

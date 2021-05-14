@@ -1,18 +1,18 @@
 ---
 title: Azure Private Link für Azure Data Factory
 description: Erfahren Sie etwas über die Funktionsweise von Azure Private Link in Azure Data Factory.
-ms.author: abnarain
-author: nabhishek
+ms.author: lle
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f84d7d7a02b75723f78cfbed9ee23e19ebea9a15
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100389177"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481677"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link für Azure Data Factory
 
@@ -54,7 +54,7 @@ Die Aktivierung des Private Link-Diensts für die genannten Kommunikationskanäl
    - Die Befehlskommunikation zwischen einer selbstgehosteten Integration Runtime und dem Azure Data Factory-Dienst kann sicher in einer privaten Netzwerkumgebung stattfinden. Der Datenverkehr zwischen der selbstgehosteten Integration Runtime und dem Azure Data Factory-Dienst erfolgt über Private Link. 
 - **Derzeit nicht unterstützt:**
    - Die interaktive Erstellung mithilfe der selbstgehosteten Integration Runtime durchläuft Private Link, z. B. für eine Testverbindung, das Durchsuchen der Ordner- und Tabellenliste, das Abrufen eines Schemas und das Anzeigen einer Vorschau von Daten.
-   - Wenn Sie die automatische Aktualisierung aktivieren, kann die neue Version der selbstgehosteten Integration Runtime automatisch aus dem Microsoft Download Center heruntergeladen werden.
+   - Die neue Version der selbstgehosteten Integration Runtime, die automatisch aus dem Microsoft Download Center heruntergeladen werden kann, wenn Sie die automatische Aktualisierung aktivieren, wird zurzeit nicht unterstützt.
 
    > [!NOTE]
    > Für Funktionen, die derzeit nicht unterstützt werden, müssen Sie die oben genannte Domäne und den Port weiterhin im virtuellen Netzwerk oder der Unternehmensfirewall konfigurieren. 

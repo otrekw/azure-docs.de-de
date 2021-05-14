@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/09/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 58e55527c84db0c368e676f2bf1314dca32e78db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc156afa2c5b5143e1543ef58203d6dea5d046c3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102631051"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144995"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -100,7 +100,7 @@ Zusätzlich zu den Prämienvorteilen stehen Geschäftsanwendungspartnern mit Dyn
 
 ### <a name="publisher-agreement"></a>Herausgebervereinbarung
 
-Alle auf dieser Seite beschriebenen Aktivitäten werden von der [Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560) von Microsoft abgedeckt und fallen unter die Ergänzung zum kommerziellen Prämien-Programm.
+Alle auf dieser Seite beschriebenen Aktivitäten werden von der [Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement) von Microsoft abgedeckt und fallen unter die Ergänzung zum kommerziellen Prämien-Programm.
 
 ### <a name="cancellation-policy"></a>Kündigung
 

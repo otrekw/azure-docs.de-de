@@ -41,7 +41,7 @@
     - name: Bereitstellen von Feedback zu Risikoerkennungen
       href: howto-identity-protection-risk-feedback.md
     - name: Häufig gestellte Fragen
-      href: troubleshooting-identity-protection-faq.md
+      href: troubleshooting-identity-protection-faq.yml
 - name: Verweis
   items:
     - name: Graph-APIs

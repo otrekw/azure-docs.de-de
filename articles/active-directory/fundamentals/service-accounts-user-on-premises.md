@@ -1,6 +1,6 @@
 ---
-title: Schützen von benutzerbasierten Dienstkonten | Azure Active Directory
-description: Leitfaden zum Schützen von lokalen Benutzerkonten.
+title: Schützen benutzerbasierter Dienstkonten | Azure Active Directory
+description: Leitfaden zum Schutz benutzerbasierter Dienstkonten
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,56 +13,51 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e484bdda33142024f2067649eaa67042fe7776f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79e0dc10aa9cb5fb67812cca31d2cd892afcccbe
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100416555"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208093"
 ---
-# <a name="securing-user-based-service-accounts-in-active-directory"></a>Schützen von benutzerbasierten Dienstkonten in Active Directory
+# <a name="secure-user-based-service-accounts-in-active-directory"></a>Schützen benutzerbasierter Dienstkonten in Active Directory
 
-Lokale Benutzerkonten sind der herkömmliche Ansatz zum Schutz von Diensten, die unter Windows ausgeführt werden. Verwenden Sie diese Konten als letzte Möglichkeit, wenn globale verwaltete Dienstkonten (gMSAs) und eigenständige verwaltete Dienstkonten (sMSAs) in Ihrem Dienst nicht unterstützt werden. Informationen zur Auswahl des am besten geeigneten Kontotyps finden Sie in der Übersicht über die lokalen Dienstkonten. Prüfen Sie außerdem, ob Sie den Dienst verschieben können, sodass ein Azure-Dienstkonto verwendet wird, z. B. eine verwaltete Identität oder ein Dienstprinzipal. 
+Unter Windows ausgeführte Dienste werden traditionell mithilfe lokaler Benutzerkonten geschützt. Verwenden Sie diese Konten nur, falls von Ihrem Dienst keine gruppenverwalteten Dienstkonten (group managed service accounts, gMSAs) oder eigenständigen verwalteten Dienstkonten (standalone managed service accounts, sMSAs) unterstützt werden. Informationen zur Wahl des optimalen Kontotyps finden Sie in der [Einführung in lokale Dienstkonten](service-accounts-on-premises.md). 
 
-Lokale Benutzerkonten können erstellt werden, um einen Sicherheitskontext für Dienste bereitzustellen und für die Dienste die erforderlichen Berechtigungen für den Zugriff auf lokale und Netzwerkressourcen zu erteilen. Wie bei allen anderen Active Directory-Konten (AD) muss bei diesen Konten die Kennwortverwaltung manuell durchgeführt werden. Dienst- und Domänenadministratoren müssen Verwaltungsprozesse für sichere Kennwörter durchführen, um diese Konten zu schützen.
+Untersuchen Sie ggf. auch, ob Sie Ihren Dienst verschieben können, um ein Azure-Dienstkonto (etwa eine verwaltete Identität oder einen Dienstprinzipal) zu verwenden. 
 
-Wenn Sie ein Benutzerkonto als Dienstkonto verwenden, sollten Sie es nur für einen einzigen Dienst verwenden. Benennen Sie es so, dass deutlich wird, dass es sich um ein Dienstkonto handelt und für welchen Dienst es verwendet wird. 
+Sie können lokale Benutzerkonten erstellen, um einen Sicherheitskontext für die Dienste und Berechtigungen bereitzustellen, die die Konten für den Zugriff auf lokale Ressourcen und Netzwerkressourcen benötigen. Kennwörter müssen bei lokalen Benutzerkonten ähnlich wie bei anderen Active Directory-Benutzerkonten lokal verwaltet werden. Zum Schutz dieser Konten müssen Dienst- und Domänenadministratoren sichere Kennwortverwaltungsprozesse verwenden.
+
+Wenn Sie ein Benutzerkonto als Dienstkonto erstellen, verwenden Sie es nur für einen einzelnen Dienst. Geben Sie ihm einen Namen, der deutlich macht, dass es sich um ein Dienstkonto handelt und für welchen Dienst es verwendet wird. 
 
 ## <a name="benefits-and-challenges"></a>Vorteile und Einschränkungen
 
-Vorteile
+Lokale Benutzerkonten können erhebliche Vorteile bieten. Sie sind der vielseitigste Kontotyp für die Verwendung mit Diensten. Als Dienstkonten verwendete Benutzerkonten können über die gleichen Richtlinien gesteuert werden, über die auch normale Benutzerkonten gesteuert werden. Sie sollten jedoch nur verwendet werden, wenn Sie kein MSA verwenden können. Überprüfen Sie außerdem, ob ein Computerkonto nicht die bessere Option wäre. 
 
-Lokale Benutzerkonten gelten als der vielseitigste Kontotyp für die Verwendung mit Diensten. Benutzerkonten, die als Dienstkonten verwendet werden, können über alle Richtlinien gesteuert werden, über die normale Benutzerkonten gesteuert werden. Sie sollten sie jedoch nur verwenden, wenn die Verwendung eines MSA-Kontos nicht möglich ist. Überprüfen Sie außerdem, ob ein Computerkonto eine bessere Alternative ist. 
+Die Herausforderungen im Zusammenhang mit der Verwendung lokaler Benutzerkonten sind in der folgenden Tabelle zusammengefasst:
 
-Einschränkungen bei lokalen Benutzerkonten
-
-Bei der Verwendung von lokalen Benutzerkonten ergeben sich die folgenden Einschränkungen.
-
-| Herausforderungen| Gegenmaßnahmen |
+| Herausforderung | Minderung |
 | - | - |
-| Die Kennwortverwaltung wird manuell durchgeführt. Dies kann zu einer geringeren Sicherheit und Dienstausfallzeiten führen.| Stellen Sie sicher, dass Kennwortkomplexität und Kennwortänderungen durch einen robusten Prozess gesteuert werden, bei dem reguläre Aktualisierungen mit einem sicheren Kennwort gewährleistet sind. <br> Koordinieren Sie die Kennwortänderung mit einer Kennwortaktualisierung des Diensts, da diese Dienstausfallzeiten verursachen. |
-| Die Identifizierung von lokalen Benutzerkonten, die als Dienstkonten fungieren, kann schwierig sein.| Dokumentieren und verwalten Sie Aufzeichnungen der Dienstkonten, die in Ihrer Umgebung bereitgestellt werden. <br> Verfolgen Sie den Kontonamen und die Ressourcen, denen sie zugewiesen sind. <br> Sie können beispielsweise allen als Dienstkonten verwendeten Benutzerkonten das Präfix „svc_“ anfügen. |
+| Die Kennwortverwaltung wird manuell durchgeführt. Dies kann die Sicherheit beeinträchtigen und Dienstausfallzeiten zur Folge haben.| <li>Stellen Sie sicher, dass Kennwortkomplexität und Kennwortänderungen durch einen robusten Prozess gesteuert werden, der regelmäßige Aktualisierungen mit sicheren Kennwörtern gewährleistet.<li>Koordinieren Sie Kennwortänderungen mit einer Kennwortaktualisierung für den Dienst, um Dienstausfallzeiten zu verringern. |
+| Die Identifizierung von lokalen Benutzerkonten, die als Dienstkonten fungieren, kann schwierig sein. | <li>Dokumentieren und verwalten Sie Datensätze der Dienstkonten, die in Ihrer Umgebung bereitgestellt werden.<li>Verfolgen Sie den Kontonamen und die Ressourcen, denen sie zugewiesen sind.<li>Es empfiehlt sich gegebenenfalls, alle als Dienstkonten verwendeten Benutzerkonten mit dem Präfix „svc-“ zu versehen. |
+| | |
 
 
 ## <a name="find-on-premises-user-accounts-used-as-service-accounts"></a>Suchen von als Dienstkonten verwendeten lokalen Benutzerkonten
 
-Lokale Benutzerkonten unterscheiden sich nicht von anderen AD-Benutzerkonten. Daher kann es schwierig sein, diese Benutzerkonten aufzufinden, da sie durch kein spezifisches Attribut als Dienstkonto identifiziert werden. 
+Lokale Benutzerkonten unterscheiden sich nicht von anderen Active Directory-Benutzerkonten. Die Suche nach solchen Benutzerkonten kann sich als schwierig erweisen, da sie durch kein spezifisches Attribut als Dienstkonto identifiziert werden. 
 
-Es empfiehlt sich, für alle Benutzerkonten, die als Dienstkonto verwendet werden, eine einfach zu erkennende Namenskonvention anzuwenden.
+Daher empfiehlt es sich, für alle als Dienstkonto verwendeten Benutzerkonten eine einfach zu erkennende Namenskonvention zu verwenden. Fügen Sie beispielsweise ein Präfix wie „svc-“ hinzu, und nennen Sie den Dienst „svc-HRDataConnector“.
 
-Fügen Sie z. B. „service-“ als Präfix hinzu, und nennen Sie den Dienst „service-HRDataConnector“.
+Bei der Suche nach diesen Dienstkonten können einige der folgenden Kriterien verwendet werden. Damit werden jedoch möglicherweise nicht alle Konten gefunden. Hierzu zählen beispielweise:
 
-Anhand der folgenden Kennzeichen können Sie diese Dienstkonten auffinden, jedoch möglicherweise nicht alle.
-
-* Konten, die für die Delegierung als vertrauenswürdig gelten
-
-* Konten mit Dienstprinzipalnamen
-
-* Konten, deren Kennwort so festgelegt ist, dass es nie abläuft
+* Konten, die für die Delegierung als vertrauenswürdig gelten  
+* Konten mit Dienstprinzipalnamen  
+* Konten, deren Kennwort nie abläuft
 
 Sie können die folgenden PowerShell-Befehle ausführen, um die für Dienste erstellten lokalen Benutzerkonten zu suchen.
 
-### <a name="find-accounts-trusted-for-delegation"></a>Suchen von Konten, die für die Delegierung als vertrauenswürdig gelten
+So suchen Sie nach Konten, die für die Delegierung als vertrauenswürdig gelten:
 
 ```PowerShell
 
@@ -70,7 +65,7 @@ Get-ADObject -Filter {(msDS-AllowedToDelegateTo -like '*') -or (UserAccountContr
 
 ```
 
-### <a name="find-accounts-with-service-principle-names"></a>Suchen von Konten mit Dienstprinzipalnamen
+So suchen Sie nach Konten mit Dienstprinzipalnamen:
 
 ```PowerShell
 
@@ -78,9 +73,7 @@ Get-ADUser -Filter * -Properties servicePrincipalName | where {$_.servicePrincip
 
 ```
 
- 
-
-### <a name="find-accounts-with-passwords-set-to-never-expire"></a>Suchen von Konten, deren Kennwort so festgelegt ist, dass es nie abläuft
+So suchen Sie nach Konten, deren Kennwort nie abläuft:
 
 ```PowerShell
 
@@ -88,49 +81,42 @@ Get-ADUser -Filter * -Properties PasswordNeverExpires | where {$_.PasswordNeverE
 
 ```
 
+Sie können außerdem den Zugriff auf vertrauliche Ressourcen überwachen und Überwachungsprotokolle in einem SIEM-System (Security Information & Event Management) archivieren. Mit Systemen wie Azure Log Analytics oder Azure Sentinel können Sie nach Dienstkonten suchen und sie analysieren.
 
-Sie können außerdem den Zugriff auf vertrauliche Ressourcen überwachen und Überwachungsprotokolle in einem SIEM-System (Security Information & Event Management) archivieren. In Systemen wie Azure Log Analytics oder Azure Sentinel können Sie Dienstkonten suchen und analysieren.
+## <a name="assess-the-security-of-on-premises-user-accounts"></a>Bewerten der Sicherheit lokaler Benutzerkonten
 
-## <a name="assess-security-of-on-premises-user-accounts"></a>Bewerten der Sicherheit von lokalen Benutzerkonten
+Sie können die Sicherheit lokaler, als Dienstkonten verwendeter Benutzerkonten anhand der folgenden Kriterien bewerten:
 
-Bewerten Sie die Sicherheit Ihrer lokalen Benutzerkonten, die als Dienstkonten verwendet werden, anhand der folgenden Kriterien:
-
-* Welche Richtlinie wird für die Kennwortverwaltung verwendet?
-
-* Gehört das Konto privilegierten Gruppen an?
-
-* Hat das Konto Lese-/Schreibzugriff auf wichtige Ressourcen?
+* Welche Richtlinie wird für die Kennwortverwaltung verwendet?  
+* Gehört das Konto privilegierten Gruppen an?  
+* Verfügt das Konto über Lese-/Schreibberechtigungen für wichtige Ressourcen?
 
 ### <a name="mitigate-potential-security-issues"></a>Beheben potenzieller Sicherheitsprobleme
 
-In der folgenden Tabelle werden potenzielle Sicherheitsprobleme und entsprechende Maßnahmen bei lokalen Benutzerkonten beschrieben.
+In der folgenden Tabelle sind potenzielle Sicherheitsprobleme und entsprechende Maßnahmen für lokale Benutzerkonten zusammengefasst:
 
-| Sicherheitsprobleme| Gegenmaßnahmen |
+| Sicherheitsproblem | Minderung |
 | - | - |
-| Kennwortverwaltung|* Stellen Sie sicher, dass Kennwortkomplexität und Kennwortänderungen durch einen robusten Prozess gesteuert werden, bei dem reguläre Aktualisierungen mit Anforderungen für sichere Kennwörter gewährleistet sind. <br> * Koordinieren Sie die Kennwortänderung mit einer Kennwortaktualisierung, um die Dienstausfallzeit zu minimieren. |
-| Das Konto ist Mitglied von privilegierten Gruppen.| Überprüfen Sie die Gruppenmitgliedschaften. Entfernen Sie das Konto aus privilegierten Gruppen. Weisen Sie dem Konto nur die Rechte und Berechtigungen zu, die zum Ausführen des zugehörigen Diensts erforderlich sind (wenden Sie sich an den Dienstanbieter). Beispielsweise können Sie möglicherweise die lokale oder die interaktive Anmeldung verweigern. |
-| Das Konto verfügt über Lese-/Schreibzugriff auf vertrauliche Ressourcen.| Überwachen Sie den Zugriff auf vertrauliche Ressourcen. Archivieren Sie Überwachungsprotokolle zur Analyse in einem SIEM-System (Azure Log Analytics oder Azure Sentinel). Korrigieren Sie Ressourcenberechtigungen, wenn eine unerwünschte Zugriffsebene erkannt wird. |
+| Kennwortverwaltung| <li>Stellen Sie sicher, dass Kennwortkomplexität und Kennwortänderungen durch einen robusten Prozess gesteuert werden, der regelmäßige Aktualisierungen und Anforderungen für sichere Kennwörter beinhaltet.<li>Koordinieren Sie die Kennwortänderung mit einer Kennwortaktualisierung, um Dienstausfallzeiten zu minimieren. |
+| Das Konto gehört privilegierten Gruppen an.| <li>Überprüfen Sie die Gruppenmitgliedschaften.<li>Entfernen Sie das Konto aus privilegierten Gruppen.<li>Weisen Sie dem Konto nur die Rechte und Berechtigungen zu, die zum Ausführen des zugehörigen Diensts erforderlich sind (wenden Sie sich an den Dienstanbieter). Beispielsweise können Sie unter Umständen die lokale oder die interaktive Anmeldung verweigern. |
+| Das Konto verfügt über Lese-/Schreibberechtigungen für vertrauliche Ressourcen.| <li>Überwachen Sie den Zugriff auf vertrauliche Ressourcen.<li>Archivieren Sie Überwachungsprotokolle zur Analyse in einem SIEM-System (Azure Log Analytics oder Azure Sentinel).<li>Korrigieren Sie Ressourcenberechtigungen, wenn eine unerwünschte Zugriffsebene erkannt wird. |
+| | |
 
 
 ## <a name="move-to-more-secure-account-types"></a>Wechseln zu sichereren Kontotypen
 
-Microsoft rät davon ab, dass Kunden lokale Benutzerkonten als Dienstkonten verwenden. Überprüfen Sie für jeden Dienst, für den dieser Kontotyp verwendet wird, ob er stattdessen zur Verwendung eines gMSA oder sMSA konfiguriert werden kann.
+Microsoft rät davon ab, lokale Benutzerkonten als Dienstkonten zu verwenden. Untersuchen Sie bei jedem Dienst, von dem dieser Kontotyp verwendet wird, ob er nicht auch für die Verwendung eines gMSA oder sMSA konfiguriert werden kann.
 
-Außerdem sollten Sie beurteilen, ob der Dienst selbst in Azure migriert werden kann, damit sicherere Dienstkontotypen verwendet werden können. 
+Prüfen Sie außerdem, ob der Dienst zu Azure migriert werden kann, um die Verwendung sichererer Dienstkontotypen zu ermöglichen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie die folgenden Artikel zum Schützen von Dienstkonten:
 
-* [Einführung in lokale Dienstkonten](service-accounts-on-premises.md)
+Weitere Informationen zum Schutz von Dienstkonten finden Sie in den folgenden Artikeln:
 
-* [Schützen von gruppenverwalteten Dienstkonten](service-accounts-group-managed.md)
-
-* [Schützen von eigenständigen verwalteten Dienstkonten](service-accounts-standalone-managed.md)
-
-* [Schützen von Computerkonten](service-accounts-computer.md)
-
-* [Schützen von Benutzerkonten](service-accounts-user-on-premises.md)
-
+* [Einführung in lokale Dienstkonten](service-accounts-on-premises.md)  
+* [Schützen von gruppenverwalteten Dienstkonten](service-accounts-group-managed.md)  
+* [Schützen von eigenständigen verwalteten Dienstkonten](service-accounts-standalone-managed.md)  
+* [Schützen von Computerkonten](service-accounts-computer.md)  
 * [Steuern lokaler Dienstkonten](service-accounts-govern-on-premises.md)
 
  

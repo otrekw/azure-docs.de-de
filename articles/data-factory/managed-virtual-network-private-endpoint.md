@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: b6000d8ff3eb35d678a94adc021efcadf8a77f81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34211feb34b3e2ec21b9bc0e6a180df0febd8c76
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699629"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987936"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory (Vorschauversion)
 
@@ -74,12 +74,56 @@ Interaktive Erstellungsfunktionen werden beispielsweise für Testverbindungen, d
 
 ![Interaktive Erstellung](./media/managed-vnet/interactive-authoring.png)
 
+## <a name="create-managed-virtual-network-via-azure-powershell"></a>Erstellen eines verwalteten virtuellen Netzwerks über Azure PowerShell
+```powershell
+$subscriptionId = ""
+$resourceGroupName = ""
+$factoryName = ""
+$managedPrivateEndpointName = ""
+$integrationRuntimeName = ""
+$apiVersion = "2018-06-01"
+$privateLinkResourceId = ""
+
+$vnetResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/managedVirtualNetworks/default"
+$privateEndpointResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/managedVirtualNetworks/default/managedprivateendpoints/${managedPrivateEndpointName}"
+$integrationRuntimeResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/integrationRuntimes/${integrationRuntimeName}"
+
+# Create managed Virtual Network resource
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${vnetResourceId}"
+
+# Create managed private endpoint resource
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${privateEndpointResourceId}" -Properties @{
+        privateLinkResourceId = "${privateLinkResourceId}"
+        groupId = "blob"
+    }
+
+# Create integration runtime resource enabled with VNET
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeResourceId}" -Properties @{
+        type = "Managed"
+        typeProperties = @{
+            computeProperties = @{
+                location = "AutoResolve"
+                dataFlowProperties = @{
+                    computeType = "General"
+                    coreCount = 8
+                    timeToLive = 0
+                }
+            }
+        }
+        managedVirtualNetwork = @{
+            type = "ManagedVirtualNetworkReference"
+            referenceName = "default"
+        }
+    }
+
+```
+
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 ### <a name="supported-data-sources"></a>Unterstützte Datenquellen
 Die nachstehenden Datenquellen werden für eine Verbindung über einen privaten Link aus einem verwalteten virtuellen ADF-Netzwerk unterstützt.
-- Azure Blob Storage
-- Azure-Tabellenspeicher
-- Azure Files
+- Azure Blob Storage (ohne Speicherkonto V1)
+- Azure Table Storage (ohne Speicherkonto V1)
+- Azure Files (ohne Speicherkonto V1)
 - Azure Data Lake Gen2
 - Azure SQL-Datenbank (ohne Azure SQL Managed Instance)
 - Azure Synapse Analytics
@@ -92,22 +136,36 @@ Die nachstehenden Datenquellen werden für eine Verbindung über einen privaten 
 - Azure Database for MariaDB
 
 ### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory ist in den folgenden Azure-Regionen verfügbar:
-- East US
-- USA (Ost) 2
-- USA, Westen-Mitte
-- USA (Westen)
-- USA, Westen 2
-- USA Süd Mitte
-- USA (Mitte)
-- Nordeuropa
-- Europa, Westen
-- UK, Süden
-- Asien, Südosten
 - Australien (Osten)
 - Australien, Südosten
+- Brasilien Süd
+- Kanada, Mitte
+- Kanada, Osten
+- Indien, Mitte
+- USA (Mitte)
+- East US
+- USA (Ost 2)
+- Frankreich, Mitte
+- Japan, Osten
+- Japan, Westen
+- Korea, Mitte
+- Nordeuropa
+- Norwegen, Osten
+- Südafrika, Norden
+- USA Süd Mitte
+- Südostasien
+- Schweiz, Norden
+- Vereinigte Arabische Emirate, Norden
+- UK, Süden
+- UK, Westen
+- USA, Westen-Mitte
+- Europa, Westen
+- USA (Westen)
+- USA, Westen 2
+
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Ausgehende Kommunikation über einen öffentlichen Endpunkt von einem verwaltetem virtuellen ADF-Netzwerk
-- Nur Port 443 wird für die ausgehende Kommunikation geöffnet.
+- Alle Ports sind für die ausgehende Kommunikation geöffnet.
 - Azure Storage und Azure Data Lake Gen2 werden für eine Verbindung über einen öffentlichen Endpunkt von einem verwalteten virtuellen ADF-Netzwerk nicht unterstützt.
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Erstellung eines verknüpften Diensts von Azure Key Vault 

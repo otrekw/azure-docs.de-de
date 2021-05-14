@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: b73e7f8c13f621bc359a2ae79a725829420a3ecc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23d95e02c74918de711b18c7580c3774b19c6227
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455591"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229430"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Advanced Threat Protection für Azure Cosmos DB (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ Advanced Threat Protection für Azure Cosmos DB erkennt Anomalien bei Aktivität
 
 Sie können Advanced Threat Protection auf verschiedene Arten konfigurieren, die in den folgenden Abschnitten beschrieben werden.
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com/).
 
@@ -57,14 +57,14 @@ Sie können Advanced Threat Protection auf verschiedene Arten konfigurieren, die
     * Klicken Sie auf die Option **Advanced Threat Protection**, um sie zu aktivieren (**EIN**).
     * Klicken Sie auf **Speichern**, um die neue oder aktualisierte Advanced Threat Protection-Richtlinie zu speichern.   
 
-### <a name="rest-api"></a>[REST-API](#tab/rest-api)
+# <a name="rest-api"></a>[REST-API](#tab/rest-api)
 
 Verwenden Sie REST-API-Befehle, um die Advanced Threat Protection-Einstellung für ein bestimmtes Azure Cosmos DB-Konto zu erstellen, zu aktualisieren oder abzurufen.
 
 * [Advanced Threat Protection – Create (Erstellen)](/rest/api/securitycenter/advancedthreatprotection/create)
 * [Advanced Threat Protection – Get (Abrufen)](/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Verwenden Sie die folgenden PowerShell-Cmdlets:
 
@@ -72,12 +72,12 @@ Verwenden Sie die folgenden PowerShell-Cmdlets:
 * [Get Advanced Threat Protection (Advanced Threat Protection abrufen)](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
 * [Disable Advanced Threat Protection (Advanced Threat Protection deaktivieren)](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
-### <a name="arm-template"></a>[ARM-Vorlage](#tab/arm-template)
+# <a name="arm-template"></a>[ARM-Vorlage](#tab/arm-template)
 
 Verwenden Sie zum Einrichten von Cosmos DB mit aktivierter Advanced Threat Protection-Instanz eine ARM-Vorlage (Azure Resource Manager).
 Weitere Informationen finden Sie unter [Create a CosmosDB Account with Advanced Threat Protection](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/) (Erstellen eines Cosmos DB-Kontos mit Advanced Threat Protection).
 
-### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
+# <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 Verwenden Sie eine Azure-Richtlinie, um Advanced Threat Protection für Cosmos DB zu aktivieren.
 

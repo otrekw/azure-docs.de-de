@@ -1,20 +1,22 @@
 ---
 title: Erstellen eines ausführenden Azure Automation-Kontos
-description: In diesem Artikel wird beschrieben, wie Sie mit PowerShell oder über das Azure-Portal ein ausführendes Konto erstellen.
+description: In diesem Artikel wird beschrieben, wie Sie mit PowerShell oder über das Azure-Portal ein Azure Automation ausführendes Konto erstellen.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/06/2021
+ms.date: 04/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: ef6afff30da48b79b42e5fb4b3c72c3500f22dd1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 368bbfd0bc4dd0a3c8c2792487db52e8585c2ea1
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172302"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277622"
 ---
 # <a name="how-to-create-an-azure-automation-run-as-account"></a>Erstellen eines ausführenden Azure Automation-Kontos
 
 Ausführende Konten in Azure Automation ermöglichen die Authentifizierung für die Verwaltung von Ressourcen mit dem Azure Resource Manager- oder dem klassischen Azure-Bereitstellungsmodell mithilfe von Automation-Runbooks und anderen Automation-Features. In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal oder mit der Azure PowerShell ein ausführendes Konto oder ein klassisches ausführendes Konto erstellen.
+
+Wenn Sie das ausführende oder klassische ausführende Konto im Azure-Portal erstellen, wird standardmäßig ein selbstsigniertes Zertifikat verwendet. Wenn Sie ein Zertifikat verwenden möchten, das von Ihrer Unternehmens- oder einer Drittanbieterzertifizierungsstelle ausgestellt wurde, können Sie das [PowerShell-Skript zum Erstellen eines ausführenden Kontos](#powershell-script-to-create-a-run-as-account) verwenden.
 
 ## <a name="create-account-in-azure-portal"></a>Erstellen eines Kontos im Azure-Portal
 
@@ -63,9 +65,8 @@ Führen Sie die folgenden Schritte aus, um die Werte für `AutomationAccountName
 
 Das PowerShell-Skript unterstützt mehrere Konfigurationen.
 
-* Erstellen eines ausführenden Kontos mit einem selbstsignierten Zertifikat
 * Erstellen Sie ein ausführendes Konto und/oder ein klassisches ausführendes Konto mit einem selbstsignierten Zertifikat.
-* Erstellen Sie ein ausführendes Konto und/oder ein klassisches ausführendes Konto, indem Sie ein Zertifikat nutzen, das von Ihrer Unternehmenszertifizierungsstelle ausgestellt wurde.
+* Erstellen Sie ein ausführendes Konto und/oder ein klassisches ausführendes Konto, indem Sie ein Zertifikat nutzen, das von Ihrer Unternehmens- oder einer Drittanbieterzertifizierungsstelle ausgestellt wurde.
 * Erstellen Sie ein ausführendes Konto und/oder ein klassisches ausführendes Konto mit einem selbstsignierten Zertifikat in der Azure Government-Cloud.
 
 1. Laden Sie das Skript herunter, und speichern Sie es mit dem folgenden Befehl in einem lokalen Ordner.
@@ -108,6 +109,6 @@ Das PowerShell-Skript unterstützt mehrere Konfigurationen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur grafischen Erstellung finden Sie unter [Erstellen grafischer Runbooks in Azure Automation](automation-graphical-authoring-intro.md).
 * Informationen zu den ersten Schritten mit PowerShell-Runbooks finden Sie unter [Tutorial: Erstellen eines PowerShell-Runbooks](learn/automation-tutorial-runbook-textual-powershell.md).
+
 * Informationen zu den ersten Schritten mit Python 3-Runbooks finden Sie im [Tutorial: Erstellen eines Python 3-Runbooks](learn/automation-tutorial-runbook-textual-python-3.md).

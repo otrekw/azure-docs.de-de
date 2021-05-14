@@ -3,12 +3,12 @@ title: Vorgänge auf Steuerungsebene und auf Datenebene
 description: Beschreibt den Unterschied zwischen Vorgängen auf Steuerungsebene und auf Datenebene. Vorgänge auf Steuerungsebene werden von Azure Resource Manager verarbeitet. Vorgänge auf Datenebene werden von einem Dienst verarbeitet.
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: 76304c81a1af1eef87d12cfd4130867851a61d28
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 40bb3291e4eec589c88bcd6ffd0f94a718ce8d1f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105544093"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132087"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure-Steuerungsebene und -Datenebene
 
@@ -33,7 +33,7 @@ Alle Anforderungen für Vorgänge auf Steuerungsebene werden an die Azure Resour
 * Für Azure Deutschland ist die URL `https://management.microsoftazure.de/`.
 * Für Microsoft Azure China 21Vianet ist die URL `https://management.chinacloudapi.cn`.
 
-Informationen zu den Vorgängen, die die Azure Resource Manager-URL verwenden, finden Sie unter [Azure-REST-API](/rest/api/azure/). Beispielsweise ist der [create- oder update-Vorgang](/rest/api/mysql/databases/createorupdate) für MySQL ein Vorgang der Steuerungsebene, weil die Anforderungs-URL wie folgt lautet:
+Informationen zu den Vorgängen, die die Azure Resource Manager-URL verwenden, finden Sie unter [Azure-REST-API](/rest/api/azure/). Beispielsweise ist der [create- oder update-Vorgang](/rest/api/mysql/flexibleserver(preview)/servers/update) für MySQL ein Vorgang der Steuerungsebene, weil die Anforderungs-URL wie folgt lautet:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases/{databaseName}?api-version=2017-12-01
@@ -52,7 +52,7 @@ Die Steuerungsebene umfasst zwei Szenarien für die Verarbeitung von Anforderung
 
 ## <a name="data-plane"></a>Datenebene
 
-Anforderungen für Vorgänge auf Datenebene werden an einen Endpunkt gesendet, der für Ihre Instanz spezifisch ist. Beispielsweise ist der [Vorgang „Sprache erkennen“](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection) in Cognitive Services ein Vorgang auf Datenebene, da die Anforderungs-URL wie folgt lautet:
+Anforderungen für Vorgänge auf Datenebene werden an einen Endpunkt gesendet, der für Ihre Instanz spezifisch ist. Beispielsweise ist der [Vorgang „Sprache erkennen“](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md) in Cognitive Services ein Vorgang auf Datenebene, da die Anforderungs-URL wie folgt lautet:
 
 ```http
 POST {Endpoint}/text/analytics/v2.0/languages

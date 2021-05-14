@@ -3,13 +3,13 @@ title: Beenden der Überwachung Ihres Azure Kubernetes Service-Clusters | Micros
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung Ihres Azure AKS-Clusters mit Container Insights beenden können.
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 619b6fc4cce860e5869fd0b31e303b4a474f8428
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c46986f87141e9c8ad4c900b765e1fb30592a56d
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774015"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316927"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>Beenden der Überwachung Ihres Azure Kubernetes Service (AKS) mit Container Insights
 

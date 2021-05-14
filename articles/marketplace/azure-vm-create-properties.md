@@ -7,16 +7,16 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 281553782774c31ec8cfaf614542fd739c4d3dd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5942368ba1709127b815a35676b716955c1bee8f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629528"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819086"
 ---
-# <a name="how-to-configure-virtual-machine-offer-properties"></a>Konfigurieren von VM-Angebotseigenschaften
+# <a name="configure-virtual-machine-offer-properties"></a>Konfigurieren von VM-Angebotseigenschaften
 
-Auf der Seite **Eigenschaften** (Option in Partner Center im linken Navigationsmenü) definieren Sie die Kategorien zum Gruppieren Ihres VM-Angebots im Azure Marketplace, die Anwendungsversion und die Verträge für Ihr Angebot.
+Auf der Seite **Eigenschaften** (Option im linken Navigationsmenü) definieren Sie die Kategorien zum Gruppieren Ihres VM-Angebots im Azure Marketplace, die Anwendungsversion und die Verträge für Ihr Angebot.
 
 ## <a name="select-a-category"></a>Kategorie auswählen
 

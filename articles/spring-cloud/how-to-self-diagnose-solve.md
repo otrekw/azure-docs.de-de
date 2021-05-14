@@ -7,24 +7,24 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a84ed0efe7cf5f8fe140cb3d47b7ad19d4b8b817
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877531"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134679"
 ---
-# <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Selbstdiagnose und Lösung von Problemen in Azure Spring Cloud
+# <a name="self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Selbstdiagnose und Lösung von Problemen in Azure Spring Cloud
 
 **Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
 Die Azure Spring Cloud-Diagnose ist ein interaktives Verfahren, das Sie bei der Problembehandlung Ihrer App ohne Konfiguration unterstützt. Durch die Azure Spring Cloud-Diagnose werden Probleme identifiziert und Informationen bereitgestellt, die Sie bei der Problembehandlung und -behebung unterstützen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Für dieses Tutorial benötigen Sie Folgendes:
+Für diese Übung benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-* Eine bereitgestellte Azure Spring Cloud-Dienstinstanz. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](spring-cloud-quickstart.md).
+* Eine bereitgestellte Azure Spring Cloud-Dienstinstanz. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](./quickstart.md).
 * Mindestens eine bereits in Ihrer Dienstinstanz erstellte Anwendung.
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Navigieren zur Diagnoseseite
@@ -56,5 +56,5 @@ Einige Ergebnisse enthalten zugehörige Dokumentation.
  ![Zugehörige Details](media/spring-cloud-diagnose/related-details.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen](spring-cloud-tutorial-alerts-action-groups.md)
-* [Sicherheitskontrollen für den Azure Spring Cloud-Dienst](spring-cloud-concept-security-controls.md)
+* [Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen](./tutorial-alerts-action-groups.md)
+* [Sicherheitskontrollen für den Azure Spring Cloud-Dienst](./concept-security-controls.md)

@@ -2,13 +2,13 @@
 title: Asynchrones Messaging mit Service Bus | Microsoft Docs
 description: Erfahren Sie, wie Azure Service Bus Asynchronität über einen Speicher- und Weiterleitungsmechanismus mit Warteschlangen, Themen und Abonnements unterstützt.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: e37c18b95bca7ef1e6e8f0d74976bb73b214624a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/23/2021
+ms.openlocfilehash: 32fbbe997819de42eb63b4efd40024cce6087b96
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500630"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988818"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Asynchrone Nachrichtenmuster und Hochverfügbarkeit
 
@@ -41,7 +41,7 @@ Es gibt mehrere Arten, Probleme mit Nachrichten und Entitäten zu behandeln, und
 Service Bus enthält eine Reihe von Entschärfungen für diese Probleme. In den folgenden Abschnitten werden die einzelnen Probleme und die entsprechenden Lösungen beschrieben.
 
 ### <a name="throttling"></a>Drosselung
-Mit Service Bus ermöglicht die Drosselung eine kooperative Nachrichtenratenverwaltung. Jeder einzelne Service Bus-Knoten enthält viele Entitäten. Jede dieser Entitäten stellt die Anforderungen an das System in Bezug auf CPU, Arbeitsspeicher, Speicher und andere Facets. Wenn für diese Facets eine Nutzung ermittelt wird, die definierte Schwellenwerte überschreitet, kann Service Bus eine bestimmte Anforderung verweigern. Der Aufrufer empfängt [ServerBusyException][ServerBusyException] und führt nach 10 Sekunden einen Wiederholungsversuch durch.
+Mit Service Bus ermöglicht die Drosselung eine kooperative Nachrichtenratenverwaltung. Jeder einzelne Service Bus-Knoten enthält viele Entitäten. Jede dieser Entitäten stellt die Anforderungen an das System in Bezug auf CPU, Arbeitsspeicher, Speicher und andere Facets. Wenn für diese Facets eine Nutzung ermittelt wird, die definierte Schwellenwerte überschreitet, kann Service Bus eine bestimmte Anforderung verweigern. Der Anrufer erhält eine Server-Besetzt-Ausnahme und versucht es nach 10 Sekunden erneut.
 
 Als Lösung muss der Code den Fehler lesen und alle Wiederholungsversuche für die Nachricht für mindestens 10 Sekunden anhalten. Da der Fehler auf Teilen der Kundenanwendung auftreten kann, wird erwartet, dass die Wiederholungslogik auf allen Teilen unabhängig ausgeführt wird. Der Code kann die Wahrscheinlichkeit der Drosselung durch Aktivierung der Partitionierung für eine Warteschlange oder ein Thema reduzieren.
 
@@ -51,27 +51,10 @@ Bei anderen Komponenten in Azure können gelegentlich Dienstprobleme auftreten. 
 ### <a name="service-bus-failure-on-a-single-subsystem"></a>Ausfall von Service Bus in einem einzelnen Subsystem
 Bei jeder Anwendung können Umstände dazu führen, dass eine interne Komponente von Service Bus nicht mehr konsistent ist. Wenn Service Bus dies erkennt, werden Daten von der Anwendung erfasst, um die Diagnose des Problems zu unterstützen. Nachdem die Daten erfasst wurden, wird die Anwendung neu gestartet, um zu versuchen, einen konsistenten Status wiederherzustellen. Dieser Prozess läuft ziemlich schnell ab und führt dazu, dass eine Entität für einige Minuten nicht verfügbar zu sein scheint, obwohl die normalen Ausfallzeiten viel kürzer sind.
 
-In diesen Fällen generiert die Clientanwendung eine Ausnahme des Typs [System.TimeoutException][System.TimeoutException] oder [MessagingException][MessagingException]. Service Bus enthält eine Lösung zur Behebung dieses Problems in Form einer automatisierten Clientwiederholungslogik. Wenn der Wiederholungszeitraum beendet ist und die Nachricht nicht zugestellt wurde, können Sie die Untersuchung mit anderen Features durchführen, die im Artikel [Behandeln von Ausfällen und Notfällen][handling outages and disasters] beschrieben werden.
+In solchen Fällen generiert die Client-Anwendung eine Timeout-Ausnahme oder eine Messaging-Ausnahme. Service Bus enthält eine Lösung zur Behebung dieses Problems in Form einer automatisierten Clientwiederholungslogik. Wenn der Wiederholungszeitraum beendet ist und die Nachricht nicht zugestellt wurde, können Sie die Untersuchung mit anderen Features durchführen, die im Artikel [Behandeln von Ausfällen und Notfällen][handling outages and disasters] beschrieben werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Da Sie nun mit den Grundlagen des asynchronen Messagings in Service Bus vertraut sind, können Sie sich ausführlicher mit [Ausfällen und Notfällen][handling outages and disasters] beschäftigen.
 
-[ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
-[System.TimeoutException]: /dotnet/api/system.timeoutexception
-[MessagingException]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
-[Microsoft.ServiceBus.Messaging.MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[MessageReceiver]: /dotnet/api/microsoft.servicebus.messaging.messagereceiver
-[QueueClient]: /dotnet/api/microsoft.servicebus.messaging.queueclient
-[TopicClient]: /dotnet/api/microsoft.servicebus.messaging.topicclient
-[Microsoft.ServiceBus.Messaging.PairedNamespaceOptions]: /dotnet/api/microsoft.servicebus.messaging.pairednamespaceoptions
-[MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[SendAvailabilityPairedNamespaceOptions]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
-[NamespaceManager]: /dotnet/api/microsoft.servicebus.namespacemanager
-[PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[EnableSyphon]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
-[System.TimeSpan.Zero]: /dotnet/api/system.timespan.zero
-[IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
-[UnauthorizedAccessException]: /dotnet/api/system.unauthorizedaccessexception
-[BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
 [handling outages and disasters]: service-bus-outages-disasters.md

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: 0fd28262f4a4b852386fa354037e69c5097109c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef48074c5346374b12eb5a3a3aea50b2c753a082
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104723538"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950296"
 ---
 # <a name="2---create-and-load-search-index-with-javascript"></a>2: Erstellen und Laden des Suchindexes mit JavaScript
 
@@ -61,14 +61,14 @@ Das Skript verwendet das Azure SDK für Cognitive Search:
 * [npm-Paket @azure/search-documents](https://www.npmjs.com/package/@azure/search-documents)
 * [Referenzdokumentation](/javascript/api/overview/azure/search-documents-readme)
 
-1. Öffnen Sie in Visual Studio Code die Datei `bulk_insert_books.js` im Unterverzeichnis `search-web/bulk-insert`, und ersetzen Sie die folgenden Variablen durch Ihre eigenen Werte, um sich mit dem Azure Search SDK zu authentifizieren:
+1. Öffnen Sie in Visual Studio Code die Datei `bulk_insert_books.js` im Unterverzeichnis `search-website/bulk-insert`, und ersetzen Sie die folgenden Variablen durch Ihre eigenen Werte, um sich mit dem Azure Search SDK zu authentifizieren:
 
     * YOUR-SEARCH-RESOURCE-NAME
     * YOUR-SEARCH-ADMIN-KEY
 
     :::code language="javascript" source="~/azure-search-javascript-samples/search-website/bulk-insert/bulk_insert_books.js" highlight="16,17" :::
 
-1. Öffnen Sie in Visual Studio ein integriertes Terminal für das Unterverzeichnis `search-web/bulk-insert` des Projektverzeichnisses, und führen Sie den folgenden Befehl aus, um die Abhängigkeiten zu installieren: 
+1. Öffnen Sie in Visual Studio ein integriertes Terminal für das Unterverzeichnis `search-website/bulk-insert` des Projektverzeichnisses, und führen Sie den folgenden Befehl aus, um die Abhängigkeiten zu installieren: 
 
     ```bash
     npm install 
@@ -76,7 +76,7 @@ Das Skript verwendet das Azure SDK für Cognitive Search:
 
 ## <a name="run-the-bulk-import-script-for-search"></a>Ausführen des Massenimportskripts für die Suche
 
-1. Verwenden Sie weiterhin das integrierte Terminal in Visual Studio für das Unterverzeichnis `search-web/bulk-insert` des Projektverzeichnisses, um den folgenden Bash-Befehl zum Ausführen des Skripts `bulk_insert_books.js` auszuführen:
+1. Verwenden Sie weiterhin das integrierte Terminal in Visual Studio für das Unterverzeichnis `search-website/bulk-insert` des Projektverzeichnisses, um den folgenden Bash-Befehl zum Ausführen des Skripts `bulk_insert_books.js` auszuführen:
 
     ```javascript
     npm start

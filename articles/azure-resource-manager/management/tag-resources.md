@@ -3,13 +3,13 @@ title: Markieren von Ressourcen, Ressourcengruppen und Abonnements für die logi
 description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die Abrechnung und Verwaltung anwenden können.
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1e755a378fd71ea2763cc3e43477876fa3e8c5d5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 0ee2274dcd13af0bcbfe342039681ecc7b949a7b
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934188"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330961"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
@@ -684,10 +684,10 @@ Mit der folgenden Vorlage werden die Tags eines Objekts entweder in einer Ressou
 
 Verwenden Sie zum Arbeiten mit Tags über die Azure-REST-API Folgendes:
 
-* [Tags: Erstellen oder Aktualisieren im Bereich](/rest/api/resources/resources/tags/createorupdateatscope) (PUT-Vorgang)
-* [Tags: Aktualisieren im Bereich](/rest/api/resources/resources/tags/updateatscope) (PATCH-Vorgang)
-* [Tags: Abrufen im Bereich](/rest/api/resources/resources/tags/getatscope) (GET-Vorgang)
-* [Tags: Löschen im Bereich](/rest/api/resources/resources/tags/deleteatscope) (DELETE-Vorgang)
+* [Tags: Erstellen oder Aktualisieren im Bereich](/rest/api/resources/tags/createorupdateatscope) (PUT-Vorgang)
+* [Tags: Aktualisieren im Bereich](/rest/api/resources/tags/updateatscope) (PATCH-Vorgang)
+* [Tags: Abrufen im Bereich](/rest/api/resources/tags/getatscope) (GET-Vorgang)
+* [Tags: Löschen im Bereich](/rest/api/resources/tags/deleteatscope) (DELETE-Vorgang)
 
 ## <a name="inherit-tags"></a>Erben von Tags
 
@@ -712,11 +712,11 @@ Für Tags gelten folgende Einschränkungen:
 * Tag-Namen dürfen die folgenden Zeichen nicht enthalten: `<`, `>`, `%`, `&`, `\`, `?`, `/`
 
    > [!NOTE]
-   > Derzeit lassen Azure DNS-Zonen und Traffic Manager-Dienste auch keine Leerzeichen im Tag zu.
+   > * Azure DNS-Zonen und Traffic Manager unterstützen die Verwendung von Leerzeichen im Tag oder ein Tag, das mit einer Zahl beginnt, nicht.
    >
-   > Die Verwendung von `#` im Tagnamen wird in Azure Front Door nicht unterstützt.
+   > * Die Verwendung von `#` im Tagnamen wird in Azure Front Door nicht unterstützt.
    >
-   > Azure Automation und Azure CDN unterstützen nur 15 Tags für Ressourcen.
+   > * Azure Automation und Azure CDN unterstützen nur 15 Tags für Ressourcen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

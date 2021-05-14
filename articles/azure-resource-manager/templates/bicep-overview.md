@@ -3,12 +3,12 @@ title: Sprache „Bicep“ für Azure Resource Manager-Vorlagen
 description: Hier wird die Sprache „Bicep“ für das Bereitstellen der Infrastruktur in Azure über Azure Resource Manager-Vorlagen beschrieben.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 74028c682b48a492c2e8f13bef538d1694370cbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af207e6ca88eab50fe6030883379c87c0ec05691
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955906"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773745"
 ---
 # <a name="what-is-bicep-preview"></a>Was ist Bicep (Vorschau)?
 
@@ -31,6 +31,17 @@ Nachdem Sie die Tools installiert haben, können Sie das [Bicep-Tutorial](./bice
 Mit dem [Bicep Playground](https://aka.ms/bicepdemo) können Sie die entsprechenden JSON- und Bicep-Dateien zum Vergleich nebeneinander anzeigen.
 
 Informationen zum Konvertieren von vorhandenen ARM-Vorlagen in Bicep finden Sie unter [Konvertieren von ARM-Vorlagen zwischen JSON und Bicep](bicep-decompile.md).
+
+## <a name="benefits-of-bicep-versus-other-tools"></a>Vorteile von Bicep gegenüber anderen Tools
+
+Im Vergleich zu anderen Tools bietet Bicep die folgenden Vorteile:
+
+* **Unterstützung für alle Ressourcentypen und API-Versionen:** In Bicep werden alle Vorschau- und allgemein verfügbaren Versionen für Azure-Dienste direkt unterstützt. Sobald ein Ressourcenanbieter neue Ressourcentypen und API-Versionen einführt, können Sie sie in der Bicep-Datei verwenden. Sie müssen nicht warten, bis Tools aktualisiert werden, um die neuen Dienste verwenden zu können.
+* **Erstellungsfunktionen:** Wenn Sie Bicep-Dateien über VS Code erstellen, profitieren Sie von erstklassigen Erstellungsfunktionen. Der Editor bietet umfassende Typsicherheit, IntelliSense und Syntaxvalidierung.
+* **Modularität:** Sie können den Bicep-Code mithilfe von [Modulen](bicep-modules.md) in verwaltbare Teile unterteilen. Über ein Modul werden zugehörige Ressourcen bereitgestellt. Mit Modulen lässt sich Code wiederverwenden und die Entwicklung vereinfachen. Sie können ein Modul jederzeit in einer Bicep-Datei hinzufügen, wenn Sie die entsprechenden Ressourcen bereitstellen möchten.
+* **Integration in Azure-Diensten:** Bicep ist in Azure-Diensten wie Azure Policy, Vorlagenspezifikationen und Blueprints integriert.
+* **Keine zu verwaltenden Status oder Statusdateien:** Alle Statusänderungen werden in Azure gespeichert. Benutzer können zusammenarbeiten und sicher sein, dass ihre Updates erwartungsgemäß verarbeitet werden. Verwenden Sie den [Was-wäre-wenn-Vorgang](template-deploy-what-if.md), um vor der Bereitstellung der Vorlage eine Vorschau der Änderungen anzuzeigen.
+* **Keine Kosten und Open Source:** Bicep ist gänzlich kostenlos. Sie müssen nicht für Premium-Funktionen bezahlen. Bicep wird auch vom Microsoft-Support unterstützt.
 
 ## <a name="bicep-improvements"></a>Bicep-Verbesserungen
 
@@ -57,11 +68,7 @@ Einen vollständigen Vergleich der Syntax finden Sie unter [Vergleichen von JSON
 
 Bicep verwaltet Abhängigkeiten zwischen Ressourcen automatisch. Sie können die Einstellung `dependsOn` vermeiden, wenn der symbolische Name einer Ressource in einer anderen Ressourcendeklaration verwendet wird.
 
-Mit Bicep können Sie Ihr Projekt in mehrere Module aufteilen.
-
 Die Struktur der Bicep-Datei ist flexibler als die JSON-Vorlage. Sie können an beliebiger Stelle in der Datei Parameter, Variablen und Ausgaben deklarieren. In JSON müssen Sie alle Parameter, Variablen und Ausgaben in den entsprechenden Abschnitten der Vorlage deklarieren.
-
-Die VS Code-Erweiterung für Bicep bietet eine umfassende Überprüfung sowie IntelliSense. Mit der Funktion IntelliSense können Sie beispielsweise die Eigenschaften einer Ressource abrufen.
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 

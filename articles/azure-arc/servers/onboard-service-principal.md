@@ -3,12 +3,13 @@ title: Verbinden von Hybridcomputern mit Azure im großen Stil
 description: In diesem Artikel erfahren Sie, wie Sie Computer über Azure Arc-fähige Server unter Verwendung eines Dienstprinzipals mit Azure verbinden.
 ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1ad3d4619896ff46db266789a17bfca80712e70
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4aad01fd6991c059b2cf891fd4f06ae83a78a0e4
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175939"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831598"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Verbinden von Hybridcomputern mit Azure im großen Stil
 

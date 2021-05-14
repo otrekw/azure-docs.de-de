@@ -1,24 +1,24 @@
 ---
 title: Zuweisen von Rollen zu Azure Enterprise Agreement-Dienstprinzipalnamen
-description: Dieser Artikel unterstützt Sie beim Zuweisen von Rollen zu Dienstprinzipalnamen mithilfe von PowerShell und Rest-APIs.
+description: Dieser Artikel unterstützt Sie beim Zuweisen von Rollen zu Dienstprinzipalnamen mithilfe von PowerShell und REST-APIs.
 author: bandersmsft
 ms.reviewer: ruturajd
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/07/2021
+ms.date: 04/05/2021
 ms.author: banders
-ms.openlocfilehash: e7f5370e1e387947d196959fef31043ea8f4d3bd
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: cb6a7d8411c2be6d76718b79c6fc1339a6600ce5
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102508519"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905502"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Zuweisen von Rollen zu Azure Enterprise Agreement-Dienstprinzipalnamen
 
-Sie können Ihre EA-Registrierung (Enterprise Agreement) im [Azure Enterprise Portal](https://ea.azure.com/) verwalten. Sie können verschiedene Rollen erstellen, um Ihre Organisation zu verwalten, Kosten anzuzeigen und Abonnements zu erstellen. Dieser Artikel unterstützt Sie bei der Automatisierung einiger dieser Aufgaben durch die Verwendung von Azure PowerShell und Rest-APIs mit Azure-Dienstprinzipalnamen (Service Prinzipal Names, SPNs).
+Sie können Ihre EA-Registrierung (Enterprise Agreement) im [Azure Enterprise Portal](https://ea.azure.com/) verwalten. Sie können verschiedene Rollen erstellen, um Ihre Organisation zu verwalten, Kosten anzuzeigen und Abonnements zu erstellen. Dieser Artikel unterstützt Sie bei der Automatisierung einiger dieser Aufgaben durch die Verwendung von Azure PowerShell und REST-APIs mit Azure-Dienstprinzipalnamen (Service Prinzipal Names, SPNs).
 
 Bevor Sie beginnen, stellen Sie sicher, dass Sie den Inhalt der folgenden Artikel kennen:
 
@@ -28,216 +28,185 @@ Bevor Sie beginnen, stellen Sie sicher, dass Sie den Inhalt der folgenden Artike
 
 ## <a name="create-and-authenticate-your-service-principal"></a>Erstellen und Authentifizieren des Dienstprinzipals
 
-Zum Automatisieren von EA-Aktionen mit einem SPN müssen Sie eine Azure Active Directory-Anwendung (Azure AD) erstellen. Die Authentifizierung kann automatisiert erfolgen. Lesen Sie die folgenden Artikel, und befolgen Sie die Schritte zum Erstellen und Authentifizieren des Dienstprinzipals.
+Zum Automatisieren von EA-Aktionen mithilfe eines SPN müssen Sie eine Azure AD-Anwendung (Azure Active Directory) erstellen. Die Authentifizierung kann automatisiert erfolgen.
 
-1. [Erstellen eines Dienstprinzipals](../../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
-2. [Abrufen der Werte für Mandanten-ID und App-ID für die Anmeldung](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
+Führen Sie die Schritte in diesen Artikeln aus, um Ihren Dienstprinzipal zu erstellen und zu authentifizieren.
 
-Der folgende Screenshot zeigt ein Beispiel für die Anwendungsregistrierung.
+- [Erstellen eines Dienstprinzipals](../../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
+- [Abrufen der Werte für Mandanten-ID und App-ID für die Anmeldung](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
+
+Hier sehen Sie ein Beispiel für die Seite für die Anwendungsregistrierung:
 
 :::image type="content" source="./media/assign-roles-azure-service-principals/register-an-application.png" alt-text="Screenshot: Registrieren einer Anwendung" lightbox="./media/assign-roles-azure-service-principals/register-an-application.png" :::
 
 ### <a name="find-your-spn-and-tenant-id"></a>Suchen des SPN und der Mandanten-ID
 
-Außerdem benötigen Sie die Objekt-ID des SPN und die Mandanten-ID der Anwendung. Sie benötigen die Informationen für Berechtigungszuweisungen in späteren Abschnitten.
+Außerdem benötigen Sie die Objekt-ID des SPN und die Mandanten-ID der Anwendung. Sie benötigen diese Informationen für Berechtigungszuweisungen weiter unten in diesem Artikel.
 
-Sie finden die Mandanten-ID der Azure AD-Anwendung auf der Übersichtsseite für die Anwendung. Navigieren Sie im Azure-Portal zu Azure Active Directory, und wählen Sie **Unternehmensanwendungen** aus. Suchen Sie die Anwendung.
+1. Öffnen Sie Azure Active Directory, und wählen Sie **Unternehmensanwendungen** aus.
+1. Suchen Sie Ihre App in der Liste.
 
-:::image type="content" source="./media/assign-roles-azure-service-principals/enterprise-application.png" alt-text="Screenshot: Beispiel für eine Unternehmensanwendung" lightbox="./media/assign-roles-azure-service-principals/enterprise-application.png" :::
+   :::image type="content" source="./media/assign-roles-azure-service-principals/enterprise-application.png" alt-text="Screenshot: Beispiel für eine Unternehmensanwendung" lightbox="./media/assign-roles-azure-service-principals/enterprise-application.png" :::
 
-Wählen Sie die App aus. Im folgenden Beispiel werden die Anwendungs-ID und die Objekt-ID angezeigt.
+1. Wählen Sie die App aus, um die Anwendungs-ID und Objekt-ID zu ermitteln:
 
-:::image type="content" source="./media/assign-roles-azure-service-principals/application-id-object-id.png" alt-text="Screenshot: Eine Anwendungs-ID und Objekt-ID für eine Unternehmensanwendung" lightbox="./media/assign-roles-azure-service-principals/application-id-object-id.png" :::
+   :::image type="content" source="./media/assign-roles-azure-service-principals/application-id-object-id.png" alt-text="Screenshot: Eine Anwendungs-ID und Objekt-ID für eine Unternehmensanwendung" lightbox="./media/assign-roles-azure-service-principals/application-id-object-id.png" :::
 
-Die Mandanten-ID finden Sie auf der Übersichtsseite von Microsoft Azure AD.
+1. Die Mandanten-ID finden Sie auf der Seite **Übersicht** von Microsoft Azure AD.
 
-:::image type="content" source="./media/assign-roles-azure-service-principals/tenant-id.png" alt-text="Screenshot, der zeigt, wo Sie die Mandanten-ID anzeigen können" lightbox="./media/assign-roles-azure-service-principals/tenant-id.png" :::
+   :::image type="content" source="./media/assign-roles-azure-service-principals/tenant-id.png" alt-text="Screenshot: Mandanten-ID" lightbox="./media/assign-roles-azure-service-principals/tenant-id.png" :::
 
-Die Mandanten-ID des Prinzipals wird an verschiedenen Stellen auch als Prinzipal-ID, SPN oder Objekt-ID bezeichnet. Der Wert der Azure AD-Mandanten-ID ähnelt einer GUID mit dem folgenden Format: `11111111-1111-1111-1111-111111111111`.
+>[!NOTE]
+>Ihre Mandanten-ID kann an anderen Stellen als Prinzipal-ID, SPN oder Objekt-ID bezeichnet werden. Der Wert der Azure AD-Mandanten-ID ähnelt einer GUID mit dem folgenden Format: `11111111-1111-1111-1111-111111111111`.
 
 ## <a name="permissions-that-can-be-assigned-to-the-spn"></a>Berechtigungen, die dem SPN zugewiesen werden können
 
-In den nächsten Schritten erteilen Sie der Azure AD-Anwendung die Berechtigung, Aktionen mithilfe einer EA-Rolle auszuführen. Sie können dem SPN nur die folgenden Rollen zuweisen. Die Rollendefinitions-ID wird später in den Zuweisungsschritten genau wie hier angegeben verwendet.
+Später in diesem Artikel erteilen Sie der Azure AD-App Berechtigungen zum Ausführen von Aktionen mit einer EA-Rolle. Sie können dem SPN nur die folgenden Rollen zuweisen, und Sie benötigen die genaue Rollendefinitions-ID wie hier gezeigt:
 
 | Rolle | Zulässige Aktionen | Rollendefinitions-ID |
 | --- | --- | --- |
 | EnrollmentReader | Kann die Nutzung und die Gebühren für alle Konten und Abonnements anzeigen. Kann den Saldo der Azure-Vorauszahlung (früher als Mindestverbrauch bezeichnet) für die Registrierung anzeigen. | 24f8edb6-1668-4659-b5e2-40bb5f3a7d7e |
+| EA purchaser (EA-Einkäufer) | Kann Reservierungsaufträge erwerben und Reservierungstransaktionen anzeigen. Kann die Nutzung und die Gebühren für alle Konten und Abonnements anzeigen. Kann den Saldo der Azure-Vorauszahlung (früher als Mindestverbrauch bezeichnet) für die Registrierung anzeigen. | da6647fb-7651-49ee-be91-c43c4877f0c4  |
 | DepartmentReader | Herunterladen der Nutzungsdetails für die verwaltete Abteilung. Kann die Nutzung und die Gebühren für die Abteilung anzeigen. | db609904-a47f-4794-9be8-9bd86fbffd8a |
 | SubscriptionCreator | Erstellen neuer Abonnements im angegebenen Kontobereich. | a0bcee42-bf30-4d1b-926a-48d21664ef71 |
 
-- Ein EnrollmentReader kann einem SPN nur von einem Benutzer mit der Rolle „EnrollmentWriter“ zugewiesen werden.
-- Ein DepartmentReader kann einem SPN nur von einem Benutzer zugewiesen werden, der über die Rolle „EnrollmentWriter“ oder „DepartmentWriter“ verfügt.
-- Die Rolle „SubscriptionCreator“ kann einem SPN nur von einem Benutzer zugewiesen werden, der der Kontobesitzer des Registrierungskontos ist.
+- Die Rolle „EnrollmentReader“ kann einem SPN nur von einem Benutzer zugewiesen werden, der über die Rolle „EnrollmentWriter“ verfügt.
+- Die Rolle „DepartmentReader“ kann einem SPN nur von einem Benutzer zugewiesen werden, der über die Rolle „EnrollmentWriter“ oder „DepartmentWriter“ verfügt.
+- Die Rolle „SubscriptionCreator“ kann einem SPN nur von einem Benutzer zugewiesen werden, der der Besitzer des Registrierungskontos ist. Die Rolle wird im EA-Portal nicht angezeigt. Sie wird programmgesteuert erstellt und dient nur zur programmgesteuerten Verwendung.
+- Die Rolle des EA-Einkäufers wird im EA-Portal nicht angezeigt. Sie wird programmgesteuert erstellt und dient nur zur programmgesteuerten Verwendung.
 
 ## <a name="assign-enrollment-account-role-permission-to-the-spn"></a>Zuweisen der Registrierungskonto-Rollenberechtigung zum SPN
 
-Lesen Sie den REST-API-Artikel [Rollenzuweisungen – PUT](/rest/api/billing/2019-10-01-preview/roleassignments/put).
+1. Lesen Sie den REST-API-Artikel [Rollenzuweisungen – PUT](/rest/api/billing/2019-10-01-preview/roleassignments/put). Klicken Sie im Artikel auf **Jetzt ausprobieren**, um mit der Verwendung des SPN zu beginnen.
 
-Llicken Sie im Artikel auf **Jetzt testen**, um mit der Verwendung des SPN zu beginnen.
+   :::image type="content" source="./media/assign-roles-azure-service-principals/put-try-it.png" alt-text="Screenshot der Option „Jetzt testen“ im Artikel „Rollenzuweisungen – PUT“" lightbox="./media/assign-roles-azure-service-principals/put-try-it.png" :::
 
-:::image type="content" source="./media/assign-roles-azure-service-principals/put-try-it.png" alt-text="Screenshot der Option „Jetzt testen“ im Artikel „Rollenzuweisungen – PUT“" lightbox="./media/assign-roles-azure-service-principals/put-try-it.png" :::
+1. Melden Sie sich mit Ihren Kontoanmeldeinformationen beim Mandanten mit dem Registrierungszugriff an, den Sie zuweisen möchten.
 
-Melden Sie sich mit Ihrem Konto bei dem Mandanten an, der Zugriff auf die Registrierung hat, der Sie Zugriff zuweisen möchten.
+1. Geben Sie in der API-Anforderung die folgenden Parameter an.
 
-Geben Sie in der API-Anforderung die folgenden Parameter an.
+   - `billingAccountName`: Dieser Parameter ist die **Abrechnungskonto-ID**. Sie finden ihn im Azure-Portal auf der Übersichtsseite **Kostenverwaltung + Abrechnung**.
 
-**billingAccountName**
+      :::image type="content" source="./media/assign-roles-azure-service-principals/billing-account-id.png" alt-text="Screenshot der ID des Abrechnungskontos" lightbox="./media/assign-roles-azure-service-principals/billing-account-id.png" :::
 
-Der Parameter ist die Abrechnungskonto-ID. Sie finden ihn im Azure-Portal auf der Übersichtsseite „Kostenverwaltung + Abrechnung“.
+   - `billingRoleAssignmentName`: Dieser Parameter ist eine eindeutige GUID, die Sie angeben müssen. Eine GUID kann mit dem PowerShell-Befehl [New-Guid](/powershell/module/microsoft.powershell.utility/new-guid) erstellt werden. Sie können eine eindeutige GUID auch über die Website [Online-Generator für GUIDs/UUIDs](https://guidgenerator.com/) generieren.
 
-:::image type="content" source="./media/assign-roles-azure-service-principals/billing-account-id.png" alt-text="Screenshot der Abrechnungskonto-ID" lightbox="./media/assign-roles-azure-service-principals/billing-account-id.png" :::
+   - `api-version`: Verwenden Sie die Version **2019-10-01-preview**. Verwenden Sie den Beispielanforderungstext in [Rollenzuweisungen – PUT – Beispiele](/rest/api/billing/2019-10-01-preview/roleassignments/put#examples).
 
-**billingRoleAssignmentName**
+      Der Anforderungstext enthält JSON-Code mit drei Parametern, die Sie verwenden müssen.
 
-Der Parameter ist eine eindeutige GUID, die Sie angeben müssen. Eine GUID kann mit dem PowerShell-Befehl [New-Guid](/powershell/module/microsoft.powershell.utility/new-guid) erstellt werden.
+      | Parameter | Ort |
+      | --- | --- |
+      | `properties.principalId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
+      | `properties.principalTenantId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
+      | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountName}/billingRoleDefinitions/24f8edb6-1668-4659-b5e2-40bb5f3a7d7e` |
 
-Sie können zum Generieren einer eindeutigen GUID auch die Website [Online GUID / UUID Generator](https://guidgenerator.com/) (in englischer Sprache) verwenden.
+      Der Name des Abrechnungskontos ist der Parameter, den Sie in den API-Parametern verwendet haben. Dabei handelt es sich um die Registrierungs-ID, die im EA-Portal und Azure-Portal angezeigt wird.
 
-**api-version**
+      Beachten Sie, dass `24f8edb6-1668-4659-b5e2-40bb5f3a7d7e` die ID der Abrechnungsrollendefinition für einen Benutzer mit der Rolle „EnrollmentReader“ ist.
 
-Verwenden Sie die Version **2019-10-01-preview**.
+1. Klicken Sie auf **Ausführen**, um den Befehl zu starten.
 
-Der Anforderungstext enthält JSON-Code, den Sie verwenden müssen.
+   :::image type="content" source="./media/assign-roles-azure-service-principals/roleassignments-put-try-it-run.png" alt-text="Screenshot: Beispiel für eine Rollenzuweisung mit „PUT“ nach Klicken auf „Jetzt testen“ mit Beispielinformationen zum Ausführen des Befehls" lightbox="./media/assign-roles-azure-service-principals/roleassignments-put-try-it-run.png" :::
 
-Verwenden Sie den Beispielanforderungstext in [Rollenzuweisungen – PUT – Beispiele](/rest/api/billing/2019-10-01-preview/roleassignments/put#examples).
+   Die Antwort `200 OK` bedeutet, dass der SPN erfolgreich hinzugefügt wurde.
 
-Es gibt drei Parameter, die Sie im JSON-Code verwenden müssen.
+Jetzt können Sie den SPN verwenden, um automatisch auf EA-APIs zuzugreifen. Der SPN verfügt über die Rolle „EnrollmentReader“.
 
-| Parameter | Ort |
-| --- | --- |
-| properties.principalId | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
-| properties.principalTenantId | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
-| properties.roleDefinitionId | „/providers/Microsoft.Billing/billingAccounts/{BillingAccountName}/billingRoleDefinitions/24f8edb6-1668-4659-b5e2-40bb5f3a7d7e“ |
+## <a name="assign-ea-purchaser-role-permission-to-the-spn"></a>Zuweisen der Rollenberechtigung „EA Purchaser“ (EA-Einkäufer) zum SPN
 
-Der Name des Abrechnungskontos ist der Parameter, den Sie in den API-Parametern verwendet haben. Dabei handelt es sich um die Registrierungs-ID, die im EA-Portal und Azure-Portal angezeigt wird.
+Führen Sie für die Rolle „EA Purchaser“ (EA-Einkäufer) die gleichen Schritte wie für „EnrollmentReader“ aus. Geben Sie `roleDefinitionId` an, indem Sie das folgende Beispiel verwenden:
 
-Beachten Sie, dass `24f8edb6-1668-4659-b5e2-40bb5f3a7d7e` die ID der Abrechnungsrollendefinition für einen EnrollmentReader ist.
-
-Klicken Sie auf **Ausführen**, um den Befehl zu starten.
-
-:::image type="content" source="./media/assign-roles-azure-service-principals/roleassignments-put-try-it-run.png" alt-text="Screenshot: Beispiel für eine Rollenzuweisung mit „PUT“ nach Klicken auf „Jetzt testen“ mit Beispielinformationen zum Ausführen des Befehls" lightbox="./media/assign-roles-azure-service-principals/roleassignments-put-try-it-run.png" :::
-
-Die Antwort `200 OK` bedeutet, dass der SPN erfolgreich hinzugefügt wurde.
-
-Jetzt können Sie den SPN (Azure AD-Anwendung mit der Objekt-ID) verwenden, um automatisch auf EA-APIs zuzugreifen. Der SPN verfügt über die Rolle „EnrollmentReader“.
+`"/providers/Microsoft.Billing/billingAccounts/1111111/billingRoleDefinitions/ da6647fb-7651-49ee-be91-c43c4877f0c4"`
 
 ## <a name="assign-the-department-reader-role-to-the-spn"></a>Zuweisen der Rolle „DepartmentReader“ zum SPN
 
-Lesen Sie zunächst den REST-API-Artikel [Zuweisen von Registrierungsrollen für Abteilungen – PUT](/rest/api/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put).
+1. Lesen Sie den REST-API-Artikel [Zuweisen von Registrierungsrollen für Abteilungen – PUT](/rest/api/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put). Klicken Sie im Artikel auf **Jetzt ausprobieren**.
 
-Klicken Sie im Artikel auf **Jetzt testen**.
+   :::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" alt-text="Screenshot: Die Option „Jetzt testen“ im Artikel „Zuweisen von Registrierungsrollen für Abteilungen – PUT“" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" :::
 
-:::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" alt-text="Screenshot: Die Option „Jetzt testen“ im Artikel „Zuweisen von Registrierungsrollen für Abteilungen – PUT“" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" :::
+1. Melden Sie sich mit Ihren Kontoanmeldeinformationen beim Mandanten mit dem Registrierungszugriff an, den Sie zuweisen möchten.
 
-Melden Sie sich mit Ihrem Konto bei dem Mandanten an, der Zugriff auf die Registrierung hat, der Sie Zugriff zuweisen möchten.
+1. Geben Sie in der API-Anforderung die folgenden Parameter an.
 
-Geben Sie in der API-Anforderung die folgenden Parameter an.
+   - `billingAccountName`: Dieser Parameter ist die **Abrechnungskonto-ID**. Sie finden ihn im Azure-Portal auf der Übersichtsseite **Kostenverwaltung + Abrechnung**.
 
-**billingAccountName**
+      :::image type="content" source="./media/assign-roles-azure-service-principals/billing-account-id.png" alt-text="Screenshot der ID des Abrechnungskontos" lightbox="./media/assign-roles-azure-service-principals/billing-account-id.png" :::
 
-Dies ist die ID des Abrechnungskontos. Sie finden sie im Azure-Portal auf der Übersichtsseite „Kostenverwaltung + Abrechnung“.
+   - `billingRoleAssignmentName`: Dieser Parameter ist eine eindeutige GUID, die Sie angeben müssen. Eine GUID kann mit dem PowerShell-Befehl [New-Guid](/powershell/module/microsoft.powershell.utility/new-guid) erstellt werden. Sie können eine eindeutige GUID auch über die Website [Online-Generator für GUIDs/UUIDs](https://guidgenerator.com/) generieren.
 
-:::image type="content" source="./media/assign-roles-azure-service-principals/billing-account-id.png" alt-text="Screenshot der ID des Abrechnungskontos" lightbox="./media/assign-roles-azure-service-principals/billing-account-id.png" :::
+   - `departmentName`: Dieser Parameter ist die Abteilungs-ID. Abteilungs-IDs werden im Azure-Portal auf der Seite **Kostenverwaltung + Abrechnung** > **Abteilungen** angezeigt.
 
-**billingRoleAssignmentName**
+      In diesem Beispiel wurde die Abteilung „ACE“ verwendet. Die ID im Beispiel lautet `84819`.
 
-Der Parameter ist eine eindeutige GUID, die Sie angeben müssen. Eine GUID kann mit dem PowerShell-Befehl [New-Guid](/powershell/module/microsoft.powershell.utility/new-guid) erstellt werden.
+      :::image type="content" source="./media/assign-roles-azure-service-principals/department-id.png" alt-text="Screenshot: Beispiel für eine Abteilungs-ID" lightbox="./media/assign-roles-azure-service-principals/department-id.png" :::
 
-Sie können zum Generieren einer eindeutigen GUID auch die Website [Online GUID / UUID Generator](https://guidgenerator.com/) (in englischer Sprache) verwenden.
+   - `api-version`: Verwenden Sie die Version **2019-10-01-preview**. Verwenden Sie das Beispiel in [Zuweisen von Registrierungsrollen für Abteilungen – PUT](/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put).
 
-**departmentName**
+      Der Anforderungstext enthält JSON-Code mit drei Parametern, die Sie verwenden müssen.
 
-Dies ist die Abteilungs-ID. Die Abteilungs-IDs können im Azure-Portal angezeigt werden. Navigieren Sie zu „Kostenverwaltung + Abrechnung“ > **Abteilungen**.
+      | Parameter | Ort |
+      | --- | --- |
+      | `properties.principalId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
+      | `properties.principalTenantId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
+      | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountName}/billingRoleDefinitions/db609904-a47f-4794-9be8-9bd86fbffd8a` |
 
-In diesem Beispiel wurde die Abteilung „ACE“ verwendet. Die ID im Beispiel lautet `84819`.
+      Der Name des Abrechnungskontos ist der Parameter, den Sie in den API-Parametern verwendet haben. Dabei handelt es sich um die Registrierungs-ID, die im EA-Portal und Azure-Portal angezeigt wird.
 
-:::image type="content" source="./media/assign-roles-azure-service-principals/department-id.png" alt-text="Screenshot: Beispiel für eine Abteilungs-ID" lightbox="./media/assign-roles-azure-service-principals/department-id.png" :::
+      Die Definitions-ID `db609904-a47f-4794-9be8-9bd86fbffd8a` der Abrechnungsrolle gilt für „DepartmentReader“.
 
-**api-version**
+1. Klicken Sie auf **Ausführen**, um den Befehl zu starten.
 
-Verwenden Sie die Version **2019-10-01-preview**.
+   :::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it-run.png" alt-text="Screenshot: Beispiel für die Rollenzuweisung mit „PUT“ nach Klicken auf „Jetzt testen“ im Artikel zum Zuweisen von Registrierungsrollen für Abteilungen mit Beispielinformationen zum Ausführen des Befehls" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it-run.png" :::
 
-Der Anforderungstext enthält JSON-Code, den Sie verwenden müssen.
+   Die Antwort `200 OK` bedeutet, dass der SPN erfolgreich hinzugefügt wurde.
 
-Verwenden Sie das Beispiel in [Zuweisen von Registrierungsrollen für Abteilungen – PUT](/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put). Es gibt drei Parameter, die Sie im JSON-Code verwenden müssen.
-
-| Parameter | Ort |
-| --- | --- |
-| properties.principalId | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
-| properties.principalTenantId | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
-| properties.roleDefinitionId | „/providers/Microsoft.Billing/billingAccounts/{BillingAccountName}/billingRoleDefinitions/db609904-a47f-4794-9be8-9bd86fbffd8a“ |
-
-Der Name des Abrechnungskontos ist der Parameter, den Sie in den API-Parametern verwendet haben. Dabei handelt es sich um die Registrierungs-ID, die im EA-Portal und Azure-Portal angezeigt wird.
-
-Die Definitions-ID `db609904-a47f-4794-9be8-9bd86fbffd8a` der Abrechnungsrolle gilt für einen DepartmentReader.
-
-Klicken Sie auf **Ausführen**, um den Befehl zu starten.
-
-:::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it-run.png" alt-text="Screenshot: Beispiel für die Rollenzuweisung mit „PUT“ nach Klicken auf „Jetzt testen“ im Artikel zum Zuweisen von Registrierungsrollen für Abteilungen mit Beispielinformationen zum Ausführen des Befehls" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it-run.png" :::
-
-Die Antwort `200 OK` bedeutet, dass der SPN erfolgreich hinzugefügt wurde.
-
-Jetzt können Sie den SPN (Azure AD-Anwendung mit der Objekt-ID) verwenden, um automatisch auf EA-APIs zuzugreifen. Der SPN verfügt über die Rolle „DepartmentReader“.
+Jetzt können Sie den SPN verwenden, um automatisch auf EA-APIs zuzugreifen. Der SPN verfügt über die Rolle „DepartmentReader“.
 
 ## <a name="assign-the-subscription-creator-role-to-the-spn"></a>Zuweisen der Rolle „SubscriptionCreator“ zum SPN
 
-Lesen Sie den Artikel [Zuweisen von Registrierungsrollenzuweisungen für Konten – PUT](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put).
+1. Lesen Sie den Artikel [Zuweisen von Registrierungsrollenzuweisungen für Konten – PUT](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Klicken Sie im Artikel auf **Jetzt ausprobieren**, um dem SPN die Rolle „SubscriptionCreator“ zuzuweisen.
 
-Klicken Sie im Artikel auf **Jetzt testen**, um dem SPN die Rolle „SubscriptionCreator“ zuzuweisen.
+   :::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" alt-text="Screenshot: Die Option „Jetzt testen“ im Artikel „Zuweisen von Registrierungsrollen für Konten – PUT“" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" :::
 
-:::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" alt-text="Screenshot: Die Option „Jetzt testen“ im Artikel „Zuweisen von Registrierungsrollen für Konten – PUT“" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" :::
+1. Melden Sie sich mit Ihren Kontoanmeldeinformationen beim Mandanten mit dem Registrierungszugriff an, den Sie zuweisen möchten.
 
-Melden Sie sich mit Ihrem Konto bei dem Mandanten an, der Zugriff auf die Registrierung hat, der Sie Zugriff zuweisen möchten.
+1. Geben Sie in der API-Anforderung die folgenden Parameter an. Lesen Sie den Artikel [Zuweisen von Registrierungsrollen für Konten – PUT – URI-Parameter](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put#uri-parameters).
 
-Geben Sie in der API-Anforderung die folgenden Parameter an. Lesen Sie den Artikel [Zuweisen von Registrierungsrollen für Konten – PUT – URI-Parameter](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put#uri-parameters).
+   - `billingAccountName`: Dieser Parameter ist die **Abrechnungskonto-ID**. Sie finden ihn im Azure-Portal auf der Übersichtsseite **Kostenverwaltung + Abrechnung**.
 
-**billingAccountName**
+      :::image type="content" source="./media/assign-roles-azure-service-principals/billing-account-id.png" alt-text="Screenshot: Abrechnungskonto-ID" lightbox="./media/assign-roles-azure-service-principals/billing-account-id.png" :::
 
-Der Parameter ist die Abrechnungskonto-ID. Sie finden ihn im Azure-Portal auf der Übersichtsseite „Kostenverwaltung + Abrechnung“.
+   - `billingRoleAssignmentName`: Dieser Parameter ist eine eindeutige GUID, die Sie angeben müssen. Eine GUID kann mit dem PowerShell-Befehl [New-Guid](/powershell/module/microsoft.powershell.utility/new-guid) erstellt werden. Sie können eine eindeutige GUID auch über die Website [Online-Generator für GUIDs/UUIDs](https://guidgenerator.com/) generieren.
 
-:::image type="content" source="./media/assign-roles-azure-service-principals/billing-account-id.png" alt-text="Screenshot der ID des Abrechnungskontos" lightbox="./media/assign-roles-azure-service-principals/billing-account-id.png" :::
+   - `enrollmentAccountName`: Dieser Parameter ist die Konto-**ID**. Suchen Sie im Azure-Portal auf der Seite **Kostenverwaltung + Abrechnung** die Konto-ID für den Kontonamen.
 
-**billingRoleAssignmentName**
+      In diesem Beispiel wurde ein Konto mit dem Namen „GTM Test Account“ verwendet. Die ID lautet `196987`.
 
-Der Parameter ist eine eindeutige GUID, die Sie angeben müssen. Eine GUID kann mit dem PowerShell-Befehl [New-Guid](/powershell/module/microsoft.powershell.utility/new-guid) erstellt werden.
+      :::image type="content" source="./media/assign-roles-azure-service-principals/account-id.png" alt-text="Screenshot der Konto-ID" lightbox="./media/assign-roles-azure-service-principals/account-id.png" :::
 
-Sie können zum Generieren einer eindeutigen GUID auch die Website [Online GUID / UUID Generator](https://guidgenerator.com/) (in englischer Sprache) verwenden.
-**enrollmentAccountName**
+   - `api-version`: Verwenden Sie die Version **2019-10-01-preview**. Verwenden Sie das Beispiel in [Zuweisen von Registrierungsrollen für Abteilungen – PUT – Beispiele](/rest/api/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put#putenrollmentdepartmentadministratorroleassignment).
 
-Der Parameter ist die Konto-ID. Suchen Sie im Azure-Portal unter „Cost Management + Abrechnung“ im Bereich „Registrierung“ und „Abteilung“ die Konto-ID für den Kontonamen.
+      Der Anforderungstext enthält JSON-Code mit drei Parametern, die Sie verwenden müssen.
 
-In diesem Beispiel wurde ein Konto mit dem Namen „GTM Test Account“ verwendet. Die ID lautet `196987`.
+      | Parameter | Ort |
+      | --- | --- |
+      | `properties.principalId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
+      | `properties.principalTenantId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
+      | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountID}/enrollmentAccounts/196987/billingRoleDefinitions/a0bcee42-bf30-4d1b-926a-48d21664ef71` |
 
-:::image type="content" source="./media/assign-roles-azure-service-principals/account-id.png" alt-text="Screenshot der Konto-ID" lightbox="./media/assign-roles-azure-service-principals/account-id.png" :::
+      Der Name des Abrechnungskontos ist der Parameter, den Sie in den API-Parametern verwendet haben. Dabei handelt es sich um die Registrierungs-ID, die im EA-Portal und Azure-Portal angezeigt wird.
 
-**api-version**
+      Die Definitions-ID `a0bcee42-bf30-4d1b-926a-48d21664ef71` der Abrechnungsrolle gilt für die Rolle „SubscriptionCreator“.
 
-Verwenden Sie die Version **2019-10-01-preview**.
+1. Klicken Sie auf **Ausführen**, um den Befehl zu starten.
 
-Der Anforderungstext enthält JSON-Code, den Sie verwenden müssen.
+   :::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-account-role-assignments-put-try-it.png" alt-text="Screenshot: Die Option „Jetzt testen“ im Artikel „Zuweisen von Registrierungsrollen für Konten – PUT“" lightbox="./media/assign-roles-azure-service-principals/enrollment-account-role-assignments-put-try-it.png" :::
 
-Verwenden Sie das Beispiel in [Zuweisen von Registrierungsrollen für Abteilungen – PUT – Beispiele](/rest/api/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put#putenrollmentdepartmentadministratorroleassignment).
+   Die Antwort `200 OK` bedeutet, dass der SPN erfolgreich hinzugefügt wurde.
 
-Es gibt drei Parameter, die Sie im JSON-Code verwenden müssen.
-
-| Parameter | Ort |
-| --- | --- |
-| properties.principalId | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
-| properties.principalTenantId | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
-| properties.roleDefinitionId | „/providers/Microsoft.Billing/billingAccounts/{BillingAccountID}/enrollmentAccounts/196987/billingRoleDefinitions/a0bcee42-bf30-4d1b-926a-48d21664ef71“ |
-
-Der Name des Abrechnungskontos ist der Parameter, den Sie in den API-Parametern verwendet haben. Dabei handelt es sich um die Registrierungs-ID, die im EA-Portal und Azure-Portal angezeigt wird.
-
-Die Definitions-ID `a0bcee42-bf30-4d1b-926a-48d21664ef71` der Abrechnungsrolle gilt für die Rolle „SubscriptionCreator“.
-
-Klicken Sie auf **Ausführen**, um den Befehl zu starten.
-
-:::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-account-role-assignments-put-try-it.png" alt-text="Screenshot: Die Option „Jetzt testen“ im Artikel „Zuweisen von Registrierungsrollen für Konten – PUT“" lightbox="./media/assign-roles-azure-service-principals/enrollment-account-role-assignments-put-try-it.png" :::
-
-Die Antwort `200 OK` bedeutet, dass der SPN erfolgreich hinzugefügt wurde.
-
-Jetzt können Sie den SPN (Azure AD-Anwendung mit der Objekt-ID) verwenden, um automatisch auf EA-APIs zuzugreifen. Der SPN verfügt über die Rolle „SubscriptionCreator“.
+Jetzt können Sie den SPN verwenden, um automatisch auf EA-APIs zuzugreifen. Der SPN verfügt über die Rolle „SubscriptionCreator“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Verwaltung im Azure EA-Portal](ea-portal-administration.md).
+Erfahren Sie mehr über die [Verwaltung im Azure EA-Portal](ea-portal-administration.md).

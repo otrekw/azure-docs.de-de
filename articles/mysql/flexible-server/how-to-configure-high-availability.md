@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e217dcaeafd553803f5c9699ab6d7779ed755b67
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241734"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818282"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Verwalten von zonenredundanter Hochverfügbarkeit für Azure Database for MySQL Flexible Server (Vorschau)
 
@@ -62,6 +62,27 @@ Führen Sie diese Schritte aus, um die Hochverfügbarkeit für Ihren flexiblen S
 5.  Klicken Sie auf die Schaltfläche **Hochverfügbarkeit deaktivieren**, um die Hochverfügbarkeit zu deaktivieren.
 
 6.  Es wird eine Benachrichtigung angezeigt, die besagt, dass die Außerbetriebnahme der Bereitstellung der Hochverfügbarkeit ausgeführt wird.
+
+
+## <a name="forced-failover"></a>erzwungenes Failover
+
+Führen Sie die folgenden Schritte aus, um ein Failover von Ihrem primären Server auf den flexiblen Standbyserver zu erzwingen.
+
+1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren flexiblen Azure Database for MySQL-Server aus, bei dem das Feature „Hochverfügbarkeit“ aktiviert wurde.
+
+2.  Klicken Sie auf der Seite „Flexibler Server“ im vorderen Bereich auf **Hochverfügbarkeit**, um die Seite „Hochverfügbarkeit“ zu öffnen.
+
+3.  Überprüfen Sie die **Primäre Verfügbarkeitszone** und die **Standbyverfügbarkeitszone**.
+
+4.  Klicken Sie auf **Erzwungenes Failover**, um das manuelle Failoververfahren einzuleiten. Ein Popupfenster informiert Sie über die erwartete Failoverzeit – abhängig von der aktuellen Workload auf dem primären Server – und die Aktualität des letzten Prüfpunkts. Lesen Sie diese Meldung, und klicken Sie auf „OK“.
+ 
+5. In einer Benachrichtigung wird mitgeteilt, dass ein Failover ausgeführt wird.
+
+6. Sobald das Failover auf den Standbyserver erfolgreich war, wird eine entsprechende Benachrichtigung angezeigt.
+
+7. Überprüfen Sie die neue **Primäre Verfügbarkeitszone** und die **Standbyverfügbarkeitszone**.
+
+![Erzwingen eines Failovers](media/how-to-configure-high-availability/how-to-forced-failover.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c9412e2adeb9b43b4c61437fb41e68bc96b86afd
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c748034145781f639da244b16e3df7053da3d5d2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481836"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103489964"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte
 
@@ -50,7 +50,7 @@ Die in diesem Artikel beschriebenen erweiterten Offlinefunktionen sind in der [I
 
 Lediglich Nicht-IoT Edge-Geräte können als untergeordnete Geräte hinzugefügt werden.
 
-IoT Edge-Geräte und deren zugewiesene untergeordnete Geräte können nach der ersten, einmaligen Synchronisierung unbefristet im Offlinemodus betrieben werden. Die Speicherung von Nachrichten hängt jedoch von der Einstellung für die TTL (Gültigkeitsdauer) und dem verfügbaren Speicherplatz zum Ablegen der Nachrichten ab.
+Azure IOT Edge-Geräte und ihre zugewiesenen untergeordneten Geräte können nach dem anfänglichen einmaligen synchronisieren unbegrenzt Offline funktionieren. Die Speicherung von Nachrichten hängt jedoch von der Gültigkeitsdauer (Time to Live, TTL) und dem verfügbaren Speicherplatz zum Speichern der Nachrichten ab.
 
 ## <a name="set-up-parent-and-child-devices"></a>Einrichten von übergeordneten und untergeordneten Geräten
 
@@ -70,7 +70,7 @@ Sie können die Beziehung über- und untergeordneter Geräte beim Erstellen eine
 
 #### <a name="option-2-use-the-az-command-line-tool"></a>Option 2: Verwenden des `az`-Befehlszeilentools
 
-Mithilfe der [Azure-Befehlszeilenschnittstelle](/cli/azure/) mit [IoT-Erweiterung](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 oder höher) können Sie Beziehungen zwischen über- und untergeordneten Geräten über die [device-identity](/cli/azure/iot/hub/device-identity/)-Unterbefehle verwalten. Im folgenden Beispiel wird eine Abfrage verwendet, um alle Nicht-IoT Edge-Geräte auf dem Hub als untergeordnete Geräte eines IoT Edge-Geräts zuzuweisen.
+Mithilfe der [Azure-Befehlszeilenschnittstelle](/cli/azure/) mit [IoT-Erweiterung](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 oder höher) können Sie Beziehungen zwischen über- und untergeordneten Geräten über die [device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity)-Unterbefehle verwalten. Im folgenden Beispiel wird eine Abfrage verwendet, um alle Nicht-IoT Edge-Geräte auf dem Hub als untergeordnete Geräte eines IoT Edge-Geräts zuzuweisen.
 
 ```azurecli
 # Set IoT Edge parent device

@@ -3,18 +3,18 @@ title: Verstehen von und Arbeiten mit Bereichen in Azure Cost Management
 description: Dieser Artikel hilft Ihnen, die in Azure verfügbaren Bereiche für Abrechnung und Ressourcenverwaltung zu verstehen und wie Sie die Bereiche in Cost Management und APIs verwenden können.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/12/2020
+ms.date: 04/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 729444b1d1ccf55f34e54a4b59508131458c472b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f1b98cdf662f6f518e0bc1c3e869de3774c1bf7e
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054803"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204151"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -42,7 +42,7 @@ Azure unterstützt für die Ressourcenverwaltung drei Bereiche. Jeder Bereich un
 
 - [**Verwaltungsgruppen**](../../governance/management-groups/overview.md): Hierarchische Container mit bis zu acht Ebenen zum Organisieren von Azure-Abonnements.
 
-    Ressourcentyp: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
+    Ressourcentyp: [Microsoft.Management/managementGroups](/rest/api/managementgroups/)
 
 - **Abonnements**: Primäre Container für Azure-Ressourcen.
 
@@ -75,6 +75,19 @@ Cost Management unterstützt für jeden der folgenden Bereiche die folgenden int
 
 Verwaltungsgruppen werden nur unterstützt, wenn sie Abonnements mit Enterprise Agreement (EA), nutzungsbasierter Bezahlung (Pay-as-you-go, PAYG) oder interne Microsoft-Abonnements enthalten. Für Verwaltungsgruppen mit anderen Abonnementtypen (z. B. Abonnements mit Microsoft-Kundenvereinbarung oder Azure Active Directory-Abonnements) können keine Kosten angezeigt werden. Wenn Sie über eine Mischung von Abonnements verfügen, verschieben Sie die nicht unterstützten Abonnements in einen separaten Arm der Verwaltungsgruppenhierarchie, um Cost Management für die unterstützten Abonnements zu aktivieren. Erstellen Sie z. B. zwei Verwaltungsgruppen unter der Stammverwaltungsgruppe: **Azure AD** und **Meine Organisation**. Verschieben Sie das Azure AD-Abonnement in die Verwaltungsgruppe **Azure AD**, und verwenden Sie dann die Verwaltungsgruppe **Meine Organisation** zum Anzeigen und Verwalten von Kosten.
 
+### <a name="feature-behavior-for-each-role"></a>Verhalten der Funktionen für jede Rolle
+
+In der folgenden Tabelle wird gezeigt, wie Cost Management-Funktionen von den einzelnen Rollen verwendet werden. Das folgende Verhalten gilt für alle Azure RBAC-Bereiche:
+
+| **Funktion/Rolle** | **Besitzer** | **Mitwirkender** | **Leser** | **Cost Management-Leser** | **Mitwirkender für Cost Management** |
+| --- | --- | --- | --- | --- | --- | 
+| **Kostenanalyse/Vorhersage/Abfrage-API** | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt |
+| **Freigegebene Ansichten** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Schreibgeschützt | Schreibgeschützt |  Erstellen, Lesen, Aktualisieren, Löschen|
+| **Budgets** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Schreibgeschützt | Schreibgeschützt | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Warnungen** | Lesen, Aktualisieren | Lesen, Aktualisieren | Schreibgeschützt | Schreibgeschützt | Lesen, Aktualisieren |
+| **Exports** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Schreibgeschützt | Schreibgeschützt | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Kostenzuordnungsregeln** | Funktion für Azure RBAC-Bereiche nicht verfügbar | Funktion für Azure RBAC-Bereiche nicht verfügbar | Funktion für Azure RBAC-Bereiche nicht verfügbar | Funktion für Azure RBAC-Bereiche nicht verfügbar | Funktion für Azure RBAC-Bereiche nicht verfügbar | 
+
 ## <a name="enterprise-agreement-scopes"></a>Enterprise Agreement-Bereiche
 
 Enterprise Agreement-Abrechnungskonten (EA), sog. Registrierungen, haben die folgenden Bereiche:
@@ -94,10 +107,10 @@ Governancebereiche sind ein einzelnes Verzeichnis gebunden, EA-Abrechnungsbereic
 
 EA-Abrechnungsbereiche unterstützen die folgenden Rollen:
 
-- **Unternehmensadministrator**: Ermöglicht die Verwaltung von und den Zugriff auf Abrechnungskontoeinstellungen, die Anzeige aller Kosten und die Verwaltung der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der EA-Abrechnungsbereich der [Azure-Rolle „Cost Management-Mitwirkender“](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Unternehmensbenutzer mit Leseberechtigung**: Ermöglicht das Anzeigen der Abrechnungskontoeinstellungen, Kostendaten und Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der EA-Abrechnungsbereich der [Azure-Rolle „Cost Management-Leser“](../../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Unternehmensadministrator**: Ermöglicht die Verwaltung von und den Zugriff auf Abrechnungskontoeinstellungen, die Anzeige aller Kosten und die Verwaltung der Kostenkonfiguration. Beispiele: Budgets und Exporte.
+- **Unternehmensbenutzer mit Leseberechtigung**: Ermöglicht das Anzeigen der Abrechnungskontoeinstellungen, Kostendaten und Kostenkonfiguration. Kann Budgets und Exporte verwalten.
 - **Abteilungsadministrator**: Ermöglicht das Verwalten der Abteilungseinstellungen, wie z.B. Kostenstelle, sowie den Zugriff auf und die Anzeige aller Kosten sowie das Verwalten der Kostenkonfiguration. Beispiele: Budgets und Exporte.  Die Abrechnungskontoeinstellung **Abteilung – Gebühren anzeigen** muss für Abteilungsadministratoren und Benutzer mit Leseberechtigung aktiviert sein, um Kosten einzusehen. Wenn die Option **Abteilung – Gebühren anzeigen** deaktiviert ist, können Abteilungsbenutzer keine Kosten auf einer beliebigen Ebene einsehen, selbst wenn sie Konto- oder Abonnementbesitzer sind.
-- **Abteilungsbenutzer mit Leseberechtigung**: Ermöglicht das Anzeigen der Abteilungseinstellungen, Kostendaten und Kostenkonfiguration. Beispiele: Budgets und Exporte. Wenn die Option **Abteilung – Gebühren anzeigen** deaktiviert ist, können Abteilungsbenutzer keine Kosten auf einer beliebigen Ebene einsehen, selbst wenn sie Konto- oder Abonnementbesitzer sind.
+- **Abteilungsbenutzer mit Leseberechtigung**: Ermöglicht das Anzeigen der Abteilungseinstellungen, Kostendaten und Kostenkonfiguration. Kann Budgets und Exporte verwalten. Wenn die Option **Abteilung – Gebühren anzeigen** deaktiviert ist, können Abteilungsbenutzer keine Kosten auf einer beliebigen Ebene einsehen, selbst wenn sie Konto- oder Abonnementbesitzer sind.
 - **Kontobesitzer**: Ermöglicht das Verwalten von Registrierungskontoeinstellungen (z.B. Kostenstelle), das Anzeigen aller Kosten und das Verwalten der Kostenkonfiguration (z.B. Budgets und Exporte) für das Registrierungskonto. Die Abrechnungskontoeinstellung **Kontobesitzer – Gebühren anzeigen** muss für Kontobesitzer und Azure RBAC-Benutzer aktiviert sein, um Kosten einzusehen.
 
 EA-Abrechnungskontobenutzer haben keinen direkten Zugriff auf Rechnungen. Rechnungen sind in einem externen Volumenlizenzierungssystem verfügbar.
@@ -105,6 +118,43 @@ EA-Abrechnungskontobenutzer haben keinen direkten Zugriff auf Rechnungen. Rechnu
 Azure-Abonnements werden unter Registrierungskonten geschachtelt. Abrechnungsbenutzer haben Zugriff auf Kostendaten für die Abonnements und Ressourcengruppen, die sich unter ihren jeweiligen Bereichen befinden. Sie haben keinen Zugriff zum Anzeigen oder Verwalten von Ressourcen im Azure-Portal. Benutzer können Kosten einsehen, indem sie in der Liste der Dienste im Azure-Portal zu **Kostenverwaltung + Abrechnung** navigieren. Anschließend können sie die Kosten für die spezifischen Abonnements und Ressourcengruppen filtern, über die sie Berichte erstellen müssen.
 
 Abrechnungsbenutzer haben keinen Zugriff auf Verwaltungsgruppen, da sie nicht explizit zu einem bestimmten Abrechnungskonto gehören. Der Zugriff muss Verwaltungsgruppen explizit gewährt werden. In Verwaltungsgruppen werden Kosten aus allen geschachtelten Abonnements zusammengetragen. Allerdings enthalten sie nur nutzungsbasierte Käufe. Sie enthalten keine Käufe wie Reservierungen und Marketplace-Angebote von Drittanbietern. Um diese Kosten anzuzeigen, verwenden Sie das EA-Abrechnungskonto.
+
+### <a name="feature-behavior-for-each-role"></a>Verhalten der Funktionen für jede Rolle
+
+In den folgenden Tabellen wird gezeigt, wie Cost Management-Funktionen von den einzelnen Rollen genutzt werden können.
+
+#### <a name="enrollment-scope"></a>Registrierungsbereich
+
+| **Funktion/Rolle** | **Unternehmensadministrator** | **Unternehmensbenutzer mit Leseberechtigung** |
+| --- | --- | --- |
+| **Kostenanalyse/Vorhersage/Abfrage-API** | Schreibgeschützt | Schreibgeschützt |
+| **Freigegebene Ansichten** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Budgets** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Warnungen** | Lesen, Aktualisieren | Lesen, Aktualisieren |
+| **Exports** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Kostenzuordnungsregeln** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+
+#### <a name="department-scope"></a>Bereich „Abteilung“
+
+| **Funktion/Rolle** | **Unternehmensadministrator** | **Unternehmensbenutzer mit Leseberechtigung** | **Abteilungsadministrator (nur, wenn die Einstellung „DA-Ansichtsgebühren“ aktiviert ist)** | **Abteilungsbenutzer mit Leseberechtigung (nur, wenn die Einstellung „DA-Ansichtsgebühren“ aktiviert ist)** |
+| --- | --- | --- | --- | --- |
+| **Kostenanalyse/Vorhersage/Abfrage-API** | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt |
+| **Freigegebene Ansichten** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Budgets** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Warnungen** | Lesen, Aktualisieren | Lesen, Aktualisieren | Lesen, Aktualisieren | Lesen, Aktualisieren |
+| **Exports** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Kostenzuordnungsregeln** | n.v., gilt nur für Bereich „Abrechnungskonto“ | n.v., gilt nur für Bereich „Abrechnungskonto“ | n.v., gilt nur für Bereich „Abrechnungskonto“ | n.v., gilt nur für Bereich „Abrechnungskonto“ |
+
+#### <a name="account-scope"></a>Kontobereich
+
+| **Funktion/Rolle** | **Unternehmensadministrator** | **Unternehmensbenutzer mit Leseberechtigung** | **Abteilungsadministrator (nur, wenn „DA-Ansichtsgebühren“ aktiviert ist)** | **Abteilungsbenutzer mit Leseberechtigung (nur, wenn die Einstellung „DA-Ansichtsgebühren“ aktiviert ist)** | **Kontobesitzer (nur, wenn die Einstellung „AO-Ansichtsgebühren“ aktiviert ist)** |
+| --- | --- | --- | --- | --- | --- |
+| **Kostenanalyse/Vorhersage/Abfrage-API** | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt |
+| **Freigegebene Ansichten** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Budgets** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Warnungen** | Lesen, Aktualisieren | Lesen, Aktualisieren | Lesen, Aktualisieren | Lesen, Aktualisieren | Lesen, Aktualisieren |
+| **Exports** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Kostenzuordnungsregeln** | n.v., gilt nur für Bereich „Abrechnungskonto“ | n.v., gilt nur für Bereich „Abrechnungskonto“ | n.v., gilt nur für Bereich „Abrechnungskonto“ | n.v., gilt nur für Bereich „Abrechnungskonto“ | n.v., gilt nur für Bereich „Abrechnungskonto“ |
 
 ## <a name="individual-agreement-scopes"></a>Bereiche für einzelne Verträge
 
@@ -144,13 +194,50 @@ Abrechnungsbereiche der Kundenvereinbarung unterstützen die folgenden Rollen:
 
 - **Besitzer**: Ermöglicht die Verwaltung von und den Zugriff auf Abrechnungseinstellungen, die Anzeige aller Kosten und die Verwaltung der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht dieser Abrechnungsbereich der Kundenvereinbarung der [Azure-Rolle „Cost Management-Mitwirkender“](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
 - **Mitwirkender**: Ermöglicht die Verwaltung von und den Zugriff auf Abrechnungseinstellungen, die Anzeige aller Kosten und die Verwaltung der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht dieser Abrechnungsbereich der Kundenvereinbarung der [Azure-Rolle „Cost Management-Mitwirkender“](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Leser**: Ermöglicht die Anzeige von Abrechnungseinstellungen, Kostendaten und der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht dieser Abrechnungsbereich der Kundenvereinbarung der [Azure-Rolle „Cost Management-Leser“](../../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Rechnungs-Manager**: Ermöglicht das Anzeigen und Bezahlen von Rechnungen sowie das Anzeigen von Kostendaten und Konfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht dieser Abrechnungsbereich der Kundenvereinbarung der [Azure-Rolle „Cost Management-Leser“](../../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Leser**: Ermöglicht die Anzeige von Abrechnungseinstellungen, Kostendaten und der Kostenkonfiguration. Kann Budgets und Exporte verwalten.
+- **Rechnungs-Manager**: Ermöglicht das Anzeigen und Bezahlen von Rechnungen sowie das Anzeigen von Kostendaten und Konfiguration. Kann Budgets und Exporte verwalten.
 - **Azure-Abonnementersteller**: Ermöglicht das Erstellen von Azure-Abonnements, Anzeigen von Kosten und Verwalten der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der Abrechnungsbereich der Kundenvereinbarung der EA-Rolle „Registrierungskontobesitzer“.
 
 Azure-Abonnements werden ähnlich wie unter EA-Registrierungskonten unter Rechnungsabschnitten geschachtelt. Abrechnungsbenutzer haben Zugriff auf Kostendaten für die Abonnements und Ressourcengruppen, die sich unter ihren jeweiligen Bereichen befinden. Sie haben jedoch keinen Zugriff zum Anzeigen oder Verwalten von Ressourcen im Azure-Portal. Abrechnungsbenutzer können Kosten einsehen, indem sie in der Liste der Dienste im Azure-Portal zu **Kostenverwaltung + Abrechnung** navigieren. Anschließend können sie die Kosten für die spezifischen Abonnements und Ressourcengruppen filtern, über die sie Berichte erstellen müssen.
 
 Abrechnungsbenutzer haben keinen Zugriff auf Verwaltungsgruppen, da sie nicht explizit zum Abrechnungskonto gehören. Wenn jedoch Verwaltungsgruppen für die Organisation aktiviert sind, werden alle Abonnementkosten im Abrechnungskonto und in der Stammverwaltungsgruppe zusammengeführt, da sie beide auf ein einziges Verzeichnis beschränkt sind. Verwaltungsgruppen enthalten nur Käufe, die nutzungsbasiert sind. Käufe wie Reservierungen und Marketplace-Angebote von Drittanbietern fließen nicht in Verwaltungsgruppen ein. Daher können das Abrechnungskonto und die Stammverwaltungsgruppe unterschiedliche Summen ausweisen. Um diese Kosten anzuzeigen, verwenden Sie das Abrechnungskonto oder entsprechende Abrechnungsprofil.
+
+### <a name="feature-behavior-for-each-role"></a>Verhalten der Funktionen für jede Rolle
+
+In den folgenden Tabellen wird gezeigt, wie Cost Management-Funktionen von den einzelnen Rollen genutzt werden können.
+
+#### <a name="billing-account"></a>Abrechnungskonto
+
+| **Funktion/Rolle** | **Besitzer** | **Mitwirkender** | **Leser** |
+| --- | --- | --- | --- |
+| **Kostenanalyse/Vorhersage/Abfrage-API** | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt |
+| **Freigegebene Ansichten** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Budgets** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Warnungen** | Lesen, Aktualisieren | Lesen, Aktualisieren | Lesen, Aktualisieren |
+| **Exports** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Kostenzuordnungsregeln** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Schreibgeschützt |
+
+#### <a name="billing-profile"></a>Abrechnungsprofil
+
+| **Funktion/Rolle** | **Besitzer** | **Mitwirkender** | **Leser** | **Rechnungs-Manager** |
+| --- | --- | --- | --- | --- |
+| **Kostenanalyse/Vorhersage/Abfrage-API** | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt |
+| **Freigegebene Ansichten** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Budgets** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Warnungen** | Lesen, Aktualisieren | Lesen, Aktualisieren | Lesen, Aktualisieren | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Exports** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Lesen, Aktualisieren |
+| **Kostenzuordnungsregeln** | n.v., gilt nur für das Abrechnungskonto | n.v., gilt nur für das Abrechnungskonto | n.v., gilt nur für das Abrechnungskonto | n.v., gilt nur für das Abrechnungskonto |
+
+#### <a name="invoice-section"></a>Rechnungsabschnitt
+
+| **Funktion/Rolle** | **Besitzer** | **Mitwirkender** | **Leser** | **Azure-Abonnementersteller** |
+| --- | --- | --- | --- | --- |
+| **Kostenanalyse/Vorhersage/Abfrage-API** | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt | Schreibgeschützt |
+| **Freigegebene Ansichten** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Budgets** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Warnungen** | Lesen, Aktualisieren | Lesen, Aktualisieren | Lesen, Aktualisieren | Lesen, Aktualisieren |
+| **Exports** | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen | Erstellen, Lesen, Aktualisieren, Löschen |
+| **Kostenzuordnungsregeln** | n.v., gilt nur für das Abrechnungskonto | n.v., gilt nur für das Abrechnungskonto | n.v., gilt nur für das Abrechnungskonto | n.v., gilt nur für das Abrechnungskonto |
 
 ## <a name="aws-scopes"></a>AWS-Bereiche
 

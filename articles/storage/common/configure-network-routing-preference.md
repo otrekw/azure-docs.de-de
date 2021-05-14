@@ -10,12 +10,12 @@ ms.date: 03/17/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: ed248480803370a75b40c18ee7d0e2641254d84a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e9d1f7f520a7613abde520c35fbacc7355973021
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790453"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208219"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage"></a>Konfigurieren der Netzwerkroutingpräferenz für Azure Storage
 
@@ -146,7 +146,7 @@ Diese Einstellung wirkt sich nur auf den routenspezifischen Endpunkt aus. Diese 
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-1. Verwenden Sie den Befehl [az storage account update](/azure/storage/account#az_storage_account_update), um einen routenspezifischen Endpunkt zu konfigurieren. 
+1. Verwenden Sie den Befehl [az storage account update](/cli/azure/storage/account#az_storage_account_update), um einen routenspezifischen Endpunkt zu konfigurieren. 
 
    - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet, den `--publish-microsoft-endpoints`-Parameter auf `true` fest. 
 

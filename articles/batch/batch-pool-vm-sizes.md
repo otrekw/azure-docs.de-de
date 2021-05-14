@@ -2,25 +2,20 @@
 title: Auswählen von VM-Größen und Images für Pools
 description: 'Vorgehensweise: Auswahl aus den verfügbaren VM-Größen und Betriebssystemversionen für Computeknoten in Azure Batch-Pools'
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 6de7decbf40eede74dd7b92f9f1139e1b31450c8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455194"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126253"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe und eines Images für Computeknoten in einem Azure Batch-Pool
 
 Wenn Sie eine Knotengröße für einen Azure Batch-Pool wählen, können Sie aus fast allen in Azure verfügbaren VM-Größen wählen. Azure bietet eine Reihe von Größen für virtuelle Linux- und Windows-Computer für verschiedene Workloads.
 
 ## <a name="supported-vm-series-and-sizes"></a>Unterstützte VM-Serien und -Größen
-
-Bei der Auswahl einer VM-Größe gelten einige Ausnahmen und Einschränkungen für Ihren Batch-Pool:
-
-- Einige VM-Serien oder VM-Größen werden in Batch nicht unterstützt.
-- Einige VM-Größen sind eingeschränkt und müssen explizit aktiviert werden, damit sie zugeordnet werden können.
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Pools in der Konfiguration des virtuellen Computers
 
@@ -32,7 +27,7 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | Ein | Alle Größen *außer* Standard_A0, Standard_A8, Standard_A9, Standard_A10, Standard_A11 |
 | Av2 | Alle Größen |
 | B | Nicht unterstützt |
-| SL | Nicht unterstützt |
+| DCsv2 | Alle Größen |
 | Dv2, DSv2 | Alle Größen |
 | Dv3, Dsv3 | Alle Größen |
 | Dav4, Dasv4 | Alle Größen |
@@ -48,6 +43,7 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | H | Alle Größen |
 | HB | Alle Größen |
 | HBv2 | Alle Größen |
+| HBv3 | Standard_HB120rs_v3 (andere Größen sind noch nicht verfügbar) |
 | HC | Alle Größen |
 | Ls | Alle Größen |
 | Lsv2 | Alle Größen |
@@ -70,9 +66,12 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 
 Einige VM-Serien (etwa [Mv2](../virtual-machines/mv2-series.md)) können nur mit [VM-Images der zweiten Generation](../virtual-machines/generation-2.md) verwendet werden. VM-Images der zweiten Generation werden genau wie andere VM-Images unter Verwendung der Eigenschaft „sku“ der Konfiguration [imageReference](/rest/api/batchservice/pool/add#imagereference) angegeben. Die SKU-Zeichenfolgen besitzen ein Suffix wie „-g2“ oder „-gen2“. Eine Liste mit von Batch unterstützten VM-Images (einschließlich Images der zweiten Generation) können Sie über die [API zum Auflisten der unterstützten Images](/rest/api/batchservice/account/listsupportedimages), über [PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage) oder über die [Azure-Befehlszeilenschnittstelle](/cli/azure/batch/pool/supported-images) abrufen.
 
-### <a name="pools-in-cloud-service-configuration"></a>Pools in der Clouddienstkonfiguration
+### <a name="pools-in-cloud-services-configuration"></a>Pools in der Cloud Services-Konfiguration
 
-Batch-Pools in der Clouddienstkonfiguration unterstützen alle [VM-Größen für Cloud Services](../cloud-services/cloud-services-sizes-specs.md) **mit Ausnahme** der folgenden:
+> [!WARNING]
+> Cloud Services-Konfigurationspools sind [veraltet](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Verwenden Sie stattdessen VM-Konfigurationspools.
+
+Batch-Pools in der Cloud Services-Konfiguration unterstützen alle [VM-Größen für Cloud Services](../cloud-services/cloud-services-sizes-specs.md) **mit Ausnahme** der folgenden:
 
 | VM-Serie  | Nicht unterstützte Größen |
 |------------|-------------------|
@@ -91,7 +90,7 @@ Batch-Pools in der Clouddienstkonfiguration unterstützen alle [VM-Größen für
 
 - **Kontingente**: Die [Kernkontingente](batch-quota-limit.md#resource-quotas) in Ihrem Batch-Konto können die Anzahl der Knoten einer bestimmten Größe beschränken, die Sie einem Batch-Pool hinzufügen können. Bei Bedarf können Sie eine [Kontingenterhöhung](batch-quota-limit.md#increase-a-quota) anfordern.
 
-- **Poolkonfiguration**: Im Allgemeinen stehen Ihnen mehr VM-Größenoptionen zur Verfügung, wenn Sie einen Pool in der Konfiguration des virtuellen Computers anstatt in der Clouddienstkonfiguration erstellen.
+- **Poolkonfiguration:** Im Allgemeinen stehen Ihnen mehr VM-Größenoptionen zur Verfügung, wenn Sie einen Pool in der Konfiguration der VM anstatt in der Cloud Services-Konfiguration erstellen.
 
 ## <a name="supported-vm-images"></a>Unterstützte VM-Images
 
@@ -100,6 +99,8 @@ Verwenden Sie eine der folgenden APIs, um eine Liste mit Windows- und Linux-VM-I
 - Batch-Dienste-REST-API: [Liste unterstützter Images](/rest/api/batchservice/account/listsupportedimages)
 - Mit PowerShell: [Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLI: [az batch pool supported-images](/cli/azure/batch/pool/supported-images)
+
+Es wird dringend empfohlen, keine Bilder zu verwenden, die bald nicht mehr von Batch unterstützt werden. Die Datumsangaben für die Unterstützungseinstellung können Sie über die [`ListSupportedImages`-API](/rest/api/batchservice/account/listsupportedimages), [PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage) oder über die [Azure CLI](/cli/azure/batch/pool/supported-images) ermitteln. Weitere Informationen zur Auswahl eines VM-Image für den Batch-Pool finden Sie im Leitfaden zu den [bewährten Methoden für Batch](best-practices.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

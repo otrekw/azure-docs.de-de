@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/24/2021
-ms.openlocfilehash: c9f2a21a1183637ec4648868cccd6f343b003f0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d728160413d470383f3eee78fc430aed0125ed7
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026622"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905232"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Verbinden von Azure Data Factory und Azure Purview
 
@@ -34,7 +34,7 @@ Mehrere Azure Data Factorys können eine Verbindung mit einem einzelnen Azure Pu
     - **Getrennt**: Die Data Factory hat Zugriff auf den Katalog, ist aber mit einem anderen Katalog verbunden. Daher wird die Datenherkunft nicht automatisch an den Katalog gemeldet.
     - **CannotAccess**: Der aktuelle Benutzer hat keine Zugriff auf die Data Factory, daher ist der Verbindungsstatus unbekannt.
  >[!Note]
- >Um die Data Factory-Verbindungen anzeigen zu können, muss Ihnen eine der Purview-Rollen zugewiesen sein:
+ >Um die Data Factory-Verbindungen anzeigen zu können, muss Ihnen eine der Purview-Rollen zugewiesen sein. Die Vererbung von Rollen aus der Verwaltungsgruppe wird **nicht unterstützt**:
  >- Mitwirkender
  >- Besitzer
  >- Leser
@@ -43,7 +43,7 @@ Mehrere Azure Data Factorys können eine Verbindung mit einem einzelnen Azure Pu
 ## <a name="create-new-data-factory-connection"></a>Erstellen einer neuen Data Factory-Verbindung
 
 >[!Note]
->Um die Data Factory-Verbindungen hinzuzufügen oder entfernen zu können, muss Ihnen eine der Purview-Rollen zugewiesen sein:
+>Um die Data Factory-Verbindungen hinzuzufügen oder entfernen zu können, muss Ihnen eine der Purview-Rollen zugewiesen sein. Die Vererbung von Rollen aus der Verwaltungsgruppe wird **nicht unterstützt**:
 >- Besitzer
 >- Benutzerzugriffsadministrator
 >

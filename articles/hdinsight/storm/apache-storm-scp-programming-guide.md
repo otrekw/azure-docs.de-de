@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
 ms.openlocfilehash: c993b3f70f609fb79c51ba9be08fa3d5dc7e8317
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104864107"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>SCP-Programmierleitfaden für Apache Storm in Azure HDInsight
@@ -69,7 +69,7 @@ Ihr Plug-In-Code implementiert eine der folgenden Schnittstellen. Welche Schnitt
 
 ### <a name="iscpplugin"></a>ISCPPlugin
 
-**ISCPPlugin** ist die gemeinsame Schnittstelle für viele Plug-Ins. Momentan ist dies noch eine Dummy-Schnittstelle.
+**ISCPPlugin** ist die gemeinsame Schnittstelle für viele Plug-Ins. Derzeit ist es eine Dummy-Schnittstelle.
 
 ```csharp
 public interface ISCPPlugin
@@ -198,7 +198,7 @@ public Dictionary<string, Object> stormConf { get; set; }
 public Dictionary<string, Object> pluginConf { get; set; }  
 ```
 
-Der Teil **stormConf** ist ein durch Storm definierter Parameter, und der Teil **pluginConf** ist ein durch SCP definierter Parameter. Hier sehen Sie ein Beispiel:
+Der Teil **stormConf** ist ein durch Storm definierter Parameter, und der Teil **pluginConf** ist ein durch SCP definierter Parameter. Ein Beispiel:
 
 ```csharp
 public class Constants
@@ -214,7 +214,7 @@ public class Constants
 }
 ```
 
-Der Typ **TopologyContext** ruft den Topologiekontext ab. Es ist am nützlichsten für mehrere parallele Komponenten. Hier sehen Sie ein Beispiel:
+Der Typ **TopologyContext** ruft den Topologiekontext ab. Es ist am nützlichsten für mehrere parallele Komponenten. Ein Beispiel:
 
 ```csharp
 //demo how to get TopologyContext info
@@ -395,7 +395,7 @@ public interface ILocalContext
 
 #### <a name="regular-mode"></a>Normaler Modus
 
-In diesem Modus führt der Storm Java-Prozess die SCP-Plug-Ins aus. Hier sehen Sie ein Beispiel:
+In diesem Modus führt der Storm-Java-Prozess die SCP-Plug-ins aus. Es folgt ein Beispiel:
 
 ```csharp
 namespace Scp.App.HelloWorld
@@ -431,7 +431,7 @@ Sie können Topologiespezifikationen direkt an einen Storm-Cluster zur Ausführu
 
 In SCP.NET wurden die folgenden Funktionen zum Definieren transaktionaler Topologien hinzugefügt:
 
-| Neue Funktion | Parameter | BESCHREIBUNG |
+| Neue Funktion | Parameter | Beschreibung |
 | --- | --- | --- |
 | **tx-topolopy** |*topology-name*<br />*spout-map*<br />*bolt-map* |Definiert eine transaktionale Topologie mit dem Topologienamen, der Spouts-Definitionszuordnung und der Bolts-Definitionszuordnung. |
 | **scp-tx-spout** |*exec-name*<br />*args*<br />*fields* |Definiert einen transaktionalen Spout. Die Funktion führt die durch *exec-name* angegebene Anwendung aus und verwendet *args*.<br /><br />Der Parameter *fields* gibt die Ausgabefelder für den Spout an. |
@@ -443,7 +443,7 @@ In SCP.NET wurden die folgenden Funktionen zum Definieren transaktionaler Topolo
 
 SCP.NET definiert die folgenden Schlüsselwörter:
 
-| Schlüsselwort | BESCHREIBUNG |
+| Schlüsselwort | Beschreibung |
 | --- | --- |
 | **:name** |Der Topologiename. |
 | **:topology** |Die Topologie unter Verwendung der Funktionen in der vorherigen Tabelle und der integrierten Funktionen. |
@@ -453,7 +453,7 @@ SCP.NET definiert die folgenden Schlüsselwörter:
 
 SCP.NET definiert auch diese häufig verwendeten Parameter:
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | „plugin.name“ |Der .exe-Dateiname des C#-Plug-Ins. |
 | „plugin.args“ |Die Plug-In-Argumente. |
@@ -546,7 +546,7 @@ Nativer Storm-Code wird in Java geschrieben. SCP.NET hat Storm so erweitert, das
 
 ### <a name="specify-java-spoutbolt-in-a-specification-file"></a>Angeben von Java-Spout/Bolt in einer Spezifikationsdatei
 
-Sie können **scp-spout** und **scp-bolt** in einer Spezifikationsdatei verwenden, um Java-Spouts und -Bolts anzugeben. Hier sehen Sie ein Beispiel:
+Sie können **scp-spout** und **scp-bolt** in einer Spezifikationsdatei verwenden, um Java-Spouts und -Bolts anzugeben. Ein Beispiel:
 
 ```csharp
 (spout-spec 
@@ -558,7 +558,7 @@ Hier ist `microsoft.scp.example.HybridTopology.Generator` der Klassenname des Ja
 
 ### <a name="specify-the-java-classpath-in-a-runspec-command"></a>Angeben des Java-Klassenpfads in einem runSpec-Befehl
 
-Wenn Sie eine Topologie übermitteln möchten, die Java-Spouts oder -Bolts enthält, kompilieren Sie diese zunächst, um JAR-Dateien zu erzeugen. Anschließend geben Sie den Java-Klassenpfad mit den JAR-Dateien an, wenn Sie die Topologie übermitteln. Hier sehen Sie ein Beispiel:
+Wenn Sie eine Topologie übermitteln möchten, die Java-Spouts oder -Bolts enthält, kompilieren Sie diese zunächst, um JAR-Dateien zu erzeugen. Anschließend geben Sie den Java-Klassenpfad mit den JAR-Dateien an, wenn Sie die Topologie übermitteln. Ein Beispiel:
 
 ```csharp
 bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
@@ -690,7 +690,7 @@ Kompilieren Sie im Hostmodus Ihren Code als DLL für den Aufruf durch die SCP-Pl
 
 Das folgende einfache HelloWorld-Beispiel bietet einen Eindruck von SCP.NET. Verwendet werden eine nicht transaktionale Topologie mit einem Spout namens **generator** und zwei Bolts namens **splitter** und **counter**. Der Spout **generator** erzeugt zufällige Sätze und übermittelt diese Sätze an **splitter**. Der Bolt **splitter** teilt die Sätze in Wörter auf und übermittelt diese Wörter an den Bolt **counter**. Der Bolt **counter** verwendet ein Wörterbuch, um das Auftreten der einzelnen Wörter aufzuzeichnen.
 
-Für dieses Beispiel gibt es zwei Spezifikationsdateien: „HelloWorld.spec“ und „HelloWorld\_EnableAck.spec“. Der C#-Code kann ermitteln, ob die Bestätigung aktiviert ist, indem das `pluginConf`-Objekt von der Java-Seite abgerufen wird.
+Dieses Beispiel hat zwei Spezifikationsdateien: HelloWorld.spec und HelloWorld \_EnableAck.spec. Der C#-Code kann herausfinden, ob Acknowledgment aktiviert ist, indem er das `pluginConf`Objekt von der Java-Seite holt.
 
 ```csharp
 /* demo how to get pluginConf info */

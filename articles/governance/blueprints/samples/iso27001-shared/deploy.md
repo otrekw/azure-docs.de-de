@@ -1,14 +1,14 @@
 ---
 title: 'Bereitstellen des Blaupausenbeispiels „ISO 27001: Gemeinsame Dienste“'
 description: 'Bereitstellungsschritte für das Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“, einschließlich Details zum Blaupausenartefaktparameter.'
-ms.date: 02/05/2021
+ms.date: 04/30/2021
 ms.topic: sample
-ms.openlocfilehash: 2eb9ed2199b28ad7cb349e6088c3cc583d8f011d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 872f8ea492d1983f3c527ddb1c0eac7b26406844
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577318"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739167"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „ISO 27001: Gemeinsame Dienste“
 

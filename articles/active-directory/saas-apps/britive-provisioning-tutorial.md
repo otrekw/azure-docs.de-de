@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/05/2021
 ms.author: Zhchia
 ms.openlocfilehash: 8bebcb49bc7bf31614a161c08d33d5910679b614
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103225652"
 ---
 # <a name="tutorial-configure-britive-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Britive für die automatische Benutzerbereitstellung
@@ -63,7 +63,7 @@ Die Anwendung muss mithilfe der folgenden Schritte manuell konfiguriert werden:
 
     ![Konfigurationsseite](media/britive-provisioning-tutorial/configuration.png)
 
-1. Klicken Sie auf die Registerkarte **SCIM**. Ändern Sie den SCIM-Anbieter von „Generic“ (Allgemein) in „Azure“, und speichern Sie die Änderungen. Kopieren Sie die SCIM-URL, und notieren Sie sich diese. Diese Werte werden in die **Tenant URL**-Felder (Mandanten-URL) auf der Registerkarte „Provisioning“ (Bereitstellung) Ihrer Britive-Anwendung im Azure-Portal eingegeben.
+1. Klicken Sie auf den **SCIM**-Tab. Ändern Sie den SCIM-Anbieter von „Generic“ (Allgemein) in „Azure“, und speichern Sie die Änderungen. Kopieren Sie die SCIM-URL, und notieren Sie sich diese. Diese Werte werden in die **Tenant URL**-Felder (Mandanten-URL) auf der Registerkarte „Provisioning“ (Bereitstellung) Ihrer Britive-Anwendung im Azure-Portal eingegeben.
 
     ![SCIM-Seite](media/britive-provisioning-tutorial/scim.png)
 
@@ -76,7 +76,7 @@ Die Anwendung muss mithilfe der folgenden Schritte manuell konfiguriert werden:
     ![Kopieren des Tokens](media/britive-provisioning-tutorial/copy-token.png) 
 
 
-## <a name="step-3-add-britive-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Britive aus dem Azure AD-Anwendungskatalog
+## <a name="step-3-add-britive-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Britive aus dem Azure AD-Anwendungskatalog
 
 Fügen Sie Britive aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in Britive zu beginnen. Wenn Sie Britive zuvor für einmaliges Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 
@@ -125,7 +125,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Britive synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Britive für Updatevorgänge verwendet werden. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Britive-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|Typ|Unterstützung für das Filtern|
+   |Attribut|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;
    |aktiv|Boolean|
@@ -178,7 +178,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Britive synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in Britive für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |attribute|Typ|Unterstützung für das Filtern|
+      |Attribut|Typ|Unterstützung für das Filtern|
       |---|---|---|
       |displayName|String|&check;
       |externalId|String|

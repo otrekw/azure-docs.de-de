@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 46b056c22a6d1c70a729f5b9558f53c685a878f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2b1a66c5f277f4aa46a0a8befe3a92a39b04d296
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732852"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229682"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-Server Flexible Server (Vorschau)
 
@@ -35,7 +35,7 @@ Flexible Server-Implementierungen eignen sich am besten für folgende Szenarien:
 
 ## <a name="high-availability-within-and-across-availability-zones"></a>Hochverfügbarkeit in Verfügbarkeitszonen und verfügbarkeitszonenübergreifend
 
-Das Modell zur Bereitstellung flexibler Server ist so konzipiert, dass es Hochverfügbarkeit innerhalb einer einzigen Verfügbarkeitszone und in mehreren Verfügbarkeitszonen unterstützt. In der Architektur sind Compute und Speicher voneinander getrennt. Die Datenbank-Engine läuft auf einem virtuellen Computer, während sich die Datendateien im Azure-Speicher befinden. Der Speicher verwaltet drei lokal redundante synchrone Kopien der Datenbankdateien, sodass die Datenbeständigkeit jederzeit sichergestellt wird. 
+Das Modell zur Bereitstellung flexibler Server ist so konzipiert, dass es Hochverfügbarkeit innerhalb einer einzigen Verfügbarkeitszone und in mehreren Verfügbarkeitszonen unterstützt. In der Architektur sind die Compute- und Speicherebene voneinander getrennt. Die Datenbank-Engine läuft auf einem virtuellen Linux-Computer, während sich die Datendateien im Azure-Remotespeicher vom Typ „Premium“ befinden. Der Speicher verwaltet drei lokal redundante synchrone Kopien der Datenbankdateien, sodass die Datenbeständigkeit jederzeit sichergestellt wird. 
 
 Wenn der Server in einer einzelnen Verfügbarkeitszone aufgrund geplanter oder ungeplanter Ereignisse ausfällt, gewährleistet der Dienst die Hochverfügbarkeit der Server mit dem folgenden automatisierten Verfahren:
 
@@ -136,7 +136,7 @@ Ein Vorteil der Ausführung Ihrer Workload in Azure ist die globale Reichweite. 
 | --- | --- | --- |
 | Europa, Westen | :heavy_check_mark: | :heavy_check_mark: |
 | Nordeuropa | :heavy_check_mark: | :heavy_check_mark: |
-| UK, Süden | :heavy_check_mark: | :x: | 
+| UK, Süden | :heavy_check_mark: | :heavy_check_mark: | 
 | USA (Ost) 2 | :heavy_check_mark: | :heavy_check_mark: |
 | USA, Westen 2 | :heavy_check_mark: | :heavy_check_mark: |
 | USA (Mitte) | :heavy_check_mark: | :x: | 
@@ -144,8 +144,10 @@ Ein Vorteil der Ausführung Ihrer Workload in Azure ist die globale Reichweite. 
 | Kanada, Mitte | :heavy_check_mark: | :x: | 
 | Asien, Südosten | :heavy_check_mark: | :heavy_check_mark: |
 | Korea, Mitte | :heavy_check_mark: | :x: | 
-| Japan, Osten | :heavy_check_mark: | :x: | 
+| Japan, Osten | :heavy_check_mark: | :heavy_check_mark: | 
 | Australien (Osten) | :heavy_check_mark: | :heavy_check_mark: |
+| Frankreich, Mitte | :heavy_check_mark: | :x:|
+| Brasilien Süd | :heavy_check_mark: | :x: |
 
 Wir arbeiten daran, dass in Kürze neue Regionen hinzugefügt werden können.
 

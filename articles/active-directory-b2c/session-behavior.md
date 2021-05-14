@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3a3cdb93ee4cbf4a2e15540b9daf78b6c231d393
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3898de5bf01ea03a5ad7f951a97da82a6a8c4b14
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579738"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896223"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens in Azure Active Directory B2C
 
@@ -123,7 +123,7 @@ Sie können das Feature „Angemeldet bleiben“ für Benutzer Ihrer webbasierte
 
 „Angemeldet bleiben“ kann auf der Ebene individueller Benutzerflows konfiguriert werden. Beachten Sie Folgendes, bevor Sie „Angemeldet bleiben“ für Ihre Benutzerflows aktivieren:
 
-- „Angemeldet bleiben“ wird nur für die **empfohlenen** Versionen der Benutzerflows für Registrierung und Anmeldung (Sign-Up/Sign-In, SUSI), Anmeldung und Profilbearbeitung unterstützt. Wenn Sie aktuell Versionen vom Typ **Standard** oder **Legacyvorschau v2** dieser Benutzerflows verwenden und „Angemeldet bleiben“ aktivieren möchten, müssen Sie neue, **empfohlene** Versionen dieser Benutzerflows erstellen.
+- „Angemeldet bleiben“ wird nur für die **empfohlenen** Versionen der Benutzerflows für Registrierung und Anmeldung (Sign-Up/Sign-In, SUSI), Anmeldung und Profilbearbeitung unterstützt. Wenn Sie aktuell Versionen vom Typ **Standard (Legacy)** oder **Legacyvorschau v2** dieser Benutzerflows verwenden und „Angemeldet bleiben“ aktivieren möchten, müssen Sie neue, **empfohlene** Versionen dieser Benutzerflows erstellen.
 - „Angemeldet bleiben“ wird bei Benutzerflows für Kennwortzurücksetzung oder Registrierung nicht unterstützt.
 - Wenn Sie „Angemeldet bleiben“ für alle Anwendungen in Ihrem Mandanten aktivieren möchten, empfiehlt es sich, „Angemeldet bleiben“ für alle Benutzerflows in Ihrem Mandanten zu aktivieren. Da einem Benutzer im Zuge einer Sitzung mehrere Richtlinien begegnen können, kann es vorkommen, dass ein Benutzer auf eine Richtlinie trifft, für die „Angemeldet bleiben“ nicht aktiviert ist, was dazu führen würde, dass das Cookie für „Angemeldet bleiben“ aus der Sitzung entfernt wird.
 - Auf öffentlichen Computern sollte „Angemeldet bleiben“ nicht aktiviert werden.
@@ -154,7 +154,7 @@ Benutzer sollten diese Option nicht auf öffentlichen Computern aktivieren.
 
 Legen Sie zum Aktivieren von KMSI das ContentDefinitions-Element `DataUri` auf [Seitenbezeichner](contentdefinitions.md#datauri) `unifiedssp` und die [Seitenversion](page-layout.md) auf *1.1.0* oder höher fest.
 
-1. Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>. Die Erweiterungsdatei ist eine der Richtliniendateien im Starter Pack für benutzerdefinierte Richtlinien, das Sie im unter „Voraussetzungen“ genannten Artikel [Erste Schritte mit benutzerdefinierten Richtlinien](custom-policy-get-started.md) abgerufen haben sollten.
+1. Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>. Die Erweiterungsdatei ist eine der Richtliniendateien im Starter Pack für benutzerdefinierte Richtlinien, das Sie im unter „Voraussetzungen“ genannten Artikel [Erste Schritte mit benutzerdefinierten Richtlinien](tutorial-create-user-flows.md?pivots=b2c-custom-policy) abgerufen haben sollten.
 1. Suchen Sie nach dem Element **BuildingBlocks**. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
 1. Fügen Sie das **ContentDefinitions**-Element dem Element **BuildingBlocks** der Richtlinie hinzu.
 

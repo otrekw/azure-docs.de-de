@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eec4fb6e9907b36908a87c09aceabd0dd1a678
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8c18dd231a708030e3a454ab8708e3f0f11dbecf
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075165"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861821"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Tutorial: Ermöglichen der Kontoentsperrung oder Kennwortzurücksetzung für Benutzer mit der Self-Service-Kennwortzurücksetzung von Azure Active Directory
 
@@ -37,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
-* Einen funktionierenden Azure AD-Mandanten mit mindestens einer aktivierten Azure Active Directory Free-Lizenz oder -Testlizenz. Im Free-Tarif funktioniert SSPR nur für Cloudbenutzer in Azure AD.
+* Einen funktionierenden Azure AD-Mandanten mit mindestens einer aktivierten Azure Active Directory Free-Lizenz oder -Testlizenz. Im Free-Tarif funktioniert SSPR nur für Cloudbenutzer in Azure AD. Die Kennwortänderung wird im Free-Tarif unterstützt, die Kennwortzurücksetzung jedoch nicht. 
     * Für spätere Tutorials in dieser Reihe ist eine Azure AD Premium P1-Lizenz oder -Testlizenz für das lokale Kennwortrückschreiben erforderlich.
     * Erstellen Sie bei Bedarf [ein kostenloses Azure-Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*

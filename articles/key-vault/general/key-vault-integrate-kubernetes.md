@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 6cf76e980fab4e5be3f8c2c6d72baff05ab03815
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 5afa90e948a4153f2a27b97d619830586aecfa11
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108386"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905250"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Tutorial: Konfigurieren und Ausführen des Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber auf Kubernetes
 
@@ -296,11 +296,7 @@ kubectl exec nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 Überprüfen Sie, ob der Inhalt des Geheimnisses angezeigt wird.
 
 ## <a name="resources"></a>Ressourcen
-[Informationen zu Azure Key Vault](overview.md)
-[Entwicklerleitfaden zu Azure Key Vault](developers-guide.md)
-[Secrets Store CSI-Treiber](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html)
+- [Informationen zu Azure Key Vault](overview.md)
+- [Entwicklerhandbuch zu Azure Key Vault](developers-guide.md)
+- [Secrets Store CSI-Treiber](https://azure.github.io/secrets-store-csi-driver-provider-azure/)
 
-
-Um sicherzustellen, dass Ihr Schlüsseltresor wiederherstellbar ist:
-> [!div class="nextstepaction"]
-> [Aktivieren des vorläufigen Löschens](./key-vault-recovery.md)

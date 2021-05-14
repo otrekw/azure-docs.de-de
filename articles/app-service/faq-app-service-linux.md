@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb5203629915914ab9af22d89e5f2865078a8e44
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100093997"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012606"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -144,6 +144,20 @@ Die Porterkennung erfolgt automatisch. Sie können auch eine Anwendungseinstellu
 
 Nein. Die Plattform handhabt die HTTPS-Beendigung an den freigegebenen Front-Ends.
 
+**Muss ich die PORT-Variable im Code für integrierte Container verwenden?**
+
+Nein. Die PORT-Variable ist aufgrund der automatischen Porterkennung nicht erforderlich. Sollte kein Port erkannt werden, wird standardmäßig Port 80 verwendet.
+Wenn Sie manuell einen benutzerdefinierten Port konfigurieren möchten, können Sie die EXPOSE-Anweisung im Dockerfile sowie die App-Einstellung „WEBSITES_PORT“ mit einem Portwert verwenden, der für den Container gebunden werden soll.
+
+**Muss ich „WEBSITES_PORT“ für benutzerdefinierte Container verwenden?**
+
+Ja. Diese Einstellung ist für benutzerdefinierte Container erforderlich. Wenn Sie manuell einen benutzerdefinierten Port konfigurieren möchten, können Sie die EXPOSE-Anweisung im Dockerfile sowie die App-Einstellung „WEBSITES_PORT“ mit einem Portwert verwenden, der für den Container gebunden werden soll.
+
+**Kann ich „ASPNETCORE_URLS“ im Docker-Image verwenden?**
+
+Ja. Überschreiben Sie die Umgebungsvariable vor dem Start der .NET Core-App.
+Beispiel: Im Skript „init.sh“: export ASPNETCORE_URLS={Ihr Wert}
+
 ## <a name="multi-container-with-docker-compose"></a>Mehrere Container mit Docker Compose
 
 **Wie kann ich die Azure Container Registry (ACR) für die Verwendung mehrerer Container konfigurieren?**
@@ -206,3 +220,4 @@ Sie können Ihre Idee im [Web-Apps-Feedbackforum](https://aka.ms/webapps-uservoi
 - [Was ist Azure App Service unter Linux?](overview.md#app-service-on-linux)
 - [Einrichten von Stagingumgebungen in Azure App Service](deploy-staging-slots.md)
 - [Continuous Deployment mit Web-App für Container](./deploy-ci-cd-custom-container.md)
+- [Wissenswertes: Web-Apps und Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c937f9d75613b6550a2f05dd63a8b31dd83fe0b7
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 183b956c0ec38101f7875fe01dd7c6ef9c8c8c8f
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445720"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891678"
 ---
 # <a name="required-url-list"></a>Erforderliche URL-Liste
 
@@ -19,6 +19,52 @@ Damit Sie Windows Virtual Desktop bereitstellen und verwenden können, müssen S
 
 >[!IMPORTANT]
 >Windows Virtual Desktop unterstützt keine Bereitstellungen, die die in diesem Artikel aufgeführten URLs blockieren.
+
+## <a name="required-url-check-tool"></a>Erforderliches URL-Überprüfungstool
+
+Das erforderliche URL-Überprüfungstool überprüft URLs und zeigt an, ob auf die URLs zugegriffen werden kann, die der virtuelle Computer für seine Funktionen benötigt. Falls nicht, listet das Tool die URLs auf, auf die nicht zugegriffen werden kann, damit Sie die Blockierung bei Bedarf entsperren können.
+
+Dabei sollten Sie unbedingt folgendes berücksichtigen:
+
+- Sie können das erforderliche URL-Überprüfungstool nur für Bereitstellungen in kommerziellen Clouds verwenden.
+- Das erforderliche URL-Überprüfungstool kann URLs nicht mit Platzhaltern überprüfen. Stellen Sie daher sicher, dass Sie die Blockierung dieser URLs zuerst entsperren.
+
+### <a name="requirements"></a>Anforderungen
+
+Sie benötigen Folgendes, um das erforderliche URL-Überprüfungstool zu verwenden:
+
+- Ihr virtueller Computer muss über ein .NET 4.6.2-Framework verfügen
+- RDAgent-Version 1.0.2944.400 oder höher
+- Die Datei WVDAgentUrlTool.exe muss sich im gleichen Ordner wie die Datei WVDAgentUrlTool.config befinden
+
+### <a name="how-to-use-the-required-url-check-tool"></a>Wie das erforderliche URL-Überprüfungstool verwendet wird
+
+Wie das erforderliche URL-Überprüfungstool verwendet wird:
+
+1. Öffnen Sie als Administrator eine Eingabeaufforderung auf ihrem VM.
+2. Führen Sie den folgenden Befehl aus, um das Verzeichnis in den gleichen Ordner wie der Build-Agent zu ändern:
+
+    ```console
+    cd C:\Program Files\Microsoft RDInfra\RDAgent_1.0.2944.1200
+    ```
+
+3. Führen Sie den folgenden Befehl aus:
+
+    ```console
+    WVDAgentUrlTool.exe
+    ```
+ 
+4. Nachdem Sie die Datei ausgeführt haben, wird eine Liste der URLs angezeigt, auf die zugegriffen werden kann und auf die nicht zugegriffen werden kann.
+
+    Der folgende Screenshot zeigt beispielsweise ein Szenario, in dem Sie die Blockierung von zwei erforderlichen URLs ohne Platzhalter entsperren müssen:
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot der Ausgabe nicht zugänglicher URLs.](media/noaccess.png)
+    
+    Die Ausgabe sollte so aussehen, nachdem Sie die Blockierung aller erforderlichen URLs aufgehoben haben, die keine Platzhalter-URLs sind:
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot der Ausgabe nicht zugänglicher URLs.](media/access.png)
 
 ## <a name="virtual-machines"></a>Virtuelle Computer
 
@@ -49,7 +95,7 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 
 |Adresse|Ausgehender TCP-Port|Zweck|Diensttag|
 |---|---|---|---|
-|*.wvd.microsoft.us|443|Dienstdatenverkehr|WindowsVirtualDesktop|
+|*.wvd.azure.us|443|Dienstdatenverkehr|WindowsVirtualDesktop|
 |gcs.monitoring.core.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
 |monitoring.core.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
 |fairfax.warmpath.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|

@@ -2,17 +2,17 @@
 title: Continuous Integration und Continuous Delivery in Azure Data Factory
 description: Erfahren Sie, wie Sie Continuous Integration und Continuous Delivery verwenden, um Data Factory-Pipelines aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere zu verschieben.
 ms.service: data-factory
-author: dcstwh
-ms.author: weetok
+author: nabhishek
+ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: 7ffcb93493ada36df59c0a8305e941176e8320b8
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.date: 04/27/2021
+ms.openlocfilehash: fad2fce019848c752217f15aaba8ba4c28a7c874
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121471"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177342"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -181,9 +181,9 @@ Das Data Factory-Team hat am Ende dieses Artikels ein [Beispielskript für vor u
 
 ## <a name="manually-promote-a-resource-manager-template-for-each-environment"></a>Manuelles Höherstufen einer Resource Manager-Vorlage für jede Umgebung
 
-1. Wählen Sie in der Liste **ARM-Vorlage** den Eintrag **Export ARM template** (ARM-Vorlage exportieren) aus, um die Resource Manager-Vorlage für Ihre Data Factory in die Entwicklungsumgebung zu exportieren.
+1. Wechseln Sie in Ihrer Data Factory zu **Hub verwalten**, und wählen Sie im Abschnitt „Quellcodeverwaltung“ die Option **ARM-Vorlage** aus. Wählen Sie im Bereich **ARM-Vorlage** den Eintrag **Export ARM template** (ARM-Vorlage exportieren) aus, um die Resource Manager-Vorlage für Ihre Data Factory in die Entwicklungsumgebung zu exportieren.
 
-   ![Exportieren einer Resource Manager-Vorlage](media/continuous-integration-deployment/continuous-integration-image1.png)
+   ![Exportieren einer Resource Manager-Vorlage](media/continuous-integration-deployment/continuous-integration-image-1.png)
 
 1. Wählen Sie in den Test- und Produktionsfactorys den Eintrag **Import ARM template** (ARM-Vorlage importieren) aus. Mit dieser Aktion gelangen Sie zum Azure-Portal, in dem sie die exportierte Vorlage importieren können. Wählen Sie **Eigene Vorlage im Editor erstellen** aus, um den Editor für Resource Manager-Vorlagen zu öffnen.
 

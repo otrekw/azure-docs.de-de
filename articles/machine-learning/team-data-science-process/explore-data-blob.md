@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 04/30/2021
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 855998b887f1d446ee8d196ff4628e066cb5d675
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e17d50904ed973b21072211c06343bc880421b2
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98805673"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517368"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Untersuchen von Daten in Azure Blob Storage mit „pandas“
 
@@ -36,11 +36,10 @@ Damit ein Dataset untersucht und bearbeitet werden kann, muss es zuerst aus der 
 1. Laden Sie die Daten mithilfe des Blob-Diensts und folgenden Python-Beispielcodes aus dem Azure-Blob herunter. Ersetzen Sie die Variablen im folgenden Code durch die für Ihre Umgebung geltenden Werte:
 
     ```python
-    from azure.storage.blob import BlockBlobService
+    from azure.storage.blob import BlobServiceClient
     import pandas as pd
-    import tables
 
-    STORAGEACCOUNTNAME= <storage_account_name>
+    STORAGEACCOUNTURL= <storage_account_url>
     STORAGEACCOUNTKEY= <storage_account_key>
     LOCALFILENAME= <local_file_name>
     CONTAINERNAME= <container_name>
@@ -48,8 +47,11 @@ Damit ein Dataset untersucht und bearbeitet werden kann, muss es zuerst aus der 
 
     #download from blob
     t1=time.time()
-    blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
-    blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
+    blob_service_client_instance = BlobServiceClient(account_url=STORAGEACCOUNTURL, credential=STORAGEACCOUNTKEY)
+    blob_client_instance = blob_service_client.get_blob_client(CONTAINERNAME, BLOBNAME, snapshot=None)
+    with open(LOCALFILENAME, "wb") as my_blob:
+        blob_data = blob_client_instance.download_blob()
+        blob_data.readinto(my_blob)
     t2=time.time()
     print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
     ```
@@ -61,7 +63,9 @@ Damit ein Dataset untersucht und bearbeitet werden kann, muss es zuerst aus der 
     dataframe_blobdata = pd.read_csv(LOCALFILENAME)
     ```
 
-Sie können nun die Daten durchsuchen und Funktionen mit diesem DataSet generieren.
+Wenn Sie allgemeinere Informationen zum Lesen aus einem Azure Storage Blob benötigen, finden Sie diese in unserer Dokumentation [Azure Storage Blobs-Clientbibliothek für Python](/python/api/overview/azure/storage-blob-readme).  
+
+Sie können nun die Daten durchsuchen und Funktionen mit diesem DataSet generieren.  
 
 ## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>Beispiele für das Untersuchen von Daten mithilfe von Pandas
 Hier sind einige Beispiele für Möglichkeiten zum Durchsuchen von Daten mithilfe von Pandas:

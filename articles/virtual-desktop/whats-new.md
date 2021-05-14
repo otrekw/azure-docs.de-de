@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 710f33ada7a64248f0371a3e8c39e085d3f0834c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 242dd2476783a3d1db6b74452d35e87c5cd189b6
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107056"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516551"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Neuheiten in Windows Virtual Desktop
 
@@ -42,11 +42,19 @@ Der Windows Virtual Desktop-Agent wird mindestens einmal pro Monat aktualisiert.
 
 Nachfolgend sind die Änderungen im Windows Virtual Desktop-Agent aufgeführt:
 
-- Version 1.0.2866.1500: Dieses Update wurde am 26. März 2021 veröffentlicht und hat ein Problem mit der Integritätsprüfung des Stapels behoben.
+- Version 1.0.2990.800: Dieses Update wurde am 13. April 2021 veröffentlicht und enthält die folgenden Änderungen:
+    - Agent-Fehlermeldungen aktualisiert
+    - Ausnahme hinzugefügt, die verhindert, dass Sie Nicht-Windows 7-Agents auf virtuellen Windows 7-Computern installieren
+    - Heartbeatdienstlogik aktualisiert
+- Version 1.0.2944.1400: Dieses Update wurde am 7. April 2021 veröffentlicht und enthält die folgenden Änderungen:
+    - Links zum Leitfaden zur Problembehandlung für Windows Virtual Desktop-Agent in den Protokollen der Ereignisanzeige für Agent-Fehler platziert
+    - Zusätzliche Ausnahme hinzugefügt, um eine bessere Fehlerbehandlung zu ermöglichen
+    - WVDAgentUrlTool.exe hinzugefügt. Damit können Kunden überprüfen, auf welche erforderlichen URLs sie zugreifen können.
+- Version 1.0.2866.1500: Dieses Update wurde am 26. März 2021 veröffentlicht. Damit wird ein Problem mit der Integritätsprüfung des Stapels behoben.
 - Version 1.0.2800.2802: Dieses Update wurde am 10. März 2021 veröffentlicht und enthält allgemeine Verbesserungen und Fehlerbehebungen.
-- Version 1.0.2800.2800: Dieses Update wurde am 2. März 2, 2021 veröffentlicht. Damit wurde ein Problem mit der umgekehrten Verbindung behoben.
+- Version 1.0.2800.2800: Dieses Update wurde am 2. März 2021 veröffentlicht. Damit wird ein Problem mit der umgekehrten Verbindung behoben.
 - Version 1.0.2800.2700: Dieses Update wurde am 10. Februar 2021 veröffentlicht und enthält allgemeine Verbesserungen und Fehlerbehebungen.
-- Version 1.0.2800.2700: Dieses Update wurde am 4. Februar 2021 veröffentlicht. Damit wurde ein Orchestrierungsproblem im Zusammenhang mit verweigertem Zugriff behoben.
+- Version 1.0.2800.2700: Dieses Update wurde am 4. Februar 2021 veröffentlicht. Damit wird ein Orchestrierungsproblem im Zusammenhang mit verweigertem Zugriff behoben.
 
 ## <a name="fslogix-updates"></a>FSLogix-Updates
 

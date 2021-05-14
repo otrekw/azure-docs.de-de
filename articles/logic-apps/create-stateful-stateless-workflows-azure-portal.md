@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: ff938d29d998b6fcf0b2cfae72a9a9e685a10dc5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/23/2021
+ms.openlocfilehash: 3f2dcfd910fac849c668521030f7304fe40c28ce
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563948"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164577"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Erstellen zustandsbehafteter und zustandsloser Workflows im Azure-Portal mit „Azure Logic Apps (Vorschau)“
 
@@ -355,9 +355,9 @@ Bei einem zustandsbehafteten Workflow können Sie nach jeder Workflowausführung
    | **Abgebrochen** | ![Symbol für den Aktionsstatus „Storniert“][cancelled-icon] | Die Aktion wurde ausgeführt, hat aber eine Abbruchanforderung erhalten. |
    | **Fehlgeschlagen** | ![Symbol für den Aktionsstatus „Fehlerhaft“][failed-icon] | Die Aktion ist fehlgeschlagen. |
    | **Wird ausgeführt** | ![Symbol für den Aktionsstatus „Wird ausgeführt“][running-icon] | Die Aktion wird zurzeit ausgeführt. |
-   | **Übersprungen** | ![Symbol für den Aktionsstatus „Übersprungen“][skipped-icon] | Die Aktion wurde übersprungen, weil die unmittelbar vorhergehende Aktion fehlgeschlagen ist. Eine Aktion weist eine `runAfter`-Bedingung auf, die erfordert, dass die vorherige Aktion erfolgreich abgeschlossen wurde, bevor die aktuelle Aktion ausgeführt werden kann. |
+   | **Übersprungen** | ![Symbol für den Aktionsstatus „Übersprungen“][skipped-icon] | Die Aktion wurde übersprungen, weil ihre `runAfter` Bedingungen nicht erfüllt wurden, z. B. weil vorherige Aktion fehlgeschlagen ist. Jede Aktion verfügt über ein `runAfter`-Objekt, in dem Sie Bedingungen einrichten können, die erfüllt sein müssen, bevor die aktuelle Aktion ausgeführt werden kann. |
    | **Erfolgreich** | ![Symbol für den Aktionsstatus „Erfolgreich“][succeeded-icon] | Die Aktion war erfolgreich. |
-   | **Erfolgreich mit Wiederholungen** | ![Symbol für den Aktionsstatus „Erfolgreich mit Wiederholungen“][succeeded-with-retries-icon] | Die Aktion war erfolgreich, jedoch erst nach mindestens einem Wiederholungsversuch. Wählen Sie diese Aktion zum Überprüfen des Wiederholungsverlaufs in der Detailansicht des Ausführungsverlaufs aus, damit Sie die Ein- und Ausgaben anzeigen können. |
+   | **Erfolgreich mit Wiederholungen** | ![Symbol für den Aktionsstatus „Erfolgreich mit Wiederholungen“][succeeded-with-retries-icon] | Die Aktion war erfolgreich, jedoch erst einem oder mehreren Wiederholungsversuchen. Wählen Sie diese Aktion zum Überprüfen des Wiederholungsverlaufs in der Detailansicht des Ausführungsverlaufs aus, damit Sie die Ein- und Ausgaben anzeigen können. |
    | **Timeout** | ![Symbol für Aktionsstatus „Timeout“][timed-out-icon] | Die Aktion wurde aufgrund des Timeoutlimits beendet, das durch die Einstellungen dieser Aktion gesteuert wird. |
    | **Wartet** | ![Symbol für den Aktionsstatus „Wartend“][waiting-icon] | Gilt für eine Webhookaktion, die auf eine eingehende Anforderung eines Aufrufers wartet. |
    ||||
@@ -455,6 +455,152 @@ Führen Sie einen der folgenden Schritte aus, um ein Element in Ihrem Workflow a
 
   > [!TIP]
   > Wenn das Menü mit den Auslassungspunkten nicht sichtbar ist, erweitern Sie das Fenster Ihres Browsers, sodass im Detailbereich die Schaltfläche mit den Auslassungspunkten ( **...** ) in der oberen rechten Ecke angezeigt wird.
+
+<a name="restart-stop-start"></a>
+
+## <a name="restart-stop-or-start-logic-apps"></a>Neustarten, Beenden oder Starten von Logik-Apps
+
+Sie können eine [einzelne Logik-App](#restart-stop-start-single-logic-app) oder [mehrere Logik-Apps gleichzeitig](#stop-start-multiple-logic-apps) stoppen oder starten. Sie können auch eine einzelne Logik-App neu starten, ohne sie zuerst zu beenden. Ihre Logik-App mit nur einem Mandanten kann mehrere Workflows enthalten, sodass Sie entweder die gesamte Logik-App beenden oder [nur Workflows deaktivieren](#disable-enable-workflows) können.
+
+> [!NOTE]
+> Die Logik-App zum Beenden und Deaktivieren von Workflow-Vorgängen hat unterschiedliche Auswirkungen. Weitere Informationen hierzu sind unter [Überlegungen zum Beenden von Logik-Apps](#considerations-stop-logic-apps) und [Überlegungen zum Deaktivieren von Workflows](#disable-enable-workflows) zu lesen.
+
+<a name="considerations-stop-logic-apps"></a>
+
+### <a name="considerations-for-stopping-logic-apps"></a>Überlegungen zum Beenden von Logik-Apps
+
+Das Beenden einer Logik-App wirkt sich wie folgt auf Workflow-Instanzen aus:
+
+* Der Logic Apps-Dienst bricht alle laufenden und ausstehenden Ausführungen sofort ab.
+
+* Der Logic Apps-Dienst erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
+
+* Trigger werden nicht ausgelöst, wenn die definierten Bedingungen beim nächsten Mal erfüllt werden. Triggerzustände merken sich jedoch die Punkte, an denen die Logik-App beendet wurde. Wenn Sie die Logik-App erneut starten, wird der Trigger für alle nicht verarbeiteten Elemente seit der letzten Ausführung ausgelöst.
+
+  Um zu verhindern, dass jeder Workflow seit der letzten Ausführung für nicht verarbeitete Elemente ausgelöst wird, löschen Sie den Triggerstatus, bevor Sie die Logik-App neu starten, indem Sie die folgenden Schritte ausführen:
+
+  1. Suchen Sie im Azure-Portal nach Ihrer Logik-App, und öffnen Sie sie.
+  1. Wählen Sie im Menü der Logik-App unter **Workflows** die Option **Workflows** aus.
+  1. Öffnen Sie einen Workflow, und bearbeiten Sie einen beliebigen Teil des Triggers dieses Workflows.
+  1. Speichern Sie die Änderungen. Durch diesen Schritt wird der aktuelle Status des Triggers zurückgesetzt.
+  1. Wiederholen Sie dies für jeden Workflow.
+  1. Wenn Sie fertig sind, [speichern Sie Ihre Logik-App](#restart-stop-start-single-logic-app) neu.
+
+<a name="restart-stop-start-single-logic-app"></a>
+
+### <a name="restart-stop-or-start-a-single-logic-app"></a>Neustarten, Beenden oder Starten einer einzelnen Logik-App
+
+1. Suchen Sie im Azure-Portal nach Ihrer Logik-App, und öffnen Sie sie.
+
+1. Wählen Sie in der Logik-App-Menü **Übersicht** aus.
+
+   * Um eine Logik-App ohne Beenden neu zu starten, wählen Sie auf der Symbolleiste des Übersichtsbereichs **Neu starten** aus.
+   * Um eine ausgeführte Logik-App zu beenden, wählen Sie auf der Symbolleiste des Übersichtsbereichs **Beenden** aus. Bestätigen Sie Ihre Auswahl.
+   * Klicken Sie zum Starten einer beendeten Logik-App auf der Symbolleiste des Übersichtsbereichs **auf Starten**.
+
+   > [!NOTE]
+   > Wenn Ihre Logik-App bereits aktiviert ist, ist nur die Option **Starten** verfügbar. Wenn Ihre Logik-App bereits läuft, ist nur die Option **Stoppen** verfügbar.
+   > Sie können Ihre Logik-App jederzeit neu starten.
+
+1. Um zu überprüfen, ob Ihr Vorgang erfolgreich war oder fehlgeschlagen ist, öffnen Sie auf der Azure-Hauptsymbolleiste die Liste **Benachrichtigungen** (Glockensymbol).
+
+<a name="stop-start-multiple-logic-apps"></a>
+
+### <a name="stop-or-start-multiple-logic-apps"></a>Beenden oder Starten mehrerer Logik-Apps
+
+Sie können mehrere Logik-Apps gleichzeitig beenden oder starten, aber Sie können nicht mehrere Logik-Apps neu starten, ohne diese zuerst zu beenden.
+
+1. Geben Sie `logic apps` in das Suchfeld des Azure-Portals ein, und klicken Sie auf **Logic Apps**.
+
+1. Überprüfen Sie auf der Seite **Logic Apps** die Spalte **Status** der Logik-Apps.
+
+1. Wählen Sie in der Spalte mit den Kontrollkästchen die Logik-Apps aus, die Sie lstarten oder stoppen möchten.
+
+   * Um die ausgewählten ausgeführten Logik-Apps zu beenden, wählen Sie auf der Symbolleiste des Übersichtsbereichs **Deaktivieren/Beenden** aus. Bestätigen Sie Ihre Auswahl.
+   * Um die ausgewählten beendeten Logik-Apps zu starten, wählen Sie auf der Symbolleiste des Bereichs Übersicht die Option **Aktivieren/Starten** aus.
+
+1. Um zu überprüfen, ob Ihr Vorgang erfolgreich war oder fehlgeschlagen ist, öffnen Sie auf der Azure-Hauptsymbolleiste die Liste **Benachrichtigungen** (Glockensymbol).
+
+<a name="disable-enable-workflows"></a>
+
+## <a name="disable-or-enable-workflows"></a>Deaktivieren oder Aktivieren von Workflows
+
+Um zu verhindern, dass der Trigger das nächste Mal ausgelöst wird, wenn die Triggerbedingung erfüllt ist, deaktivieren Sie Ihren Workflow. Sie können einen einzelnen Workflow deaktivieren oder aktivieren, aber Sie können nicht mehrere Workflows gleichzeitig deaktivieren oder aktivieren. Das Deaktivieren von Workflow-Instanzen wirkt sich wie folgt auf Workflow-Instanzen aus:
+
+* Die Logic Apps-Dienste setzen alle ausgeführten und ausstehenden Ausführungen fort, bis sie abgeschlossen sind. Basierend auf dem Volume oder Backlog kann es einige Zeit dauern, bis dieser Prozess abgeschlossen ist.
+
+* Der Logic Apps-Dienst erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
+
+* Der Trigger wird nicht ausgelöst, wenn die definierten Bedingungen beim nächsten Mal erfüllt werden. Der Triggerzustand speichert jedoch den Punkt, an dem der Workflow deaktiviert wurde. Wenn Sie den Workflow erneut aktivieren, wird der Trigger für alle nicht verarbeiteten Elemente seit der letzten Ausführung ausgelöst.
+
+  Um das Auslösen eines Triggers für nicht verarbeitete Elemente seit der letzten Ausführung zu verhindern, löschen Sie den Workflow aktivieren:
+
+  1. Bearbeiten Sie im Workflow einen beliebigen Teil des Triggers des Workflows.
+  1. Speichern Sie die Änderungen. Durch diesen Schritt wird der aktuelle Status Ihres Triggers zurückgesetzt.
+  1. [Reaktivieren Sie Ihren Workflow](#disable-enable-workflows).
+
+> [!NOTE]
+> Das Deaktvieren von Workflow-Vorgängen und das Beenden von Logik-App-Vorgängen hat unterschiedliche Auswirkungen. Weitere Informationen hierzu finden Sie unter [Überlegungen zum Beenden von Logik-Apps](#considerations-stop-logic-apps).
+
+<a name="disable-workflow"></a>
+
+### <a name="disable-workflow"></a>Workflow deaktivieren
+
+1. Wählen Sie im Menü der Logik-App unter **Workflows** die Option **Workflows** aus. Wählen Sie in der Spalte mit den Kontrollkästchen den Workflow aus, den Sie deaktivieren möchten.
+
+1. Wählen Sie auf der Workflows-Symbolleiste die Option **Deaktivieren** aus.
+
+1. Um zu überprüfen, ob Ihr Vorgang erfolgreich war oder fehlgeschlagen ist, öffnen Sie auf der Azure-Hauptsymbolleiste die Liste **Benachrichtigungen** (Glockensymbol).
+
+<a name="enable-workflow"></a>
+
+### <a name="enable-workflow"></a>Workflow aktivieren
+
+1. Wählen Sie im Menü der Logik-App unter **Workflows** die Option **Workflows** aus. Wählen Sie in der Spalte mit den Kontrollkästchen den Workflow zum Aktivieren aus.
+
+1. Wählen Sie auf der Workflows-Symbolleiste **Aktivieren** aus.
+
+1. Um zu überprüfen, ob Ihr Vorgang erfolgreich war oder fehlgeschlagen ist, öffnen Sie auf der Azure-Hauptsymbolleiste die Liste **Benachrichtigungen** (Glockensymbol).
+
+<a name="delete"></a>
+
+## <a name="delete-logic-apps-or-workflows"></a>Löschen von Logik-Apps oder Workflows
+
+Sie können [eine einzelne oder mehrere Logik-Apps gleichzeitig löschen](#delete-logic-apps). Ihre Logik-App mit nur einem Mandanten kann mehrere Workflows enthalten, sodass Sie entweder die gesamte Logik-App löschen oder [nur Workflows löschen](#delete-workflows) können.
+
+<a name="delete-logic-apps"></a>
+
+### <a name="delete-logic-apps"></a>Löschen von Logik-Apps
+
+Durch das Löschen einer Logik-App werden in Bearbeitung und ausstehende Ausführungen sofort abgebrochen, es werden jedoch keine Bereinigungsaufgaben für den von der App verwendeten Speicher ausgeführt.
+
+1. Geben Sie `logic apps` in das Suchfeld des Azure-Portals ein, und klicken Sie auf **Logic Apps**.
+
+1. Wählen Sie in der Liste **Logic Apps** in der Kontrollkästchenspalte eine einzelne oder mehrere zu löschende Logik-Apps aus. Wählen Sie in der Symbolleiste die Option **Löschen** aus.
+
+1. Wenn das Bestätigungsfeld angezeigt wird, geben Sie `yes` ein, und wählen Sie **Löschen** aus.
+
+1. Um zu überprüfen, ob Ihr Vorgang erfolgreich war oder fehlgeschlagen ist, öffnen Sie auf der Azure-Hauptsymbolleiste die Liste **Benachrichtigungen** (Glockensymbol).
+
+<a name="delete-workflows"></a>
+
+### <a name="delete-workflows"></a>Workflows löschen
+
+Das Löschen von Workflow-Instanzen wirkt sich wie folgt auf Workflow-Instanzen aus:
+
+* Der Logic Apps-Dienst wird in Bearbeitung und ausstehende Ausführungen sofort abgebrochen, führt jedoch Bereinigungsaufgaben für den vom Workflow verwendeten Speicher aus.
+
+* Der Logic Apps-Dienst erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
+
+* Wenn Sie einen Workflow löschen und dann denselben Workflow neu erstellen, hat der neu erstellte Workflow nicht die gleichen Metadaten wie der gelöschte Workflow. Sie müssen jeden Workflow, der den gelöschten Workflow aufgerufen hat, neu speichern. Auf diese Weise ruft der Aufrufer die richtigen Informationen für den neu erstellten Workflow ab. Andernfalls schlagen Aufrufe des neu erstellten Workflows mit einem `Unauthorized` Fehler fehl. Dieses Verhalten gilt auch für Workflows, die Artefakte in Integrationskonten und Workflows verwenden, welche Azure-Funktionen aufrufen.
+
+1. Suchen Sie im Azure-Portal nach Ihrer Logik-App, und öffnen Sie sie.
+
+1. Wählen Sie im Menü der Logik-App unter **Workflows** die Option **Workflows** aus. Wählen Sie in der Spalte mit den Kontrollkästchen einen einzelnen oder mehrere zu löschende Workflows aus.
+
+1. Wählen Sie in der Symbolleiste die Option **Löschen** aus.
+
+1. Um zu überprüfen, ob Ihr Vorgang erfolgreich war oder fehlgeschlagen ist, öffnen Sie auf der Azure-Hauptsymbolleiste die Liste **Benachrichtigungen** (Glockensymbol).
 
 <a name="troubleshoot"></a>
 

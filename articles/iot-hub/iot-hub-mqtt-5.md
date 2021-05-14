@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: jlian
-ms.openlocfilehash: fb2cc0b81083936a67bcd465e0408b9f4b53996b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbe51d51da55d6708bfae96d0fec15eec9896602
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96603050"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484845"
 ---
 # <a name="iot-hub-mqtt-5-support-overview-preview"></a>Übersicht über die MQTT 5-Unterstützung in IoT Hub (Vorschau)
 
@@ -111,7 +111,7 @@ Die in früheren API-Versionen verwendete Authentifizierung mit Benutzername und
 
 #### <a name="sas"></a>SAS
 
-Bei der SAS-basierten Authentifizierung muss der Client die Signatur für den Verbindungskontext bereitstellen. Damit wird die Authentizität der MQTT-Verbindung belegt. Die Signatur muss auf einem von zwei Authentifizierungsschlüsseln in der Konfiguration des Clients in IoT Hub oder einem von zwei gemeinsam genutzten Zugriffsschlüsseln einer [SAS-Richtlinie](iot-hub-devguide-security.md) basieren.
+Bei der SAS-basierten Authentifizierung muss der Client die Signatur für den Verbindungskontext bereitstellen. Damit wird die Authentizität der MQTT-Verbindung belegt. Die Signatur muss auf einem von zwei Authentifizierungsschlüsseln in der Konfiguration des Clients in IoT Hub oder einem von zwei gemeinsam genutzten Zugriffsschlüsseln einer [SAS-Richtlinie](iot-hub-dev-guide-sas.md) basieren.
 
 Die Zeichenfolge für das Signieren muss wie folgt gebildet werden:
 

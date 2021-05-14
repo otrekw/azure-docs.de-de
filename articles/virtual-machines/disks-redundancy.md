@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f0f3baf1bf56f958408f789961812c0555f289f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0882efeccfc8dc83686d75ab39b8364219c3b5f1
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043642"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588087"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>Redundanzoptionen für verwaltete Datenträger
 
@@ -52,7 +52,7 @@ Details finden Sie auf der Seite [Azure-Preise](https://azure.microsoft.com/pric
 
 ### <a name="comparison-with-other-disk-types"></a>Vergleich mit anderen Datenträgertypen
 
-Abgesehen von einer höheren Wartezeit beim Schreiben sind Datenträger, die ZRS verwenden, identisch mit Datenträgern, die LRS verwenden. Sie weisen dieselben Leistungsziele auf.
+Abgesehen von einer höheren Wartezeit beim Schreiben sind Datenträger, die ZRS verwenden, identisch mit Datenträgern, die LRS verwenden. Sie weisen dieselben Leistungsziele auf. Es wird empfohlen, ein [Datenträger-Benchmarking](disks-benchmarks.md) durchzuführen, um die Workload Ihrer Anwendung zu simulieren, um die Latenz zwischen den LRS- und ZRS-Datenträgern zu vergleichen. 
 
 ### <a name="create-zrs-managed-disks"></a>Erstellen von verwalteten ZRS-Datenträgern
 

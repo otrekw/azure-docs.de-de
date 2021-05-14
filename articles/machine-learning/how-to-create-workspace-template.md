@@ -5,17 +5,17 @@ description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
+ms.topic: how-to
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
-ms.date: 09/30/2020
-ms.openlocfilehash: 9df8a67fd3dfbf23986f1cc5ed18392463fc7ecb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 4a8934d2e33188a325078019ea73cde68e831562
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102522205"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896295"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning
 
@@ -650,32 +650,6 @@ Folgende Ansätze werden empfohlen, um dieses Problem zu umgehen:
 
     ```text
     /subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault
-    ```
-
-### <a name="virtual-network-not-linked-to-private-dns-zone"></a>Das virtuelle Netzwerk ist nicht mit einer privaten DNS-Zone verknüpft.
-
-Beim Erstellen eines Arbeitsbereichs mit einem privaten Endpunkt erstellt die Vorlage eine private DNS-Zone mit dem Namen __privatelink.api.azureml.ms__. Dieser privaten DNS-Zone wird automatisch eine __VNET-Verknüpfung__ hinzugefügt. Die Verknüpfung wird nur für den ersten Arbeitsbereich und den privaten Endpunkt hinzugefügt, die Sie in einer Ressourcengruppe erstellen. Wenn Sie ein weiteres virtuelles Netzwerk und einen weiteren Arbeitsbereich mit einem privaten Endpunkt in derselben Ressourcengruppe erstellen, wird das zweite virtuelle Netzwerk unter Umständen nicht zur privaten DNS-Zone hinzugefügt.
-
-Verwenden Sie den folgenden Azure CLI-Befehl, um die VNET-Verknüpfungen anzuzeigen, die für die private DNS-Zone bereits vorhanden sind:
-
-```azurecli
-az network private-dns link vnet list --zone-name privatelink.api.azureml.ms --resource-group myresourcegroup
-```
-
-Führen Sie die folgenden Schritte aus, um das virtuelle Netzwerk hinzuzufügen, das einen anderen Arbeitsbereich und privaten Endpunkt enthält:
-
-1. Verwenden Sie den folgenden Befehl, um die ID des virtuellen Netzwerks für das Netzwerk zu ermitteln, das Sie hinzufügen möchten:
-
-    ```azurecli
-    az network vnet show --name myvnet --resource-group myresourcegroup --query id
-    ```
-    
-    Dieser Befehl gibt einen Wert zurück, der in etwa wie folgt aussieht: /subscriptions/GUID/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet. Speichern Sie diesen Wert, und verwenden Sie ihn im nächsten Schritt.
-
-2. Verwenden Sie den folgenden Befehl, um der privaten DNS-Zone „privatelink.api.azureml.ms“ eine VNET-Verknüpfung hinzuzufügen. Verwenden Sie für den Parameter`--virtual-network` die Ausgabe des vorherigen Befehls:
-
-    ```azurecli
-    az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte

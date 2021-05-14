@@ -11,43 +11,39 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/21/2020
+ms.date: 4/16/2021
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25a11bf96ba680608e5bb22835becf80fadee4f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: H1Hack27Feb2017, references_regions
+ms.openlocfilehash: 3ecbbe4d477f3e6c3c6606528c51b934b6cf534a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668928"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718735"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>Verfügbare SKUs für große HANA-Instanzen
 
-Der nur auf Stempeln der Revision 3 basierende Dienst „SAP HANA in Azure (große Instanzen)“ ist in den folgenden Azure-Regionen mit verschiedenen Konfigurationen verfügbar:
-
-- Australien (Osten)
-- Australien, Südosten
-- Japan, Osten
-- Japan, Westen
-
-Der auf Stempeln der Revision 4 basierende Dienst „SAP HANA in Azure (große Instanzen)“ ist in den folgenden Azure-Regionen mit verschiedenen Konfigurationen verfügbar:
-
-- USA, Westen 2
-- East US
-
-Für SAP HANA-Workloads zertifizierter, auf Stempeln der Revision 4.2 basierender BareMetal-Infrastrukturdienst. Verfügbar in verschiedenen Konfigurationen in folgenden Azure-Regionen:
+Der auf Rev 4.2* basierende BareMetal-Infrastrukturdienst (zertifiziert für SAP HANA-Workloads) ist in den folgenden Regionen verfügbar:
 - Europa, Westen
 - Nordeuropa
+- Deutschland, Westen-Mitte (mit Zonenunterstützung)
+- USA, Osten (mit Zonenunterstützung)
 - USA (Ost) 2
 - USA Süd Mitte
+- USA, Westen 2 (mit Zonenunterstützung)
+
+Der auf Rev 3* basierende BareMetal-Infrastrukturdienst (zertifiziert für SAP HANA-Workloads) ist in den folgenden Regionen eingeschränkt verfügbar:
+- USA (Westen)
+- East US 
+- Australien (Osten) 
+- Australien, Südosten
+- Japan, Osten
 
 
-
-
-Die Liste der angebotenen großen Azure-Instanzen sieht folgendermaßen aus.
+Es folgt eine Liste der verfügbaren großen Azure-Instanzen.
 
 > [!IMPORTANT]
-> Beachten Sie die erste Spalte, die den Status der HANA-Zertifizierung für jeden der Typen von großen Instanzen in der Liste enthält. Die Spalte sollte mit dem [SAP HANA-Hardwareverzeichnis](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) für die Azure-SKUs übereinstimmen, die mit dem Buchstaben **S** beginnen.
+> Beachten Sie die erste Spalte, die den Status der HANA-Zertifizierung für jeden der Typen von großen Instanzen in der Liste enthält. Die Spalte sollte mit dem [SAP HANA-Hardwareverzeichnis](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) für die Azure-SKUs korrelieren, die mit dem Buchstaben **S** beginnen.
 
 
 
@@ -63,29 +59,29 @@ Die Liste der angebotenen großen Azure-Instanzen sieht folgendermaßen aus.
 | YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1983), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2268) | SAP HANA in Azure S384<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-Kerne und 384 CPU-Threads |  4,0 TB | 4,0 TB | --- | 16 TB | Verfügbar |
 | YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2080) | SAP HANA in Azure S384m<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-Kerne und 384 CPU-Threads |  6,0 TB | 6,0 TB | --- | 18 TB |  Verfügbar  |
 | YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1984), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2267) | SAP HANA in Azure S384xm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-Kerne und 384 CPU-Threads |  8,0 TB | 8,0 TB | --- | 22 TB | Verfügbar |
-| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2411), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2378) | SAP HANA in Azure S448<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 6,0 TB |  6,0 TB |  --- | 10,5 TB | Verfügbar (nur Rev 4) |
-| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2410), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2377) | SAP HANA in Azure S448m<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 12,0 TB |  12,0 TB |  --- | 18,9 TB | Verfügbar (nur Rev 4) |
-| Nein | SAP HANA in Azure S448oo<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 9,0 TB |  3,0 TB |  6,0 TB | 14,8 TB  | Verfügbar (nur Rev 4) |
-| Nein | SAP HANA in Azure S448om<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 12,0 TB |  6,0 TB |  6,0 TB | 18,9 TB  | Verfügbar (nur Rev 4) |
-| Nein | SAP HANA in Azure S448ooo<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 15,0 TB |  3,0 TB |  12,0 TB | 23,2 TB  | Verfügbar (nur Rev 4) |
-| Nein | SAP HANA in Azure S448oom<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 18 TB |  6,0 TB |  12,0 TB | 27,4 TB  | Verfügbar (nur Rev 4) |
-| YES <br /> [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2049) | SAP HANA in Azure S576m<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 CPU-Kerne und 576 CPU-Threads |  12,0 TB | 12,0 TB | --- | 28 TB | Verfügbar (nur Rev 4) |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2411), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2378) | SAP HANA in Azure S448<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 6,0 TB |  6,0 TB |  --- | 10,5 TB | Verfügbar (nur Rev 4.2) |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2410), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2377) | SAP HANA in Azure S448m<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 12,0 TB |  12,0 TB |  --- | 18,9 TB | Verfügbar (nur Rev 4.2) |
+| Nein | SAP HANA in Azure S448oo<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 9,0 TB |  3,0 TB |  6,0 TB | 14,8 TB  | Verfügbar (nur Rev 4.2) |
+| Nein | SAP HANA in Azure S448om<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 12,0 TB |  6,0 TB |  6,0 TB | 18,9 TB  | Verfügbar (nur Rev 4.2) |
+| Nein | SAP HANA in Azure S448ooo<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 15,0 TB |  3,0 TB |  12,0 TB | 23,2 TB  | Verfügbar (nur Rev 4.2) |
+| Nein | SAP HANA in Azure S448oom<br /> – 8 x Intel® Xeon® Platinum 8276-Prozessor <br /> 224 CPU-Kerne und 448 CPU-Threads | 18 TB |  6,0 TB |  12,0 TB | 27,4 TB  | Verfügbar (nur Rev 4.2) |
+| YES <br /> [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2049) | SAP HANA in Azure S576m<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 CPU-Kerne und 576 CPU-Threads |  12,0 TB | 12,0 TB | --- | 28 TB | Verfügbar (nur Rev 4.2) |
 | Nein | SAP HANA in Azure S576xm<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 CPU-Kerne und 576 CPU-Threads |  18 TB | 18.0 | --- |  41 TB | Verfügbar |
-| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2409), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2380) | SAP HANA in Azure S672<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 9,0 TB |  9,0 TB |  --- | 14,7 TB | Verfügbar (nur Rev 4) |
-| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2408), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2379) | SAP HANA in Azure S672m<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 18 TB |  18 TB |  --- | 27,4 TB | Verfügbar (nur Rev 4) |
-| Nein | SAP HANA in Azure S672oo<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 13,5 TB |  4,5 TB |  9,0 TB | 21,1 TB  | Verfügbar (nur Rev 4) |
-| Nein | SAP HANA in Azure S672om<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 18 TB |  9,0 TB |  9,0 TB | 27,4 TB  | Verfügbar (nur Rev 4) |
-| Nein | SAP HANA in Azure S672ooo<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 22,5 TB |  4,5 TB |  18 TB | 33,7 TB  | Verfügbar (nur Rev 4) |
-| Nein | SAP HANA in Azure S672oom<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 27,0 TB |  9,0 TB |  18 TB | 40,0 TB  | Verfügbar (nur Rev 4) |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2409), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2380) | SAP HANA in Azure S672<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 9,0 TB |  9,0 TB |  --- | 14,7 TB | Verfügbar (nur Rev 4.2) |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2408), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2379) | SAP HANA in Azure S672m<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 18 TB |  18 TB |  --- | 27,4 TB | Verfügbar (nur Rev 4.2) |
+| Nein | SAP HANA in Azure S672oo<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 13,5 TB |  4,5 TB |  9,0 TB | 21,1 TB  | Verfügbar (nur Rev 4.2) |
+| Nein | SAP HANA in Azure S672om<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 18 TB |  9,0 TB |  9,0 TB | 27,4 TB  | Verfügbar (nur Rev 4.2) |
+| Nein | SAP HANA in Azure S672ooo<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 22,5 TB |  4,5 TB |  18 TB | 33,7 TB  | Verfügbar (nur Rev 4.2) |
+| Nein | SAP HANA in Azure S672oom<br /> – 12 x Intel® Xeon® Platinum 8276-Prozessor <br /> 336 CPU-Kerne und 672 CPU-Threads | 27,0 TB |  9,0 TB |  18 TB | 40,0 TB  | Verfügbar (nur Rev 4.2) |
 | YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1985) | SAP HANA in Azure S768m<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 CPU-Kerne und 768 CPU-Threads |  16, 0 TB | 16, 0 TB | -- | 36 TB | Verfügbar |
 | Nein | SAP HANA in Azure S768xm<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 CPU-Kerne und 768 CPU-Threads |  24 TB | 24 TB | --- | 56 TB | Verfügbar |
-|  YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2407), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2376)  | SAP HANA in Azure S896<br /> – 16 x Intel® Xeon® Platinum 8276-Prozessor <br /> 448 CPU-Kerne und 896 CPU-Threads | 12,0 TB |  12,0 TB |  --- | 18,9 TB | Verfügbar (nur Rev 4) |
+|  YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2407), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2376)  | SAP HANA in Azure S896<br /> – 16 x Intel® Xeon® Platinum 8276-Prozessor <br /> 448 CPU-Kerne und 896 CPU-Threads | 12,0 TB |  12,0 TB |  --- | 18,9 TB | Verfügbar (nur Rev 4.2) |
 | YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2406), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2328) | SAP HANA in Azure S896m<br /> – 16 x Intel® Xeon® Platinum 8276-Prozessor <br /> 448 CPU-Kerne und 896 CPU-Threads | 24 TB | 24 TB | -- | 35,8 TB | Verfügbar |
-| Nein | SAP HANA in Azure S896oo<br /> – 16 x Intel® Xeon® Platinum 8276-Prozessor <br /> 448 CPU-Kerne und 896 CPU-Threads | 18 TB |  6,0 TB |  12,0 TB | 27,4 TB  | Verfügbar (nur Rev 4) |
-| Nein | SAP HANA in Azure S896om<br /> – 16 x Intel® Xeon® Platinum 8276-Prozessor <br /> 448 CPU-Kerne und 896 CPU-Threads | 24 TB |  12,0 TB |  12,0 TB | 35,8 TB  | Verfügbar (nur Rev 4) |
-| Nein | SAP HANA in Azure S896ooo<br /> – 16 x Intel® Xeon® Platinum 8276-Prozessor <br /> 448 CPU-Kerne und 896 CPU-Threads | 30,0 TB |  6,0 TB |  24 TB | 44,3 TB  | Verfügbar (nur Rev 4) |
-| Nein | SAP HANA in Azure S896oom<br /> – 16 x Intel® Xeon® Platinum 8276-Prozessor <br /> 448 CPU-Kerne und 896 CPU-Threads | 36,0 TB |  12,0 TB |  24 TB | 52,7 TB  | Verfügbar (nur Rev 4) |
-| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1986) | SAP HANA in Azure S960m<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 CPU-Kerne und 960 CPU-Threads |  20,0 TB | 20,0 TB | -- | 46 TB | Verfügbar (nur Rev 4) |
+| Nein | SAP HANA in Azure S896oo<br /> – 16 x Intel® Xeon® Platinum 8276-Prozessor <br /> 448 CPU-Kerne und 896 CPU-Threads | 18 TB |  6,0 TB |  12,0 TB | 27,4 TB  | Verfügbar (nur Rev 4.2) |
+| Nein | SAP HANA in Azure S896om<br /> – 16 x Intel® Xeon® Platinum 8276-Prozessor <br /> 448 CPU-Kerne und 896 CPU-Threads | 24 TB |  12,0 TB |  12,0 TB | 35,8 TB  | Verfügbar (nur Rev 4.2) |
+| Nein | SAP HANA in Azure S896ooo<br /> – 16 x Intel® Xeon® Platinum 8276-Prozessor <br /> 448 CPU-Kerne und 896 CPU-Threads | 30,0 TB |  6,0 TB |  24 TB | 44,3 TB  | Verfügbar (nur Rev 4.2) |
+| Nein | SAP HANA in Azure S896oom<br /> – 16 x Intel® Xeon® Platinum 8276-Prozessor <br /> 448 CPU-Kerne und 896 CPU-Threads | 36,0 TB |  12,0 TB |  24 TB | 52,7 TB  | Verfügbar (nur Rev 4.2) |
+| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1986) | SAP HANA in Azure S960m<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 CPU-Kerne und 960 CPU-Threads |  20,0 TB | 20,0 TB | -- | 46 TB | Verfügbar (nur Rev 4.2) |
 
 
 - CPU-Kerne = Summe der CPU-Kerne ohne Hyperthreading aus der Gesamtsumme der Prozessoren der Servereinheit.
@@ -121,5 +117,5 @@ Es gibt jedoch bedeutende Unterschiede zwischen der Ausführung von SAP HANA unt
 - Im Gegensatz zu Azure ist der Server für SAP HANA in Azure (große Instanzen) für einen bestimmten Kunden vorgesehen. Die Hard- oder Softpartitionierung einer Servereinheit oder eines Hosts ist nicht möglich. Deshalb wird eine Einheit von HANA (große Instanz) als Ganzes einem Mandanten und somit Ihnen zugewiesen und verwendet. Ein Neustart oder das Herunterfahren des Servers führt nicht automatisch dazu, dass das Betriebssystem und SAP HANA auf einem anderen Server bereitgestellt werden. (Die einzige Ausnahme für Typ-I-Klasse-SKUs ist das Auftreten von Problemen auf einem Server, die eine erneute Bereitstellung auf einem anderen Server erfordern.)
 - Im Gegensatz zu Azure, wo die Auswahl der Hostprozessortypen nach dem besten Preis-Leistungs-Verhältnis erfolgt, werden für SAP HANA in Azure (große Instanzen) die Prozessortypen mit der höchsten Leistung der Intel E7v3- und E7v4-Prozessorserie ausgewählt.
 
-**Nächste Schritte**
-- Lesen Sie [HLI-Größenanpassung](hana-sizing.md).
+## <a name="next-steps"></a>Nächste Schritte
+- Siehe [HLI-Größenanpassung](hana-sizing.md).

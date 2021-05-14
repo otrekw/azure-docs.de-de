@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: tomfitz
 author: tfitzmac
 ms.date: 03/04/2021
-ms.openlocfilehash: 7d3f15c8852e6e25c621baad9bc6f20c303ffdb9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d6c8306b3dbdfe895055dc008d81cc0d85d8d6c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102125016"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538062"
 ---
 # <a name="data-types-in-arm-templates"></a>Datentypen in ARM-Vorlagen
 
@@ -23,7 +23,7 @@ In einer ARM-Vorlage können Sie die folgenden Datentypen verwenden:
 * array
 * bool
 * INT
-* object
+* Objekt (object)
 * secureObject – durch Modifizierer in Bicep angegeben
 * secureString – durch Modifizierer in Bicep angegeben
 * Zeichenfolge
@@ -143,11 +143,9 @@ Für Integer, die als Inlineparameter übergeben werden, ist der Wertebereich m�
 
 Objekte beginnen mit einer linken geschweiften Klammer (`{`) und enden mit einer rechten geschweiften Klammer (`}`). Jede Eigenschaft in einem Objekt besteht aus einem Schlüssel und einem Wert. Der Schlüssel und der Wert werden durch einen Doppelpunkt (`:`) getrennt.
 
-In JSON wird der Schlüssel in doppelte Anführungszeichen eingeschlossen. Die Spalten werden durch ein Komma getrennt.
-
-In Bicep ist der Schlüssel nicht in Anführungszeichen eingeschlossen. Verwenden Sie keine Kommas zwischen Eigenschaften.
-
 # <a name="json"></a>[JSON](#tab/json)
+
+In JSON wird der Schlüssel in doppelte Anführungszeichen eingeschlossen. Die Spalten werden durch ein Komma getrennt.
 
 ```json
 "parameters": {
@@ -165,6 +163,8 @@ In Bicep ist der Schlüssel nicht in Anführungszeichen eingeschlossen. Verwende
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
+In Bicep ist der Schlüssel nicht in Anführungszeichen eingeschlossen. Verwenden Sie keine Kommas zwischen Eigenschaften.
+
 ```bicep
 param exampleObject object = {
   name: 'test name'
@@ -173,6 +173,22 @@ param exampleObject object = {
   tier: 1
 }
 ```
+
+Eigenschaftenaccessoren werden verwendet, um auf Eigenschaften eines Objekts zuzugreifen. Sie werden mit dem `.`-Operator erstellt. Beispiel:
+
+```bicep
+var x = {
+  y: {
+    z: 'Hello`
+    a: true
+  }
+  q: 42
+}
+```
+
+Bei der vorherigen Deklaration wird der Ausdruck x.y.z als Literal-Zeichenfolge „Hello“ ausgewertet. Auf ähnliche Weise wird der Ausdruck x.q als ganzzahliges Literal „42“ ausgewertet.
+
+Eigenschaftsaccessoren können mit jedem Objekt verwendet werden. Dies schließt Parameter und Variablen von Objekttypen und Objektliteralen ein. Die Verwendung eines Eigenschaftsaccessors für einen Ausdruck des Nichtobjekttyps ist ein Fehler.
 
 ---
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 72bf252488878c8b6fabb2ea2d61658a2cd87e14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ecfeffb490c54d24a6254961cf17b13f0b6a34bc
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966206"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076669"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple-Sicherheit und -Datenschutz
 
@@ -269,7 +269,7 @@ Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsof
 
 **A:** Sie können das neue Zertifikat aus dem StorSimple-Geräte-Manager-Dienst herunterladen und dann für die Installation im Zertifikatspeicher der Remotezugriffsclients bereitstellen. Anweisungen dazu finden Sie unter:
 
-* [Cmdlet "Import-Certificate"](/powershell/module/pkiclient/import-certificate)
+* [Cmdlet "Import-Certificate"](/powershell/module/pki/import-certificate)
 
 **F:** Sind meine Daten im Fall einer Gefährdung des StorSimple-Geräte-Manager-Diensts geschützt?
 

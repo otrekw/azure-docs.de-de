@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren der Tunnelerzwingung für Site-to-Site-Verbindungen
-description: 'Gewusst wie: Umleiten des gesamten Internetdatenverkehrs zurück zum lokalen Standort (per Erzwingung).'
+description: Erfahren Sie, wie Sie den gesamten über das Internet eingehenden Datenverkehr zu Ihrem Standort zurück umleiten (zwingen).
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: afd1c1d5312a9fbf39b401b0cbb4b9997f27407a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c53a59279a8101f29cb9bfb64f4ccd1b4921283e
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869037"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205447"
 ---
 # <a name="configure-forced-tunneling"></a>Konfigurieren der Tunnelerzwingung
 

@@ -10,17 +10,17 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: e2de694a153276dcace1070d35af44dec1056e03
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b2e5fdec732b823a42492af03b1cde705814b924
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564924"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136533"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>Migrationsleitfaden: SQL Server zu Azure SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
-Mithilfe dieses Leitfadens können Sie Ihre SQL Server-Instanzen zu Azure SQL-Datenbank migrieren. 
+In diesem Leitfaden erfahren Sie, wie Sie Ihre SQL Server-Instanz zu Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey). 
 
 Sie können SQL Server-Instanzen migrieren, die lokal oder auf folgenden Plattformen ausgeführt werden: 
 
@@ -30,13 +30,13 @@ Sie können SQL Server-Instanzen migrieren, die lokal oder auf folgenden Plattfo
 - Compute Engine (Google Cloud Platform – GCP)  
 - Cloud SQL für SQL Server (Google Cloud Platform – GCP) 
 
-Weitere Informationen zur Migration finden Sie in [dieser Übersicht](sql-server-to-sql-database-overview.md). Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
+Weitere Informationen zur Migration finden Sie in [dieser Übersicht](sql-server-to-sql-database-overview.md). Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](/data-migration). 
 
 :::image type="content" source="media/sql-server-to-database-overview/migration-process-flow-small.png" alt-text="Ablauf des Migrationsprozesses":::
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-Stellen Sie sicher, dass Sie die folgenden Voraussetzungen erfüllen, um Ihre SQL Server-Instanzen zu Azure SQL-Datenbank zu migrieren: 
+Für die [Migration Ihrer SQL Server-Instanz](https://azure.microsoft.com/en-us/migration/sql-server/) zu Azure SQL-Datenbank müssen die folgenden Voraussetzungen erfüllt sein: 
 
 - Sie haben eine [Migrationsmethode](sql-server-to-sql-database-overview.md#compare-migration-options) ausgewählt und verfügen über entsprechende Tools.
 - Sie haben den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) auf einem Computer installiert, der eine Verbindung mit Ihrer SQL Server-Quelldatenbank herstellen kann.
@@ -47,7 +47,7 @@ Stellen Sie sicher, dass Sie die folgenden Voraussetzungen erfüllen, um Ihre SQ
 
 ## <a name="pre-migration"></a>Vor der Migration
 
-Sobald Sie sich davon überzeugt haben, dass Ihre Quellumgebung unterstützt wird, können Sie mit der Prämigrationsphase beginnen. Ermitteln Sie alle vorhandenen Datenquellen, bewerten Sie die Umsetzbarkeit der Migration, und identifizieren Sie Probleme, die der Migration möglicherweise im Weg stehen. 
+Sobald Sie sich davon überzeugt haben, dass Ihre Quellumgebung unterstützt wird, können Sie mit der Prämigrationsphase beginnen. Ermitteln Sie alle vorhandenen Datenquellen, bewerten Sie die Umsetzbarkeit der Migration, und identifizieren Sie Probleme, die Ihrer [Azure-Cloudmigration](https://azure.microsoft.com/migration) möglicherweise im Weg stehen.
 
 ### <a name="discover"></a>Entdecken
 
@@ -200,6 +200,10 @@ Weitere Informationen finden Sie unter [Verwalten von Azure SQL-Datenbank nach d
 
 - Eine Übersicht über die Dienste und Tools von Microsoft und Drittanbietern, mit denen Sie verschiedene Datenbank- und Datenmigrationsszenarios und Spezialaufgaben ausführen können, finden Sie unter [Dienste und Tools für die Datenmigration](../../../dms/dms-tools-matrix.md).
 
+
+- Weitere Informationen zu [Azure Migrate](https://azure.microsoft.com/services/azure-migrate) finden Sie hier:
+   - [Azure Migrate](../../../migrate/migrate-services-overview.md)
+
 - Weitere Informationen zu SQL-Datenbank finden Sie unter:
     - [Übersicht über Azure SQL-Datenbank](../../database/sql-database-paas-overview.md)
    - [Azure-Gesamtkostenrechner](https://azure.microsoft.com/pricing/tco/calculator/) 
@@ -208,6 +212,7 @@ Weitere Informationen finden Sie unter [Verwalten von Azure SQL-Datenbank nach d
 - Weitere Informationen zum Framework und zum Einführungszyklus von Cloudmigrationen finden Sie unter:
    -  [Cloud Adoption Framework für Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Bewährte Methoden für die Kostenermittlung und Größenanpassung von zu Azure migrierten Workloads](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Ressourcen zur Cloudmigration](https://azure.microsoft.com/migration/resources)
 
 - Informationen zum Bewerten der Anwendungszugriffsebene finden Sie unter [Data Access Migration Toolkit (Vorschauversion)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Ausführliche Informationen zum Ausführen von A/B-Tests auf Datenzugriffsebene finden Sie unter [Assistent für Datenbankexperimente](/sql/dea/database-experimentation-assistant-overview).

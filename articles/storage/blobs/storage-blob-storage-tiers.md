@@ -1,19 +1,19 @@
 ---
 title: 'Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“'
 description: In diesem Artikel erhalten Sie Informationen zu den Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Azure Blob Storage. Außerdem erhalten Sie Informationen zu Speicherkonten, die Ebenen unterstützen.
-author: mhopkins-msft
-ms.author: mhopkins
-ms.date: 01/11/2021
+author: twooley
+ms.author: twooley
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 67534e70904c70f7bf9dda44502e723916bdce93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 957973cc4f53dba10ed9d635c8e3f69fd66ee33b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928805"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278421"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“
 
@@ -86,7 +86,7 @@ Beispielszenarien für die Verwendung der Archivzugriffsebene:
 - Compliance- und Archivdaten, die über einen langen Zeitraum gespeichert werden müssen und auf die selten zugegriffen wird
 
 > [!NOTE]
-> Die Archivspeicherebene wird für ZRS-, GZRS- oder RA-GZRS-Konten nicht unterstützt. Die Migration von LRS zu GRS wird nicht unterstützt, wenn das Speicherkonto Blobs auf Archivspeicherebene enthält.
+> Die Archivspeicherebene wird für ZRS-, GZRS- oder RA-GZRS-Konten nicht unterstützt. Die Migration von LRS zu GRS wird unterstützt, solange keine Blobdaten in die Archivebene verschoben wurden, während das Konto auf LRS festgelegt wurde. Ein Konto kann zurück in GRS verschoben werden, wenn die Aktualisierung weniger als 30 Tage ab dem Zeitpunkt erfolgt ist, zu dem das Konto LRS wurde, und es wurden keine Blobdaten in die Archivebene verschoben, während das Konto auf LRS festgelegt wurde.
 
 ## <a name="account-level-tiering"></a>Tiering auf Kontoebene
 
@@ -100,7 +100,9 @@ Nur die Zugriffsebenen „Heiß“ und „Kalt“ können als Standard-Kontozugr
 
 Blobebenentiering ermöglicht es Ihnen, Daten mit den Vorgängen [Put Blob](/rest/api/storageservices/put-blob) oder [Put Blob List](/rest/api/storageservices/put-block-list) auf die Zugriffsebene Ihrer Wahl hochzuladen und die Ebene Ihrer Daten mit dem Vorgang [Blobtarif festlegen](/rest/api/storageservices/set-blob-tier) oder dem Feature [Lebenszyklusverwaltung](#blob-lifecycle-management) auf Objektebene zu ändern. Sie können Daten in Ihre erforderliche Zugriffsebene hochladen und dann die Blobzugriffsebene bei einer Änderung der Nutzungsmuster auf einfache Weise zwischen den Ebenen „Heiß“, „Kalt“ oder „Archiv“ ändern, ohne Daten zwischen Konten verschieben zu müssen. Alle Anforderungen für Ebenenänderungen werden sofort durchgeführt. Auch Änderungen zwischen der heißen und kalten Ebene erfolgen sofort. Die Reaktivierung eines Blobs aus der Archivebene kann mehrere Stunden dauern.
 
-Der Zeitpunkt der letzten Änderung der Blobebene wird über die Blobeigenschaft **Access Tier Change Time** (Änderungszeitpunkt der Zugriffsebene) verfügbar gemacht. Beim Überschreiben eines Blobs auf der heißen oder kalten Ebene erbt das neu erstellte Blob den Tarif des Blobs, das überschrieben wurde, sofern nicht bei der Erstellung die neue Blobzugriffsebene explizit festgelegt wird. Wenn sich ein Blob auf der Archivspeicherebene befindet, kann es nicht überschrieben werden. Das Hochladen desselben Blobs ist daher in diesem Szenario nicht zulässig.
+Der Zeitpunkt der letzten Änderung der Blobebene wird über die Blobeigenschaft **Access Tier Change Time** (Änderungszeitpunkt der Zugriffsebene) verfügbar gemacht. Die **Änderungszeit der Zugriffsebene** ist eine Eigenschaft auf Blobebene und wird nicht aktualisiert, wenn die Standardkontoebene geändert wird. Kontoeigenschaften sind separat von und Blobeigenschaften. Wenn die Standardzugriffsebene des Kontos geändert wird, ist es zu aufwändig, die **Änderungszeit der Zugriffsebene** für jedes Blob in einem Speicherkonto zu aktualisieren.
+
+Beim Überschreiben eines Blobs auf der heißen oder kalten Ebene erbt das neu erstellte Blob den Tarif des Blobs, das überschrieben wurde, sofern nicht bei der Erstellung die neue Blobzugriffsebene explizit festgelegt wird. Wenn sich ein Blob auf der Archivspeicherebene befindet, kann es nicht überschrieben werden. Das Hochladen desselben Blobs ist daher in diesem Szenario nicht zulässig.
 
 > [!NOTE]
 > Für die Archivspeicherebene und das Blobebenentiering werden nur Blockblobs unterstützt.

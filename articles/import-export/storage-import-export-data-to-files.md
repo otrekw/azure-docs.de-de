@@ -9,12 +9,12 @@ ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: b62c3c4be4fdffd9f509b86d248cd028518ae89a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c13ffc597349cdd2b304889d142ca7c2f89c713
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181940"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861533"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Files
 
@@ -183,7 +183,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag über die Azure-B
 
 ### <a name="create-a-job"></a>Erstellen eines Auftrags
 
-1. Verwenden Sie den Befehl [az extension add](/cli/azure/extension#az_extension_add), um die Erweiterung [az import-export](/cli/azure/ext/import-export/import-export) hinzuzufügen:
+1. Verwenden Sie den Befehl [az extension add](/cli/azure/extension#az_extension_add), um die Erweiterung [az import-export](/cli/azure/import-export) hinzuzufügen:
 
     ```azurecli
     az extension add --name import-export
@@ -201,19 +201,19 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag über die Azure-B
     az storage account create -resource-group myierg -name myssdocsstorage --https-only
     ```
 
-1. Um eine Liste der Standorte abzurufen, an die Sie Datenträger senden können, verwenden Sie den Befehl [az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list):
+1. Um eine Liste der Standorte abzurufen, an die Sie Datenträger senden können, verwenden Sie den Befehl [az import-export location list](/cli/azure/import-export/location#az_import_export_location_list):
 
     ```azurecli
     az import-export location list
     ```
 
-1. Verwenden Sie den Befehl [az import-export location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show), um Standorte für Ihre Region abzurufen:
+1. Verwenden Sie den Befehl [az import-export location show](/cli/azure/import-export/location#az_import_export_location_show), um Standorte für Ihre Region abzurufen:
 
     ```azurecli
     az import-export location show --location "West US"
     ```
 
-1. Führen Sie den folgenden Befehl [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) aus, um einen Importauftrag zu erstellen:
+1. Führen Sie den folgenden Befehl [az import-export create](/cli/azure/import-export#az_import_export_create) aus, um einen Importauftrag zu erstellen:
 
     ```azurecli
     az import-export create \
@@ -241,13 +241,13 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag über die Azure-B
    > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
 
 
-1. Verwenden Sie den Befehl [az import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list), um alle Aufträge für die Ressourcengruppe „myierg“ anzuzeigen:
+1. Verwenden Sie den Befehl [az import-export list](/cli/azure/import-export#az_import_export_list), um alle Aufträge für die Ressourcengruppe „myierg“ anzuzeigen:
 
     ```azurecli
     az import-export list --resource-group myierg
     ```
 
-1. Um Ihren Auftrag zu aktualisieren oder abzubrechen, führen Sie den Befehl [az import-export update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) aus:
+1. Um Ihren Auftrag zu aktualisieren oder abzubrechen, führen Sie den Befehl [az import-export update](/cli/azure/import-export#az_import_export_update) aus:
 
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true

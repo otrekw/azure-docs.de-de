@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: d12a48729616a5181f019f84f19779390e736cb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 919c72453b4fcbe3b7decc7a045a6656171ecb06
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877102"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132447"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen
 
@@ -26,7 +26,7 @@ Zum Einrichten einer Warnungspipeline müssen zwei Schritte ausgeführt werden:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zusätzlich zu den Azure Spring-Anforderungen verwenden die Verfahren in diesem Tutorial eine bereitgestellte Azure Spring Cloud-Instanz.  Nutzen Sie einen [Schnellstart](spring-cloud-quickstart.md), um erste Schritte auszuführen.
+Zusätzlich zu den Azure Spring-Anforderungen verwenden die Verfahren in diesem Tutorial eine bereitgestellte Azure Spring Cloud-Instanz.  Nutzen Sie einen [Schnellstart](./quickstart.md), um erste Schritte auszuführen.
 
 Die folgenden Prozeduren initialisieren sowohl **Aktionsgruppe** als auch **Warnung** ausgehend von der Option **Warnungen** im linken Navigationsbereich einer Spring Cloud-Instanz. (Die Prozedur kann auch über die Seite **Monitor – Übersicht** im Azure-Portal gestartet werden.) 
 
@@ -86,7 +86,7 @@ In den vorherigen Schritten wurde eine **Aktionsgruppe** erstellt, die eine Bena
 
 1. Klicken Sie auf **Fertig**.
 
-   Ausführliche Informationen zu den für die Überwachung verfügbaren Bedingungen finden Sie unter [Metriken für Azure Spring Cloud](spring-cloud-concept-metrics.md#user-metrics-options).
+   Ausführliche Informationen zu den für die Überwachung verfügbaren Bedingungen finden Sie unter [Metriken für Azure Spring Cloud](./concept-metrics.md#user-metrics-options).
 
 1. Klicken Sie unter **AKTIONEN** auf **Aktionsgruppe auswählen**. Wählen Sie im Bereich **AKTIONEN** die zuvor definierte **Aktionsgruppe** aus.
 

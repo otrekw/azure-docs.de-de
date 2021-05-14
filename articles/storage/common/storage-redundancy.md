@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 04/16/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7ecf3d23f745d9281008433eee471c14c7afe337
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 115587cc567aed42153fcd0b4af404392853d8c7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802198"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127333"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -73,7 +73,7 @@ In der folgenden Tabelle wird gezeigt, welche Typen von Speicherkonten ZRS in we
 
 | Speicherkontotyp | Unterstützte Regionen | Unterstützte Dienste |
 |--|--|--|
-| Universell v2<sup>1</sup> | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br />  Europa, Westen<br /> Frankreich, Mitte<br /> Japan, Osten<br /> Südafrika, Norden<br /> UK, Süden<br /> USA, Mitte<br /> USA, Osten<br /> USA (Ost 2)<br /> USA, Westen 2 | Blockblobs<br /> Seitenblobs<sup>2</sup><br /> Dateifreigaben (Standard)<br /> Tabellen<br /> Warteschlangen<br /> |
+| Universell v2<sup>1</sup> | (Afrika) Südafrika, Norden<br /> (Asien-Pazifik) Asien, Südosten<br /> (Asien-Pazifik) Australien, Osten<br /> (Asien-Pazifik) Japan, Osten<br /> (Kanada) Kanada, Mitte<br /> (Europa) Europa, Norden<br /> (Europa) Europa, Westen<br /> (Europa) Frankreich, Mitte<br /> (Europa) Deutschland, Westen-Mitte<br /> (Europa) Vereinigtes Königreich, Süden<br /> (Südamerika) Brasilien, Süden<br /> (USA) USA, Mitte<br /> (USA) USA, Osten<br /> (USA) USA, Osten 2<br /> (USA) USA, Süden-Mitte<br /> (USA) USA, Westen 2 | Blockblobs<br /> Seitenblobs<sup>2</sup><br /> Dateifreigaben (Standard)<br /> Tabellen<br /> Warteschlangen<br /> |
 | BlockBlobStorage<sup>1</sup> | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br /> Europa, Westen<br /> Frankreich, Mitte <br /> Japan, Osten<br /> UK, Süden <br /> USA, Osten <br /> USA (Ost 2) <br /> USA, Westen 2| Nur Premium-Blockblobs |
 | FileStorage | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br /> Europa, Westen<br /> Frankreich, Mitte <br /> Japan, Osten<br /> UK, Süden <br /> USA, Osten <br /> USA (Ost 2) <br /> USA, Westen 2 | Nur Premium-Dateifreigaben |
 
@@ -127,15 +127,26 @@ Nur Speicherkonten vom Typ „Allgemein v2“ unterstützen GZRS und RA-GZRS. We
 
 GZRS und RA-GZRS werden in den folgenden Regionen unterstützt:
 
-- Asien, Südosten
-- Europa, Norden
-- Europa, Westen
-- Japan, Osten
-- UK, Süden
-- USA, Mitte
-- USA, Osten
-- USA (Ost 2)
-- USA, Westen 2
+- (Afrika) Südafrika, Norden
+- (Asien-Pazifik) Asien, Osten
+- (Asien-Pazifik) Asien, Südosten
+- (Asien-Pazifik) Australien, Osten
+- (Asien-Pazifik) Indien, Mitte
+- (Asien-Pazifik) Japan, Osten
+- (Asien-Pazifik) Südkorea, Mitte
+- (Kanada) Kanada, Mitte
+- (Europa) Europa, Norden
+- (Europa) Europa, Westen
+- (Europa) Frankreich, Mitte
+- (Europa) Deutschland, Westen-Mitte
+- (Europa) Vereinigtes Königreich, Süden
+- (Südamerika) Brasilien, Süden
+- (USA) USA, Mitte
+- (USA) USA, Osten
+- (USA) USA, Osten 2
+- (US) „USA, Norden-Mitte“
+- (USA) USA, Süden-Mitte
+- (USA) USA, Westen 2
 
 Weitere Informationen zu den Preisen finden Sie in den Preisdetails für [Blobs](https://azure.microsoft.com/pricing/details/storage/blobs), [Dateien](https://azure.microsoft.com/pricing/details/storage/files/), [Warteschlangen](https://azure.microsoft.com/pricing/details/storage/queues/) und [Tabellen](https://azure.microsoft.com/pricing/details/storage/tables/).
 

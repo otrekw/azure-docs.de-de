@@ -3,20 +3,19 @@ title: 'Schnellstart: Festlegen und Anzeigen von Azure Key Vault-Zertifikaten mi
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Azure PowerShell ein Zertifikat in Azure Key Vault festlegen und daraus abrufen.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 587815cf9628df35f1e1efdbc6a7a3c89a27ed55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32150fb4cce76d5a2537c5ec969f265e0d8aae20
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071916"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816186"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Schnellstart: Festlegen und Abrufen eines Zertifikats aus Azure Key Vault mit Azure PowerShell
 
@@ -63,6 +62,18 @@ Get-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "Exampl
 
 Sie haben nun eine Key Vault-Instanz erstellt sowie ein Zertifikat gespeichert und abgerufen.
 
+**Problembehandlung**:
+
+Der Vorgang hat den ungültigen Statuscode „Verboten“ zurückgegeben.
+
+Wenn Sie diesen Fehler erhalten, verfügt das Konto, das auf Azure Key Vault zugreift, nicht über die erforderlichen Berechtigungen zum Erstellen von Zertifikaten.
+
+Führen Sie den folgenden Azure PowerShell-Befehl aus, um die richtigen Berechtigungen zuzuweisen:
+
+```azurepowershell-interactive
+Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> -ObjectId <AzureObjectID> -PermissionsToCertificates get,list,update,create
+```
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-delete-resources.md)]
@@ -73,4 +84,4 @@ In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und e
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - Sehen Sie sich die Referenz zu den [Azure PowerShell-Cmdlets für Key Vault](/powershell/module/az.keyvault/) an.
-- [Azure Key Vault-Sicherheitsübersicht](../general/security-overview.md)
+- [Azure Key Vault-Sicherheitsübersicht](../general/security-features.md)

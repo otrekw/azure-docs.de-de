@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen lokalen Windows Communication Foundatio
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f12133277d60560a19f35dead3a30be7c934adf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90983896"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137705"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Machen Sie einen lokalen Windows Communication Foundation-Anwendungsdienst (WCF-Dienst) für eine Webanwendung in der Cloud mit Azure Relay verfügbar.
 
@@ -245,7 +245,7 @@ In diesem Abschnitt erstellen Sie eine einfache ASP.NET-Anwendung, in der aus Ih
     ![Angeben des Authentifizierungstyps][18]
 
 1. Wählen Sie im Dialogfeld **Neue ASP.NET-Webanwendung erstellen** die Option **Erstellen** aus, um die MVC-App zu erstellen.
-1. Konfigurieren Sie die Azure-Ressourcen für eine neue Web-App. Befolgen Sie die Schritte unter [Veröffentlichen Ihrer Webanwendung](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard). Kehren Sie anschließend zu diesem Tutorial zurück, und fahren Sie mit dem nächsten Schritt fort.
+1. Konfigurieren Sie die Azure-Ressourcen für eine neue Web-App. Befolgen Sie die Schritte unter [Veröffentlichen Ihrer Webanwendung](../app-service/quickstart-dotnetcore.md?tabs=netframework48#publish-your-web-app). Kehren Sie anschließend zu diesem Tutorial zurück, und fahren Sie mit dem nächsten Schritt fort.
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Modelle**, und wählen Sie dann **Hinzufügen** > **Klasse** aus.
 1. Benennen Sie die Klasse *Produkt.cs*, und wählen Sie dann **Hinzufügen** aus.
 

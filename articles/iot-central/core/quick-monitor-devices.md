@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4c63a9833e6b9a9b243d289d79428ddef1468253
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c3aaeb5b3c01c9c940d49fd7022de653de0e48b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833880"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206779"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Schnellstart: Überwachen Ihrer Geräte mithilfe von Azure IoT Central
 
 *Dieser Artikel gilt für Betreiber, Ersteller und Administratoren.*
 
-Diese Schnellstartanleitung richtet sich an Bediener und erläutert, wie Sie mithilfe Ihrer Microsoft Azure IoT Central-Anwendung Ihre Geräte überwachen und Einstellungen ändern.
+Diese Schnellstartanleitung richtet sich an Operatoren und erläutert, wie Sie mithilfe Ihrer Azure IoT Central-Anwendung Ihre Geräte überwachen und Einstellungen ändern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

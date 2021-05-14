@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: ec277bcc3e361561f54e72c54526d65487c113b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f63b033c3995932662fc9b68c1397bf57b0326e
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96754095"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714972"
 ---
 # <a name="replication-appliance"></a>Replikationsappliance
 
@@ -75,7 +75,7 @@ MySQL muss auf dem Replikationsappliancecomputer installiert sein. Die Komponent
 **Methode** | **Details**
 --- | ---
 Manuell herunterladen und installieren | Laden Sie die Anwendung MySQL manuell herunter, legen Sie sie im Ordner „C:\Temp\ASRSetup“ ab, und installieren Sie sie manuell.<br/> Bei der Einrichtung der Appliance wird MySQL als bereits installiert angezeigt.
-Ohne Onlinedownload | Legen Sie das MySQL-Installationsprogramm im Ordner „C:\Temp\ASRSetup“ ab. Wenn Sie die Appliance installieren und zum Herunterladen und Installieren von MySQL klicken, verwendet das Setup das von Ihnen hinzugefügte Installationsprogramm.
+Ohne Onlinedownload | Legen Sie das MySQL-Installationsprogramm im Ordner „C:\Temp\ASRSetup“ ab. Wenn Sie die Appliance installieren und zum Herunterladen und Installieren von MySQL auswählen, verwendet das Setup das von Ihnen hinzugefügte Installationsprogramm.
 Herunterladen und Installieren in Azure Migrate | Wenn Sie die Appliance installieren und nach MySQL gefragt werden, wählen Sie **Herunterladen und installieren** aus.
 
 ## <a name="url-access"></a>URL-Zugriff
@@ -89,7 +89,7 @@ Die Replikationsappliance benötigt Zugriff auf die folgenden URLs in der öffen
 \*.blob.core.windows.net | Wird für den Zugriff auf das Speicherkonto verwendet, in dem replizierte Daten gespeichert werden
 \*.hypervrecoverymanager.windowsazure.com | Für Vorgänge und Koordinierung der Replikationsverwaltung verwendet
 https:\//management.azure.com | Für Vorgänge und Koordinierung der Replikationsverwaltung verwendet
-*.services.visualstudio.com | Wird für Telemetriezwecke (optional) verwendet
+*.services.visualstudio.com | Wird zu Protokollierungszwecken verwendet (optional)
 time.windows.com | Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und der globalen Zeit verwendet.
 https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Beim Einrichten der Appliance wird Zugriff auf diese URLs benötigt. Die URLs werden für die Zugriffssteuerung und die Identitätsverwaltung durch Azure Active Directory verwendet.
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | So schließen Sie den MySQL-Download ab In einigen Regionen wird der Download möglicherweise an die CDN-URL umgeleitet. Stellen Sie in dem Fall sicher, dass die CDN-URL ebenfalls zulässig ist.
@@ -106,10 +106,17 @@ Die Replikationsappliance benötigt Zugriff auf die folgenden URLs in Azure Gove
 \*.blob.core.windows.net | Wird für den Zugriff auf das Speicherkonto verwendet, in dem replizierte Daten gespeichert werden
 \*.hypervrecoverymanager.windowsazure.us | Für Vorgänge und Koordinierung der Replikationsverwaltung verwendet
 https:\//management.usgovcloudapi.net | Für Vorgänge und Koordinierung der Replikationsverwaltung verwendet
-*.services.visualstudio.com | Wird für Telemetriezwecke (optional) verwendet
+*.services.visualstudio.com | Wird zu Protokollierungszwecken verwendet (optional)
 time.nist.gov | Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und der globalen Zeit verwendet.
 https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Beim Einrichten der Appliance mit OVA wird Zugriff auf diese URLs benötigt. Sie werden für die Zugriffssteuerung und Identitätsverwaltung durch Azure Active Directory verwendet.
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | So schließen Sie den MySQL-Download ab In einigen Regionen wird der Download möglicherweise an die CDN-URL umgeleitet. Stellen Sie in dem Fall sicher, dass die CDN-URL ebenfalls zulässig ist.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | So schließen Sie den MySQL-Download ab In einigen Regionen wird der Download möglicherweise an die CDN-URL umgeleitet. Stellen Sie in dem Fall sicher, dass die CDN-URL ebenfalls zulässig ist.  
+
+>[!Note]
+>
+> Wenn das Migrationsprojekt über private eine Endpunktkonnektivität verfügt, benötigen Sie Zugriff auf die folgenden URLs über den Private Link-Zugriff hinaus:   
+> - *.blob.core.windows.com - Um auf das Speicherkonto zuzugreifen, in dem replizierte Daten gespeichert werden. Dies ist optional und nicht erforderlich, wenn dem Speicherkonto ein privater Endpunkt angefügt ist. 
+> - https:\//management.azure.com für Replikationsverwaltungsvorgänge und Koordination. 
+>- https:\//login.microsoftonline.com <br/>https:\//login.windows.net <br/> https:\//www.live.com _and_ <br/> https:\//www.microsoft.com für die Zugriffssteuerung und Identitätsverwaltung durch Azure Active Directory verwendet
 
 ## <a name="port-access"></a>Portzugriff
 
@@ -138,7 +145,7 @@ Prozessserver | Der Prozessserver empfängt Replikationsdaten, optimiert und ver
 
 Das Upgrade der Appliance erfolgt manuell vom Azure Migrate-Hub. Sie sollten immer die neueste Version ausführen.
 
-1. Klicken Sie in „Azure Migrate“ > „Server“ > „Azure Migrate: Server Bewertung“, „Infrastrukturserver“ auf **Konfigurationsserver**.
+1. Wählen Sie in „Azure Migrate“ > „Server“ > „Azure Migrate:{}Server Bewertung“, „Infrastrukturserver“ auf **Konfigurationsserver**.
 2. Wenn eine neue Version der Replikationsappliance verfügbar ist, wird in **Konfigurationsserver** unter **Agentversion** ein Link angezeigt. 
 3. Laden Sie das Installationsprogramm auf den Replikationsappliancecomputer herunter, und installieren Sie das Upgrade. Das Installationsprogramm erkennt die aktuell auf dem Computer ausgeführte Version.
  

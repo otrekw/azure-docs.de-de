@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 55d58a6c4724bd01325db029ed75d77ccc96d0f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ff0543ebc341788ee9492f3e2a117c8e64c44f5
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93333578"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737382"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Bereitstellen von Azure Cosmos DB und Azure App Service mit einer Web-App von GitHub mithilfe einer Azure Resource Manager-Vorlage
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,9 +36,9 @@ Die resultierende Bereitstellung verfügt über eine voll funktionsfähige Weban
 
 ## <a name="step-1-deploy-the-template"></a>Schritt 1: Bereitstellen der Vorlage
 
-Wählen Sie zunächst unten die Schaltfläche **Bereitstellung in Azure** aus, um das Azure-Portal zum Erstellen einer benutzerdefinierten Bereitstellung zu öffnen. Sie können die Azure Resource Manager-Vorlage auch im [Katalog mit Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp) anzeigen.
+Wählen Sie zunächst unten die Schaltfläche **Bereitstellung in Azure** aus, um das Azure-Portal zum Erstellen einer benutzerdefinierten Bereitstellung zu öffnen. Sie können die Azure Resource Manager-Vorlage auch im [Katalog mit Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.documentdb/cosmosdb-webapp) anzeigen.
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-webapp%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.documentdb%2Fcosmosdb-webapp%2Fazuredeploy.json)
 
 Wählen Sie im Azure-Portal das Abonnement für die Bereitstellung aus, und wählen Sie eine neue Ressourcengruppe aus, oder erstellen Sie sie. Geben Sie anschließend die folgenden Werte ein.
 
@@ -118,5 +118,5 @@ Schließlich müssen wir die Webanwendung aus GitHub in App Service bereitstelle
 
 Glückwunsch! Sie haben Azure Cosmos DB, Azure App Service und eine Beispielwebanwendung bereitgestellt, die automatisch über die Verbindungsinformationen verfügt, die zum Herstellen einer Verbindung mit Cosmos DB erforderlich sind, und zwar in einem einzigen Vorgang und ohne dass es notwendig war, vertrauliche Informationen auszuschneiden und einzufügen. Wenn Sie diese Vorlage als Ausgangspunkt verwenden, können Sie sie so anpassen, dass Sie Ihre eigenen Webanwendungen auf die gleiche Weise bereitstellen.
 
-* Die Azure Resource Manager-Vorlage für dieses Beispiel finden Sie im [Katalog der Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp).
+* Die Azure Resource Manager-Vorlage für dieses Beispiel finden Sie im [Katalog der Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.documentdb/cosmosdb-webapp).
 * Den Quellcode für die Beispiel-App finden Sie unter [Cosmos DB To Do-App auf GitHub](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app).

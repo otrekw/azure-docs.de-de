@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric-Ereignisliste
 description: Eine umfassende Liste mit Ereignissen, die von Azure Service Fabric bereitgestellt werden, um Sie bei der Clusterüberwachung zu unterstützen.
-author: srrengar
 ms.topic: reference
 ms.date: 2/25/2019
-ms.author: srrengar
-ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1ba21aaac831abb07544944420f2b77e1753955
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85846658"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279781"
 ---
 # <a name="list-of-service-fabric-events"></a>Liste mit Service Fabric-Ereignissen 
 
@@ -39,6 +37,12 @@ Weitere Informationen zu Clusterupgrades finden Sie [hier](service-fabric-cluste
 | 29630 | ClusterUpgradeRollbackCompleted | Aktualisieren | Das Rollback eines Clusterupgrades wurde abgeschlossen. | CM | Warnung | 
 | 29631 | ClusterUpgradeDomainCompleted | Aktualisieren | Der Upgradevorgang für eine Upgradedomäne wurde während eines Clusterupgrades beendet. | CM | Informational | 
 
+**Platzierungs-Events**
+| EventId | Name | Category | BESCHREIBUNG |Quelle (Aufgabe) | Ebene |
+| --- | --- | ---| --- | --- | --- |
+| 17616 | Entscheidung |StateTransition | Der Platzierungsvorgang wurde geplant, um über die Platzierung neuer Replikate zu entscheiden. | CRM | Informational |
+
+
 ## <a name="node-events"></a>Knotenereignisse
 
 **Ereignisse für den Knotenlebenszyklus** 
@@ -55,6 +59,13 @@ Weitere Informationen zu Clusterupgrades finden Sie [hier](service-fabric-cluste
 | 25622 | NodeOpenFailed | StateTransition |  Ein Knoten konnte nicht gestartet und nicht mit dem Ring verknüpft werden. | FabricNode | Fehler | 
 | 25624 | NodeClosed | StateTransition |  Ein Knoten wurde erfolgreich heruntergefahren. | FabricNode | Informational | 
 | 25626 | NodeAborted | StateTransition |  Ein Knoten wurde nicht ordnungsgemäß heruntergefahren. | FabricNode | Fehler | 
+
+**Ktl Logger-Knoten-Ereignisse** 
+
+| EventId | Name | Category | BESCHREIBUNG |Quelle (Aufgabe) | Ebene |
+| --- | --- | --- | --- | --- | --- | 
+| 50187 | SharedLogWriteThrottled | Gesundheitswesen | Beim Schreiben in das freigegebene Protokoll sind drosselnd | KtlLoggerNode | Informational | 
+| 50188 | SharedLogWriteUnthrottled | Gesundheitswesen | Schreibvorgänge in das Shared Log sind ungedrosselt | KtlLoggerNode | Informational | 
 
 ## <a name="application-events"></a>Anwendungsereignisse
 

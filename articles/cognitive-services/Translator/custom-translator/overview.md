@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 89ab25f45cd35a86d2ff4416ceb851ae6cd5e115
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 07bc3cd9fdda98e6eeb0d7fe4ebefd562aafc47b
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657160"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992302"
 ---
 # <a name="what-is-custom-translator"></a>Worum handelt es sich bei Custom Translator?
 
 [Custom Translator](https://portal.customtranslator.azure.ai) ist ein Feature des Microsoft Translator-Diensts, der Übersetzungsunternehmen, App-Entwicklern und Sprachdienstanbietern das Erstellen von angepassten Systemen für neuronale maschinelle Übersetzung (NMT) ermöglicht. Das angepasste Übersetzungssystem wird nahtlos in vorhandene Anwendungen, Workflows und Websites integriert.
 
-Mit [Custom Translator](https://portal.customtranslator.azure.ai) erstellte Übersetzungssysteme sind über dieselbe cloudbasierte, [sichere](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), leistungsstarke, hochgradig skalierbare [Textübersetzungs-API V3](../reference/v3-0-translate.md?tabs=curl) von Microsoft verfügbar, die jeden Tag Milliarden von Übersetzungen ermöglicht.
+Mit [Benutzerdefinierter Translator](https://portal.customtranslator.azure.ai) erstellte Übersetzungssysteme sind über dieselbe cloudbasierte, sichere, leistungsstarke, hochgradig skalierbare [Textübersetzungs-API V3](../reference/v3-0-translate.md?tabs=curl) von Microsoft Translator verfügbar, die jeden Tag Milliarden von Übersetzungen ermöglicht.
 
 Custom Translator unterstützt mehr als drei Dutzend Sprachen und nimmt eine direkte Zuordnung an die für NMT verfügbaren Sprachen vor. Eine vollständige Liste finden Sie unter [Sprach- und Regionsunterstützung für die Textübersetzungs-API](../language-support.md#customization).
 

@@ -1,17 +1,17 @@
 ---
-title: Konfigurieren der Datenreplikation – Azure Database for MySQL
+title: Konfigurieren der Datenreplikation – Azure Database for MySQL
 description: In diesem Artikel wird beschrieben, wie die Datenreplikation für Azure Database for MySQL eingerichtet wird.
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 01/13/2021
-ms.openlocfilehash: d5a013fc4e4ef931579da4fa13f400d5f4fcff0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/08/2021
+ms.openlocfilehash: 5f418867a2f22a16304d16c8889fff9a27a37ab3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030748"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312160"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Gewusst wie: Konfigurieren der Datenreplikation in Azure Database for MySQL
 
@@ -21,19 +21,16 @@ In diesem Artikel erfahren Sie, wie Sie die [Datenreplikation](concepts-data-in-
 > Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 >
 
-Um ein Replikat im Azure Database for MySQL-Dienst zu erstellen, synchronisiert die [Datenreplikation](concepts-data-in-replication.md) Daten von einem lokalen MySQL-Quellserver, virtuellen Computern (VMs) oder Clouddatenbankdiensten. Die Replikation eingehender Daten basiert auf der nativen MySQL-Replikation, die wiederum auf der Position der binären Protokolldatei (binlog) basiert. Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
+Die [Datenreplikationsfunktion](concepts-data-in-replication.md) synchronisiert Daten von einem lokalen MySQL-Quellserver, virtuellen Computern (VMs) oder Clouddatenbankdiensten, um ein Replikat im Azure Database for MySQL-Dienst zu erstellen. Die Datenreplikation basiert auf der nativen MySQL-Replikation, die wiederum auf der Position der binären Protokolldatei (binlog) oder GTID basiert. Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
 
 Überprüfen Sie die [Einschränkungen und Anforderungen](concepts-data-in-replication.md#limitations-and-considerations) der Datenreplikation, bevor Sie die Schritte in diesem Artikel ausführen.
 
-## <a name="create-a-mysql-server-to-be-used-as-replica"></a>Erstellen eines als Replikat zu verwendenden MySQL-Servers
+## <a name="create-an-azure-database-for-mysql-single-server-instance-to-use-as-a-replica"></a>Erstellen Sie eine Azure Database for MySQL Single Server-Instanz, die als Replikat verwendet werden soll.
 
-1. Erstellen Sie einen neuen Azure Database for MySQL-Server.
-
-   Erstellen Sie einen neuen MySQL-Server (z.B. „replica.mysql.database.azure.com“). Informationen zur Servererstellung finden Sie unter [Erstellen eines Azure Database for MySQL-Servers über das Azure-Portal](quickstart-create-mysql-server-database-using-azure-portal.md). Dieser Server ist der Replikatserver bei der Datenreplikation.
+1. Erstellen Sie eine neue Instanz von Azure Database for MySQL Single Server (z. B. „replica.mysql.database.azure.com“). Informationen zur Servererstellung finden Sie unter [Erstellen eines Azure Database for MySQL-Servers über das Azure-Portal](quickstart-create-mysql-server-database-using-azure-portal.md). Dieser Server ist der Replikatserver für die Datenreplikation.
 
    > [!IMPORTANT]
-   > Der Azure Database for MySQL-Server muss in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ erstellt werden.
-   >
+   > Der Azure Database for MySQL-Server muss in den Tarifen Universell oder Arbeitsspeicheroptimiert erstellt werden, da die Datenreplikation nur in diesen Tarifen unterstützt wird.
 
 2. Erstellen Sie dieselben Benutzerkonten und entsprechenden Berechtigungen.
 
@@ -43,19 +40,23 @@ Um ein Replikat im Azure Database for MySQL-Dienst zu erstellen, synchronisiert 
 
    Aktualisieren Sie Firewallregeln über das [Azure-Portal](howto-manage-firewall-using-portal.md) oder über die [Azure-Befehlszeilenschnittstelle](howto-manage-firewall-using-cli.md).
 
-## <a name="configure-the-source-server"></a>Konfigurieren des Quellservers
+4. **Optional**: Wenn Sie die [GTID-basierte Replikation](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html) vom Quellserver zum Azure Database for MySQL-Replikatserver verwenden möchten, müssen Sie die folgenden Serverparameter auf dem Azure Database for MySQL-Server aktivieren, wie in der folgenden Portalabbildung gezeigt:
 
-Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuellen Computer oder von einem von anderen Cloudanbietern gehosteten Datenbankdienst gehostet wird, für die Replikation eingehender Daten vorbereitet und konfiguriert. Dieser Server ist die „Quelle“ bei der Replikation eingehender Daten.
+   :::image type="content" source="./media/howto-data-in-replication/enable-gtid.png" alt-text="Aktivieren von GTID für einen Azure Database for MySQL-Server":::
+
+## <a name="configure-the-source-mysql-server"></a>Konfigurieren des MySQL-Quellservers
+
+Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuellen Computer oder von einem von anderen Cloudanbietern gehosteten Datenbankdienst gehostet wird, für die Replikation eingehender Daten vorbereitet und konfiguriert. Dieser Server ist die „Quelle“ bei der Datenreplikation.
 
 1. Überprüfen Sie die [Anforderungen für den Quellserver](concepts-data-in-replication.md#requirements), bevor Sie fortfahren.
 
-2. Stellen Sie sicher, dass der Quellserver sowohl eingehenden als auch ausgehenden Datenverkehr an Port 3306 zulässt und über eine **öffentliche IP-Adresse** verfügt und dass der DNS öffentlich zugänglich ist oder über einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügt.
+2. Stellen Sie sicher, dass der Quellserver sowohl eingehenden als auch ausgehenden Datenverkehr an Port 3306 zulässt und über eine **öffentliche IP-Adresse** verfügt, und dass der DNS öffentlich zugänglich ist, oder über einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügt.
 
    Testen Sie die Konnektivität mit dem Quellserver, indem Sie versuchen, eine Verbindung über ein Tool wie die MySQL-Befehlszeile auf einem anderen Computer oder über die im Azure-Portal verfügbare [Azure Cloud Shell](../cloud-shell/overview.md) herzustellen.
 
    Wenn in Ihrer Organisation strenge Sicherheitsrichtlinien gelten, die nicht zulassen, dass alle IP-Adressen auf dem Quellserver die Kommunikation von Azure mit dem Quellserver ermöglichen, können Sie möglicherweise mit dem folgenden Befehl die IP-Adresse Ihres MySQL-Servers ermitteln.
 
-   1. Melden Sie sich bei Ihrer Azure Database for MySQL-Instanz mit einem Tool wie der MySQL-Befehlszeile an.
+   1. Melden Sie sich bei Ihrer Azure Database for MySQL-Server mit einem Tool wie der MySQL-Befehlszeile an.
 
    2. Führen Sie die folgenden Abfrage aus.
 
@@ -74,7 +75,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
       ```
 
    3. Schließen Sie die MySQL-Befehlszeile.
-   4. Führen Sie im Hilfsprogramm ping den folgenden Befehl aus, um die IP-Adresse abzurufen.
+   4. Führen Sie den folgenden Befehl im Hilfsprogramm ping aus, um die IP-Adresse abzurufen:
 
       ```bash
       ping <output of step 2b>
@@ -89,36 +90,36 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
 
    5. Konfigurieren Sie die Firewallregeln des Quellservers so, dass die im letzten Schritt ausgegebene IP-Adresse an Port 3306 eingeschlossen ist.
 
-   > [!NOTE]
-   > Diese IP-Adresse kann sich bei Wartungs- und Bereitstellungsvorgängen ändern. Diese Verbindungsmethode gilt nur für Kunden, die nicht alle IP-Adressen an Port 3306 zulassen können.
+      > [!NOTE]
+      > Diese IP-Adresse kann sich bei Wartungs- und Bereitstellungsvorgängen ändern. Diese Verbindungsmethode gilt nur für Kunden, die nicht alle IP-Adressen an Port 3306 zulassen können.
   
 3. Aktivieren Sie die binäre Protokollierung.
 
-   Überprüfen Sie, ob die binäre Protokollierung auf der Quelle aktiviert wurde, indem Sie den folgenden Befehl ausführen: 
+   Überprüfen Sie, ob die binäre Protokollierung auf der Quelle aktiviert wurde, indem Sie den folgenden Befehl ausführen:
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
    Wenn die Variable [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) mit dem Wert „ON“ zurückgegeben wird, ist die binäre Protokollierung auf Ihrem Server aktiviert.
-   
-    Wenn `log_bin` mit dem Wert „OFF“ zurückgegeben und der Quellserver lokal oder auf virtuellen Computern ausgeführt wird, wo Sie auf die Konfigurationsdatei (my.cnf) zugreifen können, können Sie die folgenden Schritte ausführen:
+
+   Wenn `log_bin` mit dem Wert „OFF“ zurückgegeben und der Quellserver lokal oder auf virtuellen Computern ausgeführt wird, wo Sie auf die Konfigurationsdatei (my.cnf) zugreifen können, können Sie die folgenden Schritte ausführen:
    1. Suchen Sie Ihre MySQL-Konfigurationsdatei („my.cnf“) auf dem Quellserver. (Zum Beispiel: „/etc/my.cnf“)
    2. Öffnen Sie die Konfigurationsdatei, um sie zu bearbeiten und in der Datei nach dem Abschnitt **mysqld** zu suchen.
-   3.  Fügen Sie die folgende Zeile im Abschnitt „mysqld“ hinzu:
-   
+   3. Fügen Sie die folgende Zeile im Abschnitt „mysqld“ hinzu:
+
        ```bash
        log-bin=mysql-bin.log
        ```
-     
+
    4. Starten Sie den MySQL-Quellserver neu, damit die Änderungen wirksam werden.
    5. Stellen Sie nach dem Neustart des Servers sicher, dass die binäre Protokollierung aktiviert ist, indem Sie dieselbe Abfrage wie zuvor ausführen:
-   
+
       ```sql
       SHOW VARIABLES LIKE 'log_bin';
       ```
-   
-4. Quellservereinstellungen
+
+4. Konfigurieren Sie die Quellservereinstellungen.
 
    Der Parameter `lower_case_table_names` muss bei der Datenreplikation zwischen Quell- und Replikatserver konsistent sein. Dieser Parameter ist bei Azure Database for MySQL standardmäßig „1“.
 
@@ -126,9 +127,18 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    SET GLOBAL lower_case_table_names = 1;
    ```
 
+   **Optional**: Wenn Sie [die GTID-basierte Replikation](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html) verwenden möchten, müssen Sie überprüfen, ob GTID auf dem Quellserver aktiviert ist. Sie können den folgenden Befehl für Ihren MySQL-Quellserver ausführen, um zu prüfen, ob gtid_mode auf ON festgelegt ist.
+
+   ```sql
+   show variables like 'gtid_mode';
+   ```
+
+   >[!IMPORTANT]
+   > Für alle Server ist gtid_mode auf den Standardwert OFF festgelegt. Sie müssen die GTID nicht gesondert auf dem MySQL-Quellserver aktivieren, um die Datenreplikation einzurichten. Wenn GTID bereits auf dem Quellserver aktiviert ist, können Sie optional die GTID-basierte Replikation verwenden, um auch für Azure Database for MySQL Single Server die Datenreplikation einzurichten. Sie können die dateibasierte Replikation verwenden, um die Datenreplikation für alle Server einzurichten, unabhängig von der „gtid_mode“-Konfiguration auf dem Quellserver.
+
 5. Erstellen Sie eine neue Replikationsrolle, und richten Sie Berechtigungen ein.
 
-   Erstellen Sie auf dem Quellserver ein Benutzerkonto, das mit Replikationsberechtigungen konfiguriert ist. Dies kann über SQL-Befehle oder ein Tool wie MySQL Workbench erfolgen. Treffen Sie die Entscheidung, ob Sie eine Replikation mit SSL durchführen möchten, da dies bei der Erstellung des Benutzers angegeben werden muss. Wie [Ihrem Quellserver Benutzerkonten hinzugefügt werden](https://dev.mysql.com/doc/refman/5.7/en/user-names.html), erfahren Sie in der MySQL-Dokumentation.
+   Erstellen Sie auf dem Quellserver ein Benutzerkonto, das mit Replikationsberechtigungen konfiguriert ist. Das können Sie über SQL-Befehle oder ein Tool wie MySQL Workbench tun. Treffen Sie die Entscheidung, ob Sie eine Replikation mit SSL durchführen möchten, da dies bei der Erstellung des Benutzers angegeben werden muss. Wie [Ihrem Quellserver Benutzerkonten hinzugefügt werden](https://dev.mysql.com/doc/refman/5.7/en/user-names.html), erfahren Sie in der MySQL-Dokumentation.
 
    Bei Verwendung der folgenden Befehle kann die neu erstellte Replikationsrolle nicht nur vom Computer, auf dem die Quelle selbst gehostet wird, sondern von jedem Computer aus auf die Quelle zugreifen. Hierfür muss „syncuser@'%'“ im Befehl zum Erstellen von Benutzern angegeben werden. Weitere Informationen finden Sie in der MySQL-Dokumentation unter [Specifying Account Names](https://dev.mysql.com/doc/refman/5.7/en/account-names.html) (Angeben von Kontonamen).
 
@@ -166,7 +176,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
 
    :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Replikationsslave":::
 
-6. Versetzen des Quellservers in den schreibgeschützten Modus
+6. Versetzen Sie den Quellserver in den schreibgeschützten Modus.
 
    Bevor Sie mit dem Sichern der Datenbank beginnen, muss der Server in den schreibgeschützten Modus versetzt werden. Im schreibgeschützten Modus kann die Quelle keine Schreibtransaktionen verarbeiten. Werten Sie die Auswirkungen auf Ihr Unternehmen aus, und planen Sie das Fenster für den schreibgeschützten Modus bei Bedarf in der Nebenzeit.
 
@@ -182,18 +192,23 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    ```sql
     show master status;
    ```
-
-   Die Ergebnisse sollten in etwa wie folgt aussehen. Notieren Sie sich unbedingt den Namen der Binärdatei, da dieser in den nachfolgenden Schritten benötigt wird.
+   Die Ergebnisse sollten in etwa wie folgt aussehen. Notieren Sie sich unbedingt den Namen der Binärdatei für die nachfolgenden Schritte.
 
    :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Statusergebnisse des Masters":::
 
-## <a name="dump-and-restore-source-server"></a>Sichern und Wiederherstellen des Quellservers
+## <a name="dump-and-restore-the-source-server"></a>Sichern und Wiederherstellen des Quellservers
 
 1. Legen Sie fest, welche Datenbanken und Tabellen in Azure Database for MySQL repliziert werden sollen, und führen Sie die Sicherung vom Quellserver aus.
 
-    Mit „mysqldump“ können Sie Datenbanken von Ihrem Masterserver sichern. Weitere Informationen finden Sie unter [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md). Die MySQL-Bibliothek und die Testbibliothek müssen nicht gesichert werden.
+    Mit „mysqldump“ können Sie Datenbanken von Ihrem primären Server sichern. Weitere Informationen finden Sie unter [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md). Die MySQL-Bibliothek und die Testbibliothek müssen nicht gesichert werden.
 
-2. Versetzen Sie den Quellserver in den Lese-/Schreibmodus.
+2. **Optional**: Wenn Sie [die GTID-basierte Replikation](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html) verwenden möchten, müssen Sie die GTID der letzten Transaktion ermitteln, die auf dem primären Server ausgeführt wurde. Sie können den folgenden Befehl verwenden, um die GTID der letzten Transaktion zu notieren, die auf dem Masterserver ausgeführt wurde.
+
+   ```sql
+   show global variables like 'gtid_executed';
+   ```
+
+3. Versetzen Sie den Quellserver in den Lese-/Schreibmodus.
 
    Versetzen Sie den MySQL-Quellserver nach dem Sichern der Datenbank wieder in den Lese-/Schreibmodus.
 
@@ -202,9 +217,15 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    UNLOCK TABLES;
    ```
 
-3. Stellen Sie die Sicherungsdatei auf dem neuen Server wieder her.
+4. Stellen Sie die Sicherungsdatei auf dem neuen Server wieder her.
 
    Stellen Sie die Sicherungsdatei auf dem Server wieder her, der im Dienst Azure Database for MySQL erstellt wurde. Informationen zum Wiederherstellen einer Sicherungsdatei auf einem MySQL-Server finden Sie unter [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md). Handelt es sich um eine große Sicherungsdatei, laden Sie sie auf einen virtuellen Computer in Azure in der gleichen Region wie Ihr Replikatserver hoch. Stellen Sie sie auf dem Azure Database for MySQL-Server vom virtuellen Computer wieder her.
+
+5. **Optional**: Notieren Sie sich die GTID des wiederhergestellten Servers auf Azure Database for MySQL, um sicherzustellen, dass dieser mit dem primären Server identisch ist. Sie können den folgenden Befehl verwenden, um die GTID des bereinigten GTID-Werts auf dem Azure Database for MySQL-Replikatserver zu notieren. Der Wert von gtid_purged muss mit dem Wert gtid_executed auf dem Masterserver identisch sein, der in Schritt 2 notiert wurde, damit die GTID-basierte Replikation funktioniert.
+
+   ```sql
+   show global variables like 'gtid_purged';
+   ```
 
 ## <a name="link-source-and-replica-servers-to-start-data-in-replication"></a>Verknüpfen des Quell- und Replikatservers zum Starten der Datenreplikation
 
@@ -215,12 +236,19 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    Um zwei Server zu verknüpfen und die Replikation zu starten, melden Sie sich beim Zielreplikatserver im Dienst Azure Database for MySQL an, und legen Sie die externe Instanz als Quellserver fest. Hierfür verwenden Sie die gespeicherte Prozedur `mysql.az_replication_change_master` auf dem Azure Database for MySQL-Server.
 
    ```sql
-   CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', <master_port>, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   ```
+
+   **Optional**: Wenn Sie die [GTID-basierte](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html) Replikation verwenden möchten, müssen Sie den folgenden Befehl verwenden, um die beiden Server zu verknüpfen:
+
+    ```sql
+   call mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', <master_port>, '<master_ssl_ca>');
    ```
 
    - master_host: Hostname des Quellservers
    - master_user: Benutzername des Quellservers
    - master_password: Kennwort des Quellservers
+   - master_port: Portnummer, auf der der Quellserver auf Verbindungen lauscht. (3306 ist der Standardport, an dem MySQL lauscht.)
    - master_log_file: Name der binären Protokolldatei durch Ausführung von `show master status`
    - master_log_pos: Position des binären Protokolls durch Ausführung von `show master status`
    - master_ssl_ca: Der Kontext des Zertifizierungsstellenzertifikats. Wenn SSL nicht verwendet wird, übergeben Sie eine leere Zeichenfolge.
@@ -256,7 +284,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
       CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
       ```
 
-2. Filtern.
+2. Einrichten von Filtern
 
    Wenn Sie die Replikation einiger Tabellen von Ihrem Master überspringen möchten, aktualisieren Sie den Serverparameter `replicate_wild_ignore_table` auf Ihrem Replikatserver. Mithilfe einer durch Trennzeichen getrennten Liste können Sie mehr als ein Tabellenmuster angeben.
 
@@ -282,7 +310,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
 
    Wenn der Status von `Slave_IO_Running` und `Slave_SQL_Running` „yes“ lautet und der Wert von `Seconds_Behind_Master` „0“ ist, funktioniert die Replikation ordnungsgemäß. `Seconds_Behind_Master` gibt an, wie stark das Replikat verzögert ist. Wenn der Wert nicht „0“ ist, bedeutet dies, dass das Replikat Updates verarbeitet.
 
-## <a name="other-stored-procedures"></a>Andere gespeicherte Prozeduren
+## <a name="other-useful-stored-procedures-for-data-in-replication-operations"></a>Andere nützliche gespeicherte Prozeduren für Datenreplikationsvorgänge
 
 ### <a name="stop-replication"></a>Beenden der Replikation
 
@@ -307,6 +335,22 @@ Um einen Replikationsfehler zu überspringen und die Fortsetzung der Replikation
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
+
+ **Optional**: Wenn Sie die [GTID-basierte](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html) Replikation verwenden möchten, verwenden Sie die folgende gespeicherte Prozedur, um eine Transaktion zu überspringen.
+
+```sql
+call mysql. az_replication_skip_gtid_transaction(‘<transaction_gtid>’)
+```
+
+Die Prozedur kann die Transaktion für die angegebenen GTID überspringen. Wenn das GTID-Format nicht richtig ist oder die GTID-Transaktion bereits ausgeführt wurde, kann die Prozedur nicht ausgeführt werden. Die GTID für eine Transaktion kann durch Analyse des binären Protokolls bestimmt werden, um die Transaktionsereignisse zu überprüfen. MySQL bietet das Hilfsprogramm [mysqlbinlog](https://dev.mysql.com/doc/refman/5.7/en/mysqlbinlog.html), um binäre Protokolle zu analysieren und deren Inhalt im Textformat anzuzeigen. Damit können Sie die GTID der Transaktion ermitteln.
+
+Verwenden Sie den folgenden Befehl, um die GTID der nächsten Transaktion wie unten dargestellt zu ermitteln, und die nächste Transaktion nach der aktuellen Replikationsposition zu überspringen.
+
+```sql
+SHOW BINLOG EVENTS [IN 'log_name'] [FROM pos][LIMIT [offset,] row_count]
+```
+
+  :::image type="content" source="./media/howto-data-in-replication/show-binary-log.png" alt-text="Binäre Protokollergebnisse anzeigen":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

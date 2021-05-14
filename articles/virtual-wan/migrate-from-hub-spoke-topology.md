@@ -1,18 +1,18 @@
 ---
 title: 'Architektur: Migrieren zu Azure Virtual WAN'
-description: Erfahren Sie, wie Sie eine Migration zu Azure Virtual WAN durchführen.
+description: Erfahren Sie, wie Sie von einer vorhandenen vom Kunden verwalteten Hub-and-Spoke-Topologie zu einem Entwurf migrieren, welcher von Microsoft verwaltete Virtual WAN Hubs nutzt.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 447f85657abadb688cc9415b54ba765561daa374
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91839638"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161751"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrieren zu Azure Virtual WAN
 

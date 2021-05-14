@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5790c7c62b9d97df9683773170301b6e09a47667
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599209"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728480"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
@@ -34,6 +34,14 @@ Bevor Sie die Textanalyse-API verwenden, müssen Sie eine Azure-Ressource mit ei
 2.  Wählen Sie die Region aus, die Sie für Ihren Endpunkt verwenden möchten.  Beachten Sie, dass die Endpunkte `/analyze` und `/health` nur in den folgenden Regionen verfügbar sind: USA, Westen 2; USA, Osten 2; USA, Mitte; Europa, Norden; Europa, Westen.
 
 3.  Erstellen Sie die Ressource der Textanalyse, und wechseln Sie links auf der Seite zum Blatt mit den Schlüsseln und Endpunkten. Kopieren Sie den Schlüssel, mit dem Sie später die APIs aufrufen werden. Sie werden ihn später als Wert für den Header `Ocp-Apim-Subscription-Key` hinzufügen.
+
+4. So überprüfen Sie die Anzahl der Textdatensätze, die mit ihrer Textanalyseressource gesendet wurden:
+
+    1. Navigieren Sie im Azure-Portal zur Textanalyseressource. 
+    2. Klicken Sie im linken Navigationsmenü unter **Überwachung** auf **Metriken**. 
+    3. Wählen Sie im Dropdownfeld für **Metrik** die Option *Verarbeitete Textdatensätze* aus.
+    
+Ein Textdatensatz umfasst 1000 Zeichen.
 
 ## <a name="change-your-pricing-tier"></a>Ändern des Tarifs 
 
@@ -56,6 +64,8 @@ Ab Version „v3.1-preview.3“ stellt die Textanalyse-API zwei asynchrone Endpu
 * Mit dem Endpunkt `/analyze` für die Textanalyse können Sie dieselben Textdokumente mit mehreren Textanalysefeatures in einem einzigen API-Aufruf analysieren. Bisher mussten Sie für jeden Vorgang separate API-Aufrufe durchführen, um mehrere Features verwenden zu können. Denken Sie an diese Funktion, wenn Sie große Mengen von Dokumenten mit mehr als einem Textanalyse-Feature analysieren müssen.
 
 * Mit dem Endpunkt `/health` für die Textanalyse für das Gesundheitssystem können relevante medizinische Informationen aus klinischen Dokumenten extrahiert und gekennzeichnet werden.  
+
+Beachten Sie, dass die Endpunkte „/analyze“ und „/health“ nur in den folgenden Regionen verfügbar sind: „USA, Westen 2“, „USA, Osten 2“, „USA, Mitte“, „Europa, Norden“ und „Europa, Westen“.
 
 In der folgenden Tabelle wird gezeigt, welche Features asynchron verwendet werden können. Beachten Sie, dass nur einige wenige Features über den Endpunkt `/analyze` aufgerufen werden können. 
 

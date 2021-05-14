@@ -2,20 +2,20 @@
 title: Verwaltete Instanz mit Azure Arc-Unterstützung und Hochverfügbarkeit
 titleSuffix: Deploy Azure Arc enabled Managed Instance with high availability
 description: Hier erfahren Sie, wie Sie eine verwaltete Instanz mit Azure Arc-Unterstützung und Hochverfügbarkeit bereitstellen.
-author: vin-yu
-ms.author: vinsonyu
+author: rothja
+ms.author: jroth
 ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: conceptual
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: 92f5c900238fc5d40e22870e2f00f8adeb5d335f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bd4541f8c8471c68ed539f407d9ff79684ccb3bf
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032193"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109733498"
 ---
 # <a name="azure-arc-enabled-managed-instance-high-availability"></a>Verwaltete Instanz mit Azure Arc-Unterstützung und Hochverfügbarkeit
 

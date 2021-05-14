@@ -1,14 +1,14 @@
 ---
-title: Sparen von Kosten mit einer reservierten Azure VMware Solution-Instanz
-description: Es wird beschrieben, wie Sie eine reservierte Instanz für Azure VMware Solution erwerben.
+title: Reservierte Instanzen von Azure VMware Solution
+description: Es wird beschrieben, wie Sie eine reservierte Instanz für Azure VMware Solution erwerben. Die reservierte Instanz deckt nur den Computebereich Ihrer Nutzung ab und schließt die Softwarelizenzierungskosten ein.
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 227ea9274f70cc58468e7e0b3ddcf8239f5b7f5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/09/2021
+ms.openlocfilehash: 68f61832ab01b3d7946e3bd8dffb3ef274e74aac
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550974"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145331"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Sparen von Kosten mit Azure VMware Solution
 
@@ -52,7 +52,7 @@ Diese Anforderungen gelten für den Erwerb einer reservierten Instanz eines dedi
 
    Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere hinzufügen** verwenden, um schnell Instanzen hinzuzufügen. Die Option ist für andere Abonnementtypen nicht verfügbar.
 
-   | Feld        |  BESCHREIBUNG |
+   | Feld        |  Beschreibung |
    | ------------ | ------------ |
    | Subscription | Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) „Microsoft-Kundenvereinbarung“ oder ein einzelnes Abonnement mit Sätzen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Die Gebühren werden ggf. von der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit Sätzen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt. |
    | `Scope`        | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<br><ul><li><b>Einzelne Ressourcengruppe</b>: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li><b>Einzelabonnement</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li><b>Gemeinsam genutzt</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li></ul>       |
@@ -77,11 +77,11 @@ CSPs, die reservierte Instanzen für ihre Kunden erwerben möchten, müssen die 
 
 5. Wählen Sie **Jetzt kaufen** und dann **Azure VMware Solution** aus.
 
-   :::image type="content" source="media/reserved-instances/csp-buy-ri-azure-portal.png" alt-text="Microsoft Azure-Portal, Reservierungen" lightbox="media/reserved-instances/csp-buy-ri-azure-portal.png":::
+   :::image type="content" source="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png" alt-text="Microsoft Azure-Portal, Reservierungen" lightbox="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png":::
 
 6. Füllen Sie die Pflichtfelder aus. Die ausgewählten Attribute, die ausgeführten Azure VMware Solution-Hosts entsprechen, führen zur Berechtigung für den Reservierungsrabatt.  Zu den Attributen zählen die SKU, Regionen (falls zutreffend) und der Bereich. Mit dem Reservierungsbereich wird ausgewählt, wo die Reservierungseinsparungen gelten.
 
-   | Feld        |  BESCHREIBUNG |
+   | Feld        |  Beschreibung |
    | ------------ | ------------ |
    | Subscription | Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss berechtigt sein, wie in diesem Fall ein CSP-Abonnement.|
    | `Scope`        | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<br><ul><li><b>Einzelne Ressourcengruppe</b>: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li><b>Einzelabonnement</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li><b>Gemeinsam genutzt</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li></ul>       |
@@ -135,7 +135,7 @@ CSP können für ihre Kunden erworbene Reservierungen mit bestimmten Einschränk
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie jetzt erfahren haben, wie Sie eine reservierte Instanz von Azure VMware Solution erwerben, möchten Sie vielleicht mehr über Folgendes erfahren:
+Nachdem Sie sich mit reservierten Instanzen von Azure VMware Solution vertraut gemacht haben, können Sie sich nun den folgenden Themen zuwenden:
 
 - [Erstellen einer Azure VMware Solution-Bewertung](../migrate/how-to-create-azure-vmware-solution-assessment.md)
 - [Verwalten von DHCP in Azure VMware Solution](manage-dhcp.md)

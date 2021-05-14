@@ -5,16 +5,16 @@ author: emaher
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: 888e04db76567051f8c5eae7cf94c77e684cb146
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 70be69cad59cd00ef9feaa78ad2294c64626d07a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111100"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125677"
 ---
 # <a name="using-external-file-storage-in-lab-services"></a>Verwenden von externem Dateispeicher in Lab Services
 
-In diesem Artikel werden einige der Optionen für die Speicherung externer Dateien behandelt, wenn Sie Azure Lab Services verwenden.  [Azure Files](https://azure.microsoft.com/services/storage/files/) bietet vollständig verwaltete Dateifreigaben in der Cloud, [auf die über SMB 2.1. und SMB 3.0](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) zugegriffen werden kann.  Eine Azure Files-Freigabe kann entweder öffentlich oder privat innerhalb eines virtuellen Netzwerks verbunden werden.  Außerdem kann sie so konfiguriert werden, dass sie die AD-Anmeldeinformationen des Kursteilnehmers für die Verbindung mit der Dateifreigabe verwendet.  Die Verwendung von Azure NetApp Files mit NFS-Volumes für Linux-Computer ist eine weitere Option für die Speicherung externer Dateien mit Azure Lab Services.  
+In diesem Artikel werden einige der Optionen für die Speicherung externer Dateien behandelt, wenn Sie Azure Lab Services verwenden.  [Azure Files](https://azure.microsoft.com/services/storage/files/) bietet vollständig verwaltete Dateifreigaben in der Cloud, [auf die über SMB 2.1. und SMB 3.0](../storage/files/storage-how-to-use-files-windows.md) zugegriffen werden kann.  Eine Azure Files-Freigabe kann entweder öffentlich oder privat innerhalb eines virtuellen Netzwerks verbunden werden.  Außerdem kann sie so konfiguriert werden, dass sie die AD-Anmeldeinformationen des Kursteilnehmers für die Verbindung mit der Dateifreigabe verwendet.  Die Verwendung von Azure NetApp Files mit NFS-Volumes für Linux-Computer ist eine weitere Option für die Speicherung externer Dateien mit Azure Lab Services.  
 
 ## <a name="deciding-which-solution-to-use"></a>Entscheiden über die zu verwendende Lösung
 
@@ -46,16 +46,16 @@ Wenn Sie einen privaten Endpunkt für die Azure Files-Freigabe verwenden, ist es
 - Dieser Ansatz erfordert, dass das virtuelle Netzwerk der Dateifreigabe mit dem Lab-Konto gepeert ist.  Das virtuelle Netzwerk für das Azure Storage-Konto muss mit dem virtuellen Netzwerk für das Lab-Konto gepeert werden, **bevor** das Lab erstellt wird.
 
 > [!NOTE]
-> Dateifreigaben mit einer Größe von mehr als 5 TB sind nur für [[lokal redundante Speicherkonten (LRS)]](/azure/storage/files/storage-files-how-to-create-large-file-share#restrictions) verfügbar.
+> Dateifreigaben mit einer Größe von mehr als 5 TB sind nur für [[lokal redundante Speicherkonten (LRS)]](../storage/files/storage-files-how-to-create-large-file-share.md#restrictions) verfügbar.
 
 Führen Sie die folgenden Schritte aus, um eine mit einer Azure Files-Freigabe verbundene VM zu erstellen.
 
-1. Erstellen Sie ein [Azure Storage-Konto](/azure/storage/files/storage-how-to-create-file-share). Wählen Sie auf der Seite „Verbindungsmethode“ öffentlicher Endpunkt oder privater Endpunkt aus.
-2. Wenn Sie einen [privaten Endpunkt](/azure/private-link/create-private-endpoint-storage-portal) verwenden, erstellen Sie einen, damit aus dem virtuellen Netzwerk auf die Dateifreigaben zugegriffen werden kann.  Erstellen Sie eine [private DNS-Zone](/azure/dns/private-dns-privatednszone), oder verwenden Sie eine vorhandene. Private Azure DNS-Zonen bieten Namensauflösung in einem virtuellen Netzwerk.
-3. [Erstellen Sie eine Azure-Dateifreigabe](/azure/storage/files/storage-how-to-create-file-share). Die Dateifreigabe ist über den öffentlichen Hostnamen des Speicherkontos erreichbar.
+1. Erstellen Sie ein [Azure Storage-Konto](../storage/files/storage-how-to-create-file-share.md). Wählen Sie auf der Seite „Verbindungsmethode“ öffentlicher Endpunkt oder privater Endpunkt aus.
+2. Wenn Sie einen [privaten Endpunkt](../private-link/tutorial-private-endpoint-storage-portal.md) verwenden, erstellen Sie einen, damit aus dem virtuellen Netzwerk auf die Dateifreigaben zugegriffen werden kann.  Erstellen Sie eine [private DNS-Zone](../dns/private-dns-privatednszone.md), oder verwenden Sie eine vorhandene. Private Azure DNS-Zonen bieten Namensauflösung in einem virtuellen Netzwerk.
+3. [Erstellen Sie eine Azure-Dateifreigabe](../storage/files/storage-how-to-create-file-share.md). Die Dateifreigabe ist über den öffentlichen Hostnamen des Speicherkontos erreichbar.
 4. Binden Sie die Azure-Dateifreigabe in die Vorlage für virtuelle Computer ein:
-    - [[Windows]](/azure/storage/files/storage-how-to-use-files-windows)
-    - [[Linux]](/azure/storage/files/storage-how-to-use-files-linux).  Informationen, wie Sie Probleme beim Einbinden auf VMs von Kursteilnehmern vermeiden können, finden Sie unter [Verwenden von Azure Files mit Linux](#using-azure-files-with-linux).
+    - [[Windows]](../storage/files/storage-how-to-use-files-windows.md)
+    - [[Linux]](../storage/files/storage-how-to-use-files-linux.md).  Informationen, wie Sie Probleme beim Einbinden auf VMs von Kursteilnehmern vermeiden können, finden Sie unter [Verwenden von Azure Files mit Linux](#using-azure-files-with-linux).
 5. [Veröffentlichen](how-to-create-manage-template.md#publish-the-template-vm) Sie die Vorlage für virtuelle Computer.
 
 > [!IMPORTANT]
@@ -98,14 +98,14 @@ Wenn die Vorlage für virtuelle Computer, die die Azure-Dateifreigabe in das Ver
 
 Kursteilnehmer sollten `mount -a` ausführen, um Verzeichnisse erneut einzubinden.
 
-Weitere allgemeine Informationen zur Verwendung von Dateifreigaben mit Linux finden Sie unter [Verwenden von Azure Files mit Linux](/azure/storage/files/storage-how-to-use-files-linux).
+Weitere allgemeine Informationen zur Verwendung von Dateifreigaben mit Linux finden Sie unter [Verwenden von Azure Files mit Linux](../storage/files/storage-how-to-use-files-linux.md).
 
 ## <a name="azure-files-with-identity-base-authorization"></a>Azure Files mit identitätsbasierter Autorisierung
 
 Auf Azure Files-Freigaben kann auch mithilfe der AD-Authentifizierung zugegriffen werden, wenn Folgendes erfüllt ist:
 
 1. Die VM des Kursteilnehmers ist in eine Domäne eingebunden.
-2. AD-Authentifizierung [ist in dem Azure Storage-Konto aktiviert](/azure/storage/files/storage-files-active-directory-overview), das die Dateifreigabe hostet.  
+2. AD-Authentifizierung [ist in dem Azure Storage-Konto aktiviert](../storage/files/storage-files-active-directory-overview.md), das die Dateifreigabe hostet.  
 
 Das Netzwerklaufwerk wurde unter Verwendung der Identität des Benutzers auf dem virtuellen Computer eingebunden, nicht mit dem Schlüssel für das Speicherkonto.  Der Zugriff auf das Speicherkonto kann öffentliche oder private Endpunkte verwenden.
 
@@ -125,13 +125,13 @@ Wenn Sie einen privaten Endpunkt für die Azure Files-Freigabe verwenden, ist es
 
 Führen Sie die folgenden Schritte aus, um eine Azure Files-Freigabe zu erstellen, die für AD-Authentifizierung aktiviert ist, sowie um die Lab-VMs in eine Domäne einzubinden.
 
-1. Erstellen Sie ein [Azure Storage-Konto](/azure/storage/files/storage-how-to-create-file-share).
-2. Wenn Sie einen [privaten Endpunkt](/azure/private-link/create-private-endpoint-storage-portal) verwenden, erstellen Sie einen, damit aus dem virtuellen Netzwerk auf die Dateifreigaben zugegriffen werden kann.  Erstellen Sie eine [private DNS-Zone](/azure/dns/private-dns-privatednszone), oder verwenden Sie eine vorhandene. Private Azure DNS-Zonen bieten Namensauflösung in einem virtuellen Netzwerk.
-3. [Erstellen Sie eine Azure-Dateifreigabe](/azure/storage/files/storage-how-to-create-file-share).
-4. Führen Sie die Schritte zum Aktivieren der identitätsbasierten Autorisierung aus.  Wenn Sie ein lokales AD verwenden, das mit Azure AD synchronisiert wird, befolgen Sie die Schritte für die [lokale Active Directory Domain Services-Authentifizierung über SMB für Azure-Dateifreigaben](/azure/storage/files/storage-files-identity-auth-active-directory-enable).  Wenn Sie nur Azure AD verwenden, befolgen Sie die Schritte zum [Aktivieren der Azure Active Directory Domain Services-Authentifizierung in Azure Files](/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable).
+1. Erstellen Sie ein [Azure Storage-Konto](../storage/files/storage-how-to-create-file-share.md).
+2. Wenn Sie einen [privaten Endpunkt](../private-link/tutorial-private-endpoint-storage-portal.md) verwenden, erstellen Sie einen, damit aus dem virtuellen Netzwerk auf die Dateifreigaben zugegriffen werden kann.  Erstellen Sie eine [private DNS-Zone](../dns/private-dns-privatednszone.md), oder verwenden Sie eine vorhandene. Private Azure DNS-Zonen bieten Namensauflösung in einem virtuellen Netzwerk.
+3. [Erstellen Sie eine Azure-Dateifreigabe](../storage/files/storage-how-to-create-file-share.md).
+4. Führen Sie die Schritte zum Aktivieren der identitätsbasierten Autorisierung aus.  Wenn Sie ein lokales AD verwenden, das mit Azure AD synchronisiert wird, befolgen Sie die Schritte für die [lokale Active Directory Domain Services-Authentifizierung über SMB für Azure-Dateifreigaben](../storage/files/storage-files-identity-auth-active-directory-enable.md).  Wenn Sie nur Azure AD verwenden, befolgen Sie die Schritte zum [Aktivieren der Azure Active Directory Domain Services-Authentifizierung in Azure Files](../storage/files/storage-files-identity-auth-active-directory-domain-service-enable.md).
     >[!IMPORTANT]
     >Sprechen Sie mit dem Team, das Ihr AD verwaltet, um sicherzustellen, dass alle in den Anweisungen aufgeführten Voraussetzungen erfüllt sind.
-5. Weisen Sie Rollen für die SMB-Freigabeberechtigung in Azure zu.  Ausführliche Informationen zu den Berechtigungen, die jeder Rolle gewährt werden, finden Sie unter [Berechtigungen auf Freigabeebene](/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
+5. Weisen Sie Rollen für die SMB-Freigabeberechtigung in Azure zu.  Ausführliche Informationen zu den Berechtigungen, die jeder Rolle gewährt werden, finden Sie unter [Berechtigungen auf Freigabeebene](../storage/files/storage-files-identity-ad-ds-assign-permissions.md).
     1. Die Rolle „Mitwirkender mit erhöhten Rechten für Speicherdateidaten-SMB-Freigabe“ muss der Person oder Gruppe zugewiesen werden, die Berechtigungen für den Inhalt der Dateifreigabe einrichtet.
     2. Die Rolle „Mitwirkender für Speicherdateidaten-SMB-Freigabe“ sollte Kursteilnehmern zugewiesen werden, die Dateien auf der Dateifreigabe hinzufügen oder bearbeiten müssen.
     3. Die Rolle „Leser für Speicherdateidaten-SMB-Freigabe“ sollte Kursteilnehmern zugewiesen werden, die die Dateien auf der Dateifreigabe nur lesen müssen.
@@ -147,7 +147,7 @@ Führen Sie die folgenden Schritte aus, um eine Azure Files-Freigabe zu erstelle
 10. Laden Sie das Skript auf den Vorlagencomputer herunter, und führen Sie es aus, um [Computer von Kursteilnehmern in die Domäne einzubinden](https://github.com/Azure/azure-devtestlab/blob/master/samples/ClassroomLabs/Scripts/ActiveDirectoryJoin/README.md#usage).  Das `Join-AzLabADTemplate`-Skript [veröffentlicht die Vorlage für virtuelle Computer](how-to-create-manage-template.md#publish-the-template-vm) automatisch.  
     > [!NOTE]
     > Der Vorlagencomputer ist in keine Domäne eingebunden. Kursleiter sollten sich selbst eine veröffentlichte Kursteilnehmer-VM zuweisen, um Dateien auf der Freigabe anzuzeigen.
-11. Kursteilnehmer, die Windows verwenden, können über den [Datei-Explorer](/azure/storage/files/storage-how-to-use-files-windows) mit Ihren Anmeldeinformationen eine Verbindung mit der Azure Files-Freigabe herstellen, sobald sie den Pfad zur Dateifreigabe erhalten haben.  Alternativ können Kursteilnehmer das oben erstellte Skript ausführen, um eine Verbindung mit dem Netzwerklaufwerk herzustellen.  Führen Sie für Kursteilnehmer, die Linux verwenden, das oben erstellte Skript aus.
+11. Kursteilnehmer, die Windows verwenden, können über den [Datei-Explorer](../storage/files/storage-how-to-use-files-windows.md) mit Ihren Anmeldeinformationen eine Verbindung mit der Azure Files-Freigabe herstellen, sobald sie den Pfad zur Dateifreigabe erhalten haben.  Alternativ können Kursteilnehmer das oben erstellte Skript ausführen, um eine Verbindung mit dem Netzwerklaufwerk herzustellen.  Führen Sie für Kursteilnehmer, die Linux verwenden, das oben erstellte Skript aus.
 
 ## <a name="netapp-files-with-nfs-volumes"></a>NetApp Files mit NFS-Volumes
 
@@ -162,7 +162,7 @@ Führen Sie die folgenden Schritte aus, um eine Azure Files-Freigabe zu erstelle
 Führen Sie die folgenden Schritte aus, um eine Azure NetApp Files-Freigabe in Azure Lab Services zu verwenden.
 
 1. Führen Sie bei Bedarf ein Onboarding in [Azure NetApp Files](https://aka.ms/azurenetappfiles) durch.
-2. Informationen zum Erstellen eines NetApp Files-Kapazitätspools und von NFS-Volumes finden Sie unter [Einrichten von Azure NetApp Files und NFS-Volume](/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes).  Informationen zu Servicelevels finden Sie unter [Servicelevels für Azure NetApp Files](/azure/azure-netapp-files/azure-netapp-files-service-levels).
+2. Informationen zum Erstellen eines NetApp Files-Kapazitätspools und von NFS-Volumes finden Sie unter [Einrichten von Azure NetApp Files und NFS-Volume](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md).  Informationen zu Servicelevels finden Sie unter [Servicelevels für Azure NetApp Files](../azure-netapp-files/azure-netapp-files-service-levels.md).
 3. [Peeren Sie das virtuelle Netzwerk](how-to-connect-peer-virtual-network.md) für den NetApp Files-Kapazitätspool mit dem Lab-Konto.
 4. [Erstellen Sie das Classroom-Lab](how-to-manage-classroom-labs.md).
 5. Installieren Sie auf der Vorlage für virtuelle Computer die erforderlichen Komponenten, um NFS-Dateifreigaben zu verwenden.
@@ -179,7 +179,7 @@ Führen Sie die folgenden Schritte aus, um eine Azure NetApp Files-Freigabe in A
         sudo yum install nfs-utils
         ```
 
-6. Speichern Sie auf der Vorlage für virtuelle Computer das folgende Skript als `mount_fileshare.sh`, um [die NetApp Files-Freigabe einzubinden](/azure/azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines).  Weisen Sie der Variablen `capacity_pool_ipaddress` die IP-Adresse des Einbindungsziels für den Kapazitätspool zu.  Sehen Sie in den Anweisungen zum Einbinden für das Volume nach, um den entsprechenden Wert zu ermitteln.  Das Skript erwartet den Pfad/Namen des NetApp Files-Volumes.  Vergessen Sie nicht, `chmod u+x mount_fileshare.sh` auszuführen, um sicherzustellen, dass das Skript von Benutzern ausgeführt werden kann.
+6. Speichern Sie auf der Vorlage für virtuelle Computer das folgende Skript als `mount_fileshare.sh`, um [die NetApp Files-Freigabe einzubinden](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md).  Weisen Sie der Variablen `capacity_pool_ipaddress` die IP-Adresse des Einbindungsziels für den Kapazitätspool zu.  Sehen Sie in den Anweisungen zum Einbinden für das Volume nach, um den entsprechenden Wert zu ermitteln.  Das Skript erwartet den Pfad/Namen des NetApp Files-Volumes.  Vergessen Sie nicht, `chmod u+x mount_fileshare.sh` auszuführen, um sicherzustellen, dass das Skript von Benutzern ausgeführt werden kann.
 
     ```bash
     #!/bin/bash
@@ -205,7 +205,7 @@ Führen Sie die folgenden Schritte aus, um eine Azure NetApp Files-Freigabe in A
 
 7. Wenn alle Kursteilnehmer gemeinsam Zugriff auf dasselbe NetApp Files-Volume haben, kann das Skript `mount_fileshare.sh` vor der Veröffentlichung auf der Vorlage für virtuelle Computer ausgeführt werden.  Wenn Kursteilnehmer jeweils ein eigenes Volume erhalten, speichern Sie das Skript, damit es später vom jeweiligen Kursteilnehmer ausgeführt werden kann.
 8. [Veröffentlichen](how-to-create-manage-template.md#publish-the-template-vm) Sie die Vorlage für virtuelle Computer.
-9. [Konfigurieren Sie die Richtlinie](/azure/azure-netapp-files/azure-netapp-files-configure-export-policy) für die Dateifreigabe.  Die Exportrichtlinie kann zulassen, dass ein einzelner virtueller Computer oder mehrere VMs auf ein Volume zugreifen können.  Reiner Lese- oder Lese-/Schreibzugriff kann gewährt werden.
+9. [Konfigurieren Sie die Richtlinie](../azure-netapp-files/azure-netapp-files-configure-export-policy.md) für die Dateifreigabe.  Die Exportrichtlinie kann zulassen, dass ein einzelner virtueller Computer oder mehrere VMs auf ein Volume zugreifen können.  Reiner Lese- oder Lese-/Schreibzugriff kann gewährt werden.
 10. Kursteilnehmer müssen Ihre VMs starten und das Skript ausführen, um die Dateifreigabe einzubinden.  Sie müssen das Skript nur einmal ausführen.  Der Befehl sieht wie folgt aus: `./mount_fileshare.sh myvolumename`.
 
 ## <a name="next-steps"></a>Nächste Schritte

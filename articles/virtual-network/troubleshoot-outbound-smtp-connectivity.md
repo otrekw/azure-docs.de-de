@@ -10,45 +10,42 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/04/2021
+ms.date: 04/28/2021
 ms.author: genli
-ms.openlocfilehash: c28790b2ef423a3d0f996d7c6030b04198756eb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3cc4cb587a7b2d5d06c249cc8f25bc78cdb86739
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607610"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165261"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Behandeln von Problemen mit ausgehenden SMTP-Verbindungen in Azure
 
-Ab dem 15. November 2017 werden ausgehende E-Mail-Nachrichten, die von einem virtuellen Computer (VM) direkt an externe Domänen (z. B. outlook.com und gmail.com) gesendet werden, nur noch für bestimmte Abonnementtypen in Azure verfügbar gemacht. Ausgehende SMTP-Verbindungen, die TCP-Port 25 verwenden, wurden blockiert. (Der Port 25 wird in erster Linie für die E-Mail-Zustellung ohne Authentifizierung verwendet.)
-
-Diese Änderung im Verhalten gilt nur für Abonnements und Bereitstellungen, die nach dem 15. November 2017 erstellt wurden.
+Ausgehende E-Mails, die von einem virtuellen Computer (virtual machine, VM) über den Port 25 direkt an externe Domänen (z. B. „outlook.com“ oder „gmail.com“) gesendet werden, sind nur möglich, wenn der virtuelle Computer in bestimmten Abonnementtypen bereitgestellt wird.
 
 ## <a name="recommended-method-of-sending-email"></a>Empfohlene Methode zum Senden von E-Mails
 
-Es wird empfohlen, authentifizierte SMTP-Relaydienste zu verwenden, um E-Mails von Azure-VMs oder von Azure App Service zu senden. (Diese Relaydienste stellen in der Regel eine Verbindung über den TCP-Port 587 her, sie unterstützen aber auch andere Ports.) Mithilfe dieser Dienste wird die Zuverlässigkeit der IP-Adresse oder Domäne bewahrt, um die Möglichkeit zu minimieren, dass Drittanbieter Nachrichten ablehnen. [SendGrid](https://sendgrid.com/partners/azure/) ist ein solcher SMTP-Relaydienst, aber es gibt auch andere. Möglicherweise verfügen Sie auch über einen sicheren SMTP-Relaydienst, der lokal ausgeführt wird und den Sie verwenden können.
+Es wird empfohlen, authentifizierte SMTP-Relaydienste zu verwenden, um E-Mails von Azure-VMs oder von Azure App Service zu senden. (Diese Relaydienste stellen in der Regel eine Verbindung über den TCP-Port 587 her, unterstützen aber auch andere Ports.) Mithilfe dieser Dienste wird die Zuverlässigkeit der IP-Adresse und der Domäne bewahrt, um die Wahrscheinlichkeit zu minimieren, dass Ihre Nachrichten von externen Domänen abgelehnt oder im Spam-Ordner platziert werden. [SendGrid](https://sendgrid.com/partners/azure/) ist ein solcher SMTP-Relaydienst, aber es gibt auch andere. Möglicherweise befindet sich auf Ihren lokalen Servern auch ein authentifizierter SMTP-Relaydienst.
 
 Das Verwenden dieser Dienste für die E-Mail-Zustellung ist in Azure nicht eingeschränkt – unabhängig vom Abonnementtyp.
 
 ## <a name="enterprise-agreement"></a>Enterprise Agreement
 
-Für Azure-Benutzer mit Enterprise Agreement gibt es keine technischen Änderungen am Senden von E-Mails ohne authentifiziertes Relay. Sowohl neue als auch vorhandene Enterprise Agreement-Benutzer können die Zustellung ausgehender E-Mails von Azure-VMs direkt an externe E-Mail-Anbieter testen, ohne Einschränkungen der Azure-Plattform. Es gibt keine Garantie, dass E-Mail-Anbieter eingehende E-Mails von einem bestimmten Benutzer akzeptieren. Die Azure-Plattform blockiert jedoch nicht die Bereitstellungsversuche für VMs innerhalb von Enterprise Agreement-Abonnements. Sie müssen direkt mit den E-Mail-Anbietern zusammenarbeiten, um Probleme bei der Nachrichtenzustellung oder der Spamfilterung zu beheben, die bestimmte Anbieter betreffen.
+Bei virtuellen Computern, die in Enterprise Agreement-Abonnements bereitgestellt werden, werden die ausgehenden SMTP-Verbindungen am TCP-Port 25 nicht blockiert. Es gibt jedoch keine Garantie, dass externe Domänen die eingehenden E-Mails der virtuellen Computer akzeptieren. Sollten Ihre E-Mails von den externen Domänen abgelehnt oder gefiltert werden, wenden Sie sich an die E-Mail-Dienstanbieter, um die Probleme zu beheben. Diese Probleme werden vom Azure-Support nicht abgedeckt.
 
 ## <a name="pay-as-you-go"></a>Nutzungsbasierte Bezahlung
 
-Wenn Sie sich vor dem 15. November 2017 für ein Abonnement mit nutzungsbasierter Bezahlung registriert haben, gelten für Sie keine technischen Änderungen beim Testen der Zustellung ausgehender E-Mails. Sie können weiterhin die Zustellung ausgehender E-Mails von Azure-VMs in diesen Abonnements direkt an externe E-Mail-Anbieter ohne Einschränkungen der Azure-Plattform testen. Es gibt auch hier keine Garantie, dass E-Mail-Anbieter eingehende E-Mails von einem bestimmten Benutzer akzeptieren. Benutzer müssen direkt mit den E-Mail-Anbietern zusammenarbeiten, um Probleme bei der Nachrichtenzustellung oder der Spamfilterung zu beheben, die bestimmte Anbieter betreffen.
+Die Azure-Plattform blockiert ausgehende SMTP-Verbindungen am TCP-Port 25 für virtuelle Computer, die in Abonnements mit nutzungsbasierter Bezahlung bereitgestellt werden. Diese Blockierung kann aufgehoben werden, wenn mit Ihrem Azure-Abonnement alles in Ordnung ist und es über einen tadellosen Zahlungsverlauf verfügt. Die Aufhebung der Beschränkung kann im [Azure-Portal](https://portal.azure.com) im Abschnitt **E-Mail kann nicht gesendet werden (SMTP-Port 25)** des Blatts **Diagnose und Problembehandlung** für eine Azure Virtual Network-Ressource angefordert werden. 
 
-Für Abonnements mit nutzungsbasierter Bezahlung, die nach dem 15. November 2017 erstellt wurden, gelten technische Einschränkungen: E-Mails, die direkt von VMs in den Abonnements gesendet werden, werden blockiert. Wenn Sie in der Lage sein möchten, E-Mails von Azure-VMs direkt an externe E-Mail-Anbieter zu senden (ohne ein authentifiziertes SMTP-Relay zu verwenden), und Sie über ein ordnungsgemäß geführtes Konto mit Zahlungsverlauf verfügen, können Sie anfordern, dass die Einschränkung entfernt wird. Sie können dies im Abschnitt **Konnektivität** des Blatts **Diagnose und Problembehandlung** für eine Azure Virtual Network-Ressource im Azure-Portal vornehmen. Wenn Ihre Anforderung akzeptiert wird, wird Ihr Abonnement aktiviert, oder Sie erhalten Anweisungen für die nächsten Schritte. 
-
-Sobald für ein Abonnement mit nutzungsbasierter Bezahlung eine Ausnahmeregelung gilt und die VMs im Azure-Portal beendet und gestartet wurden, werden alle VMs in diesem Abonnement in Zukunft ausgenommen. Die Ausnahme gilt nur für das angeforderte Abonnement und ausschließlich für den VM-Datenverkehr, der direkt an das Internet weitergeleitet wird.
+Nachdem ein Abonnement mit nutzungsbasierter Bezahlung von dieser Blockierung ausgenommen wurde und die virtuellen Computer im Azure-Portal beendet und neu gestartet wurden, sind ab sofort alle virtuellen Computer in diesem Abonnement ausgenommen. Die Ausnahme gilt nur für das angeforderte Abonnement und ausschließlich für den VM-Datenverkehr, der direkt an das Internet weitergeleitet wird.
 
 > [!NOTE]
 > Microsoft behält sich das Recht vor, diese Ausnahmeregelungen zu widerrufen, wenn ein Verstoß gegen die Vertragsbedingungen festgestellt wird.
 
 ## <a name="msdn-azure-pass-azure-in-open-education-azure-for-students-visual-studio-and-free-trial"></a>MSDN, Azure Pass, Azure in Open, Education, Microsoft Azure for Students, Visual Studio und Testversion
 
-Wenn Sie einen der folgenden Abonnementtypen nach dem 15. November 2017 erstellt haben, gelten technische Einschränkungen, die E-Mails blockieren, die von VMs innerhalb des Abonnements direkt an E-Mail-Anbieter gesendet werden:
+Die Azure-Plattform blockiert ausgehende SMTP-Verbindungen am TCP-Port 25 für virtuelle Computer, die in folgenden Arten von Abonnements bereitgestellt werden:
+
 - MSDN
 - Azure Pass
 - Azure in Open
@@ -59,28 +56,31 @@ Wenn Sie einen der folgenden Abonnementtypen nach dem 15. November 2017 erstellt
 
 Die Einschränkungen sollen Missbrauch verhindern. Anforderungen zum Entfernen dieser Einschränkungen werden nicht erteilt.
 
-Wenn Sie diese Abonnementtypen verwenden, sollten Sie – wie oben in diesem Artikel angemerkt – SMTP-Relaydienste verwenden oder Ihren Abonnementtyp ändern.
+Falls Sie diese Abonnementtypen verwenden, sollten Sie einen authentifizierten SMTP-Relaydienst nutzen (wie weiter oben in diesem Artikel beschrieben) oder Ihren Abonnementtyp ändern.
 
 ## <a name="cloud-solution-provider"></a>Cloud Solution Provider
 
-Wenn Sie Azure-Ressourcen über Cloud Solution Provider verwenden, können Sie die Aufhebung dieser Einschränkung im Abschnitt **Konnektivität** des Bereichs **Diagnose und Problembehandlung** für eine Virtual Network-Ressource im Azure-Portal anfordern. Wenn Ihre Anforderung akzeptiert wird, wird Ihr Abonnement aktiviert, oder Sie erhalten Anweisungen für die nächsten Schritte.
+Die Azure-Plattform blockiert ausgehende SMTP-Verbindungen am TCP-Port 25 für virtuelle Computer, die in Cloud Solution Provider-Abonnements bereitgestellt werden. Diese Blockierung kann aufgehoben werden. Die Aufhebung der Blockierung kann im Azure-Portal im Abschnitt **E-Mail kann nicht gesendet werden (SMTP-Port 25)** des Blatts **Diagnose und Problembehandlung** für eine Azure Virtual Network-Ressource durch Erstellen einer Supportanfrage angefordert werden.
 
 ## <a name="microsoft-partner-network-bizspark-plus-or-azure-sponsorship"></a>Microsoft Partner Network, BizSpark Plus oder Azure Sponsorship
 
-Für Abonnements der folgenden Typen, die nach dem 15. November 2017 erstellt wurden, gelten technische Einschränkungen: E-Mails, die direkt von VMs in den Abonnements gesendet werden, werden blockiert:
+Die Azure-Plattform blockiert ausgehende SMTP-Zustellversuche am TCP-Port 25 für virtuelle Computer, die in folgenden Abonnements bereitgestellt werden:
 
 - Microsoft Partner Network (MPN)
 - BizSpark Plus
 - Azure Sponsorship
 
-Wenn Sie E-Mails von einer Azure-VM direkt an externe E-Mail-Anbieter senden möchten (ohne authentifiziertes SMTP-Relay), können Sie die Aufhebung der Einschränkung anfordern. Erstellen Sie dazu eine Supportanfrage mit dem folgenden Problemtyp: **Technisch** > **virtuelles Netzwerk** > **Konnektivität** > **E-Mail kann nicht gesendet werden (SMTP/Port 25)** . Geben Sie unbedingt Informationen dazu an, warum Ihre Bereitstellung E-Mails direkt an E-Mail-Anbieter senden muss, anstatt ein authentifiziertes Relay zu verwenden. Die Anfragen werden geprüft und nach Ermessen von Microsoft genehmigt. Die Anforderungen werden erst nach zusätzlichen Betrugsüberprüfungen erteilt. 
+Diese Blockierung kann aufgehoben werden. Die Aufhebung der Blockierung kann im Azure-Portal im Abschnitt **E-Mail kann nicht gesendet werden (SMTP-Port 25)** des Blatts **Diagnose und Problembehandlung** für eine Azure Virtual Network-Ressource durch Erstellen einer Supportanfrage angefordert werden.
 
-Sobald für ein Abonnement eine Ausnahmeregelung gilt und die VMs im Azure-Portal beendet und erneut gestartet wurden, werden alle VMs in diesem Abonnement in Zukunft ausgenommen. Die Ausnahme gilt nur für das angeforderte Abonnement und ausschließlich für den VM-Datenverkehr, der direkt an das Internet weitergeleitet wird.
+Nachdem das Abonnement von dieser Blockierung ausgenommen wurde und die virtuellen Computer beendet und neu gestartet wurden, sind ab sofort alle virtuellen Computer in diesem Abonnement ausgenommen. Die Ausnahme gilt nur für das angeforderte Abonnement und ausschließlich für VM-Datenverkehr, der direkt an das Internet weitergeleitet wird.
+
+> [!NOTE]
+> Microsoft behält sich das Recht vor, diese Ausnahmen zu widerrufen, wenn ein Verstoß gegen die Vertragsbedingungen festgestellt wird.
 
 ## <a name="changing-subscription-type"></a>Ändern des Abonnementtyps
 
-Wenn Sie den Abonnementtyp ändern oder wenn Ihr Cloud Solution Provider-Abonnement oder Ihr Abonnement mit nutzungsbasierter Bezahlung genehmigt wird, müssen Sie die VM beenden, ihre Zuordnung aufheben und sie dann neu starten, damit die neue Richtlinie wirksam wird. Wenn Sie von einem Abonnementtyp, der standardmäßig genehmigt wird, zu einem nicht zulässigen Abonnementtyp wechseln, kann Port 25 entsprechend aufgrund der Änderungen an der Bereitstellung blockiert werden.
+Wenn Sie Ihren Abonnementtyp von einem Enterprise Agreement in einen anderen Abonnementtyp ändern, können Änderungen an Ihren Bereitstellungen die Blockierung ausgehender SMTP-Verbindungen zur Folge haben. Falls Sie Ihren Abonnementtyp von einem Enterprise Agreement in einen anderen Abonnementtyp ändern möchten und ausgehende SMTP-Verbindungen am TCP-Port 25 benötigen, wenden Sie sich vor dem Ändern des Abonnementtyps an den Support, um die Blockierung Ihres Abonnements aufzuheben.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen. Verwenden Sie diesen Problemtyp: **Technisch** > **virtuelles Netzwerk** > **Konnektivität** > **E-Mail kann nicht gesendet werden (SMTP/Port 25)** .
+[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen. Verwenden Sie diesen Problemtyp: **Technisch** > **Virtuelles Netzwerk** > **E-Mail kann nicht gesendet werden (SMTP/Port 25)** .

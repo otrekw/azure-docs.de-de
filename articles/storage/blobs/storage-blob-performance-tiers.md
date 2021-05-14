@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 4affed8a1226f02970928b2c227b0295167959de
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 93e6fcc11703fc24d97bc19ab9cc0d2129ff666f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277096"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143321"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Leistungsstufen für Blockblobspeicher
 
@@ -63,7 +63,7 @@ Die Standardleistung unterstützt verschiedene [Zugriffsebenen](storage-blob-sto
 
 ## <a name="migrate-from-standard-to-premium"></a>Migrieren von Standard zu Premium
 
-Sie können kein vorhandenes Speicherkonto mit Standard-Leistung in ein Blockblob-Speicherkonto mit Premium-Leistung konvertieren. Um zu einem Speicherkonto mit Premium-Leistung zu migrieren, müssen Sie ein Blockblob-Speicherkonto erstellen und die Daten zum neuen Konto migrieren. Weitere Informationen finden Sie unter [Erstellen eines Blockblob-Speicherkontos](storage-blob-create-account-block-blob.md).
+Sie können kein vorhandenes Speicherkonto mit Standard-Leistung in ein Blockblob-Speicherkonto mit Premium-Leistung konvertieren. Um zu einem Speicherkonto mit Premium-Leistung zu migrieren, müssen Sie ein Blockblob-Speicherkonto erstellen und die Daten zum neuen Konto migrieren. Weitere Informationen finden Sie unter [Erstellen eines Blockblob-Speicherkontos](../common/storage-account-create.md).
 
 Zum Kopieren von Blobs zwischen Speicherkonten können Sie die neueste Version des Befehlszeilenprogramms [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) verwenden. Für die Datenverschiebung und Transformation sind auch andere Tools, wie Azure Data Factory, verfügbar.
 

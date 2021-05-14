@@ -3,18 +3,18 @@ title: Azure IoT Hub Device Provisioning Service – Nachweis des symmetrischen 
 description: Dieser Artikel bietet eine konzeptionelle Übersicht über den Nachweis des symmetrischen Schlüssels mit IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 04/23/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32ad3bb4f9a845ded60694d42d0b2708a61aea6a
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90531558"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483297"
 ---
 # <a name="symmetric-key-attestation"></a>Nachweis des symmetrischen Schlüssels
 
@@ -37,7 +37,7 @@ Sie können auch Ihre eigenen symmetrischen Schlüssel für Registrierungen verw
 
 ## <a name="detailed-attestation-process"></a>Detaillierter Nachweisprozess
 
-Der Nachweis des symmetrischen Schlüssels mit Device Provisioning Service wird mit den gleichen [Sicherheitstoken](../iot-hub/iot-hub-devguide-security.md#security-token-structure) ausgeführt, die von IoT-Hubs zum Identifizieren von Geräten unterstützt werden. Diese Sicherheitstoken sind [SAS-Token (Shared Access Signature)](../service-bus-messaging/service-bus-sas.md). 
+Der Nachweis des symmetrischen Schlüssels mit Device Provisioning Service wird mit den gleichen [Sicherheitstoken](../iot-hub/iot-hub-dev-guide-sas.md#security-token-structure) ausgeführt, die von IoT-Hubs zum Identifizieren von Geräten unterstützt werden. Diese Sicherheitstoken sind [SAS-Token (Shared Access Signature)](../service-bus-messaging/service-bus-sas.md). 
 
 SAS-Token haben eine *Hashsignatur*, die mit dem symmetrischen Schlüssel erstellt wird. Die Signatur wird von Device Provisioning Service neu erstellt, um zu überprüfen, ob ein während der Bestätigung angegebenes Sicherheitstoken authentisch ist.
 
@@ -57,7 +57,7 @@ Jedes Token enthält die folgenden Komponenten:
 
 Wenn ein Gerät die Bestätigung mit einer individuellen Registrierung vornimmt, verwendet es den im individuellen Registrierungseintrag definierten symmetrischen Schlüssel zum Erstellen der Hashsignatur für das SAS-Token.
 
-Codebeispiele für die Erstellung eines SAS-Tokens finden Sie unter [Sicherheitstoken](../iot-hub/iot-hub-devguide-security.md#security-token-structure).
+Codebeispiele für die Erstellung eines SAS-Tokens finden Sie unter [Sicherheitstoken](../iot-hub/iot-hub-dev-guide-sas.md#security-token-structure).
 
 Die Erstellung von Sicherheitstoken für den Nachweis des symmetrischen Schlüssels wird vom Azure IoT C SDK unterstützt. Ein Beispiel zur Verwendung des Azure IoT C SDK für die Gerätebestätigung mit einer individuellen Registrierung finden Sie unter [Bereitstellen eines simulierten Geräts mit symmetrischen Schlüsseln](quick-create-simulated-device-symm-key.md).
 
@@ -74,7 +74,73 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 Dieses Beispiel wird im Artikel [How to provision legacy devices using symmetric keys](how-to-legacy-device-symm-key.md) (Bereitstellen von Legacygeräten mit symmetrischen Schlüsseln) verwendet.
 
-Nachdem eine Registrierungs-ID für das Gerät definiert wurde, wird der symmetrische Schlüssel für die Registrierungsgruppe zum Berechnen eines [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)-Hashes der Registrierungs-ID verwendet, um einen abgeleiteten Geräteschlüssel zu erstellen. Der Hashvorgang für die Registrierungs-ID kann mit dem folgenden C#-Code ausgeführt werden:
+Nachdem eine Registrierungs-ID für das Gerät definiert wurde, wird der symmetrische Schlüssel für die Registrierungsgruppe zum Berechnen eines [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)-Hashes der Registrierungs-ID verwendet, um einen abgeleiteten Geräteschlüssel zu erstellen. Einige Beispielansätze zur Berechnung des abgeleiteten Geräteschlüssels finden Sie in den folgenden Registerkarten.  
+
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Die IoT-Erweiterung für die Azure CLI stellt den [`compute-device-key`](/cli/azure/iot/dps?view=azure-cli-latest&preserve-view=true#az_iot_dps_compute_device_key) Befehl zum Generieren abgeleiteter Geräteschlüssel bereit. Dieser Befehl kann von Windows- oder Linux-Systemen aus in PowerShell oder einer Bash-Shell verwendet werden.
+
+Ersetzen Sie den Wert des `--key`-Arguments durch den **Primärschlüssel** aus Ihrer Anmeldegruppe.
+
+Ersetzen Sie den Wert des Arguments `--registration-id` durch Ihre Registrierungs-ID.
+
+```azurecli
+az iot dps compute-device-key --key 8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw== --registration-id sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+```
+
+Beispielergebnis:
+
+```azurecli
+"Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc="
+```
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+Wenn Sie eine Windows-Arbeitsstation verwenden, können Sie die abgeleiteten Geräteschlüssel mit PowerShell generieren, wie im folgenden Beispiel gezeigt.
+
+Ersetzen Sie den Wert des **-SCHLÜSSELS** durch den **Primärschlüssel** aus Ihrer Anmeldegruppe.
+
+Ersetzen Sie den Wert von **REG_ID** durch Ihre Registrierungs-ID.
+
+```powershell
+$KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
+$REG_ID='sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6'
+
+$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+$hmacsha256.key = [Convert]::FromBase64String($KEY)
+$sig = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID))
+$derivedkey = [Convert]::ToBase64String($sig)
+echo "`n$derivedkey`n"
+```
+
+```powershell
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+Wenn Sie eine Linux-Arbeitsstation verwenden, können Sie Ihren abgeleiteten Geräteschlüssel mit OpenSSL generieren, wie im folgenden Beispiel gezeigt.
+
+Ersetzen Sie den Wert des **-SCHLÜSSELS** durch den **Primärschlüssel** aus Ihrer Anmeldegruppe.
+
+Ersetzen Sie den Wert von **REG_ID** durch Ihre Registrierungs-ID.
+
+```bash
+KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
+REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+```
+
+```bash
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+# <a name="csharp"></a>[CSharp](#tab/csharp)
+
+Der Hashvorgang für die Registrierungs-ID kann mit dem folgenden C#-Code ausgeführt werden:
 
 ```csharp
 using System; 
@@ -96,6 +162,8 @@ public static class Utils
 ```csharp
 String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(masterKey), registrationId);
 ```
+
+---
 
 Der resultierende Geräteschlüssel wird dann verwendet, um ein SAS-Token für die Bestätigung zu generieren. Jedes Gerät in einer Registrierungsgruppe muss die Bestätigung mit einem Sicherheitstoken ausführen, das aus einem eindeutigen abgeleiteten Schlüssel generiert wurde. Der symmetrische Schlüssel der Registrierungsgruppe kann nicht direkt für die Bestätigung verwendet werden.
 

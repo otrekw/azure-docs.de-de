@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 91a6adecc9cf0db56fa4c433f388b05aa1bdef6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f833f3eb9e3d94da6178a0a9a9cf4f95ec0682e7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98202911"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865367"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>Verschieben einer Wartungssteuerungskonfiguration in eine andere Region
 
@@ -38,7 +38,7 @@ Bevor Sie mit dem Verschieben einer Wartungssteuerungskonfiguration beginnen:
 
 ## <a name="prepare-and-move"></a>Vorbereiten und Verschieben 
 
-1. Rufen Sie alle Wartungskonfigurationen in den einzelnen Abonnements ab. Führen Sie den CLI-Befehl [az maintenance configuration list](/cli/azure/ext/maintenance/maintenance/configuration#ext-maintenance-az-maintenance-configuration-list) aus, und ersetzen Sie dabei $subId durch Ihre Abonnement-ID.
+1. Rufen Sie alle Wartungskonfigurationen in den einzelnen Abonnements ab. Führen Sie den CLI-Befehl [az maintenance configuration list](/cli/azure/maintenance/configuration#az_maintenance_configuration_list) aus, und ersetzen Sie dabei $subId durch Ihre Abonnement-ID.
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table

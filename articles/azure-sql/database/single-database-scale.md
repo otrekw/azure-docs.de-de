@@ -10,19 +10,26 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 02/22/2021
-ms.openlocfilehash: c5b6509cabd743a01a085639a7b76d764555a9f8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/09/2021
+ms.openlocfilehash: 47686f457e2579ca8a643de6671c886effefa6f1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106652"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313520"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
 In diesem Artikel wird beschrieben, wie die für eine Azure SQL-Datenbank-Instanz im bereitgestellten Computetarif verfügbaren Compute- und Speicherressourcen skaliert werden können. Alternativ bietet die [serverlose Computeebene](serverless-tier-overview.md) automatische Computeskalierung und eine Abrechnung der genutzten Computekapazität pro Sekunde.
 
-Nach der anfänglichen Auswahl der Anzahl an virtuellen Kernen oder DTUs können Sie ein Singleton je nach tatsächlichem Bedarf im [Azure-Portal](single-database-manage.md#the-azure-portal), in [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), in [PowerShell](/powershell/module/az.sql/set-azsqldatabase), in der [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder in der [REST-API](/rest/api/sql/databases/update) dynamisch zentral hoch- oder herunterskalieren.
+Nach dem Auswählen der Anzahl von virtuellen Kernen und DTUs können Sie eine einzelne Datenbank dynamisch und bedarfsgerecht zentral hoch- oder herunterskalieren. Hierzu können Sie Folgendes verwenden:
+
+* [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
+* [Azure portal](single-database-manage.md#the-azure-portal)
+* [PowerShell](/powershell/module/az.sql/set-azsqldatabase)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/sql/db#az-sql-db-update)
+* [REST-API](/rest/api/sql/databases/update)
+
 
 Das folgende Video zeigt die dynamische Änderung von Dienstebene und Computegröße zum Heraufsetzen verfügbarer DTUs für eine einzelne Datenbank.
 
@@ -125,7 +132,7 @@ Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank die höchste in d
 
 ### <a name="vcore-based-purchasing-model"></a>vCore-basiertes Kaufmodell
 
-- Speicher kann in Inkrementen von 1 GB bis zur maximalen Datenspeichergröße bereitgestellt werden. Die konfigurierbare Mindestdatenspeichergröße ist 1 GB. Weitere Informationen zur maximalen Größe der Datenspeicherung in den einzelnen Dienstzielen finden Sie auf den Dokumentationsseiten zur Ressourcenbegrenzung für [einzelne Datenbanken](resource-limits-vcore-single-databases.md) und [elastische Pools](resource-limits-vcore-elastic-pools.md).
+- Speicher kann in Inkrementen von 1 GB bis zur maximalen Datenspeichergröße bereitgestellt werden. Die konfigurierbare Mindestdatenspeichergröße ist 1 GB. Informationen zur maximalen Größe der Datenspeicherung in den einzelnen Dienstzielen finden Sie auf den Dokumentationsseiten zu Ressourcenlimits unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md) sowie unter [Ressourcengrenzwerte für Einzeldatenbanken, die das DTU-Kaufmodell verwenden: Azure SQL-Datenbank](resource-limits-dtu-single-databases.md).
 - Datenspeicher für eine Einzeldatenbank kann durch Erhöhen oder Verringern der maximalen Größe über das [Azure-Portal](https://portal.azure.com), [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), die [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder die [REST-API](/rest/api/sql/databases/update) bereitgestellt werden. Wenn der Wert für die maximale Größe in Bytes angegeben wird, muss er ein Vielfaches von 1 GB (1073741824 Bytes) sein.
 - Die Menge der Daten, die in den Datendateien einer Datenbank gespeichert werden kann, ist durch die konfigurierte maximale Größe des Datenspeichers begrenzt. Zusätzlich zu diesem Speicher teilt Azure SQL-Datenbank automatisch 30 Prozent mehr Speicher für das Transaktionsprotokoll zu.
 - Azure SQL-Datenbank ordnet für die `tempdb`-Datenbank automatisch 32 GB pro virtuellem Kern zu. `tempdb` befindet sich in allen Dienstebenen auf einem lokalen SSD-Datenträger.

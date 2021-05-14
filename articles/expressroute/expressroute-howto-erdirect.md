@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: f54c22a0c2f7bf89d790dbd33f748446a871d224
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2c49fe65cf97207a495f6c0cc78585489a0db6ff
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099946"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228247"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Konfigurieren von ExpressRoute Direct
 
@@ -21,7 +21,7 @@ ExpressRoute Direct ermöglicht das Herstellen einer direkten Verbindung mit dem
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonnement registrieren. Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonnement registrieren. Führen Sie zu Ihrer Registrierung folgende Schritte über Azure PowerShell aus:
-1.  Melden Sie sich bei Azure an, und wählen Sie die Abonnement-ID aus, mit der Sie den Cluster entfernen möchten.
+1.  Melden Sie sich bei Azure an, und wählen Sie das Abonnement aus, für das Sie sich registrieren möchten.
 
     ```azurepowershell-interactive
     Connect-AzAccount 
@@ -305,7 +305,12 @@ Erstellen Sie in der ExpressRoute-Direct-Ressource eine Leitung.
   AllowClassicOperations           : False
   GatewayManagerEtag     
   ```
-
+## <a name="delete-the-resource"></a>Löschen der Ressource
+Vor dem Löschen der ExpressRoute Direct-Ressource müssen Sie zunächst alle ExpressRoute-Verbindungen löschen, die auf dem ExpressRoute Direct-Portpaar erstellt wurden.
+Sie können die ExpressRoute Direct-Ressource löschen, indem Sie den folgenden Befehl ausführen:
+ ```powershell
+   Remove-azexpressrouteport -Name $Name -Resourcegroupname -$ResourceGroupName
+   ```
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu ExpressRoute Direct finden Sie in der [Übersicht](expressroute-erdirect-about.md).

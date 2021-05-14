@@ -4,12 +4,12 @@ description: Autoskalierung in Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 4727d562e21b92e58c8091f1161cf53198ff0b26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3ac08addac4fb668b58ebb218ffb57bb920813
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726001"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139685"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Übersicht über die Autoskalierung in Microsoft Azure
 In diesem Artikel wird beschrieben, was die automatische Skalierung von Microsoft Azure ist, welche Vorteile sie hat und wie Sie mit der Nutzung beginnen.  
@@ -107,7 +107,7 @@ Zum Einrichten der automatischen Skalierung können Sie Folgendes verwenden:
 | API Management-Dienst|[Automatisches Skalieren einer Azure API Management-Instanz](../../api-management/api-management-howto-autoscale.md)
 | Azure Data Explorer-Cluster|[Verwalten der Skalierung von Azure Data Explorer-Clustern bei sich änderndem Bedarf](/azure/data-explorer/manage-cluster-horizontal-scaling)|
 | Logic Apps |[Hinzufügen von ISE-Kapazität (Integration Service Environment, Integrationsdienstumgebung)](../../logic-apps/ise-manage-integration-service-environment.md#add-ise-capacity)|
-| Spring Cloud |[Einrichten der Autoskalierung für Microserviceanwendungen](../../spring-cloud/spring-cloud-tutorial-setup-autoscale.md)|
+| Spring Cloud |[Einrichten der Autoskalierung für Microserviceanwendungen](../../spring-cloud/how-to-setup-autoscale.md)|
 | Service Bus |[Automatisches Aktualisieren von Messagingeinheiten eines Azure Service Bus-Namespace](../../service-bus-messaging/automate-update-messaging-units.md)|
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -3,12 +3,12 @@ title: Verschieben von Regionen für Ressourcen in Microsoft.Resources
 description: Erfahren Sie, wie Sie Ressourcen im Namespace Microsoft.Resources in neue Regionen verschieben.
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 098e5c36969da12966d793b6e1eddd4f79701ead
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 898e5efef22f76dc07395fcfcad413ef4582dafd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88950810"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725870"
 ---
 # <a name="move-microsoftresources-resources-to-new-region"></a>Verschieben von Ressourcen unter Microsoft.Resources in eine neue Region
 
@@ -93,4 +93,4 @@ Wenn Sie über eine [Vorlagenspezifikation](../templates/template-specs.md) in e
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](move-resource-group-and-subscription.md).
-* Informationen zum Verschieben von Ressourcen in eine neue Region finden Sie unter [Verschieben von Azure-Ressourcen zwischen Regionen](move-region.md).
+* Informationen zum Verschieben von Ressourcen in eine neue Region finden Sie unter [Verschieben von Ressourcen zwischen Regionen](move-resources-overview.md#move-resources-across-regions).

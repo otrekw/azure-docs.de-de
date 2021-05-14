@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8a18a47331eb5d4a9ed5578cca320beef5e0ba45
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6a98571f513e25d801acd4f4a9c2901dcd56fabc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766985"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869219"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
 
@@ -48,7 +48,7 @@ Klicken Sie auf den Namen einer Lösung, um die dazugehörige Zusammenfassungsse
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie den Befehl [az monitor log-analytics solution list](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list), um die in Ihrem Abonnement installierten Überwachungslösungen aufzulisten.   Überprüfen Sie vor dem Ausführen des Befehls `list` die Voraussetzungen in [Installieren einer Überwachungslösung](#install-a-monitoring-solution).
+Verwenden Sie den Befehl [az monitor log-analytics solution list](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_list), um die in Ihrem Abonnement installierten Überwachungslösungen aufzulisten.   Überprüfen Sie vor dem Ausführen des Befehls `list` die Voraussetzungen in [Installieren einer Überwachungslösung](#install-a-monitoring-solution).
 
 ```azurecli
 # List all log-analytics solutions in the current subscription.
@@ -142,7 +142,7 @@ Mitglieder der Community können Verwaltungslösungen für Azure-Schnellstartvor
 
 Wenn Sie eine Lösung installieren, müssen Sie einen [Log Analytics-Arbeitsbereich](../logs/manage-access.md) auswählen, in dem die Lösung installiert wird und in dem ihre Daten gesammelt werden.  Mit der Azure-Befehlszeilenschnittstelle verwalten Sie Arbeitsbereiche mithilfe der Referenzbefehle [az monitor log-analytics workspace](/cli/azure/monitor/log-analytics/workspace).  Führen Sie den unter [Log Analytics-Arbeitsbereich und Automation-Konto](#log-analytics-workspace-and-automation-account) beschriebenen Prozess aus, um einen Arbeitsbereich und ein Konto zu verknüpfen.
 
-Verwenden Sie [az monitor log-analytics solution create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution), um eine Überwachungslösung zu installieren.  Parameter in eckigen Klammern sind optional.
+Verwenden Sie [az monitor log-analytics solution create](/cli/azure/monitor/log-analytics/solution), um eine Überwachungslösung zu installieren.  Parameter in eckigen Klammern sind optional.
 
 ```azurecli
 az monitor log-analytics solution create --name
@@ -241,7 +241,7 @@ Wenn Sie eine installierte Lösung über das Portal entfernen möchten, suchen S
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie den Befehl [az monitor log-analytics solution delete](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete), um eine installierte Lösung mithilfe der Azure-Befehlszeilenschnittstelle zu entfernen.
+Verwenden Sie den Befehl [az monitor log-analytics solution delete](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_delete), um eine installierte Lösung mithilfe der Azure-Befehlszeilenschnittstelle zu entfernen.
 
 ```azurecli
 az monitor log-analytics solution delete --name

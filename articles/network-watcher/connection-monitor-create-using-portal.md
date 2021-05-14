@@ -4,7 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal in Verbindungsmonitor einen Monitor erstellen.
 services: network-watcher
 documentationcenter: na
-author: vinigam
+author: vinynigam
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: how-to
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: edf671c8005fa67f6161f383c503ca278dba3105
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9942b608601b495dd041a8b59aaecb3f5dd81fa7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101702163"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505228"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Erstellen eines Monitors in Verbindungsmonitor mit dem Azure-Portal
 
@@ -121,7 +121,7 @@ Wenn Sie eine Testgruppe in einem Verbindungsmonitor erstellen möchten, geben S
 
    * Zum Auswählen lokaler Agents wählen Sie die Registerkarte **Nicht-Azure-Endpunkte** aus. Standardmäßig sind Agents in Arbeitsbereichen nach Region gruppiert. Für alle diese Arbeitsbereiche ist der Netzwerkleistungsmonitor konfiguriert. 
    
-       Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview) ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](../azure-monitor/insights/solutions.md). 
+       Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview) ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](../azure-monitor/insights/solutions.md). Informationen zum Konfigurieren von Agents für lokale Computer finden Sie unter [Agents für lokale Computer](connection-monitor-overview.md#agents-for-on-premises-machines).
    
        Unter **Verbindungsmonitor erstellen** ist auf der Registerkarte **Grundlagen** die Standardregion ausgewählt. Wenn Sie die Region ändern, können Sie Agents aus Arbeitsbereichen in der neuen Region auswählen. Sie können ein/en oder mehrere Agents oder Subnetze auswählen. In der Ansicht **Subnetz** können Sie bestimmte IP-Adressen für die Überwachung auswählen. Wenn Sie mehrere Subnetze hinzufügen, wird ein benutzerdefiniertes lokales Netzwerk mit dem Namen **OnPremises_Network_1** erstellt. Sie können den Selektor **Gruppieren nach** ändern, um nach Agents zu gruppieren.
 
@@ -144,7 +144,7 @@ Wenn Sie eine Testgruppe in einem Verbindungsmonitor erstellen möchten, geben S
     
     * Um Nicht-Azure-Agents als Ziele auszuwählen, wählen Sie die Registerkarte **Nicht-Azure-Endpunkte** aus. Standardmäßig sind Agents in Arbeitsbereichen nach Region gruppiert. Für alle diese Arbeitsbereiche ist der Netzwerkleistungsmonitor konfiguriert. 
     
-      Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem Azure Marketplace ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](../azure-monitor/insights/solutions.md). 
+      Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem Azure Marketplace ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](../azure-monitor/insights/solutions.md). Informationen zum Konfigurieren von Agents für lokale Computer finden Sie unter [Agents für lokale Computer](connection-monitor-overview.md#agents-for-on-premises-machines).
 
       Unter  **Verbindungsmonitor erstellen** ist auf der Registerkarte  **Grundlagen**  die Standardregion ausgewählt. Wenn Sie die Region ändern, können Sie Agents aus Arbeitsbereichen in der neuen Region auswählen. Sie können ein/en oder mehrere Agents oder Subnetze auswählen. In der Ansicht **Subnetz** können Sie bestimmte IP-Adressen für die Überwachung auswählen. Wenn Sie mehrere Subnetze hinzufügen, wird ein benutzerdefiniertes lokales Netzwerk mit dem Namen **OnPremises_Network_1** erstellt.  
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: 584e1e943f215aa4a69368fb71cb3053b1444a01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5579aa764eaa9f367364dce6ca5db09184e04fa2
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660218"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330168"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Häufig gestellte Fragen zum kommerziellen Marketplace von Microsoft
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie im [Hub für den kommerziellen Microsoft-Market
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Gibt es eine Gebühr für die Auflistung im kommerziellen Microsoft-Marketplace?
 
-Nein, es fallen keine Kosten für die Veröffentlichung von Angeboten in unserem kommerziellen Marketplace an. Wir behalten einen geringen Prozentsatz des Umsatzes als Transaktionsgebühr ein und investieren ihn in das Marketplace-Prämienprogramm, in die Plattforminnovation und den Betrieb des kommerziellen Marketplace. Diese Transaktionsgebühr wird für [Azure-IP-Co-Selling](./marketplace-co-sell.md)-Incentive-Angebote und für kostenpflichtige SaaS-Angebote in AppSource reduziert, die einer Microsoft Teams-App oder mindestens zwei Microsoft 365-Add-Ins (Excel, PowerPoint, Word, Outlook und SharePoint) zugeordnet sind.
+Nein, es fallen keine Kosten für die Veröffentlichung von Angeboten in unserem kommerziellen Marketplace an. Wir behalten einen geringen Prozentsatz des Umsatzes als Transaktionsgebühr ein und investieren ihn in das Marketplace-Prämienprogramm, in die Plattforminnovation und den Betrieb des kommerziellen Marketplace. Diese Transaktionsgebühr wird für [Azure-IP-Co-Selling](./co-sell-overview.md)-Incentive-Angebote und für kostenpflichtige SaaS-Angebote in AppSource reduziert, die einer Microsoft Teams-App oder mindestens zwei Microsoft 365-Add-Ins (Excel, PowerPoint, Word, Outlook und SharePoint) zugeordnet sind.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Wie registriere ich mich als Herausgeber im kommerziellen Microsoft-Marketplace?
 
@@ -68,6 +68,12 @@ Auf welche Weise die Kunden Ihr Angebot im kommerziellen Marketplace nutzen kön
 Nachdem Sie sich registriert und die Herausgebervereinbarung akzeptiert haben, können Sie auf die Seite „Kommerzieller Marketplace“ im Partner Center zugreifen. Hier können Sie Angebote erstellen und verwalten sowie Analyseberichte anzeigen. Für Microsoft 365-Apps müssen Sie auch das Office Store-Programm im Partner Center aktivieren.
 
 Weitere Informationen finden Sie unter [Willkommen beim kommerziellen Marketplace](index.yml) und [Monetarisieren Ihres Microsoft 365-Add-Ins über den kommerziellen Microsoft-Marketplace](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+
+### <a name="how-can-my-own-employees-use-our-offers-from-the-marketplace-without-being-charged"></a>Wie können meine Mitarbeiter unsere Angebote im Marketplace nutzen, ohne dass Gebühren erhoben werden?
+
+Um zu verhindern, dass Microsoft Ihr Angebot für Ihre Mitarbeiter in Rechnung stellt und beim Verkauf Ihres Angebots eine Store-Servicegebühr erhoben wird, müssen Sie zunächst einen [privaten Plan](/azure/marketplace/private-offers) für das Angebot mit einem Preis von 0 US-Dollar erstellen und das Angebot an die internen Benutzer senden, die es kaufen möchten.
+
+Sie können auch den [Private Marketplace](/marketplace/create-manage-private-azure-marketplace) verwenden, um sicherzustellen, dass interne Benutzer nur bestimmte Angebote kaufen, die von Ihrem Administrator genehmigt wurden.
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Wie erhalte ich Unterstützung für den kommerziellen Marketplace?
 

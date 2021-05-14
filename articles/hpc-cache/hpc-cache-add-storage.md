@@ -4,14 +4,15 @@ description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokale
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/28/2021
+ms.custom: subject-rbac-steps
 ms.author: v-erkel
-ms.openlocfilehash: afb896100ea60c21aaf37890d7b520bf38c6ce18
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 81d361a82a05bed83156857b2381be0d6d113827
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772721"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209893"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
@@ -19,7 +20,7 @@ ms.locfileid: "104772721"
 
 Sie können bis zu 20 verschiedene Speicherziele für einen Cache definieren. Der Cache stellt alle Speicherziele in einem aggregierten Namespace dar.
 
-Die Namespacepfade werden separat konfiguriert, nachdem Sie die Speicherziele hinzugefügt haben. Im Allgemeinen kann ein NFS-Speicherziel über bis zu zehn Namespacepfade verfügen, oder bei manchen umfangreichen Konfigurationen über mehr. Details finden Sie unter [NFS-Namespacepfade](add-namespace-paths.md#nfs-namespace-paths).
+Die Namespacepfade werden separat konfiguriert, nachdem Sie die Speicherziele hinzugefügt haben.
 
 Beachten Sie, dass der Zugriff auf die Speicherexporte vom virtuellen Netzwerk Ihres Caches aus möglich sein muss. Für einen lokalen Hardwarespeicher müssen Sie möglicherweise einen DNS-Server einrichten, der Hostnamen für den NFS-Speicherzugriff auflösen kann. Weitere Informationen finden Sie unter [DNS-Zugriff](hpc-cache-prerequisites.md#dns-access).
 
@@ -83,26 +84,43 @@ Der Besitzer des Speicherkontos muss die Rollen [Speicherkontomitwirkender](../r
 
 Sie können dies im Voraus erledigen oder indem Sie auf einen Link auf der Seite klicken, auf der Sie ein Blobspeicherziel hinzufügen. Beachten Sie, dass es bis zu fünf Minuten dauern kann, bis die Rolleneinstellungen in der Azure-Umgebung weitergegeben werden. Daher sollten Sie nach dem Hinzufügen der Rollen einige Minuten warten, bevor Sie ein Speicherziel erstellen.
 
-Nachfolgend finden Sie die Schritte zum Hinzufügen der Azure-Rollen:
+1. Öffnen Sie **Zugriffssteuerung (IAM)** für Ihr Speicherkonto.
 
-1. Öffnen Sie die Seite **Zugriffssteuerung (IAM)** für das Speicherkonto. (Der Link auf der Seite **Speicherziel hinzufügen** öffnet diese Seite für das ausgewählte Konto automatisch.)
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
 
-1. Klicken Sie auf die **+** oben auf der Seite, und wählen Sie **Rollenzuweisung hinzufügen** aus.
+1. Weisen Sie die folgenden Rollen nacheinander zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Rollen | [Mitwirkender von Speicherkonto](../role-based-access-control/built-in-roles.md#storage-account-contributor) <br/>  [Mitwirkender an Speicherblobdaten](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) |
+    | Zugriff zuweisen zu | HPC Cache-Ressourcenanbieter |
 
-1. Wählen Sie in der Liste die Rolle "Speicherkontomitwirkender" aus.
-
-1. Übernehmen Sie im Feld **Zugriff zuweisen zu** den Standardwert ("Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal").  
-
-1. Suchen Sie im Feld **Auswählen** nach „hpc“.  Diese Zeichenfolge sollte mit einem Dienstprinzipal mit dem Namen "HPC Cache-Ressourcenanbieter" übereinstimmen. Klicken Sie auf diesen Prinzipal, um ihn auszuwählen.
+    ![Seite „Rollenzuweisung hinzufügen“](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
    > [!NOTE]
-   > Wenn eine Suche nach „hpc“ nicht funktioniert, versuchen Sie stattdessen, die Zeichenfolge „storagecache“ zu verwenden. Benutzer, die an Vorschauen (vor der allgemeinen Verfügbarkeit) teilgenommen haben, müssen möglicherweise den älteren Namen für den Dienstprinzipal verwenden.
+   > Wenn Sie den HPC Cache-Ressourcenanbieter nicht finden können, suchen Sie stattdessen nach der Zeichenfolge „storagecache“. Benutzer, die an HPC Cache-Vorschauen (vor der allgemeinen Verfügbarkeit) teilgenommen haben, müssen möglicherweise den älteren Namen für den Dienstprinzipal verwenden.
 
-1. Klicken Sie unten auf die Schaltfläche **Speichern**.
+<!-- 
+Steps to add the Azure roles:
 
-1. Wiederholen Sie diesen Vorgang, um die Rolle "Mitwirkender an Storage-Blobdaten" zuzuweisen.  
+1. Open the **Access control (IAM)** page for the storage account. (The link in the **Add storage target** page automatically opens this page for the selected account.)
 
-![Screenshot des GUI zum Hinzufügen von Rollenzuweisungen](media/hpc-cache-add-role.png)
+1. Click the **+** at the top of the page and choose **Add a role assignment**.
+
+1. Select the role "Storage Account Contributor&quot; from the list.
+
+1. In the **Assign access to** field, leave the default value selected (&quot;Azure AD user, group, or service principal").  
+
+1. In the **Select** field, search for "hpc".  This string should match one service principal, named "HPC Cache Resource Provider". Click that principal to select it.
+
+   > [!NOTE]
+   > If a search for "hpc" doesn't work, try using the string "storagecache" instead. Users who participated in previews (before GA) might need to use the older name for the service principal.
+
+1. Click the **Save** button at the bottom.
+
+1. Repeat this process to assign the role "Storage Blob Data Contributor".  
+
+![screenshot of add role assignment GUI](media/hpc-cache-add-role.png) -->
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -126,7 +144,7 @@ Ausführliche Anweisungen finden Sie unter [Hinzufügen oder Entfernen von Azure
 
 ### <a name="add-a-blob-storage-target-with-azure-cli"></a>Hinzufügen eines Blobspeicherziels mit der Azure-Befehlszeilenschnittstelle
 
-Verwenden Sie den Schnittstellenbefehl [az hpc-cache blob-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-add), um ein Azure-Blobspeicherziel zu definieren.
+Verwenden Sie den Schnittstellenbefehl [az hpc-cache blob-storage-target add](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_add), um ein Azure-Blobspeicherziel zu definieren.
 
 > [!NOTE]
 > Für die Azure CLI-Befehle ist es derzeit erforderlich, dass Sie beim Hinzufügen eines Speicherziels einen Namespacepfad hinzufügen. Dies unterscheidet sich von dem Prozess, der mit der Azure-Portalschnittstelle verwendet wird.
@@ -229,7 +247,7 @@ Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 
 [Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
-Verwenden Sie den Azure CLI-Befehl [az hpc-cache nfs-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add), um das Speicherziel zu erstellen.
+Verwenden Sie den Azure CLI-Befehl [az hpc-cache nfs-storage-target add](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_add), um das Speicherziel zu erstellen.
 
 > [!NOTE]
 > Für die Azure CLI-Befehle ist es derzeit erforderlich, dass Sie beim Hinzufügen eines Speicherziels einen Namespacepfad hinzufügen. Dies unterscheidet sich von dem Prozess, der mit der Azure-Portalschnittstelle verwendet wird.
@@ -240,7 +258,7 @@ Geben Sie zusätzlich zum Cachenamen und zur Cacheressourcengruppe die folgenden
 * ``--nfs3-target``: Die IP-Adresse Ihres NFS-Speichersystems. (Sie können hier einen vollqualifizierten Domänennamen verwenden, wenn Ihr Cache Zugriff auf einen DNS-Server hat, der den Namen auflösen kann.)
 * ``--nfs3-usage-model``: Geben Sie eines der oben im Abschnitt [Auswählen eines Nutzungsmodells](#choose-a-usage-model) beschriebenen Datencacheprofile an.
 
-  Überprüfen Sie die Namen der Nutzungsmodelle mithilfe des Befehls [az hpc-cache usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list).
+  Überprüfen Sie die Namen der Nutzungsmodelle mithilfe des Befehls [az hpc-cache usage-model list](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage_model_list).
 
 * ``--junction``: Der „junction“-Parameter verknüpft den clientseitigen virtuellen Dateipfad mit einem Exportpfad auf dem Speichersystem.
 
@@ -310,9 +328,11 @@ ADLS-NFS-Speicherziele weisen einige Ähnlichkeiten mit Blobspeicherzielen und N
 
 * Ähnlich wie bei einem Blobspeicherziel müssen Sie Azure HPC Cache die Berechtigung erteilen, um [auf Ihr Speicherkonto zuzugreifen](#add-the-access-control-roles-to-your-account).
 * Wie bei einem NFS-Speicherziel müssen Sie ein [Nutzungsmodell](#choose-a-usage-model) für den Cache festlegen.
-* Da NFS-fähige Blobcontainer über eine mit NFS kompatible hierarchische Struktur verfügen, müssen Sie den Cache nicht zum Erfassen von Daten verwenden, und die Container können von anderen NFS-Systemen gelesen werden. Sie können Daten vorab in einem ADLS-NFS-Container laden, diesen dann zu einem HPC-Cache als Speicherziel hinzufügen und später außerhalb eines HPC-Caches auf diese Daten zugreifen. Wenn Sie einen Standardblobcontainer als Speicherziel für einen HPC-Cache verwenden, werden die Daten in einem proprietären Format geschrieben, und der Zugriff auf diese Daten kann lediglich über andere mit Azure HPC Cache kompatible Produkte erfolgen.
+* Da NFS-fähige Blobcontainer über eine mit NFS kompatible hierarchische Struktur verfügen, müssen Sie den Cache nicht zum Erfassen von Daten verwenden, und die Container können von anderen NFS-Systemen gelesen werden. Sie können Daten vorab in einen ADLS-NFS-Container laden, diesen dann als Speicherziel zu einem HPC-Cache hinzufügen, und später außerhalb eines HPC-Caches auf diese Daten zugreifen. Wenn Sie einen Standard-Blobcontainer als Speicherziel für einen HPC-Cache verwenden, werden die Daten in einem geschützten Format geschrieben, und Sie können nur mit anderen mit Azure HPC Cache kompatiblen Produkten auf diese Daten zugreifen.
 
 Bevor Sie ein ADLS-NFS-Speicherziel erstellen können, müssen Sie ein NFS-fähiges Speicherkonto erstellen. Befolgen Sie die Tipps unter [Voraussetzungen für Azure HPC Cache](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview), und führen Sie die Anweisungen unter [Einbinden eines Blobspeichers mit einem NFS](../storage/blobs/network-file-system-protocol-support-how-to.md). Nachdem Sie Ihr Speicherkonto eingerichtet haben, können Sie einen neuen Container erstellen, wenn Sie das Speicherziel erstellen.
+
+Weitere Informationen zu dieser Konfiguration finden Sie unter [Verwenden von in NFS eingebundenen Blobspeicher mit Azure HPC Cache](nfs-blob-considerations.md).
 
 Öffnen Sie die Seite **Speicherziel hinzufügen** im Azure-Portal, um ein ADLS-NFS-Speicherziel zu erstellen. (Zusätzliche Methoden befinden sich in der Entwicklung.)
 
@@ -332,8 +352,6 @@ Geben Sie die folgenden Informationen ein.
 
 Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 
-<!-- **** -->
-
 ## <a name="view-storage-targets"></a>Anzeigen von Speicherzielen
 
 Sie können das Azure-Portal oder die Azure CLI verwenden, um die bereits für Ihren Cache definierten Speicherziele anzuzeigen.
@@ -350,13 +368,13 @@ Weitere Informationen finden Sie unter [Bearbeiten von Speicherzielen](hpc-cache
 
 [Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
-Verwenden Sie die Option [az hpc-cache storage-target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list), um die vorhandenen Speicherziele für einen Cache anzuzeigen. Geben Sie den Cachenamen und die Ressourcengruppe an (sofern Sie dies nicht global festgelegt haben).
+Verwenden Sie die Option [az hpc-cache storage-target list](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage-target-list), um die vorhandenen Speicherziele für einen Cache anzuzeigen. Geben Sie den Cachenamen und die Ressourcengruppe an (sofern Sie dies nicht global festgelegt haben).
 
 ```azurecli
 az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
 ```
 
-Verwenden Sie [az hpc-cache storage-target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list), um Details zu einem bestimmten Speicherziel anzuzeigen. (Geben Sie das Speicherziel anhand des Namens an.)
+Verwenden Sie [az hpc-cache storage-target show](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage-target-list), um Details zu einem bestimmten Speicherziel anzuzeigen. (Geben Sie das Speicherziel anhand des Namens an.)
 
 Beispiel:
 

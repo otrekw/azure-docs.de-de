@@ -8,16 +8,14 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 84a723023bf8614b837ba9783bae987403921c06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8e2497e0762c992c54ed9583d1db0ff8cbb74c8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585484"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741003"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Gruppieren mehrerer Aktionen für die Ausführung über eine oder mehrere Regeln
-
-*Dieser Artikel gilt für Ersteller und Administratoren.*
 
 In Azure IoT Central erstellen Sie Regeln, um Aktionen auszuführen, wenn eine Bedingung erfüllt wird. Regeln basieren auf der Gerätetelemetrie oder Ereignissen. Sie können einen Betreiber beispielsweise benachrichtigen, wenn die Temperatur eines Geräts einen Schwellenwert überschreitet. In diesem Artikel wird die Verwendung von *Aktionsgruppen* in [Azure Monitor](../../azure-monitor/overview.md) zum Anfügen mehrerer Aktionen an eine IoT Central-Regel erläutert. Sie können eine Aktionsgruppe an mehrere Regeln anfügen. Eine [Aktionsgruppe](../../azure-monitor/alerts/action-groups.md) ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden.
 

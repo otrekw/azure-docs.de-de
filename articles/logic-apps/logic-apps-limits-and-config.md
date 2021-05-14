@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 04/05/2021
-ms.openlocfilehash: 2debf7d350f4f1fde5e86a60ad03a6858bc02743
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 04/16/2021
+ms.openlocfilehash: 286da1412e8a74ffbf34e4abb493241914d4f925
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490334"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764871"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -391,7 +391,7 @@ Wenn Ihre Logik-App über eine Firewall kommunizieren muss, mit der der Datenver
 
 Um z. B. Aufrufe zu unterstützen, die Logik-Apps in der Region „USA, Westen“ über integrierte Trigger und Aktionen wie [den HTTP-Trigger oder die HTTP-Aktion](../connectors/connectors-native-http.md) senden bzw. empfangen, muss Ihre Firewall den Zugriff für *alle* eingehenden IP-Adressen des Logic Apps-Diensts *und* alle ausgehenden IP-Adressen, die in der Region „USA, Westen“ vorhanden sind, zulassen.
 
-Wenn Ihre Logik-App außerdem [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors) (etwa den Office 365 Outlook-Connector oder den SQL-Connector) oder [benutzerdefinierte Connectors](/connectors/custom-connectors/) verwendet, muss die Firewall außerdem den Zugriff für *alle* [ausgehenden IP-Adressen der verwalteten Connectors](#outbound) in der Azure-Region Ihrer Logik-App zulassen. Außerdem, wenn Sie benutzerdefinierte Connectors verwenden, die über die [lokale Datengatewayressource in Azure](logic-apps-gateway-connection.md) auf lokale Ressourcen zugreifen, müssen Sie die Gatewayinstallation so einrichten, dass der Zugriff auf die *[ausgehenden IP-Adressen](#outbound)* des entsprechenden verwalteten Connectors zugelassen wird.
+Wenn Ihre Logik-App außerdem [verwaltete Connectors](../connectors/managed.md) (etwa den Office 365 Outlook-Connector oder den SQL-Connector) oder [benutzerdefinierte Connectors](/connectors/custom-connectors/) verwendet, muss die Firewall außerdem den Zugriff für *alle* [ausgehenden IP-Adressen der verwalteten Connectors](#outbound) in der Azure-Region Ihrer Logik-App zulassen. Außerdem, wenn Sie benutzerdefinierte Connectors verwenden, die über die [lokale Datengatewayressource in Azure](logic-apps-gateway-connection.md) auf lokale Ressourcen zugreifen, müssen Sie die Gatewayinstallation so einrichten, dass der Zugriff auf die *[ausgehenden IP-Adressen](#outbound)* des entsprechenden verwalteten Connectors zugelassen wird.
 
 Weitere Informationen zum Einrichten von Kommunikationseinstellungen auf dem Gateway finden Sie in den folgenden Themen:
 
@@ -406,7 +406,7 @@ Bevor Sie Ihre Firewall mit IP-Adressen einrichten, überprüfen Sie die folgend
 
 * Wenn Sie [Power Automate](/power-automate/getting-started) verwenden, werden einige Aktionen wie **HTTP** und **HTTP + OpenAPI** direkt über den Azure Logic Apps-Dienst geleitet und stammen von den hier aufgeführten IP-Adressen. Weitere Informationen zu den von Power Automate verwendeten IP-Adressen finden Sie unter [Grenzwerte und Konfiguration für Power Automate](/flow/limits-and-config#ip-address-configuration).
 
-* Für [Azure China 21Vianet](/azure/china/) sind keine festen oder reservierten IP-Adressen für [benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md) und [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors) (z. B. Azure Storage, SQL Server, Office 365 Outlook usw.) verfügbar.
+* Für [Azure China 21Vianet](/azure/china/) sind keine festen oder reservierten IP-Adressen für [benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md) und [verwaltete Connectors](../connectors/managed.md) (z. B. Azure Storage, SQL Server, Office 365 Outlook usw.) verfügbar.
 
 * Wenn Ihre Logik-Apps in einer [Integrationsdienstumgebung (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt werden, stellen Sie sicher, dass Sie [diese Ports ebenfalls öffnen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
 
@@ -544,9 +544,9 @@ In diesem Abschnitt sind die IP-Adressen für die ausgehende Richtung aufgeführ
 | UK, Süden | 51.140.74.14, 51.140.73.85, 51.140.78.44, 51.140.137.190, 51.140.153.135, 51.140.28.225, 51.140.142.28, 51.140.158.24 | 51.140.74.150, 51.140.80.51, 51.140.61.124, 51.105.77.96–51.105.77.127, 51.140.148.0–51.140.148.15 |
 | UK, Westen | 51.141.54.185, 51.141.45.238, 51.141.47.136, 51.141.114.77, 51.141.112.112, 51.141.113.36, 51.141.118.119, 51.141.119.63 | 51.141.52.185, 51.141.47.105, 51.141.124.13, 51.140.211.0–51.140.211.15, 51.140.212.224–51.140.212.255 |
 | USA, Westen-Mitte | 52.161.27.190, 52.161.18.218, 52.161.9.108, 13.78.151.161, 13.78.137.179, 13.78.148.140, 13.78.129.20, 13.78.141.75 | 52.161.101.204, 52.161.102.22, 13.78.132.82, 13.71.195.32–13.71.195.47, 13.71.199.192–13.71.199.223 |
-| Europa, Westen | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126 | 52.166.78.89, 52.174.88.118, 40.91.208.65, 13.69.64.208–13.69.64.223, 13.69.71.192–13.69.71.223 |
+| Europa, Westen | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126, 13.69.71.160, 13.69.71.161, 13.69.71.162, 13.69.71.163, 13.69.71.164, 13.69.71.165, 13.69.71.166, 13.69.71.167 | 52.166.78.89, 52.174.88.118, 40.91.208.65, 13.69.64.208–13.69.64.223, 13.69.71.192–13.69.71.223 |
 | Indien, Westen | 104.211.164.80, 104.211.162.205, 104.211.164.136, 104.211.158.127, 104.211.156.153, 104.211.158.123, 104.211.154.59, 104.211.154.7 | 104.211.189.124, 104.211.189.218, 20.38.128.224–20.38.128.255, 104.211.146.224–104.211.146.239 |
-| USA (Westen) | 52.160.92.112, 40.118.244.241, 40.118.241.243, 157.56.162.53, 157.56.167.147, 104.42.49.145, 40.83.164.80, 104.42.38.32 | 13.93.148.62, 104.42.122.49, 40.112.195.87, 13.86.223.32–13.86.223.63, 40.112.243.160–40.112.243.175 |
+| USA (Westen) | 52.160.92.112, 40.118.244.241, 40.118.241.243, 157.56.162.53, 157.56.167.147, 104.42.49.145, 40.83.164.80, 104.42.38.32, 13.86.223.0, 13.86.223.1, 13.86.223.2, 13.86.223.3, 13.86.223.4, 13.86.223.5 | 13.93.148.62, 104.42.122.49, 40.112.195.87, 13.86.223.32–13.86.223.63, 40.112.243.160–40.112.243.175 |
 | USA, Westen 2 | 13.66.210.167, 52.183.30.169, 52.183.29.132, 13.66.210.167, 13.66.201.169, 13.77.149.159, 52.175.198.132, 13.66.246.219 | 52.191.164.250, 52.183.78.157, 13.66.140.128–13.66.140.143, 13.66.145.96–13.66.145.127 |
 ||||
 

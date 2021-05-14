@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/06/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8cb31f57e5403e99e2ef9bfcc5d1042e33516d1d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 97a8134e858112d7e1deff6744b5555c172692f2
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448148"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028178"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Twitter-Konto mithilfe von Azure Active Directory B2C
 
@@ -45,8 +45,12 @@ Um die Benutzeranmeldung mit einem Twitter-Konto in Azure AD B2C zu aktivieren
 1. Wählen Sie unter **Authentifizierungseinstellungen** die Option **Bearbeiten** aus.
     1. Aktivieren Sie das Kontrollkästchen **Dreibeiniges OAuth aktivieren**.
     1. Aktivieren Sie das Kontrollkästchen **E-Mail-Adresse von Benutzern anfordern**.
-    1. Geben Sie als **Rückruf-URLs** Folgendes ein: `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`. Ersetzen Sie `your-tenant` durch den Namen Ihres Mandanten und `your-user-flow-Id` durch den Bezeichner Ihres Benutzerflows. Beispiel: `b2c_1a_signup_signin_twitter`. Geben Sie den Mandantennamen und die Benutzerflow-ID selbst dann in Kleinbuchstaben ein, wenn sie in Azure AD B2C Großbuchstaben enthalten.
-    1. Geben Sie für die **Website-URL** die URL `https://your-tenant.b2clogin.com` ein. Ersetzen Sie `your-tenant` durch den Namen Ihres Mandanten. Beispiel: `https://contosob2c.b2clogin.com`.
+    1. Geben Sie als **Rückruf-URLs** Folgendes ein: `https://your-tenant.b2clogin.com/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`.  Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` ein. Geben Sie den Mandantennamen und die Benutzerflow-ID selbst dann in Kleinbuchstaben ein, wenn sie in Azure AD B2C Großbuchstaben enthalten. Ersetzen Sie:
+        - `your-tenant-name` durch den Namen Ihres Mandanten
+        - `your-domain-name` durch Ihre benutzerdefinierte Domäne
+        - `your-user-flow-Id` durch den Bezeichner Ihres Benutzerflows Beispiel: `b2c_1a_signup_signin_twitter`. 
+    
+    1. Geben Sie für die **Website-URL** die URL `https://your-tenant.b2clogin.com` ein. Ersetzen Sie `your-tenant` durch den Namen Ihres Mandanten. Beispiel: `https://contosob2c.b2clogin.com`. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name` ein.
     1. Geben Sie eine URL für die **Nutzungsbedingungen** ein, z. B. `http://www.contoso.com/tos`. Die Richtlinien-URL ist eine von Ihnen verwaltete Seite, die Nutzungsbedingungen Ihrer Anwendung enthält.
     1. Geben Sie eine URL für die **Datenschutzrichtlinie** ein, z. B. `http://www.contoso.com/privacy`. Die Richtlinien-URL ist eine von Ihnen verwaltete Seite, die Datenschutzinformationen zu Ihrer Anwendung enthält.
     1. Wählen Sie **Speichern** aus.
@@ -65,6 +69,8 @@ Um die Benutzeranmeldung mit einem Twitter-Konto in Azure AD B2C zu aktivieren
 1. Wählen Sie **Speichern** aus.
 
 ## <a name="add-twitter-identity-provider-to-a-user-flow"></a>Hinzufügen von Twitter als Identitätsanbieter zu einem Benutzerflow 
+
+Der Twitter-Identitätsanbieter ist jetzt eingerichtet, er ist jedoch noch auf keiner der Anmeldeseiten verfügbar. So fügen Sie den Twitter-Identitätsanbieter einem Benutzerflow hinzu:
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 1. Wählen Sie den Benutzerflow aus, dem Sie Twitter als Identitätsanbieter hinzufügen möchten.
@@ -173,7 +179,7 @@ Sie können ein Twitter-Konto als Anspruchsanbieter definieren, indem Sie es in 
 ## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
-1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
 1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Twitter** aus, um sich mit dem Twitter-Konto anzumelden.
 

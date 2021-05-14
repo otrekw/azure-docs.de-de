@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: b36dec79e5d60d97c11b9f8c74790527e1bd19fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5a599a17a82a7f0798318c10d8dce61d9f39c6a
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731356"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017371"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Verwenden von Gruppen in Arbeitsmappen
 
@@ -56,7 +56,7 @@ Mit dem Gruppenelement können Sie einer Arbeitsmappe eine Gruppe von Elementen 
 - Bearbeitbar
   - Die Gruppe in der Arbeitsmappe ermöglicht das Hinzufügen, Entfernen oder Bearbeiten des Inhalts der Elemente in der Gruppe. Dies wird am häufigsten für Layout- und Sichtbarkeitszwecke verwendet.
 - Aus Vorlage
-  - Die Gruppe in der Arbeitsmappe wird anhand ihrer ID aus dem Inhalt einer anderen Vorlage geladen. Der Inhalt dieser Vorlage wird zur Laufzeit geladen und mit der Arbeitsmappe zusammengeführt. Sie können den Inhalt der Gruppe im Bearbeitungsmodus nicht ändern, da er beim nächsten Laden des Elements wieder neu aus der Vorlage geladen wird.  
+  - Eine Gruppe in der Arbeitsmappe wird über ihre ID aus den Inhalten einer anderen Arbeitsmappe geladen. Der Inhalt dieser Arbeitsmappe wird zur Laufzeit geladen und mit der Arbeitsmappe zusammengeführt. Sie können den Inhalt der Gruppe im Bearbeitungsmodus nicht ändern, da er beim nächsten Laden des Elements wieder neu aus der Vorlage geladen wird. Verwenden Sie beim Laden einer Gruppe aus einer Vorlage die vollständige Azure-Ressourcen-ID einer vorhandenen Arbeitsmappe.
 
 ## <a name="load-types"></a>Ladetypen
 
@@ -140,7 +140,7 @@ Zum Umwandeln einer größeren Vorlage in mehrere Untervorlagen führen Sie die 
 3. Verschieben Sie jedes Element in der Arbeitsmappe, das in der Untervorlage enthalten sein soll, in die in Schritt 1 erstellte Gruppe.
 4. Wenn die einzelnen Schritte, die in Schritt 3 verschoben wurden, bedingte Sichtbarkeit aufweisen, wird diese zur Sichtbarkeit der äußeren Gruppe (wie bei Registerkarten). Entfernen Sie sie aus den Elementen innerhalb der Gruppe, und fügen Sie diese Sichtbarkeitseinstellung der Gruppe selbst hinzu. Speichern Sie jetzt, um zu verhindern, dass Änderungen verloren gehen, und/oder exportieren und speichern Sie eine Kopie des JSON-Inhalts.
 5. Wenn Sie möchten, dass diese Gruppe aus einer Vorlage geladen wird, können Sie die Symbolleistenschaltfläche *Bearbeiten* in der Gruppe verwenden. Dadurch wird nur der Inhalt dieser Gruppe als Arbeitsmappe in einem neuen Fenster geöffnet. Sie können diese dann nach Bedarf speichern und diese Arbeitsmappenansicht schließen (schließen Sie nicht den Browser, sondern nur diese Ansicht, um zur Arbeitsmappe zurückzukehren, die Sie zuvor bearbeitet haben).
-6. Anschließend können Sie den Gruppenschritt in das Laden aus einer Vorlage ändern und das Feld für die Vorlagen-ID auf die in Schritt 5 erstellte Arbeitsmappe/Vorlage festlegen. Zum Arbeiten mit Arbeitsmappen-IDs muss es sich bei der Quelle um die Ressourcen-ID einer gemeinsam genutzten Arbeitsmappe handeln. Klicken Sie auf *Laden*. Der Inhalt dieser Gruppe wird nun aus dieser Untervorlage geladen, anstatt in dieser äußeren Arbeitsmappe gespeichert zu werden.
+6. Anschließend können Sie den Gruppenschritt in das Laden aus einer Vorlage ändern und das Feld für die Vorlagen-ID auf die in Schritt 5 erstellte Arbeitsmappe/Vorlage festlegen. Um mit den IDs von Arbeitsmappen zu arbeiten, muss die Quelle die vollständige Azure Resource ID einer gemeinsamen Arbeitsmappe sein. Klicken Sie auf *Laden*. Der Inhalt dieser Gruppe wird nun aus dieser Untervorlage geladen, anstatt in dieser äußeren Arbeitsmappe gespeichert zu werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Übersicht über Arbeitsmappen](./workbooks-overview.md)

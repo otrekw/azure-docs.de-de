@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 3ec582a429008fc073f68cbc9795e264d6814ccb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b8ee1f22429c1002ba8c3db5c41f5a186cc59451
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730013"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046469"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Verbindungsarchitektur in Azure Database for MySQL
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for MySQL beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for MySQL-Instanz weitergeleitet wird.
@@ -59,7 +59,9 @@ Die folgende Tabelle enthält die Gateway-IP-Adressen des Azure Database for MyS
 | Frankreich, Mitte | 40.79.137.0, 40.79.129.1  | | |
 | Frankreich, Süden | 40.79.177.0     | | |
 | Deutschland, Mitte | 51.4.144.100     | | |
+| Deutschland, Norden | 51.116.56.0 | |
 | Deutschland, Nordosten | 51.5.144.179  | | |
+| Deutschland, Westen-Mitte | 51.116.152.0 | |
 | Indien, Mitte | 104.211.96.159     | | |
 | Indien, Süden | 104.211.224.146  | | |
 | Indien, Westen | 104.211.160.80    | | |
@@ -73,6 +75,8 @@ Die folgende Tabelle enthält die Gateway-IP-Adressen des Azure Database for MyS
 | Südafrika, Westen | 102.133.24.0   | | |
 | USA Süd Mitte |104.214.16.39, 20.45.120.0  |13.66.62.124  |23.98.162.75 |
 | Südostasien | 40.78.233.2, 23.98.80.12     | 104.43.15.0 | |
+| Schweiz, Norden | 51.107.56.0 ||
+| Schweiz, Westen | 51.107.152.0||
 | VAE, Mitte | 20.37.72.64  | | |
 | Vereinigte Arabische Emirate, Norden | 65.52.248.0    | | |
 | UK, Süden | 51.140.184.11   | | |
@@ -80,22 +84,53 @@ Die folgende Tabelle enthält die Gateway-IP-Adressen des Azure Database for MyS
 | USA, Westen-Mitte | 13.78.145.25     | | |
 | Europa, Westen |13.69.105.208, 104.40.169.187 | 40.68.37.158 | 191.237.232.75 |
 | USA (Westen) |13.86.216.212, 13.86.217.212 |104.42.238.205  | 23.99.34.75|
-| USA, Westen 2 | 13.66.226.202  | | |
+| USA, Westen 2 | 13.66.136.192 | 13.66.226.202  | | 
 ||||
 
 ## <a name="connection-redirection"></a>Verbindungsumleitung
 
-Azure Database for MySQL unterstützt eine zusätzliche Verbindungsrichtlinie, **Umleitung**, mit der die Netzwerklatenz zwischen Clientanwendungen und MySQL-Servern reduziert werden kann. Bei diesem Feature gibt der Server die Back-End-Adresse des Knotens, auf dem der MySQL-Server gehostet wird, an den Client zurück, nachdem die erste TCP-Sitzung mit dem Azure Database for MySQL-Server eingerichtet wurde. Anschließend werden alle nachfolgenden Pakete direkt an den Server übertragen, wobei das Gateway umgangen wird. Wenn Pakete direkt an den Server übertragen werden, wird die Leistung von Latenz und Durchsatz verbessert.
+Azure Database for MySQL unterstützt eine zusätzliche Verbindungsrichtlinie, **Umleitung**, mit der die Netzwerklatenz zwischen Clientanwendungen und MySQL-Servern reduziert werden kann. Bei der Umleitung gibt der Server die Back-End-Adresse des Knotens, auf dem der MySQL-Server gehostet wird, an den Client zurück, nachdem die erste TCP-Sitzung mit dem Azure Database for MySQL-Server eingerichtet wurde. Anschließend werden alle nachfolgenden Pakete direkt an den Server übertragen, wobei das Gateway umgangen wird. Wenn Pakete direkt an den Server übertragen werden, wird die Leistung von Latenz und Durchsatz verbessert.
 
 Dieses Feature wird in Azure Database for MySQL-Servern mit den Engine-Versionen 5.6, 5.7 und 8.0 unterstützt.
 
 Die Umleitungsunterstützung steht in der von Microsoft entwickelten Erweiterung [PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) und in [PECL](https://pecl.php.net/package/mysqlnd_azure) zur Verfügung. Weitere Informationen zur Verwendung der Umleitung in Ihren Anwendungen finden Sie im Artikel [Konfigurieren der Umleitung](./howto-redirection.md).
 
+
 > [!IMPORTANT]
 > Die Umleitungsunterstützung in der PHP-Erweiterung [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) befindet sich derzeit in der Vorschauphase.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
+### <a name="what-you-need-to-know-about-this-planned-maintenance"></a>Was müssen Sie über diese geplante Wartung wissen?
+Dies ist eine reine DNS-Änderung und damit transparent für Clients. Während die IP-Adresse für den vollqualifizierten Domänennamen im DNS-Server geändert wird, werden der lokale DNS-Cache innerhalb von fünf Minuten aktualisiert. Dieser Vorgang wird automatisch vom Betriebssystem ausgeführt. Nach der Aktualisierung des lokalen DNS erfolgen alle neuen Verbindungen mit der neuen IP-Adresse. Für alle vorhandenen Verbindungen wird die alte IP-Adresse ohne Unterbrechung beibehalten, bis die Außerbetriebnahme der alten Adressen vollständig abgeschlossen ist. Es dauert etwa drei bis vier Wochen, bis die alte IP-Adresse vollständig außer Betrieb gesetzt ist. Daher sollte dies keine Auswirkung auf die Clientanwendungen haben.
+
+### <a name="what-are-we-decommissioning"></a>Was wird außer Betrieb gesetzt?
+Nur Gatewayknoten werden außer Betrieb gesetzt. Wenn Benutzer eine Verbindung mit Servern herstellen, ist der Gatewayknoten das erste Ziel der Verbindung. Von dort aus wird sie an den Server weitergeleitet. Wir setzen alte Gatewayringe (keine Mandantenringe, in denen Server ausgeführt werden) außer Betrieb. Genauere Informationen finden Sie in der [Verbindungsarchitektur](#connectivity-architecture).
+
+### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>Wie können Sie überprüfen, ob Ihre Verbindungen an alte oder neue Gatewayknoten geleitet werden?
+Pingen Sie den vollqualifizierten Domänennamen Ihres Servers, z. B. ``ping xxx.mysql.database.azure.com``. Wenn die zurückgegebene IP-Adresse in der Tabelle oben in diesem Dokument unter „Gateway-IP-Adressen (Außerbetriebnahme)“ aufgeführt ist, bedeutet das, dass Ihre Verbindung das alte Gateway verwendet. Wird Ihre IP-Adresse unter „Gateway-IP-Adressen“ aufgeführt, bedeutet dies, dass Ihre Verbindung über das neue Gateway führt.
+
+Sie können auch per [PSPing](/sysinternals/downloads/psping) oder TCPPing den Datenbankserver von Ihrer Clientanwendung aus über Port 3306 testen und sich vergewissern, dass die zurückgegebene IP-Adresse nicht zu den Adressen gehört, die außer Betrieb gesetzt werden.
+
+### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>Woher weiß ich, wann die Wartung abgeschlossen ist, und erhalte ich eine Benachrichtigung, wenn alte IP-Adressen außer Betrieb gesetzt wurden?
+Sie erhalten eine E-Mail, in der wir Sie darüber informieren, wann wir den Wartungsprozess starten. Die Wartung kann bis zu einen Monat dauern, je nachdem, wie viele Server wir in allen Regionen migrieren müssen. Bereiten Sie Ihren Client darauf vor, die Verbindung zum Datenbankserver über den vollqualifizierten Domänennamen oder über die neue IP-Adresse (siehe Tabelle oben) herzustellen. 
+
+### <a name="what-do-i-do-if-my-client-applications-are-still-connecting-to-old-gateway-server-"></a>Was kann ich tun, wenn meine Clientanwendungen weiterhin eine Verbindung mit dem alten Gatewayserver herstellen?
+Dies ist ein Hinweis darauf, dass Ihre Anwendungen eine statische IP-Adresse anstelle des vollqualifizierten Domänennamens verwenden, um eine Verbindung mit dem Server herzustellen. Überprüfen Sie die Verbindungszeichenfolgen, die Einstellungen des Verbindungspools, die AKS-Einstellungen und ggf. sogar den Quellcode.
+
+### <a name="is-there-any-impact-for-my-application-connections"></a>Gibt es Auswirkungen auf meine Anwendungsverbindungen?
+Diese Wartungsmaßnahme ist nur eine DNS-Änderung und damit transparent für den Client. Sobald der DNS-Cache im Client aktualisiert ist (dies erfolgt automatisch durch das Betriebssystem), werden alle neuen Verbindungen über die neue IP-Adresse hergestellt. Alle vorhandenen Verbindungen funktionieren weiterhin, bis die alte IP-Adresse vollständig außer Betrieb gesetzt wurde. Das ist in der Regel einige Wochen später der Fall. Wie Wiederholungslogik ist hierbei nicht erforderlich, aber es ist gut zu wissen, dass diese Logik für die Anwendung konfiguriert ist. Verwenden Sie zum Herstellen der Verbindung mit dem Datenbankserver entweder den vollqualifizierten Domänennamen, oder fügen Sie die neuen Gateway-IP-Adressen in die Verbindungszeichenfolge Ihrer Anwendung ein.
+Durch diesen Wartungsvorgang werden vorhandene Verbindungen nicht gelöscht. Der Vorgang sorgt nur dafür, dass neue Verbindungsanforderungen an den neuen Gatewayring geleitet werden.
+
+### <a name="can-i-request-for-a-specific-time-window-for-the-maintenance"></a>Kann ich ein bestimmtes Zeitfenster für die Wartung anfordern? 
+Da die Migration transparent ist und sich nicht auf die Konnektivität der Kunden auswirkt, ist davon auszugehen, dass für die Mehrzahl der Benutzer keinerlei Probleme entstehen. Überprüfen Sie Ihre Anwendung proaktiv, und vergewissern Sie sich, dass entweder der vollqualifizierte Domänenname für die Verbindung mit dem Datenbankserver verwendet wird oder die neuen Gateway-IP-Adressen in Ihrer Verbindungszeichenfolge enthalten sind.
+
+### <a name="i-am-using-private-link-will-my-connections-get-affected"></a>Ich verwende eine private Verbindung. Sind meine Verbindungen betroffen?
+Nein. Hierbei geht es um die Außerbetriebnahme von Gatewayhardware. Dies steht in keiner Beziehung zu privaten Verbindungen oder privaten IP-Adressen. Es sind nur öffentliche IP-Adressen betroffen, die unter „Gateway-IP-Adressen (Außerbetriebnahme)“ aufgeführt sind.
+
+
+
+## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen und Verwalten von Firewallregeln für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./howto-manage-firewall-using-portal.md)
 * [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe der Azure CLI](./howto-manage-firewall-using-cli.md)
 * [Herstellen einer Verbindung mit Azure Database for MySQL mit Umleitung](./howto-redirection.md)

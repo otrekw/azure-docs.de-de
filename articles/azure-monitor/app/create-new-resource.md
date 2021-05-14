@@ -3,12 +3,13 @@ title: Erstellen einer neuen Azure Application Insights-Ressource | Microsoft Do
 description: Richten Sie manuell die Application Insights-Überwachung für eine neue Liveanwendung ein.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 459f61d9e13a2098403f3e78c7a529e49bf65e59
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 7e4c4b0ba4dca9b51f120e6092c13195a061aa87
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100932"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754531"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 
@@ -27,12 +28,12 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen 
 
 ![Klicken Sie links oben auf das Pluszeichen (+). Auswählen von „Entwicklertools“ und „Application Insights“](./media/create-new-resource/new-app-insights.png)
 
-   | Einstellungen        |  Wert           | BESCHREIBUNG  |
+   | Einstellungen        |  Wert           | Beschreibung  |
    | ------------- |:-------------|:-----|
    | **Name**      | `Unique value` | Der Name, der die zu überwachende App identifiziert |
    | **Ressourcengruppe**     | `myResourceGroup`      | Der Name der neuen oder vorhandenen Ressourcengruppe, die Application Insights-Daten hosten soll |
    | **Region** | `East US` | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts aus, an dem Ihre App gehostet wird. |
-   | **Ressourcenmodus** | `Classic` oder `Workspace-based` | Arbeitsbereichsbasierte Ressourcen befinden sich derzeit in der Public Preview-Phase und ermöglichen Ihnen das Senden Ihrer Application Insights-Telemetrie an einen gemeinsamen Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie im [Artikel zu arbeitsbereichsbasierten Ressourcen](create-workspace-resource.md).
+   | **Ressourcenmodus** | `Classic` oder `Workspace-based` | Arbeitsbereichsbasierte Ressourcen ermöglichen Ihnen das Senden Ihrer Application Insights-Telemetrie an einen gemeinsamen Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie im [Artikel zu arbeitsbereichsbasierten Ressourcen](create-workspace-resource.md).
 
 > [!NOTE]
 > Obwohl Sie denselben Ressourcennamen für verschiedene Ressourcengruppen verwenden können, kann es vorteilhaft sein, einen global eindeutigen Namen zu verwenden. Dies kann hilfreich sein, wenn Sie planen, [ressourcenübergreifende Abfragen auszuführen](../logs/cross-workspace-query.md#identifying-an-application), da dadurch die erforderliche Syntax vereinfacht wird.
@@ -155,7 +156,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure CLI-Dokumentation](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create).
+Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure CLI-Dokumentation](/cli/azure/monitor/app-insights/component#az_monitor_app_insights_component_create).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Diagnosesuche](./diagnostic-search.md)
@@ -168,4 +169,3 @@ Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum
 [diagnostic]: ./diagnostic-search.md
 [metrics]: ../essentials/metrics-charts.md
 [start]: ./app-insights-overview.md
-

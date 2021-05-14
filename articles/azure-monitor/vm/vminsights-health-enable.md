@@ -4,14 +4,14 @@ description: In diesem Artikel wird beschrieben, wie Sie das Feature „Gastinte
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/16/2020
-ms.custom: references_regions
-ms.openlocfilehash: 5d4ff622f69445880c0de8cb74dc1aeee422c89b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/05/2021
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 472700f50175c115305bad332efa6b0e77fb74ce
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052159"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315289"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>Aktivieren der Gastintegrität in VM Insights (Vorschau)
 Mit dem Feature „Gastintegrität“ von VM Insights können Sie Informationen zur Integrität einer VM anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie dieses Feature in Ihrem Abonnement aktivieren und die Gastüberwachung für die einzelnen virtuellen Computer aktivieren.
@@ -20,11 +20,14 @@ Mit dem Feature „Gastintegrität“ von VM Insights können Sie Informationen 
 Das Feature „Gastintegrität“ von VM Insights verfügt in der öffentlichen Vorschauphase über die folgenden Einschränkungen:
 
 - Aktuell werden nur virtuelle Azure-Computer unterstützt. Azure Arc für Server wird derzeit nicht unterstützt.
+- Netzwerkproxys werden derzeit nicht unterstützt.
 
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 Auf dem virtuellen Computer muss eines der folgenden Betriebssysteme ausgeführt werden: 
 
+  - CentOS 7.5, 7.6, 7.7, 7.8, 7.9
+  - RedHat 7.5, 7.6, 7.7, 7.8, 7.9
   - Ubuntu 16.04 LTS, Ubuntu 18.04 LTS
   - Windows Server 2012 oder höher
 

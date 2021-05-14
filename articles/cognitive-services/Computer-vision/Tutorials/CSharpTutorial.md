@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0a1878268beb135151a23b87d03839f3a51f4a96
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82e21f57a22da43f904ac9a12afb016c257e5055
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432586"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289694"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Beispiel: Erkunden einer Bildverarbeitungs-App mit C#
 
@@ -313,4 +313,4 @@ Löschen Sie den Ordner, in dem sich der Klon des `Microsoft/Cognitive-Vision-Wi
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erste Schritte mit dem Gesichtserkennungsdienst](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [Erste Schritte mit dem Gesichtserkennungsdienst](../../face/quickstarts/client-libraries.md?pivots=programming-language-csharp)

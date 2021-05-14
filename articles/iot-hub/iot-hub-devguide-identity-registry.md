@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42def04db63d81bdb3eff8098daa8c75924bffec
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93146925"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502078"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz
 
@@ -106,7 +106,7 @@ Eine komplexere Implementierung könnte die Informationen aus [Azure Monitor](..
 
 ## <a name="device-and-module-lifecycle-notifications"></a>Benachrichtigungen zum Lebenszyklus von Geräten und Modulen
 
-IoT Hub kann Ihre IoT-Lösung benachrichtigen, wenn eine Identität erstellt oder gelöscht wird, indem Lebenszyklusbenachrichtigungen gesendet werden. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen und die Datenquelle auf *DeviceLifecycleEvents* oder *ModuleLifecycleEvents* festlegen. Standardmäßig werden keine Lebenszyklusbenachrichtigungen gesendet, da es noch keine solchen Routen gibt. Die Lebenszyklusbenachrichtigung umfasst Eigenschaften und einen Textkörper.
+IoT Hub kann Ihre IoT-Lösung durch Senden von Lebenszyklusbenachrichtigungen informieren, wenn eine Geräteidentität erstellt oder gelöscht wird. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen und die Datenquelle auf *DeviceLifecycleEvents* festlegen. Standardmäßig werden keine Lebenszyklusbenachrichtigungen gesendet, da es noch keine solchen Routen gibt. Durch das Erstellen einer Route, deren Datenquelle *DeviceLifecycleEvents* entspricht, werden Lebenszyklusereignisse sowohl für Geräteidentitäten als auch für Modulidentitäten gesendet. Der Nachrichteninhalt unterscheidet sich jedoch je nachdem, ob die Ereignisse für Modulidentitäten oder Geräteidentitäten generiert werden.  Beachten Sie, dass sich der Flow der Modulidentitätserstellung für IoT Edge-Module von dem für andere Module unterscheidet. Daher wird bei IoT Edge-Modulen die Erstellungsbenachrichtigung nur gesendet, wenn das entsprechende IoT Edge-Gerät für die aktualisierte IoT Edge-Modulidentität ausgeführt wird. Bei allen anderen Modulen werden Lebenszyklusbenachrichtigungen immer gesendet, wenn die Modulidentität auf der IoT Hub-Seite aktualisiert wird.  Die Lebenszyklusbenachrichtigung umfasst Eigenschaften und einen Textkörper.
 
 Eigenschaften: Nachrichtensystemeigenschaften ist das Symbol `$` vorangestellt.
 

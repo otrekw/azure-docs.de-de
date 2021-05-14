@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: b737ea751d3b3d2132691e04a1a2cd853748db65
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6742c55dffb86e591542f5da1379c483ccd1ebcd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792505"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138407"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Tutorial: Verwenden einer verwalteten Identität zum Aufrufen von Azure Functions über eine Azure Spring Cloud-App
 
@@ -173,6 +173,6 @@ In diesem Beispiel wird die über HTTP ausgelöste Funktion aufgerufen. Hierzu w
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
+* [Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung](./how-to-enable-system-assigned-managed-identity.md)
 * [Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [Konfigurieren von Client-Apps für den Zugriff auf App Service](../app-service/configure-authentication-provider-aad.md#configure-client-apps-to-access-your-app-service)

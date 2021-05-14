@@ -4,12 +4,12 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 07/22/2020
 ms.author: danlep
-ms.openlocfilehash: 6878180ffedfaa53f25d2bdc6db72dcd7dd8b38b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c232875715253b3601c7f9a5ecc289705e3dcf40
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87384825"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108212630"
 ---
 | Resource | Begrenzung |
 | --- | :--- |
@@ -23,10 +23,10 @@ ms.locfileid: "87384825"
 | Ports pro IP-Adresse | 5 |
 | Containerinstanz-Protokollgröße – ausgeführte Instanz | 4 MB |
 | Containerinstanz-Protokollgröße – angehaltene Instanz | 16 KB oder 1.000 Zeilen |
-| Containererstellungen pro Stunde |300<sup>1</sup> |
-| Containererstellungen pro 5 Minuten | 100<sup>1</sup> |
-| Containerlöschungen pro Stunde | 300<sup>1</sup> |
-| Containerlöschungen pro 5 Minuten | 100<sup>1</sup> |
+| Containergruppenerstellungen pro Stunde |300<sup>1</sup> |
+| Containergruppenerstellungen pro 5 Minuten | 100<sup>1</sup> |
+| Containergruppenlöschungen pro Stunde | 300<sup>1</sup> |
+| Containergruppenlöschungen pro 5 Minuten | 100<sup>1</sup> |
 
 
 <sup>1</sup> Erstellen Sie eine [Azure Supportanfrage][azure-support], um eine Erhöhung des Grenzwerts anzufordern. Kostenlose Abonnements, einschließlich [kostenloses Azure-Konto](https://azure.microsoft.com/offers/ms-azr-0044p/) und [Microsoft Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p/), sind nicht für Grenzwert- oder Kontingenterhöhungen qualifiziert. Wenn Sie über ein kostenloses Abonnement verfügen, können Sie ein [Upgrade](../articles/cost-management-billing/manage/upgrade-azure-subscription.md) auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen.<br />

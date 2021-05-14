@@ -3,12 +3,12 @@ title: Verwenden von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendu
 description: Erfahren Sie, wie MPI-Anwendungen (Message Passing Interface) mithilfe des Tasktyps mit mehreren Instanzen in Azure Batch ausgeführt werden.
 ms.topic: how-to
 ms.date: 04/13/2021
-ms.openlocfilehash: e96cfb89b186d69f6ad969949b8df609956114d2
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: b25008e4001676d1289f8a035cad972084d025bc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389399"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126235"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Verwenden von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Batch
 
@@ -310,5 +310,5 @@ Sample complete, hit ENTER to exit...
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich ausführlicher über die [MPI-Unterstützung für Linux in Azure Batch](https://docs.microsoft.com/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch).
+- Informieren Sie sich ausführlicher über die [MPI-Unterstützung für Linux in Azure Batch](/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch).
 - Erfahren Sie, wie Sie [Pools mit Linux-Computeknoten](batch-linux-nodes.md) zur Verwendung in Ihren Azure Batch-MPI-Lösungen erstellen.

@@ -8,18 +8,20 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/12/2020
-ms.openlocfilehash: d7dd7105ddb0d6503faefb996b84c0e53a62ce49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/19/2021
+ms.openlocfilehash: 6c7f4b221b1b9a1eee9a0d4d376bb6707d6b2869
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104655375"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108000852"
 ---
 # <a name="train-wide--deep-recommender"></a>Train Wide & Deep Recommender
 In diesem Artikel wird die Verwendung des Moduls **Train Wide & Deep Recommender** im Azure Machine Learning-Designer zum Trainieren eines Empfehlungsmodells beschrieben. Dieses Modul basiert auf Wide & Deep Learning von Google.
 
 Das **Train Wide & Deep Recommender**-Modul liest ein Dataset mit Benutzer-Element-Bewertung-Tripeln und optional einige Benutzer- und Elementfunktionen. Es gibt ein trainiertes Wide & Deep-Empfehlungsmodul zurück.  Mithilfe des trainierten Modells können Sie dann Bewertungen vorhersagen oder Empfehlungen generieren, indem Sie das Modul [Score Wide and Deep Recommender](score-wide-and-deep-recommender.md) verwenden.  
+
+<!-- Currently, **Train Wide & Deep Recommender** module supports both single node and distributed training. -->
 
 ## <a name="more-about-recommendation-models-and-the-wide--deep-recommender"></a>Weitere Informationen zu Empfehlungsmodellen und dem Wide & Deep-Empfehlungsmodul  
 
@@ -34,7 +36,7 @@ Beim Wide & Deep-Empfehlungsmodul werden diese Ansätze kombiniert, und das koll
 
 Funktionsweise: Bei einem neuen Benutzer im System werden Vorhersagen mithilfe von Featureinformationen über den Benutzer verbessert. Auf diese Weise wird das allgemein bekannte „Kaltstart“-Problem in Angriff genommen. Wenn jedoch eine ausreichende Menge von Bewertungen eines bestimmten Benutzers vorhanden ist, können vollständig personalisierte Vorhersagen für diesen basierend auf seinen spezifischen Bewertungen und nicht allein seinen Features formuliert werden. Der Übergang von inhaltsbasierten Empfehlungen zu Empfehlungen, die auf kollaborativem Filtern basieren, ist daher nahtlos. Selbst wenn Benutzer- oder Elementfeatures nicht verfügbar sind, funktioniert das Wide & Deep-Empfehlungsmodul immer noch im kollaborativen Filtermodus.  
 
-Weitere Informationen zum Wide & Deep-Empfehlungsmodul und dem zugrunde liegenden probabilistischen Algorithmus finden Sie im entsprechenden Forschungsbericht: [Wide & Deep Learning für Empfehlungssysteme](https://arxiv.org/pdf/1606.07792.pdf).  
+Weitere Informationen zum Empfehlungsmodul Wide & Deep sowie dem zugrunde liegenden probabilistischen Algorithmus finden Sie im entsprechenden Forschungsbericht: [Wide & Deep Learning für Empfehlungssysteme](https://arxiv.org/pdf/1606.07792.pdf).  
 
 ## <a name="how-to-configure-train-wide--deep-recommender"></a>Konfigurieren von Train Wide & Deep Recommender  
 
@@ -43,7 +45,7 @@ Weitere Informationen zum Wide & Deep-Empfehlungsmodul und dem zugrunde liegende
 
 ### <a name="prepare-data"></a>Vorbereiten von Daten
 
-Vor der Verwendung des Moduls ist es von entscheidender Bedeutung, dass Ihre Daten in dem vom Empfehlungsmodell erwarteten Format vorliegen. Ein Trainingsdataset mit **Benutzer-Element-Bewertung-Tripeln** ist erforderlich. Sie können jedoch auch Benutzerfeatures und Elementfeatures (sofern verfügbar) in separate Datasets einbeziehen.
+Stellen Sie vor dem Versuch, das Modul zu verwenden, sicher, dass Ihre Daten das erwartete Format für das Empfehlungsmodell haben. Ein Trainingsdataset mit **Benutzer-Element-Bewertung-Tripeln** ist erforderlich. Sie können jedoch auch Benutzerfeatures und Elementfeatures (sofern verfügbar) in separate Datasets einbeziehen.
 
 #### <a name="required-dataset-of-user-item-ratings"></a>Erforderliches Dataset von user-item-rating-Elementen
 
@@ -97,7 +99,7 @@ Ein typischer Satz von Elementfeatures könnte z. B. wie folgt aussehen:
 
 4. **Batch size** (Batchgröße): Geben Sie die Anzahl der Trainingsbeispiele an, die in einem Trainingsschritt verwendet werden. 
 
-     Dieser Hyperparameter kann die Trainingsgeschwindigkeit beeinflussen. Eine höhere Batchgröße führt zu einer kürzeren Kostenepoche, kann jedoch die Konvergenzzeit erhöhen. Wenn der Batch zu groß für GPU/CPU ist, kann ein Speicherfehler ausgelöst werden.
+     Dieser Hyperparameter kann die Trainingsgeschwindigkeit beeinflussen. Eine höhere Batchgröße führt zu einer kürzeren Kostenepoche, kann jedoch die Konvergenzzeit erhöhen. Wenn der Batch zu groß für die GPU/CPU ist, kann ein Speicherfehler ausgelöst werden.
 
 5.  **Wide part optimizer** (Optimierer für breiten Teil): Wählen Sie einen Optimierer aus, um Verläufe auf den breiten Teil des Modells anzuwenden.
 
@@ -105,19 +107,19 @@ Ein typischer Satz von Elementfeatures könnte z. B. wie folgt aussehen:
 
     Dieser Hyperparameter bestimmt die Schrittgröße der einzelnen Trainingsschritte bei der Umstellung auf eine Funktion mit minimalem Verlust. Eine zu große Lernrate kann dazu führen, dass das Lernen das Minimum überspringt, während eine zu kleine Lernrate zu Konvergenzproblemen führen kann.
 
-7.  **Crossed feature dimension** (Dimension für übergreifende Features): Geben Sie die Dimension ein, indem Sie die gewünschten Benutzer-IDs und Element-ID-Features eingeben. 
+7.  „**Crossed feature dimension**“ (Dimension für übergreifende Features): Geben Sie die Dimension ein, indem Sie die gewünschten Benutzer- und Element-ID-Features eingeben. 
 
-    Die Wide & Deep-Empfehlung führt standardmäßig eine produktübergreifende Transformation über Benutzer-ID- und Element-ID-Features aus. Das übergreifende Ergebnis wird gemäß dieser Zahl als Hashwert verwendet, um die Dimension sicherzustellen.
+    Die Wide & Deep-Empfehlung führt standardmäßig eine produktübergreifende Transformation über Benutzer- und Element-ID-Features aus. Das übergreifende Ergebnis wird gemäß dieser Zahl als Hashwert verwendet, um die Dimension sicherzustellen.
 
 8.  **Deep part optimizer** (Optimierer für tiefen Teil): Wählen Sie einen Optimierer aus, um Verläufe auf den tiefen Teil des Modells anzuwenden.
 
 9.  **Deep optimizer learning rate** (Lernrate für tiefen Optimierer): Geben Sie eine Zahl zwischen 0,0 und 2,0 ein, die die Lernrate des Optimierers für den tiefen Teil definiert.
 
-10.  **User embedding dimension** (Benutzereinbettungsdimension): Geben Sie eine ganze Zahl ein, um die Einbettungsdimension für die Benutzer-ID festzulegen.
+10.  „**User embedding dimension**“ (Benutzereinbettungsdimension): Geben Sie eine ganze Zahl ein, um die Einbettungsdimension für die Benutzer-ID festzulegen.
 
-     Das Wide & Deep-Empfehlungsmodul erstellt die freigegebenen Benutzer-ID- und Element-ID-Einbettungen sowohl für die breiten als auch für die tiefen Teile.
+     Das Wide & Deep-Empfehlungsmodul erstellt die freigegebenen Benutzer- und Element-ID-Einbettungen sowohl für die breiten als auch für die tiefen Anteile.
 
-11.  **Item embedding dimension** (Elementeinbettungsdimension): Geben Sie eine ganze Zahl ein, um die Einbettungsdimension für die Element-ID festzulegen.
+11.  „**Item embedding dimension**“ (Elementeinbettungsdimension): Geben Sie eine ganze Zahl ein, um die Einbettungsdimension für die Element-ID festzulegen.
 
 12.  **Categorical features embedding dimension** (Einbettungsdimension für kategorische Features): Geben Sie eine ganze Zahl ein, um die Einbettungsdimensionen für kategorische Features festzulegen.
 
@@ -137,15 +139,56 @@ Ein typischer Satz von Elementfeatures könnte z. B. wie folgt aussehen:
 
 17.  Ausführen der Pipeline.
 
-## <a name="results"></a>Ergebnisse
 
-Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie nach Abschluss der Pipelineausführung [Train Wide and Deep Recommender](train-wide-and-deep-recommender.md) mit [Score Wide and Deep Recommender](score-wide-and-deep-recommender.md), um Werte für neue Eingabebeispiele vorherzusagen.
+<!-- ## Distributed training
+
+In distributed training the workload to train a model is split up and shared among multiple mini processors, called worker nodes. These worker nodes work in parallel to speed up model training. Currently the designer support distributed training for **Train Wide & Deep Recommender** module.
+
+### How to enable distributed training
+
+To enable distributed training for **Train Wide & Deep Recommender** module, you can set in **Run settings** in the right pane of the module. Only **[AML Compute cluster](https://docs.microsoft.com/azure/machine-learning/how-to-create-attach-compute-cluster?tabs=python)** is supported for distributed training.
+
+1. Select the module and open the right panel. Expand the **Run settings** section.
+
+    [![Screenshot showing how to set distributed training in run setting](./media/module/distributed-training-run-setting.png)](./media/module/distributed-training-run-setting.png#lightbox)
+
+1. Make sure you have select AML compute for the compute target.
+
+1. In **Resource layout** section, you need to set the following values:
+
+    - **Node count**: Number of nodes in the compute target used for training. It should be **less than or equal to** the **Maximum number of nodes** your compute cluster. By default it is 1, which means single node job.
+
+    - **Process count per node**: Number of processes triggered per node. It should be **less than or equal to** the **Processing Unit** of your compute. By default it is 1, which means single node job.
+
+    You can check the **Maximum number of nodes** and **Processing Unit** of your compute by clicking the compute name into the compute detail page.
+
+    [![Screenshot showing how to check compute cluster](./media/module/compute-cluster-node.png)](./media/module/compute-cluster-node.png#lightbox)
+
+You can learn more about distributed training in Azure Machine Learning [here](https://docs.microsoft.com/azure/machine-learning/concept-distributed-training).
+
+
+### Troubleshooting for distributed training
+
+If you enable distributed training for this module, there will be driver logs for each process. `70_driver_log_0` is for master process. You can check driver logs for error details of each process under **Outputs+logs** tab in the right pane.
+
+[![Screenshot showing driver log](./media/module/distributed-training-error-driver-log.png)](./media/module/distributed-training-error-driver-log.png#lightbox) 
+
+If the module enabled distributed training fails without any `70_driver` logs, you can check `70_mpi_log` for error details.
+
+The following example shows a common error that is **Process count per node** is larger than **Processing Unit** of the compute.
+
+[![Screenshot showing mpi log](./media/module/distributed-training-error-mpi-log.png)](./media/module/distributed-training-error-mpi-log.png#lightbox)
+
+## Results
+
+After pipeline run is completed, to use the model for scoring, connect the [Train Wide and Deep Recommender](train-wide-and-deep-recommender.md) to [Score Wide and Deep Recommender](score-wide-and-deep-recommender.md), to predict values for new input examples.
+ -->
 
 ##  <a name="technical-notes"></a>Technische Hinweise
 
 Wide & Deep trainiert breite lineare Modelle und tiefe neuronale Netzwerke zusammen, um die Stärken des Lernens und der Generalisierung zu kombinieren. Die breite Komponente akzeptiert eine Reihe von Rohfeatures und Featuretransformationen, um Featureinteraktionen zu lernen. Mit weniger Featureentwicklung generalisiert die tiefe Komponente unbekannte Featurekombinationen mithilfe niederdimensionaler Einbettungen dichter Features. 
 
-In der Implementierung des Wide & Deep-Empfehlungsmoduls verwendet das Modul eine Standardmodellstruktur. Die breite Komponente übernimmt Benutzereinbettungen, Elementeinbettungen und die produktübergreifende Transformation von Benutzer-IDs und Element-IDs als Eingabe. Für den tiefen Teil des Modells wird ein Einbettungsvektor für die einzelnen kategorischen Features erlernt. In Verbindung mit anderen numerischen Featurevektoren werden diese Vektoren dann in das tiefe neuronale Feedforward-Netz eingefügt. Der breite und der tiefe Teil werden kombiniert, indem sie die endgültige Ausgabeprotokollwahrscheinlichkeit als Vorhersage addieren, die schließlich zu einer gemeinsamen Verlustfunktion für das gemeinsame Training führt.
+In der Implementierung des Wide & Deep-Empfehlungsmoduls verwendet das Modul eine Standardmodellstruktur. Die breite Komponente übernimmt Benutzereinbettungen, Elementeinbettungen und die produktübergreifende Transformation von Benutzer- und Element-IDs als Eingabe. Für den tiefen Teil des Modells wird ein Einbettungsvektor für die einzelnen kategorischen Features erlernt. In Verbindung mit anderen numerischen Featurevektoren werden diese Vektoren dann in das tiefe neuronale Feedforward-Netz eingefügt. Der breite und der tiefe Teil werden kombiniert, indem sie die endgültige Ausgabeprotokollwahrscheinlichkeit als Vorhersage addieren, die schließlich zu einer gemeinsamen Verlustfunktion für das gemeinsame Training führt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

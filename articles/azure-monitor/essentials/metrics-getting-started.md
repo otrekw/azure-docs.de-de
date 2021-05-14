@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
-ms.openlocfilehash: e3d8d6529eb943566118cc67eab549cb32891cd8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: df745e7612dbd5b5bb9029b89d7f74974270c2d1
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037233"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962712"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Erste Schritte mit dem Azure-Metrik-Explorer
 
@@ -45,7 +45,7 @@ Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portal
 ## <a name="select-a-time-range"></a>Auswählen eines Zeitbereichs
 
 > [!WARNING]
-> [Die meisten Metriken werden in Azure 93 Tage lang gespeichert](../essentials/data-platform-metrics.md#retention-of-metrics). Sie können jedoch maximal Daten für 30 Tage in einem einzelnen Diagramm abfragen. Diese Einschränkung gilt nicht für [protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
+> [Die meisten Metriken werden in Azure 93 Tage lang gespeichert](../essentials/data-platform-metrics.md#retention-of-metrics). Sie können jedoch maximal Daten für 30 Tage in einem einzelnen Diagramm abfragen. Sie können das Diagramm [schwenken](metrics-charts.md#pan), um die vollständige Aufbewahrung anzuzeigen. Die Beschränkung auf 30 Tage gilt nicht für [protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
 Das Diagramm zeigt standardmäßig die Metrikdaten der letzten 24 Stunden an. Verwenden Sie den Bereich **Zeitauswahl**, um den Zeitraum, die Vergrößerung oder die Verkleinerung Ihres Diagramms zu ändern. 
 
@@ -63,6 +63,20 @@ Das Diagramm zeigt standardmäßig die Metrikdaten der letzten 24 Stunden an. V
 - Durch das **Aufteilen** können Sie steuern, ob das Diagramm separate Linien für jeden Wert einer Dimension anzeigt oder die Werte in eine Linie zusammenfügt. Beispielsweise können Sie eine Linie für die durchschnittliche Antwortzeit aller Serverinstanzen oder separate Linien für jeden Server anzeigen. In diesem Fall müssten Sie die Aufteilung auf die Dimension *Serverinstanz* anwenden, damit separate Linien angezeigt werden.
 
 In den [Beispielen für Metrikdiagramme](../essentials/metric-chart-samples.md) können Sie sich Beispiele mit angewandter Filterung und Aufteilung ansehen. Im Artikel werden auch die Schritte für die Konfiguration der Beispieldiagramme erläutert.
+
+## <a name="share-your-metric-chart"></a>Teilen eines Metrikdiagramms
+Aktuell gibt es zwei Möglichkeiten, ein Metrikdiagramm zu teilen. Im Folgenden finden Sie eine Anleitung zum Teilen der Informationen aus Ihren Metrikdiagrammen über Excel und per Link.
+ 
+### <a name="download-to-excel"></a>Herunterladen in Excel
+Klicken Sie auf „Gemeinsam“ und dann auf „In Excel herunterladen“. Der Download sollte sofort beginnen.
+
+![Screenshot, der zeigt, wie ein Metrikdiagramm über Excel geteilt werden kann](./media/metrics-getting-started/share-excel.png)
+
+### <a name="share-a-link"></a>Teilen eines Links
+Klicken Sie „Gemeinsam“ und dann auf „Link kopieren“. Sie sollten eine Benachrichtigung erhalten, dass der Link erfolgreich kopiert wurde.
+
+![Screenshot, der zeigt, wie ein Metrikdiagramm über einen Link geteilt werden kann](./media/metrics-getting-started/share-link.png)
+
 
 ## <a name="advanced-chart-settings"></a>Erweiterte Diagrammeinstellungen
 

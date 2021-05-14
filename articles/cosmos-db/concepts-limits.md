@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: f33490e273104105502ecc8f4f255c354a2d2f3b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/07/2021
+ms.openlocfilehash: f6416a688c7f1c94d7d8a90b0531b1ccd684ee29
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800022"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031102"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -31,7 +31,7 @@ Sie können Durchsatz auf einer Container- oder Datenbankebene in Form von [Anfo
 | --- | --- |
 | Maximale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](account-databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md). |
 | Maximale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](account-databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md). |
-| Maximale Anzahl RUs pro (logischer) Partition | 10.000 |
+| Maximale Anzahl RUs pro Partition (logische und physische) | 10.000 |
 | Maximale Speicherkapazität aller Elemente pro (logischer) Partition | 20 GB |
 | Maximale Anzahl unterschiedlicher (logischer) Partitionsschlüssel | Unbegrenzt |
 | Maximale Speicherkapazität pro Container | Unbegrenzt |

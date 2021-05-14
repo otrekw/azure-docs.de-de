@@ -1,17 +1,17 @@
 ---
 title: 'Azure Data Factory: Häufig gestellte Fragen '
 description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Azure Data Factory.
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/29/2021
+ms.openlocfilehash: d3cc2d73fb3f1076af62b8ea028260bfd5e600ed
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739333"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317989"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 
@@ -226,34 +226,48 @@ Verwenden Sie die Kopieraktivität, um Daten aus einem der anderen Connectors be
 
 ### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Ist die selbstgehostete Integration Runtime für Datenflüsse verfügbar?
 
-Die selbstgehostete IR ist ein ADF-Pipelinekonstrukt, das Sie mit der Kopieraktivität zum Abrufen oder Verschieben von Daten in und aus lokalen oder VM-basierten Datenquellen und -senken verwenden können. Stellen Sie die Daten zuerst mit einem Kopiervorgang, dann einem Datenfluss für die Transformation und dann einem nachfolgenden Kopiervorgang bereit, wenn Sie die transformierten Daten zurück in den lokalen Speicher verschieben müssen.
+Die selbstgehostete IR ist ein ADF-Pipelinekonstrukt, das Sie mit der Kopieraktivität zum Abrufen oder Verschieben von Daten in und aus lokalen oder VM-basierten Datenquellen und -senken verwenden können. Die virtuellen Computer, die Sie für eine selbstgehostete IR verwenden, können auch innerhalb desselben VNET wie Ihre geschützten Datenspeicher platziert werden, um über ADF auf diese Datenspeicher zugreifen zu können. Mit Datenflüssen erzielen Sie dieselben Endergebnisse, wenn Sie stattdessen die Azure IR mit verwaltetem VNET verwenden.
 
 ### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Bedient die Datenfluss-Computerengine mehrere Mandanten?
 
 Cluster werden nie gemeinsam genutzt. Wir garantieren die Isolation für jede Auftragsausführung in Produktionsläufen. Bei einem Debugszenario erhält eine einzige Person einen Cluster, und alle Debuggingfehler werden in diesen Cluster verschoben, der von dem betreffenden Benutzer gestartet wird.
 
-## <a name="wrangling-data-flows"></a>Wranglingdatenflüsse
+### <a name="is-there-a-way-to-write-attributes-in-cosmos-db-in-the-same-order-as-specified-in-the-sink-in-adf-data-flow"></a>Gibt es eine Möglichkeit, Attribute in Cosmos DB in derselben Reihenfolge zu schreiben, in der sie in der Senke im ADF-Datenfluss angegeben sind?    
+
+Bei Cosmos DB ist das zugrunde liegende Format jedes Dokuments ein JSON-Objekt. Hierbei handelt es sich um einen ungeordneten Satz von Name-Wert-Paaren, sodass die Reihenfolge nicht reserviert werden kann. Der Datenfluss erstellt einen Cluster auch in der Integration Runtime mit einer TTL-Konfiguration von 15 Minuten. Eine Datenflussempfehlung hinsichtlich TTL und Kosten finden Sie im Problembehandlungsdokument zur [Datenflussleistung](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-performance#time-to-live).
+
+
+###  <a name="why-an-user-is-unable-to-use-data-preview-in-the-data-flows"></a>Warum kann ein Benutzer die Datenvorschau in den Datenflüssen nicht verwenden?   
+
+Sie sollten die Berechtigungen für die benutzerdefinierte Rolle überprüfen. An der Vorschau von Dataflowdaten sind mehrere Aktionen beteiligt. Zunächst überprüfen Sie den Netzwerkdatenverkehr während des Debuggens in Ihrem Browser. Folgen Sie allen Aktionen. Ausführliche Informationen finden Sie unter [Ressourcenanbieter](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdatafactory).
+
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Bedient die Datenfluss-Computerengine mehrere Mandanten?   
+
+Das folgende Dokument zur Problembehandlung kann Ihnen helfen, das Problem zu lösen: [Mehrere Mandanten](https://docs.microsoft.com/azure/data-factory/frequently-asked-questions#does-the-data-flow-compute-engine-serve-multiple-tenants).
+
+
+###  <a name="in-adf-can-i-calculate-value-for-a-new-column-from-existing-column-from-mapping"></a>Kann ich in ADF den Wert für eine neue Spalte anhand einer vorhandenen Spalte aus der Zuordnung berechnen?  
+
+Sie können die Ableitungstransformation im Zuordnungsdatenfluss verwenden, um eine neue Spalte für die gewünschte Logik zu erstellen. Beim Erstellen einer abgeleiteten Spalte können Sie entweder eine neue Spalte generieren oder eine vorhandene Spalte aktualisieren. Geben Sie im Textfeld Spalte die Spalte ein, die Sie erstellen. Wenn Sie eine vorhandene Spalte in Ihrem Schema überschreiben möchten, können Sie die Dropdownliste für Spalten verwenden. Um den Ausdruck der abgeleiteten Spalte zu erstellen, klicken Sie auf das Textfeld Ausdruck eingeben. Sie können entweder mit dem Eingeben des Ausdrucks beginnen oder den Ausdrucks-Generator öffnen, um die Logik zu erstellen.
+
+### <a name="why-mapping-data-flow-preview-failing-with-gateway-timeout"></a>Warum tritt bei der Vorschau des Zuordnungsdatenflusses ein Fehler mit Gatewaytimeout auf? 
+
+Versuchen Sie, einen größeren Cluster zu verwenden, und setzen Sie die Zeilengrenzwerte in den Debugeinstellungen auf einen kleineren Wert, um die Größe der Debugausgabe zu reduzieren.
+
+### <a name="how-to-parameterize-column-name-in-dataflow"></a>Wie wird der Spaltenname im Datenfluss parametrisiert?
+
+Der Spaltenname kann ähnlich wie andere Eigenschaften parametrisiert werden. Wie bei einer abgeleiteten Spalte kann der Kunde **$ColumnNameParam = toString(byName($myColumnNameParamInData))** verwenden. Diese Parameter können von der Pipelineausführung an Datenflüsse weitergegeben werden.
+
+
+
+## <a name="wrangling-data-flow-data-flow-power-query"></a>Wranglingdatenfluss (Power Query für Datenfluss)
 
 ### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Welche Regionen werden für den Wranglingdatenfluss unterstützt?
 
-Der Wranglingdatenfluss wird derzeit in Data Factorys unterstützt, die in folgenden Regionen erstellt wurden:
+Data Factory ist in den folgenden [Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory) verfügbar.
+Das Power Query-Feature wird derzeit in allen Regionen eingeführt. Wenn das Feature in Ihrer Region nicht verfügbar ist, wenden Sie sich an den Support.
 
-* Australien (Osten)
-* Kanada, Mitte
-* Indien, Mitte
-* East US
-* USA (Ost) 2
-* Japan, Osten
-* Nordeuropa
-* Asien, Südosten
-* USA Süd Mitte
-* UK, Süden
-* USA, Westen-Mitte
-* Europa, Westen
-* USA (Westen)
-* USA, Westen 2
-
-### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Welche Einschränkungen bestehen beim Wranglingdatenfluss?
+### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow-"></a>Welche Einschränkungen bestehen beim Wranglingdatenfluss?
 
 Datasetnamen dürfen nur alphanumerische Zeichen enthalten. Die folgenden Datenspeicher werden unterstützt:
 
@@ -305,7 +319,6 @@ Der Wranglingdatenfluss unterstützt die folgenden Datentypen in SQL. Bei Verwen
 * UNIQUEIDENTIFIER
 * Xml
 
-In Zukunft werden weitere Datentypen unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

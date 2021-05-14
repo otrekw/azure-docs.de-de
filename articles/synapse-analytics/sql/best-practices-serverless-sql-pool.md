@@ -10,18 +10,27 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a47982012dcaa2eabda93c93508b23f30525812d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: a2656d5c23a465856eee1e84d2c4f6900b21ec41
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720388"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477467"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Best Practices für serverlose SQL-Pools in Azure Synapse Analytics
 
 In diesem Artikel finden Sie eine Sammlung von bewährten Methoden für die Verwendung serverloser SQL-Pools. Der serverlose SQL-Pool ist eine Ressource in Azure Synapse Analytics.
 
 Ein serverloser SQL-Pool ermöglicht es Ihnen, Dateien in Ihren Azure-Speicherkonten abzufragen. Es verfügt nicht über lokale Speicher- oder Erfassungsfunktionen. Somit sind alle Dateien, auf die die Abfrage ausgerichtet ist, extern zum serverlosen SQL-Pool. Alles, was mit dem Lesen von Dateien aus dem Speicher zusammenhängt, kann sich auf die Abfrageleistung auswirken.
+
+Einige allgemeine Richtlinien lauten:
+- Stellen Sie sicher, dass Ihre Clientanwendungen mit dem serverlosen SQL-Pool zusammengestellt werden.
+  - Wenn Sie Clientanwendungen außerhalb von Azure verwenden (z. B. Power BI Desktop SSMS, ADS), stellen Sie sicher, dass Sie den serverlosen Pool in einer Region verwenden, die sich in der Nähe Ihres Clientcomputers befindet.
+- Stellen Sie sicher, dass sich der Speicher (Azure Data Lake Cosmos DB) und der serverlose SQL-Pool in der gleichen Region befinden.
+- Versuchen Sie, das [Speicherlayout](#prepare-files-for-querying) mithilfe der Partitionierung zu optimieren, und halten Sie Ihre Dateien im Bereich zwischen 100 MB und 10 GB.
+- Wenn Sie eine große Anzahl von Ergebnissen zurückgeben, stellen Sie sicher, dass Sie SSMS oder ADS und nicht Synapse Studio verwenden. Synapse Studio ist ein Webtool, das nicht für große Resultmengen konzipiert ist. 
+- Wenn Sie Ergebnisse nach Zeichenfolgenspalten filtern, versuchen Sie, einige `BIN2_UTF8`-Sortierungen zu verwenden.
+- Versuchen Sie, die Ergebnisse auf Clientseite mithilfe des Power BI-Importmodus oder Azure Analysis Services zwischenzuspeichern, und aktualisieren Sie sie in regelmäßigen Abständen. Die serverlosen SQL-Pools können in Power BI Direct-Query-Modus keine interaktive Erfahrung bieten, wenn Sie komplexe Abfragen verwenden oder große Datenmengen verarbeiten.
 
 ## <a name="client-applications-and-network-connections"></a>Clientanwendungen und Netzwerkverbindungen
 
@@ -66,7 +75,11 @@ Wenn möglich, können Sie Dateien für eine bessere Leistung vorbereiten:
 
 ### <a name="colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool"></a>Platzieren Ihres analytischen CosmosDB-Speichers und des serverlosen SQL-Pools an demselben Ort
 
-Stellen Sie sicher, dass der analytische CosmosDB-Speicher in derselben Region platziert wird, in dem sich der Synapse-Arbeitsbereich befindet. Regionsübergreifende Abfragen können zu großen Latenzen führen.
+Stellen Sie sicher, dass der analytische CosmosDB-Speicher in derselben Region platziert wird, in dem sich der Synapse-Arbeitsbereich befindet. Regionsübergreifende Abfragen können zu großen Latenzen führen. Verwenden Sie die Regionseigenschaft in der Verbindungszeichenfolge, um explizit den Bereich anzugeben, in dem der analytische Speicher platziert wird (Weitere Informationen finden Sie unter [Abfragen von CosmosDb mit serverlosem SQL](query-cosmos-db-analytical-store.md#overview)):
+
+```
+'account=<database account name>;database=<database name>;region=<region name>'
+```
 
 ## <a name="csv-optimizations"></a>CSV-Optimierungen
 
@@ -123,10 +136,10 @@ Sobald Sie die abgeleiteten Datentypen für die Abfrage kennen, können Sie geei
 
 ```sql  
 SELECT
-    vendor_id, pickup_datetime, passenger_count
+    vendorID, tpepPickupDateTime, passengerCount
 FROM 
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*',
+        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=2018/puMonth=*/*.snappy.parquet',
         FORMAT='PARQUET'
     ) 
     WITH (

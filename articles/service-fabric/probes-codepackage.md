@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82137585"
 ---
 # <a name="liveness-probe"></a>Livetest
@@ -24,15 +24,15 @@ Bevor Sie mit diesem Artikel fortfahren, sollten Sie sich mit dem [Service Fabri
 ## <a name="semantics"></a>Semantik
 Sie können nur einen Livetest pro Container angeben und dessen Verhalten mit den folgenden Feldern steuern:
 
-* `initialDelaySeconds`: Anfängliche Verzögerung (in Sekunden) bis zum Starten der Ausführung des Tests, nachdem der Container gestartet wurde. Der unterstützte Wert ist **int**. Der Standardwert ist 0, und der Mindestwert ist 0.
+* `initialDelaySeconds`: Anfängliche Verzögerung (in Sekunden) bis zum Starten der Ausführung des Tests, nachdem der Container gestartet wurde. Der unterstützte Wert ist **int**. Der Standardwert ist 0 und das Minimum ist 0.
 
-* `timeoutSeconds`: Zeitraum in Sekunden, nach dem der Test als fehlerhaft betrachtet wird, wenn er nicht erfolgreich abgeschlossen wurde. Der unterstützte Wert ist **int**. Der Standardwert ist 1, und der Mindestwert ist 1.
+* `timeoutSeconds`: Zeitraum in Sekunden, nach dem der Test als fehlerhaft betrachtet wird, wenn er nicht erfolgreich abgeschlossen wurde. Der unterstützte Wert ist **int**. Der Standardwert ist 1 und das Minimum ist 1.
 
-* `periodSeconds`: Zeitraum in Sekunden zur Angabe der Häufigkeit des Tests. Der unterstützte Wert ist **int**. Der Standardwert ist 10, und der Mindestwert ist 1.
+* `periodSeconds`: Zeitraum in Sekunden zur Angabe der Häufigkeit des Tests. Der unterstützte Wert ist **int**. Der Standardwert ist 10 und das Minimum ist 1.
 
-* `failureThreshold`: Beim Erreichen dieses Werts wird der Container neu gestartet. Der unterstützte Wert ist **int**. Der Standardwert ist 3, und der Mindestwert ist 1.
+* `failureThreshold`: Beim Erreichen dieses Werts wird der Container neu gestartet. Der unterstützte Wert ist **int**. Der Standardwert ist 3, der Minimalwert ist 1.
 
-* `successThreshold`: Bei einem Fehler muss der Test für diesen Wert erfolgreich ausgeführt werden, damit er als erfolgreich angesehen wird. Der unterstützte Wert ist **int**. Der Standardwert ist 1, und der Mindestwert ist 1.
+* `successThreshold`: Bei einem Fehler muss der Test für diesen Wert erfolgreich ausgeführt werden, damit er als erfolgreich angesehen wird. Der unterstützte Wert ist **int**. Der Standardwert ist 1 und das Minimum ist 1.
 
 Es kann jeweils höchstens ein Test zu einem Container vorhanden sein. Wenn der Test nicht in dem in **timeoutSeconds** festgelegten Zeitraum abgeschlossen wird, warten Sie, und zählen Sie die Zeit bis **failureThreshold**. 
 

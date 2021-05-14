@@ -6,12 +6,12 @@ ms.author: mingshen
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: de8e9060f8e7ccdcf38b9f0908dfb05063811817
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: b624b8ba997acf75c652a522ce1eae9737371c97
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103403"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133185"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Was ist der kommerzielle Marketplace von Microsoft?
 
@@ -75,7 +75,7 @@ Partner, die sich auf dem kommerziellen Marketplace auflisten lassen, sind für 
 
 - Nutzen Sie die technischen Ressourcen, die Sie benötigen, um Ihre Anwendung startklar zu machen, vom technischen Support über Anwendungsentwurf und Architekturdesign bis hin zu Azure-Guthaben für Entwicklung und Tests.
 - Kostenlose Microsoft-Grundlagen zur Markteinführung als Unterstützung bei der Einführung und Bewerbung Ihrer Lösung. Möglicherweise haben Sie auch Anspruch auf eine zusätzliche Teilnahme an Microsoft-Marketingkampagnen und eine Chance darauf, dass Ihre Lösung im kommerziellen Marketplace empfohlen wird.
-- Erreichen Sie zusätzliche Kunden, und erweitern Sie Ihre Verkaufschancen mit dem [Cloud Solution Provider](https://partner.microsoft.com/cloud-solution-provider)-Programm (CSP), dem [Co-Selling](marketplace-co-sell.md)-Programm und den Microsoft-Vertriebsteams.
+- Erreichen Sie zusätzliche Kunden, und erweitern Sie Ihre Verkaufschancen mit dem [Cloud Solution Provider](https://partner.microsoft.com/cloud-solution-provider)-Programm (CSP), dem [Co-Selling](./co-sell-overview.md)-Programm und den Microsoft-Vertriebsteams.
 
 Weitere Informationen zu diesen Vorteilen finden Sie unter [Ihre Vorteile des kommerziellen Marketplace](gtm-your-marketplace-benefits.md).
 

@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4ed332e9aa0048c87329ce25d0a63b619d2a196
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93421089"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070573"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Tutorial: Schützen einer Node.js-Web-API und Gewähren von Zugriff auf eine Node.js-Web-API über eine Single-Page-Webanwendung mithilfe von Azure AD B2C
 
@@ -112,7 +112,7 @@ In diesem Abschnitt wird die Single-Page-Webanwendung aktualisiert, um die Node.
 
 So ändern Sie die Einstellungen in der SPA
 
-1. Öffnen Sie im Projekt [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa], das Sie im vorherigen Tutorial heruntergeladen oder geklont haben, die Datei *apiConfig.js* im Ordner *JavaScriptSPA*.
+1. Öffnen Sie im Projekt [ms-identity-b2c-javascript-spa][github-js-spa], das Sie im vorherigen Tutorial heruntergeladen oder geklont haben, die Datei *apiConfig.js* im Ordner *App*.
 1. Konfigurieren Sie das Beispiel mit dem URI für den zuvor erstellten Bereich *demo.read* und der URL der Web-API.
     1. Ersetzen Sie in der Definition von `apiConfig` den Wert für `b2cScopes` durch den vollständigen URI für den Bereich *demo.read* (der Wert für **Bereich**, den Sie sich weiter oben notiert haben).
     1. Ändern Sie die Domäne im Wert für `webApi` in den Umleitungs-URI, den Sie zuvor beim Registrieren der Web-API-Anwendung hinzugefügt haben.
@@ -202,4 +202,4 @@ Nachdem Sie jetzt erlebt haben, wie eine SPA eine Ressource von einer geschützt
 > [In Azure Active Directory B2C verwendbare Anwendungstypen](application-types.md)
 
 <!-- Links - EXTERNAL -->
-[github-js-spa]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
+[github-js-spa]: https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa

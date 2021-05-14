@@ -6,12 +6,12 @@ ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 90da16789344754c02d46022160db71ee261a056
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33e34e777a78e1c609d2eacdcb501c0bce1f5c9d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96754061"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714918"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Unterstützungsmatrix für die Hyper-V-Migration
 
@@ -83,7 +83,13 @@ backup.windowsazure.us | Für die Übertragung und Koordinierung von Replikation
 *.hypervrecoverymanager.windowsazure.us | Wird für die Replikationsverwaltung verwendet.
 *.blob.core.usgovcloudapi.net | Hochladen von Daten in Speicherkonten
 dc.services.visualstudio.com | Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.
-time.nist.gov | Überprüft die Zeitsynchronisierung zwischen Systemzeit und globaler Zeit
+time.nist.gov | Überprüft die Zeitsynchronisierung zwischen Systemzeit und globaler Zeit   
+
+>[!Note]
+>
+> Wenn das Migrationsprojekt über **Konnektivität mit privatem Endpunkt** verfügt, benötigt die Replikationsanbietersoftware auf den Hyper-V-Hosts Zugriff auf diese URLs, um Unterstützung für private Verbindungen zu erhalten. 
+> - *.blob.core.windows.com: Zum Zugreifen auf das Speicherkonto, in dem replizierte Daten gespeichert sind. Dies ist optional und nicht erforderlich, wenn an das Speicherkonto ein privater Endpunkt angefügt ist. 
+> - ogin.windows.net für Zugriffssteuerung und Identitätsverwaltung mit Active Directory
 
 ## <a name="azure-vm-requirements"></a>Azure-VM-Anforderungen
 

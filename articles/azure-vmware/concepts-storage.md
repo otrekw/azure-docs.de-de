@@ -1,24 +1,25 @@
 ---
 title: 'Konzepte: Speicher'
-description: Informieren Sie sich über die wichtigsten Speicherfunktionen bei privaten Azure VMware Solution-Clouds.
+description: Erfahren Sie mehr über Speicherkapazität, Speicherrichtlinien, Fehlertoleranz und Speicherintegration in Azure VMware Solution Private Clouds.
 ms.topic: conceptual
-ms.date: 03/13/2021
-ms.openlocfilehash: 83a4a52f8414e656b5bc688796db6e93a53d4d76
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: contperf-fy21q4
+ms.date: 04/26/2021
+ms.openlocfilehash: 8aa421cdee105573bd8edd91a4297ed773f7a459
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801620"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069793"
 ---
-#  <a name="azure-vmware-solution-storage-concepts"></a>Speicherkonzepte von Azure VMware Solution
+# <a name="azure-vmware-solution-storage-concepts"></a>Speicherkonzepte von Azure VMware Solution
 
-Private Azure VMware Solution-Clouds bieten nativen, clusterweiten Speicher mit VMware vSAN. Der gesamte lokale Speicher jedes Hosts in einem Cluster wird in einem vSAN-Datenspeicher verwendet, und Verschlüsselung ruhender Daten ist verfügbar und standardmäßig aktiviert. Sie können Azure Storage-Ressourcen zum Erweitern der Speicherfunktionen Ihrer privaten Clouds verwenden.
+Private Azure VMware Solution-Clouds bieten nativen, clusterweiten Speicher mit VMware vSAN. Der lokale Speicher jedes Hosts in einem Cluster wird in einem vSAN-Datenspeicher verwendet, und Verschlüsselung ruhender Daten ist verfügbar und standardmäßig aktiviert. Sie können Azure Storage-Ressourcen zum Erweitern der Speicherfunktionen Ihrer privaten Clouds verwenden.
 
 ## <a name="vsan-clusters"></a>vSAN-Cluster
 
-Der lokale Speicher in jedem Clusterhost wird als Teil eines vSAN-Datenspeichers verwendet. Alle Datenträgergruppen verwenden eine NVMe-Cacheebene von 1,6 TB mit SSD-basierter Rohkapazität von 15,4 TB pro Host. Die Größe der Rohkapazitätsebene eines Clusters entspricht der Kapazität pro Host multipliziert mit der Anzahl der Hosts. Beispielsweise wird in einem Cluster mit vier Hosts eine Rohkapazität von 61,6 TB in der vSAN-Kapazitätsebene bereitgestellt.
+Der lokale Speicher in jedem Clusterhost wird als Teil eines vSAN-Datenspeichers verwendet. Alle Datenträgergruppen verwenden eine NVMe-Cacheebene von 1,6 TB mit SSD-basierter Rohkapazität von 15,4 TB pro Host. Die Größe der Rohkapazitätsebene eines Clusters entspricht der Kapazität pro Host multipliziert mit der Anzahl der Hosts. So bietet beispielsweise ein Cluster mit vier Hosts 61,6 TB Rohkapazität in der vSAN-Kapazitätsschicht.
 
-Der lokale Speicher in Clusterhosts wird im clusterweiten vSAN-Datenspeicher verwendet. Alle Datenspeicher werden im Rahmen einer privaten Cloudbereitstellung erstellt und können sofort verwendet werden. Der Cloudadministratorbenutzer und alle Benutzer in der CloudAdmin-Gruppe können Datenspeicher mit diesen vSAN-Berechtigungen verwalten:
+Der lokale Speicher in Clusterhosts wird im clusterweiten vSAN-Datenspeicher verwendet. Alle Datenspeicher werden im Rahmen einer privaten Cloudbereitstellung erstellt und können sofort verwendet werden. Der Benutzer **cloudadmin** sowie alle Benutzer, mit der Rolle CloudAdmin, können mit diesen vSAN-Berechtigungen Datenspeicher verwalten:
 
 - Datastore.AllocateSpace
 - Datastore.Browse
@@ -27,26 +28,47 @@ Der lokale Speicher in Clusterhosts wird im clusterweiten vSAN-Datenspeicher ver
 - Datastore.FileManagement
 - Datastore.UpdateVirtualMachineMetadata
 
+>[!IMPORTANT]
+>Der Name von Datenspeichern oder Clustern kann nicht geändert werden. Bei der Bereitstellung von einem anderen Ort als dem Portal (AzureCLI oder PowerShell) können Sie einen anderen Clusternamen als "Cluster-n" mit n > 1 wählen.
+
+## <a name="storage-policies-and-fault-tolerance"></a>Speicherrichtlinien und Fehlertoleranz
+
+Diese Standardspeicherrichtlinie ist auf RAID-1 (Mirroring), FTT-1 und Thick Provisioning eingestellt.  Sofern Sie die Speicherrichtlinie nicht anpassen oder eine neue Richtlinie anwenden, wird der Cluster mit dieser Konfiguration weiter wachsen. In einem Drei-Host-Cluster gleicht FTT-1 den Ausfall eines einzelnen Hosts aus. Microsoft reguliert Ausfälle regelmäßig und tauscht die Hardware aus, sobald Ereignisse aus Sicht der Architektur erkannt werden.
+
+:::image type="content" source="media/vsphere-vm-storage-policies.png" alt-text="Screenshot, der die VM-Speicherrichtlinien des vSphere-Clients zeigt.":::
+
+
+|Bereitstellungstyp  |Beschreibung  |
+|---------|---------|
+|**Thick**      | Ist ein reservierter oder vorab zugewiesener Speicherplatz. Dies schützt Systeme, indem sie auch dann funktionieren, wenn der vSAN-Datenspeicher voll ist, da der Speicherplatz bereits reserviert ist. Wenn Sie zum Beispiel einen virtuellen Datenträger mit 10 GB mit Thick Provisioning erstellen, dann wird die gesamte Speicherkapazität des virtuellen Datenträgers auf dem physischen Speicher des virtuellen Datenträgers vorbelegt und verbraucht den gesamten ihm zugewiesenen Speicherplatz im Datenspeicher. Andere virtuelle Maschinen (VMs) können den Speicherplatz des Datenspeichers nicht mitbenutzen.         |
+|**Dünn**      | Verbraucht den Speicherplatz, den er zunächst benötigt und wächst auf den im Datenspeicher verwendeten Speicherplatzbedarf an. Über den Standard (Thick Provisioning) hinaus können Sie VMs mit FTT-1 Thin Provisioning erstellen. Verwenden Sie für die Dedupe-Einrichtung Thin Provisioning für Ihre VM-Vorlage.         |
+
+>[!TIP]
+>Sollten Sie sich nicht sicher sein, ob der Cluster auf vier oder mehr anwachsen wird, dann verwenden Sie die Standardrichtlinie.  Falls Sie sicher sind, dass Ihr Cluster wachsen wird, dann empfehlen wir, anstatt den Cluster nach dem ersten Einsatz zu erweitern, die zusätzlichen Hosts während des Einsatzes einzusetzen. Während die VMs im Cluster bereitgestellt werden, ändern Sie die Speicherrichtlinie der Festplatte in den VM-Einstellungen entweder auf RAID-5 FTT-1 oder RAID-6 FTT-2. 
+>
+>:::image type="content" source="media/vsphere-vm-storage-policies-2.png" alt-text="Screenshot":::
+
+
 ## <a name="data-at-rest-encryption"></a>Verschlüsselung ruhender Daten
 
-vSAN-Datenspeicher verwenden standardmäßig Verschlüsselung ruhender Daten. Die Verschlüsselungslösung ist KMS-basiert und unterstützt vCenter-Vorgänge für die Schlüsselverwaltung. Schlüssel werden verschlüsselt gespeichert und von einem Azure Key Vault-Hauptschlüssel umschlossen. Wenn ein Host aus einem Cluster entfernt wird, werden die Daten auf SSDs sofort ungültig.
-
-## <a name="scaling"></a>Skalierung
-
-Die native Clusterspeicherkapazität wird durch Hinzufügen von Hosts zu einem Cluster skaliert. Bei Clustern, die AVS36-Hosts verwenden, wird die clusterweite Rohkapazität durch jeden hinzugefügten Host um 15,4 TB erhöht. Es dauert ungefähr 10 Minuten, bis Hosts einem Cluster hinzugefügt werden.  Eine Anleitung zum Skalieren von Clustern finden Sie im [Tutorial zum Skalieren privater Clouds][tutorial-scale-private-cloud].
+vSAN-Datenspeicher verwenden standardmäßig die Verschlüsselung ruhender Daten mithilfe von Schlüsseln, die in Azure Key Vault gespeichert sind. Die Verschlüsselungslösung ist KMS-basiert und unterstützt vCenter-Vorgänge für die Schlüsselverwaltung.  Wenn ein Host aus einem Cluster entfernt wird, werden die Daten auf SSDs sofort ungültig.
 
 ## <a name="azure-storage-integration"></a>Azure-Speicherintegration
 
 Sie können Azure-Speicherdienste in Workloads verwenden, die in Ihrer privaten Cloud ausgeführt werden. Die Azure-Speicherdienste umfassen Speicherkonten, Table Storage und Blob Storage. Die Verbindung von Workloads mit Azure-Speicherdiensten durchläuft nicht das Internet. Diese Konnektivität bietet mehr Sicherheit und ermöglicht Ihnen die Verwendung von SLA-basierten Azure Storage-Diensten in den Workloads Ihrer privaten Clouds.
 
+## <a name="alerts-and-monitoring"></a>Benachrichtigungen und Überwachung
+
+Wenn die Kapazitätsauslastung 75 % überschreitet, gibt Microsoft Warnungen aus.  Sie können Metriken zum Kapazitätsverbrauch überwachen, die in Azure Monitor integriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Azure-Warnungen in Azure VMware Solution](configure-alerts-for-azure-vmware-solution.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie sich mit den Speicherkonzepten von Azure VMware Solution vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
 
-- [Identitätskonzepte privater Clouds](concepts-identity.md)
-- [Rollenbasierte Zugriffssteuerung in vSphere für Azure VMware Solution](concepts-identity.md)
-- [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
+- [Skalieren von Clustern in der privaten Cloud][tutorial-scale-private-cloud]
 - [Azure NetApp Files mit Azure VMware Solution](netapp-files-with-azure-vmware-solution.md)
+- [Rollenbasierte Zugriffskontrolle in vSphere für Azure VMware Solution](concepts-identity.md)
+
 
 <!-- LINKS - external-->
 

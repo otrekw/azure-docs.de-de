@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: 928b1a6dcff7ad186bf5fe9ce07d1a886d429867
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 27e8c108447a3e16a5e61854eb9d43c4a8efffee
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933337"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126902"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -152,7 +152,7 @@ Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwa
 
     Wählen Sie auf der Seite **Sicherheit** die Option **Kennwort** aus, um die *PFX*-Zertifikatdatei zu schützen. Als Verschlüsselungsalgorithmus muss *TripleDES-SHA1* verwendet werden. Geben Sie ein Kennwort ein, bestätigen Sie es, und klicken Sie auf **Weiter**. Dieses Kennwort wird im nächsten Abschnitt zum Aktivieren von Secure LDAP für Ihre verwaltete Domäne verwendet.
 
-    Wenn Sie für den Export das [PowerShell-Cmdlet „export-pfxcertificate2“](/powershell/module/pkiclient/export-pfxcertificate) verwenden, müssen Sie das Flag *-CryptoAlgorithmOption* unter Verwendung von „TripleDES_SHA1“ übergeben.
+    Wenn Sie für den Export das [PowerShell-Cmdlet „export-pfxcertificate2“](/powershell/module/pki/export-pfxcertificate) verwenden, müssen Sie das Flag *-CryptoAlgorithmOption* unter Verwendung von „TripleDES_SHA1“ übergeben.
 
     ![Screenshot: Verschlüsseln des Kennworts](./media/tutorial-configure-ldaps/encrypt.png)
 
@@ -312,7 +312,7 @@ Für den Antragsteller Namen des Zertifikats wird der Domänen Controller den Az
 
 Der Client versucht, die TLS-Verbindung mit dem von Ihnen angegebenen Namen herzustellen. Der Datenverkehr muss vollständig durchlaufen werden. Der Domänen Controller sendet den öffentlichen Schlüssel des Server Authentifizierungs Zertifikats. Das Zertifikat muss über die richtige Verwendung im Zertifikat verfügen, und der im Antragsteller Namen signierte Name muss kompatibel sein, damit der Client darauf vertrauen kann, dass es sich bei dem Server um den DNS-Namen handelt, mit dem Sie eine Verbindung herstellen (d. h. ein Platzhalter funktioniert, ohne Rechtschreibfehler), und der Client muss dem Aussteller vertrauen. Sie können im Systemprotokoll Ereignisanzeige auf Probleme in dieser Kette überprüfen und die Ereignisse filtern, bei denen die Quelle SChannel ist. Sobald diese Elemente vorhanden sind, bilden Sie einen Sitzungsschlüssel.  
 
-Weitere Informationen finden Sie unter [TLS Handshake](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol).
+Weitere Informationen finden Sie unter [TLS Handshake](/windows/win32/secauthn/tls-handshake-protocol).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -336,4 +336,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 <!-- EXTERNAL LINKS -->
 [rsat]: /windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: /windows/desktop/ad/creating-a-query-filter
-[New-SelfSignedCertificate]: /powershell/module/pkiclient/new-selfsignedcertificate
+[New-SelfSignedCertificate]: /powershell/module/pki/new-selfsignedcertificate

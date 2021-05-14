@@ -2,13 +2,13 @@
 title: 'Tutorial: Neue Richtlinienzuweisung per Azure-Portal'
 description: In diesem Tutorial erstellen Sie über das Azure-Portal eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
 ms.topic: tutorial
-ms.date: 10/07/2020
-ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 20cb8125a157a3ce97c88278c99f90936b449b65
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91826600"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831652"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Tutorial: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen
 
@@ -95,9 +95,9 @@ Um die erstellte Zuweisung zu entfernen, gehen Sie folgendermaßen vor:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einem Bereich eine Richtliniendefinition zugewiesen und deren Konformitätsbericht ausgewertet. Die Richtliniendefinition überprüft, ob alle Ressourcen im Bereich konform sind, und identifiziert die Ressourcen, die nicht konform sind. Sie können Ihren Computer mit Servern mit Azure Arc-Aktivierung jetzt mit Azure Monitor für VMs überwachen.
+In diesem Tutorial haben Sie einem Bereich eine Richtliniendefinition zugewiesen und deren Konformitätsbericht ausgewertet. Die Richtliniendefinition überprüft, ob alle Ressourcen im Bereich konform sind, und identifiziert die Ressourcen, die nicht konform sind. Sie können Ihren Computer mit Servern mit Azure Arc-Unterstützt jetzt überwachen, indem Sie [VM Insights](../../../azure-monitor/vm/vminsights-overview.md) aktivieren.
 
 Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Leistung, den aktiven Prozess und die zugehörigen Abhängigkeiten auf Ihrem Computer überwachen und anzeigen:
 
 > [!div class="nextstepaction"]
-> [Azure Monitor für VMs aktivieren](tutorial-enable-vm-insights.md)
+> [Aktivieren von VM Insights](tutorial-enable-vm-insights.md)

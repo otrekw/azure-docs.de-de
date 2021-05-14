@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 04/13/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9d2c42a664c8d8a591d95a312cdf1c0034c4d031
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5a65480cbfa279614250ddeaf7d565b112333a05
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305462"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285554"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen
 
@@ -154,7 +154,7 @@ Wenn Sie in den USA nicht die MFA-Anrufer-ID konfiguriert haben, stammen Anrufe 
 * *+1 (877) 668 6536*
 
 > [!NOTE]
-> Wenn Anrufe im Rahmen von Azure AD Multi-Factor Authentication über das öffentliche Telefonnetz erfolgen, werden sie manchmal über einen Netzbetreiber geroutet, der Anrufer-IDs nicht unterstützt. Aus diesem Grund gibt es keine Garantie für die Anrufer-ID, auch wenn Azure AD Multi-Factor Authentication sie immer sendet. Dies gilt sowohl für Telefonanrufe als auch für SMS-Nachrichten, die von Azure AD Multi-Factor Authentication bereitgestellt werden. Wenn Sie überprüfen müssen, ob eine Textnachricht von Azure AD Multi-Factor Authentication stammt, lesen Sie [Welche SMS-Kurzcodes werden für das Senden von Nachrichten verwendet?](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
+> Wenn Anrufe im Rahmen von Azure AD Multi-Factor Authentication über das öffentliche Telefonnetz erfolgen, werden sie manchmal über einen Netzbetreiber geroutet, der Anrufer-IDs nicht unterstützt. Aus diesem Grund gibt es keine Garantie für die Anrufer-ID, auch wenn Azure AD Multi-Factor Authentication sie immer sendet. Dies gilt sowohl für Telefonanrufe als auch für SMS-Nachrichten, die von Azure AD Multi-Factor Authentication bereitgestellt werden. Wenn Sie überprüfen müssen, ob eine Textnachricht von Azure AD Multi-Factor Authentication stammt, lesen Sie [Welche SMS-Kurzcodes werden für das Senden von Nachrichten verwendet?](multi-factor-authentication-faq.yml#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users-)
 
 Führen Sie die folgenden Schritte aus, um Ihre eigene Anrufer-ID-Nummer zu konfigurieren:
 
@@ -347,7 +347,7 @@ Durch das Feature „Multi-Factor Authentication speichern“ wird ein permanent
 
 Die Option **Die nächsten X Tage nicht erneut fragen** wird in Nicht-Browseranwendungen nicht angezeigt, unabhängig davon, ob diese die moderne Authentifizierung unterstützen. Diese Apps verwenden _Aktualisierungstoken_, die jede Stunde neue Zugriffstoken bereitstellen. Bei der Überprüfung eines Aktualisierungstokens überprüft Azure AD, ob die letzte mehrstufige Authentifizierung innerhalb der angegebenen Anzahl von Tagen durchgeführt wurde.
 
-Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps, die normalerweise jedes Mal dazu auffordern. Das Feature erhöht die Anzahl der Authentifizierungen für Clients mit moderner Authentifizierung, die normalerweise alle 90 Tage zur Authentifizierung auffordern, wenn eine kürzere Dauer konfiguriert ist. Die Anzahl der Authentifizierungen kann sich auch erhöhen, wenn mit bedingten Zugriffsrichtlinien kombiniert wird.
+Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps, die normalerweise jedes Mal dazu auffordern. Die Funktion kann die Anzahl der Authentifizierungen für moderne Authentifizierungsclients, die normalerweise alle 180 Tage eine Abfrage durchführen, erhöhen, wenn eine niedrigere Dauer konfiguriert ist. Die Anzahl der Authentifizierungen kann sich auch erhöhen, wenn mit bedingten Zugriffsrichtlinien kombiniert wird.
 
 > [!IMPORTANT]
 > Das Feature **Multi-Factor Authentication speichern** ist nicht kompatibel mit dem AD FS-Feature **Angemeldet bleiben**, bei dem Benutzer die mehrstufige Authentifizierung für AD FS über Azure Multi-Factor Authentication Server oder eine Lösung zur mehrstufigen Authentifizierung von Drittanbietern ausführen.

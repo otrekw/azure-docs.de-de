@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/12/2021
+ms.date: 04/28/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9a39a1b0df364aeed970f3ed0e0d99d4d31585b2
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305598"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175476"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial: Entwickeln eines SCIM-Endpunkts und Planen seiner Bereitstellung
 
@@ -210,12 +210,14 @@ Verwenden Sie bei der Implementierung eines SCIM-Endpunkts die allgemeinen Richt
 * Unterscheiden Sie bei Strukturelementen in SCIM nicht zwischen Groß- und Kleinschreibung, insbesondere bei Vorgangswerten (`op`) für **PATCH** (gemäß Definition im [Abschnitt 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2)). Von AAD werden die Werte von `op` als **Add** (Hinzufügen), **Replace** (Ersetzen) und **Remove** (Entfernen) ausgegeben.
 * Von Microsoft AAD werden Anforderungen zum Abrufen eines zufälligen Benutzers und einer zufälligen Gruppe gesendet, um sicherzustellen, dass der Endpunkt und die Anmeldeinformationen gültig sind. Dies wird auch im Rahmen des Flows **Verbindung testen** im [Azure-Portal](https://portal.azure.com) durchgeführt. 
 * Das Attribut, nach dem die Ressourcen abgefragt werden können, muss als entsprechendes Attribut für die Anwendung im [Azure-Portal](https://portal.azure.com) festgelegt werden. Weitere Informationen finden Sie unter [Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md).
+* Das Attribut „entitlements“ wird nicht unterstützt.
 * HTTPS-Unterstützung auf Ihrem SCIM-Endpunkt
 * [Schema Ermittlung](#schema-discovery)
-  * Die Schema Ermittlung wird derzeit in der benutzerdefinierten Anwendung nicht unterstützt, wird jedoch in bestimmten Katalog Anwendungen verwendet. In Zukunft wird die Schema Ermittlung als primäre Methode verwendet, um einem Connector zusätzliche Attribute hinzuzufügen. 
+  * Die Schema Ermittlung wird derzeit in der benutzerdefinierten Anwendung nicht unterstützt, wird jedoch in bestimmten Katalog Anwendungen verwendet. In Zukunft wird die Schemaermittlung als einzige Methode verwendet, um einem vorhandenen Connector zusätzliche Attribute hinzuzufügen. 
   * Wenn kein Wert vorhanden ist, senden Sie keine NULL-Werte.
   * Eigenschaftswerte sollten Kamel Schreibweise sein (z. b. "Read Write").
   * Muss eine Listen Antwort zurückgeben.
+  * Die Anforderung vom Typ „/schemas“ wird jedes Mal vom Azure AD-SCIM-Client gesendet, wenn ein Benutzer die Bereitstellungskonfiguration im Azure-Portal speichert oder wenn ein Benutzer auf die Seite „Bereitstellung bearbeiten“ im Azure-Portal gelangt. Alle zusätzlichen ermittelten Attribute werden Kunden in den Attributzuordnungen unter der Zielattributliste angezeigt. Die Schemaermittlung führt nur dazu, dass zusätzliche Zielattribute hinzugefügt werden. Sie führt nicht dazu, dass Attribute entfernt werden. 
   
 ### <a name="user-provisioning-and-deprovisioning"></a>Benutzerbereitstellung und Aufheben der Bereitstellung
 

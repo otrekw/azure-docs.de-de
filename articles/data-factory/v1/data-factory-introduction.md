@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 220c1969055ffaa5d1bea41ab547efd4596f8a20
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea7c5a82a6219e673454d627a4350291c5b3f047
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786463"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761649"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -83,12 +83,12 @@ Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Aktivitäten defini
 ### <a name="data-movement-activities"></a>Datenverschiebungsaktivitäten
 Die Kopieraktivität in Data Factory kopiert die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher. Daten aus beliebigen Quellen können in beliebige Senken geschrieben werden. Wählen Sie einen Datenspeicher aus, um zu erfahren, wie Daten in diesen bzw. aus diesem Speicher kopiert werden. Data Factory unterstützt die folgenden Datenspeicher:
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 Weitere Informationen finden Sie unter [Transformieren von Daten in Azure Data Factory](data-factory-data-movement-activities.md).
 
 ### <a name="data-transformation-activities"></a>Datentransformationsaktivitäten
-[!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
+[!INCLUDE [data-factory-transformation-activities](includes/data-factory-transformation-activities.md)]
 
 Weitere Informationen finden Sie unter [Transformieren von Daten in Azure Data Factory](data-factory-data-transformation-activities.md).
 

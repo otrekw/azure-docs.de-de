@@ -5,18 +5,18 @@ description: Hier erfahren Sie, wie Sie mithilfe von Datenspeichern während des
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
-ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 78b7bab204a08b474ea3c5cf5c2f7735c019a9c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q1, devx-track-python, data4ml
+ms.openlocfilehash: 35a60291017668755f3b98e63d6a15bda59f2b8e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519927"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143645"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Herstellen einer Verbindung mit Speicherdiensten in Azure
 
@@ -91,18 +91,21 @@ Es wird empfohlen, einen Datenspeicher für einen [Azure-Blobcontainer](../stora
 
 Um sicherzustellen, dass eine sichere Verbindung mit Ihrem Azure-Speicherdienst hergestellt wird, erfordert Azure Machine Learning, dass Sie über die Berechtigung zum Zugreifen auf den entsprechenden Datenspeichercontainer verfügen. Dieser Zugriff ist von den Anmeldeinformationen für die Authentifizierung abhängig, die zum Registrieren des Datenspeichers verwendet werden. 
 
-### <a name="virtual-network"></a>Virtuelles Netzwerk 
-
-Standardmäßig kann Azure Machine Learning nicht mit einem Speicherkonto kommunizieren, das sich hinter einer Firewall oder in einem virtuellen Netzwerk befindet. Wenn sich Ihr Datenspeicherkonto in einem **virtuellen Netzwerk** befindet, sind zusätzliche Konfigurationsschritte erforderlich, um sicherzustellen, dass Azure Machine Learning auf Ihre Daten zugreifen kann. 
-
 > [!NOTE]
 > Dieser Leitfaden gilt auch für [Datenspeicher, die mit identitätsbasiertem Zugriff (Vorschauversion) erstellt werden](how-to-identity-based-data-access.md). 
 
-Damit **Benutzer des Python-SDK** über Ihr Trainingsskript auf einem Computeziel auf Ihre Daten zugreifen können, muss sich das Computeziel in demselben virtuellen Netzwerk und Subnetz wie der Speicher befinden.  
+### <a name="virtual-network"></a>Virtuelles Netzwerk 
+
+Damit Azure Machine Learning mit einem Speicherkonto kommunizieren kann, das sich hinter einer Firewall oder in einem virtuellen Netzwerk befindet, sind zusätzliche Konfigurationsschritte erforderlich. Wenn sich Ihr Speicherkonto hinter einer Firewall befindet, können Sie [die IP-Adresse über das Azure-Portal der Zulassungsliste hinzufügen](../storage/common/storage-network-security.md#managing-ip-network-rules).
+
+Azure Machine Learning kann Anforderungen von Clients außerhalb des virtuellen Netzwerks empfangen. Um die Sicherheit der Entität sicherzustellen, die Daten vom Dienst anfordert, [richten Sie Azure Private Link für Ihren Arbeitsbereich ein](how-to-configure-private-link.md).
+
+Damit **Benutzer des Python-SDK** über Ihr Trainingsskript auf einem Computeziel auf Ihre Daten zugreifen können, muss sich das Computeziel in demselben virtuellen Netzwerk und Subnetz wie der Speicher befinden. 
 
 **Benutzer von Azure Machine Learning Studio** sollten beachten, dass mehrere Features darauf basieren, dass Daten aus einem Dataset gelesen werden können, z. B. Datasetvorschau, Profile und automatisiertes maschinelles Lernen. Damit diese Features für Speicher hinter virtuellen Netzwerken funktionieren, verwenden Sie [in Studio eine vom Arbeitsbereich verwaltete Identität](how-to-enable-studio-virtual-network.md), damit Azure Machine Learning von Orten außerhalb des virtuellen Netzwerks auf das Speicherkonto zugreifen kann. 
 
-Azure Machine Learning kann Anforderungen von Clients außerhalb des virtuellen Netzwerks empfangen. Um die Sicherheit der Entität sicherzustellen, die Daten vom Dienst anfordert, [richten Sie Azure Private Link für Ihren Arbeitsbereich ein](how-to-configure-private-link.md).
+> [!NOTE]
+> Wenn es sich bei Ihrem Datenspeicher um eine Azure SQL-Datenbank hinter einem virtuellen Netzwerk handelt, müssen Sie über das [Azure-Portal](https://ms.portal.azure.com/) die Einstellung *Öffentlichen Zugriff verweigern* auf **Nein** festlegen, um Azure Machine Learning Zugriff auf das Speicherkonto zu gewähren.
 
 ### <a name="access-validation"></a>Zugriffsüberprüfung
 

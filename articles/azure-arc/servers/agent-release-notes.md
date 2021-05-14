@@ -2,13 +2,13 @@
 title: Neuerungen im Agent für Azure Arc-fähige Server
 description: Dieser Artikel enthält Versionshinweise für den Agent für Azure Arc-fähige Server. Für viele der zusammengefassten Issues werden Links zu ausführlicheren Informationen bereitgestellt.
 ms.topic: conceptual
-ms.date: 03/31/2021
-ms.openlocfilehash: ecff23225f4d482cc1e9a4f7b7724c8ffe0a1d73
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/27/2021
+ms.openlocfilehash: c223b5dd75ac82706a2b35268813391899170f73
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109066"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071539"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Neuerungen im Agent für Azure Arc-fähige Server
 
@@ -18,17 +18,28 @@ Der Connected Machine-Agent für Azure Arc-fähige Server wird ständig verbesse
 - Bekannte Probleme
 - Behebung von Programmfehlern
 
+## <a name="april-2021"></a>April 2021
+
+Version 1.5
+
+### <a name="new-feature"></a>Neues Feature
+
+- Es wurde die Unterstützung für Red Hat Enterprise Linux 8 und CentOS Linux 8 hinzugefügt.
+- Neuer `-useStderr` Parameter, um Fehler und ausführliche Ausgabe an stderr weiterzuleiten.
+- Neuer Parameter `-json` zur direkten Ausgabe der Ergebnisse im JSON-Format (bei Verwendung mit -useStderr).
+- Sammeln sie weitere Instanzmetadaten: Hersteller, Modell, wenn SQL Server installiert ist (boolesch), und Clusterressourcen-ID (für Azure Stack HCI Knoten).
+ 
 ## <a name="march-2021"></a>März 2021
 
 Version 1.4
 
-## <a name="new-feature"></a>Neues Feature
+### <a name="new-feature"></a>Neues Feature
 
 - Unterstützung für private Endpunkte, die sich derzeit in der eingeschränkten Vorschau befinden, wurde hinzugefügt.
 - Die Liste der Exitcodes für azcmagent wurde erweitert.
 - Agent-Konfigurationsparameter können nun aus einer Datei mit dem `--config` Parameter gelesen werden.
 
-## <a name="fixed"></a>Fest
+### <a name="fixed"></a>Fest
 
 Netzwerkendpunktüberprüfungen sind nun schneller.
 

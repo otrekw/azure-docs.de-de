@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 4ba679459686340396e0e4d65344295c0fa9c4be
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 86783df03a395e287a6656b52099cffc579ee31f
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869955"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226280"
 ---
-# <a name="what-is-azure-application-consistent-snapshot-tool-preview"></a>Grundlegendes zum Tool für konsistente Momentaufnahmen in Azure-Anwendungen für Azure NetApp Files (Vorschau)
+# <a name="what-is-azure-application-consistent-snapshot-tool"></a>Worum handelt es sich beim Tool für konsistente Momentaufnahmen in Azure-Anwendungen?
 
 Das Tools für konsistente Momentaufnahmen in Azure-Anwendungen (AzAcSnap) ist ein Befehlszeilentool, das den Datenschutz für Datenbanken von Drittanbietern ermöglicht, indem es die gesamte Orchestrierung abwickelt, die erforderlich ist, damit die Anwendungsdaten konsistent sind, bevor eine Speichermomentaufnahme erstellt wird, nach der die Daten in einem Betriebszustand zurückgegeben werden.
 
@@ -44,7 +44,7 @@ AzAcSnap nutzt die Funktionen für Momentaufnahmen und Replikation von Volumes v
 - **Klonen von Speichervolumes** Diese Funktion bietet speichereffiziente Klone von Speichervolumes für Entwicklungs- und Testzwecke.
 - **Unterstützung der Notfallwiederherstellung** AzAcSnap nutzt die Replikation von Speichervolumes, um Optionen für die Wiederherstellung replizierter, konsistenter Momentaufnahmen von Anwendungen an einem Remotestandort bereitzustellen.
 
-AzAcSnap ist eine einzelne Binärdatei,  die keine zusätzlichen Agents oder Plug-Ins benötigt, um mit der Datenbank oder dem Speicher zu interagieren (Azure NetApp Files über Azure Resource Manager und Azure [große Instanz] über SSH).  AzAcSnap muss auf einem System installiert werden, das mit Datenbank und Speicher verbunden ist.  Die flexible Installation und Konfiguration ermöglicht jedoch entweder eine einzelne zentrale Installation oder eine vollständig verteilte Installation mit Kopien für jede Datenbankinstallation.
+AzAcSnap ist eine einzelne Binärdatei,  die keine zusätzlichen Agents oder Plug-Ins benötigt, um mit der Datenbank oder dem Speicher zu interagieren (Azure NetApp Files über Azure Resource Manager und Azure [große Instanz] über SSH).  AzAcSnap muss auf einem System installiert werden, das mit Datenbank und Speicher verbunden ist.  Die flexible Installation und Konfiguration ermöglicht jedoch entweder eine einzelne zentrale Installation (nur Azure NetApp Files) oder eine vollständig verteilte Installation (Azure NetApp Files und Azure (große Instanzen)) mit Kopien für jede Datenbankinstallation.
 
 ## <a name="architecture-overview"></a>Übersicht über die Architektur
 
@@ -80,7 +80,7 @@ Die Befehlsoptionen sind wie folgt, wobei die Befehle als Hauptaufzählungszeich
   - Weitere Informationen finden Sie in der [Referenz zum Befehl „details“](azacsnap-cmd-ref-details.md).
 - **`-c delete`** Dieser Befehl löscht eine Speichermomentaufnahme oder Gruppe von Momentaufnahmen. Sie können die SAP HANA-Sicherungs-ID in HANA Studio oder den Namen der Speichermomentaufnahme verwenden. Die Sicherungs-ID ist nur mit den `hana`-Momentaufnahmen verknüpft, die für die Daten- und freigegebenen Volumes erstellt werden. Andernfalls wird bei Eingabe des Namens der Momentaufnahme nach allen Momentaufnahmen gesucht, die mit dem eingegebenen Namen der Momentaufnahme übereinstimmen.
   - Weitere Informationen finden Sie unter [delete](azacsnap-cmd-ref-delete.md).
-- **`-c restore`** bietet zwei Methoden zum Wiederherstellen einer Momentaufnahme auf einem Volume. Entweder wird ein neues Volume auf Basis der Momentaufnahme erstellt, oder ein Volume wird auf einen Vorschaustatus zurückgesetzt.
+- **`-c restore`** bietet zwei Methoden zum Wiederherstellen einer Momentaufnahme auf einem Volume. Entweder wird ein neues Volume auf Basis der Momentaufnahme erstellt, oder ein Volume wird auf einen vorherigen Status zurückgesetzt.
   - **`--restore snaptovol`** Erstellt ein neues Volume basierend auf der letzten Momentaufnahme auf dem Zielvolume.
   - **`-c restore --restore revertvolume`** Setzt das Zielvolume auf Grundlage der letzten Momentaufnahme auf einen früheren Zustand zurück.
   - Weitere Informationen finden Sie in der [Referenz zum Befehl „restore“](azacsnap-cmd-ref-restore.md).

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e8410b4e0997798eba5ee91f361c3a5f1ce47ef1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43bafeee90b1995c363ca03d031abc7d648001cf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104586300"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126343"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Migrieren eines Protokolldatenträgers zu einem Ultra-Datenträger
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -162,7 +162,7 @@ Die Datenbank wird daraufhin mit dem Protokoll am neuen Speicherort online gesch
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Unter [Leistungsrichtlinien für SQL Server auf Azure Virtual Machines](performance-guidelines-best-practices.md) finden Sie zusätzliche Einstellungen zur Verbesserung der Leistung. 
+Unter [Leistungsrichtlinien für SQL Server auf Azure Virtual Machines](./performance-guidelines-best-practices-checklist.md) finden Sie zusätzliche Einstellungen zur Verbesserung der Leistung. 
 
 Eine Übersicht über SQL Server in Azure Virtual Machines finden Sie in den folgenden Artikeln:
 

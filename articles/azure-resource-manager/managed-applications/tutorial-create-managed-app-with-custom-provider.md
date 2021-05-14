@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 228d1a8bcd97daebae873de4c69cbec238e0c995
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 3765229fccb00f6e19fd3cf2b6b1a39919abcf05
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312534"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321805"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Tutorial: Erstellen einer verwalteten Anwendung mit benutzerdefinierten Aktionen und Ressourcen
 
@@ -349,7 +349,7 @@ Sie können zu der Instanz der verwalteten Anwendung navigieren und auf der Übe
 
 ## <a name="looking-for-help"></a>Wenn Hilfe benötigt wird
 
-Wenn Sie Fragen zu Azure Managed Applications haben, können Sie diese auf [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) mit dem Tag „azure-managed-app“ oder auf [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-managed-applications.html) mit dem Tag „azure-managed-application“ stellen. Eine ähnliche Frage wurde möglicherweise bereits gestellt und beantwortet, weshalb Sie dies zunächst prüfen sollten, bevor Sie etwas posten. Verwenden Sie die entsprechenden Tags, um schneller eine Antwort zu erhalten. 
+Wenn Sie Fragen zu Azure Managed Applications haben, können Sie diese auf [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) mit dem Tag „azure-managed-app“ oder auf [Microsoft Q&A](/answers/topics/azure-managed-applications.html) mit dem Tag „azure-managed-application“ stellen. Eine ähnliche Frage wurde möglicherweise bereits gestellt und beantwortet, weshalb Sie dies zunächst prüfen sollten, bevor Sie etwas posten. Verwenden Sie die entsprechenden Tags, um schneller eine Antwort zu erhalten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

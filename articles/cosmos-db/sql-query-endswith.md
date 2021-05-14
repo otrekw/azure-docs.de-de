@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c0cc93fee8aacc711a797925cb2e2808b73cafd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64514e69b41dda26fc39e747d7fef88706a64c64
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93338831"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163875"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,23 +62,7 @@ SELECT ENDSWITH("abc", "b", false) AS e1, ENDSWITH("abc", "bC", false) AS e2, EN
 
 ## <a name="remarks"></a>Bemerkungen
 
-Diese Systemfunktion profitiert von einem [Bereichsindex](index-policy.md#includeexclude-strategy).
-
-Der RU-Verbrauch von EndsWith erhöht sich, wenn die Kardinalität der Eigenschaft in der Systemfunktion zunimmt. Anders ausgedrückt: Wenn Sie überprüfen, ob ein Eigenschaftswert mit einer bestimmten Zeichenfolge endet, hängt die RU-Gebühr der Anforderung von der Anzahl möglicher Werte für diese Eigenschaft ab.
-
-Sehen Sie sich beispielsweise die beiden Eigenschaften „town“ und „country“ an. Die Kardinalität von „town“ ist 5.000, die Kardinalität von „country“ ist 200. Hier sind zwei Beispielabfragen:
-
-```sql
-    SELECT * FROM c WHERE ENDSWITH(c.town, "York", false)
-```
-
-```sql
-    SELECT * FROM c WHERE ENDSWITH(c.country, "States", false)
-```
-
-Die erste Abfrage verbraucht wahrscheinlich mehr RUs als die zweite Abfrage, da die Kardinalität von „town“ höher als die von „country“ ist.
-
-Wenn bestimmte Eigenschaften aus Dokumenten in ENDSWITH größer als 1 KB sind, müssen diese Dokumente von der Abfrage-Engine geladen werden. In diesem Fall kann die Abfrage-Engine ENDSWITH mit einem Index nicht vollständig auswerten. Die RU-Last für ENDSWITH wird hoch ausfallen, wenn viele Ihrer Dokumente größer als 1 KB sind.
+Erfahren Sie, [wie diese Systemfunktion mit Zeichenfolgen den Index verwendet](sql-query-string-functions.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

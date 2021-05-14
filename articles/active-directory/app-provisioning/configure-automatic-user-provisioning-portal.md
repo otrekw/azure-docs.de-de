@@ -3,20 +3,20 @@ title: Verwaltung der Benutzerbereitstellung für Unternehmens-Apps in Azure Act
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Active Directory die Benutzerkontobereitstellung für Unternehmens-Apps verwalten.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 03/18/2021
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5dceeb11ed9a4d6af88650a6146f58db412748d9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2403ef54dfe3e0262440944b134e8021bc4c67c1
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579415"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782881"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 
@@ -76,7 +76,7 @@ Unterstützte Anpassungen umfassen:
 
 ### <a name="settings"></a>Einstellungen
 
-Erweitern Sie die **Einstellungen**, um eine E-Mail-Adresse für den Empfang von Benachrichtigungen festzulegen und anzugeben, ob Sie Warnungen zu Fehlern erhalten möchten. Sie können auch den Bereich für die Benutzersynchronisierung festlegen. Außerdem können Sie auswählen, ob alle Benutzer und Gruppen oder nur die mit einer Zuweisung synchronisiert werden sollen.
+Erweitern Sie die **Einstellungen**, um eine E-Mail-Adresse für den Empfang von Benachrichtigungen festzulegen und anzugeben, ob Sie Warnungen zu Fehlern erhalten möchten. Sie können auch den Umfang der zu synchronisierenden Benutzer auswählen. Sie können wählen, ob alle Benutzer und Gruppen synchronisiert werden sollen oder nur die, die zugewiesen sind.
 
 ### <a name="provisioning-status"></a>Bereitstellungsstatus 
 

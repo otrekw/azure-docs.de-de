@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 8f0e7ec2566928897d2b84357b599506520e8d95
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7c238b1e785c34a6ec4cd99d63419e73239a9bfe
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612023"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135705"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Einrichten einer Appliance für Server in Hyper-V
 
@@ -62,7 +62,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
-Überprüfen Sie den aktuellen Hashwert, indem Sie das Ergebnis des obigen Befehls mit dem [hier](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v#verify-security) dokumentierten Wert vergleichen.
+Überprüfen Sie den aktuellen Hashwert, indem Sie das Ergebnis des obigen Befehls mit dem [hier](./tutorial-discover-hyper-v.md#verify-security) dokumentierten Wert vergleichen.
 
 ## <a name="create-the-appliance"></a>Erstellen der Appliance
 

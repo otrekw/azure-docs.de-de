@@ -1,19 +1,19 @@
 ---
-title: Schnellstart – Hinzufügen von Beitreten zu einer Teams-Besprechung zu einer iOS-App mithilfe von Azure Communication Services
+title: 'Schnellstart: Hinzufügen von Funktionen zum Beitreten zu einer Microsoft Teams-Besprechungen zu einer iOS-App mithilfe von Azure Communication Services'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Azure Communication Services-Bibliothek zum Einbetten von Teams für iOS verwenden.
 author: palatter
 ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 4d28864d41d6540afc87126daf589ed2929f891d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 222ae284f77950c729a6a790e2ad29453a9ce34a
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803067"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903157"
 ---
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mit der Azure Communication Services-Bibliothek zum Einbetten von Teams für iOS einer Teams-Besprechung beitreten.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mit der Azure Communication Services-Bibliothek zum Einbetten von Teams für iOS einer Microsoft Teams-Besprechung beitreten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,7 +46,7 @@ platform :ios, '12.0'
 use_frameworks!
 
 target 'TeamsEmbedGettingStarted' do
-    pod 'AzureCommunication', '~> 1.0.0-beta.8'
+    pod 'AzureCommunication', '~> 1.0.0-beta.11'
 end
 
 azure_libs = [
@@ -76,10 +76,6 @@ Aktualisieren Sie die Eigenschaftenliste der APP-Informationen, um auf die Hardw
 Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektstruktur, und wählen Sie anschließend **Open As** (Öffnen als)  > **Source Code** (Quellcode) aus. Fügen Sie die folgenden Zeilen im Abschnitt `<dict>` der obersten Ebene hinzu, und speichern anschließend Sie die Datei.
 
 ```xml
-<key>NSBluetoothAlwaysUsageDescription</key>
-<string></string>
-<key>NSBluetoothPeripheralUsageDescription</key>
-<string></string>
 <key>NSCameraUsageDescription</key>
 <string></string>
 <key>NSContactsUsageDescription</key>
@@ -90,10 +86,10 @@ Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektst
 
 ### <a name="add-the-teams-embed-framework"></a>Hinzufügen des Frameworks zum Einbetten von Teams
 
-1. Laden Sie das Framework herunter.
-2. Erstellen Sie im Stammverzeichnis des Projekts einen Ordner `Frameworks`. Ex. `\TeamsEmbedGettingStarted\Frameworks\`
-3. Kopieren Sie die heruntergeladenen Frameworks `TeamsAppSDK.framework` und `MeetingUIClient.framework` in diesen Ordner.
-4. Fügen Sie `TeamsAppSDK.framework` und `MeetingUIClient.framework` zum Projektziel auf der Registerkarte „Allgemein“ hinzu. Verwenden Sie `Add Other`  ->  `Add Files...`, um zu den Framework-Dateien zu navigieren und sie hinzuzufügen.
+1. Laden Sie das [iOS-Paket `MicrosoftTeamsSDK`](https://github.com/Azure/communication-teams-embed/releases) herunter.
+2. Erstellen Sie im Stammverzeichnis den Ordner `Frameworks`. Ex. `\TeamsEmbedGettingStarted\Frameworks\`
+3. Kopieren Sie die heruntergeladenen Frameworks `TeamsAppSDK.framework` und `MeetingUIClient.framework` sowie weitere im Releasepaket bereitgestellten Frameworks in diesen Ordner.
+4. Fügen Sie die Frameworks zum Projektziel auf der Registerkarte „Allgemein“ hinzu. Verwenden Sie `Add Other` -> `Add Files...`, um zu den Framework-Dateien zu navigieren und sie hinzuzufügen.
 
 :::image type="content" source="../media/ios/xcode-add-frameworks.png" alt-text="Screenshot: hinzugefügte Frameworks in Xcode.":::
 
@@ -103,33 +99,10 @@ Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektst
 
 ### <a name="turn-off-bitcode"></a>Deaktivieren von Bitcode
 
-Legen Sie die Option `Enable Bitcode` bei den Projektbuildeinstellungen auf `No` fest. Um die Einstellung zu finden, müssen Sie den Filter von `basic` in `all` ändern. Sie können auch die Suchleiste auf der rechten Seite verwenden.
+Legen Sie unter `Build Settings` des Projekts die Option `Enable Bitcode` auf `No` fest. Um die Einstellung zu finden, müssen Sie den Filter von `Basic` in `All` ändern. Sie können auch die Suchleiste auf der rechten Seite verwenden.
 
 :::image type="content" source="../media/ios/xcode-bitcode-option.png" alt-text="Screenshot: Bitcode-Option in Xcode.":::
 
-### <a name="add-framework-signing-script"></a>Signaturskript für das Framework hinzufügen
-
-Wählen Sie das App-Ziel aus, und wählen Sie die Registerkarte `Build Phases`. Klicken Sie dann auf `+` und anschließend auf `New Run Script Phase`. Stellen Sie sicher, dass diese neue Phase nach den `Embed Frameworks`-Phasen liegt.
-
-
-
-:::image type="content" source="../media/ios/xcode-build-script.png" alt-text="Screenshot: Hinzufügen des Buildskripts in Xcode.":::
-
-```bash
-#!/bin/sh
-if [ -d "${TARGET_BUILD_DIR}"/"${PRODUCT_NAME}".app/Frameworks/TeamsAppSDK.framework/Frameworks ]; then
-    pushd "${TARGET_BUILD_DIR}"/"${PRODUCT_NAME}".app/Frameworks/TeamsAppSDK.framework/Frameworks
-    for EACH in *.framework; do
-        echo "-- signing ${EACH}"
-        /usr/bin/codesign --force --deep --sign "${EXPANDED_CODE_SIGN_IDENTITY}" --entitlements "${TARGET_TEMP_DIR}/${PRODUCT_NAME}.app.xcent" --timestamp=none $EACH
-        echo "-- moving ${EACH}"
-        mv -nv ${EACH} ../../
-    done
-    rm -rf "${TARGET_BUILD_DIR}"/"${PRODUCT_NAME}".app/Frameworks/TeamsAppSDK.framework/Frameworks
-    popd
-    echo "BUILD DIR ${TARGET_BUILD_DIR}"
-fi
-```
 
 ### <a name="turn-on-voice-over-ip-background-mode"></a>Schalten Sie den Hintergrundmodus von Voice over IP ein.
 
@@ -213,14 +186,19 @@ class ViewController: UIViewController {
 
 ## <a name="object-model"></a>Objektmodell
 
-Die folgenden Klassen und Schnittstellen dienen zur Behandlung einiger der wichtigsten Features der Azure Communication Services-Bibliothek zum Einbetten von Teams:
+Die folgenden Klassen und Schnittstellen dienen zur Behandlung einiger der wichtigsten Features der Azure Communication Services-Bibliothek zum Einbetten von Teams:
 
 | name                                  | BESCHREIBUNG                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| MeetingUIClient | Der MeetingUIClient ist der Haupteinstiegspunkt der Bibliothek zum Einbetten von Teams. |
+| MeetingUIClient | Der MeetingUIClient ist der Haupteinstiegspunkt der Bibliothek zum Einbetten von Teams. |
+| MeetingUIClientMeetingJoinOptions | MeetingUIClientMeetingJoinOptions wird für konfigurierbare Optionen wie den Anzeigenamen verwendet. |
+| MeetingUIClientGroupCallJoinOptions | MeetingUIClientMeetingJoinOptions wird für konfigurierbare Optionen wie den Anzeigenamen verwendet. |
+| MeetingUIClientTeamsMeetingLinkLocator | MeetingUIClientTeamsMeetingLinkLocator wird zum Festlegen der Besprechungs-URL für den Beitritt zu einer Besprechung verwendet. |
+| MeetingUIClientGroupCallLocator | MeetingUIClientGroupCallLocator wird zum Festlegen der Gruppen-ID für den Beitritt verwendet. |
+| MeetingUIClientCallState | MeetingUIClientCallState wird zum Melden von Veränderungen im Anrufstatus verwendet. Die folgenden Optionen sind verfügbar: `connecting`,`waitingInLobby`,`connected` und `ended`. |
 | MeetingUIClientDelegate | Der MeetingUIClientDelegate wird zum Empfangen von Ereignissen verwendet, z. B. von Veränderungen im Aufrufstatus. |
-| MeetingJoinOptions | MeetingJoinOptions wird für konfigurierbare Optionen wie den Anzeigenamen verwendet. | 
-| CallState | Der CallState wird zum Melden von Veränderungen im Anrufstatus verwendet. Die Optionen lauten wie folgt: connecting (Verbinden), waitingInlobby (Warten), connected (Verbunden) und ended (Beendet). |
+| MeetingUIClientIdentityProviderDelegate | MeetingUIClientIdentityProviderDelegate wird verwendet, um den Benutzern in einer Besprechung Benutzerdetails zuzuordnen. |
+| MeetingUIClientUserEventDelegate | MeetingUIClientUserEventDelegate stellt Informationen zu Benutzeraktionen auf der Benutzeroberfläche bereit. |
 
 ## <a name="create-and-authenticate-the-client"></a>Erstellen und Authentifizieren des Clients
 
@@ -229,7 +207,7 @@ Initialisieren Sie eine `MeetingUIClient`-Instanz mit einem Benutzerzugriffstoke
 ```swift
 do {
     let communicationTokenRefreshOptions = CommunicationTokenRefreshOptions(initialToken: "<USER_ACCESS_TOKEN>", refreshProactively: true, tokenRefresher: fetchTokenAsync(completionHandler:))
-    let credential = try CommunicationTokenCredential(with: communicationTokenRefreshOptions)
+    let credential = try CommunicationTokenCredential(withOptions: communicationTokenRefreshOptions)
     meetingUIClient = MeetingUIClient(with: credential)
 }
 catch {
@@ -244,7 +222,7 @@ Ersetzen Sie `<USER_ACCESS_TOKEN>` durch ein gültiges Benutzerzugriffstoken fü
 Erstellen Sie eine `fetchTokenAsync`-Methode. Fügen Sie dann Ihre `fetchToken`-Logik hinzu, um das Benutzertoken zu erhalten.
 
 ```swift
-private func fetchTokenAsync(completionHandler: @escaping TokenRefreshOnCompletion) {
+private func fetchTokenAsync(completionHandler: @escaping TokenRefreshHandler) {
     func getTokenFromServer(completionHandler: @escaping (String) -> Void) {
         completionHandler("<USER_ACCESS_TOKEN>")
     }
@@ -258,13 +236,13 @@ Ersetzen Sie `<USER_ACCESS_TOKEN>` durch ein gültiges Benutzerzugriffstoken fü
 
 ## <a name="join-a-meeting"></a>Beitreten zu einer Besprechung
 
-Die Methode `joinMeeting` wird als die Aktion festgelegt, die ausgeführt wird, wenn auf die Schaltfläche *Besprechung beitreten* getippt wird. Aktualisieren Sie die Implementierung, um mit `MeetingUIClient` einer Besprechung beizutreten:
+Die Methode `join` wird als die Aktion festgelegt, die ausgeführt wird, wenn auf die Schaltfläche *Besprechung beitreten* getippt wird. Aktualisieren Sie die Implementierung, um mit `MeetingUIClient` einer Besprechung beizutreten:
 
 ```swift
 private func joinMeeting() {
-    let meetingJoinOptions = MeetingJoinOptions(displayName: "John Smith")
-        
-    meetingUIClient?.join(meetingUrl: "<MEETING_URL>", meetingJoinOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
+    let meetingJoinOptions = MeetingUIClientMeetingJoinOptions(displayName: "John Smith", enablePhotoSharing: true, enableNamePlateOptionsClickDelegate: true)
+    let meetingLocator = MeetingUIClientTeamsMeetingLinkLocator(meetingLink: "<MEETING_URL>")
+    meetingUIClient?.join(meetingLocator: meetingLocator, joinCallOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
         if (error != nil) {
             print("Join meeting failed: \(error!)")
         }
@@ -272,12 +250,12 @@ private func joinMeeting() {
 }
 ```
 
-Ersetzen Sie `<MEETING URL>` durch einen Teams-Besprechungslink.
+Ersetzen Sie `<MEETING URL>` durch einen Microsoft Teams-Besprechungslink.
 
-### <a name="get-a-teams-meeting-link"></a>Erhalten des Teams-Besprechungslinks
+### <a name="get-a-microsoft-teams-meeting-link"></a>Abrufen eines Microsoft Teams-Besprechungslinks
 
-Ein Teams-Besprechungslink kann mithilfe der Graph-APIs abgerufen werden. Dies wird in der [Graph-Dokumentation](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) erläutert.
-Das Communication Services-SDK für Telefonie akzeptiert einen vollständigen Teams-Besprechungslink. Dieser Link wird als Teil der `onlineMeeting`-Ressource zurückgegeben, auf die Sie über die [`joinWebUrl`-Eigenschaft](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) zugreifen können. Sie können die erforderlichen Besprechungsinformationen auch aus der URL **Besprechung beitreten** in der Teams-Besprechungseinladung selbst abrufen.
+Ein Microsoft Teams-Besprechungslink kann mithilfe der Graph-APIs abgerufen werden. Dies wird in der [Graph-Dokumentation](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) erläutert.
+Das Communication Services Calling SDK akzeptiert einen vollständigen Microsoft Teams-Besprechungslink. Dieser Link wird als Teil der `onlineMeeting`-Ressource zurückgegeben, auf die Sie über die [`joinWebUrl`-Eigenschaft](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) zugreifen können. Sie können die erforderlichen Besprechungsinformationen auch aus der URL **Besprechung beitreten** in der Teams-Besprechungseinladung selbst abrufen.
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
@@ -300,48 +278,6 @@ Das Microsoft Teams-SDK unterstützt mehr als 100 Zeichenfolgen und Ressourcen. 
 2. Entzippen Sie die im Paket enthaltene Datei Localizations.zip
 3. Kopieren Sie, entsprechend den von Ihrer App unterstützten Lokalisierungen, Lokalisierungsordner aus dem entzippten Ordner in das Stammverzeichnis von TeamsAppSDK.framework
 
-## <a name="preparation-for-app-store-upload"></a>Vorbereitung für den Upload in den App Store
-
-Entfernen Sie im Fall der Archivierung die i386- und x86_64-Architekturen aus den Frameworks.
-
-Wenn Sie Ihre Anwendung archivieren möchten, fügen Sie vor der Phase der Codesignierung die Architekturen `i386` und `x86_64` zum Entfernen von Skripten zu den Buildphasen hinzu.
-
-Wählen Sie Ihr Projekt im Projektvavigator aus. Wechseln Sie im Editor-Bereich zu Buildphasen → klicken Sie auf das +-Zeichen → Neue Run Script-Phase erstellen.
-
-```bash
-echo "Target architectures: $ARCHS"
-APP_PATH="${TARGET_BUILD_DIR}/${WRAPPER_NAME}"
-find "$APP_PATH" -name '*.framework' -type d | while read -r FRAMEWORK
-do
-FRAMEWORK_EXECUTABLE_NAME=$(defaults read "$FRAMEWORK/Info.plist" CFBundleExecutable)
-FRAMEWORK_EXECUTABLE_PATH="$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME"
-echo "Executable is $FRAMEWORK_EXECUTABLE_PATH"
-echo $(lipo -info "$FRAMEWORK_EXECUTABLE_PATH")
-FRAMEWORK_TMP_PATH="$FRAMEWORK_EXECUTABLE_PATH-tmp"
-# remove simulator's archs if location is not simulator's directory
-case "${TARGET_BUILD_DIR}" in
-*"iphonesimulator")
-    echo "No need to remove archs"
-    ;;
-*)
-    if $(lipo "$FRAMEWORK_EXECUTABLE_PATH" -verify_arch "i386") ; then
-    lipo -output "$FRAMEWORK_TMP_PATH" -remove "i386" "$FRAMEWORK_EXECUTABLE_PATH"
-    echo "i386 architecture removed"
-    rm "$FRAMEWORK_EXECUTABLE_PATH"
-    mv "$FRAMEWORK_TMP_PATH" "$FRAMEWORK_EXECUTABLE_PATH"
-    fi
-    if $(lipo "$FRAMEWORK_EXECUTABLE_PATH" -verify_arch "x86_64") ; then
-    lipo -output "$FRAMEWORK_TMP_PATH" -remove "x86_64" "$FRAMEWORK_EXECUTABLE_PATH"
-    echo "x86_64 architecture removed"
-    rm "$FRAMEWORK_EXECUTABLE_PATH"
-    mv "$FRAMEWORK_TMP_PATH" "$FRAMEWORK_EXECUTABLE_PATH"
-    fi
-    ;;
-esac
-echo "Completed for executable $FRAMEWORK_EXECUTABLE_PATH"
-echo $(lipo -info "$FRAMEWORK_EXECUTABLE_PATH")
-done
-```
 
 ## <a name="sample-code"></a>Beispielcode
 

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/08/2021
+ms.date: 04/26/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e41c1e74dbe428ee38d4480a1587050b7f96a55f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: fa1250189c5ba11426ac993bed8fde398ae37ea2
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226225"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001464"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ Mithilfe eines Benutzerflows können Sie feststellen, wie Benutzer mit Ihrer Anw
 
 ::: zone pivot="b2c-user-flow"
 > [!IMPORTANT]
-> Benutzerflowversionen werden jetzt anders angegeben. Zuvor wurden V1-Versionen (bereit für die Produktion) sowie V1.1- und V2-Versionen (Vorschauversion) angeboten. Benutzerflows wurden nun in die Versionen **Empfohlen** (Vorschauversion der nächsten Generation) und **Standard** (allgemein verfügbar) konsolidiert. Alle Benutzerflows der V1.1- und V2-Legacyvorschauversionen werden zum **1. August 2021** eingestellt. Weitere Informationen finden Sie unter [Benutzerflowversionen in Azure Active Directory B2C](user-flow-versions.md).
+> Benutzerflowversionen werden jetzt anders angegeben. Zuvor wurden V1-Versionen (bereit für die Produktion) sowie V1.1- und V2-Versionen (Vorschauversion) angeboten. Nun haben Sie Benutzerflows in zwei Versionen zusammengefasst: **Empfohlene** Benutzerflows mit den neuesten Features und **Standardbenutzerflows (Legacy)** . In der öffentlichen Cloud werden alle Benutzerflows der Legacyvorschauversionen (V1.1 und V2) zum **1. August 2021** eingestellt. Weitere Informationen finden Sie unter [Benutzerflowversionen in Azure Active Directory B2C](user-flow-versions.md). *Diese Änderungen gelten nur für die öffentliche Azure-Cloud. In anderen Umgebungen werden weiterhin die [Legacyversionen der Benutzerflows](user-flow-versions-legacy.md) verwendet.* 
 ::: zone-end
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -50,9 +50,11 @@ Mithilfe eines Benutzerflows können Sie feststellen, wie Benutzer mit Ihrer Anw
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
 - Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
 - [Registrieren Sie Ihre Anwendung](tutorial-register-applications.md) in dem Mandanten, den Sie erstellt haben, damit er mit Azure AD B2C kommunizieren kann.
-- Führen Sie die Schritte unter [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](identity-provider-facebook.md) aus, um eine Facebook-Anwendung zu konfigurieren. Wenngleich für die Verwendung von benutzerdefinierten Richtlinien keine Facebook-Anwendung erforderlich ist, wird in dieser exemplarischen Vorgehensweise eine solche Anwendung verwendet, um die Aktivierung des Soziale Medien-Logins in einer benutzerdefinierten Richtlinie zu veranschaulichen.
+- [Erstellen einer Facebook-Anwendung.](identity-provider-facebook.md#create-a-facebook-application) Überspringen Sie die Voraussetzungen und die Zurücksetzung der Schritte im Artikel [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](identity-provider-facebook.md). Wenngleich für die Verwendung von benutzerdefinierten Richtlinien keine Facebook-Anwendung erforderlich ist, wird in dieser exemplarischen Vorgehensweise eine solche Anwendung verwendet, um die Aktivierung des Soziale Medien-Logins in einer benutzerdefinierten Richtlinie zu veranschaulichen.
+
 ::: zone-end
 
 ::: zone pivot="b2c-user-flow"

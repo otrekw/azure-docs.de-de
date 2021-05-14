@@ -5,20 +5,20 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 3/11/2019
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: a8f64ab3141459142def12a1758b0fe0a94ca432
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9c0568eb4d8a7403fc29f34a4c4e9f6e0fadecd
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92282160"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738862"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Tutorial: Hosten Ihrer Domäne in Azure DNS
 
 Sie können Azure DNS verwenden, um Ihre DNS-Domäne zu hosten und die DNS-Einträge zu verwalten. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten.
 
-Nehmen wir an, Sie erwerben die Domäne „contoso.net“ von einer Domänennamen-Registrierungsstelle und erstellen dann eine Zone mit dem Namen „contoso.net“ in Azure DNS. Als Besitzer der Domäne bietet Ihre Registrierungsstelle Ihnen die Möglichkeit, die Namenservereinträge (NS-Einträge) für Ihre Domäne zu konfigurieren. Die Registrierungsstelle speichert die NS-Einträge in der übergeordneten Zone „.NET“. Internetbenutzer auf der ganzen Welt, die DNS-Einträge in „contoso.net“ auflösen möchten, werden dann an Ihre Domäne in der Azure DNS-Zone weitergeleitet.
+Nehmen wir an, Sie erwerben die Domäne `contoso.net` von einer Domänennamen-Registrierungsstelle und erstellen dann eine Zone mit dem Namen `contoso.net` in Azure DNS. Als Besitzer der Domäne bietet Ihre Registrierungsstelle Ihnen die Möglichkeit, die Namenservereinträge (NS-Einträge) für Ihre Domäne zu konfigurieren. Die Registrierungsstelle speichert die NS-Einträge in der übergeordneten Zone „.NET“. Internetbenutzer auf der ganzen Welt, die DNS-Einträge in „contoso.net“ auflösen möchten, werden dann an Ihre Domäne in der Azure DNS-Zone weitergeleitet.
 
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Sie müssen über einen Domänennamen zum Testen verfügen, den Sie in Azure DNS hosten können. Sie müssen uneingeschränkte Kontrolle über diese Domäne haben. Das bedeutet, Sie müssen unter anderem die Namenservereinträge für die Domäne festlegen können.
 
-In diesem Beispiel verweisen wir auf die übergeordnete Domäne **contoso.net**.
+In diesem Beispiel verweisen Sie auf die übergeordnete Domäne `contoso.net`.
 
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
@@ -45,17 +45,17 @@ In diesem Beispiel verweisen wir auf die übergeordnete Domäne **contoso.net**.
    ![DNS-Zone](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
 1. Wählen Sie **DNS-Zone erstellen** aus.
-1. Geben Sie auf der Seite **DNS-Zone erstellen** die folgenden Werte ein, und wählen Sie dann **Erstellen**: z. B. **contoso.net**.
-      > [!NOTE] 
-      > Wenn die neue Zone, die Sie erstellen, eine untergeordnete Zone ist (z. B. übergeordnete Zone = contoso.net untergeordnete Zone = child.contoso.net), lesen Sie das Tutorial [Erstellen einer neuen untergeordneten DNS-Zone](./tutorial-public-dns-zones-child.md).
+
+1. Geben Sie auf der Seite **DNS-Zone erstellen** die folgenden Werte ein, und wählen Sie dann **Erstellen** aus. Beispiel: `contoso.net`.
+
+   > [!NOTE] 
+   > Wenn die neue Zone, die Sie erstellen, eine untergeordnete Zone ist (z. B. übergeordnete Zone = `contoso.net`, untergeordnete Zone = `child.contoso.net`), lesen Sie die Informationen unter [Tutorial: Erstellen einer neuen untergeordneten DNS-Zone](./tutorial-public-dns-zones-child.md).
 
     | **Einstellung** | **Wert** | **Details** |
     |--|--|--|
-    | **Projektdetails:**  |  |  |
     | **Ressourcengruppe**    | ContosoRG | Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des von Ihnen ausgewählten Abonnements eindeutig sein. Der Standort der Ressourcengruppe hat keine Auswirkung auf die DNS-Zone. Der Standort der DNS-Zone ist immer „global“ und wird nicht angezeigt. |
-    | **Instanzdetails:** |  |  |
     | **Untergeordnete Zone**        | deaktiviert lassen | Da diese Zone **keine** [untergeordnete Zone](./tutorial-public-dns-zones-child.md) ist, sollten Sie diese Option nicht aktivieren. |
-    | **Name**              | contoso.net | Feld für den Namen der übergeordneten Zone      |
+    | **Name**              | `contoso.net` | Feld für den Namen der übergeordneten Zone      |
     | **Location**          | East US | Dieses Feld basiert auf dem im Rahmen der Ressourcengruppenerstellung ausgewählten Speicherort.  |
     
 
@@ -65,7 +65,7 @@ Bevor Sie Ihre DNS-Zone an Azure DNS delegieren können, müssen Sie die Namense
 
 1. Wählen Sie nach der Erstellung der DNS-Zone im Bereich **Favoriten** des Azure-Portals die Option **Alle Ressourcen**. Wählen Sie auf der Seite **Alle Ressourcen** Ihre DNS-Zone aus. Falls das von Ihnen ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie in das Feld **Nach Name filtern** Ihren Domänennamen eingeben, um komfortabel auf das Anwendungsgateway zuzugreifen. 
 
-1. Rufen Sie die Namenserver über die Seite „DNS-Zone“ ab. In diesem Beispiel wurden der Zone „contoso.net“ die Namenserver *ns1-01.azure-dns.com*, *ns2-01.azure-dns.net*, *ns3-01.azure-dns.org* und *ns4-01.azure-dns.info* zugewiesen:
+1. Rufen Sie die Namenserver über die Seite „DNS-Zone“ ab. In diesem Beispiel wurden der Zone `contoso.net` die Namenserver `ns1-01.azure-dns.com`, `ns2-01.azure-dns.net`, *`ns3-01.azure-dns.org` und `ns4-01.azure-dns.info` zugewiesen:
 
    ![Liste der Namenserver](./media/dns-delegate-domain-azure-dns/viewzonens500.png)
 
@@ -73,7 +73,7 @@ Azure DNS erstellt in Ihrer Zone automatisch autoritative NS-Einträge für die 
 
 ## <a name="delegate-the-domain"></a>Delegieren der Domäne
 
-Nachdem Sie die DNS-Zone erstellt haben und über die Namenserver verfügen, müssen Sie die übergeordnete Domäne mit den Azure DNS-Namenservern aktualisieren. Jede Registrierungsstelle hat ihre eigenen DNS-Verwaltungstools, um die Namenservereinträge für eine Domäne zu ändern. 
+Nachdem Sie die DNS-Zone erstellt haben und über die Namenserver verfügen, müssen Sie die übergeordnete Domäne mit den Azure DNS-Namenservern aktualisieren. Jede Registrierungsstelle hat ihre eigenen DNS-Verwaltungstools, um die Namenservereinträge für eine Domäne zu ändern. 
 
 1. Bearbeiten Sie auf der DNS-Verwaltungsseite der Registrierungsstelle die NS-Einträge, und ersetzen Sie die NS-Einträge durch die Azure DNS-Namenserver.
 
@@ -86,7 +86,7 @@ Delegierungen, für die Namenserver in Ihrer eigenen Zone verwendet werden (manc
 
 ## <a name="verify-the-delegation"></a>Überprüfen der Delegierung
 
-Nach Abschluss der Delegierung können Sie überprüfen, ob sie funktioniert, indem Sie mithilfe eines Tools wie *nslookup* den SOA-Eintrag (Start of Authority, Autoritätsursprung) für die Zone abfragen. Der SOA-Eintrag wird beim Erstellen der Zone automatisch erstellt. Nach Abschluss der Delegierung müssen Sie unter Umständen mindestens zehn Minuten warten, bis Sie überprüfen können, ob sie funktioniert. Es kann einige Zeit dauern, bis Änderungen über das DNS-System weitergegeben wurden.
+Nach Abschluss der Delegierung können Sie überprüfen, ob sie funktioniert, indem Sie mithilfe eines Tools wie *nslookup* den SOA-Eintrag (Start of Authority, Autoritätsursprung) für die Zone abfragen. Der SOA-Eintrag wird beim Erstellen der Zone automatisch erstellt. Nach Abschluss der Delegierung müssen Sie unter Umständen mindestens zehn Minuten warten, bis Sie überprüfen können, ob sie funktioniert. Es kann einige Zeit dauern, bis Änderungen über das DNS-System weitergegeben wurden.
 
 Sie müssen die Azure DNS-Namenserver nicht angeben. Wenn die Delegierung ordnungsgemäß eingerichtet ist, werden die Namenserver beim normalen DNS-Auflösungsvorgang automatisch gefunden.
 
@@ -116,7 +116,7 @@ Sie müssen die Azure DNS-Namenserver nicht angeben. Wenn die Delegierung ordnun
 
 Sie können die Ressourcengruppe **contosoRG** behalten, wenn Sie das nächste Tutorial absolvieren möchten. Löschen Sie andernfalls die Ressourcengruppe **contosoRG**, um die in diesem Tutorial erstellten Ressourcen zu löschen.
 
-- Klicken Sie auf die Ressourcengruppe **contosoRG**, und wählen Sie anschließend **Ressourcengruppe löschen** aus. 
+Klicken Sie auf die Ressourcengruppe **contosoRG**, und wählen Sie anschließend **Ressourcengruppe löschen** aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

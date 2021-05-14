@@ -7,14 +7,14 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: f72a3739fac1e7d6afdafd2676ea6fcefe847b2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60ad4ece6de40b61b1d25e61963b30c084639eba
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101710582"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072961"
 ---
-# <a name="vnet-peering-and-azure-bastion-preview"></a>VNET-Peering und Azure Bastion (Vorschau)
+# <a name="vnet-peering-and-azure-bastion"></a>VNET-Peering und Azure Bastion
 
 Azure Bastion kann zusammen mit VNET-Peering verwendet werden. Wenn VNET-Peering konfiguriert ist, müssen Sie Azure Bastion nicht in jedem Peering-VNET bereitstellen. Wenn Sie also in einem virtuellen Netzwerk (VNET) einen Azure Bastion-Host konfiguriert haben, kann dieser zum Herstellen einer Verbindung mit VMs in einem Peering-VNET verwendet werden, ohne dass ein zusätzlicher Bastionhost bereitgestellt werden muss. Weitere Informationen zum VNET-Peering finden Sie unter [Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md).
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: krsh
 ms.author: krsh
-ms.date: 03/10/2021
-ms.openlocfilehash: 4711ea76af83594ec529cfda13a308fbe6646398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/23/2021
+ms.openlocfilehash: 2ed498c528e3e0a86644588c4c7b26b0dd057128
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200458"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946239"
 ---
 # <a name="how-to-create-a-virtual-machine-using-your-own-image"></a>Erstellen eines virtuellen Computers mit einem eigenen Image
 
@@ -49,15 +49,20 @@ Alle Images im Azure Marketplace müssen allgemein wiederverwendbar sein. Um die
 
 ## <a name="bring-your-image-into-azure"></a>Einbinden Ihres Image in Azure
 
+> [!NOTE]
+> Zum Veröffentlichen muss sich das Azure-Abonnement, das Shared Image Gallery enthält, unter demselben Mandanten wie das Herausgeberkonto befinden. Darüber hinaus muss das Herausgeberkonto mindestens über Zugriff als Mitwirkender auf das Abonnement verfügen, das SIG enthält.
+
 Es gibt drei Möglichkeiten, Ihr Image in Azure einzubinden:
 
-1. Laden Sie die virtuelle Festplatte in eine Shared Image Gallery-Instanz (SIG) hoch.
+1. Laden Sie die VHD hoch:
+    1. in eine Shared Image Gallery oder
+    1. als freigegebenes Bild in einer Shared Image Gallery
 1. Laden Sie die virtuelle Festplatte in ein Azure Storage-Konto hoch.
 1. Extrahieren Sie die virtuelle Festplatte aus einem verwalteten Image (bei Verwendung von Image-Erstellungsdiensten).
 
 In den folgenden drei Abschnitten werden diese Optionen beschrieben.
 
-### <a name="option-1-upload-the-vhd-as-shared-image-gallery"></a>Option 1: Hochladen der virtuellen Festplatte in eine Shared Image Gallery-Instanz
+### <a name="option-1-upload-the-vhd-as-shared-image-gallery"></a>Option 1: Hochladen der virtuellen Festplatte als Shared Image Gallery
 
 1. Laden Sie die virtuelle(n) Festplatte(n) in das Speicherkonto hoch.
 2. Suchen Sie im Azure-Portal nach **Benutzerdefinierte Vorlage bereitstellen**.

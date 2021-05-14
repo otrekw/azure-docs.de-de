@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python, contperf-fy21q3
-ms.openlocfilehash: 503d1d1220cd4704a6e70d0b7e575a70275e5e4d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e664b08f7ca487236e5e2780d183c19d342a915b
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936834"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888024"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Tutorial: Verwenden eigener Daten (Teil 4 von 4)
 
@@ -235,7 +235,7 @@ Dieser Code gibt eine URL für das Experiment in Azure Machine Learning Studio a
 
 ### <a name="inspect-the-log-file"></a><a name="inspect-log"></a> Überprüfen der Protokolldatei
 
-Wechseln Sie in Studio zum Experimentlauf (durch Auswählen der vorherigen URL-Ausgabe), gefolgt von **Ausgaben und Protokolle**. Wählen Sie die Datei `70_driver_log.txt` aus. Die folgende Ausgabe sollte angezeigt werden:
+Wechseln Sie in Studio zum Experimentlauf (durch Auswählen der vorherigen URL-Ausgabe), gefolgt von **Ausgaben und Protokolle**. Wählen Sie die Datei `70_driver_log.txt` aus. Scrollen Sie in der Protokolldatei nach unten, bis Sie die folgende Ausgabe sehen:
 
 ```txt
 Processing 'input'.

@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 1e6033f9a8f4cecd2429eca67a3d58e54d7ae1f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72220b33ea0d10b16ec5be94da6a26d91b9bfc1e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99221107"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161841"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Behandeln von Latenzproblemen mithilfe von Storage Analytics-Protokollen
 
@@ -31,7 +31,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Latenzprobleme mithilfe
 
 2. Verwenden Sie das folgende PowerShell-Skript, um die Protokolle im Rohdatenformat in ein Tabellenformat zu konvertieren:
 
-   ```Powershell
+   ```powershell
    $Columns = 
         (   "version-number",
             "request-start-time",
@@ -65,7 +65,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Latenzprobleme mithilfe
             "client-request-id"
         )
 
-   $logs = Import-Csv “REPLACE THIS WITH FILE PATH” -Delimiter ";" -Header $Columns
+   $logs = Import-Csv "REPLACE THIS WITH FILE PATH" -Delimiter ";" -Header $Columns
 
    $logs | Out-GridView -Title "Storage Analytic Log Parser"
    ```
@@ -73,8 +73,8 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Latenzprobleme mithilfe
 3. Das Skript startet ein GUI-Fenster, in dem Sie die Informationen wie unten gezeigt nach Spalten filtern können.
 
    ![Parserfenster für Storage Analytics-Protokolle](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
- 
-4. Grenzen Sie die Protokolleinträge auf Grundlage des Vorgangstyps (operation.type) ein, und suchen Sie nach dem Protokolleintrag, der während des Problemzeitraums erstellt wurde.
+
+4. Grenzen Sie die Protokolleinträge auf Grundlage des „Vorgangstyps“ (operation.type) ein, und suchen Sie nach dem Protokolleintrag, der während des Problemzeitraums erstellt wurde.
 
    ![Protokolleinträge nach Vorgangstyp](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
 
@@ -119,7 +119,7 @@ Wenn bei einem **GetBlob-Vorgang** mit **RequestStatus = Success** der Zeitraum 
 **Empfehlung:**
 
 * Untersuchen Sie den Code in Ihrem Client.
-* Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen. 
+* Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen.
 
 ### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob-Vorgang: RequestStatus = (SAS)NetworkError
 
@@ -134,7 +134,7 @@ Wenn bei einem **GetBlob-Vorgang** mit **RequestStatus = (SAS)NetworkError** der
 **Empfehlung:**
 
 * Untersuchen Sie den Code in Ihrem Client, um herauszufinden, warum und wann der Client die Verbindung zum Speicherdienst abbricht.
-* Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen. 
+* Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen.
 
 ### <a name="put-operation-requeststatus--success"></a>Put-Vorgang: RequestStatus = Success
 
@@ -149,7 +149,7 @@ Wenn bei einem **Put-Vorgang** mit **RequestStatus = Success** der Zeitraum **Ma
 **Empfehlung:**
 
 * Untersuchen Sie den Code in Ihrem Client.
-* Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen. 
+* Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen.
 
 ### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put-Vorgang: RequestStatus = (SAS)NetworkError
 

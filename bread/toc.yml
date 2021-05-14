@@ -54,6 +54,9 @@
         - name: Identity Governance
           tocHref: /azure/active-directory/governance/
           topicHref: /azure/active-directory/governance/
+        - name: Anwendungsproxy
+          tocHref: /azure/active-directory/app-proxy/
+          topicHref: /azure/active-directory/app-proxy/
         - name: Bereitstellung von Anwendungen
           tocHref: /azure/active-directory/app-provisioning/
           topicHref: /azure/active-directory/app-provisioning/
@@ -69,7 +72,7 @@
           topicHref: /azure/active-directory/reports-monitoring/
         - name: Nachweis
           tocHref: /azure/active-directory/verifiable-credentials/
-          topicHref: /azure/active-directory/verifable-credentials/
+          topicHref: /azure/active-directory/verifiable-credentials/
     - name: Analysis Services
       tocHref: /azure/analysis-services/
       topicHref: /azure/analysis-services/
@@ -470,6 +473,10 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
+      items:
+        - name: MongoDB-API
+          tocHref: /azure/cosmos-db/mongodb/
+          topicHref: /azure/cosmos-db/mongodb/
     - name: Azure Managed Instance for Apache Cassandra
       tocHref: /azure/managed-instance-apache-cassandra/
       topicHref: /azure/managed-instance-apache-cassandra/

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 7d01f3d5efeee2db5f468a0fe6217d1ff3c313a7
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 583124e9e3ca657ee13e4726eda981ae26022856
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375014"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138515"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Tutorial: Zuordnen einer vorhandenen benutzerdefinierten Domäne zu Azure Spring Cloud
 
@@ -23,14 +23,14 @@ DNS (Domain Name Service) wird verwendet, um Namen von Netzwerkknoten im gesamte
 Zertifikate dienen zur Verschlüsselung von Webdatenverkehr. Diese TLS-/SSL-Zertifikate können in Azure Key Vault gespeichert werden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Eine in Azure Spring Cloud bereitgestellte Anwendung. Lesen Sie dazu entweder den Artikel [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart.md), oder verwenden Sie eine bereits vorhandene App.
+* Eine in Azure Spring Cloud bereitgestellte Anwendung. Lesen Sie dazu entweder den Artikel [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](./quickstart.md), oder verwenden Sie eine bereits vorhandene App.
 * Ein Domänenname mit Zugriff auf die DNS-Registrierung für den Domänenanbieter (beispielsweise GoDaddy).
 * Ein privates Zertifikat (d. h. ihr selbst signiertes Zertifikat) von einem Drittanbieter. Das Zertifikat muss der Domäne entsprechen.
 * Eine bereitgestellte Instanz von [Azure Key Vault](../key-vault/general/overview.md).
 
 ## <a name="keyvault-private-link-considerations"></a>Überlegungen zu privaten Key Vault-Verbindungen
 
-Die Azure Spring Cloud-Verwaltungs-IPs sind nicht Teil der vertrauenswürdigen Azure-Dienste von Microsoft. Damit Azure Spring Cloud Zertifikate aus einer Key Vault-Instanz laden kann, die durch private Endpunktverbindungen geschützt ist, müssen Sie daher der Azure Key Vault-Firewall die folgenden IP-Adressen hinzufügen:
+Die Azure Spring Cloud-Verwaltungs-IPs sind noch nicht Teil der vertrauenswürdigen Azure-Dienste von Microsoft. Damit Azure Spring Cloud Zertifikate aus einer Key Vault-Instanz laden kann, die durch private Endpunktverbindungen geschützt ist, müssen Sie daher der Azure Key Vault-Firewall die folgenden IP-Adressen hinzufügen:
 
 ```
 20.53.123.160 52.143.241.210 40.65.234.114 52.142.20.14 20.54.40.121 40.80.210.49 52.253.84.152 20.49.137.168 40.74.8.134 51.143.48.243
@@ -164,7 +164,7 @@ Navigieren Sie zu Ihrem DNS-Anbieter, und fügen Sie einen CNAME-Eintrag hinzu, 
 ![Seite der DNS-Einträge](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Zuordnen Ihrer benutzerdefinierten Domäne zur Azure Spring Cloud-App
-Sollten Sie über keine Anwendung in Azure Spring Cloud verfügen, gehen Sie wie unter [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](./spring-cloud-quickstart.md) vor.
+Sollten Sie über keine Anwendung in Azure Spring Cloud verfügen, gehen Sie wie unter [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](./quickstart.md) vor.
 
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Navigieren Sie zur Anwendungsseite.
@@ -234,4 +234,4 @@ Navigieren Sie nach Abschluss des Vorgangs zu einer beliebigen HTTPS-URL, die au
 ## <a name="see-also"></a>Weitere Informationen
 * [Was ist der Azure-Schlüsseltresor?](../key-vault/general/overview.md)
 * [Importieren eines Zertifikats](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
-* [Starten einer Spring Cloud-App mit der Azure CLI](./spring-cloud-quickstart.md)
+* [Starten einer Spring Cloud-App mit der Azure CLI](./quickstart.md)

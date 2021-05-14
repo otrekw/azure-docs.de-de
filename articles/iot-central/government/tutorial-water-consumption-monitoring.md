@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 476a0c2d75dcbee5c1ed4d758e0cbc9d4726ff95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b65013bbf21faa8bffdcf799a991952b69f5fead
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587195"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714468"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung zur Überwachung des Wasserverbrauchs mit Azure IoT Central
 
@@ -200,22 +200,23 @@ Die von Ihnen erstellte Anwendung zur Überwachung des Wasserverbrauchs verfügt
 
    ![Bereich „Regeln“](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-rules.png)
 
-1. Wählen Sie die Option **High pH alert** (Warnung: Hoher pH-Wert) aus. Dies ist eine der vorkonfigurierten Regeln in der Anwendung.
+1. Wählen Sie die Option **High water flow alert** (Warnung: Hoher Wasserdurchfluss) aus. Dies ist eine der vorkonfigurierten Regeln in der Anwendung.
 
      ![„High pH alert“ (Warnung: Hoher pH-Wert)](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    Die Regel `High flow alert` ist so konfiguriert, dass die Bedingung `Acidity (pH)` auf Folgendes überprüft wird: `greater than``Max flow threshold`. Der Schwellenwert für die maximale Flussmenge (Max flow threshold) ist eine Cloudeigenschaft, die in der Gerätevorlage **Smart Valve** (Intelligentes Ventil) definiert ist. Der Wert von `Max flow threshold` wird pro Geräteinstanz festgelegt.
+    Die Regel `High water flow alert` ist so konfiguriert, dass die Bedingung `Flow` auf Folgendes überprüft wird: `greater than``Max flow threshold`. Der Schwellenwert für die maximale Flussmenge (Max flow threshold) ist eine Cloudeigenschaft, die in der Gerätevorlage **Smart Valve** (Intelligentes Ventil) definiert ist. Der Wert von `Max flow threshold` wird pro Geräteinstanz festgelegt.
 
 Als Nächstes erstellen wir eine E-Mail-Aktion.
 
 So fügen Sie der Regel eine Aktion hinzu:
 
 1. Wählen Sie **+ E-Mail** aus.
-1. Geben Sie unter **Anzeigename** den Namen **High pH alert** (Warnung: Hoher pH-Wert) für die Aktion ein.
+1. Geben Sie unter **Anzeigename** den Namen **High flow alert** (Warnung: Hoher Durchfluss) für die Aktion ein.
 1. Geben Sie unter **An** die E-Mail-Adresse ein, die Ihrem Azure IoT Central-Konto zugeordnet ist.
 1. Geben Sie optional eine Notiz ein, die in den Text der E-Mail aufgenommen werden soll.
 1. Wählen Sie **Fertig** aus, um die Aktion fertig zu stellen.
-1. Wählen Sie **Speichern** aus, um die neue Regel zu speichern und zu aktivieren.
+1. Klicken Sie auf **Speichern**, um die neue Regel zu speichern.
+1. Aktivieren Sie die Regel.
 
 Wenn die konfigurierte Bedingung erfüllt wird, sollten Sie innerhalb weniger Minuten eine entsprechende E-Mail erhalten.
 

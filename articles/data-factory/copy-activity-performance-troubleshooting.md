@@ -1,18 +1,18 @@
 ---
 title: Problembehandlung für die Leistung der Kopieraktivität
 description: Es wird beschrieben, wie Sie in Azure Data Factory die Problembehandlung in Bezug auf die Leistung der Kopieraktivität durchführen.
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: ce7c97abfb879e9298edac5f38540bbc026274da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eee68b8cb533763aff0c1cc6a1ebe19db735461e
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584399"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488571"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 

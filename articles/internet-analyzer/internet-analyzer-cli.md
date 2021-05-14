@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 46caae53ed81de335c2b9d5ddbd3fd7f89424fdd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4e200440bd37d3593d5fc096b3dd79eff25dc1d8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780413"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877225"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Erstellen eines Internet Analyzer-Tests mithilfe der Befehlszeilenschnittstelle (Vorschau)
 
@@ -132,6 +132,6 @@ Die Internet Analyzer-Befehlszeilenschnittstelle macht die folgenden Ressourcent
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine vollständige Liste der unterstützten Befehle sowie Anwendungsbeispiele finden Sie in der [Referenz zur Befehlszeilenschnittstelle für Internet Analyzer](/cli/azure/ext/internet-analyzer/internet-analyzer).
+* Eine vollständige Liste der unterstützten Befehle sowie Anwendungsbeispiele finden Sie in der [Referenz zur Befehlszeilenschnittstelle für Internet Analyzer](/cli/azure/internet-analyzer).
 * Lesen Sie die [häufig gestellten Fragen zu Internet Analyzer](internet-analyzer-faq.md).
 * Informieren Sie sich ausführlicher über das Einbetten des [Internet Analyzer-Clients](internet-analyzer-embed-client.md) und das Erstellen eines [benutzerdefinierten Endpunkts](internet-analyzer-custom-endpoint.md).

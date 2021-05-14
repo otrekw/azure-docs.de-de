@@ -1,20 +1,20 @@
 ---
 title: 'Szenario: Routen zu VNets für gemeinsame Dienste'
 titleSuffix: Azure Virtual WAN
-description: 'Routingszenarien: Einrichten von Routen für den Zugriff auf ein VNet für gemeinsame Dienste mit einer Workload, auf die alle VNets und Branches zugreifen können.'
+description: Hier erfahren Sie mehr über Virtual WAN-Routingszenarien. In diesem Szenario richten Sie Routen für den Zugriff auf ein VNet für gemeinsame Dienste mit einer Workload ein, auf die alle VNets und Branches zugreifen können.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8e0d05d2cb960e760809ab35a8f9e4ca04acf250
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4a6d0a662930deec29cdf6b09c349f33dbd17a0a
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102442960"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165783"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Szenario: Routen zu VNets für gemeinsame Dienste
 
@@ -28,7 +28,7 @@ Wir können eine Konnektivitätsmatrix verwenden, um die Anforderungen dieses Sz
 
 **Konnektivitätsmatrix**
 
-| From             | Nach:   |*Isolierte VNETs*|*Gemeinsam genutzte VNETs*|*Branches*|
+| Von             | Nach:   |*Isolierte VNETs*|*Gemeinsam genutzte VNETs*|*Branches*|
 |---|---|---|---|---|
 |**Isolierte VNETs**| ->|        | Direkt | Direkt |
 |**Gemeinsam genutzte VNETs**  |->| Direkt | Direkt | Direkt |

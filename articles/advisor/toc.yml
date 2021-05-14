@@ -16,7 +16,7 @@
 - name: Konzepte
   items:
     - name: Sicherheitsbaseline
-      href: security-baseline.md
+      href: /security/benchmark/azure/baselines/advisor-security-baseline?toc=/azure/advisor/toc.json
 - name: Tutorials
   items:
     - name: Erste Schritte mit Advisor

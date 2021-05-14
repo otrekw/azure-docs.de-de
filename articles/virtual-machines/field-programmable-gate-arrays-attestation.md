@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: 563155bb6559f8443f1453a65fa0b1574af106f7
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: a0c0c04d33c994279fe15a8fe7f677b2c25a55de
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555918"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166035"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>FPGA-Nachweis für Azure-VMs der NP-Serie (Vorschau)
 
@@ -24,15 +24,11 @@ Sie benötigen ein Azure-Abonnement und ein Azure Storage-Konto. Über das Abonn
 
 Wir stellen PowerShell- und Bash-Skripts zum Übermitteln von Nachweisanforderungen bereit.   Für die Skripts wird die Azure CLI verwendet, die unter Windows und Linux ausgeführt werden kann. PowerShell kann unter Windows, Linux und macOS ausgeführt werden.  
 
-Azure CLI-Download (erforderlich):  
+[Azure CLI-Download (erforderlich)](/cli/azure/install-azure-cli)
 
-https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest  
+[PowerShell-Download für Windows, Linux und macOS (nur für PowerShell-Skripts)](/powershell/scripting/install/installing-powershell)
 
-PowerShell-Download für Windows, Linux und macOS (nur für PowerShell-Skripts):  
-
-https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7  
-
-Sie müssen Ihre Mandanten- und Abonnement-ID für die Übermittlung an den Nachweisdienst autorisieren lassen. Sie können den Zugriff unter https://aka.ms/AzureFPGAAttestationPreview anfordern. 
+Sie müssen Ihre Mandanten- und Abonnement-ID für die Übermittlung an den Nachweisdienst autorisieren lassen. Sie können den Zugriff unter [https://aka.ms/AzureFPGAAttestationPreview](https://aka.ms/AzureFPGAAttestationPreview) anfordern. 
 
 ## <a name="building-your-design-for-attestation"></a>Erstellen eines Entwurfs für den Nachweis  
 
@@ -40,19 +36,17 @@ Das bevorzugte Xilinx-Toolset zum Entwickeln von Entwürfen ist Vitis 2020.2. D
 
 Sie müssen das folgende Argument in Vitis einfügen (v++-Befehlszeile), um eine XCLBIN-Datei zu erstellen, die anstelle eines Bitstreams eine netlist enthält.   
 
-```--advanced.param compiler.acceleratorBinaryContent=dcp  ```
+`--advanced.param compiler.acceleratorBinaryContent=dcp`
 
 ## <a name="logging-into-azure"></a>Protokollieren in Azure  
 
-Bevor Sie Vorgänge mit Azure durchführen können, müssen Sie sich bei Azure anmelden und das Abonnement festlegen, das zum Aufrufen des Diensts autorisiert ist. Verwenden Sie hierfür die Befehle ```az login``` und ```az account set –s <Sub ID or Name>```. Weitere Informationen zu diesem Prozess finden Sie hier:  
-
-https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest. Verwenden Sie in der Befehlszeile entweder die Option zum interaktiven Anmelden oder zum Anmelden mit Anmeldeinformationen.  
+Bevor Sie Vorgänge mit Azure durchführen können, müssen Sie sich bei Azure anmelden und das Abonnement festlegen, das zum Aufrufen des Diensts autorisiert ist. Verwenden Sie hierfür die Befehle `az login` und `az account set –s <Sub ID or Name>`. Weitere Informationen zu diesem Prozess finden Sie hier: [Anmelden mit Azure CLI](/cli/azure/authenticate-azure-cli). Verwenden Sie in der Befehlszeile entweder die Option zum **interaktiven Anmelden** oder zum **Anmelden mit Anmeldeinformationen**.  
 
 ## <a name="creating-a-storage-account-and-blob-container"></a>Erstellen eines Speicherkontos und Blobcontainers  
 
 Ihre netlist-Datei muss in einen Azure Storage-Blobcontainer hochgeladen werden, damit der Nachweisdienst darauf zugreifen kann.  
 
-Auf der folgenden Seite finden Sie weitere Informationen zum Erstellen des Kontos und eines Containers und zum Hochladen Ihrer netlist als Blob in diesen Container: https://docs.microsoft.com/azure/storage/blobs/storage-quickstartblobs-cli.  
+Auf der folgenden Seite finden Sie weitere Informationen zum Erstellen des Kontos und eines Containers und zum Hochladen Ihrer netlist-Datei als Blob in diesen Container: [https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](../storage/blobs/storage-quickstart-blobs-cli.md).  
 
 Sie können hierfür auch das Azure-Portal verwenden.  
 
@@ -60,13 +54,13 @@ Sie können hierfür auch das Azure-Portal verwenden.
 
 Es gibt mehrere Möglichkeiten, die Datei zu kopieren. Unten ist ein Beispiel mit Verwendung des Cmdlets „az storage upload“ angegeben. Die az-Befehle können unter Linux und unter Windows ausgeführt werden. Sie können einen beliebigen Namen als Blobnamen wählen, aber Sie müssen die Erweiterung „xclbin“ beibehalten. 
 
-```az storage blob upload --account-name <storage account to receive netlist> container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
+```az storage blob upload --account-name <storage account to receive netlist> --container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
 
 ## <a name="download-the-attestation-scripts"></a>Herunterladen der Nachweisskripts  
 
 Die Überprüfungsskripts können aus dem folgenden Azure Storage-Blobcontainer heruntergeladen werden:  
 
-https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip  
+[https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip](https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip)
 
 Die ZIP-Datei enthält zwei PowerShell-Skripts: eins für die Übermittlung und das andere für die Überwachung. Bei der dritten Datei handelt es sich um ein Bash-Skript, mit dem beide Funktionen ausgeführt werden.  
 
@@ -82,15 +76,19 @@ Falls Sie virtuelle Verzeichnisse verwenden möchten, müssen Sie die Verzeichni
 
 ### <a name="powershell"></a>PowerShell   
 
-```$sas=$(az storage container generate-sas --account-name <storage acct name> -name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)  ```
+```powershell
+$sas=$(az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)
 
-```.\Validate-FPGAImage.ps1 -StorageAccountName <storage acct name> -Container <blob container name> -BlobContainerSAS $sas -NetlistName <netlist blob filename>  ```
+.\Validate-FPGAImage.ps1 -StorageAccountName <storage acct name> -Container <blob container name> -BlobContainerSAS $sas -NetlistName <netlist blob filename>
+```
 
 ### <a name="bash"></a>Bash  
 
-``` sas=az storage container generate-sas --account-name <storage acct name> -name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  ```
+```bash
+sas=az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  
 
-```validate-fpgaimage.sh --storage-account <storage acct name> --container <blob container name> --netlist-name <netlist blob filename> --blob-container-sas $sas ``` 
+validate-fpgaimage.sh --storage-account <storage acct name> --container <blob container name> --netlist-name <netlist blob filename> --blob-container-sas $sas
+``` 
 
 ## <a name="checking-on-the-status-of-your-submission"></a>Überprüfen des Status Ihrer Übermittlung  
 
@@ -98,23 +96,19 @@ Der Nachweisdienst gibt die Orchestrierungs-ID Ihrer Übermittlung zurück. Die 
 
 Sie können jederzeit das Skript „Monitor-Validation.ps1“ aufrufen, um den Status und die Ergebnisse des Nachweisvorgangs zu erhalten. Geben Sie hierzu die Orchestrierungs-ID als Argument an:  
 
-```.\Monitor-Validation.ps1 -OrchestrationId < Orchestration ID>  ```
+`.\Monitor-Validation.ps1 -OrchestrationId <orchestration ID>`
 
 Alternativ können Sie die HTTP POST-Anforderung auch an den Endpunkt des Nachweisdiensts übermitteln:  
 
-https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus  
+`https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus`
 
 Der Anforderungstext sollte die Abonnement-ID, Mandanten-ID und Orchestrierungs-ID Ihrer Nachweisanforderung enthalten:  
 
-```
+```json
 {  
-
-  "OrchestrationId": ”< orchestration ID>”,  
-
-  "ClientSubscriptionId": “<your subscription ID>”,  
-
-  "ClientTenantId": “<your tenant ID>”  
-
+  "OrchestrationId": "<orchestration ID>",  
+  "ClientSubscriptionId": "<your subscription ID>",  
+  "ClientTenantId": "<your tenant ID>"
 }
 ```
 
@@ -124,5 +118,4 @@ Der Dienst schreibt seine Ausgabe zurück in Ihren Container. Wenn der Überprü
 
 Falls die Überprüfung nicht erfolgreich war, wird die Datei „error-*.txt“ geschrieben. Sie enthält den Hinweis, in welchem Schritt ein Fehler aufgetreten ist. Überprüfen Sie auch die Protokolldateien, falls im Fehlerprotokoll angezeigt wird, dass der Nachweisvorgang nicht erfolgreich war. Achten Sie bei einer Kontaktaufnahme mit unserem Support darauf, dass Sie alle diese Dateien sowie die Orchestrierungs-ID in die Supportanfrage einfügen.  
 
-Sie können das Azure-Portal nutzen, um Ihren Container zu erstellen, und Sie können Ihre netlist hoch- und die Bitstream- und Protokolldateien herunterladen. Die Übermittlung einer Nachweisanforderung und die Überwachung des Status über das Portal werden derzeit nicht unterstützt. Hierfür müssen Sie die oben beschriebenen Skripts verwenden. 
-
+Sie können das Azure-Portal nutzen, um Ihren Container zu erstellen, und Sie können Ihre netlist hoch- und die Bitstream- und Protokolldateien herunterladen. Die Übermittlung einer Nachweisanforderung und die Überwachung des Status über das Portal werden derzeit nicht unterstützt. Hierfür müssen Sie die oben beschriebenen Skripts verwenden.

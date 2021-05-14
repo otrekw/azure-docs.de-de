@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Gesichtserkennung, Gesichtserkennungssoftware, Gesichtsanalyse, Gesichtsabgleich, Gesichtserkennungs-App, Gesichtserkennungssuche nach Bild, Gesichtserkennungssuche
-ms.openlocfilehash: 26076289d8c6659abdd55fa805c27b13690feccd
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 30707dd844769f730f135a451cd5306ca7e402cb
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258740"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726986"
 ---
 # <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
@@ -33,7 +33,7 @@ Diese Dokumentation enthält die folgenden Arten von Artikeln:
 * In den [Schnellstarts](./Quickstarts/client-libraries.md) finden Sie Schritt-für-Schritt-Anleitungen, mit denen Sie Aufrufe an den Dienst senden können und in kurzer Zeit Ergebnisse erhalten. 
 * Die [Anleitungen](./Face-API-How-to-Topics/HowtoDetectFacesinImage.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.
 * Die [konzeptionellen Artikel](./concepts/face-detection.md) enthalten ausführliche Erläuterungen der Funktionen und Features eines Diensts.
-* Die [Tutorials](./Tutorials/FaceAPIinCSharpTutorial.md) sind ausführlichere Leitfäden, in denen die Verwendung dieses Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.
+* Die [Tutorials](./enrollment-overview.md) sind ausführlichere Leitfäden, in denen die Verwendung dieses Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.
 
 ## <a name="face-detection"></a>Gesichtserkennung
 
@@ -64,7 +64,7 @@ Weitere Informationen zur Personenidentifizierung finden Sie im Konzeptleitfaden
 
 ## <a name="find-similar-faces"></a>Suchen ähnlicher Gesichter
 
-Die „Find Similar API“ (API „Ähnliches suchen“) ermöglicht einen Abgleich zwischen einem Zielgesicht und mehreren Kandidatengesichtern, um eine Untermenge von Gesichtern zu ermitteln, die dem Zielgesicht ähnlich sind. Dies ist hilfreich, wenn eine Gesichtserkennungssuche anhand von Bildern durchgeführt werden soll. 
+Die „Find Similar API“ (API „Ähnliches suchen“) ermöglicht einen Abgleich zwischen einem Zielgesicht und mehreren Kandidatengesichtern, um eine Untermenge von Gesichtern zu ermitteln, die dem Zielgesicht ähnlich sind. Dieser Vorgang ist hilfreich, wenn eine Gesichtserkennungssuche anhand von Bildern durchgeführt werden soll. 
 
 Es werden zwei Arbeitsmodi unterstützt: **matchPerson** und **matchFace**. Im Modus **matchPerson** werden ähnliche Gesichter zurückgegeben, nachdem mit der [Überprüfungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) nach derselben Person gefiltert wurde. Im Modus **matchFace** wird der Filter für dieselbe Person ignoriert. Er gibt eine Liste mit ähnlichen Kandidatengesichtern zurück, die nicht unbedingt zu derselben Person gehören müssen.
 

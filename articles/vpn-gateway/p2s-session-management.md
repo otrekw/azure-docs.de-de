@@ -1,28 +1,30 @@
 ---
-title: 'Azure-VPN Gateway: Point-to-Site-VPN-Sitzungsverwaltung'
-description: Dieser Artikel unterstützt Sie beim Anzeigen und Trennen von Point-to-Site-VPN-Sitzungen.
+title: Point-to-Site-VPN-Sitzungsverwaltung
+titleSuffix: Azure VPN Gateway
+description: Erfahren Sie, wie Sie Point-to-Site-VPN-Sitzungen anzeigen und trennen.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 04/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2f2184507e17e3ecae40bb33be4202c183d32b77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79432bfd65feeae79017a883be990d88134cbb10
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91274232"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202531"
 ---
 # <a name="point-to-site-vpn-session-management"></a>Point-to-Site-VPN-Sitzungsverwaltung
 
-Azure Virtual Network-Gateways bieten eine einfache Möglichkeit, aktuelle Point-to-Site-VPN-Sitzungen anzuzeigen und zu trennen. Dieser Artikel unterstützt Sie beim Anzeigen und Trennen von aktuellen Sitzungen.
+Azure Virtual Network-Gateways bieten eine einfache Möglichkeit, aktuelle Point-to-Site-VPN-Sitzungen anzuzeigen und zu trennen. Dieser Artikel unterstützt Sie beim Anzeigen und Trennen von aktuellen Sitzungen. Der Sitzungsstatus wird alle fünf Minuten aktualisiert. Er wird nicht sofort aktualisiert. 
 
->[!NOTE]
->Der Sitzungsstatus wird alle fünf Minuten aktualisiert. Er wird nicht sofort aktualisiert.
->
 
 ## <a name="portal"></a>Portal
+
+>[!NOTE]
+> Informationen zur Verbindungsquelle werden nur für IKEv2- und OpenVPN-Verbindungen bereitgestellt.
+> 
 
 So zeigen Sie eine Sitzung im Portal an und trennen die Verbindung
 
@@ -32,6 +34,8 @@ So zeigen Sie eine Sitzung im Portal an und trennen die Verbindung
    :::image type="content" source="./media/p2s-session-management/portal.png" alt-text="Portal-Beispiel":::
 1. Sie können alle aktuellen Sitzungen im Fensterbereich anzeigen.
 1. Wählen Sie **„...“** für die zu trennende Sitzung und dann **Trennen** aus.
+
+Für VpnGw4- und VpnGw5-SKUs kann dieses Feature im Portal derzeit nicht verwendet werden. Wenn Sie über eines dieser Gateways verfügen, verwenden Sie die im nächsten Abschnitt beschriebene PowerShell-Methode.
 
 ## <a name="powershell"></a>PowerShell
 

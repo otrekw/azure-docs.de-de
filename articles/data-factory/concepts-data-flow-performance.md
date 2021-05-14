@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/15/2021
-ms.openlocfilehash: dd5b857c274e757f70920f244786df61c2770085
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/10/2021
+ms.openlocfilehash: cee7993116e746c7b827faaf94724033501f1318
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561684"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309049"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -132,14 +132,17 @@ Die Preise von Datenflüssen werden nach „Stunden der virtuellen Kerne“ bere
 
 ### <a name="time-to-live"></a>Gültigkeitsdauer
 
-Standardmäßig startet jede Datenflussaktivität basierend auf der IR-Konfiguration einen neuen Cluster. Das Starten des Clusters dauert einige Minuten, und die Datenverarbeitung kann erst gestartet werden, nachdem dieser Vorgang abgeschlossen ist. Wenn Ihre Pipelines mehrere **sequenzielle** Datenflüsse enthalten, können Sie einen Wert für die Gültigkeitsdauer aktivieren. Bei Angabe eines Werts für die Gültigkeitsdauer bleibt ein Cluster nach Abschluss der Ausführung noch eine bestimmte Zeit aktiv. Falls die IR während der Gültigkeitsdauer von einem neuen Auftrag genutzt wird, wird der vorhandene Cluster wiederverwendet und die Startzeit beträchtlich verkürzt. Nachdem der zweite Auftrag abgeschlossen ist, bleibt der Cluster erneut so lange aktiv, wie dies durch die Gültigkeitsdauer vorgegeben ist.
+Standardmäßig startet jede Datenflussaktivität basierend auf der Azure IR-Konfiguration einen neuen Spark-Cluster. Das Starten des kalten Clusters dauert einige Minuten, und die Datenverarbeitung kann erst gestartet werden, nachdem dieser Vorgang abgeschlossen ist. Wenn Ihre Pipelines mehrere **sequenzielle** Datenflüsse enthalten, können Sie einen Wert für die Gültigkeitsdauer aktivieren. Bei Angabe eines Werts für die Gültigkeitsdauer bleibt ein Cluster nach Abschluss der Ausführung noch eine bestimmte Zeit aktiv. Falls die IR während der Gültigkeitsdauer von einem neuen Auftrag genutzt wird, wird der vorhandene Cluster wiederverwendet und die Startzeit beträchtlich verkürzt. Nachdem der zweite Auftrag abgeschlossen ist, bleibt der Cluster erneut so lange aktiv, wie dies durch die Gültigkeitsdauer vorgegeben ist.
 
-In einem Cluster kann jeweils nur ein Auftrag ausgeführt werden. Wenn ein Cluster verfügbar ist, aber zwei Datenflüsse gestartet werden, wird er nur für einen davon verwendet. Für den zweiten Auftrag wird ein eigener isolierter Cluster gestartet.
+Sie können die Startzeit von warmen Clustern zusätzlich minimieren, indem Sie die Option „Schnelle Wiederverwendung“ in Azure Integration Runtime unter Datenflusseigenschaften festlegen. Wenn Sie diese Einstellung auf TRUE festlegen, wird ADF aufgefordert, den vorhandenen Cluster nicht nach jedem Auftrag zu löschen, sondern stattdessen den vorhandenen Cluster wieder zu verwenden. Dadurch bleibt die Compute-Umgebung, die Sie in Ihrer Azure IR-Instanz eingerichtet haben, für den in Ihrer TTL angegebenen Zeitraum erhalten. Diese Option sorgt für die kürzeste Startzeit Ihrer Datenflussaktivitäten, wenn sie über eine Pipeline ausgeführt werden.
 
-Falls die meisten Datenflüsse parallel ausgeführt werden, ist die Aktivierung der Gültigkeitsdauer nicht zu empfehlen. 
+Wenn die meisten Ihrer Datenflüsse jedoch parallel ausgeführt werden, wird nicht empfohlen, TTL für die Integration Runtime zu aktivieren, die Sie für diese Aktivitäten verwenden. In einem Cluster kann jeweils nur ein Auftrag ausgeführt werden. Wenn ein Cluster verfügbar ist, aber zwei Datenflüsse gestartet werden, wird er nur für einen davon verwendet. Für den zweiten Auftrag wird ein eigener isolierter Cluster gestartet.
 
 > [!NOTE]
 > Die Gültigkeitsdauer ist nicht verfügbar, wenn Sie die Integration Runtime mit automatischer Auflösung verwenden.
+ 
+> [!NOTE]
+> Die schnelle Wiederverwendung vorhandener Cluster ist ein Feature in Azure Integration Runtime, die derzeit in der öffentlichen Vorschau verfügbar ist.
 
 ## <a name="optimizing-sources"></a>Optimieren von Quellen
 
@@ -304,9 +307,10 @@ Bei paralleler Ausführung Ihrer Datenflüsse wird empfohlen, die Eigenschaft f�
 
 ### <a name="execute-data-flows-sequentially"></a>Sequenzielles Ausführen von Datenflüssen
 
-Wenn Sie Ihre Datenflussaktivitäten nacheinander ausführen, empfiehlt es sich, in der Azure IR-Konfiguration eine Gültigkeitsdauer festzulegen. Die Computeressourcen werden von ADF wiederverwendet, was zu einer schnelleren Startzeit des Clusters führt. Jede Aktivität wird weiterhin isoliert und erhält einen neuen Spark-Kontext für jede Ausführung.
+Wenn Sie Ihre Datenflussaktivitäten nacheinander ausführen, empfiehlt es sich, in der Azure IR-Konfiguration eine Gültigkeitsdauer festzulegen. Die Computeressourcen werden von ADF wiederverwendet, was zu einer schnelleren Startzeit des Clusters führt. Jede Aktivität wird weiterhin isoliert und erhält einen neuen Spark-Kontext für jede Ausführung. Aktivieren Sie das Kontrollkästchen „Schnelle Wiederverwendung“ auf der Azure Integration Runtime-Instanz, um ADF anzuweisen, den vorhandenen Cluster erneut zu verwenden. So können Sie die Dauer zwischen sequenziellen Aktivitäten noch mehr reduzieren.
 
-Die sequenzielle Ausführung von Aufträgen dauert insgesamt wahrscheinlich am längsten, bietet jedoch eine saubere Trennung logischer Vorgänge.
+> [!NOTE]
+> Die schnelle Wiederverwendung vorhandener Cluster ist ein Feature in Azure Integration Runtime, die derzeit in der öffentlichen Vorschau verfügbar ist.
 
 ### <a name="overloading-a-single-data-flow"></a>Überladen eines einzelnen Datenflusses
 

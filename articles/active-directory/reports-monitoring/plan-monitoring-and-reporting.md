@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c37c672f8784052424e058837d31bc1d22fcfc57
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: dd95f89510cbb591f05338e2bd076967982d8761
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552613"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734035"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planen einer Azure Active Directory-Bereitstellung für Berichterstellung und Überwachung
 
@@ -155,7 +155,6 @@ Im verlinkten Artikel finden Sie weitere Informationen zu [Azure AD-Administrato
 
 *Wenden Sie immer das Konzept der geringsten Rechte an, um das Risiko einer Kontogefährdung zu verringern*. Sie sollten [Privileged Identity Management](../privileged-identity-management/pim-configure.md) implementieren, um Ihre Organisation noch besser zu schützen.
 
-##  
 
 ## <a name="deploy-azure-ad-reporting-and-monitoring"></a>Bereitstellen der Azure AD-Berichterstellung und -Überwachung
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 9a2ad2eb197af613919efa4414da1759cd47e2e7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcf3cb5a020bb2efd5a2528c28421deba206ee31
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802742"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125263"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>Bereitstellen von Azure-Spot-VMs mithilfe von Azure PowerShell
 
@@ -99,7 +99,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 Die erste Antwort kann bis zu zwei Minuten dauern. Anschließend sollten die Ausgaben nahezu sofort angezeigt werden.
 
-Ist auf einem Computer das Azure PowerShell-Modul installiert (wie etwa auf Ihrem lokalen Computer), simulieren Sie die Entfernung mit [Set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm). Ersetzen Sie die Namen der Ressourcengruppe und der VM durch Ihre eigenen. 
+Ist auf einem Computer das Azure PowerShell-Modul installiert (wie etwa auf Ihrem lokalen Computer), simulieren Sie die Entfernung mit [Set-AzVM](/powershell/module/az.compute/set-azvm). Ersetzen Sie die Namen der Ressourcengruppe und der VM durch Ihre eigenen. 
 
 ```azurepowershell-interactive
 Set-AzVM -ResourceGroupName "mySpotRG" -Name "mySpotVM" -SimulateEviction
@@ -107,7 +107,7 @@ Set-AzVM -ResourceGroupName "mySpotRG" -Name "mySpotVM" -SimulateEviction
 
 Bei erfolgreicher Durchführung der Anforderung enthält die Antwortausgabe `Status: Succeeded`.
 
-Wechseln Sie schnell zurück zur Remoteverbindung mit Ihrer Azure Spot-VM, und führen Sie die Abfrage an den Endpunkt für geplante Ereignisse noch mal aus. Wiederholen Sie den folgenden Befehl, bis Sie eine Ausgabe mit weiteren Informationen erhalten:
+Wechseln Sie schnell zurück zur Remoteverbindung mit Ihrer Azure Spot-VM, und führen Sie die Abfrage des Endpunkts für geplante Ereignisse noch mal aus. Wiederholen Sie den folgenden Befehl, bis Sie eine Ausgabe mit weiteren Informationen erhalten:
 
 ```
 curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01

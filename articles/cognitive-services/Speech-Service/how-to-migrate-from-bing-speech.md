@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: d6b7b298e7e4d18e68985ec3cf536c90ef773608
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 139d39eb874860cfacc4bbc6fb3234e77c12c310
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644379"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290767"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Speech-Dienst
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die Unterschiede zwischen den Bing-Spracheingabe-APIs u
 Mit einem einzelnen Abonnementschlüssel für den Speech-Dienst wird Zugriff auf die folgenden Funktionen gewährt. Da die Abrechnung jeweils separat erfolgt, werden Ihnen nur die genutzten Features berechnet.
 
 * [Spracherkennung](speech-to-text.md)
-* [Benutzerdefinierte Spracherkennung](/azure/cognitive-services/speech-service/custom-speech-overview)
+* [Benutzerdefinierte Spracherkennung](./custom-speech-overview.md)
 * [Sprachsynthese](text-to-speech.md)
 * [Benutzerdefinierte Stimmen für Sprachsynthese](./how-to-custom-voice-create-voice.md)
 * [Sprachübersetzung](speech-translation.md) (ohne [Textübersetzung](../translator/translator-info-overview.md))

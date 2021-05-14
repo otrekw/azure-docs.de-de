@@ -2,13 +2,13 @@
 title: Sichern von Workloads mithilfe von Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schutz und die Sicherung von Workloads mithilfe von Microsoft Azure Backup Server (MABS) vorbereiten.
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.openlocfilehash: d476c228a619f03f798c1a2cd6854a8d603c3637
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 144a5e26f5ad10d120a49f6a0385c3a310448dbc
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98987021"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713676"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
@@ -41,8 +41,8 @@ Azure Backup Server erbt einen Großteil der Funktionalität für die Workloadsi
 
 Der erste Schritt zur Inbetriebnahme von Azure Backup Server ist die Einrichtung eines Computers mit Windows Server. Der Server kann sich unter Azure oder am lokalen Standort befinden.
 
-* Zum Schutz lokaler Workloads muss sich der MABS-Server in Ihrer lokalen Umgebung befinden.
-* Zum Schutz von Workloads auf virtuellen Azure-Computern muss sich der MABS-Server in Azure befinden und als Azure-VM ausgeführt werden.
+* Zum Schutz lokaler Workloads muss sich der MABS-Server in Ihrer lokalen Umgebung befinden und mit einer Domäne verbunden sein.
+* Zum Schutz von Workloads auf virtuellen Azure-Computern muss sich der MABS-Server in Azure befinden, als Azure-VM ausgeführt werden und mit einer Domäne verbunden sein.
 
 ### <a name="using-a-server-in-azure"></a>Verwenden eines Servers in Azure
 
@@ -72,7 +72,7 @@ Sie können die DPM-Speicherung deduplizieren, indem Sie die Windows Server-Dedu
 >
 > Unter Windows Server Core oder Microsoft Hyper-V Server wird die Installation von Azure Backup Server nicht unterstützt.
 
-Binden Sie Azure Backup Server immer in eine Domäne ein. Wenn Sie den Server in eine andere Domäne verschieben möchten, installieren Sie zuerst Azure Backup Server, und binden Sie dann den Server in die neue Domäne ein. Das Verschieben eines vorhandenen Azure Backup Server-Computers in eine neue Domäne nach der Bereitstellung wird *nicht unterstützt*.
+Binden Sie Azure Backup Server immer in eine Domäne ein. Das Verschieben eines vorhandenen Azure Backup Server-Computers in eine neue Domäne nach der Bereitstellung wird *nicht unterstützt*.
 
 Unabhängig davon, ob Sie Sicherungsdaten an Azure senden oder lokal speichern, muss Azure Backup Server bei einem Recovery Services-Tresor registriert sein.
 
@@ -366,7 +366,8 @@ Führen Sie die folgenden Schritte aus, um ein Upgrade für MABS durchzuführen:
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Wenn auf dem Microsoft Azure Backup-Server während der Installationsphase (oder bei der Sicherung oder der Wiederherstellung) Fehler auftreten, verwenden Sie dieses [Dokument mit Fehlercodes](https://support.microsoft.com/kb/3041338), um weitere Informationen zu erhalten.
-Sie können auch [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
+
+Sie können auch [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.yml) besuchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

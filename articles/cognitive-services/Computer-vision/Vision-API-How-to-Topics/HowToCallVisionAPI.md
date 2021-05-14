@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3f9a6afe3202df40e26332c3a8c91b8c3eca8a32
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 39db32a7ee7eb8fed1da9ac8c9eb609efcf57c74
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012267"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070819"
 ---
 # <a name="call-the-image-analysis-api"></a>Aufrufen der Bildanalyse-API
 
@@ -32,7 +32,7 @@ Sie übermitteln entweder ein lokales Bild oder ein Remotebild an die Analyse-AP
 
 ###  <a name="select-visual-features"></a>Auswählen visueller Merkmale
 
-Die [Analyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b) bietet Ihnen Zugriff auf alle Bildanalysefunktionen des Diensts. Sie müssen angeben, welche Funktionen Sie verwenden möchten, indem Sie die URL-Abfrageparameter festlegen. Ein Parameter kann mehrere, durch Kommas getrennte Werte enthalten. Für jede von Ihnen angegebene Funktion ist eine zusätzliche Berechnungszeit erforderlich. Geben Sie daher nur die erforderlichen Funktionen an.
+Die [Analyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) bietet Ihnen Zugriff auf alle Bildanalysefunktionen des Diensts. Sie müssen angeben, welche Funktionen Sie verwenden möchten, indem Sie die URL-Abfrageparameter festlegen. Ein Parameter kann mehrere, durch Kommas getrennte Werte enthalten. Für jede von Ihnen angegebene Funktion ist eine zusätzliche Berechnungszeit erforderlich. Geben Sie daher nur die erforderlichen Funktionen an.
 
 |URL-Parameter | Wert | Beschreibung|
 |---|---|--|
@@ -71,7 +71,7 @@ Eine aufgefüllte URL kann folgendermaßen aussehen:
 > [!NOTE]
 > **Bereichsbezogene API-Aufrufe**
 >
-> Einige der Funktionen in der Bildanalyse können sowohl direkt als auch über den Aufruf der Analyse-API aufgerufen werden. Sie können beispielsweise eine Bereichsanalyse nur von Bildtags durchführen, indem Sie eine Anforderung an `https://{endpoint}/vision/v3.2-preview.3/tag` senden. Informationen zu weiteren Funktionen, die separat aufgerufen werden können, finden Sie in der [Referenzdokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b).
+> Einige der Funktionen in der Bildanalyse können sowohl direkt als auch über den Aufruf der Analyse-API aufgerufen werden. Sie können beispielsweise eine Bereichsanalyse nur von Bildtags durchführen, indem Sie eine Anforderung an `https://{endpoint}/vision/v3.2-preview.3/tag` senden. Informationen zu weiteren Funktionen, die separat aufgerufen werden können, finden Sie in der [Referenzdokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b).
 
 ## <a name="get-results-from-the-service"></a>Abrufen von Ergebnissen aus dem Dienst
 
@@ -139,4 +139,4 @@ Die folgende Liste enthält mögliche Fehler und ihre Ursachen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie die REST-API ausprobieren möchten, rufen Sie die [Referenz zur Bildanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b) auf.
+Wenn Sie die REST-API ausprobieren möchten, rufen Sie die [Referenz zur Bildanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) auf.

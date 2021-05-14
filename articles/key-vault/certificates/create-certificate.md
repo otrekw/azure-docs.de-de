@@ -3,19 +3,18 @@ title: Methoden für die Zertifikaterstellung
 description: Enthält eine Beschreibung der unterschiedlichen Optionen zum Erstellen oder Importieren eines Key Vault-Zertifikats in Azure Key Vault. Es gibt mehrere Möglichkeiten, ein Key Vault-Zertifikat zu erstellen.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a9545c040809331a5556b11f6cc7536931e2d421
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72ff2a1a7b8bcff768248833183ce03a169f9a4d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93289576"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752118"
 ---
 # <a name="certificate-creation-methods"></a>Methoden für die Zertifikaterstellung
 
@@ -78,7 +77,7 @@ Der adressierbare Schlüssel und der geheime Schlüssel erhalten ihre Attribute 
 ```  
 
 ## <a name="partnered-ca-providers"></a>Partnerzertifikataussteller
-Die Zertifikatserstellung kann manuell oder über einen „Self“-Zertifikataussteller erfolgen. Key Vault arbeitet auch mit bestimmten Zertifikatausstellern zusammen, um die Erstellung von Zertifikaten zu vereinfachen. Die folgenden Zertifikatstypen können für den Schlüsseltresor bei diesen Partnerzertifikatausstellern bestellt werden.  
+Die Zertifikaterstellung kann manuell oder über einen Self-Zertifikataussteller erfolgen. Key Vault arbeitet auch mit bestimmten Zertifikatausstellern zusammen, um die Erstellung von Zertifikaten zu vereinfachen. Die folgenden Zertifikatstypen können für den Schlüsseltresor bei diesen Partnerzertifikatausstellern bestellt werden.  
 
 |Anbieter|Zertifikattyp|Konfigurationssetup  
 |--------------|----------------------|------------------|  
@@ -93,4 +92,5 @@ Beachten Sie, dass bei einer Bestellung beim Zertifikataussteller die x509-Zerti
 
 ## <a name="see-also"></a>Weitere Informationen
 
+ - Schrittanleitung zum Erstellen von Zertifikaten in Key Vault mithilfe des [Portals](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal), der [Azure CLI](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-cli) und [Azure PowerShell](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-powershell)
  - [Überwachen und Verwalten der Zertifikaterstellung](create-certificate-scenarios.md)

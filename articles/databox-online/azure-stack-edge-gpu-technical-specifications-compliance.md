@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 937f0d1feb0c45c1c158b5e88daf268aeb383509
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e0eb976f655308082671afe2dc1923f082a3373b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034743"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303167"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Technische Spezifikationen und Compliance für Azure Stack Edge Pro mit GPU 
 
@@ -23,10 +23,14 @@ Die Hardwarekomponenten Ihres Azure Stack Edge Pro-Geräts mit integriertem Graf
 
 Das Azure Stack Edge Pro-Gerät verfügt über die folgenden Spezifikationen für Compute- und Arbeitsspeicherressourcen:
 
-| Spezifikation           | Wert                  |
-|-------------------------|----------------------------|
-| CPU                     | 2 Intel Xeon Silver 4214-CPUs (Cascade Lake)<br> 24 physische Kerne (12 pro CPU)<br>48 logische Kerne (vCPUs) (24 pro CPU)       |
-| Arbeitsspeicher                  | 128 GB RAM (8x16 GB) <br> Dell-kompatibles RDIMM mit 16 GB (PC4-23400 DDR4-2933Mhz 2Rx8 1.2v ECC Registered)       |
+| Spezifikation  | Wert                                                                       |
+|----------------|-----------------------------------------------------------------------------|
+| CPU-Typ       | Dual Intel Xeon Silver 4214 CPU (Cascade Lake)                              |
+| CPU: unformatiert       | 24 Kerne insgesamt, 48 vCPUs insgesamt                                              |
+| CPU: nutzbar    | 40 vCPUs                                                                    |
+| Arbeitsspeichertyp    | Dell-kompatibles RDIMM mit 16 GB (PC4-23400 DDR4-2933Mhz 2Rx8 1.2v ECC Registered) |
+| Arbeitsspeicher: unformatiert    | 128 GB RAM (8 x 16 GB)                                                      |
+| Arbeitsspeicher: nutzbar | 102 GB RAM                                                                  |
 
 
 ## <a name="compute-acceleration-specifications"></a>Spezifikationen zur Computebeschleunigung
@@ -44,7 +48,7 @@ Das Azure Stack Edge Pro-Gerät verfügt über zwei Netzteile mit 100-240 V und
 
 | Spezifikation           | 750 Watt-Netzteil                  |
 |-------------------------|----------------------------|
-| Maximale Ausgangsleistung    | 750 Watt                     |
+| Maximale Ausgangsleistung    | 750 Watt                      |
 | Häufigkeit               | 50/60 Hz                   |
 | Spannungsbereichsauswahl | Automatischer Spannungsbereich: 100-240 V AC |
 | Hot-Plug-fähig           | Ja                        |
@@ -56,11 +60,11 @@ Ihr Azure Stack Edge Pro-Gerät verfügt über sechs Netzwerkschnittstellen: POR
 
 | Spezifikation           | BESCHREIBUNG                 |
 |-------------------------|----------------------------|
-|  Netzwerkschnittstellen    | **2 1-GbE-Schnittstellen**: Eine Verwaltungsschnittstelle (Port 1) wird für die anfängliche Einrichtung verwendet. Dies ist standardmäßig ein statischer Port. Nach Abschluss der anfänglichen Einrichtung kann die Schnittstelle für Daten mit einer beliebigen IP-Adresse verwendet werden. Beim Zurücksetzen wird jedoch erneut eine statische IP-Adresse verwendet. <br>Die zweite Schnittstelle (Port 2) kann vom Benutzer konfiguriert und für die Datenübertragung verwendet werden. Dieser Port ist standardmäßig als DHCP-Schnittstelle konfiguriert. <br>**4 25-GbE-Schnittstellen**: Diese Datenschnittstellen (Port 3 bis Port 6) können vom Benutzer als DHCP- (Standard) oder statische Schnittstelle konfiguriert werden. Sie können auch als 10-GbE-Schnittstellen genutzt werden.  | 
+|  Netzwerkschnittstellen    | **2 1-GbE-Schnittstellen**: Eine Verwaltungsschnittstelle (Port 1) wird für die anfängliche Einrichtung verwendet. Dies ist standardmäßig ein statischer Port. Nach Abschluss der anfänglichen Einrichtung kann die Schnittstelle für Daten mit einer beliebigen IP-Adresse verwendet werden. Beim Zurücksetzen wird jedoch erneut eine statische IP-Adresse verwendet. <br>Die zweite Schnittstelle (Port 2) kann vom Benutzer konfiguriert und für die Datenübertragung verwendet werden. Dieser Port ist standardmäßig als DHCP-Schnittstelle konfiguriert. <br>**4 25-GbE-Schnittstellen**: Diese Datenschnittstellen (Port 3 bis Port 6) können vom Benutzer als DHCP- (Standard) oder statische Schnittstelle konfiguriert werden. Sie können auch als 10-GbE-Schnittstellen genutzt werden.  | 
 
 Ihr Azure Stack Edge Pro-Gerät enthält folgende Netzwerkhardware:
 
-* **Benutzerdefinierter Microsoft QLogic Cavium 25G NDC-Adapter**: Port 1 bis Port 4.
+* **Benutzerdefinierter Microsoft `Qlogic` Cavium 25G NDC-Adapter**: Port 1 bis Port 4.
 * **Mellanox Dual Port 25G ConnectX-4-Kanal-Netzwerkadapter**: Port 5 und Port 6.
 
 Nachfolgend sind die Details für die Mellanox-Karte aufgeführt:
@@ -74,7 +78,7 @@ Nachfolgend sind die Details für die Mellanox-Karte aufgeführt:
 
 Eine vollständige Liste der unterstützten Kabel, Switches und Transceiver für diese Netzwerkkarten finden Sie unter:
 
-- [Interoperabilitätsmatrix für Qlogic Cavium 25G NDC-Adapter](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+- [Interoperabilitätsmatrix für `Qlogic` Cavium 25G NDC-Adapter](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
 - [Mit Mellanox Dual Port 25G ConnectX-4-Kanal-Netzwerkadapter kompatible Produkte](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).  
 
 ## <a name="storage-specifications"></a>Speicherspezifikation

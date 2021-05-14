@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ea75adfb7c2d990cfa543270f245113e15e4ee2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97032523"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389841"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
@@ -58,10 +58,14 @@ So fügen Sie ein Gerät Ihrer Azure IoT Central-Anwendung hinzu:
 
 ## <a name="import-devices"></a>Importieren von Geräten
 
-Um eine Verbindung einer großen Anzahl von Geräten mit Ihrer Anwendung herzustellen, können Sie einen Massenimport von Geräten aus einer CSV-Datei ausführen. Die CSV-Datei sollte die folgenden Spalten und Kopfzeilen haben:
+Um eine Verbindung einer großen Anzahl von Geräten mit Ihrer Anwendung herzustellen, können Sie einen Massenimport von Geräten aus einer CSV-Datei ausführen. Eine CSV-Beispieldatei finden Sie im [Repository mit Azure-Beispielen](https://github.com/Azure-Samples/iot-central-docs-samples/tree/master/bulk-upload-devices). Die CSV-Datei sollte die folgenden Spaltenüberschriften enthalten:
 
-* **IOTC_DeviceID**: Die Geräte-ID kann Buchstaben, Ziffern und das Zeichen `-` enthalten.
-* **IOTC_DeviceName** – diese Spalte ist optional.
+| Column | Beschreibung 
+| - | - | 
+| IOTC_DEVICEID | Die Geräte-ID ist eine eindeutige ID, die von diesem Gerät für die Verbindungsherstellung verwendet wird. Die Geräte-ID kann Buchstaben, Ziffern und das Zeichen `-` ohne Leerzeichen enthalten. |
+| IOTC_DEVICENAME | Optional. Der Gerätename ist ein Anzeigename, der in der gesamten Anwendung angezeigt wird. Ohne Angabe entspricht dieser Name der Geräte-ID.   |
+
+
 
 So führen Sie die Massenregistrierung von Geräten in Ihrer Anwendung durch:
 
@@ -162,11 +166,11 @@ Cloudeigenschaften sind die dem Gerät zugeordneten Gerätemetadaten, z.B. der O
 
 1. Wählen Sie die Gerätevorlage des Geräts aus, dessen Eigenschaften Sie ändern möchten, und das Zielgerät.
 
-1. Wählen Sie die Ansicht, die Eigenschaften für Ihr Gerät enthält. In dieser Ansicht können Sie Werte eingeben und oben auf der Seite **Speichern** auswählen. Hier sehen Sie alle Eigenschaften Ihres Geräts und ihre aktuellen Werte. Cloudeigenschaften und schreibbare Eigenschaften haben bearbeitbare Felder, Geräteeigenschaften sind schreibgeschützt. Bei schreibbaren Eigenschaften sehen Sie deren Synchronisationsstatus am unteren Rand des Feldes. 
+1. Wählen Sie die Ansicht, die Eigenschaften für Ihr Gerät enthält. In dieser Ansicht können Sie Werte eingeben und oben auf der Seite **Speichern** auswählen. Hier sehen Sie alle Eigenschaften Ihres Geräts und ihre aktuellen Werte. Cloudeigenschaften und beschreibbare Eigenschaften haben bearbeitbare Felder, Geräteeigenschaften sind schreibgeschützt. Bei beschreibbaren Eigenschaften sehen Sie deren Synchronisationsstatus am unteren Rand des Feldes. 
 
 1. Ändern Sie die Eigenschaften in die benötigten Werte. Sie können mehrere Eigenschaften auf einmal ändern und alle gleichzeitig aktualisieren.
 
-1. Wählen Sie **Speichern** aus. Wenn Sie schreibbare Eigenschaften gespeichert haben, werden die Werte an Ihr Gerät gesendet. Wenn das Gerät die Änderung für die beschreibbare Eigenschaft bestätigt, wird der Status wieder auf **synchronisiert** gesetzt. Wenn Sie eine Cloudeigenschaft gespeichert haben, wird der Wert aktualisiert.
+1. Wählen Sie **Speichern** aus. Wenn Sie beschreibbare Eigenschaften gespeichert haben, werden die Werte an Ihr Gerät gesendet. Wenn das Gerät die Änderung für die beschreibbare Eigenschaft bestätigt, wird der Status wieder auf **synchronisiert** gesetzt. Wenn Sie eine Cloudeigenschaft gespeichert haben, wird der Wert aktualisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

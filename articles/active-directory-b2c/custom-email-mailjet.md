@@ -8,23 +8,32 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 48e823b19c1c6d30e73a7a673cbeab82a4d007a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 9455045bb03ad03d2e5cf31a27696850f2d31bed
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489218"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886411"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Benutzerdefinierte E-Mail-Überprüfung mit Mailjet
 
-Verwenden Sie benutzerdefinierte E-Mails in Azure Active Directory B2C (Azure AD B2C), um angepasste E-Mails an Benutzer zu senden, die sich für die Verwendung Ihrer Anwendungen registrieren. Mithilfe von [Anzeigesteuerelementen](display-controls.md) (derzeit in der Vorschauphase) und dem E-Mail-Drittanbieter Mailjet können Sie eigene E-Mail-Vorlagen sowie *Absenderadressen* und Betreffzeilentexte verwenden. Darüber hinaus werden die Lokalisierung und benutzerdefinierte Einstellungen für Einmalkennwörter (One-Time Password, OTP) unterstützt.
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Verwenden Sie benutzerdefinierte E-Mails in Azure Active Directory B2C (Azure AD B2C), um angepasste E-Mails an Benutzer zu senden, die sich für die Verwendung Ihrer Anwendungen registrieren. Mithilfe vom E-Mail-Drittanbieter Mailjet können Sie eigene E-Mail-Vorlagen sowie *Absenderadressen* und Betreffzeilentexte verwenden. Darüber hinaus werden die Lokalisierung und benutzerdefinierte Einstellungen für Einmalkennwörter (One-Time Password, OTP) unterstützt.
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Für die benutzerdefinierte E-Mail-Überprüfung ist die Verwendung eines E-Mail-Drittanbieters wie [Mailjet](https://Mailjet.com), [SendGrid](./custom-email-sendgrid.md) oder [SparkPost](https://sparkpost.com), einer benutzerdefinierten REST-API oder eines HTTP-basierten E-Mail-Anbieters (einschließlich Ihres eigenen Anbieters) erforderlich. In diesem Artikel wird das Einrichten einer Lösung beschrieben, bei der Mailjet verwendet wird.
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-mailjet-account"></a>Erstellen eines Mailjet-Kontos
 
@@ -33,6 +42,10 @@ Wenn Sie noch nicht über ein Mailjet-Konto verfügen, müssen Sie zuerst ein so
 1. Folgen Sie den Anweisungen zur Einrichtung unter [Erstellen eines Mailjet-Kontos](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/).
 1. [Registrieren und validieren](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use) Sie Ihre Absender-E-Mail-Adresse oder Domäne, um E-Mails senden zu können.
 2. Navigieren Sie zur [Seite für die API-Schlüsselverwaltung](https://app.mailjet.com/account/api_keys). Notieren Sie sich den **API-Schlüssel** und den **geheimen Schlüssel** zur Verwendung in einem späteren Schritt. Beide Schlüssel werden bei der Erstellung Ihres Kontos automatisch generiert.  
+
+> [!IMPORTANT]
+> Mit Mailjet können Kunden E-Mails von freigegebenen und [dedizierten IP-Adressen](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP) senden. Bei Verwendung dedizierter IP-Adressen müssen die IP-Adressen zunächst „aufgewärmt“ werden, um Ihre eigene Reputation aufzubauen. Weitere Informationen finden Sie unter [Wie wärme ich meine IP auf?](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-).
+
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Erstellen des Azure AD B2C-Richtlinienschlüssels
 
@@ -307,6 +320,9 @@ Fügen Sie der Richtlinie unter „content definitions“ in `<BuildingBlocks>` 
 
 Mit dem technischen Profil `GenerateOtp` wird ein Code für die E-Mail-Adresse generiert. Mit dem technischen Profil `VerifyOtp` wird der der E-Mail-Adresse zugeordnete Code überprüft. Sie können die Konfiguration des Formats und den Ablauf des Einmalkennworts ändern. Weitere Informationen zu technischen Profilen für Einmalkennwörter finden Sie unter [Definieren eines technischen Einmalkennwortprofils](one-time-password-technical-profile.md).
 
+> [!NOTE]
+> Durch das Web.TPEngine.Providers.OneTimePasswordProtocolProvider-Protokoll generierte OTP-Codes sind an die Browsersitzung gebunden. Das bedeutet, dass ein Benutzer eindeutige OTP-Codes in verschiedenen Browsersitzungen generieren kann, die jeweils für die entsprechenden Sitzungen gültig sind. Ein durch den integrierten Benutzerflow generierter OTP-Code ist dagegen unabhängig von der Browsersitzung. Wenn ein Benutzer also einen neuen OTP-Code in einer neuen Browsersitzung generiert, ersetzt dieser den vorherigen OTP-Code.
+
 Fügen Sie dem `<ClaimsProviders>`-Element die folgenden technischen Profile hinzu.
 
 ```XML
@@ -576,3 +592,5 @@ Ein Beispiel für eine Richtlinie für die benutzerdefinierte E-Mail-Überprüfu
 
 - [Custom email verification - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol) (Benutzerdefinierte E-Mail-Überprüfung – Display Controls)
 - Informationen zur Verwendung einer benutzerdefinierten REST-API oder eines HTTP-basierten SMTP-E-Mail-Anbieters finden Sie unter [Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Azure AD B2C-Richtlinie](restful-technical-profile.md).
+
+::: zone-end

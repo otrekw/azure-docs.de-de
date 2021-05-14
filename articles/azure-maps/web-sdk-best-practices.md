@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: ba351053c876c31d945ec7e4127a5caebd6a71ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 31db8c4d8a371aaad939e3a85972958befb2206e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877328"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137561"
 ---
 # <a name="azure-maps-web-sdk-best-practices"></a>Best Practices für das Azure Maps-Web-SDK
 
@@ -25,7 +25,7 @@ Allgemein sollten Sie, wenn Sie die Leistung der Karte verbessern möchten, nach
 
 ## <a name="security-basics"></a>Grundlagen zur Sicherheit
 
-Der wichtigste Teil Ihrer Anwendung ist deren Sicherheit. Wenn Ihre Anwendung nicht sicher ist, können Hacker Schaden verursachen, unabhängig davon, wie gut die Benutzerfreundlichkeit möglicherweise ist. Im Folgenden sind einige Tipps aufgeführt, die Ihnen dabei helfen, die Sicherheit Ihrer Azure Maps-Anwendung zu gewährleisten. Wenn Sie Azure verwenden, denken Sie daran, sich mit den Sicherheitstools vertraut zu machen, die Ihnen zur Verfügung stehen. Eine Einführung zum Thema Sicherheit in Azure finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/security/fundamentals/overview).
+Der wichtigste Teil Ihrer Anwendung ist deren Sicherheit. Wenn Ihre Anwendung nicht sicher ist, können Hacker Schaden verursachen, unabhängig davon, wie gut die Benutzerfreundlichkeit möglicherweise ist. Im Folgenden sind einige Tipps aufgeführt, die Ihnen dabei helfen, die Sicherheit Ihrer Azure Maps-Anwendung zu gewährleisten. Wenn Sie Azure verwenden, denken Sie daran, sich mit den Sicherheitstools vertraut zu machen, die Ihnen zur Verfügung stehen. Eine Einführung zum Thema Sicherheit in Azure finden Sie in [diesem Dokument](../security/fundamentals/overview.md).
 
 > [!IMPORTANT]
 > Azure Maps bietet zwei Authentifizierungsmethoden.
@@ -41,7 +41,7 @@ Wenn Daten zu den Azure Maps-SDKs mit interaktiven Karten hinzugefügt werden, w
 
 Wenn Ihre Anwendung Daten lädt, die nicht öffentlich zugänglich sein sollten, stellen Sie sicher, dass die Daten an einem sicheren Ort gespeichert werden, dass auf sichere Weise auf sie zugegriffen wird und dass die Anwendung selbst gesperrt und nur für die gewünschten Benutzer verfügbar ist. Wenn einer dieser Schritte übersprungen wird, können nicht autorisierte Personen möglicherweise auf diese Daten zugreifen. Azure Active Directory kann Sie bei dieser Sperrung unterstützen.
 
-Weitere Informationen finden Sie im Tutorial [Hinzufügen der Authentifizierung zu Ihrer Web-App in Azure App Service](https://docs.microsoft.com/azure/app-service/scenario-secure-app-authentication-app-service).
+Weitere Informationen finden Sie im Tutorial [Hinzufügen der Authentifizierung zu Ihrer Web-App in Azure App Service](../app-service/scenario-secure-app-authentication-app-service.md).
 
 ### <a name="use-the-latest-versions-of-azure-maps"></a>Verwenden der aktuellen Versionen von Azure Maps
 
@@ -355,7 +355,7 @@ Im Folgenden sind Tipps zum Debuggen für einige bei der Entwicklung mit dem Azu
 
 **Warum wird die Karte nicht angezeigt, wenn ich die Websteuerung lade?**
 
-Führen Sie folgende Schritte aus:
+Gehen Sie folgendermaßen vor:
 
 * Stellen Sie sicher, dass Sie der Karte Ihre hinzugefügten Authentifizierungsoptionen hinzugefügt haben. Wenn diese nicht hinzugefügt werden, lädt die Karte eine leere Canvas, da sie ohne Authentifizierung nicht auf die Basiskartendaten zugreifen kann, und auf der Netzwerk-Registerkarte der Entwicklertools des Browsers werden 401-Fehler angezeigt.
 * Stellen Sie sicher, dass Sie mit dem Internet verbunden sind.
@@ -391,7 +391,7 @@ Wenn das Symbol nur dann an der falschen Stelle angezeigt wird, wenn die Karte g
 
 Ja. Beachten Sie, dass [ein Fehler in Safari](https://bugs.webkit.org/show_bug.cgi?id=170075) verhindert, dass iframes in einer Sandbox Worker ausführen. Dies ist für die Verwendung des Azure Maps-Web-SDK jedoch erforderlich. Die Lösung für dieses Problem besteht darin, der Sandboxeigenschaft des iframe das Tag `"allow-same-origin"` hinzuzufügen.
 
-## <a name="get-support"></a>Support aufrufen
+## <a name="get-support"></a>Support
 
 Im Folgenden sind die verschiedenen Wege aufgeführt, auf denen Sie je nach Art des Problems Support für Azure Maps anfordern können.
 

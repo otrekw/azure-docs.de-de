@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 8305b2190cf3b157973f5844c3237ffe73adba66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70951dc1c1934bcbb2721512175e7d314168ce91
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619915"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175458"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Bereitstellen des Azure AD-Anwendungsproxys für sicheren Zugriff auf interne Anwendungen in einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -113,7 +113,7 @@ Wenn Sie mehrere Azure AD-Anwendungsproxyconnectors bereitstellen, müssen Sie d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn der Azure AD-Anwendungsproxy in Azure AD DS integriert ist, veröffentlichen Sie die Anwendungen für den Zugriff durch Benutzer. Weitere Informationen finden Sie unter [Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy](../active-directory/manage-apps/application-proxy-add-on-premises-application.md).
+Wenn der Azure AD-Anwendungsproxy in Azure AD DS integriert ist, veröffentlichen Sie die Anwendungen für den Zugriff durch Benutzer. Weitere Informationen finden Sie unter [Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy](../active-directory/app-proxy/application-proxy-add-on-premises-application.md).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
@@ -121,5 +121,5 @@ Wenn der Azure AD-Anwendungsproxy in Azure AD DS integriert ist, veröffentlich
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
 [azure-bastion]: ../bastion/tutorial-create-host-portal.md
-[Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
-[Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer
+[Get-ADComputer]: /powershell/module/activedirectory/get-adcomputer
+[Set-ADComputer]: /powershell/module/activedirectory/set-adcomputer

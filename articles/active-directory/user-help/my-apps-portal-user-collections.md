@@ -1,5 +1,5 @@
 ---
-title: Sammlungen (Vorschau) im Portal „Meine Apps“ – Azure AD
+title: 'Organisieren von Apps in Sammlungen im Portal „Meine Apps“: Azure AD'
 description: Erfahren Sie, wie Sie App-Sammlungen in „Meine Apps“ erstellen, bearbeiten, löschen, ausblenden und anzeigen können.
 services: active-directory
 author: curtand
@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 04/07/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 843f957ef8871f6372c1b08a5534f6e90098cc85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ac5dede27262d3ce8bc44b4b278ed623063f8e1
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100095119"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209662"
 ---
-# <a name="user-collections-preview-in-my-apps"></a>Benutzersammlungen in „Meine Apps“
+# <a name="organize-apps-using-collections-from-my-apps"></a>Organisieren von Apps mithilfe von Sammlungen unter „Meine Apps“
 
 „Meine Apps“ ist Ihre zentrale Anlaufstelle zum Starten und Verwalten aller Ihrer Geschäfts-, Schul- oder Uni-Apps. Erstellen Sie Sammlungen, um Ihre Apps zu organisieren und das Auffinden benötigter Apps zu vereinfachen.
-
-[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 In diesem Artikel wird Folgendes beschrieben:
 
@@ -55,7 +53,7 @@ In diesem Artikel wird Folgendes beschrieben:
 
     :::image type="content" source="media/my-apps-portal-user-collections/3-add-apps.png" alt-text="Hinzufügen von Apps aus der Liste zu Ihrer Sammlung":::
 
-1. Anschließend können Sie Apps neu anordnen oder löschen. Oder Sie wählen **Apps hinzufügen** aus, um weitere Apps für die Sammlung auszuwählen. Wenn Sie mit Ihrer Auswahl zufrieden sind, wählen Sie **Neu erstellen** aus.  
+1. Im Bereich **Neu erstellen** können Sie Apps neu anordnen oder löschen. Oder Sie wählen **Apps hinzufügen** aus, um weitere Apps für die Sammlung auszuwählen. Wenn Sie mit Ihrer Auswahl zufrieden sind, wählen Sie **Neu erstellen** aus.  
 
     :::image type="content" source="media/my-apps-portal-user-collections/4-create-button.png" alt-text="Wählen Sie die Schaltfläche „Neu erstellen“ aus, um die Sammlung in „Meine Apps“ zu speichern":::
 

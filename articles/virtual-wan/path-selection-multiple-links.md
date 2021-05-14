@@ -1,19 +1,19 @@
 ---
 title: Azure-Pfadauswahl über mehrere ISP-Links
 titleSuffix: Azure Virtual WAN
-description: Weitere Informationen zur Azure-Pfadauswahl und zu Virtual WAN
+description: In diesem Artikel erfahren Sie, wie Azure Virtual WAN Linkinformationen enthalten kann, um den Datenverkehr mithilfe der Azure-Pfadauswahl über verschiedene Links zu steuern.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: f24696c0db3155a59106e1361b01454b9ac16a20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2de840d07a99ed7c135b75ef24144da642654bb
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91267753"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166197"
 ---
 # <a name="azure-path-selection-across-multiple-isp-links"></a>Azure-Pfadauswahl über mehrere ISP-Links
 

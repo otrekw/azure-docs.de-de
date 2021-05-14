@@ -8,37 +8,37 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 04/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2bc2c1361c7d2f73ff8a67e906a6db725f669d52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5beb222ec20b1e7941f9438c0aacf98879a567a
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98895406"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727940"
 ---
 # <a name="request-limits-for-translator"></a>Anforderungsgrenzwerte für Translator
 
-In diesem Artikel sind die Drosselungsgrenzwerte für Translator aufgeführt. Zu den Diensten gehören Übersetzung, Transliteration, Satzlängenerkennung, Spracherkennung und alternative Übersetzungen.
+Dieser Artikel enthält Drosselungsgrenzwerte für Übersetzung, Transliteration, Satzlängenerkennung, Sprachenerkennung und alternative Übersetzungen.
 
 ## <a name="character-and-array-limits-per-request"></a>Zeichen- und Arraygrenzwerte pro Anforderung
 
-Jede Übersetzungsanforderung ist auf 10.000 Zeichen in allen von Ihnen verwendeten Zielsprachen beschränkt. Beispiel: Das Senden einer Übersetzungsanforderung von 3.000 Zeichen für die Übersetzung in drei verschiedene Sprachen ergibt eine Anforderungsgröße von 3.000 × 3 = 9.000 Zeichen. Dies liegt unterhalb des Anforderungsgrenzwerts. Die Abrechnung erfolgt nach der Anzahl der Zeichen, nicht nach der Anzahl der Anforderungen. Es wird empfohlen, kürzere Anforderungen zu senden.
+Jede Übersetzungsanforderung ist auf 10.000 Zeichen in allen von Ihnen verwendeten Zielsprachen beschränkt. Beispiel: Das Senden einer Übersetzungsanforderung von 3.000 Zeichen für die Übersetzung in drei verschiedene Sprachen ergibt eine Anforderungsgröße von 3.000 × 3 = 9.000 Zeichen. Dies liegt unterhalb des Anforderungsgrenzwerts. Die Abrechnung erfolgt nach der Anzahl der Zeichen, nicht nach der Anzahl der Anforderungen. Es wird empfohlen, kürzere Anforderungen zu senden.
 
 In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vorgang von Translator aufgeführt.
 
 | Vorgang | Maximale Größe des Arrayelements |    Maximale Anzahl von Arrayelementen |    Maximale Anforderungsgröße (Zeichen) |
 |:----|:----|:----|:----|
-| Translate | 10.000    | 100   | 10.000 |
-| Transliterate | 5\.000 | 10    | 5\.000 |
-| Detect | 50.000 | 100 |   50.000 |
-| BreakSentence | 50.000    | 100 | 50.000 |
-| Wörterbuchsuche| 100 |  10  | 1\.000 |
-| Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|   2\.000 |
+| Translate | 10.000| 100| 10.000 |
+| Transliterate | 5\.000| 10| 5\.000 |
+| Detect | 50.000 |100 |50.000 |
+| BreakSentence | 50.000| 100 |50.000 |
+| Wörterbuchsuche| 100 |10| 1\.000 |
+| Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|2\.000 |
 
 ## <a name="character-limits-per-hour"></a>Zeichengrenzwerte pro Stunde
 
-Ihre Zeichengrenzwerte pro Stunde basieren auf der Abonnementebene von Translator. 
+Ihre Zeichengrenzwerte pro Stunde basieren auf der Abonnementebene von Translator.
 
 Das Stundenkontingent sollte gleichmäßig über die gesamte Stunde verbraucht werden. Beispielsweise sollten Zeichen beim Grenzwert für den F0-Tarif von 2 Millionen Zeichen pro Stunde nicht schneller als mit ungefähr 33.300 Zeichen pro Minute gleitendes Fenster (2 Millionen, dividiert durch 60 Minuten) verbraucht werden.
 
@@ -54,11 +54,11 @@ Wenn Sie diese Grenzwerte erreichen oder überschreiten oder einen zu großen Te
 
 Die Grenzwerte für [Abonnements mit mehreren Diensten](./reference/v3-0-reference.md#authentication) sind dieselben wie für den S1-Tarif.
 
-Diese Grenzwerte sind auf die Standardübersetzungsmodelle von Microsoft beschränkt. Für benutzerdefinierte Übersetzungsmodelle, die den benutzerdefinierten Translator verwenden, gilt ein Grenzwert von 1.800 Zeichen pro Sekunde.
+Diese Grenzwerte sind auf die Standardübersetzungsmodelle von Microsoft beschränkt. Für benutzerdefinierte Übersetzungsmodelle, die den benutzerdefinierten Translator verwenden, gilt ein Grenzwert von 1.800 Zeichen pro Sekunde und Modell.
 
 ## <a name="latency"></a>Latency
 
-Die maximale Wartezeit von Translator beträgt bei Verwendung von Standardmodellen 15 Sekunden und bei Verwendung von benutzerdefinierten Modellen 120 Sekunden. In der Regel werden die Antworten *für Text unter 100 Zeichen* innerhalb von 150 bis 300 Millisekunden zurückgegeben. Die benutzerdefinierten Übersetzungsmodelle weisen ähnliche Latenzmerkmale für dauerhafte Anforderungsraten auf. Die Latenz kann aber höher sein, wenn Ihre Anforderungsrate unterbrochen wird. Die Antwortzeiten variieren je nach der Größe der Anforderung und dem Sprachpaar. Wenn Sie innerhalb dieses Zeitrahmens keine Übersetzung oder eine [Fehlerantwort](./reference/v3-0-reference.md#errors) erhalten, überprüfen Sie Ihren Code und die Netzwerkverbindung, und versuchen Sie es nochmal. 
+Die maximale Wartezeit von Translator beträgt bei Verwendung von Standardmodellen 15 Sekunden und bei Verwendung von benutzerdefinierten Modellen 120 Sekunden. In der Regel werden die Antworten *für Text unter 100 Zeichen* innerhalb von 150 bis 300 Millisekunden zurückgegeben. Die benutzerdefinierten Übersetzungsmodelle weisen ähnliche Latenzmerkmale für dauerhafte Anforderungsraten auf. Die Latenz kann aber höher sein, wenn Ihre Anforderungsrate unterbrochen wird. Die Antwortzeiten variieren je nach der Größe der Anforderung und dem Sprachpaar. Wenn Sie innerhalb dieses Zeitrahmens keine Übersetzung oder eine [Fehlerantwort](./reference/v3-0-reference.md#errors) erhalten, überprüfen Sie Ihren Code und die Netzwerkverbindung, und versuchen Sie es nochmal.
 
 ## <a name="sentence-length-limits"></a>Grenzwerte bei der Satzlänge
 

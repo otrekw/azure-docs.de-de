@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b88923ff6447785a4ef5a7c80e1ff44d1a2b9cb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727429"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777340"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Bereitstellen für Mehrinstanzenfähigkeit 
 
@@ -26,11 +26,12 @@ Diese beiden Szenarien werden häufig kombiniert. Eine mehrinstanzenfähige IoT-
 
 In diesem Artikel wird ein Beispiel für ein simuliertes Gerät aus dem [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) verwendet, um zu veranschaulichen, wie Geräte in einem Szenario mit Mehrinstanzenfähigkeit regionsübergreifend bereitgestellt werden. In diesem Artikel führen Sie die folgenden Schritte aus:
 
-* Verwenden der Azure CLI, um zwei regionale IoT Hubs (**West US** (USA, Westen) und **East US** (USA, Osten)) zu erstellen
-* Erstellen einer mehrinstanzenfähigen Registrierung
-* Verwenden der Azure CLI, um zwei regionale Linux-VMs zu erstellen, die als Geräte in denselben Regionen (**West US** (USA, Westen) und **East US** (USA, Osten)) fungieren
-* Einrichten der Entwicklungsumgebung für das Azure IoT C SDK auf beiden Linux-VMs
-* Simulieren der Geräte, um darzustellen, dass sie für denselben Mandanten in der am nächsten gelegenen Region bereitgestellt wurden
+> [!div class="checklist"]
+> * Verwenden der Azure CLI, um zwei regionale IoT Hubs (**West US** (USA, Westen) und **East US** (USA, Osten)) zu erstellen
+> * Erstellen einer mehrinstanzenfähigen Registrierung
+> * Verwenden der Azure CLI, um zwei regionale Linux-VMs zu erstellen, die als Geräte in denselben Regionen (**West US** (USA, Westen) und **East US** (USA, Osten)) fungieren
+> * Einrichten der Entwicklungsumgebung für das Azure IoT C SDK auf beiden Linux-VMs
+> * Simulieren der Geräte, um darzustellen, dass sie für denselben Mandanten in der am nächsten gelegenen Region bereitgestellt wurden
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -46,7 +47,7 @@ In diesem Artikel wird ein Beispiel für ein simuliertes Gerät aus dem [Azure I
 In diesem Abschnitt verwenden Sie Azure Cloud Shell, um zwei neue regionale IoT Hubs in den Regionen **West US** (USA, Westen) und **East US** (USA, Osten) für einen Mandanten zu erstellen.
 
 
-1. Erstellen Sie in Azure Cloud Shell mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+1. Erstellen Sie in Azure Cloud Shell mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
     Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *contoso-us-resource-group* in der Region *eastus* erstellt. Es wird empfohlen, diese Gruppe für alle in diesem Artikel erstellten Ressourcen zu verwenden. Dies erleichtert das Bereinigen nach Abschluss der Schritte in diesem Artikel.
 
@@ -54,7 +55,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell, um zwei neue regionale IoT 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Verwenden Sie Azure Cloud Shell, um mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) in der Region **eastus** einen IoT Hub zu erstellen. Der IoT Hub wird *contoso-us-resource-group* hinzugefügt.
+2. Verwenden Sie Azure Cloud Shell, um mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) in der Region **eastus** einen IoT Hub zu erstellen. Der IoT Hub wird *contoso-us-resource-group* hinzugefügt.
 
     Im folgenden Beispiel wird in der Region *eastus* ein IoT Hub mit dem Namen *contoso-east-hub* erstellt. Sie müssen anstelle von **contoso-east-hub** Ihren eigenen eindeutigen Hubnamen verwenden.
 
@@ -64,7 +65,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell, um zwei neue regionale IoT 
     
     Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen.
 
-3. Verwenden Sie Azure Cloud Shell, um mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) in der Region **westus** einen IoT Hub zu erstellen. Dieser IoT Hub wird ebenfalls *contoso-us-resource-group* hinzugefügt.
+3. Verwenden Sie Azure Cloud Shell, um mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) in der Region **westus** einen IoT Hub zu erstellen. Dieser IoT Hub wird ebenfalls *contoso-us-resource-group* hinzugefügt.
 
     Im folgenden Beispiel wird am Standort *westus* eine IoT Hub-Instanz mit dem Namen *contoso-west-hub* erstellt. Sie müssen anstelle von **contoso-west-hub** Ihren eigenen eindeutigen Hubnamen verwenden.
 
@@ -417,8 +418,11 @@ Löschen Sie die Ressourcengruppen wie folgt nach Namen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> Informationen zur erneuten Bereitstellung finden Sie unter [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md).
+* Weitere Informationen zur erneuten Bereitstellung finden Sie unter
 
 > [!div class="nextstepaction"]
-> Informationen zum Aufheben der Bereitstellung finden Sie unter [Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden](how-to-unprovision-devices.md).
+> [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md)
+
+* Weitere Informationen zum Aufheben der Bereitstellung finden Sie unter
+> [!div class="nextstepaction"]
+> [Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden](how-to-unprovision-devices.md)

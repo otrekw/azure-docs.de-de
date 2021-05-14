@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 7d2a21a30cefbc6e83e48c29d81191323387b8f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a328115c606cb4bface2d3dc7b8f0c502d063e9f
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101705542"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987432"
 ---
 # <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Schnellstart: Erstellen und Bereitstellen eines X.509-Geräts mithilfe des C#-Geräte-SDK für IoT Hub Device Provisioning Service
 
@@ -45,7 +45,7 @@ In diesem Artikel werden individuelle Registrierungen veranschaulicht.
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
-1. Vergewissern Sie sich, dass auf Ihrem Computer das [.NET Core 3.0.0 SDK oder höher](https://www.microsoft.com/net/download/windows) installiert ist. Sie können den folgenden Befehl ausführen, um Ihre Version zu überprüfen:
+1. Vergewissern Sie sich, dass auf Ihrem Computer das [.NET Core 3.1 SDK oder höher](https://dotnet.microsoft.com/download) installiert ist. Sie können den folgenden Befehl ausführen, um Ihre Version zu überprüfen:
 
     ```bash
     dotnet --info
@@ -169,7 +169,6 @@ Sie verwenden Beispielcode aus [X509Sample](https://github.com/Azure-Samples/azu
 Wenn Sie das Geräteclientbeispiel weiterhin verwenden und erkunden möchten, überspringen Sie die Bereinigung der in diesem Schnellstart erstellten Ressourcen. Falls Sie nicht fortfahren möchten, führen Sie die folgenden Schritte aus, um alle Ressourcen zu löschen, die im Rahmen dieses Schnellstarts erstellt wurden.
 
 1. Schließen Sie auf Ihrem Computer das Ausgabefenster des Geräteclientbeispiels.
-1. Schließen Sie auf Ihrem Computer das TPM-Simulatorfenster.
 1. Wählen Sie im Azure-Portal im Menü links **Alle Ressourcen** und dann Ihren Gerätebereitstellungsdienst aus. Klicken Sie auf dem Blatt **Übersicht** am oberen Rand des Bereichs auf **Löschen**.  
 1. Wählen Sie im linken Menü im Azure-Portal **Alle Ressourcen** und dann Ihren IoT-Hub aus. Klicken Sie auf dem Blatt **Übersicht** am oberen Rand des Bereichs auf **Löschen**.  
 

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 28e94cdb0df0a18b41f4c8a0ded362b50df6dcac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a64ccec49248f48a85782cfe9537513a97b2bdfc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652971"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868157"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Erste Schritte mit Service Bus-Themen
 Dieses Tutorial enthält die folgenden Schritte:
@@ -30,7 +30,7 @@ Dieses Tutorial enthält die folgenden Schritte:
     3. Erstellen Sie ein **Thema** im Namespace.
     4. Erstellen Sie **ein Abonnement** für das Thema im Namespace.
 3. [Visual Studio 2017 Update 3 (Version 15.3, 26730.01)](https://www.visualstudio.com/vs) oder höher
-4. [NET Core SDK](https://www.microsoft.com/net/download/windows) ab Version 2.0
+4. [NET Core SDK](https://dotnet.microsoft.com/download) ab Version 2.0
  
 ## <a name="send-messages-to-the-topic"></a>Senden von Nachrichten an das Thema
 

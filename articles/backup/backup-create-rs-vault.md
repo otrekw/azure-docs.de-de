@@ -2,14 +2,14 @@
 title: Erstellen und Konfigurieren von Recovery Services-Tresoren
 description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore zum Speichern von Sicherungen und Wiederherstellungspunkten erstellen und konfigurieren. Erfahren Sie, wie Sie die regionsübergreifende Wiederherstellung zur Wiederherstellung in einer sekundären Region verwenden.
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 04/14/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1a20cd2b1245febea5fd18a9f6fe6e7a7bb6f04b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e2983e473fac72d02f0fdbc8c307e96326ac0a6
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101716753"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518574"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Erstellen und Konfigurieren von Recovery Services-Tresoren
 
@@ -69,7 +69,7 @@ Da dieser Prozess auf Speicherebene erfolgt, hat er [Auswirkungen auf den Preis]
 >- Die regionsübergreifende Wiederherstellung für SQL- und SAP HANA-Datenbanken befindet sich für alle öffentlichen Azure-Regionen in der Vorschauphase.
 >- CRR ist ein optionales Feature auf Tresorebene für beliebige GRS-Tresore und standardmäßig deaktiviert.
 >- Nach der Aktivierung kann es bis zu 48 Stunden dauern, bis die Sicherungselemente in sekundären Regionen verfügbar sind.
->- CRR für Azure-VMs wird zurzeit nur für Azure Resource Manager-VMs in Azure unterstützt. Klassische Azure-VMs werden nicht unterstützt.  Wenn CRR von weiteren Verwaltungstypen unterstützt wird, werden diese **automatisch** registriert.
+>- Derzeit wird CRR für Azure-VMs für Azure Resource Manager und verschlüsselte Azure-VMs unterstützt. Klassische Azure-VMs werden nicht unterstützt. Wenn CRR von weiteren Verwaltungstypen unterstützt wird, werden diese **automatisch** registriert.
 >- Die regionsübergreifende Wiederherstellung **kann zurzeit nicht auf GRS oder LRS zurückgesetzt werden**, nachdem der Schutz zum ersten Mal initiiert wurde.
 >- Aktuell beträgt die [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) der sekundären Region selbst dann bis zu zwölf Stunden, wenn die Replikationszeit des [georedundanten Speichers mit Lesezugriff (RA-GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) 15 Minuten beträgt.
 

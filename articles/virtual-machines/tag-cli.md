@@ -1,5 +1,5 @@
 ---
-title: Markieren eines virtuellen Azure-Computers mit der CLI
+title: Markieren einer Azure-VM mithilfe der Azure CLI
 description: Erfahren Sie etwas über das Markieren eines virtuellen Computers mithilfe der Azure CLI.
 author: cynthn
 ms.service: virtual-machines
@@ -8,14 +8,14 @@ ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 32d15730557c96362602b5e324254c76637ecb55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20bb4ab622a01646bcc61d0f691c514a25a06edc
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98897441"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502605"
 ---
-# <a name="how-to-tag-a-vm-using-the-cli"></a>Markieren einer VM mithilfe der CLI
+# <a name="how-to-tag-a-vm-using-the-azure-cli"></a>Markieren einer VM mithilfe der Azure CLI
 
 In diesem Artikel wird das Markieren einer VM mit der Azure CLI beschrieben. Tags sind benutzerdefinierte Schlüssel-Wert-Paare, die direkt auf einer Ressource oder einer Ressourcengruppe platziert werden können. Azure unterstützt derzeit bis zu 50 Tags pro Ressource und Ressourcengruppe. Tags können zum Zeitpunkt der Erstellung auf einer Ressource platziert werden oder zu einer vorhandenen Ressource hinzugefügt werden. Sie können eine VM auch mit [Azure PowerShell](tag-powershell.md) markieren.
 

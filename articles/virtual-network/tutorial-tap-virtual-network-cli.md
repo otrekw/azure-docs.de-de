@@ -16,14 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8e3a56e4a6eb1fb6eb633021178ef78f8ac7287d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30b506b9577fd2dda3c75711d648b6f1b6d0a45c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96014787"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758877"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Arbeiten mit einem TAP eines virtuellen Netzwerks über die Azure CLI
+
+> [!IMPORTANT]
+> Die Vorschau des TAP für virtuelle Netzwerke ist derzeit in allen Azure-Regionen ausgesetzt. Sie können eine E-Mail mit Ihrer Abonnement-ID an <azurevnettap@microsoft.com> senden. Wir informieren Sie über künftige Updates zur Vorschau. In der Zwischenzeit können Sie Agent-basierte Lösungen oder NVA-Lösungen verwenden, die über unsere im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners) verfügbaren [Paketbroker-Partnerlösungen](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) Funktionen für TAP-/Netzwerksichtbarkeit bieten.
 
 Mit dem TAP (Terminal Access Point) für virtuelle Azure-Netzwerke können Sie Ihren VM-Netzwerkdatenverkehr kontinuierlich an einen Netzwerkpaketcollector oder ein Analysetool streamen. Der Collector oder das Analysetool wird von einem Partner für [virtuelle Netzwerkappliances](https://azure.microsoft.com/solutions/network-appliances/) bereitgestellt. Eine Liste der Partnerlösungen, die für die Arbeit mit einem TAP eines virtuellen Netzwerks geprüft wurden, finden Sie unter [Partnerlösungen für TAPs von virtuellen Netzwerken](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions). 
 

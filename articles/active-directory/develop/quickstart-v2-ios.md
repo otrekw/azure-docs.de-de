@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: d2c5af6aeccfbae0851513ff575bde3c39e3ca5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20138e7e3f24dcc09898b33aa24bf4550d87134b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103786"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166089"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer iOS- oder macOS-App
 
@@ -57,7 +57,7 @@ Die Schnellstartanleitung gilt für iOS- und macOS-Apps. Einige Schritte sind nu
 >
 > 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
 > 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
-> 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.    
+> 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 > 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
 > 1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
 > 1. Wählen Sie **Registrieren**.
@@ -99,23 +99,29 @@ Navigieren Sie in einem Terminalfenster zu dem Ordner, der das heruntergeladene 
 > > `Enter_the_Supported_Account_Info_Here`
 >
 > [!div renderon="docs"]
->#### <a name="step-4-configure-your-project"></a>Schritt 4: Konfigurieren des Projekts
+> #### <a name="step-4-configure-your-project"></a>Schritt 4: Konfigurieren des Projekts
 > Wenn Sie weiter oben die erste Option ausgewählt haben, können Sie diese Schritte überspringen.
 > 1. Extrahieren Sie die ZIP-Datei, und öffnen Sie das Projekt in XCode.
 > 1. Bearbeiten Sie **ViewController.swift**, und ersetzen Sie die Zeile, die mit „let kClientID“ beginnt, durch den folgenden Codeausschnitt. Sie müssen den Wert für `kClientID` durch die Client-ID ersetzen, die Sie zuvor im Schnellstart beim Registrieren Ihrer App im Portal gespeichert haben:
+>
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+
 > 1. Ersetzen Sie beim Erstellen einer App für [nationale Azure AD-Clouds](/graph/deployments#app-registration-and-token-service-root-endpoints) die Zeile, die mit „let kGraphEndpoint“ und „let kAuthority“ beginnt, durch richtige Endpunkte. Verwenden Sie für globalen Zugriff die Standardwerte:
->     ```swift
->     let kGraphEndpoint = "https://graph.microsoft.com/"
->     let kAuthority = "https://login.microsoftonline.com/common"
->     ```
+>
+>    ```swift
+>    let kGraphEndpoint = "https://graph.microsoft.com/"
+>    let kAuthority = "https://login.microsoftonline.com/common"
+>    ```
+
 > 1. Informationen zu anderen Endpunkten finden Sie [hier](/graph/deployments#app-registration-and-token-service-root-endpoints). Verwenden Sie beispielsweise zum Ausführen der Schnellstartanleitung mit Azure AD Deutschland Folgendes:
->     ```swift
->     let kGraphEndpoint = "https://graph.microsoft.de/"
->     let kAuthority = "https://login.microsoftonline.de/common"
->     ```
+>
+>    ```swift
+>    let kGraphEndpoint = "https://graph.microsoft.de/"
+>    let kAuthority = "https://login.microsoftonline.de/common"
+>    ```
+
 > 1. Öffnen Sie die Projekteinstellungen. Geben Sie im Abschnitt **Identität** den Wert für **Bundle Identifier** (Paket-ID) ein, den Sie im Portal angegeben haben.
 > 1. Klicken Sie mit der rechten Maustaste auf **Info.plist**, und wählen Sie **Öffnen als** > **Quellcode** aus.
 > 1. Ersetzen Sie unter dem Stammknoten „dict“ `Enter_the_bundle_Id_Here` durch den Wert für ***Bundle Id*** (Paket-ID), den Sie im Portal verwendet haben.
@@ -130,9 +136,9 @@ Navigieren Sie in einem Terminalfenster zu dem Ordner, der das heruntergeladene 
 >          </array>
 >       </dict>
 >    </array>
->
 >    ```
-> 1. Erstellen Sie die App, und führen Sie die App aus!
+
+> 1. Erstellen Sie die App, und führen Sie sie aus.
 
 ## <a name="more-information"></a>Weitere Informationen
 
@@ -144,8 +150,8 @@ MSAL ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-libra
 
 ```
 $ vi Podfile
-
 ```
+
 Fügen Sie der Podfile-Datei den folgenden Code (mit dem Ziel Ihres Projekts) hinzu:
 
 ```
@@ -154,12 +160,11 @@ use_frameworks!
 target 'MSALiOS' do
    pod 'MSAL'
 end
-
 ```
 
 Ausführen des CocoaPods-Installationsbefehls:
 
-```pod install```
+`podinstall`
 
 ### <a name="initialize-msal"></a>MSAL initialisieren
 
@@ -188,31 +193,30 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 Ihre App muss auch Folgendes in `AppDelegate` enthalten. Dadurch kann das MSAL SDK die Tokenantwort der Authentifizierungsbroker-App verarbeiten, wenn Sie die Authentifizierung ausführen.
 
- ```swift
- func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+```swift
+func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
 
-        return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
-    }
-
- ```
+    return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
+}
+```
 
 > [!NOTE]
 > Wenn Sie unter iOS 13 oder höher `UISceneDelegate` anstelle von `UIApplicationDelegate` übernehmen, platzieren Sie diesen Code stattdessen im `scene:openURLContexts:`-Rückruf (siehe [Dokumentation von Apple](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)).
 > Wenn Sie sowohl UISceneDelegate als auch UIApplicationDelegate für die Kompatibilität mit älteren iOS-Versionen unterstützen, muss der MSAL-Rückruf für beide Optionen zur Verfügung gestellt werden.
 
- ```swift
- func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+```swift
+func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
 
-        guard let urlContext = URLContexts.first else {
-            return
-        }
+   guard let urlContext = URLContexts.first else {
+      return
+   }
 
-        let url = urlContext.url
-        let sourceApp = urlContext.options.sourceApplication
+   let url = urlContext.url
+   let sourceApp = urlContext.options.sourceApplication
 
-        MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
-    }
- ```
+   MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
+}
+```
 
 Ihre App muss neben `CFBundleURLTypes` über einen `LSApplicationQueriesSchemes`-Eintrag in ***Info.plist*** verfügen. Im Beispiel ist dies enthalten.
 

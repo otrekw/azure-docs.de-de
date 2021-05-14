@@ -4,12 +4,12 @@ description: Langsame Ausführung eines Apache Spark-Auftrags, wenn der Azure-S
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/21/2019
-ms.openlocfilehash: c26baec66248ca00ef212acf3d773c2566b3aea9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d256292956b42c65722ea5f9c87d6835297d1d40
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946369"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219092"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Langsame Ausführung eines Apache Spark-Auftrags, wenn der Azure-Speichercontainer viele Dateien in Azure HDInsight enthält
 
@@ -29,7 +29,9 @@ In Spark 2.1 muss der Cache zwar nicht nach jedem Schreibvorgang aktualisiert w
 
 In Spark 2.2 wird dieses Leistungsproblem behoben, indem Daten im Anfügemodus geschrieben werden.
 
-## <a name="resolution"></a>Lösung
+In Spark 2.3 wird das gleiche Verhalten wie bei Spark 2.2 erwartet.
+
+## <a name="resolution"></a>Auflösung
 
 Wenn Sie ein partitioniertes Dataset erstellen, ist es wichtig, ein Partitionierungsschema zu verwenden, das die Anzahl von Dateien einschränkt, die von Spark aufgelistet werden müssen, um den Dateistatuscache (`FileStatusCache`) zu aktualisieren.
 

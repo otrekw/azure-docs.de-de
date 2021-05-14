@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 01/28/2021
 ms.author: victorh
-ms.openlocfilehash: c976ea236ae1d37cc0a543b10a9de55609035632
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa7123a1c4dea5fcede3e94250576f6677671176
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98986751"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872243"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Tutorial: Konfigurieren eines Anwendungsgateways mit TLS-Terminierung über das Azure-Portal
 
@@ -36,7 +36,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
-In diesem Abschnitt erstellen Sie mit [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ein selbstsigniertes Zertifikat. Sie laden das Zertifikat ins Azure-Portal hoch, wenn Sie den Listener für das Anwendungsgateway erstellen.
+In diesem Abschnitt erstellen Sie mit [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) ein selbstsigniertes Zertifikat. Sie laden das Zertifikat ins Azure-Portal hoch, wenn Sie den Listener für das Anwendungsgateway erstellen.
 
 Öffnen Sie auf dem lokalen Computer ein Windows PowerShell-Fenster als Administrator. Führen Sie den folgenden Befehl aus, um das Zertifikat zu erstellen:
 
@@ -56,7 +56,7 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-Verwenden Sie [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) mit dem zurückgegebenen Fingerabdruck, um eine PFX-Datei aus dem Zertifikat zu exportieren. Stellen Sie sicher, dass Ihr Kennwort vier bis zwölf Zeichen lang ist:
+Verwenden Sie [Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate) mit dem zurückgegebenen Fingerabdruck, um eine PFX-Datei aus dem Zertifikat zu exportieren. Stellen Sie sicher, dass Ihr Kennwort vier bis zwölf Zeichen lang ist:
 
 
 ```powershell

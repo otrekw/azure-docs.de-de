@@ -3,18 +3,18 @@ title: Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriff
 description: Erstellen Sie automatisierte Regeln zum Verschieben von Daten zwischen den Ebenen „heiß“, „kalt“ und „Archiv“.
 author: twooley
 ms.author: twooley
-ms.date: 10/29/2020
+ms.date: 04/23/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: e0b9f3b5728e4604d7c51c1d49196cfcf1161aef
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 76ea6b916cc52292e8b56523d91d92ebfc957a94
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278030"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946104"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen
 
@@ -22,7 +22,7 @@ Datasets haben eindeutige Lebenszyklen. Früh im Lebenszyklus greifen Benutzer h
 
 Mit der Richtlinie für die Lebenszyklusverwaltung können Sie die folgenden Aufgaben ausführen:
 
-- Sofortige Übertragung von kalten zu heißen Blobs, wenn zur Leistungsoptimierung darauf zugegriffen wird 
+- Sofortige Übertragung von kalten zu heißen Blobs, wenn zur Leistungsoptimierung darauf zugegriffen wird
 - Übertragung von Blobs, Blobversionen und Blobmomentaufnahmen aus Kostengründen auf eine kältere Speicherebene (heiß zu kalt, heiß zu Archiv oder kalt zu Archiv), wenn für einen bestimmten Zeitraum nicht darauf zugegriffen wurde bzw. sie nicht geändert wurden
 - Löschen von Blobs, Blobversionen und Blobmomentaufnahmen am Ende ihrer Lebenszyklen
 - Definieren von Regeln, die ein Mal täglich auf Speicherkontoebene ausgeführt werden
@@ -37,7 +37,7 @@ Stellen Sie sich ein Szenario vor, bei dem in den frühen Phasen des Lebenszyklu
 
 ## <a name="availability-and-pricing"></a>Verfügbarkeit und Preismodell
 
-Das Feature zur Lebenszyklusverwaltung ist in allen Azure-Regionen für GPv2-Konten (Universell v2), Blob Storage-Konten, Premium-Blockblob-Speicherkonten und Azure Data Lake Storage Gen2-Konten verfügbar. Für ein vorhandenes GPv1-Konto (Universell V1) kann in einem einfachen Prozess im Azure-Portal ein Upgrade auf ein GPv2-Konto erfolgen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
+Das Feature zur Lebenszyklusverwaltung steht in allen Azure-Regionen für GPv2-Konten (Universell v2), Blob Storage-Konten, Premium-Blockblob-Speicherkonten und Azure Data Lake Storage Gen2-Konten zur Verfügung. Bei einem vorhandenen GPv1-Konto (Universell V1) können Sie im Azure-Portal ein Upgrade auf ein GPv2-Konto durchführen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
 Die Funktion zur Lebenszyklusverwaltung ist kostenlos. Kunden werden die regulären Betriebskosten für die [Set Blob Tier](/rest/api/storageservices/set-blob-tier)-API-Aufrufe in Rechnung gestellt. Löschvorgänge sind kostenlos. Weitere Informationen zu den Preisen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
@@ -45,12 +45,17 @@ Die Funktion zur Lebenszyklusverwaltung ist kostenlos. Kunden werden die regulä
 
 Sie können eine Richtlinie hinzufügen, bearbeiten oder entfernen, indem Sie eine der folgenden Methoden verwenden:
 
-* [Azure portal](https://portal.azure.com)
-* [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
-* [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
-* [REST-APIs](/rest/api/storagerp/managementpolicies)
+- Das Azure-Portal
+- Azure PowerShell
+   - [Add-AzStorageAccountManagementPolicyAction](/powershell/module/az.storage/add-azstorageaccountmanagementpolicyaction)
+   - [New-AzStorageAccountManagementPolicyFilter](/powershell/module/az.storage/new-azstorageaccountmanagementpolicyfilter)
+   - [New-AzStorageAccountManagementPolicyRule](/powershell/module/az.storage/new-azstorageaccountmanagementpolicyrule)
+   - [Set-AzStorageAccountManagementPolicy](/powershell/module/az.storage/set-azstorageaccountmanagementpolicy)
+   - [Remove-AzStorageAccountManagementPolicy](/powershell/module/az.storage/remove-azstorageaccountmanagementpolicy)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/storage/account/management-policy)
+- [REST-APIs](/rest/api/storagerp/managementpolicies)
 
-Eine Richtlinie kann vollständig gelesen oder geschrieben werden. Teilaktualisierungen werden nicht unterstützt. 
+Eine Richtlinie kann vollständig gelesen oder geschrieben werden. Teilaktualisierungen werden nicht unterstützt.
 
 > [!NOTE]
 > Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen für vertrauenswürdige Microsoft-Dienste aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](../common/storage-network-security.md#exceptions).
@@ -59,16 +64,16 @@ In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und übe
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Portal. 
+Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Portal.
 
-* [Listenansicht des Azure-Portals](#azure-portal-list-view)
-* [Codeansicht des Azure-Portals](#azure-portal-code-view)
+- [Listenansicht des Azure-Portals](#azure-portal-list-view)
+- [Codeansicht des Azure-Portals](#azure-portal-code-view)
 
 #### <a name="azure-portal-list-view"></a>Listenansicht des Azure-Portals
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, und wählen Sie es aus. 
+1. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, und wählen Sie es aus.
 
 1. Wählen Sie unter **Blob-Dienst** die Option **Lebenszyklusverwaltung** aus, um Ihre Regeln anzuzeigen oder zu ändern.
 
@@ -91,7 +96,7 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
    > [!IMPORTANT]
    > Die Vorschau der Zeitüberwachung für den letzten Zugriff ist nur zur Verwendung in Umgebungen außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
    
-   Wenn Sie die Option **Letzter Zugriff** verwenden möchten, wählen Sie im Azure-Portal auf der Seite **Lebenszyklusverwaltung** die Option **Access tracking enabled** (Zugriffsüberwachung aktiviert) aus. Weitere Informationen zur Option **Letzter Zugriff** finden Sie unter [Verschieben von Daten basierend auf dem Datum des letzten Zugriffs (Vorschau)](#move-data-based-on-last-accessed-date-preview).
+   Wenn Sie die Option **Letzter Zugriff** verwenden möchten, wählen Sie im Azure-Portal auf der Seite **Lebenszyklusverwaltung** die Option **Zugriffsüberwachung aktiviert** aus. Weitere Informationen zur Option **Letzter Zugriff** finden Sie unter [Verschieben von Daten basierend auf dem Datum des letzten Zugriffs (Vorschau)](#move-data-based-on-last-accessed-date-preview).
 
 1. Wenn Sie auf der Seite **Details** die Option **Limit blobs with filters** (Blobs mit Filtern einschränken) ausgewählt haben, wählen Sie **Filtersatz** aus, um einen optionalen Filter hinzuzufügen. Im folgenden Beispiel werden im Container *mylifecyclecontainer* Blobs gefiltert, die mit „log“ beginnen.
 

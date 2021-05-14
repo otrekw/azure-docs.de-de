@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
-ms.openlocfilehash: 555c903dc3375080a8b0d006d2aac7216854c939
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7effa870bc57bccc33652df343cdb0c187642ce8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539297"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141125"
 ---
 # <a name="subnet-extension"></a>Subnetzerweiterung
 Die Workloadmigration in die öffentliche Cloud erfordert sorgfältige Planung und Koordination. Eine der wichtigsten Überlegungen ist dabei die Möglichkeit, Ihre IP-Adressen beizubehalten. Dieser Punkt kann insbesondere dann wichtig sein, wenn Ihre Anwendungen von der IP-Adresse abhängig sind oder Sie Complianceanforderungen erfüllen müssen, um bestimmte IP-Adressen zu verwenden. Azure Virtual Network löst dieses Problem für Sie, da Sie damit VNET und Subnetze mit einem IP-Adressbereich Ihrer Wahl erstellen können.
@@ -53,4 +53,4 @@ Im Beispiel oben kommunizieren das virtuelle Azure-Netzwerkgerät und das lokale
 Im nächsten Abschnitt finden Sie weitere Informationen zu den Lösungen für die Subnetzerweiterung, die wir in Azure getestet haben.
 
 ## <a name="next-steps"></a>Nächste Schritte 
-[Erweitern Ihres Netzwerks zu Azure mithilfe von Anbieterlösungen.](https://github.com/microsoft/Azure-LISP)
+[Erweitern Sie Ihre lokalen Subnetze mithilfe eines erweiterten Azure-Netzwerks in Azure.](/windows-server/manage/windows-admin-center/azure/azure-extended-network)

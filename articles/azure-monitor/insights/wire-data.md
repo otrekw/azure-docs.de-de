@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2021
-ms.openlocfilehash: 1a9ea544419ef5c688e78a25eeb0eb444b196ec9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c135e33da60bf3ed8603b8fc0d6e59bbfab27b77
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732022"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142547"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor-retired"></a>Wire Data 2.0-Lösung (Vorschau) in Azure Monitor (eingestellt)
 
@@ -21,7 +21,7 @@ ms.locfileid: "105732022"
 >
 >Die Unterstützung für die Wire Data-Lösung endet am **31. März 2022**.  Bis zum Einstellungsdatum können bestehende Kunden, die die Wire Data 2.0-Lösung (Vorschau) verwenden, diese weiterhin nutzen.
 >
->Neue und bestehende Kunden sollten [VM Insights](../vm/vminsights-enable-overview.md) oder die [Dienstzuordnungslösung](../vm/service-map.md) installieren.  Der von diesen Lösungen gesammelte Satz an Zuordnungsdaten ist mit dem Dataset von Wire Data 2.0 (Vorschau) vergleichbar.  VM Insights umfasst das Dataset der Dienstzuordnung sowie zusätzliche Leistungsdaten und Analysefeatures. Beide Angebote verfügen über [Verbindungen mit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-data-sources#map-data-types-with-azure-sentinel-connection-options).
+>Neue und bestehende Kunden sollten [VM Insights](../vm/vminsights-enable-overview.md) oder die [Dienstzuordnungslösung](../vm/service-map.md) installieren.  Der von diesen Lösungen gesammelte Satz an Zuordnungsdaten ist mit dem Dataset von Wire Data 2.0 (Vorschau) vergleichbar.  VM Insights umfasst das Dataset der Dienstzuordnung sowie zusätzliche Leistungsdaten und Analysefeatures. Beide Angebote verfügen über [Verbindungen mit Azure Sentinel](../../sentinel/connect-data-sources.md#map-data-types-with-azure-sentinel-connection-options).
  
 
 Daten zur Kommunikation sind konsolidierte Netzwerk- und Leistungsdaten, die von mit Windows verbundenen und mit Linux verbundenen Computern mit dem Log Analytics-Agent gesammelt werden, einschließlich der in Ihrer Umgebung von Operations Manager überwachten Computer. Netzwerkdaten werden mit Ihren sonstigen Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen.
@@ -30,9 +30,9 @@ Zusätzlich zum Log Analytics-Agent verwendet die Wire Data-Lösung Microsoft De
 
 ## <a name="migrate-to-azure-monitor-vm-insights-or-service-map"></a>Migrieren zu Azure Monitor VM Insights oder der Dienstzuordnung
 
-Wir stellen häufig fest, dass bei Kunden sowohl Wire Data 2.0 (Vorschau) als auch [VM Insights](../vm/vminsights-overview.md) oder die [Dienstzuordnungslösung](../vm/service-map.md) bereits auf denselben VMs aktiviert ist.  Dies bedeutet, dass das Ersatzangebot auf Ihrer VM aktiviert ist.  Sie können einfach die [Wire Data 2.0-Lösung (Vorschau) aus Ihrem Log Analytics-Arbeitsbereich entfernen](https://docs.microsoft.com/azure/azure-monitor/insights/solutions?tabs=portal#remove-a-monitoring-solution).
+Wir stellen häufig fest, dass bei Kunden sowohl Wire Data 2.0 (Vorschau) als auch [VM Insights](../vm/vminsights-overview.md) oder die [Dienstzuordnungslösung](../vm/service-map.md) bereits auf denselben VMs aktiviert ist.  Dies bedeutet, dass das Ersatzangebot auf Ihrer VM aktiviert ist.  Sie können einfach die [Wire Data 2.0-Lösung (Vorschau) aus Ihrem Log Analytics-Arbeitsbereich entfernen](./solutions.md?tabs=portal#remove-a-monitoring-solution).
 
-Wenn Sie über VMs verfügen, auf denen nur Wire Data 2.0 (Vorschau) aktiviert ist, können Sie die VMs in [VM Insights](../vm/vminsights-enable-overview.md) oder die [Dienstzuordnungslösung](../vm/service-map.md) integrieren und dann die [Wire Data 2.0-Lösung (Vorschau) aus Ihrem Log Analytics-Arbeitsbereich entfernen](https://docs.microsoft.com/azure/azure-monitor/insights/solutions?tabs=portal#remove-a-monitoring-solution).
+Wenn Sie über VMs verfügen, auf denen nur Wire Data 2.0 (Vorschau) aktiviert ist, können Sie die VMs in [VM Insights](../vm/vminsights-enable-overview.md) oder die [Dienstzuordnungslösung](../vm/service-map.md) integrieren und dann die [Wire Data 2.0-Lösung (Vorschau) aus Ihrem Log Analytics-Arbeitsbereich entfernen](./solutions.md?tabs=portal#remove-a-monitoring-solution).
 
 ## <a name="migrate-your-queries-to-the-vmconnection-table-from-azure-monitor-vm-insights"></a>Migrieren Ihrer Abfragen in die Tabelle „VMConnection“ von Azure Monitor VM Insights
 
@@ -124,7 +124,7 @@ VMConnection
 
 ### <a name="more-examples-queries"></a>Weitere Beispielabfragen
 
-Weitere Beispielabfragen finden Sie in der [Dokumentation zur VM Insights-Protokollsuche](https://docs.microsoft.com/azure/azure-monitor/vm/vminsights-log-search) und in der [Dokumentation zu VM Insights-Warnungen](https://docs.microsoft.com/azure/azure-monitor/vm/vminsights-alerts#sample-alert-queries).
+Weitere Beispielabfragen finden Sie in der [Dokumentation zur VM Insights-Protokollsuche](../vm/vminsights-log-search.md) und in der [Dokumentation zu VM Insights-Warnungen](../vm/vminsights-alerts.md#sample-alert-queries).
 
 ## <a name="uninstall-wire-data-20-solution"></a>Deinstallieren der Wire Data 2.0-Lösung
 
@@ -133,7 +133,7 @@ Um Wire Data 2.0 zu deinstallieren, müssen Sie einfach nur die Lösung aus Ihr
 * Das Wire Data Management Pack wird von den VMs entfernt, die mit dem Arbeitsbereich verbunden sind. 
 * Der Wire Data-Datentyp wird nicht mehr in Ihrem Arbeitsbereich angezeigt.
 
-Folgen Sie [diesen Anweisungen](https://docs.microsoft.com/azure/azure-monitor/insights/solutions?tabs=portal#remove-a-monitoring-solution), um die Wire Data-Lösung zu entfernen.
+Folgen Sie [diesen Anweisungen](./solutions.md?tabs=portal#remove-a-monitoring-solution), um die Wire Data-Lösung zu entfernen.
 
 >[!NOTE]
 >Wenn entweder die Dienstzuordnungslösung oder die VM Insights-Lösung in Ihrem Arbeitsbereich vorhanden ist, wird das Management Pack nicht entfernt, da diese Lösungen ebenfalls dieses Management Pack verwenden.
@@ -231,5 +231,5 @@ Ein Datensatz mit dem Typ _WireData_ wird für jeden Eingabedatentyp erstellt. D
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu den Anforderungen und Methoden für die Aktivierung der Überwachung für Ihre virtuellen Computer finden Sie unter [Bereitstellen von VM Insights](./vminsights-enable-overview.md).
+- Informationen zu den Anforderungen und Methoden für die Aktivierung der Überwachung für Ihre virtuellen Computer finden Sie unter [Bereitstellen von VM Insights](../vm/vminsights-enable-overview.md).
 - [Durchsuchen von Protokollen](../logs/log-query-overview.md) und darüber, wie Sie ausführliche Wire Data-Suchdatensätze anzeigen.

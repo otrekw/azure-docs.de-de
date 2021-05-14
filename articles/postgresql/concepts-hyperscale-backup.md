@@ -6,23 +6,24 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: 90b2a39b9a5f3b4d011ff1a1ef3651dff75a1cf6
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.date: 04/14/2021
+ms.openlocfilehash: 7681e9c28bbbbcec06bcc1cf2bf469f1b4189d79
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968304"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520172"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL: Hyperscale (Citus)
 
-Bei der Option Hyperscale (Citus) für Azure Database for PostgreSQL werden automatisch Sicherungskopien für jeden Knoten erstellt und in einem lokal redundanten Speicher gespeichert. Mithilfe von Sicherungskopien können Sie den Stand Ihres Hyperscale (Citus)-Clusters zu einem bestimmten Zeitpunkt wiederherstellen. Sicherungen und Wiederherstellungen sind wesentliche Bestandteile jeder Strategie für Geschäftskontinuität, da Ihre Daten so vor versehentlichen Beschädigungen und Löschungen geschützt werden.
+Bei der Option Hyperscale (Citus) für Azure Database for PostgreSQL werden automatisch Sicherungskopien für jeden Knoten erstellt und in einem lokal redundanten Speicher gespeichert. Mithilfe von Sicherungen können Sie den Stand Ihrer Hyperscale (Citus)-Servergruppe zu einem bestimmten Zeitpunkt wiederherstellen.
+Sicherungen und Wiederherstellungen sind wesentliche Bestandteile jeder Strategie für Geschäftskontinuität, da Ihre Daten so vor versehentlichen Beschädigungen und Löschungen geschützt werden.
 
 ## <a name="backups"></a>Backups
 
-Mindestens einmal pro Tag erstellt Azure Database for PostgreSQL Sicherungsmomentaufnahmen der Datendateien und des Datenbanktransaktionsprotokolls. Dank dieser Sicherungen können Sie für einen Server den Stand zu einem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums wiederherstellen. (Der Aufbewahrungszeitraum beträgt derzeit für alle Cluster 35 Tage.) Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
+Mindestens einmal pro Tag erstellt Azure Database for PostgreSQL Sicherungsmomentaufnahmen der Datendateien und des Datenbanktransaktionsprotokolls. Dank dieser Sicherungen können Sie für einen Server den Stand zu einem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums wiederherstellen. (Der Aufbewahrungszeitraum beträgt derzeit für alle Servergruppen 35 Tage.) Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
 
-In Azure-Regionen, die Verfügbarkeitszonen unterstützen, werden Sicherungsmomentaufnahmen in drei Verfügbarkeitszonen gespeichert. Solange mindestens eine Verfügbarkeitszone online ist, kann der Hyperscale (Citus)-Cluster wiederhergestellt werden.
+In Azure-Regionen, die Verfügbarkeitszonen unterstützen, werden Sicherungsmomentaufnahmen in drei Verfügbarkeitszonen gespeichert. Solange mindestens eine Verfügbarkeitszone online ist, kann die Hyperscale (Citus)-Servergruppe wiederhergestellt werden.
 
 Sicherungskopien können nicht exportiert werden. Sie können nur für Wiederherstellungsvorgänge in Azure Database for PostgreSQL verwendet werden.
 
@@ -32,38 +33,16 @@ Die aktuellen Preise für Sicherungsspeicher finden Sie auf der [Preisseite](htt
 
 ## <a name="restore"></a>Restore
 
-In Azure Database for PostgreSQL wird beim Wiederherstellen eines Hyperscale (Citus)-Clusters aus den Sicherungskopien der ursprünglichen Knoten ein neuer Cluster erstellt. 
+Sie können den Stand einer Hyperscale (Citus)-Servergruppe zu einem beliebigen Zeitpunkt innerhalb der letzten 35 Tage wiederherstellen.  Die Point-in-Time-Wiederherstellung ist für viele Szenarien hilfreich. Beispiele hierfür sind Fälle, in denen ein Benutzer versehentlich Daten löscht oder eine wichtige Tabelle oder Datenbank entfernt oder in denen eine Anwendung fälschlicherweise unbeschädigte Daten mit fehlerhaften Daten überschreibt.
 
 > [!IMPORTANT]
->Sie können den Cluster mit Hyperscale (Citus) nur innerhalb desselben Abonnements und derselben Ressourcengruppe und mit einem anderen Clusternamen wiederherstellen.
+> Gelöschte Hyperscale (Citus)-Servergruppen können nicht wiederhergestellt werden. Wenn Sie die Servergruppe löschen, werden alle Knoten, die zu dieser Servergruppe gehören, gelöscht und können nicht wiederhergestellt werden. Um Servergruppenressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../azure-resource-manager/management/lock-resources.md) nutzen.
 
+Beim Wiederherstellungsprozess wird eine neue Servergruppe in derselben Azure-Region, demselben Abonnement und derselben Ressourcengruppe wie die ursprüngliche Servergruppe erstellt. Diese Servergruppe verfügt über die Konfiguration der ursprünglichen Servergruppe: Die Anzahl von Knoten und virtuellen Kernen sowie Speichergröße, Benutzerrollen, PostgreSQL-Version und Version der Citus-Erweiterung stimmen überein.
 
-> [!IMPORTANT]
-> Gelöschte Hyperscale (Citus)-Cluster können nicht wiederhergestellt werden. Wenn Sie den Cluster löschen, werden alle Knoten, die zu diesem Cluster gehören, gelöscht und können nicht wiederhergestellt werden. Administratoren können [Verwaltungssperren](../azure-resource-manager/management/lock-resources.md) nutzen, um Clusterressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen.
-
-### <a name="point-in-time-restore-pitr"></a>Point-in-Time-Wiederherstellung
-
-Sie können den Stand eines Clusters zu einem beliebigen Zeitpunkt innerhalb der letzten 35 Tage wiederherstellen.
-Die Point-in-Time-Wiederherstellung ist für viele Szenarien hilfreich. Beispiele hierfür sind Fälle, in denen ein Benutzer versehentlich Daten löscht oder eine wichtige Tabelle oder Datenbank entfernt oder in denen eine Anwendung fälschlicherweise unbeschädigte Daten mit fehlerhaften Daten überschreibt.
-
-Beim Wiederherstellungsprozess wird ein neuer Cluster in derselben Azure-Region, demselben Abonnement und derselben Ressourcengruppe wie der ursprüngliche Cluster erstellt. Dieser Cluster verfügt über die Konfiguration des ursprünglichen Clusters: Die Anzahl von Knoten und virtuellen Kernen sowie Speichergröße, Benutzerrollen, PostgreSQL-Version und Version der Citus-Erweiterung stimmen überein.
-
-Die Firewalleinstellungen und PostgreSQL-Dienstparameter der ursprünglichen Servergruppe bleiben nicht erhalten. Sie werden auf die Standardwerte zurückgesetzt. Die Firewall verhindert alle Verbindungen. Sie müssen diese Einstellungen nach der Wiederherstellung manuell anpassen.
-
-> [!IMPORTANT]
-> Sie müssen eine Supportanfrage stellen, um eine Point-in-Time-Wiederherstellung Ihres Hyperscale (Citus)-Clusters durchzuführen.
-
-### <a name="post-restore-tasks"></a>Aufgaben nach der Wiederherstellung
-
-Nach beiden Wiederherstellungsverfahren sollten Sie die folgenden Aufgaben durchführen, um Ihre Benutzer und Anwendungen wieder in einen betriebsbereiten Zustand zu versetzen:
-
-* Umleiten von Clients und Clientanwendungen an den neuen Server, wenn der neue Server den ursprünglichen Server ersetzen soll
-* Sicherstellen, dass eine geeignete Firewall auf Serverebene vorhanden ist, damit Benutzer eine Verbindung herstellen können. Diese Regeln werden nicht von der ursprünglichen Servergruppe kopiert.
-* Passen Sie PostgreSQL-Serverparameter nach Bedarf an. Diese Parameter werden nicht von der ursprünglichen Servergruppe kopiert.
-* Sicherstellen, dass geeignete Anmeldungen und Berechtigungen auf Datenbankebene vorhanden sind
-* Konfigurieren der erforderlichen Warnungen
+Die Firewalleinstellungen und PostgreSQL-Dienstparameter der ursprünglichen Servergruppe bleiben nicht erhalten. Sie werden auf die Standardwerte zurückgesetzt. Die Firewall verhindert alle Verbindungen. Sie müssen diese Einstellungen nach der Wiederherstellung manuell anpassen. Sehen Sie sich unsere Liste vorgeschlagener [Aufgaben nach der Wiederherstellung](howto-hyperscale-restore-portal.md#post-restore-tasks) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Sehen Sie sich die Schritte zum [Wiederherstellen einer Servergruppe](howto-hyperscale-restore-portal.md) im Azure-Portal an.
 * Erfahren Sie mehr über  [Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md).
-* Legen Sie  [vorgeschlagene Warnungen](./howto-hyperscale-alert-on-metric.md#suggested-alerts) für Hyperscale (Citus)-Servergruppen fest.

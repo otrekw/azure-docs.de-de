@@ -3,13 +3,13 @@ title: Empfohlene Richtlinien für Azure-Dienste.
 description: Hier wird beschrieben, wie Sie empfohlene Richtlinien für Azure-Dienste wie Azure Virtual Machines finden und anwenden können.
 ms.date: 03/31/2021
 ms.topic: conceptual
-ms.customer: generated
-ms.openlocfilehash: ef028dc61b10117509fdd27e815230ff27dbadfa
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.custom: generated
+ms.openlocfilehash: f84e22e092bba202187d74087e2e3660bcbda94b
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090000"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326109"
 ---
 # <a name="recommended-policies-for-azure-services"></a>Empfohlene Richtlinien für Azure-Dienste.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 998b0cb04d465f675423e2472a7ca8c6441b1fed
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: be12a9054fd67b243530ff671c10fa53acafc308
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103010404"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366350"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrieren vom Netzwerkleistungsmonitor zum Verbindungsmonitor
 
@@ -31,7 +31,7 @@ Sie können Tests vom Netzwerkleistungsmonitor (NPM) mit nur einem Mausklick und
 
 Durch die Migration können die folgenden Ergebnisse erzielt werden:
 
-* Die Funktion lokaler Agents und die Firewalleinstellungen bleiben unverändert erhalten. Es sind keine Änderungen erforderlich. Log Analytics-Agents, die auf Azure-VMs installiert sind, müssen durch die [Network Watcher-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows) ersetzt werden.
+* Die Funktion lokaler Agents und die Firewalleinstellungen bleiben unverändert erhalten. Es sind keine Änderungen erforderlich. Log Analytics-Agents, die auf Azure-VMs installiert sind, müssen durch die [Network Watcher-Erweiterung](../virtual-machines/extensions/network-watcher-windows.md) ersetzt werden.
 * Vorhandene Test werden „Verbindungsmonitor“ > „Testgruppe“ > „Testformat“ zugeordnet. Wählen Sie **Bearbeiten** aus, um die Eigenschaften des neuen Verbindungsmonitors anzuzeigen und zu ändern. Laden Sie eine Vorlage herunter, um Änderungen vorzunehmen, und übermitteln Sie sie mit Azure Resource Manager.
 * Agents senden Daten sowohl an den Log Analytics-Arbeitsbereich als auch an Metriken.
 * Datenüberwachung:
@@ -43,7 +43,7 @@ Durch die Migration können die folgenden Ergebnisse erzielt werden:
     
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Stellen Sie sicher, dass Network Watcher in Ihrem Abonnement und in der Region des Log Analytics-Arbeitsbereichs aktiviert ist. 
+* Stellen Sie sicher, dass Network Watcher in Ihrem Abonnement und in der Region des Log Analytics-Arbeitsbereichs aktiviert ist. Andernfalls wird die folgende Fehlermeldung angezeigt: „Bevor Sie die Migration starten, aktivieren Sie die Network Watcher-Erweiterung im Auswahlabonnement und am Standort des ausgewählten LA-Arbeitsbereichs.“
 * Falls Sie eine Azure-VM verwenden, die einer anderen Region/einem anderen Abonnement angehört als die/dem, die/das der Log Analytics-Arbeitsbereich als Endpunkt verwendet, stellen Sie sicher, dass Network Watcher für dieses Abonnement und diese Region aktiviert ist.   
 * Virtuelle Azure-Computer, auf denen Log Analytics-Agents installiert sind, müssen mit der Network Watcher-Erweiterung aktiviert werden.
 
@@ -57,6 +57,10 @@ Gehen Sie folgendermaßen vor, um von Netzwerkleistungsmonitor zu Verbindungsmon
     
 1. Wählen Sie in den Dropdownlisten Ihr Abonnement und den Arbeitsbereich und dann das NPM-Feature aus, das Sie migrieren möchten. 
 1. Wählen Sie zum Migrieren der Tests **Importieren** aus.
+* Wenn NPM im Arbeitsbereich nicht aktiviert ist, wird ein Fehler mit dem Hinweis angezeigt, dass keine gültige NPM-Konfiguration gefunden wurde. 
+* Wenn in der Funktion, die Sie in Schritt 2 ausgewählt haben, keine Tests vorhanden sind, wird ein Fehler mit dem Hinweis angezeigt, dass <feature> im ausgewählten Arbeitsbereich nicht konfiguriert ist.
+* Wenn keine gültigen Tests verfügbar sind, wird ein Fehler mit dem Hinweis angezeigt, dass der ausgewählte Arbeitsbereich keine gültigen Tests enthält.
+* Ihre Tests können Agents enthalten, die nicht mehr aktiv sind, aber möglicherweise in der Vergangenheit aktiv waren. Es wird ein Fehler mit dem Hinweis angezeigt, dass nur einige Tests Agents enthalten, die nicht mehr aktiv sind. Liste der inaktiven Agents: {0}. Diese Agents wurden möglicherweise in der Vergangenheit ausgeführt, sind aber jetzt heruntergefahren/werden nicht mehr ausgeführt. Aktivieren Sie Agents, und migrieren Sie zu Verbindungsmonitor. Klicken Sie auf „Weiter“, um die Tests zu migrieren, die keine inaktiven Agents enthalten.
 
 Nach dem Beginn der Migration werden die folgenden Änderungen durchgeführt: 
 * Es wird eine neue Verbindungsmonitorressource erstellt.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/25/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2545915edf9e39b63100a2bb16bd34fa6777675c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff1589eb496cbc4482aaf93dfd4f0faeeda5e9cd
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100473462"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208867"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-portal"></a>Aktivieren des privaten Zugriffs mit Private Link (Vorschau): Azure-Portal
 
@@ -20,7 +20,7 @@ ms.locfileid: "100473462"
 
 In diesem Artikel werden verschiedene Methoden zum [Aktivieren von Private Link mit einem privaten Endpunkt für eine Azure Digital Twins-Instanz](concepts-security.md#private-network-access-with-azure-private-link-preview) beschrieben (befindet sich derzeit in der Vorschauphase). Das Konfigurieren eines privaten Endpunkts für Ihre Azure Digital Twins-Instanz ermöglicht es Ihnen, Ihre Azure Digital Twins-Instanz zu schützen und eine öffentliche Offenlegung zu vermeiden. Außerdem wird auch die Datenexfiltration aus Ihrer [Azure Virtual Network-Instanz (virtuelles Netzwerk)](../virtual-network/virtual-networks-overview.md) verhindert.
 
-In diesem Artikel wird die Vorgehensweise mit dem [**Azure-Portal**](https://portal.azure.com) beschrieben.
+In diesem Artikel wird die Vorgehensweise mit dem [Azure-Portal](https://portal.azure.com) beschrieben.
 
 Die folgenden Schritte werden in diesem Artikel behandelt: 
 1. Aktivieren Sie Private Link, und konfigurieren Sie einen privaten Endpunkt für eine Azure Digital Twins-Instanz.
@@ -28,7 +28,7 @@ Die folgenden Schritte werden in diesem Artikel behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie einen privaten Endpunkt einrichten können, benötigen Sie eine [**Azure Virtual Network-Instanz (virtuelles Netzwerk)**](../virtual-network/virtual-networks-overview.md), in dem der Endpunkt bereitgestellt werden kann. Wenn Sie noch nicht über ein virtuelles Netzwerk verfügen, können Sie einen [Schnellstart](../virtual-network/quick-create-portal.md) für Azure Virtual Network durchlaufen, um eines einzurichten.
+Bevor Sie einen privaten Endpunkt einrichten können, benötigen Sie eine [Azure Virtual Network-Instanz (virtuelles Netzwerk)](../virtual-network/virtual-networks-overview.md) , in dem der Endpunkt bereitgestellt werden kann. Wenn Sie noch nicht über ein virtuelles Netzwerk verfügen, können Sie einen [Schnellstart](../virtual-network/quick-create-portal.md) für Azure Virtual Network durchlaufen, um eines einzurichten.
 
 ## <a name="add-a-private-endpoint-for-an-azure-digital-twins-instance"></a>Hinzufügen eines privaten Endpunkts für eine Azure Digital Twins-Instanz 
 
@@ -43,7 +43,7 @@ Beide dieser Erstellungsmethoden bieten Ihnen dieselben Konfigurationsoptionen u
 
 ### <a name="add-a-private-endpoint-during-instance-creation"></a>Hinzufügen eines privaten Endpunkts beim Erstellen der Instanz
 
-In diesem Abschnitt aktivieren Sie Private Link mit einem privaten Endpunkt für eine Azure Digital Twins-Instanz, die derzeit erstellt wird. Dieser Abschnitt befasst sich mit dem Netzwerkschritt des Erstellungsprozesses. Eine umfassende exemplarische Vorgehensweise zum Erstellen einer Azure Digital Twins-Instanz finden Sie unter [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md) aus.
+In diesem Abschnitt aktivieren Sie Private Link mit einem privaten Endpunkt für eine Azure Digital Twins-Instanz, die derzeit erstellt wird. Dieser Abschnitt befasst sich mit dem Netzwerkschritt des Erstellungsprozesses. Eine umfassende exemplarische Vorgehensweise zum Erstellen einer Azure Digital Twins-Instanz finden Sie unter [Vorgehensweise: Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-portal.md) aus.
 
 Die Private Link-Optionen finden Sie auf der Registerkarte **Netzwerk** des Instanzsetups.
 
@@ -148,4 +148,4 @@ Zum Deaktivieren oder Aktivieren des öffentlichen Netzwerkzugriffs über das [A
 ## <a name="next-steps"></a>Nächste Schritte
 
 Hier erfahren Sie mehr über Private Link für Azure: 
-* [*Was ist der Azure Private Link-Dienst?*](../private-link/private-link-service-overview.md)
+* [Was ist der Azure Private Link-Dienst?](../private-link/private-link-service-overview.md)

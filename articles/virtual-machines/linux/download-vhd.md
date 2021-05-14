@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: b3435d1dabf604cf7a1394c14ee62d65b923714b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8def06990b72d6e08127e8c4f16e0dfd87905d4f
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565936"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565184"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Herunterladen einer Linux-VHD von Azure
 
@@ -21,7 +21,9 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals eine Linux-VH
 
 ## <a name="stop-the-vm"></a>Beenden des virtuellen Computers
 
-Eine VHD kann nicht von Azure heruntergeladen werden, wenn sie an eine ausgeführte VM angefügt ist. Sie müssen die VM beenden, um die VHD herunterzuladen. 
+Eine VHD kann nicht von Azure heruntergeladen werden, wenn sie an eine ausgeführte VM angefügt ist. Wenn Sie den virtuellen Computer weiter ausführen möchten, können Sie [eine Momentaufnahme erstellen und dann die Momentaufnahme herunterladen](#alternative-snapshot-the-vm-disk).
+
+Den virtuellen Computer beenden:
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2.  Wählen Sie im linken Menü **Virtual Machines** aus.
@@ -29,6 +31,24 @@ Eine VHD kann nicht von Azure heruntergeladen werden, wenn sie an eine ausgefüh
 4.  Wählen Sie auf der Seite für den virtuellen Computer die Option **Beenden** aus.
 
     :::image type="content" source="./media/download-vhd/export-stop.PNG" alt-text="Menüschaltfläche zum Beenden der VM":::
+
+### <a name="alternative-snapshot-the-vm-disk"></a>Alternative: Momentaufnahme des VM-Datenträgers
+
+Machen Sie eine Momentaufnahme des Datenträgers, um ihn herunterzuladen.
+
+1. Wählen Sie im [Portal](https://portal.azure.com) den virtuellen Computer aus.
+2. Wählen Sie im linken Menü **Datenträger** aus und dann den Datenträger, den Sie momentaufnahmen möchten. Die Details des Datenträgers werden angezeigt.  
+3. Wählen Sie im oberen Menü die Option **Momentaufnahme erstellen** aus. Die Seite **Momentaufnahme erstellen** wird geöffnet.
+4. Geben Sie unter **Name** einen Namen für die Momentaufnahme ein. 
+5. Wählen Sie für **Momentaufnahmetyp** die Option **Vollständig** oder **Inkrementell** aus.
+6. Wählen Sie abschließend **Überprüfen + Erstellen** aus.
+
+Ihre Momentaufnahme wird in Kürze erstellt und kann dann zum Herunterladen oder Erstellen eines anderen virtuellen Computers verwendet werden.
+
+> [!NOTE]
+> Wenn Sie den virtuellen Computer nicht zuerst beenden, ist die Momentaufnahme nicht bereinigt. Der Snapshot befindet sich in dem Zustand, als ob die VM zum Zeitpunkt der Erstellung des Snapshots heruntergefahren oder abgestürzt wäre.  Obwohl dies normalerweise sicher ist, kann dies zu Problemen führen, wenn die ausgeführten Anwendungen, die zu einem bestimmten Zeitpunkt ausgeführt werden, nicht absturzsicher waren.
+>  
+> Diese Methode wird nur für VMs mit einem einzelnen Betriebssystemdatenträger empfohlen. VMs mit mindestens einem Datenträger sollten vor dem Herunterladen oder vor dem Erstellen einer Momentaufnahme für den Betriebssystemdatenträger und jeden Datenträger beendet werden.
 
 ## <a name="generate-sas-url"></a>Generieren der SAS-URL
 

@@ -10,19 +10,19 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: d4fb33e8e904d12e242f7eeaf9c2dc50a02eff4d
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 2133f3da926dfd1e92d911004393893f58d27db6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961250"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136448"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-virtual-machines"></a>Migrationsleitfaden: Oracle zu SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 In diesem Leitfaden erfahren Sie, wie Sie Ihre Oracle-Schemata mithilfe von SQL Server Migration Assistant für Oracle zu SQL Server auf Azure Virtual Machines migrieren. 
 
-Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
+Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](/data-migration). 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
@@ -220,7 +220,7 @@ Führen Sie die folgenden Schritte aus, um das Schema zu veröffentlichen und di
    ![Screenshot: SQL Server-Instanz in SSMA](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
 
 Anstatt SSMA zu verwenden, könnten Sie die SQL Server Integration Services (SSIS) verwenden, um die Daten zu migrieren. Weitere Informationen finden Sie unter: 
-- [SQL Server Integration Services](https://docs.microsoft.com//sql/integration-services/sql-server-integration-services).
+- [SQL Server Integration Services](//sql/integration-services/sql-server-integration-services).
 - [SSIS für Azure und Hybriddatenverschiebung](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx).
 
 
@@ -292,5 +292,3 @@ Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptaufgabe 
 
 - Für die Bewertung der Anwendungszugriffsebene verwenden Sie das [Data Access Migration Toolkit (Vorschauversion)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Ausführliche Informationen zum Ausführen von A/B-Tests auf Datenzugriffsebene finden Sie unter [Übersicht über den Assistenten für Datenbankexperimente](/sql/dea/database-experimentation-assistant-overview).
-
-

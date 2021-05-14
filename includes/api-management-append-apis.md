@@ -2,25 +2,43 @@
 author: vladvino
 ms.service: api-management
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 04/16/2021
 ms.author: vlvinogr
-ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 890cb1dc8d8a59f6b567497b968b53bb89ec1ecc
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183822"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108230624"
 ---
 ## <a name="append-other-apis"></a>Anfügen weiterer APIs
 
-Eine API kann sich aus APIs zusammensetzen, die von verschiedenen Diensten verfügbar gemacht werden. Hierzu zählen beispielsweise die OpenAPI-Spezifikation, eine SOAP-API, das API-Apps-Feature von Azure App Service, eine Azure-Funktionen-App, Azure Logic Apps und Azure Service Fabric.
+Sie können eine API aus APIs zusammensetzen, die von verschiedenen Diensten verfügbar gemacht werden, u. a.:
+* OpenAPI-Spezifikation
+* SOAP-API
+* In Azure App Service gehostete Web-App
+* Azure-Funktionen-App
+* Azure Logic Apps
+* Azure Service Fabric
 
-![Importieren einer API](./media/api-management-append-apis/import.png)
+Führen Sie zum Anfügen einer anderen API an eine vorhandene API die folgenden Schritte aus. 
 
-Um eine andere API an eine vorhandene API anzufügen, führen Sie die folgenden Schritte aus. Wenn Sie eine andere API importieren, werden die Vorgänge an Ihre aktuelle API angefügt.
+>[!NOTE] 
+> Wenn Sie eine andere API importieren, werden die Vorgänge an Ihre aktuelle API angefügt.
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Azure API Management-Instanz.
-2. Wählen Sie im Menü links **APIs** aus.
-3. Klicken Sie neben der API, die Sie an eine andere API anfügen möchten, auf **...**.
-4. Wählen Sie im Dropdownmenü **Importieren** aus.
-5. Wählen Sie einen Dienst aus, aus dem eine API importiert werden soll.
+
+    :::image type="content" source="./media/api-management-append-apis/service-page.png" alt-text="Navigieren zur Azure API Management-Instanz":::
+
+1. Wählen Sie auf der Seite **Übersicht** oder im Menü auf der linken Seite die Option **APIs** aus.
+
+    :::image type="content" source="./media/api-management-append-apis/api-select.png" alt-text="Auswählen von „APIs“":::
+
+1. Klicken Sie neben der API, die Sie an eine andere API anfügen möchten, auf **...**.
+1. Wählen Sie im Dropdownmenü **Importieren** aus.
+
+    :::image type="content" source="./media/api-management-append-apis/append-01.png" alt-text="Auswählen von „Importieren“":::
+
+1. Wählen Sie einen Dienst aus, aus dem eine API importiert werden soll.
+
+    :::image type="content" source="./media/api-management-append-apis/select-to-import.png" alt-text="Auswählen des Diensts":::

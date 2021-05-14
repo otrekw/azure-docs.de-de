@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 44edd9273730ff7ba81a3ad5af2408ff6b7b7a5c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 588af3ff739d82029260909d23a7639bc2cbcb8d
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060634"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069937"
 ---
 # <a name="what-is-routing-preference"></a>Was ist Routingpräferenz?
 
@@ -76,5 +76,6 @@ Der Preisunterschied zwischen beiden Optionen spiegelt sich in den Preisen für 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Erfahren Sie mehr über die Optimierung der Konnektivität zu Ihren Microsoft Azure-Diensten über das Internet - Video](https://www.youtube.com/watch?v=j6A_Mbpuh6s&list=PLLasX02E8BPA5V-waZPcelhg9l3IkeUQo&index=12) 
 * [Konfigurieren der Routingpräferenz für einen virtuellen Computer mithilfe von Azure PowerShell](configure-routing-preference-virtual-machine-powershell.md)
 * [Konfigurieren der Routingpräferenz für einen virtuellen Computer mithilfe der Azure CLI](configure-routing-preference-virtual-machine-cli.md)

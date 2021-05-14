@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 552d2587f35ed391b470c6d5b1693b79fd57306b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80df7b85ec1ad9e273081f9a6a96b9a9d7ec8cd9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879577"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791191"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Autorisieren des Zugriffs auf Blob- und Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -67,7 +67,7 @@ Wenn Ihre Entwicklungsumgebung kein einmaliges Anmelden bzw. keine Anmeldung üb
 
 #### <a name="create-the-service-principal"></a>Erstellen des Dienstprinzipals
 
-Wenn Sie einen Dienstprinzipal über die Azure-Befehlszeilenschnittstelle erstellen und eine Azure-Rolle zuweisen möchten, rufen Sie den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) auf. Geben Sie eine Azure Storage-Datenzugriffsrolle an, die dem neuen Dienstprinzipal zugewiesen werden soll. Geben Sie außerdem den Bereich für die Rollenzuweisung an. Weitere Informationen zu den für Azure Storage bereitgestellten integrierten Rollen finden Sie unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
+Wenn Sie einen Dienstprinzipal über die Azure-Befehlszeilenschnittstelle erstellen und eine Azure-Rolle zuweisen möchten, rufen Sie den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) auf. Geben Sie eine Azure Storage-Datenzugriffsrolle an, die dem neuen Dienstprinzipal zugewiesen werden soll. Geben Sie außerdem den Bereich für die Rollenzuweisung an. Weitere Informationen zu den für Azure Storage bereitgestellten integrierten Rollen finden Sie unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 
 Wenn Sie nicht über ausreichende Berechtigungen zum Zuweisen einer Rolle zum Dienstprinzipal verfügen, müssen Sie möglicherweise den Kontobesitzer oder den Administrator bitten, die Rollenzuweisung vorzunehmen.
 

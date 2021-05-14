@@ -5,22 +5,22 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: f9fa2426e371ab9fd99e88979cbcbbb34adb00d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 741a47120b9410f91ef7f6de21879aab796e9a5e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643594"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136726"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Migrationsleitfaden: Zugreifen auf Azure SQL-Datenbank
 
-In diesem Leitfaden erfahren Sie, wie Sie Ihre Microsoft Access-Datenbank mit SQL Server Migration Assistant für Access (SSMA für Access) zur Azure SQL-Datenbank migrieren.
+In diesem Leitfaden erfahren Sie, wie Sie Ihre Microsoft Access-Datenbank mithilfe von [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant für Access (SSMA für Access) zu einer Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey).
 
-Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
+Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](/data-migration). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +32,7 @@ Bevor Sie mit der Migration der Access-Datenbank zu einer SQL-Datenbank beginnen
 
 ## <a name="pre-migration"></a>Vor der Migration
 
-Wenn diese Voraussetzungen erfüllt sind, können Sie die Topologie Ihrer Umgebung ermitteln und die Durchführbarkeit der Migration bewerten.
+Nachdem Sie diese Voraussetzungen erfüllt haben, können Sie die Topologie Ihrer Umgebung ermitteln und die Durchführbarkeit Ihrer [Azure-Cloudmigration](https://azure.microsoft.com/migration) bewerten.
 
 
 ### <a name="assess"></a>Bewerten 
@@ -124,7 +124,7 @@ Gehen Sie folgendermaßen vor, um Ihr Schema zu veröffentlichen und die Daten m
 
 1. Migrieren der Daten. Klicken Sie mit der rechten Maustaste auf die zu migrierende Datenbank oder das zu migrierende Objekt, und wählen Sie **Daten migrieren** aus. Alternativ können Sie oben rechts die Registerkarte **Daten migrieren** auswählen.  
 
-   Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der gewünschten Tabelle. Deaktivieren Sie das Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
+   Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie die **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der Tabelle. Deaktivieren Sie das Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
 
     ![Screenshot des Befehls „Daten migrieren“ im Bereich „Access Metadata Explorer“.](./media/access-to-sql-database-guide/migrate-data.png)
 
@@ -148,18 +148,18 @@ Wenn die Daten in die Zielumgebung migriert wurden, müssen alle Anwendungen, di
 
 Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
-1. **Entwickeln von Validierungstests**: Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die für die Quell- und die Zieldatenbank ausgeführt werden sollen. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
+1. **Entwickeln von Validierungstests:** Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die sowohl gegen die Quell- als auch gegen die Zieldatenbank ausgeführt werden. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
 
-1. **Einrichten einer Testumgebung**: Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
+1. **Einrichten der Testumgebung:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
 
-1. **Ausführen der Validierungstests**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
+1. **Führen Sie die Validierungstests aus**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 
-1. **Ausführen von Leistungstests**: Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
+1. **Führen Sie Leistungstests aus**: Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
 
 
 ### <a name="optimize"></a>Optimieren
 
-Die Postmigrationsphase ist unerlässlich, um Datengenauigkeitsprobleme abzustimmen, die Vollständigkeit zu bestätigen und Leistungsprobleme der Workload zu beheben.
+Die Phase nach der Migration ist entscheidend für den Abgleich von Problemen mit der Datengenauigkeit, die Überprüfung der Vollständigkeit und das Beheben von Leistungsproblemen der Workload.
 
 Weitere Informationen zu diesen Problemen sowie die erforderlichen Schritte zur Problembehandlung finden Sie im [Leitfaden zur Validierung und Optimierung nach der Migration](/sql/relational-databases/post-migration-validation-and-optimization-guide).
 
@@ -185,6 +185,8 @@ Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendun
 - Weitere Informationen zum Framework und zum Einführungszyklus von Cloudmigrationen finden Sie unter:
    -  [Cloud Adoption Framework für Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Bewährte Methoden für die Kostenermittlung und Größenanpassung von zu Azure migrierten Workloads](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Ressourcen zur Cloudmigration](https://azure.microsoft.com/migration/resources)
+
 
 - Informationen zum Bewerten der Anwendungszugriffsebene finden Sie unter [Data Access Migration Toolkit (Vorschauversion)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Informationen zum Ausführen von A/B-Tests auf Datenzugriffsebene finden Sie unter [Überblick über den Assistenten für Datenbankexperimente](/sql/dea/database-experimentation-assistant-overview).

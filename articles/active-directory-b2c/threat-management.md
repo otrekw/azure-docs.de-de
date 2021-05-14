@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e5184698cab1874f327173fb30cf527feee48cad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55c77354e50ce96ae80ce922798fbb8c2a49f41f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85384973"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126883"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Verwalten von Bedrohungen für Ressourcen in Azure Active Directory B2C
 
@@ -49,8 +49,8 @@ So verwalten Sie die Kennwortschutzeinstellungen, einschließlich des Sperrschwe
 
 ## <a name="view-locked-out-accounts"></a>Anzeigen gesperrter Konten
 
-Informationen zu gesperrten Konten finden Sie im [Anmeldeaktivitätsbericht](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md) von Active Directory. Klicken Sie unter **Status** auf **Fehler**. Fehlgeschlagene Anmeldungen mit dem **Anmeldefehlercode**`50053` geben ein gesperrtes Konto an:
+Informationen zu gesperrten Konten finden Sie im [Anmeldeaktivitätsbericht](../active-directory/reports-monitoring/concept-sign-ins.md) von Active Directory. Klicken Sie unter **Status** auf **Fehler**. Fehlgeschlagene Anmeldungen mit dem **Anmeldefehlercode**`50053` geben ein gesperrtes Konto an:
 
 ![Abschnitt des Azure AD-Anmeldeberichts, in dem ein gesperrtes Konto angezeigt wird](./media/threat-management/portal-01-locked-account.png)
 
-Informationen zum Anzeigen des Anmeldeaktivitätsberichts in Azure Active Directory finden Sie unter [Fehlercodes des Berichts mit den Anmeldeaktivitäten](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md).
+Informationen zum Anzeigen des Anmeldeaktivitätsberichts in Azure Active Directory finden Sie unter [Fehlercodes des Berichts mit den Anmeldeaktivitäten](../active-directory/reports-monitoring/concept-sign-ins.md).

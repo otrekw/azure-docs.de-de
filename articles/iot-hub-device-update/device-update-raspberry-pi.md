@@ -1,17 +1,17 @@
 ---
 title: 'Tutorial: Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+ Yocto-Referenzimages | Microsoft-Dokumentation'
 description: Erste Schritte mit Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+ Yocto-Referenzimages.
-author: valls
+author: ValOlson
 ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 143a7c411bea6a451645c860b7b5d12d2aa8d9f5
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: c330cc4e5721fab9d7336fd5b111d8cef67e170c
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121335"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070225"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+-Referenzimages
 
@@ -19,7 +19,7 @@ Device Update for IoT Hub unterstützt zwei Arten von Updates: imagebasiert und 
 
 Imageupdates bieten ein höheres Maß an Vertrauen in den Endzustand des Geräts. Es ist in der Regel einfacher, die Ergebnisse eines Imageupdates zwischen einer Vorproduktions- und einer Produktionsumgebung zu replizieren, da dies nicht die gleichen Herausforderungen wie bei Paketen und deren Abhängigkeiten mit sich bringt. Aufgrund ihrer atomischen Natur kann auch ein A/B-Failovermodell problemlos übernommen werden.
 
-In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein imagebasiertes End-to-End-Update mithilfe von Device Update for IoT Hub ausführen. 
+In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein imagebasiertes End-to-End-Update mithilfe von Device Update for IoT Hub für eine Raspberry Pi 3 B+-Platine ausführen. 
 
 In diesem Lernprogramm lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -35,7 +35,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 ## <a name="download-image"></a>Herunterladen eines Images
 
-Es gibt drei Images, die als Teil der „Ressourcen“ in einer bestimmten [GitHub-Version von Device Update](https://github.com/Azure/iot-hub-device-update/releases) verfügbar sind. Das Basisimage (adu-base-image) und ein Updateimage (adu-update-image) werden bereitgestellt, sodass Sie Rollouts für verschiedene Versionen testen können, ohne die SD-Karte im Gerät einspielen zu müssen. Dazu müssen Sie die Updateimages im Rahmen des Imports in den Device Update for IoT Hub-Dienst hochladen.
+Beispielimages finden Sie auf der [GitHub-Releaseseite für Geräteupdates](https://github.com/Azure/iot-hub-device-update/releases). Die Datei vom Typ „swUpdate“ ist das Basisimage, das Sie auf eine Raspberry Pi B3+-Platine einspielen können, und die GZ-Datei ist das Update, das Sie über Device Update for IoT Hub importieren. 
 
 ## <a name="flash-sd-card-with-image"></a>Einspielen des Images auf die SD-Karte
 
@@ -77,17 +77,19 @@ Die Software Device Update for Azure IoT Hub unterliegt den folgenden Lizenzbedi
    
 Lesen Sie vor Verwendung des Agents die Lizenzbedingungen. Durch die Installation und Verwendung erklären Sie Ihre Zustimmung zu diesen Bestimmungen. Wenn Sie den Lizenzbedingungen nicht zustimmen, verwenden Sie den Device Update for IoT Hub-Agent nicht.
 
-## <a name="create-device-in-iot-hub-and-get-connection-string"></a>Erstellen des Geräts in IoT Hub und Abrufen der Verbindungszeichenfolge
+## <a name="create-device-or-module-in-iot-hub-and-get-connection-string"></a>Erstellen des Geräts oder Moduls in IoT Hub und Abrufen der Verbindungszeichenfolge
 
 Jetzt muss das Gerät zu Azure IoT Hub hinzugefügt werden.  In Azure IoT Hub wird eine Verbindungszeichenfolge für das Gerät generiert.
 
 1. Starten Sie Azure IoT Hub über das Azure-Portal.
 2. Erstellen Sie ein neues Gerät.
-3. Navigieren Sie auf der linken Seite der Seite zu „Explorers > IoT Devices“ (Explorers > IoT-Geräte), und wählen Sie „New“ (Neu) aus.
+3. Navigieren Sie auf der linken Seite der Seite zu „IoT-Geräte“, und wählen Sie „Neu“ aus.
 4. Geben Sie unter „Device ID“ (Geräte-ID) einen Namen für das Gerät an. Stellen Sie sicher, dass das Kontrollkästchen „Autogenerate keys“(Schlüssel automatisch generieren) aktiviert ist.
 5. Wählen Sie „Save“ (Speichern) aus.
-6. Nun wird die Seite „Devices“ (Geräte) erneut angezeigt, und das von Ihnen erstellte Gerät sollte in der Liste enthalten sein. Wählen Sie dieses Gerät aus.
-7. Wählen Sie in der Ansicht „Gerät“ das Symbol „Kopieren“ neben „Primary Connection String“ (Primäre Verbindungszeichenfolge) aus.
+6. Nun wird die Seite „Devices“ (Geräte) erneut angezeigt, und das von Ihnen erstellte Gerät sollte in der Liste enthalten sein. 
+7. Rufen Sie die Geräteverbindungszeichenfolge ab:
+    - Option 1: Verwenden des Device Update-Agents mit einer Modulidentität: Klicken Sie auf der gleichen Seite „Geräte“ oben auf „+ Modulkennung hinzufügen“. Erstellen Sie ein neues Device Update-Modul mit dem Namen „IoTHubDeviceUpdate“, wählen Sie andere Optionen für Ihren Anwendungsfall aus, und klicken Sie dann auf „Speichern“. Klicken Sie auf das neu erstellte Modul, und wählen Sie in der Modulansicht neben „Primäre Verbindungszeichenfolge“ das Symbol „Kopieren“ aus.
+    - Option 2: Verwenden des Device Update-Agents mit der Geräteidentität: Wählen Sie in der Geräteansicht neben „Primäre Verbindungszeichenfolge“ das Symbol „Kopieren“ aus.
 8. Fügen Sie die kopierten Zeichen irgendwo zur späteren Verwendung in den folgenden Schritte ein.
    **Diese kopierte Zeichenfolge ist Ihre Geräteverbindungszeichenfolge**.
 
@@ -110,9 +112,9 @@ Ersetzen Sie `<device connection string>` durch Ihre Verbindungszeichenfolge.
 
 ## <a name="connect-the-device-in-device-update-iot-hub"></a>Verbinden Sie das Gerät in Device Update IoT Hub.
 
-1. Wählen Sie auf der linken Seite unter „Explorers“ (Explorer) die Option „IoT Devices“ (IoT-Geräte) aus.
+1. Wählen Sie auf der linken Seite die Option „IoT-Geräte“ aus.
 2. Wählen Sie den Link mit Ihrem Gerätenamen aus.
-3. Wählen Sie oben auf der Seite „Device Twin“ (Gerätezwilling) aus.
+3. Wählen Sie oben auf der Seite „Gerätezwilling“ aus, wenn Sie mithilfe der IoT-Geräteidentität direkt eine Verbindung mit Device Update herstellen. Wählen Sie andernfalls das oben erstellte Modul aus, und klicken Sie auf den zugehörigen Modulzwilling.
 4. Suchen Sie unter dem Abschnitt „reported“ (gemeldet) der Eigenschaften des Gerätezwillings nach der Linux-Kernelversion.
 Für ein neues Gerät, das noch kein Update von Device Update erhalten hat, stellt der Wert [DeviceManagement:DeviceInformation:1.swVersion](device-update-plug-and-play.md) die auf dem Gerät aktive Firmwareversion dar.  Sobald ein Update auf ein Gerät angewendet wurde, verwendet Device Update den Eigenschaftswert [AzureDeviceUpdateCore:ClientMetadata:4.installedUpdateId](device-update-plug-and-play.md), um die auf dem Gerät aktive Firmwareversion darzustellen.
 5. Die Dateien für Basis- und Updateimage weisen eine Versionsnummer im Dateinamen auf.

@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 08/06/2020
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: 4194c71823e1affde1dcae47fd7e64668b57c0cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: fbe9c1585ab2eee6e0d38c309a2d1d279ffab0b4
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149357"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331482"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Erstellen von Computezielen für Modelltraining und -bereitstellung in Azure Machine Learning Studio
 
@@ -80,7 +80,7 @@ Führen Sie die vorherigen Schritte zum Anzeigen der Liste der Computeziele aus.
     :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Anzeigen des Computestatus in einer Liste":::
 
 
-### <a name="compute-instance"></a>Compute-Instanz
+### <a name="compute-instance"></a><a name="compute-instance"></a> Compute-Instanz
 
 Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um die Compute-Instanz zu erstellen.  Füllen Sie das Formular anschließend wie folgt aus:
 
@@ -93,7 +93,7 @@ Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um die Comput
 |Typ des virtuellen Computers |  Wählen Sie CPU oder GPU aus. Dieser Typ kann nach der Erstellung nicht mehr geändert werden.     |
 |Größe des virtuellen Computers     |  Die Größe der unterstützten virtuellen Computer kann in Ihrer Region eingeschränkt sein. Überprüfen Sie die [Verfügbarkeitsliste](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).     |
 |Aktivieren/Deaktivieren des SSH-Zugriffs     |   Der SSH-Zugriff ist standardmäßig deaktiviert.  Der SSH-Zugriff kann nach der Erstellung nicht mehr geändert werden. Stellen Sie sicher, dass Sie den Zugriff aktivieren, wenn Sie das interaktive Debuggen mit [VS Code Remote](how-to-set-up-vs-code-remote.md) planen.   |
-|Erweiterte Einstellungen     |  Optional. Konfigurieren Sie ein virtuelles Netzwerk. Geben Sie **Ressourcengruppe**, **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](./how-to-secure-training-vnet.md) für VNET.  |
+|Erweiterte Einstellungen     |  Optional. Konfigurieren Sie ein virtuelles Netzwerk. Geben Sie **Ressourcengruppe**, **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](./how-to-secure-training-vnet.md) für VNET.  Verwenden Sie außerdem erweiterte Einstellungen, um ein [Setupskript](how-to-create-manage-compute-instance.md#setup-script) anzugeben. |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> Computecluster
 

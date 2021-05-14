@@ -3,12 +3,12 @@ title: 'Tutorial: Zugreifen auf Ihre private Cloud'
 description: Hier erfahren Sie, wie Sie auf eine private Azure VMware Solution-Cloud zugreifen
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: f2af1cffda08bf4b9c62e63f32d36cc9bbd7024a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d2046acaf483022f977559fe74254ca58b8c42ea
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103494392"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945645"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Tutorial: Zugreifen auf eine private Azure VMware Solution-Cloud
 
@@ -24,7 +24,31 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="create-a-new-windows-virtual-machine"></a>Erstellen eines neuen virtuellen Windows-Computers
 
-[!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
+1. Wählen Sie in der Ressourcengruppe **+ Hinzufügen** aus, suchen Sie nach **Microsoft Windows 10**, wählen Sie die Option aus, und wählen Sie anschließend **Erstellen** aus.
+
+   :::image type="content" source="media/tutorial-access-private-cloud/ss8-azure-w10vm-create.png" alt-text="Screenshot: Hinzufügen eines neuen virtuellen Windows 10-Computers für eine Jumpbox" border="true":::
+
+1. Geben Sie die erforderlichen Informationen in die Felder ein, und wählen Sie anschließend **Überprüfen + erstellen** aus. 
+
+   Weitere Informationen zu den Feldern finden Sie in der folgenden Tabelle:
+
+   | Feld | Wert |
+   | --- | --- |
+   | **Abonnement** | Dieses Feld ist bereits mit dem Abonnement ausgefüllt, das zur Ressourcengruppe gehört. |
+   | **Ressourcengruppe** | Dieses Feld ist bereits mit dem Namen der aktuellen Ressourcengruppe ausgefüllt, die Sie im vorherigen Tutorial erstellt haben.  |
+   | **Name des virtuellen Computers** | Geben Sie einen eindeutigen Namen für den virtuellen Computer ein. |
+   | **Region** | Wählen Sie den geografischen Standort des virtuellen Computers aus. |
+   | **Verfügbarkeitsoptionen** | Übernehmen Sie den Standardwert. |
+   | **Image** | Wählen Sie das VM-Image aus. |
+   | **Größe** | Übernehmen Sie die Standardgröße. |
+   | **Authentifizierungstyp**  | Wählen Sie **Kennwort** aus. |
+   | **Benutzername** | Geben Sie den Benutzernamen für die Anmeldung bei dem virtuellen Computer ein. |
+   | **Kennwort** | Geben Sie das Kennwort für die Anmeldung bei dem virtuellen Computer ein. |
+   | **Kennwort bestätigen** | Geben Sie das Kennwort für die Anmeldung bei dem virtuellen Computer ein. |
+   | **Öffentliche Eingangsports** | Wählen Sie **Keine**. Wenn Sie „Keine“ auswählen, können Sie [JIT-Zugriff](../security-center/security-center-just-in-time.md#jit-configure) verwenden, um den Zugriff auf den virtuellen Computer nur dann zu steuern, wenn Sie darauf zugreifen möchten. Alternativ können Sie auch eine [Azure Bastion](../bastion/tutorial-create-host-portal.md)-Instanz verwenden, wenn Sie über das Internet sicher auf den Jumpboxserver zugreifen möchten, ohne Netzwerkports verfügbar zu machen.  |
+
+
+1. Wählen Sie nach erfolgreicher Überprüfung die Option **Erstellen** aus, um den VM-Erstellungsprozess zu starten.
 
 ## <a name="connect-to-the-local-vcenter-of-your-private-cloud"></a>Herstellen einer Verbindung mit der lokalen vCenter-Instanz Ihrer privaten Cloud
 

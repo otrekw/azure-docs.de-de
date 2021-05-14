@@ -4,12 +4,12 @@ description: Überwachen Sie Abhängigkeitsaufrufe von Ihrer lokalen oder Micros
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 124b8d3de59d1645379d50360e69a5fdbd5587e5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e832da335453151ee60a458cb259d4add15d6e1d
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045291"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228173"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Abhängigkeitsnachverfolgung in Azure Application Insights 
 
@@ -90,7 +90,7 @@ Für Webseiten erfasst das JavaScript SDK von Application Insights AJAX-Aufrufe 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Erweiterte SQL-Nachverfolgung zum Abrufen vollständiger SQL-Abfragen
 
 > [!NOTE]
-> Azure Functions erfordert separate Einstellungen zum Aktivieren der SQL-Textsammlung. Weitere Informationen dazu finden Sie unter [Konfigurieren der Überwachung für Azure Functions](../../azure-functions/configure-monitoring.md).
+> Azure Functions erfordert separate Einstellungen zum Aktivieren der SQL-Textsammlung. Legen Sie dazu in [host.json](../../azure-functions/functions-host-json.md#applicationinsights) die Einstellungen `"EnableDependencyTracking": true,` und `"DependencyTrackingOptions": { "enableSqlCommandTextInstrumentation": true }` in `applicationInsights` fest.
 
 Für SQL-Aufrufe wird der Name des Servers und der Datenbank immer erfasst und als Name der erfassten `DependencyTelemetry` gespeichert. Es gibt ein zusätzliches Feld namens „data“, das den vollständigen Text der SQL-Abfrage enthalten kann.
 

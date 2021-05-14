@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 8c6d26de62364b6aca671d1e4283a01c1b78c397
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: 12be4611f0583c6da630b9e5a0e4b5a82ebfa650
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95014831"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106444274"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Mandanten- und Hostpoolerstellung in Windows Virtual Desktop (klassisch)
 
@@ -406,7 +406,7 @@ Wenn Sie die GitHub-Azure Resource Manager-Vorlage ausführen, geben Sie Werte f
 
 ### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>Fehler: vmSubnet nicht verfügbar, wenn virtuelle Netzwerke konfiguriert werden
 
-**Ursache:** In der WVD-Marketplace-Vorlage werden in der Benutzeroberfläche nur Subnetze angezeigt, in denen mindestens so viele IP-Adressen verfügbar sind wie die Gesamtzahl der VMs, die in der Vorlage angegeben sind. Die tatsächliche Anzahl der im Subnetz verfügbaren IP-Adressen muss nur mit der Anzahl der neuen VMs identisch sein, die bereitgestellt werden. Dies kann jedoch von der aktuellen Benutzeroberfläche nicht berechnet werden.
+**Ursache:** In der Windows Virtual Desktop Marketplace-Vorlage zeigt die Benutzeroberfläche nur Subnetze an, die mindestens so viele IP-Adressen zur Verfügung haben, wie die Gesamtzahl der in der Vorlage angegebenen VMs. Die tatsächliche Anzahl der im Subnetz verfügbaren IP-Adressen muss nur mit der Anzahl der neuen VMs identisch sein, die bereitgestellt werden. Dies kann jedoch von der aktuellen Benutzeroberfläche nicht berechnet werden.
 
 **Behebung:** Sie können ein Subnetz angeben, in dem mindestens so viele IP-Adressen verfügbar sind wie die Anzahl der VMs, die hinzugefügt werden. Dazu gehen Sie so vor, dass Sie nicht die Marketplace-Benutzeroberfläche verwenden, sondern den Subnetznamen im Parameter **existingSubnetName** angeben, wenn Sie [eine vorhandene Bereitstellung erneut bereitstellen](expand-existing-host-pool-2019.md#redeploy-from-azure) oder [über die zugrunde liegende ARM-Vorlage aus GitHub bereitstellen](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool).
 

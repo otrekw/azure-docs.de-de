@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung erstellen Sie mithilfe von Go eine 
 ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bf2d2c556cfd6ada6d31fc6ee797888ed0899573
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 32665afec15d17b2bc15d61853ef6b1dc58388fa
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091445"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733695"
 ---
 # <a name="quickstart-create-a-management-group-with-go"></a>Schnellstart: Erstellen einer Verwaltungsgruppe mit Go
 
@@ -61,22 +61,22 @@ Wurden die Go-Pakete der Umgebung Ihrer Wahl hinzugefügt, ist es an der Zeit, d
 
 1. Erstellen Sie die Go-Anwendung, und speichern Sie die folgende Quelle als `mgCreate.go`:
 
-   ```Go
+   ```go
    package main
-   
+
    import (
     "context"
     "fmt"
     "os"
-   
+
     mg "github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups"
     "github.com/Azure/go-autorest/autorest/azure/auth"
    )
-   
+
    func main() {
     // Get variables from command line arguments
     var mgName = os.Args[1]
-   
+
     // Create and authorize a client
     mgClient := mg.NewClient()
     authorizer, err := auth.NewAuthorizerFromCLI()
@@ -85,12 +85,12 @@ Wurden die Go-Pakete der Umgebung Ihrer Wahl hinzugefügt, ist es an der Zeit, d
     } else {
         fmt.Printf(err.Error())
     }
-   
+
     // Create the request
     Request := mg.CreateManagementGroupRequest{
         Name: &mgName,
     }
-   
+
     // Run the query and get the results
     var results, queryErr = mgClient.CreateOrUpdate(context.Background(), mgName, Request, "no-cache")
     if queryErr == nil {

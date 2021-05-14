@@ -1,32 +1,63 @@
 ---
 title: Azure Service Fabric-Versionen
 description: Versionshinweise für Azure Service Fabric Informationen zu den neuesten Features und Verbesserungen in Service Fabric
-ms.date: 06/10/2019
+ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 36fb512181986fd04a95e72aa028b7c0253aa45f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e06bb472a87f05eb8830468512c27e3abaeafbe1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731223"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138605"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
+Dieser Artikel enthält weitere Informationen zu den neuesten Versionen und Updates für die Service Fabric-Runtime und -SDKs.
+
+Die folgenden Ressourcen stehen ebenfalls zur Verfügung:
 - <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Leitfäden zur Problembehandlung</a> 
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Problemverfolgung</a> 
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">Supportoptionen</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">Unterstützte Versionen</a> 
 - <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Codebeispiele</a>
 
-Dieser Artikel enthält weitere Informationen zu den neuesten Versionen und Updates für die Service Fabric-Runtime und -SDKs.
 
-## <a name="service-fabric-72"></a>Service Fabric 7.2
+## <a name="service-fabric-80"></a>Service Fabric 8.0
 
-Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 7.2 der Service Fabric-Runtime zusammen mit Tools und SDK-Updates in den verschiedenen Azure-Regionen begonnen hat. Die Updates für .NET SDK, Java SDK und Service Fabric-Runtime sind über den Webplattform-Installer, NuGet-Pakete und Maven-Repositorys verfügbar.
+Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 8.0 der Service Fabric-Runtime zusammen mit Tools und SDK-Updates in den verschiedenen Azure-Regionen begonnen hat. Die Updates für .NET SDK, Java SDK und Service Fabric-Runtime sind über den Webplattform-Installer, NuGet-Pakete und Maven-Repositorys verfügbar.
 
 ### <a name="key-announcements"></a>Wichtige Ankündigungen
+
+- **Allgemeine Verfügbarkeit** der Unterstützung für .NET 5 für Windows
+- **Allgemeine Verfügbarkeit** [zustandsloser NodeTypes](./service-fabric-stateless-node-types.md)
+- Möglichkeit zum Verschieben zustandsloser Dienstinstanzen
+- Möglichkeit zum Hinzufügen parametrisierter DefaultLoad-Einstellungen im Anwendungsmanifest
+- Für Singletonreplikatupgrades: Möglichkeit, einige der Einstellungen auf Clusterebene auf Anwendungsebene zu definieren
+- Möglichkeit zur intelligenten Platzierung basierend auf Knotentags
+- Möglichkeit zum Definieren des Schwellenwerts für den Prozentsatz fehlerhafter Knoten, die die Clusterintegrität beeinflussen
+- Möglichkeit zum Abfragen der besten geladenen Dienste
+- Möglichkeit zum Hinzufügen eines neuen Intervalls für neue Fehlercodes
+- Funktion zum Markieren einer Dienstinstanz als abgeschlossen
+- Unterstützung des wellenbasierten Bereitstellungsmodells für automatische Upgrades
+- Bereitschaftstest für containerisierte Anwendungen hinzugefügt
+- UseSeparateSecondaryMoveCost standardmäßig als TRUE festlegen
+- StateManager wurde korrigiert, um den Verweis freizugeben, sobald die Freigabe sicher ist
+- Entfernen des zentralen Geheimnisdiensts beim Speichern von Benutzergeheimnissen blockieren
+
+
+### <a name="service-fabric-80-releases"></a>Service Fabric 8.0-Releases
+| Veröffentlichungsdatum | Release | Weitere Informationen |
+|---|---|---|
+| 08. April 2021 | [Azure Service Fabric 8.0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-release/ba-p/2260016)  | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80.md)|
+
+
+## <a name="previous-versions"></a>Vorgängerversionen
+
+### <a name="service-fabric-72"></a>Service Fabric 7.2
+
+#### <a name="key-announcements"></a>Wichtige Ankündigungen
 
 - **Vorschau**: [**Verwaltete Service Fabric-Cluster**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572) befinden sich nun in der öffentlichen Vorschau. Verwaltete Service Fabric-Cluster sollen die Clusterbereitstellung und -verwaltung vereinfachen, indem die zugrunde liegenden Ressourcen, aus denen sich der Service Fabric-Cluster zusammensetzt, in einer einzelnen ARM-Ressource gekapselt werden. Weitere Einzelheiten finden Sie unter [Übersicht über verwaltete Service Fabric-Cluster](./overview-managed-cluster.md).
 - **Vorschau**: [**Die Unterstützung zustandsloser Dienste mit mehr Instanzen als Knoten**](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) befindet sich nun in der öffentlichen Vorschau. Eine Platzierungsrichtlinie ermöglicht das Erstellen mehrerer zustandsloser Instanzen einer Partition auf einem Knoten.
@@ -40,7 +71,7 @@ Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 7.
 - **RunToCompletion:** Service Fabric unterstützt das Konzept der Ausführung bis zum Abschluss für ausführbare Gastanwendungsdateien. Wenn die Ausführung des Replikats mit diesem Update abgeschlossen ist, werden die diesem Replikat zugewiesenen Clusterressourcen freigegeben.
 - [**Die Unterstützung der Ressourcengovernance wurde verbessert**](./service-fabric-resource-governance.md), sodass jetzt auch die Angaben für Anforderungen und Grenzwerte für CPU- und Arbeitsspeicherressourcen möglich sind.
 
-### <a name="service-fabric-72-releases"></a>Service Fabric 7.2-Releases
+#### <a name="service-fabric-72-releases"></a>Service Fabric 7.2-Releases
 | Veröffentlichungsdatum | Release | Weitere Informationen |
 |---|---|---|
 | 21. Oktober 2020 | [Azure Service Fabric 7.2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-release/ba-p/1805653)  | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72-releasenotes.md)|
@@ -51,7 +82,6 @@ Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 7.
 | 17. Februar 2021 | [Azure Service Fabric 7.2 Sixth Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-sixth-refresh-release/ba-p/2144685) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU6-ReleaseNotes.md)
 | 10. März 2021 | [Azure Service Fabric 7.2 Seventh Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-seventh-refresh-release/ba-p/2201100) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU7-releasenotes.md)
 
-## <a name="previous-versions"></a>Vorgängerversionen
 
 ### <a name="service-fabric-71"></a>Service Fabric 7.1
 
@@ -60,7 +90,7 @@ Aufgrund der aktuellen Corona-Pandemie und angesichts der vielen Herausforderung
 Sie können das Upgrade auf Version 7.1 über das [Azure-Portal](./service-fabric-cluster-upgrade-version-azure.md#manual-upgrades-with-azure-portal) oder über eine [Azure Resource Manager-Bereitstellung](./service-fabric-cluster-upgrade-version-azure.md#resource-manager-template) durchführen.
 
 Service Fabric-Cluster, für die automatische Upgrades aktiviert sind, empfangen das Upgrade auf Version 7.1 automatisch, sobald wir die Standardprozedur für das Rollout wieder aufnehmen. Wir werden den Start des Standardrollouts auf der [Website der Tech Community für Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) ankündigen.
-Wir haben [hier](./service-fabric-versions.md#supported-versions) auch Updates zum Datum des Supportendes für Hauptversionen von 6.5 bis 7.1 veröffentlicht. 
+Wir haben [hier](./service-fabric-versions.md) auch Updates zum Datum des Supportendes für Hauptversionen von 6.5 bis 7.1 veröffentlicht. 
 
 #### <a name="key-announcements"></a>Wichtige Ankündigungen
 
@@ -77,7 +107,7 @@ Wir haben [hier](./service-fabric-versions.md#supported-versions) auch Updates z
     - [**FabricObserver (FO) 2.0**](https://github.com/microsoft/service-fabric-observer) – wird auf allen Knoten ausgeführt, generiert Integritätsereignisse und gibt Telemetriedaten aus, wenn vom Benutzer konfigurierte Schwellenwerte der Ressourcennutzung erreicht sind. Dieses Release enthält verschiedene Erweiterungen in Bezug auf Überwachung, Datenverwaltung, Details zu Integritätsereignissen und strukturierte Telemetrie.
      - [**ClusterObserver (CO) 1.1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) – wird auf einem Knoten ausgeführt und erfasst Telemetriedaten zur Integrität auf Clusterebene. In diesem Release überwacht ClusterObserver auch den Knotenstatus und gibt Telemetriedaten aus, wenn ein Knoten länger als für einen vom Benutzer festgelegten Zeitraum heruntergefahren ist, deaktiviert wird oder deaktiviert ist.
 
-#### <a name="improve-application-life-cycle-experience"></a>Verbessern der Features für den Anwendungslebenszyklus
+#### <a name="improve-application-life-cycle-experience"></a>Verbesserungen bei den Features für den Anwendungslebenszyklus
 
 - **[Vorschau: Ausgleich anfordern](./service-fabric-application-upgrade-advanced.md#avoid-connection-drops-during-stateless-service-planned-downtime)** : Bei geplanten Wartungsmaßnahmen für einen Dienst – z. B. bei Dienstupgrades oder Knotendeaktivierung – möchten Sie den Diensten ermöglichen, einen ordnungsgemäßen Verbindungsausgleich durchzuführen. Dieses Feature fügt in der Dienstkonfiguration eine Verzögerung beim Schließen von Instanzen hinzu. Bei geplanten Vorgängen entfernt Service Fabric die Adresse des Diensts aus der Ermittlung und wartet diese Zeitspanne ab, bevor der Dienst heruntergefahren wird.
 - **[Automatisches Erkennen und automatischer Lastenausgleich von Subclustern](./cluster-resource-manager-subclustering.md)** : Subcluster werden erstellt, wenn Dienste mit verschiedenen Platzierungseinschränkungen über eine gemeinsame [Lastmetrik](./service-fabric-cluster-resource-manager-metrics.md) verfügen. Wenn die Lasten auf den verschiedenen Knotengruppen signifikant voneinander abweichen, geht der Service Fabric-Clusterressourcen-Manager davon aus, dass kein ausreichender Lastenausgleich für den Cluster durchgeführt wurde, auch wenn aufgrund der Platzierungseinschränkungen das bestmögliche Gleichgewicht vorliegt. Daher wird versucht, einen neuen Lastenausgleich für den Cluster durchzuführen, was potenziell zu unnötigen Dienstverlagerungen führen kann (da das „Ungleichgewicht“ nicht wesentlich verbessert werden kann). Ab diesem Release versucht der Clusterressourcen-Manager, diese Arten von Konfigurationen automatisch zu erkennen und zu ermitteln, wann das Ungleichgewicht durch Verlagerungen behoben werden kann und wann nichts unternommen werden sollte, da keine wesentliche Verbesserung erzielt werden kann.  

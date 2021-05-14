@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 07/09/2020
-ms.openlocfilehash: 000f8a1457298901dcfc94bc5e0923e94ba35dc7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 221d8b1d9fdd40a71bcfdeed57c02451e44052f2
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96620901"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012761"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -28,111 +28,113 @@ Azure Database for PostgreSQL – Hyperscale (Citus) unterstützt eine Teilmenge
 
 In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen aufgeführt, die derzeit von Azure-Datenbank für PostgreSQL unterstützt werden. Sie können diese Informationen auch abrufen, indem Sie `SELECT * FROM pg_available_extensions;` ausführen.
 
+Die Versionen der einzelnen Erweiterungen, die in einer Servergruppe installiert sind, unterscheiden sich in manchen Fällen je nach PostgreSQL-Version (11, 12 oder 13). Die Tabellen enthalten Erweiterungsversionen pro Datenbankversion.
+
+### <a name="citus-extension"></a>Citus-Erweiterung
+
+> [!div class="mx-tableFixed"]
+> | **Erweiterung** | **Beschreibung** | **PG 11** | **PG 12** | **PG 13** |
+> |---|---|---|---|---|
+> | [citus](https://github.com/citusdata/citus) | Von Citus verteilte Datenbank. | 9.5-1 | 9.5-1 | 10.0-2 |
+
 ### <a name="data-types-extensions"></a>Datentypenerweiterungen
 
 > [!div class="mx-tableFixed"]
-> | **Erweiterung** | **Beschreibung** |
-> |---|---|
-> | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Gibt einen Zeichenfolgentyp an, bei dem Groß-/Kleinschreibung beachtet werden muss. |
-> | [cube](https://www.postgresql.org/docs/current/static/cube.html) | Stellt einen Datentyp für mehrdimensionale Cubes bereit. |
-> | [hll](https://github.com/citusdata/postgresql-hll) | Stellt eine HyperLogLog-Datenstruktur bereit. |
-> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | Gibt den Datentyp zum Speichern von Schlüssel-Wert-Paaren an. |
-> | [isn](https://www.postgresql.org/docs/current/static/isn.html) | Stellt Datentypen für internationale Produktnummerierungsnormen bereit. |
-> | [lo](https://www.postgresql.org/docs/current/lo.html) | Large Object-Wartung. |
-> | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | Stellt einen Datentyp für hierarchische baumähnliche Strukturen bereit. |
-> | [seg](https://www.postgresql.org/docs/current/seg.html) | Datentyp für die Darstellung von Liniensegmenten oder Gleitkommaintervallen. |
-> | [tdigest](https://github.com/tvondra/tdigest) | Datentyp für die Onlineakkumulation von rangbasierten Statistiken wie Quantilen und gekürzten Mittelwerten |
-> | [topn](https://github.com/citusdata/postgresql-topn/) | Typ für Erste N-JSONB. |
+> | **Erweiterung** | **Beschreibung** | **PG 11** | **PG 12** | **PG 13** |
+> |---|---|---|---|---|
+> | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Gibt einen Zeichenfolgentyp an, bei dem Groß-/Kleinschreibung beachtet werden muss. | 1.5 | 1.6 | 1.6 |
+> | [cube](https://www.postgresql.org/docs/current/static/cube.html) | Stellt einen Datentyp für mehrdimensionale Cubes bereit. | 1.4 | 1.4 | 1.4 |
+> | [hll](https://github.com/citusdata/postgresql-hll) | Stellt eine HyperLogLog-Datenstruktur bereit. | 2.14 | 2.15 | 2.15 |
+> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | Gibt den Datentyp zum Speichern von Schlüssel-Wert-Paaren an. | 1.5 | 1.6 | 1.7 |
+> | [isn](https://www.postgresql.org/docs/current/static/isn.html) | Stellt Datentypen für internationale Produktnummerierungsnormen bereit. | 1.2 | 1.2 | 1.2 |
+> | [lo](https://www.postgresql.org/docs/current/lo.html) | Large Object-Wartung. | 1.1 | 1.1 | 1.1 |
+> | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | Stellt einen Datentyp für hierarchische baumähnliche Strukturen bereit. | 1.1 | 1.1 | 1.2 |
+> | [seg](https://www.postgresql.org/docs/current/seg.html) | Datentyp für die Darstellung von Liniensegmenten oder Gleitkommaintervallen. | 1.3 | 1.3 | 1.3 |
+> | [tdigest](https://github.com/tvondra/tdigest) | Datentyp für die Onlineakkumulation von rangbasierten Statistiken wie Quantilen und gekürzten Mittelwerten | 1.0 | 1.0 | 1.0 |
+> | [topn](https://github.com/citusdata/postgresql-topn/) | Typ für Erste N-JSONB. | 2.2.2 | 2.3.1 | 2.3.1 |
 
 ### <a name="full-text-search-extensions"></a>Erweiterungen für die Volltextsuche
 
 > [!div class="mx-tableFixed"]
-> | **Erweiterung** | **Beschreibung** |
-> |---|---|
-> | [dict\_int](https://www.postgresql.org/docs/current/static/dict-int.html) | Bietet eine Textsuch-Wörterbuchvorlage für Integerwerte. |
-> | [dict\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Wörterbuchvorlage für die Textsuche für die erweiterte Verarbeitung von Synonymen. |
-> | [unaccent](https://www.postgresql.org/docs/current/static/unaccent.html) | Ein Wörterbuch für die Textsuche, das Akzente (diakritische Zeichen) aus Lexemen entfernt |
+> | **Erweiterung** | **Beschreibung** | **PG 11** | **PG 12** | **PG 13** |
+> |---|---|---|---|---|
+> | [dict\_int](https://www.postgresql.org/docs/current/static/dict-int.html) | Bietet eine Textsuch-Wörterbuchvorlage für Integerwerte. | 1.0 | 1.0 | 1.0 |
+> | [dict\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Wörterbuchvorlage für die Textsuche für die erweiterte Verarbeitung von Synonymen. | 1.0 | 1.0 | 1.0 |
+> | [unaccent](https://www.postgresql.org/docs/current/static/unaccent.html) | Ein Wörterbuch für die Textsuche, das Akzente (diakritische Zeichen) aus Lexemen entfernt | 1.1 | 1.1 | 1.1 |
 
 ### <a name="functions-extensions"></a>Funktionserweiterungen
 
 > [!div class="mx-tableFixed"]
-> | **Erweiterung** | **Beschreibung** |
-> |---|---|
-> | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Funktionen für die automatische Inkrementierung von Feldern. |
-> | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Bietet eine Möglichkeit, Großkreisentferungen auf der Erdoberfläche zu berechnen. |
-> | [fuzzystrmatch](https://www.postgresql.org/docs/current/static/fuzzystrmatch.html) | Stellt mehrere Funktionen bereit, um Ähnlichkeiten und den Abstand zwischen Zeichenfolgen zu ermitteln |
-> | [insert\_username](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | Funktionen, um nachzuverfolgen, welcher Benutzer Änderungen in einer Tabelle vorgenommen hat. |
-> | [intagg](https://www.postgresql.org/docs/current/intagg.html) | Integeraggregator und -enumerator (veraltet). |
-> | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | Stellt Funktionen und Operatoren bereit, um Arrays mit Ganzzahlen ohne Nullen zu bearbeiten |
-> | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | Funktionen zur Verfolgung der letzten Änderungszeit. |
-> | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Verwaltet partitionierte Tabellen nach Zeit oder ID |
-> | [pg\_trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | Stellt Funktionen und Operatoren bereit, um die Ähnlichkeit von alphanumerischen Texten basierend auf übereinstimmenden Trigrammen zu ermitteln |
-> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | Stellt kryptografische Funktionen bereit |
-> | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | Funktionen für die Implementierung referentieller Integrität (veraltet). |
-> | session\_analytics | Funktionen zum Abfragen von Hstore-Arrays. |
-> | [tablefunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | Stellt Funktionen bereit, um ganze Tabellen einschließlich einer Kreuztabelle zu bearbeiten. |
-> | [tcn](https://www.postgresql.org/docs/current/tcn.html) | Ausgelöste Änderungsbenachrichtigungen. |
-> | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Funktionen für die Implementierung von Zeitreisen. |
-> | [uuid-ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | Generiert universell eindeutige Bezeichner (UUIDs) |
-
-### <a name="hyperscale-citus-extensions"></a>Hyperscale (Citus)-Erweiterungen
-
-> [!div class="mx-tableFixed"]
-> | **Erweiterung** | **Beschreibung** |
-> |---|---|
-> | [citus](https://github.com/citusdata/citus) | Von Citus verteilte Datenbank. |
+> | **Erweiterung** | **Beschreibung** | **PG 11** | **PG 12** | **PG 13** |
+> |---|---|---|---|---|
+> | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Funktionen für die automatische Inkrementierung von Feldern. | 1.0 | 1.0 | 1.0 |
+> | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Bietet eine Möglichkeit, Großkreisentferungen auf der Erdoberfläche zu berechnen. | 1.1 | 1.1 | 1.1 |
+> | [fuzzystrmatch](https://www.postgresql.org/docs/current/static/fuzzystrmatch.html) | Stellt mehrere Funktionen bereit, um Ähnlichkeiten und den Abstand zwischen Zeichenfolgen zu ermitteln | 1.1 | 1.1 | 1.1 |
+> | [insert\_username](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | Funktionen, um nachzuverfolgen, welcher Benutzer Änderungen in einer Tabelle vorgenommen hat. | 1.0 | 1.0 | 1.0 |
+> | [intagg](https://www.postgresql.org/docs/current/intagg.html) | Integeraggregator und -enumerator (veraltet). | 1.1 | 1.1 | 1.1 |
+> | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | Stellt Funktionen und Operatoren bereit, um Arrays mit Ganzzahlen ohne Nullen zu bearbeiten | 1.2 | 1.2 | 1.3 |
+> | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | Funktionen zur Verfolgung der letzten Änderungszeit. | 1.0 | 1.0 | 1.0 |
+> | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Verwaltet partitionierte Tabellen nach Zeit oder ID | 4,1 | 4.4.1 | 4.4.1 |
+> | [pg\_trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | Stellt Funktionen und Operatoren bereit, um die Ähnlichkeit von alphanumerischen Texten basierend auf übereinstimmenden Trigrammen zu ermitteln | 1.4 | 1.4 | 1.5 |
+> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | Stellt kryptografische Funktionen bereit | 1.3 | 1.3 | 1.3 |
+> | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | Funktionen für die Implementierung referentieller Integrität (veraltet). | 1.0 | 1.0 | 1.0 |
+> | session\_analytics | Funktionen zum Abfragen von Hstore-Arrays. | | | |
+> | [tablefunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | Stellt Funktionen bereit, um ganze Tabellen einschließlich einer Kreuztabelle zu bearbeiten. | 1.0 | 1.0 | 1.0 |
+> | [tcn](https://www.postgresql.org/docs/current/tcn.html) | Ausgelöste Änderungsbenachrichtigungen. | 1.0 | 1.0 | 1.0 |
+> | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Funktionen für die Implementierung von Zeitreisen. | 1.0 | | |
+> | [uuid-ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | Generiert universell eindeutige Bezeichner (UUIDs) | 1.1 | 1.1 | 1.1 |
 
 ### <a name="index-types-extensions"></a>Indextypenerweiterungen
 
 > [!div class="mx-tableFixed"]
-> | **Erweiterung** | **Beschreibung** |
-> |---|---|
-> | [bloom](https://www.postgresql.org/docs/current/bloom.html) | Bloom-Zugriffsmethode: Index, der auf einer Signaturdatei basiert. |
-> | [btree\_gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | Gibt Beispielklassen für den GIN-Operator an, der das B-Struktur-ähnliche Verhalten für bestimmte Datentypen implementiert. |
-> | [btree\_gist](https://www.postgresql.org/docs/current/static/btree-gist.html) | Gibt Operatorklassen für den GiST-Index an, der die B-Struktur implementiert |
+> | **Erweiterung** | **Beschreibung** | **PG 11** | **PG 12** | **PG 13** |
+> |---|---|---|---|---|
+> | [bloom](https://www.postgresql.org/docs/current/bloom.html) | Bloom-Zugriffsmethode: Index, der auf einer Signaturdatei basiert. | 1.0 | 1.0 | 1.0 |
+> | [btree\_gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | Gibt Beispielklassen für den GIN-Operator an, der das B-Struktur-ähnliche Verhalten für bestimmte Datentypen implementiert. | 1.3 | 1.3 | 1.3 |
+> | [btree\_gist](https://www.postgresql.org/docs/current/static/btree-gist.html) | Gibt Operatorklassen für den GiST-Index an, der die B-Struktur implementiert | 1.5 | 1.5 | 1.5 |
 
 ### <a name="language-extensions"></a>Spracherweiterungen
 
 > [!div class="mx-tableFixed"]
-> | **Erweiterung** | **Beschreibung** |
-> |---|---|
-> | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | Ladbare prozedurale Sprache, PL/pgSQL. |
+> | **Erweiterung** | **Beschreibung** | **PG 11** | **PG 12** | **PG 13** |
+> |---|---|---|---|---|
+> | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | Ladbare prozedurale Sprache, PL/pgSQL. | 1.0 | 1.0 | 1.0 |
 
 ### <a name="miscellaneous-extensions"></a>Verschiedene Erweiterungen
 
 > [!div class="mx-tableFixed"]
-> | **Erweiterung** | **Beschreibung** |
-> |---|---|
-> | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | Verwaltungsfunktionen für PostgreSQL. |
-> | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Funktionen zum Überprüfen der Beziehungsintegrität. |
-> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | Ein Modul, das Verbindungen mit anderen PostgreSQL-Datenbanken innerhalb einer Datenbanksitzung unterstützt Weitere Informationen zu dieser Erweiterung finden Sie im Abschnitt „dblink und postgres_fdw“. |
-> | [file\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | Wrapper für programmfremde Daten für den Flatfile-Zugriff. |
-> | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | Überprüfen Sie den Inhalt von Datenbankseiten auf niedriger Ebene. |
-> | [pg\_buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | Bietet eine Möglichkeit, um die Vorgänge im freigegebenen Puffercache in Echtzeit mitzuverfolgen |
-> | [pg\_cron](https://github.com/citusdata/pg_cron) | Auftragsplaner für PostgreSQL. |
-> | [pg\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | Untersuchen von free space map (FSM). |
-> | [pg\_prewarm](https://www.postgresql.org/docs/current/static/pgprewarm.html) | Bietet eine Möglichkeit, um Relationsdaten in den Puffercache zu laden |
-> | [pg\_stat\_statements](https://www.postgresql.org/docs/current/static/pgstatstatements.html) | Bietet eine Möglichkeit, um Ausführungsstatistiken zu allen SQL-Anweisungen nachzuverfolgen, die von einem Server ausgeführt werden Weitere Informationen zu dieser Erweiterung finden Sie im Abschnitt „pg_stat_statements“. |
-> | [pg\_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) | Überprüft die Informationen zur Zuordnung von Sichtbarkeiten (Visibility Map, VM) und Informationen zur Sichtbarkeit auf Seitenebene. |
-> | [pgrowlocks](https://www.postgresql.org/docs/current/static/pgrowlocks.html) | Bietet eine Möglichkeit zum Anzeigen von Sperrinformationen auf Zeilenebene. |
-> | [pgstattuple](https://www.postgresql.org/docs/current/static/pgstattuple.html) | Bietet eine Möglichkeit zum Anzeigen von Statistiken auf Tupelebene. |
-> | [postgres\_fdw](https://www.postgresql.org/docs/current/static/postgres-fdw.html) | Wrapper für programmfremde Daten, um auf in externen PostgreSQL-Servern gespeicherten Daten zuzugreifen Weitere Informationen zu dieser Erweiterung finden Sie im Abschnitt „dblink und postgres_fdw“.|
-> | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | Informationen zu TLS-/SSL-Zertifikaten |
-> | [tsm\_system\_rows](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE-Methode, die die Anzahl von Zeilen als Grenzwert akzeptiert. |
-> | [tsm\_system\_time](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE-Methode, die die Zeit in Millisekunden als Grenzwert akzeptiert. |
-> | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath-Abfrage und XSLT. |
+> | **Erweiterung** | **Beschreibung** | **PG 11** | **PG 12** | **PG 13** |
+> |---|---|---|---|---|
+> | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | Verwaltungsfunktionen für PostgreSQL. | 2.0 | 2.0 | 2.1 |
+> | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Funktionen zum Überprüfen der Beziehungsintegrität. | 1.1 | 1.2 | 1.2 |
+> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | Ein Modul, das Verbindungen mit anderen PostgreSQL-Datenbanken innerhalb einer Datenbanksitzung unterstützt Weitere Informationen zu dieser Erweiterung finden Sie im Abschnitt „dblink und postgres_fdw“. | 1.2 | 1.2 | 1.2 |
+> | [file\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | Wrapper für programmfremde Daten für den Flatfile-Zugriff. | 1.0 | 1.0 | 1.0 |
+> | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | Überprüfen Sie den Inhalt von Datenbankseiten auf niedriger Ebene. | 1.7 | 1.7 | 1.8 |
+> | [pg\_buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | Bietet eine Möglichkeit, um die Vorgänge im freigegebenen Puffercache in Echtzeit mitzuverfolgen | 1.3 | 1.3 | 1.3 |
+> | [pg\_cron](https://github.com/citusdata/pg_cron) | Auftragsplaner für PostgreSQL. | 1.1 | 1.3 | 1.3 |
+> | [pg\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | Untersuchen von free space map (FSM). | 1.2 | 1.2 | 1.2 |
+> | [pg\_prewarm](https://www.postgresql.org/docs/current/static/pgprewarm.html) | Bietet eine Möglichkeit, um Relationsdaten in den Puffercache zu laden | 1.2 | 1.2 | 1.2 |
+> | [pg\_stat\_statements](https://www.postgresql.org/docs/current/static/pgstatstatements.html) | Bietet eine Möglichkeit, um Ausführungsstatistiken zu allen SQL-Anweisungen nachzuverfolgen, die von einem Server ausgeführt werden Weitere Informationen zu dieser Erweiterung finden Sie im Abschnitt „pg_stat_statements“. | 1.6 | 1.7 | 1.8 |
+> | [pg\_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) | Überprüft die Informationen zur Zuordnung von Sichtbarkeiten (Visibility Map, VM) und Informationen zur Sichtbarkeit auf Seitenebene. | 1.2 | 1.2 | 1.2 |
+> | [pgrowlocks](https://www.postgresql.org/docs/current/static/pgrowlocks.html) | Bietet eine Möglichkeit zum Anzeigen von Sperrinformationen auf Zeilenebene. | 1.2 | 1.2 | 1.2 |
+> | [pgstattuple](https://www.postgresql.org/docs/current/static/pgstattuple.html) | Bietet eine Möglichkeit zum Anzeigen von Statistiken auf Tupelebene. | 1.5 | 1.5 | 1.5 |
+> | [postgres\_fdw](https://www.postgresql.org/docs/current/static/postgres-fdw.html) | Wrapper für programmfremde Daten, um auf in externen PostgreSQL-Servern gespeicherten Daten zuzugreifen Weitere Informationen zu dieser Erweiterung finden Sie im Abschnitt „dblink und postgres_fdw“.| 1.0 | 1.0 | 1.0 |
+> | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | Informationen zu TLS-/SSL-Zertifikaten | 1.2 | 1.2 | 1.2 |
+> | [tsm\_system\_rows](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE-Methode, die die Anzahl von Zeilen als Grenzwert akzeptiert. | 1.0 | 1.0 | 1.0 |
+> | [tsm\_system\_time](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE-Methode, die die Zeit in Millisekunden als Grenzwert akzeptiert. | 1.0 | 1.0 | 1.0 |
+> | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath-Abfrage und XSLT. | 1.1 | 1.1 | 1.1 |
 
 
 ### <a name="postgis-extensions"></a>PostGIS-Erweiterungen
 
 > [!div class="mx-tableFixed"]
-> | **Erweiterung** | **Beschreibung** |
-> |---|---|
-> | [PostGIS](https://www.postgis.net/), postgis\_topology, postgis\_tiger\_geocoder, postgis\_sfcgal | Räumliche und geografische Objekte für PostgreSQL |
-> | address\_standardizer, address\_standardizer\_data\_us | Wird verwendet, um eine Adresse in dessen zugehörige Elemente zu analysieren. Wird als Unterstützung für den Normalisierungsschritt zur Geocodierung von Adressen verwendet. |
-> | postgis\_sfcgal | PostGIS SFCGAL-Funktionen. |
-> | postgis\_tiger\_geocoder | Geocoder und Reverse-Geocoder für PostGIS Tiger. |
-> | postgis\_topology | Räumliche PostGIS-Topologietypen und -funktionen. |
+> | **Erweiterung** | **Beschreibung** | **PG 11** | **PG 12** | **PG 13** |
+> |---|---|---|---|---|
+> | [PostGIS](https://www.postgis.net/), postgis\_topology, postgis\_tiger\_geocoder, postgis\_sfcgal | Räumliche und geografische Objekte für PostgreSQL | 2.5.1 | 3.0.3 | 3.0.3 |
+> | address\_standardizer, address\_standardizer\_data\_us | Wird verwendet, um eine Adresse in dessen zugehörige Elemente zu analysieren. Wird als Unterstützung für den Normalisierungsschritt zur Geocodierung von Adressen verwendet. | 2.5.1 | 3.0.3 | 3.0.3 |
+> | postgis\_sfcgal | PostGIS SFCGAL-Funktionen. | 2.5.1 | 3.0.3 | 3.0.3 |
+> | postgis\_tiger\_geocoder | Geocoder und Reverse-Geocoder für PostGIS Tiger. | 2.5.1 | 3.0.3 | 3.0.3 |
+> | postgis\_topology | Räumliche PostGIS-Topologietypen und -funktionen. | 2.5.1 | 3.0.3 | 3.0.3 |
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements

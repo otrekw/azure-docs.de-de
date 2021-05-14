@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 3e55970b0603da9be9bf28a50d4c474e34a1cad3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bdebe0d29f6ef781cc4b4747ff80010eeac9ff7e
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103017238"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684251"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung zur Überwachung der Wasserqualität in Azure IoT Central
 
@@ -54,9 +54,7 @@ In diesem Abschnitt verwenden Sie die Azure IoT Central-Vorlage **Überwachung d
 
     * **Anwendungsname**: Standardmäßig lautet der Anwendungsname **Überwachung der Wasserqualität**, gefolgt von einer eindeutigen ID-Zeichenfolge, die von Azure IoT Central generiert wird. Bei Bedarf können Sie einen Anzeigenamen eingeben oder den Anwendungsnamen später ändern.
     * **URL**: Sie können eine beliebige URL eingeben oder den URL-Wert später ändern.
-    * Geben Sie Werte für **Verzeichnis**, **Azure-Abonnement** und **Region** ein, wenn Sie über ein Azure-Abonnement verfügen. Wenn Sie kein Abonnement haben, können Sie eine **7-tägige kostenlose Testversion** aktivieren und die erforderlichen Kontaktinformationen eingeben.
-
-    Weitere Informationen zu Verzeichnissen und Abonnements finden Sie in der Schnellstartanleitung unter [Erstellen einer Azure IoT Central-Anwendung](../core/quick-deploy-iot-central.md).
+    * Geben Sie Werte für **Verzeichnis**, **Azure-Abonnement** und **Standort** ein, wenn Sie über ein Azure-Abonnement verfügen. Wenn Sie kein Abonnement haben, können Sie eine **7-tägige kostenlose Testversion** aktivieren und die erforderlichen Kontaktinformationen eingeben.
 
 1. Wählen Sie unten links auf der Seite die Schaltfläche **Erstellen** aus.
 
@@ -102,7 +100,7 @@ Das Dashboard enthält die folgenden Arten von Kacheln:
 
 * **Balkendiagramm zur Konzentration chemischer Substanzen**: Sie können Gerätetelemetriedaten als Balkendiagramm visualisieren.
 
-* **Schaltfläche „Aktion“** : Das Dashboard enthält eine Kachel für Aktionen, die ein Bediener direkt über das Dashboard für die Überwachung initiieren kann. Das Zurücksetzen der Eigenschaften eines Geräts ist ein Beispiel für Aktionen dieser Art.
+* **Kachel „Reset sensors parameters“ (Sensorparameter zurücksetzen)** : Das Dashboard enthält eine Kachel für Aktionen, die ein Operator direkt über das Dashboard für die Überwachung initiieren kann. Das Zurücksetzen der Eigenschaften eines Geräts ist ein Beispiel für Aktionen dieser Art.
 
 * **Kacheln mit Eigenschaftenlisten**: Das Dashboard verfügt über mehrere Kacheln mit Eigenschaften, die für Informationen zu Schwellenwert, Geräteintegrität und Wartung stehen.
 
@@ -125,7 +123,7 @@ Die von Ihnen erstellte Anwendung zur Überwachung der Wasserqualität verfügt 
 Zeigen Sie die Gerätevorlage wie folgt an:
 
 1. Wählen Sie in Azure IoT Central ganz links im Bereich für Ihre Anwendung die Option **Gerätevorlagen** aus.
-1. Wählen Sie in der Liste mit den Gerätevorlagen die Option **Überwachung der Wasserqualität**  aus. Die entsprechende Gerätevorlage wird geöffnet.
+1. Wählen Sie in der Liste der Gerätevorlagen **Überwachung der Wasserqualität**  aus, um diese Gerätevorlage zu öffnen.
 
     ![Gerätevorlage](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate.png)
 
@@ -141,8 +139,9 @@ Zeigen Sie die Gerätevorlage wie folgt an:
 
 #### <a name="add-a-cloud-property"></a>Hinzufügen einer Cloudeigenschaft
 
-1. Wählen Sie im Gerätevorlagenmenü die Option **Cloudeigenschaft** aus.
+1. Wählen Sie im Gerätevorlagenmenü die Option **Cloudeigenschaften** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Cloudeigenschaft die Option **+ Cloudeigenschaft hinzufügen** aus. In Azure IoT Central können Sie eine Eigenschaft hinzufügen, die für ein Gerät relevant ist, aber für die das Senden durch das Gerät nicht erwartet wird. Ein Beispiel für eine Eigenschaft dieser Art ist ein Warnungsschwellenwert, der für einen bestimmten Installationsbereich oder bestimmte Ressourcen- oder Wartungsinformationen gilt.
+1. Geben Sie unter **Anzeigename** den **Installationsbereich** ein, und wählen Sie unter **Schema** die Option **Zeichenfolge** aus.
 1. Wählen Sie **Speichern** aus.
 
 ### <a name="explore-views"></a>Erkunden von Ansichten
@@ -157,7 +156,7 @@ Achten Sie beim Vornehmen von Änderungen darauf, dass Sie die Option **Veröffe
 
 ### <a name="create-a-new-device-template"></a>Erstellen einer neuen Gerätevorlage
 
-1. Wählen Sie die Option **+ Neu** aus, um eine neue Gerätevorlage zu erstellen, und führen Sie die Schritte des Erstellungsprozesses aus.
+1. Wählen Sie auf der Seite **Gerätevorlagen** die Option **+ Neu** aus, um eine neue Gerätevorlage zu erstellen, und führen Sie die Schritte des Erstellungsprozesses aus.
 1. Erstellen Sie eine benutzerdefinierte Gerätevorlage, oder wählen Sie im Azure IoT-Gerätekatalog eine Gerätevorlage aus.
 
 ## <a name="explore-simulated-devices"></a>Erkunden von simulierten Geräten
@@ -174,7 +173,7 @@ Die Anwendung zur Überwachung der Wasserqualität, die Sie mit der Anwendungsvo
 
     ![Auswählen von Gerät 1](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
 
-1. Ändern Sie auf der Registerkarte **Cloudeigenschaften** den Wert unter **Acidity (pH) threshold** (Azidität (pH): Schwellenwert) von **8** in **9**.
+1. Ändern Sie auf der Registerkarte **Cloudeigenschaften** den Wert unter **Acidity (pH) threshold** (Azidität (pH): Schwellenwert) von **8** in **9**. Wählen Sie anschließend **Speichern** aus.
 1. Erkunden Sie die Registerkarten **Geräteeigenschaften** und **Gerätedashboard**.
 
 > [!NOTE]
@@ -182,7 +181,11 @@ Die Anwendung zur Überwachung der Wasserqualität, die Sie mit der Anwendungsvo
 
 ### <a name="add-new-devices"></a>Hinzufügen neuer Geräte
 
-Wählen Sie auf der Registerkarte **Geräte** die Option **+ Neu** aus, um ein neues Gerät hinzuzufügen.
+1. Wählen Sie auf der Registerkarte **Geräte** die Option **+ Neu** aus, um ein neues Gerät hinzuzufügen.
+1. Verwenden Sie die vorgeschlagene **Geräte-ID**, oder geben Sie Ihre eigene ein. Sie können auch einen **Gerätenamen** für Ihr neues Gerät eingeben.
+1. Wählen Sie unter **Gerätevorlage** die Option **Überwachung der Wasserqualität** aus. 
+1. Vergewissern Sie sich, dass **Dieses Gerät simulieren?** auf **Ja** festgelegt ist, wenn Sie ein simuliertes Gerät erstellen möchten. 
+1. Klicken Sie auf **Erstellen**.  
 
 ## <a name="explore-and-configure-rules"></a>Erkunden und Konfigurieren von Regeln
 
@@ -209,7 +212,7 @@ Fügen Sie der Regel als Nächstes eine E-Mail-Aktion hinzu:
 1. Geben Sie im Feld **An** die E-Mail-Adresse ein, die Ihrem Azure IoT Central-Konto zugeordnet ist.
 1. Geben Sie optional eine Notiz ein, die in den Text der E-Mail aufgenommen werden soll.
 1. Wählen Sie **Fertig** aus, um die Aktion fertig zu stellen.
-1. Wählen Sie **Speichern** aus, um die neue Regel zu speichern und zu aktivieren.
+1. Legen Sie die Regel auf **Aktiviert** fest, und wählen Sie **Speichern** aus.
 
 Sie sollten nach einigen Minuten eine E-Mail mit dem Hinweis erhalten, dass die konfigurierte Bedingung erfüllt wurde.
 
@@ -223,32 +226,31 @@ Wählen Sie zum Erstellen einer neuen Regel ganz links in Ihrer Anwendung die Op
 Mit Azure IoT Central-Aufträgen können Sie Updates für Geräte- oder Cloudeigenschaften auf mehreren Geräten auslösen. Sie können auch Aufträge verwenden, um Gerätebefehle auf mehreren Geräten auszulösen. Der Workflow wird von Azure IoT Central für Sie automatisiert.
 
 1. Wählen Sie in Ihrer Anwendung im Bereich ganz links die Option **Aufträge** aus.
-1. Wählen Sie **+ Neu** aus, und konfigurieren Sie einen oder mehrere Aufträge.
+1. Wählen Sie **+ Neuer Auftrag** aus, und konfigurieren Sie eine beliebige Anzahl von Aufträgen.
 
 ## <a name="customize-your-application"></a>Anpassen Ihrer Anwendung
 
 Als Lösungsersteller können Sie verschiedene Einstellungen ändern, um die Benutzeroberfläche in Ihrer Anwendung anzupassen.
 
 1. Wählen Sie **Verwaltung** > **Anwendung anpassen** aus.
-1. Wählen Sie unter **Anwendungslogo** die Option **Ändern** aus, um das Bild auszuwählen, das als Logo hochgeladen werden soll.
+1. Wählen Sie unter **Titellogo** die Option **Ändern** aus, um das Bild auszuwählen, das als Logo hochgeladen werden soll.
 1. Wählen Sie unter **Browsersymbol** die Option **Ändern** aus, um das Bild für die Anzeige auf Browsertabs auszuwählen.
 1. Unter **Browserfarben** können Sie die Standardwerte durch hexadezimale HTML-Farbcodes ersetzen.
-1. Wählen Sie **Einstellungen** aus, um den Wert von **Design** zu ändern.
 
    ![Anpassen Ihrer Anwendung](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
 
 ### <a name="update-the-application-image"></a>Aktualisieren des Anwendungsbilds
 
-1. Wählen Sie **Verwaltung** > **Anwendungseinstellungen** aus.
+1. Wählen Sie **Verwaltung** > **Ihre Anwendung** aus.
 
-1. Verwenden Sie die Schaltfläche **Bild auswählen**, um ein Bild auszuwählen, das als Anwendungsbild hochgeladen werden soll.
+1. Wählen Sie **Ändern** aus, um ein Bild auszuwählen, das Sie als Anwendungsbild hochladen möchten.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Falls Sie Ihre Anwendung nicht weiterverwenden möchten, sollten Sie sie mit den folgenden Schritten löschen:
 
 1. Öffnen Sie in Ihrer Anwendung ganz links die Registerkarte **Verwaltung**.
-1. Wählen Sie **Anwendungseinstellungen** und dann die Schaltfläche **Löschen** aus.
+1. Wählen Sie **Ihre Anwendung** und dann die Schaltfläche **Löschen** aus.
 
     ![Löschen Ihrer Anwendung](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)
 

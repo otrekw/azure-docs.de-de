@@ -3,20 +3,20 @@ title: 'Bekannte Complianceprobleme im Zusammenhang mit dem SCIM 2.0-Protokoll 
 description: Erfahren Sie, wie Sie häufige Kompatibilitätsprobleme mit dem Protokoll beim Hinzufügen einer Anwendung, die nicht aus dem Katalog stammt und die SCIM 2.0 unterstützt, in Azure AD beheben.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e369a6ab857b95035b0aaca28525e54e15835e8
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256897"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783259"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -51,7 +51,7 @@ Verwenden Sie die weiter unten angegebenen Flags in der Mandanten-URL Ihrer Anwe
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM-Flags zum Ändern des Verhaltens":::
 
 * Verwenden Sie die folgende URL, um das PATCH-Verhalten zu aktualisieren und SCIM-Konformität sicherzustellen (z. B. aktiv als boolescher Wert und ordnungsgemäßes Entfernen von Gruppenmitgliedschaften). Dieses Verhalten ist derzeit nur verfügbar, wenn Sie das Flag verwenden, wird jedoch in den nächsten Monaten zum Standardverhalten. Beachten Sie, dass dieses Vorschauflag bei bedarfsgesteuerter Bereitstellung nicht funktioniert. 
-  * **URL (SCIM-konform):** AzureAdScimPatch062020
+  * **URL (SCIM-konform):** aadOptscim062020
   * **SCIM-RFC-Verweise:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2
   * **Verhalten:**

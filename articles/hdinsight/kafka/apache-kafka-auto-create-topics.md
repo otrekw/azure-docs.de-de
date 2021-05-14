@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: 3766d41959383d802e50aafbf59b9841d1c8d74e
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104870686"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Konfigurieren von Apache Kafka in HDInsight für die automatische Erstellung von Themen
@@ -52,7 +52,7 @@ Um die automatische Themenerstellung in einem vorhandenen Cluster über die Amba
     :::image type="content" source="./media/apache-kafka-auto-create-topics/restart-all-affected.png" alt-text="Neustarten aller betroffenen Instanzen in Apache Ambari" border="true":::
 
 > [!NOTE]  
-> Sie können Ambari-Werte auch über die Ambari-REST-API festlegen. Dies ist im Allgemeinen schwieriger, da Sie mehrere REST-Aufrufe ausführen müssen, um die aktuelle Konfiguration abzurufen, sie bearbeiten usw. Weitere Informationen finden Sie im Dokument [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](../hdinsight-hadoop-manage-ambari-rest-api.md).
+> Sie können Ambari-Werte auch über die Ambari-REST-API festlegen. Dies ist im Allgemeinen schwieriger, da Sie mehrere REST-Aufrufe tätigen müssen, um die aktuelle Konfiguration abzurufen, sie zu ändern usw. Weitere Informationen finden Sie im Dokument [Verwalten von HDInsight-Clustern mit dem Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md)-Dokument.
 
 ## <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 

@@ -49,7 +49,7 @@
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/dns-security-baseline?toc=/azure/dns/TOC.json
     - name: Öffentliche DNS
       items:
         - name: Zonen und Einträge
@@ -59,13 +59,13 @@
         - name: Delegierung mit Azure DNS
           href: dns-domain-delegation.md
         - name: Häufig gestellte Fragen
-          href: dns-faq.md
+          href: dns-faq.yml
         - name: DNS-Metriken und -Warnungen
           href: dns-alerts-metrics.md
         - name: Reverse-DNS
           href: dns-reverse-dns-overview.md
         - name: Notfallwiederherstellung mit Azure DNS und Traffic Manager
-          href: ../networking/disaster-recovery-dns-traffic-manager.md
+          href: ../networking/disaster-recovery-dns-traffic-manager.md?toc=%2fazure%2fdns%2ftoc.json
     - name: Privates DNS
       items:
         - name: Private DNS-Zone
@@ -77,9 +77,9 @@
         - name: Privates DNS – Szenarien
           href: private-dns-scenarios.md
         - name: DNS-Auflösung in virtuellen Netzwerken
-          href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
+          href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md?toc=%2fazure%2fdns%2ftoc.json
         - name: Häufig gestellte Fragen
-          href: dns-faq-private.md
+          href: dns-faq-private.yml
 - name: Anleitungen
   items:
     - name: Öffentliche DNS
@@ -111,9 +111,11 @@
         - name: Importieren und Exportieren einer DNS-Zonendatei
           href: dns-import-export.md
         - name: Delegieren einer Unterdomäne
-          href: delegate-subdomain.md
-        - name: Delegieren einer Unterdomäne mit PowerShell
-          href: delegate-subdomain-ps.md
+          items:
+            - name: Azure-Portal
+              href: delegate-subdomain.md
+            - name: Azure PowerShell
+              href: delegate-subdomain-ps.md
         - name: Integrieren in andere Azure-Dienste
           href: dns-for-azure-services.md
         - name: Schützen von DNS-Zonen und -Einträgen
@@ -126,6 +128,8 @@
       items:
         - name: Schützen von privaten DNS-Zonen und -Einträgen
           href: dns-protect-private-zones-recordsets.md
+        - name: Importieren und Exportieren einer DNS-Zonendatei
+          href: private-dns-import-export.md
     - name: Problembehandlung
       items:
         - name: Handbuch zur Problembehandlung

@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 03/29/2021
 ms.author: banders
-ms.openlocfilehash: df5c5ed74a5e0a63727962fa86d261cfb588a384
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 47f1a1ed182420852682e908c7cd8b5e094bc085
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690560"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932555"
 ---
 # <a name="azure-spending-limit"></a>Azure-Ausgabenlimit
 
-Mit dem Ausgabenlimit in Azure wird verhindert, dass Sie Ihr Guthaben überschreiten. Für alle neuen Kunden, die sich für ein kostenloses Azure-Konto oder für Abonnementtypen registrieren, die Guthaben für mehrere Monate beinhalten, ist das Ausgabenlimit standardmäßig aktiviert. Das Ausgabenlimit entspricht dem Guthaben und kann nicht geändert werden. Wenn Sie sich also beispielsweise für ein kostenloses Azure-Konto registriert haben, liegt Ihr Ausgabenlimit bei 200 USD und kann nicht auf 500 USD angehoben werden. Sie können das Ausgabenlimit jedoch entfernen. Sie haben also die Wahl zwischen keinem Limit oder einem Limit in Höhe des Guthabens. Dadurch werden die meisten Arten von Ausgaben unterbunden. Für Abonnements mit Verpflichtungsplänen oder mit nutzungsbasierter Bezahlung ist kein Ausgabenlimit verfügbar. Die vollständige Liste mit Azure-Abonnementtypen sowie Informationen zur Verfügbarkeit des Ausgabenlimits finden Sie [hier](https://azure.microsoft.com/support/legal/offer-details/).
+Mit dem Ausgabenlimit in Azure wird verhindert, dass Sie Ihr Guthaben überschreiten. Für alle neuen Kunden, die sich für ein kostenloses Azure-Konto oder für Abonnementtypen registrieren, die Guthaben für mehrere Monate beinhalten, ist das Ausgabenlimit standardmäßig aktiviert. Das Ausgabenlimit entspricht dem Guthaben. Der Betrag des Ausgabenlimits kann nicht geändert werden. Wenn Sie sich also beispielsweise für ein kostenloses Azure-Konto registriert haben, liegt Ihr Ausgabenlimit bei 200 USD und kann nicht auf 500 USD angehoben werden. Sie können das Ausgabenlimit jedoch entfernen. Sie haben also die Wahl zwischen keinem Limit oder einem Limit in Höhe des Guthabens. Dadurch werden die meisten Arten von Ausgaben unterbunden. Für Abonnements mit Verpflichtungsplänen oder mit nutzungsbasierter Bezahlung ist kein Ausgabenlimit verfügbar. Die vollständige Liste mit Azure-Abonnementtypen sowie Informationen zur Verfügbarkeit des Ausgabenlimits finden Sie [hier](https://azure.microsoft.com/support/legal/offer-details/).
 
 ## <a name="reaching-a-spending-limit"></a>Erreichen eines Ausgabenlimits
 

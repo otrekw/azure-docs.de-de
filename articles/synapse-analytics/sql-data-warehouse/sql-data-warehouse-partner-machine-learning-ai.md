@@ -1,7 +1,6 @@
 ---
 title: Partner für maschinelles Lernen und KI
 description: Liste der Partner für maschinelles Lernen und künstliche Intelligenz von Drittanbietern mit Lösungen, die Azure Synapse Analytics unterstützen.
-services: synapse-analytics
 author: periclesrocha
 manager: charlesf
 ms.service: synapse-analytics
@@ -11,12 +10,12 @@ ms.date: 06/22/2020
 ms.author: procha
 ms.reviewer: charlesf
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 80b01eb78d6dfb0d1629eb73bf86c76e3dc4e32f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f6b6e2b7880a1316346f24653805948e7907163
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98249147"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566476"
 ---
 # <a name="azure-synapse-analytics-machine-learning-and-ai-partners"></a>Partner für maschinelles Lernen und KI für Azure Synapse Analytics
 

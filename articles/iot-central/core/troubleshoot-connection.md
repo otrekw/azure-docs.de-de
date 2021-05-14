@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: ae40571b958897b5f06c4ae72a9049a585561872
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 494608f9dd8fbf986dcda6eeb782a64f6a2ca008
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064714"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378566"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Behandeln von Problemen, warum Daten von Ihren Geräten nicht in Azure IoT Central angezeigt werden
 
@@ -158,6 +158,14 @@ Wenn Sie Probleme in Bezug auf Ihren Authentifizierungsfluss feststellen:
 | 412 | Gemäß RFC7232 entspricht das `ETag` in der Anforderung nicht dem `ETag` der vorhandenen Ressource. | [Beantragen Sie ein Ticket beim Kundensupport](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
 | 429 | Vorgänge werden vom Dienst gedrosselt. Informationen zu bestimmten Dienstgrenzwerten finden Sie unter [Grenzwerte für den IoT Hub Device Provisioning-Dienst](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | Verringern Sie die Nachrichtenhäufigkeit, teilen Sie die Verantwortlichkeiten auf mehrere Geräte auf. |
 | 500 | Interner Fehler. | [Beantragen Sie ein Ticket beim Kundensupport](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), um zu sehen, ob dieser Ihnen weiterhelfen kann. |
+
+### <a name="file-upload-error-codes"></a>Fehlercodes bei Dateiupload
+
+Hier ist eine Liste allgemeiner Fehlercodes, die möglicherweise angezeigt werden, wenn ein Gerät eine Datei in die Cloud hochzuladen versucht. Denken Sie daran, dass Sie [Gerätedateiuploads](howto-configure-file-uploads.md) in Ihrer Anwendung konfigurieren müssen, bevor Ihr Gerät eine Datei hochladen kann.
+
+| Fehlercode | BESCHREIBUNG | Mögliche Entschärfung |
+| - | - | - |
+| 403006  | Sie haben die Anzahl gleichzeitiger Dateiuploadvorgänge überschritten. Jeder Geräteclient ist auf 10 gleichzeitige Dateiuploads beschränkt. | Sorgen Sie dafür, dass das Gerät IoT Central umgehend benachrichtigt, sobald der Dateiuploadvorgang abgeschlossen wurde. Wenn das nicht funktioniert, versuchen Sie, das Anforderungstimeout zu reduzieren. |
 
 ## <a name="payload-shape-issues"></a>Probleme mit der Form der Nutzdaten
 

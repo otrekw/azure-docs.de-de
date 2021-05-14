@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/13/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bd45bb264f8e29a2aad870a7daff45fdd44e0d3c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b22552147bec789c4b1d796cad2c52165d266334
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478810"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207715"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins"></a>Erstellen einer App-Registrierung für die Verwendung mit Azure Digital Twins
 
@@ -94,7 +94,7 @@ Wenn diese Werte fehlen, wiederholen Sie die Schritte im [Abschnitt zum Hinzufü
 
 Ihre Organisation erfordert möglicherweise zusätzliche Aktionen von Abonnementbesitzern/Administratoren, um eine App-Registrierung erfolgreich einzurichten. Welche Schritte erforderlich sind, hängt von den spezifischen Einstellungen Ihrer Organisation ab.
 
-Im Folgenden finden Sie einige häufig vorkommende Aktivitäten, die ein Besitzer/Administrator für das Abonnement möglicherweise ausführen muss. Diese und andere Vorgänge können über die Seite [*Azure AD-App-Registrierungen*](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) im Azure-Portal ausgeführt werden.
+Im Folgenden finden Sie einige häufig vorkommende Aktivitäten, die ein Besitzer/Administrator für das Abonnement möglicherweise ausführen muss. Diese und andere Vorgänge können über die Seite [Azure AD-App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) im Azure-Portal ausgeführt werden.
 * Erteilen Sie eine Administratoreinwilligung für die App-Registrierung. In Ihrer Organisation ist möglicherweise die Einstellung *Administratoreinwilligung erforderlich* global in Azure AD für alle App-Registrierungen in Ihrem Abonnement aktiviert. Wenn dies der Fall ist, muss der Besitzer/Administrator diese Schaltfläche für Ihr Unternehmen auf der Seite *API-Berechtigungen* der App-Registrierung auswählen, damit die App-Registrierung gültig ist:
 
     :::image type="content" source="media/how-to-create-app-registration/grant-admin-consent.png" alt-text="Portalansicht der Schaltfläche „Administratoreinwilligung gewähren“ unter „API-Berechtigungen“":::
@@ -105,11 +105,11 @@ Im Folgenden finden Sie einige häufig vorkommende Aktivitäten, die ein Besitze
 * Festlegen bestimmter Antwort-URLs für den Web- und Desktopzugriff
 * Zulassen von impliziten OAuth2-Authentifizierungsflows
 
-Weitere Informationen zur App-Registrierung und zu den verschiedenen diesbezüglichen Einrichtungsoptionen finden Sie unter [*Registrieren einer Anwendung bei der Microsoft Identity Platform*](/graph/auth-register-app-v2).
+Weitere Informationen zur App-Registrierung und zu den verschiedenen diesbezüglichen Einrichtungsoptionen finden Sie unter [Registrieren einer Anwendung bei der Microsoft Identity Platform](/graph/auth-register-app-v2).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie eine Azure AD-App-Registrierung festgelegt, die zur Authentifizierung von Clientanwendungen mit den Azure Digital Twins-APIs verwendet werden kann.
 
 Informieren Sie sich im nächsten Schritt über Authentifizierungsmechanismen, darunter einen Mechanismus, der App-Registrierungen verwendet, und andere, bei denen dies nicht der Fall ist:
-* [*Verwenden Schreiben von App-Authentifizierungscode*](how-to-authenticate-client.md)
+* [Verwenden Schreiben von App-Authentifizierungscode](how-to-authenticate-client.md)

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dbd4e9c6e8a58738ac0a8db6c64133301d1aebe5
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439458"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950584"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -120,34 +120,71 @@ Wenn Sie durch Befolgen dieser Schritte keine selbstsignierten Zertifikate finde
 
 ## <a name="sign-in-issues"></a>Probleme bei der Anmeldung
 
-### <a name="blank-sign-in-dialog-box"></a>Leeres Anmeldedialogfeld
+### <a name="understanding-sign-in"></a>Grundlegendes zur Anmeldung
 
-Leere Anmeldedialogfelder treten am häufigsten auf, wenn Active Directory-Verbunddienste (AD FS) Storage-Explorer auffordern, eine Umleitung durchzuführen, die von Electron nicht unterstützt wird. Als Problemumgehung können Sie versuchen, den Gerätecodefluss für die Anmeldung zu verwenden. Gehen Sie dazu folgendermaßen vor:
+Stellen Sie sicher, dass Sie den Artikel [Anmeldung beim Storage-Explorer](./storage-explorer-sign-in.md) gelesen haben.
 
-1. Wählen Sie auf der linken vertikalen Symbolleiste die Option **Einstellungen** aus. Wechseln Sie im Bereich „Einstellungen“ zu **Anwendung** > **Anmelden**. Aktivieren Sie die Option **Anmeldung per Gerätecodeflow verwenden**.
-2. Öffnen Sie das Dialogfeld **Verbinden** (über das Steckersymbol in der vertikalen Leiste auf der linken Seite oder durch Auswählen der Option **Konto hinzufügen** im Kontobereich).
-3. Wählen Sie die Umgebung aus, an der Sie sich anmelden möchten.
-4. Wählen Sie **Anmelden** aus.
-5. Befolgen Sie die Anweisungen im nächsten Bereich.
+### <a name="frequently-having-to-reenter-credentials"></a>Häufige Aufforderung zur erneuten Eingabe von Anmeldeinformationen
 
-Wenn Sie sich nicht bei dem gewünschten Konto anmelden können, da Ihr Standardbrowser bereits bei einem anderen Konto angemeldet ist, führen Sie einen der folgenden Schritte aus:
+Eine Aufforderung zur erneuten Eingabe der Anmeldeinformationen ist häufig das Ergebnis von Richtlinien für bedingten Zugriff, die von Ihrem AAD-Administrator festgelegt wurden. Wenn Sie vom Storage-Explorer zur erneuten Eingabe der Anmeldeinformationen über den Kontobereich aufgefordert werden, sollte der Link **Fehlerdetails...** angezeigt werden. Klicken Sie auf den Link, um zu erfahren, warum Sie durch den Storage-Explorer zur erneuten Eingabe von Anmeldeinformationen aufgefordert werden. Fehler durch Richtlinien für bedingten Zugriff, die eine erneute Eingabe der Anmeldeinformationen erforderlich machen, können beispielsweise so aussehen:
+- Das Aktualisierungstoken ist abgelaufen...
+- Sie müssen für den Zugriff die mehrstufige Authentifizierung verwenden...
+- Aufgrund einer Konfigurationsänderung Ihres Administrators...
 
-- Kopieren Sie den Link und den Code manuell in eine private Sitzung Ihres Browsers.
-- Kopieren Sie den Link und den Code manuell in einen anderen Browser.
+Um die Häufigkeit der erneuten Eingabe von Anmeldeinformationen aufgrund von Fehlern wie den oben genannten zu reduzieren, müssen Sie mit Ihrem Azure AD-Administrator sprechen.
+
+### <a name="conditional-access-policies"></a>Bedingte Zugriffsrichtlinien
+
+Wenn für Ihr Konto Richtlinien für bedingten Zugriff gelten, stellen Sie sicher, dass Sie für die Einstellung **Anmelden mit** den Wert **Standardwebbrowser** verwenden. Informationen zu dieser Einstellung finden Sie unter [Ändern des Anmeldeorts](./storage-explorer-sign-in.md#changing-where-sign-in-happens).
+
+### <a name="browser-complains-about-http-redirect-during-sign-in"></a>Browser gibt bei der Anmeldung eine Warnung zur HTTP-Umleitung aus
+
+Wenn die Anmeldung beim Storage-Explorer über den Webbrowser durchgeführt wird, erfolgt am Ende des Anmeldevorgangs eine Umleitung an `localhost`. Browser geben gelegentlich eine Warnung oder einen Fehler dazu aus, dass die Umleitung mit HTTP anstelle von HTTPS ausgeführt wird. Einige Browser versuchen möglicherweise auch, eine Umleitung mit HTTPS zu erzwingen. Falls einer dieser Fälle eintritt, stehen abhängig vom verwendeten Browser verschiedene Optionen zur Auswahl:
+- Ignorieren Sie die Warnung.
+- Fügen Sie eine Ausnahme für `localhost` hinzu.
+- Deaktivieren Sie das Erzwingen von HTTPS, entweder global oder nur für `localhost`.
+
+Falls keine dieser Optionen verwendet werden kann, können Sie alternativ den [Anmeldeort ändern](./storage-explorer-sign-in.md#changing-where-sign-in-happens).
+
+### <a name="unable-to-acquire-token-tenant-is-filtered-out"></a>Token kann nicht abrufen werden, Mandant wurde herausgefiltert
+
+Wenn Sie in einer Fehlermeldung darauf hingewiesen werden, dass kein Token abgerufen werden kann, weil ein Mandant herausgefiltert wurde, versuchen Sie auf einen Mandanten zuzugreifen, der aufgrund eines Filters nicht angezeigt wird. Wechseln Sie zum Aufheben des Filters für den Mandanten zum **Kontobereich**, und stellen Sie sicher, dass das Kontrollkästchen für den in der Fehlermeldung genannten Mandanten aktiviert ist. Weitere Informationen zum Filtern von Mandanten im Storage-Explorer finden Sie unter [Verwalten von Konten](./storage-explorer-sign-in.md#managing-accounts).
+
+### <a name="authentication-library-failed-to-start-properly"></a>Authentifizierungsbibliothek kann nicht ordnungsgemäß gestartet werden
+
+Wenn Sie beim Start in einer Fehlermeldung darauf hingewiesen werden, dass die Authentifizierungsbibliothek für den Storage-Explorer nicht ordnungsgemäß gestartet werden konnte, stellen Sie sicher, dass Ihre Installationsumgebung alle geltenden [Voraussetzungen](../../vs-azure-tools-storage-manage-with-storage-explorer.md#prerequisites) erfüllt. Eine nicht erfüllte Voraussetzung ist die wahrscheinlichste Ursache für eine solche Fehlermeldung.
+
+Wenn Sie der Meinung sind, dass Ihre Installationsumgebung alle Voraussetzungen erfüllt, [melden Sie ein Problem auf GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues/new). Schließen Sie beim Melden eines Problems die folgenden Informationen ein:
+- Ihr Betriebssystem.
+- Die von Ihnen verwendete Storage-Explorer-Version.
+- Geben Sie an, ob die Voraussetzungen überprüft wurden.
+- Die [Authentifizierungsprotokolle](#authentication-logs) nach einem nicht erfolgreichen Start von Storage-Explorer. Nach dem Auftreten eines Fehlers dieser Art wird automatisch die ausführliche Authentifizierungsprotokollierung aktiviert.
+
+### <a name="blank-window-when-using-integrated-sign-in"></a>Leeres Fenster bei Verwendung der integrierten Anmeldung
+
+Wenn Sie die **integrierte Anmeldung** verwenden und ein leeres Anmeldefenster angezeigt wird, müssen Sie wahrscheinlich zu einer anderen Anmeldemethode wechseln. Leere Anmeldedialogfelder treten am häufigsten auf, wenn ein Active Directory-Verbunddienste-Server (AD FS) Storage-Explorer auffordert, eine Umleitung durchzuführen, die von Electron nicht unterstützt wird.
+
+Sie können zu einer anderen Anmeldemethode wechseln, indem Sie unter **Einstellungen** > **Anwendung** > **Anmeldung** die Einstellung **Anmelden mit** ändern. Informationen zu den verschiedenen Arten von Anmeldemethoden finden Sie unter [Ändern des Anmeldeorts](./storage-explorer-sign-in.md#changing-where-sign-in-happens).
 
 ### <a name="reauthentication-loop-or-upn-change"></a>Schleife für eine erneute Authentifizierung oder Änderung des UPN
 
-Wenn Sie sich in einer Schleife für eine erneute Authentifizierung befinden oder den UPN von einem Ihrer Konten geändert haben, befolgen Sie folgende Schritte:
+Wenn Sie sich in einer Schleife für eine erneute Authentifizierung befinden oder den UPN für eines Ihrer Konten geändert haben, führen Sie diese Schritte aus:
 
-1. Entfernen Sie alle Konten, und schließen Sie dann Storage-Explorer.
-2. Löschen Sie den Ordner „.IdentityService“ von Ihrem Computer. Der Ordner befindet sich unter Windows unter `C:\users\<username>\AppData\Local`. Bei Mac und Linux finden Sie den Ordner im Stammverzeichnis Ihres Benutzerverzeichnisses.
-3. Wenn Sie Mac oder Linux verwenden, müssen Sie auch den Eintrag „Microsoft.Developer.IdentityService“ aus dem Keystore des Betriebssystems löschen. Unter Mac ist der Keystore die Anwendung *Gnome Keychain*. Unter Linux wird die Anwendung in der Regel als _Schlüsselbund_ bezeichnet, der Name kann jedoch abhängig von Ihrer Distribution abweichen.
+1. Öffnen Sie den Storage-Explorer.
+2. Navigieren Sie zu „Hilfe“ > „Zurücksetzen“.
+3. Stellen Sie sicher, dass mindestens „Authentifizierung“ aktiviert ist. Sie können andere Elemente deaktivieren, die Sie nicht zurücksetzen möchten.
+4. Klicken Sie auf die Schaltfläche „Zurücksetzen“.
+5. Starten Sie den Storage-Explorer neu, und versuchen Sie, sich erneut anzumelden.
 
-### <a name="conditional-access"></a>Bedingter Zugriff
+Falls nach dem Zurücksetzen weiterhin Probleme auftreten, führen Sie die folgenden Schritte aus:
 
-Aufgrund einer Einschränkung in der von Storage-Explorer verwendeten Azure AD-Bibliothek wird der bedingte Zugriff nicht unterstützt, wenn Storage-Explorer unter Windows 10, Linux oder MacOS verwendet wird.
+1. Öffnen Sie den Storage-Explorer.
+2. Entfernen Sie alle Konten, und schließen Sie dann Storage-Explorer.
+3. Löschen Sie den Ordner `.IdentityService` von Ihrem Computer. Der Ordner befindet sich unter Windows unter `C:\users\<username>\AppData\Local`. Bei Mac und Linux finden Sie den Ordner im Stammverzeichnis Ihres Benutzerverzeichnisses.
+4. Wenn Sie Mac oder Linux verwenden, müssen Sie auch den Eintrag „Microsoft.Developer.IdentityService“ aus dem Keystore des Betriebssystems löschen. Unter Mac ist der Keystore die Anwendung *Gnome Keychain*. Unter Linux wird die Anwendung in der Regel als _Schlüsselbund_ bezeichnet, der Name kann jedoch abhängig von Ihrer Distribution abweichen.
+6. Starten Sie den Storage-Explorer neu, und versuchen Sie, sich erneut anzumelden.
 
-## <a name="mac-keychain-errors"></a>Mac-Keychainfehler
+### <a name="macos-keychain-errors-or-no-sign-in-window"></a>macOS: Schlüsselbundfehler oder kein Anmeldefenster
 
 Die macOS-Keychain kann manchmal in einem Zustand wechseln, der Probleme in Verbindung mit der Storage-Explorer-Authentifizierungsbibliothek verursacht. Führen Sie die folgenden Schritte durch, um diesen Zustand der Keychain aufzuheben:
 
@@ -162,15 +199,16 @@ Die macOS-Keychain kann manchmal in einem Zustand wechseln, der Probleme in Verb
 6. Sie werden mit einer Nachricht wie „Servicehub möchte auf den Schlüsselbund zugreifen“ aufgefordert. Geben Sie das Kennwort Ihres Mac-Administratorkontos ein, und wählen Sie **Immer zulassen** (oder **Zulassen**, falls **Immer zulassen** nicht verfügbar ist) aus.
 7. Versuchen Sie, sich anzumelden.
 
-### <a name="general-sign-in-troubleshooting-steps"></a>Allgemeine Schritte zur Behandlung von Anmeldeproblemen
+### <a name="default-browser-doesnt-open"></a>Standardbrowser wird nicht geöffnet
 
-* Wenn Sie unter macOS arbeiten und im Anmeldefenster nie das Dialogfeld **Warten auf Authentifizierung** angezeigt wird, können Sie es mit [diesen Schritten](#mac-keychain-errors) versuchen.
-* Starten Sie Storage-Explorer neu.
-* Wenn das Fenster „Authentifizierung“ leer ist, warten Sie mindestens eine Minute, bevor Sie das Dialogfeld für die Authentifizierung schließen.
-* Stellen Sie sicher, dass Ihre Proxy- und Zertifikateinstellungen für Ihren Computer und Storage-Explorer ordnungsgemäß konfiguriert sind.
-* Wenn Sie Windows ausführen und auf demselben Computer Zugriff auf Visual Studio 2019 und die Anmeldeinformationen haben, versuchen Sie, sich bei Visual Studio 2019 anzumelden. Nach einer erfolgreichen Anmeldung bei Visual Studio 2019 können Sie den Storage-Explorer öffnen und Ihr Konto im Kontobereich sehen.
+Wenn Ihr Standardbrowser beim Versuch einer Anmeldung nicht geöffnet wird, probieren Sie alle folgenden Maßnahmen aus:
+- Neustart von Storage-Explorer
+- Öffnen Sie Ihren Browser manuell, bevor Sie mit der Anmeldung beginnen.
+- Versuchen Sie die **integrierte Anmeldung** zu verwenden. Anweisungen dazu finden Sie unter [Ändern des Anmeldeorts](./storage-explorer-sign-in.md#changing-where-sign-in-happens).
 
-Wenn keine dieser Methoden funktioniert, [eröffnen Sie in GitHub ein Problem](https://github.com/Microsoft/AzureStorageExplorer/issues).
+### <a name="other-sign-in-issues"></a>Andere Probleme bei der Anmeldung
+
+Wenn keines der oben genannten Anmeldeprobleme vorliegt oder Sie Ihr Anmeldeproblem nicht beheben können, [melden Sie ein Problem auf GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
 ### <a name="missing-subscriptions-and-broken-tenants"></a>Fehlende Abonnements und fehlerhafte Mandanten
 
@@ -180,9 +218,9 @@ Wenn Sie nach erfolgreicher Anmeldung Ihre Abonnements nicht abrufen können, pr
 * Stellen Sie sicher, dass die Anmeldung mit der richtigen Azure-Umgebung (Azure, Azure China 21Vianet, Azure Deutschland, Azure US Government oder Benutzerdefinierte Umgebung) erfolgt ist.
 * Wenn Sie sich hinter einem Proxyserver befinden, sollten Sie sicherstellen, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
 * Entfernen Sie das Konto, und fügen Sie es wieder hinzu.
-* Wenn ein Link namens „Weitere Informationen“ vorhanden ist, prüfen Sie, welche Fehlermeldungen für die fehlerhaften Mandanten gemeldet werden. Wenn Sie nicht sicher sind, wie Sie auf die Fehlermeldungen reagieren sollen, können Sie [ein Problem in GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues) öffnen.
+* Wenn ein Link mit der Beschriftung „Weitere Informationen“ oder „Fehlerdetails“ angezeigt wird, prüfen Sie, welche Fehlermeldungen für die fehlerhaften Mandanten gemeldet werden. Wenn Sie nicht sicher sind, wie Sie auf die Fehlermeldungen reagieren sollen, können Sie [ein Problem in GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues) öffnen.
 
-## <a name="cant-remove-an-attached-account-or-storage-resource"></a>Zugeordnetes Konto oder verbundene Speicherressource kann nicht entfernt werden
+## <a name="cant-remove-an-attached-storage-account-or-resource"></a>Angefügtes Konto oder angefügte Ressource kann nicht entfernt werden
 
 Wenn ein zugeordnetes Konto oder eine verbundene Speicherressource über die Benutzeroberfläche nicht entfernt werden kann, können Sie alle zugeordneten Ressourcen manuell löschen, indem Sie die folgenden Ordner löschen:
 
@@ -289,20 +327,20 @@ Wenn Sie die nicht beschädigten Verbindungen beibehalten möchten, können Sie 
 
 Nachdem Sie alle Ihre Verbindungen überprüft haben, müssen Sie für alle Verbindungsnamen, die nicht zurückgesetzt werden, ihre beschädigten Daten löschen (falls vorhanden) und sie mit den Standardschritten in Storage-Explorer zurücksetzen:
 
-# <a name="windows"></a>[Windows](#tab/Windows)
+### <a name="windows"></a>[Windows](#tab/Windows)
 
 1. Suchen Sie im Menü **Start** nach der **Anmeldeinformationsverwaltung** und öffnen Sie sie.
 2. Wechseln Sie zu **Windows-Anmeldeinformationen**.
 3. Suchen Sie unter **Generische Anmeldeinformationen** nach Einträgen, die den Schlüssel `<connection_type_key>/<corrupted_connection_name>` aufweisen (z. B. `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 4. Löschen Sie diese Einträge, und fügen Sie die Verbindungen erneut hinzu.
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+### <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Öffnen Sie Spotlight (BEFEHL+LEERTASTE), und suchen Sie nach **Schlüsselbundverwaltung (Keychain Access)** .
 2. Suchen Sie nach Einträgen, die den Schlüssel `<connection_type_key>/<corrupted_connection_name>` aufweisen (z. B. `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Löschen Sie diese Einträge, und fügen Sie die Verbindungen erneut hinzu.
 
-# <a name="linux"></a>[Linux](#tab/Linux)
+### <a name="linux"></a>[Linux](#tab/Linux)
 
 Die lokale Anmeldeinformationsverwaltung variiert je nach Linux-Distribution. Wenn Ihre Linux-Distribution kein integriertes GUI-Tool für die lokale Anmeldeinformationsverwaltung enthält, können Sie ein Drittanbietertool zur Verwaltung Ihrer lokalen Anmeldeinformationen installieren. Sie können z. B. [Seahorse](https://wiki.gnome.org/Apps/Seahorse/) verwenden, ein Open-Source-GUI-Tool zur Verwaltung lokaler Anmeldeinformationen für Linux.
 
@@ -356,7 +394,7 @@ Für Storage-Explorer muss .NET Core auf dem System installiert sein. Wir empfeh
 > [!NOTE]
 > Storage-Explorer bis Version 1.7.0 erfordert .NET Core 2.0. Wenn Sie bereits eine neuere Version von .NET Core installiert haben, müssen Sie [Storage-Explorer mit Patches versehen](#patching-storage-explorer-for-newer-versions-of-net-core). Wenn Sie Storage-Explorer 1.8.0 oder höher ausführen, benötigen Sie mindestens .NET Core 2.1.
 
-# <a name="ubuntu-2004"></a>[Ubuntu 20.04 ](#tab/2004)
+### <a name="ubuntu-2004"></a>[Ubuntu 20.04 ](#tab/2004)
 
 1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
 2. Installieren Sie die [.NET Core-Runtime](/dotnet/core/install/linux):
@@ -369,7 +407,7 @@ Für Storage-Explorer muss .NET Core auf dem System installiert sein. Wir empfeh
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
+### <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
 2. Installieren Sie die [.NET Core-Runtime](/dotnet/core/install/linux):
@@ -382,7 +420,7 @@ Für Storage-Explorer muss .NET Core auf dem System installiert sein. Wir empfeh
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
+### <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
 2. Installieren Sie die [.NET Core-Runtime](/dotnet/core/install/linux):
@@ -432,8 +470,102 @@ Wenn die Schaltfläche **In Explorer öffnen** im Azure-Portal nicht funktionier
 * Google Chrome
 * Microsoft Internet Explorer
 
+## <a name="gathering-logs"></a>Sammeln von Protokollen
+
+Wenn Sie ein Problem an GitHub melden, werden Sie möglicherweise aufgefordert, bestimmte Protokolle zu sammeln, um Ihr Problem zu diagnostizieren.
+
+### <a name="storage-explorer-logs"></a>Storage-Explorer-Protokolle
+
+Ab Version 1.16.0 protokolliert der Storage-Explorer verschiedene Dinge in ihren eigenen Anwendungsprotokollen. Sie können auf einfache Weise zu diesen Protokollen kommen, indem Sie auf „Hilfe > Protokollverzeichnis öffnen“ klicken. Standardmäßig werden Storage-Explorer-Protokolle mit einem geringen Ausführlichkeitsgrad erfasst. Um den Ausführlichkeitsgrad zu ändern, fügen Sie eine Umgebungsvariable mit dem Namen `STG_EX_LOG_LEVEL` und einen der folgenden Werte hinzu:
+- `silent`
+- `critical`
+- `error`
+- `warning`
+- `info` (Standardebene)
+- `verbose`
+- `debug`
+
+Protokolle werden für jede ausgeführte Sitzung des Storage-Explorers in Ordner aufgeteilt. Es wird empfohlen, alle Protokolldateien, die Sie bereitstellen möchten, in einem ZIP-Archiv zusammenzufassen, wobei die Dateien aus verschiedenen Sitzungen in unterschiedlichen Ordnern abgelegt werden.
+
+### <a name="authentication-logs"></a>Authentifizierungsprotokolle
+
+Bei Problemen im Zusammenhang mit der Anmeldung oder Storage-Explorer-Authentifizierungsbibliothek müssen Sie höchstwahrscheinlich Authentifizierungsprotokolle sammeln. Authentifizierungsprotokolle werden hier gespeichert:
+- Windows: `C:\Users\<your username>\AppData\Local\Temp\servicehub\logs`
+- macOS und Linux `~/.ServiceHub/logs`
+
+Im Allgemeinen können Sie die folgenden Schritte ausführen, um die Protokolle zu erfassen:
+
+1. Wechseln Sie zu **Einstellungen (Zahnradsymbol links)**  > **Anwendungen** > **Anmeldung**, und aktivieren Sie die Option **Ausführliche Authentifizierungsprotokollierung**. Wenn der Storage-Explorer aufgrund eines Problems mit der Authentifizierungsbibliothek nicht gestartet werden kann, wird dies für Sie durchgeführt.
+2. Schließen Sie Storage Explorer.
+1. Optional/empfohlen: Löschen Sie vorhandene Protokolle aus dem Ordner `logs`. Dadurch wird die Menge an Informationen reduziert, die Sie uns senden müssen.
+4. Öffnen Sie den Storage-Explorer, und reproduzieren Sie das Problem.
+5. Schließen Sie den Storage-Explorer.
+6. Zippen Sie den Inhalt des Ordners `logs`.
+
+### <a name="azcopy-logs"></a>AzCopy-Protokolle
+
+Wenn Sie Probleme beim Übertragen von Daten haben, müssen Sie möglicherweise die AzCopy-Protokolle abrufen. AzCopy-Protokolle können problemlos mit zwei verschiedenen Methoden gefunden werden:
+- Für fehlgeschlagene Übertragungen, die sich noch im Aktivitätsprotokoll finden, klicken Sie auf „Zur AzCopy-Protokolldatei wechseln“.
+- Wechseln Sie für Übertragungen, bei denen in der Vergangenheit Fehler aufgetreten sind, zum Ordner „AzCopy-Protokolle“. Dieser Ordner befindet sich unter:
+  - Windows: `C:\Users\<your username>\.azcopy`
+  - macOS und Linux `~/.azcopy
+
+### <a name="network-logs"></a>Netzwerkprotokolle
+
+Bei einigen Problemen müssen Sie Protokolle der Netzwerkaufrufe bereitstellen, die von Storage-Explorer durchgeführt werden. Unter Windows können Sie dazu Fiddler verwenden.
+
+> [!NOTE]
+> Fiddler-Ablaufverfolgungen können Kennwörter enthalten, die Sie während der Erfassung der Ablaufverfolgung in Ihrem Browser eingegeben/gesendet haben. Lesen Sie unbedingt die Anweisungen zum Bereinigen einer Fiddler-Ablaufverfolgung. Laden Sie keine Fiddler-Ablaufverfolgungen auf GitHub hoch. Sie werden informiert, wohin Sie Ihre Fiddler-Ablaufverfolgung sicher senden können.
+
+Teil 1: Installieren und Konfigurieren von Fiddler
+
+1. Installieren Sie Fiddler.
+2. Starten Sie Fiddler.
+3. Klicken Sie auf „Tools > Optionen“.
+4. Klicken Sie auf die Registerkarte „HTTPS“.
+5. Stellen Sie sicher, dass „Capture CONNECTs“ (CONNECTs erfassen) und „Decrypt HTTPS traffic“ (HTTPS-Datenverkehr entschlüsseln) aktiviert sind.
+6. Klicken Sie auf die Schaltfläche „Actions“ (Aktionen).
+7. Wählen Sie im nächsten Dialogfeld „Trust Root Certificate“ (Stammzertifikat vertrauen) und dann „Yes“ (Ja) aus.
+8. Klicken Sie noch mal auf die Schaltfläche „Actions“ (Aktionen).
+9. Wählen Sie „Export Root Certificate to Desktop“ (Stammzertifikat nach Desktop exportieren) aus.
+10. Wechseln Sie zu Ihrem Desktop.
+11. Suchen Sie die Datei „FiddlerRoot.cer“.
+12. Doppelklick Sie auf die Datei, um sie zu öffnen.
+13. Navigieren Sie zur Registerkarte „Details“.
+14. Klicken Sie auf „In Datei kopieren...“.
+15. Wählen Sie im Export-Assistenten die folgenden Optionen aus:
+    - Base64-codiertes X.509
+    - Für den Dateinamen klicken Sie auf „Durchsuchen...“ in C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs, und dann können Sie die Datei unter einem beliebigen Dateinamen speichern.
+16. Schließen Sie das Fenster „Zertifikat“.
+17. Starten Sie den Storage-Explorer.
+18. Wechseln Sie zu „Bearbeiten > Proxy konfigurieren“.
+19. Wählen Sie im Dialogfeld „App-Proxyeinstellungen verwenden“ aus, und legen Sie die URL auf http://localhost und den Port auf 8888 fest.
+20. Klicken Sie auf OK.
+21. Neustart von Storage-Explorer
+22. In Fiddler sollten Netzwerkaufrufe aus einem `storageexplorer:`-Prozess angezeigt werden.
+
+Teil 2: Reproduzieren des Problems
+1. Schließen Sie alle Apps bis auf Fiddler.
+2. Löschen Sie das Fiddler-Protokoll (X-Symbol oben links in der Nähe des Menüs „Ansicht“).
+3. Optional/empfohlen: Lassen Sie Fiddler sich einige Minuten einrichten. Wenn Netzwerkaufrufe angezeigt werden, klicken Sie mit der rechten Maustaste darauf, und wählen Sie „Jetzt filtern“ > „<process name> ausblenden“ aus.
+4. Starten Sie den Storage-Explorer.
+5. Reproduzieren Sie das Problem.
+6. Klicken Sie auf „Datei > Speichern > Alle Sitzungen...“, und speichern Sie diese an einem Ort, den Sie sich gut merken können.
+7. Schließen Sie Fiddler und den Storage-Explorer.
+
+Teil 3: Bereinigen der Fiddler-Ablaufverfolgung
+1. Doppelklicken Sie auf die Fiddler-Ablaufverfolgung (SAZ-Datei).
+2. Drücken Sie `ctrl`+`f`.
+3. Stellen Sie sich, dass im angezeigten Dialogfeld die folgenden Optionen festgelegt sind: Suchen = Anforderungen und Antworten, Untersuchen = Header und Textkörper
+4. Suchen Sie nach allen Kennwörtern, die Sie beim Erfassen der Fiddler-Ablaufverfolgung verwendet haben, sowie nach hervorgehobenen Einträgen. Klicken Sie mit der rechten Maustaste, und wählen Sie „Entfernen > Ausgewählte Sitzungen“ aus.
+5. Wenn Sie beim Erfassen der Ablaufverfolgung definitiv Kennwörter in Ihren Browser eingegeben haben, aber mithilfe von STRG+F keine Einträge finden und Ihre Kennwörter nicht ändern möchten bzw. die verwendeten Kennwörter für andere Konten verwendet werden, können Sie das Senden der SAZ-Datei überspringen. Vorsicht ist besser als Nachsicht. :)
+6. Speichern Sie die Ablaufverfolgung noch mal unter einem neuen Namen.
+7. Optional: Löschen Sie die ursprüngliche Ablaufverfolgung.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn keine der Lösungen funktioniert, [öffnen Sie in GitHub ein Problem](https://github.com/Microsoft/AzureStorageExplorer/issues). Sie können dazu auch die Schaltfläche **Problem auf GitHub melden** in der linken unteren Ecke auswählen.
+Wenn keine dieser Maßnahmen zur Problemlösung führt, haben Sie folgende Möglichkeiten:
+- Erstellen ein Supporttickets
+- [Melden Sie ein Problem auf GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues). Sie können dazu auch die Schaltfläche **Problem auf GitHub melden** in der linken unteren Ecke auswählen.
 
 ![Feedback](./media/storage-explorer-troubleshooting/feedback-button.PNG)

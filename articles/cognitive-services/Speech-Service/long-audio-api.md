@@ -10,28 +10,28 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: 65c0d80394317c2b2bfbf621d3cc2ad0c2e3448a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7b695455ab571d97be06f8b0f5293e3007083be
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618405"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331212"
 ---
 # <a name="long-audio-api"></a>API für lange Audioinhalte
 
-Die API für lange Audioinhalte ist für asynchrone lange Sprachsynthesen konzipiert. Beispiele wären etwa Hörbücher, Zeitungsartikel und Dokumente. Diese API gibt keine synthetisierten Audiodaten in Echtzeit zurück, sondern erwartet, dass Sie die Antworten abrufen und die Ausgaben so verwenden, wie sie vom Dienst bereitgestellt werden. Im Gegensatz zur API für die Sprachsynthese, die vom Speech SDK verwendet wird, kann die API für lange Audioinhalte synthetisierte Audiodaten erzeugen, die länger als 10 Minuten sind, wodurch sie ideal für Herausgeber und Plattformen für Audioinhalte geeignet ist, um lange Audioinhalte wie Hörbücher in einem Batch zu erstellen.
+Die API für lange Audioinhalte bietet die asynchrone Sprachsynthese für lange Texte (z. B. Hörbücher, Zeitungsartikel und Dokumente). Diese API gibt keine synthetisierten Audiodaten in Echtzeit zurück. Stattdessen rufen Sie die Antworten ab und nutzen die Ausgaben, wenn der Dienst sie zur Verfügung stellt. Im Gegensatz zur Text-zu-Sprache-API, die vom Speech SDK verwendet wird, kann die API für lange Audioinhalte synthetisierte Audiodaten erzeugen, die länger als 10 Minuten sind. Hierdurch eignet sie sich ideal für Herausgeber und Plattformen für Audioinhalte, um lange Audioinhalte wie Audiobücher in einem Batch zu erstellen.
 
 Weitere Vorteile der API für lange Audioinhalte:
 
 * Die vom Dienst zurückgegebene Stimmensynthese verwendet die besten neuronalen Stimmen.
-* Es muss kein Stimmendpunkt bereitgestellt werden, da Stimmen in einem nicht echtzeitbasierten Batchmodus synthetisiert werden.
+* Es besteht keine Notwendigkeit, einen Stimmenendpunkt bereitzustellen.
 
 > [!NOTE]
-> Die API für lange Audioinhalte unterstützt jetzt sowohl [öffentliche neuronale Stimmen](./language-support.md#neural-voices) als auch [benutzerdefinierte neuronale Stimmen](./how-to-custom-voice.md#custom-neural-voices).
+> Die API für lange Audioinhalte unterstützt sowohl [öffentliche neuronale Stimmen](./language-support.md#neural-voices) als auch [benutzerdefinierte neuronale Stimmen](./how-to-custom-voice.md#custom-neural-voices).
 
 ## <a name="workflow"></a>Workflow
 
-Wenn Sie die API für lange Audioinhalte verwenden, senden Sie typischerweise eine Textdatei oder zu synthetisierende Dateien, fragen den Status ab und können die Audioausgabe herunterladen, wenn der Status „Erfolgreich“ ist.
+Wenn Sie die API für lange Audioinhalte verwenden, senden Sie typischerweise eine Textdatei oder zu synthetisierende Dateien, fragen den Status ab und laden die Audioausgabe herunter, wenn der Status „Erfolgreich“ ist.
 
 Dieses Diagramm bietet eine allgemeine Übersicht über den Workflow.
 
@@ -45,10 +45,11 @@ Stellen Sie bei der Vorbereitung Ihrer Textdatei Folgendes sicher:
 * Die Verschlüsselung ist [UTF-8 mit Bytereihenfolge-Marke (BOM)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom).
 * Es handelt sich um eine einzelne Datei, nicht um ein ZIP-Archiv.
 * Sie enthält mehr als 400 Zeichen für Nur-Text oder 400 [abrechenbare Zeichen](./text-to-speech.md#pricing-note) für SSML-Text und weniger als 10.000 Absätze.
-  * Bei Nur-Text wird jeder Absatz durch Drücken der **EINGABETASTE** getrennt – [Beispiel für die Eingabe von Nur-Text](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) anzeigen
-  * Bei SSML-Text wird jede SSML-Komponente als Absatz betrachtet. SSML-Elemente sollen durch verschiedene Absätze getrennt werden – [Beispiel für die Eingabe von SSML-Text](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) anzeigen.
+  * Bei Nur-Text wird jeder Absatz durch Drücken der **EINGABETASTE** getrennt. Siehe [Beispiel für die Eingabe von Nur-Text](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt).
+  * Bei SSML-Text wird jede SSML-Komponente als Absatz betrachtet. Trennen Sie SSML-Teile durch verschiedene Absätze. Siehe [Beispiel für die Eingabe von SSML-Text](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt).
 
 ## <a name="sample-code"></a>Beispielcode
+
 Der Rest dieser Seite befasst sich mit Python. Allerdings wird Beispielcode für die API für lange Audiodaten für die folgenden Programmiersprachen auf GitHub zur Verfügung gestellt:
 
 * [Beispielcode: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
@@ -71,8 +72,8 @@ Diese Bibliotheken werden verwendet, um die HTTP-Anforderung zu erstellen und di
 
 Um eine Liste der unterstützten Stimmen zu erhalten, senden Sie eine GET-Anforderung an `https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/voices`.
 
+Dieser Code ruft eine vollständige Liste der Stimmen ab, die Sie in einer bestimmten Region bzw. an einem bestimmten Endpunkt verwenden können.
 
-Dieser Code ermöglicht es Ihnen, eine vollständige Liste der Stimmen für eine bestimmte Region bzw. für einen Endpunkt abzurufen, die bzw. den Sie verwenden können.
 ```python
 def get_voices():
     region = '<region>'
@@ -93,9 +94,9 @@ Ersetzen Sie die folgenden Werte:
 * Ersetzen Sie `<your_key>` durch Ihren Abonnementschlüssel für den Spracherkennungsdienst. Diese Informationen sind auf der Registerkarte **Übersicht** für Ihre Ressource im [Azure-Portal](https://aka.ms/azureportal) verfügbar.
 * Ersetzen Sie `<region>` durch die Region, in der Ihre Speech-Ressource erstellt wurde (Beispiel: `eastus` oder `westus`). Diese Informationen sind auf der Registerkarte **Übersicht** für Ihre Ressource im [Azure-Portal](https://aka.ms/azureportal) verfügbar.
 
-Sie erhalten eine Ausgabe, die wie folgt aussieht:
+Die Ausgabe sieht in etwa wie folgt aus:
 
-```console
+```json
 {
   "values": [
     {
@@ -130,8 +131,8 @@ Wenn **properties.publicAvailable** den Wert **true** (wahr) ergibt, ist die Sti
 Bereiten Sie eine Eingabetextdatei vor, entweder als Nur-Text oder als SSML-Text, und fügen Sie dann den folgenden Code in `long_audio_synthesis_client.py` hinzu:
 
 > [!NOTE]
-> `concatenateResult` ist ein optionaler Parameter. Wenn dieser Parameter nicht festgelegt ist, wird für jeden Absatz eine Audioausgabe generiert. Indem Sie den Parameter festlegen, können Sie die Audiodateien in eine Ausgabe verketten. 
-> `outputFormat` ist ebenfalls optional. Standardmäßig ist die Audioausgabe auf riff-16khz-16bit-16bit-mono-pcm eingestellt. Weitere Informationen zu unterstützten Audioausgabeformaten finden Sie unter [Audioausgabeformate](#audio-output-formats).
+> `concatenateResult` ist ein optionaler Parameter. Wenn dieser Parameter nicht festgelegt ist, wird für jeden Absatz eine Audioausgabe generiert. Sie können die Audiodateien auch zu einer Ausgabe verketten, indem Sie den Parameter einschließen. 
+> `outputFormat` ist ebenfalls optional. Standardmäßig ist die Audioausgabe auf `riff-16khz-16bit-mono-pcm` festgelegt. Weitere Informationen zu unterstützten Audioausgabeformaten finden Sie unter [Audioausgabeformate](#audio-output-formats).
 
 ```python
 def submit_synthesis():
@@ -190,7 +191,7 @@ voice_identities = [
 ]
 ```
 
-Sie erhalten eine Ausgabe, die wie folgt aussieht:
+Die Ausgabe sieht in etwa wie folgt aus:
 
 ```console
 response.status_code: 202
@@ -198,15 +199,16 @@ https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/<guid>
 ```
 
 > [!NOTE]
-> Wenn Sie über mehr als eine Eingabedatei verfügen, müssen Sie mehrere Anforderungen übermitteln. Es gelten jedoch einige Einschränkungen, die Sie beachten müssen.
-> * Der Client darf für jedes Azure-Abonnementkonto bis zu **5** Anforderungen pro Sekunde an den Server übermitteln. Wenn dieses Limit überschritten wird, wird der Fehlercode 429 (zu viele Anforderungen) an den Client gesendet. Verringern Sie die Anforderungen pro Sekunde.
-> * Der Server darf bis zu **120** Anforderungen für jedes Azure-Abonnementkonto ausführen und in die Warteschlange einreihen. Wenn dieses Limit überschritten wird, gibt der Server den Fehlercode 429 (zu viele Anforderungen) zurück. Warten Sie, und senden Sie erst dann wieder neue Anforderungen, wenn einige Anforderungen abgeschlossen sind.
+> Wenn Sie über mehr als eine Eingabedatei verfügen, müssen Sie mehrere Anforderungen übermitteln, und es gibt Einschränkungen, die zu berücksichtigen sind.
+> * Der Client kann für jedes Azure-Abonnementkonto bis zu **5** Anforderungen pro Sekunde übermitteln. Wenn dieses Limit überschritten wird, wird ein **Fehlercode 429 (zu viele Anforderungen)** zurückgegeben. Verringern Sie die Übermittlungsrate, um dieses Limit zu vermeiden.
+> * Der Server kann bis zu **120** Anforderungen für jedes Azure-Abonnementkonto in die Warteschlange stellen. Wenn die Warteschlange dieses Limit überschreitet, gibt der Server den **Fehlercode 429 (zu viele Anforderungen)** zurück. Warten Sie auf den Abschluss von Anforderungen, bevor Sie zusätzliche Anforderungen übermitteln.
 
-Die URL in der Ausgabe kann zum Abrufen des Status der Anforderung verwendet werden.
+Sie können die URL in der Ausgabe verwenden, um den Anforderungsstatus abzurufen.
 
-### <a name="get-information-of-a-submitted-request"></a>Abrufen von Informationen zu einer übermittelten Anforderung
+### <a name="get-details-about-a-submitted-request"></a>Abrufen von Details zu einer übermittelten Anforderung
 
-Um den Status einer übermittelten Syntheseanforderung zu erhalten, senden Sie einfach eine GET-Anforderung an die URL, die im vorherigen Schritt zurückgegeben wurde.
+Um den Status einer übermittelten Syntheseanforderung abzurufen, senden Sie eine GET-Anforderung an die URL, die im vorherigen Schritt zurückgegeben wurde.
+
 ```Python
 
 def get_synthesis():
@@ -220,8 +222,10 @@ def get_synthesis():
 
 get_synthesis()
 ```
+
 Die Ausgabe sieht dann wie folgt aus:
-```console
+
+```json
 response.status_code: 200
 {
   "models": [
@@ -245,11 +249,11 @@ response.status_code: 200
 }
 ```
 
-Aus der Eigenschaft `status` können Sie den Status dieser Anforderung lesen. Die Anforderung beginnt mit dem Status `NotStarted`, wechselt dann zu `Running` und wird schließlich zu `Succeeded` oder `Failed`. Sie können eine Schleife verwenden, um diese API abzufragen, bis der Status zu `Succeeded` wechselt.
+Die `status`-Eigenschaft ändert sich von `NotStarted` in `Running` und schließlich in `Succeeded` oder `Failed`. Sie können diese API in einer Schleife abrufen, bis der Status `Succeeded` oder `Failed` ist.
 
 ### <a name="download-audio-result"></a>Herunterladen von Audioergebnissen
 
-Wenn eine Syntheseanforderung erfolgreich durchgeführt wurde, können Sie das Audioergebnis durch Aufrufen der API GET `/files` herunterladen.
+Wenn eine Syntheseanforderung erfolgreich durchgeführt wurde, können Sie das Audioergebnis durch Aufrufen der „GET `/files`„-API herunterladen.
 
 ```python
 def get_files():
@@ -267,10 +271,12 @@ def get_files():
 
 get_files()
 ```
+
 Ersetzen Sie `<request_id>` durch die ID der Anforderung, von der Sie das Ergebnis herunterladen möchten. Sie befindet sich in der Antwort des vorherigen Schritts.
 
 Die Ausgabe sieht dann wie folgt aus:
-```console
+
+```json
 response.status_code: 200
 {
   "values": [
@@ -299,14 +305,15 @@ response.status_code: 200
   ]
 }
 ```
-Die Ausgabe enthält Informationen von zwei Dateien. Die Ausgabe mit `"kind": "LongAudioSynthesisScript"` ist das übermittelte Eingabeskript. Die andere Ausgabe mit `"kind": "LongAudioSynthesisResult"` ist das Ergebnis dieser Anforderung.
+Diese Beispielausgabe enthält Informationen zu zwei Dateien. Die Ausgabe mit `"kind": "LongAudioSynthesisScript"` ist das übermittelte Eingabeskript. Die andere Ausgabe mit `"kind": "LongAudioSynthesisResult"` ist das Ergebnis dieser Anforderung.
+
 Das Ergebnis ist eine ZIP-Datei, die die erzeugten Audioausgabedateien zusammen mit einer Kopie des Eingabetexts enthält.
 
 Beide Dateien können über die URL in ihrer `links.contentUrl`-Eigenschaft heruntergeladen werden.
 
 ### <a name="get-all-synthesis-requests"></a>Abrufen aller Syntheseanforderungen
 
-Mit dem folgenden Code können Sie eine Liste aller übermittelten Anforderungen abrufen:
+Der folgende Code listet alle übermittelten Anforderungen auf:
 
 ```python
 def get_synthesis():
@@ -325,7 +332,8 @@ get_synthesis()
 ```
 
 Die Ausgabe sieht dann wie folgt aus:
-```console
+
+```json
 response.status_code: 200
 {
   "values": [
@@ -374,7 +382,7 @@ response.status_code: 200
 }
 ```
 
-Die `values`-Eigenschaft enthält eine Liste der Syntheseanforderungen. Die Liste ist paginiert, mit einer maximalen Seitengröße von 100. Wenn mehr als 100 Anforderungen vorliegen, wird eine `"@nextLink"`-Eigenschaft bereitgestellt, um die nächste Seite der paginierten Liste abzurufen.
+Die `values`-Eigenschaft listet Ihre Syntheseanforderungen auf. Die Liste ist paginiert, mit einer maximalen Seitengröße von 100. Wenn mehr als 100 Anforderungen vorliegen, wird eine `"@nextLink"`-Eigenschaft bereitgestellt, um die nächste Seite der paginierten Liste abzurufen.
 
 ```console
   "@nextLink": "https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/?top=100&skip=100"
@@ -387,6 +395,7 @@ Sie können auch die Seitengröße und die Sprunganzahl anpassen, indem Sie `ski
 Der Dienst speichert bis zu **20.000** Anforderungen für jedes Azure-Abonnementkonto. Wenn die Anzahl Ihrer Anforderungen dieses Limit überschreitet, entfernen Sie vorherige Anforderungen, bevor Sie neue übermitteln. Wenn Sie vorhandene Anforderungen nicht entfernen, erhalten Sie eine Fehlermeldung.
 
 Der folgende Code zeigt, wie Sie eine bestimmte Syntheseanforderung entfernen können.
+
 ```python
 def delete_synthesis():
     id = '<request_id>'
@@ -448,7 +457,7 @@ Die API für lange Audioinhalte ist in mehreren Regionen mit eindeutigen Endpunk
 
 ## <a name="audio-output-formats"></a>Audioausgabeformate
 
-Wir unterstützen flexible Audioausgabeformate. Sie können Audioausgaben pro Absatz generieren oder mit dem Parameter „concatenateResult“ zu einer einzelnen Ausgabe verketten. Die folgenden Audioausgabeformate werden von der API für lange Audioinhalte unterstützt:
+Wir unterstützen flexible Audioausgabeformate. Sie können Audioausgaben pro Absatz generieren oder die Audioausgaben durch Festlegen des Parameters `concatenateResult` zu einer einzelnen Ausgabe verketten. Die folgenden Audioausgabeformate werden von der API für lange Audioinhalte unterstützt:
 
 > [!NOTE]
 > Das Standardaudioformat ist riff-16khz-16bit-mono-pcm.

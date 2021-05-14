@@ -5,34 +5,34 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 3cbcb7eb3695e6f57daef741d4cd4b15577d8f58
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: caedefbf3887205b68bcd5de5e7cd5f1f7d7f53c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493272"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801008"
 ---
-# <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Migrieren von Daten aus Cassandra zum Azure Cosmos DB-Cassandra-API-Konto mithilfe von Azure Databricks
+# <a name="migrate-data-from-cassandra-to-an-azure-cosmos-db-cassandra-api-account-by-using-azure-databricks"></a>Migrieren von Daten aus Cassandra zu einem Azure Cosmos DB-Cassandra-API-Konto mithilfe von Azure Databricks
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-Die Cassandra-API in Azure Cosmos DB hat sich aus einer Reihe unterschiedlicher Gründe zu einer guten Wahl für Unternehmensworkloads entwickelt, die unter Apache Cassandra ausgeführt werden: 
+Die Cassandra-API in Azure Cosmos DB hat sich aus mehreren Gründen zu einer guten Wahl für Unternehmensworkloads entwickelt, die unter Apache Cassandra ausgeführt werden:
 
-* **Kein Mehraufwand für Verwaltung und Überwachung:** Beseitigt den Mehraufwand der Verwaltung und Überwachung von unzähligen Einstellungen für Betriebssystem, JVM und YAML-Dateien und deren Interaktionen.
+* **Kein Mehraufwand für Verwaltung und Überwachung:** Beseitigt den Mehraufwand der Verwaltung und Überwachung von Einstellungen für Betriebssysteme, JVM und YAML-Dateien und deren Interaktionen.
 
-* **Erhebliche Kosteneinsparungen:** Sie können Kosten sparen mit Azure Cosmos DB, einschließlich der Kosten für virtuelle Computer, Bandbreite und alle anwendbaren Lizenzen. Außerdem entfällt die Verwaltung der Kosten für Rechenzentren, Server, SSD-Speicher, Netzwerk und Strom. 
+* **Erhebliche Kosteneinsparungen:** Sie können Kosten sparen mit Azure Cosmos DB, einschließlich der Kosten für virtuelle Computer, Bandbreite und alle anwendbaren Lizenzen. Die Verwaltung von Kosten für Rechenzentren, Server, SSD-Speicher, Netzwerk und Strom entfallen.
 
-* **Möglichkeit der Verwendung von vorhandenem Code und Tools:** Azure Cosmos DB bietet Kompatibilität auf Verbindungsprotokollebene mit vorhandenen SDKs und Tools. Durch diese Kompatibilität ist sichergestellt, dass Sie die vorhandene Codebasis mit der Cassandra-API für Azure Cosmos DB mit nur geringfügigen Änderungen verwenden können.
+* **Möglichkeit der Verwendung von vorhandenem Code und Tools**: Azure Cosmos DB bietet Kompatibilität auf Verbindungsprotokollebene mit vorhandenen SDKs und Tools. Durch diese Kompatibilität ist sichergestellt, dass Sie die vorhandene Codebasis mit der Cassandra-API für Azure Cosmos DB mit nur geringfügigen Änderungen verwenden können.
 
-Es gibt verschiedene Möglichkeiten, Datenbankworkloads von einer Plattform zu einer anderen zu migrieren. [Azure Databricks](https://azure.microsoft.com/services/databricks/) ist ein Platform as a Service-Angebot für [Apache Spark](https://spark.apache.org/), das Offlinemigrationsvorgänge in großem Umfang ermöglicht. In diesem Artikel werden die erforderlichen Schritte zum Migrieren von Daten aus nativen Apache Cassandra-Keyspaces/-Tabellen zur Azure Cosmos DB-Cassandra-API mithilfe von Azure Databricks beschrieben.
+Es gibt viele Möglichkeiten, Datenbankworkloads von einer Plattform zu einer anderen zu migrieren. [Azure Databricks](https://azure.microsoft.com/services/databricks/) ist ein Platform as a Service-Angebot (PaaS) für [Apache Spark](https://spark.apache.org/), das Offlinemigrationsvorgänge in großem Umfang ermöglicht. In diesem Artikel werden die erforderlichen Schritte zum Migrieren von Daten aus nativen Apache Cassandra-Keyspaces und -Tabellen zur Azure Cosmos DB-Cassandra-API mithilfe von Azure Databricks beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Bereitstellen eines Azure Cosmos DB-Cassandra-API-Kontos](create-cassandra-dotnet.md#create-a-database-account)
+* [Ein Azure Cosmos DB-Cassandra-API-Konto muss vorhanden sein.](create-cassandra-dotnet.md#create-a-database-account)
 
-* [Überprüfen der Grundlagen des Herstellens der Verbindung mit der Azure Cosmos DB-Cassandra-API](cassandra-spark-generic.md)
+* [Überprüfen der Grundlagen des Herstellens der Verbindung mit einer Azure Cosmos DB-Cassandra-API](cassandra-spark-generic.md)
 
 * Überprüfen Sie die [in der Azure Cosmos DB-Cassandra-API unterstützten Features](cassandra-support.md), um die Kompatibilität sicherzustellen.
 
@@ -42,27 +42,24 @@ Es gibt verschiedene Möglichkeiten, Datenbankworkloads von einer Plattform zu e
 
 ## <a name="provision-an-azure-databricks-cluster"></a>Bereitstellen eines Azure Databricks-Clusters
 
-Nutzen Sie die Anweisungen zum [Bereitstellen eines Azure Databricks-Clusters](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Beachten Sie jedoch, dass Apache Spark 3.x derzeit nicht für den Apache Cassandra-Connector unterstützt wird. Sie müssen eine Databricks-Runtime mit einer unterstützten Version von Apache Spark (2.x) bereitstellen. Wir empfehlen, eine Version der Databricks-Runtime zu wählen, die die neueste Version von Spark 2.x unterstützt, aber nicht höher als Scala, Version 2.11:
+Nutzen Sie die Anweisungen zum [Bereitstellen eines Azure Databricks-Clusters](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Wir empfehlen die Auswahl der Version 7.5 der Databricks-Runtime, die Spark 3.0 unterstützt.
 
-:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Databricks-Runtime":::
-
+:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Screenshot, der die Suche nach der Databricks-Laufzeitversion zeigt.":::
 
 ## <a name="add-dependencies"></a>Hinzufügen von Abhängigkeiten
 
-Sie müssen dem Cluster die Apache Spark-Cassandra-Connectorbibliothek hinzufügen, um eine Verbindung mit nativen und Cosmos DB-Cassandra-Endpunkten herzustellen. Wählen Sie in Ihrem Cluster „Bibliotheken“ > „Neue installieren“ > „Maven“ > „Pakete durchsuchen“ aus:
+Sie müssen dem Cluster die Apache Spark-Cassandra-Connectorbibliothek hinzufügen, um eine Verbindung mit nativen und Azure Cosmos DB-Cassandra-Endpunkten herzustellen. Wählen Sie in Ihrem Cluster **Bibliotheken**  >  **Neue**  >  **Maven** installieren und fügen Sie dann `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` in Maven-Koordinaten hinzu.
 
-:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="Databricks: „Pakete durchsuchen“":::
+:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="Screenshot, der zeigt, wie Maven-Pakete in Databricks gesucht werden.":::
 
-Geben Sie `Cassandra` in das Suchfeld ein, und wählen Sie das neueste verfügbare Maven-Repository `spark-cassandra-connector` und dann „Installieren“ aus:
-
-:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages-2.png" alt-text="Databricks: Auswählen von Paketen":::
+Wählen Sie **Installieren** aus, und starten Sie den Cluster nach Abschluss der Installation neu.
 
 > [!NOTE]
 > Stellen Sie sicher, dass Sie den Databricks-Cluster neu starten, nachdem die Cassandra-Connectorbibliothek installiert wurde.
 
 ## <a name="create-scala-notebook-for-migration"></a>Erstellen eines Scala-Notebooks für die Migration
 
-Erstellen Sie in Databricks ein Scala-Notebook mit folgendem Code. Ersetzen Sie Ihre Quell- und Zielkonfigurationen für Cassandra durch die entsprechenden Anmeldeinformationen und die Quell-/Zielkeyspaces und -tabellen, und führen Sie dann Folgendes aus:
+Erstellen eines Scala Notebooks in Databricks. Ersetzen Sie Ihre Quell- und Zielkonfigurationen für Cassandra durch die entsprechenden Anmeldeinformationen und die Quell-und Zielkeyspaces und -tabellen. Führen Sie dann den folgenden Code aus:
 
 ```scala
 import com.datastax.spark.connector._
@@ -91,7 +88,6 @@ val cosmosCassandra = Map(
     "table" -> "<TABLE>",
     //throughput related settings below - tweak these depending on data volumes. 
     "spark.cassandra.output.batch.size.rows"-> "1",
-    "spark.cassandra.connection.connections_per_executor_max" -> "10",
     "spark.cassandra.output.concurrent.writes" -> "1000",
     "spark.cassandra.concurrent.reads" -> "512",
     "spark.cassandra.output.batch.grouping.buffer.size" -> "1000",
@@ -110,36 +106,30 @@ DFfromNativeCassandra
   .write
   .format("org.apache.spark.sql.cassandra")
   .options(cosmosCassandra)
+  .mode(SaveMode.Append)
   .save
 ```
 
 > [!NOTE]
-> Die Konfigurationen `spark.cassandra.output.batch.size.rows`, `spark.cassandra.output.concurrent.writes` und `connections_per_executor_max` sind wichtig, um eine [Ratenbegrenzung](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/) zu vermeiden. Diese erfolgt, wenn Anforderungen an Azure Cosmos DB den bereitgestellten Durchsatz ([Anforderungseinheiten](./request-units.md)) überschreiten. Sie müssen diese Einstellungen möglicherweise abhängig von der Anzahl der Executors im Spark-Cluster und eventuell der Größe (und somit der RU-Kosten) jedes in die Zieltabellen geschriebenen Datensatzes anpassen.
+> Die `spark.cassandra.output.batch.size.rows` und `spark.cassandra.output.concurrent.writes` Werte und die Anzahl der Worker in Ihrem Spark-Cluster sind wichtige Konfigurationen, die optimiert werden müssen, um die [Ratenbegrenzung](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)zu vermeiden. Die Ratenbegrenzung erfolgt, wenn die Anforderungen an Azure Cosmos DB den bereitgestellten Durchsatz oder die [Anforderungseinheiten](./request-units.md) (Request Units, RUS) überschreiten. Sie müssen diese Einstellungen möglicherweise abhängig von der Anzahl der Executors im Spark-Cluster und eventuell der Größe (und somit der RU-Kosten) jedes in die Zieltabellen geschriebenen Datensatzes anpassen.
 
-## <a name="troubleshooting"></a>Problembehandlung
+## <a name="troubleshoot"></a>Problembehandlung
 
 ### <a name="rate-limiting-429-error"></a>Ratenbegrenzung (Fehler 429)
-Es kann sein, dass der Fehlercode 429 oder der Fehlertext `request rate is large` angezeigt wird, obwohl Sie die obigen Einstellungen auf ihre Mindestwerte reduziert haben. Es folgen einige Beispielszenarien:
 
-- **Der der Tabelle zugewiesene Durchsatz ist kleiner als 6.000 [Anforderungseinheiten](./request-units.md)** . Selbst bei minimalen Einstellungen ist Spark in der Lage, Schreibvorgänge mit einer Rate ab 6.000 Anforderungseinheiten auszuführen. Wenn Sie eine Tabelle in einem Keyspace mit gemeinsamem Durchsatz bereitgestellt haben, ist es möglich, dass diese Tabelle zur Laufzeit weniger als 6.000 Anforderungseinheiten zur Verfügung hat. Stellen Sie sicher, dass die Tabelle, zu der Sie migrieren, mindestens 6.000 Anforderungseinheiten zur Verfügung hat, wenn Sie die Migration ausführen, und weisen Sie dieser Tabelle ggf. dedizierte Anforderungseinheiten zu. 
-- **Übermäßige Datenschiefe bei großen Datenmengen**. Wenn Sie sehr viele Daten (d. h. Tabellenzeilen) in eine bestimmte Tabelle migrieren müssen, aber eine erhebliche Schiefe in den Daten vorliegt (d. h. eine große Anzahl von Datensätzen, die für denselben Partitionsschlüsselwert geschrieben werden), kann es trotzdem zu einer Ratenbegrenzung kommen, selbst wenn Sie eine große Anzahl von [Anforderungseinheiten](./request-units.md) in Ihrer Tabelle bereitgestellt haben. Ursache dafür ist, dass die Anforderungseinheiten gleichmäßig auf die physischen Partitionen verteilt werden und dass eine starke Datenschiefe zu einem Engpass bei Anforderungen an eine einzelne Partition führen kann, was eine Ratenbegrenzung verursacht. In diesem Szenario ist es ratsam, die Durchsatzeinstellungen in Spark auf ein Minimum zu reduzieren, um eine Ratenbegrenzung zu vermeiden und eine langsame Ausführung der Migration zu erzwingen. Dieses Szenario kann häufiger vorkommen, wenn Referenz- oder Steuertabellen migriert werden, bei denen der Zugriff weniger häufig erfolgt, aber die Datenschiefe hoch sein kann. Wenn jedoch eine erhebliche Schiefe in einem anderen Tabellentyp vorhanden ist, kann es auch ratsam sein, Ihr Datenmodell zu überprüfen, um Probleme mit heißen Partitionen für die Workload bei stabilen Vorgängen zu vermeiden. 
-- **Anzahl kann für große Tabelle nicht abgerufen werden**. Die Ausführung von `select count(*) from table` wird derzeit für große Tabellen nicht unterstützt. Sie können die Anzahl aus den Metriken im Azure-Portal abrufen (weitere Informationen finden Sie in unserem [Artikel zur Problembehandlung](cassandra-troubleshoot.md)). Aber wenn Sie die Anzahl für eine große Tabelle im Rahmen eines Spark-Auftrags ermitteln müssen, können Sie die Daten in eine temporäre Tabelle kopieren und dann mit Spark SQL die Anzahl ermitteln (ersetzen Sie z. B. unten `<primary key>` durch ein Feld aus der resultierenden temporären Tabelle).
+Möglicherweise wird der Fehlercode 429 oder "Anforderungsrate ist groß" angezeigt, auch wenn Sie die Einstellungen auf die Mindestwerte reduziert haben. Die folgenden Szenarien können die Ratenbegrenzung verursachen:
 
-  ```scala
-  val ReadFromCosmosCassandra = sqlContext
-    .read
-    .format("org.apache.spark.sql.cassandra")
-    .options(cosmosCassandra)
-    .load
+* **Der der Tabelle zugewiesene Durchsatz ist kleiner als 6,000 [Anforderungseinheiten](./request-units.md)** . Selbst bei minimalen Einstellungen kann Spark Schreibvorgänge mit einer Rate ab 6,000 Anforderungseinheiten ausführen. Wenn Sie eine Tabelle in einem Keyspace mit gemeinsamem Durchsatz bereitgestellt haben, ist es möglich, dass diese Tabelle zur Laufzeit weniger als 6,000 Anforderungseinheiten zur Verfügung hat.
 
-  ReadFromCosmosCassandra.createOrReplaceTempView("CosmosCassandraResult")
-  %sql
-  select count(<primary key>) from CosmosCassandraResult
-  ```
+    Stellen Sie sicher, dass die Tabelle, zu der migriert wird, mindestens 6.000 RUS verfügbar hat, wenn Sie die Migration ausführen. Weisen Sie der Tabelle ggf. dedizierte Anforderungseinheiten zu.
+
+* **Übermäßige Datenschiefe bei großen Datenmengen**. Wenn Sie sehr viele Daten in eine bestimmte Tabelle migrieren müssen, aber eine erhebliche Schiefe in den Daten vorliegt (d. h. eine große Anzahl von Datensätzen, die für denselben Partitionsschlüsselwert geschrieben werden), kann es trotzdem zu einer Ratenbegrenzung kommen, selbst wenn Sie mehrere [Anforderungseinheiten](./request-units.md) in Ihrer Tabelle bereitgestellt haben. Anforderungseinheiten werden gleichmäßig auf die physischen Partitionen verteilt werden und eine starke Datenschiefe kann einen Engpass bei Anforderungen an eine einzelne Partition verursachen.
+
+    In diesem Szenario reduzieren Sie die Durchsatzeinstellungen in Spark auf ein Minimum und erzwingen Sie eine langsame Ausführung der Migration. Dieses Szenario kann häufiger vorkommen, wenn Referenz- oder Steuertabellen migriert werden, bei denen der Zugriff weniger häufig erfolgt und die Datenschiefe hoch sein kann. Wenn jedoch eine erhebliche Schiefe in einem anderen Tabellentyp vorhanden ist, sollten Sie möglicherweise Ihr Datenmodell überprüfen, um Probleme mit heißen Partitionen für die Workload bei stabilen Vorgängen zu vermeiden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md) 
+* [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md)
 * [Bewährte Methoden für Partitionsschlüssel](partitioning-overview.md#choose-partitionkey)
-* Artikel zum [Schätzen des Durchsatzes (RU/s) mit dem Azure Cosmos DB Capacity Planner](estimate-ru-with-capacity-planner.md)
+* [Schätzen des Durchsatzes (RU/s) mit dem Azure Cosmos DB Capacity Planner](estimate-ru-with-capacity-planner.md)
 * [Elastische Skalierung in der Cassandra-API von Azure Cosmos DB](manage-scale-cassandra.md)

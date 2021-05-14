@@ -1,6 +1,6 @@
 ---
-title: Tauschen von Betriebssystemdatenträgern mithilfe der Befehlszeilenschnittstelle
-description: Ändern Sie den von einem virtuellen Azure-Computer verwendeten Betriebssystem-Datenträger mithilfe der CLI.
+title: Wechsel zwischen Betriebssystemdatenträgern unter Verwendung der Azure CLI
+description: Ändern Sie den von einer Azure-VM verwendeten Betriebssystemdatenträger mithilfe der Azure CLI.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: disks
@@ -8,14 +8,15 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 24cd71cafa9dc0bd9131255caf50841f6d5909d1
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 85d6350a36e62ace8f1922d30493d0f1d448d315
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311242"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765933"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Ändern des von einem virtuellen Azure-Computer verwendeten Betriebssystem-Datenträgers mithilfe der CLI
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-azure-cli"></a>Ändern des von einer Azure-VM verwendeten Betriebssystemdatenträgers mithilfe der Azure CLI
 
 
 Wenn Sie über einen virtuellen Computer verfügen, aber den Datenträger für einen Sicherungsdatenträger oder einem anderen Betriebssystem-Datenträger austauschen möchten, können Sie die Betriebssystem-Datenträger mit der Azure CLI austauschen. Sie müssen den virtuellen Computer nicht löschen und neu erstellen. Sie können auch einen verwalteten Datenträger in einer anderen Ressourcengruppe verwenden, solange er nicht bereits in Gebrauch ist.
@@ -46,7 +47,7 @@ az vm stop \
 ```
 
 
-Verwenden Sie [az vm update](/cli/azure/vm#az-vm-update) mit der vollständigen Ressourcen-ID des neuen Datenträgers für den `--osdisk`-Parameter. 
+Verwenden Sie [az vm update](/cli/azure/vm#az_vm_update) mit der vollständigen Ressourcen-ID des neuen Datenträgers für den `--osdisk`-Parameter. 
 
 ```azurecli-interactive 
 az vm update \

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: b34beb65bb8c4136887651d8365c937b17718572
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a831aa7b2f3b0d438d9db8fefa3d26428fea3680
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471884"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862595"
 ---
 # <a name="manage-your-cache"></a>Verwalten Ihres Caches
 
@@ -60,13 +60,13 @@ Um einen beendeten Cache erneut zu aktivieren, klicken Sie auf die Schaltfläche
 
 [Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
-Mit dem Befehl [az hpc-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) halten Sie einen Cache vorübergehend an. Diese Aktion ist nur gültig, wenn der Cachestatus **Fehlerfrei** oder **Heruntergestuft** lautet.
+Mit dem Befehl [az hpc-cache stop](/cli/azure/hpc-cache#az_hpc_cache_stop) halten Sie einen Cache vorübergehend an. Diese Aktion ist nur gültig, wenn der Cachestatus **Fehlerfrei** oder **Heruntergestuft** lautet.
 
 Vor dem Anhalten leert der Cache seinen Inhalt automatisch in die Speicherziele. Dieser Vorgang kann einige Zeit dauern, stellt jedoch die Datenkonsistenz sicher.
 
 Wenn die Aktion abgeschlossen ist, ändert sich der Status in **Beendet**.
 
-Mit dem Befehl [az hpc-cache start](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-start) reaktivieren Sie einen angehaltenen Cache.
+Mit dem Befehl [az hpc-cache start](/cli/azure/hpc-cache#az_hpc_cache_start) reaktivieren Sie einen angehaltenen Cache.
 
 Wenn Sie den Befehl zum Starten oder Beenden ausgeben, wird die Statusmeldung „Wird ausgeführt“ angezeigt, bis der Vorgang abgeschlossen ist.
 
@@ -115,7 +115,7 @@ Um den Cache zu leeren, klicken Sie auf die Schaltfläche **Leeren** und dann au
 
 [Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
-Mit dem Befehl [az hpc-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) können Sie erzwingen, dass der Cache alle geänderten Daten in die Speicherziele schreibt.
+Mit dem Befehl [az hpc-cache flush](/cli/azure/hpc-cache#az_hpc_cache_flush) können Sie erzwingen, dass der Cache alle geänderten Daten in die Speicherziele schreibt.
 
 Beispiel:
 
@@ -163,9 +163,9 @@ Klicken Sie auf die Schaltfläche **Aktualisieren**, um das Softwareupdate zu st
 
 [Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
-Der Cache-Statusbericht in der Azure-Befehlszeilenschnittstelle enthält am Ende Informationen zu neuer Software. (Mit [az hpc-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) können Sie das überprüfen.) Suchen Sie in der Meldung nach der Zeichenfolge „upgradeStatus“.
+Der Cache-Statusbericht in der Azure-Befehlszeilenschnittstelle enthält am Ende Informationen zu neuer Software. (Mit [az hpc-cache show](/cli/azure/hpc-cache#az_hpc_cache_show) können Sie das überprüfen.) Suchen Sie in der Meldung nach der Zeichenfolge „upgradeStatus“.
 
-Verwenden Sie den Befehl [az hpc-cache upgrade-firmware](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-upgrade-firmware), um das Update anzuwenden (sofern vorhanden).
+Verwenden Sie den Befehl [az hpc-cache upgrade-firmware](/cli/azure/hpc-cache#az_hpc_cache_upgrade-firmware), um das Update anzuwenden (sofern vorhanden).
 
 Wenn kein Update verfügbar ist, bleibt dieser Vorgang wirkungslos.
 
@@ -227,7 +227,7 @@ Nachdem Sie den Cache angehalten haben, klicken Sie auf die Schaltfläche **Lös
 
 [Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
-Verwenden Sie in der Azure CLI den Befehl [az hpc-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete), um den Cache dauerhaft zu entfernen.
+Verwenden Sie in der Azure CLI den Befehl [az hpc-cache delete](/cli/azure/hpc-cache#az_hpc_cache_delete), um den Cache dauerhaft zu entfernen.
 
 Beispiel:
 ```azurecli

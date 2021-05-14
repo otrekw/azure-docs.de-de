@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/19/2021
-ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 681a3643c04472cc42c1f672f4c9433da30e3955
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699758"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565497"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow – Debugmodus
 
@@ -20,9 +20,11 @@ ms.locfileid: "101699758"
 
 ## <a name="overview"></a>Übersicht
 
-Mit dem Debugmodus von Azure Data Factory Mapping Data Flow können Sie die Transformation der Datenform interaktiv beobachten, während Sie Ihre Datenflüsse erstellen und debuggen. Die Debugsitzung kann sowohl in Datenfluss-Entwurfssitzungen sowie während der Ausführung der Pipeline zum Debuggen von Datenflüssen verwendet werden. Um den Debugmodus zu aktivieren, verwenden Sie die Schaltfläche „Datenfluss-Debugmodus“ am oberen Rand der Entwurfsoberfläche.
+Mit dem Debugmodus von Azure Data Factory Mapping Data Flow können Sie die Transformation der Datenform interaktiv beobachten, während Sie Ihre Datenflüsse erstellen und debuggen. Die Debugsitzung kann sowohl in Datenfluss-Entwurfssitzungen sowie während der Ausführung der Pipeline zum Debuggen von Datenflüssen verwendet werden. Verwenden Sie zum Aktivieren des Debugging-Modus auf der oberen Leiste der Datenfluss- oder Pipelinecanvas die Schaltfläche **Datenflüsse debuggen**, wenn Datenflussaktivitäten vorhanden sind.
 
-![Schieberegler für Debugmodus](media/data-flow/debugbutton.png "Schieberegler für Debugmodus")
+![Screenshot: Position des Schiebereglers „Debuggen“ 1](media/data-flow/debug-button.png)
+
+![Screenshot: Position des Schiebereglers „Debuggen“ 2](media/data-flow/debug-button-4.png)
 
 Nachdem Sie den Schieberegler aktiviert haben, werden Sie aufgefordert, die Integration Runtime-Konfiguration auszuwählen, die Sie verwenden möchten. Wird „AutoResolveIntegrationRuntime“ ausgewählt, wird ein Cluster mit acht allgemeinen Compute-Kernen und einer Standarddauer von 60 Minuten gestartet. Wenn Sie vor dem Timeout Ihrer Sitzung eine längere Leerlaufzeit zulassen möchten, können Sie eine höhere TTL-Einstellung wählen. Weitere Informationen zu Datenfluss-Integration Runtimes finden Sie unter [Datenflussleistung](concepts-data-flow-performance.md#ir).
 

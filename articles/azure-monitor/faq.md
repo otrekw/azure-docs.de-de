@@ -6,69 +6,83 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 29cc0a3201b7c4ce1c685029de2a40f115b23e82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 21ca27bf154f6f0d121d72394642279c22e0eb76
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606955"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108160870"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor. Wenn Sie weiteren Fragen haben, können Sie diese im [Diskussionsforum](/answers/questions/topics/single/24223.html) stellen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
 
-
 ## <a name="general"></a>Allgemein
 
 ### <a name="what-is-azure-monitor"></a>Was ist Azure Monitor?
+
 [Azure Monitor](overview.md) ist ein Dienst in Azure, der Leistungs- und Verfügbarkeitsüberwachung für Anwendungen und Dienste in Azure, anderen Cloudumgebungen oder lokal bereitstellt. Azure Monitor sammelt Daten aus mehreren Quellen auf einer gemeinsamen Datenplattform, wo Sie auf Trends und Anomalien hin analysiert werden können. Umfassende Funktionen in Azure Monitor helfen Ihnen beim schnellen Erkennen und Reagieren auf kritische Situationen, die sich auf Ihre Anwendung auswirken können.
 
 ### <a name="whats-the-difference-between-azure-monitor-log-analytics-and-application-insights"></a>Worin unterscheiden sich Azure Monitor, Log Analytics und Application Insights?
+
 Im September 2018 hat Microsoft Azure Monitor, Log Analytics und Application Insights in einem einzigen Dienst kombiniert, um eine leistungsfähige End-to-End-Überwachung Ihrer Anwendungen und der Komponenten, auf denen sie basieren, bereitzustellen. Die Funktionen in Log Analytics und Application Insights haben sich nicht geändert, doch wurden einige in Azure Monitor umbenannt, um den neuen Bereich besser widerzuspiegeln. Die Protokolldaten-Engine und die Abfragesprache von Log Analytics werden nun als Azure Monitor-Protokolle bezeichnet. Weitere Informationen finden Sie unter [Updates für Azure Monitor-Terminologie](terminology.md).
 
 ### <a name="what-does-azure-monitor-cost"></a>Was kostet Azure Monitor?
+
 Funktionen von Azure Monitor, die automatisch aktiviert werden, wie z. B. das Sammeln von Metriken und Aktivitätsprotokollen, werden kostenlos bereitgestellt. Mit anderen Funktionen, z. B. Protokollabfragen und Warnungen, sind Kosten verbunden. Ausführliche Preisinformationen finden Sie in der [Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Wie aktiviere ich Azure Monitor?
-Azure Monitor wird in dem Moment aktiviert, in dem Sie ein neues Azure-Abonnement erstellen, und das [Aktivitätsprotokoll](./essentials/platform-logs-overview.md) sowie [Metriken](essentials/data-platform-metrics.md) der Plattform werden automatisch gesammelt. Erstellen Sie [Diagnoseeinstellungen](essentials/diagnostic-settings.md), um ausführlichere Informationen zum Betrieb Ihrer Azure-Ressourcen zu sammeln, und fügen Sie [Überwachungslösungen](insights/solutions.md) und [Erkenntnisse](./monitor-reference.md) hinzu, um zusätzliche Analysen gesammelter Daten für bestimmte Dienste bereitzustellen. 
+
+Azure Monitor wird in dem Moment aktiviert, in dem Sie ein neues Azure-Abonnement erstellen, und das [Aktivitätsprotokoll](./essentials/platform-logs-overview.md) sowie [Metriken](essentials/data-platform-metrics.md) der Plattform werden automatisch gesammelt. Erstellen Sie [Diagnoseeinstellungen](essentials/diagnostic-settings.md), um ausführlichere Informationen zum Betrieb Ihrer Azure-Ressourcen zu sammeln, und fügen Sie [Überwachungslösungen](insights/solutions.md) und [Erkenntnisse](./monitor-reference.md) hinzu, um zusätzliche Analysen gesammelter Daten für bestimmte Dienste bereitzustellen.
 
 ### <a name="how-do-i-access-azure-monitor"></a>Wie greife ich auf Azure Monitor zu?
+
 Sie greifen auf alle Azure Monitor-Funktionen und -Daten über das Menü **Monitor** im Azure-Portal zu. Über den Abschnitt **Überwachung** des Menüs für verschiedene Azure-Dienste kann auf dieselben Tools mit gefilterten Daten für eine bestimmte Ressource zugegriffen werden. Auf Azure Monitor-Daten kann auch für eine Vielzahl von Szenarien über die CLI, PowerShell und eine REST-API zugegriffen werden.
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Gibt es eine lokale Version von Azure Monitor?
+
 Nein. Azure Monitor ist ein skalierbarer Clouddienst, der große Datenmengen verarbeitet und speichert, obwohl Azure Monitor auch lokale Ressourcen und Ressourcen in anderen Clouds überwachen kann.
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Kann Azure Monitor lokale Ressourcen überwachen?
+
 Ja. Zusätzlich zum Sammeln der Überwachungsdaten von Azure-Ressourcen kann Azure Monitor auch Daten von virtuellen Computern und Anwendungen in anderen Clouds und lokal sammeln. Weitere Informationen finden Sie unter [Quellen für Überwachungsdaten für Azure Monitor](agents/data-sources.md).
 
 ### <a name="does-azure-monitor-integrate-with-system-center-operations-manager"></a>Kann Azure Monitor in System Center Operations Manager integriert werden?
+
 Sie können Ihre vorhandene System Center Operations Manager-Verwaltungsgruppe mit Azure Monitor verbinden, um Daten von Agents in Azure Monitor-Protokollen zu erfassen. Dadurch können Sie Protokollabfragen und die Lösung zum Analysieren von Daten verwenden, die von Agents gesammelt werden. Sie können auch vorhandene System Center Operations Manager-Agents so konfigurieren, dass Daten direkt an Azure Monitor gesendet werden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](agents/om-agents.md).
 
 ### <a name="what-ip-addresses-does-azure-monitor-use"></a>Welche IP-Adressen verwendet Azure Monitor?
-Eine Liste der IP-Adressen und Ports, die für Agents und andere externe Ressourcen für den Zugriff auf Azure Monitor erforderlich sind, finden Sie unter [Von Application Insights und Log Analytics verwendete IP-Adressen](app/ip-addresses.md). 
+
+Eine Liste der IP-Adressen und Ports, die für Agents und andere externe Ressourcen für den Zugriff auf Azure Monitor erforderlich sind, finden Sie unter [Von Application Insights und Log Analytics verwendete IP-Adressen](app/ip-addresses.md).
 
 ## <a name="monitoring-data"></a>Überwachungsdaten
 
 ### <a name="where-does-azure-monitor-get-its-data"></a>Woher erhält Azure Monitor seine Daten?
+
 Azure Monitor sammelt Daten aus einer Vielzahl von Quellen. Dazu gehören Protokolle und Metriken von Azure-Plattform und -Ressourcen, benutzerdefinierte Anwendungen und Agents, die auf virtuellen Computern ausgeführt werden. Andere Dienste, z. B. Azure Security Center und Network Watcher, sammeln Daten in einem Log Analytics-Arbeitsbereich, damit diese mit Azure Monitor-Daten analysiert werden können. Sie können auch benutzerdefinierte Daten mit der REST-API für Protokolle oder Metriken an Azure Monitor senden. Weitere Informationen finden Sie unter [Quellen für Überwachungsdaten für Azure Monitor](agents/data-sources.md).
 
-### <a name="what-data-is-collected-by-azure-monitor"></a>Welche Daten werden von Azure Monitor gesammelt? 
+### <a name="what-data-is-collected-by-azure-monitor"></a>Welche Daten werden von Azure Monitor gesammelt?
+
 Azure Monitor sammelt Daten aus einer Vielzahl von Quellen in [Protokollen](logs/data-platform-logs.md) oder [Metriken](essentials/data-platform-metrics.md). Jeder Datentyp hat seine eigenen relativen Vorteile und unterstützt jeweils einen bestimmte Gruppe von Funktionen in Azure Monitor. Es gibt eine einzelne Metrikdatenbank für jedes Azure-Abonnement, und Sie können mehrere Log Analytics-Arbeitsbereiche erstellen, um Protokolle entsprechend Ihren Anforderungen zu erfassen. Weitere Informationen finden Sie unter [Azure Monitor-Datenplattform](data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Gibt es eine maximale Datenmenge, die in Azure Monitor gesammelt werden kann?
+
 Es gibt keine Beschränkung hinsichtlich der Menge gesammelter Metrikdaten, doch werden diese Daten maximal 93 Tage lang gespeichert. Weitere Informationen finden Sie unter [Aufbewahrung von Metriken](essentials/data-platform-metrics.md#retention-of-metrics). Es gibt keine Beschränkung hinsichtlich der Menge gesammelter Protokolldaten, doch kann diese durch den Tarif beeinflusst werden, den Sie für den Log Analytics-Arbeitsbereich auswählen. Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Wie greife ich auf die von Azure Monitor gesammelten Daten zu?
+
 Erkenntnisse und Lösungen bieten eine benutzerdefinierte Oberfläche zum Arbeiten mit Daten, die in Azure Monitor gespeichert wurden. Sie können direkt mit Protokolldaten arbeiten, indem Sie eine in der Kusto-Abfragesprache (KQL) geschriebene Protokollabfrage verwenden. Im Azure-Portal können Sie Abfragen schreiben und ausführen sowie Daten interaktiv mit Log Analytics analysieren. Analysieren Sie Metriken im Azure-Portal mit dem Metrik-Explorer. Weitere Informationen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](logs/log-query-overview.md) und [Erste Schritte mit dem Azure-Metrik-Explorer](essentials/metrics-getting-started.md).
 
 ## <a name="solutions-and-insights"></a>Lösungen und Erkenntnisse
 
 ### <a name="what-is-an-insight-in-azure-monitor"></a>Was ist eine Erkenntnis in Azure Monitor?
+
 Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte Azure-Dienste bereitgestellt. Diese verwenden dieselben Metriken und Protokolle wie andere Funktionen in Azure Monitor, können jedoch zusätzliche Daten sammeln und eine einzigartige Benutzeroberfläche im Azure-Portal bereitstellen. Weitere Informationen finden Sie unter [Erkenntnisse in Azure Monitor](./monitor-reference.md).
 
 Zum Anzeigen von Erkenntnissen im Azure-Portal verwenden Sie den Abschnitt **Erkenntnisse** im Menü **Monitor** oder den Abschnitt **Überwachung** im Menü des Diensts.
 
 ### <a name="what-is-a-solution-in-azure-monitor"></a>Was ist eine Lösung in Azure Monitor?
+
 Überwachungslösungen sind Programmpakete zum Überwachen einer bestimmten Anwendung oder eines bestimmten Diensts basierend auf Azure Monitor-Funktionen. Sie sammeln Protokolldaten in Azure Monitor und stellen Protokollabfragen und Ansichten für das Analysieren der Daten auf einer gemeinsamen Benutzeroberfläche im Azure-Portal bereit. Weitere Informationen finden Sie unter [Überwachungslösungen in Azure Monitor](insights/solutions.md).
 
 Zum Anzeigen von Lösungen im Azure-Portal klicken Sie im Menü **Monitor** im Abschnitt **Erkenntnisse** auf **Mehr**. Klicken Sie auf **Hinzufügen**, um dem Arbeitsbereich weitere Lösungen hinzuzufügen.
@@ -76,41 +90,51 @@ Zum Anzeigen von Lösungen im Azure-Portal klicken Sie im Menü **Monitor** im A
 ## <a name="logs"></a>Protokolle
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Was ist der Unterschied zwischen Azure Monitor-Protokollen und Azure Data Explorer?
+
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure Monitor-Protokolle basieren auf Azure Data Explorer und verwenden die gleiche Kusto-Abfragesprache (KQL) mit einigen geringfügigen Unterschieden. Weitere Informationen finden Sie unter [Azure Monitor – Unterschiede in der Protokollabfragesprache](/azure/data-explorer/kusto/query/).
 
 ### <a name="how-do-i-retrieve-log-data"></a>Wie rufe ich Protokolldaten ab?
+
 Alle Daten werden mithilfe einer in der Kusto-Abfragesprache (KQL) geschriebenen Protokollabfrage aus einem Log Analytics-Arbeitsbereich abgerufen. Sie können eigene Abfragen schreiben oder Lösungen und Erkenntnisse verwenden, die Protokollabfragen für eine bestimmte Anwendung oder einen bestimmten Dienst enthalten. Weitere Informationen finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](logs/log-query-overview.md).
-p
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Kann ich Daten aus einem Log Analytics-Arbeitsbereich löschen?
+
 Daten werden gemäß ihrer [Beibehaltungsdauer](logs/manage-cost-storage.md#change-the-data-retention-period) aus einem Arbeitsbereich entfernt. Sie können bestimmte Daten aus Datenschutz- oder Compliancegründen löschen. Weitere Informationen finden Sie unter [Exportieren und Löschen personenbezogener Daten](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data).
 
 ### <a name="is-log-analytics-storage-immutable"></a>Ist Log Analytics-Speicher unveränderlich?
+
 Daten im Datenbankspeicher können nach der Erfassung nicht mehr geändert werden, aber sie können mithilfe der [*Purge*-API zum Löschen privater Daten](./logs/personal-data-mgmt.md#delete) endgültig gelöscht werden. Obwohl Daten nicht verändert werden können, verlangen einige Zertifizierungen, dass Daten unveränderlich aufbewahrt werden und im Speicher nicht geändert oder gelöscht werden können. Die Unveränderlichkeit von Daten kann durch [Datenexport](./logs/logs-data-export.md) in ein Speicherkonto erreicht werden, das als [unveränderlicher Speicher](../storage/blobs/storage-blob-immutability-policies-manage.md) konfiguriert ist.
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Was ist ein Log Analytics-Arbeitsbereich?
+
 Alle von Azure Monitor erfassten Protokolldaten werden in einem Log Analytics-Arbeitsbereich gespeichert. Ein Arbeitsbereich ist im Wesentlichen ein Container, in dem Protokolldaten aus einer Vielzahl von Quellen gesammelt werden. Möglicherweise verfügen Sie über einen einzigen Log Analytics-Arbeitsbereich für alle Überwachungsdaten oder es sind mehrere Arbeitsbereiche erforderlich. Weitere Informationen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](logs/design-logs-deployment.md).
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Kann ein vorhandener Log Analytics-Arbeitsbereich in ein anderes Azure-Abonnement verschoben werden?
+
 Sie können einen Arbeitsbereich zwischen Ressourcengruppen oder Abonnements verschieben, jedoch nicht in eine andere Region. Weitere Informationen finden Sie unter [Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe](logs/move-workspace.md).
 
 ### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Warum werden die Schaltflächen „Abfrage-Explorer“ und „Speichern“ in Log Analytics nicht angezeigt?
 
 Die Schaltflächen **Abfrage-Explorer**, **Speichern** und **Neue Warnungsregel** sind nicht verfügbar, wenn der [Abfragebereich](logs/scope.md) auf eine bestimmte Ressource festgelegt ist. Zum Erstellen von Benachrichtigungen sowie zum Speichern oder Laden von Abfragen muss Log Analytics auf einen Arbeitsbereich festgelegt sein. Wenn Sie Log Analytics im Arbeitsbereichskontext öffnen möchten, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Der zuletzt verwendete Arbeitsbereich ist ausgewählt, Sie können aber jeden anderen Arbeitsbereich auswählen. Weitere Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](logs/scope.md).
 
-### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich in der Protokollumgebung nach einem Drilldown für einen virtuellen Computer eine Fehlermeldung mit dem Hinweis, dass ich den Ressourcenanbieter „Microsoft.Insights“ für dieses Abonnement registrieren muss, um diese Abfrage zu ermöglichen, wenn ich Log Analytics von einem virtuellen Computer aus öffne? 
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich in der Protokollumgebung nach einem Drilldown für einen virtuellen Computer eine Fehlermeldung mit dem Hinweis, dass ich den Ressourcenanbieter „Microsoft.Insights“ für dieses Abonnement registrieren muss, um diese Abfrage zu ermöglichen, wenn ich Log Analytics von einem virtuellen Computer aus öffne?
+
 Viele Ressourcenanbieter werden automatisch registriert. Einige Ressourcenanbieter müssen jedoch unter Umständen manuell registriert werden. Der Gültigkeitsbereich der Registrierung ist immer das Abonnement. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich eine Zugriffsfehlermeldung, wenn ich Log Analytics von einer VM aus öffne? 
+### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich eine Zugriffsfehlermeldung, wenn ich Log Analytics von einer VM aus öffne?
+
 Zum Anzeigen von VM-Protokollen benötigen Sie eine Leseberechtigung für die Arbeitsbereiche, in denen die VM-Protokolle gespeichert sind. In diesen Fällen muss Ihnen Ihr Administrator diese Berechtigungen in Azure erteilen.
 
 ## <a name="metrics"></a>Metriken
 
 ### <a name="why-are-metrics-from-the-guest-os-of-my-azure-virtual-machine-not-showing-up-in-metrics-explorer"></a>Warum werden Metriken des Gastbetriebssystems meines virtuellen Azure-Computers nicht im Metrik-Explorer angezeigt?
+
 [Plattformmetriken](essentials/monitor-azure-resource.md#monitoring-data) werden für Azure-Ressourcen automatisch erfasst. Wenn Sie allerdings Metriken des Gastbetriebssystems eines virtuellen Computers erfassen möchten, sind ein paar Konfigurationsschritte erforderlich. Installieren Sie für einen virtuellen Windows-Computer die Diagnoseerweiterung, und konfigurieren Sie die Azure Monitor-Senke, wie unter [Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)](agents/diagnostics-extension-windows-install.md) beschrieben. Installieren Sie für Linux den Telegraf-Agent, wie unter [Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent](essentials/collect-custom-metrics-linux-telegraf.md) beschrieben.
 
 ## <a name="alerts"></a>Alerts
 
 ### <a name="what-is-an-alert-in-azure-monitor"></a>Was ist eine Warnung in Azure Monitor?
+
 Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. Es gibt mehrere Arten von Warnungen:
 
 - Metrik: Ein Metrikwert überschreitet einen Schwellenwert.
@@ -118,37 +142,40 @@ Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwach
 - Aktivitätsprotokoll: Ein Aktivitätsprotokollereignis entspricht definierten Kriterien.
 - Webtest: Die Ergebnisse eines Verfügbarkeitstests entsprechen definierten Kriterien.
 
-
 Weitere Informationen finden Sie in der [Übersicht über Warnungen in Microsoft Azure](alerts/alerts-overview.md).
 
-
 ### <a name="what-is-an-action-group"></a>Was ist eine Aktionsgruppe?
+
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungen und Aktionen, die über eine Warnung ausgelöst werden können. Mehrere Warnungen können eine einzelne Aktionsgruppe verwenden, sodass gemeinsame Sätze von Benachrichtigungen und Aktionen genutzt werden können. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](alerts/action-groups.md).
 
-
 ### <a name="what-is-an-action-rule"></a>Was ist eine Aktionsregel?
+
 Mithilfe einer Aktionsregel können Sie das Verhalten einer Gruppe von Warnungen ändern, die einem bestimmten Kriterium entsprechen. Dadurch können Sie Anforderungen wie das Deaktivieren von Warnungsaktionen während eines Wartungsfensters erfüllen. Sie können eine Aktionsgruppe auch auf eine Gruppe von Warnungen anwenden, anstatt sie direkt auf die Warnungsregeln anzuwenden. Weitere Informationen finden Sie unter [Aktionsregeln](alerts/alerts-action-rules.md).
 
 ## <a name="agents"></a>Agents
 
 ### <a name="does-azure-monitor-require-an-agent"></a>Erfordert Azure Monitor einen Agent?
+
 Ein Agent ist nur erforderlich, um Daten aus dem Betriebssystem und Workloads auf virtuellen Computern zu erfassen. Die virtuellen Computer können in Azure, einer anderen Cloudumgebung oder lokal vorhanden sein. Weitere Informationen finden Sie in der [Übersicht über die Azure Monitor-Agents](agents/agents-overview.md).
 
-
 ### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>Worin unterscheiden sich die Azure Monitor-Agents?
+
 Die Azure-Diagnoseerweiterung wird für virtuelle Azure-Computer verwendet und sammelt Daten in Azure Monitor-Metriken, Azure Storage und Azure Event Hubs. Der Log Analytics-Agent wird für virtuelle Computer in Azure, einer anderen Cloudumgebung oder lokal verwendet und sammelt Daten in Azure Monitor-Protokollen. Der Dependency-Agent erfordert den Log Analytics-Agent sowie gesammelte Prozessdetails und Abhängigkeiten. Weitere Informationen finden Sie in der [Übersicht über die Azure Monitor-Agents](agents/agents-overview.md).
 
-
 ### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>Wird für den Agent-Datenverkehr meine ExpressRoute-Verbindung verwendet?
-Für den Datenverkehr an Azure Monitor wird die ExpressRoute-Verbindung für Microsoft-Peering verwendet. Eine Beschreibung der verschiedenen Typen von ExpressRoute-Datenverkehr finden Sie in der [ExpressRoute-Dokumentation](../expressroute/expressroute-faqs.md#supported-services). 
+
+Für den Datenverkehr an Azure Monitor wird die ExpressRoute-Verbindung für Microsoft-Peering verwendet. Eine Beschreibung der verschiedenen Typen von ExpressRoute-Datenverkehr finden Sie in der [ExpressRoute-Dokumentation](../expressroute/expressroute-faqs.md#supported-services).
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Wie überprüfe ich, ob der Log Analytics-Agent mit Azure Monitor kommunizieren kann?
+
 Wählen Sie auf dem Agent-Computer in der Systemsteuerung die Option **Sicherheit und Einstellungen** und dann „Microsoft Monitoring Agent“ aus. Auf der Registerkarte **Azure Log Analytics (OMS)** wird durch ein grünes Häkchen bestätigt, dass der Agent mit Azure Monitor kommunizieren kann. Ein gelbes Warnsymbol bedeutet, dass der Agent Probleme hat. Ein häufiger Grund ist, dass der **Microsoft Monitoring Agent**-Dienst beendet wurde. Starten Sie den Dienst mit dem Dienststeuerungs-Manager neu.
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Wie beende ich die Kommunikation des Log Analytics-Agents mit Azure Monitor?
-Bei Agents, die direkt mit Log Analytics verbunden sind, öffnen Sie die Systemsteuerung, und wählen Sie **Sicherheit und Einstellungen** und dann **Microsoft Monitoring Agent** aus. Entfernen Sie auf der Registerkarte **Azure Log Analytics (OMS)** alle aufgelisteten Arbeitsbereiche. Entfernen Sie in System Center Operations Manager den Computer aus der Liste der Log Analytics-verwalteten Computer. Operations Manager aktualisiert die Konfiguration des Agents so, dass er keine Berichte mehr an Log Analytics sendet. 
+
+Bei Agents, die direkt mit Log Analytics verbunden sind, öffnen Sie die Systemsteuerung, und wählen Sie **Sicherheit und Einstellungen** und dann **Microsoft Monitoring Agent** aus. Entfernen Sie auf der Registerkarte **Azure Log Analytics (OMS)** alle aufgelisteten Arbeitsbereiche. Entfernen Sie in System Center Operations Manager den Computer aus der Liste der Log Analytics-verwalteten Computer. Operations Manager aktualisiert die Konfiguration des Agents so, dass er keine Berichte mehr an Log Analytics sendet.
 
 ### <a name="how-much-data-is-sent-per-agent"></a>Wie viele Daten werden pro Agent gesendet?
+
 Die pro Agent gesendete Datenmenge hängt von Folgendem ab:
 
 * Den Lösungen, die Sie aktiviert haben
@@ -159,37 +186,36 @@ Ausführliche Informationen finden Sie unter [Verwalten von Nutzung und Kosten m
 
 Für Computer, die den WireData-Agent ausführen können, zeigen Sie mithilfe der folgenden Abfrage an, wie viele Daten gesendet werden:
 
-```Kusto
+```kusto
 WireData
-| where ProcessName == "C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe" 
-| where Direction == "Outbound" 
+| where ProcessName == "C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe"
+| where Direction == "Outbound"
 | summarize sum(TotalBytes) by Computer 
 ```
 
 ### <a name="how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-azure-monitor"></a>Wie viel Netzwerkbandbreite nutzt der Microsoft-Verwaltungs-Agent (MMA) beim Senden von Daten an Azure Monitor?
-Die Bandbreite hängt von der gesendeten Datenmenge ab. Daten werden komprimiert, bevor sie über das Netzwerk gesendet werden.
 
+Die Bandbreite hängt von der gesendeten Datenmenge ab. Daten werden komprimiert, bevor sie über das Netzwerk gesendet werden.
 
 ### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>Wie kann ich benachrichtigt werden, wenn die Datensammlung vom Log Analytics-Agent beendet wird?
 
 Führen Sie die Schritte unter [Erstellen einer Warnungsregel mit dem Azure-Portal](alerts/alerts-metric.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung beendet wird. Verwenden Sie die folgenden Einstellungen für die Warnungsregel:
 
 - **Warnungsbedingung definieren**: Geben Sie Ihren Log Analytics-Arbeitsbereich als Ressourcenziel an.
-- **Benachrichtigungskriterien** 
+- **Benachrichtigungskriterien**
    - **Signalname**: *Benutzerdefinierte Protokollsuche*
    - **Suchabfrage**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
    - **Warnungslogik**: **Basierend auf** *Anzahl von Ergebnissen*, **Bedingung** *Größer als*, **Schwellenwert** *0*
    - **Auswertung basierend auf**: **Zeitraum (in Minuten)** *30*, **Häufigkeit (in Minuten)** *10*
-- **Warnungsdetails definieren** 
+- **Warnungsdetails definieren**
    - **Name**: *Datensammlung beendet*
    - **Schweregrad**: *Warning*
 
 Geben Sie eine vorhandene oder neue [Aktionsgruppe](alerts/action-groups.md) an, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt, und ein Heartbeat für mehr als 15 Minuten ausbleibt.
 
-
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Welche Firewallanforderungen bestehen für Azure Monitor-Agents?
-Ausführliche Informationen zu den Firewallanforderungen finden Sie unter [Netzwerkfirewallanforderungen](agents/log-analytics-agent.md#network-requirements).
 
+Ausführliche Informationen zu den Firewallanforderungen finden Sie unter [Netzwerkfirewallanforderungen](agents/log-analytics-agent.md#network-requirements).
 
 ## <a name="visualizations"></a>Visualisierungen
 
@@ -200,6 +226,7 @@ Der Ansicht-Designer steht im Log Analytics-Arbeitsbereich nur für Benutzer zu
 ## <a name="application-insights"></a>Application Insights
 
 ### <a name="configuration-problems"></a>Konfigurationsprobleme
+
 *Ich benötige Hilfe beim Einrichten von Folgendem:*
 
 * [.NET-App](app/asp-net-troubleshoot-no-data.md)
@@ -247,6 +274,7 @@ Preisinformationen finden Sie [hier](https://azure.microsoft.com/pricing/details
 * Öffnen Sie das Blatt für die [Azure-Abrechnung](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview), um Ihre Rechnungen für alle Ressourcen anzuzeigen.
 
 ### <a name="what-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Welche Änderungen nimmt Application Insights in meinem Projekt vor?
+
 Die Details hängen von der Art des Projekts ab. Für eine Webanwendung:
 
 * Fügen Sie folgende Dateien zu Ihrem Projekt hinzu:
@@ -265,9 +293,11 @@ Die Details hängen von der Art des Projekts ab. Für eine Webanwendung:
 * (Nur neue Projekte – wenn Sie [Application Insights zu einem vorhandenen Webprojekt hinzufügen][start], müssen Sie diesen Schritt manuell durchführen.) Fügen Sie Codeausschnitte in den Client- und Servercode ein, um diese mit der Application Insights-Ressourcen-ID zu initialisieren. Beispielsweise wird in einer MVC-App Code auf der Masterseite „Views/Shared/\_Layout.cshtml“ eingefügt.
 
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Wie aktualisiere ich von älteren SDK-Versionen?
+
 Informationen hierzu finden Sie in den [Versionshinweisen](app/release-notes.md) für das SDK, das für Ihren Anwendungstyp geeignet ist.
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Wie kann ich ändern, an welche Azure-Ressource mein Projekt Daten sendet?
+
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `ApplicationInsights.config`. Wählen Sie dann **Application Insights aktualisieren** aus. Sie können die Daten an eine vorhandene oder neue Ressource in Azure senden. Der Assistent ändert den Instrumentationsschlüssel in ApplicationInsights.config. Dadurch wird bestimmt, wohin das Server-SDK die Daten sendet. Wenn Sie "Alle aktualisieren" deaktivieren, wird auch der Anzeigeort des Schlüssels auf Ihren Webseiten geändert.
 
 ### <a name="do-new-azure-regions-require-the-use-of-connection-strings"></a>Erfordern neue Azure-Regionen die Verwendung von Verbindungszeichenfolgen?
@@ -280,7 +310,7 @@ Es wird davon abgeraten, diese Methode zum Auffüllen der API-Version zu verwend
 
 ### <a name="what-is-status-monitor"></a>Was ist der Statusmonitor?
 
-Eine Desktop-App, die Sie auf Ihrem IIS-Webserver zum Konfigurieren von Application Insights in Web-Apps verwenden können. Sie sammelt keine Telemetriedaten; Sie können sie beenden, wenn Sie keine App konfigurieren. 
+Eine Desktop-App, die Sie auf Ihrem IIS-Webserver zum Konfigurieren von Application Insights in Web-Apps verwenden können. Sie sammelt keine Telemetriedaten; Sie können sie beenden, wenn Sie keine App konfigurieren.
 
 [Weitere Informationen](app/monitor-performance-live-website-now.md#questions)
 
@@ -289,7 +319,7 @@ Eine Desktop-App, die Sie auf Ihrem IIS-Webserver zum Konfigurieren von Applicat
 Von Server-Web-Apps:
 
 * HTTP-Anforderungen
-* [Abhängigkeiten](app/asp-net-dependencies.md) Aufrufe an: SQL-Datenbanken, HTTP-Aufrufe an externe Dienste, Aufrufe an Azure Cosmos DB, Tabellen, Blob Storage und Warteschlangen. 
+* [Abhängigkeiten](app/asp-net-dependencies.md) Aufrufe an: SQL-Datenbanken, HTTP-Aufrufe an externe Dienste, Aufrufe an Azure Cosmos DB, Tabellen, Blob Storage und Warteschlangen.
 * [Ausnahmen](app/asp-net-exceptions.md) und Stapelüberwachungen.
 * [Leistungsindikatoren:](app/performance-counters.md) Wenn Sie den [Application Insights-Statusmonitor](app/monitor-performance-live-website-now.md), die [Azure-Überwachung für App Services](app/azure-web-apps.md), die [Azure-Überwachung für VMs oder VM-Skalierungsgruppen](app/azure-vm-vmss-apps.md) oder den [Application Insights-collectd-Writer](app/java-collectd.md) verwenden.
 * [Benutzerdefinierte Ereignisse und Metriken](app/api-custom-events-metrics.md), die Sie codieren.
@@ -331,14 +361,13 @@ Sie können in der Konfiguration festlegen, dass `ClientIpHeaderTelemetryInitial
 
 Sie können [mit Power BI](app/export-power-bi.md ) die Anforderungstelemetriedaten auf einer Karte anzeigen.
 
-
 ### <a name="how-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>Wie lange werden Daten im Portal aufbewahrt? Ist Sicherheit gewährleistet?
+
 Informationen hierzu finden Sie unter [Datensammlung, -aufbewahrung und -speicherung in Application Insights][data].
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>Was geschieht mit den Telemetriedaten von Application Insight, wenn ein Server oder Gerät die Verbindung mit Azure verliert?
 
 Alle unsere SDKs, einschließlich des Web-SDKs, beinhalten „zuverlässigen Transport“ oder „stabilen Transport“. Wenn der Server oder das Gerät die Verbindung mit Azure verliert, werden die Telemetriedaten [lokal im Dateisystem gespeichert](./app/data-retention-privacy.md#does-the-sdk-create-temporary-local-storage) (Server-SDKs) oder im HTML5-Sitzungsspeicher (Web-SDK). Das SDK versucht regelmäßig, diese Telemetriedaten zu senden, bis unser Erfassungsdienst diese als „veraltet“ erachtet (48 Stunden für Protokolle, 30 Minuten für Metriken). Veraltete Telemetriedaten werden verworfen. In einigen Fällen, z. B. wenn der lokale Speicher voll ist, wird kein Wiederholungsversuch unternommen.
-
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>Können beim Senden von Telemetriedaten auch personenbezogene Daten übertragen werden?
 
@@ -361,6 +390,7 @@ Sie haben folgende Möglichkeiten, um das Problem auszuschließen:
 * Schreiben Sie einen Proxy, der auf dem Server ausgeführt wird, und lassen Sie den Webclient Daten über diesen Proxy senden.
 
 ### <a name="how-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>Wie zeige ich POST-Daten in der Diagnosesuche an?
+
 POST-Daten werden nicht automatisch protokolliert, Sie können jedoch einen TrackTrace-Aufruf verwenden und die Daten in den Nachrichtenparameter einfügen. Die Größenbegrenzung hierfür ist höher als bei Zeichenfolgeneigenschaften, Sie können jedoch nicht danach filtern.
 
 ### <a name="should-i-use-single-or-multiple-application-insights-resources"></a>Sollte ich eine einzelne oder mehrere Application Insights-Ressourcen verwenden?
@@ -389,6 +419,7 @@ Der Browser übergibt die Benutzer-Agent-Zeichenfolge im HTTP-Header der Anforde
 Es kann gelegentlich vorkommen, dass diese Daten fehlen oder ungenau sind, wenn der Benutzer oder das Unternehmen das Senden des Benutzer-Agents in den Browsereinstellungen deaktiviert. Darüber hinaus kann es auch sein, dass die [regulären Ausdrücke des UA-Parsers](https://github.com/ua-parser/uap-core/blob/master/regexes.yaml) ggf. nicht alle Geräteinformationen enthalten oder für Application Insights die aktuellen Updates nicht durchgeführt wurden.
 
 ### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Habe ich alles in Application Insights aktiviert?
+
 | Diese Daten sollten angezeigt werden | So erhalten Sie die Daten | Deshalb benötigen Sie die Daten |
 | --- | --- | --- |
 | Verfügbarkeitsdiagramme |[Webtests](app/monitor-web-app-availability.md) |Information, ob Ihre Web-App verfügbar ist |
@@ -402,7 +433,7 @@ Es kann gelegentlich vorkommen, dass diese Daten fehlen oder ungenau sind, wenn 
 
 ### <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Warum sind die Zahlen in den Diagrammen „Suchen“ und „Metriken“ unterschiedlich?
 
-Durch [Sampling](app/sampling.md) wird die Anzahl der Telemetrieelemente (Anforderungen, benutzerdefinierte Ereignisse usw.), die tatsächlich von der App an das Portal gesendet werden, verringert. In „Suchen“ wir die Anzahl der tatsächlich empfangenen Elemente angezeigt. In Metrikdiagrammen, in denen die Anzahl der Ereignisse angezeigt wird, wird die Anzahl der ursprünglich eingetretenen Ereignisse angezeigt. 
+Durch [Sampling](app/sampling.md) wird die Anzahl der Telemetrieelemente (Anforderungen, benutzerdefinierte Ereignisse usw.), die tatsächlich von der App an das Portal gesendet werden, verringert. In „Suchen“ wir die Anzahl der tatsächlich empfangenen Elemente angezeigt. In Metrikdiagrammen, in denen die Anzahl der Ereignisse angezeigt wird, wird die Anzahl der ursprünglich eingetretenen Ereignisse angezeigt.
 
 Jedes übertragene Element verfügt über eine `itemCount`-Eigenschaft, die angibt, wie viele ursprüngliche Ereignisse das Element darstellt. Sie können die folgende Abfrage in Analytics ausführen, um zu sehen, wie Sampling erfolgt:
 
@@ -416,23 +447,23 @@ Das Verschieben vorhandener Application Insights-Ressourcen aus einer Region in 
 
 1. Erstellen Sie in der neuen Region eine ganz neue Application Insights-Ressource ([klassisch](app/create-new-resource.md) oder [arbeitsbereichsbasiert](./app/create-workspace-resource.md)).
 2. Erstellen Sie alle eindeutigen Anpassungen, die speziell für die ursprüngliche Ressource gelten, auf der neuen Ressource neu.
-3. Ändern Sie Ihre Anwendung so, dass der [Instrumentierungsschlüssel](app/create-new-resource.md#copy-the-instrumentation-key) oder die [Verbindungszeichenfolge](app/sdk-connection-string.md) der Ressource in der neuen Region verwendet werden.  
-4. Vergewissern Sie sich anhand eines Tests, dass mit Ihrer neuen Application Insights-Ressource alles wie erwartet funktioniert. 
+3. Ändern Sie Ihre Anwendung so, dass der [Instrumentierungsschlüssel](app/create-new-resource.md#copy-the-instrumentation-key) oder die [Verbindungszeichenfolge](app/sdk-connection-string.md) der Ressource in der neuen Region verwendet werden.
+4. Vergewissern Sie sich anhand eines Tests, dass mit Ihrer neuen Application Insights-Ressource alles wie erwartet funktioniert.
 5. An diesem Punkt können Sie entweder die ursprüngliche Ressource löschen, was dazu führt, dass **alle Verlaufsdaten verloren gehen**. Oder Sie behalten die ursprüngliche Ressource für die Dauer bei, die in den Einstellungen zur Datenaufbewahrung angegeben ist, um Verlaufsberichte erstellen zu können.
 
 Eindeutige Anpassungen, die für die Ressource in der neuen Region normalerweise manuell neu erstellt oder aktualisiert werden müssen, umfassen beispielsweise Folgendes:
 
-- Neuerstellen von benutzerdefinierten Dashboards und Arbeitsmappen 
-- Neuerstellen oder Aktualisieren des Umfangs von benutzerdefinierten Protokoll-/Metrikwarnungen 
+- Neuerstellen von benutzerdefinierten Dashboards und Arbeitsmappen
+- Neuerstellen oder Aktualisieren des Umfangs von benutzerdefinierten Protokoll-/Metrikwarnungen
 - Neuerstellen von Verfügbarkeitswarnungen
-- Neuerstellen aller benutzerdefinierten Einstellungen für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC), die Ihre Benutzer für den Zugriff auf die neue Ressource benötigen 
+- Neuerstellen aller benutzerdefinierten Einstellungen für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC), die Ihre Benutzer für den Zugriff auf die neue Ressource benötigen
 - Replizieren der Einstellungen, bei denen es um die Aktivierung für die Erfassungs-Stichprobenerstellung, Datenaufbewahrung, tägliche Obergrenze und benutzerdefinierten Metriken geht Diese Einstellungen werden über den Bereich **Nutzungs- und geschätzte Kosten** gesteuert.
-- Alle Integrationen mit API-Schlüsseln, z. B. [Versionsanmerkungen](./app/annotations.md), [Livemetriken und sicherer Steuerkanal](app/live-stream.md#secure-the-control-channel) usw. Sie müssen neue API-Schlüssel generieren und die zugeordnete Integration aktualisieren. 
+- Alle Integrationen mit API-Schlüsseln, z. B. [Versionsanmerkungen](./app/annotations.md), [Livemetriken und sicherer Steuerkanal](app/live-stream.md#secure-the-control-channel) usw. Sie müssen neue API-Schlüssel generieren und die zugeordnete Integration aktualisieren.
 - Der fortlaufende Export auf klassischen Ressourcen muss neu konfiguriert werden.
 - Diagnoseeinstellungen auf arbeitsbereichsbasierten Ressourcen müssen neu konfiguriert werden.
 
 > [!NOTE]
-> Falls durch die Ressource, die Sie in einer neuen Region erstellen, eine klassische Ressource ersetzt wird, empfehlen wir Ihnen, sich über die Vorteile der [Erstellung einer neuen arbeitsbereichsbasierten Ressource](app/create-workspace-resource.md) oder alternativ der [Migration Ihrer vorhandenen Ressource zu einer arbeitsbereichsbasierten Ressource](app/convert-classic-resource.md) zu informieren. 
+> Falls durch die Ressource, die Sie in einer neuen Region erstellen, eine klassische Ressource ersetzt wird, empfehlen wir Ihnen, sich über die Vorteile der [Erstellung einer neuen arbeitsbereichsbasierten Ressource](app/create-workspace-resource.md) oder alternativ der [Migration Ihrer vorhandenen Ressource zu einer arbeitsbereichsbasierten Ressource](app/convert-classic-resource.md) zu informieren.
 
 ### <a name="automation"></a>Automation
 
@@ -458,7 +489,7 @@ Azure-Warnungen gelten nur für Metriken. Erstellen Sie eine benutzerdefinierte 
 
 ### <a name="are-there-data-transfer-charges-between-an-azure-web-app-and-application-insights"></a>Fallen Gebühren für die Datenübertragung zwischen einer Azure-Web-App und Application Insights an?
 
-* Wenn Ihre Azure-Web-App in einem Rechenzentrum gehostet wird, die einen Application Insights-Sammlungsendpunkt enthält, fallen keine Gebühren an. 
+* Wenn Ihre Azure-Web-App in einem Rechenzentrum gehostet wird, die einen Application Insights-Sammlungsendpunkt enthält, fallen keine Gebühren an.
 * Wenn das Hostrechenzentrum keinen Sammlungsendpunkt enthält, fallen für die Telemetriedaten [Azure-Gebühren für ausgehende Daten](https://azure.microsoft.com/pricing/details/bandwidth/) an.
 
 Dies gilt unabhängig davon, wo Ihre Application Insights-Ressource gehostet wird. Es hängt nur von der Verteilung unserer Endpunkte ab.
@@ -470,25 +501,24 @@ Es wird empfohlen, unsere SDKs und die [SDK-API](app/api-custom-events-metrics.m
 ### <a name="can-i-monitor-an-intranet-web-server"></a>Kann ich einen Intranetwebserver überwachen?
 
 Ja, aber Sie müssen den Datenverkehr zu unseren Diensten entweder über Firewallausnahmen oder Proxyweiterleitungen zulassen.
-- QuickPulse `https://rt.services.visualstudio.com:443` 
-- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
-- TelemetryChannel `https://dc.services.visualstudio.com:443` 
-
+- QuickPulse `https://rt.services.visualstudio.com:443`
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443`
+- TelemetryChannel `https://dc.services.visualstudio.com:443`
 
 Die vollständige Liste der Dienste und IP-Adressen finden Sie [hier](app/ip-addresses.md).
 
 #### <a name="firewall-exception"></a>Firewallausnahme
 
-Ermöglichen Sie Ihrem Webserver das Senden von Telemetriedaten an unsere Endpunkte. 
+Ermöglichen Sie Ihrem Webserver das Senden von Telemetriedaten an unsere Endpunkte.
 
 #### <a name="gateway-redirect"></a>Gateway-Umleitung
 
-Leiten Sie Datenverkehr von Ihrem Server an ein Gateway im Intranet weiter, indem Sie Endpunkte in Ihrer Konfiguration überschreiben. Wenn diese „Endpoint“-Eigenschaften in Ihrer Konfiguration nicht vorhanden sind, verwenden diese Klassen die in der Beispieldatei „ApplicationInsights.config“ unten gezeigten Standardwerte. 
+Leiten Sie Datenverkehr von Ihrem Server an ein Gateway im Intranet weiter, indem Sie Endpunkte in Ihrer Konfiguration überschreiben. Wenn diese „Endpoint“-Eigenschaften in Ihrer Konfiguration nicht vorhanden sind, verwenden diese Klassen die in der Beispieldatei „ApplicationInsights.config“ unten gezeigten Standardwerte.
 
 Ihr Gateway muss Datenverkehr an die Basisadresse unseres Endpunkts weiterleiten. Ersetzen Sie in Ihrer Konfiguration die Standardwerte durch `http://<your.gateway.address>/<relative path>`.
 
-
 ##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Beispieldatei „ApplicationInsights.config“ mit Standardendpunkten:
+
 ```xml
 <ApplicationInsights>
   ...
@@ -512,22 +542,20 @@ Ihr Gateway muss Datenverkehr an die Basisadresse unseres Endpunkts weiterleiten
 > [!NOTE]
 > ApplicationIdProvider ist ab v2.6.0 verfügbar.
 
-
-
 #### <a name="proxy-passthrough"></a>Proxy-Passthrough
 
 Ein Proxy-Passthrough kann erreicht werden, indem entweder ein Proxy auf Computerebene oder auf Anwendungsebene konfiguriert wird.
 Weitere Informationen finden Sie im Dotnet-Artikel zu [DefaultProxy](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
- 
+
  Beispieldatei „Web.config“:
- ```xml
+
+```xml
 <system.net>
     <defaultProxy>
       <proxy proxyaddress="http://xx.xx.xx.xx:yyyy" bypassonlocal="true"/>
     </defaultProxy>
 </system.net>
 ```
- 
 
 ### <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Kann ich auf einem Intranetserver Verfügbarkeitswebtests ausführen?
 
@@ -540,8 +568,6 @@ Unsere [Webtests](app/monitor-web-app-availability.md) werden auf Points of Pres
 
 Die meisten Application Insights-Daten weisen eine Wartezeit von weniger als 5 Minuten auf. Bei einigen Daten kann der Zeitraum länger sein. Ein typisches Beispiel hierfür sind größere Protokolldateien. Weitere Informationen finden Sie in der [SLA für Application Insights](https://azure.microsoft.com/support/legal/sla/application-insights/v1_2/).
 
-
-
 <!--Link references-->
 
 [data]: app/data-retention-privacy.md
@@ -551,14 +577,13 @@ Die meisten Application Insights-Daten weisen eine Wartezeit von weniger als 5 M
 
 ### <a name="http-502-and-503-responses-are-not-always-captured-by-application-insights"></a>HTTP 502- und 503-Antworten werden nicht immer von Application Insights erfasst
 
-Die Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ werden nicht immer von Application Insights erfasst. Wenn nur clientseitiges JavaScript für die Überwachung verwendet wird, entspricht dies dem erwarteten Verhalten, da die Fehlerantwort vor der Seite zurückgegeben wird, die den HTML-Header mit dem gerenderten JavaScript-Codeausschnitt für die Überwachung enthält. 
+Die Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ werden nicht immer von Application Insights erfasst. Wenn nur clientseitiges JavaScript für die Überwachung verwendet wird, entspricht dies dem erwarteten Verhalten, da die Fehlerantwort vor der Seite zurückgegeben wird, die den HTML-Header mit dem gerenderten JavaScript-Codeausschnitt für die Überwachung enthält.
 
-Wenn die 502- oder 503-Antwort von einem Server mit aktivierter serverseitiger Überwachung gesendet wird, werden die Fehler vom Application Insights SDK erfasst. 
+Wenn die 502- oder 503-Antwort von einem Server mit aktivierter serverseitiger Überwachung gesendet wird, werden die Fehler vom Application Insights SDK erfasst.
 
-Es gibt jedoch immer noch Fälle, in denen auch bei aktivierter serverseitiger Überwachung auf dem Webserver einer Anwendung ein 502- oder 503-Fehler nicht von Application Insights erfasst wird. Viele moderne Webserver gestatten einem Client keine direkte Kommunikation, sondern wenden stattdessen Lösungen wie Reverseproxys an, um Informationen zwischen dem Client und den Front-End-Webservern zu übergeben. 
+Es gibt jedoch immer noch Fälle, in denen auch bei aktivierter serverseitiger Überwachung auf dem Webserver einer Anwendung ein 502- oder 503-Fehler nicht von Application Insights erfasst wird. Viele moderne Webserver gestatten einem Client keine direkte Kommunikation, sondern wenden stattdessen Lösungen wie Reverseproxys an, um Informationen zwischen dem Client und den Front-End-Webservern zu übergeben.
 
-In diesem Szenario kann eine 502- oder 503-Antwort aufgrund eines Problems auf Reverseproxyebene an einen Client zurückgegeben und nicht standardmäßig von Application Insights erfasst werden. Um Probleme auf dieser Ebene zu erkennen, müssen Sie möglicherweise Protokolle vom Reverseproxy an Log Analytics weiterleiten und eine benutzerdefinierte Regel erstellen, um nach 502/503-Antworten zu suchen. Weitere Informationen zu häufigen Ursachen von 502- und 503-Fehlern finden Sie im Artikel [Problembehandlung bei HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Azure App Service](../app-service/troubleshoot-http-502-http-503.md).     
-
+In diesem Szenario kann eine 502- oder 503-Antwort aufgrund eines Problems auf Reverseproxyebene an einen Client zurückgegeben und nicht standardmäßig von Application Insights erfasst werden. Um Probleme auf dieser Ebene zu erkennen, müssen Sie möglicherweise Protokolle vom Reverseproxy an Log Analytics weiterleiten und eine benutzerdefinierte Regel erstellen, um nach 502/503-Antworten zu suchen. Weitere Informationen zu häufigen Ursachen von 502- und 503-Fehlern finden Sie im Artikel [Problembehandlung bei HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Azure App Service](../app-service/troubleshoot-http-502-http-503.md).
 
 ## <a name="opentelemetry"></a>OpenTelemetry
 
@@ -605,16 +630,15 @@ Der OpenTelemetry-Collector wird in der zugehörigen [GitHub-Infodatei](https://
 
 [OpenCensus](https://opencensus.io/) ist der Vorgänger von [OpenTelemetry](https://opentelemetry.io/). Mit der Hilfe von Microsoft entstand OpenTelemetry aus einer Zusammenführung von [OpenTracing](https://opentracing.io/) und OpenCensus als einzelner Einblickstandard für die ganze Welt. Das zurzeit [für die Produktion empfohlene Python-SDK](app/opencensus-python.md) von Azure Monitor basiert auf OpenCensus, es sollen jedoch in Zukunft alle SDKs von Azure Monitor auf OpenTelemetry basieren.
 
-
 ## <a name="container-insights"></a>Container Insights
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Wofür steht *Andere Prozesse* unter der Knotenansicht?
 
 **Andere Prozesse** soll Ihnen dabei helfen, die zugrunde liegende Ursache für die hohe Ressourcennutzung auf dem Knoten zu verstehen. Dadurch können Sie zwischen der Nutzung durch Containerprozesse und Nicht-Containerprozesse unterscheiden.
 
-Was sind **Andere Prozesse**? 
+Was sind **Andere Prozesse**?
 
-Hierbei handelt es sich um Nicht-Containerprozesse, die auf dem Knoten ausgeführt werden.  
+Hierbei handelt es sich um Nicht-Containerprozesse, die auf dem Knoten ausgeführt werden.
 
 Wie werden diese berechnet?
 
@@ -622,25 +646,25 @@ Wie werden diese berechnet?
 
 **Andere Prozesse** umfasst Folgendes:
 
-- Nicht-Containerprozesse in selbstverwaltetem oder verwaltetem Kubernetes 
+- Nicht-Containerprozesse in selbstverwaltetem oder verwaltetem Kubernetes
 
-- Container-Laufzeitprozesse  
+- Container-Laufzeitprozesse
 
-- Kubelet  
+- Kubelet
 
-- Auf dem Knoten ausgeführte Systemprozesse 
+- Auf dem Knoten ausgeführte Systemprozesse
 
-- Andere Nicht-Kubernetes-Workloads, die auf Knotenhardware oder der VM ausgeführt werden 
+- Andere Nicht-Kubernetes-Workloads, die auf Knotenhardware oder der VM ausgeführt werden
 
 ### <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>Die Eigenschaftswerte „Image“ und „Name“ werden beim Abfragen der ContainerLog-Tabelle nicht aufgefüllt.
 
 Für die Agent-Version ciprod12042019 und höhere Versionen werden diese beiden Eigenschaften standardmäßig nicht für jede Protokollzeile aufgefüllt, um die Kosten für die erfassten Protokolldaten zu minimieren. Es gibt zwei Optionen zum Abfragen der Tabelle, die diese Eigenschaften mit ihren Werten enthalten:
 
-#### <a name="option-1"></a>Option 1: 
+#### <a name="option-1"></a>Option 1:
 
 Verknüpfen Sie andere Tabellen, um diese Eigenschaftswerte in die Ergebnisse aufzunehmen.
 
-Ändern Sie Ihre Abfragen, um die Eigenschaften „Image“ und „ImageTag“ aus der Tabelle ```ContainerInventory``` aufzunehmen, indem Sie die ContainerID-Eigenschaft verknüpfen. Sie können die Eigenschaft „Name“ (wie sie zuvor in der Tabelle ```ContainerLog``` angezeigt wurde) aus dem Feld „ContaineName“ der Tabelle „KubepodInventory“ einschließen, indem Sie sie in der ContainerID-Eigenschaft verknüpfen. Dies ist die empfohlene Option.
+Ändern Sie Ihre Abfragen, um die Eigenschaften „Image“ und „ImageTag“ aus der Tabelle `ContainerInventory` aufzunehmen, indem Sie die ContainerID-Eigenschaft verknüpfen. Sie können die Eigenschaft „Name“ (wie sie zuvor in der Tabelle `ContainerLog` angezeigt wurde) aus dem Feld „ContaineName“ der Tabelle „KubepodInventory“ einschließen, indem Sie sie in der ContainerID-Eigenschaft verknüpfen. Dies ist die empfohlene Option.
 
 Das folgende Beispiel zeigt eine ausführliche Abfrage, die veranschaulicht, wie Sie diese Feldwerte mit Verknüpfungen abrufen:
 
@@ -657,25 +681,24 @@ let ContainerData = ContainerInv | join kind=leftouter (KubePodInv) on $left.Con
 //now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
 //Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
 ContainerLog
-| where TimeGenerated >= startTime and TimeGenerated < endTime 
+| where TimeGenerated >= startTime and TimeGenerated < endTime
 | join kind= leftouter (
    ContainerData
-) on $left.ContainerID == $right.ContainerID2 | project-away ContainerID1, ContainerID2, Name, Image, ImageTag | project-rename Name = Name1, Image=Image1, ImageTag=ImageTag1 
-
+) on $left.ContainerID == $right.ContainerID2 | project-away ContainerID1, ContainerID2, Name, Image, ImageTag | project-rename Name = Name1, Image=Image1, ImageTag=ImageTag1
 ```
 
 #### <a name="option-2"></a>Option 2:
 
 Aktivieren Sie erneut die Erfassung dieser Eigenschaften für jede Containerprotokollzeile.
 
-Eignet sich die erste Option nicht, weil die Abfrage geändert werden muss, können Sie die Erfassung dieser Felder erneut aktivieren. Aktivieren Sie dazu die Einstellung ```log_collection_settings.enrich_container_logs``` in der Agent-Konfigurationszuordnung, wie unter [Konfigurieren der Datensammlung von Azure Monitor für Container-Agent](containers/container-insights-agent-config.md) beschrieben.
+Eignet sich die erste Option nicht, weil die Abfrage geändert werden muss, können Sie die Erfassung dieser Felder erneut aktivieren. Aktivieren Sie dazu die Einstellung `log_collection_settings.enrich_container_logs` in der Agent-Konfigurationszuordnung, wie unter [Konfigurieren der Datensammlung von Azure Monitor für Container-Agent](containers/container-insights-agent-config.md) beschrieben.
 
 > [!NOTE]
 > Die zweite Option wird für große Cluster mit mehr als 50 Knoten nicht empfohlen, da dabei API-Serveraufrufe von jedem Knoten im Cluster für die Ausführung dieser Anreicherung generiert werden. Diese Option erhöht darüber hinaus die Datenmenge für jede erfasste Protokollzeile.
 
 ### <a name="can-i-view-metrics-collected-in-grafana"></a>Kann ich in Grafana gesammelte Metriken anzeigen?
 
-Container Insights unterstützt das Anzeigen von Metriken, die in Ihrem Log Analytics Arbeitsbereich in Grafana-Dashboards gespeichert sind. Wir haben eine Vorlage bereitgestellt, die Sie aus dem [Dashboard-Repository](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) von Grafana herunterladen können, um Ihnen den Einstieg zu erleichtern und Ihnen zu zeigen, wie Sie zusätzliche Daten aus Ihren überwachten Clustern zum Visualisieren in benutzerdefinierten Grafana-Dashboards abfragen können. 
+Container Insights unterstützt das Anzeigen von Metriken, die in Ihrem Log Analytics Arbeitsbereich in Grafana-Dashboards gespeichert sind. Wir haben eine Vorlage bereitgestellt, die Sie aus dem [Dashboard-Repository](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) von Grafana herunterladen können, um Ihnen den Einstieg zu erleichtern und Ihnen zu zeigen, wie Sie zusätzliche Daten aus Ihren überwachten Clustern zum Visualisieren in benutzerdefinierten Grafana-Dashboards abfragen können.
 
 ### <a name="can-i-monitor-my-aks-engine-cluster-with-container-insights"></a>Kann ich meinen AKS-Engine-Cluster mit Container Insights überwachen?
 
@@ -683,12 +706,12 @@ Container Insights unterstützt die Überwachung von Containerworkloads, die fü
 
 ### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Warum werden in meinem Log Analytics-Arbeitsbereich keine Daten angezeigt?
 
-Wenn in Ihrem Log Analytics-Arbeitsbereich nicht täglich zu einer bestimmten Zeit Daten angezeigt werden, haben Sie vielleicht den Standardgrenzwert von 500MB oder die tägliche Obergrenze erreicht, die angegeben wird, um die Menge der täglich zu sammelnden Daten zu steuern. Wenn der Grenzwert für den Tag erreicht ist, wird die Datensammlung beendet und erst am nächsten Tag fortgesetzt. Um Ihre Datennutzung zu überprüfen und eine Aktualisierung auf einen anderen Tarif basierend auf Ihren erwarteten Nutzungsmustern vorzunehmen, lesen Sie [Protokollieren von Datennutzung und Kosten](logs/manage-cost-storage.md). 
+Wenn in Ihrem Log Analytics-Arbeitsbereich nicht täglich zu einer bestimmten Zeit Daten angezeigt werden, haben Sie vielleicht den Standardgrenzwert von 500MB oder die tägliche Obergrenze erreicht, die angegeben wird, um die Menge der täglich zu sammelnden Daten zu steuern. Wenn der Grenzwert für den Tag erreicht ist, wird die Datensammlung beendet und erst am nächsten Tag fortgesetzt. Um Ihre Datennutzung zu überprüfen und eine Aktualisierung auf einen anderen Tarif basierend auf Ihren erwarteten Nutzungsmustern vorzunehmen, lesen Sie [Protokollieren von Datennutzung und Kosten](logs/manage-cost-storage.md).
 
 ### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Welche Zustände von Containern sind in der Tabelle ContainerInventory angegeben?
 
 Die Tabelle „ContainerInventory“ enthält Informationen zu beendeten und ausgeführten Containern. Die Tabelle wird von einem Workflow innerhalb des Agent ausgefüllt, der den Docker nach allen Containern abfragt (ausgeführte und beendete) und diese Daten an den Log Analytics-Arbeitsbereich weiterleitet.
- 
+
 ### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Wie behebe ich den Fehler *Abonnementregistrierung fehlt*?
 
 Wenn Sie die Fehlermeldung **Abonnementregistrierung für Microsoft.OperationsManagement fehlt** erhalten, können Sie den Fehler beheben, indem Sie den Ressourcenanbieter **Microsoft.OperationsManagement** in dem Abonnement registrieren, in dem der Arbeitsbereich definiert ist. Die Dokumentation für diesen Vorgang finden Sie [hier](../azure-resource-manager/templates/error-register-resource-provider.md).
@@ -699,7 +722,7 @@ Die Containerüberwachungslösung bietet keine Unterstützung für RBAC in Kuber
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Wie aktiviere ich die Protokollsammlung für Container im Kube-System-Namespace über Helm?
 
-Die Protokollsammlung von Containern im Kube-System-Namespace ist standardmäßig deaktiviert. Die Protokollsammlung kann durch das Festlegen einer Umgebungsvariablen auf dem Omsagent aktiviert werden. Weitere Informationen finden Sie auf der GitHub-Seite zu [Container Insights](https://aka.ms/azuremonitor-containers-helm-chart). 
+Die Protokollsammlung von Containern im Kube-System-Namespace ist standardmäßig deaktiviert. Die Protokollsammlung kann durch das Festlegen einer Umgebungsvariablen auf dem Omsagent aktiviert werden. Weitere Informationen finden Sie auf der GitHub-Seite zu [Container Insights](https://aka.ms/azuremonitor-containers-helm-chart).
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Wie aktualisiere ich den Omsagent auf die neueste Version?
 
@@ -728,58 +751,58 @@ Diese Daten sehen in Azure Monitor für Protokolle bei der Abfrage wie im folgen
 
 ```
 LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
-
 ```
 
 Eine ausführliche Betrachtung des Problems finden Sie unter folgendem [GitHub-Link](https://github.com/moby/moby/issues/22920).
 
-### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Wie behebe ich Azure AD-Fehler, wenn ich Liveprotokolle aktiviere? 
+### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Wie behebe ich Azure AD-Fehler, wenn ich Liveprotokolle aktiviere?
 
-Es wird möglicherweise der folgende Fehler angezeigt: **The reply url specified in the request does not match the reply urls configured for the application: '<application ID\>'** . (Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Antwort-URLs: <Anwendungs-ID>.) Die Lösung für dieses Problem finden Sie im Artikel [Anzeigen von Containerdaten in Echtzeit mit Container Insights](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
+Es wird möglicherweise der folgende Fehler angezeigt: **The reply url specified in the request does not match the reply urls configured for the application: '<application ID\>'** . (Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Antwort-URLs: <Anwendungs-ID>.) Die Lösung für dieses Problem finden Sie im Artikel [Anzeigen von Containerdaten in Echtzeit mit Container Insights](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication).
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Warum kann ich Cluster nach dem Onboarding nicht aktualisieren?
 
-Wenn Sie nach der Aktivierung von Container Insights für einen AKS-Cluster den Log Analytics-Arbeitsbereich löschen, an den der Cluster seine Daten gesendet hat, tritt beim Versuch, den Cluster zu aktualisieren, ein Fehler auf. Um dieses Problem zu umgehen, müssen Sie die Überwachung deaktivieren und anschließend mit Verweis auf einen anderen gültigen Arbeitsbereich in Ihrem Abonnement neu aktivieren. Wenn Sie versuchen, das Clusterupgrade erneut auszuführen, sollte es erfolgreich durchgeführt und abgeschlossen werden.  
+Wenn Sie nach der Aktivierung von Container Insights für einen AKS-Cluster den Log Analytics-Arbeitsbereich löschen, an den der Cluster seine Daten gesendet hat, tritt beim Versuch, den Cluster zu aktualisieren, ein Fehler auf. Um dieses Problem zu umgehen, müssen Sie die Überwachung deaktivieren und anschließend mit Verweis auf einen anderen gültigen Arbeitsbereich in Ihrem Abonnement neu aktivieren. Wenn Sie versuchen, das Clusterupgrade erneut auszuführen, sollte es erfolgreich durchgeführt und abgeschlossen werden.
 
 ### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>Welche Ports und Domänen muss ich für den Agent öffnen bzw. zulassen?
 
 Die Proxy- und Firewall-Konfigurationsinformationen, die für den Container-Agent mit den Clouds „Azure“, „Azure US Government“ und „Azure China 21Vianet“ erforderlich sind, finden Sie unter den [Netzwerkfirewallanforderungen](containers/container-insights-onboard.md#network-firewall-requirements).
 
-
 ## <a name="vm-insights"></a>VM Insights
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Kann ich ein Onboarding zu einem vorhandenen Arbeitsbereich ausführen?
+
 Wenn Ihre VMs bereits mit einem Log Analytics-Arbeitsbereich verbunden sind, können Sie diesen Arbeitsbereich nach dem Onboarding von VM Insights weiterhin verwenden, vorausgesetzt, er befindet sich in einer der [unterstützten Regionen](vm/vminsights-configure-workspace.md#supported-regions).
 
+### <a name="can-i-onboard-to-a-new-workspace"></a>Kann ich ein Onboarding zu einem neuen Arbeitsbereich ausführen?
 
-### <a name="can-i-onboard-to-a-new-workspace"></a>Kann ich ein Onboarding zu einem neuen Arbeitsbereich ausführen? 
 Wenn Ihre VMs derzeit nicht mit einem vorhandenen Log Analytics-Arbeitsbereich verbunden sind, müssen Sie einen neuen Arbeitsbereich zum Speichern Ihrer Daten erstellen. Die Erstellung eines neuen Standardarbeitsbereichs erfolgt automatisch, wenn Sie eine einzelne Azure-VM im Azure-Portal für VM Insights konfigurieren.
 
-Wenn Sie die skriptbasierte Methode verwenden möchten, finden Sie die entsprechenden Schritte im Artikel [Aktivieren von VM Insights mit Azure PowerShell oder einer Resource Manager-Vorlage](./vm/vminsights-enable-powershell.md). 
+Wenn Sie die skriptbasierte Methode verwenden möchten, finden Sie die entsprechenden Schritte im Artikel [Aktivieren von VM Insights mit Azure PowerShell oder einer Resource Manager-Vorlage](./vm/vminsights-enable-powershell.md).
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Wie gehe ich vor, wenn meine VM bereits an einen vorhandenen Arbeitsbereich berichtet?
+
 Wenn Sie bereits Daten von Ihren VMs sammeln, haben Sie sie möglicherweise schon für das Melden von Daten an einen vorhandenen Log Analytics-Arbeitsbereich konfiguriert.  Sofern sich dieser Arbeitsbereich in einer der von uns unterstützten Regionen befindet, können Sie VM Insights für diesen bereits vorhandenen Arbeitsbereich aktivieren.  Wenn sich der von Ihnen bereits verwendete Arbeitsbereich nicht in einer der von uns unterstützten Regionen befindet, können Sie derzeit kein Onboarding von VM Insights ausführen.  Wir arbeiten aktiv daran, weitere Regionen zu unterstützen.
 
-
 ### <a name="why-did-my-vm-fail-to-onboard"></a>Warum ist das Onboarding meiner VM nicht gelungen?
+
 Beim Onboarding einer Azure-VM im Azure-Portal werden die folgenden Schritte ausgeführt:
 
 * Es wird ein Log Analytics-Standardarbeitsbereich erstellt, wenn diese Option ausgewählt war.
-* Der Log Analytics-Agent wird auf Azure-VMs mithilfe einer VM-Erweiterung installiert, wenn festgestellt wird, dass er erforderlich ist.  
-* Der Dependency-Agent des Zuordnungsfeatures von VM Insights wird auf Azure-VMs mithilfe einer Erweiterung installiert, wenn festgestellt wird, dass er erforderlich ist. 
+* Der Log Analytics-Agent wird auf Azure-VMs mithilfe einer VM-Erweiterung installiert, wenn festgestellt wird, dass er erforderlich ist.
+* Der Dependency-Agent des Zuordnungsfeatures von VM Insights wird auf Azure-VMs mithilfe einer Erweiterung installiert, wenn festgestellt wird, dass er erforderlich ist.
 
-Während des Onboardingprozesses überprüfen wir den Status jeder der oben genannten Komponenten, um Ihnen im Portal einen Benachrichtigungsstatus zurückzugeben. Die Konfiguration des Arbeitsbereichs und die Agentinstallation nehmen normalerweise 5 bis 10 Minuten in Anspruch. Bis zur Anzeige von Überwachungsdaten im Portal vergehen weitere 5 bis 10 Minuten.  
+Während des Onboardingprozesses überprüfen wir den Status jeder der oben genannten Komponenten, um Ihnen im Portal einen Benachrichtigungsstatus zurückzugeben. Die Konfiguration des Arbeitsbereichs und die Agentinstallation nehmen normalerweise 5 bis 10 Minuten in Anspruch. Bis zur Anzeige von Überwachungsdaten im Portal vergehen weitere 5 bis 10 Minuten.
 
-Wenn Sie das Onboarding eingeleitet haben und Meldungen angezeigt werden, die besagen, dass für die VM Onboarding ausgeführt werden muss, sehen Sie bis zu 30 Minuten bis zum Abschluss dieses Vorgangs durch die VM vor. 
-
+Wenn Sie das Onboarding eingeleitet haben und Meldungen angezeigt werden, die besagen, dass für die VM Onboarding ausgeführt werden muss, sehen Sie bis zu 30 Minuten bis zum Abschluss dieses Vorgangs durch die VM vor.
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>In den Leistungsdiagrammen für meine VM werden einige oder alle Daten nicht angezeigt
+
 Unsere Leistungsdiagramme wurden so aktualisiert, dass sie in der Tabelle *InsightsMetrics* gespeicherten Daten verwenden.  Um Daten in diesen Diagrammen anzuzeigen, müssen Sie ein Upgrade durchführen, um die neue VM Insights-Lösung zu verwenden.  Weitere Informationen finden Sie in unseren [häufig gestellten Fragen zur allgemeinen Verfügbarkeit](vm/vminsights-ga-release-faq.md).
 
 Wenn Sie in der Datenträgertabelle oder in einigen der Leistungsdiagramme keine Leistungsdaten sehen, wurden Ihre Leistungsindikatoren im Arbeitsbereich möglicherweise nicht konfiguriert. Führen Sie das folgende [PowerShell-Skript](./vm/vminsights-enable-powershell.md) aus, um das Problem zu beheben.
 
-
 ### <a name="how-is-vm-insights-map-feature-different-from-service-map"></a>Inwiefern unterscheidet sich das Zuordnungsfeature in VM Insights von der Dienstzuordnung?
+
 Das Zuordnungsfeature von VM Insights basiert auf der Dienstzuordnung, weist aber die folgenden Unterschiede auf:
 
 * Auf die Zuordnungsansicht kann über das VM-Blatt und über VM Insights unter Azure Monitor zugegriffen werden.
@@ -788,27 +811,33 @@ Das Zuordnungsfeature von VM Insights basiert auf der Dienstzuordnung, weist abe
 * Überwachte VMs sind jetzt im Clientgruppenknoten enthalten, und das Ringdiagramm zeigt den Anteil der überwachten und nicht überwachten VMs in der Gruppe an.  Sie können außerdem bei ausgeklappter Gruppe zum Filtern der Liste der Computer verwendet werden.
 * Überwachte VMs sind jetzt in den Serverport-Gruppenknoten enthalten, und das Ringdiagramm zeigt den Anteil der überwachten und nicht überwachten Computer in der Gruppe an.  Sie können außerdem bei ausgeklappter Gruppe zum Filtern der Liste der Computer verwendet werden.
 * Das Format der Zuordnung wurde aktualisiert, um eine bessere Konsistenz mit der App-Übersicht aus Application Insights zu erreichen.
-* Die Seitenleisten wurden aktualisiert und weisen nicht den gesamten Integrationssatz auf, der in der Dienstzuordnung unterstützt wurde – Updateverwaltung, Änderungsnachverfolgung, Sicherheit und Service Desk. 
+* Die Seitenleisten wurden aktualisiert und weisen nicht den gesamten Integrationssatz auf, der in der Dienstzuordnung unterstützt wurde – Updateverwaltung, Änderungsnachverfolgung, Sicherheit und Service Desk.
 * Die Option zum Auswählen von Gruppen und Computern für die Zuordnung wurde aktualisiert und unterstützt jetzt Abonnements, Ressourcengruppen Skalierungsgruppen von Azure-VMs und Clouddienste.
-* Sie können keine neuen Computergruppen der Dienstzuordnung im Zuordnungsfeature von VM Insights erstellen.  
+* Sie können keine neuen Computergruppen der Dienstzuordnung im Zuordnungsfeature von VM Insights erstellen.
 
 ### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Warum werden in meinen Leistungsdiagrammen gepunktete Linien angezeigt?
+
 Dies kann aus einer Reihe von Gründen passieren.  In Fällen, in denen eine Lücke in der Datensammlung besteht, stellen wir die Linien als gepunktet dar.  Wenn Sie die Erfassungshäufigkeit der Daten für die aktivierten Leistungsindikatoren geändert haben (in der Standardeinstellung werden Daten alle 60 Sekunden gesammelt), werden gepunktete Linien im Diagramm angezeigt, wenn Sie einen kleinen Zeitbereich für das Diagramm gewählt haben und Ihre Erfassungshäufigkeit geringer als die im Diagramm verwendete Bucketgröße ist (beispielsweise, wenn die Erfassungshäufigkeit 10 Minuten beträgt und die einzelnen Buckets im Diagramm 5 Minuten groß sind).  In diesem Fall sollte das Wählen eines größeren Zeitbereichs für die Darstellung bewirken, dass die Diagrammlinien als durchgezogene Linien statt als Punkte angezeigt werden.
 
 ### <a name="are-groups-supported-with-vm-insights"></a>Werden in VM Insights Gruppen unterstützt?
-Ja. Nachdem Sie den Dependency-Agent installiert haben, sammeln wir Informationen aus den VMs, um Gruppen auf der Grundlage von Abonnement, Ressourcengruppe, VM-Skalierungsgruppe und Clouddiensten anzuzeigen.  Wenn Sie die Dienstzuordnung verwendet und Computergruppen erstellt haben, werden diese ebenfalls angezeigt.  Computergruppen werden außerdem im Gruppenfilter angezeigt, wenn Sie sie für den angezeigten Arbeitsbereich erstellt haben. 
+
+Ja. Nachdem Sie den Dependency-Agent installiert haben, sammeln wir Informationen aus den VMs, um Gruppen auf der Grundlage von Abonnement, Ressourcengruppe, VM-Skalierungsgruppe und Clouddiensten anzuzeigen.  Wenn Sie die Dienstzuordnung verwendet und Computergruppen erstellt haben, werden diese ebenfalls angezeigt.  Computergruppen werden außerdem im Gruppenfilter angezeigt, wenn Sie sie für den angezeigten Arbeitsbereich erstellt haben.
 
 ### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Wie kann ich anzeigen, welche Faktoren die Linie für das 95. Quantil in den Leistungsaggregatdiagrammen beeinflussen?
+
 Standardmäßig ist die Liste so sortiert, dass die VMs mit dem höchsten Wert für das 95. Quantil für die ausgewählte Metrik angezeigt werden, mit Ausnahme des Diagramms für den verfügbaren Arbeitsspeicher, das die Computer mit dem niedrigsten Wert für das 5. Quantil anzeigt.  Durch Klicken auf das Diagramm wird die **Top-N-Listenansicht** angezeigt; die entsprechende Metrik ist ausgewählt.
 
 ### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Wie behandelt das Zuordnungsfeature doppelt vorhandene IPs in verschiedenen Vnets und Subnetzen?
+
 Wenn Sie in Subnetzen und VNets doppelt vorhandene IP-Adressbereiche für VMs oder Azure Virtual Machine Scale Sets-Instanzen verwenden, kann das dazu führen, dass das Zuordnungsfeature von VM Insights falsche Informationen anzeigt. Dies ist ein bekanntes Problem, und wir untersuchen Optionen, dieses Verhalten zu verbessern.
 
 ### <a name="does-map-feature-support-ipv6"></a>Unterstützt das Zuordnungsfeature IPv6?
+
 Das Zuordnungsfeature unterstützt aktuell nur IPv4, und wir untersuchen derzeit die Unterstützung für IPv6. Wir unterstützen ferner IPv4 mit Tunnelung in IPv6.
 
 ### <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Wenn ich eine Zuordnung für eine Ressourcengruppe oder eine andere große Gruppe lade, ist die Zuordnung schwierig zu betrachten.
-Zwar haben wir Verbesserungen an der Zuordnung bei der Behandlung großer und komplexer Konfigurationen vorgenommen, es ist uns aber bewusst, dass eine Zuordnung viele Knoten und Verbindungen sowie Knoten aufweisen kann, die als Cluster fungieren.  Wir sind weiterhin bestrebt, die Unterstützung einer besseren Skalierbarkeit voranzutreiben.   
+
+Zwar haben wir Verbesserungen an der Zuordnung bei der Behandlung großer und komplexer Konfigurationen vorgenommen, es ist uns aber bewusst, dass eine Zuordnung viele Knoten und Verbindungen sowie Knoten aufweisen kann, die als Cluster fungieren.  Wir sind weiterhin bestrebt, die Unterstützung einer besseren Skalierbarkeit voranzutreiben.
 
 ### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Warum sieht das Netzwerkdiagramm auf der Registerkarte „Leistung“ anders aus als das Netzwerkdiagramm auf der Azure-VM-Übersichtsseite?
 
@@ -821,35 +850,44 @@ Die Antwortzeit ist eine Schätzung. Da wir den Code der Anwendung nicht instrum
 Diese Schätzung funktioniert gut für Protokolle, die auf Anforderung/Antwort basieren: Eine einzelne Anforderung wird über die Verbindung gesendet, und eine einzelne Antwort wird empfangen. Dies ist der Fall bei HTTP(S) (ohne Pipelining), wird aber bei anderen Protokollen nicht erfüllt.
 
 ### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Gibt es im Free-Tarif von Log Analytics Einschränkungen?
-Wenn Sie Azure Monitor über den *Free*-Tarif mit einem Log Analytics-Arbeitsbereich konfiguriert haben, unterstützt das VM Insights-Zuordnungsfeature nur fünf Computer, die mit dem Arbeitsbereich verbunden sind. Wenn fünf VMs mit einem kostenlosen Arbeitsbereich verbunden sind und Sie eine der VMs trennen und später mit einer neuen VM verbinden, wird die neue VM nicht überwacht oder auf der Seite „Zuordnen“ angezeigt.  
 
-Unter dieser Bedingung werden Sie zur Aktion **Jetzt testen** aufgefordert, wenn Sie die VM aufrufen und im linken Bereich auf **Insights** klicken, auch wenn dieser Dienst bereits auf der VM installiert wurde.  Es werden für Sie jedoch keine Optionen angezeigt, die normalerweise angezeigt werden würden, wenn diese VM nicht in VM Insights integriert worden wäre. 
+Wenn Sie Azure Monitor über den *Free*-Tarif mit einem Log Analytics-Arbeitsbereich konfiguriert haben, unterstützt das VM Insights-Zuordnungsfeature nur fünf Computer, die mit dem Arbeitsbereich verbunden sind. Wenn fünf VMs mit einem kostenlosen Arbeitsbereich verbunden sind und Sie eine der VMs trennen und später mit einer neuen VM verbinden, wird die neue VM nicht überwacht oder auf der Seite „Zuordnen“ angezeigt.
+
+Unter dieser Bedingung werden Sie zur Aktion **Jetzt testen** aufgefordert, wenn Sie die VM aufrufen und im linken Bereich auf **Insights** klicken, auch wenn dieser Dienst bereits auf der VM installiert wurde.  Es werden für Sie jedoch keine Optionen angezeigt, die normalerweise angezeigt werden würden, wenn diese VM nicht in VM Insights integriert worden wäre.
 
 ## <a name="sql-insights-preview"></a>SQL Insights (Vorschau)
 
 ### <a name="what-versions-of-sql-server-are-supported"></a>Welche Versionen von SQL Server werden unterstützt?
-Die unterstützten Versionen sind unter [Unterstützte Versionen](insights/sql-insights-overview.md#supported-versions) aufgeführt.
+
+Wir unterstützen SQL Server 2012 und alle neueren Versionen. Siehe [Unterstützte Versionen](insights/sql-insights-overview.md#supported-versions) für weitere Details.
 
 ### <a name="what-sql-resource-types-are-supported"></a>Welche SQL-Ressourcentypen werden unterstützt?
 
-- Azure SQL-Datenbank. Nur Singletons, keine Datenbanken in einem Pool für elastische Datenbanken.
-- Verwaltete Azure SQL-Instanz 
-- Azure SQL-VMs ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms), [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)) und Azure-VMs, auf denen SQL Server installiert ist.
+- Azure SQL-Datenbank
+- Verwaltete Azure SQL-Instanz
+- SQL Server auf virtuellen Azure-Maschinen (SQL Server wird auf virtuellen Maschinen ausgeführt, die beim Anbieter von [virtuellen SQL-Maschinen](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) registriert sind)
+- Azure-VMS (SQL Server, die auf virtuellen Computern ausgeführt werden, und die nicht beim [SQL-VM](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)-Anbieter registriert sind)
 
-### <a name="what-operating-systems-for-the-machine-running-sql-server-are-supported"></a>Welche Betriebssysteme werden auf dem Computer unterstützt, auf dem SQL Server ausgeführt wird?
-Alle Betriebssysteme, unter denen die Ausführung unterstützter SQL-Versionen unterstützt wird.
+Weitere Informationen finden Sie unter [Unterstützte Versionen](insights/sql-insights-overview.md#supported-versions) und ausführliche Informationen zu Szenarien ohne Unterstützung oder eingeschränkte Unterstützung.
 
-### <a name="what-operating-system-for-the-remote-monitoring-server-are-supported"></a>Welche Betriebssysteme werden auf dem Remoteüberwachungsserver unterstützt?
+### <a name="what-operating-systems-for-the-virtual-machine-running-sql-server-are-supported"></a>Welche Betriebssysteme werden auf dem virtuellen Computer unterstützt, auf dem SQL Server ausgeführt wird?
 
-Derzeit wird Ubuntu 18.04 als einziges Betriebssystem unterstützt.
+Wir unterstützen alle Betriebssysteme, die in der [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) -und [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)-Dokumentation für SQL Server in Azure Virtual Machines angegeben sind.
 
-### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Wo werden die Überwachungsdaten in Log Analytics gespeichert? 
-Alle Überwachungsdaten werden in der Tabelle **InsightsMetrics** gespeichert. Die Spalte **Origin** enthält den Wert *solutions.azm.ms/telegraf/SqlInsights*. Die Spalte **Namespace** enthält Werte, die mit *sqlserver_* beginnen.
+### <a name="what-operating-system-for-the-monitoring-virtual-machine-are-supported"></a>Welche Betriebssysteme für die überwachende virtuelle Maschine werden unterstützt?
 
-### <a name="how-often-is-data-collected"></a>Wie häufig werden Daten erfasst? 
-Ausführliche Informationen zur Häufigkeit, mit der verschiedene Daten erfasst werden, finden Sie unter [In SQL Insights erfasste Daten](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights).
+Ubuntu 18,04 ist derzeit das einzige Betriebssystem, das für den virtuellen Computer für die Überwachung unterstützt wird.
+
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Wo werden die Überwachungsdaten in Log Analytics gespeichert?
+
+Alle Überwachungsdaten werden in der Tabelle **InsightsMetrics** gespeichert. Die Spalte **Quelle** hat den Wert `solutions.azm.ms/telegraf/SqlInsights`. Die Spalte **Namespace** hat Werte, die mit `sqlserver_` beginnen.
+
+### <a name="how-often-is-data-collected"></a>Wie häufig werden Daten erfasst?
+
+Die Häufigkeit der Datenerfassung ist anpassbar. Details zu den Standardhäufigkeiten finden Sie unter [Von SQL Insights erfasste Daten](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) und Anweisungen zum Anpassen der Häufigkeiten finden Sie unter [SQL-Überwachungsprofi](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile)l erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Wenn Ihre Frage hier nicht beantwortet wurde, finden Sie in den folgenden Foren weitere Fragen und Antworten.
 
 - [Log Analytics](/answers/topics/azure-monitor.html)

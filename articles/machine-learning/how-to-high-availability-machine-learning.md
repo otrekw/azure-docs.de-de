@@ -5,17 +5,17 @@ description: Hier erfahren Sie, wie Sie die Resilienz Ihrer Azure Machine Learn
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/16/2020
-ms.openlocfilehash: 7a1a63893e6e2988fc5f21e84f21c74315d856b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e25985d2868ddb6ad48b1f0931a3dce32819faa
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93325477"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279962"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>Verbessern der Resilienz von Azure Machine Learning
 
@@ -102,4 +102,4 @@ Wenn Sie Ihren eigenen kundenseitig verwalteten Schlüssel zum Bereitstellen des
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie eine [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced), um Azure Machine Learning mit zugeordneten Ressourcen mit Ihren Hochverfügbarkeitseinstellungen bereitzustellen.
+Verwenden Sie eine [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced), um Azure Machine Learning mit zugeordneten Ressourcen mit Ihren Hochverfügbarkeitseinstellungen bereitzustellen.

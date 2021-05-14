@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96023549"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Beibehalten von IP-Adressen während eines Failovers
@@ -37,7 +37,7 @@ Unternehmen A führt alle seine Anwendungen in Azure aus.
 Die Architektur vor dem Failover sieht wie folgt aus.
 
 - Unternehmen A verfügt über identische Netzwerke und Subnetze in Azure-Quellregionen und Azure-Zielregionen.
-- Zur Reduzierung des RTO-Werts (Recovery Time Objective) verwendet das Unternehmen Replikatknoten für SQL Server Always On, Domänencontroller usw. Diese Replikatknoten befinden sich in einem anderen VNET in der Zielregion, sodass eine Site-to-Site-VPN-Konnektivität zwischen den Quell- und Zielregionen hergestellt werden kann. Dies ist nicht möglich, wenn in der Quelle und im Ziel der gleiche IP-Adressraum verwendet wird.  
+- Um das Ziel der Wiederherstellungszeit (RTO) zu reduzieren, verwendet das Unternehmen Replikationsknoten für SQL Server Always On, Domänencontroller usw. Diese Replikatknoten befinden sich in einem anderen VNet in der Zielregion, sodass sie eine VPN-Site-to-Site-Konnektivität zwischen der Quell- und der Zielregion herstellen können. Dies ist nicht möglich, wenn in der Quelle und im Ziel der gleiche IP-Adressraum verwendet wird.  
 - Vor dem Failover sieht die Netzwerkarchitektur folgendermaßen aus:
     - Die primäre Azure-Region ist „Asien, Osten“.
         - „Asien, Osten“ verfügt über ein VNET (**Quell-VNET**) mit dem Adressraum 10.1.0.0/16.

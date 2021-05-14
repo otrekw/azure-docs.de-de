@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 16c3ac10af7d39ec35cde1cd9d279bced54fd8aa
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f421274513cc3d76f7e8c1119cf98e4e5d36b1f9
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062504"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950267"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning?
 
@@ -38,23 +38,9 @@ Erfahren Sie mehr darüber, wie Sie [eine Trainingsausführung an ein Computezie
 
 ## <a name="compute-targets-for-inference"></a><a name="deploy"></a> Computeziele für Rückschlüsse
 
-Die folgenden Computeressourcen können zum Hosten Ihrer Modellimplementierung verwendet werden.
+Beim Durchführen von Rückschlüssen erstellt Azure Machine Learning einen Docker-Container, der das Modell und zugehörige Ressourcen hostet, die für die Verwendung erforderlich sind. Dieser Container wird dann in einem Computeziel verwendet.
 
-[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
-
-Beim Durchführen von Rückschlüssen erstellt Azure Machine Learning einen Docker-Container, der das Modell und zugehörige Ressourcen hostet, die für die Verwendung erforderlich sind. Dieser Container wird dann in einem der folgenden Bereitstellungsszenarien verwendet:
-
-* Als *Webdienst*, der für Echtzeitrückschlüsse verwendet wird. Webdienstbereitstellungen verwenden eines der folgenden Computeziele:
-
-    * [Lokaler Computer](how-to-attach-compute-targets.md#local)
-    * [Azure Machine Learning-Computeinstanz](how-to-create-manage-compute-instance.md)
-    * [Azure Container Instances](how-to-attach-compute-targets.md#aci)
-    * [Azure Kubernetes Service](how-to-create-attach-kubernetes.md)
-    * Azure Functions (Vorschau). Bei der Bereitstellung in Azure Functions wird nur Azure Machine Learning zum Erstellen des Docker-Containers vorausgesetzt. Von dort aus wird es mithilfe von Azure Functions bereitgestellt. Weitere Informationen finden Sie unter [Bereitstellen eines Machine Learning-Modells in Azure Functions (Vorschauversion)](how-to-deploy-functions.md).
-
-* Als Endpunkt für _Batchrückschlüsse_, der zur regelmäßigen Verarbeitung von Datenbatches verwendet wird. Batchrückschlüsse verwenden [Azure Machine Learning-Computecluster](how-to-create-attach-compute-cluster.md).
-
-* Auf ein _IoT-Gerät_ (Vorschau). Bei der Bereitstellung auf einem IoT-Gerät wird nur Azure Machine Learning zum Erstellen des Docker-Containers vorausgesetzt. Anschließend erfolgt die Bereitstellung über Azure IoT Edge. Weitere Informationen finden Sie unter [Deploy as an IoT Edge module (preview)](../iot-edge/tutorial-deploy-machine-learning.md) (Bereitstellen als IoT Edge-Modul (Vorschau)).
+[!INCLUDE [aml-deploy-target](../../includes/aml-compute-target-deploy.md)]
 
 Erfahren Sie, [wo und wie Sie Ihr Modell auf einem Computeziel bereitstellen](how-to-deploy-and-where.md).
 

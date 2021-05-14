@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 02/23/2021
-ms.openlocfilehash: c94d6f7d4d06d7dbaa6a2ad54f94575a6cc85d33
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/20/2021
+ms.openlocfilehash: 59c1ca67c9e93b62890512cda647ffcdf7712f9a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644658"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819266"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Freigeben und Empfangen von Daten aus Azure Blob Storage und Azure Data Lake Storage
 
@@ -19,7 +19,7 @@ ms.locfileid: "105644658"
 
 Azure Data Share unterstützt die auf Momentaufnahmen basierende Freigabe aus einem Speicherkonto. In diesem Artikel wird erläutert, wie Sie Daten aus Azure Blob Storage, Azure Data Lake Storage Gen1 und Azure Data Lake Storage Gen2 freigeben und empfangen können.
 
-Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen aus Azure Data Lake Gen1 und Azure Data Lake Gen2. Darüber hinaus wird die Freigabe von Blobs, Ordnern und Containern aus Azure Blob Storage unterstützt. Derzeit werden nur Blockblobs unterstützt. Freigegebene Daten aus diesen Quellen können durch Azure Data Lake Gen2 oder Azure Blob Storage empfangen werden.
+Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen aus Azure Data Lake Gen1 und Azure Data Lake Gen2. Darüber hinaus wird die Freigabe von Blobs, Ordnern und Containern aus Azure Blob Storage unterstützt. Sie können Block-, Anfüge- oder Seitenblobs freigeben und diese als Blockblobs empfangen. Freigegebene Daten aus diesen Quellen können durch Azure Data Lake Gen2 oder Azure Blob Storage empfangen werden.
 
 Wenn Dateisysteme, Container oder Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, kann der Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen. Alternativ kann die Funktion für inkrementelle Momentaufnahmen verwendet werden, um nur neue oder aktualisierte Dateien zu kopieren. Die Funktion für inkrementelle Momentaufnahmen basiert auf dem Zeitpunkt der letzten Änderung der Dateien. 
 

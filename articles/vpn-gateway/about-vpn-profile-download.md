@@ -1,22 +1,23 @@
 ---
-title: 'Azure-VPN Gateway: Informationen zu P2S VPN-Clientprofilen'
-description: In diesem Artikel finden Sie die Informationen, die Sie für ein VPN-Clientprofil benötigen.
+title: Informationen zu Point-to-Site-VPN-Clientprofilen
+titleSuffix: Azure VPN Gateway
+description: Erfahren Sie mehr über P2S-VPN-Clientprofildateien.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9bb66363d525648df08f32451842402ad1d0d93b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d26f65dfa8419b3c07825774423dec4bd5557a05
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979068"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227810"
 ---
 # <a name="working-with-p2s-vpn-client-profile-files"></a>Arbeiten mit P2S-VPN-Clientprofildateien
 
-Die Profildateien enthalten Informationen, die zum Konfigurieren einer VPN-Verbindung erforderlich sind. Dieser Artikel hilft Ihnen beim Abrufen und Verstehen der Informationen, die für ein VPN-Clientprofil erforderlich sind.
+Profildateien enthalten Informationen, die zum Konfigurieren einer VPN-Verbindung erforderlich sind. Dieser Artikel hilft Ihnen beim Abrufen und Verstehen der Informationen, die für ein VPN-Clientprofil erforderlich sind.
 
 ## <a name="generate-and-download-profile"></a>Profil generieren und herunterladen
 

@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: philmea
-ms.openlocfilehash: c30781cb83436e15a217a1d43c0e39facae9f52d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3a5d37c546e57725b15c9ad42c7b422c8c34eed5
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770407"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685133"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Verwalten von IoT Central über Azure CLI
 
@@ -61,7 +61,11 @@ Diese Befehle erstellen zuerst für die Anwendung eine Ressourcengruppe in der R
 | Vorlage          | Die zu verwendende Anwendungsvorlage. Ausführlichere Informationen finden Sie in der unten stehenden Tabelle. |
 | display-name      | Der Name der Anwendung, wie er in der Benutzeroberfläche angezeigt wird. |
 
+### <a name="application-templates"></a>Anwendungsvorlagen
+
 [!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
+
+Wenn Sie Ihre eigene Anwendungsvorlage erstellt haben, können Sie damit eine neue Anwendung erstellen. Wenn Sie nach einer Anwendungsvorlage gefragt werden, geben Sie die App-ID ein, die unter dem Abschnitt [Export der Anwendungsvorlage](howto-use-app-templates.md#create-an-application-template) Ihrer App im freigabefähigen URL-Link der exportierten App angezeigt wird.
 
 ## <a name="view-your-applications"></a>Anzeigen Ihrer Anwendungen
 

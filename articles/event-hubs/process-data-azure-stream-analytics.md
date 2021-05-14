@@ -4,10 +4,10 @@ description: In diesem Artikel wird veranschaulicht, wie Sie Daten aus Ihrem Azu
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85312897"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Verarbeiten von Daten aus einem Event Hub mit Azure Stream Analytics 
@@ -49,7 +49,7 @@ Hier sind die wichtigsten Vorteile der Integration von Azure Event Hubs mit Azur
         Dies ist ein Beispiel für **unformatierte** Daten: 
 
         ![Ergebnisse im Rohformat](./media/process-data-azure-stream-analytics/snapshot-results-raw-format.png)
-1. Wählen Sie **Abfrage testen** aus, um eine Momentaufnahme der Testergebnisse Ihrer Abfrage auf der Registerkarte **Testergebnisse** anzuzeigen. Sie können die Ergebnisse auch herunterladen.
+1. Wählen Sie **Testabfrage**, um die Momentaufnahme der Testergebnisse Ihrer Abfrage auf der Registerkarte **Testergebnisse** zu sehen. Sie können die Ergebnisse auch herunterladen.
 
     ![Testen der Abfrageergebnisse](./media/process-data-azure-stream-analytics/test-results.png)
 1. Schreiben Sie eine eigene Abfrage zum Transformieren der Daten. Weitere Informationen finden Sie in der [Referenz zur Stream Analytics-Abfragesprache](/stream-analytics-query/stream-analytics-query-language-reference).

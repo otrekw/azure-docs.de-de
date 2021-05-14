@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/17/2021
 ms.author: sstein
-ms.openlocfilehash: 9827a40b2ebc91c17ad7b5457259b8d82565edee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7746b8aa84bea9ec8c18b4c4af0851ca3e5e3957
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640079"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132015"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Welche Neuerungen gibt es in Azure SQL-Datenbank und SQL Managed Instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,8 +61,8 @@ Diese Tabelle bietet einen schnellen Vergleich der Änderungen in der Terminolog
 
 | Funktion | Details |
 | ---| --- |
-| [Verteilte Transaktionen](/azure/azure-sql/database/elastic-transactions-overview) | Verteilte Transaktionen in verwalteten Instanzen |
-| [Instanzenpools](/azure/sql-database/sql-database-instance-pools) | Eine praktische und kostengünstige Möglichkeit, um kleinere SQL-Instanzen zur Cloud zu migrieren. |
+| [Verteilte Transaktionen](./elastic-transactions-overview.md) | Verteilte Transaktionen in verwalteten Instanzen |
+| [Instanzenpools](../managed-instance/instance-pools-overview.md) | Eine praktische und kostengünstige Möglichkeit, um kleinere SQL-Instanzen zur Cloud zu migrieren. |
 | [Azure AD-Serverprinzipale auf Instanzebene (Anmeldungen)](/sql/t-sql/statements/create-login-transact-sql) | Erstellen Sie Anmeldungen auf Instanzebene mithilfe der Anweisung [CREATE LOGIN FROM EXTERNAL PROVIDER](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true). |
 | [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) | Replizieren Sie die Änderungen aus Ihren Tabellen in andere Datenbanken in SQL Managed Instance, SQL-Datenbank oder SQL Server. Sie können auch Ihre Tabellen aktualisieren, wenn einige Zeilen in anderen Instanzen von SQL Managed Instance oder SQL Server geändert werden. Weitere Informationen finden Sie unter [Konfigurieren der Replikation in Azure SQL Managed Instance](../managed-instance/replication-between-two-instances-configure-tutorial.md). |
 | Bedrohungserkennung |Weitere Informationen finden Sie unter [Konfigurieren der Bedrohungserkennung in Azure SQL Managed Instance](../managed-instance/threat-detection-configure.md).|
@@ -95,6 +95,7 @@ Die folgenden Funktionen sind im SQL Managed Instance-Bereitstellungsmodell in d
 
 |Problem  |Entdeckt am  |Status  |Gelöst am  |
 |---------|---------|---------|---------|
+|[Das Ändern des Verbindungstyps wirkt sich nicht auf Verbindungen über den Endpunkt der Failovergruppe aus.](#changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint)|Jan 2021|Mit Problemumgehung||
 |[Die Prozedur „sp_send_dbmail“ kann zu vorübergehenden Fehlern führen, wenn der Parameter @query verwendet wird.](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|Jan 2021|Mit Problemumgehung||
 |[Verteilte Transaktionen können auch nach dem Entfernen einer verwalteten Instanz aus der Serververtrauensstellungsgruppe ausgeführt werden.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Oktober 2020|Mit Problemumgehung||
 |[Verteilte Transaktionen können nach einem Managed Instance-Skalierungsvorgang nicht ausgeführt werden.](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Oktober 2020|Mit Problemumgehung||
@@ -126,6 +127,12 @@ Die folgenden Funktionen sind im SQL Managed Instance-Bereitstellungsmodell in d
 |Die Point-in-Time-Wiederherstellung einer Datenbank von der Dienstebene „Unternehmenskritisch“ in die Dienstebene „Universell“ wird nicht gelingen, wenn die Quelldatenbank In-Memory-OLTP-Objekte enthält.||Gelöst|Oktober 2019|
 |Datenbank-E-Mail-Feature bei externen (Nicht-Azure-)E-Mail-Servern über sichere Verbindung||Gelöst|Oktober 2019|
 |Eigenständige Datenbanken werden in SQL Managed Instance nicht unterstützt||Gelöst|August 2019|
+
+### <a name="changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint"></a>Das Ändern des Verbindungstyps wirkt sich nicht auf Verbindungen über den Endpunkt der Failovergruppe aus.
+
+Wenn eine Instanz Teil einer [Autofailover-Gruppe](./auto-failover-group-overview.md) ist, hat das Ändern des [Verbindungstyps](../managed-instance/connection-types-overview.md) der Instanz keine Auswirkungen auf Verbindungen, die über den Listenerendpunkt der Failovergruppe hergestellt werden.
+
+**Problemumgehung:** Löschen Sie die Autofailover-Gruppe, und erstellen Sie sie nach dem Ändern des Verbindungstyps neu.
 
 ### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>Die Prozedur „sp_send_dbmail“ kann zu vorübergehenden Fehlern führen, wenn der Parameter @query verwendet wird.
 

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: bb09a25d7ea242dfafd7d853015ae8e127b13883
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 652f98659f96b36e3185432e50d9d36dc569bd43
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383404"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537951"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Was ist Azure Synapse Analytics?
 
@@ -55,21 +55,14 @@ In Azure Synapse sind die gleiche Datenintegrationsengine und die gleichen Umgeb
 * Kein Programmieraufwand für ETL dank Datenflussaktivitäten
 * Orchestrieren von Notebooks, Spark-Aufträgen, gespeicherten Prozeduren, SQL-Skripts und mehr
 
-## <a name="unified-management-monitoring-and-security"></a>Einheitliche Verwaltung, Überwachung und Sicherheit
+## <a name="unified-experience"></a>Einheitliche Benutzeroberfläche 
 
-Mit Azure Synapse erhalten Unternehmen eine zentrale Lösung für die Verwaltung von Analyseressourcen, für die Nutzungs- und Aktivitätsüberwachung sowie für die Gewährleistung der Sicherheit.
+Mit **Synapse Studio** erhalten Unternehmen eine zentrale Benutzeroberfläche für die Erstellung von Lösungen sowie für Verwaltungs- und Schutzfunktionen.
 
-* Zuweisung von Benutzern zu einer Rolle, um den Zugriff auf Analyseressourcen zu vereinfachen
-* Differenzierte Zugriffssteuerung für Daten und Code
-* Zentrales Dashboard zum Überwachen von Ressourcen, Nutzung und Benutzern in SQL und Spark
-
-## <a name="unified-experience"></a>Einheitliche Benutzeroberfläche
-
-**Synapse Studio** ist die Benutzerumgebung, die alles umfasst, was Data Engineers für ihre Arbeit benötigen. Sie ermöglicht Data Engineers die Ausführung sämtlicher Aufgaben, die zum Erstellen einer vollständigen Analyselösung erforderlich sind.
-
-* Wichtige Aufgaben von Data Engineers an einem Ort: Erfassung, Untersuchung, Vorbereitung, Orchestrierung, Visualisierung
-* Branchenführende Produktivität zum Schreiben von SQL- oder Spark-Code: Erstellung, Debugging und Leistungsoptimierung
-* Integration in den Unternehmensprozess mit CI/CD
+* Ausführen wichtiger Aufgaben: Erfassen, Untersuchen, Vorbereiten, Orchestrieren, Visualisieren
+* Überwachen von Ressourcen, Nutzung und Benutzern in SQL und Spark
+* Verwenden der rollenbasierten Zugriffssteuerung zum Vereinfachen des Zugriffs auf Analyseressourcen
+* Schreiben von SQL- oder Spark-Code und Integrieren in CI/CD-Prozesse für Unternehmen
 
 ## <a name="engage-with-the-synapse-community"></a>Mit der Synapse-Community in Kontakt treten
 

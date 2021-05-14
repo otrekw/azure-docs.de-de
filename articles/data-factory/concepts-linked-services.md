@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: aaa690a4205951bd251a5230721e34fcb960a3b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 193213c55a56f745c45eec829dfbe1e81ee0f363
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782740"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886980"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Verknüpfte Dienste in Azure Data Factory
 
@@ -62,7 +62,7 @@ Ein verknüpfter Dienst in Data Factory wird wie folgt im JSON-Format definiert:
 
 In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschrieben:
 
-Eigenschaft | Beschreibung | Erforderlich |
+Eigenschaft | BESCHREIBUNG | Erforderlich |
 -------- | ----------- | -------- |
 name | Name des verknüpften Diensts. Siehe [Azure Data Factory – Benennungsregeln](naming-rules.md). |  Ja |
 type | Typ des verknüpften Diensts. Beispiel: AzureBlobStorage (Datenspeicher) oder AzureBatch (Compute). Siehe die Beschreibung von „typeProperties“. | Ja |
@@ -93,7 +93,7 @@ Der folgende verknüpfte Dienst ist ein mit Azure Blob Storage verknüpfter Dien
 
 Verknüpfte Dienste sowie sämtliche Aktivitäten, Datasets oder Datenflüsse, die auf diese verweisen, können auf der Benutzeroberfläche von Azure Data Factory über den [Verwaltungshub](author-management-hub.md) erstellt werden.
 
-Sie können verknüpfte Dienste mit einem dieser Tools oder SDKs erstellen: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST-API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager-Vorlage und Azure-Portal.
+Sie können verknüpfte Dienste mit einem dieser Tools oder SDKs erstellen: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), [Azure Resource Manager Template](quickstart-create-data-factory-resource-manager-template.md) und [Azure Portal](quickstart-create-data-factory-portal.md).
 
 
 ## <a name="data-store-linked-services"></a>Verknüpfte Dienste von Datenspeichern

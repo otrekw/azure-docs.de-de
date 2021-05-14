@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 9366bb5b2bb5820245ec1b699bbf2ddda0dd9f9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0cc32a84ee0d214df9533b480a1c29bb57ee1c7
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103174"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071737"
 ---
 # <a name="single-page-application-app-registration"></a>Single-Page-Webanwendung: App-Registrierung
 
@@ -68,8 +68,6 @@ Führen Sie die folgenden Schritte aus, um einen Umleitungs-URI für eine Single
 1. Wählen Sie **Konfigurieren** aus, um den Vorgang zum Hinzufügen des Umleitungs-URIs abzuschließen.
 
 Sie haben jetzt die Registrierung Ihrer Single-Page-Webanwendung (Single-Page Application, SPA) abgeschlossen und einen Umleitungs-URI konfiguriert, an den der Client umgeleitet wird und alle Sicherheitstoken gesendet werden. Wenn Sie einen oder beide Tokentypen (**ID-Token** und **Zugriffstoken**) auswählen, haben Sie den Flow zur impliziten Genehmigung aktiviert.
-
-Befolgen Sie das [Tutorial](tutorial-v2-javascript-spa.md), um weitere Anleitungen zu erhalten.
 
 ## <a name="note-about-authorization-flows"></a>Hinweis zu Autorisierungsflows
 

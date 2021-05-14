@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: 88a820d0f1fa9515b4f2992a8305a2d1065e0987
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 685f919fa0b6b0452d79ed0f2d30fdc119a6540f
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93421208"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108000870"
 ---
 # <a name="resnet"></a>ResNet
 
@@ -28,7 +28,7 @@ Sie können das Modell trainieren, indem Sie ein Modell und ein Bildverzeichnis 
 
 ### <a name="more-about-resnet"></a>Weitere Informationen zu ResNet
 
-Weitere Einzelheiten zu ResNet finden Sie in [diesem Artikel](https://pytorch.org/docs/stable/torchvision/models.html?highlight=resnext101_32x8d#torchvision.models.resnext101_32x8d).
+Weitere Einzelheiten zu ResNet finden Sie in [diesem Artikel](https://pytorch.org/vision/stable/models.html#torchvision.models.resnext101_32x8d).
 
 ## <a name="how-to-configure-resnet"></a>Konfigurieren von ResNet
 
@@ -38,13 +38,15 @@ Weitere Einzelheiten zu ResNet finden Sie in [diesem Artikel](https://pytorch.or
 
 3.  Geben Sie für **Vortrainiert** an, ob ein in ImageNet vortrainiertes Modell verwendet werden soll. Bei Auswahl dieser Option können Sie das Modell basierend auf dem ausgewählten vortrainierten Modell optimieren. Wird die Auswahl aufgehoben, können Sie von Grund auf neu trainieren.
 
-4.  Verbinden Sie die Ausgabe des **DenseNet**-Moduls, des Trainings- und Überprüfungsmoduls für das Bilddataset mit [Trainieren eines Pytorch-Modells](train-pytorch-model.md). 
+4.  Bestimmen Sie für **Zero init residual**, ob die letzte Stapelnormschicht in jedem Restzweig null-initialisiert werden soll. Wenn diese Option ausgewählt ist, beginnt der Restzweig mit Nullen, und jeder Restblock verhält sich wie eine Identität. Dies kann bei der Konvergenz bei großen Stapelgrößen gemäß https://arxiv.org/abs/1706.02677 helfen.
 
-5. Übermitteln Sie die Pipeline.
+5.  Verbinden Sie die Ausgabe des **ResNet**-Moduls, des Trainings- und des Validierungs-Bilddatensatz-Moduls mit dem [Train Pytorch Modell](train-pytorch-model.md). 
+
+6.  Übermitteln Sie die Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 
-Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie nach Abschluss der Pipelineausführung [Train Pytorch Model](train-pytorch-model.md) (Trainieren eines Pytorch-Modells) mit [Score Image Model](score-image-model.md) (Bewerten eines Bildmodells), um Werte für neue Eingabebeispiele vorherzusagen.
+Nachdem die Pipeline-Ausführung abgeschlossen ist und um das Modell für die Bewertung zu verwenden, verbinden Sie das [Train PyTorch Model](train-pytorch-model.md) mit dem [Score Image Model](score-image-model.md), um Werte für neue Eingabebeispiele vorherzusagen.
 
 ## <a name="technical-notes"></a>Technische Hinweise  
 
@@ -54,6 +56,7 @@ Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie nach Abschlu
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
 | Modellname | Any   | Mode    | resnext101\_32x8d | Name einer bestimmten ResNet-Struktur       |
 | Vortrainiert | Any   | Boolean | True              | Gibt an, ob ein in ImageNet vortrainiertes Modell verwendet werden soll |
+| Rest-Zero init | Any | Boolean | False | Ob die letzte Stapelnormschicht in jedem Restzweig null-initialisiert werden soll |
 |            |       |         |                   |                                          |
 
 ###  <a name="output"></a>Output  

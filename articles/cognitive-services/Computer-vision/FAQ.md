@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: e8ab205a43e5cb1e8e2b96dbd9600e1fceb29403
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a266023bbf44ef0a3ad4a6f4951fa3995ad917c0
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "68564604"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785437"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Häufig gestellte Fragen zur Maschinelles Sehen-API
 
 > [!TIP]
-> Wenn Sie in diesen FAQs keine Antwort auf Ihre Frage finden, können Sie die Fragen unter [Stack Overflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) und an die Community für die Maschinelles Sehen-API stellen oder wenden Sie sich an die [Hilfe und den Support bei UserVoice](https://cognitive.uservoice.com/).
+> Wenn Sie in diesen FAQs keine Antwort auf Ihre Frage finden, können Sie die Fragen unter [Stack Overflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) und an die Community für die Maschinelles Sehen-API stellen oder wenden Sie sich an die Hilfe und den Support bei UserVoice.
 
 ---
 
@@ -31,44 +31,16 @@ ms.locfileid: "68564604"
 
 ---
 
-**Frage**: *Kann maschinelles Sehen lokal ohne eine Internetverbindung genutzt werden?*
 
-**Antwort**: Wir bieten derzeit keine lokale Lösung an.
+**Frage**: *Kann ich die Funktion „OCR (Lesen)“ lokal bereitstellen?*
+
+**Antwort**: Ja. Die Cloud-API „OCR (Lesen)“ ist auch als Docker-Container für die lokale Bereitstellung verfügbar. Informationen zum Bereitstellen der OCR-Container finden Sie [hier](/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers).
 
 ---
 
 **Frage**: *Kann maschinelles Sehen zum Lesen von Kfz-Kennzeichen verwendet werden?*
 
-**Antwort**: Die maschinelles Sehen-API bietet eine gute Texterkennung mit OCR, aber sie ist derzeit nicht für Kfz-Kennzeichen optimiert. Wir sind ständig bemüht, unseren Dienst zu verbessern und haben OCR zur automatischen Nummernschilderkennung in unsere Liste der Funktionswünsche aufgenommen.
+**Antwort**: Die Maschinelles Sehen-API enthält die Deep Learning-gestützten OCR-Funktionen mit dem neuesten Lesefeature. Wir arbeiten kontinuierlich daran, unsere Dienste zu verbessern, damit sie in allen Szenarien verwendet werden können.
 
 ---
 
-**Frage**: *Welche Arten von Schreiboberflächen werden für die Handschrifterkennung unterstützt?*
-
-**Antwort**: Die Technologie funktioniert mit verschiedenen Oberflächen, einschließlich Whiteboards, weißem Papier und gelben Haftnotizen.
-
----
-
-**Frage**: *Wie lange dauert der Vorgang der Handschrifterkennung?*
-
-**Antwort**: Die Dauer ist abhängig von der Länge des Texts. Bei längeren Texten kann der Vorgang einige Sekunden dauern. Daher müssen Sie nach Abschluss der Operation „Handschriftlichen Text erkennen“ möglicherweise warten, bevor Sie die Ergebnisse mit der Operation „Ergebnisse für die Operation für handschriftlichen Text holen“ abrufen können.
-
----
-
-**Frage**: *Wie geht die Handschrifterkennungstechnologie mit Text um, der mit einem Auslassungszeichen in der Mitte einer Zeile eingefügt wurde?*
-
-**Antwort**: Dieser Text wird von der Handschrifterkennung als separate Zeile zurückgegeben.
-
----
-
-**Frage**: *Wie geht die Handschrifterkennungstechnologie mit per Hand durchgestrichenen Wörtern oder Zeilen um?*
-
-**Antwort**: Wenn die Wörter mit mehreren Zeilen durchgestrichen werden, um sie unkenntlich zu machen, werden sie von der Handschrifterkennung nicht erkannt. Wenn die Wörter jedoch mit einer einzigen Zeile durchgestrichen werden, wird diese Durchstreichung als Rauschen behandelt, und die Wörter werden trotzdem von der Handschrifterkennung erfasst.
-
----
-
-**Frage**: *Welche Textausrichtungen werden für die Handschrifterkennung unterstützt?*
-
-**Antwort**: Text, der in einem Winkel von bis zu 30 Grad bis 40 Grad ausgerichtet ist, kann von der Handschrifterkennung erfasst werden.
-
----

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.date: 02/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
-ms.custom: deploy
-ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: deploy, devx-track-azurecli
+ms.openlocfilehash: 971a6474b3e48f70c1e4e96a784bf1d92709cf71
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107838"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885216"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Bereitstellung mit hoher Leistung mit Triton Inference Server (Vorschau) 
 
@@ -116,7 +116,7 @@ models
 az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
-Weitere Informationen zu `az ml model register` finden Sie in der [Referenzdokumentation](/cli/azure/ext/azure-cli-ml/ml/model).
+Weitere Informationen zu `az ml model register` finden Sie in der [Referenzdokumentation](/cli/azure/ml/model).
 
 Wenn Sie das Modell in Azure Machine Learning registrieren, muss der Wert für den Parameter `--model-path  -p` der Name des übergeordneten Ordners von Triton sein.  
 Im Beispiel oben ist der Wert von `--model-path` „models“.
@@ -339,7 +339,7 @@ print(local_service.scoring_uri)
 
 ---
 
-Nachdem die Bereitstellung abgeschlossen ist, wird der Bewertungs-URI angezeigt. Für diese lokale Bereitstellung ist dies `http://localhost:6789/score`. Bei der Bereitstellung in der Cloud können Sie den CLI-Befehl [az ml service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) zum Abrufen des Bewertungs-URIs verwenden.
+Nachdem die Bereitstellung abgeschlossen ist, wird der Bewertungs-URI angezeigt. Für diese lokale Bereitstellung ist dies `http://localhost:6789/score`. Bei der Bereitstellung in der Cloud können Sie den CLI-Befehl [az ml service show](/cli/azure/ml/service#az_ml_service_show) zum Abrufen des Bewertungs-URIs verwenden.
 
 Informationen zum Erstellen eines Clients, der Rückschlussanforderungen an den Bewertungs-URI sendet, finden Sie unter [Nutzen eines als Webdienst bereitgestellten Modells](how-to-consume-web-service.md).
 
@@ -376,7 +376,7 @@ local_service.delete()
 
 * [Problembehandlung bei einer fehlerhaften Bereitstellung](how-to-troubleshoot-deployment.md): Erfahren Sie, wie Sie häufige Fehler behandeln und beheben oder umgehen können, die beim Bereitstellen eines Modells auftreten können.
 
-* Wenn in den Bereitstellungsprotokollen angezeigt wird, dass **TritonServer nicht starten konnte**, lesen Sie in der [Open Source-Dokumentation von Nvidia](https://github.com/triton-inference-server/server) nach.
+* Wenn in den Bereitstellungsprotokollen die Meldung **TritonServer konnte nicht gestartet werden** angezeigt wird, ziehen Sie die [Open Source-Dokumentation von Nvidia](https://github.com/triton-inference-server/server) zurate.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

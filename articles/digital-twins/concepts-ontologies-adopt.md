@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c4f003fc9e418501af76281c10277fce3606e24c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b8730d9a3e50eb1373cdc2f8f2984c6cc5bbccf
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102124226"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208003"
 ---
 # <a name="adopting-an-industry-ontology"></a>Übernehmen einer branchenspezifischen Ontologie
 
@@ -24,7 +24,7 @@ Microsoft hat hierbei mit Partnern zusammengearbeitet, um eine Ontologie für [i
 
 ## <a name="realestatecore-smart-building-ontology"></a>RealEstateCore-Ontologie für intelligente Gebäude
 
-*Die Ontologie finden Sie hier: [**Auf der Digital Twins Definition Language (DTDL) basierende RealEstateCore-Ontologie für intelligente Gebäude**](https://github.com/Azure/opendigitaltwins-building)* .
+*Die Ontologie finden Sie hier:* [Auf der Digital Twins Definition Language (DTDL) basierende RealEstateCore-Ontologie für intelligente Gebäude](https://github.com/Azure/opendigitaltwins-building).
 
 Microsoft hat in Zusammenarbeit mit [RealEstateCore](https://www.realestatecore.io/), einem schwedischen Zusammenschluss von Immobilieneigentümern, Softwareherstellern und Forschungseinrichtungen, diese quelloffene DTDL-Ontologie für die Immobilienbranche bereitgestellt.
 
@@ -36,7 +36,7 @@ Weitere Informationen zur Partnerschaft mit RealEstateCore und den Zielen für d
 
 ## <a name="smart-cities-ontology"></a>Ontologie für intelligente Städte
 
-*Die Ontologie finden Sie hier: [**DTDL-Ontologie (Digital Twins Definition Language) für intelligente Städte**](https://github.com/Azure/opendigitaltwins-smartcities)* .
+*Die Ontologie finden Sie hier:* [DTDL-Ontologie (Digital Twins Definition Language) für intelligente Städte](https://github.com/Azure/opendigitaltwins-smartcities).
 
 Microsoft hat mit [Open Agile Smart Cities (OASC)](https://oascities.org/) und [Sirus](https://sirus.be/) zusammengearbeitet, um eine DTDL-basierte Ontologie für intelligente Städte bereitzustellen. Hierbei wurde mit [ETSI CIM NGSI-LD](https://www.etsi.org/committee/cim) begonnen. Zusätzlich zu ETSI NGSI-LD haben wir auch Saref4City, CityGML, ISO und andere evaluiert.
 
@@ -48,6 +48,6 @@ Weitere Informationen zu den Partnerschaften und zum Ansatz für intelligente St
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich über das Erweitern von Branchenstandardontologien zur Erfüllung Ihrer Spezifikationen: [*Konzepte: Erweitern von Branchenontologien*](concepts-ontologies-extend.md).
+* Informieren Sie sich über das Erweitern von Branchenstandardontologien zur Erfüllung Ihrer Spezifikationen: [Konzepte: Erweitern von Branchenontologien](concepts-ontologies-extend.md).
 
-* Oder fahren Sie mit dem Pfad für das Entwickeln von Modellen basierend auf Ontologien fort: [*Verwenden von Ontologiestrategien in einem Modellentwicklungspfad*](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path).
+* Oder fahren Sie mit dem Pfad für das Entwickeln von Modellen basierend auf Ontologien fort: [Verwenden von Ontologiestrategien in einem Modellentwicklungspfad](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path).

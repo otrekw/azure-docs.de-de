@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 3f3b4d3e431d9e24549bdb8caa4b2d17f547c82c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 5b14ac194d3cf08a11edc47a84825f447be79e34
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064051"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516594"
 ---
 # <a name="configure-https-on-a-front-door-standardpremium-sku-preview-custom-domain-using-the-azure-portal"></a>Konfigurieren von HTTPS für eine benutzerdefinierte Front Door Standard/Premium-SKU (Vorschau) über das Azure-Portal
 
@@ -49,7 +49,7 @@ Azure Front Door Standard/Premium unterstützt sowohl von Azure verwaltete Zerti
 
 1. Überprüfen Sie die benutzerdefinierte Domäne, und ordnen Sie sie einem Endpunkt zu, indem Sie die Schritte unter „Aktivieren der [benutzerdefinierten Domäne](how-to-add-custom-domain.md)“ befolgen.
 
-1. Nachdem die benutzerdefinierte Domäne erfolgreich dem Endpunkt zugeordnet wurde, wird ein verwaltetes Azure-Zertifikat für Front Door bereitgestellt. Dieser Vorgang kann einige Minuten dauern.
+1. Nachdem die benutzerdefinierte Domäne erfolgreich dem Endpunkt zugeordnet wurde, wird ein verwaltetes Azure-Zertifikat für Front Door bereitgestellt. Es kann einige Minuten dauern, bis dieser Vorgang abgeschlossen ist.
 
 ## <a name="using-your-own-certificate"></a>Verwenden eines eigenen Zertifikats
 

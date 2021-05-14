@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: maintenance-control
-ms.date: 11/12/2020
+ms.date: 04/26/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: ec8d211bd25eb04f9e000af950cea9a28a0d1874
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 076c007bd0a2fb2e70ad84dfd6a825030a22b15a
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762837"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015229"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
 
@@ -81,7 +81,7 @@ Nachdem eine geplante Wartungsaktion geplant wurde, können Sie über das Azure-
 
 Die Spalte **Self-Service-Wartung** wird nun in der Liste der VM-Skalierungsgruppen angezeigt. Jede VM-Skalierungsgruppe kann einen der folgenden Werte für die Spalte „Self-Service-Wartung“ aufweisen:
 
-| Wert | Beschreibung |
+| Wert | BESCHREIBUNG |
 |-------|-------------|
 | Ja | Mindestens ein virtueller Computer in Ihrer VM-Skalierungsgruppe befindet sich in einem Self-Service-Wartungsfenster. Sie können die Wartung jederzeit in diesem Self-Service-Zeitfenster starten. | 
 | Nein | Es gibt keine virtuellen Computer in einem Self-Service-Fenster in der betroffenen VM-Skalierungsgruppe. | 
@@ -112,12 +112,12 @@ Nach dem Starten der Wartung werden die betroffenen virtuellen Computer in Ihrer
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>Überprüfen des Wartungsstatus mithilfe von PowerShell
 
-Sie können mithilfe von Azure PowerShell einsehen, wann die Wartung von virtuellen Computern in Ihrer VM-Skalierungsgruppe geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVmss](/powershell/module/az.compute/get-azvmss) unter Verwendung des Parameters `-InstanceView` ermittelt werden.
+Sie können mithilfe von Azure PowerShell einsehen, wann die Wartung von virtuellen Computern in Ihrer VM-Skalierungsgruppe geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) unter Verwendung des Parameters `-InstanceView` ermittelt werden.
  
 Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung geplant, die Auswirkungen auf die VM-Instanz besitzt, gibt das Cmdlet keine Wartungsinformationen zurück. 
 
 ```powershell
-Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
+Get-AzVmssVm -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
 Unter **MaintenanceRedeployStatus** werden folgende Eigenschaften zurückgegeben: 
@@ -135,10 +135,10 @@ Unter **MaintenanceRedeployStatus** werden folgende Eigenschaften zurückgegeben
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>Starten der Wartung für Ihre VM-Instanz mithilfe von PowerShell
 
-Sie können die Wartung eines virtuellen Computers starten, wenn **IsCustomerInitiatedMaintenanceAllowed** auf **TRUE** festgelegt wurde. Verwenden Sie das Cmdlet [Set-AzVmss](/powershell/module/az.compute/set-azvmss) mit dem Parameter `-PerformMaintenance`.
+Sie können die Wartung eines virtuellen Computers starten, wenn **IsCustomerInitiatedMaintenanceAllowed** auf **TRUE** festgelegt wurde. Verwenden Sie das Cmdlet [Set-AzVmssVM](/powershell/module/az.compute/set-azvmssvm) mit dem Parameter `-PerformMaintenance`.
 
 ```powershell
-Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
+Set-AzVmssVM -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
 ```
 
 ## <a name="check-maintenance-status-by-using-the-cli"></a>Überprüfen des Wartungsstatus mithilfe der CLI

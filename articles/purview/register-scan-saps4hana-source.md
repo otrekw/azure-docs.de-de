@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 7e00332eca076b55a884682240ef26ea3a4546d1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e7030d1b692777b7497ffe464a70d3a80cab9647
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046061"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992357"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source-preview"></a>Registrieren und Überprüfen einer SAP S/4HANA-Quelle (Vorschau)
 
@@ -35,7 +35,7 @@ Die SAP S/4HANA-Quelle unterstützt die **vollständige Überprüfung**, um Meta
 
     :::image type="content" source="media/register-scan-saps4hana-source/requirement.png" alt-text="Voraussetzung" border="true":::
 
-5.  Der Connector liest Metadaten aus SAP mithilfe der Java-Connector-API (JCo) 3.0. Stellen Sie darum sicher, dass der Java-Connector auf dem virtuellen Computer verfügbar ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
+5.  Der Connector liest Metadaten aus SAP mithilfe der [SAP Java-Connector-API 3.0 (JCo)](https://support.sap.com/en/product/connectors/jco.html). Stellen Sie darum sicher, dass der Java-Connector auf dem virtuellen Computer verfügbar ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
     Stellen Sie sicher, dass Sie die richtige JCo-Verteilung für Ihre Umgebung verwenden. Stellen Sie z. B. auf einem Microsoft Windows-Computer sicher, dass die Dateien „sapjco3.jar“ und „sapjco3.dll“ verfügbar sind.
 
     > [!Note] 

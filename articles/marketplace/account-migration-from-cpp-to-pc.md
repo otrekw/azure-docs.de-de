@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: f43bdd0ec6654ba2fc8a04dbb62d2d658e06ce0f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 189966c468fe5a39fbd44f7961e9512b7b054882
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107996"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811787"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Migrieren Ihres Kontos vom Cloud-Partnerportal zu Partner Center
 
@@ -72,7 +72,7 @@ Spezifische Informationen dazu, was Sie bis zum **15. Oktober 2019** für Ihre D
 
 1. Wenn Ihr MPN-Mitgliedschaftskonto ursprünglich in Partner Membership Center (PMC) erstellt wurde, melden Sie sich bei [Partner Center](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) an, um zu bestätigen, dass Ihr Konto migriert wurde. Wenn ein Profilbildschirm mit Ihrer MPN-ID angezeigt wird, können Sie fortfahren. Wenn das nicht der Fall ist, müssen Sie mit der Kontomigration beginnen, indem Sie den Anweisungen im [Partner Membership Center](https://partners.microsoft.com/partnerprogram/Welcome.aspx) folgen. Wenn Sie Hilfe benötigen, besuchen Sie den [Support](https://partner.microsoft.com/support?issueid=100-0077).
 2. Rufen Sie die [Seite mit dem Überblick über den kommerziellen Marketplace in Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) auf. Wenn im linken Navigationsbereich „Kommerzieller Marketplace“ angezeigt wird, sind Sie registriert und sollten mit dem nächsten Schritt fortfahren. Wenn nicht, [registrieren Sie sich jetzt beim kommerziellen Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership).
-3. Vergewissern Sie sich, dass Ihre Angebote in AppSource vorhanden sind, indem Sie [nach Ihren Angeboten suchen](https://appsource.microsoft.com/). Sind Ihre Angebote bereits in AppSource vorhanden, fahren Sie mit dem nächsten Schritt fort. Für jedes Angebot, das nicht in AppSource enthalten ist, erstellen Sie ein [neues Dynamics 365 Customer Engagement-Angebot](.\partner-center-portal\create-new-customer-engagement-offer.md) oder ein [neues Dynamics 365 Operations-Angebot](.\partner-center-portal\create-new-operations-offer.md).
+3. Vergewissern Sie sich, dass Ihre Angebote in AppSource vorhanden sind, indem Sie [nach Ihren Angeboten suchen](https://appsource.microsoft.com/). Sind Ihre Angebote bereits in AppSource vorhanden, fahren Sie mit dem nächsten Schritt fort. Für jedes Angebot, das nicht in AppSource enthalten ist, sehen Sie unter [Planen Sie ein Dynamics 365 Customer Engagement-Angebot](dynamics-365-customer-engage-offer-setup.md) oder ein [Erstellen Sie ein Dynamics 365 Operations-Angebot](.\partner-center-portal\create-new-operations-offer.md).
 4. Stellen Sie sicher, dass Sie auf der [Seite „Vereinbarungen“](https://partner.microsoft.com/dashboard/account/agreements) in Partner Center das **Business Applications ISV Addendum** gelesen und akzeptiert haben.
 5. Stellen Sie sicher, dass die Abrechnungsinformationen in den [Kontoeinstellungen](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile) von Partner Center vollständig sind.
 6. Übermitteln Sie jedes neue und bestehende Angebot zur Zertifizierung und Veröffentlichung, auch wenn Ihre Angebote bereits zuvor zertifiziert wurden.

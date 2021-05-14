@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 550084ccbb1df24fe0cbc0a4630efe19e6685e5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08ac1ae09741b63648aec2b51b6a774a46b9af7c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709902"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818438"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -45,7 +45,7 @@ Der Zugriff auf die Verwaltungsschicht wird durch die [rollenbasierte Zugriffsst
 
 Weitere Informationen zu Installationspaketen und Quellcode finden Sie unter [Clientbibliotheken](client-libraries.md).
 
-Weitere Informationen zur Key Vault-Verwaltungsebene finden Sie unter [Key Vault-Verwaltungsebene](./secure-your-key-vault.md#management-plane-and-azure-rbac).
+Weitere Informationen zur Key Vault-Verwaltungsebene finden Sie unter [Azure Key Vault-Sicherheitsfunktionen](security-features.md).
 
 ## <a name="authenticate-to-key-vault-in-code"></a>Authentifizieren bei Key Vault mit Code
 
@@ -83,7 +83,7 @@ Tutorials zum Authentifizieren bei Key Vault in Anwendungen finden Sie unter:
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Verwalten von Schlüsseln, Zertifikaten und Geheimnissen
 
-Der Zugriff auf Schlüssel, Geheimnisse und Zertifikate wird durch die Datenebene gesteuert. Die Zugriffssteuerung auf Datenebene kann mithilfe von Zugriffsrichtlinien für lokale Tresore oder der Azure-RBAC (Vorschauversion) erfolgen.
+Der Zugriff auf Schlüssel, Geheimnisse und Zertifikate wird durch die Datenebene gesteuert. Die Zugriffssteuerung auf Datenebene kann mithilfe von Zugriffsrichtlinien für lokale Tresore oder per Azure RBAC erfolgen.
 
 **Schlüssel-APIs und -SDKs**
 
@@ -105,7 +105,7 @@ Der Zugriff auf Schlüssel, Geheimnisse und Zertifikate wird durch die Dateneben
 
 Weitere Informationen zu Installationspaketen und Quellcode finden Sie unter [Clientbibliotheken](client-libraries.md).
 
-Weitere Informationen zur Sicherheit der Key Vault-Datenebene finden Sie unter [Key Vault-Datenebene und Zugriffsrichtlinien](./secure-your-key-vault.md#data-plane-and-access-policies) und [Key Vault-Datenebene und die Azure-RBAC (Vorschauversion)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview).
+Weitere Informationen zur Sicherheit der Key Vault-Datenebene finden Sie unter [Azure Key Vault-Sicherheitsfunktionen](security-features.md).
 
 ### <a name="code-examples"></a>Codebeispiele
 

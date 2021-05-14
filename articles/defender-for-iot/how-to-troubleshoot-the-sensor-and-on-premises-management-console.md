@@ -3,12 +3,12 @@ title: Behandeln von Problemen mit dem Sensor und der lokalen Verwaltungskonsole
 description: Beheben Sie Probleme mit dem Sensor und der lokalen Verwaltungskonsole, um möglicherweise bestehende Probleme zu beseitigen.
 ms.date: 03/14/2021
 ms.topic: article
-ms.openlocfilehash: 83ffec959a5b38e9f4fd4d7d0dcfd3b1b9faa096
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e20c11e869ebeea0b4fc7f917dd8cebba7a69c5c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785443"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209047"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Behandeln von Problemen mit dem Sensor und der lokalen Verwaltungskonsole
 
@@ -127,7 +127,7 @@ Wenn Geräte, die in der Zuordnung angezeigt werden, nicht miteinander verbunden
 
 :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/broadcasting-devices.png" alt-text="Anzeigen der Broadcastgeräte.":::
 
-In einem solchen Fall müssen Sie überprüfen, ob nur der Broadcastdatenverkehr angezeigt wird. Bitten Sie den Netzwerktechniker dann, die SPAN-Portkonfiguration zu korrigieren, damit Sie den Unicastdatenverkehr sehen können.
+Überprüfen Sie in diesem Fall, ob Sie nur den Broadcastdatenverkehr verwenden, und bitten Sie dann den Netzwerktechniker, die SPAN-Portkonfiguration zu korrigieren, damit Sie auch den Unicast-Datenverkehr sehen können.
 
 So überprüfen Sie, ob nur der Broadcastdatenverkehr angezeigt wird:
 

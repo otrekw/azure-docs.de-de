@@ -1,166 +1,172 @@
 ---
 title: Replizieren von Daten über ExpressRoute mithilfe des Azure Migrate-Servermigrationstools
-description: Hier erfahren Sie, wie Sie Azure ExpressRoute für die Replikation mit dem Azure Migrate-Servermigrationstool verwenden.
+description: Verwenden von Azure ExpressRoute für die Replikation mit dem Azure Migrate-Servermigrationstool.
 author: DeSeelam
 ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 9aa9a42422f3c114490d1dbb28a146b6e76ca8cd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3a6afa0fadf5a84ad938b0b0cec321c0e17adeff
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558617"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317521"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Replizieren von Daten über ExpressRoute mithilfe des Azure Migrate-Servermigrationstools
 
-In diesem Artikel wird erläutert, wie Sie das [Azure Migrate-Servermigrationstool](./migrate-services-overview.md#azure-migrate-server-migration-tool) zum Replizieren von Daten über eine ExpressRoute-Verbindung konfigurieren, während Sie Server zu Azure migrieren.
+In diesem Artikel wird erläutert, wie Sie das [Azure Migrate-Servermigrationstool](./migrate-services-overview.md#azure-migrate-server-migration-tool) zum Replizieren von Daten über eine Azure ExpressRoute-Verbindung konfigurieren, während Sie Server zu Azure migrieren.
 
 ## <a name="understand-azure-expressroute-circuits"></a>Informationen zu Azure ExpressRoute-Verbindungen
-Über eine ExpressRoute-Verbindung (ER) wird Ihre lokale Infrastruktur über einen Konnektivitätsanbieter mit Microsoft verbunden. ExpressRoute-Verbindungen können konfiguriert werden, um privates Peering, Microsoft-Peering oder beides zu verwenden. Lesen Sie den Artikel zu [ExpressRoute-Verbindungen und Peering](../expressroute/expressroute-circuit-peerings.md#peeringcompare), um mehr über die verschiedenen Peeringoptionen zu erfahren, die mit ExpressRoute verfügbar sind.
 
-Das Azure Migrate-Servermigrationstool unterstützt Sie beim Migrieren von lokalen Servern und Servern von anderen Clouds zu virtuellen Azure-Computern. Das Tool richtet einen kontinuierlichen Replikationsstream zum Replizieren von Daten von den zu migrierenden Servern zu den verwalteten Datenträgern in Ihrem Azure-Abonnement ein. Wenn Sie bereit sind, die Server zu migrieren, werden die replizierten Daten in Azure zum Migrieren der Server verwendet.
+Über eine ExpressRoute-Verbindung wird Ihre lokale Infrastruktur über einen Konnektivitätsanbieter mit Microsoft verbunden. Sie können ExpressRoute-Verbindungen konfigurieren, um privates Peering, Microsoft-Peering oder beides zu verwenden. Weitere Informationen zu den Peeringoptionen mit ExpressRoute finden Sie unter [ExpressRoute-Verbindungen und Peering](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 
-Daten, die von Ihren lokalen Servern repliziert werden, können so konfiguriert werden, dass sie über das Internet (über eine sichere verschlüsselte Verbindung) oder über eine ExpressRoute-Verbindung an Ihr Azure-Abonnement gesendet werden. Wenn Sie über eine große Anzahl von Servern verfügen, die Sie migrieren möchten, können Sie ExpressRoute für die Replikation verwenden, um Server unter Verwendung der bereitgestellten Bandbreite, die über Ihre ExpressRoute-Verbindung verfügbar ist, effizienter zu migrieren.
+Das Azure Migrate-Servermigrationstool unterstützt Sie beim Migrieren von lokalen Servern und Servern von anderen Clouds zu Azure Virtual Machines. Das Tool richtet einen kontinuierlichen Replikationsstream zum Replizieren von Daten von den zu migrierenden Servern zu den verwalteten Datenträgern in Ihrem Azure-Abonnement ein. Wenn Sie bereit sind, die Server zu migrieren, werden die replizierten Daten in Azure zum Migrieren der Server verwendet.
 
-In diesem Artikel lernen Sie Folgendes:
+Sie können die von Ihren lokalen Servern replizierten Daten so konfigurieren, dass sie über das Internet oder eine ExpressRoute-Verbindung an Ihr Azure-Abonnement gesendet werden. Über das Internet gesendete Daten verwenden eine sichere verschlüsselte Verbindung. Wenn Sie über eine große Anzahl von zu migrierenden Servern verfügen, können Sie ExpressRoute für die Replikation verwenden, um eine effizientere Migration unter Verwendung der bereitgestellten Bandbreite ausführen, die über Ihre ExpressRoute-Verbindung verfügbar ist.
+
+In diesem Artikel erfahren Sie, wie Sie Daten mithilfe der folgenden Mechanismen replizieren:
 > [!div class="checklist"]
 >
-> * Replizieren von Daten mithilfe einer ExpressRoute-Verbindung mit privatem Peering
-> * Replizieren von Daten mithilfe einer ExpressRoute-Verbindung mit Microsoft-Peering
+> * Mit einer ExpressRoute-Verbindung mit privatem Peering.
+> * Mit einer ExpressRoute-Verbindung mit Microsoft-Peering.
 
-## <a name="replicate-data-using-an-expressroute-circuit-with-private-peering"></a>Replizieren von Daten mithilfe einer ExpressRoute-Verbindung mit privatem Peering
+## <a name="replicate-data-by-using-an-expressroute-circuit-with-private-peering"></a>Replizieren von Daten mithilfe einer ExpressRoute-Verbindung mit privatem Peering
 
-> [!NOTE]
-> Die Replikation über eine private Peeringverbindung wird derzeit nur für die [Migration von virtuellen VMware-Computern zu Azure ohne Agent](./tutorial-migrate-vmware.md) unterstützt. Die Unterstützung für private Endpunkte für andere [Replikationsmethoden](./migrate-services-overview.md#azure-migrate-server-migration-tool) ist in Kürze verfügbar.
+> [!Note]
+> Dieser Artikel zeigt, wie die Replikation über eine private Peeringverbindung für die [Migration von virtuellen VMware-Computern ohne Agent zu Azure](./tutorial-migrate-vmware.md) funktioniert. Um Unterstützung für private Endpunkte für [andere Replikationsmethoden](./migrate-services-overview.md#azure-migrate-server-migration-tool) zu verwenden, lesen Sie [Verwenden von Azure Migrate mit privaten Endpunkten](./how-to-use-azure-migrate-with-private-endpoints.md).
+ 
+Bei der Methode zum Migrieren von virtuellen VMware-Computern zu Azure ohne Agent lädt die Azure Migrate-Appliance zunächst Replikationsdaten in ein Speicherkonto (Cachespeicherkonto) in Ihrem Abonnement hoch. Azure Migrate verschiebt dann die replizierten Daten aus dem Cachespeicherkonto auf durch das Replikat verwaltete Datenträger in Ihrem Abonnement.
 
-Bei der Methode zum Migrieren von virtuellen VMware-Computern zu Azure ohne Agent lädt die Azure Migrate-Appliance zunächst Replikationsdaten in ein Speicherkonto (Cachespeicherkonto) in Ihrem Abonnement hoch. Replizierte Daten aus dem Cachespeicherkonto werden dann vom Azure Migrate-Dienst auf vom Replikat verwaltete Datenträger in Ihrem Abonnement verschoben. Wenn Sie eine private Peeringverbindung für die Replikation verwenden möchten, erstellen Sie einen privaten Endpunkt, und fügen diesen an das zu verwendende Cachespeicherkonto an. Private Endpunkte verwenden eine oder mehrere private IP-Adressen Ihres virtuellen Netzwerks (VNet), sodass das Speicherkonto effektiv in Ihr virtuelles Azure-Netzwerk integriert wird. Der private Endpunkt ermöglicht der Azure Migrate-Appliance, mithilfe des privaten ExpressRoute-Peerings eine Verbindung mit dem Cachespeicherkonto herzustellen und Daten direkt über die private IP-Adresse zu übertragen. <br/>  
+Wenn Sie eine private Peeringverbindung für die Replikation verwenden möchten, erstellen Sie einen privaten Endpunkt und fügen diesen an das Cachespeicherkonto an. Private Endpunkte verwenden eine oder mehrere private IP-Adressen Ihres virtuellen Netzwerks, sodass das Speicherkonto effektiv in Ihr virtuelles Azure-Netzwerk integriert wird. Der private Endpunkt ermöglicht der Azure Migrate-Appliance, mithilfe des privaten ExpressRoute-Peerings eine Verbindung mit dem Cachespeicherkonto herzustellen. Daten können dann direkt an die private IP-Adresse übertragen werden. <br/>
 
-![Replikationsprozess](./media/replicate-using-expressroute/replication-process.png)
+![Screenshot: Replikationsprozess.](./media/replicate-using-expressroute/replication-process.png)
 
 > [!Important]
->
-> - Die Azure Migrate-Appliance kommuniziert mit dem Azure Migrate-Dienst, um zusätzlich zu den Replikationsdaten Informationen über die Steuerungsebenenaktivitäten einschließlich Orchestrierungsreplikationen zu erhalten. Die Steuerungsebenenkommunikation zwischen der Azure Migrate-Appliance und dem Azure Migrate-Dienst erfolgt weiterhin über das Internet und den öffentlichen Endpunkt des Azure Migrate-Diensts.
+> - Die Azure Migrate-Appliance kommuniziert mit dem Azure Migrate-Dienst, um zusätzlich zu den Replikationsdaten Informationen zu den Aktivitäten der Steuerungsebene zu erhalten. Zu diesen Aktivitäten gehört die Orchestrierung der Replikation. Die Steuerungsebenenkommunikation zwischen der Azure Migrate-Appliance und dem Azure Migrate-Dienst erfolgt weiterhin über das Internet und den öffentlichen Endpunkt des Azure Migrate-Diensts.
 > - Der private Endpunkt des Speicherkontos sollte über das Netzwerk zugänglich sein, in dem die Azure Migrate-Appliance bereitgestellt wird.
 > - Das DNS muss so konfiguriert sein, dass DNS-Abfragen von der Azure Migrate-Appliance für den Blobdienstendpunkt des Cachespeicherkontos in die private IP-Adresse des privaten Endpunkts aufgelöst werden, der mit dem Cachespeicherkonto verknüpft ist.
-> - Der Zugriff auf das Cachespeicherkonto muss über dessen öffentlichen Endpunkt möglich sein. (Der Azure Migrate-Dienst verwendet den öffentlichen Endpunkt des Cachespeicherkontos zum Verschieben von Daten aus dem Speicherkonto auf vom Replikat verwaltete Datenträger.) 
+> - Der Zugriff auf das Cachespeicherkonto muss über dessen öffentlichen Endpunkt möglich sein. Azure Migrate verwendet den öffentlichen Endpunkt des Cachespeicherkontos zum Verschieben von Daten aus dem Speicherkonto auf vom Replikat verwaltete Datenträger.
 
+### <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="1-pre-requisites"></a>1. Voraussetzungen
+Sie müssen für die Ressourcengruppe und das virtuelle Netzwerk, in dem die privaten Endpunkte erstellt werden, über die folgenden Berechtigungen verfügen.
 
-Der Azure-Benutzer, der den privaten Endpunkt erstellt, muss über die folgenden Berechtigungen für die Ressourcengruppe und das virtuelle Netzwerk verfügen, in denen der private Endpunkt erstellt wird.
-
-**Anwendungsfall** | **Berechtigungen** 
+Anwendungsfall | Berechtigungen
 --- | --- 
- Erstellen und Verwalten privater Endpunkte | Microsoft.Network/privateEndpoint/write/action<br/>Microsoft.Network/privateEndpoint/read/action  
-|Anfügen eines privaten Endpunkts an ein virtuelles Netzwerk oder Subnetz:<br/>Dies ist für das virtuelle Netzwerk erforderlich, in dem der private Endpunkt erstellt wird.| Microsoft.Network/virtualNetworks/subnet/join/action  Microsoft.Network/virtualNetworks/join/action
+ Erstellen und Verwalten privater Endpunkte | Microsoft.Network/privateEndpoint/write/action<br/>Microsoft.Network/privateEndpoint/read/action 
+|Fügen Sie einen privaten Endpunkt an ein virtuelles Netzwerk oder Subnetz an.<br/>Diese Berechtigung ist für das virtuelle Netzwerk erforderlich, in dem der private Endpunkt erstellt wird.| Microsoft.Network/virtualNetworks/subnet/join/action <br/> Microsoft.Network/virtualNetworks/join/action
 |Verknüpfen des privaten Endpunkts mit einem Speicherkonto <br/>| Microsoft.Microsoft.Storage/storageAccounts/privateEndpointConnectionApproval/action <br/> Microsoft.Microsoft.Storage/storageAccounts/privateEndpointConnections/read
 |Erstellen einer Netzwerkschnittstelle und Verknüpfen mit einer Netzwerksicherheitsgruppe | Microsoft.Network/networkInterfaces/read <br/> Microsoft.Network/networkInterfaces/subnets/write <br/> Microsoft.Network/networkInterfaces/subnets/read<br/> Microsoft.Network/networkSecurityGroups/join/action (optional)
-Erstellen und Verwalten privater DNS-Zonen| Rolle „Mitwirkender für private DNS-Zone“ <br/> _Oder_ <br/> Microsoft.Network/privateDnsZones/A/* <br/>  Microsoft.Network/privateDnsZones/write Microsoft.Network/privateDnsZones/read <br/> Microsoft.Network/privateEndpoints/privateDnsZoneGroups/write <br/> Microsoft.Network/privateEndpoints/privateDnsZoneGroups/read <br/> Microsoft.Network/privateDnsZones/virtualNetworkLinks/write <br/>  Microsoft.Network/privateDnsZones/virtualNetworkLinks/read <br/> Microsoft.Network/virtualNetworks/join/action 
+Erstellen und Verwalten privater DNS-Zonen| Rolle „Mitwirkender für private DNS-Zone“ <br/> _Oder_ <br/> Microsoft.Network/privateDnsZones/A/* <br/> Microsoft.Network/privateDnsZones/write Microsoft.Network/privateDnsZones/read <br/> Microsoft.Network/privateEndpoints/privateDnsZoneGroups/write <br/> Microsoft.Network/privateEndpoints/privateDnsZoneGroups/read <br/> Microsoft.Network/privateDnsZones/virtualNetworkLinks/write <br/> Microsoft.Network/privateDnsZones/virtualNetworkLinks/read <br/> Microsoft.Network/virtualNetworks/join/action 
 
-### <a name="2-identify-the-cache-storage-account"></a>2. Identifizieren des Cachespeicherkontos 
- 
-Azure Migrate erstellt automatisch ein Cachespeicherkonto, wenn Sie die Replikation (über die Benutzeroberfläche des Azure-Portals) für einen virtuellen Computer zum ersten Mal in einem Azure Migrate-Projekt konfigurieren. Das Speicherkonto wird in demselben Abonnement und in derselben Ressourcengruppe erstellt, in dem bzw. der Sie das Azure Migrate-Projekt erstellt haben.
+### <a name="identify-the-cache-storage-account"></a>Identifizieren des Cachespeicherkontos
+
+ Azure Migrate erstellt automatisch ein Cachespeicherkonto, wenn Sie die Replikation (über die Benutzeroberfläche des Azure-Portals) für einen virtuellen Computer zum ersten Mal in einem Azure Migrate-Projekt konfigurieren. Das Speicherkonto wird in demselben Abonnement und in derselben Ressourcengruppe erstellt, in dem bzw. der Sie das Azure Migrate-Projekt erstellt haben.
 
 So erstellen und suchen Sie das Speicherkonto:
 
-1. Verwenden Sie die Benutzeroberfläche des Azure-Portals für Azure Migrate, um einen oder mehrere virtuellen Computer im Projekt zu replizieren.
-2. Navigieren Sie zur Ressourcengruppe des Azure Migrate-Projekts.
-3. Suchen Sie das Cachespeicherkonto, indem Sie das Präfix **„Isa“** im Speicherkontonamen ermitteln.
+1. Verwenden Sie das Azure-Portal, um mindestens einen virtuellen Computer im Azure Migrate-Projekt zu replizieren.
+1. Navigieren Sie zur Ressourcengruppe des Azure Migrate-Projekts.
+1. Suchen Sie das Cachespeicherkonto, indem Sie das Präfix **Isa** im Speicherkontonamen ermitteln.
 
-![Ressourcengruppenansicht](./media/replicate-using-expressroute/storage-account-name.png)
+   ![Screenshot: Ressourcengruppenansicht.](./media/replicate-using-expressroute/storage-account-name.png)
 
 > [!Tip]
->  
-> Wenn Sie in der Ressourcengruppe über mehrere Speicherkonten mit dem Präfix **„Isa“** verfügen, können Sie das Speicherkonto überprüfen, indem Sie zu den Replikationseinstellungen und dem Zielkonfigurationsmenü für jede der replizierenden VMs im Projekt navigieren. <br/> 
-> ![Übersicht über Replikationseinstellungen](./media/replicate-using-expressroute/storage-account.png)
+> Wenn Sie in der Ressourcengruppe über mehrere Speicherkonten mit dem Präfix **Isa** verfügen, können Sie das Speicherkonto überprüfen, indem Sie zu den Replikationseinstellungen und dem Zielkonfigurationsmenü für jede der replizierenden VMs im Projekt navigieren.
+>
+> ![Screenshot: Übersicht über Replikationseinstellungen.](./media/replicate-using-expressroute/storage-account.png)
 
-### <a name="3-upgrade--cache-storage-account-to-general-purpose-v2"></a>3. Durchführen eines Upgrades des Cachspeicherkontos auf „Universell v2“ 
+### <a name="upgrade-the-cache-storage-account-to-general-purpose-v2"></a>Durchführen eines Upgrades des Cachspeicherkontos auf „Universell v2“
 
-Sie können private Endpunkte nur für ein Speicherkonto des Typs „Universell v2 (GPv2)“ erstellen. Wenn das Cachespeicherkonto kein Speicherkonto vom Typ „GPv2“ ist, führen Sie mithilfe der folgenden Schritte ein Upgrade auf GPv2 durch:
+Sie können private Endpunkte nur für ein Speicherkonto des Typs „Universell v2“ erstellen. Wenn es sich bei dem Cachespeicherkonto nicht um ein Speicherkonto des Typs „Universell v2“ handelt, führen Sie ein Upgrade aus.
 
-1. Navigieren Sie zum Speicherkonto.
-2. Wählen Sie **Konfiguration** aus.
-3. Klicken Sie unter **Kontoart** auf **Upgrade durchführen**.
-4. Geben Sie unter **Confirm upgrade** (Upgrade bestätigen) den Namen Ihres Kontos ein.
-5. Klicken Sie unten auf der Seite auf **Upgrade durchführen**.
+1. Wechseln Sie zum Speicherkonto.
+1. Wählen Sie **Konfiguration** aus.
+1. Klicken Sie unter **Kontoart** auf **Upgrade durchführen**.
+1. Geben Sie unter **Upgrade bestätigen** den Namen Ihres Kontos ein.
+1. Klicken Sie unten auf der Seite auf **Upgrade durchführen**.
 
-![Upgrade für Speicherkonto](./media/replicate-using-expressroute/upgrade-storage-account.png)
+   ![Screenshot: Durchführen eines Upgrades eines Speicherkontos.](./media/replicate-using-expressroute/upgrade-storage-account.png)
 
-### <a name="4-create-a-private-endpoint-for-the-storage-account"></a>4. Erstellen eines privaten Endpunkts für das Speicherkonto
+### <a name="create-a-private-endpoint-for-the-storage-account"></a>Erstellen eines privaten Endpunkts für das Speicherkonto
 
-1. Navigieren Sie zu Ihrem Speicherkonto, klicken Sie im Menü auf der linken Seite auf **Netzwerk**, und klicken Sie dann auf die Registerkarte **Private Endpunktverbindungen**.  
-2. Wählen Sie **+ Privaten Endpunkt hinzufügen** aus.
+1. Navigieren Sie zu Ihrem Speicherkonto, klicken Sie im Menü auf der linken Seite auf **Netzwerk**, und klicken Sie dann auf die Registerkarte **Private Endpunktverbindungen**.
+1. Wählen Sie **+ Privaten Endpunkt hinzufügen** aus.
 
-    a. Wählen Sie im Fenster **Privaten Endpunkt erstellen** das **Abonnement** und die **Ressourcengruppe** aus. Geben Sie einen Namen für Ihren privaten Endpunkt an, und wählen Sie die Speicherkontoregion aus.  
-    ![Fenster für die Konfiguration des privaten Endpunkts](./media/replicate-using-expressroute/storage-account-private-endpoint-creation.png)
+    1. Wählen Sie im Fenster **Privaten Endpunkt erstellen** das **Abonnement** und die **Ressourcengruppe** aus. Geben Sie einen Namen für Ihren privaten Endpunkt ein, und wählen Sie die Speicherkontoregion aus.
+     
+       ![Screenshot: Fenster für die Konfiguration eines privaten Endpunkts.](./media/replicate-using-expressroute/storage-account-private-endpoint-creation.png)
 
-    b. Geben Sie auf der Registerkarte **Ressource** für **Abonnementname** den Namen des Abonnements an, in dem sich das Speicherkonto befindet. Wählen Sie **Microsoft.Storage/storageAccounts** als **Ressourcentyp** aus. Geben Sie unter **Ressource** den Namen des Replikationsspeicherkontos vom Typ „GPv2“ an. Wählen Sie für **Untergeordnete Zielressource** **Blob** aus.  
-    ![Einstellungen zum Erstellen eines privaten Endpunkts für ein Speicherkonto](./media/replicate-using-expressroute/storage-account-private-endpoint-settings.png)
+    1. Geben Sie auf der Registerkarte **Ressource** den **Abonnementnamen** des Abonnements ein, in dem sich das Speicherkonto befindet. Wählen Sie **Microsoft.Storage/storageAccounts** als **Ressourcentyp** aus. Geben Sie unter **Ressource** den Namen des Replikationsspeicherkontos vom Typ „Universell v2“ an. Wählen Sie für **Untergeordnete Zielressource** die Option **Blob** aus.
+     
+       ![Screenshot: Einstellungen für den privaten Endpunkt des Speicherkontos.](./media/replicate-using-expressroute/storage-account-private-endpoint-settings.png)
 
-    c. Wählen Sie auf der Registerkarte **Konfiguration** die Optionen für **Virtuelles Netzwerk** und **Subnetz** für den privaten Endpunkt des Speicherkontos aus.  
+    1. Wählen Sie auf der Registerkarte **Konfiguration** die Optionen für **Virtuelles Netzwerk** und **Subnetz** für den privaten Endpunkt des Speicherkontos aus.
 
-    > [!Note]
-    > Das virtuelle Netzwerk muss den ExpressRoute-Gatewayendpunkt enthalten oder eine Verbindung mit dem virtuellen Netzwerk mit dem ExpressRoute-Gateway aufweisen. 
+       > [!Note]
+       > Das virtuelle Netzwerk muss den ExpressRoute-Gatewayendpunkt enthalten oder eine Verbindung mit dem virtuellen Netzwerk mit dem ExpressRoute-Gateway aufweisen.
 
-    Klicken Sie im Abschnitt **Private DNS-Integration** auf **Ja**, und integrieren Sie mit einer privaten DNS-Zone. Wenn Sie auf **Ja** klicken, wird die DNS-Zone automatisch mit dem ausgewählten virtuellen Netzwerk verknüpft, und es werden die DNS-Einträge für die DNS-Auflösung der neuen IP-Adressen und vollqualifizierten Domänennamen hinzugefügt, die für den privaten Endpunkt erstellt wurden. Informieren Sie sich weiter über [private DNS-Zonen](../dns/private-dns-overview.md).
+       Wählen Sie im Abschnitt **Private DNS-Integration** **Ja** aus, und führen Sie die Integration mit einer privaten DNS-Zone aus. Wenn Sie **Ja** auswählen, wird die DNS-Zone automatisch mit dem ausgewählten virtuellen Netzwerk verknüpft. Außerdem werden die für DNS-Auflösung neuer IP-Adressen erforderliche DNS-Einträge und vollqualifizierte Domänennamen hinzugefügt, die für den privaten Endpunkt erstellt wurden. Informieren Sie sich weiter über [private DNS-Zonen](../dns/private-dns-overview.md).
 
-    ![Private DNS-Zone](./media/replicate-using-expressroute/private-dns-zone.png)
+       ![Screenshot: Private DNS-Zonen.](./media/replicate-using-expressroute/private-dns-zone.png)
 
-    d. Sie können auch **Tags** für Ihren privaten Endpunkt hinzufügen.  
+    1. Sie können auch **Tags** für Ihren privaten Endpunkt hinzufügen.
 
-    e. Fahren Sie mit **Überprüfen + erstellen** fort, nachdem Sie die Details eingegeben haben. Klicken Sie nach Abschluss der Validierung auf **Erstellen**, um den privaten Endpunkt zu erstellen.
+    1. Nachdem Sie die Eingabe der Details abgeschlossen haben, wählen Sie die Registerkarte **Überprüfen und erstellen** aus. Wählen Sie nach Abschluss der Überprüfung **Erstellen** aus, um den privaten Endpunkt zu erstellen.
 
-    > [!Note]
-    > Wenn der Benutzer, der den privaten Endpunkt erstellt, auch der Besitzer des Speicherkontos ist, wird der private Endpunkt automatisch genehmigt. Andernfalls muss der Besitzer den privaten Endpunkt für die Verwendung genehmigen. 
+> [!Note]
+> Wenn der Benutzer, der den privaten Endpunkt erstellt hat, auch Besitzer des Speicherkontos ist, wird der private Endpunkt automatisch genehmigt. Andernfalls muss der Besitzer den privaten Endpunkt für die Verwendung genehmigen.
 
 #### <a name="create-private-dns-zones-and-add-dns-records-manually-optional"></a>Erstellen privater DNS-Zonen und manuelles Hinzufügen von DNS-Einträgen (optional)
 
-Wenn Sie zum Zeitpunkt der Erstellung des privaten Endpunkts nicht die Option zur Integration mit einer privaten DNS-Zone ausgewählt haben, führen Sie die Schritte in diesem Abschnitt aus, um eine private DNS-Zone manuell zu erstellen. 
+Wenn Sie die Option zur Integration in eine private DNS-Zone zum Zeitpunkt der Erstellung des privaten Endpunkts nicht ausgewählt haben, müssen Sie eine private DNS-Zone manuell erstellen.
 
 > [!Note]
-> Wenn Sie für die Integration mit einer privaten DNS-Zone **Ja** ausgewählt haben, können Sie diesen Abschnitt überspringen. 
+> Wenn Sie für die Integration mit einer privaten DNS-Zone **Ja** ausgewählt haben, können Sie diesen Abschnitt überspringen.
 
-1. Erstellen Sie eine private DNS-Zone. 
+So erstellen Sie eine private DNS-Zone:
 
-    ![Erstellen privater DNS-Zonen](./media/replicate-using-expressroute/create-private-dns.png)
+1. Wählen Sie **Private DNS-Zonen** aus.
 
-    a. Klicken Sie auf der Seite **Private DNS-Zonen** auf die Schaltfläche **+ Hinzufügen**, um mit dem Erstellen einer neuen Zone zu beginnen.  
-    b. Geben Sie auf der Seite **Private DNS-Zone erstellen** die erforderlichen Details ein. Geben Sie _privatelink_.blob.core.windows.net als Name für die private DNS-Zone ein.  
-    c. Überprüfen und erstellen Sie die DNS-Zone anschließend über die Registerkarte **Überprüfen + erstellen**.   
+    ![Screenshot: Erstellen einer privaten DNS-Zone.](./media/replicate-using-expressroute/create-private-dns.png)
 
-2. Verknüpfen Sie die private DNS-Zone mit Ihrem virtuellen Netzwerk.  
+    1. Wählen Sie auf der Seite **Private DNS-Zonen** die Option **+ Hinzufügen** aus, um eine neue Zone zu erstellen.
+    1. Geben Sie auf der Seite **Private DNS-Zone erstellen** die erforderlichen Details ein. Geben Sie **_privatelink_.blob.core.windows.net** als Namen für die private DNS-Zone ein.
+    1. Überprüfen und erstellen Sie die DNS-Zone anschließend auf der Registerkarte **Überprüfen und erstellen**.
 
-    Die zuvor erstellte private DNS-Zone muss mit dem virtuellen Netzwerk verknüpft werden, an das der private Endpunkt angefügt ist.
+1. Verknüpfen Sie die private DNS-Zone mit Ihrem virtuellen Netzwerk.
 
-    a. Wechseln Sie zu der im vorherigen Schritt erstellten privaten DNS-Zone, und navigieren Sie dann auf der linken Seite zu „VNET-Verknüpfungen“. Klicken Sie auf die Schaltfläche **+ Hinzufügen**.   
-    b. Geben Sie die erforderlichen Details ein. Die Felder **Abonnement** und **Virtuelles Netzwerk** müssen mit entsprechenden Angaben zum virtuellen Netzwerk ausgefüllt werden, an das Ihr privater Endpunkt angefügt ist. Die anderen Felder können Sie unverändert lassen.
+    Die von Ihnen erstellte private DNS-Zone muss mit dem virtuellen Netzwerk verknüpft werden, an das der private Endpunkt angefügt ist.
 
-3. Der nächste Schritt besteht darin, der DNS-Zone DNS-Einträge hinzuzufügen. Fügen Sie einen Eintrag für den vollqualifizierten Domänennamen des Speicherkontos in Ihre private DNS-Zone ein.
+    1. Navigieren Sie zu der im vorherigen Schritt erstellten privaten DNS-Zone, und navigieren Sie dann auf der linken Seite zu „VNet-Verknüpfungen“. Wählen Sie **+ Hinzufügen**.
+    1. Geben Sie die erforderlichen Details ein. Die Felder **Abonnement** und **Virtuelles Netzwerk** müssen mit entsprechenden Angaben zum virtuellen Netzwerk ausgefüllt werden, an das Ihr privater Endpunkt angefügt ist. Die anderen Felder können Sie unverändert lassen.
 
-    a. Wechseln Sie zu Ihrer privaten DNS-Zone, und navigieren Sie auf der linken Seite zum Abschnitt **Übersicht**. Klicken Sie dort auf **+ Datensatzgruppe**, um mit dem Hinzufügen von Einträgen zu beginnen.  
+1. Der nächste Schritt besteht darin, der DNS-Zone DNS-Einträge hinzuzufügen. Fügen Sie einen Eintrag für den FQDN des Speicherkontos in Ihre private DNS-Zone ein.
 
-    b. Fügen Sie auf der Seite **Datensatzgruppe hinzufügen** einen Eintrag für den vollqualifizierten Domänennamen und die private IP-Adresse als A-Eintrag hinzu.
+    1. Navigieren Sie zu Ihrer privaten DNS-Zone, und navigieren Sie auf der linken Seite zum Abschnitt **Übersicht**. Wählen Sie **+ Ressourceneintraggsatz** aus, um mit dem Hinzufügen von Einträgen zu beginnen.
+    1. Fügen Sie auf der Seite **Datensatzgruppe hinzufügen** einen Eintrag für den FQDN und die private IP-Adresse als A-Eintrag hinzu.
 
 > [!Important]
-> Möglicherweise benötigen Sie zusätzliche DNS-Einstellungen, um die private IP-Adresse des privaten Endpunkts des Speicherkontos aus der Quellumgebung aufzulösen. [Lesen Sie diesen Artikel](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder), um zu verstehen, welche DNS-Konfiguration erforderlich ist.
+> Möglicherweise benötigen Sie zusätzliche DNS-Einstellungen, um die private IP-Adresse des privaten Endpunkts des Speicherkontos aus der Quellumgebung aufzulösen. Informationen zur erforderlichen DNS-Konfiguration finden Sie unter [DNS-Konfiguration des privaten Azure-Endpunkts](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder).
 
-## <a name="replicate-data-using-an-expressroute-circuit-with-microsoft-peering"></a>Replizieren von Daten mithilfe einer ExpressRoute-Verbindung mit Microsoft-Peering
+## <a name="replicate-data-by-using-an-expressroute-circuit-with-microsoft-peering"></a>Replizieren von Daten mithilfe einer ExpressRoute-Verbindung mit Microsoft-Peering
 
-Sie können das Microsoft-Peering oder eine vorhandene öffentliche Peeringdomäne verwenden (für neue ExpressRoute-Verbindungen veraltet), um den Replikationsdatenverkehr wie auf der folgenden Abbildung dargestellt über eine ExpressRoute-Verbindung weiterzuleiten.
-![Replikation mit Microsoft-Peering](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
+Sie können das Microsoft-Peering oder eine vorhandene öffentliche Peeringdomäne verwenden (für neue ExpressRoute-Verbindungen veraltet), um den Replikationsdatenverkehr über eine ExpressRoute-Verbindung weiterzuleiten.
 
-Auch wenn Replikationsdaten über die Microsoft-Peeringverbindung weitergeleitet werden, benötigen Sie für die Kommunikation (Steuerungsebene) mit dem Azure Migrate-Dienst weiterhin eine Internetverbindung vom lokalen Standort aus. Es gibt einige zusätzliche URLs, die über ExpressRoute nicht erreichbar sind, auf die die Replikationsappliance bzw. der Hyper-V-Host für die Orchestrierung des Replikationsprozesses Zugriff benötigt. Sie können die auf den Migrationsszenarios [URLs für die öffentliche Cloud](./migrate-appliance.md#public-cloud-urls) und [Replikationsappliance](./migrate-replication-appliance.md) basierenden URL-Anforderungen überprüfen.  
+![Abbildung: Replikation mit Microsoft-Peering.](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
 
-Wenn Sie an Ihrem lokalen Standort einen Proxyserver nutzen und ExpressRoute für den Replikationsdatenverkehr verwenden möchten, müssen Sie eine Proxyumgehung für relevante URLs auf der lokalen Appliance konfigurieren. 
+Auch wenn Replikationsdaten über die Microsoft-Peeringverbindung weitergeleitet werden, benötigen Sie für die Kommunikation (Steuerungsebene) mit Azure Migrate weiterhin eine Internetverbindung vom lokalen Standort aus. Einige andere URLs sind über ExpressRoute nicht erreichbar. Die Replikationsappliance oder der Hyper-V-Host benötigt Zugriff auf die URLs, um den Replikationsprozess zu orchestrieren. Überprüfen Sie die auf den Migrationsszenarien [VMware-Migrationen ohne Agent](./migrate-appliance.md#public-cloud-urls) und [Agent-basierte Replikation](./migrate-replication-appliance.md) basierenden URL-Anforderungen.
+
+Wenn Sie an Ihrem lokalen Standort einen Proxyserver nutzen und ExpressRoute für den Replikationsdatenverkehr verwenden möchten, konfigurieren Sie eine Proxyumgehung für relevante URLs auf der lokalen Appliance.
 
 ### <a name="configure-proxy-bypass-rules-on-the-azure-migrate-appliance-for-vmware-agentless-migrations"></a>Konfigurieren von Proxyumgehungsregeln auf der Azure Migrate-Appliance (für VMware-Migrationen ohne Agent)
 
-1. Melden Sie sich bei der Azure Migrate-Appliance an (Remotedesktopverbindung).   
-2. Öffnen Sie mithilfe von Editor die Datei „C:/ProgramData/MicrosoftAzure/Config/appliance.json“.
-3. Ändern Sie in der Datei die Zeile "EnableProxyBypassList": "false" in "EnableProxyBypassList": "true" Speichern Sie die Änderungen, und starten Sie die Appliance neu.
-4. Wenn Sie nach dem Neustart den Konfigurations-Manager der Appliance öffnen, werden auf der Benutzeroberfläche der Web-App die Proxyumgehungsoptionen angezeigt. Fügen Sie der Proxyumgehungsliste die folgenden URLs hinzu.   
+1. Melden Sie sich über Remotedesktop bei der Azure Migrate-Appliance an.
+1. Öffnen Sie mithilfe von Editor die Datei *C:/ProgramData/MicrosoftAzure/Config/appliance.json*.
+1. Ändern Sie in der Datei die Zeile `"EnableProxyBypassList": "false"` in `"EnableProxyBypassList": "true"`. Speichern Sie die Änderungen, und starten Sie die Appliance neu.
+1. Wenn Sie nach dem Neustart den Konfigurations-Manager der Appliance öffnen, werden in der Benutzeroberfläche der Web-App die Proxyumgehungsoptionen angezeigt. Fügen Sie der Proxyumgehungsliste die folgenden URLs hinzu:
+
     - .*.vault.azure.net
     - .*.servicebus.windows.net
     - .*.discoverysrv.windowsazure.com
@@ -172,23 +178,25 @@ Wenn Sie an Ihrem lokalen Standort einen Proxyserver nutzen und ExpressRoute fü
 
 Führen Sie die folgenden Schritte aus, um die Proxyumgehungsliste auf dem Konfigurationsserver und den Prozessservern zu konfigurieren:
 
-1. [Laden Sie das PsExec-Tool herunter](/sysinternals/downloads/psexec), um auf Systembenutzerkontext zuzugreifen.
-2. Öffnen Sie Internet Explorer im Systembenutzerkontext, indem Sie die folgende Befehlszeile ausführen: psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe".
-3. Fügen Sie in Internet Explorer Proxyeinstellungen hinzu.
-4. Fügen Sie in der Umgehungsliste die Azure-Speicher-URL „.*.blob.core.windows.net“ hinzu.  
+1. Laden Sie das [PsExec-Tool](/sysinternals/downloads/psexec) herunter, um auf Systembenutzerkontext zuzugreifen.
+1. Öffnen Sie Internet Explorer im Systembenutzerkontext, indem Sie den folgenden Befehl in einer Eingabeaufforderung ausführen: `psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"`.
+1. Fügen Sie Proxyeinstellungen in Internet Explorer hinzu.
+1. Fügen Sie in der Umgehungsliste die Azure Storage-URL „*.blob.core.windows.net“ hinzu.
 
-Mit den oben genannten Umgehungsregeln wird sichergestellt, dass der Replikationsdatenverkehr über ExpressRoute weitergeleitet werden kann, während die Verwaltungskommunikation über den Proxyserver für das Internet erfolgt.  
+Mit den oben genannten Umgehungsregeln wird sichergestellt, dass der Replikationsdatenverkehr über ExpressRoute weitergeleitet werden kann, während die Verwaltungskommunikation über den Proxyserver für das Internet erfolgt.
 
-Außerdem müssen Sie Routen im Routenfilter für die folgenden BGP-Communitys ankündigen, damit der Azure Migrate-Replikationsdatenverkehr eine ExpressRoute-Verbindung und nicht das Internet durchläuft.  
+Außerdem müssen Sie Routen im Routenfilter für die folgenden BGP-Communitys ankündigen, damit der Azure Migrate-Replikationsdatenverkehr eine ExpressRoute-Verbindung und nicht das Internet durchläuft:
 
 - Regionale BGP-Community für die Azure-Quellregion (Azure Migrate-Projektbereich)
 - Regionale BGP-Community für die Azure-Zielregion (Region für die Migration)
 - BGP-Community für Azure Active Directory (12076:5060)
 
-Informieren Sie sich weiter über [Routenfilter](../expressroute/how-to-routefilter-portal.md), und sehen Sie sich die Liste der [BGP-Communitys für ExpressRoute](../expressroute/expressroute-routing.md#bgp) an. 
+Informieren Sie sich weiter über [Routenfilter](../expressroute/how-to-routefilter-portal.md), und sehen Sie sich die Liste der [BGP-Communitys für ExpressRoute](../expressroute/expressroute-routing.md#bgp) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [ExpressRoute-Verbindungen](../expressroute/expressroute-circuit-peerings.md)
-- Weitere Informationen zu [ExpressRoute-Routingdomänen](../expressroute/expressroute-circuit-peerings.md#peeringcompare)
-- Weitere Informationen zu [privaten Endpunkten](../private-link/private-endpoint-overview.md)
+Weitere Informationen finden Sie in den folgenden Artikeln:
+
+- [ExpressRoute-Verbindungen](../expressroute/expressroute-circuit-peerings.md)
+- [ExpressRoute-Routingdomänen](../expressroute/expressroute-circuit-peerings.md#peeringcompare)
+- [Private Endpunkte](../private-link/private-endpoint-overview.md)

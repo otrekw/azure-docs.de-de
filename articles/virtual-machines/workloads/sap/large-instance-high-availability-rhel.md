@@ -3,18 +3,20 @@ title: Hohe Verfügbarkeit von Azure (große Instanzen) für SAP auf RHEL
 description: Erfahren Sie, wie Sie ein SAP HANA-Datenbankfailover mit einem Pacemaker-Cluster in Red Hat Enterprise Linux automatisieren.
 author: jaawasth
 ms.author: jaawasth
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: 99e9994d01e4579bf6ef2e369e0fe85c48af52ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/19/2021
+ms.openlocfilehash: f7b6e6efbbd17655b4f68d79ac26ee34ae754a3b
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182433"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728444"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Hohe Verfügbarkeit von Azure (große Instanzen) für SAP auf RHEL
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald dieser Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 In diesem Artikel erfahren Sie, wie Sie den Pacemaker-Cluster in RHEL 7.6 konfigurieren, um ein SAP HANA-Datenbankfailover zu automatisieren. Sie müssen mit Linux, SAP HANA und Pacemaker vertraut sein, um die Schritte in dieser Anleitung ausführen zu können.
 
@@ -35,33 +37,23 @@ Bevor Sie mit der Konfiguration des Clusters beginnen können, richten Sie den S
     ```
     root@sollabdsm35 ~]# cat /etc/hosts
     27.0.0.1 localhost localhost.azlinux.com
-    0.60.0.35 sollabdsm35.azlinux.com sollabdsm35 node1
-    0.60.0.36 sollabdsm36.azlinux.com sollabdsm36 node2
-    0.20.251.150 sollabdsm36-st
-
+    10.60.0.35 sollabdsm35.azlinux.com sollabdsm35 node1
+    10.60.0.36 sollabdsm36.azlinux.com sollabdsm36 node2
+    10.20.251.150 sollabdsm36-st
     10.20.251.151 sollabdsm35-st
-
-    
-
     10.20.252.151 sollabdsm36-back
-
     10.20.252.150 sollabdsm35-back
-
-    
-
     10.20.253.151 sollabdsm36-node
-
     10.20.253.150 sollabdsm35-node
-
     ```
 
 2.  Erstellen Sie die SSH-Schlüssel, und tauschen Sie sie aus.
     1. Generieren Sie SSH-Schlüssel.
 
-       ```
+    ```
        [root@sollabdsm35 ~]# ssh-keygen -t rsa -b 1024
        [root@sollabdsm36 ~]# ssh-keygen -t rsa -b 1024
-       ```
+    ```
     2. Kopieren Sie die Schlüssel für kennwortloses SSH auf die anderen Hosts.
     
        ```
@@ -79,8 +71,6 @@ Bevor Sie mit der Konfiguration des Clusters beginnen können, richten Sie den S
 
     SELINUX=disabled
 
-    
-
     [root@sollabdsm36 ~]# vi /etc/selinux/config
 
     ...
@@ -94,8 +84,6 @@ Bevor Sie mit der Konfiguration des Clusters beginnen können, richten Sie den S
     [root@sollabdsm35 ~]# sestatus
 
     SELinux status: disabled
-
-    
 
     [root@sollabdsm36 ~]# sestatus
 
@@ -131,8 +119,6 @@ Bevor Sie mit der Konfiguration des Clusters beginnen können, richten Sie den S
     
         Ref time (UTC) : Thu Jan 28 18:46:10 2021
     
-        
-    
         chronyc sources
     
         210 Number of sources = 8
@@ -159,7 +145,6 @@ Bevor Sie mit der Konfiguration des Clusters beginnen können, richten Sie den S
         ```
         node1:~ # yum update
         ```
- 
 
 7. Installieren Sie die SAP HANA- und RHEL-HA-Repositorys.
 
@@ -173,11 +158,11 @@ Bevor Sie mit der Konfiguration des Clusters beginnen können, richten Sie den S
     ```
       
 
-8. Installieren Sie die Tools Pacemaker, SBD, OpenIPMI, ipmitools und fencing_sbd auf allen Knoten.
+8. Installieren Sie die Tools Pacemaker, SBD, OpenIPMI, ipmitool und fencing_sbd auf allen Knoten.
 
     ``` 
     yum install pcs sbd fence-agent-sbd.x86_64 OpenIPMI
-    ipmitools
+    ipmitool
     ```
 
   ## <a name="configure-watchdog"></a>Konfigurieren von Watchdog
@@ -199,8 +184,6 @@ In diesem Abschnitt lernen Sie, Watchdog zu konfigurieren. In diesem Abschnitt w
 
     Active: inactive (dead)
 
-    
-
     Nov 28 23:02:40 sollabdsm35 systemd[1]: Collecting watchdog.service
 
     ```
@@ -208,7 +191,6 @@ In diesem Abschnitt lernen Sie, Watchdog zu konfigurieren. In diesem Abschnitt w
 2. Der Standard-Linux-Watchdog, der während der Installation installiert wird, ist der itco-Watchdog, der von UCS- und HPE SDFlex-Systemen nicht unterstützt wird. Daher muss dieser Watchdog deaktiviert werden.
     1. Der falsche Watchdog ist auf dem System installiert und geladen:
        ```
-   
        sollabdsm35:~ # lsmod |grep iTCO
    
        iTCO_wdt 13480 0
@@ -225,7 +207,6 @@ In diesem Abschnitt lernen Sie, Watchdog zu konfigurieren. In diesem Abschnitt w
         
     3. Um sicherzustellen, dass der Treiber beim nächsten Systemstart nicht geladen wird, muss er auf die Sperrliste gesetzt werden. Um die iTCO-Module auf die Sperrliste zu setzen, fügen Sie am Ende der `50-blacklist.conf`-Datei Folgendes hinzu:
        ```
-   
        sollabdsm35:~ # vi /etc/modprobe.d/50-blacklist.conf
    
         unload the iTCO watchdog modules
@@ -263,8 +244,6 @@ In diesem Abschnitt lernen Sie, Watchdog zu konfigurieren. In diesem Abschnitt w
 3. Standardmäßig wird das erforderliche Gerät „/dev/watchdog“ nicht erstellt.
 
     ```
-    No watchdog device was created
-
     sollabdsm35:~ # ls -l /dev/watchdog
 
     ls: cannot access /dev/watchdog: No such file or directory
@@ -329,7 +308,7 @@ In diesem Abschnitt lernen Sie, Watchdog zu konfigurieren. In diesem Abschnitt w
 ## <a name="sbd-configuration"></a>SBD-Konfiguration
 In diesem Abschnitt lernen Sie, SBD zu konfigurieren. In diesem Abschnitt werden die gleichen beiden Hosts `sollabdsm35` und `sollabdsm36` verwendet, auf die am Anfang dieses Artikels verwiesen wird.
 
-1.  Stellen Sie sicher, dass der iSCSI- oder FC-Datenträger auf beiden Knoten sichtbar ist. In diesem Beispiel wird ein FC-basiertes SBD-Gerät verwendet. Weitere Informationen zur SBD-Umgrenzung finden Sie in der [Referenzdokumentation](http://www.linux-ha.org/wiki/SBD_Fencing).
+1.  Stellen Sie sicher, dass der iSCSI- oder FC-Datenträger auf beiden Knoten sichtbar ist. In diesem Beispiel wird ein FC-basiertes SBD-Gerät verwendet. Weitere Informationen zum SBD-Fencing finden Sie unter [Entwurfsanleitung für RHEL-Hochverfügbarkeitscluster – SBD-Überlegungen](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Faccess.redhat.com%2Farticles%2F2941601&data=04%7C01%7Cralf.klahr%40microsoft.com%7Cd49d7a3e3871449cdecc08d8c77341f1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637478645171139432%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=c%2BUAC5gmgpFNWZCQFfiqcik8CH%2BmhH2ly5DsOV1%2FE5M%3D&reserved=0).
 2.  Die LUN-ID muss auf allen Knoten identisch sein.
   
 3.  Überprüfen Sie den Multipfadstatus des SBD-Geräts.
@@ -399,18 +378,15 @@ In diesem Abschnitt lernen Sie, SBD zu konfigurieren. In diesem Abschnitt werden
 7.  Fügen Sie das SBD-Gerät der SBD-Konfigurationsdatei hinzu.
 
     ```
-    \# SBD_DEVICE specifies the devices to use for exchanging sbd messages
-
-    \# and to monitor. If specifying more than one path, use ";" as
-
-    \# separator.
-
-    \#
+    # SBD_DEVICE specifies the devices to use for exchanging sbd messages
+    # and to monitor. If specifying more than one path, use ";" as
+    # separator.
+    #
 
     SBD_DEVICE="/dev/mapper/3600a098038304179392b4d6c6e2f4b62"
-    \## Type: yesno
+    ## Type: yesno
      Default: yes
-     \# Whether to enable the pacemaker integration.
+     # Whether to enable the pacemaker integration.
     SBD_PACEMAKER=yes
     ```
 
@@ -440,22 +416,16 @@ In diesem Abschnitt initialisieren Sie den Cluster. In diesem Abschnitt werden d
     ```
     systemctl start pcsd
     ```
-  
-  
 
 5.  Führen Sie die Clusterauthentifizierung nur über node1 aus.
 
     ```
     pcs cluster auth sollabdsm35 sollabdsm36
 
-
-
         Username: hacluster
 
             Password:
-
             sollabdsm35.localdomain: Authorized
-
             sollabdsm36.localdomain: Authorized
 
      ``` 
@@ -506,20 +476,16 @@ In diesem Abschnitt initialisieren Sie den Cluster. In diesem Abschnitt werden d
 
 8. Wenn ein Knoten dem Cluster nicht beitritt, überprüfen Sie, ob die Firewall noch ausgeführt wird.
 
-  
-
 9. Erstellen und Aktivieren des SBD-Geräts
     ```
     pcs stonith create SBD fence_sbd devices=/dev/mapper/3600a098038303f4c467446447a
     ```
   
-
 10. Stoppen Sie den Cluster, und starten Sie die Clusterdienste (auf allen Knoten) neu.
 
     ```
     pcs cluster stop --all
     ```
-
 
 11. Starten Sie die Clusterdienste (auf allen Knoten) neu.
 
@@ -628,7 +594,7 @@ In diesem Abschnitt initialisieren Sie den Cluster. In diesem Abschnitt werden d
 
     Present Countdown: 19 sec
 
-    [root@sollabdsm351 ~] lsof /dev/watchdog
+    [root@sollabdsm35 ~] lsof /dev/watchdog
 
     COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME
 
@@ -667,6 +633,7 @@ In diesem Abschnitt initialisieren Sie den Cluster. In diesem Abschnitt werden d
 19. Für den Rest des SAP HANA-Clusterings können Sie STONITH deaktivieren, indem Sie Folgendes festlegen:
 
    * pcs property set `stonith-enabled=false`
+   * Manchmal ist es einfacher, STONITH während des Setups des Clusters deaktiviert zu lassen, da Sie auf diese Weise unerwartete Neustarts des Systems vermeiden.
    * Dieser Parameter muss für den produktiven Gebrauch auf TRUE festgelegt werden. Wenn dieser Parameter nicht auf TRUE festgelegt ist, wird der Cluster nicht unterstützt.
    * pcs property set `stonith-enabled=true`
 
@@ -690,7 +657,7 @@ Es gibt zwei Optionen für die Integration von HANA. Die erste Option ist eine k
    
        * su - hr2adm
    
-       * hdbsql -u system -p SAPhana10 -i 00 "select value from
+       * hdbsql -u system -p $YourPass -i 00 "select value from
        "SYS"."M_INIFILE_CONTENTS" where key='log_mode'"
    
        
@@ -701,7 +668,7 @@ Es gibt zwei Optionen für die Integration von HANA. Die erste Option ist eine k
        ```
     2. Die SAP HANA-Systemreplikation funktioniert erst, nachdem die erste Sicherung durchgeführt wurde. Der folgende Befehl erstellt eine anfängliche Sicherung im Verzeichnis `/tmp/`. Wählen Sie ein geeignetes Sicherungsdateisystem für die Datenbank aus. 
        ```
-       * hdbsql -i 00 -u system -p SAPhana10 "BACKUP DATA USING FILE
+       * hdbsql -i 00 -u system -p $YourPass "BACKUP DATA USING FILE
        ('/tmp/backup')"
    
    
@@ -718,18 +685,14 @@ Es gibt zwei Optionen für die Integration von HANA. Die erste Option ist eine k
    
        -rw-r----- 1 hr2adm sapsys 1996496896 Oct 26 23:31 backup_databackup_3_1
    
-       ```
-    
+       ```  
 
     3. Sichern Sie alle Datenbankcontainer dieser Datenbank.
-       ```
+       ``` 
+       * hdbsql -i 00 -u system -p $YourPass -d SYSTEMDB "BACKUP DATA USING
+       FILE ('/tmp/sydb')"     
    
-       * hdbsql -i 00 -u system -p SAPhana10 -d SYSTEMDB "BACKUP DATA USING
-       FILE ('/tmp/sydb')"
-   
-       
-   
-       * hdbsql -i 00 -u system -p SAPhana10 -d SYSTEMDB "BACKUP DATA FOR HR2
+       * hdbsql -i 00 -u system -p $YourPass -d SYSTEMDB "BACKUP DATA FOR HR2
        USING FILE ('/tmp/rh2')"
    
        ```
@@ -956,7 +919,7 @@ Es gibt zwei Optionen für die Integration von HANA. Die erste Option ist eine k
 
 #### <a name="log-replication-mode-description"></a>Beschreibung des Protokollreplikationsmodus
 
-Weitere Informationen zum Protokollreplikationsmodus finden Sie in der [offiziellen SAP-Dokumentation](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/c039a1a5b8824ecfa754b55e0caffc01.html).
+Weitere Informationen zum Protokollreplikationsmodus finden Sie in der [offiziellen SAP-Dokumentation](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/627bd11e86c84ec2b9fcdf585d24011c.html).
   
 
 #### <a name="network-setup-for-hana-system-replication"></a>Netzwerkeinrichtung für die HANA-Systemreplikation
@@ -979,7 +942,7 @@ Im folgenden Beispiel wurde der `[system_replication_communication]listeninterfa
 
   
 
-### <a name="source-sap-ag-sap-hana-hrs-networking"></a>SAP AG SAP HANA HRS-Quellnetzwerk
+Weitere Informationen finden Sie unter [Netzwerkkonfiguration für SAP HANA Systemreplikation](https://www.sap.com/documents/2016/06/18079a1c-767c-0010-82c7-eda71af511fa.html).
 
   
 
@@ -1021,9 +984,8 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
     [root@node1 ~]# pcs resource defaults migration-threshold=5000
     ```
 2.  Konfigurieren von corosync.
+    Weitere Informationen finden Sie unter [ Wie konfiguriere ich meinen RHEL 7-Hochverfügbarkeitscluster mit Pacemaker und Corosync](https://access.redhat.com/solutions/1293523).
     ```
-    https://access.redhat.com/solutions/1293523 --> quorum information RHEL7
-
     cat /etc/corosync/corosync.conf
 
     totem {
@@ -1087,71 +1049,60 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
     ```
   
 
-1.  Erstellen einer geklonten SAPHanaTopology-Ressource.
-    ```
-    pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1 interleave=true
-    SAPHanaTopology resource is gathering status and configuration of SAP
-    HANA System Replication on each node. SAPHanaTopology requires
-    following attributes to be configured.
+3.  Erstellen einer geklonten SAPHanaTopology-Ressource.
+    Die SAPHanaTopology-Ressource sammelt den Status und die Konfiguration SAP HANA-Systemreplikation auf jedem Knoten. Für SAPHanaTopology müssen die folgenden Attribute konfiguriert werden.
+       ```
+       pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1    interleave=true
+       ```
 
+    | Attributname | Beschreibung  |
+    |---|---|
+    | SID | SAP-Systembezeichner (SID) der SAP HANA-Installation. Muss für alle Knoten identisch sein. |
+    | InstanceNumber | 2-stelliger SAP-Instanz-Identifier.|
 
-
-        Attribute Name Description
-
-        SID SAP System Identifier (SID) of SAP HANA installation. Must be
-    same for all nodes.
-
-    InstanceNumber 2-digit SAP Instance identifier.
-    pcs resource show SAPHanaTopology_HR2_00-clone
-
-    Clone: SAPHanaTopology_HR2_00-clone
-
+    * Ressourcenstatus
+       ```
+       pcs resource show SAPHanaTopology_HR2_00
+   
+       InstanceNumber 2-digit SAP Instance identifier.
+       pcs resource show SAPHanaTopology_HR2_00-clone
+   
+       Clone: SAPHanaTopology_HR2_00-clone
+   
         Meta Attrs: clone-max=2 clone-node-max=1 interleave=true
-
+   
         Resource: SAPHanaTopology_HR2_00 (class=ocf provider=heartbeat
-    type=SAPHanaTopology)
-
+       type=SAPHanaTopology)
+   
         Attributes: InstanceNumber=00 SID=HR2
-
+   
         Operations: monitor interval=60 timeout=60
-    (SAPHanaTopology_HR2_00-monitor-interval-60)
-
+       (SAPHanaTopology_HR2_00-monitor-interval-60)
+   
         start interval=0s timeout=180
-    (SAPHanaTopology_HR2_00-start-interval-0s)
-
+       (SAPHanaTopology_HR2_00-start-interval-0s)
+   
         stop interval=0s timeout=60 (SAPHanaTopology_HR2_00-stop-interval-0s)
+   
+       ```
 
-    ```
+4.  Erstellen einer primären/sekundären SAPHana-Ressource.
+    * Die SAPHana-Ressource ist für das Starten, Beenden und die neue Verortung der SAP HANA verantwortlich. Diese Ressource muss als primäre/sekundäre Clusterressource ausgeführt werden. Die Ressource besitzt die folgenden Attribute.
 
-3.  Erstellen einer primären/sekundären SAPHana-Ressource.
-
-    ```
-    SAPHana resource is responsible for starting, stopping and relocating the SAP HANA database. This resource must be run as a Primary/    Secondary cluster resource. The resource has the following attributes.
-
-    
-
-    Attribute Name Required? Default value Description
-
-    SID Yes None SAP System Identifier (SID) of SAP HANA installation. Must be same for all nodes.
-
-    InstanceNumber Yes none 2-digit SAP Instance identifier.
-
-    PREFER_SITE_TAKEOVER
-
-    no yes Should cluster prefer to switchover to secondary instance instead of restarting primary locally? ("no": Do prefer restart locally;   "yes": Do prefer takeover to remote site)
-
-    AUTOMATED_REGISTER no false Should the former SAP HANA primary be registered as secondary after takeover and DUPLICATE_PRIMARY_TIMEOUT?     ("false": no, manual intervention will be needed; "true": yes, the former primary will be registered by resource agent as secondary)
-
-    DUPLICATE_PRIMARY_TIMEOUT no 7200 Time difference (in seconds) needed between primary time stamps, if a dual-primary situation occurs. If   the time difference is less than the time gap, then the cluster holds one or both instances in a "WAITING" status. This is to give an   admin a chance to react on a failover. A failed former primary will be registered after the time difference is passed. After this   registration to the new primary all data will be overwritten by the system replication.
-    ```
-  
+| Attributname            | Erforderlich? | Standardwert | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|---------------------------|-----------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SID                       | Ja       | Keine          | SAP-Systembezeichner (SID) der SAP HANA-Installation. Muss für alle Knoten identisch sein.                                                                                                                                                                                                                                                                                                                                                                                       |
+| InstanceNumber            | Ja       | none          | 2-stelliger SAP-Instanz-Identifier.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| PREFER_SITE_TAKEOVER      | nein        | ja           | Sollte der Cluster den Wechsel zur sekundären Instanz vorziehen, anstatt die primäre Instanz lokal neu zu starten? („nein“: Lokales Neustarten bevorzugen; „Ja“: Übernahme vor Remotestandort bevorzugen)                                                                                                                                                                                                                                                                                            |
+|                           |           |               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| AUTOMATED_REGISTER        | nein        | FALSE         | Soll die erste SAP HANA nach der Übernahme als sekundär registriert werden und DUPLICATE_PRIMARY_TIMEOUT? („false“: Nein, ein manueller Eingriff ist erforderlich. „true“: Ja, das frühere primäre Replikat wird vom Ressourcen-Agent als sekundär registriert).                                                                                                                                                                                                                        |
+| DUPLICATE_PRIMARY_TIMEOUT | nein        | 7200          | Zeitunterschied (in Sekunden) zwischen primären Zeitstempeln, wenn eine duale primäre Situation auftritt. Wenn der Zeitunterschied kleiner als die Zeitlücke ist, enthält der Cluster eine oder beide Instanzen mit dem Status „WARTEN“. Dies soll einem Administrator die Möglichkeit geben, auf ein Failover zu reagieren. Ein fehlerhaftes früheres primäres Replikat wird registriert, nachdem der Zeitunterschied überschritten wurde. Nach dieser Registrierung beim neuen primären Replikat werden alle Daten von der Systemreplikation überschrieben. |
 
 5.  Erstellen der HANA-Ressource.
     ```
     pcs resource create SAPHana_HR2_00 SAPHana SID=HR2 InstanceNumber=00 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200   AUTOMATED_REGISTER=true primary notify=true clone-max=2 clone-node-max=1 interleave=true
 
     pcs resource show SAPHana_HR2_00-primary
-
 
 
     Primary: SAPHana_HR2_00-primary
@@ -1249,10 +1200,8 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
     ```
 
 6.  Erstellen einer virtuelle IP-Adressressource.
-
+    Der Cluster enthält die virtuelle IP-Adresse, um die primäre Instanz von SAP HANA zu erreichen. Im Folgenden finden Sie einen Beispielbefehl zum Erstellen einer IPaddr2-Ressource mit DER IP-Adresse 10.7.0.84/24.
     ```
-    Cluster will contain Virtual IP address in order to reach the Primary instance of SAP HANA. Below is example command to create IPaddr2  resource with IP 10.7.0.84/24
-
     pcs resource create vip_HR2_00 IPaddr2 ip="10.7.0.84"
     pcs resource show vip_HR2_00
 
@@ -1269,13 +1218,11 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
     ```
 
 7.  Erstellen von Einschränkungen.
-
-    ```
-    For correct operation we need to ensure that SAPHanaTopology resources are started before starting the SAPHana resources and also that  the virtual IP address is present on the node where the Primary resource of SAPHana is running. To achieve this, the following 2    constraints need to be created.
-
-    pcs constraint order SAPHanaTopology_HR2_00-clone then SAPHana_HR2_00-primary symmetrical=false
-    pcs constraint colocation add vip_HR2_00 with primary SAPHana_HR2_00-primary 2000
-    ```
+    * Für den richtigen Betrieb müssen wir sicherstellen, dass SAPHanaTopology-Ressourcen gestartet werden, bevor die SAPHana-Ressourcen gestartet werden, und dass die virtuelle IP-Adresse auf dem Knoten vorhanden ist, auf dem die primäre Ressource von SAPHana ausgeführt wird. Um dies zu erreichen, müssen die folgenden 2 Einschränkungen erstellt werden.
+       ```
+       pcs constraint order SAPHanaTopology_HR2_00-clone then SAPHana_HR2_00-primary symmetrical=false
+       pcs constraint colocation add vip_HR2_00 with primary SAPHana_HR2_00-primary 2000
+       ```
 
 ###  <a name="testing-the-manual-move-of-saphana-resource-to-another-node"></a>Testen des manuellen Verschiebens der SAPHana-Ressource auf einen anderen Knoten
 
@@ -1322,7 +1269,7 @@ Node Attributes:
   * Tiefer gestufter Host:
 
     ```
-    hdbsql -i 00 -u system -p SAPhana10 -n 10.7.0.82
+    hdbsql -i 00 -u system -p $YourPass -n 10.7.0.82
 
     result:
 
@@ -1333,7 +1280,7 @@ Node Attributes:
   * Höher gestufter Host:
 
     ```
-    hdbsql -i 00 -u system -p SAPhana10 -n 10.7.0.84
+    hdbsql -i 00 -u system -p $YourPass -n 10.7.0.84
     
     Welcome to the SAP HANA Database interactive terminal.
     
@@ -1357,20 +1304,17 @@ Node Attributes:
 Mit der Option `AUTOMATED_REGISTER=false` ist es nicht möglich, hin und her zu wechseln.
 
 Wenn diese Option auf FALSE festgelegt ist, müssen Sie den Knoten erneut registrieren:
-
-  
 ```
 hdbnsutil -sr_register --remoteHost=node2 --remoteInstance=00 --replicationMode=syncmem --name=DC1
 ```
-  
 
 Nun fungiert node2, der der primäre Host war, als sekundärer Host.
 
 Legen Sie diese Option auf TRUE fest, um die Registrierung des tiefer gestuften Hosts zu automatisieren.
-
   
 ```
 pcs resource update SAPHana_HR2_00-primary AUTOMATED_REGISTER=true
-
 pcs cluster node clear node1
 ```
+
+Ob Sie die automatische Registrierung bevorzugen, hängt vom Kundenszenario ab. Das automatische erneute Registrieren des Knotens nach einer Übernahme ist für das Betriebsteam einfacher. Sie können den Knoten jedoch manuell registrieren, um zunächst zusätzliche Tests auszuführen, um sicherzustellen, dass alles wie erwartet funktioniert.

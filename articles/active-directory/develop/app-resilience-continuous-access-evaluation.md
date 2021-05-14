@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: f6ce792b3db0100d7356884bbc6ee2696580df10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b00cca584958f3e7d741a2a4f9e6669ff0d241e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652057"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904314"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>Verwenden von APIs mit aktivierter fortlaufender Zugriffsevaluierung in Ihren Anwendungen
 
-Die [fortlaufende Zugriffsevaluierung](../conditional-access/concept-continuous-access-evaluation.md) (Continuous Access Evaluation, CAE) ist ein neuer Branchenstandard, der es ermöglicht, Zugriffstoken basierend auf [kritischen Ereignissen](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation) und [Richtlinienauswertung](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview) zu widerrufen, anstatt sich auf den Tokenablauf basierend auf der Lebensdauer zu verlassen. Dies kann bei einigen Ressourcen-APIs die Lebensdauer eines Tokens um bis zu 28 Stunden verlängern, weil Risiken und Richtlinien in Echtzeit ausgewertet werden. Diese langlebigen Token werden von der Microsoft Authentication Library (MSAL) proaktiv aktualisiert, wodurch die Resilienz Ihrer Anwendungen steigt.
+Die [fortlaufende Zugriffsevaluierung](../conditional-access/concept-continuous-access-evaluation.md) (Continuous Access Evaluation, CAE) ist ein Azure AD-Feature, mit dem Zugriffstoken basierend auf [kritischen Ereignissen](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation) und [Richtlinienauswertungen](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview) widerrufen werden können, statt sich auf den Tokenablauf basierend auf der Lebensdauer zu verlassen. Dies kann bei einigen Ressourcen-APIs die Lebensdauer eines Tokens um bis zu 28 Stunden verlängern, weil Risiken und Richtlinien in Echtzeit ausgewertet werden. Diese langlebigen Token werden von der Microsoft Authentication Library (MSAL) proaktiv aktualisiert, wodurch die Resilienz Ihrer Anwendungen steigt.
 
 In diesem Artikel erfahren Sie, wie Sie APIs mit aktivierter fortlaufender Zugriffsevaluierung in Ihren Anwendungen verwenden.
 

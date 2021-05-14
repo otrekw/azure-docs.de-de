@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 04/27/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a0a942daae6b106bce928f8214e92c0c6294203d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7b62265d75aa7c7c09f1f6e55632dcbe98efc411
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555717"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128929"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Erzwingen einer sicheren Übertragung für sichere Verbindungen
 
@@ -38,14 +38,14 @@ Sie können die Einstellung **Sichere Übertragung erforderlich** beim Erstellen
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>Vorschreiben einer sicheren Übertragung für ein neues Speicherkonto
 
 1. Öffnen Sie den Bereich **Speicherkonto erstellen** im Azure-Portal.
-1. Wählen Sie unter **Sichere Übertragung erforderlich** die Option **Aktiviert** aus.
+1. Aktivieren Sie auf der Seite **Erweitert** das Kontrollkästchen **Sichere Übertragung aktivieren**.
 
    ![Blatt „Speicherkonto erstellen“](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
 ### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Vorschreiben einer sicheren Übertragung für ein vorhandenes Speicherkonto
 
 1. Wählen Sie ein vorhandenes Speicherkonto im Azure-Portal aus.
-1. Wählen Sie im Menübereich des Speicherkontos unter **EINSTELLUNGEN** die Option **Konfiguration** aus.
+1. Wählen Sie im Menübereich des Speicherkontos unter **Einstellungen** die Option **Konfiguration** aus.
 1. Wählen Sie unter **Sichere Übertragung erforderlich** die Option **Aktiviert** aus.
 
    ![Menübereich „Speicherkonto“](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)

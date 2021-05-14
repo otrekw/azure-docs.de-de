@@ -8,7 +8,7 @@
   expanded: true
   items:
     - name: Erkunden eines Beispielszenarios
-      href: quickstart-adt-explorer.md
+      href: quickstart-azure-digital-twins-explorer.md
 - name: Tutorials
   items:
     - name: Codieren einer Client-App
@@ -41,8 +41,16 @@
       href: concepts-query-language.md
     - name: Abfrageeinheiten
       href: concepts-query-units.md
+    - name: Entwicklerschnittstellen
+      items:
+        - name: APIs und SDKs
+          href: concepts-apis-sdks.md
+        - name: CLI-Befehlssatz
+          href: concepts-cli.md
     - name: Integration in andere Dienste
       href: concepts-integration.md
+    - name: Ereignisbenachrichtigungen
+      href: concepts-event-notifications.md
     - name: Ereignisrouten
       href: concepts-route-events.md
     - name: Sicherheit für Azure Digital Twins-Lösungen
@@ -53,8 +61,6 @@
   items:
     - name: Bereitstellen
       items:
-        - name: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle
-          href: how-to-use-cli.md
         - name: Einrichten einer Instanz und der Authentifizierung
           items:
             - name: Portal-Version
@@ -91,18 +97,12 @@
           href: how-to-manage-twin.md
         - name: Verwalten des Zwillingsgraphen mit Beziehungen
           href: how-to-manage-graph.md
-        - name: Interpretieren von Ereignisdaten
-          href: how-to-interpret-event-data.md
         - name: Einrichten einer Azure-Funktion zum Verarbeiten von Daten
           href: how-to-create-azure-function.md
         - name: Abfragen des Zwillingsgraphen
           href: how-to-query-graph.md
     - name: Entwickeln von Client-Apps
       items:
-        - name: Verwenden der APIs und SDKs
-          href: how-to-use-apis-sdks.md
-        - name: Erstellen von SDKs mit benutzerdefinierter Sprache mithilfe von AutoRest
-          href: how-to-create-custom-sdks.md
         - name: Senden von Anforderungen mit Postman
           href: how-to-use-postman.md
         - name: Integrieren mit Azure SignalR Service
@@ -149,6 +149,10 @@
           items:
             - name: 403 (Unzulässig)
               href: troubleshoot-error-403.md
+            - name: 404 Unterdomäne nicht gefunden
+              href: troubleshoot-error-404.md
+            - name: Authentifizierung per Azure Digital Twins-Explorer
+              href: troubleshoot-error-azure-digital-twins-explorer-authentication.md
 - name: Verweis
   items:
     - name: REST-API-Referenz
@@ -172,9 +176,25 @@
             - name: Python SDK
               href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core
     - name: 'Digital Twins: CLI'
-      href: /cli/azure/ext/azure-iot/dt
+      href: /cli/azure/dt
     - name: DTDL v2-Spezifikation
       href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+    - name: Referenz zur Abfragesprache
+      items:
+        - name: Klauseln
+          items:
+            - name: SELECT
+              href: reference-query-clause-select.md
+            - name: FROM
+              href: reference-query-clause-from.md
+            - name: JOIN
+              href: reference-query-clause-join.md
+            - name: WHERE
+              href: reference-query-clause-where.md
+        - name: Functions
+          href: reference-query-functions.md
+        - name: Operatoren
+          href: reference-query-operators.md
 - name: Ressourcen
   items:
     - name: Grenzwerte des Digital Twins-Diensts

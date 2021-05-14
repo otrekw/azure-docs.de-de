@@ -3,17 +3,18 @@ title: Beheben von Problemen bei der Umleitung zur App Service-URL
 titleSuffix: Azure Application Gateway
 description: Dieser Artikel enthält Informationen dazu, wie sich das Umleitungsproblem beheben lässt, wenn Azure Application Gateway mit Azure App Service verwendet wird.
 services: application-gateway
-author: abshamsft
+author: jaesoni
 ms.service: application-gateway
 ms.topic: troubleshooting
-ms.date: 11/14/2019
-ms.author: absha
-ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/15/2021
+ms.author: jaysoni
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d2291bc88a90a703239764a2d5fda9b2889a7af7
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182885"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319663"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Behandeln von App Service-Problemen in Application Gateway
 
@@ -80,37 +81,35 @@ Beachten Sie im vorherigen Beispiel, dass der Antwortheader über den Statuscode
 
 ## <a name="solution-rewrite-the-location-header"></a>Lösung: Erneutes Generieren des Adressheaders
 
-Legen Sie den Hostnamen im Adressheader auf den Domänennamen des Anwendungsgateways fest. Erstellen Sie hierzu eine [Regel zum erneuten Generieren](./rewrite-http-headers.md) mit einer Bedingung, die prüft, ob der Adressheader in der Antwort „azurewebsites.net“ enthält. Außerdem muss eine Aktion zum erneuten Generieren des Adressheaders durchgeführt werden, damit der Hostname des Anwendungsgateways vorhanden ist. Weitere Informationen finden Sie in der Anleitung unter [Ändern einer Umleitungs-URL](./rewrite-http-headers.md#modify-a-redirection-url).
+Legen Sie den Hostnamen im Adressheader auf den Domänennamen des Anwendungsgateways fest. Erstellen Sie hierzu eine [Regel zum erneuten Generieren](./rewrite-http-headers-url.md) mit einer Bedingung, die prüft, ob der Adressheader in der Antwort „azurewebsites.net“ enthält. Außerdem muss eine Aktion zum erneuten Generieren des Adressheaders durchgeführt werden, damit der Hostname des Anwendungsgateways vorhanden ist. Weitere Informationen finden Sie in der Anleitung unter [Ändern einer Umleitungs-URL](./rewrite-http-headers-url.md#modify-a-redirection-url).
 
 > [!NOTE]
-> Die Unterstützung für das erneute Generieren von HTTP-Headern ist nur für die [Standard_v2- und WAF_v2-SKU](./application-gateway-autoscaling-zone-redundant.md) von Application Gateway verfügbar. Bei Verwendung der v1-SKU empfehlen wir Ihnen die [Migration von v1 zu v2](./migrate-v1-v2.md). Es ist ratsam, das erneute Generieren und andere [erweiterte Funktionen](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) zu nutzen, die für die v2-SKU verfügbar sind.
+> Die Unterstützung für das erneute Generieren von HTTP-Headern ist nur für die [Standard_v2- und WAF_v2-SKU](./application-gateway-autoscaling-zone-redundant.md) von Application Gateway verfügbar. Es wird empfohlen, für das erneute Schreiben von Headern und andere [erweiterte Funktionen](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku), die mit der v2-SKU verfügbar sind, zu v2 zu [migrieren](./migrate-v1-v2.md).
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternativlösung: Verwenden Sie einen benutzerdefinierten Domänennamen
 
-Bei Verwendung der v1-SKU können Sie den Adressheader nicht erneut generieren. Diese Funktion ist nur für die v2-SKU verfügbar. Übergeben Sie zum Beheben des Umleitungsproblems den gleichen Hostnamen, der vom Anwendungsgateway empfangen wird, auch an den App-Dienst, anstatt eine Außerkraftsetzung des Hosts durchzuführen.
+Die App Service-Custom Domain von App Service ist eine weitere Lösung, um den Datenverkehr immer an Application Gateway Domänennamen (in unserem Beispiel `www.contoso.com`) umzuleiten. Diese Konfiguration dient auch als Lösung für das ARR Affinitycookie-Problem. Standardmäßig ist die ARRAffinity-Cookiedomäne auf den App Service-Standardhostnamen (example.azurewebsites.net) anstatt auf den Domänennamen des Application Gateway festgelegt. Daher lehnt der Browser in solchen Fällen das Cookie aufgrund des Unterschieds in den Domänennamen der Anforderung und des Cookies ab.
 
-Der App-Dienst führt die Umleitung (falls zutreffend) dann nicht mit dem eigenen Header, sondern mit dem ursprünglichen Hostheader durch, der auf das Anwendungsgateway verweist.
+Sie können die angegebenen Methoden sowohl für die Probleme mit Redirection als auch ARRAffinity-Cookiedomänenkonflikten befolgen. Für diese Methode benötigen Sie Zugriff auf die DNS-Zone Ihrer benutzerdefinierten Domäne.
 
-Sie müssen über eine benutzerdefinierte Domäne verfügen und diesen Prozess verwenden:
+**Schritt 1**: Legen Sie eine Custom Domain in App Service fest und überprüfen Sie den Domänenbesitz, indem Sie die [DNS-Einträge CNAME & TXT](../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) hinzufügen.
+Die Datensätze würden in etwa wie die folgenden aussehen
+-  `www.contoso.com` IN CNAME `contoso.azurewebsite.net`
+-  `asuid.www.contoso.com` IN TXT „`<verification id string>`“
 
-- Tragen Sie die Domäne in die Liste mit den benutzerdefinierten Domänen des App-Diensts ein. Sie benötigen in Ihrer benutzerdefinierten Domäne einen CNAME-Eintrag, der auf den FQDN des App-Diensts verweist. Weitere Informationen finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](../app-service/app-service-web-tutorial-custom-domain.md).
 
-    ![Liste mit benutzerdefinierten Domänen für App-Dienst](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
+**Schritt 2**: Der CNAME-Eintrag im vorherigen Schritt wurde nur für die Domänenüberprüfung benötigt. Letztendlich benötigen wir den Datenverkehr, der über die Application Gateway läuft. Sie können daher den CNAME von `www.contoso.com` jetzt ändern, um auf Application Gateway FQDN zu verweisen. Navigieren Sie zum Festlegen eines FQDN für Ihre Application Gateway zu ihrer öffentlichen IP-Adressressource, und weisen Sie ihr eine „DNS-Namensbezeichnung“ zu. Der aktualisierte CNAME-Eintrag sollte nun wie folgt aussehen: 
+-  `www.contoso.com` IN CNAME `contoso.eastus.cloudapp.azure.com`
 
-- Ihr App-Dienst kann nun den Hostnamen `www.contoso.com` akzeptieren. Ändern Sie nun den CNAME-Eintrag im DNS so, dass er wieder auf den FQDN von Application Gateway verweist, z. B. `appgw.eastus.cloudapp.azure.com`.
 
-- Stellen Sie sicher, dass die Domäne `www.contoso.com` in den FQDN des Anwendungsgateways aufgelöst wird, wenn Sie eine DNS-Abfrage durchführen.
+**Schritt 3**: Deaktivieren Sie „Hostnamen aus Back-End-Adresse auswählen“ für die zugeordnete HTTP-Einstellung.
 
-- Legen Sie für Ihren benutzerdefinierten Test fest, dass die Option **Pick Hostname from Backend HTTP Settings** (Hostnamen aus Back-End-HTTP-Einstellungen auswählen) deaktiviert wird. Deaktivieren Sie im Azure-Portal das Kontrollkästchen in den Einstellungen für den Test. Verwenden Sie in PowerShell nicht den Switch **-PickHostNameFromBackendHttpSettings** im Befehl **Set-AzApplicationGatewayProbeConfig**. Geben Sie im Hostnamenfeld des Tests den FQDN Ihres App-Diensts ein, z. B. „example.azurewebsites.net“. Die vom Anwendungsgateway gesendeten Testanforderungen enthalten diesen FQDN im Hostheader.
+Verwenden Sie in PowerShell nicht den Switch `-PickHostNameFromBackendAddress` im Befehl `Set-AzApplicationGatewayBackendHttpSettings`.
 
-  > [!NOTE]
-  > Stellen Sie im nächsten Schritt sicher, dass Ihr benutzerdefinierter Test nicht den HTTP-Einstellungen Ihres Back-Ends zugeordnet ist. Für Ihre HTTP-Einstellungen ist an diesem Punkt noch der Switch **Hostnamen aus Back-End-Adresse auswählen** aktiviert.
 
-- Passen Sie die HTTP-Einstellungen des Anwendungsgateways so an, dass **Hostnamen aus Back-End-Adresse auswählen** deaktiviert wird. Deaktivieren Sie das Kontrollkästchen im Azure-Portal. Verwenden Sie in PowerShell nicht den Switch **-PickHostNameFromBackendAddress** im Befehl **Set-AzApplicationGatewayBackendHttpSettings**.
+**Schritt 4**: Damit die Tests das Back-End als fehlerfrei und als betriebsbereiten Datenverkehr bestimmen können, legen Sie einen benutzerdefinierten Integritätstest mit dem Hostfield als benutzerdefinierte oder Standarddomäne des App Service fest.
 
-- Ordnen Sie den benutzerdefinierten Test wieder den Back-End-HTTP-Einstellungen zu, und vergewissern Sie sich, dass das Back-End fehlerfrei ist.
-
-- Das Anwendungsgateway sollte jetzt den gleichen Hostnamen `www.contoso.com` an den App-Dienst weiterleiten. Die Umleitung erfolgt unter demselben Hostnamen. Sehen Sie sich die folgende Beispielanforderung und die Antwortheader an.
+Verwenden Sie in PowerShell nicht den `-PickHostNameFromBackendHttpSettings`-Schalter im `Set-AzApplicationGatewayProbeConfig`-Befehl, sondern verwenden Sie entweder die benutzerdefinierte Domäne oder die Standarddomäne des App Service im -HostName des Tests.
 
 Verwenden Sie das folgende PowerShell-Beispielskript, um die obigen Schritte für ein vorhandenes Setup mit PowerShell zu implementieren. Beachten Sie, dass die **-PickHostname**-Switches in der Konfiguration für die Test- und HTTP-Einstellungen nicht verwendet wurden.
 

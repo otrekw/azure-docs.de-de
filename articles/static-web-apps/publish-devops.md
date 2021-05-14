@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: f82ae60ab7f57b20a727deefa6e286d698ee5b6c
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 259d430c79cccef3cd5c581c9a60fa00edf159ec
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365755"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162273"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>Tutorial: Veröffentlichen von Azure Static Web Apps mit Azure DevOps
 
@@ -27,7 +27,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 - **Aktives Azure-Konto:** Sollten Sie über kein Konto verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
 - **Azure DevOps-Projekt:** Sollten Sie über kein Projekt verfügen, können Sie ein [kostenloses Projekt erstellen](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/).
-- **Azure DevOps-Pipeline:** Informationen zu den ersten Schritten finden Sie bei Bedarf unter [Erstellen Ihrer ersten Pipeline](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline?view=azure-devops&preserve-view=true).
+- **Azure DevOps-Pipeline:** Informationen zu den ersten Schritten finden Sie bei Bedarf unter [Erstellen Ihrer ersten Pipeline](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops).
 
 ## <a name="create-a-static-web-app-in-an-azure-devops-repository"></a>Erstellen einer statischen Web-App in einem Azure DevOps-Repository
 
@@ -87,20 +87,19 @@ In diesem Tutorial lernen Sie Folgendes:
 
     ```yaml
     trigger:
-      - main
-    
+    - main
+
     pool:
       vmImage: ubuntu-latest
-    
+
     steps:
       - checkout: self
         submodules: true
-
       - task: AzureStaticWebApp@0
         inputs:
-          app_location: "/" 
-          api_location: "api"
-          output_location: ""
+          app_location: '/'
+          api_location: 'api'
+          output_location: ''
         env:
           azure_static_web_apps_api_token: $(deployment_token)
     ```
@@ -112,33 +111,33 @@ In diesem Tutorial lernen Sie Folgendes:
 
     Der Wert `azure_static_web_apps_api_token` wird selbst verwaltet und manuell konfiguriert.
 
-1. Wählen Sie **Variablen** aus.
+2. Wählen Sie **Variablen** aus.
 
-1. Erstellen Sie eine neue Variable.
+3. Erstellen Sie eine neue Variable.
 
-1. Nennen Sie die Variable **deployment_token** (gemäß dem Namen im Workflow).
+4. Nennen Sie die Variable **deployment_token** (gemäß dem Namen im Workflow).
 
-1. Kopieren Sie das Bereitstellungstoken, das Sie zuvor in einen Text-Editor eingefügt haben.
+5. Kopieren Sie das Bereitstellungstoken, das Sie zuvor in einen Text-Editor eingefügt haben.
 
-1. Fügen Sie das Bereitstellungstoken in das Feld _Wert_ ein.
+6. Fügen Sie das Bereitstellungstoken in das Feld _Wert_ ein.
 
     :::image type="content" source="media/publish-devops/variable-token.png" alt-text="Variablentoken":::
 
-1. Aktivieren Sie das Kontrollkästchen **Diesen Geheimniswert beibehalten**.
+7. Aktivieren Sie das Kontrollkästchen **Diesen Geheimniswert beibehalten**.
 
-1. Wählen Sie **OK** aus.
+8. Wählen Sie **OK** aus.
 
-1. Wählen Sie **Speichern** aus, um zu Ihrem Pipeline-YAML-Code zurückzukehren.
+9. Wählen Sie **Speichern** aus, um zu Ihrem Pipeline-YAML-Code zurückzukehren.
 
-1. Wählen Sie **Speichern und ausführen** aus, um das Dialogfeld _Speichern und ausführen_ zu öffnen.
+10. Wählen Sie **Speichern und ausführen** aus, um das Dialogfeld _Speichern und ausführen_ zu öffnen.
 
     :::image type="content" source="media/publish-devops/save-and-run.png" alt-text="Pipeline":::
 
-1. Wählen Sie **Speichern und ausführen** aus, um die Pipeline auszuführen.
+11. Wählen Sie **Speichern und ausführen** aus, um die Pipeline auszuführen.
 
-1. Navigieren Sie nach erfolgreicher Bereitstellung zur **Übersicht** für Azure Static Web Apps. Dort finden Sie Links zur Bereitstellungskonfiguration. Wie Sie sehen, verweist der Link _Quelle_ jetzt auf den Branch und den Standort des Azure DevOps-Repositorys.
+12. Navigieren Sie nach erfolgreicher Bereitstellung zur **Übersicht** für Azure Static Web Apps. Dort finden Sie Links zur Bereitstellungskonfiguration. Wie Sie sehen, verweist der Link _Quelle_ jetzt auf den Branch und den Standort des Azure DevOps-Repositorys.
 
-1. Wählen Sie die **URL** aus, um die neu bereitgestellte Website anzuzeigen.
+13. Wählen Sie die **URL** aus, um die neu bereitgestellte Website anzuzeigen.
 
     :::image type="content" source="media/publish-devops/deployment-location.png" alt-text="Bereitstellungsspeicherort":::
 

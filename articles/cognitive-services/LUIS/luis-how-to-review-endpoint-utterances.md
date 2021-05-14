@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/08/2020
-ms.openlocfilehash: ea2b44d05d25756a16b6b84f0734966b1f579848
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 339b87abad863f19a012dc6ed3a14ab13a44fc48
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97007601"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949108"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Verbessern der LUIS-App durch Überprüfen der Endpunktäußerungen
 
@@ -61,7 +61,7 @@ Wenn Sie nicht wissen, ob Sie die Äußerung löschen sollten, verschieben Sie s
 
 ## <a name="disable-active-learning"></a>Deaktivieren des aktiven Lernens
 
-Um das aktive Lernen zu deaktivieren, protokollieren Sie keine Benutzerabfragen. Dies wird erreicht, indem die [Endpunktabfrage](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) mit dem QueryString-Parameter `log=false` und dem Wert oder nicht mit dem QueryString-Wert festgelegt wird, da der Standardwert „false“ ist.
+Um das aktive Lernen zu deaktivieren, protokollieren Sie keine Benutzerabfragen. Dies wird erreicht, indem die [Endpunktabfrage](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) mit dem QueryString-Parameter `log=false` und dem Wert oder nicht mit dem QueryString-Wert festgelegt wird, da der Standardwert „false“ ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

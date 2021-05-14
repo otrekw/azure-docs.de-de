@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 473bc0a58fe49c7f454c81402b57ddce7fc745b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67178152"
 ---
 #### <a name="to-configure-remote-management-on-cloud-appliance"></a>So konfigurieren Sie die Remoteverwaltung auf dem Cloudgerät
@@ -27,7 +27,7 @@ ms.locfileid: "67178152"
 
     1. Stellen Sie sicher, dass **Remoteverwaltung aktivieren** aktiviert ist.
     2. Die Standardeinstellung ist eine HTTPS-Verbindung. Sie können eine Verbindung über HTTP herstellen. Verbindungen über HTTP sind nur in vertrauenswürdigen Netzwerken zulässig. Stellen Sie sicher, dass HTTP aktiviert ist.
-    3. Klicken Sie auf der Befehlsleiste am oberen Rand des Blatts auf **... Mehr**, und klicken Sie dann auf **Zertifikat herunterladen**, um ein Remoteverwaltungszertifikat herunterzuladen. Sie können einen Speicherort für diese Datei angeben. Dieses Zertifikat muss auf dem Client oder dem Hostcomputer installiert werden, der für die Verbindung mit dem Cloudgerät verwendet wird.
+    3. Klicken Sie in der Befehlsleiste oben auf dem Blatt auf **... Mehr**, und klicken Sie dann auf **Zertifikat herunterladen**, um ein Remoteverwaltungszertifikat herunterzuladen. Sie können einen Speicherort für diese Datei angeben. Dieses Zertifikat muss auf dem Client oder dem Hostcomputer installiert werden, der für die Verbindung mit dem Cloudgerät verwendet wird.
 
         ![Blatt „Remoteverwaltung“](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage4.png)
 5. Klicken Sie auf **Speichern**, und bestätigen Sie die Änderungen, wenn Sie dazu aufgefordert werden.

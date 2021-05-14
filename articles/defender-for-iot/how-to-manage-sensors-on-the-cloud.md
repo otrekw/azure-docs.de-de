@@ -1,16 +1,16 @@
 ---
-title: Verwalten von Sensoren und Abonnements im Portal für Defender für IoT
+title: Verwalten von Sensoren im Defender für IoT-Portal
 description: Erfahren Sie, wie Sie im Defender für IoT-Portal das Onboarding für Sensoren durchführen und Sensoren anzeigen und verwalten.
-ms.date: 2/18/2021
+ms.date: 04/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 5b4c8b3d10fe88816e07eb775b2bf3827d578b17
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: f407a65f60a1b969f17ebe00be39a888a09ec83d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383047"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752712"
 ---
-# <a name="manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>Verwalten von Sensoren und Abonnements im Portal für Defender für IoT
+# <a name="manage-sensors-in-the-defender-for-iot-portal"></a>Verwalten von Sensoren im Defender für IoT-Portal
 
 In diesem Artikel wird beschrieben, wie Sie im [Defender für das IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) das Onboarding für Sensoren durchführen und Sensoren anzeigen und verwalten.
 
@@ -26,16 +26,14 @@ So registrieren Sie sich:
 1. Wählen Sie **Sensor integrieren** aus.
 1. Legen Sie einen Sensornamen fest. Es wird empfohlen, die IP-Adresse des installierten Sensors als Teil des Namens anzugeben oder einen leicht identifizierbaren Namen zu verwenden. Dadurch wird eine einfachere Nachverfolgung und konsistente Benennung zwischen dem Registrierungsnamen im [Azure Defender für IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) und der IP-Adresse des bereitgestellten Sensors sichergestellt, der in der Sensorkonsole angezeigt wird.
 1. Ordnen Sie den Sensor einem Azure-Abonnement zu.
-1. Wählen Sie mithilfe des Umschalters **Mit der Cloud verbunden** einen Sensorverwaltungsmodus aus. Ist der Umschalter auf „Ein“ festgelegt, ist der Sensor mit der Cloud verbunden. Wenn der Umschalter auf „Aus“ festgelegt ist, wird der Sensor lokal verwaltet.
+1. Wählen Sie mithilfe der Umschaltfläche **Mit der Cloud verbunden** einen Sensorverbindungsmodus aus. Ist der Umschalter auf „Ein“ festgelegt, ist der Sensor mit der Cloud verbunden. Wenn der Umschalter auf „Aus“ festgelegt ist, wird der Sensor lokal verwaltet.
 
-   - **Mit der Cloud verbundene Sensoren**: Die vom Sensor erkannten Informationen werden in der Sensorkonsole angezeigt. Warnungsinformationen werden über einen IoT-Hub übermittelt und können für andere Azure-Dienste wie Azure Sentinel freigegeben werden.
+   - **Mit der Cloud verbundene Sensoren**: Die vom Sensor erkannten Informationen werden in der Sensorkonsole angezeigt. Warnungsinformationen werden über einen IoT-Hub übermittelt und können für andere Azure-Dienste wie Azure Sentinel freigegeben werden. Darüber hinaus können Threat Intelligence-Pakete aus dem Azure Defender für IoT-Portal an Sensoren gepusht werden. Wenn der Sensor hingegen nicht mit der Cloud verbunden ist, müssen Sie Threat Intelligence-Pakete herunterladen und dann auf Ihre Unternehmenssensoren hochladen. Um Defender für IoT das Pushen von Paketen an Sensoren zu ermöglichen, aktivieren Sie die Umschaltfläche **Automatische Threat Intelligence-Updates**. Weitere Informationen finden Sie unter [Forschung und Pakete zur Bedrohungsanalyse](how-to-work-with-threat-intelligence-packages.md).
+   Wählen Sie einen IoT-Hub aus, der als Gateway zwischen diesem Sensor und dem Azure Defender für IoT-Portal fungiert. Definieren Sie einen Standortnamen und eine Zone. Sie können auch beschreibende Tags hinzufügen. Der Standortname, die Zone und Tags sind beschreibende Einträge auf der [Seite „Standorte und Sensoren“](#view-onboarded-sensors).
 
    - **Lokal verwaltete Sensoren**: Die von Sensoren erkannten Informationen werden in der Sensorkonsole angezeigt. Wenn Sie in einem Air-Gap-Netzwerk arbeiten und eine einheitliche Ansicht aller Informationen haben möchten, die von mehreren lokal verwalteten Sensoren erkannt wurden, arbeiten Sie mit der lokalen Verwaltungskonsole.
 
-   Bei mit der Cloud verbundenen Sensoren wird in der Sensorkonsole der während des Onboardings definierte Name angezeigt. Sie können diesen Namen nicht direkt über die Konsole ändern. Bei lokal verwalteten Sensoren wird der während des Onboardings angewendete Name in Azure gespeichert und kann in der Sensorkonsole geändert werden.
-
-1. Wählen Sie einen IoT-Hub aus, der als Gateway zwischen diesem Sensor und Azure Defender für IoT fungiert.
-1. Wenn der Sensor mit der Cloud verbunden ist, ordnen Sie ihn einem IoT-Hub zu, und definieren Sie dann einen Standortnamen und eine Zone. Sie können auch beschreibende Tags hinzufügen. Der Standortname, die Zone und Tags sind beschreibende Einträge auf der [Seite „Standorte und Sensoren“](#view-onboarded-sensors).
+   Bei mit der Cloud verbundenen Sensoren wird in der Sensorkonsole der Name angezeigt, der während des Onboardings definiert wurde. Sie können diesen Namen nicht direkt über die Konsole ändern. Bei lokal verwalteten Sensoren wird der während des Onboardings angewendete Name in Azure gespeichert, dieser kann jedoch in der Sensorkonsole geändert werden.
 
 ### <a name="download-the-sensor-activation-file"></a>Herunterladen der Sensoraktivierungsdatei
 
@@ -48,15 +46,16 @@ Gehen Sie wie folgt vor, um eine Aktivierungsdatei herunterzuladen:
 
 ## <a name="view-onboarded-sensors"></a>Anzeigen integrierter Sensoren
 
-Im [Defender für IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) können Sie grundlegende Informationen zu integrierten Sensoren anzeigen.
+Im [Defender für IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) können Sie wichtige Betriebsinformationen zu integrierten Sensoren anzeigen.
 
-1. Wählen Sie **Standorte und Sensoren** aus.
-1. Verwenden Sie die Filter- und Suchtools, um nach den gewünschten Sensoren- und Threat Intelligence-Informationen zu suchen.
+1. Wählen Sie **Standorte und Sensoren** aus. Die Seite zeigt, für wie viele Sensoren ein Onboarding durchgeführt wurde, wie viele Sensoren mit der Cloud verbunden sind und wie viele Sensoren lokal verwaltet werden. Darüber hinaus werden die folgenden Informationen bereitgestellt:
 
-- Die Anzahl der integrierten Sensoren
-- Die Anzahl der mit der Cloud verbundenen und der lokal verwalteten Sensoren
-- Der einem integrierten Sensor zugeordnete Hub
-- Die einem Sensor hinzugefügten Details, z. B. der dem Sensor während des Onboardings zugewiesene Name, die dem Sensor zugeordnete Zone oder andere beschreibende Informationen, die mit Tags hinzugefügt wurden
+- Der Sensorname, der während des Onboardings zugewiesen wurde.
+- Der Verbindungstyp (mit der Cloud verbunden oder lokal verwaltet).
+- Die Zone, die dem Sensor zugeordnet ist.
+- Die installierte Sensorversion.
+- Der Status der Sensorverbindung mit der Cloud.
+- Der letzte Zeitpunkt, zu dem eine Verbindungsherstellung des Sensors mit der Cloud erkannt wurde.
 
 ## <a name="manage-onboarded-sensors"></a>Verwalten integrierter Sensoren
 
@@ -118,24 +117,6 @@ Gehen Sie wie folgt vor, um einen Sensor erneut zu aktivieren:
 8. Wählen Sie **Hochladen** und dann die Datei aus, die Sie auf der Seite „Sensor integrieren“ gespeichert haben.
 
 9. Wählen Sie **Aktivieren** aus.
-
-## <a name="offboard-a-subscription"></a>Offboarding eines Abonnements
-
-Abonnements werden auf monatlicher Basis verwaltet. Beim Offboarding eines Abonnements wird Ihnen die Nutzung dieses Abonnements bis zum Ende des Monats in Rechnung gestellt. 
-
-Deinstallieren Sie vor dem Offboarding des Abonnements alle Sensoren, die dem Abonnement zugeordnet sind. Weitere Informationen zum Löschen eines Sensors finden Sie unter [Löschen eines Sensors](#delete-a-sensor). 
-
-Offboarding eines Abonnements:
-
-1. Navigieren Sie zur Seite **Preise**.
-1. Wählen Sie das Abonnement aus, und klicken Sie dann auf das **Löschsymbol** :::image type="icon" source="media/how-to-manage-sensors-on-the-cloud/delete-icon.png" border="false":::.
-1. Aktivieren Sie im Bestätigungspopupfenster das Kontrollkästchen, um zu bestätigen, dass Sie alle dem Abonnement zugeordneten Sensoren gelöscht haben.
-
-    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/offboard-popup.png" alt-text="Aktivieren des Kontrollkästchens und Klicken auf „Offboard“ für das Offboarding des Sensors":::
-
-1. Klicken Sie auf die Schaltfläche **Offboard**. 
-
-Dies hat keine Auswirkungen auf die lokale Umgebung, aber Sie sollten den Sensor aus der lokalen Umgebung deinstallieren oder einem anderen Abonnement zuweisen, um zu verhindern, dass zugehörige Daten in die lokale Verwaltungskonsole übertragen werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

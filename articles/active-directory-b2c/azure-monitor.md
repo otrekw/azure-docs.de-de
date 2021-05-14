@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: 0231f7f3882218ef88d6151488da6aa23e4cb8e4
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 4ac0cc618ec03d844c73961dcdb66f7357ce60f2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106686"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783781"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Überwachen von Azure AD B2C mit Azure Monitor
 
@@ -38,7 +38,7 @@ In diesem Artikel erfahren Sie, wie Sie Protokolle in einen Azure Log Analytics-
 
 ## <a name="deployment-overview"></a>Übersicht über die Bereitstellung
 
-Für Azure AD B2C wird die [Azure Active Directory-Überwachung](../active-directory/reports-monitoring/overview-monitoring.md) genutzt. Damit Sie in Ihrem Azure AD B2C-Mandanten die *Diagnoseeinstellungen* von Azure Active Directory aktivieren können, verwenden Sie [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md), um [eine Ressource zu delegieren](../lighthouse/concepts/azure-delegated-resource-management.md). Dadurch kann Azure AD B2C (**Dienstanbieter**) eine Azure AD-Ressource (**Kunde**) verwalten. Nachdem Sie die Schritte in diesem Artikel ausgeführt haben, haben Sie in Ihrem **Azure AD B2C**-Portal Zugriff auf die Ressourcengruppe *azure-ad-b2c-monitor*, die den [Log Analytics-Arbeitsbereich](../azure-monitor/logs/quick-create-workspace.md) enthält. Sie können die Protokolle auch von Azure AD B2C in den Log Analytics-Arbeitsbereich übertragen.
+Für Azure AD B2C wird die [Azure Active Directory-Überwachung](../active-directory/reports-monitoring/overview-monitoring.md) genutzt. Damit Sie in Ihrem Azure AD B2C-Mandanten die *Diagnoseeinstellungen* von Azure Active Directory aktivieren können, verwenden Sie [Azure Lighthouse](../lighthouse/overview.md), um [eine Ressource zu delegieren](../lighthouse/concepts/architecture.md). Dadurch kann Azure AD B2C (**Dienstanbieter**) eine Azure AD-Ressource (**Kunde**) verwalten. Nachdem Sie die Schritte in diesem Artikel ausgeführt haben, haben Sie in Ihrem **Azure AD B2C**-Portal Zugriff auf die Ressourcengruppe *azure-ad-b2c-monitor*, die den [Log Analytics-Arbeitsbereich](../azure-monitor/logs/quick-create-workspace.md) enthält. Sie können die Protokolle auch von Azure AD B2C in den Log Analytics-Arbeitsbereich übertragen.
 
 Bei der Bereitstellung autorisieren Sie in Ihrem Azure AD B2C-Verzeichnis einen Benutzer oder eine Gruppe zum Konfigurieren der Instanz des Log Analytics-Arbeitsbereichs in dem Mandanten, der Ihr Azure-Abonnement enthält. Zum Erstellen der Autorisierung stellen Sie eine [Azure Resource Manager](../azure-resource-manager/index.yml)-Vorlage auf Ihrem Azure AD-Mandanten bereit, der das Abonnement enthält.
 
@@ -259,7 +259,7 @@ In der Arbeitsmappe werden Berichte in Form eines Dashboards angezeigt.
 
 ## <a name="create-alerts"></a>Erstellen von Warnungen
 
-Warnungen werden von Warnungsregeln in Azure Monitor erstellt und können in regelmäßigen Abständen automatisch gespeicherte Abfragen oder benutzerdefinierte Protokollsuchen ausführen. Sie können Warnungen auf der Grundlage bestimmter Leistungsmetriken oder des Entstehens bestimmter Ereignisse, der Abwesenheit eines Ereignisses oder des Entstehens einer Anzahl von Ereignissen innerhalb eines bestimmten Zeitfensters erstellen. Warnungen können beispielsweise zur Benachrichtigung verwendet werden, wenn die durchschnittliche Anzahl von Anmeldungen einen bestimmten Schwellenwert überschreitet. Weitere Informationen finden Sie unter [Warnungen erstellen](../azure-monitor/alerts/tutorial-response.md).
+Warnungen werden von Warnungsregeln in Azure Monitor erstellt und können in regelmäßigen Abständen automatisch gespeicherte Abfragen oder benutzerdefinierte Protokollsuchen ausführen. Sie können Warnungen auf der Grundlage bestimmter Leistungsmetriken oder des Entstehens bestimmter Ereignisse, der Abwesenheit eines Ereignisses oder des Entstehens einer Anzahl von Ereignissen innerhalb eines bestimmten Zeitfensters erstellen. Warnungen können beispielsweise zur Benachrichtigung verwendet werden, wenn die durchschnittliche Anzahl von Anmeldungen einen bestimmten Schwellenwert überschreitet. Weitere Informationen finden Sie unter [Warnungen erstellen](../azure-monitor/alerts/alerts-log.md).
 
 
 Verwenden Sie die folgenden Anweisungen, um eine neue Azure-Warnung zu erstellen, die eine [E-Mail-Benachrichtigung](../azure-monitor/alerts/action-groups.md#configure-notifications) sendet, wenn die **Gesamtzahl der Anforderungen** im Vergleich zum vorherigen Zeitraum um 25 % zurückgegangen ist. Die Warnung wird alle fünf Minuten ausgeführt und sucht innerhalb des letzten 24-Stunden-Fensters nach einem derartigen Rückgang. Die Warnungen werden in der Kusto-Abfragesprache erstellt.

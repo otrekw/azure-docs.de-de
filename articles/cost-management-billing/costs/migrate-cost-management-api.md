@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 811b2cb7fd9a4f664e7a643f5a8e192a51416888
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 46ad81f6723d160bf1d675b68a8459dd8df32c80
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689098"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078348"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrieren von Enterprise Agreement-APIs zu APIs der Microsoft-Kundenvereinbarung
 
@@ -55,7 +55,7 @@ EA-APIs verwenden einen API-Schlüssel zur Authentifizierung und Autorisierung. 
 | Nutzung (CSV) | [/usagedetails/download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)[/usagedetails/submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
 | Marketplace-Nutzung (CSV) | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)[/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
 | Abrechnungszeiträume | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
-| Preisblatt | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft.Billing/billingAccounts/billingProfiles/pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/…/billingProfiles/…/invoices/… /pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/../billingProfiles/../providers/Microsoft.Consumption/pricesheets/download  |
+| Preisblatt | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft.Billing/billingAccounts/billingProfiles/pricesheet/default/download format=json\|csv Microsoft.Billing/billingAccounts/…/billingProfiles/…/invoices/… /pricesheet/default/download format=json\|csv Microsoft.Billing/billingAccounts/../billingProfiles/../providers/Microsoft.Consumption/pricesheets/download  |
 | Reservierungseinkäufe | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft.Billing/billingAccounts/billingProfiles/transactions |
 | Reservierungsempfehlungen | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
 | Reservierungsnutzung | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
@@ -124,7 +124,7 @@ Zum Abrufen von Nutzungsdetails mit der Nutzungsdetails-API gehen Sie folgenderm
 
 Die Nutzungsdetails-API ist wie alle Cost Management-APIs in mehreren Bereichen verfügbar. Verwenden Sie für berechnete Kosten, die Sie normalerweise auf Registrierungsebene erhalten würden, den Bereich des Abrechnungsprofils.  Weitere Informationen zu Cost Management-Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
-| type | ID-Format |
+| Typ | ID-Format |
 | --- | --- |
 | Abrechnungskonto | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | Abrechnungsprofil | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
@@ -168,7 +168,7 @@ Neuer Antworttext:
 
 Der Eigenschaftenname, der das Array von Nutzungsdatensätzen enthält, hat sich von „data“ in _values_ geändert. Jeder Datensatz wies bisher eine flache Liste mit detaillierten Eigenschaften auf. Nun sind jedoch alle Details in einer geschachtelten Eigenschaft mit dem Namen _properties_ enthalten, mit Ausnahme von Tags. Die neue Struktur ist mit anderen Azure-APIs konsistent. Einige Eigenschaftennamen haben sich geändert. Die folgende Tabelle zeigt die sich jeweils entsprechenden Eigenschaften.
 
-| Alte Eigenschaft | Neue Eigenschaft | Notizen |
+| Alte Eigenschaft | Neue Eigenschaft | Hinweise |
 | --- | --- | --- |
 | AccountId | – | Der Abonnementersteller wird nicht nachverfolgt. Verwenden Sie invoiceSectionId (entspricht departmentID). |
 | AccountNameAccountOwnerId und AccountOwnerEmail | – | Der Abonnementersteller wird nicht nachverfolgt. Verwenden Sie invoiceSectionName (entspricht departmentName). |
@@ -179,19 +179,19 @@ Der Eigenschaftenname, der das Array von Nutzungsdatensätzen enthält, hat sich
 | ConsumedServiceId | Keine | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
 | Date und usageStartDate | date | &nbsp;  |
-| Day (Tag) | Keine | Analysiert den Tag ab Datum. |
+| Tag | Keine | Analysiert den Tag ab Datum. |
 | DepartmentId | invoiceSectionId | Genaue Werte abweichend. |
 | DepartmentName | invoiceSectionName | Genaue Zeichenfolgenwerte können abweichen. Konfigurieren Sie Rechnungsabschnitte ggf. entsprechend den Abteilungen. |
 | ExtendedCost und Cost | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
 | Is Recurring Charge | Keine | &nbsp;  |
-| Location | location | &nbsp;  |
+| Standort | location | &nbsp;  |
 | MeterCategory | meterCategory | Genaue Zeichenfolgenwerte können abweichen. |
 | MeterId | meterId | Genaue Zeichenfolgenwerte abweichend. |
 | MeterName | meterName | Genaue Zeichenfolgenwerte können abweichen. |
 | MeterRegion | meterRegion | Genaue Zeichenfolgenwerte können abweichen. |
 | MeterSubCategory | meterSubCategory | Genaue Zeichenfolgenwerte können abweichen. |
-| Month (Monat) | Keine | Analysiert den Monat ab Datum. |
+| Month | Keine | Analysiert den Monat ab Datum. |
 | Angebotsname | Keine | Verwenden Sie publisherName und productOrderName. |
 | OfferID | Keine | &nbsp;  |
 | Order Number | Keine | &nbsp;  |
@@ -214,10 +214,10 @@ Der Eigenschaftenname, der das Array von Nutzungsdatensätzen enthält, hat sich
 | SubscriptionGuid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
 | SubscriptionName | subscriptionName | &nbsp;  |
-| `Tags` | tags | Die tags-Eigenschaft gilt für das Stammobjekt und nicht für die geschachtelte properties-Eigenschaft. |
+| Tags | tags | Die tags-Eigenschaft gilt für das Stammobjekt und nicht für die geschachtelte properties-Eigenschaft. |
 | UnitOfMeasure | unitOfMeasure | Genaue Zeichenfolgenwerte abweichend. |
 | usageEndDate | date | &nbsp;  |
-| Jahr | Keine | Analysiert das Jahr ab Datum. |
+| Year | Keine | Analysiert das Jahr ab Datum. |
 | (neu) | billingCurrency | Die für die Gebühr verwendete Währung. |
 | (neu) | billingProfileId | Eindeutige ID für das Abrechnungsprofil (entspricht der Registrierung). |
 | (neu) | billingProfileName | Name des Abrechnungsprofils (entspricht der Registrierung). |
@@ -269,7 +269,7 @@ Verwenden Sie die Preisblatt-API, um alle Preisblattdaten für Azure-Nutzungsdie
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
 
-Bei Verwendung der API wird das Preisblatt für das gesamte Konto zurückgegeben. Sie können aber auch eine verkürzte Version des Preisblatts im PDF-Format abrufen. Die Zusammenfassung enthält Azure- und Marketplace-Nutzungsdienste, die für eine bestimmte Rechnung berechnet werden. Die Rechnung wird durch die {InvoiceId} identifiziert, die der **Rechnungsnummer** entspricht, die in den PDF-Dateien der Rechnungszusammenfassung angegeben ist. Hier sehen Sie ein Beispiel.
+Bei Verwendung der API wird das Preisblatt für das gesamte Konto zurückgegeben. Sie können aber auch eine verkürzte Version des Preisblatts im PDF-Format abrufen. Die Zusammenfassung enthält Azure- und Marketplace-Nutzungsdienste, die für eine bestimmte Rechnung berechnet werden. Die Rechnung wird durch die {InvoiceId} identifiziert, die der **Rechnungsnummer** entspricht, die in den PDF-Dateien der Rechnungszusammenfassung angegeben ist. Hier finden Sie ein Beispiel.
 
 ![Beispielabbildung der Rechnungsnummer, die InvoiceId entspricht](./media/migrate-cost-management-api/invoicesummary.png)
 
@@ -365,7 +365,7 @@ Der Client kann auch einen GET-Aufruf für `Azure-AsyncOperation` starten. Der E
 
 In der folgenden Tabelle sind Felder in der älteren API zum Abrufen des Preisblatts für Unternehmen aufgelistet. Die Tabelle enthält auch die entsprechenden Felder im neuen Preisblatt für Microsoft-Kundenvereinbarungen:
 
-| Alte Eigenschaft | Neue Eigenschaft | Notizen |
+| Alte Eigenschaft | Neue Eigenschaft | Hinweise |
 | --- | --- | --- |
 | billingPeriodId  | _Nicht zutreffend_ | Nicht zutreffend Bei Microsoft-Kundenvereinbarungen wurde das Konzept der billingPeriodId durch die Rechnung und das zugehörige Preisblatt ersetzt. |
 | meterId  | meterId | &nbsp;  |
@@ -426,11 +426,11 @@ Im Bereich der EA-Registrierung sind die API-Antwort und Eigenschaften identisch
 
 Die älteren Eigenschaften für [Azure Resource Manager-Preisblatt-APIs](/rest/api/consumption/pricesheet) und die entsprechenden neuen Eigenschaften sind in der folgenden Tabelle enthalten.
 
-| Alte Eigenschaft der Azure Resource Manager-Preisblatt-API  | Neue Eigenschaft der Preisblatt-API für Microsoft-Kundenvereinbarungen   | BESCHREIBUNG |
+| Alte Eigenschaft der Azure Resource Manager-Preisblatt-API  | Neue Eigenschaft der Preisblatt-API für Microsoft-Kundenvereinbarungen   | Beschreibung |
 | --- | --- | --- |
-| Meter ID | _meterId_ | Eindeutiger Bezeichner für die Verbrauchseinheit. Entspricht meterID. |
+| Messungs-ID | _meterId_ | Eindeutiger Bezeichner für die Verbrauchseinheit. Entspricht meterID. |
 | Meter name | meterName | Name der Verbrauchseinheit. Die Verbrauchseinheit stellt die bereitstellbare Ressource eines Azure-Diensts dar. |
-| Meter category  | Dienst | Name der Klassifizierungskategorie der Verbrauchseinheit. Entspricht dem Dienst auf dem Preisblatt für die Microsoft-Kundenvereinbarung. Genaue Zeichenfolgenwerte abweichend. |
+| Kategorie für Messung  | Dienst | Name der Klassifizierungskategorie der Verbrauchseinheit. Entspricht dem Dienst auf dem Preisblatt für die Microsoft-Kundenvereinbarung. Genaue Zeichenfolgenwerte abweichend. |
 | Meter subcategory | meterSubCategory | Name der Unterklassifizierungskategorie der Verbrauchseinheit. Basierend auf der Klassifizierung der Unterschiede beim allgemeinen Funktionsumfang im Dienst, z.B. SQL-Datenbank (Basic) oder SQL-Datenbank (Standard). |
 | Meter Region | meterRegion | &nbsp;  |
 | Einheit | _Nicht zutreffend_ | Kann aus unitOfMeasure analysiert werden. |
@@ -455,7 +455,7 @@ Das Preisblatt enthält Preise für Dienste, deren Preis auf der Nutzung basiert
 
 Die folgenden Felder sind entweder nicht in Preisblatt-APIs für Microsoft-Kundenvereinbarungen verfügbar oder diese weisen die gleichen Felder auf.
 
-|Nicht mehr verwendetes Feld| BESCHREIBUNG|
+|Nicht mehr verwendetes Feld| Beschreibung|
 |---|---|
 | billingPeriodId | Nicht zutreffend. Entspricht InvoiceId für MCA. |
 | offerID | Nicht zutreffend Entspricht productOrderName in MCA. |

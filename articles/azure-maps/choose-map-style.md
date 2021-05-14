@@ -3,18 +3,18 @@ title: Ändern des Stils des Azure Maps-Web-Kartensteuerelements
 description: Lernen Sie, den Stil und die Optionen einer Karte zu ändern. Erfahren Sie, wie Sie einer Karte in Azure Maps ein Stilauswahl-Steuerelement hinzufügen können, sodass Benutzer zwischen verschiedenen Stilen wechseln können.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/27/2020
+ms.date: 04/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec79f1427e4561447b80f500adabfa8e8400d7f5
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680025"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325191"
 ---
 # <a name="change-the-style-of-the-map"></a>Ändern des Kartenstils
 
@@ -104,7 +104,7 @@ Das folgende Bild zeigt das im `list`-Layout angezeigte Stilauswahl-Steuerelemen
 :::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Listenlayout in der Stilauswahl":::
 
 > [!IMPORTANT]
-> Standardmäßig listet das Stilauswahl-Steuerelement alle im S0-Tarif von Azure Maps verfügbaren Stile auf. Soll die Liste weniger Stile enthalten, können Sie an die Option `mapStyle` der Stilauswahl ein Array mit den Stilen übergeben, die in der Liste angezeigt werden sollen. Wenn Sie S1 verwenden und alle verfügbaren Stile anzeigen möchten, legen Sie die Option `mapStyles` der Stilauswahl auf `"all"` fest.
+> Standardmäßig listet das Stilauswahl-Steuerelement alle im S0-Tarif von Azure Maps verfügbaren Stile auf. Soll die Liste weniger Stile enthalten, können Sie an die Option `mapStyle` der Stilauswahl ein Array mit den Stilen übergeben, die in der Liste angezeigt werden sollen. Wenn Sie den Tarif „Gen 1 (S1)“ oder „Gen 2“ verwenden und alle verfügbaren Stile anzeigen möchten, legen Sie die Option `mapStyles` der Stilauswahl auf `"all"` fest.
 
 Im folgenden Code wird gezeigt, wie Sie die standardmäßige Liste der Basisstile `mapStyles` außer Kraft setzen können. In diesem Beispiel legen wir die `mapStyles`-Option so fest, dass die Basisstile aufgelistet werden, die vom Stilauswahl-Steuerelement angezeigt werden sollen.
 

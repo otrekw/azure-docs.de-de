@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f60ff3c8511472ee456d392257b815c0ab64f69c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7919d32326e7cb82720714a2bff574ad21f0d5d9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779799"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753232"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -45,7 +45,7 @@ Ein Eingabedataset stellt die Eingabe für eine Aktivität in der Pipeline dar, 
 ### <a name="data-movement-activities"></a>Datenverschiebungsaktivitäten
 Die Kopieraktivität in Data Factory kopiert die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher. Data Factory unterstützt die folgenden Datenspeicher. Daten aus beliebigen Quellen können in beliebige Senken geschrieben werden. Klicken Sie auf einen Datenspeicher, um zu erfahren, wie Daten in diesen/aus diesem Speicher kopiert werden.
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
 > Datenspeicher mit * können lokal oder in Azure IaaS verfügbar sein. Für ihre Verwendung müssen Sie das [Datenverwaltungsgateway](data-factory-data-management-gateway.md) auf einem lokalen oder einem Azure IaaS-Computer installieren.
@@ -53,7 +53,7 @@ Die Kopieraktivität in Data Factory kopiert die Daten aus einem Quelldatenspeic
 Weitere Informationen finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
 
 ### <a name="data-transformation-activities"></a>Datentransformationsaktivitäten
-[!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
+[!INCLUDE [data-factory-transformation-activities](includes/data-factory-transformation-activities.md)]
 
 Weitere Informationen finden Sie im Artikel [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md).
 
@@ -88,7 +88,7 @@ Sehen wir uns an, wie eine Pipeline im JSON-Format definiert wird. Die generisch
 }
 ```
 
-| Tag | BESCHREIBUNG | Erforderlich |
+| Tag | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | name |Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: “.”, “+”, “?”, “/”, “<”,”>”,”\*”,”%”,”&”,”:”,”\\”</li></ul> |Ja |
 | description | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. |Ja |
@@ -126,7 +126,7 @@ Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Je
 
 In der folgenden Tabelle werden Eigenschaften in der JSON-Definition der Aktivität beschrieben:
 
-| Tag | BESCHREIBUNG | Erforderlich |
+| Tag | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“.</li></ul> |Ja |
 | description | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Ja |

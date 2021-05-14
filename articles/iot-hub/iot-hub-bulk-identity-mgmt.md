@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e7de74a75bc0cf2a298b7ff75cf7b6b92eaec9d
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92536078"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109716112"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importieren und Exportieren von IoT Hub-Geräteidentitäten per Massenvorgang
 
@@ -87,7 +87,7 @@ while(true)
 ```
 
 > [!NOTE]
-> Wenn für Ihr Speicherkonto Firewallkonfigurationen vorhanden sind, die die Konnektivität von IoT Hub einschränken, sollten Sie die Verwendung der [Ausnahme vertrauenswürdiger Microsoft-Erstanbieter](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) in Erwägung ziehen (in ausgewählten Regionen für IoT-Hubs mit verwalteter Dienstidentität verfügbar).
+> Wenn für Ihr Speicherkonto Firewallkonfigurationen vorhanden sind, die die Konnektivität von IoT Hub einschränken, sollten Sie die Verwendung der [Ausnahme vertrauenswürdiger Microsoft-Erstanbieter](./virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources) in Erwägung ziehen (in ausgewählten Regionen für IoT-Hubs mit verwalteter Dienstidentität verfügbar).
 
 
 ## <a name="device-importexport-job-limits"></a>Grenzwerte bei Geräteimport-/exportaufträgen

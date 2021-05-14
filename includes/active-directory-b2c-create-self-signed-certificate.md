@@ -5,18 +5,18 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: e26dd7ea9f45af6f725f4deaefd9b5bd79a37e1c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 32a47a34d9a4c8562dd1cec44f5a2ec519cb1a7f
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073418"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107984447"
 ---
 Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie ein selbstsigniertes Zertifikat verwenden. Ein selbstsigniertes Zertifikat ist ein Sicherheitszertifikat, das nicht von einer Zertifizierungsstelle (ZS) signiert ist und nicht die Sicherheitsgarantien eines Zertifikats bietet, das von einer Zertifizierungsstelle signiert wurde. 
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-Verwenden Sie unter Windows das PowerShell-Cmdlet [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate), um ein Zertifikat zu generieren.
+Verwenden Sie unter Windows das PowerShell-Cmdlet [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate), um ein Zertifikat zu generieren.
 
 1. Führen Sie diesen PowerShell-Befehl aus, um ein selbstsigniertes Zertifikat zu generieren. Ändern Sie das Argument `-Subject` entsprechend Ihrer Anwendung und des Azure AD B2C-Mandantennamens. Sie können auch das `-NotAfter`-Datum anpassen, um einen anderen Ablaufzeitpunkt für das Zertifikat anzugeben.
 

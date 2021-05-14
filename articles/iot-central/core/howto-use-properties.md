@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 36329987e510372ff286a10584a115ea259afc60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39bab52a564439d34b8702de11edabe7f0d6dfbc
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98119083"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492255"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Verwenden von Eigenschaften in einer Azure IoT Central-Lösung
 
@@ -183,7 +183,7 @@ Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines s
 }
 ```
 
-Zum Definieren und Verarbeiten der schreibbaren Eigenschaften, auf die Ihr Gerät reagiert, können Sie den folgenden Code verwenden:
+Zum Definieren und Bearbeiten der schreibbaren Eigenschaften, auf die Ihr Gerät reagiert, können Sie den folgenden Code verwenden:
 
 ``` javascript
 hubClient.getTwin((err, twin) => {
@@ -219,7 +219,7 @@ Die Antwortnachricht sollte die Felder `ac` und `av` enthalten. Das Feld `ad` is
 
 Weitere Informationen zu Gerätezwillingen finden Sie unter [Konfigurieren Ihrer Geräte über einen Back-End-Dienst](../../iot-hub/tutorial-device-twins.md).
 
-Wenn der Operator in der Azure IoT Central-Anwendung eine schreibbare Eigenschaft festlegt, verwendet die Anwendung eine gewünschte Eigenschaft des Gerätezwillings, um den Wert an das Gerät zu senden. Das Gerät antwortet dann mithilfe einer gemeldeten Eigenschaft des Gerätezwillings. Wenn Azure IoT Central den gemeldeten Eigenschaftswert empfängt, wird die Eigenschaftsansicht mit dem Status **Akzeptiert** aktualisiert.
+Wenn der Bediener eine schreibbare Eigenschaft in der Azure IoT Central-Anwendung einstellt, verwendet die Anwendung eine Gerätezwillingseigenschaft, um den Wert an das Gerät zu senden. Das Gerät antwortet dann mithilfe einer gemeldeten Eigenschaft des Gerätezwillings. Wenn Azure IoT Central den gemeldeten Eigenschaftswert empfängt, wird die Eigenschaftsansicht mit dem Status **Akzeptiert** aktualisiert.
 
 In der folgenden Ansicht werden die schreibbaren Eigenschaften gezeigt. Wenn Sie den Wert eingeben und **Speichern** auswählen, lautet der Anfangsstatus **Ausstehend**. Wenn das Gerät die Änderung akzeptiert, wird der Status in **Akzeptiert** geändert.
 

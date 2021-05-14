@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 297c0a53fb2ab4ee0b2c5291cabf5a63c8841664
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6f101c8a3d3af9658414e816afff9050402d71ce
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604701"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064069"
 ---
 # <a name="securing-service-principals"></a>Sichern von Dienstprinzipalen
 
@@ -116,7 +116,7 @@ Informieren Sie sich bei Verwendung von Microsoft Graph in der Dokumentation zur
 
 [Erstellen eines Dienstprinzipals](../develop/howto-create-service-principal-portal.md)
 
- [Überwachen der Anmeldungen von Dienstprinzipalen](../reports-monitoring/concept-sign-ins.md#sign-ins-report)
+ [Überwachen der Anmeldungen von Dienstprinzipalen](../reports-monitoring/concept-sign-ins.md)
 
 **Weitere Informationen zum Schützen von Dienstkonten:**
 

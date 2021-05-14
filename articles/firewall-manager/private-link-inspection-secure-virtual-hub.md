@@ -7,14 +7,17 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: jocorte
-ms.openlocfilehash: a1237077b9e0a1af67d34c85d8ea8d526bd71372
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7322bab635d398fc7a5335546ba6fef327ff24b2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281284"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259352"
 ---
 # <a name="secure-traffic-destined-to-private-endpoints-in-azure-virtual-wan"></a>Schützen von Datenverkehr, der für private Endpunkte von Azure Virtual WAN bestimmt ist
+
+> [!NOTE]
+> Dieser Artikel gilt nur für geschützte virtuelle Hubs. Wenn Sie Datenverkehr für private Endpunkte untersuchen möchten, die Azure Firewall in einem virtuellen Hubnetzwerk verwenden, finden Sie weitere Informationen unter [Verwenden der Azure Firewall zum Überprüfen des Datenverkehrs für einen privaten Endpunkt](../private-link/inspect-traffic-with-azure-firewall.md).
 
 Der [private Azure-Endpunkt](../private-link/private-endpoint-overview.md) ist der grundlegende Baustein für [Azure Private Link](../private-link/private-link-overview.md). Private Endpunkte ermöglichen die Bereitstellung von Azure-Ressourcen in einem virtuellen Netzwerk, um privat mit Private Link-Ressourcen zu kommunizieren.
 

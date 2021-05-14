@@ -3,12 +3,12 @@ title: 'Azure Event Grid: Festlegen benutzerdefinierter Header für übermittelt
 description: Hier erfahren Sie, wie Sie benutzerdefinierte Header (oder Übermittlungseigenschaften) für übermittelte Ereignisse festlegen.
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: fb6f0de7919ed7cf9072c0fa35e8f9be5cb5e7db
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 515f2687781329d0f9f9648460663a0a30f7c637
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278285"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887442"
 ---
 # <a name="custom-delivery-properties"></a>Benutzerdefinierte Übermittlungseigenschaften
 Mit Ereignisabonnements können Sie HTTP-Header einrichten, die in übermittelte Ereignisse eingeschlossen werden. Diese Funktion ermöglicht es Ihnen, benutzerdefinierte Header festzulegen, die für ein Ziel erforderlich sind. Beim Erstellen eines Ereignisabonnements können bis zu zehn Header festgelegt werden. Die einzelnen Headerwert dürfen nicht größer als 4.096 Bytes (4K) sein.
@@ -58,7 +58,7 @@ Authorization: BEARER SlAV32hkKG...
 ```
 
 > [!NOTE]
-> Das Definieren von Autorisierungsheadern ist sinnvoll, wenn es sich bei dem Ziel um einen Webhook handelt. Für [mit einer Ressourcen-ID abonnierte Funktionen](/rest/api/eventgrid/eventsubscriptions/createorupdate#azurefunctioneventsubscriptiondestination), Service Bus, Event Hubs und Hybridverbindungen sollte diese Option nicht verwendet werden, da diese Ziele bei Verwendung mit Event Grid ihre eigenen Authentifizierungsschemas unterstützen.
+> Das Definieren von Autorisierungsheadern ist sinnvoll, wenn es sich bei dem Ziel um einen Webhook handelt. Für [mit einer Ressourcen-ID abonnierte Funktionen](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate#azurefunctioneventsubscriptiondestination), Service Bus, Event Hubs und Hybridverbindungen sollte diese Option nicht verwendet werden, da diese Ziele bei Verwendung mit Event Grid ihre eigenen Authentifizierungsschemas unterstützen.
 
 ### <a name="service-bus-example"></a>Service Bus-Beispiel
 Von Azure Service Bus wird die Verwendung eines [HTTP-Headers vom Typ „BrokerProperties“](/rest/api/servicebus/message-headers-and-properties#message-headers) unterstützt, um Nachrichteneigenschaften beim Senden einzelner Nachrichten zu definieren. Der Wert des Headers `BrokerProperties` muss im JSON-Format angegeben werden. Wenn Sie also beispielsweise beim Senden einer einzelnen Nachricht an Service Bus Nachrichteneigenschaften festlegen müssen, können Sie den Header wie folgt festlegen:

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f670af1fca4b4638988e53075f092ca1bbac55b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a026d1c0c70fb210a1a24dd4a8d85beba97b9612
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578259"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124211"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Web-App für Benutzeranmeldungen: Überführen in die Produktion
 
@@ -53,7 +53,7 @@ Dieses fortschreitende Tutorial enthält Web-App-Code, der in Produktionsumgebun
 
 Weitere Informationen zu Node.js-Web-Apps finden Sie in diesem Tutorial:
 
-[Tutorial: Anmelden von Benutzern bei einer Node.js- und Express-Web-App](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-nodejs-webapp-msal)
+[Tutorial: Anmelden von Benutzern bei einer Node.js- und Express-Web-App](./tutorial-v2-nodejs-webapp-msal.md)
 
 ## <a name="sample-code-java-web-app"></a>Beispielcode: Java-Web-App
 

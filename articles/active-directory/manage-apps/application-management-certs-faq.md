@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/19/2021
 ms.author: iangithinji
 ms.reviewer: secherka, mifarca, shchaur, shravank, sureshja
-ms.openlocfilehash: 0868c942a023662a1a6d3053477d85b0245fef4b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 653a9291cea6b65692ef2a34e2710ed947152a76
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376238"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318493"
 ---
 # <a name="azure-active-directory-azure-ad-application-management-certificates-frequently-asked-questions"></a>Häufig gestellte Fragen zu den Verwaltungszertifikaten von Anwendungen mit Azure Active Directory (Azure AD)
 
@@ -55,11 +55,11 @@ In Azure AD können Sie die Zertifikatsignaturoptionen und den Zertifikatsignatu
 
 ## <a name="i-need-to-replace-the-certificate-for-azure-ad-application-proxy-applications-and-need-more-instructions"></a>Ich muss das Zertifikat für Anwendungen mit Azure AD-Anwendungsproxys ersetzen und benötige weitere Anweisungen.
 
-Informationen zum Ersetzen von Zertifikaten für Anwendungen mit Azure AD Anwendungsproxys finden Sie unter [PowerShell-Beispiel: Ersetzen des Zertifikats in Anwendungsproxy-Apps](scripts/powershell-get-custom-domain-replace-cert.md).
+Informationen zum Ersetzen von Zertifikaten für Anwendungen mit Azure AD Anwendungsproxys finden Sie unter [PowerShell-Beispiel: Ersetzen des Zertifikats in Anwendungsproxy-Apps](../app-proxy/scripts/powershell-get-custom-domain-replace-cert.md).
 
 ## <a name="how-do-i-manage-certificates-for-custom-domains-in-azure-ad-application-proxy"></a>Wie verwalte ich Zertifikate für benutzerdefinierte Domänen im Azure AD-Anwendungsproxy?
 
-Zum Konfigurieren einer lokalen App für die Verwendung einer benutzerdefinierten Domäne benötigen Sie eine verifizierte benutzerdefinierte Azure Active Directory-Domäne, ein PFX-Zertifikat für die benutzerdefinierte Domäne und eine lokale App für die Konfiguration. Weitere Informationen finden Sie unter [Benutzerdefinierte Domänen im Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md). 
+Zum Konfigurieren einer lokalen App für die Verwendung einer benutzerdefinierten Domäne benötigen Sie eine verifizierte benutzerdefinierte Azure Active Directory-Domäne, ein PFX-Zertifikat für die benutzerdefinierte Domäne und eine lokale App für die Konfiguration. Weitere Informationen finden Sie unter [Benutzerdefinierte Domänen im Azure AD-Anwendungsproxy](../app-proxy/application-proxy-configure-custom-domain.md). 
 
 ## <a name="i-need-to-update-the-token-signing-certificate-on-the-application-side-where-can-i-get-it-on-azure-ad-side"></a>Ich muss das Tokensignaturzertifikat auf Anwendungsseite aktualisieren. Wo kann ich es in Azure AD erhalten?
 

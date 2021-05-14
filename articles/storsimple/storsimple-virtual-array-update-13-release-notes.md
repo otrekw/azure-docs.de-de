@@ -4,14 +4,14 @@ description: Dieser Artikel beschreibt wichtige offene Probleme und Lösungen f�
 ms.service: storsimple
 author: v-dalc
 ms.topic: article
-ms.date: 03/17/2021
+ms.date: 04/13/2021
 ms.author: alkohli
-ms.openlocfilehash: b2c2af4267140370c2aa9421a67cb3a6f413165f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 498e3d11d8188850a918c67a9a88643d15c134c5
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104657551"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389518"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>Versionsanmerkungen zu Update 1.3 für StorSimple Virtual Array
 
@@ -34,7 +34,7 @@ Dieses Update enthält die folgenden Verbesserungen: KB4540725
   
    Wenn die folgende Warnung angezeigt wird, müssen Sie die Software auf dem Gerät aktualisieren, bevor Sie den Vorgang fortsetzen:
 
-   Auf mindestens einem StorSimple-Gerät wird eine ältere Softwareversion ausgeführt. Das neueste verfügbare Update für TLS 1.2 ist ein obligatorisches Update und sollte sofort auf diesen Geräten installiert werden. TLS 1.2 wird für die gesamte Kommunikation des Azure-Portals verwendet, und ohne dieses Update kann das Gerät nicht mit dem StorSimple-Dienst kommunizieren.
+   Auf mindestens einem StorSimple-Gerät wird eine ältere Softwareversion ausgeführt. Das neueste verfügbare Update für TLS 1.2 ist ein obligatorisches Update und sollte sofort auf diesen Geräten installiert werden. TLS 1.2 wird für die gesamte Kommunikation des Azure-Portals verwendet, und ohne dieses Update kann das Gerät nicht mit dem StorSimple-Dienst kommunizieren.
 
 - Garbage Collection-Fehlerbehebungen, die die Leistung des Garbage Collection-Zyklus verbessern, wenn sich das Geräte- und das Speicherkonto in zwei entfernten Regionen befinden.
 - Fix für Sicherungsfehler aufgrund von Blobtimeouts.
@@ -45,12 +45,12 @@ Dieses Update enthält die folgenden Verbesserungen: KB4540725
 
 ## <a name="download-update-13"></a>Update 1.3 herunterladen
 
-Zum Herunterladen dieses Updates wechseln Sie zum [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/Home.aspx)-Server. Laden Sie dann das Paket KB4575898 herunter. Dieses Paket enthält die folgenden Pakete:
+Zum Herunterladen dieses Updates wechseln Sie zum [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/Home.aspx)-Server. Laden Sie dann das Paket KB4575898 herunter. Dieses Paket enthält die folgenden Pakete. Installieren Sie die Pakete in dieser Reihenfolge:
 
-- **KB4540725**, das kumulative Windows-Updates für 2012 R2 bis März 2020 enthält. Weitere Informationen zu den Inhalten dieses Rollups finden Sie im [monatlichen Sicherheitsrollup für März](https://support.microsoft.com/help/4540725).
-- **KB4565541**, das kumulative Windows-Updates für 2012 R2 bis Juli 2020 enthält. Weitere Informationen zu den Inhalten dieses Rollups finden Sie im [monatlichen Sicherheitsrollup für Februar](https://support.microsoft.com/help/4565541).
-- **KB4565622**, das kumulative .NET Framework-Updates bis Juli 2020 enthält. Weitere Informationen zu den Inhalten dieses Rollups finden Sie im [monatlichen Sicherheitsrollup für Februar](https://support.microsoft.com/help/4565622).
-- **KB3011067**, das Gerätesoftwareupdates enthält.
+1. **KB4540725**, das kumulative Windows-Updates für 2012 R2 bis März 2020 enthält. Weitere Informationen zu den Inhalten dieses Rollups finden Sie im [monatlichen Sicherheitsrollup für März](https://support.microsoft.com/help/4540725).
+1. **KB4565541**, das kumulative Windows-Updates für 2012 R2 bis Juli 2020 enthält. Weitere Informationen zu den Inhalten dieses Rollups finden Sie im [monatlichen Sicherheitsrollup für Juli](https://support.microsoft.com/help/4565541).
+1. **KB4565622**, das kumulative .NET Framework-Updates bis Juli 2020 enthält. Weitere Informationen zu den Inhalten dieses Rollups finden Sie unter [KB4565622](https://support.microsoft.com/help/4565622).<!--The Help link opens the KB. I can't find a monthly rollup. I updated the link text to accurately describe what opens.-->
+1. **KB3011067**, das Gerätesoftwareupdates enthält.
 
 Laden Sie KB4575898 herunter, und folgen Sie diesen Anweisungen, um [das Update über die lokale Webbenutzeroberfläche anzuwenden](./storsimple-virtual-array-install-update-11.md#use-the-local-web-ui).
 

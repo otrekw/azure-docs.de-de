@@ -1,5 +1,5 @@
 ---
-title: 'Beispiel: Hinzufügen von Gesichtern zu einer Personengruppe (PersonGroup): Gesichtserkennung'
+title: 'Beispiel: Hinzufügen von Gesichtern zu einer Personengruppe (PersonGroup) – Gesichtserkennung'
 titleSuffix: Azure Cognitive Services
 description: Diese Anleitung veranschaulicht das Hinzufügen einer großen Anzahl von Personen und Gesichtern zu einem PersonGroup-Objekt mit dem Gesichtserkennungsdienst von Azure Cognitive Services.
 services: cognitive-services
@@ -11,18 +11,18 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3643fad1c9e821a78df6d78edeede2341ec79ea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad669f700fdad6df7306403b3b487d86d6724d10
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303760"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016975"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Hinzufügen von Gesichtern zu einer PersonGroup
 
 Diese Anleitung veranschaulicht das Hinzufügen einer großen Anzahl von Personen und Gesichtern zu einer PersonGroup. Dieselbe Strategie gilt auch für LargePersonGroup-, FaceList- und LargeFaceList-Objekte. Dieses Beispiel wurde in C# unter Verwendung der .NET-Clientbibliothek für die Gesichtserkennung von Azure Cognitive Services geschrieben.
 
-## <a name="step-1-initialization"></a>Schritt 1: Initialisierung
+## <a name="step-1-initialization"></a>Schritt 1: Initialisieren
 
 Der folgende Code deklariert mehrere Variablen und implementiert eine Hilfsfunktion zum Planen der Anforderungen für das Hinzufügen von Gesichtern:
 
@@ -71,7 +71,7 @@ private readonly IFaceClient faceClient = new FaceClient(
 
 Sie können den Abonnementschlüssel im Azure Marketplace im Azure-Portal abrufen. Weitere Informationen finden Sie unter [Abonnements](https://www.microsoft.com/cognitive-services/sign-up).
 
-## <a name="step-3-create-the-persongroup"></a>Schritt 3: Erstellen von „PersonGroup“
+## <a name="step-3-create-the-persongroup"></a>Schritt 3: Erstellen von PersonGroup
 
 Eine PersonGroup mit dem Namen „MyPersonGroup“ wird erstellt, um Personen zu speichern.
 Die Anforderungszeit wird in `_timeStampQueue` in die Warteschlange eingereiht, um die gesamte Validierung sicherzustellen.
@@ -83,7 +83,7 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-for-the-persongroup"></a>Schritt 4: Erstellen von Personen für die PersonGroup
+## <a name="step-4-create-the-persons-for-the-persongroup"></a>Schritt 4: Erstellen von Personen für PersonGroup
 
 Personen werden gleichzeitig erstellt und `await WaitCallLimitPerSecondAsync()` wird ebenfalls angewandt, um zu vermeiden, dass die Aufrufbeschränkung überschritten wird.
 
@@ -136,7 +136,8 @@ Die folgenden Funktionen wurden erläutert und veranschaulicht:
 - Erstellen von Personen mithilfe der API [PersonGroup Person – Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
 - Sie fügen Personen mithilfe der API [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) Gesichter hinzu.
 
-## <a name="related-topics"></a>Verwandte Themen
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Gesichtserkennung in einem Bild](HowtoDetectFacesinImage.md)
-- [Verwenden der Funktion für die Verarbeitung in großem Umfang](how-to-use-large-scale.md)
+In diesem Leitfaden haben Sie erfahren, wie Sie **PersonGroup** Gesichtsdaten hinzufügen. Als Nächstes erfahren Sie, welche weiteren Möglichkeiten die erweiterte Datenstruktur **PersonDirectory** für Ihre Gesichtsdaten bietet.
+
+- [Verwenden der PersonDirectory-Struktur](use-persondirectory.md)

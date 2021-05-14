@@ -3,20 +3,20 @@ title: Microsoft Teams in Windows Virtual Desktop – Azure
 description: Hier erfahren Sie, wie Sie Microsoft Teams in Windows Virtual Desktop verwenden.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 04/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: 0c528f183106472850d6b5d2a8b492ea8939eda6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743116"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285257"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Verwenden von Microsoft Teams in Windows Virtual Desktop
 
 >[!IMPORTANT]
->Die Medienoptimierung für Teams wird für Microsoft 365 Government- (GCC) und GCC-High-Umgebungen unterstützt. Die Medienoptimierung für Teams wird für GCC-High oder DoD nicht unterstützt.
+>Die Medienoptimierung für Teams wird für Microsoft 365 Government- (GCC) und GCC-High-Umgebungen unterstützt. Die Medienoptimierung für Teams wird für Microsoft 365 DoD nicht unterstützt.
 
 >[!NOTE]
 >Die Medienoptimierung für Microsoft Teams steht nur für den Windows Desktop-Client auf Windows 10-Computern zur Verfügung. Medienoptimierungen erfordern Windows Desktop-Clientversion 1.2.1026.0 oder höher.
@@ -120,7 +120,7 @@ Nachdem Sie den WebSocket-Dienst und die Teams-Desktop-App installiert haben, f�
 
 3. Wählen Sie **Version** aus.
 
-      Wenn Medienoptimierungen geladen wurden, zeigt das Banner **WVD-Medien optimiert** an. Wenn das Banner **WVD-Medien nicht verbunden** anzeigt, beenden Sie die Teams-App, und versuchen Sie es erneut.
+      Wenn Medienoptimierungen geladen wurden, zeigt das Banner **Windows Virtual Desktop-Medien optimiert** an. Wenn das Banner **Windows Virtual Desktop-Medien nicht verbunden** anzeigt, beenden Sie die Teams-App, und versuchen Sie es erneut.
 
 4. Wählen Sie Ihr Benutzerprofilbild und dann **Einstellungen** aus.
 
@@ -149,10 +149,6 @@ Die Verwendung von Teams in einer virtualisierten Umgebung unterscheidet sich vo
 - New Meeting Experience (NME) wird in VDI-Umgebungen zurzeit nicht unterstützt.
 
 Informationen zu bekannten Problemen bei Teams, die sich nicht auf virtualisierte Umgebungen beziehen, finden Sie unter [Unterstützung von Microsoft Teams in Ihrer Organisation](/microsoftteams/known-issues).
-
-## <a name="uservoice-site"></a>UserVoice-Website
-
-Geben Sie auf der [UserVoice-Website](https://microsoftteams.uservoice.com/) von Teams Ihr Feedback zu Microsoft Teams auf Windows Virtual Desktop.
 
 ## <a name="collect-teams-logs"></a>Sammeln von Teams-Protokollen
 

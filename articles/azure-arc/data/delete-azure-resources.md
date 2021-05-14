@@ -9,22 +9,23 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 60c5ddcc67db6e4a0649458cfbd5c2949aa9a32a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ce46b7afe7344fabde03805dc2a0977411be5811
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202041"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107716077"
 ---
 # <a name="delete-resources-from-azure"></a>Löschen von Azure-Ressourcen
 
-> [!NOTE]
->  Die in diesem Artikel beschriebenen Optionen zum Löschen von Ressourcen sind nicht rückgängig zu machen.
+In diesem Artikel wird beschrieben, wie Sie Ressourcen in Azure löschen.
 
-> [!NOTE]
->  Da der einzige Konnektivitätsmodus, der für Azure Arc-fähige Datendienste angeboten wird, derzeit der Indirect Connected-Modus ist, wird er durch das Löschen einer Kubernetes-Instanz nicht aus Azure entfernt. Umgekehrt wird er durch das Löschen einer Azure-Instanz nicht aus Kubernetes entfernt.  Das Löschen einer Ressource ist ein zweistufiger Prozess, der in Zukunft verbessert wird.  In Zukunft wird Kubernetes die allgemeingültige Datenquelle sein, und Azure wird auf der Grundlage dieser Daten aktualisiert.
+> [!WARNING]
+> Wenn Sie Ressourcen wie in diesem Artikel beschrieben löschen, können diese Aktionen nicht rückgängig gemacht werden.
 
-In einigen Fällen müssen Sie möglicherweise Azure Arc-fähige Datendienstressourcen in Azure Resource Manager (ARM) manuell löschen.  Sie können die Ressourcen mit einer der folgenden Optionen löschen.
+Im indirekten Verbindungsmodus wird eine Instanz durch das Löschen in Kubernetes nicht aus Azure entfernt. Umgekehrt wird eine Instanz nicht durch das Löschen in Azure aus Kubernetes entfernt. Beim indirekten Verbindungsmodus ist das Löschen einer Ressource ein zweistufiger Prozess, der in Zukunft verbessert wird. Kubernetes ist dann die allgemeingültige Datenquelle, und das Portal wird auf der Grundlage dieser Daten aktualisiert.
+
+In einigen Fällen müssen Sie möglicherweise Azure Arc-fähige Datendienstressourcen in Azure manuell löschen.  Sie können die Ressourcen mit einer der folgenden Optionen löschen.
 
 - [Löschen von Azure-Ressourcen](#delete-resources-from-azure)
   - [Löschen einer ganzen Ressourcengruppe](#delete-an-entire-resource-group)
@@ -38,6 +39,7 @@ In einigen Fällen müssen Sie möglicherweise Azure Arc-fähige Datendienstress
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="delete-an-entire-resource-group"></a>Löschen einer ganzen Ressourcengruppe
+
 Wenn Sie eine bestimmte dedizierte Ressourcengruppe für Azure Arc-fähige Datendienste verwendet haben und Sie *alle* Elemente der Ressourcengruppe löschen möchten, können Sie die Ressourcengruppe samt Inhalt löschen.  
 
 Führen Sie die folgenden Schritte aus, um eine Ressourcengruppe im Azure-Portal zu löschen:

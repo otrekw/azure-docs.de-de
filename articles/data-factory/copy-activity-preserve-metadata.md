@@ -1,17 +1,17 @@
 ---
 title: Beibehalten von Metadaten und Zugriffssteuerungslisten bei Verwendung der Kopieraktivität in Azure Data Factory
 description: Erfahren Sie, wie Sie Metadaten und Zugriffssteuerungslisten beim Kopieren mit der Kopieraktivität in Azure Data Factory beibehalten.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.author: jingwang
-ms.openlocfilehash: 396a598d143e85687f9dfbf765b3c18736627e41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 15221c5884ca52d5560fe46dc36ba1647bdea394
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387715"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488589"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Beibehalten von Metadaten und Zugriffssteuerungslisten bei Verwendung der Kopieraktivität in Azure Data Factory
 

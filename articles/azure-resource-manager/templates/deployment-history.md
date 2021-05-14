@@ -4,12 +4,13 @@ description: Erfahren Sie, wie Sie Azure Resource Manager-Bereitstellungsvorgän
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: e7ed2096a696efdc9a2654a8fd0c294c82cbd4f7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: eeb56665d7287b8239ad309fd0f7de5b539e1ed2
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781863"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752101"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Anzeigen des Bereitstellungsverlaufs mit Azure Resource Manager
 

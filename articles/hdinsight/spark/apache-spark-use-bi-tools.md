@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 3e0632b2ad1ac237d8899e9d3bdc7f1d3350fa76
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a5a70d16ad0fd2805871ef4c08d2891082dd2916
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057931"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163047"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Tutorial: Analysieren von Apache Spark-Daten mithilfe von Power BI in HDInsight
 
@@ -36,7 +36,7 @@ Das im [vorherigen Tutorial](apache-spark-load-data-run-query.md) erstellte [Jup
 
 1. Fügen Sie im Jupyter Notebook den folgenden Code ein, und drücken Sie **UMSCHALT+EINGABETASTE**. Der Code überprüft das Vorhandensein der Tabellen.
 
-    ```PySpark
+    ```pyspark
     %%sql
     SHOW TABLES
     ```
@@ -49,7 +49,7 @@ Das im [vorherigen Tutorial](apache-spark-load-data-run-query.md) erstellte [Jup
 
 2. Fügen Sie den folgenden Code in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABETASTE**. Der Code überprüft die Daten in der Tabelle.
 
-    ```PySpark
+    ```pyspark
     %%sql
     SELECT * FROM hvac LIMIT 10
     ```
@@ -98,7 +98,7 @@ Die ersten Schritte bei der Verwendung von Spark bestehen darin, eine Verbindung
 
     2. Ziehen Sie das Feld **BuildingID** unter **Achse** und die Felder **ActualTemp** und **TargetTemp** unter **Wert**.
 
-        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png " alt-text="Hinzufügen von Wertspalten" border="true":::
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png " alt-text="Hinzufügen von Spaltenwerten" border="true":::
 
         Das Diagramm sieht wie folgt aus:
 

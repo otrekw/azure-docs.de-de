@@ -1,17 +1,18 @@
 ---
-title: 'Tutorial: Erstellen und Verwalten eines VPN Gateways: Azure-Portal'
-description: In diesem Tutorial erfahren Sie, wie Sie mithilfe des Portals eine Azure VPN Gateway-Instanz erstellen, bereitstellen und verwalten.
+title: 'Tutorial: Erstellen und Verwalten eines VPN-Gateways – Azure-Portal'
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe des Portals ein Azure-VPN-Gateway erstellen, bereitstellen und verwalten.
+titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: 820482a268af038737557c517ccda086cd65d943
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/28/2021
+ms.openlocfilehash: 29f479444679d1f76dc90eec4546539faea5337f
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880558"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202567"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Tutorial: Erstellen und Verwalten eines VPN-Gateways über das Azure-Portal
 
@@ -28,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Im folgenden Diagramm sind das virtuelle Netzwerk und das VPN-Gateway dargestellt, die im Rahmen dieses Tutorials erstellt wurden.
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="Diagramm zum VNet- und VPN-Gateway":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="Diagramm: VNet und VPN-Gateway":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -74,7 +75,7 @@ Erstellen Sie ein virtuelles Netzwerkgateway mit den folgenden Werten:
 
 Sie können die öffentliche IP-Adresse des Gateways auf der Seite **Übersicht** für Ihr Gateway anzeigen.
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Seite „Übersicht“":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Screenshot: Seite „Übersicht“":::
 
 Klicken Sie auf den Link „Name/IP-Adresse“ neben **Öffentliche IP-Adresse**, um zusätzliche Informationen zum öffentlichen IP-Adressobjekt anzuzeigen.
 

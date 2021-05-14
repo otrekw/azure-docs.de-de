@@ -1,17 +1,17 @@
 ---
 title: Kopieren von Daten aus einem bzw. in ein Dateisystem mithilfe von Azure Data Factory
 description: Erfahren Sie, wie mithilfe von Azure Data Factory Daten aus einem Dateisystem in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern in ein Dateisystem kopiert werden.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/29/2021
-ms.author: jingwang
-ms.openlocfilehash: c49b543b13dddf4c4ba7e36196795c6a0d638ae2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: jianleishen
+ms.openlocfilehash: 16be6dee6a1afa8808220790dd4cb7bd40cf50cc
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731954"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488679"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Kopieren von Daten in ein bzw. aus einem Dateisystem mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -41,11 +41,11 @@ Der Dateisystemconnector unterstützt insbesondere Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Dateisysteme verwendet werden:
 
@@ -98,7 +98,7 @@ Folgende Eigenschaften werden für den mit einem Dateisystem verknüpften Dienst
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Die folgenden Eigenschaften werden für ein Dateisystem unter den `location`-Einstellungen im formatbasierten Dataset unterstützt:
 
@@ -140,7 +140,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="file-system-as-source"></a>Dateisystem als Quelle
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Die folgenden Eigenschaften werden für ein Dateisystem unter den `storeSettings`-Einstellungen der formatbasierten Kopierquelle unterstützt:
 
@@ -205,7 +205,7 @@ Die folgenden Eigenschaften werden für ein Dateisystem unter den `storeSettings
 
 ### <a name="file-system-as-sink"></a>Dateisystem als Senke
 
-[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
+[!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)]
 
 Die folgenden Eigenschaften werden für ein Dateisystem unter den `storeSettings`-Einstellungen der formatbasierten Kopiersenke unterstützt:
 

@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c320c8497506a0269e65cd79e18aea1972354729
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ba3bdc3f58395f17911042c699a0aca3cbae92a2
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589521"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290630"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -43,7 +43,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
     >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](./reference-connect-version-history.md).
     
     >[!NOTE]
-    >Wenn Sie über einen ausgehenden HTTP-Proxy verfügen, stellen Sie sicher, dass die entsprechende URL „autologon.microsoftazuread-sso.com“ zur Whitelist hinzugefügt wurde. Sie sollten diese URL explizit angeben, da der Platzhalter möglicherweise nicht akzeptiert wird. 
+    >Wenn Sie einen ausgehenden HTTP-Proxy verwenden, vergewissern Sie sich, dass diese URL, autologon.microsoftazuread-sso.com, in der Liste der zulässigen URLs enthalten ist. Sie sollten diese URL explizit angeben, da der Platzhalter möglicherweise nicht akzeptiert wird. 
 
 * **Verwenden Sie eine unterstützte Azure AD Connect-Topologie:** Stellen Sie sicher, dass Sie eine der [hier](plan-connect-topologies.md) beschriebenen, von Azure AD Connect unterstützten Topologien verwenden.
 
@@ -208,7 +208,7 @@ Das Rollout der Azure AD-URL für Firefox und Google Chrome unter Mac mithilfe v
 
 #### <a name="known-browser-limitations"></a>Bekannte Browsereinschränkungen
 
-Das nahtlose einmalige Anmelden funktioniert in den Browsern Firefox und Microsoft Edge (Vorgängerversion) nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird. In der nächsten Version von Microsoft Edge auf Chromium-Basis wird das einmalige Anmelden unterstützt und kann im InPrivate- und Gastmodus erfolgen.
+Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird. In der nächsten Version von Microsoft Edge auf Chromium-Basis wird das einmalige Anmelden unterstützt und kann im InPrivate- und Gastmodus erfolgen. Microsoft Edge (Legacyversion) wird nicht mehr unterstützt.
 
 ## <a name="step-4-test-the-feature"></a>Schritt 4: Testen des Features
 

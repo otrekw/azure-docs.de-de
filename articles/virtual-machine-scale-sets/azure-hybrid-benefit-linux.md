@@ -6,27 +6,28 @@ documentationcenter: ''
 author: mathapli
 manager: rochakm
 ms.service: virtual-machine-scale-sets
+ms.subservice: azure-hybrid-benefit
 ms.collection: linux
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/20/2021
 ms.author: mathapli
-ms.openlocfilehash: a714434c39a0c40c2e908f2d0c424f02851921a6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: afbdd490a429c86f1842b83fb62c3ce6a023a0ed
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933677"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750943"
 ---
-# <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set-public-preview"></a>Azure-Hybridvorteil für Skalierungssätze für VM-Skalierungsgruppe (Public Preview)
+# <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set"></a>Azure-Hybridvorteil für eine Linux-VM-Skalierungsgruppe
 
-**Azure-Hybridvorteil für Linux VM-Skalierungsgruppe ist im Public Review jetzt**. Der Azure-Hybridvorteil kann Ihnen helfen, die Kosten für die Ausführung ihrer RHEL-und SLES-VM- [Skalierungs Gruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)zu reduzieren.
+**Der Azure-Hybridvorteil für eine Linux-VM-Skalierungsgruppe ist nun allgemein verfügbar.** Der Azure-Hybridvorteil kann Ihnen helfen, die Kosten für die Ausführung ihrer RHEL-und SLES-VM- [Skalierungs Gruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)zu reduzieren.
 
 Mit diesem Vorteil zahlen Sie nur die Infrastrukturkosten für Ihr Skalierungsgruppe. Der Vorteil ist für alle RHEL- und SLES-Images im Marketplace mit nutzungsbasierter Bezahlung verfügbar.
 
 
 >[!NOTE]
-> Dieser Artikel beschreibt den Azure-Hybridvorteil für Linux VMSS. Es gibt einen separaten [Artikel, der [hier für den Azure-Hybridvorteil](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)-Computer verfügbar ist, der für Azure-Kunden bereits seit November 2020 verfügbar ist.
+> Dieser Artikel beschreibt den Azure-Hybridvorteil für Linux VMSS. Es gibt einen separaten [Artikel, der [hier für den Azure-Hybridvorteil](../virtual-machines/linux/azure-hybrid-benefit-linux.md)-Computer verfügbar ist, der für Azure-Kunden bereits seit November 2020 verfügbar ist.
 
 ## <a name="benefit-description"></a>Beschreibung des Vorteils
 Mit Azure Hybrid können Sie die vorhandenen Cloud-Zugangslizenzen von Red Hat oder SUSE nutzen und VM-Skalierungsgruppen flexibel auf Bring-your-own-Subscription (BYOS)-Abrechnung umstellen. 
@@ -71,7 +72,23 @@ So beginnen Sie mit der Verwendung des Vorteils für SUSE:
 
 
 ## <a name="enable-and-disable-the-benefit-on-azure-portal"></a>Aktivieren und Deaktivieren der Leistung im Azure-Portal 
-Die Portal Darstellung zum Aktivieren und Deaktivieren von AHB in der VM-Skalierungsgruppe ist **zurzeit nicht verfügbar**.
+### <a name="azure-portal-example-to-enable-the-benefit-during-creation"></a>Beispiel für das Aktivieren des Vorteils während der Erstellung über das Azure-Portal:
+1. Öffnen Sie das [Microsoft Azure-Portal](https://portal.azure.com/).
+1. Navigieren Sie im Portal zur Seite „VM-Skalierungsgruppe erstellen“.
+ ![Azure-Hybridvorteil beim Erstellen einer VMSS](./media/azure-hybrid-benefit-linux/create-vmss-ahb.png)
+1. Aktivieren Sie das Kontrollkästchen, um die AHB-Konvertierung zu aktivieren und Cloudzugriffslizenzen zu verwenden.
+ ![Kontrollkästchen für den Azure-Hybridvorteil beim Erstellen einer VMSS](./media/azure-hybrid-benefit-linux/create-vmss-ahb-checkbox.png)
+1. Erstellen Sie anhand der folgenden Anweisungen eine VM-Skalierungsgruppe.
+1. Überprüfen Sie auf dem Blatt **Konfiguration**, ob die Option aktiviert ist. 
+![Azure-Hybridvorteil: Blatt für das Betriebssystem nach der Erstellung](./media/azure-hybrid-benefit-linux/create-vmss-ahb-os-blade.png)
+
+### <a name="azure-portal-example-to-enable-the-benefit-for-an-existing-virtual-machine-scale-set"></a>Beispiel für das Aktivieren des Vorteils für eine vorhandene VM-Skalierungsgruppe über das Azure-Portal:
+1. Öffnen Sie das [Microsoft Azure-Portal](https://portal.azure.com/).
+1. Öffnen Sie die Seite „VM-Skalierungsgruppe“, auf die Sie die Konvertierung anwenden möchten.
+1. Navigieren Sie auf der linken Seite zur Option **Betriebssystem**. Der Abschnitt „Lizenzierung“ wird angezeigt. Aktivieren Sie das Optionsfeld „Ja“ und das Kontrollkästchen zur Bestätigung, um die AHB-Konvertierung zu aktivieren.
+![Blatt für die AHB-Konfiguration nach dem Erstellen](./media/azure-hybrid-benefit-linux/create-vmss-ahb-os-blade.png)
+
+
 
 ## <a name="enable-and-disable-the-benefit-using-azure-cli"></a>Aktivieren und Deaktivieren der Leistung mit Azure CLI
 
@@ -94,7 +111,7 @@ az vmss update -g myResourceGroup -n myVmName --license-type None
 ```
 
 >[!NOTE]
-> Für Skalierungsgruppen gilt eine [„Upgraderichtlinie“](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model), die festlegt, wie virtuelle Computer auf das aktuelle Skalierungsgruppenmodell aktualisiert werden. Wenn Ihre VMSS die Upgrade-Richtlinie „Automatisch“ haben, wird der AHB-Vorteil automatisch angewendet, wenn VM-Instanzen aktualisiert werden. Wenn VMSS eine Richtlinie zum „parallelen Upgrade“ haben, wird AHB basierend auf den geplanten Updates angewendet.
+> Für Skalierungsgruppen gilt eine [„Upgraderichtlinie“](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model), die festlegt, wie virtuelle Computer auf das aktuelle Skalierungsgruppenmodell aktualisiert werden. Wenn Ihre VMSS die Upgrade-Richtlinie „Automatisch“ haben, wird der AHB-Vorteil automatisch angewendet, wenn VM-Instanzen aktualisiert werden. Wenn VMSS eine Richtlinie zum „parallelen Upgrade“ haben, wird AHB basierend auf den geplanten Updates angewendet.
 Bei der Upgrade-Richtlinie „Manuel“ müssen Sie für jede vorhandene VM ein „manuelles Upgrade“ durchführen.  
 
 ### <a name="cli-example-to-upgrade-virtual-machine-scale-set-instances-in-case-of-manual-upgrade-policy"></a>CLI-Beispiel für das Upgrade der VM-Skalierungsgruppe bei der Richtlinie „Manuelles Upgrade“ 

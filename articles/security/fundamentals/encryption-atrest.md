@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1318aaf50d4f05b8a999e5661318dc83997a2f02
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c302b10baad157cd70751d49fe6d50911c2ce75
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96920781"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074788"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -91,7 +91,7 @@ Software-as-a-Service-Kunden haben die Verschlüsselung ruhender Daten üblicher
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>Verschlüsselung ruhender Daten for PaaS-Kunden
 
-Die Daten von PaaS-Kunden (Platform-as-a-Service) befinden sich in der Regel in einem Speicherdienst wie Blob Storage, können aber auch zwischengespeichert oder in der Anwendungsausführungsumgebung gespeichert werden, beispielsweise auf einem virtuellen Computer. Um sich die für Sie verfügbaren Optionen für die Verschlüsselung ruhender Daten anzusehen, überprüfen Sie die nachstehende Tabelle auf die von Ihnen verwendeten Speicher- und Anwendungsplattformen.
+Die Daten von PaaS-Kunden (Platform-as-a-Service) befinden sich in der Regel in einem Speicherdienst wie Blob Storage, können aber auch zwischengespeichert oder in der Anwendungsausführungsumgebung gespeichert werden, beispielsweise auf einem virtuellen Computer. In der Tabelle [Datenverschlüsselungsmodelle: Unterstützende Dienste](encryption-models.md#supporting-services) können Sie Optionen für die Verschlüsselung im Ruhezustand untersuchen, die für die von Ihnen verwendeten Speicher- und Anwendungsplattformen zur Verfügung stehen.
 
 ### <a name="encryption-at-rest-for-iaas-customers"></a>Verschlüsselung ruhender Daten für IaaS-Kunden
 
@@ -99,7 +99,7 @@ IaaS-Kunden können mehrere Dienste und Anwendungen verwenden. IaaS-Dienste kön
 
 #### <a name="encrypted-storage"></a>Verschlüsselter Speicher
 
-Genauso wie PaaS können auch IaaS-Lösungen andere Azure-Dienste nutzen, um ruhende verschlüsselte Daten zu speichern. In diesen drei Fällen können Sie die Unterstützung der Verschlüsselung ruhender Daten wie von jeden genutzten Azure-Dienst bereitgestellt ermöglichen. In der unten stehenden Tabelle sind die Hauptspeicher, -dienste und -anwendungsplattformen sowie das unterstützte Modell zur Verschlüsselung ruhender Daten aufgelistet.
+Genauso wie PaaS können auch IaaS-Lösungen andere Azure-Dienste nutzen, um ruhende verschlüsselte Daten zu speichern. In diesen drei Fällen können Sie die Unterstützung der Verschlüsselung ruhender Daten wie von jeden genutzten Azure-Dienst bereitgestellt ermöglichen. In der Tabelle [Datenverschlüsselungsmodelle: Unterstützende Dienste](encryption-models.md#supporting-services) werden die wichtigsten Speicher, Dienste und Anwendungsplattformen sowie das unterstützte Modell zur Verschlüsselung ruhender Daten aufgelistet.
 
 #### <a name="encrypted-compute"></a>Verschlüsselte Berechnung
 

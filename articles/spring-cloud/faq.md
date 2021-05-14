@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: cee71557e60be9fdd94099453d9b8617c4b3b5ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a60634175ff06780372331bef6b28de2edbfea33
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877619"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144635"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -37,7 +37,7 @@ Sicherheit und Datenschutz gehören zu den wichtigsten Prioritäten für Azure- 
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>In welchen Regionen ist Azure Spring Cloud verfügbar?
 
-„USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Süden“, „Asien, Südosten“, „Australien, Osten“, „Kanada, Mitte“, „VAE, Norden“, „Indien, Mitte“, „Südkorea, Mitte“, „Asien, Osten“ und „China, Osten 2 (Mooncake)“. [Weitere Informationen](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
+„USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Süden“, „Asien, Südosten“, „Australien, Osten“, „Kanada, Mitte“, „VAE, Norden“, „Indien, Mitte“, „Südkorea, Mitte“, „Asien, Osten“, „Japan, Osten“, „Südafrika, Norden“ und „China, Osten 2 (Mooncake)“. [Weitere Informationen](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>Werden Kundendaten außerhalb der angegebenen Region gespeichert?
 
@@ -63,7 +63,7 @@ Wenn bei der Azure Spring Cloud Probleme auftreten, erstellen Sie eine [Azure-Su
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>Ich bin Spring Cloud-Entwickler, habe aber noch nicht mit Azure gearbeitet. Wie lerne ich am schnellsten, wie ich eine Azure Spring Cloud-Anwendung entwickle?
 
-Für den schnellsten Einstieg mit Azure Spring Cloud führen Sie die Anweisungen im [Schnellstart: Starten einer Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart.md).
+Für den schnellsten Einstieg mit Azure Spring Cloud führen Sie die Anweisungen im [Schnellstart: Starten einer Azure Spring Cloud-Anwendung über das Azure-Portal](./quickstart.md).
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Welche Java-Runtime unterstützt Azure Spring Cloud?
@@ -96,7 +96,7 @@ Azure Spring Cloud unterstützt das Exportieren von Spring Cloud-Anwendungsproto
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Unterstützt Azure Spring Cloud die verteilte Ablaufverfolgung?
 
-Ja. Weitere Informationen finden Sie im [Tutorial: Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](spring-cloud-howto-distributed-tracing.md).
+Ja. Weitere Informationen finden Sie im [Tutorial: Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](./how-to-distributed-tracing.md).
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>Welche Ressourcentypen werden von der Dienstbindung unterstützt?
@@ -186,7 +186,7 @@ Für kritische Sicherheitsupdates (CVE-Score >= 9), die auf Azure Spring Cloud a
 ## <a name="deployment"></a>Bereitstellung
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Werden Blau/Grün-Bereitstellungen von Azure Spring Cloud unterstützt?
-Ja. Weitere Informationen finden Sie unter [Einrichten einer Stagingumgebung](spring-cloud-howto-staging-environment.md).
+Ja. Weitere Informationen finden Sie unter [Einrichten einer Stagingumgebung](./how-to-staging-environment.md).
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Kann ich auf Kubernetes zugreifen, um meine Anwendungscontainer zu bearbeiten?
 
@@ -194,11 +194,11 @@ Nein.  Azure Spring Cloud trennt den Entwickler von der zugrunde liegenden Archi
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Unterstützt Azure Spring Cloud das Erstellen von Containern aus einer Quelle?
 
-Ja. Weitere Informationen finden Sie unter [Starten Ihrer Spring Cloud-Anwendung über den Quellcode](spring-cloud-quickstart.md).
+Ja. Weitere Informationen finden Sie unter [Starten Ihrer Spring Cloud-Anwendung über den Quellcode](./quickstart.md).
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Unterstützt Azure Spring Cloud die automatische Skalierung in App-Instanzen?
 
-Ja.  Weitere Informationen finden Sie unter [Einrichten einer Domäne](spring-cloud-tutorial-setup-autoscale.md).
+Ja.  Weitere Informationen finden Sie unter [Einrichten einer Domäne](./how-to-setup-autoscale.md).
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Wie lauten die bewährten Methoden für die Migration vorhandener Spring Cloud-Microservices zu Azure Spring Cloud?
@@ -243,4 +243,4 @@ Wir werden diesen Teil verbessern und in Kürze verhindern, dass dieser Fehler i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie weitere Fragen haben, finden Sie weitere Informationen im [Leitfaden zur Problembehandlung bei Azure Spring Cloud](spring-cloud-troubleshoot.md).
+Wenn Sie weitere Fragen haben, finden Sie weitere Informationen im [Leitfaden zur Problembehandlung bei Azure Spring Cloud](./troubleshoot.md).

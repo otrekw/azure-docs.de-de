@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 4eea2611997732a263e9e824bc150b45ed145ecd
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: eb6369e89066451779d05a97057acbdd451de192
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738970"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146669"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>Was sind Sicherheitsrichtlinien, Initiativen und Empfehlungen?
 
@@ -35,7 +35,7 @@ Eine Sicherheitsinitiative definiert die gewünschte Konfiguration Ihrer Workloa
 
 Wie Sicherheitsrichtlinien auch, werden Security Center-Initiativen in Azure Policy erstellt. Sie können [Azure Policy](../governance/policy/overview.md) nutzen, um Ihre Richtlinien zu verwalten und Initiativen zu erstellen und mehreren Abonnements oder für ganze Verwaltungsgruppen zuzuweisen.
 
-Die Standardinitiative, die jedem Abonnement in Azure Security Center automatisch zugewiesen wird, ist der Vergleichstest für die Azure-Sicherheit (Azure Security Benchmark). Bei diesem Vergleichstest handelt es sich um einen von Microsoft erstellten Satz mit Azure-spezifischen Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit. Informieren Sie sich über [Azure Security-Vergleichstests](https://docs.microsoft.com/security/benchmark/azure/introduction).
+Die Standardinitiative, die jedem Abonnement in Azure Security Center automatisch zugewiesen wird, ist der Vergleichstest für die Azure-Sicherheit (Azure Security Benchmark). Bei diesem Vergleichstest handelt es sich um einen von Microsoft erstellten Satz mit Azure-spezifischen Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit. Informieren Sie sich über [Azure Security-Vergleichstests](/security/benchmark/azure/introduction).
 
 Security Center verfügt über die folgenden Optionen für die Arbeit mit Sicherheitsinitiativen und -richtlinien:
 

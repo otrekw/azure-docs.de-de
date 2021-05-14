@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2021
+ms.date: 04/14/2021
 ms.author: aldomel
-ms.openlocfilehash: 0dd053fa268e88c281c1fe6c00339fe6a6edf27a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 232b83fef2da312828f4f9f332ab2505e3a68100
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732600"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503642"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -111,7 +111,7 @@ Wenn es eine exakte Präfixübereinstimmung zwischen einer Route mit einem expli
    3. Regionale AzureCloud-Tags (z. B. AzureCloud.canadacentral, AzureCloud.eastasia)
    4. AzureCloud-Tag </br></br>
 
-Um dieses Feature zu verwenden, geben Sie einen Diensttagnamen für den Adresspräfixparameter in Routingtabellenbefehlen an. In Powershell können Sie z. B. eine neue Route erstellen, um den an ein Azure Storage-IP-Präfix gesendeten Datenverkehr an ein virtuelles Gerät zu leiten, indem Sie Folgendes verwenden: </br>
+Um dieses Feature zu verwenden, geben Sie einen Diensttagnamen für den Adresspräfixparameter in Routingtabellenbefehlen an. In Powershell können Sie z. B. eine neue Route erstellen, um den an ein Azure Storage-IP-Präfix gesendeten Datenverkehr an ein virtuelles Gerät zu leiten, indem Sie Folgendes verwenden: </br></br>
 
 ```azurepowershell-interactive
 New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
@@ -123,6 +123,10 @@ Der gleiche Befehl für die CLI lautet dann: </br>
 az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
 ```
 </br>
+
+#### <a name="known-issues-april-2021"></a>Bekannte Probleme und Fehler (April 2021)
+
+Wenn BGP-Routen vorhanden sind oder ein Dienstendpunkt in Ihrem Subnetz konfiguriert ist, werden Routen möglicherweise nicht mit der richtigen Priorität ausgewertet. Derzeit wird eine Lösung für diese Szenarien entwickelt </br>
 
 
 > [!NOTE] 

@@ -2,17 +2,17 @@
 title: Azure Monitor-Metriken für Application Gateway
 description: Erfahren Sie, wie Sie mit Metriken die Leistung von Application Gateway überwachen.
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: article
-ms.date: 06/06/2020
-ms.author: surmb
-ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/19/2021
+ms.author: azhussai
+ms.openlocfilehash: 615db7e8d53e397755ae318d171dab1eab9ec6c6
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576111"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727802"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriken für Application Gateway
 
@@ -24,7 +24,7 @@ Application Gateway veröffentlicht Datenpunkte, sogenannte Metriken, für die L
 
 Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich auf die Anforderung und die Antwort beziehen und jeweils in Millisekunden gemessen werden. 
 
-![Diagramm der Timingmetriken für das Application Gateway.](./media/application-gateway-metrics/application-gateway-metrics.png)
+:::image type="content" source="./media/application-gateway-metrics/application-gateway-metrics.png" alt-text="Diagramm der Timingmetriken für das Application Gateway" border="false":::
 
 > [!NOTE]
 >

@@ -10,20 +10,22 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/21/2020
+ms.date: 4/19/2021
 ms.author: duau
-ms.openlocfilehash: a64c91910ba65901a6d1374df9633062398a90e4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3567d5af31b0c7bc2443e3d02426a5bb7aba06f7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067652"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862001"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Schnellstart: Erstellen einer hochverfügbaren globalen Front Door-Webanwendung mit der Azure CLI
 
 Führen Sie erste Schritte mit Azure Front Door aus, indem Sie die Azure CLI verwenden, um eine hochverfügbare und leistungsstarke globale Webanwendung zu erstellen.
 
 Front Door leitet Webdatenverkehr an bestimmte Ressourcen in einem Back-End-Pool weiter. Sie haben die Front-End-Domäne definiert, einem Back-End-Pool Ressourcen hinzugefügt und eine Routingregel erstellt. In diesem Artikel wird eine einfache Konfiguration eines Back-End-Pools mit zwei Web-App-Ressourcen und einer einzelnen Routingregel mit einem Standardpfad verwendet, der „/*“ entspricht.
+
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="Diagramm: Front Door-Bereitstellungsumgebung mit der Azure CLI" border="false":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +47,7 @@ In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Sie können 
 
 Für diesen Schnellstart benötigen Sie zwei Ressourcengruppen. Eine Ressourcengruppe in *USA, Mitte* und eine zweite in *USA, Süden-Mitte*.
 
-Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe:
+Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe:
 
 ```azurecli-interactive
 az group create \
@@ -53,8 +55,8 @@ az group create \
     --location centralus
 
 az group create \
-    --name myRGFDSouthCentral \
-    --location southcentralus
+    --name myRGFDEast \
+    --location eastus
 ```
 
 ## <a name="create-two-instances-of-a-web-app"></a>Erstellen von zwei Instanzen einer Web-App
@@ -65,7 +67,7 @@ Wenn Sie noch nicht über eine Web-App verfügen, verwenden Sie das folgende Skr
 
 ### <a name="create-app-service-plans"></a>Erstellen von App Service-Plänen
 
-Bevor Sie die Web-Apps erstellen können, benötigen Sie zwei App Service-Pläne: einen in *USA, Mitte* und einen zweiten in *USA, Süden-Mitte*.
+Bevor Sie die Web-Apps erstellen können, benötigen Sie zwei App Service-Pläne: einen in *USA, Mitte* und einen zweiten in *USA, Osten*.
 
 Erstellen Sie App Service-Pläne mithilfe von [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create&preserve-view=true):
 
@@ -75,8 +77,8 @@ az appservice plan create \
 --resource-group myRGFDCentral
 
 az appservice plan create \
---name myAppServicePlanSouthCentralUS \
---resource-group myRGFDSouthCentral
+--name myAppServicePlanEastUS \
+--resource-group myRGFDEast
 ```
 
 ### <a name="create-web-apps"></a>Erstellen von Web-Apps
@@ -87,14 +89,14 @@ Erstellen Sie eine Web-App mit [az webapp create](/cli/azure/webapp#az_webapp_cr
 
 ```azurecli-interactive
 az webapp create \
---name WebAppContoso1 \
+--name WebAppContoso-1 \
 --resource-group myRGFDCentral \
 --plan myAppServicePlanCentralUS 
 
 az webapp create \
---name WebAppContoso2 \
---resource-group myRGFDSouthCentral \
---plan myAppServicePlanSouthCentralUS
+--name WebAppContoso-2 \
+--resource-group myRGFDEast \
+--plan myAppServicePlanEastUS
 ```
 
 Notieren Sie sich den Standardhostnamen jeder Web-App, damit Sie die Back-End-Adressen definieren können, wenn Sie Front Door-Instanz im nächsten Schritt bereitstellen.
@@ -103,14 +105,14 @@ Notieren Sie sich den Standardhostnamen jeder Web-App, damit Sie die Back-End-Ad
 
 Erstellen Sie eine einfache Front Door-Instanz mit Standardeinstellungen für den Lastenausgleich, einem Integritätstest und Routingregeln, indem Sie Folgendes ausführen:
 
-Erstellen Sie eine Front Door-Instanz mit [az network front-door create](/cli/azure/ext/front-door/network/front-door#ext_front_door_az_network_front_door_create&preserve-view=true):
+Erstellen Sie eine Front Door-Instanz mit [az network front-door create](/cli/azure/network/front-door#az_network_front_door_create&preserve-view=true):
 
 ```azurecli-interactive
 az network front-door create \
 --resource-group myRGFDCentral \
 --name contoso-frontend \
 --accepted-protocols http https \
---backend-address webappcontoso1.azurewebsites.net webappcontoso2.azurewebsites.net 
+--backend-address webappcontoso-1.azurewebsites.net webappcontoso-2.azurewebsites.net 
 ```
 
 **--resource-group:** Geben Sie eine Ressourcengruppe an, in der Sie die Front Door-Instanz bereitstellen möchten.
@@ -140,7 +142,7 @@ az group delete \
 --name myRGFDCentral 
 
 az group delete \
---name myRGFDSouthCentral
+--name myRGFDEast
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

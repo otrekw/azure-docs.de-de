@@ -3,12 +3,12 @@ title: Bereitstellen von Vorlagen mit Cloud Shell
 description: Verwenden Sie Azure Resource Manager und Cloud Shell, um Ressourcen in Azure bereitzustellen. Die Ressourcen sind in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7697eb0a6786a07546bb0de679df69d64da30b1b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028606"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742343"
 ---
 # <a name="deploy-arm-templates-from-azure-cloud-shell"></a>Bereitstellen von ARM-Vorlagen mit Azure Cloud Shell
 
@@ -33,7 +33,7 @@ Um eine externe Vorlage bereitzustellen, geben Sie den URI der Vorlage genau wie
    az deployment group create \
      --name ExampleDeployment \
      --resource-group ExampleGroup \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json" \
      --parameters storageAccountType=Standard_GRS
    ```
 
@@ -44,7 +44,7 @@ Um eine externe Vorlage bereitzustellen, geben Sie den URI der Vorlage genau wie
    New-AzResourceGroupDeployment `
      -DeploymentName ExampleDeployment `
      -ResourceGroupName ExampleGroup `
-     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
+     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json `
      -storageAccountType Standard_GRS
    ```
 

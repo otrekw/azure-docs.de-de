@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: f1acd7b309a31dfe437f1f82cb9bbf73f4a5cca5
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 9edbcf30b7108c34fedddba365c20922a211777d
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061076"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485385"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
@@ -38,7 +38,7 @@ Die Verbindung vieler Geräte wird auf einmal getrennt, die [Metrik „Verbunden
 
 ### <a name="cause-1"></a>Ursache 1
 
-Das [zum Herstellen einer Verbindung mit IoT Hub verwendete SAS-Token](iot-hub-devguide-security.md#security-tokens) ist abgelaufen. Dies führt dazu, dass IoT Hub die Verbindung mit dem Gerät trennt. Die Verbindung wird wiederhergestellt, wenn das Token vom Gerät aktualisiert wurde. Beispielsweise [läuft das SAS-Token für C SDK standardmäßig stündlich ab](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-authentication). Das kann zu regulären Trennungen der Verbindung führen.
+Das [zum Herstellen einer Verbindung mit IoT Hub verwendete SAS-Token](iot-hub-dev-guide-sas.md#security-tokens) ist abgelaufen. Dies führt dazu, dass IoT Hub die Verbindung mit dem Gerät trennt. Die Verbindung wird wiederhergestellt, wenn das Token vom Gerät aktualisiert wurde. Beispielsweise [läuft das SAS-Token für C SDK standardmäßig stündlich ab](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-authentication). Das kann zu regulären Trennungen der Verbindung führen.
 
 Weitere Informationen finden Sie unter [401003 IoTHubUnauthorized cause](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#cause-1) (Ursache für „401003 IoTHubUnauthorized“).
 

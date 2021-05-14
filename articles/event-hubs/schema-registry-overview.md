@@ -2,14 +2,14 @@
 title: Azure-Schemaregistrierung in Event Hubs (Vorschau)
 description: Dieser Artikel bietet eine Übersicht über die Unterstützung der Schemaregistrierung durch Azure Event Hubs (Vorschau).
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 04/28/2021
 ms.custom: references_regions
-ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 578bb082cf439d48b186461742ed51c39ce85e80
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92330494"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226442"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure-Schemaregistrierung in Event Hubs (Vorschau)
 In vielen Ereignisstreaming- und Messagingszenarien enthält die Ereignis- oder Nachrichtennutzlast strukturierte Daten, die entweder serialisiert oder mithilfe eines schemagesteuerten Formats wie Apache Avro deserialisiert werden. Absender und Empfänger können die Integrität der Daten mit einem Schemadokument wie bei einem JSON-Schema überprüfen. Bei schemagesteuerten Formaten ist die Bereitstellung des Schemas für den Nachrichtenconsumer eine Voraussetzung für den Consumer, und die Daten deserialisieren zu können. 
@@ -48,7 +48,7 @@ Die folgende Abbildung zeigt den Informationsfluss der Schemaregistrierung mit E
 :::image type="content" source="./media/schema-registry-overview/flow-diagram.png" alt-text="Flussdiagramm":::
 
 ## <a name="standard-vs-dedicated-limits"></a>Standard- und dedizierte Grenzwerte im Vergleich
-Informationen zu Grenzwerten (z. B. zur Anzahl von Schemagruppen in einem Namespace), die identisch sind und für Standard- und dedizierte Tarife von Event Hubs unterschiedlich sind, finden Sie unter [Schemaregistrierungsgrenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#schema-registry-limitations).
+Informationen zu Grenzwerten (z. B. zur Anzahl von Schemagruppen in einem Namespace), die identisch sind und für Standard- und Dedicated-Tarife von Event Hubs unterschiedlich sind, finden Sie unter [Kontingente und Grenzwerte in Azure Event Hubs](event-hubs-quotas.md).
 
 ## <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 Wenn Sie programmgesteuert auf die Schemaregistrierung zugreifen, müssen Sie eine Anwendung in Azure Active Directory (Azure AD) registrieren und den Sicherheitsprinzipal der Anwendung einer der Rollen der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC) hinzufügen:

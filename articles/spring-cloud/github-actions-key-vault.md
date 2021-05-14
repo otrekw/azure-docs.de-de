@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 0ea0db1faf8c452958b8d95c193d45506057777c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9c51a7a953fca4ebdd7014beeb39e732670b15df
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877616"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129025"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions
 
@@ -42,7 +42,7 @@ Ergebnisse:
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Speichern Sie die Ergebnisse in GitHub-**Geheimnissen**, wie unter [Einrichten des GitHub-Repositorys und Durchführen der Authentifizierung](./spring-cloud-howto-github-actions.md#set-up-github-repository-and-authenticate) beschrieben.
+Speichern Sie die Ergebnisse in GitHub-**Geheimnissen**, wie unter [Einrichten des GitHub-Repositorys und Durchführen der Authentifizierung](./how-to-github-actions.md#set-up-github-repository-and-authenticate) beschrieben.
 
 ## <a name="add-access-policies-for-the-credential"></a>Hinzufügen von Zugriffsrichtlinien für die Anmeldeinformationen
 Mit den oben erstellten Anmeldeinformationen können nur allgemeine Informationen zur Key Vault-Instanz abgerufen werden, aber nicht der darin gespeicherte Inhalt.  Zum Abrufen von in der Key Vault-Instanz gespeicherten Geheimnissen müssen Zugriffsrichtlinien für die Anmeldeinformationen festgelegt werden.
@@ -114,4 +114,4 @@ jobs:
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Azure Spring Cloud: CI/CD mit GitHub Actions](./spring-cloud-howto-github-actions.md)
+* [Azure Spring Cloud: CI/CD mit GitHub Actions](./how-to-github-actions.md)

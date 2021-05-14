@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.openlocfilehash: d25e168e342e22af9dc41d31dd7e18530aaa22b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93090510"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Herstellen einer Verbindung mit der Azure Cosmos DB-Cassandra-API von Spark
@@ -66,15 +66,15 @@ export SSL_VALIDATE=false
 cqlsh.py YOUR-COSMOSDB-ACCOUNT-NAME.cassandra.cosmosdb.azure.com 10350 -u YOUR-COSMOSDB-ACCOUNT-NAME -p YOUR-COSMOSDB-ACCOUNT-KEY --ssl
 ```
 
-### <a name="1--azure-databricks"></a>1.  Azure Databricks
+### <a name="1--azure-databricks"></a>1.  Azure Datenziegel
 Im folgenden Artikel werden die Azure Databricks-Clusterbereitstellung, die Clusterkonfiguration für die Verbindung mit der Azure Cosmos DB-Cassandra-API sowie einige Beispielnotebooks behandelt, die u.a. DDL- und DML-Vorgänge abdecken.<BR>
 [Zugreifen auf Azure Cosmos DB-Cassandra-API-Daten von Azure Databricks](cassandra-spark-databricks.md)<BR>
   
-### <a name="2--azure-hdinsight-spark"></a>2.  Azure HDInsight Spark
+### <a name="2--azure-hdinsight-spark"></a>2. Azure HDInsight Spark
 Im folgenden Artikel werden der HDinsight Spark-Dienst, die Bereitstellung, die Clusterkonfiguration für die Verbindung mit der Azure Cosmos DB-Cassandra-API sowie einige Beispielnotebooks behandelt, die u.a. DDL- und DML-Vorgänge abdecken.<BR>
 [Zugreifen auf die Azure Cosmos DB-Cassandra-API über Spark in YARN mit HDInsight](cassandra-spark-hdinsight.md)
  
-### <a name="3--spark-environment-in-general"></a>3.  Allgemeiner Überblick über die Spark-Umgebung
+### <a name="3--spark-environment-in-general"></a>3.  Spark-Umgebung im Allgemeinen
 Die obigen Abschnitte gelten speziell für Azure Spark-basierte PaaS-Dienste. In diesem Abschnitt wird ein allgemeiner Überblick über die Spark-Umgebung vermittelt.  Nachfolgend werden Connectorabhängigkeiten, Importe und die Spark-Sitzungskonfiguration beschrieben. Der Abschnitt „Nächste Schritte“ enthält Codebeispiele für DDL- und DML-Vorgänge und vieles mehr.  
 
 #### <a name="connector-dependencies"></a>Connectorabhängigkeiten:

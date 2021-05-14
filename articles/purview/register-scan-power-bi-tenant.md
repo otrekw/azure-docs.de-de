@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 402618872c5a3ee8dd01c35021656312f1fe3371
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695742"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228440"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrieren und Überprüfen eines Power BI-Mandanten (Vorschau)
 
@@ -70,15 +70,9 @@ Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und f
 
 Nachdem Sie nun der verwalteten Purview-Identität die Berechtigung erteilt haben, eine Verbindung mit der Administrator-API Ihres Power BI-Mandanten herzustellen, können Sie Ihre Überprüfung über Azure Purview Studio einrichten.
 
-Fügen Sie zunächst ein spezielles Featureflag zu Ihrer Purview-URL hinzu. 
+1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
 
-1. Wählen Sie das **Verwaltungscenter**-Symbol aus.
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Verwaltungscenter-Symbol":::
-
-1. Wählen Sie dann **+ Neu** für **Datenquellen** aus.
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/data-sources.png" alt-text="Bild der Schaltfläche „Neue Datenquelle“":::
+1. Klicken Sie anschließend auf **Registrieren**.
 
     Wählen Sie **Power BI** als Ihre Datenquelle aus.
 
@@ -105,6 +99,7 @@ Fügen Sie zunächst ein spezielles Featureflag zu Ihrer Purview-URL hinzu.
     > [!Note]
     > * Wenn Sie die Konfiguration einer Überprüfung so wechseln, dass ein persönlicher Arbeitsbereich ein- oder ausgeschlossen wird, wird eine vollständige Überprüfung der Power BI-Quelle ausgelöst.
     > * Der Überprüfungsname muss zwischen 3 und 63 Zeichen lang sein und darf nur Buchstaben, Ziffern, Unterstriche und Bindestriche enthalten. Leerzeichen sind nicht zulässig.
+    > * Das Schema ist auf der Registerkarte „Schema“ nicht verfügbar.
 
 5. Richten Sie einen Auslöser für die Überprüfung ein. Ihre Optionen sind **Einmal**, **Alle 7 Tage** und **Alle 30 Tage**.
 

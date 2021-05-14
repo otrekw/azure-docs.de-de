@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24c181c17e49fe5b7c3001c1cb2839bc957ef463
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712316"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490487"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Überwachung der Netzwerkkonnektivität mit dem Verbindungsmonitor
 
@@ -358,6 +358,8 @@ Bei Netzwerken, deren Quellen sich auf Azure-VMs befinden, können die folgenden
     * Der Tunnel zwischen zwei Gateways ist getrennt oder fehlt.
     * Das zweite Gateway wurde nicht vom Tunnel gefunden.
     * Es wurden keine Peeringinformationen gefunden.
+> [!NOTE]
+> Wenn eines von zwei verbundenen Gateways sich nicht in derselben Region wie der Quellendpunkt befindet, identifiziert CM es für die Topologieansicht als „keine Route erlernt“. Die Konnektivität ist nicht beeinträchtigt. Dies ist ein bekanntes Problem und an seiner Behebung wird derzeit gearbeitet. 
 * Die Route fehlte in Microsoft Edge.
 * Der Datenverkehr wurde aufgrund von Systemrouten oder UDR unterbrochen.
 * BGP ist für die Gatewayverbindung nicht aktiviert.

@@ -3,18 +3,20 @@ title: 'Azure Automation-Updateverwaltung: Übersicht'
 description: Dieser Artikel bietet eine Übersicht über die Updateverwaltungsfunktion, die Updates für Ihre Windows- und Linux-Computer implementiert.
 services: automation
 ms.subservice: update-management
-ms.date: 03/08/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a79be9d879e9ccb7ae4583d0674cf2bb23aafa4
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 62ae2eab33063416fdd6265b14dd8c30da55e174
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485672"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166699"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
 Mithilfe der Updateverwaltung in Azure Automation können Sie Betriebssystemupdates für Ihre Windows- und Linux-VMs in Azure, in lokalen Umgebungen und in anderen Cloudumgebungen verwalten. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
+
+Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure Lighthouse](../../lighthouse/overview.md) integriert. Azure Lighthouse ermöglicht es Ihnen, Operationen im Maßstab über mehrere Azure Active Directory (Azure AD) Anker gleichzeitig durchzuführen, wodurch Verwaltungsaufgaben wie die Aktualisierungsverwaltung über die Anker, für die Sie verantwortlich sind, effizienter werden.
 
 > [!NOTE]
 > Auf einem Computer, der mit der Updateverwaltung konfiguriert ist, können Sie keine benutzerdefinierten Skripts aus Azure Automation ausführen. Auf diesem Computer kann nur das von Microsoft signierte Updateskript ausgeführt werden.
@@ -22,9 +24,9 @@ Mithilfe der Updateverwaltung in Azure Automation können Sie Betriebssystemupda
 > [!NOTE]
 > Zum aktuellen Zeitpunkt wird das Aktivieren der Updateverwaltung direkt von einem Arc-fähigen Server aus nicht unterstützt. Informationen zu den Anforderungen und zum Aktivieren für Ihren Server finden Sie unter [Aktivieren der Updateverwaltung aus Ihrem Automation-Konto](../../automation/update-management/enable-from-automation-account.md).
 
-Informationen zum automatischen Herunterladen und Installieren verfügbarer Patches vom Typ *Kritisch* und *Sicherheit* auf Ihren virtuellen Azure-Computer finden Sie unter [Automatische VM-Gastpatches](../../virtual-machines/windows/automatic-vm-guest-patching.md) für Windows-VMs.
+Informationen zum automatischen Herunterladen und Installieren verfügbarer Patches vom Typ *Kritisch* und *Sicherheit* auf Ihren virtuellen Azure-Computer finden Sie unter [Automatische VM-Gastpatches](../../virtual-machines/automatic-vm-guest-patching.md) für Windows-VMs.
 
-Machen Sie sich mit den Informationen in den folgenden Abschnitten vertraut, bevor Sie die Updateverwaltung bereitstellen und die Verwaltung auf Ihren Computern ermöglichen.  
+Machen Sie sich mit den Informationen in den folgenden Abschnitten vertraut, bevor Sie die Updateverwaltung bereitstellen und die Verwaltung auf Ihren Computern ermöglichen.
 
 ## <a name="about-update-management"></a>Informationen zur Updateverwaltung
 
@@ -40,7 +42,7 @@ Das folgende Diagramm veranschaulicht, wie die Updateverwaltung alle verbundenen
 
 ![Updateverwaltungs-Workflow](./media/overview/update-mgmt-updateworkflow.png)
 
-Die Updateverwaltung kann für das systeminterne Bereitstellen von Computern in mehreren Abonnements im selben Mandanten verwendet werden.
+Die Aktualisierungsverwaltung kann zur nativen Bereitstellung auf Maschinen in mehreren Abonnements im selben Anker oder über Anker hinweg unter Verwendung der [delegierten Ressourcenverwaltung von Azure](../../lighthouse/concepts/azure-delegated-resource-management.md) verwendet werden.
 
 Nachdem ein Paket veröffentlicht wurde, dauert es zwei bis drei Stunden, bis der Patch für Linux-Computer für die Bewertung angezeigt wird. Bei Windows-Computern dauert es 12 bis 15 Stunden, bis der Patch nach der Veröffentlichung für die Bewertung angezeigt wird. Wenn ein Computer einen Scanvorgang abgeschlossen hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Monitor-Protokolle weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt. Für einen Linux-Computer wird der Konformitätsscan standardmäßig jede Stunde durchgeführt. Wenn der Log Analytics-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten gestartet.
 
@@ -76,8 +78,8 @@ Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewe
 |---------|---------|
 |Windows Server 2019 (Datacenter/Standard mit Server Core)<br><br>Windows Server 2016 (Datacenter/Standard ohne Server Core)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2 (RTM und SP1 Standard)| Die Updateverwaltung unterstützt Bewertungen und Patching für dieses Betriebssystem. Der [Hybrid Runbook Worker](../automation-windows-hrw-install.md) wird für Windows Server 2008 R2 unterstützt. |
-|CentOS 6 und 7 (x64)      | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](view-update-assessments.md#linux).          |
-|Red Hat Enterprise 6 und 7 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
+|CentOS 6, 7 und 8 (x64)      | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](view-update-assessments.md#linux).          |
+|Red Hat Enterprise 6, 7 und 8 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
 |SUSE Linux Enterprise Server 12, 15 und 15.1 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für SUSE 15.x ist Python 3 auf dem Computer erforderlich.      |
 |Ubuntu 14.04 LTS, 16.04 LTS und 18.04 LTS (x64)      |Linux-Agents erfordern Zugriff auf ein Updaterepository.         |
 

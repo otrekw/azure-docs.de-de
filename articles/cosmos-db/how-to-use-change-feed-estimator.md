@@ -5,15 +5,15 @@ author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/15/2019
+ms.date: 04/01/2021
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d4e461b25a25ecdf0d4d89ee7f1c82b9d4a0737
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339834"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220163"
 ---
 # <a name="use-the-change-feed-estimator"></a>Verwenden des Änderungsfeed-Estimators
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie den Fortschritt Ihrer [Änderungsfeedpro
 
 ## <a name="why-is-monitoring-progress-important"></a>Warum ist die Überwachung des Fortschritts wichtig?
 
-Der Änderungsfeedprozessor fungiert als Zeiger, der sich im [Änderungsfeed](./change-feed.md) vorwärts bewegt und die Änderungen an eine Delegatimplementierung übergibt. 
+Der Änderungsfeedprozessor fungiert als Zeiger, der sich im [Änderungsfeed](./change-feed.md) vorwärts bewegt und die Änderungen an eine Delegatimplementierung übergibt.
 
 Durch die Bereitstellung eines Änderungsfeedprozessors können Änderungen mit einer bestimmten Rate verarbeitet werden, die auf den verfügbaren Ressourcen wie CPU, Arbeitsspeicher, Netzwerk usw. basiert.
 
@@ -32,7 +32,9 @@ Mit diesem Szenario können wir ermitteln, ob wir unsere Bereitstellung des Änd
 
 ## <a name="implement-the-change-feed-estimator"></a>Implementieren des Änderungsfeed-Estimators
 
-Wie der [Änderungsfeedprozessor](./change-feed-processor.md) funktioniert auch der Änderungsfeed-Estimator als Pushmodell. Der Estimator misst die Differenz zwischen dem letzten verarbeiteten Element (durch den Zustand des Leasescontainers definiert) und der letzten Änderung im Container und überträgt diesen Wert per Pushvorgang an einen Delegat. Das Intervall, in dem die Messung durchgeführt wird, kann auch mit einem Standardwert von fünf Sekunden angepasst werden.
+### <a name="as-a-push-model-for-automatic-notifications"></a>Als Push-Modell für automatische Benachrichtigungen
+
+Wie der [Änderungsvorschubprozessor](./change-feed-processor.md) funktioniert auch der Änderungsfeed-Estimator als Push-Modell. Der Estimator misst die Differenz zwischen dem letzten verarbeiteten Element (durch den Zustand des Leasescontainers definiert) und der letzten Änderung im Container und überträgt diesen Wert per Pushvorgang an einen Delegat. Das Intervall, in dem die Messung durchgeführt wird, kann auch mit einem Standardwert von fünf Sekunden angepasst werden.
 
 Hier sehen Sie ein Beispiel für die Definition eines Änderungsfeedprozessors:
 
@@ -52,8 +54,29 @@ Hier sehen Sie ein Beispiel für einen Delegat, der die Schätzung empfängt:
 
 Sie können diese Schätzung an Ihre Überwachungslösung senden, um Ihren Fortschritt im Laufe der Zeit zu prüfen.
 
+### <a name="as-an-on-demand-detailed-estimation"></a>Als detaillierte Schätzung auf Abruf
+
+Im Gegensatz zum Push-Modell gibt es eine Alternative, bei der Sie die Schätzung auf Anforderung erhalten. Dieses Modell bietet auch ausführlichere Informationen:
+
+* Die geschätzte Verzögerung pro Lease.
+* Die-Instanz, welche die einzelnen Lease besitzt und bearbeitet, damit Sie ermitteln können, ob ein Problem in einer Instanz vorliegt.
+
+Wenn Ihr Änderungsfeed-Prozessor wie folgt definiert ist:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimatorDetailed)]
+
+Sie können die Schätzung mit der gleichen Lease-Konfiguration erstellen:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimatorDetailed)]
+
+Und wenn Sie die gewünschte Häufigkeit benötigen, können Sie die detaillierte Schätzung abrufen:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=GetIteratorEstimatorDetailed)]
+
+Jede `ChangeFeedProcessorState` enthält die Lease-und Lag-Informationen sowie die aktuelle Instanz, die es besitzt. 
+
 > [!NOTE]
-> Der Änderungsfeed-Estimator muss weder im Rahmen Ihres Änderungsfeedprozessors bereitgestellt werden noch Teil desselben Projekts sein. Er kann unabhängig sein und in einer völlig anderen Instanz ausgeführt werden. Er muss lediglich den gleichen Namen und die gleiche Leasekonfiguration verwenden.
+> Der Änderungsfeed-Estimator muss weder im Rahmen Ihres Änderungsfeedprozessors bereitgestellt werden noch Teil desselben Projekts sein. Er kann unabhängig sein und in einer völlig anderen Instanz ausgeführt werden, was empfehlenswert ist. Er muss lediglich den gleichen Namen und die gleiche Leasekonfiguration verwenden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

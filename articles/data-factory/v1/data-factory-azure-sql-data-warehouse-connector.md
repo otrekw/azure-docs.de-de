@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa364ec434db980bf226008537ca928628fcac1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35aa0110106f121adb9373f83ff29d299ce049fc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392084"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135975"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure Synapse Analytics mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -63,7 +63,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Azure Synapse Analytics verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSqlDW**. |Ja |
 | connectionString |Geben Sie Informationen, die zum Herstellen einer Verbindung mit der Azure Synapse Analytics-Instanz erforderlich sind, für die Eigenschaft „connectionString“ an. Es wird nur Standardauthentifizierung unterstützt. |Ja |
@@ -76,7 +76,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren vo
 
 Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset des Typs **AzureSqlDWTable** weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Der Name der Tabelle oder Sicht in der Azure Synapse Analytics-Datenbank, auf die der verknüpfte Dienst verweist. |Ja |
 
@@ -252,7 +252,7 @@ Erstellen Sie zum Verwenden dieses Features einen [verknüpften Azure Storage-Di
 ```
 
 ## <a name="best-practices-when-using-polybase"></a>Bewährte Methoden bei Verwendung von PolyBase
-In den folgenden Abschnitten werden zusätzlich zu den im Artikel [Bewährte Methoden für Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) erwähnten Methoden weitere bewährte Methoden aufgeführt.
+In den folgenden Abschnitten werden zusätzlich zu den im Artikel [Bewährte Methoden für Azure Synapse Analytics](../../synapse-analytics/sql/best-practices-dedicated-sql-pool.md) erwähnten Methoden weitere bewährte Methoden aufgeführt.
 
 ### <a name="required-database-permission"></a>Erforderliche Datenbankberechtigungen
 Um PolyBase verwenden zu können, muss der Benutzer zum Laden der Daten in Azure Synapse Analytics über die [Berechtigung „CONTROL“](/sql/relational-databases/security/permissions-database-engine) für die Zieldatenbank verfügen. Sie können dies beispielsweise erreichen, indem Sie diesen Benutzer als Mitglied der Rolle „db_owner“ hinzufügen. [In diesem Abschnitt](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization) erfahren Sie, wie das geht.

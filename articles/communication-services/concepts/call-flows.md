@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7651142d1c2b24da64d9f72dd2300dc0c3807e93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 70ece71d1f342ac355878afd592964525ac962fe
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937874"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016633"
 ---
 # <a name="call-flow-basics"></a>Grundlegendes zu Anrufabläufen
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include-phone-numbers.md)]
 
 Der folgende Abschnitt enthält eine Übersicht über die Anrufabläufe in Azure Communication Services. Signalisierungs- und Medienabläufe hängen von den Typen der Anrufe ab, die von Ihren Benutzern getätigt werden. Beispiele für Anruftypen sind 1:1 VoIP, 1:1 Festnetz und Gruppenanrufe mit einer Mischung aus VoIP- und Festnetzteilnehmern. Lesen Sie den Artikel zu den [Anruftypen](./voice-video-calling/about-call-types.md).
 

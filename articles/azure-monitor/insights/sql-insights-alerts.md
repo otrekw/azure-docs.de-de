@@ -5,15 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2021
-ms.openlocfilehash: 5fe853ee0f7a113bfb8b0511744d9087f67927c4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bb42f74f6ac8487a93479bdf980c66ef87e8e742
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608900"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726860"
 ---
 # <a name="create-alerts-with-sql-insights-preview"></a>Erstellen von Warnungen mit SQL Insights (Vorschau)
 SQL Insights enthält eine Reihe von Vorlagen für Warnungsregeln, mit denen Sie [Warnungsregeln in Azure Monitor](../alert/../alerts/alerts-overview.md) für häufige SQL-Probleme erstellen können. Die Warnungsregeln in SQL Insights sind Protokollwarnungsregeln, die auf Leistungsdaten basieren, die in der Tabelle *InsightsMetrics* in Azure Monitor-Protokollen gespeichert sind.  
+
+> [!NOTE]
+> Informationen zum Erstellen einer Warnung für SQL Insights mithilfe einer Resource Manager-Vorlage finden Sie unter [Erstellen einer Warnungsregel für SQL Insights](resource-manager-sql-insights.md#create-an-alert-rule-for-sql-insights).
+
 
 > [!NOTE]
 > Wenn Sie Anregungen für weitere Vorlagen für Warnungsregeln in SQL Insights haben, senden Sie Ihr Feedback über den Link am Ende dieser Seite oder über den SQL Insights-Link für Feedback im Azure-Portal.

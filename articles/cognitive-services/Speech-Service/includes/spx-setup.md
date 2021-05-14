@@ -3,14 +3,14 @@ author: v-demjoh
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/15/2020
+ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: ec34ba7b2d3bc026376aeb1cb91847d8eac1cac5
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 3221712fcf74022f2899380b4573ab3a821dce4d
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073673"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109627285"
 ---
 ## <a name="download-and-install"></a>Herunterladen und Installieren
 
@@ -28,8 +28,7 @@ Führen Sie diese Schritte aus, um die Speech-Befehlszeilenschnittstelle unter W
 Geben Sie `spx` ein, um die Hilfe für die Speech-Befehlszeilenschnittstelle anzuzeigen.
 
 > [!NOTE]
-> Sie können auch das [ZIP-Archiv](https://aka.ms/speech/spx-zips.zip) der Speech-Befehlszeilenschnittstelle herunterladen und extrahieren, Ihre Plattform im Verzeichnis `spx-zips` suchen und extrahieren und den Pfad `spx` zu Ihrer Systemvariablen **PATH** hinzufügen, anstatt NuGet zu verwenden.
-
+> Als Alternative zu NuGet können Sie die Speech-Befehlszeilenschnittstelle für Windows als [ZIP-Datei](https://aka.ms/speech/spx-windows) herunterladen und extrahieren.
 
 ### <a name="font-limitations"></a>Schriftarteinschränkungen
 
@@ -60,10 +59,14 @@ Führen Sie diese Schritte aus, um die Speech-Befehlszeilenschnittstelle unter L
 Geben Sie `spx` ein, um die Hilfe für die Speech-Befehlszeilenschnittstelle anzuzeigen.
 
 > [!NOTE]
-> Sie können auch die Binärdateien aus dem [ZIP-Archiv](https://aka.ms/speech/spx-zips.zip) herunterladen, `spx-netcore-30-linux-x64.zip` in ein neues Verzeichnis (`~/spx`) extrahieren, `sudo chmod +r+x spx` für die Binärdatei eingeben und den Pfad `~/spx` Ihrer PATH-Systemvariablen hinzufügen, anstatt NuGet zu verwenden.
+> Als Alternative zu NuGet können Sie die Linux-Binärdateien als [ZIP-Datei](https://aka.ms/speech/spx-linux) herunterladen.
+> Extrahieren Sie `spx-netcore-30-linux-x64.zip` in ein neues Verzeichnis (`~/spx`), geben Sie `sudo chmod +r+x spx` für die Binärdatei ein, und fügen Sie den Pfad `~/spx` Ihrer PATH-Systemvariablen hinzu.
 
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker-Installation (Windows, Linux, macOS)](#tab/dockerinstall)
+
+> [!WARNING]
+> Wenn Sie die Speech-CLI in einem Docker-Container ausführen, können Sie das Mikrofon Ihres Computers nicht verwenden. Sie können jedoch aus Ihrem lokal eingebundenen Verzeichnis lesen und Audiodateien darin speichern. 
 
 Führen Sie die folgenden Schritte aus, um die Speech-CLI in einem Docker-Container zu installieren:
 
@@ -126,9 +129,6 @@ Geben Sie unter Windows diesen Befehl ein, um einen Container zu starten, der ei
 ```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
-
-> [!WARNING]
-> Wenn Sie die Speech-CLI in einem Docker-Container ausführen, können Sie das Mikrofon Ihres Computers nicht verwenden. Sie können jedoch aus Ihrem lokal eingebundenen Verzeichnis lesen und Audiodateien darin speichern. 
 
 <!-- Need to troubleshoot issues with docker pull image
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 77fdaf297fff0e145b1dd53908887bc14f9d3f14
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 26aefab9b4637c3f3f6b0f0d1195068e2cd770ab
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491140"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001813"
 ---
 <!-- All needs updating -->
 Als Operator in Ihrer Azure IoT Central-Anwendung haben Sie folgende Möglichkeiten:
@@ -36,7 +36,7 @@ So fügen Sie eine Cloudeigenschaft hinzu, um den dem Gerät zugeordneten Kunden
 
 1. Wählen Sie in der Gerätevorlage **Temperaturregler** die Option **Cloudeigenschaften** aus.
 
-1. Wählen Sie **Cloudeigenschaft hinzufügen** aus. Geben Sie unter **Anzeigename** den *Kundennamen* ein, und wählen Sie unter **Schema** die Option **Zeichenfolge** aus. Klicken Sie dann auf **Speichern**.
+1. Wählen Sie **Cloudeigenschaft hinzufügen** aus. Geben Sie unter **Anzeigename** den *Kundennamen* ein, erweitern Sie den Eintrag, und wählen Sie unter **Schema** die Option **Zeichenfolge** aus. Klicken Sie dann auf **Speichern**.
 
 So passen Sie die Darstellung des Befehls **Get Max-Min report** (Bericht zu Maximal-/Mindesttemperatur abrufen) in Ihrer IoT Central-Anwendung an:
 
@@ -82,7 +82,7 @@ Ein Operator kann nun die Ansicht **Eigenschaften** verwenden, um die Eigenschaf
 
     :::image type="content" source="media/iot-central-monitor-thermostat/update-properties.png" alt-text="Aktualisieren der Geräteeigenschaften":::
 
-* Aufrufen der Befehle auf der Seite **Befehle**:
+* Rufen Sie die Befehle auf der Seite **Befehle** auf. Wählen Sie bei Ausführung des Statusberichtsbefehls ein Datum und eine Uhrzeit für den **Since-Parameter** aus, bevor Sie ihn ausführen:
 
     :::image type="content" source="media/iot-central-monitor-thermostat/call-command.png" alt-text="Aufrufen des Befehls":::
 

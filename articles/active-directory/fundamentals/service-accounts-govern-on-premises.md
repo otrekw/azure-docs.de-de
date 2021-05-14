@@ -1,6 +1,6 @@
 ---
 title: Steuern lokaler Dienstkonten | Azure Active Directory
-description: Leitfaden für das Erstellen und Ausführen von Lebenszyklusprozessen für Dienstkonten
+description: In diesem Leitfaden erfahren Sie, wie Sie einen Lebenszyklusprozess für Dienstkonten erstellen und ausführen.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,59 +13,53 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ea524620f810e0bf1dddc230716031bbc10e69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 50ba13a49d8e08b70ebf8a8bb12dfe92d8a35bb7
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642378"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206582"
 ---
-# <a name="governing-on-premises-service-accounts"></a>Steuern lokaler Dienstkonten
+# <a name="govern-on-premises-service-accounts"></a>Steuern lokaler Dienstkonten
 
-In Windows Active Directory gibt es vier Arten lokaler Dienstkonten:
+Active Directory bietet vier Arten von lokalen Dienstkonten:
 
-* [Gruppenverwaltete Dienstkonten](service-accounts-group-managed.md) (Group managed service accounts, gMSAs)
-
-* [Eigenständige verwaltete Dienstkonten](service-accounts-standalone-managed.md) (Standalone managed service accounts, sMSAs)
-
-* [Computerkonten](service-accounts-computer.md)
-
+* [Gruppenverwaltete Dienstkonten](service-accounts-group-managed.md) (Group managed service accounts, gMSAs)  
+* [Eigenständige verwaltete Dienstkonten](service-accounts-standalone-managed.md) (Standalone managed service accounts, sMSAs)  
+* [Computerkonten](service-accounts-computer.md)  
 * [Benutzerkonten, die als Dienstkonten fungieren](service-accounts-user-on-premises.md)
 
 
-Die enge Steuerung von Dienstkonten ist aus folgenden Gründen wichtig: 
+Eine präzise Steuerung von Dienstkonten ist aus folgenden Gründen wichtig: 
 
-* Schützen von Dienstkonten aufgrund der Anforderungen und dem Zweck der Anwendungsfälle
-
-* Verwalten des Lebenszyklus von Dienstkonten und der zugehörigen Anmeldeinformationen
-
-* Bewerten von Dienstkonten anhand des Risikos, dem sie ausgesetzt sind, und den ihnen zugeordneten Berechtigungen 
-
+* Schützen der Konten auf der Grundlage der Anforderungen und des Zwecks ihres jeweiligen Anwendungsfalls  
+* Verwalten des Lebenszyklus der Konten sowie der zugehörigen Anmeldeinformationen  
+* Bewerten der Konten anhand des Risikos, dem sie ausgesetzt sind, und der ihnen zugeordneten Berechtigungen  
 * Sicherstellen, dass Active Directory und Azure Active Directory keine veralteten Dienstkonten mit potenziell weitreichenden Berechtigungen enthalten
 
 ## <a name="principles-for-creating-a-new-service-account"></a>Grundsätze für das Erstellen eines neuen Dienstkontos
 
-Verwenden Sie beim Erstellen eines neuen Dienstkontos die folgenden Kriterien.
+Beim Erstellen eines Dienstkontos müssen die in der folgenden Tabelle aufgeführten Aspekte berücksichtigt werden:
 
-| Grundsätze| Überlegungen | 
+| Prinzip| Aspekt | 
 | - |- | 
 | Zuordnen von Dienstkonten| Binden Sie das Dienstkonto an einen einzelnen Dienst, eine einzelne Anwendung oder ein einzelnes Skript. |
 | Besitz| Stellen Sie sicher, dass es einen Besitzer gibt, der die Verantwortung für das Konto anfordert und übernimmt. |
-| Bereich| Definieren Sie den Bereich eindeutig, und schätzen Sie die Nutzungsdauer für das Dienstkonto. |
-| Zweck| Erstellen Sie Dienstkonten für einen bestimmten einzelnen Zweck. |
-| Berechtigung| Wenden Sie das Prinzip der geringsten Rechte an, indem Sie Folgendes beachten: <br>Weisen Sie Berechtigungen niemals integrierten Gruppen wie Administratoren zu.<br> Entfernen Sie nach Bedarf die Berechtigungen des lokalen Computers.<br>Passen Sie den Zugriff an, und verwenden Sie für den Verzeichniszugriff die Active Directory-Delegierung.<br>Verwenden Sie genau abgestimmte Zugriffsberechtigungen.<br>Legen Sie Kontoablaufdaten und standortbasierte Einschränkungen für benutzerbasierte Dienstkonten fest. |
-| Nutzungsüberwachung| Überwachen Sie die Anmeldedaten, und stellen Sie sicher, dass sie der vorgesehenen Nutzung entsprechen. Legen Sie Warnungen bei ungewöhnlicher Nutzung fest. |
+| Bereich| Definieren Sie den Bereich eindeutig, und antizipieren Sie die Nutzungsdauer für das Dienstkonto. |
+| Zweck| Erstellen Sie Dienstkonten für einen einzelnen bestimmten Zweck. |
+| Berechtigungen | Folgen Sie dem Prinzip der *geringsten Berechtigungen*. Gehen Sie folgendermaßen vor:<li>Weisen Sie niemals integrierten Gruppen (beispielsweise Administratoren) Berechtigungen zu.<li>Entfernen Sie gegebenenfalls lokale Computerberechtigungen.<li>Passen Sie den Zugriff an, und verwenden Sie für den Verzeichniszugriff die Active Directory-Delegierung.<li>Verwenden Sie präzise Zugriffsberechtigungen.<li>Legen Sie Kontoablaufdaten und standortbasierte Einschränkungen für benutzerbasierte Dienstkonten fest. |
+| Nutzungsüberwachung| Überwachen Sie Anmeldedaten, und stellen Sie sicher, dass sie der vorgesehenen Nutzung entsprechen. Legen Sie Warnungen bei ungewöhnlicher Nutzung fest. |
+| | |
 
-### <a name="enforce-least-privilege-for-user-accounts-and-limit-account-overuse"></a>Erzwingen der geringsten Rechte für Benutzerkonten und Einschränken einer übermäßigen Kontonutzung
+### <a name="set-restrictions-for-user-accounts"></a>Festlegen von Einschränkungen für Benutzerkonten
 
-Verwenden Sie die folgenden Einstellungen für Benutzerkonten, die als Dienstkonten verwendet werden:
+Wenden Sie für Benutzerkonten, die als Dienstkonten verwendet werden, die folgenden Einstellungen an:
 
-* [**Kontoablaufdatum**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true): Legen Sie für das Dienstkonto fest, dass es im Anschluss an den Überprüfungszeitraum nach einer bestimmten Zeit automatisch abläuft, sofern keine weitere Nutzung explizit festgelegt wird.
+* [**Kontoablauf**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true): Legen Sie fest, dass das Dienstkonto im Anschluss an den Überprüfungszeitraum nach einer bestimmten Zeit automatisch ablaufen soll, wenn keine weitere Verwendung vorgesehen ist.
 
-*  **Anmeldearbeitsstationen**: Schränken Sie die Berechtigungen auf die Standorte ein, von denen sich das Dienstkonto anmelden kann. Wenn es lokal auf einem Computer ausgeführt wird und nur auf Ressourcen auf diesem Computer zugreift, unterbinden Sie die Anmeldung von einem anderen Standort.
+*  **LogonWorkstations**: Schränken Sie die Anmeldemöglichkeiten für das Dienstkonto ein. Wenn es lokal auf einem Computer ausgeführt wird und nur auf Ressourcen auf diesem Computer zugreift, unterbinden Sie anderweitige Anmeldungen.
 
 * [**Keine Kennwortänderung**](/powershell/module/addsadministration/set-aduser): Verhindern Sie, dass das Dienstkonto sein eigenes Kennwort ändert, indem Sie den Parameter auf „False“ festlegen.
-
  
 ## <a name="build-a-lifecycle-management-process"></a>Erstellen eines Lebenszyklusverwaltungsprozesses
 
@@ -74,7 +68,7 @@ Um die Sicherheit Ihrer Dienstkonten zu gewährleisten, ist eine Verwaltung vom 
 Verwenden Sie für die Lebenszyklusverwaltung von Dienstkonten den folgenden Prozess:
 
 1. Sammeln von Nutzungsinformationen für das Konto
-1. Integrieren des Dienstkontos und der App in die Konfigurationsverwaltungsdatenbank (Configuration Management Database, CMDB)
+1. Verschieben des Dienstkontos und der App in die Konfigurationsverwaltungsdatenbank (Configuration Management Database, CMDB)
 1. Durchführen einer Risikobewertung oder formalen Überprüfung
 1. Erstellen des Dienstkontos und Anwenden von Einschränkungen
 1. Planen und Ausführen wiederholter Überprüfungen Anpassen von Berechtigungen und Bereichen nach Bedarf
@@ -82,132 +76,115 @@ Verwenden Sie für die Lebenszyklusverwaltung von Dienstkonten den folgenden Pro
 
 ### <a name="collect-usage-information-for-the-service-account"></a>Sammeln von Nutzungsinformationen für das Dienstkonto
 
-Sammeln Sie für jedes Dienstkonto die relevanten geschäftlichen Informationen. In der folgenden Tabelle sind die mindestens zu sammelnden Informationen aufgeführt. Allerdings sollten Sie alle Informationen erfassen, die für das Geschäftsszenario und die Existenz des Kontos erforderlich sind.
+Sammeln Sie für jedes Dienstkonto relevante geschäftliche Informationen. In der folgenden Tabelle sind die erforderlichen Mindestinformationen aufgeführt. Sie sollten jedoch alles erfassen, was die Existenz der einzelnen Konten geschäftlich rechtfertigt.
 
-| Daten| Details |
+| Daten| BESCHREIBUNG |
 | - | - |
-| Besitzer| Benutzer oder Gruppe, der bzw. die für das Dienstkonto verantwortlich ist |
-| Zweck| Zweck des Dienstkontos |
-| Berechtigungen (Bereiche)| Voraussichtlicher Satz von Berechtigungen |
-| Links zur Konfigurationsverwaltungsdatenbank (CMDB)| Querverbindungen zwischen Dienstkonto und Zielskript/Zielanwendung und Besitzer(n) |
-| Risiko| Bewertung von Risiken und geschäftlicher Auswirkungen anhand der Sicherheitsrisikobewertung |
-| Lebensdauer| Voraussichtliche maximale Lebensdauer, um die Planung des Kontoablaufdatums oder der Neuzertifizierung zu ermöglichen |
+| Besitzer| Der für das Dienstkonto verantwortliche Benutzer oder die entsprechende Gruppe. |
+| Zweck| Der Zweck des Dienstkontos. |
+| Berechtigungen (Bereiche)| Die erwarteten Berechtigungen. |
+| CMDB-Links| Das Querverbindungsdienstkonto mit dem Zielskript oder der Zielanwendung und Besitzern. |
+| Risiko| Die Bewertung des Risikos und der geschäftlichen Auswirkungen auf der Grundlage der Sicherheitsrisikobewertung. |
+| Gültigkeitsdauer| Die voraussichtliche maximale Lebensdauer, um die Planung des Kontoablaufs oder der Neuzertifizierung zu ermöglichen. |
+| | |
 
-
- 
-
-Fordern Sie im Idealfall ein Self-Service-Konto und die entsprechenden Informationen an. Der Besitzer kann Besitzer einer Anwendung oder geschäftlicher Besitzer, Mitglied der IT oder Infrastrukturbesitzer sein. Durch die Verwendung eines Tools wie Microsoft Forms für diese Anforderung und die zugehörigen Informationen wird nach der Genehmigung des Kontos die Portierung zu Ihrem CMDB-Bestandstool vereinfacht.
+Fordern Sie im Idealfall ein Self-Service-Konto und die entsprechenden Informationen an. Bei dem Besitzer kann es sich um einen Anwendungs- oder Unternehmensbesitzer, um ein Mitglied der IT-Abteilung oder um einen Infrastrukturbesitzer handeln. Wenn Sie für diese Anforderung und die zugehörigen Informationen ein Tool wie Microsoft Forms verwenden, vereinfacht dies die Portierung zu Ihrem CMDB-Bestandstool nach der Genehmigung des Kontos.
 
 ### <a name="onboard-service-account-to-cmdb"></a>Integrieren von Dienstkonten in die Konfigurationsverwaltungsdatenbank (CMDB)
 
-Speichern Sie die gesammelten Informationen in einer CMDB-artigen Anwendung. Nehmen Sie neben den Geschäftsinformationen auch alle Abhängigkeiten von anderer Infrastruktur, Apps und Prozessen hinzu.  Dieses zentrale Repository vereinfacht folgende Vorgänge:
+Speichern Sie die gesammelten Informationen in einer CMDB-artigen Anwendung. Schließen Sie neben den geschäftlichen Informationen auch alle Abhängigkeiten von anderen Infrastrukturen, Apps und Prozessen ein.  Dieses zentrale Repository vereinfacht folgende Vorgänge:
 
-* Risikobewertung
+* Risikobewertung  
+* Konfigurieren der Dienstkonten mit den erforderlichen Einschränkungen  
+* Erkennen aller relevanten Abhängigkeiten in Bezug auf Funktion und Sicherheit  
+* Ausführen regelmäßiger Überprüfungen auf Sicherheit und weiteren Nutzungsbedarf  
+* Kontaktieren der Besitzer zwecks Überprüfung, Beendigung und Änderung des Dienstkontos
 
-* Konfigurieren der Dienstkonten mit den erforderlichen Einschränkungen
+Stellen Sie sich ein Dienstkonto vor, das zum Ausführen einer Website verwendet wird und über Berechtigungen zum Herstellen einer Verbindung mit einer oder mehreren SQL-Personaldatenbanken (Human Resources, HR) verfügt. Die folgende Tabelle gibt Aufschluss über die Informationen, die in Ihrer CMDB-Instanz für dieses Dienstkonto gespeichert werden (einschließlich Beispielbeschreibungen):
 
-* Erkennen relevanter Abhängigkeiten in Bezug auf Funktion und Sicherheit
-
-* Ausführen regelmäßiger Überprüfungen auf Sicherheit und weiteren Nutzungsbedarf
-
-* Kontaktaufnahme mit dem/den Besitzer(n) zwecks Überprüfen, Beenden und Ändern des Dienstkontos
-
-Stellen Sie sich ein Dienstkonto vor, das zum Ausführen einer Website verwendet wird und über Berechtigungen zum Herstellen einer Verbindung mit einer oder mehreren SQL-Datenbanken verfügt. Die in der CMDB für dieses Dienstkonto gespeicherten Informationen könnten wie folgt lauten:
-
-|Daten | Details|
+|Daten | Beispielbeschreibung|
 | - | - |
 | Besitzer, Stellvertreter| John Bloom, Anna Mayers |
-| Zweck| Ausführen der HR-Webseite und Herstellen einer Verbindung mit den HR-Datenbanken. Kann beim Zugriff auf Datenbanken die Identität des Endbenutzers annehmen. |
-| Berechtigungen, Bereiche| HR-Webserver: lokale Anmeldung, Ausführen der Webseite<br>HR-SQL1: lokale Anmeldung, Lesen aller HR*-Datenbanken<br>HR-SQL2: lokale Anmeldung, Lesen der GEHÄLTER*-Datenbank |
+| Zweck| Ausführen der HR-Webseite und Herstellen einer Verbindung mit HR-Datenbanken. Kann beim Zugriff auf Datenbanken die Identität von Endbenutzern annehmen. |
+| Berechtigungen, Bereiche| HR-WEBServer: Lokale Anmeldung; Ausführen der Webseite<br>HR-SQL1: Lokale Anmeldung; Leseberechtigungen für alle HR-Datenbanken<br>HR-SQL2: Lokale Anmeldung; nur Leseberechtigungen für Gehaltsdatenbank |
 | Kostenstelle| 883944 |
 | Risikobewertung| Mittel, Geschäftliche Auswirkungen: Mittel, Private Informationen: Mittel |
 | Kontoeinschränkungen| Anmelden bei: nur erwähnte Server, keine Kennwortänderung, MBI-Kennwortrichtlinie |
 | Lebensdauer| Nicht eingeschränkt |
-| Überprüfungszyklus| Halbjährlich (durch Besitzer, Sicherheitsteam, Datenschutz) |
+| Überprüfungszyklus| Halbjährlich (durch Besitzer, Sicherheitsteam, Datenschutzteam) |
+| | |
 
-### <a name="perform-risk-assessment-or-formal-review-of-service-account-usage"></a>Risikobewertung oder formale Überprüfung der Nutzung des Dienstkontos
+### <a name="perform-a-risk-assessment-or-formal-review-of-service-account-usage"></a>Durchführen einer Risikobewertung oder formalen Überprüfung der Nutzung des Dienstkontos
 
-Bewerten Sie anhand der Berechtigungen und des Kontozwecks das Risiko, das das Konto bei einer Kompromittierung für die zugeordnete Anwendung oder den zugehörigen Dienst und für Ihre Infrastruktur darstellen kann. Berücksichtigen Sie sowohl das direkte als auch das indirekte Risiko. 
+Angenommen, Ihr Konto wird durch eine nicht autorisierte Quelle kompromittiert. Bewerten Sie die Risiken, die das Konto möglicherweise für die zugehörige Anwendung oder den zugehörigen Dienst sowie für Ihre Infrastruktur darstellt. Berücksichtigen Sie sowohl das direkte als auch das indirekte Risiko. 
 
-* Worauf könnte ein Angreifer direkt zugreifen?
+* Worauf würde ein nicht autorisierter Benutzer Direktzugriff erhalten?  
+* Auf welche anderen Informationen oder Systeme kann das Dienstkonto zugreifen?  
+* Kann das Konto zum Erteilen zusätzlicher Berechtigungen verwendet werden?  
+* Wie erkennen Sie, wenn die Berechtigungen geändert werden?
 
-* Auf welche anderen Informationen oder Systeme kann das Dienstkonto zugreifen?
+Nach Abschluss und Dokumentation der Risikobewertung kommen Sie möglicherweise zu dem Ergebnis, dass die Risiken Auswirkungen auf folgende Bereiche haben:
 
-* Kann das Konto zum Erteilen zusätzlicher Berechtigungen verwendet werden?
-
-* Wie erkennen Sie, wenn Berechtigungen geändert werden?
-
-Nach Durchführung und Dokumentation kann die Risikobewertung Auswirkungen auf folgende Bereiche haben:
-
-* Kontoeinschränkungen
-
-* Kontolebensdauer
-
-* Anforderungen an die Kontoüberprüfung (Intervalle und Prüfer)
+* Kontoeinschränkungen  
+* Kontolebensdauer  
+* Kontoüberprüfungsanforderungen (Intervalle und Prüfer)
 
 ### <a name="create-a-service-account-and-apply-account-restrictions"></a>Erstellen eines Dienstkontos und Anwenden von Kontoeinschränkungen
 
-Erstellen Sie erst dann ein Dienstkonto, wenn relevante Informationen in ihrer CMDB dokumentiert sind und Sie eine Risikobewertung vorgenommen haben. Die Kontoeinschränkungen sollten sich nach der Risikobewertung richten. Beachten Sie die folgenden Einschränkungen, wenn sie für Ihre Bewertung relevant sind:
+Erstellen Sie ein Dienstkonto erst, nachdem Sie die Risikobewertung abgeschlossen und die relevanten Informationen in Ihrer CMDB-Instanz dokumentiert haben. Orientieren Sie sich bei den Kontoeinschränkungen an der Risikobewertung. Erwägen Sie die folgenden Einschränkungen, sofern sie für Ihre Bewertung relevant sind:
 
-* [Kontoablaufdatum](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)
+* Definieren Sie für alle als Dienstkonten verwendeten Benutzerkonten ein realistisches und definitives Enddatum. Legen Sie das Datum mithilfe des Flags **Konto läuft ab** fest. Weitere Informationen finden Sie unter [Set-ADAccountExpiration](/powershell/module/activedirectory/set-adaccountexpiration). 
 
-   * Definieren Sie für alle Benutzerkonten, die als Dienstkonten verwendet werden, ein realistisches und definitives Enddatum für die Nutzung. Legen Sie diese Einstellung mit dem Flag „Konto läuft ab“ fest. Weitere Einzelheiten finden Sie unter [Set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration). 
+* Anmeldung bei der Anmeldearbeitsstation ([LogonWorkstation](/powershell/module/activedirectory/set-aduser))
 
-* Anmelden bei ([Anmeldearbeitsstation](/powershell/module/addsadministration/set-aduser))
+* [Anforderungen für Kennwortrichtlinien](../../active-directory-domain-services/password-policy.md)
 
-* Anforderungen für [Kennwortrichtlinien](../../active-directory-domain-services/password-policy.md)
+* Kontoerstellung an einem [Ort der Organisationseinheit](/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous), durch den die Verwaltung auf berechtigte Benutzer beschränkt wird
 
-* Erstellung an einem [Standort der Organisationseinheit](/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous), der die Verwaltung nur für berechtigte Benutzer gewährleistet
+* Einrichtung und Erfassung von Überwachungsdaten zur [Erkennung von Änderungen](/windows/security/threat-protection/auditing/audit-directory-service-changes) am Dienstkonto sowie zur [Nutzung des Dienstkontos](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html)
 
-* Einrichten der Überwachung und Sammeln von Überwachungsdaten zum [Erkennen von Änderungen](/windows/security/threat-protection/auditing/audit-directory-service-changes) am Dienstkonto und zur [Nutzung des Dienstkontos](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html).
-
-Wenn Sie bereit sind, das Konto für die Produktion freizugeben, gewähren Sie den Zugriff auf das Dienstkonto auf sichere Art und Weise. 
+Wenn Sie bereit sind, das Dienstkonto in der Produktion zu nutzen, gewähren Sie sichereren Zugriff darauf. 
 
 ### <a name="schedule-regular-reviews-of-service-accounts"></a>Planen regelmäßiger Überprüfungen von Dienstkonten
 
 Richten Sie für Dienstkonten, die bei der Risikobewertung als „mittel“ oder „hoch“ eingestuft wurden, regelmäßige Überprüfungen ein. Die Überprüfungen sollten Folgendes umfassen: 
 
-* Bestätigung des Besitzers zur fortgesetzten Notwendigkeit des Kontos sowie Begründung von Berechtigungen und Bereichen
+* Nachweis des Besitzers hinsichtlich der fortgesetzten Notwendigkeit des Kontos sowie Begründung für Berechtigungen und Bereiche
 
-* Überprüfen durch Datenschutz- und Sicherheitsteams, einschließlich der Auswertung von Upstream- und Downstreamverbindungen
+* Überprüfung durch Datenschutz- und Sicherheitsteams einschließlich Auswertung von Upstream- und Downstreamverbindungen
 
 * Überwachungsdaten, um sicherzustellen, dass das Konto nur für die beabsichtigten Zwecke verwendet wird
 
 ### <a name="deprovision-service-accounts"></a>Aufheben der Bereitstellung von Dienstkonten
 
-Entfernen Sie zum Aufheben der Bereitstellung zunächst die Berechtigungen und die Überwachung und dann das Konto (falls erforderlich).
+Entfernen Sie zum Aufheben der Bereitstellung zunächst die Berechtigungen und die Überwachung und dann das Konto (sofern erforderlich).
 
-Die Aufhebung der Bereitstellung von Dienstkonten erfolgt in folgenden Fällen:
+Eine Aufhebung der Bereitstellung von Dienstkonten wird in folgenden Fällen durchgeführt:
 
-* Das Skript oder die Anwendung, für das bzw. die das Dienstkonto erstellt wurde, wird eingestellt.
+* Das Skript oder die Anwendung, für das bzw. für die das Dienstkonto erstellt wurde, wird ausgemustert.
 
-* Die Funktion innerhalb des Skripts oder der Anwendung, für das bzw. die das Dienstkonto verwendet wird (z. B. Zugriff auf eine bestimmte Ressource), wird eingestellt.
+* Die Funktion innerhalb des Skripts oder der Anwendung, für das bzw. für die das Dienstkonto verwendet wird (z. B. Zugriff auf eine bestimmte Ressource), wird ausgemustert.
 
 * Das Dienstkonto wurde durch ein anderes Dienstkonto ersetzt.
 
-Nachdem Sie alle Berechtigungen entfernt haben, verwenden Sie diesen Prozess zum Entfernen des Kontos.
+Nachdem Sie alle Berechtigungen entfernt haben, können Sie das Konto wie folgt entfernen:
 
-1. Nachdem die Bereitstellung der zugehörigen Anwendung oder des zugehörigen Skripts aufgehoben wurde, überwachen Sie die Anmeldungen und den Ressourcenzugriff für das zugehörige Dienstkonto (bzw. die Dienstkonten), um sicherzustellen, dass es nicht in einem anderen Prozess verwendet wird. Wenn Sie sicher sind, dass es nicht mehr benötigt wird, fahren Sie mit dem nächsten Schritt fort.
+1. Wenn die Bereitstellung der zugehörigen Anwendung oder des zugehörigen Skripts aufgehoben wurde, überwachen Sie die Anmeldungen und den Ressourcenzugriff für die zugeordneten Dienstkonten, um sicherzustellen, dass sie nicht in einem anderen Prozess verwendet werden. Wenn Sie sicher sind, dass es nicht mehr benötigt wird, fahren Sie mit dem nächsten Schritt fort.
 
-2. Deaktivieren Sie das Dienstkonto, sodass es sich nicht mehr anmelden kann, und stellen Sie sicher, dass es nicht mehr benötigt wird. Erstellen Sie eine geschäftliche Richtlinie für den Zeitraum, den Konten deaktiviert bleiben sollen.
+1. Deaktivieren Sie das Dienstkonto, um Anmeldungen zu verhindern, und vergewissern Sie sich, dass es nicht mehr benötigt wird. Erstellen Sie eine geschäftliche Richtlinie, die angibt, wie lange Konten deaktiviert bleiben müssen.
 
-3. Löschen Sie das Dienstkonto, nachdem die Richtlinie für das Bestehenbleiben deaktivierter Konten erfüllt wurde. 
+1. Löschen Sie das Dienstkonto, nachdem die Richtlinie für den erforderlichen Deaktivierungszeitraum erfüllt wurde. 
 
-   * Microsoft-Konten (MSAs) können Sie mithilfe von PowerShell [deinstallieren](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps&preserve-view=true) oder manuell aus dem Container für verwaltete Dienstkonten löschen.
+   * **MSAs:** [Deinstallieren Sie das Konto](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps&preserve-view=true) mithilfe von PowerShell, oder löschen Sie es manuell aus dem Container für verwaltete Dienstkonten.
 
-   * Computer- oder Benutzerkonten können Sie manuell in Active Directory löschen.
+   * **Computer- oder Benutzerkonten:** Löschen Sie das Konto manuell in Active Directory.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie die folgenden Artikel zum Schützen von Dienstkonten:
 
-* [Einführung in lokale Dienstkonten](service-accounts-on-premises.md)
+Weitere Informationen zum Schutz von Dienstkonten finden Sie in den folgenden Artikeln:
 
-* [Schützen von gruppenverwalteten Dienstkonten](service-accounts-group-managed.md)
-
-* [Schützen von eigenständigen verwalteten Dienstkonten](service-accounts-standalone-managed.md)
-
-* [Schützen von Computerkonten](service-accounts-computer.md)
-
+* [Einführung in lokale Dienstkonten](service-accounts-on-premises.md)  
+* [Schützen von gruppenverwalteten Dienstkonten](service-accounts-group-managed.md)  
+* [Schützen von eigenständigen verwalteten Dienstkonten](service-accounts-standalone-managed.md)  
+* [Schützen von Computerkonten](service-accounts-computer.md)  
 * [Schützen von Benutzerkonten](service-accounts-user-on-premises.md)
-
-* [Steuern lokaler Dienstkonten](service-accounts-govern-on-premises.md)

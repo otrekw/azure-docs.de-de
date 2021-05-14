@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: cbf070dce056795ad8e4a5f3e4d609e7d36d631e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 330a6e54ee88781f71c4a861051aab94f8eef81f
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200815"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587900"
 ---
 # <a name="understanding-resource-sets"></a>Grundlegendes zu Ressourcensätzen
 
@@ -102,14 +102,15 @@ Qualifizierter Name: `https://myblob.blob.core.windows.net/sample-data/data{N}.c
 
 Anzeigename: „data“ (Daten)
 
-## <a name="known-issues-with-resource-sets"></a>Bekannte Probleme mit Ressourcensätzen
+## <a name="customizing-resource-set-grouping-using-pattern-rules"></a>Anpassen der Ressourcengruppengruppe mithilfe von Musterregeln
 
-Obwohl Ressourcensätze in den meisten Fällen gut funktionieren, tritt möglicherweise das Problem auf, bei dem Azure Purview wie folgt verfährt:
+Beim Überprüfen eines Speicherkontos verwendet Azure Purview eine Reihe definierter Muster, um zu bestimmen, ob eine Gruppe von Ressourcen ein Ressourcensatz ist. In einigen Fällen entspricht die Ressourcensatzgruppierung von Azure Purview möglicherweise nicht genau dem Datentyp. Diese Probleme können folgendes umfassen:
 
-- Fälschlicherweise Kennzeichnung einer Ressource als Ressourcensatz
+- Fälschliche Kennzeichnung einer Ressource als Ressourcensatz
 - Einfügen einer Ressource in den falschen Ressourcensatz
-- Fälschlicherweise Kennzeichnung einer Ressource als kein Ressourcensatz
+- Fälschliche Kennzeichnung einer Ressource als kein Ressourcensatz
 
+Sie können im Management Center Musterregeln definieren, um anzupassen oder außer Kraft zu setzen, wie Azure Purview erkennt, welche Assets als Ressourcensets gruppiert sind und wie sie innerhalb des Katalogs angezeigt werden. Eine Schritt-für-Schritt-Anleitung und Syntax finden Sie unter [Musterregeln für Ressourcengruppen](how-to-resource-set-pattern-rules.md).
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu den ersten Schritten mit Azure Purview finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).

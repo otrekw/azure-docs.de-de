@@ -1,18 +1,19 @@
 ---
-title: 'Azure-VPN Gateway: Herstellen einer Verbindung zwischen Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten'
-description: Konfigurieren Sie routenbasierte Azure-VPN-Gateways für mehrere richtlinienbasierte VPN-Geräte mit Azure Resource Manager und PowerShell.
+title: Herstellen einer Verbindung zwischen VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten
+titleSuffix: Azure VPN Gateway
+description: Hier erfahren Sie, wie Sie ein routenbasiertes Azure-VPN-Gateway für mehrere richtlinienbasierte VPN-Geräte mithilfe von PowerShell konfigurieren.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 2a85204fef026940394a19934bef1c631a8e2d21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a0d42dbeb3713202ef0b2c5c05f08d51bd8a6db
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89418876"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291170"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Herstellen einer Verbindung zwischen Azure-VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell
 

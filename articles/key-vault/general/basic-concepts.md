@@ -3,23 +3,22 @@ title: Was ist Azure Key Vault? | Microsoft-Dokumentation
 description: Erfahren Sie, wie der Azure Key Vault kryptografische Schlüssel und Geheimnisse schützt, die von Cloudanwendungen und -diensten verwendet werden.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc00a4f1c1551932b4a30a8ef9b27cb1d4082667
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 863f98e643a7978856c03f5efe95736e6787f977
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071595"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814404"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Grundlegende Konzepte von Azure Key Vault
 
-Azure Key Vault ist ein Clouddienst zum sicheren Speichern und Zugreifen auf Geheimnisse. Als Geheimnis wird alles bezeichnet, für das Sie den Zugriff streng kontrollieren möchten, z. B. API-Schlüssel, Kennwörter, Zertifikate oder kryptografische Schlüssel. Der Key Vault-Dienst unterstützt zwei Arten von Containern: Tresore und verwaltete HSM-Pools. Tresore unterstützen die Speicherung von Software und HSM-gestützten Schlüsseln, Geheimnissen und Zertifikaten. Verwaltete HSM-Pools unterstützen nur HSM-gestützte Schlüssel. Ausführliche Informationen finden Sie unter [Übersicht über die Azure Key Vault-REST-API](about-keys-secrets-certificates.md).
+Azure Key Vault ist ein Clouddienst zum sicheren Speichern und Zugreifen auf Geheimnisse. Als Geheimnis wird alles bezeichnet, für das Sie den Zugriff streng kontrollieren möchten, z. B. API-Schlüssel, Kennwörter, Zertifikate oder kryptografische Schlüssel. Der Key Vault-Dienst unterstützt zwei Arten von Containern: Tresore und verwaltete HSM-Pools (Hardware Security Module). Tresore unterstützen die Speicherung von Software und HSM-gestützten Schlüsseln, Geheimnissen und Zertifikaten. Verwaltete HSM-Pools unterstützen nur HSM-gestützte Schlüssel. Ausführliche Informationen finden Sie unter [Übersicht über die Azure Key Vault-REST-API](about-keys-secrets-certificates.md).
 
 Hier sind weitere wichtige Begriffe:
 
@@ -81,7 +80,7 @@ Entwickler können die Schlüssel außerdem durch Verwendung von APIs direkt ver
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Schützen Ihres Tresors](secure-your-key-vault.md).
+- Hier finden Sie Informationen zu [Azure Key Vault-Sicherheitsfunktionen](security-features.md).
 - Erfahren Sie, wie Sie Ihre [verwalteten HSM-Pools sichern können](../managed-hsm/access-control.md).
 
 <!--Image references-->

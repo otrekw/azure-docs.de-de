@@ -2,15 +2,15 @@
 title: Testfälle für das Testtoolkit
 description: Beschreibt die Tests, die vom Resource Manager-Vorlagen-Testtoolkit ausgeführt werden.
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 04/12/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 5dc4891bbc8bf6397a0f041fa845f4fb0ad6c600
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064143"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142511"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Standardtestfälle für das Resource Manager-Vorlagen-Testtoolkit
 
@@ -637,7 +637,7 @@ Im folgenden Beispiel ist der Test **erfolgreich**.
 
 Testname: **ManagedIdentityExtension must not be used**
 
-Wenden Sie die ManagedIdentity-Erweiterung nicht auf eine VM an. Weitere Informationen finden Sie unter [Umsteigen von der VM-Erweiterung für verwaltete Identitäten auf Azure Instance Metadata Service](../../active-directory/managed-identities-azure-resources/howto-migrate-vm-extension.md).
+Wenden Sie die ManagedIdentity-Erweiterung nicht auf eine VM an. Die Erweiterung wurde 2019 eingestellt und sollte nicht mehr verwendet werden.
 
 ## <a name="outputs-cant-include-secrets"></a>Keine Geheimnisse in Ausgaben
 
@@ -698,7 +698,7 @@ Testname: **„CommandToExecute“ muss „ProtectedSettings“ für Geheimnisse
 Verwenden Sie in einer benutzerdefinierten Skripterweiterung die verschlüsselte Eigenschaft `protectedSettings`, wenn `commandToExecute` Geheimnisdaten wie z. B. ein Kennwort enthält. Beispiele für Geheimnisdatentypen sind `secureString`, `secureObject`, `list()`-Funktionen oder Skripts.
 
 Weitere Informationen zur benutzerdefinierten Skripterweiterung für virtuelle Computer finden Sie unter [Windows](
-/azure/virtual-machines/extensions/custom-script-windows), [Linux](/azure/virtual-machines/extensions/custom-script-linux) und dem Schema [Microsoft.Compute virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions).
+/azure/virtual-machines/extensions/custom-script-windows), [Linux](../../virtual-machines/extensions/custom-script-linux.md) und dem Schema [Microsoft.Compute virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions).
 
 In diesem Beispiel **übergibt** eine Vorlage mit einem Parameter namens `adminPassword` vom Typ `secureString` den Test, da die verschlüsselte Eigenschaft `protectedSettings` den Wert `commandToExecute` enthält.
 

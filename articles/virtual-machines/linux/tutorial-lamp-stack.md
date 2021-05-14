@@ -1,38 +1,32 @@
 ---
-title: 'Tutorial: Bereitstellen von LAMP auf einem virtuellen Linux-Computer in Azure'
-description: In diesem Tutorial erfahren Sie, wie Sie den LAMP-Stack auf einem virtuellen Linux-Computer in Azure installieren.
-services: virtual-machines
-documentationcenter: virtual-machines
+title: 'Tutorial: Bereitstellen von LAMP und WordPress auf einem virtuellen Computer'
+description: In diesem Tutorial erfahren Sie, wie Sie den LAMP-Stack und WordPress auf einem virtuellen Linux-Computer in Azure installieren.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.collection: linux
-ms.assetid: 6c12603a-e391-4d3e-acce-442dd7ebb2fe
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 04/20/2021
 ms.author: cynthn
-ms.openlocfilehash: 3813931f47c110abcfb595065c1415ca9ed84c9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5365bad5fdea2a8213defc103f0cdd966ebe50a5
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564712"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816344"
 ---
-# <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Installieren eines LAMP-Webservers auf einem virtuellen Linux-Computer in Azure
+# <a name="tutorial-install-a-lamp-stack-on-an-azure-linux-vm"></a>Tutorial: Installieren eines LAMP-Stacks auf einem virtuellen Azure Linux-Computer
 
 In diesem Artikel werden Sie durch die Bereitstellung eines Apache-Webservers sowie von MySQL und PHP (LAMP-Stack) auf einem virtuellen Ubuntu-Computer in Azure geführt. Um den LAMP-Server in Aktion zu sehen, können Sie optional eine WordPress-Website installieren und konfigurieren. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines virtuellen Ubuntu-Computers („L“ im LAMP-Stack)
+> * Erstellen eines virtuellen Ubuntu-Computers 
 > * Öffnen von Port 80 für Webdatenverkehr
 > * Installieren von Apache, MySQL und PHP
 > * Überprüfen der Installation und Konfiguration
-> * Installieren von WordPress auf dem LAMP-Server
+> * Installieren von WordPress 
 
 Dieses Setup ist für schnelle Tests oder Proof of Concept gedacht. Weitere Informationen zum LAMP-Stack, einschließlich Empfehlungen für eine Produktionsumgebung, finden Sie in der [Ubuntu-Dokumentation](https://help.ubuntu.com/community/ApacheMySQLPHP).
 
@@ -40,7 +34,72 @@ Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](../.
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
-[!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+
+Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
+
+```azurecli-interactive
+az group create --name myResourceGroup --location eastus
+```
+
+## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
+
+Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm) einen virtuellen Computer. 
+
+Das folgende Beispiel erstellt einen virtuellen Computer mit dem Namen *myVM* und SSH-Schlüssel, falls sie nicht bereits an einem Standardschlüsselspeicherort vorhanden sind. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`. Der Befehl legt zudem *azureuser* als Administratorbenutzernamen fest. Sie verwenden diesen Namen später, um eine Verbindung mit dem virtuellen Computer herzustellen. 
+
+```azurecli-interactive
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys
+```
+
+Nach dem Erstellen der VM zeigt die Azure CLI ähnliche Informationen wie im folgenden Beispiel an. Notieren Sie sich den Wert von `publicIpAddress`. Diese Adresse wird später verwendet, um auf den virtuellen Computer zuzugreifen.
+
+```output
+{
+  "fqdns": "",
+  "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+  "location": "eastus",
+  "macAddress": "00-0D-3A-23-9A-49",
+  "powerState": "VM running",
+  "privateIpAddress": "10.0.0.4",
+  "publicIpAddress": "40.68.254.142",
+  "resourceGroup": "myResourceGroup"
+}
+```
+
+
+
+## <a name="open-port-80-for-web-traffic"></a>Öffnen von Port 80 für Webdatenverkehr 
+
+Standardmäßig sind für in Azure bereitgestellte virtuelle Linux-Computer nur eingehende SSH-Verbindungen zulässig. Da dieser virtuelle Computer als Webserver fungieren soll, muss Port 80 für Datenverkehr aus dem Internet geöffnet werden. Verwenden Sie zum Öffnen des gewünschten Ports den Befehl [az vm open-port](/cli/azure/vm).  
+ 
+```azurecli-interactive
+az vm open-port --port 80 --resource-group myResourceGroup --name myVM
+```
+
+Weitere Informationen zum Öffnen von Ports für Ihren virtuellen Computer finden Sie unter [Öffnen von Ports und Endpunkten für eine VM über die Azure-Befehlszeilenschnittstelle](nsg-quickstart.md).
+
+## <a name="ssh-into-your-vm"></a>Herstellen einer SSH-Verbindung mit Ihrem virtuellen Computer
+
+Wenn Sie die öffentliche IP-Adresse des virtuellen Computers nicht bereits kennen, führen Sie den Befehl [az network public-ip list](/cli/azure/network/public-ip) aus. Sie benötigen diese IP-Adresse für mehrere nachfolgende Schritte.
+
+```azurecli-interactive
+az network public-ip list --resource-group myResourceGroup --query [].ipAddress
+```
+
+Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer. Ersetzen Sie die korrekte öffentliche IP-Adresse Ihres virtuellen Computers. In diesem Beispiel lautet die IP-Adresse *40.68.254.142*. *azureuser* ist der Administratorbenutzername, der beim Erstellen des virtuellen Computers festgelegt wurde.
+
+```bash
+ssh azureuser@40.68.254.142
+```
+
 
 ## <a name="install-apache-mysql-and-php"></a>Installieren von Apache, MySQL und PHP
 
@@ -53,10 +112,7 @@ sudo apt update && sudo apt install lamp-server^
 
 Sie werden aufgefordert, die Pakete und andere Abhängigkeiten zu installieren. Dieser Prozess installiert die PHP-Erweiterungen, die mindestens für die Verwendung von PHP mit MySQL erforderlich sind.  
 
-## <a name="verify-installation-and-configuration"></a>Überprüfen der Installation und Konfiguration
-
-
-### <a name="verify-apache"></a>Überprüfen von Apache
+## <a name="verify-apache"></a>Überprüfen von Apache
 
 Überprüfen Sie die Version von Apache mit dem folgenden Befehl:
 ```bash
@@ -68,7 +124,7 @@ Nachdem Apache installiert und Port 80 für den virtuellen Computer geöffnet wu
 ![Apache-Standardseite][3]
 
 
-### <a name="verify-and-secure-mysql"></a>Überprüfen und Sichern von MySQL
+## <a name="verify-and-secure-mysql"></a>Überprüfen und Sichern von MySQL
 
 Überprüfen Sie die Version von MySQL mit dem folgenden Befehl (beachten Sie die Großschreibung des `V`-Parameters):
 
@@ -92,7 +148,7 @@ sudo mysql -u root -p
 
 Beenden Sie anschließend die MySQL-Eingabeaufforderung durch Eingabe von `\q`.
 
-### <a name="verify-php"></a>Überprüfen von PHP
+## <a name="verify-php"></a>Überprüfen von PHP
 
 Überprüfen Sie die Version von PHP mit dem folgenden Befehl:
 

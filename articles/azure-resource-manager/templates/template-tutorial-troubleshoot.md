@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 31c4e6383b5eaea2bb66dc1baafa0fbff4918a7c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88898d3a0e42ff362a5ab6fa586c52064fcb8221
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97589116"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736737"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Tutorial: Problembehandlung bei Bereitstellungen von ARM-Vorlagen
 
@@ -47,7 +47,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 2. Fügen Sie in **Dateiname** die folgende URL ein:
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
     ```
 
 3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.

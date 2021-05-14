@@ -5,18 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 04/14/2021
 ms.author: victorh
-ms.openlocfilehash: c425afc314435c38d15d53ab0c38dcd48e35a40b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01707a99b1ff5d077daf3c095e1daf78ccddfeac
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508927"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107898187"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall –Private SNAT-IP-Adressbereiche
 
-Azure Firewall bietet eine SNAT für sämtlichen ausgehenden Datenverkehr an öffentliche IP-Adressen. Azure Firewall bietet standardmäßig kein SNAT mit Netzwerkregeln, wenn die Ziel-IP-Adresse ein privater IP-Adressbereich gemäß [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) ist. Anwendungsregeln werden immer mithilfe eines [transparenten Proxys](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) unabhängig von der IP-Zieladresse angewendet.
+Azure Firewall bietet eine SNAT für sämtlichen ausgehenden Datenverkehr an öffentliche IP-Adressen. Azure Firewall bietet standardmäßig kein SNAT mit Netzwerkregeln, wenn die Ziel-IP-Adresse ein privater IP-Adressbereich gemäß [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) oder ein geteilter Adressraum gemäß [IANA RFC 6598](https://tools.ietf.org/html/rfc6598) ist. Anwendungsregeln werden immer mithilfe eines [transparenten Proxys](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) unabhängig von der IP-Zieladresse angewendet.
 
 Diese Logik funktioniert gut, wenn Sie Datenverkehr direkt an das Internet weiterleiten. Wenn Sie jedoch [Tunnelerzwingung](forced-tunneling.md) aktiviert haben, wird der Internet-gebundene Datenverkehr an eine der privaten IP-Adressen der Firewall in AzureFirewallSubnet übersetzt, wodurch die Quelle vor Ihrer lokalen Firewall verborgen wird.
 
@@ -32,13 +32,28 @@ Wenn Ihre Organisation einen öffentlichen IP-Adressbereich für private Netzwer
 > [!IMPORTANT]
 > Wenn Sie Ihre eigenen privaten IP-Adressbereiche festlegen und die standardmäßigen IANA RFC 1918-Adressbereiche beibehalten möchten, stellen Sie sicher, dass Ihre benutzerdefinierte Liste den IANA RFC 1918-Bereich noch enthält. 
 
+Sie können die privaten SNAT-IP-Adressen mithilfe der folgenden Methoden konfigurieren. Sie müssen die privaten SNAT-Adressen mithilfe der für Ihre Konfiguration geeigneten Methode konfigurieren. Firewalls, die einer Firewallrichtlinie zugeordnet sind, müssen den Bereich in der Richtlinie angeben und dürfen nicht `AdditionalProperties` verwenden.
+
+
+|Methode            |Verwenden klassischer Regeln  |Verwenden der Firewallrichtlinie  |
+|---------|---------|---------|
+|Azure-Portal     | [Unterstützt](#classic-rules-3)| [Unterstützt](#firewall-policy-1)|
+|Azure PowerShell     |[Konfigurieren von `PrivateRange`](#classic-rules)|Derzeit nicht unterstützt|
+|Azure CLI|[Konfigurieren von `--private-ranges`](#classic-rules-1)|Derzeit nicht unterstützt|
+|ARM-Vorlage     |[Konfigurieren von `AdditionalProperties` in der Firewalleigenschaft](#classic-rules-2)|[Konfigurieren von `snat/privateRanges` in der Firewallrichtlinie](#firewall-policy)|
+
+
 ## <a name="configure-snat-private-ip-address-ranges---azure-powershell"></a>Konfigurieren von privaten SNAT-IP-Adressbereichen – Azure PowerShell
+### <a name="classic-rules"></a>Klassische Regeln
 
 Sie können mithilfe von Azure PowerShell private IP-Adressbereiche für die Firewall angeben.
 
-### <a name="new-firewall"></a>Neue Firewall
+> [!NOTE]
+> Die Firewalleigenschaft `PrivateRange` wird für Firewalls ignoriert, die einer Firewallrichtlinie zugeordnet sind. Sie müssen die Eigenschaft `SNAT` in `firewallPolicies` verwenden, wie unter [Konfigurieren von privaten SNAT-IP-Adressbereichen – ARM-Vorlage](#firewall-policy)beschrieben.
 
-Bei einer neuen Firewall lautet das Azure PowerShell-Cmdlet:
+#### <a name="new-firewall"></a>Neue Firewall
+
+Für eine neue Firewall mit klassischen Regeln lautet das Azure PowerShell-Cmdlet folgendermaßen:
 
 ```azurepowershell
 $azFw = @{
@@ -60,9 +75,9 @@ New-AzFirewall @azFw
 
 Weitere Informationen finden Sie unter [New-AzFirewall](/powershell/module/az.network/new-azfirewall).
 
-### <a name="existing-firewall"></a>Vorhandene Firewall
+#### <a name="existing-firewall"></a>Vorhandene Firewall
 
-Zum Konfigurieren einer vorhandenen Firewall verwenden Sie die folgenden Azure PowerShell-Cmdlets:
+Zum Konfigurieren einer vorhandenen Firewall mit klassischen Regeln verwenden Sie die folgenden Azure PowerShell-Cmdlets:
 
 ```azurepowershell
 $azfw = Get-AzFirewall -Name '<fw-name>' -ResourceGroupName '<resourcegroup-name>'
@@ -71,12 +86,13 @@ Set-AzFirewall -AzureFirewall $azfw
 ```
 
 ## <a name="configure-snat-private-ip-address-ranges---azure-cli"></a>Konfigurieren von privaten SNAT-IP-Adressbereichen – Azure-Befehlszeilenschnittstelle
+### <a name="classic-rules"></a>Klassische Regeln
 
-Sie können mithilfe der Azure-Befehlszeilenschnittstelle private IP-Adressbereiche für die Firewall angeben.
+Sie können mithilfe der Azure CLI private IP-Adressbereiche für die Firewall mit klassischen Regeln angeben. 
 
-### <a name="new-firewall"></a>Neue Firewall
+#### <a name="new-firewall"></a>Neue Firewall
 
-Bei einer neuen Firewall lautet der Azure CLI-Befehl:
+Für eine neue Firewall mit klassischen Regeln lautet der Azure CLI-Befehl folgendermaßen:
 
 ```azurecli-interactive
 az network firewall create \
@@ -89,11 +105,11 @@ az network firewall create \
 > Zum Bereitstellen von Azure Firewall mithilfe des Befehls `az network firewall create` der Azure-Befehlszeilenschnittstelle sind zusätzliche Konfigurationsschritte erforderlich, um öffentliche IP-Adressen und IP-Konfigurationen zu erstellen. Einen vollständigen Bereitstellungsleitfaden finden Sie unter [Bereitstellen und Konfigurieren von Azure Firewall mit der Azure-Befehlszeilenschnittstelle](deploy-cli.md).
 
 > [!NOTE]
-> „IANAPrivateRanges“ wird auf die aktuellen Standardeinstellungen von Azure Firewall erweitert, während die anderen Bereiche hinzugefügt werden. Damit der IANAPrivateRanges-Standard in Ihrer privaten Bereichsspezifikation beibehalten wird, muss er in Ihrer `PrivateRange`-Spezifikation verbleiben, wie in den folgenden Beispielen gezeigt wird.
+> „IANAPrivateRanges“ wird auf die aktuellen Standardeinstellungen von Azure Firewall erweitert, während die anderen Bereiche hinzugefügt werden. Damit der IANAPrivateRanges-Standard in Ihrer privaten Bereichsspezifikation beibehalten wird, muss er in Ihrer `private-ranges`-Spezifikation verbleiben, wie in den folgenden Beispielen gezeigt wird.
 
-### <a name="existing-firewall"></a>Vorhandene Firewall
+#### <a name="existing-firewall"></a>Vorhandene Firewall
 
-Der Befehl zum Konfigurieren einer vorhandenen Firewall mit der Azure-Befehlszeilenschnittstelle lautet:
+Der Azure CLI-Befehl zum Konfigurieren einer vorhandenen Firewall mit klassischen Regeln lautet folgendermaßen:
 
 ```azurecli-interactive
 az network firewall update \
@@ -103,6 +119,7 @@ az network firewall update \
 ```
 
 ## <a name="configure-snat-private-ip-address-ranges---arm-template"></a>Konfigurieren von privaten SNAT-IP-Adressbereichen – ARM-Vorlage
+### <a name="classic-rules"></a>Klassische Regeln
 
 Zum Konfigurieren von SNAT während der Bereitstellung mit einer ARM-Vorlage können Sie der `additionalProperties`-Eigenschaft Folgendes hinzufügen:
 
@@ -111,8 +128,29 @@ Zum Konfigurieren von SNAT während der Bereitstellung mit einer ARM-Vorlage kö
    "Network.SNAT.PrivateRanges": "IANAPrivateRanges , IPRange1, IPRange2"
 },
 ```
+### <a name="firewall-policy"></a>Firewallrichtlinie
+
+Azure Firewalls, die einer Firewallrichtlinie zugeordnet sind, unterstützen private SNAT-Bereiche seit API-Version 2020-11-01. Derzeit können Sie eine Vorlage verwenden, um den privaten SNAT-Bereich in der Firewallrichtlinie zu aktualisieren. Im folgenden Beispiel wird die Firewall so konfiguriert, dass SNAT-Netzwerkdatenverkehr **immer** zugelassen wird:
+
+```json
+{ 
+
+            "type": "Microsoft.Network/firewallPolicies", 
+            "apiVersion": "2020-11-01", 
+            "name": "[parameters('firewallPolicies_DatabasePolicy_name')]", 
+            "location": "eastus", 
+            "properties": { 
+                "sku": { 
+                    "tier": "Standard" 
+                }, 
+                "snat": { 
+                    "privateRanges": [255.255.255.255/32] 
+                } 
+            } 
+```
 
 ## <a name="configure-snat-private-ip-address-ranges---azure-portal"></a>Konfigurieren von privaten SNAT-IP-Adressbereichen – Azure-Portal
+### <a name="classic-rules"></a>Klassische Regeln
 
 Sie können mithilfe des Azure-Portals private IP-Adressbereiche für die Firewall angeben.
 
@@ -125,6 +163,18 @@ Sie können mithilfe des Azure-Portals private IP-Adressbereiche für die Firewa
 
 1. Standardmäßig ist **IANAPrivateRanges** konfiguriert.
 2. Bearbeiten Sie die privaten IP-Adressbereiche für Ihre Umgebung, und wählen Sie dann **Speichern** aus.
+
+### <a name="firewall-policy"></a>Firewallrichtlinie
+
+1.  Wählen Sie Ihre Ressourcengruppe und dann Ihre Firewallrichtlinie aus.
+2.  Wählen Sie **Private IP-Adressbereiche (SNAT)** in der Spalte **Einstellungen** aus.
+
+    Standardmäßig ist **SNAT-Standardverhalten der Azure Firewall-Richtlinie verwenden** ausgewählt. 
+3. Deaktivieren Sie das Kontrollkästchen, um die SNAT-Konfiguration anzupassen, und wählen Sie unter **SNAT durchführen** die Bedingungen für die Ausführung von SNAT für Ihre Umgebung aus.
+      :::image type="content" source="media/snat-private-range/private-ip-ranges-snat.png" alt-text="Private IP-Adressbereiche (SNAT)":::
+
+
+4.   Wählen Sie **Übernehmen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

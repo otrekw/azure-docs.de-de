@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 04/14/2021
 ms.author: victorh
-ms.openlocfilehash: 3b8fbc47b46f8be6e4ad7636a1d7552445501f0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e14a8afe27fc9dd9ca40730dd7e681c3093e0b50
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94653163"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505903"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrieren von Azure Firewall mit Azure Load Balancer Standard
 
@@ -65,8 +65,7 @@ Es gibt kein Problem mit asymmetrischem Routing in diesem Szenario. Die eingehen
 
 Somit können Sie dieses Szenario ähnlich zum Szenario mit öffentlichem Load Balancer bereitstellen, jedoch ohne die Notwendigkeit für eine Hostroute für die öffentliche IP-Adresse der Firewall.
 
->[!NOTE]
->Die virtuellen Computer im Back-End-Pool verfügen mit dieser Konfiguration nicht über ausgehende Internetkonnektivität. </br> Weitere Informationen zu ausgehender Konnektivität finden Sie unter: </br> **[Ausgehende Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md)**</br> Optionen zum Bereitstellen von Konnektivität: </br> **[Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)](../load-balancer/egress-only.md)** </br> [**Was ist Virtual Network NAT?**](../virtual-network/nat-overview.md)
+Die VMs im Back-End-Pool können ausgehende Internetkonnektivität über Azure Firewall aufweisen. Konfigurieren Sie im Subnetz der VM eine benutzerdefinierte Route mit der Firewall als nächstem Hop.
 
 
 ## <a name="additional-security"></a>Zusätzliche Sicherheit

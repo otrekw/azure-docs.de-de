@@ -1,6 +1,6 @@
 ---
-title: 'Infrastrukturanforderungen für die SIP-Schnittstelle: Azure Communication Services'
-description: Machen Sie sich mit den Infrastrukturanforderungen für die Konfiguration der SIP-Schnittstelle von Azure Communication Services vertraut.
+title: 'Infrastrukturanforderungen für direktes Azure-Routing: Azure Communication Services'
+description: Machen Sie sich mit den Infrastrukturanforderungen für die Konfiguration des direkten Routings von Azure Communication Services vertraut.
 author: boris-bazilevskiy
 manager: nmurav
 services: azure-communication-services
@@ -8,34 +8,34 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ede650ae072ef53ed40a9372a292ab69fe8cc1af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6e5aceaa6824d4bb6fd1bf938973c79cb5847e1
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492726"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324585"
 ---
-# <a name="sip-interface-infrastructure-requirements"></a>Infrastrukturanforderungen für die SIP-Schnittstelle 
+# <a name="azure-direct-routing-infrastructure-requirements"></a>Anforderungen an die Infrastruktur für direktes Azure-Routing 
 
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
  
-Dieser Artikel enthält ausführliche Informationen zur Infrastruktur, Lizenzierung und SBC-Konnektivität (Session Border Controller), die bei der Planung Ihrer SIP-Schnittstellenbereitstellung berücksichtigt werden sollten.
+Dieser Artikel enthält ausführliche Informationen zur Infrastruktur, Lizenzierung und SBC-Konnektivität (Session Border Controller), die bei der Planung Ihrer Bereitstellung von direktem Azure-Routing berücksichtigt werden sollten.
 
 
 ## <a name="infrastructure-requirements"></a>Infrastrukturanforderungen
-In der folgenden Tabelle sind die Infrastrukturanforderungen für die unterstützten SBCs und Domänen sowie andere Netzwerkkonnektivitätsanforderungen für die Bereitstellung der SIP-Schnittstelle aufgeführt:  
+In der folgenden Tabelle sind die Infrastrukturanforderungen für die unterstützten SBCs und Domänen sowie andere Netzwerkkonnektivitätsanforderungen für die Bereitstellung des direkten Azure-Routings aufgeführt:  
 
 |Infrastrukturanforderung|Voraussetzung|
 |:--- |:--- |
 |Session Border Controller (SBC)|Unterstützter SBC. Weitere Informationen finden Sie unter [Unterstützte Session Border Controller (SBC)](#supported-session-border-controllers-sbcs).|
-|Mit dem SBC verbundene Telefonie-Trunks|Mindestens ein mit dem SBC verbundener Telefonie-Trunk. Auf einer Seite ist der SBC über die SIP-Schnittstelle mit der Azure Communication Services-Instanz verbunden. Der SBC kann auch Verbindungen mit Drittanbieter-Telefonieentitäten wie Nebenstellenanlagen, analogen Telefonieadaptern und Ähnlichem herstellen. Jede mit dem SBC verbundene Festnetz-Konnektivitätsoption funktioniert. (Informationen zur Konfiguration der Festnetz-Trunks für den SBC erhalten Sie vom jeweiligen SBC- oder Trunk-Anbieter.)|
+|Mit dem SBC verbundene Telefonie-Trunks|Mindestens ein mit dem SBC verbundener Telefonie-Trunk. Auf einer Seite ist der SBC über direktes Routing mit der Azure Communication Services-Instanz verbunden. Der SBC kann auch Verbindungen mit Drittanbieter-Telefonieentitäten wie Nebenstellenanlagen, analogen Telefonieadaptern und Ähnlichem herstellen. Jede mit dem SBC verbundene Festnetz-Konnektivitätsoption funktioniert. (Informationen zur Konfiguration der Festnetz-Trunks für den SBC erhalten Sie vom jeweiligen SBC- oder Trunk-Anbieter.)|
 |Azure-Abonnement|Ein Azure-Abonnement zum Erstellen der ACS-Ressource sowie die Konfiguration und die Verbindung mit dem SBC.|
 |Communication Services-Zugriffstoken|Um Anrufe tätigen zu können, benötigen Sie ein gültiges Zugriffstoken mit dem Bereich `voip`. Weitere Informationen finden Sie unter [Zugriffstoken](../identity-model.md#access-tokens).|
 |Öffentliche IP-Adresse für den SBC|Eine öffentliche IP-Adresse, die verwendet werden kann, um eine Verbindung mit dem SBC herzustellen. Basierend auf dem SBC-Typ kann der SBC NAT verwenden.|
 |Vollqualifizierter Domänenname (Fully Qualified Domain Name, FQDN) für den SBC|Ein FQDN für den SBC, bei dem der Domänenteil des FQDN keiner registrierten Domäne in Ihrer Microsoft 365- oder Office 365-Organisation entspricht. Weitere Informationen finden Sie unter [SBC-Domänennamen](#sbc-domain-names).|
 |Öffentlicher DNS-Eintrag für den SBC |Ein öffentlicher DNS-Eintrag, der den SBC-FQDN der öffentlichen IP-Adresse zuordnet. |
-|Öffentliches vertrauenswürdiges Zertifikat für den SBC |Ein Zertifikat für den SBC, das für die gesamte Kommunikation mit der SIP-Schnittstelle verwendet wird. Weitere Informationen finden Sie unter [Öffentliches vertrauenswürdiges Zertifikat für den SBC](#public-trusted-certificate-for-the-sbc).|
+|Öffentliches vertrauenswürdiges Zertifikat für den SBC |Ein Zertifikat für den SBC, das für die gesamte Kommunikation mit direktem Azure-Routing verwendet wird. Weitere Informationen finden Sie unter [Öffentliches vertrauenswürdiges Zertifikat für den SBC](#public-trusted-certificate-for-the-sbc).|
 |Firewall-IP-Adressen und -Ports für SIP-Signalisierung und Medien |Der SBC kommuniziert mit folgenden Diensten in der Cloud:<br/><br/>SIP-Proxy (zur Behandlung der Signalisierung)<br/>Medienprozessor (zur Behandlung von Medien)<br/><br/>Die beiden Dienste verfügen in Microsoft Cloud über unterschiedliche IP-Adressen. Weitere Informationen finden Sie weiter unten in diesem Dokument.
 
 
@@ -68,7 +68,7 @@ Microsoft empfiehlt, das Zertifikat für den SBC durch Generieren einer Zertifik
 
 Für das Zertifikat muss der SBC-FQDN als allgemeiner Name (Common Name, CN) oder als alternativer Antragstellername (Subject Alternative Name, SAN) verwendet werden. Das Zertifikat muss direkt von einer Zertifizierungsstelle ausgestellt werden, nicht von einem Zwischenanbieter.
 
-Alternativ unterstützt die SIP-Schnittstelle von Communication Services auch einen Platzhalter in CN und/oder SAN. Der Platzhalter muss dem Standard [RFC HTTP Over TLS](https://tools.ietf.org/html/rfc2818#section-3.1) entsprechen. 
+Alternativ unterstützt das direkte Routing von Communication Services auch einen Platzhalter in CN und/oder SAN. Der Platzhalter muss dem Standard [RFC HTTP Over TLS](https://tools.ietf.org/html/rfc2818#section-3.1) entsprechen. 
 
 Ein Beispiel wäre die Verwendung von `\*.contoso.com`, was dem SBC-FQDN `sbc.contoso.com`, aber nicht `sbc.test.contoso.com` entsprechen würde.
 
@@ -103,7 +103,7 @@ Microsoft arbeitet daran, weitere, von Kunden gewünschte Zertifizierungsstellen
 
 ## <a name="sip-signaling-fqdns"></a>SIP-Signalisierung: FQDNs 
 
-Die Verbindungspunkte für die SIP-Schnittstelle von Communication Services sind die drei folgenden FQDNs:
+Die Verbindungspunkte für das direkte Routing von Communication Services sind die drei folgenden FQDNs:
 
 - **sip.pstnhub.microsoft.com**: Globaler FQDN. Muss zuerst verwendet werden. Wenn der SBC eine Anforderung zum Auflösen dieses Namens sendet, wird von den Microsoft Azure DNS-Servern eine IP-Adresse zurückgegeben, die auf das primäre Azure-Rechenzentrum verweist, das dem SBC zugewiesen ist. Die Zuweisung basiert auf Leistungsmetriken der Rechenzentren und der geografischen Nähe zum SBC. Die zurückgegebene IP-Adresse entspricht dem primären FQDN.
 - **sip2.pstnhub.microsoft.com**: Sekundärer FQDN. Geografisch der zweiten Prioritätsregion zugeordnet.
@@ -114,7 +114,7 @@ Die Reihenfolge dieser drei FQDNs ist für Folgendes erforderlich:
 - Optimale Erfahrung (weniger Auslastung und am nächsten zum zugewiesenen SBC-Rechenzentrum durch Abfragen des ersten FQDN)
 - Failover, wenn von einem SBC eine Verbindung mit einem Rechenzentrum hergestellt wird, bei dem ein vorübergehendes Problem auftritt. Weitere Informationen finden Sie weiter unten unter [Failovermechanismus für die SIP-Signalisierung](#failover-mechanism-for-sip-signaling).  
 
-Die FQDNs („sip.pstnhub.microsoft.com“, „sip2.pstnhub.microsoft.com“ und „sip3.pstnhub.microsoft.com“) werden zu einer der folgenden IP-Adressen aufgelöst:
+Die FQDNs („sip.pstnhub.microsoft.com“, „sip2.pstnhub.microsoft.com“ und „sip3.pstnhub.microsoft.com“) werden in eine der folgenden IP-Adressen aufgelöst:
 
 - `52.114.148.0`
 - `52.114.132.46`
@@ -129,7 +129,7 @@ Die FQDNs („sip.pstnhub.microsoft.com“, „sip2.pstnhub.microsoft.com“ und
 
 ## <a name="sip-signaling-ports"></a>SIP-Signalisierung: Ports
 
-Verwenden Sie die folgenden Ports für die SIP-Schnittstelle von Communication Services:
+Verwenden Sie die folgenden Ports für das direkte Routing von Communication Services:
 
 |Verkehr|From|Beschreibung|Quellport|Zielport|
 |:--- |:--- |:--- |:--- |:--- |
@@ -175,7 +175,7 @@ Standorte, an denen nur Medienprozessoren bereitgestellt werden (SIP-Flows über
 ### <a name="leg-between-sbc-and-cloud-media-processor-or-microsoft-teams-client"></a>Abschnitt zwischen SBC und Cloudmedienprozessor oder Microsoft Teams-Client.
 Gilt sowohl für Medienumgehung als auch für Fälle ohne Medienumgehung.
 
-Von der Schnittstelle für direktes Routing für den Abschnitt zwischen dem Session Border Controller und dem Cloudmedienprozessor können folgende Codecs verwendet werden:
+Von der Schnittstelle für direktes Azure-Routing für den Abschnitt zwischen dem Session Border Controller und dem Cloudmedienprozessor können folgende Codecs verwendet werden:
 
 - SILK, G.711, G.722, G.729
 

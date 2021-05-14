@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12d0997e677bcca423f32951e99a6202855104ad
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101686477"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030865"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Erstellen eines Azure Arc-Datencontrollers im Azure-Portal
 
@@ -26,24 +26,23 @@ Sie können das Azure-Portal verwenden, um einen Azure Arc-Datencontroller zu er
 
 Viele der Erstellungsfunktionen für Azure Arc beginnen im Azure-Portal, obwohl sich die zu erstellende oder zu verwaltende Ressource außerhalb der Azure-Infrastruktur befindet. Das Muster für die Benutzerfunktionalität besteht in diesen Fällen darin, das Azure-Portal zu verwenden, um ein Skript zu generieren, das dann in Ihrer Umgebung heruntergeladen und ausgeführt werden kann, um wiederum eine sichere Verbindung mit Azure herzustellen. Dies gilt insbesondere dann, wenn keine direkte Verbindung zwischen Azure und Ihrer Umgebung besteht. Beispielsweise wird bei der [Erstellung von Azure Arc-fähigen Servern](../servers/onboard-portal.md) das folgende Muster befolgt.
 
-Da die Vorschauversion bisher nur den Modus „Indirekt verbunden“ von Azure Arc-fähigen Datendiensten unterstützt, können Sie im Azure-Portal ein Notebook generieren, das dann heruntergeladen und in Azure Data Studio für Ihren Kubernetes-Cluster ausgeführt werden kann. Wenn in Zukunft der Modus „Direkt verbunden“ verfügbar ist, können Sie den Datencontroller direkt vom Azure-Portal aus bereitstellen. Weitere Informationen finden Sie unter [Konnektivitätsmodi](connectivity.md).
+Wenn Sie den indirekten Konnektivitätsmodus der Azure Arc-fähigen Datendienste verwenden, können Sie im Azure-Portal ein Notebook generieren, das dann heruntergeladen und in Azure Data Studio für Ihren Kubernetes-Cluster ausgeführt werden kann. 
+
+Wenn Sie den direkten Konnektivitätsmodus verwenden, können Sie den Datencontroller direkt über das Azure-Portal bereitstellen. Weitere Informationen finden Sie unter [Konnektivitätsmodi](connectivity.md).
 
 ## <a name="use-the-azure-portal-to-create-an-azure-arc-data-controller"></a>Erstellen eines Azure Arc-Datencontrollers im Azure-Portal
 
 Führen Sie die folgenden Schritte aus, um mithilfe des Azure-Portals und Azure Data Studio einen Azure Arc-Datencontroller zu erstellen.
 
 1. Melden Sie sich zuerst beim [Marketplace im Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/azure%20arc%20data%20controller) an.  Die Suchergebnisse im Marketplace werden gefiltert, damit nur Ergebnisse zum Azure Arc-Datencontroller angezeigt werden.
-2. Wenn im ersten Schritt nicht die Suchkriterien eingegeben wurden, geben Sie diese ein, wechseln zu den Suchergebnissen und klicken auf den Azure Arc-Datencontroller.
-3. Wählen Sie im Marketplace die Kachel des Azure-Datencontrollers aus.
-4. Klicken Sie auf die Schaltfläche **Erstellen**.
-5. Überprüfen Sie die Anforderungen für die Erstellung eines Azure Arc-Datencontrollers, und installieren Sie fehlende erforderliche Software wie Azure Data Studio und kubectl.
-6. Klicken Sie auf die Schaltfläche **Data Controller Details** (Datencontroller-Details).
-7. Wählen Sie ein Abonnement, eine Ressourcengruppe und einen Azure-Standort wie für jede andere Ressource aus, die Sie im Azure-Portal erstellen würden. In diesem Fall entspricht der von Ihnen ausgewählte Azure-Standort dem Ort, an dem die Metadaten zur Ressource gespeichert werden.  Die Ressource selbst wird in der von Ihnen gewählten Infrastruktur erstellt. Dabei muss es sich nicht um eine Azure-Infrastruktur handeln.
-8. Geben Sie einen Namen für den Datencontroller ein.
-9. Wählen Sie den Konnektivitätsmodus für den Datencontroller aus. Weitere Informationen zu Konnektivitätsmodi und -anforderungen finden Sie [hier](./connectivity.md). 
-
-   > [!NOTE] 
-   > Bei Verwendung des **direkten** Konnektivitätsmodus müssen die Anmeldeinformationen des Dienstprinzipals über Umgebungsvariablen festgelegt werden, wie unter [Erstellen eines Dienstprinzipals](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal) beschrieben. 
+1. Wenn im ersten Schritt nicht die Suchkriterien eingegeben wurden, geben Sie diese ein, wechseln zu den Suchergebnissen und klicken auf den Azure Arc-Datencontroller.
+1. Wählen Sie im Marketplace die Kachel des Azure-Datencontrollers aus.
+1. Klicken Sie auf die Schaltfläche **Erstellen**.
+1. Wählen Sie den indirekten Konnektivitätsmodus aus. Weitere Informationen zu Konnektivitätsmodi und -anforderungen finden Sie [hier](./connectivity.md). 
+1. Überprüfen Sie die Anforderungen für die Erstellung eines Azure Arc-Datencontrollers, und installieren Sie fehlende erforderliche Software wie Azure Data Studio und kubectl.
+1. Klicken Sie auf die Schaltfläche **Weiter: Datencontrollerdetails**.
+1. Wählen Sie ein Abonnement, eine Ressourcengruppe und einen Azure-Standort wie für jede andere Ressource aus, die Sie im Azure-Portal erstellen würden. In diesem Fall entspricht der von Ihnen ausgewählte Azure-Standort dem Ort, an dem die Metadaten zur Ressource gespeichert werden.  Die Ressource selbst wird in der von Ihnen gewählten Infrastruktur erstellt. Dabei muss es sich nicht um eine Azure-Infrastruktur handeln.
+1. Geben Sie einen Namen für den Datencontroller ein.
 
 1. Wählen Sie ein Profil für die Bereitstellungskonfiguration aus.
 1. Klicken Sie auf die Schaltfläche **Open in Azure Studio** (In Azure Studio öffnen).

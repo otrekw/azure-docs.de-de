@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 840045da33938d4c1cd725fd5a99bf1b8014f6b1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 6754e4e60c31c35531b27e6cc2047e9f8ce3d0bc
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748464"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817393"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Sichern und Verwenden von Richtlinien auf virtuellen Computern in Azure
 
@@ -53,7 +53,7 @@ Für die Verschlüsselung virtueller Datenträger in Azure fallen keine Gebühre
 
 Geheimnisse und Zertifikate können als Ressourcen modelliert und von [Key Vault](../key-vault/general/basic-concepts.md) bereitgestellt werden. Sie können Azure PowerShell zum Erstellen von Schlüsseltresoren für [Windows-VMs](windows/key-vault-setup.md) und die Azure CLI für [Linux-VMs](linux/key-vault-setup.md) verwenden. Außerdem können Sie Schlüssel für die Verschlüsselung erstellen.
 
-Mit Key Vault-Zugriffsrichtlinien können separate Berechtigungen für Schlüssel, Geheimnisse und Zertifikate gewährt werden. Dadurch haben Sie beispielsweise die Möglichkeit, einem Benutzer nur Zugriff auf Schlüssel, aber keine Berechtigungen für Geheimnisse zu gewähren. Zugriffsberechtigungen für Schlüssel, Geheimnisse oder Zertifikate gelten jedoch auf Tresorebene. Mit anderen Worten: [Key Vault-Zugriffsrichtlinien](../key-vault/general/security-overview.md) unterstützen keine Berechtigungen auf Objektebene.
+Mit Key Vault-Zugriffsrichtlinien können separate Berechtigungen für Schlüssel, Geheimnisse und Zertifikate gewährt werden. Dadurch haben Sie beispielsweise die Möglichkeit, einem Benutzer nur Zugriff auf Schlüssel, aber keine Berechtigungen für Geheimnisse zu gewähren. Zugriffsberechtigungen für Schlüssel, Geheimnisse oder Zertifikate gelten jedoch auf Tresorebene. Mit anderen Worten: [Key Vault-Zugriffsrichtlinien](../key-vault/general/security-features.md) unterstützen keine Berechtigungen auf Objektebene.
 
 Wenn Sie eine Verbindung mit VMs herstellen, sollten Sie die Verschlüsselung mit öffentlichem Schlüssel (Public-Key Cryptography) verwenden, um für ein sichereres Anmeldeverfahren zu sorgen. Bei diesem Verfahren erfolgt die Authentifizierung nicht per Benutzername und Kennwort. Stattdessen werden mithilfe des SSH-Befehls (Secure Shell) ein öffentlicher und ein privater Schlüssel ausgetauscht. Kennwörter sind anfällig für Brute-Force-Angriffe. Das gilt insbesondere bei virtuellen Computern mit Internetzugriff (also beispielsweise für Webserver). Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie eine [Linux-VM](linux/mac-create-ssh-keys.md) erstellen, bei deren Authentifizierung SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. Sie können auch SSH-Schlüssel verwenden, um für eine [Windows-VM](linux/ssh-from-windows.md) eine Verbindung mit einer Linux-VM herzustellen.
 

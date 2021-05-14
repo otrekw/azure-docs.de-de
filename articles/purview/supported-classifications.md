@@ -1,25 +1,25 @@
 ---
 title: Liste mit unterstützten Klassifizierungen
 description: Auf dieser Seite sind die in Azure Purview unterstützten Systemklassifizierungen aufgelistet.
-author: animukherjee
+author: anmuk601
 ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
-ms.date: 2/5/2021
-ms.openlocfilehash: d98f2f80bf22627eb34855234e22e314c241c852
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 4/1/2021
+ms.openlocfilehash: e1d3d495d958465e966701aa7ce91bc2706b48e0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988319"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219585"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Unterstützte Klassifizierungen in Azure Purview
 
 In diesem Artikel sind die Systemklassifizierungen aufgelistet, die in Azure Purview (Vorschauversion) unterstützt werden und definiert sind.
 
 
-- **Schwellenwert für Datenunterschiede** (Distinct match threshold): Die Gesamtanzahl der unterschiedlichen Datenwerte, die in einer Spalte gefunden werden müssen, bevor der Scanner das Datenmuster für die Spalte ausführt. Unsere Systemklassifizierungsregeln erfordern, dass in jeder Spalte mindestens 8 unterschiedliche Werte vorhanden sein müssen, um sie einer Klassifizierung zu unterziehen. Das System benötigt diesen Wert, um sicherzustellen, dass die Spalte genügend Daten enthält, damit der Scanner sie genau klassifizieren kann. Beispielsweise wird eine Spalte, die mehrere Zeilen enthält, die alle den Wert 1 enthalten, nicht klassifiziert. Spalten, in denen eine Zeile einen Wert enthält und die restlichen Zeilen NULL-Werte enthalten, werden ebenfalls nicht klassifiziert. Wenn Sie mehrere Muster angeben, gilt dieser Wert für jedes dieser Muster.
+- **Schwellenwert für Datenunterschiede** (Distinct match threshold): Die Gesamtanzahl der unterschiedlichen Datenwerte, die in einer Spalte gefunden werden müssen, bevor der Scanner das Datenmuster für die Spalte ausführt. Der unterschiedliche Übereinstimmungsschwellenwert hat nichts mit dem Musterabgleich zu tun, aber er ist eine Voraussetzung für den Musterabgleich. Unsere Systemklassifizierungsregeln erfordern, dass in jeder Spalte mindestens 8 unterschiedliche Werte vorhanden sein müssen, um sie einer Klassifizierung zu unterziehen. Das System benötigt diesen Wert, um sicherzustellen, dass die Spalte genügend Daten enthält, damit der Scanner sie genau klassifizieren kann. Beispielsweise wird eine Spalte, die mehrere Zeilen enthält, die alle den Wert 1 enthalten, nicht klassifiziert. Spalten, in denen eine Zeile einen Wert enthält und die restlichen Zeilen NULL-Werte enthalten, werden ebenfalls nicht klassifiziert. Wenn Sie mehrere Muster angeben, gilt dieser Wert für jedes dieser Muster.
 
 - **Schwellenwert für Mindestübereinstimmung** (Minimum match threshold): Der Mindestprozentsatz für die Datenwertübereinstimmungen in einer Spalte, die vom Scanner gefunden werden müssen, damit die Klassifizierung angewendet wird. Der Systemklassifizierungswert ist auf 60 % festgelegt.
 
@@ -59,7 +59,9 @@ Formatiert:
 - Ein Bindestrich
 - Vier Ziffern
 - Ein Bindestrich
-- Eine Ziffer (unformatiert): neun aufeinanderfolgende Ziffern, beginnend mit 0, 1, 2, 3, 6, 7 oder 8
+- Eine Ziffer
+
+Unformatiert: neun aufeinanderfolgende Ziffern, beginnend mit 0, 1, 2, 3, 6, 7 oder 8
 
 ### <a name="keywords"></a>Keywords
 

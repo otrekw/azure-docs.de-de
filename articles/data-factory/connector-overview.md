@@ -1,17 +1,17 @@
 ---
 title: Übersicht über Azure Data Factory-Connectors
 description: Informationen zu den unterstützten Connectors in Data Factory.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2021
-ms.author: jingwang
-ms.openlocfilehash: cfd3376174ec0f7789389988245f7377b9896a00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 072abfacb4fc62dd381c53b2bfd38d4000828d81
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103015918"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487149"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Übersicht über Azure Data Factory-Connectors
 
@@ -21,7 +21,7 @@ Azure Data Factory unterstützt die folgenden Datenspeicher und Formate über di
 
 ## <a name="supported-data-stores"></a>Unterstützte Datenspeicher
 
-[!INCLUDE [Connector overview](../../includes/data-factory-v2-connector-overview.md)]
+[!INCLUDE [Connector overview](includes/data-factory-v2-connector-overview.md)]
 
 ## <a name="integrate-with-more-data-stores"></a>Integrieren in weitere Datenspeicher
 

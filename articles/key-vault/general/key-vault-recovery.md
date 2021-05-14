@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 author: msmbaldwin
 ms.date: 09/30/2020
-ms.openlocfilehash: c3ffbba9546ada54a42c3f2c2aa5d98da599b353
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 270f9d4637d5e16ff88991a4a9e5f1eb0a3f9e0e
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749728"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285356"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault-Wiederherstellungsverwaltung mit Schutz durch vorläufiges Löschen und Bereinigungsschutz
 
@@ -34,6 +34,8 @@ Weitere Informationen zu Key Vault finden Sie unter
   |---|---|
   |Microsoft.KeyVault/locations/deletedVaults/read|Dient zum Anzeigen der Eigenschaften eines vorläufig gelöschten Schlüsseltresors.|
   |Microsoft.KeyVault/locations/deletedVaults/purge/action|Dient zum endgültigen Löschen eines vorläufig gelöschten Schlüsseltresors.|
+  |Microsoft.KeyVault/locations/operationResults/read| So überprüfen Sie den Bereinigungsstatus des Tresors|
+  |[Key Vault-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor)|So stellen Sie vorläufig gelöschte Daten wieder her|
 
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Vorläufiges Löschen und Löschschutz
@@ -398,6 +400,5 @@ Weitere Informationen zum vorläufigen Löschen finden Sie unter [Übersicht üb
 - [Azure CLI-Befehle für Key Vault](/cli/azure/keyvault)
 - [Sicherung in Azure Key Vault](backup.md)
 - [Aktivieren der Protokollierung in Key Vault](howto-logging.md)
-- [Sicherer Zugriff auf einen Schlüsseltresor](security-overview.md)
+- [Azure Key Vault-Sicherheitsfunktionen](security-features.md)
 - [Entwicklerhandbuch zu Azure Key Vault](developers-guide.md)
-- [Bewährte Methoden zum Verwenden von Key Vault](security-overview.md)

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ff3661a7e092fd20207fe2e973afc316b2c244ef
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 06409903e77923176ac5fab4dd27bf918ea0d9d9
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447096"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331800"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Anpassen der RDP-Eigenschaften (Remotedesktopprotokoll) für einen Hostpool
 
@@ -26,11 +26,16 @@ Eine vollständige Liste der unterstützten Eigenschaften samt deren Standardwer
 
 RDP-Dateien haben standardmäßig die folgenden Eigenschaften:
 
-|RDP-Eigenschaft|Auf Desktop|Als RemoteApp|
-|---|---|---|
-|Mehrfachmonitor-Modus|Disabled|Aktiviert|
-|Aktivierte Laufwerksumleitungen|Laufwerke, Clipboard, Drucker, COM-Ports und Smartcards|Laufwerke, Zwischenablage und Drucker|
-|Remoteaudio-Modus|Lokale Wiedergabe|Lokale Wiedergabe|
+|RDP-Eigenschaft|Sowohl für Desktop als auch für RemoteApp|
+|---|---|
+|Mehrfachmonitor-Modus|Disabled|
+|Aktivierte Laufwerksumleitungen|Laufwerke, Zwischenablage, Drucker, COM-Anschlüsse, Smartcards, Geräte und USB-Geräte-Store|
+|Remoteaudio-Modus|Lokale Wiedergabe|
+|VideoPlayback|Aktiviert|
+|EnableCredssp|Aktiviert|
+
+>[!NOTE]
+>Der Modus mit mehreren Monitoren gilt nur für Desktop-App-Gruppen und wird für RemoteApp-App-Gruppen ignoriert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

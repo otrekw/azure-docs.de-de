@@ -3,12 +3,12 @@ title: Bereitstellen des CAF-Basisblaupausenbeispiels
 description: Bereitstellungsschritte für das CAF-Basisblaupausenbeispiel, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: a8d41364451bf2ebf1e48b90fad74f4b24c804e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 281bd0fdae5aa144799499d583b5673a569612b1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470148"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757869"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Bereitstellen des Microsoft Cloud Adoption Frameworks-Basisblaupausenbeispiels für Azure
 
@@ -86,7 +86,7 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
      - **Organisation**: Geben Sie den eindeutigen Namen Ihrer Organisation ein, etwa Contoso.
      - **Azure-Region**: Wählen Sie die Azure-Region für die Bereitstellung aus.
      - **Zulässige Standorte**: In welche Azure-Regionen dürfen Ressourcen integriert werden?
-     
+
    - Artefaktparameter
 
      Die in diesem Abschnitt definierten Parameter gelten für das Artefakt, unter dem sie definiert werden. Diese Parameter sind [dynamische Parameter](../../concepts/parameters.md#dynamic-parameters), da sie während der Zuweisung der Blaupause definiert werden. Eine vollständige Liste der Artefaktparameter und die zugehörigen Beschreibungen finden Sie in der [Tabelle der Artefaktparameter](#artifact-parameters-table).

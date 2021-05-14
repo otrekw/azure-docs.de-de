@@ -3,13 +3,13 @@ title: Exportieren von Azure Policy-Ressourcen
 description: Erfahren Sie, wie Sie Azure Policy-Ressourcen wie Richtliniendefinitionen und Richtlinienzuweisungen nach GitHub exportieren.
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8fd2a24d2c01b4214eda88054b45a409cd865a32
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 36e3c28d8448bba94222a23581dda7bd6d3ffaeb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096545"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752667"
 ---
 # <a name="export-azure-policy-resources"></a>Exportieren von Azure Policy-Ressourcen
 
@@ -35,7 +35,7 @@ Führen Sie die folgenden Schritte aus, um eine Richtliniendefinition aus dem Az
    - **Verzeichnis:** Der _Ordner auf Stammebene_, in den die Azure Policy-Ressourcen exportiert werden sollen. Die Unterordner in diesem Verzeichnis werden auf Basis der exportierten Ressourcen erstellt.
 
 1. Legen Sie auf der Registerkarte **Richtlinien** den Suchbereich fest, indem Sie die Auslassungspunkte und dann eine Kombination von Verwaltungsgruppen, Abonnements oder Ressourcengruppen auswählen.
-   
+
 1. Suchen Sie mit der Schaltfläche **Richtliniendefinition(en) hinzufügen** den Bereich, für den Objekte exportiert werden sollen. Wählen Sie im daraufhin geöffneten seitlichen Fenster die einzelnen zu exportierenden Objekte aus. Filtern Sie die Auswahl nach Suchfeld oder Typ. Nachdem Sie alle zu exportierenden Objekte ausgewählt haben, verwenden Sie die Schaltfläche **Hinzufügen** am unteren Rand der Seite.
 
 1. Wählen Sie für jedes ausgewählte Objekt die gewünschten Exportoptionen für eine Richtliniendefinition aus, z. B. _Nur Definition_ oder _Definition und Zuweisung(en)_ . Wählen Sie dann die Registerkarte **Überprüfen + exportieren** oder die Schaltfläche **Weiter: Überprüfen + exportieren** am unteren Rand der Seite aus.

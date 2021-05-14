@@ -4,34 +4,46 @@ description: Informationen zur Selbstdiagnose von Clustern in Azure Kubernetes S
 services: container-service
 author: yunjchoi
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/29/2021
 ms.author: yunjchoi
-ms.openlocfilehash: e8921152177d3e4534ca9fb48cf209aed6e1b27c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee11221e5484a796b8dbbcb10a323288d3e74756
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183361"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011557"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Übersicht über die Azure Kubernetes Service-Diagnose (Vorschau)
 
-Das Beheben von Problemen mit dem Azure Kubernetes Service-Cluster (AKS-Cluster) ist ein wichtiger Aspekt der Wartung Ihres Clusters, insbesondere wenn im Cluster unternehmenskritische Workloads ausgeführt werden. Die AKS-Diagnose ist eine intelligente Funktion zur Selbstdiagnose, mit der Sie Probleme in Ihrem Cluster identifizieren und beheben können. Sie können die cloudnative AKS-Diagnose ohne zusätzliche Konfiguration und Abrechnungskosten nutzen.
+Das Beheben von Problemen mit dem Azure Kubernetes Service-Cluster (AKS-Cluster) spielt eine wichtige Rolle bei der Wartung Ihres Clusters, insbesondere wenn im Cluster unternehmenskritische Workloads ausgeführt werden. Die AKS-Diagnose ist eine intelligente Funktion zur Selbstdiagnose mit folgenden Eigenschaften:
+* Hilft beim Identifizieren und Beheben von Problemen im Cluster 
+* Ist cloudnativ
+* Erfordert keine zusätzliche Konfiguration oder Abrechnungskosten
 
-Dieses Feature befindet sich jetzt in der Phase der öffentlichen Vorschau.
+Dieses Feature befindet sich jetzt in der Phase der öffentlichen Vorschau. 
 
 ## <a name="open-aks-diagnostics"></a>Öffnen der AKS-Diagnose
 
 So greifen Sie auf die AKS-Diagnose zu
 
-- Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Kubernetes-Cluster.
-- Klicken Sie im linken Navigationsbereich auf **Diagnose und Problembehandlung**, um die AKS-Diagnose zu öffnen.
-- Wählen Sie eine Kategorie aus, die am ehesten auf das Problem mit Ihrem Cluster zutrifft. Verwenden Sie dazu die Schlüsselwörter auf der Kachel der Startseite, oder geben Sie in der Suchleiste ein Schlüsselwort ein, das das Problem am besten beschreibt, z. B. _Probleme mit Clusterknoten_.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Kubernetes-Cluster.
+1. Klicken Sie im linken Navigationsbereich auf **Diagnose und Problembehandlung**, um die AKS-Diagnose zu öffnen.
+1. Wählen Sie eine Kategorie aus, die das Problem Ihres Clusters am besten beschreibt, z. B. _Probleme mit Clusterknoten_. Dazu gehen Sie folgendermaßen vor:
+    * Verwenden Sie die Schlüsselwörter auf der Kachel der Startseite.
+    * Geben Sie ein Schlüsselwort, das Ihr Problem am besten beschreibt, in die Suchleiste ein.
 
 ![Startseite](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
 ## <a name="view-a-diagnostic-report"></a>Anzeigen eines Diagnoseberichts
 
-Nachdem Sie auf eine Kategorie geklickt haben, wird ein spezifischer Diagnosebericht für den Cluster angezeigt. Im Diagnosebericht wird durch Statussymbole angegeben, ob ein Problem in Ihrem Cluster vorliegt. Detailinformationen zu den einzelnen Themen erhalten Sie, indem Sie auf **Details** klicken, um eine ausführliche Beschreibung des Problems, die empfohlenen Maßnahmen, Links zu hilfreicher Dokumentation, zugehörige Metriken und Protokollierungsdaten anzuzeigen. Diagnoseberichte werden basierend auf dem aktuellen Status des Clusters intelligent generiert, nachdem verschiedene Überprüfungen ausgeführt wurden. Diagnoseberichte können sich als hilfreiches Tool für die genaue Ermittlung des Problems mit dem Cluster und für die Bestimmung der nächsten Schritte zur Problembehandlung erweisen.
+Nachdem Sie auf eine Kategorie geklickt haben, wird ein spezifischer Diagnosebericht für den Cluster angezeigt. Diagnoseberichte geben alle Probleme in Ihrem Cluster mit Statussymbolen auf intelligente Weise an. Sie können Detailinformationen zu den einzelnen Themen aufrufen, indem Sie auf **Weitere Informationen** klicken. Daraufhin werden ausführliche Beschreibungen zu folgenden Punkten angezeigt:
+* Probleme
+* Empfohlene Aktionen
+* Links zu hilfreichen Dokumenten
+* Zugehörige Metriken
+* Protokollieren von Daten 
+
+Diagnoseberichte werden basierend auf dem aktuellen Status des Clusters generiert, nachdem verschiedene Überprüfungen ausgeführt wurden. Sie können nützlich sein, um das Problem mit dem Cluster genau zu ermitteln und die nächsten Schritte zur Problembehandlung zu verstehen.
 
 ![Diagnosebericht](./media/concepts-diagnostics/diagnostic-report.png)
 
@@ -43,7 +55,7 @@ Die folgenden Diagnoseprüfungen sind unter **Cluster Insights** (Clustererkennt
 
 ### <a name="cluster-node-issues"></a>Probleme mit Clusterknoten
 
-Unter „Cluster Node Issues“ (Probleme mit Clusterknoten) werden knotenbezogene Probleme überprüft, die möglicherweise zu einem unerwarteten Verhalten des Clusters führen.
+Unter „Cluster Node Issues“ (Probleme mit Clusterknoten) werden knotenbezogene Probleme überprüft, die zu einem unerwarteten Verhalten des Clusters führen.
 
 - Bereitschaftsprobleme bei Knoten
 - Knotenfehler
@@ -55,9 +67,9 @@ Unter „Cluster Node Issues“ (Probleme mit Clusterknoten) werden knotenbezoge
 - Authentifizierungsfehler bei Knoten
 - Kube-Proxy für Knoten veraltet
 
-### <a name="create-read-update--delete-operations"></a>CRUD-Vorgänge (Lese-, Schreib-, Aktualisierungs- und Löschvorgänge)
+### <a name="create-read-update--delete-crud-operations"></a>CRUD-Vorgänge (Erstellen, Lesen, Aktualisieren und Löschen)
 
-Hier wird überprüft, ob Lese-, Schreib-, Aktualisierungs- und Löschvorgänge vorliegen, die möglicherweise zu Problemen im Cluster führen.
+Hier wird überprüft, ob Vorgänge zum Erstellen, Lesen, Aktualisieren und Löschen vorliegen, die zu Problemen im Cluster führen.
 
 - Fehler beim Löschen eines verwendeten Subnetzes
 - Fehler beim Löschen der Netzwerksicherheitsgruppe
@@ -73,7 +85,7 @@ Hier wird überprüft, ob Lese-, Schreib-, Aktualisierungs- und Löschvorgänge 
 
 ### <a name="identity-and-security-management"></a>Identitäts- und Sicherheitsverwaltung
 
-Die Identitäts- und Sicherheitsverwaltung erkennt Authentifizierungs- und Autorisierungsfehler, die möglicherweise die Kommunikation mit dem Cluster verhindern.
+Die Identitäts- und Sicherheitsverwaltung erkennt Authentifizierungs- und Autorisierungsfehler, die eine Kommunikation mit dem Cluster verhindern.
 
 - Fehler bei der Knotenautorisierung
 - 401-Fehler
@@ -81,8 +93,8 @@ Die Identitäts- und Sicherheitsverwaltung erkennt Authentifizierungs- und Autor
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie [AKS Periscope](https://aka.ms/aksperiscope), um Protokolle zu erfassen, anhand derer Sie Clusterprobleme beheben können.
+* Verwenden Sie [AKS Periscope](https://aka.ms/aksperiscope), um Protokolle zu erfassen, anhand derer Sie Clusterprobleme beheben können.
 
-Lesen Sie den Abschnitt [Selektierungsverfahren](/azure/architecture/operator-guides/aks/aks-triage-practices) der AKS-Anleitung für die Betriebsvorgänge am 2. Tag.
+* Lesen Sie den Abschnitt [Selektierungsverfahren](/azure/architecture/operator-guides/aks/aks-triage-practices) der AKS-Anleitung für die Betriebsvorgänge am 2. Tag.
 
-Posten Sie Ihre Fragen oder Ihr Feedback auf [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks), indem Sie dem Titel „[Diag]“ hinzufügen.
+* Posten Sie Ihre Fragen oder Ihr Feedback auf [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks), indem Sie dem Titel „[Diag]“ hinzufügen.

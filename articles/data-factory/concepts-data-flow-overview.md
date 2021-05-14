@@ -3,17 +3,16 @@ title: Zuordnen von Datenflüssen
 description: Übersicht über Mapping Data Flows in Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 04/11/2021
-ms.openlocfilehash: 53f300adb57eb17e704e7e3323b9829c485bb87a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/14/2021
+ms.openlocfilehash: 826183e09f2aa7f3f22ace8b5ce3e16767d49863
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308981"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515656"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Zuordnungsdatenflüsse in Azure Data Factory
 
@@ -83,6 +82,10 @@ Die obere Leiste enthält Aktionen, die sich auf den gesamten Datenfluss auswirk
 
 Unter [Zuordnungsdatenfluss – Übersicht über Transformationen](data-flow-transformation-overview.md) finden Sie eine Liste der verfügbaren Transformationen.
 
+## <a name="data-flow-data-types"></a>Datenfluss-Datentypen
+
+array binär boolean komplex dezimal Datum float ganzzahlig lang zugeordnet kurz Zeichenfolge Zeitstempel
+
 ## <a name="data-flow-activity"></a>Datenflussaktivität
 
 Zuordnungsdatenflüsse werden innerhalb von ADF-Pipelines mithilfe der [Datenflussaktivität](control-flow-execute-data-flow-activity.md) operationalisiert. Der Benutzer muss lediglich angeben, welche Integration Runtime verwendet werden soll, und Parameterwerte übergeben. Weitere Informationen finden Sie unter [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
@@ -96,6 +99,67 @@ Im Debugmodus können Sie die Ergebnisse jedes Transformationsschritts interakti
 Der Zuordnungsdatenfluss ist in vorhandene Azure Data Factory-Überwachungsfunktionen integriert. Informationen zum Verständnis der Ausgabe der Datenflussüberwachung finden Sie unter [Überwachen von Zuordnungsdatenflüssen](concepts-data-flow-monitoring.md).
 
 Das Azure Data Factory-Team hat eine [Anleitung zur Leistungsoptimierung](concepts-data-flow-performance.md) erstellt, mit deren Hilfe Sie die Ausführungszeit Ihrer Datenflüsse nach dem Erstellen der Geschäftslogik optimieren können.
+
+
+## <a name="available-regions"></a>Verfügbare Regionen
+
+Zuordnungsdatenflüsse sind in ADF in den folgenden Regionen verfügbar:
+
+| Azure-Region | Datenflüsse in ADF |
+| ------------ | ----------------- |
+| Australien, Mitte | |
+| Australien, Mitte 2 | |
+| Australien (Osten) | ✓ |
+| Australien, Südosten   | ✓ |
+| Brasilien Süd  | ✓ |
+| Kanada, Mitte | ✓ |
+| Indien, Mitte | ✓ |
+| USA (Mitte)    | ✓ |
+| China, Osten |      |
+| China, Osten 2  |   |
+| China, landesweit | |
+| China, Norden | ✓ |
+| China, Norden 2 | ✓ |
+| Asien, Osten | ✓ |
+| East US   | ✓ |
+| USA (Ost) 2 | ✓ |
+| Frankreich, Mitte | ✓ |
+| Frankreich, Süden  | |
+| Deutschland, Mitte (Sovereign) | |
+| Deutschland, landesweit (Sovereign) | |
+| Deutschland, Norden (Öffentlich) | |
+| Deutschland, Nordosten (Sovereign) | |
+| Deutschland, Westen-Mitte (Öffentlich) |  |
+| Japan, Osten | ✓ |
+| Japan, Westen |  |
+| Korea, Mitte | ✓ |
+| Korea, Süden | |
+| USA Nord Mitte  | ✓ |
+| Nordeuropa  | ✓ |
+| Norwegen, Osten | ✓ |
+| Norwegen, Westen | |
+| Südafrika, Norden    | ✓ |
+| Südafrika, Westen |  |
+| USA Süd Mitte  | |
+| Indien (Süden) | |
+| Asien, Südosten    | ✓ |
+| Schweiz, Norden |   |
+| Schweiz, Westen | |
+| VAE, Mitte | |
+| Vereinigte Arabische Emirate, Norden | ✓ |
+| UK, Süden  | ✓ |
+| UK, Westen |     |
+| US DoD, Mitte | |
+| US DoD, Osten | |
+| US Gov Arizona | ✓ |
+| US Gov, landesweit | |
+| US Gov Texas | |
+| US Government, Virginia | ✓ |
+| USA, Westen-Mitte |     |
+| Europa, Westen   | ✓ |
+| Indien, Westen | |
+| USA (Westen)   | ✓ |
+| USA, Westen 2 | ✓ |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

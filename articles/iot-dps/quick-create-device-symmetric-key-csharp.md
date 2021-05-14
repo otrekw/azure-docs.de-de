@@ -3,18 +3,18 @@ title: 'Schnellstart: Verwenden eines symmetrischen Schlüssels zum Bereitstelle
 description: In dieser Schnellstartanleitung verwenden Sie das C#-Geräte-SDK für Device Provisioning Service (DPS), um ein Gerät mit symmetrischem Schlüssel für einen IoT-Hub bereitzustellen.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 10/21/2020
+ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: f97840a05115bf5659a6f7579b72786e890051a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e67616c2c92676c3af79e3040bc09d3b1b87a11b
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92429251"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988296"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-c"></a>Schnellstart: Bereitstellen eines Geräts mit symmetrischem Schlüssel mithilfe von C#
 
@@ -34,7 +34,7 @@ In diesem Artikel wird von der Nutzung einer Windows-Arbeitsstation ausgegangen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Stellen Sie sicher, dass auf Ihrem Windows-basierten Computer mindestens das [.NET Core 2.1 SDK](https://www.microsoft.com/net/download/windows) installiert ist.
+* Stellen Sie sicher, dass auf Ihrem Windows-basierten Computer mindestens das [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download) installiert ist.
 
 * Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
 
@@ -61,7 +61,7 @@ In diesem Artikel wird von der Nutzung einer Windows-Arbeitsstation ausgegangen.
 
 4. Nachdem Sie Ihre Registrierung gespeichert haben, werden der **Primärschlüssel** und der **Sekundärschlüssel** generiert und dem Registrierungseintrag hinzugefügt. Die Registrierung Ihres Geräts mit symmetrischem Schlüssel wird auf der Registerkarte *Individuelle Registrierungen* in der Spalte *Registrierungs-ID* als **symm-key-csharp-device-01** angezeigt. 
 
-5. Öffnen Sie die Registrierung, und kopieren Sie den Wert des von Ihnen generierten **Primärschlüssels** und **Sekundärschlüssels**. Sie verwenden diesen Schlüsselwert und die **Registrierungs-ID** später, wenn Sie Umgebungsvariablen zur Verwendung mit dem Beispielcode für die Gerätebereitstellung hinzufügen.
+5. Öffnen Sie die Registrierung, und kopieren Sie den Wert des von Ihnen generierten **Primärschlüssels**. Sie verwenden diesen Schlüsselwert und die **Registrierungs-ID** später, wenn Sie den Beispielcode für die Gerätebereitstellung ausführen.
 
 
 
@@ -77,92 +77,62 @@ In diesem Artikel wird von der Nutzung einer Windows-Arbeitsstation ausgegangen.
 
 <a id="firstbootsequence"></a>
 
-## <a name="prepare-the-device-provisioning-code"></a>Vorbereiten des Gerätebereitstellungscodes
+## <a name="run-the-device-provisioning-code"></a>Ausführen des Gerätebereitstellungscodes
 
-In diesem Abschnitt fügen Sie die folgenden vier Umgebungsvariablen hinzu, die als Parameter für den Beispielcode der Gerätebereitstellung zum Bereitstellen Ihres Geräts mit symmetrischem Schlüssel verwendet werden. 
+In diesem Abschnitt führen Sie das Beispiel für die Gerätebereitstellung mit drei Parametern aus, mit denen der Gerätebereitstellungs-Beispielcode als Gerät mit symmetrischem Schlüssel für die Registrierung bei Ihrer DPS-Ressource authentifiziert wird. Dabei handelt es sich um folgende drei Parameter:
 
-* `DPS_IDSCOPE`
-* `PROVISIONING_REGISTRATION_ID`
-* `PRIMARY_SYMMETRIC_KEY`
-* `SECONDARY_SYMMETRIC_KEY`
+* ID Scope (ID-Bereich)
+* Registrierungs-ID für eine individuelle Registrierung
+* Primärer symmetrischer Schlüssel für eine individuelle Registrierung
 
-Der Bereitstellungscode kontaktiert die DPS-Instanz basierend auf diesen Variablen, um Ihr Gerät zu authentifizieren. Anschließend wird das Gerät basierend auf der Konfiguration der individuellen Registrierung einem bereits mit der DPS-Instanz verknüpften IoT-Hub zugewiesen. Nach der Bereitstellung sendet der Beispielcode einige Testtelemetriedaten an den IoT-Hub.
+Der Bereitstellungscode kontaktiert die DPS-Ressource mithilfe dieser Parameter, um Ihr Gerät zu authentifizieren. Anschließend wird das Gerät basierend auf der Konfiguration der individuellen Registrierung einem bereits mit der DPS-Instanz verknüpften IoT-Hub zugewiesen. Nach der Bereitstellung sendet der Beispielcode eine Testtelemetrienachricht an den IoT-Hub.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Device Provisioning Service-Menü die Option **Übersicht** aus, und kopieren Sie Ihren _Dienstendpunkt_ und den _ID-Bereich_. Sie verwenden diese Werte für die Umgebungsvariablen `PROVISIONING_HOST` und `DPS_IDSCOPE`.
-
-    ![Dienstinformationen](./media/quick-create-device-symmetric-key-csharp/extract-dps-endpoints.png)
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Device Provisioning Service-Menü die Option **Übersicht** aus, und kopieren Sie den Wert für **ID-Bereich**. Sie verwenden diesen Wert für den `IdScope`-Parameter, wenn Sie den Beispielcode ausführen.
 
 2. Öffnen Sie eine Eingabeaufforderung, und navigieren Sie im geklonten Beispielrepository zu *SymmetricKeySample*:
 
     ```cmd
-    cd provisioning\Samples\device\SymmetricKeySample
+    cd azure-iot-samples-csharp\provisioning\Samples\device\SymmetricKeySample
     ```
 
-3. Öffnen Sie im Ordner *SymmetricKeySample* die Datei *Program.cs* in einem Text-Editor, und suchen Sie nach den Codezeilen, die die Zeichenfolgen `individualEnrollmentPrimaryKey` und `individualEnrollmentSecondaryKey` festlegen. Aktualisieren Sie diese Codezeilen wie folgt, damit nicht die Schlüssel hartcordiert werden müssen, sondern die Umgebungsvariablen verwendet werden.
+3. Öffnen Sie im Ordner *SymmetricKeySample* die Datei *Parameters.cs* in einem Text-Editor. Diese Datei enthält die vom Beispiel unterstützten Parameter. Beim Ausführen des Beispiels werden nur die ersten drei erforderlichen Parameter in diesem Artikel verwendet. Sehen Sie sich den Code in dieser Datei an. Es sind keine Änderungen erforderlich.
  
-    ```csharp
-        //These are the two keys that belong to your individual enrollment. 
-        // Leave them blank if you want to try this sample for an individual enrollment instead
-        //private const string individualEnrollmentPrimaryKey = "";
-        //private const string individualEnrollmentSecondaryKey = "";
-
-        private static string individualEnrollmentPrimaryKey = Environment.GetEnvironmentVariable("PRIMARY_SYMMETRIC_KEY");;
-        private static string individualEnrollmentSecondaryKey = Environment.GetEnvironmentVariable("SECONDARY_SYMMETRIC_KEY");;
-    ```
-
-    Suchen Sie außerdem die Codezeile, mit der die Zeichenfolge `registrationId` festgelegt wird, und aktualisieren Sie sie wie folgt, damit ebenfalls eine Umgebungsvariable verwendet wird:
-
-    ```csharp
-        //This field is mandatory to provide for this sample
-        //private static string registrationId = "";
-
-        private static string registrationId = Environment.GetEnvironmentVariable("PROVISIONING_REGISTRATION_ID");;
-    ```
-
-    Speichern Sie die Änderungen an *Program.cs*.
-
-3. Fügen Sie in der Eingabeaufforderung die Umgebungsvariablen für den ID-Bereich, die Registrierungs-ID und die primären und sekundären symmetrischen Schlüssel hinzu, die Sie im vorherigen Abschnitt aus der individuellen Registrierung kopiert haben.  
-
-    Die folgenden Befehle dienen als Beispiele, um die Befehlssyntax aufzuzeigen. Stellen Sie sicher, dass Sie die richtigen Werte verwenden.
-
+    | Parameter                         | Erforderlich | BESCHREIBUNG     |
+    | :-------------------------------- | :------- | :-------------- |
+    | `--s` oder `--IdScope`              | Richtig     | Der ID-Bereich der DPS-Instanz |
+    | `--i` oder `--Id`                   | Richtig     | Die Registrierungs-ID bei Verwendung der individuellen Registrierung oder die gewünschte Geräte-ID bei Verwendung der Gruppenregistrierung |
+    | `--p` oder `--PrimaryKey`           | Richtig     | Der Primärschlüssel der individuellen Registrierung oder Gruppenregistrierung. |
+    | `--e` oder `--EnrollmentType`       | Falsch    | Der Typ der Registrierung: `Individual` oder `Group`. Der Standardwert lautet `Individual`. |
+    | `--g` oder `--GlobalDeviceEndpoint` | Falsch    | Der globale Endpunkt, mit dem Geräte eine Verbindung herstellen sollen. Der Standardwert lautet `global.azure-devices-provisioning.net`. |
+    | `--t` oder `--TransportType`        | Falsch    | Der Transporttyp, der für die Kommunikation mit der Gerätebereitstellungsinstanz verwendet werden soll. Wird standardmäßig auf `Mqtt` festgelegt. Mögliche Werte: `Mqtt`, `Mqtt_WebSocket_Only`, `Mqtt_Tcp_Only`, `Amqp`, `Amqp_WebSocket_Only`, `Amqp_Tcp_only` und `Http1`|
+     
+4. Öffnen Sie im Ordner *SymmetricKeySample* die Datei *ProvisioningDeviceClientSample.cs* in einem Text-Editor. Diese Datei zeigt, wie die [SecurityProviderSymmetricKey](/dotnet/api/microsoft.azure.devices.shared.securityprovidersymmetrickey?view=azure-dotnet&preserve-view=true)-Klasse zusammen mit der [ProvisioningDeviceClient](/dotnet/api/microsoft.azure.devices.provisioning.client.provisioningdeviceclient?view=azure-dotnet&preserve-view=true)-Klasse verwendet wird, um Ihr Gerät mit symmetrischem Schlüssel bereitzustellen. Sehen Sie sich den Code in dieser Datei an.  Es sind keine Änderungen erforderlich.
+ 
+5. Erstellen Sie den Beispielcode, und führen Sie ihn mit dem folgenden Befehl aus, nachdem Sie die drei Beispielparameter ersetzt haben. Verwenden Sie die richtigen Werte für den ID-Bereich, die Registrierungs-ID und den Primärschlüssel für die Registrierung.
+    
     ```console
-    set DPS_IDSCOPE=0ne00000A0A
-    ```
-
-    ```console
-    set PROVISIONING_REGISTRATION_ID=symm-key-csharp-device-01
-    ```
-
-    ```console
-    set PRIMARY_SYMMETRIC_KEY=sbDDeEzRuEuGKag+kQKV+T1QGakRtHpsERLP0yPjwR93TrpEgEh/Y07CXstfha6dhIPWvdD1nRxK5T0KGKA+nQ==
-    ```
-
-    ```console
-    set SECONDARY_SYMMETRIC_KEY=Zx8/eE7PUBmnouB1qlNQxI7fcQ2HbJX+y96F1uCVQvDj88jFL+q6L9YWLLi4jqTmkRPOulHlSbSv2uFgj4vKtw==
-    ```
+    dotnet run --s 0ne00000A0A --i symm-key-csharp-device-01 --p sbDDeEzRuEuGKag+kQKV+T1QGakRtHpsERLP0yPjwR93TrpEgEh/Y07CXstfha6dhIPWvdD1nRxK5T0KGKA+nQ==
+    ```    
 
 
-4. Erstellen Sie den Code, und führen Sie ihn mithilfe des folgenden Befehls aus:
-
-    ```console
-    dotnet run
-    ```
-
-5. Die erwartete Ausgabe sollte in etwa der im folgenden Screenshot dargestellten Ausgabe entsprechen. Darin ist der verknüpfte IoT-Hub enthalten, dem das Gerät basierend auf den Einstellungen der individuellen Registrierung zugewiesen wurde. Die Beispielzeichenfolge „TestMessage“ wird als Test an den Hub gesendet:
+6. Die erwartete Ausgabe sollte in etwa der im folgenden Screenshot dargestellten Ausgabe entsprechen. Darin ist der verknüpfte IoT-Hub enthalten, dem das Gerät basierend auf den Einstellungen der individuellen Registrierung zugewiesen wurde. Die Beispielzeichenfolge „TestMessage“ wird als Test an den Hub gesendet:
 
     ```output
-    D:\azure-iot-samples-csharp\provisioning\Samples\device\SymmetricKeySample>dotnet run
-    RegistrationID = symm-key-csharp-device-01
-    ProvisioningClient RegisterAsync . . . Assigned
-    ProvisioningClient AssignedHub: docs-test-iot-hub.azure-devices.net; DeviceID: csharp-device-01
-    Creating Symmetric Key DeviceClient authentication
-    DeviceClient OpenAsync.
-    DeviceClient SendEventAsync.
-    DeviceClient CloseAsync.
-    Enter any key to exit
+    D:\azure-iot-samples-csharp\provisioning\Samples\device\SymmetricKeySample>dotnet run --s 0ne00000A0A --i symm-key-csharp-device-01 --p sbDDeEzRuEuGKag+kQKV+T1QGakRtHpsERLP0yPjwR93TrpEgEh/Y07CXstfha6dhIPWvdD1nRxK5T0KGKA+nQ==
+
+    Initializing the device provisioning client...
+    Initialized for registration Id symm-key-csharp-device-01.
+    Registering with the device provisioning service...
+    Registration status: Assigned.
+    Device csharp-device-01 registered to ExampleIoTHub.azure-devices.net.
+    Creating symmetric key authentication for IoT Hub...
+    Testing the provisioned device with IoT Hub...
+    Sending a telemetry message...
+    Finished.
+    Enter any key to exit.
     ```
     
-6. Navigieren Sie im Azure-Portal zu dem mit Ihrem Bereitstellungsdienst verknüpften IoT-Hub, und öffnen Sie das Blatt **IoT-Geräte**. Nach der erfolgreichen Bereitstellung des Geräts mit symmetrischen Schlüssel für den Hub wird die Geräte-ID mit dem *STATUS* **Aktiviert** angezeigt. Wenn Sie das Blatt bereits vor dem Ausführen des Gerätebeispielcodes geöffnet haben, müssen Sie möglicherweise im oberen Bereich auf die Schaltfläche **Aktualisieren** klicken. 
+7. Navigieren Sie im Azure-Portal zu dem mit Ihrem Bereitstellungsdienst verknüpften IoT-Hub, und öffnen Sie das Blatt **IoT-Geräte**. Nach der erfolgreichen Bereitstellung des Geräts mit symmetrischen Schlüssel für den Hub wird die Geräte-ID mit dem *STATUS* **Aktiviert** angezeigt. Wenn Sie das Blatt bereits vor dem Ausführen des Gerätebeispielcodes geöffnet haben, müssen Sie möglicherweise im oberen Bereich auf die Schaltfläche **Aktualisieren** klicken. 
 
     ![Geräteregistrierung bei der IoT Hub-Instanz](./media/quick-create-device-symmetric-key-csharp/hub-registration-csharp.png) 
 

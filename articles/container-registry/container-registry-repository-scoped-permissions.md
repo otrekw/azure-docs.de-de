@@ -3,12 +3,12 @@ title: Berechtigungen für Repositorys in Azure Container Registry
 description: Erstellen eines Tokens mit Berechtigungen, die für bestimmte Repositorys in einer Premium-Registrierung gelten, um Images zu pullen oder zu pushen bzw. andere Aktionen auszuführen
 ms.topic: article
 ms.date: 02/04/2021
-ms.openlocfilehash: 0ac479b696a377509cee6459efd8bbb9de940d2a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8cdcd3e09603f24c37ad7323a273ca97f76fcd0c
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781395"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930495"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Erstellen eines Token mit repositorybezogenen Berechtigungen
 
@@ -38,7 +38,7 @@ Zum Konfigurieren von repositorybezogenen Berechtigungen erstellen Sie ein *Toke
 
   Nach der Authentifizierung mit einem Token kann der Benutzer oder Dienst eine oder mehrere  *Aktionen* durchführen, die auf ein oder mehrere Repositorys verteilt sind.
 
-  |Aktion  |Beschreibung  | Beispiel |
+  |Aktion  |BESCHREIBUNG  | Beispiel |
   |---------|---------|--------|
   |`content/delete`    | Entfernen von Daten aus dem Repository  | Löschen eines Repositorys oder eines Manifests |
   |`content/read`     |  Lesen von Daten aus dem Repository |  Pullen eines Artefakts |
@@ -76,7 +76,8 @@ Das folgende Beispiel erstellt ein Token in der Registrierung *myregistry* mit d
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
   --repository samples/hello-world \
-  content/write content/read
+  content/write content/read \
+  --output json
 ```
 
 Die Ausgabe zeigt Details zum Token an. Standardmäßig werden zwei Kennwörter generiert, die nicht ablaufen. Sie können jedoch optional ein Ablaufdatum festlegen. Es wird empfohlen, die Kennwörter an einem sicheren Ort zu speichern, um sie später für die Authentifizierung zu verwenden. Die Kennwörter können nicht erneut abgerufen werden, aber es können neue Kennwörter generiert werden.

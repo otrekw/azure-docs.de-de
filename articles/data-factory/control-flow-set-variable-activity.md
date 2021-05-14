@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie die Aktivität „Variable festlegen“ zum F
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/07/2020
-author: dcstwh
-ms.author: weetok
+author: chez-charlie
+ms.author: chez
 ms.reviewer: jburchel
-ms.openlocfilehash: 113829dd35c14b5efae39c55a8085dcd2c1ecef4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5110160234131bd105ac860efe818506db48f6b0
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786157"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903918"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Aktivität „Variable festlegen“ in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -21,7 +21,7 @@ Verwenden Sie die Aktivität „Variable festlegen“, um den Wert einer vorhand
 
 ## <a name="type-properties"></a>Typeigenschaften
 
-Eigenschaft | Beschreibung | Erforderlich
+Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
 name | Der Name der Aktivität in der Pipeline. | ja
 description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | nein

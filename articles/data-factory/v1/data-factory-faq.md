@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 450a12ae5ae1e13c9cc9b5599a41b6c29d740a9f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b8f00715eac391e9180c36d8960f54c95772c564
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785324"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753160"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – Häufig gestellte Fragen
 > [!NOTE]
@@ -88,13 +88,19 @@ Pipelines dienen zum Bündeln verwandter Aktivitäten. Sie können die Aktivitä
 ### <a name="what-are-the-supported-data-stores"></a>Welche Datenspeicher werden unterstützt?
 Die Kopieraktivität in Data Factory kopiert die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher. Data Factory unterstützt die folgenden Datenspeicher. Daten aus beliebigen Quellen können in beliebige Senken geschrieben werden. Klicken Sie auf einen Datenspeicher, um zu erfahren, wie Daten in diesen/aus diesem Speicher kopiert werden.
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
 > Datenspeicher mit * können lokal oder in Azure IaaS verfügbar sein. Für ihre Verwendung müssen Sie das [Datenverwaltungsgateway](data-factory-data-management-gateway.md) auf einem lokalen oder einem Azure IaaS-Computer installieren.
 
 ### <a name="what-are-the-supported-file-formats"></a>Welche Dateiformate werden unterstützt?
-[!INCLUDE [data-factory-file-format](../../../includes/data-factory-file-format.md)]
+Azure Data Factory unterstützt die folgenden Dateiformattypen:
+
+* [Textformat](data-factory-supported-file-and-compression-formats.md#text-format)
+* [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format)
+* [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format)
+* [ORC-Format](data-factory-supported-file-and-compression-formats.md#orc-format)
+* [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format)
 
 ### <a name="where-is-the-copy-operation-performed"></a>Wo wird der Kopiervorgang ausgeführt?
 Ausführliche Informationen finden Sie im Abschnitt [Global verfügbare Datenverschiebung](data-factory-data-movement-activities.md#global) . Kurz gesagt: Wenn ein lokaler Datenspeicher beteiligt ist, wird der Kopiervorgang vom Datenverwaltungsgateway in Ihrer lokalen Umgebung ausgeführt. Wenn Daten zwischen zwei Cloudspeichern bewegt werden, wird der Kopiervorgang in der Region ausgeführt, die dem Standort der Senke in der gleichen geografischen Region am nächsten liegt.

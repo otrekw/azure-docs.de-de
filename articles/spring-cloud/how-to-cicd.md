@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 331ef39facb9f7cf8f069f2a238be325f53de2d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6991fe7023991ed507c3dbbf7ca3db77545d0886
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877611"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135363"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>CI/CD für Azure Spring Cloud
 
@@ -109,4 +109,4 @@ Es ist möglich, die Bereitstellung direkt in Azure durchzuführen, ohne einen s
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](spring-cloud-quickstart.md)
+* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md)

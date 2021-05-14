@@ -6,21 +6,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 2f15b397fbceb9e097d94080ba03fba50a96ed06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fd0b3ada5fec283562cee9727e3f805a7d34c532
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048504"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479048"
 ---
-# <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>Konfigurieren privater Endpunkte für Azure Cosmos DB-Analysespeicher
+# <a name="configure-azure-private-link-for-azure-cosmos-db-analytical-store"></a>Konfigurieren von Azure Private Link für Azure Cosmos DB-Analysespeicher
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-In diesem Artikel erfahren Sie, wie Sie verwaltete private Endpunkte für Azure Cosmos DB-Analysespeicher einrichten. Wenn Sie den Transaktionsspeicher verwenden, lesen Sie den Artikel [Private Endpunkte für den Transaktionsspeicher](how-to-configure-private-endpoints.md). Mithilfe verwalteter privater Endpunkte können Sie den Netzwerkzugriff von Azure Cosmos DB-Analysespeicher auf das von Azure Synapse verwaltete virtuelle Netzwerk beschränken. Mit verwalteten privaten Endpunkten wird eine private Verbindung mit Ihrem Analysespeicher hergestellt.
+In diesem Artikel erfahren Sie, wie Sie verwaltete private Endpunkte für Azure Cosmos DB-Analysespeicher einrichten. Wenn Sie den Transaktionsspeicher verwenden, lesen Sie den Artikel [Private Endpunkte für den Transaktionsspeicher](how-to-configure-private-endpoints.md). Mithilfe [verwalteter privater Endpunkte](../synapse-analytics/security/synapse-workspace-managed-private-endpoints.md) können Sie den Netzwerkzugriff von Azure Cosmos DB-Analysespeicher auf das verwaltete virtuelle Netzwerk beschränken, das Ihrem Azure Synapse-Arbeitsbereich zugeordnet ist. Mit verwalteten privaten Endpunkten wird eine private Verbindung mit Ihrem Analysespeicher hergestellt.
 
-## <a name="enable-private-endpoint-for-the-analytical-store"></a>Aktivieren des privaten Endpunkts für den Analysespeicher
+## <a name="enable-a-private-endpoint-for-the-analytical-store"></a>Aktivieren eines privaten Endpunkts für den Analysespeicher
 
-### <a name="set-up-an-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>Einrichten eines Azure Synapse Analytics-Arbeitsbereichs mit einem verwalteten virtuellen Netzwerk
+### <a name="set-up-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>Einrichten eines Azure Synapse Analytics-Arbeitsbereichs mit einem verwalteten virtuellen Netzwerk
 
 [Erstellen Sie einen Arbeitsbereich in Azure Synapse Analytics mit aktivierter Datenexfiltration.](../synapse-analytics/security/how-to-create-a-workspace-with-data-exfiltration-protection.md) Mit dem [Schutz vor Datenexfiltration](../synapse-analytics/security/workspace-data-exfiltration-protection.md) können Sie sicherstellen, dass böswillige Benutzer keine Daten aus Ihren Azure-Ressourcen an Orte außerhalb Ihres Organisationsbereichs kopieren oder übertragen können.
 

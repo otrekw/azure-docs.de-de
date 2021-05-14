@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: a83d2222862db6bc3e3ff86ba4074114c1a872e5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 2595dc95e4e7f489553548b7cfbf4f64bb9c82af
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776157"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166125"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Verwenden von Container Storage Interface-Treibern (CSI) von Azure Files in Azure Kubernetes Service (AKS) (Vorschauversion)
 
@@ -20,7 +20,7 @@ CSI ist ein Standard für die Bereitstellung beliebiger Block- und Dateispeicher
 
 Informationen zum Erstellen eines AKS-Clusters mit Unterstützung für CSI-Treiber finden Sie unter [Aktivieren von CSI-Treibern für Azure-Datenträger und Azure Files in AKS](csi-storage-drivers.md).
 
->[!NOTE]
+> [!NOTE]
 > *Strukturinterne Treiber* sind die aktuellen Speichertreiber, die Teil des Kubernetes-Kerncodes sind, also nicht die neuen CSI-Treiber, die als Plug-Ins bereitgestellt werden.
 
 ## <a name="use-a-persistent-volume-with-azure-files"></a>Verwenden eines persistenten Volumes mit Azure Files
@@ -121,10 +121,8 @@ volumesnapshotclass.snapshot.storage.k8s.io/csi-azurefile-vsc created
 
 Erstellen Sie eine [Volumemomentaufnahme](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) mit dem Anspruch auf ein persistentes Volume, den Sie [zu Beginn dieses Tutorials dynamisch erstellt haben](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes) (`pvc-azurefile`).
 
-
 ```bash
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml
-
 
 volumesnapshot.snapshot.storage.k8s.io/azurefile-volume-snapshot created
 ```
@@ -167,7 +165,7 @@ Sie können ein größeres Volume für einen Anspruch auf ein persistentes Volum
 
 In AKS unterstützt die integrierte Speicherklasse `azurefile-csi` bereits Erweiterungen. Verwenden Sie daher [den zuvor erstellten Anspruch auf ein persistentes Volume mit dieser Speicherklasse](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes). Der Anspruch auf ein persistentes Volume hat eine 100 GiB große Dateifreigabe angefordert. Sie können dies überprüfen, indem Sie Folgendes ausführen:
 
-```console 
+```console
 $ kubectl exec -it nginx-azurefile -- df -h /mnt/azurefile
 
 Filesystem                                                                                Size  Used Avail Use% Mounted on
@@ -194,8 +192,8 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
-
 ## <a name="nfs-file-shares"></a>NFS-Dateifreigaben
+
 [Azure Files unterstützt jetzt das NFS v4.1-Protokoll](../storage/files/storage-files-how-to-create-nfs-shares.md). Die NFS 4.1-Unterstützung in Azure Files bietet ein vollständig verwaltetes NFS-Dateisystem als Dienst, der auf einer hochverfügbaren, extrem robusten, verteilten und resilienten Speicherplattform basiert.
 
  Diese Option ist für Workloads mit zufälligem Zugriff und direkten Datenaktualisierungen optimiert und bietet vollständige Unterstützung für POSIX-Dateisysteme. In diesem Abschnitt erfahren Sie, wie Sie NFS-Freigaben mit dem Azure Files-CSI-Treiber in einem AKS-Cluster verwenden.
@@ -256,9 +254,10 @@ storageclass.storage.k8s.io/azurefile-csi created
 ```
 
 ### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>Erstellen einer Bereitstellung mit einer NFS-gestützten Dateifreigabe
+
 Sie können einen [zustandsbehafteten Beispielsatz](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) bereitstellen, mit dem Zeitstempel in einer Datei `data.txt` gespeichert werden, indem Sie den folgenden Befehl mit dem Befehl [kubectl apply][kubectl-apply] bereitstellen:
 
- ```console
+```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
@@ -276,9 +275,8 @@ accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-55660
 ...
 ```
 
->[!NOTE]
+> [!NOTE]
 > Beachten Sie Folgendes: Da die NFS-Dateifreigabe ein Premium-Konto ist, beträgt die Mindestgröße für die Dateifreigabe 100 GB. Wenn Sie einen PVC mit einer kleinen Speichergröße erstellen, tritt möglicherweise ein Fehler auf: „Fehler beim Erstellen der Dateifreigabe... Größe (5)...“.
-
 
 ## <a name="windows-containers"></a>Windows-Container
 
@@ -286,7 +284,7 @@ Der Azure Files-CSI-Treiber unterstützt auch Windows-Knoten und -Container. Wen
 
 Wenn Sie über einen Windows-Knotenpool verfügen, können Sie die integrierten Speicherklassen wie `azurefile-csi` verwenden oder benutzerdefinierte Speicherklassen erstellen. Sie können einen [Windows-basierten zustandsbehafteten Beispielsatz](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) bereitstellen, mit dem Zeitstempel in einer Datei `data.txt` gespeichert werden, indem Sie den folgenden Befehl mit dem Befehl [kubectl apply][kubectl-apply] bereitstellen:
 
- ```console
+```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
 
 statefulset.apps/busybox-azurefile created
@@ -309,7 +307,6 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 - Informationen zur Verwendung von CSI-Treibern für Azure-Datenträger finden Sie unter [Verwenden von Azure-Datenträgern mit CSI-Treibern](azure-disk-csi.md).
 - Weitere Informationen zu bewährten Methoden bei der Speicherung finden Sie unter [Best Practices für Speicherung und Sicherungen in Azure Kubernetes Service][operator-best-practices-storage].
 
-
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -318,7 +315,6 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 [managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 [smb-overview]: /windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview
-
 
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md

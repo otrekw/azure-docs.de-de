@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/29/2020
 ms.author: baselden
-ms.openlocfilehash: 777daecc119a158f11d865489e4eb497c3bc7899
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 8cf1a671eeb4861919a389b02f45fee998d880e3
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376595"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317215"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Planen der Konfiguration von „Meine Apps“ in Azure Active Directory
 
@@ -81,7 +81,7 @@ Weitere Informationen finden Sie unter [Konfigurieren der Zustimmung von Endbenu
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>Gruppenbesitzereinwilligung für Apps, die auf Daten zugreifen
 
-Gruppen- und Teambesitzer können Anwendungen (z. B. von Drittanbietern veröffentlichte Anwendungen) autorisieren, auf die einer Gruppe zugeordneten Daten Ihrer Organisation zuzugreifen. Weitere Informationen finden Sie unter [Resource-specific consent in Microsoft Teams](https://docs.microsoft.com/microsoftteams/resource-specific-consent) (Ressourcenspezifische Einwilligung in Microsoft Teams). 
+Gruppen- und Teambesitzer können Anwendungen (z. B. von Drittanbietern veröffentlichte Anwendungen) autorisieren, auf die einer Gruppe zugeordneten Daten Ihrer Organisation zuzugreifen. Weitere Informationen finden Sie unter [Resource-specific consent in Microsoft Teams](/microsoftteams/resource-specific-consent) (Ressourcenspezifische Einwilligung in Microsoft Teams). 
 
 Sie können konfigurieren, ob Sie diese Funktion aktivieren oder deaktivieren möchten.
 
@@ -138,7 +138,7 @@ Die Erweiterung ermöglicht den Benutzern, jede App über die Suchleiste zu star
 
 #### <a name="plan-for-mobile-access"></a>Planen des mobilen Zugriffs
 
-Bei Anwendungen, die kennwortbasiertes einmaliges Anmelden verwenden, oder auf die über den [Microsoft Azure AD-Anwendungsproxy](../manage-apps/application-proxy.md) zugegriffen wird, müssen Sie Microsoft Edge für Mobilgeräte verwenden. Bei anderen Anwendungen kann jeder mobile Browser verwendet werden. 
+Bei Anwendungen, die kennwortbasiertes einmaliges Anmelden verwenden, oder auf die über den [Microsoft Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md) zugegriffen wird, müssen Sie Microsoft Edge für Mobilgeräte verwenden. Bei anderen Anwendungen kann jeder mobile Browser verwendet werden. 
 
 ### <a name="linked-sso"></a>Verknüpftes einmaliges Anmelden
 
@@ -256,5 +256,4 @@ Sie können Ihre Rollen mithilfe von [Privileged Identity Management](../privile
 
 [Planen einer Bereitstellung von Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
 
-[Planen der Bereitstellung eines Anwendungsproxys](application-proxy-deployment-plan.md)
-
+[Planen der Bereitstellung eines Anwendungsproxys](../app-proxy/application-proxy-deployment-plan.md)

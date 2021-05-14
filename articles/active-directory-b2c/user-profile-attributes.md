@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7dfad71d05a882e3a3941a96e12489adb5fb3234
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 523212e0f63453e78967eb9a4716febb754ea5d6
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500528"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315271"
 ---
 # <a name="user-profile-attributes"></a>Benutzerprofilattribute
 
-Ihr Azure Active Directory (Azure AD) B2C-Verzeichnisbenutzerprofil umfasst einen integrierten Satz von Attributen wie Vorname, Nachname, Ort, Postleitzahl und Telefonnummer. Sie können das Benutzerprofil mit Ihren eigenen Anwendungsdaten erweitern, ohne dass ein externer Datenspeicher erforderlich ist. 
+Ihr Azure Active Directory (Azure AD) B2C-Verzeichnisbenutzerprofil umfasst einen integrierten Satz von Attributen wie Vorname, Nachname, Ort, Postleitzahl und Telefonnummer. Sie können das Benutzerprofil mit Ihren eigenen Anwendungsdaten erweitern, ohne dass ein externer Datenspeicher erforderlich ist.
 
 Die meisten Attribute, die in Azure AD B2C-Benutzerprofilen verwendet werden können, werden auch von Microsoft Graph unterstützt. In diesem Artikel werden die unterstützten Azure AD B2C-Benutzerprofilattribute beschrieben. Außerdem werden die Attribute angeführt, die nicht von Microsoft Graph unterstützt werden, und es wird auf die Microsoft Graph-Attribute hingewiesen, die nicht in Azure AD B2C verwendet werden sollten.
 
@@ -59,12 +59,11 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/g
 |immutableId     |String|Ein Bezeichner, der in der Regel für Benutzer verwendet wird, die von einer lokalen Active Directory-Instanz migriert werden.|Nein|Nein|Persistent, Ausgabe|
 |legalAgeGroupClassification|String|Rechtliche Altersgruppenklassifizierung. Dieses Attribut ist schreibgeschützt und wird basierend auf den Eigenschaften „ageGroup“ und „consentProvidedForMinor“ berechnet. Zulässige Werte: „Null“, „minorWithOutParentalConsent“, „minorWithParentalConsent“, „minorNoParentalConsentRequired“, „notAdult“ und „adult“.|Ja|Nein|Persistent, Ausgabe|
 |legalCountry<sup>1</sup>  |String|Land/Region für rechtliche Zwecke.|Nein|Nein|Persistent, Ausgabe|
-|mail            |String|Die SMTP-Adresse für den Benutzer, z. B. „bob@contoso.com“. Schreibgeschützt.|Nein|Nein|Persistent, Ausgabe|
 |mailNickName    |String|Der E-Mail-Alias für den Benutzer. Maximale Länge: 64 Zeichen.|Nein|Nein|Persistent, Ausgabe|
 |mobile (mobilePhone) |String|Die primäre Mobiltelefonnummer des Benutzers. Maximale Länge: 64 Zeichen.|Ja|Nein|Persistent, Ausgabe|
 |netId           |String|Die Netz-ID.|Nein|Nein|Persistent, Ausgabe|
 |objectId        |String|Ein global eindeutiger Bezeichner (Globally Unique Identifier, GUID), bei dem es sich um den eindeutigen Bezeichner für den Benutzer handelt. Beispiel: 12345678-9abc-def0-1234-56789abcde. Schreibgeschützt, unveränderlich.|Nur Lesezugriff|Ja|Eingabe, Persistent, Ausgabe|
-|otherMails      |Zeichenfolgensammlung|Eine Liste weiterer E-Mail-Adressen für den Benutzer. Beispiel: [„bob@contoso.com“, „Robert@fabrikam.com“].|Ja (Alternative E-Mail-Adresse)|Nein|Persistent, Ausgabe|
+|otherMails      |Zeichenfolgensammlung|Eine Liste weiterer E-Mail-Adressen für den Benutzer. Beispiel: [„bob@contoso.com“, „Robert@fabrikam.com“]. HINWEIS: Akzentzeichen sind nicht zulässig.|Ja (Alternative E-Mail-Adresse)|Nein|Persistent, Ausgabe|
 |password        |String|Das Kennwort für das lokale Konto bei der Benutzererstellung.|Nein|Nein|Persistent|
 |passwordPolicies     |String|Die Richtlinie des Kennworts. Dabei handelt sich um eine Zeichenfolge, die aus verschiedenen, durch Komma getrennten Richtliniennamen besteht. Beispiel: „DisablePasswordExpiration, DisableStrongPassword“.|Nein|Nein|Persistent, Ausgabe|
 |physicalDeliveryOfficeName (officeLocation)|String|Position des Büros am Unternehmensstandort des Benutzers. Maximale Länge: 128 Zeichen.|Ja|Nein|Persistent, Ausgabe|
@@ -72,13 +71,13 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/g
 |preferredLanguage    |String|Die bevorzugte Sprache des Benutzers. Das bevorzugte Sprachformat basiert auf RFC 4646. Der Name setzt sich zusammen aus dem aus zwei Kleinbuchstaben bestehenden ISO 639-Kulturcode, der einer Sprache zugeordnet ist, und dem aus zwei Großbuchstaben bestehenden ISO 3166-Subkulturcode, der einem Land oder einer Region zugeordnet ist. Beispiel: „en-US“ oder „de-DE“.|Nein|Nein|Persistent, Ausgabe|
 |refreshTokensValidFromDateTime (signInSessionsValidFromDateTime)|Datetime|Alle vor diesem Zeitpunkt ausgestellten Aktualisierungstoken sind ungültig, und Anwendungen erhalten eine Fehlermeldung, wenn ein ungültiges Aktualisierungstoken zum Abrufen eines neuen Zugriffstokens verwendet wird. Wenn dieser Fall eintritt, muss die Anwendung ein neues Aktualisierungstoken abrufen, indem eine Anforderung an den Autorisierungsendpunkt gesendet wird. Schreibgeschützt.|Nein|Nein|Output|
 |signInNames ([Identities](#identities-attribute)) |String|Der eindeutige Anmeldename des Benutzers des lokalen Kontos eines beliebigen Typs im Verzeichnis. Verwenden Sie dieses Attribut, um einen Benutzer mit einem Anmeldewert abzurufen, ohne den lokalen Kontotyp anzugeben.|Nein|Nein|Eingabe|
-|signInNames.userName ([Identities](#identities-attribute)) |String|Der eindeutige Benutzername des Benutzers des lokalen Kontos im Verzeichnis. Verwenden Sie dieses Attribut, um einen Benutzer mit einem bestimmten Anmeldebenutzernamen zu erstellen oder abzurufen. Wenn Sie nur dieses Attribut in „PersistedClaims“ während eines Patchvorgangs angeben, werden andere Typen von „signInNames“ entfernt. Wenn Sie einen neuen Typ von „signInNames“ hinzufügen möchten, müssen Sie auch vorhandene „signInNames“ beibehalten.|Nein|Nein|Eingabe, Persistent, Ausgabe|
+|signInNames.userName ([Identities](#identities-attribute)) |String|Der eindeutige Benutzername des Benutzers des lokalen Kontos im Verzeichnis. Verwenden Sie dieses Attribut, um einen Benutzer mit einem bestimmten Anmeldebenutzernamen zu erstellen oder abzurufen. Wenn Sie nur dieses Attribut in „PersistedClaims“ während eines Patchvorgangs angeben, werden andere Typen von „signInNames“ entfernt. Wenn Sie einen neuen Typ von „signInNames“ hinzufügen möchten, müssen Sie auch vorhandene „signInNames“ beibehalten. HINWEIS: Akzentzeichen sind im Benutzernamen nicht zulässig.|Nein|Nein|Eingabe, Persistent, Ausgabe|
 |signInNames.phoneNumber ([Identities](#identities-attribute)) |String|Die eindeutige Telefonnummer des Benutzers des lokalen Kontos im Verzeichnis. Verwenden Sie dieses Attribut, um einen Benutzer mit einer bestimmten Telefonnummer für die Anmeldung zu erstellen oder abzurufen. Wenn Sie nur dieses Attribut in „PersistedClaims“ während eines Patchvorgangs angeben, werden andere Typen von „signInNames“ entfernt. Wenn Sie einen neuen Typ von „signInNames“ hinzufügen möchten, müssen Sie auch vorhandene „signInNames“ beibehalten.|Nein|Nein|Eingabe, Persistent, Ausgabe|
 |signInNames.emailAddress ([Identities](#identities-attribute))|String|Die eindeutige E-Mail-Adresse des Benutzers des lokalen Kontos im Verzeichnis. Verwenden Sie dieses Attribut, um einen Benutzer mit einer bestimmten E-Mail-Adresse für die Anmeldung zu erstellen oder abzurufen. Wenn Sie nur dieses Attribut in „PersistedClaims“ während eines Patchvorgangs angeben, werden andere Typen von „signInNames“ entfernt. Wenn Sie einen neuen Typ von „signInNames“ hinzufügen möchten, müssen Sie auch vorhandene „signInNames“ beibehalten.|Nein|Nein|Eingabe, Persistent, Ausgabe|
 |state           |String|Das Bundesland oder der Kanton in der Adresse des Benutzers. Maximale Länge: 128 Zeichen.|Ja|Ja|Persistent, Ausgabe|
 |streetAddress   |String|Die Straße in der geschäftlichen Anschrift des Benutzers. Maximale Länge: 1024 Zeichen.|Ja|Ja|Persistent, Ausgabe|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|String|Die sekundäre Telefonnummer des Benutzers, die für die mehrstufige Authentifizierung verwendet wird.|Ja|Nein|Persistent, Ausgabe|
-|strongAuthenticationEmailAddress<sup>1</sup>|String|Die SMTP-Adresse für den Benutzer. Beispiel: „bob@contoso.com“. Dieses Attribut wird für die Anmeldung mit der Benutzernamenrichtlinie verwendet, um die E-Mail-Adresse des Benutzers zu speichern. Die E-Mail-Adresse wird dann in einem Kennwortzurücksetzungsflow verwendet.|Ja|Nein|Persistent, Ausgabe|
+|strongAuthenticationEmailAddress<sup>1</sup>|String|Die SMTP-Adresse für den Benutzer. Beispiel: „bob@contoso.com“. Dieses Attribut wird für die Anmeldung mit der Benutzernamenrichtlinie verwendet, um die E-Mail-Adresse des Benutzers zu speichern. Die E-Mail-Adresse wird dann in einem Kennwortzurücksetzungsflow verwendet. Akzentzeichen sind in diesem Attribut nicht zulässig.|Ja|Nein|Persistent, Ausgabe|
 |strongAuthenticationPhoneNumber<sup>2</sup>|String|Die primäre Telefonnummer des Benutzers, die für die mehrstufige Authentifizierung verwendet wird.|Ja|Nein|Persistent, Ausgabe|
 |surname         |String|Der Nachname (oder Familienname) des Benutzers. Maximale Länge: 64 Zeichen.|Ja|Ja|Persistent, Ausgabe|
 |telephoneNumber (erster Eintrag von „businessPhones“)|String|Die primäre geschäftliche Telefonnummer des Benutzers.|Ja|Nein|Persistent, Ausgabe|
@@ -101,7 +100,7 @@ Einem Kundenkonto (von einem Endbenutzer, einem Partner oder einem anderen Benut
 - **Lokale** Identität: Der Benutzername und das Kennwort werden lokal im Azure AD B2C-Verzeichnis gespeichert. Diese Identitäten werden häufig als „lokale Konten“ bezeichnet.
 - **Verbundidentität:** Die Identitäten dieser auch als *Konten für soziale Netzwerke* oder *Unternehmenskonten* bezeichneten Benutzer werden von einem Verbundidentitätsanbieter wie Facebook, Microsoft, AD FS oder Salesforce verwaltet.
 
-Ein Benutzer mit einem Kundenkonto kann sich mit mehreren Identitäten anmelden. Er kann z. B. den Benutzernamen, die E-Mail-Adresse, die Mitarbeiter-ID, eine Behördenkennung und andere Daten verwenden. Ein einzelnes Konto kann über mehrere Identitäten verfügen. Dabei kann es sich um lokale Identitäten und Identitäten für soziale Netzwerke handeln, die auch dasselbe Kennwort nutzen können. 
+Ein Benutzer mit einem Kundenkonto kann sich mit mehreren Identitäten anmelden. Er kann z. B. den Benutzernamen, die E-Mail-Adresse, die Mitarbeiter-ID, eine Behördenkennung und andere Daten verwenden. Ein einzelnes Konto kann über mehrere Identitäten verfügen. Dabei kann es sich um lokale Identitäten und Identitäten für soziale Netzwerke handeln, die auch dasselbe Kennwort nutzen können.
 
 In der Microsoft Graph-API werden sowohl lokale als auch Verbundidentitäten im Benutzerattribut `identities` gespeichert, das den Typ [objectIdentity](/graph/api/resources/objectidentity) aufweist. Die Sammlung `identities` stellt einen Satz von Identitäten dar, die für die Anmeldung bei einem Benutzerkonto verwendet werden. Diese Sammlung ermöglicht dem Benutzer, sich mit den zugehörigen Identitäten beim Benutzerkonto anzumelden. Das „identities“-Attribut kann bis zu zehn [objectIdentity](/graph/api/resources/objectidentity)-Objekte enthalten. Jedes Objekt enthält die folgenden Eigenschaften:
 
@@ -111,29 +110,29 @@ In der Microsoft Graph-API werden sowohl lokale als auch Verbundidentitäten im 
 |Issuer (Aussteller)|Zeichenfolge|Gibt den Aussteller der Identität an. Bei lokalen Konten (bei denen **signInType** nicht `federated` ist) ist diese Eigenschaft der Standarddomänenname des lokalen B2C-Mandanten, z. B. `contoso.onmicrosoft.com`. Bei einer Identität für ein soziales Netzwerk (bei der der **signInType** `federated` ist) entspricht der Wert dem Namen des Ausstellers, z. B. `facebook.com`.|
 |issuerAssignedId|Zeichenfolge|Gibt den dem Benutzer vom Aussteller zugewiesenen eindeutigen Bezeichner an. Die Kombination aus **issuer** und **issuerAssignedId** muss innerhalb Ihres Mandanten eindeutig sein. Wenn für das lokale Konto **signInType** auf `emailAddress` oder `userName` festgelegt ist, stellt dies den Anmeldenamen für den Benutzer dar.<br>Wenn **signInType** auf <ul><li>`emailAddress` festgelegt ist (oder mit `emailAddress` beginnt wie bei `emailAddress1`), muss die **issuerAssignedId** eine gültige E-Mail-Adresse sein.</li><li>`userName` festgelegt (oder einen beliebigen anderen Wert) ist, muss die **issuerAssignedId** ein gültiger [lokaler Teil einer E-Mail-Adresse](https://tools.ietf.org/html/rfc3696#section-3) sein.</li><li>`federated` festgelegt ist, stellt die **issuerAssignedId** den eindeutigen Bezeichner des Verbundkontos dar.</li></ul>|
 
-Das folgende **Identities**-Attribut mit einer lokalen Kontoidentität mit einem Anmeldenamen, einer E-Mail-Adresse für die Anmeldung und einer Identität für ein soziales Netzwerk. 
+Das folgende **Identities**-Attribut mit einer lokalen Kontoidentität mit einem Anmeldenamen, einer E-Mail-Adresse für die Anmeldung und einer Identität für ein soziales Netzwerk.
 
- ```json
- "identities": [
-     {
-       "signInType": "userName",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "johnsmith"
-     },
-     {
-       "signInType": "emailAddress",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "jsmith@yahoo.com"
-     },
-     {
-       "signInType": "federated",
-       "issuer": "facebook.com",
-       "issuerAssignedId": "5eecb0cd"
-     }
-   ]
- ```
+```json
+"identities": [
+  {
+    "signInType": "userName",
+    "issuer": "contoso.onmicrosoft.com",
+    "issuerAssignedId": "johnsmith"
+  },
+  {
+    "signInType": "emailAddress",
+    "issuer": "contoso.onmicrosoft.com",
+    "issuerAssignedId": "jsmith@yahoo.com"
+  },
+  {
+    "signInType": "federated",
+    "issuer": "facebook.com",
+    "issuerAssignedId": "5eecb0cd"
+  }
+]
+```
 
-Bei Verbundidentitäten handelt es sich abhängig vom Identitätsanbieter bei der **issuerAssignedId** um einen eindeutigen Wert für einen bestimmten Benutzer pro Anwendung oder ein Entwicklungskonto. Konfigurieren Sie die Azure AD B2C-Richtlinie mit der gleichen Anwendungs-ID, die zuvor vom Anbieter des sozialen Netzwerks zugewiesen wurde, oder mit der einer anderen Anwendung im selben Entwicklungskonto. 
+Bei Verbundidentitäten handelt es sich abhängig vom Identitätsanbieter bei der **issuerAssignedId** um einen eindeutigen Wert für einen bestimmten Benutzer pro Anwendung oder ein Entwicklungskonto. Konfigurieren Sie die Azure AD B2C-Richtlinie mit der gleichen Anwendungs-ID, die zuvor vom Anbieter des sozialen Netzwerks zugewiesen wurde, oder mit der einer anderen Anwendung im selben Entwicklungskonto.
 
 ## <a name="password-profile-property"></a>Eigenschaft „passwordProfile“ (Kennwortprofil)
 

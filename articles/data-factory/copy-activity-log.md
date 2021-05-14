@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: 7cb00d62556babbd8e43e2fac2faa815a63943ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f979ca04a276f52e5f76a8e4327f9ff8ef390fe6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385267"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143699"
 ---
 #  <a name="session-log-in-copy-activity"></a>Sitzungsprotokoll in der Kopieraktivität
 
@@ -77,7 +77,7 @@ path | Der Pfad der Protokolldateien. | Geben Sie den Pfad an, in dem die Protok
 ## <a name="monitoring"></a>Überwachung
 
 ### <a name="output-from-copy-activity"></a>Ausgabe aus der Kopieraktivität
-Nach Abschluss aller Kopieraktivitätsausführungen wird der Pfad der Protokolldateien in der Ausgabe der jeweiligen Ausführung angezeigt. Sie finden die Protokolldateien im Pfad `https://[your-blob-account].blob.core.windows.net/[logFilePath]/copyactivity-logs/[copy-activity-name]/[copy-activity-run-id]/[auto-generated-GUID].csv`.  Die Protokolldateien sind die CSV-Dateien. 
+Nach Abschluss aller Kopieraktivitätsausführungen wird der Pfad der Protokolldateien in der Ausgabe der jeweiligen Ausführung angezeigt. Sie finden die Protokolldateien im Pfad `https://[your-blob-account].blob.core.windows.net/[logFilePath]/copyactivity-logs/[copy-activity-name]/[copy-activity-run-id]/[auto-generated-GUID].txt`.  Die generierten Protokolldateien verfügen über die Erweiterung TXT, und ihre Daten weisen das CSV-Format auf.
 
 ```json
 "output": {

@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/26/2020
+ms.date: 04/26/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 329e09221467c2602355e091876c95f305db3578
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c76ffbbaf6bbbb2afb5d84e92b6fe9ce04dc4a30
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673732"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128701"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-Typen für die SAP-Workload
 Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Workloadszenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.
@@ -35,6 +35,7 @@ Bei der Microsoft Azure-Speicherung von HDD Standard, SSD Standard, Azure Storag
 Es gibt mehrere weitere Redundanzmethoden, die im Artikel [Azure Storage-Replikation](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) beschrieben werden und für einige der verschiedenen Speichertypen von Azure gelten. 
 
 Beachten Sie auch, dass sich unterschiedliche Azure-Speichertypen auf die SLAs zur Verfügbarkeit einzelner VMs auswirken (wie unter [SLA für Virtuelle Computer](https://azure.microsoft.com/support/legal/sla/virtual-machines) beschrieben).
+
 
 ### <a name="azure-managed-disks"></a>Verwaltete Azure-Datenträger
 
@@ -69,6 +70,10 @@ Informationen zu Einschränkungen der Unterstützung für Azure-Speichertypen f�
 
 In den Abschnitten, in denen die verschiedenen Azure-Speichertypen beschrieben werden, erhalten Sie weitere Hintergrundinformationen zu den Einschränkungen und Möglichkeiten der Verwendung der von SAP unterstützten Speicherung. 
 
+### <a name="storage-choices-when-using-dbms-replication"></a>Speicheroptionen bei Verwendung der DBMS-Replikation
+Unsere Referenzarchitekturen setzen die Verwendung von DBMS-Funktionen wie SQL Server Always On, HANA-Systemreplikation, DB2 HADR oder Oracle Data Guard voraus. Falls Sie diese Technologien zwischen zwei oder mehreren virtuellen Azure-Computern verwenden, müssen die für jeden virtuellen Computer ausgewählten Speichertypen identisch sein. Dies bedeutet, dass, wenn der für das Wiederholungsprotokollvolume eines DBMS-Systems ausgewählte Speicher Azure Storage Premium auf einem virtuellen Computer ist, alle anderen VMs auf demselben Volume auf Azure Storage Premium basieren müssen, die sich in derselben Konfiguration für die Hochverfügbarkeitssynchronisierung befinden. Dasselbe gilt für die Datenvolumes, die für die Datenbankdateien verwendet werden.
+  
+
 ## <a name="storage-recommendations-for-sap-storage-scenarios"></a>Speicherempfehlungen für SAP-Speicherszenarien
 Bevor auf die Einzelheiten eingegangen wird, werden zunächst die Zusammenfassung und die Empfehlungen vorgestellt. Die Details zu den einzelnen Azure-Speichertypen folgen auf diesen Abschnitt. Die Speicherempfehlungen für die SAP-Speicherszenarien sind in der folgenden Tabelle zusammengefasst:
 
@@ -81,9 +86,9 @@ Bevor auf die Einzelheiten eingegangen wird, werden zunächst die Zusammenfassun
 | DBMS-Protokollvolume, SAP HANA, M/Mv2-VM-Familien | Nicht unterstützt | Nicht unterstützt | empfohlen<sup>1</sup> | empfohlen | empfohlen<sup>2</sup> | 
 | DBMS-Datenvolume, SAP HANA, Esv3/Edsv4-VM-Familien | Nicht unterstützt | Nicht unterstützt | empfohlen | empfohlen | empfohlen<sup>2</sup> |
 | DBMS-Protokollvolume, SAP HANA, Esv3/Edsv4-VM-Familien | Nicht unterstützt | Nicht unterstützt | Nicht unterstützt | empfohlen | empfohlen<sup>2</sup> | 
-| DBMS-Datenvolume, Nicht-HANA | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen | empfohlen | Nicht unterstützt |
-| DBMS-Protokollvolume, Nicht-HANA, M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen<sup>1</sup> | empfohlen | Nicht unterstützt |
-| DBMS-Protokollvolume, Nicht-HANA, Nicht-M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | geeignet für bis zu mittlerer Workload | empfohlen | Nicht unterstützt |
+| DBMS-Datenvolume, Nicht-HANA | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux |
+| DBMS-Protokollvolume, Nicht-HANA, M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen<sup>1</sup> | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux |
+| DBMS-Protokollvolume, Nicht-HANA, Nicht-M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | geeignet für bis zu mittlerer Workload | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux |
 
 
 <sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes <sup>2</sup> Für die Verwendung von ANF müssen „/hana/data“ und „/hana/log“ in ANF enthalten sein. 
@@ -236,6 +241,7 @@ Der ANF-Speicher wird derzeit für verschiedene SAP-Workloadszenarien unterstüt
     - [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen](./high-availability-guide-suse-netapp-files.md)
     - [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux mit Azure NetApp Files für SAP-Anwendungen](./high-availability-guide-rhel-netapp-files.md)
 - SAP HANA-Bereitstellungen mit NFS v4.1-Freigaben für „/hana/data“- und „/hana/log“-Volumes und/oder NFS v4.1- oder NFS v3-Freigaben für „/hana/shared“-Volumes, wie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md) beschrieben
+- Oracle-Bereitstellungen im Oracle Linux-Gastbetriebssystem mit [dNFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) für Oracle-Daten- und Wiederholungsprotokollvolumes. Weitere Informationen finden Sie im Artikel [Oracle-DBMS-Bereitstellung für SAP-Workload auf Azure Virtual Machines](./dbms_guide_oracle.md).
 
 > [!NOTE]
 > Für Azure NetApp Files-basierte NFS- oder SMB-Freigaben werden keine anderen DBMS-Workloads unterstützt. Wenn sich dies ändert, werden Aktualisierungen und Änderungen zur Verfügung gestellt.

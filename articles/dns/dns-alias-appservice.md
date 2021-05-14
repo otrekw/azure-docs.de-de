@@ -5,24 +5,24 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: how-to
-ms.date: 08/10/2019
+ms.date: 04/27/2021
 ms.author: rohink
-ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3817829b99d64b6874eeb94379a64cbda79430f0
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94954510"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164649"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Hosten von Azure Web-Apps mit Lastenausgleich im Zonen-Apex
 
-Das DNS-Protokoll sorgt dafür, dass im Zonen-Apex nur A- oder AAAA-Datensätze zugewiesen werden können. Ein Beispiel für einen Zonen-Apex ist contoso.com. Diese Einschränkung stellt Anwendungsbesitzer, die über Anwendungen mit Lastenausgleich hinter Traffic Manager verfügen, vor ein Problem. Über den Zonen-Apex-Datensatz kann nicht auf das Traffic Manager-Profil verwiesen werden. Anwendungsbesitzer müssen daher auf eine Problemumgehung zurückgreifen: eine Umleitung in der Anwendungsschicht vom Zonen-Apex zu einer anderen Domäne, beispielsweise von „contoso.com“ zu „www\.contoso.com“. Dies stellt einen Single Point of Failure für die Umleitungsfunktion dar.
+Das DNS-Protokoll sorgt dafür, dass im Zonen-Apex nur A- oder AAAA-Datensätze zugewiesen werden können. Ein Beispiel für einen Zonen-Apex ist contoso.com. Diese Einschränkung stellt Anwendungsbesitzer, die über Anwendungen mit Lastenausgleich hinter Traffic Manager verfügen, vor ein Problem. Über den Zonen-Apex-Datensatz kann nicht auf das Traffic Manager-Profil verwiesen werden. Anwendungsbesitzer müssen daher auf eine Problemumgehung zurückgreifen: eine Umleitung in der Anwendungsschicht vom Zonen-Apex zu einer anderen Domäne, Ein Beispiel ist eine Umleitung von `contoso.com` zu `www.contoso.com`. Dies stellt einen Single Point of Failure für die Umleitungsfunktion dar.
 
-Bei Aliaseinträgen besteht dieses Problem nicht mehr. Nun können Anwendungsbesitzer für Ihren Zonen-Apex-Datensatz einen Verweis auf ein Traffic Manager-Profil erstellen, das über externe Endpunkte verfügt. Anwendungsbesitzer können auf das gleiche Traffic Manager-Profil verweisen, das auch für andere Domänen innerhalb ihrer DNS-Zone verwendet wird.
+Bei Verwendung von Aliaseinträgen besteht dieses Problem nicht mehr. Sie können für Ihren Zonen-Apex-Datensatz einen Verweis auf ein Traffic Manager-Profil erstellen, das über externe Endpunkte verfügt. Sie können auch auf dasselbe Traffic Manager-Profil verweisen, das für andere Domänen innerhalb der DNS-Zone verwendet wird.
 
-So können beispielsweise „contoso.com“ und „www\.contoso.com“ jeweils auf das gleiche Traffic Manager-Profil verweisen. Voraussetzung ist allerdings, dass für das Traffic Manager-Profil nur externe Endpunkte konfiguriert sind.
+Beispielsweise können Sie für `contoso.com` und `www.contoso.com` auf dasselbe Traffic Manager-Profil verweisen. Dies funktioniert, wenn für das Traffic Manager-Profil nur externe Endpunkte konfiguriert sind.
 
-In diesem Artikel erfahren Sie, wie Sie einen Alias-Datensatz für Ihren Domänen-Apex erstellen und Ihre Traffic Manager-Profilendpunkte für Ihre Web-Apps konfigurieren.
+In diesem Artikel wird beschrieben, wie Sie einen Aliasdatensatz für Ihren Domänen-Apex erstellen. Anschließend konfigurieren Sie die Endpunkte Ihres Traffic Manager-Profils für Ihre Web-Apps.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -40,7 +40,7 @@ Erstellen Sie eine Ressourcengruppe für die in diesem Artikel verwendeten Resso
 
 ## <a name="create-app-service-plans"></a>Erstellen von App Service-Plänen
 
-Erstellen Sie zwei Web App Service-Pläne in Ihrer Ressourcengruppe anhand der folgenden Tabelle für Konfigurationsinformationen. Weitere Informationen zum Erstellen eines App Service-Plans finden Sie unter [Verwalten eines App Service-Plans in Azure](../app-service/app-service-plan-manage.md).
+Erstellen Sie zwei Web-App-Dienstpläne in Ihrer Ressourcengruppe. Die folgende Tabelle dient als Hilfe bei der Konfiguration dieses Setups. Weitere Informationen zum Erstellen eines App Service-Plans finden Sie unter [Verwalten eines App Service-Plans in Azure](../app-service/app-service-plan-manage.md).
 
 
 |Name  |Betriebssystem  |Standort  |Preisstufe  |
@@ -76,7 +76,7 @@ Notieren Sie jetzt die IP-Adresse und den Hostnamen für die Web-Apps.
 
 Erstellen Sie in Ihrer Ressourcengruppe ein Traffic Manager-Profil. Verwenden Sie die Standardeinstellungen, und geben Sie einen eindeutigen Namen innerhalb des trafficmanager.net-Namespace ein.
 
-Informationen zum Erstellen eines Traffic Manager-Profils finden Sie unter [Schnellstart: Erstellen eines Traffic Manager-Profils für eine hochverfügbare Webanwendung](../traffic-manager/quickstart-create-traffic-manager-profile.md).
+Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Traffic Manager-Profils für eine hoch verfügbare Webanwendung](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 
 ### <a name="create-endpoints"></a>Erstellen von Endpunkten
 

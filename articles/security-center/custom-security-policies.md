@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: a901e71da640f8413e5714ad59073324f582c1b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1231d4b14d4beb2b4e167b3e7572428ec99c8e54
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102441056"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140279"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>Erstellen von benutzerdefinierten Sicherheitsinitiativen und -richtlinien
 
@@ -90,7 +90,7 @@ Wichtige Konzepte in Azure Policy:
 
 - Eine **Zuweisung** ist eine Anwendung einer Initiative oder Richtlinie für einen bestimmten Bereich (Verwaltungsgruppe, Abonnement usw.). 
 
-Security Center hat eine integrierte Initiative, die Azure Security Benchmark, die alle eigenen Sicherheitsrichtlinien enthält. Um die Richtlinien von Security Center für Ihre Azure-Ressourcen zu bewerten, sollten Sie eine Zuweisung zur Verwaltungsgruppe oder zum Abonnement erstellen, die oder das Sie bewerten möchten.
+Security Center umfasst eine integrierte Initiative [Azure-Sicherheitsvergleichstest](/security/benchmark/azure/introduction) die alle zugehörigen Sicherheitsrichtlinien enthält. Um die Richtlinien von Security Center für Ihre Azure-Ressourcen zu bewerten, sollten Sie eine Zuweisung zur Verwaltungsgruppe oder zum Abonnement erstellen, die oder das Sie bewerten möchten.
 
 In der integrierten Initiative sind alle Richtlinien von Security Center standardmäßig aktiviert. Sie können bestimmte Richtlinien aus der integrierten Initiative deaktivieren. Wenn Sie z.B. alle Security Center-Richtlinien außer der **Webanwendungsfirewall** anwenden möchten, ändern Sie den Wert des effect-Parameters der Richtlinie in **Deaktiviert**.
 

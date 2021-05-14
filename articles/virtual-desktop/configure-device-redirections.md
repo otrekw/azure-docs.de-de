@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5eca75da57027789a06259e22e7c6cd5231404b6
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f603a4b44b555382e4178d90522ae41fa2388663
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448150"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947715"
 ---
 # <a name="configure-device-redirections"></a>Konfigurieren von Geräteumleitungen
 
@@ -53,7 +53,7 @@ Legen Sie die folgende RDP-Eigenschaft fest, um die Kameraumleitung zu konfiguri
 >[!NOTE]
 >Selbst wenn die `camerastoredirect:s:`-Eigenschaft deaktiviert ist, können lokale Kameras über die `devicestoredirect:s:`-Eigenschaft umgeleitet werden. Um die Kameraumleitung vollständig zu deaktivieren, legen Sie `camerastoredirect:s:` fest und stellen Sie entweder `devicestoredirect:s:` ein, oder definieren Sie eine Teilmenge von Plug & Play-Geräten, die keine Kamera enthält.
 
-Sie können auch bestimmte Kameras mithilfe einer durch Semikolons getrennten Liste von KSCATEGORY_VIDEO_CAMERA-Schnittstellen umleiten, z. B. `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi`. 
+Sie können auch bestimmte Kameras mithilfe einer durch Semikolons getrennten Liste von KSCATEGORY_VIDEO_CAMERA-Schnittstellen umleiten, z. B. `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi`.
 
 ### <a name="clipboard-redirection"></a>Umleitung der Zwischenablage
 
@@ -100,6 +100,8 @@ Legen Sie die folgende RDP-Eigenschaft fest, um die Umleitung von lokalen Laufwe
 - Mit `drivestoredirect:s:` deaktivieren Sie die Umleitung lokaler Laufwerke.
 
 Sie können auch mithilfe einer durch Semikolons getrennten Liste bestimmte Laufwerke auswählen, z. B. `drivestoredirect:s:C:;E:;`.
+
+Legen Sie `drivestoredirect:s:*` fest, um die Übertragung von Webclient-Dateien zu aktivieren. Wenn Sie einen anderen Wert für diese RDP-Eigenschaft festlegen, wird die Webclient-Dateiübertragung deaktiviert.
 
 ### <a name="printer-redirection"></a>Umleitung von Druckern
 

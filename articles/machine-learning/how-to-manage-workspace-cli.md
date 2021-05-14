@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/02/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 5e9df582ce6eddd50fbecf02858f4afe611dcf18
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.topic: how-to
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d86350bf96e4c91fb7ea0a635387d4da95cc8581
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220214"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888978"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Erstellen eines Arbeitsbereichs für Azure Machine Learning mit der Azure CLI
 
@@ -283,7 +283,7 @@ Die Ausgabe dieses Befehls ähnelt dem folgenden JSON-Code:
 ]
 ```
 
-Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace list](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-list).
+Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace list](/cli/azure/ml/workspace#az_ml_workspace_list).
 
 ## <a name="get-workspace-information"></a>Abrufen von Informationen zum Arbeitsbereich
 
@@ -316,7 +316,7 @@ Die Ausgabe dieses Befehls ähnelt dem folgenden JSON-Code:
 }
 ```
 
-Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace show](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-show).
+Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace show](/cli/azure/ml/workspace#az_ml_workspace_show).
 
 ## <a name="update-a-workspace"></a>Aktualisieren eines Arbeitsbereichs
 
@@ -349,7 +349,7 @@ Die Ausgabe dieses Befehls ähnelt dem folgenden JSON-Code:
 }
 ```
 
-Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-update).
+Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace update](/cli/azure/ml/workspace#az_ml_workspace_update).
 
 ## <a name="share-a-workspace-with-another-user"></a>Teilen eines Arbeitsbereich mit anderen Benutzern
 
@@ -361,7 +361,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 Weitere Informationen zur rollenbasierten Zugriffssteuerung (Roles-Based Access Control, RBAC) in Azure mit Azure Machine Learning finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
 
-Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace share](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-share).
+Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace share](/cli/azure/ml/workspace#az_ml_workspace_share).
 
 ## <a name="sync-keys-for-dependent-resources"></a>Synchronisieren von Schlüsseln für abhängige Ressourcen
 
@@ -373,7 +373,7 @@ az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 
 Weitere Informationen zum Ändern von Schlüsseln finden Sie unter [Erneutes Generieren von Speicherzugriffsschlüsseln](how-to-change-storage-access-key.md).
 
-Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace sync-keys](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-sync-keys).
+Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace sync-keys](/cli/azure/ml/workspace#az_ml_workspace_sync-keys).
 
 ## <a name="delete-a-workspace"></a>Löschen eines Arbeitsbereichs
 
@@ -392,7 +392,7 @@ Sie können auch die Ressourcengruppe löschen, wodurch der Arbeitsbereich und a
 az group delete -g <resource-group-name>
 ```
 
-Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace delete](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-delete).
+Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace delete](/cli/azure/ml/workspace#az_ml_workspace_delete).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -413,4 +413,4 @@ Der Azure Machine Learning-Arbeitsbereich verwendet für einige Operationen die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI-Erweiterung für maschinelles Lernen finden Sie in der Dokumentation zu [az ml](/cli/azure/ext/azure-cli-ml/ml).
+Weitere Informationen zur Azure CLI-Erweiterung für maschinelles Lernen finden Sie in der Dokumentation zu [az ml](/cli/azure/ml).

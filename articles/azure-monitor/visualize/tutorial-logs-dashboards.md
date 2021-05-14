@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 84c710e44fbbccdefd5bf811477e1fa4c3989114
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e4a76367b65556c0f6b030eba79355382e8db0c6
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043455"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754513"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Erstellen und Freigeben von Dashboards von Log Analytics-Daten
 
@@ -86,7 +86,7 @@ Jetzt haben Sie eine Abfrage an das Dashboard geheftet und werden feststellen, d
 ![Abgeschlossene Konfiguration des Beispieldashboards](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-02.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie gelernt, ein Dashboard im Azure-Portal zu erstellen und ihm eine Protokollabfrage hinzuzufügen.  Fahren Sie mit dem nächsten Tutorial fort, um die unterschiedlichen Reaktionen kennen zu lernen, die Sie auf der Basis von Protokollabfrageergebnissen implementieren können.  
+In diesem Tutorial haben Sie gelernt, ein Dashboard im Azure-Portal zu erstellen und ihm eine Protokollabfrage hinzuzufügen.  Unter diesem Link finden Sie vordefinierte Log Analytics-Skriptbeispiele.
 
 > [!div class="nextstepaction"]
-> [Reagieren auf Ereignisse mit Log Analytics-Warnungen](../alerts/tutorial-response.md)
+> [Log Analytics-Skriptbeispiele](../powershell-samples.md)

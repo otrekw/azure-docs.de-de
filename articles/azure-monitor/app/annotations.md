@@ -3,12 +3,12 @@ title: Versionsanmerkungen für Application Insights | Microsoft Docs
 description: Fügen Sie den Diagrammen im Metrik-Explorer in Application Insights Bereitstellungs- oder Buildmarker hinzu.
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 776efd56aaa523d1c2621c51cba0446a42bb7411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9132e65e4705fd9125d97a5e095fe5f0850229a2
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461911"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011049"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Anmerkungen zu Metrik-Diagrammen in Application Insights
 
@@ -96,7 +96,10 @@ Navigieren Sie zum Aktivieren der Anmerkungen in Ihrer Arbeitsmappe zu **Erweite
 Wählen Sie einen Anmerkungsmarker aus, um Details zur Version anzuzeigen, z. B. Anforderer, Quellcodeverwaltungsbranch, Releasepipeline und Umgebung.
 
 ## <a name="create-custom-annotations-from-powershell"></a>Erstellen von benutzerdefinierten Anmerkungen in PowerShell
-Mit dem PowerShell-Skript CreateReleaseAnnotation von GitHub können Sie Anmerkungen auf der Grundlage eines beliebigen Prozesses erstellen, ohne Azure DevOps zu verwenden.
+Mit dem PowerShell-Skript „CreateReleaseAnnotation“ können Sie Anmerkungen auf der Grundlage eines beliebigen Prozesses erstellen, ohne Azure DevOps zu verwenden.
+
+> [!IMPORTANT]
+> Wenn Sie PowerShell 7.1 verwenden, fügen Sie `-SkipHttpErrorCheck` am Ende von Zeile 26 hinzu. Beispiel: `$request = Invoke-WebRequest -Uri $fwLink -MaximumRedirection 0 -UseBasicParsing -ErrorAction Ignore -SkipHttpErrorCheck`.
 
 1. Erstellen Sie eine lokale Kopie von CreateReleaseAnnotation.ps1:
 
@@ -256,8 +259,8 @@ Mit dem PowerShell-Skript CreateReleaseAnnotation von GitHub können Sie Anmerku
 
 Sie können das Skript auch anpassen, um beispielsweise Anmerkungen für die Vergangenheit zu erstellen.
 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen eines Arbeitselements](./diagnostic-search.md#create-work-item)
 * [Automation mit PowerShell](./powershell.md)
-

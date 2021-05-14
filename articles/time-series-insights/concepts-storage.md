@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 67ab4c8cf079adaf3b38cdcc30abeec43cd4612f
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 70a0ecb6e9ff2707401517e185964edf512a94c9
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505194"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204259"
 ---
 # <a name="data-storage"></a>Datenspeicherung
 
@@ -53,7 +53,7 @@ Daten in Ihrem warmen Speicher stehen nur über die [Zeitreihenabfrage-APIs](./c
 
 * Wenn diese Option aktiviert ist, werden alle Daten, die in Ihre Umgebung gestreamt werden, unabhängig vom Ereigniszeitstempel an Ihren warmen Speicher weitergeleitet. Beachten Sie, dass die Streamingerfassungs-Pipeline für Quasi-Echtzeitstreaming und konstruiert ist. Die Erfassung von Verlaufsereignissen wird [nicht unterstützt](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion).
 * Der Aufbewahrungszeitraum wird auf Grundlage des Indizierungszeitpunkts des Ereignisses im warmem Speicher berechnet, nicht anhand des Ereigniszeitstempels. Dies bedeutet, dass Daten nach Ablauf des Aufbewahrungszeitraums nicht mehr im warmen Speicher verfügbar sind, auch wenn der Ereigniszeitstempel in der Zukunft liegt.
-  * Beispiel: Ein Ereignis mit 10-tägigen Wettervorhersagen wird erfasst und in einem warmen Speichercontainer indiziert, der mit einer Aufbewahrungsdauer von 7 Tagen konfiguriert ist. Nach 7 Tagen ist die Vorhersage im warmen Speicher nicht mehr verfügbar, kann aber im kalten Speicher abgefragt werden.
+  * Beispiel: Ein Ereignis mit 10-tägigen Wettervorhersagen wird erfasst und in einem warmen Speichercontainer indiziert, der mit einer Aufbewahrungsdauer von 7 Tagen konfiguriert ist. Nach sieben Tagen ist die Vorhersage im warmen Speicher nicht mehr verfügbar, kann aber im kalten Speicher abgefragt werden.
 * Wenn Sie den warmen Speicher für eine vorhandene Umgebung aktivieren, die bereits über aktuelle Daten verfügt, die im kalten Speicher indiziert wurden, beachten Sie, dass der warme Speicher mit diesen Daten nicht mehr rückwirkend aufgefüllt wird.
 * Wenn Sie den warmen Speicher gerade aktiviert haben und Probleme beim Anzeigen der aktuellen Daten im Explorer auftreten, können Sie Abfragen an den warmen Speicher vorübergehend deaktivieren:
 
@@ -70,6 +70,9 @@ Eine ausführliche Beschreibung des Azure Blobspeichers finden Sie in der [Einf�
 Azure Time Series Insights Gen2 behält bis zu zwei Kopien jedes Ereignisses in Ihrem Azure Storage-Konto bei. Eine Kopie speichert Ereignisse nach Erfassungszeit, wobei der Zugriff auf Ereignisse in einer zeitlich geordneten Sequenz immer zulässig ist. Im Laufe der Zeit wird in Azure Time Series Insights Gen2 auch eine neu partitionierte Kopie der Daten erstellt, um sie für leistungsfähige Abfragen zu optimieren.
 
 Alle Ihre Daten werden mit unbegrenzter Dauer in Ihrem Azure Storage-Konto gespeichert.
+
+> [!WARNING]
+> Schränken Sie den öffentlichen Internetzugriff auf das Konto, das von Time Series Insights verwendet wird, nicht ein. Andernfalls wird die erforderliche Verbindung unterbrochen.
 
 #### <a name="writing-and-editing-blobs"></a>Schreiben und Bearbeiten von Blobs
 

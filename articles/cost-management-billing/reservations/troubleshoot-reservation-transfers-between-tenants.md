@@ -1,41 +1,39 @@
 ---
-title: Problembehandlung bei Azure-Reservierungsübertragungen zwischen Mandanten
-description: Dieser Artikel hilft Reservierungsbesitzern, einen Reservierungsauftrag von einem Azure Active Directory-Mandanten (Verzeichnis) auf einen anderen zu übertragen.
+title: Ändern eines Azure-Reservierungsverzeichnisses
+description: Dieser Artikel hilft Reservierungsbesitzern, einen Reservierungsauftrag von einem Azure Active Directory-Mandanten(-Verzeichnis) auf einen anderen (ein anderes) zu übertragen.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 02/24/2021
-ms.openlocfilehash: 79473d57cc7504e7e6ef4ef68ba0cee74203f62b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 04/27/2021
+ms.openlocfilehash: 183071454cbe6c9185ecb1868abfe1ac217e9519
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055801"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143663"
 ---
-# <a name="troubleshoot-reservation-transfers-between-tenants"></a>Problembehandlung bei Reservierungsübertragungen zwischen Mandanten
+# <a name="change-an-azure-reservation-directory-between-tenants"></a>Ändern eines Azure-Reservierungsverzeichnisses zwischen Mandanten
 
-Dieser Artikel hilft Reservierungsbesitzern, einen Reservierungsauftrag von einem Azure Active Directory-Mandanten(-Verzeichnis) auf einen anderen (ein anderes) zu übertragen. Wenn Sie das Verzeichnis eines Reservierungsauftrags ändern, werden alle Azure RBAC-Zugriffe auf den Reservierungsauftrag und abhängige Reservierungen entfernt. Nur Sie haben nach der Änderung Zugriff. Durch das Ändern des Verzeichnisses wird der Abrechnungsbesitz für den Reservierungsauftrag nicht geändert. Das Verzeichnis wird für den übergeordneten Reservierungsauftrag und abhängige Reservierungen geändert.
+In diesem Artikel wird erläutert, wie Reservierungsbesitzer das Verzeichnis des Reservierungsauftrags von einem Azure Active Directory-Mandanten (Verzeichnis) in einen anderen ändern. Wenn Sie das Verzeichnis eines Reservierungsauftrags ändern, werden alle Azure RBAC-Zugriffe auf den Reservierungsauftrag und abhängige Reservierungen entfernt. Nur Sie haben nach der Änderung Zugriff. Durch das Ändern des Verzeichnisses wird der Abrechnungsbesitz für den Reservierungsauftrag nicht geändert. Das Verzeichnis wird für den übergeordneten Reservierungsauftrag und abhängige Reservierungen geändert.
 
-Ein Reservierungstausch und eine Stornierung ist für die Übertragung zwischen Mandanten nicht erforderlich.
+Ein Reservierungsaustausch und eine Stornierung sind nicht erforderlich, um das Verzeichnis eines Reservierungsauftrags zu ändern.
 
-Nachdem Sie eine Reservierung auf einen anderen Mandanten übertragen haben, können Sie der Reservierung weitere Besitzer hinzufügen. Weitere Informationen finden Sie unter [Wer kann eine Reservierung standardmäßig verwalten?](view-reservations.md#who-can-manage-a-reservation-by-default).
+Nachdem Sie das Verzeichnis einer Reservierung in einen anderen Mandanten geändert haben, können Sie der Reservierung weitere Besitzer hinzufügen. Weitere Informationen finden Sie unter [Wer kann eine Reservierung standardmäßig verwalten?](view-reservations.md#who-can-manage-a-reservation-by-default).
 
-Wenn Sie einen Reservierungsauftrag übertragen, werden alle Reservierungen des Auftrags mit übertragen.
+Wenn Sie das Verzeichnis eines Reservierungsauftrags ändern, werden alle Reservierungen des Auftrags mit übertragen.
 
-## <a name="transfer-a-reservation"></a>Übertragen einer Reservierung
+## <a name="change-a-reservation-orders-directory"></a>Ändern des Verzeichnisses eines Reservierungsauftrags
 
-Führen Sie die folgenden Schritte aus, um einen Reservierungsauftrag und seine abhängigen Reservierungen auf einen anderen Mandanten zu übertragen.
+Führen Sie die folgenden Schritte aus, um das Verzeichnis eines Reservierungsauftrags und seine abhängigen Reservierungen in einen anderen Mandanten zu ändern.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wenn Sie kein Abrechnungsadministrator, aber ein Reservierungsbesitzer sind, navigieren Sie zu **Reservierungen**, und fahren Sie dann mit Schritt 6 fort.
+1. Wenn Sie kein Abrechnungsadministrator, aber ein Reservierungsbesitzer sind, navigieren Sie zu **Reservierungen**, und fahren Sie dann mit Schritt 5 fort.
 1. Navigieren Sie zu **Kostenverwaltung und Abrechnung**.
     - Wenn Sie EA-Administrator sind, wählen Sie im Menü auf der linken Seite die Option **Abrechnungsbereiche** und dann in der Liste der Abrechnungsbereiche einen Bereich aus.
     - Wenn Sie Besitzer eines Abrechnungsprofils für eine Microsoft-Kundenvereinbarung sind, wählen Sie im linken Menü **Abrechnungsprofile** aus. Wählen Sie in der Liste der Abrechnungsprofile ein Profil aus.
-1. Wählen Sie im Menü auf der linken Seite die Option **Reservierungstransaktionen** aus. Die Liste der Reservierungstransaktionen wird angezeigt.
-1. Am oberen Seitenrand wird ein Banner mit folgendem Hinweis angezeigt: *Abrechnungsadministratoren können jetzt Reservierungen verwalten. Klicken Sie hier, um Reservierungen anzuzeigen und zu verwalten.* Wählen Sie das Banner aus.
 1. Die vollständige Liste der Reservierungen für Ihr EA-Registrierungsprofil oder -Abrechnungsprofil wird angezeigt.
 1. Wählen Sie die zu übertragende Reservierung aus.
 1. Wählen Sie in den Reservierungsdetails die Reservierungsauftrags-ID aus.

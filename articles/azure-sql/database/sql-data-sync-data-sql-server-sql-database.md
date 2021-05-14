@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 660297beacb6594058a3d83fb622ddeb579c223b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103562058"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951718"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -151,6 +151,7 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 - Gibt es Tabellen, die denselben Namen, aber unterschiedlichen Schemas haben (z. B. dbo.customers und sales.customers), kann nur eine der Tabellen in der Synchronisierung hinzugefügt werden.
 - Spalten mit benutzerdefinierten Datentypen werden nicht unterstützt.
 - Das Verschieben von Servern zwischen verschiedenen Abonnements wird nicht unterstützt. 
+- Wenn sich zwei Primärschlüssel nur in Bezug auf die Groß-/Kleinschreibung unterscheiden (z. B. „Foo“ und „foo“), wird dieses Szenario von der Datensynchronisierung nicht unterstützt.
 
 #### <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
 
@@ -200,7 +201,7 @@ Nachdem die Synchronisierungsgruppe erstellt und bereitgestellt wurde, können S
 
 ### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Kosten für den SQL-Datensynchronisierungsdienst
 
-Für den SQL-Datensynchronisierungsdienst selbst fallen keine Kosten an. Es fallen aber weiterhin Datenübertragungsgebühren für die ein- und ausgehende Datenverschiebung für Ihre SQL-Datenbankinstanz an. Weitere Informationen finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
+Für den SQL-Datensynchronisierungsdienst selbst fallen keine Kosten an. Es fallen aber weiterhin Datenübertragungsgebühren für die ein- und ausgehende Datenverschiebung für Ihre SQL-Datenbankinstanz an. Weitere Informationen finden Sie unter [Datenübertragungsgebühren](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 ### <a name="what-regions-support-data-sync"></a>Für die Datensynchronisierung unterstützte Regionen
 

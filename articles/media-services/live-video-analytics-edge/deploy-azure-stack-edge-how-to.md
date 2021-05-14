@@ -3,12 +3,12 @@ title: Bereitstellen von Live Video Analytics in Azure Stack Edge
 description: In diesem Artikel werden die Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics in Azure Stack Edge unterstützen.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: b5be85e93b81f5cf50284533f21e688384558494
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3f751a69bf4d5efca80047479917b5f40e14fe3f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561150"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144725"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Bereitstellen von Live Video Analytics in Azure Stack Edge
 
@@ -37,11 +37,17 @@ Wir stellen Live Video Analytics über IoT Hub bereit. Die Azure Stack Edge-Ress
 
 ## <a name="configuring-azure-stack-edge-for-using-live-video-analytics"></a>Konfigurieren von Azure Stack Edge für die Verwendung von Live Video Analytics
 
-Azure Stack Edge ist eine Hardware-as-a-Service-Lösung und ein KI-fähiges Edgecomputinggerät mit Netzwerkfunktionen für die Datenübertragung. Erfahren Sie mehr über [Azure Stack Edge und ausführliche Setupanweisungen ](../../databox-online/azure-stack-edge-deploy-prep.md). Folgen Sie für den Einstieg den Anweisungen unter den nachstehenden Links:
+Azure Stack Edge ist eine Hardware-as-a-Service-Lösung und ein KI-fähiges Edgecomputinggerät mit Netzwerkfunktionen für die Datenübertragung. Erfahren Sie mehr über [Azure Stack Edge und ausführliche Setupanweisungen ](../../databox-online/azure-stack-edge-gpu-deploy-prep.md). Folgen Sie für den Einstieg den Anweisungen unter den nachstehenden Links:
 
-* [Erstellung von Azure Stack Edge-/Data Box Gateway-Ressourcen](../../databox-online/azure-stack-edge-deploy-prep.md)
-* [Installation und Einrichtung](../../databox-online/azure-stack-edge-deploy-install.md)
-* [Verbindung und Aktivierung](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
+* [Erstellung von Azure Stack Edge-/Data Box Gateway-Ressourcen](../../databox-online/azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)
+* [Installation und Einrichtung](../../databox-online/azure-stack-edge-gpu-deploy-install.md)
+* Verbindung und Aktivierung
+
+    1. [Herstellen einer Verbindung](../../databox-online/azure-stack-edge-gpu-deploy-connect.md)
+    2. [Konfigurieren des Netzwerks](../../databox-online/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)
+    3. [Konfigurieren des Geräts](../../databox-online/azure-stack-edge-gpu-deploy-set-up-device-update-time.md)
+    4. [Konfigurieren von Zertifikaten](../../databox-online/azure-stack-edge-gpu-deploy-configure-certificates.md)
+    5. [Aktivieren](../../databox-online/azure-stack-edge-gpu-deploy-activate.md)
 * [Anfügen von IoT Hub an Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Aktivieren von Computevoraussetzungen auf der lokalen Benutzeroberfläche von Azure Stack Edge
 
@@ -50,7 +56,14 @@ Stellen Sie Folgendes sicher, bevor Sie fortfahren:
 * Sie haben die Azure Stack Edge-Ressource aktiviert.
 * Sie haben Zugriff auf ein Windows-Clientsystem mit PowerShell 5.0 oder höher, um auf die Azure Stack Edge-Ressource zuzugreifen.
 * Zum Bereitstellen eines Kubernetes-Clusters müssen Sie die Azure Stack Edge-Ressource über die [lokale Webbenutzeroberfläche](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup) konfigurieren. 
+
+    * Verbinden und Konfigurieren:
     
+        1. [Herstellen einer Verbindung](../../databox-online/azure-stack-edge-gpu-deploy-connect.md)
+        2. [Konfigurieren des Netzwerks](../../databox-online/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)
+        3. [Konfigurieren des Geräts](../../databox-online/azure-stack-edge-gpu-deploy-set-up-device-update-time.md)
+        4. [Konfigurieren von Zertifikaten](../../databox-online/azure-stack-edge-gpu-deploy-configure-certificates.md)
+        5. [Aktivieren](../../databox-online/azure-stack-edge-gpu-deploy-activate.md)
     * Wechseln Sie auf der lokalen Webbenutzeroberfläche des Geräts zur Seite „Compute“, um Compute zu aktivieren.
     
         * Wählen Sie eine Netzwerkschnittstelle aus, die Sie für Compute aktivieren möchten. Wählen Sie „Aktivieren“ aus. Das Aktivieren des Computevorgangs führt zur Erstellung eines virtuellen Switches auf Ihrem Gerät für diese Netzwerkschnittstelle.
@@ -58,7 +71,7 @@ Stellen Sie Folgendes sicher, bevor Sie fortfahren:
         * Wählen Sie „Anwenden“ aus – dieser Vorgang dauert ca. 2 Minuten.
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text=" Computevoraussetzungen auf der lokalen Benutzeroberfläche von Azure Stack Edge":::
+        > :::image type="content" source="../../databox-online/media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png" alt-text=" Computevoraussetzungen auf der lokalen Benutzeroberfläche von Azure Stack Edge":::
 
         * Wenn für die Kubernetes-API und Azure Stack Edge-Ressource kein DNS konfiguriert ist, können Sie die Windows-Hostdatei aktualisieren.
         

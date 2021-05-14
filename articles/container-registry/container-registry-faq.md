@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: a8c007d7f4419ddbe1555b50ceb6fb92ea0a6f98
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 84567f9667619bb9208f066460b3c4483123b3fc
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783897"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331446"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -33,7 +33,7 @@ Hinweise zur Problembehandlung in der Registrierung finden Sie hier:
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Kann ich eine Azure Container Registry-Instanz mithilfe einer Resource Manager-Vorlage erstellen?
 
-Ja. Hier ist [eine Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry), mit deren Hilfe Sie eine Registrierung erstellen können.
+Ja. Hier ist [eine Vorlage](https://azure.microsoft.com/resources/templates/101-container-registry/), mit deren Hilfe Sie eine Registrierung erstellen können.
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Gibt es in ACR Überprüfungen auf Sicherheitsrisiken für Images?
 
@@ -274,6 +274,7 @@ Sie können den anonymen Pullzugriff jederzeit deaktivieren, indem Sie `--anonym
 > * Führen Sie vor einem anonymen Pullvorgang den Befehl `docker logout` aus, um alle ggf. vorhandenen Docker-Anmeldeinformationen zu löschen.
 > * Für nicht authentifizierte Clients sind nur Datenebenenvorgänge verfügbar.
 > * Die Registrierung kann eine hohe Quote an nicht authentifizierten Anforderungen drosseln.
+> * Derzeit wird anonymer Pullzugriff in [georeplizierten](container-registry-geo-replication.md) Registrierungsregionen nicht unterstützt.
 
 > [!WARNING]
 > Der anonyme Pullzugriff gilt zurzeit für alle Repositorys in der Registrierung. Wenn Sie den Repositoryzugriff mithilfe von [Token mit Repositorygültigkeitsbereich](container-registry-repository-scoped-permissions.md) verwalten, beachten Sie, dass alle Benutzer aus diesen Repositorys in einer Registrierung, die für anonymes Pullen aktiviert ist, pullen können. Es wird empfohlen, Token zu löschen, wenn der anonyme Pullzugriff aktiviert ist.

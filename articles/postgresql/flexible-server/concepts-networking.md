@@ -5,13 +5,13 @@ author: niklarin
 ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/21/2021
-ms.openlocfilehash: a6f049670a6860bbc195b92458945d1a53029b4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/22/2021
+ms.openlocfilehash: 5b832ca7f1b5fb8a6b0044ca299c75f01a2d0f32
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732801"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987042"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Übersicht über Netzwerkkonzepte – Azure Database for PostgreSQL – Flexible Server
 
@@ -50,6 +50,13 @@ Die folgenden Eigenschaften gelten unabhängig davon, ob Sie den privaten oder d
 ## <a name="private-access-vnet-integration"></a>Privater Zugriff (VNET-Integration)
 Der private Zugriff mit der Integration über ein virtuelles Netzwerk (VNET) gewährleistet eine private und sichere Kommunikation für Ihre PostgreSQL Flexible Server-Instanz.
 
+:::image type="content" source="./media/how-to-manage-virtual-network-portal/flexible-pg-vnet-diagram.png" alt-text="Flexibler PostgreSQL-Server im VNet":::
+
+Für dieses Diagramm gilt:
+1. Flexible Server werden in ein delegiertes Subnetz eingefügt: 10.0.1.0/24 des VNet **VNet-1**.
+2. Anwendungen, die in verschiedenen Subnetzen innerhalb desselben VNet bereitgestellt werden, können direkt auf die flexiblen Server zugreifen.
+3. Anwendungen, die in einem anderen VNet (**VNet-2**) bereitgestellt werden, haben keinen direkten Zugriff auf flexible Server. Sie können erst nach einem [VNet-Peering mit einer privaten DNS-Zone](#private-dns-zone-and-vnet-peering) auf die flexiblen Server zugreifen.
+   
 ### <a name="virtual-network-concepts"></a>Virtuelle Netzwerke: Konzepte
 Nachstehend werden einige Konzepte erläutert, die Sie kennen sollten, wenn Sie virtuelle Netzwerke mit PostgreSQL Flexible Server-Instanzen verwenden.
 
@@ -57,14 +64,25 @@ Nachstehend werden einige Konzepte erläutert, die Sie kennen sollten, wenn Sie 
 
     Ihr virtuelles Netzwerk muss in derselben Azure-Region wie Ihr flexibler Server bereitgestellt werden.
 
-
 * **Delegiertes Subnetz:** Ein virtuelles Netzwerk enthält Subnetze. Subnetze bieten Ihnen die Möglichkeit, Ihr virtuelles Netzwerk in kleinere Adressräume einzuteilen. Azure-Ressourcen werden in bestimmten Subnetzen innerhalb eines virtuellen Netzwerks bereitgestellt. 
 
    Ihre PostgreSQL Flexible Server-Instanz muss sich in einem Subnetz befinden, das eigens für PostgreSQL Flexible Server-Instanzen eingeteilt (**delegiert**) wurde. Diese Delegierung bedeutet, dass dieses Subnetz nur von Azure Database for PostgreSQL Flexible Server-Instanzen genutzt werden kann. Im delegierten Subnetz können sich keine anderen Azure-Ressourcentypen befinden. Sie können ein Subnetz delegieren, indem Sie „Microsoft.DBforPostgreSQL/flexibleServers“ als Delegierungseigenschaft festlegen.
 
-   Fügen Sie dem Dienstendpunkt für das Subnetz, das an flexible Server delegiert ist, `Microsoft.Storage` hinzu. 
+* **Netzwerksicherheitsgruppen (NSG):** Mit Sicherheitsregeln in Netzwerksicherheitsgruppen können Sie den Typ des ein- und ausgehenden Netzwerkdatenverkehrs von Subnetzen virtueller Netzwerke und Netzwerkschnittstellen filtern. Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md).
 
-* **Netzwerksicherheitsgruppen (NSG):** Mit Sicherheitsregeln in Netzwerksicherheitsgruppen können Sie den Typ des ein- und ausgehenden Netzwerkdatenverkehrs von Subnetzen virtueller Netzwerke und Netzwerkschnittstellen filtern. Weitere Informationen finden Sie unter [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md).
+* **Integration von privatem DNS:** Mit der Integration privater Azure-DNS-Zonen können Sie das private DNS innerhalb des aktuellen VNet oder eines beliebigen Peer-VNet in derselben Region auflösen, in dem die private DNS-Zone verknüpft ist. Weitere Informationen finden Sie in der [Dokumentation zu privaten DNS-Zonen](https://docs.microsoft.com/azure/dns/private-dns-overview).
+
+Unter den folgenden Links erfahren Sie, wie Sie einen flexiblen Server mit privatem Zugriff (VNET-Integration) im [Azure-Portal](how-to-manage-virtual-network-portal.md) oder über die [Azure CLI](how-to-manage-virtual-network-cli.md) erstellen.
+
+> [!NOTE]
+> Wenn Sie den benutzerdefinierten DNS-Server verwenden, müssen Sie eine DNS-Weiterleitung verwenden, um den FQDN von Azure Database for PostgreSQL – Flexible Server aufzulösen. Weitere Informationen finden Sie unter [Namensauflösung mithilfe eines eigenen DNS-Servers](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
+
+### <a name="private-dns-zone-and-vnet-peering"></a>Private DNS-Zone und VNet-Peering
+
+Die Einstellungen für private DNS-Zonen und VNet-Peering sind voneinander unabhängig.
+
+* Standardmäßig wird eine neue private DNS-Zone automatisch pro Server unter Verwendung des angegebenen Servernamens bereitgestellt. Wenn Sie jedoch Ihre eigene private DNS-Zone für die Verwendung mit dem flexiblen Server einrichten möchten, lesen Sie die [Übersicht über privates DNS](https://docs.microsoft.com/azure/dns/private-dns-overview).
+* Wenn Sie von einem Client, der in einem anderen VNet bereitgestellt wurde, eine Verbindung mit dem flexiblen Server herstellen möchten, müssen Sie die private DNS-Zone mit dem VNet verknüpfen. Weitere Informationen finden Sie in der [Dokumentation zum Verknüpfen des virtuellen Netzwerks](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network).
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Nicht unterstützte virtuelle Netzwerkszenarios
@@ -73,10 +91,6 @@ Nachstehend werden einige Konzepte erläutert, die Sie kennen sollten, wenn Sie 
 * Die Subnetzgröße (Adressräume) kann nicht erhöht werden, sobald Ressourcen im Subnetz vorhanden sind.
 * VNET-Peering wird nicht unterstützt.
 
-Unter den folgenden Links erfahren Sie, wie Sie einen flexiblen Server mit privatem Zugriff (VNET-Integration) im [Azure-Portal](how-to-manage-virtual-network-portal.md) oder über die [Azure CLI](how-to-manage-virtual-network-cli.md) erstellen.
-
-> [!NOTE]
-> Wenn Sie den benutzerdefinierten DNS-Server verwenden, müssen Sie eine DNS-Weiterleitung verwenden, um den FQDN von Azure Database for PostgreSQL – Flexible Server aufzulösen. Weitere Informationen finden Sie unter [Namensauflösung mithilfe eines eigenen DNS-Servers](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
 ## <a name="public-access-allowed-ip-addresses"></a>Öffentlicher Zugriff (zugelassene IP-Adressen)
 Die öffentliche Zugriffsmethode weist u. a. folgende Eigenschaften auf:
@@ -100,7 +114,7 @@ Wenn eine feste IP-Adresse für ausgehenden Datenverkehr für Ihren Azure-Dienst
 ### <a name="troubleshooting-public-access-issues"></a>Behandeln von Problemen mit dem öffentlichen Zugriff
 Wenn der Zugriff auf den Microsoft Azure-Datenbank für PostgreSQL-Serverdienst nicht das erwartete Verhalten aufweist, sind folgende Punkte zu beachten:
 
-* **Änderungen an der Zulassungsliste sind noch nicht wirksam**: Änderungen der Firewallkonfiguration für den Azure Database for PostgreSQL-Server werden möglicherweise erst nach fünf Minuten wirksam.
+* **Änderungen an der Zulassungsliste sind noch nicht wirksam:** Änderungen an der Firewallkonfiguration von Azure Database for PostgreSQL-Servern werden möglicherweise erst nach fünf Minuten wirksam.
 
 * **Fehler bei der Authentifizierung:** Wenn ein Benutzer nicht über die Berechtigungen für den Azure Database for PostgreSQL-Server verfügt oder das verwendete Kennwort falsch ist, wird die Verbindung mit dem Azure Database for PostgreSQL-Server verweigert. Durch das Erstellen einer Firewalleinstellung wird Clients lediglich die Möglichkeit gegeben, einen Verbindungsversuch zum Server zu unternehmen. Jeder Client muss weiterhin die erforderlichen Sicherheitsanmeldeinformationen bereitstellen.
 

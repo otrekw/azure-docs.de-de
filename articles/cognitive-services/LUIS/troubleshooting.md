@@ -4,13 +4,13 @@ description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu L
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
-ms.date: 04/13/2021
-ms.openlocfilehash: 97b7c02a418a87a0700414e19bc939bda899d073
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 04/16/2021
+ms.openlocfilehash: 593e02520d3e6ae87550257381dbc47aa068a242
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503812"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951538"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -91,7 +91,7 @@ Sie erhalten Fehler mit dem Statuscode 403 und 429, wenn Sie für Ihren Tarif 
 
 Wenn Sie die gesamten kostenlosen 1.000 Endpunktabfragen aufgebraucht haben oder das Kontingent der monatlichen Transaktionen Ihres Tarifs überschreiten, erhalten Sie einen Fehler mit dem Statuscode HTTP 403.
 
-Zum Beheben dieses Fehlers müssen Sie entweder [einen höheren Tarif wählen](luis-how-to-azure-subscription.md#change-the-pricing-tier) oder [eine neue Ressource erstellen](get-started-portal-deploy-app.md#create-the-endpoint-resource) und [Ihrer App zuweisen](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+Zum Beheben dieses Fehlers müssen Sie entweder [einen höheren Tarif wählen](luis-how-to-azure-subscription.md#change-the-pricing-tier) oder [eine neue Ressource erstellen](luis-get-started-create-app.md#sign-in-to-luis-portal) und Ihrer App zuweisen.
 
 Lösungen für diesen Fehler:
 
@@ -262,7 +262,7 @@ Ihr Erstellungsschlüssel (auch als Startschlüssel bezeichnet) kann für maxima
 Das erste Problem besteht in der Feststellung, ob das Problem mit LUIS zusammenhängt oder außerhalb der LUIS-Middleware auftritt.
 
 #### <a name="resolve-issue-in-luis"></a>Beheben des Problems in LUIS
-Übergeben Sie die gleiche Äußerung an LUIS aus dem [LUIS-Endpunkt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Wenn Sie eine Fehlermeldung erhalten, beheben Sie das Problem in LUIS, bis der Fehler nicht mehr auftritt. Häufige Fehler sind z.B. folgende:
+Übergeben Sie die gleiche Äußerung an LUIS aus dem [LUIS-Endpunkt](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint). Wenn Sie eine Fehlermeldung erhalten, beheben Sie das Problem in LUIS, bis der Fehler nicht mehr auftritt. Häufige Fehler sind z.B. folgende:
 
 * `Out of call volume quota. Quota will be replenished in <time>.`: Dieses Problem deutet darauf hin, dass Sie entweder von einem Erstellungsschlüssel zu einem [Endpunktschlüssel](luis-how-to-azure-subscription.md) wechseln oder [Dienstebenen](luis-how-to-azure-subscription.md#change-the-pricing-tier) ändern müssen.
 

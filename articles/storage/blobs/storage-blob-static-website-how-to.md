@@ -7,17 +7,17 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 2ba0e836f1be97681d677158f5cb81c5b033e915
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-js
+ms.openlocfilehash: aaa73eaf95001d23efd09419d6ff3bb46ae005be
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008500"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140063"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
-Sie können statische Inhalte (HTML, CSS, JavaScript und Imagedateien) direkt aus einem Container in einem [general-purpose V2](../common/storage-account-create.md)- oder [BlockBlobStorage](storage-blob-create-account-block-blob.md)-Konto bereitstellen. Weitere Informationen finden Sie unter [Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md).
+Sie können statische Inhalte (HTML, CSS, JavaScript und Imagedateien) direkt aus einem Container in einem [general-purpose V2](../common/storage-account-create.md)- oder [BlockBlobStorage](../common/storage-account-create.md)-Konto bereitstellen. Weitere Informationen finden Sie unter [Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md).
 
 In diesem Artikel erfahren Sie, wie Sie das Hosting statischer Websites über das Azure-Portal, mit der Azure-CLI oder mit Azure PowerShell aktivieren.
 

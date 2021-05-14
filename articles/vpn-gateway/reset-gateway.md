@@ -1,18 +1,18 @@
 ---
-title: Zurücksetzen einer VPN Gateway-Instanz oder einer Verbindung zum erneuten Herstellen des IPsec-Tunnels
+title: Zurücksetzen einer VPN Gateway-Instanz oder einer Verbindung zum erneuten Herstellen von IPsec-Tunnels
 titleSuffix: Azure VPN Gateway
-description: Setzen Sie eine Verbindung oder eine VPN Gateway-Instanz zurück, um IPSec-Tunnel wiederherzustellen.
+description: Erfahren Sie, wie Sie ein Gateway oder eine Gatewayverbindung zurücksetzen, um IPsec-Tunnel wiederherzustellen.
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: adc2ffd63d73baaddce00324787df61061ea69dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcf92808f41d7681f2fe5c44cc958435438a1f86
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726637"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229214"
 ---
 # <a name="reset-a-vpn-gateway-or-a-connection"></a>Zurücksetzen einer VPN Gateway-Instanz oder einer Verbindung
 

@@ -3,17 +3,17 @@ title: Zuteilen von Azure-Kosten
 description: In diesem Artikel wird erläutert, wie Sie Kostenzuteilungsregeln erstellen, um die Kosten von Abonnements, Ressourcengruppen oder Tags an andere zu verteilen.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/11/2020
+ms.date: 03/23/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e7afef7e0a10bb4be3c30112fc207467167e4a17
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131087"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726518"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Erstellen und Verwalten von Azure-Kostenzuteilungsregeln (Vorschauversion)
 
@@ -58,7 +58,7 @@ Wenn Sie Kosten nach Compute-, Speicher- oder Netzwerkkosten verteilen, wird der
 
 Wenn Sie Kosten proportional zu den Gesamtkosten verteilen, wird der proportionale Prozentsatz nach der Kostensumme bzw. den Gesamtkosten der ausgewählten Ziele für den aktuellen Abrechnungsmonat zugewiesen.
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Beispiel für das Erstellen eines Regelnamens" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Beispiel für den Zuteilungsprozentsatz" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 Die definierten vorab ausgefüllten Prozentsätze sind feststehende Werte. Sie werden für alle laufenden Zuteilungen verwendet. Die Prozentsätze ändern sich nur, wenn die Regel manuell aktualisiert wird.
 
@@ -84,7 +84,7 @@ Wenn die Kostenzuteilungsregel aktiv ist, werden die Kosten der ausgewählten Qu
 
 Die Auswirkungen der Zuteilungsregel sehen Sie in der Kostenanalyse. Navigieren Sie im Azure-Portal zu [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Wählen Sie in der Liste ein Abonnement aus, das als Ziel einer aktiven Kostenzuteilungsregel festgelegt ist. Wählen Sie dann im Menü die Option **Kostenanalyse** aus. Wählen Sie unter „Kostenanalyse“ die Option **Gruppieren nach** und dann **Kostenzuteilung** aus. Die resultierende Ansicht zeigt eine kurze vom Abonnement generierte Kostenaufschlüsselung. Die dem Abonnement zugeteilten Kosten werden wie in der folgenden Abbildung dargestellt ebenfalls angezeigt.
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Beispiel für das Erstellen eines Regelnamens" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Beispiel für eine Kostenaufschlüsselung" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>Anzeigen der Kostenzuteilung für eine Ressourcengruppe
 
@@ -94,18 +94,18 @@ Zum Anzeigen der Auswirkungen einer Kostenzuteilungsregel für eine Ressourcengr
 
 Navigieren Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**. Wählen Sie unter „Kostenanalyse“ die Option **Filter hinzufügen** aus. Wählen Sie **Tag** und dann den Tagschlüssel aus, und markieren Sie Werte, denen Kosten zugeteilt sind.
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Beispiel für das Erstellen eines Regelnamens" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Beispiel für die Anzeige der Kosten für markierte Elemente" lightbox="./media/allocate-costs/tagged-costs.png" :::
+
+Im folgenden Video wird die Erstellung einer Kostenzuteilungsregel veranschaulicht:
+
+>[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>Bearbeiten einer vorhandenen Kostenzuteilungsregel
 
 Sie können eine Kostenzuteilungsregel bearbeiten, um die Quelle oder das Ziel zu ändern oder den vorab ausgefüllten Prozentsatz für Compute, Speicher oder Netzwerk zu aktualisieren. Zum Bearbeiten der Regeln gehen Sie wie bei ihrer Erstellung vor. Die erneute Verarbeitung von geänderten Regeln kann bis zu zwei Stunden in Anspruch nehmen.
 
-## <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
-
-In den folgenden Abschnitten finden Sie häufig gestellte Fragen zur Kostenzuteilung.
-
-### <a name="what-are-the-current-limitations-with-cost-allocation-in-public-preview"></a>Welche Einschränkungen gelten in der Public Preview-Phase für die Kostenzuteilung?
-<a name="limitations"></a>
+## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
 Derzeit wird die Kostenzuteilung in den Kostenanalyse-, Budget- und Prognoseansichten von Cost Management unterstützt. Zugeteilte Kosten werden auch in der Abonnementliste und auf der Übersichtsseite von Abonnements angezeigt.
 
@@ -117,32 +117,9 @@ Folgendes wird in der Public Preview der Kostenzuteilung derzeit nicht unterstü
 - [Cost Management-Power BI-App](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
 - [Power BI Desktop-Connector](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
-### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>Werden Kosten in Budget- und Prognoseansichten berücksichtigt?
-<a name="budgets-forecast"></a>
-
-Ja. Zugeteilte Kosten werden in Budgets und Prognosen berücksichtigt und unterstützt. In den Ansichten für Budgets und Prognosen werden die Kosten angezeigt, die ihnen gemäß den konfigurierten Kostenzuteilungsregeln zugeteilt sind.
-
-### <a name="if-a-cost-allocation-rule-is-deleted-what-happens"></a>Was geschieht, wenn eine Kostenzuteilungsregel gelöscht wird?
-<a name="delete-rule"></a>
-
-Wenn eine Kostenzuteilungsregel gelöscht wird, werden alle offenen Kosten sowie die Kosten für den aktuellen Abrechnungsmonat, die den Zielen zugeteilt werden, entfernt. Wenn die Kostenzuteilungsregel bereits seit mehreren Monaten vorhanden ist, bleiben die historischen Zuteilungsdaten vorheriger Monate wie ursprünglich durch die Zuteilungsregel festgelegt.
-
-### <a name="why-is-an-enrollment-admin-or-a-billing-account-admin-needed-to-create-cost-allocation-rules"></a>Warum können Kostenzuteilungsregeln nur von Registrierungsadministratoren oder Abrechnungskontoadministratoren erstellt werden?
-<a name="why-admin"></a>
-
-Kostenzuteilungsregeln werden entweder im Bereich der Registrierung (Enterprise Agreement) oder im Bereich des Abrechnungskontos (Microsoft-Kundenvereinbarung) erstellt. Um in diesen Bereichen Änderungen vornehmen zu können, sind Abrechnungsadministratorrechte erforderlich.
-
-### <a name="why-are-sources-and-targets-limited-to-25-per-rule"></a>Warum sind Quellen und Ziele auf 25 pro Regel beschränkt?
-<a name="source-target-rule-limit"></a>
-
-Dieser Grenzwert ist eine Einschränkung der Vorschauversion, durch die eine gute Leistung und Skalierbarkeit der Kostenzuteilung sichergestellt werden soll. Die Grenzwerte werden bei allgemeiner Verfügbarkeit (General Availability, GA) voraussichtlich erhöht oder entfernt.
-
-### <a name="what-can-happen-if-cost-allocation-rules-sourcestargets-overlap"></a>Was kann passieren, wenn sich Kostenzuteilungsregeln (Quellen/Ziele) überlappen?
-<a name="rule-overlap"></a>
-
-Regeln mit überlappenden Quellen oder Zielen werden nicht empfohlen. Kostenzuteilungsregeln werden in der Reihenfolge ihres Erstellungsdatums angewendet. Wenn sich Kostenzuteilungsregeln überlappen, hat daher die Regel mit dem frühesten Erstellungsdatum Vorrang.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- In den [häufig gestellten Fragen zu Cost Management + Billing](../cost-management-billing-faq.yml) finden Sie Fragen und Antworten zur Kostenzuteilung.
 - Erstellen oder Aktualisieren von Zuteilungsregeln mithilfe der [Kostenzuteilungs-REST-API](/rest/api/cost-management/costallocationrules)
 - Weitere Informationen zum [Optimieren der Cloudinvestitionen mit Azure Cost Management](cost-mgt-best-practices.md)

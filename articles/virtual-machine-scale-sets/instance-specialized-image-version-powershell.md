@@ -3,18 +3,18 @@ title: Erstellen einer Skalierungsgruppe aus einem spezialisierten Image
 description: Erstellen Sie eine Skalierungsgruppe mithilfe eines spezialisierten Images in einem Katalog mit freigegebenen Images.
 author: cynthn
 ms.service: virtual-machine-scale-sets
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
-ms.reviewer: akjosh
-ms.openlocfilehash: b47498127996698d53946eb2aaf54368132ae7f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mimckitt
+ms.openlocfilehash: 831c3f0c7199a6603655e5fa4bb34672edd36317
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98877984"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771899"
 ---
 # <a name="create-a-scale-set-from-a-specialized-image-using-powershell"></a>Erstellen einer Skalierungsgruppe aus einem spezialisierten Image mit PowerShell 
 

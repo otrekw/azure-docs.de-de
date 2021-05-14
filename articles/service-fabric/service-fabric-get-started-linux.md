@@ -4,12 +4,12 @@ description: Installieren Sie die Laufzeit und das SDK, und erstellen Sie einen 
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcf0aeec27415d03c528e42ad5341a92bd299d88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93086889"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869399"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -261,7 +261,7 @@ Erstellen Sie nach der Installation der Generatoren ausführbare Gastdateien ode
 
 ## <a name="set-up-net-core-31-development"></a>Einrichten der .NET Core 3.1-Entwicklung
 
-Installieren Sie das [.NET Core 3.1 SDK für Ubuntu](https://www.microsoft.com/net/core#linuxubuntu), um mit dem [Erstellen von Service Fabric-C#-Anwendungen](service-fabric-create-your-first-linux-application-with-csharp.md) zu beginnen. Pakete für Service Fabric-Anwendungen mit .NET Core werden auf NuGet.org gehostet.
+Installieren Sie das [.NET Core 3.1 SDK für Ubuntu](/dotnet/core/install/linux-ubuntu), um mit dem [Erstellen von Service Fabric-C#-Anwendungen](service-fabric-create-your-first-linux-application-with-csharp.md) zu beginnen. Pakete für Service Fabric-Anwendungen mit .NET Core werden auf NuGet.org gehostet.
 
 ## <a name="set-up-java-development"></a>Einrichten der Java-Entwicklung
 

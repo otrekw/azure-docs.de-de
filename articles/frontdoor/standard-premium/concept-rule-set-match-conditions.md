@@ -5,25 +5,25 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: 4c65d0e7f80fab59ca7df4849df7117d482352c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9e8defa9e929d21f210c48ffbd3b22e44195c17d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101098024"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061620"
 ---
 # <a name="azure-front-door-standardpremium-preview-rule-set-match-conditions"></a>Vergleichsbedingungen für Regelsätze in Azure Front Door Standard/Premium (Vorschau)
 
 > [!Note]
 > Diese Dokumentation ist für Azure Front Door Standard/Premium (Vorschau) gedacht. Suchen Sie nach Informationen zu Azure Front Door? Informationen finden Sie [hier](../front-door-overview.md).
 
-In diesem Tutorial wird gezeigt, wie Sie mit der ersten Gruppe von Regeln im Azure-Portal einen Regelsatz erstellen. Eine Regel in einem Azure Front Door Standard/Premium-[Regelsatz](concept-rule-set.md) besteht aus 0 oder mehr Vergleichsbedingungen und einer Aktion. In diesem Artikel werden die Vergleichsbedingungen, die Sie in einem Azure Front Door Standard/Premium-Regelsatz verwenden können, ausführlich beschrieben.
+Eine Regel in einem Azure Front Door Standard/Premium-[Regelsatz](concept-rule-set.md) besteht aus 0 oder mehr Vergleichsbedingungen und einer Aktion. In diesem Artikel werden die Vergleichsbedingungen, die Sie in einem Azure Front Door Standard/Premium-Regelsatz verwenden können, ausführlich beschrieben.
 
-Der erste Teil einer Regel besteht aus einer Übereinstimmungsbedingung oder aus mehreren Übereinstimmungsbedingungen. Eine Regel kann aus bis zu 10 Übereinstimmungsbedingungen bestehen. Eine Übereinstimmungsbedingung gibt bestimmte Typen von Anforderungen an, für die definierte Aktionen ausgeführt werden. Wenn Sie mehrere Übereinstimmungsbedingungen verwenden, werden die Übereinstimmungsbedingungen mit UND-Logik gruppiert. Für alle Übereinstimmungsbedingungen, die mehrere Werte unterstützen (als „durch Leerzeichen getrennt“ angegeben), wird der Operator „ODER“ angenommen.
+Der erste Teil einer Regel besteht aus einer Übereinstimmungsbedingung oder aus mehreren Übereinstimmungsbedingungen. Eine Regel kann aus bis zu 10 Übereinstimmungsbedingungen bestehen. Eine Übereinstimmungsbedingung gibt bestimmte Typen von Anforderungen an, für die definierte Aktionen ausgeführt werden. Wenn Sie mehrere Übereinstimmungsbedingungen verwenden, werden die Übereinstimmungsbedingungen mit UND-Logik gruppiert. Für alle Übereinstimmungsbedingungen, die mehrere Werte unterstützen, wird OR-Logik verwendet.
 
-Sie können eine Übereinstimmungsbedingung z.B. für Folgendes verwenden:
+Sie können eine Übereinstimmungsbedingung für Folgendes verwenden:
 
 * Filtern von Anforderungen, die auf einer bestimmten IP-Adresse, einem bestimmten Land oder einer bestimmten Region basieren.
 * Filtern von Anforderungen nach Headerinformationen
@@ -36,195 +36,763 @@ Sie können eine Übereinstimmungsbedingung z.B. für Folgendes verwenden:
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-In einem Azure Front Door Standard/Premium-Regelsatz können die folgenden Vergleichsbedingungen verwendet werden:
+## <a name="device-type"></a><a name="IsDevice"></a> Gerätetyp
 
-## <a name="device-type"></a>Gerätetyp
+Verwenden Sie die Übereinstimmungsbedingung **Gerätetyp**, um Anforderungen zu identifizieren, die von einem mobilen oder einem Desktop-Gerät gestellt wurden.  
 
-Identifiziert Anforderungen von einem Mobil- oder Desktopgerät.  
+### <a name="properties"></a>Eigenschaften
 
-#### <a name="required-fields"></a>Pflichtfelder
+| Eigenschaft | Unterstützte Werte |
+|-------|------------------|
+| Betreiber | <ul><li>Im Azure Portal: `Equal`, `Not Equal`</li><li>In ARM-Vorlagen: `Equal`; verwenden Sie die `negateCondition`-Eigenschaft, um _Nicht Gleich_ anzugeben. |
+| Wert | `Mobile`, `Desktop` |
 
-Operator | Unterstützte Werte
----------|----------------
-Gleich, Ungleich | Mobil, Desktop
+### <a name="example"></a>Beispiel
 
-## <a name="post-argument"></a>POST-Argument
+In diesem Beispiel stimmen wir alle Anforderungen ab, die erkannt wurden, wenn Sie von einem mobilen Gerät stammen.
 
-Identifiziert Anforderungen auf der Grundlage von Argumenten, die für die POST-Anforderungsmethode definiert sind, die in der Anforderung verwendet wird.
+# <a name="portal"></a>[Portal](#tab/portal)
 
-#### <a name="required-fields"></a>Pflichtfelder
+:::image type="content" source="../media/concept-rule-set-match-conditions/device-type.png" alt-text="Screenshot des Portals mit der Art der Übereinstimmungsbedingung":::
 
-Argumentname | Operator | Argumentwert | Umwandlung der Groß-/Kleinschreibung
---------------|----------|----------------|---------------
-String | [Operatorliste](#operator-list) | String, Int | Kleinbuchstaben, Großbuchstaben
+# <a name="json"></a>[JSON](#tab/json)
 
-## <a name="query-string"></a>Abfragezeichenfolge
+```json
+{
+  "name": "IsDevice",
+  "parameters": {
+    "operator": "Equal",
+    "negateCondition": false,
+    "matchValues": [
+      "Mobile"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleIsDeviceConditionParameters"
+  }
+}
+```
 
-Identifiziert Anforderungen, die einen bestimmten Abfragezeichenfolgenparameter enthalten. Dieser Parameter wird auf einen Wert festgelegt, der mit einem bestimmten Muster übereinstimmt. Abfragezeichenfolgenparameter (z.B. **parameter=value**) in der Anforderungs-URL bestimmen, ob diese Bedingung erfüllt ist. Mit dieser Übereinstimmungsbedingung wird ein Abfragezeichenfolgenparameter anhand des Namens identifiziert, und für den Parameterwert werden ein oder mehrere Werte akzeptiert.
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
-#### <a name="required-fields"></a>Pflichtfelder
+```bicep
+{
+  name: 'IsDevice'
+  parameters: {
+    operator: 'Equal'
+    negateCondition: false
+    matchValues: [
+      'Mobile'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleIsDeviceConditionParameters'
+  }
+}
+```
 
-Operator | Abfragezeichenfolge | Umwandlung der Groß-/Kleinschreibung
----------|--------------|---------------
-[Operatorliste](#operator-list) | String, Int | Kleinbuchstaben, Großbuchstaben
+---
 
-## <a name="remote-address"></a>Remoteadresse
+## <a name="post-args"></a><a name="PostArgs"></a> Post args
 
-Identifiziert Anforderungen basierend auf dem Standort oder der IP-Adresse des Anforderers.
+Verwenden Sie die Übereinstimmungsbedingung **Post args**, um Anforderungen auf Grundlage der Argumente im Text einer POST-Anforderung zu identifizieren. Eine einzelne Übereinstimmungsbedingung entspricht einem einzelnen Argument aus dem Text der POST-Anforderung. Sie können mehrere Werte angeben, die mit der OR-Logik kombiniert werden.
 
-#### <a name="required-fields"></a>Pflichtfelder
+> [!NOTE]
+> Die Übereinstimmungsbedingung **Post args** funktioniert mit dem `application/x-www-form-urlencoded`-Inhaltstyp.
 
-Operator | Unterstützte Werte
----------|-----------------
-Geografische Übereinstimmung | Landesvorwahl
-IP-Übereinstimmung | IP-Adresse (durch Leerzeichen getrennt)
-Keine geografische Übereinstimmung | Landesvorwahl
-Keine IP-Übereinstimmung | IP-Adresse (durch Leerzeichen getrennt)
+### <a name="properties"></a>Eigenschaften
 
-#### <a name="key-information"></a>Wichtige Informationen
+| Eigenschaft | Unterstützte Werte |
+|-|-|
+| Post args | Ein Zeichenfolgenwert, der den Namen des POST-Arguments darstellt. |
+| Betreiber | Beliebiger Operator aus der [Standardoperator-Liste](#operator-list). |
+| Wert | Mindestens ein Zeichenfolgenwert oder ganzzahliger Wert, der den Wert des zu abgleichenden Post-Arguments darstellt. Wenn mehrere Werte angegeben werden, werden Sie mit der OR-Logik ausgewertet. |
+| Umwandlung der Groß-/Kleinschreibung | `Lowercase`, `Uppercase` |
 
-* Verwenden Sie die CIDR-Notation.
-* Bei mehreren IP-Adressen und IP-Adressblöcken wird der logische OR-Operator verwendet.
-    * **IPv4-Beispiel**: Wenn Sie die beiden IP-Adressen *1.2.3.4* und *10.20.30.40* hinzufügen, ist die Bedingung erfüllt, wenn Anforderungen von der Adresse 1.2.3.4 oder 10.20.30.40 eintreffen.
-    * **IPv6-Beispiel**: Wenn Sie die beiden IP-Adressen *1:2:3:4:5:6:7:8* und *10:20:30:40:50:60:70:80* hinzufügen, ist die Bedingung erfüllt, wenn Anforderungen von der Adresse 1:2:3:4:5:6:7:8 oder 10:20:30:40:50:60:70:80 eintreffen.
-* Die Syntax für einen IP-Adressblock besteht aus der IP-Basisadresse, gefolgt von einem Schrägstrich und der Präfixgröße. Beispiel:
-    * **IPv4-Beispiel:** *5.5.5.64/26* entspricht allen Anforderungen, die von den Adressen 5.5.5.64 bis 5.5.5.127 eingehen.
-    * **IPv6-Beispiel:** Die Angabe *1:2:3:/48* führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 1:2:3:0:0:0:0:0 bis 1:2:3: ffff:ffff:ffff:ffff:ffff.
+### <a name="example"></a>Beispiel
 
-## <a name="request-body"></a>Anforderungstext
+In diesem Beispiel stimmen wir alle Post-Anforderungen ab, bei denen ein `customerName`-Argument im Anforderungstext bereitgestellt wird und der Wert von `customerName` mit dem Buchstaben `J` oder`K`beginnt. Wir verwenden eine Falltransformation, um die Eingabewerte in Großbuchstaben zu konvertieren, sodass Werte übereinstimmen, die mit `J`, `j`, `K` und `k` beginnen.
 
-Identifiziert Anforderungen auf der Grundlage eines bestimmten Texts, der im Textkörper der Anforderung vorhanden ist.
+# <a name="portal"></a>[Portal](#tab/portal)
 
-#### <a name="required-fields"></a>Pflichtfelder
+:::image type="content" source="../media/concept-rule-set-match-conditions/post-args.png" alt-text="Screenshot des Portals mit der Übereinstimmungsbedingung „post args“.":::
 
-Operator | Anforderungstext | Umwandlung der Groß-/Kleinschreibung
----------|--------------|---------------
-[Operatorliste](#operator-list) | String, Int | Kleinbuchstaben, Großbuchstaben
+# <a name="json"></a>[JSON](#tab/json)
 
-## <a name="request-header"></a>Anforderungsheader
+```json
+{
+  "name": "PostArgs",
+  "parameters": {
+    "selector": "customerName",
+    "operator": "BeginsWith",
+    "negateCondition": false,
+    "matchValues": [
+        "J",
+        "K"
+    ],
+    "transforms": [
+        "Uppercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRulePostArgsConditionParameters"
+}
+```
 
-Identifiziert Anforderungen, die einen bestimmten Header in der Anforderung verwenden.
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
-#### <a name="required-fields"></a>Pflichtfelder
+```bicep
+{
+  name: 'PostArgs'
+  parameters: {
+    selector: 'customerName'
+    operator: 'BeginsWith'
+    negateCondition: false
+    matchValues: [
+      'J'
+      'K'
+    ]
+    transforms: [
+      'Uppercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRulePostArgsConditionParameters'
+  }
+}
+```
 
-Headername | Operator | Headerwert | Umwandlung der Groß-/Kleinschreibung
-------------|----------|--------------|---------------
-String | [Operatorliste](#operator-list) | String, Int | Kleinbuchstaben, Großbuchstaben
+---
 
-## <a name="request-method"></a>Anforderungsmethode
+## <a name="query-string"></a><a name="QueryString"></a> Abfragezeichenfolge
 
-Identifiziert Anforderungen, die die angegebene Anforderungsmethode verwenden.
+Verwenden Sie die Übereinstimmungsbedingung **Abfragezeichenfolge** zum Identifizieren von Anforderungen, die eine bestimmte Abfragezeichenfolge enthalten. Sie können mehrere Werte angeben, die mit der OR-Logik kombiniert werden.
 
-#### <a name="required-fields"></a>Pflichtfelder
+> [!NOTE]
+> Die gesamte Abfragezeichenfolge wird mit einer einzelnen Zeichenfolge ohne den führenden `?` abgeglichen.
 
-Operator | Unterstützte Werte
----------|----------------
-Gleich, Ungleich | GET, POST, PUT, DELETE, HEAD, OPTIONS, TRACE
+### <a name="properties"></a>Eigenschaften
 
-#### <a name="key-information"></a>Wichtige Informationen
+| Eigenschaft | Unterstützte Werte |
+|-|-|
+| Betreiber | Beliebiger Operator aus der [Standardoperator-Liste](#operator-list). |
+| Abfragezeichenfolge | Mindestens ein Zeichenfolgenwert oder ganzzahliger Wert, der den Wert der abzugleichenden Abfragezeichenfolge darstellt. Die `?` nicht am Anfang der Abfragezeichenfolge einbeziehen. Wenn mehrere Werte angegeben werden, werden Sie mit der OR-Logik ausgewertet. |
+| Umwandlung der Groß-/Kleinschreibung | `Lowercase`, `Uppercase` |
 
-Nur die GET-Anforderungsmethode kann zwischengespeicherten Inhalt in Azure Front Door generieren. Alle anderen Anforderungsmethoden werden per Proxy durch das Netzwerk gesendet.
+### <a name="example"></a>Beispiel
 
-## <a name="request-protocol"></a>Anforderungsprotokoll
+In diesem Beispiel stimmen wir mit allen Anforderungen ab, bei denen die Abfrage Zeichenfolge die Zeichenfolge `language=en-US` enthält. Wir möchten, dass die Übereinstimmungsbedingung die Groß-/Kleinschreibung beachtet, also transformieren wir den Fall nicht.
 
-Identifiziert Anforderungen, die das angegebene Protokoll verwenden.
+# <a name="portal"></a>[Portal](#tab/portal)
 
-#### <a name="required-fields"></a>Pflichtfelder
+:::image type="content" source="../media/concept-rule-set-match-conditions/query-string.png" alt-text="Screenshot des Portals mit der Übereinstimmungsbedingung der Abfragezeichenfolge.":::
 
-Operator | Unterstützte Werte
----------|----------------
-Gleich, Ungleich | HTTP, HTTPS
+# <a name="json"></a>[JSON](#tab/json)
 
-## <a name="request-url"></a>Anfrage-URL
+```json
+{
+  "name": "QueryString",
+  "parameters": {
+    "operator": "Contains",
+    "negateCondition": false,
+    "matchValues": [
+      "language=en-US"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleQueryStringConditionParameters"
+  }
+}
+```
 
-Identifiziert Anforderungen, die mit der angegebenen URL übereinstimmen.
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
-#### <a name="required-fields"></a>Pflichtfelder
+```bicep
+{
+  name: 'QueryString'
+  parameters: {
+    operator: 'Contains'
+    negateCondition: false
+    matchValues: [
+      'language=en-US'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleQueryStringConditionParameters'
+  }
+}
+```
 
-Operator | Anfrage-URL | Umwandlung der Groß-/Kleinschreibung
----------|-------------|---------------
-[Operatorliste](#operator-list) | String, Int | Kleinbuchstaben, Großbuchstaben
+---
 
-#### <a name="key-information"></a>Wichtige Informationen
+## <a name="remote-address"></a><a name="RemoteAddress"></a> Remoteaddresse
 
-Wenn Sie diese Regelbedingung verwenden, achten Sie darauf, dass Sie Protokollinformationen einschließen. Beispiel: *https://www.\<yourdomain\>.com*.
+Die Übereinstimmungsbedingung für die **Remoteadresse** identifiziert Anforderungen anhand des Standorts oder anhand der IP-Adresse des Anfordernden. Sie können mehrere Werte angeben, die mit der OR-Logik kombiniert werden.
 
-## <a name="request-file-extension"></a>Dateierweiterung der Anforderung
+* Verwenden Sie CIDR-Notation, wenn Sie IP-Adressblöcke angeben. Das heißt, die Syntax für einen IP-Adressblock besteht aus der IP-Basisadresse, gefolgt von einem Schrägstrich und der Präfixgröße. Beispiel:
+    * **IPv4-Beispiel:** `5.5.5.64/26` entspricht allen Anforderungen, die von den Adressen 5.5.5.64 bis 5.5.5.127 eingehen.
+    * **IPv6-Beispiel:** Die Angabe `1:2:3:/48` führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 1:2:3:0:0:0:0:0 bis 1:2:3: ffff:ffff:ffff:ffff:ffff.
+* Bei mehreren IP-Adressen und IP-Adressblöcken wird die OR-Logik verwendet.
+    * **IPv4-Beispiel**: Wenn Sie die beiden IP-Adressen `1.2.3.4` und `10.20.30.40` hinzufügen, ist die Bedingung erfüllt, wenn Anforderungen von der Adresse 1.2.3.4 oder 10.20.30.40 eintreffen.
+    * **IPv6-Beispiel**: Wenn Sie die beiden IP-Adressen `1:2:3:4:5:6:7:8` und `10:20:30:40:50:60:70:80` hinzufügen, ist die Bedingung erfüllt, wenn Anforderungen von der Adresse 1:2:3:4:5:6:7:8 oder 10:20:30:40:50:60:70:80 eintreffen.
 
-Identifiziert Anforderungen, die die angegebene Dateierweiterung in den Dateinamen in der anfordernden URL einschließen.
+### <a name="properties"></a>Eigenschaften
 
-#### <a name="required-fields"></a>Pflichtfelder
+| Eigenschaft | Unterstützte Werte |
+|-|-|
+| Betreiber | <ul><li>Im Azure Portal: `Geo Match`, `Geo Not Match`, `IP Match`, oder `IP Not Match`</li><li>In ARM-Vorlagen: `GeoMatch`, `IPMatch` ; verwenden Sie die `negateCondition` -Eigenschaft, um die _Geo Not Match_ oder _IP Not Match_ anzugeben.</li></ul> |
+| Wert | <ul><li>Für die `IP Match`- oder `IP Not Match`-Operatoren oder: Geben Sie einen oder mehrere IP-Adressbereich(e) an. Wenn mehrere IP-Adressbereiche angegeben werden, werden Sie mit der OR-Logik ausgewertet.</li><li>Für den `Geo Match`- oder `Geo Not Match`-Operator: Geben Sie einen oder mehrere Speicherorte mithilfe Ihres Ländercodes an.</li></ul> |
 
-Operator | Durchwahl | Umwandlung der Groß-/Kleinschreibung
----------|-----------|---------------
-[Operatorliste](#operator-list)  | String, Int | Kleinbuchstaben, Großbuchstaben
+### <a name="example"></a>Beispiel
 
-#### <a name="key-information"></a>Wichtige Informationen
+In diesem Beispiel entsprechen wir allen Anforderungen, bei denen die Anforderung nicht aus den USA stammt.
 
-Lassen Sie bei der Erweiterung den vorangestellten Punkt weg. Verwenden Sie also *html* anstelle von *.html*.
+# <a name="portal"></a>[Portal](#tab/portal)
 
-## <a name="request-file-name"></a>Dateiname der Anforderung
+:::image type="content" source="../media/concept-rule-set-match-conditions/remote-address.png" alt-text="Screenshot des Portals mit der Übereinstimmungsbedingung einer Remote-Adresse.":::
 
-Identifiziert Anforderungen, die den angegebenen Dateinamen in der anfordernden URL einschließen.
+# <a name="json"></a>[JSON](#tab/json)
 
-#### <a name="required-fields"></a>Pflichtfelder
+```json
+{
+  "name": "RemoteAddress",
+  "parameters": {
+    "operator": "GeoMatch",
+    "negateCondition": true,
+    "matchValues": [
+      "US"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRemoteAddressConditionParameters"
+  }
+}
+```
 
-Operator | Dateiname | Umwandlung der Groß-/Kleinschreibung
----------|-----------|---------------
-[Operatorliste](#operator-list)| String, Int | Kleinbuchstaben, Großbuchstaben
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
-## <a name="request-path"></a>Anforderungspfad
+```bicep
+{
+  name: 'RemoteAddress'
+  parameters: {
+    operator: 'GeoMatch'
+    negateCondition: true
+    matchValues: [
+      'US'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRemoteAddressConditionParameters'
+  }
+}
+```
 
-Identifiziert Anforderungen, die den angegebenen Pfad in der anfordernden URL einschließen.
+---
 
-#### <a name="required-fields"></a>Pflichtfelder
+## <a name="request-body"></a><a name="RequestBody"></a> Anforderungstext
 
-Operator | Wert | Umwandlung der Groß-/Kleinschreibung
----------|-------|---------------
-[Operatorliste](#operator-list) | String, Int | Kleinbuchstaben, Großbuchstaben
+Der **Anforderungstext** identifiziert Anforderungen auf der Grundlage eines bestimmten Texts, der im Textkörper der Anforderung vorhanden ist. Sie können mehrere Werte angeben, die mit der OR-Logik kombiniert werden.
+
+> [!NOTE]
+> Wenn ein Anforderungstext die Größe von 64 KB überschreitet, werden nur die ersten 64 KB für die Übereinstimmungsbedingung des **Anforderungstexts** berücksichtigt.
+
+### <a name="properties"></a>Eigenschaften
+
+| Eigenschaft | Unterstützte Werte |
+|-|-|
+| Betreiber | Beliebiger Operator aus der [Standardoperator-Liste](#operator-list). |
+| Wert | Mindestens ein Zeichenfolgenwert oder ganzzahliger Wert, der den Wert des abzugleichenden Anforderungstexts darstellt. Wenn mehrere Werte angegeben werden, werden Sie mit der OR-Logik ausgewertet. |
+| Umwandlung der Groß-/Kleinschreibung | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Beispiel
+
+In diesem Beispiel stimmen wir alle Anforderungen ab, bei denen der Anforderungstext die `ERROR`-Zeichenfolge enthält. Wir transformieren den Anforderungstext vor dem Auswerten der Entsprechung in Großbuchstaben, sodass `error` und andere Fallvariationen diese Übereinstimmungsbedingung ebenfalls auslöst.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-body.png" alt-text="Screenshot des Portals mit Übereinstimmungsbedingung des Anforderungstexts.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "RequestBody",
+  "parameters": {
+    "operator": "Contains",
+    "negateCondition": false,
+    "matchValues": [
+      "ERROR"
+    ],
+    "transforms": [
+      "Uppercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestBodyConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'RequestBody'
+  parameters: {
+    operator: 'Contains'
+    negateCondition: false
+    matchValues: [
+      'ERROR'
+    ]
+    transforms: [
+      'Uppercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestBodyConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-file-name"></a><a name="UrlFileName"></a> Dateiname der Anforderung
+
+Die Übereinstimmungsbedingung **Dateiname der Anforderung** identifiziert Anforderungen, die den angegebenen Dateinamen in der Anforderungs-URL enthalten. Sie können mehrere Werte angeben, die mit der OR-Logik kombiniert werden.
+
+### <a name="properties"></a>Eigenschaften
+
+| Eigenschaft | Unterstützte Werte |
+|-|-|
+| Betreiber | Beliebiger Operator aus der [Standardoperator-Liste](#operator-list). |
+| Wert | Mindestens ein Zeichenfolgenwert oder ganzzahliger Wert, der den Wert des abzugleichenden Dateinamen der Anforderung darstellt. Wenn mehrere Werte angegeben werden, werden Sie mit der OR-Logik ausgewertet. |
+| Umwandlung der Groß-/Kleinschreibung | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Beispiel
+
+In diesem Beispiel stimmen wir alle Anforderungen ab, bei denen der Name der Anforderungsdatei `media.mp4` ist. Wir transformieren den Dateinamen vor dem Auswerten der Entsprechung in Kleinbuchstaben, sodass `MEDIA.MP4` und andere Fallvariationen diese Übereinstimmungsbedingung ebenfalls auslöst.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-file-name.png" alt-text="Screenshot des Portals mit Übereinstimmungsbedingung des Anforderungsdateinamens.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "UrlFileName",
+  "parameters": {
+    "operator": "Equal",
+    "negateCondition": false,
+    "matchValues": [
+      "media.mp4"
+    ],
+    "transforms": [
+      "Lowercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFilenameConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'UrlFileName'
+  parameters: {
+    operator: 'Equal'
+    negateCondition: false
+    matchValues: [
+      'media.mp4'
+    ]
+    transforms: [
+      'Lowercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFilenameConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-file-extension"></a><a name="UrlFileExtension"></a> Dateierweiterung der Anforderung
+
+Die Übereinstimmungsbedingung **Dateierweiterung der Anforderung** identifiziert Anforderungen, die die angegebenen Dateierweiterungen in der Anforderungs-URL enthalten. Sie können mehrere Werte angeben, die mit der OR-Logik kombiniert werden.
+
+> [!NOTE]
+> Schließen Sie keinen führenden Zeitraum ein. Verwenden Sie z. B. `html` statt `.html`.
+
+### <a name="properties"></a>Eigenschaften
+
+| Eigenschaft | Unterstützte Werte |
+|-|-|
+| Betreiber | Beliebiger Operator aus der [Standardoperator-Liste](#operator-list). |
+| Wert | Mindestens ein Zeichenfolgenwert oder ganzzahliger Wert, der den Wert der abzugleichenden Dateierweiterung der Anforderung darstellt. Schließen Sie keinen führenden Zeitraum ein. Wenn mehrere Werte angegeben werden, werden Sie mit der OR-Logik ausgewertet. |
+| Umwandlung der Groß-/Kleinschreibung | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Beispiel
+
+In diesem Beispiel stimmen wir alle Anforderungen ab, bei denen die Erweiterung der Anforderungsdatei `pdf` oder `docx` ist. Wir transformieren die Dateierweiterung der Anforderung vor dem Auswerten der Entsprechung in Kleinbuchstaben, sodass `PDF`, `DocX` und andere Fallvariationen diese Übereinstimmungsbedingung ebenfalls auslöst.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-file-extension.png" alt-text="Screenshot des Portals mit Übereinstimmungsbedingung der Anforderungsdateierweiterung.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "UrlFileExtension",
+  "parameters": {
+    "operator": "Equal",
+    "negateCondition": false,
+    "matchValues": [
+      "pdf",
+      "docx"
+    ],
+    "transforms": [
+      "Lowercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFileExtensionMatchConditionParameters"
+  }
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'UrlFileExtension'
+  parameters: {
+    operator: 'Equal'
+    negateCondition: false
+    matchValues: [
+      'pdf'
+      'docx'
+    ]
+    transforms: [
+      'Lowercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlFileExtensionMatchConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-header"></a><a name="RequestHeader"></a> Anforderungsheader
+
+Mit der Übereinstimmungsbedingung für den **Anforderungsheader** werden Anforderungen identifiziert, die einen bestimmten Header in der Anforderung enthalten. Mit dieser Übereinstimmungsbedingung können Sie überprüfen, ob ein Header einen beliebigen Wert hat, oder ob der Header mit einem angegebenen Wert übereinstimmt. Sie können mehrere Werte angeben, die mit der OR-Logik kombiniert werden.
+
+### <a name="properties"></a>Eigenschaften
+
+| Eigenschaft | Unterstützte Werte |
+|-|-|
+| Headername | Ein Zeichenfolgenwert, der den Namen des POST-Arguments darstellt. |
+| Betreiber | Beliebiger Operator aus der [Standardoperator-Liste](#operator-list). |
+| Wert | Mindestens ein Zeichenfolgenwert oder ganzzahliger Wert, der den Wert des abzugleichenden Anforderungsheaders darstellt. Wenn mehrere Werte angegeben werden, werden Sie mit der OR-Logik ausgewertet. |
+| Umwandlung der Groß-/Kleinschreibung | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Beispiel
+
+In diesem Beispiel stimmen wir allen Anforderungen zu, bei denen die Anforderung einen Header mit dem Namen `MyCustomHeader` enthält, unabhängig von dessen Wert.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-header.png" alt-text="Screenshot des Portals mit Übereinstimmungsbedingung des Anforderungsheaders.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "RequestHeader",
+  "parameters": {
+    "selector": "MyCustomHeader",
+    "operator": "Any",
+    "negateCondition": false,
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestHeaderConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'RequestHeader'
+  parameters: {
+    selector: 'MyCustomHeader',
+    operator: 'Any'
+    negateCondition: false
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestHeaderConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-method"></a><a name="RequestMethod"></a> Anforderungsmethode
+
+Die Übereinstimmungsbedingung der **Anforderungsmethode** identifiziert Anforderungen, die die angegebene HTTP-Anforderungsmethode verwenden. Sie können mehrere Werte angeben, die mit der OR-Logik kombiniert werden.
+
+### <a name="properties"></a>Eigenschaften
+
+| Eigenschaft | Unterstützte Werte |
+|-|-|
+| Betreiber | <ul><li>Im Azure Portal: `Equal`, `Not Equal`</li><li>In ARM-Vorlagen: `Equal`; verwenden Sie die `negateCondition`-Eigenschaft, um _Nicht Gleich_ anzugeben. |
+| Anforderungsmethode | Mindestens eine HTTP-Methode aus: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `TRACE`. Wenn mehrere Werte angegeben werden, werden Sie mit der OR-Logik ausgewertet. |
+
+### <a name="example"></a>Beispiel
+
+In diesem Beispiel stimmen wir alle Anforderungen ab, die die Anforderungsmethode `DELETE` nutzt.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-method.png" alt-text="Screenshot des Portals mit Übereinstimmungsbedingung der Anforderungsmethode.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "RequestMethod",
+  "parameters": {
+    "operator": "Equal",
+    "negateCondition": false,
+    "matchValues": [
+      "DELETE"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestMethodConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'RequestMethod'
+  parameters: {
+    operator: 'Equal'
+    negateCondition: false
+    matchValues: [
+      'DELETE
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestMethodConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-path"></a><a name="UrlPath"></a> Anforderungspfad
+
+Die Übereinstimmungsbedingung **Anforderungspfad** identifiziert Anforderungen, die den angegebenen Pfad in der Anforderungs-URL enthalten. Sie können mehrere Werte angeben, die mit der OR-Logik kombiniert werden.
+
+> [!NOTE]
+> Der Pfad ist der Teil der URL nach dem Hostnamen und einem Schrägstrich. In der URL `https://www.contoso.com/files/secure/file1.pdf` lautet der Pfad z. B. `files/secure/file1.pdf`.
+
+### <a name="properties"></a>Eigenschaften
+
+| Eigenschaft | Unterstützte Werte |
+|-|-|
+| Betreiber | Beliebiger Operator aus der [Standardoperator-Liste](#operator-list). |
+| Wert | Mindestens ein Zeichenfolgenwert oder ganzzahliger Wert, der den Wert des abzugleichenden Anforderungspfades darstellt. Fügen Sie den führenden Schrägstrich nicht ein. Wenn mehrere Werte angegeben werden, werden Sie mit der OR-Logik ausgewertet. |
+| Umwandlung der Groß-/Kleinschreibung | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Beispiel
+
+In diesem Beispiel stimmen wir alle Anforderungen ab, bei denen der Pfad der Anforderungsdatei mit `files/secure/` beginnt. Wir transformieren die Dateierweiterung der Anforderung vor dem Auswerten der Entsprechung in Kleinbuchstaben, sodass Anforderungen an `files/SECURE/` und andere Fallvariationen diese Übereinstimmungsbedingung ebenfalls auslöst.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-path.png" alt-text="Screenshot des Portals mit Übereinstimmungsbedingung des Anforderungspfades.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "UrlPath",
+  "parameters": {
+    "operator": "BeginsWith",
+    "negateCondition": false,
+    "matchValues": [
+      "files/secure/"
+    ],
+    "transforms": [
+      "Lowercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlPathMatchConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'UrlPath'
+  parameters: {
+    operator: 'BeginsWith'
+    negateCondition: false
+    matchValues: [
+      'files/secure/'
+    ]
+    transforms: [
+      'Lowercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlPathMatchConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-protocol"></a><a name="RequestScheme"></a> Anforderungsprotokoll
+
+Mit der Übereinstimmungsbedingung **Anforderungsprotokoll** werden Anforderungen identifiziert, die das angegebene Protokoll (HTTP oder HTTPS) verwenden.
+
+> [!NOTE]
+> Das *Protokoll* wird manchmal auch als *Schema* bezeichnet.
+
+### <a name="properties"></a>Eigenschaften
+
+| Eigenschaft | Unterstützte Werte |
+|-|-|
+| Betreiber | <ul><li>Im Azure Portal: `Equal`, `Not Equal`</li><li>In ARM-Vorlagen: `Equal`; verwenden Sie die `negateCondition`-Eigenschaft, um _Nicht Gleich_ anzugeben. |
+| Anforderungsmethode | `HTTP`, `HTTPS` |
+
+### <a name="example"></a>Beispiel
+
+In diesem Beispiel stimmen wir alle Anforderungen ab, die das Anforderungsprotokoll `HTTP` nutzen.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-protocol.png" alt-text="Screenshot des Portals mit Übereinstimmungsbedingung des Anforderungsprotokolls.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "RequestScheme",
+  "parameters": {
+    "operator": "Equal",
+    "negateCondition": false,
+    "matchValues": [
+      "HTTP"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestSchemeConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'RequestScheme'
+  parameters: {
+    operator: 'Equal'
+    negateCondition: false
+    matchValues: [
+      'HTTP
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestSchemeConditionParameters'
+  }
+}
+```
+
+---
+
+## <a name="request-url"></a><a name="RequestUrl"></a> Anforderungs-URL
+
+Identifiziert Anforderungen, die mit der angegebenen URL übereinstimmen. Die gesamte URL wird ausgewertet, einschließlich des Protokolls und der Abfragezeichenfolge, jedoch nicht des Fragments. Sie können mehrere Werte angeben, die mit der OR-Logik kombiniert werden.
+
+> [!TIP]
+> Wenn Sie diese Regelbedingung verwenden, achten Sie darauf, dass Sie das Protokoll einschließen. Verwenden Sie beispielsweise `https://www.contoso.com` anstelle von nur `www.contoso.com`.
+
+### <a name="properties"></a>Eigenschaften
+
+| Eigenschaft | Unterstützte Werte |
+|-|-|
+| Betreiber | Beliebiger Operator aus der [Standardoperator-Liste](#operator-list). |
+| Wert | Mindestens ein Zeichenfolgenwert oder ganzzahliger Wert, der den Wert der abzugleichenden Anforderungs-URL darstellt. Wenn mehrere Werte angegeben werden, werden Sie mit der OR-Logik ausgewertet. |
+| Umwandlung der Groß-/Kleinschreibung | `Lowercase`, `Uppercase` |
+
+### <a name="example"></a>Beispiel
+
+In diesem Beispiel stimmen wir alle Anforderungen ab, bei denen die URL der Anforderung mit `https://api.contoso.com/customers/123` beginnt. Wir transformieren die Dateierweiterung der Anforderung vor dem Auswerten der Entsprechung in Kleinbuchstaben, sodass Anforderungen an `https://api.contoso.com/Customers/123` und andere Fallvariationen diese Übereinstimmungsbedingung ebenfalls auslöst.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-match-conditions/request-url.png" alt-text="Screenshot des Portals mit Übereinstimmungsbedingung der Anforderungs-URL.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "RequestUri",
+  "parameters": {
+    "operator": "BeginsWith",
+    "negateCondition": false,
+    "matchValues": [
+      "https://api.contoso.com/customers/123"
+    ],
+    "transforms": [
+      "Lowercase"
+    ],
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestUriConditionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'RequestUri'
+  parameters: {
+    operator: 'BeginsWith'
+    negateCondition: false
+    matchValues: [
+      'https://api.contoso.com/customers/123'
+    ]
+    transforms: [
+      'Lowercase'
+    ]
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestUriConditionParameters'
+  }
+}
+```
+
+---
 
 ## <a name="operator-list"></a><a name = "operator-list"></a>Operatorliste
 
 Für Regeln, die Werte aus der Liste der Standardoperatoren akzeptieren, sind die folgenden Operatoren gültig:
 
-* Any
-* Equals
-* Enthält
-* Beginnt mit
-* Endet mit
-* Kleiner als
-* Kleiner als oder gleich
-* Größer als
-* Größer als oder gleich
-* Keine
-* Enthält nicht
-* Beginnt nicht mit
-* Endet nicht mit
-* Nicht kleiner als
-* Nicht kleiner als oder gleich
-* Nicht größer als
-* Nicht größer als oder gleich
-* Regular Expression
+| Operator                   | BESCHREIBUNG                                                                                                                    | ARM-Vorlagen-Support                                            |
+|----------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| Any                        | Ergibt ein Match, wenn ein beliebiger Wert vorhanden ist, unabhängig davon, worum es sich dabei handelt.                                                                     | `operator`: `Any`                                               |
+| Equal                      | Ergibt ein Match, wenn der Wert exakt mit der angegebenen Zeichenfolge übereinstimmt.                                                                   | `operator`: `Equal`                                             |
+| Enthält                   | Ergibt ein Match, wenn der Wert die angegebene Zeichenfolge enthält.                                                                          | `operator`: `Contains`                                          |
+| Kleiner als                  | Ergibt ein Match, wenn die Länge des Werts kleiner als die angegebene Ganzzahl ist.                                                       | `operator`: `LessThan`                                          |
+| Größer als               | Ergibt ein Match, wenn die Länge des Werts größer als die angegebene Ganzzahl ist.                                                    | `operator`: `GreaterThan`                                       |
+| Kleiner als oder gleich         | Ergibt ein Match, wenn die Länge des Werts kleiner als oder gleich der angegebenen Ganzzahl ist.                                           | `operator`: `LessThanOrEqual`                                   |
+| Größer als oder gleich      | Ergibt ein Match, wenn die Länge des Werts größer als oder gleich der angegebenen Ganzzahl ist.                                        | `operator`: `GreaterThanOrEqual`                                |
+| Beginnt mit                | Ergibt ein Match, wenn der Wert mit der angegebenen Zeichenfolge beginnt.                                                                       | `operator`: `BeginsWith`                                        |
+| Endet mit                  | Ergibt ein Match, wenn der Wert mit der angegebenen Zeichenfolge endet.                                                                         | `operator`: `EndsWith`                                          |
+| RegEx                      | Ergibt ein Match, wenn der Wert dem angegebenen regulären Ausdruck entspricht. [Weitere Informationen finden Sie weiter unten.](#regular-expressions)        | `operator`: `RegEx`                                             |
+| Keine                    | Ergibt ein Match, wenn kein Wert vorhanden ist.                                                                                                | `operator`: `Any` und `negateCondition` : `true`                |
+| Ungleich                  | Ergibt ein Match, wenn der Wert nicht mit der angegebenen Zeichenfolge übereinstimmt.                                                                    | `operator`: `Equal` und `negateCondition` : `true`              |
+| Not Contains               | Ergibt ein Match, wenn der Wert nicht die angegebene Zeichenfolge enthält.                                                                  | `operator`: `Contains` und `negateCondition` : `true`           |
+| Nicht kleiner als              | Ergibt ein Match, wenn die Länge des Werts nicht kleiner als die angegebene Ganzzahl ist.                                                   | `operator`: `LessThan` und `negateCondition` : `true`           |
+| Nicht größer als           | Ergibt ein Match, wenn die Länge des Werts nicht größer als die angegebene Ganzzahl ist.                                                | `operator`: `GreaterThan` und `negateCondition` : `true`        |
+| Nicht kleiner als oder gleich     | Ergibt ein Match, wenn die Länge des Werts nicht kleiner als oder gleich der angegebenen Ganzzahl ist.                                       | `operator`: `LessThanOrEqual` und `negateCondition` : `true`    |
+| Nicht größer als oder gleich | Ergibt ein Match, wenn die Länge des Werts nicht größer als oder gleich der angegebenen Ganzzahl ist.                                    | `operator`: `GreaterThanOrEqual` und `negateCondition` : `true` |
+| Beginnt nicht mit            | Ergibt ein Match, wenn der Wert nicht mit der angegebenen Zeichenfolge beginnt.                                                               | `operator`: `BeginsWith` und `negateCondition` : `true`         |
+| Endet nicht mit              | Ergibt ein Match, wenn der Wert nicht mit der angegebenen Zeichenfolge endet.                                                                 | `operator`: `EndsWith` und `negateCondition` : `true`           |
+| Nicht RegEx                  | Ergibt ein Match, wenn der Wert nicht dem angegebenen regulären Ausdruck entspricht. [Weitere Informationen finden Sie weiter unten.](#regular-expressions) | `operator`: `RegEx` und `negateCondition` : `true`              |
 
-Für numerische Operatoren wie *Kleiner als* oder *Größer als oder gleich* basiert der verwendete Vergleich auf der Länge. Der Wert in der Übereinstimmungsbedingung muss eine ganze Zahl sein, die der Länge entspricht, die Sie vergleichen möchten.
+> [!TIP]
+> Für numerische Operatoren wie *Kleiner als* oder *Größer als oder gleich* basiert der verwendete Vergleich auf der Länge. Der Wert in der Übereinstimmungsbedingung muss eine ganze Zahl sein, die die Länge bestimmt, die Sie vergleichen möchten.
 
-## <a name="regular-expression"></a>Regular Expression
+### <a name="regular-expressions"></a><a name="regular-expressions"></a>Reguläre Ausdrücke
 
-Die folgenden Operationen werden in regulären Ausdrücken nicht unterstützt:
+Reguläre Ausdrücke unterstützen die folgenden Vorgänge nicht:
 
-* Rückverweise und Erfassung von Teilausdrücken
-* Willkürliche Assertionen mit einer Breite von 0
-* Unterroutinenverweise und rekursive Muster
-* Bedingte Muster
-* Rückverfolgung von Steuerelementverben
-* Die Einzelbyte-Anweisung – „\C“
-* Die Anweisung für Zeilenvorschubübereinstimmung – „\R“
-* Die Startanweisung zum Zurücksetzen der Übereinstimmung – „\K“
-* Callouts und eingebetteter Code
-* Atomische Gruppierung und besitzanzeigende Quantifizierer
+* Rückverweise und Erfassung von Teilausdrücken.
+* Willkürliche Assertionen mit einer Nullbreite.
+* Unterroutinenverweise und rekursive Muster.
+* Bedingte Muster.
+* Rückverfolgung von Steuerelementverben.
+* Die `\C` Einzelbyte-Anweisung – „\C“.
+* Die `\R` Anweisung für Zeilenvorschubübereinstimmung – „\R“.
+* Die `\K` Startanweisung zum Zurücksetzen der Übereinstimmung – „\K“.
+* Callouts und eingebetteter Code.
+* Atomische Gruppierung und besitzanzeigende Quantifizierer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über [Regelsätze](concept-rule-set.md).
-* Erfahren Sie, wie Sie [Ihren ersten Regelsatz konfigurieren](how-to-configure-rule-set.md).
+* Erfahren Sie, wie Sie Ihren[ ersten Regelsatz konfigurieren](how-to-configure-rule-set.md).
 * Weitere Informationen über [Regelsatzaktionen](concept-rule-set-actions.md)

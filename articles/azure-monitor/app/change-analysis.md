@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 43ece2cb0f5cb9428d8d73f769018e9fe2408ab8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9366b268ca394228a63ecfd18ac6c2f4576ba21a
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655807"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315685"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor
 
@@ -59,14 +60,19 @@ Die Änderungsanalyse erfasst alle vier Stunden den Bereitstellungs- und Konfigu
 ![Screenshot der Schaltfläche „Jetzt auf Änderungen prüfen“](./media/change-analysis/scan-changes.png)
 
 Derzeit werden alle textbasierten Dateien unter dem Sitestammverzeichnis **wwwroot** mit den folgenden Erweiterungen unterstützt:
-- *.config
-- *.xml
 - *.json
-- *.gem
-- *.yml
-- *.txt
+- *.xml
 - *.ini
-- *.env
+- *.yml
+- *.config
+- *.properties
+- *.html
+- *.cshtml
+- *.js
+- requirements.txt
+- Gemfile
+- Gemfile.lock
+- config.gemspec
 
 ### <a name="dependency-changes"></a>Abhängigkeitsänderungen
 

@@ -48,7 +48,7 @@
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/traffic-manager-security-baseline?toc=/azure/traffic-manager/toc.json
     - name: Geschachtelte Traffic Manager-Profile
       href: traffic-manager-nested-profiles.md
     - name: Endpunkttypen

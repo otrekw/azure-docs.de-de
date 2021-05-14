@@ -5,12 +5,12 @@ ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: f4b12a9b3b830fcc4f45cb5e957232fee5a756a3
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 0ced84afc47c188dc8f5d911794a90cdbeeebd81
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078644"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164919"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Bereitstellen der Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“ auf Azure
 
@@ -241,7 +241,7 @@ Das vorhandene Mitglied muss das folgende PowerShell-Skript ausführen, um die V
 
 ![Cloud Shell](./media/ethereum-poa-deployment/cloud-shell.png)
 
-```Powershell
+```powershell
 $MyGatewayResourceId = "<EXISTING_MEMBER_RESOURCEID>"
 $OtherGatewayResourceId = "<NEW_MEMBER_RESOURCEID]"
 $ConnectionName = "Leader2Member"
@@ -288,7 +288,7 @@ Administratoren können die Teilnahme am Konsens an einige Validierungsknoten de
 
 Wenn Sie verschiedene Transaktionen über die Governance-DApp durchführen möchten, müssen Sie ein Ethereum-Wallet nutzen. Die Verwendung eines Wallets wie [MetaMask](https://metamask.io) im Browser stellt den einfachsten Ansatz dar. Da es sich hierbei jedoch um im Netzwerk bereitgestellte Smart Contracts handelt, müssen Sie Ihre Interaktionen mit dem Governancevertrag möglicherweise auch automatisieren.
 
-Navigieren Sie nach der Installation von MetaMask zu der Governance-DApp im Browser.  Sie können die URL im Azure-Portal in der Bereitstellungsausgabe suchen.  Wenn Sie kein Wallet im Browser installiert haben, können Sie keine Aktionen ausführen. Sie können jedoch weiterhin den Administratorstatus anzeigen.  
+Navigieren Sie nach der Installation von MetaMask zu der Governance-DApp im Browser.  Sie können die URL im Azure-Portal in der Bereitstellungsausgabe suchen.  Wenn Sie kein Wallet im Browser installiert haben, können Sie keine Aktionen ausführen. Sie können jedoch weiterhin den Administratorstatus anzeigen.
 
 ### <a name="becoming-an-admin"></a>Administrator werden
 

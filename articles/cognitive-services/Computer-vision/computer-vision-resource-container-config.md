@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 7b421877b2a41074bf901817c7ad8922083c3e77
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611894"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285672"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Konfigurieren von Read-OCR-Docker-Containern
 
@@ -34,13 +34,13 @@ Der Container hat außerdem die folgenden containerspezifischen Konfigurationsei
 |Erforderlich|Einstellung|Zweck|
 |--|--|--|
 |Nein|ReadEngineConfig:ResultExpirationPeriod| Gilt nur für v2.0-Container. Ablaufzeitraum für das Ergebnis in Stunden. Der Standardwert beträgt 48 Stunden. Die Einstellung gibt an, wann das System Erkennungsergebnisse löschen soll. Wenn beispielsweise `resultExpirationPeriod=1` festgelegt ist, löscht das System das Erkennungsergebnis eine Stunde nach dem Prozess. Wird `resultExpirationPeriod=0` festgelegt, löscht das System das Erkennungsergebnis nach dem Abrufen des Ergebnisses.|
-|Nein|Cache:Redis| Gilt nur für v2.0-Container. Aktiviert Redis-Speicher zum Speichern von Ergebnissen. Ein Cache ist *erforderlich*, wenn mehrere Lesecontainer hinter einem Lastenausgleich platziert werden.|
-|Nein|Queue:RabbitMQ|Gilt nur für v2.0-Container. Aktiviert RabbitMQ zum Verteilen von Aufgaben. Die Einstellung ist nützlich, wenn mehrere Lesecontainer hinter einem Lastenausgleich platziert werden.|
+|Nein|Cache:Redis| Gilt nur für v2.0-Container. Aktiviert Redis-Speicher zum Speichern von Ergebnissen. Ein Cache ist *erforderlich*, wenn mehrere OCR-Lesecontainer hinter einem Lastenausgleich platziert werden.|
+|Nein|Queue:RabbitMQ|Gilt nur für v2.0-Container. Aktiviert RabbitMQ zum Verteilen von Aufgaben. Die Einstellung ist nützlich, wenn mehrere OCR-Lesecontainer hinter einem Lastenausgleich platziert werden.|
 |Nein|Queue:Azure:QueueVisibilityTimeoutInMilliseconds | Gilt nur für v3.x-Container. Hiermit wir die Zeit angegeben, während der eine Nachricht nicht sichtbar ist, wenn sie von einem anderen Worker verarbeitet wird. |
 |Nein|Storage::DocumentStore::MongoDB|Gilt nur für v2.0-Container. Aktiviert MongoDB für den permanenten Ergebnisspeicher. |
 |Nein|Storage:ObjectStore:AzureBlob:ConnectionString| Gilt nur für v3.x-Container. Verbindungszeichenfolge für Azure Blob Storage. |
-|No|Storage:TimeToLiveInDays| Gilt nur für v3.x-Container. Ablaufzeitraum für das Ergebnis in Tagen. Die Einstellung gibt an, wann das System Erkennungsergebnisse löschen soll. Der Standardwert ist 2 Tage (48 Stunden) und bedeutet, dass alle Ergebnisse, die länger als der Zeitraum sind, nicht garantiert erfolgreich abgerufen werden. |
-|No|Task:MaxRunningTimeSpanInMinutes| Gilt nur für v3.x-Container. Maximale Ausführungszeit für eine einzelne Anforderung. Der Standardwert ist 60 Sekunden. |
+|Nein|Storage:TimeToLiveInDays| Gilt nur für v3.x-Container. Ablaufzeitraum für das Ergebnis in Tagen. Die Einstellung gibt an, wann das System Erkennungsergebnisse löschen soll. Der Standardwert ist 2 Tage (48 Stunden) und bedeutet, dass alle Ergebnisse, die länger als der Zeitraum sind, nicht garantiert erfolgreich abgerufen werden. |
+|Nein|Task:MaxRunningTimeSpanInMinutes| Gilt nur für v3.x-Container. Maximale Ausführungszeit für eine einzelne Anforderung. Der Standardwert ist 60 Sekunden. |
 
 ## <a name="apikey-configuration-setting"></a>Konfigurationseinstellung „ApiKey“
 
@@ -119,7 +119,7 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 ## <a name="container-docker-examples"></a>Beispiele für Docker-Container
 
-Im Folgenden finden Sie Docker-Beispiele für den Container für das Lesen.
+Im Folgenden finden Sie Docker-Beispiele für den OCR-Lesecontainer.
 
 
 # <a name="version-32-preview"></a>[Version 3.2 (Vorschauversion)](#tab/version-3-2)

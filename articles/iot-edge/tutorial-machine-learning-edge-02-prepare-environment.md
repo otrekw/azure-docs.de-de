@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 723d7b6ae5b96cf6dc622be1b1bb98065151787f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 71ef55d720ca768bfa45ea13ba7ec481b908d915
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463149"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133797"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Tutorial: Einrichten einer Umgebung für maschinelles Lernen in IoT Edge
 
@@ -36,7 +36,7 @@ Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Lea
 
 Dieser Schritt wird normalerweise von einem Cloudentwickler ausgeführt. Ein Teil der Software ist ggf. auch für einen Data Scientist hilfreich.
 
-Wir haben ein PowerShell-Skript zusammengestellt, mit dem ein virtueller Azure-Computer erstellt wird, für den viele erforderliche Komponenten bereits konfiguriert sind. Die von uns erstellte VM muss die [geschachtelte Virtualisierung](../virtual-machines/windows/nested-virtualization.md) verarbeiten können. Aus diesem Grund haben wir einen Computer mit der Größe [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) gewählt.
+Wir haben ein PowerShell-Skript zusammengestellt, mit dem ein virtueller Azure-Computer erstellt wird, für den viele erforderliche Komponenten bereits konfiguriert sind. Die von uns erstellte VM muss die [geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) verarbeiten können. Aus diesem Grund haben wir einen Computer mit der Größe [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) gewählt.
 
 Für die Einrichtung des virtuellen Entwicklungscomputers wird Folgendes verwendet:
 

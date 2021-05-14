@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7a88d8a0065ca7f5cb054d23295e5cfbc23489ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb46adc6de32befd554047eded18ca16ab76dde1
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728588"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286760"
 ---
 # <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>Schnellstart: Verarbeiten von SMS-Ereignissen für Zustellberichte und eingehende Nachrichten
 
@@ -65,7 +65,7 @@ Sie können spezifische Ereignisse abonnieren, um Event Grid mitzuteilen, welche
 
 Wenn Sie aufgefordert werden, einen **Namen für das Systemthema** anzugeben, können Sie eine eindeutige Zeichenfolge angeben. Dieses Feld wirkt sich nicht auf Ihre Benutzeroberflächen aus und wird für interne Telemetriezwecke verwendet.
 
-Sehen Sie sich die vollständige Liste der [von Azure Communication Services unterstützten Ereignisse](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services) an.
+Sehen Sie sich die vollständige Liste der [von Azure Communication Services unterstützten Ereignisse](../../../event-grid/event-schema-communication-services.md) an.
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Screenshot, der die Auswahl der Ereignistypen „SMS Received“ (SMS empfangen) und „SMS Delivery Report Received“ (SMS-Zustellberichte empfangen) zeigt":::
 
@@ -90,7 +90,7 @@ Zum Anzeigen von Ereignisauslösern müssen wir zuerst Ereignisse generieren.
 - `SMS Received`-Ereignisse (SMS empfangen) werden generiert, wenn die Communication Services-Telefonnummer eine Textnachricht empfängt. Um ein Ereignis auszulösen, senden Sie einfach eine Nachricht von Ihrem Telefon an die Telefonnummer, die an die Communication Services-Ressource angefügt ist.
 - `SMS Delivery Report Received`-Ereignisse (SMS-Zustellberichte empfangen) werden generiert, wenn Sie mit einer Communication Services-Nummer eine SMS an einen Benutzer senden. Zum Auslösen eines Ereignisses müssen Sie in den Optionen der [gesendeten SMS](../telephony-sms/send.md) die Option `Delivery Report` (Zustellbericht) aktivieren. Senden Sie eine Nachricht an Ihr Mobiltelefon mit einem Zustellbericht (`Delivery Report`). Für diese Aktion fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
-Sehen Sie sich die vollständige Liste der [von Azure Communication Services unterstützten Ereignisse](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services) an.
+Sehen Sie sich die vollständige Liste der [von Azure Communication Services unterstützten Ereignisse](../../../event-grid/event-schema-communication-services.md) an.
 
 ### <a name="receiving-sms-events"></a>Empfangen von SMS-Ereignissen
 
@@ -100,7 +100,7 @@ Nachdem Sie die obigen Aktionen durchgeführt haben, stellen Sie fest, dass die 
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Screenshot, der das Event Grid-Schema für ein „SMS Delivery Report Received“-Ereignis (SMS-Zustellberichte empfangen) zeigt":::
 
-Erfahren Sie mehr über [Ereignisschemas und andere Ereigniskonzepte](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services).
+Erfahren Sie mehr über [Ereignisschemas und andere Ereigniskonzepte](../../../event-grid/event-schema-communication-services.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

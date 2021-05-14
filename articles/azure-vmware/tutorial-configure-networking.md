@@ -2,13 +2,14 @@
 title: 'Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure'
 description: Hier erfahren Sie, wie Sie das erforderliche Netzwerk zum Bereitstellen Ihrer privaten Cloud in Azure erstellen und konfigurieren.
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: c609d191191cd9de111e83fe62761b149405cccc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: contperf-fy21q4
+ms.date: 04/23/2021
+ms.openlocfilehash: 13f74c6120bd78127a2989218b3d535989bb7861
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103494355"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945676"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure
 
@@ -20,10 +21,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen eines virtuellen Netzwerks
 > * Erstellen eines Gateways für das virtuelle Netzwerk
 > * Verbinden der ExpressRoute-Leitung mit dem Gateway
-> * Ermitteln der URLs für vCenter und NSX Manager
 
-## <a name="prerequisites"></a>Voraussetzungen 
-Ein virtuelles Netzwerk, das Sie für eine [private Azure VMware Solution-Cloud](tutorial-create-private-cloud.md) erstellt haben. 
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
@@ -88,23 +86,15 @@ Sie haben ein Gateway für virtuelle Netzwerke bereitgestellt und fügen nun ein
 [!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
 
-## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>Ermitteln der URLs für vCenter und NSX Manager
-
-Damit Sie sich bei vCenter und NSX Manager anmelden können, benötigen Sie die URLs des vCenter-Webclients und der NSX-T Manager-Website. 
-
-Navigieren Sie zu Ihrer privaten Azure VMware Solution-Cloud, und wählen Sie unter **Verwalten** die Option **Identität** aus. Dort finden Sie die benötigten Informationen.
-
-:::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Screenshot: Anmeldeinformationen für vCenter und NSX-T und Webclient-URLs" border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
+In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Netzwerks
 > * Erstellen eines Gateways für das virtuelle Netzwerk
 > * Verbinden der ExpressRoute-Leitung mit dem Gateway
-> * Ermitteln der URLs für vCenter und NSX Manager
+
 
 Im nächsten Tutorial erfahren Sie, wie Sie die NSX-T-Netzwerksegmente erstellen, die für virtuelle Computer in vCenter verwendet werden.
 

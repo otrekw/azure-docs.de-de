@@ -5,36 +5,59 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0c6f5dc55f7406aba7d6e3dc1a278b57fe4ec9ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7269309a3ed682da4d67e2509508276a3133601e
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721270"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516864"
 ---
 # <a name="configure-and-optimize-vms"></a>Konfigurieren und Optimieren von virtuellen Computern
 
-In diesem Artikel finden Sie eine Anleitung zum Konfigurieren und Optimieren der InfiniBand-fähigen virtuellen Computer der [H-Serie](../../sizes-hpc.md) und der [N-Serie](../../sizes-gpu.md) für HPC.
+In diesem Artikel finden Sie einen Leitfaden zum Konfigurieren und Optimieren der InfiniBand-fähigen VMs der [H-Serie](../../sizes-hpc.md) und der [N-Serie](../../sizes-gpu.md) für HPC.
 
 ## <a name="vm-images"></a>VM-Images
-Auf InfiniBand-fähigen virtuellen Computern sind die entsprechenden Treiber erforderlich, um RDMA zu aktivieren.
-- Die [CentOS-HPC VM-Images](#centos-hpc-vm-images) im Marketplace werden mit den entsprechenden IB-Treibern vorkonfiguriert und sind die einfachste Einstiegsmöglichkeit.
-- Die [Ubuntu-VM-Images](#ubuntu-vm-images) können mit den entsprechenden IB-Treibern konfiguriert werden. Außerdem sollten [benutzerdefinierte VM-Images](../../linux/tutorial-custom-images.md) mit den entsprechenden Treibern und Konfigurationen erstellt und wiederholt wiederverwendet werden.
+Auf InfiniBand-fähigen (IB) VMs sind die entsprechenden Treiber erforderlich, um RDMA zu aktivieren.
+- Die [CentOS-HPC-VM-Images](#centos-hpc-vm-images) im Marketplace werden mit den entsprechenden IB-Treibern vorkonfiguriert bereitgestellt.
+- Die [Ubuntu-HPC-VM-Images](#ubuntu-hpc-vm-images) im Marketplace werden mit den entsprechenden IB- und GPU-Treibern vorkonfiguriert bereitgestellt.
 
-Bei GPU-fähigen VMs der [N-Serie](../../sizes-gpu.md) sind zusätzlich die entsprechenden GPU-Treiber erforderlich, die über die [VM-Erweiterungen](../../extensions/hpccompute-gpu-linux.md) oder [manuell](../../linux/n-series-driver-setup.md) hinzugefügt werden können. In einigen VM-Images im Marketplace, darunter einige VM-Images von Nvidia, sind auch Nvidia-GPU-Treibern vorinstalliert.
+Diese VM-Images (VMI) basieren auf den Marketplace-VM-Images mit CentOS bzw. Ubuntu. Skripts, die bei der Erstellung dieser VM-Images aus ihrem CentOS-Basisimage im Marketplace verwendet werden, finden Sie im Repository [azhpc-images](https://github.com/Azure/azhpc-images/tree/master/centos).
+
+Bei GPU-fähigen VMs der [N-Serie](../../sizes-gpu.md) sind zusätzlich die entsprechenden GPU-Treiber erforderlich. Diese können mit den folgenden Methoden verfügbar gemacht werden:
+- Verwenden Sie die [Ubuntu-HPC-VM-Images](#ubuntu-hpc-vm-images), auf denen die Nvidia-GPU-Treiber und der GPU-Computesoftwarestapel (CUDA, NCCL) bereits vorkonfiguriert sind.
+- Hinzufügen der GPU-Treiber über [VM-Erweiterungen](../../extensions/hpccompute-gpu-linux.md)
+- Installieren Sie die GPU-Treiber [manuell](../../linux/n-series-driver-setup.md).
+- Bei einigen VM-Images im Marketplace (einschließlich einiger VM-Images von Nvidia) sind die Nvidia-GPU-Treiber bereits vorinstalliert.
+
+Abhängig von den Anforderungen an die Linux-Distribution und -Version der Workloads stellen die [CentOS-HPC-VM-Images](#centos-hpc-vm-images) oder die [Ubuntu-HPC-VM-Images](#ubuntu-hpc-vm-images) im Marketplace die einfachsten Möglichkeiten für den Einstieg in HPC- und KI-Workloads in Azure dar.
+Außerdem sollten [benutzerdefinierte VM-Images](../../linux/tutorial-custom-images.md) mit entsprechenden Anpassungen und Konfigurationen für die jeweilige Workload erstellt und mehrfach wiederverwendet werden.
+
+### <a name="vm-sizes-supported-by-the-hpc-vm-images"></a>Von HPC-VM-Images unterstützte VM-Größen
+Die neuesten HPC-Marketplace-Images von Azure bieten Mellanox OFED 5.1 und höher. Diese Images unterstützen keine ConnectX-3 Pro-InfiniBand-Karten. Sie unterstützen nur InfiniBand-Karten mit ConnextX-5 und höher. Daraus ergibt sich die folgende Unterstützungsmatrix für VM-Größen bei InfiniBand OFED in diesen HPC-VM-Images:
+- [H-Serie:](../../sizes-hpc.md) HB, HC, HBv2, HBv3
+- [N-Serie:](../../sizes-gpu.md) NDv2, NDv4
+
+Beachten Sie, dass für die GPU-Unterstützung bei den N-Serie-VM-Größen NDv2 und NDv4 derzeit nur [Ubuntu-HPC-VM-Images](#ubuntu-hpc-vm-images) unterstützt werden, die mit den Nvidia-GPU-Treibern und dem GPU-Computesoftwarestapel (CUDA, NCCL) vorkonfiguriert sind. 
+
+Beachten Sie außerdem, dass alle oben genannten VM-Größen Gen2-VMs unterstützen, obwohl einige ältere auch Gen1-VMs unterstützen.
 
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC-VM-Images
 
 #### <a name="sr-iov-enabled-vms"></a>SR-IOV unterstützende VMs
-Für [RDMA-fähige VMs](../../sizes-hpc.md#rdma-capable-instances) mit Aktivierung für SR-IOV sind [VM-Images von CentOS-HPC im Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) ab Version 7.6 geeignet. Diese VM-Images sind optimiert und vorab mit den OFED-Treibern für RDMA sowie verschiedenen gängigen MPI-Bibliotheken und Paketen für wissenschaftliches Computing geladen. Damit bieten diese VMs einen sehr einfachen Einstieg.
-- Einzelheiten zum Funktionsumfang der VM-Images von CentOS-HPC ab Version 7.6 finden Sie in einem [TechCommunity-Artikel](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557).
+Für SR-IOV- und [RDMA-fähige VMs](../../sizes-hpc.md#rdma-capable-instances) sind VM-Images von CentOS-HPC 7.6 und höher geeignet. Diese VM-Images sind optimiert und vorab mit den Mellanox-OFED-Treibern für RDMA sowie verschiedenen gängigen MPI-Bibliotheken und Paketen für wissenschaftliches Computing geladen.
+- Sie können die verfügbaren oder neuesten Versionen der VM-Images über die [Befehlszeilenschnittstelle](/cli/azure/vm/image#az_vm_image_list) oder im [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) mit den folgenden Informationen auflisten.
+   ```bash
+   "publisher": "OpenLogic",
+   "offer": "CentOS-HPC",
+   ```
 - Skripts, die bei der Erstellung der VM-Images der CentOS-HPC-Version ab 7.6 aus einem CentOS-Basis-Image im Marketplace verwendet werden, finden Sie im [Repository „azhpc-images“](https://github.com/Azure/azhpc-images/tree/master/centos).
-  
+- Weitere Einzelheiten zum Funktionsumfang und zur Bereitstellung der CentOS-HPC-VM-Images ab Version 7.6 finden Sie in einem [TechCommunity-Artikel](https://techcommunity.microsoft.com/t5/azure-compute/azure-hpc-vm-images/ba-p/977094).
+
 > [!NOTE] 
-> Die neuesten Azure HPC Marketplace-Images sind Mellanox OFED 5.1 und höher, die keine ConnectX3-Pro InfiniBand-Karten unterstützen. Für VM-Größen mit Aktivierung von SR-IOV der N-Serie mit FDR InfiniBand (z. B. bis NCv3) können die folgenden CentOS-HPC-VM-Imageversionen oder niedrigere Versionen aus dem Marketplace verwendet werden:
+> Für VM-Größen mit Aktivierung von SR-IOV der N-Serie mit FDR InfiniBand (z. B. bis NCv3) können die folgenden CentOS-HPC-VM-Imageversionen oder niedrigere Versionen aus dem Marketplace verwendet werden:
 >- OpenLogic:CentOS-HPC:7.6:7.6.2020062900
 >- OpenLogic:CentOS-HPC:7_6gen2:7.6.2020062901
 >- OpenLogic:CentOS-HPC:7.7:7.7.2020062600
@@ -48,20 +71,30 @@ Für [RDMA-fähige VMs](../../sizes-hpc.md#rdma-capable-instances) ohne Aktivier
 > [!NOTE]
 > Bei den CentOS-basierten HPC-Images für SR-IOV nicht unterstützende VMs sind Kernel-Updates in der **yum**-Konfigurationsdatei deaktiviert. Der Grund: Die Network Direct-Linux RDMA-Treiber werden als RPM-Paket verteilt, und Treiberupdates funktionieren möglicherweise nicht, wenn der Kernel aktualisiert wird.
 
-### <a name="rhelcentos-vm-images"></a>RHEL/CentOS-VM-Images
-RHEL- oder CentOS-basierte Nicht-HPC-VM-Images im Marketplace können für die Verwendung auf SR-IOV-aktivierten [RDMA-fähigen VMs](../../sizes-hpc.md#rdma-capable-instances) konfiguriert werden. Informieren Sie sich ausführlicher über die [Aktivierung von InfiniBand](enable-infiniband.md) und [MPI-Einrichtung](setup-mpi.md) auf den VMs.
-- Skripts, die bei der Erstellung der VM-Images der CentOS-HPC-Version ab 7.6 aus einem CentOS-Basis-Image im Marketplace verwendet werden, finden Sie im [Repository „azhpc-images“](https://github.com/Azure/azhpc-images/tree/master/centos).
-  
-> [!NOTE]
-> Ab Mellanox OFED 5.1 werden keine ConnectX3-Pro-InfiniBand-Karten auf für SR-IOV aktivierten VM-Größen der N-Serie mit FDR-InfiniBand (z. B. NCv3) unterstützt. Verwenden Sie LTS Mellanox OFED ab Version 4.9-0.1.7.0 auf den VMs der N-Serie mit ConnectX3-Pro-Karten. Ausführlichere Informationen finden Sie [hier](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
+### <a name="ubuntu-hpc-vm-images"></a>Ubuntu-HPC-VM-Images
+Für SR-IOV- und [RDMA-fähige VMs](../../sizes-hpc.md#rdma-capable-instances) sind Ubuntu-HPC-VM-Images ab Version 18.04 geeignet. Diese VM-Images sind optimiert und vorab mit den Mellanox-OFED-Treibern für RDMA, mit Nvidia-GPU-Treibern, dem GPU-Computesoftwarestapel (CUDA, NCCL) sowie verschiedenen gängigen MPI-Bibliotheken und Paketen für wissenschaftliches Computing geladen.
+- Sie können die verfügbaren oder neuesten Versionen der VM-Images über die [Befehlszeilenschnittstelle](/cli/azure/vm/image#az_vm_image_list) oder im [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-hpc?tab=overview) mit den folgenden Informationen auflisten.
+   ```bash
+   "publisher": "Microsoft-DSVM",
+   "offer": "Ubuntu-HPC",
+   ```
+- Skripts, die bei der Erstellung der Ubuntu-HPC-VM-Images aus einem Ubuntu-Basisimage aus dem Marketplace verwendet werden, befinden sich im Repository [azhpc-images](https://github.com/Azure/azhpc-images/tree/master/ubuntu).
+- Weitere Einzelheiten zum Funktionsumfang und zur Bereitstellung der Ubuntu-HPC-VM-Images finden Sie in einem [TechCommunity-Artikel](https://techcommunity.microsoft.com/t5/azure-compute/azure-hpc-vm-images/ba-p/977094).
 
+### <a name="rhelcentos-vm-images"></a>RHEL/CentOS-VM-Images
+Die RHEL- oder CentOS-basierten Nicht-HPC-VM-Basisimages im Marketplace können für die Verwendung auf SR-IOV-aktivierten, [RDMA-fähigen VMs](../../sizes-hpc.md#rdma-capable-instances) konfiguriert werden. Informieren Sie sich ausführlicher über die [Aktivierung von InfiniBand](enable-infiniband.md) und [MPI-Einrichtung](setup-mpi.md) auf den VMs.
+- Skripts, die bei der Erstellung der VM-Images der CentOS-HPC-Version ab 7.6 aus einem CentOS-Basis-Image im Marketplace verwendet werden, finden Sie im [Repository „azhpc-images“](https://github.com/Azure/azhpc-images/tree/master/centos).
+ 
 ### <a name="ubuntu-vm-images"></a>Ubuntu-VM-Images
-Die VM-Images von Ubuntu Server 16.04 LTS, 18.04 LTS und 20.04 LTS im Marketplace werden sowohl für SR-IOV unterstützende als auch für SR-IOV nicht unterstützende [RDMA-fähige VMS](../../sizes-hpc.md#rdma-capable-instances) unterstützt. Informieren Sie sich ausführlicher über die [Aktivierung von InfiniBand](enable-infiniband.md) und [MPI-Einrichtung](setup-mpi.md) auf den VMs.
+Die VM-Basisimages mit Ubuntu Server 16.04 LTS, 18.04 LTS und 20.04 LTS im Marketplace werden für [RDMA-fähige VMs](../../sizes-hpc.md#rdma-capable-instances) mit und ohne SR-IOV unterstützt. Informieren Sie sich ausführlicher über die [Aktivierung von InfiniBand](enable-infiniband.md) und [MPI-Einrichtung](setup-mpi.md) auf den VMs.
 - Anweisungen zur Aktivierung von InfiniBand in den Ubuntu-VM-Images finden Sie in einem [TechCommunity-Artikel](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351).
 - Skripts, die bei der Erstellung der auf Ubuntu 18.04 und 20.04 LTS basierenden HPC VM-Images aus einem Ubuntu-Basis-Image aus dem Marketplace verwendet werden, befinden sich im [ Repository „azhpc-images“](https://github.com/Azure/azhpc-images/tree/master/ubuntu).
 
+> [!NOTE]
+> Ab Mellanox OFED 5.1 werden keine ConnectX3-Pro-InfiniBand-Karten auf für SR-IOV aktivierten VM-Größen der N-Serie mit FDR-InfiniBand (z. B. NCv3) unterstützt. Verwenden Sie LTS Mellanox OFED ab Version 4.9-0.1.7.0 auf den VMs der N-Serie mit ConnectX3-Pro-Karten. Ausführlichere Informationen finden Sie [hier](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
+
 ### <a name="suse-linux-enterprise-server-vm-images"></a>SUSE Linux Enterprise Server-VM-Images
-SLES 12 SP3 for HPC-, SLES 12 SP3 for HPC (Premium)-, SLES 12 SP1 for HPC-, SLES 12 SP1 for HPC (Premium)-, SLES 12 SP4- und SLES 15-VM-Images im Marketplace werden unterstützt. Bei diesen VM-Images sind die Network Direct-Treiber für RDMA und Intel MPI Version 5.1 vorab geladen. Informieren Sie sich über das [Einrichten von MPI](setup-mpi.md) auf den VMs.
+SLES 12 SP3 for HPC-, SLES 12 SP3 for HPC (Premium)-, SLES 12 SP1 for HPC-, SLES 12 SP1 for HPC (Premium)-, SLES 12 SP4- und SLES 15-VM-Images im Marketplace werden unterstützt. Bei diesen VM-Images sind die Network Direct-Treiber für RDMA (bei VM-Größen ohne SR-IOV) und Intel MPI Version 5.1 vorab geladen. Informieren Sie sich über das [Einrichten von MPI](setup-mpi.md) auf den VMs.
 
 ## <a name="optimize-vms"></a>Optimieren von VMs
 
@@ -124,7 +157,7 @@ Optional kann der WALinuxAgent zur maximalen Verfügbarkeit der VM-Ressource fü
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die [InfiniBand-Aktivierung](enable-infiniband.md) auf der InfiniBand-fähigen [H-Serie](../../sizes-hpc.md) und [N-Serie](../../sizes-gpu.md) virtueller Computer.
-- Erfahren Sie mehr über die Installation verschiedener [unterstützter MPI-Bibliotheken](setup-mpi.md) sowie ihre optimale Konfiguration auf den VMs.
-- Weitere Informationen finden Sie in den Artikeln [Übersicht über virtuelle Computer der HBv3-Serie](hbv3-series-overview.md) und [Übersicht über virtuelle Computer der HC-Serie](hc-series-overview.md).
+- Erfahren Sie mehr über die Installation und Ausführung verschiedener [unterstützter MPI-Bibliotheken](setup-mpi.md) auf den VMs.
+- Weitere Informationen finden Sie in der [Übersicht über virtuelle Computer der HBv3-Serie](hbv3-series-overview.md) und in der [Übersicht über virtuelle Computer der HC-Serie](hc-series-overview.md).
 - Informieren Sie sich über die neuesten Ankündigungen, HPC-Workloadbeispiele und Leistungsergebnisse in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Eine allgemeinere Übersicht über die Architektur für die Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).

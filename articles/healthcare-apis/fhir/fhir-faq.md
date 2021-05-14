@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/21/2021
+ms.date: 04/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 22d9df80bce6e79f0058567f8df76935e431e598
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 14328179a297ebcc3994bf627b1690195774b2b1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019334"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741129"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Häufig gestellte Fragen zu Azure API for FHIR
 
@@ -49,10 +49,6 @@ Bei Verwendung des FHIR-Servers für Azure haben Sie direkten Zugriff auf die zu
 
 Aus Entwicklungssicht wird jedes Feature, das nicht nur für den verwalteten Dienst gilt, zuerst für den Microsoft Open-Source-FHIR-Server für Azure bereitgestellt. Nachdem es in der Open-Source-Lösung überprüft wurde, wird es in der PaaS-Lösung von Azure API for FHIR veröffentlicht. Die Zeit zwischen der Veröffentlichung in der Open-Source- und der PaaS-Lösung hängt von der Komplexität des Features und anderen Roadmapprioritäten ab. Dieser Prozess ist für alle unsere Dienste gleich – beispielsweise für Azure IoT Connector for FHIR (Vorschau).
 
-### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Wo kann ich sehen, was in Azure API for FHIR veröffentlicht wird?
-
-Informationen zu den Funktionen, die in Azure API for FHIR veröffentlicht werden, finden Sie in dem [Release](https://github.com/microsoft/fhir-server/releases) des Open-Source-FHIR-Servers. Ab November 2020 werden Elemente mit „Azure-API-for-FHIR“ gekennzeichnet, wenn das Open-Source-Element für den verwalteten Dienst veröffentlicht wird. Diese Features werden in der Regel zwei Wochen nach Anzeige auf der Releaseseite in Open-Source verfügbar. Darüber hinaus haben wir [hier] (https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md) eine Anleitung zum Testen des Builds bereitgestellt, wenn Sie Tests in Ihrer eigenen Umgebung durchführen möchten. Wir evaluieren, wie sich zusätzliche verwaltete Dienstupdates am besten teilen lassen.
-
 ### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>In welchen Regionen ist Azure API for FHIR verfügbar?
 
 Aktuell besteht sowohl für den öffentlichen und behördlichen Bereich allgemeine Verfügbarkeit in [mehreren geografischen Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia). Weitere Informationen zu Government Cloud Services bei Microsoft finden Sie unter [Azure-Dienste nach FedRAMP- und DoD CC SRG-Prüfumfang](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
@@ -82,7 +78,7 @@ Wir erlauben Ihnen, alle gültigen FHIR-JSON-Daten in den Server zu laden. Wenn 
 
 ### <a name="what-is-the-limit-on-_count"></a>Welcher Grenzwert gilt für _count?
 
-Der aktuelle Grenzwert für „_count“ liegt bei 100. Wenn Sie „_count“ auf mehr als 100 festlegen, wird im Paket eine Warnung mit dem Hinweis angezeigt, dass nur 100 Datensätze angezeigt werden.
+Der aktuelle Grenzwert für _count ist 1000. Wenn Sie _count 1000 festlegen, erhalten Sie im Paket eine Warnung, dass nur 1.000 Datensätze angezeigt werden.
 
 ### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>Gelten Einschränkungen für die Funktion „Gruppenexport“?
 
@@ -104,7 +100,7 @@ Einige Beispiele hierfür sehen Sie im Folgenden:
 
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Welche Sortierung wird bei der Suche nach Ressourcen in Azure API for FHIR standardmäßig verwendet?
 
-Als Sortierkriterium wird das Datum der letzten Aktualisierung unterstützt: _sort=_lastUpdated. Weitere Informationen zu anderen unterstützten Suchparametern finden Sie auf der [Seite mit den unterstützten Features](fhir-features-supported.md#search).
+Als Sortierkriterium wird das Datum der letzten Aktualisierung unterstützt: _sort=_lastUpdated. Weitere Informationen zu anderen unterstützten Suchparametern finden Sie unter [Übersicht über die FHIR-Suche.](overview-of-search.md)
 
 ### <a name="does-the-azure-api-for-fhir-support-everything"></a>Unterstützt die Azure API for FHIR „$everything“? 
 

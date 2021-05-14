@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/22/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 6f70ae726cf41395e46760dc5cf7da5b4d61478a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 40e3e804d62bfd0ece669ebd46891f0c72dcb71e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802895"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140333"
 ---
 # <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Konfigurieren der Blobindizierung in Cognitive Search
 
@@ -113,6 +113,7 @@ In einem Suchindex wird jedes Dokument anhand des Dokumentschlüssels eindeutig 
 > [!IMPORTANT]
 > Wenn keine ausdrückliche Zuordnung für das Schlüsselfeld im Index vorhanden ist, wird in der kognitiven Azure-Suche automatisch `metadata_storage_path` als Schlüssel verwendet, und die Schlüsselwerte werden Base64-codiert (zweite Option oben).
 >
+> Wenn Sie eine benutzerdefinierte Metadateneigenschaft als Schlüssel verwenden, vermeiden Sie es, Änderungen an dieser Eigenschaft vorzunehmen. Indexer fügen doppelte Dokumente für denselben Blob hinzu, wenn sich die Schlüsseleigenschaft ändert.
 
 #### <a name="example"></a>Beispiel
 

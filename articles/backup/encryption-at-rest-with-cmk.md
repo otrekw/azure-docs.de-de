@@ -2,13 +2,13 @@
 title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: b6cb1a288d0052b39bbeb52ed9fd20e68a6427ed
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 04/19/2021
+ms.openlocfilehash: bd51be06e707674f3e35b3478d7f99d096be912a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167889"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718771"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -44,7 +44,7 @@ In diesem Artikel werden die folgenden Themen behandelt:
     >Verwenden Sie das Az-Modul 5.3.0 oder höher, um für Sicherungen im Recovery Services-Tresor kundenseitig verwaltete Schlüssel zu verwenden.
     
     >[!Warning]
-    >Wenn Sie PowerShell zum Verwalten von Verschlüsselungsschlüsseln für die Sicherung verwenden, empfiehlt es sich nicht, die Schlüssel über das Portal zu aktualisieren.<br></br>Wenn Sie den Schlüssel über das Portal aktualisieren, können Sie PowerShell nicht verwenden, um den Verschlüsselungsschlüssel weiter zu aktualisieren, bis ein PowerShell-Update zur Unterstützung des neuen Modells verfügbar ist. Sie können jedoch weiterhin den Schlüssel aus der Azure-Portal aktualisieren.
+    >Wenn Sie PowerShell zum Verwalten von Verschlüsselungsschlüsseln für die Sicherung verwenden, empfiehlt es sich nicht, die Schlüssel über das Portal zu aktualisieren.<br>Wenn Sie den Schlüssel über das Portal aktualisieren, können Sie PowerShell nicht verwenden, um den Verschlüsselungsschlüssel weiter zu aktualisieren, bis ein PowerShell-Update zur Unterstützung des neuen Modells verfügbar ist. Sie können jedoch weiterhin den Schlüssel aus der Azure-Portal aktualisieren.
 
 Wenn Sie Ihren Recovery Services-Tresor noch nicht erstellt und konfiguriert haben, erfahren Sie [hier](backup-create-rs-vault.md), wie Sie vorgehen können.
 
@@ -383,6 +383,16 @@ Wenn Sie den kundenseitig verwalteten Schlüssel angeben, der zum Verschlüsseln
 Mithilfe der Option **Aus Schlüsseltresor auswählen können Sie** die automatische Drehung für den ausgewählten Schlüssel aktivieren. Dadurch entfällt der manuelle Versuch, auf die nächste Version zu aktualisieren. Mit dieser Option können Sie jedoch Folgendes ausführen:
 - Die Aktualisierung der Aktualisierung der Schlüsselversion kann bis zu einer Stunde dauern.
 - Wenn eine neue Version des Schlüssels in Kraft tritt, sollte die alte Version auch für mindestens einen nachfolgenden Sicherungsauftrag verfügbar sein (in aktiviertem Zustand), nachdem das Schlüsselupdate wirksam wurde.
+
+### <a name="using-azure-policies-for-auditing-and-enforcing-encryption-utilizing-customer-managed-keys-in-preview"></a>Verwenden von Azure-Richtlinien zum Überwachen und Erzwingen der Verschlüsselung mithilfe kundenseitig verwalteter Schlüssel (Vorschau)
+
+Azure Backup ermöglicht die Verwendung von Azure-Richtlinien, um die Verschlüsselung von Daten im Recovery Services-Tresor mithilfe kundenseitig verwalteter Schlüssel zu überwachen und zu erzwingen. Verwendung der Azure-Richtlinien:
+
+- Die Überwachungsrichtlinie kann für das Überwachen von Tresoren mit Verschlüsselung mithilfe kundenseitig verwalteter Schlüssel (CMKs) verwendet werden, die nach dem 01.04.2021 aktiviert wurden. Bei Tresoren, bei denen die CMK-Verschlüsselung vor diesem Datum aktiviert wurde, kann die Richtlinie möglicherweise nicht angewendet werden oder führt zu falsch negativen Ergebnissen (d. h. diese Tresore werden möglicherweise als nicht konform gemeldet, obwohl die **CMK-Verschlüsselung** aktiviert ist).
+- Um die Überwachungsrichtlinie zum Überwachen von Tresoren mit einer vor dem 01.04.2021 aktivierten **CMK-Verschlüsselung** zu verwenden, aktualisieren Sie einen Verschlüsselungsschlüssel über das Azure-Portal. Dies hilft beim Upgrade auf das neue Modell. Wenn Sie den Verschlüsselungsschlüssel nicht ändern möchten, geben Sie denselben Schlüssel über den Schlüssel-URI oder die Option zur Schlüsselauswahl erneut an. 
+
+   >[!Warning]
+    >Wenn Sie PowerShell zum Verwalten von Verschlüsselungsschlüsseln für die Sicherung verwenden, empfiehlt es sich nicht, die Schlüssel über das Portal zu aktualisieren.<br>Wenn Sie den Schlüssel über das Portal aktualisieren, können Sie PowerShell nicht verwenden, um den Verschlüsselungsschlüssel weiter zu aktualisieren, bis ein PowerShell-Update zur Unterstützung des neuen Modells verfügbar ist. Sie können jedoch weiterhin den Schlüssel aus der Azure-Portal aktualisieren.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

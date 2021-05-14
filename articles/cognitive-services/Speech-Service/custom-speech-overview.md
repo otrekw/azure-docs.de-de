@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: 13bf0f2430e0d58dd9ef28061aad897acf94ac3f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 5ffae530bcd8a7274b4b75c447591cf619012661
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103493049"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106387059"
 ---
 # <a name="what-is-custom-speech"></a>Was ist Custom Speech?
 
@@ -81,7 +81,7 @@ Wählen Sie zum Erstellen Ihres ersten Projekts die **Spracherkennung/Custom Spe
 
 ## <a name="model-and-endpoint-lifecycle"></a>Lebenszyklus von Modell und Endpunkt
 
-Ältere Modelle werden in der Regel mit der Zeit weniger nützlich, da das neueste Modell in der Regel eine höhere Genauigkeit aufweist. Daher laufen Basismodelle sowie benutzerdefinierte Modelle und Endpunkte, die über das Portal erstellt wurden, nach einem Jahr für die Anpassung und nach zwei Jahren für die Decodierung ab. Eine ausführliche Beschreibung finden Sie im Artikel [Lebenszyklus von Modell und Endpunkt](./how-to-custom-speech-model-and-endpoint-lifecycle.md).
+Ältere Modelle werden in der Regel mit der Zeit weniger nützlich, da das neueste Modell in der Regel eine höhere Genauigkeit aufweist. Daher laufen Basismodelle sowie benutzerdefinierte Modelle und Endpunkte, die über das Portal erstellt wurden, nach einem Jahr für die Anpassung und nach zwei Jahren für die Decodierung ab. Eine ausführliche Beschreibung finden Sie im Artikel [Lebenszyklus des Modells und Endpunkt](./how-to-custom-speech-model-and-endpoint-lifecycle.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

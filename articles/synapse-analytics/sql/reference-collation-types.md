@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 436dbac814197556385a33d956928f97fd4716bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a83646556838732a3b79f93771c762f00ed5afc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93311923"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144293"
 ---
 # <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>In Azure Synapse Analytics unterstützte Typen für die Datenbanksortierung für Synapse SQL 
 
@@ -115,7 +115,5 @@ Wenn „Collation“ als Eigenschaftenparameter übergeben wird, gibt die Funkti
 
 Weitere Informationen zu bewährten Methoden für dedizierte SQL-Pools und serverlose SQL-Pools finden Sie in den folgenden Artikeln:
 
-- [Best Practices für dedizierte SQL-Pools](best-practices-sql-pool.md)
-- [Best Practices für serverlose SQL-Pools](best-practices-sql-on-demand.md)
-
-
+- [Best Practices für dedizierte SQL-Pools](./best-practices-dedicated-sql-pool.md)
+- [Best Practices für serverlose SQL-Pools](./best-practices-serverless-sql-pool.md)

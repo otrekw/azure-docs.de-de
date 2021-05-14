@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 785c87e8136430557af819cd8c7ab1db8f54c060
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4240e7ad53725494a2b9b04d827fef0395c1bd2
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507720"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483171"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -119,7 +119,7 @@ In dieser Vereinbarung ist die garantierte Verfügbarkeit und Konnektivität bes
 Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).
 
 ## <a name="shared-access-signature-sas"></a><a name="sas"></a>Shared Access Signature (SAS)
-Eine Signatur, mit der Sie eingeschränkten Zugriff auf eine Ressource gewähren können, ohne Ihren Kontoschlüssel offenzulegen. Ein Beispiel: [Azure Storage verwendet SAS](./storage/common/storage-sas-overview.md), um Clients Zugriff auf Objekte (beispielsweise Blobs) zu gewähren. [IoT Hub verwendet SAS](iot-hub/iot-hub-devguide-security.md#security-tokens), um Geräten Berechtigungen zum Senden von Telemetriedaten zu erteilen.
+Eine Signatur, mit der Sie eingeschränkten Zugriff auf eine Ressource gewähren können, ohne Ihren Kontoschlüssel offenzulegen. Ein Beispiel: [Azure Storage verwendet SAS](./storage/common/storage-sas-overview.md), um Clients Zugriff auf Objekte (beispielsweise Blobs) zu gewähren. [IoT Hub verwendet SAS](iot-hub/iot-hub-dev-guide-sas.md#security-tokens), um Geräten Berechtigungen zum Senden von Telemetriedaten zu erteilen.
 
 ## <a name="storage-account"></a>Speicherkonto
 Ein Konto, das den Zugriff auf die Blob-, Warteschlangen-, Tabellen- und Dateidienste in Azure Storage ermöglicht. Der Name des Speicherkontos definiert den eindeutigen Namespace für Azure Storage-Datenobjekte.  

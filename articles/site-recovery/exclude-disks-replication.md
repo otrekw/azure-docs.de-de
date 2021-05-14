@@ -3,12 +3,12 @@ title: Ausschließen von Datenträgern von der Replikation mit Azure Site Recove
 description: Es wird beschrieben, wie Sie Datenträger mit Azure Site Recovery von der Replikation in Azure ausschließen.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45ee7b23d01ff80bcb2e090688626f3f7fccb146
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008258"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131116"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Ausschließen von Datenträgern von der Notfallwiederherstellung
 
@@ -267,5 +267,5 @@ Unsere Einstellungen für die Auslagerungsdatei auf der Azure-VM lauten wie folg
 
 - Weitere Informationen zu den Richtlinien für den Datenträger zur temporären Speicherung:
     - [Informieren Sie sich](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) über die Verwendung von SSDs auf Azure-VMs zum Speichern der SQL Server-Datenbank „TempDB“ und von Pufferpoolerweiterungen.
-    - [Informieren Sie sich](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) über die bewährten Methoden in Bezug auf die Leistung für SQL Server auf Azure-VMs.
+    - [Informieren Sie sich](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md) über die bewährten Methoden in Bezug auf die Leistung für SQL Server auf Azure-VMs.
 - Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich über die unterschiedlichen Failoverarten [informieren](failover-failback-overview.md) .

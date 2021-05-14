@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 2f321413a275676d0abb1a075ba958885ffcd821
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 67bc4218e28e561b618ab092f0b73207438bd2aa
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505024"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633337"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Behandeln häufiger Probleme beim Windows Virtual Desktop-Agent
 
@@ -213,33 +213,6 @@ So lösen Sie das Problem:
 7. Wechseln Sie zu **HKEY_LOCAL_MACHINE** > **SYSTEM** > **CurrentControlSet** > **Control** > **Terminal Server** > **ClusterSettings**.
 8. Suchen Sie unter **ClusterSettings** nach **SessionDirectoryListener**, und stellen Sie sicher, dass der Datenwert **rdp-sxs...** lautet.
 9. Wenn **SessionDirectoryListener** nicht auf **rdp-sxs...** festgelegt ist, müssen Sie die Schritte im Abschnitt [Deinstallieren sämtlicher Komponenten für Agent, Bootloader und Stapel](#step-1-uninstall-all-agent-boot-loader-and-stack-component-programs) ausführen. Damit werden zunächst der Agent, der Bootloader und die Stapelkomponenten deinstalliert. [Installieren Sie Agent und Bootloader danach neu](#step-4-reinstall-the-agent-and-boot-loader). Damit wird der parallele Stapel neu installiert.
-
-## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>Fehler: Heartbeatproblem, bei dem die Verbindung von Benutzern mit Sitzungshosts immer wieder getrennt wird
-
-Wenn Ihr Server kein Heartbeatsignal vom Windows Virtual Desktop-Dienst empfängt, müssen Sie den Schwellenwert für den Heartbeat ändern. Dadurch werden die Problemsymptome vorübergehend minimiert, das zugrunde liegende Netzwerkproblem wird jedoch nicht behoben. Führen Sie die Anweisungen in diesem Abschnitt aus, wenn mindestens eines der folgenden Szenarien auf Sie zutrifft:
-
-- Sie erhalten einen **CheckSessionHostDomainIsReachableAsync**-Fehler.
-- Sie erhalten einen **ConnectionBrokenMissedHeartbeatThresholdExceeded**-Fehler.
-- Sie erhalten einen **ConnectionEstablished:UnexpectedNetworkDisconnect**-Fehler.
-- Benutzerclients werden immer wieder getrennt.
-- Die Verbindung von Benutzern mit ihren Sitzungshosts wird immer wieder getrennt.
-
-So ändern Sie den Schwellenwert für den Heartbeat:
-1. Öffnen Sie eine Eingabeaufforderung als Administrator.
-2. Geben Sie den Befehl **qwinsta** ein, und führen Sie ihn aus.
-3. Es sollten zwei Stapelkomponenten angezeigt werden: **rdp-tcp** und **rdp-sxs**. 
-   - Je nach verwendeter Betriebssystemversion folgt nach **rdp-sxs** möglicherweise eine Buildnummer. Wenn dies der Fall ist, notieren Sie sich diese Nummer für später.
-4. Öffnen Sie den Registrierungs-Editor.
-5. Wechseln Sie zu **HKEY_LOCAL_MACHINE** > **SYSTEM** > **CurrentControlSet** > **Control** > **Terminal Server** > **WinStations**.
-6. Unter **WinStations** werden möglicherweise mehrere Ordner für verschiedene Stapelversionen angezeigt. Wählen Sie den Ordner aus, der der Versionsnummer aus Schritt 3 entspricht.
-7. Erstellen Sie einen neuen DWORD-Wert in der Registrierung, indem Sie mit der rechten Maustaste in den Registrierungs-Editor klicken und **Neu** > **DWORD-Wert (32-Bit)** auswählen. Geben Sie zum Erstellen des DWORD-Werts die folgenden Werte ein:
-   - HeartbeatInterval: 10000
-   - HeartbeatWarnCount: 30 
-   - HeartbeatDropCount: 60 
-8. Starten Sie den virtuellen Computer neu.
-
->[!NOTE]
->Wenn das Problem durch Ändern des Heartbeatschwellenwerts nicht gelöst wird, liegt möglicherweise ein grundlegendes Netzwerkproblem vor, und Sie müssen das Azure-Netzwerkteam kontaktieren.
 
 ## <a name="error-downloadmsiexception"></a>Error: DownloadMsiException
 

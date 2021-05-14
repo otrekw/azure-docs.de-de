@@ -3,17 +3,17 @@ title: Verwalten der Azure-Kosten mithilfe einer Automatisierung
 description: In diesem Artikel wird erläutert, wie Sie Azure-Kosten mithilfe einer Automatisierung verwalten können.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/08/2021
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: f5cebffeaba1ce198be347758004068e8c03133b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 2a39f77e3e7409d23ab7506b525f65e01082e99e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499678"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720116"
 ---
 # <a name="manage-costs-with-automation"></a>Verwalten der Kosten per Automatisierung
 
@@ -74,6 +74,10 @@ Preisverhalten für Nutzungsdetails: In Nutzungsdateien werden skalierte Informa
   - Enthaltene Menge – Beispiel: Die ersten 100 Einheiten sind kostenlos, und dann fallen Kosten von 10 USD pro Einheit an.
   - Reservations
   - Rundung während der Berechnung: Bei der Rundung werden die verbrauchte Menge, die mehrstufigen Preise bzw. die Preise für die enthaltene Menge und der Preis für die skalierte Einheit berücksichtigt.
+
+### <a name="a-single-resource-might-have-multiple-records-for-a-single-day"></a>Eine einzelne Ressource kann über mehrere Datensätze für einen einzelnen Tag verfügen.
+
+Azure-Ressourcenanbieter geben Nutzung und Gebühren an das Abrechnungssystem aus und füllen das Feld `Additional Info` der Nutzungsdatensätze auf. Gelegentlich geben Ressourcenanbieter die Nutzung für einen bestimmten Tag aus und stempeln die Datensätze mit unterschiedlichen Rechenzentren im Feld `Additional Info` der Nutzungsdatensätze. Dies kann dazu führen, dass in Ihrer Nutzungsdatei mehrere Datensätze für eine Verbrauchseinheit/Ressource für einen einzelnen Tag vorhanden sind. In diesem Fall wird Ihnen kein zu hoher Betrag in Rechnung gestellt. Die verschiedenen Datensätze stellen die vollständigen Kosten der Verbrauchseinheit für die Ressource an diesem Tag dar.
 
 ## <a name="example-usage-details-api-requests"></a>Nutzungsdetails-API – Beispielanforderungen
 
@@ -182,9 +186,9 @@ Von einem Kulturcode unterstützte Sprachen:
 | pl-PL | Polnisch (Polen) |
 | tr-TR | Türkisch (Türkei) |
 | da-DK | Dänisch (Dänemark) |
-| dn-gb | Walisisch (Großbritannien) |
+| en-gb | Walisisch (Großbritannien) |
 | hu-hu | Ungarisch (Ungarn) |
-| nb-bo | Norwegisch Bokmål (Norwegen) |
+| nb-NO | Norwegisch Bokmål (Norwegen) |
 | nl-NL | Niederländisch (Niederlande) |
 | pt-pt | Portugiesisch (Portugal) |
 | sv-SE | Schwedisch (Schweden) |

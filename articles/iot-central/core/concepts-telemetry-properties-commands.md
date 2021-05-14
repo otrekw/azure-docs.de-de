@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: f027b2d41f63b5aa7ea3df87e06224abd629799b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11bfe1fbb9b0ba7c38eb946918b04d1568d2d1da
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100535313"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108000996"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetrie-, Eigenschaften- und Befehlsnutzlasten
 
@@ -51,6 +51,10 @@ In IoT Central können Sie die Rohdaten anzeigen, die ein Gerät an eine Anwendu
     In dieser Ansicht können Sie die anzuzeigenden Spalten auswählen und einen Zeitbereich zum Anzeigen festlegen. In der Spalte für **Nicht modellierte Daten** werden die Daten des Geräts angezeigt, die keiner der Definitionen für Eigenschaften oder Telemetriedaten in der Gerätevorlage entsprechen.
 
 ## <a name="telemetry"></a>Telemetrie
+
+### <a name="telemetry-in-components"></a>Telemetrie in Komponenten
+
+Wenn die Telemetrie in einer Komponente definiert ist, fügen Sie eine benutzerdefinierte Nachrichteneigenschaft namens `$.sub` mit dem Namen der Komponente hinzu, wie im Gerätemodell definiert. Weitere Informationen finden Sie unter [Tutorial: Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md).
 
 ### <a name="primitive-types"></a>Einfache Typen
 
@@ -437,6 +441,21 @@ Ein Geräteclient sollte den Zustand als JSON-Code senden, der wie im folgenden 
 > [!NOTE]
 > Die Nutzlastformate für Eigenschaften gelten für Anwendungen, die am 14.07.2020 oder danach erstellt wurden.
 
+### <a name="properties-in-components"></a>Eigenschaften in Komponenten
+
+Wenn die Eigenschaft in einer-Komponente definiert ist, umschließen Sie die Eigenschaft im Komponentennamen. Im folgenden Beispiel wird `maxTempSinceLastReboot` in der Komponente `thermostat2` festgelegt. Der Marker `__t` gibt an, dass es sich um eine Komponente handelt:
+
+```json
+{
+  "thermostat2" : {  
+    "__t" : "c",  
+    "maxTempSinceLastReboot" : 38.7
+    } 
+}
+```
+
+Weitere Informationen finden Sie unter [Tutorial: Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md).
+
 ### <a name="primitive-types"></a>Einfache Typen
 
 In diesem Abschnitt werden Beispiele für einfache Eigenschaftstypen gezeigt, die ein Gerät an eine IoT Central-Anwendung sendet.
@@ -715,11 +734,27 @@ Ein Geräteclient sollte eine JSON-Nutzlast, die wie im folgenden Beispiel aussi
 }
 ```
 
-### <a name="writeable-property-types"></a>Schreibbare Eigenschaftstypen
+### <a name="writable-property-types"></a>Beschreibbare Eigenschaftstypen
 
-In diesem Abschnitt werden Beispiele für schreibbare Eigenschaftstypen gezeigt, die ein Gerät von einer IoT Central-Anwendung empfängt.
+In diesem Abschnitt werden Beispiele für beschreibbare Eigenschaftstypen gezeigt, die ein Gerät von einer IoT Central-Anwendung empfängt.
 
-IoT Central erwartet vom Gerät eine Antwort zu Aktualisierungen von schreibbaren Eigenschaften. Die Antwortnachricht sollte die Felder `ac` und `av` enthalten. Das Feld `ad` ist optional. Beispiele hierzu finden Sie in den folgenden Codeausschnitten.
+Wenn die beschreibbare Eigenschaft in einer Komponente definiert ist, enthält die gewünschte Eigenschaftsnachricht den Komponentennamen. Das folgende Beispiel zeigt die Nachricht, in der das Gerät zum Aktualisieren von `targetTemperature` in der Komponente `thermostat2` aufgefordert wird. Der Marker `__t` gibt an, dass es sich um eine Komponente handelt:
+
+```json
+{
+  "thermostat2": {
+    "targetTemperature": {
+      "value": 57
+    },
+    "__t": "c"
+  },
+  "$version": 3
+}
+```
+
+Weitere Informationen finden Sie unter [Tutorial: Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md).
+
+IoT Central erwartet vom Gerät eine Antwort auf Aktualisierungen von beschreibbaren Eigenschaften. Die Antwortnachricht sollte die Felder `ac` und `av` enthalten. Das Feld `ad` ist optional. Beispiele hierzu finden Sie in den folgenden Codeausschnitten.
 
 `ac` ist ein numerisches Feld, in dem die Werte in der folgenden Tabelle verwendet werden:
 
@@ -734,7 +769,7 @@ IoT Central erwartet vom Gerät eine Antwort zu Aktualisierungen von schreibbare
 
 `ad` ist eine Beschreibung der Optionszeichenfolge.
 
-Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines schreibbaren `string`-Eigenschaftstyps:
+Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines beschreibbaren `string`-Eigenschaftstyps:
 
 ```json
 {
@@ -769,7 +804,7 @@ Das Gerät sollte nach Verarbeitung des Updates die folgende JSON-Nutzlast an Io
 }
 ```
 
-Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines schreibbaren `Enum`-Eigenschaftstyps:
+Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines beschreibbaren `Enum`-Eigenschaftstyps:
 
 ```json
 {
@@ -834,6 +869,8 @@ Das Gerät sollte nach Verarbeitung des Updates die folgende JSON-Nutzlast an Io
 ```
 
 ## <a name="commands"></a>Befehle
+
+Wenn der Befehl in einer Komponente definiert ist, enthält der Name des vom Gerät empfangenen Befehls den Komponentennamen. Beispiel: Wenn der Befehl `getMaxMinReport` und die Komponente `thermostat2` lautet, empfängt das Gerät eine Anforderung zum Ausführen eines Befehls namens `thermostat2*getMaxMinReport`.
 
 Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines Befehls, der weder Parameter aufweist noch eine Rückgabe vom Gerät erwartet:
 
@@ -1005,11 +1042,20 @@ Wenn das Gerät die Verarbeitung der Anforderung abgeschlossen hat, sollte es ei
 
 ### <a name="offline-commands"></a>Offlinebefehle
 
-In der IOT Central-Webbenutzeroberfläche können Sie die Option **Warteschlange (falls offline)** für einen Befehl auswählen. Offlinebefehle sind unidirektionale Benachrichtigungen von Ihrer Lösung an ein Gerät, die übermittelt werden, sobald das Gerät eine Verbindung herstellt. Offlinebefehle können Anforderungsparameter aufweisen, geben aber keine Antwort zurück.
+In der IOT Central-Webbenutzeroberfläche können Sie die Option **Warteschlange (falls offline)** für einen Befehl auswählen. Offlinebefehle sind unidirektionale Benachrichtigungen von Ihrer Lösung an ein Gerät, die übermittelt werden, sobald das Gerät eine Verbindung herstellt. Offlinebefehle können einen Anforderungsparameter enthalten, geben aber keine Antwort zurück.
 
 Die Einstellung **Warteschlange (falls offline)** wird nicht einbezogen, wenn Sie ein Modell oder eine Schnittstelle aus der Gerätevorlage exportieren. Wenn Sie sich ein exportiertes Modell oder ein Interface-JSON anschauen, können Sie nicht erkennen, ob ein Befehl ein Offline-Befehl ist.
 
 Offline Befehle verwenden [Cloud-zu-Gerät-Nachrichten von IoT Hub](../../iot-hub/iot-hub-devguide-messages-c2d.md), um den Befehl und die Nutzlast an das Gerät zu senden.
+
+Die Nutzlast der Nachricht, die das Gerät empfängt, ist der Rohwert des Parameters. Der Name des IoT Central-Befehls wird in der benutzerdefinierten Eigenschaft `method-name` gespeichert. Die folgende Tabelle zeigt einige Beispielnutzlasten:
+
+| IoT Central Anforderungsschema | Beispielnutzlast, die vom Gerät empfangen wurde |
+| -------------------------- | ---------------------------------- |
+| Kein Anforderungsparameter       | `@`                                |
+| Double                     | `1.23`                             |
+| String                     | `sample string`                    |
+| Object                     | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
 
 Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines Befehls. Der Befehl enthält einen Objektparameter mit einem „DateTime“-Feld und einer Enumeration:
 

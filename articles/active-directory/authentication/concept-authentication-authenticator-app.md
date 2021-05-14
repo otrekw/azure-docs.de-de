@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e33c87d53580d96363ba15bccbc889370f2479d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3175b1292a7e69506b9193d1182e184e257ebda3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212908"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530508"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Authentifizierungsmethoden in Azure Active Directory – Microsoft Authenticator-App
 
@@ -62,4 +62,4 @@ Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-
 
 Informationen zu den ersten Schritten mit der Anmeldung ohne Kennwort finden Sie unter [Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App](howto-authentication-passwordless-phone.md).
 
-Im Artikel [API-Übersicht zu Azure AD-Authentifizierungsmethoden](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta) finden Sie weitere Informationen zur Betaversion der REST-API für Microsoft Graph.
+Lernen Sie mehr über die Konfiguration der Authentifizierungsmethoden mithilfe der [Microsoft Graph REST-API](/graph/api/resources/authenticationmethods-overview).

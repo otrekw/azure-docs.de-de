@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 9678648b6417138e216ba2dce3a3605bb4c1bce4
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d03a221a38bc7a6f929ebcec45526aaab17dc654
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169231"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483279"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -158,11 +158,11 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
   > [!NOTE]
-  > Bei Verwendung der X.509-Zertifikatauthentifizierung sind keine SAS-Tokenkennwörter erforderlich. Weitere Informationen finden Sie unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](iot-hub-security-x509-get-started.md). Befolgen Sie außerdem die Codeanweisungen im [Abschnitt „TLS/SSL-Konfiguration“](#tlsssl-configuration).
+  > Bei Verwendung der X.509-Zertifikatauthentifizierung sind keine SAS-Tokenkennwörter erforderlich. Weitere Informationen finden Sie unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](./tutorial-x509-scripts.md). Befolgen Sie außerdem die Codeanweisungen im [Abschnitt „TLS/SSL-Konfiguration“](#tlsssl-configuration).
 
-  Weitere Informationen zum Generieren von SAS-Token finden Sie unter [Verwenden von IoT-Hub-Sicherheitstoken](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app) im Abschnitt zu Geräten.
+  Weitere Informationen zum Generieren von SAS-Token finden Sie unter [Verwenden von IoT-Hub-Sicherheitstoken](iot-hub-dev-guide-sas.md#use-sas-tokens-as-a-device) im Abschnitt zu Geräten.
 
-  Beim Testen können Sie auch mithilfe der plattformübergreifenden [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) oder des CLI-Erweiterungsbefehls [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) schnell ein SAS-Token generieren, das Sie kopieren und in Ihren eigenen Code einfügen können.
+  Beim Testen können Sie auch mithilfe der plattformübergreifenden [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) oder des CLI-Erweiterungsbefehls [az iot hub generate-sas-token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token) schnell ein SAS-Token generieren, das Sie kopieren und in Ihren eigenen Code einfügen können.
 
 ### <a name="for-azure-iot-tools"></a>Für Azure IoT Tools
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 4b4ee9d1e583241f8ec9b467ae9ddfdb1360fb52
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 37ac7573a1794c97c81fe5364204f85ff14d9fa6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284701"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538084"
 ---
 # <a name="spatial-analysis-operations"></a>Vorgänge der räumlichen Analyse
 
@@ -88,7 +88,7 @@ Hier sehen Sie ein Beispiel für die DETECTOR_NODE_CONFIG-Parameter für alle Vo
 }
 ```
 
-| Name | Typ| BESCHREIBUNG|
+| Name | type| Beschreibung|
 |---------|---------|---------|
 | `gpu_index` | Zeichenfolge| Der GPU-Index, auf dem die Ausführung dieses Vorgangs basiert.|
 | `do_calibration` | Zeichenfolge | Gibt an, dass die Kalibrierung aktiviert ist. `do_calibration` muss auf „true“ festgelegt sein, damit **cognitiveservices.vision.spatialanalysis-persondistance** richtig funktioniert. Die Zeichenfolge „do_calibration“ ist standardmäßig auf TRUE festgelegt. |
@@ -120,12 +120,12 @@ Hier sehen Sie ein Beispiel für die DETECTOR_NODE_CONFIG-Parameter für alle Vo
 }
 ```
 
-| Name | Typ| BESCHREIBUNG|
+| Name | type| BESCHREIBUNG|
 |---------|---------|---------|
 | `zones` | list| Die Liste mit den Zonen. |
 | `name` | Zeichenfolge| Der Anzeigename für diese Zone.|
 | `polygon` | list| Jedes Wertpaar stellt den x/y-Wert für die Scheitelpunkte eines Polygons dar. Mit dem Polygon werden die Bereiche dargestellt, in denen Personen nachverfolgt und gezählt werden. Die Punkte des Polygons basieren auf normalisierten Koordinaten (0 - 1), wobei die obere Linke Ecke die Werte (0,0, 0,0) und die untere rechte Ecke die Werte (1,0, 1,0) aufweist.   
-| `threshold` | float| Ereignisse werden ausgegeben, wenn der Vertrauenswert der KI-Modelle größer oder gleich diesem Wert ist. |
+| `threshold` | float| Ereignisse werden ausgegeben, wenn der Personenwert größer als diese Anzahl von Pixeln innerhalb der Zone ist. |
 | `type` | Zeichenfolge| Für **cognitiveservices.vision.spatialanalysis-personcount** sollte dies `count` lauten.|
 | `trigger` | Zeichenfolge| Der Typ des Triggers für das Senden eines Ereignisses. Unterstützte Werte sind `event` zum Senden von Ereignissen, wenn sich die Anzahl ändert, oder `interval` zum regelmäßigen Senden von Ereignissen unabhängig davon, ob sich die Anzahl geändert hat.
 | `output_frequency` | INT | Die Rate, mit der Ereignisse ausgegeben werden. Bei `output_frequency` = X wird jedes x-te Ereignis ausgegeben. Beispiel: `output_frequency` = 2 bedeutet, dass jedes zweite Ereignis ausgegeben wird. `output_frequency` gilt sowohl für `event` als auch für `interval`. |
@@ -165,14 +165,14 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 }
 ```
 
-| Name | Typ| BESCHREIBUNG|
+| Name | type| BESCHREIBUNG|
 |---------|---------|---------|
 | `lines` | list| Die Liste mit den Linien.|
 | `name` | Zeichenfolge| Der Anzeigename für diese Linie.|
 | `line` | list| Die Definition der Linie. Dies ist eine direktionale Linie zum Festlegen von „Betreten“ bzw. „Verlassen“.|
 | `start` | Wertpaar| x/y-Koordinaten für den Startpunkt der Linie. Die Gleitkommawerte stellen die Position des Scheitelpunkts relativ zur oberen linken Ecke dar. Zum Berechnen der absoluten x/y-Werte multiplizieren Sie diese Werte mit der Framegröße. |
 | `end` | Wertpaar| x/y-Koordinaten für den Endpunkt der Linie. Die Gleitkommawerte stellen die Position des Scheitelpunkts relativ zur oberen linken Ecke dar. Zum Berechnen der absoluten x/y-Werte multiplizieren Sie diese Werte mit der Framegröße. |
-| `threshold` | float| Ereignisse werden ausgegeben, wenn der Vertrauenswert der KI-Modelle größer oder gleich diesem Wert ist. Der Standardwert ist 16. Dies ist der empfohlene Wert, um eine maximale Genauigkeit zu erzielen. |
+| `threshold` | float| Ereignisse werden ausgegeben, wenn der Personenwert größer als diese Anzahl von Pixeln innerhalb der Zone ist. Der Standardwert ist 16. Dies ist der empfohlene Wert, um eine maximale Genauigkeit zu erzielen. |
 | `type` | Zeichenfolge| Für **cognitiveservices.vision.spatialanalysis-personcrossingline** sollte dies `linecrossing` lauten.|
 |`trigger`|Zeichenfolge|Der Typ des Triggers für das Senden eines Ereignisses.<br>Unterstützte Werte: „event“ (Ereignis). Wird ausgelöst, wenn eine Person die Linie überschreitet.|
 | `focus` | Zeichenfolge| Dies ist die Punktposition innerhalb des Begrenzungsrahmens der Person, die zum Berechnen von Ereignissen verwendet wird. Der Wert für den Fokus kann `footprint` (Fußabdruck der Person), `bottom_center` (untere Mitte des Begrenzungsrahmens der Person) oder `center` (Mitte des Begrenzungsrahmens der Person) sein. Der Standardwert ist „footprint“.|
@@ -211,12 +211,12 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 }
 ```
 
-| Name | Typ| BESCHREIBUNG|
+| Name | type| BESCHREIBUNG|
 |---------|---------|---------|
 | `zones` | list| Die Liste mit den Zonen. |
 | `name` | Zeichenfolge| Der Anzeigename für diese Zone.|
 | `polygon` | list| Jedes Wertpaar stellt den x/y-Wert für Scheitelpunkte eines Polygons dar. Mit dem Polygon werden die Bereiche dargestellt, in denen Personen nachverfolgt oder gezählt werden. Die Gleitkommawerte stellen die Position des Scheitelpunkts relativ zur oberen linken Ecke dar. Zum Berechnen der absoluten x/y-Werte multiplizieren Sie diese Werte mit der Framegröße. 
-| `threshold` | float| Ereignisse werden ausgegeben, wenn der Vertrauenswert der KI-Modelle größer oder gleich diesem Wert ist. Der Standardwert ist 48, wenn der Typ „zonecrossing“ und 16, wenn die Zeit DwellTime ist. Dies sind die empfohlenen Werte, um eine maximale Genauigkeit zu erzielen.  |
+| `threshold` | float| Ereignisse werden ausgegeben, wenn der Personenwert größer als diese Anzahl von Pixeln innerhalb der Zone ist. Der Standardwert ist 48, wenn der Typ „zonecrossing“ und 16, wenn die Zeit DwellTime ist. Dies sind die empfohlenen Werte, um eine maximale Genauigkeit zu erzielen.  |
 | `type` | Zeichenfolge| Für **cognitiveservices.vision.spatialanalysis-personcrossingpolygon** sollte dies `zonecrossing` oder `zonedwelltime` lauten.|
 | `trigger`|Zeichenfolge|Der Typ des Triggers für das Senden eines Ereignisses.<br>Unterstützte Werte: „event“ (Ereignis). Wird ausgelöst, wenn eine Person die Zone betritt oder verlässt.|
 | `focus` | Zeichenfolge| Dies ist die Punktposition innerhalb des Begrenzungsrahmens der Person, die zum Berechnen von Ereignissen verwendet wird. Der Wert für den Fokus kann `footprint` (Fußabdruck der Person), `bottom_center` (untere Mitte des Begrenzungsrahmens der Person) oder `center` (Mitte des Begrenzungsrahmens der Person) sein. Der Standardwert ist „footprint“.|
@@ -246,12 +246,12 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 }
 ```
 
-| Name | Typ| BESCHREIBUNG|
+| Name | type| BESCHREIBUNG|
 |---------|---------|---------|
 | `zones` | list| Die Liste mit den Zonen. |
 | `name` | Zeichenfolge| Der Anzeigename für diese Zone.|
 | `polygon` | list| Jedes Wertpaar stellt den x/y-Wert für Scheitelpunkte eines Polygons dar. Mit dem Polygon werden die Bereiche dargestellt, in denen Personen gezählt werden und der Abstand zwischen den Personen gemessen wird. Die Gleitkommawerte stellen die Position des Scheitelpunkts relativ zur oberen linken Ecke dar. Zum Berechnen der absoluten x/y-Werte multiplizieren Sie diese Werte mit der Framegröße. 
-| `threshold` | float| Ereignisse werden ausgegeben, wenn der Vertrauenswert der KI-Modelle größer oder gleich diesem Wert ist. |
+| `threshold` | float| Ereignisse werden ausgegeben, wenn der Personenwert größer als diese Anzahl von Pixeln innerhalb der Zone ist. |
 | `type` | Zeichenfolge| Für **cognitiveservices.vision.spatialanalysis-persondistance** sollte dies `people_distance` lauten.|
 | `trigger` | Zeichenfolge| Der Typ des Triggers für das Senden eines Ereignisses. Unterstützte Werte sind `event` zum Senden von Ereignissen, wenn sich die Anzahl ändert, oder `interval` zum regelmäßigen Senden von Ereignissen unabhängig davon, ob sich die Anzahl geändert hat.
 | `output_frequency` | INT | Die Rate, mit der Ereignisse ausgegeben werden. Bei `output_frequency` = X wird jedes x-te Ereignis ausgegeben. Beispiel: `output_frequency` = 2 bedeutet, dass jedes zweite Ereignis ausgegeben wird. `output_frequency` gilt sowohl für `event` als auch für `interval`.|
@@ -437,7 +437,7 @@ JSON-Beispielcode für ein Ereignis, das von diesem Vorgang ausgegeben wird.
 }
 ```
 
-| Ereignisfeldname | Typ| BESCHREIBUNG|
+| Ereignisfeldname | Typ| Beschreibung|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Ereignis-ID|
 | `type` | Zeichenfolge| Ereignistyp|
@@ -447,7 +447,7 @@ JSON-Beispielcode für ein Ereignis, das von diesem Vorgang ausgegeben wird.
 | `zone` | Zeichenfolge | „Name“ des Polygonfelds, das für die durchquerte Zone steht|
 | `trigger` | Zeichenfolge| Der Triggertyp lautet je nach Wert von `trigger` in SPACEANALYTICS_CONFIG entweder „event“ (Ereignis) oder „interval“ (Intervall).|
 
-| Name des Erkennungsfelds | Typ| BESCHREIBUNG|
+| Name des Erkennungsfelds | Typ| Beschreibung|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Erkennungs-ID|
 | `type` | Zeichenfolge| Erkennungstyp|
@@ -458,7 +458,7 @@ JSON-Beispielcode für ein Ereignis, das von diesem Vorgang ausgegeben wird.
 | `face_mask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person eine Gesichtsmaske trägt. |
 | `face_nomask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person **keine** Gesichtsmaske trägt. |
 
-| Name des Felds „SourceInfo“ | Typ| BESCHREIBUNG|
+| Name des Felds „SourceInfo“ | Typ| Beschreibung|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Camera ID (Kamera-ID)|
 | `timestamp` | date| UTC-Datum, an dem die JSON-Nutzlast ausgegeben wurde|
@@ -528,7 +528,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
     "schemaVersion": "1.0"
 }
 ```
-| Ereignisfeldname | Typ| BESCHREIBUNG|
+| Ereignisfeldname | Typ| Beschreibung|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Ereignis-ID|
 | `type` | Zeichenfolge| Ereignistyp|
@@ -538,7 +538,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
 | `status` | Zeichenfolge| Die Richtung von Linienüberquerungen (entweder „CrossLeft“ oder „CrossRight“). Die Richtungsangabe basiert auf der Vorstellung, am Beginn der Linie zu stehen und in Richtung des Linienendes zu blicken. Bei „CrossRight“ erfolgt die Überquerung von links nach rechts. Bei „CrossLeft“ erfolgt die Überquerung von rechts nach links.|
 | `zone` | Zeichenfolge | Feld „Name“ der überschrittenen Linie|
 
-| Name des Erkennungsfelds | Typ| BESCHREIBUNG|
+| Name des Erkennungsfelds | Typ| Beschreibung|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Erkennungs-ID|
 | `type` | Zeichenfolge| Erkennungstyp|
@@ -549,7 +549,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
 | `face_mask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person eine Gesichtsmaske trägt. |
 | `face_nomask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person **keine** Gesichtsmaske trägt. |
 
-| Name des Felds „SourceInfo“ | Typ| BESCHREIBUNG|
+| Name des Felds „SourceInfo“ | Typ| Beschreibung|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Camera ID (Kamera-ID)|
 | `timestamp` | date| UTC-Datum, an dem die JSON-Nutzlast ausgegeben wurde|
@@ -673,7 +673,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang mit dem `zonedwelltime`-T
 }
 ```
 
-| Ereignisfeldname | Typ| BESCHREIBUNG|
+| Ereignisfeldname | Typ| Beschreibung|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Ereignis-ID|
 | `type` | Zeichenfolge| Der Ereignistyp. Der Wert kann entweder _personZoneDwellTimeEvent_ oder _personZoneEnterExitEvent_ sein.|
@@ -685,7 +685,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang mit dem `zonedwelltime`-T
 | `durationMs` | float | Dies ist die Zeit in Millisekunden, die die Person in der Zone verbracht hat. Dieses Feld wird bereitgestellt, wenn der Ereignistyp _personZoneDwellTimeEvent_ ist.|
 | `zone` | Zeichenfolge | „Name“ des Polygonfelds, das für die durchquerte Zone steht|
 
-| Name des Erkennungsfelds | Typ| BESCHREIBUNG|
+| Name des Erkennungsfelds | Typ| Beschreibung|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Erkennungs-ID|
 | `type` | Zeichenfolge| Erkennungstyp|
@@ -788,7 +788,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
 }
 ```
 
-| Ereignisfeldname | Typ| BESCHREIBUNG|
+| Ereignisfeldname | Typ| Beschreibung|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Ereignis-ID|
 | `type` | Zeichenfolge| Ereignistyp|
@@ -803,7 +803,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
 | `zone` | Zeichenfolge | Das Feld „name“ des Polygons, das für die Zone steht, in der der Abstand zwischen Personen überwacht wird.|
 | `trigger` | Zeichenfolge| Der Triggertyp lautet je nach Wert von `trigger` in SPACEANALYTICS_CONFIG entweder „event“ (Ereignis) oder „interval“ (Intervall).|
 
-| Name des Erkennungsfelds | Typ| BESCHREIBUNG|
+| Name des Erkennungsfelds | Typ| Beschreibung|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Erkennungs-ID|
 | `type` | Zeichenfolge| Erkennungstyp|
@@ -820,7 +820,7 @@ Beim Berechnen von `centerGroundPoint` ist `x` der Abstand zwischen der Kamera u
 In diesem Beispiel hat `centerGroundPoint` den Wert `{x: 4, y: 5}`. Dies bedeutet, dass der Raum in der Vogelperspektive von einer Kamera überwacht wird und sich eine Person an einem Punkt im Raum befindet, der vier Fuß vor und fünf Fuß rechts von der Kamera liegt.
 
 
-| Name des Felds „SourceInfo“ | Typ| BESCHREIBUNG|
+| Name des Felds „SourceInfo“ | Typ| Beschreibung|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Camera ID (Kamera-ID)|
 | `timestamp` | date| UTC-Datum, an dem die JSON-Nutzlast ausgegeben wurde|
@@ -1034,7 +1034,7 @@ Um eine optimale Leistung und Auslastung der GPUs zu erzielen, können Sie belie
       }
   }
   ```
-| Name | Typ| Beschreibung|
+| Name | type| Beschreibung|
 |---------|---------|---------|
 | `batch_size` | INT | Wenn alle Kameras die gleiche Auflösung haben, legen Sie `batch_size` auf die Anzahl der Kameras fest, die in diesem Vorgang verwendet werden. Andernfalls legen Sie `batch_size` auf 1 fest oder belassen es beim Standardwert (1), was bedeutet, dass kein Batch unterstützt wird. |
 

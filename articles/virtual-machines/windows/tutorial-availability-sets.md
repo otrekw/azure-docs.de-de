@@ -9,12 +9,12 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 178a29ea37195ddd2013ca5220663a75132beb24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b6ca281733a68b02c4fcfa6429da58e36661923
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555906"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164595"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>Erstellen und Bereitstellen virtueller Computer in einer Verfügbarkeitsgruppe mithilfe von Azure PowerShell
 
@@ -96,6 +96,13 @@ Die Erstellung und Konfiguration der beiden virtuellen Computer dauert einige Mi
 Im Portal sollten Sie bei der Verfügbarkeitsgruppe unter **Ressourcengruppen** > **myResourceGroupAvailability** > **myAvailabilitySet** sehen können, dass die virtuellen Computer auf zwei Fehler- und Updatedomänen verteilt sind.
 
 ![Verfügbarkeitsgruppe im Portal](./media/tutorial-availability-sets/fd-ud.png)
+
+> [!NOTE]
+> Unter bestimmten Umständen können zwei VMs in derselben Verfügbarkeitsgruppe dieselbe Fehlerdomäne gemeinsam aufweisen. Dies können Sie bestätigen, indem Sie zur betreffenden Verfügbarkeitsgruppe wechseln und die Spalte Fehlerdomäne überprüfen. Der Grund kann die folgende Abfolge beim Bereitstellen der VMs sein:
+> 1. 1\. VM bereitstellen
+> 1. 1\. VM beenden/freigeben
+> 1. 2\. VM bereitstellen
+Unter diesen Umständen wird der Betriebssystemdatenträger der 2. VM möglicherweise in der Fehlerdomäne der 1. VM erstellt, sodass die 2. VM ebenfalls in derselben Fehlerdomäne landet. Um dieses Problem zu vermeiden, wird empfohlen, die VMs zwischen den Bereitstellungen nicht zu beenden oder ihre Zuordnung aufzuheben.
 
 ## <a name="check-for-available-vm-sizes"></a>Prüfen der verfügbaren VM-Größen 
 

@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f22282b00a7ead2e19805f32d78338126e8087
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3b4089559b341dd268928b1f150b6fc173869ead
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552749"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529927"
 ---
 # <a name="email-one-time-passcode-authentication"></a>Authentifizierung mit Einmalkennung per E-Mail
 
@@ -114,7 +114,7 @@ Wenn Sie die Vorschauversion nicht mehr nutzen und das automatische Aktivieren d
 
 ## <a name="note-for-azure-us-government-customers"></a>Hinweis für Azure US Government-Kunden
 
-Das Feature „Einmalkennung per E-Mail“ ist in der Azure US Government-Cloud standardmäßig deaktiviert.  
+Das Feature „Einmalkennung per E-Mail“ ist in der Azure US Government-Cloud standardmäßig deaktiviert. Ihre Partner können sich erst anmelden, wenn dieses Feature aktiviert ist. Im Gegensatz zur öffentlichen Azure-Cloud unterstützt die Azure US Government-Cloud nicht das Einlösen von Einladungen über Azure Active Directory-Self-Service-Konten.
 
  ![Einmalkennung per E-Mail deaktiviert](media/one-time-passcode/enable-email-otp-disabled.png)
 
@@ -122,7 +122,7 @@ So aktivieren Sie das Feature „Einmalkennung per E-Mail“ in der Azure US G
 
 1. Melden Sie sich als globaler Azure AD-Administrator im [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
-3. Wählen Sie **Organisationsbeziehungen** > **Einstellungen** aus.
+3. Wählen Sie **Organisationsbeziehungen** > **Alle Identitätsanbieter** aus.
 
    > [!NOTE]
    > - Sollte die Option **Organisationsbeziehungen** nicht angezeigt werden, suchen Sie über die Suchleiste im oberen Bereich nach „External Identities“.

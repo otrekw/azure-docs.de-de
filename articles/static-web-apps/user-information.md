@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 9aca1e76c825de52744da817f6a0bf236eef617c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: dec025273ddfe9abf6a7588ad09a6a08a9ff872d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313605"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762819"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>Zugreifen auf Benutzerinformationen in Azure Static Web Apps (Vorschauversion)
 
@@ -36,9 +36,9 @@ Beim folgenden Beispiel handelt es sich um ein exemplarisches Clientprinzipalobj
 
 ```json
 {
-  "identityProvider": "facebook",
+  "identityProvider": "github",
   "userId": "d75b260a64504067bfc5b2905e3b8182",
-  "userDetails": "user@example.com",
+  "userDetails": "username",
   "userRoles": ["anonymous", "authenticated"]
 }
 ```
@@ -64,7 +64,7 @@ console.log(getUserInfo());
 
 ## <a name="api-functions"></a>API-Funktionen
 
-Die API-Funktionen, die in Static Web Apps über das Azure Functions-Back-End verfügbar sind, haben Zugriff auf dieselben Benutzerinformationen wie eine Clientanwendung. Die API erhält zwar benutzerbezogene Informationen, führt aber keine eigenen Überprüfungen durch, ob der Benutzer authentifiziert ist oder ob sie einer erforderlichen Rolle entsprechen. Zugriffssteuerungsregeln werden in der Datei [`staticwebapp.config.json`](routes.md) definiert.
+Die API-Funktionen, die in Static Web Apps über das Azure Functions-Back-End verfügbar sind, haben Zugriff auf dieselben Benutzerinformationen wie eine Clientanwendung. Die API erhält zwar benutzerbezogene Informationen, führt aber keine eigenen Überprüfungen durch, ob der Benutzer authentifiziert ist oder ob sie einer erforderlichen Rolle entsprechen. Zugriffssteuerungsregeln werden in der Datei [`staticwebapp.config.json`](configuration.md#routes) definiert.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

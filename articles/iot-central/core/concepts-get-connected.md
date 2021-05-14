@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c365f367a090f1697b71c51f24679b9ea09561d0
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103015454"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490011"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -240,7 +240,7 @@ In der folgenden Tabelle wird die Zuordnung von Azure IoT Central-Gerätefeature
 | Telemetrie | Nachrichten, die von Geräten an die Cloud gesendet werden |
 | Offlinebefehle | Senden von Nachrichten aus der Cloud an Geräte |
 | Eigenschaft | Gemeldete Eigenschaften von Gerätezwillingen |
-| Eigenschaft (schreibbar) | Gewünschte und gemeldete Eigenschaften von Gerätezwillingen |
+| Eigenschaft (beschreibbar) | Gewünschte und gemeldete Eigenschaften von Gerätezwillingen |
 | Get-Help | Direkte Methoden |
 
 ### <a name="protocols"></a>Protokolle

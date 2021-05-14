@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 72aa8e5e3284e0ee7fbe63e0fb617b9eba03292e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e762b8c2e2d7f72b89629c520560b205cedcd036
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100416719"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728554"
 ---
 # <a name="iot-central-solution-builder-guide"></a>Leitfaden für IoT Central-Lösungsentwickler
 
@@ -51,6 +51,7 @@ IoT Central enthält integrierte Analysefunktionen, mit deren Hilfe ein Bediener
 Als Lösungsentwickler können Sie die Funktionen für Datenexport und Regeln verwenden, um sie in andere Dienste zu integrieren. Weitere Informationen finden Sie unter:
 
 - [Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports](howto-export-data.md)
+- [Transformieren von Daten für IoT Central](howto-transform-data.md)
 - [Integrieren Ihrer Azure IoT Central-Anwendung in andere Clouddienste mithilfe von Workflows](howto-configure-rules-advanced.md)
 - [Erweitern von Azure IoT Central mit benutzerdefinierten Regeln mithilfe von Stream Analytics, Azure Functions und SendGrid](howto-create-custom-rules.md)
 - [Erweitern von Azure IoT Central mit benutzerdefinierten Analysen mithilfe von Azure Databricks](howto-create-custom-analytics.md)

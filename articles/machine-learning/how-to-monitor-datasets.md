@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
-ms.topic: conceptual
-ms.custom: how-to, data4ml, contperf-fy21q2
-ms.openlocfilehash: e7da81e896c0d59af966cca2760b1adb163762aa
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.topic: how-to
+ms.custom: data4ml, contperf-fy21q2
+ms.openlocfilehash: e73b14e24fffacde11e355ae5a4caf0cb76f07ba
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067502"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884874"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Erkennen von Datendrift (Vorschau) in Datasets
 
@@ -28,7 +28,7 @@ Azure Machine Learning-Datasetmonitore (Vorschau) ermöglichen Folgendes:
 * **Überwachen von neuen Daten** auf Änderungen zwischen Baseline- und Zieldatasets.
 * **Erstellen von Profilen für Features in Daten**, um nachzuverfolgen, wie sich statistische Eigenschaften im Lauf der Zeit ändern.
 * **Einrichten von Warnungen zur Datendrift**, um bei potenziellen Problemen frühzeitig eine Benachrichtigung zu erhalten. 
-* **[Erstellen einer neuen Datasetversion](how-to-version-track-datasets)** , wenn Sie ermitteln, dass die Daten zu stark abgewichen sind.
+* **[Erstellen einer neuen Datasetversion](how-to-version-track-datasets.md)** , wenn eine zu starke Datenabweichung ermittelt wird.
 
 Für die Monitorerstellung wird ein [Azure Machine Learning-Dataset](how-to-create-register-datasets.md) verwendet. Das Dataset muss eine Zeitstempelspalte enthalten.
 

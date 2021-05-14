@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: e9d92c60e74ac9106246ccd445afaca926065e5f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3cc8ba29629c36cc9fcb295b1cdd348fbcae1584
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871196"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732900"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Überwachen von App Service-Instanzen mit der Integritätsprüfung
 
@@ -51,7 +51,7 @@ Zusätzlich zum Konfigurieren der Optionen der Integritätsprüfung können Sie 
 | Name der App-Einstellung | Zulässige Werte | BESCHREIBUNG |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2–10 | Die maximale Anzahl von Pingfehlern. Wenn die Einstellung beispielsweise auf `2` festgelegt wird, werden Ihre Instanzen nach `2` fehlgeschlagenen Pings entfernt. Beim zentralen Hoch- oder Herunterskalieren pingt App Service außerdem den Pfad der Integritätsüberprüfung, um sicherzustellen, dass neue Instanzen bereit sind. |
-|`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0-100 | Um zu vermeiden, dass fehlerfreie Instanzen überlastet werden, wird nicht mehr als die Hälfte der Instanzen ausgeschlossen. Wenn z. B. ein App Service-Plan auf vier Instanzen skaliert ist und drei fehlerhaft sind, werden höchstens zwei ausgeschlossen. Die anderen beiden Instanzen (eine fehlerfreie und eine fehlerhafte) empfangen weiterhin Anforderungen. Im ungünstigsten Fall, in dem alle Instanzen fehlerhaft sind, wird keine ausgeschlossen. Um dieses Verhalten außer Kraft zu setzen, legen Sie die App-Einstellung auf einen Wert zwischen `0` und `100` fest. Ein höherer Wert führt dazu, dass mehr fehlerhafte Instanzen entfernt werden (Standardwert ist 50). |
+|`WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` | 0-100 | Um zu vermeiden, dass fehlerfreie Instanzen überlastet werden, wird nicht mehr als die Hälfte der Instanzen ausgeschlossen. Wenn z. B. ein App Service-Plan auf vier Instanzen skaliert ist und drei fehlerhaft sind, werden höchstens zwei ausgeschlossen. Die anderen beiden Instanzen (eine fehlerfreie und eine fehlerhafte) empfangen weiterhin Anforderungen. Im ungünstigsten Fall, in dem alle Instanzen fehlerhaft sind, wird keine ausgeschlossen. Um dieses Verhalten außer Kraft zu setzen, legen Sie die App-Einstellung auf einen Wert zwischen `0` und `100` fest. Ein höherer Wert führt dazu, dass mehr fehlerhafte Instanzen entfernt werden (Standardwert ist 50). |
 
 #### <a name="authentication-and-security"></a>Authentifizierung und Sicherheit
 
@@ -68,8 +68,8 @@ Nachdem Sie den Pfad der Integritätsüberprüfung der Anwendung angegeben haben
 Die Integritätsprüfung sollte auf Premium Functions-Websites nicht aktiviert werden. Aufgrund der schnellen Skalierung von Premium Functions können Anforderungen zur Integritätsprüfung unnötige Schwankungen im HTTP-Datenverkehr verursachen. Premium Functions verfügt über eigene interne Integritätstests, die für Skalierungsentscheidungen verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen einer Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [Erstellen einer Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)
+- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert)
 
 [1]: ./media/app-service-monitor-instances-health-check/health-check-success-diagram.png
 [2]: ./media/app-service-monitor-instances-health-check/health-check-failure-diagram.png

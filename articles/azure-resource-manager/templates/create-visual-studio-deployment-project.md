@@ -2,13 +2,13 @@
 title: Erstellen und Bereitstellen von Ressourcengruppenprojekten in Visual Studio
 description: Verwenden Sie Visual Studio, um ein Azure-Ressourcengruppenprojekt zu erstellen und die Ressourcen in Azure bereitzustellen.
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 4c0e19042506e0cf1772398b0a02b81f0245b1c7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704413"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306975"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
 
@@ -45,9 +45,9 @@ In diesem Abschnitt erstellen Sie ein Azure-Ressourcengruppenprojekt mit der Vor
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Ein PowerShell-Skript, das PowerShell-Befehle für die Bereitstellung in Azure Resource Manager ausführt. Über dieses PowerShell-Skript wird in Visual Studio Ihre Vorlage bereitgestellt. |
    | WebSite.json |Die Resource Manager-Vorlage, die sowohl die für Azure bereitzustellende Infrastruktur als auch die Parameter definiert, die Sie bei der Bereitstellung angeben können. Sie definiert auch die Abhängigkeiten zwischen Ressourcen, damit sie von Resource Manager in der richtigen Reihenfolge bereitgestellt werden. |
-   | WebSite.parameters.json |Eine Parameterdatei, die Werte enthält, die für die Vorlage erforderlich sind. Parameterwerte werden zum Anpassen der einzelnen Bereitstellungen übergeben. |
+   | WebSite.parameters.json |Eine Parameterdatei, die Werte enthält, die für die Vorlage erforderlich sind. Parameterwerte werden zum Anpassen der einzelnen Bereitstellungen übergeben. Beachten Sie: **Buildvorgang** ist auf **Inhalt** festgelegt. Stellen Sie beim Hinzufügen weiterer Parameterdateien sicher, dass der Buildvorgang auf **Inhalt** festgelegt ist. |
 
-    Alle Ressourcengruppen-Bereitstellungsprojekte enthalten diese grundlegenden Dateien. Andere Projekte enthalten möglicherweise zusätzliche Dateien zur Unterstützung weiterer Funktionen.
+    Alle Ressourcengruppen-Bereitstellungsprojekte enthalten diese grundlegenden Dateien. Andere Projekte enthalten möglicherweise weitere Dateien zur Unterstützung weiterer Funktionen.
 
 ## <a name="customize-resource-manager-template"></a>Anpassen der Resource Manager-Vorlage
 
@@ -245,7 +245,7 @@ Dies sollte wie folgt aussehen:
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-Beachten Sie, dass im vorherigen Beispiel kein Schrägstrich (`'/',`) zwischen **parameters('_artifactsLocation')** und **parameters('ExampleAppPackageFolder')** steht.
+Beachten Sie, dass im vorherigen Beispiel kein `'/',` zwischen **parameters('_artifactsLocation')** und **parameters('ExampleAppPackageFolder')** steht.
 
 Erstellen Sie das Projekt neu. Durch Erstellen des Projekts wird sichergestellt, dass die bereitzustellenden Dateien dem Stagingordner hinzugefügt werden.
 

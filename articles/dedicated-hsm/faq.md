@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 1f349931fb479be3b3ba936b3d0a665427357f29
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8768acc8d4720a750c4c7f7e0f40340aeeff279d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97369037"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449051"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
@@ -32,11 +32,11 @@ Ein Hardwaresicherheitsmodul (HSM) ist ein physisches Computergerät, das zum Sc
 
 ### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>F: Was bietet Azure Dedicated HSM?
 
-Azure Dedicated HSM ist ein cloudbasierter Dienst, der in Azure-Datencentern gehostete HSMs bereitstellt, die direkt mit dem virtuellen Netzwerk eines Kunden verbunden sind. Diese HSMs sind dedizierte Netzwerkgeräte (Thales Network Luna HSM 7). Sie werden direkt für den privaten IP-Adressraum eines Kunden bereitgestellt, und Microsoft besitzt keinen Zugriff auf die kryptografische Funktionalität der HSMs. Nur der Kunde verfügt über vollständige Verwaltungs- und Kryptografiekontrolle für diese Geräte. Kunden sind verantwortlich für die Verwaltung des Geräts, und sie können vollständige Aktivitätsprotokolle direkt von ihren Geräten erhalten. Dedizierte HSMs unterstützen Kunden bei der Erfüllung von Compliance- und gesetzlichen Anforderungen, z.B. von FIPS 140-2 Level 3, HIPAA, PCI-DSS, eIDAS usw.
+Azure Dedicated HSM ist ein cloudbasierter Dienst, der in Azure-Datencentern gehostete HSMs bereitstellt, die direkt mit dem virtuellen Netzwerk eines Kunden verbunden sind. Diese HSMs sind dedizierte [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)-Netzwerkgeräte. Sie werden direkt für den privaten IP-Adressraum eines Kunden bereitgestellt, und Microsoft besitzt keinen Zugriff auf die kryptografische Funktionalität der HSMs. Nur der Kunde verfügt über vollständige Verwaltungs- und Kryptografiekontrolle für diese Geräte. Kunden sind verantwortlich für die Verwaltung des Geräts, und sie können vollständige Aktivitätsprotokolle direkt von ihren Geräten erhalten. Dedizierte HSMs unterstützen Kunden bei der Erfüllung von Compliance- und gesetzlichen Anforderungen, z.B. von FIPS 140-2 Level 3, HIPAA, PCI-DSS, eIDAS usw.
 
 ### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>F: Welche Hardware wird für dedizierte HSM verwendet?
 
-Microsoft ist eine Partnerschaft mit Thales eingegangen, um den Azure Dedicated HSM-Dienst bereitzustellen. Das jeweilige verwendete Gerät ist das [Thales Network Luna HSM 7](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms). Dieses Gerät bietet nicht nur eine nach FIPS 140-2 Level 3 validierte Firmware, sondern auch niedrige Latenzzeiten, hohe Leistung und hohe Kapazität über 10 Partitionen. 
+Microsoft ist eine Partnerschaft mit Thales eingegangen, um den Azure Dedicated HSM-Dienst bereitzustellen. Das verwendete Gerät ist das [Thales Luna 7 HSM Modell A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms). Dieses Gerät bietet nicht nur eine nach [FIPS 140-2 Level-3](https://csrc.nist.gov/publications/detail/fips/140/2/final) validierte Firmware, sondern auch niedrige Latenzzeiten, hohe Leistung und hohe Kapazität über 10 Partitionen. 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>F: Wofür wird ein HSM verwendet?
 
@@ -48,7 +48,7 @@ Kunden können HSMs in bestimmten Regionen über PowerShell oder die Befehlszeil
 
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>F: Welche Software wird mit dem Dedicated HSM-Dienst bereitgestellt?
 
-Thales ist Lieferant der gesamten Software für das HSM-Gerät nach der Bereitstellung durch Microsoft. Die Software ist über das [Thales-Kundensupportportal](https://supportportal.gemalto.com/csm/) verfügbar. Kunden, die den Dedicated HSM-Dienst nutzen, müssen für den Thales-Support registriert sein und über eine Kunden-ID verfügen, die den Zugriff auf Software und den Download relevanter Software ermöglicht. Die unterstützte Clientsoftware ist Version 7.2, die mit der von FIPS 140-2 Level 3 validierten Firmwareversion 7.0.3 kompatibel ist. 
+Thales ist Lieferant der gesamten Software für das HSM-Gerät nach der Bereitstellung durch Microsoft. Die Software ist über das [Thales-Kundensupportportal](https://supportportal.thalesgroup.com/csm) verfügbar. Kunden, die den Dedicated HSM-Dienst nutzen, müssen für den Thales-Support registriert sein und über eine Kunden-ID verfügen, die den Zugriff auf Software und den Download relevanter Software ermöglicht. Die unterstützte Clientsoftware ist Version 7.2, die mit der von FIPS 140-2 Level 3 validierten Firmwareversion 7.0.3 kompatibel ist. 
 
 ### <a name="q-what-extra-costs-may-be-incurred-with-dedicated-hsm-service"></a>F: Welche zusätzlichen Kosten fallen möglicherweise mit einem Dedicated HSM-Dienst an?
 
@@ -63,11 +63,11 @@ Im Moment stellt Azure Dedicated HSM nur HSMs mit kennwortbasierter Authentifizi
 
 ### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>F: Hostet Azure Dedicated HSM meine HSMs für mich?
 
-Microsoft bietet nur das Thales Network Luna HSM 7 über den Dedicated HSM-Dienst und kann keine vom Kunden bereitgestellten Geräte hosten.
+Microsoft bietet nur das Thales Luna 7 HSM Modell A790 über den Dedicated HSM-Dienst und kann keine vom Kunden bereitgestellten Geräte hosten.
 
 ### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>F: Unterstützt Azure Dedicated HSM Zahlungsfunktionen (PIN/EFT)?
 
-Der Azure Dedicated HSM-Dienst verwendet Thales Network Luna HSM 7-Geräte. Diese Geräte unterstützen keine für Bezahl-HSM spezifischen Funktionen (z. B. PIN oder EFT) oder Zertifizierungen. Wenn Sie möchten, dass der Azure Dedicated HSM-Dienst in Zukunft Bezahl-HSMs unterstützt, informieren Sie bitte Ihren zuständigen Microsoft-Kontobeauftragten über diesen Wunsch.
+Der Azure Dedicated HSM-Dienst verwendet Thales Luna 7 HSMs. Diese Geräte unterstützen keine für Bezahl-HSM spezifischen Funktionen (z. B. PIN oder EFT) oder Zertifizierungen. Wenn Sie möchten, dass der Azure Dedicated HSM-Dienst in Zukunft Bezahl-HSMs unterstützt, informieren Sie bitte Ihren zuständigen Microsoft-Kontobeauftragten über diesen Wunsch.
 
 ### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>F: In welchen Azure-Regionen ist Dedicated HSM verfügbar?
 
@@ -101,7 +101,7 @@ Seit Ende März 2019 ist Dedicated HSM in den 14 unten aufgeführten Regionen ve
 
 ### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>F: Wie stellt meine Anwendung eine Verbindung mit einem dedizierten HSM her?
 
-Sie verwenden HSM-Clienttools, -SDKs oder -Software, die von Thales bereitgestellt werden, um kryptografische Vorgänge mithilfe Ihrer Anwendungen auszuführen. Die Software ist über das [Thales-Kundensupportportal](https://supportportal.gemalto.com/csm/) verfügbar. Kunden, die den Dedicated HSM-Dienst nutzen, müssen für den Thales-Support registriert sein und über eine Kunden-ID verfügen, die den Zugriff auf Software und den Download relevanter Software ermöglicht.
+Sie verwenden HSM-Clienttools, -SDKs oder -Software, die von Thales bereitgestellt werden, um kryptografische Vorgänge mithilfe Ihrer Anwendungen auszuführen. Die Software ist über das [Thales-Kundensupportportal](https://supportportal.thalesgroup.com/csm) verfügbar. Kunden, die den Dedicated HSM-Dienst nutzen, müssen für den Thales-Support registriert sein und über eine Kunden-ID verfügen, die den Zugriff auf Software und den Download relevanter Software ermöglicht.
 
 ### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>F: Kann eine Anwendung eine Verbindung mit Dedicated HSM aus einem anderen VNET in einer Region oder über Regionen hinweg herstellen?
 
@@ -117,7 +117,7 @@ Nein. Auf Azure Dedicated HSMs kann nur von Ihrem virtuellen Netzwerk aus zugegr
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>F: Kann ich Schlüssel aus einem vorhandenen lokalen HSM in Dedicated HSM importieren?
 
-Ja, wenn Sie über lokale Thales Network Luna HSM 7-HSMs verfügen. Es gibt mehrere Möglichkeiten. Weitere Informationen finden Sie in der [Thales HSM-Dokumentation](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm).
+Ja, wenn Sie über lokale Thales Luna 7-HSMs verfügen. Es gibt mehrere Möglichkeiten. Weitere Informationen finden Sie in der [Thales HSM-Dokumentation](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm).
 
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>F: Welche Betriebssysteme werden von Dedicated HSM-Clientsoftware unterstützt?
 
@@ -130,7 +130,7 @@ Um Hochverfügbarkeit zu erreichen, müssen Sie Ihre HSM-Clientanwendungskonfigu
 
 ### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>F: Welche Authentifizierungsmechanismen werden von Dedicated HSM unterstützt?
 
-Azure Dedicated HSM verwendet SafeNet Network HSM 7-Appliances (Modell A790), die kennwortbasierte Authentifizierung unterstützen.
+Azure Dedicated HSM verwendet [Thales Luna 7 HSM Modell A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)-Geräte, die die kennwortbasierte Authentifizierung unterstützen.
 
 ### <a name="q-what-sdks-apis-client-software-is-available-to-use-with-dedicated-hsm"></a>F: Welche SDKs, APIs und Clientsoftware sind für die Verwendung mit Dedicated HSM verfügbar?
 
@@ -207,7 +207,7 @@ Ja. Die Konfiguration und Einrichtung der Hochverfügbarkeit erfolgt in der von 
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>F: Kann ich HSMs aus meinem lokalen Netzwerk einer Hochverfügbarkeitsgruppe mit Azure Dedicated HSM hinzufügen?
 
-Ja. Sie müssen die Anforderungen für Hochverfügbarkeit für SafeNet Luna Network HSM 7 erfüllen.
+Ja. Sie müssen die Anforderungen für Hochverfügbarkeit für [Thales Luna 7 HSMs](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) erfüllen.
 
 ### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>F: Kann ich Luna 5/6-HSMs aus lokalen Netzwerken einer Hochverfügbarkeitsgruppe mit Azure Dedicated HSM hinzufügen?
 
@@ -229,7 +229,7 @@ Azure-Datencenter verfügen über umfassende physische und prozedurale Sicherhei
 
 ### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>F: Was geschieht, wenn es zu einer Sicherheitsverletzung oder einem Hardwaremanipulationsereignis kommt?
 
-Der Dedicated HSM-Dienst verwendet Thales Network Luna HSM 7-Geräte. Diese Appliances unterstützen physische und logische Manipulationserkennung. Wenn es jemals zu einem Manipulationsereignis kommt, werden die HSMs automatisch auf Null zurückgesetzt.
+Der Dedicated HSM-Dienst verwendet [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)-Geräte. Diese Geräte unterstützen physische und logische Manipulationserkennung. Wenn es jemals zu einem Manipulationsereignis kommt, werden die HSMs automatisch auf Null zurückgesetzt.
 
 ### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>F: Wie stelle ich sicher, dass die Schlüssel in meinen Dedicated HSMs nicht durch einen Fehler oder einen böswilligen Insiderangriff verloren gehen?
 
@@ -239,7 +239,7 @@ Es wird dringend empfohlen, ein lokales HSM-Sicherungsmedium zu verwenden, um ei
 
 Der Support wird sowohl von Microsoft als auch von Thales bereitgestellt.  Falls bei Ihnen ein Problem mit der Hardware oder dem Netzwerkzugriff besteht, können Sie eine Supportanfrage für Microsoft erstellen. Bei einem Problem mit der HSM-Konfiguration, -Software und -Anwendungsentwicklung erstellen Sie eine Supportanfrage für Thales. Erstellen Sie bei einem nicht eindeutigen Problem eine Supportanfrage für Microsoft. Falls erforderlich, kann Thales dann eingebunden werden. 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-network-luna-hsm-7"></a>F: Wie erhalte ich die Clientsoftware, Dokumentation und Zugriff auf die Integrationsanleitung für das Thales Network Luna HSM 7?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-luna-7-hsm"></a>F: Wie erhalte ich die Clientsoftware, Dokumentation und Zugriff auf die Integrationsanleitung für das Thales Luna 7 HSM?
 
 Nach der Registrierung für den Dienst wird eine Thales-Kunden-ID bereitgestellt, die die Registrierung im Thales-Portal für Kundensupport ermöglicht. Hiermit ist der Zugriff auf die gesamte Software und Dokumentation möglich, und Supportanfragen können direkt an Thales gerichtet werden.
 
@@ -255,11 +255,11 @@ Das HSM verfügt über eine Befehlszeilenoption für den Neustart. Es kommt jedo
 
 ### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>F: Ist es sicher, Verschlüsselungscodes für meine wichtigsten Daten in Dedicated HSM zu speichern?
 
-Ja, Dedicated HSM stellt Thales Network Luna HSM 7-Appliances bereit, die FIPS 140-2 Level 3 validierte HSMs verwenden. 
+Ja, Dedicated HSM stellt Thales Luna 7 HSMs bereit, die nach [FIPS 140-2 Level-3](https://csrc.nist.gov/publications/detail/fips/140/2/final) validiert sind. 
 
 ### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>F: Welche kryptografischen Schlüssel und Algorithmen werden von Dedicated HSM unterstützt?
 
-Der Dedicated HSM-Dienst stellt Thales Network Luna HSM 7-Geräte bereit. Sie unterstützen eine Vielzahl von kryptografischen Schlüsseltypen und Algorithmen, einschließlich: Vollständige Suite B-Unterstützung
+Der Dedicated HSM-Dienst stellt Thales Luna 7 HSM-Geräte bereit. Sie unterstützen eine Vielzahl von kryptografischen Schlüsseltypen und Algorithmen, einschließlich: Vollständige Suite B-Unterstützung
 
 * Asymmetrisch:
   * RSA
@@ -283,11 +283,11 @@ Der Dedicated HSM-Dienst stellt Thales Network Luna HSM 7-Geräte bereit. Sie un
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>F: Ist Dedicated HSM FIPS 140-2 Level 3 validiert?
 
-Ja. Der Dedicated HSM-Dienst stellt Thales Network Luna HSM 7-Appliances bereit, die FIPS 140-2 Level 3 validierte HSMs verwenden.
+Ja. Der Dedicated HSM-Dienst stellt [Thales Luna 7 HSM Modell A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)-Geräte bereit, die nach [FIPS 140-2 Level-3](https://csrc.nist.gov/publications/detail/fips/140/2/final) validiert sind.
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>F: Wie kann ich sicherstellen, dass ich Dedicated HSM im nach FIPS 140-2 Level 3 validierten Modus betreibe?
 
-Der Dedicated HSM-Dienst stellt Thales Network Luna HSM 7-Geräte bereit. Diese Appliances verwenden FIPS 140-2 Level 3 validierte HSMs. Die standardmäßig bereitgestellte Konfiguration, das Betriebssystem und die Firmware sind ebenfalls FIPS-geprüft. Sie müssen keine Maßnahmen zur Einhaltung von FIPS 140-2 Level 3 ergreifen.
+Der Dedicated HSM-Dienst stellt Thales Luna 7 HSM-Geräte bereit. Diese Geräte sind nach FIPS 140-2 Level 3 validierte HSMs. Die standardmäßig bereitgestellte Konfiguration, das Betriebssystem und die Firmware sind ebenfalls FIPS-geprüft. Sie müssen keine Maßnahmen zur Einhaltung von FIPS 140-2 Level 3 ergreifen.
 
 ### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>F: Wie stellt ein Kunde sicher, dass beim Aufheben der Bereitstellung eines HSM alle Schlüsselmaterialien vernichtet werden?
 
@@ -297,7 +297,7 @@ Bevor ein Kunde die Aufhebung der Bereitstellung anfordert, muss er das HSM mit 
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>F: Wie viele kryptografische Vorgänge werden mit Dedicated HSM pro Sekunde unterstützt?
 
-Dedicated HSM stellt Thales Network Luna HSM 7-HSMs bereit. Dies ist eine Zusammenfassung der maximalen Leistung für einige Vorgänge: 
+Dedicated HSM stellt Thales Network Luna 7-HSMs bereit. Dies ist eine Zusammenfassung der maximalen Leistung für einige Vorgänge: 
 
 * RSA-2048: 10.000 Transaktionen pro Sekunde
 * ECC P256: 20.000 Transaktionen pro Sekunde
@@ -305,11 +305,11 @@ Dedicated HSM stellt Thales Network Luna HSM 7-HSMs bereit. Dies ist eine Zusamm
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>F: Wie viele Partitionen können in Dedicated HSM erstellt werden?
 
-Das verwendete SafeNet Luna HSM 7-Modell A790 umfasst im Rahmen der Kosten für den Dienst eine Lizenz für zehn Partitionen. Für das Gerät gilt ein Limit von 100 Partitionen. Wenn Partitionen bis zu diesem Limit hinzugefügt werden, fallen zusätzliche Lizenzkosten an, und auf dem Gerät muss eine neue Lizenzdatei installiert werden.
+Das verwendete [Thales Luna 7 HSM Model A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) umfasst im Rahmen der Kosten für den Dienst eine Lizenz für zehn Partitionen. Für das Gerät gilt ein Limit von 100 Partitionen. Wenn Partitionen bis zu diesem Limit hinzugefügt werden, fallen zusätzliche Lizenzkosten an, und auf dem Gerät muss eine neue Lizenzdatei installiert werden.
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>F: Wie viele Schlüssel können in Dedicated HSM unterstützt werden?
 
-Die maximale Anzahl von Schlüsseln ist eine Funktion des verfügbaren Speichers. Das verwendete SafeNet Luna 7-Modell A790 verfügt über 32 MB Arbeitsspeicher. Die folgenden Angaben gelten auch für Schlüsselpaare, wenn asymmetrische Schlüssel verwendet werden.
+Die maximale Anzahl von Schlüsseln ist eine Funktion des verfügbaren Speichers. Das verwendete Thales Luna 7 Modell A790 verfügt über 32 MB Arbeitsspeicher. Die folgenden Angaben gelten auch für Schlüsselpaare, wenn asymmetrische Schlüssel verwendet werden.
 
 * RSA-2048: 19.000
 * ECC-P256: 91.000

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 08b22af8743082bab1d547205e51917cb9d92a11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 66ed42b79e4f6b5bac7fcb76b95a04257a437daf
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695769"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109733152"
 ---
 # <a name="supported-data-stores"></a>Unterstützte Datenspeicher
 
@@ -36,6 +36,34 @@ Purview unterstützt die folgenden Datenspeicher. Klicken Sie auf die einzelnen 
 |Power BI|[Power BI](register-scan-power-bi-tenant.md)|Ja| Ja| Nein| Nein| Nein| Ja|
 |Dienste und Apps|[SAP ECC](register-scan-sapecc-source.md)|Ja| Ja| Nein| Ja| Ja| Ja|
 ||[SAP S4HANA](register-scan-saps4hana-source.md)|Ja| Ja| Nein| Ja| Ja| Ja|
+
+## <a name="scan-regions"></a>Überprüfungsregionen
+Im Folgenden finden Sie eine Liste aller Azure-Datenquellregionen (Rechenzentren), in denen die Purview-Überprüfung ausgeführt wird. Wenn sich Ihre Azure-Datenquelle in einer Region befindet, die nicht in der Liste aufgeführt ist, erfolgt die Überprüfung in der Region Ihrer Purview-Instanz.
+ 
+### <a name="purview-scanner-regions"></a>Regionen der Purview-Überprüfung
+
+- EastUs
+- EastUs2 
+- USA, Süden-Mitte
+- WestUs
+- WestUs2
+- SoutheastAsia
+- Europa, Westen
+- Europa, Norden
+- UkSouth
+- Australien, Osten
+- CanadaCentral
+- Brasilien, Süden
+- CentralIndia
+- JapanEast
+- Südafrika, Nord
+- Frankreich, Mitte
+- KoreaCentral
+- USA, Mitte
+- NorthCentralUS
+- Asien, Osten
+- WestCentralUS
+- AustraliaSoutheast
 
 ## <a name="next-steps"></a>Nächste Schritte
 

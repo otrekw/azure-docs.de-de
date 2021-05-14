@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivi
 ms.date: 03/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-java
-ms.openlocfilehash: 97c04cb8b8180034bdc5109446c79deb56e457c9
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 04e32a3e147ed68248f7fead488a1f630ffcdb4d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223852"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751749"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-java"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe von Java
 
@@ -93,7 +93,7 @@ Erstellen und Konfigurieren Sie mit Maven eine neue Anwendung, und installieren 
 
    ```java
    package com.Fabrikam;
-   
+
    import java.util.Arrays;
    import java.util.List;
    import com.azure.core.management.AzureEnvironment;
@@ -104,22 +104,22 @@ Erstellen und Konfigurieren Sie mit Maven eine neue Anwendung, und installieren 
    import com.azure.resourcemanager.resourcegraph.models.QueryRequestOptions;
    import com.azure.resourcemanager.resourcegraph.models.QueryResponse;
    import com.azure.resourcemanager.resourcegraph.models.ResultFormat;
-   
+
    public class App
    {
        public static void main( String[] args )
        {
            List<String> listSubscriptionIds = Arrays.asList(args[0]);
            String strQuery = args[1];
-   
+
            ResourceGraphManager manager = ResourceGraphManager.authenticate(new DefaultAzureCredentialBuilder().build(), new AzureProfile(AzureEnvironment.AZURE));
-   
+
            QueryRequest queryRequest = new QueryRequest()
                .withSubscriptions(listSubscriptionIds)
                .withQuery(strQuery);
-           
+
            QueryResponse response = manager.resourceProviders().resources(queryRequest);
-   
+
            System.out.println("Records: " + response.totalRecords());
            System.out.println("Data:\n" + response.data());
        }

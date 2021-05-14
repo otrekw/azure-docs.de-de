@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 605f495fbc5913663499f5411abcaa531cea97ee
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98071186"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312211"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Aktivieren von Synapse-Arbeitsbereichsfunktionen für einen dedizierten SQL-Pool (ehemals SQL DW)
 
@@ -24,6 +24,7 @@ Alle SQL Data Warehouse-Benutzer können jetzt über Synapse Studio und den Arbe
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie die Funktionen des Synapse-Arbeitsbereichs in Ihrem Data Warehouse aktivieren, müssen Sie über Folgendes verfügen:
 - Rechte zum Erstellen und Verwalten der SQL-Ressourcen, die auf dem logischen SQL-Server gehostet werden.
+- Schreibberechtigungen für den Host SQL Server. 
 - Rechte zum Erstellen von Azure Synapse-Ressourcen.
 - Einen auf dem logischen Server bekannten Azure Active Directory-Administrator
 

@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: cb3c74a2176ee7fcac53afb5185e8c62e66f4dfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 7155a829655645e13e0485ed7d51305ec50e5b0a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798798"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502758"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitäten nach Kultur in Ihrem LUIS-Modell
 
@@ -23,7 +23,7 @@ LUIS stellt vordefinierte Entitäten bereit.
 ## <a name="entity-resolution"></a>Entitätsauflösung
 Wenn eine vordefinierte Entität in Ihrer Anwendung enthalten ist, schließt LUIS die entsprechende Entitätsauflösung in die Endpunktantwort ein. Alle Beispieläußerungen sind ebenfalls mit der Entität gekennzeichnet.
 
-Das Verhalten vordefinierter Entitäten kann nicht geändert werden, aber Sie können die Auflösung verbessern, indem Sie [die vordefinierte Entität als Feature zu einer Entität für maschinelles Lernen oder einer untergeordneten Entität hinzufügen](luis-concept-entity-types.md#effective-prebuilt-entities).
+Das Verhalten vordefinierter Entitäten kann nicht geändert werden. Sie können jedoch die Auflösung verbessern, indem Sie [die vordefinierte Entität einer Entität für maschinelles Lernen oder einer untergeordneten Entität als Feature hinzufügen](luis-concept-entity-types.md#prebuilt-entity).
 
 ## <a name="availability"></a>Verfügbarkeit
 Sofern nicht anders vermerkt, sind vordefinierte Entitäten in allen LUIS-Anwendungsgebietsschemas (Kulturen) verfügbar. Die folgende Tabelle zeigt die vordefinierten Entitäten, die für die jeweilige Kultur unterstützt werden.

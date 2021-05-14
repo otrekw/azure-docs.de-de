@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f22a55a65b7dc4fd4f714d880804e6fd65dbbe46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f5586b43143763ebf36adb15d96fdb2a91b5f5c
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654373"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443473"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurieren von Token in Azure Active Directory B2C
 
@@ -228,6 +228,10 @@ Das OutputClaim-Element enthält die folgenden Attribute:
 - **AlwaysUseDefaultValue**: Erzwingt die Verwendung des Standardwerts.
 
 ::: zone-end
+
+## <a name="authorization-code-lifetime"></a>Lebensdauer des Autorisierungscodes
+
+Wenn Sie den [OAuth 2.0-Autorisierungscodefluss](authorization-code-flow.md) verwenden, kann die App den Autorisierungscode verwenden, um ein Zugriffstoken für eine Zielressource anzufordern. Autorisierungscodes sind kurzlebig und laufen nach etwa zehn Minuten ab. Die Lebensdauer des Autorisierungscodes kann nicht konfiguriert werden. Stellen Sie sicher, dass Ihre Anwendung die Autorisierungscodes innerhalb von 10 Minuten einlöst. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

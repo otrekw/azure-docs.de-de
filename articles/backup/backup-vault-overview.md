@@ -2,13 +2,13 @@
 title: Übersicht über Sicherungstresore
 description: Übersicht über Sicherungstresore
 ms.topic: conceptual
-ms.date: 08/17/2020
-ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/19/2021
+ms.openlocfilehash: e2d720da9474a35870de01559201d22c9e5b567f
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92091286"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739078"
 ---
 # <a name="backup-vaults-overview"></a>Übersicht über Sicherungstresore
 
@@ -28,7 +28,8 @@ Ein Sicherungstresor ist eine Entität, in der die im Lauf der Zeit erstellten S
 
 ## <a name="encryption-settings-in-the-backup-vault"></a>Verschlüsselungseinstellungen im Sicherungstresor
 
-In diesem Abschnitt werden die verfügbaren Optionen zur Verschlüsselung Ihrer im Sicherungstresor gespeicherten Sicherungsdaten behandelt.
+In diesem Abschnitt werden die verfügbaren Optionen zur Verschlüsselung Ihrer im Sicherungstresor gespeicherten Sicherungsdaten behandelt. Der Azure Backup-Dienst verwendet die **Backup Management Service**-App, um auf Azure Key Vault, aber nicht auf die verwaltete Identität des Sicherungstresors zu zugreifen.
+
 
 ### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von der Plattform verwalteten Schlüsseln
 
@@ -87,7 +88,7 @@ Der folgende Vorgang ist destruktiv und kann nicht rückgängig gemacht werden. 
 
 Zum ordnungsgemäßen Löschen eines Tresors müssen Sie die Schritte in dieser Reihenfolge ausführen:
 
-- Sie müssen überprüfen, ob geschützte Elemente vorhanden sind:
+- Überprüfen Sie, ob geschützte Elemente vorhanden sind:
   - Wechseln Sie in der linken Navigationsleiste zu **Sicherungsinstanzen**. Alle hier aufgelisteten Elemente müssen zuerst gelöscht werden.
 
 Nachdem Sie diese Schritte abgeschlossen haben, können Sie mit dem Löschen des Tresors fortfahren.

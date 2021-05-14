@@ -4,12 +4,12 @@ description: Verschiedene Gründe für den Fehler „InvalidNetworkConfiguration
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/12/2021
-ms.openlocfilehash: 83d4819ecb1da91bda5fb4f1cb445bbc34fd007f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b8b5cba0e25e3be6b668054c9f3d2afaa87925d
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98926984"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064177"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Fehler „InvalidNetworkConfigurationErrorCode“ bei der Clustererstellung in Azure HDInsight
 
@@ -31,9 +31,9 @@ Dieser Fehler ist ein Hinweis auf ein Problem mit der benutzerdefinierten DNS-Ko
 
 1. Stellen Sie eine SSH-Verbindung mit der VM her, die Teil des Clusters ist, und führen Sie den Befehl `hostname -f` aus. Damit wird der vollqualifizierte Domänenname des Hosts (in der Anleitung unten als `<host_fqdn>` bezeichnet) zurückgegeben.
 
-1. Führen Sie anschließend den Befehl `nslookup <host_fqdn>` aus (z. B. `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Wenn dieser Befehl den Namen in eine IP-Adresse auflöst, bedeutet dies, dass Ihr DNS-Server richtig funktioniert. Erstellen Sie in diesem Fall eine Supportanfrage für HDInsight, damit wir das Problem untersuchen können. Fügen Sie der Supportanfrage die Schritte zur Problembehandlung hinzu, die Sie ausgeführt haben. Wir können das Problem dann schneller beheben.
+1. Führen Sie anschließend den Befehl `nslookup <host_fqdn>` aus (z. B. `nslookup hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Wenn dieser Befehl den Namen in eine IP-Adresse auflöst, bedeutet dies, dass Ihr DNS-Server richtig funktioniert. Erstellen Sie in diesem Fall eine Supportanfrage für HDInsight, damit wir das Problem untersuchen können. Fügen Sie der Supportanfrage die Schritte zur Problembehandlung hinzu, die Sie ausgeführt haben. Wir können das Problem dann schneller beheben.
 
-1. Wenn der obige Befehl keine IP-Adresse zurückgibt, führen Sie `nslookup <host_fqdn> 168.63.129.16` aus (z. B. `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Wenn dieser Befehl die IP-Adresse auflösen kann, leitet entweder Ihr DNS-Server die Abfrage nicht an das DNS von Azure weiter, oder es handelt sich nicht um eine VM im selben virtuellen Netzwerk wie der Cluster.
+1. Wenn der obige Befehl keine IP-Adresse zurückgibt, führen Sie `nslookup <host_fqdn> 168.63.129.16` aus (z. B. `nslookup hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Wenn dieser Befehl die IP-Adresse auflösen kann, leitet entweder Ihr DNS-Server die Abfrage nicht an das DNS von Azure weiter, oder es handelt sich nicht um eine VM im selben virtuellen Netzwerk wie der Cluster.
 
 1. Wenn Sie nicht über eine Azure-VM verfügen, die als benutzerdefinierter DNS-Server im virtuellen Netzwerk des Clusters agieren kann, müssen Sie diese zuerst hinzufügen. Erstellen Sie eine VM im virtuellen Netzwerk, die als DNS-Weiterleitung konfiguriert wird.
 
@@ -141,8 +141,8 @@ Bearbeiten Sie in einer SSH-Sitzung auf dem Hauptknoten den folgenden Text, und 
 
 ```bash
 hostname -f
-nslookup <headnode_fqdn> (e.g.nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
-dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
+nslookup <headnode_fqdn> (e.g.nslookup hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
+dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
 ```
 ### <a name="cause"></a>Ursache
 

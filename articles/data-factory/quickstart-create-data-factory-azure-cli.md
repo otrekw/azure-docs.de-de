@@ -9,12 +9,12 @@ ms.date: 03/24/2021
 ms.custom:
 - template-quickstart
 - devx-track-azurecli
-ms.openlocfilehash: 9af5f276e49e9eb2756dc544db353c75c99bc5a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b40407f4c4fb81bbf76bd0b552f3c9f2c827232a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937949"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871506"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>Schnellstart: Erstellen einer Azure Data Factory-Instanz mithilfe der Azure CLI
 
@@ -73,7 +73,7 @@ In dieser Schnellstartanleitung wird ein Azure Storage-Konto verwendet, das ein
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-Führen Sie zum Erstellen einer Azure Data Factory-Instanz den Befehl [az datafactory factory create](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_create) aus:
+Führen Sie zum Erstellen einer Azure Data Factory-Instanz den Befehl [az datafactory factory create](/cli/azure/datafactory/factory#az_datafactory_factory_create) aus:
 
 ```azurecli
 az datafactory factory create --resource-group ADFQuickStartRG \
@@ -83,7 +83,7 @@ az datafactory factory create --resource-group ADFQuickStartRG \
 > [!IMPORTANT]
 > Ersetzen Sie `ADFTutorialFactory` durch einen global eindeutigen Data Factory-Namen, etwa „ADFTutorialFactorySP1127“.
 
-Die von Ihnen erstellte Data Factory können Sie mithilfe des Befehls [az datafactory factory show](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show) anzeigen:
+Die von Ihnen erstellte Data Factory können Sie mithilfe des Befehls [az datafactory factory show](/cli/azure/datafactory/factory#az_datafactory_factory_show) anzeigen:
 
 ```azurecli
 az datafactory factory show --resource-group ADFQuickStartRG \
@@ -94,7 +94,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 Erstellen Sie als Nächstes einen verknüpften Dienst und zwei Datasets.
 
-1. Verwenden Sie den Befehl [az storage account show-connection-string](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show), um die Verbindungszeichenfolge für Ihr Speicherkonto abzurufen:
+1. Verwenden Sie den Befehl [az storage account show-connection-string](/cli/azure/datafactory/factory#az_datafactory_factory_show), um die Verbindungszeichenfolge für Ihr Speicherkonto abzurufen:
 
    ```azurecli
    az storage account show-connection-string --resource-group ADFQuickStartRG \
@@ -115,7 +115,7 @@ Erstellen Sie als Nächstes einen verknüpften Dienst und zwei Datasets.
    }
    ```
 
-1. Erstellen Sie mithilfe des Befehls [az datafactory linked-service create](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_create) einen verknüpften Dienst namens `AzureStorageLinkedService`:
+1. Erstellen Sie mithilfe des Befehls [az datafactory linked-service create](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_create) einen verknüpften Dienst namens `AzureStorageLinkedService`:
 
    ```azurecli
    az datafactory linked-service create --resource-group ADFQuickStartRG \
@@ -146,7 +146,7 @@ Erstellen Sie als Nächstes einen verknüpften Dienst und zwei Datasets.
    }
    ```
 
-1. Erstellen Sie mit dem Befehl [az datafactory dataset create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) ein Eingabedataset namens `InputDataset`:
+1. Erstellen Sie mit dem Befehl [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) ein Eingabedataset namens `InputDataset`:
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -177,7 +177,7 @@ Erstellen Sie als Nächstes einen verknüpften Dienst und zwei Datasets.
    }
    ```
 
-1. Erstellen Sie mit dem Befehl [az datafactory dataset create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) ein Ausgabedataset namens `OutputDataset`:
+1. Erstellen Sie mit dem Befehl [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) ein Ausgabedataset namens `OutputDataset`:
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -243,7 +243,7 @@ Erstellen Sie abschließend die Pipeline, und führen Sie sie aus.
    }
    ```
 
-1. Erstellen Sie mit dem Befehl [az datafactory pipeline create](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create) eine Pipeline namens `Adfv2QuickStartPipeline`:
+1. Erstellen Sie mit dem Befehl [az datafactory pipeline create](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create) eine Pipeline namens `Adfv2QuickStartPipeline`:
 
    ```azurecli
    az datafactory pipeline create --resource-group ADFQuickStartRG \
@@ -251,7 +251,7 @@ Erstellen Sie abschließend die Pipeline, und führen Sie sie aus.
        --pipeline @Adfv2QuickStartPipeline.json
    ```
 
-1. Führen Sie die Pipeline mithilfe des Befehls [az datafactory pipeline create-run](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create_run) aus:
+1. Führen Sie die Pipeline mithilfe des Befehls [az datafactory pipeline create-run](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create_run) aus:
 
    ```azurecli
    az datafactory pipeline create-run --resource-group ADFQuickStartRG \
@@ -260,7 +260,7 @@ Erstellen Sie abschließend die Pipeline, und führen Sie sie aus.
 
    Dieser Befehl gibt eine Ausführungs-ID zurück. Kopieren Sie diese zur Verwendung im nächsten Befehl.
 
-1. Überprüfen Sie mithilfe des Befehls [az datafactory pipeline-run show](/cli/azure/ext/datafactory/datafactory/pipeline-run#ext_datafactory_az_datafactory_pipeline_run_show), ob die Pipelineausführung erfolgreich war:
+1. Überprüfen Sie mithilfe des Befehls [az datafactory pipeline-run show](/cli/azure/datafactory/pipeline-run#az_datafactory_pipeline_run_show), ob die Pipelineausführung erfolgreich war:
 
    ```azurecli
    az datafactory pipeline-run show --resource-group ADFQuickStartRG \
@@ -277,7 +277,7 @@ Alle Ressourcen in dieser Schnellstartanleitung sind Teil derselben Ressourcengr
 az group delete --name ADFQuickStartRG
 ```
 
-Wenn Sie diese Ressourcengruppe für etwas anderes verwenden, löschen Sie stattdessen einzelne Ressourcen. Verwenden Sie beispielsweise den Befehl [az datafactory linked-service delete](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_delete), um den verknüpften Dienst zu entfernen.
+Wenn Sie diese Ressourcengruppe für etwas anderes verwenden, löschen Sie stattdessen einzelne Ressourcen. Verwenden Sie beispielsweise den Befehl [az datafactory linked-service delete](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_delete), um den verknüpften Dienst zu entfernen.
 
 In dieser Schnellstartanleitung haben Sie die folgenden JSON-Dateien erstellt:
 

@@ -9,13 +9,12 @@ ms.topic: how-to
 ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 11323f2aec05935b9dc45187ed54597e61af924d
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: a1698a56ad7e92a59b664ce8f8bca2355fb44fb1
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554115"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074707"
 ---
 # <a name="enable-soft-delete-for-blobs"></a>Aktivieren von „Vorläufiges Löschen“ für Blobs
 
@@ -62,7 +61,7 @@ $properties.DeleteRetentionPolicy.Days
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-CLI)
 
-Wenn Sie das vorläufige Löschen von Blobs mithilfe der Azure CLI aktivieren möchten, können Sie den Befehl [az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) aufrufen und dabei die Beibehaltungsdauer in Tagen angeben.
+Wenn Sie das vorläufige Löschen von Blobs mithilfe der Azure CLI aktivieren möchten, können Sie den Befehl [az storage account blob-service-properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) aufrufen und dabei die Beibehaltungsdauer in Tagen angeben.
 
 Im folgenden Beispiel wird das vorläufige Löschen von Blobs aktiviert und die Beibehaltungsdauer auf sieben Tage festgelegt. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -73,7 +72,7 @@ az storage account blob-service-properties update --account-name <storage-accoun
     --delete-retention-days 7
 ```
 
-Die aktuellen Einstellungen für das vorläufige Löschen von Blobs können mithilfe des Befehls [az storage account blob-service-properties show](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_show) überprüft werden:
+Die aktuellen Einstellungen für das vorläufige Löschen von Blobs können mithilfe des Befehls [az storage account blob-service-properties show](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_show) überprüft werden:
 
 ```azurecli-interactive
 az storage account blob-service-properties show --account-name <storage-account> \

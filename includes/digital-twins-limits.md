@@ -3,14 +3,14 @@ author: baanders
 description: Include-Datei für Grenzwerte von Azure Digital Twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 6/9/2020
+ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34fec713c3764987f07bc7fb89ecb0a0d770a840
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100370098"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728018"
 ---
 ### <a name="functional-limits"></a>Funktionale Grenzwerte
 
@@ -46,7 +46,8 @@ Die folgende Tabelle gibt die Ratengrenzwerte verschiedener APIs an.
 | API | Funktion | Standardlimit | Anpassbar? |
 | --- | --- | --- | --- |
 | Modelle-API | Anzahl der Anforderungen pro Sekunde | 100 | Ja |
-| Digital Twins-API | Anzahl der Anforderungen pro Sekunde | 2\.000 | Ja |
+| Digital Twins-API | Anzahl der Leseanforderungen pro Sekunde | 1\.000 | Ja |
+| Digital Twins-API | Anzahl der Patch-Anforderungen pro Sekunde | 1\.000 | Ja |
 | Digital Twins-API | Anzahl von create-/delete-Vorgängen pro Sekunde über **alle Zwillinge und Beziehungen** hinweg | 50 | Ja |
 | Digital Twins-API | Anzahl von create-/update-/delete-Vorgängen pro Sekunde für einen **einzelnen Zwilling** oder seine Beziehungen | 10 | Nein |
 | Abfrage-API | Anzahl der Anforderungen pro Sekunde | 500 | Ja |

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7e14dbf5aab68f5ea2d96274606306378feedad2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 7e5c94cad817f398ae56fb1aa9cbbd1c43cd47a4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445991"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291818"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop?
 
@@ -91,7 +91,7 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 >[!NOTE]
 >Sollten Sie ein Azure-Abonnement benötigen, können Sie sich [für eine einmonatige kostenlose Testversion registrieren](https://azure.microsoft.com/free/). Bei Verwendung der kostenlosen Testversion von Azure müssen Sie Azure AD Domain Services verwenden, um Ihre Windows Server Active Directory-Instanz mit Azure Active Directory zu synchronisieren.
 
-Eine Liste der URLs, die Sie freigeben sollten, damit Ihre Windows Virtual Desktop-Bereitstellung wie vorgesehen funktioniert, finden Sie in unserer [Liste sicherer URLs](safe-url-list.md).
+Eine Liste der URLs, die Sie freigeben sollten, damit Ihre Windows Virtual Desktop-Bereitstellung wie vorgesehen funktioniert, finden Sie in unserer [Liste erforderlicher URLs](safe-url-list.md).
 
 Windows Virtual Desktop umfasst die Windows-Desktops und -Apps, die Sie für Benutzer bereitstellen, sowie die Verwaltungslösung. Letztere wird von Microsoft in Azure gehostet. Desktops und Apps können auf virtuellen Computern (VMs) in einer beliebigen Azure-Region bereitgestellt werden. Die Verwaltungslösung und Daten für diese virtuellen Computer befinden sich dagegen in den Vereinigten Staaten. Dies kann zu Datenübertragungen in die USA führen.
 
@@ -121,10 +121,10 @@ Weitere Informationen zu URLs, die Sie für die Verwendung der Clients entsperre
 
 ## <a name="supported-virtual-machine-os-images"></a>Unterstützte Betriebssystemimages virtueller Computer
 
-Windows Virtual Desktop unterstützt die folgenden Images von x64-Betriebssystemen:
+Windows Virtual Desktop hält sich an die [Microsoft-Lebenszyklusrichtlinie](https://docs.microsoft.com/lifecycle/) und unterstützt die folgenden x64-Betriebssystemimages:
 
-* Windows 10 Enterprise mit mehreren Sitzungen, Version 1809 oder höher
-* Windows 10 Enterprise, Version 1809 oder höher (nur halbjährlicher Kanal)
+* Windows 10 Enterprise (mehrere Sitzungen)
+* Windows 10 Enterprise
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
@@ -136,10 +136,8 @@ Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab,
 
 |Betriebssystem|Azure-Imagekatalog|Manuelle VM-Bereitstellung|Integration von Azure Resource Manager-Vorlagen|Bereitstellungshost-Pools auf Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (mehrere Sitzungen), Version 2004|Ja|Ja|Ja|Ja|
-|Windows 10 Enterprise (mehrere Sitzungen), Version 1909|Ja|Ja|Ja|Ja|
-|Windows 10 Enterprise (mehrere Sitzungen), Version 1903|Ja|Ja|Nein|Nein|
-|Windows 10 Enterprise (mehrere Sitzungen), Version 1809|Ja|Ja|Nein|Nein|
+|Windows 10 Enterprise mit mehreren Sitzungen, Version 1909 oder höher|Ja|Ja|Ja|Ja|
+|Windows 10 Enterprise, Version 1909 oder höher|Ja|Ja|Ja|Ja|
 |Windows 7 Enterprise|Ja|Ja|Nein|Nein|
 |Windows Server 2019|Ja|Ja|Nein|Nein|
 |Windows Server 2016|Ja|Ja|Ja|Ja|

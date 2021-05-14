@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ms.date: 09/14/2020
-ms.openlocfilehash: d252aa15fef29f7c22e224fd7b6021a469530287
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ba874790b8da6c1dc021163259f8df934fa17d41
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067740"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714870"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Python)
 
@@ -33,7 +33,7 @@ In dieser Schnellstartanleitung verwenden Sie eine direkte Methode, um ein simul
 
 * [Python 3.7 oder höher](https://www.python.org/downloads/). Informationen zu anderen unterstützten Python-Versionen finden Sie im Artikel zu den [Azure IoT-Gerätefeatures](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features).
 
-* [Ein Python-Beispielprojekt](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip)
+* [Ein Python-Beispielprojekt](https://github.com/Azure-Samples/azure-iot-samples-python/) von GitHub. Laden Sie die Beispiele über die Schaltfläche **Code** im GitHub-Repository herunter, oder klonen Sie sie.
 
 * Der Port 8883 muss in Ihrer Firewall geöffnet sein. Für das Beispielgerät in dieser Schnellstartanleitung wird das MQTT-Protokoll verwendet, das über den Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -84,7 +84,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
     ```azurecli-interactive
     az iot hub connection-string show \
       --policy-name service \
-      --name {YourIoTHubName} \
+      --hub-name {YourIoTHubName} \
       --output table
     ```
 

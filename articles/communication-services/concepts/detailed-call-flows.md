@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 526e3a1e4eeb6ef6a31a33498241d9a7443cca35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f25f7504c8962643176785f62e0d5d33928726bb
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490635"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325443"
 ---
 # <a name="call-flow-topologies"></a>Topologien für Anrufabläufe
 Dieser Artikel enthält eine Beschreibung der Topologien für Anrufabläufe in Azure Communication Services. Die Informationen in diesem Artikel sind gut für Sie geeignet, wenn Sie als Unternehmenskunde Communication Services in ein von Ihnen verwaltetes Netzwerk integrieren möchten. Eine Einführung in Communication Services-Anrufabläufe finden Sie in der [Dokumentation zu den Konzepten von Anrufabläufen](./call-flows.md).
@@ -74,7 +74,7 @@ Weitere Informationen zu den Details des ausgewählten Medienpfads finden Sie in
 
 ### <a name="communication-services-internet"></a>Communication Services (Internet)
 
-Diese Topologie wird von Kunden genutzt, die Communication Services aus der Cloud ohne lokale Bereitstellung nutzen, z. B. per SIP-Schnittstelle. Bei dieser Topologie fließt Datenverkehr für Communication Services über das Internet.
+Diese Topologie wird von Kunden genutzt, die Communication Services aus der Cloud ohne lokale Bereitstellung nutzen, z. B. per direktem Azure-Routing. Bei dieser Topologie fließt Datenverkehr für Communication Services über das Internet.
 
 :::image type="content" source="./media/call-flows/detailed-flow-general.png" alt-text="Azure Communication Services-Topologie":::
 
@@ -172,7 +172,7 @@ Diese Medienübertragung ist bidirektional. Die Richtung von Ablauf 6 für den 
 
 ### <a name="use-case-communication-services-client-to-pstn-through-communication-services-trunk"></a>Anwendungsfall: Vom Communication Services-Client zum Telefonfestnetz über den Communication Services-Trunk
 
-Communication Services ermöglicht das Tätigen und Annehmen von Anrufen über das Telefonfestnetz (PSTN). Wenn der PSTN-Trunk über von Communication Services bereitgestellte Telefonnummern verbunden wird, gelten für diesen Anwendungsfall keine besonderen Konnektivitätsanforderungen. Wenn Sie Ihren eigenen lokalen PSTN-Trunk mit Azure Communication Services verbinden möchten, können Sie die SIP-Schnittstelle nutzen (verfügbar in Kalenderjahr 2021).
+Communication Services ermöglicht das Tätigen und Annehmen von Anrufen über das Telefonfestnetz (PSTN). Wenn der PSTN-Trunk über von Communication Services bereitgestellte Telefonnummern verbunden wird, gelten für diesen Anwendungsfall keine besonderen Konnektivitätsanforderungen. Wenn Sie Ihren eigenen lokalen PSTN-Trunk mit Azure Communication Services verbinden möchten, können Sie direktes Azure-Routing nutzen (verfügbar in Kalenderjahr 2021).
 
 :::image type="content" source="./media/call-flows/acs-to-pstn.png" alt-text="1:1-Anruf mit PSTN-Teilnehmer":::
 

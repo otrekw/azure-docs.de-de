@@ -1,19 +1,19 @@
 ---
 title: 'Szenario: Benutzerdefinierte Isolation für virtuelle Netzwerke und Branches'
 titleSuffix: Azure Virtual WAN
-description: 'Routingszenarien: Verhindern, dass ausgewählte VNets und Branches einander erreichen können'
+description: Erfahren Sie mehr über Virtual WAN Routing-Szenarien, um zu verhindern, dass ausgewählte VNets und Branches sich gegenseitig erreichen können.
 services: virtual-wan
 author: wellee
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 01/25/2021
+ms.date: 04/27/2021
 ms.author: wellee
-ms.openlocfilehash: e8e5a5a1b9325f40fdd51133155a0daffaa55a7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 024d3c34094ac82e158198e569e0b6f3b12bdf4c
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99396240"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162021"
 ---
 # <a name="scenario-custom-isolation-for-virtual-networks-and-branches"></a>Szenario: Benutzerdefinierte Isolation für virtuelle Netzwerke und Branches
 
@@ -85,7 +85,7 @@ Führen Sie zum Einrichten des Routings die folgenden Schritte aus.
 3. Wiederholen Sie diese Schritte für die Routingtabelle **RT_RED** für rote VNets.
 4. Stellen Sie eine Azure Firewall in Virtual WAN bereit. Weitere Informationen zu Azure Firewall im Virtual WAN-Hub finden Sie unter [Konfigurieren von Azure Firewall im Virtual WAN-Hub](howto-firewall.md).
 5. Fügen Sie der **Standard**-Routingtabelle des virtuellen Hubs eine statische Route hinzu, die den gesamten Datenverkehr, der für die VNet-Adressräume (sowohl blau als auch rot) bestimmt ist, zu Azure Firewall leitet. Mit diesem Schritt wird sichergestellt, dass alle Pakete aus Ihren Branches zur Überprüfung an Azure Firewall gesendet werden.
-    * Beispiel: **Zielpräfix**:  10.0.0.0/24 **Nächster Hop**: Azure Firewall
+    * Beispiel: **Destination Prefix**:  10.0.0.0/8 **Next Hop**: Azure Firewall
     >[!NOTE]
     > Dieser Schritt kann auch über Firewall Manager erfolgen, indem Sie die Option „Secure Private Traffic“ (Privaten Datenverkehr sichern) auswählen. Dadurch wird eine Route für alle privaten RFC1918-IP-Adressen hinzugefügt, die für VNets und Branches gelten. Sie müssen alle Branches oder virtuellen Netzwerke, die nicht mit RFC1918 konform sind, manuell hinzufügen. 
 

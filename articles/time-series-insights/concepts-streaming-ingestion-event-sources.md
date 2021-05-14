@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 4e22d93d3037c190193f53b7cfdbc87cff2da6ed
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 4021a705668db82e47a23808ef0f6546f86866be
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504395"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138263"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-Ereignisquellen
 
@@ -29,7 +29,10 @@ Ereignisse müssen als UTF-8-codierte JSON-Dateien gesendet werden.
 
 Eine Ereignisquelle ist die Verknüpfung zwischen Ihrem Hub und der Azure Time Series Insights Gen2-Umgebung. In Ihrer Ressourcengruppe wird eine separate Ressource vom Typ `Time Series Insights event source` erstellt. Die IoT Hub- oder Event Hub-Ressourcen können sich im selben Azure-Abonnement wie Ihre Azure Time Series Insights Gen2-Umgebung oder in einem anderen Abonnement befinden. Es hat sich jedoch bewährt, die Azure Time Series Insights-Umgebung und die IoT Hub- oder Event Hub-Ressource in derselben Azure-Region auszuführen.
 
-Zum Erstellen, Bearbeiten oder Entfernen von Ereignisquellen in Ihrer Umgebung können Sie das [Azure-Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), die [Azure CLI](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source), [Azure Resource Manager-Vorlagen](time-series-insights-manage-resources-using-azure-resource-manager-template.md) sowie die [REST-API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) nutzen.
+Zum Erstellen, Bearbeiten oder Entfernen von Ereignisquellen in Ihrer Umgebung können Sie das [Azure-Portal](./tutorial-set-up-environment.md#create-an-azure-time-series-insights-gen2-environment), die [Azure CLI](/cli/azure/tsi/event-source), [Azure Resource Manager-Vorlagen](time-series-insights-manage-resources-using-azure-resource-manager-template.md) sowie die [REST-API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) nutzen.
+
+> [!WARNING]
+> Schränken Sie den öffentlichen Internetzugriff nicht auf einen Hub oder eine Ereignisquelle ein, der bzw. die von Time Series Insights verwendet wird. Andernfalls wird die erforderliche Verbindung unterbrochen.
 
 ## <a name="start-options"></a>Startoptionen
 
@@ -46,18 +49,17 @@ Beim Erstellen einer Ereignisquelle können Sie angeben, welche bereits vorhande
 > - Wenn Sie „EarliestAvailable“ auswählen und über eine große Menge bereits vorhandener Daten verfügen, kann es anfänglich zu einer hohen Latenz kommen, da die Azure Time Series Insights Gen2-Umgebung alle Daten verarbeitet.
 > - Die Latenz sollte mit zunehmender Indizierung der Daten abnehmen. Senden Sie ein Supportticket über das Azure-Portal, falls es bei Ihnen zu einer dauerhaft hohen Latenz kommt.
 
-* EarliestAvailable
+- EarliestAvailable
 
 ![EarliestAvailable-Diagramm](media/concepts-streaming-event-sources/event-source-earliest-available.png)
 
-* EventSourceCreationTime
+- EventSourceCreationTime
 
 ![EventSourceCreationTime-Diagramm](media/concepts-streaming-event-sources/event-source-creation-time.png)
 
-* CustomEnqueuedTime
+- CustomEnqueuedTime
 
 ![CustomEnqueuedTime-Diagramm](media/concepts-streaming-event-sources/event-source-custom-enqueued-time.png)
-
 
 ## <a name="streaming-ingestion-best-practices"></a>Bewährte Methoden für die Streamingerfassung
 
@@ -113,9 +115,9 @@ Zeitstempel müssen im ISO 8601-Format gesendet werden und werden im UTC-Format 
 
 Der Zeitzonenoffset sollte eines der folgenden Formate aufweisen:
 
-±HHMMZ</br>
-±HH:MM</br>
-±HH:MMZ</br>
+±HHMMZ<br />
+±HH:MM<br />
+±HH:MMZ
 
 ## <a name="next-steps"></a>Nächste Schritte
 

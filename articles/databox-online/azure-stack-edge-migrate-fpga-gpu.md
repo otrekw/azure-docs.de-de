@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 430e34a1ca631be00ef46170affd4b56c79894a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5ad065ff74a7cec293b83497d6258bcf62975f26
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566403"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139289"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Migrieren von Workloads von einem Azure Stack Edge Pro-FPGA- zu einem Azure Stack Edge Pro-GPU-Gerät
 
@@ -157,10 +157,10 @@ Als Nächstes kopieren Sie Daten vom Quellgerät auf die Edge-Cloudfreigaben und
 
 Führen Sie die folgenden Schritte aus, um die Daten der Edge-Cloudfreigaben mit Ihrem Zielgerät zu synchronisieren:
 
-1. [Fügen Sie Freigaben hinzu](azure-stack-edge-j-series-manage-shares.md#add-a-share), deren Namen den Namen der Freigaben auf dem Quellgerät entsprechen. Stellen Sie beim Erstellen der Freigaben sicher, dass **Blobcontainer auswählen** auf **Vorhandene verwenden** festgelegt ist, und wählen Sie dann den Container aus, der mit dem vorherigen Gerät verwendet wurde.
-1. [Fügen Sie Benutzer hinzu](azure-stack-edge-j-series-manage-users.md#add-a-user), die Zugriff auf das vorherige Gerät hatten.
-1. [Aktualisieren Sie die Freigabedaten](azure-stack-edge-j-series-manage-shares.md#refresh-shares) aus Azure. Durch die Aktualisierung der Freigabe werden alle Clouddaten aus dem vorhandenen Container in die Freigaben gepullt.
-1. Erstellen Sie die Bandbreitenzeitpläne neu, die Ihren Freigaben zugeordnet werden sollen. Informationen zu den ausführlichen Schritten finden Sie unter [Hinzufügen eines Zeitplans](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule).
+1. [Fügen Sie Freigaben hinzu](./azure-stack-edge-gpu-manage-shares.md#add-a-share), deren Namen den Namen der Freigaben auf dem Quellgerät entsprechen. Stellen Sie beim Erstellen der Freigaben sicher, dass **Blobcontainer auswählen** auf **Vorhandene verwenden** festgelegt ist, und wählen Sie dann den Container aus, der mit dem vorherigen Gerät verwendet wurde.
+1. [Fügen Sie Benutzer hinzu](./azure-stack-edge-gpu-manage-users.md#add-a-user), die Zugriff auf das vorherige Gerät hatten.
+1. [Aktualisieren Sie die Freigabedaten](./azure-stack-edge-gpu-manage-shares.md#refresh-shares) aus Azure. Durch die Aktualisierung der Freigabe werden alle Clouddaten aus dem vorhandenen Container in die Freigaben gepullt.
+1. Erstellen Sie die Bandbreitenzeitpläne neu, die Ihren Freigaben zugeordnet werden sollen. Informationen zu den ausführlichen Schritten finden Sie unter [Hinzufügen eines Zeitplans](./azure-stack-edge-gpu-manage-bandwidth-schedules.md#add-a-schedule).
 
 
 ### <a name="2-from-edge-local-shares"></a>2. Von lokalen Edge-Freigaben

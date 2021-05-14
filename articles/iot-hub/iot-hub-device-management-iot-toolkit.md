@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b48def283ea27fdd0eaa3230a2eb9a8327461ff1
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81688096"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567012"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Verwenden der Azure IoT-Tools für Visual Studio Code für die Geräteverwaltung mit Azure IoT Hub
 
 ![Lückenloses Diagramm](media/iot-hub-get-started-e2e-diagram/2.png)
 
-Die [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) sind eine nützliche Visual Studio Code-Erweiterung, die die IoT Hub-Verwaltung und die IoT-Anwendungsentwicklung vereinfachen. Es bietet Verwaltungsoptionen, die Sie zum Ausführen verschiedener Aufgaben verwenden können.
+In diesem Artikel wird beschrieben, wie Sie Azure IoT Tools für Visual Studio Code mit unterschiedlichen Verwaltungsoptionen auf Ihrem Entwicklungscomputer verwenden. Die [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) sind eine nützliche Visual Studio Code-Erweiterung, die die IoT Hub-Verwaltung und die IoT-Anwendungsentwicklung vereinfachen. Es bietet Verwaltungsoptionen, die Sie zum Ausführen verschiedener Aufgaben verwenden können.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -35,15 +35,7 @@ Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metad
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="what-you-learn"></a>Lerninhalt
-
-Es wird beschrieben, wie Sie die Azure IoT-Tools für Visual Studio Code mit unterschiedlichen Verwaltungsoptionen auf Ihrem Entwicklungscomputer verwenden.
-
-## <a name="what-you-do"></a>Aufgaben
-
-Führen Sie die Azure IoT-Tools für Visual Studio Code mit unterschiedlichen Verwaltungsoptionen aus.
-
-## <a name="what-you-need"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein aktives Azure-Abonnement.
 * Ein Azure IoT Hub in Ihrem Abonnement.

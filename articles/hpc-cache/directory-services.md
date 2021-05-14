@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: fd5dce0760953bf19c72e1a1062a9c03ffe861e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9db7576cb2278cc2ef0d8b93ef04bb633962cd0e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563369"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255748"
 ---
 # <a name="configure-directory-services"></a>Konfigurieren von Verzeichnisdiensten
 
@@ -44,7 +44,7 @@ Geben Sie unter **Active Directory-Details** die folgenden Werte an:
 
 * **AD-DNS-Domänenname:** Geben Sie den vollqualifizierten Domänennamen des AD-Servers an, dem der Cache beitreten soll, um Anmeldeinformationen abzurufen.
 
-* **Cacheservername (Computerkonto):** Legen Sie den Namen fest, der diesem HPC-Cache beim Beitreten zur AD-Domäne zugewiesen wird. Geben Sie einen Namen an, mit dem dieser Cache einfach zu erkennen ist. Der Name darf bis zu 15 Zeichen lang sein und nur Klein- und Großbuchstaben, Ziffern und Bindestriche enthalten.
+* **Cacheservername (Computerkonto):** Legen Sie den Namen fest, der diesem HPC Cache beim Beitreten zur AD-Domäne zugewiesen wird. Geben Sie einen Namen an, mit dem dieser Cache einfach zu erkennen ist. Der Name darf bis zu 15 Zeichen lang sein und nur Klein- und Großbuchstaben, Ziffern und Bindestriche enthalten.
 
 Geben Sie im Abschnitt **Anmeldeinformationen** den Benutzernamen und das Kennwort eines AD-Administrators an, den Azure HPC Cache für den Zugriff auf den AD-Server verwenden kann. Diese Informationen werden bei der Speicherung verschlüsselt und können nicht abgefragt werden.
 

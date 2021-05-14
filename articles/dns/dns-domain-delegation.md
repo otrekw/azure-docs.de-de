@@ -4,15 +4,15 @@ description: Grundlegendes zum Ändern der Domänendelegierung und zum Verwenden
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.date: 2/19/2019
+ms.date: 04/19/2021
 ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4753b07cc2f3ccd998c26a3392eb08c8761dd6f7
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76939053"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738844"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegieren von DNS-Zonen mit Azure DNS
 
@@ -43,7 +43,7 @@ DNS-Clients in PCs und mobilen Geräten rufen in der Regel einen rekursiven DNS-
 
 Wenn ein rekursiver DNS-Server eine Abfrage für einen DNS-Eintrag erhält, z.B. „www.contoso.com“, muss er zuerst nach dem Namenserver suchen, der die Zone für die Domäne „contoso.com“ hostet. Um den Namensserver zu finden, beginnt er mit den Stammnamenservern und sucht von dort aus die Namenserver, die die Zone „com“ hosten. Anschließend fragt er die com-Namenserver ab, um den Namenserver zu suchen, der die Zone „contoso.com“ hostet.  Anschließend kann er diese Namenserver nach „www.contoso.com“ abfragen.
 
-Dieses Verfahren wird als Auflösen des DNS-Namens bezeichnet. Streng genommen umfasst die DNS-Auflösung zusätzliche Schritte wie das Verfolgen von CNAMEs, aber für die Funktionsweise der DNS-Delegierung ist dies nicht relevant.
+Dieses Verfahren wird als Auflösen des DNS-Namens bezeichnet. Streng genommen umfasst die DNS-Auflösung weitere Schritte wie das Verfolgen von CNAMEs, aber für die Funktionsweise der DNS-Delegierung ist dies nicht relevant.
 
 Wie verweist eine übergeordnete Zone auf die Namenserver für eine untergeordnete Zone? Hierfür wird eine besondere Art von DNS-Eintrag verwendet: ein so genannter NS-Eintrag. (NS steht hier für Namenserver.) Die Stammzone enthält beispielsweise NS-Einträge für „com“ und zeigt die Namenserver für die Zone „com“ an. Die Zone „com“ enthält im Gegenzug NS-Einträge für „contoso.com“ und zeigt die Namenserver für die Zone „contoso.com“ an. Das Einrichten der NS-Einträge für eine untergeordnete Zone in einer übergeordneten Zone wird Delegieren der Domäne genannt.
 
@@ -53,7 +53,7 @@ Die folgende Abbildung zeigt eine DNS-Beispielabfrage. „contoso.net“ und „
 
 1. Der Client fordert `www.partners.contoso.net` von seinem lokalen DNS-Server an.
 2. Da der lokale DNS-Server nicht über den Eintrag verfügt, sendet er eine Anforderung an seinen Stammnamenserver.
-3. Der Stammnamenserver verfügt zwar nicht über den Eintrag, kennt aber die Adresse des Namenservers für `.net` und gibt sie an den DNS-Server weiter.
+3. Der Stammnamenserver verfügt zwar nicht über den Eintrag, kennt aber die Adresse des Namenservers für `.net` und gibt sie an den DNS-Server weiter
 4. Der lokale DNS-Server sendet die Anforderung an den `.net`-Namenserver.
 5. Der `.net`-Namenserver verfügt zwar nicht über den Eintrag, kennt jedoch die Adresse des `contoso.net`-Namenservers. In diesem Fall antwortet er mit der Adresse des Namenservers für die in Azure DNS gehostete DNS-Zone.
 6. Der lokale DNS-Server sendet die Anforderung an den Namenserver für die in Azure DNS gehostete `contoso.net`-Zone.
@@ -68,4 +68,3 @@ Jede Delegierung umfasst eigentlich zwei Kopien der NS-Einträge: eine in der ü
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie [Ihre Domäne an Azure DNS delegieren](dns-delegate-domain-azure-dns.md).
-

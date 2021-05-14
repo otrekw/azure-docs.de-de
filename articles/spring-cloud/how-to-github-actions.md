@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c52279108a8fd8d5a7ac8bbd7c8eb215097b21b0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: caf70a005711decae794b02d4a2ccbaf3c2c32f4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791353"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135003"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud: CI/CD mit GitHub Actions
 
@@ -57,7 +57,7 @@ Legen Sie den Namen des Geheimnisses auf `AZURE_CREDENTIALS` und den Wert auf di
 
  ![Festlegen der Geheimnisdaten](./media/github-actions/actions2.png)
 
-Die Azure-Anmeldeinformationen können auch aus Key Vault in GitHub Actions abgerufen werden, wie unter [Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions](./spring-cloud-github-actions-key-vault.md) beschrieben.
+Die Azure-Anmeldeinformationen können auch aus Key Vault in GitHub Actions abgerufen werden, wie unter [Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions](./github-actions-key-vault.md) beschrieben.
 
 ## <a name="provision-service-instance"></a>Bereitstellen der Dienstinstanz
 Führen Sie zum Bereitstellen Ihrer Azure Spring Cloud-Dienstinstanz die folgenden Befehle über die Azure-Befehlszeilenschnittstelle aus:
@@ -175,7 +175,7 @@ Legen Sie den Namen des Geheimnisses auf `AZURE_CREDENTIALS` und den Wert auf di
 
  ![Festlegen der Geheimnisdaten](./media/github-actions/actions2.png)
 
-Die Azure-Anmeldeinformationen können auch aus Key Vault in GitHub Actions abgerufen werden, wie unter [Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions](./spring-cloud-github-actions-key-vault.md) beschrieben.
+Die Azure-Anmeldeinformationen können auch aus Key Vault in GitHub Actions abgerufen werden, wie unter [Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions](./github-actions-key-vault.md) beschrieben.
 
 ## <a name="provision-service-instance"></a>Bereitstellen der Dienstinstanz
 Führen Sie zum Bereitstellen Ihrer Azure Spring Cloud-Dienstinstanz die folgenden Befehle über die Azure-Befehlszeilenschnittstelle aus:
@@ -289,7 +289,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Bereitstellen mit Maven-Plug-In
-Eine weitere Option ist die Verwendung des [Maven-Plug-Ins](./spring-cloud-quickstart.md), um die JAR-Datei bereitzustellen und die App-Einstellungen zu aktualisieren. Der Befehl `mvn azure-spring-cloud:deploy` ist idempotent und erstellt Apps bei Bedarf automatisch. Entsprechende Apps müssen nicht im Voraus erstellt werden.
+Eine weitere Option ist die Verwendung des [Maven-Plug-Ins](./quickstart.md), um die JAR-Datei bereitzustellen und die App-Einstellungen zu aktualisieren. Der Befehl `mvn azure-spring-cloud:deploy` ist idempotent und erstellt Apps bei Bedarf automatisch. Entsprechende Apps müssen nicht im Voraus erstellt werden.
 
 ```
 name: AzureSpringCloud
@@ -339,6 +339,6 @@ Im Falle eines Aktionsfehlers (beispielsweise, wenn die Azure-Anmeldeinformation
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions](./spring-cloud-github-actions-key-vault.md)
+* [Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions](./github-actions-key-vault.md)
 * [Azure Active Directory-Dienstprinzipale](/cli/azure/ad/sp#az_ad_sp_create_for_rbac)
 * [GitHub Actions für die Bereitstellung in Azure](https://github.com/Azure/actions/)

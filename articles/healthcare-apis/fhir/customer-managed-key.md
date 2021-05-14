@@ -6,20 +6,22 @@ author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.date: 09/28/2020
+ms.date: 05/04/2021
 ms.author: ginle
-ms.openlocfilehash: daa71a6df0ad412823736b3ee094cfd3945af492
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: e1f5159ae192d4be7aa683b68c6a994725089a7f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220848"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756861"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>Konfigurieren kundenseitig verwalteter Schlüssel im Ruhezustand
 
 Wenn Sie ein neues Azure API for FHIR-Konto erstellen, werden Ihre Daten standardmäßig mit von Microsoft verwalteten Schlüsseln verschlüsselt. Sie können jetzt eine zweite Verschlüsselungsebene für die Daten hinzufügen, indem Sie einen eigenen Schlüssel verwenden, den Sie selbst auswählen und verwalten.
 
-In Azure wird dies normalerweise mit einem Verschlüsselungsschlüssel in der Azure Key Vault-Instanz des Kunden erreicht. Azure SQL, Azure Storage und Cosmos DB sind Beispiele für Dienste, die derzeit über diese Funktion verfügen. In Azure API for FHIR wird diese Unterstützung über Cosmos DB genutzt. Wenn Sie ein Konto erstellen, haben Sie die Möglichkeit, einen URI für einen Azure Key Vault-Schlüssel anzugeben. Dieser Schlüssel wird an Cosmos DB übergeben, wenn das DB-Konto bereitgestellt wird. Wenn eine FHIR-Anforderung gesendet wird, ruft Cosmos DB Ihren Schlüssel ab und verwendet ihn zum Ver- bzw. Entschlüsseln der Daten. Informationen zu den ersten Schritten finden Sie unter den folgenden Links:
+In Azure wird dies normalerweise mit einem Verschlüsselungsschlüssel in der Azure Key Vault-Instanz des Kunden erreicht. Azure SQL, Azure Storage und Cosmos DB sind Beispiele für Dienste, die derzeit über diese Funktion verfügen. In Azure API for FHIR wird diese Unterstützung über Cosmos DB genutzt. Wenn Sie ein Konto erstellen, haben Sie die Möglichkeit, einen URI für einen Azure Key Vault-Schlüssel anzugeben. Dieser Schlüssel wird an Cosmos DB übergeben, wenn das DB-Konto bereitgestellt wird. Wenn eine FHIR-Anforderung gesendet wird, ruft Cosmos DB Ihren Schlüssel ab und verwendet ihn zum Ver- bzw. Entschlüsseln der Daten. 
+
+Informationen zu den ersten Schritte finden Sie unter den folgenden Links:
 
 - [Registrieren des Azure Cosmos DB-Ressourcenanbieters für Ihr Azure-Abonnement](../../cosmos-db/how-to-setup-cmk.md#register-resource-provider) 
 - [Konfigurieren Ihrer Azure Key Vault-Instanz](../../cosmos-db/how-to-setup-cmk.md#configure-your-azure-key-vault-instance)
@@ -28,24 +30,30 @@ In Azure wird dies normalerweise mit einem Verschlüsselungsschlüssel in der Az
 
 ## <a name="using-azure-portal"></a>Verwenden des Azure-Portals
 
-Beim Erstellen Ihres Azure API for FHIR-Kontos im Azure-Portal wird auf der Registerkarte „Zusätzliche Einstellungen“ unter „Datenbankeinstellungen“ die Konfigurationsoption „Datenverschlüsselung“ angezeigt. Standardmäßig ist die Option „Dienstseitig verwalteter Schlüssel“ ausgewählt. 
+Wenn Sie Ihr Azure API for FHIR-Konto auf Azure-Portal erstellen, wird  ihnen auf der  Registerkarte Zusätzliche Einstellungen unter den Datenbankeinstellungen die Option **Datenverschlüsselungskonfiguration** angezeigt. Standardmäßig wird die Option dienstverschlüsselte Schlüssel ausgewählt.
+
+> [!Important]
+> Die Datenverschlüsselungsoption ist nur verfügbar, wenn die Azure API for FHIR erstellt wird und anschließend nicht mehr geändert werden kann. Sie können den Verschlüsselungsschlüssel jedoch anzeigen und aktualisieren, wenn die Option Vom Kunden **verwalteter** Schlüssel ausgewählt ist. 
+
 
 Sie können Ihren Schlüssel in der Schlüsselauswahl auswählen:
 
 :::image type="content" source="media/bring-your-own-key/bring-your-own-key-keypicker.png" alt-text="Schlüsselauswahl":::
 
-Alternativ können Sie hier Ihren Azure Key Vault-Schlüssel angeben, indem Sie die Option „Kundenseitig verwalteter Schlüssel“ auswählen. Sie können den Schlüssel-URI hier eingeben:
+Sie können ihren schlüsselbasierten Schlüssel Azure Key Vault, indem Sie die Option Vom Kunden **verwalteter Schlüssel** auswählen.
+ 
+Sie können den Schlüssel-URI auch hier eingeben:
 
 :::image type="content" source="media/bring-your-own-key/bring-your-own-key-create.png" alt-text="Erstellen einer Azure API for FHIR-Instanz":::
 
-Für vorhandene FHIR-Konten können Sie die Option für die Schlüsselverschlüsselung (dienst- oder kundenseitig verwalteter Schlüssel) wie unten dargestellt auf dem Blatt „Datenbank“ anzeigen. Die Konfigurationsoption kann nach dem Auswählen nicht mehr geändert werden. Sie können aber Ihren Schlüssel ändern und aktualisieren.
+> [!Important]
+> Stellen Sie sicher, dass Azure Key Vault Berechtigungen für die Berechtigungen entsprechend festgelegt sind. Weitere Informationen finden Sie unter [Hinzufügen einer Zugriffsrichtlinie zu Ihrer Azure Key Vault Instanz.](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk#add-access-policy) Stellen Sie außerdem sicher, dass das weiche Löschen in den Eigenschaften des -Key Vault. Wenn Sie diese Schritte nicht ausführen, tritt ein Bereitstellungsfehler auf. Weitere Informationen finden Sie unter Überprüfen, ob das weiche Löschen in einem Schlüsseltresor aktiviert [ist, und Aktivieren des weichen Löschens.](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete)
+
+Für vorhandene FHIR-Konten können Sie die Schlüsselverschlüsselungsauswahl ( vom Dienst  verwalteter Schlüssel oder vom Kunden verwalteter Schlüssel **)** auf dem Blatt Datenbank anzeigen, wie unten dargestellt. Die Konfigurationsoption kann nicht mehr geändert werden, nachdem sie ausgewählt wurde. Sie können aber Ihren Schlüssel ändern und aktualisieren.
 
 :::image type="content" source="media/bring-your-own-key/bring-your-own-key-database.png" alt-text="Datenbank":::
 
 Darüber hinaus können Sie auch eine neue Version des angegebenen Schlüssels erstellen. Nach der Erstellung werden Ihre Daten mit der neuen Version verschlüsselt, ohne dass es zu einer Dienstunterbrechung kommt. Sie können den Zugriff auf den Schlüssel auch entfernen, damit nicht auf die Daten zugegriffen werden kann. Wenn der Schlüssel deaktiviert ist, tritt bei Abfragen ein Fehler auf. Wird der Schlüssel wieder aktiviert, sind die Abfragen wieder erfolgreich.
-
-
-
 
 ## <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
 
@@ -137,7 +145,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie kundenseitig verwaltete Schlüssel im Ruhezustand mit dem Azure-Portal, mit PowerShell, der CLI und einer Resource Manager-Vorlage konfigurieren. Im folgenden Abschnitt mit häufig gestellten Fragen zu Azure Cosmos DB erhalten Sie Antworten auf mögliche weitere Fragen: 
+In diesem Artikel haben Sie erfahren, wie Sie kundenverschlüsselte ruhende Schlüssel mithilfe von Azure-Portal, PowerShell, cli und der Resource Manager konfigurieren. Weitere Informationen finden Sie im abschnitt Azure Cosmos DB FAQ. 
  
 >[!div class="nextstepaction"]
 >[Häufig gestellte Fragen](../../cosmos-db/how-to-setup-cmk.md#frequently-asked-questions)

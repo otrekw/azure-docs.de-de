@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 1f4bd28d2b95aeebe07fcad84d757327622d51f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 295889cf64d27761021dd09549a3366ea142516e
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690429"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752028"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>Automatisieren von Verwaltungsaufgaben mithilfe elastischer Aufträge (Vorschau)
 
@@ -159,7 +159,7 @@ Das Ergebnis der Auftragsschritte wird für jede Zieldatenbank detailliert erfas
 
 #### <a name="job-history"></a>Auftragsverlauf
 
-Der Ausführungsverlauf eines elastischen Auftrags in der *Auftragsdatenbank* kann durch [Abfragen der Tabelle „jobs.job_executions“](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status) angezeigt werden. Daten des Ausführungsverlaufs, die älter als 45 Tage sind, werden durch einen Systembereinigungsauftrag bereinigt. Wenn Sie Verlaufsdaten löschen möchten, die noch keine 45 Tage alt sind, rufen Sie die gespeicherte Prozedur **sp_purge_history** in der *Auftragsdatenbank* auf.
+Der Ausführungsverlauf eines elastischen Auftrags in der *Auftragsdatenbank* kann durch [Abfragen der Tabelle „jobs.job_executions“](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status) angezeigt werden. Daten des Ausführungsverlaufs, die älter als 45 Tage sind, werden durch einen Systembereinigungsauftrag bereinigt. Wenn Sie Verlaufsdaten löschen möchten, die noch keine 45 Tage alt sind, rufen Sie die gespeicherte Prozedur **sp_purge_jobhistory** in der *Auftragsdatenbank* auf.
 
 #### <a name="job-status"></a>Auftragsstatus
 

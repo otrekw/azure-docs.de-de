@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 6cb85bc1da7d98d3e2ad46229588a91d971ce014
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9794c5f048b8795652e4b31e0134b36a77715abe
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567289"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873377"
 ---
 # <a name="azure-monitor-logs-overview"></a>Übersicht über Azure Monitor-Protokolle
 Azure Monitor-Protokolle sind ein Feature von Azure Monitor, mit dem Protokoll- und Leistungsdaten von [überwachten Ressourcen](../monitor-reference.md) gesammelt und organisiert werden. Daten aus unterschiedlichen Quellen, z. B. [Plattformprotokolle](../essentials/platform-logs-overview.md) von Azure-Diensten, Protokoll- und Leistungsdaten von [Agenten für virtuelle Computer](../agents/agents-overview.md) sowie Nutzungs- und Leistungsdaten von [Anwendungen](../app/app-insights-overview.md), können in einem einzigen Arbeitsbereich konsolidiert werden, sodass sie mithilfe einer ausgereiften Abfragesprache, die eine schnelle Analyse von Millionen von Datensätzen ermöglicht, gemeinsam analysiert werden können. Sie können eine einfache Abfrage ausführen, bei der nur eine bestimmte Gruppe von Datensätzen abgerufen wird, oder eine anspruchsvolle Datenanalyse durchführen, um kritische Muster in den Überwachungsdaten zu erkennen. Arbeiten Sie mithilfe von Log Analytics interaktiv mit Protokollabfragen und deren Ergebnissen, verwenden Sie diese in einer Warnungsregel, um proaktiv über Probleme informiert zu werden, oder visualisieren Sie die Ergebnisse in einer Arbeitsmappe oder einem Dashboard.
@@ -29,7 +29,7 @@ In der folgenden Tabelle sind einige der unterschiedlichen Optionen zur Nutzung 
 | **Warnung** | Konfigurieren einer [Protokollwarnungsregel](../alerts/alerts-log.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](../alerts/action-groups.md) ausführt, wenn die Ergebnisse der Abfrage mit einem bestimmten Ergebnis übereinstimmen. |
 | **Visualisieren** | Anheften der als Tabellen oder Diagramme gerenderten Abfrageergebnisse an ein [Azure-Dashboard](../../azure-portal/azure-portal-dashboards.md).<br>Erstellen einer [Arbeitsmappe](../visualize/workbooks-overview.md), um mehrere Sätze von Daten in einem interaktiven Bericht zu kombinieren. <br>Exportieren der Ergebnisse einer Abfrage nach [Power BI](../visualize/powerbi.md), um verschiedene Visualisierungen zu verwenden und sie mit Benutzern außerhalb von Azure zu teilen.<br>Exportieren der Ergebnisse einer Abfrage nach [Grafana](../visualize/grafana-plugin.md), um dessen Dashboards zu nutzen und sie mit anderen Quellen zu kombinieren.|
 | **Erkenntnisse** | Unterstützen von [Erkenntnissen](../monitor-reference.md#insights-and-core-solutions), die eine angepasste Überwachungsoberfläche für bestimmte Anwendungen und Dienste bereitstellen.  |
-| **Abrufen** | Zugreifen auf Ergebnisse von Protokollabfragen über eine Befehlszeile mit [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Zugreifen auf Ergebnisse von Protokollabfragen über eine Befehlszeile mit [PowerShell-Cmdlets](/powershell/module/az.operationalinsights).<br>Zugreifen auf Ergebnisse von Protokollabfragen über eine benutzerdefinierte Anwendung mit der [REST-API](https://dev.loganalytics.io/). |
+| **Abrufen** | Zugreifen auf Ergebnisse von Protokollabfragen über eine Befehlszeile mit [Azure CLI](/cli/azure/monitor/log-analytics).<br>Zugreifen auf Ergebnisse von Protokollabfragen über eine Befehlszeile mit [PowerShell-Cmdlets](/powershell/module/az.operationalinsights).<br>Zugreifen auf Ergebnisse von Protokollabfragen über eine benutzerdefinierte Anwendung mit der [REST-API](https://dev.loganalytics.io/). |
 | **Export** | Konfigurieren des [automatisierten Exports von Protokolldaten](./logs-data-export.md) in das Azure-Speicherkonto oder in Azure Event Hubs.<br>Erstellen eines Workflows zum Abrufen von Protokolldaten und kopieren der Daten an einen externen Speicherort mithilfe von [Logic Apps](./logicapp-flow-connector.md). |
 
 ![Übersicht zu Protokollen](media/data-platform-logs/logs-overview.png)

@@ -5,15 +5,15 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 04/07/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: dd1d9ddefd67cadb92632fd6db7a1fbd5a34f35a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b97b2806ebcf6613e9dde2e4d9172ee63e8ae719
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93338430"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164487"
 ---
 # <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,7 +54,7 @@ SELECT LOWER("Abc") AS lower
 
 ## <a name="remarks"></a>Bemerkungen
 
-Der Index wird von dieser Systemfunktion nicht verwendet.
+Diese Systemfunktion verwendet keine [Indizes](index-overview.md#index-usage).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

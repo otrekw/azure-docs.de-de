@@ -12,18 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 04/28/2021
 ms.author: b-juche
-ms.openlocfilehash: a17e6cc0479cf8ff2306736994a369d9e44dfdda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5282c806f5c6011418dabc14d6f82d6b9c0df251
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745943"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206347"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriken für Azure NetApp Files
 
 Azure NetApp Files verfügt über Metriken für Folgendes: zugeteilter Speicher, tatsächliche Speichernutzung, IOPS pro Volume und Latenz. Durch die Analyse dieser Metriken können Sie ein besseres Verständnis des Nutzungsmusters und der Volumeleistung Ihrer NetApp-Konten entwickeln.  
+
+Sie finden Metriken für einen Kapazitätspool oder ein Volume, indem Sie den **Kapazitätspool** oder das **Volume** auswählen.  Klicken Sie dann auf **Metrik**, um die verfügbaren Metriken anzuzeigen: 
+
+[ ![Screenshot, der zeigt, wie Sie zur Pull-Down-Metrik navigieren.](../media/azure-netapp-files/metrics-navigate-volume.png) ](../media/azure-netapp-files/metrics-navigate-volume.png#lightbox)
 
 ## <a name="usage-metrics-for-capacity-pools"></a><a name="capacity_pools"></a>Nutzungsmetriken für Kapazitätspools
 
@@ -55,6 +59,9 @@ Azure NetApp Files verfügt über Metriken für Folgendes: zugeteilter Speicher,
    Größe aller Momentaufnahmen in einem Volume  
 
 ## <a name="performance-metrics-for-volumes"></a>Leistungsmetriken für Volumes
+
+> [!NOTE] 
+> Die Volumelatenz für die *durchschnittliche Leselatenz* und die *durchschnittliche Schreiblatenz* wird im Speicherdienst gemessen und umfasst keine Netzwerklatenz.
 
 - *Durchschnittliche Wartezeit beim Lesevorgang*   
     Die durchschnittliche Dauer von Lesevorgängen vom Volume in Millisekunden.

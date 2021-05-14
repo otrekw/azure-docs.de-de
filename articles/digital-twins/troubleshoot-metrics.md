@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 63817c8a65678579ce535a3c2e667e4eb0971a63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4f0182c6214f500d10904760087be5c89a07acd
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102434065"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203557"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problembehandlung von Azure Digital Twins: Metriken
 
@@ -22,7 +22,7 @@ Metriken sind standardmäßig aktiviert. Azure Digital Twins-Metriken können ü
 
 ## <a name="how-to-view-azure-digital-twins-metrics"></a>Anzeigen von Azure Digital Twins-Metriken
 
-1. Erstellen Sie eine Azure Digital Twins-Instanz. Anweisungen zum Einrichten einer Azure Digital Twins-Instanz finden Sie unter [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md).
+1. Erstellen Sie eine Azure Digital Twins-Instanz. Anweisungen zum Einrichten einer Azure Digital Twins-Instanz finden Sie unter [Vorgehensweise: Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-portal.md).
 
 2. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Azure Digital Twins-Instanz (Sie können die Seite für die Instanz öffnen, indem Sie ihren Namen in die Suchleiste des Portals eingeben). 
 
@@ -36,12 +36,12 @@ Metriken sind standardmäßig aktiviert. Azure Digital Twins-Metriken können ü
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Screenshot: Seite „Diagnoseeinstellungen“und Schaltfläche zum Hinzufügen":::
 
-    Weitere Informationen zu diesem Vorgang finden Sie unter [*Problembehandlung: Einrichten der Diagnose*](troubleshoot-diagnostics.md).
+    Weitere Informationen zu diesem Vorgang finden Sie unter [Problembehandlung: Einrichten der Diagnose](troubleshoot-diagnostics.md).
 
 4. Sie können Warnungen für Ihre Metrikdaten einrichten, indem Sie im Menü **Warnungen** und dann **+ Neue Warnungsregel** auswählen.
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Screenshot mit der Seite „Warnungen“ und der Schaltfläche zum Hinzufügen":::
 
-    Weitere Informationen zu diesem Vorgang finden Sie unter [*Problembehandlung: Einrichten von Warnungen*](troubleshoot-alerts.md).
+    Weitere Informationen zu diesem Vorgang finden Sie unter [Problembehandlung: Einrichten von Warnungen](troubleshoot-alerts.md).
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure Digital Twins-Metriken und deren Verwendung
 
@@ -80,7 +80,7 @@ Metriken im Zusammenhang mit Abrechnung:
 | BillingMessagesProcessed | Verarbeitete Abrechnungsnachrichten | Anzahl | Gesamt | Abrechnungsmetrik für die Anzahl von Nachrichten, die von Azure Digital Twins Zwillingen an externe Endpunkte gesendet werden.<br><br>Nutzdaten dürfen maximal 1 KB groß sein, da sie ansonsten nicht als einzelne Nachricht für die Abrechnung betrachtet wird. Umfangreichere Nutzdaten werden als zusätzliche Nachrichten in Schritten von 1 KB gezählt. (Eine Nachricht zwischen 1 und 2 KB wird also als zwei Nachrichten gezählt, eine Nachricht zwischen 2 und 3 KB als drei Nachrichten usw.)<br>Diese Einschränkung gilt auch für Antworten: Ein Aufruf, der 1,5 KB im Antworttext zurückgibt, wird beispielsweise als zwei Vorgänge in Rechnung gestellt. | Messungs-ID |
 | BillingQueryUnits | Abrechnungsabfrageeinheiten | Anzahl | Gesamt | Die Anzahl der Abfrageeinheiten (ein intern berechnetes Measure der Dienstressourcennutzung), die zum Ausführen von Abfragen genutzt werden. Es ist auch eine Hilfs-API zum Messen von Abfrageeinheiten verfügbar: [QueryChargeHelper-Klasse](/dotnet/api/azure.digitaltwins.core.querychargehelper) | Messungs-ID |
 
-Weitere Informationen zur Art und Weise, wie Azure Digital Twins abgerechnet wird, finden Sie unter [*Azure Digital Twins-Preise*](https://azure.microsoft.com/pricing/details/digital-twins/).
+Weitere Informationen zur Art und Weise, wie Azure Digital Twins abgerechnet wird, finden Sie unter [Azure Digital Twins-Preise](https://azure.microsoft.com/pricing/details/digital-twins/).
 
 #### <a name="ingress-metrics"></a>Eingangsmetriken
 
@@ -119,4 +119,4 @@ Mit Dimensionen lassen sich genauere Details zu den Metriken ermitteln. Einige R
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Verwalten von aufgezeichneten Metriken für Azure Digital Twins finden Sie unter [*Problembehandlung: Einrichten der Diagnose*](troubleshoot-diagnostics.md).
+Weitere Informationen zum Verwalten von aufgezeichneten Metriken für Azure Digital Twins finden Sie unter [Problembehandlung: Einrichten der Diagnose](troubleshoot-diagnostics.md).

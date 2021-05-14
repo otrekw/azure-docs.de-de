@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 275aba6e9c7b87ec7c6fb1cbc986b3ebaa3a9696
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653761"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130951"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Tutorial: Erstellen eines mehrinstanzenfähigen Daemons, der Microsoft Identity Platform verwendet
 
@@ -233,7 +233,7 @@ Visual Studio veröffentlicht das Projekt und öffnet die Projekt-URL automatisc
 1. Fügen Sie die gleiche URL der Werteliste unter **Authentifizierung** > **Umleitungs-URIs** hinzu. Falls Sie über mehrere Umleitungs-URLs verfügen, muss für jede ein neuer Eintrag mit dem URI des App-Diensts vorhanden sein.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie das im Schritt [Registrieren Ihrer Anwendung](#register-your-application) erstellte App-Objekt, wenn Sie es nicht mehr benötigen.  Befolgen Sie zum Entfernen der Anwendung die Anweisungen unter [Entfernen einer Anwendung, die von Ihnen oder Ihrer Organisation erstellt wurde](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).
+Löschen Sie das im Schritt [Registrieren Ihrer Anwendung](#register-your-application) erstellte App-Objekt, wenn Sie es nicht mehr benötigen.  Befolgen Sie zum Entfernen der Anwendung die Anweisungen unter [Entfernen einer Anwendung, die von Ihnen oder Ihrer Organisation erstellt wurde](./howto-remove-app.md#remove-an-application-authored-by-you-or-your-organization).
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 

@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2bcaf85f61a4d8cf4d23c9c5be7f46d765d77dbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5e0e5544c5e66f43b56de49beaa3ef3932d33f9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551041"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776877"
 ---
-# <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>Erstellen einer VM aus einer generalisierten Imageversion mithilfe der Befehlszeilenschnittstelle
+# <a name="create-a-vm-from-a-generalized-image-version-using-the-azure-cli"></a>Erstellen einer VM aus einer generalisierten Imageversion mithilfe der Azure-Befehlszeilenschnittstelle
 
 Erstellen Sie eine VM aus einer [generalisierten Imageversion](./shared-image-galleries.md#generalized-and-specialized-images), die in einem Katalog mit freigegebenen Images gespeichert ist. Informationen zum Erstellen einer VM aus einem spezialisierten Image finden Sie unter [Erstellen einer VM aus einem spezialisierten Image](vm-specialized-image-version-powershell.md). 
 
 
 ## <a name="get-the-image-id"></a>Abrufen der Image-ID
 
-Listen Sie die Imagedefinitionen in einem Katalog mithilfe von [az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) auf, um den Namen und die ID der Definitionen anzuzeigen.
+Listen Sie die Imagedefinitionen in einem Katalog mithilfe von [az sig image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) auf, um den Namen und die ID der Definitionen anzuzeigen.
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -33,7 +33,7 @@ az sig image-definition list --resource-group $resourceGroup --gallery-name $gal
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
-Erstellen Sie einen virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-create). Wenn Sie die neueste Version des Images verwenden möchten, legen Sie `--image` auf die ID der Imagedefinition fest. 
+Erstellen Sie einen virtuellen Computer mit [az vm create](/cli/azure/vm#az_vm_create). Wenn Sie die neueste Version des Images verwenden möchten, legen Sie `--image` auf die ID der Imagedefinition fest. 
 
 Ersetzen Sie bei Bedarf die Ressourcennamen in diesem Beispiel. 
 

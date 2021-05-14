@@ -1,18 +1,18 @@
 ---
 title: Kopieren von Daten aus MongoDB Atlas
 description: Hier erfahren Sie, wie Daten aus MongoDB Atlas mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
-author: linda33wj
-ms.author: jingwang
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 09/28/2020
-ms.openlocfilehash: b2f77e4bd8df66084937da3dd203ebb71d9a3511
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 517f32a526ed6695c7890a330359f52667367979
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368794"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487671"
 ---
 # <a name="copy-data-from-mongodb-atlas-using-azure-data-factory"></a>Kopieren von Daten aus MongoDB Atlas mithilfe von Azure Data Factory
 
@@ -32,7 +32,7 @@ Wenn Sie Azure Integration Runtime zum Kopieren verwenden, müssen Sie die [Azur
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den MongoDB Atlas-Connector verwendet werden.
 

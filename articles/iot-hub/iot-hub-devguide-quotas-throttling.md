@@ -1,22 +1,23 @@
 ---
-title: Informationen zu Kontingenten und Drosselung bei Azure IoT Hub | Microsoft Docs
+title: Inhaltsleistung http://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-quotas-throttling
 description: 'Entwicklerhandbuch: Beschreibung der für IoT Hub geltenden Kontingente und des erwarteten Drosselungsverhaltens'
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 04/05/2021
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 4b65d42522f40eb7d0e65356223313a924de3039
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+- ms.custom:contperf-fy21q4
+ms.openlocfilehash: a18ca18a6e9f7e26c6189cf66322b16f36a42ecb
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656990"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277802"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -79,7 +80,7 @@ Die folgende Tabelle zeigt die erzwungenen Drosselungen. Die Werte beziehen sich
 
 ### <a name="traffic-shaping"></a>Traffic-Shaping
 
-Damit Burstdatenverkehr verarbeitet werden kann, akzeptiert IoT Hub eine begrenzte Zeit lang Anforderungen oberhalb des Drosselungslimits. Die ersten paar dieser Anforderungen werden sofort verarbeitet. Wenn die Anzahl der Anforderungen jedoch weiterhin das Drosselungslimit überschreitet, beginnt IoT Hub damit, die Anforderungen in eine Warteschlange zu verschieben und mit der begrenzten Rate zu verarbeiten. Dieser Effekt wird als *Traffic-Shaping* bezeichnet. Außerdem ist die Größe der Warteschlange begrenzt. Wenn das Drosselungslimit weiterhin überschritten wird, ist die Warteschlange irgendwann voll, und IoT Hub beginnt damit, Anforderungen mit `429 ThrottlingException` abzulehnen.
+Damit Burstdatenverkehr verarbeitet werden kann, akzeptiert IoT Hub eine begrenzte Zeit lang Anforderungen oberhalb des Drosselungslimits. Die ersten paar dieser Anforderungen werden sofort verarbeitet. Wenn aber die Anzahl der Anforderungen weiterhin das Drosselungslimit überschreitet, beginnt IoT Hub damit, die Anforderungen in eine Warteschlange zu verschieben. Dort werden die Anforderungen mit der begrenzten Rate verarbeitet. Dieser Effekt wird als *Traffic-Shaping* bezeichnet. Außerdem ist die Größe der Warteschlange begrenzt. Wenn das Drosselungslimit weiterhin überschritten wird, ist die Warteschlange irgendwann voll, und IoT Hub beginnt damit, Anforderungen mit `429 ThrottlingException` abzulehnen.
 
 Ein Beispiel: Sie verwenden ein simuliertes Gerät, um 200 Gerät-zu-Cloud-Nachrichten pro Sekunde an Ihren IoT Hub-Dienst mit dem Tarif S1 senden zu lassen (dessen Limit ist 100 Gerät-zu-Cloud-Sendevorgänge/Sekunde). Während der ersten ein oder zwei Minuten werden die Nachrichten sofort verarbeitet. Da das Gerät aber weiterhin mehr Nachrichten versendet, als das Drosselungslimit erlaubt, beginnt der IoT Hub-Dienst damit, nur noch 100 Nachrichten pro Sekunde zu verarbeiten und verschiebt den Rest in eine Warteschlange. Ab da werden Sie eine erhöhte Wartezeit feststellen können. Wenn die Warteschlange sich füllt, wird `429 ThrottlingException` zurückgegeben, und die [IoT Hub-Metrik „Anzahl der Drosselungsfehler“](monitor-iot-hub-reference.md#device-telemetry-metrics) beginnt zu steigen. Informationen zum Erstellen von Warnungen und Diagrammen basierend auf Metriken finden Sie unter [Überwachen von IoT Hub](monitor-iot-hub.md).
 
@@ -87,7 +88,7 @@ Ein Beispiel: Sie verwenden ein simuliertes Gerät, um 200 Gerät-zu-Cloud-Nachr
 
 Geräteidentitätsregistrierungsvorgänge sind für die Verwendung zur Laufzeit in Szenarios für die Geräteverwaltung und -bereitstellung vorgesehen. Das Lesen oder Aktualisieren einer großen Anzahl von Geräteidentitäten wird durch [Import-/Exportaufträge](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) unterstützt.
 
-Beim Initiieren von Identitätsvorgängen durch [Massenregistrierungs-Aktualisierungsvorgänge](https://docs.microsoft.com/rest/api/iothub/service/bulkregistry/updateregistry) (*nicht* Massenimport- und Massenexportaufträge) gelten dieselben Drosselungsgrenzwerte. Wenn Sie z. B. einen Massenvorgang zum Erstellen von 50 Geräten übermitteln möchten und über einen S1-IoT-Hub mit einer Einheit verfügen, werden nur zwei dieser Massenanforderungen pro Minute akzeptiert. Dies liegt daran, dass die Identitätsvorgangsdrosselung für einen S1-IoT-Hub mit einer Einheit 100/Minute/Einheit beträgt. Außerdem würde in diesem Fall eine dritte (und weitere) Anforderung in derselben Minute abgelehnt werden, da der Grenzwert bereits erreicht wurde. 
+Beim Initiieren von Identitätsvorgängen durch [Massenregistrierungs-Aktualisierungsvorgänge](/rest/api/iothub/service/bulkregistry/updateregistry) (*nicht* Massenimport- und Massenexportaufträge) gelten dieselben Drosselungsgrenzwerte. Wenn Sie z. B. einen Massenvorgang zum Erstellen von 50 Geräten übermitteln möchten und über einen S1-IoT-Hub mit einer Einheit verfügen, werden nur zwei dieser Massenanforderungen pro Minute akzeptiert. Der Grund: Die Identitätsvorgangsdrosselung für einen S1-IoT-Hub mit einer Einheit beträgt 100/Minute/Einheit. Außerdem würde in diesem Fall eine dritte (und weitere) Anforderung in derselben Minute abgelehnt werden, da der Grenzwert bereits erreicht wurde. 
 
 ### <a name="device-connections-throttle"></a>Drosselung von Geräteverbindungen
 

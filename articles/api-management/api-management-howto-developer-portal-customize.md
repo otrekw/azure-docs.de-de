@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: tutorial
 ms.date: 11/16/2020
 ms.author: apimpm
-ms.openlocfilehash: 90544fbafe7393630c3f3fbc694ae367eccb7f90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c341dee3106530715248355da4412b97ed30980
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012975"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739618"
 ---
 # <a name="tutorial-access-and-customize-the-developer-portal"></a>Tutorial: Zugreifen auf und Anpassen des Entwicklerportals
 
@@ -45,6 +45,35 @@ Führen Sie die folgenden Schritte aus, um auf die verwaltete Version des Portal
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer API Management-Instanz.
 1. Wählen Sie in der oberen Navigationsleiste die Schaltfläche **Entwicklerportal** aus. Eine neue Browserregisterkarte mit einer administrativen Version des Portals wird geöffnet.
 
+
+## <a name="developer-portal-architectural-concepts"></a>Architekturkonzepte des Entwicklerportals
+
+Die Portalkomponenten können logisch in zwei Kategorien unterteilt werden: *Code* und *Inhalt*.
+
+### <a name="code"></a>Code
+
+Code wird im [GitHub-Repository](https://github.com/Azure/api-management-developer-portal) für das API Management-Entwicklerportal verwaltet und umfasst Folgendes:
+
+- **Widgets**, die visuelle Elemente darstellen und HTML, JavaScript, Formatierungsfunktionen, Einstellungen und Inhaltszuordnung kombinieren. Beispiele hierfür sind ein Bild, ein Textabsatz, ein Formular, eine Liste mit APIs usw.
+- **Formatierungsdefinitionen**, die angeben, wie Widgets formatiert werden können
+- **Engine**, die statische Webseiten aus Portalinhalten generiert und in JavaScript geschrieben ist
+- **Visueller Editor**, der das Anpassen und Erstellen im Browser ermöglicht
+
+### <a name="content"></a>Inhalt
+
+Inhalt wird in zwei Unterkategorien unterteilt: *Portalinhalt* und *API Management-Inhalt*.
+
+*Portalinhalt* ist für das Portal spezifisch und umfasst Folgendes:
+
+- **Seiten:** etwa Landing Page, API-Tutorials, Blogbeiträge
+- **Medien:** Bilder, Animationen und andere dateibasierte Inhalte
+- **Layouts:** Vorlagen, die mit einer URL abgeglichen werden und definieren, wie Seiten angezeigt werden
+- **Formatvorlagen:** Werte für Formatierungsdefinitionen, z. B. Schriftarten, Farben, Rahmen
+- **Einstellungen:** Konfigurationen, z.  B. Favicon, Websitemetadaten
+
+    Portalinhalte (mit Ausnahme von Medien) werden als JSON-Dokumente ausgedrückt.
+
+*API Management-Inhalte* umfassen Entitäten wie APIs, Vorgänge, Produkte und Abonnements.
 ## <a name="understand-the-portals-administrative-interface"></a>Grundlegendes zur Administratoroberfläche des Portals
 
 ### <a name="default-content"></a>Standardinhalt 
@@ -138,7 +167,7 @@ Nachdem Sie das Portal veröffentlicht haben, können Sie über die gleiche URL 
 
 ## <a name="apply-the-cors-policy-on-apis"></a>Anwenden der CORS-Richtlinie auf APIs
 
-Aktivieren Sie CORS (Cross-Origin Resource Sharing) für Ihre APIs, damit die Besucher Ihres Portals die APIs über die integrierte interaktive Konsole testen können. Weitere Informationen finden Sie unter [Übersicht über das Azure API Management-Entwicklerportal](api-management-howto-developer-portal.md#cors).
+Aktivieren Sie CORS (Cross-Origin Resource Sharing) für Ihre APIs, damit die Besucher Ihres Portals die APIs über die integrierte interaktive Konsole testen können. Ausführlichere Informationen finden Sie unter [API Management-Entwicklerportal: häufig gestellte Fragen](developer-portal-faq.md#cors).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

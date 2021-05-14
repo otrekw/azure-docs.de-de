@@ -1,21 +1,21 @@
 ---
-title: Übernehmen des Abrechnungsbesitzes für Azure-Abonnements von anderen Benutzern
-description: Hier erfahren Sie, wie Sie von anderen Benutzern den Abrechnungsbesitz für Azure-Abonnements anfordern.
+title: Übertragen des Abrechnungsbesitzes für ein Azure-Abonnement für eine Microsoft-Kundenvereinbarung
+description: Hier erfahren Sie, wie Sie den Abrechnungsbesitz von Azure-Abonnements übertragen.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 12/09/2020
+ms.date: 04/08/2021
 ms.author: banders
-ms.openlocfilehash: ca55773b2deb74ea0647ed33df4040065762f94a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 4cfb5c0b746ab8cf4ebb26ee0f755b34b6289982
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938476"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481428"
 ---
-# <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements von anderen Konten
+# <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>Übertragen des Abrechnungsbesitzes für ein Azure-Abonnement für eine Microsoft-Kundenvereinbarung
 
 Die Übernahme des Azure-Abonnementbesitzes kann beispielsweise erforderlich sein, wenn der aktuelle Abrechnungsbesitzer die Organisation verlässt oder wenn Sie die Abonnements über Ihr Abrechnungskonto bezahlen möchten. Bei der Besitzübernahme gehen die Abrechnungspflichten für das Abonnement auf Ihr Konto über.
 

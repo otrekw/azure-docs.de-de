@@ -11,12 +11,12 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f87379f48f82757916aef0fa0d358835f48cb9a5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023413"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875933"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Übertragen von Daten mit der Datenverschiebungsbibliothek
 
@@ -40,7 +40,7 @@ In diesem Dokument wird erläutert, wie eine .NET Core-Konsolenanwendung erstell
 
 ## <a name="setup"></a>Einrichten
 
-1. Rufen Sie die [.NET Core-Installationsanleitung](https://www.microsoft.com/net/core) auf, um .NET Core zu installieren. Wählen Sie bei der Auswahl Ihrer Umgebung die Befehlszeilenoption.
+1. Siehe die [.NET Core Installationsanleitung](https://dotnet.microsoft.com/download), um das .NET Core SDK zu installieren. Wählen Sie bei der Auswahl Ihrer Umgebung die Befehlszeilenoption.
 2. Erstellen Sie über die Befehlszeile ein Verzeichnis für das Projekt. Navigieren Sie zu diesem Verzeichnis, und geben Sie dann `dotnet new console -o <sample-project-name>` ein, um ein C#-Konsolenprojekt zu erstellen.
 3. Öffnen Sie dieses Verzeichnis in Visual Studio Code. Dieser Schritt kann schnell über die Befehlszeile ausgeführt werden, indem Sie `code .` in Windows eingeben.
 4. Installieren Sie die [C#-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) über Visual Studio Code Marketplace. Starten Sie Visual Studio Code neu.

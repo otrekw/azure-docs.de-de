@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: 65df5f178ce0ec845fca6343c51049b6bf426e18
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 001f7453c29e7a8525fb88a96dd9a867468460e3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106036"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501432"
 ---
 # <a name="create-a-dynamics-365-for-business-central-offer"></a>Erstellen eines Angebots für Dynamics 365 for Business Central
 
@@ -33,7 +33,7 @@ Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Par
 
 ## <a name="new-offer"></a>Neues Angebot
 
-Geben Sie eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto.
+Geben Sie eine **Angebots-ID** ein. Dieser Wert ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto.
 
 - Diese ID wird für Kunden unter der Webadresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt.
 - Die Angebots-ID darf zusammen mit der Herausgeber-ID nicht länger als 40 Zeichen lang sein.
@@ -51,7 +51,7 @@ Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
 
 ### <a name="alias"></a>Alias
 
-Geben Sie einen beschreibenden Namen ein, mit dem ausschließlich in Partner Center auf dieses Angebot verwiesen wird. Dieser Name (vorausgefüllt mit Ihrer Eingabe bei der Erstellung des Angebots) wird nicht im Marketplace verwendet und unterscheidet sich von dem Angebotsnamen, der Kunden angezeigt wird. Wenn Sie den Angebotsnamen später ändern möchten, wechseln Sie zur Seite [Angebotsliste](#offer-listing).
+Geben Sie einen beschreibenden Namen ein, mit dem ausschließlich in Partner Center auf dieses Angebot verwiesen wird. Dieser Name (vorausgefüllt mit Ihrer Eingabe bei der Erstellung des Angebots) wird nicht im Marketplace verwendet und unterscheidet sich von dem für Kunden angezeigten Angebotsnamen. Wenn Sie den Angebotsnamen später ändern möchten, wechseln Sie zur Seite [Angebotsliste](#offer-listing).
 
 ### <a name="setup-details"></a>Details zur Konfiguration
 
@@ -118,11 +118,11 @@ Auf dieser Seite können Sie Angebotsdetails wie Name, Beschreibung, Links und K
 > [!NOTE]
 > Geben Sie die Details eines Angebotseintrags nur in einer Sprache an. Eine Angabe in englischer Sprache ist nicht erforderlich, sofern die Angebotsbeschreibung mit dem Satz „Diese Anwendung ist nur auf [nicht englische Sprache] erhältlich“ beginnt. Es ist auch zulässig, eine *URL mit einem nützlichen Link* bereitzustellen, um Inhalte in einer anderen Sprache als der im Angebotseintrag verwendeten anzubieten.
 
-Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in Microsoft AppSource angezeigt werden (die aufgelisteten Preise dienen lediglich als Beispiele und stellen keine tatsächlichen Kosten dar):
-<!-- update screen? -->
+Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in Microsoft AppSource angezeigt werden. (Die aufgelisteten Preise sind lediglich Beispiele und stellen keine tatsächlichen Kosten dar.)
+
 :::image type="content" source="media/example-d365-business-central.png" alt-text="Veranschaulicht, wie dieses Angebot in Microsoft AppSource angezeigt wird.":::
 
-#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
+### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
 1. Logo
 2. Produkte
@@ -174,11 +174,11 @@ Stellen Sie Logos und Bilder bereit, die beim Anzeigen Ihres Angebots für Kunde
 [!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
->Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
+>Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst `https://upload.xboxlive.com` nicht blockiert.
 
 #### <a name="logos"></a>Logos
 
-Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um die anderen erforderlichen Größen zu erstellen. Später können Sie dieses Logo optional durch ein anderes Bild ersetzen.
+Geben Sie eine PNG-Datei für das **große** Logo an. Diese anfängliche Datei wird in Partner Center verwendet, um andere erforderliche Größen zu erstellen. Das Bild mit der angepassten Größe kann später optional durch Ihr eigenes Bild ersetzt werden.
 
 Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 
@@ -194,7 +194,7 @@ Fügen Sie Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert. Mindeste
 
 Optional können Sie bis zu vier Videos hinzufügen, die Ihr Angebot veranschaulichen. Videos müssen auf einer externen Website gehostet werden. Geben Sie für jedes Video den Namen, die Adresse und ein Miniaturbild (1280 × 720 Pixel) ein.
 
-Weitere Ressourcen für Marketplace-Listen finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md).
+Weitere Ressourcen für Marketplace-Angebote finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md).
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
@@ -225,6 +225,8 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 Auf dieser Seite werden die technischen Informationen definiert, die für das Herstellen einer Verbindung mit Ihrem Angebot verwendet werden. Durch diese Verbindung können wir Ihr Angebot für den Endkunden bereitstellen, wenn er es kaufen möchte.
 
+Für Ihr Angebot übermittelte Erweiterungen müssen die in der [technischen Prüfliste](/dynamics365/business-central/dev-itpro/developer/devenv-checklist-submission) angegebenen Anforderungen erfüllen.
+
 ### <a name="file-upload"></a>Dateiupload
 
 Wenn Sie zuvor **Add-On** ausgewählt haben, laden Sie dort die Paketdatei Ihres Angebots zusammen mit den Paketdateien für alle Erweiterungen hoch, für die sie Abhängigkeiten aufweist.
@@ -242,14 +244,6 @@ Erforderlich, wenn Ihr Angebot zusammen mit einer anderen Erweiterung installier
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
-<!-- ## Test drive technical configuration
-
-This page lets you set up a demonstration ("test drive") that allows customers to try your offer before purchasing it. Learn more in [What is test drive](../what-is-test-drive.md).
-
-To enable a test drive, select the **Enable a test drive** check box on the [Offer setup](#test-drive) tab. To remove test drive from your offer, clear this check box.
-
-When you've finished setting up your test drive, select **Save draft** before continuing.
--->
 ## <a name="supplemental-content"></a>Ergänzender Inhalt
 
 Auf dieser Seite können Sie zusätzliche Informationen bereitstellen, um uns bei der Validierung Ihres Angebots zu helfen. Diese Informationen werden weder den Kunden angezeigt noch im Marketplace veröffentlicht.
@@ -285,9 +279,9 @@ Wenn Sie alle erforderlichen Abschnitte des Angebots ausgefüllt haben, wählen 
 Wenn Sie das Angebot zum ersten Mal veröffentlichen, haben Sie folgende Möglichkeiten:
 
 - Anzeigen des Abschlussstatus für die einzelnen Abschnitte des Angebots.
-    - **Nicht gestartet**: Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
-    - **Unvollständig**: Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
-    - **Vollständig**: Der Abschnitt ist vollständig. Alle erforderlichen Daten wurden angegeben, und es liegen keine Fehler vor. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
+  - **Nicht gestartet**: Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
+  - **Unvollständig**: Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
+  - **Vollständig**: Der Abschnitt ist vollständig. Alle erforderlichen Daten wurden angegeben, und es liegen keine Fehler vor. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
 - Geben Sie dem Zertifizierungsteam im Abschnitt **Hinweise zur Zertifizierung** Testanweisungen, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird, sowie ergänzende Hinweise, die das Verständnis Ihrer App erleichtern.
 - Senden Sie dazu das Angebot zur Veröffentlichung, indem Sie auf **Senden** klicken. Sie erhalten eine E-Mail von uns, wenn eine Vorschauversion des Angebots zur Überprüfung und Freigabe verfügbar ist. Kehren Sie zu Partner Center zurück, und wählen Sie **Live schalten** aus, um das Angebot für eine öffentliche Zielgruppe zu veröffentlichen.
 

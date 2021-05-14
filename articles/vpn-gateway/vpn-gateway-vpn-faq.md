@@ -1,18 +1,18 @@
 ---
 title: Häufig gestellte Fragen zu VPN Gateway
-description: Häufig gestellte Fragen zum VPN-Gateway. Häufig gestellte Fragen zu standortübergreifenden Verbindungen, Verbindungen mit Hybridkonfiguration und VPN Gateways von Microsoft Azure Virtual Network.
+description: Erfahren Sie mehr über häufig gestellte Fragen zu standortübergreifenden VPN Gateway-Verbindungen, Hybridkonfigurationsverbindungen und virtuellen Netzwerkgateways. Diese häufig gestellten Fragen enthalten umfassende Informationen zu Point-to-Site-, Site-to-Site- und VNet-zu-VNet-Konfigurationseinstellungen.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 03/29/2021
 ms.author: yushwang
-ms.openlocfilehash: 8ca50ae77d9d9e200db3318b8e087b72697c343a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0fee7a7a58a6aabc7d545981b1f8b56033bf9857
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953455"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203755"
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -196,6 +196,10 @@ Dieser Abschnitt gilt für das Ressourcen-Manager-Bereitstellungsmodell.
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
+### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>Wie aktiviere ich das Routing zwischen meiner Standort-zu-Standort-VPN-Verbindung und meinem ExpressRoute?
+
+Wenn Sie das Routing zwischen Ihrer Filiale, die mit ExpressRoute verbunden ist, und Ihrer Filiale, die mit einer Standort-zu-Standort-VPN-Verbindung verbunden ist, aktivieren möchten, müssen Sie den [Azure Route Server](../route-server/expressroute-vpn-support.md) einrichten.
+
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>Kann ich mit dem Azure-VPN Gateway Datenverkehr zwischen meinen lokalen Standorten oder an ein anderes virtuelles Netzwerk übertragen?
 
 **Ressourcen-Manager-Bereitstellungsmodell**<br>
@@ -254,7 +258,7 @@ Nein. Nur der Datenverkehr mit einer IP-Zieladresse, die innerhalb der angegeben
 
 ## <a name="virtual-network-faq"></a><a name="faq"></a>FAQs zu virtuellen Netzwerken
 
-Weitere Informationen zu virtuellen Netzwerken finden Sie in den [FAQs zu virtuellen Netzwerken](../virtual-network/virtual-networks-faq.md).
+Weitere Informationen zu virtuellen Netzwerken finden Sie in den [Häufig gestellten Fragen zu virtuellen Netzwerken](../virtual-network/virtual-networks-faq.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

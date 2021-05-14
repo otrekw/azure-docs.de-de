@@ -2,13 +2,13 @@
 title: Benutzerdefinierte Funktionen in Vorlagen
 description: Beschreibt, wie benutzerdefinierte Funktionen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert und verwendet werden.
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 802ac6e1c70db8caa58aecde3efe814430c79682
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379623"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307774"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Benutzerdefinierte Funktionen in ARM-Vorlagen
 
@@ -107,6 +107,7 @@ Beim Definieren einer benutzerdefinierten Funktion gelten einige Einschränkunge
 * Die Funktion kann nur Parameter verwenden, die in der Funktion definiert sind. Bei Verwendung der [parameters](template-functions-deployment.md#parameters)-Funktion innerhalb einer benutzerdefinierten Funktion sind Sie auf die Parameter für diese Funktion beschränkt.
 * Die Funktion kann keine anderen benutzerdefinierten Funktionen aufrufen.
 * Die Funktion kann nicht die [reference](template-functions-resource.md#reference)-Funktion oder eine der [list](template-functions-resource.md#list)-Funktionen verwenden.
+* Die Funktion kann nicht die [dateTimeAdd](template-functions-date.md#datetimeadd)-Funktion verwenden.
 * Für die Parameter der Funktion können keine Standardwerte verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

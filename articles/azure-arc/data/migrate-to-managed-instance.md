@@ -4,17 +4,17 @@ description: Migrieren einer Datenbank von SQL Server zu einer Azure Arc-fähige
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: rothja
+ms.author: jroth
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 86563b0a44bade2cedaf76af3c247821756111fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f588ca0762cf201bf532d7b9d97ea6c4e21c9b4
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90931497"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734952"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>Migration: SQL Server zu einer Azure Arc-fähigen SQL Managed Instance-Instanz
 
@@ -22,7 +22,7 @@ In diesem Szenario werden Sie durch die Schritte zum Migrieren einer Datenbank v
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="use-azure-blob-storage"></a>Verwendung von Azure Blob Storage 
+## <a name="use-azure-blob-storage"></a>Verwendung von Azure Blob Storage
 
 Verwenden Sie Azure Blob Storage für die Migration zu einer Azure Arc-fähigen SQL Managed Instance-Instanz.
 
@@ -36,7 +36,7 @@ Bei dieser Methode wird Azure Blob Storage als temporärer Speicher genutzt, in 
 
 ### <a name="step-1-provision-azure-blob-storage"></a>Schritt 1: Stellen Sie Azure Blob Storage bereit.
 
-1. Befolgen Sie die Schritte unter [Erstellen eines Azure Blob Storage-Kontos](../../storage/blobs/storage-blob-create-account-block-blob.md?tabs=azure-portal).
+1. Befolgen Sie die Schritte unter [Erstellen eines Azure Blob Storage-Kontos](../../storage/common/storage-account-create.md?tabs=azure-portal).
 1. Starten Sie Azure Storage-Explorer.
 1. [Melden Sie sich bei Azure an](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure), um auf den im vorherigen Schritt erstellten Blob Storage-Speicher zuzugreifen.
 1. Klicken Sie mit der rechten Maustaste auf das Blob Storage-Konto, und wählen Sie **Blobcontainer erstellen** aus, um einen neuen Container zu erstellen, in dem die Sicherungsdatei gespeichert wird.
@@ -133,10 +133,10 @@ Diese Methode veranschaulicht, wie Sie mithilfe einer beliebigen Methode eine Si
 
 Sichern Sie die SQL Server-Datenbank in Ihrem lokalen Dateipfad wie eine beliebige typische SQL Server-Sicherung auf einem Datenträger:
 
- ```sql
+```sql
 BACKUP DATABASE Test
 TO DISK = 'c:\tmp\test.bak'
-WITH FORMAT, MEDIANAME = 'Test’ ;
+WITH FORMAT, MEDIANAME = 'Test' ;
 GO
 ```
 
@@ -146,7 +146,7 @@ Suchen Sie den Namen des Pods, in dem die SQL-Instanz bereitgestellt wird. Diese
 
 Rufen Sie die Liste aller Pods ab, indem Sie folgenden Befehl ausführen:
 
- ```console
+```console
 kubectl get pods -n <namespace of data controller>
 ```
 
@@ -154,7 +154,7 @@ Beispiel:
 
 Kopieren Sie die Sicherungsdatei aus dem lokalen Speicher in den SQL-Pod im Cluster.
 
- ```console
+```console
 kubectl cp <source file location> <pod name>:var/opt/mssql/data/<file name> -n <namespace name>
 
 #Example:
@@ -186,7 +186,6 @@ WITH MOVE 'test' to '/var/opt/mssql/data/test.mdf'
 ,STATS = 5;  
 GO
 ```
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

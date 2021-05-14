@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: cd39f6c484ebe116918611bb1d543c1919a3cb0a
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: c289e69345b2fe537fd80f2cd8b59bc13ce8287b
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222944"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017299"
 ---
 # <a name="tutorial---configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Tutorial - Konfigurieren Sie Ihr Azure Active Directory so, dass es überprüfbare Anmeldedaten ausgibt (Vorschau)
 
@@ -92,7 +92,7 @@ Beachten Sie die beiden folgenden Eigenschaften:
 
 ## <a name="create-a-modified-rules-and-display-file"></a>Geänderte Regeln und Anzeige Datei erstellen
 
-In diesem Abschnitt verwenden wir die Regeln und Anzeige Dateien aus der Beispiel Aussteller-APP und ändern Sie leicht, um die ersten überprüfbaren Anmeldeinformationen Ihres Mandanten zu erstellen.
+In diesem Abschnitt verwenden Sie die Regeln und Anzeigedateien aus der [Beispielaussteller-App](https://github.com/Azure-Samples/active-directory-verifiable-credentials/) und ändern sie geringfügig, um den ersten Nachweis Ihres Mandanten zu erstellen.
 
 1. Kopieren Sie beide  Regeln, und zeigen sie JSON-Dateien in einem temporären Ordner an, und benennen Sie sie **MyFirstVC-display.json** bzw. **MyFirstVC-rules.json**. Beide Dateien finden Sie unter **Issuer \ issuer_config**
 
@@ -100,7 +100,7 @@ In diesem Abschnitt verwenden wir die Regeln und Anzeige Dateien aus der Beispie
 
    ![Anzeigen von und Regel Dateien in einem temporären Ordner](media/enable-your-tenant-verifiable-credentials/display-rules-files-temp.png)
 
-2. Öffnen Sie die Datei MyFirstVC-rules.json in Ihrem Code-Editor. 
+2. Öffnen Sie die Datei „MyFirstVC-rules.json“ in Ihrem Code-Editor. 
 
     ```json
          {
@@ -125,19 +125,19 @@ In diesem Abschnitt verwenden wir die Regeln und Anzeige Dateien aus der Beispie
       
     ```
 
-Nun ändern wir das Typfeld in "myfirstvc". 
+   Nun ändern wir das Typfeld in "myfirstvc". 
 
-  ```json
-   "type": ["MyFirstVC"]
+   ```json
+    "type": ["MyFirstVC"]
   
-  ```
+   ```
 
-Diese Änderung speichern.
+   Diese Änderung speichern.
 
- >[!NOTE]
+   >[!NOTE]
    > An dieser Stelle im Tutorial ändern wir die **"Konfiguration"** oder **"client_id"** nicht. Wir verwenden weiterhin den Microsoft B2C-Mandanten, den wir in den[ Ersten Schritten ](get-started-verifiable-credentials.md) verwendet haben. Wir verwenden Ihre Azure AD im nächsten Tutorial.
 
-3. Öffnen Sie die Datei MyFirstVC-rules.json in Ihrem Code-Editor.
+3. Öffnen Sie die Datei „MyFirstVC-display.json“ in Ihrem Code-Editor.
 
    ```json
        {
@@ -172,17 +172,22 @@ Diese Änderung speichern.
       }
    ```
 
-Wir nehmen einige Änderungen vor, sodass sich diese überprüfbaren Anmeldeinformationen von der Version des Beispielcodes unterscheiden. 
-    
-```json
-     "card": {
-        "title": "My First VC",
-        "issuedBy": "Your Issuer Name",
-        "backgroundColor": "#ffffff",
-        "textColor": "#000000",
-```
+   Sie nehmen einige Änderungen vor, sodass sich dieser Nachweis von der Version des Beispielcodes eindeutig unterscheidet. 
 
-Speichern der Änderungen.
+    ```json
+         "card": {
+            "title": "My First VC",
+            "issuedBy": "Your Issuer Name",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+          }
+    ```
+ 
+   >[!NOTE]
+   > Um sicherzustellen, dass der Nachweis lesbar und zugänglich ist, wird dringend empfohlen, Text- und Hintergrundfarben mit einem [Kontrastverhältnis](https://www.w3.org/WAI/WCAG21/Techniques/general/G18) von mindestens 4,5:1 auszuwählen.  
+
+   Speichern der Änderungen.
+
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Vor dem Erstellen der ersten überprüfbaren Anmeldeinformationen müssen wir einen BLOB Storage Container erstellen, der die Konfigurations-und Regel Dateien enthalten kann.
@@ -296,7 +301,7 @@ Nun nehmen wir Änderungen am Issuer-Code der Beispiel-App vor, um ihn mit Ihrer
     node app.js
     ```
 
-6. Führen Sie mit einer anderen Eingabeaufforderung ngrok aus, um eine URL auf 8081 einzurichten
+6. Führen Sie mit einer anderen Eingabeaufforderung ngrok aus, um eine URL an 8081 einzurichten. Sie können ngrok global mithilfe des [npm-Pakets ngrok](https://www.npmjs.com/package/ngrok/) installieren.
 
     ```terminal
     ngrok http 8081

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba7892c8afbe8e557c7dcf9aa3bd663f53a5728f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589553"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834748"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -184,7 +184,7 @@ Mit dem Code oben wird die adaptive Stichprobenerstellung deaktiviert. Führen S
 Verwenden Sie die Erweiterungsmethoden von `TelemetryProcessorChainBuilder` wie unten dargestellt, um das Verhalten für die Stichprobenentnahme anzupassen.
 
 > [!IMPORTANT]
-> Wenn Sie diese Methode zum Konfigurieren der Stichprobenerstellung verwenden, vergewissern Sie sich, dass die Eigenschaft `aiOptions.EnableAdaptiveSampling` beim Aufrufen von `AddApplicationInsightsTelemetry()` auf `false` festgelegt ist.
+> Wenn Sie diese Methode zum Konfigurieren der Stichprobenerstellung verwenden, vergewissern Sie sich, dass die Eigenschaft `aiOptions.EnableAdaptiveSampling` beim Aufrufen von `AddApplicationInsightsTelemetry()` auf `false` festgelegt ist. Nachdem Sie diese Änderung vorgenommen haben, müssen Sie die Anweisungen im folgenden Codeblock **genau** befolgen, um die adaptive Stichprobenerstellung mit Ihren Anpassungen erneut zu aktivieren. Andernfalls kann es zu einer übermäßigen Datenerfassung kommen. Testen Sie nach Änderungen immer die Einstellungen für die Stichprobenerstellung, und legen Sie eine entsprechende [tägliche Datenobergrenze](pricing.md#set-the-daily-cap) fest, um Ihre Kosten zu kontrollieren.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility
@@ -320,7 +320,7 @@ Standardmäßig ist im Java-Agent und im Java SDK keine Stichprobenerstellung a
 ```json
 {
   "sampling": {
-    "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
+    "percentage": 10 //this is just an example that shows you how to enable only 10% of transaction 
   }
 }
 ```

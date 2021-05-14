@@ -14,16 +14,16 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74769feba1d717a2f1a72d311f85bdfbeac7b7db
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 035215bf9350243f667c4883786a923a172cb89c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574776"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126559"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>AD FS-Anmeldungen in Azure AD mit Connect Health – Vorschau
 
-AD FS-Anmeldungen können nun mithilfe von Connect Health in den Azure Active Directory-Anmeldebericht integriert werden. Der [Azure AD-Anmeldebericht](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-all-sign-ins#:~:text=Interactive%20user%20sign-ins%20are%20sign-ins%20where%20a%20user,to%20Azure%20AD%20or%20to%20a%20helper%20app.) enthält Informationen dazu, wann sich Benutzer, Anwendungen und verwaltete Ressourcen bei Azure AD anmelden und auf Ressourcen zugreifen. 
+AD FS-Anmeldungen können nun mithilfe von Connect Health in den Azure Active Directory-Anmeldebericht integriert werden. Der [Azure AD-Anmeldebericht](../reports-monitoring/concept-all-sign-ins.md) enthält Informationen dazu, wann sich Benutzer, Anwendungen und verwaltete Ressourcen bei Azure AD anmelden und auf Ressourcen zugreifen. 
 
 Der Connect Health für AD FS-Agent korreliert mehrere Ereignis-IDs aus AD FS in Abhängigkeit von der Serverversion, um Informationen über die Anforderung und im Fall von Anforderungsfehlern Fehlerdetails bereitzustellen. Diese Informationen werden mit dem Azure AD-Anmeldberichtsschema korreliert und auf der Benutzeroberfläche des Azure AD-Anmeldeberichts angezeigt. Neben dem Bericht ist ein neuer Log Analytics-Stream mit den AD FS-Daten und eine neue Azure Monitor-Arbeitsmappenvorlage verfügbar. Die Vorlage kann zur ausführlichen Analyse von Szenarien wie AD FS-Kontosperrungen, fehlerhaften Kennwortantwortversuchen und Spitzen unerwarteter Anmeldeversuche verwendet und geändert werden.
 
@@ -32,7 +32,7 @@ Der Connect Health für AD FS-Agent korreliert mehrere Ereignis-IDs aus AD FS in
 * Rolle „Globaler Administrator“ oder „Berichtsleser“ zum Anzeigen der Azure AD-Anmeldungen
 
 ## <a name="what-data-is-displayed-in-the-report"></a>Welche Daten werden im Bericht angezeigt?
-Die verfügbaren Daten entsprechen den Daten, die für Azure AD-Anmeldungen zur Verfügung stehen. Je nach Anmeldetyp (Azure AD oder AD FS) werden fünf Registerkarten mit Informationen angezeigt. Connect Health korreliert Ereignisse aus AD FS in Abhängigkeit von der Serverversion und ordnet sie dem AD FS-Schema zu. 
+Die verfügbaren Daten spiegeln die gleichen Daten wider, die für Azure AD-Anmeldungen verfügbar sind. Es werden fünf Registerkarten mit Informationen verfügbar sein, basierend auf dem Anmeldetyp, entweder Azure AD oder AD FS. Connect Health korreliert Ereignisse aus AD FS in Abhängigkeit von der Serverversion und ordnet sie dem AD FS-Schema zu. 
 
 
 
@@ -46,7 +46,7 @@ Jede Registerkarte auf dem Blatt „Anmeldungen“ enthält die unten aufgeführ
 * Anmeldebezeichner
 
 #### <a name="authentication-method-information"></a>Informationen zur Authentifizierungsmethode
-Die folgenden Informationen werden möglicherweise auf der Registerkarte „Authentifizierung“ angezeigt. Die Authentifizierungsmethode wird aus den AD FS-Überwachungsprotokollen übernommen.
+Die folgenden Werte können auf der Registerkarte „Authentifizierung" angezeigt werden. Die Authentifizierungsmethode wird aus den AD FS-Auditprotokollen übernommen.
 
 |Authentifizierungsmethode|Beschreibung|
 |-----|-----|
@@ -54,7 +54,7 @@ Die folgenden Informationen werden möglicherweise auf der Registerkarte „Auth
 |Windows|Integrierte Windows-Authentifizierung|
 |Zertifikat|Authentifizierung mit SmartCard-/VirtualSmart-Zertifikaten|
 |WindowsHelloForBusiness|Dieses Feld ist für die Authentifizierung mit Windows Hello for Business bestimmt. (Microsoft Passport-Authentifizierung)|
-|Gerät | Wird angezeigt, wenn die Geräteauthentifizierung als „primäre“ Authentifizierung aus dem Intranet/Extranet ausgewählt ist und die Geräteauthentifizierung durchgeführt wird.  In diesem Szenario gibt es keine separate Benutzerauthentifizierung.| 
+|Sicherungsmedium | Wird angezeigt, wenn die Geräteauthentifizierung als „primäre“ Authentifizierung aus dem Intranet/Extranet ausgewählt ist und die Geräteauthentifizierung durchgeführt wird.  In diesem Szenario gibt es keine separate Benutzerauthentifizierung.| 
 |Im Verbund|AD FS hat die Authentifizierung nicht durchgeführt, sondern an einen Identitätsanbieter eines Drittanbieters gesendet.|
 |SSO |Dieses Feld wird angezeigt, wenn ein Token für einmaliges Anmelden verwendet wurde. Wenn einmaliges Anmelden eine MFA aufweist, wird Multifactor angezeigt.|
 |Multifactor|Wenn ein Token für einmaliges Anmelden eine MFA aufweist und für die Authentifizierung verwendet wurde, wird in diesem Feld „Multifactor“ angezeigt.|
@@ -94,14 +94,14 @@ Bei der Multi-Factor Authentication gibt es drei Zeilen mit gleicher Korrelation
 ***Welche Fehler werden ggf. im Bericht aufgeführt?***
 Eine vollständige Liste mit Fehlern zu AD FS, die im Anmeldebericht und den entsprechenden Beschreibungen stehen können, finden Sie in der [Referenz zu Fehlercodes in der AD FS-Hilfe](https://adfshelp.microsoft.com/References/ConnectHealthErrorCodeReference).
 
-***Im Bereich „Benutzer“ einer Anmeldung wird „00000000-0000-0000-0000-000000000000“ angezeigt. Was bedeutet das?***
+***Ich sehe „00000000-0000-0000-0000-000000000000" im Abschnitt „Benutzer" bei einer Anmeldung. Was bedeutet das?***
 Wenn bei der Anmeldung ein Fehler aufgetreten ist und der verwendete UPN nicht mit einem vorhandenen UPN-Wert identisch ist, enthalten die Felder „Benutzer“, „Benutzername“ und „Benutzer-ID“ den Wert „00000000-0000-0000-0000-000000000000“, und „Anmeldebezeichner“ enthält den beim Versuch vom Benutzer eingegebenen Wert. In diesen Fällen ist der Benutzer, der versucht, sich anzumelden, nicht vorhanden.
 
 ***Wie kann ich meine lokalen Ereignisse mit dem Azure AD-Anmeldebericht korrelieren?***
 Der Azure AD Connect Health-Agent für AD FS korreliert Ereignis-IDs aus AD FS in Abhängigkeit von der Serverversion. Die Ereignisse sind dann im Sicherheitsprotokoll der AD FS-Server verfügbar. 
 
 ***Warum wird bei bestimmten AD FS-Anmeldungen in der Anwendungs-ID/dem Anwendungsnamen „NotSet“ oder „NotApplicable“ angezeigt?***
-Im AD FS-Anmeldebericht werden bei OAuth-Anmeldungen im Feld „Anwendungs-ID“ OAuth-IDs angezeigt. In Szenarien mit WS-Fed- und WS-Trust-Anmeldung lautet die Anwendungs-ID „NotSet“ oder „NotApplicable“, und die Ressourcen-IDs und die Bezeichner der vertrauenden Seite stehen im Feld „Ressourcen-ID“.
+Der AD FS-Anmeldebericht zeigt für OAuth-Anmeldungen OAuth-IDs im Feld Anwendungs-ID an. In den WS-Fed-, WS-Trust-Sign-In-Szenarien wird die Anwendungs-ID auf NotSet oder NotApplicable gesetzt und die Ressourcen-IDs und Relying-Party-Identifikatoren werden im Feld Ressourcen-ID angezeigt.
 
 ***Gibt es in der Vorschauversion weitere bekannte Probleme mit dem Bericht?***
 Der Bericht weist ein bekanntes Problem auf, bei dem das Feld „Authentifizierungsanforderung“ auf der Registerkarte „Grundlegende Informationen“ unabhängig von der Anmeldung den Wert für eine einstufige Authentifizierung für AD FS-Anmeldungen enthält. Außerdem wird auf der Registerkarte „Authentifizierungsdetails“ unter dem Feld „Anforderung“ der Wert „Primär oder sekundär“ angezeigt, wobei gerade eine Korrektur in Arbeit ist, um die primären oder sekundären Authentifizierungstypen zu unterscheiden.
@@ -111,8 +111,3 @@ Der Bericht weist ein bekanntes Problem auf, bei dem das Feld „Authentifizieru
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Installieren des Azure AD Connect Health-Agents](how-to-connect-health-agent-install.md)
 * [Bericht über riskante IP-Adressen](how-to-connect-health-adfs-risky-ip.md)
-
-
-
-
-

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92f9c3baaa8260bdc154f8752b56a63cf1444ebe
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508808"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140405"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -22,7 +22,7 @@ Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat un
  Für einen privaten Endpunkt werden die folgenden Eigenschaften angegeben: 
 
 
-|Eigenschaft  |Beschreibung |
+|Eigenschaft  |BESCHREIBUNG |
 |---------|---------|
 |Name    |    Ein eindeutiger Name innerhalb der Ressourcengruppe.      |
 |Subnet    |  Das Subnetz, dem private IP-Adressen aus einem virtuellen Netzwerk bereitgestellt und zugeordnet werden. Anforderungen an das Subnetz finden Sie im Abschnitt „Einschränkungen“ in diesem Artikel.         |
@@ -39,7 +39,7 @@ Im Folgenden finden Sie einige wichtige Details zu privaten Endpunkten:
 
 - Beim Erstellen eines privaten Endpunkts wird für die Lebensdauer der Ressource auch eine schreibgeschützte Netzwerkschnittstelle eingerichtet. Der Schnittstelle werden dynamisch private IP-Adressen aus dem Subnetz zugewiesen, das der Private Link-Ressource zugeordnet ist. Der Wert der privaten IP-Adresse bleibt über den gesamten Lebenszyklus des privaten Endpunkts unverändert.
  
-- Der private Endpunkt muss in derselben Region wie das virtuelle Netzwerk bereitgestellt werden. 
+- Der private Endpunkt muss in derselben Region und im selben Abonnement wie das virtuelle Netzwerk bereitgestellt werden. 
  
 - Die Private Link-Ressource kann in einer anderen Region als das virtuelle Netzwerk und der private Endpunkt bereitgestellt werden.
  
@@ -78,6 +78,7 @@ Eine Private Link-Ressource ist das Ziel eines bestimmten privaten Endpunkts. Es
 |**Azure Event Grid** | Microsoft.EventGrid/topics    | topic |
 |**Azure Event Grid** | Microsoft.EventGrid/domains    | Domäne |
 |**Azure App Service** | Microsoft.Web/sites    | sites |
+|**Azure App Service-Slots** | Microsoft.Web/sites    | sites-`<slot name>` |
 |**Azure Machine Learning** | Microsoft.MachineLearningServices/workspaces    | amlworkspace |
 |**SignalR** | Microsoft.SignalRService/SignalR    | signalR |
 |**Azure Monitor** | Microsoft.Insights/privateLinkScopes    | azuremonitor |
@@ -110,7 +111,7 @@ Der Besitzer der Private Link-Ressource kann über eine private Endpunktverbindu
 > Nur ein privater Endpunkt im genehmigten Zustand kann Datenverkehr an eine angegebene Private Link-Ressource senden. 
 
 ### <a name="connecting-using-alias"></a>Verbindungsherstellung per Alias
-Der Alias ist ein eindeutiger Moniker, der generiert wird, wenn der Dienstbesitzer den Private Link-Dienst hinter einem Standardlastenausgleich erstellt. Der Dienstbesitzer kann diesen Alias mit seinen Consumern offline gemeinsam nutzen. Verbraucher können eine Verbindung mit dem Private Link-Dienst anfordern, indem sie entweder den Ressourcen-URI oder Alias verwenden. Wenn Sie eine Verbindung per Alias herstellen möchten, müssen Sie einen privaten Endpunkt mithilfe der manuellen Verbindungsgenehmigungsmethode erstellen. Um die manuelle Verbindungsgenehmigungsmethode zu verwenden, legen Sie den Parameter für die manuelle Anforderung während des Flows zum Erstellen eines privaten Endpunkts auf TRUE fest. Ausführliche Informationen finden Sie unter [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) und [az network private-endpoint create](/cli/azure/network/private-endpoint#az-network-private-endpoint-create). 
+Der Alias ist ein eindeutiger Moniker, der generiert wird, wenn der Dienstbesitzer den Private Link-Dienst hinter einem Standardlastenausgleich erstellt. Der Dienstbesitzer kann diesen Alias mit seinen Consumern offline gemeinsam nutzen. Verbraucher können eine Verbindung mit dem Private Link-Dienst anfordern, indem sie entweder den Ressourcen-URI oder Alias verwenden. Wenn Sie eine Verbindung per Alias herstellen möchten, müssen Sie einen privaten Endpunkt mithilfe der manuellen Verbindungsgenehmigungsmethode erstellen. Um die manuelle Verbindungsgenehmigungsmethode zu verwenden, legen Sie den Parameter für die manuelle Anforderung während des Flows zum Erstellen eines privaten Endpunkts auf TRUE fest. Ausführliche Informationen finden Sie unter [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) und [az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create). 
 
 ## <a name="dns-configuration"></a>DNS-Konfiguration 
 Wenn Sie eine Verbindung mit einer Private Link-Ressource über einen voll qualifizierten Domänennamen (FQDN) als Teil der Verbindungszeichenfolge herstellen, ist es wichtig, Ihre DNS-Einstellungen so zu konfigurieren, dass sie in die zugewiesene private IP-Adresse aufgelöst werden. Bestehende Azure-Dienste verfügen möglicherweise bereits über eine DNS-Konfiguration, die beim Herstellen einer Verbindung über einen öffentlichen Endpunkt verwendet werden kann. Diese muss überschrieben werden, um eine Verbindung mithilfe Ihres privaten Endpunkts herzustellen. 
@@ -133,9 +134,9 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen eines privaten Endpunkts für Azure SQL-Datenbank im Portal](create-private-endpoint-portal.md)
-- [Erstellen eines privaten Endpunkts für Azure SQL-Datenbank mit PowerShell](create-private-endpoint-powershell.md)
-- [Erstellen eines privaten Endpunkts für Azure SQL-Datenbank mit der CLI](create-private-endpoint-cli.md)
+- [Erstellen eines privaten Endpunkts für Azure Web-Apps im Portal](create-private-endpoint-portal.md)
+- [Erstellen eines privaten Endpunkts für Azure Web-Apps mit PowerShell](create-private-endpoint-powershell.md)
+- [Erstellen eines privaten Endpunkts für Azure Web-Apps mit CLI](create-private-endpoint-cli.md)
 - [Erstellen eines privaten Endpunkts für das Speicherkonto im Portal](./tutorial-private-endpoint-storage-portal.md)
 - [Erstellen eines privaten Endpunkts für das Azure Cosmos-Konto im Portal](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Erstellen eines eigenen Private Link-Diensts mit Azure PowerShell](create-private-link-service-powershell.md)

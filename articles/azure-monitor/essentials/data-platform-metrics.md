@@ -7,14 +7,14 @@ manager: carmonm
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/20/2021
+ms.date: 04/27/2021
 ms.author: bwren
-ms.openlocfilehash: 3c99002a4f8613ff40a116eeceded4b3bada1c15
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5c8256e453763d9cd2fdc18687df3064552dcf2b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936154"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289532"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Überblick über Metriken in Azure Monitor
 Metriken in Azure Monitor sind ein Feature von Azure Monitor, das numerische Daten aus [überwachten Ressourcen](../monitor-reference.md) in einer Zeitreihendatenbank erfasst. Metriken sind numerische Werte, die in regelmäßigen Abständen erfasst werden und einen Aspekt eines Systems zu einem bestimmten Zeitpunkt beschreiben. Metriken in Azure Monitor sind einfach gehalten und unterstützen Szenarien vom Typ „Nahezu in Echtzeit“, sodass sie besonders für Warnungen und die schnelle Erkennung von Problemen hilfreich sind. Sie können sie interaktiv mit dem Metrik-Explorer analysieren, sich proaktiv mit einer Warnung benachrichtigen lassen, wenn ein Wert einen Schwellenwert überschreitet, oder sie in einer Arbeitsmappe oder einem Dashboard visualisieren.
@@ -100,16 +100,34 @@ Diese nichtdimensionale Metrik kann nur grundlegende Fragen wie etwa Folgende be
 
 Diese Metrik kann Fragen wie die folgenden beantworten: „Wie hoch war der Netzwerkdurchsatz für jede IP-Adresse?“ und „Wie viele Daten wurden gesendet und empfangen?“. Mehrdimensionale Metriken enthalten im Gegensatz zu nichtdimensionalen Metriken zusätzlich einen Analyse- und Diagnosewert.
 
+### <a name="view-multi-dimensional-performance-counter-metrics-in-metrics-explorer"></a>Anzeigen mehrdimensionaler Leistungsindikatormetriken im Metrik-Explorer 
+Leistungsindikatormetriken, die ein Sternchen (\*) enthalten, können nicht über die klassische Gastmetrik-API an Azure Monitor gesendet werden. Diese API kann keine Metriken anzeigen, die ein Sternchen enthalten, da es sich um eine mehrdimensionale Metrik handelt, die von klassischen Metriken nicht unterstützt wird.
+Nachfolgend sind die Anweisungen zum Konfigurieren und Anzeigen mehrdimensionaler Leistungsindikatormetriken aufgeführt:
+1.  Navigieren Sie zur Seite mit Diagnoseeinstellungen für Ihren virtuellen Computer.
+2.  Wählen Sie die Registerkarte „Leistungsindikatoren“ aus. 
+3.  Klicken Sie auf „Benutzerdefiniert“, um die Leistungsindikatoren zu konfigurieren, die Sie erfassen möchten.
+![Screenshot des Abschnitts „Leistungsindikatoren“ auf der Seite „Diagnoseeinstellungen“](media/data-platform-metrics/azure-monitor-perf-counter.png)
+
+4.  Nachdem Sie die Leistungsindikatoren konfiguriert haben, klicken Sie auf „Senken“. Aktivieren Sie dann die Option zum Senden Ihrer Daten an Azure Monitor.
+![Screenshot des Abschnitts „Senken“ auf der Seite „Diagnoseeinstellungen“](media/data-platform-metrics/azure-monitor-sink.png)
+
+5.  Um Ihre Metrik in Azure Monitor anzuzeigen, wählen Sie in der Dropdownliste für „Metriknamespace“ die Option „VM-Gast“ aus.
+![Screenshot der Option „Metriknamespace“](media/data-platform-metrics/vm-guest-namespace.png)
+
+6.  Teilen Sie die Metrik nach Instanz auf, um sie nach den einzelnen möglichen Werten aufzuschlüsseln, für die das „\*“ in der Konfiguration steht.  In diesem Beispiel steht das „\*“ für die verschiedenen logischen Datenträgervolumes plus der Gesamtsumme.
+![Screenshot zum Aufteilen der Metrik nach Instanz](media/data-platform-metrics/split-by-instance.png)
+
+
+
 ## <a name="retention-of-metrics"></a>Aufbewahrung von Metriken
-Für die meisten Ressourcen in Azure werden Metriken für 93 Tage gespeichert. Es gibt einige Ausnahmen:
+Für die meisten Ressourcen in Azure werden Plattformmetriken 93 Tage lang gespeichert. Es gibt einige Ausnahmen:
 
 **Gastbetriebssystemmetriken**
--   **Klassische Gastbetriebssystemmetriken:** Dies ist Leistungsindikatoren, die von der [Diagnose-Erweiterung für Windows (WAD)](../agents/diagnostics-extension-overview.md) oder der [Diagnose-Erweiterung für Linux (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) erfasst und an ein Azure Storage-Konto weitergeleitet werden. Diese Metriken werden garantiert mindestens 14 Tage aufbewahrt, obwohl kein tatsächliches Ablaufdatum in das Speicherkonto geschrieben wird. Aus Leistungsgründen begrenzt das Portal die angezeigte Datenmenge basierend auf dem Volumen. Daher kann die tatsächliche Anzahl der Tage, die vom Portal abgerufen werden, mehr als 14 Tage umfassen, wenn das zu schreibende Datenvolumen nicht sehr groß ist.  
--   **An Azure Monitor-Metriken gesendete Gastbetriebssystemmetriken:** Dies sind Leistungsindikatoren, die von der [Diagnose-Erweiterung für Windows (WAD)](../agents/diagnostics-extension-overview.md) erfasst und an die [Azure Monitor-Datensenke](../agents/diagnostics-extension-overview.md#data-destinations) gesendet werden. Alternativ können sie auch über den [InfluxData Telegraf-Agent](https://www.influxdata.com/time-series-platform/telegraf/) auf Linux-Computern gesendet werden. Die Vermerkdauer für diese Metriken beträgt 93 Tage.
--   **Vom Log Analytics-Agent erfasste Gastbetriebssystemmetriken:** Dies sind Leistungsindikatoren, die vom Log Analytics-Agent erfasst und an einen Log Analytics-Arbeitsbereich gesendet werden. Die Vermerkdauer für diese Metriken beträgt 31 Tage. Sie kann auf bis zu 2 Jahre verlängert werden.
+-   **Klassische Gastbetriebssystemmetriken** werden 14 Tage und manchmal länger aufbewahrt. Dies ist Leistungsindikatoren, die von der [Diagnose-Erweiterung für Windows (WAD)](../agents/diagnostics-extension-overview.md) oder der [Diagnose-Erweiterung für Linux (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) erfasst und an ein Azure Storage-Konto weitergeleitet werden. Diese Metriken werden garantiert mindestens 14 Tage aufbewahrt, obwohl kein tatsächliches Ablaufdatum in das Speicherkonto geschrieben wird. Aus Leistungsgründen begrenzt das Portal die angezeigte Datenmenge basierend auf dem Volumen. Daher kann die tatsächliche Anzahl der Tage, die vom Portal abgerufen werden, mehr als 14 Tage umfassen, wenn das zu schreibende Datenvolumen nicht sehr groß ist.  
+-   **An Azure Monitor-Metriken gesendete Gastbetriebssystemmetriken** werden 93 Tage lang aufbewahrt. Dies sind Leistungsindikatoren, die von der [Diagnose-Erweiterung für Windows (WAD)](../agents/diagnostics-extension-overview.md) erfasst und über Datensammlungsregeln an die [Azure Monitor-Datensenke](../agents/diagnostics-extension-overview.md#data-destinations), den [InfluxData Telegraf-Agent](https://www.influxdata.com/time-series-platform/telegraf/) auf Linux-Computern oder den neueren [Azure Monitor-Agent](../agents/azure-monitor-agent-overview.md) (AMA) gesendet werden. Die Vermerkdauer für diese Metriken beträgt 93 Tage.
+-   **Vom Log Analytics-Agent erfasste Gastbetriebssystemmetriken** werden 31 Tage bis zwei Jahre lang aufbewahrt. Dies sind Leistungsindikatoren, die vom Log Analytics-Agent erfasst und an einen Log Analytics-Arbeitsbereich gesendet werden. Die Vermerkdauer für diese Metriken beträgt 31 Tage. Sie kann auf bis zu 2 Jahre verlängert werden.
 
-**Auf Application Insights-Protokollen basierende Metriken**. 
-- [Protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md) werden im Hintergrund in Protokollabfragen übersetzt. Ihre Aufbewahrung entspricht der Aufbewahrung von Ereignissen in den zugrunde liegenden Protokollen. Für die Application Insights-Ressourcen werden die Protokolle 90 Tage lang gespeichert.
+**Auf Application Insights-Protokollen basierende Metriken**. (Variiert) [Protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md) werden im Hintergrund in Protokollabfragen übersetzt. Ihre Aufbewahrung entspricht der Aufbewahrung von Ereignissen in den zugrunde liegenden Protokollen (31 Tage bis zwei Jahre). Für die Application Insights-Ressourcen werden die Protokolle 90 Tage lang gespeichert.
 
 
 > [!NOTE]

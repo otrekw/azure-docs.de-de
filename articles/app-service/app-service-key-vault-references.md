@@ -3,15 +3,15 @@ title: Verwenden von Key Vault-Verweisen
 description: Erfahren Sie, wie Sie Azure App Service und Azure Functions einrichten, um Azure Key Vault-Verweise zu verwenden. Machen Sie Key Vault-Geheimnisse für den Anwendungscode verfügbar.
 author: mattchenderson
 ms.topic: article
-ms.date: 02/05/2021
+ms.date: 04/23/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: b87001f9b283c774096fe669d58a9b487174625d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0ca620d50706f10081e955cf206fcf8c06ae5fd4
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750768"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064933"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Verwenden von Key Vault-Verweisen für App Service und Azure Functions
 
@@ -28,7 +28,7 @@ Um Geheimnisse aus Key Vault auslesen zu können, müssen Sie einen Tresor erste
    > [!NOTE] 
    > Key Vault-Verweise unterstützen derzeit nur systemseitig zugewiesene verwaltete Identitäten. Vom Benutzer zugewiesene Identitäten können nicht verwendet werden.
 
-1. Erstellen Sie eine [Zugriffsrichtlinie im Schlüsseltresor](../key-vault/general/security-overview.md#privileged-access) für die zuvor von Ihnen erstellte Anwendungsidentität. Aktivieren Sie die „Get“-Geheimnisberechtigung für diese Richtlinie. Konfigurieren Sie nicht die Einstellungen „Autorisierte Anwendung“ oder `applicationId`, da dies mit einer verwalteten Identität nicht kompatibel ist.
+1. Erstellen Sie eine [Zugriffsrichtlinie im Schlüsseltresor](../key-vault/general/security-features.md#privileged-access) für die zuvor von Ihnen erstellte Anwendungsidentität. Aktivieren Sie die „Get“-Geheimnisberechtigung für diese Richtlinie. Konfigurieren Sie nicht die Einstellungen „Autorisierte Anwendung“ oder `applicationId`, da dies mit einer verwalteten Identität nicht kompatibel ist.
 
 ### <a name="access-network-restricted-vaults"></a>Zugriff auf Werte mit Netzwerkeinschränkungen
 
@@ -81,6 +81,17 @@ Um einen Key Vault-Verweis für eine Anwendungseinstellung zu verwenden, legen S
 
 > [!TIP]
 > Die meisten Anwendungseinstellungen, die Key Vault-Verweise verwenden, sollten als Slot-Einstellungen markiert werden, da Sie für jede Umgebung eigene Tresore verwenden sollten.
+
+### <a name="considerations-for-azure-files-mounting"></a>Überlegungen zum Einbinden von Azure Files
+
+Apps können die `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`-Anwendungseinstellung verwenden, um Azure Files als Dateisystem einzubinden. Diese Einstellung verfügt über zusätzliche Überprüfungen, um sicherzustellen, dass die App ordnungsgemäß gestartet werden kann. Die Plattform benötigt eine Inhaltsfreigabe in Azure Files und setzt einen Standardnamen voraus, es sei denn, ein Name wird über die `WEBSITE_CONTENTSHARE`-Einstellung angegeben. Bei Anforderungen, die diese Einstellungen ändern, versucht die Plattform zu überprüfen, ob diese Inhaltsfreigabe vorhanden ist, und versucht, sie zu erstellen, falls dies nicht der Fall ist. Wenn die Inhaltsfreigabe nicht gefunden oder erstellt werden kann, wird die Anforderung blockiert.
+
+Wenn für diese Einstellung Key Vault-Verweise verwendet werden, schlägt diese Überprüfung standardmäßig fehl, da das Geheimnis selbst bei der Verarbeitung der eingehenden Anforderung nicht aufgelöst werden kann. Um dieses Problem zu vermeiden, können Sie die Überprüfung überspringen, indem Sie `WEBSITE_SKIP_CONTENTSHARE_VALIDATION` auf „1“ festlegen. Dadurch werden alle Überprüfungen umgangen, und die Inhaltsfreigabe wird nicht für Sie erstellt. Stellen Sie sicher, dass sie im Voraus erstellt wird. 
+
+> [!CAUTION]
+> Wenn Sie die Überprüfung überspringen und entweder die Verbindungszeichenfolge oder die Inhaltsfreigabe ungültig ist, kann die App nicht ordnungsgemäß gestartet werden und gibt nur HTTP 500-Fehler aus.
+
+Im Rahmen der Erstellung der Site ist es auch möglich, dass der Einbindeversuch der Inhaltsfreigabe fehlschlägt, weil Berechtigungen für verwaltete Identitäten nicht weitergegeben oder die Integration des virtuellen Netzwerks nicht eingerichtet wurde. Um dies zu berücksichtigen, können Sie die Einrichtung von Azure Files bis zu einem späteren Zeitpunkt in der Bereitstellungsvorlage verzögern. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellung](#azure-resource-manager-deployment). App Service verwendet ein Standarddateisystem, bis Azure Files eingerichtet ist, und Dateien werden nicht kopiert, weshalb Sie sicherstellen müssen, dass während des Übergangszeitraums keine Bereitstellungsversuche erfolgen, bevor Azure Files eingebunden wird.
 
 ### <a name="azure-resource-manager-deployment"></a>Azure Resource Manager-Bereitstellung
 

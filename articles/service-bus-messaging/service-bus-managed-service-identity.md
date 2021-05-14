@@ -2,13 +2,13 @@
 title: Verwaltete Identitäten für Azure-Ressourcen mit Service Bus
 description: In diesem Artikel wird beschrieben, wie Sie mit verwalteten Identitäten auf Azure Service Bus-Entitäten (Warteschlangen, Themen und Abonnements) zugreifen.
 ms.topic: article
-ms.date: 01/21/2021
-ms.openlocfilehash: 0558e00ac7e8ce67d2e5194b02d2de06f2d38ff1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/23/2021
+ms.openlocfilehash: 3efe513d5e19ca13567b05e8f8d0aafb402ae879
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785431"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161121"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure Service Bus-Ressourcen
 [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Sie können dieser Identität dann Zugriffssteuerungsrollen zuordnen, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu gewähren, die Ihre Anwendung benötigt.
@@ -91,13 +91,8 @@ Führen Sie nach der Erstellung der Anwendung die folgenden Schritte aus:
 
 Nachdem Sie diese Einstellung aktiviert haben, wird in Ihrer Azure AD-Instanz (Azure Active Directory) eine neue Dienstidentität erstellt und auf dem App Service-Host konfiguriert.
 
-> [!NOTE]
-> Bei Verwendung einer verwalteten Identität muss die Verbindungszeichenfolge im folgenden Format angegeben werden: `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=ManagedIdentity`.
-
-Weisen Sie dieser Dienstidentität jetzt eine Rolle im erforderlichen Bereich in Ihren Service Bus-Ressourcen zu.
-
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>So weisen Sie Azure-Rollen mit dem Azure-Portal zu
-Um einem Service Bus-Namespace eine Rolle zuzuweisen, navigieren Sie im Azure-Portal zum betreffenden Namespace. Zeigen Sie die Einstellungen für die Zugriffssteuerung (IAM) für die Ressource an, und befolgen Sie diese Anleitung zum Verwalten von Rollenzuweisungen:
+Weisen Sie nun die Dienstidentität einer Rolle im gewünschten Umfang in Ihren Servicebus-Ressourcen zu. Um einem Service Bus-Namespace eine Rolle zuzuweisen, navigieren Sie im Azure-Portal zum betreffenden Namespace. Zeigen Sie die Einstellungen für die Zugriffssteuerung (IAM) für die Ressource an, und befolgen Sie diese Anleitung zum Verwalten von Rollenzuweisungen:
 
 > [!NOTE]
 > Mit den folgenden Schritten wird den Service Bus-Namespaces eine Dienstidentitätsrolle zugewiesen. Sie können die gleichen Schritte ausführen, um anderen unterstützten Bereichen (Ressourcengruppe und Abonnement) eine Rolle zuzuweisen. 
@@ -127,7 +122,7 @@ Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendun
 
 Die Seite „Default.aspx“ ist Ihre Zielseite. Sie finden den Code in der Datei „Default.aspx.cs“. Das Ergebnis ist eine kleine Webanwendung mit einigen wenigen Eingabefeldern sowie Schaltflächen zum **Senden** und **Empfangen**, mit denen eine Verbindung mit Service Bus hergestellt wird, um Nachrichten zu senden oder zu empfangen.
 
-Beachten Sie, wie das Objekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) initialisiert wird. Der Code verwendet nicht den SAS-Tokenanbieter (Shared Access Signature), sondern erstellt mit dem Aufruf `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` einen Tokenanbieter für die verwaltete Identität. Daher müssen keine Geheimnisse aufbewahrt und verwendet werden. Der Flow vom Kontext der verwalteten Identität zu Service Bus und der Autorisierungshandshake werden automatisch vom Tokenanbieter verarbeitet. Dies ist ein einfacheres Modell als die Verwendung von SAS.
+Beachten Sie, wie das Objekt [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) mit Hilfe eines Konstruktors initialisiert wird, für den ein TokenCredential benötigt wird. Das DefaultAzureCredential ist eine Ableitung von TokenCredential und kann hier übermittelt werden. Daher müssen keine Geheimnisse aufbewahrt und verwendet werden. Der Flow vom Kontext der verwalteten Identität zu Service Bus und der Autorisierungshandshake werden automatisch vom Token Credential verarbeitet. Dies ist ein einfacheres Modell als die Verwendung von SAS.
 
 Nachdem Sie diese Änderungen vorgenommen haben, veröffentlichen Sie die Anwendung und führen sie aus. Sie können die richtigen Veröffentlichungsdaten einfach abrufen, indem Sie ein Veröffentlichungsprofil herunterladen und dann in Visual Studio importieren:
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: aahi
-ms.openlocfilehash: c0d91f803822e018f4363bb78d9138e2efe16f8a
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 38fda578a2151d1d5cf306095b3be49cb916977b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531433"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287426"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Textanalyse-API v3: Sprachunterstützung 
 
@@ -33,11 +33,11 @@ ms.locfileid: "107531433"
 | Italienisch               |     `it`      |     ✓      |         2019-10-01         |                    |
 | Japanisch              |     `ja`      |     ✓      |         2019-10-01         |                    |
 | Koreanisch                |     `ko`      |    ✓      |         2019-10-01         |                    |
-| Norwegisch (Bokmål)   |     `no`      |     ✓      |         2020-07-01         |                    |
+| Norwegisch (Bokmål)   |     `no`      |     ✓      |         2020-04-01         |                    |
 | Portugiesisch (Brasilien)   |    `pt-BR`    |     ✓      |         2020-04-01         |                    |
 | Portugiesisch (Portugal) |    `pt-PT`    |     ✓      |         2019-10-01         | `pt` wird ebenfalls akzeptiert. |
 | Spanisch               |     `es`      |     ✓      |         2019-10-01         |                    |
-| Türkisch               |     `tr`      |     ✓       |         2020-07-01        |                    |
+| Türkisch               |     `tr`      |     ✓       |         2020-04-01        |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>Opinion Mining (nur v3.1-preview)
 

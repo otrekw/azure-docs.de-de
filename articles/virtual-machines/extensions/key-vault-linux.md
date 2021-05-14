@@ -10,12 +10,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a674f4a2a31fd217307ff373cba2b883a4d129f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9032bfca30ead56c91d7904e18b76753cf3b6dfc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102557062"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104582169"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault-VM-Erweiterung für Linux
 
@@ -25,15 +25,18 @@ Die Key Vault-VM-Erweiterung ermöglicht die automatische Aktualisierung von Ze
 
 Die Key Vault-VM-Erweiterung unterstützt folgende Linux-Distributionen:
 
-- Ubuntu-1604
 - Ubuntu-1804
-- Debian-9
 - Suse-15 
+
+> [!NOTE]
+> Um erweiterte sicherheitsbezogene Features zu erhalten, bereiten Sie sich auf ein Upgrade von Ubuntu-1604- und Debian-9-Systemen vor, da diese Versionen das Ende des vorgesehenen Supportzeitraums erreichen.
+> 
 
 ### <a name="supported-certificate-content-types"></a>Unterstützte Zertifikatsinhaltstypen
 
 - PKCS #12
 - PEM
+
 
 ## <a name="prerequisities"></a>Voraussetzungen
   - Key Vault-Instanz mit Zertifikat. Siehe [Erstellen eines Schlüsseltresors](../../key-vault/general/quick-create-portal.md).
@@ -54,6 +57,20 @@ Die Key Vault-VM-Erweiterung unterstützt folgende Linux-Distributionen:
                     "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
                   }
    `
+## <a name="key-vault-vm-extension-version"></a>Key Vault-VM-Erweiterungsversion
+* Ubuntu-18.04-und SUSE-15-Benutzer können ein Upgrade Ihrer Key Vault-VM-Erweiterungsversion auf `V2.0` durchführen, um das Feature für die vollständige Zertifikatkette herunterzuladen. Ausstellerzertifikate (Zwischen- und Grundstufe) werden an das untergeordnete Zertifikat in der PEM-Datei angehängt.
+
+* Wenn Sie ein Upgrade auf `v2.0` durchführen möchten, müssen Sie `v1.0` zuerst löschen und dann `v2.0` installieren.
+```
+  az vm extension delete --name KeyVaultForLinux --resource-group ${resourceGroup} --vm-name ${vmName}
+  az vm extension set -n "KeyVaultForLinux" --publisher Microsoft.Azure.KeyVault --resource-group "${resourceGroup}" --vm-name "${vmName}" –settings .\akvvm.json –version 2.0
+```  
+  Die Flag--Version 2.0 ist optional, da die neueste Version standardmäßig installiert wird.   
+
+* Falls die VM Zertifikate von v1.0 heruntergeladen hat, führt das Löschen der v1.0 AKVVM-Erweiterung nicht zum Löschen der heruntergeladenen Zertifikate.  Nach der Installation von v2.0 werden die vorhandenen Zertifikate NICHT geändert.  Sie müssen die Zertifikat-Dateien oder das Rollover des Zertifikats löschen, um die PEM-Datei mit vollständiger Kette auf der VM zu erhalten.
+
+
+
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -70,7 +87,7 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
@@ -107,7 +124,7 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 | apiVersion | 01.07.2019 | date |
 | publisher | Microsoft.Azure.KeyVault | Zeichenfolge |
 | type | KeyVaultForLinux | Zeichenfolge |
-| typeHandlerVersion | 1.0 | INT |
+| typeHandlerVersion | 2,0 | INT |
 | pollingIntervalInS | 3600 | Zeichenfolge |
 | certificateStoreName | Wird unter Linux ignoriert | Zeichenfolge |
 | linkOnRenewal | false | boolean |
@@ -140,7 +157,7 @@ Die JSON-Konfiguration für eine VM-Erweiterung muss im VM-Ressourcenfragment de
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
           "secretsManagementSettings": {
@@ -187,7 +204,7 @@ Azure PowerShell kann verwendet werden, um die Key Vault-VM-Erweiterung auf eine
        
     
         # Start the deployment
-        Set-AzVmExtension -TypeHandlerVersion "1.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
+        Set-AzVmExtension -TypeHandlerVersion "2.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
     
     ```
 
@@ -207,7 +224,7 @@ Azure PowerShell kann verwendet werden, um die Key Vault-VM-Erweiterung auf eine
         
         # Add Extension to VMSS
         $vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
-        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "1.0" -Setting $settings
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "2.0" -Setting $settings
 
         # Start the deployment
         Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss 
@@ -226,6 +243,7 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vm-name "<vmName>" `
+         --version 2.0 `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
@@ -237,6 +255,7 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
         --vmss-name "<vmssName>" `
+        --version 2.0 `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 Beachten Sie hierbei die folgenden Einschränkungen bzw. Anforderungen:

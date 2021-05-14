@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/17/2021
+ms.date: 05/02/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49cd718bc0beb5128980e5e25a01cef94e966221
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577703"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754017"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -81,7 +81,7 @@ Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als [Stan
 - Sie können Überwachungsprotokolle in ein Azure Storage-Konto hinter einem VNET oder einer Firewall schreiben. Spezielle Anweisungen finden Sie unter [Schreiben von Überwachungsprotokollen in ein Speicherkonto hinter einem VNET oder einer Firewall](audit-write-storage-account-behind-vnet-firewall.md).
 - Informationen zum Protokollformat, zur Hierarchie des Speicherordners und zu Namenskonventionen finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](./audit-log-format.md).
 - Die Überwachung von [schreibgeschützten Replikaten](read-scale-out.md) wird automatisch aktiviert. Weitere Informationen zur Hierarchie der Speicherordner, zu Namenskonventionen und zum Protokollformat finden Sie unter [Format für SQL-Datenbank-Überwachungsprotokolle](audit-log-format.md).
-- Wenn Sie die Azure AD-Authentifizierung verwenden, werden Datensätze zu Anmeldungsfehlern im SQL-Überwachungsprotokoll *nicht* angezeigt. Um Überwachungsdatensätze zu Fehlern bei der Anmeldung anzuzeigen, müssen Sie das [Azure Active Directory-Portal](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md) verwenden, in dem Details zu diesen Ereignissen protokolliert werden.
+- Wenn Sie die Azure AD-Authentifizierung verwenden, werden Datensätze zu Anmeldungsfehlern im SQL-Überwachungsprotokoll *nicht* angezeigt. Um Überwachungsdatensätze zu Fehlern bei der Anmeldung anzuzeigen, müssen Sie das [Azure Active Directory-Portal](../../active-directory/reports-monitoring/concept-sign-ins.md) verwenden, in dem Details zu diesen Ereignissen protokolliert werden.
 - Anmeldungen werden vom Gateway an die bestimmte Instanz weitergeleitet, in der sich die Datenbank befindet.  Im Fall von AAD-Anmeldungen erfolgt die Überprüfung der Anmeldeinformationen vor dem Versuch, den Benutzer für die Anmeldung bei der angeforderten Datenbank zu verwenden.  Bei einem Fehler wird nie auf die angeforderte Datenbank zugegriffen, sodass keine Überwachung erfolgt.  Bei SQL-Anmeldungen werden die Anmeldeinformationen für die angeforderten Daten überprüft, sodass sie in diesem Fall überwacht werden können.  Erfolgreiche Anmeldungen, die die Datenbank offensichtlich erreichen, werden in beiden Fällen überwacht.
 - Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature der Bedrohungserkennung aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](threat-detection-overview.md).
 
@@ -100,7 +100,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
 
   > [!NOTE]
   > - Die Überwachung kann bei einem angehaltenen dedizierten SQL-Pool nicht aktiviert werden. Zum Aktivieren der Überwachung setzen Sie den Pool fort. Informieren Sie sich ausführlicher über den [dedizierten SQL-Pool](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md).
-  > - Wenn die Überwachung mit einem Log Analytics-Arbeitsbereich oder Event Hub als Ziel über das Azure-Portal oder ein PowerShell-Cmdlet konfiguriert wird, wird eine [Diagnoseeinstellung](../../azure-monitor/essentials/diagnostic-settings.md) mit aktivierter Kategorie "SQLSecurityAuditEvents" erstellt.
+  > - Wenn die Überwachung mit einem Log Analytics-Arbeitsbereich oder Event Hub als Ziel über das Azure-Portal oder ein PowerShell-Cmdlet konfiguriert ist, wird eine [Diagnoseeinstellung](../../azure-monitor/essentials/diagnostic-settings.md) mit aktivierter Kategorie „SQLSecurityAuditEvents“ erstellt.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie im Bereich für die **SQL-Datenbank** oder den **SQL Server** unter der Überschrift „Sicherheit“ zu **Überwachung**.
@@ -290,9 +290,9 @@ Erweiterte Richtlinie mit Unterstützung der WHERE-Klausel für zusätzliche Fil
 
 Sie können die Überwachung von Azure SQL-Datenbank mithilfe von [Azure Resource Manager-Vorlagen](../../azure-resource-manager/management/overview.md) verwalten, wie die folgenden Beispiele zeigen:
 
-- [Bereitstellen von Azure SQL-Datenbank mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in ein Azure Blob Storage-Konto](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [Bereitstellen von Azure SQL-Datenbank mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
-- [Bereitstellen von Azure SQL-Datenbank mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+- [Bereitstellen von Azure SQL-Datenbank mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in ein Azure Blob Storage-Konto](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-blob-storage/)
+- [Bereitstellen von Azure SQL-Datenbank mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Log Analytics](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-oms/)
+- [Bereitstellen von Azure SQL-Datenbank mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Event Hubs](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-eventhub/)
 
 > [!NOTE]
 > Die verknüpften Beispiele befinden sich in einem externen öffentlichen Repository und werden wie besehen ohne Gewähr zur Verfügung gestellt und werden von keinem Microsoft-Supportprogramm/-dienst unterstützt.

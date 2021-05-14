@@ -12,35 +12,36 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: cf7746cc55e81593a1788608cced1253f295a5c4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 79a8942fefc497701a05b6d20ab693d932daeb7d
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738377"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166466"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Problembehandlung für Anwendungen, die TLS 1.2 nicht unterstützen
 
 > [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
 
-In diesem Artikel wird beschrieben, wie Sie die älteren TLS-Protokolle (TLS 1.0 und 1.1) aktivieren und Legacyverschlüsselungssammlungen anwenden, um die zusätzlichen Protokolle für die Web- und Workerrollen des Windows Server 2019-Clouddiensts zu unterstützen. 
+In diesem Artikel wird beschrieben, wie Sie die älteren TLS-Protokolle (TLS 1.0 und 1.1) aktivieren und Legacyverschlüsselungssammlungen anwenden, um die zusätzlichen Protokolle für die Web- und Workerrollen des Windows Server 2019-Clouddiensts zu unterstützen.
 
-Obwohl TLS 1.0 und TLS 1.1 als veraltet eingestuft werden, müssen Kunden die älteren Protokolle und Verschlüsselungssammlungen möglicherweise unterstützen, bis sie ihre Veraltung selbst planen können.  Das Aktivieren dieser Legacyprotokolle wird zwar nicht empfohlen, es werden aber dennoch Anleitungen für Kunden bereitgestellt. Es wird empfohlen, dass Kunden das Risiko dieser Regression abwägen, bevor sie die in diesem Artikel beschriebenen Änderungen vornehmen. 
+Obwohl TLS 1.0 und TLS 1.1 als veraltet eingestuft werden, müssen Kunden die älteren Protokolle und Verschlüsselungssammlungen möglicherweise unterstützen, bis sie ihre Veraltung selbst planen können.  Das Aktivieren dieser Legacyprotokolle wird zwar nicht empfohlen, es werden aber dennoch Anleitungen für Kunden bereitgestellt. Es wird empfohlen, dass Kunden das Risiko dieser Regression abwägen, bevor sie die in diesem Artikel beschriebenen Änderungen vornehmen.
 
 > [!NOTE]
 > Das Release „Guest OS Family 6“ (Gastbetriebssystemfamilie) erzwingt TLS 1.2 durch explizite Deaktivierung von TLS 1.0 und 1.1 und die Definition einer bestimmten Reihe von Verschlüsselungssammlungen. Weitere Informationen über Gastbetriebssystemfamilien finden Sie unter [Neuigkeiten zu den Versionen des Gastbetriebssystems](./cloud-services-guestos-update-matrix.md#family-6-releases).
 
+## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Einstellen der Unterstützung für TLS 1.0, TLS 1.1 und ältere Verschlüsselungssammlungen
 
-## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Einstellen der Unterstützung für TLS 1.0, TLS 1.1 und ältere Verschlüsselungssammlungen 
-Zur Unterstützung des Ziels, die bestmögliche Verschlüsselung zu verwenden, kündigte Microsoft im Juni 2017 die Migration von TLS 1.0 und 1.1 an.   Seit dieser Ankündigung kündigte Microsoft die Absicht an, TLS 1.0 und 1.1 in unterstützten Versionen von Microsoft Edge und Internet Explorer 11 in der ersten Hälfte des Jahres 2020 standardmäßig zu deaktivieren.  Ähnliche Ankündigungen von Apple, Google und Mozilla geben die Richtung an, in die sich die Branche entwickelt.   
+Zur Unterstützung des Ziels, die bestmögliche Verschlüsselung zu verwenden, kündigte Microsoft im Juni 2017 die Migration von TLS 1.0 und 1.1 an.   Seit dieser Ankündigung kündigte Microsoft die Absicht an, TLS 1.0 und 1.1 in unterstützten Versionen von Microsoft Edge und Internet Explorer 11 in der ersten Hälfte des Jahres 2020 standardmäßig zu deaktivieren.  Ähnliche Ankündigungen von Apple, Google und Mozilla geben die Richtung an, in die sich die Branche entwickelt.
 
 Weitere Informationen finden Sie unter [Vorbereiten auf TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 
-## <a name="tls-configuration"></a>TLS-Konfiguration  
-In der Konfiguration des Windows Server 2019-Cloudserverimages sind TLS 1.0 und TLS 1.1 auf der Registrierungsebene deaktiviert. Das heißt, dass Anwendungen, die auf dieser Version von Windows bereitgestellt werden und den Windows-Stapel für TLS-Aushandlung verwenden, die TLS 1.0- und TLS 1.1-Kommunikation nicht zulassen.   
+## <a name="tls-configuration"></a>TLS-Konfiguration
 
-Außerdem verfügt der Server standardmäßig über eine begrenzte Anzahl von Verschlüsselungssammlungen: 
+In der Konfiguration des Windows Server 2019-Cloudserverimages sind TLS 1.0 und TLS 1.1 auf der Registrierungsebene deaktiviert. Das heißt, dass Anwendungen, die auf dieser Version von Windows bereitgestellt werden und den Windows-Stapel für TLS-Aushandlung verwenden, die TLS 1.0- und TLS 1.1-Kommunikation nicht zulassen.
+
+Außerdem verfügt der Server standardmäßig über eine begrenzte Anzahl von Verschlüsselungssammlungen:
 
 ```
     TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 
@@ -53,12 +54,11 @@ Außerdem verfügt der Server standardmäßig über eine begrenzte Anzahl von Ve
     TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
 ```
 
-## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>Schritt 1: Erstellen eines PowerShell-Skripts zum Aktivieren von TLS 1.0 und TLS 1.1 
+## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>Schritt 1: Erstellen eines PowerShell-Skripts zum Aktivieren von TLS 1.0 und TLS 1.1
 
-Verwenden Sie das folgende Codebeispiel, um ein Skript zu erstellen, das die älteren Protokolle und Verschlüsselungssammlungen aktiviert. Für die Zwecke dieser Dokumentation wird das Skript folgendermaßen benannt: **TLSsettings.ps1**. Speichern Sie dieses Skript auf Ihrem lokalen Desktop für den einfachen Zugriff in späteren Schritten. 
+Verwenden Sie das folgende Codebeispiel, um ein Skript zu erstellen, das die älteren Protokolle und Verschlüsselungssammlungen aktiviert. Für die Zwecke dieser Dokumentation wird das Skript folgendermaßen benannt: **TLSsettings.ps1**. Speichern Sie dieses Skript auf Ihrem lokalen Desktop für den einfachen Zugriff in späteren Schritten.
 
-
-```Powershell
+```powershell
 # You can use the -SetCipherOrder (or -sco) option to also set the TLS cipher 
 # suite order. Change the cipherorder variable below to the order you want to set on the 
 # server. Setting this requires a reboot to take effect.
@@ -275,9 +275,9 @@ If ($reboot) {
 }
 ```
 
-## <a name="step-2-create-a-command-file"></a>Schritt 2: Erstellen einer Befehlsdatei 
+## <a name="step-2-create-a-command-file"></a>Schritt 2: Erstellen einer Befehlsdatei
 
-Erstellen Sie eine CMD-Datei namens **RunTLSSettings.cmd** unter Verwendung der nachfolgenden Angaben. Speichern Sie dieses Skript auf Ihrem lokalen Desktop für den einfachen Zugriff in späteren Schritten. 
+Erstellen Sie eine CMD-Datei namens **RunTLSSettings.cmd** unter Verwendung der nachfolgenden Angaben. Speichern Sie dieses Skript auf Ihrem lokalen Desktop für den einfachen Zugriff in späteren Schritten.
 
 ```cmd
 SET LOG_FILE="%TEMP%\StartupLog.txt"
@@ -289,22 +289,21 @@ IF "%ComputeEmulatorRunning%" == "" (
 
 IF "%ComputeEmulatorRunning%" == "false" (
        SET EXECUTE_PS1=1
-) 
+)
 
 IF %EXECUTE_PS1% EQU 1 (
        echo "Invoking TLSsettings.ps1 on Azure service at %TIME% on %DATE%" >> %LOG_FILE% 2>&1       
        PowerShell -ExecutionPolicy Unrestricted %~dp0TLSsettings.ps1 -sco  >> %LOG_FILE% 2>&1
 ) ELSE (
        echo "Skipping TLSsettings.ps1 invocation on emulated environment" >> %LOG_FILE% 2>&1       
-)    
+)
 
 EXIT /B %ERRORLEVEL%
-
 ```
 
-## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>Schritt 3: Hinzufügen eines Starttasks zur Dienstdefinition der Rolle (csdef) 
+## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>Schritt 3: Hinzufügen eines Starttasks zur Dienstdefinition der Rolle (csdef)
 
-Fügen Sie den folgenden Codeausschnitt zu Ihrer vorhandenen Dienstdefinitionsdatei hinzu. 
+Fügen Sie den folgenden Codeausschnitt zu Ihrer vorhandenen Dienstdefinitionsdatei hinzu.
 
 ```
     <Startup> 
@@ -313,7 +312,7 @@ Fügen Sie den folgenden Codeausschnitt zu Ihrer vorhandenen Dienstdefinitionsda
     </Startup> 
 ```
 
-Im folgenden Beispiel werden sowohl die Worker- als auch die Webrolle veranschaulicht. 
+Im folgenden Beispiel werden sowohl die Worker- als auch die Webrolle veranschaulicht.
 
 ```
 <?xmlversion="1.0" encoding="utf-8"?> 
@@ -343,7 +342,7 @@ Im folgenden Beispiel werden sowohl die Worker- als auch die Webrolle veranschau
 </ServiceDefinition> 
 ```
 
-## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>Schritt 4: Fügen Sie die Skripts zu Ihrem Clouddienst hinzu. 
+## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>Schritt 4: Fügen Sie die Skripts zu Ihrem Clouddienst hinzu.
 
 1) Klicken Sie in Visual Studio mit der rechten Maustaste auf Ihre WebRole oder WorkerRole.
 2) Wählen Sie **Hinzufügen** aus.
@@ -362,7 +361,6 @@ Um sicherzustellen, dass die Skripts bei jedem Update, das von Visual Studio aus
 
 ## <a name="step-6-publish--validate"></a>Schritt 6: Veröffentlichen und Überprüfen
 
-Nachdem die oben genannten Schritte abgeschlossen sind, veröffentlichen Sie nun das Update für Ihren bestehenden Clouddienst. 
+Nachdem die oben genannten Schritte abgeschlossen sind, veröffentlichen Sie nun das Update für Ihren bestehenden Clouddienst.
 
-Sie können [SSLLabs](https://www.ssllabs.com/) verwenden, um den TLS-Status Ihrer Endpunkte zu überprüfen. 
-
+Sie können [SSLLabs](https://www.ssllabs.com/) verwenden, um den TLS-Status Ihrer Endpunkte zu überprüfen.

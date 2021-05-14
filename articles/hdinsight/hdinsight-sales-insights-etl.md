@@ -3,14 +3,14 @@ title: 'Tutorial: Erstellen einer End-to-End-ETL-Pipeline zum Gewinnen von Erken
 description: Hier erfahren Sie, wie Sie ETL-Pipelines mit Azure HDInsight erstellen, um mithilfe von bedarfsgesteuerten Spark-Clustern und Power BI Erkenntnisse aus Vertriebsdaten zu gewinnen.
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive, devx-track-azurecli
+ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 140709a0ddb548c126ceca208fdeef2db77616bf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f41f202ede49892608e1ca3c5fdfbe703b6a5293
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761797"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074941"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Tutorial: Erstellen einer End-to-End-Datenpipeline zum Gewinnen von Erkenntnissen aus Vertriebsdaten in Azure HDInsight
 

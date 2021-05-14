@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 41e93584937ca10740e9ee0be3353d1edf5efb3e
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 53521233e4e0b130eb6416f230aba5d01d974b03
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587679"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141737"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung 
 
@@ -30,7 +30,7 @@ In diesem Tutorial verwenden Sie Bilder von Katzen und Hunden.  Da jedes Bild en
 > [!div class="checklist"]
 >
 > * Erstellen eines Azure-Speicherkontos und Hochladen von Bildern in das Konto
-> * Erstellen Sie einen Azure Machine Learning-Arbeitsbereich.
+> * Erstellen eines Azure Machine Learning-Arbeitsbereichs
 > * Erstellen eines mehrklassigen Bildbeschriftungsprojekts
 > * Beschriften Ihrer Daten.  Dieser Vorgang kann von Ihnen oder Ihren Beschriftungserstellern durchgeführt werden.
 > * Abschließen des Projekts durch Prüfen und Exportieren der Daten
@@ -65,7 +65,7 @@ Azure Machine Learning-Datenspeicher werden zum Speichern von Verbindungsinforma
 
 1. Füllen Sie das Formular mit den folgenden Einstellungen aus:
 
-    Feld|Beschreibung 
+    Feld|BESCHREIBUNG 
     ---|---
     Datenspeichername | Benennen Sie den Datenspeicher.  Hier verwenden wir **labeling_tutorial**.
     Datenspeichertyp | Wählen Sie den Speichertyp aus.  Hier verwenden wir **Azure Blob Storage**, den bevorzugten Speicher für Bilder.
@@ -90,7 +90,7 @@ Da Sie nun Zugriff auf die Daten haben, die Sie beschriften lassen möchten, ers
 
 1. Verwenden Sie die folgende Eingabe für das Formular **Projektdetails**:
 
-    Feld|Beschreibung 
+    Feld|BESCHREIBUNG 
     ---|---
     Projektname | Geben Sie dem Projekt einen Namen.  Hier verwenden wir **tutorial-cats-n-dogs**.
     Beschriftungsaufgabentyp | Wählen Sie **Bildklassifizierung mit mehreren Klassen** aus.  
@@ -210,5 +210,4 @@ Bildbeschriftungen können im [COCO-Format](http://cocodataset.org/#format-data)
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Trainieren eines Machine Learning-Modells zur Bilderkennung](/azure/machine-learning/how-to-use-labeled-dataset)
-
+> [Trainieren eines Machine Learning-Modells zur Bilderkennung](how-to-use-labeled-dataset.md)

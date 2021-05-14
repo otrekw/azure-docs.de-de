@@ -1,7 +1,7 @@
 ---
 title: Abrufen von Gesichtsausdrucksereignissen für die Lippensynchronisierung
 titleSuffix: Azure Cognitive Services
-description: Das Speech SDK unterstützt Visemereignisse bei der Sprachsynthese. Diese stellen wichtige Gesichtsausdrücke beim Sprechen dar, z. B. die Position der Lippen, des Kiefers und der Zunge beim Erzeugen eines bestimmten Phonems.
+description: Das Speech SDK unterstützt Visem-Ereignisse während der Sprachsynthese. Diese stellen wichtige Gesichtsausdrücke beim Sprechen dar, z. B. die Position der Lippen, des Kiefers und der Zunge beim Erzeugen eines bestimmten Phonems.
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -12,19 +12,19 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: e97c48d4e42627d0fc2caaa4f66e81b9a0cafa86
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a7808b3b5db9d01d6a1a2cd352a912d44a4e7908
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643887"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904494"
 ---
 # <a name="get-facial-pose-events"></a>Abrufen von Gesichtsausdrucksereignissen
 
 > [!NOTE]
-> Visem funktioniert zurzeit nur für `en-US-AriaNeural` Voice.
+> Visem-Ereignisse sind derzeit nur für die Stimme `en-US-AriaNeural` verfügbar.
 
-Ein Visem ist die visuelle Beschreibung eines Phonems.
+Ein _Visem_ ist die visuelle Beschreibung eines Phonems in der gesprochenen Sprache.
 Es beschreibt die Position des Gesichts und Munds beim Sprechen eines Worts.
 Jedes Visem stellt die wichtigsten Gesichtsausdrücke für einen bestimmten Satz von Phonemen dar.
 Es besteht keine 1:1-Entsprechung zwischen Visemen und Phonemen.

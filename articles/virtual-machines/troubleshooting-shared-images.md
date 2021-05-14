@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 015fa201fe1c31dde2e30c2fe689ac13452b1b01
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9652e940674ec7580b006cd38df2a7d17014f939
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607591"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309984"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Problembehandlung für Kataloge mit freigegebenen Images in Azure
 
@@ -303,6 +303,14 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Ursache:** Die beim Bereitstellen des virtuellen Computers verwendete Imagedefinition enthält keine in der aktuellen Version vorhandenen Imageversionen.  
 **Problemumgehung:** Stellen Sie sicher, dass bei mindestens einer Imageversion die Option „Aus aktueller Version ausschließen“ auf FALSE festgelegt ist. 
 
+**Meldung:** *The gallery image /subscriptions/<subscriptionID\>/resourceGroups/<resourceGroup\>/providers/Microsoft.Compute/galleries/<galleryName\>/images/<imageName\>/versions/<versionNumber\> is not available in <region\> region. Please contact image owner to replicate to this region, or change your requested region.* (Das Katalogimage „/subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Compute/galleries/<Katalogname>/images/<Imagename>/versions/<Versionsnummer>“ ist in der Region „<Region>“ nicht verfügbar. Bitten Sie den Besitzer des Images um eine Replikation in diese Region, oder ändern Sie die angeforderte Region.)  
+**Ursache:** Die für die Bereitstellung ausgewählte Version ist nicht vorhanden oder verfügt über kein Replikat in der angegebenen Region.  
+**Problemumgehung:** Stellen Sie sicher, dass der Name der Imageressource korrekt ist und mindestens ein Replikat in der angegebenen Region vorhanden ist. 
+
+**Meldung:** *The gallery image /subscriptions/<subscriptionID\>/resourceGroups/<resourceGroup\>/providers/Microsoft.Compute/galleries/<galleryName\>/images/<imageName\> is not available in <region\> region. Please contact image owner to replicate to this region, or change your requested region.* (Das Katalogimage „/subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Compute/galleries/<Katalogname>/images/<Imagename>“ ist in der Region „<Region>“ nicht verfügbar. Bitten Sie den Besitzer des Images um eine Replikation in diese Region, oder ändern Sie die angeforderte Region.)  
+**Ursache:** Die für die Bereitstellung ausgewählte Imagedefinition verfügt über keine Imageversionen, die in der aktuellen Version enthalten und auch in der angegebenen Region vorhanden sind.  
+**Problemumgehung:** Stellen Sie sicher, dass in der Region mindestens eine Imageversion vorhanden ist, bei der „Aus aktueller Version ausschließen“ auf „False“ festgelegt ist. 
+
 **Meldung:** *Der Client besitzt die Berechtigung zum Durchführen der Aktion "Microsoft.Compute/galleries/images/versions/read" für den Bereich <resourceID\>. Der aktuelle Mandant <tenantId1\> ist jedoch nicht autorisiert, auf das verknüpfte Abonnement <subscriptionID\> zuzugreifen.*  
 **Ursache:** Die VM oder Skalierungsgruppe wurde mit einem SIG-Image in einem anderen Mandanten erstellt. Sie haben versucht, eine Änderung an der VM oder Skalierungsgruppe vorzunehmen, aber Sie verfügen nicht über den Zugriff auf das Abonnement, zu dem das Image gehört.  
 **Problemumgehung**: Bitten Sie den Besitzer des Abonnements der Imageversion, Ihnen Lesezugriff auf die Imageversion zu gewähren.
@@ -318,10 +326,6 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Meldung:** *Der erforderliche Parameter "osProfile" fehlt (NULL).*  
 **Ursache:** Die VM wird aus einem generalisierten Image erstellt, und es fehlen Benutzername, Kennwort oder SSH-Schlüssel des Administrators. Da generalisierte Images nicht den Benutzernamen, das Kennwort oder die SSH-Schlüssel des Administrators enthalten, müssen diese Felder bei der Erstellung einer VM oder einer Skalierungsgruppe angegeben werden.  
 **Problemumgehung**: Geben Sie den Benutzernamen, das Kennwort oder die SSH-Schlüssel des Administrators an, oder verwenden Sie eine spezialisierte Imageversion.
-
-**Meldung:** *Cannot create Gallery Image Version from: <resourceID\> since the OS State in the parent gallery image ('Specialized') is not 'Generalized'.* (Die Katalogimageversion kann nicht anhand von <resourceID> erstellt werden, da der Betriebssystemstatus im übergeordneten Katalogimage ("Spezialisiert") nicht "Generalisiert" ist.)  
-**Ursache:** Die Imageversion wird aus einer generalisierten Quelle erstellt, aber ihre übergeordnete Definition ist spezialisiert.  
-**Problemumgehung**: Erstellen Sie entweder die Imageversion anhand einer spezialisierten Quelle, oder verwenden Sie eine übergeordnete Definition, die generalisiert ist.
 
 **Meldung:** *Cannot update Virtual Machine Scale Set <vmssName\> as the current OS state of the VM Scale Set is Generalized which is different from the updated gallery image OS state which is Specialized.* (Die VM-Skalierungsgruppe <vmssName> kann nicht aktualisiert werden, da der aktuelle Betriebssystemstatus der VM-Skalierungsgruppe "Generalisiert" ist und sich somit vom Betriebssystemstatus des aktualisierten Katalogimages unterscheidet, der "Spezialisiert" lautet.)  
 **Ursache:** Das aktuelle Quellimage für die Skalierungsgruppe ist ein generalisiertes Quellimage, aber es wird mit einem spezialisierten Quellimage aktualisiert. Das aktuelle und das neue Quellimage für eine Skalierungsgruppe müssen den gleichen Status aufweisen.  

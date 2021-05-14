@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f78420a65cd9c2402266eb9ba973eabe758d7ee5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4119d64dcadd23415cc750e88d560057bda6af8e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608241"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138015"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>Übersicht über virtuelle Computer der HBv3-Serie 
 
@@ -123,14 +123,14 @@ Bei einer Kombination in einem verteilten Array bietet das NVMe-SSD-Gerät bis z
 |--------------------------------|-----------------------------------------------------------|
 | Maximale MPI-Auftragsgröße               | 36.000 Kerne (300 VMs in einer einzelnen VM-Skalierungsgruppe mit singlePlacementGroup=true) |
 | MPI-Unterstützung                    | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH  |
-| Zusätzliche Frameworks          | UCX, Libfabric, PGAS                  |
+| Zusätzliche Frameworks          | UCX, libfabric und PGAS                  |
 | Azure Storage-Unterstützung          | Standard- und Premium-Datenträger (maximal 32 Datenträger)              |
 | Betriebssystemunterstützung für SR-IOV/RDMA      | CentOS/RHEL 7.6+, Ubuntu 18.04+, SLES 12 SP4+, WinServer 2016+           |
 | Empfohlenes Betriebssystem für die Leistung | CentOS 8.1, Windows Server 2019 und höher
 | Orchestratorunterstützung           | Azure CycleCloud, Azure Batch, AKS; [Cluster-Konfigurationsoptionen](../../sizes-hpc.md#cluster-configuration-options)                      | 
 
 > [!NOTE] 
-> Windows Server 2012 R2 wird auf HBv3 und anderen VMs mit mehr als 64 (virtuellen oder physischen) Kernen nicht unterstützt. Ausführlichere Informationen finden Sie [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
+> Windows Server 2012 R2 wird auf HBv3 und anderen VMs mit mehr als 64 (virtuellen oder physischen) Kernen nicht unterstützt. Ausführlichere Informationen finden Sie [hier](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

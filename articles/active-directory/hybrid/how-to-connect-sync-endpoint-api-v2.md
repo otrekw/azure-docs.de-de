@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ecfd277f2cc86102d59b201e7b43fa8519bdd3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4434b59044aed8c9814431864e5c3c9b7d98254c
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937612"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575716"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect-Synchronisierung: V2-Endpunkt-API 
 Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, mit dem die Leistung der Synchronisierungsdienstvorgänge für Azure Active Directory verbessert wird. Wenn Sie den neuen V2-Endpunkt verwenden, treten beim Exportieren aus und Importieren in Azure AD spürbare Leistungssteigerungen auf. Dieser neue Endpunkt unterstützt Folgendes:
@@ -27,6 +27,12 @@ Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, m
  
 > [!NOTE]
 > Der neue Endpunkt verfügt derzeit nicht über eine konfigurierte Beschränkung der Gruppengröße für Microsoft 365-Gruppen, die zurückgeschrieben werden. Dies hat möglicherweise Auswirkungen auf Ihr Active Directory und Synchronisierungszykluslatenzen. Es wird empfohlen, die Gruppengröße inkrementell zu erhöhen.  
+
+>[!NOTE]
+> Die V2-Endpunkt-API für die Azure AD Connect-Synchronisierung ist derzeit nur in den folgenden Azure-Umgebungen verfügbar:
+> - Azure Commercial
+> - Azure China
+> - Azure US Government. Wird nicht in Azure Deutschland zur Verfügung gestellt
 
 ## <a name="prerequisites"></a>Voraussetzungen  
 Um den neuen V2-Endpunkt verwenden zu können, müssen Sie [Azure AD Connect Version 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) oder höher verwenden und die unten angegebenen Bereitstellungsschritte ausführen, um den V2-Endpunkt für Ihren Azure AD Connect-Server zu aktivieren.   

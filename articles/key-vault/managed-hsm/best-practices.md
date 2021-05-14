@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 7a30a7ab6689b602bc9ad4f696a6fe54c80f2151
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ef3b19e5064c8a88bf80eebf57539be72747fe4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90992929"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482516"
 ---
 # <a name="best-practices-when-using-managed-hsm"></a>Bewährte Methoden bei der Verwendung verwalteter HSMs
 
@@ -23,8 +23,10 @@ ms.locfileid: "90992929"
 Verwaltetes HSM ist ein Clouddienst zum Schutz von Verschlüsselungsschlüsseln. Da diese Schlüssel vertraulich und unternehmenskritisch sind, stellen Sie sicher, dass der Zugriff auf Ihre verwalteten HSMs geschützt ist, indem Sie nur autorisierte Anwendungen und Benutzer zulassen. In diesem [Artikel](access-control.md) finden Sie eine Übersicht über das Zugriffsmodell. Es erläutert die Authentifizierung und Autorisierung sowie die rollenbasierte Zugriffssteuerung.
 - Erstellen Sie eine [Azure Active Directory-Sicherheitsgruppe](../../active-directory/fundamentals/active-directory-manage-groups.md) für die HSM-Administratoren (anstatt einzelnen Personen die Administratorrolle zuzuweisen). Dadurch wird eine „Verwaltungssperre“ im Falle der Löschung einzelner Konten verhindert.
 - Sperren Sie den Zugriff auf Ihre Verwaltungsgruppen, Abonnements, Ressourcengruppen und verwaltete HSMs – Verwenden Sie Azure RBAC, um den Zugriff auf Ihre Verwaltungsgruppen, Abonnements und Ressourcengruppen zu steuern.
-- Erstellen von Rollenzuweisungen pro Schlüssel mit [lokaler RBAC für verwaltete HSMs](access-control.md#data-plane-and-managed-hsm-local-rbac)
-- Verwenden des Prinzipals mit den geringsten Zugriffsrechten zum Zuweisen von Rollen
+- Erstellen Sie Rollenzuweisungen pro Schlüssel mit der [lokalen RBAC für verwaltete HSMs](access-control.md#data-plane-and-managed-hsm-local-rbac).
+- Vermeiden Sie die Zuweisung mehrerer Rollen zu denselben Prinzipalen, um die Aufgabentrennung beizubehalten. 
+- Verwenden Sie beim Zuweisen von Rollen das Prinzip der geringstmöglichen Zugriffsrechte.
+- Erstellen Sie eine benutzerdefinierte Rollendefinition mit genauen Berechtigungen.
 
 ## <a name="choose-regions-that-support-availability-zones"></a>Auswählen von Regionen, die Verfügbarkeitszonen unterstützen
 

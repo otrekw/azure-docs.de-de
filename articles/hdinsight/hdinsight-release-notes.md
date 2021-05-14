@@ -5,12 +5,12 @@ ms.custom: references_regions
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: a648ff3aa0c042aaefe16eaae0f9d73953241b3d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 1971e847745853730938409961b0531213932917
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065496"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129583"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Versionshinweise zu Azure HDInsight
 
@@ -67,7 +67,16 @@ HDInsight wird schrittweise zu Azure-VM-Skalierungsgruppen migriert. Netzwerksch
 Die folgenden Änderungen werden in kommenden Versionen durchgeführt.
 
 ### <a name="os-version-upgrade"></a>Upgrade der Betriebssystemversion
-Für HDInsight erfolgt ein Upgrade der Betriebssystemversion von Ubuntu 16.04 auf 18.04. Das Upgrade wird vor April 2021 abgeschlossen sein.
+HDInsight-Cluster werden derzeit unter Ubuntu 16.04 LTS ausgeführt. Wie im [Releasezyklus](https://ubuntu.com/about/release-cycle) von Ubuntu verwiesen, erreicht der Ubuntu 16.04-Kernel im April 2021 das Ende der Lebensdauer (End of Life, EOL). Wir beginnen im Mai 2021 mit der Einführung des neuen HDInsight 4.0-Clusterimages unter Ubuntu 18.04. Neu erstellte HDInsight 4.0-Cluster werden standardmäßig unter Ubuntu 18.04 ausgeführt, sobald sie verfügbar sind. Vorhandene Cluster unter Ubuntu 16.04 werden ohne vollständige Unterstützung ausgeführt.
+
+HDInsight 3.6 wird weiterhin unter Ubuntu 16.04 ausgeführt. Die Standardunterstützung wird bis zum 30. Juni 2021 beendet und ab dem 1. Juli 2021 in Basic-Support geändert. Weitere Informationen zu Datumsangaben und Supportoptionen finden Sie unter [Azure HDInsight-Versionen](./hdinsight-component-versioning.md#supported-hdinsight-versions). Ubuntu 18.04 wird für HDInsight 3.6 nicht unterstützt. Wenn Sie Ubuntu 18.04 verwenden möchten, müssen Sie Ihre Cluster zu HDInsight 4.0 migrieren. 
+
+Sie müssen Ihre Cluster löschen und neu erstellen, wenn Sie vorhandene Cluster zu Ubuntu 18.04 verschieben möchten. Planen Sie, Ihren Cluster zu erstellen oder neu zu erstellen, nachdem die Unterstützung für Ubuntu 18.04 verfügbar ist. Wir senden eine weitere Benachrichtigung, nachdem das neue Image in allen Regionen verfügbar ist.
+
+Es wird dringend empfohlen, Ihre Skriptaktionen und benutzerdefinierten Anwendungen, die auf Edgeknoten auf einem virtuellen Ubuntu 18.04-Computer (VM) bereitgestellt werden, vorab zu testen. Sie können einen [einfachen virtuellen Ubuntu Linux-Computer unter 18.04-LTS erstellen](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/) und dann ein [SSH-Schlüsselpaar (Secure Shell)](../virtual-machines/linux/mac-create-ssh-keys.md#ssh-into-your-vm) auf Ihrem virtuellen Computer erstellen und verwenden, um Ihre Skriptaktionen und benutzerdefinierten Anwendungen auszuführen und zu testen, die auf Edgeknoten bereitgestellt werden.
+
+### <a name="disable-stardard_a5-vm-size-as-head-node-for-hdinsgiht-40"></a>Deaktivieren der Stardard_A5 VM-Größe als Hauptknoten für HDInsgiht 4.0
+Der Hauptknoten des HDInsight-Clusters ist für die Initialisierung und Verwaltung des Clusters verantwortlich. Die Standard_A5 VM-Größe hat Zuverlässigkeitsprobleme als Hauptknoten für HDInsight 4.0. Ab dem nächsten Release im Mai 2021 können Kunden keine neuen Cluster mit einer Standard_A5 VM-Größe als Hauptknoten erstellen. Sie können andere 2-Kern-VMs wie E2_v3 oder E2s_v3 verwenden. Vorhandene Cluster werden unverändert ausgeführt. Um die Hochverfügbarkeit und Zuverlässigkeit von ihren HDInsight-Produktionsclustern zu gewährleisten, wird für den Hauptknoten ein virtueller Computer mit vier Kernen dringend empfohlen.
 
 ### <a name="basic-support-for-hdinsight-36-starting-july-1-2021"></a>Basic-Support für HDInsight 3.6 ab dem 1. Juli 2021
 Ab dem 1. Juli 2021 bietet Microsoft [Basic-Suppor](hdinsight-component-versioning.md#support-options-for-hdinsight-versions)t für bestimmte HDInsight 3.6-Clustertypen an. Der Basic-Support-Plan wird bis 3. April 2022 verfügbar sein. Sie werden automatisch ab dem 1. Juli 2021 im Basic-Support registriert. Es ist keine Aktion erforderlich, damit Sie sich anmelden können. In [unserer Dokumentation](hdinsight-36-component-versioning.md) finden Sie Informationen dazu, welche Clustertypen unter Basic-Support enthalten sind. 

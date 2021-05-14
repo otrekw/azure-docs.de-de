@@ -3,12 +3,12 @@ title: Ermitteln von Ressourceneigenschaften
 description: Beschreibt, wie Sie nach Ressourceneigenschaften suchen.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aaa7bb13f49c1c742e44a255d4bbdbd2b1730939
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91327747"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736683"
 ---
 # <a name="discover-resource-properties"></a>Ermitteln von Ressourceneigenschaften
 
@@ -69,7 +69,7 @@ Auf jeder der Azure-Dienstdokumentationssites gibt es einen Link zur Vorlagenref
 
 Der Ressourcen-Explorer ist in das Azure-Portal eingebettet. Bevor Sie diese Methode verwenden, benötigen Sie ein Speicherkonto. Wenn Sie keins haben, wählen Sie die folgende Schaltfläche aus, um eins zu erstellen:
 
-[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
+[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.storage%2Fstorage-account-create%2Fazuredeploy.json)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Geben Sie im Suchfeld **Ressourcen-Explorer** ein, und wählen Sie dann **Ressourcen-Explorer** aus.
@@ -97,7 +97,7 @@ Der Ressourcen-Explorer ist in das Azure-Portal eingebettet. Bevor Sie diese Met
 
 Um zu veranschaulichen, wie Sie Schemainformationen mithilfe dieses Tools abrufen, benötigen Sie ein Speicherkonto. Wenn Sie keins haben, wählen Sie die folgende Schaltfläche aus, um eins zu erstellen:
 
-[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
+[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.storage%2Fstorage-account-create%2Fazuredeploy.json)
 
 1. Wechseln Sie zu [resources.azure.com](https://resources.azure.com/). Es dauert ein wenig, bis das Tool den linken Bereich aufgefüllt hat.
 1. Wählen Sie **Abonnements** aus.

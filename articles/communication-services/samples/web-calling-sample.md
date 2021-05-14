@@ -2,19 +2,19 @@
 title: 'Azure Communication Services: Webanrufbeispiel'
 titleSuffix: An Azure Communication Services sample
 description: Informationen zum Beispiel für Webanrufe in Communication Services
-author: chriswhilar
+author: mariusu-msft
 manager: mariusu-msft
 services: azure-communication-services
 ms.author: mariusu
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 35c3bd0213b6d895a81605f5858f924182e1e307
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: fb5d16e0aa73b889800d64be310176c5733633a6
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168857"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685727"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Erste Schritte mit dem Webanrufbeispiel
 
@@ -83,7 +83,7 @@ Dieses Beispiel enthält auch Codeausschnitte für die folgenden Funktionen:
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- Machen Sie sich mit der Verwendung des [Calling SDK](../quickstarts/voice-video-calling/calling-client-samples.md) vertraut.
+- Machen Sie sich mit der Verwendung des [Calling SDK](../quickstarts/voice-video-calling/calling-client-samples.md) vertraut
 - Informieren Sie sich über die [Funktionsweise von Anrufen](../concepts/voice-video-calling/about-call-types.md).
 - Lesen Sie die [API-Referenzdokumentation](/javascript/api/azure-communication-services/@azure/communication-calling/).
 - Sehen Sie sich das Beispiel für die [Contoso Med-App](https://github.com/Azure-Samples/communication-services-contoso-med-app) an.

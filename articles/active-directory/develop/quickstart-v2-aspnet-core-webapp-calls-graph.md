@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: efa9465adc13b50e6ae12628d21347152c3fc2c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02742610f6febd832470307a5000526cadb3ecbd
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578718"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166143"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Schnellstart: ASP.NET Core-Web-App zum Anmelden von Benutzern und Aufrufen von Microsoft Graph in deren Namen
 
-In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen es aus. In diesem Beispiel wird gezeigt, wie eine ASP.NET Core-Web-App Benutzer aus einer beliebigen Azure Active Directory (Azure AD)-Organisation anmelden und Microsoft Graph aufrufen kann.  
+In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen es aus. In diesem Beispiel wird gezeigt, wie eine ASP.NET Core-Web-App Benutzer aus einer beliebigen Azure Active Directory (Azure AD)-Organisation anmelden und Microsoft Graph aufrufen kann.
 
 Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
 
@@ -108,7 +108,7 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 >       - Unterstützt Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis**, ersetzen Sie diesen Wert durch `organizations`.
 >       - Wenn Ihre Anwendung **Alle Microsoft-Kontobenutzer** unterstützt, behalten Sie `common` für diesen Wert bei.
 >    - Ersetzen Sie `Enter_the_Client_Secret_Here` durch den **geheimen Clientschlüssel**, den Sie in einem früheren Schritt erstellt und notiert haben.
-> 
+>
 > Ändern Sie in dieser Schnellstartanleitung keine anderen Werte in der Datei *appsettings.json*.
 >
 > #### <a name="step-4-build-and-run-the-application"></a>Schritt 4: Erstellen und Ausführen der Anwendung
@@ -128,6 +128,7 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 Dieser Abschnitt enthält eine Übersicht über den Code, der zum Anmelden von Benutzern und zum Aufrufen der Microsoft Graph-API in deren Namen erforderlich ist. Diese Übersicht kann hilfreich sein, um die Funktionsweise des Codes und die Hauptargumente zu verstehen und zu ermitteln, ob Sie einer vorhandenen ASP.NET Core-Anwendung eine Anmeldung hinzufügen und Microsoft Graph aufrufen möchten. Dabei wird [Microsoft.Identity.Web](microsoft-identity-web.md), ein Wrapper um [MSAL.NET](msal-overview.md), verwendet.
 
 ### <a name="how-the-sample-works"></a>Funktionsweise des Beispiels
+
 ![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-aspnet-core-webapp-calls-graph/aspnetcorewebapp-intro.svg)
 
 ### <a name="startup-class"></a>Startklasse
@@ -200,7 +201,7 @@ app.UseEndpoints(endpoints =>
 
 Durch Zuweisen des Attributs `[Authorize]` zur Controllerklasse oder zu mindestens einer zugehörigen Methode können Sie einen Controller oder dessen Methoden schützen. Das Attribut `[Authorize]` beschränkt den Zugriff auf authentifizierte Benutzer. Wenn sich der Benutzer noch nicht authentifiziert hat, kann für den Zugriff auf den Controller eine Authentifizierungsabfrage gestartet werden. In dieser Schnellstartanleitung werden die Bereiche aus der Konfigurationsdatei gelesen:
 
-```CSharp
+```csharp
 [AuthorizeForScopes(ScopeKeySection = "DownstreamApi:Scopes")]
 public async Task<IActionResult> Index()
 {
@@ -209,7 +210,7 @@ public async Task<IActionResult> Index()
 
     return View();
 }
- ```
+```
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b695df29b7a4704ee9e4e25e402fa0de8f2b7685
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: b3d73221793ec8ced4aaac9eace545ac78c31660
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103008211"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143915"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java-Anwendungsüberwachung ohne Code mit Azure Monitor Application Insights
 
@@ -34,11 +34,11 @@ Der 3.0-Agent unterstützt Java 8 und höher.
 >
 > Lesen Sie sich sorgfältig alle [Konfigurationsoptionen](./java-standalone-config.md) durch, da neben dem Dateinamen, der nun komplett in Kleinbuchstaben geschrieben wird, auch die JSON-Struktur vollständig geändert wurde.
 
-Laden Sie [applicationinsights-agent-3.0.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.2/applicationinsights-agent-3.0.2.jar) herunter.
+Laden Sie [applicationinsights-agent-3.0.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.3/applicationinsights-agent-3.0.3.jar) herunter
 
 **2. Verweisen der JVM auf den Agent**
 
-Fügen Sie den JVM-Argumenten Ihrer Anwendung den Eintrag `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` hinzu.
+Fügen Sie den JVM-Argumenten Ihrer Anwendung den Eintrag `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` hinzu.
 
 Typische JVM-Argumente sind `-Xmx512m` und `-XX:+UseG1GC`. Wenn Sie wissen, wo diese hinzugefügt werden, wissen Sie auch, wo dieses Argument hinzuzufügen ist.
 
@@ -54,7 +54,7 @@ Verweisen Sie den Agent auf Ihre Application Insights-Ressource, indem Sie eine 
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-Sie können aber auch eine Konfigurationsdatei mit dem Namen `applicationinsights.json` erstellen und sie im gleichen Verzeichnis wie `applicationinsights-agent-3.0.2.jar` mit folgendem Inhalt ablegen:
+Sie können aber auch eine Konfigurationsdatei mit dem Namen `applicationinsights.json` erstellen und sie im gleichen Verzeichnis wie `applicationinsights-agent-3.0.3.jar` mit folgendem Inhalt ablegen:
 
 ```json
 {
@@ -129,6 +129,46 @@ Ausführliche Informationen finden Sie unter [Konfigurationsoptionen](./java-sta
 
 * Micrometer (einschließlich Metriken des Spring Boot-Aktors)
 * JMX-Metriken
+
+### <a name="azure-sdks-preview"></a>Azure SDKs (Vorschau)
+
+Sehen Sie sich die [Konfigurationsoptionen](./java-standalone-config.md#auto-collected-azure-sdk-telemetry-preview) an, um dieses Vorschaufeature zu aktivieren und die von diesen Azure SDKs ausgegebenen Telemetriedaten zu erfassen:
+
+* [App Configuration](/java/api/overview/azure/data-appconfiguration-readme) 1.1.10 und höher
+* [Cognitive Search](/java/api/overview/azure/search-documents-readme) 11.3.0 und höher
+* [Communication Chat](/java/api/overview/azure/communication-chat-readme) 1.0.0 und höher
+* [Communication Common](/java/api/overview/azure/communication-common-readme) 1.0.0 und höher
+* [Communication Identity](/java/api/overview/azure/communication-identity-readme) 1.0.0 und höher
+* [Communication SMS](/java/api/overview/azure/communication-sms-readme) 1.0.0 und höher
+* [Cosmos DB](/java/api/overview/azure/cosmos-readme) 4.13.0 und höher
+* [Event Grid](/java/api/overview/azure/messaging-eventgrid-readme) 4.0.0 und höher
+* [Event Hubs](/java/api/overview/azure/messaging-eventhubs-readme) 5.6.0 und höher
+* [Event Hubs: Azure Blob Storage-Prüfpunktspeicher](/java/api/overview/azure/messaging-eventhubs-checkpointstore-blob-readme) 1.5.1 und höher
+* [Formularerkennung](/java/api/overview/azure/ai-formrecognizer-readme) 3.0.6 und höher
+* [Identity](/java/api/overview/azure/identity-readme) 1.2.4 und höher
+* [Key Vault: Zertifikate](/java/api/overview/azure/security-keyvault-certificates-readme) 4.1.6 und höher
+* [Key Vault: Schlüssel ](/java/api/overview/azure/security-keyvault-keys-readme) 4.2.6 und höher
+* [Key Vault: Geheimnisse](/java/api/overview/azure/security-keyvault-secrets-readme) 4.2.6 und höher
+* [Service Bus](/java/api/overview/azure/messaging-servicebus-readme) 7.1.0 und höher
+* [Textanalyse](/java/api/overview/azure/ai-textanalytics-readme) 5.0.4 und höher
+
+[//]: # "Die obigen Namen und Links wurden aus https://azure.github.io/azure-sdk/releases/latest/java.html" zusammengestellt,
+[//]: # "und die Versionssynchronisierung wurde manuell anhand der ältesten Version in Maven Central durchgeführt, die auf azure-core 1.14.0 basiert."
+[//]: # ""
+[//]: # "var table = document.querySelector('#tg-sb-content > div > table')"
+[//]: # "var str = ''"
+[//]: # "for (var i = 1, row; row = table.rows[i]; i++) {"
+[//]: # "  var name = row.cells[0].getElementsByTagName('div')[0].textContent.trim()"
+[//]: # "  var stableRow = row.cells[1]"
+[//]: # "  var versionBadge = stableRow.querySelector('.badge')"
+[//]: # "  if (!versionBadge) {"
+[//]: # "    continue"
+[//]: # "  }"
+[//]: # "  var version = versionBadge.textContent.trim()"
+[//]: # "  var link = stableRow.querySelectorAll('a')[2].href"
+[//]: # "  str += '* [' + name + '](' + link + ') ' + version"
+[//]: # "}"
+[//]: # "console.log(str)"
 
 ## <a name="send-custom-telemetry-from-your-application"></a>Senden benutzerdefinierter Telemetriedaten aus Ihrer Anwendung
 
@@ -328,7 +368,7 @@ requestTelemetry.setName("myname");
 ### <a name="get-the-request-telemetry-id-and-the-operation-id-using-the-2x-sdk"></a>Abrufen der Anforderungstelemetrie-ID und der Vorgangs-ID mithilfe des 2.x SDKs
 
 > [!NOTE]
-> Dieses Feature ist erst ab 3.0.3-BETA verfügbar.
+> Dieses Feature ist erst ab Version 3.0.3 verfügbar
 
 Fügen Sie `applicationinsights-web-2.6.2.jar` zu Ihrer Anwendung hinzu (alle 2.x-Versionen werden von Application Insights Java 3.0 unterstützt, aber es lohnt sich, die neueste Version zu verwenden, wenn Sie die Wahl haben):
 

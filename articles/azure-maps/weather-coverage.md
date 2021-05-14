@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps-Wetterdienste (Vorschau)
-description: Lernen Sie die Microsoft Azure Maps-Wetterdienste (Vorschau) kennen.
+title: Abdeckung der Microsoft Azure Maps-Wetterinfodienste
+description: Hier finden Sie Informationen zur Abdeckung der Microsoft Azure Maps-Wetterinfodienste.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -9,19 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ac209dc898c2d30f8d50a8989b188ef5a9f5046
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905484"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257669"
 ---
-# <a name="azure-maps-weather-services-preview-coverage"></a>Azure Maps-Wetterdienste (Vorschau)
-
-> [!IMPORTANT]
-> Die Azure Maps-Wetterdienste befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
+# <a name="azure-maps-weather-services-coverage"></a>Abdeckung der Azure Maps-Wetterinfodienste
 
 In diesem Artikel finden Sie Informationen zum Umfang der [Wetterdienste](/rest/api/maps/weather) von Azure Maps. Azure Maps-Wetterdatendienste geben Details wie Radarkacheln, aktuelle Wetterbedingungen, Wettervorhersagen und das Wetter entlang einer Strecke zurück.
 

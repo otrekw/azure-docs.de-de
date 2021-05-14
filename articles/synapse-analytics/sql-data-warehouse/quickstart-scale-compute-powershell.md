@@ -14,12 +14,12 @@ ms.custom:
 - seo-lt-2019
 - devx-track-azurepowershell
 - mode-api
-ms.openlocfilehash: 73718f0e8e82e7d35ed1ced98f45c1e125a55a00
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4a178c1104870eb59634537ee659925bdb6abda3
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534232"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163677"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Schnellstart: Skalieren von Computeressourcen für einen dedizierten SQL-Pool (vormals SQL DW) mithilfe von Azure PowerShell
 
@@ -74,7 +74,7 @@ Im dedizierten SQL-Pool (vormals SQL DW) können Sie die Menge der Computeresso
 
 Um die Data Warehouse-Einheiten zu ändern, verwenden Sie das PowerShell-Cmdlet [Set AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Im folgenden Beispiel werden die Data Warehouse-Einheiten für die Datenbank **mySampleDataWarehouse**, die sich in der Ressourcengruppe **resourcegroupname** auf dem Server **sqlpoolservername** befindet, auf DW300c festgelegt.
 
-```Powershell
+```powershell
 Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
 ```
 
@@ -127,4 +127,4 @@ $database | Select-Object DatabaseName,Status
 Sie wissen nun, wie Sie Computeressourcen für einen dedizierten SQL-Pool (vormals SQL DW) skalieren. Weitere Informationen zum dedizierten SQL-Pool (vormals SQL DW) finden Sie im Tutorial zum Laden von Daten.
 
 > [!div class="nextstepaction"]
->[Tutorial: Laden des Datasets „New York Taxis“](load-data-from-azure-blob-storage-using-copy.md)
+> [Tutorial: Laden des Datasets „New York Taxis“](load-data-from-azure-blob-storage-using-copy.md)

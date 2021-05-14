@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 9/21/2020
-ms.openlocfilehash: bdd52ba77fd9a65ce27985ff3c86a93fc887ddf9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6fc8e08757ee067e0616cc701a3037a9dbf4c6fd
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109981"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491745"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql---flexible-server"></a>Beheben von Verbindungsproblemen mit Azure Database for MySQL – Flexible Server
 
@@ -32,7 +32,7 @@ In diesem Artikel wird erläutert, wie Sie einige der häufigsten Fehler behande
 
 Wenn die Anwendung dauerhaft keine Verbindung mit Azure Database for MySQL Flexible Server herstellen kann, weist dies in der Regel auf Probleme der folgenden Art hin:
 
-* Verschlüsselte Verbindung mithilfe von TLS/SSL: Flexible Server unterstützt nur verschlüsselte Verbindungen mit Transport Layer Security (TLS 1.2), und alle **eingehenden Verbindungen mit TLS 1.0 und TLS 1.1 werden verweigert**. Die TLS-Version kann nicht deaktiviert oder geändert werden. Erfahren Sie mehr über [Verschlüsselte Konnektivität mit der Transport Layer Security (TLS 1.2) in Azure Database for MySQL – Flexible Server](./how-to-connect-tls-ssl.md).
+* Verschlüsselte Verbindung mithilfe von TLS/SSL: Flexible Server unterstützt verschlüsselte Verbindungen mit Transport Layer Security (TLS 1.2), und alle **eingehenden Verbindungen mit TLS 1.0 und TLS 1.1 werden standardmäßig verweigert**. Sie können die Erzwingung verschlüsselter Verbindungen deaktivieren oder die TLS-Version ändern. Erfahren Sie mehr über [Verschlüsselte Konnektivität mit der Transport Layer Security (TLS 1.2) in Azure Database for MySQL – Flexible Server](./how-to-connect-tls-ssl.md).
 - Flexible Server in *Privater Zugriff (VNet-Integration)* : Stellen Sie sicher, dass Sie die Verbindung vom selben virtuellen Netzwerk wie der flexible Server aus herstellen. Weitere Informationen finden Sie unter [Virtuelles Netzwerk in Azure Database for MySQL Flexible Server].<!--(./concepts-networking-virtual-network.md)-->
 - Flexible Server mit *Öffentlicher Zugriff (zugelassene IP-Adressen)* , stellen Sie sicher, dass die Firewall so konfiguriert ist, dass sie Verbindungen von Ihrem Client zulässt. Weitere Informationen finden Sie unter [Erstellen und Verwalten Flexible Server-Firewallregeln mithilfe des Azure-Portals](./how-to-manage-firewall-portal.md).
 * Konfiguration der Clientfirewall: Die Firewall auf dem Client muss Verbindungen mit Ihrem Datenbankserver zulassen. IP-Adressen und Ports des Servers, mit dem Sie eine Verbindung herstellen, sowie Anwendungsnamen wie MySQL müssen in einigen Firewalls zugelassen sein.

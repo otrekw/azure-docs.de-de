@@ -9,12 +9,12 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: a5d1d6af68fcbd6a5822b2652ee79c464d02241f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d48ab6223485807400b6749bcf72691261405495
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200763"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134553"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -35,7 +35,7 @@ Sie können Azure Storage Analytics auch programmgesteuert über die REST-API od
  Protokolleinträge werden nur erstellt, wenn Anforderungen für den Dienstendpunkt gestellt wurden. Wenn ein Speicherkonto beispielsweise Aktivität im Blobendpunkt, jedoch nicht im Tabellen- oder Warteschlangenendpunkt aufweist, werden nur Protokolle für den Blob-Dienst erstellt.
 
 > [!NOTE]
->  Die Storage Analytics-Protokollierung ist derzeit nur für Blob-, Warteschlangen- und Tabellenspeicherdienste verfügbar. Storage Analytics-Protokollierung ist außerdem für Premium-Leistung von [BlockBlobStorage-Konten](../blobs/storage-blob-create-account-block-blob.md) verfügbar. Allerdings ist sie für allgemeine v2-Konten (GPv2) mit Premium-Leistung nicht verfügbar.
+>  Die Storage Analytics-Protokollierung ist derzeit nur für Blob-, Warteschlangen- und Tabellenspeicherdienste verfügbar. Storage Analytics-Protokollierung ist außerdem für Premium-Leistung von [BlockBlobStorage-Konten](./storage-account-create.md) verfügbar. Allerdings ist sie für allgemeine v2-Konten (GPv2) mit Premium-Leistung nicht verfügbar.
 
 ## <a name="requests-logged-in-logging"></a>Erfasste Anforderungen bei der Protokollierung
 ### <a name="logging-authenticated-requests"></a>Protokollierung authentifizierter Anforderungen

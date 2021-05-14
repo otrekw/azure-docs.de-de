@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b62e341d35a4ff7fd5a7ddd6d9f19b138aaf0aa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8c926c2fbc5b19f67fb78d321ee3293c73be939
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071646"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869345"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Durchführen einer Point-in-Time-Wiederherstellung von Blockblobdaten
 
@@ -86,7 +86,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Um die Point-in-Time-Wiederherstellung mit Azure CLI zu konfigurieren, installieren Sie zunächst mindestens Azure CLI Version 2.2.0. Aktivieren Sie dann den Befehl [az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update), um die Point-in-Time-Wiederherstellung und die anderen erforderlichen Datenschutzeinstellungen für das Speicherkonto zu aktivieren.
+Um die Point-in-Time-Wiederherstellung mit Azure CLI zu konfigurieren, installieren Sie zunächst mindestens Azure CLI Version 2.2.0. Aktivieren Sie dann den Befehl [az storage account blob-service-properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update), um die Point-in-Time-Wiederherstellung und die anderen erforderlichen Datenschutzeinstellungen für das Speicherkonto zu aktivieren.
 
 Im folgenden Beispiel wird vorläufiges Löschen aktiviert und die Beibehaltungsdauer für vorläufiges Löschen auf 14 Tage festgelegt, der Änderungsfeed und die Versionsverwaltung aktiviert und dann die Point-in-Time-Wiederherstellung mit einer Wiederherstellungsdauer von 7 Tagen aktiviert. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen, wenn Sie das Beispiel ausführen:
 

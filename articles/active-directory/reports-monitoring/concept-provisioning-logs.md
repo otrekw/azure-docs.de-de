@@ -1,10 +1,10 @@
 ---
-title: Übersicht über Bereitstellungsprotokolle im Azure-Portal (Vorschau) | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Einführung in Bereitstellungsprotokollberichte in Azure Active Directory im Azure-Portal.
+title: Bereitstellen von Protokollen im Azure Active Directory (Vorschau) | Microsoft Docs
+description: Übersicht über die Bereitstellungsprotokolle in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,62 +13,99 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 1/29/2021
+ms.date: 4/25/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 468e885bab6aab4becb5aaaec7b4d52ce5ef5e07
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 42a1ea52c9de3332c2b73b5c03e203f6d6694c49
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535993"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017389"
 ---
-# <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Übersicht über Bereitstellungsprotokolle im Azure-Portal (Vorschau)
+# <a name="provisioning-logs-in-azure-active-directory-preview"></a>Bereitstellen von Protokollen im Azure Active Directory (Vorschau)
 
-Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) umfasst die folgenden Komponenten:
+Als IT-Administrator müssen Sie wissen, wie Ihre IT-Umgebung funktioniert. Anhand der Informationen zur Integrität Ihres Systems können Sie bewerten, ob und wie Sie auf potenzielle Probleme reagieren müssen. 
 
-- Aktivität: 
-    - **Anmeldungen:** Informationen zur Nutzung von verwalteten Anwendungen und Benutzeranmeldungsaktivitäten.
-    - [Überwachungsprotokolle](concept-audit-logs.md): Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und Verzeichnisaktivitäten.
-    - **Bereitstellungsprotokolle:** Systemaktivitäten im Zusammenhang mit Benutzern, Gruppen und Rollen, die mit dem Azure AD-Bereitstellungsdienst bereitgestellt werden. 
+Um Sie bei diesem Ziel zu unterstützen, bietet Ihnen das Azure Active Directory-Portal Zugriff auf drei Aktivitätsprotokolle:
 
-- Sicherheit: 
-    - **Risikoanmeldungen:** Eine [Risikoanmeldung](../identity-protection/overview-identity-protection.md) ist ein Hinweis auf einen Anmeldeversuch einer Person, die nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
-    - **Benutzer mit Risikokennzeichnung:** Ein [Risikobenutzer](../identity-protection/overview-identity-protection.md) ist ein Hinweis auf ein möglicherweise gefährdetes Benutzerkonto.
+- **[Anmeldungen](concept-sign-ins.md)** : Informationen zu Anmeldungen und zur Verwendung Ihrer Ressourcen durch Ihre Benutzer.
+- **[Überwachung](concept-audit-logs.md)** : Informationen zu Änderungen, die auf Ihren Mandanten angewendet wurden, z. B. Benutzer- und Gruppenverwaltung oder Updates, die auf die Ressourcen Ihres Mandanten angewendet wurden.
+- **[Bereitstellung](concept-provisioning-logs.md)** : Vom Bereitstellungsdienst ausgeführte Aktivitäten, z. B. die Erstellung einer Gruppe in ServiceNow oder der Import eines Benutzers aus Workday.
 
-In diesem Thema finden Sie eine Übersicht über Bereitstellungsprotokolle. Die Protokolle enthalten Antworten auf Fragen wie: 
 
-* Welche Gruppen wurden erfolgreich in ServiceNow erstellt?
-* Welche Benutzer wurden erfolgreich aus Adobe entfernt?
-* Welche Benutzer aus Workday wurden in Active Directory erfolgreich erstellt? 
+In diesem Artikel erhalten Sie einen Überblick über die Bereitstellungsprotokolle. 
 
-## <a name="prerequisites"></a>Voraussetzungen
+
+## <a name="what-can-you-do-with-it"></a>Was können Sie damit machen?
+
+Mithilfe der Bereitstellungsprotokolle können Sie Antworten auf Fragen wie diese finden:
+
+-  Welche Gruppen wurden erfolgreich in ServiceNow erstellt?
+
+-  Welche Benutzer wurden erfolgreich aus Adobe entfernt?
+
+-  Welche Benutzer aus Workday wurden in Active Directory erfolgreich erstellt? 
+
+
+## <a name="who-can-access-it"></a>Wer kann auf sie zugreifen?
 
 Folgende Benutzer können auf die Daten in Bereitstellungsprotokollen zugreifen:
 
-* Anwendungsbesitzer (Protokolle für ihre eigenen Anwendungen)
-* Benutzer mit den Rollen „Sicherheitsadministrator“, „Sicherheitsleseberechtigter“, „Berichtsleser“, „Sicherheitsoperator“, „Anwendungsadministrator“ und „Cloudanwendungsadministrator“
-* Benutzer in einer benutzerdefinierten Rolle mit der Berechtigung [provisioningLogs](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)
-* Globale Administratoren
+- Anwendungsbesitzer (Protokolle für ihre eigenen Anwendungen)
+
+- Benutzer mit den Rollen „Sicherheitsadministrator“, „Sicherheitsleseberechtigter“, „Berichtsleser“, „Sicherheitsoperator“, „Anwendungsadministrator“ und „Cloudanwendungsadministrator“
+
+- Benutzer in einer benutzerdefinierten Rolle mit der Berechtigung [provisioningLogs](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)
+
+- Globale Administratoren
+
+## <a name="what-azure-ad-license-do-you-need"></a>Welche Azure AD-Lizenz benötigen Sie?
+
+Um den Bereitstellungsaktivitätsbericht anzuzeigen, muss Ihr Mandant eine Azure AD Premium-Lizenz haben, die mit ihm verbunden ist. Informationen zum Upgraden Ihrer Azure AD-Edition finden Sie unter [Registrieren für Azure Active Directory Premium-Editionen](../fundamentals/active-directory-get-started-premium.md). 
 
 
-Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugeordnet sein, damit Sie den Bereitstellungsaktivitätsbericht anzeigen können. Informationen zum Upgraden Ihrer Azure AD-Edition finden Sie unter [Registrieren für Azure Active Directory Premium-Editionen](../fundamentals/active-directory-get-started-premium.md). 
+## <a name="how-can-you-access-it"></a>Wie können Sie darauf zugreifen? 
 
+Um auf die Protokolldaten zuzugreifen, haben Sie die folgenden Möglichkeiten:
 
-## <a name="ways-of-interacting-with-the-provisioning-logs"></a>Möglichkeiten der Interaktion mit den Bereitstellungsprotokollen 
-Kunden können auf vier Arten mit Bereitstellungsprotokollen interagieren:
+- Das Azure-Portal
 
-- Zugreifen auf die Protokolle über das Azure-Portal (wie im nächsten Abschnitt beschrieben)
 - Streamen der Bereitstellungsprotokolle an [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md). Diese Methode ermöglicht eine längere Datenaufbewahrung sowie die Erstellung benutzerdefinierter Dashboards, Warnungen und Abfragen.
+
 - Abfragen der [Microsoft Graph-API](/graph/api/resources/provisioningobjectsummary) für die Bereitstellungsprotokolle
+
 - Herunterladen der Bereitstellungsprotokolle als CSV- oder JSON-Datei
 
-## <a name="access-the-logs-from-the-azure-portal"></a>Zugreifen auf die Protokolle über das Azure-Portal
+
+
+## <a name="where-can-you-find-it-in-the-azure-portal"></a>Wo finden Sie es im Azure-Portal?
+
+Das Azure-Portal bietet Ihnen mehrere Optionen für den Zugriff auf das Protokoll. Im Azure Active Directory-Menü können Sie beispielsweise im Abschnitt **Überwachung** öffnen.  
+
+![Bereitstellungsprotokolle öffnen](./media/concept-sign-ins/sign-ins-logs-menu.png)
+
+Zudem können Sie über diesen Link direkt zu den Anmeldungsprotokollen gelangen: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)
+
+
+
+
+
+
+
+
+
+
+
+
 Sie können auf die Bereitstellungsprotokolle zugreifen, indem Sie im [Azure-Portal](https://portal.azure.com) im Bereich **Azure Active Directory** im Abschnitt **Überwachung** die Option **Bereitstellungsprotokolle** auswählen. Bei einigen Bereitstellungsdatensätzen kann es bis zu zwei Stunden dauern, bis sie im Portal angezeigt werden.
 
 ![Screenshot: Auswahloptionen für den Zugriff auf Bereitstellungsrichtlinien](./media/concept-provisioning-logs/access-provisioning-logs.png "Bereitstellungsprotokolle")
 
+
+
+## <a name="what-is-the-default-view"></a>Was ist die Standardansicht?
 
 Ein Bereitstellungsprotokoll enthält eine Standardlistenansicht mit folgenden Informationen:
 

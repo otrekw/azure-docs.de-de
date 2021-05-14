@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a3f586f853201534bbaa613e8538d55485ffe147
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e5d431d4594a89d4bfcd3b4f09c57b5cdd61b547
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063116"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929487"
 ---
 # <a name="update-your-azure-percept-dk-over-the-air-ota"></a>Aktualisieren Ihres Azure Percept DK-Geräts per Funk (Over-the-Air-Update)
 
@@ -30,7 +30,7 @@ In dieser Anleitung erfahren Sie, wie Sie das Betriebssystem und die Firmware de
 > [!NOTE]
 > Falls Sie das Update bereits importiert haben, können Sie direkt mit **Erstellen einer Geräteupdategruppe** fortfahren.
 
-1. [Laden Sie die entsprechende Manifestdatei (.json) und Updatedatei (.swu) für Ihr Azure Percept-Gerät herunter](https://go.microsoft.com/fwlink/?linkid=2155625).
+1. [Laden Sie die neueste Manifest-Datei (.json)](https://go.microsoft.com/fwlink/?linkid=2155625) und[ die Aktualisierungsdatei (.swu)](https://go.microsoft.com/fwlink/?linkid=2161538) für Ihr Azure Percept-Gerät herunter.
 
 1. Navigieren Sie zu der Azure IoT Hub-Instanz, die Sie für Ihr Azure Percept-Gerät verwenden. Wählen Sie im Menübereich auf der linken Seite unter **Automatische Geräteverwaltung** die Option **Geräteupdates** aus.
 

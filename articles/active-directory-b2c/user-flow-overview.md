@@ -1,94 +1,110 @@
 ---
-title: Benutzerflowtypen in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Benutzerflows und benutzerdefinierte Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
 titleSuffix: Azure AD B2C
-description: Erfahren Sie etwas über das erweiterbare Richtlinienframework von Azure Active Directory B2C und das Erstellen verschiedener Benutzerflows.
+description: Erfahren Sie mehr über integrierte Benutzerflows und das erweiterbare Richtlinienframework für benutzerdefinierte Richtlinien von Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 04/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e4dbc5178bec3a5b1f0931267465879f604f36f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94840190"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226005"
 ---
-# <a name="user-flows-in-azure-active-directory-b2c"></a>Benutzerflows in Azure Active Directory B2C
+# <a name="user-flows-and-custom-policies-overview"></a>Übersicht über Benutzerflows und benutzerdefinierte Richtlinien
 
-Um Ihnen die Einrichtung der gängigsten Identitätsaufgaben für Ihre Anwendungen zu erleichtern, enthält das Azure AD B2C-Portal vordefinierte und konfigurierbare Richtlinien, die als **Benutzerflows** bezeichnet werden. Mithilfe eines Benutzerflows können Sie feststellen, wie Benutzer mit Ihrer Anwendung interagieren, wenn sie Aktionen wie Anmelden, Registrieren, Bearbeiten eines Profils oder Zurücksetzen eines Kennworts ausführen. Mit Benutzerflows können Sie die folgenden Funktionen steuern:
+In Azure AD B2C können Sie die Geschäftslogik definieren, der Benutzer folgen müssen, um Zugriff auf Ihre Anwendung zu erhalten. Beispielsweise können Sie die Abfolge der Schritte bestimmen, die Benutzer ausführen müssen, wenn sie sich anmelden oder registrieren, ein Profil bearbeiten oder ein Kennwort zurücksetzen möchten. Am Ende der Abfolge erhält der Benutzer ein Token und damit Zugriff auf Ihre Anwendung. 
 
-- Kontotypen für die Anmeldung, z.B. Konten für soziale Netzwerke wie Facebook oder lokale Konten
-- Attribute, die vom Kunden gesammelt werden, wie z.B. Vorname, Postleitzahl und Schuhgröße
-- Azure AD Multi-Factor Authentication
-- Anpassung der Benutzeroberfläche
-- Informationen, die die Anwendung in Form von Ansprüchen in einem Token erhält
+In Azure AD B2C gibt es zwei Möglichkeiten, Benutzeridentitäten bereitzustellen:
 
-Sie können viele Benutzerflows verschiedener Typen in Ihrem Mandanten erstellen und bei Bedarf in Ihren Anwendungen verwenden. Benutzerflows können anwendungsübergreifend wiederverwendet werden. Durch diese Flexibilität können Sie Benutzeroberflächen im Zusammenhang mit der Identität mit minimalen oder ganz ohne Änderungen am Code definieren und ändern. Ihre Anwendung löst einen Benutzerflow mithilfe einer standardmäßigen HTTP-Authentifizierungsanforderung aus, die Parameter für einen Benutzerflow enthält. Als Antwort wird ein benutzerdefiniertes [Token](tokens-overview.md) empfangen.
+* **Benutzerflows** sind vordefinierte, integrierte und konfigurierbare Richtlinien, die zur Verfügung gestellt werden, damit Sie in wenigen Minuten Umgebungen zur Registrierung, Anmeldung und Profilbearbeitung erstellen können.
 
-Die folgenden Beispiele zeigen den Parameter „p“ der Abfragezeichenfolge, der den zu verwendenden Benutzerflow angibt:
+* **Benutzerdefinierte Richtlinien** ermöglichen es Ihnen, eigene User Journeys für komplexe Identitätsszenarios zu erstellen.
 
-```
-https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
-&redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
-&response_mode=form_post                            // 'query', 'form_post' or 'fragment'
-&response_type=id_token
-&scope=openid
-&nonce=dummy
-&state=12345                                        // Any value provided by your application
-&p=b2c_1_siup                                       // Your sign-up user flow
-```
+Der folgende Screenshot zeigt die Benutzeroberfläche für Benutzerfloweinstellungen im Vergleich zu benutzerdefinierten Richtlinienkonfigurationsdateien.
 
-```
-https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
-&redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
-&response_mode=form_post                            // 'query', 'form_post' or 'fragment'
-&response_type=id_token
-&scope=openid
-&nonce=dummy
-&state=12345                                        // Any value provided by your application
-&p=b2c_1_siin                                       // Your sign-in user flow
-```
+![Der Screenshot zeigt die Benutzeroberfläche für Benutzerfloweinstellungen im Vergleich zu benutzerdefinierten Richtlinienkonfigurationsdateien.](media/user-flow-overview/user-flow-vs-custom-policy.png)
 
-## <a name="user-flow-versions"></a>Benutzerflowversionen
+In diesem Artikel erhalten Sie eine kurze Übersicht über Benutzerflows und benutzerdefinierte Richtlinien. Dies soll Ihnen bei der Entscheidung helfen, welche Methode für Ihre Geschäftsanforderungen am besten geeignet ist.
 
-Azure AD B2C beinhaltet mehrere Typen von Benutzerflows:
+## <a name="user-flows"></a>Benutzerflows
 
-- **Registrierung und Anmeldung:** verarbeitet die Benutzeroberfläche für Registrierung und Anmeldung in ein und derselben Konfiguration. Die Benutzer werden je nach Kontext auf den jeweils entsprechenden Pfad geleitet. Außerdem sind separate Benutzerflows für **Registrierung** oder **Anmeldung** enthalten. Im Allgemeinen wird jedoch der kombinierte Benutzerflow für Registrierung und Anmeldung empfohlen.
-- **Profilbearbeitung:** ermöglicht Benutzern, ihre Profilinformationen zu bearbeiten.
-- **Zurücksetzen des Kennworts:** ermöglicht Ihnen, festzulegen, ob und wie Benutzer ihr Kennwort zurücksetzen können.
+Zum Einrichten der gängigsten Identitätsaufgaben enthält das Azure-Portal verschiedene vordefinierte und konfigurierbare Richtlinien, die als *Benutzerflows* bezeichnet werden.
 
-Die meisten Benutzerflowtypen verfügen sowohl über eine Version vom Typ **Empfohlen** als auch über eine Version vom Typ **Standard**. Weitere Informationen finden Sie unter [Benutzerflowversionen in Azure Active Directory B2C](user-flow-versions.md).
+Sie können Benutzerfloweinstellungen wie die folgenden konfigurieren, um das Verhalten von Identitäten in Ihren Anwendungen zu steuern:
 
-> [!IMPORTANT]
-> Wenn Sie in Azure AD B2C bereits mit Benutzerflows gearbeitet haben, werden Sie feststellen, dass Benutzerflowversionen jetzt anders angegeben werden. Zuvor wurden V1-Versionen (bereit für die Produktion) sowie V1.1- und V2-Versionen (Vorschauversion) angeboten. Nun wurden Benutzerflows in zwei Versionen zusammengefasst:
->
->- **Empfohlene** Benutzerflows sind die neuen Vorschauversionen von Benutzerflows. Sie wurden gründlich getestet und umfassen alle Features der alten Versionen **V2** und **V1.1**. Die neuen empfohlenen Benutzerflows werden in Zukunft verwaltet und aktualisiert. Nachdem Sie auf diese neuen empfohlenen Benutzerflows umgestellt haben, erhalten Sie Zugriff auf neue Features, sobald diese veröffentlicht werden.
->- **Standardbenutzerflows** wurden zuvor als **V1** bezeichnet und sind allgemein verfügbare und produktionsbereite Benutzerflows. Wenn Ihre Benutzerflows unternehmenskritisch sind und stark von stabilen Versionen abhängen, können Sie weiterhin die Standardbenutzerflows verwenden. Sie sollten jedoch wissen, dass diese Versionen nicht mehr verwaltet und aktualisiert werden.
->
->Alle Benutzerflows der Legacyvorschauversionen (V1.1 und V2) werden zum **1. August 2021** eingestellt. Es wird dringend empfohlen, so bald wie möglich [zu den neuen **empfohlenen** Benutzerflows zu wechseln](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow), damit Sie stets die neuen Features und Updates nutzen können.
+* Kontotypen für die Anmeldung, z. B. Konten für soziale Netzwerke wie Facebook oder lokale Konten, die eine E-Mail-Adresse und ein Kennwort für die Anmeldung verwenden
+* Attribute, die vom Consumer abgefragt werden, z. B. Vorname, Postleitzahl oder Land/Region des Wohnsitzes
+* Azure AD Multi-Factor Authentication (MFA)
+* Anpassung der Benutzeroberfläche
+* Eine Reihe von Ansprüchen in einem Token, die Ihre Anwendung empfängt, nachdem der Benutzer den Benutzerflow abgeschlossen hat
+* Sitzungsverwaltung
+* ... und vieles mehr.
 
-## <a name="linking-user-flows"></a>Verknüpfen von Benutzerflows
+Die meisten gängigen Identitätsszenarien für Apps können mit Benutzerflows effektiv definiert und implementiert werden. Es wird empfohlen, die integrierten Benutzerflows zu verwenden, es sei denn, Sie benötigen für komplexe User Journey-Szenarien die hohe Flexibilität von benutzerdefinierten Richtlinien.
 
-Ein Benutzerflow für **Registrierung oder Anmeldung** für lokale Konten zeigt auf der ersten Seite der Oberfläche den Link **Kennwort vergessen?** an. Durch Klicken auf diesen Link wird nicht automatisch ein Benutzerflow zum Zurücksetzen des Kennworts ausgelöst.
+## <a name="custom-policies"></a>Benutzerdefinierte Richtlinien
 
-Stattdessen wird der Fehlercode `AADB2C90118` an Ihre Anwendung zurückgegeben. Die Anwendung muss diesen Fehlercode verarbeiten, indem sie einen bestimmten Benutzerflow zum Zurücksetzen des Kennworts ausführt. Sehen Sie sich ein [einfaches ASP.NET-Beispiel](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) an, das die Verknüpfung von Benutzerflows veranschaulicht.
+Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten der Benutzerumgebung Ihres Azure AD B2C-Mandanten definieren. Während Benutzerflows im Azure AD B2C-Portal für die gängigsten Identitätsaufgaben vordefiniert sind, können benutzerdefinierte Richtlinien von einem Identitätsentwickler vollständig bearbeitet werden, um die Ausführung vieler verschiedener Aufgaben zu ermöglichen.
 
-## <a name="email-address-storage"></a>Speicherung der E-Mail-Adresse
+Eine benutzerdefinierte Richtlinie ist vollständig konfigurierbar und richtliniengesteuert. Sie orchestriert die Vertrauensstellung zwischen Entitäten in Standardprotokollen, zum Beispiel OpenID Connect, OAuth, SAML und einige wenige nicht standardmäßige Protokolle wie der Austausch von Systemansprüchen auf REST API-Basis. Das Framework erstellt benutzerfreundliche Umgebungen mit Positivlisten.
 
-Eine E-Mail-Adresse kann als Teil eines Benutzerflows erforderlich sein. Wenn sich der Benutzer mit einem sozialen Netzwerk als Identitätsanbieter authentifiziert, wird die E-Mail-Adresse in der **otherMails**-Eigenschaft gespeichert. Wenn ein lokales Konto auf einem Benutzernamen basiert, wird die E-Mail-Adresse in einer speziellen Eigenschaft für die sichere Authentifizierung gespeichert. Wenn ein lokales Konto auf einer E-Mail-Adresse basiert, wird die E-Mail-Adresse in der **signInNames**-Eigenschaft gespeichert.
+Mit einer benutzerdefinierten Richtlinie haben Sie die Möglichkeit, User Journeys mit einer beliebigen Schrittkombination zu erstellen. Beispiel:
 
-Es ist in diesen Fällen nicht garantiert, dass die E-Mail-Adresse überprüft wird. Ein Mandantenadministrator kann die E-Mail-Überprüfung in den grundlegenden Richtlinien für lokale Konten deaktivieren. Selbst wenn die Überprüfung der E-Mail-Adresse aktiviert ist, werden die Adressen nicht überprüft, wenn sie von einem sozialen Netzwerk als Identitätsanbieter stammen und nicht geändert wurden.
+* Verbund mit anderen Identitätsanbietern
+* Abfragen für Erst- und Drittanbieterlösungen für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)
+* Beliebige Benutzereingaben erfassen
+* Integration in externe Systeme mithilfe der REST-API-Kommunikation
 
-Nur die Eigenschaften **otherMails** und **signInNames** werden über die Microsoft Graph-API verfügbar gemacht. Die E-Mail-Adresse in der Eigenschaft für die sichere Authentifizierung ist nicht verfügbar.
+Jede User Journey wird durch eine Richtlinie definiert. Sie können so viele oder so wenige Richtlinien erstellen, wie Sie benötigen, um die beste Benutzererfahrung für Ihre Organisation zu ermöglichen.
+
+![Diagramm mit einem Beispiel für eine durch IEF ermöglichte komplexe User Journey](media/user-flow-overview/custom-policy-diagram.png)
+
+Benutzerdefinierte Richtlinien werden durch mehrere Dateien im XML-Format definiert, die in einer hierarchischen Kette aufeinander verweisen. Die XML-Elemente definieren das Anspruchsschema, Anspruchstransformationen, Inhaltsdefinitionen, Anspruchsanbieter, technische Profile, Schritte zur Orchestrierung von User Journeys und weitere Aspekte der Identitätsverwaltung.
+
+Die leistungsstarke Flexibilität von benutzerdefinierten Richtlinien ist am besten geeignet, wenn Sie komplexe Identitätsszenarien erstellen müssen. Entwickler, die benutzerdefinierte Richtlinien konfigurieren, müssen die vertrauenswürdigen Beziehungen im Detail definieren, um Metadatenendpunkte und genaue Anspruchsaustauschdefinitionen einzuschließen und bei Bedarf zudem Geheimnisse, Schlüssel und Zertifikate durch die einzelnen Identitätsanbieter zu konfigurieren.
+
+Weitere Informationen über benutzerdefinierte Richtlinien finden Sie unter [Benutzerdefinierte Richtlinien in Azure Active Directory B2C](custom-policy-overview.md).
+
+## <a name="comparing-user-flows-and-custom-policies"></a>Vergleichen von Benutzerflows mit benutzerdefinierten Richtlinien
+
+Die folgende Tabelle enthält einen detaillierten Vergleich der Szenarien, die mit Azure AD B2C-Benutzerflows und benutzerdefinierten Richtlinien möglich sind.
+
+| Kontext | Benutzerflows | Benutzerdefinierte Richtlinien |
+|-|-------------------|-----------------|
+| Zielbenutzer | Alle Anwendungsentwickler mit oder ohne Identitätskenntnissen | Identitätsexperten, Systemintegratoren, Berater und interne Identitätsteams. Sie sind mit OpenID Connect-Flows sowie Identitätsanbietern und anspruchsbasierten Authentifizierungen vertraut. |
+| Konfigurationsmethode | Azure-Portal mit benutzerfreundlicher Benutzeroberfläche (User Interface, UI) | Direktes Bearbeiten von XML-Dateien und anschließendes Hochladen in das Azure-Portal |
+| Anpassung der Benutzeroberfläche | [Vollständige Anpassung der Benutzeroberfläche](customize-ui-with-html.md) einschließlich HTML, CSS und [JavaScript](javascript-and-page-layout.md).<br><br>[Unterstützung mehrerer Sprachen](language-customization.md) mit benutzerdefinierten Zeichenfolgen. | identisch |
+| Anpassung von Attributen | Standard- und benutzerdefinierte Attribute | identisch |
+| Token- und Sitzungsverwaltung | [Anpassung von Token](configure-tokens.md) und des [Sitzungsverhaltens](session-behavior.md). | identisch |
+| Identitätsanbieter | [Vordefinierte lokale Anbieter](identity-provider-local.md) oder [Social Media-Anbieter](add-identity-provider.md), z. B. Verbund mit Azure Active Directory-Mandanten. | Standardbasierte OIDC-, OAUTH- und SAML-Protokolle  Die Authentifizierung ist auch mithilfe der Integration von REST-APIs möglich. |
+| Identitätsaufgaben | [Registrierung oder Anmeldung](add-sign-up-and-sign-in-policy.md) mit lokalen Konten oder vielen Social Media-Konten<br><br>[Self-Service-Kennwortzurücksetzung](add-password-reset-policy.md)<br><br>[Profilbearbeitung](add-profile-editing-policy.md)<br><br>Multi-Factor Authentication<br><br>Zugriffstoken-Flows | Führen Sie dieselben Aufgaben wie bei Benutzerflows mit benutzerdefinierten Identitätsanbietern aus, oder verwenden Sie benutzerdefinierte Bereiche.<br><br>Stellen Sie ein Benutzerkonto bei der Registrierung in einem anderen System bereit.<br><br>Senden Sie mit Ihrem eigenen E-Mail-Dienstanbieter eine Willkommens-E-Mail.<br><br>Verwenden Sie einen Benutzerspeicher außerhalb von Azure AD B2C.<br><br>Überprüfen Sie die von Benutzern bereitgestellten Informationen mit einem vertrauenswürdigen System über eine API. |
+
+## <a name="application-integration"></a>Anwendungsintegration
+
+Sie können viele Benutzerflows oder benutzerdefinierte Richtlinien verschiedener Art in Ihrem Mandanten erstellen und bei Bedarf in Ihren Anwendungen verwenden. Sowohl Benutzerflows als auch benutzerdefinierte Richtlinien können anwendungsübergreifend wiederverwendet werden. Durch diese Flexibilität können Sie Benutzeroberflächen im Zusammenhang mit der Identität mit minimalen oder ganz ohne Änderungen am Code definieren und ändern. 
+
+Wenn sich ein Benutzer bei Ihrer Anwendung anmelden möchte, initiiert die Anwendung eine Autorisierungsanforderung an einen Benutzerflow-Endpunkt oder einen von der benutzerdefinierten Richtlinie bereitgestellten Endpunkt. Der Benutzerflow oder die benutzerdefinierte Richtlinie definiert und steuert die Funktionalität für die Benutzer. Wenn der Benutzer einen Benutzerflow ausführt, generiert Azure AD B2C ein Token und leitet den Benutzer anschließend wieder zurück zu Ihrer Anwendung.
+
+![Mobile App mit Pfeilen, die den Flow zur Azure AD B2C-Anmeldeseite darstellen](media/user-flow-overview/app-integration.png)
+
+Mehrere Anwendungen können den gleichen Benutzerflow oder die gleiche benutzerdefinierte Richtlinie verwenden. Jede Anwendung kann mehrere Benutzerflows oder benutzerdefinierte Richtlinien verwenden.
+
+Beispielsweise kann die Anwendung den Benutzerflow *Registrieren oder anmelden* für die Anmeldung bei einer Anwendung verwenden. Nach der Anmeldung möchte der Benutzer möglicherweise sein Profil bearbeiten. Zum Bearbeiten des Profils initiiert die Anwendung eine weitere Autorisierungsanforderung, dieses Mal unter Verwendung des Benutzerflows *Profilbearbeitung*.
+
+Ihre Anwendung löst mithilfe einer standardmäßigen HTTP-Authentifizierungsanforderung, die den Namen des Benutzerflows oder der benutzerdefinierten Richtlinie enthält, einen Benutzerflow aus. Als Antwort wird ein benutzerdefiniertes [Token](tokens-overview.md) empfangen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Befolgen Sie zum Erstellen der empfohlenen Benutzerflows die Anweisungen im [Tutorial: Erstellen eines Benutzerflows](tutorial-create-user-flows.md).
+- Befolgen Sie zum Erstellen der empfohlenen Benutzerflows die Anweisungen im [Tutorial: Erstellen eines Benutzerflows](tutorial-create-user-flows.md).
+- Erfahren Sie mehr über [Benutzerflowversionen in Azure AD B2C](user-flow-versions.md).
+- Erfahren Sie mehr über [Benutzerdefinierte Richtlinien in Azure AD B2C](custom-policy-overview.md).

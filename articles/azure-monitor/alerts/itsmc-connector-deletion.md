@@ -1,41 +1,58 @@
 ---
-title: Löschen des ITSM-Connectors und der zugeordneten Aktionen
-description: In diesem Artikel wird erläutert, wie Sie den ITSM-Connector und die zugehörigen Aktionsgruppen löschen.
+title: Löschen nicht verwendeter ITSM-Connectors
+description: In diesem Artikel wird erläutert, wie Sie ITSM-Connectors und die zugehörigen Aktionsgruppen löschen.
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
-ms.openlocfilehash: e73510b6c61c58f6f0b2b8067a240214ee35a46c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3dc84ea6def9b762527226dbeb3e2eaab78ec200
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036485"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387937"
 ---
-# <a name="deletion-of-unused-itsm-connectors"></a>Löschen nicht verwendeter ITSM-Connectors
+# <a name="delete-unused-itsm-connectors"></a>Löschen nicht verwendeter ITSM-Connectors
 
-Der Löschvorgang für nicht verwendete Connectors umfasst zwei Phasen:
+Das Löschen nicht verwendeter ITSM-Connectors (IT Service Management) umfasst zwei Phasen. Sie löschen alle Aktionen, die einem ITSM-Connector zugeordnet sind, und löschen dann den Connector selbst. Sie löschen zuerst die Aktionen, weil Aktionen ohne einen Connector möglicherweise Fehler in Ihrem Abonnement verursachen.
 
-1. Löschen der zugeordneten Aktionen: Alle Aktionen, die dem ITSM-Connector zugeordnet sind, sollten gelöscht werden. Dies sollte erfolgen, damit nicht durch Aktionen ohne Connectors Fehler in Ihrem Abonnement verursacht werden.
+## <a name="delete-associated-actions"></a>Löschen zugeordneter Aktionen
 
-2. Löschen des nicht verwendeten ITSM-Connectors
+1. Wählen Sie im Azure-Portal die Option **Überwachen** aus.
+  
+    ![Screenshot: Auswahl von „Überwachen“](media/itsmc-connector-deletion/itsmc-monitor-selection.png)
 
-## <a name="deletion-of-the-associated-actions"></a>Löschen der zugeordneten Aktionen
+2. Wählen Sie **Warnungen**.
+   
+    ![Screenshot: Auswahl von „Warnungen“](media/itsmc-connector-deletion/itsmc-alert-selection.png)
 
-1. Um die Aktionsgruppe zu finden, navigieren Sie zu „Monitor“. ![Screenshot der Auswahl von „Monitor“](media/itsmc-connector-deletion/itsmc-monitor-selection.png)
+3. Wählen Sie **Aktionen verwalten** aus.
+   
+    ![Screenshot: Auswahl von „Aktionen verwalten“](media/itsmc-connector-deletion/itsmc-actions-selection.png)
 
-2. Wählen Sie „Warnungen“ aus. ![Screenshot der Auswahl von „Warnungen“](media/itsmc-connector-deletion/itsmc-alert-selection.png)
-3. Wählen Sie „Aktionen verwalten“ aus. ![Screenshot der Auswahl von „Aktionen verwalten“](media/itsmc-connector-deletion/itsmc-actions-selection.png)
-4. Wählen Sie alle ITSM-Connectors aus, die mit Cherwell verbunden sind. ![Screenshot der mit Cherwell verbundenen ITSM-Connectors](media/itsmc-connector-deletion/itsmc-actions-screen.png)
-5. Löschen Sie die Aktionsgruppe. ![Screenshot der Löschung der Aktionsgruppe](media/itsmc-connector-deletion/itsmc-action-deletion.png)
+4. Wählen Sie eine Aktionsgruppe aus, die dem ITSM-Connector zugeordnet ist, den Sie löschen möchten. In diesem Artikel wird als Beispiel ein Cherwell-Connector verwendet.
+   
+    ![Screenshot: Aktionen, die dem Cherwell-Connector zugeordnet sind](media/itsmc-connector-deletion/itsmc-actions-screen.png)
 
-## <a name="deletion-of-the-unused-itsm-connector"></a>Löschen des nicht verwendeten ITSM-Connectors
+5. Überprüfen Sie die Informationen, und klicken Sie dann auf **Aktionsgruppe löschen**.
 
-1. Suchen Sie in LA auf der Suchleiste oben nach „ServiceDesk“, und wählen Sie die Option aus. ![Screenshot der Suche und Auswahl von „ServiceDesk“ in LA](media/itsmc-connector-deletion/itsmc-connector-selection.png)
-2. Wählen Sie die ITSM-Verbindungen und dann den Cherwell-Connector aus. ![Screenshot der Cherwell-ITSM-Connectors](media/itsmc-connector-deletion/itsmc-cherwell-connector.png)
-3. Wählen Sie „Löschen“ aus. ![Screenshot der Löschung des ITSM-Connectors](media/itsmc-connector-deletion/itsmc-connector-deletion.png)
+    ![Screenshot: Aktionsgruppeninformationen und Schaltfläche zum Löschen der Gruppe](media/itsmc-connector-deletion/itsmc-action-deletion.png)
+
+## <a name="delete-the-connector"></a>Löschen des Connectors
+
+1. Suchen Sie über die Suchleiste nach **ServiceDesk**. Wählen Sie anschließend in der Liste der Ressourcen **ServiceDesk** aus.
+
+    ![Screenshot: Suchen nach und Auswählen von „ServiceDesk“](media/itsmc-connector-deletion/itsmc-connector-selection.png)
+
+2. Wählen Sie **ITSM-Verbindungen** und anschließend den Cherwell-Connector aus.
+
+    ![Screenshot: Cherwell-ITSM-Connector](media/itsmc-connector-deletion/itsmc-cherwell-connector.png)
+
+3. Klicken Sie auf **Löschen**.
+
+    ![Screenshot: Schaltfläche „Löschen“ für den ITSM-Connector](media/itsmc-connector-deletion/itsmc-connector-deletion.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Problembehandlung in ITSM-Connector](./itsmc-resync-servicenow.md)
+* [Problembehandlung für einen ITSM-Connector](./itsmc-resync-servicenow.md)

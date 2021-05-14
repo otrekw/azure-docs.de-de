@@ -7,18 +7,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-ms.openlocfilehash: d5af0cc4eb72a2db850e19e47ed11cd9f6f4536e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 36987789487e97f42a51ff509df58ee0ff2dd2ed
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061858"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951250"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Virtuelles Netzwerkgerät in einem Azure Virtual WAN-Hub (Vorschauversion)
 
 Für Azure Virtual WAN wurde in Zusammenarbeit mit Netzwerkpartnern eine Automatisierung erstellt, mit der Geräte in der Kundenumgebung (Customer Premises Equipment, CPE) ganz einfach mit einem Azure-VPN-Gateway im virtuellen Hub verbunden werden können. Azure arbeitet mit ausgewählten Netzwerkpartnern zusammen, um Kunden die direkte Bereitstellung eines virtuellen Netzwerkgeräts (Network Virtual Appliance, NVA) von einem Drittanbieter im virtuellen Hub zu ermöglichen. Dadurch können Kunden ihr Zweigniederlassungs-CPE mit dem gleichen Marken-NVA im virtuellen Hub verbinden und so proprietäre End-to-End-SD-WAN-Funktionen nutzen.
 
-Barracuda Networks und Cisco Systems sind die ersten Partner, die NVAs bereitstellen, die direkt auf dem Virtual WAN-Hub bereitgestellt werden können.  Unter [Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan) und [Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) finden Sie die jeweilige Produktdokumentation. Azure arbeitet mit mehreren Partnern zusammen, sodass weitere Angebote folgen werden.
+Barracuda Networks und Cisco Systems sind die ersten Partner, die NVAs bereitstellen, die direkt auf dem Virtual WAN-Hub bereitgestellt werden können.  Die jeweilige Produktdokumentation finden Sie unter [Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan), [Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) und [VMware SD-WAN](https://kb.vmware.com/s/article/82746). Azure arbeitet mit mehreren Partnern zusammen, sodass weitere Angebote folgen werden.
 
 > [!NOTE]
 > Nur NVA-Angebote, die zur Bereitstellung im Virtual WAN-Hub verfügbar sind, können im Virtual WAN-Hub bereitgestellt werden. Sie können nicht in einem beliebigen virtuellen Netzwerk in Azure bereitgestellt werden.
@@ -77,13 +77,14 @@ NVAs im virtuellen Hub sind in den folgenden Regionen als Vorschauversion verfü
 
 |Geopolitische Region | Azure-Regionen|
 |---|---|
-| Nordamerika| USA, Westen; USA, Süden-Mitte; USA, Osten 2   |
-| Südamerika | Brasilien Süd |
-| Europa | Europa, Westen; Vereinigtes Königreich, Süden|
+| Nordamerika| Kanada, Mitte; Kanada, Osten; USA, Mitte; USA, Osten; USA, Osten 2; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; USA, Westen; USA, Westen 2 |
+| Südamerika | „Brasilien, Süden“, „Brasilien, Südosten“ |
+| Europa | „Frankreich, Mitte“, „Frankreich, Süden“, „Deutschland, Norden“, „Deutschland, Westen-Mitte“, „Europa, Norden“, „Norwegen, Osten“, „Norwegen, Westen“, „Schweiz, Norden“, „Schweiz, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“|
 |  Naher Osten | Vereinigte Arabische Emirate, Norden |
-| Asia | Japan, Osten |
-| Australien | Australien (Osten) |
-
+| Asia |  „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Asien, Südosten“ | 
+| Australien | „Australien, Südosten“, „Australien, Osten“, „Australien, Mitte“, „Australien, Mitte 2“|
+| Afrika | Südafrika, Norden |
+| Indien | „Indien, Süden“, „Indien, Westen“, „Indien, Mitte“ | 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 ### <a name="i-am-a-network-appliance-partner-and-want-to-get-our-nva-in-the-hub--can-i-join-this-partner-program"></a>Ich bin ein Partner für Netzwerkgeräte und möchte die Bereitstellung unseres NVA im Hub ermöglichen.  Kann ich an diesem Partnerprogramm teilnehmen?
@@ -92,7 +93,7 @@ Leider haben wir zurzeit keine Kapazität für neue Partnerangebote. Versuchen S
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Kann ich ein beliebiges NVA aus dem Azure Marketplace im Virtual WAN-Hub bereitstellen?
 
-Zurzeit sind nur [Barracuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer) und [Cisco Cloud vWAN Application](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) zur Bereitstellung im Virtual WAN-Hub verfügbar.
+Zurzeit sind nur [Barracuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer), [Cisco Cloud vWAN Application](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) und [VMware Sd-WAN](https://aka.ms/vmwareMarketplaceLink) zur Bereitstellung im Virtual WAN-Hub verfügbar.
 
 ### <a name="what-is-the-cost-of-the-nva"></a>Welche Kosten fallen für das NVA an?
 
@@ -104,7 +105,7 @@ Nein. Sie müssen einen Standard-Hub verwenden, wenn Sie ein NVA bereitstellen m
 
 ### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>Kann ich ein NVA in einem geschützten Hub bereitstellen?
 
-Ja. Barracuda CloudGen WAN kann in einem Hub mit Azure Firewall bereitgestellt werden.
+Ja. Partner-NVAs können in einem Hub mit Azure Firewall bereitgestellt werden.
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>Kann ich ein beliebiges CPE-Gerät in meiner Zweigstelle mit dem Barracuda CloudGen WAN-NVA im Hub verbinden?
 

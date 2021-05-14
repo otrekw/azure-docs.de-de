@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 08/27/2019
-ms.openlocfilehash: d361744ffe66a1ea91849149d05c6741eff600f5
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: d480f400bfd5a8d1ad59c9e4bcf1e8425171cc4a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077311"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123319"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Co-Selling – Länder- und Regionscodes
 
-Verwenden Sie diese zweistelligen Länder-/Regionscodes, wenn Sie [Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots angeben](commercial-marketplace-co-sell.md).
+Verwenden Sie diese zweistelligen Länder-/Regionscodes, wenn Sie [Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots angeben](./co-sell-configure.md).
 
 Wenn der Kontakt alle Länder/Regionen abdeckt, verwenden Sie den dreistelligen Code „OOO“.
 
@@ -276,4 +276,4 @@ Wenn ein Kontakt mehrere Länder bzw. Regionen umfasst, geben Sie jeden der zwei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Co-Selling-Option im kommerziellen Marketplace](./commercial-marketplace-co-sell.md).
+- Erfahren Sie mehr über die [Co-Selling-Option im kommerziellen Marketplace](./co-sell-configure.md).

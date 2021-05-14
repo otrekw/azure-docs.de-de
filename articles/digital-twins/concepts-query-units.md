@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0e1c5f08c4292e4f3dfec448d8bf54d5d5601840
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 710800bdb1dc4a9a2d0bc69493fe1d89d279ff78
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99050497"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734289"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Abfrageeinheiten in Azure Digital Twins 
 
@@ -31,7 +31,7 @@ In diesem Artikel werden die Ermittlung der Abfrageeinheiten und die Nachverfolg
 
 Wenn Sie mit der [Abfrage-API-](/rest/api/digital-twins/dataplane/query) von Azure Digital Twins eine Abfrage ausführen, können Sie dem Antwortheader die Anzahl der von der Abfrage verbrauchten Abfrageeinheiten entnehmen. Suchen Sie in der von Azure Digital Twins zurückgesendeten Antwort nach „query-charge“.
 
-Mit den Azure Digital Twins-[SDKs](how-to-use-apis-sdks.md) können Sie den query-charge-Header aus der auslagerbaren Antwort extrahieren. In diesem Abschnitt wird gezeigt, wie Sie digitale Zwillinge abfragen und die auslagerbare Antwort durchlaufen, um den query-charge-Header zu extrahieren. 
+Mit den Azure Digital Twins-[SDKs](concepts-apis-sdks.md) können Sie den query-charge-Header aus der auslagerbaren Antwort extrahieren. In diesem Abschnitt wird gezeigt, wie Sie digitale Zwillinge abfragen und die auslagerbare Antwort durchlaufen, um den query-charge-Header zu extrahieren. 
 
 Der folgende Codeausschnitt veranschaulicht das Extrahieren der durch den Aufruf der Abfrage-API anfallenden Abfragegebühren. Zuerst werden die Antwortseiten durchlaufen, um auf den query-charge-Header zuzugreifen, und dann werden die Ergebnisse der digitalen Zwillinge auf den einzelnen Seiten durchlaufen. 
 
@@ -41,8 +41,8 @@ Der folgende Codeausschnitt veranschaulicht das Extrahieren der durch den Aufruf
 
 Weitere Informationen über das Abfragen von Azure Digital Twins finden Sie in den folgenden Artikeln:
 
-* [*Konzepte: Abfragesprache*](concepts-query-language.md)
-* [*Verwenden Abfragen des Zwillingsgraphen*](how-to-query-graph.md)
+* [Konzepte: Abfragesprache](concepts-query-language.md)
+* [Gewusst wie: Abfragen des Zwillingsgraphen](how-to-query-graph.md)
 * [Abfrage-API-Referenzdokumentation](/rest/api/digital-twins/dataplane/query/querytwins)
 
-Sie finden die abfragenbezogenen Azure Digital Twins-Einschränkungen unter [*Diensteinschränkungen*](reference-service-limits.md).
+Sie finden die abfragenbezogenen Azure Digital Twins-Einschränkungen unter [Diensteinschränkungen](reference-service-limits.md).

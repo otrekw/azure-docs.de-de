@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/05/2021
+ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: 94981cd0912f76b710b3a60040ffbffd38381bcd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 46e84814e27562097a4c5dc4e3daa1e5b36669f7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552103"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287825"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Neues in Azure NetApp Files
 
@@ -27,12 +27,32 @@ Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Ü
 
 ## <a name="april-2021"></a>April 2021
 
+* [Manuelle Volume- und Kapazitätspoolverwaltung](volume-quota-introduction.md) (hartes Kontingent) 
+
+    Das Verhalten der Volume- und Kapazitätspoolbereitstellung von Azure NetApp Files wurde in einen manuellen und kontrollierbaren Mechanismus geändert. Die Speicherkapazität eines Volumes ist auf die festgelegte Größe (Kontingent) des Volumes beschränkt. Wenn der Volumeverbrauch ein Maximum erreicht, wächst weder das Volume noch der zugrunde liegende Kapazitätspool automatisch. Stattdessen erhält das Volume den Zustand „Kein Speicherplatz mehr“. Sie können jedoch [die Größe des Kapazitätspools oder eines Volumes nach Bedarf ändern](azure-netapp-files-resize-capacity-pools-or-volumes.md). Sie sollten die [Kapazität eines Volumes](monitor-volume-capacity.md) und den zugrunde liegenden Kapazitätspool aktiv überwachen.
+
+    Diese Verhaltensänderung ist ein Ergebnis der folgenden Hauptanforderungen, die von vielen Benutzern gestellt wurden:
+
+    * Vorher wurde VM-Clients nur die schlank zugewiesene Kapazität (100 TiB) eines bestimmten Volumes angezeigt, wenn der Betriebssystemspeicherplatz oder Kapazitätsüberwachungstools verwendet wurden.  Diese Situation konnte zu einer ungenauen Anzeige der Kapazität auf Client- oder Anwendungsseite führen. Dieses Verhalten wurde nun korrigiert.  
+    * Das bisherige automatische Vergrößerungsverhalten von Kapazitätspools hat Anwendungsbesitzern keine Kontrolle über den bereitgestellten Kapazitätspoolspeicher (und die damit verbundenen Kosten) gegeben. Diese Situation war besonders in Umgebungen umständlich, in denen „Endlosprozesse“ ausgeführt wurden, die die bereitgestellte Kapazität schnell auslasten und so die bereitgestellte Kapazität erhöhen konnten. Dieses Verhalten wurde korrigiert.  
+    * Benutzer möchten eine direkte Korrelation zwischen Volumegröße (Kontingent) und Leistung sehen. Das vorherige Verhalten ließ (implizite) Überabonnements eines Volumes (Kapazität) und die automatische Vergrößerung von Kapazitätspools zu. Daher konnten Benutzer erst dann eine direkte Korrelation herstellen, wenn das Volumekontingent aktiv festgelegt oder zurückgesetzt wurde. Dieses Verhalten wurde nun korrigiert.
+
+    Benutzer haben die direkte Kontrolle über die bereitgestellte Kapazität gefordert. Benutzer möchten die Speicherkapazität und -auslastung kontrollieren und ausgleichen. Zudem möchten Sie die Kosten, die anwendungs- und clientseitige Sichtbarkeit der verfügbaren, genutzten und bereitgestellten Kapazität sowie die Leistung ihrer Anwendungsvolumes kontrollieren. Mit diesem neuen Verhalten wurden nun alle diese Funktionen aktiviert.
+
+* [Unterstützung von SMB-Freigaben für fortlaufende Verfügbarkeit (Continuous Availability, CA) für FSLogix-Benutzerprofilcontainer](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Vorschau)  
+
+    [FSLogix](/fslogix/overview) ist eine Zusammenstellung von Lösungen, mit denen sich nicht persistente Windows-Datenverarbeitungsumgebungen verbessern, aktivieren und vereinfachen lassen. FSLogix-Lösungen eignen sich für virtuelle Umgebungen in öffentlichen und privaten Clouds. Mit FSLogix-Lösungen können auch portierbarere Sitzungen erstellt werden, wenn physische Geräte zum Einsatz kommen. Mit FSLogix kann dynamischer Zugriff auf persistente Benutzerprofilcontainer bereitgestellt werden, die im freigegebenen SMB-Netzwerkspeicher gespeichert sind, einschließlich Azure NetApp Files. Um die FSLogix-Resilienz bei Wartungsereignissen des Speicherdiensts weiter zu verbessern, bietet Azure NetApp Files erweiterte Unterstützung für SMB Transparent Failover über [SMB-CA-Freigaben in Azure NetApp Files](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) für Benutzerprofilcontainer. Weitere Informationen finden Sie unter [Windows Virtual Desktop](azure-netapp-files-solution-architectures.md#windows-virtual-desktop).  
+
+* [SMB3-Protokollverschlüsselung](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Vorschau) 
+
+    Sie können jetzt für SMB-Volumes und Volumes mit dualem Protokoll von Azure NetApp Files die SMB3-Protokollverschlüsselung aktivieren. Mit diesem Feature wird die Verschlüsselung für In-Flight-SMB3-Daten mithilfe des [AES-CCM-Algorithmus für SMB 3.0-Verbindungen und des AES-GCM-Algorithmus für SMB 3.1.1-Verbindungen](/windows-server/storage/file-server/file-server-smb-overview#features-added-in-smb-311-with-windows-server-2016-and-windows-10-version-1607) aktiviert. SMB-Clients ohne Verwendung der SMB3-Verschlüsselung können nicht auf dieses Volume zugreifen. Ruhende Daten werden unabhängig von dieser Einstellung verschlüsselt. Die SMB-Verschlüsselung trägt zur weiteren Erhöhung der Sicherheit bei. Dies kann sich jedoch auf den Client auswirken (CPU-Auslastung für das Verschlüsseln und Entschlüsseln von Nachrichten). Es kann sich auch auf die Speicherressourcenverwendung auswirken (Reduzierung des Durchsatzes). Sie sollten die Auswirkung auf die Verschlüsselungsleistung Ihrer Anwendungen testen, bevor Sie Workloads in der Produktion bereitstellen.
+
 * [Active Directory Domain Services (Adds) LDAP-Benutzerzuordnung mit erweiterten NFS-Gruppen](configure-ldap-extended-groups.md) (Vorschau)   
 
     Standardmäßig werden von Azure NetApp Files bis zu 16 Gruppen-IDs unterstützt, wenn NFS-Benutzeranmeldeinformationen so behandelt werden, wie in [RFC 5531](https://tools.ietf.org/html/rfc5531) definiert. Mit dieser neuen Funktion können Sie jetzt den maximalen Wert auf bis zu 1.024 erhöhen, wenn Sie über Benutzer verfügen, die Mitglieder in mehr als der Standardanzahl von Gruppen sind. Um diese Funktion zu unterstützen, können NFS-Volumes nun auch zu ADDS LDAP hinzugefügt werden, wodurch Active Directory LDAP-Benutzer mit erweiterten Gruppeneinträgen (mit bis zu 1024 Gruppen) auf das Volume zugreifen können. 
 
 ## <a name="march-2021"></a>März 2021
-
+ 
 * [SMB-Freigaben für fortlaufende Verfügbarkeit (Continuous Availability, CA)](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Vorschau)  
 
     SMB Transparent Failover ermöglicht Wartungsvorgänge für den Azure NetApp Files-Dienst ohne Unterbrechung der Verbindung mit Serveranwendungen, die Daten auf SMB-Volumes speichern und auf diese Daten zugreifen. Zur Unterstützung von SMB Transparent Failover unterstützt Azure NetApp Files jetzt die Option für SMB-Freigaben für fortlaufende Verfügbarkeit zur Verwendung mit SQL Server-Anwendungen über SMB, die auf virtuellen Azure-Computern ausgeführt werden. Dieses Feature wird derzeit für SQL Server unter Windows unterstützt. SQL Server unter Linux wird zurzeit nicht unterstützt. Die Aktivierung dieses Features steigert die SQL Server-Leistung erheblich und bietet Skalierungs- und Kostenvorteile für [Bereitstellungen von einzelnen Instanzen, Always On-Failoverclusterinstanzen und Always On-Verfügbarkeitsgruppen](azure-netapp-files-solution-architectures.md#sql-server). Weitere Informationen finden Sie unter [Vorteile der Verwendung von Azure NetApp Files für die SQL Server-Bereitstellung](solutions-benefits-azure-netapp-files-sql-server.md).

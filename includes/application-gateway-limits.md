@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: c98d88d66e89df3efe186212d8c004ec2a65158d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 1166585c7291c4fe0d78cbc9540e3f08f985db6c
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106450549"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107589914"
 ---
 | Resource | Begrenzung | Hinweis |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ ms.locfileid: "106450549"
 | Anzahl von Bedingungen pro Regelsatz für das erneute Generieren|40| |
 | Gleichzeitige WebSocket-Verbindungen |Mittelgroße Gateways 20.000<sup>2</sup><br> Große Gateways 50.000<sup>2</sup>| |
 | Maximale URL-Länge|32 KB| |
-| Maximale Headergröße für HTTP/2 |4 KB| |
+| Maximale Headergröße für HTTP/2 |16 KB| |
 | Maximale Dateiuploadgröße (Standard) |2 GB | |
 | Maximale Dateiuploadgröße (WAF) |V1 Mittlere WAF-Gateways, 100 MB<br>V1 Große WAF-Gateways, 500 MB<br>V2 WAF, 750 MB| |
 | WAF-Textgrößenbeschränkung (ohne Dateien)|128 KB||

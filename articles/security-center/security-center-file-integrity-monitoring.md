@@ -1,24 +1,18 @@
 ---
-title: Überwachung der Dateiintegrität in Azure Security Center | Microsoft-Dokumentation
+title: Überwachung der Dateiintegrität in Azure Security Center
 description: In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/22/2020
+ms.date: 04/25/2021
 ms.author: memildin
-ms.openlocfilehash: 834df2387d037c19672e3287970300f4e84ca34b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e14307207ddbe9f1b89bd05d7015dafd76b10d51
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047982"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992423"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Überwachung der Dateiintegrität in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
@@ -62,7 +56,8 @@ Die Überwachung der Dateiintegrität verwendet die Azure-Lösung „Änderungsn
 > Wenn Sie die Ressource **Änderungsnachverfolgung** entfernen, deaktivieren Sie damit auch das Feature „Überwachung der Dateiintegrität“ in Security Center.
 
 ## <a name="which-files-should-i-monitor"></a>Welche Dateien sollten überwacht werden?
-Beim Auswählen der zu überwachenden Dateien sollten Sie berücksichtigen, welche Dateien für Ihr System und Ihre Anwendungen unentbehrlich sind. Überwachen Sie Dateien, bei denen Sie keine ungeplanten Änderungen erwarten. Wenn Sie Dateien auswählen, die häufig von Anwendungen oder dem Betriebssystem geändert werden (z. B. Protokoll- und Textdateien), werden viele Meldungen generiert, die das Identifizieren eines Angriffs erschweren.
+
+Beim Auswählen der zu überwachenden Dateien sollten Sie die Dateien berücksichtigen, die für Ihr System und Ihre Anwendungen unentbehrlich sind. Überwachen Sie Dateien, bei denen Sie keine ungeplanten Änderungen erwarten. Wenn Sie Dateien auswählen, die häufig von Anwendungen oder dem Betriebssystem geändert werden (z. B. Protokoll- und Textdateien), werden viele Meldungen generiert, die das Identifizieren eines Angriffs erschweren.
 
 Security Center bietet die folgende Liste empfohlener Elemente, die auf der Grundlage bekannter Angriffsmuster überwacht werden sollen.
 
@@ -168,75 +163,69 @@ Auf der Registerkarte **Server** werden die Computer aufgelistet, die Meldungen 
 - Die Gesamtanzahl der Änderungen, die im ausgewählten Zeitraum aufgetreten sind
 - Eine Aufschlüsselung der Gesamtanzahl der Änderungen in Änderungen von Dateien oder Registrierungen
 
-Die **Protokollsuche** wird geöffnet, wenn Sie den Namen eines Computers in das Suchfeld eingeben oder einen Computer auswählen, der auf der Registerkarte „Computer“ aufgeführt ist. Die Protokollsuche zeigt alle Änderungen an, die im ausgewählten Zeitraum am Computer durchgeführt wurden. Sie können eine Änderung erweitern, um weitere Informationen zu erhalten.
+Wenn Sie einen Computer auswählen, wird die Abfrage zusammen mit den Ergebnissen angezeigt, die die Änderungen identifizieren, die während des ausgewählten Zeitraums für den Computer vorgenommen wurden. Sie können eine Änderung erweitern, um weitere Informationen zu erhalten.
 
-![Protokollsuche][8]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/query-machine-changes.png" alt-text="Log Analytics-Abfrage mit den Änderungen, die durch die Überwachung der Dateiintegrität in Azure Security Center identifiziert wurden" lightbox="./media/security-center-file-integrity-monitoring/query-machine-changes.png":::
 
 Die Registerkarte **Änderungen** (siehe unten) führt alle Änderungen auf, die im ausgewählten Zeitraum am Arbeitsbereich durchgeführt wurden. Für jede geänderte Entität führt das Dashboard Folgendes auf:
 
-- Den Computer, auf dem die Änderung aufgetreten ist
+- Computer, auf dem die Änderung aufgetreten ist
 - Den Änderungstyp (Registrierung oder Datei)
 - Die Änderungskategorie (Geändert, Hinzugefügt, Entfernt)
 - Das Datum und die Uhrzeit der Änderung
 
-![Änderungen am Arbeitsbereich][9]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/changes-tab.png" alt-text="Registerkarte mit den Änderungen bei der Überwachung der Dateiintegrität in Azure Security Center" lightbox="./media/security-center-file-integrity-monitoring/changes-tab.png":::
 
 **Änderungsdetails** wird geöffnet, wenn Sie eine Änderung in das Suchfeld eingeben oder eine Entität auswählen, die in der Registerkarte **Änderungen** aufgeführt ist.
 
-![Änderungsdetails][10]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/change-details.png" alt-text="Überwachung der Dateiintegrität in Azure Security Center mit dem Detailbereich für eine Änderung" lightbox="./media/security-center-file-integrity-monitoring/change-details.png":::
 
 ## <a name="edit-monitored-entities"></a>Bearbeiten von überwachten Entitäten
 
-1. Kehren Sie zum Dashboard **Überwachung der Dateiintegrität** zurück, und klicken Sie auf **Einstellungen**.
+1. Wählen Sie im Dashboard **Überwachung der Dateiintegrität** für einen Arbeitsbereich **Einstellungen** aus der Symbolleiste aus. 
 
-   ![Einstellungen][11]
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-dashboard-settings.png" alt-text="Zugreifen auf die Einstellungen der Überwachung der Dateiintegrität für einen Arbeitsbereich" lightbox="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-dashboard-settings.png":::
 
-   **Arbeitsbereichskonfiguration** wird geöffnet, und diese drei Registerkarten werden angezeigt: **Windows-Registrierung**, **Windows-Dateien** und **Linux-Dateien**. Jede Registerkarte führt die Entitäten auf, die Sie in dieser Kategorie bearbeiten können. Für jede aufgeführte Entität identifiziert Security Center, ob die Überwachung der Dateiintegrität aktiviert (true) (wahr) oder deaktiviert (false) (falsch) ist.  Wenn Sie eine Entität bearbeiten, können Sie die Überwachung der Dateiintegrität aktivieren oder deaktivieren.
+   **Arbeitsbereichskonfiguration** wird mit Registerkarten für jeden Elementtyp geöffnet, der überwacht werden kann:
 
-   ![Arbeitsbereichskonfiguration][12]
+      - Windows-Registrierung
+      - Windows-Dateien
+      - Linux-Dateien
+      - Dateiinhalte
+      - Windows-Dienste
 
-2. Wählen Sie einen Identitätsschutz aus. In diesem Beispiel wurde ein Element unter „Windows-Registrierung“ ausgewählt. Das Fenster **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten) wird geöffnet.
+      Jede Registerkarte führt die Entitäten auf, die Sie in dieser Kategorie bearbeiten können. Für jede aufgeführte Entität identifiziert Security Center, ob die Überwachung der Dateiintegrität aktiviert (true) oder deaktiviert (false) ist.  Wenn Sie eine Entität bearbeiten, können Sie die Überwachung der Dateiintegrität aktivieren oder deaktivieren.
 
-   ![Für die Änderungsnachverfolgung bearbeiten][13]
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-workspace-configuration.png" alt-text="Arbeitsbereichskonfiguration für die Überwachung der Dateiintegrität in Azure Security Center":::
 
-Unter **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten) können Sie Folgendes durchführen:
+1. Wählen Sie auf einer der Registerkarten einen Eintrag aus, und bearbeiten Sie alle verfügbaren Felder im Bereich **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten). Zu den Optionen gehören:
 
-- Aktivieren (True) (Wahr) oder deaktivieren (False) (Falsch) Sie die Überwachung der Dateiintegrität.
-- Geben Sie den Namen der Entität an, oder ändern Sie diesen.
-- Geben Sie den Wert oder Pfad an, oder ändern Sie diesen.
-- Löschen Sie die Entität, verwerfen Sie die Änderung, oder speichern Sie die Änderung.
+    - Aktivieren (True) (Wahr) oder deaktivieren (False) (Falsch) Sie die Überwachung der Dateiintegrität.
+    - Geben Sie den Namen der Entität an, oder ändern Sie diesen.
+    - Geben Sie den Wert oder Pfad an, oder ändern Sie diesen.
+    - Löschen Sie die Entität.
+
+1. Verwerfen oder speichern Sie Ihre Änderungen.
+
 
 ## <a name="add-a-new-entity-to-monitor"></a>Hinzufügen einer neuen zu überwachenden Entität
-1. Kehren Sie zum Dashboard **Überwachung der Dateiintegrität** zurück, und wählen Sie im oberen Bereich **Einstellungen** aus. Die **Arbeitsbereichskonfiguration** wird geöffnet.
-2. Klicken Sie unter **Arbeitsbereichskonfiguration** auf die Registerkarte für den Typ der Entität, die Sie hinzufügen möchten: Windows-Registrierung, Windows-Dateien oder Linux-Dateien. In diesem Beispiel wurde **Linux-Dateien** ausgewählt.
 
-   ![Hinzufügen eines neuen zu überwachenden Elements][14]
+1. Wählen Sie im Dashboard **Überwachung der Dateiintegrität** für einen Arbeitsbereich **Einstellungen** aus der Symbolleiste aus. 
 
-3. Wählen Sie **Hinzufügen**. Das Fenster **Add for Change Tracking** (Für die Änderungsnachverfolgung hinzufügen) wird geöffnet.
+    Die **Arbeitsbereichskonfiguration** wird geöffnet.
 
-   ![Eingabe der angeforderten Informationen][15]
+1. Wählen Sie unter **Arbeitsbereichskonfiguration**
 
-4. Geben Sie auf der Seite **Hinzufügen** die angeforderten Informationen ein, und klicken Sie auf **Speichern**.
+    1. die Registerkarte für den Entitätstyp aus, den Sie hinzufügen möchten: Windows-Registrierung, Windows-Dateien, Linux-Dateien, Dateiinhalt oder Windows-Dienste. 
+    1. Wählen Sie **Hinzufügen** aus. 
 
-## <a name="disable-monitored-entities"></a>Deaktivieren von überwachten Entitäten
-1. Kehren Sie zum Dashboard **Überwachung der Dateiintegrität** zurück.
-2. Wählen Sie einen Arbeitsbereich aus, für den die Überwachung der Dateiintegrität derzeit aktiviert ist. Die Überwachung der Dateiintegrität ist für einen Arbeitsbereich aktiviert, wenn die Schaltflächen „Aktivieren“ und „Upgradeplan“ nicht vorhanden sind.
+        In diesem Beispiel wurde **Linux-Dateien** ausgewählt.
 
-   ![Auswählen eines Arbeitsbereichs, bei dem die Überwachung der Dateiintegrität aktiviert ist][16]
+        :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-add-element.png" alt-text="Hinzufügen eines zu überwachenden Elements in der Überwachung der Dateiintegrität in Azure Security Center" lightbox="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-add-element.png":::
 
-3. Wählen Sie unter „Überwachung der Dateiintegrität“ **Einstellungen** aus.
+1. Wählen Sie **Hinzufügen**. Das Fenster **Add for Change Tracking** (Für die Änderungsnachverfolgung hinzufügen) wird geöffnet.
 
-   ![Klicken auf „Einstellungen“][17]
-
-4. Klicken Sie unter **Arbeitsbereichskonfiguration** auf eine Gruppe, für die **Aktiviert** auf „true“ (wahr) festgelegt ist.
-
-   ![Arbeitsbereichskonfiguration][18]
-
-5. Legen Sie **Aktiviert** im Fenster **Edit for Change Tracking** (Für Änderungsnachverfolgung bearbeiten) auf „False“ (Falsch) fest.
-
-   ![Festlegen von „Aktiviert“ auf „Falsch“][19]
-
-6. Wählen Sie **Speichern** aus.
+1. Geben Sie die notwendigen Informationen ein, und wählen Sie **Speichern** aus.
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>Ordner- und Pfadüberwachung mithilfe von Platzhaltern
 
@@ -249,13 +238,13 @@ Verwenden Sie Platzhalter, um die verzeichnisübergreifende Nachverfolgung zu ve
 ## <a name="disable-fim"></a>Deaktivieren der Überwachung der Dateiintegrität
 Sie können die Überwachung der Dateiintegrität deaktivieren. Die Überwachung der Dateiintegrität verwendet die Azure-Lösung „Änderungsnachverfolgung“, um Änderungen in Ihrer Umgebung nachzuverfolgen und zu identifizieren. Wenn Sie die Überwachung der Dateiintegrität deaktivieren, wird die Lösung für die Änderungsnachverfolgung aus dem ausgewählten Arbeitsbereich entfernt.
 
-1. Kehren Sie zum Dashboard **Überwachung der Dateiintegrität** zurück, um die Überwachung der Dateiintegrität zu deaktivieren.
-2. Wählen Sie einen Arbeitsbereich aus.
-3. Klicken Sie unter **Überwachung der Dateiintegrität** auf **Deaktivieren**.
+So deaktivieren Sie die Überwachung der Dateiintegrität
 
-   ![Deaktivieren der Überwachung der Dateiintegrität][20]
+1. Wählen Sie im Dashboard **Überwachung der Dateiintegrität** für einen Arbeitsbereich **Deaktivieren** aus.
 
-4. Klicken Sie auf **Entfernen**, um sie zu deaktivieren.
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/disable-file-integrity-monitoring.png" alt-text="Deaktivieren der Überwachung der Dateiintegrität über die Einstellungsseite":::
+
+1. Wählen Sie **Entfernen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie mehr darüber erfahren, wie die Überwachung der Dateiintegrität in Security Center verwendet wird. Weitere Informationen zu Security Center finden Sie auf den folgenden Seiten:
@@ -265,21 +254,5 @@ In diesem Artikel haben Sie mehr darüber erfahren, wie die Überwachung der Dat
 * [Azure Security Blog](/archive/blogs/azuresecurity/)(Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
 
 <!--Image references-->
-[1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png
 [3]: ./media/security-center-file-integrity-monitoring/enable.png
 [4]: ./media/security-center-file-integrity-monitoring/upgrade-plan.png
-[5]: ./media/security-center-file-integrity-monitoring/enable-fim.png
-[7]: ./media/security-center-file-integrity-monitoring/filter.png
-[8]: ./media/security-center-file-integrity-monitoring/log-search.png
-[9]: ./media/security-center-file-integrity-monitoring/changes-tab.png
-[10]: ./media/security-center-file-integrity-monitoring/change-details.png
-[11]: ./media/security-center-file-integrity-monitoring/fim-dashboard-settings.png
-[12]: ./media/security-center-file-integrity-monitoring/workspace-config.png
-[13]: ./media/security-center-file-integrity-monitoring/edit.png
-[14]: ./media/security-center-file-integrity-monitoring/add.png
-[15]: ./media/security-center-file-integrity-monitoring/add-item.png
-[16]: ./media/security-center-file-integrity-monitoring/fim-dashboard-disable.png
-[17]: ./media/security-center-file-integrity-monitoring/fim-dashboard-settings-disabled.png
-[18]: ./media/security-center-file-integrity-monitoring/workspace-config-disable.png
-[19]: ./media/security-center-file-integrity-monitoring/edit-disable.png
-[20]: ./media/security-center-file-integrity-monitoring/disable-fim.png

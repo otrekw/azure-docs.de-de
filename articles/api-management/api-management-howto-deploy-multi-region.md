@@ -2,23 +2,17 @@
 title: Bereitstellen von Azure API Management-Diensten in mehreren Azure-Regionen
 titleSuffix: Azure API Management
 description: Erfahren Sie, wie Sie eine Azure API Management-Dienstinstanz für mehrere Azure-Regionen bereitstellen.
-services: api-management
-documentationcenter: ''
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 04/20/2020
+ms.topic: how-to
+ms.date: 04/13/2021
 ms.author: apimpm
-ms.openlocfilehash: 427ebfe865002612be2f9aeb9db416f5c2f41e52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9546813173e72b1f264c3668ee889bbeea07ce7f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88065453"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534092"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen
 
@@ -27,24 +21,30 @@ Azure API Management unterstützt eine Bereitstellung für mehrere Regionen, sod
 Ein neuer Azure API Management-Dienst enthält zunächst nur eine [Einheit][unit] in einer Azure-Region (der primären Region). Der primären oder sekundären Region können zusätzliche Einheiten hinzugefügt werden. Eine API Management-Gatewaykomponente wird in jeder ausgewählten primären und sekundären Region bereitgestellt. Eingehende API-Anforderungen werden automatisch an die nächstgelegene Region weitergeleitet. Wenn eine Region offline geschaltet wird, werden die API-Anforderungen automatisch unter Auslassung der fehlerhaften Region an das nächstgelegene Gateway weitergeleitet.
 
 > [!NOTE]
-> Nur die Gatewaykomponente von API Management wird für alle Regionen bereitgestellt. Die Dienstverwaltungskomponente und das Entwicklerportal werden nur in der primären Region gehostet. Daher werden bei einem Ausfall der primären Region der Zugriff auf das Entwicklerportal und die Möglichkeit zum Ändern der Konfiguration (z. B. Hinzufügen von APIs, Anwenden von Richtlinien) beeinträchtigt, bis die primäre Region wieder online ist. Während die primäre Region offline ist, verarbeiten die verfügbaren sekundären Regionen den API-Datenverkehr mithilfe der letzten verfügbaren Konfiguration.
+> Nur die Gatewaykomponente von API Management wird für alle Regionen bereitgestellt. Die Dienstverwaltungskomponente und das Entwicklerportal werden nur in der primären Region gehostet. Daher werden bei einem Ausfall der primären Region der Zugriff auf das Entwicklerportal und die Möglichkeit zum Ändern der Konfiguration (z. B. Hinzufügen von APIs, Anwenden von Richtlinien) beeinträchtigt, bis die primäre Region wieder online ist. Während die primäre Region offline ist, verarbeiten die verfügbaren sekundären Regionen den API-Datenverkehr mithilfe der letzten verfügbaren Konfiguration. Aktivieren Sie optional [Zonenredundanz](zone-redundancy.md), um die Verfügbarkeit und Resilienz der primären oder sekundären Regionen zu verbessern.
 
 >[!IMPORTANT]
 > Die Funktion zum Aktivieren des Speicherns von Kundendaten in einer einzelnen Region ist derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ verfügbar. Bei allen anderen Regionen werden Kundendaten unter „Geografien“ gespeichert.
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="deploy-api-management-service-to-a-new-region"></a><a name="add-region"> </a>Bereitstellen des API Management-Diensts in einer neuen Region
 
-> [!NOTE]
-> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen unter [Erstellen einer API Management-Dienstinstanz][create an api management service instance].
+## <a name="prerequisites"></a>Voraussetzungen
 
-1. Navigieren Sie im Azure-Portal zu Ihrem API Management-Dienst, und klicken Sie im Menü auf den Eintrag **Standorte**.
-2. Klicken Sie in der oberen Leiste auf **+ Hinzufügen**.
-3. Wählen Sie den Standort aus der Dropdownliste aus, und legen Sie die Anzahl der Einheiten mit dem Schieberegler fest.
-4. Klicken Sie zur Bestätigung auf die Schaltfläche **Hinzufügen**.
-5. Wiederholen Sie diesen Vorgang, bis alle Standorte konfiguriert sind.
-6. Klicken Sie in der oberen Leiste auf **Speichern**, um den Bereitstellungsprozess zu starten.
+* Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen unter [Erstellen einer API Management-Dienstinstanz](get-started-create-service-instance.md). Wählen Sie die Dienstebene „Premium“ aus.
+* Wenn Ihre API Management-Instanz in einem [virtuellen Netzwerk](api-management-using-with-vnet.md) bereitgestellt wird, müssen Sie an jedem neuen Standort, den Sie hinzufügen möchten, ein virtuelles Netzwerk, ein Subnetz und eine öffentliche IP-Adresse einrichten.
+
+## <a name="deploy-api-management-service-to-an-additional-location"></a><a name="add-region"> </a>Bereitstellen des API Management-Diensts an einem zusätzlichen Speicherort
+
+1. Navigieren Sie im Azure-Portal zu Ihrem API Management-Dienst, und wählen Sie im Menü **Standorte** aus.
+1. Klicken Sie in der oberen Leiste auf **+ Hinzufügen**.
+1. Wählen Sie in der Dropdownliste den Standort aus.
+1. Wählen Sie die Anzahl der **[Skalierungseinheiten](upgrade-and-scale.md)** am Standort aus.
+1. Aktivieren Sie optional [**Verfügbarkeitszonen**](zone-redundancy.md).
+1. Wird die API Management-Instanz in einem [virtuellen Netzwerk](api-management-using-with-vnet.md) bereitgestellt, konfigurieren Sie Einstellungen für das virtuelle Netzwerk am Standort. Wählen Sie ein vorhandenes virtuelles Netzwerk, ein Subnetz und eine öffentliche IP-Adresse aus, die am Standort verfügbar sind.
+1. Klicken Sie zur Bestätigung auf **Hinzufügen**.
+1. Wiederholen Sie diesen Vorgang, bis alle Standorte konfiguriert sind.
+1. Klicken Sie in der oberen Leiste auf **Speichern**, um den Bereitstellungsprozess zu starten.
 
 ## <a name="delete-an-api-management-service-location"></a><a name="remove-region"> </a>Löschen einer API Management-Dienstidentifizierung
 

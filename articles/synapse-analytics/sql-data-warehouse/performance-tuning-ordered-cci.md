@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 09/05/2019
+ms.date: 04/13/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: afb6efcee2ad4f5cf25a411eed353ff2fc27d75c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab94a83a64ca9770f0c216ddf42145b262629c6d
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460792"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598991"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index  
 
@@ -44,7 +44,7 @@ FROM sys.pdw_nodes_partitions AS pnp
    JOIN sys.pdw_nodes_column_store_segments AS cls ON pnp.partition_id = cls.partition_id AND pnp.distribution_id  = cls.distribution_id
 JOIN sys.columns as cols ON o.object_id = cols.object_id AND cls.column_id = cols.column_id
 WHERE o.name = '<Table Name>' and cols.name = '<Column Name>'  and TMap.physical_name  not like '%HdTable%'
-ORDER BY o.name, pnp.distribution_id, cls.min_data_id 
+ORDER BY o.name, pnp.distribution_id, cls.min_data_id;
 
 
 ```
@@ -66,7 +66,7 @@ In diesem Beispiel verfügt die Tabelle T1 über einen gruppierten Columnstore-I
 ```sql
 
 CREATE CLUSTERED COLUMNSTORE INDEX MyOrderedCCI ON  T1
-ORDER (Col_C, Col_B, Col_A)
+ORDER (Col_C, Col_B, Col_A);
 
 ```
 
@@ -134,6 +134,13 @@ Das Erstellen eines sortierten CCI ist ein Offlinevorgang.  Bei Tabellen ohne Pa
 5.    Wiederholen Sie die Schritte 3 und 4 für jede Partition in „Table_A“.
 6.    Nachdem alle Partitionen von „Table_A“ in „Table_B“ eingefügt und neu erstellt wurden, löschen Sie „Table_A“ und benennen „Table_B“ in „Table_A“ um. 
 
+>[!TIP]
+> Bei einer dedizierten SQL-Pooltabelle mit einem geordneten CCI sortiert ALTER INDEX REBUILD die Daten mit tempdb neu. Überwachen Sie tempdb während der Neuerstellungsvorgänge. Wenn Sie mehr tempdb-Speicherplatz benötigen, können Sie den Pool hochskalieren. Skalieren Sie es nach Abschluss der Indexneuerstellung wieder herunter.
+>
+> Bei einer dedizierten SQL-Pooltabelle mit einem geordneten CCI sortiert ALTER INDEX REORGANIZE die Daten neu. Verwenden Sie ALTER INDEX REBUILD, um die Daten neu zu sortieren.
+>
+> Weitere Informationen zur geordneten CCI-Wartung finden Sie unter [Optimieren von gruppierten Columnstore-Indizes.](sql-data-warehouse-tables-index.md#optimizing-clustered-columnstore-indexes)
+
 ## <a name="examples"></a>Beispiele
 
 **A. So suchen Sie sortierte Spalten und die Ordnungszahl der Sortierung:**
@@ -142,15 +149,15 @@ Das Erstellen eines sortierten CCI ist ein Offlinevorgang.  Bei Tabellen ohne Pa
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 
 JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
-WHERE column_store_order_ordinal <>0
+WHERE column_store_order_ordinal <>0;
 ```
 
 **B. Fügen Sie Spalten aus der Sortierliste hinzu, oder entfernen Sie sie, wenn Sie die Ordnungszahl der Spalte ändern möchten oder von einem CCI zu einem sortierten CCI wechseln möchten:**
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
+CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON dbo.InternetSales
 ORDER (ProductKey, SalesAmount)
-WITH (DROP_EXISTING = ON)
+WITH (DROP_EXISTING = ON);
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

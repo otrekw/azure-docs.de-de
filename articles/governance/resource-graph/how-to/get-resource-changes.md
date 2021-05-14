@@ -1,14 +1,14 @@
 ---
 title: Abrufen von Ressourcenänderungen
 description: Erfahren Sie, wie Sie feststellen können, wann eine Ressource geändert wurde, und wie Sie eine Liste der geänderten Eigenschaften abrufen und die Unterschiede auswerten.
-ms.date: 01/27/2021
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 5ad86ec2598cd7f24b8e0cd2208889bb7a088568
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 500a2d58c5fc9e1b63a544978c4b583eba60a63e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594644"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219075"
 ---
 # <a name="get-resource-changes"></a>Abrufen von Ressourcenänderungen
 
@@ -145,6 +145,10 @@ Jedes erkannte Änderungsereignis für die **resourceId** weist die folgenden Ei
 - **beforeSnapshot**: Enthält die **snapshotId** und den **timestamp** der Ressourcenmomentaufnahme, die vor dem Erkennen einer Änderung aufgenommen wurde.
 - **afterSnapshot**: Enthält die **snapshotId** und den **timestamp** der Ressourcenmomentaufnahme, die nach dem Erkennen einer Änderung aufgenommen wurde.
 - **changeType**: Beschreibt die Art der Änderung, die für den gesamten Änderungsdatensatz zwischen **beforeSnapshot** und **afterSnapshot** erkannt wurde. Werte: _Create_, _Update_ und _Delete_. Das **propertyChanges**-Eigenschaftenarray ist nur enthalten, wenn **changeType** gleich _Update_ ist.
+
+  > [!IMPORTANT]
+  > _Create_ ist nur für Ressourcen verfügbar, die zuvor vorhanden waren und in den letzten 14 Tagen gelöscht wurden.
+
 - **propertyChanges**: In diesem Array von Eigenschaften werden alle Ressourceneigenschaften aufgeführt, die zwischen **beforeSnapshot** und **afterSnapshot** aktualisiert wurden:
   - **propertyName**: Der Name der Ressourceneigenschaft, die geändert wurde.
   - **changeCategory**: Eine Beschreibung der vorgenommenen Änderung. Werte: _System_ und _User_.

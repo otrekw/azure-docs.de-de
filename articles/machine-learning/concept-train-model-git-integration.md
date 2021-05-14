@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 11/16/2020
-ms.openlocfilehash: cc844cbd2518bb131f6902d1da3e7653951224b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: 60dca43f95b190791c8fb593042ed612340a3af5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547848"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874547"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-Integration für Azure Machine Learning
 
@@ -25,6 +25,11 @@ Azure Machine Learning unterstützt Git-Repositorys zur Nachverfolgung der Arbei
 Wenn beim Übermitteln eines Auftrags an Azure Machine Learning die Quelldateien in einem lokalen Git-Repository gespeichert sind, werden Informationen über das Repository als Teil des Trainingsprozesses nachverfolgt.
 
 Da Azure Machine Learning Informationen aus einem lokalen Git-Repository nachverfolgt, ist es nicht an ein spezifisches zentrales Repository gebunden. Ihr Repository kann von GitHub, GitLab, Bitbucket, Azure DevOps oder einem beliebigen anderen, mit Git kompatiblen Dienst geklont sein.
+
+> [!TIP]
+> Verwenden Sie Visual Studio Code zur Interaktion mit Git über eine grafische Benutzeroberfläche. Wie Sie mithilfe von Visual Studio Code eine Verbindung mit einer Azure Machine Learning Compute-Instanz herstellen, erfahren Sie unter [Herstellen einer Verbindung mit einer Azure Machine Learning-Compute-Instanz in Visual Studio Code (Vorschau)](how-to-set-up-vs-code-remote.md)
+>
+> Weitere Informationen zu Features der Visual Studio Code-Versionskontrolle finden Sie unter [Verwenden der Versionskontrolle in VS Code](https://code.visualstudio.com/docs/editor/versioncontrol) und [Arbeiten mit GitHub in VS Code](https://code.visualstudio.com/docs/editor/github).
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Klonen von Git-Respositorys für das Arbeitsbereichsdateisystem
 Azure Machine Learning bietet ein gemeinsames Dateisystem für alle Benutzer im Arbeitsbereich.
@@ -192,7 +197,7 @@ Der CLI-Befehl `az ml run` kann verwendet werden, um die Eigenschaften eines Lau
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-Weitere Informationen finden Sie in der Referenzdokumentation zu [az ml run](/cli/azure/ext/azure-cli-ml/ml/run).
+Weitere Informationen finden Sie in der Referenzdokumentation zu [az ml run](/cli/azure/ml/run).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

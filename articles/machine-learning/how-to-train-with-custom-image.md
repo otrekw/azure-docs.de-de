@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ea282cb0fcf25f7ac5f17bb9e2f693d189320078
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 953d43f93635e25da008515afd9baf9a9e9b7afa
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889160"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817069"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Trainieren eines Modells mithilfe eines benutzerdefinierten Docker-Images
 
@@ -173,5 +173,5 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie ein Modell mit einem benutzerdefinierten Docker-Image trainiert. Weitere Informationen zu Azure Machine Learning finden Sie in den folgenden Artikeln:
-* [Erfassen von Ausführungsmetriken](how-to-track-experiments.md) während des Trainings
+* [Erfassen von Ausführungsmetriken](how-to-log-view-metrics.md) während des Trainings
 * [Bereitstellen eines Modells](how-to-deploy-custom-docker-image.md) mithilfe eines benutzerdefinierten Docker-Images

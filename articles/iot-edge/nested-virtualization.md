@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 0e0021ec3564ca079f9ab02fe5ed3f0cfa5a1560
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f01362fd9342c1f508f165b34e121a11e8d07e2
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608600"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107496587"
 ---
 # <a name="nested-virtualization-for-azure-iot-edge-for-linux-on-windows"></a>Geschachtelte Virtualisierung für Azure IoT Edge für Linux unter Windows
 Es gibt zwei Formen der geschachtelten Virtualisierung, die mit Azure IoT Edge für Linux unter Windows kompatibel sind. Die Benutzer können wählen, ob die Bereitstellung über einen lokalen virtuellen Computer oder über einen virtuellen Azure-Computer erfolgen soll. Anhand dieses Artikels können sich Benutzer einen Überblick darüber verschaffen, welche Option für ihr Szenario am besten geeignet ist. Zudem erhalten sie Informationen zu den Konfigurationsanforderungen.
 
 > [!NOTE]
 >
-> Aktivieren Sie eine [Netzwerkoption](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization#networking-options) für die geschachtelte Virtualisierung. Wenn Sie dies nicht tun, treten bei der Installation von EFLOW Fehler auf. 
+> Stellen Sie sicher, dass Sie eine [Netzwerkoption](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization#networking-options) für die geschachtelte Virtualisierung aktivieren. Wenn Sie dies nicht tun, treten bei der Installation von EFLOW Fehler auf. 
 
 ## <a name="deployment-on-local-vm"></a>Bereitstellung auf einem lokalen virtuellen Computer
 Hierbei handelt es sich um einen grundlegenden Ansatz für alle virtuellen Windows-Computer, auf denen Azure IoT Edge für Linux unter Windows gehostet wird. In diesem Fall muss zunächst eine geschachtelte Virtualisierung aktiviert werden, bevor mit der Bereitstellung begonnen wird. Weitere Informationen zum Konfigurieren dieses Szenarios finden Sie unter [Ausführen von Hyper-V auf einem virtuellen Computer mit geschachtelter Virtualisierung](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization).

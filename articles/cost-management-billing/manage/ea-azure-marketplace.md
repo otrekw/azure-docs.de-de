@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 0f2d3c830f27eec9f521e6f79ac8dce3bce818e9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: ce9dff017a796e420586ad191a59c149bed07190
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442563"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726824"
 ---
 # <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -74,45 +74,7 @@ Die folgenden Dienste werden stundenweise unter einem Enterprise Agreement und n
 
 Wenn Sie über ein Enterprise Agreement verfügen, zahlen Sie für Azure RemoteApp auf Basis Ihrer Enterprise Agreement-Preisstufe. Es fallen keine zusätzlichen Gebühren an. Der Standardpreis umfasst die ersten 40 Stunden. Der unbegrenzte Preis deckt die ersten 80 Stunden ab. RemoteApp verhindert die 80 Stunden überschreitende Nutzung.
 
-## <a name="azure-marketplace-faq"></a>Azure Marketplace – häufig gestellte Fragen
-
-In diesem Abschnitt wird erläutert, wie Ihre Azure-Vorauszahlung für einige Resellerdienste von Drittanbietern in Azure Marketplace gelten kann.
-
-### <a name="what-changed-with-azure-marketplace-services-and-azure-ea-prepayment"></a>Was hat sich mit Azure Marketplace-Diensten und Azure EA-Vorauszahlung geändert?
-
-Ab dem 1. März 2018 nutzen einige Resellerdienste von Drittanbietern die Azure EA-Vorauszahlung. Mit Ausnahme der reservierten Azure-VM-Instanzen (RIs) wurden Dienste zuvor außerhalb der Azure EA-Vorauszahlung und separat abgerechnet.
-
-Wir erweiterten die Nutzung der Azure-Vorauszahlung, um nun einige der von Drittanbietern im Azure Marketplace veröffentlichten Dienste einzubeziehen, die am häufigsten gekauft werden. Die Azure EA-Vorauszahlung für diese Dienste im Azure Marketplace vereinfacht die Verwaltung Ihrer Einkäufe und Zahlungen.
-
-### <a name="why-did-we-make-this-change"></a>Warum haben wir diese Änderung vorgenommen?
-
-Kunden suchen ständig nach zusätzlichen Möglichkeiten, um die Azure-Vorauszahlung zu nutzen. Diese Änderung wurde häufig von Kunden angefordert, und dies betraf einen großen Teil der Azure Marketplace-Kunden.
-
-### <a name="how-do-you-benefit"></a>Wie profitieren Sie davon?
-
-Sie erhalten eine einfachere Abrechnung und sind eher in der Lage, ihre Azure EA-Vorauszahlung zu nutzen. Da diese Dienste in Ihrer Azure-Vorauszahlung enthalten sind, gewinnt Ihre Azure EA-Vorauszahlung an Wert.
-
-### <a name="what-azure-marketplace-services-use-azure-ea-prepayment-and-how-do-i-know"></a>Welche Azure Marketplace-Dienste verwenden die Azure EA-Vorauszahlung, und wie stelle ich das fest?
-
-Wenn Sie einen Dienst erwerben, der die Azure-Vorauszahlung verwendet, zeigt Azure Marketplace einen Haftungsausschluss dar. Unterstützt werden einige Dienste, die von Red Hat, SUSE, Autodesk und Oracle veröffentlicht werden. Zurzeit werden ähnlich benannte Dienste, die von anderen Parteien veröffentlicht werden, nicht von der Azure-Vorauszahlung abgezogen. Eine vollständige Liste ist am Ende dieser FAQ verfügbar.
-
-### <a name="what-if-my-azure-ea-prepayment-runs-out"></a>Was geschieht, wenn meine Azure EA-Vorauszahlung abläuft?
-
-Wenn Sie Ihre gesamte Azure-Vorauszahlung genutzt haben und sich nun in der Überschreitung befinden, werden die Gebühren für diese Dienste in der nächsten Überschreitungsrechnung zusammen mit anderen Verbrauchsdiensten angezeigt. Vor der Änderung vom 1. März 2018 wurden diese Gebühren mit anderen Azure Marketplace-Diensten abgerechnet.
-
-### <a name="why-dont-all-azure-marketplaces-consume-azure-ea-prepayment"></a>Warum nutzen nicht alle Azure Marketplace-Orte die Azure EA-Vorauszahlung?
-
-Wir arbeiten regelmäßig daran, für die beste Kundenerfahrung im Zusammenhang mit der Azure EA-Vorauszahlung zu sorgen. Diese Änderung betrifft eine große Anzahl von Kunden und einen bedeutenden Teil der Gesamtausgaben im Azure Marketplace. Weitere Dienste könnten künftig hinzugefügt werden.
-
-### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>Wie wirkt sich dies auf indirekte Registrierung und Partner aus?
-
-Unsere Kunden oder Partner mit indirekter Registrierung sind nicht betroffen. Diese Dienste unterliegen denselben Partnermarkupfunktionen wie andere Verbrauchsdienste. Die einzige Änderung besteht darin, dass die Gebühren in einer anderen Rechnung angezeigt werden und die Zahlung der Gebühren aus der Azure EA-Vorauszahlung des Kunden erfolgt.
-
-### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-azure-ea-prepayment"></a>Gibt es eine Liste mit Azure Marketplace-Diensten, die eine Azure EA-Vorauszahlung nutzen?
-
-Bestimmte Azure Marketplace-Angebote können per Azure-Vorauszahlungsguthaben bezahlt werden. Eine vollständige Liste der Produkte in diesem Programm finden Sie unter [Wiederverkaufsdienste von Drittanbietern im Azure Marketplace verwenden ab sofort die Azure-Vorauszahlung](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment).
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu [Preisen](ea-pricing-overview.md).
+- Eine Liste der Fragen und Antworten zu Azure Marketplace-Diensten und Azure EA-Vorauszahlung finden Sie in den [häufig gestellten Fragen zu Cost Management + Billing FAQ](../cost-management-billing-faq.yml).

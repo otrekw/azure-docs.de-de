@@ -7,20 +7,22 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 12/09/2020
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: f2d44cc769e9673eeb75828126f806d2b2308a17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e61c8819e7ccd868ec92458cff69c37f9277d80
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573879"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029623"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Erstellen eines Datencontrollers in Azure Data Studio
 
 Sie können einen Datencontroller mit Azure Data Studio erstellen, indem Sie den Bereitstellungs-Assistenten und Notebooks verwenden.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+Zum aktuellen Zeitpunkt können Sie einen Datencontroller mithilfe der in diesem Artikel beschriebenen Methode erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,13 +35,13 @@ Sie können einen Datencontroller mit Azure Data Studio erstellen, indem Sie den
 Führen Sie die folgenden Schritte aus, um mithilfe des Bereitstellungs-Assistenten einen Azure Arc-Datencontroller zu erstellen.
 
 1. Klicken Sie in Azure Data Studio im linken Navigationsbereich auf die Registerkarte „Verbindungen“.
-2. Klicken Sie oben im Bereich „Verbindungen“ auf die Schaltfläche mit den drei Auslassungspunkten **...** , und wählen Sie **Neue Bereitstellung** aus.
-3. Wählen Sie im neuen Bereitstellungs-Assistenten **Azure Arc-Datencontroller** aus, und klicken Sie dann unten auf die Schaltfläche **Auswählen**.
-4. Stellen Sie sicher, dass die notwendigen Tools in den erforderlichen Versionen verfügbar sind. **Klicken Sie auf „Weiter“**.
-5. Verwenden Sie die standardmäßige kubeconfig-Datei, oder wählen Sie eine andere aus.  Klicken Sie auf **Weiter**.
-6. Wählen Sie einen Kubernetes-Clusterkontext aus. Klicken Sie auf **Weiter**.
-7. Wählen Sie abhängig von Ihrem Kubernetes-Zielcluster ein Bereitstellungskonfigurationsprofil aus. **Klicken Sie auf „Weiter“**.
-8. Wenn Sie die Azure Red Hat OpenShift- oder Red Hat OpenShift-Containerplattform verwenden, wenden Sie Einschränkungen beim Sicherheitskontext an. Befolgen Sie die Anweisungen unter [Anwenden einer Einschränkung beim Sicherheitskontext auf Azure Arc-fähige Datendienste in OpenShift](how-to-apply-security-context-constraint.md).
+1. Klicken Sie oben im Bereich „Verbindungen“ auf die Schaltfläche mit den drei Auslassungspunkten **...** , und wählen Sie **Neue Bereitstellung** aus.
+1. Wählen Sie im neuen Bereitstellungs-Assistenten **Azure Arc-Datencontroller** aus, und klicken Sie dann unten auf die Schaltfläche **Auswählen**.
+1. Stellen Sie sicher, dass die notwendigen Tools in den erforderlichen Versionen verfügbar sind. **Klicken Sie auf „Weiter“**.
+1. Verwenden Sie die standardmäßige kubeconfig-Datei, oder wählen Sie eine andere aus.  Klicken Sie auf **Weiter**.
+1. Wählen Sie einen Kubernetes-Clusterkontext aus. Klicken Sie auf **Weiter**.
+1. Wählen Sie abhängig von Ihrem Kubernetes-Zielcluster ein Bereitstellungskonfigurationsprofil aus. **Klicken Sie auf „Weiter“**.
+1. Wenn Sie die Azure Red Hat OpenShift- oder Red Hat OpenShift-Containerplattform verwenden, wenden Sie Einschränkungen beim Sicherheitskontext an. Befolgen Sie die Anweisungen unter [Anwenden einer Einschränkung beim Sicherheitskontext auf Azure Arc-fähige Datendienste in OpenShift](how-to-apply-security-context-constraint.md).
 
    >[!IMPORTANT]
    >Auf der Azure Red Hat OpenShift- oder Red Hat OpenShift-Containerplattform müssen Sie die Einschränkung beim Sicherheitskontext anwenden, bevor Sie den Datencontroller erstellen.
@@ -48,23 +50,21 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Bereitstellungs-Assisten
 1. Wählen Sie einen Azure-Standort aus.
    
    Der hier ausgewählte Azure-Standort ist der Ort, an dem die *Metadaten* zum Datencontroller und die davon verwalteten Datenbankinstanzen in Azure gespeichert werden. Der Datencontroller und die Datenbankinstanzen werden tatsächlich an diesem Ort für Ihren Kubernetes-Cluster erstellt.
+   
+   Sobald Sie fertig sind, klicken Sie auf **Weiter**.
 
-10. Wählen Sie den entsprechenden Konnektivitätsmodus aus. Weitere Informationen finden Sie unter [Konnektivitätsmodi](./connectivity.md). **Klicken Sie auf „Weiter“**.
-
-    Bei Verwendung des direkten Konnektivitätsmodus müssen die Anmeldeinformationen des Dienstprinzipals wie unter [Erstellen eines Dienstprinzipals](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal) beschrieben festgelegt werden.
-
-11. Geben Sie einen Namen für den Datencontroller und für den Namespace ein, in dem der Datencontroller erstellt wird.
+1. Geben Sie einen Namen für den Datencontroller und für den Namespace ein, in dem der Datencontroller erstellt wird.
 
     Der Datencontroller- und Namespacename werden verwendet, um eine benutzerdefinierte Ressource im Kubernetes-Cluster zu erstellen. Daher müssen sie den [Namenskonventionen von Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names) entsprechen.
     
     Wenn der Namespace bereits vorhanden ist, wird er verwendet, wenn er noch keine anderen Kubernetes-Objekte (Pods usw.) enthält.  Wenn der Namespace nicht vorhanden ist, wird versucht, den Namespace zu erstellen.  Zum Erstellen eines Namespace in einem Kubernetes-Cluster sind Administratorrechte für den Kubernetes-Cluster erforderlich.  Wenn Sie keine Administratorrechte für den Kubernetes-Cluster besitzen, bitten Sie den Kubernetes-Clusteradministrator, die ersten Schritte im Artikel zum [Erstellen eines Datencontrollers mithilfe nativer Kubernetes-Tools](./create-data-controller-using-kubernetes-native-tools.md) auszuführen. Diese Schritte müssen von einem Kubernetes-Administrator ausgeführt werden, bevor Sie diesen Assistenten abschließen.
 
 
-12. Wählen Sie die Speicherklasse aus, in der der Datencontroller bereitgestellt wird. 
-13.  Geben Sie einen Benutzernamen und ein Kennwort ein, und bestätigen Sie das Kennwort für das Konto des Datencontrolleradministrators. Klicken Sie auf **Weiter**.
+1. Wählen Sie die Speicherklasse aus, in der der Datencontroller bereitgestellt wird. 
+1.  Geben Sie einen Benutzernamen und ein Kennwort ein, und bestätigen Sie das Kennwort für das Konto des Datencontrolleradministrators. Klicken Sie auf **Weiter**.
 
-14. Überprüfen Sie die Bereitstellungskonfiguration.
-15. Klicken Sie auf **Bereitstellen**, um die gewünschte Konfiguration bereitzustellen, oder **Skript in Notebook**, um die Bereitstellungsanweisungen zu überprüfen bzw. erforderliche Änderungen z. B. an Speicherklassennamen oder Diensttypen vorzunehmen. Klicken Sie oben im Notebook auf **Alle ausführen**.
+1. Überprüfen Sie die Bereitstellungskonfiguration.
+1. Klicken Sie auf **Bereitstellen**, um die gewünschte Konfiguration bereitzustellen, oder **Skript in Notebook**, um die Bereitstellungsanweisungen zu überprüfen bzw. erforderliche Änderungen z. B. an Speicherklassennamen oder Diensttypen vorzunehmen. Klicken Sie oben im Notebook auf **Alle ausführen**.
 
 ## <a name="monitoring-the-creation-status"></a>Überwachen des Erstellungsstatus
 

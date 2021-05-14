@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: fda69d582f26b0c9189898bb5c8b0004a1e47360
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 711b4f6577b17e84a5d30774fa7be4c9033d4340
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722768"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031128"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -174,7 +174,7 @@ Geben Sie zum Authentifizieren mithilfe eines Dienstprinzipals die Dienstprinzip
 
 ### <a name="use-tags-to-manage-versions"></a>Verwenden von Tags für die Versionsverwaltung
 
-Ein Tag ist ein Docker-Konzept, mit dem Sie Versionen von Docker-Containern unterscheiden können. Tags sind Suffixe wie **1.0**, die am Ende eines Containerrepositorys stehen. Zum Beispiel **mcr.microsoft.com/azureiotedge-agent:1.0**. Tags können jederzeit geändert werden, um auf einen anderen Container zu zeigen. Deswegen sollte sich Ihr Team auf eine Konvention einigen, die bei der fortschreitenden Aktualisierung Ihrer Modulimages beachtet wird.
+Ein Tag ist ein Docker-Konzept, mit dem Sie Versionen von Docker-Containern unterscheiden können. Tags sind Suffixe wie **1.1**, die am Ende eines Containerrepositorys stehen. Beispiel: **mcr.microsoft.com/azureiotedge-agent:1.1**. Tags können jederzeit geändert werden, um auf einen anderen Container zu zeigen. Deswegen sollte sich Ihr Team auf eine Konvention einigen, die bei der fortschreitenden Aktualisierung Ihrer Modulimages beachtet wird.
 
 Tags helfen Ihnen auch bei der Durchsetzung von Updates auf Ihren IoT Edge-Geräten. Wenn Sie eine aktualisierte Modulversion in Ihre Containerregistrierung pushen, erhöhen Sie das Tag. Pushen Sie dann eine neue Bereitstellung auf Ihre Geräte mit dem inkrementierten Tag. Die Container-Engine erkennt das inkrementierte Tag als neue Version und pullt die neueste Modulversion auf Ihr Gerät.
 
@@ -263,6 +263,17 @@ Wenn Ihre Geräte in einem Netzwerk bereitgestellt werden, das einen Proxyserver
 
 Unter Linux verwendet der IoT Edge-Daemon Journale als Standardprotokolltreiber. Sie können das Befehlszeilentool `journalctl` verwenden, um die Daemonprotokolle abzufragen.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Unter Windows verwendet der IoT Edge-Daemon die PowerShell-Diagnose. Verwenden Sie `Get-IoTEdgeLog`, um Protokolle vom Daemon abzufragen. IoT Edge-Module verwenden zum Protokollieren den JSON-Treiber, der die Standardoption darstellt.  
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
+
+:::moniker-end
+<!-- end 1.1 -->
+
 <!--1.2-->
 :::moniker range=">=iotedge-2020-11"
 
@@ -281,12 +292,6 @@ Ab Version 1.2 basiert IoT Edge auf mehreren Daemons. Obwohl die Protokolle jed
   ```
 
 :::moniker-end
-
-Unter Windows verwendet der IoT Edge-Daemon die PowerShell-Diagnose. Verwenden Sie `Get-IoTEdgeLog`, um Protokolle vom Daemon abzufragen. IoT Edge-Module verwenden zum Protokollieren den JSON-Treiber, der die Standardoption darstellt.  
-
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
-```
 
 Wenn Sie eine IoT Edge-Bereitstellung testen, können Sie in der Regel auf Ihre Geräte zugreifen, um Protokolle abzurufen und Fehler zu beheben. In einem Bereitstellungsszenario haben Sie diese Option möglicherweise nicht. Überlegen Sie, wie Sie Informationen über Ihre Geräte in der Produktion sammeln können. Eine Möglichkeit besteht darin, ein Protokollierungsmodul zu verwenden, das Informationen von anderen Modulen erfasst und in die Cloud sendet. Ein Beispiel für ein Protokollierungsmodul ist [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics). Sie haben auch die Möglichkeit, Ihr eigenes Modul zu erstellen.
 
@@ -308,12 +313,24 @@ Sie können die Größe aller Containerprotokolldateien in den Protokolloptionen
 }
 ```
 
-Fügen Sie diese Informationen zu einer Datei namens `daemon.json` hinzu (oder fügen Sie sie an), und platzieren Sie die Datei am richtigen Speicherort für Ihre Geräteplattform.
+Fügen Sie diese Informationen der Datei `daemon.json` hinzu (oder fügen Sie sie an die Datei an), und speichern Sie die Datei dann am folgenden Ort:
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 | Plattform | Standort |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* `/etc/docker/`
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Die Containerengine muss neu gestartet werden, damit die Änderungen wirksam werden.
 

@@ -3,13 +3,13 @@ title: Überwachen der Leistung von Azure App Services | Microsoft-Dokumentation
 description: Überwachung der Anwendungsleistung für Azure App Services. Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-js, devx-track-dotnet, devx-track-azurepowershell
+ms.openlocfilehash: e8c794e056dca42a06bdf6b7deb274e7f5f5bfd4
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734722"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315901"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -416,7 +416,7 @@ Aktuelle Informationen zu Application Insights-Agent/Erweiterung finden Sie in d
 
 Wenn Sie eine Web-App mit der `ASP.NET`- oder `ASP.NET Core`-Runtime in Azure App Services erstellen, wird eine einzelne statische HTML-Seite als Starter-Website bereitgestellt. Die statische Webseite lädt auch ein ASP.NET-verwaltetes Webpart in IIS. Dies ermöglicht das Testen der serverseitigen Überwachung ohne Code, unterstützt jedoch nicht die automatische clientseitige Überwachung.
 
-Wenn Sie die server- und clientseitige Überwachung ohne Code für ASP.NET oder ASP.NET Core in einer Azure App Services-Web-App testen möchten, wird empfohlen, den offiziellen Anleitungen zum [Erstellen einer ASP.NET Core-Web-App](../../app-service/quickstart-dotnetcore.md) und [Erstellen einer ASP.NET Framework-Web-App](../../app-service/quickstart-dotnet-framework.md) zu folgen und anschließend die Anweisungen im aktuellen Artikel zum Aktivieren der Überwachung zu verwenden.
+Wenn Sie die server- und clientseitige Überwachung ohne Code für ASP.NET oder ASP.NET Core in einer Azure App Services-Web-App testen möchten, wird empfohlen, den offiziellen Anleitungen zum [Erstellen einer ASP.NET Core-Web-App](../../app-service/quickstart-dotnetcore.md) und [Erstellen einer ASP.NET Framework-Web-App](../../app-service/quickstart-dotnetcore.md?tabs=netframework48) zu folgen und anschließend die Anweisungen im aktuellen Artikel zum Aktivieren der Überwachung zu verwenden.
 
 ### <a name="connection-string-and-instrumentation-key"></a>Verbindungszeichenfolge und Instrumentierungsschlüssel
 

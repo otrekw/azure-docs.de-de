@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b0150c18f2c007ed104d34daacd49ab03131a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f50792ec45570f7e90893a97150ea26b63ebf9c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743376"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829834"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -112,9 +112,11 @@ Nachdem ein Konto für MFA aktiviert wurde, können Sie sich erst dann bei Resso
 Führen Sie die Schritte in [Was ist Azure AD Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-first-time.md) aus, um Ihre Geräte ordnungsgemäß mit Ihrem Benutzerkonto für MFA zu konfigurieren.
 
 > [!IMPORTANT]
-> Das Anmeldeverhalten für Remotedesktopgateway umfasst keine Option zur Eingabe eines Verifizierungscodes über Azure AD Multi-Factor Authentication. Benutzerkonten müssen für die Telefonüberprüfung oder die Microsoft Authenticator-App über Pushbenachrichtigungen konfiguriert sein.
+> Das Anmeldeverhalten für Remotedesktopgateway umfasst keine Option zum Eingeben eines Prüfcodes über Azure AD Multi-Factor Authentication. Benutzerkonten müssen für die Telefonüberprüfung oder die Microsoft Authenticator-App über Pushbenachrichtigungen konfiguriert sein.
 >
-> Wenn eine dieser Authentifizierungsmethoden für einen Benutzer nicht konfiguriert sind, kann Azure AD Multi-Factor Authentication nicht abgeschlossen werden, und der Benutzer kann sich nicht beim Remotedesktopgateway anmelden.
+> Wenn weder die Telefonüberprüfung noch die Microsoft Authenticator-App mit Pushbenachrichtigungen für einen Benutzer konfiguriert ist, kann der Benutzer den Azure AD Multi-Factor Authentication-Vorgang nicht abschließen und sich nicht bei Remotedesktopgateway anmelden.
+>
+> Die SMS-Textmethode funktioniert bei Remotedesktopgateway nicht, weil Remotedesktopgateway keine Option zum Eingeben eines Prüfcodes bietet.
 
 ## <a name="install-and-configure-nps-extension"></a>Installieren und Konfigurieren der NPS-Erweiterung
 

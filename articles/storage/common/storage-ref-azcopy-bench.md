@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c1028d0a4a458746c08fd6fa4f16aa952d9962a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e49e787854069c2fcea30df7a43c3aacdd21b9e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87282006"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502027"
 ---
 # <a name="azcopy-benchmark"></a>azcopy bench
 
@@ -38,6 +38,12 @@ Mit dem Befehl „bench“ wird derselbe Vorgang wie mit „copy“ ausgeführt.
 Der Vergleichstestmodus wird automatisch auf die Anzahl der parallelen TCP-Verbindungen abgestimmt, die maximalen Durchsatz gewährleisten. Die Anzahl wird am Ende angezeigt. Um die automatische Abstimmung zu verhindern, legen Sie die Umgebungsvariable AZCOPY_CONCURRENCY_VALUE auf eine bestimmte Anzahl von Verbindungen fest. 
 
 Alle üblichen Authentifizierungstypen werden unterstützt. Der einfachste Ansatz für den Vergleichstest von Uploads besteht normalerweise jedoch darin, einen leeren Container mit einem SAS-Token zu erstellen und die SAS-Authentifizierung zu verwenden. (Der Modus „Download“ erfordert, dass ein Satz von Testdaten im Zielcontainer vorhanden ist.)
+
+## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
+
+- [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
+- [Optimieren der Leistung von AzCopy v10 mit Azure Storage](storage-use-azcopy-optimize.md)
+
 
 ## <a name="examples"></a>Beispiele
 

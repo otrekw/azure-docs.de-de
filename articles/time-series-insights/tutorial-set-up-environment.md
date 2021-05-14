@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Einrichten einer Gen2-Umgebung – Azure Time Series Insights Gen2 | Microsoft-Dokumentation'
 description: 'Tutorial: Hier erfahren Sie, wie Sie eine Umgebung in Azure Time Series Insights Gen2 einrichten.'
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: riserrad
+ms.author: riserrad
+manager: edett
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 02/25/2021
+ms.date: 04/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: 76a33bdb773645c9e8f97a47b1378d813b165631
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3994802e82b126f426a75a26d399f6f86e21797
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103464180"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107952000"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Tutorial: Einrichten einer Azure Time Series Insights Gen2-Umgebung
 
@@ -113,19 +113,18 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Azure Time Series Insights Ge
    | **IoT Hub-Name** | Wählen Sie den Namen des IoT-Hubs aus, den Sie für den Gerätesimulator erstellt haben. |
    | **Zugriffsrichtlinie für IoT Hub** | Wählen Sie **iothubowner** aus. |
    | **IoT Hub-Consumergruppe** | Wählen Sie **Neu** aus, geben Sie einen eindeutigen Namen ein, und wählen Sie anschließend **+ Hinzufügen** aus. Bei der Consumergruppe muss es sich um einen eindeutigen Wert in Azure Time Series Insights Gen2 handeln. |
+   | **Startoptionen** | Wählen Sie **Beginning now** (Wird jetzt gestartet) aus. |
    | **Timestamp property** (Timestamp-Eigenschaft) | Mit diesem Wert wird die Eigenschaft **Zeitstempel** in Ihren eingehenden Telemetriedaten identifiziert. Lassen Sie das Feld für dieses Tutorial leer. Dieser Simulator verwendet den aus IoT Hub eingehenden Zeitstempel, der standardmäßig von Azure Time Series Insights Gen2 verwendet wird. |
 
-1. Klicken Sie auf **Überprüfen + erstellen**.
-
-   [![Konfigurieren des erstellten IoT-Hubs als Ereignisquelle](media/tutorial-set-up-environment/configure-event-source.png)](media/tutorial-set-up-environment/configure-event-source.png#lightbox)
+   :::image type="content" source="media/tutorial-set-up-environment/configure-event-source.png" alt-text="Konfigurieren des erstellten IoT-Hubs als Ereignisquelle" lightbox="media/tutorial-set-up-environment/configure-event-source.png":::
 
 1. Klicken Sie auf **Überprüfen + erstellen**.
 
-    [![Seite „Überprüfen + erstellen“ mit der Schaltfläche „Erstellen“](media/tutorial-set-up-environment/environment-confirmation.png)](media/tutorial-set-up-environment/environment-confirmation.png#lightbox)
+   :::image type="content" source="media/tutorial-set-up-environment/environment-confirmation.png" alt-text="Seite „Überprüfen + erstellen“ mit der Schaltfläche „Erstellen“" lightbox="media/tutorial-set-up-environment/environment-confirmation.png":::
 
-    Sie können den Status Ihrer Bereitstellung überprüfen:
+   Sie können den Status Ihrer Bereitstellung überprüfen:
 
-    [![Benachrichtigung, dass die Bereitstellung abgeschlossen ist](media/tutorial-set-up-environment/deployment-notification.png)](media/tutorial-set-up-environment/deployment-notification.png#lightbox)
+   [![Benachrichtigung, dass die Bereitstellung abgeschlossen ist](media/tutorial-set-up-environment/deployment-notification.png)](media/tutorial-set-up-environment/deployment-notification.png#lightbox)
 
 1. Erweitern Sie die Bereitstellungsdetails.
 

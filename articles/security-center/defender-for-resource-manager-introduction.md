@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 903853f9f37921a68c918d09a94087548b5c562c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 71209d9e20ec0f0cbc263e84d04bf8eba6e98b99
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100660"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279062"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Einführung in Azure Defender für Resource Manager
 
@@ -35,7 +35,7 @@ Azure Defender für Resource Manager überwacht automatisch die Ressourcenverwal
 
 Azure Defender für Resource Manager schützt unter anderem vor folgenden Problemen:
 
-- **Verdächtige Ressourcenverwaltungsvorgänge**, beispielsweise Vorgänge von verdächtigen IP-Adressen, Deaktivierung von Antischadsoftware oder die Ausführung verdächtiger Skripts in VM-Erweiterungen
+- **Verdächtige Ressourcenverwaltungsvorgänge**, beispielsweise Vorgänge von schädlichen IP-Adressen, Deaktivierung von Antischadsoftware oder die Ausführung verdächtiger Skripts in VM-Erweiterungen
 - **Verwendung von Exploit-Toolkits** wie Microburst oder PowerZure
 - **Lateral Movement** von der Azure-Verwaltungsebene zur Azure-Ressourcendatenebene
 

@@ -3,12 +3,13 @@ title: Überwachen der Leistung auf Azure-VMs – Azure Application Insights
 description: Leistungsüberwachung für Anwendungen auf Azure-VMs und in Azure-VM-Skalierungsgruppen. Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 0951d1d622f59de4780735fad78ac73649ea2369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d60b06331f10f33fabfb7ef03365ee6ac8689bcf
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711480"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315163"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Bereitstellen des Azure Monitor Application Insights-Agents auf virtuellen Azure-Computern und in Azure-VM-Skalierungsgruppen
 
@@ -42,7 +43,7 @@ Es gibt zwei Methoden, um die Überwachung von Anwendungen zu aktivieren, die au
   * Der Application Insights-Agent sammelt automatisch die gleichen Abhängigkeitssignale wie das .NET SDK. Weitere Informationen finden Sie unter [Automatisches Sammeln von Abhängigkeiten](./auto-collect-dependencies.md#net).
         
 #### <a name="java"></a>Java
-  * Für Java stellt der **[Application Insights Java 3.0-Agent](./java-in-process-agent.md)** die empfohlene Vorgehensweise dar. Die beliebtesten Bibliotheken und Frameworks sowie Protokolle und Abhängigkeiten werden [automatisch erfasst](./java-in-process-agent.md#auto-collected-requests-dependencies-logs-and-metrics), während Ihnen gleichzeitig eine Vielzahl von [zusätzlichen Konfigurationsmöglichkeiten](./java-standalone-config.md) zur Verfügung steht.
+  * Für Java stellt der **[Application Insights Java 3.0-Agent](./java-in-process-agent.md)** die empfohlene Vorgehensweise dar. Die beliebtesten Bibliotheken und Frameworks sowie Protokolle und Abhängigkeiten werden [automatisch erfasst](./java-in-process-agent.md#auto-collected-requests), während Ihnen gleichzeitig eine Vielzahl von [zusätzlichen Konfigurationsmöglichkeiten](./java-standalone-config.md) zur Verfügung steht.
 
 ### <a name="code-based-via-sdk"></a>Codebasiert über SDK
     

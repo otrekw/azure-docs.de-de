@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/31/2021
 ms.author: jlian
-ms.openlocfilehash: d36a7917693aef9063ade473759f2f451d3a677f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fed568d1e5b85fcfaf5c88eb736e876e9748088
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98234017"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930711"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Transport Layer Security (TLS)-Unterstützung in IoT Hub
 
@@ -24,9 +24,13 @@ TLS 1.0 und 1.1 werden als Legacy betrachtet und in Kürze eingestellt. Weitere
 
 Während eines TLS-Handshakes präsentiert IoT Hub RSA-schlüsselgebundene Serverzertifikate zum Verbinden von Clients. Sein Stamm ist die Baltimore Cybertrust-Stammzertifizierungsstelle (Stamm-ZS). Vor kurzem haben wir eine Änderung am TLS-Serverzertifikat eingeführt, sodass es jetzt von neuen Zwischenzertifizierungsstellen (Intermediate Certificate Authorities, ICA) ausgestellt wird. Weitere Informationen finden Sie unter [IoT Hub TLS certificate update](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/) (Aktualisierung des TLS-Zertifikats für IoT Hub).
 
+### <a name="4kb-size-limit-on-renewal"></a>Größenbeschränkung von 4 KB bei Verlängerung
+
+Während der Verlängerung der serverseitigen IoT Hub-Zertifikate wird beim IoT Hub-Service eine Überprüfung durchgeführt, um zu verhindern, dass die `Server Hello`-Größe von 4 KB überschritten wird. Ein Client muss über mindestens 4 KB RAM verfügen, um einen eingehenden TLS-maximalen Inhalts Längenpuffer festzulegen, damit vorhandene Geräte, die für das Limit von 4 KB festgelegt sind, nach der Zertifikatverlängerung weiterhin wie zuvor funktionieren. Bei eingeschränkten Geräten unterstützt der IoT-Hub die [maximal zulässige TLS-Fragmentlänge in der Vorschau](#tls-maximum-fragment-length-negotiation-preview). 
+
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>TLS-Zertifikat von ECC-Server (Elliptic Curve Cryptography) (Vorschau)
 
-Das TLS-Zertifikat von ECC-Server für IoT Hub steht für die öffentliche Vorschau zur Verfügung. Während die ECC-Zertifikatüberprüfung (mit Nur-ECC-Verschlüsselungssammlungen) eine ähnliche Sicherheit für RSA-Zertifikate bietet, nutzt sie bis zu 40 % weniger Compute, Arbeitsspeicher und Bandbreite. Diese Einsparungen sind wichtig für IoT-Geräte aufgrund ihrer kleineren Profile und des kleineren Arbeitsspeichers und zur Unterstützung von Anwendungsfällen in Umgebungen mit eingeschränkter Netzwerkbandbreite. 
+Das TLS-Zertifikat von ECC-Server für IoT Hub steht für die öffentliche Vorschau zur Verfügung. Während die ECC-Zertifikatüberprüfung (mit Nur-ECC-Verschlüsselungssammlungen) eine ähnliche Sicherheit für RSA-Zertifikate bietet, nutzt sie bis zu 40 % weniger Compute, Arbeitsspeicher und Bandbreite. Diese Einsparungen sind wichtig für IoT-Geräte aufgrund ihrer kleineren Profile und des kleineren Arbeitsspeichers und zur Unterstützung von Anwendungsfällen in Umgebungen mit eingeschränkter Netzwerkbandbreite. Der Stamm des ECC-Serverzertifikats lautet „DigiCert Global Root G3“.
 
 So können Sie die Vorschau des ECC-Serverzertifikats für IoT Hub anzeigen:
 

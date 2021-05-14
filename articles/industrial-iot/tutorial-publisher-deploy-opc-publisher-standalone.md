@@ -6,18 +6,18 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: c82d15541459b5b482e427fc707b92755aa02c6c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a47f9d6a47876f09ca241c30e3443886642e4fd8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104787232"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137236"
 ---
 # <a name="tutorial-deploy-the-opc-publisher"></a>Tutorial: Bereitstellen von OPC Publisher
 
 OPC Publisher ist ein vollständig unterstütztes Open-Source-Produkt von Microsoft, das die Lücke zwischen Industrieanlagen und der Microsoft Azure-Cloud schließt. Dazu stellt es eine Verbindung mit OPC UA-fähigen Anlagen oder Industriekonnektivitätssoftware her und veröffentlicht Telemetriedaten in verschiedenen Formaten in [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/), u. a. im Standardformat „IEC62541 OPC UA PubSub“ (ab Version 2.6).
 
-Das Produkt wird als Modul in [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) oder als Container in einer einfachen Docker-Umgebung ausgeführt. Da es die [plattformübergreifende .NET-Runtime](https://docs.microsoft.com/dotnet/core/introduction) nutzt, wird es auch nativ unter Linux und Windows 10 ausgeführt.
+Das Produkt wird als Modul in [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) oder als Container in einer einfachen Docker-Umgebung ausgeführt. Da es die [plattformübergreifende .NET-Runtime](/dotnet/core/introduction) nutzt, wird es auch nativ unter Linux und Windows 10 ausgeführt.
 
 In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 

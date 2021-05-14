@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: d7ae1e72dee28509c1338a1b56cf42a5293af9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ceb39893327af82e8dff3e82ef570727b3bdfa33
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104670255"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141948"
 ---
 # <a name="glossary-of-iot-terms"></a>Glossar mit IoT-Begriffen
 
@@ -178,7 +178,7 @@ Die Geräteverwaltung umfasst den vollständigen Lebenszyklus, der der Verwaltun
 
 ### <a name="device-model"></a>Gerätemodell
 
-Ein Gerätemodell ist ein Typ von [Modell](#model), bei dem die [Digital Twins Definition Language](#digital-twins-definition-language-dtdl) zum Beschreiben der Funktionen eines IoT Plug & Play-Geräts verwendet wird. Ein einfaches Gerätemodell verwendet eine einzelne Schnittstelle, um die Gerätefunktionen zu beschreiben. Ein komplexeres Gerätemodell umfasst mehrere Komponenten, die jeweils eine Reihe von Funktionen beschreiben. Weitere Informationen finden Sie unter [IoT Plug & Play-Komponenten in Modellen](../iot-pnp/concepts-components.md).
+Ein Gerätemodell ist ein Typ von [Modell](#model), bei dem die [Digital Twins Definition Language](#digital-twins-definition-language-dtdl) zum Beschreiben der Funktionen eines IoT Plug & Play-Geräts verwendet wird. Ein einfaches Gerätemodell verwendet eine einzelne Schnittstelle, um die Gerätefunktionen zu beschreiben. Ein komplexeres Gerätemodell umfasst mehrere Komponenten, die jeweils eine Reihe von Funktionen beschreiben. Weitere Informationen finden Sie unter [IoT Plug & Play-Komponenten in Modellen](../iot-pnp/concepts-modeling-guide.md).
 
 ### <a name="device-modeling"></a>Gerätemodellierung
 
@@ -394,7 +394,7 @@ Beim [Azure Digital Twins-Dienst](../digital-twins/index.yml) können Modelle zu
 
 ### <a name="model-id"></a>Modell-ID
 
-Wenn ein IoT Plug & Play-Gerät eine Verbindung mit einem IoT-Hub herstellt, sendet es die **Modell-ID** des von ihm implementierten[DTDL](#digital-twins-definition-language-dtdl)-Modells. Anhand dieser ID ist die Lösung in der Lage, das Gerätemodell zu finden.
+Wenn ein IoT Plug & Play-Gerät eine Verbindung mit einem IoT-Hub herstellt, sendet es die **Modell-ID** des von ihm implementierten [DTDL](#digital-twins-definition-language-dtdl)-Modells. Anhand dieser ID ist die Lösung in der Lage, das Gerätemodell zu finden.
 
 ### <a name="model-repository"></a>Modellrepository
 
@@ -435,6 +435,12 @@ Bei [IoT Edge](#iot-edge) ist ein Modul ein Docker-Container, der auf IoT Edge-G
 [MQTT](https://mqtt.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](../iot-hub/iot-hub-devguide-messaging.md).
 
 ## <a name="o"></a>O
+
+### <a name="ontology"></a>Ontologie
+
+Eine Reihe von Modellen für eine bestimmte Domäne, z. B. Immobilien, Smart Citys, IoT-Systeme, Energienetze und mehr. Ontologien werden oft als Schemas für Wissensgraphen wie die in [Azure Digital Twins](#azure-digital-twins) verwendet, weil sie einen Ausgangspunkt bereitstellen, der auf Branchenstandards und bewährten Methoden basiert.
+
+Weitere Informationen zu Ontologien finden Sie unter [Was ist eine Ontologie?](../digital-twins/concepts-ontologies.md).
 
 ### <a name="operations-monitoring"></a>Vorgangsüberwachung
 

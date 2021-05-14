@@ -2,18 +2,18 @@
 title: 'Schnellstart für die Azure Key Vault-Zertifikatclientbibliothek: Java'
 description: In den Schritten in dieser Schnellstartanleitung erfahren Sie mehr über die Azure Key Vault-Zertifikatclientbibliothek für Java.
 author: msmbaldwin
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
 ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: c064a35ac6136d728f75b65379c543149cc8189d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 7173dea0d6261d7d71e148677fde80511e5ef8a5
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750030"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288272"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>Schnellstart: Azure Key Vault-Zertifikatclientbibliothek für Java (Zertifikate)
 Hier finden Sie Informationen zu den ersten Schritten mit der Azure Key Vault-Zertifikatclientbibliothek für Java. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.
@@ -272,4 +272,4 @@ In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt sowie 
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](../general/developers-guide.md)
-- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-overview.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-features.md)

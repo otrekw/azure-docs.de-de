@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d13db238674cae62f528c3d730bf892a72b8f6c2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1c2ebd04fa227bf20570bfee90a97711a0458177
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764691"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318565"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Erstellen und Verwalten von Lesereplikaten über die Azure CLI und die REST-API
 
@@ -142,14 +142,14 @@ Sie können Lesereplikate mithilfe der [ Azure-REST-API](/rest/api/azure/) erste
    }
    ```
 
-2. [Starten Sie den Server neu](/rest/api/postgresql/servers/restart), um die Änderung zu übernehmen.
+2. [Starten Sie den Server neu](/rest/api/postgresql/singleserver/servers/restart), um die Änderung zu übernehmen.
 
    ```http
    POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/restart?api-version=2017-12-01
    ```
 
 ### <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
-Sie können ein Lesereplikat mithilfe der [Create-API](/rest/api/postgresql/servers/create) erstellen:
+Sie können ein Lesereplikat mithilfe der [Create-API](/rest/api/postgresql/singleserver/servers/create) erstellen:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{replicaName}?api-version=2017-12-01
@@ -177,14 +177,14 @@ Ein Replikat wird mit den gleichen Compute- und Speichereinstellungen erstellt w
 > Bevor eine Primärservereinstellung auf einen neuen Wert aktualisiert wird, aktualisieren Sie die Replikateinstellung auf den gleichen oder einen größeren Wert. Diese Aktion sorgt dafür, dass das Replikat mit allen Änderungen auf dem Masterserver Schritt halten kann.
 
 ### <a name="list-replicas"></a>Auflisten von Replikaten
-Sie können die Replikatliste eines primären Servers mithilfe der [Replica List-API](/rest/api/postgresql/replicas/listbyserver) anzeigen:
+Sie können die Replikatliste eines primären Servers mithilfe der [Replica List-API](/rest/api/postgresql/singleserver/replicas/listbyserver) anzeigen:
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>Beenden der Replikation auf einem Replikatserver
-Sie können die Replikation zwischen einem primären Server und einem Lesereplikat mithilfe der [Update-API](/rest/api/postgresql/servers/update) beenden.
+Sie können die Replikation zwischen einem primären Server und einem Lesereplikat mithilfe der [Update-API](/rest/api/postgresql/singleserver/servers/update) beenden.
 
 Das Beenden der Replikation zwischen einem primären Server und einem Lesereplikat kann nicht mehr rückgängig gemacht werden. Das Lesereplikat wird zu einem eigenständigen Server, der sowohl Lese- als auch Schreibvorgänge unterstützt. Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden.
 
@@ -201,7 +201,7 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 ```
 
 ### <a name="delete-a-primary-or-replica-server"></a>Löschen eines primären oder Replikatservers
-Zum Löschen eines primären oder Replikatservers verwenden Sie die [Delete-API](/rest/api/postgresql/servers/delete):
+Zum Löschen eines primären oder Replikatservers verwenden Sie die [Delete-API](/rest/api/postgresql/singleserver/servers/delete):
 
 Wenn Sie einen primären Server löschen, wird die Replikation auf allen Lesereplikaten beendet. Die Lesereplikate werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
 

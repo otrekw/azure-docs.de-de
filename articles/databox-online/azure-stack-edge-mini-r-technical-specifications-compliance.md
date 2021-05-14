@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0f3b81ac12d0ae96dde0397bc01a4570d992ea9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727480"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310171"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack Edge Mini R: Technische Spezifikationen
 
@@ -24,31 +24,35 @@ Die Hardwarekomponenten Ihres Microsoft Azure Stack Edge Mini R-Geräts entsprec
 
 Das Azure Stack Edge Mini R-Gerät verfügt über die folgenden Spezifikationen für Compute- und Arbeitsspeicherressourcen:
 
-| Spezifikation           | Wert                  |
-|-------------------------|------------------------|
-| CPU    | CPU mit 16 Kernen, Intel Xeon-D 1577 |
-| Arbeitsspeicher              | 48 GB RAM (2400 MT/s)                  |
+| Spezifikation           | Wert                           |
+|-------------------------|---------------------------------|
+| CPU-Typ                | Intel Xeon-D 1577               |
+| CPU: unformatiert                | 16 Kerne insgesamt, 32 vCPUs insgesamt  |
+| CPU: nutzbar             | 24 vCPUs                        |
+| Arbeitsspeichertyp             | SODIMM, 16 GB, 2400 MT/s          |
+| Arbeitsspeicher: unformatiert             | 48 GB RAM (3 x 16 GB)           |
+| Arbeitsspeicher: nutzbar          | 32 GB RAM                       |
 
 
 ## <a name="compute-acceleration-specifications"></a>Spezifikationen zur Computebeschleunigung
 
 Eine integrierte Bildverarbeitungseinheit (Vision Processing Unit, VPU) ist in jedem Azure Stack Edge Mini R-Gerät enthalten, das auf Kubernetes, Deep Neural Network und maschinellem Sehen basierende Anwendungen ermöglicht.
 
-| Spezifikation           | Wert                  |
-|-------------------------|------------------------|
-| Karte für die Computebeschleunigung         | Intel Movidius Myriad X VPU <br> Weitere Informationen finden Sie unter [Intel Movidius Myriad X VPU](https://www.movidius.com/MyriadX). |
+| Spezifikation             | Wert                  |
+|---------------------------|------------------------|
+| Karte für die Computebeschleunigung | Intel Movidius Myriad X VPU <br> Weitere Informationen finden Sie unter [Intel Movidius Myriad X VPU](https://www.movidius.com/MyriadX). |
 
 
 ## <a name="storage-specifications"></a>Speicherspezifikation
 
 Das Azure Stack Edge Mini R-Gerät verfügt über einen Datenträger für Daten und einen Startdatenträger (der als Speicher für das Betriebssystem dient). In der folgenden Tabelle sind die Details zur Speicherkapazität des Geräts aufgeführt.
 
-|     Spezifikation                          |     Wert             |
-|--------------------------------------------|-----------------------|
-|    Anzahl von Solid-State-Laufwerken (SSDs)     |    2 x 1 TB Datenträger <br> Ein Datenträger für Daten und ein Startdatenträger                  |
-|    Kapazität eines SSD-Laufwerks                     |    1 TB               |
-|    Gesamtkapazität (nur Daten)              |    1 TB              |
-|    Insgesamt nutzbare Kapazität*                  |    ~ 750 GB        |
+|     Spezifikation                          |     Wert                                              |
+|--------------------------------------------|--------------------------------------------------------|
+|    Anzahl von Solid-State-Laufwerken (SSDs)     |    2 x 1 TB Datenträger <br> Ein Datenträger für Daten und ein Startdatenträger |
+|    Kapazität eines SSD-Laufwerks                     |    1 TB                                                |
+|    Gesamtkapazität (nur Daten)              |    1 TB                                                |
+|    Insgesamt nutzbare Kapazität*                  |    ~ 750 GB                                            |
 
 **Etwas Speicherplatz ist für die interne Verwendung reserviert.*
 
@@ -59,8 +63,8 @@ Das Azure Stack Edge Mini R-Gerät verfügt über die folgenden Spezifikationen 
 
 |Spezifikation  |Wert  |
 |---------|---------|
-|Netzwerkschnittstellen    |2 x 10 GbE SFP+ <br> Wird als ANSCHLUSS 3 und ANSCHLUSS 4 auf der lokalen Benutzeroberfläche angezeigt.           |
-|Netzwerkschnittstellen    |2 x 1 GbE RJ45 <br> Wird als ANSCHLUSS 1 und ANSCHLUSS 2 auf der lokalen Benutzeroberfläche angezeigt.          |
+|Netzwerkschnittstellen    |2 x 10 GbE SFP+ <br> Wird als ANSCHLUSS 3 und ANSCHLUSS 4 auf der lokalen Benutzeroberfläche angezeigt.           |
+|Netzwerkschnittstellen    |2 x 1 GbE RJ45 <br> Wird als ANSCHLUSS 1 und ANSCHLUSS 2 auf der lokalen Benutzeroberfläche angezeigt.          |
 |WLAN   |802.11ac         |
 
 
@@ -85,9 +89,9 @@ Das Azure Stack Edge Mini R-Gerät enthält auch einen eingebauten Akku, der du
 Ein zusätzlicher [Akku des Typs 2590](https://www.bren-tronics.com/bt-70791ck.html) kann in Verbindung mit dem eingebauten Akku verwendet werden, um den Einsatz des Geräts zwischen den Ladevorgängen zu verlängern. Dieser Akku sollte allen Sicherheits-, Transport- und Umweltvorschriften des Landes entsprechen, in dem er verwendet wird.
 
 
-| Spezifikation           | Wert                      |
-|-------------------------|----------------------------|
-| Kapazität des eingebauten Akkus | 73 WH                    |
+| Spezifikation            | Wert                      |
+|--------------------------|----------------------------|
+| Kapazität des eingebauten Akkus | 73 Wh                     |
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>Gehäuseabmessungen und Gewicht
 
@@ -99,18 +103,18 @@ In der folgenden Tabelle sind die Abmessungen des Geräts und der USV im robuste
 
 |     Gehäuse     |     Millimeter     |     Zoll     |
 |-------------------|---------------------|----------------|
-|    Höhe         |    68            |    2.68          |
-|    Breite          |    208          |      8,19          |
-|    Länge          |   259           |    10,20          |
+|    Höhe         |    68               |    2.68        |
+|    Breite          |    208              |      8,19      |
+|    Länge          |   259              |    10,20       |
 
 
 ### <a name="enclosure-weight"></a>Gehäusegewicht
 
 In der folgenden Tabelle ist das Gewicht des Geräts einschließlich Akku aufgeführt.
 
-|     Gehäuse                                 |     Weight          |
-|-----------------------------------------------|---------------------|
-|    Gesamtgewicht des Geräts     |    ~ 3,2 kg (7 lbs)          |
+|     Gehäuse                     |     Weight          |
+|-----------------------------------|---------------------|
+|    Gesamtgewicht des Geräts     |     3,2 kg (7 lbs)           |
 
 ## <a name="enclosure-environment-specifications"></a>Spezifikationen der Gehäuseumgebung
 

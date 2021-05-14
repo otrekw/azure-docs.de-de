@@ -1,15 +1,15 @@
 ---
 title: 'Schnellstart: Erstellen einer Verwaltungsgruppe mit .NET Core'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe von .NET Core eine Verwaltungsgruppe, um Ihre Ressourcen in einer Ressourcenhierarchie zu organisieren.
-ms.date: 02/05/2021
+ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a74cea9b142785c093b8ed235fc40049746f11a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 422382ca438e203b2ee77deddc9ca82d73cd1ed4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592550"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733767"
 ---
 # <a name="quickstart-create-a-management-group-with-net-core"></a>Schnellstart: Erstellen einer Verwaltungsgruppe mit .NET Core
 
@@ -60,7 +60,7 @@ Erstellen Sie eine neue Konsolenanwendung, und installieren Sie die erforderlich
    using Microsoft.Rest;
    using Microsoft.Azure.Management.ManagementGroups;
    using Microsoft.Azure.Management.ManagementGroups.Models;
-   
+
    namespace mgCreate
    {
        class Program
@@ -72,12 +72,12 @@ Erstellen Sie eine neue Konsolenanwendung, und installieren Sie die erforderlich
                string strClientSecret = args[2];
                string strGroupId = args[3];
                string strDisplayName = args[4];
-   
+
                var authContext = new AuthenticationContext($"https://login.microsoftonline.com/{strTenant}");
                var authResult = await authContext.AcquireTokenAsync(
                       "https://management.core.windows.net",
                       new ClientCredential(strClientId, strClientSecret));
-   
+
                using (var client = new ManagementGroupsAPIClient(new TokenCredentials(authResult.AccessToken)))
                {
                    var mgRequest = new CreateManagementGroupRequest

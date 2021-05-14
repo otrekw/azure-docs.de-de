@@ -2,31 +2,33 @@
 title: Beheben von Netzwerkproblemen mit der Registrierung
 description: Enthält eine Beschreibung der Symptome, Ursachen und Lösungen häufiger Probleme, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten.
 ms.topic: article
-ms.date: 10/01/2020
-ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/30/2021
+ms.openlocfilehash: dc2110405713791d11fb438565fc091da9c9dd5c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699605"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780750"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Beheben von Netzwerkproblemen mit der Registrierung
 
-Dieser Artikel enthält hilfreiche Informationen zum Beheben von Problemen, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten können. 
+Dieser Artikel hilft Ihnen bei der Fehlerbehebung von Problemen, die beim Zugriff auf eine Azure-Container-Registrierung in einem virtuellen Netzwerk oder hinter einer Firewall oder einem Proxy-Server auftreten können. 
 
 ## <a name="symptoms"></a>Symptome
 
 Beispiele für Symptome sind:
 
 * Images können nicht gepusht oder gepullt werden, und Sie erhalten den Fehler `dial tcp: lookup myregistry.azurecr.io`.
+* Images können nicht gepusht oder gepullt werden, und Sie erhalten den Fehler `Client.Timeout exceeded while awaiting headers`.
 * Images können nicht gepusht oder gepullt werden, und Sie erhalten den Azure CLI-Fehler `Could not connect to the registry login server`.
 * Images können nicht aus der Registrierung in Azure Kubernetes Service oder einen anderen Azure-Dienst gepullt werden.
-* Auf eine Registrierung hinter einem HTTPS-Proxy kann nicht zugegriffen werden, und Sie erhalten den Fehler `Error response from daemon: login attempt failed with status: 403 Forbidden`.
+* Auf eine Registrierung hinter einem HTTPS-Proxy kann nicht zugegriffen werden, und Sie erhalten den Fehler `Error response from daemon: login attempt failed with status: 403 Forbidden` oder `Error response from daemon: Get <registry>: proxyconnect tcp: EOF Login failed`
 * Die Einstellungen für das virtuelle Netzwerk können nicht konfiguriert werden, und die Fehlermeldung `Failed to save firewall and virtual network settings for container registry` wird angezeigt.
 * Das Zugreifen auf oder das Anzeigen von Registrierungseinstellungen im Azure-Portal oder das Verwalten der Registrierung mithilfe der Azure CLI ist nicht möglich.
 * Einstellungen für das virtuelle Netzwerk oder Regeln für den öffentlichen Zugriff können nicht hinzugefügt oder geändert werden.
 * Mit ACR Tasks können keine Images gepusht oder gepullt werden.
 * Mit Azure Security Center können keine Images in der Registrierung gescannt werden, oder die Scanergebnisse werden in Azure Security Center nicht angezeigt.
+* Sie erhalten einen `host is not reachable`-Fehler, wenn Sie versuchen, auf eine Registrierung zuzugreifen, die mit einem privaten Endpunkt konfiguriert ist.
 
 ## <a name="causes"></a>Ursachen
 
@@ -37,11 +39,11 @@ Beispiele für Symptome sind:
 
 ## <a name="further-diagnosis"></a>Weitere Diagnose 
 
-Führen Sie den Befehl [az acr check-health](/cli/azure/acr#az-acr-check-health) aus, um weitere Informationen zur Integrität der Registrierungsumgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Diagnostizieren Sie beispielsweise bestimmte Probleme mit der Netzwerkkonnektivität oder -konfiguration. 
+Führen Sie den Befehl [az acr check-health](/cli/azure/acr#az_acr_check_health) aus, um weitere Informationen zur Integrität der Registrierungsumgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Diagnostizieren Sie beispielsweise bestimmte Probleme mit der Netzwerkkonnektivität oder -konfiguration. 
 
 Befehlsbeispiele finden Sie unter [Überprüfen der Integrität einer Azure-Containerregistrierung](container-registry-check-health.md). Wenn Fehler gemeldet werden, überprüfen Sie die [Fehlerreferenz](container-registry-health-error-reference.md) und die folgenden Abschnitte für empfohlene Lösungen.
 
-Wenn Sie Probleme bei Verwendung der Registrierung mit Azure Kubernetes Service haben, führen Sie den Befehl [az aks check-acr](/cli/azure/aks#az_aks_check_acr) aus, um zu überprüfen, ob der Zugriff auf die Registrierung vom AKS-Cluster aus möglich ist.
+Wenn Sie Probleme bei der Verwendung eines Azure-Kubernetes-Dienstes mit integrierter Registry haben, führen Sie den Befehl [az aks check-acrr](/cli/azure/aks#az_aks_check_acr) aus, um zu überprüfen, ob der AKS-Cluster die Registry erreichen kann.
 
 > [!NOTE]
 > Einige Symptome in Bezug auf die Netzwerkkonnektivität können auch auftreten, wenn es Probleme mit der Authentifizierung oder Autorisierung der Registrierung gibt. Weitere Informationen finden Sie unter [Beheben von Problemen mit der Registrierungsanmeldung](container-registry-troubleshoot-login.md).
@@ -57,7 +59,7 @@ Sie müssen die Firewallregeln für den Zugriff auf die öffentlichen REST- und 
 
 Konfigurieren Sie für eine Registrierung mit Georeplikation den Zugriff auf den Datenendpunkt für jedes regionale Replikat.
 
-Stellen Sie hinter einem HTTPS-Proxy sicher, dass sowohl Ihr Docker-Client als auch Ihr Docker-Daemon für das Proxyverhalten konfiguriert sind.
+Stellen Sie hinter einem HTTPS-Proxy sicher, dass sowohl Ihr Docker-Client als auch Ihr Docker-Daemon für das Proxyverhalten konfiguriert sind. Wenn Sie die Proxy Einstellungen für den Locker-Daemon ändern, stellen Sie sicher, dass Sie den Daemon neu starten. 
 
 Registrierungsressourcenprotokolle in der Tabelle „ContainerRegistryLoginEvents“ können als Hilfe beim Diagnostizieren einer blockierten Verbindungsherstellung dienen.
 
@@ -85,6 +87,8 @@ Verwandte Links:
 
 Vergewissern Sie sich, dass für das virtuelle Netzwerk entweder ein privater Endpunkt für Private Link oder ein Dienstendpunkt (Vorschau) konfiguriert ist. Ein Azure Bastion-Endpunkt wird derzeit nicht unterstützt.
 
+Wenn ein privater Endpunkt konfiguriert ist, vergewissern Sie sich, dass das DNS den öffentlichen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) der Registrierung (z. B. *myregistry.azurecr.io*) in die private IP-Adresse der Registrierung auflöst. Verwenden Sie für das DNS-Lookup ein Netzwerkhilfsprogramm, z. B. `dig` oder `nslookup`. Stellen Sie sicher, dass [DNS-Einträge](container-registry-private-link.md#dns-configuration-options) für den Registrierungs-FQDN und für jeden der Datenendpunkt-FQDNs konfiguriert sind.
+
 Überprüfen Sie die NSG-Regeln und die Diensttags, mit denen der Datenverkehr von anderen Ressourcen im Netzwerk zur Registrierung eingeschränkt wird. 
 
 Wenn ein Dienstendpunkt für die Registrierung konfiguriert ist, sollten Sie sich vergewissern, dass der Registrierung eine Netzwerkregel hinzugefügt wird, die den Zugriff über dieses Netzwerksubnetz zulässt. Der Dienstendpunkt unterstützt nur den Zugriff über virtuelle Computer und AKS-Cluster im Netzwerk.
@@ -93,11 +97,10 @@ Wenn Sie den Registrierungszugriff mithilfe eines virtuellen Netzwerks in einem 
 
 Wenn im Netzwerk Azure Firewall oder eine ähnliche Lösung konfiguriert ist, sollten Sie überprüfen, ob der ausgehende Datenverkehr von anderen Ressourcen, z. B. einem AKS-Cluster, möglich ist, damit die Registrierungsendpunkte erreicht werden können.
 
-Wenn ein privater Endpunkt konfiguriert ist, vergewissern Sie sich, dass das DNS den öffentlichen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) der Registrierung (z. B. *myregistry.azurecr.io*) in die private IP-Adresse der Registrierung auflöst. Verwenden Sie für das DNS-Lookup ein Netzwerkhilfsprogramm, z. B. `dig` oder `nslookup`.
-
 Verwandte Links:
 
 * [Herstellen einer privaten Verbindung mit einer Azure-Containerregistrierung über Azure Private Link](container-registry-private-link.md)
+* [Behandeln von Problemen mit der Konnektivität privater Azure-Endpunkte](../private-link/troubleshoot-private-endpoint-connectivity.md)
 * [Beschränken des Zugriffs auf eine Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk](container-registry-vnet.md)
 * [Erforderliche Netzwerkregeln für ausgehenden Datenverkehr und FQDNs für AKS-Cluster](../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
 * [Kubernetes: Debuggen der DNS-Auflösung](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)

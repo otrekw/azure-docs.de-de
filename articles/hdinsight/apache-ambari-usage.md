@@ -4,16 +4,16 @@ description: In diesem Artikel wird die Verwendung von Apache Ambari in Azure HD
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2021
-ms.openlocfilehash: 6233c42d7fbf8dc7821d26f77171c44485fb8d34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35338cad4364abbf233e3da81b05ba912959ed65
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946941"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064488"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Verwendung von Apache Ambari in Azure HDInsight
 
-HDInsight verwendet Apache Ambari für die Bereitstellung und Verwaltung von Clustern. Ambari-Agents werden auf jedem Knoten ausgeführt: Hauptknoten, Workerknoten, Zookeeper-Knoten und Edgeknoten, sofern vorhanden. Der Ambari-Server wird nur auf dem Hauptknoten („hn0“ oder „hn1“) ausgeführt. Es kann immer nur eine Instanz des Ambari-Servers ausgeführt werden. Dies wird durch den HDInsight-Failovercontroller gesteuert. Wenn einer der Hauptknoten zum Zweck eines Neustarts oder für Wartungsmaßnamen heruntergefahren wurde, wird der andere Hauptknoten aktiv, und der Ambari-Server auf dem zweiten Hauptknoten wird gestartet.
+HDInsight verwendet Apache Ambari für die Bereitstellung und Verwaltung von Clustern. Ambari-Agents werden auf jedem Knoten ausgeführt: Hauptknoten, Workerknoten, Zookeeper-Knoten und Edgeknoten, sofern vorhanden. Der Ambari-Server wird nur auf dem Hauptknoten ausgeführt. Es kann immer nur eine Instanz des Ambari-Servers ausgeführt werden. Dies wird durch den HDInsight-Failovercontroller gesteuert. Wenn einer der Hauptknoten zum Zweck eines Neustarts oder für Wartungsmaßnamen heruntergefahren wurde, wird der andere Hauptknoten aktiv, und der Ambari-Server auf dem zweiten Hauptknoten wird gestartet.
 
 Die gesamte Clusterkonfiguration sollte über die [Ambari-Benutzeroberfläche](./hdinsight-hadoop-manage-ambari.md) erfolgen, alle lokalen Änderungen werden beim Neustart des Knotens überschrieben.
 

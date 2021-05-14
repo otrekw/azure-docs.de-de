@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 04d17e17ef11696efd52f04ea83639f2a9b81fea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e718ef30d029995c49efe36f19a6efcf7de0616
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96938748"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589600"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Dropbox für Unternehmen für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in Dropbox für Unternehmen und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in Dropbox für Unternehmen zu konfigurieren.
 
 > [!IMPORTANT]
-> Microsoft und Dropbox nehmen die alte Dropbox-Integration ab 1.4.2021 außer Betrieb. Um Dienstunterbrechungen zu vermeiden, empfehlen wir, zur neuen Dropbox-Integration zu migrieren, die Gruppen unterstützt. Zur Migration zur neuen Dropbox-Integration führen Sie die folgenden Schritte aus, um eine neue Dropbox-Instanz zur Bereitstellung in Ihrem Azure AD-Mandanten hinzuzufügen und zu konfigurieren. Sobald Sie die neue Dropbox-Integration konfiguriert haben, deaktivieren Sie die Bereitstellung der alten Integration, um Bereitstellungskonflikte zu vermeiden. Ausführlichere Schritte zum Migrieren zur neuen Dropbox-Integration finden Sie unter [Aktualisieren auf die neueste Dropbox-Version für Geschäftsanwendungen mithilfe von Azure AD](https://help.dropbox.com/installs-integrations/third-party/update-dropbox-azure-ad-connector).
+> Microsoft und Dropbox nehmen die alte Dropbox-Integration zu einem späteren Zeitpunkt außer Betrieb. Dies war ursprünglich für den 01.04.2021 geplant, wurde jedoch auf unbestimmte Zeit verschoben. Um Dienstunterbrechungen zu vermeiden, empfehlen wir jedoch, zur neuen SCIM 2.0-Dropbox-Integration zu migrieren, die Gruppen unterstützt. Zur Migration zur neuen Dropbox-Integration führen Sie die folgenden Schritte aus, um eine neue Dropbox-Instanz zur Bereitstellung in Ihrem Azure AD-Mandanten hinzuzufügen und zu konfigurieren. Sobald Sie die neue Dropbox-Integration konfiguriert haben, deaktivieren Sie die Bereitstellung der alten Integration, um Bereitstellungskonflikte zu vermeiden. Ausführlichere Schritte zum Migrieren zur neuen Dropbox-Integration finden Sie unter [Aktualisieren auf die neueste Dropbox-Version für Geschäftsanwendungen mithilfe von Azure AD](https://help.dropbox.com/installs-integrations/third-party/update-dropbox-azure-ad-connector).
 
 > [!NOTE]
 > In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).

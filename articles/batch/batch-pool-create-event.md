@@ -3,18 +3,18 @@ title: 'Azure Batch: Poolerstellungsereignis'
 description: Referenz zum Batch-Poolerstellungsereignis, das nach dem Erstellen eines Pools ausgegeben wird. Der Inhalt des Protokolls macht allgemeine Informationen zum Pool verfügbar.
 ms.topic: reference
 ms.date: 10/08/2020
-ms.openlocfilehash: f8b020401443b2a9e80837599d6fd4b2a3001d27
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e75b56a6fd5de5fd17107c3960004e0edb1b799
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97609002"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988260"
 ---
 # <a name="pool-create-event"></a>Poolerstellungsereignis
 
  Dieses Ereignis wird ausgegeben, nachdem ein Pool erstellt wurde. Der Inhalt des Protokolls macht allgemeine Informationen zum Pool verfügbar. Wenn die Zielgröße des Pools größer als 0 Computeknoten ist, folgt unmittelbar auf dieses Ereignis ein Ereignis zum Start der Größenänderung des Pools.
 
- Das folgende Beispiel zeigt den Text eines Poolerstellungsereignisses für einen Pool, der mit der Eigenschaft `CloudServiceConfiguration` erstellt wurde.
+ Das folgende Beispiel zeigt den Text eines Ereignisses zum Erstellen von Pools.
 
 ```
 {
@@ -68,6 +68,9 @@ ms.locfileid: "97609002"
 |`vmFillType`|String|Definiert, wie vom Batch-Dienst Tasks zwischen den Computeknoten im Pool verteilt werden. Gültige Werte sind „Spread“ oder „Pack“.|
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration
+
+> [!WARNING]
+> Cloud Services-Konfigurationspools sind [veraltet](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Verwenden Sie stattdessen VM-Konfigurationspools.
 
 |Elementname|type|Notizen|
 |------------------|----------|-----------|

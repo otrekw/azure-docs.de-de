@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 0504467e387c0875a8e00bd1cf638ec437232092
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: a015ba06be6a10985a4771e842a6d910dd4cd9ab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554376"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157537"
 ---
 Das **Hero-Beispiel für Gruppenanrufe** von Azure Communication Services veranschaulicht, wie das Communication Services Calling Web-SDK für Anrufe verwendet werden kann, um eine Benutzeroberfläche für Gruppenanrufe zu erstellen.
 
@@ -23,7 +23,7 @@ In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie das Beispiel funk
 
 ## <a name="download-code"></a>Code herunterladen
 
-Suchen Sie das Projekt für dieses Beispiel auf [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero). Eine Version des Beispiels mit [Teams-Interoperabilität](../../concepts/teams-interop.md) kann in einer separaten [Verzweigung](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/teams-interop) gefunden werden.
+Suchen Sie das Projekt für dieses Beispiel auf [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero). Eine Version des Beispiels mit [Teams-Interoperabilität](../../concepts/teams-interop.md) kann in einer separaten [Verzweigung](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/teams-interop) gefunden werden.
 
 ## <a name="overview"></a>Übersicht
 
@@ -48,7 +48,7 @@ Komponenten des Hauptbildschirms für Anrufe:
 - **Seitenleiste**: Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Komponente kann mit dem „X“ oben rechts geschlossen werden. In der Seitenleiste für die Teilnehmer werden eine Liste mit Teilnehmern und ein Link zum Einladen von weiteren Benutzern zum Chatten angezeigt. In der Seitenleiste für die Einstellungen können Sie die Mikrofon- und Kameraeinstellungen konfigurieren.
 
 > [!NOTE]
-> Basierend auf den Einschränkungen des Web Calling SDK wird nur ein Remotevideostream gerendert. Weitere Informationen finden Sie unter [Support für den Calling SDK-Datenstrom](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features#calling-sdk-streaming-support).
+> Basierend auf den Einschränkungen des Web Calling SDK wird nur ein Remotevideostream gerendert. Weitere Informationen finden Sie unter [Support für den Calling SDK-Datenstrom](../../concepts/voice-video-calling/calling-sdk-features.md#calling-sdk-streaming-support).
 
 Unten sind weitere Informationen zu den Voraussetzungen und Schritten zum Einrichten des Beispiels angegeben.
 

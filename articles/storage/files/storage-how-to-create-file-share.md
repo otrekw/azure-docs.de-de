@@ -5,16 +5,16 @@ description: Hier erfahren Sie, wie Sie über das Azure-Portal, mithilfe von Pow
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 1/20/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 24bee926d84c7a5be3f19c39d39285c2cd486824
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9caabb8dc7f09e4ef3852d9269d178c086744779
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211021"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789805"
 ---
 # <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Um eine Azure-Dateifreigabe zu erstellen, müssen Sie drei Fragen zur Verwendung beantworten:
@@ -54,11 +54,11 @@ Wählen Sie zum Erstellen eines Speicherkontos über das Azure-Portal im Dashboa
 #### <a name="basics"></a>Grundlagen
 Der erste Abschnitt bei der Erstellung eines Speicherkontos hat die Bezeichnung **Grundlagen**. Er enthält alle erforderlichen Felder für die Erstellung eines Speicherkontos. Stellen Sie bei der Erstellung eines GPv2-Speicherkontos sicher, dass das Optionsfeld **Leistung** auf *Standard* festgelegt und in der Dropdownliste **Kontoart** die Option *StorageV2 (universell v2)* ausgewählt ist.
 
-![Screenshot: Optionsfeld „Leistung“ mit Auswahl von „Standard“ und Auswahl von „StorageV2 (universell v2)“ für „Kontoart“](media/storage-how-to-create-file-share/create-storage-account-1.png)
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-standard.png" alt-text="Screenshot: Optionsfeld „Leistung“ mit Auswahl von „Standard“ und Auswahl von „StorageV2 (universell v2)“ für „Kontoart“":::.
 
-Stellen Sie zum Erstellen eines FileStorage-Speicherkontos sicher, dass das Optionsfeld **Leistung** auf *Premium* festgelegt und in der Dropdownliste **Kontoart** die Option *FileStorage* ausgewählt ist.
+Stellen Sie zum Erstellen eines FileStorage-Speicherkontos sicher, dass das Optionsfeld **Leistung** auf *Premium* festgelegt und in der Dropdownliste **Premium-Kontoart** die Option **Dateifreigaben** ausgewählt ist.
 
-![Screenshot: Optionsfeld „Leistung“ mit Auswahl von „Premium“ und Auswahl von „FileStorage“ für „Kontoart“](media/storage-how-to-create-file-share/create-storage-account-2.png)
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="Screenshot: Optionsfeld „Leistung“ mit Auswahl von „Premium“ und Auswahl von „FileStorage“ für „Kontoart“.":::
 
 Die anderen Felder für die Grundlagen sind unabhängig von der Auswahl des Speicherkontos:
 - **Speicherkontoname**: Der Name der Speicherkontoressource, die erstellt werden soll. Dieser Name muss global eindeutig sein, aber ansonsten gelten keine weiteren Einschränkungen. Der Name des Speicherkontos wird als Servername verwendet, wenn Sie eine Azure-Dateifreigabe per SMB einbinden.
@@ -75,9 +75,12 @@ Im Abschnitt „Datenschutz“ können Sie die Richtlinie für vorläufiges Lös
 Der Abschnitt „Erweitert“ enthält mehrere wichtige Einstellungen für Azure-Dateifreigaben:
 
 - **Sichere Übertragung erforderlich**: Dieses Feld gibt an, ob für die Kommunikation mit dem Speicherkonto in eingehender Richtung eine Verschlüsselung während der Übertragung erforderlich ist. Wenn Sie Unterstützung für SMB 2.1 benötigen, müssen Sie diese Option deaktivieren.
+
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-secure-transfer.png" alt-text="Screenshot der aktivierten sicheren Übertragung in den erweiterten Einstellungen für das Speicherkonto.":::
+
 - **Große Dateifreigaben**: Mit diesem Feld wird für das Speicherkonto die Nutzung von Dateifreigaben mit einer Größe von bis zu 100 TiB ermöglicht. Wenn Sie dieses Feature aktivieren, wird Ihr Speicherkonto auf die Nutzung von lokal redundantem und zonenredundantem Speicher beschränkt. Nachdem für ein GPv2-Speicherkonto große Dateifreigaben aktiviert wurden, können Sie diese Funktion nicht mehr deaktivieren. Für Speicherkonten vom Typ „FileStorage“ (Speicherkonten für Premium-Dateifreigaben) ist diese Option nicht vorhanden, da alle Premium-Dateifreigaben auf bis zu 100 TiB hochskaliert werden können. 
 
-![Screenshot: Wichtige erweiterte Einstellungen für Azure Files](media/storage-how-to-create-file-share/create-storage-account-3.png)
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-large-file-shares.png" alt-text="Screenshot der Einstellung für große Dateifreigaben auf dem erweiterten Blatt des Speicherkontos.":::
 
 Die anderen Einstellungen, die auf der Registerkarte „Erweitert“ verfügbar sind (hierarchischer Namespace für Azure Data Lake Store Gen2, Standardblobebene, NFSv3 für Blob Storage usw.) gelten nicht für Azure Files.
 
@@ -160,7 +163,7 @@ az storage account create \
 
 ---
 
-## <a name="create-file-share"></a>Erstellen einer Dateifreigabe
+## <a name="create-a-file-share"></a>Erstellen einer Dateifreigabe
 Nachdem Sie Ihr Speicherkonto erstellt haben, fehlt nur noch die Erstellung der Dateifreigabe. Dieser Prozess ist unabhängig davon, ob eine Premium- oder Standard-Dateifreigabe verwendet wird, größtenteils identisch. Sie sollten die folgenden Unterschiede berücksichtigen.
 
 Standarddateifreigaben können in einer der Standardebenen bereitgestellt werden: transaktionsoptimierte (Standard), heiße oder kalte Ebene. Hierbei handelt es sich um eine Ebene pro Dateifreigabe, die nicht von der **Blobzugriffsebene** des Speicherkontos betroffen ist (diese Eigenschaft bezieht sich nur auf Azure-Blobspeicher – sie bezieht sich überhaupt nicht auf Azure Files). Sie können die Ebene der Freigabe jederzeit nach der Bereitstellung ändern. Premium-Dateifreigaben können nicht direkt in eine Standardebene umgewandelt werden.
@@ -175,9 +178,7 @@ Die **quota**-Eigenschaft unterscheidet sich leicht zwischen Premium- und Standa
 - Für Premium-Dateifreigaben ist mit dem Kontingent die **bereitgestellte Größe** gemeint. Die bereitgestellte Größe ist die Menge, die Ihnen unabhängig von der tatsächlichen Nutzung berechnet wird. Weitere Informationen zur Planung einer Premium-Dateifreigabe finden Sie im Abschnitt zum [Bereitstellen von Premium-Dateifreigaben](understanding-billing.md#provisioned-model).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Wenn Sie Ihr Speicherkonto gerade erstellt haben, können Sie vom Bereitstellungsbildschirm dorthin navigieren, indem Sie **Zu Ressource wechseln** auswählen. Wählen Sie im Speicherkonto die Kachel **Dateifreigaben** aus. (Sie können auch über das Inhaltsverzeichnis des Speicherkontos zu **Dateifreigaben** navigieren.)
-
-![Screenshot: Kachel „Dateifreigaben“](media/storage-how-to-create-file-share/create-file-share-1.png)
+Wenn Sie Ihr Speicherkonto gerade erstellt haben, können Sie vom Bereitstellungsbildschirm dorthin navigieren, indem Sie **Zu Ressource wechseln** auswählen. Wählen Sie im Speicherkonto den Eintrag **Dateifreigabe** aus dem Inhaltsverzeichnis aus.
 
 In der Liste mit den Dateifreigaben sollten alle Dateifreigaben angezeigt werden, die Sie unter diesem Speicherkonto zuvor erstellt haben. Die Tabelle ist leer, falls noch keine Dateifreigaben erstellt wurden. Wählen Sie **+ Dateifreigabe** aus, um eine neue Dateifreigabe zu erstellen.
 
@@ -235,13 +236,13 @@ az storage share-rm create \
 > [!Note]  
 > Der Name der Dateifreigabe darf nur Kleinbuchstaben enthalten. Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
-### <a name="changing-the-tier-of-an-azure-file-share"></a>Ändern der Ebene einer Azure-Dateifreigabe
+### <a name="change-the-tier-of-an-azure-file-share"></a>Ändern der Ebene einer Azure-Dateifreigabe
 Dateifreigaben, die in **GPv2-Speicherkonto (Universell v2)** bereitgestellt werden, können auf den transaktionsoptimierten, heißen oder kalten Ebenen liegen. Sie können die Ebene der Azure-Dateifreigabe jederzeit ändern, vorbehaltlich der oben beschriebenen Transaktionskosten.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Wählen Sie auf der Seite des Hauptspeicherkontos die Option **Dateifreigaben** und dann die Kachel mit der Bezeichnung **Dateifreigaben** aus (Sie können auch über das Inhaltsverzeichnis des Speicherkontos zu **Dateifreigaben** navigieren).
 
-![Screenshot: Kachel „Dateifreigaben“](media/storage-how-to-create-file-share/create-file-share-1.png)
+:::image type="content" source="media/storage-files-quick-create-use-windows/click-files.png" alt-text="Screenshot des Speicherkontos mit ausgewählter Option „Dateifreigaben“.":::
 
 Wählen Sie in der tabellarischen Liste der Dateifreigaben die Dateifreigabe aus, für die Sie die Ebene ändern möchten. Wählen Sie auf der Übersichtsseite der Dateifreigabe **Ebene ändern** aus dem Menü aus.
 
@@ -276,6 +277,6 @@ az storage share-rm update \
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Planen der Bereitstellung von Azure Files](storage-files-planning.md) oder [Planen der Bereitstellung der Azure-Dateisynchronisierung](storage-sync-files-planning.md). 
+- [Planen der Bereitstellung von Azure Files](storage-files-planning.md) oder [Planen der Bereitstellung der Azure-Dateisynchronisierung](../file-sync/file-sync-planning.md). 
 - [Netzwerkübersicht](storage-files-networking-overview.md).
 - Führen Sie die Verbindungsherstellung und Einbindung einer Dateifreigabe unter [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) und [Linux](storage-how-to-use-files-linux.md) durch.

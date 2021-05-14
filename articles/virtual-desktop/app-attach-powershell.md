@@ -1,36 +1,28 @@
 ---
-title: 'Windows Virtual Desktop: PowerShell-Vorschau zum Anfügen von Apps mit MSIX – Azure'
+title: Einrichten des MSIX-Features zum Anfügen von Apps für Windows Virtual Desktop mithilfe von PowerShell – Azure
 description: Einrichten des MSIX-Features zum Anfügen von Apps für Windows Virtual Desktop über PowerShell.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8b6bad32ec653fb2ba63c6940cf6a89a13a8afd0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: ebc403553443a9ea04525323b751fbdb51d23c6e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448320"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500582"
 ---
-# <a name="set-up-msix-app-attach-preview-using-powershell"></a>Einrichten des MSIX-Features zum Anfügen von Apps (Vorschau) über PowerShell
+# <a name="set-up-msix-app-attach-using-powershell"></a>Einrichten des MSIX-Features zum Anfügen von Apps mit PowerShell
 
-> [!IMPORTANT]
-> Das MSIX-Features zum Anfügen von Apps befindet sich zurzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Neben dem Azure-Portal können Sie das MSIX-Feature zum Anfügen von Apps (Vorschau) auch manuell mit PowerShell einrichten. In diesem Artikel erfahren Sie, wie Sie PowerShell verwenden, um das MSIX-Feature zum Anfügen von Apps einzurichten.
+Neben dem Azure-Portal können Sie auch PowerShell verwenden, um das MSIX-Feature zum Anfügen von Apps manuell einzurichten. In diesem Artikel erfahren Sie, wie Sie PowerShell verwenden, um das MSIX-Feature zum Anfügen von Apps einzurichten.
 
 ## <a name="requirements"></a>Anforderungen
-
->[!IMPORTANT]
->Bevor Sie beginnen, sollten Sie [dieses Formular](https://aka.ms/enablemsixappattach) ausfüllen und übermitteln, um das MSIX-Feature zum Anfügen von Apps in Ihrem Abonnement zu aktivieren. Wenn Ihre Anforderung noch nicht genehmigt wurde, funktioniert das MSIX-Feature zum Anfügen von Apps nicht. Die Genehmigung von Anforderungen kann an Werktagen bis zu 24 Stunden dauern. Sie erhalten eine E-Mail, wenn Ihre Anforderung akzeptiert und abgeschlossen wurde.
 
 Folgendes benötigen Sie, um das MSIX-Feature zum Anfügen von Apps zu konfigurieren:
 
 - Eine funktionierende Windows Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung von Windows Virtual Desktop (klassisch) finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zum Bereitstellen von Windows Virtual Desktop mit Azure Resource Manager-Integration finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
 - Ein Windows Virtual Desktop-Hostpool mit mindestens einem aktiven Sitzungshost.
-- Dieser Hostpool muss sich in der Überprüfungsumgebung befinden.
 - Eine Desktop-/Remote-App-Gruppe.
 - Das MSIX-Pakettool.
 - Eine MSIX-gepackte Anwendung, die in ein MSIX-Image erweitert wurde, das in eine Dateifreigabe hochgeladen wird.

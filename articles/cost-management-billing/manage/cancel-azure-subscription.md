@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 03/31/2021
 ms.author: banders
-ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b20134cbfb85c2dcaef1227e6390c8c6047ad5be
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735774"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109389"
 ---
 # <a name="cancel-your-azure-subscription"></a>Kündigen Ihres Azure-Abonnements
 
@@ -76,6 +76,10 @@ Wenn Sie über ein kostenloses Testabonnement verfügen, müssen Sie nicht 30 T
 1. Wählen Sie im Azure-Portal auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus.
 1. Wählen Sie das Abonnement aus, das Sie löschen möchten.
 1. Wählen Sie **Übersicht** und anschließend **Abonnement löschen** aus.
+
+## <a name="delete-other-subscriptions"></a>Löschen anderer Abonnements
+
+Das kostenlose Testabonnement ist der einzige Abonnementtyp, den Sie manuell löschen können. Alle anderen Abonnementtypen, einschließlich Abonnements mit nutzungsbasierter Bezahlung, werden ausschließlich über den Prozess zur [Abonnementkündigung](#cancel-subscription-in-the-azure-portal) gelöscht. Anders ausgedrückt: Sie können ein Abonnement nicht direkt löschen, es sei denn, es handelt sich um ein kostenloses Testabonnement. Nachdem Sie ein Abonnement gekündigt haben, können Sie jedoch eine [Azure-Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458) erstellen, um die sofortige Löschung des Abonnements anzufordern.
 
 ## <a name="reactivate-a-subscription"></a>Reaktivieren eines Abonnements
 

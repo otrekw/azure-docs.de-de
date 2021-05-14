@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: de113e3c005e11bd2bcd13ec6c1554664ba8fbaf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 773ae30cd888e76793bd65f8f31a8c110b128c01
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877297"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135219"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst
 
@@ -24,7 +24,7 @@ Die Spring Cloud-Konfiguration bietet server- und clientseitige Unterstützung f
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
-* Einen bereits bereitgestellten und ausgeführten Azure Spring Cloud-Dienst. Informationen zum Einrichten und Starten eines Azure Spring Cloud-Diensts finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure-Befehlszeilenschnittstelle](spring-cloud-quickstart.md).
+* Einen bereits bereitgestellten und ausgeführten Azure Spring Cloud-Dienst. Informationen zum Einrichten und Starten eines Azure Spring Cloud-Diensts finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure-Befehlszeilenschnittstelle](./quickstart.md).
 
 ## <a name="restriction"></a>Einschränkung
 
@@ -242,12 +242,12 @@ Azure Spring Cloud kann auf Git-Repositorys zugreifen, die öffentlich sind und 
 
    ![Spring Cloud-Konfigurationsserver](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)
 
-## <a name="delete-your-app-configuration"></a>Löschen Ihrer App-Konfiguration
+## <a name="delete-your-configuration"></a>Löschen der Konfiguration
 
-Nachdem Sie Ihre Konfigurationsdatei gespeichert haben, wird auf der Registerkarte **Konfiguration** die Schaltfläche **Delete app configuration** (App-Konfiguration löschen) angezeigt. Durch Auswählen dieser Schaltfläche werden die vorhandenen Einstellungen vollständig gelöscht. Wählen Sie diese Schaltfläche aus, wenn Sie Ihre Konfigurationsserverinstanz mit einer anderen Quelle verbinden möchten, beispielsweise bei der Migration von GitHub zu Azure DevOps.
+Sie können die Schaltfläche **Zurücksetzen** auswählen, die auf der Registerkarte **Konfigurationsserver** angezeigt wird, um Ihre vorhandenen Einstellungen vollständig zu löschen. Löschen Sie die Einstellungen des Konfigurationsservers, wenn Sie Ihre Konfigurationsserverinstanz mit einer anderen Quelle verbinden möchten, beispielsweise bei der Migration von GitHub zu Azure DevOps.
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Ihre Spring Cloud-Konfigurationsserverinstanz aktivieren und konfigurieren. Weitere Informationen zum Verwalten Ihrer Anwendung finden Sie unter [Skalieren einer Anwendung in Azure Spring Cloud](spring-cloud-howto-scale-manual.md).
+In diesem Artikel haben Sie erfahren, wie Sie Ihre Spring Cloud-Konfigurationsserverinstanz aktivieren und konfigurieren. Weitere Informationen zum Verwalten Ihrer Anwendung finden Sie unter [Skalieren einer Anwendung in Azure Spring Cloud](./how-to-scale-manual.md).

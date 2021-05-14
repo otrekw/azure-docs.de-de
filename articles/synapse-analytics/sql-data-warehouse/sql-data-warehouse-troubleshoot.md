@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: af653585ec1b57b5fd697dc755e495a96e04e677
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: f03b71f956f075a730939f657f42c94bebec5b02
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565405"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146579"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Problembehandlung bei einem dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics
 
@@ -55,7 +55,7 @@ Dieser Artikel enthält allgemeine Informationen zur Problembehandlung bei einem
 | TempDB-Speicherplatzprobleme | [Überwachen Sie die Speicherauslastung von TempDB.](sql-data-warehouse-manage-monitor.md#monitor-tempdb)  Häufige Ursachen für unzureichenden TempDB-Speicherplatz:<br>- Der Abfrage sind keine ausreichenden Ressourcen zugeordnet, wodurch ein Überlauf der Daten in TempDB stattfindet.  Siehe [Workloadverwaltung](resource-classes-for-workload-management.md). <br>- Fehlende oder veraltete Statistik, wodurch übermäßige Datenverschiebungen stattfinden.  Ausführliche Informationen zum Erstellen von Statistiken finden Sie unter [Tabellenstatistik in Azure SQL Data Warehouse](sql-data-warehouse-tables-statistics.md).<br>- Der TempDB-Speicherplatz wird nach Dienstebene zugeordnet.  [Skalieren Sie Ihren dedizierten SQL-Pool (früher SQL DW)](sql-data-warehouse-manage-compute-overview.md#scaling-compute) auf eine höhere DWU-Einstellung, um mehr TempDB-Speicherplatz zuzuordnen.|
 | Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen.  Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Tabellenstatistik in Azure SQL Data Warehouse](sql-data-warehouse-tables-statistics.md). |
 | Geringe Parallelität/Abfragen in der Warteschlange                             | Das Verständnis der [Workloadverwaltung](resource-classes-for-workload-management.md) ist wichtig, damit Sie wissen, wie Sie die Speicherbelegung und die Parallelität abwägen sollen. |
-| Implementieren von bewährten Methoden                              | Wenn Sie die Leistung bei Ihren Abfragen verbessern möchten, ist der Artikel [Bewährte Methoden für den dedizierten SQL-Pool (früher SQL DW)](sql-data-warehouse-best-practices.md) ein idealer Ausgangspunkt. |
+| Implementieren von bewährten Methoden                              | Wenn Sie die Leistung bei Ihren Abfragen verbessern möchten, ist der Artikel [Bewährte Methoden für den dedizierten SQL-Pool (früher SQL DW)](../sql/best-practices-dedicated-sql-pool.md) ein idealer Ausgangspunkt. |
 | Verbessern der Leistung mit der Skalierung                      | Manchmal besteht der Weg zur Leistungsverbesserung einfach darin, mehr Computeleistung für Ihre Abfragen zur Verfügung zu stellen, indem Sie [Ihren dedizierten SQL-Pool (früher SQL DW) skalieren](sql-data-warehouse-manage-compute-overview.md). |
 | Schlechte Leistung aufgrund von schlechter Indexqualität     | Es kann vorkommen, dass sich Abfragen aufgrund der [schlechten Qualität des Columnstore-Index](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality) verlangsamen.  Weitere Informationen finden Sie unter [Rebuild indexes to improve segment quality](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)(Neuerstellen von Indizes zum Verbessern der Segmentqualität). |
 

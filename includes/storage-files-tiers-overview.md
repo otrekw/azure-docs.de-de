@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6d06a46d2eaaad362890f1e3e44dbc746fa10898
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5fd0394feb8b58688bd163d62af30b031125b46
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98633442"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109663853"
 ---
 Azure Files bietet vier verschiedene Speicherebenen (Premium, transaktionsoptimiert, heiße Ebene und kalte Ebene), sodass Sie Ihre Freigaben an die Leistungs- und Preisanforderungen Ihres jeweiligen Szenarios anpassen können:
 
@@ -22,7 +22,7 @@ Azure Files bietet vier verschiedene Speicherebenen (Premium, transaktionsoptimi
 - **Hot**: Heiße Dateifreigaben verfügen über Speicher, der für universelle Dateifreigabeszenarien optimiert ist, z. B. Teamfreigaben. Heiße Dateifreigaben werden auf HDD-basierter Standardspeicherhardware angeboten.
 - **Cool**: Kalte Dateifreigaben bieten kostengünstigen Speicher, der für Speicherszenarien mit Onlinearchiv optimiert ist. Kalte Dateifreigaben werden auf HDD-basierter Standardspeicherhardware angeboten.
 
-Premium-Dateifreigaben werden im **Speicherkonto vom Typ „FileStorage“** bereitgestellt und sind nur in einem bereitgestellten Abrechnungsmodell verfügbar. Weitere Informationen zum bereitgestellten Abrechnungsmodell für Premium-Dateifreigaben finden Sie unter [Grundlegendes zur Bereitstellung für Premium-Dateifreigaben](../articles/storage/files/understanding-billing.md#provisioned-model). Standarddateifreigaben (einschließlich transaktionsoptimierter, heißer und kalter Dateifreigaben) werden im **Speicherkonto vom Typ „Allgemein v2“ (GPv2)** mit nutzungsbasierter Bezahlung bereitgestellt. Heiße und kalte Dateifreigaben sind in allen öffentlichen Azure-Regionen und allen Azure Government-Regionen verfügbar. Transaktionsoptimierte Dateifreigaben sind in allen Azure-Regionen verfügbar, einschließlich Azure China und Azure Deutschland.
+Premium-Dateifreigaben werden im **Speicherkonto vom Typ „FileStorage“** bereitgestellt und sind nur in einem bereitgestellten Abrechnungsmodell verfügbar. Weitere Informationen zum bereitgestellten Abrechnungsmodell für Premium-Dateifreigaben finden Sie unter [Grundlegendes zur Bereitstellung für Premium-Dateifreigaben](../articles/storage/files/understanding-billing.md#provisioned-model). Standarddateifreigaben (einschließlich transaktionsoptimierter, heißer und kalter Dateifreigaben) werden im **Speicherkonto vom Typ „Allgemein v2“ (GPv2)** mit nutzungsbasierter Bezahlung bereitgestellt. 
 
 Berücksichtigen Sie bei der Wahl einer Speicherebene für Ihre Workload Ihre Leistungs- und Nutzungsanforderungen. Wenn Ihre Workload Latenz im einstelligen Bereich erfordert oder Sie lokale SSD-Speichermedien verwenden, ist wahrscheinlich der Premium-Tarif die beste Wahl. Sollte eine geringe Latenz nicht so wichtig sein (etwa bei Teamfreigaben, die aus Azure lokal eingebunden oder unter Verwendung der Azure-Dateisynchronisierung lokal zwischengespeichert werden), bietet der Standardspeicher unter Umständen ein besseres Preis-Leistungs-Verhältnis.
 

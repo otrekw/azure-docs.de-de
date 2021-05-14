@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 09c4dadd7a6560bd5163d623dd8a7f247b57860e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1ecf807d566fd6603f12ebc820c176edf96ec14
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100102494"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071839"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Verwenden der MSAL in einer nationalen Cloudumgebung
 
@@ -68,75 +68,59 @@ In den folgenden Tutorials erfahren Sie, wie Sie eine .NET Core 2.2-MVC-Web-Ap
 
 So aktivieren Sie Ihre MSAL.js-Anwendung für Sovereign Clouds
 
-### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
+- Registrieren Sie Ihre Anwendung abhängig von der Cloud in einem bestimmten Portal. Weitere Informationen zum Auswählen des Portals finden Sie unter [App-Registrierungsendpunkte](authentication-national-cloud.md#app-registration-endpoints).
+- Verwenden Sie abhängig von der Cloud eines der [Beispiele](https://github.com/Azure-Samples/ms-identity-javascript-tutorial) aus dem Repository mit einigen Änderungen, die im Folgenden genannt werden.
+- Verwenden Sie abhängig von der Cloud, in der Sie die Anwendung registriert haben, eine bestimmte Autorisierung. Weitere Informationen zu autoritativen Stellen für verschiedene Clouds finden Sie unter [Azure AD-Authentifizierungsendpunkte](authentication-national-cloud.md#azure-ad-authentication-endpoints).
+- Zum Aufrufen der Microsoft Graph-API ist eine Endpunkt-URL erforderlich, die für die von Ihnen verwendete Cloud spezifisch ist. Informationen zum Ermitteln von Microsoft Graph-Endpunkten für alle nationalen Clouds finden Sie unter [Stammendpunkte für Microsoft Graph und Graph Explorer](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
-1. Melden Sie sich beim <a href="https://portal.azure.us/" target="_blank">Azure-Portal</a> an.
+Hier ist ein Beispiel für eine Autorisierung:
 
-   Azure-Portalendpunkte für andere nationale Clouds finden Sie unter [App-Registrierungsendpunkte](authentication-national-cloud.md#app-registration-endpoints).
+```json
+"authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
+```
 
-1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
-1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
-1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
-1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
-1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis** aus.
-1. Wählen Sie im Abschnitt **Umleitungs-URI** die Plattform **Web** aus, und legen Sie den Wert auf die URL der Anwendung fest (basierend auf Ihrem Webserver). Eine Anleitung zum Festlegen und Abrufen der Umleitungs-URL in Visual Studio und Node finden Sie in den nächsten Abschnitten.
-1. Wählen Sie **Registrieren**.
-1. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
-    In diesem Tutorial muss der [Flow zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) aktiviert werden. 
-1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
-1. Wählen Sie unter **Implizite Gewährung und Hybridflows** die Optionen **ID-Token** und **Zugriffstoken** aus. ID-Token und Zugriffstoken sind erforderlich, da diese App Benutzer anmelden und eine API aufrufen muss.
-1. Wählen Sie **Speichern** aus.
+Hier finden Sie ein Beispiel für einen Microsoft Graph-Endpunkt mit einem Bereich:
 
-### <a name="step-2--set-up-your-web-server-or-project"></a>Schritt 2:  Einrichten Ihres Webservers oder Projekts
+```json
+"endpoint" : "https://graph.microsoft.us/v1.0/me"
+"scope": "User.Read"
+```
 
-- [Laden Sie die Projektdateien für einen lokalen Webserver herunter](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip), z.B. Node.
-
-  oder
-
-- [Laden Sie das Visual Studio-Projekt herunter](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
-
-Fahren Sie anschließend mit dem Schritt [Konfigurieren Ihrer JavaScript-SPA](#step-4-configure-your-javascript-spa) fort, um das Codebeispiel vor der Ausführung zu konfigurieren.
-
-### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>Schritt 3: Verwenden der Microsoft-Authentifizierungsbibliothek für die Benutzeranmeldung
-
-Gehen Sie wie im [Javascript-Tutorial](tutorial-v2-javascript-spa.md#create-your-project) beschrieben vor, um Ihr Projekt zu erstellen und in die Microsoft-Authentifizierungsbibliothek zu integrieren.
-
-### <a name="step-4-configure-your-javascript-spa"></a>Schritt 4: Konfigurieren Ihrer JavaScript-SPA
-
-Fügen Sie in der Datei `index.html`, die beim Einrichten des Projekts erstellt wurde, die Informationen für die Anwendungsregistrierung hinzu. Fügen Sie in den Tags `<script></script>` oben im Text der Datei `index.html` den folgenden Code hinzu:
+Im Folgenden finden Sie den minimalen Code zum Authentifizieren eines Benutzers bei einer Sovereign Cloud und zum Aufrufen von Microsoft Graph:
 
 ```javascript
 const msalConfig = {
-    auth:{
-        clientId: "Enter_the_Application_Id_here",
+    auth: {
+        clientId: "Enter_the_Application_Id_Here",
         authority: "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here",
-        }
+        redirectUri: "/",
+    }
+};
+
+// Initialize MSAL
+const msalObj = new PublicClientApplication(msalConfig);
+
+// Get token using popup experience
+try {
+    const graphToken = await msalObj.acquireTokenPopup({
+        scopes: ["User.Read"]
+    });
+} catch(error) {
+    console.log(error)
 }
 
-const graphConfig = {
-        graphEndpoint: "https://graph.microsoft.us",
-        graphScopes: ["user.read"],
-}
+// Call the Graph API
+const headers = new Headers();
+const bearer = `Bearer ${graphToken}`;
 
-// create UserAgentApplication instance
-const myMSALObj = new UserAgentApplication(msalConfig);
+headers.append("Authorization", bearer);
+
+fetch("https://graph.microsoft.us/v1.0/me", {
+    method: "GET",
+    headers: headers
+})
 ```
 
-Informationen zu diesem Code:
-
-- `Enter_the_Application_Id_here` ist der Wert **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
-- `Enter_the_Tenant_Info_Here` wird auf eine der folgenden Optionen festgelegt:
-    - Falls Ihre Anwendung **nur Konten in diesem Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch die Mandanten-ID oder durch den Mandantennamen (beispielsweise „contoso.microsoft.com“).
-    - Falls Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch `organizations`.
-
-    Informationen zum Ermitteln von Authentifizierungsendpunkten für alle nationalen Clouds finden Sie unter [Azure AD-Authentifizierungsendpunkte](./authentication-national-cloud.md#azure-ad-authentication-endpoints).
-
-    > [!NOTE]
-    > Persönliche Microsoft-Konten werden in nationalen Clouds nicht unterstützt.
-
-- `graphEndpoint` ist der Microsoft Graph-Endpunkt für Microsoft Cloud for US Government.
-
-   Informationen zum Ermitteln von Microsoft Graph-Endpunkten für alle nationalen Clouds finden Sie unter [Microsoft Graph-Endpunkte in nationalen Clouds](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 ## <a name="python"></a>[Python](#tab/python)
 

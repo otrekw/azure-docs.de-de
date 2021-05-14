@@ -5,18 +5,18 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 3bd571195a3f0df290387812e68f2b0377fe3c3c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 553483a1d7005f73bf62e2afb5cc427d96b2e211
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584049"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331194"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Erstellen von Diensten, die im kostenlosen Azure-Konto enthalten sind
 
-Während der ersten 30 Tage nach dem Erstellen eines kostenlosen Azure-Kontos haben Sie ein Guthaben von 200 $, das Sie für jeden beliebigen Dienst – außer Marketplace-Käufen von Drittanbietern – nutzen können. Sie können mit verschiedenen Tarifen und Typen von Azure-Diensten experimentieren und zum Ausprobieren von Azure das kostenlose Guthaben nutzen. Wenn Sie Dienste oder Azure-Ressourcen nutzen, die während dieses Zeitraums nicht kostenlos sind, werden die entsprechenden Gebühren von Ihrem Guthaben abgezogen.
+Während der ersten 30 Tage nach dem Erstellen eines kostenlosen Azure-Kontos haben Sie ein Guthaben von 200 USD in der Abrechnungswährung, das Sie für jeden beliebigen Dienst – außer Marketplace-Käufe von Drittanbietern – nutzen können. Sie können mit verschiedenen Tarifen und Typen von Azure-Diensten experimentieren und zum Ausprobieren von Azure das kostenlose Guthaben nutzen. Wenn Sie Dienste oder Azure-Ressourcen nutzen, die während dieses Zeitraums nicht kostenlos sind, werden die entsprechenden Gebühren von Ihrem Guthaben abgezogen.
 
 Wenn Sie Ihr gesamtes Guthaben nicht bis zum Ende der ersten 30 Tage nutzen, geht es verloren. Nach den ersten 30 Tagen und bis zu 12 Monate nach der Registrierung können Sie nur eine begrenzte Menge von *einigen Diensten* nutzen, weil nicht alle Azure-Dienste kostenlos sind. Wenn Sie vor Ablauf der 30 Tage ein Upgrade durchführen und Ihnen noch ein Guthaben verbleibt, können Sie den Rest davon mit einem Abonnement mit nutzungsbasierter Bezahlung während der restlichen Tage nutzen. Wenn Sie sich beispielsweise am 1. November für das kostenlose Konto registrieren und das Upgrade am 5. November durchführen, haben Sie bis zum 30. November Zeit, Ihr Guthaben im neuen Abonnement mit nutzungsbasierter Bezahlung zu nutzen. 
 

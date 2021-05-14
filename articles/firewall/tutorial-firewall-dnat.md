@@ -1,25 +1,25 @@
 ---
-title: 'Tutorial: Filtern von eingehendem Internetdatenverkehr mit Azure Firewall-DNAT im Portal'
-description: In diesem Tutorial erfahren Sie, wie Sie Azure Firewall-DNAT über das Azure-Portal bereitstellen und konfigurieren.
+title: Filtern von eingehendem Internetdatenverkehr mit Azure Firewall-DNAT im Portal
+description: In diesem Artikel erfahren Sie, wie Sie Azure Firewall-DNAT unter Verwendung des Azure-Portals bereitstellen und konfigurieren.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
-ms.date: 03/01/2021
+ms.topic: how-to
+ms.date: 04/29/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a1d3bdae1e870b094472a63d4b808d9df95c129d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f31cffc6996ffe5b733ba322584cb400afcc5093
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741904"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291881"
 ---
-# <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Tutorial: Filtern von eingehendem Internetdatenverkehr mit Azure Firewall-DNAT im Azure-Portal
+# <a name="filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Filtern von eingehendem Internetdatenverkehr mit Azure Firewall-DNAT im Azure-Portal
 
 Sie können die Ziel-Netzwerkadressübersetzung (Destination Network Address Translation, DNAT) von Azure Firewall so konfigurieren, dass eingehender Internetdatenverkehr für Ihre Subnetze übersetzt und gefiltert wird. Wenn Sie DNAT konfigurieren, ist die Aktion für die NAT-Regelsammlung auf **Dnat** festgelegt. Jede Regel in der NAT-Regelsammlung kann dann verwendet werden, um die öffentliche IP-Adresse und den Port Ihrer Firewall in eine private IP-Adresse und den zugehörigen Port zu übersetzen. Mit DNAT-Regeln wird implizit eine entsprechende Netzwerkregel hinzugefügt, um den übersetzten Datenverkehr zuzulassen. Aus Sicherheitsgründen besteht die empfohlene Vorgehensweise darin, eine bestimmte Internetquelle hinzuzufügen, um DNAT-Zugriff auf das Netzwerk zu gewähren und die Verwendung von Platzhaltern zu vermeiden. Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](rule-processing.md).
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Einrichten einer Netzwerkumgebung zu Testzwecken
@@ -27,6 +27,9 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen einer Standardroute
 > * Konfigurieren einer DNAT-Regel
 > * Testen der Firewall
+
+> [!NOTE]
+> In diesem Artikel werden für die Verwaltung der Firewall klassische Firewallregeln verwendet. Die bevorzugte Methode ist die Verwendung einer [Firewallrichtlinie](../firewall-manager/policy-overview.md). Informationen zum Ausführen dieses Verfahrens mithilfe der Firewallrichtlinie finden Sie unter [Tutorial: Filtern von eingehendem Internetdatenverkehr mit Azure Firewall-Richtlinien-DNAT im Azure-Portal](tutorial-firewall-dnat-policy.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,7 +49,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="set-up-the-network-environment"></a>Einrichten der Netzwerkumgebung
 
-In diesem Tutorial erstellen Sie zwei mittels Peering verknüpfte VNETs:
+In diesem Artikel erstellen Sie zwei mittels Peering verknüpfte VNets:
 
 - **VN-Hub**:In diesem VNET befindet sich die Firewall.
 - **VN-Spoke**: In diesem VNET befindet sich der Workloadserver.
@@ -142,6 +145,8 @@ Erstellen Sie einen virtuellen Workloadcomputer, und ordnen Sie ihn im Subnetz *
 
 Nachdem die Bereitstellung abgeschlossen ist, können Sie sich die private IP-Adresse für den virtuellen Computer notieren. Sie wird später beim Konfigurieren der Firewall benötigt. Klicken Sie auf den Namen des virtuellen Computers und dann unter **Einstellungen** auf **Netzwerk**, um nach der privaten IP-Adresse zu suchen.
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="deploy-the-firewall"></a>Bereitstellen der Firewall
 
 1. Wählen Sie auf der Startseite des Portals **Ressource erstellen** aus.
@@ -217,20 +222,10 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **SN-Workload** 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können die Firewallressourcen für das nächste Tutorial behalten oder die Ressourcengruppe **RG-DNAT-Test** löschen, wenn Sie sie nicht mehr benötigen. Dadurch werden alle firewallbezogenen Ressourcen gelöscht.
+Sie können die Firewallressourcen für weitere Tests behalten oder die Ressourcengruppe **RG-DNAT-Test** löschen, wenn Sie sie nicht mehr benötigen. Dadurch werden alle firewallbezogenen Ressourcen gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Einrichten einer Netzwerkumgebung zu Testzwecken
-> * Bereitstellen einer Firewall
-> * Erstellen einer Standardroute
-> * Konfigurieren einer DNAT-Regel
-> * Testen der Firewall
-
 Als Nächstes können Sie die Azure Firewall-Protokolle überwachen.
 
-> [!div class="nextstepaction"]
-> [Tutorial: Überwachen von Azure Firewall-Protokollen](./firewall-diagnostics.md)
+[Tutorial: Überwachen von Azure Firewall-Protokollen](./firewall-diagnostics.md)

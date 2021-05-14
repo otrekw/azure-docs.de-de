@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: a7951543d548696c8de403d7980e1a41b678c6cd
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 21546286d8ca9f8b455b84801d2f706466912165
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078667"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137597"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -74,7 +74,7 @@ Der `TriggerMetadata`-Parameter wird verwendet, um zusätzliche Informationen zu
 $TriggerMetadata.sys
 ```
 
-| Eigenschaft   | BESCHREIBUNG                                     | type     |
+| Eigenschaft   | Beschreibung                                     | type     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | Zeitpunkt der Auslösung der Funktion in UTC        | Datetime |
 | MethodName | Der Name der Funktion, die ausgelöst wurde     | Zeichenfolge   |
@@ -122,7 +122,7 @@ Das Verhalten von `Push-OutputBinding` hängt vom Wert für `-Name` ab:
 
 * Wenn die Ausgabebindung nur einen Singletonwert akzeptiert, wird durch einen zweiten Aufruf von `Push-OutputBinding` ein Fehler ausgelöst.
 
-#### <a name="push-outputbinding-syntax"></a>Syntax von `Push-OutputBinding`
+#### <a name="push-outputbinding-syntax"></a>Syntax für Push-OutputBinding
 
 Im Folgenden sind gültige Parameter für den Aufruf von `Push-OutputBinding` angegeben:
 
@@ -196,7 +196,7 @@ PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 
 Beim Schreiben in die Warteschlange enthält die Nachricht diese vier Werte: „output #1“, „output #2“, „output #3“ und „output #4“.
 
-#### <a name="get-outputbinding-cmdlet"></a>Cmdlet `Get-OutputBinding`
+#### <a name="get-outputbinding-cmdlet"></a>Cmdlet Get-OutputBinding
 
 Sie können das Cmdlet `Get-OutputBinding` verwenden, um die Werte abzurufen, die derzeit für Ihre Ausgabebindungen festgelegt sind. Dieses Cmdlet ruft eine Hashtabelle mit den Namen der Ausgabebindungen und ihren jeweiligen Werten ab. 
 
@@ -295,7 +295,7 @@ HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Respon
 
 Das Anforderungsobjekt, das an das Skript übergeben wird, ist vom Typ `HttpRequestContext`, der über die folgenden Eigenschaften verfügt:
 
-| Eigenschaft  | BESCHREIBUNG                                                    | type                      |
+| Eigenschaft  | Beschreibung                                                    | type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Ein Objekt, das den Hauptteil der Anforderung enthält. `Body` wird basierend auf den Daten in den am besten geeigneten Typ serialisiert. Bei JSON-Daten wird z. B. eine Hashtabelle übergeben. Wenn es sich bei den Daten um eine Zeichenfolge handelt, erfolgt die Übergabe auch als Zeichenfolge. | Objekt (object) |
 | **`Headers`** | Ein Wörterbuch mit den Headern der Anforderung.                | Dictionary<string,string><sup>*</sup> |
@@ -310,7 +310,7 @@ Das Anforderungsobjekt, das an das Skript übergeben wird, ist vom Typ `HttpRequ
 
 Das Antwortobjekt, das Sie zurücksenden sollten, weist den Typ `HttpResponseContext` auf, der über die folgenden Eigenschaften verfügt:
 
-| Eigenschaft      | BESCHREIBUNG                                                 | type                      |
+| Eigenschaft      | Beschreibung                                                 | type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Ein Objekt, das den Hauptteil der Antwort enthält.           | Objekt (object)                    |
 | **`ContentType`** | Einstellungsmöglichkeit für den Inhaltstyp der Antwort | Zeichenfolge                    |
@@ -462,21 +462,47 @@ Wenn Sie ein neues PowerShell Functions-Projekt erstellen, ist die Abhängigkeit
 
 Wenn Sie die Datei „requirements.psd1“ aktualisieren, werden aktualisierte Module nach einem Neustart installiert.
 
-> [!NOTE]
-> Bei verwalteten Abhängigkeiten ist zum Herunterladen von Modulen Zugriff auf www.powershellgallery.com erforderlich. Achten Sie bei lokaler Ausführung darauf, dass die Laufzeit auf diese URL zugreifen kann, indem Sie alle erforderlichen Firewallregeln hinzufügen.
+### <a name="target-specific-versions"></a>Verwenden bestimmter Versionen als Ziel
 
-> [!NOTE]
-> Verwaltete Abhängigkeiten unterstützen derzeit keine Module, bei denen der Benutzer eine Lizenz akzeptieren muss, entweder durch interaktives Akzeptieren der Lizenz oder durch Bereitstellung des `-AcceptLicense`-Schalters beim Aufruf von `Install-Module`.
+Möglicherweise möchten Sie eine bestimmte Version eines Moduls in Ihrer Datei „requirements.psd1“ als Ziel verwenden. Wenn Sie beispielsweise eine ältere Version von Az.Accounts als die im Az-Modul enthaltene verwenden möchten, müssen Sie eine bestimmte Version als Ziel verwenden, wie im folgenden Beispiel gezeigt: 
 
-Die folgenden Anwendungseinstellungen können verwendet werden, um zu ändern, wie die verwalteten Abhängigkeiten heruntergeladen und installiert werden. Ihr App-Upgrade beginnt innerhalb von `MDMaxBackgroundUpgradePeriod`, und der Upgrade-Prozess wird innerhalb von `MDNewSnapshotCheckPeriod` abgeschlossen.
+```powershell
+@{
+    Az.Accounts = '1.9.5'
+}
+```
 
-| Funktions-App-Einstellung              | Standardwert             | BESCHREIBUNG                                         |
+In diesem Fall müssen Sie auch am Anfang Ihrer Datei „profile.ps1“ eine import-Anweisung hinzufügen, die wie im folgenden Beispiel aussieht:
+
+```powershell
+Import-Module Az.Accounts -RequiredVersion '1.9.5'
+```
+
+Auf diese Weise wird die ältere Version des Az.Account-Moduls zuerst geladen, wenn die Funktion gestartet wird.
+
+### <a name="dependency-management-considerations"></a>Überlegungen zur Abhängigkeitsverwaltung
+
+Berücksichtigen Sie Folgendes, wenn Sie Abhängigkeitsverwaltung verwenden:
+
++ Verwaltete Abhängigkeiten erfordern Zugriff auf <https://www.powershellgallery.com>, um Module herunterzuladen. Achten Sie bei lokaler Ausführung darauf, dass die Laufzeit auf diese URL zugreifen kann, indem Sie alle erforderlichen Firewallregeln hinzufügen.
+
++ Verwaltete Abhängigkeiten unterstützen derzeit keine Module, bei denen der Benutzer eine Lizenz akzeptieren muss, entweder durch interaktives Akzeptieren der Lizenz oder durch Bereitstellung des `-AcceptLicense`-Schalters beim Aufruf von `Install-Module`.
+
+### <a name="dependency-management-app-settings"></a>App-Einstellungen für Abhängigkeitsverwaltung
+
+Die folgenden Anwendungseinstellungen können verwendet werden, um zu ändern, wie die verwalteten Abhängigkeiten heruntergeladen und installiert werden. 
+
+| Funktions-App-Einstellung              | Standardwert             | Beschreibung                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 Tage)     | Jeder PowerShell-Workerprozess löst die Überprüfung auf Modulupgrades im PowerShell-Katalog beim Start des Prozesses und alle `MDMaxBackgroundUpgradePeriod` danach aus. Wenn im PowerShell-Katalog eine neue Modulversion verfügbar ist, wird sie im Dateisystem installiert und PowerShell-Workern zur Verfügung gestellt. Wenn Sie diesen Wert verringern, erhält Ihre Funktions-App schneller eine neuere Modulversion. Dies steigert aber auch den App-Ressourceneinsatz (Netzwerk-E/A, CPU, Speicher). Wenn Sie diesen Wert erhöhen, wird der App-Ressourceneinsatz verringert, aber auch die Bereitstellung neuer Modulversionen für Ihre App verzögert. | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 Stunde)       | Nach der Installation neuer Modulversionen im Dateisystem müssen alle PowerShell-Workerprozesse neu gestartet werden. Das Neustarten von PowerShell-Workern wirkt sich auf die Verfügbarkeit der App aus, da dadurch die Ausführung der aktuellen Funktion unterbrochen werden kann. Bis zum Abschluss des Neustarts aller PowerShell-Workerprozesse können Funktionsaufrufe entweder die alte oder neue Modulversion verwenden. Alle PowerShell-Worker werden innerhalb von `MDNewSnapshotCheckPeriod` vollständig neu gestartet. Wenn Sie diesen Wert erhöhen, wird die Häufigkeit von Unterbrechungen verringert, aber es kann auch zu einer Verlängerung des Zeitraums kommen, in dem für Funktionsaufrufe nicht bestimmt werden kann, ob die alte oder die neue Modulversion verwendet wird. |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 Tag)     | Um übermäßige Modulupgrades bei häufigen Workerneustarts zu vermeiden, wird die Überprüfung auf Modulupgrades nicht durchgeführt, wenn ein Worker diese Prüfung bereits innerhalb der letzten `MDMinBackgroundUpgradePeriod` ausgelöst hat. |
+| **MDMaxBackgroundUpgradePeriod**      | `7.00:00:00` (sieben Tage)     | Steuert den Aktualisierungszeitraum im Hintergrund für PowerShell-Funktions-Apps. Weitere Informationen finden Sie unter [MDMaxBackgroundUpgradePeriod](functions-app-settings.md#mdmaxbackgroundupgradeperiod). | 
+| **MDNewSnapshotCheckPeriod**         | `01:00:00` (eine Stunde)       | Gibt an, wie oft jeder PowerShell-Worker überprüft, ob Upgrades verwalteter Abhängigkeiten installiert wurden. Weitere Informationen finden Sie unter [MDNewSnapshotCheckPeriod](functions-app-settings.md#mdnewsnapshotcheckperiod).|
+| **MDMinBackgroundUpgradePeriod**      | `1.00:00:00` (ein Tag)     | Der Zeitraum nach einer vorherigen Upgradeprüfung, bevor eine weitere Upgradeprüfung gestartet wird. Weitere Informationen finden Sie unter [MDMinBackgroundUpgradePeriod](functions-app-settings.md#mdminbackgroundupgradeperiod).|
 
-Wenn Sie Ihre eigenen benutzerdefinierten Module verwenden möchten, müssen Sie ein wenig anders vorgehen als gewohnt.
+Im Wesentlichen beginnt Ihr App-Upgrade innerhalb von `MDMaxBackgroundUpgradePeriod`, und der Upgrade-Prozess wird innerhalb von `MDNewSnapshotCheckPeriod` abgeschlossen.
+
+## <a name="custom-modules"></a>Benutzerdefinierte Module
+
+Die Nutzung Ihrer eigenen benutzerdefinierten Module in Azure Functions unterscheidet sich von der normalen Vorgehensweise für PowerShell.
 
 Auf Ihrem lokalen Computer wird das Modul in einem der global verfügbaren Ordner in Ihrem `$env:PSModulePath` installiert. Bei Ausführung in Azure haben Sie keinen Zugriff auf die auf Ihrem Computer installierten Module. Aus diesem Grund muss sich der `$env:PSModulePath` für eine PowerShell-Funktions-App vom `$env:PSModulePath` eines regulären PowerShell-Skripts unterscheiden.
 
@@ -485,13 +511,12 @@ In Functions enthält `PSModulePath` zwei Pfade:
 * Den Ordner `Modules` im Stammverzeichnis Ihrer Funktions-App
 * Einen Pfad zum Ordner `Modules`, der vom PowerShell-Sprachworker gesteuert wird
 
-
-### <a name="function-app-level-modules-folder"></a>Ordner `Modules` auf Ebene der Funktions-App
+### <a name="function-app-level-modules-folder"></a>Modulordner auf Funktions-App-Ebene
 
 Um benutzerdefinierte Module zu verwenden, können Sie die Module, von denen Ihre Funktionen abhängen, im Ordner `Modules` speichern. Module in diesem Ordner stehen in der Functions-Runtime automatisch zur Verfügung. Jede Funktion in der Funktions-App kann diese Module verwenden. 
 
 > [!NOTE]
-> In der Datei „requirements.psd1“ angegebene Module werden automatisch heruntergeladen und in den Pfad eingeschlossen, sodass Sie sie nicht in den Ordner „modules“ einschließen müssen. Diese werden bei Ausführung in der Cloud lokal im Ordner `$env:LOCALAPPDATA/AzureFunctions` und im Ordner `/data/ManagedDependencies` gespeichert.
+> In der Datei [requirements.psd1](#dependency-management) angegebene Module werden automatisch heruntergeladen und in den Pfad eingeschlossen, sodass Sie sie nicht in den Ordner „modules“ einschließen müssen. Diese werden bei Ausführung in der Cloud lokal im Ordner `$env:LOCALAPPDATA/AzureFunctions` und im Ordner `/data/ManagedDependencies` gespeichert.
 
 Um dieses benutzerdefinierte Modulfeature nutzen zu können, erstellen Sie den Ordner `Modules` im Stammverzeichnis der Funktions-App. Kopieren Sie die Module, die Sie in Ihren Funktionen verwenden möchten, an diesen Speicherort.
 
@@ -518,7 +543,7 @@ PSFunctionApp
 
 Wenn Sie Ihre Funktions-App starten, fügt der PowerShell-Sprachworker diesen Ordner `Modules` dem `$env:PSModulePath` hinzu, damit die Module wie bei normalen PowerShell-Skripts automatisch geladen werden.
 
-### <a name="language-worker-level-modules-folder"></a>Ordner `Modules` auf Ebene des Sprachworkers
+### <a name="language-worker-level-modules-folder"></a>Modulordner auf Ebene des Sprachworkers
 
 Mehrere Module werden häufig vom PowerShell-Sprachworker verwendet. Diese Module werden im `PSModulePath` an letzter Stelle definiert. 
 
@@ -573,7 +598,7 @@ Azure PowerShell verwendet einige Kontexte und Status auf _Prozessebene_, die Ih
 
 Parallelität hat in Azure PowerShell einen enormen Wert, da einige Vorgänge sehr viel Zeit in Anspruch nehmen können. Sie müssen dabei jedoch umsichtig vorgehen. Wenn Sie vermuten, dass eine Racebedingung vorliegt, legen Sie die App-Einstellung „PSWorkerInProcConcurrencyUpperBound“ auf `1` fest, und verwenden Sie stattdessen [Isolation auf Sprachworkerprozess-Ebene](functions-app-settings.md#functions_worker_process_count) für Parallelität.
 
-## <a name="configure-function-scriptfile"></a>Konfigurieren der `scriptFile`-Funktion
+## <a name="configure-function-scriptfile"></a>Konfigurieren von scriptFile der Funktion
 
 Standardmäßig wird eine PowerShell-Funktion aus der Datei `run.ps1` ausgeführt, die sich im gleichen übergeordneten Verzeichnis wie die zugehörige Datei `function.json` befindet.
 
@@ -651,7 +676,7 @@ Beachten Sie beim Arbeiten mit PowerShell-Funktionen die Überlegungen in den fo
 
 Bei der Entwicklung von Azure Functions im [serverlosen Hostingmodell](consumption-plan.md) sind Kaltstarts Realität. *Kaltstart* bezieht sich auf den Zeitraum, den der Start Ihrer Funktions-App bis zum Verarbeiten einer Anforderung dauert. Kaltstarts treten beim Verbrauchstarif häufiger auf, da Ihre Funktions-App während inaktiver Phasen heruntergefahren wird.
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>Modulbündel statt `Install-Module`
+### <a name="bundle-modules-instead-of-using-install-module"></a>Bündeln von Modulen anstelle der Verwendung von Install-Module
 
 Ihr Skript wird bei jedem Aufruf ausgeführt. Vermeiden Sie die Verwendung von `Install-Module` in Ihrem Skript. Verwenden Sie stattdessen `Save-Module` vor der Veröffentlichung, damit Ihre Funktion keine Zeit für das Herunterladen des Moduls aufbringen muss. Falls Kaltstarts Auswirkungen auf Ihre Funktionen haben, sollten Sie erwägen, Ihre Funktions-App in einem [App Service-Plan](dedicated-plan.md) mit *Always On* oder einem [Premium-Plan](functions-premium-plan.md) bereitzustellen.
 

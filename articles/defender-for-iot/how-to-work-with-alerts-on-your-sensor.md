@@ -1,14 +1,14 @@
 ---
-title: Informationen zu Sensorwarnungen
+title: Verstehen Sie die Sensorwarnungen
 description: Arbeiten Sie mit Warnungen, um die Sicherheit und den Betrieb Ihres Netzwerks zu verbessern.
-ms.date: 11/30/2020
+ms.date: 3/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 178d3aedb44c29f53aab481894defeb4b9355d39
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 353f7fb0da85a0ffa737dc5c4afa70763b2fb185
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781346"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208939"
 ---
 # <a name="about-sensor-alerts"></a>Informationen zu Sensorwarnungen
 
@@ -56,7 +56,7 @@ Es sind Tools zum Aktivieren und Deaktivieren von Sensormodulen verfügbar. Von 
 
 ## <a name="alerts-and-sensor-reporting"></a>Warnungen und Sensorberichte
 
-In Warnungen reflektierte Aktivitäten können beim Generieren von Data Mining-, Risikobewertungs- und Angriffsvektorberichten berechnet werden. Wenn Sie diese Ereignisse verwalten, aktualisiert der Sensor die Berichte entsprechend.
+In Warnungen reflektierte Aktivitäten werden beim Generieren von Data Mining-, Risikobewertungs- und Angriffsvektorberichten berechnet. Wenn Sie diese Ereignisse verwalten, aktualisiert der Sensor die Berichte entsprechend.
 
 Beispiel:
 
@@ -64,9 +64,10 @@ Beispiel:
 
   - Auf Netzwerkgeräten erkannte Malwareereignisse werden in Risikobewertungsberichten gemeldet. Wenn Warnungen zu Malwareereignissen *stummgeschaltet* werden, können betroffene Geräte nicht im Risikobewertungsbericht berechnet werden.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Lernmodus und Smart IT-Lernmodus](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
-- [Anzeigen der in Warnungen angegebenen Informationen](how-to-view-information-provided-in-alerts.md)
-- [Verwalten des Warnungsereignisses](how-to-manage-the-alert-event.md)
-- [Beschleunigen des Warnungsworkflows](how-to-accelerate-alert-incident-response.md)
+[Lern- und Smart-IT-Lernmodi](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
+[Anzeigen der in Alarmen enthaltenen Informationen](how-to-view-information-provided-in-alerts.md)
+[Verwalten Sie das Alarmereignis](how-to-manage-the-alert-event.md)
+[ Beschleunigen Sie Alarm-Workflows](how-to-accelerate-alert-incident-response.md)
+[Alarmtypen und -Beschreibungen](alert-engine-messages.md)

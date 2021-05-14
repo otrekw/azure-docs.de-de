@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: 44131ecf6fd3d8d2f07f0fe567fb924ac8621682
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: b1551b4d9c28a693adb74436b6490ce7af62a977
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110001"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279850"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -39,7 +39,7 @@ Vorlagenressourceninformationen, die speziell für Logik-Apps, Integrationskonte
 Logik-App-Beispielvorlagen finden Sie in den folgenden Beispielen:
 
 * [Vollständige Beispielvorlage](#full-example-template), die für die Beispiele in diesem Thema verwendet wird
-* [Logik-App-Beispielvorlage für Schnellstart](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) in GitHub
+* [Logik-App-Beispielvorlage für Schnellstart](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json) in GitHub
 
 Beginnen Sie für die Logic Apps-REST-API mit der [Übersicht über die Azure Logic Apps-REST-API](/rest/api/logic).
 
@@ -1121,7 +1121,7 @@ Nachstehend ist die parametrisierte Beispielvorlage aufgeführt, die in den Beis
          "defaultValue": "",
          "metadata": {
             "description": "Name of the storage account the connector should use."
-         },
+         }
 
       },
       "azureblob_1_accountName": {
@@ -1164,7 +1164,7 @@ Nachstehend ist die parametrisierte Beispielvorlage aufgeführt, die in den Beis
                            "connection": {
                               "name": "@parameters('$connections')['azureblob']['connectionId']"
                            }
-                        },
+                        }
                      },
                      "method": "post",
                      "body": "@triggerBody()?['Body']",

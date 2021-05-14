@@ -3,12 +3,12 @@ title: Glossar zu Defender für IoT
 description: Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte der Defender für IoT-Plattform.
 ms.date: 12/09/2020
 ms.topic: article
-ms.openlocfilehash: 191b94ca37118ed6413149dd6047f94c5ee568cd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 829469a523ffd259b0108fcfc189715ba99cce74
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786820"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203683"
 ---
 # <a name="defender-for-iot-glossary"></a>Glossar zu Defender für IoT
 
@@ -51,7 +51,6 @@ Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte de
 | Begriff | BESCHREIBUNG | Weitere Informationen |
 |--|--|--|
 | **Data Mining** | Generieren Sie umfassende und detaillierte Berichte zu Ihren Netzwerkgeräten:<br /><br />- **SOC-Reaktion auf Vorfälle**: Berichte in Echtzeit, um die sofortige Reaktion auf Vorfälle zu unterstützen. Beispielsweise können in einem Bericht Geräte aufgelistet werden, die möglicherweise gepatcht werden müssen.<br /><br />- **Forensik**: Berichte auf Grundlage von Verlaufsdaten für Untersuchungsberichte.<br /><br />- **IT-Netzwerkintegrität**: Berichte, die helfen, die allgemeine Netzwerksicherheit zu verbessern. Ein Bericht kann beispielsweise Geräte mit unsicheren Anmeldeinformationen für die Authentifizierung enthalten.<br /><br />- **Sichtbarkeit**: Berichte, die alle Abfragepunkte abdecken, um alle Baselineparameter Ihres Netzwerks darzustellen.<br /><br />Speichern Sie Data Mining-Berichte, die Benutzer mit Leseberechtigung anzeigen können. | **[Baseline](#b)<br /><br />[Berichte](#r)** |
-| **Defender für IoT-Engines** | Durch selbstlernende Analyse-Engines in Defender für IoT müssen keine Signaturen aktualisiert oder Regeln definiert werden. Die Engines arbeiten mit ICS-spezifischen Verhaltensanalysen und Data Science, um den OT-Netzwerkdatenverkehr fortlaufend auf Anomalien, Schadsoftware, Betriebsprobleme, Protokollverletzungen und Abweichungen von der Baseline für die Netzwerkaktivität zu untersuchen.<br /><br />Wenn eine Engine eine Abweichung erkennt, wird eine Warnung ausgelöst. Warnungen können über den Bildschirm **Warnungen** oder eine SIEM-Lösung angezeigt und verwaltet werden. | **[Warnung](#glossary-a)** |
 | **Defender für IoT-Plattform** | Die Defender für IoT-Lösung, die in den Defender für IoT-Sensoren und der lokalen Verwaltungskonsole installiert ist. | **[Sensor](#s)<br /><br />[lokale Verwaltungskonsole](#o)** |
 | **Geräteübersicht** | Eine grafische Darstellung der von Defender für IoT erkannten Netzwerkgeräte. Sie zeigt die Verbindungen zwischen Geräten und Informationen zu jedem Gerät. Nutzen Sie die Übersicht für folgende Aufgaben:<br /><br />Abrufen und Steuern von Informationen zu kritischen Geräten<br /><br />Analysieren von Netzwerksegmenten<br /><br />Exportieren von Gerätedetails und -zusammenfassungen | **[Gruppe „Purdue-Ebenen“](#p)** |
 | **Gerätebestand: Sensor** | Im Gerätebestand wird eine umfangreiche Palette der von Defender für IoT erfassten Geräteattribute angezeigt. Für die folgenden Aufgaben stehen Optionen zur Verfügung:<br /><br />Filtern der angezeigten Informationen<br /><br />Exportieren dieser Informationen in eine CSV-Datei<br /><br />Importieren von Windows-Registrierungsdetails | **[Gruppe](#g)** <br /><br />**[Gerätebestand: lokale Verwaltungskonsole](#d)** |
@@ -63,6 +62,7 @@ Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte de
 
 | Begriff | BESCHREIBUNG | Weitere Informationen |
 |--|--|--|
+| **Engines** | Durch selbstlernende Analyse-Engines in Defender für IoT müssen keine Signaturen aktualisiert oder Regeln definiert werden. Die Engines arbeiten mit ICS-spezifischen Verhaltensanalysen und Data Science, um den OT-Netzwerkdatenverkehr fortlaufend auf Anomalien, Schadsoftware, Betriebsprobleme, Protokollverletzungen und Abweichungen von der Baseline für die Netzwerkaktivität zu untersuchen.<br /><br />Wenn eine Engine eine Abweichung erkennt, wird eine Warnung ausgelöst. Warnungen können über den Bildschirm **Warnungen** oder eine SIEM-Lösung angezeigt und verwaltet werden. | **[Warnung](#glossary-a)** |
 | **Unternehmenssicht** | Eine globale Übersicht, die Geschäftseinheiten, Websites und Zonen darstellt, in denen Defender für IoT-Sensoren installiert sind. Sehen Sie sich geografische Standorte von Warnungen zu schädlichen Aktivitäten, Betriebswarnungen usw. an. | **[Geschäftseinheit](#b)<br /><br />[Standort](#s)<br /><br />[Zone](#z)** |
 | **Zeitskala der Ereignisse** | Eine Zeitskala der im Netzwerk erkannten Aktivitäten, einschließlich:<br /><br />Ausgelöste Warnungen<br /><br />Netzwerkereignisse (zur Information)<br /><br />– Benutzervorgänge wie z. B. Anmeldung, Löschung und Erstellung von Benutzern sowie Warnungsverwaltungsvorgänge wie Stummschalten, Erfassen und Bestätigen. In den Sensorkonsolen verfügbar. | - |
 | **Ausschlussregel** | Weisen Sie Defender für IoT an, Auslöser für Warnungen zu ignorieren, die auf Zeiträumen, Geräteadressen und Namen von Warnungen oder auf einem bestimmten Sensor basieren.<br /><br />Wenn Sie z. B. wissen, dass alle von einem bestimmten Sensor überwachten OT-Geräte zwischen 6:30 und 10:15 Uhr morgens eine Wartung durchlaufen, können Sie eine Ausschlussregel festlegen, der zufolge dieser Sensor in dem vordefinierten Zeitraum keine Warnungen senden soll. | **[Warnung](#glossary-a)<br /><br />[Stummschalten des Warnungsereignisses](#m)** |

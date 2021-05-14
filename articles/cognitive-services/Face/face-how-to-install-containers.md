@@ -9,20 +9,20 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 04/28/2021
 ms.author: aahi
 keywords: Lokal, Docker, Container, Identifizieren
-ms.openlocfilehash: 36cbd7bd24304871593b107f9b8ed9be02ce46de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af013000b49690a4edd71c16e607ed57b3ca163
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706791"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291026"
 ---
-# <a name="install-and-run-face-containers-preview"></a>Installieren und Ausführen von Containern für die Gesichtserkennung (Vorschauversion)
+# <a name="install-and-run-face-containers-retiring"></a>Installieren und Ausführen von Containern für die Gesichtserkennung (wird eingestellt)
 
 > [!IMPORTANT]
-> Der Grenzwert für Benutzer von Gesichtserkennungscontainern wurde erreicht. Wir akzeptieren derzeit keine neuen Anträge für den Gesichtserkennungscontainer.
+> Die Vorschauversion des Containers für die Gesichtserkennung akzeptiert keine Anwendungen mehr, und der Container ist seit dem 29. April 2021 veraltet. Der Container für die Gesichtserkennung wird am 26. Juli 2021 vollständig eingestellt.
 
 Die Gesichtserkennungs-API von Azure Cognitive Services bietet einen Linux-Docker-Container, der menschliche Gesichter in Bildern erkennt und analysiert. Sie identifiziert auch zugehörige Attribute wie Gesichtsmerkmale (z. B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung anhand einer Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter auf demselben Bild oder auf verschiedenen Bildern identisch sind. Die Gesichtserkennung kann auch Gesichter anhand einer Datenbank vergleichen, um zu prüfen, ob bereits ein ähnliches oder identisches Gesicht vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren.
 

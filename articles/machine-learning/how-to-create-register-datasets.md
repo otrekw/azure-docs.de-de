@@ -5,19 +5,19 @@ description: Hier erfahren Sie, wie Sie Azure Machine Learning-Datasets erstel
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, data4ml
+ms.topic: how-to
+ms.custom: contperf-fy21q1, data4ml
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 81779d942b31f940d579de623ecb39c35d3a8b14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0125f33bb01d177442bb1da8a1f45e172659c7c2
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642142"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889842"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
@@ -75,7 +75,7 @@ Wir empfehlen FileDatasets für Ihre Machine Learning-Workflows, da die Quelldat
 Erstellen eines FileDataset mit dem [Python SDK](#create-a-filedataset) oder [Azure Machine Learning Studio](how-to-connect-data-ui.md#create-datasets).
 ### <a name="tabulardataset"></a>TabularDataset
 
-Ein [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Dadurch haben Sie die Möglichkeit, die Daten in einem Pandas- oder Spark-Datenrahmen zu materialisieren, sodass Sie mit vertrauten Datenaufbereitungs- und Trainingsbibliotheken arbeiten können, ohne das Notebook verlassen zu müssen. Ein Objekt vom Typ `TabularDataset` kann auf der Grundlage von CSV-, TSV-, Parquet- und JSONL-Dateien sowie auf der Grundlage von [SQL-Abfrageergebnissen](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-sql-query-query--validate-true--set-column-types-none--query-timeout-30-) erstellt werden.
+Ein [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Dadurch haben Sie die Möglichkeit, die Daten in einem Pandas- oder Spark-Datenrahmen zu materialisieren, sodass Sie mit vertrauten Datenaufbereitungs- und Trainingsbibliotheken arbeiten können, ohne das Notebook verlassen zu müssen. Ein Objekt vom Typ `TabularDataset` kann auf der Grundlage von CSV-, TSV-, [Parquet](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-)- und [JSONL-Dateien](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-json-lines-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none--invalid-lines--error---encoding--utf8--) sowie auf der Grundlage von [SQL-Abfrageergebnissen](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-sql-query-query--validate-true--set-column-types-none--query-timeout-30-) erstellt werden.
 
 Mit TabularDataset-Objekten können Sie einen Zeitstempel auf der Grundlage einer Spalte in den Daten oder auf der Grundlage des Orts angeben, an dem die Pfadmusterdaten gespeichert sind, um ein Zeitreihenmerkmal zu aktivieren. Diese Angabe ermöglicht einfaches und effizientes Filtern nach Zeit. Ein Beispiel finden Sie unter [Demo einer tabellarischen, zeitreihenbezogenen API mit NOAA-Wetterdaten](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb).
 
@@ -133,7 +133,9 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 
 ### <a name="create-a-tabulardataset"></a>Erstellen eines TabularDataset-Elements
 
-Verwenden Sie die Methode [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) für die Klasse `TabularDatasetFactory`, um Dateien im CSV- oder TSV-Format zu lesen und ein nicht registriertes TabularDataset-Objekt zu erstellen. Wenn Sie Daten aus mehreren Dateien lesen, werden die Ergebnisse in einer Tabellendarstellung aggregiert. 
+Verwenden Sie die Methode [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) für die Klasse `TabularDatasetFactory`, um Dateien im CSV- oder TSV-Format zu lesen und ein nicht registriertes TabularDataset-Objekt zu erstellen. Zum Einlesen von Dateien im PARQUET-Format verwenden Sie die [`from_parquet_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-)-Methode. Wenn Sie Daten aus mehreren Dateien lesen, werden die Ergebnisse in einer Tabellendarstellung aggregiert. 
+
+Informationen zu den unterstützten Dateiformaten sowie zur Syntax und den Entwurfsmustern finden Sie in der [Referenzdokumentation von TabularDatasetFactory](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory). 
 
 Wenn sich Ihr Speicher hinter einem virtuellen Netzwerk oder einer Firewall befindet, legen Sie den Parameter `validate=False` in Ihrer `from_delimited_files()`-Methode fest. Dadurch wird der erste Überprüfungsschritt umgangen und sichergestellt, dass Sie Ihr Dataset aus diesen sicheren Dateien erstellen können. Erfahren Sie mehr über die Verwendung von [Datenspeichern und Datasets in einem virtuellen Netzwerk](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets).
 
@@ -188,9 +190,10 @@ Nachdem Sie Ihr Dataset erstellt und [registriert](#register-datasets) haben, k�
 Wenn Sie kein Data Wrangling und keine Durchsuchungen durchführen müssen, erfahren Sie unter [Trainieren mit Datasets](how-to-train-with-datasets.md), wie Sie Datasets in Ihren Trainingsskripts zum Übermitteln von ML-Experimenten nutzen.
 
 ### <a name="filter-datasets-preview"></a>Filtern von Datasets (Vorschau)
+
 Die Filterfunktionen sind von dem Datasettyp abhängig, über den Sie verfügen. 
 > [!IMPORTANT]
-> Das Filtern von Datasets mit der Methode [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-), die sich in der öffentlichen Vorschau befindet, ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion und kann jederzeit geändert werden. 
+> Das Filtern von Datasets mit der Vorschaumethode [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion, die sich jederzeit ändern kann. 
 > 
 **Für TabularDatasets** können Sie Spalten mithilfe der Methoden [keep_columns()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) und [drop_columns()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) beibehalten oder entfernen.
 
@@ -228,9 +231,62 @@ labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
 labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
 ```
 
+### <a name="partition-data-preview"></a>Partitionieren von Daten (Vorschau)
+
+Sie können ein Dataset partitionieren, indem Sie beim Erstellen eines Datasets vom Typ „TabularDataset“ oder „FileDataset“ den Parameter `partitions_format` mit einschließen. 
+
+> [!IMPORTANT]
+> Das Erstellen von Datasetpartitionen ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion, die sich jederzeit ändern kann. 
+
+Wenn Sie ein Dataset partitionieren, werden die Partitionsinformationen der einzelnen Dateipfade jeweils basierend auf dem angegebenen Format in Spalten extrahiert. Das Format muss an der Position des ersten Partitionsschlüssels beginnen und bis zum Ende des Dateipfads reichen. 
+
+Ein Beispiel: Angenommen, der Pfad lautet `../Accounts/2019/01/01/data.jsonl`, und die Partition soll nach Abteilungsname und Datum erfolgen. In diesem Fall werden durch `partition_format='/{Department}/{PartitionDate:yyyy/MM/dd}/data.jsonl'` eine Zeichenfolgenspalte namens „Department“ (Abteilung) mit dem Wert „Accounts“ (Konten) und eine Datetime-Spalte namens „PartitionDate“ (Partitionsdatum) mit dem Wert `2019-01-01` erstellt.
+
+Wenn Ihre Daten bereits über vorhandene Partitionen verfügen und Sie dieses Format beibehalten möchten, schließen Sie den Parameter `partitioned_format` in die Methode [`from_files()`](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true--partition-format-none-) ein, um ein Dataset vom Typ „FileDataset“ zu erstellen. 
+
+Wenn Sie ein Dataset vom Typ „TabularDataset“ erstellen und bereits vorhandene Partitionen beibehalten möchten, schließen Sie den Parameter `partitioned_format` in die Methode [from_parquet_files()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) oder [from_delimited_files()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--) ein.
+
+Im folgenden Beispiel werden folgende Aktionen ausgeführt:
+* Erstellen eines Datasets vom Typ „FileDataset“ auf der Grundlage partitionierter Dateien
+* Abrufen des Partitionsschlüssels
+* Erstellen eines neuen indizierten Datasets vom Typ „FileDataset“ mithilfe von Folgendem:
+ 
+```Python
+
+file_dataset = Dataset.File.from_files(data_paths, partition_format = '{userid}/*.wav')
+ds.register(name='speech_dataset')
+
+# access partition_keys
+indexes = file_dataset.partition_keys # ['userid']
+
+# get all partition key value pairs should return [{'userid': 'user1'}, {'userid': 'user2'}]
+partitions = file_dataset.get_partition_key_values()
+
+
+partitions = file_dataset.get_partition_key_values(['userid'])
+# return [{'userid': 'user1'}, {'userid': 'user2'}]
+
+# filter API, this will only download data from user1/ folder
+new_file_dataset = file_dataset.filter(ds['userid'] == 'user1').download()
+```
+
+Mit der Methode [partitions_by()](/python/api/azureml-core/azureml.data.tabulardataset#partition-by-partition-keys--target--name-none--show-progress-true--partition-as-file-dataset-false-) kann auch eine neue Partitionsstruktur für Datasets vom Typ „TabularDatasets“ erstellt werden.
+
+```Python
+
+ dataset = Dataset.get_by_name('test') # indexed by country, state, partition_date
+
+# call partition_by locally
+new_dataset = ds.partition_by(name="repartitioned_ds", partition_keys=['country'], target=DataPath(datastore, "repartition"))
+partition_keys = new_dataset.partition_keys # ['country']
+```
+
+>[!IMPORTANT]
+> TabularDataset-Partitionen können auch in Azure Machine Learning-Pipelines als Eingabe für „ParallelRunStep“ in vielen Modellanwendungen angewendet werden. Ein Beispiel finden Sie in der [Dokumentation zum Accelerator für viele Modelle](https://github.com/microsoft/solution-accelerator-many-models/blob/master/01_Data_Preparation.ipynb).
+
 ## <a name="explore-data"></a>Durchsuchen von Daten
 
-Wenn Sie mit dem Data Wrangling fertig sind, können Sie Ihr Dataset [registrieren](#register-datasets) und dann zum Durchsuchen der Daten vor dem Modelltraining in Ihr Notebook laden.
+Wenn Sie mit dem Data Wrangling fertig sind, können Sie Ihr Dataset [registrieren](#register-datasets) und anschließend zur Datenerkundung vor dem Modelltraining in Ihr Notebook laden.
 
 FileDatasets können Sie wahlweise **einbinden** oder **herunterladen** und die Python-Bibliotheken auf sie anwenden, die Sie normalerweise zur Datenuntersuchung verwenden. [Weitere Informationen zum Vergleich von Einbinden und Herunterladen](how-to-train-with-datasets.md#mount-vs-download).
 

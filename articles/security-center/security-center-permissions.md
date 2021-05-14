@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 01/03/2021
 ms.author: memildin
-ms.openlocfilehash: dcbb4977e1bfd17f0cbed61abf9ba335615b7799
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fbd7b13e07a19c75c4f41ff4f3e2bdc66e585c9e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443759"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903522"
 ---
 # <a name="permissions-in-azure-security-center"></a>Berechtigungen in Azure Security Center
 
@@ -39,7 +39,7 @@ In der folgenden Tabelle sind die Rollen und zulässigen Aktionen von Security C
 | Initiativen hinzufügen/zuweisen (einschließlich Standards für die Einhaltung gesetzlicher Bestimmungen)                                                                           | -                             | -              | -                                                      | -                        | ✔                 |
 | Aktivieren/Deaktivieren von Azure Defender                                                                                                               | -                             | ✔             | -                                                      | -                        | ✔                 |
 | Automatische Bereitstellung aktivieren/deaktivieren                                                                                                            | -                             | ✔             | -                                                      | ✔                       | ✔                  |
-| Sicherheitsempfehlungen für eine Ressource anwenden</br> (und [Schnelle Problembehebung](security-center-remediate-recommendations.md#quick-fix-remediation) verwenden) | -                             | -              | ✔                                                     | ✔                        | ✔                 |
+| Sicherheitsempfehlungen für eine Ressource anwenden</br> (und [Fix](security-center-remediate-recommendations.md#fix-button) verwenden) | -                             | -              | ✔                                                     | ✔                        | ✔                 |
 | Warnungen verwerfen                                                                                                                                | -                             | ✔             | -                                                      | ✔                       | ✔                  |
 | Warnungen und Empfehlungen anzeigen                                                                                                               | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
 

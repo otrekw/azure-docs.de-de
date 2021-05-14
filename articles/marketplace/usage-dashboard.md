@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie für Angebote, die im Azure Marketplace verö
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 04/28/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 765f4f358d593cd5fcc021fbf4ec2276c422c4d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef0e3745d6a45353ef286101bcb5fef1923ce12b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555124"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206743"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace
 
@@ -155,6 +155,13 @@ _**Tabelle 1: Wörterbuch mit Datenbegriffen**_
 | RawUsage | Rohnutzung | Die gesamten Einheiten für die tatsächliche Nutzung, die von der Ressource verbraucht wurden, die vom Kunden bereitgestellt wird.<br>Die Stunden für die tatsächliche Nutzung werden als die Zeitspanne (in Nutzungseinheiten) definiert, in der VMs ausgeführt wurden. | RawUsage |
 | Geschätzte erweiterte Gebühren (CC) | Geschätzte erweiterte Gebühren in der Kundenwährung | Gibt die mit der Nutzung verbundenen Gebühren an. Die Spalte entspricht dem rechnerischen Produkt aus Preis (CC) und Verwendungsmenge. | EstimatedExtendedChargeCC |
 | Geschätzte erweiterte Gebühren (PC) | Geschätzte erweiterte Gebühren in der Auszahlungswährung | Gibt die mit der Nutzung verbundenen Gebühren an. Die Spalte entspricht dem rechnerischen Produkt aus geschätztem Preis (PC) und Verwendungsmenge. | EstimatedExtended ChargePC |
+| ID der Verbrauchseinheit | ID der Verbrauchseinheit | Gibt die ID der Verbrauchseinheit für das Angebot an. | MeterId |
+| Von Partner Center erkannte Anomalie | Von Partner Center erkannte Anomalie | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Gibt an, ob der Herausgeber eine Überschreitungsnutzung für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots gemeldet hat, die von Partner Center als Anomalie gekennzeichnet wurde. Folgende Werte sind möglich: <ul><li>0 (keine Anomalie)</li><li>1 (Anomalie)</li></ul>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte über programmgesteuerten Zugriff exportiert, ist der Wert NULL._ | PartnerCenterDetectedAnomaly |
+| Vom Herausgeber markierte Anomalie | Vom Herausgeber markierte Anomalie | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Gibt an, ob der Herausgeber die Überschreitungsnutzung durch den Kunden für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots als Anomalie oder keine Anomalie bestätigt hat. Mögliche Werte sind:<ul><li>0 (vom Verleger als keine Anomalie markiert)</li><li>1 (vom Verleger als Anomalie markiert)</li></ul>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte über programmgesteuerten Zugriff exportiert, ist der Wert NULL._ | PublisherMarkedAnomaly |
+| Neue gemeldete Nutzung | Neue gemeldete Nutzung | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Die Überschreitungsnutzung durch den Kunden für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots, die vom Herausgeber als anomal identifiziert wird. Dieses Feld gibt die neue Überschreitungsnutzung an, die vom Herausgeber gemeldet wird.<br>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte über programmgesteuerten Zugriff exportiert, ist der Wert NULL._ | NewReportedUsage |
+| Aktion ausgeführt um | Aktion ausgeführt um | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Gibt den Zeitpunkt an, zu dem der Herausgeber die Überschreitungsnutzung durch den Kunden für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots als Anomalie oder keine Anomalie bestätigt hat.<br>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte über programmgesteuerten Zugriff exportiert, ist der Wert NULL._ | ActionTakenAt |
+| Aktion ausgeführt von | Aktion ausgeführt von | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Gibt die Person an, die die Überschreitungsnutzung durch den Kunden für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots als Anomalie oder keine Anomalie bestätigt hat.<br>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte über programmgesteuerten Zugriff exportiert, ist der Wert NULL._ | ActionTakenBy |
+| Geschätzte finanzielle Auswirkungen (USD) | Geschätzte finanzielle Auswirkungen in USD | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Wenn Partner Center eine Überschreitungsnutzung durch den Kunden für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots als anomal kennzeichnet, gibt das Feld die geschätzten finanziellen Auswirkungen (in USD) der anomalen Überschreitungsnutzung an.<br>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte programmgesteuert exportiert, ist der Wert NULL._ | EstimatedFinancialImpactUSD |
 |||||
 
 ### <a name="usage-page-filters"></a>Filter für die Seite „Nutzung“

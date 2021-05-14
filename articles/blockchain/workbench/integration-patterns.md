@@ -4,12 +4,12 @@ description: Übersicht über Smart Contract-Integrationsmuster in Azure Blockch
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90f5f4d55519f912b6cbd586190576bfd88fa295
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96015501"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737760"
 ---
 # <a name="smart-contract-integration-patterns"></a>Smart Contract-Integrationsmuster
 
@@ -153,8 +153,6 @@ In diesem Modell erfolgt die Kommunikation mit dem Vertrag und die anschließend
 -   Der Inhalt der Nachricht wird verpackt und an eine bestimmte Funktion für den Smart Contract gesendet. Diese Übermittlung erfolgt im Namen des Benutzers, der dem externen System zugeordnet ist.
 
 -   Die Funktion wird ausgeführt und ändert in der Regel den Zustand. Durch die Zustandsänderung wird der im Smart Contract widergespiegelte Geschäftsworkflow fortgesetzt, sodass nun weitere Funktionen entsprechend ausgeführt werden können.
-
-### 
 
 ### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Übermittlung einer Nachricht in einem für Azure Blockchain Workbench unbekannten Format
 

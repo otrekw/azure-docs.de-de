@@ -6,45 +6,36 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: d03aeb9759fb321b580fa65e06dc09ccde4a44a0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6bfa42e99f295b429eba40a27eb59becb8aa80a1
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555876"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575944"
 ---
-# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-device-via-azure-powershell"></a>Bereitstellen eines virtuellen Computers auf der Grundlage eines spezialisierten Images auf Ihrem Azure Stack Edge Pro-Gerät über Azure PowerShell 
+# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Bereitstellen einer VM auf der Grundlage eines spezialisierten Images auf Ihrem Azure Stack Edge Pro-GPU-Gerät über Azure PowerShell 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-In diesem Artikel werden die Schritte beschrieben, die ausgeführt werden müssen, um einen virtuellen Computer (virtual machine, VM) auf der Grundlage eines spezialisierten Images auf Ihrem Azure Stack Edge Pro-Gerät bereitzustellen. 
+In diesem Artikel werden die Schritte beschrieben, die ausgeführt werden müssen, um eine VM (virtual machine, virtueller Computer) auf der Grundlage eines spezialisierten Images auf Ihrem Azure Stack Edge Pro-GPU-Gerät bereitzustellen. 
 
-## <a name="about-specialized-images"></a>Informationen zu spezialisierten Images
+Informationen zum Vorbereiten eines generalisierten Images für die Bereitstellung von VMs in Azure Stack Edge Pro-GPU finden Sie unter [Verwenden eines generalisierten Images der Windows-VHD zum Erstellen eines VM-Images für Ihr Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md) und [Prepare generalized image from ISO](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md) (Vorbereiten eines generalisierten Images aus einer ISO-Datei).
+
+## <a name="about-vm-images"></a>Informationen zu VM-Images
 
 Sie können eine Windows-VHD oder -VHDX verwenden, um ein *spezialisiertes* Image oder ein *generalisiertes* Image zu erstellen. In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen *spezialisierten* und *generalisierten* Images zusammengefasst:
 
+[!INCLUDE [about-vm-images-for-azure-stack-edge](../../includes/azure-stack-edge-about-vm-images.md)]
 
-|Imagetyp  |Generalisiert  |Spezialisiert  |
-|---------|---------|---------|
-|Ziel     |Bereitstellung auf beliebigen Systemen         | Auf ein bestimmtes System ausgerichtet        |
-|Setup nach dem Start     | Setup beim ersten Start der VM erforderlich          | Kein Setup erforderlich <br> VM-Aktivierung über die Plattform        |
-|Konfiguration     |Hostname, Administratorbenutzer und andere VM-spezifische Einstellungen erforderlich         |Vorkonfiguriert         |
-|Verwendung für     |Erstellen mehrerer neuer VMs auf der Grundlage des gleichen Images         |Migrieren eines bestimmten Computers oder Wiederherstellen einer VM aus einer früheren Sicherung         |
-
-
-In diesem Artikel werden die erforderlichen Schritte für die Bereitstellung auf der Grundlage eines spezialisierten Images beschrieben. Informationen zur Bereitstellung auf der Grundlage eines generalisierten Images finden Sie im Artikel zum [Verwenden eines generalisierten Images der Windows-VHD](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md) für Ihr Gerät.
-
-
-## <a name="vm-image-workflow"></a>Workflow für VM-Images
+## <a name="workflow"></a>Workflow
 
 Der allgemeine Workflow zum Bereitstellen einer VM auf der Grundlage eines spezialisierten Images sieht wie folgt aus:
 
 1. Kopieren Sie die VHD-Datei in ein lokales Speicherkonto auf Ihrem Azure Stack Edge Pro-GPU-Gerät.
 1. Erstellen Sie auf der Grundlage der VHD einen neuen verwalteten Datenträger.
 1. Erstellen Sie auf der Grundlage des verwalteten Datenträgers einen neuen virtuellen Computer, und fügen Sie den verwalteten Datenträger an.
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -65,7 +56,6 @@ Vergewissern Sie sich, dass Ihr Client eine Verbindung mit der lokalen Azure Re
     ```
 
 2. Geben Sie den Benutzernamen `EdgeArmUser` und das Kennwort für die Verbindung über Azure Resource Manager an. Sollten Sie Ihr Kennwort vergessen haben, [setzen Sie das Kennwort für Azure Resource Manager zurück](azure-stack-edge-gpu-set-azure-resource-manager-password.md), und melden Sie sich mit diesem Kennwort an.
- 
 
 ## <a name="deploy-vm-from-specialized-image"></a>Bereitstellen eines virtuellen Computers auf der Grundlage eines spezialisierten Images
 
@@ -75,10 +65,10 @@ In den folgenden Abschnitten erfahren Sie Schritt für Schritt, wie Sie einen vi
 
 Gehen Sie wie folgt vor, um die VHD in ein lokales Speicherkonto zu kopieren:
 
-1. Kopieren Sie die Quell-VHD in ein lokales Blobspeicherkonto auf Ihrem Azure Stack Edge-Gerät. 
+1. Kopieren Sie die Quell-VHD in ein lokales Blobspeicherkonto auf Ihrem Azure Stack Edge-Gerät.
 
 1. Notieren Sie sich den resultierenden URI. Er wird in einem späteren Schritt benötigt.
-    
+
     Informationen zum Erstellen eines lokalen Speicherkontos sowie zum Zugreifen auf ein solches Konto finden Sie in den Abschnitten [Speicherkonto erstellen](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#create-a-storage-account) bis [Hochladen einer VHD-Datei](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd) des Artikels [Bereitstellen von VMs auf Ihrem Azure Stack Edge-Gerät über Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). 
 
 ## <a name="create-a-managed-disk-from-vhd"></a>Erstellen eines verwalteten Datenträgers auf der Grundlage einer VHD
@@ -301,7 +291,5 @@ In diesem Artikel wurde zum Erstellen der gesamten VM-Ressourcen nur eine einzel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Abhängig von der Art der Bereitstellung können Sie eine der folgenden Vorgehensweisen wählen.
-
-- [Bereitstellen von VMs auf Ihrem Azure Stack Edge-Gerät über Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)  
-- [Bereitstellen von VMs auf einem Azure Stack Edge Pro-GPU-Gerät über das Azure-Portal](azure-stack-edge-gpu-deploy-virtual-machine-portal.md)
+- [Vorbereiten eines generalisierten Images aus einer Windows-VHD zum Bereitstellen von VMs auf Azure Stack Edge Pro-GPU-Geräten](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)
+- [Vorbereiten eines generalisierten Images aus einer ISO-Datei zum Bereitstellen von VMs auf Azure Stack Edge Pro-GPU-Geräten](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md)

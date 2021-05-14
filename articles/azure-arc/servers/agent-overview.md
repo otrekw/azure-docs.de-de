@@ -1,14 +1,15 @@
 ---
 title: Übersicht über den Connected Machine-Agent
 description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent für Azure Arc-fähige Server, der die Überwachung von VMs unterstützt, die in Hybridumgebungen gehostet werden.
-ms.date: 03/15/2021
+ms.date: 04/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 31dfb9ac38b1a6d808b5ab060600297987ab4236
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470488"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071629"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Azure Arc-fähige Server
 
@@ -18,6 +19,8 @@ Mit dem Connected Machine-Agent für Azure Arc-fähige Server können Sie Ihre W
 >Ab dem allgemeinen Release von Azure Arc-fähigen Servern im September 2020 werden alle Vorabversionen des Azure Connected Machine-Agents (Agents mit niedrigeren Versionen als 1.0) am **2. Februar 2021** **als veraltet markiert**.  Dieser Zeitrahmen ermöglicht Ihnen ein Upgrade auf Version 1.0 oder höher, bevor die Agents mit Vorabversionen nicht mehr in der Lage sind, mit dem Azure Arc-fähigen Serverdienst zu kommunizieren.
 
 ## <a name="agent-component-details"></a>Agent-Komponentendetails
+
+:::image type="content" source="media/agent-overview/connected-machine-agent.png" alt-text="Arc-fähige Server Agenten-Übersicht." border="false":::
 
 Das Azure Connected Machine-Agent-Paket enthält mehrere logische Komponenten, die gebündelt werden.
 
@@ -39,6 +42,7 @@ Metadateninformationen zum verbundenen Computer werden gesammelt, nachdem der Co
 
 * Betriebssystemname, -typ und -version
 * Computername
+* Computerhersteller und -modell
 * Vollqualifizierter Domänenname (FQDN) des Computers
 * Version des Connected Machine-Agents
 * Vollqualifizierter Domänenname (FQDN) für Active Directory und DNS
@@ -47,6 +51,8 @@ Metadateninformationen zum verbundenen Computer werden gesammelt, nachdem der Co
 * Version des Connected Machine-Agents
 * Öffentlicher Schlüssel für verwaltete Identität
 * Richtlinienkonformitätsstatus und Details (bei Verwendung von Azure Policy-Richtlinien für Gastkonfigurationen)
+* SQL Server installiert (boolescher Wert)
+* Clusterressourcen-ID (für Azure Stack HCI-Knoten) 
 
 Die folgenden Metadateninformationen werden vom Agent von Azure angefordert:
 
@@ -79,9 +85,9 @@ Für den Azure Connected Machine-Agent werden offiziell folgende Windows- und 
 
 - Windows Server 2008 R2, Windows Server 2012 R2 und höher (einschließlich Server Core)
 - Ubuntu 16.04 und 18.04 LTS (x64)
-- CentOS Linux 7 (x64)
+- CentOS Linux 7 und 8  (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
-- Red Hat Enterprise Linux (RHEL) 7 (x64)
+- Red Hat Enterprise Linux (RHEL) 7 und 8 (x64)
 - Amazon Linux 2 (x64)
 - Oracle Linux 7
 

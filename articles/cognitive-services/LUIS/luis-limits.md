@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: 41423ce34a62dfdbd5b9a60f683a2366a94d1bfd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f917087eb15d8c77356995299e27dfc1657cb5d
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97976791"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497199"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Begrenzungen für das LUIS-Modell und die Schlüssel
 LUIS weist Begrenzungen in mehreren Bereichen auf. Der erste ist die [Modellbegrenzung](#model-limits), die Absichten, Entitäten und Features in LUIS steuert. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich von Begrenzungen umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs.
@@ -30,7 +30,7 @@ Wenn Ihre App die LUIS-Modellbegrenzungen überschreitet, sollten Sie eine [LUIS
 | Externe Entitäten | Keine Einschränkungen |
 | [Absichten][intents]|500 pro Anwendung: 499 benutzerdefinierte Absichten und die erforderliche Absicht _None_.<br>[Dispatchbasierte](https://aka.ms/dispatch-tool) Anwendungen verfügen entsprechend über 500 Dispatchquellen.|
 | [List-Entitäten](./luis-concept-entity-types.md) | Übergeordnet: 50, untergeordnet: 20.000 Elemente. Kanonischer Name mit * Standardzeichenlimit. Für Synonymwerte gelten keine Längenbeschränkungen. |
-| [Machine Learning-Entitäten und Rollen](./luis-concept-entity-types.md):<br> Zusammengesetzt,<br>Einfach,<br>Entitätsrolle|Maximal 100 übergeordnete Entitäten oder 330 Entitäten, je nachdem, welches Limit der Benutzer zuerst erreicht. Eine Rolle zählt für diese Begrenzung als eine Entität. Ein Beispiel für eine zusammengesetzte Entität mit einer einfachen Entität, die über zwei Rollen verfügt: 1 zusammengesetzte + 1 einfache + 2 Rollen = 4 der 330 Entitäten.<br>Untergeordnete Entitäten können bis zu fünf Ebenen tief geschachtelt werden. Pro Ebene sind dabei maximal zehn untergeordnete Elemente möglich.|
+| [Machine Learning-Entitäten und Rollen](./luis-concept-entity-types.md):<br> Zusammengesetzt,<br>Einfach,<br>Entitätsrolle|Maximal 100 übergeordnete Entitäten oder 330 Entitäten, je nachdem, welches Limit der Benutzer zuerst erreicht. Eine Rolle zählt für diese Begrenzung als eine Entität. Ein Beispiel für eine zusammengesetzte Entität mit einer einfachen Entität, die über zwei Rollen verfügt: 1 zusammengesetzte + 1 einfache + 2 Rollen = 4 der 330 Entitäten.<br>Untergeordnete Entitäten können bis zu 5 Ebenen tief geschachtelt werden. Pro Ebene sind dabei maximal 20 untergeordnete Elemente möglich.|
 |Modell als Feature| Die maximale Anzahl von Modellen, die als Feature für ein bestimmtes Modell verwendet werden können, liegt bei zehn Modellen. Die maximale Anzahl von Ausdruckslisten, die als Feature für ein bestimmtes Modell verwendet werden können, liegt bei zehn Ausdruckslisten.|
 | [Vorschau – Entitäten vom Typ „dynamische Liste“](./luis-migration-api-v3.md)|2 Listen mit ca. 1.000 pro Anforderung für den Endpunkt der Abfragevorhersage|
 | [Muster](luis-concept-patterns.md)|500 Muster pro Anwendung.<br>Muster dürfen maximal 400 Zeichen lang sein.<br>3 Pattern.any-Entitäten pro Muster<br>Maximal 2 geschachtelte optionale Texte im Muster|

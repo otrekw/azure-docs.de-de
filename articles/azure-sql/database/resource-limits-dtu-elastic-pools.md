@@ -10,30 +10,36 @@ ms.topic: reference
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 03/30/2021
-ms.openlocfilehash: f3c20774accf9e0b589b898cb903d6da4516e553
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 04/09/2021
+ms.openlocfilehash: 906d34a91736d28f0da4a5ba34b7114fbe410adb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058917"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306635"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Grenzwerte für Ressourcen für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Datenbanken in Azure SQL-Datenbank, die in einem Pool für elastische Datenbanken enthalten sind und für die das DTU-Kaufmodell gilt.
 
-* Informationen zu Ressourcenlimits beim DTU-Kaufmodell für Azure SQL-Datenbank finden Sie unter [DTU-Ressourcenlimits – Azure SQL-Datenbank](resource-limits-dtu-single-databases.md).
+* Weitere Informationen zu Ressourcenlimits für Singletons auf einem Server mit dem DTU-basierten Kaufmodell finden Sie unter [Übersicht über Ressourcenlimits auf einem Server](resource-limits-logical-server.md).
+* Informationen zu Ressourcenlimits des DTU-Kaufmodells für Azure SQL-Datenbank finden Sie unter [DTU-Ressourcenlimits für einzelne Datenbanken (Singletons)](resource-limits-dtu-single-databases.md) und [DTU-Ressourcenlimits für Pools für elastische Datenbanken](resource-limits-dtu-elastic-pools.md).
 * Informationen zu V-Kern-Ressourcenlimits finden Sie unter [V-Kern-Ressourcenlimits – Azure SQL-Datenbank](resource-limits-vcore-single-databases.md) und [V-Kern-Ressourcenlimits – Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md).
+* Weitere Informationen zu den verschiedenen Kaufmodellen finden Sie unter [Kaufmodelle und Dienstebenen](purchasing-models.md).
+
+Jedes schreibgeschützte Replikat hat eigene Ressourcen wie DTUs, Worker und Sitzungen. Jedes schreibgeschützte Replikat unterliegt den Ressourcenlimits, die weiter unten in diesem Artikel beschrieben werden.
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Pool für elastische Datenbanken: Speicher- und Computegrößen
 
 Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für elastische Azure SQL-Datenbank-Instanzen für alle Dienstebenen und Computegrößen. Sie haben zum Festlegen der Dienstebene, Computegröße und Speichermenge folgende Optionen:
 
+* [Transact-SQL](elastic-pool-scale.md) über [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
 * [Azure portal](elastic-pool-manage.md#azure-portal)
 * [PowerShell](elastic-pool-manage.md#powershell)
 * [Azure-Befehlszeilenschnittstelle](elastic-pool-manage.md#azure-cli)
-* [REST-API](elastic-pool-manage.md#rest-api):
+* [REST-API](elastic-pool-manage.md#rest-api)
+
 
 > [!IMPORTANT]
 > Anleitungen und Überlegungen zur Skalierung finden Sie unter [Skalieren eines Pools für elastische Datenbanken](elastic-pool-scale.md).

@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: a94389a075fd62d80345a21e32f1bc977dfdee87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/7/2021
+ms.openlocfilehash: 07b7715935756293467f2a3004109df9bf679661
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020059"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029998"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI-Ausgabe für Azure Stream Analytics
 
@@ -73,9 +73,10 @@ Double | Double | String | String | Double
 String | String | String | String | String 
 Datetime | String | String |  Datetime | String
 
-## <a name="output-batch-size"></a>Ausgabebatchgröße
+## <a name="limitations-and-best-practices"></a>Einschränkungen und bewährte Methoden
+Derzeit können Sie Power BI etwa einmal pro Sekunde aufrufen. Das Streaming visueller Elemente unterstützt Pakete mit bis zu 15 KB. Darüber hinaus tritt beim Streaming visueller Elemente ein Fehler auf (Push funktioniert jedoch weiterhin). Aufgrund dieser Einschränkungen eignet sich Power BI perfekt für Anwendungsfälle, bei denen Azure Stream Analytics eine erhebliche Datenlastverringerung ermöglicht. Wir empfehlen die Verwendung eines rollierenden oder springenden Fensters, um sicherzustellen, dass der Datenpush nicht höher ist als ein Push pro Sekunde und Ihre Abfrage innerhalb der Durchsatzanforderungen liegt.
 
-Informationen zur Ausgabebatchgröße finden Sie unter [Einschränkungen für Power BI-REST-API](/power-bi/developer/automation/api-rest-api-limitations).
+Weitere Informationen zur Ausgabebatchgröße finden Sie unter [Einschränkungen für Power BI-REST-API](/power-bi/developer/automation/api-rest-api-limitations).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

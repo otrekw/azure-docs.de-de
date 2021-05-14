@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/03/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2998c3ea0d65bd3c96bd1ac5bdfa8ff148c6c4cc
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: f5bfce7ef2621cbe3bbbfdd95bf9a75e427c8cbd
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780428"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531875"
 ---
-# <a name="reset-redemption-status-for-a-guest-user"></a>Zurücksetzen des Einlösestatus für einen Gastbenutzer
+# <a name="reset-redemption-status-for-a-guest-user-preview"></a>Zurücksetzen des Einlösestatus für einen Gastbenutzer (Vorschau)
 
 Wenn ein Gastbenutzer Ihre Einladung zu B2B-Zusammenarbeit eingelöst hat, kann es vorkommen, dass Sie seine Anmeldeinformationen aktualisieren müssen, z. B. in den folgenden Fällen:
 
@@ -37,7 +37,9 @@ Wenn ein Benutzer sich mit einer anderen E-Mail-Adresse anmelden möchte:
 3. Verwenden Sie eine der folgenden Methoden, um den Einlösestatus des Benutzers zurückzusetzen.
 
 > [!NOTE]
->Wenn Sie während der öffentlichen Vorschau die E-Mail-Adresse des Benutzers zurücksetzen, sollten Sie für die `mail`-Eigenschaft die neue E-Mail-Adresse festlegen. Auf diese Weise kann der Benutzer die Einladung einlösen, indem er sich zusätzlich zur Verwendung des Einlösungslinks in der Einladung bei Ihrem Verzeichnis anmeldet.
+>Während der öffentlichen Vorschau gelten zwei Empfehlungen:
+>- Wenn Sie die E-Mail-Adresse des Benutzers auf eine neue Adresse zurücksetzen, sollten Sie die `mail`-Eigenschaft festlegen. Auf diese Weise kann der Benutzer die Einladung einlösen, indem er sich zusätzlich zur Verwendung des Einlösungslinks in der Einladung bei Ihrem Verzeichnis anmeldet.
+>- Wenn Sie den Status für einen B2B-Gastbenutzer zurücksetzen, achten Sie darauf, dies im Benutzerkontext zu tun. Ausschließliche App-Aufrufe werden derzeit nicht unterstützt.
 >
 ## <a name="use-powershell-to-reset-redemption-status"></a>Zurücksetzen des Einlösestatus mithilfe von PowerShell
 
@@ -54,7 +56,7 @@ New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitat
 
 ## <a name="use-microsoft-graph-api-to-reset-redemption-status"></a>Zurücksetzen des Einlösestatus mithilfe der Microsoft Graph-API
 
-Legen Sie mithilfe der [Microsoft Graph-Einladungs-API](/graph/api/resources/invitation?view=graph-rest-1.0) die Eigenschaft `resetRedemption` auf `true` fest, und geben Sie die neue E-Mail-Adresse in der Eigenschaft `invitedUserEmailAddress` an.
+Legen Sie mithilfe der [Microsoft Graph-Einladungs-API](/graph/api/resources/invitation?view=graph-rest-beta&preserve-view=true) die Eigenschaft `resetRedemption` auf `true` fest, und geben Sie die neue E-Mail-Adresse in der Eigenschaft `invitedUserEmailAddress` an.
 
 ```json
 POST https://graph.microsoft.com/beta/invitations  

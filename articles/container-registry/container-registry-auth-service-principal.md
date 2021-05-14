@@ -2,17 +2,17 @@
 title: Authentifizieren mit dem Dienstprinzipal
 description: Gewähren Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden.
 ms.topic: article
-ms.date: 10/04/2019
-ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/15/2021
+ms.openlocfilehash: a32538e5fc5354427bafc5098634becdcedd1239
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86259150"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285534"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry-Authentifizierung mit Dienstprinzipalen
 
-Sie können einen Dienstprinzipal von Azure Active Directory (Azure AD) verwenden, um den Containerimages `docker push` und `pull` den Zugriff auf Ihre Containerregistrierung zu gewähren. Mithilfe eines Dienstprinzipals können Sie den Zugriff für „monitorlose“ Dienste und Anwendungen ermöglichen.
+Sie können einen Dienstprinzipal von Azure Active Directory (Azure AD) verwenden, um den Push, Pull oder anderen Zugriff auf Ihre Containerregistrierung zu gewähren. Mithilfe eines Dienstprinzipals können Sie den Zugriff für „monitorlose“ Dienste und Anwendungen ermöglichen.
 
 ## <a name="what-is-a-service-principal"></a>Was ist ein Dienstprinzipal?
 
@@ -28,7 +28,7 @@ Konfigurieren Sie beispielsweise Ihre Webanwendung für die Verwendung eines Die
 
 ## <a name="when-to-use-a-service-principal"></a>Einsatzbereiche eines Dienstprinzipals
 
-Sie sollten einen Dienstprinzipal verwenden, um in **monitorlosen Szenarien** Zugriff auf die Registrierung bieten. Das heißt, dies betrifft jede Anwendung, jeden Dienst oder jedes Skript, das Containerimages in automatisierter oder anderweitig unbeaufsichtigter Weise pushen oder pullen muss. Zum Beispiel:
+Sie sollten einen Dienstprinzipal verwenden, um in **monitorlosen Szenarien** Zugriff auf die Registrierung bieten. Das heißt, dies betrifft jede Anwendung, jeden Dienst oder jedes Skript, das Containerimages in automatisierter oder anderweitig unbeaufsichtigter Weise pushen oder pullen muss. Beispiel:
 
   * *Pull*: Bereitstellen von Containern aus einer Registrierung für Orchestrierungssysteme, z. B. Kubernetes, DC/OS und Docker Swarm. Sie können auch Pullvorgänge aus Containerregistrierungen in verwandte Azure-Dienste durchführen, z. B. [Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md), [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](../service-fabric/index.yml) und weitere Dienste.
 
@@ -52,7 +52,7 @@ Sobald Sie einem Dienstprinzipal Zugriff auf Ihre Containerregistrierung gewähr
 * **User Name (Benutzername)** : Anwendungs-ID des Dienstprinzipals (auch als *Client-ID* bezeichnet)
 * **Password (Kennwort)** : Kennwort des Dienstprinzipals (auch als *geheimer Clientschlüssel* bezeichnet)
 
-Jeder Wert ist eine GUID mit den Format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
+Jeder Wert hat das Format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
 
 > [!TIP]
 > Sie können das Kennwort eines Dienstprinzipals neu generieren, indem Sie den Befehl [az ad sp reset-credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) ausführen.
@@ -66,7 +66,7 @@ So können Sie mithilfe der Anmeldeinformationen beispielsweise ein Image aus ei
 
 ### <a name="use-with-docker-login"></a>Verwenden mit Docker-Anmeldung
 
-Sie können `docker login` unter Verwendung eines Dienstprinzipals ausführen. Im folgenden Beispiel wird die Anwendungs-ID des Dienstprinzipals in der Umgebungsvariablen `$SP_APP_ID` und das Kennwort in der Variablen `$SP_PASSWD` übergeben. Bewährte Methoden zur Verwaltung von Docker-Anmeldeinformationen finden Sie in der Befehlsreferenz zu [docker login](https://docs.docker.com/engine/reference/commandline/login/).
+Sie können `docker login` unter Verwendung eines Dienstprinzipals ausführen. Im folgenden Beispiel wird die Anwendungs-ID des Dienstprinzipals in der Umgebungsvariablen `$SP_APP_ID` und das Kennwort in der Variablen `$SP_PASSWD` übergeben. Bewährte Methoden zur Verwaltung von Docker-Anmeldeinformationen finden Sie in der Befehlsreferenz zu [Docker-Login](https://docs.docker.com/engine/reference/commandline/login/).
 
 ```bash
 # Log in to Docker with service principal credentials

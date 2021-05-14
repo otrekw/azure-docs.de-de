@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 266a6c27261107b883fdc0c1cdd274e6345de6db
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4419c9d64eac6eb468c5eb4414a3c9b844d7d8a7
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483451"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181722"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -27,9 +27,11 @@ In diesem Artikel wird beschrieben, welche Arten von Anmeldeinformationen Sie ve
 ## <a name="storage-permissions"></a>Speicherberechtigungen
 
 Ein serverloser SQL-Pool im Synapse Analytics-Arbeitsbereich kann den Inhalt der in Azure Data Lake Storage gespeicherten Dateien lesen. Sie müssen Berechtigungen für den Speicher konfigurieren, damit ein Benutzer, der eine SQL-Abfrage ausführt, die Dateien lesen kann. Es gibt drei Methoden zum Aktivieren des Zugriffs auf die Dateien:
-- Mit der **[rollenbasierten Zugriffssteuerung (Role Based Access Control, RBAC)](../../role-based-access-control/overview.md)** können Sie einem Azure AD-Benutzer in dem Mandanten, in dem sich Ihr Speicher befindet, eine Rolle zuweisen. RBAC-Rollen können Azure AD-Benutzern zugewiesen werden. Ein Leser muss über die Rolle `Storage Blob Data Reader`, `Storage Blob Data Contributor` oder `Storage Blob Data Owner` verfügen. Ein Benutzer, der Daten in den Azure-Speicher schreibt, muss über die Rolle `Storage Blob Data Writer` oder `Storage Blob Data Owner` verfügen. Beachten Sie, dass die Rolle `Storage Owner` nicht impliziert, dass ein Benutzer auch über Berechtigungen vom Typ `Storage Data Owner` verfügt.
-- Mit **Zugriffssteuerungslisten (Access Control Lists, ACL)** können Sie ein differenziertes Berechtigungsmodell für die Dateien und Verzeichnisse im Azure-Speicher definieren. ACLs können Azure AD-Benutzern zugewiesen werden. Wenn Leser eine Datei in einem Pfad in Azure Storage lesen möchten, müssen sie über eine ACL vom Typ „Ausführen“ (X) für jeden Ordner im Dateipfad und über eine ACL vom Typ „Lesen“ (R) für die Datei verfügen. [Weitere Informationen zum Festlegen von ACL-Berechtigungen in der Speicherebene](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
+- Mit der **[rollenbasierten Zugriffssteuerung (Role Based Access Control, RBAC)](../../role-based-access-control/overview.md)** können Sie einem Azure AD-Benutzer in dem Mandanten, in dem sich Ihr Speicher befindet, eine Rolle zuweisen. Ein Leser muss über die RBAC-Rolle `Storage Blob Data Reader`, `Storage Blob Data Contributor` oder `Storage Blob Data Owner` für ein Speicherkonto verfügen. Ein Benutzer, der Daten in den Azure-Speicher schreibt, muss über die Rolle `Storage Blob Data Writer` oder `Storage Blob Data Owner` verfügen. Beachten Sie, dass die Rolle `Storage Owner` nicht impliziert, dass ein Benutzer auch über Berechtigungen vom Typ `Storage Data Owner` verfügt.
+- Mit **Zugriffssteuerungslisten (Access Control Lists, ACL)** können Sie differenzierte [Berechtigungen zum Lesen (Read, R), Schreiben (Write, W) und Ausführen (Execute, X)](../../storage/blobs/data-lake-storage-access-control.md#levels-of-permission) für die Dateien und Verzeichnisse im Azure-Speicher definieren. ACLs können Azure AD-Benutzern zugewiesen werden. Wenn Leser eine Datei in einem Pfad in Azure Storage lesen möchten, müssen sie über eine ACL vom Typ „Ausführen“ (X) für jeden Ordner im Dateipfad und über eine ACL vom Typ „Lesen“ (R) für die Datei verfügen. [Weitere Informationen zum Festlegen von ACL-Berechtigungen auf Speicherebene](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
 - Eine **Shared Access Signature (SAS)** ermöglicht einem Leser den Zugriff auf die Dateien in Azure Data Lake Storage mithilfe des zeitlich begrenzten Tokens. Der Leser muss nicht einmal als Azure AD-Benutzer authentifiziert sein. Das SAS-Token enthält die Berechtigungen, die dem Leser gewährt wurden, sowie den Zeitraum, in dem das Token gültig ist. Das SAS-Token ist eine gute Wahl für den zeitlich eingeschränkten Zugriff für alle Benutzer, die sich nicht einmal in demselben Azure AD-Mandanten befindet müssen. SAS-Token können für das Speicherkonto oder für bestimmte Verzeichnisse definiert werden. Informieren Sie sich ausführlicher über das [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../../storage/common/storage-sas-overview.md).
+
+Alternativ können Sie Ihre Dateien öffentlich verfügbar machen, indem Sie anonymen Zugriff zulassen. Dieser Ansatz sollte NICHT verwendet werden, wenn Sie nicht öffentliche Daten besitzen. 
 
 ## <a name="supported-storage-authorization-types"></a>Unterstützte Autorisierungstypen für den Speicherzugriff
 

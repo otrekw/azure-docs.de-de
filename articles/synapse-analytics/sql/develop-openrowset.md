@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 90ff0a42a9d82fc0bf4f9235e235c774a2d0e75d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307944"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146561"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -138,7 +138,7 @@ Wenn Sie den Pfad für unstrukturierte Daten (unstructured_data_path) als Ordner
 Durch Angabe von „/**“ am Ende des Pfads können Sie den serverlosen SQL-Pool anweisen, Ordner zu durchlaufen. Beispiel: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> Im Gegensatz zu Hadoop und PolyBase werden vom serverlosen SQL-Pool nur dann Unterordner zurückgegeben, wenn Sie „/**“ am Ende des Pfads angeben.
+> Im Gegensatz zu Hadoop und PolyBase werden vom serverlosen SQL-Pool nur dann Unterordner zurückgegeben, wenn Sie „/**“ am Ende des Pfads angeben. Wie bei Hadoop und PolyBase werden keine Dateien zurückgegeben, deren Dateiname mit einem Unterstrich (_) oder einem Punkt (.) beginnt.
 
 Das folgende Beispiel zeigt: Bei Verwendung von „unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`“ werden von einer Abfrage des serverlosen SQL-Pools Zeilen aus „mydata.txt“ zurückgegeben. „mydata2.txt“ und „mydata3.txt“ werden nicht zurückgegeben, da sie sich in einem Unterordner befinden.
 
@@ -227,6 +227,7 @@ Einzelheiten zu CSV-Parserversion 2.0:
 - Die maximale Zeilengröße beträgt 8 MB.
 - Die folgenden Optionen werden nicht unterstützt: DATA_COMPRESSION.
 - Eine leere Zeichenfolge in Anführungszeichen ("") wird als leere Zeichenfolge interpretiert.
+- Die Option DATEFORMAT SET wird nicht berücksichtigt.
 - Unterstütztes Format für DATE-Datentyp: JJJJ-MM-TT
 - Unterstütztes Format für TIME-Datentyp: HH:MM:SS[.Sekundenbruchteile]
 - Unterstütztes Format für DATETIME2-Datentyp: YYYY-MM-DD HH:MM:SS[.Sekundenbruchteile]
@@ -256,7 +257,7 @@ Parquet-Dateien enthalten Spaltenmetadaten, die gelesen werden. Typzuordnungen f
 Bei CSV-Dateien können Spaltennamen aus der Kopfzeile gelesen werden. Mithilfe des Arguments „HEADER_ROW“ können Sie angeben, ob eine Kopfzeile vorhanden ist. Bei „HEADER_ROW = FALSE“ werden generische Spaltennamen verwendet: C1, C2, ... Cn, wobei „n“ die Anzahl von Spalten in der Datei ist. Datentypen werden aus den ersten 100 Datenzeilen abgeleitet. Beispiele finden Sie unter [Lesen von CSV-Dateien ohne Angabe eines Schemas](#read-csv-files-without-specifying-schema).
 
 > [!IMPORTANT]
-> Es kann vorkommen, dass der passende Datentyp aufgrund fehlender Informationen nicht abgeleitet werden kann und stattdessen ein größerer Datentyp verwendet wird. Dies führt zu Mehraufwand und ist insbesondere für Zeichenspalten relevant, die als „varchar(8000)“ abgeleitet werden. Um eine optimale Leistung zu erzielen, [überprüfen Sie die abgeleiteten Datentypen](best-practices-sql-on-demand.md#check-inferred-data-types), und [verwenden Sie passende Datentypen](best-practices-sql-on-demand.md#use-appropriate-data-types).
+> Es kann vorkommen, dass der passende Datentyp aufgrund fehlender Informationen nicht abgeleitet werden kann und stattdessen ein größerer Datentyp verwendet wird. Dies führt zu Mehraufwand und ist insbesondere für Zeichenspalten relevant, die als „varchar(8000)“ abgeleitet werden. Um eine optimale Leistung zu erzielen, [überprüfen Sie die abgeleiteten Datentypen](./best-practices-serverless-sql-pool.md#check-inferred-data-types), und [verwenden Sie passende Datentypen](./best-practices-serverless-sql-pool.md#use-appropriate-data-types).
 
 ### <a name="type-mapping-for-parquet"></a>Typzuordnung für Parquet
 
@@ -403,4 +404,4 @@ AS [r]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie `OPENROWSET` zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Machen Sie sich mit den [bewährten Methoden](best-practices-sql-on-demand.md) vertraut, um eine optimale Leistung zu erzielen. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.
+Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie `OPENROWSET` zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Machen Sie sich mit den [bewährten Methoden](./best-practices-serverless-sql-pool.md) vertraut, um eine optimale Leistung zu erzielen. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.

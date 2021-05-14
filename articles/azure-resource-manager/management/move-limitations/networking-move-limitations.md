@@ -3,12 +3,12 @@ title: Verschieben von Azure-Netzwerkressourcen in ein neues Abonnement oder ein
 description: Verwenden Sie Azure Resource Manager, um virtuelle Netzwerke und andere Netzwerkressourcen in eine neue Ressourcengruppe oder ein neues Abonnement zu verschieben.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: b7aaf01b696b13136a0f4077f315b137c8917906
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 0ac503a778b3de8945b074628242233f9bcd6a3b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120128"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129961"
 ---
 # <a name="move-guidance-for-networking-resources"></a>Leitfaden zum Verschieben von Netzwerkressourcen
 
@@ -17,7 +17,7 @@ In diesem Artikel wird beschrieben, wie Sie virtuelle Netzwerke und andere Netzw
 ## <a name="dependent-resources"></a>Abhängige Ressourcen
 
 > [!NOTE]
-> Bitte beachten Sie, dass VPN-Gateways, die mit öffentlichen IP-Adressen verbunden sind, derzeit nicht in der Lage sind, zwischen Ressourcengruppen oder Abonnements zu wechseln.
+> Beachten Sie bitte, dass VPN-Gateways, die mit Public IP Standard SKU-Adressen verbunden sind, derzeit nicht zwischen Ressourcengruppen oder Abonnements wechseln können.
 
 Wenn Sie eine Ressource verschieben, müssen Sie auch ihre abhängigen Ressourcen (z. b. öffentliche IP-Adressen, virtuelle Netzwerk Gateways, alle zugeordneten Verbindungsressourcen) verschieben. Gateways des lokalen Netzwerks können sich in einer anderen Ressourcengruppe befinden.
 

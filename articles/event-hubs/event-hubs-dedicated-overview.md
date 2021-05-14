@@ -3,12 +3,12 @@ title: Übersicht über dedizierte Event Hubs – Azure Event Hubs | Microsoft-D
 description: Dieser Artikel enthält eine Übersicht über dedizierte Azure Event Hubs, die Bereitstellungen von Event Hubs mit einzelnen Mandanten bieten.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: fe63b074bfdd01191d81dfb7024af5532a87a12f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7f4693857f2c963623cb7ab7c132781d1061f5d7
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310766"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017461"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
@@ -31,10 +31,12 @@ Dedizierte Event Hubs bieten drei bestechende Vorteile für Kunden, die Kapazit�
 
 Ein dedizierter Cluster garantiert die Kapazität in vollem Umfang. Er kann mehrere Gigabyte an eingehenden Streamingdaten mit vollständig dauerhaftem Speicher und Latenzen von unter einer Sekunde verarbeiten, sodass Bursts beim Datenverkehr kein Problem mehr darstellen. 
 
-#### <a name="inclusive-and-exclusive-access-to-features"></a>Inklusiver und exklusiver Zugriff auf Funktionen 
-Das Dedicated-Angebot umfasst Funktionen wie Capture ohne zusätzliche Kosten sowie exklusiven Zugriff auf neue Features wie BYOK (Bring Your Own Key). Der Dienst verwaltet auch den Lastenausgleich, Betriebssystemupdates, Sicherheitspatches und die Partitionierung. Daher müssen Sie weniger Zeit für die Infrastrukturwartung aufwenden und haben mehr Zeit für das Entwickeln von clientseitigen Features.  
+#### <a name="inclusive-and-exclusive-access-to-features"></a>Inklusiver und exklusiver Zugriff auf Funktionen
+
+Das Dedicated-Angebot umfasst Features wie Capture ohne Zusatzkosten und exklusiven Zugang zu Funktionen wie Bring Your Own Key (BYOK). Der Dienst verwaltet auch den Lastenausgleich, Betriebssystemupdates, Sicherheitspatches und die Partitionierung. Daher müssen Sie weniger Zeit für die Infrastrukturwartung aufwenden und haben mehr Zeit für das Entwickeln von clientseitigen Features.  
 
 #### <a name="cost-savings"></a>Kostenersparnis
+
 Bei hohen Eingangsvolumen (> 100 Durchsatzeinheiten) kostet ein Cluster bedeutend weniger pro Stunde als der Kauf einer vergleichbaren Menge an Durchsatzeinheiten im Standard-Angebot.
 
 

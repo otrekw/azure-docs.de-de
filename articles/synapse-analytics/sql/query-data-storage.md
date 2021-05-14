@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d299afca0bd8070a1da738e02812b64c41a7101c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f9626ebdcc52f9aeb2b9283dac6c5790e3df8cf
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675057"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108179958"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von Speicherdateien mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -96,15 +96,12 @@ Beispiele finden Sie unter [Lesen von CSV-Dateien ohne Angabe aller Spalten](que
 
 Indem Sie die WITH-Klausel in der `OPENROWSET`-Anweisung weglassen, können Sie den Dienst anweisen, das Schema anhand der zugrunde liegenden Dateien per Rückschluss automatisch zu erkennen.
 
-> [!NOTE]
-> Dies funktioniert derzeit nur für das Parquet-Dateiformat.
-
 ```sql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 ```
 
-Verwenden Sie unbedingt [geeignete abgeleitete Datentypen](best-practices-sql-on-demand.md#check-inferred-data-types), um eine optimale Leistung zu erzielen. 
+Verwenden Sie unbedingt [geeignete abgeleitete Datentypen](./best-practices-serverless-sql-pool.md#check-inferred-data-types), um eine optimale Leistung zu erzielen. 
 
 ## <a name="query-multiple-files-or-folders"></a>Abfragen mehrerer Dateien oder Ordner
 
@@ -248,7 +245,7 @@ Die Demodaten enthalten die folgenden Datasets:
 - Parquet-Beispieldateien mit geschachtelten Spalten
 - Bücher im JSON-Format
 
-| Ordnerpfad                                                  | Beschreibung                                                  |
+| Ordnerpfad                                                  | BESCHREIBUNG                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /csv/                                                        | Übergeordneter Ordner für Daten im CSV-Format                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Ordner mit Bevölkerungsdatendateien in verschiedenen CSV-Formaten |

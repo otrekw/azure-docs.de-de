@@ -2,13 +2,13 @@
 title: 'Azure Service Bus-Messaging: Warteschlangen, Themen und Abonnements'
 description: Dieser Artikel bietet eine Übersicht über Azure Service Bus-Messagingentitäten (Warteschlangen, Themen und Abonnements).
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: b8fb68509ad920fc6911290377f49b89ec610b58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: ccd91d5091dbbba072cf222e5a73c3db1d48c321
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101096323"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209823"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-Warteschlangen, -Themen und -Abonnements
 Azure Service Bus unterstützt einen Satz cloudbasierter, nachrichtenorientierter Middlewaretechnologien, darunter zuverlässiges Message Queuing und dauerhaftes Veröffentlichungs-/Abonnementmessaging. Diese Brokermessagingfunktionen können Sie sich als asynchrone, entkoppelte Messagingfeatures vorstellen, die unter Verwendung der Service Bus-Messagingworkload verschiedene Szenarien wie Veröffentlichung/Abonnement, vorübergehende Entkopplung und Lastenausgleich unterstützen. Die entkoppelte Kommunikation bietet viele Vorteile. Beispielsweise können Clients und Server Verbindungen nach Bedarf herstellen und Vorgänge asynchron ausführen.
@@ -53,7 +53,7 @@ In vielen Fällen müssen Nachrichten mit bestimmten Merkmalen auf unterschiedli
 
 Ein Anwendungsbeispiel finden Sie auf GitHub unter [TopicSubscriptionWithRuleOperationsSample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample).
 
-Weitere Informationen über mögliche Filterwerte finden Sie in der Dokumentation zu den Klassen [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) und [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction).
+Weitere Informationen zu Filtern finden Sie unter [Themenfilter und -aktionen](topic-filters.md).
 
 ## <a name="java-message-service-jms-20-entities"></a>Java Message Service 2.0-Entitäten (JMS)
 Auf die folgenden Entitäten kann über die JMS 2.0-API (Java Message Service) zugegriffen werden.

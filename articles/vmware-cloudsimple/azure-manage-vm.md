@@ -1,19 +1,19 @@
 ---
 title: 'Azure VMware Solution by CloudSimple: Verwalten von VMs in der privaten Cloud in Azure'
 description: Enthält Informationen zum Verwalten von VMs in der privaten CloudSimple-Cloud im Azure-Portal, einschließlich Hinzufügen von Datenträgern, Ändern der VM-Kapazität und Hinzufügen von Netzwerkschnittstellen.
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 090b7711ab061b989eae13113fe7048e8dd875ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c505ad4edb6ee13a81e3d575ad11e1bf526166df
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895188"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182550"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Verwalten Ihrer virtuellen Computer in der privaten CloudSimple-Cloud in Azure
 

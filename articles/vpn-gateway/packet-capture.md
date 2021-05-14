@@ -1,5 +1,6 @@
 ---
-title: 'Azure-VPN Gateway: Konfigurieren der Paketerfassung'
+title: Konfigurieren der Paketerfassung für VPN Gateways
+titleSuffix: Azure VPN Gateway
 description: Erfahren Sie mehr über die Paketerfassungsfunktionen, die Sie für VPN Gateways verwenden können, um die Ursache eines Problems einzugrenzen.
 services: vpn-gateway
 author: anzaman
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alzam
-ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f423b2a4a1edcfdb71fd387cae0ec8c63113627
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726613"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229178"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>Konfigurieren der Paketerfassung für VPN Gateways
 

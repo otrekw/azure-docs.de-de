@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Problembehandlung bei häufigen Problemen mit Arc-fähigen Kubernetes-Clustern
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: 992ea75c48b2630032e1314610986fbc610eec7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0b02e5b4e58cda246751b16542a0a2ac587e7b6
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025780"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289622"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Problembehandlung bei Kubernetes mit Azure Arc-Aktivierung
 
@@ -192,3 +192,20 @@ Azure Monitor für Container erfordert die Ausführung des DaemonSet im privileg
 ```console
 juju config kubernetes-worker allow-privileged=true
 ```
+
+## <a name="enable-custom-locations-using-service-principal"></a>Aktivieren von benutzerdefinierten Standorten per Dienstprinzipal
+
+Wenn Sie für Ihren Cluster eine Verbindung mit Azure Arc herstellen oder für einen vorhandenen Cluster das Feature für benutzerdefinierte Standorte aktivieren, wird ggf. die folgende Warnung angezeigt:
+
+```console
+Unable to fetch oid of 'custom-locations' app. Proceeding without enabling the feature. Insufficient privileges to complete the operation.
+```
+
+Die obige Warnung tritt auf, wenn Sie für die Anmeldung bei Azure einen Dienstprinzipal verwendet haben, der nicht über Berechtigungen zum Abrufen von Informationen für die vom Azure Arc-Dienst genutzte Anwendung verfügt. Führen Sie die folgenden Befehle aus, um die erforderlichen Berechtigungen zu gewähren:
+
+```console
+az ad app permission add --id <service-principal-app-id> --api 00000002-0000-0000-c000-000000000000 --api-permissions 3afa6a7d-9b1a-42eb-948e-1650a849e176=Role
+az ad app permission admin-consent --id <service-principal-app-id>
+```
+
+Nachdem die obigen Berechtigungen gewährt wurden, können Sie mit dem [Aktivieren des Features für benutzerdefinierte Standorte](custom-locations.md#enable-custom-locations-on-cluster) im Cluster fortfahren.

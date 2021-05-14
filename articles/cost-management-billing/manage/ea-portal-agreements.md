@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d03ae5062cc81b3e042ed3b714838e14929dbba2
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598009"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778218"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA: Vereinbarungen und Ergänzungen
 
@@ -145,7 +145,7 @@ Keines der oben beschriebenen Kontingente gilt als Dienstvorauszahlung. Um die A
 
 ## <a name="requesting-a-quota-increase"></a>Anfordern einer Kontingenterhöhung
 
-Sie können jederzeit eine Kontingenterhöhung anfordern, indem Sie eine [Onlineanforderung](https://g.microsoftonline.com/0WAEP00en/6) übermitteln. Damit Ihre Anforderung verarbeitet werden kann, geben Sie die folgenden Informationen an:
+Sie können jederzeit eine Kontingenterhöhung anfordern, indem Sie eine [Onlineanforderung](https://ms.portal.azure.com/) übermitteln. Damit Ihre Anforderung verarbeitet werden kann, geben Sie die folgenden Informationen an:
 
 - Das Microsoft-Konto oder Geschäfts-, Schul- oder Unikonto, das dem Kontobesitzer Ihres Abonnements zugeordnet ist. Dies ist die E-Mail-Adresse, die zum Anmelden beim Microsoft Azure-Portal verwendet wird, in dem Ihre Abonnements verwaltet werden. Geben Sie auch an, dass dieses Konto einer EA-Registrierung zugeordnet ist.
 - Die Ressourcen und Mengen, für die Sie eine Kontingenterhöhung wünschen.

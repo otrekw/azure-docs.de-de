@@ -6,17 +6,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e7db817e2fb355e3a69f7b90a4fc6eaa4adec515
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 6c766925fc82fd9d8ea37e3aeb30db7e48e0fde3
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444223"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108160725"
 ---
 # <a name="windows-virtual-desktop-classic-powershell"></a>Windows Virtual Desktop (klassisch): PowerShell
 
->[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../troubleshoot-powershell.md) weiter.
+> [!IMPORTANT]
+> Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../troubleshoot-powershell.md) weiter.
 
 Verwenden Sie diesen Artikel, um Fehler und Probleme bei der Verwendung von PowerShell mit Windows Virtual Desktop zu beheben. Weitere Informationen zu PowerShell von Remote Desktop Services finden Sie unter [Windows Virtual Desktop: PowerShell](/powershell/windows-virtual-desktop/overview).
 
@@ -30,7 +30,7 @@ Dieser Abschnitt listet PowerShell-Befehle auf, die typischerweise beim Einricht
 
 ### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Error: Befehl Add-RdsAppGroupUser: Der angegebene UserPrincipalName ist bereits einer RemoteApp-App-Gruppe im angegebenen Hostpool zugeordnet.
 
-```Powershell
+```powershell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
 ```
 
@@ -40,7 +40,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 
 ### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Error: Befehl Add-RdsAppGroupUser: Der angegebene UserPrincipalName ist nicht im Azure Active Directory vorhanden, das dem Remote Desktop-Mandanten zugeordnet ist.
 
-```PowerShell
+```powershell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName "Desktop Application Group" -UserPrincipalName <UserPrincipalName>
 ```
 
@@ -54,7 +54,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 
 ### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Error: Get-RdsDiagnosticActivities: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
 
-```PowerShell
+```powershell
 Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 ```
 
@@ -64,7 +64,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 ### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Error: Get-RdsDiagnosticActivities: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
 
-```PowerShell
+```powershell
 Get-RdsDiagnosticActivities -Deployment -username <username>
 ```
 
@@ -82,8 +82,8 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **Behebung 2:** Ein Benutzer mit Active Directory-Berechtigungen muss die Rollenzuweisung ausführen.
 
->[!Note]
->New-RdsRoleAssignment kann einem Benutzer keine Berechtigungen erteilen, der nicht in Azure Active Directory (AD) vorhanden ist.
+> [!NOTE]
+> New-RdsRoleAssignment kann einem Benutzer keine Berechtigungen erteilen, der nicht in Azure Active Directory (AD) vorhanden ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,47 +1,42 @@
 ---
-title: 'Tutorial: Durchführen eines Lastenausgleichs für virtuelle Linux-Computer in Azure'
+title: 'Tutorial: Lastenausgleich für virtuelle Computer für Hochverfügbarkeit'
 description: In diesem Tutorial erfahren Sie, wie Sie die Azure CLI zum Erstellen eines Lastenausgleichs für eine hoch verfügbare und sichere Anwendung über drei virtuelle Linux-Computer hinweg verwenden.
-services: virtual-machines
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.subservice: networking
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/13/2017
+ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 433bbd51618cfb5624c8ed2c549e1793488f0e81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 191eb1338533cf1a5f81f4d04c5dfc6fd5cc569c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553764"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818744"
 ---
-# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Tutorial: Vornehmen eines Lastausgleichs bei virtuellen Linux-Computern in Azure zum Erstellen einer hochverfügbaren Anwendung mit der Azure CLI
+# <a name="tutorial-load-balance-vms-for-high-availability"></a>Tutorial: Lastenausgleich für virtuelle Computer für Hochverfügbarkeit
 
 Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer kennen, die den Datenverkehr verteilen und Hochverfügbarkeit bereitstellen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen einer Azure Load Balancer-Instanz
-> * Erstellen des Integritätstests für den Load Balancer
-> * Erstellen von Load Balancer-Regeln
-> * Verwenden von cloud-init zum Erstellen einer einfachen Node.js-App
-> * Erstellen und Anfügen von virtuellen Computern an einen Load Balancer
-> * Anzeigen eines Load Balancers im Betrieb
-> * Hinzufügen und Entfernen von virtuellen Computern zu bzw. aus einem Load Balancer
+> * Einrichten eines Load Balancers
+> * Erstellen eines Integritätstests
+> * Erstellen von Datenverkehrsregeln
+> * Verwenden von cloud-init zum Installieren einer einfachen Node.js-App
+> * Erstellen und Anfügen von virtuellen Computern an das Lastenausgleichsmodul
+> * Anzeigen des Lastenausgleichs in Aktion
+> * Hinzufügen und Entfernen von virtuellen Computern zu bzw. aus einem Lastenausgleich
 
 Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](../../cloud-shell/overview.md), der ständig auf die neueste Version aktualisiert wird. Wählen Sie zum Öffnen von Cloud Shell oben in einem Codeblock die Option **Ausprobieren** aus.
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="azure-load-balancer-overview"></a>Übersicht über den Azure Load Balancer
+
 Ein Azure Load Balancer ist ein Load Balancer der Schicht 4 (TCP, UDP), der Hochverfügbarkeit durch Verteilen des eingehenden Datenverkehrs auf fehlerfreie virtuelle Computer bietet. Der Integritätstest eines Load Balancers überwacht einen bestimmten Port auf jedem virtuellen Computer und verteilt Datenverkehr nur an einen betriebsbereiten virtuellen Computer.
 
 Sie definieren eine Front-End-IP-Konfiguration, die eine oder mehrere öffentliche IP-Adressen enthält. Mit dieser Front-End-IP-Konfiguration sind der Load Balancer und Ihre Anwendungen über das Internet zugänglich. 

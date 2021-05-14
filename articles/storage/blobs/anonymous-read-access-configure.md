@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 04/29/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 31812a7b2dddad474ab5cd422a15f6e5368dba5c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7050718955c9a2651ecf8c646ceae7c5bb8cdd02
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774627"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319004"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurieren des anonymen, öffentlichen Lesezugriffs auf Container und Blobs
 
@@ -195,13 +195,13 @@ Sie können die öffentliche Zugriffsebene nicht für einzelne Blobs ändern, da
 Führen Sie die folgenden Schritte aus, um die öffentliche Zugriffsebene für einen oder mehrere vorhandene Container im Azure-Portal zu aktualisieren:
 
 1. Navigieren Sie zu Ihrer Speicherkontoübersicht im Azure-Portal.
-1. Wählen Sie auf dem Menüblatt unter **Blob-Dienst** die Option **Container** aus.
+1. Wählen Sie unter **Datenspeicherung** auf dem Menüblatt **Blobcontainer** aus.
 1. Wählen Sie die Container aus, für die Sie die öffentliche Zugriffsebene festlegen möchten.
 1. Klicken Sie auf **Zugriffsebene ändern**, um die Einstellungen für den öffentlichen Zugriff aufzurufen.
 1. Wählen Sie aus der Dropdownliste **Öffentliche Zugriffsebene** den gewünschten Eintrag aus, und klicken Sie auf „OK“, damit die Änderungen auf die ausgewählten Container angewendet werden.
 
-    ![Screenshot: Festlegen der öffentlichen Zugriffsebene im Azure-Portal](./media/anonymous-read-access-configure/configure-public-access-container.png)
-
+    :::image type="content" source="media/anonymous-read-access-configure/configure-public-access-container.png" alt-text="Screenshot: Festlegen der öffentlichen Zugriffsebene im Azure-Portal." lightbox="media/anonymous-read-access-configure/configure-public-access-container.png":::
+    
 Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, kann die öffentliche Zugriffsebene eines Containers nicht festgelegt werden. Wenn Sie die öffentliche Zugriffsebene eines Containers festlegen möchten, stellen Sie fest, dass die Einstellung deaktiviert ist, da der öffentliche Zugriff für dieses Konto verweigert wird.
 
 :::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Screenshot: Festlegen der öffentlichen Zugriffsebene des Containers wird blockiert, wenn der öffentliche Zugriff verweigert wird":::

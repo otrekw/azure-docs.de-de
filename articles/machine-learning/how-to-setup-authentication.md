@@ -8,15 +8,15 @@ ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/05/2020
-ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/02/2021
+ms.topic: how-to
+ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2
+ms.openlocfilehash: 44468f056cb9e13b8384c86fa5858ef1c3edb44b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102210817"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070027"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows
 
@@ -70,12 +70,6 @@ Die einfachste Art der Erstellung eines Dienstprinzipals und Gewährung von Zugr
     Wenn Sie über mehrere Azure-Abonnements verfügen, können Sie den Befehl `az account set -s <subscription name or ID>` verwenden, um das Abonnement festzulegen. Weitere Informationen finden Sie unter [Verwenden mehrerer Azure-Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli).
 
     Andere Methoden zur Authentifizierung finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli).
-
-1. Installieren Sie die Azure Machine Learning-Erweiterung:
-
-    ```azurecli-interactive
-    az extension add -n azure-cli-ml
-    ```
 
 1. Erstellen Sie den Dienstprinzipal. Im folgenden Beispiel wird ein Dienstprinzipal mit dem Namen **ml-auth** erstellt:
 

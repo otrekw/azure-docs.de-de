@@ -3,13 +3,13 @@ title: Bereitstellen von Resource Manager-Vorlagen mithilfe von GitHub Actions
 description: In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Vorlagen (ARM-Vorlage) mithilfe von GitHub Actions bereitstellen.
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: ec29ae019555c54ccdcef9dd743706f8d6401bbd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: github-actions-azure
+ms.openlocfilehash: fb14c6e452ea4923ece7561ca8af968626f4af77
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781971"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737025"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>Bereitstellen von ARM-Vorlagen mithilfe von GitHub Actions
 
@@ -88,7 +88,7 @@ Sie müssen Geheimnisse für Ihre Azure-Anmeldeinformationen, Ressourcengruppe u
 Fügen Sie Ihrem GitHub-Repository eine Resource Manager-Vorlage hinzu. Mithilfe dieser Vorlage wird ein Speicherkonto erstellt.
 
 ```url
-https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
+https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
 ```
 
 Sie können die Datei an einer beliebigen Stelle im Repository ablegen. Im Workflowbeispiel im nächsten Abschnitt wird davon ausgegangen, dass die Vorlagendatei **azuredeploy.json** heißt und im Repositorystamm gespeichert ist.

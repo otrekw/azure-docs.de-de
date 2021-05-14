@@ -12,12 +12,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/16/2021
 ms.author: kumud
-ms.openlocfilehash: 7da59e996ec37d3653dbde68c5f56caa9e8261ee
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 1d8a3bf8a17d04d98f605be3bcc01f47a61fdc89
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061909"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906060"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Tutorial: Weiterleiten von Netzwerkdatenverkehr mithilfe des Azure-Portals
 
@@ -36,10 +36,6 @@ In diesem Tutorial wird das [Azure-Portal](https://portal.azure.com) verwendet. 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie beginnen, müssen Sie über ein Azure-Konto mit einem aktiven Abonnement verfügen. Falls Sie über keins verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-- Ein Azure-Abonnement.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

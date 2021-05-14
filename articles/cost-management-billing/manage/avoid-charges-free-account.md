@@ -6,18 +6,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: dfbfa6c97ef23976ed791fb04482346d9f336bfe
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cac3126706b5c2c7e890890013a506d04f104bb2
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584034"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330996"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Vermeiden von Gebühren mit Ihrem kostenlosen Azure-Konto
 
-Mit Ihrem [kostenlosen Azure-Konto](https://azure.microsoft.com/free/) erhalten berechtigte neue Benutzer ein Azure-Guthaben von 200 US-Dollar für die ersten 30 Tage und 12 Monate lang eine begrenzte Anzahl kostenloser Dienste. Weitere Informationen zu den Grenzwerten der kostenlosen Dienste finden Sie unter [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq/). Wenn Sie keine abgelaufenen Gutschriften haben oder nur kostenlose Dienste innerhalb der Grenzwerte nutzen, werden Ihnen keine Gebühren berechnet.
+Mit Ihrem [kostenlosen Azure-Konto](https://azure.microsoft.com/free/) erhalten berechtigte neue Benutzer eine Azure-Gutschrift von 200 US-Dollar in der Abrechnungswährung für die ersten 30 Tage und 12 Monate lang eine begrenzte Anzahl kostenloser Dienste. Weitere Informationen zu den Grenzwerten der kostenlosen Dienste finden Sie unter [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq/). Wenn Sie keine abgelaufenen Gutschriften haben oder nur kostenlose Dienste innerhalb der Grenzwerte nutzen, werden Ihnen keine Gebühren berechnet.
 
 Sehen wir uns einige der Gründe an, aus denen Gebühren für Ihr kostenloses Azure-Konto anfallen können.
 

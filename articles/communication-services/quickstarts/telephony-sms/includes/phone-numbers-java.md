@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 4891a602e9fb5ebbdaadc980c1960b95816c6653
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: bbc0b5e3b0e080951cc274553c89f08446bf8d57
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113371"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157591"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +32,7 @@ Wie Sie sehen, wurde durch die Aufgabe „generate“ ein Verzeichnis erstellt, 
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-phonenumbers</artifactId>
-    <version>1.0.0-beta.7</version>
+    <version>1.0.0</version>
 </dependency>
 
 <dependency>
@@ -100,7 +100,7 @@ PhoneNumbersClient phoneNumberClient = new PhoneNumbersClientBuilder()
 
 ### <a name="search-for-available-phone-numbers"></a>Suchen nach verfügbaren Telefonnummern
 
-Um Telefonnummern zu kaufen, müssen Sie zuerst nach verfügbaren Telefonnummern suchen. Geben Sie für die Suche nach Telefonnummern die Vorwahl, den Zuweisungstyp, die [Funktionen der Telefonnummer](../../../concepts/telephony-sms/plan-solution.md#phone-number-capabilities-in-azure-communication-services), den [Telefonnummerntyp](../../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services) und die Menge an. Beachten Sie, dass die Angabe der Vorwahl für gebührenfreie Telefonnummern nicht zwingend ist.
+Um Telefonnummern zu kaufen, müssen Sie zuerst nach verfügbaren Telefonnummern suchen. Geben Sie für die Suche nach Telefonnummern die Vorwahl, den Zuweisungstyp, die [Funktionen der Telefonnummer](../../../concepts/telephony-sms/plan-solution.md#phone-number-capabilities-in-azure-communication-services), den [Telefonnummerntyp](../../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services) und die Menge an. Beachten Sie, dass die Angabe der Vorwahl für gebührenfreie Telefonnummern nicht zwingend ist.
 
 ```java
  PhoneNumberCapabilities capabilities = new PhoneNumberCapabilities()
@@ -134,7 +134,7 @@ PurchasedPhoneNumber phoneNumber = phoneNumberClient.getPurchasedPhoneNumber("+1
 System.out.println("Phone Number Country Code: " + phoneNumber.getCountryCode());
 ```
 
-Sie können auch alle erworbenen Telefonnummern abrufen.
+Sie können auch alle erworbenen Telefonnummern abrufen.
 ``` java
 PagedIterable<PurchasedPhoneNumber> phoneNumbers = phoneNumberClient.listPurchasedPhoneNumbers(Context.NONE);
 PurchasedPhoneNumber phoneNumber = phoneNumbers.iterator().next();
@@ -157,7 +157,7 @@ System.out.println("Phone Number SMS capabilities: " + phoneNumber.getCapabiliti
 
 ### <a name="release-phone-number"></a>Freigeben einer Telefonnummer
 
-Sie können eine erworbene Telefonnummer freigeben.
+Sie können eine erworbene Telefonnummer freigeben.
 ```java
 PollResponse<PhoneNumberOperation> releaseResponse =
     phoneNumberClient.beginReleasePhoneNumber("+14255550123", Context.NONE).waitForCompletion();

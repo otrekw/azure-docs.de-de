@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/30/2021
+ms.date: 04/27/2021
 tags: connectors
-ms.openlocfilehash: ec5046e40b6fade0e4d56023c404cc736a46f105
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 0bdb19104d7773d63f583b4013ac9d80893500ae
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969103"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147263"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
@@ -32,11 +32,11 @@ In diesem Artikel wird erläutert, wie Sie aus Logic Apps auf Ihre SAP-Ressource
 
     * Wenn Sie Ihre Logik-App in einer [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) der Premium-Ebene ausführen, lesen Sie die [ISE-Voraussetzungen](#ise-prerequisites).
 
-* Ein [SAP-Anwendungsserver](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) oder ein [SAP-Nachrichtenserver](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm), auf den Sie aus Logic Apps zugreifen möchten. Informationen dazu, welche SAP-Server und SAP-Aktionen Sie mit dem Connector verwenden können, finden Sie unter [SAP-Kompatibilität](#sap-compatibility).
+* Ein [SAP-Anwendungsserver](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) oder ein [SAP-Nachrichtenserver](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm), auf den Sie aus Logic Apps zugreifen möchten. Informationen dazu, welche SAP-Server Sie mit dem Connector verwenden können, finden Sie unter [SAP-Kompatibilität](#sap-compatibility).
 
     * Sie müssen Ihren SAP-Server so konfigurieren, dass er die Verwendung von RFC zulässt. Weitere Informationen finden Sie im folgenden SAP-Hinweis [460089: Mindestautorisierungsprofile für externe RFC-Programme](https://launchpad.support.sap.com/#/notes/460089). 
 
-* Nachrichteninhalte, die Sie an Ihren SAP-Server senden möchten, z.B. eine IDoc-Beispieldatei. Diese Inhalte müssen im XML-Format vorliegen und den Namespace der SAP-Aktion enthalten, die Sie verwenden möchten. Sie können [IDocs mit einem Flatfile-Schema senden, indem Sie sie mit einem XML-Umschlag umschließen](#send-flat-file-idocs).
+* Nachrichteninhalte, die Sie an Ihren SAP-Server senden möchten, z.B. eine IDoc-Beispieldatei. Diese Inhalte müssen im XML-Format vorliegen und den Namespace der [SAP-Aktion](#actions) enthalten, die Sie verwenden möchten. Sie können [IDocs mit einem Flatfile-Schema senden, indem Sie sie mit einem XML-Umschlag umschließen](#send-flat-file-idocs).
 
 * Wenn Sie den Trigger **Beim Empfang einer Nachricht von SAP** verwenden möchten, müssen Sie zudem Folgendes ausführen:
 
@@ -63,35 +63,9 @@ Der SAP-Connector unterstützt die folgenden Nachrichten- und Datenintegrationst
 
 * RFC (Remote Function Call) und tRFC (Transactional RFC)
 
-Der SAP-Connector verwendet die [SAP-NCo-Bibliothek (.NET-Connector)](https://support.sap.com/en/product/connectors/msnet.html). Sie können die folgenden SAP-Aktionen und -Trigger mit dem Connector verwenden:
+Der SAP-Connector verwendet die [SAP-NCo-Bibliothek (.NET-Connector)](https://support.sap.com/en/product/connectors/msnet.html). 
 
-* **Nachricht an SAP senden**- bis [IDocs über tRFC senden](#send-idoc-action)-Aktion, die Sie für folgende Zwecke verwenden können:
-
-    * [Aufrufen von BAPI-Funktionen über RFC](#call-bapi-action)
-
-    * Aufrufen von RFC/tRFC in SAP-Systemen
-
-    * Erstellen oder Schließen von zustandsbehafteten Sitzungen
-
-    * Commit oder Rollback von BAPI-Transaktionen
-
-    * Bestätigen eines Transaktionsbezeichners
-
-    * Senden von IDocs, Abrufen des Status eines IDocs über seiner Nummer und Abrufen einer Liste von IDocs für eine Transaktion
-
-    * Lesen einer SAP-Tabelle
-
-* **Beim Empfang einer Nachricht von SAP**-Trigger, den Sie für folgende Zwecke verwenden können:
-
-    * Empfangen von IDocs über tRFC
-
-    * Aufrufen von BAPI-Funktionen über RFC
-
-    * Aufrufen von RFC/tRFC in SAP-Systemen
-
-* **Schemas generieren**-Aktion, mit der Sie Schemas für die SAP-Artefakte für IDoc, BAPI oder RFC generieren können.
-
-Um diese SAP-Aktionen verwenden zu können, müssen Sie zunächst Ihre Verbindung mit einem Benutzernamen und einem Kennwort authentifizieren. Der SAP-Connector unterstützt auch [Secure Network Communications (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true). Sie können einmaliges Anmelden (SSO) mit SNC für SAP NetWeaver verwenden oder für zusätzliche Sicherheit Funktionen externer Produkte. Wenn Sie SNC verwenden, lesen Sie die [SNC-Voraussetzungen](#snc-prerequisites).
+Um die verfügbaren [SAP Trigger](#triggers) und [SAP-Aktionen](#actions) nutzen zu können, müssen Sie Ihre Verbindung zunächst mit einem Benutzernamen und einem Passwort authentifizieren. Der SAP-Connector unterstützt auch [Secure Network Communications (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true). Sie können einmaliges Anmelden (SSO) mit SNC für SAP NetWeaver verwenden oder für zusätzliche Sicherheit Funktionen externer Produkte. Wenn Sie SNC verwenden, lesen Sie die [SNC-Voraussetzungen](#snc-prerequisites).
 
 ### <a name="migrate-to-current-connector"></a>Migrieren zum aktuellen Connector
 
@@ -911,7 +885,7 @@ Diese SAP-Aktion gibt ein [XML-Schema](#sample-xml-schemas) und nicht den Inhalt
 
 * Die Struktur der Antwortnachricht. Verwenden Sie diese Informationen, um die Antwort zu analysieren. 
 
-Um die Anforderungsnachricht zu senden, verwenden Sie die generische SAP-Aktion **Nachricht an SAP senden** oder die gezielten **BAPI aufrufen**-Aktionen.
+Um die Anforderungsnachricht zu senden, verwenden Sie die generische **SAP-Aktion Nachricht an SAP** senden oder die gezielte **\[BAPI]-Aufrufmethode in SAP**-Aktionen.
 
 ### <a name="sample-xml-schemas"></a>Beispiele für XML-Schemas
 
@@ -1005,7 +979,7 @@ Das folgende Beispiel enthält Präfixe für die Namespaces. Sie können alle Pr
 
 #### <a name="xml-samples-for-bapi-requests"></a>XML-Beispiele für BAPI-Anforderungen
 
-Die folgenden XML-Beispiele sind Beispielanforderungen zum [Aufrufen der BAPI-Methode](#call-bapi-action).
+Die folgenden XML-Beispiele sind Beispielanforderungen zum [Aufrufen der BAPI-Methode](#actions).
 
 > [!NOTE]
 > SAP macht Geschäftsobjekte für externe Systeme verfügbar, indem diese als Antwort auf den Remotefunktionsaufruf `RPY_BOR_TREE_INIT` beschrieben werden. Dieser Aufruf wird von Logic Apps ohne Eingabefilter ausgegeben. Logic Apps untersucht die Ausgabetabelle `BOR_TREE`. Das Feld `SHORT_TEXT` wird für Namen von Geschäftsobjekten verwendet. Geschäftsobjekte, die von SAP nicht in der Ausgabetabelle zurückgegeben werden, sind für Logic Apps nicht zugänglich.
@@ -1379,7 +1353,7 @@ Die SAP-Verbindungsparameter für eine Logik-App verfügen über keine Spracheig
 
 ### <a name="confirm-transaction-explicitly"></a>Explizites Bestätigen der Transaktion
 
-Wenn Sie Transaktionen von Logic Apps an SAP senden, erfolgt dieser Austausch in zwei Schritten, wie im SAP-Dokument [Transactional RFC Server Programs](https://help.sap.com/doc/saphelp_nwpi71/7.1/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true) (Transaktionsbezogene RFC-Serverprogramme) beschrieben. Von der Aktion **Send to SAP** (An SAP senden) werden standardmäßig sowohl die Schritte für die Funktionsübertragung als auch die Schritte für die Transaktionsbestätigung in einem einzelnen Aufruf abgewickelt. Der SAP-Connector ermöglicht die Entkoppelung dieser Schritte. Sie können ein IDoc-Element senden und anstatt der automatischen Transaktionsbestätigung die explizite Aktion **Transaktions-ID bestätigen** verwenden.
+Wenn Sie Transaktionen von Logic Apps an SAP senden, erfolgt dieser Austausch in zwei Schritten, wie im SAP-Dokument [Transactional RFC Server Programs](https://help.sap.com/doc/saphelp_nwpi71/7.1/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true) (Transaktionsbezogene RFC-Serverprogramme) beschrieben. Von der Aktion **Send to SAP** (An SAP senden) werden standardmäßig sowohl die Schritte für die Funktionsübertragung als auch die Schritte für die Transaktionsbestätigung in einem einzelnen Aufruf abgewickelt. Der SAP-Connector ermöglicht die Entkoppelung dieser Schritte. Sie können ein IDoc-Element senden und anstatt der automatischen Transaktionsbestätigung die explizite Aktion **\[Transaktions-ID bestätigen** verwenden.
 
 Diese Entkoppelung der Transaktions-ID-Bestätigung ist hilfreich, wenn Sie in SAP keine Transaktionen duplizieren möchten (etwa in Szenarien, in denen beispielsweise Fehler aufgrund von Netzwerkproblemen auftreten können). Durch die separate Bestätigung der Transaktions-ID wird die Transaktion nur einmal in Ihrem SAP-System durchgeführt.
 
@@ -1387,13 +1361,13 @@ Hier sehen Sie ein Beispiel für dieses Muster:
 
 1. Erstellen Sie eine leere Logik-App, und fügen Sie einen HTTP-Trigger hinzu.
 
-1. Fügen Sie über den SAP-Connector die Aktion **Send IDOC** (IDOC senden) hinzu. Geben Sie die Details für das IDoc-Element an, das Sie an Ihr SAP-System senden.
+1. Fügen Sie im SAP-Konnektor die Aktion **\[IDOC] Dokument an SAP** senden hinzu. Geben Sie die Details für das IDoc-Element an, das Sie an Ihr SAP-System senden.
 
 1. Wählen Sie im Feld **TID bestätigen** die Option **Nein** aus, um die Transaktions-ID explizit in einem separaten Schritt zu bestätigen. Für das optionale Feld **Transaktions-ID-GUID** können Sie den Wert entweder manuell angeben oder diese GUID automatisch durch den Connector generieren und in der Antwort auf die Aktion „IDoc senden“ zurückgeben lassen.
 
    ![Eigenschaften der Aktion „Send IDOC“ (IDOC senden)](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
 
-1. Fügen Sie zum expliziten Bestätigen der Transaktions-ID die Aktion **Confirm transaction ID** (Transaktions-ID bestätigen) hinzu, und achten Sie darauf, dass Sie das [Senden von doppelten IDocs an SAP vermeiden](#avoid-sending-duplicate-idocs). Klicken Sie auf das Feld **Transaction ID** (Transaktions-ID), um die dynamische Inhaltsliste anzuzeigen. Wählen Sie in dieser Liste den **Transaktions-ID-Wert** aus, der von der Aktion **Send IDOC** (IDOC senden) zurückgegeben wurde.
+1. Fügen Sie zum expliziten Bestätigen der Transaktions-ID die Aktion **\[Confirm transaction ID** (Transaktions-ID bestätigen) hinzu, und achten Sie darauf, dass [Sie das Senden von doppelten IDocs an SAP](#avoid-sending-duplicate-idocs) vermeiden. Klicken Sie auf das Feld **Transaction ID** (Transaktions-ID), um die dynamische Inhaltsliste anzuzeigen. Wählen Sie in dieser Liste den Wert der **Transaktions-ID** aus, der von der Aktion **\[IDOC] Dokument an SAP** senden zurückgegeben wird.
 
    ![Aktion zum Bestätigen der Transaktions-ID](./media/logic-apps-using-sap-connector/explicit-transaction-id.png)
 
@@ -1417,9 +1391,9 @@ Falls bei Ihnen ein Problem aufgrund des Sendens von doppelten IDocs an SAP übe
 
     1. Wählen Sie unter **Wert** das Textfeld **Anfangswert eingeben** aus, um das Menü für dynamischen Inhalt zu öffnen. Wählen Sie die Registerkarte **Ausdrücke** aus. Geben Sie in der Liste mit den Funktionen die Funktion `guid()` ein. Wählen Sie anschließend **OK** aus, um Ihre Änderungen zu speichern. Das Feld **Wert** ist jetzt auf die Funktion `guid()` festgelegt, mit der eine GUID generiert wird.
 
-1. Fügen Sie nach der Aktion **Variable initialisieren** die Aktion **Send IDOC** (IDoc senden) hinzu.
+1. Fügen Sie nach der Aktion **Variable initialisieren** die Aktion  **\[ IDOC] Dokument an SAP senden hinzu**.
 
-1. Konfigurieren Sie im Editor für die Aktion **Send IDOC** (IDoc senden) die folgenden Einstellungen. Speichern Sie anschließend die Änderungen.
+1. Nehmen Sie im Editor für die Aktion **\[IDOC] Dokument an SAP**, senden die folgenden Einstellungen vor. Speichern Sie anschließend die Änderungen.
 
     1. Wählen Sie unter **IDOC type** (IDoc-Typ) Ihren Nachrichtentyp aus, und geben Sie unter **Input IDOC message** (IDoc-Nachricht eingeben) Ihre Nachricht an.
 
@@ -1431,15 +1405,15 @@ Falls bei Ihnen ein Problem aufgrund des Sendens von doppelten IDocs an SAP übe
 
     1. Wählen Sie **Liste „Neuen Parameter hinzufügen“**  > **Transaction ID GUID** (GUID der Transaktions-ID) aus. Wählen Sie das Textfeld aus, um das Menü für dynamischen Inhalt zu öffnen. Wählen Sie auf der Registerkarte **Variablen** den Namen der Variablen aus, die Sie erstellt haben. Beispiel: `IDOCtransferID`.
 
-1. Wählen Sie in der Titelleiste der Aktion **Send IDOC** (IDoc senden) die Option **...**  > **Einstellungen** aus. Es wird empfohlen, für **Wiederholungsrichtlinie** den Wert **Standard** &gt; **Fertig** auszuwählen. Sie können jedoch stattdessen eine benutzerdefinierte Richtlinie für Ihre spezifischen Anforderungen konfigurieren. Bei benutzerdefinierten Richtlinien wird empfohlen, mindestens einen Wiederholungsversuch zu konfigurieren, um vorübergehende Netzwerkausfälle zu überwinden.
+1. Wählen Sie in der Titelleiste der Aktion **\[IDOC] Dokument an SAP** senden, wählen Sie **...**  > **Einstellungen**. Es wird empfohlen, für **Wiederholungsrichtlinie** den Wert **Standard** &gt; **Fertig** auszuwählen. Sie können jedoch stattdessen eine benutzerdefinierte Richtlinie für Ihre spezifischen Anforderungen konfigurieren. Bei benutzerdefinierten Richtlinien wird empfohlen, mindestens einen Wiederholungsversuch zu konfigurieren, um vorübergehende Netzwerkausfälle zu überwinden.
 
-1. Fügen Sie nach der Aktion **Send IDOC** (IDoc senden) die Aktion **Confirm transaction ID** (Transaktions-ID bestätigen) hinzu.
+1. Fügen Sie nach der Aktion **\[ IDOC] Dokument an SAP senden** die Aktion **\[ IDOC] Transaktions-ID bestätigen hinzu**.
 
-1. Konfigurieren Sie im Editor für die Aktion **Confirm transaction ID** (Transaktions-ID bestätigen) die folgenden Einstellungen. Speichern Sie anschließend die Änderungen.
+1. Konfigurieren Sie im Editor für die Aktion **\[IDOC] Confirm transaction**, ID (Transaktions-ID bestätigen) die folgenden Einstellungen. Speichern Sie anschließend die Änderungen.
 
     1. Geben Sie für **Transaktions-ID** den Namen Ihrer Variablen erneut ein. Beispiel: `IDOCtransferID`.
 
-1. Optional können Sie die Deduplizierung in Ihrer Testumgebung überprüfen. Wiederholen Sie die **IDOC senden**-Aktion mit derselben **Transaktions-ID**-GUID, die Sie im vorherigen Schritt verwendet haben. Wenn Sie dasselbe IDoc zweimal senden, können Sie überprüfen, ob SAP die Duplizierung des tRFC-Aufrufs identifizieren und die beiden Aufrufe einer einzelnen eingehenden IDoc-Nachricht auflösen kann.
+1. Optional können Sie die Deduplizierung in Ihrer Testumgebung überprüfen. Wiederholen Sie die **Aktion \[IDOC] Dokument an SAP** senden mit der gleichen **Transaktions-ID-** GUID, die Sie im vorherigen Schritt verwendet haben. Wenn Sie dasselbe IDoc zweimal senden, können Sie überprüfen, ob SAP die Duplizierung des tRFC-Aufrufs identifizieren und die beiden Aufrufe einer einzelnen eingehenden IDoc-Nachricht auflösen kann.
 
 ## <a name="known-issues-and-limitations"></a>Einschränkungen und bekannte Probleme
 
@@ -1449,59 +1423,205 @@ Zurzeit sind für den verwalteten SAP-Connector (Nicht-ISE) folgende Probleme un
 
   * In Sendeszenarien werden Datengatewaycluster im Failovermodus unterstützt. 
 
-  * Datengatewaycluster im Lastenausgleichsmodus werden von zustandsbehafteten SAP-Aktionen nicht unterstützt. Diese Aktionen umfassen **Zustandsbehaftete Sitzung erstellen**, **BAPI-Transaktion committen**, **Rollback von BAPI-Transaktion**, **Zustandsbehaftete Sitzung schließen** und alle Aktionen, die einen **Sitzungs-ID**-Wert angeben. Zustandsbehaftete Kommunikationen müssen auf demselben Datengatewayclusterknoten verbleiben. 
+  * Datengatewaycluster im Lastenausgleichsmodus werden von zustandsbehafteten[SAP-Aktionen](#actions) nicht unterstützt. Zu diesen Aktionen gehören **\[BAPI - RFC] Anlegen einer zustandsbehafteten Sitzung,** , **\[BAPI] Commit-Transaktion,** , **\[BAPI] Rollback-Transaktion,** , **\[ BAPI - RFC] Schließen einer zustandsbehafteten Sitzung und alle Aktionen**, die einen **Sitzungs-ID**-Wert angeben. Zustandsbehaftete Kommunikationen müssen auf demselben Datengatewayclusterknoten verbleiben. 
 
   * Verwenden Sie für zustandsbehaftete SAP-Aktionen das Datengateway entweder im Nicht-Clustermodus oder in einem Cluster, der nur für Failover eingerichtet ist.
 
 * Der SAP-Connector unterstützt derzeit keine SAP-Router-Zeichenfolgen. Das lokale Datengateway muss in demselben LAN wie das SAP-System vorhanden sein, mit dem eine Verbindung hergestellt werden soll.
 
-## <a name="connector-reference"></a>Connector-Referenz
+* Für [Logik-Apps in einer ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
 
-Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/sap/). Zusätzliche Dokumentation für Logic Apps wird für die folgenden Aktionen bereitgestellt:
+## <a name="connector-reference"></a>Connector-Referenz 
 
-* [BAPI aufrufen](#call-bapi-action)
+Weitere Informationen zum SAP-Konnektor finden Sie in der [Konnektorreferenz.](/connectors/sap/) Hier finden Sie Details zu Limits, Parametern und Rückgaben für den SAP-Konnektor, Trigger und Aktionen.
 
-* [Versenden des IDOC](#send-idoc-action)
+### <a name="triggers"></a>Trigger
 
-> [!NOTE]
-> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
+:::row:::
+    :::column span="1":::
+        [**Wenn eine Nachricht von SAP empfangen wird**](/connectors/sap/#when-a-message-is-received)
+    :::column-end:::
+    :::column span="3":::
+        Wenn eine Nachricht von SAP empfangen wird, tun Sie etwas. 
+    :::column-end:::
+:::row-end:::
 
-### <a name="call-bapi-action"></a>Aktion „BAPI aufrufen“
+### <a name="actions"></a>Aktionen
 
-Die Aktion [BAPI aufrufen (`CallBapi`)](
-https://docs.microsoft.com/connectors/sap/#call-bapi-(preview)) ruft die BAPI-Methode auf Ihrem SAP-Server auf. 
-
-Sie müssen die folgenden Parameter mit Ihrem Aufruf verwenden: 
-
-* **Geschäftsobjekt** (`businessObject`): Hierbei handelt es sich um ein durchsuchbares Dropdownmenü.
-
-* **Methode** (`method`): Hiermit werden die verfügbaren Methoden aufgefüllt, nachdem Sie ein **Geschäftsobjekt** ausgewählt haben. Die verfügbaren Methoden sind vom ausgewählten **Geschäftsobjekt** abhängig.
-
-* **BAPI-Eingabeparameter** (`body`): Hierin rufen Sie das XML-Dokument auf, das die Eingabeparameterwerte der BAPI-Methode für den Befehl enthält, oder den URI des Speicherblobs, das Ihre BAPI-Parameter enthält.
-
-Ausführliche Beispiele zur Verwendung der Aktion „BAPI aufrufen“ finden Sie in den [XML-Beispielen für BAPI-Anforderungen](#xml-samples-for-bapi-requests).
-
-> [!TIP]
-> Bei Verwendung des Logik-Apps-Designers zum Bearbeiten Ihrer BAPI-Anforderung können Sie die folgenden Suchfunktionen nutzen: 
-> 
-> * Wählen Sie im Designer ein Objekt aus, um ein Dropdownmenü mit den verfügbaren Methoden anzuzeigen.
-> * Filtern Sie Geschäftsobjekttypen nach Schlüsselwort, indem Sie die durchsuchbare Liste verwenden, die über den BAPI-API-Aufruf bereitgestellt wird.
-
-### <a name="send-idoc-action"></a>Aktion „IDoc senden“
-
-Die Aktion [IDoc senden (`SendIDoc`)](/connectors/sap/) sendet die IDoc-Nachricht an Ihren SAP-Server.
-
-Sie müssen die folgenden Parameter mit Ihrem Aufruf verwenden: 
-
-* **IDoc-Typ mit optionaler Erweiterung** (`idocType`): Hierbei handelt es sich um ein durchsuchbares Dropdownmenü.
-
-    * Der optionale Parameter **SAP-Releaseversion** (`releaseVersion`) füllt Werte auf, nachdem Sie den IDoc-Typ ausgewählt haben, und ist vom ausgewählten IDoc-Typ abhängig.
-
-* **IDOC-Eingabenachricht** (`body`): Hierin rufen Sie das XML-Dokument auf, das die IDoc-Nutzlast enthält, oder den URI des Speicherblobs, das Ihr IDoc-XML-Dokument enthält. Dieses Dokument muss entweder dem SAP IDOC-XML-Schema gemäß der WE60 IDoc-Dokumentation oder dem generierten Schema für den entsprechenden SAP IDoc-Aktions-URI entsprechen.
-
-Ausführliche Beispiele für die Verwendung der Aktion „IDoc senden“ finden Sie in der [exemplarischen Vorgehensweise zum Senden von IDoc-Nachrichten an Ihren SAP-Server](#send-idoc-messages-to-sap-server).
-
-Informationen zum Verwenden des optionalen Parameters **TID bestätigen** (`confirmTid`) finden Sie in der [exemplarischen Vorgehensweise zur expliziten Bestätigung der Transaktion](#confirm-transaction-explicitly).
+:::row:::
+    :::column span="1":::
+        [ **[BAPI - RFC] Stateful-Sitzung schließen**](/connectors/sap/#[bapi---rfc]-close-stateful-session-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Schließen Sie eine bestehende Zustandsbehaftete-Verbindungssitzung zu Ihrem SAP-System.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[BAPI - RFC] Zustandsbehaftete Sitzung erstellen**](/connectors/sap/#[bapi---rfc]-create-stateful-session-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Erstellt eine zustandsbehaftete Verbindungssitzung mit Ihrem SAP-System.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[BAPI] Aufrufen der Methode in SAP**](/connectors/sap/#[bapi]-call-method-in-sap-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Rufen Sie die BAPI-Methode in Ihrem SAP-System auf.
+        \
+        \
+        Sie müssen die folgenden Parameter mit Ihrem Aufruf verwenden:     \
+        \
+        **Geschäftsobjekt** (`businessObject`): Hierbei handelt es sich um ein durchsuchbares Dropdownmenü.
+        \
+        \
+        **Methode** (`method`): Hiermit werden die verfügbaren Methoden aufgefüllt, nachdem Sie ein **Geschäftsobjekt** ausgewählt haben. Die verfügbaren Methoden sind vom ausgewählten **Geschäftsobjekt** abhängig.
+        \
+        \
+        **BAPI-Eingabeparameter** (`body`): Hierin rufen Sie das XML-Dokument auf, das die Eingabeparameterwerte der BAPI-Methode für den Befehl enthält, oder den URI des Speicherblobs, das Ihre BAPI-Parameter enthält.
+        \
+        \
+        Detaillierte Beispiele für die Verwendung der Methode **[BAPI] Call in SAP** Action finden Sie in den [XML-Beispielen für BAPI-Anforderungen](#xml-samples-for-bapi-requests). 
+        \
+        Bei Verwendung des Logik-Apps-Designers zum Bearbeiten Ihrer BAPI-Anforderung können Sie die folgenden Suchfunktionen nutzen:     \
+        \
+        Wählen Sie im Designer ein Objekt aus, um ein Dropdownmenü mit den verfügbaren Methoden anzuzeigen.
+        \
+        \
+        Filtern Sie Geschäftsobjekttypen nach Schlüsselwort, indem Sie die durchsuchbare Liste verwenden, die über den BAPI-API-Aufruf bereitgestellt wird.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[BAPI] Vorgang committen**](/connectors/sap/#[bapi]-commit-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        BAPI-Transaktion für die Sitzung committen.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[BAPI] Rollback der Transaktion**](/connectors/sap/#[bapi]-roll-back-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Rollback für die BAPI-Transaktion für die Sitzung ausführen.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[IDOC - RFC] Transaktions-ID bestätigen**](/connectors/sap/#[idoc---rfc]-confirm-transaction-id-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Senden Sie die Bestätigung der Transaktionskennung an SAP.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[IDOC] IDOC-Liste für Transaktion erhalten**](/connectors/sap/#[idoc]-get-idoc-list-for-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Eine Liste der IDocs für die Transaktion nach Sitzungskennzeichen oder Transaktionskennzeichen abrufen.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[IDOC] IDOC-Status erhalten**](/connectors/sap/#[idoc]-get-idoc-status-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Holt den Status eines IDocs.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[IDOC] Dokument an SAP senden**](/connectors/sap/#[idoc]-send-document-to-sap-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Sendet die IDoc-Nachricht an Ihren SAP-Server.
+        \
+        \
+        Sie müssen die folgenden Parameter mit Ihrem Aufruf verwenden:     \
+        \
+        **IDoc-Typ mit optionaler Erweiterung** (`idocType`): Hierbei handelt es sich um ein durchsuchbares Dropdownmenü.
+        \
+        \
+        **IDOC-Eingabenachricht** (`body`): Hierin rufen Sie das XML-Dokument auf, das die IDoc-Nutzlast enthält, oder den URI des Speicherblobs, das Ihr IDoc-XML-Dokument enthält. Dieses Dokument muss entweder dem SAP IDOC-XML-Schema gemäß der WE60 IDoc-Dokumentation oder dem generierten Schema für den entsprechenden SAP IDoc-Aktions-URI entsprechen.
+        \
+        \
+        Der optionale Parameter **SAP-Releaseversion** (`releaseVersion`) füllt Werte auf, nachdem Sie den IDoc-Typ ausgewählt haben, und ist vom ausgewählten IDoc-Typ abhängig.
+        \
+        \
+        Ausführliche Beispiele für die Verwendung der Aktion „IDoc senden“ finden Sie in der [exemplarischen Vorgehensweise zum Senden von IDoc-Nachrichten an Ihren SAP-Server](#send-idoc-messages-to-sap-server).
+        \
+        \
+        Informationen zum Verwenden des optionalen Parameters **TID bestätigen** (`confirmTid`) finden Sie in der [exemplarischen Vorgehensweise zur expliziten Bestätigung der Transaktion](#confirm-transaction-explicitly).
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[RFC] RFC zur Transaktion hinzufügen**](/connectors/sap/#[rfc]-add-rfc-to-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Fügen Sie Ihrer Transaktion einen RFC-Aufruf hinzu. 
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[RFC] Aufrufen der Funktion in SAP**](/connectors/sap/#[rfc]-call-function-in-sap-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Aufrufen einer RFC-Operation (sRFC, tRFC oder qRFC) auf Ihrem SAP-System.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [**TRANSAKTION Committen**](/connectors/sap/#[rfc]-commit-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        De RFC-Transaktion für die Sitzung und/oder die Warteschlange committen.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[RFC]-Transaktion erstellen**](/connectors/sap/#[rfc]-create-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Erstellen Sie eine neue Transaktion nach Bezeichner und/oder Warteschlangenname. Wenn die Transaktion existiert, erhalten Sie die Details. 
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[RFC]Transaktion erhalten**](/connectors/sap/#[rfc]-get-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Ruft die Details einer Transaktion nach Bezeichner und/oder Warteschlangenname ab. Legt eine neue Transaktion an, wenn keine vorhanden ist.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [**Schemas generieren**](/connectors/sap/#generate-schemas)
+    :::column-end:::
+    :::column span="3":::
+        Generieren von Schemas für die SAP-Artefakte für IDoc, BAPI oder RFC.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [**Lesen der SAP-Tabelle**](/connectors/sap/#read-sap-table-(preview))
+    :::column-end:::
+    :::column span="3":::
+        Lesen einer SAP-Tabelle.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [**Senden von Nachrichten an SAP**](/connectors/sap/#send-message-to-sap)
+    :::column-end:::
+    :::column span="3":::
+        Senden Sie einen beliebigen Nachrichtentyp (RFC, BAPI, IDoc) an SAP.
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

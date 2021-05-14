@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: lajanuar
-ms.openlocfilehash: 6e81736e3151c9e97a8926b1f67c0a7a0d4c2f3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53fc22e1dbdac3240f72e8d64fbaee690597950f
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98895882"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107373926"
 ---
 # <a name="how-the-translator-counts-characters"></a>Zählen von Zeichen durch Translator
 
@@ -38,5 +38,7 @@ Bei Schriftzeichen, die auf Ideogrammen basieren (etwa chinesische und japanisch
 Die Anzahl der Anforderungen, Wörtern, Bytes oder Sätze ist für die Anzahl der Zeichen nicht relevant.
 
 Aufrufe der Methoden Detect und BreakSentence werden nicht in den Zeichenverbrauch eingerechnet. Es wird aber erwartet, dass die Aufrufe der Methoden Detect und BreakSentence in einem angemessenen Verhältnis zur Verwendung anderer zu zählender Funktionen stehen. Wenn die Anzahl der erfolgten Aufrufe von „Detect“ oder „BreakSentence“ die Anzahl der anderen gezählten Methoden um das 100-fache übersteigt, behält sich Microsoft das Recht vor, Ihre Verwendung dieser Methoden einzuschränken.
+
+Jedes Zeichen, das an die translate-Funktion übermittelt wird, wird gezählt, auch wenn der Inhalt nicht geändert wird oder Quell- und Zielsprache identisch sind.
 
 Weitere Informationen zur Zeichenzählung finden Sie in den [häufig gestellten Fragen zu Translator](https://www.microsoft.com/en-us/translator/faq.aspx).

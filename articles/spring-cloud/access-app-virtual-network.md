@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 37c8b4bc186c217ecb27638f5f50297102345de7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 593065b200ab0dc98e5fa97299c137aedfd1be63
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877664"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129313"
 ---
 # <a name="access-your-application-in-a-private-network"></a>Zugreifen auf eine Anwendung im privaten Netzwerk
 
 In diesem Dokument wird erläutert, wie Sie in einem privaten Netzwerk auf einen Endpunkt für Ihre Anwendung zugreifen.  Um Zugriff zu erhalten, müssen Sie eine **private Azure DNS-Zone** in Ihrem Abonnement erstellen, um den privaten vollständig qualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) in seine IP-Adresse zu übersetzen bzw. aufzulösen.
 
-Wenn **Endpunkt zuweisen** für Anwendungen in einer Azure Spring Cloud-Dienstinstanz in Ihrem virtuellen Netzwerk bereitgestellt wird, ist der Endpunkt ein privater FQDN. Die Domäne ist nur im privaten Netzwerk zugänglich. Apps und Dienste verwenden den Anwendungsendpunkt. Sie beinhalten den unter [Anzeigen von Apps und Bereitstellungen](spring-cloud-howto-staging-environment.md#view-apps-and-deployments) erläuterten **Testendpunkt**. **Protokollstreaming**, das unter [Streamen von Azure Spring Cloud-App-Protokollen in Echtzeit](spring-cloud-howto-log-streaming.md) beschrieben wird, funktioniert auch nur innerhalb des privaten Netzwerks.
+Wenn **Endpunkt zuweisen** für Anwendungen in einer Azure Spring Cloud-Dienstinstanz in Ihrem virtuellen Netzwerk bereitgestellt wird, ist der Endpunkt ein privater FQDN. Die Domäne ist nur im privaten Netzwerk zugänglich. Apps und Dienste verwenden den Anwendungsendpunkt. Sie beinhalten den unter [Anzeigen von Apps und Bereitstellungen](./how-to-staging-environment.md#view-apps-and-deployments) erläuterten **Testendpunkt**. **Protokollstreaming**, das unter [Streamen von Azure Spring Cloud-App-Protokollen in Echtzeit](./how-to-log-streaming.md) beschrieben wird, funktioniert auch nur innerhalb des privaten Netzwerks.
 
 ## <a name="create-a-private-dns-zone"></a>Erstellen einer privaten DNS-Zone
 
@@ -48,7 +48,7 @@ Um die private DNS-Zone mit dem virtuellen Netzwerk zu verknüpfen, müssen Sie 
 
 4. Geben Sie **azure-spring-cloud-dns-link** für den **Linknamen** ein.
 
-5. Wählen Sie für **Virtuelles Netzwerk** das virtuelle Netzwerk aus, das Sie wie unter [Bereitstellen von Azure Spring Cloud in einem virtuellen Azure-Netzwerk (VNET-Injektion)](spring-cloud-tutorial-deploy-in-azure-virtual-network.md) beschrieben erstellt haben.
+5. Wählen Sie für **Virtuelles Netzwerk** das virtuelle Netzwerk aus, das Sie wie unter [Bereitstellen von Azure Spring Cloud in einem virtuellen Azure-Netzwerk (VNET-Injektion)](./how-to-deploy-in-azure-virtual-network.md) beschrieben erstellt haben.
 
     ![Hinzufügen einer virtuellen Netzwerkverknüpfung](media/spring-cloud-access-app-vnet/add-virtual-network-link.png)
 
@@ -58,7 +58,7 @@ Um die private DNS-Zone mit dem virtuellen Netzwerk zu verknüpfen, müssen Sie 
 
 Um die private DNS-Zone zum Übersetzen/Auflösen von DNS zu verwenden, müssen Sie einen „A“-Typdatensatz in der Zone erstellen.
 
-1. Wählen Sie die virtuelle Netzwerkressource aus, die Sie wie unter [Bereitstellen von Azure Spring Cloud in einem virtuellen Azure-Netzwerk (VNET-Injektion)](spring-cloud-tutorial-deploy-in-azure-virtual-network.md) beschrieben erstellt haben.
+1. Wählen Sie die virtuelle Netzwerkressource aus, die Sie wie unter [Bereitstellen von Azure Spring Cloud in einem virtuellen Azure-Netzwerk (VNET-Injektion)](./how-to-deploy-in-azure-virtual-network.md) beschrieben erstellt haben.
 
 2. Geben Sie im Suchfeld **Verbundene Geräte** den Wert *kubernetes-internal* ein.
 
@@ -99,7 +99,7 @@ $SERVICE_RUNTIME_RG --query "[0].privateIpAddress" -o tsv`
 
 ## <a name="assign-private-fqdn-for-your-application"></a>Zuweisen eines privaten FQDN für Ihre Anwendung
 
-Nachdem Sie das Verfahren in [Tutorial: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](spring-cloud-tutorial-deploy-in-azure-virtual-network.md) ausgeführt haben, können Sie einen privaten FQDN für Ihre Anwendung zuweisen.
+Nachdem Sie das Verfahren in [Tutorial: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](./how-to-deploy-in-azure-virtual-network.md) ausgeführt haben, können Sie einen privaten FQDN für Ihre Anwendung zuweisen.
 
 1. Wählen Sie die Azure Spring Cloud-Dienstinstanz aus, die in Ihrem virtuellen Netzwerk bereitgestellt wird, und öffnen Sie im Menü auf der linken Seite die Registerkarte **Apps**.
 
@@ -119,9 +119,9 @@ Nach der Zuweisung können Sie auf den privaten FQDN Ihrer Anwendung im privaten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verfügbarmachen von Anwendungen im Internet mithilfe von Application Gateway und Azure Firewall](spring-cloud-expose-apps-gateway-azure-firewall.md)
+- [Verfügbarmachen von Anwendungen im Internet mithilfe von Application Gateway und Azure Firewall](./expose-apps-gateway-azure-firewall.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Problembehandlung für Azure Spring Cloud im VNET](spring-cloud-troubleshooting-vnet.md)
-- [Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNET](spring-cloud-vnet-customer-responsibilities.md)
+- [Problembehandlung für Azure Spring Cloud im VNET](./troubleshooting-vnet.md)
+- [Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNET](./vnet-customer-responsibilities.md)

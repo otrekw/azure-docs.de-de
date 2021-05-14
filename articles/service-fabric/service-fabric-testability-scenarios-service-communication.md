@@ -4,10 +4,10 @@ description: Die Kommunikation von Dienst zu Dienst ist ein wichtiger Integratio
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: fbf889422d69d031d777acd80cf3becfb3184568
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96575923"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric-Testability-Szenarien: Dienstkommunikation
@@ -33,7 +33,7 @@ Wenn Dienste im Cluster verschoben werden, gibt es zwei Szenarien, auf deren Beh
 
 Die ordnungsgemäße Behandlung dieser Szenarien ist wichtig dafür, dass das System reibungslos ausgeführt werden kann. Bedenken Sie dazu Folgendes:
 
-* Jeder Dienst, mit dem eine Verbindung hergestellt werden kann, verfügt über eine *Adresse*, an der er lauscht (z.B. HTTP oder WebSockets). Wenn eine Dienstinstanz oder Partition verschoben wird, ändert sich der dazugehörige Adressendpunkt. (Er wechselt zu einem anderen Knoten mit einer anderen IP-Adresse.) Wenn Sie die integrierten Kommunikationskomponenten verwenden, werden darüber die Dienstadressen neu für Sie aufgelöst.
+* Jeder Dienst, mit dem eine Verbindung hergestellt werden kann, verfügt über eine *Adresse*, an der er lauscht (z.B. HTTP oder WebSockets). Wenn eine Dienstinstanz oder Partition verschoben wird, ändert sich der dazugehörige Adressendpunkt. (Es wird zu einem anderen Knoten mit einer anderen IP-Adresse verschoben.) Wenn Sie die integrierten Kommunikationskomponenten verwenden, übernehmen diese die Neuauflösung der Dienstadressen für Sie.
 * Unter Umständen kann es zu einem vorübergehenden Anstieg der Dienstwartezeit kommen, während die Dienstinstanz ihren Listener neu startet. Dies hängt davon ab, wie schnell der Dienst den Listener öffnet, nachdem die Instanz verschoben wurde.
 * Alle vorhandenen Verbindungen müssen geschlossen und wieder geöffnet werden, nachdem der Dienst einen neuen Knoten öffnet. Beim ordnungsgemäßen Herunterfahren oder Neustart eines Knotens wird Zeit dafür veranschlagt, die für das ordnungsgemäße Herunterfahren vorhandener Verbindungen anfällt.
 

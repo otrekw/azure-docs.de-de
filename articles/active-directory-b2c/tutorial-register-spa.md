@@ -12,12 +12,12 @@ ms.date: 08/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2eaf1dce432821dcfc693dc69dcf975a3d8be8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f79eee17a78bd5cfc9024a333142deaaa44b3e2
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92503860"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071134"
 ---
 # <a name="tutorial-register-a-single-page-application-spa-in-azure-active-directory-b2c"></a>Tutorial: Registrieren einer Single-Page-Webanwendung (SPA) in Azure Active Directory B2C
 
@@ -34,12 +34,12 @@ Azure AD B2C bietet **zwei** Optionen, um Single-Page-Webanwendungen das Anmel
 
 Dies ist die **empfohlene** Vorgehensweise. Aktualisierungstoken mit begrenzter Lebensdauer tragen zur Anpassung Ihrer Anwendung an die [in Bezug auf die Einschränkungen von Cookies geltenden Datenschutzbestimmungen moderner Browser](../active-directory/develop/reference-third-party-cookies-spas.md) (z. B. an Safari ITP) bei.
 
-Um diesen Flow nutzen zu können, kann Ihre Anwendung eine Authentifizierungsbibliothek verwenden, von der sie unterstützt wird, z. B. [MSAL.js 2.x](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa). 
+Um diesen Flow nutzen zu können, kann Ihre Anwendung eine Authentifizierungsbibliothek verwenden, von der sie unterstützt wird, z. B. [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser). 
 
 ![Autorisierungsfluss für Single-Page-Webanwendungen](./media/tutorial-single-page-app/spa-app-auth.svg)
 
 ### <a name="implicit-grant-flow"></a>Impliziter Gewährungsflow
-- [Impliziter OAuth 2.0-Fluss](implicit-flow-single-page-application.md). Einige Frameworks, z. B. [MSAL.js 1.x](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp), unterstützen nur den Fluss für die implizite Genehmigung. Der Fluss für die implizite Genehmigung ermöglicht der Anwendung das Abrufen von **ID-** und **Zugriffstoken**. Im Gegensatz zum Autorisierungscodefluss gibt der Fluss für die implizite Genehmigung kein **Aktualisierungstoken** zurück. 
+- [Impliziter OAuth 2.0-Fluss](implicit-flow-single-page-application.md). Einige Bibliotheken, z. B. [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core), unterstützen nur den Flow für die implizite Genehmigung. Der Fluss für die implizite Genehmigung ermöglicht der Anwendung das Abrufen von **ID-** und **Zugriffstoken**. Im Gegensatz zum Autorisierungscodefluss gibt der Fluss für die implizite Genehmigung kein **Aktualisierungstoken** zurück. 
 
 ![Impliziter Fluss für Single-Page-Webanwendungen](./media/tutorial-single-page-app/spa-app.svg)
 

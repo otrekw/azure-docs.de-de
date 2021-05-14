@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/08/2021
+ms.openlocfilehash: a7d0d934549d1dd06099bc02105cf2dcfdaa0109
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934171"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202855"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -16,7 +16,10 @@ Dieser Artikel bietet einen Überblick über die Benennungsregeln und -einschrä
 
 In diesem Artikel werden Ressourcen nach dem Ressourcenanbieter-Namespace aufgelistet. Eine Übersicht über die Zuordnung von Ressourcenanbietern und Azure-Diensten finden Sie unter [Ressourcenanbieter für Azure-Dienste](azure-services-resource-providers.md).
 
-Bei Ressourcennamen wird nicht zwischen Groß- und Kleinschreibung unterschieden, es sei denn, dies ist in der Spalte für gültige Zeichen ausdrücklich angegeben.
+Bei Ressourcennamen wird die Groß- und Kleinschreibung nicht beachtet, es sei denn, dies ist in der gültige Zeichen-Spalte vermerkt.
+
+> [!NOTE]
+> Beim Abrufen von Ressourcennamen mithilfe verschiedener APIs werden für zurückgegebene Werte möglicherweise andere Fallwerte angezeigt als in der Tabelle mit den gültigen Zeichen aufgeführt.
 
 In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 
@@ -169,7 +172,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | --- | --- | --- | --- |
 > | availabilitySets | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
 > | diskEncryptionSets | Ressourcengruppe | 1-80 | Alphanumerische Zeichen und Unterstriche. |
-> | disks | Ressourcengruppe | 1-80 | Alphanumerische Zeichen und Unterstriche. |
+> | disks | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
 > | galleries | Ressourcengruppe | 1-80 | Alphanumerische Zeichen und Punkte.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
 > | galleries/applications | Katalog | 1-80 | Alphanumerische Zeichen, Bindestriche und Punkte.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
 > | galleries/applications/versions | application | 32-bit integer | Zahlen und Punkte. |
@@ -177,11 +180,18 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | galleries/images/versions | image | 32-bit integer | Zahlen und Punkte. |
 > | images | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
 > | snapshots | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
-> | virtualMachines | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Leerzeichen oder die folgenden Zeichen dürfen nicht verwendet werden:<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Virtuelle Windows-Computer dürfen keine Punkte enthalten oder mit Bindestrichen enden.<br><br>Linux-VMs dürfen nicht mit einem Punkt oder Bindestrich enden. |
-> | virtualMachineScaleSets | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Leerzeichen oder die folgenden Zeichen dürfen nicht verwendet werden:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
+> | virtualMachines | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Leerzeichen oder die folgenden Zeichen dürfen nicht verwendet werden:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Virtuelle Windows-Computer dürfen keine Punkte enthalten oder mit Bindestrichen enden.<br><br>Linux-VMs dürfen nicht mit einem Punkt oder Bindestrich enden. |
+> | virtualMachineScaleSets | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Leerzeichen oder die folgenden Zeichen dürfen nicht verwendet werden:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
 
 > [!NOTE]
 > Virtuelle Azure-Computer weisen zwei getrennte Namen auf: einen Ressourcennamen und einen Hostnamen. Wenn Sie im Portal einen virtuellen Computer erstellen, wird für beide Namen der gleiche Wert verwendet. Die Einschränkungen in der obigen Tabelle gelten für den Hostnamen. Der eigentliche Ressourcenname kann bis zu 64 Zeichen lang sein.
+
+## <a name="microsoftcommunication"></a>Microsoft.Communication
+
+> [!div class="mx-tableFixed"]
+> | Entität | `Scope` | Länge | Gültige Zeichen |
+> | --- | --- | --- | --- |
+> | communicationServices | Global | 1 - 63 | Alphanumerische Zeichen, Bindestriche und Unterstriche. |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
@@ -599,7 +609,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | deployments | Ressourcengruppe | 1-64 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche und Punkte. |
-> | resourcegroups | Abonnement | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche, Punkte und Unicode-Zeichen entsprechend der [Dokumentation zu regulären Ausdrücken](/rest/api/resources/resources/resourcegroups/createorupdate).<br><br>Darf nicht mit einem Punkt enden. |
+> | resourcegroups | Abonnement | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche, Punkte und Unicode-Zeichen entsprechend der [Dokumentation zu regulären Ausdrücken](/rest/api/resources/resourcegroups/createorupdate).<br><br>Darf nicht mit einem Punkt enden. |
 > | tagNames | resource | 1–512 | Verwendung nicht möglich:<br>`<>%&\?/` |
 > | tagNames/tagValues | Tagname | 1–256 | Alle Zeichen. |
 > | templateSpecs | Ressourcengruppe | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche und Punkte. |
@@ -706,10 +716,12 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | --- | --- | --- | --- |
 > | certificates | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  | 
 > | serverfarms | Ressourcengruppe | 1–40 | Alphanumerische Zeichen und Bindestriche. |
-> | sites | Global | 2-60 | Alphanumerische Zeichen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
+> | sites | Global oder pro Domäne. Siehe Hinweis weiter unten. | 2-60 | Alphanumerische Zeichen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
 > | sites/slots | site | 2–59 | Alphanumerische Zeichen und Bindestriche. |
 
 > [!NOTE]
+> Eine Website muss eine weltweit eindeutige URL haben. Wenn Sie eine Website erstellen, die einen Hosting-Plan verwendet, ist die URL `http://<app-name>.azurewebsites.net`. Der App-Name muss global eindeutig sein. Wenn Sie eine Website erstellen, die eine APP Service-Umgebung verwendet, muss der Name der APP innerhalb der [Domäne für die APP Service-Umgebung](../../app-service/environment/using-an-ase.md#app-access)eindeutig sein. Die URL der Website ist in beiden Fällen global eindeutig.
+>
 > Azure Functions weist dieselben Benennungsregeln und -einschränkungen auf wie Microsoft.Web/sites.
 
 ## <a name="next-steps"></a>Nächste Schritte

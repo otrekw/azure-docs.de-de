@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/23/2021
-ms.openlocfilehash: 8688458d85084f3d3dab4678fa91ed827a337739
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9771c68dda6f457586f27ea45fbc52aa118e8006
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047350"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874781"
 ---
 # <a name="configure-maintenance-window-preview"></a>Konfigurieren von Wartungsfenstern (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -178,7 +178,7 @@ Beim Festlegen des Wartungsfensters stehen für jede Region eigene Wartungsfenst
 
 ### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>Ermitteln von Wartungsfenstern für SQL-Datenbank und Pools für elastische Datenbanken
 
-Im folgenden Beispiel werden mit dem Befehl [az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) die verfügbaren Wartungsfenster für die Region *eastus2* zurückgegeben. Legen Sie für Datenbanken und Pools für elastische Datenbanken die Option `maintenanceScope` auf `SQLDB` fest.
+Im folgenden Beispiel werden mit dem Befehl [az maintenance public-configuration list](/cli/azure/maintenance/public-configuration#az_maintenance_public_configuration_list) die verfügbaren Wartungsfenster für die Region *eastus2* zurückgegeben. Legen Sie für Datenbanken und Pools für elastische Datenbanken die Option `maintenanceScope` auf `SQLDB` fest.
 
    ```azurecli
    location="eastus2"
@@ -188,7 +188,7 @@ Im folgenden Beispiel werden mit dem Befehl [az maintenance public-configuration
 
 ### <a name="discover-sql-managed-instance-maintenance-windows"></a>Ermitteln von Wartungsfenstern für verwaltete SQL-Instanzen
 
-Im folgenden Beispiel werden mit dem Befehl [az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) die verfügbaren Wartungsfenster für die Region *eastus2* zurückgegeben. Legen Sie für verwaltete Instanzen die Option `maintenanceScope` auf `SQLManagedInstance` fest.
+Im folgenden Beispiel werden mit dem Befehl [az maintenance public-configuration list](/cli/azure/maintenance/public-configuration#az_maintenance_public_configuration_list) die verfügbaren Wartungsfenster für die Region *eastus2* zurückgegeben. Legen Sie für verwaltete Instanzen die Option `maintenanceScope` auf `SQLManagedInstance` fest.
 
    ```azurecli
    az maintenance public-configuration list --query "[?location=='eastus2'&&contains(maintenanceScope,'SQLManagedInstance')]"

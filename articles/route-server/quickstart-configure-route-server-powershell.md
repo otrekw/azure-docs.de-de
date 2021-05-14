@@ -4,21 +4,23 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von 
 services: route-server
 author: duongau
 ms.author: duau
-ms.date: 03/02/2021
+ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: route-server
 ms.custom:
 - mode-api
-ms.openlocfilehash: 608ec3755fcd231d5cc89bbc28a01ce172978144
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 7c28ad86b9194c8120b463581177f659a13d5c2b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538716"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949017"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>Schnellstart: Erstellen und Konfigurieren einer Route Server-Instanz mithilfe von Azure PowerShell
 
 In diesem Artikel wird beschrieben, wie Sie Azure Route Server mithilfe von PowerShell für das Peering mit einem virtuellen Netzwerkgerät (Network Virtual Appliance, NVA) in Ihrem virtuellen Netzwerk konfigurieren. Azure Route Server lernt Routen vom NVA und programmiert sie auf den virtuellen Computern im virtuellen Netzwerk. Azure Route Server kündigt die virtuellen Netzwerkrouten auch für das NVA an. Weitere Informationen finden Sie unter [Azure Route Server](overview.md).
+
+:::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Diagramm: Route Server-Bereitstellungsumgebung mit Azure PowerShell" border="false":::
 
 > [!IMPORTANT]
 > Azure Route Server (Vorschau) befindet sich derzeit in der öffentlichen Vorschauphase.

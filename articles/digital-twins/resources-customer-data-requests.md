@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 9942056e59a46c61b4e9da32aab191d4b72db968
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c50ff2e1a8e63fd775b7b09863ffcd9d832d8683
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92461758"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205717"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Features für Kundendatenanforderungen in Azure Digital Twins
 
@@ -25,7 +25,7 @@ Die digitalen Darstellungen werden in Azure Digital Twins als *digitale Zwilling
 
 Viele der digitalen Zwillinge in Azure Digital Twins stellen nicht direkt personenbezogene Entitäten dar. In der Regel werden Objekte wie Besprechungsräume oder Produktionsbereiche dargestellt. Benutzer können jedoch bestimmte Entitäten als persönlich identifizierbar betrachten und nach eigenem Ermessen ihre eigenen Ressourcen- oder Bestandsnachverfolgungsmethoden verwenden, die digitale Zwillinge mit Personen verknüpfen. Alle Daten im Zusammenhang mit digitalen Zwillingen werden von Azure Digital Twins wie personenbezogene Daten verwaltet und gespeichert.
 
-Zum Anzeigen, Exportieren und Löschen personenbezogener Daten, auf die möglicherweise im Antrag einer betroffenen Person verwiesen wird, kann ein Azure Digital Twins-Administrator das [**Azure-Portal**](https://portal.azure.com/) (für Benutzer und Rollen) oder die [**Azure Digital Twins-REST-APIs**](/rest/api/azure-digitaltwins/) (für digitale Zwillinge) verwenden. Das Azure-Portal und die REST-APIs bieten verschiedene Methoden, mit denen sich Benutzer um solche Anträge betroffener Personen kümmern können.
+Zum Anzeigen, Exportieren und Löschen personenbezogener Daten, auf die möglicherweise im Antrag einer betroffenen Person verwiesen wird, kann ein Azure Digital Twins-Administrator das [Azure-Portal](https://portal.azure.com/) (für Benutzer und Rollen) oder die [Azure Digital Twins-REST-APIs](/rest/api/azure-digitaltwins/) (für digitale Zwillinge) verwenden. Das Azure-Portal und die REST-APIs bieten verschiedene Methoden, mit denen sich Benutzer um solche Anträge betroffener Personen kümmern können.
 
 ## <a name="identifying-customer-data"></a>Identifizieren von Kundendaten
 

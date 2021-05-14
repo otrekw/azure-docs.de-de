@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: f6f00075c7c66679281d776f9472ec4a1a590d76
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3e9baedafb436bc92f734bf39519918686cec58d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106231017"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124471"
 ---
 # <a name="azure-storage-migration-overview"></a>Übersicht über die Azure Storage-Migration
 
@@ -28,7 +28,7 @@ Die Migration unstrukturierter Daten umfasst folgende Szenarien:
 - Dateimigration von Network Attached Storage (NAS) zu einem der Azure-Dateiangebote:
   - [Azure Files](https://azure.microsoft.com/services/storage/files/)
   - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
-  - [Lösungen unabhängiger Softwareanbieter (Independent Software Vendor, ISV)](/azure/storage/solution-integration/validated-partners/primary-secondary-storage/partner-overview).
+  - [Lösungen unabhängiger Softwareanbieter (Independent Software Vendor, ISV)](../solution-integration/validated-partners/primary-secondary-storage/partner-overview.md).
 - Objektmigration von Objektspeicherlösungen zur Azure-Objektspeicherplattform:
   - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)
   - [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
@@ -66,7 +66,7 @@ Um die Auswahl des Zielspeicher-Dienstanbieters für die Migration zu erleichter
 - Leistungsmerkmale
 - Grenzwerte für den Zielspeicherdienst
 
-Das folgende Diagramm ist eine vereinfachte Entscheidungsstruktur, die Sie in Ihrer Entscheidung für den am besten geeigneten Azure-Dateidienst unterstützt. Wenn systemeigene Azure-Dienste die Anforderungen nicht erfüllen, wird dies auf mehrere[unabhängige Softwarehersteller (ISV)](/azure/storage/solution-integration/validated-partners/primary-secondary-storage/partner-overview) zutreffen.
+Das folgende Diagramm ist eine vereinfachte Entscheidungsstruktur, die Sie in Ihrer Entscheidung für den am besten geeigneten Azure-Dateidienst unterstützt. Wenn systemeigene Azure-Dienste die Anforderungen nicht erfüllen, wird dies auf mehrere[unabhängige Softwarehersteller (ISV)](../solution-integration/validated-partners/primary-secondary-storage/partner-overview.md) zutreffen.
 
 Nachdem Sie die technische Bewertung abgeschlossen und das richtige Ziel ausgewählt haben, führen Sie eine Kostenbewertung durch, um die kostengünstigste Option zu ermitteln.
 
@@ -74,31 +74,31 @@ Nachdem Sie die technische Bewertung abgeschlossen und das richtige Ziel ausgew�
 
 Um die Entscheidungsstruktur einfach zu halten, sind die Grenzwerte für den Zielspeicherdienst nicht in das Diagramm integriert. Weitere Informationen zu den aktuellen Grenzwerten und dazu, ob Sie entsprechend Ihre Auswahl ändern müssen, finden Sie hier:
 
-- [Speicherkontobegrenzungen](/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits)
-- [Blob Storage-Grenzwerte](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-blob-storage-limits)
-- [Skalierbarkeits- und Leistungsziele für Azure Files](/azure/storage/files/storage-files-scale-targets)
-- [Ressourcengrenzwerte für Azure NetApp Files](/azure/azure-netapp-files/azure-netapp-files-resource-limits)
+- [Speicherkontobegrenzungen](../../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)
+- [Blob Storage-Grenzwerte](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-blob-storage-limits)
+- [Skalierbarkeits- und Leistungsziele für Azure Files](../files/storage-files-scale-targets.md)
+- [Ressourcengrenzwerte für Azure NetApp Files](../../azure-netapp-files/azure-netapp-files-resource-limits.md)
 
-Wenn eine der Grenzwerte einen Blocker für die Verwendung eines Dienstes darstellt, unterstützt Azure mehrere Speicheranbieter, die ihre Lösungen im Azure Marketplace anbieten. Informationen zu überprüften ISV-Partnern, die Dateidienste bereitstellen, finden Sie unter [Azure Storage Partner für den primären und sekundären Speicher](/azure/storage/solution-integration/validated-partners/primary-secondary-storage/partner-overview).
+Wenn eine der Grenzwerte einen Blocker für die Verwendung eines Dienstes darstellt, unterstützt Azure mehrere Speicheranbieter, die ihre Lösungen im Azure Marketplace anbieten. Informationen zu überprüften ISV-Partnern, die Dateidienste bereitstellen, finden Sie unter [Azure Storage Partner für den primären und sekundären Speicher](../solution-integration/validated-partners/primary-secondary-storage/partner-overview.md).
 
 ##### <a name="select-the-migration-method"></a>Auswählen der Migrationsmethode
 
 Es gibt zwei grundlegende Migrationsmethoden für Speichermigrationen.
 
-- **Online**. Die Online-Methode verwendet das Netzwerk für die Datenmigration. Es kann entweder das öffentliche Internet oder [Azure ExpressRoute](/azure/expressroute/expressroute-introduction) verwendet werden. Wenn der Dienst keinen öffentlichen Endpunkt hat, müssen Sie ein VPN mit öffentlichem Internet verwenden.
+- **Online**. Die Online-Methode verwendet das Netzwerk für die Datenmigration. Es kann entweder das öffentliche Internet oder [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) verwendet werden. Wenn der Dienst keinen öffentlichen Endpunkt hat, müssen Sie ein VPN mit öffentlichem Internet verwenden.
 - **Offline.** Die Offline-Methode verwendet eines der [Azure Data Box](https://azure.microsoft.com/services/databox/)-Geräte.
 
 Die Entscheidung, eine Online Methode anstelle einer Offline Methode zu verwenden, hängt von der verfügbaren Netzwerkbandbreite ab. Die Online-Methode ist dann vorzuziehen, wenn ausreichend Netzwerkbandbreite zur Durchführung einer Migration innerhalb der benötigten Zeit vorhanden ist.
 
 Es ist möglich, beide Methoden zu kombinieren: Die Offline-Methode für die anfängliche Massenmigration und die Online-Methode für die inkrementelle Migration von Änderungen. Die gleichzeitige Verwendung beider Methoden erfordert ein hohes Maß an Koordination und wird daher nicht empfohlen. Wenn Sie beide Methoden verwenden, isolieren Sie die Datensätze, die online migriert werden, von den Datensätzen, die offline migriert werden.
 
-Weitere Informationen zu den verschiedenen Migrationsmethoden und Richtlinien finden Sie unter [Auswählen einer Azure-Lösung für die Datenübertragung](/azure/storage/common/storage-choose-data-transfer-solution) und [Migrieren zu Azure File Shares](/azure/storage/files/storage-files-migration-overview).
+Weitere Informationen zu den verschiedenen Migrationsmethoden und Richtlinien finden Sie unter [Auswählen einer Azure-Lösung für die Datenübertragung](./storage-choose-data-transfer-solution.md) und [Migrieren zu Azure File Shares](../files/storage-files-migration-overview.md).
 
 ##### <a name="choose-the-best-migration-tool-for-the-job"></a>Auswählen des besten Migrationstools für den Auftrag
 
 Es gibt verschiedene Migrationstools, mit denen Sie die Migration durchführen können. Es gibt Open Source-Tools, wie AzCopy, Robocopy, xcopy und rsync, und kommerzielle, also kostenpflichtige Tools. Die Liste der verfügbaren kommerziellen Tools und der Vergleich zwischen den Tools ist in unserer [Vergleichsmatrix](../solution-integration/validated-partners/data-management/migration-tools-comparison.md)verfügbar.
 
-Open Source-Tools eignen sich gut für kleinere Migrationen. Für die Migration von Windows-Dateiservern zu Azure Files empfiehlt Microsoft, mit der systemeigenen Funktionalität von Azure Files zu beginnen und [Azure File Sync](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-file-sync)zu verwenden. Für komplexere Migrationen, die unterschiedlichen Quellen, große Datenmengen oder spezielle Anforderungen, wie Einschränkung der maximalen Bandbreite oder detaillierte Berichterstellung mit Auditfunktionen beinhalten, sind kommerzielle Tools die beste Wahl. Diese Tools vereinfachen die Migration und verringern das Risiko erheblich. Die meisten kommerziellen Tools können auch die Ermittlung durchführen, was eine wertvolle Eingabe für die Bewertung bereitstellt.
+Open Source-Tools eignen sich gut für kleinere Migrationen. Für die Migration von Windows-Dateiservern zu Azure Files empfiehlt Microsoft, mit der systemeigenen Funktionalität von Azure Files zu beginnen und [Azure File Sync](/windows-server/manage/windows-admin-center/azure/azure-file-sync)zu verwenden. Für komplexere Migrationen, die unterschiedlichen Quellen, große Datenmengen oder spezielle Anforderungen, wie Einschränkung der maximalen Bandbreite oder detaillierte Berichterstellung mit Auditfunktionen beinhalten, sind kommerzielle Tools die beste Wahl. Diese Tools vereinfachen die Migration und verringern das Risiko erheblich. Die meisten kommerziellen Tools können auch die Ermittlung durchführen, was eine wertvolle Eingabe für die Bewertung bereitstellt.
 
 #### <a name="migration-phase"></a>Phase: Migration
 
@@ -114,13 +114,13 @@ Die Dauer der Migration für unstrukturierte Daten hängt von mehreren Aspekten 
 
 Die Migration von blockbasierten Geräten erfolgt in der Regel im Rahmen der Migration virtueller Computer oder physischer Hosts. Es ist ein gängiges Missverständnis, Entscheidungen zu Blockspeichern bis nach der Migration zu verzögern. Wenn Sie diese Entscheidungen im Voraus treffen und dabei die Anforderungen an die Workload berücksichtigen, führt dies zu einer reibungsloseren Migration in die Cloud.
 
-Informationen zu den zu migrierenden Workloads und deren Übernahme finden Sie in der [Azure Disk Storage-Dokumentation](/azure/virtual-machines/disks-types)und auf der [Disk Storage Produktseite](https://azure.microsoft.com/services/storage/disks/#resources). Sie erfahren hier, welche Datenträger Ihren Anforderungen entsprechen, und lernen die neuesten Funktionen, wie das [Datenträgerbursting](/azure/virtual-machines/disk-bursting) kennen. Informationen dazu, wie Sie die virtuellen Computer mit den zugrunde liegenden blockbasierten Geräten migrieren, finden Sie in der Dokumentation zu [Azure Migrate](/azure/migrate/).
+Informationen zu den zu migrierenden Workloads und deren Übernahme finden Sie in der [Azure Disk Storage-Dokumentation](../../virtual-machines/disks-types.md)und auf der [Disk Storage Produktseite](https://azure.microsoft.com/services/storage/disks/#resources). Sie erfahren hier, welche Datenträger Ihren Anforderungen entsprechen, und lernen die neuesten Funktionen, wie das [Datenträgerbursting](../../virtual-machines/disk-bursting.md) kennen. Informationen dazu, wie Sie die virtuellen Computer mit den zugrunde liegenden blockbasierten Geräten migrieren, finden Sie in der Dokumentation zu [Azure Migrate](../../migrate/index.yml).
 
 ## <a name="see-also"></a>Siehe auch
 
-- [Auswählen einer Azure-Lösung für die Datenübertragung](/azure/storage/common/storage-choose-data-transfer-solution)
+- [Auswählen einer Azure-Lösung für die Datenübertragung](./storage-choose-data-transfer-solution.md)
 - [Vergleich der kommerziellen Migrationstools](../solution-integration/validated-partners/data-management/migration-tools-comparison.md)
-- [Migrieren zu Azure File Shares](/azure/storage/files/storage-files-migration-overview)
-- [Migrieren zu Data Lake Storage mit WANdisco LiveData Platform für Azure](/azure/storage/blobs/migrate-gen2-wandisco-live-data-platform)
-- [Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy](https://aka.ms/azcopy)
+- [Migrieren zu Azure File Shares](../files/storage-files-migration-overview.md)
+- [Migrieren zu Data Lake Storage mit WANdisco LiveData Platform für Azure](../blobs/migrate-gen2-wandisco-live-data-platform.md)
+- [Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy](./storage-use-azcopy-v10.md)
 - [Migrieren von großen Datasätzen zu Azure Blob Storage mit AzReplicate](https://github.com/Azure/AzReplicate/tree/master/)

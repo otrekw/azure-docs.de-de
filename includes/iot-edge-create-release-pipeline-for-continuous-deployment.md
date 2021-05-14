@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: 706b2306fbe9f2a744d2874a8b55f78fa2fc8e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8009d98ddbfa778cf5f357248ecd943b810e06e3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300880"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104803283"
 ---
 ## <a name="create-a-release-pipeline-for-continuous-deployment"></a>Erstellen einer Releasepipeline für kontinuierliche Bereitstellung (Continuous Deployment)
 
@@ -63,8 +63,18 @@ So erstellen Sie eine neue Pipeline und fügen eine neue Stufe hinzu:
     * **ACR_PASSWORD**: Das Kennwort für Ihre Azure Container Registry.
     * **ACR_USER**: Der Benutzername für Ihre Azure Container Registry.
 
-    Wenn in Ihrem Projekt noch weitere Variablen vorhanden sind, können Sie die Namen und Werte auf diese Registerkarte angeben. **Bereitstellungsmanifest generieren** kann nur erkennen, dass die Variablen in der Variante `${VARIABLE}` vorliegen. Sorgen Sie dafür, dass Sie diese Variante in Ihren `*.template.json`-Dateien verwenden.
-
+    Wenn Ihr Projekt weitere Variablen enthält, können Sie die Namen und Werte auf dieser Registerkarte angeben. **Bereitstellungsmanifest generieren** kann nur erkennen, dass die Variablen in der Variante `${VARIABLE}` vorliegen. Sorgen Sie dafür, dass Sie diese Variante in Ihren `*.template.json`-Dateien verwenden.
+    
+    ```json-interactive
+    "registryCredentials": {
+      "<ACR name>": { // Your Azure Container Registry **Registry name** value
+        "username": "${ACR_USER}",
+        "password": "${ACR_PASSWORD}",
+        "address": "${ACR_ADDRESS}"
+      }
+    }
+    ```
+    
     ![Konfigurieren der Variablen für Ihre Releasepipeline auf der Registerkarte „Variablen“](./media/iot-edge-create-release-pipeline-for-continuous-deployment/configure-variables.png)
 
 10. Wählen Sie die zweite **Azure IoT Edge**-Aufgabe aus, und konfigurieren Sie sie mit den folgenden Werten:
@@ -79,6 +89,9 @@ So erstellen Sie eine neue Pipeline und fügen eine neue Stufe hinzu:
     | Einzelgerät/mehrere Geräte auswählen | Wählen Sie aus, ob die Releasepipeline auf einem oder mehreren Geräten bereitgestellt werden soll. Geben Sie bei Bereitstellung auf einem einzelnen Gerät die **IoT Edge-Geräte-ID** ein. Geben Sie bei einer Bereitstellung auf mehreren Geräten die **Zielbedingung** des Geräts an. Die Zielbedingung ist ein Filter für den Abgleich mit einem Satz von IoT Edge-Geräten in IoT Hub. Wenn Sie Gerätetags als Bedingung verwenden möchten, müssen Sie Ihre entsprechenden Tags mit einem IoT Hub-Gerätezwilling aktualisieren. Aktualisieren Sie die **IoT Edge-Bereitstellungs-ID** und **IoT Edge-Bereitstellungspriorität** in den erweiterten Einstellungen. Weitere Informationen zum Erstellen einer Bereitstellung für mehrere Geräte finden Sie unter [Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](../articles/iot-edge/module-deployment-monitoring.md). |
     | Geräte-ID oder Zielbedingung | Geben Sie je nach der vorherigen Auswahl eine Geräte-ID oder [Zielbedingung](../articles/iot-edge/module-deployment-monitoring.md#target-condition) an, die auf mehreren Geräten bereitgestellt werden soll. |
     | Erweitert | Geben Sie für die IoT Edge-Bereitstellungs-ID `$(System.TeamProject)-$(Release.EnvironmentName)` an. Diese Variable ordnet den Projekt- und Releasenamen Ihrer IoT Edge-Bereitstellungs-ID zu. |
+    
+
+    Wenn Ihre Aufgabe die Verwendung eines Images enthält, das sich in einer privaten vertrauenswürdigen Docker-Registrierung befindet, die für die öffentliche Cloud nicht sichtbar ist, können Sie die Umgebungsvariable **SKIP_MODULE_IMAGE_VALIDATION** auf `true` festlegen, um die Imagevalidierung zu überspringen. 
 
     ![Hinzufügen von Azure IoT Edge-Aufgaben für Ihre Stage „dev“](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-quality-assurance-task.png)
 

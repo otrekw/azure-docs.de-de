@@ -1,18 +1,18 @@
 ---
 title: Problembehandlung für den Defender-IoT-Micro-Agent (Vorschau)
 description: Erfahren Sie, wie Sie unerwartete oder unerklärliche Fehler behandeln.
-ms.date: 1/24/2021
+ms.date: 4/5/2021
 ms.topic: reference
-ms.openlocfilehash: 51550a4d3e5042fed7cadc4eac10a0074e954f19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d52c4093c01d7e449c68b1c8143249b51f7061a
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782451"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011418"
 ---
 # <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Problembehandlung für den Defender-IoT-Micro-Agent (Vorschau)
 
-Verwenden Sie die folgenden Methoden zur Problembehandlung, um unerwartete oder unerklärliche Fehler zu beheben. Sie können sich bei Bedarf auch an das Produktteam von Azure Defender für IoT wenden, um Unterstützung zu erhalten.   
+Wenn ein unerwarteter Fehler auftritt, können Sie mit diesen Problembehandlungsmethoden das Problem beheben. Sie können sich bei Bedarf auch an das Produktteam von Azure Defender für IoT wenden, um Unterstützung zu erhalten.   
 
 ## <a name="service-status"></a>Dienststatus 
 
@@ -34,9 +34,9 @@ Wenn für den Dienst nicht `inactive` angezeigt wird, führen Sie zum Starten de
 systemctl start defender-iot-micro-agent.service 
 ```
 
-Sie erkennen, dass der Dienst abgestürzt ist, wenn die Uptime des Prozesses zu kurz ist. Um dieses Problem zu beheben, sehen Sie sich die Protokolle an.
+Sie erkennen, dass der Dienst abgestürzt ist, wenn die Uptime des Prozesses weniger als zwei Minuten beträgt. Um dieses Problem zu beheben, [sehen Sie sich die Protokolle an](#review-the-logs).
 
-## <a name="review-logs"></a>Überprüfen von Protokollen 
+## <a name="validate-micro-agent-root-privileges"></a>Überprüfen von Micro-Agent-Stammberechtigungen
 
 Mit dem folgenden Befehl können Sie überprüfen, ob der Defender für IoT-Micro-Agent-Dienst mit Root-Berechtigungen ausgeführt wird.
 
@@ -45,12 +45,25 @@ ps -aux | grep " defender-iot-micro-agent"
 ```
 
 :::image type="content" source="media/troubleshooting/root-privileges.png" alt-text="Überprüfen der Ausführung des Defender für IoT-Micro-Agent-Diensts mit Root-Berechtigungen":::
+## <a name="review-the-logs"></a>Überprüfen der Protokolle 
 
 Verwenden Sie zum Anzeigen der Protokolle den folgenden Befehl:  
 
 ```azurecli
 sudo journalctl -u defender-iot-micro-agent | tail -n 200 
 ```
+
+### <a name="quick-log-review"></a>Schnelle Protokollüberprüfung
+
+Wenn beim Ausführen des Micro-Agents ein Problem auftritt, können Sie den Micro-Agent in einem temporären Zustand ausführen, sodass Sie die Protokolle mit dem folgenden Befehl anzeigen können:
+
+```azurecli
+sudo systectl stop defender-iot-micro-agent
+cd /var/defender_iot_micro_agent/
+sudo ./defender_iot_micro_agent
+```
+
+## <a name="restart-the-service"></a>Starten Sie den Dienst neu.
 
 Führen Sie den folgenden Befehl aus, um den Dienst neu zu starten: 
 

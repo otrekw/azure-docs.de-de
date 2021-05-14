@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 578befe3e26ebb42fa2172976e07d0a5836e3743
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 45269c964c2114c31ca6bfeeb6a48cb0c1329937
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107141"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203539"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Tutorial: Erstellen eines Azure Digital Twins-Graphen unter Verwendung der Azure CLI
 
 [!INCLUDE [digital-twins-tutorial-selector.md](../../includes/digital-twins-tutorial-selector.md)]
 
-In diesem Tutorial wird in Azure Digital Twins ein Graph mit Modellen, Zwillingen und Beziehungen erstellt. Als Tool wird in diesem Tutorial der [Azure Digital Twins-Befehlssatz für die **Azure CLI**](how-to-use-cli.md) verwendet. 
+In diesem Tutorial wird in Azure Digital Twins ein Graph mit Modellen, Zwillingen und Beziehungen erstellt. Als Tool wird in diesem Tutorial der [Azure Digital Twins-Befehlssatz für die Azure CLI](how-to-use-cli.md) verwendet. 
 
-Diese CLI-Befehle ermöglichen grundlegende Azure Digital Twins-Aktionen wie das Hochladen von Modellen, das Erstellen und Ändern von Zwillingen und das Erstellen von Beziehungen. Den vollständigen CLI-Befehlssatz finden Sie in der [Referenzdokumentation zum Befehlssatz *az dt*](/cli/azure/dt).
+Diese CLI-Befehle ermöglichen grundlegende Azure Digital Twins-Aktionen wie das Hochladen von Modellen, das Erstellen und Ändern von Zwillingen und das Erstellen von Beziehungen. Den vollständigen CLI-Befehlssatz finden Sie in der [Referenzdokumentation zum Befehlssatz „az dt“](/cli/azure/dt).
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -38,8 +38,8 @@ Wenn Sie kein Azure-Abonnement haben, **erstellen Sie ein [kostenloses Konto](ht
 ### <a name="download-the-sample-models"></a>Herunterladen der Beispielmodelle
 
 In diesem Tutorial werden zwei vorab geschriebene Modelle aus dem [End-to-End-C#-Beispielprojekt](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) für Azure Digital Twins verwendet. Die Modelldateien befinden sich hier: 
-* [*Room.json*](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json)
-* [*Floor.json*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)
+* [Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json)
+* [Floor.json](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)
 
 Verwenden Sie die oben bereitgestellten Navigationslinks, und kopieren Sie die Dateiinhalte auf Ihrem Computer in lokale Dateien mit dem gleichen Namen (*Room.json* und *Floor.json*).
 
@@ -52,7 +52,7 @@ Verwenden Sie die oben bereitgestellten Navigationslinks, und kopieren Sie die D
 
 Für die Arbeit mit Azure Digital Twins in diesem Artikel müssen Sie zuerst **eine Azure Digital Twins-Instanz einrichten** und die für die Nutzung erforderlichen Berechtigungen gewähren. Wenn Sie zuvor bereits eine Azure Digital Twins-Instanz eingerichtet haben, können Sie diese nutzen.
 
-Führen Sie andernfalls die Schritte unter [*Anleitung: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-cli.md) aus. Die Anleitung enthält auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
+Führen Sie andernfalls die Schritte unter [Anleitung: Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-cli.md) aus. Die Anleitung enthält auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
 
 Nachdem Sie Ihre Azure Digital Twins-Instanz eingerichtet haben, notieren Sie sich die folgenden Werte, die Sie benötigen, um später eine Verbindung mit der Instanz herzustellen:
 * Den **_Hostnamen_** der Instanz
@@ -70,7 +70,7 @@ az dt show -n <ADT_instance_name>
 
 Nachdem die CLI und die Azure Digital Twins-Instanz eingerichtet sind, können Sie mit der Erstellung eines Szenariographen beginnen. 
 
-Beim Erstellen einer Azure Digital Twins-Lösung werden zunächst [**Zwillingsmodelle**](concepts-models.md) für Ihre Umgebung definiert. 
+Beim Erstellen einer Azure Digital Twins-Lösung werden zunächst [Zwillingsmodelle](concepts-models.md) für Ihre Umgebung definiert. 
 
 Modelle ähneln Klassen in objektorientierten Programmiersprachen. Sie stellen benutzerdefinierte Vorlagen für [digitale Zwillinge](concepts-twins-graph.md) bereit, die später eingesetzt und instanziiert werden. Sie sind in einer JSON-ähnlichen Sprache namens **Digital Twins Definition Language (DTDL)** geschrieben und können die *Eigenschaften*, *Telemetriedaten*, *Beziehungen* und *Komponenten* eines Zwillings festlegen.
 
@@ -91,7 +91,7 @@ Nach dem Entwerfen von Modellen müssen Sie diese in Ihre Azure Digital Twins-In
     
     Navigieren Sie zur Datei *Room.json* auf Ihrem Computer, und wählen Sie „Öffnen“ aus. Wiederholen Sie diesen Schritt anschließend für die Datei *Floor.js*.
 
-1. Verwenden Sie als Nächstes den Befehl [**az dt model create**](/cli/azure/dt/model#az_dt_model_create), wie im Anschluss gezeigt, um das aktualisierte Raummodell (*Room*) in Ihre Azure Digital Twins-Instanz hochzuladen. Mit dem zweiten Befehl wird ein weiteres Modell (*Floor*) hochgeladen. Dieses wird auch im nächsten Abschnitt verwendet, um verschiedene Arten von Zwillingen zu erstellen.
+1. Verwenden Sie als Nächstes den Befehl [az dt model create](/cli/azure/dt/model#az_dt_model_create), wie im Anschluss gezeigt, um das aktualisierte Raummodell (*Room*) in Ihre Azure Digital Twins-Instanz hochzuladen. Mit dem zweiten Befehl wird ein weiteres Modell (*Floor*) hochgeladen. Dieses wird auch im nächsten Abschnitt verwendet, um verschiedene Arten von Zwillingen zu erstellen.
 
     ```azurecli-interactive
     az dt model create -n <ADT_instance_name> --models Room.json
@@ -101,9 +101,9 @@ Nach dem Entwerfen von Modellen müssen Sie diese in Ihre Azure Digital Twins-In
     Die Ausgabe des jeweiligen Befehls enthält Informationen zum erfolgreich hochgeladenen Modell.
 
     >[!TIP]
-    >Sie können auch alle Modelle in einem Verzeichnis auf einmal hochladen, indem Sie die Option `--from-directory` für den Befehl „model create“ verwenden. Weitere Informationen finden Sie in den [optionalen Parametern für *az dt model create*](/cli/azure/dt/model#az_dt_model_create-optional-parameters).
+    >Sie können auch alle Modelle in einem Verzeichnis auf einmal hochladen, indem Sie die Option `--from-directory` für den Befehl „model create“ verwenden. Weitere Informationen finden Sie in den [optionalen Parametern für „az dt model create“](/cli/azure/dt/model#az_dt_model_create-optional-parameters).
 
-1. Vergewissern Sie sich wie im Anschluss gezeigt mithilfe des Befehls [**az dt model list**](/cli/azure/dt/model#az_dt_model_list), dass die Modelle erstellt wurden. Dieser Befehl gibt eine Liste mit allen Modellen, die in die Azure Digital Twins-Instanz hochgeladen wurden, sowie mit ausführlichen Informationen zu den Modellen aus. 
+1. Vergewissern Sie sich wie im Anschluss gezeigt mithilfe des Befehls [az dt model list](/cli/azure/dt/model#az_dt_model_list), dass die Modelle erstellt wurden. Dieser Befehl gibt eine Liste mit allen Modellen, die in die Azure Digital Twins-Instanz hochgeladen wurden, sowie mit ausführlichen Informationen zu den Modellen aus. 
 
     ```azurecli-interactive
     az dt model list -n <ADT_instance_name> --definition
@@ -127,9 +127,9 @@ Da Modelle nicht überschrieben werden können, wird nun der Fehlercode `ModelId
 
 ## <a name="create-digital-twins"></a>Erstellen digitaler Zwillinge
 
-Sie haben einige Modelle in Ihre Azure Digital Twins-Instanz hochgeladen und können nun basierend auf den Modelldefinitionen [**digitale Zwillinge**](concepts-twins-graph.md) erstellen. Digitale Zwillinge stellen die Entitäten in Ihrer Geschäftsumgebung dar, etwa Sensoren in einer Farm, Räume in einem Gebäude oder Beleuchtung in einem Fahrzeug. 
+Sie haben einige Modelle in Ihre Azure Digital Twins-Instanz hochgeladen und können nun basierend auf den Modelldefinitionen [digitale Zwillinge](concepts-twins-graph.md) erstellen. Digitale Zwillinge stellen die Entitäten in Ihrer Geschäftsumgebung dar, etwa Sensoren in einer Farm, Räume in einem Gebäude oder Beleuchtung in einem Fahrzeug. 
 
-Verwenden Sie zum Erstellen eines digitalen Zwillings den Befehl [**az dt twin create**](/cli/azure/dt/twin#az_dt_twin_create). Sie müssen auf das Modell verweisen, auf dem der Zwilling basiert, und können optional Anfangswerte für Eigenschaften im Modell definieren. Sie müssen in dieser Phase keine Beziehungsinformationen übergeben.
+Verwenden Sie zum Erstellen eines digitalen Zwillings den Befehl [az dt twin create](/cli/azure/dt/twin#az_dt_twin_create). Sie müssen auf das Modell verweisen, auf dem der Zwilling basiert, und können optional Anfangswerte für Eigenschaften im Modell definieren. Sie müssen in dieser Phase keine Beziehungsinformationen übergeben.
 
 1. Führen Sie diesen Code in Cloud Shell aus, um mehrere Zwillinge basierend auf dem zuvor aktualisierten Modell *Room* (Raum) und einem anderen Modell (*Floor*) zu erstellen. Denken Sie daran, dass *Room* drei Eigenschaften hat, sodass Sie Argumente mit den Anfangswerten für diese angeben können. (Die Initialisierung von Eigenschaftswerten ist grundsätzlich optional, für dieses Tutorial werden sie allerdings benötigt.)
 
@@ -151,7 +151,7 @@ Verwenden Sie zum Erstellen eines digitalen Zwillings den Befehl [**az dt twin c
     
     Die Ausgabe der einzelnen Befehle enthält Informationen zum erfolgreich erstellten Zwilling (einschließlich Eigenschaften für die Raumzwillinge, die mit ihnen initialisiert wurden).
 
-1. Mithilfe des im Anschluss gezeigten Befehls [**az dt twin query**](/cli/azure/dt/twin#az_dt_twin_query) können Sie sich vergewissern, dass die Zwillinge erstellt wurden. Mit der gezeigten Abfrage wird nach allen digitalen Zwillingen in Ihrer Azure Digital Twins-Instanz gesucht.
+1. Mithilfe des im Anschluss gezeigten Befehls [az dt twin query](/cli/azure/dt/twin#az_dt_twin_query) können Sie sich vergewissern, dass die Zwillinge erstellt wurden. Mit der gezeigten Abfrage wird nach allen digitalen Zwillingen in Ihrer Azure Digital Twins-Instanz gesucht.
     
     ```azurecli-interactive
     az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DIGITALTWINS"
@@ -165,7 +165,7 @@ Verwenden Sie zum Erstellen eines digitalen Zwillings den Befehl [**az dt twin c
 
 Sie können auch die Eigenschaften eines von Ihnen erstellten Zwillings ändern. 
 
-1. Führen Sie den Befehl [**az dt twin update**](/cli/azure/dt/twin#az_dt_twin_update) aus, um den RoomName-Wert für *room0* von *Room0* in *PresidentialSuite* zu ändern:
+1. Führen Sie den Befehl [az dt twin update](/cli/azure/dt/twin#az_dt_twin_update) aus, um den RoomName-Wert für *room0* von *Room0* in *PresidentialSuite* zu ändern:
 
     ```azurecli-interactive
     az dt twin update -n <ADT_instance_name> --twin-id room0 --json-patch '{"op":"add", "path":"/RoomName", "value": "PresidentialSuite"}'
@@ -183,7 +183,7 @@ Sie können auch die Eigenschaften eines von Ihnen erstellten Zwillings ändern.
 
     :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Screenshot: Cloud Shell mit dem Ergebnis des Aktualisierungsbefehls (mit dem RoomName-Wert „PresidentialSuite“)" lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
-1. Sie können den Befehl [**az dt twin show**](/cli/azure/dt/twin#az_dt_twin_show) ausführen, um die Informationen zu *room0* anzuzeigen und sich zu vergewissern, dass die Aktualisierung erfolgreich war:
+1. Sie können den Befehl [az dt twin show](/cli/azure/dt/twin#az_dt_twin_show) ausführen, um die Informationen zu *room0* anzuzeigen und sich zu vergewissern, dass die Aktualisierung erfolgreich war:
 
     ```azurecli-interactive
     az dt twin show -n <ADT_instance_name> --twin-id room0
@@ -193,11 +193,11 @@ Sie können auch die Eigenschaften eines von Ihnen erstellten Zwillings ändern.
 
 ## <a name="create-a-graph-by-adding-relationships"></a>Erstellen eines Graphen durch Hinzufügen von Beziehungen
 
-Im nächsten Schritt können Sie einige **Beziehungen** zwischen diesen Zwillingen erstellen, um Sie in einem [**Zwillingsgraphen**](concepts-twins-graph.md) zu verbinden. Zwillingsgraphen werden verwendet, um eine gesamte Umgebung darzustellen. 
+Im nächsten Schritt können Sie einige **Beziehungen** zwischen diesen Zwillingen erstellen, um Sie in einem [Zwillingsgraphen](concepts-twins-graph.md) zu verbinden. Zwillingsgraphen werden verwendet, um eine gesamte Umgebung darzustellen. 
 
-Die Arten von Beziehungen, die Sie zwischen Zwillingen erstellen können, werden in den zuvor hochgeladenen [Modellen](#model-a-physical-environment-with-dtdl) definiert. In den [Modelldefinition für *Floor*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) ist angegeben, dass Etagen eine Beziehung vom Typ *contains* (enthält) haben können. Dies ermöglicht die Erstellung einer Beziehung vom Typ *enthält* zwischen jedem Etagenzwilling (*Floor*) und dem entsprechenden enthaltenen Raum.
+Die Arten von Beziehungen, die Sie zwischen Zwillingen erstellen können, werden in den zuvor hochgeladenen [Modellen](#model-a-physical-environment-with-dtdl) definiert. In der [Modelldefinition für „Floor“](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) ist angegeben, dass Etagen eine Beziehung vom Typ *contains* (enthält) haben können. Dies ermöglicht die Erstellung einer Beziehung vom Typ *enthält* zwischen jedem Etagenzwilling (*Floor*) und dem entsprechenden enthaltenen Raum.
 
-Verwenden Sie zum Hinzufügen einer Beziehung den Befehl [**az dt twin relationship create**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_create). Geben Sie den Zwilling, von dem die Beziehung ausgeht, die Art der Beziehung sowie den Zwilling an, mit dem die Beziehung hergestellt wird. Geben Sie abschließend eine eindeutige ID für die Beziehung an. Wenn eine Beziehung mit Eigenschaften definiert wurde, können Sie in diesem Befehl auch die Beziehungseigenschaften initialisieren.
+Verwenden Sie zum Hinzufügen einer Beziehung den Befehl [az dt twin relationship create](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_create). Geben Sie den Zwilling, von dem die Beziehung ausgeht, die Art der Beziehung sowie den Zwilling an, mit dem die Beziehung hergestellt wird. Geben Sie abschließend eine eindeutige ID für die Beziehung an. Wenn eine Beziehung mit Eigenschaften definiert wurde, können Sie in diesem Befehl auch die Beziehungseigenschaften initialisieren.
 
 1. Führen Sie den folgenden Code aus, um eine Beziehung vom Typ *contains* (enthält) zwischen jedem der zuvor erstellten Etagenzwillinge (*Floor*) um dem entsprechenden Raumzwilling (*Room*) hinzuzufügen. Die Beziehungen heißen *relationship0* und *relationship1*.
 
@@ -207,7 +207,7 @@ Verwenden Sie zum Hinzufügen einer Beziehung den Befehl [**az dt twin relations
     ```
     
     >[!TIP]
-    >Da die Beziehung vom Typ *contains* (enthält) im [Modell *Floor* (Etage)](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) mit zwei Eigenschaften (`ownershipUser` und `ownershipDepartment`) definiert wurde, können Sie beim Erstellen der Beziehungen auch Argumente mit den Anfangswerten für diese Eigenschaften angeben.
+    >Da die Beziehung vom Typ *contains* (enthält) im Modell [Floor (Etage)](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) mit zwei Eigenschaften (`ownershipUser` und `ownershipDepartment`) definiert wurde, können Sie beim Erstellen der Beziehungen auch Argumente mit den Anfangswerten für diese Eigenschaften angeben.
     > Wenn Sie eine Beziehung mit Initialisierung dieser Eigenschaften erstellen möchten, müssen Sie einem der obigen Befehle die Option `--properties` hinzufügen:
     > ```azurecli-interactive
     > ... --properties '{"ownershipUser":"MyUser", "ownershipDepartment":"MyDepartment"}'
@@ -240,7 +240,7 @@ Die Zwillinge und Beziehungen, die Sie in diesem Tutorial eingerichtet haben, bi
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>Abfragen des Zwillingsgraphen zum Beantworten von Umgebungsfragen
 
-Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-query-language.md) des Zwillingsgraphen und das effiziente Beantworten von Fragen zur Umgebung. In der Azure CLI wird dazu der Befehl [**az dt twin query**](/cli/azure/dt/twin#az_dt_twin_query) verwendet.
+Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-query-language.md) des Zwillingsgraphen und das effiziente Beantworten von Fragen zur Umgebung. In der Azure CLI wird dazu der Befehl [az dt twin query](/cli/azure/dt/twin#az_dt_twin_query) verwendet.
 
 Führen Sie in Cloud Shell die folgenden Abfragen aus, um einige Fragen zur Beispielumgebung zu beantworten.
 
@@ -255,7 +255,7 @@ Führen Sie in Cloud Shell die folgenden Abfragen aus, um einige Fragen zur Beis
     :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Screenshot: Cloud Shell mit einem Teil des Ergebnisses der Zwillingsabfrage (mit „room0“ und „room1“)" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
     >[!TIP]
-    >Wie Sie sehen, handelt es sich hierbei um den gleichen Befehl, den Sie bereits im Abschnitt [*Erstellen digitaler Zwillinge*](#create-digital-twins) verwendet haben, um alle Azure Digital Twins-Instanzen in der Instanz zu finden.
+    >Wie Sie sehen, handelt es sich hierbei um den gleichen Befehl, den Sie bereits im Abschnitt [Erstellen digitaler Zwillinge](#create-digital-twins) verwendet haben, um alle Azure Digital Twins-Instanzen in der Instanz zu finden.
 
 1. **Welche Räume sind in meiner Umgebung vorhanden?** (Abfrage nach Modell)
 
@@ -308,7 +308,7 @@ Nach Abschluss dieses Tutorials können Sie die zu entfernenden Ressourcen ausw�
 
 * **Wenn Sie mit dem nächsten Tutorial fortfahren möchten**, können Sie die hier eingerichteten Ressourcen behalten und die Azure Digital Twins-Instanz wiederverwenden, ohne dazwischen etwas zu löschen.
 
-* **Wenn Sie die Azure Digital Twins-Instanz weiterverwenden, aber alle zugehörigen Modelle, Zwillinge und Beziehungen entfernen möchten**, können Sie die Befehle [**az dt twin relationship delete**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete), [**az dt twin delete**](/cli/azure/dt/twin#az_dt_twin_delete) und [**az dt model delete**](/cli/azure/dt/model#az_dt_model_delete) verwenden, um die Beziehungen, Zwillinge und Modelle in Ihrer Instanz zu löschen.
+* **Wenn Sie die Azure Digital Twins-Instanz weiterverwenden, aber alle zugehörigen Modelle, Zwillinge und Beziehungen entfernen möchten**, können Sie die Befehle [az dt twin relationship delete](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete), [az dt twin delete](/cli/azure/dt/twin#az_dt_twin_delete) und [az dt model delete](/cli/azure/dt/model#az_dt_model_delete) verwenden, um die Beziehungen, Zwillinge und Modelle in Ihrer Instanz zu löschen.
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
@@ -320,4 +320,4 @@ In diesem Tutorial haben Sie die ersten Schritte mit Azure Digital Twins durchge
 
 Im nächsten Tutorial wird eine Kombination aus Azure Digital Twins und anderen Azure-Diensten in einem datengesteuerten End-to-End-Szenario verwendet:
 > [!div class="nextstepaction"]
-> [*Tutorial: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md)
+> [Tutorial: Erstellen einer End-to-End-Lösung](tutorial-end-to-end.md)

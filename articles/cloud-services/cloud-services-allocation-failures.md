@@ -1,19 +1,19 @@
 ---
 title: Behandeln von Zuordnungsfehlern von Clouddiensten (klassisch) | Microsoft-Dokumentation
 description: Behandeln eines Zuordnungsfehlers bei der Bereitstellung von Azure Cloud Services. Erfahren Sie, wie die Zuordnung funktioniert und warum bei der Zuordnung ein Fehler auftreten kann.
-ms.topic: article
+ms.topic: troubleshooting
 ms.service: cloud-services
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 95fe4a8e1f6c6ee5f519311f8e756be89a09acf8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b9cfb7e2d57d194e9f9317d0dcbff3e87318ac9f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738309"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736197"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>Behandeln von Zuordnungsfehlern bei der Bereitstellung von Cloud Services (klassisch) in Azure
 

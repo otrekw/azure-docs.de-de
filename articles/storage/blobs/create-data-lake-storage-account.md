@@ -4,35 +4,46 @@ description: Erfahren Sie, wie Sie ein Speicherkonto für die Verwendung mit Azu
 author: normesta
 ms.topic: how-to
 ms.author: normesta
-ms.date: 08/31/2020
+ms.date: 04/27/2021
 ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 712f1dc0679ee49791831e782fb68c39a757870a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30be4b09c5fc85a272734468d30f11e939ded48b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624336"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125508"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2
 
 Um die Funktionen von Data Lake Storage Gen2 zu verwenden, erstellen Sie ein Speicherkonto mit einem hierarchischen Namespace.
 
+Eine Schrittanleitung finden Sie unter [Erstellen eines Speicherkontos](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json). 
+
+Stellen Sie beim Erstellen des Kontos sicher, dass Sie die in diesem Artikel beschriebenen Optionen auswählen.
+
 ## <a name="choose-a-storage-account-type"></a>Auswählen eines Speicherkontotyps
 
 Die Funktionen von Data Lake Storage werden von den folgenden Typen von Speicherkonten unterstützt:
 
-- General Purpose v2
-- BlockBlobStorage
+- Standard, Universell V2
+- Premium, Blockblob
 
-Informationen zum Auswählen zwischen diesen Optionen finden Sie unter [Übersicht über Azure Storage-Konten](../common/storage-account-overview.md).
+Informationen zum Auswählen zwischen diesen Optionen finden Sie unter [Übersicht über Azure Storage-Konten](../common/storage-account-overview.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json).
 
-## <a name="create-a-storage-account-with-a-hierarchical-namespace"></a>Erstellen eines Speicherkonto mit einem hierarchischen Namespace
+Auf der Seite **Speicherkonto erstellen** können Sie auf der Registerkarte **Grundlagen** zwischen diesen beiden Kontotypen wählen. 
 
-Erstellen Sie ein Konto vom Typ [Universell V2](../common/storage-account-create.md) oder vom Typ [BlockBlobStorage](storage-blob-create-account-block-blob.md) mit aktivierter Einstellung **Hierarchischer Namespace**.
+Wählen Sie **Standard** aus, um ein Standard-Konto vom Typ „Universell V2“ zu erstellen.
 
-Sie aktivieren Data Lake Storage-Funktionen beim Erstellen des Kontos, indem Sie die Einstellung **Hierarchischer Namespace** auf der Registerkarte **Erweitert** auf der Seite **Speicherkonto erstellen** aktivieren. Diese Einstellung müssen Sie beim Erstellen des Kontos aktivieren. Später können Sie sie nicht mehr aktivieren.
+Wählen Sie **Premium** aus, um ein Premium-Konto vom Typ „Blockblob“ zu erstellen. Wählen Sie dann in der Dropdownliste **Premium-Kontotyp** die Option **Blockblobs** aus. 
+
+> [!div class="mx-imgBorder"]
+> ![Option für Premium-Blockblob](./media/create-data-lake-storage-account/premium-block-blob-option.png)
+
+## <a name="enable-the-hierarchical-namespace"></a>Aktivieren des hierarchischen Namespace
+
+Sie aktivieren Data Lake Storage-Funktionen, indem Sie auf der Seite **Speicherkonto erstellen** auf der Registerkarte **Erweitert** die Einstellung **Hierarchischer Namespace aktivieren** auswählen. Diese Einstellung müssen Sie beim Erstellen des Kontos aktivieren. Später können Sie sie nicht mehr aktivieren.
 
 In der folgenden Abbildung wird diese Einstellung auf der Seite **Speicherkonto erstellen** gezeigt.
 
@@ -42,7 +53,7 @@ In der folgenden Abbildung wird diese Einstellung auf der Seite **Speicherkonto 
 Wenn Sie ein vorhandenes Speicherkonto mit Data Lake Storage verwenden möchten und die Einstellung „Hierarchischer Namespace“ deaktiviert ist, müssen Sie die Daten zu einem neuen Speicherkonto migrieren, in dem die Einstellung aktiviert ist.
 
 > [!NOTE]
-> **Schutz von Daten** und **hierarchische Namespaces** können nicht gleichzeitig aktiviert werden.
+> **Datenschutz** und hierarchischer Namespace können nicht gleichzeitig aktiviert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

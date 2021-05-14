@@ -12,17 +12,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 1d25f43ef5a694d8b94710055bf1be72a7fcb45c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 221b69d428556b031efd3bd91e16d12cfeb71393
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97705212"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874799"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database"></a>Schnellstart: Verwenden von .NET Core (C#) zum Abfragen einer Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-In dieser Schnellstartanleitung verwenden Sie [.NET Core](https://www.microsoft.com/net/) und C#-Code, um eine Verbindung mit einer Datenbank herzustellen. Anschließend führen Sie eine Transact-SQL-Anweisung zum Abfragen von Daten aus.
+In dieser Schnellstartanleitung verwenden Sie [.NET Core](https://dotnet.microsoft.com) und C#-Code, um eine Verbindung mit einer Datenbank herzustellen. Anschließend führen Sie eine Transact-SQL-Anweisung zum Abfragen von Daten aus.
 
 > [!TIP]
 > Im folgenden kostenlosen Microsoft Learn-Modul lernen Sie, wie Sie eine [ASP.NET-Anwendung entwickeln und konfigurieren, die eine Datenbank in Azure SQL-Datenbank abfragt](/learn/modules/develop-app-that-queries-azure-sql/).
@@ -32,7 +32,7 @@ In dieser Schnellstartanleitung verwenden Sie [.NET Core](https://www.microsoft.
 Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [.NET Core für Ihr Betriebssystem](https://www.microsoft.com/net/core) ist installiert.
+- Das [.NET Core SDK für Ihr Betriebssystem](https://dotnet.microsoft.com/download) ist installiert.
 - Eine Datenbank, in der Sie die Abfrage ausführen können. 
 
   [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]

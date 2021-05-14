@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 392b1a1650ab40951704d003f2a5e5337cf3c0f5
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006156"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566703"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Datenintegration mit Azure Data Factory und Azure Data Share
 
@@ -64,12 +64,9 @@ Unter den verknüpften Azure Data Factory-Diensten definieren Sie die Informatio
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Erstellen eines verknüpften Azure SQL-Datenbank-Diensts
 
-1. Auf der Erstellungsseite erstellen Sie Data Factory-Ressourcen, z. B. Pipelines, Datasets, Datenflüsse, Trigger und verknüpfte Dienste. Klicken Sie unten rechts auf die Schaltfläche **Verbindungen**, um einen verknüpften Dienst zu erstellen.
+1. Wählen Sie zum Erstellen eines verknüpften Diensts auf der linken Seitenleiste den Hub **Verwalten** und im Bereich **Verbindungen** die Option **Verknüpfte Dienste** aus. Wählen Sie anschließend **Neu** aus, um einen neuen verknüpften Dienst hinzuzufügen.
 
     ![Portal: Konfigurieren 2](media/lab-data-flow-data-share/configure2.png)
-1. Klicken Sie auf der Registerkarte „Verbindungen“ auf **Neu**, um einen neuen verknüpften Dienst hinzuzufügen.
-
-    ![Portal: Konfigurieren 3](media/lab-data-flow-data-share/configure3.png)
 1. Der erste verknüpfte Dienst, den Sie konfigurieren, ist eine Azure SQL-Datenbank. Sie können die Suchleiste verwenden, um die Datenspeicherliste zu filtern. Klicken Sie auf die Kachel **Azure SQL-Datenbank** und dann auf „Weiter“.
 
     ![Portal: Konfigurieren 4](media/lab-data-flow-data-share/configure-4.png)
@@ -99,9 +96,11 @@ Unter den verknüpften Azure Data Factory-Diensten definieren Sie die Informatio
 
 Im Abschnitt *Transformieren von Daten per Zuordnung von Datenflüssen* erstellen Sie Zuordnungsdatenflüsse. Eine bewährte Methode vor dem Erstellen von Zuordnungsdatenflüssen ist das Aktivieren des Debugmodus. Dies ermöglicht Ihnen das Testen der Transformationslogik innerhalb weniger Sekunden in einem aktiven Spark-Cluster.
 
-Klicken Sie zum Aktivieren des Debuggens in der oberen Factory-Leiste auf den Schieberegler für **Datenfluss debuggen**. Klicken Sie auf „OK“, wenn das Bestätigungsdialogfeld angezeigt wird. Es dauert ca. 5 bis 7 Minuten, bis der Startvorgang für den Cluster abgeschlossen ist. Fahren Sie mit dem *Erfassen von Daten aus Azure SQL-Datenbank in ADLS Gen2 per Copy-Aktivität* fort, während der Initialisierungsvorgang läuft.
+Klicken Sie zum Aktivieren des Debuggens auf der oberen Leiste der Datenfluss- oder Pipelinecanvas auf den Schieberegler **Datenflüsse debuggen**, wenn **Datenflussaktivitäten** vorhanden sind. Klicken Sie auf „OK“, wenn das Bestätigungsdialogfeld angezeigt wird. Es dauert ca. 5 bis 7 Minuten, bis der Startvorgang für den Cluster abgeschlossen ist. Fahren Sie mit dem *Erfassen von Daten aus Azure SQL-Datenbank in ADLS Gen2 per Copy-Aktivität* fort, während der Initialisierungsvorgang läuft.
 
 ![Portal: Konfigurieren 10](media/lab-data-flow-data-share/configure10.png)
+
+![Screenshot: Position des Schiebereglers „Datenflüsse debuggen“](media/lab-data-flow-data-share/configure-11.png)
 
 ## <a name="ingest-data-using-the-copy-activity"></a>Erfassen von Daten mithilfe der Kopieraktivität
 

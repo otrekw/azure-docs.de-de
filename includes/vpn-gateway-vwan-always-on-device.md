@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 34e841a5f17d589c4fbef54a4a8674a99ac6c640
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96026918"
 ---
 Um einen Gerätetunnel einzurichten, müssen die folgenden Anforderungen erfüllt werden:
@@ -28,7 +28,7 @@ Um einen Gerätetunnel einzurichten, müssen die folgenden Anforderungen erfüll
 
 Nachdem Sie das virtuelle Netzwerkgateway konfiguriert und das Clientzertifikat im Speicher „Lokaler Computer“ auf dem Windows 10-Client installiert haben, verwenden Sie die folgenden Beispiele, um einen Clientgerätetunnel zu konfigurieren:
 
-1. Kopieren Sie den folgenden Text, und speichern Sie ihn als Datei **devicecert.ps1**.
+1. Kopieren Sie den folgenden Text, und speichern Sie ihn als ***devicecert.ps1***-Datei.
 
    ```
    Param(
@@ -80,7 +80,7 @@ Nachdem Sie das virtuelle Netzwerkgateway konfiguriert und das Clientzertifikat 
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Kopieren Sie den folgenden Text, und speichern Sie ihn als Datei _*_VPNProfile.xml_*_ in demselben Ordner wie die Datei „devicecert.ps1“. Bearbeiten Sie den folgenden Text, um ihn an Ihre Umgebung anzupassen.
+1. Kopieren Sie den folgenden Text, und speichern Sie ihn als Datei unter dem Namen **VPNProfile.xml** in demselben Ordner wie die Datei „devicecert.ps1“. Bearbeiten Sie den folgenden Text, um ihn an Ihre Umgebung anzupassen.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`

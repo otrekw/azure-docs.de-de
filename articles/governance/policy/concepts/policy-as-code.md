@@ -3,12 +3,12 @@ title: Entwerfen von Workflows für Azure Policy-as-Code
 description: Erfahren Sie, wie Sie Workflows entwerfen, um Ihre Azure Policy-Definitionen als Code bereitzustellen und Ressourcen automatisch zu überprüfen.
 ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 233a5d4ca6583bc6a2cd9e8366e54f3ed1e2dad3
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 2f28a7798bbfd4fb79395e83b9a175f7b4ca7bfb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094896"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752739"
 ---
 # <a name="design-azure-policy-as-code-workflows"></a>Entwerfen von Workflows für Azure Policy-as-Code
 
@@ -44,7 +44,7 @@ Beispiele für diese Dateiformate sind im [Azure Policy-GitHub-Repository](https
 Der empfohlene allgemeine Workflow für Azure Policy-as-Code sieht in etwa wie das folgende Diagramm aus:
 
 :::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Diagramm, das die Workflowfelder „Azure Policy-as-Code“ von der Erstellung über das Testen bis hin zur Bereitstellung zeigt." border="false":::
-   Das Diagramm zeigt die Workflowfelder „Azure Policy-as-Code“ an. „Erstellung“ behandelt das Erstellen der Richtlinien- und Initiativdefinitionen. „Testen“ behandelt die Zuweisung mit aktiviertem Erzwingungsmodus. Nach einer Gatewayprüfung hinsichtlich des Compliancestatus werden den Zuweisungen M S I-Berechtigungen erteilt und Ressourcen bereinigt.  „Bereitstellung“ behandelt das Aktualisieren der Zuweisung mit aktiviertem Erzwingungsmodus.
+   Das Diagramm zeigt die Workflowfelder „Azure Policy-as-Code“ an. „Erstellung“ behandelt das Erstellen der Richtlinien- und Initiativdefinitionen. „Testen“ behandelt die Zuweisung mit aktiviertem Erzwingungsmodus. Nach einer Gatewayprüfung hinsichtlich des Compliancestatus werden den Zuweisungen M S I-Berechtigungen erteilt und Ressourcen bereinigt. „Bereitstellung“ behandelt das Aktualisieren der Zuweisung mit aktiviertem Erzwingungsmodus.
 :::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>Erstellen und Aktualisieren von Richtliniendefinitionen

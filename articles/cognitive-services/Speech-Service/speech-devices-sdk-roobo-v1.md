@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: 73eb1225ffc5fd01f9a27ca99ad2b059d45a36cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95015289"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Gerät: Roobo Smart Audio Dev Kit
@@ -59,7 +59,7 @@ Dieser Artikel enthält gerätespezifische Informationen für das Roobo Smart Au
     > [!TIP]
     > Schalten Sie das Mikrofon und die Lautsprecher Ihres Computers stumm, um sicherzustellen, dass die Mikrofone des Development Kits verwendet werden. Auf diese Weise lösen Sie nicht versehentlich das Gerät mit Audio vom PC aus.
 
-1. Wenn Sie einen Lautsprecher an das Development Kit anschließen möchten, verwenden Sie dazu den Audioausgang. Wählen Sie einen hochwertigen Lautsprecher mit einem 3,5-mm-Analoganschluss.
+1. Wenn Sie einen Lautsprecher an das Dev-Kit anschließen möchten, können Sie diesen an den Audio-Line-Out anschließen. Sie sollten einen qualitativ guten Lautsprecher mit einem 3,5-mm-Analogstecker wählen.
 
     ![Vysor-Audio](media/speech-devices-sdk/qsg-14.png)
 

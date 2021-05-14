@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/03/2021
+ms.date: 04/27/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c0fbb1280fc2a7eaca1d97e7e016cf480873c8b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4350f60029673af04ad263c9e9f25d7a74bc532b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666587"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131022"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -62,6 +62,7 @@ Einige Leitprinzipien bei der Auswahl Ihrer Speicherkonfiguration für HANA kön
 - Entscheiden Sie sich für den Speichertyp auf der Grundlage von [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md) und [Auswählen eines Datenträgertyps](../../disks-types.md).
 - Beachten Sie den E/A-Gesamtdurchsatz und die IOPS-Grenzwerte eines virtuellen Computers, wenn Sie die Größe festlegen oder sich für einen virtuellen Computer entscheiden. Der VM-Gesamtspeicherdurchsatz ist im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](../../sizes-memory.md) beschrieben.
 - Versuchen Sie bei der Entscheidung für die Speicherkonfiguration mit Ihrer **/hana/data**-Volumenkonfiguration unter dem Gesamtdurchsatz des virtuellen Computers zu bleiben. Beim Schreiben von Sicherungspunkten kann SAP HANA bei der E/A-Ausgabe aggressiv sein. Es ist leicht möglich, beim Schreiben eines Sicherungspunkts bis an die Durchsatzgrenzen Ihres **/hana/data**-Volumens zu gehen. Wenn Ihre Datenträger, die das **/hana/data**-Volume bilden, einen höheren Durchsatz aufweisen, als Ihre VM zulässt, könnten Sie in Situationen geraten, in denen der vom Sicherungspunkt verwendete Durchsatz die Durchsatzanforderungen der Schreibvorgänge für das Wiederholungsprotokoll stört. Eine Situation, die sich auf den Durchsatz der Anwendung auswirken kann.
+- Wenn Sie die Verwendung der HANA-Systemreplikation in Betracht ziehen, müssen Sie für alle an der Konfiguration der HANA-Systemreplikation beteiligten VMs genau denselben Azure-Speichertyp für **/hana/data** und **/hana/log** verwenden. Wenn Sie beispielsweise für eine VM Azure Storage Premium für **/hana/data** verwenden und für eine andere VM innerhalb derselben Konfiguration der HANA-Systemreplikation für **/hana/log** Azure Disk Ultra festlegen, wird dies nicht unterstützt.
 
 
 > [!IMPORTANT]
@@ -69,7 +70,7 @@ Einige Leitprinzipien bei der Auswahl Ihrer Speicherkonfiguration für HANA kön
 
 
 ## <a name="stripe-sets-versus-sap-hana-data-volume-partitioning"></a>Stripesets im Vergleich zur SAP HANA-Datenvolumepartitionierung
-Mit Azure Storage Premium erzielen Sie das beste Preis-/Leistungsverhältnis, wenn Sie das **/hana/data**- und/oder **/hana/log**-Volume über mehrere Azure-Datenträger verteilen. Dies ist die Alternative zum Bereitstellen größerer Datenträgervolumes, die den zusätzlichen Bedarf an IOPS oder Durchsatz decken. Bisher wurde dies mit LVM- und MDADM-Volume-Managern erreicht, die Teil von Linux sind. Die Methode des Datenträgerstripings ist Jahrzehnte alt und wohlbekannt. So vorteilhaft diese Stripesetvolumes sind, um Ihren IOPS- oder Durchsatzbedarf zu erfüllen, sie erhöhen auch die Komplexität der Verwaltung. Dies gilt insbesondere, wenn die Kapazität der Volumes erweitert werden muss. Zumindest für **/hana/data** hat SAP eine alternative Methode eingeführt, mit der Sie das gleiche Ziel erreichen wie mit dem Striping über mehrere Azure-Datenträger. Seit SAP Hana 2.0 SPS03 kann der HANA-Indexserver seine E/A-Aktivität auf mehrere HANA-Datendateien verteilen, die sich auf verschiedenen Azure-Datenträgern befinden. Der Vorteil ist, dass Sie kein Stripesetvolume erstellen und verwalten müssen, dass sich über verschiedene Azure-Datenträger erstreckt. Die SAP HANA-Funktionalität der Datenvolumepartitionierung wird hier ausführlich beschrieben:
+Mit Azure Storage Premium erzielen Sie das beste Preis-/Leistungsverhältnis, wenn Sie das **/hana/data**- und/oder **/hana/log**-Volume über mehrere Azure-Datenträger verteilen. Dies ist die Alternative zum Bereitstellen größerer Datenträgervolumes, die den zusätzlichen Bedarf an IOPS oder Durchsatz decken. Bisher wurde dies mit LVM- und MDADM-Volume-Managern erreicht, die Teil von Linux sind. Die Methode des Datenträgerstripings ist Jahrzehnte alt und wohlbekannt. So vorteilhaft diese Stripesetvolumes sind, um Ihren IOPS- oder Durchsatzbedarf zu erfüllen, sie erhöhen auch die Komplexität der Verwaltung. Dies gilt insbesondere, wenn die Kapazität der Volumes erweitert werden muss. Zumindest für **/hana/data** hat SAP eine alternative Methode eingeführt, mit der Sie das gleiche Ziel erreichen wie mit dem Striping über mehrere Azure-Datenträger. Ab Version SAP HANA 2.0 SPS03 kann der HANA-Indexserver die zugehörige E/A-Aktivität per Striping auf verschiedene HANA-Datendateien verteilen, die sich auf unterschiedlichen Azure-Datenträgern befinden. Der Vorteil ist, dass Sie kein Stripesetvolume erstellen und verwalten müssen, dass sich über verschiedene Azure-Datenträger erstreckt. Die SAP HANA-Funktionalität der Datenvolumepartitionierung wird hier ausführlich beschrieben:
 
 - [HANA-Administratorhandbuch](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
 - [Blog zu SAP HANA-Datenvolumepartitionierung](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
@@ -153,6 +154,9 @@ Insbesondere auf kleineren DBMS-Systemen, auf denen Ihre Workload nur ein paar h
 > [!NOTE]
 > In Szenarien, die Azure Premium Storage einbeziehen, implementieren wir Burstfunktionen in die Konfiguration. Wenn Sie Speichertesttools in beliebiger Form oder Gestalt verwenden, denken Sie daran, wie das [Azure Premium-Datenträgerbursting](../../disk-bursting.md) funktioniert. Bei der Durchführung der Speichertests, die über das SAP-HWCCT- oder HCMT-Tool geliefert werden, gehen wir nicht davon aus, dass alle Tests die Kriterien erfüllen, da einige der Tests die Bursting-Guthaben überschreiten, die Sie akkumulieren können. Vor allem, wenn alle Tests nacheinander ohne Unterbrechung durchgeführt werden.
 
+> [!NOTE]
+> Bei M32ts- und M32ls-VMs kann es vorkommen, dass der Datenträgerdurchsatz während der HCMT/HWCCT-Datenträgertests geringer ist als erwartet. Dies gilt selbst bei Datenträgerbursting oder bei einem ausreichenden E/A-Durchsatz der zugrunde liegenden Datenträger. Die Ursache für das beobachtete Verhalten liegt darin, dass die HCMT/HWCCT-Speichertestdateien vollständig im Lesecache der Storage Premium-Datenträger zwischengespeichert wurden. Dieser Cache befindet sich auf dem Computehost, der die VM hostet, und kann die Testdateien von HCMT/HWCCT vollständig zwischenspeichern. In einem solchen Fall sind die Kontingente relevant, die in der Spalte **Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB)** im Artikel [M-Serie](../../m-series.md) aufgeführt sind. Insbesondere für M32ts und M32ls beträgt das Durchsatzkontingent für den Lesecache nur 400 MB/s. Als Ergebnis der vollständigen Zwischenspeicherung der Testdateien ist es möglich, dass die Tests trotz Datenträgerbursting oder Bereitstellung eines höheren E/A-Durchsatzes den maximalen Durchsatz von 400 MB/s leicht unterschreiten. Alternativ können Sie die Tests ohne aktivierten Lesecache auf den Azure Storage Premium-Datenträgern durchführen.
+
 
 > [!NOTE]
 > Überprüfen Sie für Produktionsszenarien in der [SAP-Dokumentation für IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html), ob ein bestimmter VM-Typ von SAP für SAP HANA unterstützt wird.
@@ -166,10 +170,13 @@ Konfiguration für SAP **/hana/data**-Volume:
 | M32ts | 192 GiB | 500 MBit/s | 4 x P6 | 200 MBit/s | 680 MBit/s | 960 | 14.000 |
 | M32ls | 256 GiB | 500 MBit/s | 4 x P6 | 200 MBit/s | 680 MBit/s | 960 | 14.000 |
 | M64ls | 512 GB | 1\.000 MBit/s | 4 x P10 | 400 MBit/s | 680 MBit/s | 2\.000 | 14.000 |
-| M64s | 1\.000 GiB | 1\.000 MBit/s | 4 x P15 | 500 MBit/s | 680 MBit/s | 4\.400 | 14.000 |
-| M64ms | 1\.750 GiB | 1\.000 MBit/s | 4 x P20 | 600 MBit/s | 680 MBit/s | 9\.200 | 14.000 |  
-| M128s | 2\.000 GiB | 2\.000 MBit/s | 4 x P20 | 600 MBit/s | 680 MBit/s | 9\.200| 14.000 | 
-| M128ms | 3\.800 GiB | 2\.000 MBit/s | 4 x P30 | 800 MBit/s | kein Bursting | 20.000 | kein Bursting | 
+| M32dms_v2, M32ms_v2 | 875 GiB  | 500 MBit/s | 4 x P15 | 500 MBit/s | 680 MBit/s | 4\.400 | 14.000 |
+| M64s, M64ds_v2, M64s_v2 | 1.024 GiB | 1\.000 MBit/s | 4 x P15 | 500 MBit/s | 680 MBit/s | 4\.400 | 14.000 |
+| M64ms, M64dms_v2, M64ms_v2 | 1\.792 GiB | 1\.000 MBit/s | 4 x P20 | 600 MBit/s | 680 MBit/s | 9\.200 | 14.000 |  
+| M128s, M128ds_v2, M128s_v2 | 2.048 GiB | 2\.000 MBit/s | 4 x P20 | 600 MBit/s | 680 MBit/s | 9\.200| 14.000 | 
+| M192ds_v2, M192s_v2 | 2.048 GiB | 2\.000 MBit/s | 4 x P20 | 600 MBit/s | 680 MBit/s | 9\.200| 14.000 | 
+| M128ms, M128dms_v2, M128ms_v2 | 3\.892 GiB | 2\.000 MBit/s | 4 x P30 | 800 MBit/s | kein Bursting | 20.000 | kein Bursting | 
+| M192ms, M192dms_v2, M128ms_v2 | 4\.096 GiB | 2\.000 MBit/s | 4 x P30 | 800 MBit/s | kein Bursting | 20.000 | kein Bursting | 
 | M208s_v2 | 2\.850 GiB | 1\.000 MBit/s | 4 x P30 | 800 MBit/s | kein Bursting | 20.000| kein Bursting | 
 | M208ms_v2 | 5\.700 GiB | 1\.000 MBit/s | 4 x P40 | 1\.000 MBit/s | kein Bursting | 30.000 | kein Bursting |
 | M416s_v2 | 5\.700 GiB | 2\.000 MBit/s | 4 x P40 | 1\.000 MBit/s | kein Bursting | 30.000 | kein Bursting |
@@ -183,10 +190,13 @@ Für das Volume **/hana/log**. Die Konfiguration würde wie folgt aussehen:
 | M32ts | 192 GiB | 500 MBit/s | 3 x P10 | 300 MBit/s | 510 MBit/s | 1\.500 | 10.500 | 
 | M32ls | 256 GiB | 500 MBit/s | 3 x P10 | 300 MBit/s | 510 MBit/s | 1\.500 | 10.500 | 
 | M64ls | 512 GB | 1\.000 MBit/s | 3 x P10 | 300 MBit/s | 510 MBit/s | 1\.500 | 10.500 | 
-| M64s | 1\.000 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
-| M64ms | 1\.750 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
-| M128s | 2\.000 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500|  
-| M128ms | 3\.800 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
+| M32dms_v2, M32ms_v2 | 875 GiB | 500 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
+| M64s, M64ds_v2, M64s_v2 | 1.024 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
+| M64ms, M64dms_v2, M64ms_v2 | 1\.792 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
+| M128s, M128ds_v2, M128s_v2 | 2.048 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500| 
+| M192ds_v2, M192s_v2 | 2.048 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500| 
+| M128ms, M128dms_v2, M128ms_v2 | 3\.892 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |
+| M192dms_v2, M192ms_v2 | 4\.096 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
 | M208s_v2 | 2\.850 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
 | M208ms_v2 | 5\.700 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
 | M416s_v2 | 5\.700 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
@@ -200,10 +210,13 @@ Für die anderen Volumes würde die Konfiguration wie folgt aussehen:
 | M32ts | 192 GiB | 500 MBit/s | 1 x P15 | 1 x P6 | 1 x P6 |
 | M32ls | 256 GiB | 500 MBit/s |  1 x P15 | 1 x P6 | 1 x P6 |
 | M64ls | 512 GB | 1\.000 MBit/s | 1 x P20 | 1 x P6 | 1 x P6 |
-| M64s | 1\.000 GiB | 1\.000 MBit/s | 1 x P30 | 1 x P6 | 1 x P6 |
-| M64ms | 1\.750 GiB | 1\.000 MBit/s | 1 x P30 | 1 x P6 | 1 x P6 | 
-| M128s | 2\.000 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 | 
-| M128ms | 3\.800 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 |
+| M32dms_v2, M32ms_v2 | 875 GiB | 500 MBit/s | 1 x P30 | 1 x P6 | 1 x P6 |
+| M64s, M64ds_v2, M64s_v2 | 1.024 GiB | 1\.000 MBit/s | 1 x P30 | 1 x P6 | 1 x P6 |
+| M64ms, M64dms_v2, M64ms_v2 | 1\.792 GiB | 1\.000 MBit/s | 1 x P30 | 1 x P6 | 1 x P6 | 
+| M128s, M128ds_v2, M128s_v2 | 2.048 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 | 
+| M192ds_v2, M192s_v2  | 2.048 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 | 
+| M128ms, M128dms_v2, M128ms_v2 | 3\.892 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 |
+| M192dms_v2, M192ms_v2  | 4\.096 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 |
 | M208s_v2 | 2\.850 GiB | 1\.000 MBit/s |  1 x P30 | 1 x P10 | 1 x P6 |
 | M208ms_v2 | 5\.700 GiB | 1\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 | 
 | M416s_v2 | 5\.700 GiB | 2\.000 MBit/s |  1 x P30 | 1 x P10 | 1 x P6 | 
@@ -212,7 +225,7 @@ Für die anderen Volumes würde die Konfiguration wie folgt aussehen:
 
 Überprüfen Sie, ob der Speicherdurchsatz für die verschiedenen vorgeschlagenen Volumes für die Workload ausreicht, die Sie ausführen möchten. Wenn die Workload größere Volumes für **/hana/data** und **/hana/log** erfordert, müssen Sie die Anzahl der Azure Storage Premium-VHDs erhöhen. Wenn Sie ein Volume mit mehr VHDs ausstatten als in der Liste angegeben, erhöht sich der IOPS- und E/A-Durchsatz innerhalb der Grenzen des Azure-VM-Typs.
 
-Die Azure-Schreibbeschleunigung funktioniert nur in Verbindung mit [verwalteten Azure-Datenträgern](https://azure.microsoft.com/services/managed-disks/). Daher müssen zumindest die Azure Storage Premium-Datenträger, die das Volume **/hana/log** bilden, als verwaltete Datenträger bereitgestellt werden. Ausführlichere Anweisungen und Einschränkungen der Azure-Schreibbeschleunigung finden Sie im Artikel [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md).
+Die Azure-Schreibbeschleunigung funktioniert nur mit [verwalteten Azure-Datenträgern](https://azure.microsoft.com/services/managed-disks/). Daher müssen zumindest die Azure Storage Premium-Datenträger, die das Volume **/hana/log** bilden, als verwaltete Datenträger bereitgestellt werden. Ausführlichere Anweisungen und Einschränkungen der Azure-Schreibbeschleunigung finden Sie im Artikel [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md).
 
 Für die HANA-zertifizierten VMs der Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series)- und [Edsv4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)-Familie müssen Sie für die Volumes **/hana/data** und **/hana/log** eine ANF erstellen. Oder Sie müssen nur für das Volume **/hana/log** Azure Disk Storage Ultra anstelle von Azure Storage Premium verwenden. Infolgedessen könnten die Konfigurationen für das Volume **/hana/data** in Azure Storage Premium wie folgt aussehen:
 
@@ -268,10 +281,13 @@ Bei den Empfehlungen werden die Mindestanforderungen für SAP häufig überschri
 | M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBit/s | 2\.500 | 96 GB | 250 MBit/s  | 1\.800 |
 | M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBit/s | 2\.500 | 256 GB | 250 MBit/s  | 1\.800 |
 | M64ls | 512 GB | 1\.000 MB/s | 620 GB | 400 MBit/s | 3\.500 | 256 GB | 250 MBit/s  | 1\.800 |
-| M64s | 1\.000 GiB | 1\.000 MB/s |  1\.200 GB | 600 MBit/s | 5\.000 | 512 GB | 250 MBit/s  | 2\.500 |
-| M64ms | 1\.750 GiB | 1\.000 MB/s | 2\.100 GB | 600 MBit/s | 5\.000 | 512 GB | 250 MBit/s  | 2\.500 |
-| M128s | 2\.000 GiB | 2\.000 MB/s |2\.400 GB | 750 MBit/s | 7\.000 | 512 GB | 250 MBit/s  | 2\.500 | 
-| M128ms | 3\.800 GiB | 2\.000 MB/s | 4\.800 GB | 750 MBit/s |9\.600 | 512 GB | 250 MBit/s  | 2\.500 | 
+| M32dms_v2, M32ms_v2 | 875 GiB | 500 MB/s |  1\.200 GB | 600 MBit/s | 5\.000 | 512 GB | 250 MBit/s  | 2\.500 |
+| M64s, M64ds_v2, M64s_v2 | 1.024 GiB | 1\.000 MB/s |  1\.200 GB | 600 MBit/s | 5\.000 | 512 GB | 250 MBit/s  | 2\.500 |
+| M64ms, M64dms_v2, M64ms_v2 | 1\.792 GiB | 1\.000 MB/s | 2\.100 GB | 600 MBit/s | 5\.000 | 512 GB | 250 MBit/s  | 2\.500 |
+| M128s, M128ds_v2, M128s_v2 | 2.048 GiB | 2\.000 MB/s |2\.400 GB | 750 MBit/s | 7\.000 | 512 GB | 250 MBit/s  | 2\.500 |
+| M192ds_v2, M192s_v2 | 2.048 GiB | 2\.000 MB/s |2\.400 GB | 750 MBit/s | 7\.000 | 512 GB | 250 MBit/s  | 2\.500 | 
+| M128ms, M128dms_v2, M128ms_v2 | 3\.892 GiB | 2\.000 MB/s | 4\.800 GB | 750 MBit/s |9\.600 | 512 GB | 250 MBit/s  | 2\.500 | 
+| M192dms_v2, M192ms_v2 | 4\.096 GiB | 2\.000 MB/s | 4\.800 GB | 750 MBit/s |9\.600 | 512 GB | 250 MBit/s  | 2\.500 | 
 | M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 3\.500 GB | 750 MBit/s | 7\.000 | 512 GB | 250 MBit/s  | 2\.500 | 
 | M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 7\.200 GB | 750 MBit/s | 14\.400 | 512 GB | 250 MBit/s  | 2\.500 | 
 | M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 7\.200 GB | 1\.000 MBit/s | 14\.400 | 512 GB | 400 MBit/s  | 4\.000 | 
@@ -308,11 +324,14 @@ Eine kostengünstigere Alternative für derartige Konfigurationen könnte wie fo
 | E64v3 | 432 GiB | 1\.200 MB/s | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Erzielt keine Speicherlatenz unter 1 ms<sup>1</sup> |
 | E64ds_v4 | 504 GiB | 1200 MB/s |  7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Erzielt keine Speicherlatenz unter 1 ms<sup>1</sup> |
 | M64ls | 512 GB | 1\.000 MB/s | 7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
-| M64s | 1\.000 GiB | 1\.000 MB/s | 7 x P15 | 1 × E30 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
-| M64ms | 1\.750 GiB | 1\.000 MB/s | 6 x P20 | 1 × E30 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
-| M128s | 2\.000 GiB | 2\.000 MB/s |6 x P20 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
+| M32dms_v2, M32ms_v2 | 875 GiB | 500 MB/s | 6 x P15 | 1 × E30 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 5.000<sup>2</sup> |
+| M64s, M64ds_v2, M64s_v2 | 1.024 GiB | 1\.000 MB/s | 7 x P15 | 1 × E30 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
+| M64ms, M64dms_v2, M64ms_v2| 1\.792 GiB | 1\.000 MB/s | 6 x P20 | 1 × E30 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
+| M128s, M128ds_v2, M128s_v2 | 2.048 GiB | 2\.000 MB/s |6 x P20 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
+| M192ds_v2, M192s_v2 | 2.048 GiB | 2\.000 MB/s |6 x P20 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
+| M128ms, M128dms_v2, M128ms_v2  | 3\.800 GiB | 2\.000 MB/s | 5 x P30 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
+| M192dms_v2, M192ms_v2  | 4\.096 GiB | 2\.000 MB/s | 5 x P30 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
 | M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 4 x P30 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
-| M128ms | 3\.800 GiB | 2\.000 MB/s | 5 x P30 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
 | M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 4 x P40 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
 | M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 4 x P40 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
 | M416ms_v2 | 11400 GiB | 2\.000 MB/s | 7 x P40 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |

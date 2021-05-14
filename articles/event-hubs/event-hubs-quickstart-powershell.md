@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen eines Event Hubs mithilfe von PowerShell – Azu
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe von Azure PowerShell einen Event Hub erstellen und anschließend mithilfe des .NET Standard SDK Ereignisse senden und empfangen.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c81024a9195e463eeaaf384d5cbbd1e0054c485
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be2761bedd3198d25cb279e6a8ff188db6a51de2
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88933952"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873755"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Schnellstart: Erstellen eines Event Hubs mithilfe von Azure PowerShell
 
@@ -24,7 +24,7 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
 
 - Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen][], bevor Sie beginnen.
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
-- [.NET Standard SDK](https://www.microsoft.com/net/download/windows), Version 2.0 oder höher.
+- [.NET Core SDK](https://dotnet.microsoft.com/download) Version 2.0 oder höher
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -48,7 +48,7 @@ Nachdem die Ressourcengruppe vorhanden ist, können Sie darin einen Event Hubs-N
 New-AzEventHubNamespace -ResourceGroupName myResourceGroup -NamespaceName namespace_name -Location eastus
 ```
 
-## <a name="create-an-event-hub"></a>Erstellen einer Event Hub-Instanz
+## <a name="create-an-event-hub"></a>Erstellen eines Ereignis-Hubs
 
 Nachdem Sie nun über einen Event Hubs-Namespace verfügen, können Sie darin einen Event Hub erstellen:  
 Der zulässige Zeitraum für `MessageRetentionInDays` beträgt ein bis sieben Tage.

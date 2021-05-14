@@ -1,14 +1,14 @@
 ---
 title: Verwalten des Agents für Azure Arc-fähige Server
 description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server ausführen.
-ms.date: 02/10/2021
+ms.date: 04/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 36ae081f939cbf865db7755a2f766a7ccd87d619
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25cd997bc1b90da07fd9c463f0097c7bdf53b885
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587619"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076615"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -181,6 +181,8 @@ Das Azcmagent-Tool (Azcmagent.exe) wird verwendet, um den Connected Machine-Agen
 * **Logs:** Hiermit wird eine ZIP-Datei im aktuellen Verzeichnis erstellt, die Protokolle enthält, die Sie bei der Problembehandlung unterstützen.
 
 * **Version:** Hiermit wird die Version des Connected Machine-Agents angezeigt.
+
+* **-useStderr** - Leitet die Fehler- und ausführliche Ausgabe auf stderr. Verwenden Sie den Parameter `-json`, um die Ergebnisse im JSON-Format auszugeben.
 
 * **-h oder -help**: Zeigt verfügbare Befehlszeilenparameter an.
 

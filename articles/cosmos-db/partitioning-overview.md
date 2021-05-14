@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2021
-ms.openlocfilehash: ab1b7028ce5f1afef861e696c98f25b56e78ef36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 099c65143f29f4fdf341b52e5d80731f1bdb0808
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772466"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031000"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionierung und horizontale Skalierung in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,9 +26,9 @@ In diesem Artikel wird die Beziehung zwischen logischen und physischen Partition
 
 ## <a name="logical-partitions"></a>Logische Partitionen
 
-Eine logische Partition besteht aus einer Gruppe von Elementen mit demselben Partitionsschlüssel. Beispielsweise enthalten alle Elemente in einem Container mit Daten über Nahrungsmittel eine `foodGroup`-Eigenschaft. Sie können `foodGroup` als Partitionsschlüssel für den Container verwenden. Elementgruppen mit bestimmten Werten für `foodGroup`, z.B. `Beef Products`, `Baked Products` und `Sausages and Luncheon Meats`, bilden eindeutige logische Partitionen. Sie müssen sich keine Gedanken über das Löschen einer logischen Partition machen, wenn die zugrunde liegenden Daten gelöscht werden.
+Eine logische Partition besteht aus einer Gruppe von Elementen mit demselben Partitionsschlüssel. Beispielsweise enthalten alle Elemente in einem Container mit Daten über Nahrungsmittel eine `foodGroup`-Eigenschaft. Sie können `foodGroup` als Partitionsschlüssel für den Container verwenden. Elementgruppen mit bestimmten Werten für `foodGroup`, z.B. `Beef Products`, `Baked Products` und `Sausages and Luncheon Meats`, bilden eindeutige logische Partitionen.
 
-Eine logische Partition definiert auch den Bereich für Datenbanktransaktionen. Sie können Elemente in einer logischen Partition mithilfe einer [Transaktion mit Momentaufnahmeisolation](database-transactions-optimistic-concurrency.md) aktualisieren. Wenn einem Container neue Elemente hinzugefügt werden, werden neue logische Partitionen transparent vom System erstellt.
+Eine logische Partition definiert auch den Bereich für Datenbanktransaktionen. Sie können Elemente in einer logischen Partition mithilfe einer [Transaktion mit Momentaufnahmeisolation](database-transactions-optimistic-concurrency.md) aktualisieren. Wenn einem Container neue Elemente hinzugefügt werden, werden neue logische Partitionen transparent vom System erstellt. Sie müssen sich keine Gedanken über das Löschen einer logischen Partition machen, wenn die zugrunde liegenden Daten gelöscht werden.
 
 Es besteht keine Beschränkung für die Anzahl von logischen Partitionen in Ihrem Container. Jede logische Partition kann bis zu 20 GB Daten speichern. Durch eine sinnvolle Auswahl des Partitionsschlüssels ergeben sich viele mögliche Werte. Beispielsweise können in einem Container, in dem alle Elemente eine `foodGroup`-Eigenschaft aufweisen, die Daten innerhalb der logischen Partition `Beef Products` auf bis zu 20 GB anwachsen. Durch [Auswählen eines Partitionsschlüssels](#choose-partitionkey) mit einer Vielzahl möglicher Werte können Sie sicherstellen, dass der Container skaliert werden kann.
 
@@ -38,7 +38,8 @@ Ein Container wird skaliert, indem Daten und Durchsatz auf physische Partitionen
 
 Die Anzahl der physischen Partitionen in Ihrem Container hängt von folgenden Faktoren ab:
 
-* Der Menge des bereitgestellten Durchsatzes (jede einzelne physische Partition kann einen Durchsatz von bis zu 10.000 Anforderungseinheiten pro Sekunde bereitstellen)
+* Der Menge des bereitgestellten Durchsatzes (jede einzelne physische Partition kann einen Durchsatz von bis zu 10.000 Anforderungseinheiten pro Sekunde bereitstellen) Die Beschränkung auf 10.000 RU/s für physische Partitionen bedeutet, dass für logische Partitionen ebenfalls eine Begrenzung auf 10.000 RU/s besteht, da jede logische Partition nur einer physischen Partition zugeordnet ist.
+
 * Dem gesamten Datenspeicher (jede einzelne physische Partition kann bis zu 50 GB Daten speichern)
 
 > [!NOTE]

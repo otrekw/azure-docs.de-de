@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 1/13/2021
-ms.openlocfilehash: e0982b4a43a931552574e447d5639d3fa92402d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 3/31/2021
+ms.openlocfilehash: a32c839479b71f09663cc80f5b1a1b2af260ba0a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773770"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124759"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 
@@ -229,8 +229,8 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 | Pools für elastische Datenbanken |  Pools für elastische Datenbanken werden mit Hyperscale derzeit nicht unterstützt.|
 | Migration zu „Hyperscale“ ist derzeit ein unidirektionaler Vorgang | Nach der Migration einer Datenbank zu Hyperscale kann sie nicht direkt zu einer anderen Dienstebene migriert werden. Derzeit besteht die einzige Möglichkeit zum Migrieren einer Datenbank aus Hyperscale zu Nicht-Hyperscale darin, sie mithilfe einer BACPAC-Datei oder anderer Datenverschiebungstechnologien (Massenkopieren, Azure Data Factory, Azure Databricks, SSIS usw.) zu exportieren/importieren. Der BACPAC-Export/-Import über das Azure-Portal, über PowerShell mithilfe von [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) oder [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport), über die Azure-Befehlszeilenschnittstelle mithilfe von [az sql db export](/cli/azure/sql/db#az_sql_db_export) oder [az sql db import](/cli/azure/sql/db#az_sql_db_import) sowie über die [REST-API](/rest/api/sql/) wird nicht unterstützt. Der BACPAC-Import/-Export für kleinere Hyperscale-Datenbanken (bis zu 200 GB) wird über SSMS und [SqlPackage](/sql/tools/sqlpackage) Version 18.4 und höher unterstützt. Bei größeren Datenbanken kann der BACPAC-Export/-Import sehr lange dauern und aus verschiedenen Gründen zu Fehlern führen.|
 | Migration von Datenbanken mit In-Memory-OLTP-Objekten | Hyperscale unterstützt eine Teilmenge von In-Memory-OLTP-Objekten, einschließlich speicheroptimierter Tabellentypen, Tabellenvariablen und systemintern kompilierter Module. Wenn aber In-Memory-OLTP-Objekte von beliebiger Art in der gerade migrierten Datenbank vorhanden sind, wird die Migration von Premium- und unternehmenskritischen Dienstebenen zu Hyperscale nicht unterstützt. Für die Migration solch einer Datenbank zu Hyperscale müssen alle In-Memory-OLTP-Objekte und deren Abhängigkeiten gelöscht werden. Nachdem die Datenbank migriert wurde, können diese Objekte neu erstellt werden. Speicheroptimierte dauerhafte und nicht dauerhafte Tabellen werden zurzeit in Hyperscale nicht unterstützt und müssen in Datenträgertabellen geändert werden.|
-| Georeplikation  | Noch ist es nicht möglich, eine Georeplikation für Hyperscale in Azure SQL-Datenbank zu konfigurieren. |
-| Datenbankkopie | Datenbankkopie auf Hyperscale befindet sich jetzt in der öffentlichen Vorschau (Public Preview). |
+| Georeplikation  | Die [Geo-Replikation](active-geo-replication-overview.md) auf Hyperscale ist jetzt in der öffentlichen Vorschau. |
+| Datenbankkopie | Die [Datenbankkopie](database-copy.md) auf Hyperscale ist jetzt in der öffentlichen Vorschau (Public Preview). |
 | Intelligente Datenbankfeatures | Mit Ausnahme der Option „Plan erzwingen“ werden alle anderen Optionen zur automatischen Optimierung für Hyperscale noch nicht unterstützt. Optionen scheinen möglicherweise aktiviert zu sein, es erfolgen jedoch keine Empfehlungen oder Aktionen. |
 | Statistik zur Abfrageleistung | Die Statistik zur Abfrageleistung wird derzeit nicht für Hyperscale-Datenbanken unterstützt. |
 | Verkleinern der Datenbank | DBCC SHRINKDATABASE und DBCC SHRINKFILE werden derzeit für Hyperscale-Datenbanken nicht unterstützt. |
@@ -238,7 +238,7 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Häufig gestellte Fragen zu diesem Thema finden Sie unter [Häufig gestellte Fragen zu Hyperscale](service-tier-hyperscale-frequently-asked-questions-faq.md).
+- Häufig gestellte Fragen zu diesem Thema finden Sie unter [Häufig gestellte Fragen zu Hyperscale](service-tier-hyperscale-frequently-asked-questions-faq.yml).
 - Informationen zu Dienstebenen finden Sie unter [Dienstebenen](purchasing-models.md).
 - Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits auf einem Server](resource-limits-logical-server.md).
 - Informationen zu Einschränkungen des Kaufmodells für eine Einzeldatenbank finden Sie unter [Limits des vCore-basierten Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank](resource-limits-vcore-single-databases.md).

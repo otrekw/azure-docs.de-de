@@ -1,20 +1,21 @@
 ---
 title: Was sind Azure Arc-fähige Datendienste?
 description: Bietet eine Einführung in Azure Arc-fähige Datendienste
+ms.custom: references_regions
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 09/22/2020
+ms.date: 03/31/2021
 ms.topic: overview
-ms.openlocfilehash: ef16a4c0b6ea40fb4934307916f1fe79ccea72f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d866dcb5b2a0be9e6468b3d40258e37ac93834e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97609138"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107716095"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Was sind Azure Arc-fähige Datendienste (Vorschauversion)?
 
@@ -46,6 +47,16 @@ Mit vertrauten Tools wie dem Azure-Portal, Azure Data Studio und der [!INCLUDE [
 ## <a name="disconnected-scenario-support"></a>Unterstützung für nicht verbundenes Szenario
 
 Viele Dienste wie die Self-Service-Bereitstellung, automatisierte Sicherungen/Wiederherstellungen und die Überwachung können lokal in Ihrer Infrastruktur mit oder ohne direkte Verbindung mit Azure ausgeführt werden. Wenn Sie eine direkte Verbindung mit Azure herstellen, können Sie zusätzliche Optionen für die Integration in andere Azure-Dienste wie Azure Monitor nutzen und das Azure-Portal und Azure Resource Manager-APIs an jedem beliebigen Ort auf der Welt zur Verwaltung Ihrer Azure Arc-fähigen Datendienste verwenden.
+
+## <a name="supported-regions"></a>Unterstützte Regionen
+
+In der folgenden Tabelle werden die Szenarien beschrieben, die derzeit für Arc-fähige Datendienste unterstützt werden:
+
+|Azure-Regionen  |Direkter Konnektivitätsmodus  |Indirekter Konnektivitätsmodus  |
+|---------|---------|---------|
+|East US|Verfügbar|Verfügbar
+|Europa, Westen |Verfügbar |Verfügbar
+|Nordeuropa|Verfügbar|Verfügbar
 
 ## <a name="next-steps"></a>Nächste Schritte
 

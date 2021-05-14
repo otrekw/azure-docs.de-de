@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: e7ddeaf1273a9e3b5608336b24c07fad3c3f4525
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f9ddc35aeff63c164c4e8dda0d08f6075be40460
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031037"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107948903"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Erstellen von benutzerdefinierten Feldern in einem Log Analytics-Arbeitsbereich in Azure Monitor (Vorschauversion)
 
@@ -45,7 +45,7 @@ Als Erstes müssen die Datensätze angegeben werden, die über das benutzerdefin
 
 1. Wechseln Sie zu **Protokolle**, und verwenden Sie eine [Abfrage zum Abrufen der Datensätze](./log-query-overview.md), die über das benutzerdefinierte Feld verfügen sollen.
 2. Wählen Sie einen Datensatz aus, der Log Analytics als Modell für die Extraktion von Daten zur Auffüllung des benutzerdefinierten Felds dienen soll.  Nachdem Sie die Daten angegeben haben, die aus diesem Datensatz extrahiert werden sollen, ermittelt Log Analytics auf der Grundlage dieser Informationen die Logik, mit der das benutzerdefinierte Felds für alle ähnlichen Datensätze aufgefüllt werden kann.
-3. Erweitern Sie die Datensatzeigenschaften, klicken Sie auf die Auslassungspunkte links neben der oberen Eigenschaft des Datensatzes, und wählen Sie **Felder aus „ “ extrahieren** aus.
+3. Erweitern Sie die Datensatzeigenschaften, klicken Sie auf die Auslassungspunkte links neben der oberen Eigenschaft des Datensatzes, und wählen Sie **Felder aus** extrahieren aus.
 4. Der **Feldextraktions-Assistent** wird geöffnet, und der ausgewählte Datensatz wird in der Spalte **Hauptbeispiel** angezeigt.  Das benutzerdefinierte Feld wird für Datensätze mit den gleichen Werten in den ausgewählten Eigenschaften definiert.  
 5. Falls die Auswahl noch nicht ganz Ihren Vorstellungen entspricht, können Sie weitere Felder auswählen, um die Kriterien einzugrenzen.  Wenn Sie die Feldwerte für die Kriterien ändern möchten, müssen Sie den Vorgang abbrechen und einen anderen Datensatz auswählen, der den gewünschten Kriterien entspricht.
 

@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 455f1f3e1c8181646fbe165d0f1aea6a2fb2fb13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b0cf04adbf3da1f02e9f18b5e3c20760f9dbf53
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92150696"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147191"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Geräteauthentifizierung mit X.509-Zertifikaten
 
@@ -68,13 +68,13 @@ Im Uploadprozess wird eine Datei hochgeladen, die Ihr Zertifikat enthält.  Dies
 
 Der Eigentumsnachweisschritt ist mit einer kryptografischen Anforderung und einem Antwortprozess zwischen Ihnen und IoT Hub verbunden.  Im Hinblick auf die Tatsache, dass digitale Zertifikatinhalte öffentlich und daher anfällig gegenüber Lauschangriffen sind, möchte IoT Hub sicherstellen, dass Sie das CA-Zertifikat tatsächlich besitzen.  Dazu wird eine zufällige Anforderung generiert, die Sie mit den entsprechenden privaten Schlüssel des CA-Zertifikats signieren müssen.  Wenn Sie den privaten Schlüssel wie zuvor empfohlen geheim gehalten und geschützt haben, sind nur Sie in der Lage, diesen Schritt abzuschließen. Die Geheimhaltung privater Schlüssel ist bei dieser Methode die Quelle des Vertrauens.  Schließen Sie diesen Schritt nach Signieren der Anforderung ab, indem Sie eine Datei mit den Ergebnissen hochladen.
 
-Hier erfahren Sie, wie Sie [Ihr CA-Zertifikat registrieren](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub).
+Hier erfahren Sie, wie Sie [Ihr CA-Zertifikat registrieren](./tutorial-x509-scripts.md).
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>Erstellen eines Geräts auf IoT Hub
 
 Um einen Identitätswechsel des Geräts auszuschließen, müssen Sie IoT Hub mitteilen, welche Geräte zu erwarten sind.  Hierzu erstellen Sie einen Geräteeintrag in der Geräteregistrierung von IoT Hub.  Dieser Vorgang ist bei Verwendung von [Device Provisioning Service](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) von IoT Hub automatisiert. 
 
-Hier erfahren Sie, wie Sie [ein Gerät in IoT Hub manuell erstellen](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub).
+Hier erfahren Sie, wie Sie [ein Gerät in IoT Hub manuell erstellen](./tutorial-x509-scripts.md).
 
 Erstellen eines X.509-Geräts für Ihren IoT Hub
 
@@ -84,7 +84,7 @@ Wenn das X.509-CA-Zertifikat registriert ist und die Geräte in einer Zertifikat
 
 Eine erfolgreiche Geräteverbindung mit IoT Hub schließt den Authentifizierungsprozess ab und weist auch auf eine ordnungsgemäße Einrichtung hin.
 
-Hier erfahren Sie, wie Sie [diesen Schritt der Geräteverbindung](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates) abschließen.
+Hier erfahren Sie, wie Sie [diesen Schritt der Geräteverbindung](./tutorial-x509-scripts.md) abschließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

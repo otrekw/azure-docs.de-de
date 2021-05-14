@@ -9,13 +9,13 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
-ms.date: 10/02/2020
-ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: de4d934144d6721db8c00d7199061842e518e44f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521338"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031068"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
 
@@ -28,49 +28,62 @@ In diesem Abschnitt werden alle automatisch erfassten Plattformmetriken aufgefü
 **Modell**
 
 | Metrik | Einheit | BESCHREIBUNG |
-| ----- | ----- | ----- |
-| Model deploy failed (Fehler bei der Modellimplementierung) | Anzahl | Die Anzahl der fehlerhaften Modellimplementierungen |
-| Model deploy started (Gestartete Modellimplementierungen) | Anzahl | Die Anzahl der gestarteten Modellimplementierungen |
-| Model deploy succeeded (Erfolgreiche Modellimplementierungen) | Anzahl | Die Anzahl der erfolgreichen Modellimplementierungen |
-| Model register failed (Fehler bei der Modellregistrierung) | Anzahl | Die Anzahl der fehlerhaften Modellregistrierungen |
-| Model register succeeded (Erfolgreiche Modellregistrierungen) | Anzahl | Die Anzahl der erfolgreichen Modellregistrierungen |
+|--|--|--|
+| Erfolgreiche Modellregistrierungen | Anzahl | Anzahl der erfolgreichen Modellregistrierungen in diesem Arbeitsbereich |
+| Fehler bei der Modellregistrierung | Anzahl | Anzahl der fehlerhaften Modellregistrierungen in diesem Arbeitsbereich |
+| Gestartete Modellimplementierungen | Anzahl | Anzahl der gestarteten Modellimplementierungen in diesem Arbeitsbereich |
+| Erfolgreiche Modellimplementierungen | Anzahl | Anzahl der erfolgreichen Modellimplementierungen in diesem Arbeitsbereich |
+| Model Deploy Failed (Fehler bei der Modellimplementierung) | Anzahl | Anzahl der fehlerhaften Modellimplementierungen in diesem Arbeitsbereich |
 
 **Kontingent**
 
 Kontingentinformationen gelten nur für Azure Machine Learning Compute.
 
 | Metrik | Einheit | BESCHREIBUNG |
-| ----- | ----- | ----- |
-| Active cores (Aktive Kerne) | Anzahl | Die Anzahl der aktiven Compute-Kerne |
-| Active nodes (Aktive Knoten) | Anzahl | Die Anzahl der aktiven Knoten |
-| Idle cores (Kerne im Leerlauf) | Anzahl | Die Anzahl der Compute-Kerne im Leerlauf |
-| Idle nodes (Knoten im Leerlauf) | Anzahl | Die Anzahl der Serverknoten (Compute-Knoten) im Leerlauf |
-| Leaving cores (Verbleibende Kerne) | Anzahl | Die Anzahl der verbleibenden Kerne |
-| Leaving nodes (Verbleibende Knoten) | Anzahl | Die Anzahl der verbleibenden Knoten |
-| Preempted cores (Kerne mit präemptivem Multitasking) | Anzahl | Die Anzahl der Kerne mit präemptivem Multitasking |
-| Vorzeitig entfernte Knoten | Anzahl | Die Anzahl der Knoten mit präemptivem Multitasking |
-| Quota utilization percentage (Prozentsatz der Kontingentnutzung) | Percent | Der Prozentsatz, mit dem das Kontingent genutzt wird |
-| Total cores (Kerne gesamt) | Anzahl | Die Gesamtzahl der Kerne |
-| Total nodes (Knoten gesamt) | Anzahl | Die Gesamtzahl der Knoten |
-| Unusable cores (Nicht verwendbare Kerne) | Anzahl | Die Anzahl der nicht verwendbaren Kerne |
-| Unusable nodes (Nicht verwendbare Knoten) | Anzahl | Die Anzahl der nicht verwendbaren Knoten |
+|--|--|--|
+| Knoten insgesamt | Anzahl | Gesamtanzahl von Knoten. Diese Summe umfasst Teile von aktiven Knoten, Leerlaufknoten, nicht verwendbaren Knoten, vorzeitig entfernten Knoten, ausscheidenden Knoten. |
+| Aktive Knoten | Anzahl | Anzahl der aktiven Knoten. Die Knoten, die einen Auftrag aktiv ausführen. |
+| Knoten im Leerlauf | Anzahl | Anzahl von Knoten im Leerlauf. Knoten im Leerlauf sind die Knoten, auf denen keine Aufträge ausgeführt werden, die aber einen neuen Auftrag bei Verfügbarkeit akzeptieren können. |
+| Unusable Nodes (Nicht verwendbare Knoten) | Anzahl | Anzahl nicht verwendbarer Knoten. Nicht verwendbare Knoten sind aufgrund eines nicht auflösbaren Problems nicht funktionsfähig. Azure recycelt diese Knoten. |
+| Vorzeitig entfernte Knoten | Anzahl | Anzahl der vorzeitig entfernten Knoten. Dabei handelt es sich um die Knoten mit niedriger Priorität, die aus dem Pool verfügbarer Knoten entfernt werden. |
+| Ausscheidende Knoten | Anzahl | Anzahl der ausscheidenden Knoten. Ausscheidende Knoten sind die Knoten, auf denen die Verarbeitung eines Auftrags gerade abgeschlossen wurde und die in den Leerlaufzustand wechseln. |
+| Kerne insgesamt | Anzahl | Gesamtanzahl von Kernen |
+| Aktive Kerne | Anzahl | Gesamtanzahl der aktiven Kerne |
+| Kerne im Leerlauf | Anzahl | Gesamtanzahl der Kerne im Leerlauf |
+| Nicht verwendbare Kerne | Anzahl | Anzahl der nicht verwendbaren Kerne |
+| Vorzeitig entfernte Kerne | Anzahl | Anzahl der vorzeitig entfernten Kerne |
+| Ausscheidende Kerne | Anzahl | Anzahl der ausscheidenden Kerne |
+| Quota Utilization Percentage (Prozentsatz der Kontingentnutzung) | Anzahl | Prozentualer Anteil der genutzten Kontingente |
 
 **Ressource**
 
+| Metrik| Einheit | BESCHREIBUNG |
+|--|--|--|
+| CpuUtilization | Anzahl | Prozentsatz der Auslastung auf einem CPU-Knoten. Die Auslastung wird in Intervallen von einer Minute gemeldet. |
+| GpuUtilization | Anzahl | Prozentsatz der Auslastung auf einem GPU-Knoten. Die Auslastung wird in Intervallen von einer Minute gemeldet. |
+| GpuMemoryUtilization | Anzahl | Arbeitsspeicherauslastung auf einem GPU-Knoten in Prozent – Die Auslastung wird in Intervallen von einer Minute gemeldet. |
+| GpuEnergyJoules | Anzahl | Intervallenergie in Joule auf einem GPU-Knoten. Energie wird in Intervallen von einer Minute gemeldet. |
+
+**Run**
+
+Informationen zu Trainingsausführungen für den Arbeitsbereich.
+
 | Metrik | Einheit | BESCHREIBUNG |
-| ----- | ----- | ----- |
-| CpuUtilization | Percent | Wie viel Prozent der CPU-Auslastung für einen bestimmten Knoten während eines Laufs/eines Auftrags verwendet wurden. Diese Metrik wird nur veröffentlicht, wenn ein Auftrag auf einem Knoten ausgeführt wird. Ein Auftrag kann einen oder mehrere Knoten verwenden. Diese Metrik wird pro Knoten veröffentlicht. |
-| GpuUtilization | Percent | Gibt an, welcher Prozentsatz der GPU-Auslastung für einen bestimmten Knoten während eines Laufs/eines Auftrags verwendet wurde. Ein Knoten kann eine oder mehrere GPUs aufweisen. Diese Metrik wird pro GPU pro Knoten veröffentlicht. |
-
-**Ausführen**
-
-Informationen zu Trainingsausführungen
-
-| Metrik | Einheit | BESCHREIBUNG |
-| ----- | ----- | ----- |
-| Completed runs (Abgeschlossene Ausführungen) | Anzahl | Die Anzahl der abgeschlossenen Ausführungen |
-| Failed runs (Ausführungen mit Fehlern) | Anzahl | Die Anzahl der Ausführungen mit Fehlern |
-| Started runs (Gestartete Ausführungen) | Anzahl | Die Anzahl der gestarteten Ausführungen |
+|--|--|--|
+| Abgebrochene Ausführungen | Anzahl | Anzahl abgebrochener Ausführungen für diesen Arbeitsbereich. Die Anzahl wird aktualisiert, wenn eine Ausführung erfolgreich abgebrochen wurde. |
+| Ausführungen mit angefordertem Abbruch | Anzahl | Anzahl von Ausführungen, bei denen ein Abbruch für diesen Arbeitsbereich angefordert wurde – die Anzahl wird aktualisiert, wenn eine Abbruchanforderung für eine Ausführung empfangen wurde. |
+| Abgeschlossene Ausführungen | Anzahl | Anzahl erfolgreich abgeschlossener Ausführungen für diesen Arbeitsbereich – die Anzahl wird aktualisiert, wenn eine Ausführung abgeschlossen und die Ausgabe erfasst wurde. |
+| Fehlerhafte Ausführungen | Anzahl | Anzahl fehlerhafter Ausführungen für diesen Arbeitsbereich – die Anzahl wird aktualisiert, wenn bei einer Ausführung ein Fehler auftritt. |
+| Ausführungen, die abgeschlossen werden | Anzahl | Anzahl von Ausführungen, die für diesen Arbeitsbereich abgeschlossen wurden – die Anzahl wird aktualisiert, wenn eine Ausführung abgeschlossen wurde, aber die Ausgabe noch erfasst wird. | 
+| Ausführungen ohne Rückmeldung | Anzahl | Anzahl nicht reagierender Ausführungen für diesen Arbeitsbereich – die Anzahl wird aktualisiert, wenn eine Ausführung zum Status „Keine Rückmeldung“ übergeht. |
+| Nicht gestartete Ausführungen | Anzahl | Anzahl von Ausführungen mit Status „Nicht gestartet“ für diesen Arbeitsbereich – die Anzahl wird aktualisiert, wenn eine Anforderung zur Initiierung einer Ausführung eingeht, aber die Ausführungsinformationen nicht aufgefüllt wurden. |
+| Ausführungen in Vorbereitung | Anzahl | Anzahl von Ausführungen, die für diesen Arbeitsbereich vorbereitet werden – die Anzahl wird aktualisiert, wenn eine Ausführung in den Status „Wird vorbereitet“ übergeht, während die Ausführungsumgebung vorbereitet wird. |
+| Ausführungen in Bereitstellung | Anzahl | Anzahl von Ausführungen, die sich für diesen Arbeitsbereich in Bereitstellung befinden – die Anzahl wird aktualisiert, wenn eine Ausführung darauf wartet, dass ein Computeziel erstellt oder bereitgestellt wird. |
+| Ausführungen in Warteschlange | Anzahl | Anzahl von Ausführungen, die sich für diesen Arbeitsbereich in der Warteschlange befinden – die Anzahl wird aktualisiert, wenn eine Ausführung im Computeziel in die Warteschlange eingereiht wird. Dieser Fall kann eintreten, wenn darauf gewartet wird, dass erforderliche Computeknoten bereit sind. |
+| Gestartete Ausführungen | Anzahl | Anzahl von Ausführungen für diesen Arbeitsbereich – die Anzahl wird aktualisiert, wenn eine Ausführung mit den erforderlichen Ressourcen gestartet wird. |
+| Ausführungen, die gestartet werden | Anzahl | Anzahl gestarteter Ausführungen für diesen Arbeitsbereich – Die Anzahl wird aktualisiert, nachdem eine Anforderung zur Initiierung der Ausführung eingegangen ist und die Ausführungsinformationen (z. B. die Ausführungs-ID) aufgefüllt wurden. |
+| Errors | Anzahl | Anzahl von Ausführungsfehlern in diesem Arbeitsbereich – die Anzahl wird aktualisiert, wenn bei der Ausführung ein Fehler auftritt. |
+| Warnungen | Anzahl | Anzahl von Ausführungswarnungen in diesem Arbeitsbereich – die Anzahl wird aktualisiert, wenn bei einer Ausführung eine Warnung auftritt. |
 
 ## <a name="metric-dimensions"></a>Metrikdimensionen
 

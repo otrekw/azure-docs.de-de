@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 14f17c6716fe98a11d03e8d1021bcdb1058fe671
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73a9b27c7b9119ee49fc451ca0a1c03d8db3db0e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94968110"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868625"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Schnellstart: Registrieren eines TPM-Geräts für den IoT Hub Device Provisioning-Dienst per C#-Dienst-SDK
 
@@ -26,7 +26,7 @@ In diesem Artikel wird veranschaulicht, wie Sie programmgesteuert eine individue
 
 1. Stellen Sie sicher, dass [Visual Studio 2019](https://www.visualstudio.com/vs/) lokal auf dem Computer installiert ist.
 
-1. Stellen Sie sicher, dass auf Ihrem Computer das [.NET Core SDK](https://www.microsoft.com/net/download/windows) installiert ist.
+1. Stellen Sie sicher, dass auf Ihrem Computer das [.NET Core SDK](https://dotnet.microsoft.com/download) installiert ist.
 
 1. Führen Sie zunächst die unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) beschriebenen Schritte aus, bevor Sie fortfahren.
 

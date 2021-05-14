@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
-ms.openlocfilehash: fbd1e1d652db3bbd91344ea828278d057baeb060
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 103a3bad91018a2a7b91cbc6a7839e8be56489ba
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368811"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741411"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Verschieben von Daten in und aus SQL Server mithilfe von Azure Data Factory
 
@@ -30,11 +30,11 @@ Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory ve
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 Sie können Daten **aus einer SQL Server-Datenbank** in die folgenden Datenspeicher kopieren:
 
-[!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sink](includes/data-factory-supported-sinks.md)]
 
 Sie können Daten aus den folgenden Datenspeichern **in eine SQL Server-Datenbank** kopieren:
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-sql-server-versions"></a>Unterstützte SQL Server-Versionen
 Dieser SQL Server-Connector unterstützt das Kopieren von Daten von den bzw. in die folgenden Versionen der lokal oder in Azure IaaS gehosteten Instanz mit SQL-Authentifizierung und Windows-Authentifizierung: SQL Server 2016, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008, SQL Server 2005.

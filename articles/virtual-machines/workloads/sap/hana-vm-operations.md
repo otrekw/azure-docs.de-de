@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c27895c5163d59ca785aa15fa3739359e5be457
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd70bccde30c2b844cfa6188a3fb06a075558a91
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666592"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142997"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure
 Dieses Dokument enthält Anleitungen für die Konfiguration der Azure-Infrastruktur und SAP HANA-Betriebssystemen, die auf nativen virtuellen Azure-Computern bereitgestellt werden. Das Dokument enthält auch Informationen zur Konfiguration für die horizontale SAP HANA-Skalierung für die M128s-VM-SKU. Dieses Dokument ist nicht als Ersatz für die SAP-Standarddokumentation gedacht, zu der folgende Inhalte gehören:
@@ -290,9 +290,9 @@ In den folgenden Abschnitten werden einige der Vorgänge beschrieben, die auszuf
 ### <a name="back-up-and-restore-operations-on-azure-vms"></a>Sicherungs- und Wiederherstellungsvorgänge auf virtuellen Azure-Computern
 In den folgenden Dokumenten ist beschrieben, wie Sie Ihre SAP HANA-Bereitstellung sichern und wiederherstellen:
 
-- [Übersicht über SAP HANA-Sicherungen](./sap-hana-backup-guide.md)
-- [SAP HANA-Sicherungen auf Dateiebene](./sap-hana-backup-file-level.md)
-- [Benchmark von SAP HANA-Speichermomentaufnahmen](./sap-hana-backup-guide.md)
+- [Übersicht über SAP HANA-Sicherungen](../../../backup/sap-hana-db-about.md)
+- [SAP HANA-Sicherungen auf Dateiebene](../../../backup/sap-hana-db-about.md)
+- [Benchmark von SAP HANA-Speichermomentaufnahmen](../../../backup/sap-hana-db-about.md)
 
 
 ### <a name="start-and-restart-vms-that-contain-sap-hana"></a>Starten und Neustarten von virtuellen Computern, die SAP HANA enthalten

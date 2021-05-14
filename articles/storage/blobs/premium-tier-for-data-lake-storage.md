@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/30/2020
 ms.author: normesta
-ms.openlocfilehash: be440407fb6f4d9715ba80c584af023a5f662394
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9ed305dbd081486f0b892fcc38ada83e9666bd9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93324214"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143339"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Premium-Tarif für Azure Data Lake Storage
 
@@ -57,7 +57,7 @@ Einige Blob Storage-Features sind möglicherweise nicht verfügbar oder werden a
 
 ## <a name="enabling-the-premium-performance-tier"></a>Aktivieren der Leistungsstufe Premium 
 
-Sie können den Tarif Premium für Azure Data Lake Storage verwenden, indem Sie ein BlockBlobStorage-Konto mit auf **Aktiviert** festgelegter Einstellung **Hierarchischer Namespace** erstellen. Eine ausführliche Anleitung finden Sie unter [Erstellen eines BlockBlobStorage-Kontos](storage-blob-create-account-block-blob.md).
+Sie können den Tarif Premium für Azure Data Lake Storage verwenden, indem Sie ein BlockBlobStorage-Konto mit auf **Aktiviert** festgelegter Einstellung **Hierarchischer Namespace** erstellen. Eine ausführliche Anleitung finden Sie unter [Erstellen eines BlockBlobStorage-Kontos](../common/storage-account-create.md).
 
 Wenn Sie das Konto erstellen, stellen Sie sicher, dass Sie die Leistungsoption **Premium** und die Kontoart **BlockBlobStorage** wählen.
 
@@ -111,4 +111,3 @@ Nutzen Sie den Tarif Premium für Azure Data Lake Storage mit Ihrem bevorzugten 
 - [Tutorial: Azure Data Lake Storage Gen2, Azure Databricks und Spark](data-lake-storage-use-databricks-spark.md) 
 - [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) HDInsight unterstützt derzeit ein Konto, das die Leistungsstufe Premium zusammen mit einem HBase-Cluster mit aktivierten beschleunigten Schreibvorgängen verwendet.
 - [Schnellstart: Erstellen eines Synapse-Arbeitsbereichs](../../synapse-analytics/quickstart-create-workspace.md)
-

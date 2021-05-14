@@ -1,17 +1,17 @@
 ---
 title: Kopieraktivität in Azure Data Factory
 description: Erfahren Sie mehr über die Kopieraktivität in Azure Data Factory. Mit der dieser Aktivität können Sie Daten aus einem unterstützten Quelldatenspeicher in einen unterstützten Senkendatenspeicher kopieren.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.author: jingwang
-ms.openlocfilehash: d52a0bba5fddaa865b8fad74b778ba7a3838b2a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: df26bdcc76b894991393019a12da71df2f893b6b
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387902"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488661"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -42,11 +42,11 @@ Um Daten aus einer Quelle in eine Senke zu kopieren, führt der Dienst, der die 
 
 ## <a name="supported-data-stores-and-formats"></a>Unterstützte Datenspeicher und Formate
 
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores.md)]
+[!INCLUDE [data-factory-v2-supported-data-stores](includes/data-factory-v2-supported-data-stores.md)]
 
 ### <a name="supported-file-formats"></a>Unterstützte Dateiformate
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Sie können die Kopieraktivität verwenden, um Dateien unverändert zwischen zwei dateibasierten Datenspeichern zu kopieren. In diesem Fall werden die Daten effizient ohne Serialisierung oder Deserialisierung kopiert. Darüber hinaus können Sie Dateien eines bestimmten Formats analysieren oder generieren. Sie können beispielsweise folgende Vorgänge durchführen:
 
@@ -62,7 +62,7 @@ Der Dienst, der die Kopieraktivität unterstützt, ist weltweit in den Regionen 
 
 ## <a name="configuration"></a>Konfiguration
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Wenn Sie die Kopieraktivität in Azure Data Factory verwenden möchten, müssen Sie generell folgende Schritte ausführen:
 

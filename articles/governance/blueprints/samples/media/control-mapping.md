@@ -3,12 +3,12 @@ title: Steuerungen des Medien-Blaupausenbeispiels
 description: Steuerungszuordnung der Medien-Blaupausenbeispiele Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: 4c04c661d7dd8b2b07a05c20524258d6bb887e62
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f2750f4733a3a815236778c846bde4e186f30512
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376697"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161319"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Steuerungszuordnung des Medien-Blaupausenbeispiels
 
@@ -229,13 +229,13 @@ Die folgenden Zuordnungen gelten für die **Mediensteuerungen**. Über den recht
 - Hiermit überwachen Sie die Betriebssystem-Sicherheitsrisiken für Ihre VM-Skalierungsgruppen, um sie vor Angriffen zu schützen.
 
 > [!NOTE]
-> Die Verfügbarkeit spezifischer Azure Policy-Definitionen kann in Azure Government und anderen nationalen Clouds variieren. 
+> Die Verfügbarkeit spezifischer Azure Policy-Definitionen kann in Azure Government und anderen nationalen Clouds variieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie haben sich die Informationen zur Steuerungszuordnung anhand des Medien-Blaupausenbeispiels durchgelesen. Lesen Sie als Nächstes die folgenden Artikel, um sich mit der Übersicht und der Bereitstellung dieses Beispiels vertraut zu machen:
 
-> [!div class="next step action"]
+> [!div class="nextstepaction"]
 > [Medien-Blaupause – Steuerungszuordnung](./control-mapping.md)
 > [Medien-Blaupause – Bereitstellungsschritte](./deploy.md)
 

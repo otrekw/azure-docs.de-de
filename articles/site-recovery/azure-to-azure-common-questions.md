@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 11/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5309fd60640c45ade42bab4c5727cf1f0a8d9d70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd44d3361e96a22ddb70fb5568926583ac3dbb67
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025474"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107952690"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -158,7 +158,7 @@ Site Recovery kann App-konsistente Wiederherstellungspunkte mit einer Mindesthä
 
 ### <a name="can-i-enable-app-consistent-replication-for-linux-vms"></a>Kann ich die App-konsistente Replikation für Linux-VMs aktivieren?
 
-Ja. Der Mobilitäts-Agent für Linux unterstützt benutzerdefinierte Skripts für die App-Konsistenz. Der Agent verwendet ein benutzerdefiniertes Skript mit Optionen für die Vor- und Nachbearbeitung. [Weitere Informationen](site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
+Ja. Der Mobilitäts-Agent für Linux unterstützt benutzerdefinierte Skripts für die App-Konsistenz. Der Agent verwendet ein benutzerdefiniertes Skript mit Optionen für die Vor- und Nachbearbeitung. [Weitere Informationen](site-recovery-faq.yml)
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>Wie werden Wiederherstellungspunkte generiert und gespeichert?
 

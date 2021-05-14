@@ -3,14 +3,15 @@ title: Starten eines Runbooks in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie ein Runbook in Azure Automation starten.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/16/2018
+ms.date: 04/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3a08d727f5257f48ba45fc132f493d33bbb0848f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4b178ff8b667c5c1db508d8062b4cd5b53955047
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169367"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277226"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Starten eines Runbooks in Azure Automation
 
@@ -34,7 +35,7 @@ Die folgende Abbildung veranschaulicht ausführlich die Prozessschritte im Leben
 
 Wenn Sie ein Runbook über das Azure-Portal oder mit Windows PowerShell starten, wird die Anweisung über den Azure Automation-Webdienst gesendet. Dieser Dienst unterstützt keine Parameter mit komplexen Datentypen. Wenn Sie einen Wert für einen komplexen Parameter bereitstellen müssen, müssen Sie diesen inline aus einem anderen Runbook aufrufen, wie unter [Untergeordnete Runbooks in Azure Automation](automation-child-runbooks.md)beschrieben.
 
-Der Azure Automation-Webdienst bietet spezielle Funktionen für Parameter, die bestimmte Datentypen verwenden, wie in den folgenden Abschnitten beschrieben:
+Der Azure Automation-Webdienst bietet spezielle Funktionen für Parameter, die bestimmte Datentypen verwenden, wie in den folgenden Abschnitten beschrieben.
 
 ### <a name="named-values"></a>Benannte Werte
 
@@ -137,11 +138,11 @@ jsmith
 
 ## <a name="start-a-runbook-with-the-azure-portal"></a>Starten eines Runbooks mit dem Azure-Portal
 
-1. Wählen Sie im Azure-Portal die Option **Automation**, und klicken Sie auf den Namen eines Automation-Kontos.
-2. Wählen Sie im Menü „Hub“ die Option **Runbooks** aus.
-3. Wählen Sie auf der Seite „Runbook“ ein Runbook aus, und klicken Sie dann auf **Starten**.
+1. Wählen Sie im Azure-Portal die Option **Automation** aus, und wählen Sie anschließend den Namen eines Automation-Kontos aus.
+2. Wählen Sie im linken Bereich **Runbooks** aus.
+3. Wählen Sie auf der Seite **Runbook** ein Runbook aus, und klicken Sie dann auf **Starten**.
 4. Wenn das Runbook Parameter enthält, werden Sie aufgefordert, für jeden Parameter einen Wert in ein Textfeld einzugeben. Weitere Informationen zu Parametern finden Sie unter [Runbookparameter](#work-with-runbook-parameters).
-5. Im Bereich „Auftrag“ können Sie den Status des Runbookauftrags anzeigen.
+5. Im Bereich **Auftrag** können Sie den Status des Runbookauftrags anzeigen.
 
 ## <a name="start-a-runbook-with-powershell"></a>Starten eines Runbooks mit PowerShell
 

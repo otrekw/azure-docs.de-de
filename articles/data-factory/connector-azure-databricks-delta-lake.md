@@ -1,18 +1,18 @@
 ---
 title: Kopieren von Daten in und aus Azure Databricks Delta Lake
 description: Es wird beschrieben, wie Sie Daten mit einer Kopieraktivität in einer Azure Data Factory-Pipeline für Azure Databricks Delta Lake kopieren.
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/29/2021
-ms.openlocfilehash: fcf533ad95e2567e62d44d6997752df6f3145ecb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b1aa174645288f5f3024779a0e5b9e8bdbb57452
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726786"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480453"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure Databricks Delta Lake mithilfe von Azure Data Factory
 
@@ -67,7 +67,7 @@ Weitere Informationen zur Clusterkonfiguration finden Sie unter [Konfigurieren v
 
 ## <a name="get-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für einen Azure Databricks Delta Lake-Connector verwendet werden.
 
@@ -75,7 +75,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Die folgenden Eigenschaften werden für einen mit Azure Databricks Delta Lake verknüpften Dienst unterstützt.
 
-| Eigenschaft    | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft    | Beschreibung                                                  | Erforderlich |
 | :---------- | :----------------------------------------------------------- | :------- |
 | type        | Die type-Eigenschaft muss auf **AzureDatabricksDeltaLake** festgelegt werden. | Ja      |
 | Domäne      | Geben Sie die Azure Databricks-Arbeitsbereichs-URL an, z. B. `https://adb-xxxxxxxxx.xx.azuredatabricks.net`. |          |
@@ -108,7 +108,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für das Azure Databricks Delta Lake-Dataset unterstützt.
 
-| Eigenschaft  | BESCHREIBUNG                                                  | Erforderlich                    |
+| Eigenschaft  | Beschreibung                                                  | Erforderlich                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | Die „type“-Eigenschaft des Datasets muss auf **AzureDatabricksDeltaLakeDataset** festgelegt werden. | Ja                         |
 | database | Der Name der Datenbank. |Quelle: Nein, Senke: Ja  |
@@ -142,7 +142,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Beim Kopieren von Daten aus Azure Databricks Delta Lake werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt.
 
-| Eigenschaft                     | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft                     | Beschreibung                                                  | Erforderlich |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureDatabricksDeltaLakeSource** festgelegt werden. | Ja      |
 | Abfrage          | Geben Sie die SQL-Abfrage an, um Daten zu lesen. Für die Zeitreisesteuerung folgen Sie dem folgenden Muster:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | Nein       |
@@ -256,7 +256,7 @@ Um dieses Feature verwenden zu können, erstellen Sie einen [mit Azure Blob Stor
 
 Beim Kopieren von Daten in Azure Databricks Delta Lake werden die folgenden Eigenschaften im Abschnitt **sink** der Kopieraktivität unterstützt.
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | :------------ | :----------------------------------------------------------- | :------- |
 | type          | Die type-Eigenschaft der Senke der Kopieraktivität ist auf **AzureDatabricksDeltaLakeSink** festgelegt. | Ja      |
 | preCopyScript | Geben Sie eine SQL-Abfrage an, die bei jeder Ausführung von der Kopieraktivität ausgeführt werden soll, bevor Daten in die Databricks-Delta-Tabelle geschrieben werden. Sie können diese Eigenschaft verwenden, um die vorinstallierten Daten zu bereinigen oder eine „truncate table“- oder „Vacuum“-Anweisung hinzuzufügen. | Nein       |

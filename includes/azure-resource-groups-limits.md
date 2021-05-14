@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: tomfitz
-ms.openlocfilehash: 543aa50d72de5a06a9a1c7ac88ac5ecae993bc9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c29abc456c5825a2f22b20a4893bb14eb09058af
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98697902"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107984454"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -35,6 +35,8 @@ ms.locfileid: "98697902"
 | Vorlagenausdruck |24.576 Zeichen |
 | Ressourcen in exportierten Vorlagen |200 |
 | Vorlagengröße |4 MB |
-| Parameterdateigröße |64 KB |
+| Parameterdateigröße |4 MB |
 
 Sie können einige Vorlagengrenzwerte überschreiten, indem Sie eine geschachtelte Vorlage verwenden. Weitere Informationen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](../articles/azure-resource-manager/templates/linked-templates.md). Um die Anzahl von Parametern, Variablen oder Ausgaben zu reduzieren, können Sie mehrere Werte in einem Objekt kombinieren. Weitere Informationen finden Sie unter [Objekte als Parameter](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters).
+
+Bei einer Vorlagen- oder Parameterdatei mit einer Größe von weniger als 4 MB wird unter Umständen ein Fehler angezeigt, wenn die Anforderung insgesamt zu groß ist. Weitere Informationen zum Vereinfachen der Vorlage, um eine große Anforderung zu vermeiden, finden Sie unter [Beheben von Fehlern des Typs „Auftragsgröße überschritten“](../articles/azure-resource-manager/templates/error-job-size-exceeded.md).

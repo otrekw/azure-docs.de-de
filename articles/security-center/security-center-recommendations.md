@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 57760443746e111750e74ef55fc18729f6ba32c4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: da0826a349131d9d5716932abfc603be8103b788
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100337"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903540"
 ---
 # <a name="review-your-security-recommendations"></a>Überprüfen Ihrer Sicherheitsempfehlungen
 
@@ -43,7 +43,7 @@ Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche 
     1. **Aktualisierungsintervall** (sofern relevant)
     1. **Anzahl ausgenommener Ressourcen**: Wenn für diese Empfehlung Ausnahmen vorhanden sind, wird die Anzahl der ausgenommenen Ressourcen angezeigt.
     1. **Beschreibung**: Eine kurze Beschreibung des Problems
-    1. **Schritte zur Bereinigung**: Eine Beschreibung der manuellen Schritte, die erforderlich sind, um das Sicherheitsproblem für die betroffenen Ressourcen zu beheben. Für Empfehlungen unter „Schnellkorrektur“ können Sie **Korrekturlogik anzeigen** auswählen, bevor Sie die vorgeschlagene Lösung auf die Ressourcen anwenden. 
+    1. **Schritte zur Bereinigung**: Eine Beschreibung der manuellen Schritte, die erforderlich sind, um das Sicherheitsproblem für die betroffenen Ressourcen zu beheben. Für Empfehlungen mit der Option **Korrigieren**** können Sie **Korrekturlogik anzeigen** auswählen, bevor Sie die vorgeschlagene Korrektur auf die Ressourcen anwenden.
     1. **Betroffene Ressourcen**: Die Ressourcen sind in Registerkarten unterteilt:
         - **Fehlerfreie Ressourcen**: Relevante Ressourcen, die entweder nicht beeinträchtigt sind oder bei denen das Problem bereits behoben wurde.
         - **Fehlerhafte Ressourcen**: Ressourcen, die weiterhin vom identifizierten Problem betroffen sind.

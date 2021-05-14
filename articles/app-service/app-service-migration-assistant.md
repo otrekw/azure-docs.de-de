@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9eabd64abc4c8fbbc187f45ceb59ea2f786558bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8724434b4ff354a7fc9fc1ed979348ec3023af80
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937967"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209749"
 ---
 # <a name="migrate-to-azure-app-service"></a>Migrieren zu Azure App Service
 
@@ -26,4 +26,4 @@ Mit dem Azure App Service Migration Assistant können Sie schnell:
 
 Erfahren [Sie, wie Sie Web-Apps zu Azure-App-Dienst migrieren](https://www.youtube.com/watch?v=9LBUmkUhmXU).
 
-Nächster Schritt:  [Migrieren einer On-Premise-Webanwendung zu Azure App Service](https://docs.microsoft.com/learn/modules/migrate-app-service-migration-assistant/)
+Nächster Schritt:  [Migrieren einer On-Premise-Webanwendung zu Azure App Service](/learn/modules/migrate-app-service-migration-assistant/)

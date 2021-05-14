@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5b7fd8e8cd5bd3ab0f15115365ed057fc67f1204
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec48e23d2752d14b3bb77dab2625e81f8a6d0db7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604429"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292736"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Schnellstart: Hinzufügen der 1:1-Videoanruffunktion zu Ihrer App (JavaScript)
 
@@ -23,7 +23,7 @@ Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://githu
 ## <a name="prerequisites"></a>Voraussetzungen
 - Rufen Sie ein Azure-Konto mit einem aktiven Abonnement ab. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/): Active LTS- und Maintenance LTS-Versionen (8.11.1 und 10.14.1).
-- Erstellen Sie eine aktive Communication Services-Ressource. [Erstellen Sie eine Communication Services-Ressource](../create-communication-resource.md?pivots=platform-azp&tabs=windows).
+- Erstellen Sie eine aktive Communication Services-Ressource. [Erstellen Sie eine Communication Services-Ressource](../create-communication-resource.md?pivots=platform-azp&tabs=windows).
 - Erstellen Sie ein Benutzerzugriffstoken, um den Anrufclient zu instanziieren. Lernen Sie mehr über das [Erstellen und Verwalten von Benutzerzugriffstoken](../access-tokens.md?pivots=programming-language-csharp).
 
 ## <a name="setting-up"></a>Einrichten
@@ -337,7 +337,6 @@ Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- Sehen Sie sich das [Beispiel für Webanrufe](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample) an.
-- Informieren Sie sich über die [Funktionen des Calling SDK](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web).
-- Informieren Sie sich über die [Funktionsweise von Anrufen](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types).
-
+- Sehen Sie sich das [Beispiel für Webanrufe](../../samples/web-calling-sample.md) an.
+- Informieren Sie sich über die [Funktionen des Calling SDK](./calling-client-samples.md?pivots=platform-web).
+- Informieren Sie sich über die [Funktionsweise von Anrufen](../../concepts/voice-video-calling/about-call-types.md).

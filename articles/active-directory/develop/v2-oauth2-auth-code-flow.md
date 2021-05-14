@@ -13,12 +13,12 @@ ms.date: 03/29/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: caa8f4efa60f8a42856f7cd8e78edf32fce956c6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d2f4fca7f6b5fe7c6a894f4be3b27788799b422e
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937140"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108063996"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow
 
@@ -68,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Klicken Sie auf den Link unten, um diese Anforderung auszuführen. Nach der Anmeldung sollte der Browser mit einem `code` in der Adressleiste zu `https://localhost/myapp/` umgeleitet werden.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Parameter    | Erforderlich/optional | BESCHREIBUNG |
+| Parameter    | Erforderlich/optional | Beschreibung |
 |--------------|-------------|--------------|
 | `tenant`    | required    | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | required    | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde.  |
@@ -157,7 +157,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &code_challenge_method=S256
 ```
 
-| Aktualisierte Parameter | Erforderlich/optional | BESCHREIBUNG |
+| Aktualisierte Parameter | Erforderlich/optional | Beschreibung |
 |---------------|-------------|--------------|
 |`response_type`| Erforderlich | Das Hinzufügen von `id_token` informiert den Server darüber, dass die Anwendung in der Antwort vom `/authorize`-Endpunkt ein ID-Token erwartet.  |
 |`scope`| Erforderlich | Für ID-Token ist eine Anpassung erforderlich, um die ID-Tokenbereiche `openid` und optional `profile` und `email` einzufügen. |
@@ -183,7 +183,11 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 | `id_token` | Ein ID-Token für den Benutzer wird über eine *implizite Genehmigung* ausgestellt. Es enthält einen speziellen `c_hash`-Anspruch: den Hash des `code` in derselben Anforderung. |
 | `state` | Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die App sollte bestätigen, dass die state-Werte in der Anforderung und der Antwort identisch sind. |
 
-## <a name="request-an-access-token"></a>Anfordern eines Zugriffstokens
+## <a name="redeem-a-code-for-an-access-token"></a>Einlösen eines Codes für ein Zugriffstoken
+
+Alle vertraulichen Clients haben die Wahl zwischen Clientgeheimnissen (symmetrische freigegebene Geheimnisse, die von Microsoft Identity Platform generiert werden) und [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md)(asymmetrische Schlüssel, die vom Entwickler hochgeladen wurden).  Für optimale Sicherheit wird die Verwendung von Zertifikatanmeldeinformationen empfohlen. Öffentliche Clients (native Anwendungen und Single-Page-Apps) dürfen beim Einlösen eines Autorisierungscodes keine Geheimnisse oder Zertifikate verwenden. Stellen Sie immer sicher, dass Ihre Umleitungs-URIs den Anwendungstyp korrekt angeben und [eindeutig sind](reply-url.md#localhost-exceptions). 
+
+### <a name="request-an-access-token-with-a-client_secret"></a>Anfordern eines Zugriffstokens mit „client_secret“
 
 Nun, da Sie einen Autorisierungscode erworben und die Berechtigung vom Benutzer erhalten haben, können Sie den `code` für ein `access_token` auf die gewünschte Ressource einlösen. Senden Sie hierzu eine `POST`-Anforderung an den `/token`-Endpunkt:
 
@@ -204,18 +208,49 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Führen Sie diese Anforderung in Postman aus. (Vergessen Sie nicht, `code` zu ersetzen) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Führen Sie diese Anforderung in Postman aus. (Vergessen Sie nicht, `code` zu ersetzen) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://www.getpostman.com/collections/dba7e9c2e0870702dfc6)
 
-| Parameter  | Erforderlich/optional | BESCHREIBUNG     |
+| Parameter  | Erforderlich/optional | Beschreibung     |
 |------------|-------------------|----------------|
 | `tenant`   | required   | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | required  | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
-| `grant_type` | required   | Muss der `authorization_code` für den Autorisierungscodefluss sein.   |
 | `scope`      | Optional   | Eine durch Leerzeichen getrennte Liste von Bereichen. Die Bereiche müssen alle von einer einzelnen Ressource stammen, zusammen mit den OIDC-Bereichen (`profile`, `openid`, `email`). Eine ausführlichere Erläuterung von Bereichen finden Sie in [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md). Dies ist eine Microsoft-Erweiterung für den Autorisierungscodeflow, der es Apps ermöglichen soll, während der Tokeneinlösung die Ressource zu deklarieren, für die sie das Token benötigen.|
 | `code`          | required  | Der Autorisierungscode, den Sie im ersten Abschnitt des Vorgangs erhalten haben. |
 | `redirect_uri`  | required  | Derselbe Wert für den Umleitungs-URI, der zum Abrufen des Autorisierungscodes verwendet wurde |
-| `client_secret` | Für vertrauliche Web-Apps erforderlich | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Sie sollten den geheimen Anwendungsschlüssel nicht in einer nativen App oder in einer Single-Page-Webanwendung verwenden, weil geheime Clientschlüssel nicht zuverlässig auf Geräten oder Webseiten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern.  Wie alle hier erläuterten Parameter muss der geheime Clientschlüssel vor dem Senden URL-codiert werden. Dieser Schritt wird normalerweise vom SDK durchgeführt. Weitere Informationen zur URI-Codierung finden Sie in der [Spezifikation der generischen URI-Syntax](https://tools.ietf.org/html/rfc3986#page-12). |
+| `grant_type` | required   | Muss der `authorization_code` für den Autorisierungscodefluss sein.   |
 | `code_verifier` | empfohlen  | Derselbe code_verifier-Parameter, der auch zum Abrufen von „authorization_code“ verwendet wurde. Erforderlich, wenn PKCE bei der Anforderung für die Gewährung des Autorisierungscodes verwendet wurde. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| `client_secret` | Für vertrauliche Web-Apps erforderlich | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Sie sollten den geheimen Anwendungsschlüssel nicht in einer nativen App oder in einer Single-Page-Webanwendung verwenden, weil geheime Clientschlüssel nicht zuverlässig auf Geräten oder Webseiten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern.  Wie alle hier erläuterten Parameter muss der geheime Clientschlüssel vor dem Senden URL-codiert werden. Dieser Schritt wird normalerweise vom SDK durchgeführt. Weitere Informationen zur URI-Codierung finden Sie in der [Spezifikation der generischen URI-Syntax](https://tools.ietf.org/html/rfc3986#page-12). |
+
+### <a name="request-an-access-token-with-a-certificate-credential"></a>Anfordern eines Zugriffstokens mit Zertifikatanmeldeinformationen
+
+```HTTP
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
+Host: login.microsoftonline.com
+Content-Type: application/x-www-form-urlencoded
+
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
+&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+&grant_type=authorization_code
+&code_verifier=ThisIsntRandomButItNeedsToBe43CharactersLong
+&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
+&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg
+```
+
+| Parameter  | Erforderlich/optional | Beschreibung     |
+|------------|-------------------|----------------|
+| `tenant`   | required   | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).  |
+| `client_id` | required  | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
+| `scope`      | Optional   | Eine durch Leerzeichen getrennte Liste von Bereichen. Die Bereiche müssen alle von einer einzelnen Ressource stammen, zusammen mit den OIDC-Bereichen (`profile`, `openid`, `email`). Eine ausführlichere Erläuterung von Bereichen finden Sie in [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md). Dies ist eine Microsoft-Erweiterung für den Autorisierungscodeflow, der es Apps ermöglichen soll, während der Tokeneinlösung die Ressource zu deklarieren, für die sie das Token benötigen.|
+| `code`          | required  | Der Autorisierungscode, den Sie im ersten Abschnitt des Vorgangs erhalten haben. |
+| `redirect_uri`  | required  | Derselbe Wert für den Umleitungs-URI, der zum Abrufen des Autorisierungscodes verwendet wurde |
+| `grant_type` | required   | Muss der `authorization_code` für den Autorisierungscodefluss sein.   |
+| `code_verifier` | empfohlen  | Derselbe code_verifier-Parameter, der auch zum Abrufen von „authorization_code“ verwendet wurde. Erforderlich, wenn PKCE bei der Anforderung für die Gewährung des Autorisierungscodes verwendet wurde. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| `client_assertion_type` | Für vertrauliche Web-Apps erforderlich | Der Wert muss auf festgelegt `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` werden, um Zertifikatanmeldeinformationen verwenden zu können. |
+| `client_assertion` | Für vertrauliche Web-Apps erforderlich  | Eine Assertion (ein JSON-Webtoken), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
+
+Beachten Sie, dass die Parameter nahezu identisch mit den Parametern der Anforderung mit dem gemeinsamen geheimen Schlüssel sind. Einziger Unterschied: Anstelle des Parameters `client_secret` werden die beiden Parameter `client_assertion_type` und `client_assertion` verwendet.  
 
 ### <a name="successful-response"></a>Erfolgreiche Antwort
 
@@ -277,7 +312,7 @@ Fehlerantworten sehen wie folgt aus:
 | `invalid_client` | Clientauthentifizierung fehlgeschlagen.  | Die Client-Anmeldeinformationen sind nicht gültig. Um das Problem zu beheben, aktualisiert der Anwendungsadministrator die Anmeldeinformationen.   |
 | `unsupported_grant_type` | Der Autorisierungsserver unterstützt den Autorisierungsgewährungstyp nicht. | Ändern Sie den Gewährungstyp in der Anforderung. Diese Art von Fehler sollte nur während der Entwicklung auftreten und bei den ersten Tests erkannt werden. |
 | `invalid_resource` | Die Zielressource ist ungültig, da sie nicht vorhanden ist, Azure AD sie nicht findet oder sie nicht ordnungsgemäß konfiguriert ist. | Dies gibt an, dass die Ressource, falls vorhanden, im Mandanten nicht konfiguriert wurde. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern.  |
-| `interaction_required` | Kein Standard, da die OIDC-Spezifikation dies nur im `/authorize`-Endpunkt erfordert. Die Anforderung erfordert eine Benutzerinteraktion. Beispielsweise ist ein zusätzlicher Schritt zur Authentifizierung erforderlich. | Wiederholen Sie die `/authorize`-Anforderung mit den gleichen Bereichen. |
+| `interaction_required` | Dies ist kein Standardverhalten, weil die OIDC-Spezifikation dies nur im `/authorize`-Endpunkt erfordert. Die Anforderung erfordert eine Benutzerinteraktion. Beispielsweise ist ein zusätzlicher Schritt zur Authentifizierung erforderlich. | Wiederholen Sie die `/authorize`-Anforderung mit den gleichen Bereichen. |
 | `temporarily_unavailable` | Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. | Wiederholen Sie die Anforderung nach kurzer Zeit. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
 |`consent_required` | Die Anforderung erfordert die Zustimmung des Benutzers. Dies ist kein Standardfehler, und er wird in der Regel gemäß OIDC-Spezifikation nur im `/authorize`-Endpunkt zurückgegeben. Wird zurückgegeben, wenn im Einlösungsflow des Codes ein `scope`-Parameter verwendet wurde, für dessen Anforderung die Client-App keine Berechtigung besitzt.  | Der Client muss den Benutzer mit dem richtigen Bereich wieder an den `/authorize`-Endpunkt zurückverweisen, um die Zustimmung auszulösen. |
 |`invalid_scope` | Der von der App angeforderte Bereich ist ungültig.  | Aktualisieren Sie den Wert des scope-Parameters in der Authentifizierungsanforderung auf einen gültigen Wert. |
@@ -302,7 +337,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 Zugriffstoken sind kurzlebig. Daher müssen Sie sie nach Ablauf aktualisieren, um weiterhin auf Ressourcen zuzugreifen. Dazu übermitteln Sie eine weitere `POST`-Anforderung an den `/token`-Endpunkt, dieses Mal unter Angabe des `refresh_token` statt des `code`.  Aktualisierungstoken sind für alle Berechtigungen gültig, für die Ihr Client bereits die Einwilligung erhalten hat. Daher kann ein Aktualisierungstoken, das für eine Anforderung für `scope=mail.read` ausgestellt wurde, zum Anfordern eines neuen Zugriffstokens für `scope=api://contoso.com/api/UseResource` verwendet werden.
 
-Für Aktualisierungstoken für Web-Apps und native Apps ist keine bestimmte Lebensdauer festgelegt. Normalerweise verfügen Aktualisierungstoken über relativ lange Lebensdauern. In einigen Fällen laufen Aktualisierungstoken aber ab, werden widerrufen oder verfügen nicht über ausreichende Berechtigungen für die gewünschte Aktion. Von Ihrer Anwendung müssen [Fehler, die vom Tokenausstellungsendpunkt zurückgegeben werden](#error-codes-for-token-endpoint-errors), erwartet und richtig behandelt werden. Single-Page-Webanwendungen erhalten jedoch ein Token mit einer Lebensdauer von 24 Stunden, wobei täglich eine neue Authentifizierung erforderlich ist.  Diese Authentifizierung kann im Hintergrund in einem IFrame erfolgen, wenn Cookies von Drittanbietern aktiviert sind. In Browsern ohne Cookies von Drittanbietern (z. B. in Safari) muss sie jedoch in einem Frame der obersten Ebene (entweder vollständige Seitennavigation oder Popup) ausgeführt werden.
+Für Aktualisierungstoken für Web-Apps und native Apps ist keine bestimmte Lebensdauer festgelegt. Normalerweise verfügen Aktualisierungstoken über relativ lange Lebensdauern. In einigen Fällen laufen Aktualisierungstoken aber ab, werden widerrufen oder verfügen nicht über ausreichende Berechtigungen für die gewünschte Aktion. Von Ihrer Anwendung müssen [Fehler, die vom Tokenausstellungsendpunkt zurückgegeben werden](#error-codes-for-token-endpoint-errors), erwartet und richtig behandelt werden. Single-Page-Apps (SPAs) dagegen erhalten ein Token mit einer Lebensdauer von 24 Stunden, d. h. es ist täglich eine neue Authentifizierung erforderlich.  Diese Authentifizierung kann im Hintergrund in einem IFrame erfolgen, wenn Cookies von Drittanbietern aktiviert sind. In Browsern ohne Cookies von Drittanbietern (z. B. in Safari) muss sie jedoch in einem Frame der obersten Ebene (entweder vollständige Seitennavigation oder Popup) ausgeführt werden.
 
 Obwohl Aktualisierungstoken nicht widerrufen werden, wenn sie zum Abrufen neuer Zugriffstoken verwendet werden, sollten Sie das alte Aktualisierungstoken verwerfen. Die [OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749#section-6) besagt Folgendes: „Der Autorisierungsserver KANN ein neues Aktualisierungstoken ausstellen. In dem Fall MUSS der Client das alte Aktualisierungstoken verwerfen und durch das neue Aktualisierungstoken ersetzen. Der Autorisierungsserver KANN das alte Aktualisierungstoken nach dem Ausstellen eines neuen Aktualisierungstokens für den Client widerrufen.“
 
@@ -328,7 +363,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Führen Sie diese Anforderung in Postman aus. (Vergessen Sie nicht, `refresh_token` zu ersetzen) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| Parameter     | type           | BESCHREIBUNG        |
+| Parameter     | type           | Beschreibung        |
 |---------------|----------------|--------------------|
 | `tenant`        | required     | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | required    | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |

@@ -3,12 +3,12 @@ title: Steuerungen des Blaupausenbeispiels für ISM PROTECTED der australischen 
 description: Steuerungszuordnung des Blaupausenbeispiels für „ISM PROTECTED der australischen Regierung“ Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: ecb6a912d0b1f319022f6b7deff68e1495dccbca
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 2129c3d8e63f11f3902f3ddb0690ed1463206849
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386448"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733983"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels für „ISM PROTECTED der australischen Regierung“
 
@@ -18,7 +18,6 @@ Für die **ISM PROTECTED**-Steuerungen gelten die folgenden Zuordnungen. Über d
 
 > [!IMPORTANT]
 > Jede Steuerung unten ist einer oder mehreren [Azure Policy](../../../policy/overview.md)-Definitionen zugeordnet. Diese Richtlinien können Ihnen bei der [Konformitätsbewertung](../../../policy/how-to/get-compliance-data.md) mit der Steuerung helfen. Es gibt jedoch oft keine 1:1- oder vollständige Übereinstimmung zwischen einer Steuerung und einer bzw. mehreren Richtlinien. Daher bezieht sich **Konform** in Azure Policy nur auf die Richtlinien selbst und gewährleistet nicht die vollständige Konformität mit allen Anforderungen einer Steuerung. Außerdem enthält der Kompatibilitätsstandard Steuerungen, die derzeit von keiner Azure Policy-Definition abgedeckt werden. Daher ist die Konformität in Azure Policy nur eine partielle Ansicht Ihres gesamten Konformitätsstatus. Die Zuordnungen zwischen Steuerungen und Azure Policy-Definitionen für dieses Konformitätsblaupausenbeispiel können sich im Laufe der Zeit ändern. Den Änderungsverlaufs finden Sie im [GitHub-Commit-Verlauf](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ism-protected/control-mapping.md).
-
 
 ## <a name="location-constraints"></a>Standorteinschränkungen
 
@@ -342,9 +341,8 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 
 - DDoS Protection Standard sollte aktiviert sein.
 
-
 > [!NOTE]
-> Die Verfügbarkeit spezifischer Azure Policy-Definitionen kann in Azure Government und anderen nationalen Clouds variieren. 
+> Die Verfügbarkeit spezifischer Azure Policy-Definitionen kann in Azure Government und anderen nationalen Clouds variieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

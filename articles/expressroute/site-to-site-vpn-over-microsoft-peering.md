@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 366f27a0e2a22e9aa10dda20e105bf644255bdd4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89393138"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurieren eines Site-to-Site-VPN über ExpressRoute-/Microsoft-Peering
@@ -53,7 +53,7 @@ VPN-Tunnel über Microsoft-Peering können entweder über ein VPN-Gateway oder e
 6. (Optional) Konfigurieren Sie Firewalls/Filterung auf dem lokalen VPN-Gerät.
 7. Testen und überprüfen Sie die IPsec-Kommunikation über die ExpressRoute-Verbindung.
 
-## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. Konfigurieren des Microsoft-Peerings
+## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. Konfigurieren Sie das Microsoft-Peering
 
 Um eine Site-to-Site-VPN-Verbindung über ExpressRoute zu konfigurieren, müssen Sie ExpressRoute-/Microsoft-Peering nutzen.
 
@@ -65,7 +65,7 @@ Sobald Sie Ihre Verbindung und Microsoft-Peering konfiguriert haben, können Sie
 
 ![Verbindung](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
 
-## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. Konfigurieren von Routenfiltern
+## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. Konfigurieren Sie die Routenfilter
 
 Durch einen Routenfilter können Sie die Dienste identifizieren, die Sie über das Microsoft-Peering Ihrer ExpressRoute-Verbindung nutzen möchten. Im Wesentlichen handelt es sich um eine Zulassungsliste für alle BGP-Communitywerte. 
 
@@ -112,7 +112,7 @@ Um zu bestätigen, dass Sie den richtigen Satz von Präfixen erhalten, können S
 Get-AzBgpServiceCommunity
 ```
 
-## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3. Konfigurieren des VPN-Gateways und der IPsec-Tunnels
+## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3. Konfigurieren Sie das VPN-Gateway und die IPsec-Tunnel
 
 In diesem Abschnitt werden die IPsec VPN-Tunnel zwischen dem Azure-VPN-Gateway und dem lokalen VPN-Gerät erstellt. In den Beispielen werden VPN-Geräte des Typs Cisco Cloud Service Router (CSR1000) verwendet.
 
@@ -354,7 +354,7 @@ Die letzte Aktion des Skripts erstellt IPsec-Tunnel zwischen dem Azure-VPN-Gatew
   }
 ```
 
-## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4. Konfigurieren des lokalen VPN-Geräts
+## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4. Konfigurieren Sie das lokale VPN-Gerät
 
 Das Azure-VPN-Gateway ist mit vielen VPN-Geräten verschiedener Hersteller kompatibel. Konfigurationsinformationen und Geräte, die mit dem VPN-Gateway funktionieren, finden Sie unter [Informationen zu VPN-Geräten](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
@@ -475,11 +475,11 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 !
 ```
 
-## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. Konfigurieren von VPN-Gerätefilterung und Firewalls (optional)
+## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. Konfigurieren Sie die VPN-Gerätefilterung und Firewalls (fakultativ)
 
 Konfigurieren Sie Ihre Firewall und Filterung entsprechend Ihren Anforderungen.
 
-## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6. Testen und Überprüfen des IPsec-Tunnels
+## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6. Testen und Überprüfen Sie den IPsec-Tunnel
 
 Der Status von IPsec-Tunneln kann auf dem Azure-VPN-Gateway mithilfe von PowerShell-Befehlen überprüft werden:
 

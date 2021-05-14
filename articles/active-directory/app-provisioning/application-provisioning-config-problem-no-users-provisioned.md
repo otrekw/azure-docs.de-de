@@ -3,20 +3,20 @@ title: In meiner Anwendung werden keine Benutzer bereitgestellt
 description: Informationen zur Problembehandlung bei häufigen Problemen, die auftreten, wenn Benutzer nicht in einer Azure AD-Kataloganwendung angezeigt werden, die Sie für die Benutzerbereitstellung mit Azure AD konfiguriert haben
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 429f993764273d6b6eb23d75d0132b374d5d0ca0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42bee803e6dfb025f654714a44a8a4aae3b7448b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256353"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783187"
 ---
 # <a name="no-users-are-being-provisioned"></a>Es werden keine Benutzer bereitgestellt 
 >[!NOTE]

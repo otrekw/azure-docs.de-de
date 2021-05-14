@@ -5,14 +5,14 @@ author: alkohli
 ms.assetid: ''
 ms.service: storsimple
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 04/14/2021
 ms.author: alkohli
-ms.openlocfilehash: cdb971851ba678ce18f5a1c7954e5620740f3a4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 735d7c1a25acb767f9d6352f6c8887af4b9464c0
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104657568"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895917"
 ---
 # <a name="storsimple-8000-series-update-51-release-notes"></a>Versionshinweise zu Update 5.1 der StorSimple 8000-Serie
 
@@ -20,21 +20,20 @@ ms.locfileid: "104657568"
 
 Die folgenden Versionshinweise beschreiben die neuen Features und weisen auf wichtige offene Punkte bei Update 5.1 der StorSimple 8000-Serie hin. Es enthält auch eine Liste der StorSimple-Software-Updates, die in dieser Version enthalten sind.
 
-Update 5.1 kann auf alle StorSimple-Geräte angewendet werden, auf denen Update 5 ausgeführt wird. Wenn Sie eine niedrigere Version als 5 verwenden, wenden Sie zuerst Update 5 und dann 5.1 an. Update 5.1 ist die Geräteversion 6.3.9600.17885 zugeordnet.
+Update 5.1 kann auf alle StorSimple-Geräte angewendet werden, auf denen Update 5 ausgeführt wird. Wenn Sie mit einer früheren Version als 5 arbeiten, wenden Sie zuerst Update 5 und dann Update 5.1 an. Update 5.1 ist die Geräteversion 6.3.9600.17885 zugeordnet.
 
 Lesen Sie vor der Bereitstellung des Updates in Ihrer StorSimple-Lösung die Informationen in den Versionsanmerkungen sorgfältig durch.
 
 > [!IMPORTANT]
 >
-> * Update 5.1 ist ein obligatorisches Update und muss sofort installiert werden. Weitere Informationen finden Sie unter [Anwenden von Update 5.1](storsimple-8000-install-update-51.md).
-> * Update 5.1 weist nur Sicherheitsupdates auf. Es dauert ungefähr 30 Minuten, dieses Update zu installieren. Es wird dringend empfohlen, Update 5.1 anzuwenden, um den Betrieb Ihres Geräts zu gewährleisten.
-> * Bei neuen Versionen werden Updates möglicherweise nicht sofort angezeigt, da diese in mehreren Phasen bereitgestellt werden. Warten Sie einige Tage, und suchen Sie dann erneut nach Updates, da diese bald verfügbar werden.
+> * Update 5.1 ist ein obligatorisches Update und muss sofort installiert werden, um den Betrieb des Geräts sicherzustellen. Update 5.0 ist eine minimal unterstützte Version.
+> * Update 5.1 enthält Sicherheitsupdates, deren Installation ca. 30 Minuten dauert. Weitere Informationen finden Sie unter [Anwenden von Update 5.1](storsimple-8000-install-update-51.md).
 
 ## <a name="whats-new-in-update-51"></a>Neuerungen in Update 5.1
 
 Die folgenden wichtigen Verbesserungen und Fehlerbehebungen wurden in Update 5.1 vorgenommen:
 
-* **TLS 1.2**: Dieses StorSimple-Update erzwingt TLS 1.2 auf allen Clients. Dies ist ein obligatorisches Update für alle Geräte der StorSimple 8000-Serie.
+* **TLS 1.2**: Dieses StorSimple-Update erzwingt TLS 1.2 auf allen Clients. TLS 1.2 ist ein obligatorisches Update für alle Geräte der StorSimple 8000-Serie.
 
    Wenn die folgende Warnung angezeigt wird, müssen Sie die Software auf dem Gerät aktualisieren, bevor Sie den Vorgang fortsetzen:
 
@@ -46,7 +45,7 @@ Es gibt keine neuen bekannten Probleme in Update 5.1. Eine Liste der Probleme, 
 
 ## <a name="storsimple-cloud-appliance-updates-in-update-51"></a>Aktualisierungen an der StorSimple Cloud Appliance in Update 5.1
 
-Dieses Update gilt nicht für die StorSimple Cloud Appliance (auch bekannt als das virtuelle Gerät). Neue Cloud Appliances müssen mit dem Update 5.1-Image erstellt werden. Weitere Informationen zum Erstellen einer StorSimple Cloud Appliance finden Sie unter [Bereitstellen und Verwalten einer StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).
+Dieses Update gilt nicht für die StorSimple Cloud Appliance (auch bekannt als das virtuelle Gerät). Sie müssen neue Cloudgeräte mithilfe des Update 5.1-Images erstellen. Weitere Informationen zum Erstellen einer StorSimple Cloud Appliance finden Sie unter [Bereitstellen und Verwalten einer StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).
 
 ## <a name="next-step"></a>Nächster Schritt
 

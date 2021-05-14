@@ -1,18 +1,18 @@
 ---
 title: Bekannte Probleme bei Azure Kinect und Problembehandlung
 description: Informieren Sie sich über einige der bekannten Probleme und Tipps zur Problembehandlung bei der Verwendung des Sensor SDK mit Azure Kinect DK.
-author: tesych
-ms.author: tesych
+author: qm13
+ms.author: quentinm
 ms.prod: kinect-dk
-ms.date: 06/26/2019
+ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: Problembehandlung, Update, Bug, Kinect, Feedback, Wiederherstellung, Protokollierung, Tipps
-ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: da5242a09934a756093a9e02b6d474e6c75fecda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038819"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108739"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Bekannte Probleme bei Azure Kinect und Problembehandlung
 
@@ -172,18 +172,60 @@ Die Azure Kinect-Tiefenengine unter Linux verwendet OpenGL. OpenGL erfordert ein
 
 1. Aktivieren Sie die automatische Anmeldung für das Benutzerkonto, das Sie verwenden möchten. Anweisungen zum Aktivieren der automatischen Anmeldung finden Sie in [diesem](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/) Artikel.
 2. Schalten Sie das System aus, trennen Sie den Monitor, und schalten Sie das System ein. Die automatische Anmeldung erzwingt die Erstellung einer X-Server-Sitzung.
-2. Herstellen einer Verbindung über SSH und Festlegen der DISPLAY-Umgebungsvariablen `export DISPLAY=:0`
-3. Starten Sie Ihre Azure Kinect-Anwendung.
+3. Herstellen einer Verbindung über SSH und Festlegen der DISPLAY-Umgebungsvariablen `export DISPLAY=:0`
+4. Starten Sie Ihre Azure Kinect-Anwendung.
 
 Das Hilfsprogramm [xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html) kann verwendet werden, um den Bildschirm nach der automatischen Anmeldung sofort zu sperren. Fügen Sie der Startanwendung oder dem systemd-Dienst den folgenden Befehl hinzu:
 
-`bash -c “xtrlock -b”` 
+`bash -c “xtrlock -b”`
 
 ## <a name="missing-c-documentation"></a>Fehlende C#-Dokumentation
 
 Die Sensor-SDK-C#-Dokumentation finden Sie [hier](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html).
 
 Die Body Tracking-SDK-C#-Dokumentation finden Sie [hier](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html).
+
+## <a name="specifying-onnx-runtime-execution-environment"></a>Angeben der ONNX Runtime-Ausführungsumgebung
+
+Das Body Tracking SDK unterstützt die CPU-, CUDA-, DirectML- (nur Windows) und TensorRT-Ausführungsumgebung zum Ableiten des Posenschätzungsmodells. `K4ABT_TRACKER_PROCESSING_MODE_GPU` ist standardmäßig auf die Ausführung von CUDA unter Linux und die Ausführung von DirectML unter Windows festgelegt. Es wurden drei zusätzliche Modi hinzugefügt, um bestimmte Ausführungsumgebungen auszuwählen: `K4ABT_TRACKER_PROCESSING_MODE_GPU_CUDA`, `K4ABT_TRACKER_PROCESSING_MODE_GPU_DIRECTML` und `K4ABT_TRACKER_PROCESSING_MODE_GPU_TENSORRT`.
+
+> [!NOTE]  
+> Die ONNX-Runtime zeigt Warnungen für Opcodes an, die nicht beschleunigt werden. Diese können ignoriert werden.
+
+Die ONNX-Runtime umfasst Umgebungsvariablen zum Steuern der Zwischenspeicherung von TensorRT-Modellen. Die empfohlenen Werte lauten:
+- ORT_TENSORRT_MOTOR_CACHE_AKTIVIERT=1 
+- ORT_TENSORRT_CACHE_PATH="pathname"
+
+Der Ordner muss vor dem Starten von Body Tracking erstellt werden.
+
+> [!IMPORTANT]  
+> TensorRT führt vor dem Rückschluss eine Vorverarbeitung des Modells durch. Dies führt zu längeren Startzeiten als in anderen Ausführungsumgebungen. Die Enginezwischenspeicherung schränkt dies auf die erste Ausführung ein. Dies ist jedoch ein experimentelles Feature und spezifisch für das Modell, die ONNX-Runtimeversion, die TensorRT-Version und das GPU-Modell.
+
+Die TensorRT-Ausführungsumgebung unterstützt sowohl FP32 (Standard) als auch FP16. FP16 bietet eine ungefähr zweimal höhere Leistung auf Kosten einer minimal geringeren Genauigkeit. So legen Sie FP16 fest:
+- ORT_TENSORRT_FP16_ENABLE=1
+
+## <a name="required-dlls-for-onnx-runtime-execution-environments"></a>Erforderliche DLLs für ONNX Runtime-Ausführungsumgebungen
+
+|Mode      | CUDA 11.1            | CUDNN 8.0.5          | TensorRT 7.2.1       |
+|----------|----------------------|----------------------|----------------------|
+| CPU      | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           |                      |                      |
+|          | cublas64_11          |                      |                      |
+|          | cublas64_11        |                      |                      |
+| CUDA     | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           | cudnn_ops_infer64_8  |                      |
+|          | cublas64_11          | cudnn_cnn_infer64_8  |                      |
+|          | cublas64_11        |                      |                      |
+| DirectML | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           |                      |                      |
+|          | cublas64_11          |                      |                      |
+|          | cublas64_11        |                      |                      |
+| TensorRT | cudart64_110         | cudnn64_8            | nvinfer              |
+|          | cufft64_10           | cudnn_ops_infer64_8  | nvinfer_plugin       |
+|          | cublas64_11          | cudnn_cnn_infer64_8  | myelin64_1           |
+|          | cublas64_11        |                      |                      |
+|          | nvrtc64_111_0        |                      |                      |
+|          | nvrtc-builtins64_111 |                      |                      |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

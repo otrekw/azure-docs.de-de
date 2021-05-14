@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a5ee7e8de85a1a53359f651a74e2f9f5e51edb70
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110677"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030779"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>Autorisieren des Zugriffs mit der verwalteten Identität auf die Kommunikationsressource in Ihrer Entwicklungsumgebung
 
@@ -78,6 +78,8 @@ Mit dem Befehl `az ad sp create-for-rbac` wird eine Liste der Dienstprinzipaleig
 
 > [!IMPORTANT]
 > Nachdem Sie die Umgebungsvariablen festgelegt haben, schließen Sie das Konsolenfenster, und öffnen Sie es dann erneut. Wenn Sie Visual Studio oder eine andere Entwicklungsumgebung verwenden, müssen Sie möglicherweise einen Neustart vornehmen, damit die neuen Umgebungsvariablen registriert werden.
+
+Nachdem diese Variablen festgelegt wurden, können Sie das Objekt „DefaultAzureCredential“ in Ihrem Code verwenden, um sich beim Dienstclient Ihrer Wahl zu authentifizieren.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

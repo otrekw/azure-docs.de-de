@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 6629beacb5c3edc6fe1d21509051b915c0894479
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5b5e1491d7f76cd4cff76d0c9a1af4daa49fa483
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109691"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813000"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Hochverfügbarkeitskonzepte in Azure Database for MySQL Flexible Server (Vorschau)
 
@@ -69,6 +69,9 @@ Zu geplanten Downtimeereignissen gehören Aktivitäten, die von Azure geplant we
 
 ### <a name="failover-process---unplanned-events"></a>Failoverprozess: nicht geplante Ereignisse
 Zu nicht geplanten Dienstdowntimes gehören Softwarefehler oder Infrastrukturausfälle wie bei Compute-, Netzwerk- oder Speicherfehlern oder Stromausfälle, die die Verfügbarkeit der Datenbank beeinträchtigen. Falls eine Datenbank nicht verfügbar ist, wird die Replikation auf das Standbyreplikat abgebrochen, und das Standbyreplikat wird als primäre Datenbank aktiviert. Das DNS wird aktualisiert, und Clients stellen dann eine neue Verbindung zum Datenbankserver her und setzen ihre Vorgänge fort. Die Failovergesamtdauer beträgt erwartungsgemäß zwischen 60 und 120 Sekunden. Je nach Aktivität auf dem primären Datenbankserver zum Zeitpunkt des Failovers, z. B. große Transaktionen, und abhängig von der Wiederherstellungszeit kann das Failover jedoch auch etwas länger dauern.
+
+### <a name="forced-failover"></a>Erzwungenes Failover
+Das erzwungene Failover von Azure Database for MySQL ermöglicht es Ihnen, ein Failover manuell zu erzwingen, sodass Sie die Funktionalität bei Ihren Anwendungsszenarios testen und bei irgendwelchen Ausfällen bereit sein können. Durch erzwungenes Failover wird der Standbyserver zum primären Server, indem ein Failover ausgelöst wird. Dadurch wird das Standbyreplikat aktiviert und – durch Aktualisierung des DNS-Eintrags – zum primären Server mit demselben Datenbankservernamen. Der ursprüngliche primäre Server wird neu gestartet und auf das Standbyreplikat umgeschaltet. Clientverbindungen werden getrennt und müssen erneut verbunden werden, um ihre Vorgänge fortsetzen zu können. Je nach der aktuellen Workload und dem letzten Prüfpunkt wird die Failovergesamtdauer gemessen. Normalerweise sollte sie zwischen 60 und 120 Sekunden betragen.
 
 ## <a name="schedule-maintenance-window"></a>Zeitplan für Wartungsfenster 
 

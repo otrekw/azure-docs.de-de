@@ -1,5 +1,5 @@
 ---
-title: Überprüfen mehrerer Azure-Quellen
+title: Überprüfen Sie mehrerer Quellen in Azure Purview
 description: Erfahren Sie, wie Sie ein gesamtes Azure-Abonnement oder eine gesamte Ressourcengruppe im Azure Purview-Datenkatalog überprüfen.
 author: viseshag
 ms.author: viseshag
@@ -7,43 +7,45 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/26/2021
-ms.openlocfilehash: 098f62365971fd634001706ab99fd414a6b25056
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f3503dd986f037310b2b24dec535cc05b9d4c4a4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123563"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127495"
 ---
-# <a name="register-and-scan-azure-multiple-sources"></a>Registrieren und Überprüfen mehrerer Azure-Quellen
+# <a name="register-and-scan-multiple-sources-in-azure-purview"></a>Registrieren und überprüfen Sie mehrere Quellen in Azure Purview
 
-In diesem Artikel wird beschrieben, wie Sie mehrere Azure-Quellen (Azure-Abonnements oder -Ressourcengruppen) in Purview registrieren und eine Überprüfung dafür einrichten.
+Dieser Artikel beschreibt, wie Sie mehrere Quellen (Azure-Abonnements oder Ressourcengruppen) in Azure Purview registrieren und überprüfen.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Mehrere Azure-Quellen unterstützen Scans zum Erfassen von Metadaten und Schemas für die meisten von Purview unterstützten Azure-Ressourcentypen. Darüber hinaus werden die Daten dabei basierend auf System- und benutzerdefinierten Klassifizierungsregeln automatisch klassifiziert.
+Sie können mehrere Quellen überprüfen, um Metadaten und Schema für die meisten Azure-Ressourcentypen zu erfassen, die Azure Purview unterstützt. Azure Purview klassifiziert die Daten automatisch anhand von System- und benutzerdefinierten Klassifizierungsregeln.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
-- Sie müssen ein Azure Purview-Datenquellenadministrator sein.
-- Einrichten der Authentifizierung, wie in den folgenden Abschnitten beschrieben
+- Erstellen Sie ein Azure Purview-Konto bevor Sie Datenquellen registrieren. Weitere Informationen finden Sie unter [Quickstart: Erstellen eines Azure Purview-Kontos](create-catalog-portal.md).
+- Stellen Sie sicher, dass Sie ein Azure Purview Datenquellen-Administrator sind. Sie müssen auch Eigentümer oder Benutzerzugriffsadministrator sein, um eine Rolle für ein Abonnement oder eine Ressourcengruppe hinzuzufügen.
+- Richten Sie die Authentifizierung wie in den folgenden Abschnitten beschrieben ein.
 
-### <a name="setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group"></a>Einrichten der Authentifizierung für das Auflisten von Ressourcen unter einem Abonnement oder einer Ressourcengruppe
+### <a name="set-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group"></a>Richten Sie die Authentifizierung für die Aufzählung von Ressourcen unter einem Abonnement oder einer Ressourcengruppe ein
 
-1. Navigieren Sie im Azure-Portal zum Abonnement oder zur Ressourcengruppe.  
-1. Wählen Sie im linken Navigationsmenü  **Zugriffssteuerung (IAM)**   aus. 
-1. Sie müssen Besitzer oder Benutzerzugriffsadministrator sein, um dem Abonnement oder der Ressourcengruppe eine Rolle hinzuzufügen. Wählen Sie die Schaltfläche *+Hinzufügen* aus. 
-1. Legen Sie die Rolle auf **Leser** fest, und geben Sie unter „Auswählen“ den Namen Ihres Azure Purview-Kontos (der dessen MSI darstellt) ein. Klicken Sie auf *Speichern*, um die Rollenzuweisung abzuschließen.
+1. Gehen Sie zu dem Abonnement oder der Ressourcengruppe im Azure-Portal.  
+1. Wählen Sie im linken Menü  **Zugriffskontrolle (IAM)**  aus. 
+1. Wählen Sie **+ Hinzufügen** aus. 
+1. Wählen Sie im **Eingabefeld Auswählen** die Rolle **Reader** aus und geben Sie den Namen Ihres Azure Purview-Kontos ein (der den Namen der MSI-Datei darstellt). 
+1. Klicken Sie auf **Speichern**, um die Rollenzuweisung abzuschließen.
 
-### <a name="setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group"></a>Einrichten der Authentifizierung für das Überprüfen von Ressourcen unter einem Abonnement oder einer Ressourcengruppe
+### <a name="set-up-authentication-to-scan-resources-under-a-subscription-or-resource-group"></a>Richten Sie die Authentifizierung für die Überprüng von Ressourcen unter einem Abonnement oder einer Ressourcengruppe ein
 
-Es gibt zwei Möglichkeiten, die Authentifizierung für mehrere Azure-Quellen einzurichten:
+Es sind zwei Möglichkeiten verfügbar, die Authentifizierung für mehrere Quellen in Azure einzurichten:
 
 - Verwaltete Identität
 - Dienstprinzipal
 
-> [!NOTE]
-> Sie müssen die Authentifizierung für jede Ressource innerhalb Ihres Abonnements oder ihrer Ressourcengruppe einrichten, die Sie registrieren und überprüfen möchten. Azure Storage-Ressourcentypen (Azure Blob Storage und Azure Data Lake Storage Gen2) erleichtern den Vorgang, indem sie das Hinzufügen von MSI oder Dienstprinzipal auf Abonnement- bzw. Ressourcengruppenebene als Speicherblob-Datenleser zulassen. Die Berechtigungen werden dann auf alle Speicherkonten innerhalb des Abonnements oder der Ressourcengruppe übertragen. Für alle anderen Ressourcentypen müssen Sie MSI oder Dienstprinzipal auf jede Ressource anwenden bzw. dies durch ein Skript ausführen lassen. Hier erfahren Sie, wie Sie Berechtigungen für jeden Ressourcentyp innerhalb eines Abonnements oder einer Ressourcengruppe hinzufügen.
+Sie müssen die Authentifizierung für jede Ressource innerhalb Ihres Abonnements oder Ihrer Ressourcengruppe einrichten, die Sie registrieren und überprüfen möchten. Azure-Storage-Ressourcentypen (Azure Blob Storage und Azure Data Lake Storage Gen2) erleichtern es, indem sie es Ihnen ermöglichen, die MSI-Datei oder den Dienstprinzipal auf der Abonnement- oder Ressourcengruppenebene als Speicher-Blob-Datenleser hinzuzufügen. Die Berechtigungen werden dann auf jedes Speicherkonto innerhalb dieses Abonnements oder dieser Ressourcengruppe übertragen. Für alle anderen Ressourcentypen müssen Sie die MSI-Datei oder das Dienstprinzipal auf jede Ressource anwenden oder ein Skript zu diesem Zweck erstellen. 
+
+Wie Sie Berechtigungen für jeden Ressourcentyp innerhalb eines Abonnements oder einer Ressourcengruppe hinzufügen, erfahren Sie in den folgenden Ressourcen:
     
 - [Azure Blob Storage](register-scan-azure-blob-storage-source.md#setting-up-authentication-for-a-scan)
 - [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)
@@ -52,89 +54,94 @@ Es gibt zwei Möglichkeiten, die Authentifizierung für mehrere Azure-Quellen ei
 - [Verwaltete Azure SQL-Datenbank-Instanz](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
  
-## <a name="register-an-azure-multiple-source"></a>Registrieren mehrerer Azure-Quellen
+## <a name="register-multiple-sources"></a>Registrieren Sie mehrere Quellen
 
-So registrieren Sie in Ihrem Datenkatalog mehrere neue Azure-Quellen:
+Um neue Mehrfachquellen in Ihrem Datenkatalog zu registrieren, gehen Sie wie folgt vor:
 
-1. Navigieren Sie zu Ihrem Purview-Konto.
-1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
-1. Wählen Sie **Registrieren** aus.
+1. Gehen Sie zu Ihrem Azure Purview-Konto.
+1. Wählen Sie **Quellen** im linken Menü aus.
+1. Wählen Sie **Registrieren**.
 1. Wählen Sie unter **Quellen registrieren** die Option **Azure (mehrere)** aus.
-1. Wählen Sie **Weiter** aus.
 
-   :::image type="content" source="media/register-scan-azure-multiple-sources/register-azure-multiple.png" alt-text="Registrieren mehrerer Azure-Quellen":::
+   :::image type="content" source="media/register-scan-azure-multiple-sources/register-azure-multiple.png" alt-text="Screenshot, der die Fläche für Azure Multiple auf der Anzeige für die Registrierung von mehreren Quellen anzeigt.":::
+1. Wählen Sie **Weiter**.
+1. Auf der Anzeige **Quellen registrieren (Azure)** gehen Sie wie folgt vor:
 
-Gehen Sie auf dem Bildschirm **Quellen registrieren (Azure, mehrere)** wie folgt vor:
+   1. Geben Sie im **Namensfeld** einen Namen ein, unter dem die Datenquelle im Katalog aufgelistet werden soll. 
+   1. Wählen Sie im **Managementgruppen-Feld** fakultativ eine Managementgruppe aus, nach der gefiltert werden soll.
+   1. Wählen Sie in den Dropdownlistenfeldern **Abonnement** und **Ressourcengruppe** ein Abonnement, bzw. eine bestimmte Ressourcengruppe aus. Der Registrierungsbereich wird auf das ausgewählte Abonnement oder die Ressourcengruppe festgelegt.  
 
-1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll. 
-1. Wählen Sie optional eine **Verwaltungsgruppe** aus, nach der gefiltert werden soll.
-1. **Wählen Sie ein Abonnement oder eine bestimmte Ressourcengruppe** unter einem bestimmten Abonnement in der Dropdownliste aus. Der Registrierungsbereich wird auf das ausgewählte Abonnement oder die Ressourcengruppe festgelegt.  
-1. Wählen Sie eine **Sammlung** aus, oder erstellen Sie eine neue Sammlung (optional).
-1. Wählen Sie **Fertig stellen** aus, um die Datenquelle zu registrieren.
+      :::image type="content" source="media/register-scan-azure-multiple-sources/azure-multiple-source-setup.png" alt-text="Screenshot, der die Felder zur Auswahl eines Abonnements und einer Ressourcengruppe anzeigt.":::
+   1. Wählen **Sie** im Feld Sammlung auswählen eine Sammlung aus, oder erstellen Sie eine neue Sammlung (optional).
+   1. Wählen Sie **Fertigstellen**, um die Datenquelle zu registrieren.
 
-   :::image type="content" source="media/register-scan-azure-multiple-sources/azure-multiple-source-setup.png" alt-text="Einrichten mehrerer Azure-Quellen":::
 
-## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
+## <a name="create-and-run-a-scan"></a>Erstellen und führen Sie eine Überprüfung aus
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Navigieren Sie zum Abschnitt **Quellen**.
-
+1. Navigieren Sie zum **Quellen-** Abschnitt.
 1. Wählen Sie die von Ihnen registrierte Datenquelle aus.
+1. Wählen Sie **Details anzeigen** >  **+** Neue Überprüfung, oder verwenden Sie das Schnellaktionssymbol **Überprüfen** auf der Quellfläche.
+1. Geben Sie unter **Name** den Namen ein.
+1. Wählen Sie unter **Typ** die Ressourcentypen aus, die Sie in dieser Quelle überprüfen möchten. Wählen Sie eine der Optionen aus:
 
-1. Klicken Sie auf „Details anzeigen“, und wählen Sie **+ Neue Überprüfung** aus, oder verwenden Sie das Schnellaktionssymbol für die Überprüfung auf der Quellkachel.
-
-1. Geben Sie den *Namen* ein, und wählen Sie alle Typen von Ressourcen aus, die Sie innerhalb dieser Quelle überprüfen möchten.
-
-    1. Sie können *Alle* belassen (dies schließt zukünftige Ressourcentypen ein, die in diesem Abonnement oder dieser Ressourcengruppe möglicherweise noch nicht vorhanden sind).
-    1. Sie können **speziell Ressourcentypen auswählen**, die Sie überprüfen möchten. Wenn Sie diese Option auswählen, werden zukünftige Ressourcentypen, die in diesem Abonnement oder in dieser Ressourcengruppe erstellt werden könnten, nicht für Überprüfungen eingeschlossen, es sei denn, die Überprüfung wird in Zukunft explizit bearbeitet.
+    - Belassen Sie es als **Alle**. Diese Auswahl umfasst zukünftige Ressourcentypen, die möglicherweise derzeit nicht in diesem Abonnement oder dieser Ressourcengruppe vorhanden sind.
+    - Verwenden Sie die Felder, um gezielt Ressourcentypen auszuwählen, die Sie überprüfen möchten. Wenn Sie diese Option wählen, werden zukünftige Ressourcentypen, die innerhalb dieses Abonnements oder dieser Ressourcengruppe erstellt werden könnten, nicht für Überprüfungen berücksichtigt, es sei denn, die Überprüfung wird zukünftig explizit bearbeitet.
     
-    :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-source-scan.png" alt-text="Überprüfung mehrerer Azure-Quellen":::
+    :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-source-scan.png" alt-text="Screenshot, der die Optionen zum Überprüfen mehrerer Quellen anzeigt.":::
 
-1. Wählen Sie die Anmeldeinformationen zum Herstellen der Verbindung mit den Ressourcen in Ihrer Datenquelle aus. 
-    1. Sie können **Anmeldeinformationen auf der übergeordneten Ebene** als MSI oder bestimmte Anmeldeinformationen vom Typ Dienstprinzipal auswählen, die Sie für alle Ressourcentypen unter dem Abonnement oder der Ressourcengruppe verwenden können.
-    1. Sie können auch speziell **den Ressourcentyp auswählen und andere Anmeldeinformationen** für diesen Ressourcentyp anwenden.
-    1. Alle Anmeldeinformationen werden als Authentifizierungsmethode für alle Ressourcen unter einem bestimmten Typ betrachtet.
-    1. Sie müssen die ausgewählten Anmeldeinformationen für die Ressourcen festlegen, um Sie wie in diesem [Abschnitt](#setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) beschrieben erfolgreich zu überprüfen.
-1. Sie können in jedem Typ auswählen, ob Sie entweder alle Ressourcen oder eine Teilmenge nach Namen überprüfen möchten.
-    1. Wenn Sie die Option **Alle** belassen, werden zukünftige Ressourcen dieses Typs in zukünftigen Überprüfungen ebenfalls überprüft.
-    1. Wenn Sie bestimmte Speicherkonten oder SQL-Datenbanken auswählen, werden zukünftige Ressourcen dieses Typs, die innerhalb dieses Abonnements oder dieser Ressourcengruppe erstellt werden, nicht für Überprüfungen eingeschlossen, es sei denn, die Überprüfung wird in Zukunft explizit bearbeitet.
+1. Wählen Sie die Zugangsdaten für die Verbindung zu den Ressourcen innerhalb Ihrer Datenquelle: 
+    - Sie können Anmeldeinformationen auf der übergeordneten Ebene als MSI-Datei auswählen, oder Sie können Anmeldeinformationen für einen bestimmten Dienstprinzipaltyp auswählen. Sie können diese Anmeldeinformationen dann für alle Ressourcentypen unter dem Abonnement oder der Ressourcengruppe verwenden.
+    - Sie können den Ressourcentyp gezielt auswählen und eine andere Anmeldeinformation für diesen Ressourcentyp anwenden.
+    
+    Jede Anmeldeinformation wird als Authentifizierungsmethode für alle Ressourcen unter einem bestimmten Typ betrachtet. Sie müssen die ausgewählten Anmeldeinformationen auf den Ressourcen einstellen, um sie erfolgreich zu überprüfen, wie [weiter oben in diesem Artikel](#set-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) beschrieben.
+1. Innerhalb jedes Typs können Sie wählen, ob Sie entweder alle Ressourcen oder eine Teilmenge davon nach Namen überprüfen möchten:
+    - Wenn Sie die Option auf **Alle** belassen, werden auch zukünftige Ressourcen dieses Typs bei zukünftigen Überprüfungsläufen überprüft.
+    - Wenn Sie bestimmte Speicherkonten oder SQL-Datenbanken auswählen, werden zukünftige Ressourcen dieses Typs, die innerhalb dieses Abonnements oder dieser Ressourcengruppe erstellt wurden, nicht für Überprüfungen berücksichtigt, es sei denn, die Überprüfung wird in Zukunft explizit bearbeitet.
  
-1.  Klicken Sie auf **Weiter**, um fortzufahren. Wir testen den Zugriff, um zu überprüfen, ob Sie das Purview-MSI als Leser des Abonnements oder der Ressourcengruppe angewendet haben. Wenn eine Fehlermeldung ausgegeben wird, befolgen Sie [diese](#setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group) Anweisungen.
+1. die Option **Fortsetzen** aus, um fortzufahren. Azure Purview testet den Zugriff, um zu prüfen, ob Sie die Azure Purview MSI-Datei als Leser auf das Abonnement oder die Ressourcengruppe angewendet haben. Wenn Sie eine Fehlermeldung erhalten, befolgen Sie diese [Anweisungen](#set-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group), um es zu beheben.
 
-1.  Wählen Sie **Überprüfungsregelsätze** für jeden Ressourcentyp aus, den Sie im vorherigen Schritt ausgewählt haben. Sie können Überprüfungsregelsätze auch inline erstellen.
-  :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-rule-set.png" alt-text="Auswahl mehrerer Azure-Überprüfungsregelsätze":::
+1. Wählen Sie Überprüfungsregelsätze für jeden Ressourcentyp aus, den Sie im vorherigen Schritt ausgewählt haben. Sie können Überprüfungsregelsätze auch inline erstellen.
+  
+   :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-rule-set.png" alt-text="Screenshot, der die Überprüfungsregeln für jeden Ressourcentyp anzeigt.":::
 
-1. Wählen Sie den Auslöser für die Überprüfung. Sie können eine **wöchentliche/monatliche** oder **einmalige** Ausführung planen.
+1. Wählen Sie den Auslöser für die Überprüfung. Sie können es so planen, dass es wöchentlich, monatlich oder einmal ausgeführt wird.
 
-1. Überprüfen Sie die Auswahl der Überprüfung, und schließen Sie die Einrichtung mit „Speichern“ ab.   
+1. Begutachten Sie Ihre Überprüfung, und schließen Sie die Einrichtung mit **Speichern** ab. 
 
-## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
+## <a name="view-your-scans-and-scan-runs"></a>Betrachten Sie Ihre Überprüfungen und Überprüfungsausführungen
 
-1. Zeigen Sie Quelldetails an, indem Sie auf der Kachel im Quellenabschnitt auf **Details anzeigen** klicken. 
+1. Zeigen Sie die Quellendetails an, indem Sie auf der Fläche unter dem Abschnitt **Quellen** die Option **Details** anzeigen auswählen. 
 
-      :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-source-detail.png" alt-text="Details zu mehreren Azure-Quellen"::: 
+    :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-source-detail.png" alt-text="Screenshot, der die Quellendetails anzeigt."::: 
 
-1. Zeigen Sie die Details der Überprüfungsausführung an, indem Sie zur Seite **Überprüfungsdetails** navigieren.
-    1. Die *Statusleiste* ist eine kurze Zusammenfassung zum Ausführungsstatus der untergeordneten Ressourcen. Sie wird auf Abonnement- oder Ressourcengruppenebene angezeigt.
-    1. Grün bedeutet erfolgreich, Rot weist auf einen Fehler hin. Grau bedeutet, dass die Überprüfung noch ausgeführt wird.
-    1. Sie können auf die einzelnen Überprüfungen klicken, um präzisere Details anzuzeigen.
+1. Zeigen Sie die Details der Überprüfung-Ausführung an, indem Sie auf die Seite mit den **Überprüfungsdetails** gehen.
+   
+    Die *Statusleiste* ist eine kurze Zusammenfassung des Ausführungsstatus der untergeordneten Ressourcen. Sie wird auf Abonnement- oder Ressourcengruppenebene angezeigt. Die Farben haben die folgenden Bedeutungen:
+    
+    - Grün: Die Überprüfung war erfolgreich.
+    - Rot: Die Überprüfung ist fehlgeschlagen. 
+    - Grau: Der Überprüfungsvorgang wird noch ausgeführt.
+   
+    Sie können jede Überprüfung auswählen, um genauere Details anzuzeigen.
 
-      :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-full-details.png" alt-text="Überprüfungsdetails zu mehreren Azure-Quellen":::
+    :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-full-details.png" alt-text="Screenshot, das die Überprüfungsdetails anzeigt.":::
 
-1. Zeigen Sie im unteren Bereich der Quelldetailsseite eine Zusammenfassung der letzten nicht erfolgreichen Überprüfungsausführungen an. Sie können auch auf präzisere Details zu diesen Ausführungen klicken.
+1. Zeigen Sie unten in den Quellendetails eine Zusammenfassung der letzten fehlgeschlagenen Überprüfungsausführungen an. Sie können auch genauere Details zu diesen Ausführungen anzeigen.
 
-## <a name="manage-your-scans---edit-delete-or-cancel"></a>Verwalten Ihrer Überprüfungen: Bearbeiten, Löschen oder Abbrechen
+## <a name="manage-your-scans-edit-delete-or-cancel"></a>Verwalten Sie Ihre Überprüfungen: bearbeiten, löschen oder abbrechen
 Gehen Sie zum Verwalten oder Löschen einer Überprüfung wie folgt vor:
 
-- Navigieren Sie zum Verwaltungscenter. Wählen Sie im Abschnitt „Quellen und Überprüfung“ die Option „Datenquellen“ und anschließend die gewünschte Datenquelle aus.
+1. Navigieren Sie zum Verwaltungscenter.
+1. Wählen Sie **Datenquellen** unter dem Abschnitt **Quellen und Überprüfungen** aus und wählen Sie dann die gewünschte Datenquelle aus.
+1. Wählen Sie die Überprüfung aus, die Sie verwalten möchten. Führen Sie anschließend Folgendes durch: 
 
-- Wählen Sie die Überprüfung aus, die Sie verwalten möchten. Wenn Sie die Überprüfung bearbeiten möchten, wählen Sie „Bearbeiten“ aus.
-
-- Wenn Sie Ihre Überprüfung löschen möchten, wählen Sie „Löschen“ aus.
-- Wenn eine Überprüfung ausgeführt wird, können Sie sie auch abbrechen.
+   - Wenn Sie die Überprüfung bearbeiten möchten, wählen Sie **Bearbeiten** aus.
+   - Sie können die Überprüfung löschen, indem Sie **Löschen** wählen.
+   - Wenn die Überprüfung ausgeführt wird, kann sie abgebrochen werden, indem Sie **Abbrechen** auswählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
-- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)    
+- [Browsen Sie im Azure Purview Datenkatalog](how-to-browse-catalog.md)
+- [Durchsuchen Sie den Azure Purview Datenkatalog](how-to-search-catalog.md)    

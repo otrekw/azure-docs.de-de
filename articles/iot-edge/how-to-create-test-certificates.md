@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d8cf3dbe9d1dc2ad329a0b5ab8fa9554c85ae55c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adfb46894e769a23a2ac48bdb4ac3e432d9cebce
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199094"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139055"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Erstellen von Demozertifikaten zum Testen der Features von IoT Edge-Geräten
 
@@ -361,7 +361,7 @@ Wenn Sie ein IoT-Gerät mit selbst signierten Zertifikaten authentifizieren, mü
 Anschließend führen Sie eine Überprüfung durch, um gegenüber IoT Hub zu belegen, dass Sie das Stammzertifizierungsstellen-Zertifikat besitzen.
 Schließlich verwenden Sie das gleiche Stammzertifizierungsstellen-Zertifikat zum Erstellen von Gerätezertifikaten, die auf dem IoT-Gerät abgelegt werden, damit es sich bei IoT Hub authentifizieren kann.
 
-Die Zertifikate in diesem Abschnitt sind für die Schritte unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md) ausgelegt.
+Die Zertifikate in diesem Abschnitt sind für die Schritte unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](../iot-hub/tutorial-x509-scripts.md) ausgelegt.
 
 #### <a name="windows"></a>Windows
 

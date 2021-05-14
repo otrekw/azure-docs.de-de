@@ -1,14 +1,14 @@
 ---
 title: Fehler „RequestBodyTooLarge“ aus der Apache Spark-App – Azure HDInsight
-description: NativeAzureFileSystem ... RequestBodyTooLarge ist im Protokoll für die Apache Spark-Streaming-App in Azure HDInsight enthalten.
+description: NativeAzureFileSystem ... RequestBodyTooLarge erscheint im Protokoll für Apache Spark-Streaming-App in Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/29/2019
 ms.openlocfilehash: 73ae646cb083841ee1d55b6c7ce6af7180cef08e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98929428"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>„NativeAzureFileSystem...RequestBodyTooLarge“ wird im Apache Spark-Streaming-App-Protokoll in HDInsight angezeigt.
@@ -25,7 +25,7 @@ Die Größe Ihrer Spark-Ereignisprotokolldatei übersteigt vermutlich die Dateil
 
 In Spark 2.3 generiert jede Spark-App eine Spark-Ereignisprotokolldatei. Die Spark-Ereignisprotokolldatei für eine Spark-Streaming-App wird während der App-Ausführung immer größer. Heutzutage gilt für eine Datei in WASB ein Blocklimit von 50.000, und die Standardblockgröße beträgt 4 MB. Also beträgt die maximale Dateigröße in der Standardkonfiguration 195 GB. In Azure Storage wurde jedoch die maximale Blockgröße auf 100 MB angehoben und dadurch die Beschränkung für einzelne Dateien auf 4,75 TB erhöht. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Blob Storage](../../storage/blobs/scalability-targets.md).
 
-## <a name="resolution"></a>Auflösung
+## <a name="resolution"></a>Lösung
 
 Für diesen Fehler gibt es drei Lösungen:
 

@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96023822"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
@@ -29,7 +29,7 @@ Gehen Sie folgendermaßen vor, um die Fehlermeldungen im Zusammenhang mit dem Wo
 1. Verwenden Sie die Befehlszeile, und geben Sie `msgen status` ein.
 2. Untersuchen Sie den Inhalt der Datei „standardoutput.txt“.
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. Verwenden von `msgen status` in der Befehlszeile
+### <a name="1-using-the-command-line-msgen-status"></a>1. Verwenden der Befehlszeile `msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -81,7 +81,7 @@ Für die Workflow-ID 1001 und die Datei „config.txt“, die sich im gleichen P
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2.  Untersuchen des Inhalts der Datei „standardoutput.txt“ 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2.  Untersuchen Sie den Inhalt von standardoutput.txt 
 Suchen Sie nach dem Ausgabecontainer für den betreffenden Workflow. MSGEN erstellt nach jeder Ausführung des Workflows einen Ordner `[workflowfilename].logs.zip`. Entzippen Sie den Ordner, um seinen Inhalt anzuzeigen:
 
 * outputFileList.txt: Eine Liste der während des Workflows erstellten Ausgabedateien

@@ -2,13 +2,13 @@
 title: Bewährte Methoden für Vorlagen
 description: In diesem Artikel werden empfohlene Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen (ARM-Vorlagen) beschrieben. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: ff2b9ecf0e4004aa6689294867f5ff93006211ec
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/23/2021
+ms.openlocfilehash: a9b7530f7d9e3e86a3f2137cda5fcefa5e101c23
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219942"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950188"
 ---
 # <a name="arm-template-best-practices"></a>Bewährte Methoden für ARM-Vorlagen
 
@@ -16,7 +16,7 @@ In diesem Artikel werden empfohlene Vorgehensweisen zur Erstellung von ARM-Vorla
 
 ## <a name="template-limits"></a>Vorlagengrenzwerte
 
-Begrenzen Sie die Größe der Vorlage auf 4 MB und die jeder Parameterdatei auf 64 KB. Die 4-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für variables und Parameter erweitert wurde.
+Schränken Sie die Größe Ihrer Vorlage auf 4 MB ein. Die 4-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für variables und Parameter erweitert wurde. Die Parameterdatei ist ebenfalls auf 4 MB beschränkt. Bei einer Vorlagen- oder Parameterdatei mit einer Größe von weniger als 4 MB wird unter Umständen ein Fehler angezeigt, wenn die Anforderung insgesamt zu groß ist. Weitere Informationen zum Vereinfachen der Vorlage, um eine große Anforderung zu vermeiden, finden Sie unter [Beheben von Fehlern des Typs „Auftragsgröße überschritten“](error-job-size-exceeded.md).
 
 Außerdem gelten folgenden Beschränkungen:
 
@@ -277,7 +277,7 @@ Die folgenden Informationen können bei der Arbeit mit [Ressourcen](template-syn
    > [!NOTE]
    > Zum Sicherzustellen der Verschlüsselung von Geheimnissen, die als Parameter an virtuelle Computer und Erweiterungen übergeben werden, verwenden Sie die `protectedSettings`-Eigenschaft der entsprechenden Erweiterungen.
 
-* Geben Sie für Eigenschaften mit Standardwerten, die sich im Lauf der Zeit ändern können, explizite Werte an. Wenn Sie z. B. einen AKS-Cluster bereitstellen, können Sie die `kubernetesVersion`-Eigenschaft angeben oder weglassen. Wenn Sie sie nicht angeben, wird für den [Cluster standardmäßig die N-1-Nebenversion und der neueste Patch](../../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions) verwendet. Wenn Sie den Cluster mithilfe einer ARM-Vorlage bereitstellen, entspricht dieses Standardverhalten möglicherweise nicht Ihren Erwartungen. Wenn Sie die Vorlage erneut bereitstellen, wird der Cluster möglicherweise unerwartet auf eine neue Kubernetes-Version aktualisiert. Geben Sie stattdessen eine explizite Versionsnummer an, und ändern Sie diese dann manuell, wenn Sie für das Upgrade Ihres Clusters bereit sind.
+* Geben Sie für Eigenschaften mit Standardwerten, die sich im Lauf der Zeit ändern können, explizite Werte an. Wenn Sie z. B. einen AKS-Cluster bereitstellen, können Sie die Eigenschaft `kubernetesVersion` angeben oder auslassen. Wenn Sie sie nicht angeben, wird für den [Cluster standardmäßig die N-1-Nebenversion und der neueste Patch](../../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions) verwendet. Wenn Sie den Cluster mithilfe einer ARM-Vorlage bereitstellen, entspricht dieses Standardverhalten möglicherweise nicht Ihren Erwartungen. Wenn Sie die Vorlage erneut bereitstellen, wird der Cluster möglicherweise unerwartet auf eine neue Kubernetes-Version aktualisiert. Erwägen Sie stattdessen die Angabe einer expliziten Versionsnummer, und ändern Sie diese dann manuell, wenn Sie für das Upgrade Ihres Clusters bereit sind.
 
 ## <a name="use-test-toolkit"></a>Verwenden des Testtoolkits
 

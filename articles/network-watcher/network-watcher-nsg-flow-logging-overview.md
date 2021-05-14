@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92500be4ef793fc71c828b84b6b62f833884b372
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100521678"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109628282"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -93,10 +93,10 @@ Datenflussprotokolle enthalten die folgenden Eigenschaften:
                     * **Datenfluss:** Richtung des Datenflusses. Gültige Werte sind **I** für eingehende (inbound) und **O** für ausgehende (outbound) Nachrichten.
                     * **Entscheidung zum Datenverkehr:** Gibt an, ob Datenverkehr zugelassen oder verweigert wurde. Gültige Werte sind **A** für zugelassen (allowed) und **D** für verweigert (denied).
                     * **Flowstatus (nur Version 2):** Erfasst den Flowstatus. Mögliche Statusangaben: **B**: („Begin“/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C**: („Continue“/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E**: („End“/Beendigung): Beendigung eines Flows. Statistiken werden bereitgestellt.
-                    * **Pakete – Quelle zu Ziel – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden
-                    * **Gesendete Bytes – Quelle zu Ziel – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketbytes, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden Paketbytes enthalten den Paketheader und die Nutzlast.
-                    * **Pakete – Ziel zu Quelle – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden
-                    * **Gesendete Bytes – Ziel zu Quelle – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketbytes, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden Paketbytes enthalten den Paketheader und die Nutzlast.
+                    * **Pakete – Quelle zu Ziel – nur Version 2:** Gesamtanzahl von TCP-Paketen, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden
+                    * **Gesendete Bytes – Quelle zu Ziel – nur Version 2:** Gesamtanzahl von TCP-Paketbytes, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden Paketbytes enthalten den Paketheader und die Nutzlast.
+                    * **Pakete – Ziel zu Quelle – nur Version 2:** Gesamtanzahl von TCP-Paketen, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden
+                    * **Gesendete Bytes – Ziel zu Quelle – nur Version 2:** Gesamtanzahl von TCP-Paketbytes, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden Paketbytes enthalten den Paketheader und die Nutzlast.
 
 
 **Version 2 der NSG-Datenflussprotokolle (im Gegensatz zu Version 1)** 
@@ -347,6 +347,18 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 - [[Tutorial] Verwalten und Analysieren von NSG-Datenflussprotokollen mit Grafana](./network-watcher-nsg-grafana.md)
 - [[Tutorial] Verwalten und Analysieren von NSG-Datenflussprotokollen mit Graylog](./network-watcher-analyze-nsg-flow-logs-graylog.md)
 
+*Deaktivieren von Flowprotokollen*
+
+Wenn das Datenflussprotokoll deaktiviert ist, wird die Datenflussprotokollierung für die zugeordnete NSG beendet. Das Datenflussprotokoll bleibt jedoch weiterhin als Ressource mit allen Einstellungen und Zuordnungen erhalten. Es kann jederzeit aktiviert werden, um mit der Datenflussprotokollierung in der konfigurierten NSG zu beginnen. Die Schritte zum Deaktivieren/Aktivieren von Datenflussprotokollen finden Sie in [diesem Leitfaden](./network-watcher-nsg-flow-logging-powershell.md).  
+
+*Löschen von Datenflussprotokollen*
+
+Beim Löschen des Datenflussprotokolls wird nicht nur die Datenflussprotokollierung für die zugeordnete NSG beendet, sondern auch die Datenflussprotokoll-Ressource mit ihren Einstellungen und Zuordnungen gelöscht. Um erneut mit der Datenflussprotokollierung zu beginnen, muss eine neue Datenflussprotokoll-Ressource für diese NSG erstellt werden. Ein Datenflussprotokoll kann mit [PowerShell,](/powershell/module/az.network/remove-aznetworkwatcherflowlog) der [Befehlszeilenschnittstelle](/cli/azure/network/watcher/flow-log#az_network_watcher_flow_log_delete) oder der [REST-API](/rest/api/network-watcher/flowlogs/delete) gelöscht werden. Unterstützung für das Löschen von Datenflussprotokollen über das Azure-Portal wird derzeit vorbereitet.    
+
+Darüber hinaus wird beim Löschen einer NSG standardmäßig die zugeordnete Datenflussprotokoll-Ressource gelöscht.
+
+> [!NOTE]
+> Um eine NSG in eine andere Ressourcengruppe oder ein anderes Abonnement zu verschieben, müssen die zugeordneten Datenflussprotokolle gelöscht werden. Das Deaktivieren der Datenflussprotokolle allein reicht nicht aus. Nach der Migration der NSG müssen die Datenflussprotokolle neu erstellt werden, um die Datenflussprotokollierung darin zu ermöglichen.  
 
 ## <a name="nsg-flow-logging-considerations"></a>Überlegungen zur NSG-Flowprotokollierung
 
@@ -366,6 +378,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Inkompatible Dienste**: Aufgrund der derzeitigen Plattformeinschränkungen wird eine kleine Anzahl von Azure-Diensten nicht von NSG-Datenflussprotokollen unterstützt. Die aktuelle Liste der inkompatiblen Dienste lautet:
 - [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
+- [Azure Container Instances (ACI)](https://azure.microsoft.com/services/container-instances/)
 - [Logik-Apps](https://azure.microsoft.com/services/logic-apps/) 
 
 ## <a name="best-practices"></a>Bewährte Methoden

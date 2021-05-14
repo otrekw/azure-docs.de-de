@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d89cc41ed26124ae4ad2e6689be6d59278c3d9da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfe19f71af5f8ac876ca7d57dc2ad3328c766eb4
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94542166"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987018"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Schnellstart: Erstellen einer Azure Database for MySQL-Instanz mithilfe eines einfachen Azure CLI-Befehls – az mysql up (Vorschau)
 
 > [!IMPORTANT]
-> Der Befehl [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) der Azure-Befehlszeilenschnittstelle befindet sich in der Vorschauphase.
+> Der Befehl [az mysql up](/cli/azure/mysql#az_mysql_up) der Azure-Befehlszeilenschnittstelle befindet sich in der Vorschauphase.
 
-Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Schnellstart wird veranschaulicht, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle und des Befehls [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) einen Azure Database for MySQL-Server erstellen. Zusätzlich zum Server erstellt der Befehl `az mysql up` auch eine Beispieldatenbank und einen Root-Benutzer in der Datenbank, er öffnet die Firewall für Azure-Dienste und erstellt Firewallregeln für den Clientcomputer. Dies trägt zur Beschleunigung des Entwicklungsprozesses bei.
+Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Schnellstart wird veranschaulicht, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle und des Befehls [az mysql up](/cli/azure/mysql#az_mysql_up) einen Azure Database for MySQL-Server erstellen. Zusätzlich zum Server erstellt der Befehl `az mysql up` auch eine Beispieldatenbank und einen Root-Benutzer in der Datenbank, er öffnet die Firewall für Azure-Dienste und erstellt Firewallregeln für den Clientcomputer. Dies trägt zur Beschleunigung des Entwicklungsprozesses bei.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,7 +42,8 @@ az account set --subscription <subscription id>
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Erstellen eines Servers für Azure-Datenbank für MySQL
 
-Damit Sie die Befehle verwenden können, installieren Sie die Erweiterung [db-up](/cli/azure/ext/db-up). Falls ein Fehler auftritt, vergewissern Sie sich, dass die neueste Version der Azure-Befehlszeilenschnittstelle installiert ist. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
+Damit Sie die Befehle verwenden können, installieren Sie die Erweiterung [db-up](/cli/azure/ext/db-up/mysql
+). Falls ein Fehler auftritt, vergewissern Sie sich, dass die neueste Version der Azure-Befehlszeilenschnittstelle installiert ist. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
 ```azurecli
 az extension add --name db-up
@@ -71,7 +72,7 @@ admin-user | Systemgeneriert | Der Benutzername für die Administratoranmeldung.
 admin-password | Systemgeneriert | Das Kennwort des Administratorbenutzers.
 
 > [!NOTE]
-> Weitere Informationen zum Befehl `az mysql up` und den zugehörigen zusätzlichen Parametern finden Sie in der [Dokumentation der Azure-Befehlszeilenschnittstelle](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up).
+> Weitere Informationen zum Befehl `az mysql up` und den zugehörigen zusätzlichen Parametern finden Sie in der [Dokumentation der Azure-Befehlszeilenschnittstelle](/cli/azure/mysql#az_mysql_up).
 
 Nach der Erstellung weist Ihr Server die folgenden Einstellungen auf:
 
@@ -88,7 +89,7 @@ Nach der Erstellung weist Ihr Server die folgenden Einstellungen auf:
 
 Nach Abschluss des Befehls `az mysql up` wird eine Liste von Verbindungszeichenfolgen für verbreitete Programmiersprachen an Sie zurückgegeben. Diese Verbindungszeichenfolgen sind mit bestimmten Attributen Ihres neu erstellten Azure Database for MySQL-Servers vorkonfiguriert.
 
-Sie können den Befehl [az mysql show-connection-string](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) verwenden, um diese Verbindungszeichenfolgen erneut aufzulisten.
+Sie können den Befehl [az mysql show-connection-string](/cli/azure/mysql#az_mysql_show_connection_string) verwenden, um diese Verbindungszeichenfolgen erneut aufzulisten.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -98,7 +99,7 @@ Bereinigen Sie alle im Schnellstart erstellten Ressourcen mit dem folgenden Befe
 az mysql down --delete-group
 ```
 
-Wenn Sie nur den neu erstellten Server löschen möchten, können Sie den Befehl [az mysql down](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-down) ausführen.
+Wenn Sie nur den neu erstellten Server löschen möchten, können Sie den Befehl [az mysql down](/cli/azure/mysql#az_mysql_down) ausführen.
 
 ```azurecli
 az mysql down

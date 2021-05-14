@@ -3,12 +3,12 @@ title: Azure-Ressourcengruppe als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Ressourcengruppenereignisse bereitgestellt werden.
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: 4c1990909dc555e9e2a6d09538b807ba7e07ce83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7616999d820075524f6efadccd98e04c09732032
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363218"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109733511"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>Azure-Ressourcengruppe als Event Grid-Quelle
 
@@ -467,7 +467,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | [Azure CLI: Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource](./scripts/event-grid-cli-resource-group-filter.md) | Beispielskript, mit dem Ereignisse für eine Ressourcengruppe abonniert und Ereignisse nach einer Ressource gefiltert werden. |
 | [PowerShell: Abonnieren von Ereignissen für eine Ressourcengruppe](./scripts/event-grid-powershell-resource-group.md) | Beispielskript, mit dem Ereignisse für eine Ressourcengruppe abonniert werden. Sendet Ereignisse an einen WebHook. |
 | [PowerShell: Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource](./scripts/event-grid-powershell-resource-group-filter.md) | Beispielskript, mit dem Ereignisse für eine Ressourcengruppe abonniert und Ereignisse nach einer Ressource gefiltert werden. |
-| [Resource Manager-Vorlage: Ressourcenabonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Abonniert Ereignisse für ein Azure-Abonnement oder eine Ressourcengruppe. Sendet Ereignisse an einen WebHook. |
+| [Resource Manager-Vorlage: Ressourcenabonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid-resource-events-to-webhook) | Abonniert Ereignisse für ein Azure-Abonnement oder eine Ressourcengruppe. Sendet Ereignisse an einen WebHook. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

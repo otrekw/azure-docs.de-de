@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: 28fdd8b10c7106380c296c8131ade909ee88d0f8
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/16/2021
+ms.openlocfilehash: 7a5e4375ebe289bb5ae012f94ba9dd050563bbbb
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107090"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209857"
 ---
 # <a name="co-sell-requirements"></a>Co-Selling-Anforderungen
 
@@ -30,6 +30,9 @@ In der folgenden Tabelle werden alle möglichen Co-Selling-Status aufgeführt:
 |||
 
 ## <a name="requirements-for-co-sell-ready-status"></a>Anforderungen für den Status „Co-Sell Ready“
+
+> [!NOTE]
+> Jedes Angebot, das über das Entwicklerprogramm des kommerziellen Marketplace in Partner Center veröffentlicht wird, ist für den Status „Co-Sell Ready“ berechtigt, sofern die entsprechenden Anforderungen erfüllt sind. Office-Apps und -Add-Ins sind nicht berechtigt (z. B. Teams, SharePoint-Lösungen, Outlook, Excel).
 
 Damit ein Angebot den Status „Co-Sell Ready“ erhalten kann, müssen die folgenden Anforderungen erfüllt werden:
 
@@ -50,12 +53,12 @@ Damit ein Angebot den Status „Co-Sell Ready“ erhalten kann, müssen die folg
 
 ### <a name="complete-the-co-sell-with-microsoft-tab"></a>Ausfüllen der Registerkarte „Co-Selling mit Microsoft“
 
-Geben Sie beim Veröffentlichen oder Ändern Ihres Angebots wie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](commercial-marketplace-co-sell.md) beschrieben alle erforderlichen Informationen auf der Registerkarte **Co-Selling mit Microsoft** an. Dazu gehören die folgenden Dokumente:
+Geben Sie beim Veröffentlichen oder Ändern Ihres Angebots wie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](./co-sell-configure.md) beschrieben alle erforderlichen Informationen auf der Registerkarte **Co-Selling mit Microsoft** an. Dazu gehören die folgenden Dokumente:
 
 - Onepager zur Lösung bzw. zum Angebot
 - Pitch Deck zur Lösung bzw. zum Angebot
 
-Zum Erstellen dieser Dokumente werden Vorlagen zur Verfügung gestellt. Weitere Informationen über die erforderlichen und optionalen Angaben auf der Registerkarte „Co-Selling mit Microsoft“ finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](commercial-marketplace-co-sell.md).
+Zum Erstellen dieser Dokumente werden Vorlagen zur Verfügung gestellt. Weitere Informationen über die erforderlichen und optionalen Angaben auf der Registerkarte „Co-Selling mit Microsoft“ finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](./co-sell-configure.md).
 
 ### <a name="publish-your-offer-live"></a>Veröffentlichen Ihres Angebots im Livemodus
 
@@ -81,7 +84,7 @@ Anforderung 2: Bestehen Sie die technische Prüfung von Microsoft für Azure-ba
 - Bei der technischen Prüfung muss festgestellt werden, dass mehr als 50 % der Infrastruktur Ihres Angebots wiederholbaren IP-Code in Azure verwendet. Beachten Sie, dass transaktionsfähige Angebote für Azure-VMs und Azure-Anwendungen im kommerziellen Marketplace diese Anforderung standardmäßig erfüllen.
 
 Anforderung 3: Stellen Sie ein Diagramm zur Referenzarchitektur bereit:
-- Laden Sie ein Referenzarchitekturdiagramm mit Ihren Co-Selling-Dokumenten zur Überprüfung in Partner Center hoch. Eine Anleitung zum Erstellen dieses Diagramms finden Sie unter [Referenzarchitekturdiagramm](reference-architecture-diagram.md). Informationen zum Hochladen des Diagramms finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](commercial-marketplace-co-sell.md).
+- Laden Sie ein Referenzarchitekturdiagramm mit Ihren Co-Selling-Dokumenten zur Überprüfung in Partner Center hoch. Eine Anleitung zum Erstellen dieses Diagramms finden Sie unter [Referenzarchitekturdiagramm](reference-architecture-diagram.md). Informationen zum Hochladen des Diagramms finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](./co-sell-configure.md).
 
 ## <a name="requirements-for-business-applications-co-sell-incentivized-status"></a>Anforderungen an den Business Applications – Co-Sell Incentivized-Status
 
@@ -89,4 +92,4 @@ Dieser Status gilt für IP-basierte Lösungen, die auf Dynamics 365 oder PowerAp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](commercial-marketplace-co-sell.md)
+- [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](./co-sell-configure.md)

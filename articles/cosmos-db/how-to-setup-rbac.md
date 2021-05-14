@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung mit
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/19/2021
 ms.author: thweiss
-ms.openlocfilehash: efde86eac3e0830b36eabfc9e80df09daeed9f6f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9de41835e33d50a670a44089cb10d44cc57e92a7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586062"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818697"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurieren der rollenbasierten Zugriffssteuerung mit Azure Active Directory für Ihr Azure Cosmos DB-Konto (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,6 +45,16 @@ RBAC auf Datenebene in Azure Cosmos DB basiert auf Konzepten, die in anderen RB
 
 ## <a name="permission-model"></a><a id="permission-model"></a> Berechtigungsmodell
 
+> [!IMPORTANT]
+> Dieses Berechtigungsmodell deckt nur Datenbankvorgänge ab, mit denen Daten gelesen und geschrieben werden können. Es deckt **keine** Verwaltungsvorgänge ab, wie das Erstellen von Containern oder das Ändern ihres Durchsatzes. Dies bedeutet, dass Sie **kein Azure Cosmos DB-Datenebenen-SDK verwenden können**, um Verwaltungsvorgänge mit einer AAD-Identität zu authentifizieren. Stattdessen müssen Sie [Azure RBAC](role-based-access-control.md) verwenden über:
+> - [ARM-Vorlagen](manage-with-templates.md)
+> - [Azure PowerShell-Skripts](manage-with-powershell.md),
+> - [Azure CLI-Skripts](manage-with-cli.md),
+> - Azure-Verwaltungsbibliotheken, die verfügbar sind in
+>   - [.NET](https://www.nuget.org/packages/Azure.ResourceManager.CosmosDB)
+>   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)
+>   - [Python](https://pypi.org/project/azure-mgmt-cosmosdb/)
+
 In der folgenden Tabelle sind alle Aktionen aufgeführt, die vom Berechtigungsmodell bereitgestellt werden.
 
 | Name | Entsprechende Datenbankvorgänge |
@@ -64,9 +74,6 @@ Platzhalter werden sowohl auf *Containerebene* als auch auf *Elementebene* unter
 
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`
-
-> [!IMPORTANT]
-> Dieses Berechtigungsmodell deckt nur Datenbankvorgänge ab, mit denen Daten gelesen und geschrieben werden können. Es deckt **keine** Verwaltungsvorgänge ab, wie das Erstellen von Containern oder das Ändern ihres Durchsatzes. Zum Authentifizieren von Verwaltungsvorgängen mit einer AAD-Identität verwenden Sie stattdessen [Azure RBAC](role-based-access-control.md).
 
 ### <a name="metadata-requests"></a><a id="metadata-requests"></a> Metadatenanforderungen
 
@@ -314,7 +321,7 @@ resourceGroupName='<myResourceGroup>'
 accountName='<myCosmosAccount>'
 readOnlyRoleDefinitionId = '<roleDefinitionId>' // as fetched above
 principalId = '<aadPrincipalId>'
-az cosmosdb sql role assignment create --account-name $accountName --resource-group --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
+az cosmosdb sql role assignment create --account-name $accountName --resource-group $resourceGroupName --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
 ```
 
 ## <a name="initialize-the-sdk-with-azure-ad"></a>Initialisieren des SDK mit Azure AD
@@ -323,9 +330,10 @@ Wenn Sie Azure Cosmos DB-RBAC in Ihrer Anwendung verwenden möchten, müssen Si
 
 Die Methode zur Erstellung einer `TokenCredential`-Instanz wird in diesem Artikel nicht behandelt. Es gibt viele Möglichkeiten, eine solche Instanz zu erstellen, die vom Typ der zu verwendenden AAD-Identität abhängen (Benutzerprinzipal, Dienstprinzipal, Gruppe usw.). Am wichtigsten ist, dass Ihre `TokenCredential`-Instanz in die Identität (Prinzipal-ID) aufgelöst werden muss, der Sie die Rollen zugewiesen haben. Beispiele für das Erstellen einer `TokenCredential`-Klasse finden Sie hier:
 
-- [in .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [in Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
-- [in JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme#credential-classes)
+- [In .NET](/dotnet/api/overview/azure/identity-readme#credential-classes)
+- [In Java](/java/api/overview/azure/identity-readme#credential-classes)
+- [In JavaScript](/javascript/api/overview/azure/identity-readme#credential-classes)
+- In REST-API
 
 In den folgenden Beispielen wird ein Dienstprinzipal mit einer `ClientSecretCredential`-Instanz verwendet.
 
@@ -373,6 +381,12 @@ const client = new CosmosClient({
 });
 ```
 
+### <a name="in-rest-api"></a>In REST-API
+
+Azure Cosmos DB RBAC wird derzeit in der Version 2021-03-15 der REST-API unterstützt. Legen Sie beim Erstellen des [Autorisierungsheaders](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) den Parameter **type** auf **aad** und die Hashsignatur **(sig)** auf das **OAuth-Token** fest, wie im folgenden Beispiel gezeigt:
+
+`type=aad&ver=1.0&sig=<token-from-oauth>`
+
 ## <a name="auditing-data-requests"></a>Überwachen von Datenanforderungen
 
 Bei Verwendung von Azure Cosmos DB-RBAC werden [Diagnoseprotokolle](cosmosdb-monitor-resource-logs.md) durch Identitäts- und Autorisierungsinformationen für jeden Datenvorgang erweitert. Dies ermöglicht eine detaillierte Überwachung und das Abrufen der AAD-Identität, die für jede an Ihr Azure Cosmos DB-Konto gesendete Datenanforderung verwendet wurde.
@@ -385,6 +399,7 @@ Diese zusätzlichen Informationen fließen in die Protokollkategorie **DataPlane
 ## <a name="limits"></a>Einschränkungen
 
 - Sie können bis zu 100 Rollendefinitionen und 2.000 Rollenzuweisungen pro Azure Cosmos DB-Konto erstellen.
+- Sie können Rollendefinitionen nur Azure AD-Identitäten zuweisen, die demselben Azure AD-Anker wie Ihr Azure Cosmos DB-Konto angehören.
 - Die Azure AD-Gruppenauflösung wird derzeit für Identitäten, die zu mehr als 200 Gruppen gehören, nicht unterstützt.
 - Das Azure AD-Token wird zurzeit mit jeder einzelnen an den Azure Cosmos DB-Dienst gesendeten Anforderung als Header übergeben und erhöht so die Gesamtnutzlastgröße.
 - Der Zugriff auf Ihre Daten mit Azure AD über den [Azure Cosmos DB-Explorer](data-explorer.md) wird noch nicht unterstützt. Wenn Sie den Azure Cosmos DB-Explorer verwenden, muss der Benutzer vorerst noch Zugriff auf den Primärschlüssel des Kontos haben.

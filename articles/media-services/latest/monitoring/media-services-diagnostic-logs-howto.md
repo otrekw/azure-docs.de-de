@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 290b68b90deb669f70fa708e6c3bda83cb7187c0
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: b21d7a5eef36a4aa2deac4d1005a7b82ab06687b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227788"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138929"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Überwachen von Media Services-Diagnoseprotokollen
 
 [!INCLUDE [media services api v3 logo](../includes/v3-hr.md)]
 
-[Azure Monitor](/azure/azure-monitor/overview) ermöglicht Ihnen die Überwachung von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie sich Ihre Anwendungen verhalten. Eine ausführliche Beschreibung dieser Funktion und Argumente für die Verwendung der Azure Media Services-Metriken und -Diagnoseprotokolle finden Sie unter [Überwachen von Media Services-Metriken und -Diagnoseprotokollen](monitor-media-services.md).
+[Azure Monitor](../../../azure-monitor/overview.md) ermöglicht Ihnen die Überwachung von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie sich Ihre Anwendungen verhalten. Eine ausführliche Beschreibung dieser Funktion und Argumente für die Verwendung der Azure Media Services-Metriken und -Diagnoseprotokolle finden Sie unter [Überwachen von Media Services-Metriken und -Diagnoseprotokollen](monitor-media-services.md).
 
 Dieser Artikel zeigt Ihnen, wie Sie Daten an das Speicherkonto weiterleiten und dann die Daten anzeigen können.
 
@@ -183,9 +183,9 @@ Unter Umständen müssen Sie bis zu fünf Minuten warten, bis das Ereignis im Sp
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Azure Monitor-Metriken](/azure/azure-monitor/data-platform)
-* [Azure Monitor-Diagnoseprotokolle](/azure/azure-monitor/essentials/platform-logs-overview)
-* [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](/azure/azure-monitor/essentials/platform-logs-overview)
+* [Azure Monitor-Metriken](../../../azure-monitor/data-platform.md)
+* [Azure Monitor-Diagnoseprotokolle](../../../azure-monitor/essentials/platform-logs-overview.md)
+* [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

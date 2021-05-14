@@ -10,22 +10,27 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 1b2418b248e995b0f64eec82ccb477b15583c81e
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 5214d914c104fdf6df302c7879230bba2b3d2928
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103562330"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891840"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Versionshinweise: Speech-Geräte-SDK
 
 In den folgenden Abschnitten sind Änderungen in den neuesten Versionen aufgeführt.
 
+## <a name="speech-devices-sdk-1160"></a>Speech-Geräte-SDK 1.16.0:
+
+- [GitHub-Issue #22](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues/22)behoben.
+- Die [Speech-SDK](./speech-sdk.md)-Komponente wurde auf Version 1.16.0 aktualisiert. Weitere Informationen finden Sie in den [Versionshinweisen](./releasenotes.md).
+
 ## <a name="speech-devices-sdk-1150"></a>Speech Devices SDK 1.15.0:
 
 - Aktualisiert auf den neuen Microsoft Audio Stack (MAS) mit verbessertem Beamforming und optimierter Rauschunterdrückung für Sprache.
 - Die binäre Größe wird je nach Ziel um bis zu 70 % reduziert.
-- Unterstützung für [Azure Percept Audio](https://docs.microsoft.com/azure/azure-percept/overview-azure-percept-audio) mit [binärer Freigabe](https://aka.ms/sdsdk-download-APAudio).
+- Unterstützung für [Azure Percept Audio](../../azure-percept/overview-azure-percept-audio.md) mit [binärer Freigabe](https://aka.ms/sdsdk-download-APAudio).
 - Die [Speech SDK](./speech-sdk.md)-Komponente wurde auf Version 1.15.0 aktualisiert. Weitere Informationen finden Sie in den [Versionshinweisen](./releasenotes.md).
 
 ## <a name="speech-devices-sdk-1110"></a>Speech Devices SDK 1.11.0:
@@ -107,7 +112,7 @@ In den folgenden Abschnitten sind Änderungen in den neuesten Versionen aufgefü
 **Wichtige Änderungen**
 
 - Mit diesem Release werden einige Breaking Changes eingeführt. Ausführliche Informationen zu den APIs finden Sie auf [dieser Seite](https://aka.ms/csspeech/breakingchanges_1_0_0).
-- Die KWS-Modelldateien sind nicht mit dem Speech-Geräte-SDK 1.0.1 kompatibel. Vorhandene Schlüsselwortdateien werden nach dem Schreiben der neuen Schlüsselwortdateien auf dem Gerät gelöscht.
+- Die Modelldateien für die Schlüsselworterkennung sind nicht mit Speech Devices SDK 1.0.1 kompatibel. Vorhandene Schlüsselwortdateien werden nach dem Schreiben der neuen Schlüsselwortdateien auf dem Gerät gelöscht.
 
 ## <a name="speech-devices-sdk-050-2018-aug-release"></a>Speech Devices SDK 0.5.0: Version 2018-Aug
 

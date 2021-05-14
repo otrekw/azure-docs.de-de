@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 75650d7ff0ac647aeb6dace76c270680b1b89347
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae9b749f62dc74a6cb0dfea3701fd4ebac11c188
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954957"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931655"
 ---
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
@@ -48,3 +48,7 @@ Hier einige Vorschläge für Daten, deren Erfassung sich lohnen kann:
 ## <a name="validate-your-integration"></a>Überprüfen Ihrer Integration
 
 Testen Sie Ihre Integration anhand der [Checkliste für die Integration von Microsoft Identity Platform](../articles/active-directory/develop/identity-platform-integration-checklist.md).
+
+## <a name="build-for-resilience"></a>Erstellen resilienter Lösungen
+
+Erfahren Sie, wie Sie die Resilienz in Ihrer App erhöhen. Details hierzu finden Sie unter [Erhöhen der Resilienz bei der Authentifizierung und Autorisierung in von Ihnen entwickelten Anwendungen](../articles/active-directory/fundamentals/resilience-app-development-overview.md).

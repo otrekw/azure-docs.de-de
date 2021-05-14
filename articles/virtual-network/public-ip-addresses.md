@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: f2818965013e44cbbe3202887bf79a737dbbbb58
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 121c22e3a25a95fa64f6f779ebc0827bb6c123c7
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806958"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015949"
 ---
 # <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
 
@@ -54,7 +54,7 @@ Für öffentliche IP-Adressen mit Standard-SKU gilt Folgendes:
 - Sie verfügen über ein anpassbares Leerlauftimeout für den ursprünglich eingehenden Datenfluss, das auf einen Wert zwischen vier und 30 Minuten (Standardwert: vier Minuten) festgelegt werden kann, sowie über ein vorgegebenes Leerlauftimeout für den ursprünglich ausgehenden Datenfluss von vier Minuten.
 - Sie sind standardmäßig sicher und für eingehenden Datenverkehr geschlossen. Sie ermöglichen das Auflisten von eingehendem Datenverkehr mit einer [Netzwerksicherheitsgruppe](./network-security-groups-overview.md#network-security-groups).
 - Sie werden Netzwerkschnittstellen, öffentlichen Load Balancer Standard-Instanzen oder Application Gateway-Instanzen zugewiesen. Weitere Informationen zu Load Balancer Standard finden Sie unter [Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Sie können zonenredundant (aus allen 3 Zonen angekündigt), zonenbezogen ( in einer bestimmten vorausgewählten Verfügbarkeitszone garantiert) oder nicht zonenbezogen (keiner bestimmten vorausgewählten Verfügbarkeitszone zugeordnet) sein. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Zonenredundante IP-Adressen können nur in [Regionen mit drei aktiven Verfügbarkeitszonen](../availability-zones/az-region.md) erstellt werden.** IP-Adressen, die vor der Aktivierung der Zonen erstellt wurden, sind nicht zonenredundant.
+- Sie können zonenredundant (in allen drei Zonen verfügbar), zonal (in einer bestimmten vorausgewählten Verfügbarkeitszone garantiert) oder zonenlos (keiner bestimmten vorausgewählten Verfügbarkeitszone zugeordnet) sein. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Zonenredundante IP-Adressen können nur in [Regionen mit drei aktiven Verfügbarkeitszonen](../availability-zones/az-region.md) erstellt werden.** IP-Adressen, die vor der Aktivierung der Zonen erstellt wurden, sind nicht zonenredundant.
 - Können als Anycast-Front-End-IP-Adressen für [regionsübergreifende Load Balancer](../load-balancer/cross-region-overview.md) verwendet werden (Vorschaufunktionalität).
  
 > [!NOTE]
@@ -147,6 +147,8 @@ Sie können eine öffentliche IP-Adresse einem virtuellen [Windows](../virtual-m
 
 Wählen Sie für die öffentliche IP-Adresse **Dynamisch** oder **Statisch** aus. Informieren Sie sich über das [Zuweisen von IP-Adressen zu Netzwerkschnittstellen](virtual-network-network-interface-addresses.md).
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="internet-facing-load-balancers"></a>Load Balancer mit Internetzugriff
 
 Sie können eine öffentliche IP-Adresse mit einer der beiden [SKUs](#sku) einer [Azure Load Balancer](../load-balancer/load-balancer-overview.md)-Instanz zuordnen, indem Sie sie der **Front-End**-Konfiguration für den Lastenausgleich zuweisen. Diese öffentliche IP-Adresse dient als IP-Adresse mit Lastenausgleich. 
@@ -155,6 +157,8 @@ Sie können einem Load Balancer-Front-End eine dynamische oder eine statische ö
 
 Weitere Informationen zu SKUs von Azure Load Balancer finden Sie unter [Azure load balancer standard SKU](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Standard-SKU von Azure Load Balancer).
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="vpn-gateways"></a>VPN-Gateways
 
 [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verbindet ein virtuelles Azure-Netzwerk mit den folgenden Elementen:
@@ -162,14 +166,17 @@ Weitere Informationen zu SKUs von Azure Load Balancer finden Sie unter [Azure lo
 * Virtuelle Azure-Netzwerke
 * Lokale Netzwerke. 
 
-Eine öffentliche IP-Adresse wird dem VPN Gateway zugewiesen, um die Kommunikation mit dem Remotenetzwerk zuzulassen. Sie können einem VPN Gateway nur eine *dynamische* öffentliche IP-Adresse des Typs „Basic“ zuweisen.
+Eine öffentliche IP-Adresse wird dem VPN Gateway zugewiesen, um die Kommunikation mit dem Remotenetzwerk zuzulassen. 
+
+* Weisen Sie einer Front-End-Konfiguration mit VPNGw 1-5-SKU eine **dynamische** grundlegende öffentliche IP-Adresse zu.
+* Weisen Sie einer Front-End-Konfiguration mit VPNGwAZ 1-5-SKU eine **statische** öffentliche Standard-IP-Adresse zu.
 
 ## <a name="application-gateways"></a>Anwendungsgateways
 
 Sie können eine öffentliche IP-Adresse einem Azure [Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)zuordnen, indem Sie sie der **Front-End** -Konfiguration des Gateways zuweisen. 
 
 * Weisen Sie einer Application Gateway-Front-End-Konfiguration der Version 1 eine **dynamische** öffentliche IP-Adresse mit Basic-SKU zu. 
-* Weisen Sie einer Front-End-Konfiguration der Version 2 eine **statische** Adresse mit Standard-SKU zu.
+* Weisen Sie einer Front-End-Konfiguration (v2) eine **statische** öffentliche Standard-IP-Adresse zu.
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
@@ -186,7 +193,7 @@ In der folgenden Tabelle sind die Eigenschaften, über die eine öffentliche IP-
 | --- | --- | --- | --- |
 | Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
 | Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |Ja |Ja |
-| VPN-Gateway |Gateway-IP-Konfiguration |Ja |Nein |
+| VPN-Gateway |Gateway-IP-Konfiguration |Ja |Ja (nur VPNGwAZ) |
 | Anwendungsgateway |Front-End-Konfiguration |Ja (nur V1) |Ja (nur V2) |
 | Azure Firewall | Front-End-Konfiguration | Nein | Ja|
 

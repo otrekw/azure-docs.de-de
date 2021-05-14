@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fde473453aa79e0078765df394acdeb54b3c7fe9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f662c825dba99ec7513a523ab511cb75ebb1f0f9
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102433317"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208615"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Verwalten eines Graphen von digitalen Zwillingen mithilfe von Beziehungen
 
 Das Herzstück von Azure Digital Twins ist der [Zwillingsgraph](concepts-twins-graph.md), der Ihre gesamte Umgebung darstellt. Der Zwillingsgraph setzt sich aus einzelnen digitalen Zwillingen zusammen, die über **Beziehungen** verbunden sind. 
 
-Sobald Sie über eine funktionierende [Azure Digital Twins-Instanz](how-to-set-up-instance-portal.md) verfügen und [Authentifizierungscode](how-to-authenticate-client.md) in Ihrer Client-App eingerichtet haben, können Sie die [**DigitalTwins-APIs**](/rest/api/digital-twins/dataplane/twins) verwenden, um digitale Zwillinge und ihre Beziehungen in einer Azure Digital Twins-Instanz zu erstellen, zu ändern und zu löschen. Sie können auch das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) oder die [Azure Digital Twins-CLI](how-to-use-cli.md) verwenden.
+Sobald Sie über eine funktionierende [Azure Digital Twins-Instanz](how-to-set-up-instance-portal.md) verfügen und [Authentifizierungscode](how-to-authenticate-client.md) in Ihrer Client-App eingerichtet haben, können Sie die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) verwenden, um digitale Zwillinge und ihre Beziehungen in einer Azure Digital Twins-Instanz zu erstellen, zu ändern und zu löschen. Sie können auch das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) oder die [Azure Digital Twins-CLI](how-to-use-cli.md) verwenden.
 
-Dieser Artikel konzentriert sich auf die Verwaltung von Beziehungen und den Graphen als Ganzes. Für die Arbeit mit einzelnen digitalen Zwillingen finden Sie weitere Informationen unter [ *Verwalten digitaler Zwillinge*](how-to-manage-twin.md).
+Dieser Artikel konzentriert sich auf die Verwaltung von Beziehungen und den Graphen als Ganzes. Für die Arbeit mit einzelnen digitalen Zwillingen finden Sie weitere Informationen in der [Anleitung: Verwalten digitaler Zwillinge](how-to-manage-twin.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -59,7 +59,7 @@ Diese benutzerdefinierte Funktion kann nun aufgerufen werden, um eine _contains_
 
 Wenn Sie mehrere Beziehungen erstellen möchten, können Sie Aufrufe derselben Methode wiederholen und dabei verschiedene Beziehungstypen an das Argument übergeben. 
 
-Weitere Informationen zur Hilfsklasse `BasicRelationship` finden Sie unter [ *Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md#serialization-helpers).
+Weitere Informationen zur Hilfsklasse `BasicRelationship` finden Sie unter [Anleitung: Verwenden der APIs und SDKs für Azure Digital Twins](how-to-use-apis-sdks.md#serialization-helpers).
 
 ### <a name="create-multiple-relationships-between-twins"></a>Erstellen mehrerer Beziehungen zwischen Zwillingen
 
@@ -152,7 +152,7 @@ Der folgende ausführbare Codeausschnitt verwendet die Beziehungsvorgänge aus d
 
 ### <a name="set-up-the-runnable-sample"></a>Einrichten des ausführbaren Beispiels
 
-Der Codeausschnitt verwendet die Modelldefinitionen [*Room.json*](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) und [*Floor.json*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) aus dem [*Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App*](tutorial-command-line-app.md). Sie können diese Links verwenden, um direkt zu der Datei zu wechseln, oder sie als Teil des vollständigen End-to-End-Beispielprojekts [hier](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) herunterladen. 
+Der Codeausschnitt verwendet die Modelldefinitionen [Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) und [Floor.json](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) aus dem [Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App](tutorial-command-line-app.md). Sie können diese Links verwenden, um direkt zu der Datei zu wechseln, oder sie als Teil des [vollständigen End-to-End-Beispielprojekts](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) herunterladen. 
 
 Bevor Sie das Beispiel ausführen, gehen Sie wie folgt vor:
 1. Laden Sie die Modelldatei herunter, platzieren Sie sie in Ihrem Projekt, und ersetzen Sie den Platzhalter `<path-to>` im Code unten, um Ihrem Programm mitzuteilen, wo sie zu finden sind.
@@ -178,7 +178,7 @@ Hier ist die Konsolenausgabe des obigen Programms:
 :::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="Konsolenausgabe, die die Zwillingsdetails, ein- und ausgehende Beziehungen der Zwillinge anzeigt." lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
 
 > [!TIP]
-> Der Zwillingsgraph ist ein Konzept zur Erstellung von Beziehungen zwischen Zwillingen. Wenn Sie sich die visuelle Darstellung des Zwillingsgraphen ansehen möchten, lesen Sie den Abschnitt [*Visualisierung*](how-to-manage-graph.md#visualization) dieses Artikels. 
+> Der Zwillingsgraph ist ein Konzept zur Erstellung von Beziehungen zwischen Zwillingen. Wenn Sie sich die visuelle Darstellung des Zwillingsgraphen ansehen möchten, lesen Sie den Abschnitt [Visualisierung](how-to-manage-graph.md#visualization) dieses Artikels. 
 
 ## <a name="create-graph-from-a-csv-file"></a>Erstellen eines Graphen aus einer CSV-Datei
 
@@ -202,5 +202,5 @@ Im folgenden Code hat die CSV-Datei den Namen *data.csv*, und es gibt einen Plat
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über die Abfrage eines Azure Digital Twins-Zwillingsgraphen:
-* [*Konzepte: Abfragesprache*](concepts-query-language.md)
-* [*Verwenden Abfragen des Zwillingsgraphen*](how-to-query-graph.md)
+* [Konzepte: Abfragesprache](concepts-query-language.md)
+* [Gewusst wie: Abfragen des Zwillingsgraphen](how-to-query-graph.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 7600d8aa2f78e06ea4046273635fdbba18042010
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30c20974513d5e52661fed16f671ca672950c054
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028861"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331788"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -351,6 +351,7 @@ function updateMetadataCallback(err, items, responseOptions) {
         if(!accept) throw "Unable to update metadata, abort";
         return;
 }
+}
 ```
 
 Ein wichtiger Aspekt, den es zu beachten gilt, ist die transaktionale Ausführung von Triggern in Azure Cosmos DB. Der nachgestellte Trigger wird im Rahmen der gleichen Transaktion für das zugrunde liegende Element ausgeführt. Tritt während der Ausführung des nachgestellten Triggers eine Ausnahme auf, ist die gesamte Transaktion nicht erfolgreich. Sämtliche Commits werden rückgängig gemacht, und eine Ausnahme wird zurückgegeben.
@@ -388,16 +389,29 @@ function tax(income) {
 
 Beispiele für das Registrieren und Verwenden einer benutzerdefinierten Funktion finden Sie im Artikel [Verwenden von benutzerdefinierten Funktionen in Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs).
 
-## <a name="logging"></a>Protokollierung 
+## <a name="logging"></a>Protokollierung
 
-Wenn Sie gespeicherte Prozeduren, Trigger oder benutzerdefinierte Funktionen verwenden, können Sie die Schritte mithilfe des Befehls `console.log()` protokollieren. Mit diesem Befehl konzentriert sich eine Zeichenfolge auf das Debuggen, wenn `EnableScriptLogging` wie im folgenden Beispiel gezeigt auf TRUE festgelegt ist:
+Wenn Sie gespeicherte Prozeduren, Trigger oder benutzerdefinierte Funktionen verwenden, können Sie die Schritte durch Aktivierung von Skript-Protokollierung protokollieren. Eine Zeichenfolge für das Debuggen wird generiert, wenn `EnableScriptLogging` auf „Richtig“ festgelegt ist, wie in den folgenden Beispielen gezeigt:
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
+let requestOptions = { enableScriptLogging: true };
+const { resource: result, headers: responseHeaders} await container.scripts
+      .storedProcedure(Sproc.id)
+      .execute(undefined, [], requestOptions);
+console.log(responseHeaders[Constants.HttpHeaders.ScriptLogResults]);
+```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```csharp
 var response = await client.ExecuteStoredProcedureAsync(
 document.SelfLink,
 new RequestOptions { EnableScriptLogging = true } );
 Console.WriteLine(response.ScriptLog);
 ```
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

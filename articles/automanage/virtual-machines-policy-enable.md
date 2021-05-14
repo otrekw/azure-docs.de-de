@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 8f679626b69bd855e86b94cdde51955edd068e8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8846efa3619cec383809cdbd6efe70e3622fa007
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91714907"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365194"
 ---
 # <a name="enable-automanage-for-virtual-machines-through-azure-policy"></a>Aktivieren der automatischen Verwaltung für virtuelle Computer über Azure Policy
 
@@ -30,6 +30,8 @@ Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure
 > [!IMPORTANT]
 > Zum Aktivieren der automatischen Verwaltung ist die folgende Azure RBAC-Berechtigung erforderlich: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
 
+## <a name="direct-link-to-policy"></a>Direkter Link zur Richtlinie
+Die Definition der Automanage-Richtlinie finden Sie im Azure-Portal unter dem Namen [VMs für das Onboarding in Azure Automanage konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3). Wenn Sie auf diesen Link klicken, fahren Sie direkt mit Schritt 8 unter [Suchen und Zuweisen der Richtlinie](#locate-and-assign-the-policy) fort.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -53,9 +55,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Unter der Registerkarte **Grundlagen** füllen Sie **Bereich** aus, indem Sie das *Abonnement* und die *Ressourcengruppe* festlegen.
 
     > [!NOTE]
-    > Über den Bereich können Sie festlegen, für welche VMs diese Richtlinie gilt. Sie können Anwendungen auf Abonnementebene oder Ressourcengruppenebene festlegen. Wenn Sie eine Ressourcengruppe festlegen, wird für alle VMs, die sich derzeit in dieser Ressourcengruppe befinden, oder für alle zukünftigen VMs, die wir dieser Gruppe hinzufügen, automatisch die automatische Verwaltung aktiviert. 
+    > Über den Bereich können Sie festlegen, für welche VMs diese Richtlinie gilt. Sie können Anwendungen auf Abonnementebene oder Ressourcengruppenebene festlegen. Wenn Sie eine Ressourcengruppe festlegen, wird für alle VMs, die sich derzeit in dieser Ressourcengruppe befinden, oder für alle zukünftigen VMs, die wir dieser Gruppe hinzufügen, automatisch die automatische Verwaltung aktiviert.
 
-1. Klicken Sie auf die Registerkarte **Parameter**, und legen Sie das **Konto für die automatische Verwaltung** und das gewünschte **Konfigurationsprofil** fest. 
+1. Klicken Sie auf die Registerkarte **Parameter**, und legen Sie das **Konto für die automatische Verwaltung** und das gewünschte **Konfigurationsprofil** fest.
 1. Überprüfen Sie unter der Registerkarte **Überprüfen + erstellen** die Einstellungen.
 1. Wenden Sie die Zuweisung an, indem Sie auf **Erstellen** klicken.
 1. Zeigen Sie Ihre Zuweisungen auf der Registerkarte **Zuweisungen** neben **Definition** an.
@@ -64,9 +66,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 > Es wird einige Zeit dauern, bis diese Richtlinie auf den VMs, die sich derzeit in der Ressourcengruppe oder im Abonnement befinden, in Kraft tritt.
 
 
-## <a name="next-steps"></a>Nächste Schritte 
+## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie eine weitere Möglichkeit, die automatische Azure-Verwaltung für virtuelle Computer über das Azure-Portal zu aktivieren. 
+Erfahren Sie eine weitere Möglichkeit, die automatische Azure-Verwaltung für virtuelle Computer über das Azure-Portal zu aktivieren.
 
 > [!div class="nextstepaction"]
 > [Aktivieren der automatischen Verwaltung für virtuelle Computer im Azure-Portal](quick-create-virtual-machines-portal.md)

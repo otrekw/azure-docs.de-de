@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3debd58aadb98ab1e78692411e8d0bb66635f0da
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90971792"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279296"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen, um die Bereitstellung für Azure Logic Apps zu automatisieren
 
 Um Sie dabei zu unterstützen, das Erstellen und Bereitstellen einer Logik-App zu automatisieren, sind in diesem Artikel die Möglichkeiten beschrieben, wie Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/management/overview.md) für Ihre Logik-App erstellen. Eine Übersicht über die Struktur und die Syntax einer Vorlage, die Ihre Workflowdefinition und weitere Ressourcen enthält, die zur Bereitstellung erforderlich sind, finden Sie unter [Overview: Automatisieren der Bereitstellung für Logik-Apps mit Azure Resource Manager-Vorlagen](logic-apps-azure-resource-manager-templates-overview.md).
 
-Azure Logic Apps bietet eine [vordefinierte Azure Resource Manager-Vorlage für Logik-Apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json), die Sie nicht nur zum Erstellen von Logik-Apps, sondern auch zum Definieren der Ressourcen und Parameter für die Bereitstellung wiederverwenden können. Die Vorlage kann für eigene Unternehmensszenarien verwendet oder an Ihre individuellen Anforderungen angepasst werden.
+Azure Logic Apps bietet eine [vordefinierte Azure Resource Manager-Vorlage für Logik-Apps](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json), die Sie nicht nur zum Erstellen von Logik-Apps, sondern auch zum Definieren der Ressourcen und Parameter für die Bereitstellung wiederverwenden können. Die Vorlage kann für eigene Unternehmensszenarien verwendet oder an Ihre individuellen Anforderungen angepasst werden.
 
 > [!IMPORTANT]
 > Für Verbindungen in Ihrer Vorlage müssen dieselbe Azure-Ressourcengruppe und derselbe Standort wie für Ihre Logik-App verwendet werden.

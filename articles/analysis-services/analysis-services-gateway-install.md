@@ -4,20 +4,20 @@ description: Erfahren Sie, wie Sie ein lokales Datengateway installieren und kon
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 04/27/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 43e5b64d06a6ec145876798b2e0da6499ab94bfc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3128b9f7ae628a0a1974bb30cf87014e269ea466
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769227"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130329"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
 
-Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analysis Services-Server in der gleichen Region mit lokalen Datenquellen verbindet.  Auch wenn das installierte Gateway für alle weiteren Dienste – z.B. Power BI, Power Apps und Logic Apps – identisch ist, sind für Azure Analysis Services und Logic Apps einige zusätzliche Schritte erforderlich. Die Informationen in diesem Artikel gelten speziell für **Azure Analysis Services**. 
+Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analysis Services-Server in der gleichen Region mit lokalen Datenquellen verbindet. Auch wenn das installierte Gateway für alle weiteren Dienste – z.B. Power BI, Power Apps und Logic Apps – identisch ist, sind für Azure Analysis Services und Logic Apps einige zusätzliche Schritte erforderlich. Die Informationen in diesem Artikel gelten speziell für **Azure Analysis Services**. 
 
 Weitere Informationen zur Zusammenarbeit von Azure Analysis Services mit dem Gateway finden Sie unter [Herstellen einer Verbindung mit lokalen Datenquellen](analysis-services-gateway.md). Weitere Informationen zu erweiterten Installationsszenarien und zum Gateway im Allgemeinen finden Sie unter [Dokumentation zu lokalen Datengateways](/data-integration/gateway/service-gateway-onprem).
 
@@ -156,6 +156,7 @@ Das ist alles. Wenn Sie Ports öffnen oder eine Problembehandlung durchführen m
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwalten von Analysis Services](analysis-services-manage.md)   
-* [Abrufen von Daten aus Azure Analysis Services](analysis-services-connect.md)   
-* [Verwenden eines Gateways für Datenquellen in einer Azure Virtual Network-Instanz](analysis-services-vnet-gateway.md)
+* [Herstellen der Verbindung mit lokalen Datenquellen](analysis-services-gateway.md)   
+* [In Azure Analysis Services unterstützte Datenquellen](analysis-services-datasource.md)   
+* [Verwenden eines Gateways für Datenquellen in einer Azure Virtual Network-Instanz](analysis-services-vnet-gateway.md)   
+* [Häufig gestellte Fragen zur Netzwerkkonnektivität von Analysis Services](analysis-services-network-faq.md) 

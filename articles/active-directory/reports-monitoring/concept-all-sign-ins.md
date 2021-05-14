@@ -1,10 +1,10 @@
 ---
-title: Berichte zu Azure Active Directory-Anmeldeaktivitäten – Vorschau| Microsoft-Dokumentation
-description: Einführung in die Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
+title: 'Anmeldeprotokolle in Azure Active Directory: Vorschau | Microsoft-Dokumentation'
+description: Übersicht über die Anmeldeprotokolle in Azure Active Directory, einschließlich neuer Features in der Vorschauphase.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,29 +13,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/16/2021
+ms.date: 04/25/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: e25fc61fe99a5c7df19b7c0ecb8265f4dcc681cc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574559"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137019"
 ---
-# <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Berichte zu Azure Active Directory-Anmeldeaktivitäten – Vorschau
+# <a name="sign-ins-logs-in-azure-active-directory---preview"></a>Anmeldeprotokolle in Azure Active Directory: Vorschau
 
-Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) umfasst die folgenden Komponenten:
+Als IT-Administrator müssen Sie wissen, wie Ihre IT-Umgebung funktioniert. Anhand der Informationen zur Integrität Ihres Systems können Sie bewerten, ob und wie Sie auf potenzielle Probleme reagieren müssen. 
 
-- **Aktivität** 
-    - **Anmeldungen** – Informationen dazu, wann sich Benutzer, Anwendungen und verwaltete Ressourcen bei Azure AD anmelden und auf Ressourcen zugreifen.
-    - **Überwachungsprotokolle** - [Überwachungsprotokolle](concept-audit-logs.md) stellen Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und zu Verzeichnisaktivitäten bereit.
-- **Security** 
-    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](../identity-protection/overview-identity-protection.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
-    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](../identity-protection/overview-identity-protection.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
+Um Sie bei diesem Ziel zu unterstützen, bietet Ihnen das Azure Active Directory-Portal Zugriff auf drei Aktivitätsprotokolle:
 
-Der klassische Bericht zu Anmeldeaktivitäten in Azure AD bietet Ihnen einen Überblick über interaktive Benutzeranmeldungen. Außerdem haben Sie jetzt Zugriff auf drei zusätzliche Anmeldeberichte, die sich zurzeit in der Vorschau befinden:
+- **[Anmeldungen](concept-sign-ins.md)** : Informationen zu Anmeldungen und zur Verwendung Ihrer Ressourcen durch Ihre Benutzer.
+- **[Überwachung](concept-audit-logs.md)** : Informationen zu Änderungen, die auf Ihren Mandanten angewendet wurden, z. B. Benutzer- und Gruppenverwaltung oder Updates, die auf die Ressourcen Ihres Mandanten angewendet wurden.
+- **[Bereitstellung](concept-provisioning-logs.md)** : Vom Bereitstellungsdienst ausgeführte Aktivitäten, z. B. die Erstellung einer Gruppe in ServiceNow oder der Import eines Benutzers aus Workday.
+
+
+Der klassische Bericht zu Anmeldeaktivitäten in Azure Active Directory bietet Ihnen einen Überblick über interaktive Benutzeranmeldungen. Außerdem haben Sie jetzt Zugriff auf drei zusätzliche Anmeldeprotokolle, die sich zurzeit in der Vorschauphase befinden:
 
 - Nicht interaktive Benutzeranmeldungen
 
@@ -43,19 +43,22 @@ Der klassische Bericht zu Anmeldeaktivitäten in Azure AD bietet Ihnen einen Ü
 
 - Verwaltete Identitäten für Azure-Ressourcenanmeldungen
 
-In diesem Artikel erhalten Sie einen Überblick über den Bericht zu Anmeldeaktivitäten mit der Vorschau von nicht interaktiven Identitäten, Anwendungsidentitäten und verwalteten Identitäten für Azure-Ressourcenanmeldungen. Informationen zum Anmeldebericht ohne die Vorschaufeatures finden Sie unter [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal](concept-sign-ins.md).
+In diesem Artikel erhalten Sie einen Überblick über den Bericht zu Anmeldeaktivitäten mit der Vorschau von nicht interaktiven Identitäten, Anwendungsidentitäten und verwalteten Identitäten für Azure-Ressourcenanmeldungen. Informationen zum Anmeldebericht ohne die Vorschaufeatures finden Sie unter [Anmeldeprotokolle in Azure Active Directory](concept-sign-ins.md).
 
 
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="what-can-you-do-with-it"></a>Was können Sie damit machen?
 
-Bevor Sie dieses Feature verwenden können, sollten Sie die Antworten auf folgende Fragen wissen:
+Der Bericht zu Anmeldeaktivitäten enthält etwa Antworten auf die folgenden Fragen:
 
-- Wer kann auf die Daten zugreifen?
+- Wie sieht das Anmeldemuster eines Benutzers, einer Anwendung oder eines Dienstes aus?
 
-- Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf die Anmeldeaktivität?
+- Wie viele Benutzer, Apps oder Dienste haben sich im Laufe einer Woche angemeldet?
 
-### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
+- Wie lautet der Status dieser Anmeldungen?
+
+
+## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
 
 - Benutzer mit den Rollen „Sicherheitsadministrator“, „Sicherheitsleseberechtigter“ und „Berichtsleser“
 
@@ -63,20 +66,20 @@ Bevor Sie dieses Feature verwenden können, sollten Sie die Antworten auf folgen
 
 - Jeder Benutzer (Nicht-Administratoren) kann auf seine eigenen Anmeldungen zugreifen. 
 
-### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf die Anmeldeaktivität?
+## <a name="what-azure-ad-license-do-you-need"></a>Welche Azure AD-Lizenz benötigen Sie?
 
-Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugeordnet sein, damit Anmeldeaktivitäten angezeigt werden. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen. Wenn Sie vor dem Upgrade über keine Aktivitätsdaten verfügten, dauert es ein paar Tage, bis die Daten in den Berichten angezeigt werden, nachdem Sie ein Upgrade auf eine Premium-Lizenz durchgeführt haben.
+Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugeordnet sein, damit Anmeldeaktivitäten angezeigt werden. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen. Wenn Sie vor dem Upgrade über keine Datenaktivitäten verfügten, dauert es ein paar Tage, bis die Daten in den Protokollen angezeigt werden, nachdem Sie ein Upgrade auf eine Premium-Lizenz durchgeführt haben.
 
 
 
-## <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten
 
-Der Bericht zu Anmeldeaktivitäten enthält Antworten auf die folgenden Fragen:
+## <a name="where-can-you-find-it-in-the-azure-portal"></a>Wo finden Sie die Protokolle im Azure-Portal?
 
-- Wie sieht das Anmeldemuster eines Benutzers, einer Anwendung oder eines Dienstes aus?
-- Wie viele Benutzer, Apps oder Dienste haben sich im Laufe einer Woche angemeldet?
-- Wie lautet der Status dieser Anmeldungen?
+Das Azure-Portal bietet Ihnen mehrere Optionen für den Zugriff auf das Protokoll. Im Azure Active Directory-Menü können Sie beispielsweise im Abschnitt **Überwachung** öffnen.  
 
+![Öffnen von Anmeldeprotokollen](./media/concept-sign-ins/sign-ins-logs-menu.png)
+
+Zudem können Sie über diesen Link direkt zu den Anmeldeprotokollen gelangen: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)
 
 Auf dem Blatt mit dem Bericht zu Anmeldeaktivitäten können Sie zwischen folgenden Aktionen wechseln:
 
@@ -92,17 +95,6 @@ Auf dem Blatt mit dem Bericht zu Anmeldeaktivitäten können Sie zwischen folgen
 ![Arten von Berichten zu Anmeldeaktivitäten](./media/concept-all-sign-ins/sign-ins-report-types.png)
 
 
-
-
-
-
-
-
-
-
-
-
-## <a name="user-sign-ins"></a>Benutzeranmeldungen
 
 Jede Registerkarte auf dem Blatt „Anmeldungen“ zeigt die unten aufgeführten Standardspalten. Einige Registerkarten enthalten zusätzliche Spalten:
 
@@ -130,7 +122,8 @@ Interaktive Benutzeranmeldungen sind Anmeldungen, bei denen ein Benutzer einen A
 
 
 
-Hinweis: Der Bericht mit interaktiven Benutzeranmeldungen enthält einige nicht interaktive Anmeldungen von Microsoft Exchange-Clients. Obwohl diese Anmeldungen nicht interaktiv waren, werden sie für bessere Sichtbarkeit in den Bericht zu interaktiven Benutzeranmeldungen eingeschlossen. Seitdem der Bericht zu nicht interaktiven Benutzeranmeldungen im November 2020 als öffentliche Vorschauversion veröffentlicht wurde, werden die Protokolle zu nicht interaktiven Anmeldeereignissen richtigerweise dort erfasst. 
+> [!NOTE] 
+> Der Bericht mit interaktiven Benutzeranmeldungen enthält einige nicht interaktive Anmeldungen von Microsoft Exchange-Clients. Obwohl diese Anmeldungen nicht interaktiv waren, werden sie zur besseren Sichtbarkeit in den Bericht zu interaktiven Benutzeranmeldungen eingeschlossen. Seitdem der Bericht zu nicht interaktiven Benutzeranmeldungen im November 2020 als öffentliche Vorschauversion veröffentlicht wurde, werden die Protokolle zu nicht interaktiven Anmeldeereignissen richtigerweise dort erfasst. 
 
 
 **Berichtsgröße:** klein <br> 
@@ -328,6 +321,18 @@ Wählen Sie ein Element in der Listenansicht aus, um alle unter einem Knoten gru
 Wählen Sie ein gruppiertes Element aus, um alle Details der Anmeldung anzuzeigen. 
 
 
+## <a name="sign-in-error-code"></a>Anmeldefehler
+
+Wenn bei der Anmeldung ein Fehler aufgetreten ist, erhalten Sie weitere Informationen zur Ursache im Abschnitt **Grundlegende Informationen** des zugehörigen Protokollelements. 
+
+![Screenshot: Ansicht mit ausführlichen Informationen](./media/concept-all-sign-ins/error-code.png)
+ 
+Während das Protokollelement einen Fehlergrund bereitstellt, gibt es Fälle, in denen Sie möglicherweise weitere Informationen mit dem Tool für die [Fehlersuche bei der Anmeldung](https://login.microsoftonline.com/error) erhalten. Wenn verfügbar, stellt dieses Tool beispielsweise Schritte zur Problembehebung bereit.  
+
+![Fehlercode-Suchtool](./media/concept-all-sign-ins/error-code-lookup-tool.png)
+
+
+
 ## <a name="filter-sign-in-activities"></a>Filtern von Anmeldeaktivitäten
 
 Durch Festlegen eines Filters können Sie den Bereich der zurückgegebenen Anmeldedaten eingrenzen. Azure AD bietet eine breite Palette an zusätzlichen Filtern, die Sie festlegen können. Beim Festlegen eines Filters sollten Sie immer besonders auf Ihren konfigurierten Filter **Datumsbereich** achten. Durch einen richtigen Datumsbereichsfilter wird sichergestellt, dass Azure AD nur die für Sie wirklich relevanten Daten zurückgibt.     
@@ -358,12 +363,12 @@ Der Filter für interaktive und nicht interaktive Anmeldungen ist identisch. Dah
 
 
 
-## <a name="access-the-new-sign-in-activity-reports"></a>Zugreifen auf die neuen Berichte zu Anmeldeaktivitäten 
+## <a name="access-the-new-sign-in-activity-logs"></a>Zugreifen auf die neuen Protokolle zu Anmeldeaktivitäten 
 
-Der Bericht zu Anmeldeaktivitäten im Azure-Portal bietet Ihnen eine einfache Methode zum Aktivieren und Deaktivieren der Berichtsvorschau. Wenn Sie die Berichtsvorschauen aktiviert haben, wird ein neues Menü angezeigt, über das Sie auf alle Arten von Berichten zu Anmeldeaktivitäten zugreifen können.     
+Der Bericht zu Anmeldeaktivitäten im Azure-Portal bietet Ihnen eine einfache Methode zum Aktivieren und Deaktivieren der Berichtsvorschau. Wenn Sie die Vorschauprotokolle aktiviert haben, wird ein neues Menü angezeigt, über das Sie auf alle Arten von Berichten zu Anmeldeaktivitäten zugreifen können.     
 
 
-So greifen Sie auf die neuen Anmeldeberichte mit nicht interaktiven Anmeldungen und Anwendungsanmeldungen zu: 
+So greifen Sie auf die neuen Anmeldeprotokolle mit nicht interaktiven Anmeldungen und Anwendungsanmeldungen zu: 
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Azure Active Directory** aus.
 
@@ -387,7 +392,7 @@ So greifen Sie auf die neuen Anmeldeberichte mit nicht interaktiven Anmeldungen 
 
 
 
-## <a name="download-sign-in-activity-reports"></a>Herunterladen von Berichten zu Anmeldeaktivitäten
+## <a name="download-sign-in-activity-logs"></a>Herunterladen von Protokollen zu Anmeldeaktivitäten
 
 Wenn Sie einen Bericht für Anmeldeaktivitäten herunterladen, gilt Folgendes:
 
@@ -400,7 +405,7 @@ Wenn Sie einen Bericht für Anmeldeaktivitäten herunterladen, gilt Folgendes:
 - Die Anzahl von Datensätzen, die Sie herunterladen können, ist durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt. 
 
 
-![Herunterladen von Berichten](./media/concept-all-sign-ins/download-reports.png "Herunterladen von Berichten")
+![Herunterladen von Protokollen](./media/concept-all-sign-ins/download-reports.png "Herunterladen von Protokollen")
 
 
 Jeder CSV-Download besteht aus sechs verschiedenen Dateien:
@@ -434,6 +439,6 @@ Jeder JSON-Download besteht aus vier verschiedenen Dateien:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Fehlercodes des Berichts mit den Anmeldeaktivitäten](reference-sign-ins-error-codes.md)
+* [Fehlercodes des Berichts mit den Anmeldeaktivitäten](./concept-sign-ins.md)
 * [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md)
 * [Latenzen bei Azure Active Directory-Berichten](reference-reports-latencies.md)

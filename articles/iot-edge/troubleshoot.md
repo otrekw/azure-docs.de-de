@@ -8,12 +8,12 @@ ms.date: 04/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 56eff095cca1b24678f742e4c3ce8dfb1aaea2dd
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 6fa49af946a1e5fc631eeb1ee9b9c7c99d3adff8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275582"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308267"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Behandeln von Problemen bei Ihrem IoT Edge-Gerät
 
@@ -64,6 +64,18 @@ Das Problembehandlungstool führt viele Überprüfungen durch, die in folgende d
 * *Überprüfungen auf die Produktionsbereitschaft* – Sucht nach empfohlenen Best Practices für die Produktion, z. B. nach Zertifikaten der Zertifizierungsstelle (Certificate Authority, CA) für den Gerätestatus und nach der Konfiguration der Modulprotokolldatei.
 
 Das Prüftool für IoT Edge verwendet einen Container, um die Diagnosen durchzuführen. Das Containerimage (`mcr.microsoft.com/azureiotedge-diagnostics:latest`) steht über [Microsoft Container Registry](https://github.com/microsoft/containerregistry) zur Verfügung. Wenn Sie eine Überprüfung auf einem Gerät ohne Direktzugriff auf das Internet ausführen möchten, benötigen die Geräte Zugriff auf das Containerimage.
+
+<!-- <1.2> -->
+:::moniker range=">=iotedge-2020-11"
+
+In einem Szenario mit geschachtelten IoT Edge Geräten können Sie Zugriff auf das Diagnoseimage auf untergeordneten Geräten erhalten, indem Sie die Imageübertragung über die übergeordneten Geräte weiterleiten.
+
+```bash
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:<port_for_api_proxy_module>/azureiotedge-diagnostics:1.2
+```
+
+<!-- </1.2> -->
+:::moniker-end
 
 Informationen zu den einzelnen Diagnoseprüfungen, die von diesem Tool durchgeführt werden – einschließlich der Vorgehensweise beim Auftreten eines Fehlers oder einer Warnung – finden Sie unter [IoT Edge-Problembehandlung bei Überprüfungen](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
 
@@ -161,7 +173,7 @@ Unter Linux:
 
      ```bash
      [Service]
-     Environment=IOTEDGE_LOG=edgelet=debug
+     Environment=IOTEDGE_LOG=debug
      ```
 
   3. Starten Sie den Daemon für Azure IoT Edge-Sicherheit neu:

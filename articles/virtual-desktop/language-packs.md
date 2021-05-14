@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: eaf6fc789020553b80967341cc9219a30ffce749
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 87a12ec80c19e34cfb1bebfe29d14b118ae1eb93
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446110"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317233"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Hinzufügen von Language Packs zu einem Image für Windows 10 (mehrere Sitzungen)
 
@@ -55,6 +55,7 @@ Sie benötigen folgende Komponenten, um die Images für Windows 10 Enterprise (
           - [Windows 10, Version 2004 oder 20H2 **11C** LXP-ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
           - [Windows 10, Version 2004 oder 20H2 **1C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
           - [Windows 10, Version 2004 oder 20H2 **2C** LXP-ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
+          - [Windows 10 Version 2004 oder 20H2 **4B** LXP-ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2104B.iso)
 
 - Eine Azure Files-Freigabe oder eine Dateifreigabe auf einer Windows-Dateiserver-VM
 
@@ -175,51 +176,38 @@ Je nach Anzahl der Sprachen, die installiert werden müssen, kann die Ausführun
 
 Sobald die Skriptausführung abgeschlossen ist, vergewissern Sie sich, dass die Sprachpakete ordnungsgemäß installiert wurden. Dazu navigieren Sie zu **Start** > **Einstellungen** > **Uhrzeit und Sprache** > **Sprache**. Wenn die Sprachdateien vorhanden sind, ist die Einrichtung abgeschlossen.
 
-Nachdem Sie dem Windows-Image weitere Sprachen hinzugefügt haben, müssen auch die Inbox Apps aktualisiert werden, um die hinzugefügten Sprachen zu unterstützen. Dies kann erfolgen, indem die vorinstallierten Apps mit dem Inhalt aus der Inbox Apps-ISO-Datei aktualisiert werden. Soll diese Aktualisierung in einer nicht verbundenen Umgebung (kein Internetzugriff von der VM möglich) ausgeführt werden, können Sie das folgende PowerShell-Skriptbeispiel verwenden, um den Prozess zu automatisieren.
+Nachdem Sie dem Windows-Image weitere Sprachen hinzugefügt haben, müssen auch die Inbox Apps aktualisiert werden, um die hinzugefügten Sprachen zu unterstützen. Dies kann erfolgen, indem die vorinstallierten Apps mit dem Inhalt aus der Inbox Apps-ISO-Datei aktualisiert werden.
+Um diese Aktualisierung in einer Umgebung durchzuführen, in der die VM keinen Internetzugriff hat, können Sie die folgende PowerShell-Skriptvorlage verwenden, sodass der Prozess automatisiert wird und nur installierte Versionen von Inbox Apps aktualisiert werden.
 
 ```powershell
 #########################################
 ## Update Inbox Apps for Multi Language##
 #########################################
 ##Set Inbox App Package Content Stores##
-[string]$InboxApps = "F:\"
-##Update Inbox Store Apps##
-$AllAppx = Get-Item $inboxapps\*.appx | Select-Object name
-$AllAppxBundles = Get-Item $inboxapps\*.appxbundle | Select-Object name
-$allAppxXML = Get-Item $inboxapps\*.xml | Select-Object name
-foreach ($Appx in $AllAppx) {
-    $appname = $appx.name.substring(0,$Appx.name.length-5)
-    $appnamexml = $appname + ".xml"
-    $pathappx = $InboxApps + "\" + $appx.Name
-    $pathxml = $InboxApps + "\" + $appnamexml
-    
-    if($allAppxXML.name.Contains($appnamexml)){
-    
-    Write-Host "Handeling with xml $appname"  
-  
-    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+[string] $AppsContent = "F:\"
+
+##Update installed Inbox Store Apps##
+foreach ($App in (Get-AppxProvisionedPackage -Online)) {
+    $AppPath = $AppsContent + $App.DisplayName + '_' + $App.PublisherId
+    Write-Host "Handling $AppPath"
+    $licFile = Get-Item $AppPath*.xml
+    if ($licFile.Count) {
+        $lic = $true
+        $licFilePath = $licFile.FullName
     } else {
-      
-      Write-Host "Handeling without xml $appname"
-      
-      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+        $lic = $false
+    }
+    $appxFile = Get-Item $AppPath*.appx*
+    if ($appxFile.Count) {
+        $appxFilePath = $appxFile.FullName
+        if ($lic) {
+            Add-AppxProvisionedPackage -Online -PackagePath $appxFilePath -LicensePath $licFilePath 
+        } else {
+            Add-AppxProvisionedPackage -Online -PackagePath $appxFilePath -skiplicense
+        }
     }
 }
-foreach ($Appx in $AllAppxBundles) {
-    $appname = $appx.name.substring(0,$Appx.name.length-11)
-    $appnamexml = $appname + ".xml"
-    $pathappx = $InboxApps + "\" + $appx.Name
-    $pathxml = $InboxApps + "\" + $appnamexml
-    
-    if($allAppxXML.name.Contains($appnamexml)){
-    Write-Host "Handeling with xml $appname"
-    
-    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
-    } else {
-       Write-Host "Handeling without xml $appname"
-      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
-    }
-}
+
 ```
 
 >[!IMPORTANT]

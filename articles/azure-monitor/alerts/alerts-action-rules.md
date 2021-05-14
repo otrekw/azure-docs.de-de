@@ -2,17 +2,17 @@
 title: Aktionsregeln für Azure Monitor-Warnungen
 description: In diesem Artikel wird erläutert, was Aktionsregeln in Azure Monitor sind und wie sie konfiguriert und verwaltet werden können.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.date: 04/08/2021
+ms.openlocfilehash: 61c9912fbe12c706c717bed448d3b7c141b40cd2
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471682"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018347"
 ---
 # <a name="action-rules-preview"></a>Aktionsregeln (Vorschau)
 
-Mit Aktionsregeln können Sie Aktionen in jedem Resource Manager-Bereich (Abonnement, Ressourcengruppe und Ressource) definieren oder unterdrücken. Sie verfügen über verschiedene Filter zum Eingrenzen auf eine bestimmte Teilmenge von Warnungsinstanzen, auf die Sie reagieren möchten.
+Mit Aktionsregeln können Sie die Aktionsgruppen für Ihre abgefeuerten Alarme hinzufügen oder unterdrücken. Eine einzelne Regel kann verschiedene Bereiche der Ziel Ressourcen abdecken, z. b. eine beliebige Warnung für eine bestimmte Ressource (z. b. eine bestimmte virtuelle Maschine) oder eine Warnung, die für eine Ressource in einem Abonnement ausgelöst wird. Optional können Sie verschiedene Filter hinzufügen, um zu steuern, welche Warnungen von einer Regel abgedeckt werden, und einen Zeitplan dafür definieren, z. b., damit Sie nur außerhalb der Geschäftszeiten oder während eines geplanten Wartungsfensters wirksam werden.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
@@ -79,15 +79,22 @@ Diese Regel gilt nur für Warnungen, die von einer bestimmten Warnungsregel stam
 Zum Beispiel bedeutet **alert rule ID = "/subscriptions/SubId1/resourceGroups/RG1/providers/microsoft.insights/metricalerts/API-Latency"** , dass diese Regel nur für Warnungen gilt, die von der Metrikwarnungsregel „API-Latency“ stammen.  
 _HINWEIS: Sie können die entsprechende Warnungsregel-ID abrufen, indem Sie Ihre Warnungsregeln über die CLI auflisten oder indem Sie eine spezifische Warnungsregel im Portal öffnen. Hierzu klicken Sie auf „Eigenschaften“ und kopieren den Wert „Ressourcen-ID“._
 * **Überwachungsbedingung**  
-Diese Regel gilt nur für Warnungsereignisse mit der festgelegten Überwachungsbedingung – entweder **Ausgelöst** oder **Behoben**.
+Diese Regel gilt nur für Warnungsereignisse mit der festgelegten Überwachungsbedingung – entweder **„Ausgelöst“** oder **„Behoben“** .
 * **Beschreibung**  
 Diese Regel gilt nur für Warnungen, die eine bestimmte Zeichenfolge im Beschreibungsfeld enthalten. Dieses Feld enthält die Beschreibung der Warnungsregel.  
-Zum Beispiel bedeutet **description contains 'prod'** , dass die Regel nur Warnungen abgleicht, die die Zeichenfolge „prod“ in ihrer Beschreibung enthalten.
+Zum Beispiel bedeutet **description contains „prod“** , dass die Regel nur Warnungen abgleicht, die die Zeichenfolge „prod“ in ihrer Beschreibung enthalten.
 * **Warnungskontext (Nutzlast)**  
 Diese Regel gilt nur für Warnungen, die mindestens einen der spezifischen Werte in den Warnungskontextfeldern enthalten.  
-Zum Beispiel bedeutet **alert context (payload) contains 'Computer-01'** , dass die Regel nur für Warnungen gilt, deren Nutzlasten die Zeichenfolge „Computer-01“ enthalten.
+Zum Beispiel bedeutet **alert context (payload) contains „Computer-01“** , dass die Regel nur für Warnungen gilt, deren Nutzlasten die Zeichenfolge „Computer-01“ enthalten.
 
-Wenn Sie mehrere Filter in einer Regel festlegen, gelten sie alle. Wenn Sie beispielsweise **resource type = "Virtual Machines"** und **severity = "Sev0"** festlegen, gilt die Regel nur für Warnungen mit dem Schweregrad „Sev0“ auf virtuellen Computern.
+> [!NOTE]
+> Jeder Filter kann bis zu fünf Werte enthalten.  
+> Beispielsweise kann ein Filter für den Überwachungsdienst bis zu fünf Überwachungsdienstnamen enthalten.
+
+
+
+
+Wenn Sie mehrere Filter in einer Regel festlegen, gelten sie alle. Wenn Sie beispielsweise **resource type = „Virtual Machines“** und **severity = „Sev0“** festlegen, gilt die Regel nur für Warnungen mit dem Schweregrad „Sev0“ auf virtuellen Computern.
 
 ![Filter für Aktionsregeln](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -122,7 +129,7 @@ Konfigurieren Sie schließlich folgende Details für die Aktionsregel:
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Sie können Aktionsregeln mit der Azure-Befehlszeilenschnittstelle (Azure CLI) erstellen, indem Sie den Befehl [az monitor action-rule create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) verwenden.  Der `az monitor action-rule`-Verweis ist nur einer von vielen [Azure CLI-Verweisen für Azure Monitor](/cli/azure/azure-cli-reference-for-monitor).
+Sie können Aktionsregeln mit der Azure-Befehlszeilenschnittstelle (Azure CLI) erstellen, indem Sie den Befehl [az monitor action-rule create](/cli/azure/monitor/action-rule#az_monitor_action_rule_create) verwenden.  Der `az monitor action-rule`-Verweis ist nur einer von vielen [Azure CLI-Verweisen für Azure Monitor](/cli/azure/azure-cli-reference-for-monitor).
 
 ### <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
 
@@ -136,7 +143,7 @@ Sie können Aktionsregeln mit der Azure-Befehlszeilenschnittstelle (Azure CLI) e
 
 1. Melden Sie sich an.
 
-   Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az-login) an, falls Sie eine lokale Installation der Befehlszeilenschnittstelle verwenden.  Führen Sie die in Ihrem Terminal angezeigten Schritte aus, um den Authentifizierungsprozess abzuschließen.
+   Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az_login) an, falls Sie eine lokale Installation der Befehlszeilenschnittstelle verwenden.  Führen Sie die in Ihrem Terminal angezeigten Schritte aus, um den Authentifizierungsprozess abzuschließen.
 
     ```azurecli
     az login
@@ -158,7 +165,7 @@ Sie können Aktionsregeln mit der Azure-Befehlszeilenschnittstelle (Azure CLI) e
 
 ### <a name="create-action-rules-with-the-azure-cli"></a>Erstellen von Aktionsregeln mit der Azure CLI
 
-Informationen zu den erforderlichen und optionalen Parametern finden Sie im Azure CLI-Referenzinhalt für [az monitor action-rule create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create).
+Informationen zu den erforderlichen und optionalen Parametern finden Sie im Azure CLI-Referenzinhalt für [az monitor action-rule create](/cli/azure/monitor/action-rule#az_monitor_action_rule_create).
 
 Erstellen Sie eine Aktionsregel, um Benachrichtigungen in einer Ressourcengruppe zu unterdrücken.
 
@@ -244,7 +251,7 @@ Hier können Sie Aktionsregeln je nach Bedarf aktivieren, deaktivieren und lösc
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Sie können Ihre Aktionsregeln mit dem Befehl [az monitor action-rule](/cli/azure/ext/alertsmanagement/monitor) aus der Azure CLI anzeigen und verwalten.
+Sie können Ihre Aktionsregeln mit dem Befehl [az monitor action-rule](/cli/azure/monitor) aus der Azure CLI anzeigen und verwalten.
 
 Bevor Sie Aktionsregeln mit der Azure CLI verwalten, bereiten Sie Ihre Umgebung anhand der Anweisungen in [Konfigurieren einer Aktionsregel](#configuring-an-action-rule) vor.
 
@@ -308,7 +315,7 @@ Auf der [Seite mit der Liste der Warnungen](./alerts-managing-alert-instances.md
 
 Unterdrückung hat in einem Bereich immer Vorrang.
 
-### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Was geschieht, wenn ich eine Ressource verwende, die von zwei separaten Aktionsregeln überwacht wird? Erhalte ich dann eine oder zwei Benachrichtigungen? Beispielsweise **VM2** im folgenden Szenario:
+### <a name="what-happens-if-i-have-a-resource-that-is-covered-by-two-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Was geschieht, wenn eine Ressource vorhanden ist, die von zwei Aktions Regeln abgedeckt wird? Erhalte ich dann eine oder zwei Benachrichtigungen? Beispielsweise **VM2** im folgenden Szenario:
 
    `action rule AR1 defined for VM1 and VM2 with action group AG1`
 

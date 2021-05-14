@@ -4,16 +4,16 @@ description: Zur Erstellung hoch verfügbarer und robuster Anwendungen in Azure 
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 04/21/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 782e632f8707b4cafb6d33438f6c8da7e8b08c30
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 94de23463c99960a6c58ef5d4aa964abf828dd22
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491389"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123859"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-Dienste mit Unterstützung für Verfügbarkeitszonen
 
@@ -31,7 +31,7 @@ Azure-Dienste, die Verfügbarkeitszonen unterstützen, können in drei Kategorie
 
 - **Zonale Dienste:** Eine Ressource kann in einer bestimmten selbst ausgewählten Verfügbarkeitszone bereitgestellt werden, um strengere Latenz- oder Leistungsvorgaben zu erfüllen.  Die Resilienz wird quasi von selbst erzielt, indem Anwendungen und Daten in einer oder mehreren Zonen der Region repliziert werden.  Ressourcen können an eine bestimmte Zone angeheftet werden. Beispielsweise können virtuelle Computer, verwaltete Datenträger oder IP-Standardadressen an eine bestimmte Zone angeheftet werden. So können Sie eine bessere Resilienz erzielen, da eine oder mehrere Ressourceninstanzen auf mehrere Zonen verteilt werden.
 
-- **Zonenredundante Dienste:** Die Azure-Plattform repliziert Ressourcen und Daten zonenübergreifend.  Microsoft verwaltet die Bereitstellung der Hochverfügbarkeit, da Azure-Instanzen automatisch in der Region repliziert und verteilt werden.  Bei ZRS (zonenredundanter Speicher) werden die Daten beispielsweise in drei Zonen repliziert, damit der Ausfall einer Zone keine Auswirkungen auf die Hochverfügbarkeit der Daten hat. 
+- **Zonenredundante Dienste**: Ressourcen werden automatisch zonenübergreifend repliziert oder verteilt. Bei ZRS (zonenredundanter Speicher) werden die Daten beispielsweise in drei Zonen repliziert, damit der Ausfall einer Zone keine Auswirkungen auf die Hochverfügbarkeit der Daten hat.  
 
 - **Nicht regionale Dienste**: Dienste sind immer in Azure-Geografien verfügbar und sowohl resilient gegen zonenweite als auch regionsweite Ausfälle. 
 
@@ -80,37 +80,38 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 
 |     Produkte                                                    | Resilienz             |
 |-----------------------------------------------------------------|:----------------------------:|
-|     Speicherkonto                                           | :large_blue_diamond:  |
-|     Application Gateway (V2)                                  | :large_blue_diamond:  |
-|     Azure Backup                                                | :large_blue_diamond:  |
-|     Azure Cosmos DB                                           | :large_blue_diamond:  |
-|     Azure Data Lake Storage Gen2                             | :large_blue_diamond:  |
-|     Azure Express Route                                       | :large_blue_diamond:  |
-|     Azure: öffentliche IP-Adresse                                           | :large_blue_diamond:  |
-|     Azure SQL-Datenbank (Tarif „Universell“)                 | :large_blue_diamond:  |
-|     Azure SQL-Datenbank (Tarife „Premium“ und „Unternehmenskritisch“)     | :large_blue_diamond:  |
-|     Disk Storage                                                | :large_blue_diamond:  |
-|     Event Hubs                                                  | :large_blue_diamond:  |
-|     Key Vault                                                   | :large_blue_diamond:  |
-|     Load Balancer                                               | :large_blue_diamond:  |
-|     Service Bus                                                 | :large_blue_diamond:  |
-|     Service Fabric                                            | :large_blue_diamond:  |
-|     Speicher:   Heiße/Kalte Blobspeicherebenen                      | :large_blue_diamond:  |
-|     Speicher:   Managed Disks                                    | :large_blue_diamond:  |
-|     VM-Skalierungsgruppen                               | :large_blue_diamond:  |
-|     Virtual Machines                                          | :large_blue_diamond:  |
-|     Virtual Machines: Av2-Serie                              | :large_blue_diamond:  |
-|     Virtual Machines: Bs-Serie                               | :large_blue_diamond:  |
-|     Virtual Machines: DSv2-Serie                             | :large_blue_diamond:  |
-|     Virtual Machines: DSv3-Serie                             | :large_blue_diamond:  |
-|     Virtual Machines: Dv2-Serie                              | :large_blue_diamond:  |
-|     Virtual Machines: Dv3-Serie                              | :large_blue_diamond:  |
-|     Virtual Machines: ESv3-Serie                             | :large_blue_diamond:  |
-|     Virtual Machines: Ev3-Serie                              | :large_blue_diamond:  |
-|     Virtual Machines: F-Serie                                | :large_blue_diamond:  |
-|     Virtual Machines: FS-Serie                               | :large_blue_diamond:  |
-|     Virtual Network                                           | :large_blue_diamond:  |
-|     VPN Gateway                                                 | :large_blue_diamond:  |
+|     [Application Gateway (V2)](../application-gateway/application-gateway-autoscaling-zone-redundant.md)                                  | :large_blue_diamond:  |
+|     [Azure Backup](../backup/backup-create-rs-vault.md#set-storage-redundancy)                                                | :large_blue_diamond:  |
+|     [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)                                           | :large_blue_diamond:  |
+|     [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)                             | :large_blue_diamond:  |
+|     [Azure Express Route](../expressroute/designing-for-high-availability-with-expressroute.md)                                       | :large_blue_diamond:  |
+|     [Azure: öffentliche IP-Adresse](../virtual-network/public-ip-addresses.md)                                           | :large_blue_diamond:  |
+|     Azure SQL-Datenbank ([Tarif „Universell“](../azure-sql/database/high-availability-sla.md))                 | :large_blue_diamond:  |
+|     Azure SQL-Datenbank ([Tarife „Premium“ und „Unternehmenskritisch“](../azure-sql/database/high-availability-sla.md))     | :large_blue_diamond:  |
+|     [Disk Storage](../storage/common/storage-redundancy.md)                                                | :large_blue_diamond:  |
+|     [Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)                                                  | :large_blue_diamond:  |
+|     [Schlüsseltresor](../key-vault/general/disaster-recovery-guidance.md)                                                   | :large_blue_diamond:  |
+|     [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md)                                               | :large_blue_diamond:  |
+|     [Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)                                                 | :large_blue_diamond:  |
+|     [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md)                                            | :large_blue_diamond:  |
+|     [Speicherkonto](../storage/common/storage-redundancy.md)                                           | :large_blue_diamond:  |
+|     Speicher: [Heiße/Kalte Blobspeicherebenen](../storage/common/storage-redundancy.md)                      | :large_blue_diamond:  |
+|     Speicher: [Managed Disks](../virtual-machines/managed-disks-overview.md)                                    | :large_blue_diamond:  |
+|     [VM-Skalierungsgruppen](../virtual-machine-scale-sets/scripts/cli-sample-zone-redundant-scale-set.md)                               | :large_blue_diamond:  |
+|     [Virtual Machines](../virtual-machines/windows/create-powershell-availability-zone.md)                                          | :large_blue_diamond:  |
+|     Virtual Machines: [Av2-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                              | :large_blue_diamond:  |
+|     Virtual Machines: [Bs-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
+|     Virtual Machines: [DSv2-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                             | :large_blue_diamond:  |
+|     Virtual Machines: [DSv3-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                            | :large_blue_diamond:  |
+|     Virtual Machines: [Dv2-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                             | :large_blue_diamond:  |
+|     Virtual Machines: [Dv3-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                              | :large_blue_diamond:  |
+|     Virtual Machines: [ESv3-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                             | :large_blue_diamond:  |
+|     Virtual Machines: [Ev3-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                              | :large_blue_diamond:  |
+|     Virtual Machines: [F-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                                | :large_blue_diamond:  |
+|     Virtual Machines: [FS-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
+|     Virtual Machines: [Shared Image Gallery](../virtual-machines/shared-image-galleries.md#make-your-images-highly-available) | :large_blue_diamond:  |
+|     [Virtual Network](../vpn-gateway/create-zone-redundant-vnet-gateway.md)                                         | :large_blue_diamond:  |
+|     [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md)                                             | :large_blue_diamond:  |
 
 
 **Hauptdienste**
@@ -118,46 +119,47 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 
 |     Produkte                                                    | Resilienz             |
 |-----------------------------------------------------------------|:----------------------------:|
-|     App Service-Umgebungen                                    | :large_blue_diamond:  |
-|     Azure Active Directory Domain Services                      | :large_blue_diamond:  |
-|     Azure Bastion                                               | :large_blue_diamond:  |
-|     Azure Cache for Redis                                       | :large_blue_diamond:  |
-|     Azure Cognitive Search                                      | :large_blue_diamond:  |
-|     Azure Cognitive Services: Textanalyse                    | :large_blue_diamond:  |
-|     Azure-Daten-Explorer                                         | :large_blue_diamond:  |
-|     Azure Database for MySQL: Flexibler Server                  | :large_blue_diamond:  |
-|     Azure Database for PostgreSQL: Flexibler Server             | :large_blue_diamond:  |
-|     Azure DDoS Protection                                       | :large_blue_diamond:  |
-|     Azure Disk Encryption                                       | :large_blue_diamond:  |
-|     Azure Firewall                                              | :large_blue_diamond:  |
-|     Azure Firewall Manager                                      | :large_blue_diamond:  |
-|     Azure Kubernetes Service (AKS)                              | :large_blue_diamond:  |
-|     Azure Private Link                                          | :large_blue_diamond:  |
-|     Azure Site Recovery                                         | :large_blue_diamond:  |
-|     Azure SQL: VM                                  | :large_blue_diamond:  |
-|     Azure Web Application Firewall                              | :large_blue_diamond:  |
-|     Container Registry                                          | :large_blue_diamond:  |
-|     Event Grid                                                  | :large_blue_diamond:  |
-|     Network Watcher                                             | :large_blue_diamond:  |
-|     Network Watcher: Traffic Analytics                          | :large_blue_diamond:  |
-|     Power BI Embedded                                           | :large_blue_diamond:  |
-|     Blob Storage Premium                                        | :large_blue_diamond:  |
-|     Storage: Azure Files Premium                                | :large_blue_diamond:  |
-|     Virtual Machines: Azure Dedicated Host                      | :large_blue_diamond:  |
-|     VMs: Ddsv4-Serie                              | :large_blue_diamond:  |
-|     VMs: Ddv4-Serie                               | :large_blue_diamond:  |
-|     VMs: Dsv4-Serie                               | :large_blue_diamond:  |
-|     VMs: Dv4-Serie                                | :large_blue_diamond:  |
-|     VMs: Edsv4-Serie                              | :large_blue_diamond:  |
-|     VMs: Edv4-Serie                               | :large_blue_diamond:  |
-|     VMs: Esv4-Serie                               | :large_blue_diamond:  |
-|     VMs: Ev4-Serie                                | :large_blue_diamond:  |
-|     VMs: Fsv2-Serie                               | :large_blue_diamond:  |
-|     VMs: M-Serie                                  | :large_blue_diamond:  |
-|     Virtual WAN                                                 | :large_blue_diamond:  |
-|     Virtual WAN: ExpressRoute                                   | :large_blue_diamond:  |
-|     Virtual WAN: Point-to-Site-VPN-Gateway                      | :large_blue_diamond:  |
-|     Virtual WAN: Site-to-Site-VPN-Gateway                       | :large_blue_diamond:  |
+|     [App Service-Umgebungen](../app-service/environment/zone-redundancy.md)                                    | :large_blue_diamond:  |
+|     [Azure Active Directory-Domänendienste](../active-directory-domain-services/overview.md)                      | :large_blue_diamond:  |
+|     [Azure API Management](../api-management/zone-redundancy.md)                      | :large_blue_diamond:  |
+|     [Azure Bastion](../bastion/bastion-overview.md)                                               | :large_blue_diamond:  |
+|     [Azure Cache for Redis](../azure-cache-for-redis/cache-high-availability.md)                              | :large_blue_diamond:  |
+|     [Azure Cognitive Search](../search/search-performance-optimization.md#availability-zones)               | :large_blue_diamond:  |
+|     Azure Cognitive Services: [Textanalyse](../cognitive-services/text-analytics/index.yml)                    | :large_blue_diamond:  |
+|     [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal)                               | :large_blue_diamond:  |
+|     Azure Database for MySQL: [Flexibler Server](../mysql/flexible-server/concepts-high-availability.md)                  | :large_blue_diamond:  |
+|     Azure Database for PostgreSQL: [Flexibler Server](../postgresql/flexible-server/overview.md)             | :large_blue_diamond:  |
+|     [Azure DDoS Protection](../ddos-protection/ddos-faq.md)                                       | :large_blue_diamond:  |
+|     [Azure-Datenträgerverschlüsselung](../virtual-machines/disks-redundancy.md)                                       | :large_blue_diamond:  |
+|     [Azure Firewall](../firewall/deploy-availability-zone-powershell.md)                                              | :large_blue_diamond:  |
+|     [Azure Firewall Manager](../firewall-manager/quick-firewall-policy.md)                                      | :large_blue_diamond:  |
+|     [Azure Kubernetes Service (AKS)](../aks/availability-zones.md)                              | :large_blue_diamond:  |
+|     [Azure Private Link](../private-link/private-link-overview.md)                                          | :large_blue_diamond:  |
+|     [Azure Site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)                                         | :large_blue_diamond:  |
+|     Azure SQL: [Virtual Machine](../azure-sql/database/high-availability-sla.md)                                  | :large_blue_diamond:  |
+|     [Azure Web Application Firewall](../firewall/deploy-availability-zone-powershell.md)                              | :large_blue_diamond:  |
+|     [Container Registry](../container-registry/zone-redundancy.md)                                          | :large_blue_diamond:  |
+|     [Event Grid](../event-grid/overview.md)                                                  | :large_blue_diamond:  |
+|     [Network Watcher](../network-watcher/frequently-asked-questions.md#service-availability-and-redundancy)                                             | :large_blue_diamond:  |
+|     Network Watcher: [Traffic Analytics](../network-watcher/frequently-asked-questions.md#service-availability-and-redundancy)                          | :large_blue_diamond:  |
+|     [Power BI Embedded](/power-bi/admin/service-admin-failover#what-does-high-availability)                                           | :large_blue_diamond:  |
+|     [Blob Storage Premium](../storage/blobs/storage-blob-performance-tiers.md)                                        | :large_blue_diamond:  |
+|     Storage: [Azure Files Premium](../storage/files/storage-files-planning.md)                                | :large_blue_diamond:  |
+|     Virtual Machines: [Azure Dedicated Host](../virtual-machines/windows/create-powershell-availability-zone.md)                     | :large_blue_diamond:  |
+|     Virtual Machines: [Ddsv4-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                              | :large_blue_diamond:  |
+|     Virtual Machines: [Ddv4-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
+|     Virtual Machines: [Dsv4-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
+|     Virtual Machines: [Dv4-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                                | :large_blue_diamond:  |
+|     Virtual Machines: [Edsv4-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                              | :large_blue_diamond:  |
+|     Virtual Machines: [Edv4-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
+|     Virtual Machines: [Esv4-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
+|     Virtual Machines: [Ev4-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                                | :large_blue_diamond:  |
+|     Virtual Machines: [Fsv2-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
+|     Virtual Machines: [M-Serie](../virtual-machines/windows/create-powershell-availability-zone.md)                                  | :large_blue_diamond:  |
+|     [Virtual WAN](../virtual-wan/virtual-wan-about.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                                 | :large_blue_diamond:  |
+|     Virtual WAN: [ExpressRoute](../virtual-wan/virtual-wan-about.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                   | :large_blue_diamond:  |
+|     Virtual WAN: [Point-to-Site-VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md)                      | :large_blue_diamond:  |
+|     Virtual WAN: [Site-to-Site-VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md)                       | :large_blue_diamond:  |
 
 
 **Spezialisierte Dienste**

@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 24a5c92164e0eace41224edfd2153c6142f7ea49
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: c007f1b77ef1618544dc4a2ca62d11e2a21f10f0
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107251486"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313474"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
 
@@ -254,7 +254,7 @@ if let id = messageId {
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Empfangen von Chatnachrichten aus einem Chatthread
 
-Sie können Nachrichten aus einem Chatthread empfangen, indem Sie die `listMessages()`-Methode aus `ChatThreadClient` aufrufen. Der Befehl zum Auflisten von Nachrichten gilt sowohl für Systemnachrichten als auch für Nachrichten, die von Benutzern gesendet wurden. Weitere Informationen zu den Nachrichtentypen, die Sie empfangen können, finden Sie unter [Nachrichtentypen](https://docs.microsoft.com/azure/communication-services/concepts/chat/concepts#message-types).
+Sie können Nachrichten aus einem Chatthread empfangen, indem Sie die `listMessages()`-Methode aus `ChatThreadClient` aufrufen. Der Befehl zum Auflisten von Nachrichten gilt sowohl für Systemnachrichten als auch für Nachrichten, die von Benutzern gesendet wurden. Weitere Informationen zu den Nachrichtentypen, die Sie empfangen können, finden Sie unter [Nachrichtentypen](../../../concepts/chat/concepts.md#message-types).
 
 Ersetzen Sie den Kommentar `<RECEIVE MESSAGES>` durch folgenden Code:
 
@@ -325,4 +325,3 @@ semaphore.wait()
 ## <a name="run-the-code"></a>Ausführen des Codes
 
 Klicken Sie in Xcode auf die Ausführungsschaltfläche, um das Projekt zu erstellen und auszuführen. In der Konsole können Sie sich die Ausgabe des Codes sowie die Protokollierungsausgabe des Chatclients ansehen.
-

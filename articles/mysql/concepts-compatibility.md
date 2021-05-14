@@ -6,16 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: cba9615a8c76387b593109bc2174ab4718f1750a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3614dffeca90e3986f7900d513682ad8b91fd066
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609308"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987126"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-Treiber und -Verwaltungstools, die mit Azure Database for MySQL kompatibel sind
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
-In diesem Artikel werden die Treiber und Verwaltungstools beschrieben, die mit Azure Database for MySQL kompatibel sind.
+
+In diesem Artikel werden die Treiber und Verwaltungstools beschrieben, die mit Azure Database for MySQL Single Server kompatibel sind.
+
+>[!NOTE]
+>Dieser Artikel gilt nur für Azure Database for MySQL Single Server, um sicherzustellen, dass Treiber mit der [Verbindungsarchitektur](concepts-connectivity-architecture.md) des Single Server-Diensts kompatibel sind. [Azure Database for MySQL Flexible Server](/azure/mysql/flexible-server/overview) ist mit allen unterstützten Treibern und Tools kompatibel und mit der MySQL Community Edition kompatibel. 
 
 ## <a name="mysql-drivers"></a>MySQL-Treiber
 Azure Database for MySQL verwendet die weltweit am häufigsten verwendete Communityedition von MySQL-Datenbank. Daher ist es mit einer Vielzahl von Programmiersprachen und Treibern kompatibel. Das Ziel besteht darin, die drei letzten Versionen von MySQL-Treibern zu unterstützen. Außerdem soll durch einen ständigen Austausch mit den Autoren der Open-Source-Community eine kontinuierliche Verbesserung von Funktionalität und Verwendbarkeit der MySQL-Treibern erreicht werden. Eine Liste der Treiber, die getestet und als mit Azure Database for MySQL 5.6 und 5.7 kompatibel eingestuft wurden, finden Sie in der folgenden Tabelle:

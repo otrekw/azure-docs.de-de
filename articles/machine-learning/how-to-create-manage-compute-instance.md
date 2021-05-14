@@ -5,18 +5,18 @@ description: Erfahren Sie, wie Sie eine Azure Machine Learning-Compute-Instanz e
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4ae4094e4a356c5394c2bdf887d3b60e40989ecd
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628950"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885738"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz
 
@@ -87,13 +87,13 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden un
 * [ComputeInstance.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computeinstance(class)#wait-for-completion-show-output-false--is-delete-operation-false-)
 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-Weitere Informationen finden Sie in der Referenz zu [az ml computetarget create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance).
+Weitere Informationen finden Sie in der Referenz zu [az ml computetarget create computeinstance](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -171,7 +171,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     instance.delete(wait_for_completion=True, show_output=True)
     ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance**.
 
@@ -181,7 +181,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget stop computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
+    Weitere Informationen finden Sie unter [az ml computetarget stop computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop).
 
 * Start 
 
@@ -189,7 +189,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget start computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
+    Weitere Informationen finden Sie unter [az ml computetarget start computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start).
 
 * Neu starten 
 
@@ -197,7 +197,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget restart computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
+    Weitere Informationen finden Sie unter [az ml computetarget restart computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart).
 
 * Löschen
 
@@ -205,7 +205,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget delete -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget delete computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget#ext-azure-cli-ml-az-ml-computetarget-delete).
+    Weitere Informationen finden Sie unter [az ml computetarget delete computeinstance](/cli/azure/ml/computetarget#az_ml_computetarget_delete).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 

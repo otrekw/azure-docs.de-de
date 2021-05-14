@@ -13,22 +13,22 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2d0d3335468147575eb53a99940866baa18375
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df4cb32720d80dd23289be7e760c9934e9a8db8a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222520"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501500"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Einschränken von Gastzugriffsberechtigungen (Vorschau) in Azure Active Directory
 
 Mit Azure Active Directory (Azure AD) können Sie einschränken, was externe Gastbenutzer in ihrer Organisation in Azure AD sehen können. Gastbenutzern ist in Azure AD standardmäßig eine eingeschränkte Berechtigungsstufe zugewiesen, während die Standardeinstellung für Mitgliedsbenutzer den vollständige Satz von Standardbenutzerberechtigungen umfasst. Dies ist eine Vorschau einer neuen Berechtigungsstufe für Gastbenutzer in den Einstellungen für die externe Zusammenarbeit Ihrer Azure AD-Organisation, die einen noch eingeschränkteren Zugriff bietet. Somit sind für den Gastzugriff jetzt folgende Auswahlmöglichkeiten vorhanden:
 
-Berechtigungsstufe         | Zugriffsebene
-----------------         | ------------
-Mit Mitgliedsbenutzern identisch     | Gäste haben denselben Zugriff auf Azure AD-Ressourcen wie Mitgliedsbenutzer.
-Beschränkter Zugriff (Standardeinstellung) | Gäste können die Mitgliedschaft in allen nicht ausgeblendeten Gruppen sehen.
-**Eingeschränkter Zugriff (neu)**  | **Gäste können keine Mitgliedschaft in Gruppen sehen.**
+Berechtigungsstufe         | Zugriffsebene | Wert
+----------------         | ------------ | -----
+Mit Mitgliedsbenutzern identisch     | Gäste haben denselben Zugriff auf Azure AD-Ressourcen wie Mitgliedsbenutzer. | a0b1b346-4d3e-4e8b-98f8-753987be4970
+Beschränkter Zugriff (Standardeinstellung) | Gäste können die Mitgliedschaft in allen nicht ausgeblendeten Gruppen sehen. | 10dae51f-b6af-4016-8d66-8c2a99b929b3
+**Eingeschränkter Zugriff (neu)**  | **Gäste können keine Mitgliedschaft in Gruppen sehen.** | **2af84b1e-32c8-42b7-82bc-daa82404023b**
 
 Wenn der Gastzugriff eingeschränkt ist, können Gäste nur das eigene Benutzerprofil anzeigen. Die Berechtigung zum Anzeigen anderer Benutzer ist auch dann nicht gegeben, wenn der Gast nach Benutzerprinzipalname oder objectId sucht. Bei eingeschränktem Zugriff ist für Gastbenutzer auch die Anzeige der Mitgliedschaft in Gruppen, denen sie zugeordnet sind, eingeschränkt. Weitere Informationen zu den allgemeinen Standardbenutzerberechtigungen, einschließlich der Gastbenutzerberechtigungen, finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../fundamentals/users-default-permissions.md).
 

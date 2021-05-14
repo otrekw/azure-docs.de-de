@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 7446b2050fdd7bbc7704953c053da0629231191c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22a0629d50ee8181ffcbfe7dad32ab76fb3e68fd
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715121"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714162"
 ---
 # <a name="select-a-vmware-migration-option"></a>Auswählen einer VMware-Migrationsoption
 
@@ -34,7 +34,8 @@ Die folgende Tabelle hilft Ihnen bei der Wahl der geeigneten Methode. Sie könne
 **Zieldatenträger** | Verwaltete Datenträger | Verwaltete Datenträger
 **Einschränkungen für Datenträger** | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 32 TB<br/><br/> Maximale Datenträger: 60 | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 32 TB<br/><br/> Maximale Datenträger: 63
 **Pass-Through-Datenträger** | Nicht unterstützt | Unterstützt
-**UEFI-Start** | Unterstützt. | Unterstützt.
+**UEFI-Start** | Unterstützt. | Unterstützt. 
+**Konnektivität** | Öffentliches Internet <br/> ExpressRoute mit Microsoft-Peering <br/> <br/> [Erfahren Sie, wie](./replicate-using-expressroute.md) Sie private Endpunkte für die Replikation über ein privates ExpressRoute-Peering oder eine S2S-VPN-Verbindung verwenden. |Öffentliches Internet <br/> ExpressRoute mit privatem Peering <br/> ExpressRoute mit Microsoft-Peering <br/> Site-to-Site-VPN-Verbindung
 
 ## <a name="compare-deployment-steps"></a>Vergleichen der Bereitstellungsschritte
 

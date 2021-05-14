@@ -3,12 +3,12 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurationsclients Einstellungen in VMs überwacht.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: a18f230c1b7b1eb2c953542e276127f4f47cbb39
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: e1867c2ba86d237a7b8937b689fef11235c1a202
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802521"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073699"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -29,7 +29,8 @@ Derzeit wird für die meisten Richtliniendefinitionen der Azure Policy-Gastkonfi
 
 ## <a name="resource-provider"></a>Ressourcenanbieter
 
-Bevor Sie Guest Configuration verwenden können, müssen Sie den Ressourcenanbieter registrieren. Wenn die Zuweisung einer Gastkonfigurationsrichtlinie über das Portal erfolgt oder das Abonnement in Azure Security Center registriert ist, wird der Ressourcenanbieter automatisch registriert. Hierfür können Sie über das [Portal](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), die [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) oder [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) manuell registrieren.
+Bevor Sie Guest Configuration verwenden können, müssen Sie den Ressourcenanbieter registrieren.
+Wenn die Zuweisung einer Gastkonfigurationsrichtlinie über das Portal erfolgt oder das Abonnement in Azure Security Center registriert ist, wird der Ressourcenanbieter automatisch registriert. Hierfür können Sie über das [Portal](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), die [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) oder [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) manuell registrieren.
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Bereitstellen von Anforderungen für virtuelle Azure-Computer
 
@@ -83,19 +84,17 @@ Azure Arc-Computer stellen mithilfe der lokalen Netzwerkinfrastruktur eine Verbi
 
 ### <a name="communicate-over-virtual-networks-in-azure"></a>Kommunizieren über virtuelle Netzwerke in Azure
 
-Virtuelle Computer, die virtuelle Netzwerke für die Kommunikation verwenden, benötigen ausgehenden Zugriff auf Azure-Rechenzentren an Port `443`. Wenn Sie ein privates virtuelles Netzwerk in Azure verwenden und keinen ausgehenden Datenverkehr zulassen, müssen Ausnahmen über Netzwerksicherheitsgruppen-Regeln konfiguriert werden. Der Diensttag „GuestAndHybridManagement“ kann verwendet werden, um auf den Gastkonfigurationsdienst zu verweisen.
+Für die Kommunikation mit dem Gastkonfigurations-Ressourcenanbieter in Azure benötigen Computer ausgehenden Zugriff auf Azure-Rechenzentren über Port **443**. Wenn ein Netzwerk in Azure keinen ausgehenden Datenverkehr zulässt, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden. Der [Service-Tag](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" kann verwendet werden, um auf den Gästekonfigurationsdienst zu verweisen, anstatt die [Liste der IP-Bereiche](https://www.microsoft.com/en-us/download/details.aspx?id=56519) für Azure-Rechenzentren manuell zu führen.
 
 ### <a name="communicate-over-private-link-in-azure"></a>Kommunizieren über einen privaten Link in Azure
 
-Für die Kommunikation mit dem Gastkonfigurationsdienst können virtuelle Computer einen [privaten Link](../../../private-link/private-link-overview.md) verwendet. Wenden Sie ein Tag mit dem Namen `EnablePrivateNeworkGC` (ohne „t“ in „Network“) und dem Wert `TRUE` an, um dieses Feature zu aktivieren. Das Tag kann vor oder nach der Anwendung von Richtliniendefinitionen der Gastkonfiguration auf den Computer angewendet werden.
+Für die Kommunikation mit dem Gastkonfigurationsdienst können virtuelle Computer einen [privaten Link](../../../private-link/private-link-overview.md) verwendet. Wenden Sie ein Tag mit dem Namen `EnablePrivateNetworkGC` und dem Wert `TRUE` an, um dieses Feature zu aktivieren. Das Tag kann vor oder nach der Anwendung von Richtliniendefinitionen der Gastkonfiguration auf den Computer angewendet werden.
 
 Der Datenverkehr wird mithilfe der [virtuellen öffentlichen IP-Adresse](../../../virtual-network/what-is-ip-address-168-63-129-16.md) von Azure weitergeleitet, um einen sicheren, authentifizierten Kanal mit Azure-Plattformressourcen einzurichten.
 
 ### <a name="azure-arc-connected-machines"></a>Vernetzte Azure Arc-Computer
 
 Knoten, die sich außerhalb von Azure befinden und über Azure Arc verbunden sind, benötigen eine Verbindung mit dem Gastkonfigurationsdienst. Details zu den Netzwerk- und Proxyanforderungen finden Sie in der [Azure Arc-Dokumentation](../../../azure-arc/servers/overview.md).
-
-Für die Kommunikation mit dem Gastkonfigurations-Ressourcenanbieter in Azure benötigen Computer ausgehenden Zugriff auf Azure-Rechenzentren über Port **443**. Wenn ein Netzwerk in Azure keinen ausgehenden Datenverkehr zulässt, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden. Der [Diensttag](../../../virtual-network/service-tags-overview.md) „GuestAndHybridManagement“ kann verwendet werden, um auf den Gastkonfigurationsdienst zu verweisen.
 
 Lassen Sie für über Arc verbundene Server in privaten Rechenzentren Datenverkehr über die folgenden Muster zu:
 
@@ -176,7 +175,10 @@ Die Guest Configuration-Erweiterung schreibt Protokolldateien an die folgenden S
 
 Windows: `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-Linux: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+Linux
+
+- Azure-VM: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+- Azure-VM: `/var/lib/GuestConfig/arc_policy_logs/gc_agent.log`
 
 ### <a name="collecting-logs-remotely"></a>Remotesammeln von Protokollen
 
@@ -210,9 +212,9 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 Der Gastkonfigurationsclient lädt Inhaltspakete auf einen Computer herunter und extrahiert den Inhalt.
 Um zu überprüfen, welche Inhalte heruntergeladen und gespeichert wurden, sehen Sie sich die unten angegebenen Ordnerspeicherorte an.
 
-Windows: `c:\programdata\guestconfig\configurations`
+Windows: `c:\programdata\guestconfig\configuration`
 
-Linux: `/var/lib/guestconfig/configurations`
+Linux: `/var/lib/GuestConfig/Configuration`
 
 ## <a name="guest-configuration-samples"></a>Beispiele für Guest Configuration
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/6/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b64ee4d1538276bbbcab3fe09054f399ad20c162
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20afd0a696a2bbeda0e2fa8bb114ecb8b5b6a76b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94616548"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205537"
 ---
 # <a name="troubleshooting-azure-digital-twins-resource-health"></a>Problembehandlung von Azure Digital Twins: Ressourcenintegrität
 
@@ -32,13 +32,13 @@ Um die Integrität Ihrer Instanz zu überprüfen, gehen Sie folgendermaßen vor:
 
     :::image type="content" source="media/troubleshoot-resource-health/resource-health.png" alt-text="Der Screenshot zeigt die Seite „Ressourcenintegrität“. Es gibt einen Abschnitt „Integritätsverlauf“ mit einem täglichen Bericht der letzten neun Tage. Jeder Tag zeigt den Status „Verfügbar“.":::
 
-In der obigen Abbildung ist dieser Fall als *Verfügbar* dargestellt, und zwar seit neun Tagen. Weitere Informationen über den Status *Verfügbar* und die anderen Statustypen, die auftreten können, finden Sie unter [*Übersicht über Azure Resource Health*](../service-health/resource-health-overview.md).
+In der obigen Abbildung ist dieser Fall als *Verfügbar* dargestellt, und zwar seit neun Tagen. Weitere Informationen über den Status *Verfügbar* und die anderen Statustypen, die auftreten können, finden Sie unter [Übersicht über Azure Resource Health](../service-health/resource-health-overview.md).
 
-Weitere Informationen zu den verschiedenen unterschiedlichen Azure-Ressourcentypen finden Sie unter [*Ressourcentypen und Integritätsprüfungen in Azure Resource Health*](../service-health/resource-health-checks-resource-types.md).
+Weitere Informationen zu den verschiedenen unterschiedlichen Azure-Ressourcentypen finden Sie unter [Ressourcentypen und Integritätsprüfungen in Azure Resource Health](../service-health/resource-health-checks-resource-types.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie in den folgenden Artikeln über andere Möglichkeiten, Ihre Azure Digital Twins-Instanz zu überwachen:
-* [*Problembehandlung: Anzeigen von Metriken mit Azure Monitor*](troubleshoot-metrics.md)
-* [*Problembehandlung: Einrichten der Diagnose*](troubleshoot-diagnostics.md).
-* [*Problembehandlung: Einrichten von Warnungen*](troubleshoot-alerts.md).
+* [Problembehandlung: Anzeigen von Metriken mit Azure Monitor](troubleshoot-metrics.md)
+* [Problembehandlung: Einrichten der Diagnose](troubleshoot-diagnostics.md).
+* [Problembehandlung: Einrichten von Warnungen](troubleshoot-alerts.md).

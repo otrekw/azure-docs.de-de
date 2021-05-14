@@ -5,12 +5,14 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+author: lzchen
+ms.author: lechen
+ms.openlocfilehash: 548cfd9d593e9adaeaaf984f756e58d242ca9f45
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047421"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576549"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung
 
@@ -19,7 +21,7 @@ Azure Monitor unterstützt durch die Integration mit [OpenCensus](https://opence
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- Python-Installation. In diesem Artikel wird [Python 3.7.0](https://www.python.org/downloads/release/python-370/) verwendet, doch können wahrscheinlich auch andere Versionen mit kleineren Änderungen verwendet werden. Die SDK unterstützt die Python-Versionen 2.7 und 3.6+
+- Python-Installation. In diesem Artikel wird [Python 3.7.0](https://www.python.org/downloads/release/python-370/) verwendet, doch können wahrscheinlich auch andere Versionen mit kleineren Änderungen verwendet werden. Das SDK unterstützt nur Python v2.7 und v3.4 bis v3.7.
 - Erstellen Sie eine Application Insights-[Ressource](./create-new-resource.md). Ihnen wird ein eigener Instrumentierungsschlüssel (iKey) für Ihre Ressource zugewiesen.
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrumentieren mit dem OpenCensus Python SDK für Azure Monitor
@@ -330,6 +332,54 @@ Einzelheiten dazu, wie Sie nachverfolgte Telemetrie ändern können, bevor sie a
     ```
 
 1. Das Exportprogramm sendet die Metrikdaten in einem festen Intervall an Azure Monitor. Die Standardeinstellung ist alle 15 Sekunden. Wir verfolgen nur eine einzelne Metrik. Diese Metrikdaten werden also mit dem jeweiligen Wert und Zeitstempel in jedem Intervall gesendet. Der Wert ist kumulativ. Er kann nur erhöht werden und wird beim Neustart auf 0 zurückgesetzt. Sie finden die Daten unter `customMetrics`, die `customMetrics`-Eigenschaften „valueCount“, „valueSum“, „valueMin“, „valueMax“ und „valueStdDev“ werden effektiv jedoch nicht verwendet.
+
+### <a name="setting-custom-dimensions-in-metrics"></a>Festlegen benutzerdefinierter Dimensionen in Metriken
+
+Mit dem Opencensus Python SDK können Sie Ihrer Metriktelemetrie mithilfe von `tags` benutzerdefinierte Dimensionen hinzufügen. Bei diesen Tags handelt es sich im Grunde um ein Wörterbuch aus Schlüssel-Wert-Paaren. 
+
+1. Fügen Sie die Tags, die Sie verwenden möchten, in die Tagzuordnung ein. Die Tagzuordnung fungiert als eine Art „Pool“ aller verfügbaren Tags, die Sie verwenden können.
+
+```python
+...
+tmap = tag_map_module.TagMap()
+tmap.insert("url", "http://example.com")
+...
+```
+
+1. Geben Sie für eine bestimmte `View` die Tags an, die Sie beim Aufzeichnen von Metriken mit dieser Ansicht über den Tagschlüssel verwenden möchten.
+
+```python
+...
+prompt_view = view_module.View("prompt view",
+                               "number of prompts",
+                               ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
+                               prompt_measure,
+                               aggregation_module.CountAggregation())
+...
+```
+
+1. Achten Sie darauf, die Tagzuordnung bei der Aufzeichnung in der Messzuordnung zu verwenden. Die in der `View` angegebenen Tagschlüssel müssen in der Tagzuordnung enthalten sein, die für die Aufzeichnung verwendet wird.
+
+```python
+...
+mmap = stats_recorder.new_measurement_map()
+mmap.measure_int_put(prompt_measure, 1)
+mmap.record(tmap) # <-- pass the tag map in here
+...
+```
+
+1. Unterhalb der Tabelle `customMetrics` umfassen alle Metrikdatensätze, die mithilfe von `prompt_view` ausgegeben werden, benutzerdefinierte Dimensionen `{"url":"http://example.com"}`.
+
+1. Um Tags mit unterschiedlichen Werten unter Verwendung derselben Schlüsseln zu generieren, erstellen Sie neue Tagzuordnungen für diese.
+
+```python
+...
+tmap = tag_map_module.TagMap()
+tmap2 = tag_map_module.TagMap()
+tmap.insert("url", "http://example.com")
+tmap2.insert("url", "https://www.wikipedia.org/wiki/")
+...
+```
 
 #### <a name="performance-counters"></a>Leistungsindikatoren
 

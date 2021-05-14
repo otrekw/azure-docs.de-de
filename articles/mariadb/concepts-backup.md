@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08e75f9eb5ea111cc977d02f66b945de4eae5126
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98659936"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306171"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Sichern und Wiederherstellen in Azure Database for MariaDB
 
@@ -19,33 +19,47 @@ Azure Database for MariaDB erstellt automatisch Sicherungen und speichert diese 
 
 ## <a name="backups"></a>Backups
 
-Azure Database for MariaDB erstellt vollständige, differenzielle und Transaktionsprotokollsicherungen. Dank dieser Sicherungen können Sie für einen Server den Stand zu einem beliebigen Zeitpunkt wiederherstellen, der innerhalb Ihres konfigurierten Aufbewahrungszeitraums für Sicherungen liegt. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Optional können Sie einen Zeitraum von bis zu 35 Tagen festlegen. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
+Azure Database for MariaDB sichert die Datendateien und das Transaktionsprotokoll. Dank dieser Sicherungen können Sie für einen Server den Stand zu einem beliebigen Zeitpunkt wiederherstellen, der innerhalb Ihres konfigurierten Aufbewahrungszeitraums für Sicherungen liegt. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Mit einer [optionalen Konfiguration](howto-restore-server-portal.md#set-backup-configuration) können Sie einen Zeitraum von bis zu 35 Tagen festlegen. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
 
-Diese Sicherungsdateien sind nicht für den Benutzer verfügbar und können nicht exportiert werden. Diese Sicherungen können nur für Wiederherstellungsvorgänge in Azure Database for MariaDB verwendet werden. Zum Kopieren einer Datenbank können Sie [mysqldump](howto-migrate-dump-restore.md) verwenden.
+Diese Sicherungsdateien sind nicht für den Benutzer verfügbar und können nicht exportiert werden. Sie können nur für Wiederherstellungsvorgänge in Azure Database for MySQL verwendet werden. Zum Kopieren einer Datenbank können Sie [mysqldump](howto-migrate-dump-restore.md) verwenden.
 
-### <a name="backup-frequency"></a>Sicherungshäufigkeit
+Sicherungstyp und Sicherungshäufigkeit sind vom Back-End-Speicher für die Server abhängig.
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>Server mit bis zu 4 TB Speicher
+### <a name="backup-type-and-frequency"></a>Sicherungstyp und Sicherungshäufigkeit
 
-Bei Servern, die bis zu 4 TB Speicher unterstützen, erfolgt jede Woche eine vollständige Sicherung. Differenzielle Sicherungen werden zweimal täglich ausgeführt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt.
+#### <a name="basic-storage-servers"></a>Basic-Speicherserver
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>Server mit bis zu 16 TB Speicher
-In einigen [Azure-Regionen](concepts-pricing-tiers.md#storage) unterstützen alle neu bereitgestellten Server bis zu 16 TB Speicher. Die Sicherungen auf diesen großen Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen. 
+Der Basic-Speicherserver ist der Back-End-Speicher, der die [Server im Tarif „Basic“](concepts-pricing-tiers.md) unterstützt. Die Sicherungen auf Basic-Speicherservern basieren auf Momentaufnahmen. Pro Tag wird eine vollständige Datenbankmomentaufnahme erstellt. Für Basic-Speicherserver werden keine differenziellen Sicherungen durchgeführt und Momentaufnahmesicherungen sind ausschließlich vollständige Datenbanksicherungen.
 
-Differentielle Momentaufnahmesicherungen werden mindestens einmal täglich erstellt. Differenzielle Momentaufnahmensicherungen erfolgen nicht nach einem festgelegten Zeitplan. Differenzielle Momentaufnahmesicherungen werden alle 24 Stunden ausgeführt, es sei denn, das Transaktionsprotokoll (binlog in MariaDB) überschreitet 50 GB seit der letzten differenziellen Sicherung. An einem Tag sind maximal sechs differenzielle Momentaufnahmen zulässig. 
+Transaktionsprotokollsicherungen finden alle fünf Minuten statt.
 
-Transaktionsprotokollsicherungen finden alle fünf Minuten statt. 
+#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>Universelle Speicherserver mit bis zu 4 TB Speicher
+
+Der universelle Speicher ist der Back-End-Speicher, der die [Server im Tarif „Universell“](concepts-pricing-tiers.md) und [„Arbeitsspeicheroptimiert“](concepts-pricing-tiers.md) unterstützt. Bei Servern mit universellem Speicher von bis zu 4 TB erfolgt jede Woche eine vollständige Sicherung. Differenzielle Sicherungen werden zweimal täglich ausgeführt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt. Die Sicherungen in universellen Speichern mit bis zu 4 TB basieren nicht auf Momentaufnahmen und beanspruchen zum Zeitpunkt der Sicherung E/A-Bandbreite. Bei großen Datenbanken (> 1 TB) in einem 4-TB-Speicher wird Folgendes empfohlen:
+
+- Bereitstellung von mehr IOPs zum Sichern von IOs ODER
+- Alternativ können Sie zu einem universellen Speicher migrieren, der bis zu 16 TB unterstützt, wenn die zugrunde liegende Speicherinfrastruktur in Ihren bevorzugten [Azure-Regionen](./concepts-pricing-tiers.md#storage) verfügbar ist. Für einen universellen Speicher, der bis zu 16 TB unterstützt, fallen keine zusätzlichen Kosten an. Unterstützung bei der Migration auf einen 16-TB-Speicher erhalten Sie, indem Sie über das Azure-Portal ein Supportticket öffnen.
+
+#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Universelle Speicherserver mit bis zu 16 TB Speicher
+
+In einigen [Azure-Regionen](./concepts-pricing-tiers.md#storage) können alle neu bereitgestellten Server universelle Speicher bis zu 16 TB unterstützen. Das bedeutet, dass Speicher mit bis zu 16 TB der standardmäßige universelle Speicher für alle [Regionen](concepts-pricing-tiers.md#storage) ist, in denen er unterstützt wird. Die Sicherungen auf diesen 16-TB-Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen.
+
+Differentielle Momentaufnahmesicherungen werden mindestens einmal täglich erstellt. Differenzielle Momentaufnahmensicherungen erfolgen nicht nach einem festgelegten Zeitplan. Differenzielle Momentaufnahmensicherungen werden alle 24 Stunden ausgeführt – es sei denn, das Transaktionsprotokoll (binlog in MariaDB) überschreitet 50 GB seit der letzten differenziellen Sicherung. An einem Tag sind maximal sechs differenzielle Momentaufnahmen zulässig.
+
+Transaktionsprotokollsicherungen finden alle fünf Minuten statt.
+ 
 
 ### <a name="backup-retention"></a>Sicherungsaufbewahrung
 
 Sicherungen werden basierend auf der Einstellung für den Aufbewahrungszeitraum der Sicherung auf dem Server beibehalten. Sie können einen Aufbewahrungszeitraum von 7 bis 35 Tagen auswählen. Der Standardaufbewahrungszeitraum beträgt sieben Tage. Sie können den Aufbewahrungszeitraum bei der Servererstellung oder später festlegen, indem Sie die Sicherungskonfiguration mithilfe des [Azure-Portals](howto-restore-server-portal.md#set-backup-configuration) oder über die [Azure CLI](howto-restore-server-cli.md#set-backup-configuration) aktualisieren. 
 
 Mit „Aufbewahrungszeit für Sicherung“ wird auch gesteuert, für welchen zurückliegenden Zeitraum eine Point-in-Time-Wiederherstellung durchgeführt werden kann, da dies auf den verfügbaren Sicherungen basiert. Der Aufbewahrungszeitraum kann auch als Wiederherstellungsfenster im Hinblick auf die Wiederherstellung behandelt werden. Alle Sicherungen, die zum Durchführen einer Zeitpunktwiederherstellung innerhalb des Aufbewahrungszeitraums für die Sicherung erforderlich sind, werden im Sicherungsspeicher beibehalten. Wenn der Aufbewahrungszeitraum für Sicherungen beispielsweise auf sieben Tage festgelegt ist, entspricht das Wiederherstellungsfenster einer Dauer von sieben Tagen. In diesem Szenario bleiben alle Sicherungen erhalten, die zum Wiederherstellen des Servers in den letzten sieben Tagen erforderlich sind. Beispiel für Sicherungsaufbewahrungsfenster von sieben Tagen:
+
 - Bei Servern mit bis zu 4 TB Speicher werden bis zu zwei vollständige Datenbanksicherungen, alle differenziellen Sicherungen sowie Transaktionsprotokollsicherungen beibehalten, die seit der frühesten Datenbanksicherung durchgeführt wurden.
 -   Bei Servern mit bis zu 16 TB Speicher werden die vollständige Datenbankmomentaufnahme, alle differenziellen Momentaufnahmen und die Transaktionsprotokollsicherungen der letzten acht Tage beibehalten.
 
 #### <a name="long-term-retention-of-backups"></a>Langzeitaufbewahrung von Sicherungen
-Eine Langzeitaufbewahrung von Sicherungen (mehr als 35 Tage) wird vom Dienst derzeit noch nicht nativ unterstützt. Sie können aber „mysqldump“ verwenden, um Sicherungen zu erstellen und für die langfristige Aufbewahrung zu speichern. Dies wird von unserem Supportteam in einem [Artikel mit Schrittanleitungen](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) beschrieben. 
+Eine Langzeitaufbewahrung von Sicherungen (mehr als 35 Tage) wird vom Dienst derzeit noch nicht nativ unterstützt. Sie können aber mithilfe von „mysqldump“ Sicherungen erstellen und für die langfristige Aufbewahrung speichern. Unser Supportteam beschreibt in einem [Artikel mit Schrittanleitungen](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157), wie Sie dies erreichen. 
 
 ### <a name="backup-redundancy-options"></a>Optionen für Sicherungsredundanz
 
@@ -74,7 +88,7 @@ Es gibt zwei Arten der Wiederherstellung:
 Die geschätzte Wiederherstellungszeit hängt von verschiedenen Faktoren ab, z.B. der Datenbankgröße, Transaktionsprotokollgröße und Netzwerkbandbreite sowie der Gesamtzahl von Datenbanken, die gleichzeitig in derselben Region wiederhergestellt werden müssen. Die Wiederherstellungszeit beträgt für gewöhnlich weniger als 12 Stunden.
 
 > [!IMPORTANT]
-> Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden alle zum Server gehörigen Datenbanken ebenfalls gelöscht und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../azure-resource-manager/management/lock-resources.md) nutzen.
+> Gelöschte Server können nur innerhalb von **fünf Tagen** nach dem Löschen wiederhergestellt werden. Danach werden die Sicherungen gelöscht. Auf die Datenbanksicherung kann nur über das Azure-Abonnement zugegriffen werden, unter dem der Server gehostet wird. Und nur über dieses Abonnement kann die Datenbanksicherung auch wiederhergestellt werden. Informationen zum Wiederherstellen eines gelöschten Servers finden Sie in den [dokumentierten Schritten](howto-restore-dropped-server.md). Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../azure-resource-manager/management/lock-resources.md) nutzen.
 
 ### <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt
 

@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 7cbf6ca7606210b70ae9efa69a8cc6551eb6f36f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 85883cd465626764d7af0c20af480b6075e13f9e
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073525"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070574"
 ---
 Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie geschützte Ressourcenanforderungen von Clientanwendungen, die ein Zugriffstoken bereitstellen, akzeptieren und darauf reagieren können.
 
@@ -34,7 +34,7 @@ Aktivieren Sie als Nächstes den Flow zur impliziten Genehmigung:
 1. Aktivieren Sie unter **Implizite Genehmigung** die Kontrollkästchen **Zugriffstoken** und **ID-Token**.
 1. Wählen Sie **Speichern** aus.
 
-#### <a name="applications"></a>[Anwendungen](#tab/applications/)
+#### <a name="applications-legacy"></a>[Anwendungen (Legacy)](#tab/applications/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.

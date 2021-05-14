@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie einen Batch-Pool in einem virtuellen Net
 ms.topic: how-to
 ms.date: 03/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: 7213637e89cfccd1352861002c47a696d942d30f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f376c62a8fda4a84ec8385fb623fa304bb8c035e
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629307"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947499"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk
 
@@ -53,9 +53,11 @@ Ihr Unternehmen erfordert möglicherweise zu Überprüfungs- und Protokollierung
 
 Um sicherzustellen, dass die Knoten im Pool in einem VNET funktionieren, in dem die Tunnelerzwingung aktiviert ist, müssen Sie folgende [benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md) (User-Defined Routes, UDR) für dieses Subnetz hinzufügen:
 
-- Der Batch-Dienst muss für die zeitliche Planung von Tasks mit den Knoten kommunizieren. Um diese Kommunikation zu ermöglichen, fügen Sie eine UDR für jede IP-Adresse hinzu, die vom Batch-Dienst in der Region Ihres Batch-Kontos verwendet werden. Informationen zum Abrufen der Liste mit IP-Adressen des Batch-Diensts finden Sie unter [Lokale Diensttags](../virtual-network/service-tags-overview.md).
+- Der Batch-Dienst muss für die zeitliche Planung von Tasks mit den Knoten kommunizieren. Um diese Kommunikation zu ermöglichen, fügen Sie eine UDR für jede IP-Adresse hinzu, die vom Batch-Dienst in der Region Ihres Batch-Kontos verwendet werden. Die IP-Adressen des Batch-Diensts befinden sich im `BatchNodeManagement.<region>`-Diensttag. Informationen zum Abrufen der Liste mit IP-Adressen finden Sie unter [Lokale Diensttags](../virtual-network/service-tags-overview.md).
 
-- Stellen Sie sicher, dass ausgehender Datenverkehr an Azure Storage (also URLs im Format `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net`) nicht durch das lokale Netzwerk blockiert wird.
+- Stellen Sie sicher, dass ausgehender TCP-Datenverkehr an den Azure Batch-Dienst am Zielport 443 nicht von Ihrem lokalen Netzwerk blockiert wird. Diese Ziel-IP-Adressen des Azure Batch-Diensts sind die gleichen, die im Diensttag `BatchNodeManagement.<region>` zu finden sind, das oben für Routen verwendet wurde.
+
+- Stellen Sie sicher, dass ausgehender TCP-Datenverkehr an Azure Storage am Zielport 443 (also URLs im Format `*.table.core.windows.net`, `*.queue.core.windows.net` und `*.blob.core.windows.net`) nicht durch das lokale Netzwerk blockiert wird.
 
 - Wenn Sie virtuelle Dateieinbindung verwenden, überprüfen Sie die [Netzwerkanforderungen](virtual-file-mount.md#networking-requirements) und stellen Sie sicher, dass kein erforderlicher Datenverkehr blockiert ist.
 

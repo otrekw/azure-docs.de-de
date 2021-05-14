@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: b674bdf59959715b666c521c0d0631f86f71b1d3
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c694a2151f15af52a5380b9a442c1ac27fa1e475
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093723"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319591"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Erneutes Generieren von HTTP-Anforderungs- und Antwortheadern mit Azure Application Gateway – Azure PowerShell
 
@@ -106,4 +107,4 @@ set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Einrichten einiger gängiger Anwendungsfälle finden Sie unter [Allgemeine Szenarien zum erneuten Generieren von Headern](./rewrite-http-headers.md).
+Weitere Informationen zum Einrichten einiger gängiger Anwendungsfälle finden Sie unter [Allgemeine Szenarien zum erneuten Generieren von Headern](./rewrite-http-headers-url.md).

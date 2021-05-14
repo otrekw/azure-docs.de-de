@@ -1,14 +1,14 @@
 ---
 title: Übersicht über das Blaupausenbeispiel „Azure Security Benchmark Foundation“
 description: Übersicht und Architektur für das Blaupausenbeispiel „Azure Security Benchmark Foundation“.
-ms.date: 02/17/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: ed497eff85e07b6a51939907bc751f3b40c99b30
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a60f70b1f3e9d810ccded8bbeee726ea950524e9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741870"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739257"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „Azure Security Benchmark Foundation“
 
@@ -35,7 +35,7 @@ Durch diese Blaupause werden mehrere Azure-Dienste bereitgestellt, um eine siche
 - [Azure Bastion](../../../../bastion/bastion-overview.md) für nahtlose und sichere Konnektivität mit einem virtuellen Computer ohne öffentliche IP-Adresse, Agent oder spezielle Clientsoftware.
 - [Azure VPN Gateway](../../../../vpn-gateway/vpn-gateway-about-vpngateways.md), um verschlüsselten Datenverkehr zwischen einem virtuellen Azure-Netzwerk und einem lokalen Standort über das öffentliche Internet zu senden.
 
-> [!NOTE] 
+> [!NOTE]
 > Von Azure Security Benchmark Foundation wird eine grundlegende Architektur für Workloads eingerichtet. Das obige Architekturdiagramm enthält mehrere fiktive Ressourcen, um die potenzielle Verwendung von Subnetzen zu veranschaulichen. Für diese grundlegende Architektur müssen allerdings noch Workloads bereitgestellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

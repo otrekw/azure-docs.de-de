@@ -10,12 +10,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 7c66a8b8483673a9d8fbdc9922b9cc377781bab3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af47182219441a373fd3e05585dbbb9484d06b37
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91976662"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753026"
 ---
 # <a name="using-disks-in-azure-resource-manager-templates"></a>Verwenden von Datenträgern in Azure Resource Manager-Vorlagen
 
@@ -168,7 +168,7 @@ Anstatt die Datenträgerkonfiguration im Objekt des virtuellen Computers anzugeb
 }
 ```
 
-Innerhalb des VM-Objekts verweisen Sie auf das anzufügende Datenträgerobjekt. Durch Angabe der Ressourcen-ID des verwalteten Datenträgers, der in der Eigenschaft `managedDisk` erstellt wurde, kann der Datenträger hinzugefügt werden, während der virtuelle Computer erstellt wird. Die `apiVersion` für die VM-Ressource wird auf `2017-03-30` festgelegt. Eine Abhängigkeit von der Datenträgerressource wird hinzugefügt, um sicherzustellen, dass sie vor der Erstellung des virtuellen Computers erstellt wird. 
+Innerhalb des VM-Objekts verweisen Sie auf das anzufügende Datenträgerobjekt. Durch Angabe der Ressourcen-ID des verwalteten Datenträgers, der in der Eigenschaft `managedDisk` erstellt wurde, kann der Datenträger hinzugefügt werden, während der virtuelle Computer erstellt wird. Die `apiVersion` für die VM-Ressource wird auf `2017-03-30` festgelegt. Eine Abhängigkeit von der Datenträgerressource wird hinzugefügt, um sicherzustellen, dass sie vor der Erstellung des virtuellen Computers erstellt wird.
 
 ```json
 {
@@ -252,11 +252,11 @@ Das folgende Beispiel zeigt den Abschnitt *properties.storageProfile.osDisk* fü
 }
 ```
 
-Eine vollständige Beispielvorlage zum Erstellen eines Standard-SSD-Datenträgers mit einer Vorlage finden Sie unter [Create a Virtual Machine from a Windows Image with multiple empty Standard SSD Data Disks](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/) (Erstellen eines virtuellen Computers aus einem Windows-Image mit mehreren leeren Standard-SSD-Datenträgern).
+Eine vollständige Beispielvorlage zum Erstellen eines Standard-SSD-Datenträgers mit einer Vorlage finden Sie unter [Create a Virtual Machine from a Windows Image with multiple empty Standard SSD Data Disks](https://github.com/azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-with-standardssd-disk/) (Erstellen eines virtuellen Computers aus einem Windows-Image mit mehreren leeren Standard-SSD-Datenträgern).
 
 ### <a name="additional-scenarios-and-customizations"></a>Zusätzliche Szenarios und Anpassungen
 
-Lesen Sie bitte die REST-API-Dokumentation zum Erstellen eines verwalteten Datenträgers [create a managed disk REST API documentation](/rest/api/manageddisks/disks/disks-create-or-update) für vollständige Informationen zu REST-API-Spezifikationen. Hier finden Sie zusätzliche Szenarios sowie standardmäßige und gültige Werte, die durch Bereitstellung von Vorlagen an die API übermittelt werden können. 
+Lesen Sie bitte die REST-API-Dokumentation zum Erstellen eines verwalteten Datenträgers [create a managed disk REST API documentation](/rest/api/manageddisks/disks/disks-create-or-update) für vollständige Informationen zu REST-API-Spezifikationen. Hier finden Sie zusätzliche Szenarios sowie standardmäßige und gültige Werte, die durch Bereitstellung von Vorlagen an die API übermittelt werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: bdfb5f65106f3f8843b4aa52b752f5e563ab03f0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 4e88ad58c7baba1c66c30df3f4effdbf11371c18
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102619936"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045330"
 ---
 # <a name="how-to-connect-devices-through-an-iot-edge-transparent-gateway"></a>Verbinden von Geräten über ein transparentes IoT Edge-Gateway
 
@@ -186,7 +186,7 @@ Ihr transparentes Gateway ist nun konfiguriert und kann Telemetriedaten von unte
 
 ## <a name="provision-a-downstream-device"></a>Bereitstellen eines untergeordneten Geräts
 
-Derzeit kann IoT Edge kein untergeordnetes Gerät automatisch in Ihrer IoT Central-Anwendung bereitstellen. Die folgenden Schritte veranschaulichen, wie Sie das `thermostat1`-Gerät bereitstellen. In Ihrer Umgebung muss Python 3.5 (oder höher) installiert sein, und Sie müssen mit dem Internet verbunden sein, um diese Schritte ausführen zu können. In [Azure Cloud Shell](https://shell.azure.com/) ist Python 3.5 vorinstalliert:
+Derzeit kann IoT Edge kein untergeordnetes Gerät automatisch in Ihrer IoT Central-Anwendung bereitstellen. Die folgenden Schritte veranschaulichen, wie Sie das `thermostat1`-Gerät bereitstellen. In Ihrer Umgebung muss Python 3.6 (oder höher) installiert sein, und Sie müssen mit dem Internet verbunden sein, um diese Schritte ausführen zu können. In [Azure Cloud Shell](https://shell.azure.com/) ist Python 3.7 vorinstalliert:
 
 1. Führen Sie den folgenden Befehl aus, um das `azure.iot.device`-Modul zu installieren:
 

@@ -10,14 +10,14 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8534d4dd8df1e60e1b341088cbfaaa944ec1221b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709717"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073393"
 ---
-# <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts (Vorschau)
+# <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts
 
 Gestaffelte Rollouts ermöglichen Ihnen das selektive Testen von Benutzergruppen mit Cloudauthentifizierungsfunktionen (wie Azure AD Multi-Factor Authentication (MFA), bedingter Zugriff, Identity Protection für kompromittierte Anmeldeinformationen, Identity Governance usw.) vor der Umstellung Ihrer Domänen.  In diesem Artikel wird erläutert, wie Sie den Umstieg vornehmen. Bevor Sie mit dem gestaffelten Rollout beginnen, sollten Sie jedoch die Auswirkungen berücksichtigen, wenn mindestens eine der folgenden Bedingungen zutrifft:
     
@@ -38,10 +38,12 @@ Einen Überblick über das Feature finden Sie hier: „Azure Active Directory: W
 -   Sie verfügen über einen Azure AD-Mandanten (Azure Active Directory) mit Verbunddomänen.
 
 -   Sie haben sich entschieden, zu einer von zwei Optionen zu wechseln:
-    - **Option A** - *Kennworthashsynchronisierung* + *Nahtloses einmaliges Anmelden (Single Sign-On, SSO)* .  Weitere Informationen finden Sie unter [Was ist Kennworthashsynchronisierung?](whatis-phs.md) und [Nahtlose einmalige Anmeldung mit Azure Active Directory](how-to-connect-sso.md).
-    - **Option B** - *Passthrough-Authentifizierung* + *Nahtloses SSO*.  Weitere Informationen finden Sie unter [Worum handelt es sich bei der Passthrough-Authentifizierung?](how-to-connect-pta.md).  
+    - **Option A** - *Kennworthashsynchronisierung*.  Weitere Informationen finden Sie unter [Was ist Kennworthashsynchronisierung?](whatis-phs.md) 
+    - **Option B** - *Passthrough-Authentifizierung*.  Weitere Informationen finden Sie unter [Worum handelt es sich bei der Passthrough-Authentifizierung?](how-to-connect-pta.md).  
     
-    Obwohl *nahtloses SSO* optional ist, empfiehlt es sich, das nahtlose einmalige Anmelden zu aktivieren, damit Benutzer, die in die Domäne eingebundene Computer innerhalb des Unternehmensnetzwerks verwenden, von einer automatischen Anmeldung profitieren.
+    Für beide Optionen wird empfohlen, einmaliges Anmelden (Single Sign-On, SSO) zu aktivieren, um eine automatische Anmeldung zu ermöglichen. 
+    Für in die Domäne eingebundene Windows 7- oder 8.1-Geräte wird die Verwendung von nahtlosem SSO empfohlen. Weitere Informationen finden Sie unter [Was ist die nahtlose einmalige Anmeldung?](how-to-connect-sso.md). 
+    Für Windows 10, Windows Server 2016 und höhere Versionen wird die Verwendung von SSO über ein [primäres Aktualisierungstoken (Primary Refresh Token, PRT)](../devices/concept-primary-refresh-token.md) mit [in Azure AD eingebundenen Geräten](../devices/concept-azure-ad-join.md), [in Azure AD eingebundenen Hybridgeräten](../devices/concept-azure-ad-join-hybrid.md) oder mit Geräten empfohlen, die per „Geschäfts-, Schul- oder Unikonto hinzufügen“ persönlich registriert sind.
 
 -   Sie haben alle geeigneten Richtlinien für Mandantenbranding und für bedingten Zugriff konfiguriert, die Sie für Benutzer benötigen, die zur Cloudauthentifizierung migriert werden.
 
@@ -79,7 +81,7 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 - Administratoren können den Rollout der Cloudauthentifizierung mithilfe von Sicherheitsgruppen ausführen. Um Synchronisierungslatenzen zu vermeiden, wenn Sie lokale Active Directory-Sicherheitsgruppen verwenden, empfehlen wir Ihnen, Cloudsicherheitsgruppen zu verwenden. Die folgenden Bedingungen gelten:
 
     - Pro Feature können maximal 10 Gruppen verwendet werden. Das heißt, Sie können jeweils 10 Gruppen für *Kennworthashsynchronisierung*, *Passthrough-Authentifizierung* und *nahtloses SSO* verwenden.
-    - Geschachtelte Gruppen werden *nicht unterstützt*. Die öffentliche Vorschau weist den gleichen Geltungsbereich auf.
+    - Geschachtelte Gruppen werden *nicht unterstützt*. 
     - Dynamische Gruppen werden für den gestaffelten Rollout *nicht unterstützt*.
     - Kontaktobjekte innerhalb der Gruppe blockieren das Hinzufügen der Gruppe.
 
@@ -92,7 +94,7 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 - Windows 10 Hybrid Join oder Azure AD Join – Abrufen eines primären Aktualisierungstokens für alle Versionen, wenn der lokale UPN des Benutzers nicht routingfähig ist. Im Modus „Gestaffelter Rollout“ greift dieses Szenario auf den WS-Trust-Endpunkt zurück. Dies funktioniert jedoch nicht mehr, wenn die gestaffelte Migration abgeschlossen ist und die Benutzeranmeldung nicht mehr auf den Verbundserver angewiesen ist.
 
   >[!NOTE]
-  >Die endgültige Umstellung von Verbundauthentifizierung auf Cloudauthentifizierung muss weiterhin mithilfe von Azure AD Connect oder PowerShell erfolgen. Bei einem gestaffelten Rollout werden Domänen nicht von Verbunddomänen auf verwaltete Domänen umgestellt.  Weitere Informationen zur Domänenumstellung finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) und [Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso).
+  >Die endgültige Umstellung von Verbundauthentifizierung auf Cloudauthentifizierung muss weiterhin mithilfe von Azure AD Connect oder PowerShell erfolgen. Bei einem gestaffelten Rollout werden Domänen nicht von Verbunddomänen auf verwaltete Domänen umgestellt.  Weitere Informationen zur Domänenumstellung finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) und [Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso).
   
 ## <a name="get-started-with-staged-rollout"></a>Erste Schritte mit gestaffeltem Rollout
 
@@ -168,19 +170,19 @@ Sie können Rollouts für eine der folgenden Optionen ausführen:
 
 Gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich am [Azure AD Portal](https://aka.ms/stagedrolloutux) an, um auf die Vorschau-UX zuzugreifen.
+1. Um auf die UX zuzugreifen, melden Sie sich am [Azure AD Portal](https://aka.ms/stagedrolloutux) an.
 
-2. Klicken Sie auf den Link **Gestaffelten Rollout für verwaltete Benutzeranmeldung aktivieren (Vorschau)** .
+2. Wählen Sie den Link **Stufenweises Rollout für verwaltete Benutzeranmeldung aktivieren**.
 
    Wenn Sie z.B. *Option A* aktivieren möchten, stellen Sie den Schieberegler für die Steuerelemente **Kennworthashsynchronisierungs** und **Nahtloses SSO** auf die Position **Ein**, wie in den folgenden Abbildungen gezeigt.
 
-   ![Die Azure AD Connect-Seite](./media/how-to-connect-staged-rollout/sr4.png)
+   
 
-   ![Die Seite „Features für gestaffelten Rollout aktivieren (Vorschau)“](./media/how-to-connect-staged-rollout/sr5.png)
+  
 
 3. Fügen Sie dem Feature die Gruppen hinzu, um *Passthrough-Authentifizierung* und *nahtloses SSO* zu aktivieren. Um ein UX-Timeout zu vermeiden, stellen Sie sicher, dass die Sicherheitsgruppen anfangs nicht mehr als 200 Mitglieder enthalten.
 
-   ![Die Seite „Gruppen für Kennworthashsynchronisierung verwalten (Vorschau)“](./media/how-to-connect-staged-rollout/sr6.png)
+   
 
    >[!NOTE]
    >Die Mitglieder einer Gruppe werden automatisch für den gestaffelten Rollout aktiviert. Geschachtelte und dynamische Gruppen werden für gestaffelte Rollouts nicht unterstützt.

@@ -3,16 +3,16 @@ title: Ausschließen einer Ressource, eines Abonnements, einer Verwaltungsgruppe
 description: Erfahren Sie, wie Sie Regeln erstellen, um Abonnements oder Verwaltungsgruppen aus Sicherheitsempfehlungen auszuschließen, und wie Sie verhindern, dass sie sich auf Ihre Sicherheitsbewertung auswirken.
 author: memildin
 ms.author: memildin
-ms.date: 01/22/2021
+ms.date: 04/21/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 374ddaa088fba9ae7035f170562e06b7f07eae47
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f125b94725ba9d34aa0962ed38b16fb474dc5b2b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709375"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140243"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Ausschließen von Ressource und Empfehlungen aus der Sicherheitsbewertung 
 
@@ -30,13 +30,14 @@ In solchen Fällen können Sie eine Ausnahme für eine Empfehlung erstellen:
 
 ## <a name="availability"></a>Verfügbarkeit
 
-|Aspekt|Details|
-|----|:----|
-|Status des Release:|Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|Preise:|Dies ist eine Premium-Richtlinienfunktion von Azure, die für Azure Defender-Kunden kostenlos zur Verfügung steht. Für andere Benutzer fallen hierfür in Zukunft unter Umständen Gebühren an.|
-|Erforderliche Rollen und Berechtigungen:|**Abonnementbesitzer** oder **Mitwirkender an Richtlinien** für die Erstellung einer Ausnahme<br>Zum Erstellen einer Regel benötigen Sie Berechtigungen zum Bearbeiten von Richtlinien in Azure Policy.<br>Weitere Informationen finden Sie unter [Azure RBAC-Berechtigungen in Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
-|||
+| Aspekt                          | Details                                                                                                                                                                                                                                                                                                                            |
+|---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Status des Release:                  | Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
+| Preise:                        | Dies ist eine Premium-Richtlinienfunktion von Azure, die für Azure Defender-Kunden kostenlos zur Verfügung steht. Für andere Benutzer fallen hierfür in Zukunft unter Umständen Gebühren an.                                                                                                                                                                 |
+| Erforderliche Rollen und Berechtigungen: | **Besitzer** oder **Mitwirkender bei Ressourcenrichtlinien** zum Erstellen einer Ausnahme<br>Zum Erstellen einer Regel benötigen Sie Berechtigungen zum Bearbeiten von Richtlinien in Azure Policy.<br>Weitere Informationen finden Sie unter [Azure RBAC-Berechtigungen in Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
+| Einschränkungen:                    | Ausnahmen können nur für Empfehlungen erstellt werden, die in der Standardinitiative von Security Center, im [Azure-Sicherheitsvergleichstest](/security/benchmark/azure/introduction) oder in einer der bereitgestellten Initiativen für gesetzliche Standards enthalten sind. Für Empfehlungen, die über benutzerdefinierte Initiativen generiert werden, können keine Ausnahmen gemacht werden. Weitere Informationen über die Beziehungen zwischen Richtlinien, Initiativen und Empfehlungen finden Sie [unter diesem Link](security-policy-concept.md). |
+| Clouds:                         | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)                                                                                                                                                                                         |
+|                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>Definieren einer Ausnahme
 
@@ -44,6 +45,9 @@ Zur Feinabstimmung der Sicherheitsempfehlungen, die Security Center für Ihre Ab
 
 - Markieren Sie eine bestimmte **Empfehlung** als „Gemindert“ oder „Risiko akzeptiert“. Sie können Empfehlungsausnahmen für ein Abonnement, mehrere Abonnements oder eine gesamte Verwaltungsgruppe erstellen.
 - Markieren Sie **eine oder mehrere Ressourcen** für eine bestimmte Empfehlung als „Gemindert“ oder „Risiko akzeptiert“.
+
+> [!NOTE]
+> Ausnahmen können nur für Empfehlungen erstellt werden, die in der Standardinitiative von Security Center, im Azure-Sicherheitsvergleichstest oder in einer der bereitgestellten Initiativen für gesetzliche Standards enthalten sind. Für Empfehlungen, die von benutzerdefinierten Initiativen generiert werden, die Ihren Abonnements zugewiesen sind, können keine Ausnahmen gemacht werden. Weitere Informationen über die Beziehungen zwischen Richtlinien, Initiativen und Empfehlungen finden Sie [unter diesem Link](security-policy-concept.md).
 
 > [!TIP]
 > Sie können auch Ausnahmen mithilfe der API erstellen. Ein JSON-Beispiel und eine Erläuterung der relevanten Strukturen finden Sie unter [Azure Policy-Ausnahmenstruktur](../governance/policy/concepts/exemption-structure.md).
@@ -114,6 +118,14 @@ Damit Sie nachverfolgen können, wie Ihre Benutzer diese Funktion nutzen, haben 
 - Sie finden die ARM-Vorlage im [Azure Security Center-GitHub-Repository](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption).
 - [Verwenden Sie diesen automatisierten Prozess](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json), um alle erforderlichen Komponenten bereitzustellen.
 
+## <a name="use-the-inventory-to-find-resources-that-have-exemptions-applied"></a>Verwenden Sie den Bestand, um Ressourcen zu suchen, für die Ausnahmen angewendet wurden.
+
+Auf der Seite „Ressourcenbestand“ von Azure Security Center können Sie auf einer Seite den gesamten Sicherheitsstatus der Ressourcen anzeigen, die Sie mit Azure Security Center verbunden haben. Weitere Informationen finden Sie unter [Untersuchen und Verwalten Ihrer Ressourcen mit dem Ressourcenbestand und Verwaltungstools](asset-inventory.md).
+
+Die Bestandsseite enthält viele Filter, mit denen Sie die Liste der Ressourcen auf diejenigen eingrenzen können, die für ein bestimmtes Szenario am wichtigsten sind. Ein solcher Filter ist die **Contains-Ausnahme**. Verwenden Sie diesen Filter, um alle Ressourcen zu suchen, die von einer oder mehrere Empfehlungen ausgenommen wurden.
+
+:::image type="content" source="media/exempt-resource/inventory-filter-exemptions.png" alt-text="Seite für den Ressourcenbestand in Security Center und Filter zum Suchen von Ressourcen mit Ausnahmen":::
+
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Suchen von Empfehlungen mit Ausnahmen mit Azure Resource Graph
 
@@ -161,7 +173,7 @@ Weitere Informationen finden Sie auf den folgenden Seiten:
 
 
 
-## <a name="exemption-rule-faq"></a>Häufig gestellte Fragen zu Ausnahmeregeln
+## <a name="faq---exemption-rules"></a>FAQ: Ausnahmeregeln
 
 ### <a name="what-happens-when-one-recommendation-is-in-multiple-policy-initiatives"></a>Was geschieht, wenn eine Empfehlung in mehreren Richtlinieninitiativen vorliegt?
 

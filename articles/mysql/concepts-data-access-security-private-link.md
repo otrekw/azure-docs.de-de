@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 1ae35d1ac35dacfab2690980d57973dce050382b
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e239b6b00c5a5e993834a10fca30de02b9f715ff
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242856"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065513"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Private Link für Azure Database for MySQL
 
@@ -20,7 +20,7 @@ Private Link ermöglicht das Herstellen von Verbindungen mit verschiedenen PaaS-
 Eine Liste der PaaS-Dienste, die die Private Link-Funktion unterstützen, finden Sie in der [Dokumentation](../private-link/index.yml) zu Private Link. Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [VNET](../virtual-network/virtual-networks-overview.md) und Subnetz.
 
 > [!NOTE]
-> Das Feature „Private Link“ ist nur für Azure Database for MySQL-Server in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Datenbankserver einer dieser Tarife festgelegt ist.
+> Das Feature „Private Link“ ist nur für Azure Database for MySQL-Server in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Datenbankserver einer dieser Tarife festgelegt wird.
 
 ## <a name="data-exfiltration-prevention"></a>Verhinderung der Datenexfiltration
 
@@ -28,7 +28,7 @@ Datenexfiltration in Azure Database for MySQL bedeutet, dass ein autorisierter B
 
 Stellen Sie sich ein Szenario vor, in dem ein Benutzer MySQL Workbench auf einem virtuellen Azure-Computer (Virtual Machine, VM) ausführt, der eine Verbindung mit einem in der Region „USA, Westen“ bereitgestellten Azure Database for MySQL-Server herstellt. Das folgende Beispiel zeigt, wie Sie den Zugriff mit öffentlichen Endpunkten in Azure Database for MySQL unter Verwendung von Netzwerkzugriffssteuerungen einschränken.
 
-* Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zu Azure Database for MySQL über den öffentlichen Endpunkt, indem Sie die Option zum *Zulassen von Azure-Diensten* auf „AUS“ festlegen. Stellen Sie entweder über [Firewallregeln](./concepts-firewall-rules.md) oder über [VNET-Dienstendpunkte](./concepts-data-access-and-security-vnet.md) sicher, dass keine IP-Adressen oder IP-Adressbereiche auf den Server zugreifen dürfen.
+* Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zu Azure Database for MySQL über den öffentlichen Endpunkt, indem Sie die Option zum *Zulassen von Azure-Diensten* auf „AUS“ festlegen. Stellen Sie entweder mithilfe von [Firewallregeln](./concepts-firewall-rules.md) oder mithilfe von [VNET-Dienstendpunkten](./concepts-data-access-and-security-vnet.md) sicher, dass keine IP-Adressen oder IP-Adressbereiche auf den Server zugreifen können.
 
 * Lassen Sie nur Datenverkehr an Azure Database for MySQL mit der privaten IP-Adresse des virtuellen Computers zu. Weitere Informationen finden Sie in den Artikeln [Verwenden von VNET-Dienstendpunkten und -Regeln für Datenbankserver](concepts-data-access-and-security-vnet.md) und [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](howto-manage-vnet-using-portal.md).
 
@@ -84,7 +84,7 @@ Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann 
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mysql"></a>Anwendungsfälle von Private Link für Azure Database for MySQL
 
-Clients können eine Verbindung mit dem privaten Endpunkt über das gleiche VNET, über das mittels Peering verbundene VNET in der gleichen Region oder regionsübergreifend über eine VNET-zu-VNET-Verbindung herstellen. Darüber hinaus können Clients von der lokalen Umgebung aus eine Verbindung über ExpressRoute, privates Peering oder VPN-Tunneling herstellen. Die gängigen Anwendungsfälle sind im folgenden Diagramm vereinfacht dargestellt:
+Clients können eine Verbindung mit dem privaten Endpunkt über das gleiche VNet, über das [mittels Peering verbundene VNet](../virtual-network/virtual-network-peering-overview.md) in der gleichen Region oder regionsübergreifend über eine [VNet-to-VNet-Verbindung](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) herstellen. Darüber hinaus können Clients von der lokalen Umgebung aus eine Verbindung über ExpressRoute, privates Peering oder VPN-Tunneling herstellen. Die gängigen Anwendungsfälle sind im folgenden Diagramm vereinfacht dargestellt:
 
 :::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Übersicht zum Auswählen des privaten Endpunkts":::
 
@@ -118,7 +118,7 @@ Wenn Sie sich für den Zugriff auf Ihre Azure Database for MySQL-Instanz nur auf
 Wenn diese Einstellung auf *Ja* festgelegt ist, sind nur Verbindungen über private Endpunkte mit Ihrer Azure Database for MySQL-Instanz zulässig. Wenn diese Einstellung auf *NEIN* festgelegt ist, können Clients basierend auf Ihren Firewall- oder VNET-Dienstendpunkt-Einstellungen eine Verbindung mit Ihrer Azure Database for MySQL-Instanz herstellen. Sobald der Wert des privaten Netzwerkzugriffs festgelegt ist, können Kunden außerdem weder Firewall- oder VNET-Dienstendpunkt-Regeln hinzufügen noch vorhandene aktualisieren.
 
 > [!Note]
-> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for PostgreSQL-Einzelserver die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützen.
+> Diese Funktion ist in allen Azure-Bereichen verfügbar, in denen Azure Database for MySQL - Single Server, die Preisstufen Allgemeinzweck und Optimisierter Speicher unterstützt.
 >
 > Diese Einstellung hat keinerlei Auswirkung auf die SSL- und TLS-Konfigurationen für Ihre Azure Database for MySQL-Instanz.
 

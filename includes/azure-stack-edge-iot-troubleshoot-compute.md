@@ -3,13 +3,13 @@ author: v-dalc
 ms.service: databox
 ms.author: alkohli
 ms.topic: include
-ms.date: 03/02/2021
-ms.openlocfilehash: 57415ec76a3e8d9fc3c160b47668d3419ff6ea5c
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.date: 03/23/2021
+ms.openlocfilehash: 0d912d0ac3f0fcf4c52116e67909038a1973304b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103621926"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105105225"
 ---
 Verwenden Sie die Runtimeantworten des IoT Edge-Agents, um auf Compute-Instanzen bezogene Fehler zu beheben. Im Folgenden sehen Sie eine Liste der möglichen Antworten:
 
@@ -32,7 +32,7 @@ Alle Module auf dem Gerät weisen den Status „Unbekannt“ auf und können nic
 
 #### <a name="suggested-solution"></a>Vorgeschlagene Lösung
 
-Löschen Sie den IoT Edge-Dienst, und stellen Sie dann das Modul bzw. die Module erneut bereit. Weitere Informationen finden Sie unter [Entfernen des IoT Edge-Diensts](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service).
+Löschen Sie den IoT Edge-Dienst, und stellen Sie dann das Modul bzw. die Module erneut bereit. Weitere Informationen finden Sie unter [Entfernen des IoT Edge-Diensts](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#remove-iot-edge-service).
 
 
 ### <a name="modules-show-as-running-but-are-not-working"></a>Module werden als ausgeführt angezeigt, funktionieren jedoch nicht.
@@ -65,4 +65,44 @@ Gehen Sie auf der lokalen Webbenutzeroberfläche Ihres Geräts wie folgt vor:
 1. Geben Sie einen statischen, zusammenhängenden Bereich von IP-Adressen für **Externe Dienst-IP-Adressen für Kubernetes** ein. Sie benötigen 1 IP-Adresse für den `edgehub`-Dienst. Außerdem benötigen Sie für jedes IoT Edge-Modul und für jeden virtuellen Computer, den Sie bereitstellen, eine IP-Adresse. 
 1. Wählen Sie **Übernehmen**. Der geänderte IP-Adressbereich sollte sofort wirksam werden.
 
-Weitere Informationen finden Sie unter [Ändern externer Dienst-IP-Adressen für Container](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers).
+Weitere Informationen finden Sie unter [Ändern externer Dienst-IP-Adressen für Container](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#change-external-service-ips-for-containers).
+
+### <a name="configure-static-ips-for-iot-edge-modules"></a>Konfigurieren statischer IP-Adressen für IoT Edge-Module
+
+#### <a name="problem-description"></a>Problembeschreibung
+
+Kubernetes weist jedem IoT Edge-Modul auf Ihrem Azure Stack Edge Pro-GPU-Gerät dynamische IP-Adressen zu. Um statische IP-Adresse für die Module zu konfigurieren, ist eine Methode erforderlich.
+
+#### <a name="suggested-solution"></a>Vorgeschlagene Lösung
+
+Sie können feste IP-Adressen für Ihre IoT Edge-Module über den Abschnitt „K8s-experimental“ angeben, wie unten beschrieben: 
+
+```yaml
+{
+  "k8s-experimental": {
+    "serviceOptions" : {
+      "loadBalancerIP" : "100.23.201.78",
+      "type" : "LoadBalancer"
+    }
+  }
+}
+```
+### <a name="expose-kubernetes-service-as-cluster-ip-service-for-internal-communication"></a>Verfügbarmachen des Kubernetes-Diensts als Cluster-IP-Dienst für die interne Kommunikation
+
+#### <a name="problem-description"></a>Problembeschreibung
+
+Standardmäßig weist der IoT-Diensttyp den Typ „Load Balancer“ auf und ihm werden externe IP-Adressen zugewiesen. Eventuell möchten Sie keine externe IP-Adresse für Ihre Anwendung. Möglicherweise müssen Sie die Pods im Kubernetes-Cluster für den Zugriff wie andere Pods und nicht als extern verfügbar gemachten Lastenausgleichsdienst verfügbar machen. 
+
+#### <a name="suggested-solution"></a>Vorgeschlagene Lösung
+
+Sie können die Erstellungsoptionen über den Abschnitt „K8s-experimental“ verwenden. Die folgende Dienstoption sollte mit Portbindungen funktionieren.
+
+```yaml
+{
+"k8s-experimental": {
+  "serviceOptions" : {
+    "type" : "ClusterIP"
+    }
+  }
+}
+```

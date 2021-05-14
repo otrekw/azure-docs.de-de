@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1211cd306f10fb349bd42568697443ff103a171c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b33658ff67c306085a36104679bcc855d0a3f58
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101703087"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208921"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau): Azure-Portal
 
@@ -20,7 +20,7 @@ ms.locfileid: "101703087"
 
 In diesem Artikel wird beschrieben, wie Sie eine [systemseitig zugewiesene Identität für eine Azure Digital Twins-Instanz](concepts-security.md#managed-identity-for-accessing-other-resources-preview) (derzeit in der Vorschauphase) aktivieren und die Identität zum Weiterleiten von Ereignissen an unterstützte Ziele wie [Event Hub](../event-hubs/event-hubs-about.md), [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) und [Azure Storage Container](../storage/blobs/storage-blobs-introduction.md) verwenden.
 
-In diesem Artikel wird die Vorgehensweise mit dem [**Azure-Portal**](https://portal.azure.com) beschrieben.
+In diesem Artikel wird die Vorgehensweise mit dem [Azure-Portal](https://portal.azure.com) beschrieben.
 
 Die folgenden Schritte werden in diesem Artikel behandelt: 
 
@@ -38,7 +38,7 @@ Beide dieser Erstellungsmethoden bieten Ihnen dieselben Konfigurationsoptionen u
 
 ### <a name="add-a-system-managed-identity-during-instance-creation"></a>Hinzufügen einer systemseitig verwalteten Identität während der Instanzerstellung
 
-In diesem Abschnitt erfahren Sie, wie Sie eine systemseitig verwaltete Identität für eine Azure Digital Twins-Instanz aktivieren, die derzeit erstellt wird. Dieser Abschnitt befasst sich mit dem Schritt des Erstellungsprozesses für die verwaltete Identität. Eine umfassende exemplarische Vorgehensweise zum Erstellen einer Azure Digital Twins-Instanz finden Sie unter [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md) aus.
+In diesem Abschnitt erfahren Sie, wie Sie eine systemseitig verwaltete Identität für eine Azure Digital Twins-Instanz aktivieren, die derzeit erstellt wird. Dieser Abschnitt befasst sich mit dem Schritt des Erstellungsprozesses für die verwaltete Identität. Eine umfassende exemplarische Vorgehensweise zum Erstellen einer Azure Digital Twins-Instanz finden Sie unter [Vorgehensweise: Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-portal.md) aus.
 
 Die Option für systemseitig verwaltete Identitäten befindet sich auf der Registerkarte **Erweitert** des Instanzsetups.
 
@@ -85,7 +85,7 @@ Im Folgenden finden Sie die mindestens erforderlichen Rollen, die eine Identitä
 | Azure-Servicebus | Azure Service Bus-Datensender |
 | Azure-Speichercontainer | Mitwirkender an Storage-Blobdaten |
 
-Weitere Informationen über Endpunkte, Routen und die verschiedenen unterstützten Ziele für das Routing in Azure Digital Twins finden Sie unter [*Konzepte: Ereignisrouten*](concepts-route-events.md).
+Weitere Informationen über Endpunkte, Routen und die verschiedenen unterstützten Ziele für das Routing in Azure Digital Twins finden Sie unter [Konzepte: Ereignisrouten](concepts-route-events.md).
 
 ### <a name="assign-the-role"></a>Zuweisen der Rolle
 
@@ -145,4 +145,4 @@ Sie müssen den Endpunkt löschen und mit einem anderen Authentifizierungstyp [n
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lernen Sie mehr über verwaltete Identitäten in Azure AD: 
-* [*Verwaltete Identitäten für Azure-Ressourcen*](../active-directory/managed-identities-azure-resources/overview.md)
+* [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md)

@@ -4,15 +4,15 @@ description: Erstellen und verwenden Sie eine Azure Files-Freigabe im Azure-Por
 author: roygara
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4c5629f80c37c9f79dc9a39c4d8304acbee9679d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a3c664f6c6c0532ef915357cfbcbc8228202502
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92489573"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718243"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Schnellstart: Erstellen und Verwalten einer Azure Files-Freigabe mit virtuellen Windows-Computern
 
@@ -42,19 +42,19 @@ Um eine Azure-Dateifreigabe verwenden zu können, müssen Sie zunächst ein Azur
 Als Nächstes erstellen Sie eine Dateifreigabe.
 
 1. Wählen Sie nach Abschluss der Bereitstellung des Azure-Speicherkontos die Option **Zu Ressource wechseln** aus.
-1. Wählen Sie im Speicherkontobereich die Option **Dateien**.
+1. Wählen Sie im Speicherkontobereich die Option **Dateifreigaben** aus.
 
-    ![Auswählen von Dateien](./media/storage-files-quick-create-use-windows/click-files.png)
+    ![Klicken Sie auf Dateifreigaben.](./media/storage-files-quick-create-use-windows/click-files.png)
 
-1. Wählen Sie **Dateifreigabe** aus.
+1. Klicken Sie auf **+ Dateifreigabe**.
 
-    ![Auswählen der Schaltfläche „Dateifreigabe hinzufügen“](./media/storage-files-quick-create-use-windows/create-file-share.png)
+    ![Wählen Sie „+ Dateifreigabe“ aus, um eine neue Dateifreigabe zu erstellen.](./media/storage-files-quick-create-use-windows/create-file-share.png)
 
-1. Nennen Sie die neue Dateifreigabe *qsfileshare*, geben Sie unter **Kontingent** den Wert „1“ ein, und wählen Sie anschließend **Erstellen** aus. Das Kontingent kann auf bis zu 5 TiB festgelegt werden. Für diese Schnellstartanleitung ist jedoch 1 GiB ausreichend.
+1. Nennen Sie die neue Dateifreigabe *qsfileshare*, geben Sie unter **Kontingent** den Wert „1“ ein, lassen Sie **Transaktion optimiert** aktiviert, und wählen Sie anschließend **Erstellen** aus. Das Kontingent kann auf bis zu 5 TiB festgelegt werden (100 TiB bei Aktivierung großer Dateifreigaben). Für diese Schnellstartanleitung ist jedoch 1 GiB ausreichend.
 1. Erstellen Sie auf Ihrem lokalen Computer eine neue TXT-Datei namens *qsTestFile*.
 1. Wählen Sie die neue Dateifreigabe und anschließend am Speicherort der Dateifreigabe **Hochladen** aus.
 
-    ![Hochladen einer Datei](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
+    ![Laden Sie eine Datei hoch.](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
 
 1. Navigieren Sie zu dem Speicherort, an dem Sie die TXT-Datei erstellt haben, und wählen Sie *qsTestFile.txt* und anschließend **Hochladen** aus.
 
@@ -63,14 +63,14 @@ Sie haben nun ein Azure-Speicherkonto und eine Dateifreigabe mit einer einzelnen
 ### <a name="deploy-a-vm"></a>Bereitstellen einer VM
 
 1. Erweitern Sie als Nächstes das Menü auf der linken Seite des Portals, und wählen Sie im Azure-Portal oben links die Option **Ressource erstellen**.
-1. Suchen Sie im Suchfeld oberhalb der Liste mit den **Azure Marketplace**-Ressourcen nach **Windows Server 2016 Datacenter**, und wählen Sie den Eintrag aus. Klicken Sie anschließend auf **Erstellen**.
+1. Suchen Sie im Suchfeld oberhalb der Liste mit den **Azure Marketplace**-Ressourcen nach **Windows Server 2016 Datacenter**, und wählen Sie den Eintrag aus.
 1. Wählen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** die Ressourcengruppe aus, die Sie für diese Schnellstartanleitung erstellt haben.
 
-   ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer im Portalblatt](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
+   ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer auf dem Portalblatt](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
 
 1. Geben Sie dem virtuellen Computer unter **Instanzendetails** den Namen *qsVM*.
 1. Übernehmen Sie die Standardeinstellungen für **Region**, **Verfügbarkeitsoptionen**, **Image** und **Größe**.
-1. Fügen Sie unter **Administratorkonto** den Namen *VMadmin* als **Benutzername** hinzu, und geben Sie unter **Kennwort** ein Kennwort für den virtuellen Computer ein.
+1. Fügen Sie unter **Administratorkonto** einen **Benutzernamen** hinzu, und geben Sie ein **Kennwort** für den virtuellen Computer ein.
 1. Wählen Sie unter **Regeln für eingehende Ports** die Option **Ausgewählte Ports zulassen** aus, und wählen Sie dann **RDP (3389)** und **HTTP** aus der Dropdownliste aus.
 1. Klicken Sie auf **Überprüfen + erstellen**.
 1. Klicken Sie auf **Erstellen**. Das Erstellen eines neuen virtuellen Computers dauert einige Minuten.
@@ -96,60 +96,50 @@ Sie haben jetzt einen neuen virtuellen Computer erstellt und einen Datenträger 
 ## <a name="map-the-azure-file-share-to-a-windows-drive"></a>Zuordnen der Azure-Dateifreigabe zu einem Windows-Laufwerk
 
 1. Navigieren Sie im Azure-Portal zur Dateifreigabe *qsfileshare*, und wählen Sie **Verbinden** aus.
-1. Kopieren Sie den Inhalt des zweiten Felds, und fügen Sie ihn in **Editor** ein.
+1. Wählen Sie einen Laufwerkbuchstaben aus, kopieren Sie dann den Inhalt des zweiten Felds, und fügen Sie ihn in **Editor** ein.
 
-   ![Screenshot: Inhalt des zweiten Felds, den Sie kopieren und in Editor einfügen müssen](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
+   :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Screenshot: Inhalt des Felds, den Sie kopieren und in Editor einfügen müssen" lightbox="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png":::
 
-1. Öffnen Sie auf dem virtuellen Computer den **Datei-Explorer**, und wählen Sie **Dieser PC** aus. Dadurch ändern sich die verfügbaren Menüs auf dem Menüband. Wählen Sie im Menü **Computer** die Option **Netzlaufwerk verbinden** aus.
-1. Wählen Sie den Laufwerkbuchstaben aus, und geben Sie den UNC-Pfad ein. Kopieren Sie *\\qsstorageacct.file.core.windows.net\qsfileshare* aus **Editor** (sofern Sie sich an die Benennungsvorschläge in dieser Schnellstartanleitung gehalten haben).
-
-   Vergewissern Sie sich, dass beide Kontrollkästchen aktiviert sind.
-
-   ![Screenshot des Dialogfelds „Netzlaufwerk verbinden“](./media/storage-files-quick-create-use-windows/mountonwindows10.png)
-
-1. Wählen Sie **Fertig stellen** aus.
-1. Gehen Sie im Dialogfeld **Windows-Sicherheit** wie folgt vor:
-
-   - Kopieren Sie in Editor den Speicherkontonamen mit vorangestelltem „AZURE\“, und fügen Sie ihn im Dialogfeld **Windows-Sicherheit** als Benutzername ein. Kopieren Sie also *AZURE\qsstorageacct*, sofern Sie sich an die Benennungsvorschläge in dieser Schnellstartanleitung gehalten haben.
-   - Kopieren Sie in Editor den Speicherkontoschlüssel, und fügen Sie ihn im Dialogfeld **Windows-Sicherheit** als Kennwort ein.
-
-      ![UNC-Pfad aus dem Verbindungsbereich von Azure Files](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)
+1. Öffnen Sie auf dem virtuellen Computer **PowerShell**, und fügen Sie den Inhalt aus **Editor** ein. Drücken Sie dann die EINGABETASTE, um den Befehl auszuführen. Das Laufwerk sollte zugeordnet werden.
 
 ## <a name="create-a-share-snapshot"></a>Erstellen einer Freigabemomentaufnahme
 
 Nach dem Zuordnen des Laufwerks können Sie eine Momentaufnahme erstellen.
 
-1. Navigieren Sie im Portal zu Ihrer Dateifreigabe, und wählen Sie **Momentaufnahme erstellen** aus.
+1. Navigieren Sie im Portal zu Ihrer Dateifreigabe, und wählen Sie **Momentaufnahmen** und dann **+ Momentaufnahme hinzufügen** aus.
 
-   ![Erstellen einer Momentaufnahme](./media/storage-files-quick-create-use-windows/create-snapshot.png)
+   ![Auswählen von „Momentaufnahmen“ im Abschnitt „Vorgänge“ und Auswählen von „Momentaufnahme hinzufügen“](./media/storage-files-quick-create-use-windows/create-snapshot.png)
 
 1. Öffnen Sie auf dem virtuellen Computer die Datei *qstestfile.txt*, geben Sie „this file has been modified“ (Diese Datei wurde geändert.) ein, speichern Sie die Datei, und schließen Sie sie.
 1. Erstellen Sie eine weitere Momentaufnahme.
 
 ## <a name="browse-a-share-snapshot"></a>Durchsuchen einer Freigabemomentaufnahme
 
-1. Wählen Sie in Ihrer Dateifreigabe die Option **Momentaufnahmen anzeigen** aus.
-1. Wählen Sie im Bereich **Dateifreigabemomentaufnahmen** die erste Momentaufnahme in der Liste aus.
+1. Wählen Sie in Ihrer Dateifreigabe die Option **Momentaufnahmen** aus.
+1. Wählen Sie auf dem Blatt **Momentaufnahmen** die erste Momentaufnahme in der Liste aus.
 
    ![Ausgewählte Momentaufnahme in der Zeitstempelliste](./media/storage-files-quick-create-use-windows/snapshot-list.png)
 
-1. Wählen Sie im Bereich für diese Momentaufnahme die Datei *qsTestFile.txt* aus.
+1. Öffnen Sie diese Momentaufnahme, und wählen Sie *qsTestFile.txt* aus.
 
 ## <a name="restore-from-a-snapshot"></a>Wiederherstellen aus einer Momentaufnahme
 
 1. Klicken Sie auf dem Blatt der Dateifreigabemomentaufnahme mit der rechten Maustaste auf *qsTestFile*, und wählen Sie **Wiederherstellen** aus.
+
+    :::image type="content" source="media/storage-files-quick-create-use-windows/restore-share-snapshot.png" alt-text="Screenshot: Blatt „Momentaufnahme“, ausgewählte Option „qstestfile“ und hervorgehobene Option „Wiederherstellen“":::
+
 1. Wählen Sie **Originaldatei überschreiben** aus.
 
-   ![Schaltflächen „Herunterladen“ und „Wiederherstellen“](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
+   ![Screenshot: Popupfenster zum Wiederherstellen, hervorgehobene Option „Originaldatei überschreiben“](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
 
 1. Öffnen Sie die Datei auf dem virtuellen Computer. Die unveränderte Version wurde wiederhergestellt.
 
 ## <a name="delete-a-share-snapshot"></a>Löschen einer Freigabemomentaufnahme
 
-1. Wählen Sie in Ihrer Dateifreigabe die Option **Momentaufnahmen anzeigen** aus.
-1. Wählen Sie im Bereich **Dateifreigabemomentaufnahmen** die letzte Momentaufnahme in der Liste aus, und klicken Sie auf **Löschen**.
+1. Wählen Sie in Ihrer Dateifreigabe die Option **Momentaufnahmen** aus.
+1. Wählen Sie auf dem Blatt **Momentaufnahmen** die letzte Momentaufnahme in der Liste und dann **Löschen** aus.
 
-   ![Schaltfläche „Löschen“](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
+   ![Screenshot: Blatt „Momentaufnahmen“, letzte Momentaufnahme ausgewählt, Schaltfläche „Löschen“ hervorgehoben](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 
 ## <a name="use-a-share-snapshot-in-windows"></a>Verwenden einer Freigabemomentaufnahme unter Windows
 
@@ -173,7 +163,10 @@ Die Momentaufnahmen Ihrer eingebundenen Azure-Dateifreigabe können genau wie lo
 
 1. Wählen Sie **Wiederherstellen** aus. Dadurch wird der Inhalt des gesamten Verzeichnisses rekursiv an den ursprünglichen Speicherort zum Erstellungszeitpunkt der Freigabemomentaufnahme kopiert.
 
-   ![Schaltfläche „Wiederherstellen“ in Warnmeldung](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) Hinweis: Wenn sich Ihre Datei nicht geändert hat, wird keine vorherige Version davon angezeigt, weil die Version der Datei der Momentaufnahme entspricht. Dies ist die gleiche Vorgehensweise wie auf einem Windows-Dateiserver.
+   ![Warnmeldung mit Schaltfläche „Wiederherstellen“](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png)
+    
+    > [!NOTE]
+    > Wenn sich Ihre Datei nicht geändert hat, wird keine vorherige Version davon angezeigt, weil die Version der Datei der Momentaufnahme entspricht. Dies ist die gleiche Vorgehensweise wie auf einem Windows-Dateiserver.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

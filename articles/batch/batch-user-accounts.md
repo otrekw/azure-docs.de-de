@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Typen von Benutzerkonten und deren Konf
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.custom: seodec18
-ms.openlocfilehash: 02cad0bff9e76ec5db82c417f2439b12ef088045
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 5a071e03b27a2cb612118ad37e078ca8f8f86e08
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389280"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987972"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Ausführen von Aufgaben unter Benutzerkonten in Batch
 
@@ -18,7 +18,7 @@ ms.locfileid: "107389280"
 >
 > Informationen zum Herstellen einer Verbindung mit einem Knoten, auf dem die Konfiguration des virtuellen Linux-Computers über SSH ausgeführt wird, finden Sie unter [Installieren und Konfigurieren von xrdp zur Remotedesktop-Verwendung mit Ubuntu](../virtual-machines/linux/use-remote-desktop.md) Informationen zum Herstellen einer Verbindung zu Knoten unter Windows über RDP finden Sie unter[Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](../virtual-machines/windows/connect-logon.md).
 >
-> Um eine Verbindung mit einem Knoten herzustellen, auf dem die Clouddienstkonfiguration über RDP ausgeführt wird, lesen Sie den Artikel [Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
+> Um eine Verbindung mit einem Knoten herzustellen, auf dem RDP ausgeführt wird, lesen Sie den Artikel [Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 
 Eine Aufgabe wird in Azure Batch immer unter einem Benutzerkonto ausgeführt. Standardmäßig werden Aufgaben unter Standardbenutzerkonten ohne Administratorberechtigungen ausgeführt. In bestimmten Szenarien möchten Sie jedoch möglicherweise das Benutzerkonto konfigurieren, unter dem eine Aufgabe ausgeführt werden soll. In diesem Artikel werden die Arten von Benutzerkonten beschrieben, und Sie erfahren, wie Sie sie für Ihr Szenario konfigurieren können.
 
@@ -139,7 +139,7 @@ Benannte Benutzerkonten aktivieren kennwortfreies SSH zwischen Linux-Knoten. Sie
 
 ### <a name="create-named-user-accounts"></a>Erstellen benannter Benutzerkonten
 
-Um benannte Benutzerkonten in Batch zu erstellen, fügen Sie dem Pool eine Sammlung von Benutzerkonten hinzu. Die folgenden Codeausschnitte veranschaulichen das Erstellen von benannten Benutzerkonten in .NET, Java und Python. Diese Codeausschnitte veranschaulichen das Erstellen benannter Konten mit und ohne Administratorberechtigungen für einen Pool. In den Beispielen werden mit der Clouddienstkonfiguration Pools erstellt, aber Sie verwenden den gleichen Ansatz beim Erstellen eines Windows- oder Linux-Pools mit der VM-Konfiguration.
+Um benannte Benutzerkonten in Batch zu erstellen, fügen Sie dem Pool eine Sammlung von Benutzerkonten hinzu. Die folgenden Codeausschnitte veranschaulichen das Erstellen von benannten Benutzerkonten in .NET, Java und Python. Diese Codeausschnitte veranschaulichen das Erstellen benannter Konten mit und ohne Administratorberechtigungen für einen Pool.
 
 #### <a name="batch-net-example-windows"></a>.NET-Beispiel für Batch (Windows)
 
@@ -147,7 +147,7 @@ Um benannte Benutzerkonten in Batch zu erstellen, fügen Sie dem Pool eine Samml
 CloudPool pool = null;
 Console.WriteLine("Creating pool [{0}]...", poolId);
 
-// Create a pool using the cloud service configuration.
+// Create a pool using Virtual Machine Configuration.
 pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
     targetDedicatedComputeNodes: 3,

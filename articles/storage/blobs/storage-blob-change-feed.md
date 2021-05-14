@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6da83ceb6d8ee51916d25949309d7ddfba0e4b30
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095567"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503598"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Änderungsfeed in Azure Blob Storage
 
@@ -67,14 +67,11 @@ Folgende Aspekte müssen Sie berücksichtigen, wenn Sie den Änderungsfeed aktiv
 So aktivieren Sie den Änderungsfeed für Ihr Speicherkonto über das Azure-Portal:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus.
+1. Navigieren Sie unter **Datenverwaltung** zur Option **Datenschutz**.
+1. Wählen Sie unter **Überwachung** die Option **Blobänderungsfeed aktivieren** aus.
+1. Wählen Sie die Schaltfläche **Speichern**, um Ihre Datenschutzeinstellungen zu bestätigen.
 
-2. Navigieren Sie unter **Blob-Dienst** zur Option **Datenschutz**.
-
-3. Klicken Sie unter **Blobänderungsfeed** auf **Aktiviert**.
-
-4. Wählen Sie die Schaltfläche **Speichern** aus, um Ihre **Datenschutzeinstellungen** zu bestätigen.
-
-    ![Screenshot: Einstellungen für den Schutz von Daten](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
+    :::image type="content" source="media/storage-blob-change-feed/change-feed-enable-portal.png" alt-text="Screenshot, der anzeigt, wie man die Feed-Änderung im Azure-Portal aktiviert":::
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

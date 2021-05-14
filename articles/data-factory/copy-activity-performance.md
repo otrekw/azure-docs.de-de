@@ -3,8 +3,8 @@ title: Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
 description: Hier erfahren Sie, welche Faktoren sich entscheidend auf die Leistung auswirken, wenn Sie Daten in Azure Data Factory mithilfe der Kopieraktivität verschieben.
 services: data-factory
 documentationcenter: ''
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: cba248d3f254c9bb97c66ff7a3d39275b4b912c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 473f0c2c33fff48f945079ad1bd948c35c0826c4
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102616076"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482595"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
 
@@ -62,7 +62,10 @@ Diese volle Auslastung bedeutet, dass Sie den Gesamtdurchsatz durch Messung des 
 * Zieldatenspeicher
 * Netzwerkbandbreite zwischen den Quell- und Zieldatenspeichern
 
-In der folgenden Tabelle wird die Kopierdauer berechnet. Die Dauer richtet sich nach der Datengröße und der Bandbreitenbegrenzung des Netzwerks oder Datenspeichers für Ihre Umgebung.
+Die folgende Tabelle zeigt die Berechnung der Dauer der Datenverschiebung. Die Dauer in jeder Zelle wird basierend auf einer bestimmten Netzwerk- und Datenspeicherbandbreite und einer bestimmten Größe der Datennutzlast berechnet.
+
+> [!NOTE]
+> Die unten angegebene Dauer soll die erreichbare Leistung in einer End-to-End-Datenintegrationslösung darstellen, die mit ADF implementiert wird. Dazu wird mindestens eine der Leistungsoptimierungstechniken verwendet, die unter [Features für die Leistungsoptimierung von Kopiervorgängen](#copy-performance-optimization-features) beschrieben sind, einschließlich der Verwendung von ForEach zum Partitionieren und Erzeugen mehrerer gleichzeitiger Kopieraktivitäten. Es wird empfohlen, die Schritte unter [Schritte zur Optimierung der Leistung](#performance-tuning-steps) zu befolgen, um die Kopierleistung für Ihr spezifisches Dataset und Ihre Systemkonfiguration zu optimieren. Sie sollten die in den Leistungsoptimierungstests ermittelten Zahlen für die Planung der Produktionsbereitstellung, die Kapazitätsplanung und die Abrechnungsprognose verwenden.
 
 &nbsp;
 

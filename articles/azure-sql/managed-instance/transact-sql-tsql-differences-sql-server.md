@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.devlang: ''
 ms.topic: reference
-author: jovanpop-msft
-ms.author: jovanpop
+author: danimir
+ms.author: danil
 ms.reviewer: sstein, bonova, danil
 ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 227b573d3771efd3fd36e6d3d6222696647849f7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1a2ef6000a10c9b6879547377e26b6982e820ef1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644911"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745789"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -354,9 +354,9 @@ Nicht dokumentierte DBCC-Anweisungen, die in SQL Server aktiviert sind, werden i
 
 ### <a name="distributed-transactions"></a>Verteilte Transaktionen
 
-Derzeit werden [verteilte Transaktionen](../database/elastic-transactions-overview.md) teilweise in der öffentlichen Vorschau unterstützt. Folgende Szenarios werden unterstützt:
-* Transaktionen, an denen nur Azure SQL Managed Instances beteiligt sind, die zur [Serververtrauensgruppe](./server-trust-group-overview.md) gehören.
-* Von .NET (TransactionScope-Klasse) und Transact-SQL initiierte Transaktionen.
+Derzeit werden [verteilte Transaktionen](../database/elastic-transactions-overview.md) teilweise in der öffentlichen Vorschau unterstützt. Verteilte Transaktionen werden unter den folgenden Bedingungen unterstützt (alle müssen erfüllt sein):
+* Alle Transaktionsteilnehmer sind Azure SQL Managed Instances beteiligt sind, die zur [Serververtrauensgruppe](./server-trust-group-overview.md) gehören.
+* Transaktionen werden entweder von .NET (TransactionScope-Klasse) oder Transact-SQL initiiert.
 
 Azure SQL Managed Instance unterstützt derzeit keine anderen Szenarios, die regelmäßig von MSDTC lokal oder in Azure Virtual Machines unterstützt werden.
 

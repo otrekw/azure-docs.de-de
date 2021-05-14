@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 0b064e8491b5d4fa988e9f476143cc0711e3934a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfa4239fb6a3c78d861885478c1c643151ee6e13
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651373"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128557"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf eine Web-API
 
@@ -149,4 +149,4 @@ Die Schaltfläche **Administratoreinwilligung erteilen** ist *deaktiviert*, wenn
 In der nächsten Schnellstartanleitung der Reihe erfahren Sie, wie Sie konfigurieren, welche Kontotypen auf Ihre Anwendung zugreifen können. Beispielsweise möchten Sie den Zugriff auf die Benutzer in Ihrer Organisation (ein Mandant) beschränken oder Benutzer in anderen Azure AD-Mandanten (mehrere Mandanten) und diejenigen mit persönlichen Microsoft-Konten (MSA) zulassen.
 
 > [!div class="nextstepaction"]
-> [Ändern der von einer Anwendung unterstützten Konten](quickstart-modify-supported-accounts.md)
+> [Ändern der von einer Anwendung unterstützten Konten](./howto-modify-supported-accounts.md)

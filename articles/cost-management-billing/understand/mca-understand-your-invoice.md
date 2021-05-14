@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 04/08/2021
 ms.author: banders
-ms.openlocfilehash: 996c974473c53833dd26abae2fb61585999f33b4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ff53131f3078b33b7e7d853c1fca891b0b86d792
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050442"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484596"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Bestimmungen auf der Rechnung Ihrer Microsoft-Kundenvereinbarung
 
@@ -29,6 +29,18 @@ Sehen Sie sich das Video [Understand your Microsoft Customer Agreement invoice](
 ## <a name="billing-period"></a>Abrechnungszeitraum
 
 Ihnen wird monatlich eine Rechnung gestellt. Sie können herausfinden, an welchem Tag des Monats Sie Rechnungen erhalten, indem Sie im [Azure-Portal](https://portal.azure.com/) in den Eigenschaften des Abrechnungsprofils das *Rechnungsdatum* überprüfen. Gebühren, die zwischen dem Ende des Abrechnungszeitraums und dem Rechnungsdatum anfallen, werden in der Rechnung des nächsten Monats berücksichtigt, da sie sich im nächsten Abrechnungszeitraum befinden. Das Start- und Enddatum des Abrechnungszeitraums für jede Rechnung ist in der PDF-Datei mit der Rechnung über **Rechnungszusammenfassung** aufgeführt.
+
+Wenn Sie von einem EA zu einer Microsoft-Kundenvereinbarung migrieren, erhalten Sie bis zum Migrationsdatum weiterhin Rechnungen für Ihr EA. Die neue Rechnung für Ihre Microsoft-Kundenvereinbarung wird am fünften Tag des Monats nach der Migration generiert. Die erste Rechnung enthält eine Teilgebühr ab dem Migrationsdatum. Spätere Rechnungen werden jeweils monatlich generiert und enthalten alle Gebühren für den jeweiligen Monat.
+
+### <a name="changes-for-pay-as-you-go-subscriptions"></a>Änderungen für Abonnements mit nutzungsbasierter Bezahlung
+
+Wenn ein Abonnement umgestellt, übertragen oder gekündigt wird, enthält die letzte generierte Rechnung Gebühren für den vorherigen Abrechnungszeitraum sowie für den neuen unvollständigen Abrechnungszeitraum.
+
+Beispiel:
+
+Angenommen, der Abrechnungszeitraum für Ihr Abonnement mit nutzungsbasierter Bezahlung beginnt jeweils am 8. des Monats und endet am 7. des Folgemonats. Das Abonnement wurde am 16. November auf eine Microsoft-Kundenvereinbarung umgestellt. Die letzte Rechnung mit nutzungsbasierter Bezahlung enthält Gebühren für den Zeitraum vom 8. Oktober 2020 bis zum 7. November 2020. Außerdem enthält sie die Gebühren des neuen anteiligen Abrechnungszeitraums für die Microsoft-Kundenvereinbarung vom 8. November 2020 bis zum 16. November 2020. Beispiel:
+
+:::image type="content" source="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" alt-text="Beispielbild: Rechnung mit dem letzten Abrechnungszeitraum" lightbox="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" :::
 
 ## <a name="invoice-terms-and-descriptions"></a>Begriffe auf der Rechnung und entsprechende Beschreibungen
 

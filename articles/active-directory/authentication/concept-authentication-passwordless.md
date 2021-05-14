@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 04/29/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43a0ef208a1a56416f748c69f552ec9169d21479
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 00c6fc7916355586787bb91225e71c4db280ed26
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102424230"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315912"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
@@ -26,7 +26,7 @@ Features wie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA
 | --- | --- | --- |
 | Kennwortlos | Windows 10-Gerät, Smartphone oder Sicherheitsschlüssel | Biometrische Daten oder PIN |
 
-Jede Organisation hat unterschiedliche Anforderungen in Bezug auf die Authentifizierung. Microsoft bietet die folgenden drei Optionen für kennwortlose Authentifizierung, die mit Azure Active Directory (Azure AD) integriert sind:
+Jede Organisation hat unterschiedliche Anforderungen in Bezug auf die Authentifizierung. Die globale Microsoft Azure-Plattform und Microsoft Azure Government bieten die folgenden drei Optionen für die kennwortlose Authentifizierung, die in Azure Active Directory (Azure AD) integriert werden können:
 
 - Windows Hello for Business
 - Microsoft Authenticator-App
@@ -123,7 +123,7 @@ Ein Sicherheitsschlüssel **MUSS** die folgenden Features und Erweiterungen aus 
 
 Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formfaktoren an, die bekanntermaßen mit der kennwortlosen Benutzererfahrung kompatibel sind. Wir empfehlen Ihnen, die Sicherheitseigenschaften dieser Schlüssel zu bewerten, indem sie sich an den Hersteller und die FIDO Alliance wenden.
 
-| Anbieter | Contact |
+| Anbieter | Kontakt |
 | --- | --- |
 | Yubico | [https://www.yubico.com/solutions/passwordless/](https://www.yubico.com/solutions/passwordless/) |
 | Feitian | [https://ftsafe.us/pages/microsoft](https://ftsafe.us/pages/microsoft) |
@@ -139,6 +139,8 @@ Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formf
 | KONA I | [https://konai.com/business/security/fido](https://konai.com/business/security/fido) |
 | Excelsecu | [https://www.excelsecu.com/productdetail/esecufido2secu.html](https://www.excelsecu.com/productdetail/esecufido2secu.html) |
 | Token2, Schweiz | [https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key](https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key) |
+| GoTrustID Inc. | [https://www.gotrustid.com/idem-key](https://www.gotrustid.com/idem-key) |
+| Kensington | [https://www.kensington.com/solutions/product-category/why-biometrics/](https://www.kensington.com/solutions/product-category/why-biometrics/) |
 
 > [!NOTE]
 > Wenn Sie NFC-basierte Sicherheitsschlüssel erwerben und sie verwenden möchten, benötigen Sie einen unterstützten NFC-Leser für den Sicherheitsschlüssel. Der NFC-Leser ist keine Azure-Anforderung oder -Einschränkung. Eine Liste der unterstützten NFC-Leser finden Sie beim Anbieter für Ihren NFC-basierten Sicherheitsschlüssel.
@@ -159,7 +161,7 @@ Es gelten die folgenden Bedingungen:
 - Endbenutzer können diese kennwortlosen Authentifizierungsmethoden in ihrem Kontoportal registrieren und verwalten
 - Endbenutzer können sich mit diesen kennwortlosen Authentifizierungsmethoden anmelden:
    - Microsoft Authenticator-App: Funktioniert in Szenarien, in denen die Azure AD-Authentifizierung verwendet wird, einschließlich aller Browser, während der Einrichtung von Windows 10 und mit integrierten mobilen Apps unter jedem Betriebssystem.
-   - Sicherheitsschlüssel: Funktioniert auf Sperrbildschirm für Windows 10 und im Internet in unterstützten Browsern wie Microsoft Edge (sowohl ältere als auch neue Edge-Version).
+   - Sicherheitsschlüssel: Funktionieren beim Windows 10-Setup auf der Windows-Willkommensseite mit oder ohne Windows Autopilot, auf dem Sperrbildschirm für Windows 10 und im Web in unterstützten Browsern wie Microsoft Edge (Legacyversionen und neue Edge-Version).
 
 ## <a name="choose-a-passwordless-method"></a>Auswählen einer kennwortlosen Methode
 

@@ -1,26 +1,25 @@
 ---
 title: Warnungstypen und -beschreibungen
 description: Lesen Sie die Beschreibungen der Warnungen zu Defender für IoT.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 03/22/2021
+ms.date: 04/28/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 3c4cc5f7bb9f0c529e603b91ee96c6c1c476f20d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: bc2adabe4183420f79972d8fd58b132b38864efe
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787465"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226478"
 ---
-# <a name="defender-for-iot-engine-alerts"></a>Warnungen der Defender für IoT-Engine
+# <a name="alert-types-and-descriptions"></a>Warnungstypen und -beschreibungen
 
-In diesem Artikel werden Warnungen beschrieben, die von den Defender für IoT-Engines generiert werden können. Warnungen werden im Fenster „Warnungen“ angezeigt, in dem Sie das Warnungsereignis verwalten können. 
+Dieser Artikel enthält Informationen zu den Benachrichtigungstypen, Beschreibungen und dem Schweregrad, die von den Defender for IoT-Engines generiert werden können. Diese Informationen können verwendet werden, um Warnungen Playbooks zu zuordnen, Weiterleitungsregeln, Ausschlussregeln und benutzerdefinierte Warnungen zu definieren und die entsprechenden Regeln innerhalb des SIEM zu definieren. Warnungen werden im Fenster „Warnungen“ angezeigt. Dort können Sie das Warnungsereignis verwalten. 
 
 ## <a name="policy-engine-alerts"></a>Warnungen der Richtlinien-Engine
 
-Die Warnungen der Richtlinien-Engine beschreiben Abweichungen vom gelernten normalen Verhalten des Netzwerks.
+Die Warnungen der Richtlinien-Engine beschreiben erkannte Abweichungen vom gelernten normalen Verhalten.
+
+>[!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 | Titel  | BESCHREIBUNG | severity |
 |--|--|--|
@@ -122,6 +121,8 @@ Die Warnungen der Richtlinien-Engine beschreiben Abweichungen vom gelernten norm
 
 ## <a name="anomaly-engine-alerts"></a>Engine-Warnungen zu Anomalien
 
+Warnungen der Anomalie-Engine beschreiben erkannte Anomalien in der Netzwerkaktivität.
+
 | Titel | BESCHREIBUNG | severity |
 |--|--|--|
 | Ungewöhnliches Ausnahmemuster auf untergeordnetem Gerät | Auf einem Quellgerät wurde eine übermäßige Anzahl von Fehlern erkannt. Dies kann durch ein Betriebsproblem verursacht worden sein. | Nebenversion |
@@ -150,6 +151,8 @@ Die Warnungen der Richtlinien-Engine beschreiben Abweichungen vom gelernten norm
 | Unerwarteter Datenverkehr für Standardport | Auf einem Gerät wurde Datenverkehr über einen Port erkannt, der für ein anderes Protokoll reserviert ist. | Hauptversion |
 
 ## <a name="protocol-violation-engine-alerts"></a>Warnungen der Protokollverstoß-Engine
+
+Warnungen der Protokoll-Engine beschreiben erkannte Abweichungen in der Paketstruktur oder in Feldwerten im Vergleich zu Protokollspezifikationen.
 
 | Titel | BESCHREIBUNG | severity |
 |--|--|--|
@@ -181,6 +184,8 @@ Die Warnungen der Richtlinien-Engine beschreiben Abweichungen vom gelernten norm
 
 ## <a name="malware-engine-alerts"></a>Warnungen der Malware-Engine
 
+Warnungen der Schadsoftware-Engine beschreiben erkannte schädliche Netzwerkaktivitäten.
+
 | Titel | BESCHREIBUNG| severity |
 |--|--|--|
 | Verbindungsversuch mit bekannter böswilliger IP-Adresse | Es wurde eine verdächtige Netzwerkaktivität erkannt. Diese Aktivität kann einem Angriff zugeordnet werden, bei dem eine Methode verwendet wird, für die eine bestimmte Malware bekannt ist. | Hauptversion |
@@ -210,6 +215,8 @@ Die Warnungen der Richtlinien-Engine beschreiben Abweichungen vom gelernten norm
 | Verdächtiger Datenverkehr erkannt | Es wurde eine verdächtige Netzwerkaktivität erkannt. Diese Aktivität kann einem Angriff zugeordnet werden, bei dem eine Methode verwendet wird, für die eine bestimmte Malware bekannt ist. | Kritisch |
 
 ## <a name="operational-engine-alerts"></a>Warnungen der Betriebs-Engine
+
+Warnungen der Betriebs-Engine beschreiben erkannte Betriebsvorfälle oder Entitäten mit Funktionsfehlern.
 
 | Titel | BESCHREIBUNG | severity |
 |--|--|--|

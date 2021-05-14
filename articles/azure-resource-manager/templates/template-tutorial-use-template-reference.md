@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: a44852fb2f491dd949b58217eca3e4f3e392cf17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f9a43638c3cf082a488726aea0877c1f92b934e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97584135"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736755"
 ---
 # <a name="tutorial-utilize-the-arm-template-reference"></a>Tutorial: Verwenden der Referenz für ARM-Vorlagen
 
@@ -46,7 +46,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 1. Fügen Sie in **Dateiname** die folgende URL ein:
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
     ```
 
 1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.

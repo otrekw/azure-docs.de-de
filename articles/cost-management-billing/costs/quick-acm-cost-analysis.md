@@ -3,18 +3,18 @@ title: 'Schnellstart: Ermitteln von Azure-Kosten mithilfe der Kostenanalyse'
 description: In diesem Schnellstart wird beschrieben, wie Sie sich mit der Kostenanalyse einen Überblick über Azure-Kosten für Ihre Organisation verschaffen und wie Sie diese Kosten analysieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2021
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.custom: contperf-fy21q2, devx-track-azurecli
+ms.openlocfilehash: 9769b6ecb04ca513c4b48ec3d0ca32bdd3c64b5f
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882448"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887107"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -68,11 +68,9 @@ Die Kostenanalyseansicht umfasst anfänglich die folgenden Bereiche.
 
 ### <a name="understand-forecast"></a>Grundlegendes zur Vorhersage
 
-Die Kostenvorhersage zeigt eine Projektion der geschätzten Kosten für den ausgewählten Zeitraum. Das Modell basiert auf einem Zeitreihen-Regressionsmodell. Für eine präzise Kostenvorhersage sind mindestens zehn Tage an aktuellen Kosten- und Nutzungsdaten erforderlich. Für einen bestimmten Zeitraum erfordert das Vorhersagemodell den gleichen Anteil von Trainingsdaten für den Vorhersagezeitraum. Für eine Projektion von drei Monaten sind beispielsweise mindestens drei Monate an aktuellen Kosten- und Nutzungsdaten erforderlich.
+Basierend auf Ihrer aktuellen Nutzung zeigen Kostenprognosen eine Projektion Ihrer geschätzten Kosten für den ausgewählten Zeitraum an. Ist in der Kostenanalyse ein Budget eingerichtet, können Sie anzeigen, wann die prognostizierten Ausgaben den Budgetschwellenwert wahrscheinlich überschreiten. Das Vorhersagemodell kann zukünftige Kosten für bis zu ein Jahr vorhersagen. Wählen Sie Filter aus, um die differenzierten prognostizierten Kosten für die ausgewählte Dimension anzuzeigen.
 
-Das Modell verwendet Trainingsdaten aus maximal sechs Monaten, um Kosten für ein Jahr zu projizieren. Zum Ändern der Vorhersage sind mindestens sieben Tage an Trainingsdaten erforderlich. Die Vorhersage basiert auf tiefgreifenden Änderungen (etwa Spitzen und Abfällen) bei Kosten- und Nutzungsmustern. Die Vorhersage generiert keine einzelnen Projektionen für jedes Element in den Eigenschaften vom Typ **Gruppieren nach**. Es wird nur eine Vorhersage für die kumulierten Gesamtkosten abgegeben. Bei der Verwendung mehrerer Währungen bietet das Modell nur Vorhersagen für Kosten in USD.
-
-Da das Modell auf Datenabfällen und -spitzen basiert, können umfangreiche Einkäufe (etwa von reservierten Instanzen) dazu führen, dass Ihre Vorhersage künstlich aufgebläht wird. Der Vorhersagezeitraum und der Umfang der Einkäufe beeinflussen, wie lange die Vorhersage beeinträchtigt ist. Die Vorhersage normalisiert sich wieder, wenn sich die Ausgaben stabilisieren.
+Das Vorhersagemodell basiert auf einem Zeitreihen-Regressionsmodell. Für eine präzise Kostenvorhersage sind mindestens zehn Tage an aktuellen Kosten- und Nutzungsdaten erforderlich. Für einen bestimmten Zeitraum erfordert das Vorhersagemodell den gleichen Anteil von Trainingsdaten für den Vorhersagezeitraum. Für eine Projektion von drei Monaten sind beispielsweise mindestens drei Monate an aktuellen Kosten- und Nutzungsdaten erforderlich.
 
 ## <a name="customize-cost-views"></a>Anpassen von Kostenansichten
 
@@ -171,7 +169,7 @@ Bereiten Sie zunächst Ihre Umgebung für die Azure-Befehlszeilenschnittstelle v
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Nachdem Sie sich angemeldet haben, verwenden Sie den Befehl [az costmanagement query](/cli/azure/ext/costmanagement/costmanagement#ext_costmanagement_az_costmanagement_query), um Nutzungsinformationen für Ihr Abonnement für den bisherigen Kalendermonat abzufragen:
+Nachdem Sie sich angemeldet haben, verwenden Sie den Befehl [az costmanagement query](/cli/azure/costmanagement#az_costmanagement_query), um Nutzungsinformationen für Ihr Abonnement für den bisherigen Kalendermonat abzufragen:
 
 ```azurecli
 az costmanagement query --timeframe MonthToDate --type Usage \
@@ -188,7 +186,7 @@ az costmanagement query --timeframe MonthToDate --type Usage \
 
 Mit dem Parameter **--dataset-filter** wird eine JSON-Zeichenfolge oder `@json-file` übernommen.
 
-Sie haben auch die Möglichkeit, die [az costmanagement export](/cli/azure/ext/costmanagement/costmanagement/export)-Befehle zu verwenden, um Nutzungsdaten in ein Azure-Speicherkonto zu exportieren. Sie können die Daten hier herunterladen.
+Sie haben auch die Möglichkeit, die [az costmanagement export](/cli/azure/costmanagement/export)-Befehle zu verwenden, um Nutzungsdaten in ein Azure-Speicherkonto zu exportieren. Sie können die Daten hier herunterladen.
 
 1. Erstellen Sie eine Ressourcengruppe, oder verwenden Sie eine vorhandene Ressourcengruppe. Führen Sie den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen:
 
@@ -202,7 +200,7 @@ Sie haben auch die Möglichkeit, die [az costmanagement export](/cli/azure/ext/c
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. Führen Sie den Befehl [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) aus, um den Export zu erstellen:
+1. Führen Sie den Befehl [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create) aus, um den Export zu erstellen:
 
    ```azurecli
    az costmanagement export create --name DemoExport --type Usage \

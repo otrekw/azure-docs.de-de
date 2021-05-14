@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: b60e5f656b675a1382b8b4776975723a437183bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2bed95385823a167c7a31eed11d752894984ea38
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773112"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791875"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Auswerten der Ergebnisse von Experimenten des automatisierten maschinellen Lernens
 
@@ -74,7 +74,7 @@ In der folgenden Tabelle sind die Modellleistungsmetriken zusammengefasst, die a
 
 |Metrik|BESCHREIBUNG|Berechnung|
 |--|--|---|
-|AUC | AUC ist die Fläche unter der [ROC-Kurve (Receiver Operating Characteristic Curve)](#roc-curve).<br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören <li>`AUC_macro`, das arithmetische Mittel der AUC für jede Klasse.<li> `AUC_micro`, das global durch die Kombination der True Positive- und der False Positive-Ergebnisse aus jeder Klasse berechnet wird. <li> `AUC_weighted`, das arithmetische Mittel des Ergebnisses für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.   |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | 
+|AUC | AUC ist die Fläche unter der [ROC-Kurve (Receiver Operating Characteristic Curve)](#roc-curve).<br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören <li>`AUC_macro`, das arithmetische Mittel der AUC für jede Klasse.<li> `AUC_micro`, das global durch die Kombination der True Positive- und der False Positive-Ergebnisse aus jeder Klasse berechnet wird. <li> `AUC_weighted`, das arithmetische Mittel des Ergebnisses für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.<br><br>Hinweis: Die vom automatisierten maschinellen Lernen gemeldeten AUC-Werte entsprechen möglicherweise nicht den Angaben im ROC-Diagramm, wenn nur zwei Klassen vorhanden sind. Bei der binären Klassifizierung wird von der zugrunde liegenden scikit-learn-Implementierung von AUC keine Makrodurchschnitt/Mikrodurchschnitt/gewichteter Durchschnitt angewendet. Stattdessen wird die AUC der wahrscheinlichsten positiven Klasse zurückgegeben. Im ROC-Diagramm wird für die binäre Klassifizierung genau wie bei mehreren Klassen weiterhin ein Klassendurchschnitt angewendet.  |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | 
 |accuracy| Die Genauigkeit ist der Anteil der Vorhersagen, die genau mit den wahren Klassenbezeichnungen übereinstimmen. <br> <br>**Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
 |average_precision|Die durchschnittliche Genauigkeit fasst eine Precision-Recall-Kurve als gewichteten Mittelwert der bei jedem Schwellenwert erzielten Genauigkeiten zusammen, wobei die Zunahme beim Recall aus dem vorherigen Schwellenwert als Gewichtung verwendet wird. <br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören<li>`average_precision_score_macro`, das arithmetische Mittel des durchschnittlichen Genauigkeitswerts jeder Klasse.<li> `average_precision_score_micro`, das global durch die Kombination der True Positive- und der False Positive-Ergebnisse bei jedem Cutoff berechnet wird.<li>`average_precision_score_weighted`, das arithmetische Mittel der durchschnittlichen Genauigkeit für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|
 balanced_accuracy|„Balanced accuracy“ ist das arithmetische Mittel des Recalls für jede Klasse.<br> <br>**Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
@@ -117,6 +117,7 @@ Der Bereich unter der Kurve (AUC) kann als der Anteil der richtig klassifizierte
 Eine Kurve, die sich der oberen linken Ecke des Diagramms nähert, nähert sich einer TPR von 100 % und FPR von 0 %, dem bestmöglichen Modell. Ein zufälliges Modell würde eine ROC-Kurve entlang der `y = x`-Linie von der linken unteren Ecke bis zur rechten oberen Ecke erzeugen. Ein Modell, das schlechter als ein zufälliges Modell ist, würde eine ROC-Kurve aufweisen, die unter die `y = x`-Linie eintaucht.
 > [!TIP]
 > Für Klassifizierungsexperimente kann jedes der Liniendiagramme, die für automatisierte ML-Modelle erstellt werden, verwendet werden, um das Modell pro Klasse oder gemittelt über alle Klassen auszuwerten. Sie können zwischen diesen verschiedenen Ansichten umschalten, indem Sie auf die Klassenbezeichnungen in der Legende auf der rechten Seite des Diagramms klicken.
+
 ### <a name="roc-curve-for-a-good-model"></a>ROC-Kurve für ein gutes Modell
 ![ROC-Kurve für ein gutes Modell](./media/how-to-understand-automated-ml/chart-roc-curve-good.png)
 
@@ -234,18 +235,9 @@ In diesem Beispiel ist zu beachten, dass das bessere Modell eine Linie für „V
 
 ## <a name="model-explanations-and-feature-importances"></a>Modellerläuterung und Featurerelevanz
 
-Während Metriken und Diagramme zur Modellauswertung gut geeignet sind, um die allgemeine Qualität eines Modells zu messen, ist die Überprüfung, welche Datasetfunktionen ein Modell für seine Vorhersagen verwendet hat, für eine verantwortungsvolle KI unerlässlich. Deshalb bietet das automatisierte maschinelle Lernen ein Dashboard zur Modellinterpretation, um die relativen Beiträge von Datasetfunktionen zu messen und zu melden.
+Während Metriken und Diagramme zur Modellauswertung gut geeignet sind, um die allgemeine Qualität eines Modells zu messen, ist die Überprüfung, welche Datasetfunktionen ein Modell für seine Vorhersagen verwendet hat, für eine verantwortungsvolle KI unerlässlich. Deshalb bietet das automatisierte maschinelle Lernen ein Modellerklärungsdashboard zum Messen und Melden der relativen Beiträge von Datasetfeatures. Informationen zum Anzeigen des Erklärungsdashboards in Azure Machine Learning Studio finden Sie [hier](how-to-use-automated-ml-for-ml-models.md#model-explanations-preview).
 
-So zeigen Sie das Dashboard für die Interpretierbarkeit im Studio an
-1. [Melden Sie sich beim Studio an](https://ml.azure.com/), und navigieren Sie zu Ihrem Arbeitsbereich.
-2. Wählen Sie im linken Menü die Option **Experimente** aus.
-3. Wählen Sie Ihr Experiment aus der Liste der Experimente aus.
-4. Wählen Sie in der Tabelle unten auf der Seite eine AutoML-Ausführung aus.
-5. Wählen Sie auf der Registerkarte **Modelle** den **Algorithmusnamen** für das Modell aus, das Sie erläutern möchten.
-6. Auf der Registerkarte **Erläuterungen** sehen Sie möglicherweise, dass bereits eine Erläuterung erstellt wurde, wenn das Modell das beste war.
-7. Um eine neue Erläuterung zu erstellen, wählen Sie **Modell erklären** und wählen dann die Remotecompute-Instanz aus, mit der die Erläuterungen berechnet werden sollen.
-
-[Weitere Informationen zu Modellerklärungen beim automatisierten maschinellen Lernen](how-to-machine-learning-interpretability-automl.md)
+Einen Code First-Ansatz zum Einrichten von Modellerklärungen für automatisierte ML-Experimente mit dem Azure Machine Learning Python SDK finden Sie [hier](how-to-machine-learning-interpretability-automl.md).
 
 > [!NOTE]
 > Das ForecastTCN-Modell wird derzeit nicht durch Erläuterungen zum automatisierten maschinellen Lernen unterstützt und andere Vorhersagemodelle haben möglicherweise nur begrenzten Zugriff auf Interpretationstools.

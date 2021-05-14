@@ -1,14 +1,16 @@
 ---
 title: Partnerlösungen zur Integration in Azure Monitor
 description: Erfahren Sie mehr über die Partnerlösungen für Azure Monitor und wie Sie auf die jeweilige Dokumentation zur Integration der Lösungen zugreifen können.
+author: rboucher
+ms.author: robb
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: ca58023510eb9329bc8ddf1339df4d8c27aae5e6
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 04/14/2021
+ms.openlocfilehash: d449f660fa97af8b5c24542258029834a964b3f2
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101017"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751614"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 
@@ -111,7 +113,7 @@ Wenn Sie noch die vorherige manuell konfigurierte Integration verwenden, finden 
 
 OneAgent von Dynatrace lässt sich über Azure-Erweiterungsmechanismen in virtuelle Azure-Computer und App Services integrieren. So kann Dynatrace OneAgent Leistungsmetriken zu Hosts, Netzwerk und Diensten erfassen. Neben der einfachen Anzeige von Metriken kann Dynatrace auch vollständige Umgebungen visualisieren. Es werden Transaktionen von der Clientseite bis hin zur Datenbankschicht angezeigt. Dynatrace bietet auf künstlicher Intelligenz beruhende Korrelation von Problemen und die vollständig integrierte Ursachenanalyse zur Bereitstellung von Einblicken in Code und Datenbank auf Methodenebene. Durch diese Einblicke werden die Problembehandlung und Leistungsoptimierungen wesentlich vereinfacht.
 
-[Dynatrace-Dokumentation](https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/)
+[Dynatrace-Dokumentation](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/microsoft-azure-services/)
 
 
 ## <a name="elastic"></a>Elastic
@@ -296,6 +298,14 @@ Die Azure-Überwachung mit Site24x7 bietet folgende Möglichkeiten:
 ## <a name="solarwinds"></a>SolarWinds
 
 [SolarWinds-Dokumentation](https://www.solarwinds.com/topics/azure-monitoring)
+
+## <a name="speartip"></a>SpearTip
+
+![SpearTip-Logo](./media/partners/speartip.png)
+
+Das rund um die Uhr bereitstehende Security Operations Center von SpearTip überwacht Azure-Umgebungen kontinuierlich auf Cyberbedrohungen. Mithilfe der ShadowSpear-Integration in Azure Monitor werden Sicherheitsereignisse gesammelt und auf komplexe Bedrohungen analysiert, während die SpearTip-Techniker Untersuchungen vornehmen und reagieren, um Bedrohungsakteure in ihren Abläufen zu stoppen. Die Integration erfolgt nahtlos und bietet sofortigen Nutzen, sobald sie bereitgestellt wurde.
+
+[SpearTip-Dokumentation](https://www.speartip.com/identify/)
 
 ## <a name="splunk"></a>Splunk
 

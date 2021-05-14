@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: ffc5bafca305086b0c524c76eb91b8aec2e2655d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e795431a0a3e42b7aa91ac7dcb95c7bcb9c9990b
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98602441"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107892074"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -75,7 +75,7 @@ Microsoft empfiehlt, die folgende moderne Kennwortrichtlinie basierend auf dem [
 2. Deaktivieren Sie Ablaufregeln – diese veranlassen Benutzer dazu, einfach zu erratende Kennwörter wie **Frühling2019!** zu verwenden.
 3. Deaktivieren Sie Anforderungen an die Zeichenzusammensetzung, und hindern Sie Benutzer daran, angriffsanfällige Kennwörter zu verwenden – dies führt dazu, dass Benutzer vorhersagbare Zeichenersetzungen in Kennwörtern verwenden.
 
-Wenn Sie Identitäten direkt in Azure AD erstellen, können Sie den [Kennwortablauf mithilfe von PowerShell für Benutzer verhindern](../../active-directory/authentication/concept-sspr-policy.md). Hybridorganisationen sollten diese Richtlinien mit [Domänengruppen-Richtlinieneinstellungen](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) oder [Windows PowerShell](/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) implementieren.
+Wenn Sie Identitäten direkt in Azure AD erstellen, können Sie den [Kennwortablauf mithilfe von PowerShell für Benutzer verhindern](../../active-directory/authentication/concept-sspr-policy.md). Hybridorganisationen sollten diese Richtlinien mit [Domänengruppen-Richtlinieneinstellungen](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) oder [Windows PowerShell](/powershell/module/activedirectory/set-addefaultdomainpasswordpolicy) implementieren.
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>Schutz vor kompromittierten Anmeldeinformationen und Verstärken der Ausfallsicherung
 

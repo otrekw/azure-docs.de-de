@@ -1,19 +1,19 @@
 ---
 title: Transformieren von Daten mit einem von Azure Data Factory verwalteten Zuordnungsdatenfluss für virtuelle Netzwerke
 description: Dieses Tutorial enthält Schritt-für-Schritt-Anleitungen für die Verwendung von Azure Data Factory zum Transformieren von Daten mithilfe von Zuordnungsdatenflüssen.
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/15/2021
-ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: ac868fdf3ca80d489d479b5be0c57bd14a90ccbb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98249436"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905700"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Sicheres Transformieren von Daten mithilfe von Zuordnungsdatenflüssen
 
@@ -91,9 +91,6 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Datenflussaktivität.
    ![Screenshot, der das Erstellen einer Pipeline zeigt.](./media/doc-common-process/get-started-page.png)
 
 1. Geben Sie im Bereich „Eigenschaften“ der Pipeline als ihren Namen **TransformMovies** ein.
-1. Legen Sie auf der oberen Leiste der Data Factory den Schieberegler **Datenfluss debuggen** auf „Ein“ fest. Der Debugmodus ermöglicht das interaktive Testen von Transformationslogik mit einem aktiven Spark-Cluster. Das Aufwärmen von Datenflussclustern dauert 5 bis 7 Minuten. Aktivieren Sie **Datenfluss debuggen** zuerst, wenn Sie beabsichtigen, eine Datenflussentwicklung zu planen. Weitere Informationen finden Sie unter [Debugmodus](./concepts-data-flow-debug-mode.md).
-
-    ![Screenshot, der den Schieberegler für „Datenfluss debuggen“ zeigt.](media/tutorial-data-flow-private/dataflow-debug.png)
 1. Klappen Sie im Bereich **Aktivitäten** das Element **Verschieben und transformieren** auf. Ziehen Sie die Aktivität **Datenfluss** per Drag & Drop aus dem Bereich auf die Canvas der Pipeline.
 
 1. Wählen Sie im Popupfenster **Datenfluss hinzufügen** die Option **Neuen Datenfluss erstellen** und dann **Zuordnungsdatenfluss** aus. Wählen Sie **OK** aus, wenn Sie fertig sind.
@@ -101,6 +98,9 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Datenflussaktivität.
     ![Screenshot mit dem Zuordnungsdatenfluss.](media/tutorial-data-flow-private/mapping-dataflow.png)
 
 1. Geben Sie Ihrem Datenfluss im Bereich „Eigenschaften“ den Namen **TransformMovies**.
+1. Setzen Sie den Schieberegler **Datenfluss debuggen** in der oberen Pipeline-Canvas-Leiste auf „ein“. Der Debugmodus ermöglicht das interaktive Testen von Transformationslogik mit einem aktiven Spark-Cluster. Die Aufwärmphase von Datenflussclustern dauert 5 bis 7 Minuten. Den Benutzern wird empfohlen, zuerst den Debugmodus zu aktivieren, wenn sie die Entwicklung eines Datenflusses planen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
+
+    ![Screenshot, der den Schieberegler für „Datenfluss debuggen“ zeigt.](media/tutorial-data-flow-private/dataflow-debug.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Erstellen von Transformationslogik auf der Datenflusscanvas
 

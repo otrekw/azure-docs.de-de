@@ -4,12 +4,12 @@ description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken,
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bebfe852aaac965fc7d07371be889fe515e3da3a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 293b91442080e1d89bb547c902f48d873c208791
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768485"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277478"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer über die Azure CLI
 
@@ -76,7 +76,6 @@ Nachdem das Skript ausgeführt wurde, kann die SAP HANA-Instanz für den Recove
 ```azurecli-interactive
 az backup container register --resource-group saphanaResourceGroup \
     --vault-name saphanaVault \
-    --location westus2 \
     --workload-type SAPHANA \
     --backup-management-type AzureWorkload \
     --resource-id VMResourceId
@@ -125,6 +124,7 @@ Wir verwenden das Cmdlet [az backup protection enable-for-azurewl](/cli/azure/ba
 
 ```azurecli-interactive
 az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
+    --vault-name saphanaVault \
     --policy-name saphanaPolicy \
     --protectable-item-name "saphanadatabase;hxe;hxe"  \
     --protectable-item-type SAPHANADatabase \

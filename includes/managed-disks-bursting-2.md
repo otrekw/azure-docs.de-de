@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 3035b5d2803ff91e84bc6b47a99963185f9195d3
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 4162fe12ff54f16cd5f982f6a576905227c9a107
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102623208"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107820950"
 ---
 ## <a name="disk-level-bursting"></a>Bursting auf Datenträgerebene
 
@@ -58,6 +58,9 @@ Datenträgerkonfiguration: SSD Premium, 1 TiB (P30), Datenträgerbursting aktivi
 Die Bursttransaktion wird als maximale Anzahl von Transaktionen aus einem IOPS- oder Mbit/s-Burst berücksichtigt. Von 00:00:01 bis 00:00:05 beträgt die akkumulierte Bursttransaktion maximal((10.000 – 5.000), (300 – 200) × 1024 / 256)) × 5 = 25.000 Transaktionen. Von 00:00:06 bis 00:00:10 beträgt die akkumulierte Bursttransaktion maximal((6.000 – 5.000), (600 – 200) × 1024 / 256)) × 5 = 8.000 Transaktionen. Darüber hinaus wird die Pauschalgebühr für die Burstaktivierung eingeschlossen, um die Gesamtkosten für das Aktivieren von bedarfsbasiertem Datenträgerbursting zu erhalten. 
 
 Weitere Informationen zu Preisen finden Sie auf der [Managed Disks-Preisseite](https://azure.microsoft.com/pricing/details/managed-disks/). Mit dem [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=storage) können Sie Ihre Workload bewerten. 
+
+
+Informationen zum Aktivieren des bedarfsgesteuerten Burstings finden Sie unter [Aktivieren des bedarfsgesteuerten Burstings](../articles/virtual-machines/disks-enable-bursting.md).
 
 ### <a name="credit-based-bursting"></a>Guthabenbasiertes Bursting
 

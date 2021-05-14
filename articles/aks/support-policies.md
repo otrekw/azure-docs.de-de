@@ -4,12 +4,12 @@ description: Hier erhalten Sie Informationen zu AKS-Unterstützungsrichtlinien (
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d30e2aa5ab13c5d7676ca7cb455a2372981e4a46
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91892709"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714474"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -62,6 +62,7 @@ In den folgenden Beispielen bietet Microsoft technischen Support:
   * Konnektivität mit anderen Azure-Diensten und -Anwendungen
   * Eingangscontroller und Eingangs- oder Lastenausgleichskonfigurationen
   * Netzwerkleistung und Wartezeit
+  * [Netzwerkrichtlinien](use-network-policies.md#differences-between-azure-and-calico-policies-and-their-capabilities)
 
 
 > [!NOTE]

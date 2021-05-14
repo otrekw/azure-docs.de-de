@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa18b619c785ad23e1da037621597684b1c5c63
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: a7158a42a61ccba736e94f22714cc3b30f7f1cc5
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551780"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286940"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Planen Ihrer Azure Active Directory-Gerätebereitstellung
 
@@ -54,7 +54,7 @@ Die wichtigsten Vorteile, wenn Sie Ihren Geräten eine Azure AD Identität zuwei
 
 Video:  [Bedingter Zugriff mit Gerätesteuerungen](https://youtu.be/NcONUf-jeS4)
 
-Häufig gestellte Fragen: [Häufig gestellte Fragen zur Azure AD-Geräteverwaltung](faq.yml) und [Häufig gestellte Fragen zu Einstellungen und Datenroaming](enterprise-state-roaming-faqs.md) 
+Häufig gestellte Fragen: [Häufig gestellte Fragen zur Azure AD-Geräteverwaltung](faq.yml) und [Häufig gestellte Fragen zu Einstellungen und Datenroaming](enterprise-state-roaming-faqs.yml) 
 
 ## <a name="plan-the-deployment-project"></a>Planen des Bereitstellungsprojekts
 

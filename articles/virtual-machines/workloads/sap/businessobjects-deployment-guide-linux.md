@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: b16a2d9f779232e59eb883f6a254be22990f5c78
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: faaed05a52708ed1c2563e6476a1e86faa02dcf7
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520019"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946760"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Linux in Azure
 
-In diesem Artikel wird die Strategie zum Bereitstellen der SAP BOBI-Plattform in Azure für Linux beschrieben. In diesem Beispiel werden zwei virtuelle Computer mit SSD Premium Managed Disks als Installationsverzeichnis konfiguriert. Azure Database for MySQL wird für die CMS-Datenbank verwendet, und Azure NetApp Files für File Repository Server wird für beide Server freigegeben. Die standardmäßige Tomcat Java-Webanwendung und die BI-Plattformanwendung werden zusammen auf beiden virtuellen Computern installiert. Für den Lastenausgleich der Benutzeranforderungen wird ein Anwendungsgateway verwendet, das native TLS/SSL-Auslagerungsfunktionen besitzt.
+In diesem Artikel wird die Strategie zum Bereitstellen der SAP BusinessObjects BI-Plattform in Azure für Lux beschrieben. In diesem Beispiel werden zwei virtuelle Computer mit SSD Premium Managed Disks als Installationsverzeichnis konfiguriert. Azure Database for MySQL wird für die CMS-Datenbank verwendet, und Azure NetApp Files für File Repository Server wird für beide Server freigegeben. Die standardmäßige Tomcat Java-Webanwendung und die BI-Plattformanwendung werden zusammen auf beiden virtuellen Computern installiert. Für den Lastenausgleich der Benutzeranforderungen wird ein Anwendungsgateway verwendet, das native TLS/SSL-Auslagerungsfunktionen besitzt.
 
 Diese Art von Architektur eignet sich für kleine Bereitstellungen oder Nicht-Produktionsumgebungen. Für die Produktion oder Bereitstellung in großem Stil können Sie getrennte Hosts für die Webanwendung und auch mehrere BOBI-Anwendungshosts verwenden, sodass der Server mehr Informationen verarbeiten kann.
 
@@ -288,17 +288,33 @@ Melden Sie sich im Azure-Portal an, und befolgen Sie die in dieser [Schnellstart
 
 6. Sicherungen von Azure Database for MySQL sind standardmäßig lokal redundant, sodass Sie, wenn Sie Serversicherungen in georedundantem Speicher wünschen, **Geografisch redundant** unter den **Optionen für Sicherungsredundanz** auswählen.
 
-> [!NOTE]
-> Das Ändern der [Optionen für Sicherungsredundanz](../../../mysql/concepts-backup.md#backup-redundancy-options) nach der Erstellung des Servers wird nicht unterstützt.
+>[!Important]
+>Das Ändern der [Optionen für Sicherungsredundanz](../../../mysql/concepts-backup.md#backup-redundancy-options) nach der Erstellung des Servers wird nicht unterstützt.
 
-### <a name="configure-connection-security"></a>Konfigurieren der Verbindungssicherheit
+>[!Note]
+>Das Feature „Private Link“ ist nur für Azure Database for MySQL-Server in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Datenbankserver einer dieser Tarife festgelegt wird.
 
-Der erstellte Server wird standardmäßig durch eine Firewall geschützt und ist nicht öffentlich zugänglich. Führen Sie die folgenden Schritte aus, um Zugriff auf das virtuelle Netzwerk bereitzustellen, in dem die Anwendungsserver der SAP BI-Plattform ausgeführt werden:  
+### <a name="configure-private-link"></a>Konfigurieren von Private Link
 
-1. Navigieren Sie im Azure-Portal zu den Serverressourcen, und wählen Sie im Menü auf der linken Seite die Option **Verbindungssicherheit** für Ihre Serverressource aus.
-2. Wählen Sie **Ja** aus, um den **Zugriff auf Azure-Dienste zuzulassen**.
-3. Wählen Sie unter den VNET-Regeln die Option **Vorhandenes virtuelles Netzwerk wird hinzugefügt** aus. Wählen Sie das virtuelle Netzwerk und Subnetz des Anwendungsservers der SAP BI-Plattform aus. Außerdem müssen Sie Zugriff auf Jumpbox oder andere Server bereitstellen, von denen aus Sie eine Verbindung von [MySQL Workbench](../../../mysql/connect-workbench.md) mit Azure Database for MySQL herstellen können. MySQL Workbench wird verwendet, um die CMS- und Überwachungsdatenbank zu erstellen.
-4. Nachdem die virtuellen Netzwerke hinzugefügt wurden, wählen Sie **Speichern** aus.
+In diesem Abschnitt erstellen Sie eine private Verknüpfung, die es virtuellen SAP BOBI-Maschinen ermöglicht, sich über einen privaten Endpunkt mit dem Azure Database for MySQL-Dienst zu verbinden. Azure Private Link bringt Azure-Dienste innerhalb Ihres privaten virtuellen Netzwerks (VNet).
+
+1. Wählen Sie die im obigen Abschnitt erstellte Azure-Datenbank für MySQL aus.
+2. Navigieren Sie zu **Sicherheit**  >  **Private endpoint connections (Private Endpunktverbindungen für Sicherheit).**
+3. Wählen Sie auf der Registerkarte **Private Endpunktverbindungen**  **Privater Endpunkt** aus.
+4. Wählen Sie **Abonnement**, **Ressourcengruppe** und **Standort** aus.
+5. Geben Sie den **Namen des** privaten Endpunkts ein.
+6. Führen Sie **im Abschnitt** Ressource die folgende Auswahl aus:
+   - Ressourcentyp - Microsoft.DBforMySQL/servers
+   - Ressource - MySQL-Datenbank, die im obigen Abschnitt erstellt wurde
+   - Ziel-Sub-Ressource - mysqlServer.
+7. Wählen Sie im Abschnitt **Netzwerk** das **virtuelle Netzwerk** und das **Subnetz** aus, in dem die SAP BusinessObjects BI-Anwendung bereitgestellt wird.
+   >[!NOTE]
+   >Wenn für das Subnetz eine Netzwerksicherheitsgruppe (NSG) aktiviert ist, wird diese nur für private Endpunkte in diesem Subnetz deaktiviert. Für andere Ressourcen im Subnetz wird die NSG weiterhin durchgesetzt.
+8. Übernehmen Sie die **Standardeinstellung (Ja)** für **In private DNS-Zone integrieren**.
+9.  Wählen Sie in der Dropdownliste Ihre **private DNS-Zone** aus.
+10. Wählen **Sie Überprüfen+Erstellen** aus, und erstellen Sie einen privaten Endpunkt.
+
+Weitere Informationen finden Sie unter [Privater Link für Azure Database for MySQL](../../../mysql/concepts-data-access-security-private-link.md).
 
 ### <a name="create-cms-and-audit-database"></a>Erstellen der CMS- und Überwachungsdatenbank
 
@@ -317,7 +333,7 @@ Der erstellte Server wird standardmäßig durch eine Firewall geschützt und ist
    # auditbl1 is the database name of Audit database. You can provide the name you want for CMS database.
    CREATE SCHEMA `auditbl1` DEFAULT CHARACTER SET utf8;
    ```
-   
+
 4. Erstellen Sie ein Benutzerkonto, um eine Verbindung mit dem Schema herzustellen
 
    ```sql
@@ -398,9 +414,9 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 **[A]** : Der Schritt gilt für alle Hosts.
 
-1. **[A]** Basierend auf der Variante von Linux (SLES oder RHEL) müssen Sie Kernelparameter festlegen und erforderliche Bibliotheken installieren. Weitere Informationen finden Sie im Abschnitt **Systemanforderungen** unter [Business Intelligence-Plattform: Installationsleitfaden für Unix](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US).
+1. **[A]** Basierend auf der Variante von Linux (SLES oder RHEL) müssen Sie Kernelparameter festlegen und erforderliche Bibliotheken installieren. Weitere Informationen finden Sie im Abschnitt **Systemanforderungen** unter [Business Intelligence-Plattform: Installationsleitfaden für Unix](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3).
 
-2. **[A]** Stellen Sie sicher, dass die Zeitzone auf Ihrem Computer ordnungsgemäß eingestellt ist. Weitere Informationen finden Sie im Abschnitt [Weitere Unix- und Linux-Anforderungen](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html) im Installationsleitfaden.
+2. **[A]** Stellen Sie sicher, dass die Zeitzone auf Ihrem Computer ordnungsgemäß eingestellt ist. Weitere Informationen finden Sie im Abschnitt [Weitere Unix- und Linux-Anforderungen](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/46b143336e041014910aba7db0e91070.html) im Installationsleitfaden.
 
 3. **[A]** Erstellen Sie ein Benutzerkonto (**bl1** adm) und eine Benutzergruppe (sapsys), unter denen die Hintergrundprozesse der Software ausgeführt werden können. Verwenden Sie dieses Konto, um die Installation und die Software auszuführen. Das Konto erfordert keine Stammberechtigungen.
 
@@ -502,6 +518,24 @@ select version();
 
 ## <a name="post-installation"></a>Nach der Installation
 
+Nach Installatieren der SAP BOBI-Platform mit mehreren Instanzen müssen zusätzliche Schritte nach der Konfiguration ausgeführt werden, um die Hochverfügbarkeit von Anwendungen zu unterstützen.
+
+### <a name="configuring-cluster-name"></a>Konfigurieren des Clusternamens
+
+Bei der Bereitstellung der SAP BOBI-Platform mit mehreren Instanzen sollten Sie mehrere CMS-Server gemeinsam in einem Cluster ausführen. Ein Cluster besteht aus zwei oder mehr CMS-Servern, die mit einer gemeinsamen CMS-Systemdatenbank zusammenarbeiten. Wenn ein Knoten ausfällt, der auf CMS ausgeführt wird, bedient ein Knoten mit einem anderen CMS weiterhin BI-Plattformanforderungen. Standardmäßig gibt ein Clustername auf der SAP BOBI-Plattform den Hostnamen des ersten CMS an, das Sie installieren.
+
+Um den Clusternamen unter Lux zu konfigurieren, befolgen Sie die Anweisungen im [SAP Business Intelligence Platform Administrator Guide (Administratorhandbuch für die SAP Business Intelligence-Plattform)](https://help.sap.com/viewer/2e167338c1b24da9b2a94e68efd79c42/4.3). Befolgen Sie nach dem Konfigurieren des Clusternamens den SAP-Hinweis [1660440](https://launchpad.support.sap.com/#/notes/1660440), um den Standardsystemeintrag auf der CMC- oder BI Launchpad-Anmeldeseite festzulegen.
+
+### <a name="configure-input-and-output-filestore-location-to-azure-netapp-files"></a>Konfigurieren Sie den Speicherort der Eingangs- und Ausgangsdateien für Azure NetApp-Dateien
+
+Filestore bezieht sich auf die Datenträgerverzeichnisse, in denen sich die eigentlichen SAP BusinessObjects-Dateien befinden. Der Standardspeicherort des Dateirepositoryservers für die SAP BOBI-Plattform befindet sich im lokalen Installationsverzeichnis. Bei der Bereitstellung mit mehreren Instanzen ist es wichtig, den Dateispeicher in einem freigegebenen Speicher wie Azure NetApp Files einzurichten, damit er von allen Servern der Speicherebene zugegriffen werden kann.
+
+1. Falls nicht erstellt, folgen Sie den Anweisungen im obigen Abschnitt > **Bereitstellung von Azure NetApp-Dateien**, um NFS-Volumes in Azure NetApp Dateien zu erstellen.
+
+2. Stellen Sie das NFS-Volumen ein, wie im obigen Abschnitt beschrieben > **Azure NetApp Files-Volumen einstellen**
+
+3. Befolgen Sie den SAP-Hinweis [2512660](https://launchpad.support.sap.com/#/notes/0002512660), um den Pfad des Dateirepositorys (Eingabe und Ausgabe) zu ändern.
+
 ### <a name="tomcat-clustering---session-replication"></a>Tomcat-Clustering: Sitzungsreplikation
 
 Tomcat unterstützt das Clustering von mindestens zwei Anwendungsservern für Sitzungsreplikation und Failover. SAP BOBI-Plattformsitzungen sind serialisiert, eine Benutzersitzung kann reibungslos ein Failover auf eine andere Instanz von Tomcat ausführen, selbst wenn ein Anwendungsserver ausfällt.
@@ -514,31 +548,40 @@ Im SAP-Hinweis [2808640](https://launchpad.support.sap.com/#/notes/2808640) werd
 
 Bei der Bereitstellung von SAP BOBI mit mehreren Instanzen werden Java-Webanwendungsserver (Webebene) auf zwei oder mehr Hosts ausgeführt. Um die Benutzerauslastung gleichmäßig auf die Webserver zu verteilen, können Sie einen Lastenausgleich zwischen Endbenutzern und Webservern verwenden. In Azure können Sie entweder Azure Load Balancer oder Azure Application Gateway verwenden, um den Datenverkehr zu Ihren Webanwendungsservern zu verwalten. Einzelheiten zum jeweiligen Angebot werden im folgenden Abschnitt erläutert.
 
-#### <a name="azure-load-balancer-network-based-load-balancer"></a>Azure Load Balancer (netzwerkbasierter Lastenausgleich)
+1. [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) ist ein Lastenausgleich mit hoher Leistung und Layer 4-Latenz (TCP, UDP), mit dem der Datenverkehr auf fehlerfreie virtuelle Computer verteilt wird. Der Integritätstest eines Lastenausgleichs überwacht einen bestimmten Port auf jedem virtuellen Computer und verteilt Datenverkehr nur an einen betriebsbereiten virtuellen Computer. Sie können entweder einen öffentlichen Lastenausgleich oder einen internen Lastenausgleich wählen, je nachdem, ob die SAP BI-Plattform über das Internet zugänglich sein soll. Es ist zonenredundant und gewährleistet Hochverfügbarkeit über mehrere Verfügbarkeitszonen hinweg.
 
-[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) ist ein Lastenausgleich mit hoher Leistung und Layer 4-Latenz (TCP, UDP), mit dem der Datenverkehr auf fehlerfreie virtuelle Computer verteilt wird. Der Integritätstest eines Lastenausgleichs überwacht einen bestimmten Port auf jedem virtuellen Computer und verteilt Datenverkehr nur an einen betriebsbereiten virtuellen Computer. Sie können entweder einen öffentlichen Lastenausgleich oder einen internen Lastenausgleich wählen, je nachdem, ob die SAP BI-Plattform über das Internet zugänglich sein soll. Es ist zonenredundant und gewährleistet Hochverfügbarkeit über mehrere Verfügbarkeitszonen hinweg.
+   Weitere Informationen finden Sie im Abschnitt zum internen Lastenausgleich in der nachfolgenden Abbildung, in der der Webanwendungsserver an Port 8080 ausgeführt wird, dem Standard-HTTP-Port von Tomcat, der vom Integritätstest überwacht wird. Somit wird jede von Endbenutzern eingehende Anforderung an die Webanwendungsserver (azusbosl1 oder azusbosl2) im Back-End-Pool umgeleitet. Der Lastenausgleich unterstützt keine TLS/SSL-Terminierung (auch bekannt als TLS/SSL-Abladung). Wenn Sie Azure Load Balancer verwenden, um Datenverkehr auf Webserver zu verteilen, empfehlen wir die Verwendung von Load Balancer Standard.
 
-Weitere Informationen finden Sie im Abschnitt zum internen Lastenausgleich in der nachfolgenden Abbildung, in der der Webanwendungsserver an Port 8080 ausgeführt wird, dem Standard-HTTP-Port von Tomcat, der vom Integritätstest überwacht wird. Somit wird jede von Endbenutzern eingehende Anforderung an die Webanwendungsserver (azusbosl1 oder azusbosl2) im Back-End-Pool umgeleitet. Der Lastenausgleich unterstützt keine TLS/SSL-Terminierung (auch bekannt als TLS/SSL-Abladung). Wenn Sie Azure Load Balancer verwenden, um Datenverkehr auf Webserver zu verteilen, empfehlen wir die Verwendung von Load Balancer Standard.
+   > [!NOTE]
+   > Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](high-availability-guide-standard-load-balancer-outbound-connections.md) (Konnektivität mit öffentlichen Endpunkten für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit Hochverfügbarkeit).
 
-> [!NOTE]
-> Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](high-availability-guide-standard-load-balancer-outbound-connections.md) (Konnektivität mit öffentlichen Endpunkten für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit Hochverfügbarkeit).
+   ![Azure Load Balancer zum Ausgleichen des Datenverkehrs über Webserver](media/businessobjects-deployment-guide/businessobjects-deployment-load-balancer.png)
 
-![Azure Load Balancer zum Ausgleichen des Datenverkehrs über Webserver](media/businessobjects-deployment-guide/businessobjects-deployment-load-balancer.png)
+2. [Azure Application Gateway (AGW)](../../../application-gateway/overview.md) stellt Application Delivery Controller (ADC) als Dienst zur Verfügung, mit dessen Hilfe Anwendungen den Benutzerdatenverkehr zu einem oder mehreren Webanwendungsservern leiten können. Es bietet für Ihre Anwendungen verschiedene Layer 7-Lastenausgleichsfunktionen wie TLS/SSL-Abladung, Web Application Firewall (WAF), cookiebasierte Sitzungsaffinität und andere.
 
-#### <a name="azure-application-gateway-web-application-load-balancer"></a>Azure Application Gateway (Lastenausgleich für Webanwendungen)
+   Auf der SAP BI-Plattform leitet das Anwendungsgateway den Webdatenverkehr von Anwendungen an die angegebenen Ressourcen in einem Back-End-Pool (azusbosl1 oder azusbos2) weiter. Sie weisen dem Port einen Listener zu, erstellen Regeln und fügen Ressourcen zu einem Back-End-Pool hinzu. In der folgenden Abbildung fungiert ein Anwendungsgateway mit privater Front-End-IP-Adresse (31.10.3.20) als Einstiegspunkt für die Benutzer, behandelt eingehende TLS/SSL-Verbindungen (HTTPS – TCP/443), entschlüsselt TLS/SSL und leitet die unverschlüsselte Anforderung (HTTP – TCP/8080) an die Server im Back-End-Pool weiter. Mit dem integrierten TLS/SSL-Terminierungsfeature brauchen wir nur ein TLS/SSL-Zertifikat am Anwendungsgateway zu erstellen, was den Betrieb vereinfacht.
 
-[Azure Application Gateway (AGW)](../../../application-gateway/overview.md) stellt Application Delivery Controller (ADC) als Dienst zur Verfügung, mit dessen Hilfe Anwendungen den Benutzerdatenverkehr zu einem oder mehreren Webanwendungsservern leiten können. Es bietet für Ihre Anwendungen verschiedene Layer 7-Lastenausgleichsfunktionen wie TLS/SSL-Abladung, Web Application Firewall (WAF), cookiebasierte Sitzungsaffinität und andere.
+   ![Application Gateway zum Ausgleichen des Datenverkehrs über Webserver](media/businessobjects-deployment-guide/businessobjects-deployment-application-gateway.png)
 
-Auf der SAP BI-Plattform leitet das Anwendungsgateway den Webdatenverkehr von Anwendungen an die angegebenen Ressourcen in einem Back-End-Pool (azusbosl1 oder azusbos2) weiter. Sie weisen dem Port einen Listener zu, erstellen Regeln und fügen Ressourcen zu einem Back-End-Pool hinzu. In der folgenden Abbildung fungiert ein Anwendungsgateway mit privater Front-End-IP-Adresse (31.10.3.20) als Einstiegspunkt für die Benutzer, behandelt eingehende TLS/SSL-Verbindungen (HTTPS – TCP/443), entschlüsselt TLS/SSL und leitet die unverschlüsselte Anforderung (HTTP – TCP/8080) an die Server im Back-End-Pool weiter. Mit dem integrierten TLS/SSL-Terminierungsfeature brauchen wir nur ein TLS/SSL-Zertifikat am Anwendungsgateway zu erstellen, was den Betrieb vereinfacht.
+   Informationen zum Konfigurieren von Application Gateway für SAP BOBI-Webserver finden Sie unter [Lastenausgleich für SAP BOBI-Webserver mithilfe von Azure Application Gateway](https://blogs.sap.com/2020/09/17/sap-on-azure-load-balancing-web-application-servers-for-sap-bobi-using-azure-application-gateway/) im SAP-Blog.
 
-![Application Gateway zum Ausgleichen des Datenverkehrs über Webserver](media/businessobjects-deployment-guide/businessobjects-deployment-application-gateway.png)
+   > [!NOTE]
+   > Es wird empfohlen, Azure Application Gateway für den Lastenausgleich des Datenverkehrs zum Webserver zu verwenden, sodass es Features wie SSL-Abladung, Zentralisieren der SSL-Verwaltung zur Verringerung des Aufwands für die Ver- und Entschlüsselung auf dem Server, Roundrobin-Algorithmus zur Verteilung des Datenverkehrs, WAF-Funktionen (Web Application Firewall), Hochverfügbarkeit usw. bietet.
 
-Informationen zum Konfigurieren von Application Gateway für SAP BOBI-Webserver finden Sie unter [Lastenausgleich für SAP BOBI-Webserver mithilfe von Azure Application Gateway](https://blogs.sap.com/2020/09/17/sap-on-azure-load-balancing-web-application-servers-for-sap-bobi-using-azure-application-gateway/) im SAP-Blog.
+## <a name="sap-businessobjects-bi-platform-reliability-on-azure"></a>Zuverlässigkeit der SAP BusinessObjects BI-Plattform in Azure
 
-> [!NOTE]
-> Es wird empfohlen, Azure Application Gateway für den Lastenausgleich des Datenverkehrs zum Webserver zu verwenden, sodass es Features wie SSL-Abladung, Zentralisieren der SSL-Verwaltung zur Verringerung des Aufwands für die Ver- und Entschlüsselung auf dem Server, Roundrobin-Algorithmus zur Verteilung des Datenverkehrs, WAF-Funktionen (Web Application Firewall), Hochverfügbarkeit usw. bietet.
+Die SAP BusinessObjects BI-Plattform umfasst unterschiedliche Ebenen, die für bestimmte Aufgaben und Vorgänge optimiert sind. Wenn eine Komponente einer Ebene nicht mehr verfügbar ist, kann auf die SAP BOBI-Anwendung entweder nicht mehr zugegriffen werden oder bestimmte Funktionen der Anwendung funktionieren nicht mehr. Es muss daher sichergestellt werden, dass jede Ebene so ausgelegt ist, dass sie zuverlässig ist, um die Anwendung ohne Unterbrechung beim Geschäftsbetrieb betriebsbereit zu halten.
 
-### <a name="sap-businessobjects-bi-platform---back-up-and-restore"></a>SAP BusinessObjects BI-Plattform: Sicherung und Wiederherstellung
+In diesem Leitfaden wird untersucht, wie native Funktionen in Azure kombiniert mit der SAP BOBI-Plattformkonfiguration die Verfügbarkeit der SAP-Bereitstellung verbessert. In diesem Abschnitt werden die folgenden Optionen für die SAP BOBI-Plattformzuverlässigkeit bei Azure behandelt:
+
+- „**Sichern und Wiederherstellen**“ ist ein Prozess, bei dem regelmäßig Kopien von Daten und Anwendungen an einem separaten Speicherort erstellt werden. Somit kann bei Verlust oder Beschädigung der ursprünglichen Daten oder Anwendungen der vorherige Zustand wiederhergestellt werden.
+
+- **Hochverfügbarkeit:** Eine Plattform mit Hochverfügbarkeit verfügt innerhalb der Azure-Region von jeder Komponente über mindestens zwei Kopien, damit die Anwendung betriebsbereit bleibt, wenn einer der Server nicht mehr verfügbar ist.
+- **Notfallwiederherstellung:** Es ist ein Prozess zur Wiederherstellung der Azure-Funktionalität Ihrer Anwendung, wenn es in einer Notfallsituation zu einem Ausfall kommt, z. B. wenn die gesamte Azure-Region aufgrund einer Naturkatastrophe nicht mehr verfügbar ist.
+
+Die Implementierung dieser Lösung variiert je nach Art des Systemsetups in Azure. Daher müssen Kunden ihre Lösung für Sichern und Wiederherstellen, Hochverfügbarkeit und Notfallwiederherstellung an ihre Geschäftsanforderungen anpassen.
+
+## <a name="back-up-and-restore"></a>Sichern und Wiederherstellen
 
 „Sicherung und Wiederherstellung“ ist ein Prozess, bei dem regelmäßig Kopien von Daten und Anwendungen an einem separaten Speicherort erstellt werden. Somit kann bei Verlust oder Beschädigung der ursprünglichen Daten oder Anwendungen der vorherige Zustand wiederhergestellt werden. Es ist auch ein wesentlicher Bestandteil jeder Strategie zur Notfallwiederherstellung in Unternehmen.
 
@@ -550,7 +593,7 @@ Identifizieren Sie zur Entwicklung einer umfassenden Sicherungs- und Wiederherst
 
 Im folgenden Abschnitt wird beschrieben, wie die Sicherungs- und Wiederherstellungsstrategie für die einzelnen Komponenten auf der SAP BOBI-Plattform implementiert wird.
 
-#### <a name="backup--restore-for-sap-bobi-installation-directory"></a>Sicherung und Wiederherstellung für das SAP BOBI-Installationsverzeichnis
+### <a name="backup--restore-for-sap-bobi-installation-directory"></a>Sicherung und Wiederherstellung für das SAP BOBI-Installationsverzeichnis
 
 In Azure ist die einfachste Möglichkeit zur Sicherung von Anwendungsservern und allen angeschlossenen Datenträgern die Verwendung des [Azure Backup](../../../backup/backup-overview.md)-Diensts. Er bietet unabhängige und isolierte Sicherungen zum Schutz vor dem versehentlichen Löschen der Daten auf Ihren VMs. Sicherungen werden in einem Recovery Services-Tresor mit integrierter Verwaltung von Wiederherstellungspunkten gespeichert. Konfiguration und Skalierung sind unkompliziert. Die Sicherungen sind optimiert und können bei Bedarf problemlos wiederhergestellt werden.
 
@@ -558,30 +601,21 @@ Im Rahmen des Sicherungsvorgangs wird eine Momentaufnahme erstellt, und die Date
 
 #### <a name="backup--restore-for-file-repository-server"></a>Sicherung und Wiederherstellung für File Repository Server
 
-Für **Azure NetApp Files** können Sie eine On-Demand-Momentaufnahme erstellen und mithilfe von Momentaufnahmerichtlinien eine automatische Momentaufnahme planen. Momentaufnahmekopien stellen eine Zeitpunktkopie Ihres ANF-Volumes dar. Weitere Informationen finden Sie unter [Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md).
+Basierend auf Ihrem SAP BOBI Deployment auf Linux, kann der Filestore der SAP BOBI Plattform Azure NetApp Files sein. Wählen Sie basierend auf dem Speicher, den Sie für den Dateispeicher verwenden, eine der folgenden Optionen zum Sichern und Wiederherstellen aus.
 
-Die **Azure Files**-Sicherung ist in den nativen [Azure Backup](../../../backup/backup-overview.md)-Dienst integriert, der die Sicherungs- und Wiederherstellungsfunktion zusammen mit der Sicherung von VMs zentralisiert und die Abläufe vereinfacht. Weitere Informationen finden Sie unter [Sichern von Azure-Dateifreigaben](../../../backup/azure-file-share-backup-overview.md) und [Häufig gestellte Fragen zu Azure Files](../../../backup/backup-azure-files-faq.yml).
+- **Azure NetApp Files** können Sie eine On-Demand-Momentaufnahme erstellen und mithilfe von Momentaufnahmerichtlinien eine automatische Momentaufnahme planen. Momentaufnahmekopien stellen eine Zeitpunktkopie Ihres ANF-Volumes dar. Weitere Informationen finden Sie unter [Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md).
 
-#### <a name="backup--restore-for-cms-database"></a>Sicherung und Wiederherstellung für CMS-Datenbank
+- Wenn Sie einen separaten NFS-Server erstellt haben, stellen Sie sicher, dass Sie die Backup- und Restore-Strategie für die gleiche implementieren.
 
-Azure Database for MySQL bietet DBaaS in Azure, wodurch automatisch Serversicherungen erstellt und in einem vom Benutzer konfigurierten lokal redundanten oder georedundanten Speicher gespeichert werden. Azure Database for MySQL nimmt Sicherungen der Datendateien und der Transaktionsprotokolle vor. Abhängig von der unterstützten maximalen Speichergröße werden entweder vollständige oder differenzielle Sicherungen (Server mit maximal 4 TB Speicher) oder Sicherungsmomentaufnahmen (Server mit bis zu 16 TB Speicher) angelegt. Diese Sicherungen ermöglichen es Ihnen, einen Server zu jedem Zeitpunkt innerhalb des von Ihnen konfigurierten Aufbewahrungszeitraums für Sicherungen wiederherzustellen. Der standardmäßige Aufbewahrungszeitraum für Sicherungen beträgt sieben Tage, den Sie [optional auf drei Tage festlegen können](../../../mysql/howto-restore-server-portal.md#set-backup-configuration). Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
+#### <a name="backup--restore-for-cms-and-audit-database"></a>Sichern und Wiederherstellen für CMS-Datenbank
 
-Diese Sicherungsdateien sind nicht für den Benutzer verfügbar und können nicht exportiert werden. Sie können nur für Wiederherstellungsvorgänge in Azure Database for MySQL verwendet werden. Zum Kopieren einer Datenbank können Sie [mysqldump](../../../mysql/concepts-migrate-dump-restore.md) verwenden. Weitere Informationen finden Sie unter [Sicherung und Wiederherstellung in Azure Database for MySQL](../../../mysql/concepts-backup.md).
+Für die SAP BOBI-Plattform, die auf virtuellen Lux-Computern ausgeführt wird, können CMS und Überwachungsdatenbank auf allen unterstützten Datenbanken ausgeführt werden, wie in der [Unterstützungsmatrix](businessobjects-deployment-guide.md#support-matrix) des SAP BusinessObjects BI-Plattformplanungs- und -Implementierungshandbuchs in Azure beschrieben. Daher ist es wichtig, dass Sie die Sicherungs- und Wiederherstellungsstrategie basierend auf der Datenbank übernehmen, die für CMS und den Überwachungsdatenspeicher verwendet wird.
 
-Für Datenbanken, die auf virtuellen Computern installiert sind, können Sie standardmäßige Sicherungstools oder [Azure Backup](../../../backup/sap-hana-db-about.md) für die HANA-Datenbank verwenden. Wenn die Azure-Dienste und -Tools nicht Ihren Anforderungen entsprechen, können Sie zudem andere Sicherungstools oder Skripts verwenden, um Datenträgersicherungen zu erstellen.
+1. Azure Database for MySQL bietet DBaaS in Azure, wodurch automatisch Serversicherungen erstellt und in einem vom Benutzer konfigurierten lokal redundanten oder georedundanten Speicher gespeichert werden. Azure Database for MySQL nimmt Sicherungen der Datendateien und der Transaktionsprotokolle vor. Abhängig von der unterstützten maximalen Speichergröße werden entweder vollständige oder differenzielle Sicherungen (Server mit maximal 4 TB Speicher) oder Sicherungsmomentaufnahmen (Server mit bis zu 16 TB Speicher) angelegt. Diese Sicherungen ermöglichen es Ihnen, einen Server zu jedem Zeitpunkt innerhalb des von Ihnen konfigurierten Aufbewahrungszeitraums für Sicherungen wiederherzustellen. Der standardmäßige Aufbewahrungszeitraum für Sicherungen beträgt sieben Tage, den Sie [optional auf drei Tage festlegen können](../../../mysql/howto-restore-server-portal.md#set-backup-configuration). Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet. Diese Sicherungsdateien sind nicht für den Benutzer verfügbar und können nicht exportiert werden. Sie können nur für Wiederherstellungsvorgänge in Azure Database for MySQL verwendet werden. Zum Kopieren einer Datenbank können Sie [mysqldump](../../../mysql/concepts-migrate-dump-restore.md) verwenden. Weitere Informationen finden Sie unter [Sicherung und Wiederherstellung in Azure Database for MySQL](../../../mysql/concepts-backup.md).
 
-## <a name="sap-businessobjects-bi-platform-reliability"></a>Zuverlässigkeit der SAP BusinessObjects BI-Plattform
+2. Für Datenbanken, die auf einem virtuellen Azure-Computer installiert sind, können Sie Standardsicherungstools oder [Azure Backup](../../../backup/sap-hana-db-about.md) Dienst für unterstützte Datenbanken verwenden. Wenn die Azure-Dienste und -Tools Ihre Anforderungen nicht erfüllen, können Sie auch unterstützte Sicherungstools von Drittanbietern verwenden, die einen Agent für die Sicherung und Wiederherstellung aller SAP BOBI-Plattformkomponenten bereitstellen.
 
-Die SAP BusinessObjects BI-Plattform umfasst unterschiedliche Ebenen, die für bestimmte Aufgaben und Vorgänge optimiert sind. Wenn eine Komponente einer Ebene nicht mehr verfügbar ist, kann auf die SAP BOBI-Anwendung entweder nicht mehr zugegriffen werden oder bestimmte Funktionen der Anwendung funktionieren nicht mehr. Es muss daher sichergestellt werden, dass jede Ebene so ausgelegt ist, dass sie zuverlässig ist, um die Anwendung ohne Unterbrechung beim Geschäftsbetrieb betriebsbereit zu halten.
-
-In diesem Abschnitt werden die folgenden Optionen für die SAP BOBI-Plattform behandelt:
-
-- **Hochverfügbarkeit:** Eine Plattform mit Hochverfügbarkeit verfügt innerhalb der Azure-Region von jeder Komponente über mindestens zwei Kopien, damit die Anwendung betriebsbereit bleibt, wenn einer der Server nicht mehr verfügbar ist.
-- **Notfallwiederherstellung:** Es ist ein Prozess zur Wiederherstellung der Azure-Funktionalität Ihrer Anwendung, wenn es in einer Notfallsituation zu einem Ausfall kommt, z. B. wenn die gesamte Azure-Region aufgrund einer Naturkatastrophe nicht mehr verfügbar ist.
-
-Die Implementierung dieser Lösung variiert je nach Art des Systemsetups in Azure. Daher müssen Kunden ihre Lösung für Hochverfügbarkeit und Notfallwiederherstellung an ihre Geschäftsanforderungen anpassen.
-
-### <a name="high-availability"></a>Hochverfügbarkeit
+## <a name="high-availability"></a>Hochverfügbarkeit
 
 Hochverfügbarkeit bezieht sich auf eine Reihe von Technologien, die IT-Störungen minimieren kann, indem sie die Geschäftskontinuität von Anwendungen/Diensten durch redundante, fehlertolerante oder durch Failover geschützte Komponenten innerhalb desselben Rechenzentrums bereitstellen. In unserem Fall befindet sich die Rechenzentren in einer Azure-Region. Der Artikel [Architektur und Szenarien für die Hochverfügbarkeit für SAP](sap-high-availability-architecture-scenarios.md) bietet einen ersten Einblick in verschiedene Techniken zur Hochverfügbarkeit und Empfehlungen für Azure für SAP-Anwendungen, die die Anleitungen in diesem Abschnitt ergänzen.
 
@@ -592,7 +626,7 @@ Basierend auf dem Dimensionierungsergebnis der SAP BOBI-Plattform müssen Sie d
 
 Im folgenden Abschnitt wird beschrieben, wie Sie für jede Komponente der SAP BOBI-Plattform Hochverfügbarkeit erreichen können.
 
-#### <a name="high-availability-for-application-servers"></a>Hochverfügbarkeit für Anwendungsserver
+### <a name="high-availability-for-application-servers"></a>Hochverfügbarkeit für Anwendungsserver
 
 Für BI- und Webanwendungsserver (ob getrennt oder zusammen installiert), ist keine bestimmte Lösung für Hochverfügbarkeit erforderlich. Sie können Hochverfügbarkeit durch Redundanz erreichen, d. h. durch die Konfiguration mehrerer Instanzen von BI- und Webservern in verschiedenen Azure Virtual Machines-Instanzen.
 
@@ -605,35 +639,38 @@ Um die Auswirkungen von Downtime aufgrund eines oder mehrerer Ereignisse zu redu
 
 Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../availability.md).
 
-#### <a name="high-availability-for-cms-database"></a>Hochverfügbarkeit für die CMS-Datenbank
+>[!Important]
+>Die Konzepte von Azure-Verfügbarkeitszonen und Azure-Verfügbarkeitsgruppen schließen sich gegenseitig aus. Dies bedeutet, dass Sie entweder zwei oder mehrere VMs in einer bestimmten Verfügbarkeitszone oder einer Azure-Verfügbarkeitsgruppe bereitstellen können, jedoch nicht in beiden.
 
-Wenn Sie den Azure-DBaaS-Dienst (Database-as-a-Service) für die CMS-Datenbank verwenden, wird standardmäßig ein Hochverfügbarkeitsframework bereitgestellt. Sie müssen nur die Region und den Dienst auswählen, der Funktionen für Hochverfügbarkeit, Redundanz und Resilienz bietet, ohne dass Sie zusätzliche Komponenten konfigurieren müssen. Weitere Informationen zur Vereinbarung zum Servicelevel des unterstützten DBaaS-Angebots in Azure finden Sie unter [Hochverfügbarkeit in Azure Database for MySQL](../../../mysql/concepts-high-availability.md) und [Hochverfügbarkeit für Azure SQL-Datenbank](../../../azure-sql/database/high-availability-sla.md).
+### <a name="high-availability-for-cms-database"></a>Hochverfügbarkeit für die CMS-Datenbank
+
+Wenn Sie den Azure-DBaaS-Dienst (Database-as-a-Service) für die CMS-Datenbank und Überwachungsdatenbank verwenden, wird standardmäßig ein lokal redundantes Hochverfügbarkeitsframework bereitgestellt. Sie müssen nur die Region und den Dienst auswählen, der Funktionen für Hochverfügbarkeit, Redundanz und Resilienz bietet, ohne dass Sie zusätzliche Komponenten konfigurieren müssen. Wenn die Bereitstellungsstrategie für die SAP BOBI-Plattform per Verfügbarkeitszone erfolgt, müssen Sie sicherstellen, dass Sie Zonenredundanz für Ihre CMS- und Überwachungsdatenbanken erzielen. Weitere Informationen zum Hochverfügbarkeitsangebot für unterstützte DBaaS-Angebote in Azure finden Sie unter [Hochverfügbarkeit in Azure Database for MySQL](../../../mysql/concepts-high-availability.md) und [Hochverfügbarkeit für Azure SQL Database](../../../azure-sql/database/high-availability-sla.md)
 
 Weitere Informationen zur Bereitstellung von DBMS für CMS-Datenbanken finden Sie in den [DBMS-Bereitstellungshandbüchern für SAP-Workloads](dbms_guide_general.md), die einen Einblick in die verschiedenen DBMS-Bereitstellungen und ihren Ansatz zum Erzielen von Hochverfügbarkeit bietet.
 
-#### <a name="high-availability-for-file-repository-server"></a>Hochverfügbarkeit für File Repository Server
+### <a name="high-availability-for-filestore"></a>Hochverfügbarkeit für Filestore
 
-File Repository Server (FRS) bezieht sich auf die Datenträgerverzeichnisse, in denen Inhalte wie Berichte, Universen und Verbindungen gespeichert werden. Es wird von allen Anwendungsservern dieses Systems gemeinsam genutzt. Daher müssen Sie sicherstellen, dass es über Hochverfügbarkeit verfügt.
+Filestore bezieht sich auf die Datenträgerverzeichnisse, in denen Inhalte wie Berichte, Universen und Verbindungen gespeichert werden. Es wird von allen Anwendungsservern dieses Systems gemeinsam genutzt. Daher müssen Sie nur sicherstellen, dass sie zusammen mit anderen SAP BOBI-Plattformkomponenten hoch verfügbar ist.
 
-In Azure können Sie für die Dateifreigabe entweder [Azure Files Premium](../../../storage/files/storage-files-introduction.md) oder [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) auswählen, die für Hochverfügbarkeit und Langlebigkeit konzipiert sind. Weitere Informationen finden Sie im Abschnitt [Redundanz](../../../storage/files/storage-files-planning.md#redundancy) für Azure Files.
+Für die SAP BOBI-Plattform, die auf Linux läuft, können Sie [Azure Premium Files](../../../storage/files/storage-files-introduction.md) oder [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) für die Dateifreigabe wählen, die auf hohe Verfügbarkeit und hohe Haltbarkeit ausgelegt sind. Weitere Informationen finden Sie im Abschnitt [Redundanz](../../../storage/files/storage-files-planning.md#redundancy) für Azure Files.
 
-> [!NOTE]
-> Das SMB-Protokoll für Azure Files ist allgemein verfügbar, aber die Unterstützung des NFS-Protokolls für Azure Files befindet sich derzeit in der Vorschauversion. Weitere Informationen finden Sie unter [Unterstützung von NFS 4.1 für Azure Files befindet sich jetzt in der Vorschau](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
+> [!Important]
+> Das SMB-Protokoll für Azure Files ist allgemein verfügbar, aber die Unterstützung des NFS-Protokolls für Azure Files befindet sich derzeit in der Vorschauversion. Weitere Informationen finden Sie unter [Unterstützung von NFS 4.1 für Azure Files befindet sich jetzt in der Vorschau](https://azure.microsoft.com/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
 
-Da dieser Dateifreigabedienst nicht in allen Regionen verfügbar ist, stellen Sie sicher, dass Sie auf der Website [Verfügbare Produkte nach Region](https://azure.microsoft.com/en-us/global-infrastructure/services/) nach aktuellen Informationen suchen. Wenn der Dienst in Ihrer Region nicht verfügbar ist, können Sie einen NFS-Server erstellen, über den Sie das Dateisystem für die SAP BOBI-Anwendung freigeben können. Sie müssen aber auch seine Hochverfügbarkeit berücksichtigen.
+Da dieser Dateifreigabedienst nicht in allen Regionen verfügbar ist, stellen Sie sicher, dass Sie auf der Website [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/) nach aktuellen Informationen suchen. Wenn der Dienst in Ihrer Region nicht verfügbar ist, können Sie einen NFS-Server erstellen, über den Sie das Dateisystem für die SAP BOBI-Anwendung freigeben können. Sie müssen aber auch seine Hochverfügbarkeit berücksichtigen.
 
-#### <a name="high-availability-for-load-balancer"></a>Hochverfügbarkeit für den Lastenausgleich
+### <a name="high-availability-for-load-balancer"></a>Hochverfügbarkeit für den Lastenausgleich
 
 Für die Verteilung des Datenverkehrs über Webserver können Sie entweder Azure Load Balancer oder Azure Application Gateway verwenden. Die Redundanz für einen der beiden Lastenausgleiche kann auf der Grundlage der SKU erreicht werden, die Sie für die Bereitstellung auswählen.
 
 - Für Azure Load Balancer kann Redundanz erreicht werden, indem das Front-End von Load Balancer Standard als zonenredundant konfiguriert wird. Weitere Informationen finden Sie unter [Load Balancer Standard und Verfügbarkeitszonen](../../../load-balancer/load-balancer-standard-availability-zones.md).
 - Für Application Gateway kann Hochverfügbarkeit basierend auf der Art der während der Bereitstellung ausgewählten Ebene erreicht werden.
-  - Die v1-SKU unterstützt Szenarien mit Hochverfügbarkeit, wenn Sie mindestens zwei Instanzen bereitgestellt haben. Azure verteilt diese Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Mit dieser SKU kann die Redundanz in der Zone erreicht werden.
-  - Die v2-SKU stellt automatisch sicher, dass neue Instanzen über Fehlerdomänen und Updatedomänen hinweg verteilt werden. Haben Sie Zonenredundanz gewählt, werden die neuesten Instanzen darüber hinaus über Verfügbarkeitszonen hinweg verteilt, um Resilienz gegen Zonenausfälle zu erreichen. Ausführlichere Informationen finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway v2](../../../application-gateway/application-gateway-autoscaling-zone-redundant.md).
+   -  Die v1-SKU unterstützt Szenarien mit Hochverfügbarkeit, wenn Sie mindestens zwei Instanzen bereitgestellt haben. Azure verteilt diese Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Mit dieser SKU kann die Redundanz in der Zone erreicht werden.
+   -  Die v2-SKU stellt automatisch sicher, dass neue Instanzen über Fehlerdomänen und Updatedomänen hinweg verteilt werden. Haben Sie Zonenredundanz gewählt, werden die neuesten Instanzen darüber hinaus über Verfügbarkeitszonen hinweg verteilt, um Resilienz gegen Zonenausfälle zu erreichen. Ausführlichere Informationen finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway v2](../../../application-gateway/application-gateway-autoscaling-zone-redundant.md).
 
-#### <a name="reference-high-availability-architecture-for-sap-businessobjects-bi-platform"></a>Referenzarchitektur für Hochverfügbarkeit für die SAP BusinessObjects BI-Plattform
+### <a name="reference-high-availability-architecture-for-sap-businessobjects-bi-platform"></a>Referenzarchitektur für Hochverfügbarkeit für die SAP BusinessObjects BI-Plattform
 
-Die folgende Referenzarchitektur beschreibt die Einrichtung der SAP BOBI-Plattform mithilfe von Verfügbarkeitsgruppen, die für virtuelle Computer Redundanz und Verfügbarkeit innerhalb der Zone bieten. Die Architektur zeigt die Verwendung verschiedener Azure-Dienste wie Azure Application Gateway, Azure NetApp Files und Azure Database for MySQL für die SAP BOBI-Plattform, die integrierte Redundanz bieten, was die Komplexität der Verwaltung verschiedener Lösungen für Hochverfügbarkeit reduziert.
+Die folgende Referenzarchitektur beschreibt die Einrichtung der SAP BOBI Platform unter Verwendung des Availability Sets auf einem Linux Server. Die Architektur zeigt die Nutzung verschiedener Azure-Dienste wie Azure Application Gateway, Azure NetApp Files (Filestore) und Azure Database for MySQL (CMS- und Audit-Datenbank) für die SAP BOBI Platform, die eine eingebaute Redundanz bietet, die die Komplexität der Verwaltung verschiedener Hochverfügbarkeitslösungen reduziert.
 
 In der folgenden Abbildung erfolgt der Lastenausgleich für den eingehenden Datenverkehr (HTTPS – TCP/443) mithilfe der Azure Application Gateway v1-SKU, die bei der Bereitstellung auf zwei oder mehr Instanzen eine entsprechende Hochverfügbarkeit aufweist. Mehrere Instanzen von Webservern, Verwaltungsservern und Verarbeitungsservern werden auf separaten virtuellen Computern bereitgestellt, um Redundanz zu erreichen, und jede Ebene wird in separaten Verfügbarkeitsgruppen bereitgestellt. Azure NetApp Files verfügt über integrierte Redundanz innerhalb des Rechenzentrums, sodass Ihre ANF-Volumes für File Repository Server hochverfügbar sind. Die CMS-Datenbank wird für Azure Database for MySQL (DBaaS) bereitgestellt, das über eine inhärente Hochverfügbarkeit verfügt. Weitere Informationen finden Sie im Leitfaden [Hochverfügbarkeit in Azure Database for MySQL](../../../mysql/concepts-high-availability.md).
 
@@ -643,33 +680,50 @@ Die obige Architektur bietet einen Einblick, wie die SAP BOBI-Bereitstellung in 
 
 In mehreren Azure-Regionen werden Verfügbarkeitszonen angeboten, was bedeutet, dass sie über eine unabhängige Versorgung mit Energie, Kühlung und Netzwerken verfügen. Dadurch kann der Kunde die Anwendung in zwei oder drei Verfügbarkeitszonen bereitstellen. Für Kunden, die Hochverfügbarkeit über Verfügbarkeitszonen hinweg erreichen möchten, kann die SAP BOBI-Plattform über Verfügbarkeitszonen hinweg bereitgestellt werden, wobei sichergestellt wird, dass jede Komponente in der Anwendung zonenredundant ist.
 
-### <a name="disaster-recovery"></a>Notfallwiederherstellung
+## <a name="disaster-recovery"></a>Notfallwiederherstellung
 
-Die Anleitung in diesem Abschnitt erläutert die Strategie zur Bereitstellung von Schutz für die Notfallwiederherstellung für die SAP BOBI-Plattform. Sie ergänzt das Dokument [Notfallwiederherstellung für SAP](../../../site-recovery/site-recovery-sap.md), das die primären Ressourcen für den gesamten SAP-Ansatz zur Notfallwiederherstellung darstellt.
+Die Anleitung in diesem Abschnitt erläutert die Strategie zur Bereitstellung von Schutz für die Notfallwiederherstellung für die SAP BOBI-Plattform, die auf Linux läuft. Sie ergänzt das Dokument [Notfallwiederherstellung für SAP](../../../site-recovery/site-recovery-sap.md), das die primären Ressourcen für den gesamten SAP-Ansatz zur Notfallwiederherstellung darstellt. Informationen zur SAP BusinessObjects BI-Plattform finden Sie im SAP-Hinweis [2056228](https://launchpad.support.sap.com/#/notes/2056228), in dem die folgenden Methoden zum sicheren Implementieren einer DR-Umgebung beschrieben werden.
 
-#### <a name="reference-disaster-recovery-architecture-for-sap-businessobjects-bi-platform"></a>Referenzarchitektur für Notfallwiederherstellung für die SAP BusinessObjects BI-Plattform
+- Vollständige oder selektive Verwendung der Lebenszyklusverwaltung (LCM) oder des Verbunds zum Promoten bzw. Verteilen des Inhalts aus dem primären System.
+- Regelmäßiges Kopieren der CMS- und FRS-Inhalte.
 
-Diese Referenzarchitektur führt eine Bereitstellung mit mehreren Instanzen der SAP BOBI-Plattform mit redundanten Anwendungsservern aus. Für die Notfallwiederherstellung sollten Sie auf allen Ebenen ein Failover in eine sekundäre Region ausführen. Für jede Ebene wird eine andere Strategie genutzt, um per Notfallwiederherstellung für den erforderlichen Schutz zu sorgen.
+In diesem Leitfaden wird die zweite Option zum Implementieren einer DR-Umgebung erläutert. Es wird keine vollständige Liste aller möglichen Konfigurationsoptionen für die Notfallwiederherstellung behandelt, sondern eine Lösung, die native Azure-Dienste in Kombination mit der SAP BOBI-Plattformkonfiguration bietet.
+
+>[!Important]
+>Die Verfügbarkeit jeder Komponente der SAP BusinessObjects BI-Plattform sollte in die sekundäre Region integriert werden und die gesamte Notfallwiederherstellungsstrategie muss gründlich getestet werden.
+
+### <a name="reference-disaster-recovery-architecture-for-sap-businessobjects-bi-platform"></a>Referenzarchitektur für Notfallwiederherstellung für die SAP BusinessObjects BI-Plattform
+
+Diese Referenzarchitektur führt eine Bereitstellung mit mehreren Instanzen der SAP BOBI-Plattform mit redundanten Anwendungsservern aus. Für die Notfallwiederherstellung sollten Sie ein Fail-Over aller Komponenten der SAP BOBI-Plattform in eine sekundäre Region unternehmen. In diesem Abschnitt erstellen Sie eine private Verknüpfung, die es virtuellen SAP BOBI-Maschinen ermöglicht, sich über einen privaten Endpunkt mit dem Azure Database for MySQL-Dienst zu verbinden. Die Strategie zum Erreichen des Notfallwiederherstellungsschutzes für jede Komponente unterscheidet sich. Dies wird im folgenden Abschnitt ausführlich beschrieben.
 
 ![SAP BusinessObjects BI-Plattform: Notfallwiederherstellung](media/businessobjects-deployment-guide/businessobjects-deployment-disaster-recovery.png)
 
-#### <a name="load-balancer"></a>Load Balancer
+### <a name="load-balancer"></a>Load Balancer
 
-Load Balancer wird verwendet, um Datenverkehr über Webanwendungsserver der SAP BOBI-Plattform zu verteilen. Um die Notfallwiederherstellung für Azure Application Gateway zu erreichen, implementieren Sie eine parallele Einrichtung von Application Gateway in der sekundären Region.
+Load Balancer wird verwendet, um Datenverkehr über Webanwendungsserver der SAP BOBI-Plattform zu verteilen. In Azure können Sie entweder Azure Load Balancer oder Azure Application Gateway verwenden, um den Datenverkehr zu Ihren Webservern zu verwalten. Um DR für die Lastenausgleichsdienste zu erreichen, müssen Sie einen weiteren Azure Load Balancer oder ein Azure Application Gateway auf der sekundären Region implementieren. Um die gleiche URL nach dem DR-Fail-Over beizubehalten, müssen Sie den Eintrag im DNS ändern, damit dieser auf den Lastenausgleichsdienst auf der sekundären Region verweist.
 
-#### <a name="virtual-machines-running-web-and-bi-application-servers"></a>Virtuelle Computer mit Web- und BI-Anwendungsservern
+### <a name="virtual-machines-running-web-and-bi-application-servers"></a>Virtuelle Computer mit Web- und BI-Anwendungsservern
 
-Der Azure Site Recovery-Dienst kann verwendet werden, um virtuelle Computer, die Web- und BI-Anwendungsserver ausführen, in der sekundären Region zu replizieren. Er repliziert die Server in der sekundären Region, sodass Sie bei Notfällen und Ausfällen leicht ein Failover zu Ihrer replizierten Umgebung ausführen und weiterarbeiten können.
+Der [Azure Site Recovery-Dienst](../../../site-recovery/site-recovery-overview.md) kann verwendet werden, um virtuelle Computer, die Web- und BI-Anwendungsserver ausführen, in der sekundären Region zu replizieren. Es repliziert die Server sowie die verbundenen verwaltenen Datenträger auf die sekundäre Region, damit bei Notfällen und Ausfällen ein einfaches Fail-Over auf die replizierte Umgebung möglich ist und Sie weiter arbeiten können. Um mit dem Replizieren aller SAP Application Virtual Machines auf das Azure-Notfallwiederherstellungsdatenzentrum zu beginnen, folgen Sie den Anweisungen in [Replizieren einer Virtual Machine auf Azure](../../../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 
-#### <a name="file-repository-servers"></a>File Repository Server
+### <a name="file-repository-servers"></a>File Repository Server
+
+Filestore ist ein Datenträgerverzeichnis, auf dem die tatsächlichen Dateien wie Berichte und BI-Dokumente gespeichert werden. Es ist wichtig, dass alle Dateien bei Filestore synchron zur DR-Region sind. Basierend auf dem Typ des Dateifreigabedienstes, den Sie für die SAP BOBI-Plattform für Lux verwenden, muss die entsprechende DR-Strategie synchron zum Inhalt sein.
 
 - **Azure NetApp Files** stellt NFS- und SMB-Volumes bereit, sodass jedes dateibasierte Kopiertool zur Replikation von Daten zwischen Azure-Regionen verwendet werden kann. Weitere Informationen zum Kopieren eines ANF-Volumes in eine andere Region finden Sie unter [Häufig gestellte Fragen zu Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region).
 
-  Sie können die regionsübergreifende Replikation von Azure NetApp Files verwenden, die sich derzeit in der [Vorschauversion](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/) befindet und die NetApp SnapMirror®-Technologie verwendet. Daher werden nur geänderte Blöcke in einem komprimierten, effizienten Format über das Netzwerk gesendet. Diese proprietäre Technologie minimiert die Menge an Daten, die regionsübergreifend repliziert werden muss, wodurch Datenübertragungskosten eingespart werden. Auch die Replikationszeit verkürzt sich dadurch, sodass Sie eine kürzere Recovery Point Objective (RPO) erreichen können. Weitere Informationen finden Sie unter [Regionsübergreifende Replikation: Anforderungen und Überlegungen](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md).
+  Sie können die regionsübergreifende Replikation von Azure NetApp Files verwenden, die sich derzeit in der [Vorschauversion](https://azure.microsoft.com/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/) befindet und die NetApp SnapMirror®-Technologie verwendet. Daher werden nur geänderte Blöcke in einem komprimierten, effizienten Format über das Netzwerk gesendet. Diese proprietäre Technologie minimiert die Menge an Daten, die regionsübergreifend repliziert werden muss, wodurch Datenübertragungskosten eingespart werden. Auch die Replikationszeit verkürzt sich dadurch, sodass Sie eine kürzere Recovery Point Objective (RPO) erreichen können. Weitere Informationen finden Sie unter [Regionsübergreifende Replikation: Anforderungen und Überlegungen](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md).
 
 - **Azure Files Premium** unterstützt nur lokal redundanten Speicher (LRS) und zonenredundanten Speicher (ZRS). Für die Azure Files Premium-Strategie zur Notfallwiederherstellung können Sie [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) oder [Azure PowerShell](/powershell/module/az.storage/) verwenden, um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Speicherkontofailover](../../../storage/common/storage-disaster-recovery-guidance.md).
 
-#### <a name="cms-database"></a>CMS-Datenbank
+   > [!Important]
+   > Das SMB-Protokoll für Azure Files ist allgemein verfügbar, aber die Unterstützung des NFS-Protokolls für Azure Files befindet sich derzeit in der Vorschauversion. Weitere Informationen finden Sie unter [Unterstützung von NFS 4.1 für Azure Files befindet sich jetzt in der Vorschau](https://azure.microsoft.com/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
+
+### <a name="cms-database"></a>CMS-Datenbank
+
+Die CMS- und Überwachungsdatenbank in der DR-Region muss eine Kopie der Datenbanken sein, die in der primären Region ausgeführt werden. Basierend auf dem Datenbanktyp muss die Datenbank in die DR-Region kopiert werden, basierend auf dem vom Unternehmen erforderlichen RTO und RPO.
+
+#### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 
 Azure Database for MySQL bietet mehrere Optionen zum Wiederherstellen einer Datenbank im Notfall. Wählen Sie die entsprechende Option aus, die für Ihr Unternehmen geeignet ist.
 

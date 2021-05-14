@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 0a3fd1b492d19e241d89cc5477891c7c836e4640
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 063ebc43e0654268b758c705ca2a92b8cf88fb35
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078977"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136299"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>Migrationsübersicht: SQL Server zu Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -24,13 +24,13 @@ Erfahren Sie mehr über die Optionen und Überlegungen zur Migration Ihrer SQL S
 
 Sie können SQL Server-Datenbanken migrieren, die vor Ort oder auf dem Server laufen: 
 
-- SQL Server auf Azure Virtual Machines.  
-- Amazon Web Services (AWS) Elastic Compute Cloud (EC2). 
-- AWS Relational Database Service (RDS). 
-- Compute Engine in Google Cloud Platform (GCP).  
-- Cloud-SQL für SQL Server in GCP. 
+- SQL Server auf Azure Virtual Machines  
+- Amazon Web Services (AWS) Elastic Compute Cloud (EC2) 
+- AWS Relational Database Service (RDS) 
+- Compute Engine in Google Cloud Platform (GCP)  
+- Cloud-SQL für SQL Server in GCP 
 
-Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
+Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](/data-migration). 
 
 ## <a name="overview"></a>Übersicht
 
@@ -38,7 +38,7 @@ Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigrati
 
 ## <a name="considerations"></a>Überlegungen 
 
-Die wichtigsten Faktoren, die Sie bei der Bewertung von Migrationsoptionen berücksichtigen sollten, sind: 
+Dies sind die wichtigsten Faktoren, die Sie bei der Bewertung von Migrationsoptionen berücksichtigen sollten: 
 - Anzahl der Server und Datenbanken
 - Größe der Datenbanken
 - Akzeptable Downtime für das Geschäft während des Migrationsprozesses 
@@ -75,7 +75,7 @@ Wenn eine der folgenden Bedingungen für Ihr Unternehmen zutrifft, erwägen Sie,
 
 - Sie benötigen direkten Zugriff auf das Betriebs- oder Dateisystem, z. B. um Drittanbieter- oder benutzerdefinierte Agents auf der gleichen VM wie SQL Server zu installieren. 
 - Wenn Sie unbedingt von Features abhängig sind, die noch nicht unterstützt werden, wie z. B. FileStream/FileTable, PolyBase und instanzübergreifende Transaktionen. 
-- Wenn Sie unbedingt bei einer bestimmten Version von SQL Server (z.B. 2012) bleiben müssen. 
+- Wenn Sie unbedingt bei einer bestimmten Version von SQL Server (z. B. 2012) bleiben müssen. 
 - Wenn Ihre Computeanforderungen wesentlich niedriger sind als bei einer verwalteten Instanz (z. B. ein virtueller Kern) und eine Datenbankkonsolidierung nicht in Frage kommt. 
 
 ## <a name="migration-tools"></a>Migrationstools
@@ -116,9 +116,9 @@ In der folgenden Tabelle werden die alternativen Migrationsoptionen verglichen:
 
 |Methode oder Technologie |Verwendung |Überlegungen  |
 |---------|---------|---------|
-|[Transaktionsreplikation](../../managed-instance/replication-transactional-overview.md) | – Migrieren durch kontinuierliches Veröffentlichen von Änderungen an Quelldatenbanktabellen an die Zieldatenbanktabellen von SQL Managed Instance </br> – Führen Sie eine vollständige oder teilweise Datenbankmigrationen ausgewählter Tabellen (Teilmenge der Datenbank) aus.  </br> </br> Unterstützte Quellen: </br> - SQL Server (2012 bis 2019) mit einigen Einschränkungen </br> – AWS EC2  </br> – GCP Compute mit SQL Server-VM | </br> – Das Setup ist im Vergleich zu anderen Migrationsoptionen relativ komplex.   </br> – Bietet eine kontinuierliche Replikationsoption zum Migrieren von Daten (ohne die Datenbanken offline zu schalten)</br> - Bei der transaktionalen Replikation gibt es Einschränkungen zu beachten, wenn Sie den Publisher auf der SQL Server-Quellinstanz einrichten. Weitere Informationen finden Sie unter [Einschränkungen für das Veröffentlichen von Objekten](/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects).  </br> – Eine Funktion zum [Überwachen der Replikationsaktivität](/sql/relational-databases/replication/monitor/monitoring-replication) ist verfügbar.    |
-|[Massenkopieren](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| - Führen Sie vollständige oder teilweise Datenmigrationen durch. </br> – Downtime ist möglich </br> </br> Unterstützte Quellen: </br> - SQL Server (2005 bis 2019) lokal oder Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP Compute mit SQL Server-VM   | - Erfordert Ausfallzeiten für das Exportieren von Daten aus der Quelle und das Importieren in das Ziel. </br> – Die für den Export/Import verwendeten Dateiformate und Datentypen müssen mit den Tabellenschemas übereinstimmen. |
-|[Assistent zum Importieren/Exportieren von BACPAC-Dateien](../../database/database-import.md)| – Migrieren individueller Branchenanwendungsdatenbanken </br>– Für kleinere Datenbanken geeignet  </br>  – Erfordert keinen separaten Migrationsdienst oder ein Tool </br> </br> Unterstützte Quellen: </br> - SQL Server (2005 bis 2019) lokal oder Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP Compute mit SQL Server-VM  |   </br> – Erfordert Downtime, da Daten aus der Quelle exportiert und im Ziel importiert werden müssen   </br> – Die für den Export/Import verwendeten Dateiformate und Datentypen müssen mit den Tabellenschemas übereinstimmen, um Kürzungen oder Fehler durch nicht übereinstimmende Datentypen zu vermeiden. </br> – Die Zeit zum Exportieren einer Datenbank mit einer großen Anzahl von Objekten kann deutlich höher sein. |
+|[Transaktionsreplikation](../../managed-instance/replication-transactional-overview.md) | – Migrieren durch kontinuierliches Veröffentlichen von Änderungen an Quelldatenbanktabellen an die Zieldatenbanktabellen von SQL Managed Instance </br> – Führen Sie eine vollständige oder teilweise Datenbankmigrationen ausgewählter Tabellen (Teilmenge der Datenbank) aus.  </br> </br> Unterstützte Quellen: </br> - SQL Server (2012 bis 2019) mit einigen Einschränkungen </br> – AWS EC2  </br> – GCP Compute mit SQL Server-VM | </br> – Das Setup ist im Vergleich zu anderen Migrationsoptionen relativ komplex.   </br> – Bietet eine kontinuierliche Replikationsoption zum Migrieren von Daten (ohne die Datenbanken offline zu schalten)</br> - Bei der transaktionalen Replikation gibt es Einschränkungen zu beachten, wenn Sie den Verleger auf der SQL Server-Quellinstanz einrichten. Weitere Informationen finden Sie unter [Einschränkungen für das Veröffentlichen von Objekten](/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects).  </br> – Eine Funktion zum [Überwachen der Replikationsaktivität](/sql/relational-databases/replication/monitor/monitoring-replication) ist verfügbar.    |
+|[Massenkopieren](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| - Führen Sie vollständige oder teilweise Datenmigrationen durch. </br> – Downtime ist möglich </br> </br> Unterstützte Quellen: </br> - SQL Server (2005 bis 2019) lokal oder Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP Compute mit SQL Server-VM   | - Erfordert Downtime für das Exportieren von Daten aus der Quelle und das Importieren in das Ziel. </br> – Die für den Export/Import verwendeten Dateiformate und Datentypen müssen mit den Tabellenschemas übereinstimmen. |
+|[Assistent zum Importieren/Exportieren von BACPAC-Dateien](../../database/database-import.md)| – Migrieren individueller Branchenanwendungsdatenbanken </br>– Für kleinere Datenbanken geeignet  </br>  – Erfordert keinen separaten Migrationsdienst oder ein Tool </br> </br> Unterstützte Quellen: </br> - SQL Server (2005 bis 2019) lokal oder Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP Compute mit SQL Server-VM  |   </br> – Erfordert Downtime, da Daten aus der Quelle exportiert und im Ziel importiert werden müssen.   </br> – Die für den Export/Import verwendeten Dateiformate und Datentypen müssen mit den Tabellenschemas übereinstimmen, um Kürzungen oder Fehler durch nicht übereinstimmende Datentypen zu vermeiden. </br> – Die Zeit zum Exportieren einer Datenbank mit einer großen Anzahl von Objekten kann deutlich höher sein. |
 |[Azure Data Factory](../../../data-factory/connector-azure-sql-managed-instance.md)| – Migrieren und/oder Transformieren von Daten aus SQL Server-Quelldatenbanken.</br> – Zusammenführen von Daten aus mehreren Datenquellen in Azure SQL Managed Instance (wird in der Regel für Business Intelligence-Workloads verwendet).   </br> – Erfordert das Erstellen von Datenverschiebungspipelines in Data Factory zum Verschieben von Daten aus der Quelle zum Ziel.   </br> - [Kosten](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) sind ein wichtiger Aspekt, der auf den Faktoren der Pipelinetriggern, den Aktivitätsausführungen, der Dauer der Datenverschiebung und mehr basiert. |
 | | | |
 
@@ -218,7 +218,7 @@ Weitere Unterstützung finden Sie in den folgenden Ressourcen, die für reale Mi
 |[Data Workload Assessment Model and Tool (Datenarbeitsauslastungs-Bewertungsmodell und -tool)](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Dieses Tool stellt für eine bestimmte Arbeitsauslastung Informationen zu empfohlenen „optimalen“ Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch einen automatisierten und einheitlichen Entscheidungsprozess für die Zielplattform dabei helfen, Bewertungen von umfangreichen Datenbeständen zu beschleunigen.|
 |[DBLoader-Hilfsprogramm](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader kann zum Laden von Daten aus durch Trennzeichen getrennten Textdateien in SQL Server verwendet werden. Dieses Windows-Konsolen Hilfsprogramm verwendet die SQL Server Native Client-Schnittstelle für Massen laden. Die Schnittstelle kann in allen Versionen von SQL Server zusammen mit Azure SQL Managed Instance verwendet werden.|
 |[Hilfsprogramm zum Verschieben lokaler SQL Server-Anmeldungen zu Azure SQL Managed Instance](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)|Hierbei handelt es sich um ein PowerShell-Skript kann ein T-SQL-Befehlsskript erstellen, um Anmeldungen und ausgewählte Datenbankbenutzer aus der lokalen SQL Server-Instanz in Azure SQL Managed Instance neu zu erstellen. Das Tool ermöglicht die automatische Zuordnung von Windows Server Active Directory-Konten zu Azure AD-Konten, zusammen mit der optionalen Migration nativer SQL Server-Logins.|
-|[Automatisierung der PerfMon-Datensammlung mithilfe von Logman](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Sie können das Logman-Tool verwenden, um Perfmon-Daten zu erfassen (um Sie bei der grundlegenden Leistung zu verstehen) und Empfehlungen für die Migration der virtuellen Maschine zu erhalten. Das Tool verwendet die ausführbare Datei „logman.exe“, um den Befehl zu erstellen, der die Leistungsindikatoren für eine SQL Server-Remoteinstanz erstellt, startet, beendet und löscht.|
+|[Automatisierung der PerfMon-Datensammlung mithilfe von Logman](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Sie können das Logman-Tool verwenden, um PerfMon-Daten zu erfassen (damit Sie die grundlegende Leistung besser verstehen können) und Empfehlungen für die Migration der virtuellen Maschine zu erhalten. Das Tool verwendet die ausführbare Datei „logman.exe“, um den Befehl zu erstellen, der die Leistungsindikatoren für eine SQL Server-Remoteinstanz erstellt, startet, beendet und löscht.|
 |[Datenbankmigration zu Azure SQL Managed Instance durch Wiederherstellung vollständiger und differenzieller Sicherungen](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20to%20Azure%20SQL%20DB%20Managed%20Instance%20-%20%20Restore%20with%20Full%20and%20Differential%20backups.pdf)|In diesem Whitepaper finden Sie Anleitungen und Schritte zum Beschleunigen von Migrationen von SQL Server zu Azure SQL Managed Instance, wenn Sie nur über vollständige und differenzielle Sicherungen (und keine Protokollsicherungsfunktion) verfügen.|
 
 Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.

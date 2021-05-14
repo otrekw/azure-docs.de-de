@@ -92,16 +92,12 @@
   items:
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598147-bing-custom-search-api'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=bing+custom+search'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Wissensdatenbank
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
     - name: Abrufen des API-Schlüssels
       href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: Testen
@@ -110,5 +106,5 @@
       href: endpoint-custom.md
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

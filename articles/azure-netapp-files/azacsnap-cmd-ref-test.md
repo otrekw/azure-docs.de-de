@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 03ffa93a71ded40e033f2068ea23fc6b994a5bbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86a670602f448f59decbc64d8a12278697c43596
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97632123"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929847"
 ---
-# <a name="test-azure-application-consistent-snapshot-tool-preview"></a>Testen des Tools für konsistente Momentaufnahmen in Azure-Anwendungen (Vorschau)
+# <a name="test-azure-application-consistent-snapshot-tool"></a>Testen des Tools für konsistente Momentaufnahmen in Azure-Anwendungen
 
 In diesem Artikel wird erläutert, wie der Testbefehl des Tools für konsistente Momentaufnahmen in Azure-Anwendungen, das Sie mit Azure NetApp Files verwenden können, ausgeführt wird.
 

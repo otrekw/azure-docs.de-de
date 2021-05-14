@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 12/09/2020
 ms.topic: include
-ms.openlocfilehash: 269cae85c0f007c487f063b1f7ca7ea4dca15376
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: cc022470bf9ff799d6396f871f4a6c224d01a295
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104733"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931698"
 ---
 Erste Schritte mit der Custom Vision-REST-API. Führen Sie diese Schritte aus, um die API aufzurufen und ein Bildklassifizierungsmodell zu erstellen. Sie erstellen ein Projekt, fügen Tags hinzu, trainieren das Projekt und verwenden die Vorhersageendpunkt-URL des Projekts, um es programmgesteuert zu testen. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Bilderkennungsanwendung.
 
@@ -175,7 +175,7 @@ Mit dieser Methode wird die aktuelle Iteration des Modells zum Abfragen verfügb
 * Ersetzen Sie `{projectId}` durch Ihre eigene Projekt-ID.
 * Ersetzen Sie `{iterationId}` durch die ID, die im vorherigen Schritt zurückgegeben wurde.
 * Ersetzen Sie `{publishedName}` durch den Namen, den Sie Ihrem Vorhersagemodell zuweisen möchten.
-* Ersetzen Sie `{predictionId}` durch Ihre eigene Vorhersageressourcen-ID. Sie finden diese ID im Azure-Portal auf der Registerkarte **Übersicht** der Vorhersageressource. Sie ist als **Abonnement-ID** angegeben.
+* Ersetzen Sie `{predictionId}` durch Ihre eigene Vorhersageressourcen-ID. Sie finden die Vorhersageressourcen-ID im Azure-Portal auf der Registerkarte **Eigenschaften** der Ressource, wo sie als **Ressourcen-ID** angegeben ist.
 * Optional können Sie auch andere URL-Parameter verwenden. Weitere Informationen finden Sie unter der API zum Veröffentlichen der Iteration ([Publish Iteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fdded5)).
 
 ## <a name="test-the-prediction-endpoint"></a>Testen des Vorhersageendpunkts

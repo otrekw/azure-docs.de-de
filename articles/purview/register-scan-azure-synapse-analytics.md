@@ -1,22 +1,25 @@
 ---
-title: Überprüfen von Azure Synapse Analytics
-description: In diesem Leitfaden wird beschrieben, wie Sie eine Überprüfung für Azure Synapse Analytics durchführen.
+title: Überprüfen dedizierter SQL-Pools
+description: In dieser ausführlichen Anleitung erfahren Sie, wie Sie dedizierte SQL-Pools überprüfen.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7d6a0b04306c2ed6ae4887c79962cbb5528643fc
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875008"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106971"
 ---
-# <a name="register-and-scan-azure-synapse-analytics"></a>Registrieren und Überprüfen von Azure Synapse Analytics
+# <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>Registrieren und Überprüfen dedizierter SQL-Pools (ehemals SQL DW)
 
-In diesem Artikel wird beschrieben, wie Sie eine Instanz von Azure Synapse Analytics (vormals SQL DW) in Purview registrieren und überprüfen.
+> [!NOTE]
+> Wenn Sie eine dedizierte SQL-Datenbank in einem Synapse-Arbeitsbereich registrieren und scannen möchten, gehen Sie wie [hier](register-scan-synapse-workspace.md) beschrieben vor.
+
+In diesem Artikel wird beschrieben, wie Sie einen dedizierten SQL-Pool (ehemals SQL DW) in Purview registrieren und überprüfen.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -24,7 +27,8 @@ Für Azure Synapse Analytics (vormals SQL DW) werden vollständige und inkrement
 
 ### <a name="known-limitations"></a>Bekannte Einschränkungen
 
-Azure Purview unterstützt nicht die Überprüfung von [Sichten](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) in Azure Synapse Analytics.
+> * Die Überprüfung von [Sichten](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) in Azure Synapse Analytics wird von Azure Purview nicht unterstützt.
+> * Von Azure Purview werden auf der Registerkarte „Schema“ maximal 300 Spalten unterstützt, und es wird „Additional-Columns-Truncated“ angezeigt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -77,7 +81,7 @@ Sie können für Überprüfungen eine vorhandene Dienstprinzipalauthentifizierun
 Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals abzurufen:
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Dienstprinzipal.
-1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und von **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
+1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
 1. Navigieren zum Schlüsseltresor
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
 1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie unter **Name** einen gewünschten Namen und den **Wert** als **Geheimen Clientschlüssel** Ihres Dienstprinzipals ein.
@@ -93,7 +97,7 @@ Darüber hinaus müssen Sie auch in Azure Synapse Analytics einen Azure AD-Benut
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
 GO
 
-EXEC sp_addrolemember 'db_owner', [ServicePrincipalName]
+ALTER ROLE db_owner ADD MEMBER [ServicePrincipalName]
 GO
 ```
 
@@ -114,20 +118,20 @@ Wenn **SQL-Authentifizierung** als Authentifizierungsmethode ausgewählt wird, m
 1. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
 1. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Schlüssel zum Einrichten Ihrer Überprüfung verwenden.
 
-## <a name="register-an-azure-synapse-analytics-instance-formerly-sql-dw"></a>Registrieren einer Azure Synapse Analytics-Instanz (vormals SQL DW)
+## <a name="register-a-sql-dedicated-pool-formerly-sql-dw"></a>Registrieren eines dedizierten SQL-Pools (ehemals SQL DW)
 
 Gehen Sie wie folgt vor, um einen neuen Azure Synapse Analytics-Server für Ihren Datenkatalog zu registrieren:
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
 1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
 1. Wählen Sie **Registrieren** aus.
-1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Synapse Analytics (vormals SQL DW)** aus.
+1. Wählen Sie unter **Quellen registrieren** die Option **SQL dedicated pool (formerly SQL DW)** (Dedizierter SQL-Pool (ehemals SQL DW)) aus.
 1. Wählen Sie **Weiter** aus.
 
 Gehen Sie unter **Register sources (Azure Synapse Analytics)** (Quellen registrieren (Azure Synapse Analytics)) wie folgt vor:
 
 1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
-1. Wählen Sie aus, wie auf Ihr gewünschtes Speicherkonto verwiesen werden soll:
+1. Wählen Sie aus, auf welche Weise Sie auf die gewünschte logische SQL Server-Instanz verweisen möchten:
    1. Wählen Sie die Option **Aus Azure-Abonnement** und dann im Dropdownfeld **Azure-Abonnement** das entsprechende Abonnement und im Dropdownfeld **Servername** den entsprechenden Server aus.
    1. Alternativ können Sie auch die Option **Manuell eingeben** auswählen und einen **Servernamen** eingeben.
 1. Wählen Sie **Fertig stellen** aus, um die Datenquelle zu registrieren.

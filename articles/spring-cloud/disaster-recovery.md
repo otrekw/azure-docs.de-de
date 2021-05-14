@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: e18193b40bb7c59a21a279f451673dc7d11140e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e3471d778e0589083caaf2dfedbccc4568de471
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92092901"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144653"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Notfallwiederherstellung in Azure Spring Cloud
 
@@ -48,7 +48,7 @@ Sie benötigen zwei Dienstinstanzen von Azure Spring Cloud, die in zwei verschie
 | service-sample-a | East US | gateway / auth-service / account-service |
 | service-sample-b | Europa, Westen | gateway / auth-service / account-service |
 
-2. Richten Sie eine benutzerdefinierten Domäne für den Dienst ein. Befolgen Sie dazu die Anweisungen im [Dokument zu benutzerdefinierten Domänen](spring-cloud-tutorial-custom-domain.md), um eine benutzerdefinierte Domäne für diese beiden vorhandenen Dienstinstanzen einzurichten. Nach der erfolgreichen Einrichtung werden beide Dienstinstanzen an die benutzerdefinierte Domäne „bcdr-test.contoso.com“ gebunden.
+2. Richten Sie eine benutzerdefinierten Domäne für den Dienst ein. Befolgen Sie dazu die Anweisungen im [Dokument zu benutzerdefinierten Domänen](./tutorial-custom-domain.md), um eine benutzerdefinierte Domäne für diese beiden vorhandenen Dienstinstanzen einzurichten. Nach der erfolgreichen Einrichtung werden beide Dienstinstanzen an die benutzerdefinierte Domäne „bcdr-test.contoso.com“ gebunden.
 
 3. Erstellen Sie einen Traffic Manager und zwei Endpunkte: [Erstellen Sie ein Traffic Manager-Profil über das Azure-Portal](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 
@@ -67,4 +67,4 @@ Im Folgenden das Traffic Manager-Profil:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](spring-cloud-quickstart.md)
+* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md)

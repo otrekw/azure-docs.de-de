@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4b708e80bf335ba8bdce074285857a6f8b77b972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e819e1078ac90ef16070702e7961122b06c1d6f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103439302"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107880443"
 ---
 In der Vorschau weist NFS die folgenden Einschränkungen auf:
 
 - NFS 4.1 unterstützt derzeit nur die meisten Features aus der [Protokollspezifikation](https://tools.ietf.org/html/rfc5661). Einige Features wie Delegierungen und Rückrufe aller Art, Upgrades und Downgrades von Sperren, Kerberos-Authentifizierung und Verschlüsselung werden nicht unterstützt.
 - Wenn sich die meisten Ihrer Anforderungen schwerpunktmäßig auf Metadaten beziehen, ist die Wartezeit im Vergleich zu Lese-/Schreib-/Aktualisierungsvorgängen schlechter.
-- Es muss ein neues Speicherkonto erstellt werden, um eine NFS-Freigabe zu erstellen.
+- NFS-Freigaben können nur für neue Speicherkonten aktiviert/erstellt werden, d. h. nicht für die vorhandenen Konten
 - Nur die REST-APIs der Verwaltungsebene werden unterstützt. REST-APIs der Datenebene sind nicht verfügbar. Das bedeutet, dass Tools wie der Speicher-Explorer mit NFS-Freigaben nicht funktionieren und Sie keine NFS-Freigabedaten im Azure-Portal durchsuchen können.
 - AzCopy wird derzeit nicht unterstützt.
 - Nur für den Premium-Tarif verfügbar.

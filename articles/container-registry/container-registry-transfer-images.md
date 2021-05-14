@@ -4,12 +4,12 @@ description: Übertragen von Sammlungen von Images oder anderen Artefakten aus e
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: 4fe36366011fb790d25419ac46a54c4bf5ad94bf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c966600b0ca9d65cf533c3c2f0aca211c84917bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785817"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780773"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Übertragen von Artefakten in eine andere Registrierung
 
@@ -416,13 +416,19 @@ az resource delete \
 * **Vorlagenbereitstellungsprobleme oder -fehler**
   * Wenn eine Pipelineausführung fehlschlägt, überprüfen Sie die `pipelineRunErrorMessage`-Eigenschaft der Ausführungsressource.
   * Informationen zu häufigen Vorlagenbereitstellungsfehlern finden Sie unter [Beheben von Problemen mit ARM-Vorlagenbereitstellungen](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+* **Probleme beim Zugriff auf den Speicher**<a name="problems-accessing-storage"></a>
+  * Wenn für den Speicher ein Fehler vom Typ `403 Forbidden` angezeigt wird, liegt wahrscheinlich ein Problem mit Ihrem SAS-Token vor.
+  * Das SAS-Token ist möglicherweise nicht gültig. Vielleicht ist das SAS-Token abgelaufen, oder die Speicherkontoschlüssel haben sich seit der Erstellung des SAS-Tokens geändert. Überprüfen Sie, ob das SAS-Token gültig ist, indem Sie versuchen, das SAS-Token für die Authentifizierung zum Zugriff auf den Speicherkontocontainer zu verwenden. Geben Sie beispielsweise einen vorhandenen Blobendpunkt gefolgt vom SAS-Token in die Adressleiste eines neuen InPrivate-Fensters in Microsoft Edge ein, oder laden Sie mit dem SAS-Token unter Verwendung von `az storage blob upload` ein Blob in den Container hoch.
+  * Das SAS-Token umfasst möglicherweise nicht genügend zulässige Ressourcentypen. Vergewissern Sie sich, dass dem SAS-Token unter „Zugelassene Ressourcentypen“ (`srt=sco` im SAS-Token) Berechtigungen für Dienst-, Container- und Objektressourcen gewährt wurden.
+  * Das SAS-Token umfasst möglicherweise keine ausreichenden Berechtigungen. Für Exportpipelines werden die SAS-Tokenberechtigungen „Lesen“, „Schreiben“, „Auflisten“ und „Hinzufügen“ benötigt. Für Importpipelines werden die SAS-Tokenberechtigungen „Lesen“, „Löschen“ und „Auflisten“ benötigt. (Die Berechtigung „Löschen“ ist nur erforderlich, wenn für die Importpipeline die Option `DeleteSourceBlobOnSuccess` aktiviert wurde.)
+  * Das SAS-Token ist möglicherweise nicht so konfiguriert, dass es nur mit HTTPS funktioniert. Stellen Sie sicher, dass das SAS-Token so konfiguriert ist, dass es nur mit HTTPS funktioniert (`spr=https` im SAS-Token).
 * **Probleme beim Exportieren oder Importieren von Speicherblobs**
-  * Das SAS-Token ist möglicherweise abgelaufen oder verfügt ggf. nicht über ausreichende Berechtigungen für die angegebene Export- oder Importausführung.
+  * Das SAS-Token ist möglicherweise abgelaufen oder umfasst keine ausreichenden Berechtigungen für die angegebene Export- oder Importausführung. Siehe [Probleme beim Zugriff auf den Speicher](#problems-accessing-storage).
   * Ein vorhandenes Speicherblob im Quellspeicherkonto wird bei mehreren Exportausführungen möglicherweise nicht überschrieben. Vergewissern Sie sich, dass die Option OverwriteBlob in der Exportausführung festgelegt ist und das SAS-Token über ausreichende Berechtigungen verfügt.
   * Das Speicherblob in Zielspeicherkonto wird nach einer erfolgreichen Importausführung möglicherweise nicht gelöscht. Vergewissern Sie sich, dass die Option DeleteBlobOnSuccess in der Exportausführung festgelegt ist und das SAS-Token über ausreichende Berechtigungen verfügt.
   * Das Speicherblob wurde nicht erstellt oder gelöscht. Vergewissern Sie sich, dass der in der Export- oder Importausführung angegebene Container oder das angegebene Speicherblob für die manuelle Importausführung vorhanden ist. 
 * **AzCopy-Probleme**
-  * Weitere Informationen finden Sie unter [Beheben von Problemen mit AzCopy](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues).  
+  * Weitere Informationen finden Sie unter [Beheben von Problemen mit AzCopy](../storage/common/storage-use-azcopy-configure.md).  
 * **Artefaktübertragungsprobleme**
   * Nicht alle Artefakte (oder gar keine) werden übertragen. Überprüfen Sie die Schreibweise von Artefakten in der Exportausführung sowie den Namen des Blobs in Export- und Importausführungen. Vergewissern Sie sich, dass Sie maximal 50 Artefakte übertragen.
   * Die Pipelineausführung wurde möglicherweise nicht abgeschlossen. Die Export- oder Importausführung kann einige Zeit in Anspruch nehmen. 
@@ -441,15 +447,15 @@ Wenn Sie einzelne Containerimages aus einer öffentlichen Registrierung oder ein
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-login]: /cli/azure/reference-index#az-login
-[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
-[az-keyvault-secret-show]: /cli/azure/keyvault/secret#az-keyvault-secret-show
-[az-keyvault-set-policy]: /cli/azure/keyvault#az-keyvault-set-policy
-[az-storage-container-generate-sas]: /cli/azure/storage/container#az-storage-container-generate-sas
-[az-storage-blob-list]: /cli/azure/storage/blob#az-storage-blob-list
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
-[az-deployment-group-delete]: /cli/azure/deployment/group#az-deployment-group-delete
-[az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
-[az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
-[az-acr-import]: /cli/azure/acr#az-acr-import
-[az-resource-delete]: /cli/azure/resource#az-resource-delete
+[az-login]: /cli/azure/reference-index#az_login
+[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az_keyvault_secret_set
+[az-keyvault-secret-show]: /cli/azure/keyvault/secret#az_keyvault_secret_show
+[az-keyvault-set-policy]: /cli/azure/keyvault#az_keyvault_set_policy
+[az-storage-container-generate-sas]: /cli/azure/storage/container#az_storage_container_generate_sas
+[az-storage-blob-list]: /cli/azure/storage/blob#az_storage-blob-list
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-deployment-group-delete]: /cli/azure/deployment/group#az_deployment_group_delete
+[az-deployment-group-show]: /cli/azure/deployment/group#az_deployment_group_show
+[az-acr-repository-list]: /cli/azure/acr/repository#az_acr_repository_list
+[az-acr-import]: /cli/azure/acr#az_acr_import
+[az-resource-delete]: /cli/azure/resource#az_resource_delete

@@ -4,12 +4,12 @@ description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken,
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a249ab63aa72c1d39ab1626e72ff3b2037f3f723
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c3fafdd3c9e635e828a2d2a82c5df63685683264
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768449"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279764"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Tutorial: Wiederherstellen von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer über die Azure CLI
 
@@ -280,7 +280,7 @@ Normalerweise kann über einen Netzwerkfreigabepfad oder den Pfad einer eingebun
 >[!NOTE]
 >Um die Datenbank-Sicherungsdateien auf einer Azure-Dateifreigabe wiederherzustellen, die auf der registrierten Ziel-VM bereitgestellt ist, stellen Sie sicher, dass das root-Konto über Lese-/Schreibberechtigungen für die Azure-Dateifreigabe verfügt.
 
-Basierend auf dem ausgewählten Typ von Wiederherstellungspunkt (**Point-in-Time** oder **Vollständig und differenziell**) sehen Sie einen oder mehrere im Zielpfad erstellte Ordner. Einer der Ordner mit dem Namen `Data_<date and time of restore>` enthält die vollständigen und differenziellen Sicherungen, während der andere Ordner mit dem Namen `Log` die Protokollsicherungen enthält.
+Basierend auf dem ausgewählten Typ von Wiederherstellungspunkt (**Point-in-Time** oder **Vollständig und differenziell**) sehen Sie einen oder mehrere im Zielpfad erstellte Ordner. Einer der Ordner mit dem Namen `Data_<date and time of restore>` enthält die vollständigen Sicherungen, während der andere Ordner mit dem Namen `Log` die Protokollsicherungen und sonstigen Sicherungen (z. B. differenziell und inkrementell) enthält.
 
 Verschieben Sie diese wiederhergestellten Dateien auf den SAP HANA-Server, auf dem Sie sie als-Datenbank wiederherstellen möchten. Führen Sie dann die folgenden Schritte zum Wiederherstellen der Datenbank aus:
 
@@ -305,7 +305,7 @@ Verschieben Sie diese wiederhergestellten Dateien auf den SAP HANA-Server, auf d
     Im obigen Befehl:
 
     * `<DataFileDir>` ist der Ordner mit den vollständigen Sicherungen.
-    * `<LogFilesDir>` ist der Ordner mit den Protokollsicherungen.
+    * `<LogFilesDir>` ist der Ordner, der die Protokollsicherungen, differenziellen und inkrementellen Sicherungen (falls vorhanden) enthält.
     * `<PathToPlaceCatalogFile>` ist der Ordner, in dem die generierte Katalogdatei platziert werden muss.
 
 1. Führen Sie die Wiederherstellung mit der neu generierten Katalogdatei über HANA Studio aus, oder führen Sie die HDBSQL-Wiederherstellungsabfrage mit diesem neu generierten Katalog aus. HDBSQL-Abfragen sind unten aufgelistet:
@@ -325,7 +325,7 @@ Verschieben Sie diese wiederhergestellten Dateien auf den SAP HANA-Server, auf d
         * `<DatabaseName@HostName>` ist der Name der Datenbank, deren Sicherung für die Wiederherstellung verwendet wird, und der Name des **Hosts**/SAP HANA-Servers, auf dem sich diese Datenbank befindet. Die Option `USING SOURCE <DatabaseName@HostName>` gibt an, dass sich die Datensicherung (die für die Wiederherstellung verwendet wird) auf eine Datenbank mit einer anderen SID oder einem anderen Namen als der Ziel-SAP HANA-Computer bezieht. Daher muss sie nicht für Wiederherstellungen angegeben werden, die auf dem HANA-Server ausgeführt werden, auf dem die Sicherung aufgezeichnet wurde.
         * `<PathToGeneratedCatalogInStep3>` ist der Pfad zur Katalogdatei, die in **Schritt 3** generiert wurde.
         * `<DataFileDir>` ist der Ordner mit den vollständigen Sicherungen.
-        * `<LogFilesDir>` ist der Ordner mit den Protokollsicherungen.
+        * `<LogFilesDir>` ist der Ordner, der die Protokollsicherungen, differenziellen und inkrementellen Sicherungen (falls vorhanden) enthält.
         * `<BackupIdFromJsonFile>` ist die **BackupId**, die in **Schritt 3** extrahiert wurde.
 
     * Wiederherstellen einer bestimmten vollständigen oder differenziellen Sicherung:
@@ -341,7 +341,7 @@ Verschieben Sie diese wiederhergestellten Dateien auf den SAP HANA-Server, auf d
         * `<DatabaseName@HostName>` ist der Name der Datenbank, deren Sicherung für die Wiederherstellung verwendet wird, und der Name des **Hosts**/SAP HANA-Servers, auf dem sich diese Datenbank befindet. Die Option `USING SOURCE <DatabaseName@HostName>` gibt an, dass sich die Datensicherung (die für die Wiederherstellung verwendet wird) auf eine Datenbank mit einer anderen SID oder einem anderen Namen als der Ziel-SAP HANA-Computer bezieht. Daher muss sie nicht für Wiederherstellungen angegeben werden, die auf dem HANA-Server ausgeführt werden, auf dem die Sicherung aufgezeichnet wurde.
         * `<PathToGeneratedCatalogInStep3>` ist der Pfad zur Katalogdatei, die in **Schritt 3** generiert wurde.
         * `<DataFileDir>` ist der Ordner mit den vollständigen Sicherungen.
-        * `<LogFilesDir>` ist der Ordner mit den Protokollsicherungen.
+        * `<LogFilesDir>` ist der Ordner, der die Protokollsicherungen, differenziellen und inkrementellen Sicherungen (falls vorhanden) enthält.
         * `<BackupIdFromJsonFile>` ist die **BackupId**, die in **Schritt 3** extrahiert wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte

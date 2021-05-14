@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8352deb00f6954d862b9e44646cce1604e2c5428
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 91cba45bc38bddc32aae036a029006c5004da058
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749616"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140639"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken
 
@@ -35,7 +35,7 @@ Wenn Sie einen neuen Schlüsseltresor erstellen, ist die Azure Key Vault-Firew
 Wenn Sie die Key Vault-Firewall aktivieren, können Sie festlegen, dass vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlaubt werden soll. Die Liste der vertrauenswürdigen Dienste deckt nicht alle Azure-Dienste ab. Azure DevOps ist beispielsweise nicht in der Liste der vertrauenswürdigen Dienste enthalten. **Das bedeutet nicht, dass Dienste, die nicht in der Liste der vertrauenswürdigen Dienste enthalten sind, nicht vertrauenswürdig oder unsicher sind.** Die Liste der vertrauenswürdigen Dienste umfasst Dienste, bei denen der gesamte im Dienst ausgeführte Code von Microsoft kontrolliert wird. Da Benutzer in Azure-Diensten wie Azure DevOps benutzerdefinierten Code schreiben können, bietet Microsoft keine Option zur Erstellung einer Pauschalgenehmigung für den Dienst. Außerdem gilt: Die Tatsache, dass ein Dienst in der Liste vertrauenswürdiger Dienste enthalten ist, bedeutet nicht, dass er für alle Szenarien zulässig ist. 
 
 Wie Sie ermitteln, ob ein Dienst, den Sie verwenden möchten, in der Liste der vertrauenswürdigen Dienste enthalten ist, erfahren Sie [hier](./overview-vnet-service-endpoints.md#trusted-services).
-[Hier](https://docs.microsoft.com/azure/key-vault/general/network-security#use-the-azure-portal) finden Sie eine Schrittanleitung für das Portal, die Azure CLI und PowerShell.
+[Hier](#use-the-azure-portal) finden Sie eine Schrittanleitung für das Portal, die Azure CLI und PowerShell.
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault-Firewall aktiviert (IPv4-Adressen und -Bereiche – statische IP-Adressen)
 
@@ -68,7 +68,7 @@ Erstellen Sie in diesem Fall die Ressource in einem virtuellen Netzwerk, und las
 Informationen zum Konfigurieren einer Private Link-Verbindung für Ihren Schlüsseltresor finden Sie [hier](./private-link-service.md).
 
 > [!IMPORTANT]
-> Nachdem Firewallregeln in Kraft sind, können Benutzer nur Vorgänge auf Key Vault-[Datenebene](security-overview.md#privileged-access) ausführen, wenn ihre Anforderungen aus zulässigen virtuellen Netzwerken oder IPv4-Adressbereichen stammen. Dies gilt auch für den Zugriff auf den Schlüsseltresor aus dem Azure-Portal. Obwohl Benutzer im Azure-Portal zu einem Schlüsseltresor navigieren können, können sie möglicherweise keine Schlüssel, Geheimnisse oder Zertifikate auflisten, wenn ihr Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch auf die Key Vault-Auswahl anderer Azure-Dienste aus. Benutzer können möglicherweise eine Liste von Schlüsseltresoren einsehen, aber keine Schlüssel auflisten, wenn Firewallregeln ihren Clientcomputer blockieren.
+> Nachdem Firewallregeln in Kraft sind, können Benutzer nur Vorgänge auf Key Vault-[Datenebene](security-features.md#privileged-access) ausführen, wenn ihre Anforderungen aus zulässigen virtuellen Netzwerken oder IPv4-Adressbereichen stammen. Dies gilt auch für den Zugriff auf den Schlüsseltresor aus dem Azure-Portal. Obwohl Benutzer im Azure-Portal zu einem Schlüsseltresor navigieren können, können sie möglicherweise keine Schlüssel, Geheimnisse oder Zertifikate auflisten, wenn ihr Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch auf die Key Vault-Auswahl anderer Azure-Dienste aus. Benutzer können möglicherweise eine Liste von Schlüsseltresoren einsehen, aber keine Schlüssel auflisten, wenn Firewallregeln ihren Clientcomputer blockieren.
 
 > [!NOTE]
 > Bedenken Sie dabei folgende Konfigurationseinschränkungen:
@@ -175,4 +175,4 @@ Im Folgenden finden Sie Anweisungen zum Konfigurieren von Key Vault-Firewalls un
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [VNET-Dienstendpunkte für Key Vault](overview-vnet-service-endpoints.md)
-* [Azure Key Vault-Sicherheitsübersicht](security-overview.md)
+* [Azure Key Vault-Sicherheitsübersicht](security-features.md)

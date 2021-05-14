@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: cb0ac41d469ad9a7670ce4b1bae23b315a17dc38
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c9102f8ca724e431bb478945c5f4ba0369643d6
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871074"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714834"
 ---
 # <a name="create-and-manage-projects"></a>Erstellen und Verwalten von Projekten
 
@@ -46,9 +46,13 @@ Richten Sie ein neues Projekt in einem Azure-Abonnement ein.
 5. Wählen Sie unter **Projekt erstellen** das Azure-Abonnement und die Ressourcengruppe aus. Falls noch keine vorhanden ist, erstellen Sie eine Ressourcengruppe.
 6. Geben Sie unter **Projektdetails** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten.
     - Die geografische Region wird nur zum Speichern der Metadaten verwendet, die von den lokalen Servern erfasst werden. Bei der Migration kann eine beliebige Zielregion ausgewählt werden. 
-    - Beachten Sie die unterstützten geografischen Regionen für [öffentliche Clouds](migrate-support-matrix.md#supported-geographies-public-cloud) und [Azure Government-Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
+    - Beachten Sie die unterstützten geografischen Regionen für [öffentliche Clouds](migrate-support-matrix.md#supported-geographies-public-cloud) und [Azure Government-Clouds](migrate-support-matrix.md#supported-geographies-azure-government). 
 
-8. Klicken Sie auf **Erstellen**.
+
+    > [!Note]
+    > Erstellen Sie im Abschnitt **Erweiterte Konfiguration** ein Azure Migrate-Projekt mit Verbindungen über private Endpunkte. [Weitere Informationen](how-to-use-azure-migrate-with-private-endpoints.md#create-a-project-with-private-endpoint-connectivity) 
+
+7. Klicken Sie auf **Erstellen**.
 
      :::image type="content" source="./media/create-manage-projects/project-details.png" alt-text="Seite für die Eingabe der Projekteinstellungen":::
 

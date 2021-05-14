@@ -6,43 +6,43 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 03/03/2021
+ms.date: 04/29/2021
 ms.author: zxue
-ms.openlocfilehash: c73e11d8f89e50c77b5a140a5f77c749f8a092b6
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 248d499d166c6e397ef422b5ff653709b8b075e9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019264"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733449"
 ---
 # <a name="configure-private-link"></a>Konfigurieren von Private Link
 
-Private Link ermöglicht Ihnen den Zugriff auf Azure API for FHIR über einen privaten Endpunkt, eine Netzwerkschnittstelle, die Sie privat und sicher über eine private IP-Adresse aus Ihrem virtuellen Netzwerk verbindet. Mit Private Link können Sie sicher aus Ihrem VNet auf unsere Dienste als Erstanbieterdienst zugreifen, ohne ein öffentliches DNS passieren zu müssen. Dieser Artikel führt Sie durch die Schritte zum Erstellen, Testen und Verwalten Ihres privaten Endpunkts für die Azure API for FHIR.
+Private Link ermöglicht Den Zugriff auf Azure API for FHIR über einen privaten Endpunkt. Dabei handelt es sich um eine Netzwerkschnittstelle, die Sie privat und sicher über eine private IP-Adresse aus Ihrem virtuellen Netzwerk verbindet. Mit privatem Link können Sie sicher über Ihr VNET als Erstanbieterdienst auf unsere Dienste zugreifen, ohne ein öffentliches Domain Name System (DNS) verwenden zu müssen. In diesem Artikel wird beschrieben, wie Sie Ihren privaten Endpunkt für ihre Azure API for FHIR.
 
 >[!Note]
->Weder der private Link noch die Azure-API für fhir können nach Aktivierung des privaten Links aus einer Ressourcengruppe oder einem anderen Abonnement in einen anderen verschoben werden. Zum Verschieben Löschen Sie zuerst den privaten Link, verschieben Sie dann die Azure-API für fhir, und erstellen Sie einen neuen privaten Link, sobald der Vorgang beendet ist. Bewerten Sie potenzielle Sicherheits Konsequenzen, bevor Sie den privaten Link löschen.
+>Weder Private Link noch Azure API for FHIR kann nach Aktivierung von Private Link aus einer Ressourcengruppe in eine andere oder einem Abonnement in ein anderes verschoben werden. Um eine Bewegung zu machen, löschen Sie zuerst die Private Link, und verschieben Sie dann Azure API for FHIR. Erstellen Sie eine neue Private Link, sobald die Bewegung abgeschlossen ist. Bewerten Sie potenzielle Sicherheitskonsequenzen, bevor Sie die Private Link-Instanz löschen.
 >
->Wenn Sie das Exportieren von Überwachungsprotokollen und/oder Metriken für die Azure-API für die Azure-API aktivieren, aktualisieren Sie die Export Einstellung über die Diagnose Einstellungen im Portal.
+>Wenn das Exportieren von Überwachungsprotokollen und Metriken für Azure API for FHIR aktiviert ist, aktualisieren Sie die Exporteinstellung über Diagnoseeinstellungen **aus** dem Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vor dem Erstellen eines privaten Endpunkts müssen zunächst ein paar Azure-Ressourcen erstellen:
+Bevor Sie einen privaten Endpunkt erstellen, müssen Sie zunächst einige Azure-Ressourcen erstellen:
 
 - Ressourcengruppe: Die Ressourcengruppe, die das virtuelle Netzwerk und den privaten Endpunkt enthalten soll.
 - Azure API for FHIR: Die FHIR-Ressource, die Sie hinter einem privaten Endpunkt platzieren möchten.
 - Virtuelles Netzwerk: Das VNet, mit dem Ihre Clientdienste und der private Endpunkt verbunden werden.
 
-Weitere Informationen finden Sie in der [Dokumentation zu Private Link](../../private-link/index.yml).
+Weitere Informationen finden Sie in [Private Link Dokumentation.](../../private-link/index.yml)
 
 ## <a name="disable-public-network-access"></a>Deaktivieren des Zugriffs auf das öffentliche Netzwerk
 
-Wenn Sie einen privaten Endpunkt für Ihre FHRI-Ressource erstellen, wird der öffentliche Datenverkehr zu diesem nicht automatisch deaktiviert. Zu diesem Zweck müssen Sie Ihre FHIR-Ressource aktualisieren, um eine neue „Public Access“-Eigenschaft (Öffentlicher Zugriff) von „Aktiviert“ auf „Deaktiviert“ festzulegen. Gehen Sie bei der Deaktivierung des Zugriffs aus öffentlichen Netzwerken sorgfältig vor, da alle Anforderungen an Ihren FHIR-Dienst, die nicht von einem ordnungsgemäß konfigurierten privaten Endpunkt stammen, abgelehnt werden. Nur Datenverkehr von Ihren privaten Endpunkten ist zulässig.
+Wenn Sie einen privaten Endpunkt für Ihre FHIR-Ressource erstellen, wird öffentlicher Datenverkehr nicht automatisch deaktiviert. Hierzu müssen Sie Ihre FHIR-Ressource aktualisieren, um die neue Eigenschaft "Öffentlicher Zugriff" von "Aktiviert" auf "Deaktiviert" zu setzen. Gehen Sie bei der Deaktivierung des Zugriffs aus öffentlichen Netzwerken sorgfältig vor, da alle Anforderungen an Ihren FHIR-Dienst, die nicht von einem ordnungsgemäß konfigurierten privaten Endpunkt stammen, abgelehnt werden. Nur Datenverkehr von Ihren privaten Endpunkten ist zulässig.
 
-![Deaktivieren des Zugriffs aus öffentlichen Netzwerken](media/private-link/private-link-disable.png)
+:::image type="content" source="media/private-link/private-link-disable.png" alt-text="Deaktivieren Sie den Zugriff auf öffentliche Netzwerke.":::
 
 ## <a name="create-private-endpoint"></a>Erstellen eines privaten Endpunkts
 
-Zum Erstellen eines privaten Endpunkts kann ein Entwickler mit RBAC-Berechtigungen für die FHIR-Ressource das Azure-Portal, die [Azure PowerShell](../../private-link/create-private-endpoint-powershell.md) oder die [Azure CLI](../../private-link/create-private-endpoint-cli.md) verwenden. Dieser Artikel führt Sie durch die Schritte zur Verwendung des Azure-Portals. Die Verwendung des Azure-Portals wird empfohlen, da es die Erstellung und Konfiguration der privates DNS-Zone automatisiert. Weitere Informationen finden Sie unter [Schnellstarthandbücher zu Private Link](../../private-link/create-private-endpoint-portal.md).
+Zum Erstellen eines privaten Endpunkts kann ein Entwickler mit RBAC-Berechtigungen (Role-Based Access Control, rollenbasierte Zugriffssteuerung) für die FHIR-Ressource Azure-Portal, [Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)oder [Azure CLI.](../../private-link/create-private-endpoint-cli.md) Dieser Artikel führt Sie durch die Schritte zur Verwendung Azure-Portal. Die Verwendung der Azure-Portal wird empfohlen, da sie die Erstellung und Konfiguration der Privates DNS automatisiert. Weitere Informationen finden Sie unter [Private Link Schnellstart Handbücher.](../../private-link/create-private-endpoint-portal.md)
 
 Ein privater Endpunkt kann auf zwei Arten erstellt werden. Mit dem automatischen Genehmigungsflow kann ein Benutzer, der über RBAC-Berechtigungen für die FHIR-Ressource verfügt, einen privaten Endpunkt erstellen, ohne dass eine Genehmigung erforderlich ist. Mit dem manuellen Genehmigungsflow kann ein Benutzer ohne RBAC-Berechtigungen für die FHIR-Ressource die Genehmigung eines privaten Endpunkts bei Besitzern der FHIR-Ressource anfordern.
 
@@ -52,15 +52,15 @@ Stellen Sie sicher, dass die Region für den neuen privaten Endpunkt mit der Reg
 
 ![Registerkarte „Grundlagen“ im Azure-Portal](media/private-link/private-link-portal2.png)
 
-Suchen Sie für den „Ressourcentyp“ den Wert „Microsoft.HealthcareApis/services“, und wählen Sie ihn aus. Wählen Sie als „Ressource“ die FHIR-Ressource aus. Wählen Sie als „Zielunterressource“ den Wert „FHIR“ aus.
+Suchen Sie als Ressourcentyp nach **Microsoft.HealthcareApis/services, und wählen Sie diese Option aus.** Wählen Sie für die Ressource die FHIR-Ressource aus. Wählen Sie als Zielunterressource **FHIR aus.**
 
 ![Registerkarte „Ressource“ im Azure-Portal](media/private-link/private-link-portal1.png)
 
-Wenn Sie noch nicht über eine eingerichtete private DNS-Zone verfügen, wählen Sie „(New)privatelink.azurehealthcareapis.com“ aus. Wenn Sie Ihre private DNS-Zone bereits konfiguriert haben, können Sie diese in der Liste auswählen. Sie muss das Format „privatelink.azurehealthcareapis.com“ haben.
+Wenn sie noch nicht über eine Privates DNS Zone verfügen, wählen **Sie (Neu)privatelink.azurehealthcareapis.com.** Wenn Sie Ihre private DNS-Zone bereits konfiguriert haben, können Sie diese in der Liste auswählen. Sie muss das Format **privatelink.azurehealthcareapis.com** aufweisen.
 
 ![Registerkarte „Konfiguration“ im Azure-Portal](media/private-link/private-link-portal3.png)
 
-Nachdem die Bereitstellung abgeschlossen wurde, können Sie zur Registerkarte „Private Endpunktverbindungen“ zurückkehren, auf der nun „Genehmigt“ als Verbindungsstatus angezeigt wird.
+Nachdem die Bereitstellung abgeschlossen ist, können Sie zurück zur Registerkarte **Private Endpunktverbindungen** wechseln, deren Verbindungsstatus **Genehmigt** lautet.
 
 ### <a name="manual-approval"></a>Manuelle Genehmigung
 
@@ -74,24 +74,28 @@ Nachdem die Bereitstellung abgeschlossen wurde, können Sie zur Registerkarte �
 
 ## <a name="test-private-endpoint"></a>Privaten Endpunkt testen
 
-Um sicherzustellen, dass Ihr FHIR-Server nach dem Deaktivieren des öffentlichen Netzwerkzugriffs keinen öffentlichen Datenverkehr mehr empfängt, versuchen Sie, von Ihrem Computer aus, den Endpunkt „/metadata“ für Ihren Server zu erreichen. Sie sollten einen Fehler „403 Verboten“ erhalten. Beachten Sie, dass es nach der Aktualisierung des Flags für den öffentlichen Netzwerkzugriff bis zu 5 Minuten dauern kann, bis öffentlicher Datenverkehr blockiert wird.
+Um sicherzustellen, dass Ihr FHIR-Server nach dem Deaktivieren des öffentlichen Netzwerkzugriffs keinen öffentlichen Datenverkehr empfängt, wählen Sie auf Ihrem Computer den Endpunkt /metadata für Ihren Server aus. Sie sollten einen Fehler „403 Verboten“ erhalten. 
 
-So stellen Sie sicher, dass Ihr privater Endpunkt Datenverkehr an Ihren Server senden kann
 
-1. Erstellen Sie einen virtuellen Computer, der mit dem virtuellen Netzwerk und Subnetz verbunden ist, in dem der private Endpunkt konfiguriert ist. Um sicherzustellen, dass Ihr Datenverkehr von dem virtuellen Computer nur das private Netzwerk verwendet, können Sie ausgehenden Internetdatenverkehr über eine Netzwerksicherheitsgruppen-Regel deaktivieren.
+> [!NOTE]
+> Es kann bis zu 5 Minuten dauern, nachdem das Öffentliche Netzwerkzugriffsflag aktualisiert wurde, bevor der öffentliche Datenverkehr blockiert wird.
+
+So stellen Sie sicher, dass Ihr privater Endpunkt Datenverkehr an Ihren Server senden kann:
+
+1. Erstellen Sie einen virtuellen Computer (VM), der mit dem virtuellen Netzwerk und Subnetz verbunden ist, in dem Ihr privater Endpunkt konfiguriert ist. Deaktivieren Sie den ausgehenden Internetdatenverkehr mithilfe der NSG-Regel (Netzwerksicherheitsgruppe), um sicherzustellen, dass ihr Datenverkehr von der VM nur das private Netzwerk verwendet.
 2. Greifen Sie per RDP auf die VM zu.
-3. Versuchen Sie, von Ihrem virtuellen Computer aus auf den Endpunkt „/metadata“ Ihres FHIR-Servers zuzugreifen. Sie sollten die Funktionsbestätigung als Antwort erhalten.
+3. Greifen Sie über den virtuellen Computer auf den Endpunkt /metadata Ihres FHIR-Servers zu. Sie sollten die Funktions-Anweisung als Antwort erhalten.
 
 ## <a name="manage-private-endpoint"></a>Verwalten eines privaten Endpunkts
 
 ### <a name="view"></a>Sicht
 
-Private Endpunkte und die zugeordnete NIC sind in Azure-Portal aus der Ressourcengruppe sichtbar, in der sie erstellt wurden.
+Private Endpunkte und der zugeordnete Netzwerkschnittstellencontroller (Network Interface Controller, NIC) sind in Azure-Portal aus der Ressourcengruppe sichtbar, in der sie erstellt wurden.
 
 ![„Ansicht“ in „Ressourcen“](media/private-link/private-link-view.png)
 
 ### <a name="delete"></a>Löschen
 
-Private Endpunkte können im Azure-Portal nur über das Blatt „Übersicht“ (wie unten) oder über die Option „Löschen“ auf der Registerkarte „Private Endpunktverbindungen“ von Netzwerk (Vorschau) gelöscht werden. Wenn Sie auf die Schaltfläche „Löschen“ klicken, werden der private Endpunkt und die zugehörige NIC gelöscht. Wenn Sie alle privaten Endpunkte zu der FHIR-Ressource löschen und der Zugriff aus dem öffentlichen Netzwerk deaktiviert ist, erreicht keine Anforderung mehr Ihren FHIR-Server.
+Private Endpunkte können nur aus dem Azure-Portal auf dem Blatt **Übersicht** gelöscht werden, oder indem Sie auf der Registerkarte Verbindungen mit **privaten Netzwerkendpunkten** die Option **Entfernen** auswählen. Wenn **Sie Entfernen** auswählen, werden der private Endpunkt und die zugeordnete NIC gelöscht. Wenn Sie alle privaten Endpunkte für die FHIR-Ressource und das öffentliche Netzwerk löschen, ist der Zugriff deaktiviert, und es erfolgt keine Anforderung an Ihren FHIR-Server.
 
 ![Löschen eines privaten Endpunkts](media/private-link/private-link-delete.png)

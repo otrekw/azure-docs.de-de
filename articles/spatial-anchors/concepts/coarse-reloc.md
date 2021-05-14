@@ -9,12 +9,12 @@ ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d2737f58fa95d1aa45d9952e8b501c1b9be4d1b0
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 3f0b04183c4df469d4f723486103790c4f97671b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600351"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104656174"
 ---
 # <a name="coarse-relocalization"></a>Ungefähre Standortbestimmung
 
@@ -22,7 +22,7 @@ Die ungefähre Standortbestimmung ist ein Feature für die umfangreiche Lokalisi
 - *Wo befindet sich zurzeit mein Gerät?* 
 - *Welchen Inhalt sollte ich beobachten?* 
  
-Die Antwort ist nicht präzise. Sie hat das folgende Format: *Sie befinden sich in der Nähe dieser Ankerpunkte. Versuchen Sie, einen von ihnen zu finden.*
+Die Antwort ist nicht präzise. Es ist in dieser Form: *Sie befinden sich in der Nähe dieser Anker. Versuchen Sie, einen von ihnen zu finden*.
 
 Bei der ungefähren Standortbestimmung werden Anker mit verschiedenen Messungen geräteinterner Sensoren getaggt, die später für schnelle Abfragen dienen. Bei Szenarios im Freien handelt es sich bei den Sensordaten üblicherweise um die GPS-Position des Geräts. Wenn GPS nicht verfügbar oder unzuverlässig ist (beispielsweise in Gebäuden), bestehen die Sensordaten aus den WLAN-Zugangspunkten und Bluetooth-Beacons in Reichweite. Alle gesammelten Sensordaten werden in einen räumlichen Index aufgenommen, mit dem Azure Spatial Anchors schnell ermitteln kann, welche Ankerpunkte sich in der Nähe Ihres Geräts befinden.
 
@@ -153,7 +153,7 @@ In der folgenden Tabelle wird der erwartete Suchbereich für jeden Sensortyp ges
 | **BLE-Beacons** |  70 m | Wird von der Reichweite des Beacons bestimmt. Wird von der Frequenz, Signalstärke, physischen Hindernissen, Interferenzen usw. beeinträchtigt. |
 
 <!-- Reference links in article -->
-[1]: https://developer.estimote.com/eddystone/
+[1]: https://developers.google.com/beacons/eddystone
 [2]: https://developer.apple.com/ibeacon/
 [3]: https://developer.android.com/reference/android/location/LocationManager
 [4]: https://developer.apple.com/documentation/corelocation/cllocationmanager?language=objc

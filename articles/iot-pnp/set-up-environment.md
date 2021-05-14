@@ -7,12 +7,12 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5446f8481439dabffe67f9b00b5f65b1da495746
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 28eedc02adad479a20bc54fb8b342035f3d5cb15
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742652"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325767"
 ---
 # <a name="quickstart-set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Schnellstart: Einrichten Ihrer Umgebung für die IoT Plug & Play-Schnellstarts und -Tutorials
 
@@ -22,9 +22,7 @@ Bevor Sie einen der Schnellstarts und eines der Tutorials zu IoT Plug & Play dur
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Damit Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) nicht lokal installieren müssen, können Sie die Clouddienste über die Azure Cloud Shell einrichten.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-h3](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
 ## <a name="create-the-resources"></a>Erstellen der Ressourcen
 

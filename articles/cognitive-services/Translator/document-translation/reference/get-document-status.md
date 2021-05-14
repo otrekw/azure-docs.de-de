@@ -1,5 +1,5 @@
 ---
-title: 'Dokumentübersetzung: Get-Document-Status-Methode'
+title: Methode „Abrufen des Dokumentstatus“
 titleSuffix: Azure Cognitive Services
 description: Die Methode „Get Document Status“ gibt den Status für ein bestimmtes Dokument zurück.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 79bc3d076c1a7e164cab9c3231b29be84370e04a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4c6e82af46a012ad53dfa1cc1db1252ef2c0443e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105613790"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864935"
 ---
-# <a name="document-translation-get-document-status"></a>Dokumentübersetzung: Get-Document-Status-Methode
+# <a name="get-document-status"></a>Abrufen des Dokumentstatus
 
 Die Methode „Get Document Status“ gibt den Status für ein bestimmtes Dokument zurück. Die Methode gibt den Übersetzungsstatus für ein bestimmtes Dokument basierend auf der Anforderungs-ID und der Dokument-ID zurück.
 
@@ -67,7 +67,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 ### <a name="successful-get-document-status-response"></a>Erfolgreiche Antwort zum Get-Dokument Status
 
-|Name|Typ|Beschreibung|
+|Name|type|Beschreibung|
 |--- |--- |--- |
 |path|Zeichenfolge|Speicherort des Dokuments oder des Ordners.|
 |createdDateTimeUtc|Zeichenfolge|Das Datum und die Uhrzeit des Vorgangs.|
@@ -80,7 +80,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|Typ|Beschreibung|
+|Name|type|Beschreibung|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|

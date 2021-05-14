@@ -12,12 +12,12 @@ ms.date: 7/10/2020
 ms.author: iangithinji
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcd137030e4e1f3e88f47ec5ba78b3bde08fe068
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 7e8cf0459ecdf93251d1d59a9396b6ee11b7701c
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107373977"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108160815"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Maßnahmen bei verdächtigen Anwendungen oder Anwendungen mit zu vielen Berechtigungen in Azure Active Directory
 
@@ -32,14 +32,13 @@ Zum Ausführen der folgenden Aktionen müssen Sie sich als globaler Administrato
 Um den Zugriff auf Anwendungen zu beschränken, benötigen Sie die Benutzerzuweisung, und weisen Sie dann Benutzer oder Gruppen der Anwendung zu.  Weitere Informationen finden Sie unter [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](./assign-user-or-group-access-portal.md).
 
 Über das Azure AD-Portal können Sie kontextbezogene PowerShell-Skripts abrufen, um die Aktionen auszuführen.
- 
+
 1. Melden Sie sich globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** aus.
 3. Wählen Sie die Anwendung aus, für die ein eingeschränkter Zugriff eingerichtet werden sollen.
 4. Wählen Sie **Berechtigungen** aus. Klicken Sie in der Befehlsleiste auf **Berechtigungen überprüfen**.
 
 ![Screenshot des Fensters „Berechtigungen überprüfen“](./media/manage-application-permissions/review-permissions.png)
-
 
 ## <a name="control-access-to-an-application"></a>Steuern des Zugriffs auf eine Anwendung
 
@@ -86,8 +85,7 @@ Optional können Sie mithilfe von PowerShell folgende Aktionen ausführen:
 
 Alternativ können Sie auch die Anwendung deaktivieren, um den Zugriff von Benutzern auf die Anwendung und den Zugriff der Anwendung auf Ihre Daten zu verhindern.
 
-
-## <a name="disable-a-malicious-application"></a>Deaktivieren einer bösartigen Anwendung 
+## <a name="disable-a-malicious-application"></a>Deaktivieren einer bösartigen Anwendung
 
 Wir empfehlen, die Anwendung zu deaktivieren, um den Benutzerzugriff zu blockieren und den Zugriff der Anwendung auf Ihre Daten zu verhindern. Wenn Sie stattdessen die Anwendung löschen, können Benutzer der Anwendung erneut zustimmen und Zugriff auf Ihre Daten gewähren.
 
@@ -98,7 +96,6 @@ Wir empfehlen, die Anwendung zu deaktivieren, um den Benutzerzugriff zu blockier
 
 ### <a name="powershell-commands"></a>PowerShell-Befehle
 
-
 Rufen Sie die Objekt-ID des Dienstprinzipals ab.
 
 1. Melden Sie sich globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
@@ -106,12 +103,14 @@ Rufen Sie die Objekt-ID des Dienstprinzipals ab.
 3. Wählen Sie die Anwendung aus, für die ein eingeschränkter Zugriff eingerichtet werden sollen.
 4. Wählen Sie **Eigenschaften** aus, und kopieren Sie dann die Objekt-ID.
 
-```powershell
-$sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
-$sp.ObjectId
-```
+   ```powershell
+   $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
+   $sp.ObjectId
+   ```
+
 Entfernen Sie alle Benutzer, die der Anwendung zugewiesen sind.
- ```powershell
+
+```powershell
 Connect-AzureAD
 
 # Get Service Principal using objectId
@@ -128,7 +127,7 @@ $assignments | ForEach-Object {
         Remove-AzureADGroupAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
     }
 }
- ```
+```
 
 Widerrufen Sie die Berechtigungen, die der Anwendung erteilt wurden.
 
@@ -154,7 +153,9 @@ $spApplicationPermissions | ForEach-Object {
     Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
 }
 ```
+
 Machen Sie die Aktualisierungstoken ungültig.
+
 ```powershell
 Connect-AzureAD
 
@@ -169,7 +170,9 @@ $assignments | ForEach-Object {
     Revoke-AzureADUserAllRefreshToken -ObjectId $_.PrincipalId
 }
 ```
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 - [Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen](manage-consent-requests.md)
 - [Konfigurieren der Benutzereinwilligung](configure-user-consent.md)
 - [Konfigurieren des Workflows für die Administratoreinwilligung](configure-admin-consent-workflow.md)

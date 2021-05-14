@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: a18ee02b5e91b628a25655949a652270bd7436c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5fd0fdd5a6f9a4a7537a844b096efdfef253638
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100575151"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816852"
 ---
 # <a name="monitor-azure-machine-learning"></a>Überwachen von Azure Machine Learning
 
@@ -24,8 +24,8 @@ Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfüge
 > [!TIP]
 > Die Informationen in diesem Dokument richten sich in erster Linie an __Administratoren__, da hier die Überwachung für Azure Machine Learning Service und zugehörige Azure-Dienste beschrieben wird. Wenn Sie __Datenanalyst__ oder __Entwickler__ sind und spezifische Informationen zu Ihren *Modelltrainingsausführungen* überwachen möchten, sehen Sie sich die folgenden Artikel an:
 >
-> * [Starten, Überwachen und Abbrechen von Trainingsausführungen in Python](how-to-manage-runs.md)
-> * [Protokollieren von Metriken für Trainingsausführungen](how-to-track-experiments.md)
+> * [Starten, Überwachen und Abbrechen von Trainingsausführungen in Python](how-to-track-monitor-analyze-runs.md)
+> * [Protokollieren von Metriken für Trainingsausführungen](how-to-log-view-metrics.md)
 > * [Nachverfolgen von Experimenten mit MLflow](how-to-use-mlflow.md)
 > * [Visualisieren von Experimentausführungen und -metriken mit TensorBoard und Azure Machine Learning](how-to-monitor-tensorboard.md)
 >
@@ -69,7 +69,7 @@ Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Az
 
 Sie können die folgenden Protokolle für Azure Machine Learning konfigurieren:
 
-| Kategorie | BESCHREIBUNG |
+| Kategorie | Beschreibung |
 |:---|:---|
 | AmlComputeClusterEvent | Ereignisse von Azure Machine Learning-Computeclustern |
 | AmlComputeClusterNodeEvent | Ereignisse von Knoten in einem Azure Machine Learning-Computecluster |
@@ -109,7 +109,7 @@ Um Azure Monitor Log Analytics verwenden zu können, müssen Sie eine Diagnoseko
 
 Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Tabelle ihren eigenen Satz eindeutiger Eigenschaften hat. In Azure Machine Learning werden Daten in den folgenden Tabellen gespeichert:
 
-| Tabelle | BESCHREIBUNG |
+| Tabelle | Beschreibung |
 |:---|:---|
 | AmlComputeClusterEvent | Ereignisse von Azure Machine Learning-Computeclustern |
 | AmlComputeClusterNodeEvent | Ereignisse von Knoten in einem Azure Machine Learning-Computecluster |

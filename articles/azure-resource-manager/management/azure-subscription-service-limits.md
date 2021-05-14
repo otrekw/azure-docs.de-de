@@ -2,13 +2,13 @@
 title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 4dd62c926cce765ebc2b21378308650e313716ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 8aad2f885c39d6f5ecd237a6167363b0efe8cef4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471019"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290384"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -34,9 +34,9 @@ Bei [Abonnements mit einer kostenlosen Testversion](https://azure.microsoft.com/
 
 Einige Grenzwerte werden auf Regionsebene verwaltet.
 
-Verwenden wir vCPU-Kontingente als Beispiel. Sie müssen festlegen, wie viele vCPUs Sie in welchen Regionen verwenden möchten, um eine Kontingenterhöhung mit vCPU-Unterstützung anzufordern. Dann fordern Sie explizit vCPU-Kontingente für Azure-Ressourcengruppen in der benötigten Menge für die gewünschten Regionen an. Wenn Sie für die Ausführung Ihrer Anwendung 30 vCPUs in „Europa, Westen“ benötigen, fordern Sie 30 vCPUs in „Europa, Westen“ an. Ihr vCPU-Kontingent erhöht sich in anderen Regionen nicht. Das Kontingent von 30 vCPUs gilt nur für „Europa, Westen“.
+Verwenden wir vCPU-Kontingente als Beispiel. Sie müssen festlegen, wie viele vCPUs Sie in welchen Regionen verwenden möchten, um eine Kontingenterhöhung mit vCPU-Unterstützung anzufordern. Dann können Sie eine Erhöhung der vCPU-Kontingente für die gewünschte Anzahl und die gewünschten Regionen anfordern. Wenn Sie für die Ausführung Ihrer Anwendung 30 vCPUs in „Europa, Westen“ benötigen, fordern Sie 30 vCPUs in „Europa, Westen“ an. Ihr vCPU-Kontingent erhöht sich in anderen Regionen nicht. Das Kontingent von 30 vCPUs gilt nur für „Europa, Westen“.
 
-Deshalb sollten Sie entscheiden, welche Kontingente für Azure-Ressourcengruppen Sie für Ihre Workload in der jeweiligen Region benötigen. Fordern Sie dann diese Anzahl in jeder Region an, in der Sie bereitstellen möchten. Informationen zum Ermitteln Ihrer aktuellen Kontingente für bestimmte Regionen finden Sie unter [Behandeln von Fehlern bei Ressourcenkontingenten](../templates/error-resource-quota.md).
+Entscheiden Sie daher, welche Kontingente Sie für Ihre Workload in jeder Region benötigen. Fordern Sie dann diese Anzahl in jeder Region an, in der Sie bereitstellen möchten. Informationen zum Ermitteln Ihrer aktuellen Kontingente für bestimmte Regionen finden Sie unter [Behandeln von Fehlern bei Ressourcenkontingenten](../templates/error-resource-quota.md).
 
 ## <a name="general-limits"></a>Allgemeine Grenzwerte
 
@@ -366,7 +366,7 @@ Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [Ressou
 
 ## <a name="azure-synapse-analytics-limits"></a>Grenzwerte für Azure Synapse Analytics
 
-Informationen zu den Grenzwerten für Azure Synapse Analytics finden Sie unter [Azure Synapse-Ressourcenlimits](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+[!INCLUDE [synapse-analytics-limits](../../../includes/synapse-analytics-limits.md)]
 
 ## <a name="azure-files-and-azure-file-sync"></a>Azure Files und Azure-Dateisynchronisierung
 Informationen zu den Limits für Azure Files und Azure-Dateisynchronisierung finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](../../storage/files/storage-files-scale-targets.md).

@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: caya
-ms.openlocfilehash: 95534760c09ca9e1f7f09d6079886216127c7eb0
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fdebc0cf22b317fa33b5d65383ef3bcc9b57e905
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106230859"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315973"
 ---
 # <a name="configure-mutual-authentication-with-application-gateway-through-powershell-preview"></a>Konfigurieren der gegenseitigen Authentifizierung in Application Gateway mit PowerShell (Vorschau)
 In diesem Artikel wird beschrieben, wie Sie PowerShell verwenden, um die gegenseitige Authentifizierung auf Ihrer Application Gateway-Instanz zu konfigurieren. Gegenseitige Authentifizierung bedeutet Folgendes: Application Gateway authentifiziert den Client, der die Anforderung sendet, indem das Clientzertifikat verwendet wird, das Sie auf die Application Gateway-Instanz hochladen. 

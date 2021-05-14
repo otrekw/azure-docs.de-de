@@ -1,22 +1,22 @@
 ---
-title: Azure Monitor für Netzwerke
-description: Eine Übersicht über Azure Monitor für Netzwerke, das eine umfassende Ansicht der Integrität und Metriken für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration bietet.
+title: Azure Monitor Netzwerk-Insights
+description: Ein Überblick über Azure Monitor Network Insights, das eine umfassende Ansicht des Zustands und der Metriken für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration bietet.
 ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 20f61ad92307a16515156151b816494e9aa289f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f401c143f1f5a9352b56b80f9e473bd7fa819245
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717467"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968253"
 ---
-# <a name="azure-monitor-for-networks"></a>Azure Monitor für Netzwerke
+# <a name="azure-monitor-network-insights"></a>Azure Monitor Netzwerk-Insights
 
-Azure Monitor für Netzwerke bietet eine umfassende Ansicht der [Integrität](../../service-health/resource-health-checks-resource-types.md) und [Metriken](../essentials/metrics-supported.md) für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration. Außerdem erhalten Sie Zugriff auf Netzwerküberwachungsfunktionen wie [Verbindungsmonitor](../../network-watcher/connection-monitor-overview.md), [Datenflussprotokollierung für Netzwerksicherheitsgruppen (NSGs)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) und [Traffic Analytics](../../network-watcher/traffic-analytics.md). Zudem werden weitere Features für die [Netzwerkdiagnose](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) bereitgestellt.
+Azure Monitor Network Insights bietet eine umfassende Übersicht der [Integrität](../../service-health/resource-health-checks-resource-types.md) und [Metriken](../essentials/metrics-supported.md) für alle bereitgestellten Netzwerkressourcen, ohne dass eine Konfiguration erforderlich ist. Außerdem erhalten Sie Zugriff auf Netzwerküberwachungsfunktionen wie [Verbindungsmonitor](../../network-watcher/connection-monitor-overview.md), [Datenflussprotokollierung für Netzwerksicherheitsgruppen (NSGs)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) und [Traffic Analytics](../../network-watcher/traffic-analytics.md). Zudem werden weitere Features für die [Netzwerkdiagnose](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) bereitgestellt.
 
-Azure Monitor für Netzwerke umfasst die folgenden Hauptkomponenten der Überwachung:
+Azure Monitor Network Insights ist um diese Schlüsselkomponenten der Überwachung herum aufgebaut:
 - [Netzwerkintegrität und Metriken](#networkhealth)
 - [Konnektivität](#connectivity)
 - [Verkehr](#traffic)
@@ -24,7 +24,7 @@ Azure Monitor für Netzwerke umfasst die folgenden Hauptkomponenten der Überwac
 
 ## <a name="network-health-and-metrics"></a><a name="networkhealth"></a>Netzwerkintegrität und Metriken
 
-Die Seite **Übersicht** von Azure Monitor für Netzwerke bietet eine einfache Möglichkeit, Ihren Bestand an Netzwerkressourcen zusammen mit der Ressourcenintegrität und Warnungen visuell darzustellen. Sie enthält vier Hauptfunktionsbereiche: „Suchen und Filtern“, „Ressourcenintegrität und Metriken“, „Warnungen“ und „Abhängigkeitsansicht“.
+Die **Übersichtsseite** von Azure Monitor Network Insights bietet eine einfache Möglichkeit, das Inventar Ihrer Netzwerkressourcen zusammen mit dem Status der Ressourcen und Warnungen zu visualisieren. Sie enthält vier Hauptfunktionsbereiche: „Suchen und Filtern“, „Ressourcenintegrität und Metriken“, „Warnungen“ und „Abhängigkeitsansicht“.
 
 [![Screenshot: Seite „Übersicht“](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png#lightbox)
 
@@ -33,17 +33,17 @@ Sie können die Ansicht für Ressourcenintegrität und Warnungen mithilfe von Fi
 
 Mit dem Suchfeld können Sie nach Ressourcen und deren zugeordneten Ressourcen suchen. Beispielsweise ist einem Anwendungsgateway eine öffentliche IP-Adresse zugeordnet. Bei einer Suche nach dem DNS-Namen der öffentlichen IP-Adresse werden sowohl die öffentliche IP-Adresse als auch das zugeordnete Anwendungsgateway zurückgegeben:
 
-[![Screenshot der Suchergebnisse in Azure Monitor für Netzwerke](media/network-insights-overview/search.png)](media/network-insights-overview/search.png#lightbox)
+[![Screenshot, der die Suchergebnisse von Azure Monitor Network Insights anzeigt.](media/network-insights-overview/search.png)](media/network-insights-overview/search.png#lightbox)
 
 
 ### <a name="resource-health-and-metrics"></a>Ressourcenintegrität und Metriken
 Im folgenden Beispiel stellt jede Kachel einen Ressourcentyp dar. Die Kachel zeigt die Anzahl der Instanzen dieses Ressourcentyps, die in allen ausgewählten Abonnements bereitgestellt werden. Außerdem wird der Integritätsstatus der Ressource angezeigt. In diesem Beispiel werden 105 ER-und VPN-Verbindungen bereitgestellt. Davon sind 103 fehlerfrei und 2 nicht verfügbar.
 
-![Screenshot der Ressourcenintegrität und Metriken in Azure Monitor für Netzwerke](media/network-insights-overview/resource-health.png)
+![Screenshot, der den Ressourcenstatus und die Metriken in Azure Monitor Network Insights anzeigt.](media/network-insights-overview/resource-health.png)
 
 Wenn Sie die nicht verfügbaren ER- und VPN-Verbindungen auswählen, wird eine Metrikansicht angezeigt: 
 
-![Screenshot der Metrikansicht in Azure Monitor für Netzwerke](media/network-insights-overview/metric-view.png)
+![Screenshot, der die Metrik-Ansicht in Azure Monitor Network Insights anzeigt.](media/network-insights-overview/metric-view.png)
 
 Sie können ein beliebiges Element in der Rasteransicht auswählen. Wählen Sie das Symbol in der Spalte **Integrität** aus, um die Ressourcenintegrität für diese Verbindung abzurufen. Wählen Sie den Wert in der Spalte **Warnung** aus, um zur Seite mit Warnungen und Metriken für die Verbindung zu gelangen. 
 
@@ -53,19 +53,19 @@ Das Feld **Warnung** rechts auf der Seite bietet eine Übersicht über alle Warn
 ### <a name="dependency-view"></a>Abhängigkeitsansicht
 Mithilfe der Abhängigkeitsansicht können Sie die Konfiguration einer Ressource visuell darstellen. Die Abhängigkeitsansicht ist derzeit für Azure Application Gateway, Azure Virtual WAN und Azure Load Balancer verfügbar. Im Fall von Application Gateway können Sie beispielsweise auf die Abhängigkeitsansicht zugreifen, indem Sie in der Rasteransicht der Metriken den Namen der Application Gateway-Ressource auswählen. Das Gleiche gilt für Virtual WAN und Load Balancer.
 
-![Screenshot der Application Gateway-Ansicht in Azure Monitor für Netzwerke](media/network-insights-overview/application-gateway.png)
+![Screenshot, der die Anwendungs-Gateway-Ansicht in Azure Monitor Network Insights anzeigt.](media/network-insights-overview/application-gateway.png)
 
 Die Abhängigkeitsansicht für Application Gateway bietet eine vereinfachte Übersicht darüber, wie die Front-End-IP-Adressen mit den Listenern, den Regeln und dem Back-End-Pool verbunden sind. Die Verbindungslinien sind farbcodiert und stellen zusätzliche Details basierend auf der Integrität des Back-End-Pools bereit. Die Ansicht bietet auch eine detaillierte Übersicht über Application Gateway-Metriken und Metriken für alle zugehörigen Back-End-Pools wie VM-Skalierungsgruppen und VM-Instanzen.
 
-[![Screenshot der Abhängigkeitsansicht in Azure Monitor für Netzwerke](media/network-insights-overview/dependency-view.png)](media/network-insights-overview/dependency-view.png#lightbox)
+[![Screenshot, der die Abhängigkeitenansicht in Azure Monitor Network Insights anzeigt.](media/network-insights-overview/dependency-view.png)](media/network-insights-overview/dependency-view.png#lightbox)
 
 Das Abhängigkeitsdiagramm bietet eine einfache Navigation zu Konfigurationseinstellungen. Klicken Sie mit der rechten Maustaste auf einen Back-End-Pool, um auf weitere Informationen zuzugreifen. Wenn es sich beim Back-End-Pool beispielsweise um eine VM handelt, können Sie direkt auf VM Insights und die Fehlerbehebung für Azure Network Watcher-Verbindungen zugreifen, um Verbindungsprobleme zu ermitteln:
 
-![Screenshot des Menüs in der Abhängigkeitsansicht in Azure Monitor für Netzwerke](media/network-insights-overview/dependency-view-menu.png)
+![Screenshot, der das Menü der Abhängigkeitsansicht in Azure Monitor Network Insights anzeigt.](media/network-insights-overview/dependency-view-menu.png)
 
 Die Such- und Filterleiste in der Abhängigkeitsansicht bietet eine einfache Möglichkeit, das Diagramm zu durchsuchen. Wenn Sie z. B. im vorherigen Beispiel nach **AppGWTestRule** suchen, wird die Ansicht auf alle über AppGWTestRule verbundenen Knoten eingegrenzt:
 
-![Screenshot mit einem Beispiel für eine Suche in Azure Monitor für Netzwerke](media/network-insights-overview/search-example.png)
+![Screenshot, das ein Beispiel für eine Suche in Azure Monitor Network Insights anzeigt.](media/network-insights-overview/search-example.png)
 
 Mithilfe verschiedener Filter können Sie die Ansicht auf einen bestimmten Pfad und Zustand eingrenzen. Wählen Sie z. B. in der Liste **Integritätsstatus** nur **Fehlerhaft** aus, um alle Edge-Geräte anzuzeigen, die den Status „fehlerhaft“ aufweisen.
 
@@ -75,15 +75,15 @@ Wählen Sie **Detaillierte Metriken anzeigen** aus, um eine vorkonfigurierte Arb
 
 Auf der Registerkarte **Konnektivität** können Sie auf einfache Weise alle über [Verbindungsmonitor](../../network-watcher/connection-monitor-overview.md) und Verbindungsmonitor (klassisch) konfigurierten Tests für den ausgewählten Satz von Abonnements visualisieren.
 
-![Screenshot der Registerkarte „Konnektivität“ in Azure Monitor für Netzwerke](media/network-insights-overview/azure-monitor-for-networks-connectivity-tab.png)
+![Screenshot, der die Registerkarte Konnektivität in Azure Monitor Network Insights anzeigt.](media/network-insights-overview/azure-monitor-for-networks-connectivity-tab.png)
 
 Die Tests sind in den Kacheln **Quellen** und **Ziele** gruppiert und zeigen den Status der Erreichbarkeit für jeden Test an. Erreichbarkeitseinstellungen bieten einfachen Zugriff auf Konfigurationen für die Erreichbarkeitskriterien auf Grundlage der Überprüfungen mit Fehlern (%) und Roundtripzeit (ms). Nachdem Sie die Werte festgelegt haben, wird der Status für jeden Test basierend auf den Auswahlkriterien aktualisiert.
 
-[![Screenshot der Konnektivitätstests in Azure Monitor für Netzwerke](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png#lightbox)
+[![Screenshot, der Konnektivitätstests in Azure Monitor Network Insights anzeigt.](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png#lightbox)
 
 Sie können eine beliebige Quell- oder Zielkachel auswählen, um eine Metrikansicht zu öffnen:
 
-[![Screenshot der Konnektivitätsmetriken in Azure Monitor für Netzwerke](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png#lightbox)
+[![Screenshot, der Konnektivitätsmetriken in Azure Monitor Network Insights anzeigt.](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png#lightbox)
 
 
 Sie können ein beliebiges Element in der Rasteransicht auswählen. Wählen Sie das Symbol in der Spalte **Erreichbarkeit** aus, um zur Portalseite „Verbindungsmonitor“ zu gelangen und die Hop-by-Hop-Topologie sowie die identifizierten Konnektivitätsprobleme anzuzeigen. Wählen Sie den Wert in der Spalte **Warnung** aus, um zu Warnungen zu gelangen. Wählen Sie die Diagramme in den Spalten **Fehler bei Überprüfungen in Prozent** und **Roundtripzeit (ms)** aus, um zur Seite mit Metriken für den ausgewählten Verbindungsmonitor zu wechseln.
@@ -93,11 +93,11 @@ Das Feld  **Warnung** rechts auf der Seite bietet eine Übersicht über alle W
 ## <a name="traffic"></a><a name="traffic"></a>Verkehr
 Die Registerkarte **Datenverkehr** ermöglicht den Zugriff auf alle für [NSG-Datenflussprotokolle](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) und [Traffic Analytics](../../network-watcher/traffic-analytics.md) konfigurierten NSGs für den ausgewählten Satz von Abonnements gruppiert nach Standort. Die Suchfunktion auf dieser Registerkarte ermöglicht Ihnen die Identifizierung der NSGs, die für die gesuchte IP-Adresse konfiguriert sind. Sie können eine beliebige IP-Adresse in Ihrer Umgebung suchen. In der regionalen Kachelansicht werden alle NSGs zusammen mit den NSG-Datenflussprotokollen und dem Konfigurationsstatus von Traffic Analytics angezeigt.
 
-[![Screenshot der Registerkarte „Datenverkehr“ in Azure Monitor für Netzwerke](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png#lightbox)
+[![Screenshot, der die Registerkarte „Traffic" in Azure Monitor Network Insights anzeigt.](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png#lightbox)
 
 Wenn Sie eine Regionskachel auswählen, wird eine Rasteransicht angezeigt. Das Raster bietet NSG-Datenflussprotokolle und Traffic Analytics in einer Ansicht, die leicht zu lesen und zu konfigurieren ist:  
 
-[![Screenshot der Regionsansicht des Datenverkehrs in Azure Monitor für Netzwerke](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png#lightbox)
+[![Screenshot, der die Ansicht der Verkehrsregion in Azure Monitor Network Insights anzeigt.](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png#lightbox)
 
 Sie können ein beliebiges Element in der Rasteransicht auswählen. Wählen Sie das Symbol in der Spalte **Datenflussprotokoll-Konfigurationsstatus** aus, um das NSG-Datenflussprotokoll und die Traffic Analytics-Konfiguration zu bearbeiten. Wählen Sie den Wert in der Spalte **Warnung** aus, um zu den für die ausgewählte NSG konfigurierten Datenverkehrswarnungen zu gelangen. Auf ähnliche Weise können Sie die Traffic Analytics-Ansicht aufrufen, indem Sie den **Traffic Analytics-Arbeitsbereich** auswählen.  
 
@@ -108,15 +108,17 @@ Das Diagnosetoolkit bietet Zugriff auf alle Diagnosefeatures, die für das Behan
 
 ![Screenshot der Registerkarte „Diagnosetoolkit“](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="onboarded-resources"></a>Integrierte Ressourcen 
+
+Integrierte Ressourcen verfügen über integrierte Arbeitsmappen und Abhängigkeitsansichten. Zu den integrierten Ressourcen zählen derzeit Virtual WAN, Application Gateway, Load Balancer und ExpressRoute.
+
 ## <a name="troubleshooting"></a>Problembehandlung 
-
 Allgemeine Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](troubleshoot-workbooks.md).
-
-Dieser Abschnitt hilft Ihnen bei der Diagnose und Behandlung einiger allgemeiner Probleme, die bei der Verwendung von Azure Monitor für Netzwerke auftreten können. 
+Dieser Abschnitt hilft Ihnen bei der Diagnose und Fehlerbehebung einiger häufiger Probleme, die bei der Verwendung von Azure Monitor Network Insights auftreten können. 
 
 ### <a name="how-do-i-resolve-performance-problems-or-failures"></a>Wie behebe ich Leistungsprobleme oder Fehler?
 
-Informationen zur Behandlung netzwerkbezogener Probleme, die Sie mit Azure Monitor für Netzwerke identifizieren, finden Sie in der Dokumentation zur Problembehandlung für die fehlerhafte Ressource. 
+Informationen zur Fehlerbehebung von netzwerkbezogenen Problemen, die Sie mit Azure Monitor Network Insights identifizieren, finden Sie in der Fehlerbehebungsdokumentation der fehlerhaft funktionierenden Ressource. 
 
 Nachfolgend sind einige Links zu Artikeln für die Problembehandlung bei häufig verwendeten Diensten aufgelistet. Weitere Artikel zur Problembehandlung für diese Dienste finden Sie in den anderen Artikeln, die im Abschnitt „Problembehandlung“ im Inhaltsverzeichnis für den jeweiligen Dienst aufgeführt sind.
 * [Azure Virtual Network](../../virtual-network/virtual-network-troubleshoot-peering-issues.md)
@@ -127,21 +129,21 @@ Nachfolgend sind einige Links zu Artikeln für die Problembehandlung bei häufig
 
 ### <a name="why-dont-i-see-the-resources-for-all-the-subscriptions-ive-selected"></a>Warum werden nicht die Ressourcen für alle Abonnements angezeigt, die ich ausgewählt habe?
 
-Azure Monitor für Netzwerke kann Ressourcen nur für fünf Abonnements gleichzeitig anzeigen. 
+Azure Monitor Network Insights kann Ressourcen nur für fünf Abonnements gleichzeitig anzeigen. 
 
-### <a name="how-do-i-make-changes-or-add-visualizations-to-azure-monitor-for-networks"></a>Wie kann ich Änderungen an Azure Monitor für Netzwerke vornehmen oder Visualisierungen hinzufügen?
+### <a name="how-do-i-make-changes-or-add-visualizations-to-azure-monitor-network-insights"></a>Wie kann ich Änderungen an Azure Monitor Network Insights vornehmen oder Visualisierungen hinzufügen?
 
 Wenn Sie Änderungen vornehmen möchten, wählen Sie **Bearbeitungsmodus** aus, um die Arbeitsmappe zu ändern. Anschließend können Sie die Änderungen als neue Arbeitsmappe speichern, die an ein bestimmtes Abonnement und eine bestimmte Ressourcengruppe gebunden ist.
 
 ### <a name="whats-the-time-grain-after-i-pin-any-part-of-the-workbooks"></a>Welches Aggregationsintervall wird verwendet, nachdem ich einen Teil der Arbeitsmappen angeheftet habe?
 
-Da Azure Monitor für Netzwerke das Aggregationsintervall **Auto** verwendet, basiert das Intervall auf dem ausgewählten Zeitbereich.
+Azure Monitor Network Insights verwendet das **Auto** - Zeitkorn, d. h., das Zeitkorn basiert auf dem ausgewählten Zeitbereich.
 
 ### <a name="whats-the-time-range-when-any-part-of-a-workbook-is-pinned"></a>Welcher Zeitbereich wird verwendet, wenn ein Teil einer Arbeitsmappe angeheftet wird?
 
 Der Zeitbereich hängt von den Dashboardeinstellungen ab.
 
-### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-azure-monitor-for-networks"></a>Was kann ich tun, wenn ich andere Daten anzeigen oder eigene Visualisierungen erstellen möchte? Wie kann ich Änderungen an Azure Monitor für Netzwerke vornehmen?
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-azure-monitor-network-insights"></a>Was kann ich tun, wenn ich andere Daten anzeigen oder eigene Visualisierungen erstellen möchte? Wie kann ich Änderungen an Azure Monitor Network Insights vornehmen?
 
 Sie können die Arbeitsmappe, die in einem Seitenbereich und der Ansicht mit detaillierten Metriken angezeigt wird, mithilfe des Bearbeitungsmodus bearbeiten. Anschließend können Sie die Änderungen als eine neue Arbeitsmappe speichern.
 

@@ -1,14 +1,14 @@
 ---
 title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen, Zuweisen und Entfernen von Blaupausen beheben, wie z.B. Richtlinienverletzungen und Blaupausenparameterfunktionen.
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 65cf8ef9a5dcba0165aad8522f91ff1eb2c963a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 183d27235ce738d884a02b53a498f77ebed41e66
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918843"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326415"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problembehandlung mit Azure Blueprints
 
@@ -38,7 +38,7 @@ Bei der Vorlagenbereitstellung ist aufgrund einer Richtlinienverletzung ein Fehl
 
 #### <a name="cause"></a>Ursache
 
-Eine Richtlinie kann aus verschiedenen Gründen einer Bereitstellung widersprechen:
+Aus den folgenden Gründen kann es bei einer Bereitstellung zu einem Richtlinienkonflikt kommen:
 
 - Die zu erstellende Ressource ist durch Richtlinien eingeschränkt (üblicherweise SKU- oder Standortbeschränkungen).
 - Die Bereitstellung legt Felder fest, die über die Richtlinie konfiguriert werden (häufig mit Tags).

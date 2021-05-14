@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server zu SQL Managed Instance: Migrationsleitfaden'
+title: 'SQL Server zu Azure SQL Managed Instance: Anleitung zur Migration'
 description: In diesem Leitfaden erfahren Sie, wie Sie Ihre SQL Server-Datenbanken zu Azure SQL Managed Instance migrieren.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 6dcbf4a570fb5cdb58c914ea5e4b1164ed6a76ca
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 0e4585e801b356bd1c0e4bc1fb0f2ab9ee7ab7bf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564489"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136335"
 ---
-# <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Migrationsleitfaden: SQL Server zu SQL Managed Instance
+# <a name="migration-guide-sql-server-to-azure-sql-managed-instance"></a>SQL Server zu Azure SQL Managed Instance: Anleitung zur Migration
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 Mithilfe dieses Leitfadens können Sie Ihre SQL Server-Instanzen zu Azure SQL Managed Instance zu migrieren. 
@@ -30,7 +30,7 @@ Sie können SQL Server-Instanzen migrieren, die lokal oder auf folgenden Plattfo
 - Compute Engine (Google Cloud Platform – GCP)  
 - Cloud SQL für SQL Server (Google Cloud Platform – GCP) 
 
-Weitere Informationen zur Migration finden Sie in [dieser Übersicht](sql-server-to-managed-instance-overview.md). Informationen zu anderen Szenarios finden Sie im [Leitfaden zur Datenbankmigration](https://datamigration.microsoft.com/).
+Weitere Informationen zur Migration finden Sie in [dieser Übersicht](sql-server-to-managed-instance-overview.md). Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](/data-migration). 
 
 :::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="Ablauf des Migrationsprozesses":::
 
@@ -40,6 +40,8 @@ Sorgen Sie zunächst dafür, dass diese Voraussetzungen erfüllt sind, um Ihre S
 
 - Wählen Sie eine [Migrationsmethode](sql-server-to-managed-instance-overview.md#compare-migration-options) und die jeweils erforderlichen Tools aus.
 - Installieren Sie den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) auf einem Computer, der eine Verbindung mit Ihrer SQL Server-Quelldatenbank herstellen kann.
+- Konnektivität und geeignete Berechtigungen für den Zugriff auf die Quelle und das Ziel. 
+
 
 
 ## <a name="pre-migration"></a>Vor der Migration

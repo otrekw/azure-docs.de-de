@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 70bf46de072a97eca810dda60a5331df14172ed6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a99f5ebf0fd4f3c4684446a868e1c4e342f3785e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100555160"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783836"
 ---
 # <a name="add-tags-to-digital-twins"></a>Hinzufügen von Tags zu digitalen Zwillingen 
 
-Sie können das Konzept der Tags verwenden, um Ihre digitalen Zwillinge genauer zu anzugeben und zu kategorisieren. Insbesondere möchten Benutzer möglicherweise Tags aus vorhandenen Systemen wie etwa [Haystack-Tags](https://project-haystack.org/doc/TagModel) in ihren Azure Digital Twins-Instanzen replizieren. 
+Sie können das Konzept der Tags verwenden, um Ihre digitalen Zwillinge genauer zu anzugeben und zu kategorisieren. Insbesondere möchten Benutzer möglicherweise Tags aus vorhandenen Systemen wie etwa [Haystack-Tags](https://project-haystack.org/doc/appendix/tags) in ihren Azure Digital Twins-Instanzen replizieren. 
 
 In diesem Artikel werden Muster beschrieben, die zum Implementieren von Tags für digitale Zwillinge verwendet werden können.
 
@@ -42,17 +42,21 @@ Im Folgenden finden Sie ein Beispiel, bei dem der Marker `tags` für drei Zwilli
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesMarker":::
 
+Hier sehen Sie ein Codebeispiel zum Festlegen des Markers `tags` für einen Zwilling unter Verwendung des [.NET SDK](/dotnet/api/overview/azure/digitaltwins/client):
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesCsharp":::
+
 ### <a name="query-with-marker-tags"></a>Abfragen mit Markertags
 
 Nachdem digitalen Zwillingen Tags hinzugefügt wurden, können die Tags zum Filtern der Zwillinge in Abfragen verwendet werden. 
 
 Im Folgenden finden Sie eine Abfrage, mit der alle Zwillinge abgerufen werden, die mit „red“ getaggt sind: 
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryMarkerTags1":::
 
 Tags können auch zu komplexeren Abfragen kombiniert werden. Im Folgenden finden Sie eine Abfrage, mit der alle Zwillinge abgerufen werden, die rund und nicht rot sind: 
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags2":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryMarkerTags2":::
 
 ## <a name="value-tags"></a>Werttags 
 
@@ -82,16 +86,16 @@ Wie Markertags können Sie auch Werttags zum Filtern von Zwillingen in Abfragen 
 
 Im obigen Beispiel wird `red` als Markertag verwendet. Denken Sie daran, dass es sich hierbei um eine Abfrage handelt, mit der alle Zwillinge abgerufen werden, die mit „red“ getaggt sind: 
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryMarkerTags1":::
 
 Im Folgenden finden Sie eine Abfrage, mit der alle Entitäten abgerufen werden, die klein (Werttag) und nicht rot sind: 
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerValueTags":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryMarkerValueTags":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über das Entwerfen und Verwalten von Modellen digitaler Zwillinge:
-* [*Vorgehensweise: Verwalten von DTDL-Modellen*](how-to-manage-model.md)
+* [Vorgehensweise: Verwalten von DTDL-Modellen](how-to-manage-model.md)
 
 Erfahren Sie mehr über das Abfragen des Zwillingsgraphen:
-* [*Verwenden Abfragen des Zwillingsgraphen*](how-to-query-graph.md)
+* [Gewusst wie: Abfragen des Zwillingsgraphen](how-to-query-graph.md)

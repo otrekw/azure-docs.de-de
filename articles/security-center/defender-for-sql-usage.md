@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: a91329d3bd0247932614233ef5b1ec71bf4d2a6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a497e5bc9d04577f4b4f9d373aa68d07b5a08043
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103465462"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905052"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Aktivieren von „Azure Defender für SQL Server-Instanzen auf Computern“ 
 
@@ -96,6 +96,20 @@ Azure Defender für SQL-Warnungen sind auf der Security Center-Seite „Warnunge
     * Um Ihren Sicherheitsstatus zu verbessern, verwenden Sie die in jeder Warnung aufgeführten Security Center-Empfehlungen für den Hostcomputer. Dadurch werden die Risiken zukünftiger Angriffe reduziert. 
 
     [Weitere Informationen zum Verwalten von und Reagieren auf Warnungen](security-center-managing-and-responding-alerts.md).
+
+
+## <a name="faq---azure-defender-for-sql-servers-on-machines"></a>Häufig gestellte Fragen – Azure Defender für SQL-Server auf Computern
+
+### <a name="if-i-enable-this-azure-defender-plan-on-my-subscription-are-all-sql-servers-on-the-subscription-protected"></a>Sind alle SQL Server im Abonnement geschützt, wenn ich diesen Azure Defender-Plan für mein Abonnement aktiviere? 
+
+Nein. Zum Schützen einer SQL Server-Bereitstellung auf einem virtuellen Azure-Computer oder einer SQL Server-Instanz, die auf einem für Azure Arc aktivierten Computer ausgeführt wird, sind für Azure Defender folgende Komponenten erforderlich:
+
+- ein Log Analytics-Agent auf dem Computer 
+- der relevante Log Analytics-Arbeitsbereich, um die Azure Defender für SQL-Lösung zu aktivieren 
+
+Der *Abonnementstatus*, der auf der SQL Server-Seite im Azure-Portal angezeigt wird, spiegelt den Standardarbeitsbereichsstatus wider und gilt für alle verbundenen Computer. Nur die SQL Server-Instanzen auf Hosts mit einem Log Analytics-Agent, der Berichte an diesen Arbeitsbereich sendet, wird durch Azure Defender geschützt. 
+
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

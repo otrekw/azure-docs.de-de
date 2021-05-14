@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 8a13c641d50a68d9661b4aa6caf8effb82d53dd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3d819cc87d653b2ef132539a77dbc57220ca5d1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92793227"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142331"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -115,7 +115,7 @@ Zu anderen Verwaltungsfunktionen, die sich gute skalieren lassen, zählen Folgen
 
 #### <a name="automation"></a>Automation
 
-Für die Verwaltungsvorgänge können Skripts erstellt werden, und sie können über ein [DevOps][http-visual-studio-devops-485m]-Modell zur Verfügung gestellt werden.  Die Vorgänge können sogar automatisiert und in der Anwendung sichtbar gemacht werden.
+Für die Verwaltungsvorgänge können Skripts erstellt werden, und sie können über ein [DevOps](/azure/devops/user-guide/what-is-azure-devops)-Modell zur Verfügung gestellt werden.  Die Vorgänge können sogar automatisiert und in der Anwendung sichtbar gemacht werden.
 
 Beispielsweise könnten Sie die Wiederherstellung eines einzelnen Mandanten zu einem früheren Zeitpunkt automatisieren.  Bei der Wiederherstellung muss lediglich eine Einzelinstanzdatenbank wiederhergestellt werden, in der der Mandant gespeichert wird.  Diese Wiederherstellung hat keine Auswirkungen auf andere Mandanten, was wiederum zeigt, dass Verwaltungsvorgänge in den einzelnen Mandanten auf hochgradig granularer Ebene stattfinden.
 

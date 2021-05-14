@@ -9,15 +9,15 @@ keywords: Cognitive Services, kognitive Intelligenz, kognitive Lösungen, KI-Die
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 10/22/2020
+ms.date: 04/16/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: c89131cc34d45ea94f3bb290ac11ec86f4b83be3
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: c6b83a25816c29f1642625618e66624aa3e0a6de
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587611"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289802"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Was ist Azure Cognitive Services?
 
@@ -43,7 +43,7 @@ In den folgenden Abschnitten dieses Artikels werden die zugehörigen Dienste die
 |[Custom Vision Service](./custom-vision-service/index.yml "Custom Vision Service")|Der Custom Vision-Dienst ermöglicht Ihnen das Erstellen, Bereitstellen und Optimieren eigener Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der basierend auf den visuellen Merkmalen in einem Bild Bezeichnungen auf Bilder anwendet. |
 |[Gesichtserkennung](./face/index.yml "Gesicht")| Der Gesichtserkennungsdienst ermöglicht den Zugriff auf erweiterte Algorithmen zur Gesichtserkennung, wodurch die Ermittlung von Gesichtsmerkmalen sowie die Gesichtserkennung ermöglicht wird. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Verwenden der Clientbibliothek für die Gesichtserkennung](./face/quickstarts/client-libraries.md).|
 |[Formularerkennung](./form-recognizer/index.yml "Formularerkennung")|Die Formularerkennung identifiziert und extrahiert Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten und gibt dann strukturierte Daten aus, die auch die Beziehungen in der ursprünglichen Datei umfassen. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Verwenden der Clientbibliothek oder REST-API für die Formularerkennung](./form-recognizer/quickstarts/client-library.md).|
-|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer ermöglicht es Ihnen, Erkenntnisse aus Ihrem Video zu extrahieren. Informationen zu den ersten Schritten finden Sie in der [Schnellstartanleitung zu Video Indexer](/azure/media-services/video-indexer/video-indexer-get-started).|
+|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer ermöglicht es Ihnen, Erkenntnisse aus Ihrem Video zu extrahieren. Informationen zu den ersten Schritten finden Sie in der [Schnellstartanleitung zu Video Indexer](../media-services/video-indexer/video-indexer-get-started.md).|
 
 ## <a name="speech-apis"></a>Spracherkennungs-APIs
 
@@ -59,7 +59,7 @@ In den folgenden Abschnitten dieses Artikels werden die zugehörigen Dienste die
 
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
-|[Language Understanding (LUIS)](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) ist ein cloudbasierter Konversations-KI-Dienst, der benutzerdefinierte Machine Learning-Intelligenz auf natürliche Konversationssprachtexte eines Benutzers anwendet, um die allgemeine Bedeutung vorherzusagen sowie relevante und detaillierte Informationen abzurufen. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Erstellen einer neuen App im LUIS-Portal](./luis/get-started-portal-build-app.md).|
+|[Language Understanding (LUIS)](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) ist ein cloudbasierter Konversations-KI-Dienst, der benutzerdefinierte Machine Learning-Intelligenz auf natürliche Konversationssprachtexte eines Benutzers anwendet, um die allgemeine Bedeutung vorherzusagen sowie relevante und detaillierte Informationen abzurufen. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Erstellen einer neuen App im LUIS-Portal](./luis/luis-get-started-create-app.md).|
 |[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker ermöglicht es Ihnen, aus Ihren teilstrukturierten Inhalten einen Frage- und Antwortdienst zu erstellen. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank](./qnamaker/quickstarts/create-publish-knowledge-base.md).|
 |[Textanalyse](./text-analytics/index.yml "Textanalyse")| Die Textanalyse bietet die Verarbeitung von natürlicher Sprache für unformatierten Text für die Standpunktanalyse, die Schlüsselbegriffserkennung und die Sprachenerkennung. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Verwenden der Textanalyse-Clientbibliothek und der REST-API](./text-analytics/quickstarts/client-libraries-rest-api.md).|
 |[Translator](./translator/index.yml "Übersetzer")|Translator ermöglicht eine maschinenbasierte Textübersetzung in Quasi-Echtzeit.|
@@ -134,7 +134,7 @@ Azure Cognitive Services bietet ein mehrschichtiges Sicherheitsmodell einschlie�
 
 Die APIs in Cognitive Services werden in einem wachsenden Netzwerk mit von Microsoft verwalteten Rechenzentren gehostet. Informationen zur regionalen Verfügbarkeit der einzelnen APIs finden Sie in der [Liste mit den Azure-Regionen](https://azure.microsoft.com/regions "Liste der Azure-Regionen").
 
-Suchen Sie nach einer Region, die noch nicht unterstützt wird? Teilen Sie uns dies mit, indem Sie im [UserVoice-Forum](https://cognitive.uservoice.com/ "UserVoice-Forum") eine Featureanfrage erstellen.
+Suchen Sie nach einer Region, die noch nicht unterstützt wird? Teilen Sie uns dies mit, indem Sie im [UserVoice-Forum](https://feedback.azure.com/forums/932041-azure-cognitive-services "UserVoice-Forum") eine Featureanfrage erstellen.
 
 ## <a name="supported-cultural-languages"></a>Unterstützte Kultursprachen
 

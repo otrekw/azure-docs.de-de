@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/29/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb8bbf852803df53c43cef90bd2229bfcddd60d4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 222518f21cb9940efd4fbf266b9248e4b0414f43
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766185"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316321"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändern der Replikation eines Speicherkontos
 
@@ -62,10 +62,10 @@ Durch die Änderung des Replikationstyps für Ihr Speicherkonto ergeben sich kei
 Um die Redundanzoption für Ihr Speicherkonto im Azure-Portal zu ändern, führen Sie die folgenden Schritte aus:
 
 1. Navigieren Sie zum Speicherkonto im Azure-Portal.
-1. Wählen Sie die Einstellung **Konfiguration** aus.
+1. Wählen Sie unter **Einstellungen** die Option **Konfiguration**.
 1. Aktualisieren Sie die Einstellung **Replikation**.
 
-![Screenshot zur Änderung der Replikationsoption im Portal](media/redundancy-migration/change-replication-option.png)
+    :::image type="content" source="media/redundancy-migration/change-replication-option.png" alt-text="Screenshot, der anzeigt, wie Sie die Replikationsoption im Portal ändern." lightbox="media/redundancy-migration/change-replication-option.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

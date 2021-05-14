@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a5bc9638e2e6eeff8f2176247f579b64beede90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 697e594581636bb3940684371661705539068e6a
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94540211"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001662"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe der Azure CLI und REST-API
 
@@ -118,7 +118,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 Sie können Lesereplikate mithilfe der [ Azure-REST-API](/rest/api/azure/) erstellen und verwalten.
 
 ### <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
-Sie können ein Lesereplikat mithilfe der [Create-API](/rest/api/mysql/servers/create) erstellen:
+Sie können ein Lesereplikat mithilfe der [Create-API](/rest/api/mysql/flexibleserver(preview)/servers/create) erstellen:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{replicaName}?api-version=2017-12-01
@@ -146,14 +146,14 @@ Ein Replikat wird mit den gleichen Compute- und Speichereinstellungen erstellt w
 > Ändern Sie vor der Aktualisierung einer Quellservereinstellung auf einen neuen Wert die entsprechende Replikateinstellung in den gleichen oder einen höheren Wert. Diese Aktion sorgt dafür, dass das Replikat mit allen Änderungen auf dem Masterserver Schritt halten kann.
 
 ### <a name="list-replicas"></a>Auflisten von Replikaten
-Sie können die Replikatliste eines Quellservers mithilfe der [API zum Auflisten von Replikaten](/rest/api/mysql/replicas/listbyserver) anzeigen:
+Sie können die Replikatliste eines Quellservers mithilfe der [API zum Auflisten von Replikaten](/rest/api/mysql/flexibleserver(preview)/replicas/listbyserver) anzeigen:
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>Beenden der Replikation auf einem Replikatserver
-Sie können die Replikation zwischen einem Quellserver und einem Lesereplikat mithilfe der [Update-API](/rest/api/mysql/servers/update) beenden.
+Sie können die Replikation zwischen einem Quellserver und einem Lesereplikat mithilfe der [Update-API](/rest/api/mysql/flexibleserver(preview)/servers/update) beenden.
 
 Das Beenden der Replikation zwischen einem Quellserver und einem Lesereplikat kann nicht rückgängig gemacht werden. Das Lesereplikat wird zu einem eigenständigen Server, der sowohl Lese- als auch Schreibvorgänge unterstützt. Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden.
 
@@ -170,7 +170,7 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 ```
 
 ### <a name="delete-a-source-or-replica-server"></a>Löschen eines Quell- oder Replikatservers
-Zum Löschen eines Quell- oder Replikatservers wird die [Lösch-API](/rest/api/mysql/servers/delete) verwendet:
+Zum Löschen eines Quell- oder Replikatservers wird die [Lösch-API](/rest/api/mysql/flexibleserver(preview)/servers/delete) verwendet:
 
 Wenn Sie einen Quellserver löschen, wird die Replikation in alle Lesereplikate beendet. Die Lesereplikate werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
 

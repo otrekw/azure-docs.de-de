@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 04/26/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8774df6a2eee15f8b5a0c37362e5b20f14b07549
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 0f0473a266cffb083a82ffc9afb333da7eecf59c
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167361"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015697"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Konfigurieren eines befristeten Zugriffspasses in Azure AD für die Registrierung von kennwortlosen Authentifizierungsmethoden (Vorschau)
 
@@ -152,6 +152,7 @@ Beachten Sie die folgenden Einschränkungen:
 
 - Bei Verwendung eines einmaligen befristeten Zugriffspasses zum Registrieren einer kennwortlosen Methode wie FIDO2 oder die Anmeldung per Telefon muss der Benutzer die Registrierung innerhalb von 10 Minuten nach der Anmeldung mit dem einmaligen befristeten Zugriffspass abschließen. Diese Einschränkung gilt nicht für einen befristeten Zugriffspass, der mehrmals verwendet werden kann.
 - Gastbenutzer können sich nicht mit einem befristeten Zugriffspass anmelden.
+- Der befristete Zugriffspass befindet sich in der öffentlichen Vorschau und ist derzeit nicht in Azure für die US-Regierung verfügbar.
 - Benutzer im Geltungsbereich der Richtlinie für die Self-Service-Kennwortzurücksetzung (SSPR) *oder* [MFA-Registrierungsrichtlinie für den Identitätsschutz](../identity-protection/howto-identity-protection-configure-mfa-policy.md) müssen eine der Authentifizierungsmethoden registrieren, nachdem sie sich mit einem befristeten Zugriffspass angemeldet haben. Benutzer im Gültigkeitsbereich für diese Richtlinien werden an den [Interruptmodus der kombinierten Registrierung](concept-registration-mfa-sspr-combined.md#combined-registration-modes) umgeleitet. Diese Vorgehensweise unterstützt derzeit keine FIDO2-Registrierung und keine Registrierung mit Anmeldung per Telefon. 
 - Ein befristeter Zugriffspass kann nicht mit der NPS-Erweiterung (Network Policy Server) und dem AD FS-Adapter (Active Directory Federation Services) oder bei Verwendung von Windows Setup/Out-of-Box-Experience (OOBE) und AutoPilot verwendet werden. 
 - Wenn nahtloses einmaliges Anmelden für den Mandanten aktiviert ist, werden die Benutzer zur Eingabe eines Kennworts aufgefordert. Der Link **Verwenden Sie stattdessen Ihren befristeten Zugriffspass** ist für den Benutzer verfügbar, damit er sich mit einem befristeten Zugriffspass anmelden kann.

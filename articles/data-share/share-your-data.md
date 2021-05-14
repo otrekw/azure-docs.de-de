@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 8e149270d8f98cbf72d3864d238a3d8ddfd61c67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b8d49e3b3c6f6407fe241e00ada5039bd94fd706
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639548"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870875"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Tutorial: Freigeben von Daten mithilfe von Azure Data Share  
 
@@ -136,13 +136,13 @@ Verwenden Sie die folgenden Befehle, um die Ressource zu erstellen:
    az group create --name testresourcegroup --location "East US 2"
    ```
 
-1. Führen Sie den Befehl [az datashare account create](/cli/azure/ext/datashare/datashare/account#ext_datashare_az_datashare_account_create) aus, um ein Data Share-Konto zu erstellen:
+1. Führen Sie den Befehl [az datashare account create](/cli/azure/datashare/account#az_datashare_account_create) aus, um ein Data Share-Konto zu erstellen:
 
    ```azurecli
    az datashare account create --resource-group testresourcegroup --name datashareaccount --location "East US 2" 
    ```
 
-   Führen Sie den Befehl [az datashare account list](/cli/azure/ext/datashare/datashare/account#ext_datashare_az_datashare_account_list) aus, um Ihre Data Share-Konten anzuzeigen:
+   Führen Sie den Befehl [az datashare account list](/cli/azure/datashare/account#az_datashare_account_list) aus, um Ihre Data Share-Konten anzuzeigen:
 
    ```azurecli
    az datashare account list --resource-group testresourcegroup
@@ -210,7 +210,7 @@ Verwenden Sie die folgenden Befehle, um die Ressource zu erstellen:
    az storage container create --name ContosoMarketplaceContainer --account-name ContosoMarketplaceAccount
    ```
 
-1. Führen Sie den Befehl [az datashare create](/cli/azure/ext/datashare/datashare#ext_datashare_az_datashare_create) aus, um Ihre Data Share-Ressource zu erstellen:
+1. Führen Sie den Befehl [az datashare create](/cli/azure/datashare#az_datashare_create) aus, um Ihre Data Share-Ressource zu erstellen:
 
    ```azurecli
    az datashare create --resource-group testresourcegroup \
@@ -218,7 +218,7 @@ Verwenden Sie die folgenden Befehle, um die Ressource zu erstellen:
      --description "Data Share" --share-kind "CopyBased" --terms "Confidential"
    ```
 
-1. Verwenden Sie den Befehl [az datashare invitation create](/cli/azure/ext/datashare/datashare/invitation#ext_datashare_az_datashare_invitation_create), um die Einladung für die angegebene Adresse zu erstellen:
+1. Verwenden Sie den Befehl [az datashare invitation create](/cli/azure/datashare/invitation#az_datashare_invitation_create), um die Einladung für die angegebene Adresse zu erstellen:
 
    ```azurecli
    az datashare invitation create --resource-group testresourcegroup \

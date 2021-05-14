@@ -1,18 +1,18 @@
 ---
 title: Einführung
-description: Hier finden Sie Informationen zu den Features und Vorteilen von Azure VMware Solution für die Bereitstellung und Verwaltung VMware-basierter Workloads in Azure.
+description: Hier finden Sie Informationen zu den Features und Vorteilen von Azure VMware Solution für die Bereitstellung und Verwaltung VMware-basierter Workloads in Azure. Die SLA für Azure VMware Solution garantiert, dass Azure VMware-Verwaltungstools (vCenter Server und NSX Manager) mindestens 99,9 Prozent der Zeit verfügbar sind.
 ms.topic: overview
-ms.date: 03/24/2021
-ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/20/2021
+ms.openlocfilehash: 8a75038d9552e62b1bc67265ff2965fea9d8b8d6
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107984"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950872"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Was ist Azure VMware Solution?
 
-Azure VMware Solution bietet private Clouds mit vSphere-Clustern, die auf dedizierter Bare-Metal-Azure-Infrastruktur basieren. Die Bereitstellung muss mindestens drei Hosts umfassen. Später können nacheinander weitere Host hinzugefügt werden. Pro Cluster sind bis zu 16 Hosts möglich.  Alle bereitgestellten privaten Clouds verfügen über vCenter Server, vSAN, vSphere und NSX-T. Sie können Workloads aus Ihren lokalen Umgebungen migrieren, neue virtuelle Computer (virtual machines, VMs) bereitstellen und Azure-Dienste über Ihre privaten Clouds nutzen.
+Azure VMware Solution bietet private Clouds mit vSphere-Clustern, die auf dedizierter Bare-Metal-Azure-Infrastruktur basieren. Die Bereitstellung muss mindestens drei Hosts umfassen. Später können nacheinander weitere Host hinzugefügt werden. Pro Cluster sind bis zu 16 Hosts möglich.  Alle bereitgestellten privaten Clouds verfügen über vCenter Server, vSAN, vSphere und NSX-T. Sie können Workloads aus Ihren lokalen Umgebungen migrieren, neue virtuelle Computer (virtual machines, VMs) bereitstellen und Azure-Dienste über Ihre privaten Clouds nutzen.  Azure VMware-Verwaltungstools (vCenter Server und NSX Manager) stehen mindestens 99,9 Prozent der Zeit zur Verfügung. Weitere Informationen finden Sie in der [SLA für Azure VMware Solution](https://aka.ms/avs/sla).
 
 Bei Azure VMware Solution handelt es sich um eine von VMware geprüfte Lösung, deren Erweiterungen und Upgrades kontinuierlich geprüft und getestet werden. Infrastruktur und Software für private Clouds werden von Microsoft verwaltet und gepflegt. Dadurch können Sie sich ganz auf die Entwicklung und Ausführung von Workloads in Ihren privaten Clouds konzentrieren. 
 
@@ -40,7 +40,7 @@ Die vSAN-Verschlüsselung ruhender Daten ist standardmäßig aktiviert und dient
 
 ## <a name="host-and-software-lifecycle-maintenance"></a>Verwaltung des Host- und Softwarelebenszyklus
 
-Durch regelmäßige Upgrades der privaten Azure VMware Solution-Cloud und der VMware-Software wird gewährleistet, dass die Sicherheit, Stabilität und Features Ihrer privaten Clouds immer auf dem neuesten Stand sind. Weitere Informationen finden Sie unter [Azure VMware Solution: Updates und Upgrades für private Clouds](concepts-upgrades.md).
+Durch regelmäßige Upgrades der privaten Azure VMware Solution-Cloud und der VMware-Software wird gewährleistet, dass die Sicherheit, Stabilität und Features Ihrer privaten Clouds immer auf dem neuesten Stand sind. Weitere Informationen finden Sie unter [Hostwartung und Lebenszyklusverwaltung](concepts-private-clouds-clusters.md#host-maintenance-and-lifecycle-management).
 
 ## <a name="monitoring-your-private-cloud"></a>Überwachen Ihrer privaten Cloud
 

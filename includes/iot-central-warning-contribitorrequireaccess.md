@@ -3,17 +3,17 @@ title: Warnung bei Zugriff für Mitwirkende | Microsoft-Dokumentation
 description: Dieser Artikel ist eine statische Warnung für eine Reihe von Artikeln, die in IoT Central eine Warnung benötigen.
 services: iot-central
 ms.service: iot-central
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: philmea
+ms.author: philmea
 ms.date: 12/28/2020
 ms.topic: include
 manager: dominicbetts
-ms.openlocfilehash: d0e2c488d35b7c35e4d6a9a988e2cf7c397f82ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf02b9ff2b17472f4ed107d1460fb578b82e9d23
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98203325"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108212419"
 ---
 > [!WARNING]
 > Sie benötigen Zugriff für Mitwirkende auf Ihr Azure-Abonnement, um eine IoT Central-App erstellen zu können. Zum Erstellen einer App kann es zwar alternative Zugriffsebenen geben, aber der empfohlene Pfad ist der Zugriff auf das Abonnement auf der Ebene „Mitwirkender“.

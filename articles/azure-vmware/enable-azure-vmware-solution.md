@@ -3,13 +3,13 @@ title: Anfordern des Hostkontingents und Aktivieren von Azure VMware Solution
 description: Erfahren Sie, wie Sie das Hostkontingent bzw. die Hostkapazität anfordern und den Azure VMware Solution-Ressourcenanbieter aktivieren. Sie können auch weitere Hosts in einer vorhandenen privaten Azure VMware Solution-Cloud anfordern.
 ms.topic: how-to
 ms.custom: contperf-fy21q3
-ms.date: 02/17/2021
-ms.openlocfilehash: 5d154f5c63ffccdbf1729e641133b54be478d884
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 855e1dbc45889855a1fe9ef16f89615f471872fa
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653164"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950890"
 ---
 # <a name="request-host-quota-and-enable-azure-vmware-solution"></a>Anfordern des Hostkontingents und Aktivieren von Azure VMware Solution
 
@@ -106,10 +106,6 @@ Greifen Sie unter Verwendung der Prozedur **Administrator im Namen von** (Admin 
       >Für Azure VMware Solution werden mindestens drei Hosts empfohlen, um Ihre private Cloud aufzubauen. Für Redundanzzwecke werden N+1 Hosts empfohlen. 
    
    1. Wählen Sie **Überprüfen + erstellen** aus, um die Anforderung zu übermitteln.
-
-## <a name="register-the-microsoftavs-resource-provider"></a>Registrieren des **Microsoft.AVS**-Ressourcenanbieters
-
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
 
 ## <a name="next-steps"></a>Nächste Schritte

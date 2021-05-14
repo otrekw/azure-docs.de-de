@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: c4ca8d8ac24ac174158957e44b5eabe4a89a5340
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: edc74f0379a15c9119d2e3ed4f207832c367866b
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775203"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804032"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Einrichten einer Appliance in Azure Government 
 
@@ -26,7 +26,7 @@ In diesem Artikel finden Sie Informationen zum Bereitstellen einer [Azure Migrat
 
 Das Skript richtet die Azure Migrate-Appliance auf einem vorhandenen physischen Server oder einem virtualisierten Server ein.
 
-- Auf dem Server, der als Appliance fungieren soll, müssen Windows Server 2016 mit 32 GB Arbeitsspeicher, acht vCPUs, ca. 80 GB Festplattenspeicher und ein externer virtueller Switch ausgeführt werden. Er benötigt eine statische oder dynamische IP-Adresse und Internetzugriff.
+- Auf dem Server, der als Appliance fungieren soll, müssen Windows Server 2016 mit 32 GB Arbeitsspeicher, acht vCPUs, ca. 80 GB Festplattenspeicher und ein externer virtueller Switch ausgeführt werden. Er benötigt eine statische oder dynamische IP-Adresse. 
 - Überprüfen Sie vor der Bereitstellung der Appliance ihre detaillierten Anforderungen für [Server unter VMware](migrate-appliance.md#appliance---vmware), [unter Hyper-V](migrate-appliance.md#appliance---hyper-v) und [physische Server](migrate-appliance.md#appliance---physical).
 - Führen Sie das Skript nicht auf einer vorhandenen Azure Migrate-Appliance aus.
 
@@ -62,7 +62,7 @@ Funktion des Skripts:
 
 - Installation von Agents und einer Webanwendung.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungen für Azure Migrate.
 - Erstellen von Protokoll- und Konfigurationsdateien wie folgt:
     - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config
@@ -117,7 +117,7 @@ Funktion des Skripts:
 
 - Installation von Agents und einer Webanwendung.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungen für Azure Migrate.
 - Erstellen von Protokoll- und Konfigurationsdateien wie folgt:
     - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config
@@ -170,7 +170,7 @@ Funktion des Skripts:
 
 - Installation von Agents und einer Webanwendung.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungen für Azure Migrate.
 - Erstellen von Protokoll- und Konfigurationsdateien wie folgt:
     - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config

@@ -5,18 +5,18 @@ description: Erfahren Sie, wie Sie Ihre Azure Machine Learning-Modelle mithilfe 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, deploy
+ms.topic: how-to
+ms.custom: contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: ef9c03b687bbc9b8fe736c872bbde14b8daba899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae16fbd97a6994edb796da7eb8210d414bbe6de5
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519383"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889734"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -139,7 +139,7 @@ Zum Zeitpunkt der Modellimplementierung sollte der AKS-Knoten zu Folgendem in de
 
 Nach der Bereitstellung des Modells und dem Start des Diensts wird azureml-fe automatisch mithilfe der AKS-API erkannt und ist bereit, Anforderungen an das Modell weiterzuleiten. Es muss in der Lage sein, mit den Modell-PODs zu kommunizieren.
 >[!Note]
->Wenn das bereitgestellte Modell eine Konnektivität erfordert (z. B. Abfragen einer externen Datenbank oder eines anderen REST-Diensts, Herunterladen eines BLOGs usw.), dann sollten sowohl die DNS-Auflösung als auch die ausgehende Kommunikation für diese Dienste aktiviert sein.
+>Wenn das bereitgestellte Modell eine Konnektivität erfordert (z. B. Abfragen einer externen Datenbank oder eines anderen REST-Diensts, Herunterladen eines BLOBs usw.), dann sollten sowohl die DNS-Auflösung als auch die ausgehende Kommunikation für diese Dienste aktiviert sein.
 
 ## <a name="deploy-to-aks"></a>Bereitstellen für AKS
 
@@ -179,12 +179,12 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden un
 Verwenden Sie für die Bereitstellung mit der CLI den folgenden Befehl. Ersetzen Sie `myaks` durch den Namen des AKS-Computeziels. Ersetzen Sie `mymodel:1` durch den Namen und die Version des registrierten Modells. Ersetzen Sie `myservice` durch den Namen, den dieser Dienst erhalten soll:
 
 ```azurecli-interactive
-az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy --ct myaks -m mymodel:1 -n myservice --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-Weitere Informationen finden Sie in der [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy)-Referenz.
+Weitere Informationen finden Sie in der [az ml model deploy](/cli/azure/ml/model#az_ml_model_deploy)-Referenz.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -372,7 +372,7 @@ print(token)
 >
 > Microsoft empfiehlt dringend, den Azure Machine Learning-Arbeitsbereich in der gleichen Region zu erstellen wie den Azure Kubernetes Service-Cluster. Im Zuge der Tokenauthentifizierung richtet der Webdienst einen Aufruf an die Region, in der Ihr Azure Machine Learning-Arbeitsbereich erstellt wird. Ist die Region Ihres Arbeitsbereichs nicht verfügbar, können Sie kein Token für Ihren Webdienst abrufen (auch dann nicht, wenn sich Ihr Cluster in einer anderen Region befindet als Ihr Arbeitsbereich). Die tokenbasierte Authentifizierung ist dann erst wieder verfügbar, wenn die Region Ihres Arbeitsbereichs wieder verfügbar wird. Außerdem wirkt sich die Entfernung zwischen der Region Ihres Clusters und der Region Ihres Arbeitsbereichs direkt auf die Tokenabrufdauer aus.
 >
-> Zum Abrufen eines Tokens müssen Sie das Azure Machine Learning SDK oder den Befehl [az ml service get-access-token](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-get-access-token) verwenden.
+> Zum Abrufen eines Tokens müssen Sie das Azure Machine Learning SDK oder den Befehl [az ml service get-access-token](/cli/azure/ml/service#az_ml_service_get_access_token) verwenden.
 
 
 ### <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken

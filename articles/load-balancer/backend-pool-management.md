@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: c49a721a4db758965c9cf8d71f5d73b5754b6088
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e8be77851d0d7102d7c0cef85d9fbfefd8dc2a2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104654474"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137164"
 ---
 # <a name="backend-pool-management"></a>Back-End-Pool-Verwaltung
 Der Back-End-Pool ist eine kritische Komponente des Lastenausgleichs. Der Back-End-Pool definiert die Gruppe der Ressourcen, die den Datenverkehr für eine bestimmte Lastenausgleichsregel verarbeiten.
@@ -324,4 +324,4 @@ In diesem Artikel haben Sie die Back-End-Pool-Verwaltung von Azure Load Balancer
 
 Weitere Informationen zu [Azure Load Balancer](load-balancer-overview.md).
 
-Informationen zur IP-basierten Back-End-Pool-Verwaltung finden Sie im Artikel zur [REST-API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerbackendaddresspools/createorupdate).
+Informationen zur IP-basierten Back-End-Pool-Verwaltung finden Sie im Artikel zur [REST-API](/rest/api/load-balancer/loadbalancerbackendaddresspools/createorupdate).

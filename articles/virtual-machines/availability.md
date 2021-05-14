@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 821c50b5cb48bddb586c3589326a7f31c7bafded
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2acd6fe8450999b4518f19a353d0eab87ddedfaf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604531"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146417"
 ---
 # <a name="availability-options-for-azure-virtual-machines"></a>Verfügbarkeitsoptionen für virtuelle Azure-Computer
 Dieser Artikel bietet eine Übersicht über die Verfügbarkeitsoptionen für virtuelle Azure-Computer (VMs).
@@ -57,6 +57,6 @@ Site Recovery kann die Replikation für folgende Bereiche verwalten:
 - Lokale virtuelle Computer, virtuelle Azure Stack-Computer und physische Server
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen eines virtuellen Computers in einer Verfügbarkeitszone](/azure/virtual-machines/linux/create-cli-availability-zone)
-- [Erstellen eines virtuellen Computers in einer Verfügbarkeitsgruppe](/azure/virtual-machines/linux/tutorial-availability-sets)
+- [Erstellen eines virtuellen Computers in einer Verfügbarkeitszone](./linux/create-cli-availability-zone.md)
+- [Erstellen eines virtuellen Computers in einer Verfügbarkeitsgruppe](./linux/tutorial-availability-sets.md)
 - [Erstellen einer VM-Skalierungsgruppe](../virtual-machine-scale-sets/quick-create-portal.md)

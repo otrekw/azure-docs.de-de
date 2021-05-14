@@ -3,14 +3,15 @@ title: Verwalten von Runbooks in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie Runbooks in Azure Automation verwalten.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/24/2021
+ms.date: 04/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7eb576a3d084630ebe6020b57814f12687dc9bd9
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0226b864ae2f23c8cfaa1e69b4dd31f2800ce171
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168619"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164289"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Verwalten von Runbooks in Azure Automation
 
@@ -192,6 +193,16 @@ if (($jobs.Status -contains 'Running' -and $runningCount -gt 1 ) -or ($jobs.Stat
     # Insert Your code here
 }
 ```
+Alternativ können Sie die Verbindungsinformationen mithilfe der Splatting-Funktion von PowerShell an `Connect-AzAccount` übergeben. In diesem Fall sehen die ersten Zeilen des vorherigen Beispiels wie folgt aus:
+
+```powershell
+# Authenticate to Azure
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+Connect-AzAccount @connection
+$AzureContext = Get-AzSubscription -SubscriptionId $connection.SubscriptionID
+```
+
+Weitere Informationen finden Sie unter [Informationen zu Splatting](/powershell/module/microsoft.powershell.core/about/about_splatting).
 
 ## <a name="handle-transient-errors-in-a-time-dependent-script"></a>Behandeln vorübergehender Fehler in einem zeitabhängigen Skript
 

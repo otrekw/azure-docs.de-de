@@ -9,21 +9,21 @@ ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 01/11/2021
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbf4168e59f04829603008bedea380f76a67264a
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98065251"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884568"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Aktivieren der Protokollierung in Azure Machine Learning-Designerpipelines
 
 
 In diesem Artikel erfahren Sie, wie Sie Protokollierungscode zu Designerpipelines hinzufügen. Außerdem wird erläutert, wie Sie diese Protokolle mit dem Azure Machine Learning Studio-Webportal anzeigen.
 
-Weitere Informationen zum Protokollieren von Metriken mithilfe der SDK-Erstellung finden Sie unter [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-track-experiments.md).
+Weitere Informationen zum Protokollieren von Metriken mithilfe der SDK-Erstellung finden Sie unter [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-log-view-metrics.md).
 
 ## <a name="enable-logging-with-execute-python-script"></a>Aktivieren der Protokollierung mit „Execute Python Script“ (Ausführen eines Python-Skripts)
 
@@ -33,7 +33,7 @@ Im folgenden Beispiel wird gezeigt, wie Sie die mittlere quadratische Abweichung
 
 1. Stellen Sie eine Verbindung vom Modul __Execute Python Script__ (Ausführen eines Python-Skripts) zur Ausgabe des Moduls __Evaluate Model__ (Bewerten eines Modells) her.
 
-    ![Herstellen einer Verbindung vom Modul zum Ausführen des Python-Skripts zum Modul zum Evaluieren des Modells](./media/how-to-track-experiments/designer-logging-pipeline.png)
+    ![Herstellen einer Verbindung vom Modul zum Ausführen des Python-Skripts zum Modul zum Evaluieren des Modells](./media/how-to-log-view-metrics/designer-logging-pipeline.png)
 
 1. Fügen Sie den folgenden Code in den Code-Editor des Moduls __Execute Python Script__ (Ausführen eines Python-Skripts) ein, um die mittlere absolute Abweichung für Ihr trainiertes Modell zu protokollieren. Sie können ein ähnliches Muster verwenden, um einen beliebigen anderen Wert im Designer zu protokollieren:
 
@@ -61,7 +61,7 @@ Im folgenden Beispiel wird gezeigt, wie Sie die mittlere quadratische Abweichung
     
 In diesem Code wird das Python-SDK für Azure Machine Learning zum Protokollieren von Werten verwendet. Es verwendet „Run.get_context()“, um den Kontext des aktuellen Testlaufs abzurufen. Anschließend werden mit der Methode „run.parent.log()“ Werte in diesem Kontext protokolliert. Dabei wird `parent` verwendet, um Werte für die übergeordnete Pipeline zu protokollieren, anstatt das Modul auszuführen.
 
-Weitere Informationen zur Verwendung des Python-SDK zum Protokollieren von Werten finden Sie unter [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-track-experiments.md).
+Weitere Informationen zur Verwendung des Python-SDK zum Protokollieren von Werten finden Sie unter [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-log-view-metrics.md).
 
 ## <a name="view-logs"></a>Anzeigen von Protokollen
 
@@ -72,7 +72,7 @@ Nachdem die Pipelineausführung abgeschlossen ist, wird der Fehler *Mean_Absolut
 1. Wählen Sie die Ausführung in Ihrem Experiment aus, die Sie anzeigen möchten.
 1. Klicken Sie auf **Metriken**.
 
-    ![Anzeigen von Ausführungsmetriken in Studio](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
+    ![Anzeigen von Ausführungsmetriken in Studio](./media/how-to-log-view-metrics/experiment-page-metrics-across-runs.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -80,5 +80,5 @@ In diesem Artikel haben Sie gelernt, wie Sie Protokolle im Designer verwenden. I
 
 
 * Informationen zum Beheben von Problemen mit Designerpipelines im Artikel [Debuggen und Problembehandlung für Machine Learning-Pipelines](how-to-debug-pipelines.md#azure-machine-learning-designer)
-* Informationen zum Verwenden des Python-SDK zum Protokollieren von Metriken in der SDK-Erstellungsfunktion im Artikel [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-track-experiments.md)
+* Informationen zum Verwenden des Python-SDK zum Protokollieren von Metriken in der SDK-Erstellungsfunktion im Artikel [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-log-view-metrics.md)
 * Erfahren Sie, wie Sie [Execute Python Script](./algorithm-module-reference/execute-python-script.md) im Designer verwenden.

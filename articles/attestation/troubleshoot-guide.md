@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9d3e34bee3d0f1420b379638389e6fad0a2fed60
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97704315"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831562"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure Attestation: Leitfaden zur Problembehandlung
 
@@ -30,7 +31,6 @@ Unten sind einige Beispiele für die Fehler angegeben, die von Azure Attestation
 **Fehlercode**: Nicht autorisiert
 
 **Szenariobeispiele**
-  - Nachweisfehler, wenn dem Benutzer die Attestation-Rolle „Leser“ nicht zugewiesen ist
   - Nachweisrichtlinien können nicht verwaltet werden, da dem Benutzer nicht die richtigen Rollen zugewiesen sind
   - Nachweisrichtlinien-Signaturgeber können nicht verwaltet werden, da dem Benutzer nicht die richtigen Rollen zugewiesen sind
 
@@ -47,55 +47,25 @@ At line:1 char:1
 
 **Schritte zur Problembehandlung**
 
-Zum Anzeigen von Nachweisrichtlinien bzw. Richtliniensignaturgebern benötigt ein Azure AD-Benutzer die Berechtigung für „Aktionen“:
+Für die Verwaltung von Richtlinien benötigt ein Azure AD-Benutzer die folgenden Berechtigungen für „Aktionen“:
 - Microsoft.Attestation/attestationProviders/attestation/read
-
-  Diese Berechtigung kann einem AD-Benutzer über eine Rolle wie „Besitzer“ (Platzhalterberechtigungen), „Leser“ (Platzhalterberechtigungen) oder „Nachweisleser“ (spezifische Berechtigungen nur für Azure Attestation) zugewiesen werden.
-
-Zum Hinzufügen/Löschen von Richtliniensignaturgebern oder Konfigurieren von Richtlinien benötigt ein Azure AD-Benutzer die folgenden Berechtigungen für „Aktionen“:
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-  Diese Berechtigungen können einem AD-Benutzer über eine Rolle wie „Besitzer“ (Platzhalterberechtigungen), „Mitwirkender“ (Platzhalterberechtigungen) oder „Mitwirkender an Nachweis“ (spezifische Berechtigungen nur für Azure Attestation) zugewiesen werden.
+  Zum Ausführen dieser Aktionen muss ein Azure AD-Benutzer über die Rolle „Mitwirkender an Nachweis“ für den Nachweisanbieter verfügen. Diese Berechtigungen können auch mit Rollen wie „Besitzer“ (Platzhalterberechtigungen)/„Mitwirkender“ (Platzhalterberechtigungen) für das Abonnement bzw. die Ressourcengruppe geerbt werden.  
 
-Kunden können den Standardanbieter für den Nachweis verwenden oder eigene Anbieter mit benutzerdefinierten Richtlinien erstellen. Zum Senden von Nachweisanforderungen an benutzerdefinierte Nachweisanbieter benötigt der Benutzer die Rolle „Besitzer“ (Platzhalterberechtigungen), „Leser“ (Platzhalterberechtigungen) oder „Nachweisleser“. Alle Azure AD-Benutzer können auf die Standardanbieter zugreifen.
+Für das Lesen von Richtlinien benötigt ein Azure AD-Benutzer die folgenden Berechtigungen für „Aktionen“:
+- Microsoft.Attestation/attestationProviders/attestation/read
 
-Führen Sie die folgenden Schritte aus, um die Rollen in PowerShell zu überprüfen:
+  Zum Ausführen dieser Aktionen muss ein Azure AD-Benutzer über die Rolle „Nachweisleser“ für den Nachweisanbieter verfügen. Die Leseberechtigung kann auch mit Rollen wie „Leser“ (Platzhalterberechtigungen) für das Abonnement bzw. die Ressourcengruppe geerbt werden.  
+
+Führen Sie die nachfolgenden Schritte aus, um die Rollen in PowerShell zu überprüfen:
 
 a. Starten Sie PowerShell, und melden Sie sich über das Cmdlet „Connect-AzAccount“ bei Azure an.
 
-b. Überprüfen Sie Ihre Einstellungen für die Azure-Rollenzuweisung.
+b. Lesen Sie die Anleitung [hier](../role-based-access-control/role-assignments-list-powershell.md), um Ihre Azure-Rollenzuweisung für den Nachweisanbieter zu überprüfen
 
-
-  ```powershell
-  $c = Get-AzContext
-  Get-AzRoleAssignment -ResourceGroupName $attestationResourceGroup -ResourceName $attestationProvider -ResourceType Microsoft.Attestation/attestationProviders -SignInName $c.Account.Id
-  ```
-
-  Die Ausgabe sollte in etwa wie folgt aussehen:
-
-  ```
-  RoleAssignmentId   :/subscriptions/subscriptionId/providers/Microsoft.Authorization/roleAssignments/roleAssignmentId
-  
-  Scope              : /subscriptions/subscriptionId
-  
-  DisplayName        : displayName
-  
-  SignInName         : signInName
-  
-  RoleDefinitionName : Reader
-  
-  RoleDefinitionId   : roleDefinitionId
-  
-  ObjectId           : objectid
-  
-  ObjectType         : User
-  
-  CanDelegate        : False
- 
-  ```
-
-c. Befolgen Sie [diese Anleitung](../role-based-access-control/role-assignments-powershell.md), falls Sie in der Liste keine passende Rollenzuweisung finden.
+c. Befolgen Sie [diese](../role-based-access-control/role-assignments-powershell.md) Anleitung, falls Sie keine passende Rollenzuweisung finden
 
 ## <a name="2-http--400-errors"></a>2. HTTP 400-Fehler
 

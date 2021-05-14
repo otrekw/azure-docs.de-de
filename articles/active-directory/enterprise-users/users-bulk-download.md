@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57e3a059a5dd846250ba162513ef118e084c4b87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d27c95b0b16c36ca24709ec72c741dec633c5c81
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97861587"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108063961"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Herunterladen einer Liste von Benutzern im Azure Active Directory-Portal
 
@@ -75,7 +75,7 @@ Sie können den Status Ihrer ausstehenden Massenanforderungen auf der Seite **Er
 
 ## <a name="bulk-download-service-limits"></a>Grenzwerte für den Massendownloaddienst
 
-Jede Massenaktivität zum Erstellen einer Liste von Benutzern kann bis zu einer Stunde dauern. Dies ermöglicht das Erstellen und den Download einer Liste von mindestens 500.000 Benutzern.
+Jede Massenaktivität zum Erstellen einer Liste von Benutzern kann bis zu einer Stunde dauern. Dies ermöglicht das Erstellen und Herunterladen einer Liste von bis zu 500.000 Benutzern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

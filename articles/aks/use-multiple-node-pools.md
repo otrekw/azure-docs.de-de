@@ -4,12 +4,12 @@ description: Informationen zum Erstellen und Verwalten mehrerer Knotenpools für
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: 8f18e19eca8895549f17c9f0f6822ecb4da2914b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: af2766d5692f232970c3c7c735d4c34abebe9c3c
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773503"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070387"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -131,7 +131,7 @@ Eine Workload erfordert für die logische Isolation möglicherweise das Aufteile
 
 * Alle Subnetze, die Knotenpools zugewiesen sind, müssen demselben virtuellen Netzwerk angehören.
 * Systempods müssen Zugriff auf alle Knoten/Pods im Cluster haben, um eine kritische Funktionalität bereitzustellen, z. B. DNS-Auflösung und Tunneln von kubectl-Protokollen/exec/Port-Weiterleitungsproxy.
-* Wenn Sie Ihr VNET nach dem Erstellen Ihres Clusters erweitern, müssen Sie den Cluster aktualisieren (einen beliebigen verwalteten Clustervorgang ausführen, aber Knotenpoolvorgänge werden nicht gezählt), bevor Sie ein Subnetz außerhalb der ursprünglichen CIDR hinzufügen. Wenn der Agentpool hinzugefügt wird, tritt jetzt bei AKS ein Fehler auf, obwohl wir dies ursprünglich zugelassen haben. Falls Sie nicht wissen, wie Sie Ihren Cluster abstimmen können, öffnen Sie ein Supportticket. 
+* Wenn Sie Ihr VNET nach dem Erstellen Ihres Clusters erweitern, müssen Sie den Cluster aktualisieren (einen beliebigen verwalteten Clustervorgang ausführen, Knotenpoolvorgänge zählen jedoch nicht), bevor Sie ein Subnetz außerhalb des ursprünglichen CIDR-Bereichs hinzufügen. Wenn der Agentpool hinzugefügt wird, tritt jetzt bei AKS ein Fehler auf, obwohl wir dies ursprünglich zugelassen haben. Falls Sie nicht wissen, wie Sie Ihren Cluster abstimmen können, öffnen Sie ein Supportticket. 
 * Die Calico-Netzwerkrichtlinie wird nicht unterstützt. 
 * Die Azure-Netzwerkrichtlinie wird nicht unterstützt.
 * Kube-Proxy erwartet eine einzelne zusammenhängende CIDR und verwendet sie für drei Optimierungen. Siehe diese [K.E.P.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) Einzelheiten zu „Cluster-CIDR“ finden Sie [hier](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/). In Azure CNI wird das Subnetz Ihres ersten Knotenpools an Kube-Proxy übergeben. 
@@ -408,9 +408,12 @@ Es dauert einige Minuten, bis *gpunodepool* erfolgreich erstellt wurde.
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Angeben von Taint, Bezeichnung oder Tag für einen Knotenpool
 
-### <a name="setting-nodepool-taints"></a>Festlegen von Knotenpooltaints
-
 Beim Erstellen eines Knotenpools können Sie diesem Knotenpool Taints, Bezeichnungen oder Tags hinzufügen. Wenn Sie einen Taint, eine Bezeichnung oder ein Tag hinzufügen, erhalten alle Knoten innerhalb dieses Knotenpools ebenfalls diesen Taint, diese Bezeichnung oder dieses Tag.
+
+> [!IMPORTANT]
+> Das Hinzufügen von Taints, Bezeichnungen oder Tags zu Knoten sollte für den gesamten Knotenpool mithilfe von `az aks nodepool` erfolgen. Das Anwenden von Taints, Bezeichnungen oder Tags auf einzelne Knoten in einem Knotenpool mit `kubectl` wird nicht empfohlen.  
+
+### <a name="setting-nodepool-taints"></a>Festlegen von Knotenpooltaints
 
 Verwenden Sie [az aks nodepool add][az-aks-nodepool-add], um einen Knotenpool mit einem Taint zu erstellen. Geben Sie den Namen *taintnp* an, und verwenden Sie den Parameter `--node-taints`, um *sku=gpu:NoSchedule* für den Taint anzugeben.
 
@@ -738,6 +741,34 @@ Bei vorhandenen AKS-Clustern können Sie auch einen neuen Knotenpool hinzufügen
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
+### <a name="use-a-public-ip-prefix"></a>Präfix für öffentliche IP-Adressen verwenden
+
+Es gibt viele [Vorteile bei der Verwendung eines öffentlichen IP-Präfixes][public-ip-prefix-benefits]. AKS unterstützt die Verwendung von Adressen aus einem vorhandenen öffentlichen IP-Präfix für Ihre Knoten durch das Übergeben der Ressourcen-ID mit dem Flag `node-public-ip-prefix` Erstellen eines neuen Clusters oder durch Hinzufügen eines Knoten-Pools.
+
+Erstellen Sie zunächst mit [AZ Network Public-IP Prefix][az-public-ip-prefix-create]ein öffentliches IP-Präfix:
+
+```azurecli-interactive
+az network public-ip prefix create --length 28 --location eastus --name MyPublicIPPrefix --resource-group MyResourceGroup3
+```
+
+Sehen Sie sich die Ausgabe an, und notieren Sie sich die `id` für das Präfix:
+
+```output
+{
+  ...
+  "id": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix",
+  ...
+}
+```
+
+Wenn Sie einen neuen Cluster erstellen oder einen neuen Knoten-Pool hinzufügen, verwenden Sie schließlich das `node-public-ip-prefix`-Flag und übergeben Sie die Ressourcen-ID des Präfixes:
+
+```azurecli-interactive
+az aks create -g MyResourceGroup3 -n MyManagedCluster -l eastus --enable-node-public-ip --node-public-ip-prefix /subscriptions/<subscription-id>/resourcegroups/MyResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix
+```
+
+### <a name="locate-public-ips-for-nodes"></a>Öffentliche IPS für Knoten suchen
+
 Sie können die öffentlichen IP-Adressen Ihrer Knoten auf verschiedene Weise ermitteln:
 
 * Verwenden Sie den Azure CLI-Befehl [az vmss list-instance-public-ips][az-list-ips].
@@ -821,3 +852,5 @@ Verwenden Sie [Näherungsplatzierungsgruppe][reduce-latency-ppg], um die Latenz 
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
+[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
+[az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create

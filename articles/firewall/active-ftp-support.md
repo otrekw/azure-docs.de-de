@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/05/2021
+ms.date: 04/12/2021
 ms.author: victorh
-ms.openlocfilehash: adbc2a9eb6cd3b054df84911604143ddb711ad20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18b3680e47fe808413998144259e033a4cbcaa27
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499134"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864467"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Aktive FTP-Unterstützung in Azure Firewall
 
@@ -20,6 +20,12 @@ Bei aktivem FTP initiiert der FTP-Server die Datenverbindung mit dem vorgesehene
 
 Standardmäßig ist die Unterstützung für aktives FTP zum Schutz vor FTP-Bounce-Angriffen in Azure Firewall mithilfe des FTP-Befehls `PORT` deaktiviert. Sie können jedoch aktives FTP aktivieren, wenn Sie Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder eine Azure ARM-Vorlage verwenden.
 
+Um FTP im aktiven Modus zu unterstützen, müssen die folgenden TCP-Ports geöffnet werden:
+
+- Port 21 des FTP-Servers von überall (Client initiiert Verbindung)
+- Port 21 des FTP-Servers an Ports > 1023 (Server antwortet auf Steuerungsport des Clients)
+- Port 20 des FTP-Servers an Ports > 1023 auf Clients (Server initiiert Datenverbindung mit dem Datenport des Clients)
+- Port 20 des FTP-Servers von Ports > 1023 auf Clients (Client sendet ACKs an den Datenport des Servers)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -27,7 +33,7 @@ Verwenden Sie zur Bereitstellung mithilfe von Azure PowerShell den Parameter `Al
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Verwenden Sie zur Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle den Parameter `--allow-active-ftp`. Weitere Informationen finden Sie unter [az network firewall create](/cli/azure/ext/azure-firewall/network/firewall#ext_azure_firewall_az_network_firewall_create-optional-parameters). 
+Verwenden Sie zur Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle den Parameter `--allow-active-ftp`. Weitere Informationen finden Sie unter [az network firewall create](/cli/azure/network/firewall#az_network_firewall_create-optional-parameters). 
 
 ## <a name="azure-resource-manager-arm-template"></a>ARM-Vorlage (Azure Resource Manager)
 

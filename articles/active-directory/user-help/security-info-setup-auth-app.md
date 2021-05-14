@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103197479"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Einrichten der Microsoft Authenticator-App als Überprüfungsmethode
@@ -49,7 +49,7 @@ Je nach den Einstellungen Ihrer Organisation können Sie eine Authentifikator-Ap
 > [!IMPORTANT]
 > Wenn Sie die Microsoft Authenticator-App auf fünf verschiedenen Geräten eingerichtet oder fünf Hardwaretoken verwendet haben, können Sie kein sechstes Gerät oder Token einrichten, und möglicherweise wird Ihnen die folgende Fehlermeldung angezeigt:
 > 
-> **Sie können Microsoft Authenticator nicht einrichten, weil Sie bereits über fünf Authentifikator-Apps oder Hardwaretoken verfügen. Bitten Sie Ihren Administrator, eine der Authentifikator-Apps oder eines der Hardwaretoken zu löschen.**
+> **Sie können Microsoft Authenticator nicht einrichten, weil Sie bereits über fünf Authenticator-Apps oder Hardwaretoken verfügen. Bitten Sie Ihren Administrator, eine der Authenticator-Apps oder eines der Hardwaretoken zu löschen.**
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>So richten Sie die Microsoft Authenticator-App ein
 

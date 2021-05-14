@@ -1,7 +1,7 @@
 - name: Übersicht
   items:
     - name: Informationen zu Azure-Netzwerken
-      href: networking-overview.md
+      href: fundamentals/networking-overview.md
     - name: Aufbau
       items:
         - name: Azure für Netzwerktechniker

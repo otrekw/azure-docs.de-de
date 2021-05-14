@@ -31,15 +31,17 @@
 - name: References
   items:
     - name: Runtime SDK für Unity
-      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.ObjectAnchors/'
+      href: /dotnet/api/Microsoft.Azure.ObjectAnchors/
     - name: Runtime SDK für HoloLens C++/WinRT
-      href: 'https://docs.microsoft.com/cpp/api/object-anchors/winrt/'
+      href: /cpp/api/object-anchors/winrt/
 - name: Ressourcen
   items:
     - name: Versionshinweise
       href: 'https://github.com/Azure/azure-object-anchors/releases'
     - name: Ressourcenverwaltungs-REST-API von Azure Mixed Reality
-      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+      href: /rest/api/mixedreality/
+    - name: Fehlercodes bei der Modellkonvertierung
+      href: model-conversion-error-codes.md
     - name: Häufig gestellte Fragen
       href: faq.md
     - name: Stack Overflow

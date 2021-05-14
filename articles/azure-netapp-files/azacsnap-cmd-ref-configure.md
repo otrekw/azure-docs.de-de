@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 0875aae8bb9049fc96377c1c98efa7391211d08f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f12e9ab2ab0faf77520805e3be645a14dbd38885
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97632193"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929991"
 ---
-# <a name="configure-azure-application-consistent-snapshot-tool-preview"></a>Konfigurieren des Tools für konsistente Momentaufnahmen in Azure-Anwendungen (Vorschau)
+# <a name="configure-azure-application-consistent-snapshot-tool"></a>Konfigurieren des Tools für anwendungskonsistente Momentaufnahmen in Azure
 
 Dieser Artikel enthält eine Anleitung zum Ausführen des Konfigurationsbefehls für das Tool für konsistente Momentaufnahmen in Azure-Anwendungen, das Sie mit Azure NetApp Files verwenden können.
 
@@ -129,7 +129,7 @@ cat azacsnap.json
 
 ```output
 {
-  "version": "5.0 Preview",
+  "version": "5.0",
   "logPath": "./logs",
   "securityPath": "./security",
   "comments": [],

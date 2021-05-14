@@ -3,12 +3,12 @@ title: Übersicht über das Partneronboarding (Azure Event Grid)
 description: Hier finden Sie eine Übersicht darüber, wie Sie als Event Grid-Partner das Onboarding durchführen können.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: d16337eada829a817110abf7842f763972d0718f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9af80efc1ba342768f9bb6d504f921b52494d955
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109338"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890706"
 ---
 # <a name="partner-onboarding-overview-azure-event-grid"></a>Übersicht über das Partneronboarding (Azure Event Grid)
 
@@ -153,7 +153,7 @@ Nach dem Veröffentlichen am Endpunkt des Partnernamespaces erhalten Sie eine An
   * [ARM-Vorlage](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM-Vorlagenschema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
   * [REST-APIs](/azure/templates/microsoft.eventgrid/2020-04-01-preview/partnernamespaces)
-  * [CLI-Erweiterung](/cli/azure/ext/eventgrid/)
+  * [CLI-Erweiterung](/cli/azure/eventgrid)
 
 ### <a name="sdks"></a>SDKs
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)

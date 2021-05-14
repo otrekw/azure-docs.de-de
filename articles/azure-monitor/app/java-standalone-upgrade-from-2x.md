@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 342c535cadb1a2d3f2d18478d8941d9ea61bdf72
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040242"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448966"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Upgrade des Application Insights Java 2.x SDK
 
@@ -45,72 +45,12 @@ Im 2.x SDK wurde den Vorgangsnamen die HTTP-Methode (`GET`, `POST` usw.) als Pr�
 
 :::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-prefixed-by-http-method.png" alt-text="Vorgangsnamen mit HTTP-Methode als Präfix":::
 
-Mit dem folgenden Codeausschnitt werden drei Telemetrieprozessoren konfiguriert, die zum Replizieren des vorherigen Verhaltens kombiniert werden.
-Die Telemetrieprozessoren führen die folgenden Aktionen aus (in der angegebenen Reihenfolge):
+Ab 3.0.3 können Sie dieses 2.x-Verhalten wiederherstellen, indem Sie
 
-1. Der erste Telemetrieprozessor ist ein Span-Prozessor (Typ `span`). Das bedeutet, dass er für `requests` und `dependencies` zutrifft.
-
-   Er sucht nach Spans, die über ein Attribut mit dem Namen `http.method` verfügen und einen Span-Namen aufweisen, der mit `/` beginnt.
-
-   Anschließend wird dieser Span-Name in ein Attribut mit dem Namen `tempName` extrahiert.
-
-2. Der zweite Telemetrieprozessor ist ebenfalls ein Span-Prozessor.
-
-   Er sucht nach Spans, die über ein Attribut mit dem Namen `tempName` verfügen.
-
-   Anschließend wird der Span-Name durch Verkettung der beiden Attribute `http.method` und `tempName` (getrennt durch ein Leerzeichen) aktualisiert.
-
-3. Der letzte Telemetrieprozessor ist ein Attributprozessor (Typ `attribute`). Das bedeutet, dass er für alle Telemetrien zutrifft, die über Attribute verfügen (derzeit`requests`, `dependencies` und `traces`).
-
-   Er sucht nach Telemetrien, die über ein Attribut mit dem Namen `tempName` verfügen.
-
-   Anschließend wird das Attribut mit dem Namen `tempName`gelöscht, damit es nicht als benutzerdefinierte Dimension gemeldet wird.
-
-```
+```json
 {
   "preview": {
-    "processors": [
-      {
-        "type": "span",
-        "include": {
-          "matchType": "regexp",
-          "attributes": [
-            { "key": "http.method", "value": "" }
-          ],
-          "spanNames": [ "^/" ]
-        },
-        "name": {
-          "toAttributes": {
-            "rules": [ "^(?<tempName>.*)$" ]
-          }
-        }
-      },
-      {
-        "type": "span",
-        "include": {
-          "matchType": "strict",
-          "attributes": [
-            { "key": "tempName" }
-          ]
-        },
-        "name": {
-          "fromAttributes": [ "http.method", "tempName" ],
-          "separator": " "
-        }
-      },
-      {
-        "type": "attribute",
-        "include": {
-          "matchType": "strict",
-          "attributes": [
-            { "key": "tempName" }
-          ]
-        },
-        "actions": [
-          { "key": "tempName", "action": "delete" }
-        ]
-      }
-    ]
+    "httpMethodInOperationName": true
   }
 }
 ```

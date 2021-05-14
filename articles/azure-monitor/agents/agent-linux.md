@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 36b54cc9b4440f883b4335fc6ad2ca069a5b19db
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199161"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137579"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Installieren des Log Analytics-Agents auf Linux-Computern
 Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Analytics-Agents auf Linux-Computern mithilfe der folgenden Methoden:
@@ -50,7 +50,7 @@ Beginnend mit den nach August 2018 veröffentlichten Versionen gelten folgende �
 
 Ab Agent-Version 1.13.27 unterstützt der Linux-Agent sowohl Python 2 als auch Python 3. Es wird immer empfohlen, den neuesten Agent zu verwenden. 
 
-Wenn Sie eine ältere Version des Agents nutzen, muss der virtuelle Computer standardmäßig Python 2 verwenden. Wenn Ihr virtueller Computer eine Distribution verwendet, in der Python 2 nicht standardmäßig enthalten ist, müssen Sie die Sprache installieren. Mithilfe der folgenden Beispielbefehle wird Python 2 auf verschiedenen Distributionen installiert.
+Wenn Sie eine ältere Version des Agenten verwenden, müssen Sie die virtuelle Maschine standardmäßig Python 2 verwenden lassen. Wenn Ihr virtueller Computer eine Distribution verwendet, in der Python 2 nicht standardmäßig enthalten ist, müssen Sie die Sprache installieren. Mithilfe der folgenden Beispielbefehle wird Python 2 auf verschiedenen Distributionen installiert.
 
  - Red Hat, CentOS, Oracle: `yum install -y python2`
  - Ubuntu, Debian: `apt-get install -y python2`
@@ -71,16 +71,16 @@ Die ausführbare python2-Datei muss dem Alias *python* zugewiesen werden. Mit de
     ```
 
 ## <a name="supported-linux-hardening"></a>Unterstützte Linux-Härtung
-Der OMS-Agent verfügt über eingeschränkte Anpassungsunterstützung für Linux. 
+Der OMS-Agent verfügt über eingeschränkte Anpassungsunterstützung und Härtungssupport für Linux.
 
 Folgendes wird derzeit unterstützt: 
 - FIPs
 
-Folgendes wird in Erwägung gezogen, aber noch nicht unterstützt:
+Folgende Tabellen werden nicht unterstützt:
 - CIS
 - SELINUX
 
-Andere Härtungs- und Anpassungsmethoden werden für den OMS-Agent weder unterstützt noch geplant.  
+Die Unterstützung der CIS- und SPLATUX-Härtung ist für den [Azure Monitoring Agent](./azure-monitor-agent-overview.md) geplant. Andere Härtungs- und Anpassungsmethoden werden für den OMS-Agent weder unterstützt noch geplant.  
 
 ## <a name="agent-prerequisites"></a>Agent-Voraussetzungen
 
@@ -91,7 +91,7 @@ In der folgenden Tabelle sind die erforderlichen Pakete für [unterstützte Linu
 |Glibc |    GNU C-Bibliothek | 2.5-12 
 |Openssl    | OpenSSL-Bibliotheken | 1.0.x oder 1.1.x |
 |Curl | cURL-Webclient | 7.15.5 |
-|Python | | 2.6+ oder 3.3+
+|Python | | 2.7 oder 3.6+
 |Python-ctypes | | 
 |PAM | Module für austauschbare Authentifizierung | | 
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91bb558d47e56ebbcbdf25b0276c2a247ec81b47
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460290"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312636"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Technische Spezifikationen für Azure Stack Edge Pro
 
@@ -23,16 +23,21 @@ Die Hardwarekomponenten Ihres Microsoft Azure Stack Edge Pro-Geräts entsprechen
 
 Das Azure Stack Edge Pro-Gerät verfügt über die folgenden Spezifikationen für Compute- und Arbeitsspeicherressourcen:
 
-| Spezifikation           | Wert                  |
-|-------------------------|----------------------------|
-| CPU    | 2 X 10-Kern-CPU Intel Xeon Silver 4114 2,2 G                    |
-| Arbeitsspeicher              | 128 GB RAM (8 x 16 GB RDIMM)                 |
+| Spezifikation           | Wert                             |
+|-------------------------|-----------------------------------|
+| CPU-Typ                | Dual Intel Xeon Silver 4114 2.2 G |
+| CPU: Raw                | 20 Kerne insgesamt, 40 vCPUs insgesamt    |
+| CPU: nutzbar             | 32 vCPUs                          |
+| Arbeitsspeichertyp             | 8 x 16 GB RDIMM                   |
+| Arbeitsspeicher: Raw             | 128 GB RAM (8 x 16 GB)           |
+| Arbeitsspeicher: nutzbar          | 102 GB RAM                        |
+
 
 ## <a name="fpga-specifications"></a>FPGA-Spezifikationen
 
 Auf jedem Azure Stack Edge Pro-Gerät, das Machine Learning (ML)-Szenarien unterstützt, befindet sich ein FPGA (Field Programmable Gate Array).
 
-| Spezifikation           | Wert                  |
+| Spezifikation           | Wert                      |
 |-------------------------|----------------------------|
 | FPGA   | Intel Arria 10 <br> Verfügbare Deep Neural Network (DNN)-Modelle sind identisch mit den Modellen, [die von Cloud-FPGA-Instanzen unterstützt werden](../machine-learning/how-to-deploy-fpga-web-service.md#fpga-support-in-azure).|
 
@@ -42,7 +47,7 @@ Das Azure Stack Edge Pro-Gerät verfügt über zwei Netzteile mit 100-240 V und
 
 | Spezifikation           | 750 Watt-Netzteil                  |
 |-------------------------|----------------------------|
-| Maximale Ausgangsleistung    | 750 Watt                     |
+| Maximale Ausgangsleistung    | 750 Watt                      |
 | Häufigkeit               | 50/60 Hz                   |
 | Spannungsbereichsauswahl | Automatischer Spannungsbereich: 100-240 V AC |
 | Hot-Plug-fähig           | Ja                        |
@@ -64,7 +69,7 @@ Ihr Azure Stack Edge Pro-Gerät hat 6 Netzwerkschnittstellen, PORT1 – PORT6.
 |-------------------------|----------------------------|
 |  Netzwerkschnittstellen    | 2 Netzwerkschnittstellen (1 GbE), 1 davon zur Verwaltung, nicht vom Benutzer konfigurierbar, dient zur erstmaligen Einrichtung Die andere Schnittstelle ist vom Benutzer konfigurierbar, kann für die Datenübertragung verwendet werden und ist standardmäßig als DHCP-Schnittstelle konfiguriert. <br>2 Netzwerkschnittstellen (25 GbE), die auch als 10-GbE-Schnittstellen betrieben werden können. Diese Datenschnittstellen können vom Benutzer als DHCP (Standard) oder statisch konfiguriert werden. <br> 2 Netzwerkschnittstellen (25 GbE): Diese Datenschnittstellen können vom Benutzer als DHCP (Standard) oder statisch konfiguriert werden.                  |
 
-Folgende Netzwerkadapter werden verwendet: 
+Folgende Netzwerkadapter werden verwendet:
 
 | Spezifikation           | BESCHREIBUNG                 |
 |-------------------------|----------------------------|
@@ -82,7 +87,7 @@ Die Azure Stack Edge Pro-Geräte enthalten neun NVMe-SSD-Datenträger mit 2,5 Z
 |    Anzahl von Solid-State-Laufwerken (SSDs)     |    8                  |
 |    Kapazität eines SSD-Laufwerks                     |    1,6 TB             |
 |    Gesamtkapazität                          |    12,8 TB            |
-|    Insgesamt nutzbare Kapazität*                  |    ~ 12,5 TB            |
+|    Insgesamt nutzbare Kapazität*                  |    ~ 12,5 TB          |
 
 **Etwas Speicherplatz ist für die interne Verwendung reserviert.*
 
@@ -94,19 +99,19 @@ In den folgenden Tabellen sind die verschiedenen Gehäusespezifikationen (Abmess
 
 Die folgenden Tabellen enthalten die Abmessungen des Gehäuses in Millimetern und Zoll.
 
-|     Gehäuse     |     Millimeter     |     Zoll     |
-|-------------------|---------------------|----------------|
-|    Höhe         |    44,45            |    1,75 Zoll          |
-|    Breite          |    434,1           |    17,09 Zoll          |
-|    Länge          |    740,4           |    29,15 Zoll          |
+|     Gehäuse     |     Millimeter    |     Zoll     |
+|-------------------|--------------------|----------------|
+|    Höhe         |    44,45           |    1,75 Zoll       |
+|    Breite          |    434,1           |    17,09 Zoll      |
+|    Länge         |    740,4           |    29,15 Zoll      |
 
 Die folgenden Tabellen enthalten die Abmessungen der Versandverpackung in Millimetern und Zoll.
 
-|     Paket     |     Millimeter     |     Zoll     |
+|     Paket       |     Millimeter     |     Zoll     |
 |-------------------|---------------------|----------------|
-|    Höhe         |    311,2            |    12,25 Zoll          |
-|    Breite          |    642,8          |    25,31 Zoll          |
-|    Länge          |   1\.051,1          |    41,38 Zoll          |
+|    Höhe         |    311,2            |    12,25 Zoll      |
+|    Breite          |    642,8            |    25,31 Zoll      |
+|    Länge         |   1\.051,1           |    41,38 Zoll      |
 
 ### <a name="enclosure-weight"></a>Gehäusegewicht
 

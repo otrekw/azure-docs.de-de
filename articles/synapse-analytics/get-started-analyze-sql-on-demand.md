@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 04/15/2021
-ms.openlocfilehash: c6f2dfe0d4846227400ac9b3c7ac3e6ead8f0b57
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: acae55ca82b82de8459068bb1ac4363d6a9faafe
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567552"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206635"
 ---
 # <a name="analyze-data-with-a-serverless-sql-pool"></a>Analysieren von Daten mit einem serverlosen SQL-Pool
 
@@ -33,7 +33,7 @@ Jeder Arbeitsbereich wird mit einem vorkonfigurierten serverlosen SQL-Pool namen
 1. Erstellen Sie ein neues SQL-Skript.
 1. Fügen Sie den folgenden Code in das Skript ein:
 
-    ```
+    ```sql
     SELECT
         TOP 100 *
     FROM
@@ -43,6 +43,66 @@ Jeder Arbeitsbereich wird mit einem vorkonfigurierten serverlosen SQL-Pool namen
         ) AS [result]
     ```
 1. Klicken Sie auf **Ausführen**. 
+
+Die Datenuntersuchung ist nur ein vereinfachtes Szenario, anhand dessen Sie die grundlegenden Merkmale Ihrer Daten nachvollziehen können. Weitere Informationen zur Datenuntersuchung und -analyse finden Sie in [diesem Tutorial](sql/tutorial-data-analyst.md).
+
+## <a name="create-data-exploration-database"></a>Erstellen einer Datenbank für die Datenuntersuchung
+
+Sie können den Inhalt der Dateien direkt über die `master`-Datenbank durchsuchen. Bei einigen einfachen Szenarien zur Datenuntersuchung müssen Sie keine separate Datenbank erstellen.
+Wenn Sie die Datenuntersuchung fortsetzen, möchten Sie vielleicht jedoch einige Hilfsprogrammobjekte erstellen, etwa:
+- Externe Datenquellen, die die benannten Verweise für Speicherkonten darstellen
+- Datenbankweit gültige Anmeldeinformationen, mit denen Sie angeben können, wie die Authentifizierung bei einer externen Datenquelle durchgeführt werden soll
+- Datenbankbenutzer mit Zugriffsberechtigungen für einige Datenquellen oder Datenbankobjekte
+- Hilfsprogrammsichten, -prozeduren und -funktionen, die Sie in den Abfragen verwenden können
+
+1. Erstellen Sie eine separate Datenbank, um diese Objekte zu verwenden. Benutzerdefinierte Datenbankobjekte können nicht in der `master`-Datenbank erstellt werden.
+
+    ```sql
+    CREATE DATABASE DataExplorationDB 
+                    COLLATE Latin1_General_100_BIN2_UTF8
+    ```
+
+   > [!IMPORTANT]
+   > Verwenden Sie eine Sortierung mit dem Suffix `_UTF8`, um sicherzustellen, dass UTF-8-Text ordnungsgemäß in Spalten vom Typ `VARCHAR` konvertiert wird. `Latin1_General_100_BIN2_UTF8` bietet die beste Leistung bei Abfragen, die Daten aus Parquet-Dateien und Cosmos DB-Containern lesen.
+
+2. Wechseln Sie zu `DataExplorationDB`. Dort können Sie Hilfsprogrammobjekte wie Anmeldeinformationen und Datenquellen erstellen.
+
+    ```sql
+    CREATE EXTERNAL DATA SOURCE ContosoLake
+    WITH ( LOCATION = 'https://contosolake.dfs.core.windows.net')
+    ```
+
+   > [!NOTE]
+   > Eine externe Datenquelle kann ohne Anmeldeinformationen erstellt werden. In diesem Fall wird die Identität des Aufrufers für den Zugriff auf eine externe Datenquelle verwendet.
+
+3. Erstellen Sie optional eine Anmeldung für einen Benutzer in `DataExplorationDB`, der auf externe Daten zugreift:
+
+    ```sql
+    CREATE LOGIN data_explorer WITH PASSWORD = 'My Very Strong Password 1234!';
+    ```
+
+    Erstellen Sie einen Datenbankbenutzer in `DataExplorationDB` für die Anmeldung, und erteilen Sie die Berechtigung `ADMINISTER DATABASE BULK OPERATIONS`.
+    ```sql
+    CREATE USER data_explorer FOR LOGIN data_explorer;
+    GO
+    GRANT ADMINISTER DATABASE BULK OPERATIONS TO data_explorer;
+    GO
+    ```
+
+4. Untersuchen Sie den Inhalt der Datei mithilfe des relativen Pfads und der Datenquelle:
+
+    ```sql
+    SELECT
+        TOP 100 *
+    FROM
+        OPENROWSET(
+                BULK '/users/NYCTripSmall.parquet',
+                DATA_SOURCE = 'ContosoLake'
+                FORMAT='PARQUET'
+        ) AS [result]
+    ```
+
+Die Datenbank für die Datenuntersuchung ist nur ein einfacher Platzhalter, in dem Sie Ihre Hilfsprogrammobjekte speichern können. Mit einem Synapse SQL-Pool haben Sie noch weitere Möglichkeiten und können ein logisches Data Warehouse erstellen – eine relationale Ebene, der Azure-Datenquellen zugrunde liegen. Weitere Informationen zum Erstellen eines logischen Data Warehouse finden Sie in [diesem Tutorial](sql/tutorial-data-analyst.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

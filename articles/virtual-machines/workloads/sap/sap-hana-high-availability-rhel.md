@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: daa0a6b15d4c187efdea96fd8067b08c89fa0e82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 435528f7338657bc7e7d486a481cdf0ce48f4d38
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599866"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142889"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter Red Hat Enterprise Linux
 
@@ -559,6 +559,71 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 Führen Sie die Schritte in [Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure](high-availability-guide-rhel-pacemaker.md) aus, um ein grundlegendes Pacemaker-Cluster für diesen HANA-Server zu erstellen.
 
+## <a name="implement-the-python-system-replication-hook-saphanasr"></a>Implementieren des Python-Systemreplikationshooks „SAPHanaSR“
+
+Dies ist ein wichtiger Schritt, um die Integration in den Cluster zu optimieren und besser zu erkennen, wann ein Clusterfailover erforderlich ist. Es wird dringend empfohlen, den Python-Hook „SAPHanaSR“ zu konfigurieren.    
+
+1. **[A]** Installieren Sie den Systemreplikationshook für HANA. Der Hook muss auf beiden HANA-Datenbankknoten installiert werden.           
+
+   > [!TIP]
+   > Der Python-Hook kann nur für HANA 2.0 implementiert werden.        
+
+   1. Bereiten Sie den Hook als `root` vor.  
+
+    ```bash
+     mkdir -p /hana/shared/myHooks
+     cp /usr/share/SAPHanaSR/srHook/SAPHanaSR.py /hana/shared/myHooks
+     chown -R hn1adm:sapsys /hana/shared/myHooks
+    ```
+
+   2. Beenden Sie HANA auf beiden Knoten. Führen Sie den Vorgang als „<sid\>adm“ aus:  
+   
+    ```bash
+    sapcontrol -nr 03 -function StopSystem
+    ```
+
+   3. Passen Sie die Datei `global.ini` auf jedem Clusterknoten an.  
+ 
+    ```bash
+    # add to global.ini
+    [ha_dr_provider_SAPHanaSR]
+    provider = SAPHanaSR
+    path = /hana/shared/myHooks
+    execution_order = 1
+    
+    [trace]
+    ha_dr_saphanasr = info
+    ```
+
+2. **[A]** Der Cluster erfordert die Konfiguration von „sudoers“ auf jedem Clusterknoten für „<sid\>adm“. In diesem Beispiel wird dies durch das Erstellen einer neuen Datei erreicht. Führen Sie die Befehle als `root` aus.    
+    ```bash
+    cat << EOF > /etc/sudoers.d/20-saphana
+    # Needed for SAPHanaSR python hook
+    hn1adm ALL=(ALL) NOPASSWD: /usr/sbin/crm_attribute -n hana_hn1_site_srHook_*
+    EOF
+    ```
+
+3. **[A]** Starten Sie SAP HANA auf beiden Knoten. Führen Sie als <sid\>adm aus.  
+
+    ```bash
+    sapcontrol -nr 03 -function StartSystem 
+    ```
+
+4. **[1]** Überprüfen Sie die Installation des Hooks. Nehmen Sie die Ausführung als <sid\>adm auf dem aktiven Replikationsstandort des HANA-Systems vor.   
+
+    ```bash
+     cdtrace
+     awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
+     { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
+     # Example output
+     # 2021-04-12 21:36:16.911343 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:36:29.147808 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:37:04.898680 ha_dr_SAPHanaSR SOK
+
+    ```
+
+Weitere Informationen zur Implementierung des SAP HANA-Systemreplikationshooks finden Sie unter [Aktivieren des Hooks für den Hochverfügbarkeits-/Notfallwiederherstellungsanbieter von SAP HANA](https://access.redhat.com/articles/3004101#enable-srhook).  
+ 
 ## <a name="create-sap-hana-cluster-resources"></a>Erstellen von SAP HANA-Clusterressourcen
 
 Installieren Sie die SAP HANA-Ressourcen-Agents auf **allen Knoten**. Achten Sie darauf, dass Sie ein Repository aktivieren, das das Paket enthält. Sie müssen keine zusätzlichen Repositorys aktivieren, wenn Sie ein RHEL 8.x HA-fähiges Image verwenden.  
@@ -661,7 +726,7 @@ Bevor Sie fortfahren, vergewissern Sie sich, dass Sie den Red Hat-Hochverfügbar
 
 ### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>Zusätzliches Setup in Azure Load Balancer für „Aktiv/Lesezugriff“-Setup
 
-Um mit zusätzlichen Schritten für die Bereitstellung der zweiten virtuellen IP-Adresse fortzufahren, stellen Sie sicher, dass Sie Azure Load Balancer wie im Abschnitt [Manuelle Bereitstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#manual-deployment) beschrieben konfiguriert haben.
+Um mit zusätzlichen Schritten für die Bereitstellung der zweiten virtuellen IP-Adresse fortzufahren, stellen Sie sicher, dass Sie Azure Load Balancer wie im Abschnitt [Manuelle Bereitstellung](#manual-deployment) beschrieben konfiguriert haben.
 
 1. Führen Sie für den **standardmäßigen** Lastenausgleich die unten aufgeführten zusätzlichen Schritte für denselben Lastenausgleich aus, den Sie im vorherigen Abschnitt erstellt haben.
 
@@ -686,13 +751,12 @@ Um mit zusätzlichen Schritten für die Bereitstellung der zweiten virtuellen IP
    - Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **hana-secondarylb**).
    - Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **hana-secondaryIP**, **hana-backend** und **hana-secondaryhp**).
    - Wählen Sie **HA-Ports** aus.
-   - Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
    - Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
    - Klicken Sie auf **OK**.
 
 ### <a name="configure-hana-activeread-enabled-system-replication"></a>Konfigurieren der „Aktiv/Lesezugriff“-HANA-Systemreplikation
 
-Die Schritte zum Konfigurieren der HANA-Systemreplikation werden im Abschnitt [Konfigurieren der SAP Hana 2.0-Systemreplikation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication) beschrieben. Wenn Sie ein sekundäres Szenario mit Lesezugriff bereitstellen, während Sie die Systemreplikation auf dem zweiten Knoten konfigurieren, führen Sie den folgenden Befehl als **hanasid** adm aus:
+Die Schritte zum Konfigurieren der HANA-Systemreplikation werden im Abschnitt [Konfigurieren der SAP Hana 2.0-Systemreplikation](#configure-sap-hana-20-system-replication) beschrieben. Wenn Sie ein sekundäres Szenario mit Lesezugriff bereitstellen, während Sie die Systemreplikation auf dem zweiten Knoten konfigurieren, führen Sie den folgenden Befehl als **hanasid** adm aus:
 
 ```
 sapcontrol -nr 03 -function StopWait 600 10 

@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 11/25/2020
-ms.openlocfilehash: b917e3fc93c59de85c5236c18e31d7bbc9d891f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/25/2021
+ms.openlocfilehash: 1df93a987348ed54303f2d9118337dbc710bc3bc
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98065472"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001417"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Ausnahmen und Fehlercodes für den Designer
 
@@ -1436,7 +1436,7 @@ Lösung:
 
   <!--If you use the visualizations on datasets to check the cardinality of columns, only some rows are sampled. To get a full report, use [Summarize Data](summarize-data.md). You can also use the [Apply SQL Transformation](apply-sql-transformation.md) to check for the number of unique values in each column.  
 
- Sometimes transient loads can lead to this error. Machine support also changes over time. 
+ Sometimes transient loads can lead to such error. Machine support also changes over time. 
 
  Try using [Principal Component Analysis](principal-component-analysis.md) or one of the provided feature selection methods to reduce your dataset to a smaller set of more feature-rich columns: [Feature Selection](feature-selection-modules.md)  -->
 
@@ -1537,3 +1537,23 @@ Um weitere Hilfe zu erhalten, wird empfohlen, die ausführliche Meldung, die dem
 ## <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
 Suchen Sie in **70_driver_logs** für das **Execute Python Script-Modul** nach **in azureml_main**, um die Zeile zu ermitteln, in der ein Fehler aufgetreten ist. Beispielsweise gibt „File "/tmp/tmp01_ID/user_script.py", line 17, in azureml_main“ an, dass der Fehler in Zeile 17 Ihres Python-Skripts aufgetreten ist.
+
+## <a name="distributed-training"></a>Verteiltes Training
+
+Derzeit unterstützt der Designer verteiltes Training für das [Train PyTorch Model](train-pytorch-model.md)-Modul.
+
+<!-- [Train Wide and Deep Recommender](train-wide-and-deep-recommender.md) module  -->
+
+Wenn das Modul aktiviertes verteiltes Training ohne `70_driver`Protokolle fehlschlägt, können Sie nach`70_mpi_log` Fehlerdetails suchen.
+
+  Das folgende Beispiel zeigt, dass die **Knotenanzahl** der Ausführungseinstellungen größer ist als die Anzahl der verfügbaren Knoten des Computeclusters.
+  
+  [![Screenshot zeigt Fehler bei der Knotenanzahl](./media/module/distributed-training-node-count-error.png)](./media/module/distributed-training-node-count-error.png#lightbox)
+
+  Das folgende Beispiel zeigt, dass die **Anzahl der Prozesse pro Knoten** grösser ist als die **Prozessoreinheit** des Rechners.
+
+  [![Screenshot, welches das mpi-Protokoll anzeigt](./media/module/distributed-training-error-mpi-log.png) ](./media/module/distributed-training-error-mpi-log.png#lightbox)
+
+Andernfalls können Sie `70_driver_log` nach jedem Prozess suchen. `70_driver_log_0` ist für das Master-Verfahren.
+
+  [![Screenshot, welches das Treiberprotokoll anzeigt](./media/module/distributed-training-error-driver-log.png) ](./media/module/distributed-training-error-driver-log.png#lightbox)

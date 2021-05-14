@@ -2,21 +2,21 @@
 title: Umschreiben von HTTP-Headern und URL mit Azure Application Gateway | Microsoft-Dokumentation
 description: In diesem Artikel erhalten Sie eine Übersicht über das erneute Generieren von HTTP-Headern und einer URL in Azure Application Gateway.
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.author: surmb
-ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.author: azhussai
+ms.openlocfilehash: b7cf7c98e71da215eb30dcab556a88d6d2701591
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726511"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789445"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Umschreiben von HTTP-Headern und einer URL mithilfe von Application Gateway
 
- Mit Application Gateway können Sie den ausgewählten Inhalt von Anforderungen und Antworten umschreiben. Mit diesem Feature können Sie URLs übersetzen, Zeichenfolgenparameter abfragen und Anforderungs- und Antwortheader ändern. Außerdem können Sie Bedingungen hinzufügen, um sicherzustellen, dass die URL oder die angegebenen Header nur dann neu generiert werden, wenn bestimmte Bedingungen erfüllt sind. Diese Bedingungen basieren auf den Anforderungs- und Antwortinformationen.
+Mit Application Gateway können Sie den ausgewählten Inhalt von Anforderungen und Antworten umschreiben. Mit diesem Feature können Sie URLs übersetzen, Zeichenfolgenparameter abfragen und Anforderungs- und Antwortheader ändern. Außerdem können Sie Bedingungen hinzufügen, um sicherzustellen, dass die URL oder die angegebenen Header nur dann neu generiert werden, wenn bestimmte Bedingungen erfüllt sind. Diese Bedingungen basieren auf den Anforderungs- und Antwortinformationen.
 
 >[!NOTE]
 >Die Features zum Umschreiben von HTTP-Headern und einer URL sind nur für die [SKU Application Gateway v2](application-gateway-autoscaling-zone-redundant.md) verfügbar.
@@ -38,7 +38,7 @@ Informationen zum Umschreiben von Anforderungs- und Antwortheadern mit Applicati
 
 Sie können alle Header in Anforderungen und Antworten mit Ausnahme von Host-, Verbindungs- und Upgradeheader umschreiben. Sie können auch über das Anwendungsgateway benutzerdefinierte Header erstellen und den Anforderungen und Antworten hinzufügen, die über das Gateway weitergeleitet werden.
 
-### <a name="url-path-and-query-string-preview"></a>URL-Pfad und Abfragezeichenfolge (Vorschauversion)
+### <a name="url-path-and-query-string"></a>URL-Pfad und Abfragezeichenfolge
 
 Mit der Funktion zum Umschreiben einer URL in Application Gateway können Sie folgende Aktionen ausführen:
 
@@ -51,9 +51,6 @@ Mit der Funktion zum Umschreiben einer URL in Application Gateway können Sie fo
 Informationen zum Umschreiben der URL mit Application Gateway über das Azure-Portal finden Sie [hier](rewrite-url-portal.md).
 
 ![Diagramm, das den Prozess zum Umschreiben einer URL mit Application Gateway beschreibt](./media/rewrite-http-headers-url/url-rewrite-overview.png)
-
->[!NOTE]
-> Das Feature zum Umschreiben einer URL befindet sich in der Vorschauphase und ist nur für die Application Gateway-SKUs Standard_v2 und WAF_v2 verfügbar. Von der Verwendung dieser Option in Produktionsumgebungen wird abgeraten. Weitere Informationen zu Vorschauversionen finden Sie unter [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="rewrite-actions"></a>Aktionen für das erneute Generieren
 
@@ -129,7 +126,20 @@ Das Application Gateway unterstützt die folgenden Servervariablen:
 | ssl_enabled               | „Ein“, wenn die Verbindung im TLS-Modus ausgeführt wird. Andernfalls eine leere Zeichenfolge. |
 | uri_path                  | Identifiziert die spezifische Ressource auf dem Host, auf die der Webclient zugreifen möchte. Dies ist der Teil des Anforderungs-URI ohne die Argumente. Beispiel: In der Anforderung `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` lautet der Wert von „uri_path“ `/article.aspx`. |
 
- 
+### <a name="mutual-authentication-server-variables-preview"></a>Servervariablen für die gegenseitige Authentifizierung (Vorschau)
+
+Application Gateway unterstützt die folgenden Servervariablen für Szenarien der gegenseitigen Authentifizierung. Verwenden Sie diese Servervariablen auf die gleiche Weise wie die oben beschriebenen anderen Servervariablen. 
+
+|   Variablenname    |                   BESCHREIBUNG                                           |
+| ------------------------- | ------------------------------------------------------------ |
+| client_certificate        | Das Clientzertifikat im PEM-Format für eine hergestellte SSL-Verbindung. |
+| client_certificate_end_date| Das Enddatum des Clientzertifikats. |
+| client_certificate_fingerprint| Der SHA1-Fingerabdruck des Clientzertifikats für eine hergestellte SSL-Verbindung. |
+| client_certificate_issuer | Die Zeichenfolge „Aussteller-DN“ des Clientzertifikats für eine hergestellte SSL-Verbindung. |
+| client_certificate_serial | Die Seriennummer des Clientzertifikats für eine hergestellte SSL-Verbindung.  |
+| client_certificate_start_date| Das Startdatum des Clientzertifikats. |
+| client_certificate_subject| Die Zeichenfolge „Antragsteller-DN“ des Clientzertifikats für eine hergestellte SSL-Verbindung. |
+| client_certificate_verification| Das Ergebnis der Überprüfung des Clientzertifikats: *SUCCESS*, *FAILED:<reason>* oder *NONE*, wenn kein Zertifikat vorhanden war. | 
 
 ## <a name="rewrite-configuration"></a>Konfiguration für das erneute Generieren
 
@@ -141,13 +151,32 @@ Ein Umschreibungsregelsatz enthält Folgendes:
 
 * **Bedingung für das erneute Generieren**: Dies ist eine optionale Konfiguration. Bedingungen für das erneute Generieren werten den Inhalt von HTTP(S)-Anforderungen und -Antworten aus. Die Aktion für das erneute Generieren wird ausgeführt, wenn die HTTP(S)-Anforderung oder -Antwort die Bedingung für das erneute Generieren erfüllt. Wenn Sie der Aktion mehr als eine Bedingung zuordnen, erfolgt die Aktion nur, wenn alle Bedingungen erfüllt sind. Das heißt also, dass der Vorgang ein logischer UND-Vorgang ist.
 
-* **Umschreibungstyp:**  Es stehen drei Typen von Umschreibungen zur Verfügung:
-   * Umschreiben des Anforderungsheaders 
-   * Umschreiben des Antwortheaders
-   * Umschreiben der URL: Der Umschreibungstyp für URLs umfasst drei Komponenten
+* **Typ umschreiben:** Es stehen drei Arten von Umschreibungen zur Verfügung:
+   * Umschreiben von Anforderungsheadern 
+   * Umschreiben von Antwortheadern
+   * Umschreiben von URL-Komponenten
       * **URL-Pfad:** Der Wert, in den der Pfad umgeschrieben werden soll. 
       * **URL-Abfragezeichenfolge:** Der Wert, in den die Abfragezeichenfolge umgeschrieben werden soll. 
       * **Pfadzuordnung neu auswerten:** Legt fest, ob die URL-Pfadzuordnung erneut ausgewertet werden soll. Wenn diese Option deaktiviert bleibt, wird der ursprüngliche URL-Pfad verwendet, um eine Übereinstimmung für das Pfadmuster in der URL-Pfadzuordnung zu ermitteln. Wenn diese Option auf TRUE festgelegt ist, wird die URL-Pfadzuordnung erneut ausgewertet, um die Übereinstimmung mit dem umgeschriebenen Pfad zu überprüfen. Das Aktivieren dieses Schalters hilft beim Routing der Anforderung an einen anderen Back-End-Pool nach dem Umschreiben.
+
+## <a name="rewrite-configuration-common-pitfalls"></a>Häufige Probleme bei der Konfiguration der Umschreibung (Rewrite)
+
+* Das Aktivieren von „Pfadzuordnung neu auswerten“ ist für grundlegende Anforderungsroutingregeln nicht zulässig. So wird eine Endlosschleife bei der Auswertung einer grundlegenden Routingregel verhindert.
+
+* Es muss mindestens eine bedingte Umschreibungsregel oder eine Umschreibungsregel vorhanden sein, für die „Pfadzuordnung neu auswerten“ für pfadbasierte Routingregeln nicht aktiviert ist, um eine Endlosschleife bei der Auswertung einer pfadbasierten Routingregel zu verhindern.
+
+* Eingehende Anforderungen werden mit Fehlercode 500 beendet, wenn eine Schleife dynamisch basierend auf Clienteingaben erstellt wird. In einem solchen Szenario setzt die Application Gateway-Instanz die Verarbeitung anderer Anforderungen ohne Beeinträchtigung fort.
+
+### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>Verwenden der Umschreibung von URLs (URL-Rewrite) oder Hostheadern mit Web Application Firewall (WAF_v2 SKU)
+
+Wenn Sie URL-Rewrite oder das Umschreiben von Hostheadern konfigurieren, erfolgt die WAF-Auswertung nach der Änderung der Anforderungsheader- oder URL-Parameter (nach dem Umschreiben). Wenn Sie die Konfiguration von URL-Rewrite oder der Umschreibung von Hostheadern auf der Application Gateway-Instanz entfernen, erfolgt die WAF-Auswertung vor dem Umschreiben des Headers. Diese Reihenfolge stellt sicher, dass WAF-Regeln auf die endgültige Anforderung angewendet werden, die von Ihrem Back-End-Pool empfangen wird.
+
+Angenommen, Sie verwenden die folgende Regel zur Headerumschreibung für den Header `"Accept" : "text/html"`: Wenn der Wert des Headers `"Accept"` mit `"text/html"` übereinstimmt, soll der Wert in `"image/png"` umgeschrieben werden.
+
+Wenn nur das Umschreiben von Headern konfiguriert ist, erfolgt die WAF-Auswertung für `"Accept" : "text/html"`. Wenn Sie jedoch URL-Rewrite oder das Umschreiben von Hostheadern konfigurieren, wird die WAF-Auswertung für `"Accept" : "image/png"` durchgeführt.
+
+>[!NOTE]
+> URL-Rewrite-Vorgänge führen erwartungsgemäß zu einer geringfügigen Zunahme der CPU-Auslastung Ihrer WAF Application Gateway-Instanz. Es wird empfohlen, die [Metrik für die CPU-Auslastung](high-traffic-support.md) für einen kurzen Zeitraum zu überwachen, nachdem Sie die URL-Rewrite-Regeln für die WAF Application Gateway-Instanz aktiviert haben.
 
 ### <a name="common-scenarios-for-header-rewrite"></a>Häufige Szenarien für die Headerumschreibungen
 
@@ -162,7 +191,7 @@ Application Gateway fügt in alle Anforderungen einen X-Forwarded-For-Header ein
 
 Wenn eine Back-End-Anwendung eine Umleitungsantwort sendet, empfiehlt es sich u.U., den Client an eine andere als die von der Back-End-Anwendung angegebene URL umzuleiten. Beispielsweise sollten Sie dies tun, wenn ein App-Dienst hinter einem Anwendungsgateway gehostet wird und erfordert, dass der Client eine Umleitung zu seinem relativen Pfad durchführt. (Beispielsweise eine Umleitung von „contoso.azurewebsites.net/path1“ zu „contoso.azurewebsites.net/path2“.)
 
-Da App Service ein mehrinstanzenfähiger Dienst ist, nutzt er den Hostheader in der Anforderung zur Weiterleitung der Anforderung an den richtigen Endpunkt. App-Dienste weisen den Standarddomänennamen „*.azurewebsites.net“ auf (z. B. „contoso.azurewebsites.net“), der sich vom Domänennamen des Anwendungsgateways (z.B. „contoso.com“) unterscheidet. Da die ursprüngliche Anforderung vom Client den Domänennamen des Anwendungsgateways „contoso.com“ als Hostnamen aufweist, ändert das Anwendungsgateway nun den Hostnamen in „contoso.azurewebsites.net“. Diese Änderung wird vorgenommen, damit der App-Dienst die Anforderung an den richtigen Endpunkt weiterleiten kann.
+Da App Service ein mehrinstanzenfähiger Dienst ist, nutzt er den Hostheader in der Anforderung zur Weiterleitung der Anforderung an den richtigen Endpunkt. App-Dienste haben den Standarddomänennamen „\*.azurewebsites.net“ (z. B. „contoso.azurewebsites.net“), der sich vom Domänennamen des Anwendungsgateways (z. B. „contoso.com“) unterscheidet. Da die ursprüngliche Anforderung vom Client den Domänennamen des Anwendungsgateways „contoso.com“ als Hostnamen aufweist, ändert das Anwendungsgateway nun den Hostnamen in „contoso.azurewebsites.net“. Diese Änderung wird vorgenommen, damit der App-Dienst die Anforderung an den richtigen Endpunkt weiterleiten kann.
 
 Wenn der App Service eine Umleitungsantwort sendet, verwendet er den gleichen Hostnamen im Adressheader seiner Antwort wie in der Anforderung, die er vom Anwendungsgateway empfängt. So sendet der Client die Anforderung direkt an `contoso.azurewebsites.net/path2` und durchläuft nicht das Anwendungsgateway (`contoso.com/path2`). Das Umgehen des Anwendungsgateways ist nicht wünschenswert.
 
@@ -197,7 +226,7 @@ Sie können einen HTTP-Anforderungs- oder -Antwortheader auf das Vorhandensein e
 
 #### <a name="parameter-based-path-selection"></a>Parameterbasierte Pfadauswahl
 
-Zum Ausführen von Szenarien, in denen Sie den Back-End-Pool basierend auf dem Wert eines Headers, eines Teils der URL oder der Abfragezeichenfolge in der Anforderung auswählen möchten, können Sie eine Kombination aus URL-Umschreibungsfunktion und pfadbasiertem Routing verwenden.  Wenn Sie z. B. über eine Verkaufswebsite verfügen, auf der die Produktkategorie als Abfragezeichenfolge in der URL übergeben wird, und Sie die Anforderung basierend auf der Abfragezeichenfolge an das Back-End weiterleiten möchten, gehen Sie wie folgt vor:
+Für Szenarien, in denen Sie den Back-End-Pool basierend auf dem Wert eines Headers, auf einem Teil der URL oder auf der Abfragezeichenfolge in der Anforderung auswählen möchten, können Sie eine Kombination aus URL-Umschreibungsfunktion und pfadbasiertem Routing verwenden. Wenn Sie z. B. über eine Verkaufswebsite verfügen, auf der die Produktkategorie als Abfragezeichenfolge in der URL übergeben wird, und Sie die Anforderung basierend auf der Abfragezeichenfolge an das Back-End weiterleiten möchten, gehen Sie wie folgt vor:
 
 **Step1:**  Erstellen Sie eine Pfadzuordnung, wie in der folgenden Abbildung dargestellt:
 
@@ -209,7 +238,7 @@ Zum Ausführen von Szenarien, in denen Sie den Back-End-Pool basierend auf dem W
 
 * Die zweite Regel überprüft als Bedingung die Variable *query_string* auf *category=bags* und führt eine Aktion aus, die den URL-Pfad in /*listing2* umschreibt. **Pfadzuordnung neu auswerten** ist aktiviert.
 
-* Die dritte Regel verfügt über eine Bedingung, die die Variable *query_string* auf *category=accessories* überprüft, und weist eine Aktion auf, die den URL-Pfad in /*listing3* umschreibt. Erneut ist **Pfadzuordnung neu auswerten** aktiviert.
+* Die dritte Regel verfügt über eine Bedingung, die die Variable *query_string* auf *category=accessories* überprüft, und enthält eine Aktion, die den URL-Pfad in /*listing3* umschreibt. Erneut ist **Pfadzuordnung neu auswerten** aktiviert.
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-Umschreibungsszenario 1-2":::
 
@@ -221,10 +250,10 @@ Zum Ausführen von Szenarien, in denen Sie den Back-End-Pool basierend auf dem W
 
 Wenn der Benutzer nun *contoso.com/listing?category=any* anfordert, erhält er den Standardpfad, da keines der Pfadmuster in der Pfadzuordnung (/listing1, /listing2, /listing3) übereinstimmt. Da Sie diesem Pfad den obigen Umschreibungssatz zugeordnet haben, wird dieser Umschreibungssatz ausgewertet. Da die Abfragezeichenfolge keiner der Bedingungen der drei Umschreibungsregeln in diesem Umschreibungssatz entspricht, wird keine Umschreibungsaktion durchgeführt. Die Anforderung wird also unverändert an das Back-End weitergeleitet, das dem Standardpfad zugeordnet ist (in diesem Fall *GenericList*).
 
- Wenn der Benutzer *contoso.com/listing?category=shoes* anfordert, wird wieder der Standardpfad verwendet. In diesem Fall entspricht die Bedingung jedoch der ersten Regel. Aus diesem Grund wird die der Bedingung zugeordnete Aktion ausgeführt, die den URL-Pfad in /*listing1* umschreibt und die Pfadzuordnung neu auswertet. Nachdem die Pfadzuordnung neu ausgewertet wurde, entspricht die Anforderung nun dem Pfad, der dem Muster */listing1* zugeordnet ist, und die Anforderung wird an das Back-End weitergeleitet, das mit diesem Muster verknüpft ist – dies ist ShoesListBackendPool.
+Wenn der Benutzer *contoso.com/listing?category=shoes* anfordert, wird wieder der Standardpfad verwendet. In diesem Fall entspricht die Bedingung jedoch der ersten Regel. Aus diesem Grund wird die der Bedingung zugeordnete Aktion ausgeführt, die den URL-Pfad in /*listing1* umschreibt und die Pfadzuordnung neu auswertet. Nachdem die Pfadzuordnung neu ausgewertet wurde, entspricht die Anforderung nun dem Pfad, der dem Muster */listing1* zugeordnet ist, und die Anforderung wird an das Back-End weitergeleitet, das mit diesem Muster verknüpft ist. In diesem Fall ist das „ShoesListBackendPool“.
 
 >[!NOTE]
->Dieses Szenario kann auf beliebige Header- oder Cookiewerte, URL-Pfade, Abfragezeichenfolgen oder Servervariablen ausgeweitet werden. Die Grundlage bildet dabei immer die von Ihnen definierte Bedingung, sodass Sie Anforderungen basierend auf diesen Bedingungen weiterleiten können.
+>Dieses Szenario kann auf beliebige Header- oder Cookiewerte, URL-Pfade, Abfragezeichenfolgen oder Servervariablen ausgeweitet werden. Die Grundlage bilden dabei immer die von Ihnen definierten Bedingungen, sodass Sie Anforderungen basierend auf diesen Bedingungen weiterleiten können.
 
 #### <a name="rewrite-query-string-parameters-based-on-the-url"></a>Umschreiben von Abfragezeichenfolgenparametern basierend auf der URL
 
@@ -244,7 +273,7 @@ Eine Schrittanleitung für das oben beschriebene Szenario finden Sie unter [Erne
 
 ### <a name="url-rewrite-vs-url-redirect"></a>Vergleich von URL-Umschreibung und URL-Umleitung
 
-Bei der URL-Umschreibung wird die URL von Application Gateway umgeschrieben, bevor die Anforderung an das Back-End gesendet wird. Dadurch wird nicht geändert, was Benutzern im Browser angezeigt wird, da die Änderungen für den Benutzer nicht sichtbar erfolgen.
+Bei einer URL-Umschreibung wird die URL von Application Gateway umgeschrieben, bevor die Anforderung an das Back-End gesendet wird. Dadurch wird nicht geändert, was Benutzern im Browser angezeigt wird, da die Änderungen für den Benutzer nicht sichtbar erfolgen.
 
 Bei einer URL-Umleitung sendet Application Gateway eine Umleitungsantwort mit der neuen URL an den Client. Dazu muss der Client wiederum seine Anforderung erneut an die neue in der Umleitung bereitgestellte URL senden. Die URL, die der Benutzer im Browser sieht, wird durch die neue URL ersetzt.
 
@@ -254,7 +283,7 @@ Bei einer URL-Umleitung sendet Application Gateway eine Umleitungsantwort mit de
 
 - Wenn eine Antwort über mehrere Header gleichen Namens verfügt, führt das erneute Generieren des Werts eines dieser Header zum Löschen der anderen Header in der Antwort. Dies kann in der Regel bei Set-Cookie-Headern auftreten, da eine Antwort mehrere Set-Cookie-Header enthalten kann. Ein solches Szenario liegt vor, wenn Sie einen App-Dienst mit einem Anwendungsgateway verwenden und cookiebasierte Sitzungsaffinität auf dem Anwendungsgateway konfiguriert haben. In diesem Fall enthält die Antwort zwei Set-Cookie-Header: einen vom App-Dienst verwendeten (z. B. `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`) und einen anderen für die Anwendungsgatewayaffinität (z. B. `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`). Das Umschreiben einer der Set-Cookie-Header in diesem Szenario kann dazu führen, dass der andere Set-Cookie-Header aus der Antwort entfernt wird.
 - Das erneute Generieren wird nicht unterstützt, wenn das Anwendungsgateway so konfiguriert ist, dass die Anforderungen umgeleitet werden oder eine benutzerdefinierte Fehlerseite angezeigt wird.
-- Wie in [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) festgelegt, können Headernamen sämtliche alphanumerischen Zeichen und Sonderzeichen beinhalten. Derzeit wird das Sonderzeichen „Unterstrich“ (_) in Headernamen nicht unterstützt.
+- Wie in [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) festgelegt, können Headernamen sämtliche alphanumerischen Zeichen und Sonderzeichen beinhalten. Derzeit wird das Sonderzeichen „Unterstrich“ (\_) in Headernamen nicht unterstützt.
 - Verbindungs- und Upgradeheader können nicht umgeschrieben werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

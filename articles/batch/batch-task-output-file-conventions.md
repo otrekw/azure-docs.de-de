@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie die Azure Batch-Dateikonventionenbibliothek f
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 1a45eed421dd8d734fcef0dd452df1d4a65fd053
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 376073dc82203c7248e9e09710d6658c5ed09245
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88936961"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988980"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Beibehalten von Auftrags- und Taskdateien in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET
 
@@ -28,7 +28,7 @@ Azure Batch bietet mehr als eine Möglichkeit zum Beibehalten der Taskausgabe. D
 
 - Sie können den Code für die Anwendung, die ihr Task ausführt, einfach verändern, um Dateien mithilfe der Dateikonventionenbibliothek beizubehalten.
 - Sie möchten Dateien in Azure Storage streamen, während der Task noch ausgeführt wird.
-- Sie möchten Daten aus Pools beibehalten, die entweder über die Clouddienstkonfiguration oder die Konfiguration des virtuellen Computers erstellt wurden.
+- Sie möchten Daten aus Pools beibehalten.
 - Ihre Clientanwendung oder andere Tasks im Auftrag müssen Taskausgabedateien nach ID oder Zweck finden und herunterladen.
 - Sie möchten die Taskausgabe im Azure-Portal anzeigen.
 

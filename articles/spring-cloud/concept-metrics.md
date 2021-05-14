@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 5a8d7d5906a769b778eb8f0ab5abe396a5f2e104
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8d7b9f068eef38a7567e5b595277ee92493a6c16
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877639"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129259"
 ---
 # <a name="metrics-for-azure-spring-cloud"></a>Metriken für Azure Spring Cloud
 
@@ -171,7 +171,7 @@ Weitere Informationen finden Sie unter [dotnet-Leistungsindikatoren](/dotnet/cor
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung](spring-cloud-quickstart-logs-metrics-tracing.md)
+* [Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung](./quickstart-logs-metrics-tracing.md)
 
 * [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/essentials/metrics-getting-started.md)
 
@@ -179,6 +179,6 @@ Weitere Informationen finden Sie unter [dotnet-Leistungsindikatoren](/dotnet/cor
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen](./spring-cloud-tutorial-alerts-action-groups.md)
+* [Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen](./tutorial-alerts-action-groups.md)
 
-* [Kontingente und Servicepläne für Azure Spring Cloud](./spring-cloud-quotas.md)
+* [Kontingente und Servicepläne für Azure Spring Cloud](./quotas.md)

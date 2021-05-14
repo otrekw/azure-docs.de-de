@@ -5,69 +5,88 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.custom: template-how-to
+ms.openlocfilehash: 625662a6b67e7d30e6320fe7831e4fa7793b9c30
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368714"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447878"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Herstellen einer Verbindung mit dem Windows-Desktopclient
 
-> Gilt für: Windows 10, Windows 10 IoT Enterprise und Windows 7
+Mit dem Windows Desktop-Client können Sie auf Geräten mit Windows 10, Windows 10 IoT Enterprise und Windows 7 auf Windows Virtual Desktop-Ressourcen zugreifen. 
 
->[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md).
-
-Mit dem Windows Desktop-Client können Sie auf Geräten mit Windows 10, Windows 10 IoT Enterprise und Windows 7 auf Windows Virtual Desktop-Ressourcen zugreifen. Der Client unterstützt weder Windows 8 noch Windows 8.1.
+> [!IMPORTANT]
+> Dies unterstützt nicht Windows 8 oder Windows 8.1.
+> 
+> Dies unterstützt nur Azure Ressourcenmanager-Objekte, um Objekte ohne Azure Ressourcenmanager zu unterstützen, siehe [Verbinden mit Windows Desktop (classic) Client](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md).
+> 
+> Der RemoteApp and Desktop Connections (RADC)-Client oder der Remote Desktop Connection (MSTSC)-Client werden nicht unterstützt.
 
 ## <a name="install-the-windows-desktop-client"></a>Installieren des Windows Desktop-Clients
 
-Wählen Sie den Client aus, der Ihrer Windows-Version entspricht:
+Laden Sie den Client auf der Grundlage Ihrer Windows-Version herunter:
 
 - [Windows (64-Bit)](https://go.microsoft.com/fwlink/?linkid=2068602)
 - [Windows 32-Bit](https://go.microsoft.com/fwlink/?linkid=2098960)
 - [Windows ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
 
-Sie können den Client für den aktuellen Benutzer installieren. Dafür sind keine Administratorrechte erforderlich. Der Administrator kann den Client aber auch so installieren und konfigurieren, dass alle Benutzer auf dem Gerät darauf zugreifen können.
+Wählen Sie während der Installation, um den Zugriff zu bestimmen, entweder:
 
-Nach der Installation kann der Client über das Startmenü gestartet werden, indem Sie nach **Remote Desktop** suchen.
+- **Nur für Sie installieren**
+- **Für alle Benutzer dieses Rechners installieren** (erfordert Administratorenrechte) (erfordert Administratorenrechte)
 
-> [!IMPORTANT]
-> Windows Virtual Desktop unterstützt nicht den RemoteApp-Client und den Client für Desktopverbindungen (RADC). Der Client für Remotedesktopverbindung (MSTSC) wird ebenfalls nicht unterstützt.
+Um den Client nach der Installation zu starten, verwenden Sie das **Startmenü**, und suchen Sie nach **Remotedesktop**.
 
 ## <a name="subscribe-to-a-workspace"></a>Abonnieren eines Arbeitsbereichs
 
-Es gibt zwei Möglichkeiten zum Abonnieren eines Arbeitsbereichs. Der Client kann versuchen, die Ressourcen, die dir über dein Geschäfts- oder Schul-/Unikonto zur Verfügung stehen, zu ermitteln, oder du kannst die URL, unter der deine Ressourcen zu finden sind, direkt angeben, falls der Client sie nicht finden kann. Sobald du einen Arbeitsbereich abonniert hast, kannst du Ressourcen mit einer der folgenden Methoden starten:
+Um einen Arbeitsbereich zu abonnieren, wählen Sie entweder:
 
-- Wechsle zum Connection Center, und doppelklicke auf eine Ressource, um sie zu starten.
-- Alternativ kannst du zum Startmenü navigieren und nach einem Ordner mit dem Namen des Arbeitsbereichs suchen oder den Namen der Ressource in die Suchleiste eingeben.
+- Verwenden Sie ein Arbeits- oder Schulkonto und lassen Sie den Client die für Sie verfügbaren Ressourcen entdecken
+- Verwenden Sie die spezifische URL der Ressource
 
-### <a name="subscribe-with-a-user-account"></a>Abonnieren mit einem Benutzerkonto
+Um die abonnierte Ressource zu starten, gehen Sie zum **Connection Center** und doppelklicken Sie auf die Ressource.
 
-1. Klicken Sie auf der Hauptseite des Clients auf **Abonnieren**.
-2. Melden Sie sich mit Ihrem Benutzerkonto an, wenn Sie dazu aufgefordert werden.
-3. Die Ressourcen werden nach Arbeitsbereichen gruppiert im Connection Center angezeigt.
+> [!TIP]
+> Um eine Ressource aus dem **Startmenü** zu starten, können Sie den Ordner mit dem Namen des Arbeitsbereichs suchen oder den Ressourcennamen in die Suchleiste eingeben.
 
->[!NOTE]
->Der Windows-Client verwendet standardmäßig automatisch Windows Virtual Desktop (klassisch). Wenn der Client jedoch erkennt, dass der Benutzer auch über Azure Resource Manager-Ressourcen verfügt, werden die Ressourcen automatisch hinzugefügt, oder der Benutzer wird benachrichtigt, dass sie verfügbar sind.
+### <a name="use-a-user-account"></a>Verwenden Sie ein Benutzerkonto
 
-### <a name="subscribe-with-a-url"></a>Abonnieren mit einer URL
+1. Wählen Sie auf der Hauptseite **abonnieren** aus.
+1. Melden Sie sich mit Ihrem Benutzerkonto an, wenn Sie dazu aufgefordert werden.
 
-1. Klicken Sie auf der Hauptseite des Clients auf **Subscribe with URL** (Mit URL abonnieren).
-2. Geben Sie die Arbeitsbereichs-URL oder Ihre E-Mail-Adresse ein:
-   - Verwende im Fall einer **Arbeitsbereichs-URL** diejenige, die du vom Administrator erhalten hast. Wenn du auf Ressourcen von Windows Virtual Desktop zugreifst, kannst du eine der folgenden URLs verwenden:
-     - Windows Virtual Desktop (klassisch): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Windows Virtual Desktop: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
-     - Windows Virtual Desktop (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
-   - Wenn Sie stattdessen das Feld **E-Mail** verwenden, geben Sie Ihre E-Mail-Adresse ein. Dies weist den Client an, nach einer URL zu suchen, die Ihrer E-Mail-Adresse zugeordnet ist, wenn Ihr Administrator [E-Mail-Ermittlung](/windows-server/remote/remote-desktop-services/rds-email-discovery) eingerichtet hat.
-3. Wählen Sie **Weiter** aus.
-4. Melden Sie sich mit Ihrem Benutzerkonto an, wenn Sie dazu aufgefordert werden.
-5. Die Ressourcen sollten im Connection Center nach Arbeitsbereich gruppiert angezeigt werden.
+Die Ressourcen werden nach Arbeitsbereichen gruppiert im **Connection Centerr** angezeigt.
+
+   > [!NOTE]
+   > Der Windows-Client verwendet standardmäßig automatisch Windows Virtual Desktop (klassisch). 
+   > 
+   > Wenn der Client jedoch zusätzliche Azure Ressource Manager-Ressourcen erkennt, fügt er diese automatisch hinzu oder benachrichtigt den Benutzer, dass sie verfügbar sind.
+
+### <a name="use-a-specific-url"></a>Verwenden Sie eine bestimmte URL
+
+1. Wählen Sie auf der Hauptseite die Option **abonnieren mit URL** aus.
+1. Geben Sie entweder die *Arbeitsbereichs-URL* oder eine *E-Mail-Adresse* ein:
+   - Verwenden Sie für die **Arbeitsbereichs-URL** die URL, die von Ihrem Administrator bereitgestellt wird.
+
+   |Verfügbare Ressourcen|URL|
+   |-|-|
+   |Windows Virtual Desktop (klassisch)|`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`|
+   |Windows Virtual Desktop|`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`|
+   |Windows Virtual Desktop (US-Gov)|`https://rdweb.wvd.azure.us/api/arm/feeddiscovery`|
+   
+   - Für **Email**, verwenden Sie Ihre E-Mail-Adresse. 
+      
+   Der Client findet die URL, die Ihrer e-Mail zugeordnet ist, sofern der Administrator die [E-Mail-](/windows-server/remote/remote-desktop-services/rds-email-discovery)Ermittlung aktiviert hat.
+
+1. Wählen Sie **Weiter** aus.
+1. Melden Sie sich mit Ihrem Benutzerkonto an, wenn Sie dazu aufgefordert werden.
+
+Die Ressourcen werden nach Arbeitsbereichen gruppiert im **Connection Centerr** angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Verwendung des Windows Desktop-Clients finden Sie unter [Erste Schritte mit dem Windows Desktop-Client](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/).
+Weitere Informationen über die Verwendung des Clients finden Sie unter [Erste Schritte mit dem Windows Desktop-Client](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/).
 
-Wenn Sie ein Administrator sind, der ausführlichere Kenntnisse zur Verwendung von Windows Desktop erwerben möchte, sehen Sie sich [Windows Desktop-Client für Administratoren](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin) an.
+Wenn Sie ein Administrator sind und mehr über die Funktionen des Clients erfahren möchten, lesen Sie [Windows Desktop Client für Administratoren](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin).

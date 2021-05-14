@@ -4,17 +4,17 @@ description: Herstellen einer privaten Verbindung mit einer Web-App mithilfe ein
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/16/2021
+ms.date: 04/27/2021
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4de405e07a9ae9d1efb33f2cee3630a1eefdef33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c95c90e7860b0257f63802b321c35b38ec00bb23
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104655902"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140963"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Verwenden von Private Endpoint für eine Azure-Web-App
 
@@ -68,7 +68,7 @@ Wenn Sie einen privaten Endpunkt für die Web-App verwenden, muss die angeforder
 Standardmäßig ist der öffentliche Name Ihrer Web-App ohne einen privaten Endpunkt ein kanonischer Name für den Cluster.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |Typ |Wert |
+|Name |type |Wert |
 |-----|-----|------|
 |mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
 |clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
@@ -78,7 +78,7 @@ Der Name wird beispielsweise wie folgt aufgelöst:
 Wenn Sie einen privaten Endpunkt bereitstellen, wird der DNS-Eintrag so aktualisiert, dass er auf den kanonischen Namen mywebapp.privatelink.azurewebsites.net verweist.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |Typ |Wert |Anmerkung |
+|Name |type |Wert |Anmerkung |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
@@ -89,7 +89,7 @@ Sie müssen einen privaten DNS-Server oder eine private Azure DNS-Zone einrichte
 Die DNS-Zone, die Sie erstellen müssen, ist: **privatelink.azurewebsites.net**. Registrieren Sie den Eintrag für Ihre Web-App mit einem A-Eintrag und der IP des privaten Endpunkts.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |Typ |Wert |Anmerkung |
+|Name |type |Wert |Anmerkung |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|<--Azure erstellt diesen Eintrag im öffentlichen Azure-DNS, um die App auf die private Verbindung zu verweisen. Dies wird von uns verwaltet.|
 |mywebapp.privatelink.azurewebsites.net|Ein|10.10.10.8|<– Sie verwalten diesen Eintrag in Ihrem DNS-System, sodass er auf die IP-Adresse Ihres privaten Endpunkts verweist|
@@ -101,7 +101,7 @@ Wenn Sie einen benutzerdefinierten DNS-Namen verwenden müssen, müssen Sie den 
 
 Für die Kudu-Konsole oder die Kudu-REST-API (z. B. zusammen mit selbstgehosteten DevOps-Agents bereitgestellt) müssen Sie zwei Einträge in Ihrer privaten Azure DNS-Zone oder auf Ihrem benutzerdefinierten DNS-Server erstellen. 
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 |-----|-----|-----|
 | mywebapp.privatelink.azurewebsites.net | Ein | PrivateEndpointIP | 
 | mywebapp.scm.privatelink.azurewebsites.net | Ein | PrivateEndpointIP | 
@@ -121,6 +121,8 @@ Sie können bis zu 100 private Endpunkte mit einer bestimmten Web-App verbinden
 Die Funktion „Remotedebuggen“ ist nicht verfügbar, wenn Private Endpoint für die Web-App aktiviert wurde. Daher wird empfohlen, den Code für ein Einschubfach bereitzustellen und dort ein Remotedebugging durchzuführen.
 
 FTP-Zugriff wird über die eingehende öffentliche IP-Adresse gewährt. Der private Endpunkt unterstützt keinen FTP-Zugriff auf die Web-App.
+
+Es gibt eine bekannte Einschränkung, die sich auf private Endpunkte und das Datenverkehrsrouting mit Slots (auch als [Test-in-Produktion][TiP]-Feature (TiP) bekannt) auswirkt. Ab April 2021 führt das automatische und manuelle Anforderungsrouting zwischen Slots zu „403 Zugriff verweigert“. Diese Einschränkung wird in einer späteren Version aufgehoben.
 
 Wir verbessern regelmäßig die Funktionen private Verbindung (Private Link) und privater Endpunkt. Aktuelle Informationen zu Einschränkungen finden Sie in [diesem Artikel][pllimitations].
 
@@ -150,3 +152,4 @@ Wir verbessern regelmäßig die Funktionen private Verbindung (Private Link) und
 [howtoguide4]: ../scripts/template-deploy-private-endpoint.md
 [howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
 [howtoguide6]: ../scripts/terraform-secure-backend-frontend.md
+[TiP]: https://docs.microsoft.com/azure/app-service/deploy-staging-slots#route-traffic

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2020
 ms.author: duau
-ms.openlocfilehash: 5989f91233448c04d50ba1c69a06851b91426a03
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2ad97656b822bc5ffc957469842436ec84d9e812
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167803"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785755"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Protokollunterstützung für HTTP-Header in Azure Front Door
 Dieser Artikel beschreibt das Protokoll, das Front Door mit Teilen des Aufrufpfads unterstützt (siehe Abbildung). Die folgenden Abschnitte enthalten weitere Informationen zu HTTP-Headern, die von Front Door unterstützt werden.
@@ -37,7 +37,7 @@ Front Door enthält Header für eine eingehende Anforderung, sofern sie nicht au
 | ------------- | ------------- |
 | Via |  *Via: 1.1 Azure* </br> Front Door fügt die HTTP-Version des Clients, gefolgt von *Azure*, als Wert für den Via-Header hinzu. Dieser Header gibt die HTTP-Version des Clients an, und dass Front Door für die Anforderung zwischen dem Client und dem Back-End als Empfänger zwischengeschaltet war.  |
 | X-Azure-ClientIP | *X-Azure-ClientIP: 127.0.0.1* </br> Stellt die Client-IP-Adresse dar, die mit der zu verarbeitenden Anforderung verknüpft ist. Beispiel: Eine Anforderung von einem Proxy wird möglicherweise dem X-Forwarded-For-Header hinzugefügt, um die IP-Adresse des ursprünglichen Aufrufers anzugeben. |
-| X-Azure-SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> Stellt die Socket-IP-Adresse dar, die mit der TCP-Verbindung verknüpft ist, von der die aktuelle Anforderung stammt. Die Client-IP-Adresse einer Anforderung entspricht möglicherweise nicht der Socket-IP-Adresse, da sie durch einen Benutzer willkürlich überschrieben werden kann.|
+| X-Azure-SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> Stellt die Socket-IP-Adresse dar, die mit der TCP-Verbindung verknüpft ist, von der die aktuelle Anforderung stammt. Die Client-IP-Adresse einer Anforderung entspricht möglicherweise nicht der Socket-IP-Adresse, da die Client-IP-Adresse durch einen Benutzer willkürlich überschrieben werden kann.|
 | X-Azure-Ref | *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Dies ist eine eindeutige Referenzzeichenfolge, die eine von Front Door verarbeitete Anforderung identifiziert. Sie wird zum Durchsuchen von Zugriffsprotokollen verwendet und ist zur Problembehandlung wichtig.|
 | X-Azure-RequestChain | *X-Azure-RequestChain: hops=1* </br> Diesen Header verwendet Front Door, um Anforderungsschleifen zu erkennen, und Benutzer sollten dafür keine Abhängigkeit erstellen. |
 | X-Azure-FDID | *X-Azure-FDID: 55ce4ed1-4b06-4bf1-b40e-4638452104da* <br/> Eine Verweiszeichenfolge, die angibt, dass die Anforderung von einer bestimmten Front Door-Ressource stammt. Der Wert kann im Azure-Portal angezeigt oder über die Verwaltungs-API abgerufen werden. Sie können diesen Header in Kombination mit IP-ACLs verwenden, um den Endpunkt so zu sperren, dass nur Anforderungen von einer bestimmten Front Door-Ressource angenommen werden. [Weitere Informationen](front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-) finden Sie in den häufig gestellten Fragen (FAQ). |

@@ -1,10 +1,10 @@
 ---
-title: Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal | Microsoft-Dokumentation
-description: Enthält eine Einführung in die Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal.
+title: Anmeldeprotokolle in Azure Active Directory | Microsoft-Dokumentation
+description: Hier finden Sie eine Übersicht über die Anmeldeprotokolle in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,63 +13,75 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/24/2020
+ms.date: 04/26/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e524430d696dab7233f4ebb3403f08b2a8030412
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93122842"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126703"
 ---
-# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
+# <a name="sign-ins-logs-in-azure-active-directory"></a>Anmeldeprotokolle in Azure Active Directory
 
-Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) umfasst die folgenden Komponenten:
+Als IT-Administrator müssen Sie wissen, wie Ihre IT-Umgebung funktioniert. Anhand der Informationen zur Integrität Ihres Systems können Sie bewerten, ob und wie Sie auf potenzielle Probleme reagieren müssen. 
 
-- **Aktivität** 
-    - **Anmeldungen**: Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
-    - **Überwachungsprotokolle** - [Überwachungsprotokolle](concept-audit-logs.md) stellen Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und zu Verzeichnisaktivitäten bereit.
-    - **Bereitstellungsprotokolle** - [Bereitstellungsprotokolle](./concept-provisioning-logs.md) ermöglichen Kunden die Überwachung von Aktivitäten durch den Bereitstellungsdienst, z. B. die Erstellung einer Gruppe in ServiceNow oder eines aus Workday importierten Benutzers. 
-- **Security** 
-    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](../identity-protection/overview-identity-protection.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
-    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](../identity-protection/overview-identity-protection.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
+Um Sie bei diesem Ziel zu unterstützen, bietet Ihnen das Azure Active Directory-Portal Zugriff auf drei Aktivitätsprotokolle:
+
+- **[Anmeldungen](concept-sign-ins.md)** : Informationen zu Anmeldungen und zur Verwendung Ihrer Ressourcen durch Ihre Benutzer.
+- **[Überwachung](concept-audit-logs.md)** : Informationen zu Änderungen, die auf Ihren Mandanten angewendet wurden, z. B. Benutzer- und Gruppenverwaltung oder Updates, die auf die Ressourcen Ihres Mandanten angewendet wurden.
+- **[Bereitstellung](concept-provisioning-logs.md)** – Aktivitäten durch den Bereitstellungsdienst, z. B. die Erstellung einer Gruppe in ServiceNow oder eines aus Workday importierten Benutzers.
 
 In diesem Artikel erhalten Sie einen Überblick über den Bericht zu Anmeldeaktivitäten.
 
-## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
+## <a name="what-can-you-do-with-it"></a>Was können Sie damit machen?
 
-* Benutzer mit den Rollen „Sicherheitsadministrator“, „Globaler Leser“, „Sicherheitsleseberechtigter“ und „Berichtsleser“
-* Globale Administratoren
-* Jeder Benutzer (Nicht-Administratoren) kann auf seine eigenen Anmeldungen zugreifen. 
+Im Anmeldeprotokoll finden Sie Antworten auf Fragen wie die folgenden:
 
-### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf die Anmeldeaktivität?
+- Wie sieht das Anmeldemuster eines Benutzers aus?
+
+- Wie viele Benutzer haben sich im Laufe einer Woche angemeldet?
+
+- Wie lautet der Status dieser Anmeldungen?
+
+
+## <a name="who-can-access-it"></a>Wer kann auf sie zugreifen?
+
+Sie können jederzeit auf Ihr eigenes Anmeldeprotokoll zugreifen. 
+
+Um auf das Anmeldeprotokoll eines anderen Benutzers zugreifen zu können, müssen Sie sein:
+
+- Ein globaler Administrator:
+
+- Ein Benutzer mit einer der folgenden Rollen:
+    - Sicherheitsadministrator
+
+    - Sicherheitsleseberechtigter
+
+    - Globaler Leser
+
+    - Berichtsleseberechtigter
+
+
+
+## <a name="what-azure-ad-license-do-you-need"></a>Welche Azure AD-Lizenz benötigen Sie?
 
 Der Bericht zu Anmeldeaktivitäten ist in [allen Editionen von Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) verfügbar, und Sie können auch über die Microsoft Graph-API darauf zugreifen.
 
-## <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten
 
-Der Bericht zu Anmeldeaktivitäten enthält Antworten auf die folgenden Fragen:
+## <a name="where-can-you-find-it-in-the-azure-portal"></a>Wo finden Sie die Protokolle im Azure-Portal?
 
-* Wie sieht das Anmeldemuster eines Benutzers aus?
-* Wie viele Benutzer haben sich im Laufe einer Woche angemeldet?
-* Wie lautet der Status dieser Anmeldungen?
+Das Azure-Portal bietet Ihnen mehrere Optionen für den Zugriff auf das Protokoll. Im Azure Active Directory-Menü können Sie beispielsweise im Abschnitt **Überwachung** öffnen.  
 
-Wählen Sie im Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure Active Directory** aus. Sie können auch auf einer beliebigen Seite **Azure Active Directory** suchen und auswählen.
+![Öffnen von Anmeldeprotokollen](./media/concept-sign-ins/sign-ins-logs-menu.png)
 
-![Auswählen von Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+Zudem können Sie über diesen Link direkt zu den Anmeldeprotokollen gelangen: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)
 
-Wählen Sie unter **Überwachung** die Option **Anmeldungen** aus, um den [Bericht zu Anmeldeaktivitäten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) zu öffnen.
 
-![Screenshot: Menü „Überwachung“ mit ausgewählten Anmeldungen](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Anmeldeaktivität")
-
-Es kann bei einigen Anmeldedatensätzen bis zu zwei Stunden dauern, bis sie im Portal angezeigt werden.
-
-> [!IMPORTANT]
-> Im Bericht zu Anmeldeaktivitäten werden nur die **interaktiven** Anmeldungen angezeigt, also Anmeldungen, bei denen sich ein Benutzer manuell mit seinem Benutzernamen und Kennwort anmeldet. Nicht interaktive Anmeldungen wie Dienst-zu-Dienst-Authentifizierungen werden im Bericht zu Anmeldeaktivitäten nicht angezeigt. 
+## <a name="what-is-the-default-view"></a>Was ist die Standansicht?
 
 Ein Anmeldungsprotokoll enthält eine Standardlistenansicht mit folgenden Informationen:
 
@@ -94,17 +106,26 @@ Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Information
 
 ![Screenshot: Ansicht mit ausführlichen Informationen](./media/concept-sign-ins/basic-sign-in.png "Anmeldeaktivität")
 
-> [!NOTE]
-> Benutzer können nun in allen Anmeldeberichten Probleme mit Richtlinien für bedingten Zugriff beheben. Durch Klicken auf die Registerkarte **Bedingter Zugriff** eines Anmeldedatensatzes können Benutzer den Status des bedingten Zugriffs überprüfen und die Richtliniendetails für die Anmeldung sowie die jeweiligen Richtlinienergebnisse ansehen.
-> Weitere Informationen finden Sie in den [häufig gestellten Fragen zum bedingten Zugriff in allen Anmeldungen](reports-faq.md#conditional-access).
+
+
+## <a name="sign-in-error-code"></a>Anmeldefehler
+
+Wenn bei der Anmeldung ein Fehler aufgetreten ist, erhalten Sie weitere Informationen zur Ursache im Abschnitt **Grundlegende Informationen** des zugehörigen Protokollelements. 
+
+![Anmeldefehlercode](./media/concept-all-sign-ins/error-code.png)
+ 
+Während das Protokollelement einen Fehlergrund bereitstellt, gibt es Fälle, in denen Sie möglicherweise weitere Informationen mit dem Tool für die [Fehlersuche bei der Anmeldung](https://login.microsoftonline.com/error) erhalten. Wenn verfügbar, stellt dieses Tool beispielsweise Schritte zur Problembehebung bereit.  
+
+![Fehlercode-Suchtool](./media/concept-all-sign-ins/error-code-lookup-tool.png)
 
 
 
-## <a name="filter-sign-in-activities"></a>Filtern von Anmeldeaktivitäten
+## <a name="filter-sign-in-activities&quot;></a>Filtern von Anmeldeaktivitäten
 
-Zuerst schränken Sie die gemeldeten Daten auf einen Umfang ein, der für Sie geeignet ist. Filtern Sie die Anmeldedaten anschließend mit dem Datumsfeld als Standardfilter. Azure AD bietet eine breite Palette zusätzlicher Filter, die Sie festlegen können:
 
-![Screenshot: Option „Filter hinzufügen“](./media/concept-sign-ins/04.png "Anmeldeaktivität")
+Sie können die Daten in einem Protokoll filtern, um sie gemäß Ihren Anforderungen einzugrenzen:
+
+![Screenshot: Option „Filter hinzufügen“](./media/concept-sign-ins/04.png &quot;Anmeldeaktivität")
 
 **Anforderungs-ID-** : ID der Anforderung, die Sie interessiert.
 
@@ -240,7 +261,7 @@ Durch Klicken auf ein Element können Sie ausführlichere Informationen zum ents
 - Anmeldestatus
 
 > [!NOTE]
-> IP-Adressen werden so ausgestellt, dass es keine definitive Verbindung zwischen einer IP-Adresse und dem physischen Standort des Computers mit dieser Adresse gibt. Das Zuordnen von IP-Adressen wird außerdem durch Faktoren wie Mobilfunkanbieter und VPNs verkompliziert, die IP-Adressen aus zentralen Pools zuweisen, die oft sehr weit von den Orten entfernt sind, an denen das Clientgerät tatsächlich verwendet wird. Derzeit erfolgt das Konvertieren einer IP-Adresse in einen physischen Standort basierend auf Ablaufverfolgungen, Registrierungsdaten, umgekehrten Suchvorgängen und anderen Informationen.
+> IP-Adressen werden so ausgestellt, dass es keine definitive Verbindung zwischen einer IP-Adresse und dem physischen Standort des Computers mit dieser Adresse gibt. Das Zuordnen von IP-Adressen wird außerdem durch Faktoren wie Mobilfunkanbieter und VPNs verkompliziert, die IP-Adressen aus zentralen Pools zuweisen, die oft sehr weit von den Orten entfernt sind, an denen das Clientgerät tatsächlich verwendet wird. Derzeit erfolgt das Konvertieren einer IP-Adresse in einen physischen Standort basierend auf Ablaufverfolgungen, Registrierungsdaten, Reverse-Lookups und anderen Informationen.
 
 Wenn Sie auf der Seite **Benutzer** im Abschnitt **Aktivität** auf **Anmeldevorgänge** klicken, wird eine umfassenden Übersicht über alle Benutzeranmeldungen angezeigt.
 
@@ -278,6 +299,7 @@ Mithilfe der [Office 365-Verwaltungs-APIs](/office/office-365-management-api/of
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Fehlercodes des Berichts mit den Anmeldeaktivitäten](reference-sign-ins-error-codes.md)
+* [Fehlercodes des Berichts mit den Anmeldeaktivitäten]()
 * [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md)
 * [Latenzen bei Azure Active Directory-Berichten](reference-reports-latencies.md)
+* [Microsoft-Erstanbieter-Anwendungen in Anmeldeberichten](/troubleshoot/azure/active-directory/verify-first-party-apps-sign-in#application-ids-for-commonly-used-microsoft-applications)

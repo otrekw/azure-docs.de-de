@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, fasttrack-edit
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 643d1cd6df3791b2e5ea2118425eecb29dbcdea2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8c71e76213011beaa63deeaadfa3d6d2dc0d4ce2
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877576"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286532"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Schnellstart: Einrichten des Azure Spring Cloud-Konfigurationsservers
 
@@ -23,7 +23,7 @@ Der Azure Spring Cloud-Konfigurationsserver ist ein zentralisierter Konfiguratio
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Absolvieren Sie den vorherigen Schnellstart in dieser Serie: [Bereitstellen des Azure Spring Cloud-Diensts](spring-cloud-quickstart-provision-service-instance.md)
+* Absolvieren Sie den vorherigen Schnellstart in dieser Serie: [Bereitstellen des Azure Spring Cloud-Diensts](./quickstart-provision-service-instance.md)
 
 ## <a name="azure-spring-cloud-config-server-procedures"></a>Verfahren für den Azure Spring Cloud-Konfigurationsserver
 
@@ -51,11 +51,11 @@ Der Azure Spring Cloud-Konfigurationsserver ist ein zentralisierter Konfiguratio
 
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 
-Im folgenden Verfahren wird der Konfigurationsserver mithilfe des Azure-Portals zum Bereitstellen des [Piggy Metrics-Beispiels](spring-cloud-quickstart-sample-app-introduction.md) eingerichtet.
+Im folgenden Verfahren wird der Konfigurationsserver mithilfe des Azure-Portals zum Bereitstellen des [PetClinic-Beispiels](https://github.com/azure-samples/spring-petclinic-microservices) eingerichtet.
 
 1. Navigieren Sie zur Seite **Übersicht**, und wählen Sie **Konfigurationsserver** aus.
 
-2. Geben Sie im Abschnitt **Standardrepository** für **URI** den Wert „https://github.com/Azure-Samples/piggymetrics-config“ ein.
+2. Geben Sie im Abschnitt **Standardrepository** für **URI** den Wert „https://github.com/azure-samples/spring-petclinic-microservices-config“ ein.
 
 3. Klicken Sie auf **Überprüfen**.
 
@@ -73,47 +73,47 @@ Im folgenden Verfahren wird der Konfigurationsserver mithilfe des Azure-Portals 
 
 #### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/Azure-CLI)
 
-Im folgenden Verfahren wird die Azure CLI zum Einrichten des Konfigurationsservers und zum Bereitstellen des [Piggy Metrics-Beispiels](spring-cloud-quickstart-sample-app-introduction.md) eingerichtet.
 
-Richten Sie den Konfigurationsserver mit dem Speicherort des Git-Repositorys für das Projekt ein:
+Im folgenden Verfahren wird die Azure CLI zum Einrichten des Konfigurationsservers und zum Bereitstellen des [PetClinic-Beispiels](https://github.com/azure-samples/spring-petclinic-microservices) eingerichtet.
+
+Führen Sie den folgenden Befehl aus, um das Standardrepository festzulegen:
 
 ```azurecli
-az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/piggymetrics-config
-```
----
+
+az spring-cloud config-server git set -n <service instance name> --uri https://github.com/azure-samples/spring-petclinic-microservices-config
 ::: zone-end
 
 > [!TIP]
-> Bei Verwendung eines privaten Repositorys für den Konfigurationsserver finden Sie weitere Informationen im [Tutorial zum Einrichten der Authentifizierung](./spring-cloud-howto-config-server.md).
+> If you are using a private repository for config server, please refer to our [tutorial on setting up authentication](./how-to-config-server.md).
 
-## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Problembehandlung beim Azure Spring Cloud-Konfigurationsserver
+## Troubleshooting of Azure Spring Cloud config server
 
-Im folgenden Verfahren wird erläutert, wie die Konfigurationsservereinstellungen behoben werden.
+The following procedure explains how to troubleshoot config server settings.
 
-1. Wechseln Sie im Azure-Portal auf die Dienstseite **Übersicht**, und wählen Sie **Protokolle** aus. 
-1. Wählen Sie **Abfragen** aus, und **zeigen Sie die Anwendungsprotokolle an, die die Begriffe „Fehler“ oder „Ausnahme“ enthalten**. 
-1. Klicken Sie auf **Ausführen**. 
-1. Wenn Sie in den Protokollen den Fehler **java.lang.illegalStateException** finden, deutet dies darauf hin, dass der Spring Cloud-Dienst keine Eigenschaften vom Konfigurationsserver finden kann.
+1. In the Azure portal, go to the service **Overview** page and select **Logs**. 
+1. Select **Queries** and **Show the application logs that contain the "error" or "exception" terms"**. 
+1. Click **Run**. 
+1. If you find the error **java.lang.illegalStateException** in logs, this indicates that spring cloud service cannot locate properties from config server.
 
-    [ ![Über das ASC-Portal ausgeführte Abfrage](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
+    [ ![ASC portal run query](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
 
-1. Wechseln Sie zur Dienstseite **Übersicht**.
-1. Wählen Sie **Probleme diagnostizieren und beheben** aus. 
-1. Wählen Sie die Erkennung **Konfigurationsserver** aus.
+1. Go to the service **Overview** page.
+1. Select **Diagnose and solve problems**. 
+1. Select **Config Server** detector.
 
-    [ ![Problemdiagnose über das ASC-Portal](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
+    [ ![ASC portal diagnose problems](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
 
-3. Klicken Sie auf **Integritätsüberprüfung des Konfigurationsservers**.
+3. Click **Config Server Health Check**.
 
-    [ ![ASC-Portal-Genie](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
+    [ ![ASC portal genie](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
 
-4. Klicken Sie auf **Konfigurationsserverstatus**, um weitere Details der Erkennung anzuzeigen.
+4. Click **Config Server Status** to see more details from the detector.
 
-    [ ![Integritätsstatus des ASC-Portals](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
+    [ ![ASC portal health status](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
 
-## <a name="next-steps"></a>Nächste Schritte
+## Next steps
 
-In dieser Schnellstartanleitung haben Sie Azure-Ressourcen erstellt, für die weiterhin Gebühren anfallen, falls sie in Ihrem Abonnement verbleiben. Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren möchten, lesen Sie die Informationen unter [Bereinigen von Ressourcen](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources). Fahren Sie andernfalls mit der nächsten Schnellstartanleitung fort:
+In this quickstart, you created Azure resources that will continue to accrue charges if they remain in your subscription. If you don't intend to continue on to the next quickstart, see [Clean up resources](./quickstart-logs-metrics-tracing.md#clean-up-resources). Otherwise, advance to the next quickstart:
 
 > [!div class="nextstepaction"]
-> [Erstellen und Bereitstellen von Apps](spring-cloud-quickstart-deploy-apps.md)
+> [Build and deploy apps](./quickstart-deploy-apps.md)

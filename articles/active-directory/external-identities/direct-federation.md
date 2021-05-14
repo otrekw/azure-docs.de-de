@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/23/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 598cbf303c8a87675833b8d87f05055771e46f55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88a6d054f64201bec04ee18f492f7ba69c3cc810
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687242"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987594"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)
 
@@ -33,12 +33,12 @@ Nachdem Sie den direkten Verbund mit einer Organisation eingerichtet haben, werd
  - Wenn Sie den direkten Verbund mit einer Partnerorganisation einrichten, Gastbenutzer einladen und die Partnerorganisation dann später zu Azure AD wechselt, verwenden die Gastbenutzer, die bereits Einladungen eingelöst haben, weiterhin den direkten Verbund, solange die direkte Verbundrichtlinie in Ihrem Mandanten vorhanden ist.
  - Wenn Sie den direkten Verbund mit einer Partnerorganisation löschen, können sich alle Gastbenutzer, die zurzeit den direkt Verbund verwenden, nicht mehr anmelden.
 
-In jedem dieser Szenarien können Sie die Authentifizierungsmethode eines Gastbenutzers aktualisieren, indem Sie das Gastbenutzerkonto aus Ihrem Verzeichnis löschen und den Benutzer erneut einladen.
+In jedem dieser Szenarien können Sie die Authentifizierungsmethode eines Gastbenutzers aktualisieren, indem Sie [seinen Einlösungsstatus zurücksetzen](reset-redemption-status.md).
 
 Der direkte Verbund ist an Domänennamespaces gebunden, z. B. „contoso.com“ und „fabrikam.com“. Wenn Sie eine direkte Verbundkonfiguration mit AD FS oder einem Drittanbieter-Identitätsanbieter einrichten, ordnen Organisationen diesen Identitätsanbietern einen oder mehrere Domänennamespaces zu. 
 
 ## <a name="end-user-experience"></a>Endbenutzererfahrung 
-Bei direktem Verbund melden sich Gastbenutzer mit ihren eigenen Organisationskonten bei Ihrem Azure AD-Mandanten an. Wenn sie auf freigegebene Ressourcen zugreifen und zur Anmeldung aufgefordert werden, werden direkte Verbundbenutzer zu ihrem Identitätsanbieter umgeleitet. Nach erfolgreicher Anmeldung werden sie an Azure AD zurückgeleitet, um auf Ressourcen zuzugreifen. Die Aktualisierungstoken von direkten Verbundbenutzern sind 12 Stunden lang gültig, wobei es sich um die [Standarddauer für Pass-Through-Aktualisierungstoken](../develop/active-directory-configurable-token-lifetimes.md#exceptions) in Azure AD handelt. Wenn der Verbundidentitätsanbieter einmaliges Anmelden (SSO) aktiviert hat, erfährt der Benutzer auch SSO, und es wird nach der ersten Authentifizierung keine Anmeldeaufforderung mehr angezeigt.
+Bei direktem Verbund melden sich Gastbenutzer mit ihren eigenen Organisationskonten bei Ihrem Azure AD-Mandanten an. Wenn sie auf freigegebene Ressourcen zugreifen und zur Anmeldung aufgefordert werden, werden direkte Verbundbenutzer zu ihrem Identitätsanbieter umgeleitet. Nach erfolgreicher Anmeldung werden sie an Azure AD zurückgeleitet, um auf Ressourcen zuzugreifen. Die Aktualisierungstoken von direkten Verbundbenutzern sind 12 Stunden lang gültig, wobei es sich um die [Standarddauer für Pass-Through-Aktualisierungstoken](../develop/active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties) in Azure AD handelt. Wenn der Verbundidentitätsanbieter einmaliges Anmelden (SSO) aktiviert hat, erfährt der Benutzer auch SSO, und es wird nach der ersten Authentifizierung keine Anmeldeaufforderung mehr angezeigt.
 
 ## <a name="sign-in-endpoints"></a>Endpunkte für die Anmeldung
 
@@ -89,7 +89,7 @@ Wenn direkter Verbund mit einer Partnerorganisation eingerichtet ist, hat dieser
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Behandelt der direkte Verbund Anmeldeprobleme aufgrund eines teilweise synchronisierten Mandanten?
 Nein, in diesem Szenario sollte die Funktion [E-Mail-Einmalkennung](one-time-passcode.md) verwendet werden. Ein „teilweise synchronisierter Mandant“ bezieht sich auf einen Azure AD-Partnermandanten, bei dem lokale Benutzeridentitäten nicht vollständig mit der Cloud synchronisiert sind. Ein Gast, dessen Identität noch nicht in der Cloud vorhanden ist, der aber versucht, Ihre B2B-Einladung einzulösen, kann sich dann nicht anmelden. Die Einmalkennungsfunktion gestattet diesem Gast die Anmeldung. Die direkte Verbundfunktion behandelt Szenarien, in denen der Gast über ein eigenes vom Identitätsanbieter verwaltetes Organisationskonto verfügt, die Organisation aber über gar keine Azure AD-Präsenz verfügt.
 ### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>Wenn der direkte Verbund mit einer Organisation konfiguriert ist, muss dann jedem Gast eine individuelle Einladung gesendet werden, die dieser einlösen muss?
-Durch das Einrichten des direkten Verbunds wird nicht die Authentifizierungsmethode für Gastbenutzer geändert, die bereits eine Einladung von Ihnen eingelöst haben. Sie können die Authentifizierungsmethode eines Gastbenutzers aktualisieren, indem Sie das Gastbenutzerkonto aus Ihrem Verzeichnis löschen und den Benutzer erneut einladen.
+Durch das Einrichten des direkten Verbunds wird nicht die Authentifizierungsmethode für Gastbenutzer geändert, die bereits eine Einladung von Ihnen eingelöst haben. Sie können die Authentifizierungsmethode eines Gastbenutzers aktualisieren, indem Sie [seinen Einlösungsstatus zurücksetzen](reset-redemption-status.md).
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>Schritt 1: Konfigurieren Sie den Identitätsanbieter der Partnerorganisation
 Zunächst muss Ihre Partnerorganisation ihren Identitätsanbieter mit den erforderlichen Ansprüchen und Vertrauenspersonen vertraut machen. 
 
@@ -178,7 +178,7 @@ Als Nächstes konfigurieren Sie den direkten Verbund mit dem in Schritt 1 in Azu
 
 ### <a name="to-configure-direct-federation-in-azure-ad-using-powershell"></a>So konfigurieren Sie direkten Verbund in Azure AD mit der PowerShell
 
-1. Installieren Sie die neueste Version des Azure AD PowerShell für Graph-Moduls ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)). (Wenn Sie ausführliche Schritte benötigen, enthält der Schnellstart zum Hinzufügen eines Gastbenutzers den Abschnitt [Installieren des neuesten AzureADPreview-Moduls](b2b-quickstart-invite-powershell.md#install-the-latest-azureadpreview-module).) 
+1. Installieren Sie die neueste Version des Azure AD PowerShell für Graph-Moduls ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)). (Wenn Sie detaillierte Schritte benötigen, enthält der Schnellstart die Anleitung [PowerShell-Modul](b2b-quickstart-invite-powershell.md#prerequisites).)
 2. Führen Sie den folgenden Befehl aus: 
    ```powershell
    Connect-AzureAD
@@ -212,7 +212,7 @@ Testen Sie nun Ihre Einrichtung des direkten Verbunds, indem Sie einen neuen B2B
 
 
 ## <a name="how-do-i-remove-direct-federation"></a>Wie entferne ich einen direkten Verbund?
-Sie können Ihre direkte Verbundeinrichtung entfernen. Wenn Sie dies tun, können sich Verbundgastbenutzer, die ihre Einladungen bereits eingelöst haben, nicht mehr anmelden. Sie können ihnen aber erneut Zugriff auf Ihre Ressourcen gewähren, indem Sie sie aus dem Verzeichnis löschen und erneut einladen. So entfernen Sie den direkten Verbund mit einem Identitätsanbieter im Azure AD-Portal
+Sie können Ihre direkte Verbundeinrichtung entfernen. Wenn Sie dies tun, können sich Verbundgastbenutzer, die ihre Einladungen bereits eingelöst haben, nicht mehr anmelden. Sie können ihnen jedoch den Zugriff auf ihre Ressourcen zurückgeben, indem Sie [ihren Einlösungsstatus zurücksetzen](reset-redemption-status.md). So entfernen Sie den direkten Verbund mit einem Identitätsanbieter im Azure AD-Portal
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/). Wählen Sie im linken Bereich **Azure Active Directory** aus. 
 2. Wählen Sie **Externe Identitäten** aus.

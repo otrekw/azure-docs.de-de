@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 12/16/2020
-ms.openlocfilehash: 852c44f5edc5c0b0f5f655f63ab040927bd9bc7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/20/2021
+ms.openlocfilehash: def73d137f3cc2c79ae8417995ec6bdf6c519b7d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963678"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812622"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Unterstützte Datenspeicher in Azure Data Share
 
@@ -50,7 +50,7 @@ Die folgende Tabelle erläutert die Kombinationen und Optionen, aus denen Datenc
 | Data Explorer ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Freigeben über ein Speicherkonto
-Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen aus Azure Data Lake Storage Gen1 und Azure Data Lake Storage Gen2. Darüber hinaus wird die Freigabe von Blobs, Ordnern und Containern aus Azure Blob Storage unterstützt. Derzeit werden nur Blockblobs unterstützt. 
+Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen aus Azure Data Lake Storage Gen1 und Azure Data Lake Storage Gen2. Darüber hinaus wird die Freigabe von Blobs, Ordnern und Containern aus Azure Blob Storage unterstützt. Sie können Block-, Anfüge- oder Seitenblobs freigeben, die als Blockblobs empfangen werden.
 
 Wenn Dateisysteme, Container oder Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, können Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen. Alternativ dazu kann die Funktion für inkrementelle Momentaufnahmen verwendet werden, um nur neue oder aktualisierte Dateien zu kopieren. 
 

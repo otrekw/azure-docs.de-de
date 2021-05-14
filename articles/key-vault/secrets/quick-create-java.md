@@ -2,18 +2,18 @@
 title: 'Schnellstart: Azure Key Vault-Geheimnisclientbibliothek für Java'
 description: Hier finden Sie eine Schnellstartanleitung zur Azure Key Vault-Geheimnisclientbibliothek für Java.
 author: msmbaldwin
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: b45bb353ae32f1037fde7dc5d518472089edf12f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a8cae97420cf26d166c93918c52af9e9a8bf72cb
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766333"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290882"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Schnellstart: Azure Key Vault-Geheimnisclientbibliothek für Java
 Hier finden Sie Informationen zu den ersten Schritten mit der Azure Key Vault-Geheimnisclientbibliothek für Java. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.
@@ -281,4 +281,4 @@ In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt sowie 
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](../general/developers-guide.md)
-- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-overview.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-features.md)

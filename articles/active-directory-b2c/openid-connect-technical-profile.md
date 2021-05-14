@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 670fbeeb006d21e29675f88895018d1a453a1c54
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fea42cb89dce717431c188deeb2ce83f9413f560
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102120299"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283880"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenID Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -74,7 +74,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 ## <a name="metadata"></a>Metadaten
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_id | Ja | Die Anwendungs-ID des Identitätsanbieters. |
 | IdTokenAudience | Nein | Die Zielgruppe von id_token. Wenn eine Angabe erfolgt, überprüft Azure AD B2C, ob der Anspruch `aud` in einem Token, das vom Identitätsanbieter zurückgegeben wurde, mit dem in den Metadaten für „IdTokenAudience“ angegebenen Token identisch ist.  |
@@ -92,8 +92,8 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | MarkAsFailureOnStatusCode5xx | Nein | Gibt an, ob eine Anforderung an einen externen Dienst als fehlerhaft gekennzeichnet werden soll, wenn der HTTP-Statuscode im Bereich 5xx liegt. Der Standardwert lautet `false`. |
 | DiscoverMetadataByTokenIssuer | Nein | Gibt an, ob die OIDC-Metadaten mithilfe des Ausstellers im JWT-Token ermittelt werden sollen. |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
-| token_endpoint_auth_method | Nein | Gibt an, wie Azure AD B2C den Authentifizierungsheader an den Tokenendpunkt sendet. Mögliche Werte sind `client_secret_post` (Standardwert) und `client_secret_basic` (öffentliche Vorschau). Weitere Informationen finden Sie im Abschnitt [OpenID Connect-Clientauthentifizierung](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
-| token_signing_algorithm | Nein | Der Signaturalgorithmus, der für Clientassertionen verwendet wird, wenn die **token_endpoint_auth_method**-Metadaten auf `private_key_jwt` festgelegt sind. Mögliche Werte: `RS256` (Standard). |
+|token_endpoint_auth_method| Nein | Gibt an, wie Azure AD B2C den Authentifizierungsheader an den Tokenendpunkt sendet. Mögliche Werte: `client_secret_post` (Standardwert) und`client_secret_basic` (öffentliche Vorschau) sowie`private_key_jwt` (öffentliche Vorschau). Weitere Informationen finden Sie im Abschnitt [OpenID Connect-Clientauthentifizierung](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
+|token_signing_algorithm| Nein | Gibt den Signaturalgorithmus an, der verwendet werden soll, wenn `token_endpoint_auth_method` auf `private_key_jwt` festgelegt ist. Mögliche Werte: `RS256` (Standard) oder `RS512`.|
 | SingleLogoutEnabled | Nein | Gibt an, ob das technische Profil bei der Anmeldung versucht, sich beim Verbundidentitätsanbieter abzumelden. Weitere Informationen finden Sie unter [Abmelden von der Azure AD B2C-Sitzung](./session-behavior.md#sign-out).  Mögliche Werte: `true` (Standard) oder `false`. |
 |ReadBodyClaimsOnIdpRedirect| Nein| Legen Sie dieses Element auf `true` fest, um Ansprüche aus dem Antworttext bei der Umleitung des Identitätsanbieters zu lesen. Diese Metadaten werden mit der [Apple-ID](identity-provider-apple-id.md) verwendet, wobei Ansprüche in den Antwortnutzdaten zurückgegeben werden.|
 

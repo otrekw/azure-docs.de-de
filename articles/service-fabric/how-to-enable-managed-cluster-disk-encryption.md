@@ -3,19 +3,16 @@ title: Aktivieren der Datenträgerverschlüsselung für verwaltete Service Fabri
 description: Hier erfahren Sie, wie Sie die Datenträgerverschlüsselung für verwaltete Azure Service Fabric-Clusterknoten in Windows mithilfe einer ARM-Vorlage aktivieren.
 ms.topic: how-to
 ms.date: 02/15/2021
-ms.openlocfilehash: b7e56ff8db9f94b8c6681a1a7d69a4751b3f43a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa6388d9d165cd149faae3c19b81320198fd0b02
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100640996"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127279"
 ---
 # <a name="enable-disk-encryption-for-service-fabric-managed-cluster-preview-nodes"></a>Aktivieren der Datenträgerverschlüsselung für verwaltete Service Fabric-Clusterknoten (Vorschau)
 
 In dieser Anleitung erfahren Sie, wie Sie die Datenträgerverschlüsselung für verwaltete Service Fabric-Clusterknoten in Windows mithilfe der Funktion [Azure Disk Encryption](../virtual-machines/windows/disk-encryption-overview.md) für [VM-Skalierungsgruppen](../virtual-machine-scale-sets/disk-encryption-azure-resource-manager.md) über ARM-Vorlagen (Azure Resource Manager) aktivieren.
-
-> [!IMPORTANT]
-> Die Vorschauversion der Datenträgerverschlüsselung für VM-Skalierungsgruppen unterstützt Imageupgrade und Reimaging noch nicht. Verwenden Sie sie nicht, wenn Sie das Betriebssystemimage aktualisieren müssen.
 
 ## <a name="register-for-azure-disk-encryption"></a>Registrieren für Azure Disk Encryption
 
@@ -118,7 +115,7 @@ Der folgende Schritt führt Sie durch die erforderlichen Änderungen an der Vorl
             "properties": { 
                 "publisher": "Microsoft.Azure.Security", 
                 "type": "AzureDiskEncryption", 
-                "typeHandlerVersion": "2.1", 
+                "typeHandlerVersion": "2.2", 
                 "autoUpgradeMinorVersion": true, 
                 "settings": {                     
                     "EncryptionOperation": "EnableEncryption", 

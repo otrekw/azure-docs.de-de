@@ -6,19 +6,19 @@ ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/12/2021
-ms.openlocfilehash: 2b6f97f0966cb2c92dbd88c4a70188282ed3ed27
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/27/2021
+ms.openlocfilehash: e5745f195fe7620aeb7ffe009c13c52cd5f02e62
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802032"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228634"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Beheben von CI/CD-, Azure DevOps- und GitHub-Problemen in ADF 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel werden gängige Methoden zur Problembehandlung für Continuous Integration/Continuous Deployment (CI/CD), Azure DevOps und GitHub in Azure Data Factory erläutert.
+In diesem Artikel beschäftigen wir uns mit den gängigen Methoden zur Fehlerbehebung bei der Continuous Integration-Continuous Deployment (CI-CD), der Azure DevOps und den GitHub-Problemen in Azure Data Factory.
 
 Wenn Sie Fragen oder Probleme bei der Quellcodeverwaltung oder DevOps-Verfahren haben, können die folgenden Artikel nützlich sein:
 
@@ -39,7 +39,7 @@ Folgendes lässt sich beobachten: Das Token wurde vom ursprünglichen Mandanten 
 
 #### <a name="recommendation"></a>Empfehlung
 
-Sie sollten stattdessen das Token verwenden, das vom Gastmandanten ausgegeben wurde. Sie müssen beispielsweise dieselbe Azure Active Directory-Instanz für den Gastmandanten wie für Ihre DevOps-Instanz zuweisen, sodass Azure Active Directory das Tokenverhalten ordnungsgemäß festlegen und den richtigen Mandanten verwenden kann.
+Sie sollten das vom Gastmandanten ausgestellte Token verwenden. Beispielsweise müssen Sie Ihrem Gastmandanten und Ihrem DevOps dasselbe Azure Active Directory zuweisen, damit es das Token-Verhalten korrekt einstellen und den korrekten Mandanten verwenden kann.
 
 ### <a name="template-parameters-in-the-parameters-file-are-not-valid"></a>Vorlagenparameter in der Parameterdatei sind nicht gültig
 
@@ -57,7 +57,7 @@ Bei der CI/CD-Pipeline tritt der folgende Fehler auf:
 
 #### <a name="recommendation"></a>Empfehlung
 
-Dieser Fehler tritt, da häufig Trigger gelöscht werden, die mit Parametern konfiguriert wurden. Daher sind die Parameter in der ARM-Vorlage nicht verfügbar (da der Trigger nicht mehr existiert). Da sich die Parameter nicht mehr in der ARM-Vorlage befinden, müssen die überschriebenen Parameter in der DevOps-Pipeline aktualisiert werden. Andernfalls müssen Parameter bei jeder Änderung in der ARM-Vorlage die überschriebenen Parameter in der DevOps-Pipeline aktualisieren (im Bereitstellungstask).
+Der Fehler tritt auf, weil wir oft einen Trigger löschen, der parametriert ist, daher werden die Parameter nicht in der Azure Resource Manager (ARM) Vorlage verfügbar sein (weil der Trigger nicht mehr existiert). Da sich die Parameter nicht mehr in der ARM-Vorlage befinden, müssen die überschriebenen Parameter in der DevOps-Pipeline aktualisiert werden. Andernfalls müssen Parameter bei jeder Änderung in der ARM-Vorlage die überschriebenen Parameter in der DevOps-Pipeline aktualisieren (im Bereitstellungstask).
 
 ### <a name="updating-property-type-is-not-supported"></a>Aktualisieren des Eigenschaftstyps wird nicht unterstützt
 
@@ -77,7 +77,7 @@ Bei der CI/CD-Releasepipeline tritt der folgende Fehler auf:
 
 #### <a name="cause"></a>Ursache
 
-Dies liegt an einer Integration Runtime, die in der Zielfactory den gleichen Namen, aber einen anderen Typ aufweist. Die Integration Runtime muss bei der Bereitstellung denselben Typ aufweisen.
+Dieser Fehler ist auf eine Integration Runtime mit dem gleichen Namen in der Target Factory, jedoch mit einem anderen Typ zurückzuführen. Die Integration Runtime muss bei der Bereitstellung vom gleichen Typ sein.
 
 #### <a name="recommendation"></a>Empfehlung
 
@@ -103,7 +103,7 @@ Beim Versuch, Änderungen an einer Data Factory zu veröffentlichen, erhalten Si
 `
 ### <a name="cause"></a>Ursache
 
-Sie haben die Git-Konfiguration getrennt und mit ausgewähltem Flag „Import resources“ erneut eingerichtet. Damit wird die Data Factory auf „synchron“ festgelegt. Das bedeutet, dass keine Änderungen zur Veröffentlichung vorhanden sind.
+Sie haben die Git-Konfiguration getrennt und mit ausgewähltem Flag „Import resources“ erneut eingerichtet. Damit wird die Data Factory auf „synchron“ festgelegt. Dies bedeutet keine Änderung während der Veröffentlichung.
 
 #### <a name="resolution"></a>Lösung
 
@@ -131,7 +131,7 @@ Sie können Data Factory nicht von einer Ressourcengruppe in eine andere verschi
 
 #### <a name="resolution"></a>Lösung
 
-Sie müssen die SSIS-IR und die freigegebenen IRs löschen, um den Verschiebungsvorgang zuzulassen. Wenn Sie die Integration Runtimes nicht löschen möchten, empfiehlt es sich, die Anweisungen im Dokument zum Kopieren und Klonen zu befolgen und anschließend die alte Data Factory zu löschen.
+Sie können die SSIS-IR und Shared IRs löschen, um den Verschiebevorgang zu ermöglichen. Wenn Sie die Integration Runtimes nicht löschen möchten, empfiehlt es sich, die Anweisungen im Dokument zum Kopieren und Klonen zu befolgen und anschließend die alte Data Factory zu löschen.
 
 ###  <a name="unable-to-export-and-import-arm-template"></a>Exportieren und Importieren von ARM-Vorlagen nicht möglich
 
@@ -157,21 +157,21 @@ Bis vor Kurzem war die einzige Möglichkeit zum Veröffentlichen einer ADF-Pipel
 
 #### <a name="resolution"></a>Lösung
 
-Der CI/CD-Prozess wurde erweitert. Mit dem Feature **Automatisierte Veröffentlichung** werden alle ARM-Vorlagenfunktionen (Azure Resource Manager) aus der ADF-Benutzeroberfläche verwendet, überprüft und exportiert. Hierdurch kann die Logik über das öffentlich verfügbare npm-Paket [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) genutzt werden. So können Sie diese Aktionen programmgesteuert initiieren und müssen nicht zur ADF-Benutzeroberfläche wechseln und auf Schaltflächen klicken. So werden Ihre CI/CD-Pipelines zu **echten** Continuous Integration-Prozessen. Weitere Informationen finden Sie unter [Automatisiertes Veröffentlichen für Continuous Integration und Delivery](./continuous-integration-deployment-improvements.md). 
+Der CI/CD-Prozess wurde erweitert. Die **automatisierte** Veröffentlichungsfunktion übernimmt, validiert und exportiert alle ARM-Vorlagenfunktionen aus der ADF UX. Hierdurch kann die Logik über das öffentlich verfügbare npm-Paket [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) genutzt werden. Diese Methode ermöglicht es Ihnen, diese Aktionen programmatisch auszulösen, anstatt auf die ADF-Oberfläche zuzugreifen und einen Schaltflächenklick auszuführen. Mit dieser Methode erhalten Ihre CI/CD-Pipelines eine **authentische** kontinuierliche Integrationserfahrung. Weitere Informationen finden Sie unter [Automatisiertes Veröffentlichen für Continuous Integration und Delivery](./continuous-integration-deployment-improvements.md). 
 
-###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>Veröffentlichung aufgrund von 4-MB-Grenzwert für ARM-Vorlagen nicht möglich  
+###  <a name="cannot-publish-because-of-4-mb-arm-template-limit"></a>Die Veröffentlichung ist nicht möglich, da die ARM-Vorlage auf 4 MB begrenzt ist  
 
 #### <a name="issue"></a>Problem
 
-Sie können die Bereitstellung nicht durchführen, weil Sie für Azure Resource Manager den Grenzwert von 4 MB für die Vorlagengesamtgröße erreicht haben. Sie benötigen eine Lösung für die Bereitstellung nach dem Erreichen dieses Grenzwerts. 
+Sie können nicht bereitstellen, weil Sie den Azure Resource Manager-Grenzwert von 4 MB Gesamtvorlagengröße erreicht haben. Sie benötigen eine Lösung für die Bereitstellung nach dem Erreichen dieses Grenzwerts. 
 
 #### <a name="cause"></a>Ursache
 
-Für Azure Resource Manager ist die Vorlagengröße auf 4 MB beschränkt. Begrenzen Sie die Größe der Vorlage auf 4 MB und die jeder Parameterdatei auf 64 KB. Die 4-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für variables und Parameter erweitert wurde. Sie haben den Grenzwert aber überschritten. 
+Azure Resource Manager beschränkt die Vorlagengröße auf 4 MB. Begrenzen Sie die Größe der Vorlage auf 4 MB und die jeder Parameterdatei auf 64 KB. Der Grenzwert von 4 MB gilt für den endgültigen Zustand der Vorlage, nachdem sie mit iterativen Ressourcendefinitionen und Werten für Variablen und Parameter erweitert wurde. Sie haben den Grenzwert aber überschritten. 
 
 #### <a name="resolution"></a>Lösung
 
-Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen. Halten Sie sich an die bewährte Methode unter [Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell).
+Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen. Befolgen Sie die Best Practice bei der [Verwendung von verknüpften und verschachtelten Templates](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell).
 
 ### <a name="cannot-connect-to-git-enterprise"></a>Ich kann keine Verbindung mit Git Enterprise herstellen  
 
@@ -191,17 +191,15 @@ Sie gewähren zuerst den OAuth-Zugriff auf ADF. Anschließend müssen Sie durch 
 ### <a name="cannot-recover-from-a-deleted-data-factory"></a>Wiederstellen aus einer gelöschten Data Factory nicht möglich
 
 #### <a name="issue"></a>Problem
-Der Kunde hat die Data Factory oder die Ressourcengruppe mit der Data Factory gelöscht. Er möchte wissen, wie er eine gelöschte Data Factory wiederherstellen kann.
+Der Kunde hat die Data Factory oder die Ressourcengruppe mit der Data Factory gelöscht. Der Kunde möchte wissen, wie er eine gelöschte Data Factory wiederherstellt.
 
 #### <a name="cause"></a>Ursache
 
-Die Data Factory kann nur dann wiederhergestellt werden, wenn der Kunde die Quellcodeverwaltung konfiguriert hat (DevOps oder Git). Dadurch wird die neueste veröffentlichte Ressource angezeigt, und die unveröffentlichte Pipeline, das Dataset und der verknüpfte Dienst **werden nicht** wiederhergestellt.
-
-Wenn es keine Quellcodeverwaltung gibt, kann eine gelöschte Data Factory aus dem Back-End nicht wiederhergestellt werden. Der Grund: Sobald der Dienst den Löschbefehl empfangen hat, wird die Instanz gelöscht, und es wurde keine Sicherung gespeichert.
+Die Data Factory kann nur dann wiederhergestellt werden, wenn der Kunde die Quellcodeverwaltung konfiguriert hat (DevOps oder Git). Diese Aktion stellt alle zuletzt veröffentlichten Ressourcen wieder her und **nicht** die unveröffentlichte Pipeline, den Datensatz und den verknüpften Dienst. Wenn keine Quellcodeverwaltung vorhanden ist, ist die Wiederherstellung einer gelöschten Data Factory aus dem Backend nicht möglich, da die Instanz gelöscht wird, sobald der Dienst den Löschbefehl erhält, und keine Sicherung gespeichert wurde.
 
 #### <a name="resolution"></a>Lösung
 
-Führen Sie die folgenden Schritte aus, um die gelöschte Data Factory mit der Quellcodeverwaltung wiederherzustellen:
+Gehen Sie wie folgt vor, um die gelöschte Data Factory mit der Quellcodeverwaltung wiederherzustellen:
 
  * Erstellen Sie eine neue Azure Data Factory-Instanz.
 
@@ -209,8 +207,31 @@ Führen Sie die folgenden Schritte aus, um die gelöschte Data Factory mit der Q
 
  * Erstellen Sie einen Pull Request zum Mergen der Änderungen in den Kollaborationsbranch und zum Veröffentlichen.
 
- * Wenn ein Kunde eine selbstgehostete Integration Runtime im gelöschten ADF hatte, muss er eine neue Instanz in der neuen ADF erstellen, sie dann auf dem lokalen Computer bzw. virtuellen Computer deinstallieren und erneut installieren, wobei der neue Schlüssel abgerufen wird. Nachdem der Setupvorgang für die IR abgeschlossen ist, muss der Kunde den verknüpften Dienst so ändern, dass er auf die neue IR verweist, und dann die Verbindung testen. Andernfalls tritt der Fehler **Ungültiger Verweis** auf.
+ * Wenn der Kunde eine selbst gehostete Integration Runtime in einem gelöschten ADF hätte, müsste er eine neue Instanz in einem neuen ADF erstellen, sowie die Instanz auf seinem lokalen Gerät/VM mit dem neu erhaltenen Schlüssel deinstallieren und neu installieren. Nachdem der Setupvorgang für die IR abgeschlossen ist, muss der Kunde den verknüpften Dienst so ändern, dass er auf die neue IR verweist, und dann die Verbindung testen. Andernfalls tritt der Fehler **Ungültiger Verweis** auf.
 
+### <a name="cannot-deploy-to-different-stage-using-automatic-publish-method"></a>Die Bereitstellung auf einer anderen Stufe mit der automatischen Veröffentlichungsmethode ist nicht möglich
+
+#### <a name="issue"></a>Problem
+Der Kunde hat alle notwendigen Schritte wie die Installation des NPM-Pakets und das Einrichten einer höheren Stufe anhand Azure DevOps und ADF befolgt. Die Bereitstellung findet jedoch nicht statt.
+
+#### <a name="cause"></a>Ursache
+
+npm-Pakete können zwar auf verschiedene Weise genutzt werden, aber einer der Hauptvorteile ist die Nutzung über Azure Pipelines. Bei jedem Merge in den Kollaborationsbranch kann eine Pipeline ausgelöst werden, die zuerst den gesamten Code überprüft und dann die ARM-Vorlage in ein Buildartefakt exportiert, das von einer Releasepipeline verwendet werden kann. In der Starter-Pipeline sollte die YAML-Datei gültig und vollständig sein.
+
+
+#### <a name="resolution"></a>Lösung
+
+Der folgende Abschnitt ist ungültig, da der Ordner package.json ungültig ist.
+
+```
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
+    customCommand: 'run build validate $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName'
+  displayName: 'Validate'
+```
+Es sollte DataFactory im customCommand enthalten, wie z.B. *'run build validate $(Build.Repository.LocalPath)/DataFactory/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName‘* . Stellen Sie sicher, dass die erzeugte YAML-Datei für die höhere Stufe die erforderlichen JSON-Artefakte enthalten sollte.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

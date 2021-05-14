@@ -2,13 +2,13 @@
 title: Vergleich von Azure Storage-Warteschlangen und Service Bus-Warteschlangen
 description: Analysiert die Unterschiede und Gemeinsamkeiten zwischen den beiden zurzeit von Azure angebotenen Warteschlangentypen.
 ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 1c3b0fda12d5e301b17a342c5d5ed11ab76c76da
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928306"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304357"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
 In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen untersucht, die in Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Anhand dieser Informationen können Sie eine fundierte Entscheidung darüber treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
@@ -39,7 +39,7 @@ Als Lösungsarchitekt/-entwickler sollten Sie die **Verwendung von Service Bus-W
 * Die Lösung muss in der Lage sein, Nachrichten ohne Abruf der Warteschlange empfangen zu können. Bei Service Bus kann dies erreicht werden, indem ein Empfangsvorgang mit langem Abrufintervall mit den von Service Bus unterstützten auf TCP basierenden Protokollen verwendet wird.
 * Die Lösung erfordert von der Warteschlange die Zustellung nach dem FIFO-Prinzip (First-In-First-Out).
 * Die Lösung muss in der Lage sein, die automatische Duplikaterkennung zu unterstützen.
-* Sie wünschen eine Anwendung, die Nachrichten als parallele Datenströme mit langer Ausführungsdauer verarbeitet (Nachrichten werden mithilfe der [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid)-Eigenschaft für die Nachricht einem Datenstrom zugeordnet). In diesem Modell konkurriert jeder Knoten in der verarbeitenden Anwendung um Datenströme und nicht um Nachrichten. Wenn ein Datenstrom an einen verarbeitenden Knoten übergeben wird, kann der Knoten den Status des Anwendungsdatenstroms mithilfe von Transaktionen untersuchen.
+* Sie wünschen eine Anwendung, die Nachrichten als parallele Datenströme mit langer Ausführungsdauer verarbeitet (Nachrichten werden mithilfe der **session ID**-Eigenschaft für die Nachricht einem Datenstrom zugeordnet). In diesem Modell konkurriert jeder Knoten in der verarbeitenden Anwendung um Datenströme und nicht um Nachrichten. Wenn ein Datenstrom an einen verarbeitenden Knoten übergeben wird, kann der Knoten den Status des Anwendungsdatenstroms mithilfe von Transaktionen untersuchen.
 * Beim Senden oder Empfangen mehrerer Nachrichten über eine Warteschlange muss sich die Lösung durch Transaktionsfähigkeit und Unteilbarkeit auszeichnen.
 * Die Anwendung verarbeitet Nachrichten, die zwar 64 KB überschreiten können, den Grenzwert von 256 KB aber wahrscheinlich nicht erreichen.
 * Sie müssen ein rollenbasiertes Zugriffsmodell für Warteschlangen bereitstellen, die Absendern und Empfängern unterschiedliche Rechte/Berechtigungen gewähren. Weitere Informationen finden Sie in den folgenden Artikeln:
@@ -59,17 +59,17 @@ In diesem Abschnitt werden einige der grundlegenden Warteschlangenfunktionen ver
 
 | Vergleichskriterien | Storage-Warteschlangen | Service Bus-Warteschlangen |
 | --- | --- | --- |
-| Reihenfolgengarantie |**Nein** <br/><br>Weitere Informationen finden Sie in der ersten Anmerkung im Abschnitt [Weitere Informationen](#additional-information).</br> | **Ja – First In, First Out (FIFO)**<br/><br>(durch Verwendung von [Nachrichtensitzungen](message-sessions.md)) |
+| Reihenfolgengarantie |**Nein** <br/><br>Weitere Informationen finden Sie in der ersten Anmerkung im Abschnitt [Weitere Informationen](#additional-information).</br> | **Ja – First In, First Out (FIFO)**<br/><br>(mithilfe von [Nachrichtensitzungen](message-sessions.md)) |
 | Zustellungsgarantie |**At-Least-Once** |**At-Least-Once** (mit dem PeekLock-Empfangsmodus, dies ist die Standardeinstellung) <br/><br/>**At-Most-Once** (mit dem ReceiveAndDelete-Empfangsmodus) <br/> <br/> Weitere Informationen zu den verschiedenen [Empfangsmodi](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | Unterstützung für atomare Operationen |**Nein** |**Ja**<br/><br/> |
-| Empfangsverhalten |**Nicht blockierend**<br/><br/>(wird sofort beendet, wenn keine neue Nachricht gefunden wird) |**Blockieren mit oder ohne Timeout**<br/><br/>(bietet ein langes Abrufintervall oder die [„Comet-Technik“](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nicht blockierend**<br/><br/>(nur durch die Verwendung von .NET-verwalteter API) |
-| API im Pushstil |**Nein** |**Ja**<br/><br/>[QueueClient.OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__)- und [MessageSessionHandler.OnMessage](/dotnet/api/microsoft.servicebus.messaging.messagesessionhandler.onmessage#Microsoft_ServiceBus_Messaging_MessageSessionHandler_OnMessage_Microsoft_ServiceBus_Messaging_MessageSession_Microsoft_ServiceBus_Messaging_BrokeredMessage__)-Sitzungen (.NET-API). |
+| Empfangsverhalten |**Nicht blockierend**<br/><br/>(wird sofort beendet, wenn keine neue Nachricht gefunden wird) |**Blockieren mit oder ohne Timeout**<br/><br/>(bietet ein langes Abrufintervall oder die [„Comet-Technik“](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nicht blockierend**<br/><br/>(nur mithilfe der verwalteten .NET-API) |
+| API im Pushstil |**Nein** |**Ja**<br/><br/>Unsere .NET-, Java-, JavaScript- und Go-SDKs bieten eine API im Pushstil. |
 | Empfangsmodus |**Peek &amp; Lease** |**Peek &amp; Lock**<br/><br/>**Receive &amp; Delete** |
 | Exklusiver Zugriffsmodus |**Leasebasiert** |**Sperrenbasiert** |
-| Lease-/Sperrdauer |**30 Sekunden (Standardwert)**<br/><br/>**7 Tage (maximal)** (Sie können eine Nachrichtenlease mithilfe der [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage)-API erneuern oder freigeben.) |**60 Sekunden (Standardwert)**<br/><br/>Eine Nachrichtensperre kann mit der [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock)-API verlängert werden. |
-| Lease-/Sperrengranularität |**Nachrichtenebene**<br/><br/>Jede Nachricht kann einen anderen Timeoutwert aufweisen, den Sie nach Bedarf bei der Verarbeitung der Nachricht mithilfe der [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage)-API aktualisieren können. |**Warteschlangenebene**<br/><br/>(Jede Warteschlange weist eine Sperrengranularität auf, die auf alle enthaltenen Nachrichten angewendet wird; die Sperre kann jedoch mit der [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock)-API verlängert werden.) |
-| Batchempfang |**Ja**<br/><br/>(explizit angebende Nachrichtenanzahl beim Abrufen von Nachrichten, bis maximal 32 Nachrichten) |**Ja**<br/><br/>(implizites Aktivieren einer PreFetch-Eigenschaft oder explizites Aktivieren durch Verwendung von Transaktionen) |
-| Batchversand |**Nein** |**Ja**<br/><br/>(durch Verwendung von Transaktionen oder clientseitiger Batchverarbeitung) |
+| Lease-/Sperrdauer |**30 Sekunden (Standardwert)**<br/><br/>**7 Tage (maximal)** (Sie können eine Nachrichtenlease mithilfe der [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage)-API erneuern oder freigeben.) |**30 Sekunden (Standardwert)**<br/><br/>Sie können die Nachrichtensperre jedes Mal für die gleiche Dauer manuell erneuern oder die automatische Sperrverlängerungsfunktion verwenden, bei der der Client die Sperrverlängerung für Sie verwaltet. |
+| Lease-/Sperrengranularität |**Nachrichtenebene**<br/><br/>Jede Nachricht kann einen anderen Timeoutwert aufweisen, den Sie nach Bedarf bei der Verarbeitung der Nachricht mithilfe der [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage)-API aktualisieren können. |**Warteschlangenebene**<br/><br/>(jede Warteschlange weist eine Sperrpräzision auf, die auf alle ihre Nachrichten angewendet wird, aber die Sperre kann wie in der vorherigen Zeile beschrieben erneuert werden) |
+| Batchempfang |**Ja**<br/><br/>(explizit angebende Nachrichtenanzahl beim Abrufen von Nachrichten, bis maximal 32 Nachrichten) |**Ja**<br/><br/>(implizites Aktivieren einer Vorababrufeigenschaft oder explizit durch Verwendung von Transaktionen) |
+| Batchversand |**Nein** |**Ja**<br/><br/>(mithilfe von Transaktionen oder clientseitiger Batchverarbeitung) |
 
 ### <a name="additional-information"></a>Zusätzliche Informationen
 * Für Nachrichten in Storage-Warteschlangen gilt normalerweise das FIFO-Prinzip, manchmal kann jedoch die Reihenfolge auch falsch sein. Dies ist beispielsweise der Fall, wenn die Dauer der Sichtbarkeit einer Nachricht abläuft, da eine Clientanwendung bei der Verarbeitung einer Nachricht abgestürzt ist. Wenn das Sichtbarkeitstimeout abläuft, wird die Nachricht für die Warteschlange erneut sichtbar, damit sie von einem anderen Worker aus der Warteschlange entnommen werden kann. Zu diesem Zeitpunkt wird die neue sichtbare Nachricht ggf. hinter einer Nachricht in der Warteschlange platziert, um erneut aus dieser entnommen zu werden.
@@ -83,7 +83,7 @@ In diesem Abschnitt werden einige der grundlegenden Warteschlangenfunktionen ver
 * Service Bus-Warteschlangen unterstützen lokale Transaktionen im Kontext einer einzelnen Warteschlange.
 * Der von Service Bus unterstützte **Receive & Delete**-Modus bietet die Möglichkeit, die Anzahl von Übermittlungsvorgängen (und damit verbundenen Gebühren) auf Kosten einer verminderten Zustellungssicherheit zu reduzieren.
 * Storage-Warteschlangen stellen ein Leasingprinzip bereit, über das die Leasedauer für Nachrichten verlängert werden kann. Mit diesem Feature können die Workerprozesse eine kurze Leasedauer für Nachrichten beibehalten. Sollte ein Worker abstürzen, kann die Nachricht schnell von einem anderen Worker verarbeitet werden. Ein Worker kann darüber hinaus die Leasedauer einer Nachricht verlängern, wenn deren Verarbeitungszeit über die aktuelle Leasedauer hinausgeht.
-* Speicherwarteschlangen verfügen über ein Sichtbarkeitstimeout, das Sie festlegen können, wenn eine Nachricht der Warteschlange hinzugefügt bzw. aus dieser entfernt wird. Außerdem können Sie eine Nachricht mit verschiedenen Leasewerten zur Laufzeit aktualisieren und unterschiedliche Werte für mehrere Nachrichten in derselben Warteschlange anpassen. Die Sperrtimeouts von Service Bus werden in den Metadaten der Warteschlangen definiert. Sie können die Sperre jedoch erneuern, indem Sie die [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock)-Methode aufrufen.
+* Speicherwarteschlangen verfügen über ein Sichtbarkeitstimeout, das Sie festlegen können, wenn eine Nachricht der Warteschlange hinzugefügt bzw. aus dieser entfernt wird. Außerdem können Sie eine Nachricht mit verschiedenen Leasewerten zur Laufzeit aktualisieren und unterschiedliche Werte für mehrere Nachrichten in derselben Warteschlange anpassen. Die Sperrtimeouts von Service Bus werden in den Metadaten der Warteschlangen definiert. Sie können die Nachrichtensperre jedoch für die gleiche vordefinierte Dauer manuell erneuern oder die automatische Sperrverlängerungsfunktion verwenden, bei der der Client die Sperrverlängerung für Sie verwaltet.
 * Das maximale Timeout für das Blockieren einer empfangenen Nachricht in Service Bus-Warteschlangen beträgt 24 Tage. REST-basierte Timeouts verfügen jedoch über einen maximalen Wert von 55 Sekunden.
 * Mithilfe der clientseitigen Batchverarbeitung von Service Bus kann ein Warteschlangenclient mehrere Nachrichten als Batch in einen einzelnen Sendevorgang einfügen. Die Batchverarbeitung ist nur für asynchrone Sendevorgänge verfügbar.
 * Durch Features wie etwa die Obergrenze von 200 TB für Storage-Warteschlangen (bzw. ein höherer Wert, wenn Sie Konten virtualisieren) und eine uneingeschränkte Anzahl von Warteschlangen ist dies die ideale Plattform für SaaS-Anbieter.
@@ -100,11 +100,11 @@ In diesem Abschnitt werden die von Storage-Warteschlangen und Service Bus-Wartes
 | Unterstützung für nicht verarbeitbare Nachrichten |**Ja** |**Ja** |
 | Direktes Update |**Ja** |**Ja** |
 | Serverseitiges Transaktionsprotokoll |**Ja** |**Nein** |
-| Speichermetrik |**Ja**<br/><br/>**Minutenmetriken** bieten Echtzeitmetriken zu Verfügbarkeit, TPS, Anzahl von API-Aufrufen, Anzahl von Fehlern u. v. m. Diese Metriken werden in Echtzeit minutenweise aggregiert und innerhalb weniger Minuten ab dem Vorfall in der Produktionsumgebung gemeldet. Weitere Informationen finden Sie unter [Informationen zu Metriken der Speicheranalyse](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Ja**<br/><br/>(Massenabfragen durch Aufrufen von [GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)) |
-| Zustandsverwaltung |**Nein** |**Ja**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
+| Speichermetrik |**Ja**<br/><br/>**Minutenmetriken** bieten Echtzeitmetriken zu Verfügbarkeit, TPS, Anzahl von API-Aufrufen, Anzahl von Fehlern u. v. m. Diese Metriken werden in Echtzeit minutenweise aggregiert und innerhalb weniger Minuten ab dem Vorfall in der Produktionsumgebung gemeldet. Weitere Informationen finden Sie unter [Informationen zu Metriken der Speicheranalyse](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Ja**<br/><br/>Informationen zu Metriken, die von Azure Service Bus unterstützt werden, finden Sie unter [Nachrichtenmetriken](service-bus-metrics-azure-monitor.md#message-metrics). |
+| Zustandsverwaltung |**Nein** |**Ja** (Aktiv, Deaktiviert, SendDisabled, ReceiveDisabled. Weitere Informationen zu diesen Zuständen finden Sie unter [Warteschlangenstatus](entity-suspend.md#queue-status).) |
 | Automatische Weiterleitung von Nachrichten |**No** |**Ja** |
 | Warteschlangeninhalt endgültig löschen |**Ja** |**Nein** |
-| Nachrichtengruppen |**Nein** |**Ja**<br/><br/>(durch Verwendung von Messagingsitzungen) |
+| Nachrichtengruppen |**Nein** |**Ja**<br/><br/>(mithilfe von Messagingsitzungen) |
 | Anwendungszustand pro Nachrichtengruppe |**Nein** |**Ja** |
 | Duplikaterkennung |**Nein** |**Ja**<br/><br/>(auf der Absenderseite konfigurierbar) |
 | Durchsuchen von Nachrichtengruppen |**Nein** |**Ja** |
@@ -113,14 +113,14 @@ In diesem Abschnitt werden die von Storage-Warteschlangen und Service Bus-Wartes
 ### <a name="additional-information"></a>Zusätzliche Informationen
 * Beide Warteschlangentechnologien ermöglichen das Planen der Zustellung einer Nachricht zu einem späteren Zeitpunkt.
 * Die automatische Warteschlangenweiterleitung ermöglicht, dass Tausende von Warteschlangen ihre Nachrichten automatisch an eine einzelne Warteschlange weiterleiten, aus der die empfangende Anwendung die Nachricht abruft. Sie können diesen Mechanismus verwenden, um Sicherheit zu erzielen, den Datenfluss zu steuern und Speicher zwischen den einzelnen Nachrichtenverlegern zu isolieren.
-* Storage-Warteschlangen bieten Unterstützung zum Aktualisieren von Nachrichteninhalten. Sie können diese Funktionen verwenden, um Zustandsinformationen und inkrementelle Statusupdates in der Nachricht beizubehalten, sodass sie vom letzten bekannten Prüfpunkt statt von Anfang an verarbeitet wird. Mit Service Bus-Warteschlangen können Sie das gleiche Szenario mithilfe von Nachrichtensitzungen aktivieren. Sitzungen ermöglichen das Speichern und Abrufen des Anwendungsverarbeitungszustands (mithilfe von [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) und [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)).
+* Storage-Warteschlangen bieten Unterstützung zum Aktualisieren von Nachrichteninhalten. Sie können diese Funktionen verwenden, um Zustandsinformationen und inkrementelle Statusupdates in der Nachricht beizubehalten, sodass sie vom letzten bekannten Prüfpunkt statt von Anfang an verarbeitet wird. Mit Service Bus-Warteschlangen können Sie das gleiche Szenario mithilfe von Nachrichtensitzungen aktivieren. Weitere Informationen finden Sie unter [Zustand von Nachrichtensitzungen](message-sessions.md#message-session-state).
 * Service Bus-Warteschlangen unterstützen [unzustellbare Nachrichten](service-bus-dead-letter-queues.md). Dies kann nützlich sein, um Nachrichten zu isolieren, die die folgenden Kriterien erfüllen:
     - Nachrichten können von der empfangenden Anwendung nicht erfolgreich verarbeitet werden. 
     - Nachrichten können aufgrund einer abgelaufenen Gültigkeitsdauer (TTL) nicht an ihr Ziel zugestellt werden. Der TTL-Wert gibt an, wie lange eine Nachricht in der Warteschlange verbleibt. Bei Service Bus wird die Nachricht in eine bestimmte Warteschlange mit dem Namen "$DeadLetterQueue" verschoben, sobald die Gültigkeitsdauer abläuft.
 * Für die Suche nach nicht verarbeitbaren Nachrichten in Storage-Warteschlangen überprüft die Anwendung die [DequeueCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.dequeuecount)-Eigenschaft der Nachricht, wenn eine Nachricht aus der Warteschlange entfernt wird. Wenn **DequeueCount** über einem angegebenen Schwellenwert liegt, verschiebt die Anwendung die Nachricht in eine von der Anwendung definierte „Warteschlange für unzustellbare Nachrichten“.
 * Bei Storage-Warteschlangen können Sie ein ausführliches Protokoll aller für die Warteschlange ausgeführten Transaktionen sowie aggregierte Metriken abrufen. Beide erleichtern das Debuggen und verdeutlichen, wie Storage-Warteschlangen von der Anwendung verwendet werden. Außerdem dienen diese Informationen dazu, die Anwendung zu optimieren und die Kosten für die Verwendung von Warteschlangen zu senken.
-* Die von Service Bus unterstützten Nachrichtensitzungen ermöglichen es, die Nachrichten einer logischen Gruppe einem Empfänger zuzuordnen. Dadurch wird eine sitzungsähnliche Affinität zwischen Nachrichten und den jeweiligen Empfängern erzeugt. Sie können diese erweiterte Funktionalität in Service Bus aktivieren, indem Sie die [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId)-Eigenschaft für eine Nachricht festlegen. Empfänger können dann auf eine bestimmte Sitzungs-ID lauschen und Nachrichten empfangen, die den angegebenen Sitzungsbezeichner gemeinsam haben.
-* Das Feature zur Duplikaterkennung von Service Bus-Warteschlangen entfernt gemäß dem Wert der [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)-Eigenschaft automatisch doppelt vorhandene Nachrichten, die an eine Warteschlange bzw. ein Thema gesendet wurden.
+* Von Service Bus unterstützte [Nachrichtensitzungen](message-sessions.md) ermöglichen es, die Nachrichten einer logischen Gruppe einem Empfänger zuzuordnen. Dadurch wird eine sitzungsähnliche Affinität zwischen Nachrichten und den jeweiligen Empfängern erzeugt. Sie können diese erweiterte Funktionalität in Service Bus aktivieren, indem Sie die session ID-Eigenschaft für eine Nachricht festlegen. Empfänger können dann auf eine bestimmte Sitzungs-ID lauschen und Nachrichten empfangen, die den angegebenen Sitzungsbezeichner gemeinsam haben.
+* Das Feature zur Duplikaterkennung von Service Bus-Warteschlangen entfernt gemäß dem Wert der message ID-Eigenschaft automatisch doppelt vorhandene Nachrichten, die an eine Warteschlange bzw. ein Thema gesendet wurden.
 
 ## <a name="capacity-and-quotas"></a>Kapazität und Kontingente
 In diesem Abschnitt werden Storage-Warteschlangen und Service Bus-Warteschlangen im Hinblick auf die [Kapazität und ggf. gültige Kontingente](service-bus-quotas.md) verglichen.
@@ -172,14 +172,14 @@ In diesem Abschnitt werden die von Storage-Warteschlangen und Service Bus-Wartes
 | --- | --- | --- |
 | Authentifizierung |**Symmetrischer Schlüssel** |**Symmetrischer Schlüssel** |
 | Sicherheitsmodell |Delegierter Zugriff über SAS-Token |SAS |
-| Verbund von Identitätsanbietern |**Nein** |**Ja** |
+| Verbund von Identitätsanbietern |**Ja** |**Ja** |
 
 ### <a name="additional-information"></a>Zusätzliche Informationen
 * Jede Anforderung an eine der beiden Warteschlangentechnologien muss authentifiziert werden. Öffentliche Warteschlangen mit anonymem Zugriff werden nicht unterstützt. Mithilfe von [SAS](service-bus-sas.md) können Sie dieses Szenario verwalten, indem Sie eine lesegeschützte SAS, eine schreibgeschützte SAS oder sogar eine SAS mit Vollzugriff veröffentlichen.
 * Für das von Storage-Warteschlangen bereitgestellte Authentifizierungsschema wird ein symmetrischer Schlüssel verwendet. Bei diesem Schlüssel handelt es sich um einen HMAC-Schlüssel (Hash-based Message Authentication Code), der mit dem SHA-256-Algorithmus berechnet und als **Base64**-Zeichenfolge codiert wird. Weitere Informationen zum jeweiligen Protokoll finden Sie unter [Authentifizierung für die Azure-Speicherdienste](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services). Service Bus-Warteschlangen unterstützen ein ähnliches Modell mithilfe symmetrischer Schlüssel. Weitere Informationen finden Sie unter [SAS-Authentifizierung (Shared Access Signature) mit Service Bus](service-bus-sas.md).
 
 ## <a name="conclusion"></a>Zusammenfassung
-Durch ein tieferes Verständnis der beiden Technologien können Sie eine fundiertere Entscheidung zur verwendeten Warteschlangentechnologie treffen. Die Entscheidung für Storage-Warteschlangen oder Service Bus-Warteschlangen hängt eindeutig von mehreren Faktoren ab. Diese Faktoren können sich nach den individuellen Anforderungen der Anwendung und der Architektur richten. 
+Durch ein tieferes Verständnis der beiden Technologien können Sie eine fundiertere Entscheidung zur verwendeten Warteschlangentechnologie treffen. Die Entscheidung für Storage-Warteschlangen oder Service Bus-Warteschlangen hängt eindeutig von vielen Faktoren ab. Diese Faktoren können sich nach den individuellen Anforderungen der Anwendung und der Architektur richten. 
 
 In folgenden Fällen empfehlen sich Storage-Warteschlangen:
 
@@ -187,7 +187,7 @@ In folgenden Fällen empfehlen sich Storage-Warteschlangen:
 - Sie benötigen eine grundlegende Kommunikation und Messaging zwischen Diensten. 
 - Sie benötigen Warteschlangen, die auch größer als 80 GB sein können.
 
-Service Bus-Warteschlangen bieten eine Reihe erweiterter Features wie z. B. die folgenden. Sie eignen sich daher möglicherweise besser, wenn Sie eine Hybridanwendung entwickeln oder wenn Ihre Anwendung diese Features generell benötigt.
+Service Bus-Warteschlangen bieten zahlreiche erweiterte Features, z. B. die folgenden. Sie eignen sich daher möglicherweise besser, wenn Sie eine Hybridanwendung entwickeln oder wenn Ihre Anwendung diese Features generell benötigt.
 
 - [Sitzungen](message-sessions.md)
 - [Transaktionen](service-bus-transactions.md)

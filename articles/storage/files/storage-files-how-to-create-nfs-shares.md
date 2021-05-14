@@ -4,16 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Sie eine Azure-Dateifreigabe er
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b085b9991175d8cd43e2dac0db80c5af4e703c34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b549c625f0a6ff0480eafc38f84d292e66350950
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521236"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717127"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Erstellen einer NFS-Freigabe
 Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Cloud gespeichert werden. In diesem Artikel geht es um das Erstellen einer Dateifreigabe, für die das NFS-Protokoll verwendet wird. Weitere Informationen zu den beiden Protokollen finden Sie unter [Protokolle für Azure-Dateifreigaben](storage-files-compare-protocols.md).
@@ -107,25 +107,24 @@ Navigieren Sie zum Erstellen eines FileStorage-Speicherkontos zum Azure-Portal.
 
 1. Wählen Sie im Azure-Portal im linken Menü **Speicherkonten** aus.
 
-    ![Azure-Portal, Hauptseite „Speicherkonto auswählen“](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+    ![Hauptseite im Azure-Portal: Auswählen eines Speicherkontos](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
-2. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
-3. Wählen Sie das Abonnement aus, in dem das Speicherkonto erstellt werden soll.
-4. Wählen Sie die Ressourcengruppe aus, in der das Speicherkonto erstellt werden soll.
+1. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
+1. Wählen Sie das Abonnement aus, in dem das Speicherkonto erstellt werden soll.
+1. Wählen Sie die Ressourcengruppe aus, in der das Speicherkonto erstellt werden soll.
+1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
+1. Wählen Sie einen Standort für Ihr Speicherkonto aus, oder verwenden Sie den Standardstandort.
+1. Wählen Sie für **Leistung** den Wert **Premium** aus.
 
-5. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
-6. Wählen Sie einen Standort für Ihr Speicherkonto aus, oder verwenden Sie den Standardstandort.
-7. Wählen Sie für **Leistung** den Wert **Premium** aus.
+    Sie müssen **Premium** auswählen, damit **Dateifreigaben** in der Dropdownliste **Kontoart** verfügbar ist.
 
-    Sie müssen **Premium** auswählen, damit **FileStorage** in der Dropdownliste **Kontoart** verfügbar ist.
+1. Wählen Sie unter **Premium account type** (Premium-Kontotyp) die Option **Dateifreigaben** aus.
 
-8. Wählen Sie **Kontoart** und dann **FileStorage** aus.
-9. Behalten Sie für **Replikation** den Standardwert **Lokal redundanter Speicher (LRS)** bei.
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="Screenshot: Leistung „Premium“ ausgewählt":::
 
-    ![So erstellen ein Speicherkonto für eine Premium-Dateifreigabe](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
-
-10. Wählen Sie **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
-11. Klicken Sie auf **Erstellen**.
+1. Behalten Sie für **Replikation** den Standardwert **Lokal redundanter Speicher (LRS)** bei.
+1. Wählen Sie **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
+1. Klicken Sie auf **Erstellen**.
 
 Sobald Ihre Speicherkontoressource erstellt wurde, navigieren Sie dorthin.
 
@@ -180,7 +179,7 @@ Nachdem Sie nun ein FileStorage-Konto erstellt und das Netzwerk konfiguriert hab
     
 1. Klicken Sie auf **Erstellen**.
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="Screenshots des Blatts für die Erstellung einer Dateifreigabe":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/files-nfs-create-share.png" alt-text="Screenshots: Blatt für die Erstellung einer Dateifreigabe":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

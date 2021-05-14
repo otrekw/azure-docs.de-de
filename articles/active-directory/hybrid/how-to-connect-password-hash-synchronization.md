@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47d7d541ed7d9805641ffdfde381d482c8700006
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee22ba3816e667bc58247fa81142e54587124fd6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96858738"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865295"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -210,7 +210,7 @@ Wenn Ihr Server wegen FIPS (Federal Information Processing Standard) gesperrt wu
 
 **Führen Sie zum Aktivieren von MD5 für die Kennworthashsynchronisierung die folgenden Schritte aus:**
 
-1. Wechseln Sie zu „%programfiles%\Azure AD Sync\Bin“.
+1. Wechseln Sie zu „%programfiles%\Microsoft Azure AD Sync\Bin“.
 2. Öffnen Sie „miiserver.exe.config“.
 3. Wechseln Sie zum Knoten „configuration/runtime“ (am Ende der Datei).
 4. Fügen Sie den folgenden Knoten hinzu: `<enforceFIPSPolicy enabled="false"/>`

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27353e6086085aadae622e007a38f97e15cbcb7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d657f1df14b083631227cb7c19f64b65be8801d0
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587864"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010464"
 ---
 # <a name="introduction-to-securing-azure-service-accounts"></a>Einführung in das Sichern von Azure-Dienstkonten
 
@@ -26,7 +26,7 @@ Es gibt drei Typen von nativen Dienstkonten in Azure Active Directory: verwaltet
 
 ## <a name="types-of-azure-active-directory-service-accounts"></a>Typen von Azure Active Directory-Dienstkonten
 
-Für in Azure gehostete Dienste sollte nach Möglichkeit eine verwaltete Identität und andernfalls ein Dienstprinzipal verwendet werden. Verwaltete Identitäten können nicht für Dienste verwendet werden, die außerhalb von Azure gehostet werden. In diesem Fall wird ein Dienstprinzipal empfohlen. Wenn Sie eine verwaltete Identität oder einen Dienstprinzipal verwenden können, sollten Sie dies tun. Sie sollten kein Azure Active Directory-Benutzerkonto als Dienstprinzipal verwenden. Eine Zusammenfassung finden Sie in der folgenden Tabelle.
+Für in Azure gehostete Dienste sollte nach Möglichkeit eine verwaltete Identität und andernfalls ein Dienstprinzipal verwendet werden. Verwaltete Identitäten können nicht für Dienste verwendet werden, die außerhalb von Azure gehostet werden. In diesem Fall wird ein Dienstprinzipal empfohlen. Wenn Sie eine verwaltete Identität oder einen Dienstprinzipal verwenden können, sollten Sie dies tun. Sie sollten kein Azure Active Directory-Benutzerkonto als Dienstkonto verwenden. Eine Zusammenfassung finden Sie in der folgenden Tabelle.
  
 
 | Diensthosting| Verwaltete Identität| Dienstprinzipal| Azure-Benutzerkonto |
@@ -54,7 +54,7 @@ Ein Dienstprinzipal ist die lokale Darstellung eines Anwendungsobjekts in einem 
 
 Es gibt zwei Mechanismen zur Authentifizierung mithilfe von Dienstprinzipalen – Clientzertifikate und geheime Clientschlüssel. Zertifikate sind sicherer: Verwenden Sie nach Möglichkeit Clientzertifikate. Im Gegensatz zu geheimen Clientschlüsseln können Clientzertifikate nicht versehentlich in Code eingebettet werden.
 
-Informationen zum Sichern von Dienstprinzipalen finden Sie unter „Sichern von Dienstprinzipalen“.
+Informationen zum Sichern von Dienstprinzipalen finden Sie unter [Sichern von Dienstprinzipalen](service-accounts-principal.md).
 
  
 ## <a name="next-steps"></a>Nächste Schritte

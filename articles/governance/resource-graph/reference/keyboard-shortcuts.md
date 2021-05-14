@@ -1,15 +1,15 @@
 ---
 title: Tastenkombinationen im Azure-Portal für den Azure Resource Graph-Explorer
 description: Der Azure Resource Graph-Explorer im Azure-Portal unterstützt Tastenkombinationen für das Ausführen von Aktionen und das Navigieren.
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: 70777db630a654dc61aad697561583a02c0ccc25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b34f92bb51175d14937611f358e638a2a1a1591f
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919090"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326019"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Tastenkombinationen für den Azure Resource Graph-Explorer
 

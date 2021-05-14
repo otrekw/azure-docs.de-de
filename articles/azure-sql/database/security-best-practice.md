@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c16764d1ce985755b6a3042873cc18b09b697bcf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96459669"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551610"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen für Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,7 @@ Die zentrale Identitätsverwaltung bietet die folgenden Vorteile:
 - Weisen Sie Azure AD-Prinzipalen über die Gruppenzuweisung Zugriffsrechte für Ressourcen zu: Erstellen Sie Azure AD-Gruppen, gewähren Sie Zugriff auf Gruppen, und fügen Sie den Gruppen einzelne Mitglieder hinzu. Erstellen in Ihrer Datenbank eigenständige Datenbankbenutzer, die Ihren Azure AD-Gruppen zugeordnet sind. Wenn Sie innerhalb der Datenbank Berechtigungen zuweisen möchten, fügen Sie die Ihren Azure AD-Gruppen zugeordneten Benutzer in Datenbankrollen mit den entsprechenden Berechtigungen ein.
   - Weitere Informationen finden Sie in den Artikeln [Konfigurieren und Verwalten von Azure Active Directory-Authentifizierung mit SQL](authentication-aad-configure.md) und [Verwenden von Azure AD für die Authentifizierung mit SQL](authentication-aad-overview.md).
   > [!NOTE]
-  > In einer verwalteten SQL-Instanz können Sie auch Anmeldungen erstellen, die Azure AD-Prinzipalen in der Masterdatenbank zugeordnet sind. Siehe [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+  > In einer verwalteten SQL-Instanz können Sie auch Anmeldungen erstellen, die Azure AD-Prinzipalen in der Masterdatenbank zugeordnet sind. Siehe [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 - Die Verwendung von Azure AD-Gruppen vereinfacht die Berechtigungsverwaltung des Gruppenbesitzers, und der Besitzer der Ressource kann der Gruppe Mitglieder hinzufügen bzw. aus ihr entfernen.
 
@@ -136,10 +136,10 @@ Indem Azure AD Multi-Factor Authentication (mehrstufige Authentifizierung) eine
 
 - Verwenden Sie für Azure SQL-Datenbank und Azure SQL Managed Instance den interaktiven Authentifizierungsmodus von Azure AD, bei dem interaktiv ein Kennwort und dann die Multi-Factor Authentication angefordert wird:
   - Verwenden Sie universelle Authentifizierung in SSMS. Lesen Sie dazu den Artikel [Verwenden der mehrstufigen Authentifizierung von Azure AD mit Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse (SSMS-Unterstützung für Multi-Factor Authentication)](authentication-mfa-ssms-overview.md).
-  - Verwenden Sie interaktive Authentifizierung, die in SQL Server Data Tools (SSDT) unterstützt wird. Lesen Sie dazu den Artikel [Azure Active Directory-Unterstützung in SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory?view=azuresqldb-current).
+  - Verwenden Sie interaktive Authentifizierung, die in SQL Server Data Tools (SSDT) unterstützt wird. Lesen Sie dazu den Artikel [Azure Active Directory-Unterstützung in SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory?view=azuresqldb-current&preserve-view=true).
   - Verwenden Sie andere SQL-Tools, die Multi-Factor Authentication unterstützen.
     - Unterstützung des SSMS-Assistenten zum Exportieren/Extrahieren/Bereitstellen der Datenbank  
-    - [sqlpackage.exe](/sql/tools/sqlpackage): Option „/ua“
+    - [sqlpackage.exe](/sql/tools/sqlpackage): Option '/ua'
     - [sqlcmd-Hilfsprogramm](/sql/tools/sqlcmd-utility): Option -G (interaktiv)
     - [bcp-Hilfsprogramm](/sql/tools/bcp-utility): Option -G (interaktiv)
 
@@ -196,7 +196,7 @@ Wenn Kennwörter nicht vermeidbar sind, stellen Sie sicher, dass diese geschütz
 
 - Wenn das Vermeiden von Kennwörtern oder Geheimnissen nicht möglich ist, speichern Sie Benutzerkennwörter und Anwendungsgeheimnisse in Azure Key Vault, und verwalten Sie den Zugriff über Key Vault-Zugriffsrichtlinien.
 
-- Verschiedene App-Entwicklungsframeworks können auch frameworkspezifische Mechanismen zum Schutz von Geheimnissen in der App zur Verfügung stellen. Beispiel: [ASP.NET Core-App](/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-2.1).
+- Verschiedene App-Entwicklungsframeworks können auch frameworkspezifische Mechanismen zum Schutz von Geheimnissen in der App zur Verfügung stellen. Beispiel: [ASP.NET Core-App](/aspnet/core/security/app-secrets?tabs=windows).
 
 ### <a name="use-sql-authentication-for-legacy-applications"></a>Verwenden von SQL-Authentifizierung für ältere Anwendungen
 
@@ -730,7 +730,7 @@ Ermitteln Sie Spalten, die potenziell vertrauliche Daten enthalten. Welche Daten
 
 **Bewährte Methoden:**
 
-- Überwachen Sie das Klassifizierungsdashboard in regelmäßigen Abständen für eine genaue Bewertung des Klassifizierungszustands der Datenbank. Ein Bericht zum Datenbankklassifizierungsstatus kann exportiert oder ausgegeben werden, um für Kompatibilitäts- und Überwachungszwecke zur Verfügung zu stehen.
+- Überwachen Sie das Klassifizierungs-Dashboard regelmäßig, um eine genaue Einschätzung des Klassifizierungsstatus der Datenbank zu erhalten. Ein Bericht zum Datenbankklassifizierungsstatus kann exportiert oder ausgegeben werden, um für Kompatibilitäts- und Überwachungszwecke zur Verfügung zu stehen.
 
 - Überwachen Sie kontinuierlich den Status der empfohlenen vertraulichen Daten in der SQL-Sicherheitsrisikobewertung. Verfolgen Sie die Ermittlungsregel für vertrauliche Daten, und identifizieren Sie jegliche Abweichung in den empfohlenen Spalten für die Klassifizierung.  
 

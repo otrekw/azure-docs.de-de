@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: f689993ce56a1125a1d1de8f65ce05d01f776ea9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/19/2021
+ms.openlocfilehash: 74d30b7c42002c8f134520e0198774eba1519bcd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130067"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553837"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Erstellen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -22,6 +22,9 @@ Als Herausgeber im kommerziellen Marketplace können Sie ein Software-as-a-Servi
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Lesen Sie [Planen eines SaaS-Angebots für den kommerziellen Marketplace](plan-saas-offer.md), falls Sie dies noch nicht getan haben. Dort werden die technischen Anforderungen für Ihre SaaS-App erläutert. Außerdem finden Sie Informationen und Ressourcen, die Sie beim Erstellen Ihres Angebots benötigen. Sofern Sie nicht nur eine einfache Auflistung (Auflistungsoption **Kontakt mit mir aufnehmen**) im kommerziellen Marketplace veröffentlichen möchten, muss Ihre SaaS-Anwendung technische Anforderungen an die Authentifizierung erfüllen.
+
+> [!IMPORTANT]
+> Es wird empfohlen, ein separates Entwicklungs-/Testangebot (DEV) und ein separates Produktionsangebot (PROD) zu erstellen. In diesem Artikel wird beschrieben, wie ein PROD-Angebot erstellt wird. Weitere Informationen zum Erstellen eines DEV-Angebots finden Sie unter [Erstellen eines Entwicklungs- und Testangebots](create-saas-dev-test-offer.md).
 
 ## <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -53,7 +56,7 @@ Auf der Registerkarte **Angebotseinrichtung** unter **Einrichtungsdetails** wäh
    + Um eine kostenlose 30-Tage-Testversion bereitzustellen, wählen Sie **Kostenlose Testversion** aus und geben dann im eingeblendeten Feld **Test-URL** die (mit *http* oder *https* beginnende) URL ein, unter der Kunden per [1-Klick-Authentifizierung über Azure Active Directory (Azure AD)](azure-ad-saas.md) auf Ihre kostenlose Testversion zugreifen können. Beispiel: `https://contoso.com/trial/saas-app`.
    + Wählen Sie **Kontakt mit mir aufnehmen** aus, wenn potenzielle Kunden Kontakt zu Ihnen aufnehmen und Ihr Angebot erwerben sollen.
 
-### <a name="enable-a-test-drive-optional"></a>Aktivieren einer Testversion (optional)
+## <a name="enable-a-test-drive-optional"></a>Aktivieren einer Testversion (optional)
 
 Eine Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen für eine festgelegte Anzahl von Stunden Zugang zu einer vorkonfigurierten Umgebung gewähren. Wenn Sie eine Testversion anbieten, können Sie die Konvertierungsrate erhöhen und hochqualifizierte Leads generieren. Weitere Informationen zu Testversionen finden Sie unter [Was ist eine Testversion?](./what-is-test-drive.md)
 
@@ -64,14 +67,14 @@ Eine Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen K
 1.  Aktivieren Sie unter **Testversion** das Kontrollkästchen **Aktivieren einer Testversion**.
 1.  Wählen Sie in der eingeblendeten Liste den Typ der Testversion aus.
 
-### <a name="configure-lead-management"></a>Konfigurieren der Leadverwaltung
+## <a name="configure-lead-management"></a>Konfigurieren der Leadverwaltung
 
 Verbinden Sie Ihr Customer Relationship Management (CRM)-System mit Ihrem Angebot im kommerziellen Marketplace, damit Sie Kundenkontaktinformationen erhalten, wenn ein Kunde Interesse bekundet oder Ihr Produkt einsetzt. Sie können diese Verbindung während oder nach der Erstellung des Angebots jederzeit ändern.
 
 > [!NOTE]
 > Sie müssen die Leadverwaltung konfigurieren, wenn Sie Ihr Angebot über Microsoft verkaufen oder die Auflistungsoption **Kontakt mit mir aufnehmen** ausgewählt haben. Eine detaillierte Anleitung finden Sie unter [Kundenleads aus Ihrem Angebot im kommerziellen Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
-#### <a name="to-configure-the-connection-details-in-partner-center"></a>So konfigurieren Sie die Verbindungsdetails im Partner Center
+### <a name="configure-the-connection-details-in-partner-center"></a>Konfigurieren Sie die Verbindungsdetails im Partner Center
 
 1.  Wählen Sie unter **Kundenleads** den Link **Verbinden** aus.
 1. Wählen Sie im Dialogfeld **Verbindungsdetails** eine Leadzielgruppe aus der Liste aus.
@@ -85,6 +88,36 @@ Verbinden Sie Ihr Customer Relationship Management (CRM)-System mit Ihrem Angebo
 
 1. Um die von Ihnen angegebene Konfiguration zu überprüfen, wählen Sie den Link **Überprüfen** aus.
 1. Wählen Sie **OK** aus, um das Dialogfeld zu schließen.
+
+## <a name="configure-microsoft-365-app-integration"></a>Konfigurieren der Microsoft 365 App-Integration
+
+Sie können eine [einheitliche Ermittlung und Bereitstellung](./plan-SaaS-offer.md) Ihres Saas-Angebots und aller zugehörigen Microsoft 365 App-Nutzungen durch Verknüpfen der APP einrichten.
+
+### <a name="integrate-with-microsoft-api"></a>Integrieren in Microsoft API
+
+1. Wenn Ihr SaaS-Angebot nicht in Microsoft Graph-API integriert ist, wählen Sie **Nein** aus. Verknüpfen Sie weiterhin veröffentlichte Microsoft 365 App-Verbrauchsclients.  
+
+1. Wenn Ihr SaaS-Angebot in Microsoft Graph API integriert ist, wählen Sie **Ja** aus, und geben Sie dann die Azure Active Directory APP-ID an, die Sie erstellt und für die Integration mit Microsoft Graph-API registriert haben. 
+
+### <a name="link-published-microsoft-365-app-consumption-clients"></a>Verknüpfen Sie veröffentlichte Microsoft 365 App-Verbrauchsclients
+
+1. Wenn Sie nicht über veröffentlichte Office-Add-Ins, Teams-Apps oder SharePoint Framework-Lösungen verfügen, die mit Ihrem SaaS-Angebot zusammenarbeiten, wählen Sie **Nein** aus.
+
+1. Wenn Sie Office-Add-in, Teams-APP oder SharePoint Framework-Lösungen veröffentlicht haben, die mit Ihrem SaaS-Angebot funktionieren, wählen Sie **Ja** aus, und wählen Sie dann **+ weiteren AppSource-Link hinzufügen** aus, um neue Links hinzuzufügen.  
+
+1. Geben Sie einen gültigen AppSource-Link an.
+
+1. Fügen Sie alle Links hinzu, indem Sie auf **+ weiteren AppSource-Link hinzufügen** klicken und gültige AppSource-Links angeben.  
+
+1. Die Reihenfolge, in der die verknüpften Produkte auf der Listenseite des Saas-Angebots angezeigt werden, wird durch den Rangwert angezeigt. Sie können sie ändern, indem Sie das =-Icon in der Liste auswählen, gedrückt halten und nach oben und unten verschieben. 
+
+1. Sie können ein verknüpftes Produkt löschen, indem Sie in der Zeile Produkt die Option **Löschen** auswählen.  
+
+
+> [!IMPORTANT]
+> Wenn Sie ein verknüpftes Produkt nicht mehr automatisch entfernen, wird es nicht automatisch mit dem SaaS-Angebot verknüpft. Sie müssen es aus der Liste der verknüpften Produkte löschen und das SaaS-Angebot erneut übermitteln.  
+
+ 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

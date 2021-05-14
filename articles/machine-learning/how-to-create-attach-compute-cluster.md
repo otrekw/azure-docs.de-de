@@ -5,18 +5,18 @@ description: Erfahren Sie, wie Sie Computecluster in Ihrem Azure Machine Learnin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 1e3549a6f5f4f9d7f6a6da574378c90c20e42dcf
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 116a0fd6fce399327d8ac5434a383d80e8b351e6
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169571"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890040"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Erstellen eines Computeclusters für Azure Machine Learning
 
@@ -36,6 +36,14 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 * Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
 
+* Wenn Sie das Python SDK verwenden, [richten Sie Ihre Entwicklungsumgebung mit einem Arbeitsbereich ein](how-to-configure-environment.md).  Sobald Ihre Umgebung eingerichtet ist, fügen Sie sie an den Arbeitsbereich in Ihrem Python-Skript an:
+
+    ```python
+    from azureml.core import Workspace
+    
+    ws = Workspace.from_config() 
+    ```
+
 ## <a name="what-is-a-compute-cluster"></a>Was ist ein Computecluster?
 
 Ein Azure Machine Learning-Computecluster ist eine verwaltete Computeinfrastruktur, die Ihnen das einfache Erstellen von Computezielen mit einem oder mehreren Knoten ermöglicht. Das Computeziel wird in Ihrer Arbeitsbereichsregion als Ressource erstellt, die für andere Benutzer im Arbeitsbereich freigegeben werden kann. Es wird automatisch zentral hochskaliert, wenn ein Auftrag übermittelt wird, und kann in einem virtuellen Azure-Netzwerk platziert werden kann. Das Computeziel wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einem [Docker-Container](https://www.docker.com/why-docker).
@@ -53,7 +61,7 @@ Computecluster können Aufträge sicher in einer [virtuellen Netzwerkumgebung](h
 * Azure ermöglicht Ihnen das Einrichten von _Sperren_ für Ressourcen, damit diese nicht gelöscht werden können oder schreibgeschützt sind. __Wenden Sie keine Ressourcensperren auf die Ressourcengruppe an, die Ihren Arbeitsbereich enthält__. Wenn Sie eine Sperre auf die Ressourcengruppe anwenden, die Ihren Arbeitsbereich enthält, werden Skalierungsvorgänge für Azure ML-Computecluster unterbunden. Weitere Informationen zum Sperren von Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/management/lock-resources.md).
 
 > [!TIP]
-> Cluster können in der Regel auf bis zu 100 Knoten skaliert werden, solange Ihr Kontingent für die Anzahl der erforderlichen Kerne ausreicht. Standardmäßig werden Cluster mit aktivierter Kommunikation zwischen den Knoten des Clusters eingerichtet, um beispielsweise MPI-Aufträge zu unterstützen. Sie können Ihre Cluster jedoch auf 1.000 Knoten skalieren, indem Sie einfach [ein Supportticket einreichen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) und die Aufnahme Ihrer Anwendung, des Arbeitsbereichs oder eines bestimmten Clusters in die Zulassungsliste anfordern, um die Kommunikation zwischen den Knoten zu deaktivieren. 
+> Cluster können in der Regel auf bis zu 100 Knoten skaliert werden, solange Ihr Kontingent für die Anzahl der erforderlichen Kerne ausreicht. Standardmäßig werden Cluster mit aktivierter Kommunikation zwischen den Knoten des Clusters eingerichtet, um beispielsweise MPI-Aufträge zu unterstützen. Sie können Ihre Cluster jedoch auf 1.000 Knoten skalieren, indem Sie einfach [ein Supportticket einreichen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) und die Aufnahme Ihrer Anwendung, des Arbeitsbereichs oder eines bestimmten Clusters in die Zulassungsliste anfordern, um die Kommunikation zwischen den Knoten zu deaktivieren.
 
 
 ## <a name="create"></a>Erstellen
@@ -70,11 +78,11 @@ Die Computeressource skaliert automatisch auf Null herunter, wenn sie nicht ben�
     
 # <a name="python"></a>[Python](#tab/python)
 
-Um eine persistente Azure Machine Learning Compute-Ressource in Python zu erstellen, geben Sie die Eigenschaften **vm_size** und **max_nodes** an. Azure Machine Learning verwendet dann für die restlichen Eigenschaften intelligente Standardwerte. 
+
+Um eine persistente Azure Machine Learning Compute-Ressource in Python zu erstellen, geben Sie die Eigenschaften **vm_size** und **max_nodes** an. Azure Machine Learning verwendet dann für die restlichen Eigenschaften intelligente Standardwerte.
     
 * **vm_size**: Die VM-Familie der von Azure Machine Learning Compute erstellten Knoten.
 * **max_nodes**: Die maximale Anzahl von Knoten, auf die das Computeziel bei der Ausführung eines Auftrags in Azure Machine Learning Compute automatisch hochskaliert wird.
-
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
@@ -88,7 +96,7 @@ Sie können beim Erstellen von Azure Machine Learning Compute auch mehrere erwei
 az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
 ```
 
-Weitere Informationen finden Sie unter [az ml computetarget create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute).
+Weitere Informationen finden Sie unter [az ml computetarget create amlcompute](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -132,16 +140,18 @@ Wählen Sie in Studio beim Erstellen einer VM **Niedrige Priorität** aus.
 
 * Konfigurieren der verwalteten Identität in der Bereitstellungskonfiguration:  
 
-    * Systemseitig zugewiesene verwaltete Identität:
+    * Systemseitig zugewiesene verwaltete Identität, die in einem Arbeitsbereich mit dem Namen `ws` erstellt wurde
         ```python
         # configure cluster with a system-assigned managed identity
         compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
                                                                 max_nodes=5,
                                                                 identity_type="SystemAssigned",
                                                                 )
+        cpu_cluster_name = "cpu-cluster"
+        cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
         ```
     
-    * Benutzerseitig zugewiesene verwaltete Identität:
+    * Benutzerseitig zugewiesene verwaltete Identität, die in einem Arbeitsbereich mit dem Namen `ws` erstellt wurde
     
         ```python
         # configure cluster with a user-assigned managed identity
@@ -154,7 +164,7 @@ Wählen Sie in Studio beim Erstellen einer VM **Niedrige Priorität** aus.
         cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
         ```
 
-* Hinzufügen einer verwalteten Identität zu einem vorhandenen Computecluster 
+* Hinzufügen einer verwalteten Identität zu einem vorhandenen Computecluster namens `cpu_cluster`
     
     * Systemseitig zugewiesene verwaltete Identität:
     

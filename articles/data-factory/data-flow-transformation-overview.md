@@ -1,17 +1,17 @@
 ---
 title: Zuordnungsdatenfluss – Übersicht über Transformationen
 description: Eine Übersicht über die verschiedenen Transformationen, die im Zuordnungsdatenfluss zur Verfügung stehen
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: ba2ff2b5f108d7910958b374cc4b602a84a3f53d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ebcb3298419fe53fe44418ce5f8147ed619becee
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367910"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903631"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Zuordnungsdatenfluss – Übersicht über Transformationen
 
@@ -31,6 +31,7 @@ In der nachstehenden Liste sind die Transformationen aufgeführt, die im Zuordnu
 | [Join](data-flow-join.md) | Mehrere Eingaben/Ausgaben |  Kombinieren Sie Daten aus zwei Quellen oder Datenströmen. |
 | [Suche](data-flow-lookup.md) | Mehrere Eingaben/Ausgaben | Verweisen Sie auf Daten aus einer anderen Quelle. |
 | [Neuer Branch](data-flow-new-branch.md) | Mehrere Eingaben/Ausgaben | Wenden Sie mehrere Vorgänge und Transformationen auf denselben Datenstrom an. |
+| [Parse](data-flow-new-branch.md) | Formatierungsprogramm | Analysieren Sie Textspalten in Ihrem Datenstrom, bei denen es sich um Zeichenfolgen aus JSON-Text, Text mit Trennzeichen oder XML-formatierten Text handelt. |
 | [Pivotieren](data-flow-pivot.md) | Schemamodifizierer | Eine Aggregation, bei der die unterschiedlichen Zeilenwerte einer oder mehrerer Gruppierungsspalten in einzelne Spalten transformiert wurden. |
 | [Rang](data-flow-rank.md) | Schemamodifizierer | Generieren einer geordneten Rangfolge basierend auf Sortierbedingungen |
 | [Auswählen](data-flow-select.md) | Schemamodifizierer | Aliasspalten und Datenstromnamen sowie das Löschen oder Neuanordnen von Spalten |
@@ -41,3 +42,4 @@ In der nachstehenden Liste sind die Transformationen aufgeführt, die im Zuordnu
 | [Union](data-flow-union.md) | Mehrere Eingaben/Ausgaben | Vertikales Kombinieren mehrerer Datenströme |
 | [Entpivotieren](data-flow-unpivot.md) | Schemamodifizierer | Pivotieren von Spalten in Zeilenwerte |
 | [Fenster](data-flow-window.md) | Schemamodifizierer |  Definieren Sie fensterbasierte Aggregationen von Spalten in Ihren Datenströmen. |
+| [Parse](data-flow-parse.md) | Schemamodifizierer |  Parsen Sie die Spaltendaten zu Json oder getrenntem Text |

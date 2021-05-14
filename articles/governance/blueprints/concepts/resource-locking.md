@@ -1,21 +1,21 @@
 ---
 title: Grundlagen von Ressourcensperren
 description: Erfahren Sie, wie Sie die Sperrfunktionen in Azure Blueprints verwenden, um beim Zuweisen einer Blauphase die Ressourcen zu schützen.
-ms.date: 01/27/2021
+ms.date: 04/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: b2004ad294ae0eec1b4f2fc6f49308efd32d652e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ad6bbc80818a1ba749607c44403e3efbdb064c9
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920189"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897755"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
 Die bedarfsabhängige Erstellung konsistenter Umgebungen hat nur dann wirklich Vorteile, wenn ein Mechanismus vorhanden ist, mit dem die Wahrung der Konsistenz sichergestellt werden kann. In diesem Artikel wird beschrieben, wie das Sperren von Ressourcen in Azure Blueprint funktioniert. Im Tutorial [Schützen neuer Ressourcen](../tutorials/protect-new-resources.md) finden Sie ein Beispiel für Ressourcensperren und die Anwendung von _Ablehnungszuweisungen_.
 
 > [!NOTE]
-> Von Azure Blueprints bereitgestellte Ressourcensperren werden nur auf Ressourcen angewendet, die durch die Blaupausenzuweisung bereitgestellt wurden. Vorhandenen Ressourcen, z. B. Ressourcen in bereits vorhandenen Ressourcengruppen, werden keine Sperren hinzugefügt.
+> Von Azure Blueprints bereitgestellte Ressourcensperren werden nur auf [Ressourcen ohne Erweiterung](../../../azure-resource-manager/templates/scope-extension-resources.md) angewendet, die durch die Blaupausenzuweisung bereitgestellt wurden. Vorhandenen Ressourcen, z. B. Ressourcen in bereits vorhandenen Ressourcengruppen, werden keine Sperren hinzugefügt.
 
 ## <a name="locking-modes-and-states"></a>Modi und Zustände von Sperren
 

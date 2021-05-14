@@ -12,18 +12,28 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 01fb93dcd0a1d5c1db615c47d7811a0baa863c9b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 269ef95835e5284806e7c1eaa76980e635c3d1dd
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105111395"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946545"
 ---
-# <a name="release-notes-for-azure-application-consistent-snapshot-tool-preview"></a>Versionshinweise für das Tool für konsistente Momentaufnahmen in Azure-Anwendungen (Vorschau)
+# <a name="release-notes-for-azure-application-consistent-snapshot-tool"></a>Versionshinweise für das Tool für konsistente Momentaufnahmen in Azure-Anwendungen
 
 Auf dieser Seite werden wichtige Änderungen aufgelistet, die an AzAcSnap vorgenommen wurden, um neue Funktionen bereitzustellen oder Fehler zu beheben.
+
+## <a name="april-2021"></a>April 2021
+
+### <a name="azacsnap-v50-build-202104216349---ga-released-21-april-2021"></a>AzAcSnap v5.0 (Build: 20210421.6349) – GA-veröffentlicht (21.04.2021)
+
+AzAcSnap v5.0 (Build: 20210421.6349) wurde allgemein verfügbar gemacht und hatte für diesen Build die folgenden Korrekturen und Verbesserungen:
+
+- Das hdbsql-Wiederholungs-Timeout (um auf eine Antwort von SAP HANA zu warten) wird automatisch auf die Hälfte der „savePointAbortWaitSeconds“ festgelegt, um Racebedingungen zu vermeiden.  Die Einstellung für „savePointAbortWaitSeconds“ kann direkt in der JSON-Konfigurationsdatei geändert werden und muss mindestens 600 Sekunden lang sein.
+
+Laden Sie die [neueste Version](https://aka.ms/azacsnapdownload) des Installationsprogramms herunter, und informieren Sie sich über die [ersten Schritte](azacsnap-get-started.md).
 
 ## <a name="march-2021"></a>März-2021
 
@@ -36,8 +46,6 @@ AzAcSnap v 5.0 Preview (Build: 20210318.30771) wurde mit den folgenden Korrektu
 - Mutex-Steuerelement zum Drosseln von SSH-Verbindungen für Azure (große Instanzen) hinzugefügt.
 - Fix für das Installationsprogramm für die Behandlung von Pfadnamen mit Leerzeichen und anderen verwandten Problemen.
 - Als Vorbereitung für die Unterstützung anderer Datenbankserver wurde der optionale Parameter „--hanasid“ in „--dbsid“ geändert.
-
-Laden Sie die [neueste Version](https://aka.ms/azacsnapdownload) des Installationsprogramms herunter, und informieren Sie sich über die [ersten Schritte](azacsnap-get-started.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 16e8cfd9c6b20e3a8d17ba335079b1b6fe8b499f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bbc294f006859e30aa891c7aa1b9ad4d1665a21c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785017"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139955"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Tutorial: Überwachen von Änderungen und Aktualisieren eines virtuellen Linux-Computers in Azure
 
@@ -108,7 +108,7 @@ Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicke
 
 Wählen Sie zum Erstellen einer neuen Updatebereitstellung **Updatebereitstellung planen** aus. Die Seite **Neue Updatebereitstellung** wird geöffnet. Geben Sie Werte für die Eigenschaften ein, die in der folgenden Tabelle beschrieben werden, und klicken Sie auf **Erstellen**:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Name |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
 |Betriebssystem| Linux oder Windows|
@@ -170,7 +170,7 @@ Nach Aktivierung der Lösung kann es einige Zeit dauern, bis der Bestand auf dem
 
 Klicken Sie auf Ihrem virtuellen Computer unter **VORGÄNGE** auf **Änderungsnachverfolgung**. Klicken Sie auf **Einstellungen bearbeiten**. Daraufhin wird die Seite **Änderungsnachverfolgung** angezeigt. Wählen Sie die Art der Einstellung aus, die Sie nachverfolgen möchten, und klicken Sie dann zum Konfigurieren der Einstellungen auf **+ Hinzufügen**. Die verfügbare Option für Linux ist **Linux-Dateien**.
 
-Ausführliche Informationen zur Änderungsnachverfolgung finden Sie unter [Problembehandlung für Änderungen in Ihrer Umgebung](../../automation/automation-tutorial-troubleshoot-changes.md).
+Ausführliche Informationen zur Änderungsnachverfolgung finden Sie unter [Problembehandlung für Änderungen in Ihrer Umgebung](../../automation/troubleshoot/change-tracking.md).
 
 ### <a name="view-inventory"></a>Anzeigen des Bestands
 

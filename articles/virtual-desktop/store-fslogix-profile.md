@@ -3,15 +3,15 @@ title: Speicher für FSLogix-Profilcontainer mit Windows Virtual Desktop – Azu
 description: Optionen zum Speichern Ihres Windows Virtual Desktop-FSLogix-Profils in Azure Storage.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 04/27/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 2ec166c1df9727052d4980f5d5758ece8c499880
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: 34be20a1b8768414efa0ea32382dea6eab66035a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99526601"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073195"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop
 
@@ -29,8 +29,8 @@ In den folgenden Tabellen werden die Speicherlösungen verglichen, die in Azure 
 |Plattformdienst|Ja, native Azure-Lösung|Ja, native Azure-Lösung|Nein, selbst verwaltet|
 |Regionale Verfügbarkeit|Alle Regionen|[Bestimmte Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Alle Regionen|
 |Redundanz|Lokal redundant/zonenredundant/georedundant/geozonenredundant|Lokal redundant|Lokal redundant/zonenredundant/georedundant|
-|Tarife und Leistung| Standard (Transaktionsoptimiert)<br>Premium<br>Bis zu 100.000 IOPS pro Freigabe mit 10 GBit/s pro Freigabe bei einer ungefähren Wartezeit von 3 ms|Standard<br>Premium<br>Ultra<br>Bis zu 320.000 IOPS (16K) mit 4,5 GBit/s pro Volume bei einer ungefähren Wartezeit von 1 ms|HDD Standard: bis zu 500 IOPS pro Datenträger<br>SSD Standard: bis zu 4.000 IOPS pro Datenträger<br>SSD Premium: bis zu 20.000 IOPS pro Datenträger<br>Für direkte Speicherplätze werden Premium-Datenträger empfohlen.|
-|Capacity|100 TiB pro Freigabe, bis zu 5 PiB pro universellem Konto |100 TiB pro Volume, bis zu 12,5 PiB pro Abonnement|Maximal 32 TiB pro Datenträger|
+|Tarife und Leistung| Standard (Transaktionsoptimiert)<br>Premium<br>Bis zu 100.000 IOPS pro Freigabe mit 10 GBit/s pro Freigabe bei einer ungefähren Wartezeit von 3 ms|Standard<br>Premium<br>Ultra<br>Bis zu 4,5 GBit/s bei einer ungefähren Wartezeit von 1 ms IOPS- und Leistungsdetails finden Sie unter [Überlegungen zur Leistung von Azure NetApp Files](../azure-netapp-files/azure-netapp-files-performance-considerations.md) und in [Häufig gestellte Fragen (FAQ)](../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-convert-throughput-based-service-levels-of-azure-netapp-files-to-iops).|HDD Standard: bis zu 500 IOPS pro Datenträger<br>SSD Standard: bis zu 4.000 IOPS pro Datenträger<br>SSD Premium: bis zu 20.000 IOPS pro Datenträger<br>Für direkte Speicherplätze werden Premium-Datenträger empfohlen.|
+|Capacity|100 TiB pro Freigabe, bis zu 5 PiB pro universellem Konto |100 TiB pro Volume, bis zu 12,5 PiB pro Abonnement|Maximal 32 TiB pro Datenträger|
 |Erforderliche Infrastruktur|Mindestgröße für Freigaben: 1 GiB|Mindestgröße für Kapazitätspools: 4 TiB. Mindestgröße für Volumes: 100 GiB|Zwei virtuelle Computer in Azure IaaS (+ Cloudzeuge) oder mindestens drei virtuelle Computer ohne und Kosten für Datenträger|
 |Protokolle|SMB 3.0/2.1, NFSv4.1 (Vorschau), REST|NFSv3, NFSv4.1 (Vorschauversion), SMB 3.x/2.x|NFSv3, NFSv4.1, SMB 3.1|
 
@@ -44,6 +44,26 @@ In den folgenden Tabellen werden die Speicherlösungen verglichen, die in Azure 
 |Azure Active Directory-Integration|[Natives Active Directory und Azure Active Directory Domain Services](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory Domain Services und Active Directory (nativ)](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Nur Unterstützung von Active Directory (nativ) oder Azure Active Directory Domain Services|
 
 Nachdem Sie sich für eine Speichermethode entschieden haben, können Sie sich unter [Windows Virtual Desktop – Preise](https://azure.microsoft.com/pricing/details/virtual-desktop/) über unsere Tarife informieren.
+
+## <a name="azure-files-tiers"></a>Ebenen in Azure Files
+
+Azure Files bietet zwei unterschiedliche Speicherebenen: „Premium“ und „Standard“. Mit diesen Ebenen können Sie Leistung und Kosten Ihrer Dateifreigaben anpassen, um die Anforderungen Ihres Szenarios zu erfüllen.
+
+- Premium-Dateifreigaben basieren auf Solid State Drives (SSDs) und werden in Speicherkonten vom Typ FileStorage bereitgestellt. Premium-Dateifreigaben bieten eine konsistente hohe Leistung und niedrige Latenz für ein- und ausgabeintensive Workloads (E/A). 
+
+- Standard-Dateifreigaben basieren auf Festplattenlaufwerken (Hard Disk Drives, HDDs) und werden in Speicherkonten vom Typ „Universell Version 2 (GPv2)“ bereitgestellt. Standard-Dateifreigaben bieten eine zuverlässige Leistung für E/A-Workloads, die weniger anfällig für Leistungsschwankungen sind, z. B. universelle Dateifreigaben und Dev/Test-Umgebungen. Standard-Dateifreigaben sind nur in einem nutzungsbasierten Abrechnungsmodell verfügbar.
+
+In der folgenden Tabelle sind unsere Empfehlungen aufgeführt, welche Leistungsstufe basierend auf der Workload verwendet werden sollte. Diese Empfehlungen helfen Ihnen bei der Auswahl der Leistungsstufe, die Ihren Leistungszielen, Ihrem Budget und regionalen Aspekten gerecht wird. Diese Empfehlungen basieren auf den Beispielszenarien aus [Remotedesktop-Workloads](/windows-server/remote/remote-desktop-services/remote-desktop-workloads). 
+
+| Workloadtyp | Empfohlene Dateiebene |
+|--------|-----------|
+| Leicht (weniger als 200 Benutzer) | Standarddateifreigaben |
+| Leicht (mehr als 200 Benutzer) | Premium-Dateifreigaben oder Standard mit mehreren Dateifreigaben |
+|Medium (Mittel)|Premium-Dateifreigaben|
+|Schwer|Premium-Dateifreigaben|
+|Power|Premium-Dateifreigaben|
+
+Weitere Informationen zur Leistung von Azure Files finden Sie unter [Skalierbarkeitsziele für Azure Files](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets). Weitere Informationen zu den Preisen finden Sie unter [Azure Files – Preise](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

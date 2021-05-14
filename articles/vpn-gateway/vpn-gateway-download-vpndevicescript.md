@@ -1,6 +1,6 @@
 ---
 title: Herunterladen von VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen
-description: In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen mit Azure-VPN-Gateways unter Verwendung von Azure Resource Manager herunterladen.
+description: Erfahren Sie, wie Sie VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen mit Azure VPN Gateways herunterladen.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: yushwang
@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: d2593c656e17310c5afb4a897b94cc8c12a618f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2caa392ced15f96287c3218f1413c9aa9c16fe20
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879493"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226334"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Herunterladen von VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen
 
-In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen mit Azure-VPN-Gateways unter Verwendung von Azure Resource Manager herunterladen. Das folgende Diagramm zeigt eine Übersicht über den Workflow:
+In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen mit Azure-VPN-Gateways herunterladen. Das folgende Diagramm zeigt eine Übersicht über den Workflow:
 
 ![download-script](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
 

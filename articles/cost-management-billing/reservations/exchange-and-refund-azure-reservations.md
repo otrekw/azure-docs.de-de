@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 04/14/2021
 ms.author: banders
-ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3e8f50efd04364483c32ecb8ef5020bdd053e55b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035992"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515480"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
@@ -27,8 +27,6 @@ Wenn Sie eine Reservierung austauschen, können Sie Ihre Laufzeit von einem Jahr
 Sie können sich Reservierungen auch zurückerstatten lassen, doch darf die Summe aller stornierten Reservierungen in Ihrem Abrechnungsbereich (z. B. EA, Microsoft-Kundenvereinbarung und Microsoft Partner-Vereinbarung) einen Betrag von 50.000 US-Dollar in einem rollierenden Zeitfenster von zwölf Monaten nicht überschreiten.
 
 Reservierte Azure Databricks-Kapazität, Reservierungen für Azure VMware Solution by CloudSimple, Reservierungen für Azure Red Hat Open Shift, Red Hat-Pläne sowie SUSE Linux-Pläne sind nicht erstattungsfähig.
-
-Die Self-Service-Umtausch- und Stornierungsfunktion steht für US Government Enterprise Agreement-Kunden nicht zur Verfügung. Andere US Government-Abonnementtypen, einschließlich nutzungsbasierter Bezahlung und Cloud Solution Provider (CSP), werden unterstützt.
 
 > [!NOTE]
 > - **Sie benötigen Besitzerzugriff auf den Reservierungsauftrag, um eine vorhandene Reservierung umtauschen oder zurückerstatten zu können**. Sie können [Benutzer, die eine Reservierung verwalten können, hinzufügen oder ändern](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
@@ -105,6 +103,7 @@ In Azure gelten folgende Richtlinien für Stornierungen, Umtausch und Rückersta
 - Zurzeit wird keine Gebühr für die vorzeitige Kündigung berechnet, aber in Zukunft kann bei Stornierungen ggf. eine Gebühr für die vorzeitige Beendigung in Höhe von 12 % anfallen.
 - Die stornierte Reservierung darf insgesamt in einem rollierenden Zeitfenster von zwölf Monaten für ein Abrechnungsprofil oder eine einzelne Registrierung den Wert von 50.000 US-Dollar nicht überschreiten. Beispielsweise beträgt bei einer dreijährigen Reservierung mit einem Wert von 100 US-Dollar pro Monat, die im 18. Monat zurückerstattet wird, die Summe für die stornierte Reservierung 1.800 US-Dollar. Nach der Rückerstattung beträgt das neue verfügbare Rückerstattungslimit 48.200 US-Dollar. 365 Tage nach der Erstattung wird das Limit von 48.200 US-Dollar um 1.800 US-Dollar erhöht, und der neue Pool beläuft sich auf 50.000 US-Dollar. Durch jede weitere Reservierungsstornierung für das Abrechnungsprofil oder die EA-Registrierung wird derselbe Pool verringert, und die gleiche Auffüllungslogik wird angewandt.
 - Azure verarbeitet keine Rückerstattung, die das Limit von 50.000 US-Dollar in einem Zeitraum von 12 Monaten für ein Abrechnungsprofil oder eine EA-Registrierung überschreitet.
+    - Rückerstattungen, die sich aus einem Umtausch ergeben, werden nicht auf das Rückerstattungslimit angerechnet.
 - Rückerstattungen werden auf der Grundlage des niedrigsten Preises (Ihr Kaufpreis oder der aktuelle Preis für die Reservierung) berechnet.
 - Nur Besitzer von Reservierungsaufträgen können eine Erstattung verarbeiten. [Informieren Sie sich über das Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 
