@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f1343f900e12bff09c0436ca52d8b091fe48a181
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d42c7cc6498adad251174db7caea11feec82784
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393546"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753556"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -33,11 +33,11 @@ Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azur
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 Sie können Daten **aus Azure Blob Storage** in die folgenden Datenspeicher kopieren:
 
-[!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sink](includes/data-factory-supported-sinks.md)]
 
 Sie können Daten aus den folgenden Datenspeichern **nach Azure Blob Storage** kopieren:
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 > [!IMPORTANT]
 > Die Kopieraktivität unterstützt das Kopieren von Daten in und aus Azure Storage-Konten für allgemeine Zwecke und Blob Storage (Hot/Cool). Die Aktivität unterstützt das **Lesen aus Block-, Anfüge- und Seitenblobs**. Das **Schreiben wird jedoch nur für Blockblobs** unterstützt. Azure Premium Storage wird als Senke nicht unterstützt, da er vor dem Hintergrund von Seitenblobs funktioniert.
@@ -65,7 +65,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Es gibt zwei Arten von verknüpften Diensten, die Sie verwenden können, um einen Azure Storage mit einer Azure Data Factory zu verknüpfen. Sie lauten wie folgt: verknüpfter Dienst **AzureStorage** und verknüpfter Dienst **AzureStorageSas**. Dagegen bietet der mit Azure Storage SAS (Shared Access Signature) verknüpfte Dienst der Data Factory einen eingeschränkten bzw. zeitgebundenen Zugriff auf Azure-Speicher. Es gibt keine weitere Unterschiede zwischen diesen beiden verknüpften Diensten. Wählen Sie den verknüpften Dienst, der Ihren Anforderungen entspricht. Die folgenden Abschnitte bieten weitere Informationen zu diesen beiden verknüpften Diensten.
 
-[!INCLUDE [data-factory-azure-storage-linked-services](../../../includes/data-factory-azure-storage-linked-services.md)]
+[!INCLUDE [data-factory-azure-storage-linked-services](includes/data-factory-azure-storage-linked-services.md)]
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Um ein Dataset zur Darstellung von Eingabe- oder Ausgabedaten in einem Azure Blob Storage anzugeben, legen Sie die Typeigenschaft des Datasets auf **AzureBlob** fest. Legen Sie die **linkedServiceName**-Eigenschaft des Datasets auf den Namen des mit Azure Storage oder Azure Storage SAS verknüpften Diensts fest.  Die Typeigenschaften des Datasets geben den **Blobcontainer** und den **Ordner** im Blobspeicher an.
@@ -76,7 +76,7 @@ Data Factory unterstützt die folgenden CLS-konformen und auf .NET basierenden T
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset und enthält unter anderem Informationen zum Speicherort und Format der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset des Typs **AzureBlob** hat die folgenden Eigenschaften:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | folderPath |Der Pfad zum Container und Ordner im Blobspeicher. Beispiel: myblobcontainer\myblobfolder\ |Ja |
 | fileName |Der Name des Blobs. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss.<br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für das jeweilige Blob.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Blobs in folderPath für das Eingabedataset kopiert.<br/><br/>Wenn **fileName** nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei das folgende Format: `Data.<Guid>.txt` (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |

@@ -1,18 +1,18 @@
 ---
 title: Kopieren von Daten von einem und auf einen SFTP-Server
 description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory von einem und auf einen FTP-Server kopieren.
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: 19b32bed15a4d292a7427d8401e777c7761e45a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bdee163a31c7822aa0eea2ff5900e10796e0c521
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592029"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486843"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Kopieren von Daten von einem und auf einen SFTP-Server mithilfe von Azure Data Factory
 
@@ -39,11 +39,11 @@ Der SFTP-Connector unterstützt insbesondere Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für SFTP verwendet werden.
 
@@ -51,7 +51,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit SFTP verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf *Sftp* festgelegt werden. |Ja |
 | host | Der Name oder die IP-Adresse des SFTP-Servers. |Ja |
@@ -65,7 +65,7 @@ Folgende Eigenschaften werden für den mit SFTP verknüpften Dienst unterstützt
 
 Um die Standardauthentifizierung zu verwenden, legen Sie die Eigenschaft *authenticationType* auf *Basic* fest, und geben zusätzlich zu den im vorherigen Abschnitt eingeführten generischen SFTP-Connectoreigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | userName | Der Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | password | Das Kennwort für den Benutzer (userName). Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
@@ -101,7 +101,7 @@ Um die Standardauthentifizierung zu verwenden, legen Sie die Eigenschaft *authen
 
 Legen Sie zum Verwenden der Authentifizierung mit öffentlichem SSH-Schlüssel die Eigenschaft „authenticationType“ auf **SshPublicKey** fest, und geben Sie neben den im letzten Abschnitt beschriebenen allgemeinen Eigenschaften des SFTP-Connectors die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | userName | Der Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | privateKeyPath | Geben Sie den absoluten Pfad der privaten Schlüsseldatei ein, auf die die Integration Runtime zugreifen kann. Dies ist nur anwendbar, wenn für „connectVia“ eine Integration Runtime vom Typ „selbstgehostet“ angegeben wird. | Geben Sie entweder `privateKeyPath` oder `privateKeyContent` an.  |
@@ -210,11 +210,11 @@ Um die mehrstufige Authentifizierung zu verwenden, bei der es sich um eine Kombi
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Datasets](concepts-datasets-linked-services.md). 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Folgende Eigenschaften werden für SFTP unter den `location`-Einstellungen im formatbasierten Dataset unterstützt:
 
-| Eigenschaft   | Beschreibung                                                  | Erforderlich |
+| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die *type*-Eigenschaft unter `location` im Dataset muss auf *SftpLocation* festgelegt werden. | Ja      |
 | folderPath | Diese Eigenschaft gibt den Pfad zum Ordner an. Wenn Sie einen Platzhalter verwenden möchten, um den Ordner zu filtern, überspringen Sie diese Einstellung, und geben Sie den Pfad in den Aktivitätsquelleneinstellungen an. | Nein       |
@@ -252,11 +252,11 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="sftp-as-source"></a>SFTP als Quelle
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Folgende Eigenschaften werden für SFTP unter den `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
 
-| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                      |
+| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | Die *type*-Eigenschaft unter `storeSettings` muss auf *SftpReadSettings* festgelegt werden. | Ja                                           |
 | ***Suchen nach den zu kopierenden Dateien*** |  |  |
@@ -316,11 +316,11 @@ Folgende Eigenschaften werden für SFTP unter den `storeSettings`-Einstellungen 
 
 ### <a name="sftp-as-a-sink"></a>SFTP als Senke
 
-[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
+[!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)]
 
 Folgende Eigenschaften werden für SFTP unter den `storeSettings`-Einstellungen in einer formatbasierten Kopiersenke unterstützt:
 
-| Eigenschaft                 | Beschreibung                                                  | Erforderlich |
+| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | Die Eigenschaft *type* unter `storeSettings` muss auf *SftpWriteSettings* festgelegt werden. | Ja      |
 | copyBehavior             | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner ist mit dem relativen Pfad der Zieldatei zum Zielordner identisch.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Dateiname angegeben wurde, entspricht der zusammengeführte Dateiname dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein       |
@@ -404,7 +404,7 @@ Weitere Informationen zu den Eigenschaften der Löschaktivität finden Sie unter
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die *type*-Eigenschaft des Datasets muss auf *FileShare* festgelegt werden. |Ja |
 | folderPath | Diese Eigenschaft gibt den Pfad zum Ordner an. Ein Platzhalterfilter wird unterstützt. Zulässige Platzhalter sind: `*` (entspricht 0 oder mehr Zeichen) und `?` (entspricht 0 oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Beispiele: Stammordner/Unterordner/. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). |Ja |
@@ -453,7 +453,7 @@ Weitere Informationen zu den Eigenschaften der Löschaktivität finden Sie unter
 
 ### <a name="legacy-copy-activity-source-model"></a>Legacy-Quellenmodell der Kopieraktivität
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die *type*-Eigenschaft der Quelle der Kopieraktivität muss auf *FileSystemSource* festgelegt werden. |Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Wenn „recursive“ auf *true* festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, werden leere Ordner und Unterordner nicht in die Senke kopiert oder dort erstellt.<br/>Zulässige Werte sind *true* (Standard) und *false*. | Nein |

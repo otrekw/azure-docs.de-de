@@ -3,12 +3,12 @@ title: Bereitstellen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „Payment Card Industry Data Security Standard v3.2.1“, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: da247a77ab347fffab21ce7614440bc11595e97e
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: c9bc3632544669c646f7f182a13e5e8c3f764acb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386083"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756897"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 
@@ -93,11 +93,11 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 
 |Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
-|PCI v3.2.1:2018|Richtlinienzuweisung|Liste der Ressourcentypen | Überwachen der Diagnoseeinstellung für ausgewählte Ressourcentypen. Standardmäßig sind alle Ressourcen ausgewählt| 
-|Allowed locations (Zulässige Speicherorte)|Richtlinienzuweisung|Liste der zulässigen Speicherorte|Liste der Standorte im Rechenzentrum für jede dort bereitzustellende Ressource. Diese Liste kann an die gewünschten Azure-Standorte weltweit angepasst werden. Wählen Sie Standorte aus, die Sie zulassen möchten.| 
-|Zulässige Speicherorte für Ressourcengruppen|Richtlinienzuweisung |Zulässiger Standort |Mit dieser Richtlinie können Sie die Standorte einschränken, an denen Ihr Unternehmen Ressourcengruppen erstellen kann. Wird zur Erzwingung Ihrer Geokonformitätsanforderungen verwendet.| 
-|Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Aufbewahrung (Tage)|Dauer der Datenaufbewahrung in Tagen. Der Standardwert ist 180, PCI erfordert jedoch 365.| 
-|Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Name der Ressourcengruppe für das Speicherkonto|Die Überwachung schreibt Datenbankereignisse in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto. (Ein Speicherkonto wird in jeder Region erstellt, in der eine SQL Server-Instanz erstellt wird, die von allen Servern in dieser Region gemeinsam genutzt wird.)| 
+|PCI v3.2.1:2018|Richtlinienzuweisung|Liste der Ressourcentypen | Überwachen der Diagnoseeinstellung für ausgewählte Ressourcentypen. Standardmäßig sind alle Ressourcen ausgewählt|
+|Allowed locations (Zulässige Speicherorte)|Richtlinienzuweisung|Liste der zulässigen Speicherorte|Liste der Standorte im Rechenzentrum für jede dort bereitzustellende Ressource. Diese Liste kann an die gewünschten Azure-Standorte weltweit angepasst werden. Wählen Sie Standorte aus, die Sie zulassen möchten.|
+|Zulässige Speicherorte für Ressourcengruppen|Richtlinienzuweisung |Zulässiger Standort |Mit dieser Richtlinie können Sie die Standorte einschränken, an denen Ihr Unternehmen Ressourcengruppen erstellen kann. Wird zur Erzwingung Ihrer Geokonformitätsanforderungen verwendet.|
+|Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Aufbewahrung (Tage)|Dauer der Datenaufbewahrung in Tagen. Der Standardwert ist 180, PCI erfordert jedoch 365.|
+|Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Name der Ressourcengruppe für das Speicherkonto|Die Überwachung schreibt Datenbankereignisse in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto. (Ein Speicherkonto wird in jeder Region erstellt, in der eine SQL Server-Instanz erstellt wird, die von allen Servern in dieser Region gemeinsam genutzt wird.)|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: e468898daffe8fc42250575d3efa42f99279c410
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ed67862bc7c4277d95df7ddf6a6f34c563eed49
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88031647"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736050"
 ---
 # <a name="concurrency-control"></a>Gleichzeitigkeitssteuerung
 
@@ -24,8 +24,7 @@ In jedem Aufruf einer Veröffentlichungs-API des Cloud-Partnerportals muss expli
 -   **Optimistisch**: Der Client, der die Aktualisierung ausführt, prüft, ob die Daten geändert wurden, seitdem er sie letztmalig gelesen hat.
 -   **Letzter gewinnt**: Der Client aktualisiert die Daten sofort, unabhängig davon, ob eine andere Anwendung sie seit dem letzten Lesevorgang geändert hat.
 
-<a name="optimistic-concurrency-workflow"></a>Workflow für optimistische Gleichzeitigkeit
--------------------------------
+## <a name="optimistic-concurrency-workflow"></a>Workflow für optimistische Gleichzeitigkeit
 
 Es empfiehlt sich, die optimistische Gleichzeitigkeitsstrategie mit dem folgenden Workflow zu verwenden, damit sichergestellt ist, dass keine unerwarteten Änderungen an Ihren Ressourcen vorgenommen werden.
 

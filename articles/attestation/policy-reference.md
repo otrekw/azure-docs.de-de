@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Attestation
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Attestation. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.topic: reference
 ms.service: attestation
 author: msmbaldwin
 ms.author: mbaldwin
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e0ca416aaf3bb74fe1d0587a0656dc7db8405650
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 1ddc23aceb33b21fd02b42137d5aa559189f68ee
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178224"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760108"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-attestation"></a>Integrierte Azure Policy-Definitionen für Azure Attestation
 

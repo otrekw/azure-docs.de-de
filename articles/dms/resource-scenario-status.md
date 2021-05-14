@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 35ef2ea3f03ca86aea34f736de4317d75a44ae59
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 5d5706738a0d85beed839d324ae3da055cafe39a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330510"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747519"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden
 
@@ -57,6 +57,7 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 |   | RDS MySQL | X |   |
 | **Azure DB for PostgreSQL – Einzelserver** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
+|  | Oracle | X |   |
 | **Azure DB for PostgreSQL – Hyperscale (Citus)** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
 
@@ -80,12 +81,9 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | **Azure DB for PostgreSQL – Einzelserver** | PostgreSQL | ✔ | Allgemein verfügbar |
 |   | Azure DB for PostgreSQL – Einzelserver | ✔ | Allgemein verfügbar |
 |   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
-|   | Oracle | ✔ | Öffentliche Vorschau (wird nach dem 1. Mai 2021 als veraltet markiert) |
+|   | Oracle | X |   |
 | **Azure DB for PostgreSQL – Hyperscale (Citus)** | PostgreSQL | ✔ | Allgemein verfügbar |
 |   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
-
-> [!IMPORTANT]
-> Das Migrationsszenario „Oracle zu Azure Database for PostgreSQL" (derzeit in der Vorschauphase) steht nach dem 1. Mai 2021 nicht mehr zur Verfügung. Wir bieten weiterhin Unterstützung über alternative Tools (wie Ora2pg) und bieten die beste Migrationserfahrung für Migrationen von Oracle zu PostgreSQL. Bewährte Methoden für die Migration finden Sie unter [Handbuch für die Migration von Oracle zu Azure Database for PostgreSQL](https://aka.ms/OracletoPGguide).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

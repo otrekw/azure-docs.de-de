@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 04/27/2021
 ms.author: tisande
-ms.openlocfilehash: b7349a08b93810dcc3befd6058302d6c4573ab8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fec7ed32b236dd0a5f9c0663209b5c2f44e05b29
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019209"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166719"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -75,8 +75,9 @@ Der **Bereichsindex** basiert auf einer geordneten Baumstruktur. Dieser Indextyp
 - Gleichheitsabfragen:
 
     ```sql
-   SELECT * FROM container c WHERE c.property = 'value'
-   ```
+       SELECT * FROM container c WHERE c.property = 'value'
+    ```
+
 
    ```sql
    SELECT * FROM c WHERE c.property IN ("value1", "value2", "value3")
@@ -85,14 +86,14 @@ Der **Bereichsindex** basiert auf einer geordneten Baumstruktur. Dieser Indextyp
    Gleichheitsübereinstimmung für ein Arrayelement
    ```sql
     SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1")
-    ```
+   ```
 
 - Bereichsabfragen:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  (funktioniert für `>`, `<`, `>=`, `<=`, `!=`)
+    (funktioniert für `>`, `<`, `>=`, `<=`, `!=`)
 
 - Überprüfen, ob eine Eigenschaft vorhanden ist:
 
@@ -123,6 +124,9 @@ Der **Bereichsindex** basiert auf einer geordneten Baumstruktur. Dieser Indextyp
    ```
 
 Range-Indizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werden. Die standardmäßige Indizierungsrichtlinie für neu erstellte Container erzwingt Bereichsindizes für jede Zeichenfolge oder Zahl. Weitere Informationen zum Konfigurieren von Bereichsindizes finden Sie unter den [Beispielrichtlinien für Bereichsindizes](how-to-manage-indexing-policy.md#range-index).
+
+> [!NOTE]
+> Eine `ORDER BY`-Klausel, die anhand einer einzelnen Eigenschaft geordnet wird, benötigt *immer* einen Range-Index. Falls der referenzierte Pfad diesen nicht aufweist, tritt ein Fehler auf. Ebenso benötigt eine `ORDER BY`-Abfrage, die nach mehreren Eigenschaften sortiert, *immer* einen zusammengesetzten Index.
 
 ### <a name="spatial-index"></a>Räumlicher Index
 
@@ -178,16 +182,209 @@ Solange ein einziges Filterprädikat einen der Indextypen verwendet, wertet die 
 
 Weitere Informationen zum Konfigurieren von zusammengesetzten Indizes finden Sie in den [Beispielrichtlinien für zusammengesetzte Indizes](how-to-manage-indexing-policy.md#composite-index).
 
-## <a name="querying-with-indexes"></a>Abfragen mit Indizes
+## <a name="index-usage"></a>Indexnutzung
 
-Die während der Indizierung der Daten extrahierten Pfade vereinfachen das Suchen im Index bei der Verarbeitung einer Abfrage. Durch einen Abgleich der `WHERE`-Klausel einer Abfrage mit der Liste der indizierten Pfade ist es möglich, sehr schnell die Elemente zu ermitteln, die dem Abfrageprädikat entsprechen.
+Es gibt fünf Möglichkeiten, wie die Abfrage-Engine Abfragefilter auswerten kann. Diese sind hier in absteigender Reihenfolge von der effizientesten zu der am wenigsten effizienten aufgelistet:
 
-Betrachten Sie beispielsweise die folgende Abfrage: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Das Abfrageprädikat (nach Elementen filtern, die an beliebiger Stelle „France“ als Land oder Region enthalten) würde dem Pfad entsprechen, der rot hervorgehoben ist:
+- Indexsuche
+- Genauer Indexscan
+- Erweiterter Indexscan
+- Vollständiger Indexscan
+- Vollständige Überprüfung
+
+Wenn Sie Eigenschaftenpfade indizieren, verwendet die Abfrage-Engine den Index automatisch so effizient wie möglich. Abgesehen von der Indizierung neuer Eigenschaftenpfade müssen Sie keine Konfigurationen durchführen, um die Verwendung des Index durch Abfragen zu optimieren. Die RU-Gebühr einer Abfrage setzt sich aus der RU-Gebühr für die Indexnutzung und der RU-Gebühr für das Laden von Elementen zusammen.
+
+In der folgenden Tabelle sind die verschiedenen Verwendungsmöglichkeiten von Indizes in Azure Cosmos DB zusammengefasst:
+
+| Indexsuchtyp  | BESCHREIBUNG                                                  | Typische Beispiele                                 | RU-Gebühr für die Indexnutzung                                   | RU-Gebühr für das Laden von Elementen aus dem Transaktionsdatenspeicher                   |
+| ------------------ | ------------------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------- |
+| Indexsuche         | Lesen nur erforderlicher indizierter Werte und Laden nur übereinstimmender Elemente aus dem Transaktionsdatenspeicher | Gleichheitsfilter, IN                            | Konstant pro Gleichheitsfilter                                                     | Erhöht sich basierend auf der Anzahl von Elementen in Abfrageergebnissen |
+| Genauer Indexscan | Binärsuche indizierter Werte und Laden nur übereinstimmender Elemente aus dem Transaktionsdatenspeicher | Bereichsvergleiche (>, <, <=, oder >=), StartsWith | Vergleichbar mit Indexsuche, erhöht sich leicht basierend auf der Kardinalität indizierter Eigenschaften | Erhöht sich basierend auf der Anzahl von Elementen in Abfrageergebnissen |
+| Erweiterter Indexscan | Optimierte Suche (jedoch weniger effizient als Binärsuche) indizierter Werte und Laden nur übereinstimmender Elemente aus dem Transaktionsdatenspeicher | StartsWith (ohne Berücksichtigung der Groß-/Kleinschreibung), StringEquals (ohne Berücksichtigung der Groß-/Kleinschreibung) | Erhöht sich leicht basierend auf der Kardinalität indizierter Eigenschaften | Erhöht sich basierend auf der Anzahl von Elementen in Abfrageergebnissen |
+| Vollständiger Indexscan    | Lesen eines eindeutigen Satzes indizierter Werte und Laden nur übereinstimmender Elemente aus dem Transaktionsdatenspeicher                                              | Contains, EndsWith, RegexMatch, LIKE                                    | Erhöht sich linear basierend auf der Kardinalität indizierter Eigenschaften | Erhöht sich basierend auf der Anzahl von Elementen in Abfrageergebnissen |
+| Vollständige Überprüfung          | Laden aller Elemente                                               | Upper, Lower                                    | –                                                          | Erhöht sich basierend auf der Anzahl von Elementen im Container |
+
+Beim Schreiben von Abfragen sollten Sie ein Filterprädikat verwenden, das den Index so effizient wie möglich nutzt. Wenn z. B. `StartsWith` oder `Contains` für Ihren Anwendungsfall geeignet ist, sollten Sie `StartsWith` wählen, da hiermit statt eines vollständigen Indexscans ein präziser Indexscan durchgeführt wird.
+
+## <a name="index-usage-details"></a>Details zur Indexnutzung
+
+Dieser Abschnitt enthält weitere Details dazu, wie Indizes von Abfragen genutzt werden. Diese Kenntnisse sind zwar für die ersten Schritte mit Azure Cosmos DB nicht erforderlich, werden hier aber für interessierte Benutzer ausführlich dokumentiert. Dazu werden die bereits zuvor in diesem Dokument verwendeten Beispielelemente genutzt:
+
+Beispielelemente:
+
+```json
+    {
+        "id": 1,
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 },
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
+```
+
+```json
+    {
+        "id": 2,
+        "locations": [
+            { "country": "Ireland", "city": "Dublin" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 200 },
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" },
+            { "city": "London" }
+        ]
+    }
+```
+
+Azure Cosmos DB verwendet einen invertierten Index. Der Index ordnet jeden JSON-Pfad dem Satz von Elementen zu, die diesen Wert enthalten. Die Element-ID-Zuordnung wird auf vielen verschiedenen Indexseiten für den Container dargestellt. Hier sehen Sie ein Beispieldiagramm eines invertierten Index für einen Container, der die beiden Beispielelemente enthält:
+
+| Pfad                    | Wert   | Liste der Element-IDs   |
+| ----------------------- | ------- | ---------- |
+| /locations/0/country    | Deutschland | 1          |
+| /locations/0/country    | Irland | 2          |
+| /locations/0/city       | Berlin  | 1          |
+| /locations/0/city       | Dublin  | 1          |
+| /locations/1/country    | Frankreich  | 1          |
+| /locations/1/city       | Paris   | 1          |
+| /headquarters/country   | Belgien | 2          |
+| /headquarters/employees | 200     | 2          |
+| /headquarters/employees | 250     | 1          |
+
+Der invertierte Index verfügt über zwei wichtige Attribute:
+- Werte werden für einen bestimmten Pfad in aufsteigender Reihenfolge sortiert. Daher kann die Abfrage-Engine `ORDER BY` problemlos über den Index bedienen.
+- Die Abfrage-Engine kann für einen bestimmten Pfad den eindeutigen Satz möglicher Werte durchsuchen, um die Indexseiten zu ermitteln, die Ergebnisse enthalten.
+
+Die Abfrage-Engine kann den invertierten Index auf vier verschiedene Arten nutzen:
+
+### <a name="index-seek"></a>Indexsuche
+
+Betrachten Sie die folgende Abfrage: 
+
+```sql
+SELECT location
+FROM location IN company.locations
+WHERE location.country = 'France'`
+```
+
+Das Abfrageprädikat (nach Elementen filtern, die an beliebiger Stelle „France“ als Land oder Region enthalten) würde dem rot hervorgehobenen Pfad entsprechen:
 
 :::image type="content" source="./media/index-overview/matching-path.png" alt-text="Abgleichen mit einem bestimmten Pfad in einer Struktur" border="false":::
 
-> [!NOTE]
-> Eine `ORDER BY`-Klausel, die anhand einer einzelnen Eigenschaft geordnet wird, benötigt *immer* einen Range-Index. Falls der referenzierte Pfad diesen nicht aufweist, tritt ein Fehler auf. Ebenso benötigt eine `ORDER BY`-Abfrage, die nach mehreren Eigenschaften sortiert, *immer* einen zusammengesetzten Index.
+Da diese Abfrage einen Gleichheitsfilter aufweist, können nach dem Durchlaufen dieser Struktur die Indexseiten, die die Abfrageergebnisse enthalten, schnell ermittelt werden. In diesem Fall liest die Abfrage-Engine Indexseiten, die Element 1 enthalten. Eine Indexsuche ist die effizienteste Möglichkeit zur Verwendung des Indexes. Bei einer Indexsuche werden nur die erforderlichen Indexseiten gelesen und nur die Elemente in den Abfrageergebnissen geladen. Daher sind der Zeitaufwand und die RU-Gebühr für die Indexsuche äußerst niedrig und zwar unabhängig vom Gesamtdatenvolumen. 
+
+### <a name="precise-index-scan"></a>Genauer Indexscan
+
+Betrachten Sie die folgende Abfrage: 
+
+```sql
+SELECT *
+FROM company
+WHERE company.headquarters.employees > 200
+```
+
+Das Abfrageprädikat (Filtern nach Elementen mit mehr als 200 Mitarbeitern) kann mit einem präzisen Indexscan des Pfads `headquarters/employees` ausgewertet werden. Bei einem präzisen Indexscan führt die Abfrage-Engine zuerst eine Binärsuche nach dem eindeutigen Satz möglicher Werte durch, um den Speicherort des Werts `200` für den Pfad `headquarters/employees` zu finden. Da die Werte für jeden Pfad in aufsteigender Reihenfolge sortiert sind, kann die Abfrage-Engine ganz einfach eine Binärsuche durchführen. Nachdem die Abfrage-Engine den Wert `200` gefunden hat, beginnt sie mit dem Lesen aller verbleibenden Indexseiten (in aufsteigender Reihenfolge).
+
+Da die Abfrage-Engine eine Binärsuche durchführen kann, um das Überprüfen unnötiger Indexseiten zu vermeiden, weisen präzise Indexscans in der Regel eine vergleichbare Latenz und ähnliche RU-Gebühren wie Indexsuchvorgänge auf.
+
+### <a name="expanded-index-scan"></a>Erweiterter Indexscan
+
+Betrachten Sie die folgende Abfrage: 
+
+```sql
+SELECT *
+FROM company
+WHERE StartsWith(company.headquarters.country, "United", true)
+```
+
+Das Abfrageprädikat (Filtern nach Elementen mit Hauptsitz in einem Land, das mit „United“ unter Beachtung der Groß-/Kleinschreibung beginnt) kann mit einem erweiterten Indexscan des Pfads `headquarters/country` ausgewertet werden. Vorgänge, die einen erweiterten Indexscan durchführen, verfügen über Optimierungen, mit denen vermieden werden kann, dass jede Indexseite überprüft werden muss, doch sind sie etwas teurer als die Binärsuche bei einem präzisen Indexscan.
+
+Wenn z. B. `StartsWith` ohne Beachtung der Groß-/Kleinschreibung ausgewertet wird, überprüft die Abfrage-Engine den Index auf verschiedene mögliche Kombinationen aus Groß- und Kleinbuchstaben. Durch diese Optimierung kann die Abfrage-Engine das Lesen der meisten Indexseiten vermeiden. Verschiedene Systemfunktionen weisen unterschiedliche Optimierungen auf, mit denen das Lesen jeder Indexseite vermieden werden kann. Daher werden diese im Allgemeinen als erweiterter Indexscan kategorisiert. 
+
+### <a name="full-index-scan"></a>Vollständiger Indexscan
+
+Betrachten Sie die folgende Abfrage: 
+
+```sql
+SELECT *
+FROM company
+WHERE Contains(company.headquarters.country, "United")
+```
+
+Das Abfrageprädikat (Filtern nach Elementen mit Hauptsitz in einem Land, das „United“ enthält) kann mit einem Indexscan des Pfads `headquarters/country` ausgewertet werden. Im Gegensatz zu einem präzisen Indexscan wird bei einem vollständigen Indexscan immer der eindeutige Satz möglicher Werte überprüft, um die Indexseiten zu ermitteln, die Ergebnisse enthalten. In diesem Fall wird `Contains` für den Index ausgeführt. Der Zeitaufwand und die RU-Gebühr für Indexscans steigen mit zunehmender Kardinalität des Pfads. Anders ausgedrückt: Je mehr mögliche eindeutige Werte von der Abfrage-Engine überprüft werden müssen, desto höher sind Latenz und RU-Gebühr für einen vollständigen Indexscan.  
+
+Sehen Sie sich beispielsweise die beiden Eigenschaften „town“ und „country“ an. Die Kardinalität von „town“ ist 5.000, die Kardinalität von „country“ ist 200. Nachfolgend sehen Sie zwei Beispielabfragen, die jeweils eine Systemfunktion [CONTAINS](sql-query-contains.md) aufweisen, durch die ein Indexscan für die Eigenschaft `town` durchgeführt wird. Die erste Abfrage verbraucht mehr RUs als die zweite Abfrage, da die Kardinalität von „town“ höher als die von „country“ ist.
+
+```sql
+    SELECT *
+    FROM c
+    WHERE CONTAINS(c.town, "Red", false)
+```
+
+```sql
+    SELECT *
+    FROM c
+    WHERE CONTAINS(c.country, "States", false)
+```
+
+### <a name="full-scan"></a>Vollständige Überprüfung
+
+In einigen Fällen ist die Abfrage-Engine möglicherweise nicht in der Lage, einen Abfragefilter mithilfe des Indexes auszuwerten. In diesem Fall muss die Abfrage-Engine alle Elemente aus dem Transaktionsspeicher laden, um den Abfragefilter auszuwerten. Vollständige Überprüfungen verwenden nicht den Index und weisen eine RU-Gebühr auf, die linear mit der Gesamtdatengröße zunimmt. Glücklicherweise kommen Vorgänge, die vollständige Überprüfungen erfordern, nur selten vor. 
+
+### <a name="queries-with-complex-filter-expressions"></a>Abfragen mit komplexen Filterausdrücken
+
+In den vorherigen Beispielen wurden nur Abfragen mit einfachen Filterausdrücken berücksichtigt (z. B. Abfragen mit nur einem Gleichheits- oder Bereichsfilter). In Wirklichkeit weisen die meisten Abfragen wesentlich komplexere Filterausdrücke auf.
+
+Betrachten Sie die folgende Abfrage:
+
+```sql
+SELECT *
+FROM company
+WHERE company.headquarters.employees = 200 AND CONTAINS(company.headquarters.country, "United")
+```
+
+Zum Ausführen dieser Abfrage muss die Abfrage-Engine eine genaue Indexsuche für `headquarters/employees` und einen vollständigen Indexscan für `headquarters/country` ausführen. Die Abfrage-Engine weist eine interne Heuristik auf, die für eine möglichst effiziente Auswertung des Abfragefilterausdrucks genutzt wird. In diesem Fall würde die Abfrage-Engine das Lesen unnötiger Indexseiten vermeiden, indem zuerst eine Indexsuche ausgeführt wird. Wenn beispielsweise nur 50 Elemente dem Gleichheitsfilter entsprechen, muss die Abfrage-Engine nur `Contains` auf den Indexseiten auswerten, die diese 50 Elemente enthalten. Ein vollständiger Indexscan des gesamten Containers wäre nicht erforderlich.
+
+## <a name="index-utilization-for-scalar-aggregate-functions"></a>Indexnutzung für skalare Aggregatfunktionen
+
+Abfragen mit Aggregatfunktionen müssen ausschließlich auf dem Index basieren, um diesen zu verwenden. 
+
+In einigen Fällen kann der Index falsch positive Ergebnisse zurückgeben. Wenn z. B. `Contains` für den Index ausgewertet wird, kann die Anzahl der Übereinstimmungen im Index die Anzahl der Abfrageergebnisse übersteigen. Die Abfrage-Engine lädt dann alle Indexergebnisse, wertet den Filter für die geladenen Elemente aus und gibt nur die richtigen Ergebnisse zurück.
+
+Bei den meisten Abfragen hat das Laden falsch positiver Indexergebnisse keine spürbaren Auswirkungen auf die Indexauslastung.
+
+Betrachten Sie beispielsweise die folgende Abfrage:
+
+```sql
+SELECT *
+FROM company
+WHERE Contains(company.headquarters.country, "United")
+```
+
+Die Systemfunktion `Contains` gibt möglicherweise einige falsch positive Übereinstimmungen zurück, sodass die Abfrage-Engine überprüfen muss, ob jedes geladene Element dem Filterausdruck entspricht. In diesem Beispiel muss die Abfrage-Engine möglicherweise nur einige zusätzliche Elemente laden, sodass die Auswirkungen auf die Indexauslastung und die RU-Gebühr minimal sind.
+
+Abfragen mit Aggregatfunktionen müssen jedoch ausschließlich auf dem Index basieren, um diesen zu verwenden. Betrachten Sie beispielsweise die folgende Abfrage mit einem `Count`-Aggregat:
+
+```sql
+SELECT COUNT(1)
+FROM company
+WHERE Contains(company.headquarters.country, "United")
+```
+
+Wie im ersten Beispiel gibt die Systemfunktion `Contains` möglicherweise einige falsch positive Übereinstimmungen zurück. Im Gegensatz zur `SELECT *`-Abfrage kann die `Count`-Abfrage jedoch nicht den Filterausdruck für die geladenen Elemente auswerten, um alle Indexergebnisse zu überprüfen. Die `Count`-Abfrage muss ausschließlich auf dem Index basieren. Wenn also die Möglichkeit besteht, dass ein Filterausdruck falsch positive Übereinstimmungen zurückgibt, greift die Abfrage-Engine auf eine vollständige Überprüfung zurück.
+
+Abfragen mit den folgenden Aggregatfunktionen müssen ausschließlich auf dem Index basieren, sodass die Auswertung einiger Systemfunktionen eine vollständige Überprüfung erfordert.
+
+- [Avg](sql-query-aggregate-avg.md)
+- [Count](sql-query-aggregate-count.md)
+- [Max](sql-query-aggregate-max.md)
+- [Min](sql-query-aggregate-min.md)
+- [Sum](sql-query-aggregate-sum.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: rohink
-ms.openlocfilehash: 726cc63ecbd06e2cc4610be65828bd5e897d9fd0
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 3817829b99d64b6874eeb94379a64cbda79430f0
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745197"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164649"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Hosten von Azure Web-Apps mit Lastenausgleich im Zonen-Apex
 
@@ -158,6 +158,6 @@ Weitere Informationen zu Aliaseinträgen finden Sie in den folgenden Artikeln:
 
 - [Tutorial: Konfigurieren eines Aliaseintrags, um auf eine öffentliche Azure-IP-Adresse zu verweisen](tutorial-alias-pip.md)
 - [Tutorial: Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager](tutorial-alias-tm.md)
-- [Häufig gestellte Fragen zu DNS](./dns-faq.yml)
+- [Häufig gestellte Fragen zu DNS](./dns-faq.md#alias-records)
 
 Weitere Informationen zum Migrieren eines aktiven DNS-Namens finden Sie unter [Migrieren eines aktiven DNS-Namens zu Azure App Service](../app-service/manage-custom-dns-migrate-domain.md).

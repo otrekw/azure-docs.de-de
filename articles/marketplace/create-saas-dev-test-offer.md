@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 03/25/2021
-ms.openlocfilehash: 893d38d7dcf2ef0910bc46d3e9bfd168c2a89162
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/20/2021
+ms.openlocfilehash: 318eebcca3053be2164a1fc52905f36f26b11a6d
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543362"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331122"
 ---
 # <a name="create-a-test-offer"></a>Erstellen eines Testangebots
 
@@ -94,10 +94,11 @@ Um die Kosten für das Testen der Preismodelle einschließlich der benutzerdefin
 | ------------ | ------------- |
 | 0,00 € | Legen Sie Gesamttransaktionskosten von 0 (null) fest, die keine finanziellen Auswirkungen haben. Verwenden Sie diesen Preis für Aufrufe von Messungs-APIs oder Testen von Kaufplänen in Ihrem Angebot, während Sie Ihre Lösung entwickeln. |
 | 0,01 - 49,99 USD | Verwenden Sie diesen Preisbereich, um Analysen, Berichte und den Kaufvorgang zu testen. |
-| 50,00 USD und höher | Verwenden Sie diesen Preisbereich, um die Auszahlung zu testen. Weitere Informationen zum Zahlungsplan finden Sie unter [Auszahlungspläne und -prozesse](/partner-center/payout-policy-details). |
+| 50,00 – 100,00 USD | Verwenden Sie diesen Preisbereich, um die Auszahlung zu testen. Weitere Informationen zum Zahlungsplan finden Sie unter [Auszahlungspläne und -prozesse](/partner-center/payout-policy-details). |
 |||
 
-Um zu vermeiden, dass Ihnen bei Ihrem Test eine Store Service-Gebühr in Rechnung gestellt wird, öffnen Sie ein [Support-Ticket](support.md).
+> [!IMPORTANT]
+>  Um zu vermeiden, dass Ihnen bei Ihrem Test eine Store-Dienstgebühr in Rechnung gestellt wird, öffnen Sie innerhalb von sieben Tagen nach dem Testkauf ein [Supportticket](support.md).
 
 #### <a name="free-trial"></a>Kostenlose Testversion
 

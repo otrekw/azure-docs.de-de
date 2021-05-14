@@ -1,18 +1,18 @@
 ---
 title: Kopieren von Daten aus/in SAP Cloud for Customer
 description: Erfahren Sie, wie Sie mithilfe von Data Factory Daten aus SAP Cloud for Customer in unterstützte Senkendatenspeicher (oder) aus unterstützten Quelldatenspeichern in SAP Cloud for Customer kopieren können.
-ms.author: jingwang
 author: linda33wj
+ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: b86559422b6efeed666a3ae35022563a66d9c7e6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3981bdae4912dd8f7c4d6018f9fffed2eb91e133
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597316"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788245"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopieren von Daten aus SAP Cloud for Customer (C4C) mithilfe von Azure Data Factory
 
@@ -36,7 +36,7 @@ Dieser Connector ermöglicht insbesondere, dass Azure Data Factory Daten aus/in 
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den SAP Cloud for Customer-Connector verwendet werden.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 86e79302716fa502d8562dd563b0a5c5fb220a67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01289345ee6bebc0ab1a4608eb83cb8a2827e924
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547549"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "108745359"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrieren von Network Attached Storage (NAS) zu einer Hybrid Cloud-Bereitstellung mit der Azure-Dateisynchronisierung
 
@@ -54,7 +54,7 @@ Wie im [Artikel mit der Migrationsübersicht](storage-files-migration-overview.m
 * Erstellen Sie einen Server mit Windows Server 2019 (oder mindestens 2012 R2) als virtuellen Computer oder physischen Server. Ein Windows Server-Failovercluster wird ebenfalls unterstützt.
 * Stellen Sie direkt angeschlossenen Speicher (DAS, im Gegensatz zum nicht unterstützten NAS) bereit, oder fügen Sie ihn hinzu.
 
-    Die von Ihnen bereitgestellte Speichermenge kann kleiner sein als diejenige, die Sie zurzeit auf Ihrer NAS-Appliance verwenden. Diese Konfigurationsoption erfordert, dass Sie auch das Feature [Cloudtiering](storage-sync-cloud-tiering-overview.md) der Azure-Dateisynchronisierung nutzen.
+    Die von Ihnen bereitgestellte Speichermenge kann kleiner sein als diejenige, die Sie zurzeit auf Ihrer NAS-Appliance verwenden. Diese Konfigurationsoption erfordert, dass Sie auch das Feature [Cloudtiering](../file-sync/file-sync-cloud-tiering-overview.md) der Azure-Dateisynchronisierung nutzen.
     Wenn Sie jedoch Ihre Dateien aus dem größeren NAS-Bereich in einer späteren Phase auf das kleinere Windows Server-Volume kopieren, müssen Sie in Batches arbeiten:
 
     1. Verschieben Sie einen Satz von Dateien, die auf den Datenträger passen.
@@ -65,7 +65,7 @@ Wie im [Artikel mit der Migrationsübersicht](storage-files-migration-overview.m
 
 Die Ressourcenkonfiguration (Compute und RAM) der von Ihnen bereitgestellten Windows Server-Instanz hängt größtenteils von der Anzahl der Elemente (Dateien und Ordner) ab, die synchronisiert werden sollen. Wenn Sie Bedenken haben, empfiehlt es sich, eine leistungsstärkere Konfiguration zu verwenden.
 
-[Hier erfahren Sie, wie Sie die Größe eines Windows-Servers basierend auf der Anzahl der zu synchronisierenden Elemente (Dateien und Ordner) anpassen.](storage-sync-files-planning.md#recommended-system-resources)
+[Hier erfahren Sie, wie Sie die Größe eines Windows-Servers basierend auf der Anzahl der zu synchronisierenden Elemente (Dateien und Ordner) anpassen.](../file-sync/file-sync-planning.md#recommended-system-resources)
 
 > [!NOTE]
 > Der zuvor verknüpfte Artikel enthält eine Tabelle mit einem Bereich für den Serverarbeitsspeicher (RAM). Sie können sich an der geringeren Zahl für Ihren Server orientieren, müssen jedoch davon ausgehen, dass die anfängliche Synchronisierung wesentlich mehr Zeit in Anspruch nehmen kann.
@@ -114,14 +114,14 @@ Erstellen Sie die erste lokale Kopie in Ihrem Windows Server-Zielordner:
 
 Mit dem folgenden RoboCopy-Befehl werden Dateien aus Ihrem NAS-Speicher in den Windows Server-Zielordner kopiert. Der Windows-Server synchronisiert diesen Ordner mit den Azure-Dateifreigaben. 
 
-Wenn Sie auf Ihrer Windows Server-Instanz weniger Speicher bereitgestellt haben, als ihre Daten auf der NAS-Appliance verwenden, haben Sie Cloudtiering konfiguriert. Wenn das lokale Windows Server-Volume voll ist, beginnt das [Cloudtiering](storage-sync-cloud-tiering-overview.md) von Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopieren von der NAS-Appliance fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
+Wenn Sie auf Ihrer Windows Server-Instanz weniger Speicher bereitgestellt haben, als ihre Daten auf der NAS-Appliance verwenden, haben Sie Cloudtiering konfiguriert. Wenn das lokale Windows Server-Volume voll ist, beginnt das [Cloudtiering](../file-sync/file-sync-cloud-tiering-overview.md) von Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopieren von der NAS-Appliance fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
 Es ist möglich, dass RoboCopy Dateien schneller verschiebt, als Sie lokal mit der Cloud und der Ebene synchronisieren können. Dann wird der lokale Speicherplatz auf dem Datenträger knapp. RoboCopy schlägt fehl. Es wird empfohlen, dass Sie die Freigaben in einer Sequenz durcharbeiten, die dies verhindert. Beispielsweise können Sie RoboCopy-Aufträge versetzt anstatt gleichzeitig für alle Freigaben starten oder nur Freigaben verschieben, die auf den aktuellen Umfang des freien Speicherplatzes auf dem Windows-Server zugeschnitten sind, um nur einige Möglichkeiten zu nennen.
 
 [!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-8-user-cut-over"></a>Phase 8: Benutzerübernahme
 
-Wenn Sie den RoboCopy-Befehl zum ersten Mal ausführen, greifen Ihre Benutzer und Anwendungen weiterhin auf Dateien auf dem NAS zu und ändern sie möglicherweise. Es kann vorkommen, dass RoboCopy ein Verzeichnis verarbeitet und mit dem nächsten fortfährt und dann ein Benutzer am Quellspeicherort (NAS) eine Datei hinzufügt, ändert oder löscht. Diese wird dann während dieser aktuellen RoboCopy-Ausführung nicht verarbeitet. Dies ist das erwartete Verhalten.
+Wenn Sie den RoboCopy-Befehl zum ersten Mal ausführen, greifen Ihre Benutzer und Anwendungen weiterhin auf Dateien auf dem NAS zu und ändern sie möglicherweise. Es kann vorkommen, dass Robocopy ein Verzeichnis verarbeitet und mit dem nächsten fortfährt und dann ein Benutzer am Quellspeicherort (NAS) eine Datei hinzufügt, ändert oder löscht. Diese wird dann während dieser aktuellen Robocopy-Ausführung nicht verarbeitet. Dies ist das erwartete Verhalten.
 
 Der erste Schritt besteht darin, den Großteil der Daten auf Ihren Windows-Server und dann über die Azure-Dateisynchronisierung in die Cloud zu verschieben. Der erste Kopiervorgang kann einige Zeit in Anspruch nehmen, die von folgenden Faktoren abhängig ist:
 
@@ -138,10 +138,10 @@ Wiederholen Sie diesen Vorgang, bis Sie der Auffassung sind, dass die bis zum Ab
 
 Wenn die Ausfallzeit für Sie akzeptabel ist, müssen Sie den Benutzerzugriff auf Ihre NAS-basierten Freigaben aufheben. Dazu können Sie jeden beliebigen Schritt ausführen, mit dem Benutzer daran gehindert werden, die Datei- und Ordnerstruktur sowie den Inhalt zu ändern. Ein Beispiel hierfür: Ihr DFS-Namespace verweist auf einen nicht vorhandenen Speicherort, oder Sie ändern die Stamm-ACLs auf der Freigabe.
 
-Führen Sie einen letzten RoboCopy-Durchgang aus. Dadurch werden alle Änderungen übernommen, die möglicherweise ausgelassen wurden.
-Wie lange dieser letzte Schritt dauert, hängt von der Geschwindigkeit des RoboCopy-Scans ab. Sie können die Zeit (gleich der Ausfallzeit) schätzen, indem Sie messen, wie lange die vorherige Ausführung gedauert hat.
+Führen Sie einen letzten Robocopy-Durchgang aus. Dadurch werden alle Änderungen übernommen, die möglicherweise ausgelassen wurden.
+Wie lange dieser letzte Schritt dauert, hängt von der Geschwindigkeit des Robocopy-Scans ab. Sie können die Zeit (gleich der Ausfallzeit) schätzen, indem Sie messen, wie lange die vorherige Ausführung gedauert hat.
 
-Erstellen Sie eine Freigabe für den Windows Server-Ordner, und passen Sie Ihre DFS-N-Bereitstellung ggf. so an, dass sie auf diese zeigt. Stellen Sie sicher, dass Sie die gleichen Berechtigungen auf Freigabeebene wie auf Ihrer NAS-SMB-Freigabe festlegen. Wenn Sie einen NAS hatten, der in eine Domäne eingebunden war, stimmen die Benutzer-SIDs automatisch überein, da die Benutzer in Active Directory vorhanden sind und RoboCopy Dateien und Metadaten in voller Genauigkeit kopiert. Wenn Sie lokale Benutzer in Ihrem NAS verwendet haben, müssen Sie diese Benutzer als lokale Windows Server-Benutzer erstellen und die vorhandenen SIDs, die RoboCopy auf Ihre Windows Server-Instanz verschoben hat, den SIDs der neuen lokalen Benutzer von Windows Server zuordnen.
+Erstellen Sie eine Freigabe für den Windows Server-Ordner, und passen Sie Ihre DFS-N-Bereitstellung ggf. so an, dass sie auf diese zeigt. Stellen Sie sicher, dass Sie die gleichen Berechtigungen auf Freigabeebene wie auf Ihrer NAS-SMB-Freigabe festlegen. Wenn Sie einen NAS hatten, der in eine Domäne eingebunden war, stimmen die Benutzer-SIDs automatisch überein, da die Benutzer in Active Directory vorhanden sind und Robocopy Dateien und Metadaten in voller Genauigkeit kopiert. Wenn Sie lokale Benutzer in Ihrem NAS verwendet haben, müssen Sie diese Benutzer als lokale Windows Server-Benutzer erstellen und die vorhandenen SIDs, die Robocopy auf Ihre Windows Server-Instanz verschoben hat, den SIDs der neuen lokalen Benutzer von Windows Server zuordnen.
 
 Sie haben die Migration einer Freigabe/Gruppe von Freigaben zu einem gemeinsamen Stamm oder Volume abgeschlossen. (Abhängig von der Zuordnung in Phase 1)
 
@@ -166,6 +166,6 @@ Unter dem Link im folgenden Abschnitt finden Sie Informationen zur Problembehand
 
 Machen Sie sich weiter mit Azure-Dateifreigaben und der Azure-Dateisynchronisierung vertraut. In den folgenden Artikeln werden erweiterte Optionen, bewährte Methoden und auch Ansätze zur Problembehandlung erläutert. Diese Artikel sind mit der entsprechenden [Dokumentation zur Azure-Dateifreigabe](storage-files-introduction.md) verlinkt.
 
-* [AFS-Übersicht](./storage-sync-files-planning.md)
-* [AFS-Bereitstellungshandbuch](./storage-how-to-create-file-share.md)
-* [AFS-Problembehandlung](storage-sync-files-troubleshoot.md)
+* [Azure-Dateisynchronisierung – Übersicht](../file-sync/file-sync-planning.md)
+* [Bereitstellen der Azure-Dateisynchronisierung](../file-sync/file-sync-deployment-guide.md)
+* [Azure-Dateisynchronisierung – Troubleshooting](../file-sync/file-sync-troubleshoot.md)

@@ -3,12 +3,12 @@ title: Speicheraspekte für Azure Functions
 description: Erfahren Sie über die Speicheranforderungen von Azure Functions und über das Verschlüsseln gespeicherter Daten.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 5faa85a4fac9fc0b8639f33c475283f4f043c627
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8c7f5ef6e1e9c354806994e5116e40523d660e9e
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779253"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627706"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Speicheraspekte für Azure Functions
 

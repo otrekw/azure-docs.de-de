@@ -3,12 +3,12 @@ title: Definieren mehrerer Instanzen einer Eigenschaft
 description: Erfahren Sie, wie Sie den copy-Vorgang in einer Azure Resource Manager-Vorlage (ARM) verwenden, um sie beim Erstellen einer Eigenschaft für eine Ressource mehrmals zu durchlaufen.
 ms.topic: conceptual
 ms.date: 04/01/2021
-ms.openlocfilehash: 94bc153a49f80694ab9b2d5b04fdf57e8a12e8c8
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 3f6eeac8b32e0fb34b973e82557cc48bab532ffd
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385750"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736932"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Eigenschafteniteration in ARM-Vorlagen
 
@@ -49,7 +49,7 @@ Mit Schleifen können mehrere Eigenschaften deklariert werden durch:
   ```bicep
   <property-name>: [for <item> in <collection>: {
     <properties>
-  }
+  }]
   ```
 
 - Durchlaufen der Elemente eines Arrays
@@ -57,7 +57,7 @@ Mit Schleifen können mehrere Eigenschaften deklariert werden durch:
   ```bicep
   <property-name>: [for (<item>, <index>) in <collection>: {
     <properties>
-  }
+  }]
   ```
 
 - Verwenden des Schleifenindexes
@@ -65,7 +65,7 @@ Mit Schleifen können mehrere Eigenschaften deklariert werden durch:
   ```bicep
   <property-name>: [for <index> in range(<start>, <stop>): {
     <properties>
-  }
+  }]
   ```
 
 ---
@@ -372,7 +372,7 @@ Das folgende Beispiel zeigt ein gängiges Szenario für die Erstellung mehrerer 
 
 |Vorlage  |BESCHREIBUNG  |
 |---------|---------|
-|[VM-Bereitstellung mit einer variablen Anzahl von Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Stellt mehrere Datenträger mit einem virtuellen Computer bereit. |
+|[VM-Bereitstellung mit einer variablen Anzahl von Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-windows-copy-datadisks) |Stellt mehrere Datenträger mit einem virtuellen Computer bereit. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

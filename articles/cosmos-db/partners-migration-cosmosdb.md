@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 66f26cfa14d51a985e2bb420bec294f7ef3a6cd1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4b2bb3659d68ec5c4a4ed7d21f39542d1329452b
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048147"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331590"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL-Migration und Anwendungsentwicklungspartner
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +34,7 @@ Von der NoSQL-Migration bis hin zur Anwendungsentwicklung können Sie aus einer 
 | [Lambda3 Informatics](https://www.lambda3.com.br/) | Echtzeitpersonalisierung, Einzelhandel (Bestand), App-Entwicklung | Brasilien|
 |[Neal Analytics](https://www.nealanalytics.com/)    |     Personalisierung, Einzelhandel (Bestand), operative Analyse (Spark), App-Entwicklung  |    USA     |  
 |[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL-Migration      |   USA      |
-| [Ricoh Digital Services](https://www.ricoh.com/) | IoT, Echtzeitpersonalisierung, Einzelhandel (Bestand), NoSQL-Migration | UK  |
+| [Ricoh Digital Experience](https://www.ricoh-europe.com/contact-us) | IoT, Echtzeitpersonalisierung, Einzelhandel (Bestand), NoSQL-Migration | Vereinigtes Königreich, Europa  |
 |[SNP Technologies](https://www.snp.com/) | NoSQL-Migration| USA |
 | [Solidsoft Reply](https://www.reply.com/solidsoft-reply/) | NoSQL-Migration | Kroatien, Schweden, Dänemark, Irland, Bulgarien, Slowenien, Zypern, Malta, Litauen, Tschechien, Island, Schweiz und Liechtenstein|
 | [Spanish Point Technologies](https://www.spanishpoint.ie/) | NoSQL-Migration| Irland|

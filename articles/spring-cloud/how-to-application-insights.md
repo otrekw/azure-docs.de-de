@@ -7,16 +7,16 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c7083cb6669d7bc779a8e69babfef38988819f8c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 457b21a0d84202cc712d5b1b719f5239de0e3391
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483772"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324669"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Java-In-Process-Agent für Application Insights in Azure Spring Cloud (Vorschau)
 
-In diesem Dokument wird erläutert, wie Sie Apps und Microservices mit dem Java-Agent für Application Insights in Azure Spring Cloud überwachen. 
+In diesem Artikel wird erklärt, wie Sie Apps und Microservices mithilfe des Application Insights Java-Agenten in Azure Spring Cloud überwachen können. 
 
 Mit diesem Feature können Sie die folgenden Aktionen ausführen:
 
@@ -88,6 +88,7 @@ Klicken Sie im linken Navigationsbereich auf **Application Insights**, um zur Se
   [ ![IPA 9](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 
 ## <a name="arm-template"></a>ARM-Vorlage
+
 Kopieren Sie den folgenden Inhalt in `azuredeploy.json`, um die Azure Resource Manager-Vorlage zu verwenden.
 
 ```json
@@ -121,6 +122,7 @@ Kopieren Sie den folgenden Inhalt in `azuredeploy.json`, um die Azure Resource M
 ```
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
+
 Wenden Sie die ARM-Vorlage mit einem der folgenden CLI-Befehle an:
 
 * Für eine vorhandene Azure Spring Cloud-Instanz:
@@ -140,7 +142,29 @@ az spring-cloud app-insights update --disable â€“name "assignedName" â€�
 
 ```
 
+## <a name="java-agent-updateupgrade"></a>Update/Upgrade des Java-Agents
+
+Für den Java-Agent wird regelmäßig ein Update/Upgrade mit dem JDK durchgeführt, das sich auf die folgenden Szenarien auswirken kann.
+
+> [!Note]
+> Ein Update/Upgrade der JDK-Version erfolgt vierteljährlich.
+
+* Vorhandene Anwendungen, die den Java-Agent vor dem Update/Upgrade verwenden, sind davon nicht betroffen.
+* Anwendungen, die nach dem Update/Upgrade erstellt werden, nutzen die neue Version des Java-Agents.
+* Vorhandene Anwendungen, die den Java-Agent zuvor nicht verwendet haben, erfordern einen Neustart oder eine erneute Bereitstellung, um die neue Version des Java-Agents zu nutzen.
+
+## <a name="java-agent-configuration-hot-loading"></a>Hot-Loading der Java-Agent-Konfiguration
+
+Azure Spring Cloud ermöglicht einen Hot-Loading-Mechanismus, um die Einstellungen der Agent-Konfiguration ohne Neustart von Anwendungen anzupassen.
+
+> [!Note]
+> Der Hot-Loading-Mechanismus hat eine Verzögerung von Minuten.
+
+* Wenn der Java-Agent zuvor aktiviert wurde, erfordern Änderungen an der Application Insights-Instanz und/oder SamplingRate KEINEN Neustart von Anwendungen.
+* Wenn Sie den Java-Agent aktivieren, müssen Sie Anwendungen neu starten.
+* Wenn Sie den Java-Agent deaktivieren, beenden die Anwendungen das Senden aller Überwachungsdaten nach einer Verzögerung von Minuten. Sie können Anwendungen neu starten, um den Agent aus der Java-Laufzeitumgebung zu entfernen.
+
 ## <a name="see-also"></a>Weitere Informationen
-* [Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](spring-cloud-howto-distributed-tracing.md)
+* [Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](./how-to-distributed-tracing.md)
 * [Analysieren von Protokollen und Metriken](diagnostic-services.md)
-* [Streamen von Protokollen in Echtzeit](spring-cloud-howto-log-streaming.md)
+* [Streamen von Protokollen in Echtzeit](./how-to-log-streaming.md)
