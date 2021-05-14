@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9024bc9fbd460f403db2da8a65af1e9bd2e771b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4551050cd8606c577edbbdfd85debc06ac12020c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645615"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206491"
 ---
 # <a name="introduction-to-active-directory-service-accounts"></a>Einführung in Active Directory-Dienstkonten
 
-Ein Dienst verfügt über eine primäre Sicherheitsidentität, mit der die Zugriffsrechte für lokale und Netzwerkressourcen bestimmt werden. Der Sicherheitskontext für einen Microsoft Win32-Dienst wird durch das Dienstkonto vorgegeben, das zum Starten des Diensts verwendet wird. Ein Dienstkonto wird für folgende Zwecke verwendet:
+Ein Dienst verfügt über eine primäre Sicherheitsidentität, mit der die Zugriffsrechte für lokale und Netzwerkressourcen bestimmt werden. Der Sicherheitskontext für einen Microsoft Win32-Dienst wird durch das Dienstkonto bestimmt, das zum Starten des Diensts verwendet wird. Ein Dienstkonto wird für Folgendes verwendet:
 * Identifizieren und Authentifizieren eines Diensts
 * Erfolgreiches Starten eines Diensts
 * Zugreifen auf oder Ausführen von Code oder Anwendungen
@@ -30,57 +30,55 @@ Ein Dienst verfügt über eine primäre Sicherheitsidentität, mit der die Zugri
 
 ## <a name="types-of-on-premises-service-accounts"></a>Typen von lokalen Dienstkonten
 
-Basierend auf Ihrem Anwendungsfall können Sie ein verwaltetes Dienstkonto (Managed Service Account, MSA), ein Computerkonto oder ein Benutzerkonto verwenden, um einen Dienst auszuführen. Dienste müssen getestet werden, um zu prüfen, ob ein verwaltetes Dienstkonto verwendet werden kann. Wenn dies möglich ist, sollten Sie es verwenden.
+Je nach Anwendungsfall können Sie ein verwaltetes Dienstkonto (Managed Service Account, MSA), ein Computerkonto oder ein Benutzerkonto verwenden, um einen Dienst auszuführen. Ein Dienst muss zuerst getestet werden, um zu ermitteln, ob er für die Verwendung eines verwalteten Dienstkontos geeignet ist. Falls ja, sollten Sie ein MSA verwenden.
 
-### <a name="group-msa-accounts"></a>MSA-Gruppenkonten
+### <a name="group-managed-service-accounts"></a>Über Gruppen verwaltete Dienstkonten
 
-Verwenden Sie nach Möglichkeit [gruppenverwaltete Dienstkonten](service-accounts-group-managed.md) (gMSAs) für Dienste, die in der lokalen Umgebung ausgeführt werden. gMSAs bieten eine Einzelidentitätslösung für einen Dienst, der in einer Serverfarm oder hinter einem Lastenausgleich im Netzwerk ausgeführt wird. Sie können auch für einen Dienst verwendet werden, der auf einem einzelnen Server ausgeführt wird. [Für gMSAs gelten bestimmte Anforderungen, die erfüllt sein müssen.](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+Verwenden Sie für Dienste, die in Ihrer lokalen Umgebung ausgeführt werden, nach Möglichkeit [gruppenverwaltete Dienstkonten](service-accounts-group-managed.md) (group managed service accounts, gMSAs). gMSAs bieten eine Einzelidentitätslösung für Dienste, die in einer Serverfarm oder hinter einem Netzwerklastenausgleich ausgeführt wird. gMSAs eignen sich auch für Dienste, die auf einem einzelnen Server ausgeführt werden. Weitere Informationen zu den Anforderungen für gMSAs finden Sie unter [Erste Schritte mit gruppenverwalteten Dienstkonten](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts).
 
-### <a name="standalone-msa-accounts"></a>Eigenständige MSA-Konten
+### <a name="standalone-managed-service-accounts"></a>Eigenständige verwaltete Dienstkonten
 
-Wenn die Verwendung eines gMSA nicht möglich ist, verwenden Sie ein [eigenständiges verwaltetes Dienstkonto](service-accounts-standalone-managed.md) (sMSA). Für sMSAs ist mindestens Windows Server 2008 R2 erforderlich. Im Unterschied zu gMSAs werden sMSAs nur auf einem Server ausgeführt. Sie können für mehrere Dienste auf diesem Server verwendet werden.
+Sollten Sie kein gMSA verwenden können, verwenden Sie ein [eigenständiges verwaltetes Dienstkonto](service-accounts-standalone-managed.md) (standalone managed service account, sMSA). Für sMSAs ist mindestens Windows Server 2008 R2 erforderlich. Im Gegensatz zu gMSAs werden sMSAs nur auf einem einzelnen Server ausgeführt. Sie können für mehrere Dienste auf diesem Server verwendet werden.
 
-### <a name="computer-account"></a>Computerkonto
+### <a name="computer-accounts"></a>Computerkonten
 
-Wenn die Verwendung eines MSA-Kontos nicht möglich ist, prüfen Sie die Verwendung eines [Computerkontos](service-accounts-computer.md). Das LocalSystem-Konto ist ein vordefiniertes lokales Konto, das umfangreiche Berechtigungen für den lokalen Computer umfasst und als Computeridentität im Netzwerk fungiert.   
-‎Unter LocalSystem-Konten ausgeführte Dienste greifen auf Netzwerkressourcen über die Anmeldeinformationen des Computerkontos im Format „<Domänenname>\<computer_name>“ zu.
+Sollten Sie kein MSA verwenden können, empfiehlt sich ggf. die Verwendung eines [Computerkontos](service-accounts-computer.md). Das LocalSystem-Konto ist ein vordefiniertes lokales Konto, das umfangreiche Berechtigungen für den lokalen Computer umfasst und als Computeridentität im Netzwerk fungiert.
 
-Als Name für das LocalSystem-Konto ist „NT-AUTORITÄT\SYSTEM“ vordefiniert. Das Konto kann verwendet werden, um einen Dienst zu starten und Sicherheitskontext für diesen Dienst bereitzustellen.
+Unter LocalSystem-Konten ausgeführte Dienste greifen auf Netzwerkressourcen über die Anmeldeinformationen des Computerkontos im Format „<Domänenname>\\<Computername>“ zu. Der vordefinierte Name lautet „NT AUTHORITY\SYSTEM“. Er kann verwendet werden, um einen Dienst zu starten und einen Sicherheitskontext für diesen Dienst bereitzustellen.
 
 > [!NOTE]
-> Bei Verwendung eines Computerkontos kann nicht festgestellt werden, welcher Dienst auf dem Computer dieses Konto verwendet. Daher kann nicht überwacht werden, welcher Dienst Änderungen vornimmt. 
+> Bei Verwendung eines Computerkontos können Sie nicht ermitteln, von welchem Dienst auf dem Computer das Konto verwendet wird. Somit können Sie nicht überprüfen, von welchem Dienst Änderungen vorgenommen werden. 
 
-### <a name="user-account"></a>Benutzerkonto
+### <a name="user-accounts"></a>Benutzerkonten
 
-Wenn die Verwendung eines MSA-Kontos nicht möglich ist, prüfen Sie die Verwendung eines [Benutzerkontos](service-accounts-user-on-premises.md). Ein Benutzerkonto kann ein Domänenbenutzerkonto oder ein lokales Benutzerkonto sein.
+Sollten Sie kein MSA verwenden können, empfiehlt sich ggf. die Verwendung eines [Benutzerkontos](service-accounts-user-on-premises.md). Ein Benutzerkonto kann ein *Domänenbenutzerkonto* oder ein *lokales Benutzerkonto* sein.
 
-Bei einem Domänenbenutzerkonto können mit dem Dienst die Dienstsicherheitsfunktionen von Windows und Microsoft Active Directory Domain Services in vollem Umfang genutzt werden. Der Dienst verfügt über den lokalen Zugriff und den Netzwerkzugriff, die dem Konto gewährt wurden. Außerdem verfügt er über die Berechtigungen aller Gruppen, denen das Konto angehört. Domänendienstkonten unterstützen die gegenseitige Kerberos-Authentifizierung.
+Bei einem Domänenbenutzerkonto können mit dem Dienst die Dienstsicherheitsfunktionen von Windows und Microsoft Active Directory Domain Services in vollem Umfang genutzt werden. Der Dienst verfügt über lokale und netzwerkbezogene Berechtigungen, die dem Konto gewährt wurden. Außerdem verfügt er über die Berechtigungen aller Gruppen, denen das Konto angehört. Domänendienstkonten unterstützen die gegenseitige Kerberos-Authentifizierung.
 
-Ein lokales Benutzerkonto (Namensformat: „.\Benutzername“) ist nur in der SAM-Datenbank des Hostcomputers vorhanden. In Active Directory Domain Services ist kein zugehöriges Benutzerobjekt vorhanden. Ein lokales Konto kann nicht in der Domäne authentifiziert werden. Ein Dienst, der im Sicherheitskontext eines lokalen Benutzerkontos ausgeführt wird, hat daher keinen Zugriff auf Netzwerkressourcen (außer als anonymer Benutzer). Dienste, die im lokalen Benutzerkontext ausgeführt werden, können die gegenseitige Kerberos-Authentifizierung nicht unterstützen, bei der der Dienst von den zugehörigen Clients authentifiziert wird. Aus diesen Gründen eignen sich lokale Benutzerkonten normalerweise nicht für verzeichnisfähige Dienste.
+Ein lokales Benutzerkonto (Namensformat: *.\<Benutzername>* ) ist nur in der Datenbank des Sicherheitskonto-Managers des Hostcomputers vorhanden. Es verfügt über kein Benutzerobjekt in Active Directory Domain Services. Ein lokales Konto kann nicht in der Domäne authentifiziert werden. Ein Dienst, der im Sicherheitskontext eines lokalen Benutzerkontos ausgeführt wird, hat daher keinen Zugriff auf Netzwerkressourcen (außer als anonymer Benutzer). Im lokalen Benutzerkontext ausgeführte Dienste können die gegenseitige Kerberos-Authentifizierung nicht unterstützen, bei der der Dienst durch die zugehörigen Clients authentifiziert wird. Aus diesen Gründen eignen sich lokale Benutzerkonten üblicherweise nicht für verzeichnisfähige Dienste.
 
 > [!IMPORTANT]
-> Dienstkonten sollten nicht Mitglied einer privilegierten Gruppe sein, da die Mitgliedschaft in einer privilegierten Gruppe Berechtigungen beinhaltet, die ein Sicherheitsrisiko darstellen können. Jeder Dienst muss über ein eigenes Dienstkonto für die Überwachung und Sicherheit verfügen.
+> Dienstkonten sollten keiner privilegierten Gruppe angehören, da die Mitgliedschaft in einer privilegierten Gruppe Berechtigungen beinhaltet, die ein Sicherheitsrisiko darstellen können. Jeder Dienst muss über ein eigenes Dienstkonto für die Überwachung und Sicherheit verfügen.
 
 ## <a name="choose-the-right-type-of-service-account"></a>Auswählen des geeigneten Dienstkontotyps
 
 
-| Kriterien| gMSA| sMSA| Computerkonto| Benutzerkonto |
+| Kriterium| gMSA| sMSA| Computerkonto| Benutzerkonto |
 | - | - | - | - | - |
-| Ausführen der Anwendung auf einem einzelnen Server| Ja| Ja. Nach Möglichkeit Verwendung eines gMSA| Ja. Nach Möglichkeit Verwendung eines MSA| Ja. Nach Möglichkeit Verwendung eines MSA |
-| Ausführen der Anwendung auf mehreren Servern| Ja| Nein| Nein. Das Konto ist an den Server gebunden.| Ja. Nach Möglichkeit Verwendung eines MSA |
-| Ausführen der Anwendung hinter Load Balancern| Ja| Nein| Nein| Ja. Nur verwenden, wenn kein gMSA möglich ist |
-| Ausführen der Anwendung unter Windows Server 2008 R2| Nein| Ja| Ja. Nach Möglichkeit Verwendung eines MSA| Ja. Nach Möglichkeit Verwendung eines MSA |
-| Ausführung unter Windows Server 2012| Ja| Ja. Nach Möglichkeit Verwendung eines gMSA| Ja. Nach Möglichkeit Verwendung eines MSA| Ja. Nach Möglichkeit Verwendung eines MSA |
-| Anforderung der Beschränkung des Dienstkontos auf einen einzelnen Server| Nein| Ja| Ja. Nach Möglichkeit Verwendung eines sMSA| Nein. |
+| Ausführen der Anwendung auf einem einzelnen Server| Ja| Ja. Verwenden Sie nach Möglichkeit ein gMSA.| Ja. Verwenden Sie nach Möglichkeit ein MSA.| Ja. Verwenden Sie nach Möglichkeit ein MSA. |
+| Ausführen der Anwendung auf mehreren Servern| Ja| Nein| Nein. Das Konto ist an den Server gebunden.| Ja. Verwenden Sie nach Möglichkeit ein MSA. |
+| Ausführen der Anwendung hinter einem Lastenausgleich| Ja| Nein| Nein| Ja. Verwenden Sie diese Option nur, wenn Sie kein gMSA verwenden können. |
+| Ausführen der Anwendung unter Windows Server 2008 R2| Nein| Ja| Ja. Verwenden Sie nach Möglichkeit ein MSA.| Ja. Verwenden Sie nach Möglichkeit ein MSA. |
+| Ausführen der App unter Windows Server 2012| Ja| Ja. Verwenden Sie nach Möglichkeit ein gMSA.| Ja. Verwenden Sie nach Möglichkeit ein MSA.| Ja. Verwenden Sie nach Möglichkeit ein MSA. |
+| Anforderung der Beschränkung des Dienstkontos auf einen einzelnen Server| Nein| Ja| Ja. Verwenden Sie nach Möglichkeit ein sMSA.| Nein |
+| | |
 
-
- 
 
 ### <a name="use-server-logs-and-powershell-to-investigate"></a>Verwenden von Serverprotokollen und PowerShell für Untersuchungen
 
 Über Serverprotokolle können Sie ermitteln, auf welchen und auf wie vielen Servern eine Anwendung ausgeführt wird.
 
-Sie können den folgenden PowerShell-Befehl ausführen, um eine Liste der Windows Server-Versionen für alle Server in Ihrem Netzwerk abzurufen. 
+Mit dem folgenden PowerShell-Befehl können Sie eine Liste der Windows Server-Versionen für alle Server in Ihrem Netzwerk abrufen: 
 
 ```PowerShell
 
@@ -98,43 +96,37 @@ Out-GridView
 
 ## <a name="find-on-premises-service-accounts"></a>Suchen lokaler Dienstkonten
 
-Es wird empfohlen, allen als Dienstkonten verwendeten Konten ein Präfix hinzuzufügen, z. B. „svc.“. Diese Namenskonvention vereinfacht das Suchen und Verwalten der Konten. Es empfiehlt sich außerdem die Verwendung eines Beschreibungsattributs für das Dienstkonto und den Besitzer des Dienstkontos. Dabei kann es sich um einen Teamalias oder den Besitzer eines Sicherheitsteams handeln.
+Es empfiehlt sich, alle als Dienstkonten verwendeten Konten mit einem Präfix wie „svc-“ zu versehen. Diese Namenskonvention vereinfacht die Kontosuche und -verwaltung. Des Weiteren empfiehlt sich ggf. die Verwendung eines Beschreibungsattributs für das Dienstkonto und den Besitzer des Dienstkontos. Dabei kann es sich um einen Teamalias oder um den Besitzer eines Sicherheitsteams handeln.
 
-Das Auffinden lokaler Dienstkonten ist der Schlüssel zur Gewährleistung ihrer Sicherheit. Dies kann für Nicht-MSA-Konten schwierig sein. Es wird empfohlen, alle Konten, die Zugriff auf Ihre wichtigen lokalen Ressourcen haben, zu überprüfen und zu bestimmen, welche Computer- oder Benutzerkonten als Dienstkonten fungieren können. Sie können auch die folgenden Methoden anwenden, um die Konten aufzufinden.
+Das Auffinden lokaler Dienstkonten ist der Schlüssel zur Gewährleistung ihrer Sicherheit. Dies kann bei MSA-fremden Konten schwierig sein. Es empfiehlt sich, alle Konten, die Zugriff auf Ihre wichtigen lokalen Ressourcen haben, zu überprüfen sowie zu bestimmen, welche Computer- oder Benutzerkonten als Dienstkonten fungieren können. 
 
-* Die Artikel für die einzelnen Kontotypen enthalten ausführliche Schritte zum Auffinden des jeweiligen Kontotyps. Links zu diesen Artikeln finden Sie im Abschnitt „Nächste Schritte“ in diesem Artikel.
+Informationen zur Dienstkontosuche finden Sie im Abschnitt [Nächste Schritte](#next-steps) im Artikel zu diesem Kontotyp.
 
 ## <a name="document-service-accounts"></a>Dokumentieren von Dienstkonten
 
-Nachdem Sie die Dienstkonten in der lokalen Umgebung gefunden haben, dokumentieren Sie die folgenden Informationen zu den einzelnen Konten. 
+Wenn Sie die Dienstkonten in Ihrer lokalen Umgebung gefunden haben, dokumentieren Sie die folgenden Informationen: 
 
-* Der Besitzer. Die Person, die für die Verwaltung des Kontos verantwortlich ist.
+* **Besitzer:** Die Person, die für die Verwaltung des Kontos verantwortlich ist.
 
-* Der Zweck. Die Anwendung, die das Konto darstellt, oder ein anderer Zweck. 
+* **Zweck:** Die Anwendung, die das Konto darstellt, oder ein anderer Zweck. 
 
-* Berechtigungsbereiche: Welche Berechtigungen hat das Konto, und welche Berechtigungen muss es haben? Welchen Gruppen gehört es gegebenenfalls an?
+* **Berechtigungsbereiche:** Die Berechtigungen, über die es verfügt oder verfügen soll, sowie alle Gruppen, denen es ggf. angehört.
 
-* Risikoprofil: Welches Risiko besteht für Ihr Unternehmen, wenn das Konto kompromittiert wird? Wenn ein hohes Risiko besteht, verwenden Sie ein MSA-Konto.
+* **Risikoprofil:** Welches Risiko besteht für Ihr Unternehmen, wenn dieses Konto kompromittiert wird? Ist das Risiko hoch, verwenden Sie ein MSA.
 
-* Erwartete Lebensdauer und regelmäßiger Nachweis: Wie lange wird das Konto voraussichtlich aktiv sein? Wie oft muss der Besitzer den laufenden Bedarf überprüfen und nachweisen?
+* **Erwartete Lebensdauer und regelmäßiger Nachweis:** Wie lange ist das Konto voraussichtlich aktiv, und wie oft muss der Besitzer das Konto überprüfen und nachweisen, dass es weiterhin benötigt wird?
 
-* Kennwortsicherheit: Betrifft Benutzerkonten und lokale Computerkonten, für die das Kennwort gespeichert wird. Stellen Sie sicher, dass die Kennwörter sicher aufbewahrt werden, und dokumentieren Sie, wer darauf Zugriff hat. Verwenden Sie [Privileged Identity Management](../privileged-identity-management/pim-configure.md) für den Schutz der gespeicherten Kennwörter. 
+* **Kennwortsicherheit:** Betrifft Benutzerkonten und lokale Computerkonten, für die das Kennwort gespeichert wird. Stellen Sie sicher, dass Kennwörter sicher aufbewahrt werden, und dokumentieren Sie, wer Zugriff hat. Verwenden Sie [Privileged Identity Management](../privileged-identity-management/pim-configure.md) für den Schutz der gespeicherten Kennwörter. 
 
   
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie die folgenden Artikel zum Schützen von Dienstkonten:
+Weitere Informationen zum Schutz von Dienstkonten finden Sie in den folgenden Artikeln:
 
-* [Einführung in lokale Dienstkonten](service-accounts-on-premises.md)
-
-* [Schützen von gruppenverwalteten Dienstkonten](service-accounts-group-managed.md)
-
-* [Schützen von eigenständigen verwalteten Dienstkonten](service-accounts-standalone-managed.md)
-
-* [Schützen von Computerkonten](service-accounts-computer.md)
-
-* [Schützen von Benutzerkonten](service-accounts-user-on-premises.md)
-
+* [Schützen von gruppenverwalteten Dienstkonten](service-accounts-group-managed.md)  
+* [Schützen von eigenständigen verwalteten Dienstkonten](service-accounts-standalone-managed.md)  
+* [Schützen von Computerkonten](service-accounts-computer.md)  
+* [Schützen von Benutzerkonten](service-accounts-user-on-premises.md)  
 * [Steuern lokaler Dienstkonten](service-accounts-govern-on-premises.md)
 
