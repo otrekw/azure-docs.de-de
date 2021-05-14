@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 40d61de140cb0b3537c56af37eb18f004a72c148
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: bb331f8829252b69499944e5354c9343e96c78bd
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138893"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684736"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -62,7 +62,7 @@ Die neuesten verfügbaren Sprachen finden Sie im [Konzeptartikel zur Analyse von
 
 Der Standard-Encoder bietet jetzt Unterstützung für 8-Bit-HEVC-Codierung (H.265). HEVC-Inhalte können mithilfe des hev1-Formats über die dynamische Paketerstellung übermittelt und gepackt werden.  
 
-Ein neues Beispiel für eine benutzerdefinierte .NET-Codierung mit HEVC finden Sie im GitHub-Repository [media-services-v3-dotnet](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC).
+Ein neues Beispiel für eine benutzerdefinierte .NET-Codierung mit HEVC finden Sie im GitHub-Repository [media-services-v3-dotnet](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC).
 Neben der benutzerdefinierten Codierung sind nun die folgenden neuen integrierten HEVC-Codierungsvoreinstellungen verfügbar:
 
 - H265ContentAwareEncoding
@@ -98,7 +98,7 @@ Weitere Informationen finden Sie in der offiziellen [Ankündigung zu Azure-Updat
 Neben der neu hinzugefügten Unterstützung für HEVC-Codierung (H.265) sind in Version 2020-05-01 der Codierungs-API jetzt die folgenden Features verfügbar.
 
 - Das Zusammenfügen mehrerer Eingabedateien wird jetzt unterstützt dank der neuen **JobInputClip**-Unterstützung.
-    - Es ist ein Beispiel für .NET verfügbar, in dem gezeigt wird, wie Sie [zwei Objekte zusammenfügen](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets).
+    - Es ist ein Beispiel für .NET verfügbar, in dem gezeigt wird, wie Sie [zwei Objekte zusammenfügen](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets).
 - Die Audiotitelauswahl ermöglicht es Kunden, die eingehenden Audiotitel auszuwählen, zuzuordnen und an die Ausgabe für die Codierung weiterzuleiten.
     - Details zu **AudioTrackDescriptor** und der Auswahl von Titeln finden Sie in der [OpenAPI-Datei für die REST-API](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385).
 - Titelauswahl für Codierung: Dieses Feature ermöglicht Kunden das Auswählen von Titeln aus einer ABR-Quelldatei oder einem Livearchiv mit Titeln mit verschiedenen Bitraten. Dies ist äußerst hilfreich für das Generieren von MP4-Dateien aus den Archivdateien von Liveereignissen.

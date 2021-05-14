@@ -4,14 +4,15 @@ description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokale
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/22/2021
+ms.date: 04/28/2021
+ms.custom: subject-rbac-steps
 ms.author: v-erkel
-ms.openlocfilehash: 47cbb3caa46f62ef6b1d4384c50d161963cce908
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 81d361a82a05bed83156857b2381be0d6d113827
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905556"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209893"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
@@ -83,26 +84,43 @@ Der Besitzer des Speicherkontos muss die Rollen [Speicherkontomitwirkender](../r
 
 Sie können dies im Voraus erledigen oder indem Sie auf einen Link auf der Seite klicken, auf der Sie ein Blobspeicherziel hinzufügen. Beachten Sie, dass es bis zu fünf Minuten dauern kann, bis die Rolleneinstellungen in der Azure-Umgebung weitergegeben werden. Daher sollten Sie nach dem Hinzufügen der Rollen einige Minuten warten, bevor Sie ein Speicherziel erstellen.
 
-Nachfolgend finden Sie die Schritte zum Hinzufügen der Azure-Rollen:
+1. Öffnen Sie **Zugriffssteuerung (IAM)** für Ihr Speicherkonto.
 
-1. Öffnen Sie die Seite **Zugriffssteuerung (IAM)** für das Speicherkonto. (Der Link auf der Seite **Speicherziel hinzufügen** öffnet diese Seite für das ausgewählte Konto automatisch.)
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
 
-1. Klicken Sie auf die **+** oben auf der Seite, und wählen Sie **Rollenzuweisung hinzufügen** aus.
+1. Weisen Sie die folgenden Rollen nacheinander zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Rollen | [Mitwirkender von Speicherkonto](../role-based-access-control/built-in-roles.md#storage-account-contributor) <br/>  [Mitwirkender an Speicherblobdaten](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) |
+    | Zugriff zuweisen zu | HPC Cache-Ressourcenanbieter |
 
-1. Wählen Sie in der Liste die Rolle "Speicherkontomitwirkender" aus.
-
-1. Übernehmen Sie im Feld **Zugriff zuweisen zu** den Standardwert ("Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal").  
-
-1. Suchen Sie im Feld **Auswählen** nach „hpc“.  Diese Zeichenfolge sollte mit einem Dienstprinzipal mit dem Namen "HPC Cache-Ressourcenanbieter" übereinstimmen. Klicken Sie auf diesen Prinzipal, um ihn auszuwählen.
+    ![Seite „Rollenzuweisung hinzufügen“](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
    > [!NOTE]
-   > Wenn eine Suche nach „hpc“ nicht funktioniert, versuchen Sie stattdessen, die Zeichenfolge „storagecache“ zu verwenden. Benutzer, die an Vorschauen (vor der allgemeinen Verfügbarkeit) teilgenommen haben, müssen möglicherweise den älteren Namen für den Dienstprinzipal verwenden.
+   > Wenn Sie den HPC Cache-Ressourcenanbieter nicht finden können, suchen Sie stattdessen nach der Zeichenfolge „storagecache“. Benutzer, die an HPC Cache-Vorschauen (vor der allgemeinen Verfügbarkeit) teilgenommen haben, müssen möglicherweise den älteren Namen für den Dienstprinzipal verwenden.
 
-1. Klicken Sie unten auf die Schaltfläche **Speichern**.
+<!-- 
+Steps to add the Azure roles:
 
-1. Wiederholen Sie diesen Vorgang, um die Rolle "Mitwirkender an Storage-Blobdaten" zuzuweisen.  
+1. Open the **Access control (IAM)** page for the storage account. (The link in the **Add storage target** page automatically opens this page for the selected account.)
 
-![Screenshot des GUI zum Hinzufügen von Rollenzuweisungen](media/hpc-cache-add-role.png)
+1. Click the **+** at the top of the page and choose **Add a role assignment**.
+
+1. Select the role "Storage Account Contributor&quot; from the list.
+
+1. In the **Assign access to** field, leave the default value selected (&quot;Azure AD user, group, or service principal").  
+
+1. In the **Select** field, search for "hpc".  This string should match one service principal, named "HPC Cache Resource Provider". Click that principal to select it.
+
+   > [!NOTE]
+   > If a search for "hpc" doesn't work, try using the string "storagecache" instead. Users who participated in previews (before GA) might need to use the older name for the service principal.
+
+1. Click the **Save** button at the bottom.
+
+1. Repeat this process to assign the role "Storage Blob Data Contributor".  
+
+![screenshot of add role assignment GUI](media/hpc-cache-add-role.png) -->
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

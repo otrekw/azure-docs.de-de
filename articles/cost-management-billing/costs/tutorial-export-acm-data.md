@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 37804be38918713cdfa7aea59763054e444daa7e
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 100f4252768f6a141253d4df03a73da9f4f6b4bc
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015715"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290205"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -40,7 +40,7 @@ Datenexport ist für verschiedene Azure-Kontotypen einschließlich [Enterprise A
 - Mitwirkender – kann eigene geplante Exporte erstellen, ändern oder löschen. Kann den Namen der von anderen Personen erstellten Exporte ändern.
 - Leser – kann Exporte planen, für die er die Berechtigung hat.
 
-Weitere Informationen zu Bereichen, einschließlich des Zugriffs, der zum Konfigurieren von Exporten für Bereiche für Enterprise Agreement und Microsoft-Kundenvereinbarung erforderlich ist, finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
+**Weitere Informationen zu Bereichen, einschließlich des Zugriffs, der zum Konfigurieren von Exporten für Bereiche für Enterprise Agreement und Microsoft-Kundenvereinbarung erforderlich ist, finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md)** .
 
 Für Azure Storage-Konten:
 - Um das konfigurierte Speicherkonto zu ändern, sind unabhängig von den Berechtigungen für den Export Schreibberechtigungen erforderlich.
@@ -55,11 +55,11 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com/) beim
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Zum Erstellen oder Anzeigen eines Datenexports bzw. Planen eines Exports öffnen Sie den gewünschten Bereich im Azure-Portal, und wählen Sie **Kostenanalyse** im Menü aus. Navigieren Sie beispielsweise zu **Abonnements**, und wählen Sie dann ein Abonnement in der Liste und **Kostenanalyse** im Menü aus. Wählen Sie oben auf der Seite „Kostenanalyse“ die Option **Einstellungen** und dann **Exporte** aus.
+Zum Erstellen oder Anzeigen eines Datenexports bzw. Planen eines Exports wählen Sie einen Bereich im Azure-Portal und dann **Kostenanalyse** im Menü aus. Navigieren Sie beispielsweise zu **Abonnements**, und wählen Sie dann ein Abonnement in der Liste und **Kostenanalyse** im Menü aus. Wählen Sie oben auf der Seite „Kostenanalyse“ die Option **Einstellungen** und dann **Exporte** aus.
 
 > [!NOTE]
 > - Neben Abonnements können Sie Exporte für Ressourcengruppen, Verwaltungsgruppen, Abteilungen und Registrierungen erstellen. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
->- Wenn Sie als Partner im Abrechnungskontobereich oder beim Mandanten eines Kunden angemeldet sind, können Sie Daten in ein Azure Storage-Konto exportieren, das mit dem Partnerspeicherkonto verknüpft ist. Sie müssen jedoch über ein aktives Abonnement in Ihrem CSP-Mandanten verfügen.
+> - Wenn Sie als Partner im Abrechnungskontobereich oder beim Mandanten eines Kunden angemeldet sind, können Sie Daten in ein Azure Storage-Konto exportieren, das mit dem Partnerspeicherkonto verknüpft ist. Sie müssen jedoch über ein aktives Abonnement in Ihrem CSP-Mandanten verfügen.
 
 1. Wählen Sie **Hinzufügen** aus, und geben Sie einen Namen für den Export ein.
 1. Wählen Sie eine Option für **Metrik** aus:
@@ -67,9 +67,9 @@ Zum Erstellen oder Anzeigen eines Datenexports bzw. Planen eines Exports öffnen
     - **Amortisierte Kosten (Nutzung und Anschaffungen)** : Wählen Sie diese Option aus, um die amortisierten Kosten für Käufe wie Azure-Reservierungen zu exportieren.
 1. Wählen Sie eine Option für **Exporttyp** aus:
     - **Täglicher Export der Kosten für bisherigen Kalendermonat**: Erstellt täglich eine neue Exportdatei Ihrer Kosten für den bisherigen Kalendermonat. Die aktuellen Daten werden aus vorhergehenden täglichen Exporten aggregiert.
-    - **Weekly export of cost for the last seven days** (Wöchentlicher Export der Kosten für die letzten sieben Tage): Erstellt einen wöchentlichen Export Ihrer Kosten für die letzten sieben Tagen ab dem ausgewählten Startdatum des Exports.
-    - **Monthly export of last month's costs** (Monatlicher Export der Kosten des letzten Monats): Erstellt einen Export mit einem Vergleich der Kosten des letzten Monats und des aktuellen Monats, in dem Sie den Export erstellen. In Zukunft wird gemäß dem Zeitplan am fünften Tag jedes neuen Monats ein Export mit den Kosten des vorangegangenen Monats ausgeführt.
-    - **One-time export** (Einmaliger Export): Ermöglicht es Ihnen, einen Datumsbereich für historische Daten auszuwählen, die Sie in Azure Blob Storage exportieren möchten. Sie können historische Kosten für maximal 90 Tage ab dem ausgewählten Tag exportieren. Dieser Export wird sofort ausgeführt und ist innerhalb von zwei Stunden in Ihrem Speicherkonto verfügbar.
+    - **Wöchentlicher Export der Kosten für die letzten sieben Tage**: Erstellt einen wöchentlichen Export Ihrer Kosten für die letzten sieben Tagen ab dem ausgewählten Startdatum des Exports.
+    - **Monatlicher Export der Kosten des letzten Monats**: Erstellt einen Export mit einem Vergleich der Kosten des letzten Monats und des aktuellen Monats, in dem Sie den Export erstellen. Danach wird gemäß dem Zeitplan am fünften Tag jedes neuen Monats ein Export mit den Kosten des vorangegangenen Monats ausgeführt.
+    - **Einmaliger Export**: Ermöglicht es Ihnen, einen Datumsbereich für historische Daten auszuwählen, die Sie in Azure Blob Storage exportieren möchten. Sie können historische Kosten für maximal 90 Tage ab dem ausgewählten Tag exportieren. Dieser Export wird sofort ausgeführt und ist innerhalb von zwei Stunden in Ihrem Speicherkonto verfügbar.
         Wählen Sie je nach Exporttyp entweder ein Startdatum oder ein Datum für **Von** und **Bis** aus.
 1. Geben Sie das Abonnement für Ihr Azure-Speicherkonto an, und wählen Sie dann eine Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe.
 1. Wählen Sie den Namen des Speicherkontos aus, oder erstellen Sie ein neues Speicherkonto.
@@ -257,6 +257,42 @@ Exporte für Verwaltungsgruppen anderer Abonnementtypen werden nicht unterstütz
 1. Erstellen Sie einen Export im Bereich, um Kostenverwaltungsdaten für die Abonnements in der Verwaltungsgruppe abzurufen.
     :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Beispiel mit der Option zum Erstellen eines neuen Exports mit einem Verwaltungsgruppenbereich":::
 
+### <a name="file-partitioning-for-large-datasets"></a>Dateipartitionierung für große Datasets
+
+Wenn Sie über eine Microsoft-Kundenvereinbarung oder eine Microsoft Partner-Vereinbarung verfügen, können Sie Exporte aktivieren, um Ihre Datei in mehrere kleinere Dateipartitionen aufzuteilen und so die Datenerfassung zu erleichtern. Wenn Sie den Export erstmalig konfigurieren, legen Sie die Einstellung **Dateipartitionierung** auf **Ein** fest. Diese Einstellung ist standardmäßig **Aus**.
+
+:::image type="content" source="./media/tutorial-export-acm-data/file-partition.png" alt-text="Screenshot der Option „Dateipartitionierung“." lightbox="./media/tutorial-export-acm-data/file-partition.png" :::
+
+#### <a name="update-existing-exports-to-use-file-partitioning"></a>Aktualisieren vorhandener Exporte zur Verwendung der Dateipartitionierung
+
+Wenn Sie über vorhandene Exporte verfügen und die Dateipartitionierung einrichten möchten, erstellen Sie einen neuen Export. Die Dateipartitionierung ist nur mit der neuesten Version von Exporte verfügbar. Es können geringfügige Änderungen an einigen Feldern in den erstellten Nutzungsdateien vorkommen.
+
+Wenn Sie die Dateipartitionierung für einen vorhandenen Export aktivieren, kommt es möglicherweise geringfügigen Änderungen an den Feldern in der Dateiausgabe. Alle Änderungen sind auf Updates zurückzuführen, die nach Ihrer erstmaligen Konfiguration an „Exporte“ vorgenommen wurden.
+
+#### <a name="partitioning-output"></a>Partitionierungsausgabe
+
+Wenn die Dateipartitionierung aktiviert ist, erhalten Sie im Export eine Datei für jede Datenpartition sowie eine „_manifest.json“-Datei. Das Manifest enthält eine Zusammenfassung des vollständigen Datasets und Informationen für jede darin enthaltene Dateipartition. Jede Dateipartition verfügt über Header und enthält nur eine Teilmenge des vollständigen Datasets. Um das vollständige Dataset zu verarbeiten, müssen Sie jede Partition des Exports erfassen.
+
+Im Folgenden finden Sie eine Beispieldatei für das „__manifest.json“-Manifest.
+
+```json
+{
+  "manifestVersion": "2021-01-01",
+  "dataFormat": "csv",
+  "blobCount": 1,
+  "byteCount": 160769,
+  "dataRowCount": 136,
+  "blobs": [
+    {
+      "blobName": "blobName.csv",
+      "byteCount": 160769,
+      "dataRowCount": 136,
+      "headerRowCount": 1,
+      "contentMD5": "md5Hash"
+    }
+  ]
+}
+```
 ## <a name="verify-that-data-is-collected"></a>Überprüfen, ob Daten gesammelt wurden
 
 Sie können ganz einfach überprüfen, ob Ihre Cost Management-Daten erfasst werden, und die exportierte CSV-Datei mit dem Azure Storage-Explorer anzeigen.

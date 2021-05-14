@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: a9478948cd5232c863014631acb884cd637a2f7d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 3aa82d36db7e7c31f956bef940a33d2898302dca
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107863993"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755511"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C)
 
@@ -51,7 +51,7 @@ Für diesen Schnellstart verwenden Sie das [Azure IoT-Geräte-SDK für C](iot-hu
 
 Sie können das SDK verwenden, indem Sie die Pakete und Bibliotheken für die folgenden Umgebungen installieren:
 
-* **Linux:** apt-get-Pakete sind für Ubuntu 16.04 und 18.04 mit folgenden CPU-Architekturen verfügbar: amd64, arm64, armhf und i386. Weitere Informationen finden Sie unter [Using apt-get to create a C device client project on Ubuntu](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md) (Verwenden von apt-get zum Erstellen eines C-Geräteclientprojekts unter Ubuntu).
+* **Linux:** apt-get-Pakete sind für Ubuntu 16.04 und 18.04 mit folgenden CPU-Architekturen verfügbar: amd64, arm64, armhf und i386.  Weitere Informationen finden Sie unter [Using apt-get to create a C device client project on Ubuntu](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-linux-development-environment) (Verwenden von apt-get zum Erstellen eines C-Geräteclientprojekts unter Ubuntu).
 
 * **mbed:** Für Entwickler, die Geräteanwendungen auf der mbed-Plattform erstellen, haben wir eine Bibliothek und Beispiele veröffentlicht, mit denen Sie in wenigen Minuten mit Azure IoT Hub beginnen können. Weitere Informationen finden Sie unter [Use the mbed library](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed) (Verwenden der mbed-Bibliothek).
 

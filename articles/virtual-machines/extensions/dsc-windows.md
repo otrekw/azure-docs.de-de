@@ -8,12 +8,12 @@ author: bobbytreed
 ms.author: robreed
 ms.collection: windows
 ms.date: 03/26/2018
-ms.openlocfilehash: 72f66aeee64133a13ce0e49155c4b2a90240a3fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d2591fa3b6d69e403935faeca075a2c747026c1
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559986"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734736"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-Erweiterung
 
@@ -31,11 +31,11 @@ Windows Server 2019, Windows Server 2016, Windows Server 2012R2, Windows Server 
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
-Für die DSC-Erweiterung ist es erforderlich, dass der virtuelle Zielcomputer in der Lage ist, mit Azure zu kommunizieren, und der Speicherort des Konfigurationspakets (ZIP-Datei) außerhalb von Azure liegt. 
+Für die DSC-Erweiterung ist es erforderlich, dass der virtuelle Zielcomputer in der Lage ist, mit Azure zu kommunizieren, und der Speicherort des Konfigurationspakets (ZIP-Datei) außerhalb von Azure liegt.
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen der DSC-Erweiterung in einer Azure Resource Manager-Vorlage. 
+Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen der DSC-Erweiterung in einer Azure Resource Manager-Vorlage.
 
 ```json
 {
@@ -70,7 +70,7 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
             "downloadMappings": {
              "specificDependencyKey": "https://myCustomDependencyLocation"
             }
-        } 
+        }
     },
     "protectedSettings": {
         "configurationArguments": {
@@ -121,12 +121,11 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 | protectedSettings.configurationUrlSasToken | Zeichenfolge | Gibt das SAS-Token für den Zugriff auf durch „configuration.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |
 | protectedSettings.configurationDataUrlSasToken | Zeichenfolge | Gibt das SAS-Token für den Zugriff auf durch „configurationData.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |
 
-
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden.
 Vorlagen sind ideal, wenn Sie virtuelle Computer bereitstellen, die nach der Bereitstellung konfiguriert werden müssen.
-Eine Resource Manager-Beispielvorlage mit der DSC-Erweiterung für Windows finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91).
+Eine Resource Manager-Beispielvorlage mit der DSC-Erweiterung für Windows finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/automation-configuration/automation-configuration/nested/provisionServer.json#L91).
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 

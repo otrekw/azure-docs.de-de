@@ -3,12 +3,12 @@ title: 'Azure Service Bus: Durchsuchen von Nachrichten'
 description: Durch das Durchsuchen und Einsehen von Service Bus-Nachrichten kann ein Azure Service Bus-Client alle Nachrichten in einer Warteschlange oder in einem Abonnement aufzählen.
 ms.topic: article
 ms.date: 03/29/2021
-ms.openlocfilehash: deafe9e6ddeeebf233922aade36823ddaaede864
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 23ec2187ae58b1b4f83addb80573bdb130ff99bd
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520121"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989394"
 ---
 # <a name="message-browsing"></a>Einsehen von Nachrichten
 Das Einsehen von Nachrichten ermöglicht einem Service Bus-Client, alle Nachrichten in einer Warteschlange oder einem Abonnement zu Diagnose- und Debugzwecken aufzuzählen.
@@ -42,14 +42,15 @@ Bei wiederholtem Aufruf listet der Peek-Vorgang alle Nachrichten in der Wartesch
 Sie können auch „SequenceNumber“ an einen Peek-Vorgang übergeben. Sie wird verwendet, um zu bestimmen, wo Sie mit dem Peek-Vorgang beginnen sollen. Sie können nachfolgende Aufrufe des Peek-Vorgangs vornehmen, ohne den Parameter anzugeben, der weiter enumeriert.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Probieren Sie die Beispiele in der Sprache Ihrer Wahl aus, um die Funktion zum Peek-Vorgang oder Durchsuchen von Nachrichten zu untersuchen:
+Sehen Sie sich die Beispiele in der Sprache Ihrer Wahl an, um Azure Service Bus-Features zu untersuchen. 
 
-- [Azure Service Bus-Clientbibliotheksbeispiele für Java](/samples/azure/azure-sdk-for-java/servicebus-samples/) - **Einsehen eines Nachrichtenbeispiels**
-- [Azure Service Bus-Clientbibliotheksbeispiele für Python](/samples/azure/azure-sdk-for-python/servicebus-samples/) - **Beispiel: „receive_peek.py“**
-- [Azure Service Bus-Clientbibliotheksbeispiele für JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/) - **browseMessages.js**-Beispiel
+- [Azure Service Bus Clientbibliotheksbeispiele für .NET (neueste Version)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/): siehe Beispiel **Abwickeln von Nachrichten**.
+- [Azure Service Bus-Clientbibliotheksbeispiele für Java (neueste Version)](/samples/azure/azure-sdk-for-java/servicebus-samples/): siehe Beispiel  - **Einsehen einer Nachricht**
+- [Azure Service Bus-Clientbibliotheksbeispiele für Python](/samples/azure/azure-sdk-for-python/servicebus-samples/)  - **Beispiel: „receive_peek.py“**
+- [Azure Service Bus-Clientbibliotheksbeispiele für JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/)  - **browseMessages.js**-Beispiel
 - [Azure Service Bus-Clientbibliotheksbeispiele für TypeScript](/samples/azure/azure-sdk-for-js/service-bus-typescript/) - **browseMessages.js**-Beispiel
-- [Azure.Messaging.ServiceBus-Beispiele für .NET:](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) - Siehe „Einsehen von Methoden zu Empfängerklassen“ in der [Referenzdokumentation](/dotnet/api/azure.messaging.servicebus).
 
 Hier finden Sie Beispiele für die älteren .NET- und Java-Clientbibliotheken:
-- [Microsoft.Azure.ServiceBus-Beispiele für .NET](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/) - **Beispiel für das Durchsuchen von Nachrichten (Peek)** 
-- [azure-servicebus-Beispiele für Java](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse) - **Durchsuchen von Nachrichten**-Beispiel. 
+- [Azure Service Bus-Clientbibliotheksbeispiele für .NET (Vorgängerversion)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)Beispiel für das  - **Durchsuchen von Nachrichten (Peek)**
+- [Azure Service Bus-Clientbibliothekbeispiele für Java (Vorgängerversion)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus): siehe Beispiel für das  - **Durchsuchen von Nachrichten**. 
+

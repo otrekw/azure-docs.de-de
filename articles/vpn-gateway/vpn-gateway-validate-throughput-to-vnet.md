@@ -1,6 +1,6 @@
 ---
-title: Überprüfen des VPN-Durchsatzes zu einer Microsoft Azure Virtual Network-Instanz
-description: Dieser Artikel unterstützt Sie bei der Überprüfung des Netzwerkdurchsatzes von lokalen Ressourcen zu einem virtuellen Azure-Computer.
+title: Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
+description: Hier erfahren Sie, wie Sie den Netzwerkdurchsatz von lokalen Ressourcen zu einem virtuellen Azure-Computer überprüfen.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 2d5b51e8cfbfcb5f771e9da524231f8ddfc40a9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a50328629f6236893fd7832ea1f96acc8e75112
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660932"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289442"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
 

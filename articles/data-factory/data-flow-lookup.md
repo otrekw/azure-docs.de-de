@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/19/2021
-ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 129b8460d22de6f03a136dcb30b8f686738a9bdd
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739367"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734196"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Suchtransformation in einem Zuordnungsdatenfluss
 
@@ -98,8 +98,8 @@ SQLProducts, DimProd lookup(ProductID == ProductKey,
     asc(ProductKey, true),
     broadcast: 'auto')~> LookupKeys
 ```
-## 
-Nächste Schritte
+
+## <a name="next-steps"></a>Nächste Schritte
 
 * Für die [Join](data-flow-join.md)- und [Exists](data-flow-exists.md)-Transformation können mehrere Datenströme als Eingabe verwendet werden.
 * Verwenden Sie eine [Transformation für bedingtes Teilen](data-flow-conditional-split.md) mit ```isMatch()```, um Zeilen nach übereinstimmenden und nicht übereinstimmenden Werten aufzuteilen.

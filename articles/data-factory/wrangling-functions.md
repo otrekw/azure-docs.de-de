@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: f7a4041d87e00fa01ae5ae4dff0cade3b9755d31
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 5985db37e6b88dc39ce1ac166c4aaf9ba368240d
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600935"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737701"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Transformationsfunktionen in Power Query für Data Wrangling
 
@@ -63,8 +63,8 @@ Spalten lassen sich mit den folgenden M-Funktionen hinzufügen oder transformier
 * Zeilenfilter als logische Spalte
 * number-, text-, logical-, date- und datetime-Konstanten
 
-<a name="mergingjoining-tables"></a>Zusammenführen und Verknüpfen von Tabellen
-----------------------
+## <a name="mergingjoining-tables"></a>Zusammenführen und Verknüpfen von Tabellen
+
 * Power Query generiert eine geschachtelte Verknüpfung (Table.NestedJoin; Benutzer können auch manuell [Table.AddJoinColumn](/powerquery-m/table-addjoincolumn) schreiben).
     Benutzer müssen dann die geschachtelte Verknüpfungsspalte in eine nicht geschachtelten Verknüpfung erweitern (Table.ExpandTableColumn, wird in keinem anderen Kontext unterstützt).
 * Die M-Funktion [Table.Join](/powerquery-m/table-join) kann direkt geschrieben werden, um einen zusätzlichen Erweiterungsschritt zu vermeiden, der Benutzer muss jedoch sicherstellen, dass in den verknüpften Tabellen keine doppelten Spaltennamen vorhanden sind.

@@ -1,17 +1,17 @@
 ---
 title: XML-Format in Azure Data Factory
 description: In diesem Thema wird der Umgang mit dem XML-Format in Azure Data Factory beschrieben.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/29/2021
-ms.author: jingwang
-ms.openlocfilehash: 4a7e56040a58d87cab34fdba4ebbac77757b2226
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.author: jianleishen
+ms.openlocfilehash: 97e08238f6057eea82bc5cb3e6d96b67ac12e344
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289564"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486501"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>XML-Format in Azure Data Factory
 

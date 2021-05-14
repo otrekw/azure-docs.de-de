@@ -14,19 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2021
 ms.author: bagol
-ms.openlocfilehash: b0bffbba34e7816b62325db7999a7f5c6398b881
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 12a6ae76b1eb4dced661b811d8f6e9030f74b4f1
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124507"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795724"
 ---
 # <a name="integrate-azure-data-explorer-for-long-term-log-retention"></a>Integrieren von Azure Data Explorer für die langfristige Protokollaufbewahrung
-
-<!--Info not included:>
-
-Script - can't xref out to a private github repo from docs
--->
 
 In Azure Sentinel erfasste Protokolle werden standardmäßig in Azure Monitor Log Analytics gespeichert. In diesem Artikel wird erläutert, wie Sie die Aufbewahrungskosten in Azure Sentinel senken, indem Sie sie zur Langzeitaufbewahrung an Azure Data Explorer senden.
 
@@ -44,7 +39,7 @@ Azure Sentinel bietet vollständige SIEM- und SOAR-Funktionen, schnelle Bereitst
 
 Wenn Sie auf bestimmte Tabellen nur noch gelegentlich zugreifen müssen, z. B. für regelmäßige Untersuchungen oder Überwachungen, ist die Aufbewahrung der Daten in Azure Sentinel nicht mehr kostengünstig. Es wird dann empfohlen, die Daten in Azure Data Explorer zu speichern. Dies kostet weniger, ermöglicht aber dennoch die gleichen KQL-Abfragen, die Sie auch in Azure Sentinel ausführen.
 
-Sie können mithilfe des [Azure Data Explorer-Proxyfeatures für Log Analytics](//azure/azure-monitor/logs/azure-monitor-data-explorer-proxy) direkt aus Azure Sentinel auf die Daten in Azure Data Explorer zugreifen. Dazu verwenden Sie clusterübergreifende Abfragen in Ihrer Protokollsuche oder in Arbeitsmappen.
+Sie können mithilfe des [Azure Data Explorer-Proxyfeatures für Log Analytics](/azure/azure-monitor/logs/azure-monitor-data-explorer-proxy) direkt aus Azure Sentinel auf die Daten in Azure Data Explorer zugreifen. Dazu verwenden Sie clusterübergreifende Abfragen in Ihrer Protokollsuche oder in Arbeitsmappen.
 
 > [!IMPORTANT]
 > Einige wichtige SIEM-Funktionen wie Analyseregeln, UEBA und das Untersuchungsdiagramm unterstützen in Azure Data Explorer gespeicherten Daten nicht.

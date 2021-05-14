@@ -7,12 +7,12 @@ ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
 ms.date: 04/16/2021
-ms.openlocfilehash: 0da7da3748f9c1dc088d0cee615b429927a40f92
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 387ff5ef13892c11867e26cff63ec482c1cdc5ee
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890688"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795526"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>Azure Resource Manager-Vorlagen für Azure Front Door
 
@@ -32,7 +32,6 @@ Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für Azur
 |**App Service-Ursprünge**| **Beschreibung** |
 | [App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | Erstellt eine App Service-App mit einem öffentlichen Endpunkt und ein Front Door-Profil.  |
 | [App Service mit Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | Erstellt eine App Service-App mit einem privaten Endpunkt und ein Front Door-Profil.  |
-| [App Service-Umgebung mit Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-environment-internal-private-link) | Erstellt eine App Service-Umgebung, eine App mit einem privaten Endpunkt und ein Front Door-Profil.  |
 |**Azure Functions-Ursprünge**| **Beschreibung** |
 | [Azure-Funktionen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-function-public/) | Erstellt eine App Functions-App mit einem öffentlichen Endpunkt und ein Front Door-Profil.  |
 | [Azure Functions mit Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-function-private-link) | Erstellt eine App Functions-App mit einem privaten Endpunkt und ein Front Door-Profil.  |

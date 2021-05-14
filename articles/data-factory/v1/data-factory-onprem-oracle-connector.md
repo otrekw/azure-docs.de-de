@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 02fc142a08176aa577250417c0e394218e832f34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a590082acee1a3382ef51ce2361eb2c9b5fb2636
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387341"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741543"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
 
@@ -30,11 +30,11 @@ Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory ve
 
 Sie können Daten *aus Oracle-Datenbank* in die folgenden Datenspeicher kopieren:
 
-[!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sink](includes/data-factory-supported-sinks.md)]
 
 Sie können Daten aus den folgenden Datenspeichern *in Oracle-Datenbank* kopieren:
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -94,7 +94,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 
 In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verknüpften Oracle-Dienst spezifisch sind:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Die Eigenschaft **type** muss auf **OnPremisesOracle** festgelegt sein. |Ja |
 | driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus einer bzw. in eine Oracle-Datenbank verwendet wird. Zulässige Werte sind **Microsoft** und **ODP** (Standardwert). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein |
@@ -145,7 +145,7 @@ Die Abschnitte einer JSON-Datasetdatei (z.B. „structure“, „availability“
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset vom Typ **OracleTable** weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Der Name der Tabelle in der Oracle-Datenbank, auf die der verknüpfte Dienst verweist. |Nein (wenn **oracleReaderQuery** oder **OracleSource** angegeben ist) |
 

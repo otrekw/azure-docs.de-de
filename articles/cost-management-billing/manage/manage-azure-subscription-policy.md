@@ -8,17 +8,14 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.reviewer: banders
 ms.author: andalmia
-ms.openlocfilehash: 105e090655021ed4046f8880ef9816d7f7ff559f
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 4d0ebd73065c538a78c950ab48254cb06d113897
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105631737"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804518"
 ---
 # <a name="manage-azure-subscription-policies"></a>Verwalten von Azure-Abonnementrichtlinien
-
->[!NOTE]
->Dieses Feature befindet sich derzeit in der Vorschauphase und wird nach und nach eingeführt. Es ist daher möglicherweise noch nicht für alle im Azure-Portal sichtbar.
 
 Dieser Artikel hilft Ihnen beim Konfigurieren von Azure-Abonnementrichtlinien für Abonnementvorgänge, um das Verschieben von Azure-Abonnements aus Verzeichnissen und in Verzeichnisse zu steuern.
 
