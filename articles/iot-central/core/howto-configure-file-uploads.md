@@ -7,16 +7,14 @@ ms.author: dobett
 ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: ed2eff4d6ccbb9f85dfaf7049fa3cc18711bae0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cca508e213d132f96a131f1b0029c13e1b67c47
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97796904"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760785"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>Hochladen von Dateien von Geräten in die Cloud
-
-*Dieses Thema richtet sich an Administratoren und Geräteentwickler.*
 
 Mit IoT Central können Sie Medien und andere Dateien von verbundenen Geräten in den Cloudspeicher hochladen. Sie konfigurieren die Dateiuploadfunktion in Ihrer IoT Central Anwendung und implementieren dann Dateiuploads in Ihrem Gerätecode.
 

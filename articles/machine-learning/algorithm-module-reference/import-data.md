@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/13/2020
-ms.openlocfilehash: 69d27c102ca059974da87224e44f0ad7aa103fff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b55cafcb45cd2004702dc0f10ddf6c7b2d7f0c47
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94592633"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317773"
 ---
 # <a name="import-data-module"></a>Modul „Import Data“ (Daten importieren)
 
@@ -98,6 +98,10 @@ Nach dem Importieren der Daten können einige zusätzliche Vorbereitungen zur Mo
 - Verwenden Sie [Select Columns in Dataset](./select-columns-in-dataset.md) (Spalten im Dataset auswählen), um eine Teilmenge von Spalten auszuwählen, die während der Modellierung transformiert oder verwendet werden sollen. Über das Modul [Add Columns](./add-columns.md) (Spalten hinzufügen) lassen sich die transformierten oder entfernten Spalten ganz einfach wieder mit dem ursprünglichen Dataset verknüpfen.  
 
 - Verwenden Sie [Partition and Sample](./partition-and-sample.md) (Partitionieren und Stichprobe entnehmen), um das Dataset zu unterteilen, ein Sampling durchzuführen oder um Top-N-Zeilen abzurufen.
+
+## <a name="limitations"></a>Einschränkungen
+
+Enthält Ihre Rückschlusspipeline das Modul **Import Data** (Daten importieren), wird es aufgrund der Datenspeicher-Zugriffsbeschränkung automatisch entfernt, wenn es auf einem Echtzeitendpunkt bereitgestellt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,17 +1,17 @@
 ---
 title: Kopieren von Daten aus MySQL mithilfe von Azure Data Factory
 description: Erfahren Sie mehr über den MySQL-Connector in Azure Data Factory, mit dem Sie Daten von einer MySQL-Datenbank in einem als Senke unterstützten Datenspeicher kopieren können.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.author: jingwang
-ms.openlocfilehash: b6a2253a4a124fe5e3725863c799f91714e66cab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 628e30fe3e835becee78666fec2ec18d643c0bc6
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375254"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484521"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopieren von Daten aus MySQL mithilfe von Azure Data Factory
 
@@ -38,13 +38,13 @@ Dieser MySQL-Connector unterstützt insbesondere MySQL **Version 5.6, 5.7 und 8.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 Die Integration Runtime bietet ab Version 3.7 einen integrierten MySQL-Treiber. Daher müssen keine Treiber manuell installiert werden.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den MySQL-Connector verwendet werden:
 

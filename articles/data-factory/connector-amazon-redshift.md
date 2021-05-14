@@ -1,17 +1,17 @@
 ---
 title: Kopieren von Daten aus Amazon Redshift
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Data Factory Daten aus Amazon Redshift in unterstützte Senkendatenspeicher kopieren.
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 9441885766dad97dfc237ab81a59710245bf13ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1dd0144395d1eed533300808d8d872742f0d710
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100364255"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482235"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Redshift mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -43,7 +43,7 @@ Insbesondere unterstützt dieser Amazon Redshift-Connector das Abrufen von Daten
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten verwendet werden, die für den Amazon Redshift-Connector spezifisch sind.
 

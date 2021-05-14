@@ -1,18 +1,18 @@
 ---
 title: Kopieren von Daten aus MongoDB mithilfe von Legacy
 description: Erfahren Sie, wie Daten aus MongoDB mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline (Legacy) in unterstützte Senkendatenspeicher kopiert werden.
-author: linda33wj
-ms.author: jingwang
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: e13a1a5a939d314bdf4500c0827fa13201505016
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4882949abd21e782d98dff8de2ba7be1b66ecdfb
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368845"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482181"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Kopieren von Daten aus MongoDB mithilfe von Azure Data Factory (Legacy)
 
@@ -37,13 +37,13 @@ Der MongoDB-Connector unterstützt insbesondere Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 Integration Runtime bietet einen integrierten MongoDB-Treiber. Daher müssen beim Kopieren von Daten aus MongoDB keine Treiber manuell installiert werden.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den MongoDB-Connector verwendet werden:
 

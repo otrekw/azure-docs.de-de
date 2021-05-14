@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 708d84bdb3ebe8fbba6939aa771a9120868d5d1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0634f75f000689f409ee81279e7d52f680ab98d8
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375203"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209227"
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -199,8 +199,8 @@ Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
 ### <a name="configure-proxy-server-settings"></a>Konfigurieren von Proxyservereinstellungen
 Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswählen, verwendet das Gateway die Proxyeinstellungen in „diahost.exe.config“ und „diawp.exe.config“. Wenn in „diahost.exe.config“ und „diawp.exe.config“ kein Proxy angegeben ist, stellt das Gateway die Verbindung mit den Clouddiensten nicht über einen Proxy, sondern direkt her. Das folgende Verfahren enthält Anweisungen für die Aktualisierung der Datei „diahost.exe.config“.
 
-1. Erstellen Sie im Datei-Explorer eine sichere Kopie von *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared\\diahost.exe.config*, um die Originaldatei zu sichern.
-2. Starten Sie „Notepad.exe“ als Administrator, und öffnen Sie die Textdatei *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared\\diahost.exe.config*. Sie finden das Standardtag für „system.net“, wie im folgenden Code gezeigt:
+1. Erstellen Sie im Datei-Explorer eine sichere Kopie von *C:\\Programme\\Microsoft Integration Runtime\\5.0\\Shared\\diahost.exe.config*, um die Originaldatei zu sichern.
+2. Starten Sie „Notepad.exe“ als Administrator, und öffnen Sie die Textdatei *C:\\Programme\\Microsoft Integration Runtime\\5.0\\Shared\\diahost.exe.config*. Sie finden das Standardtag für „system.net“, wie im folgenden Code gezeigt:
 
     ```
     <system.net>
@@ -276,7 +276,7 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 
 [Für Gateways mit einem Knoten]
 1. Starten Sie Windows PowerShell auf dem Gatewaycomputer.
-2. Wechseln Sie zum Ordner *C:\\\\Programme\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* .
+2. Wechseln Sie zum Ordner *C:\\\\Programme\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\* .
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.
 
     ```powershell
@@ -289,7 +289,7 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
     ```
    [Für hochverfügbare und skalierbare Gateways mit mehreren Knoten](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Starten Sie Windows PowerShell auf dem Gatewaycomputer.
-2. Wechseln Sie zum Ordner *C:\\\\Programme\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* .
+2. Wechseln Sie zum Ordner *C:\\\\Programme\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\* .
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.
 
     Für ein Gateway mit Hochverfügbarkeit ist ein zusätzlicher AuthKey-Parameter erforderlich.
@@ -306,14 +306,14 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 Nach der Installation des Gateways können Sie den Datenverwaltungsgateway-Konfigurations-Manager auf eine der folgenden Arten starten:
 
 1. Geben Sie im Fenster **Suchen** den Begriff **Datenverwaltungsgateway** ein, um auf dieses Hilfsprogramm zuzugreifen.
-2. Führen Sie die ausführbare Datei *ConfigManager.exe* im folgenden Ordner aus: *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared*.
+2. Führen Sie die ausführbare Datei *ConfigManager.exe* im Ordner *C:\\Programme\\Microsoft Integration Runtime\\5.0\\Shared\\* aus.
 
 ### <a name="home-page"></a>Startseite
 Auf der Startseite können Sie die folgenden Aktionen ausführen:
 
 * Anzeigen des Gatewaystatus (mit Clouddienst verbunden oder Ähnliches)
 * **Registrieren** mithilfe eines Schlüssels aus dem Portal
-* **Beenden** und Starten des **Datenverwaltungsgateway-Hostdiensts** auf dem Gatewaycomputer
+* **Beenden** und Starten des **Integration Runtime-Diensts** auf dem Gatewaycomputer
 * **Planen von Updates** zu einem bestimmten Zeitpunkt an den Tagen
 * Anzeigen des Datums, zu dem das Gateway **zuletzt aktualisiert** wurde
 
@@ -326,7 +326,7 @@ Auf der Seite „Einstellungen“ können Sie die folgenden Aktionen ausführen:
 * Anzeigen des **SSL-Zertifikats** wird für die TLS/SSL-Kommunikation zwischen Portal und Gateway zum Festlegen von Anmeldeinformationen für Datenquellen verwendet.
 
 ### <a name="remote-access-from-intranet"></a>Remotezugriff über das Intranet
-Diese Funktion wird erst später aktiviert. Im Rahmen der nächsten Updates (v3.4 oder höher) wird eine Funktion zum Aktivieren/Deaktivieren von Remoteverbindungen bereitgestellt, die derzeit über Port 8050 (siehe Abschnitt weiter oben) hergestellt werden. Zum Verschlüsseln der Anmeldeinformationen können Sie PowerShell oder die Anwendung für die Anmeldeinformationsverwaltung verwenden.
+Sie können Remoteverbindungen aktivieren/deaktivieren, die derzeit über Port 8050 (siehe Abschnitt weiter oben) hergestellt werden. Zum Verschlüsseln der Anmeldeinformationen können Sie PowerShell oder die Anwendung für die Anmeldeinformationsverwaltung verwenden.
 
 ### <a name="diagnostics-page"></a>Seite „Diagnose“
 Auf der Seite „Diagnose“ können Sie die folgenden Aktionen ausführen:
@@ -507,7 +507,7 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Wechseln Sie in Azure PowerShell zum Ordner: *C:\\\\Programme\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* . Führen Sie *RegisterGateway.ps1* mit der lokalen Variable **$Key** aus, wie im folgenden Befehl gezeigt. Dieses Skript registriert den auf dem Computer installierten Client-Agent bei dem logischen Gateway, das Sie zuvor erstellt haben.
+1. Wechseln Sie in Azure PowerShell zum Ordner *C:\\\\Programme\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\* . Führen Sie *RegisterGateway.ps1* mit der lokalen Variable **$Key** aus, wie im folgenden Befehl gezeigt. Dieses Skript registriert den auf dem Computer installierten Client-Agent bei dem logischen Gateway, das Sie zuvor erstellt haben.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

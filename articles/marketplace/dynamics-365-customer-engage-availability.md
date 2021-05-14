@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/20/2021
-ms.openlocfilehash: 3936492d7e7c00ed9dad0d4cac5a2d7f7626b2c5
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: b79c4e2763715102688214708fec4481fdfe3a00
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820144"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314857"
 ---
 # <a name="configure-dynamics-365-for-customer-engagement--power-apps-offer-availability"></a>Konfigurieren der Verfügbarkeit eines Angebots für Dynamics 365 for Customer Engagement und PowerApps
 
@@ -35,8 +35,11 @@ Bevor Sie Ihr Angebot im Marketplace für die breite Öffentlichkeit live schalt
 
 Wenn Sie anschließend bereit sind, Ihr Angebot verfügbar zu machen und die Vorschaueinschränkung zu entfernen, müssen Sie den **Hide-Schlüssel** entfernen und das Angebot erneut veröffentlichen.
 
-Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte im linken Navigationsmenü (**Technische Konfiguration**) fortfahren.
+Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte im linken Navigationsmenü fortfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Festlegen der technischen Konfiguration des Angebots](dynamics-365-customer-engage-technical-configuration.md)
+Führen Sie eines der folgenden Verfahren aus:
+
+- Wenn Sie die App-Lizenzverwaltung über Microsoft aktivieren möchten, wechseln Sie zu [Erstellen von Plänen für Dynamics 365 for Customer Engagement und Power Apps](dynamics-365-customer-engage-plans.md).
+- Andernfalls wechseln Sie zu [Festlegen der technischen Konfiguration des Angebots](dynamics-365-customer-engage-technical-configuration.md).

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.openlocfilehash: c9e646ad40c669e51f052ac9888cdd7c6883a848
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: cf4f053167c477fd68c8c56f6f03ee15b7877638
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107508940"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738732"
 ---
 # <a name="restartstopstart-an-azure-database-for-mysql---flexible-server-preview"></a>Neu starten/Beenden/Starten einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau)
 
@@ -22,14 +22,14 @@ In diesem Artikel erfahren Sie, wie Sie flexible Server mithilfe der Azure CLI n
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- Installieren oder aktualisieren Sie die Azure CLI auf die neueste Version. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
--  Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az-login) beim Azure-Konto an. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
+- Installieren Sie die Azure CLI, oder upgraden Sie sie auf die neueste Version. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
+-  Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az_login) beim Azure-Konto an. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
 
     ```azurecli-interactive
     az login
     ````
 
-- Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem Sie den Server mit dem Befehl ```az account set``` erstellen möchten.
+- Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem Sie den Server mithilfe des Befehls ```az account set``` erstellen möchten.
 `
     ```azurecli
     az account set --subscription <subscription id>

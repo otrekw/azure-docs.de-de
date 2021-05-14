@@ -3,12 +3,12 @@ title: Bereitstellen des Blaupausenbeispiels „FedRAMP High“
 description: Bereitstellungsschritte für das FedRAMP High-Blaupausenbeispiel, einschließlich Details zum Blaupausenartefakt-Parameter.
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 0ba321bb0048499e12eec55fbc55d67b0a1289f9
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: f05f81121bc27e080f9a4b366278514b231f2ca1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386701"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757437"
 ---
 # <a name="deploy-the-fedramp-high-blueprint-sample"></a>Bereitstellen des FedRAMP High-Blaupausenbeispiels
 
@@ -106,10 +106,10 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs|Richtlinienzuweisung|Log Analytics-Arbeitsbereich für virtuelle Windows-Computer|Wenn der Arbeitsbereich außerhalb des Bereichs der Zuweisung liegt, müssen Sie der Prinzipal-ID der Richtlinienzuweisung Berechtigungen vom Typ „Log Analytics-Mitwirkender“ (oder ähnliche Berechtigungen) erteilen.|
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem zum Hinzufügen zum Bereich|Mit einem leeren Array wird angegeben, dass keine optionalen Parameter verwendet werden: \[\]|
 |Bereitstellen von Advanced Threat Protection für Speicherkonten|Richtlinienzuweisung|Wirkung|Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md).|
-|Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Der Wert für die Aufbewahrungsdauer in Tagen (0 steht für eine unbegrenzte Aufbewahrung).|Aufbewahrung in Tagen (optional, ohne Angabe 180 Tage)|
+|Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Der Wert für die Aufbewahrungsdauer in Tagen (0 steht für eine unbegrenzte Aufbewahrung). |Aufbewahrung in Tagen (optional, ohne Angabe 180 Tage) |
 |Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Name der Ressourcengruppe für das Speicherkonto für SQL Server-Überwachung|Die Überwachung schreibt Datenbankereignisse in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto. (Ein Speicherkonto wird in jeder Region erstellt, in der eine SQL Server-Instanz erstellt wird, die von allen Servern in dieser Region gemeinsam genutzt wird.) Wichtig: Damit die Überwachung ordnungsgemäß funktioniert, dürfen Sie die Ressourcengruppe oder die Speicherkonten weder löschen noch umbenennen.|
 |Bereitstellen von Diagnoseeinstellungen für Netzwerksicherheitsgruppen|Richtlinienzuweisung|Speicherkontopräfix für die Diagnose von Netzwerksicherheitsgruppen|Dieses Präfix wird mit dem Standort der Netzwerksicherheitsgruppe kombiniert, um den Namen für das erstellte Speicherkonto zu bilden.|
-|Bereitstellen von Diagnoseeinstellungen für Netzwerksicherheitsgruppen|Richtlinienzuweisung|Ressourcengruppenname für das Speicherkonto für die Diagnose von Netzwerksicherheitsgruppen (muss vorhanden sein)|Die Ressourcengruppe, in der das Speicherkonto erstellt wird Diese Ressourcengruppe muss bereits vorhanden sein.|
+|Bereitstellen von Diagnoseeinstellungen für Netzwerksicherheitsgruppen|Richtlinienzuweisung|Ressourcengruppenname für das Speicherkonto für die Diagnose von Netzwerksicherheitsgruppen (muss vorhanden sein) |Die Ressourcengruppe, in der das Speicherkonto erstellt wird Diese Ressourcengruppe muss bereits vorhanden sein.|
 |\[Vorschau\]: FedRAMP High-Kontrollen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|Zulässige Standorte für Ressourcen und Ressourcengruppen|Liste mit Azure-Standorten, die von Ihrer Organisation beim Bereitstellen von Ressourcen angegeben werden können. Dieser bereitgestellte Wert wird auch von der Richtlinie „Zulässige Standorte“ innerhalb der Richtlinieninitiative verwendet.|
 |\[Vorschau\]: FedRAMP High-Kontrollen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren|Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md).|
 |\[Vorschau\]: FedRAMP High-Kontrollen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.|Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md).|
@@ -132,7 +132,6 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |\[Vorschau\]: FedRAMP High-Kontrollen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.|Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md).|
 |\[Vorschau\]: FedRAMP High-Kontrollen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|MFA sollte für Konten mit Schreibberechtigungen für Ihr Abonnement aktiviert werden.|Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md).|
 |\[Vorschau\]: FedRAMP High-Kontrollen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|Langfristige georedundante Sicherung muss für Azure SQL-Datenbank aktiviert sein|Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md).|
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

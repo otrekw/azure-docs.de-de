@@ -3,12 +3,12 @@ title: Erkennung doppelter Nachrichten von Azure Service Bus | Microsoft-Dokumen
 description: In diesem Artikel wird erläutert, wie Sie Duplikate in Azure Service Bus-Nachrichten erkennen können. Die doppelte Nachricht kann ignoriert und gelöscht werden.
 ms.topic: article
 ms.date: 04/19/2021
-ms.openlocfilehash: 0b4c90885c9da817e4f78eea883e2d39e65b2480
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 9e1837d0e8859791e3834519af4a9966d2435b60
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989286"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759075"
 ---
 # <a name="duplicate-detection"></a>Duplikaterkennung
 
@@ -21,7 +21,7 @@ Durch die Erkennung von Duplikaten werden diese Situationen aufgelöst, indem de
 > [!NOTE]
 > Der Basic-Tarif von Service Bus unterstützt keine Duplikaterkennung. Die Standard- und Premium-Tarife unterstützen Duplikaterkennung. Informationen zu den Unterschieden zwischen diesen Tarifen finden Sie unter [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
-## <a name="how-it-works"></a>So funktioniert's 
+## <a name="how-it-works"></a>Funktionsweise
 Das Aktivieren der Erkennung von Duplikaten unterstützt das Nachverfolgen der anwendungsgesteuerten *MessageId* aller in einem angegebenen Zeitfenster an eine Warteschlange oder ein Thema gesendeten Nachrichten. Wenn eine neue Nachricht mit einer *MessageId* gesendet wird, die während des Zeitfensters erfasst wurde, wird die Nachricht als akzeptiert gemeldet (der Sendevorgang war erfolgreich). Die neu gesendete Nachricht wird jedoch sofort ignoriert und verworfen. Es werden keine anderen Teile der Nachricht außer der *MessageId* ausgewertet.
 
 Die Anwendungssteuerung der ID ist wichtig, da nur diese es der Anwendung erlaubt, die *MessageId* einem Geschäftsprozesskontext zuzuordnen, aus dem sie bei einem Fehler vorhersagbar rekonstruiert werden kann.

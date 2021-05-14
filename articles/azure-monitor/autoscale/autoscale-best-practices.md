@@ -4,12 +4,12 @@ description: Autoskalierungsmuster in Azure für Web-Apps, VM-Skalierungsgruppen
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 9aaf9525f2fedee67a86011e938b8e995ccfe9fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a49c9812848d9ef8cbe5a4499fb1430ca146855
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100601770"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738426"
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
 Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](../../api-management/api-management-key-concepts.md).
@@ -66,7 +66,7 @@ Wir empfehlen eine angemessene Spanne zwischen den Schwellenwerten für das hori
 * Erhöhe die Anzahl der Instanzen um 1, wenn prozentuale CPU-Auslastung >= 80
 * Verringere die Anzahl der Instanzen um 1, wenn prozentuale CPU-Auslastung <= 60
 
-In diesem Fall  
+In diesem Fall
 
 1. Angenommen, es gibt zu Anfang 2 Instanzen.
 2. Falls die durchschnittliche prozentuale CPU-Auslastung über alle Instanzen 80 erreicht, wird automatisch horizontal hochskaliert und eine dritte Instanz hinzugefügt.
@@ -149,11 +149,10 @@ Die automatische Skalierung schreibt in das Aktivitätsprotokoll, wenn eine der 
 * Die automatische Skalierung erkennt eine Fluktuation und bricht den Skalierungsversuch ab. In dieser Situation wird der Protokolltyp `Flapping` angezeigt. Wenn das der Fall ist, sollten Sie prüfen, ob die Schwellenwerte zu dicht beieinander liegen.
 * Die automatische Skalierung erkennt eine Fluktuation, kann aber immer noch erfolgreich skalieren. In dieser Situation wird der Protokolltyp `FlappingOccurred` angezeigt. Wenn das der Fall ist, hat die Engine für die automatische Skalierung versucht, eine Skalierung durchzuführen (z. B. von vier Instanzen auf zwei), jedoch festgestellt, dass dies zu Fluktuation führt. Stattdessen hat die Engine für die automatische Skalierung auf eine andere Anzahl von Instanzen skaliert (z. B. auf drei Instanzen anstelle von zwei), wodurch keine Fluktuation mehr verursacht wird, sodass die Skalierung auf diese Anzahl von Instanzen erfolgte.
 
-Sie können auch eine Aktivitätsprotokollwarnung zur Überwachung der Integrität der Engine für die automatische Skalierung verwenden. Es folgen Beispiele zum [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller Vorgänge der Engine für die automatische Skalierung in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) oder [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller fehlerhaften Vorgänge zum automatischen Abskalieren und zum automatischen Aufskalieren in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+Sie können auch eine Aktivitätsprotokollwarnung zur Überwachung der Integrität der Engine für die automatische Skalierung verwenden. Es folgen Beispiele zum [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller Vorgänge der Engine für die automatische Skalierung in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert) oder [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller fehlerhaften Vorgänge zum automatischen Abskalieren und zum automatischen Aufskalieren in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert).
 
 Neben der Verwendung von Warnungen zu Aktivitätsprotokollen können Sie auf der Registerkarte „Benachrichtigungen“ in den Einstellungen für die automatische Skalierung auch E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungsvorgänge zum Abskalieren und Aufskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
-
+- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)
+- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungsvorgänge zum Abskalieren und Aufskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert)
