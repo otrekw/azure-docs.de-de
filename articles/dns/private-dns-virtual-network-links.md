@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: b4c18403574f6c4772d0c6c50e3efa42a118f054
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 9e8ed0e21f1a6a98915dd3db1d5b8c2dcc1d6103
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065116"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763287"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Was ist eine virtuelle Netzwerkverknüpfung?
 
@@ -54,4 +54,4 @@ Um zu verstehen, wie viele Registrierungs- und Auflösungsnetzwerke Sie mit priv
 
 * Informieren Sie sich über einige gängige [Szenarien zu privaten Zonen](./private-dns-scenarios.md), die mit privaten Zonen in Azure DNS realisiert werden können.
 
-* Allgemeine Fragen und Antworten zu privaten Zonen in Azure DNS, einschließlich des spezifischen Verhaltens für bestimmte Vorgänge, finden Sie unter [Häufig gestellte Fragen zu privatem Azure DNS](./dns-faq-private.md).
+* Allgemeine Fragen und Antworten zu privaten Zonen in Azure DNS, einschließlich des spezifischen Verhaltens für bestimmte Vorgänge, finden Sie unter [Häufig gestellte Fragen zu privatem Azure DNS](./dns-faq-private.yml).

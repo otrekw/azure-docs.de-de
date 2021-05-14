@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/21/2021
+ms.date: 05/04/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 371f902cafae7fe396a34e04d7fcc432c1934d61
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 51ce7748e868793090be76a9fbe994c631bcb753
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865131"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737230"
 ---
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -41,6 +41,7 @@ ms.locfileid: "107865131"
 |[Azure Monitor muss Aktivitätsprotokolle aus allen Regionen erfassen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |Diese Richtlinie überwacht das Azure Monitor-Protokollprofil darauf, dass keine Aktivitäten aus allen unterstützten Azure-Regionen, einschließlich „Global“, exportiert werden. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
 |[Azure Monitor-Lösung „Sicherheit und Überwachung“ muss bereitgestellt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3e596b57-105f-48a6-be97-03e9243bad6e) |Diese Richtlinie stellt sicher, dass „Sicherheit und Überwachung“ bereitgestellt wird. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Security_Audit_MustBeDeployed.json) |
 |[Azure-Abonnements benötigen ein Protokollprofil für das Aktivitätsprotokoll](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7796937f-307b-4598-941c-67d3a05ebfe7) |Diese Richtlinie stellt sicher, dass ein Protokollprofil für den Export von Aktivitätsprotokollen aktiviert ist. Sie überwacht, ob für den Export der Protokolle entweder in ein Speicherkonto oder in einen Event Hub ein Protokollprofil erstellt wurde. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Logprofile_activityLogs_Audit.json) |
+|[Azure-Aktivitätsprotokolle zum Streaming an einen angegebenen Log Analytics-Arbeitsbereich konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2465583e-4e78-4c15-b6be-a36cbc7c8b0f) |Legt Diagnoseeinstellungen für Azure-Aktivitäten fest, damit Überwachungsprotokolle von Abonnements an einen Log Analytics-Arbeitsbereich gestreamt werden, um Ereignisse auf Abonnementebene zu überwachen. |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DataConnectorsAzureActivity.json) |
 |[Notfallwiederherstellung durch Aktivieren der Replikation für VMs konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac34a73f-9fa5-4067-9247-a3ecae514468) |Virtuelle Computer ohne Notfallwiederherstellungskonfigurationen sind anfällig für Ausfälle und andere Unterbrechungen. Wenn für den virtuellen Computer noch keine Notfallwiederherstellung konfiguriert ist, wird dies durch Aktivieren der Replikation unter Verwendung vordefinierter Konfigurationen initiiert, um die Geschäftskontinuität zu gewährleisten. Weitere Informationen zur Notfallwiederherstellung finden Sie unter [https://aka.ms/asr-doc](https://aka.ms/asr-doc). |DeployIfNotExists, Disabled |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/AzureSiteRecovery-Replication-Policy.json) |
 |[Bereitstellen – Unterdrückungsregeln für Azure Security Center-Warnungen konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F80e94a21-c6cd-4c95-a2c7-beb5704e61c0) |Unterdrücken Sie Azure Security Center-Warnungen, um eine Überlastung durch zu viele Warnungen zu vermeiden, indem Sie Unterdrückungsregeln für Ihre Verwaltungsgruppe oder Ihr Abonnement bereitstellen. |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SuppressionRulesForAlerts_Deploy.json) |
 |[Bereitstellen des Exports für Event Hub für Azure Security Center-Daten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcdfcce10-4578-4ecd-9703-530938e4abcb) |Aktivieren des Exports für Event Hub für Azure Security Center-Daten. Diese Richtlinie stellt einen Export in die Event Hub-Konfiguration mit Ihren Bedingungen und der Event Hub-Zielinstanz für den zugewiesenen Bereich bereit. Um diese Richtlinie für neu erstellte Abonnements bereitzustellen, öffnen Sie die Registerkarte „Konformität“, wählen die entsprechende nicht konforme Zuweisung aus und erstellen eine Wartungsaufgabe. |deployIfNotExists |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ExportToEventHubAzureSecurityCenterAlertsAndRecommendations_Deploy.json) |

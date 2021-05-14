@@ -1,17 +1,17 @@
 ---
 title: Kopieren von Daten aus einer SharePoint Online-Liste mit Azure Data Factory
 description: Erfahren Sie, wie Sie Daten aus einer SharePoint Online-Liste mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopieren.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.author: jingwang
-ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: jianleishen
+ms.openlocfilehash: 44c60305519c2464df56c3b5a9228161548d4bd6
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177860"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482883"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Kopieren von Daten aus einer SharePoint Online-Liste mit Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ Der SharePoint Online-Listenconnector verwendet die Dienstprinzipalauthentifizie
 
 ## <a name="get-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 In den folgenden Abschnitten finden Sie Details zu Eigenschaften, mit denen Sie für den SharePoint Online-Listenconnector spezifische Data Factory-Entitäten definieren können.
 

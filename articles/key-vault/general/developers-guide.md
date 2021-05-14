@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f2c0b82f14fd16ecb9eef163e7a263f4327cfc46
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 08ac1ae09741b63648aec2b51b6a774a46b9af7c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364548"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818438"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -45,7 +45,7 @@ Der Zugriff auf die Verwaltungsschicht wird durch die [rollenbasierte Zugriffsst
 
 Weitere Informationen zu Installationspaketen und Quellcode finden Sie unter [Clientbibliotheken](client-libraries.md).
 
-Weitere Informationen zur Key Vault-Verwaltungsebene finden Sie unter [Key Vault-Verwaltungsebene](./secure-your-key-vault.md#management-plane-and-azure-rbac).
+Weitere Informationen zur Key Vault-Verwaltungsebene finden Sie unter [Azure Key Vault-Sicherheitsfunktionen](security-features.md).
 
 ## <a name="authenticate-to-key-vault-in-code"></a>Authentifizieren bei Key Vault mit Code
 
@@ -105,7 +105,7 @@ Der Zugriff auf Schlüssel, Geheimnisse und Zertifikate wird durch die Dateneben
 
 Weitere Informationen zu Installationspaketen und Quellcode finden Sie unter [Clientbibliotheken](client-libraries.md).
 
-Weitere Informationen zur Sicherheit der Key Vault-Datenebene finden Sie unter [Key Vault-Datenebene und Zugriffsrichtlinien](./secure-your-key-vault.md#data-plane-and-access-policies) sowie unter [Key Vault-Datenebene und Azure RBAC](./secure-your-key-vault.md#data-plane-and-azure-rbac).
+Weitere Informationen zur Sicherheit der Key Vault-Datenebene finden Sie unter [Azure Key Vault-Sicherheitsfunktionen](security-features.md).
 
 ### <a name="code-examples"></a>Codebeispiele
 

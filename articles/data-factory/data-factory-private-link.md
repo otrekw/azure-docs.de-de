@@ -1,18 +1,18 @@
 ---
 title: Azure Private Link für Azure Data Factory
 description: Erfahren Sie etwas über die Funktionsweise von Azure Private Link in Azure Data Factory.
-ms.author: abnarain
-author: nabhishek
+ms.author: lle
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: d572509b3b2b3a0fc69f207d005984ee07ce34a4
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: f84d7d7a02b75723f78cfbed9ee23e19ebea9a15
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076818"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481677"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link für Azure Data Factory
 
@@ -72,7 +72,7 @@ Wenn Sie die Endpunkt-URL der Data Factory außerhalb des VNET mit dem privaten 
 
 Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für die Data Factory „DataFactoryA“ bei Auflösung von außerhalb des VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net | CNAME   | < öffentlicher Endpunkt des Data Factory-Diensts > |
@@ -80,7 +80,7 @@ Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für die Data Fa
 
 Die DNS-Ressourceneinträge für „DataFactoryA“ lauten nach dem Auflösen im VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net   | Ein | < IP-Adresse des privaten Endpunkts > |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ec5133ad12dda4a6883c663007b8b7fec2e81a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 2f179ba02a47617a931906bb2b7575eb2bb3963d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551933"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750607"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
 
@@ -38,6 +38,8 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
+- Azure Event Hubs
+- Azure Service Bus
 - [Azure SQL Database und Azure Synapse Analytics](../../azure-sql/database/conditional-access-configure.md)
 - Dynamics CRM Online
 - Microsoft Application Insights Analytics

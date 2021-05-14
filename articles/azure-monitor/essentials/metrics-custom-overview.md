@@ -5,13 +5,13 @@ author: anirudhcavale
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 01/25/2021
-ms.openlocfilehash: c6e946d5aedb06899a44851b79581dbc518f41b0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/13/2021
+ms.openlocfilehash: e6db49d34c39df2e1863dfa51914e30e9f1e1636
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052312"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897089"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 
@@ -213,6 +213,30 @@ Azure Monitor erzwingt die folgenden Nutzungslimits für benutzerdefinierte Metr
 |Zeichenkettenlänge für metrische Namespaces, metrische Namen, Dimensionsschlüssel und Dimensionswerte|256 Zeichen|
 
 Eine aktive Zeitreihe ist definiert als eine beliebige eindeutige Kombination aus Metrik, Dimensionsschlüssel oder Dimensionswert, deren Metrikwerte in den letzten 12 Stunden veröffentlicht wurden.
+
+Um das Zeitreihenlimit von 50.000 zu verstehen, betrachten Sie die folgende Metrik:
+
+*Serverantwortzeit* mit den Dimensionen: *Region*, *Abteilung*, *Kunden-ID*
+
+Bei dieser Metrik haben Sie 10 Regionen, 20 Abteilungen und 100 Kunden, die Ihnen 10 x 20 x 100 = 2 000 Zeitreihen bieten. 
+
+Wenn Sie über 100 Regionen, 200 Abteilungen und 2000 Kunden verfügen, sind das 100 x 200 x 2 000 = 40.000.000 Zeitreihen, was allein für diese Metrik weit über dem Grenzwert liegt. 
+
+Auch hier gilt dieser Grenzwert nicht für eine einzelne Metrik. Dies ist die Summe aller dieser Metriken in einem Abonnement und einer Region.  
+
+## <a name="design-limitations-and-considerations"></a>Entwurfseinschränkungen und -aspekte
+
+**Verwenden Sie Application Insights nicht zum Zweck der Überwachung:** Die Application Insights-Telemetrie-Pipeline ist für die Minimierung der Auswirkungen auf die Leistung und die Beschränkung des Netzwerkdatenverkehrs für die Überwachung Ihrer Anwendung optimiert. Daher wird eine Drosselung oder Stichprobenentnahme vorgenommen (nimmt nur einen Prozentsatz Ihrer Telemetriedaten an und ignoriert den Rest), wenn das anfängliche Dataset zu groß wird. Aufgrund dieses Verhaltens können Sie sie nicht für Überwachungszwecke verwenden, da einige Datensätze wahrscheinlich gelöscht werden. 
+
+**Metriken mit einer Variablen im Namen**: Verwenden Sie keine Variable als Teil des Metriknamens. Verwenden Sie stattdessen eine Konstante. Jedes Mal, wenn die Variable ihren Wert ändert, generiert Azure Monitor eine neue Metrik und erreicht schnell die Grenzwerte für die Anzahl der Metriken. Wenn Entwickler eine Variable in den Metriknamen einschließen möchten, wollen sie im Allgemeinen mehrere Zeitreihen innerhalb einer Metrik nachverfolgen und sollten Dimensionen anstelle von Variablenmetriknamen verwenden. 
+
+**Metrikdimensionen mit hoher Kardinalität**: Metriken mit zu vielen gültigen Werten in einer Dimension (eine „hohe Kardinalität“) werden viel wahrscheinlicher den Grenzwert von 50.000 überschreiten. Im Allgemeinen sollten Sie niemals einen sich ständig ändernden Wert in einer Dimension verwenden. Beispielsweise sollte der Zeitstempel NIEMALS eine Dimension sein. Server, Kunde oder Produkt-ID können verwendet werden, aber nur, wenn Sie über eine kleinere Anzahl dieser Typen verfügen. Fragen Sie sich als Test, ob Sie solche Daten in einem Diagramm anzeigen würden.  Wenn Sie über 10 oder vielleicht sogar 100 Server verfügen, kann es hilfreich sein, sie für den Vergleich alle in einem Diagramm anzuzeigen. Wenn Sie jedoch 1 000 haben, wäre das resultierende Diagramm wahrscheinlich schwierig, oder es wäre sogar unlesbar. Am besten behalten Sie weniger als 100 gültige Werte bei. Bis zu 300 ist eine Grauzone.  Wenn Sie diese Anzahl übergehen müssen, verwenden Sie Azure Monitor benutzerdefinierte Protokolle.   
+
+Wenn Sie eine Variable im Namen oder eine Dimension mit hoher Kardinalität haben, kann Folgendes auftreten:
+- Metriken werden aufgrund von Drosselung unzuverlässig
+- Metrik-Explorer funktioniert nicht
+- Warnungen und Benachrichtigungen werden unvorhersehbar
+- Die Kosten können unerwartet steigen. Microsoft erhebt keine Gebühren, wenn sich benutzerdefinierte Metriken mit Dimensionen in der öffentlichen Vorschau befinden. Sobald die Gebühren später erhoben werden, entstehen jedoch unerwartete Gebühren. Der Plan ist, die Nutzung von Metriken basierend auf der Anzahl der überwachten Zeitreihen und der Anzahl der erfolgten API-Aufrufe in Rechnung zu stellen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 Verwenden benutzerdefinierter Metriken von verschiedenen Diensten: 

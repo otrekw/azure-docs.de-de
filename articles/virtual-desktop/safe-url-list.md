@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 00ae761af44b9e6537149c96607c0ba00e6439c8
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 183b956c0ec38101f7875fe01dd7c6ef9c8c8c8f
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514982"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891678"
 ---
 # <a name="required-url-list"></a>Erforderliche URL-Liste
 
@@ -29,7 +29,7 @@ Dabei sollten Sie unbedingt folgendes berücksichtigen:
 - Sie können das erforderliche URL-Überprüfungstool nur für Bereitstellungen in kommerziellen Clouds verwenden.
 - Das erforderliche URL-Überprüfungstool kann URLs nicht mit Platzhaltern überprüfen. Stellen Sie daher sicher, dass Sie die Blockierung dieser URLs zuerst entsperren.
 
-### <a name="requirements"></a>Requirements (Anforderungen)
+### <a name="requirements"></a>Anforderungen
 
 Sie benötigen Folgendes, um das erforderliche URL-Überprüfungstool zu verwenden:
 
@@ -95,7 +95,7 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 
 |Adresse|Ausgehender TCP-Port|Zweck|Diensttag|
 |---|---|---|---|
-|*.wvd.microsoft.us|443|Dienstdatenverkehr|WindowsVirtualDesktop|
+|*.wvd.azure.us|443|Dienstdatenverkehr|WindowsVirtualDesktop|
 |gcs.monitoring.core.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
 |monitoring.core.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
 |fairfax.warmpath.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|

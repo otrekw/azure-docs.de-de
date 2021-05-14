@@ -1,17 +1,17 @@
 ---
 title: Kopieren von Daten aus PayPal mithilfe von Azure Data Factory (Vorschau)
 description: Erfahren Sie, wie Daten aus PayPal mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: jingwang
-ms.openlocfilehash: 6753159acbc4a2da20695d61c6e7c31f4ac0a7c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: ab6ab70ff61e86c2939bce12f1d63d2f454a84f2
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381289"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487131"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>Kopieren von Daten aus PayPal mithilfe von Azure Data Factory (Vorschau)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -34,7 +34,7 @@ Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Kon
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den PayPal-Connector verwendet werden.
 

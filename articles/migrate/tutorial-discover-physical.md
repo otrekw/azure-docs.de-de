@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 17740763777372a5eaed6941974c120860839279
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 7ff8a7739c0018d415ad503e888d63d04e641153
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382708"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751201"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln physischer Server mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -129,7 +129,7 @@ Die Einrichtung der Appliance umfasst Folgendes:
 
 1. Wählen Sie unter **Migrationsziele** > **Server** > **Azure Migrate: Ermittlung und Bewertung** die Option **Ermitteln** aus.
 2. Wählen Sie unter **Discover servers (Server ermitteln)**  > **Sind Ihre Server virtualisiert?** die Option **Physische oder andere (AWS, GCP, Xen usw.)** aus.
-3. Geben Sie unter **1: Projektschlüssel generieren** einen Namen für die Azure Migrate-Appliance ein, die Sie für die Ermittlung physischer oder virtueller Server einrichten. Für den Namen können bis zu 14 alphanumerische Zeichen angegeben werden.
+3. Geben Sie unter **1: Generate project key** (Projektschlüssel generieren) einen Namen für die Azure Migrate-Appliance ein, die Sie für die Ermittlung physischer oder virtueller Server einrichten. Für den Namen können bis zu 14 alphanumerische Zeichen angegeben werden.
 1. Klicken Sie auf **Schlüssel generieren**, um mit der Erstellung der erforderlichen Azure-Ressourcen zu beginnen. Schließen Sie die Seite „Discover servers“ (Server ermitteln) nicht, während die Ressourcen erstellt werden.
 1. Nach der erfolgreichen Erstellung der Azure-Ressourcen wird ein **Projektschlüssel** generiert.
 1. Kopieren Sie den Schlüssel, da Sie ihn benötigen, um die Registrierung der Appliance während der Konfiguration abzuschließen.
@@ -166,7 +166,7 @@ Das Installationsskript führt folgende Schritte aus:
 
 - Installation der Agents und einer Webanwendung für die Ermittlung und Bewertung physischer Server.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
 - Erstellung der folgenden Dateien in diesem Pfad:
     - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
@@ -209,7 +209,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
         - Es werden nur HTTP-Proxys unterstützt.
         - Wenn Sie Proxydetails hinzugefügt oder den Proxy und/oder die Authentifizierung deaktiviert haben, klicken Sie auf **Speichern**, um die Konnektivitätsprüfung erneut auszulösen.
     - **Uhrzeitsynchronisierung**: Die Uhrzeit wird überprüft. Die Uhrzeit der Appliance muss mit der Internetzeit synchronisiert werden, damit die Ermittlung ordnungsgemäß funktioniert.
-    - **Updates installieren**: „Azure Migrate: Ermittlung und Bewertung“ überprüft, ob auf der Appliance die neuesten Updates installiert sind. Nachdem die Prüfung abgeschlossen ist, können Sie auf **Appliancedienste anzeigen** klicken, um den Status und die Versionen der auf der Appliance ausgeführten Komponenten anzuzeigen.
+    - **Updates installieren**: Das Tool „Azure Migrate: Ermittlung und Bewertung“ überprüft, ob auf der Appliance die neuesten Updates installiert sind. Nachdem die Prüfung abgeschlossen ist, können Sie auf **Appliancedienste anzeigen** klicken, um den Status und die Versionen der auf der Appliance ausgeführten Komponenten anzuzeigen.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Registrieren der Appliance bei Azure Migrate
 
@@ -234,7 +234,7 @@ Stellen Sie nun eine Verbindung zwischen der Appliance und den zu ermittelnden p
 
 1. Wählen Sie in **Schritt 1: Angeben von Anmeldeinformationen für die Ermittlung von physischen oder virtuellen Windows- und Linux-Servern** die Option **Anmeldeinformationen hinzufügen** aus.
 1. Wählen Sie für Windows-Server den Quelltyp **Windows-Server** aus, geben Sie einen Anzeigenamen für die Anmeldeinformationen ein, und fügen Sie den Benutzernamen und das Kennwort hinzu. Klicken Sie auf **Speichern**.
-1. Wenn Sie kennwortbasierte Authentifizierung für Linux-Server verwenden, wählen Sie den Quelltyp **Linux-Server (kennwortbasiert)** aus, geben Sie einen Anzeigenamen für die Anmeldeinformationen ein, und fügen Sie den Benutzernamen und das Kennwort hinzu. Klicken Sie auf **Speichern**.
+1. Wenn Sie die kennwortbasierte Authentifizierung für Linux-Server verwenden, wählen Sie den Quelltyp **Linux Server (Password-based)** (Linux-Server (kennwortbasiert)) aus, geben Sie einen Anzeigenamen für die Anmeldeinformationen ein, und fügen Sie den Benutzernamen und das Kennwort hinzu. Klicken Sie auf **Speichern**.
 1. Wenn Sie auf SSH-Schlüsseln basierende Authentifizierung für Linux-Server verwenden, wählen Sie den Quelltyp **Linux-Server (auf SSH-Schlüsseln basierend)** aus, geben Sie einen Anzeigenamen für die Anmeldeinformationen ein, fügen Sie den Benutzernamen hinzu, suchen Sie nach der Datei mit dem privaten SSH-Schlüssel, und wählen Sie diese aus. Klicken Sie auf **Speichern**.
 
     - Azure Migrate unterstützt den privaten SSH-Schlüssel, der vom Befehl „ssh-keygen“ mithilfe von RSA-, DSA-, ECDSA- und ed25519-Algorithmen generiert wird.
@@ -250,13 +250,13 @@ Stellen Sie nun eine Verbindung zwischen der Appliance und den zu ermittelnden p
 
 
     - Wenn Sie auf **Add single item** (Einzelnes Element hinzufügen) klicken, können Sie den Betriebssystemtyp auswählen, den Anzeigenamen für die Anmeldeinformationen angeben, den **IP-Adresse/FQDN**-Wert des Servers hinzufügen und dann auf **Speichern** klicken.
-    - Wenn Sie **Mehrere Elemente hinzufügen** auswählen, können Sie mehrere Datensätze auf einmal hinzufügen, indem Sie **IP-Adresse/FQDN** des Servers mit dem Anzeigenamen für die Anmeldeinformationen im Textfeld angeben. Überprüfen** Sie die hinzugefügten Einträge, und klicken Sie auf **Speichern**.
+    - Wenn Sie auf **Add multiple items** (Mehrere Elemente hinzufügen) klicken, können Sie mehrere Datensätze auf einmal hinzufügen, indem Sie **IP-Adresse/FQDN** für den Server mit dem Anzeigenamen für die Anmeldeinformationen im Textfeld angeben. Überprüfen** Sie die hinzugefügten Einträge, und klicken Sie auf **Speichern**.
     - Wenn Sie **CSV importieren** _(standardmäßig ausgewählt)_ auswählen, können Sie eine CSV-Vorlagendatei herunterladen, die Datei mit dem **IP-Adresse/FQDN**-Wert des Servers und einem Anzeigenamen für die Anmeldeinformationen auffüllen. Importieren Sie die Datei dann in die Appliance, **überprüfen** Sie die Datensätze in der Datei, und klicken Sie auf **Speichern**.
 
 1. Wenn Sie auf „Speichern“ klicken, versucht die Appliance, die Verbindung zu den hinzugefügten Servern zu überprüfen, und zeigt den **Überprüfungszustand** in der Tabelle für jeden Server an.
     - Sollte bei der Überprüfung eines Servers ein Fehler auftreten, sehen Sie sich den Fehler an, indem Sie auf **Fehler bei der Überprüfung** in der Spalte „Status“ klicken. Beheben Sie das Problem, und wiederholen Sie die Überprüfung.
     - Um einen Server zu entfernen, klicken Sie auf **Löschen**.
-1. Sie können die Verbindung zu Servern jederzeit vor Beginn der Ermittlung **erneut überprüfen**.
+1. Sie können die Verbindung mit Servern jederzeit vor Beginn der Ermittlung **erneut überprüfen**.
 1. Klicken Sie auf **Ermittlung starten**, um die Ermittlung der erfolgreich überprüften Server zu starten. Nachdem die Ermittlung erfolgreich gestartet wurde, können Sie den Ermittlungsstatus für jeden Server in der Tabelle überprüfen.
 
 

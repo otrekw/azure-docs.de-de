@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 203ac7252f06b342e7f553bb1900cdf9ac959e0a
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612312"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891379"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse Studio-Notebooks in Azure Synapse Analytics
 
@@ -36,11 +36,12 @@ Das Synapse-Team brachte die neue Notebookkomponente in Synapse Studio ein, um d
 |Funktion|Klassisches Notebook|Notebook der Vorschau|
 |--|--|--|
 |%run| Nicht unterstützt | &#9745;|
-|%history| Nicht unterstützt |&#9745;
+|%history| Nicht unterstützt |&#9745;|
 |%load| Nicht unterstützt |&#9745;|
 |%%html| Nicht unterstützt |&#9745;|
 |Drag & Drop zum Verschieben einer Zelle| Nicht unterstützt |&#9745;|
-|Persistente Display()-Ausgabe|&#9745;| Nicht verfügbar |
+|Gliederung (Inhaltsverzeichnis)| Nicht unterstützt |&#9745;|
+|Variablen-Explorer| Nicht unterstützt |&#9745;|
 |Textzelle mit Symbolleisten-Schaltflächen formatieren|&#9745;| Nicht verfügbar |
 |Rückgängigmachen des Zellenvorgangs| &#9745;| Nicht verfügbar |
 
@@ -151,6 +152,18 @@ Die IntelliSense-Funktionen befinden sich in unterschiedlichen Stadien der Entwi
 |SparkSQL|Ja|Ja|-|-|-|-|-|-|
 |.NET für Spark (C#)|Ja|-|-|-|-|-|-|-|
 
+
+
+### <a name="code-snippets"></a>Codeausschnitte
+
+Azure Synapse Studio-Notebooks stellen Codeausschnitte bereit, die die Eingabe häufig verwendeter Codemuster erleichtern, z. B. das Konfigurieren Ihrer Spark-Sitzung, das Lesen von Daten als Spark DataFrame oder das Zeichnen von Diagrammen mit matplotlib usw.
+
+Codeausschnitte werden in [IntelliSense](#ide-style-intellisense) gemeinsam mit anderen Vorschlägen angezeigt. Der Inhalt der Codeausschnitte richtet sich nach der Codezellensprache. Sie können die verfügbaren Ausschnitte anzeigen, indem Sie **Snippet** oder beliebige Schlüsselwörter eingeben, die im Titel für den Ausschnitt im Codezellen-Editor angezeigt werden. Wenn Sie beispielsweise **read** eingeben, wird eine Liste der Codeausschnitte zum Lesen von Daten aus verschiedenen Datenquellen angezeigt.
+
+![Synapse-Codeausschnitte](./media/apache-spark-development-using-notebooks/synapse-code-snippets.gif#lightbox)
+
+
+
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Textzelle mit Symbolleisten-Schaltflächen formatieren
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
@@ -182,7 +195,7 @@ Das Rückgängigmachen des Zellenvorgangs ist für das Notebook der Vorschau noc
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
-Wählen Sie die Auslassungspunkte (...) aus, um ganz rechts auf das Menü mit zusätzlichen Zellenaktionen zuzugreifen. Wählen Sie dann **Zelle nach oben verschieben** oder **Zelle nach unten verschieben** aus, um die aktuelle Zelle zu verschieben. 
+Wählen Sie die Auslassungspunkte (...) aus, um ganz rechts auf das Menü mit weiteren Zellenaktionen zuzugreifen. Wählen Sie dann **Zelle nach oben verschieben** oder **Zelle nach unten verschieben** aus, um die aktuelle Zelle zu verschieben. 
 
 Sie können auch [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode) verwenden. Drücken Sie **STRG+ALT+↑**, um die aktuelle Zelle nach oben zu verschieben. Drücken Sie **STRG+ALT+↓**, um die aktuelle Zelle nach unten zu verschieben.
 
@@ -199,7 +212,7 @@ Klicken Sie auf die linke Seite einer Zelle, und ziehen Sie sie an die gewünsch
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
-Um eine Zelle zu löschen, wählen Sie die Auslassungspunkte (...) aus, um ganz rechts auf das Menü mit zusätzlichen Zellenaktionen zuzugreifen, und wählen Sie dann **Zelle löschen** aus. 
+Um eine Zelle zu löschen, wählen Sie die Auslassungspunkte (...) aus, um ganz rechts auf das Menü mit weiteren Zellenaktionen zuzugreifen, und wählen Sie dann **Zelle löschen** aus. 
 
 Sie können auch [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode) verwenden. Drücken Sie **D,D**, um die aktuelle Zelle zu löschen.
   
@@ -248,6 +261,20 @@ Wählen Sie die Auslassungspunkte für **Weitere Befehle** (...) auf der Zellens
 
 ---
 
+### <a name="notebook-outline"></a>Notebook-Gliederung
+
+# <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
+
+Wird nicht unterstützt.
+
+# <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
+
+Das Feld „Gliederung (Inhaltsverzeichnis)“ stellt den ersten Markdownheader einer beliebigen Markdownzelle in einem Randleistenfenster für die schnelle Navigation dar. Die Gliederungsrandleiste ist in der Größe veränderbar und reduzierbar, um den Bildschirm optimal anzupassen. Sie können die Schaltfläche **Gliederung** auf der Notebook-Befehlsleiste auswählen, um die Randleiste zu öffnen oder auszublenden.
+
+<a name="azure-notebook-outline"></a>![azure-notebook-outline](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+---
+
+
 ## <a name="run-notebooks"></a>Ausführen von Notebooks
 
 Sie können die Codezellen in Ihrem Notebook einzeln oder alle gleichzeitig ausführen. Status und Fortschritt jeder Zelle werden im Notebook dargestellt.
@@ -274,7 +301,7 @@ Wählen Sie die Schaltfläche **Alle ausführen** aus, um alle Zellen im aktuell
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
-Um ganz rechts auf das Menü mit zusätzlichen Zellenaktionen zuzugreifen, wählen Sie die Auslassungspunkte ( **...** ) aus. Wählen Sie dann **Zellen oberhalb ausführen** aus, um alle Zellen oberhalb der aktuellen nacheinander auszuführen. Wählen Sie **Zellen unterhalb ausführen** aus, um alle Zellen unterhalb der aktuellen nacheinander auszuführen.
+Um ganz rechts auf das Menü mit weiteren Zellenaktionen zuzugreifen, wählen Sie die Auslassungspunkte ( **...** ) aus. Wählen Sie dann **Zellen oberhalb ausführen** aus, um alle Zellen oberhalb der aktuellen Zelle nacheinander auszuführen. Wählen Sie **Zellen unterhalb ausführen** aus, um alle Zellen unterhalb der aktuellen nacheinander auszuführen.
 
    ![Zellen-oberhalb-oder-unterhalb-ausführen](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
@@ -320,6 +347,22 @@ Beispiel: ``` %run /path/notebookA ```.
 
 ---
 
+### <a name="variable-explorer"></a>Variablen-Explorer
+
+# <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
+
+Wird nicht unterstützt.
+
+# <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
+
+Synapse-Notebooks verfügen über einen integrierten Variablen-Explorer, in dem Sie die Liste der Variablennamen, -typen, -längen und -werte in der aktuellen Spark-Sitzung für PySpark-Zellen (Python) anzeigen können. Weitere Variablen werden automatisch angezeigt, wenn sie in den Codezellen definiert sind. Durch Klicken auf die einzelnen Spaltenkopfzeilen, werden die Variablen in der Tabelle sortiert.
+
+Sie können die Schaltfläche **Variablen** in der Notebook-Befehlsleiste auswählen, um den Variablen-Explorer zu öffnen oder auszublenden.
+
+![azure-notebook-variable-explorer](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
+
+
+---
 
 ### <a name="cell-status-indicator"></a>Zellenstatusindikator
 
@@ -468,7 +511,7 @@ Wählen Sie in der oberen rechten Ecke **Zur Pipeline hinzufügen** aus, um ein 
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
-Klicken Sie zum Parametrisieren Ihres Notebooks auf die Auslassungspunkte (...), um auf das Menü für zusätzliche Zellenaktionen ganz rechts zuzugreifen. Klicken Sie dann auf **Parameterzelle umschalten**, um die Zelle als Parameterzelle festzulegen.
+Klicken Sie zum Parametrisieren Ihres Notebooks auf die Auslassungspunkte (...), um auf das Menü für weitere Zellenaktionen ganz rechts zuzugreifen. Klicken Sie dann auf **Parameterzelle umschalten**, um die Zelle als Parameterzelle festzulegen.
 
 ![toggle-parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 

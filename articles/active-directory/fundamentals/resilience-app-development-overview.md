@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 5d469ed875a33aa6e451775521cb3ab734a9cdc7
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 2076b2087c7cd90c83e1fe31c024d2c253109ee3
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929613"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162183"
 ---
 # <a name="increase-resilience-of-authentication-and-authorization-applications-you-develop"></a>Erhöhen der Resilienz bei der Authentifizierung und Autorisierung in von Ihnen entwickelten Anwendungen
 
@@ -30,4 +30,4 @@ Die folgenden Artikel bieten Informationen dazu, wie sich die Resilienz in Apps 
 - [Erzielen von Resilienz in Anwendungen ohne Benutzer](resilience-daemon-app.md)
 - [Erzielen von Resilienz in Ihrer Identitäts- und Zugriffsverwaltungsinfrastruktur](resilience-in-infrastructure.md)
 - [Erzielen von Resilienz für Ihre CIAM-Systeme](resilience-b2c.md)
-- [Erstellen Sie Dienste, die resistent gegen die Aktualisierung von Metadaten sind](../develop/howto-build-services-resilent-to-metadata-refresh.md)
+- [Erstellen von Diensten, die resistent sind gegenüber der Aktualisierung der OpenID Connect-Metadaten von Azure AD](../develop/howto-build-services-resilient-to-metadata-refresh.md)

@@ -1,18 +1,18 @@
 ---
 title: Kopieren von Daten in den Suchindex
 description: Erfahren Sie, wie Daten mit der Kopieraktivität in einer Azure Data Factory-Pipeline mithilfe von Push auf einen Azure Search-Index übertragen oder in einen Azure Search-Index kopiert werden.
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: 82f5d4f4c3f12b6e14e260fa004bb031247e1096
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7820232bc5f91d85ce24c9df8ebaa0a0bbc52342
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597503"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480208"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Kopieren von Daten in einen Azure Cognitive Search-Index mithilfe von Azure Data Factory
 
@@ -30,7 +30,7 @@ Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in eine
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die nachfolgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Azure Cognitive Search-Connector verwendet werden.
 
