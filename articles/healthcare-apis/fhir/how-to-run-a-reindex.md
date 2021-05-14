@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/23/2021
 ms.author: cavoeg
-ms.openlocfilehash: 0332582f65ea59f43cc55064f9cdacefe4beefe4
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: ea679023b2b5bb620bb9684a0e841f6cc4fa310d
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322531"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847002"
 ---
 # <a name="running-a-reindex-job"></a>Ausführen eines Neuindizierungsauftrags
 
@@ -21,7 +21,7 @@ Es gibt Szenarien, in denen Sie möglicherweise Such- oder Sortierparameter in d
 > [!Warning]
 > Es ist wichtig, dass Sie diesen gesamten Artikel lesen, bevor Sie beginnen. Ein Neuindizierungsauftrag kann sehr leistungsintensiv sein. Dieser Artikel enthält Optionen zum Drosseln und Steuern des Neuindizierungsauftrags.
 
-## <a name="how-to-run-a-reindex-job"></a>Ausführen eines Neuindizierungsauftrags 
+## <a name="how-to-run-a-reindex-job"></a>Ausführen eines Auftrags zum Neuindizieren 
 
 Verwenden Sie das folgende Codebeispiel, um einen Neuindizierungsauftrag zu starten:
 
@@ -41,7 +41,7 @@ Wenn die Anforderung erfolgreich ist, wird der Status **201 Erstellt** zurückge
 
 ```json
 HTTP/1.1 201 Created 
-Content-Location: https://cv-cosmos1.azurewebsites.net/_operations/reindex/560c7c61-2c70-4c54-b86d-c53a9d29495e 
+Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b86d-c53a9d29495e 
 
 {
   "resourceType": "Parameters",
@@ -91,9 +91,7 @@ Content-Location: https://cv-cosmos1.azurewebsites.net/_operations/reindex/560c7
 ```
 
 > [!NOTE]
-> Um den Status eines Neuindizierungsauftrags zu überprüfen oder abzubrechen, benötigen Sie die Neuindizierungs-ID. Dies ist die ID der resultierenden Parameterressource (siehe oben) und kann auch als GUID am Ende der Content-Location-Zeichenfolge gefunden werden:
-
-`https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b86d-c53a9d29495e`
+> Um den Status eines Neuindizierungsauftrags zu überprüfen oder abzubrechen, benötigen Sie die Neuindizierungs-ID. Dies ist die ID der resultierenden Parameterressource (siehe oben). Die Neuindizierungs-ID befindet sich auch am Ende der Content-Location-Zeichenfolge. Im Beispiel oben wäre das `560c7c61-2c70-4c54-b86d-c53a9d29495e`.
 
  ## <a name="how-to-check-the-status-of-a-reindex-job"></a>Überprüfen des Status eines Neuindizierungsauftrags
 
@@ -181,7 +179,7 @@ Wenn Sie einen Auftrag zum erneuten Indizieren abbrechen müssen, verwenden Sie 
 
 `Delete {{FHIR URL}}/_operations/reindex/{{reindexJobId}`
 
-## <a name="performance-considerations"></a>Leistungserwägungen
+## <a name="performance-considerations"></a>Überlegungen zur Leistung
 
 Ein Neuindizierungsauftrag kann sehr leistungsintensiv sein. Wir haben einige Drosselungssteuerelemente implementiert, mit deren Hilfe Sie verwalten können, wie ein Neuindizierungsauftrag in Ihrer Datenbank ausgeführt wird.
 
@@ -228,7 +226,7 @@ Wenn Sie einen der oben genannten Parameter verwenden möchten, können Sie dies
 In diesem Artikel haben Sie gelernt, wie Sie einen Neuindizierungsauftrag starten. Informationen zum Definieren neuer Suchparameter, die den Auftrag für die Neuindizierung erfordern, finden Sie unter 
 
 >[!div class="nextstepaction"]
->[Definieren benutzerdefinierter Suchparameter](how-to-do-custom-search.md)
+>[Definieren von benutzerdefinierten Suchparametern](how-to-do-custom-search.md)
 
          
      

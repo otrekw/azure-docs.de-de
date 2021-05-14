@@ -34,8 +34,7 @@ Die folgende Tabelle enthält die Grenzwerte, die sich für die Tarife „Basic�
 | Anzahl von AMQP-Verbindungen pro Namespace | 100 | 5\.000 | 100.000 enthalten, gleichzeitig Max. |
 | Maximale Aufbewahrungsdauer von Ereignisdaten | 1 Tag | 1–7 Tage | 90 Tage, 10 TB enthalten pro CU |
 | Maximale Anzahl von TUs oder CUs |20 TUs | 20 TUs | 20 CUs |
-| Anzahl von Partitionen pro Event Hub | 32 | 32 | 1\.024 pro Event Hub
-2000 pro CU |
+| Anzahl von Partitionen pro Event Hub | 32 | 32 | 1\.024 pro Event Hub<br/> 2000 pro CU |
 | Anzahl von Namespaces pro Abonnement | 100 | 100 | 100 (50 pro CU) |
 | Anzahl von Event Hubs pro Namespace | 10 | 10 | 1000 |
 | Eingangsereignisse | | Bezahlung pro Million Ereignisse | Enthalten|

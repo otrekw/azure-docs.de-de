@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3707516818e54dd251bd470eb9231afc6e3fff67
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cd82da805538abcddf2f76a20c28cb0a74b5c89b
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138677"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685601"
 ---
 # <a name="media-services-v3-samples"></a>Media Services v3-Beispiele
 
@@ -33,11 +33,11 @@ Auf den einzelnen Registerkarten finden Sie eine Beschreibung und Links zu den B
 
 | Ordner | BESCHREIBUNG |
 |-------------|-------------|
-| [VideoEncoding/EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESPredefinedPreset)|Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer integrierten Voreinstellung und der Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
-| [VideoEncoding/EncodingWithMESCustomPreset_H264](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_H264)|Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer benutzerdefinierten H.264-Codierungsvoreinstellung und Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
-| [VideoEncoding/EncodingWithMESCustomPreset_HEVC](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC)|Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer benutzerdefinierten HEVC-Codierungsvoreinstellung und Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
-| [VideoEncoding/EncodingWithMESCustomStitchTwoAssets](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets)|Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer JobInputSequence zum Zusammenfügen von zwei oder mehr Objekten, die möglicherweise durch die Start- oder Endzeit abgeschnitten werden. Die sich ergebende codierte Datei ist ein einzelnes Video, in dem alle Objekte zusammengefügt sind.  Im Beispiel werden zudem das Ausgabeobjekt für das Streaming veröffentlicht und die Ergebnisse zur Überprüfung heruntergeladen.|
-| [VideoEncoding/EncodingWithMESCustomPresetAndSprite](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPresetAndSprite)|Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer benutzerdefinierten Voreinstellung mit Miniaturbild-Sprite und Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
+| [VideoEncoding/EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_PredefinedPreset)|Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer integrierten Voreinstellung und der Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
+| [VideoEncoding/EncodingWithMESCustomPreset_H264](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264)|Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer benutzerdefinierten H.264-Codierungsvoreinstellung und Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
+| [VideoEncoding/EncodingWithMESCustomPreset_HEVC](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)|Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer benutzerdefinierten HEVC-Codierungsvoreinstellung und Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
+| [VideoEncoding/EncodingWithMESCustomStitchTwoAssets](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets)|Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer JobInputSequence zum Zusammenfügen von zwei oder mehr Objekten, die möglicherweise durch die Start- oder Endzeit abgeschnitten werden. Die sich ergebende codierte Datei ist ein einzelnes Video, in dem alle Objekte zusammengefügt sind.  Im Beispiel werden zudem das Ausgabeobjekt für das Streaming veröffentlicht und die Ergebnisse zur Überprüfung heruntergeladen.|
+| [VideoEncoding/EncodingWithMESCustomPresetAndSprite](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_SpriteThumbnail)|Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer benutzerdefinierten Voreinstellung mit Miniaturbild-Sprite und Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
 | [Live/LiveEventWithDVR](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Live/LiveEventWithDVR)|Vorgehensweise zum Erstellen eines LiveEvents mit einem vollständigen Archiv bis zu 25 Stunden und einem Filter für das Objekt mit 5-Minuten-DVR-Fenster. Vorgehensweise zum Verwenden eines Filters zum Erstellen eines Locators für das Streaming.|
 | [VideoAnalytics/VideoAnalyzer](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoAnalytics/VideoAnalyzer)|Vorgehensweise zum Erstellen einer Videoanalysetransformation, zum Hochladen einer Videodatei in ein Eingabeobjekt, zum Einreichen eines Auftrags mit der Transformation und zum Herunterladen der Ergebnisse zur Überprüfung.|
 | [AudioAnalytics/AudioAnalyzer](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/AudioAnalytics/AudioAnalyzer)|Vorgehensweise zum Erstellen einer Audioanalysetransformation, zum Hochladen einer Mediendatei in ein Eingabeobjekt, zum Übermitteln eines Auftrags mit der Transformation und zum Herunterladen der Ergebnisse zur Überprüfung.|

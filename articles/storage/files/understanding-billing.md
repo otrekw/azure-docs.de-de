@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie die Abrechnungsmodelle „Bereitgestellt“ u
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 05/11/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: efcfabb931b45b8b30e755cf1a9c16d15308f9d4
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 9d0079ac85980f97a0241780b23e639e2359c65d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064951"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787219"
 ---
 # <a name="understand-azure-files-billing"></a>Grundlegendes zur Abrechnung für Azure Files
 Für Azure Files gibt es zwei Abrechnungsmodelle: „Bereitgestellt“ und „Nutzungsbasierte Zahlung“. Das Modell „Bereitgestellt“ ist nur für Premium-Dateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **FileStorage** bereitgestellt werden. Das Modell „Nutzungsbasierte Zahlung“ ist nur für Standarddateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **Universell, Version 2** bereitgestellt werden. In diesem Artikel wird die Funktionsweise beider Modelle erklärt, um Ihnen zu helfen, Ihre monatliche Azure Files-Rechnung zu verstehen.
@@ -114,7 +114,7 @@ Wenn Sie eine Standarddateifreigabe erstellen, haben Sie die Wahl zwischen den S
 - Die heiße Ebene ist für aktive Workloads ohne hohes Transaktionsaufkommen vorgesehen. Verglichen mit der transaktionsoptimierten Ebene hat sie einen etwas niedrigeren Preis für die Speicherung ruhender Daten und etwas höhere Transaktionspreise. Stellen Sie sie sich als Mittelweg zwischen den Ebenen „Transaktionsoptimiert“ und „Kalt“ vor.
 - Bei der kalten Speicherebene sind die Kosten für Workloads mit geringer Aktivität optimiert. Diese Ebene weist die niedrigsten Kosten für die Speicherung ruhender Daten, aber die höchsten Kosten für Transaktionen auf.
 
-Wenn Sie für eine Workload, auf die nur selten zugegriffen wird, die Speicherebene „Transaktionsoptimiert“ wählen, zahlen Sie für die wenigen Transaktionen in der Freigabe in einem Monat fast nichts, aber einen hohen Betrag für die Datenspeicherung. Wenn Sie dieselbe Freigabe auf die kalte Speicherebene verlagern, würden Sie immer noch fast keine Transaktionskosten zahlen, einfach weil für diese Workload nur sehr selten Transaktionen erfolgen, aber die kalte Speicherebene bietet viel günstigere Datenspeicherungskosten. Bei Wahl der optimalen Speicherebene für Ihren Anwendungsfall können Sie erheblich Kosten sparen. Bei Wahl der optimalen Speicherebene für Ihren Anwendungsfall können Sie erheblich Kosten sparen.
+Wenn Sie für eine Workload, auf die nur selten zugegriffen wird, die Speicherebene „Transaktionsoptimiert“ wählen, zahlen Sie für die wenigen Transaktionen in der Freigabe in einem Monat fast nichts, aber einen hohen Betrag für die Datenspeicherung. Wenn Sie dieselbe Freigabe auf die kalte Speicherebene verlagern, würden Sie immer noch fast keine Transaktionskosten zahlen, einfach weil für diese Workload nur sehr selten Transaktionen erfolgen, aber die kalte Speicherebene bietet viel günstigere Datenspeicherungskosten. Bei Wahl der optimalen Speicherebene für Ihren Anwendungsfall können Sie erheblich Kosten sparen.
 
 Ähnlich verhält es sich, wenn Sie eine Workload mit häufigem Zugriff auf die kalte Speicherebene verlagern. Dann zahlen Sie viel mehr für Transaktionen, aber weniger für Datenspeicherung. Dies kann dazu führen, dass die gestiegenen Kosten für Transaktionen die Einsparungen aufgrund niedrigerer Kosten für Datenspeicherung überwiegen. Dies kann bewirken, dass Sie für die kalte Speicherebene mehr zahlen als bei Wahl von „transaktionsoptimiert“. Es ist möglich, dass bei bestimmten Nutzungsgraden die heiße Speicherebene am wirtschaftlichsten ist, während die kalte Speicherebene teurer als „transaktionsoptimiert“ ist.
 

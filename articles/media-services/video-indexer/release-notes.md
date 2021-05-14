@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: references_regions
 ms.date: 03/30/2021
 ms.author: juliako
-ms.openlocfilehash: b3602d421718cbd1de3509751491ec6db65b1b01
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 34b419ae3eb417793242940ad50eef4d18ab7754
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532899"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684611"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -30,7 +30,6 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Behebung von Programmfehlern
 * Veraltete Funktionen
-
 ## <a name="march-2021"></a>März 2021
 
 ### <a name="audio-analysis"></a>Audioanalyse 
