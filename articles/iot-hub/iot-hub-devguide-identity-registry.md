@@ -2,23 +2,22 @@
 title: Informationen zur Azure IoT Hub-Identitätsregistrierung | Microsoft Docs
 description: 'Entwicklerhandbuch: Beschreibung der Identitätsregistrierung von IoT Hub und Anleitung zum Verwalten von Geräten mithilfe der Identitätsregistrierung. Enthält Informationen zum Importieren und Exportieren von Geräteidentitäten in einem Massenvorgang.'
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 05/06/2021
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 42def04db63d81bdb3eff8098daa8c75924bffec
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 2590ffd15ec046d0fc81e73b98577fa9ad91ae41
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502078"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109712746"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz
 
@@ -32,11 +31,6 @@ Verwenden Sie die Identitätsregistrierung für Folgendes:
 
 * Bereitstellen von Geräten oder Modulen, die eine Verbindung mit Ihrer IoT Hub-Instanz herstellen
 * Steuern des geräte-/modulspezifischen Zugriffs auf die geräte-/modulseitigen Endpunkte Ihres Hubs
-
-> [!NOTE]
-> * Die Identitätsregistrierung enthält keine anwendungsspezifischen Metadaten.
-> * Die Modulidentität und der Modulzwilling befinden sich in der Public Preview. Das nachstehende Feature wird für die Modulidentität unterstützt, sobald es allgemein verfügbar ist.
->
 
 ## <a name="identity-registry-operations"></a>Identitätsregistrierungsvorgänge
 
@@ -58,10 +52,6 @@ Alle diese Vorgänge können optimistische Nebenläufigkeit gemäß [RFC7232](ht
 Für IoT Hub-Identitätsregistrierungen gilt Folgendes:
 
 * Enthält keinerlei Anwendungsmetadaten.
-* Der Zugriff kann wie bei einem Wörterbuch über die **deviceId** oder **moduleId** als Schlüssel erfolgen.
-* Ausdrucksbasierte Abfragen werden nicht unterstützt.
-
-Eine IoT-Lösung verfügt in der Regel über einen lösungsspezifischen Speicher mit anwendungsspezifischen Metadaten. Der lösungsspezifische Speicher in einer Lösung für intelligente Gebäude würde beispielsweise den Raum enthalten, in dem ein Temperatursensor bereitgestellt wird.
 
 > [!IMPORTANT]
 > Verwenden Sie die Identitätsregistrierung nur für die Geräteverwaltung und -bereitstellung. Vorgänge mit hohem Durchsatz zur Laufzeit dürfen nicht von Vorgängen in der Identitätsregistrierung abhängen. Das Überprüfen des Verbindungsstatus eines Geräts vor dem Senden eines Befehls ist z. B. kein unterstütztes Muster. Überprüfen Sie die [Drosselungsraten](iot-hub-devguide-quotas-throttling.md) für die Identitätsregistrierung und das Muster des [Gerätetakts](iot-hub-devguide-identity-registry.md#device-heartbeat).

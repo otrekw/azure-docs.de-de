@@ -1,17 +1,17 @@
 ---
-title: Erstellen Ihres Azure Maps Kontos mithilfe einer ARM-Vorlage | Microsoft Azure Maps
-description: Erfahren Sie, wie Sie mit einer Azure Resource Manager-Vorlage (ARM) ein Azure Maps-Konto erstellen.
+title: Erstellen eines Azure Maps-Kontos mithilfe einer Azure Resource Manager-Vorlage in Azure Maps
+description: Hier erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage ein Azure Maps-Konto erstellen.
 author: philmea
 ms.author: philmea
-ms.date: 10/20/2020
+ms.date: 04/27/2021
 ms.topic: how-to
 ms.service: azure-maps
-ms.openlocfilehash: c715c0639e962f76f669515c1d2c826c8cf6cc9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2434494a769fb9a4695e698b3d9215dffc18974
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92524989"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326865"
 ---
 # <a name="create-your-azure-maps-account-using-an-arm-template"></a>Erstellen eines Azure Maps-Kontos über eine ARM-Vorlage
 

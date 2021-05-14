@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 05/03/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c3ea17a4f6dc2fb5134c6ceb1ae37d25e0881365
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 47947945759faee9f38393f06f7ec9396d9c715b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715185"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749103"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Verwalten Ihres Azure Active Directory B2C-Mandanten
 
@@ -57,14 +57,14 @@ Bei der Planung Ihrer Zugriffssteuerungsstrategie ist es am besten, Benutzern di
 
 |Resource  |BESCHREIBUNG  |Role  |
 |---------|---------|---------|
-|[Anwendungsregistrierungen](tutorial-register-applications.md) | Erstellen und verwalten Sie alle Aspekte Ihrer Web-, mobilen und nativen Anwendungsregistrierungen in Azure AD B2C.|[Anwendungsadministrator](../active-directory/roles/permissions-reference.md#global-administrator)|
+|[Anwendungsregistrierungen](tutorial-register-applications.md) | Erstellen und verwalten Sie alle Aspekte Ihrer Web-, mobilen und nativen Anwendungsregistrierungen in Azure AD B2C.|[Anwendungsadministrator](../active-directory/roles/permissions-reference.md#application-administrator)|
 |[Identitätsanbieter](add-identity-provider.md)| Konfigurieren Sie den [lokalen Identitätsanbieter](identity-provider-local.md) und externe soziale Netzwerke oder Unternehmensidentitätsanbieter. | [Externer Identitätsanbieteradministrator](../active-directory/roles/permissions-reference.md#external-identity-provider-administrator)|
-|[API-Connectors](add-api-connector.md)| Integrieren Sie Ihre Benutzerabläufe mit Web-APIs, um das Benutzererlebnis anzupassen und mit externen Systemen zu integrieren.|[Administrator für Benutzerflowattribute mit externer ID](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
+|[API-Connectors](add-api-connector.md)| Integrieren Sie Ihre Benutzerabläufe mit Web-APIs, um das Benutzererlebnis anzupassen und mit externen Systemen zu integrieren.|[Administrator für Benutzerflows mit externer ID](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
 |[Unternehmensbranding](customize-ui.md#configure-company-branding)| Passen Sie Ihre Benutzerflow-Seiten an.| [Globaler Administrator](../active-directory/roles/permissions-reference.md#global-administrator)|
 |[Benutzerattribute](user-flow-custom-attributes.md)| Benutzer mit dieser Rolle können benutzerdefinierte Attribute, die für alle Benutzerflows im Mandanten verfügbar sind, hinzufügen und löschen.| [Administrator für Benutzerflowattribute mit externer ID](../active-directory/roles/permissions-reference.md#external-id-user-flow-attribute-administrator)|
 |Verwalten von Benutzern| Verwalten Sie [Consumer-Konten](manage-users-portal.md) und Administratorkonten wie in diesem Artikel beschrieben.| [Benutzeradministrator](../active-directory/roles/permissions-reference.md#user-administrator)|
 |Rollen und Administratoren| Verwalten von Rollenzuweisungen im Azure AD B2C-Verzeichnis. Erstellen und Verwalten von Gruppen, die Azure AD B2C-Rollen zugewiesen werden können. |[Globaler Administrator](../active-directory/roles/permissions-reference.md#global-administrator), [Administrator für privilegierte Rollen](../active-directory/roles/permissions-reference.md#privileged-role-administrator)|
-|[Benutzerabläufe](user-flow-overview.md)|Mit Benutzerflows konfigurieren und aktivieren Sie schnell häufige Identitätsaufgaben wie Registrierung, Anmeldung und Bearbeitung des Profils.| [Administrator für Benutzerflowattribute mit externer ID](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
+|[Benutzerabläufe](user-flow-overview.md)|Mit Benutzerflows konfigurieren und aktivieren Sie schnell häufige Identitätsaufgaben wie Registrierung, Anmeldung und Bearbeitung des Profils.| [Administrator für Benutzerflows mit externer ID](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
 |[Benutzerdefinierte Richtlinien](user-flow-overview.md)| Erstellen, Lesen, Aktualisieren und Löschen aller benutzerdefinierten Richtlinien in Azure AD B2C.| [B2C-IEF-Richtlinienadministrator](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)|
 |[Richtlinienschlüssel](policy-keys-overview.md)|Hinzufügen und Verwalten von Verschlüsselungsschlüsseln zum Signieren und Überprüfen von Token, geheimen Clientschlüsseln, Zertifikaten und Kennwörtern in benutzerdefinierten Richtlinien.|[B2C-IEF-Schlüsselsatzadministrator](../active-directory/roles/permissions-reference.md#b2c-ief-keyset-administrator)|
 

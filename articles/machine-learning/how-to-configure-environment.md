@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/22/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 18b23dc8b7ed8b074ac3afbc7d44e5d132a2ee58
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 80ea49436e9bfec5203f3a0493d441cfdbd1dbde
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890076"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755115"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Einrichten einer Python-Entwicklungsumgebung für Azure Machine Learning
 
@@ -102,7 +102,7 @@ So konfigurieren Sie eine Entwicklungsumgebung lokal oder auf einer Remote-VM
 1. Installieren Sie das [Python SDK für Azure Machine Learning](/python/api/overview/azure/ml/install).
 1. [Erstellen Sie eine Arbeitsbereichskonfigurationsdatei](#workspace), oder verwenden Sie eine vorhandene, um Ihre lokale Umgebung so zu konfigurieren, dass Ihr Azure Machine Learning-Arbeitsbereich verwendet wird.
 
-Da Sie nun Ihre lokale Umgebung eingerichtet haben, können Sie mit der Verwendung von Azure Machine Learning beginnen. Informationen zu den ersten Schritten finden Sie unter [Tutorial: Erste Schritte mit Azure Machine Learning in Ihrer Entwicklungsumgebung (Teil 1 von 4)](tutorial-1st-experiment-sdk-setup-local.md).
+Da Sie nun Ihre lokale Umgebung eingerichtet haben, können Sie mit der Verwendung von Azure Machine Learning beginnen. Informationen zu den ersten Schritten finden Sie unter [Tutorial: Erste Schritte mit Azure Machine Learning in Ihrer Entwicklungsumgebung (Teil 1 von 4)](tutorial-1st-experiment-hello-world.md).
 
 ### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Notebooks
 
@@ -147,7 +147,7 @@ Die Azure Machine Learning-[Compute-Instanz](concept-compute-instance.md) ist ei
 
 Für eine Compute-Instanz muss nichts installiert oder konfiguriert werden.  
 
-In Ihrem Azure Machine Learning-Arbeitsbereich können Sie jederzeit eine Notebook-VM erstellen. Geben Sie einfach einen Namen und einen Azure-VM-Typ an. Sie die Einrichtung unter [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](tutorial-1st-experiment-sdk-setup.md).
+In Ihrem Azure Machine Learning-Arbeitsbereich können Sie jederzeit eine Notebook-VM erstellen. Geben Sie einfach einen Namen und einen Azure-VM-Typ an. Sie die Einrichtung unter [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](quickstart-create-resources.md).
 
 Weitere Informationen zu Compute-Instanzen, einschließlich der Installation von Paketen, finden Sie unter [Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz](how-to-create-manage-compute-instance.md).
 

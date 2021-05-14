@@ -8,21 +8,24 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/30/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e4dee196d3ff0796802d2552f073446ad6912663
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 06f656fd45bfa0f8aedb086e95f5b991868656ff
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028263"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314983"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Google-Konto mithilfe von Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+> [!IMPORTANT]
+> **Ab der zweiten Hälfte des Jahres 2021** wird Google die [Unterstützung für die Anmeldung in der Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie den Google-Verbund für Azure AD B2B-Einladungen oder Azure AD B2C verwenden oder die Self-Service-Registrierung mit Gmail nutzen, können sich Google Mail-Benutzer nicht anmelden, wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren. [Weitere Informationen](../active-directory/external-identities/google-federation.md#deprecation-of-web-view-sign-in-support)
 
 ::: zone pivot="b2c-custom-policy"
 

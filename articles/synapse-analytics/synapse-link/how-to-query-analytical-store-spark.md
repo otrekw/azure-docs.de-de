@@ -10,12 +10,12 @@ ms.date: 09/15/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 4a8367ea41ea96d8a412af965346684737d190fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5e2458ebcdcc1b2dba598b5d443b8eab12312e7d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627573"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788960"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Interagieren mit Azure Cosmos DB mithilfe von Apache Spark in Azure Synapse Link
 
@@ -128,7 +128,7 @@ df.write.format("cosmos.oltp").
 ## <a name="load-streaming-dataframe-from-container"></a>Streamingdatenrahmen aus Container laden
 Bei dieser Geste verwenden Sie die Spark-Streamingfunktion, um Daten aus einem Container in einen Datenrahmen zu laden. Die Daten werden im primären Data Lake-Konto (und Dateisystem) gespeichert, das Sie mit dem Arbeitsbereich verbunden haben. 
 > [!NOTE]
-> Wenn Sie Verweise auf externe Bibliotheken in Synapse Apache Spark hinzufügen möchten, finden Sie [hier](#external-library-management) weitere Informationen. Wenn Sie beispielsweise einen Spark-Datenrahmen in einem Container der Cosmos DB-API für Mongo DB erfassen möchten, können Sie den Mongo DB-Connector für Spark [hier](https://docs.mongodb.com/spark-connector/master/) nutzen.
+> Wenn Sie Verweise auf externe Bibliotheken in Synapse Apache Spark hinzufügen möchten, finden Sie [hier](../spark/apache-spark-azure-portal-add-libraries.md) weitere Informationen. Wenn Sie beispielsweise einen Spark-Datenrahmen in einem Container der Cosmos DB-API für Mongo DB erfassen möchten, können Sie den Mongo DB-Connector für Spark [hier](https://docs.mongodb.com/spark-connector/master/) nutzen.
 
 ## <a name="load-streaming-dataframe-from-azure-cosmos-db-container"></a>Laden von Streamingdatenrahmen aus Azure Cosmos DB-Containern
 In diesem Beispiel verwenden Sie die Funktion für strukturiertes Streaming in Spark, um Daten aus einem Azure Cosmos DB-Container in einen Streamingdatenrahmen in Spark zu laden. Dafür nutzen Sie die Änderungsfeedfunktion in Azure Cosmos DB. Die von Spark verwendeten Prüfpunktdaten werden im primären Data Lake-Konto (und Dateisystem) gespeichert, das Sie mit dem Arbeitsbereich verbunden haben.
@@ -207,19 +207,6 @@ val query = dfStream.
 query.awaitTermination()
 ```
 
-## <a name="external-library-management"></a>Verwaltung externer Bibliotheken
-
-In diesem Beispiel erfahren Sie, wie Sie Verweise auf externe Bibliotheken in JAR-Dateien hinzufügen, wenn Spark-Notebooks in Synpase Apache Spark-Arbeitsbereichen verwendet werden. Sie können die JAR-Dateien in einem Container im primären Data-Lake-Konto speichern, das Sie mit dem Arbeitsbereich verbunden haben, und dann die folgende `%configure`-Anweisung in Ihrem Spark-Notebook hinzufügen:
-
-```cmd
-%%configure -f
-{
-    "jars": [
-        "abfss://<storage container name>@<data lake account name>.dfs.core.windows.net/<path to jar>"
-    ]
-}
-```
-Wenn Sie Definitionen für Remoteaufträge in Spark einem serverlosen Apache Spark-Pool hinzufügen möchten, erfahren Sie in [diesem Tutorial](../spark/apache-spark-job-definitions.md), wie Sie Verweise auf externe Bibliotheken hinzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

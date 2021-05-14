@@ -6,30 +6,25 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 04/29/2021
 ms.author: banders
-ms.openlocfilehash: 4cfb5c0b746ab8cf4ebb26ee0f755b34b6289982
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c3294c09012339cb19f04327f1933688b05ae077
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481428"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321463"
 ---
 # <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>Übertragen des Abrechnungsbesitzes für ein Azure-Abonnement für eine Microsoft-Kundenvereinbarung
 
-Die Übernahme des Azure-Abonnementbesitzes kann beispielsweise erforderlich sein, wenn der aktuelle Abrechnungsbesitzer die Organisation verlässt oder wenn Sie die Abonnements über Ihr Abrechnungskonto bezahlen möchten. Bei der Besitzübernahme gehen die Abrechnungspflichten für das Abonnement auf Ihr Konto über.
-
-Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-for-access)
-
-Der Abrechnungsbesitz kann nur mit der Rolle **Rechnungsabschnitt (Besitzer)** oder **Rechnungsabschnitt (Mitwirkender)** angefordert werden. Weitere Informationen finden Sie unter [Rollen und Aufgaben für einen Rechnungsabschnitt](understand-mca-roles.md#invoice-section-roles-and-tasks).
+Sie müssen den Abrechnungsbesitz für Ihre Azure-Abonnements übertragen, wenn:
+- Sie die Abrechnungszuständigkeiten für die Abonnements auf einen anderen Abrechnungsbesitzer übertragen möchten.
+- Sie Ihre Azure-Abonnements von einem Lizenzvertrag zu einem anderen übertragen. Beispielsweise von einem Enterprise Agreement oder einem Microsoft Online-Abonnementvertrag (MOSA) zu einer Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-for-access)
 
 Die Person, von der Sie den Abrechnungsbesitz anfordern, muss eine der folgenden Rollen haben:
-
-- Bei einer Microsoft-Kundenvereinbarung für Unternehmen muss der Benutzer ein Abrechnungsbesitzer sein.
-- Bei einem Konzernvertrag (Enterprise Agreement, EA) muss der Benutzer ein Kontobesitzer sein.
-- Bei einem Abrechnungskonto für das Microsoft Online-Dienstprogramm muss der Benutzer ein Kontoadministrator sein.
-
-Weitere Informationen finden Sie unter [Anzeigen von sämtlichen Abrechnungskonten im Azure-Portal](view-all-accounts.md).
+- Für eine Microsoft-Kundenvereinbarung muss die Person über die Rolle „Besitzer“ oder „Mitwirkender“ für das Abrechnungskonto oder das entsprechende Abrechnungsprofil bzw. den Rechnungsabschnitt verfügen. Weitere Informationen finden Sie unter [Rollen und Aufgaben für Abrechnungen](understand-mca-roles.md#invoice-section-roles-and-tasks).
+- Bei einem Konzernvertrag (Enterprise Agreement, EA) muss die Person ein Kontobesitzer sein.
+- Für einen Microsoft Online-Abonnementvertrag muss die Person ein Kontoadministrator sein.
 
 ## <a name="request-billing-ownership"></a>Anfordern des Abrechnungsbesitzes
 
@@ -137,7 +132,36 @@ Sie können für die unten angegebenen Abonnementtypen den Abrechnungsbesitz anf
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
-Der folgende Abschnitt enthält zusätzliche Informationen zur Übertragung von Abonnements.
+Die folgenden Abschnitte enthalten zusätzliche Informationen zur Übertragung von Abonnements.
+
+### <a name="cancel-a-prior-support-plan"></a>Kündigen eines früheren Supportplans
+
+Wenn Sie über einen Azure-Supportplan verfügen und alle Ihre Azure-Abonnements in eine neue Vereinbarung übertragen, müssen Sie den Supportplan kündigen, da er nicht mit den Abonnements übertragen wird. Wenn Sie z. B. einen Microsoft Online-Abonnementvertrag (ein im Web erworbenes Azure-Abonnement) an die Microsoft-Kundenvereinbarung übertragen. So beenden Sie Ihren Supportplan ab
+
+Sie müssen die Kontoadministrator-Anmeldeinformationen für Ihr altes Konto verwenden, wenn sich die Anmeldeinformationen von denen unterscheiden, die für den Zugriff auf Ihr neues Konto der Microsoft-Kundenvereinbarung verwendet.
+
+1.  Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1.  Navigieren Sie zu **Kostenverwaltung und Abrechnung**.
+1.  Wählen Sie im linken Bereich **Abrechnungsbereiche** aus.
+1.  Wählen Sie das Abrechnungskonto aus, das Ihrem Microsoft-Supportplan zugeordnet ist.
+    - Für eine Microsoft-Kundenvereinbarung:
+        - Wählen Sie im linken Bereich **Laufende Gebühren** aus.
+        - Wählen Sie im rechten Bereich rechts neben dem Zeilenelement „Supportplan“ die Auslassungspunkte ( **...** ) und dann **Automatische Verlängerung deaktivieren** aus.
+    - Für eine einen Microsoft Online-Abonnementvertrag (MOSA):
+        - Wählen Sie im linken Bereich die Option **Abonnements** aus.
+        - Wählen Sie im rechten Bereich das Supportplanabonnement und dann **Abbrechen** aus.
+
+### <a name="access-your-historical-invoices"></a>Zugreifen auf Ihre historischen Rechnungen
+
+Möglicherweise möchten Sie auf die Rechnungen für das Konto Ihres alten Microsoft Online-Abonnementvertrags (einem im Web erworbenen Azure-Abonnement) zugreifen, nachdem Sie den Abrechnungsbesitz auf Ihre neue Microsoft-Kundenvereinbarung übertragen haben. Führen Sie dazu die folgenden Schritte aus:
+
+Sie müssen die Kontoadministrator-Anmeldeinformationen für Ihr altes Konto verwenden, wenn sich die Anmeldeinformationen von denen unterscheiden, die für den Zugriff auf Ihr neues Konto der Microsoft-Kundenvereinbarung verwendet.
+
+1.  Melden Sie sich unter https://azure.portal.com beim Azure-Portal an.
+1.  Navigieren Sie zu **Kostenverwaltung und Abrechnung**.
+1.  Wählen Sie im linken Bereich **Abrechnungsbereiche** aus.
+1.  Wählen Sie das Abrechnungskonto aus, das Ihrem Microsoft Online-Abonnementvertrag zugeordnet ist.
+1.  Wählen Sie im linken Bereich **Rechnungen** aus, um auf Ihre historischen Rechnungen zuzugreifen.
 
 ### <a name="no-service-downtime"></a>Keine Dienstunterbrechung
 
@@ -162,10 +186,6 @@ Bei der Übertragung von EA-Abonnements (Enterprise Agreement) oder Microsoft-Ku
 ### <a name="access-to-azure-services"></a>Zugriff auf Azure-Dienste
 
 Der Zugriff für vorhandene Benutzer, Gruppen oder Dienstprinzipale, der per [rollenbasierter Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) zugewiesen wurde, ist von dieser Übertragung nicht betroffen.
-
-### <a name="azure-support-plan"></a>Azure-Supportplan
-
-Der Azure-Support wird nicht zusammen mit den Abonnements übertragen. Wenn der Benutzer alle Azure-Abonnements überträgt, bitten Sie ihn, den Supportplan zu kündigen.
 
 ### <a name="charges-for-transferred-subscription"></a>Gebühren für übertragene Abonnements
 

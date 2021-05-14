@@ -6,13 +6,13 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 43db8d4c094ec1b08a24c29fdaccf97f63ef29b9
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 8d66678ee963a89dcd6b469eaf2622b95a4a5ec4
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833974"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752389"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>Skalieren einer Azure Cache for Redis-Instanz
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Bei einem Basic-, Standard- oder Premium-Cache können Sie nach dem Erstellen die Größe und den Tarif ändern, um ihn an die Anforderungen Ihrer Anwendung anzupassen. In diesem Artikel wird erläutert, wie Sie Ihren Cache im Azure-Portal mithilfe von Tools wie Azure PowerShell und der Azure-Befehlszeilenschnittstelle skalieren.

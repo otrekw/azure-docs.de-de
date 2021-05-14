@@ -1,19 +1,19 @@
 ---
 title: 'Konfigurieren von BGP für VPN Gateway: Portal'
 titleSuffix: Azure VPN Gateway
-description: In diesem Artikel werden die Schritte zum Konfigurieren von BGP mit Azure VPN Gateway über PowerShell beschrieben.
+description: Hier erfahren Sie, wie Sie BGP für Azure VPN Gateway konfigurieren.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: yushwang
-ms.openlocfilehash: 479a8fac111be6e5b1ae2c6ea21fff801ba26f83
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: df42925b50cba4d32ea554ae54dbcb09a5e04377
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863580"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205951"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Konfigurieren von BGP für Azure-VPN-Gateways
 

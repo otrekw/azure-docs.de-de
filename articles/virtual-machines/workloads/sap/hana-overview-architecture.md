@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c1cd4e7d65897634b5a8a8fa8be46275bbd4b88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 364953de1c56bcf41efb1a3ac9481b17603f3dec
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676872"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227792"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Was ist SAP HANA in Azure (große Instanzen)?
 
@@ -57,7 +57,7 @@ Die anderen Dokumente mit Anleitungen zu großen HANA-Instanzen behandeln die fo
 - [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md)
 - [Problembehandlung und Überwachung von SAP HANA in Azure (große Instanzen)](troubleshooting-monitoring.md)
 - [Hochverfügbarkeitskonfiguration unter SUSE mit STONITH](./ha-setup-with-stonith.md)
-- [OS backup and restore for Type II SKUs of Revision 3 stamps (Sichern und Wiederherstellen des Betriebssystems für Typ-II-SKUs)](./os-backup-type-ii-skus.md)
+- [Betriebssystemsicherung](./large-instance-os-backup.md)
 - [Sparen bei SAP HANA (große Instanzen) mit einer Azure-Reservierung](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
 
 **Nächste Schritte**

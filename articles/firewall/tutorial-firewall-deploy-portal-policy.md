@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 04/28/2021
+ms.date: 05/03/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: df84d765a735f1b8b4ce4cf6d36deb3235d9bc31
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 7fb92bf8e741da59f4dbc5255811eb7f67497fe9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108210086"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768857"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-and-policy-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall und einer Richtlinie über das Azure-Portal
 
@@ -46,6 +46,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Konfigurieren einer NAT-Regel, um einen Remotedesktop für den Testserver zuzulassen
 > * Testen der Firewall
 
+Sie können für dieses Verfahren auch [Azure PowerShell](deploy-ps-policy.md) verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -136,7 +137,7 @@ Stellen Sie die Firewall im VNET bereit.
 
    |Einstellung  |Wert  |
    |---------|---------|
-   |Subscription     |\<your subscription\>|
+   |Abonnement     |\<your subscription\>|
    |Resource group     |**Test-FW-RG** |
    |Name     |**Test-FW01**|
    |Region     |Wählen Sie den gleichen Standort aus wie zuvor.|

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/19/2021
-ms.openlocfilehash: 90755aef66fa51084d83d036722187b61449a6fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82821b29669139f378d4dd24e4a96ab66f3d56e1
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656905"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321931"
 ---
 # <a name="export-data-module"></a>Modul „Export Data“ (Daten exportieren)
 
@@ -60,6 +60,10 @@ Bevor Sie Ihre Daten exportieren können, müssen Sie einen Datenspeicher in Ihr
 1. Wählen Sie für **File format** (Dateiformat) das Format aus, in dem die Daten gespeichert werden sollen.
  
 1. Übermitteln Sie die Pipeline.
+
+## <a name="limitations"></a>Einschränkungen
+
+Enthält Ihre Rückschlusspipeline das Modul **Export Data** (Daten exportieren), wird es aufgrund der Datenspeicher-Zugriffsbeschränkung automatisch entfernt, wenn es auf einem Echtzeitendpunkt bereitgestellt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

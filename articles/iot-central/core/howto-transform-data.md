@@ -7,16 +7,14 @@ ms.date: 04/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6032300bd203db78e8cd147cf79300d6dcd9b1dc
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 87f188b414791636e147a19202b6fcf314d6f307
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751686"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683646"
 ---
 # <a name="transform-data-for-iot-central"></a>Transformieren von Daten für IoT Central
-
-*Dieses Thema richtet sich an Lösungsentwickler.*
 
 IoT-Geräte senden Daten in verschiedenen Formaten. Um die Gerätedaten mit Ihrer IoT Central-Anwendung zu verwenden, müssen Sie möglicherweise eine Transformation durchführen, um Folgendes zu ermöglichen:
 
@@ -41,9 +39,9 @@ Die folgende Tabelle zeigt drei Beispiele für Transformationstypen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Schritte in diesem Artikel benötigen Sie ein aktives Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Zum Ausführen der Schritte in dieser Anleitung ist Folgendes erforderlich:
 
-Zum Einrichten der Lösung benötigen Sie eine IoT Central-Anwendung. Informationen zum Erstellen einer IoT Central--Anwendung finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](quick-deploy-iot-central.md).
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 ## <a name="data-transformation-at-ingress"></a>Datentransformation beim eingehenden Datenverkehr
 
@@ -87,6 +85,8 @@ Sie möchten ein IoT Edge-Modul verwenden, um die Daten in das folgende JSON-For
   }
 }
 ```
+
+[![Code durchsuchen](media/common/browse-code.svg)](https://github.com/iot-for-all/iot-central-transform-with-iot-edge)
 
 Die folgenden Schritte zeigen, wie Sie dieses Szenario einrichten und konfigurieren:
 

@@ -10,12 +10,12 @@ ms.date: 04/23/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9cb84d15c12ae823462291b2e7008653306b2b55
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 30766938526c2ba897c2aabc2513be5d6c3f01b5
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773717"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949090"
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -104,7 +104,7 @@ az login
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Ein Speicherkonto ist eine Azure Resource Manager Ressource. Resource Manager ist der Bereitstellungs- und Verwaltungsdienst für Azure. Weitere Informationen finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/management/overview.md).
+Ein Speicherkonto ist eine Azure Resource Manager Ressource. Resource Manager ist der Bereitstellungs- und Verwaltungsdienst für Azure. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 
 Jede Resource Manager-Ressource, einschließlich eines Azure-Speicherkontos, muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In dieser Anleitung wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
 
@@ -123,9 +123,9 @@ Geben Sie auf der Registerkarte **Grundlagen** die grundlegenden Informationen f
 
 In der folgenden Tabelle werden die Felder der Registerkarte **Grundlagen** beschrieben.
 
-| `Section` | Feld | Erforderlich oder optional | Beschreibung |
+| `Section` | Feld | Erforderlich oder optional | BESCHREIBUNG |
 |--|--|--|--|
-| Projektdetails | Abonnement | Erforderlich | Wählen Sie das Abonnement für das neue Speicherkonto aus. |
+| Projektdetails | Subscription | Erforderlich | Wählen Sie das Abonnement für das neue Speicherkonto aus. |
 | Projektdetails | Ressourcengruppe | Erforderlich | Erstellen Sie eine neue Ressourcengruppe für dieses Speicherkonto oder wählen Sie eine vorhandene Ressourcengruppe aus. Weitere Informationen finden Sie unter [Ressourcengruppen](../../azure-resource-manager/management/overview.md#resource-groups). |
 | Instanzendetails | Speicherkontoname | Erforderlich | Wählen Sie einen eindeutigen Namen für Ihr Speicherkonto aus. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. |
 | Instanzendetails | Region | Erforderlich | Wählen Sie die passende Region für Ihr Speicherkonto aus. Weitere Informationen finden Sie unter [Regionen und Verfügbarkeitszonen in Azure](../../availability-zones/az-overview.md).<br /><br />Nicht alle Regionen werden für alle Arten von Speicherkonten oder Redundanzkonfigurationen unterstützt. Weitere Informationen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).<br /><br />Die Wahl der Region kann sich auf die Abrechnung auswirken. Weitere Informationen finden Sie unter [Speicherkontoabrechnung](storage-account-overview.md#storage-account-billing). |
@@ -150,8 +150,8 @@ In der folgenden Tabelle werden die Felder der Registerkarte **Erweitert** besch
 | Sicherheit | Zugriff auf Speicherkontoschlüssel aktivieren (Vorschau) | Optional | Wenn diese Einstellung aktiviert ist, können Clients Anforderungen an das Speicherkonto entweder mit den Kontozugriffsschlüsseln oder einem Azure Active Directory-Konto (Azure AD) autorisieren (Standard). Wenn Sie diese Einstellung deaktivieren, wird die Autorisierung mit den Kontozugriffsschlüsseln verhindert. Weitere Informationen finden Sie unter [Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto (Vorschau)](shared-key-authorization-prevent.md). |
 | Sicherheit | TLS-Mindestversion | Erforderlich | Wählen Sie die erforderliche Mindestversion der Transport Layer Security (TLS) für eingehende Anforderungen an ein Speicherkonto. Der Standardwert ist TLS-Version 1.2. Wenn dieser Wert auf den Standardwert festgelegt ist, werden eingehende Anforderungen mit TLS 1.0 oder TLS 1.1 abgelehnt. Weitere Informationen finden Sie unter [Erzwingen der erforderliche Mindestversion der Transport Layer Security (TLS) für Anforderungen an ein Speicherkonto](transport-layer-security-configure-minimum-version.md). |
 | Data Lake Storage Gen2 | Aktivieren Sie hierarchische Namespace | Optional | Wenn Sie dieses Speicherkonto für Azure Data Lake Storage Gen2 verwenden möchten, müssen Sie einen hierarchischen Namespace konfigurieren. Weitere Informationen hierzu finden Sie unter [Einführung in Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md). |
-| Blob-Speicher | Aktivieren der Netzwerkdateifreigabe (NFS) v3 (Vorschau) | Optional | NFS v3 bietet Linux-Dateisystemkompatibilität bei Objektspeicherskalierung und ermöglicht es Linux-Clients, einen Container aus einem virtuellen Azure-Computer (VM) oder einem lokalen Computer in Blob Storage einzubinden. Weitere Informationen finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](../blobs/network-file-system-protocol-support.md). |
-| Blob-Speicher | Zugriffsebene | Erforderlich | Mit Blobzugriffsebenen können Sie Blobdaten basierend auf der Nutzung auf die kostengünstigste Weise speichern. Wählen Sie die heiße Zugriffsebene (Standard) für Daten aus, auf die häufig zugegriffen wird. Wählen Sie die kalte Zugriffsebene für Daten aus, auf die selten zugegriffen wird. Weitere Informationen finden Sie unter [Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md). |
+| Blobspeicher | Aktivieren der Netzwerkdateifreigabe (NFS) v3 (Vorschau) | Optional | NFS v3 bietet Linux-Dateisystemkompatibilität bei Objektspeicherskalierung und ermöglicht es Linux-Clients, einen Container aus einem virtuellen Azure-Computer (VM) oder einem lokalen Computer in Blob Storage einzubinden. Weitere Informationen finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](../blobs/network-file-system-protocol-support.md). |
+| Blobspeicher | Zugriffsebene | Erforderlich | Mit Blobzugriffsebenen können Sie Blobdaten basierend auf der Nutzung auf die kostengünstigste Weise speichern. Wählen Sie die heiße Zugriffsebene (Standard) für Daten aus, auf die häufig zugegriffen wird. Wählen Sie die kalte Zugriffsebene für Daten aus, auf die selten zugegriffen wird. Weitere Informationen finden Sie unter [Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md). |
 | Azure Files | Aktivieren großer Dateifreigaben | Optional | Nur für Storage Premium-Konten für Dateifreigaben verfügbar. Weitere Informationen finden Sie unter [Aktivieren von Standard-Dateifreigaben für bis zu 100 TiB](../files/storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib). |
 | Tabellen und Warteschlangen | Unterstützung für kundenseitig verwaltete Schlüssel aktivieren | Optional | Um den Support für kundenseitig verwaltete Schlüssel für Tabellen und Warteschlangen zu aktivieren, müssen Sie diese Einstellung zum Zeitpunkt der Erstellung des Speicherkontos auswählen. Weitere Informationen finden Sie unter [Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel für Tabellen und Warteschlangen unterstützt](account-encryption-key-create.md). |
 
@@ -161,7 +161,7 @@ Auf der Registerkarte **Netzwerk** können Sie Einstellungen für Netzwerkkonnek
 
 In der folgenden Tabelle werden die Felder der Registerkarte **Netzwerk** beschrieben.
 
-| `Section` | Feld | Erforderlich oder optional | Beschreibung |
+| `Section` | Feld | Erforderlich oder optional | BESCHREIBUNG |
 |--|--|--|--|
 | Netzwerkkonnektivität | Konnektivitätsmethode | Erforderlich | Standardmäßig wird der eingehende Netzwerkdatenverkehr an den öffentlichen Endpunkt für Ihr Speicherkonto weitergeleitet. Sie können angeben, dass Datenverkehr über ein virtuelles Azure-Netzwerk an den öffentlichen Endpunkt weitergeleitet werden muss. Sie können auch private Endpunkte für Ihr Speicherkonto konfigurieren. Weitere Informationen finden Sie unter [Verwenden privater Endpunkte für Azure Storage](storage-private-endpoints.md). |
 | Netzwerkrouting | Routingpräferenz | Erforderlich | Die Netzwerkroutingpräferenz legt fest, wie Netzwerkdatenverkehr von Clients über das Internet zum öffentlichen Endpunkt Ihres Speicherkontos geleitet wird. Standardmäßig verwendet ein neues Speicherkonto das Microsoft-Netzwerkrouting. Sie können auch Netzwerkdatenverkehr über den POP weiterleiten, der dem Speicherkonto am nächsten liegt, was die Netzwerkkosten senken kann. Weitere Informationen dazu finden Sie unter [Netzwerkroutingpräferenz für Azure Storage](network-routing-preference.md). |
@@ -172,7 +172,7 @@ Auf der Registerkarte **Datenschutz** können Sie Datenschutzoptionen für Blobd
 
 In der folgenden Tabelle werden die Felder auf der Registerkarte **Datenschutz** beschrieben.
 
-| `Section` | Feld | Erforderlich oder optional | Beschreibung |
+| `Section` | Feld | Erforderlich oder optional | BESCHREIBUNG |
 |--|--|--|--|
 | Wiederherstellung | Zeitpunktwiederherstellung für Container aktivieren | Optional | Point-in-Time-Wiederherstellung bietet Schutz vor versehentlichem Löschen oder Beschädigungen, da Sie Blockblobdaten in einem früheren Zustand wiederherstellen können. Weitere Informationen finden Sie unter [Zeitpunktwiederherstellung – Blockblobs](../blobs/point-in-time-restore-overview.md).<br /><br />Das Aktivieren der Zeitpunktwiederherstellung ermöglicht auch die Blobversionsierung, das vorläufig gelöschte Blob und den Blobänderungsfeed. Diese erforderlichen Features können sich auf die Kosten auswirken. Weitere Informationen finden Sie unter [Preise und Abrechnung](../blobs/point-in-time-restore-overview.md#pricing-and-billing) für die Zeitpunktwiederherstellung. |
 | Wiederherstellung | Aktivieren von „Vorläufiges Löschen“ für Blobs | Optional | Das Feature für das vorläufige Löschen von Blobs schützt einzelne Blobs, Momentaufnahmen oder Versionen vor einer versehentlichen Löschung oder Überschreibung, weil die gelöschten Daten für einen Aufbewahrungszeitraum im System beibehalten werden. Während des Aufbewahrungszeitraums können Sie den Zustand eines vorläufig gelöschten Objekts zum Zeitpunkt der Löschung wiederherstellen. Weitere Informationen finden Sie unter [Vorläufiges Löschen von Blobs](../blobs/soft-delete-blob-overview.md).<br /><br />Microsoft empfiehlt die Aktivierung des vorläufigen Löschens von Blobs für Ihre Speicherkonten und die Festlegung eines Aufbewahrungszeitraums von mindestens sieben Tagen. |
@@ -223,7 +223,7 @@ Die folgende Tabelle zeigt, welche Werte für die `-SkuName`- und `-Kind`-Parame
 
 | Speicherkontotyp | Unterstützte Redundanzkonfigurationen | Wert für den -Varianten-Parameter | Mögliche Werte für den Parameter -SkuName | Unterstützt hierarchischen Namespace |
 |--|--|--|--|--|
-| Standard, Universell V2 | LRS / GRS / RA-GRS / ZRS / GZRS / RA-GZRS | StorageV2 | Standard_LRS / Standard_GRS / Standard_RAGRS/ Standard_ZRS / Standard_GZRS / Standard_RAGZRS | Ja |
+| Standard „Allgemein v2“ | LRS / GRS / RA-GRS / ZRS / GZRS / RA-GZRS | StorageV2 | Standard_LRS / Standard_GRS / Standard_RAGRS/ Standard_ZRS / Standard_GZRS / Standard_RAGZRS | Ja |
 | Premium-Blockblobs | LRS / ZRS | BlockBlobStorage | Premium_LRS / Premium_ZRS | Ja |
 | Premium-Dateifreigaben | LRS / ZRS | FileStorage | Premium_LRS / Premium_ZRS | Nein |
 | Premium-Seitenblobs | LRS | StorageV2 | Premium_LRS | Nein |
@@ -265,7 +265,7 @@ Die folgende Tabelle zeigt, welche Werte für die `-sku`- und `-kind`-Parameter 
 
 | Speicherkontotyp | Unterstützte Redundanzkonfigurationen | Wert für den -Varianten-Parameter | Mögliche Werte für den -sku-Parameter | Unterstützt hierarchischen Namespace |
 |--|--|--|--|--|
-| Standard, Universell V2 | LRS / GRS / RA-GRS / ZRS / GZRS / RA-GZRS | StorageV2 | Standard_LRS / Standard_GRS / Standard_RAGRS/ Standard_ZRS / Standard_GZRS / Standard_RAGZRS | Ja |
+| Standard „Allgemein v2“ | LRS / GRS / RA-GRS / ZRS / GZRS / RA-GZRS | StorageV2 | Standard_LRS / Standard_GRS / Standard_RAGRS/ Standard_ZRS / Standard_GZRS / Standard_RAGZRS | Ja |
 | Premium-Blockblobs | LRS / ZRS | BlockBlobStorage | Premium_LRS / Premium_ZRS | Ja |
 | Premium-Dateifreigaben | LRS / ZRS | FileStorage | Premium_LRS / Premium_ZRS | Nein |
 | Premium-Seitenblobs | LRS | StorageV2 | Premium_LRS | Nein |
@@ -281,7 +281,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 
 New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
 ```azurecli-interactive
@@ -290,7 +290,7 @@ read resourceGroupName &&
 echo "Enter the location (i.e. centralus):" &&
 read location &&
 az group create --name $resourceGroupName --location "$location" &&
-az deployment group create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json"
+az deployment group create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
 > [!NOTE]

@@ -9,14 +9,14 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/09/2020
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 2bed95385823a167c7a31eed11d752894984ea38
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.topic: how-to
+ms.custom: contperf-fy21q2, automl
+ms.openlocfilehash: d104ad879919b11152d56a2c9b6b6fd8652c3ddc
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791875"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903792"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Auswerten der Ergebnisse von Experimenten des automatisierten maschinellen Lernens
 
@@ -240,7 +240,15 @@ Während Metriken und Diagramme zur Modellauswertung gut geeignet sind, um die a
 Einen Code First-Ansatz zum Einrichten von Modellerklärungen für automatisierte ML-Experimente mit dem Azure Machine Learning Python SDK finden Sie [hier](how-to-machine-learning-interpretability-automl.md).
 
 > [!NOTE]
-> Das ForecastTCN-Modell wird derzeit nicht durch Erläuterungen zum automatisierten maschinellen Lernen unterstützt und andere Vorhersagemodelle haben möglicherweise nur begrenzten Zugriff auf Interpretationstools.
+> Interpretierbarkeit, die Erklärung des besten Modells, ist nicht für Vorhersageexperimente mit automatisiertem maschinellem Lernen verfügbar, die die folgenden Algorithmen als bestes Modell oder Ensemble empfehlen: 
+> * TCNForecaster
+> * AutoArima
+> * ExponentialSmoothing
+> * Prophet
+> * Durchschnitt 
+> * Naiv
+> * Saisonaler Durchschnitt 
+> * Saisonal naiv
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Probieren Sie die Beispielnotebooks für die [Modellerklärung zum automatisierten Machine Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) aus.

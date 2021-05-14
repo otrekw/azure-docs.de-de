@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4113c3cf8fd5942a2fb8f644c67b15066d85b41
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92371510"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517854"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Verwaltungsfunktionen für Azure AD-Rollen in Privileged Identity Management
 
@@ -56,7 +56,7 @@ Diese beiden vom Benutzer initiierten Aktionen erfordern eine Genehmigung von ei
 
 ## <a name="api-changes"></a>API-Änderungen
 
-Wenn Kunden die aktualisierte Version in Ihrer Azure AD Organisation eingeführt haben, funktioniert die bestehende Graph-API nicht mehr. Sie müssen die Umstellung durchführen, um die [Graph-API für Azure-Ressourcenrollen](/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta) verwenden zu können. Um Azure AD-Rollen mit dieser API zu verwalten, ersetzen Sie `/azureResources` in der Signatur durch `/aadroles`, und verwenden Sie die Verzeichnis-ID als `resourceId`.
+Wenn Kunden die aktualisierte Version in Ihrer Azure AD Organisation eingeführt haben, funktioniert die bestehende Graph-API nicht mehr. Sie müssen die Umstellung durchführen, um die [Graph-API für Azure-Ressourcenrollen](/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta&preserve-view=true) verwenden zu können. Um Azure AD-Rollen mit dieser API zu verwalten, ersetzen Sie `/azureResources` in der Signatur durch `/aadroles`, und verwenden Sie die Verzeichnis-ID als `resourceId`.
 
 Wir haben versucht, mit allen Kunden in Kontakt zu treten, die die bisherige API verwenden, um sie über diese Änderung vorab zu informieren. Wenn Ihre Azure AD-Organisation auf die neue Version umgestellt wurde und Sie weiterhin von der alten API abhängig sind, wenden Sie sich unter pim_preview@microsoft.com an das Team.
 

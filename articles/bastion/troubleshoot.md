@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf6cde94374133e10b077ac799be0b85ae02bcb7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98133989"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773393"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Problembehandlung für Azure Bastion
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie die Problembehandlung für Azure Bastio
 
 **A:** Wenn Sie eine NSG erstellen und auf *AzureBastionSubnet* anwenden, stellen Sie sicher, dass Sie der NSG die erforderlichen Regeln hinzugefügt haben. Eine Liste der erforderlichen Regeln finden Sie unter [Verwenden von NSG-Zugriff und Azure Bastion](./bastion-nsg.md). Wenn Sie diese Regeln nicht hinzufügen, schlägt die Erstellung/Aktualisierung der NSG fehl.
 
-Ein Referenzbeispiel für die NSG-Regeln finden Sie in der [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg).
+Ein Referenzbeispiel für die NSG-Regeln finden Sie in der [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-azure-bastion-nsg/).
 Weitere Informationen finden Sie im [NSG-Leitfaden für Azure Bastion](bastion-nsg.md).
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Der SSH-Schlüssel kann nicht mit Azure Bastion verwendet werden.

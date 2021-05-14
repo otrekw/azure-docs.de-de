@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 12764a636d9a40cf731cf72242b7464b9e8fbe02
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 44b8f4e6fa6a3d9063d335012d8b9a2ca9be84e8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178250"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765885"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Für Azure Arc-fähige Kubernetes-Cluster muss die Azure Defender-Erweiterung installiert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Die Azure Defender-Erweiterung für Azure Arc bietet Bedrohungsschutz für Ihre Arc-fähigen Kubernetes-Cluster. Die Erweiterung sammelt Daten aus allen Knoten der Steuerungsebene (Master) im Cluster und sendet sie zur weiteren Analyse an das Azure Defender für Kubernetes-Back-End in der Cloud. Weitere Informationen finden Sie unter [https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc). |AuditIfNotExists, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ASC_Audit_Azure_Defender_Kubernetes_Arc_Extension.json) |
 |[Kubernetes-Cluster mit der angegebenen GitOps-Konfiguration unter Verwendung von HTTPS-Geheimnissen konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6f560f4-f582-4b67-b123-a37dcd1bf7ea) |Hiermit wird durch eine Bereitstellung von „sourceControlConfiguration“ für Kubernetes-Cluster sichergestellt, dass die Cluster ihre SSOT (Single Source of Truth) für Workloads und Konfigurationen aus dem definierten Git-Repository abrufen. Für diese Definition müssen HTTPS-Benutzer und -Schlüsselgeheimnisse in Key Vault gespeichert werden. Anweisungen finden Sie unter [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy). |deployIfNotExists, auditIfNotExists, disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster-HTTPS-secrets_DINE.json) |
