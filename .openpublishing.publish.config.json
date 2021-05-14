@@ -40,7 +40,7 @@
   "branches_to_filter": [
     "master",
     "master-sync-work",
-    "live-sxs"
+    "live"
   ],
   "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/azure-docs.de-de",
   "git_repository_branch_open_to_public_contributors": "master",
