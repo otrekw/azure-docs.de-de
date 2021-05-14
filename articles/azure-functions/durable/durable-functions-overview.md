@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: d99f1bd97c8199de1bda12f28f3fcb31b697946f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 27d3253d1bd2ec407968ff03e22c34222797ad81
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105031493"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656342"
 ---
 # <a name="what-are-durable-functions"></a>Was ist Durable Functions?
 
@@ -685,7 +685,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Außerdem stehen dynamisch generierte Proxys in .NET für signalisierende Entitäten auf typsichere Weise zur Verfügung. Zusätzlich zur Signalisierung können Clients auch den Zustand einer Entitätsfunktion mithilfe [typsicherer Methoden](durable-functions-bindings.md#entity-client-usage) für die Orchestrierungsclientbindung abfragen.
+> Außerdem stehen dynamisch generierte Proxys in .NET für signalisierende Entitäten auf typsichere Weise zur Verfügung. Zusätzlich zur Signalisierung können Clients auch den Zustand einer Entitätsfunktion mithilfe [typsicherer Methoden](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) für die Orchestrierungsclientbindung abfragen.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

@@ -1,18 +1,18 @@
 ---
 title: Auspacken und Zusammensetzen der Komponenten Ihres Azure Percept DK
 description: Erfahren Sie, wie Sie Ihr Azure Percept DK auspacken, verbinden und einschalten.
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/16/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: efa255ba38f7e00785335bf458ecc0ed91da646b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: deaa0a3904eef33ebab8e73687d6864d389e2963
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608179"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748041"
 ---
 # <a name="quickstart-unbox-and-assemble-your-azure-percept-dk-components"></a>Schnellstart: Auspacken und Zusammensetzen der Komponenten Ihres Azure Percept DK
 

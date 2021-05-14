@@ -3,12 +3,13 @@ title: Aktivieren der VM-Erweiterung mithilfe einer Azure Resource Manager-Vorla
 description: In diesem Artikel wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 095f95192a2054d34e438d8683ac9c2e20a824f1
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8ad2cd02393404b419bc7028e54571d2db285982
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389637"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802448"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe einer ARM-Vorlage
 
@@ -326,7 +327,6 @@ Zum Verwenden der Azure Monitor Dependency-Agent-Erweiterung steht das folgende 
       "properties": {
         "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
         "type": "DependencyAgentLinux",
-        "typeHandlerVersion": "9.5",
         "autoUpgradeMinorVersion": true
       }
     }
@@ -364,7 +364,6 @@ Zum Verwenden der Azure Monitor Dependency-Agent-Erweiterung steht das folgende 
       "properties": {
         "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
         "type": "DependencyAgentWindows",
-        "typeHandlerVersion": "9.5",
         "autoUpgradeMinorVersion": true
       }
     }
@@ -430,7 +429,6 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung (Vorscha
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
           "secretsManagementSettings": {
@@ -500,7 +498,6 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung (Vorscha
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForWindows",
-      "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {

@@ -3,16 +3,16 @@ title: 'Muster: Verwenden von Tags in einer Richtliniendefinition'
 description: Dieses Azure Policy-Muster bietet Beispiele für das Hinzufügen parametrisierter Tags oder das Erben von Tags einer Ressourcengruppe in einer Richtliniendefinition.
 ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: c748eb9b8ea795f9725082ec0aa0b8065ada8c65
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 30357632e92535368505fd72d2414292da0f5ca1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093366"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752307"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure Policy-Muster: Tags
 
-[Tags](../../..//azure-resource-manager/management/tag-resources.md) sind ein wichtiger Bestandteil der Verwaltung, Organisation und Steuerung Ihrer Azure-Ressourcen. Azure Policy bietet Ihnen die Möglichkeit, Tags für Ihre neuen und bestehenden Ressourcen mit der Auswirkung [Modify (Ändern)](../concepts/effects.md#modify) und mithilfe von [Wartungstasks](../how-to/remediate-resources.md) im gewünschten Umfang zu konfigurieren.
+[Tags](../../../azure-resource-manager/management/tag-resources.md) sind ein wichtiger Bestandteil der Verwaltung, Organisation und Steuerung Ihrer Azure-Ressourcen. Azure Policy bietet Ihnen die Möglichkeit, Tags für Ihre neuen und bestehenden Ressourcen mit der Auswirkung [Modify (Ändern)](../concepts/effects.md#modify) und mithilfe von [Wartungstasks](../how-to/remediate-resources.md) im gewünschten Umfang zu konfigurieren.
 
 ## <a name="sample-1-parameterize-tags"></a>Beispiel 1: Parametrisieren von Tags
 

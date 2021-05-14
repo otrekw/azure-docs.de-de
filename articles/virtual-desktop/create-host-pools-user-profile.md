@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 69582f26544d954088fd5a57bfe5730750b7b5a8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 33e1b069221331aed8f8ca13bd088ba067a85ba7
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447912"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752461"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Erstellen eines Profilcontainers für einen Hostpool mit einer Dateifreigabe
 
@@ -28,7 +28,7 @@ Achten Sie beim Erstellen des virtuellen Computers darauf, dass Sie ihn entweder
 
 - [Erstellen eines virtuellen Computers aus einem Azure-Katalogimage](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [Erstellen eines virtuellen Computers aus einem verwalteten Image](../virtual-machines/windows/create-vm-generalized-managed.md)
-- [Erstellen eines virtuellen Computers aus einem nicht verwalteten Image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [Erstellen eines virtuellen Computers aus einem nicht verwalteten Image](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image)
 
 Nachdem Sie den virtuellen Computer erstellt haben, können Sie ihn in die Domäne einbinden, indem Sie die folgenden Schritte ausführen:
 

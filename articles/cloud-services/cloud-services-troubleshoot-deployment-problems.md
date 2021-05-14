@@ -1,19 +1,19 @@
 ---
 title: Behandeln von Bereitstellungsproblemen bei Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Bei der Bereitstellung eines Clouddiensts in Azure können einige allgemeine Probleme auftreten. Dieser Artikel bietet Lösungen für einige dieser Probleme.
-ms.topic: article
+ms.topic: troubleshooting
 ms.service: cloud-services
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 7b3d7a9a674aab3976da9399f71ff4d8df08eb62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39c69d69012345cd636964ca813ac93186946cb9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98741076"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771593"
 ---
 # <a name="troubleshoot-azure-cloud-services-classic-deployment-problems"></a>Behandeln von Bereitstellungsproblemen mit Azure Cloud Services (klassisch)
 

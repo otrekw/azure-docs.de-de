@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 02301083d716d9a0c69009469854d30b513d1ede
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 747fc1d3db2fade0cd971da3a88d7c1825f8b8bd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108183148"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762027"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[\[Vorschau:\] Für Azure Arc-fähige Kubernetes-Cluster muss die Azure Defender-Erweiterung installiert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Die Azure Defender-Erweiterung für Azure Arc bietet Bedrohungsschutz für Ihre Arc-fähigen Kubernetes-Cluster. Die Erweiterung sammelt Daten aus allen Knoten der Steuerungsebene (Master) im Cluster und sendet sie zur weiteren Analyse an das Azure Defender für Kubernetes-Back-End in der Cloud. Weitere Informationen finden Sie unter [https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc). |AuditIfNotExists, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ASC_Audit_Azure_Defender_Kubernetes_Arc_Extension.json) |
 |[Private Azure Kubernetes Service-Cluster müssen aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F040732e8-d947-40b8-95d6-854c95024bf8) |Aktivieren Sie das Feature für private Cluster für Ihren Azure Kubernetes Service-Cluster, um den Netzwerkdatenverkehr zwischen Ihrem API-Server und Ihren Knotenpools auf das private Netzwerk zu beschränken. Diese Verschlüsselung ist eine gängige Anforderung in vielen gesetzlichen und branchenspezifischen Konformitätsstandards. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_PrivateCluster_Deny.json) |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 15caaad0539c9c8c61c8fef6c81761054c68f431
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: a266023bbf44ef0a3ad4a6f4951fa3995ad917c0
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073249"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785437"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Häufig gestellte Fragen zur Maschinelles Sehen-API
 
@@ -34,7 +34,7 @@ ms.locfileid: "108073249"
 
 **Frage**: *Kann ich die Funktion „OCR (Lesen)“ lokal bereitstellen?*
 
-**Antwort**: Ja. Die Cloud-API „OCR (Lesen)“ ist auch als Docker-Container für die lokale Bereitstellung verfügbar. Informationen zum Bereitstellen der OCR-Container finden Sie [hier](/computer-vision-how-to-install-containers).
+**Antwort**: Ja. Die Cloud-API „OCR (Lesen)“ ist auch als Docker-Container für die lokale Bereitstellung verfügbar. Informationen zum Bereitstellen der OCR-Container finden Sie [hier](/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers).
 
 ---
 

@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
-ms.date: 04/25/2021
-ms.openlocfilehash: 24138b1cbdf496f29a4975ebfd19acdc19cddd87
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.date: 04/29/2021
+ms.openlocfilehash: 68a15e14b585184bd956c3ac8f79cdd5eac5d76c
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001230"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788065"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory
 
@@ -53,7 +53,7 @@ Zum Schluss laden Sie die neueste Version der selbstgehosteten IR sowie die zus�
 
 ### <a name="enable-windows-authentication-for-on-premises-tasks"></a>Aktivieren der Windows-Authentifizierung für lokale Tasks
 
-Wenn für lokale Stagingtasks/„SQL ausführen“-Tasks in Ihrer selbstgehosteten IR die Windows-Authentifizierung erforderlich ist, müssen Sie auch [die Windows-Authentifizierungsfunktion in Ihrer Azure-SSIS IR konfigurieren](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth.md). 
+Wenn für lokale Stagingtasks/„SQL ausführen“-Tasks in Ihrer selbstgehosteten IR die Windows-Authentifizierung erforderlich ist, müssen Sie auch [die Windows-Authentifizierungsfunktion in Ihrer Azure-SSIS IR konfigurieren](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). 
 
 Ihre lokalen Stagingtasks/„SQL ausführen“-Tasks werden mit dem Dienstkonto der selbstgehosteten IR (standardmäßig *NT SERVICE\DIAHostService*) aufgerufen, und der Zugriff auf Ihre Datenspeicher erfolgt über das Windows-Authentifizierungskonto. Beiden Konten müssen bestimmte Sicherheitsrichtlinien zugewiesen werden. Wechseln Sie auf dem Computer mit der selbstgehosteten IR zu **Lokale Sicherheitsrichtlinie** > **Lokale Richtlinien** > **Zuweisen von Benutzerrechten**, und führen Sie dann die folgenden Schritte aus:
 
@@ -69,7 +69,7 @@ Erstellen Sie einen mit Azure Blob Storage verknüpften Dienst in der gleichen D
 - Wählen Sie unter **Authentifizierungsmethode** die Option **Kontoschlüssel**, **SAS-URI**, **Dienstprinzipal** oder **Verwaltete Identität** aus.  
 
 >[!TIP]
->Wenn Sie die Methode **Dienstprinzipal** auswählen, gewähren Sie dem Dienstprinzipal mindestens die Rolle *Mitwirkender an Storage-Blobdaten*. Weitere Informationen finden Sie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties). Wenn Sie die Methode **Verwaltete Identität** auswählen, erteilen Sie Ihrer verwalteten ADF-Identität eine geeignete Rolle für den Zugriff auf Azure Blob Storage. Weitere Informationen finden Sie unter [Verwaltete Identitäten für die Authentifizierung von Azure-Ressourcen](/sql/integration-services/connection-manager/azure-storage-connection-manager.md#managed-identities-for-azure-resources-authentication).
+>Wenn Sie die Methode **Dienstprinzipal** auswählen, gewähren Sie dem Dienstprinzipal mindestens die Rolle *Mitwirkender an Storage-Blobdaten*. Weitere Informationen finden Sie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties). Wenn Sie die Methode **Verwaltete Identität** auswählen, erteilen Sie Ihrer verwalteten ADF-Identität eine geeignete Rolle für den Zugriff auf Azure Blob Storage. Weitere Informationen finden Sie unter [Verwaltete Identitäten für die Authentifizierung von Azure-Ressourcen](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication).
 
 ![Vorbereiten des mit Azure Blob Storage verknüpften Diensts für das Staging](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -77,9 +77,9 @@ Erstellen Sie einen mit Azure Blob Storage verknüpften Dienst in der gleichen D
 
 Nachdem Sie Ihre selbstgehostete IR und den mit Azure Blob Storage verknüpften Dienst für das Staging vorbereitet haben, können Sie jetzt Ihre neue oder vorhandene Azure-SSIS IR mit der selbstgehosteten IR als Proxy in Ihrem Data Factory-Portal bzw. in Ihrer App konfigurieren. Bevor Sie das tun, können Sie jedoch –falls Ihre vorhandene Azure-SSIS IR bereits ausgeführt wird – diese beenden, bearbeiten und dann neu starten.
 
-1. Überspringen Sie im Bereich **Integration Runtime-Setup** die Abschnitte **Allgemeine Einstellungen** und **SQL-Einstellungen**, indem Sie **Weiter** auswählen. 
+1. Überspringen Sie im Bereich **Integration Runtime-Setup** die Seiten **Allgemeine Einstellungen** und **Bereitstellungseinstellungen**, indem Sie die Schaltfläche **Weiter** auswählen. 
 
-1. Führen Sie im Abschnitt **Erweiterte Einstellungen** die folgenden Schritte aus:
+1. Gehen Sie auf der Seite **Erweiterte Einstellungen** folgendermaßen vor:
 
    1. Aktivieren Sie das Kontrollkästchen **Selbstgehostete Integration Runtime als Proxy für Ihre Azure-SSIS Integration Runtime**. 
 
@@ -89,7 +89,7 @@ Nachdem Sie Ihre selbstgehostete IR und den mit Azure Blob Storage verknüpften 
 
    1. Geben Sie im Feld **Stagingpfad** einen Blobcontainer in Ihrem ausgewählten Azure Storage-Konto an, oder lassen Sie das Feld leer, wenn Sie einen Standardpfad für den Stagingprozess verwenden möchten.
 
-   1. Wählen Sie **Weiter**.
+   1. Wählen Sie die Schaltfläche **Weiter**.
 
    ![Erweiterte Einstellungen bei einer selbstgehosteten IR](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -133,13 +133,13 @@ Wenn Sie die neuesten SSDT entweder als Erweiterung „SSIS-Projekte“ für Vis
 * [Herunterladen der Erweiterung „SSIS-Projekte“ für Visual Studio](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 * [Herunterladen des eigenständigen Installationsprogramms](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)   
 
-Wenn Sie neue Pakete entwerfen, die Datenflusstasks mit Komponenten enthalten, die lokal auf Daten zugreifen, können Sie die `ConnectByProxy`-Eigenschaft aktivieren, indem Sie sie im Bereich **Eigenschaften** der entsprechenden Verbindungs-Manager auf *True* festlegen.  
-
-![Aktivieren der ConnectByProxy-Eigenschaft](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
+Wenn Sie neue Pakete entwerfen, die Datenflusstasks mit Komponenten enthalten, die lokal auf Daten zugreifen, können Sie die `ConnectByProxy`-Eigenschaft aktivieren, indem Sie sie im Bereich **Eigenschaften** der entsprechenden Verbindungs-Manager auf *True* festlegen.
 
 Wenn Sie neue Pakete entwerfen, die lokal ausgeführte „SQL ausführen“-Tasks enthalten, können Sie die `ExecuteOnProxy`-Eigenschaft aktivieren, indem Sie sie im Bereich **Eigenschaften** der entsprechenden Tasks selbst auf *True* festlegen.
 
-Sie können die Eigenschaften `ConnectByProxy`/`ExecuteOnProxy` auch aktivieren, wenn Sie vorhandene Pakete ausführen, ohne sie manuell einzeln ändern zu müssen.  Es gibt zwei Optionen:
+![Aktivieren der ConnectByProxy-Eigenschaft](media/self-hosted-integration-runtime-proxy-ssis/shir-proxy-properties.png)
+
+Sie können die Eigenschaften `ConnectByProxy`/`ExecuteOnProxy` auch aktivieren, wenn Sie vorhandene Pakete ausführen, ohne sie manuell einzeln ändern zu müssen. Es gibt zwei Optionen:
 - **Option A**: Öffnen, Neuerstellen und erneutes Bereitstellen des Projekts, das diese Pakete enthält, mit den neuesten SSDT, die in Ihrer Azure-SSIS IR ausgeführt werden sollen. Anschließend können Sie die `ConnectByProxy`-Eigenschaft aktivieren, indem Sie sie für die entsprechenden Verbindungs-Manager auf *True* festlegen, die auf der Registerkarte **Verbindungs-Manager** des Popupfensters **Paket ausführen** angezeigt werden, wenn Sie Pakete aus SSMS ausführen.
 
   ![Aktivieren der ConnectByProxy-Eigenschaft (2)](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
@@ -158,7 +158,7 @@ Sie können die Eigenschaften `ConnectByProxy`/`ExecuteOnProxy` auch aktivieren,
 
 ## <a name="debug-the-on-premises-tasks-and-cloud-staging-tasks"></a>Debuggen der lokalen Tasks und Cloudstagingtasks
 
-In Ihrer selbstgehosteten IR finden Sie die Laufzeitprotokolle im Ordner *C:\ProgramData\SSISTelemetry* und die Ausführungsprotokolle der lokalen Stagingtasks/„SQL ausführen“-Tasks im Ordner *C:\ProgramData\SSISTelemetry\ExecutionLog*.  Die Ausführungsprotokolle von Cloudstagingtasks finden Sie in Ihrer SSISDB, an den angegebenen Protokollierungsdateipfaden oder in Azure Monitor. Dies ist unter anderem abhängig davon, ob Sie Ihre Pakete in SSISDB speichern oder die [Azure Monitor-Integration](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor) aktivieren. Die eindeutigen IDs der lokalen Stagingtasks finden Sie auch in den Ausführungsprotokollen der Cloudstagingtasks. 
+In Ihrer selbstgehosteten IR finden Sie die Laufzeitprotokolle im Ordner *C:\ProgramData\SSISTelemetry* und die Ausführungsprotokolle der lokalen Stagingtasks/„SQL ausführen“-Tasks im Ordner *C:\ProgramData\SSISTelemetry\ExecutionLog*. Die Ausführungsprotokolle von Cloudstagingtasks finden Sie in Ihrer SSISDB, an den angegebenen Protokollierungsdateipfaden oder in Azure Monitor. Dies ist unter anderem abhängig davon, ob Sie Ihre Pakete in SSISDB speichern oder die [Azure Monitor-Integration](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor) aktivieren. Die eindeutigen IDs der lokalen Stagingtasks finden Sie auch in den Ausführungsprotokollen der Cloudstagingtasks. 
 
 ![Eindeutige ID des ersten Stagingtasks](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -192,7 +192,7 @@ Im Folgenden finden Sie Beispiele von unseren Partnern [Theobald Software](https
 
 ## <a name="enforce-tls-12"></a>Erzwingen von TLS 1.2
 
-Wenn Sie starke Kryptografie/ein sichereres Netzwerkprotokoll (TLS 1.2) verwenden und gleichzeitig ältere SSL-/TLS-Versionen auf Ihrer selbstgehosteten IR deaktivieren müssen, können Sie das Skript *main.cmd* aus dem Ordner *CustomSetupScript/UserScenarios/TLS 1.2* unseres Blobcontainers in der öffentlichen Vorschau herunterladen und ausführen.  Wenn Sie [Azure Storage-Explorer](https://storageexplorer.com/) verwenden, können Sie eine Verbindung mit unserem Blobcontainer in der öffentlichen Vorschau herstellen, indem Sie den folgenden SAS-URI eingeben:
+Wenn Sie starke Kryptografie/ein sichereres Netzwerkprotokoll (TLS 1.2) verwenden und gleichzeitig ältere SSL-/TLS-Versionen auf Ihrer selbstgehosteten IR deaktivieren müssen, können Sie das Skript *main.cmd* aus dem Ordner *CustomSetupScript/UserScenarios/TLS 1.2* unseres Blobcontainers in der öffentlichen Vorschau herunterladen und ausführen. Wenn Sie [Azure Storage-Explorer](https://storageexplorer.com/) verwenden, können Sie eine Verbindung mit unserem Blobcontainer in der öffentlichen Vorschau herstellen, indem Sie den folgenden SAS-URI eingeben:
 
 `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 

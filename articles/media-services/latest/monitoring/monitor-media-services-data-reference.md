@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
 ms.date: 04/21/2021
-ms.openlocfilehash: 1fff4cdf24f9be245026757e18050aa121b4d62a
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a9bc17528e1314a033cf2e45fee4b112eb088cc3
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138857"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715572"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Datenreferenz zur Überwachung von Media Services
 
@@ -56,7 +56,7 @@ Media Services unterstützt die folgenden Ressourcenprotokolle: [Microsoft.Media
 
 Eine detaillierte Beschreibung des Schemas der obersten Ebene für Diagnoseprotokolle finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../azure-monitor/essentials/resource-logs-schema.md).
 
-## <a name="key-delivery-log-schema-properties"></a>Eigenschaften des Protokollschemas der Schlüsselübermittlung
+### <a name="key-delivery"></a>Schlüsselübermittlung 
 
 Diese Eigenschaften sind spezifisch für das Protokollschema für Schlüsselübermittlung.
 

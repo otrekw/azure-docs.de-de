@@ -16,6 +16,8 @@
       href: multi-factor-authentication-end-user-app-passwords.md
     - name: Anmeldung
       href: user-help-sign-in.md?toc=./toc.json
+    - name: 'Anmeldung beim Geschäfts-, Schul- oder Unikonto'
+      href: multi-factor-authentication-end-user-signin.md
     - name: Hier erhalten Sie Hilfe
       href: multi-factor-authentication-end-user-troubleshoot.md
 - name: Hilfe zur Kennwortzurücksetzung

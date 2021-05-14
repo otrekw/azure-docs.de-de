@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8a192c3c3accf115b1a1db8e32a56d6d936078be
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 71713fc061165673f132f5ab778391bba3e0709a
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277654"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685349"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Erstellen eines Streaminglocators und von URLs
 
@@ -161,7 +161,7 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 }
 ```
 
-Das vollständige Codebeispiel finden Sie hier: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+Das vollständige Codebeispiel finden Sie hier: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/VideoEncoding/Encoding_PredefinedPreset/Program.cs)
 
 ## <a name="see-also"></a>Weitere Informationen
 

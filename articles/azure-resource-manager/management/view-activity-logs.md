@@ -3,13 +3,13 @@ title: Anzeigen von Azure-Aktivitätsprotokollen zur Überwachung von Ressourcen
 description: Verwenden Sie die Aktivitätsprotokolle zur Überprüfung von Benutzeraktionen und Fehlern. Zeigt das Azure-Portal, PowerShell, die Azure CLI und REST
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8836f7c34f3ac3084d75937218c245bd5cd9e115
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 8917ffe287ecf60659f48dfb947bbd5b06d46005
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316639"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752916"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen
 
