@@ -9,12 +9,12 @@ ms.date: 02/12/2021
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 45ae3d80202bfb29074461f899798d278eb0895b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 286e230a501b8730dd3c33e33639d89aa319d047
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538358"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286976"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt
 
@@ -58,7 +58,7 @@ Der Hostname entspricht der Speicherendpunkt-URL ohne die Protokoll-ID und den n
 
 2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Eigenschaften** aus.  
 
-3. Kopieren Sie den Wert von **Primärer Blob-Dienstendpunkt** oder **Primärer statischer Websiteendpunkt** in eine Textdatei. 
+3. Kopieren Sie den Wert des **Blob-Dienstendpunkts** oder des **statischen Websiteendpunkts** in eine Textdatei. 
   
    > [!NOTE]
    > Der Data Lake Storage-Endpunkt wird nicht unterstützt (z. B. `https://mystorageaccount.dfs.core.windows.net/`).
@@ -100,14 +100,12 @@ Erstellen Sie einen CNAME-Eintrag, der auf Ihren Hostnamen verweist. Ein CNAME-E
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
-2. Wählen Sie im Menübereich unter **Blob-Dienst** die Option **Benutzerdefinierte Domäne** aus.
+2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Netzwerk** aus.
+
+3. Wählen Sie auf der Seite **Netzwerk** die Registerkarte **Benutzerdefinierte Domäne** aus.
 
    > [!NOTE]
    > Diese Option wird nicht in Konten angezeigt, für die das Feature für hierarchische Namespaces aktiviert ist. Verwenden Sie zum Ausführen dieses Schritts für diese Konten entweder PowerShell oder die Azure CLI.
-
-   ![Option „Benutzerdefinierte Domäne“](./media/storage-custom-domain-name/custom-domain-button.png "Benutzerdefinierte Domäne")
-
-   Der Bereich **Benutzerdefinierte Domäne** wird geöffnet.
 
 3. Geben Sie im Textfeld **Domänenname** den Namen Ihrer benutzerdefinierten Domäne einschließlich der Unterdomäne ein.  
    
@@ -194,7 +192,7 @@ Der Hostname entspricht der Speicherendpunkt-URL ohne die Protokoll-ID und den n
 
 2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Eigenschaften** aus.  
 
-3. Kopieren Sie den Wert von **Primärer Blob-Dienstendpunkt** oder **Primärer statischer Websiteendpunkt** in eine Textdatei. 
+3. Kopieren Sie den Wert des **Blob-Dienstendpunkts** oder des **statischen Websiteendpunkts** in eine Textdatei.  
 
    > [!NOTE]
    > Der Data Lake Storage-Endpunkt wird nicht unterstützt (z. B. `https://mystorageaccount.dfs.core.windows.net/`).
@@ -238,14 +236,12 @@ Wenn Sie Ihre benutzerdefinierte Domäne vorab bei Azure registrieren, kann Azur
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
-2. Wählen Sie im Menübereich unter **Blob-Dienst** die Option **Benutzerdefinierte Domäne** aus.
+2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Netzwerk** aus.
+
+3. Wählen Sie auf der Seite **Netzwerk** die Registerkarte **Benutzerdefinierte Domäne** aus.
 
    > [!NOTE]
    > Diese Option wird nicht in Konten angezeigt, für die das Feature für hierarchische Namespaces aktiviert ist. Verwenden Sie zum Ausführen dieses Schritts für diese Konten entweder PowerShell oder die Azure CLI.
-
-   ![Option „Benutzerdefinierte Domäne“](./media/storage-custom-domain-name/custom-domain-button.png "Benutzerdefinierte Domäne")
-
-   Der Bereich **Benutzerdefinierte Domäne** wird geöffnet.
 
 3. Geben Sie im Textfeld **Domänenname** den Namen Ihrer benutzerdefinierten Domäne einschließlich der Unterdomäne ein.  
    
@@ -331,12 +327,13 @@ Wenn Sie die Zuordnung einer benutzerdefinierten Domäne entfernen möchten, mü
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
-2. Wählen Sie im Menübereich unter **Blob-Dienst** die Option **Benutzerdefinierte Domäne** aus.  
-   Der Bereich **Benutzerdefinierte Domäne** wird geöffnet.
+2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Netzwerk** aus.
 
-3. Löschen Sie den Inhalt des Textfelds, das den Namen der benutzerdefinierten Domäne enthält.
+3. Wählen Sie auf der Seite **Netzwerk** die Registerkarte **Benutzerdefinierte Domäne** aus.
 
-4. Wählen Sie die Schaltfläche **Speichern** aus.
+4. Löschen Sie den Inhalt des Textfelds, das den Namen der benutzerdefinierten Domäne enthält.
+
+5. Wählen Sie die Schaltfläche **Speichern** aus.
 
 Wenn die benutzerdefinierte Domäne erfolgreich entfernt wurde, wird in einer Portalbenachrichtigung angezeigt, dass Ihr Speicherkonto erfolgreich aktualisiert wurde.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Verbinden eines lokalen Netzwerks mit einem virtuellen Netzwerk: Site-to-Site-VPN: Befehlszeilenschnittstelle (CLI)'
-description: Erstellen Sie eine IPsec-Site-to-Site-VPN-Gateway-Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk über das öffentliche Internet mithilfe der CLI.
+description: Erfahren Sie, wie Sie eine IPsec-Site-to-Site-VPN Gateway-Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk über das öffentliche Internet mithilfe der CLI erstellen.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2c59c67eb7b5ae5b26ac5517afba433fe8c028fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64c67c648244a224414c994a9edc8e25824840f4
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104611745"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226838"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung per CLI
 

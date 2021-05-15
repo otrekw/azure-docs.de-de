@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1404b2dd035b7fd4b06c5f959fd9ba45f6be9c75
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019241"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164973"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Installieren eines Linux-Masterzielservers für Failbacks
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -21,7 +21,6 @@ Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtue
 Falls es sich bei Ihrem geschützten virtuellen Computer um einen virtuellen Windows-Computer handelt, benötigen Sie ein Windows-Masterziel. Bei einem virtuellen Linux-Computer benötigen Sie ein Linux-Masterziel. Lesen Sie die folgenden Schritte, um Informationen zum Erstellen und Installieren eines Linux-Masterziels zu erhalten.
 
 > [!IMPORTANT]
-> Ab Version 9.10.0 des Masterzielservers kann der neueste Masterzielserver nur auf einem Ubuntu 16.04 Server installiert werden. Neue Installationen sind auf CentOS6.6-Servern nicht zugelassen. Sie können Ihre alten Masterzielserver jedoch weiterhin mithilfe der Version 9.10.0 aktualisieren.
 > Masterzielserver auf LVMs werden nicht unterstützt.
 
 ## <a name="overview"></a>Übersicht
@@ -58,6 +57,9 @@ Führen Sie die folgenden Schritte aus, um das 64-Bit-Betriebssystem Ubuntu 16.0
 
 1.   Rufen Sie den [Downloadlink](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso) auf, wählen Sie den nächstgelegenen Spiegel aus, und laden Sie ein ISO-Image mit Ubuntu 16.04.2 (minimal 64 Bit) herunter.
 Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit in das DVD-Laufwerk ein, und starten Sie das System.
+
+>[!NOTE]
+> Ab Version [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) wird das Ubuntu 20.04-Betriebssystem für Linux-Masterzielserver unterstützt. Wenn Sie das neueste Betriebssystem verwenden möchten, fahren Sie mit dem Einrichten des Computers mit dem Iso-Image Ubuntu 20.04 fort.
 
 1.  Wählen Sie **English** als bevorzugte Sprache aus, und drücken Sie die **EINGABETASTE**.
     
@@ -182,6 +184,10 @@ Der Azure Site Recovery-Masterzielserver erfordert eine bestimmte Version von Ub
 > Stellen Sie sicher, dass Sie über eine Internetverbindung verfügen, um zusätzliche Pakete herunterzuladen und zu installieren. Wenn keine Internetverbindung vorhanden ist, müssen Sie diese Deb-Pakete manuell suchen und installieren.
 
  `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
+
+>[!NOTE]
+> Ab Version [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) wird das Ubuntu 20.04-Betriebssystem für Linux-Masterzielserver unterstützt.
+> Wenn Sie das neueste Betriebssystem verwenden möchten, aktualisieren Sie das Betriebssystem auf Ubuntu 20.04, bevor Sie fortfahren. Um das Betriebssystem später zu aktualisieren, können Sie die [hier](#upgrade-os-of-master-target-server-from-ubuntu-1604-to-ubuntu-2004) aufgeführten Anweisungen befolgen.
 
 ### <a name="get-the-installer-for-setup"></a>Herunterladen des Installationsprogramms zur Einrichtung
 
@@ -335,6 +341,17 @@ Führen Sie das Installationsprogramm aus. Es erkennt automatisch, dass der Agen
 
 
 Sie sehen, dass im Feld **Version** die Versionsnummer des Masterziels angegeben ist.
+
+## <a name="upgrade-os-of-master-target-server-from-ubuntu-1604-to-ubuntu-2004"></a>Upgrade des Betriebssystems des Masterzielservers von Ubuntu 16.04 auf Ubuntu 20.04
+
+Ab Version 9.42 unterstützt ASR Linux-Masterzielserver unter Ubuntu 20.04. Zum Aktualisieren des Betriebssystems eines vorhandenen Masterzielservers gehen Sie wie folgt vor:
+
+1. Stellen Sie sicher, dass der Linux-Masterzielserver für horizontale Skalierung nicht für den erneuten Schutz einer geschützten VM verwendet wird.
+2. Deinstallieren Sie das Installationsprogramm des Masterzielservers auf dem Computer.
+3. Aktualisieren Sie nun das Betriebssystem von Ubuntu 16.04 auf 20.04.
+4. Starten Sie den Computer nach dem erfolgreichen Upgrade des Betriebssystems neu.
+5. [Laden Sie nun das neueste Installationsprogramm herunter](#download-the-master-target-installation-packages), und befolgen Sie die [oben stehenden](#install-the-master-target) Anweisungen, um die Installation des Masterzielservers abzuschließen.
+
 
 ## <a name="common-issues"></a>Häufige Probleme
 

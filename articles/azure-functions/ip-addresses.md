@@ -3,12 +3,12 @@ title: IP-Adressen in Azure Functions
 description: Erfahren Sie, wie Sie eingehende und ausgehende IP-Adressen für Funktionen-Apps finden und wodurch diese geändert werden.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 2c248756899459e17082bcab863a4e857b594909
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30b45394ea620d05a89c3b2fd747573f1ea8017d
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608230"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204997"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-Adressen in Azure Functions
 
@@ -92,14 +92,24 @@ Wenn Ihre Funktions-App in einem [Verbrauchstarif](consumption-plan.md) oder [Pr
 
 ## <a name="outbound-ip-address-changes"></a>Änderungen der ausgehenden IP-Adresse
 
-Der Satz der verfügbaren ausgehenden IP-Adressen für eine Funktionen-App kann geändert werden, wenn Sie:
+Die relative Stabilität der ausgehenden IP-Adresse hängt vom Hostingplan ab.  
+
+### <a name="consumption-and-premium-plans"></a>Verbrauchs- und Premium-Pläne
+
+Aufgrund des Verhaltens der automatischen Skalierung kann sich die ausgehende IP-Adresse jederzeit ändern, wenn sie in einem [Verbrauchsplan](consumption-plan.md) oder einem [Premium-Plan](functions-premium-plan.md) ausgeführt wird. 
+
+Falls Sie die ausgehende IP-Adresse Ihrer Funktions-App steuern müssen, z. B. wenn Sie sie einer Positivliste hinzufügen müssen, erwägen Sie die Implementierung eines [NAT-Gateways für virtuelle Netzwerke](#virtual-network-nat-gateway-for-outbound-static-ip) in Ihrem Premium-Plan.
+
+### <a name="dedicated-plans"></a>Dedizierte Pläne
+
+Bei der Ausführung in dedizierten (App Service-)Plänen kann sich der Satz der verfügbaren ausgehenden IP-Adressen für eine Funktions-App ändern, wenn Sie:
 
 * Maßnahmen ergreifen, durch die sich die eingehende IP-Adresse ändern kann.
-* den Tarif für Ihren App Service-Plan wechseln. Alle möglichen ausgehenden IP-Adressen, die Ihre App in allen Tarifen verwenden kann, sind in der `possibleOutboundIPAddresses`-Eigenschaft aufgelistet. Siehe [Ermitteln der ausgehenden IP-Adressen](#find-outbound-ip-addresses).
+* den dedizierten (App Service-)Plan wechseln. Alle möglichen ausgehenden IP-Adressen, die Ihre App in allen Tarifen verwenden kann, sind in der `possibleOutboundIPAddresses`-Eigenschaft aufgelistet. Siehe [Ermitteln der ausgehenden IP-Adressen](#find-outbound-ip-addresses).
 
-Wenn Ihre Funktions-App in einem [Verbrauchstarif](consumption-plan.md) oder [Premium-Tarif](functions-premium-plan.md) ausgeführt wird, kann sich die ausgehende IP-Adresse auch ändern, selbst wenn Sie noch keine der [oben aufgeführten](#inbound-ip-address-changes) Aktionen ausgeführt haben.
+#### <a name="forcing-an-outbound-ip-address-change"></a>Erzwingen der Änderung einer ausgehenden IP-Adresse
 
-Gehen Sie folgendermaßen vor, um die Änderung einer ausgehenden IP-Adresse zu erzwingen:
+Gehen Sie folgendermaßen vor, um die Änderung einer ausgehenden IP-Adresse in einem dedizierten (App Service-)Plan zu erzwingen:
 
 1. Skalieren Sie Ihren App Service-Plan zwischen Standard- und Premium v2-Tarifen hoch oder herunter.
 

@@ -47,8 +47,6 @@
       href: logs/get-started-queries.md
     - name: Erstellen eines Dashboards aus einer Protokollabfrage
       href: visualize/tutorial-logs-dashboards.md
-    - name: Erstellen einer Warnung aus einer Protokollabfrage
-      href: alerts/tutorial-response.md
     - name: Automatische Skalierung von Leistung und Zeitplan
       href: autoscale/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
@@ -87,6 +85,8 @@
               href: app/resource-manager-web-app.md
             - name: Azure-Funktionen
               href: app/resource-manager-function-app.md
+        - name: Container Insights
+          href: containers/resource-manager-container-insights.md
         - name: Regeln für die Datensammlung
           href: agents/resource-manager-data-collection-rules.md
         - name: Diagnoseeinstellungen
@@ -95,10 +95,10 @@
           href: logs/resource-manager-workspace.md
         - name: Protokollabfragen
           href: logs/resource-manager-log-queries.md
+        - name: Erkenntnisse zu SQL
+          href: insights/resource-manager-sql-insights.md
         - name: Arbeitsmappen
           href: visualize/resource-manager-workbooks.md
-        - name: Container Insights
-          href: containers/resource-manager-container-insights.md
         - name: VM Insights
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
@@ -146,7 +146,7 @@
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/monitor-security-baseline?toc=/azure/azure-monitor/toc.json
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: .//security-controls-policy.md
@@ -211,7 +211,7 @@
               items:
                 - name: Azure-Portal
                   href: logs/quick-create-workspace.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: logs/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: logs/powershell-workspace-configuration.md
@@ -475,8 +475,6 @@
           items:
             - name: Verwalten von Metrikwarnungen
               href: alerts/alerts-metric.md
-            - name: Verfügbarkeit
-              href: app/monitor-web-app-availability.md
             - name: Verwenden von dynamischen Schwellenwerten
               href: alerts/alerts-dynamic-thresholds.md
             - name: Einzelne Warnungen für zahlreiche Zeitreihen
@@ -642,7 +640,7 @@
             - name: Nicht-HTTP-/Hintergrund-Apps
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: ASP.NET-Konsole
+            - name: .NET-Konsole
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
             - name: Java
@@ -720,12 +718,18 @@
                       href: app/java-in-process-agent.md
                     - name: Konfigurationsoptionen
                       href: app/java-standalone-config.md
-                    - name: Telemetrieprozessoren
+                    - name: Erweiterte Konfigurationen
                       items:
-                        - name: Übersicht
-                          href: app/java-standalone-telemetry-processors.md
-                        - name: Beispiele
-                          href: app/java-standalone-telemetry-processors-examples.md
+                        - name: JMX-Metriken
+                          href: app/java-jmx-metrics-configuration.md
+                        - name: Stichprobenüberschreibungen
+                          href: app/java-standalone-sampling-overrides.md
+                        - name: Telemetrieprozessoren
+                          items:
+                            - name: Übersicht
+                              href: app/java-standalone-telemetry-processors.md
+                            - name: Beispiele
+                              href: app/java-standalone-telemetry-processors-examples.md
                     - name: Setup von JVM-Argumenten
                       href: app/java-standalone-arguments.md
                     - name: "Upgraden vom 2.x\_SDK"
@@ -773,6 +777,8 @@
           displayname: 'e2e, end-to-end, component, dependency, cross-component transaction, operation ID, dependencies'
         - name: Verfügbarkeit
           items:
+            - name: Übersicht
+              href: app/availability-overview.md
             - name: URL-Tests
               displayname: 'ping, ping tests, availability, GSM, up/down'
               href: app/monitor-web-app-availability.md
@@ -968,8 +974,6 @@
           items:
             - name: Erkenntnisse mit F5
               href: app/visual-studio.md
-            - name: Trends
-              href: app/visual-studio-trends.md
             - name: CodeLens
               href: app/visual-studio-codelens.md
         - name: Andere Plattformen
@@ -1040,6 +1044,8 @@
           href: vm/vminsights-workbooks.md
         - name: Deaktivieren der Überwachung
           href: vm/vminsights-optout.md
+        - name: Problembehandlung
+          href: vm/vminsights-troubleshoot.md
     - name: Container Insights
       items:
         - name: Übersicht
@@ -1128,6 +1134,18 @@
           href: insights/network-insights-overview.md
         - name: Key Vault
           href: insights/key-vault-insights-overview.md
+        - name: SQL Insights (Vorschau)
+          items:
+            - name: Übersicht
+              href: insights/sql-insights-overview.md
+            - name: Häufig gestellte Fragen
+              href: faq.md#sql-insights-preview
+            - name: Aktivieren
+              href: insights/sql-insights-enable.md
+            - name: Alerts
+              href: insights/sql-insights-alerts.md
+            - name: Problembehandlung
+              href: insights/sql-insights-troubleshoot.md
         - name: Storage
           displayname: 'storage, monitor, insights, storage accounts, azure storage'
           href: insights/storage-insights-overview.md
@@ -1375,7 +1393,7 @@
           href: /cli/azure/azure-cli-reference-for-monitor
           displayName: 'Action Groups, Autoscale, Diagnostic Settings, Metrics, Private Link Scope'
         - name: Application Insights
-          href: /cli/azure/ext/application-insights/monitor/app-insights
+          href: /cli/azure/monitor/app-insights
         - name: Aktivitätsprotokolle
           href: /cli/azure/monitor/activity-log
         - name: Log Analytics

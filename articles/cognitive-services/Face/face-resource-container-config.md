@@ -9,16 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/29/2021
 ms.author: aahi
-ms.openlocfilehash: 5287fe6df4a2f0cb728bf0e705a4ce989ca38487
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dc9aa1636bf4594d1e0b51315b520c6e893ced88
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934035"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288470"
 ---
-# <a name="configure-face-docker-containers"></a>Konfigurieren von Docker-Containern für die Gesichtserkennung
+# <a name="configure-face-docker-containers-retiring"></a>Konfigurieren von Face Docker-Containern (wird eingestellt)
+
+> [!IMPORTANT]
+> Die Vorschauversion des Containers für die Gesichtserkennung akzeptiert keine Anwendungen mehr, und der Container ist seit dem 29. April 2021 veraltet. Der Container für die Gesichtserkennung wird am 26. Juli 2021 vollständig eingestellt.
 
 Die Runtimeumgebung für Container für die **Gesichtserkennung** wird über die Argumente des Befehls `docker run` konfiguriert. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung. 
 

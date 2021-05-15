@@ -71,7 +71,7 @@
         - name: Sicherheitskontrollen von Azure Policy
           href: ./security-controls-policy.md
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/api-management-security-baseline?toc=/azure/api-management/TOC.json
     - name: Back-Ends
       href: backends.md
     - name: Abonnements
@@ -104,8 +104,8 @@
           href: import-soap-api.md
         - name: Importieren einer SOAP-API und Konvertieren dieser in REST
           href: restify-soap-api.md
-        - name: Importieren einer API-App
-          href: import-api-app-as-api.md
+        - name: Importieren einer Web-App
+          href: import-app-service-as-api.md
         - name: Importieren einer Funktionen-App
           href: import-function-app-as-api.md
         - name: Importieren einer Logik-App
@@ -128,6 +128,9 @@
           href: configure-custom-domain.md
         - name: Bereitstellen für mehrere Azure-Regionen
           href: api-management-howto-deploy-multi-region.md
+        - name: Aktivieren der Zonenredundanz
+          displayName: Availability zones
+          href: zone-redundancy.md
         - name: Bereitstellen eines selbstgehosteten Gateways
           href: api-management-howto-provision-self-hosted-gateway.md
         - name: Bereitstellen eines selbstgehosteten Gateways für Azure Kubernetes Service
@@ -170,48 +173,74 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: Anpassen der Entwickleroberfläche
       items:
-        - name: Grundlegendes zum Entwicklerportal
-          href: api-management-howto-developer-portal.md
-        - name: Migrieren vom veralteten zum neuen Entwicklerportal
-          href: developer-portal-deprecated-migration.md
-        - name: Authentifizierung über Azure AD
-          href: api-management-howto-aad.md
-        - name: Authentifizierung über Azure AD B2C
-          href: api-management-howto-aad-b2c.md
-        - name: Delegierte Authentifizierung
-          href: api-management-howto-setup-delegation.md
-        - name: E-Mail-Benachrichtigungen und -Vorlagen
-          href: api-management-howto-configure-notifications.md
-        - name: Aktivieren der OAuth-Konsolenunterstützung
-          href: api-management-howto-oauth2.md
-        - name: 'Veraltetes Portal: Anpassen des Portals'
-          href: api-management-customize-styles.md
-        - name: 'Veraltetes Portal: Ändern von Seiten und Layouts'
-          href: api-management-modify-content-layout.md
-        - name: 'Veraltetes Portal: Anpassen mit Vorlagen'
-          href: api-management-developer-portal-templates.md
-    - name: 'Veraltetes Portal: Vorlagen'
-      items:
-        - name: Datenmodellreferenz
-          href: api-management-template-data-model-reference.md
-        - name: Seitensteuerelemente
-          href: api-management-page-controls.md
-        - name: Vorlagen
-          href: api-management-developer-portal-templates-reference.md
-        - name: APIs
-          href: api-management-api-templates.md
-        - name: Produkte
-          href: api-management-product-templates.md
-        - name: Anwendungen
-          href: api-management-application-templates.md
-        - name: Probleme
-          href: api-management-issue-templates.md
-        - name: Benutzerprofil
-          href: api-management-user-profile-templates.md
-        - name: Seiten
-          href: api-management-page-templates.md
-        - name: Vorlagenressourcen
-          href: api-management-template-resources.md
+        - name: Verwenden des Entwicklerportals
+          items:
+            - name: Grundlegendes zum Entwicklerportal
+              href: api-management-howto-developer-portal.md
+            - name: Häufig gestellte Fragen
+              href: developer-portal-faq.md
+            - name: Automatisieren von Bereitstellungen im Entwicklerportal
+              href: automate-portal-deployments.md
+            - name: Migrieren vom veralteten zum neuen Entwicklerportal
+              href: developer-portal-deprecated-migration.md
+            - name: Authentifizierung über Azure AD
+              href: api-management-howto-aad.md
+            - name: Authentifizierung über Azure AD B2C
+              href: api-management-howto-aad-b2c.md
+            - name: Delegieren der Authentifizierung
+              href: api-management-howto-setup-delegation.md
+            - name: Aktivieren der OAuth-Konsolenunterstützung
+              href: api-management-howto-oauth2.md
+            - name: E-Mail-Benachrichtigungen und -Vorlagen
+              href: api-management-howto-configure-notifications.md
+            - name: Integrieren von Application Insights
+              href: developer-portal-integrate-application-insights.md
+            - name: Integrieren von Google Tag Manager
+              href: developer-portal-integrate-google-tag-manager.md
+        - name: Selbsthosten des Entwicklerportals
+          items:
+            - name: Erstellen eines selbstgehosteten Portals
+              href: developer-portal-self-host.md
+            - name: Alternative Selbsthosting-Ansätze
+              href: developer-portal-alternative-processes-self-host.md
+            - name: Implementieren von Widgets
+              href: developer-portal-implement-widgets.md
+            - name: "Beisteuern von Widgets zum API\_Management-Entwicklerportal"
+              href: developer-portal-widget-contribution-guidelines.md
+            - name: Verwenden von Communitywidgets
+              href: developer-portal-use-community-widgets.md
+            - name: Testen des selbstgehosteten Portals
+              href: developer-portal-testing.md
+        - name: Veraltetes Portal
+          items:
+            - name: 'Veraltetes Portal: Anpassen des Portals'
+              href: api-management-customize-styles.md
+            - name: 'Veraltetes Portal: Ändern von Seiten und Layouts'
+              href: api-management-modify-content-layout.md
+            - name: 'Veraltetes Portal: Anpassen mit Vorlagen'
+              href: api-management-developer-portal-templates.md
+        - name: 'Veraltetes Portal: Vorlagen'
+          items:
+            - name: Datenmodellreferenz
+              href: api-management-template-data-model-reference.md
+            - name: Seitensteuerelemente
+              href: api-management-page-controls.md
+            - name: Vorlagen
+              href: api-management-developer-portal-templates-reference.md
+            - name: APIs
+              href: api-management-api-templates.md
+            - name: Produkte
+              href: api-management-product-templates.md
+            - name: Anwendungen
+              href: api-management-application-templates.md
+            - name: Probleme
+              href: api-management-issue-templates.md
+            - name: Benutzerprofil
+              href: api-management-user-profile-templates.md
+            - name: Seiten
+              href: api-management-page-templates.md
+            - name: Vorlagenressourcen
+              href: api-management-template-resources.md
     - name: Definieren von Richtlinien
       items:
         - name: Festlegen oder Bearbeiten von Richtlinien
@@ -245,6 +274,8 @@
           href: api-management-transformation-policies.md
         - name: Distributed Application Runtime-Integrationsrichtlinien (Dapr)
           href: api-management-dapr-policies.md
+        - name: Überprüfungsrichtlinien
+          href: validation-policies.md
     - name: Verwalten in Produktion
       items:
         - name: Exportieren von APIs in Power Platform

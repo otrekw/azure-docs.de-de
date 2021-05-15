@@ -2,18 +2,18 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Service Fabric?
-      href: service-fabric-overview.md
     - name: "Verwaltete Service\_Fabric-Cluster"
       href: overview-managed-cluster.md
+    - name: Was ist Service Fabric?
+      href: service-fabric-overview.md
 - name: Schnellstarts
   expanded: true
   items:
+    - name: Verwalteter Cluster
+      href: quickstart-managed-cluster-template.md
     - name: ARM-Vorlage
       displayName: Resource Manager
       href: quickstart-cluster-template.md
-    - name: Verwalteter Cluster
-      href: quickstart-managed-cluster-template.md
     - name: Erstellen einer .NET-Anwendung
       href: service-fabric-quickstart-dotnet.md
     - name: Bereitstellen einer Linux-Containeranwendung
@@ -28,6 +28,16 @@
           href: service-fabric-quickstart-java-reliable-services.md
 - name: Tutorials
   items:
+    - name: "Erstellen eines verwalteten Service\_Fabric-Clusters"
+      items:
+        - name: "1. Bereitstellen eines verwalteten Service\_Fabric-Clusters"
+          href: tutorial-managed-cluster-deploy.md
+        - name: 2. Aufskalieren eines verwalteten Clusterknotentyps
+          href: tutorial-managed-cluster-scale.md
+        - name: 3. Hinzufügen und Entfernen von verwalteten Clusterknotentypen
+          href: tutorial-managed-cluster-add-remove-node-type.md
+        - name: 4. Herstellen einer Verbindung mit einem verwalteten Cluster und Bereitstellen einer Anwendung
+          href: tutorial-managed-cluster-deploy-app.md
     - name: Bereitstellen einer .NET-App
       items:
         - name: 1 – Erstellen einer .NET-Anwendung
@@ -68,17 +78,7 @@
           href: service-fabric-tutorial-package-containers.md
         - name: 3 – Failover und Skalieren
           href: service-fabric-tutorial-containers-failover.md
-    - name: "Erstellen eines verwalteten Service\_Fabric-Clusters"
-      items:
-        - name: "1. Bereitstellen eines verwalteten Service\_Fabric-Clusters"
-          href: tutorial-managed-cluster-deploy.md
-        - name: 2. Aufskalieren eines verwalteten Clusterknotentyps
-          href: tutorial-managed-cluster-scale.md
-        - name: 3. Hinzufügen und Entfernen von verwalteten Clusterknotentypen
-          href: tutorial-managed-cluster-add-remove-node-type.md
-        - name: 4. Herstellen einer Verbindung mit einem verwalteten Cluster und Bereitstellen einer Anwendung
-          href: tutorial-managed-cluster-deploy-app.md
-    - name: Erstellen und Verwalten eines Clusters
+    - name: Erstellen eines Clusters in Azure
       items:
         - name: 1 – Erstellen eines Clusters in Azure
           href: service-fabric-tutorial-create-vnet-and-windows-cluster.md
@@ -106,8 +106,6 @@
           href: service-fabric-tutorial-standalone-clean-up.md
 - name: Bewährte Methoden
   items:
-    - name: Übersicht über die bewährten Methoden für Service Fabric
-      href: service-fabric-best-practices-overview.md
     - name: Sicherheit
       href: service-fabric-best-practices-security.md
     - name: Netzwerk
@@ -156,7 +154,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/service-fabric-security-baseline?toc=/azure/service-fabric/toc.json
     - name: Begriff
       href: service-fabric-technical-overview.md
     - name: Erstellen von Anwendungen
@@ -358,6 +356,8 @@
               href: service-fabric-cluster-resource-manager-movement-cost.md
             - name: Dienste für die automatische Skalierung
               href: service-fabric-cluster-resource-manager-autoscaling.md
+            - name: Knotentagging
+              href: service-fabric-cluster-resource-manager-node-tagging.md
     - name: Überwachung und Diagnose
       items:
         - name: Übersicht über die Überwachung
@@ -396,6 +396,30 @@
       href: configure-container-repository-credentials.md
 - name: Anleitungen
   items:
+    - name: "Verwenden von verwalteten Service\_Fabric-Clustern"
+      items:
+        - name: Hinzufügen einer VM-Skalierungsgruppenerweiterung zu einem verwalteten Clusterknotentyp
+          href: how-to-managed-cluster-vmss-extension.md
+        - name: Hinzufügen von NSG-Regeln und anderen Netzwerkoptionen für den verwalteten Cluster
+          href: how-to-managed-cluster-networking.md
+        - name: Konfigurieren des Verfügbarkeitszonenumfangs für verwaltete Cluster
+          href: how-to-managed-cluster-availability-zones.md
+        - name: Konfigurieren des verwalteten Clusters
+          href: how-to-managed-cluster-configuration.md
+        - name: Bereitstellen von Anwendungsgeheimnissen für verwaltete Cluster
+          href: how-to-managed-cluster-application-secrets.md
+        - name: Bereitstellen von verwalteten Clusteranwendungen mithilfe einer ARM-Vorlage
+          href: how-to-managed-cluster-app-deployment-template.md
+        - name: Bereitstellen verwalteter Clusteranwendungen mit verwalteter Identität
+          href: how-to-managed-cluster-application-managed-identity.md
+        - name: Bereitstellen ausschließlich zustandsloser Knotentypen in einem verwalteten Cluster
+          href: how-to-managed-cluster-stateless-node-type.md
+        - name: Aktivieren der Datenträgerverschlüsselung für verwaltete Clusterknoten
+          href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: Auswählen verwalteter Datenträgertypen für verwaltete Clusterknoten
+          href: how-to-managed-cluster-managed-disk.md
+        - name: Verwenden einer verwalteten Identität für verwaltete Clusterknoten
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: Einrichten der Entwicklungsumgebung
       items:
         - name: Windows
@@ -442,20 +466,6 @@
                   href: service-fabric-develop-csharp-applications-with-vs-code.md
                 - name: Entwickeln von Service Fabric-Java-Anwendungen mit VS Code
                   href: service-fabric-develop-java-applications-with-vs-code.md
-    - name: "Verwenden von verwalteten Service\_Fabric-Clustern"
-      items:
-        - name: Hinzufügen einer VM-Skalierungsgruppenerweiterung zu einem verwalteten Clusterknotentyp
-          href: how-to-managed-cluster-vmss-extension.md
-        - name: Konfigurieren des verwalteten Clusters
-          href: how-to-managed-cluster-configuration.md
-        - name: Hinzufügen von NSG-Regeln und anderen Netzwerkoptionen für den verwalteten Cluster
-          href: how-to-managed-cluster-networking.md
-        - name: Bereitstellen von verwalteten Clusteranwendungen mithilfe einer ARM-Vorlage
-          href: how-to-managed-cluster-app-deployment-template.md
-        - name: Aktivieren der Datenträgerverschlüsselung für verwaltete Clusterknoten
-          href: how-to-enable-managed-cluster-disk-encryption.md
-        - name: Verwenden einer verwalteten Identität für verwaltete Clusterknoten
-          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: Planen und Vorbereiten
       items:
         - name: Planen der Clusterkapazität
@@ -504,7 +514,7 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: Aktualisieren
               items:
-                - name: Aktualisieren der Service Fabric-Version
+                - name: Verwalten von Service Fabric-Clusterupgrades
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: Aktualisieren der Clusterkonfiguration
                   href: service-fabric-cluster-config-upgrade-azure.md
@@ -923,12 +933,12 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Häufig gestellte Fragen
-      href: service-fabric-common-questions.md
     - name: Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern
       href: faq-managed-cluster.md
+    - name: Häufig gestellte Fragen
+      href: service-fabric-common-questions.md
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
       href: /answers/topics/azure-service-fabric.html
     - name: Schutzmaßnahmen für die Azure Resource Manager-Bereitstellung

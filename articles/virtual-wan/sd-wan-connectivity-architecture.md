@@ -1,19 +1,19 @@
 ---
 title: Virtual WAN- und SD-WAN-Konnektivitätsarchitekturen
 titleSuffix: Azure Virtual WAN
-description: Erfahren Sie etwas über das Verbinden eines privaten SD-WAN mit einem Azure Virtual WAN.
+description: Informationen zur Verknüpfung eines privaten SD-WAN mit einem Azure Virtual WAN
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: ea9ddd05fe6fc745a3eefc29ab4f1d6aababc936
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb6ae05b0e3c296a1ca56d3ea6085b8cd4586c23
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94564700"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165693"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>SD-WAN-Konnektivitätsarchitektur mit Azure Virtual WAN
 

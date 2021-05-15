@@ -1,6 +1,6 @@
 ---
 title: 'Verbinden eines VNets mit einem VNet mit einer VNet-zu-VNet-Verbindung: Azure-Befehlszeilenschnittstelle'
-description: Stellen Sie unter Verwendung der Azure-Befehlszeilenschnittstelle eine VNet-zu-VNet-Verbindung zwischen virtuellen Netzwerken her.
+description: Erfahren Sie, wie Sie über eine VNet-to-VNet-Verbindung und die Azure-Befehlszeilenschnittstelle eine Verbindung zwischen virtuellen Netzwerken herstellen.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b9502f3fbd50aad756e15daa4db1badda2abf9ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4f247131c2ce20ec9e95e8b5327ae7e7249f93f
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660065"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229664"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung mithilfe der Azure CLI
 

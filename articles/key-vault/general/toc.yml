@@ -47,21 +47,21 @@
       href: best-practices.md
     - name: Sicherheit
       items:
-        - name: Übersicht
-          href: security-overview.md
-        - name: Sicherer Zugriff auf einen Schlüsseltresor
-          href: secure-your-key-vault.md
+        - name: Sicherheitsfeatures
+          href: security-features.md
         - name: "Grundlagen der Key\_Vault-Authentifizierung"
-          href: authentication-fundamentals.md
-        - name: Sicherheitsumgebungen und geografische Grenzen
+          href: authentication.md
+        - name: "Key\_Vault-Authentifizierung"
+          href: authentication.md
+        - name: Sicherheitsumgebungen und geografische Regionen
           href: overview-security-worlds.md
         - name: Netzwerksicherheit
           href: network-security.md
-        - name: Azure-Sicherheitsbaseline für Key Vault
-          href: security-baseline.md
+        - name: Sicherheitsbaseline
+          href: /security/benchmark/azure/baselines/key-vault-security-baseline?context=/azure/key-vault/general/context/context
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
-          href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+          href: ../security-controls-policy.md?context=/azure/key-vault/general/context/context
     - name: Azure Key Vault-Protokollierung
       href: logging.md
     - name: Benachrichtigungen
@@ -84,10 +84,8 @@
       href: overview-vnet-service-endpoints.md
 - name: Anleitungen
   items:
-    - name: Authentifizieren und Autorisieren
+    - name: Autorisieren des Zugriffs
       items:
-        - name: Authentifizieren bei Key Vault
-          href: authentication.md
         - name: Zuweisen einer Zugriffsrichtlinie
           items:
             - name: Befehlszeilenschnittstelle (CLI)
@@ -181,7 +179,7 @@
       displayName: ARM
     - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
-      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+      href: ../policy-reference.md?context=/azure/key-vault/general/context/context
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

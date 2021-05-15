@@ -40,6 +40,8 @@
           href: whatis-phs.md
         - name: So funktioniert die Kennworthashsynchronisierung
           href: how-to-connect-password-hash-synchronization.md
+        - name: Selektive Kennwort-Hashsynchronisierung
+          href: how-to-connect-selective-password-hash-synchronization.md
     - name: Passthrough-Authentifizierung
       items:
         - name: Worum handelt es sich bei der Passthrough-Authentifizierung?
@@ -240,6 +242,8 @@
           href: how-to-connect-fed-saml-idp.md
         - name: Aufgaben nach der Konfiguration für die Hybrid-Azure AD-Einbindung
           href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
+        - name: "Notfallrotation von AD\_FS-Zertifikaten"
+          href: how-to-connect-emergency-ad-fs-certificate-rotation.md
     - name: Verwalten des einmaligen Anmeldens
       items:
         - name: Erste Schritte beim einmaligen Anmelden
@@ -254,6 +258,8 @@
           href: how-to-connect-health-adfs.md
         - name: Bericht über riskante IP-Adressen für Azure AD Connect Health mit AD FS
           href: how-to-connect-health-adfs-risky-ip.md
+        - name: "AD\_FS-Anmeldungen in Azure\_AD mit Connect Health"
+          href: how-to-connect-health-ad-fs-sign-in.md
         - name: Verwenden von Azure AD Connect Health für die Synchronisierung
           href: how-to-connect-health-sync.md
         - name: Verwenden von Azure AD Connect Health mit AD DS
@@ -304,6 +310,8 @@
           href: whatis-aadc-admin-agent.md
         - name: Was ist das ADConnectivityTools-PowerShell-Modul?
           href: how-to-connect-adconnectivitytools.md
+        - name: 'Azure AD Connect: Single Object Sync'
+          href: how-to-connect-single-object-sync.md
         - name: Konnektivität
           href: tshoot-connect-connectivity.md
         - name: Fehler während der Synchronisierung
@@ -332,6 +340,8 @@
           href: tshoot-connect-install-issues.md
         - name: Änderungen des Benutzerprinzipalnamens
           href: howto-troubleshoot-upn-changes.md
+        - name: End-to-End-Problembehandlung für Objekte und Attribute
+          href: /troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes
 - name: Verweis
   items:
     - name: Erforderliche Ports und Protokolle für die Hybrid-Identität

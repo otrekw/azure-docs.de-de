@@ -1,4 +1,4 @@
-- name: Dokumentation zu Cloud Services (erweiterter Support)
+- name: Dokumentation zu Azure Cloud Services (erweiterter Support)
   href: index.yml
 - name: Übersicht
   items:
@@ -51,31 +51,55 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration-Schema
           href: schema-cscfg-networkconfiguration.md
-    - name: Häufig gestellte Fragen
-      href: faq.md
 - name: Vorgehensweise
   items:
-    - name: Anwenden der Remotedesktoperweiterung
-      href: enable-rdp.md
-    - name: Anwenden der WAD-Erweiterung
-      href: enable-wad.md
+    - name: Migrieren zu Azure Cloud Services (erweiterter Support)
+      items:
+        - name: Migration – Übersicht
+          href: in-place-migration-overview.md
+        - name: Technische Details zur Migration
+          href: in-place-migration-technical-details.md
+        - name: Migrieren über das Azure-Portal
+          href: in-place-migration-portal.md
+        - name: Migrieren mit PowerShell
+          href: in-place-migration-powershell.md
+        - name: Allgemeine Fehler und bekannte Probleme
+          href: in-place-migration-common-errors.md
+    - name: Anwenden von Erweiterungen
+      items:
+        - name: Anwenden der Remotedesktoperweiterung
+          href: enable-rdp.md
+        - name: Anwenden der WAD-Erweiterung
+          href: enable-wad.md
     - name: Aktivieren von Warnungen
       href: enable-alerts.md
     - name: Konfigurieren der Skalierung
       href: configure-scaling.md
     - name: Zertifikate
       href: certificates-and-key-vault.md
+    - name: Generieren einer ARM-Vorlage über das Portal
+      href: generate-template-portal.md
+    - name: Austauschen von Clouddienstbereitstellungen
+      href: swap-cloud-service.md
+    - name: Überschreiben von SKU-Details
+      href: override-sku.md
+    - name: Problembehandlung
+      items:
+        - name: Fehler beim Rollenstart
+          href: role-startup-failure.md
+        - name: Häufig gestellte Fragen
+          href: faq.md
 - name: Beispiele
   items:
     - name: Beispielvorlagen
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
-    - name: Erstellen eines neuen Clouddiensts
+    - name: Einen neuen Clouddienst erstellen
       href: sample-create-cloud-service.md
     - name: Abrufen von Clouddienstdetails
       href: sample-get-cloud-service.md
     - name: Zurücksetzen eines Clouddiensts
       href: sample-reset-cloud-service.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Beispielbereitstellungsdateien
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
@@ -88,9 +112,11 @@
     - name: REST
       href: /rest/api/compute/cloudservices
     - name: .NET
-      href: /dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet-preview
+      href: /dotnet/api/overview/azure/virtualmachines/management
     - name: SDK
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
+    - name: Befehlszeilenschnittstelle (CLI)
+      href: 'https://docs.microsoft.com/cli/azure/cloud-service?view=azure-cli-latest'
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

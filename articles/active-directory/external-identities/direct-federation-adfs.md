@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/01/2019
+ms.date: 04/27/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc66dec0ff66e61038503b752f6bd1f2760e9859
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87907537"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162993"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Beispiel: direkter Verbund mit Active Directory-Verbunddienste (AD FS) (Vorschau)
 
@@ -34,7 +34,7 @@ Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsa
 
 Die folgenden Attribute müssen in der SAML 2.0-Antwort vom Identitätsanbieter empfangen werden, um einen direkten Verbund einzurichten. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden. Schritt 12 unter [Erstellen einer AD FS-Testinstanz](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschreibt, wie Sie die AD FS-Endpunkte finden oder wie Sie Ihre Metadaten-URL generieren, z. B. `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
 
-|Attribut  |Wert  |
+|attribute  |Wert  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Zielgruppe     |`urn:federation:MicrosoftOnline`         |
@@ -43,7 +43,7 @@ Die folgenden Attribute müssen in der SAML 2.0-Antwort vom Identitätsanbieter 
 Die folgenden Ansprüche müssen in dem vom Identitätsanbieter ausgegebenen SAML 2.0-Token konfiguriert werden:
 
 
-|Attribut  |Wert  |
+|attribute  |Wert  |
 |---------|---------|
 |NameID-Format     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -99,7 +99,7 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
    - Wählen Sie **Durchlauf aller Anspruchswerte**.
 
 3. Klicken Sie auf **Fertig stellen**. 
-4. Im Fenster **Anspruchsregeln bearbeiten** werden die neuen Regeln angezeigt. Klicken Sie auf **Anwenden**. 
+4. Im Fenster **Anspruchsregeln bearbeiten** werden die neuen Regeln angezeigt. Klicken Sie auf **Übernehmen**. 
 5. Klicken Sie auf **OK**. Der AD FS-Server ist jetzt für den direkten Verbund mit dem SAML 2.0-Protokoll konfiguriert.
 
 ## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>Konfigurieren von AD FS für den direkten WS-Verbund 
@@ -107,7 +107,7 @@ Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsa
 
 Zum Einrichten eines direkten Verbunds müssen die folgenden Attribute in der WS-Verbund-Nachricht vom Identitätsanbieter empfangen werden. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden. Schritt 12 unter [Erstellen einer AD FS-Testinstanz](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschreibt, wie Sie die AD FS-Endpunkte finden oder wie Sie Ihre Metadaten-URL generieren, z. B. `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
  
-|Attribut  |Wert  |
+|attribute  |Wert  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Zielgruppe     |`urn:federation:MicrosoftOnline`         |
@@ -139,7 +139,7 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
    - **Benutzerdefinierte Regel**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
 1. Wählen Sie **Fertig stellen** aus. 
-1. Im Fenster **Anspruchsregeln bearbeiten** wird die neue Regel angezeigt. Klicken Sie auf **Anwenden**.  
+1. Im Fenster **Anspruchsregeln bearbeiten** wird die neue Regel angezeigt. Klicken Sie auf **Übernehmen**.  
 1. Wählen Sie im gleichen Assistenten zum **Bearbeiten von Anspruchsregeln** die Option **Regel hinzufügen** aus. Wählen Sie unter **Regeltyp auswählen** die Option **LDAP-Attribute als Ansprüche senden** aus. Wählen Sie **Weiter** aus.
 1. Geben Sie unter **Anspruchsregel konfigurieren** die folgenden Werte an: 
 
@@ -149,8 +149,8 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
    - **Typ des ausgehenden Anspruchs:** E-Mail-Adresse 
 
 1.  Wählen Sie **Fertig stellen** aus. 
-1.  Im Fenster **Anspruchsregeln bearbeiten** wird die neue Regel angezeigt. Klicken Sie auf **Anwenden**.  
+1.  Im Fenster **Anspruchsregeln bearbeiten** wird die neue Regel angezeigt. Klicken Sie auf **Übernehmen**.  
 1.  Klicken Sie auf **OK**. Der AD FS-Server ist nun für den direkten Verbund mit WS-Verbund konfiguriert.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Als Nächstes [konfigurieren Sie den direkten Verbund in Azure AD](direct-federation.md#step-2-configure-direct-federation-in-azure-ad) entweder im Azure AD-Portal oder mithilfe von PowerShell. 
+Als Nächstes [konfigurieren Sie den direkten Verbund in Azure AD](direct-federation.md#step-3-configure-direct-federation-in-azure-ad) entweder im Azure AD-Portal oder mithilfe von PowerShell. 

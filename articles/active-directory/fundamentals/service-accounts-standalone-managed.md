@@ -13,59 +13,57 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 146cee9ddd6f0cef5ca23272ad9991af847f30ba
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: ea3bd3e6fc971901bf69c053088678e8f0f718d0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072151"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206671"
 ---
-# <a name="securing-standalone-managed-service-accounts"></a>Schützen von eigenständigen verwalteten Dienstkonten
+# <a name="secure-standalone-managed-service-accounts"></a>Schützen von eigenständigen verwalteten Dienstkonten
 
-Eigenständige verwaltete Dienstkonten (Standalone Managed Service Accounts, sMSAs) sind verwaltete Domänenkonten, die zum Schutz eines oder mehrerer Dienste verwendet werden, die auf einem Server ausgeführt werden. Sie können nicht auf mehreren Servern erneut verwendet werden. sMSAs bieten eine automatische Kennwortverwaltung, eine einfachere Verwaltung des Dienstprinzipalnamens und die Möglichkeit, die Verwaltung an andere Administratoren zu delegieren. 
+Eigenständige verwaltete Dienstkonten (Standalone Managed Service Accounts, sMSAs) sind verwaltete Domänenkonten, die zum Schutz eines oder mehrerer Dienste verwendet werden, welche auf einem Server ausgeführt werden. Sie können nicht auf mehreren Servern wiederverwendet werden. sMSAs bieten eine automatische Kennwortverwaltung, eine einfachere Verwaltung des Dienstprinzipalnamens und die Möglichkeit, die Verwaltung an andere Administratoren zu delegieren. 
 
 In Active Directory sind sMSAs an einen bestimmten Server gebunden, der einen Dienst ausführt. Diese Konten sind in der Microsoft Management Console im Snap-in „Active Directory-Benutzer und -Computer“ aufgeführt.
 
-![Screenshot: Snap-In „Active Directory-Benutzer und -Computer“ mit der Organisationseinheit „Verwaltete Dienstkonten“](./media/securing-service-accounts/secure-standalone-msa-image-1.png)
+![Screenshot: Snap-In „Active Directory-Benutzer und -Computer“ mit der Organisationseinheit „Verwaltete Dienstkonten“.](./media/securing-service-accounts/secure-standalone-msa-image-1.png)
 
-Verwaltete Dienstkonten wurden mit Windows Server 2008 R2 und dem Active Directory-Schema eingeführt und setzen als Betriebssystem mindestens Windows Server 2008 R2 voraus. 
+Verwaltete Dienstkonten wurden mit dem Active Directory-Schema für Windows Server 2008 R2 eingeführt und erfordern mindestens Windows Server 2008 R2. 
 
 ## <a name="benefits-of-using-smsas"></a>Vorteile der Verwendung von sMSAs
 
-sMSAs bieten bei der Verwendung als Dienstkonten mehr Sicherheit als Benutzerkonten und reduzieren gleichzeitig den Verwaltungsaufwand durch folgende Features:
+sMSAs bieten bei der Verwendung als Dienstkonten mehr Sicherheit als Benutzerkonten. Außerdem tragen sie dank folgender Merkmale zur Verringerung des Verwaltungsaufwands bei:
 
-* Festlegen sicherer Kennwörter. sMSAs verwenden nach dem Zufallsprinzip generierte komplexe Kennwörter mit 240 Byte. Durch Komplexität und Länge der sMSA-Kennwörter sinkt die Wahrscheinlichkeit, dass ein Dienst durch Brute-Force- oder Wörterbuchangriffe kompromittiert wird.
+* **Sichere Kennwörter**: Von gMSAs werden komplexe, nach dem Zufallsprinzip generierte Kennwörter mit 240 Bytes verwendet. Durch Komplexität und Länge der sMSA-Kennwörter sinkt die Wahrscheinlichkeit, dass ein Dienst durch Brute-Force- oder Wörterbuchangriffe kompromittiert wird.
 
-* Regelmäßiges Wechseln der Kennwörter. Das sMSA-Kennwort wird von Windows automatisch alle 30 Tage geändert. Dienst- und Domänenadministratoren brauchen keine Kennwortänderungen zu planen oder damit verbundene Ausfallzeiten zu verwalten.
+* **Regelmäßige Änderung von Kennwörtern**: Das sMSA-Kennwort wird von Windows automatisch alle 30 Tage geändert. Dienst- und Domänenadministratoren brauchen keine Kennwortänderungen zu planen oder damit verbundene Ausfallzeiten zu verwalten.
 
-* Vereinfachen der Verwaltung von Dienstprinzipalnamen. Dienstprinzipalnamen werden automatisch aktualisiert, wenn Windows Server 2008 R2 die Domänenfunktionsebene ist. Zum Beispiel wird der Dienstprinzipalname in den folgenden Szenarien automatisch aktualisiert:
-
-   * Das Hostcomputerkonto wird umbenannt. 
-
-   * Der DNS-Name des Hostcomputers wird geändert.
-
-   * Ein zusätzlicher Parameter „sam-accountname“ oder „dns-hostname“ wird mithilfe von [PowerShell](/powershell/module/activedirectory/set-adserviceaccount) hinzugefügt oder entfernt.
+* **Vereinfachte SPN-Verwaltung**: Dienstprinzipalnamen werden automatisch aktualisiert, wenn Windows Server 2008 R2 die Domänenfunktionsebene ist. Zum Beispiel wird der Dienstprinzipalname automatisch aktualisiert, wenn Sie:
+   * das Hostcomputerkonto umbenennen.  
+   * den DNS-Namen (Domain Name Server) des Hostcomputers ändern.  
+   * mithilfe von [PowerShell](/powershell/module/activedirectory/set-adserviceaccount) andere „sam-accountname“- oder „dns-hostname“-Parameter hinzufügen oder entfernen.
 
 ## <a name="when-to-use-smsas"></a>Wann sind sMSAs zu verwenden?
 
-sMSAs können Verwaltungs- und Sicherheitsaufgaben vereinfachen. Verwenden Sie sMSAs, wenn Sie einen oder mehrere Dienste auf einem einzelnen Server bereitgestellt haben und Sie kein gruppenverwaltetes Dienstkonto (Group Managed Service Account, gMSA) verwenden können. 
+sMSAs können Verwaltungs- und Sicherheitsaufgaben vereinfachen. Verwenden Sie sMSAs, wenn mindestens ein Dienst auf einem einzelnen Server bereitgestellt wurde und Sie kein gruppenverwaltetes Dienstkonto (Group Managed Service Account, gMSA) verwenden können. 
 
 > [!NOTE] 
-> Sie können sMSAs zwar für mehr als einen Dienst verwenden, zu Überwachungszwecken ist es jedoch empfehlenswert, für jeden Dienst eine eigene Identität zu verwenden. 
+> Sie können sMSAs zwar für mehr als einen Dienst verwenden, zu Überwachungszwecken ist es jedoch empfehlenswert, wenn jeder Dienst eine eigene Identität hat. 
 
-Wenn der Ersteller der Software nicht sagen kann, ob Sie ein verwaltetes Dienstkonto verwenden können, müssen Sie die Anwendung testen. Erstellen Sie hierzu eine Testumgebung, und stellen Sie sicher, dass Sie auf alle erforderlichen Ressourcen zugreifen können. Eine schrittweise Anleitung finden Sie unter [Erstellen und Installieren eines sMSAs](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting).
+Wenn der Ersteller der Software nicht sagen kann, ob Sie ein verwaltetes Dienstkonto verwenden können, müssen Sie die Anwendung testen. Erstellen Sie hierzu eine Testumgebung, und stellen Sie sicher, dass sie auf alle erforderlichen Ressourcen zugreifen kann. Weitere Informationen finden Sie unter [Erstellen und Installieren eines sMSA](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting).
 
-### <a name="assess-security-posture-of-smsas"></a>Bewerten des Sicherheitsstatus von sMSAs
+### <a name="assess-the-security-posture-of-smsas"></a>Bewerten des Sicherheitsstatus von sMSAs
 
 sMSAs sind grundsätzlich sicherer als Standardbenutzerkonten, die eine ständige Kennwortverwaltung erfordern. Bei der Überprüfung des allgemeinen Sicherheitsstatus ist es jedoch wichtig, den Zugriffsbereich von sMSAs zu berücksichtigen.
 
-In der folgenden Tabelle wird gezeigt, wie Sie potenzielle Sicherheitsprobleme minimieren können, die von sMSAs verursacht werden.
+In der folgenden Tabelle wird gezeigt, wie Sie potenzielle sMSA-bedingte Sicherheitsprobleme minimieren können:
 
-| Sicherheitsprobleme| Gegenmaßnahmen |
+| Sicherheitsproblem| Minderung |
 | - | - |
-| Das sMSA ist Mitglied von privilegierten Gruppen|Entfernen Sie das sMSA aus Gruppen mit erhöhten Rechten (z. B. Domänenadministratoren). <br> Verwenden Sie das Modell mit den geringsten Berechtigungen, und erteilen Sie dem sMSA nur die Rechte und Berechtigungen, die zum Ausführen des Diensts (oder der Dienste) erforderlich sind. <br> Wenn Sie nicht sicher sind, welche Berechtigungen erforderlich sind, wenden Sie sich an den Ersteller des Diensts. |
-| Das sMSA verfügt über Lese-/Schreibzugriff auf vertrauliche Ressourcen.|Überwachen Sie den Zugriff auf vertrauliche Ressourcen. Archivieren Sie Überwachungsprotokolle zur Analyse in einem SIEM-System (Azure Log Analytics oder Azure Sentinel). <br> Korrigieren Sie Ressourcenberechtigungen, wenn eine unerwünschte Zugriffsebene erkannt wird. |
-| Standardmäßig beträgt das Kennwortrolloverintervall von sMSAs 30 Tage.| Mit einer Gruppenrichtlinie können Sie die Dauer entsprechend den Sicherheitsanforderungen des Unternehmens optimieren. <br> *Sie können die Gültigkeitsdauer von Kennwörtern über den folgenden Pfad festlegen: <br>Computerkonfiguration\Richtlinien\Windows-Einstellungen\Sicherheitseinstellungen\Sicherheitsoptionen\Domänenmitglied: Maximales Alter von Computerkontenkennwörtern |
+| sMSA ist Mitglied privilegierter Gruppen. | <li>Entfernen Sie das sMSA aus Gruppen mit erhöhten Rechten (z. B. Domänenadministratoren).<li>Verwenden Sie das Modell mit den *geringsten Berechtigungen*, und erteilen Sie dem sMSA nur die Rechte und Berechtigungen, die zum Ausführen der Dienste erforderlich sind.<li>Wenn Sie nicht sicher sind, welche Berechtigungen erforderlich sind, wenden Sie sich an den Ersteller des Diensts. |
+| Das sMSA verfügt über Lese-/Schreibzugriff auf vertrauliche Ressourcen. | <li>Überwachen Sie den Zugriff auf vertrauliche Ressourcen.<li>Archivieren Sie Überwachungsprotokolle zur Analyse in einem SIEM-Programm (Security Information and Event Management) wie Azure Log Analytics oder Azure Sentinel.<li>Korrigieren Sie Ressourcenberechtigungen, wenn eine unerwünschte Zugriffsebene erkannt wird. |
+| Standardmäßig beträgt das Kennwortrolloverintervall von sMSAs 30 Tage. | Mit einer Gruppenrichtlinie können Sie die Dauer entsprechend den Sicherheitsanforderungen des Unternehmens optimieren. Zum Festlegen der Gültigkeitsdauer von Kennwörtern verwenden Sie den folgenden Pfad:<br>*Computerkonfiguration\Richtlinien\Windows-Einstellungen\Sicherheitseinstellungen\Sicherheitsoptionen*. Verwenden Sie für Domänenmitglieder **Maximalalter von Computerkontenkennwörtern**. |
+| | |
 
 
 
@@ -73,63 +71,50 @@ In der folgenden Tabelle wird gezeigt, wie Sie potenzielle Sicherheitsprobleme m
 
 Im Zusammenhang mit sMSAs gibt es folgende Herausforderungen:
 
-| Herausforderungen| Gegenmaßnahmen |
+| Herausforderung| Minderung |
 | - | - |
-| Sie können nur auf einem einzelnen Server verwendet werden.| Verwenden Sie gMSAs, wenn Sie das Konto serverübergreifend verwenden müssen. |
-| Sie können nicht domänenübergreifend verwendet werden.| Verwenden Sie gMSAs, wenn Sie das Konto domänenübergreifend verwenden müssen. |
-| Nicht alle Anwendungen unterstützen sMSAs.| Verwenden Sie nach Möglichkeit gMSAs. Wenn das nicht möglich ist, verwenden Sie ein Standardbenutzerkonto oder ein Computerkonto, wie vom Anwendungsersteller empfohlen. |
+| sMSAs können nur auf einem einzelnen Server verwendet werden. | Verwenden Sie ein gMSA, wenn Sie das Konto serverübergreifend verwenden müssen. |
+| sMSAs können nicht domänenübergreifend verwendet werden. | Verwenden Sie ein gMSA, wenn Sie das Konto domänenübergreifend verwenden müssen. |
+| Nicht alle Anwendungen unterstützen sMSAs. | Verwenden Sie nach Möglichkeit ein gMSA. Andernfalls verwenden Sie ein Standardbenutzerkonto oder ein Computerkonto, wie vom Anwendungsersteller empfohlen. |
+| | |
 
 
 ## <a name="find-smsas"></a>Suchen nach sMSAs
 
-Führen Sie auf jedem Domänencontroller DSA.msc aus, und erweitern Sie den Container „Verwaltete Dienstkonten“, um alle sMSAs anzuzeigen. 
+Führen Sie auf jedem Domänencontroller „DSA.msc“ aus, und erweitern Sie den Container „Verwaltete Dienstkonten“, um alle sMSAs anzuzeigen. 
 
-Mit dem folgenden PowerShell-Befehl werden alle sMSAs und gMSAs in der Active Directory-Domäne zurückgegeben. 
+Führen Sie den folgenden PowerShell-Befehl aus, um alle sMSAs und gMSAs in der Active Directory-Domäne zurückzugeben: 
 
 `Get-ADServiceAccount -Filter *`
 
-Mit dem folgenden Befehl werden nur sMSAs in der Active Directory-Domäne zurückgegeben.
+Führen Sie den folgenden Befehl aus, um nur sMSAs in der Active Directory-Domäne zurückzugeben:
 
 `Get-ADServiceAccount -Filter * | where { $_.objectClass -eq "msDS-ManagedServiceAccount" }`
 
 ## <a name="manage-smsas"></a>Verwalten von sMSAs
 
-Mit den folgenden Active Directory PowerShell-Cmdlets können Sie sMSAs verwalten:
+Für die Verwaltung Ihrer sMSAs können Sie die folgenden Active Directory-PowerShell-Cmdlets verwenden:
 
-`Get-ADServiceAccount`
-
-` Install-ADServiceAccount`
-
-` New-ADServiceAccount`
-
-` Remove-ADServiceAccount`
-
-`Set-ADServiceAccount`
-
-`Test-ADServiceAccount`
-
+`Get-ADServiceAccount`  
+` Install-ADServiceAccount`  
+` New-ADServiceAccount`  
+` Remove-ADServiceAccount`  
+`Set-ADServiceAccount`  
+`Test-ADServiceAccount`  
 `Ininstall-ADServiceAccount`
 
 ## <a name="move-to-smsas"></a>Wechseln zu sMSAs
 
-Wenn ein Anwendungsdienst ein sMSA, aber kein gMSA unterstützt und derzeit ein Benutzerkonto oder ein Computerkonto für den Sicherheitskontext verwendet wird, [erstellen und installieren Sie ein sMSA](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) auf dem Server. 
+Wenn ein Anwendungsdienst ein sMSA, aber kein gMSA unterstützt und Sie derzeit ein Benutzerkonto oder ein Computerkonto für den Sicherheitskontext verwenden, [erstellen und installieren Sie ein sMSA](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) auf dem Server. 
 
-Im Idealfall verschieben Sie Ressourcen zu Azure und verwenden verwaltete Azure-Identitäten oder Dienstprinzipale.
-
- 
+Im Idealfall würden Sie Ressourcen zu Azure verschieben und verwaltete Azure-Identitäten oder Dienstprinzipale verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie die folgenden Artikel zum Schützen von Dienstkonten:
 
-* [Einführung in lokale Dienstkonten](service-accounts-on-premises.md)
+Weitere Informationen zum Schutz von Dienstkonten finden Sie in den folgenden Artikeln:
 
-* [Schützen von gruppenverwalteten Dienstkonten](service-accounts-group-managed.md)
-
-* [Schützen von eigenständigen verwalteten Dienstkonten](service-accounts-standalone-managed.md)
-
-* [Schützen von Computerkonten](service-accounts-computer.md)
-
-* [Schützen von Benutzerkonten](service-accounts-user-on-premises.md)
-
+* [Einführung in lokale Dienstkonten](service-accounts-on-premises.md)  
+* [Schützen von gruppenverwalteten Dienstkonten](service-accounts-group-managed.md)  
+* [Schützen von Computerkonten](service-accounts-computer.md)  
+* [Schützen von Benutzerkonten](service-accounts-user-on-premises.md)  
 * [Steuern lokaler Dienstkonten](service-accounts-govern-on-premises.md)
-

@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 10/27/2020
-  ms.openlocfilehash: 654c55436a47d91318548997aecc2605ae342099
-  ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+  ms.date: 04/20/2021
+  ms.openlocfilehash: 5bbd26cfe7972ded591fb7ee57c8f2e746ce1753
+  ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 01/25/2021
-  ms.locfileid: "98763073"
+  ms.lasthandoff: 04/22/2021
+  ms.locfileid: "107886890"
 landingContent:
 - title: Über Azure Stack Edge
   linkLists:
@@ -25,12 +25,10 @@ landingContent:
     links:
     - text: 'Was ist Azure Stack Edge Pro: GPU?'
       url: azure-stack-edge-gpu-overview.md
-    - text: 'Was ist Azure Stack Edge Pro: FPGA?'
-      url: azure-stack-edge-overview.md
-    - text: Was ist Azure Stack Edge R?
-      url: azure-stack-edge-j-series-overview.md
+    - text: Was ist Azure Stack Edge Pro R?
+      url: ./azure-stack-edge-pro-r-overview.md
     - text: Was ist Azure Stack Edge Mini R?
-      url: azure-stack-edge-k-series-overview.md
+      url: azure-stack-edge-mini-r-overview.md
   - linkListType: architecture
     links:
     - text: Auswählen der Optionen für die Azure-Datenübertragung
@@ -39,59 +37,81 @@ landingContent:
       url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: Versionshinweise zu 2101
-      url: azure-stack-edge-gpu-2101-release-notes.md
+    - text: '2103: Versionshinweise zu Azure Stack Edge Pro GPU'
+      url: azure-stack-edge-gpu-2103-release-notes.md
+    - text: '2101: Versionshinweise zu Azure Stack Edge Pro FPGA'
+      url: azure-stack-edge-2101-release-notes.md
 - title: Anforderungen und Einschränkungen
   linkLists:
   - linkListType: concept
     links:
     - text: 'Anforderungen für Azure Stack Edge Pro: GPU'
       url: azure-stack-edge-gpu-system-requirements.md
-    - text: 'Anforderungen für Azure Stack Edge Pro: FPGA'
-      url: azure-stack-edge-gpu-system-requirements.md
-    - text: Für Azure Stack Edge Pro geltende Einschränkungen
+    - text: Anforderungen für Azure Stack Edge Pro R
+      url: azure-stack-edge-pro-r-system-requirements.md
+    - text: Anforderungen für Azure Stack Edge Mini R
+      url: azure-stack-edge-mini-r-system-requirements.md
+    - text: Grenzwerte für Azure Stack Edge Pro GPU
       url: azure-stack-edge-limits.md
-- title: Bereitstellen
+    - text: Grenzwerte für Azure Stack Edge Pro R
+      url: azure-stack-edge-pro-r-limits.md
+    - text: Grenzwerte für Azure Stack Edge Mini R
+      url: azure-stack-edge-mini-r-limits.md
+- title: Bereitstellen von Geräten
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Anzeigen der Checkliste für die Vorbereitung der Bereitstellung
+    - text: Anzeigen der Bereitstellungsprüfliste
       url: azure-stack-edge-gpu-deploy-checklist.md
     - text: 'Azure Stack Edge Pro: GPU'
       url: azure-stack-edge-gpu-deploy-prep.md
-    - text: GPU-Modul über den Marketplace
-      url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-    - text: Kubernetes-Workload per IoT Edge
-      url: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-- title: Entwickeln
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: C#-Edgecomputingmodule
-      url: azure-stack-edge-create-iot-edge-module.md
-  - linkListType: download
-    links:
-    - text: 'Beispiele: C# für Azure Stack Edge Pro: GPU'
-      url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
+    - text: Azure Stack Edge Pro R
+      url: azure-stack-edge-pro-r-deploy-prep.md
+    - text: Azure Stack Edge Mini R
+      url: azure-stack-edge-mini-r-deploy-prep.md
 - title: Verwalten
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Stack Edge Pro-Freigaben
+    - text: Azure Stack Edge Pro GPU-Freigaben
+      url: azure-stack-edge-gpu-manage-shares.md
+    - text: Azure Stack Edge Pro FPGA-Freigaben
       url: azure-stack-edge-manage-shares.md
     - text: Edgecomputing
       url: azure-stack-edge-manage-compute.md
     - text: Edge-Speicherkonten
-      url: azure-stack-edge-j-series-manage-storage-accounts.md
+      url: azure-stack-edge-gpu-manage-storage-accounts.md
+- title: Bereitstellen von Workloads
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: GPU-Modul über den Marketplace
+      url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+    - text: Virtuelle Computer über das Azure-Portal
+      url: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+    - text: Virtuelle Computer über Vorlagen
+      url: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+    - text: IoT Edge-Modul über das Azure-Portal
+      url: azure-stack-edge-gpu-deploy-compute-module-simple.md
+    - text: Kubernetes über IoT Edge
+      url: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+    - text: Kubernetes über kubectl
+      url: azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md
+    - text: Kubernetes über Azure Arc
+      url: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
 - title: Problembehandlung
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Stack Edge-GPU
+    - text: 'Azure Stack Edge Pro GPU: Probleme bei der Bestellung'
+      url: azure-stack-edge-troubleshoot-ordering.md
+    - text: 'Azure Stack Edge Pro GPU: Geräteprobleme'
       url: azure-stack-edge-gpu-troubleshoot.md
-    - text: Edgecomputingmodule
+    - text: 'Azure Stack Edge Pro GPU: Aktivierungsprobleme'
+      url: azure-stack-edge-gpu-troubleshoot-activation.md
+    - text: Edgecomputingfehler
       url: azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge
-    - text: Zurückgeben der Azure Stack Edge-GPU
+    - text: Zurücksenden von Azure Stack Edge Pro GPU
       url: azure-stack-edge-return-device.md
     - text: Öffnen eines Supporttickets
       url: azure-stack-edge-contact-microsoft-support.md

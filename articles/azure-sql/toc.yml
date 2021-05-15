@@ -64,7 +64,7 @@
               displayName: 'regulatory, compliance, standards, domains'
               href: ./database/security-controls-policy.md
             - name: Sicherheitsbaseline
-              href: database/security-baseline.md
+              href: /security/benchmark/azure/baselines/sql-database-security-baseline?toc=/azure/azure-sql/toc.json
             - name: Always Encrypted
               href: database/always-encrypted-landing.yml
             - name: Azure Defender für SQL
@@ -157,6 +157,22 @@
           href: database/job-automation-overview.md
         - name: Auftragsautomatisierung mit SQL-Agent
           href: database/job-automation-managed-instances.md
+        - name: Verbinden und Abfragen über Apps
+          items:
+            - name: .NET mit Visual Studio
+              href: database/connect-query-dotnet-visual-studio.md
+            - name: .NET Core
+              href: database/connect-query-dotnet-core.md
+            - name: Go
+              href: database/connect-query-go.md
+            - name: Node.js
+              href: database/connect-query-nodejs.md
+            - name: PHP
+              href: database/connect-query-php.md
+            - name: Python
+              href: database/connect-query-python.md
+            - name: Ruby
+              href: database/connect-query-ruby.md
         - name: Geschäftskontinuität
           items:
             - name: Konfigurieren einer Failovergruppe
@@ -195,6 +211,8 @@
               href: database/monitoring-with-dmvs.md
             - name: Verstehen und Beheben von Blockierungen
               href: database/understand-resolve-blocking.md
+            - name: 'Konfigurieren des maximalen Grads an Parallelität (max degree of parallelism, MAXDOP)'
+              href: database/configure-max-degree-of-parallelism.md
             - name: Protokollieren der Diagnosetelemetrie
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: In-Memory-OLTP
@@ -268,7 +286,7 @@
             - name: Hyperscale
               href: database/service-tier-hyperscale.md
             - name: Häufig gestellte Fragen zu Hyperscale
-              href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+              href: database/service-tier-hyperscale-frequently-asked-questions-faq.yml
         - name: Planen und Verwalten von Kosten
           href: database/cost-management.md
     - name: Schnellstarts
@@ -329,8 +347,16 @@
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
     - name: Migrationsleitfäden
       items:
+        - name: Aus Access
+          href: migration-guides/database/access-to-sql-database-guide.md
         - name: Aus DB2
           href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: Aus Oracle
+          href: migration-guides/database/oracle-to-sql-database-guide.md
+        - name: Aus MySQL
+          href: migration-guides/database/mysql-to-sql-database-guide.md
+        - name: Aus SAP ASE
+          href: migration-guides/database/sap-ase-to-sql-database.md
         - name: Aus SQL Server
           items:
             - name: Übersicht
@@ -452,14 +478,8 @@
                   href: database/connect-query-vscode.md
             - name: Verbinden und Abfragen über Apps
               items:
-                - name: .NET mit Visual Studio
-                  href: database/connect-query-dotnet-visual-studio.md
-                - name: .NET Core
-                  href: database/connect-query-dotnet-core.md
                 - name: .NET mit MFA von Active Directory
                   href: database/active-directory-interactive-connect-azure-sql-db.md
-                - name: Go
-                  href: database/connect-query-go.md
                 - name: Java
                   href: database/connect-query-java.md
                 - name: Java mit Spring Data JDBC
@@ -468,16 +488,6 @@
                   href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Java mit Spring Data R2DBC
                   href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
-                - name: Node.js
-                  href: database/connect-query-nodejs.md
-                - name: PHP
-                  href: database/connect-query-php.md
-                - name: Python
-                  href: database/connect-query-python.md
-                - name: Ruby
-                  href: database/connect-query-ruby.md
-                - name: R
-                  href: database/connect-query-r.md
         - name: Verwalten
           items:
             - name: Referenz zur Verwaltungs-API
@@ -500,6 +510,8 @@
               href: database/elastic-pool-resource-management.md
             - name: Hyperscale-Leistungsdiagnose
               href: database/hyperscale-performance-diagnostics.md
+            - name: Blockieren von T-SQL-CRUD-Vorgängen
+              href: database/block-crud-tsql.md
         - name: Sicher
           items:
             - name: Überwachen in einem Speicherkonto hinter einem VNET oder einer Firewall
@@ -751,6 +763,8 @@
       items:
         - name: Aus DB2
           href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
+        - name: Aus Oracle
+          href: migration-guides/managed-instance/oracle-to-managed-instance-guide.md
         - name: Aus SQL Server
           items:
             - name: Übersicht
@@ -906,7 +920,7 @@
                     - name: Konvertieren von R-Code für SQL Server
                       href: /sql/machine-learning/r/converting-r-code-for-use-in-sql-server?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Erstellen einer gespeicherten Prozedur mithilfe von sqlrutils
-                      href: /sql/machine-learning/r/how-to-create-a-stored-procedure-using-sqlrutils?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
+                      href: /machine-learning-server/r-reference/sqlrutils/how-to-create-a-stored-procedure-from-r
                 - name: Vorhersagen (Predictions)
                   items:
                     - name: Native Bewertung mit PREDICT T-SQL
@@ -1050,18 +1064,26 @@
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
                 - name: Verfügbarkeitsgruppe
                   href: virtual-machines/windows/availability-group-overview.md
-                - name: Failoverclusterinstanz
+                - name: Failoverclusterinstanz (FCI)
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
             - name: Bewährte Methoden
               items:
-                - name: Leistung
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
                 - name: Sicherheit
                   href: virtual-machines/windows/security-considerations-best-practices.md
                 - name: Clusterkonfiguration
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
                 - name: Anwendungsmuster
                   href: virtual-machines/windows/application-patterns-development-strategies.md
+                - name: Leistung
+                  items:
+                    - name: Kurze Checkliste
+                      href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
+                    - name: Größe des virtuellen Computers
+                      href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
+                    - name: Storage
+                      href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
+                    - name: Baseline auswählen
+                      href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: Verwaltung
               items:
                 - name: Erweiterung für den SQL-IaaS-Agent
@@ -1248,12 +1270,20 @@
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
     - name: Migrationsleitfäden
       items:
-        - name: Übersicht
-          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
-        - name: Aus SQL Server
-          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
         - name: Aus DB2
           href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
+        - name: Aus Oracle
+          href: migration-guides/virtual-machines/oracle-to-sql-on-azure-vm-guide.md
+        - name: Aus SQL Server
+          items:
+            - name: Übersicht
+              href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+            - name: Migrationsleitfaden
+              href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+            - name: Verfügbarkeitsgruppe
+              href: migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md
+            - name: Failoverclusterinstanz (FCI)
+              href: migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md
 - name: Verweis
   items:
     - name: Referenz zur T-SQL-Sprache

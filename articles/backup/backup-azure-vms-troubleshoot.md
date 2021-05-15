@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 2d09081533cdb2de5ee97cb000e9844b41a85ac3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 83e6af5737d332bdafbae793286d5ebc0bc09bb8
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559365"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164883"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -50,7 +50,7 @@ Schließen Sie zur Behebung dieses Problems die folgenden Verzeichnisse aus der 
 
 ### <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime – Timeout beim Kopieren gesicherter Daten aus dem Tresor
 
-Fehlercode: CopyingVHDsFromBackUpVaultTakingLongTime <br/>
+Fehlercode: CopyingVHDsFromBackUpVaultTakingLongTime <br/>
 Fehlermeldung: Timeout beim Kopieren gesicherter Daten aus dem Tresor
 
 Dies kann durch vorübergehende Speicherfehler oder einen Mangel an Speicherkonto-IOPS für den Sicherungsdienst zum Übertragen von Daten in den Tresor innerhalb des Timeoutzeitraums passieren. Konfigurieren Sie die VM-Sicherung mit diesen [bewährten Methoden](backup-azure-vms-introduction.md#best-practices), und wiederholen Sie den Sicherungsvorgang.
@@ -74,7 +74,7 @@ Fehlermeldung: Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der
 * Führen Sie mit dem Befehl **fsck** eine Dateisystem-Konsistenzprüfung für diese Geräte aus.
 * Stellen Sie die Geräte erneut bereit, und versuchen Sie, die Sicherung auszuführen.</ol>
 
-Wenn Sie die Bereitstellung der Geräte nicht aufheben können, können Sie die VM-Sicherungskonfiguration aktualisieren, um bestimmte Bereitstellungspunkte zu ignorieren. Wenn z. B. der Bereitstellungspunkt „/mnt/resource“ nicht aufgehoben werden kann und dadurch die VM-Sicherung fehlschlägt, können Sie die VM-Sicherungskonfigurationsdateien mit der Eigenschaft ```MountsToSkip``` wie folgt aktualisieren.
+Wenn Sie die Bereitstellung der Geräte nicht aufheben können, können Sie die VM-Sicherungskonfiguration aktualisieren, um bestimmte Bereitstellungspunkte zu ignorieren. Wenn z. B. der Bereitstellungspunkt „/mnt/resource“ nicht aufgehoben werden kann und dadurch die VM-Sicherung fehlschlägt, können Sie die VM-Sicherungskonfigurationsdateien mit der Eigenschaft `MountsToSkip` wie folgt aktualisieren.
 
 ```bash
 cat /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux-1.0.9170.0/main/tempPlugin/vmbackup.conf[SnapshotThread]
@@ -82,7 +82,6 @@ fsfreeze: True
 MountsToSkip = /mnt/resource
 SafeFreezeWaitInSeconds=600
 ```
-
 
 ### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC – Fehler bei Installation/Betrieb der Erweiterung aufgrund eines COM+-Fehlers
 
@@ -116,12 +115,12 @@ Dieser Fehler tritt auf, weil die VSS Writer in einem fehlerhaften Zustand waren
 
 Schritt 1: Starten Sie die in einem fehlerhaften Zustand befindlichen VSS Writer-Instanzen neu.
 
-* Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl ```vssadmin list writers``` aus.
+* Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl `vssadmin list writers` aus.
 * Die Ausgabe enthält alle VSS Writer-Instanzen und deren Zustand. Starten Sie für jeden VSS Writer mit einem Zustand, der nicht **[1] Stabil** lautet, den entsprechenden VSS Writer-Dienst neu.
 * Führen Sie die folgenden Befehle an einer Eingabeaufforderung mit erhöhten Rechten aus, um den Dienst neu zu starten:
 
- ```net stop serviceName``` <br>
- ```net start serviceName```
+  `net stop serviceName` <br>
+  `net start serviceName`
 
 > [!NOTE]
 > Wenn Sie einige Dienste neu starten, kann dies Auswirkungen auf Ihre Produktionsumgebung haben. Stellen Sie sicher, dass der Genehmigungsprozess befolgt wird und der Dienst zur geplanten Downtime neu gestartet wird.
@@ -156,8 +155,8 @@ Starten Sie den Volumeschattenkopie-Dienst neu.
 (oder)<br>
 * Führen Sie die folgenden Befehle in einer Eingabeaufforderung mit erhöhten Rechten aus:
 
- ```net stop VSS``` <br>
- ```net start VSS```
+  `net stop VSS` <br>
+  `net start VSS`
 
 Wenn das Problem weiterhin besteht, starten Sie den virtuellen Computer zur geplanten Downtime neu.
 
@@ -178,7 +177,7 @@ Azure Backup unterstützt die Sicherung und Wiederherstellung von VMs, die im Az
 * Um dieses Problem zu beheben, verwenden Sie während des Wiederherstellungsvorgangs die Option [Datenträger wiederherstellen](./backup-azure-arm-restore-vms.md#restore-disks) und dann die [PowerShell](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks)- oder [Azure CLI](./tutorial-restore-disk.md)-Cmdlets, um die VM mit den neuesten Marketplace-Informationen entsprechend der VM zu erstellen.
 * Wenn der Herausgeber keine Marketplace-Informationen angibt, können Sie die Datenträger verwenden, um die Daten abzurufen, und Sie können diese an eine vorhandene VM anfügen.
 
-### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung
+### <a name="extensionconfigparsingfailure---failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung
 
 Fehlercode: ExtensionConfigParsingFailure<br/>
 Fehlermeldung: Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung.
@@ -211,7 +210,7 @@ Wenn für das Verzeichnis **MachineKeys** andere Berechtigungen als die Standard
 
 ### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState – Sicherungsvorgang wird von Erweiterungsstatus nicht unterstützt
 
-Fehlercode: ExtensionStuckInDeletionState <br/>
+Fehlercode: ExtensionStuckInDeletionState <br/>
 Fehlermeldung: Sicherungsvorgang wird von Erweiterungsstatus nicht unterstützt
 
 Beim Sicherungsvorgang ist aufgrund eines inkonsistenten Status der Sicherungserweiterung ein Fehler aufgetreten. Gehen Sie folgendermaßen vor, um das Problem zu beheben:
@@ -224,7 +223,7 @@ Beim Sicherungsvorgang ist aufgrund eines inkonsistenten Status der Sicherungser
 
 ### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError – Fehler bei Momentaufnahmevorgang, weil für einige der angefügten Datenträger das Limit für Momentaufnahmen überschritten wurde
 
-Fehlercode: ExtensionFailedSnapshotLimitReachedError  <br/>
+Fehlercode: ExtensionFailedSnapshotLimitReachedError   <br/>
 Fehlermeldung: Fehler bei Momentaufnahmevorgang, weil für einige der angefügten Datenträger das Limit für Momentaufnahmen überschritten wurde
 
 Beim Momentaufnahmevorgang ist ein Fehler aufgetreten, da das Momentaufnahmenlimit für einige der angefügten Datenträger überschritten wurde. Führen Sie die folgenden Problembehandlungsschritte aus, und wiederholen Sie dann den Vorgang.
@@ -331,7 +330,7 @@ Erwägen Sie bei einer Azure Policy-Richtlinie, mit der die [Tag-Governance in 
 
 Gehen Sie wie folgt vor, falls Sie nach der Wiederherstellung feststellen, dass sich die Datenträger im Offlinezustand befinden:
 
-* Vergewissern Sie sich, dass der Computer, auf dem das Skript ausgeführt wird, die Betriebssystemanforderungen erfüllt. [Weitere Informationen](./backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script).  
+* Vergewissern Sie sich, dass der Computer, auf dem das Skript ausgeführt wird, die Betriebssystemanforderungen erfüllt. [Weitere Informationen](./backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script).
 * Stellen Sie sicher, dass Sie die Wiederherstellung nicht auf derselben Quelle durchführen ([weitere Informationen](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)).
 
 ### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound: Fehler bei Wiederherstellung. Momentaufnahme der VM nicht gefunden
@@ -343,7 +342,8 @@ Dieser Fehler tritt auf, wenn Sie versuchen, eine Wiederherstellung aus einem Wi
 <br>
 Um dieses Problem zu beheben, versuchen Sie, den virtuellen Computer von einem anderen Wiederherstellungspunkt aus wiederherzustellen.<br>
 
-#### <a name="common-errors"></a>Häufige Fehler 
+#### <a name="common-errors"></a>Häufige Fehler
+
 | Fehlerdetails | Problemumgehung |
 | --- | --- |
 | Cloudinterner Fehler bei der Wiederherstellung. |<ol><li>Der Clouddienst, in dem Sie die Wiederherstellung ausführen möchten, ist mit DNS-Einstellungen konfiguriert. Sie können Folgendes überprüfen: <br>**$deployment = Get-AzureDeployment -ServiceName „Dienstname“ -Slot „Produktion“ Get-AzureDns -DnsSettings $deployment.DnsSettings**.<br>Wenn eine **Adresse** konfiguriert wurde, sind die DNS-Einstellungen konfiguriert.<br> <li>Der Clouddienst, in dem Sie die Wiederherstellung ausführen möchten, ist mit **ReservedIP** konfiguriert, und vorhandene VMs im Clouddienst befinden sich im Zustand „Beendet“. Sie können mithilfe der folgenden PowerShell-Cmdlets überprüfen, ob ein Clouddienst eine IP-Adresse reserviert hat: **$deployment = Get-AzureDeployment -ServiceName „Dienstname“ -Slot „Produktion“ $dep.ReservedIPName**. <br><li>Sie versuchen, einen virtuellen Computer mit den folgenden speziellen Netzwerkkonfigurationen im selben Clouddienst wiederherzustellen: <ul><li>Virtuelle Computer unter Lastenausgleichskonfiguration, intern und extern.<li>Virtuelle Computer mit mehreren reservierten IP-Adressen. <li>Virtuelle Computer mit mehreren NICs. </ul><li>Wählen Sie einen neuen Clouddienst auf der Benutzeroberfläche aus, oder lesen Sie die [Überlegungen zu Wiederherstellungen](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) für virtuelle Computer mit speziellen Netzwerkkonfigurationen.</ol> |

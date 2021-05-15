@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/23/2021
-ms.openlocfilehash: 9d7ab0498673ad7006087b66575eea9371b96d11
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/28/2021
+ms.openlocfilehash: a02735c20b7286df4aafef998066b9edfc519ef4
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565880"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228278"
 ---
 # <a name="maintenance-window-preview"></a>Wartungsfenster (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "105565880"
 Die Funktion „Wartungsfenster“ ermöglicht Ihnen das Konfigurieren von Wartungszeitplänen für Ressourcen in [Azure SQL-Datenbank](sql-database-paas-overview.md) und [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md), sodass beeinträchtigende Wartungsereignisse vorhersehbar werden und weniger störend für Ihre Workloads sind. 
 
 > [!Note]
-> Die Funktion „Wartungsfenster“ schützt nicht vor ungeplanten Ereignissen wie Hardwareausfällen, die zu kurzen Verbindungsunterbrechungen führen können.
+> Das Wartungsfensterfeature schützt nur vor geplanten Auswirkungen von Upgrades oder geplanten Wartungen. Es schützt jedoch nicht vor allen Failoverursachen, also Ausnahmen, die außerhalb eines Wartungsfensters zu kurzen Verbindungsunterbrechungen führen können, einschließlich Hardwarefehlern, Clusterlastenausgleichen und Neukonfigurationen von Datenbanken aufgrund von Ereignissen wie einer Änderung des Servicelevelziels der Datenbank. 
 
 ## <a name="overview"></a>Übersicht
 

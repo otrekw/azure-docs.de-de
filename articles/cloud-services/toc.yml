@@ -18,7 +18,7 @@
         - name: Sicherheit
           items:
             - name: Sicherheitsbaseline
-              href: security-baseline.md
+              href: /security/benchmark/azure/baselines/cloud-services-security-baseline?toc=/azure/cloud-services/toc.json
     - name: Vorgehensweise
       items:
         - name: Planen
@@ -105,6 +105,32 @@
               href: cloud-services-role-config-xpath.md
         - name: Verwalten von Zertifikaten
           items:
+            - name: Azure PowerShell
+              href: cloud-services-diagnostics-powershell.md
+            - name: .NET
+              href: cloud-services-dotnet-diagnostics.md
+            - name: Visual Studio
+              href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
+        - name: Speichern und Anzeigen von Diagnosedaten im Azure-Speicher
+          href: diagnostics-extension-to-storage.md
+        - name: Verfolgen eines Clouddiensts mit der Diagnose
+          href: cloud-services-dotnet-diagnostics-trace-flow.md
+    - name: Migrate
+      items:
+        - name: Übersicht zur Migration
+          href: ../cloud-services-extended-support/in-place-migration-overview.md?toc=/azure/cloud-services/toc.json
+        - name: Technische Details zur Migration
+          href: ../cloud-services-extended-support/in-place-migration-technical-details.md?toc=/azure/cloud-services/toc.json
+        - name: Migrieren über das Azure-Portal
+          href: ../cloud-services-extended-support/in-place-migration-portal.md?toc=/azure/cloud-services/toc.json
+        - name: Migrieren mit PowerShell
+          href: ../cloud-services-extended-support/in-place-migration-powershell.md?toc=/azure/cloud-services/toc.json
+        - name: Allgemeine Fehler und bekannte Probleme
+          href: ../cloud-services-extended-support/in-place-migration-common-errors.md?toc=/azure/cloud-services/toc.json
+    - name: Problembehandlung
+      items:
+        - name: Debuggen
+          items:
             - name: Cloud Services und Verwaltungszertifikate
               href: cloud-services-certs-create.md
             - name: Konfigurieren von SSL
@@ -172,6 +198,8 @@
                   href: cloud-services-deployment-faq.md
     - name: Verweis
       items:
+        - name: Azure CLI
+          href: /cli/azure/cloud
         - name: Codebeispiele
           href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
         - name: CSDEF (XML-Schema)
@@ -196,17 +224,25 @@
           href: /rest/api/compute/cloudservices/
     - name: Ressourcen
       items:
-        - name: Azure-Roadmap
-          href: 'https://azure.microsoft.com/roadmap/?category=compute'
-        - name: Lernpfad
-          href: /learn/paths/azure-fundamentals/
-        - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
-          href: /answers/topics/azure-cloud-services.html
-        - name: Preise
-          href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
-        - name: Preisrechner
-          href: 'https://azure.microsoft.com/pricing/calculator/'
-        - name: Dienstupdates
-          href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
-        - name: Videos
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'
+        - name: Rollenschema
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration-Schema
+          href: schema-cscfg-networkconfiguration.md
+    - name: REST
+      href: /rest/api/compute/cloudservices/
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Lernpfad
+      href: /learn/paths/azure-fundamentals/
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: /answers/topics/azure-cloud-services.html
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
+    - name: Videos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'

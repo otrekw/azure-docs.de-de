@@ -12,6 +12,12 @@ items:
         href: create-catalog-portal.md
       - name: 'Purview-Konto erstellen: Azure PowerShell'
         href: create-catalog-powershell.md
+      - name: "Erstellen eines Purview-Kontos: .NET\_SDK"
+        href: create-purview-dotnet.md
+      - name: 'Erstellen eines Purview-Kontos: Python'
+        href: create-purview-python.md
+      - name: 'Verwalten von Kafka-Benachrichtigungen: .NET'
+        href: manage-kafka-dotnet.md
   - name: Tutorials
     items:
       - name: "Starter\_Kit"
@@ -71,6 +77,8 @@ items:
             href: manage-integration-runtimes.md
           - name: Beheben von Verbindungsproblemen
             href: troubleshoot-connections.md
+          - name: Musterregeln für Ressourcensatz
+            href: how-to-resource-set-pattern-rules.md
           - name: Quellen
             items:
               - name: Datenquellen verwalten
@@ -79,6 +87,8 @@ items:
                 href: purview-connector-overview.md
               - name: Mehrere Azure-Quellen
                 href: register-scan-azure-multiple-sources.md
+              - name: Azure Synapse Analytics (Arbeitsbereich)
+                href: register-scan-synapse-workspace.md
               - name: Azure Blob Storage
                 href: register-scan-azure-blob-storage-source.md
                 displayName: Register and scan azure blob storage
@@ -100,7 +110,7 @@ items:
               - name: Verwaltete Azure SQL-Datenbank-Instanz
                 href: register-scan-azure-sql-database-managed-instance.md
                 displayName: Register and scan Azure SQL DB Managed Instance
-              - name: Azure Synapse Analytics
+              - name: "Dedizierter Azure-SQL-Pool (vormals SQL\_DW)"
                 href: register-scan-azure-synapse-analytics.md
               - name: 'Lokaler SQL-Server:'
                 href: register-scan-on-premises-sql-server.md
@@ -148,6 +158,10 @@ items:
             href: how-to-link-azure-data-factory.md
           - name: Azure Data Share-Datenherkunft
             href: how-to-link-azure-data-share.md
+          - name: "Power\_BI-Datenherkunft"
+            href: how-to-lineage-powerbi.md
+          - name: Spark-Datenherkunft
+            href: how-to-lineage-spark-atlas-connector.md
       - name: Überwachen
         items:
           - name: Überwachung mit Azure Monitor
@@ -170,9 +184,21 @@ items:
         items:
           - name: Verwalten von privaten Endpunkten
             href: catalog-private-link.md
+      - name: Notfallwiederherstellung
+        items:
+          - name: Notfallwiederherstellung
+            href: disaster-recovery.md
   - name: Verweis
     items:
       - name: Unterstützte Klassifizierungen
         href: supported-classifications.md
       - name: Leitfaden zur ABAP-Funktionsbereitstellung
         href: abap-functions-deployment-guide.md
+  - name: Ressourcen
+    items:
+      - name: Featurefeedback (UserVoice)
+        href: 'https://feedback.azure.com/forums/932437-azure-purview'
+      - name: Preisrechner
+        href: 'https://azure.microsoft.com/pricing/details/azure-purview/'
+      - name: "Microsoft\_Q&A-Forum"
+        href: /answers/topics/azure-purview.html

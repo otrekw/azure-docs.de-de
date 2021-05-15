@@ -1,18 +1,19 @@
 ---
 title: 'FedRAMP Moderate-Blaupausenbeispiele: Übersicht'
 description: Hier finden Sie eine Übersicht über das FedRAMP Moderate-Blaupausenbeispiel. Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer FedRAMP Moderate-Kontrollen.
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 65deb175c3a608b5f3a14048239bfa8be799619d
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 537053b516f1783969b3031a0924d606539c23f4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033811"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757185"
 ---
 # <a name="overview-of-the-fedramp-moderate-blueprint-sample"></a>Übersicht über das FedRAMP Moderate-Blaupausenbeispiel
 
-Das Blaupausenbeispiel „FedRAMP Moderate“ bietet mithilfe von [Azure Policy](../../../policy/overview.md) Schutzmaßnahmen für Governance, die Ihnen beim Bewerten bestimmter FedRAMP Moderate-Kontrollen helfen. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, die FedRAMP Moderate-Kontrollen implementieren muss.
+Das Blaupausenbeispiel „FedRAMP Moderate“ bietet mithilfe von [Azure Policy](../../../policy/overview.md) Schutzmaßnahmen für Governance, die Ihnen beim Bewerten bestimmter FedRAMP Moderate-Kontrollen helfen.
+Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, die FedRAMP Moderate-Kontrollen implementieren muss.
 
 ## <a name="control-mapping"></a>Steuerungszuordnung
 

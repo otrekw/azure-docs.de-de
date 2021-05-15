@@ -1,20 +1,20 @@
 ---
 title: 'Szenario: Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät (NVA)'
 titleSuffix: Azure Virtual WAN
-description: Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
+description: Erfahren Sie mehr über Virtual WAN-Routingszenarien zum Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA).
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 24671a34214864e253d96c356dc8b2853bf6d560
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90b1df8af4cf9f65cb04cc9418d7e8f97f9c3e49
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100519795"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162831"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Szenario: Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
@@ -39,7 +39,7 @@ In der folgenden Konnektivitätsmatrix sind die für dieses Szenario unterstütz
 
 **Konnektivitätsmatrix**
 
-| From             | Nach:|   *NVA-Spokes*|*NVA-VNETs*|*Nicht-NVA-VNETs*|*Branches*|
+| Von             | Nach:|   *NVA-Spokes*|*NVA-VNETs*|*Nicht-NVA-VNETs*|*Branches*|
 |---|---|---|---|---|---|
 | **NVA-Spokes**   | &#8594; | Über NVA-VNET | Peering | Über NVA-VNET | Über NVA-VNET |
 | **NVA-VNETs**    | &#8594; | Peering | Direkt | Direkt | Direkt |

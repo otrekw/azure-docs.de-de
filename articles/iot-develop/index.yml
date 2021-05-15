@@ -10,12 +10,12 @@ metadata:
   author: timlt
   ms.author: timlt
   ms.date: 01/11/2021
-  ms.openlocfilehash: bb3bd1766e20fd16fa996eb66008140009f6bd5d
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.openlocfilehash: 29872aa965c7c539cd4e5e4e3c66b90ba63562ed
+  ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101721445"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108795671"
 landingContent:
 - title: Informationen zur IoT-Geräteentwicklung
   linkLists:
@@ -23,6 +23,8 @@ landingContent:
     links:
     - text: Was ist die Azure IoT-Geräteentwicklung?
       url: about-iot-develop.md
+    - text: Überprüfen von IoT-Gerätetypen
+      url: concepts-iot-device-types.md
     - text: Welches SDK sollte ich verwenden?
       url: about-iot-sdks.md
 - title: Erste Schritte bei der Entwicklung von Geräteanwendungen
@@ -30,9 +32,9 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Senden von Gerätetelemetrie an IoT Central
-      url: quickstart-send-telemetry-python.md
+      url: quickstart-send-telemetry-central.md
     - text: Senden von Gerätetelemetrie an IoT Hub
-      url: quickstart-send-telemetry-cli-python.md
+      url: quickstart-send-telemetry-iot-hub.md
 - title: Erste Schritte bei der Entwicklung eingebetteter Geräte
   linkLists:
   - linkListType: quickstart

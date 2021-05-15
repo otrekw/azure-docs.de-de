@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 2291d1fa7f890296c59661060f5a823d8eb194ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9dcea1c9f25772d45e6d01e1a6b17635df9cf48
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104654389"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287516"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurieren benutzerdefinierter Warnungen zum Überwachen angekündigter Routen
 
@@ -271,25 +271,25 @@ Mit Azure Logic Apps werden alle Sammlungs- und Aktionsprozesse orchestriert. In
 
 ### <a name="workflow"></a>Workflow
 
-In diesem Workflow erstellen Sie eine Logik-App, mit der ExpressRoute-Gateways regelmäßig überwacht werden. Wenn neue Elemente vorhanden sind, sendet die Logik-App eine E-Mail für jedes Element. Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
+Für diese Logik-App erstellen Sie einen Workflow, der ExpressRoute-Gateways regelmäßig überwacht. Wenn neue Elemente vorhanden sind, sendet der Workflow eine E-Mail für jedes Element. Am Ende entspricht der Workflow grob dem folgenden Beispiel:
 
 :::image type="content" source="./media/custom-route-alert-portal/logic-apps-workflow.png" alt-text="Logic Apps-Workflow":::
 
 ### <a name="1-create-a-logic-app"></a>1. Erstellen einer Logik-App
 
-Erstellen Sie im **Logik-App-Designer** mithilfe der Vorlage **Leere Logik-App** eine Logik-App. Eine Anleitung hierzu finden Sie unter [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app).
+Erstellen Sie im **Logik-App-Designer** mithilfe der Vorlage **Leere Logik-App** eine Logik-App. Die Schritte dazu finden unter [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 :::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="Leere Vorlage":::
 
 ### <a name="2-add-a-trigger"></a>2. Hinzufügen eines Triggers
 
-Logik-Apps werden durch einen Trigger gestartet. Der Trigger wird ausgelöst, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt wird. Bei jeder Auslösung des Triggers erstellt die Azure Logic Apps-Engine eine Logik-App-Instanz, mit der Ihr Workflow gestartet und ausgeführt wird.
+Jeder Workflow beginnt mit einem Trigger. Der Trigger wird ausgelöst, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt wird. Bei jeder Auslösung des Triggers wird von Azure Logic Apps eine neue Workflowinstanz erstellt und ausgeführt.
 
-Fügen Sie dem Workflow den integrierten Trigger **Wiederholung – Zeitplan** hinzu, um eine Logik-App, die auf einem vordefinierten Zeitplan basiert, regelmäßig auszuführen. Geben Sie im Suchfeld den Suchbegriff **Zeitplan** ein. Wählen Sie **Trigger** aus. Klicken Sie in der Liste „Trigger“ auf **Wiederholung – Zeitplan**.
+Zum regelmäßigen Ausführen eines Workflows, der auf einem vordefinierten Zeitplan basiert, fügen Sie dem Workflow den integrierten Trigger **Wiederholung** hinzu. Geben Sie im Suchfeld den Suchbegriff **Zeitplan** ein. Wählen Sie das Symbol **Zeitplan** aus. Klicken Sie in der Liste Trigger auf **Wiederholung**.
 
 :::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="Wiederholung – Zeitplan":::
 
-Im Trigger „Wiederholung – Zeitplan“ können Sie die Zeitzone und eine Wiederholung für den Workflow festlegen. Das Intervall und die Häufigkeit definieren zusammen den Zeitplan für den Trigger Ihrer Logik-App. Berücksichtigen Sie die folgenden Aspekte, um eine sinnvolle Mindesthäufigkeit für die Wiederholungen festzulegen:
+Im Trigger „Wiederholung“ können Sie die Zeitzone und eine Wiederholung für den Workflow festlegen. Das Intervall und die Häufigkeit definieren zusammen den Zeitplan für den Trigger des Workflows. Berücksichtigen Sie die folgenden Aspekte, um eine sinnvolle Mindesthäufigkeit für die Wiederholungen festzulegen:
 
 * Die Ausführung des PowerShell-Skripts im Automation-Runbook nimmt einige Zeit in Anspruch. Die Laufzeit hängt von der Anzahl der ExpressRoute-Gateways ab, die überwacht werden sollen. Ist die Wiederholungshäufigkeit zu hoch, landen die Aufträge in der Warteschlange.
 
@@ -303,7 +303,7 @@ Nach Abschluss der Workflowkonfiguration können Sie die Konsistenz der Wiederho
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3. Erstellen eines Auftrags
 
-Eine Logik-App greift über Connectors auf andere Apps, Dienste und die Plattform zu. Der nächste Schritt in diesem Workflow besteht darin, einen Connector auszuwählen, über den Sie auf das zuvor definierte Azure Automation-Konto zugreifen.
+Ein Logik-App-Workflow greift über Connectors auf andere Apps, Dienste und die Plattform zu. Im nächsten Schritt wird ein Connector ausgewählt, über den Sie auf das zuvor definierte Azure Automation-Konto zugreifen.
 
 1. Klicken Sie im **Logik-App-Designer** unter **Wiederholung** auf **Neuer Schritt**. Klicken Sie unter **Aktion auswählen** und unterhalb des Suchfelds auf die Option **Alle**.
 2. Geben Sie im Suchfeld den Suchbegriff **Azure Automation** ein, und starten Sie die Suche. Klicken Sie auf **Auftrag erstellen**. Mit der Aktion **Auftrag erstellen** wird das zuvor erstellte Automation-Runbook ausgelöst.
@@ -334,7 +334,7 @@ Eine Logik-App greift über Connectors auf andere Apps, Dienste und die Plattfor
 
 ### <a name="5-parse-the-json"></a><a name="parse"></a>5. Analysieren des JSON-Elements
 
-Über die Informationen, die in der Ausgabe der Azure Automation-Aktion „Auftrag erstellen“ (vorherige Schritte) enthalten sind, wird ein JSON-Element generiert. Mit der integrierten Logic Apps-Aktion **JSON analysieren** werden benutzerfreundliche Token aus den Eigenschaften und deren Werten im JSON-Element erstellt. Diese Eigenschaften können Sie für Ihren Workflow verwenden.
+Über die Informationen, die in der Ausgabe der Azure Automation-Aktion „Auftrag erstellen“ (vorherige Schritte) enthalten sind, wird ein JSON-Element generiert. Mit der integrierten Aktion **JSON analysieren** werden benutzerfreundliche Token aus den Eigenschaften und deren Werten im JSON-Element erstellt. Diese Eigenschaften können Sie für Ihren Workflow verwenden.
 
 1. Fügen Sie eine Aktion hinzu. Klicken Sie unter der Aktion **Auftragsausgabe abrufen** auf **Neuer Schritt**.
 2. Geben Sie im Suchfeld unter **Aktion auswählen** den Suchbegriff „JSON analysieren“ ein, um nach Connectors für diese Aktion zu suchen. Wählen Sie in der Liste **Aktionen** die Aktion **JSON analysieren** für die Datenvorgänge aus, die Sie verwenden möchten.

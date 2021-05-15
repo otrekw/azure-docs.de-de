@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b3d73221793ec8ced4aaac9eace545ac78c31660
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b32b1fb3e0e21374fab2068d337440003005b1e7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143915"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291314"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java-Anwendungsüberwachung ohne Code mit Azure Monitor Application Insights
 
@@ -92,9 +92,7 @@ In der Datei `applicationinsights.json` können Sie zusätzlich Folgendes konfig
 
 Ausführliche Informationen finden Sie unter [Konfigurationsoptionen](./java-standalone-config.md).
 
-## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>Automatisch gesammelte Anforderungen, Abhängigkeiten, Protokolle und Metriken
-
-### <a name="requests"></a>Requests
+## <a name="auto-collected-requests"></a>Automatisch gesammelte Anforderungen
 
 * JMS-Consumer
 * Kafka-Consumer
@@ -102,7 +100,9 @@ Ausführliche Informationen finden Sie unter [Konfigurationsoptionen](./java-sta
 * Servlets
 * Spring-Zeitplanung
 
-### <a name="dependencies-with-distributed-trace-propagation"></a>Abhängigkeiten mit Weitergabe der verteilten Ablaufverfolgung
+## <a name="auto-collected-dependencies"></a>Automatisch gesammelte Abhängigkeiten
+
+Automatisch gesammelte Abhängigkeiten plus verteilte Downstream-Ablaufverfolgungsweitergabe:
 
 * Apache HttpClient und HttpAsyncClient
 * gRPC
@@ -112,27 +112,27 @@ Ausführliche Informationen finden Sie unter [Konfigurationsoptionen](./java-sta
 * Netty-Client
 * OkHttp
 
-### <a name="other-dependencies"></a>Andere Abhängigkeiten
+Automatisch gesammelte Abhängigkeiten (ohne Weitergabe der nachgelagerten verteilten Ablaufverfolgung):
 
 * Cassandra
 * JDBC
 * MongoDB (asynchron und synchron)
 * Redis (Lettuce und Jedis)
 
-### <a name="logs"></a>Protokolle
+## <a name="auto-collected-logs"></a>Automatisch gesammelte Protokolle
 
 * java.util.logging
 * Log4j (einschließlich MDC-Eigenschaften)
 * SLF4J/Logback (einschließlich MDC-Eigenschaften)
 
-### <a name="metrics"></a>Metriken
+## <a name="auto-collected-metrics"></a>Automatisch gesammelte Metriken
 
 * Micrometer (einschließlich Metriken des Spring Boot-Aktors)
 * JMX-Metriken
 
-### <a name="azure-sdks-preview"></a>Azure SDKs (Vorschau)
+## <a name="azure-sdks-preview"></a>Azure SDKs (Vorschau)
 
-Sehen Sie sich die [Konfigurationsoptionen](./java-standalone-config.md#auto-collected-azure-sdk-telemetry-preview) an, um dieses Vorschaufeature zu aktivieren und die von diesen Azure SDKs ausgegebenen Telemetriedaten zu erfassen:
+Sehen Sie sich die [Konfigurationsoptionen](./java-standalone-config.md#auto-collected-azure-sdk-telemetry-preview) an, um diese Previewfunktion zu aktivieren und die von diesen Azure SDKs ausgegebenen Telemetriedaten automatisch zu sammeln:
 
 * [App Configuration](/java/api/overview/azure/data-appconfiguration-readme) 1.1.10 und höher
 * [Cognitive Search](/java/api/overview/azure/search-documents-readme) 11.3.0 und höher

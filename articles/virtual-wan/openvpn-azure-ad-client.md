@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 04/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3dbdfb461bc2ae79439f39df3efbc2c564782110
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13587862f079c028a9848e36afcff74a9c725547
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548392"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207499"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurieren eines VPN-Clients für P2S-VPN-Protokollverbindungen: Azure AD-Authentifizierung
 
@@ -24,30 +24,30 @@ Dieser Artikel unterstützt Sie beim Konfigurieren eines VPN-Clients für die Ve
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>Arbeiten mit Clientprofilen
 
-Zum Herstellen einer Verbindung müssen Sie auf jedem Computer, der eine Verbindung mit dem VNET herstellen möchte, Azure VPN Client herunterladen und ein VPN-Clientprofil konfigurieren. Sie können ein Clientprofil auf einem Computer erstellen, das Profil exportieren und dann auf weiteren Computern importieren.
+Für jeden Computer, der über den VPN-Client eine Verbindung mit dem VNet herstellen möchte, müssen Sie den Azure VPN Client für den Computer herunterladen und auch ein VPN-Clientprofil konfigurieren. Wenn Sie mehrere Computer konfigurieren möchten, können Sie ein Clientprofil auf einem Computer erstellen, exportieren und dann auf andere Computer importieren.
 
 ### <a name="to-download-the-azure-vpn-client"></a>So laden Sie Azure VPN Client herunter
 
-Verwenden Sie diesen [Link](https://go.microsoft.com/fwlink/?linkid=2117554), um Azure VPN Client herunterzuladen. Stellen Sie sicher, dass Azure VPN Client über die Berechtigung für die Ausführung im Hintergrund verfügt. Führen Sie die folgenden Schritte aus, um die Berechtigung zu überprüfen/zu aktivieren:
+1. Laden Sie [Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554) auf den Computer herunter.
+1. Überprüfen Sie, ob der Azure VPN Client über die Berechtigung für die Ausführung im Hintergrund verfügt. Zur Überprüfung und Aktivierung von Berechtigungen, navigieren Sie zu **Start -> Einstellungen -> Privatsphäre -> Hintergrund-Apps**.
 
-1. Wechseln Sie zu „Start“, und wählen Sie dann „Einstellungen“ > „Datenschutz“ > „Hintergrund-Apps“ aus.
-2. Stellen Sie sicher, dass unter „Hintergrund-Apps“ die Option **Apps die Ausführung im Hintergrund gestatten** aktiviert ist.
-3. Aktivieren Sie unter „Wählen Sie aus, welche Apps im Hintergrund ausgeführt werden dürfen“ die Einstellung für „Azure-VPN-Client“ (**Ein**).
+   * Vergewissern Sie sich, dass unter **Hintergrund-Apps** für **Ausführung von Apps im Hintergrund zulassen** die Option **Ein** ausgewählt ist.
+   * Aktivieren Sie unter **Wählen Sie aus, welche Apps im Hintergrund ausgeführt werden dürfen** die Einstellungen für **Azure VPN Client**.
 
-  ![Berechtigung (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
+     ![Screenshot: Hintergrund-Apps.](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
 ### <a name="to-create-a-certificate-based-client-profile"></a><a name="cert"></a>So erstellen Sie ein zertifikatbasiertes Clientprofil
 
 Bei Verwendung eines zertifikatbasierten Profils müssen die entsprechenden Zertifikate auf dem Clientcomputer installiert sein. Weitere Informationen zu Zertifikaten finden Sie unter [Installieren von Clientzertifikaten](certificates-point-to-site.md).
 
-  ![cert](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
+![Screenshot: Zertifikatauthentifizierung mit Zertifikaten.](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
 
 ### <a name="to-create-a-radius-client-profile"></a><a name="radius"></a>So erstellen Sie ein RADIUS-Clientprofil
 
-  ![Radius](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+![Screenshot: Informationen zum RADIUS-Verbindungsclient.](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
   
 > [!NOTE]
-> Der geheime Serverschlüssel kann in das P2S-VPN-Clientprofil exportiert werden.  Anweisungen zum Exportieren eines Clientprofils finden Sie [hier](about-vpn-profile-download.md).
+> Der geheime Serverschlüssel kann in das P2S-VPN-Clientprofil exportiert werden. Informationen zum Exportieren eines Clientprofils finden Sie unter [Benutzer-VPN-Clientprofile](about-vpn-profile-download.md).
 >
 
 ### <a name="to-export-and-distribute-a-client-profile"></a><a name="export"></a>So exportieren und verteilen Sie ein Clientprofil
@@ -212,7 +212,8 @@ Sie können die heruntergeladene XML-Datei für das Profil ändern und die Tags 
 </clientconfig>
 </azvpnprofile>
 ```
-### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>Wie leite ich den gesamten Netzwerkdatenverkehr an den VPN-Tunnel weiter (Tunnel erzwingen)?
+
+### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a><a name="force-tunneling"></a>Wie leite ich den gesamten Netzwerkdatenverkehr an den VPN-Tunnel weiter (Tunnel erzwingen)?
 
 Sie können die heruntergeladene XML-Datei für das Profil ändern und die Tags **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** hinzufügen.
 
@@ -250,14 +251,15 @@ Sie können die heruntergeladene XML-Datei für das Profil ändern und die Tags 
 </clientconfig>
 </azvpnprofile>
 ```
+
 ### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Kann ich das Profil über eine Eingabeaufforderung importieren?
 
-Sie können das Profil über eine Eingabeaufforderung importieren, indem Sie die heruntergeladene Datei **azurevpnconfig.xml** in den Ordner **%userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState** legen und den folgenden Befehl ausführen:
+Sie können das Profil über eine Eingabeaufforderung importieren, indem Sie die heruntergeladene Datei **azurevpnconfig.xml** im Ordner **%userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState** ablegen und den folgenden Befehl ausführen:
 
 ```
 azurevpn -i azurevpnconfig.xml 
 ```
-Um den Import zu erzwingen, verwenden Sie auch den Schalter **-f**
+Um den Import zu erzwingen, verwenden Sie den Schalter **-f**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

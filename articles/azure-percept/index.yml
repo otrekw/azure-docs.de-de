@@ -3,19 +3,19 @@ title: Azure Percept-Dokumentation
 summary: Azure Percept ist eine End-to-End-Lösung zum Erstellen und Bereitstellen von perzeptionsbasierter Edge-KI.
 metadata:
   title: Azure Percept-Dokumentation
-  description: Azure Percept ist eine End-to-End-Edge-KI-Plattform.
+  description: Azure Percept ist eine End-to-End-Edge-KI-Plattform und ein Development Kit.
   services: azure-percept
   ms.service: azure-percept
   ms.topic: landing-page
-  author: elqu20
-  ms.author: v-elqu
-  ms.date: 02/11/2021
-  ms.openlocfilehash: b979f147c67e8e877b5bb0e9d3dc557317c7aa50
-  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+  author: mimcco
+  ms.author: mimcco
+  ms.date: 03/25/2021
+  ms.openlocfilehash: 0cf9e95897554cb51ff6837dec72700124471025
+  ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102097494"
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106107726"
 landingContent:
 - title: Was ist Azure Percept?
   linkLists:
@@ -31,27 +31,33 @@ landingContent:
       url: overview-azure-percept-studio.md
     - text: Übersicht über die Azure Percept-Sicherheit
       url: overview-percept-security.md
+    - text: 80/20-Integration
+      url: overview-8020-integration.md
+    - text: Azure Percept-KI-Modelle
+      url: overview-ai-models.md
 - title: Erste Schritte mit Azure Percept DK
   linkLists:
   - linkListType: quickstart
     links:
     - text: Auspacken und Zusammensetzen Ihres Azure Percept DK
       url: quickstart-percept-dk-unboxing.md
-    - text: Verbinden des Azure Percept DK mit Azure und Bereitstellen eines Vision KI-Modells
+    - text: Verbinden von Azure Percept DK mit Azure
       url: quickstart-percept-dk-set-up.md
   - linkListType: reference
     links:
-    - text: Azure Percept DK-Datenblatt
+    - text: Datenblatt für Azure Percept DK
       url: azure-percept-dk-datasheet.md
     - text: Datenblatt für Azure Percept-Vision
       url: azure-percept-vision-datasheet.md
-    - text: Problembehandlung
+    - text: Allgemeine Problembehandlung für Azure Percept DK
       url: troubleshoot-dev-kit.md
+    - text: Behandeln von Problemen bei der Einrichtung
+      url: how-to-troubleshoot-setup.md
 - title: Erste Schritte mit Azure Percept-Audio
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Einrichten von Azure Percept-Audio
+    - text: Einrichten von Azure Percept Audio
       url: quickstart-percept-audio-setup.md
   - linkListType: reference
     links:
@@ -59,9 +65,9 @@ landingContent:
       url: azure-percept-audio-datasheet.md
     - text: Problembehandlung von Azure Percept-Audio
       url: troubleshoot-audio-accessory-speech-module.md
-    - text: Azure Percept-Audio-LED und -Taste
+    - text: LED- und Tastenverhalten von Azure Percept Audio
       url: audio-button-led-behavior.md
-- title: Erstellen eines Vision KI-Prototyps ohne Code
+- title: Erstellen einer Vision-Lösung ohne Code
   linkLists:
   - linkListType: tutorial
     links:
@@ -77,11 +83,11 @@ landingContent:
       url: how-to-capture-images.md
     - text: Anzeigen der Telemetrie Ihres DevKits
       url: how-to-view-telemetry.md
-  - linkListType: concept
+  - linkListType: reference
     links:
-    - text: Arbeiten mit KI-Lösungen
-      url: overview-ai-models.md
-- title: Erstellen einer Sprach-Assistenten-Lösung ohne Code
+    - text: Problembehandlung für die Vision-Lösung
+      url: vision-solution-troubleshooting.md
+- title: Erstellen einer Sprachlösung ohne Code
   linkLists:
   - linkListType: tutorial
     links:
@@ -89,9 +95,9 @@ landingContent:
       url: tutorial-no-code-speech.md
   - linkListType: how-to-guide
     links:
-    - text: Verwalten Ihres Sprach-Assistenten
+    - text: Konfigurieren Ihres Sprach-Assistenten in Azure Percept Studio
       url: how-to-manage-voice-assistant.md
-    - text: Konfigurieren Ihres Sprach-Assistenten mithilfe von IoT Hub
+    - text: Konfigurieren Ihres Sprach-Assistenten in IoT Hub
       url: how-to-configure-voice-assistant.md
 - title: Erweiterte Entwicklung mit Azure Percept
   linkLists:
@@ -111,9 +117,9 @@ landingContent:
       url: overview-update-experience.md
   - linkListType: how-to-guide
     links:
-    - text: Einrichten von Over-the-Air-Updates
+    - text: Einrichten von OTA-Updates (Over-the-Air)
       url: how-to-set-up-over-the-air-updates.md
-    - text: Over-the-Air-Updates
+    - text: Aktualisieren Ihres Geräts per Funk (Over-the-Air, OTA)
       url: how-to-update-over-the-air.md
-    - text: Aktualisieren über USB
+    - text: Aktualisieren Ihres Geräts über USB
       url: how-to-update-via-usb.md

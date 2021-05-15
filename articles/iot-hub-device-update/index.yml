@@ -11,12 +11,12 @@ metadata:
   ms.author: philmea
   manager: philmea
   ms.date: 2/17/2021
-  ms.openlocfilehash: 2b47f8b51cf4150659c1d5b8ed1dc145997252ef
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: c098c6baa5cb976b02c8e736318f6019790ae090
+  ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101677946"
+  ms.lasthandoff: 05/10/2021
+  ms.locfileid: "109715446"
 landingContent:
 - title: Informationen zu Device Update
   linkLists:
@@ -24,6 +24,20 @@ landingContent:
     links:
     - text: Was ist Device Update for IoT Hub?
       url: understand-device-update.md
+- title: Weitere Informationen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen eines Geräteupdatekontos
+      url: create-device-update-account.md
+    - text: Bereitstellen des Geräteupdate-Agents
+      url: device-update-agent-provisioning.md
+    - text: Hinzufügen eines Updates
+      url: import-update.md
+    - text: Erstellen einer Updategruppe
+      url: create-update-group.md
+    - text: Bereitstellen eines Updates
+      url: deploy-update.md
   - linkListType: concept
     links:
     - text: Verwendung von Plug & Play durch Geräteupdate
@@ -36,41 +50,39 @@ landingContent:
       url: import-concepts.md
     - text: Grundlegendes zu Geräteupdategruppen
       url: device-update-groups.md
-- title: Erkunden mit den Tutorials
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Geräteupdate auf Raspberry Pi
-      url: device-update-raspberry-pi.md
-  - linkListType: tutorial
-    links:
-    - text: Geräteupdates in einem Simulator
-      url: device-update-simulator.md
-  - linkListType: tutorial
-    links:
-    - text: Geräteupdate im Ubuntu Server 18,04 x64 Package-Agent
-      url: device-update-ubuntu-agent.md
-- title: Informationen zum Aktualisieren von Geräten
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Erstellen eines Geräteupdatekontos
-      url: create-device-update-account.md
-  - linkListType: how-to-guide
-    links:
-    - text: Importieren eines Updates
-      url: import-update.md
-  - linkListType: how-to-guide
-    links:
-    - text: Erstellen einer Updategruppe
-      url: create-update-group.md
-  - linkListType: how-to-guide
-    links:
-    - text: Bereitstellen eines Updates
-      url: deploy-update.md
 - title: Entwicklerhandbuch
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Erstellen, Ausführen und Ändern des Geräteupdate-Agents
-      url: device-update-agent-provisioning.md
+    - text: Erstellen und Ausführen des Geräte-Update-Agents
+      url: device-update-agent-provisioning.md#how-to-build-and-run-device-update-agent
+- title: Erste Schritte
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Geräteupdates in einem Simulator
+      url: device-update-simulator.md
+    - text: Geräteupdate auf Raspberry Pi
+      url: device-update-raspberry-pi.md
+    - text: Geräteupdate im Ubuntu Server 18,04 x64 Package-Agent
+      url: device-update-ubuntu-agent.md
+- title: API- und SDK-Referenz
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: /rest/api/deviceupdate/
+  - linkListType: reference
+    links:
+    - text: 'Steuerungsebene: .NET'
+      url: /dotnet/api/overview/azure/iot/management
+    - text: 'Steuerungsebene: Python'
+      url: /python/api/azure-mgmt-deviceupdate/
+  - linkListType: reference
+    links:
+    - text: 'Datenebene: JavaScript'
+      url: /javascript/api/@azure/iot-device-update/?view=azure-node-preview&preserve-view=true
+    - text: 'Datenebene: Java'
+      url: /java/api/com.azure.iot.deviceupdate?view=azure-java-preview&preserve-view=true
+    - text: 'Datenebene: Python'
+      url: /python/api/azure-mgmt-deviceupdate/azure.mgmt.deviceupdate?view=azure-python-preview&preserve-view=true

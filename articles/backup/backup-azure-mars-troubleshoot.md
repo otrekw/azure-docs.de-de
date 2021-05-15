@@ -3,12 +3,12 @@ title: Behandeln von Problemen mit dem Azure Backup-Agent
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Installation und Registrierung des Azure Backup-Agents behandeln.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: c662bf8c8d9490691f45254bef01618f17bd6e2a
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 8320edbe2f9f5ae495246eb26276023b1b902764
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518183"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324777"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -21,7 +21,7 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 - [Stellen Sie sicher, dass der MARS-Agent aktuell](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409).
 - [Stellen Sie sicher, dass zwischen dem MARS-Agent und Azure eine Netzwerkverbindung besteht](#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup).
 - Stellen Sie sicher, dass MARS ausgeführt wird (in der Dienstkonsole). Führen Sie bei Bedarf einen Neustart durch, und wiederholen Sie den Vorgang.
-- [Stellen Sie sicher, dass am Speicherort des Ablageordners 5-10 % freier Volumespeicherplatz vorhanden ist](./backup-azure-file-folder-backup-faq.yml#what-s-the-minimum-size-requirement-for-the-cache-folder-).
+- [Stellen Sie sicher, dass am Speicherort des Ablageordners 5-10 % freier Volumespeicherplatz vorhanden ist](/azure/backup/backup-azure-file-folder-backup-faq#what-s-the-minimum-size-requirement-for-the-cache-folder-).
 - [Prüfen Sie, ob Azure Backup von einem anderen Prozess oder einer Antivirensoftware beeinträchtigt wird](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
 - Wenn der Sicherungsauftrag mit Warnungen abgeschlossen wurde, lesen Sie den Abschnitt [Mit Warnungen abgeschlossene Sicherungsaufträge](#backup-jobs-completed-with-warning).
 - Wenn geplante Sicherungen fehlschlagen, manuelle Sicherungen jedoch funktionieren, lesen Sie den Abschnitt [Sicherungen werden nicht nach Zeitplan ausgeführt](#backups-dont-run-according-to-schedule).
@@ -79,7 +79,7 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 
 | Fehler  | Mögliche Ursache | Empfohlene Aktionen |
 | ---     | ---     | ---    |
-| Die angegebene Datei mit Tresoranmeldeinformationen kann nicht verwendet werden, weil sie nicht aus dem Tresor heruntergeladen wird, der diesem Server zugeordnet ist. (ID: 100110) Geben Sie die entsprechenden Tresoranmeldeinformationen an. | Die Datei mit den Tresoranmeldeinformationen stammt aus einem anderen Tresor als dem, bei dem dieser Server bereits registriert ist. | Stellen Sie sicher, dass der Zielcomputer und der Quellcomputer beim selben Recovery Services-Tresor registriert sind. Wenn der Zielserver bereits bei einem anderen Tresor registriert wurde, verwenden Sie die Option **Server registrieren**, um die Registrierung beim richtigen Tresor auszuführen.  
+| Die angegebene Datei mit Tresoranmeldeinformationen kann nicht verwendet werden, weil sie nicht aus dem Tresor heruntergeladen wird, der diesem Server zugeordnet ist. (ID: 100110) Geben Sie die entsprechenden Tresoranmeldeinformationen an. | Die Datei mit den Tresoranmeldeinformationen stammt aus einem anderen Tresor als dem, bei dem dieser Server bereits registriert ist. | Stellen Sie sicher, dass der Zielcomputer und der Quellcomputer beim selben Recovery Services-Tresor registriert sind. Wenn der Zielserver bereits bei einem anderen Tresor registriert wurde, verwenden Sie die Option **Server registrieren**, um die Registrierung beim richtigen Tresor auszuführen.
 
 ## <a name="backup-jobs-completed-with-warning"></a>Mit Warnungen abgeschlossene Sicherungsaufträge
 
@@ -91,7 +91,7 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
   - Nicht unterstützte Dateiattribute (Beispiele: in einem OneDrive-Ordner, komprimierter Stream, Analysepunkte). Eine vollständige Liste finden Sie in der [Supportmatrix](./backup-support-matrix-mars-agent.md#supported-file-types-for-backup).
   - Ein Dateisystemproblem
   - Ein anderer störender Prozess (Beispiel: Antivirensoftware, die Handles für Dateien hält, kann den Zugriff auf Dateien durch den MARS-Agent verhindern.)
-  - Von einer Anwendung gesperrte Dateien  
+  - Von einer Anwendung gesperrte Dateien
 
 - Der Sicherungsdienst kennzeichnet diese Dateien in der Protokolldatei mit der folgenden Namenskonvention als fehlgeschlagen: *LastBackupFailedFilesxxxx.txt* unter dem Ordner *C:\Programme\Microsoft Azure Recovery Service Agent\temp*.
 - Sehen Sie sich zur Behebung dieses Problems die Protokolldatei an, um die Art des Problems zu verstehen:
@@ -99,7 +99,7 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
   | Fehlercode             | Ursachen                                             | Empfehlungen                                              |
   | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
   | 0x80070570             | Die Datei oder das Verzeichnis ist beschädigt und nicht lesbar. | Führen Sie **chkdsk** auf dem Quellvolume aus.                             |
-  | 0x80070002, 0x80070003 | Das System kann die angegebene Datei nicht finden.         | [Stellen Sie sicher, dass der Ordner „scratch“ nicht voll ist.](/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)  <br><br>  Überprüfen Sie, ob das Volume mit dem konfigurierten temporären Speicherbereich vorhanden ist (nicht gelöscht wurde).  <br><br>   [Stellen Sie sicher, dass der MARS-Agent von der auf dem Computer installierten Antivirensoftware ausgeschlossen ist.](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
+  | 0x80070002, 0x80070003 | Das System kann die angegebene Datei nicht finden.         | [Stellen Sie sicher, dass der Ordner „scratch“ nicht voll ist.](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)  <br><br>  Überprüfen Sie, ob das Volume mit dem konfigurierten temporären Speicherbereich vorhanden ist (nicht gelöscht wurde).  <br><br>   [Stellen Sie sicher, dass der MARS-Agent von der auf dem Computer installierten Antivirensoftware ausgeschlossen ist.](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
   | 0x80070005             | Der Zugriff wird verweigert.                                    | [Überprüfen Sie, ob der Zugriff durch Antivirensoftware oder andere Drittanbietersoftware blockiert wird.](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)     |
   | 0x8007018b             | Der Zugriff auf die Clouddatei wird verweigert.                | OneDrive-Dateien, Git-Dateien oder andere Dateien, die sich auf dem Computer im Offlinezustand befinden können |
 
@@ -117,13 +117,13 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 
 | Fehler  | Mögliche Ursachen | Empfohlene Aktionen |
 |---------|---------|---------|
-|<br />Die Aktivierung wurde nicht erfolgreich abgeschlossen. Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x1FC07] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.     | <li> Der Ablageordner befindet sich auf einem Volume, das nicht genügend Speicherplatz aufweist. <li> Der Ablageordner wurde nicht ordnungsgemäß verschoben. <li> Die Datei „OnlineBackup.KEK“ fehlt.         | <li>Führen Sie ein Upgrade auf die [aktuelle Version](https://aka.ms/azurebackup_agent) des MARS-Agents durch.<li>Verschieben Sie den Ablageordner oder den Cachespeicherort zu einem Volume, auf dem Speicherplatz in Höhe von 5–10 % der Gesamtgröße der Sicherungsdaten verfügbar ist. Um den Cachespeicherort ordnungsgemäß zu verschieben, führen Sie die unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder) erläuterten Schritte aus.<li> Stellen Sie sicher, dass die Datei „OnlineBackup.KEK“ vorhanden ist. <br>*Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“* .        |
+|<br />Die Aktivierung wurde nicht erfolgreich abgeschlossen. Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x1FC07] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.     | <li> Der Ablageordner befindet sich auf einem Volume, das nicht genügend Speicherplatz aufweist. <li> Der Ablageordner wurde nicht ordnungsgemäß verschoben. <li> Die Datei „OnlineBackup.KEK“ fehlt.         | <li>Führen Sie ein Upgrade auf die [aktuelle Version](https://aka.ms/azurebackup_agent) des MARS-Agents durch.<li>Verschieben Sie den Ablageordner oder den Cachespeicherort zu einem Volume, auf dem Speicherplatz in Höhe von 5–10 % der Gesamtgröße der Sicherungsdaten verfügbar ist. Um den Cachespeicherort ordnungsgemäß zu verschieben, führen Sie die unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder) erläuterten Schritte aus.<li> Stellen Sie sicher, dass die Datei „OnlineBackup.KEK“ vorhanden ist. <br>*Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“* .        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Die Verschlüsselungspassphrase ist nicht richtig konfiguriert.
 
 | Fehler  | Mögliche Ursachen | Empfohlene Aktionen |
 |---------|---------|---------|
-| <br />Fehler 34506. Die auf diesem Computer gespeicherte Verschlüsselungspassphrase ist nicht richtig konfiguriert.    | <li> Der Ablageordner befindet sich auf einem Volume, das nicht genügend Speicherplatz aufweist. <li> Der Ablageordner wurde nicht ordnungsgemäß verschoben. <li> Die Datei „OnlineBackup.KEK“ fehlt.        | <li>Führen Sie ein Upgrade auf die [neueste Version](https://aka.ms/azurebackup_agent) des MARS-Agents durch.<li>Verschieben Sie den Ablageordner oder den Cachespeicherort zu einem Volume, auf dem Speicherplatz in Höhe von 5–10 % der Gesamtgröße der Sicherungsdaten verfügbar ist. Um den Cachespeicherort ordnungsgemäß zu verschieben, führen Sie die unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder) erläuterten Schritte aus.<li> Stellen Sie sicher, dass die Datei „OnlineBackup.KEK“ vorhanden ist. <br>*Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“* .         |
+| <br />Fehler 34506. Die auf diesem Computer gespeicherte Verschlüsselungspassphrase ist nicht richtig konfiguriert.    | <li> Der Ablageordner befindet sich auf einem Volume, das nicht genügend Speicherplatz aufweist. <li> Der Ablageordner wurde nicht ordnungsgemäß verschoben. <li> Die Datei „OnlineBackup.KEK“ fehlt.        | <li>Führen Sie ein Upgrade auf die [neueste Version](https://aka.ms/azurebackup_agent) des MARS-Agents durch.<li>Verschieben Sie den Ablageordner oder den Cachespeicherort zu einem Volume, auf dem Speicherplatz in Höhe von 5–10 % der Gesamtgröße der Sicherungsdaten verfügbar ist. Um den Cachespeicherort ordnungsgemäß zu verschieben, führen Sie die unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder) erläuterten Schritte aus.<li> Stellen Sie sicher, dass die Datei „OnlineBackup.KEK“ vorhanden ist. <br>*Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“* .         |
 
 ## <a name="backups-dont-run-according-to-schedule"></a>Sicherungen werden nicht nach Zeitplan ausgeführt
 
@@ -149,18 +149,18 @@ Wenn geplante Sicherungen nicht automatisch ausgelöst werden, manuelle Sicherun
 
 - Wenn die PowerShell-Ausführungsrichtlinie für `LocalMachine` auf `restricted` festgelegt ist, tritt bei dem PowerShell-Cmdlet, das die Sicherungsaufgabe auslöst, möglicherweise ein Fehler auf. Führen Sie die folgenden Befehle im Modus mit erhöhten Rechten aus, um die Ausführungsrichtlinie zu überprüfen und auf `Unrestricted` oder `RemoteSigned` festzulegen:
 
- ```PowerShell
- Get-ExecutionPolicy -List
+```powershell
+Get-ExecutionPolicy -List
 
 Set-ExecutionPolicy Unrestricted
- ```
+```
 
 - Stellen Sie sicher, dass keine MSonlineBackup-Dateien des PowerShell-Moduls fehlen oder beschädigt sind. Wenn Dateien fehlen oder beschädigt sind, führen Sie die folgenden Schritte aus:
 
   1. Kopieren Sie von einem Computer, auf dem der MARS-Agent ordnungsgemäß funktioniert, den Ordner „MSOnlineBackup“ im Pfad „C:\Programme\Microsoft Azure Recovery Services Agent\bin\Modules“.
   1. Fügen Sie die kopierten Dateien auf dem problematischen Computer an demselben Ordnerspeicherplatz (C:\Programme\Microsoft Azure Recovery Services Agent\bin\Modules) ein.
 
-     Wenn bereits ein Ordner „MSOnlineBackup“ auf dem Computer vorhanden ist, fügen Sie die Dateien ein, oder ersetzen Sie alle vorhandenen Dateien.
+    Wenn bereits ein Ordner „MSOnlineBackup“ auf dem Computer vorhanden ist, fügen Sie die Dateien ein, oder ersetzen Sie alle vorhandenen Dateien.
 
 > [!TIP]
 > Um sicherzustellen, dass die vorgenommenen Änderungen durchgängig übernommen werden, starten Sie den Server nach dem Durchführen der vorherigen Schritte neu.
@@ -173,7 +173,7 @@ Fehler beim aktuellen Vorgang aufgrund eines internen Dienstfehlers: „Ressourc
 
 ## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>Der Auftrag konnte nicht gestartet werden, weil ein anderer Auftrag ausgeführt wurde.
 
-Wenn Sie in der **MARS-Konsole** unter **Auftragsverlauf** eine Warnmeldung angezeigt wird, die besagt: „Auftrag konnte nicht gestartet werden, da ein anderer Auftrag in Bearbeitung ist“, dann könnte dies auf eine doppelte Instanz des vom Taskplaner ausgelösten Auftrags zurückzuführen sein.
+Wenn in der **MARS-Konsole** >  unter **Auftragsverlauf** eine Warnmeldung angezeigt wird, die besagt: „Auftrag konnte nicht gestartet werden, da ein anderer Auftrag in Bearbeitung ist“, dann könnte dies auf eine doppelte Instanz des vom Taskplaner ausgelösten Auftrags zurückzuführen sein.
 
 ![Der Auftrag konnte nicht gestartet werden, weil ein anderer Auftrag ausgeführt wurde.](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
 
@@ -243,7 +243,7 @@ Sicherungsvorgänge können fehlschlagen, wenn nicht ausreichend Speicherplatz f
 
 ### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>Der Zugriff auf den Cacheordner wird durch einen anderen Prozess oder durch Antivirensoftware blockiert
 
-Wenn Sie auf dem Server Antivirensoftware installiert haben, fügen Sie den Virenscans die erforderlichen Ausschlussregeln für die folgenden Dateien und Ordner hinzu:  
+Wenn Sie auf dem Server Antivirensoftware installiert haben, fügen Sie den Virenscans die erforderlichen Ausschlussregeln für die folgenden Dateien und Ordner hinzu:
 
 - Ablageordner. Der Standardspeicherort ist `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`.
 - Der bin-Ordner befindet sich unter `C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`.

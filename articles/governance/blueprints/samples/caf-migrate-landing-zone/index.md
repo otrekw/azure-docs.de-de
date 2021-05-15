@@ -1,14 +1,14 @@
 ---
 title: 'CAF-Blaupausenbeispiel für die Migrationslandezone: Übersicht'
 description: Übersicht und Architektur des Framework für die Cloudeinführung (Cloud Adoption Framework, CAF) für das Basisblaupausenbeispiel für die Azure-Migrationslandezone.
-ms.date: 09/14/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: 6b8e3484690d263a43d3824c054b28344ea07fb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98978215c711a41fa281880aa93cb028b896d0d5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531677"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757797"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Blaupausenbeispiel für die Azure-Migrationslandezone
 
@@ -21,7 +21,7 @@ Das [CAF-Basisblaupausenbeispiel](../caf-foundation/index.md) baut auf diesem Be
 Das CAF-Blaupausenbeispiel für die Migrationslandezone stellt grundlegende Infrastrukturressourcen in Azure bereit, die von Organisationen verwendet werden können, um ihr Abonnement für die Migration virtueller Computer vorzubereiten. Darüber hinaus unterstützt es Sie bei der Einrichtung der Governancekontrollen, die für die Verwaltung Ihrer Cloudressourcen erforderlich sind. In diesem Beispiel werden Ressourcen, Richtlinien und Vorlagen bereitgestellt und erzwungen, die Organisationen einen problemlosen Einstieg in Azure ermöglichen.
 
 :::image type="complex" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="CAF-Migrationszielzone: Die Abbildung veranschaulicht, was im Rahmen des CAF-Leitfadens für die erste Zielzone installiert wird." border="false":::
-   Beschreibt eine Azure-Architektur, die durch Bereitstellen der CAF-Migrationsblaupause erreicht wird.  Dies gilt für ein Abonnement mit Ressourcengruppen, das aus einem virtuellen Azure-Netzwerk, einem Speicherkonto zum Speichern von Protokollen und einer Log Analytics-Instanz für die Speicherung im Speicherkonto besteht.  Außerdem werden eine konfigurierte Azure Key Vault-Instanz und die erstellte Azure Migrate-Ersteinrichtung dargestellt.  Der Zugriff auf alle diese Kerninfrastrukturen erfolgt mithilfe von Azure Active Directory.     
+   Beschreibt eine Azure-Architektur, die durch Bereitstellen der CAF-Migrationsblaupause erreicht wird. Dies gilt für ein Abonnement mit Ressourcengruppen, das aus einem virtuellen Azure-Netzwerk, einem Speicherkonto zum Speichern von Protokollen und einer Log Analytics-Instanz für die Speicherung im Speicherkonto besteht. Außerdem werden eine konfigurierte Azure Key Vault-Instanz und die erstellte Azure Migrate-Ersteinrichtung dargestellt. Der Zugriff auf alle diese Kerninfrastrukturen erfolgt mithilfe von Azure Active Directory.
 :::image-end:::
 
 Diese Umgebung umfasst mehrere Azure-Dienste, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Governancelösung genutzt werden. Diese Umgebung besteht aus den folgenden Komponenten:
@@ -29,8 +29,7 @@ Diese Umgebung umfasst mehrere Azure-Dienste, die für die Bereitstellung einer 
 - Eine [Azure Key Vault](../../../../key-vault/general/overview.md)-Instanz zum Hosten von Geheimnissen für die Zertifikate, Schlüssel und Geheimnisse, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden.
 - [Log Analytics](../../../../azure-monitor/overview.md) wird bereitgestellt, um sicherzustellen, dass alle Aktionen und Dienste an einem zentralen Ort protokolliert werden, sobald Sie Ihre Migration starten.
 - [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) bietet ein isoliertes Netzwerk sowie Subnetze für Ihren virtuellen Computer.
-- [Azure Migrate-Projekt](../../../../migrate/migrate-services-overview.md) dient zur Ermittlung und Bewertung. Wir fügen Tools für die Serverbewertung, Servermigration, Datenbankbewertung und Datenbankmigration hinzu.  
-
+- [Azure Migrate-Projekt](../../../../migrate/migrate-services-overview.md) dient zur Ermittlung und Bewertung. Wir fügen Tools für die Serverbewertung, Servermigration, Datenbankbewertung und Datenbankmigration hinzu.
 
 Für alle diese Elemente werden die bewährten Methoden befolgt, die unter [Azure Architecture Center: Referenzarchitekturen](/azure/architecture/reference-architectures/) veröffentlicht wurden.
 

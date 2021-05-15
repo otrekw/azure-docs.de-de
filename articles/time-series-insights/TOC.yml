@@ -14,7 +14,7 @@
 - name: Tutorials
   items:
     - name: Einrichten einer Time Series Insights Gen2-Umgebung.
-      href: tutorials-set-up-tsi-environment.md
+      href: tutorial-set-up-environment.md
     - name: Modellsynchronisierung zwischen Azure Digital Twins und Time Series Insights Gen2
       href: tutorials-model-sync.md
 - name: Konzepte
@@ -95,9 +95,13 @@
           items:
             - name: Planen der Umgebung
               href: how-to-plan-your-environment.md
-        - name: Umgebungsverwaltung
+        - name: Verwaltung
           items:
-            - name: Bereitstellung und Verwaltung
+            - name: "Erstellen einer Umgebung mithilfe der Azure\_CLI"
+              href: how-to-create-environment-using-cli.md
+            - name: Erstellen einer Umgebung über das Azure-Portal
+              href: how-to-create-environment-using-portal.md
+            - name: Verwalten einer Umgebung
               href: how-to-provision-manage.md
             - name: Auswählen einer TSID
               href: how-to-select-tsid.md
@@ -176,11 +180,11 @@
     - name: Überwachen von Datenverweisen
       href: how-to-monitor-tsi-reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights
+      href: /cli/azure/tsi
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/time-series-insights/toc.json&bc=/azure/time-series-insights/breadcrumb/toc.json
     - name: Kundendatenanforderungen
       href: time-series-insights-customer-data-requests.md
     - name: Entwicklerressourcen

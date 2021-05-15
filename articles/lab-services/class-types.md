@@ -3,21 +3,31 @@ title: Beispielklassentypen für Azure Lab Services | Microsoft-Dokumentation
 description: In diesem Artikel sind einige Typen von Klassen aufgeführt, für die Sie mithilfe von Azure Lab Services Labs einrichten können.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5a90fb128f5954f3eb713714ff22ff40a3beab36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81b3426446894b9dd7bfccc942e04c3d9a7ea492
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99627432"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278756"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Übersicht über Klassentypen: Azure Lab Services
 
 Mithilfe von Azure Lab Services können Sie schnell eine Classroom-Lab-Umgebung in der Cloud einrichten. Die Artikel in diesem Abschnitt bieten Anleitungen zum Einrichten verschiedener Typen von Labs mithilfe von Azure Lab Services.
 
+## <a name="adobe-creative-cloud"></a>Adobe Creative Cloud
+Die [Adobe Creative Cloud](https://www.adobe.com/creativecloud.html) App-Sammlung wird häufig in Kursen für digitale Kunst und Medien verwendet.  
+
+Ausführliche Informationen zum Einrichten dieser Art von Lab finden Sie unter [Einrichten eines Labs für Adobe Creative Cloud](class-type-adobe-creative-cloud.md).
+
 ## <a name="arcgis"></a>ArcGIS
 [ArcGIS](https://www.esri.com/en-us/arcgis/products/arcgis-solutions/overview) ist ein geografisches Informationssystem (GIS).  Sie können ein Lab einrichten, das die verschiedenen Anwendungen von ArcGIS Desktop verwendet, z. B. [ArcMap](https://desktop.arcgis.com/en/arcmap/latest/map/main/what-is-arcmap-.htm) zum Erstellen, Bearbeiten und Analysieren von 2D-Karten.
 
 Ausführliche Informationen zum Einrichten dieser Art von Lab finden Sie unter [Einrichten eines Labs für ArcMap\ArcGIS Desktop](class-type-arcgis.md).
+
+## <a name="autodesk"></a>Autodesk
+[AutoDesk](https://www.autodesk.com/) bietet Softwarelösungen für Architektur, Ingenieurwesen, Baugewerbe, Planung, Fertigung und mehr.  Diese Lösungen werden häufig in Engineeringkursen und im Lehrplan des [Projekts „Lead the Way“](class-type-pltw.md) verwendet.
+
+Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Autodesk](class-type-autodesk.md).
 
 ## <a name="big-data-analytics"></a>Big Data-Analyse
 Sie können für einen Big Data-Analysekurs ein GPU-Lab einrichten. Bei dieser Art von Kurs lernen die Kursteilnehmer, mit großen Datenmengen umzugehen und maschinelle und statistische Lernalgorithmen anzuwenden, um Erkenntnisse aus Daten zu gewinnen. Ein wichtiges Ziel für Kursteilnehmer ist es, den Umgang mit Datenanalysetools zu erlernen, z. B. mit dem Open-Source-Softwarepaket von Apache Hadoop, das Tools für die Speicherung, Verwaltung und Verarbeitung von Big Data bereitstellt. 

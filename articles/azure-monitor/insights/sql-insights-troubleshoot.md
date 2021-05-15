@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2021
-ms.openlocfilehash: 9228faade46c2bfec3ed5170be5e256ead7d5220
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 35aa53def1a72f98309e7616ce64194dd77c5a4d
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017904"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331284"
 ---
 # <a name="troubleshooting-sql-insights-preview"></a>Problembehandlung für SQL Insights (Vorschauversion)
 Überprüfen Sie auf der Registerkarte **Profil verwalten** den Status des Überwachungscomputers, um Probleme mit der Datensammlung in SQL Insights zu behandeln. Mögliche Zustände:
@@ -25,6 +25,9 @@ Klicken Sie auf den **Status**, um die Protokolle und weitere Details anzuzeigen
 
 ## <a name="not-collecting-state"></a>Status „Sammlung wird nicht durchgeführt“ 
 Der Überwachungscomputer weist den Status *Sammlung wird nicht durchgeführt* auf, wenn innerhalb der letzten zehn Minuten keine Daten für SQL in *InsightsMetrics* erfasst wurden. 
+
+> [!NOTE]
+> Stellen Sie sicher, dass Sie versuchen, Daten von einer [unterstützten SQL-Version](sql-insights-overview.md#supported-versions) zu sammeln. Der Versuch, Daten mit einem gültigen Profil und einer gültigen Verbindungszeichenfolge aber über eine nicht unterstützte Version von Azure SQL-Datenbank zu sammeln, führt beispielsweise dazu, dass der Status „Sammlung wird nicht durchgeführt“ ausgegeben wird.
 
 SQL Insights verwendet zum Abrufen dieser Informationen die folgende Abfrage:
 

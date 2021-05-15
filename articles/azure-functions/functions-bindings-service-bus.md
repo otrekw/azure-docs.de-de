@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b32f16d170df9963960862bc82aef1a4baf13896
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4573e471b69c11b055d8f0f1dfd6416c8d158c20
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92104443"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227918"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-Bindungen für Azure Functions
 
@@ -44,9 +44,121 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 [Aktualisieren Ihrer Erweiterungen]: ./functions-bindings-register.md
 [Azure-Tools-Erweiterung]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
+#### <a name="service-bus-extension-5x-and-higher"></a>Service Bus-Erweiterung 5.x und höher
+
+Eine neue Version der Service Bus-Bindungserweiterung ist als [NuGet-Vorschaupaket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/5.0.0-beta.2) verfügbar. Diese Vorschau bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](./functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `Microsoft.ServiceBus.Messaging` und `Microsoft.Azure.ServiceBus` durch neuere Typen aus [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus) ersetzt.
+
+> [!NOTE]
+> Das Vorschaupaket ist nicht in einem Erweiterungspaket enthalten und muss manuell installiert werden. Fügen Sie für .NET-Apps einen Verweis auf das Paket hinzu. Informationen zu allen anderen App-Typen finden Sie unter [Aktualisieren Ihrer Erweiterungen].
+
+[core tools]: ./functions-run-local.md
+[Erweiterungspaket]: ./functions-bindings-register.md#extension-bundles
+[NuGet-Paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
+[Aktualisieren Ihrer Erweiterungen]: ./functions-bindings-register.md
+[Azure-Tools-Erweiterung]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
+
 ### <a name="functions-1x"></a>Functions 1.x
 
 Functions 1.x-Apps enthalten automatisch einen Verweis auf das NuGet-Paket, Version 2.x, [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs).
+
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>Einstellungen für „host.json“
+
+In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen für diese Bindung in Version 2.x und höheren Versionen beschrieben. Die nachfolgende Beispieldatei „host.json“ enthält nur die Einstellungen für diese Bindung. Weitere Informationen zu globalen Konfigurationseinstellungen finden Sie unter [host.json-Referenz für Azure Functions 2.x](functions-host-json.md).
+
+> [!NOTE]
+> Eine Referenz für „host.json“ in Functions 1.x finden Sie unter [host.json-Referenz für Azure Functions 1.x](functions-host-json-v1.md).
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "serviceBus": {
+            "prefetchCount": 100,
+            "messageHandlerOptions": {
+                "autoComplete": true,
+                "maxConcurrentCalls": 32,
+                "maxAutoRenewDuration": "00:05:00"
+            },
+            "sessionHandlerOptions": {
+                "autoComplete": false,
+                "messageWaitTimeout": "00:00:30",
+                "maxAutoRenewDuration": "00:55:00",
+                "maxConcurrentSessions": 16
+            }
+        }
+    }
+}
+```
+
+Wenn Sie `isSessionsEnabled` auf `true` festgelegt haben, werden die `sessionHandlerOptions` berücksichtigt.  Wenn Sie `isSessionsEnabled` auf `false` festgelegt haben, werden die `messageHandlerOptions` berücksichtigt.
+
+|Eigenschaft  |Standard | BESCHREIBUNG |
+|---------|---------|---------|
+|prefetchCount|0|Ruft die Anzahl der Nachrichten ab, die der Nachrichtenempfänger gleichzeitig anfordern kann, oder legt sie fest.|
+|maxAutoRenewDuration|00:05:00|Die maximale Zeitspanne, in der die Nachrichtensperre automatisch erneuert wird.|
+|autoComplete|true|Gibt an, ob der Trigger nach der Verarbeitung automatisch „complete“ aufrufen soll oder ob der Funktionscode „complete“ manuell aufruft.<br><br>Das Festlegen auf `false` wird nur in C# unterstützt.<br><br>Wenn der Wert auf `true` festgelegt ist, wird die Nachricht automatisch durch den Triggervorgang abgeschlossen, sofern die Ausführung der Funktion erfolgreich war, andernfalls wird die Meldung verworfen.<br><br>Wenn der Wert auf `false` festgelegt ist, müssen Sie selbst die [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver)-Methoden aufrufen, um die Nachricht abzuschließen, zu verwerfen oder in die Warteschlange für unzustellbare Nachrichten zu verschieben. Wenn eine Ausnahme ausgelöst wird (und keine der `MessageReceiver`-Methoden aufgerufen wird), bleibt die Sperre erhalten. Nachdem die Sperre abgelaufen ist, wird die Nachricht erneut in die Warteschlange eingereiht, wobei `DeliveryCount` erhöht und die Sperre automatisch erneuert wird.<br><br>Bei Nicht-C#-Funktionen führen Ausnahmen in der Funktion dazu, dass die Runtime `abandonAsync` im Hintergrund aufruft. Wenn keine Ausnahme auftritt, wird `completeAsync` im Hintergrund aufgerufen. |
+|maxConcurrentCalls|16|Die maximale Anzahl gleichzeitiger Aufrufe für den Rückruf, der vom Nachrichtensystem pro skalierter Instanz initiiert werden soll. Die Functions-Runtime verarbeitet standardmäßig mehrere Nachrichten gleichzeitig.|
+|maxConcurrentSessions|2000|Die maximale Anzahl von Sitzungen, die parallel pro skalierter Instanz verarbeitet werden können.|
+
+### <a name="additional-settings-for-version-5x"></a>Zusätzliche Einstellungen für Version 5.x und höher
+
+Das Beispieldatei host.json unten enthält nur die Einstellungen für Version 5.0.0 und höher der Service Bus-Erweiterung.
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "serviceBus": {
+            "serviceBusOptions": {
+                "retryOptions":{
+                    "mode": "exponential",
+                    "tryTimeout": "00:00:10",
+                    "delay": "00:00:00.80",
+                    "maxDelay": "00:01:00",
+                    "maxRetries": 4
+                },
+                "prefetchCount": 100,
+                "autoCompleteMessages": true,
+                "maxAutoLockRenewalDuration": "00:05:00",
+                "maxConcurrentCalls": 32,
+                "maxConcurrentSessions": 10,
+                "maxMessages": 2000,
+                "sessionIdleTimeout": "00:01:00",
+                "maxAutoLockRenewalDuration": "00:05:00"
+            }
+        }
+    }
+}
+```
+
+Wenn Sie die Service Bus-Erweiterung in Version 5.x und höher benutzen, werden zusätzlich zu den 2.x-Einstellungen in `ServiceBusOptions` die folgenden globalen Konfigurationseinstellungen unterstützt.
+
+|Eigenschaft  |Standard | BESCHREIBUNG |
+|---------|---------|---------|
+|prefetchCount|0|Ruft die Anzahl der Nachrichten ab, die der Nachrichtenempfänger gleichzeitig anfordern kann, oder legt sie fest.|
+|autoCompleteMessages|true|Bestimmt, ob Nachrichten nach erfolgreicher Ausführung der Funktion automatisch abgeschlossen werden sollen, und sollte statt der `autoComplete`-Konfigurationseinstellung verwendet werden.|
+|maxAutoLockRenewalDuration|00:05:00|Solle anstelle von `maxAutoRenewDuration` verwendet werden|
+|maxConcurrentCalls|16|Die maximale Anzahl gleichzeitiger Aufrufe für den Rückruf, der vom Nachrichtensystem pro skalierter Instanz initiiert werden soll. Die Functions-Runtime verarbeitet standardmäßig mehrere Nachrichten gleichzeitig.|
+|maxConcurrentSessions|8|Die maximale Anzahl von Sitzungen, die parallel pro skalierter Instanz verarbeitet werden können.|
+|maxMessages|1000|Die maximale Anzahl von Nachrichten, die an jeden Funktionsaufruf übergeben werden. Dies gilt nur für Funktionen, die einen Nachrichtenbatch empfangen.|
+|sessionIdleTimeout|–|Die maximale Wartezeit für das Empfangen einer Nachricht für die derzeit aktive Sitzung. Nach Ablauf dieser Zeit schließt der Prozessor die Sitzung, und versucht, eine weitere Sitzung zu verarbeiten.|
+
+### <a name="retry-settings"></a>Wiederholungseinstellungen
+
+Zusätzlich zu den oben genannten Konfigurationseigenschaften können Sie bei Verwendung von Version 5.x und höher der Service Bus-Erweiterung auch `RetryOptions` innerhalb von `ServiceBusOptions` konfigurieren. Diese Einstellungen bestimmen, ob ein fehlgeschlagener Vorgang wiederholt werden soll, und, falls ja, die Wartezeit zwischen den Wiederholungsversuchen. Die Optionen steuern auch die Zeit, die für das Empfangen von Nachrichten und andere Interaktionen mit dem Service Bus-Dienst zugelassen ist.
+
+|Eigenschaft  |Standard | BESCHREIBUNG |
+|---------|---------|---------|
+|Modus|Exponentiell|Die Methode, die zum Berechnen von Wiederholungsverzögerungen verwendet werden soll Im standardmäßigen exponentiellen Modus werden Wiederholungsversuche mit einer Verzögerung basierend auf einer Wartezeitstrategie ausgeführt, bei der jeder Versuch die Wartezeit erhöht, bevor ein neuer Versuch beginnt. Im Modus `Fixed` werden Versuche in festen Abständen wiederholt, und jede Verzögerung hat die gleiche Dauer.|
+|tryTimeout|00:00:10|Die maximale Dauer, die pro Versuch auf einen Vorgang gewartet werden soll|
+|delay|00:00:00.80|Der Verzögerungs- oder Wartezeitfaktor, der zwischen Wiederholungsversuchen angewendet werden soll|
+|maxDelay|00:01:00|Die maximale zugelassene Verzögerung zwischen Wiederholungsversuchen|
+|maxRetries|3|Die maximale Anzahl von Wiederholungsversuchen, bevor der zugeordnete Vorgang als fehlgeschlagen angesehen wird|
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

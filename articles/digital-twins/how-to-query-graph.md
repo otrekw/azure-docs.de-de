@@ -8,21 +8,23 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6979f44600d29c0bcc18ebf7fc7e444e9b6bcf73
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 52adba94650c09f731cfb6142852b28a0e3f3906
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107902946"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288639"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
-Dieser Artikel bietet Abfragebeispiele und ausführlichere Anleitungen, wie Sie die **Azure Digital Twins-Abfragesprache** verwenden, um Informationen von Ihrem [Zwillingsgraphen](concepts-twins-graph.md) abzufragen. (Eine Einführung in die Abfragesprache und eine vollständige Liste der Funktionen finden Sie unter [*Konzepte: Abfragesprache*](concepts-query-language.md).)
+Dieser Artikel bietet Abfragebeispiele und Anleitungen zur Verwendung der **Azure Digital Twins-Abfragesprache** zum Abfragen von Informationen aus Ihrem [Zwillingsgraphen](concepts-twins-graph.md). (Eine Einführung in die Abfragesprache finden Sie unter [Konzepte: Abfragesprache](concepts-query-language.md).)
 
-Dieser Artikel beginnt mit Beispielabfragen, die die Struktur der Abfragesprache sowie gängige Abfragevorgänge für digitale Zwillinge veranschaulichen. Anschließend wird beschrieben, wie Sie Ihre Abfragen, nachdem Sie sie geschrieben haben. mithilfe der [Abfrage-API](/rest/api/digital-twins/dataplane/query) von Azure Digital Twins oder mit einem [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) ausführen.
+Dieser Artikel enthält Beispielabfragen, die die Struktur der Abfragesprache sowie gängige Abfragevorgänge für digitale Zwillinge veranschaulichen. Außerdem wird beschrieben, wie Sie die von Ihnen geschriebenen Abfragen mithilfe der [Abfrage-API](/rest/api/digital-twins/dataplane/query) von Azure Digital Twins oder mit einem [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) ausführen.
 
 > [!NOTE]
 > Wenn Sie die Beispielabfragen unten mit einem API- oder SDK-Aufruf ausführen, müssen Sie den Abfragetext in eine einzelne Zeile zusammenfassen.
+
+[!INCLUDE [digital-twins-query-reference.md](../../includes/digital-twins-query-reference.md)]
 
 ## <a name="show-all-digital-twins"></a>Anzeigen aller digitalen Zwillinge
 
@@ -59,7 +61,7 @@ Sie können Zwillinge auch auf der Grundlage des **Typs einer Eigenschaft** abru
 
 ## <a name="query-by-model"></a>Abfrage nach Modell
 
-Der `IS_OF_MODEL`-Operator kann verwendet werden, um anhand des [**Modells**](concepts-models.md) des Zwillings zu filtern.
+Der `IS_OF_MODEL`-Operator kann verwendet werden, um anhand des [Modells](concepts-models.md) des Zwillings zu filtern.
 
 Er berücksichtigt [Vererbung](concepts-models.md#model-inheritance) und [Versionsverwaltung](how-to-manage-model.md#update-models) des Modells und wird in **TRUE** für einen bestimmten Zwilling ausgewertet, wenn der Zwilling eine der folgenden Bedingungen erfüllt:
 
@@ -149,7 +151,7 @@ Sie können die Anzahl von Elementen in einem Resultset mit der `Select COUNT`-K
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectCount1":::
 
-Fügen Sie eine `WHERE`-Klausel hinzu, um die Anzahl von Elementen zu zählen, die ein bestimmtes Kriterium erfüllen. Im Folgenden finden Sie einige Beispiele für das Zählen mit einem angewendeten Filter basierend auf dem Typ des Zwillingsmodells (weitere Informationen zu dieser Syntax finden Sie unter [*Abfragen nach Modell*](#query-by-model) weiter unten):
+Fügen Sie eine `WHERE`-Klausel hinzu, um die Anzahl von Elementen zu zählen, die ein bestimmtes Kriterium erfüllen. Im Folgenden finden Sie einige Beispiele für das Zählen mit einem angewendeten Filter basierend auf dem Typ des Zwillingsmodells (weitere Informationen zu dieser Syntax finden Sie unter [Abfragen nach Modell](#query-by-model) weiter unten):
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectCount2":::
 
@@ -227,7 +229,7 @@ Mithilfe von Kombinationsoperatoren können Sie jeden der oben genannten Abfrage
 
 ## <a name="run-queries-with-the-api"></a>Ausführen von Abfragen mit der API
 
-Nachdem Sie sich für eine Abfragezeichenfolge entschieden haben, führen Sie sie durch Aufrufen der [**Abfrage-API**](/rest/api/digital-twins/dataplane/query) aus.
+Nachdem Sie sich für eine Abfragezeichenfolge entschieden haben, führen Sie sie durch Aufrufen der [Abfrage-API](/rest/api/digital-twins/dataplane/query) aus.
 
 Sie können die API direkt aufrufen oder eins der [SDKs](how-to-use-apis-sdks.md#overview-data-plane-apis) verwenden, die für Azure Digital Twins verfügbar sind.
 

@@ -31,6 +31,8 @@
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer bestimmten Verfügbarkeitszone
       href: tutorial-load-balancer-standard-public-zonal-portal.md
+    - name: Durchführen eines Lastenausgleichs für virtuelle Computer mit mehreren Verfügbarkeitsgruppen
+      href: tutorial-multi-availability-sets-portal.md
     - name: Konfigurieren der Portweiterleitung in Load Balancer
       href: tutorial-load-balancer-port-forwarding-portal.md
     - name: Regionsübergreifender Lastenausgleich
@@ -41,14 +43,26 @@
           href: tutorial-cross-region-powershell.md
         - name: 'Erstellen eines regionsübergreifenden Lastenausgleichs: Azure CLI'
           href: tutorial-cross-region-cli.md
+    - name: NAT Gateway
+      items:
+        - name: "Integrieren des öffentlichen Lastenausgleichs von NAT\_Gateway"
+          href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+        - name: "Integrieren des internen Lastenausgleichs von NAT\_Gateway"
+          href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+    - name: IP-basiertes Back-End
+      items:
+        - name: 'Erstellen eines öffentlichen Lastenausgleichs mit einem IP-basierten Back-End: Portal'
+          href: tutorial-load-balancer-ip-backend-portal.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
 - name: Konzepte
   items:
+    - name: Portaleinstellungen
+      href: manage.md
     - name: Regionsübergreifender Lastenausgleich
       href: cross-region-overview.md
     - name: Neuigkeiten
@@ -90,7 +104,7 @@
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/load-balancer-security-baseline?toc=/azure/load-balancer/TOC.json
     - name: Back-End-Pool-Verwaltung
       href: backend-pool-management.md
     - name: Load Balancer Standard und Virtual Machine Scale Sets
@@ -99,8 +113,6 @@
       href: instance-metadata-service-load-balancer.md
 - name: Vorgehensweise
   items:
-    - name: Portaleinstellungen
-      href: manage.md
     - name: VM-Skalierungsgruppen
       items:
         - name: 'Aktualisieren oder Löschen einer vorhandenen Azure Load Balancer-Instanz, die von einer VM-Skalierungsgruppe verwendet wird'
@@ -121,7 +133,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
@@ -136,7 +148,7 @@
       items:
         - name: Portal
           href: load-balancer-multiple-ip.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
@@ -172,7 +184,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
     - name: Azure PowerShell
       href: /powershell/module/az.network
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network/lb
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.network.models

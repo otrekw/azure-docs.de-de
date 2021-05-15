@@ -51,7 +51,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/automation-security-baseline?toc=/azure/automation/TOC.json
     - name: Datensicherheit
       items:
         - name: Verschlüsselung sicherer Ressourcen
@@ -66,6 +66,14 @@
           href: automation-create-standalone-account.md
         - name: "Erstellen eines Automation-Kontos mit einer Resource\_Manager-Vorlage"
           href: quickstart-create-automation-account-template.md
+        - name: Verwaltete Identität
+          items:
+            - name: Aktivieren einer verwalteten Identität
+              href: enable-managed-identity-for-automation.md
+            - name: Deaktivieren von verwalteten Identitäten
+              href: disable-managed-identity-for-automation.md
+            - name: Behandeln von Problemen mit verwalteten Identitäten
+              href: troubleshoot/managed-identity.md
         - name: Ausführendes Konto
           items:
             - name: Erstellen eines ausführenden Kontos
@@ -86,6 +94,8 @@
           href: automation-role-based-access-control.md
         - name: Verschieben eines Automation-Kontos in ein anderes Abonnement
           href: how-to/move-account.md
+        - name: Löschen des Automation-Kontos
+          href: delete-account.md
         - name: Migrieren von Orchestrator zu Azure Automation (Betaversion)
           href: automation-orchestrator-migration.md
     - name: Gemeinsame Ressourcen
@@ -114,7 +124,7 @@
           href: troubleshoot/shared-resources.md
     - name: Prozessautomatisierung
       items:
-        - name: Verwenden von Runbooks und Modulen im PowerShell-Katalog
+        - name: Verwenden vorhandener Runbooks und Module
           href: automation-runbook-gallery.md
         - name: Informationen zum PowerShell-Workflow
           href: automation-powershell-workflow.md
@@ -136,8 +146,6 @@
               href: start-runbooks.md
             - name: Starten eines Runbooks über einen Webhook
               href: automation-webhooks.md
-            - name: Nachverfolgen von aktualisierten Dateien mit Watcher-Tasks
-              href: automation-watchers-tutorial.md
             - name: Verwenden des SDK für grafische Runbooks
               href: graphical-runbook-sdk.md
         - name: Überwachen von Runbooks
@@ -184,6 +192,8 @@
               href: automation-dsc-compile.md
             - name: Korrigieren nicht konformer State Configuration-Server
               href: automation-dsc-remediate.md
+            - name: Entfernen von Knoten und Konfiguration
+              href: state-configuration/remove-node-and-configuration-package.md
             - name: Einrichten von Continuous Deployment mit Chocolatey
               href: automation-dsc-cd-chocolatey.md
             - name: Integration in Azure Monitor-Protokolle
@@ -312,7 +322,7 @@
               href: troubleshoot/update-agent-issues.md
             - name: "Beheben von Problemen mit dem Linux\_Update-Agent"
               href: troubleshoot/update-agent-issues-linux.md
-    - name: Komponentenübergreifende Szenarien
+    - name: Szenarien
       items:
         - name: Senden einer E-Mail aus einem Runbook
           href: automation-send-email.md
@@ -320,6 +330,8 @@
           href: automation-alert-metric.md
         - name: Auslösen eines Runbooks über eine Azure-Warnung
           href: automation-create-alert-triggered-runbook.md
+        - name: Nachverfolgen von aktualisierten Dateien mit Watcher-Tasks
+          href: automation-scenario-using-watcher-task.md
         - name: "Verwalten von Office\_365-Diensten"
           href: manage-office-365.md
         - name: Bereitstellen eines virtuellen AWS-Computers mit einem Automation-Runbook
@@ -332,6 +344,8 @@
           href: ../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir
 - name: Verweis
   items:
+    - name: Azure CLI
+      href: /cli/azure/automation
     - name: Azure PowerShell Az
       href: /powershell/module/az.automation
     - name: Azure PowerShell AzureRM

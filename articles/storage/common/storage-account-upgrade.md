@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 786eb981acd61d952f95f89a7d90e4f732f3cda4
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 7c4e0fed78eb85e0e5326cbee6c6823466811c16
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887646"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321865"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
@@ -38,12 +38,12 @@ Wenn Sie ein Konto vom Typ „Universell V1“ oder ein Blob Storage-Konto auf 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zum Speicherkonto.
-3. Klicken Sie im Abschnitt **Einstellungen** auf **Konfiguration**.
-4. Klicken Sie unter **Kontoart** auf **Upgrade**.
-5. Geben Sie unter **Confirm upgrade** (Upgrade bestätigen) den Namen Ihres Kontos ein.
+3. Wählen Sie im Abschnitt **Einstellungen** die Option **Konfiguration**.
+4. Wählen Sie unter **Kontotyp** die Option **Upgrade** aus.
+5. Geben Sie unter **Upgrade bestätigen** den Namen Ihres Kontos ein.
 6. Klicken Sie unten auf dem Blatt auf **Upgrade durchführen**.
 
-    ![Upgrade für Konto durchführen](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
+    :::image type="content" source="../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png" alt-text="Screenshot: Konfigurationsblatt mit hervorgehobenem zu aktualisierendem Kontotyp" lightbox="../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png":::.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

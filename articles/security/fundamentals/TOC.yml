@@ -4,6 +4,8 @@
   items:
     - name: Einführung in die Azure-Sicherheit
       href: overview.md
+    - name: End-to-End-Sicherheit
+      href: end-to-end.md
     - name: Gemeinsame Verantwortung in der Cloud
       href: shared-responsibility.md
 - name: Schützen von Workloads in Azure
@@ -62,7 +64,9 @@
     - name: Checkliste für die Sicherheit
       href: steps-secure-identity.md
     - name: Kennwortlos wählen
-      href: ../../active-directory/authentication/concept-authentication-passwordless.md
+      href: ../../active-directory/authentication/concept-authentication-passwordless.md?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Authentifizierung
+      href: /azure/architecture/framework/security/design-identity-authentication?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: Netzwerksicherheit
   items:
     - name: Sicherheitsübersicht
@@ -72,11 +76,11 @@
     - name: Best Practices für DDoS Protection
       href: ../../ddos-protection/fundamental-best-practices.md
     - name: DDoS Protection-Sicherheitsbaseline
-      href: ddos-protection-security-baseline.md
+      href: /security/benchmark/azure/baselines/ddos-protection-security-baseline?toc=/azure/security/fundamentals/TOC.json
     - name: Verbleibende DNS- und Subdomainübernahme
       href: subdomain-takeover.md
     - name: Sichere Hybrid-Netzwerkarchitektur
-      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: IaaS-Sicherheit
   items:
     - name: Microsoft Antimalware
@@ -116,11 +120,11 @@
         - name: Checkliste für die Sicherheit
           href: database-security-checklist.md
     - name: Sicherheitsleitfaden zu Storage
-      href: ../../storage/blobs/security-recommendations.md?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
+      href: ../../storage/blobs/security-recommendations.md?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Kunden-Lockbox
       href: customer-lockbox-overview.md
     - name: Kunden-Lockbox-Sicherheitsbaseline
-      href: customer-lockbox-security-baseline.md
+      href: /security/benchmark/azure/baselines/lockbox-security-baseline?toc=/azure/security/fundamentals/TOC.json
 - name: Application
   items:
     - name: PaaS
@@ -156,6 +160,8 @@
   items:
     - name: Azure-Sicherheitsdienste
       href: services-technologies.md
+    - name: "Featureverfügbarkeit für US\_Government-Clouds"
+      href: feature-availability.md
     - name: Whitepaper zur Sicherheit
       href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
     - name: Bewährte Methoden

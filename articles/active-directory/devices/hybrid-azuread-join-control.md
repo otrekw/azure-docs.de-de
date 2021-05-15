@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38754b9e349e27afcff58dac27a616e3e4fb5319
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50e3272be139e8b0cd30f9e5867e263efc92ae24
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96860931"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108178752"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrollierte Überprüfung der Azure AD-Hybrideinbindung
 
@@ -63,7 +63,7 @@ Verwenden Sie das folgende Beispiel, um ein Gruppenrichtlinienobjekt (Group Poli
       1. Schlüsselpfad: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Wertname: **TenantId**
       1. Werttyp: **REG_SZ**
-      1. Wertdaten: Die GUID oder **Verzeichnis-ID** Ihrer Azure AD-Instanz. (Sie finden diesen Wert unter **Azure-Portal** > **Azure Active Directory** > **Eigenschaften** > **Verzeichnis-ID**.)
+      1. Wertdaten: Die GUID oder **Mandanten-ID** Ihrer Azure AD-Instanz. (Sie finden diesen Wert unter **Azure-Portal** > **Azure Active Directory** > **Eigenschaften** > **Mandanten-ID**.)
    1. Klicken Sie auf **OK**
 1. Klicken Sie mit der rechten Maustaste auf die Registrierung, und wählen Sie **Neu** > **Registrierungselement** aus.
    1. Konfigurieren Sie auf der Seite **Allgemein** Folgendes:

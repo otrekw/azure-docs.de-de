@@ -4,14 +4,14 @@ description: Verwenden von Azure HPC Cache zum Verbessern des Zugriffs auf mit A
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 10/30/2019
+ms.date: 04/26/2021
 ms.author: v-erkel
-ms.openlocfilehash: e955ddc14bb2b0a7abc0dc815c6955247568876b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1358f3cfebcd5cdc6d9e402e9c487f80f1aa8bcd
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86497011"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108322022"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Verwenden von Azure HPC Cache mit Azure NetApp Files
 
@@ -50,13 +50,13 @@ Verwenden Sie beim Erstellen eines Azure NetApp Files-Systems zur Verwendung mit
 
 Die Mindestgröße, die mit der Netzmaske „/28“ angegeben wird, stellt 16 IP-Adressen bereit. In der Praxis verwendet Azure NetApp Files nur drei dieser verfügbaren IP-Adressen für den Volumezugriff. Das bedeutet, dass Sie in Ihrer Azure HPC Cache-Instanz nur drei Speicherziele erstellen müssen, um alle Volumes abzudecken.
 
-Wenn das delegierte Subnetz zu groß ist, besteht die Möglichkeit, dass die Azure NetApp Files-Volumes mehr IP-Adressen verwenden, als eine einzelne Azure HPC Cache-Instanz verarbeiten kann. Ein einzelner Cache kann höchstens zehn Speicherziele umfassen.
+Wenn das delegierte Subnetz zu groß ist, besteht die Möglichkeit, dass die Azure NetApp Files-Volumes mehr IP-Adressen verwenden, als eine einzelne Azure HPC Cache-Instanz verarbeiten kann. Ein einzelner Cache verfügt über ein Limit von zehn Speicherzielen für die meisten Cachedurchsatzgrößen oder 20 Speicherziele für die größten Konfigurationen.
 
 Das Schnellstartbeispiel in der Azure NetApp Files-Dokumentation verwendet 10.7.0.0/16 als delegiertes Subnetz. Dieses Subnetz ist zu groß.
 
 ### <a name="capacity-pool-service-level"></a>Dienstebene des Kapazitätspools
 
-Wenn Sie die Dienstebene für Ihren Kapazitätspool auswählen, berücksichtigen Sie Ihren Workflow. Wenn häufig Daten in das Azure NetApp Files-Volume geschrieben werden und viel Zeit für das Rückschreiben benötigt wird, kann die Leistung des Caches eingeschränkt sein. Wählen Sie eine hohe Dienstebene für Volumes aus, in denen häufig Schreibvorgänge ausgeführt werden.
+Wenn Sie die [Dienstebene](../azure-netapp-files/azure-netapp-files-service-levels.md) für Ihren Kapazitätspool auswählen, berücksichtigen Sie Ihren Workflow. Wenn häufig Daten in das Azure NetApp Files-Volume geschrieben werden und viel Zeit für das Rückschreiben benötigt wird, kann die Leistung des Caches eingeschränkt sein. Wählen Sie eine hohe Dienstebene für Volumes aus, in denen häufig Schreibvorgänge ausgeführt werden.
 
 Bei Volumes mit niedrigen Dienstebenen können auch beim Starten eines Tasks Verzögerungen auftreten, während der Cache Inhalte vorab auffüllt. Wenn der Cache mit einem gut funktionierenden Satz Dateien eingerichtet ist und ausgeführt wird, sollte die Verzögerung unmerklich werden.
 

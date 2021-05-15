@@ -1,0 +1,144 @@
+- name: Dokumentation mit grundlegenden Informationen zu Netzwerken
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Azure-Netzwerk
+      href: networking-overview.md
+- name: Schnellstarts
+  items:
+    - name: Erstellen eines virtuellen Netzwerks
+      href: ../../virtual-network/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+- name: Tutorials
+  items:
+    - name: Einschränken des Netzwerkzugriffs
+      href: ../../virtual-network/tutorial-restrict-network-access-to-resources.md?toc=/azure/networking/fundamentals/toc.json
+- name: Konzepte
+  expanded: true
+  items:
+    - name: Aufbau
+      href: architecture-guides.md
+    - name: Planung und Entwurf
+      items:
+        - name: Azure für Netzwerktechniker
+          href: ../azure-for-network-engineers.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Remotearbeit
+          href: ../working-remotely-support.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Virtuelle Netzwerke
+          href: ../../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Standortübergreifende Konnektivität – VPN
+          href: ../../vpn-gateway/design.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Standortübergreifende Konnektivität – dediziert privat
+          href: ../../expressroute/expressroute-workflows.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Globales Microsoft-Netzwerk
+      items:
+        - name: Übersicht
+          href: ../microsoft-global-network.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure-Netzwerklatenz
+          href: ../azure-network-latency.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Internetroutingpräferenz in Azure
+          href: ../../virtual-network/routing-preference-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Cloudnetzwerkkonnektivität
+      items:
+        - name: Virtuelles Netzwerk
+          href: ../../virtual-network/virtual-networks-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Öffentliche IP-Adresse
+          href: ../../virtual-network/public-ip-addresses.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DNS
+          href: ../../dns/dns-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Weiterleitung von Netzwerkdatenverkehr
+          href: ../../virtual-network/virtual-networks-udr-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Verbindung virtueller Netzwerke
+          href: ../../virtual-network/virtual-network-peering-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Privater Zugriff auf Ressourcen
+          href: ../../private-link/private-endpoint-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: 'Herstellen einer lokalen Verbindung mit Azure: VPN-Verschlüsselung'
+          href: ../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=/azure/networking/fundamentals/toc.json
+        - name: 'Erweitern der lokalen Umgebung auf Azure: Private Verbindung'
+          href: ../../expressroute/expressroute-connect-azure-to-public-cloud.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Ausschließlich ausgehende Internetkonnektivität
+          href: ../../virtual-network/nat-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Netzwerksicherheit
+      items:
+        - name: Netzwerksicherheitsgruppen
+          href: ../../virtual-network/network-security-groups-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Privater Endpunkt
+          href: ../../private-link/private-endpoint-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Netzwerkfirewall
+          href: ../../firewall/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DDoS-Schutz
+          href: ../../ddos-protection/ddos-protection-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Web Application Firewall
+          href: ../../web-application-firewall/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+    - name: Skalierbare Anwendungsbereitstellung
+      items:
+        - name: Lastenausgleichsoptionen in Azure
+          href: /azure/architecture/guide/technology-choices/load-balancing-overview?toc=/azure/networking/fundamentals/toc.json
+        - name: Lastenausgleich für das Netzwerk
+          href: ../../load-balancer/load-balancer-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Sicheres cloudbasiertes CDN und globaler Lastenausgleich
+          href: ../../frontdoor/front-door-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Lastenausgleich für Webanwendungen
+          href: ../../application-gateway/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DNS-basierter Lastenausgleich
+          href: ../../traffic-manager/traffic-manager-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Netzwerküberwachung
+      items:
+        - name: Überwachen Ihres Netzwerks mit Azure Monitor
+          href: ../../azure-monitor/insights/network-insights-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Überwachen und Reparieren der Netzwerkintegrität
+          href: ../../network-watcher/network-watcher-monitoring-overview.md?toc=/azure/networking/fundamentals/toc.json
+- name: Anleitungen
+  items:
+    - name: Erstellen und Herstellen einer Verbindung mit Cloudnetzwerken
+      items:
+        - name: Erstellen eines virtuellen Netzwerks
+          href: ../../virtual-network/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Erstellen einer öffentlichen IP-Adresse
+          href: ../../virtual-network/create-public-ip-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Optimieren der Routingkosten
+          href: ../../virtual-network/routing-preference-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Erstellen eines NAT-Gateways für ausgehende Verbindungen
+          href: ../../virtual-network/tutorial-create-nat-gateway-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: "Erstellen einer Azure\_DNS-Zone und eines Azure\_DNS-Eintrags"
+          href: ../../dns/dns-getstarted-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Weiterleiten von Datenverkehr mithilfe von Routingtabellen
+          href: ../../virtual-network/tutorial-create-route-table-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Verbindung virtueller Netzwerke
+          href: ../../virtual-network/tutorial-connect-virtual-networks-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Privater Zugriff auf Ressourcen
+          href: ../../private-link/create-private-endpoint-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: 'Verbinden des lokalen Netzwerks mit einem virtuellen Netzwerk: VPN-Verschlüsselung'
+          href: ../../vpn-gateway/tutorial-site-to-site-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: 'Standortübergreifende Konnektivität: dediziert'
+          href: ../../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Netzwerk schützen
+      items:
+        - name: Einschränken des Netzwerkzugriffs
+          href: ../../virtual-network/tutorial-restrict-network-access-to-resources.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Filterung von Netzwerkdatenverkehr
+          href: ../../virtual-network/tutorial-filter-network-traffic.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Bereitstellen einer Netzwerkfirewall
+          href: ../../firewall/tutorial-firewall-deploy-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Schützen Ihres Netzwerks vor DDoS-Angriffen
+          href: ../../ddos-protection/manage-ddos-protection.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Skalieren Ihrer Anwendungsbereitstellung
+      items:
+        - name: Erstellen eines Lastenausgleichs für das Netzwerk
+          href: ../../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Bereitstellen eines sicheren cloudbasierten CDN und eines globalen Lastenausgleichs
+          href: ../../frontdoor/quickstart-create-front-door.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Erstellen eines Lastenausgleichs für Webanwendungen
+          href: ../../application-gateway/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Erstellen eines DNS-basierten Lastenausgleichs
+          href: ../../traffic-manager/quickstart-create-traffic-manager-profile.md?toc=/azure/networking/fundamentals/toc.json
+    - name: Überwachen Ihres Netzwerks
+      items:
+        - name: Überwachen der Netzwerkintegrität
+          href: ../../network-watcher/network-watcher-monitoring-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Überwachen der Kommunikation zwischen Azure-Ressourcen
+          href: ../../network-watcher/connection-monitor-create-using-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure Monitor Netzwerk-Insights
+          href: ../../azure-monitor/insights/network-insights-overview.md?toc=/azure/networking/fundamentals/toc.json

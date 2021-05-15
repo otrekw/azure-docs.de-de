@@ -1,5 +1,6 @@
 ---
-title: 'Azure-VPN Gateway: Problembehandlung für Point-to-Site-Verbindungen: Mac OS X-Clients'
+title: 'Problembehandlung für Point-to-Site-Verbindungen: Mac OS X-Clients'
+titleSuffix: Azure VPN Gateway
 description: Erfahren Sie, wie Sie Point-to-Site-Konnektivitätsprobleme von Mac OS X unter Verwendung des nativen VPN-Clients und IKEv2 beheben.
 services: vpn-gateway
 author: anzaman
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 02/10/2021
 ms.author: alzam
-ms.openlocfilehash: 4c8657f8a40084a726280efe471c0791931294f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0b8cb4b75bfa162c392549b21f4d09743c37f8e
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100366635"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229538"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Problembehandlung bei Point-to-Site-VPN-Verbindungen von Mac OS X-VPN-Clients
 

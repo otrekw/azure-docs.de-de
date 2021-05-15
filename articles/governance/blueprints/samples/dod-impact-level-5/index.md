@@ -1,18 +1,18 @@
 ---
 title: 'Blaupausenbeispiel „DoD-Auswirkungsstufe 5“: Übersicht'
 description: Hier finden Sie eine Übersicht über das Beispiel „DoD-Auswirkungsstufe 5“. Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Steuerungen für „DoD-Auswirkungsstufe 5“.
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 5b2d018cf6c986c38cbe5a1a8ea18bf4a290a4df
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: f8656a1d7da8ec2fd9272d7d1c87244a4aa21761
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035069"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757473"
 ---
 # <a name="overview-of-the-dod-impact-level-5-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „DoD-Auswirkungsstufe 5“
 
-Das Blaupausenbeispiel „DoD-Auswirkungsstufe 5“(Department of Defense Impact Level 5, DoD IL5) bietet mithilfe von [Azure Policy](../../../policy/overview.md) Schutzmaßnahmen für Governance, die Ihnen beim Bewerten bestimmter DoD IL5-Steuerungen helfen. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, die DoD IL5-Steuerungen implementieren muss. Aktuelle Informationen dazu, welche Azure-Clouds und -Dienste die Autorisierung gemäß DoD-Auswirkungsstufe 5 erfüllen, finden Sie unter [Azure-Dienste nach FedRAMP- und DoD CC SRG-Prüfumfang](../../../../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
+Das Blaupausenbeispiel „DoD-Auswirkungsstufe 5“ (Department of Defense Impact Level 5, DoD IL5) bietet mithilfe von [Azure Policy](../../../policy/overview.md) Schutzmaßnahmen für Governance, die Ihnen beim Bewerten bestimmter DoD IL5-Steuerungen helfen. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, die DoD IL5-Steuerungen implementieren muss. Aktuelle Informationen dazu, welche Azure-Clouds und -Dienste die Autorisierung gemäß DoD-Auswirkungsstufe 5 erfüllen, finden Sie unter [Azure-Dienste nach FedRAMP- und DoD CC SRG-Prüfumfang](../../../../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
 
 > [!NOTE]
 > Dieses Blaupausenbeispiel ist in Azure Government verfügbar.

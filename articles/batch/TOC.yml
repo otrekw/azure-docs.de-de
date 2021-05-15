@@ -31,15 +31,6 @@
     - name: Parallele Dateiverarbeitung – Python
       displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
-    - name: Szenenrendering mit Arnold
-      displayName: tutorial
-      href: tutorial-rendering-cli.md
-    - name: Rendern einer Blender-Szene mithilfe von Batch Explorer
-      displayName: tutorial
-      href: tutorial-rendering-batchexplorer-blender.md
-    - name: Parallele R-Simulation
-      displayName: 'tutorial, doAzureParallel, rstudio'
-      href: tutorial-r-doazureparallel.md
     - name: OCR mit Batch und Functions
       displayName: 'trigger, optical'
       href: tutorial-batch-functions.md
@@ -76,7 +67,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/batch-security-baseline?toc=/azure/batch/TOC.json
         - name: Bewährte Sicherheitsmethoden
           href: security-best-practices.md
     - name: Workflow und Ressourcen des Batch-Diensts
@@ -123,6 +114,8 @@
           href: private-connectivity.md
         - name: Konfigurieren von kundenseitig verwalteten Schlüsseln
           href: batch-customer-managed-key.md
+        - name: Verschieben zwischen Regionen
+          href: account-move.md
     - name: Authentifizierung über Azure AD
       items:
         - name: Azure AD mit Batch-Dienst
@@ -172,6 +165,9 @@
         - name: Konfigurieren von verwalteten Identitäten
           displayName: user-assigned
           href: managed-identity-pools.md
+        - name: Aktivieren der Zertifikatrotation
+          displayName: 'key vault, keyvault, automatic'
+          href: automatic-certificate-rotation.md
         - name: Einbinden eines virtuellen Dateisystems
           href: virtual-file-mount.md
         - name: Bereitstellen einer Azure-Dateifreigabe
@@ -238,11 +234,11 @@
           displayName: command line
           href: batch-cli-get-started.md
         - name: Verwenden von Batch-CLI-Vorlagen
-          diplayName: extension
+          displayName: extension
           href: batch-cli-templates.md
-    - name: Verwenden des Batch Node.js-SDK
+    - name: "Verwenden des Batch JavaScript\_SDK"
       displayName: json
-      href: batch-nodejs-get-started.md
+      href: batch-js-get-started.md
     - name: Ausführen von Workloads
       items:
         - name: MPI
@@ -280,7 +276,7 @@
       href: /dotnet/api/overview/azure/batch
     - name: Java
       href: /java/api/overview/azure/batch
-    - name: Node.js
+    - name: JavaScript
       href: /javascript/api/overview/azure/batch
     - name: Python
       href: /python/api/overview/azure/batch

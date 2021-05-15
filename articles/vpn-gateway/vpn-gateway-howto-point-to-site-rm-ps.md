@@ -1,6 +1,6 @@
 ---
 title: 'Herstellen einer Verbindung mit einem VNET von einem Computer – P2S-VPN und native Azure-Zertifikatauthentifizierung: PowerShell'
-description: Verbinden Sie Windows- und macOS-Clients über P2S sowie selbstsignierte oder von einer Zertifizierungsstelle ausgestellte Zertifikate sicher mit einem virtuellen Azure-Netzwerk. In diesem Artikel wird PowerShell verwendet.
+description: Erfahren Sie, wie Sie Windows- und macOS-Clients über P2S sowie selbstsignierte oder von einer Zertifizierungsstelle ausgestellte Zertifikate sicher mit einem virtuellen Azure-Netzwerk verbinden.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: ed0a60c88c33af70b7d780d6c4735c5f8e65b35b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf1cd8eb2d9723d435f277b9c029b15c843b9afd
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660405"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226388"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung mit einem VNET unter Verwendung der nativen Azure-Zertifikatauthentifizierung: PowerShell
 
