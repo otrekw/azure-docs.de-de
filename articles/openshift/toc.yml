@@ -26,6 +26,8 @@
           href: howto-create-private-cluster-4x.md
         - name: Konfigurieren der DNS-Weiterleitung
           href: dns-forwarding.md
+        - name: Einschränken von ausgehendem Datenverkehr
+          href: howto-restrict-egress.md
     - name: Storage
       items:
         - name: Verschlüsseln von PVCs mit kundenseitig verwalteten Schlüsseln (Vorschau)
@@ -60,6 +62,10 @@
               href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: Entwickeln und Ausführen von Anwendungen
       items:
+        - name: Bereitstellen einer Anwendung aus dem Quellcode
+          href: howto-deploy-with-s2i.md
+        - name: Bereitstellen einer Anwendung mithilfe von OpenShift Serverless
+          href: howto-deploy-with-serverless.md
         - name: "Bereitstellen einer Open\_Liberty-/WebSphere\_Liberty-App"
           href: howto-deploy-java-liberty-app.md
     - name: "Azure Red Hat OpenShift\_3.11"
@@ -107,6 +113,8 @@
       href: /cli/azure/aro
     - name: Azure Red Hat OpenShift-REST-APIs
       href: /rest/api/openshift
+    - name: Azure CLI
+      href: /cli/azure/openshift
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
@@ -117,6 +125,8 @@
       href: support-policies-v4.md
     - name: "Supportlebenszyklus für ARO\_4"
       href: support-lifecycle.md
+    - name: Zuständigkeitsmatrix
+      href: responsibility-matrix.md
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Dokumentation zu Red Hat OpenShift 4

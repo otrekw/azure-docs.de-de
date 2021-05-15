@@ -3,15 +3,15 @@ title: Ausführen von Runbooks in Azure Automation
 description: Dieser Artikel enthält eine Übersicht über die Verarbeitung von Runbooks in Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/23/2021
+ms.date: 04/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0807b11adfc46b9c32a8f7bd36a2f7d4db519975
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: a0c734d7717f157ba062b1c9369be5dd95be03af
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830518"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278468"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -102,7 +102,7 @@ Der [Log Analytics-Agent für Linux](../azure-monitor/agents/agent-linux.md) äh
 
 Das Konto **nxautomation** mit den entsprechenden sudo-Berechtigungen muss bei der [Installation eines Linux-Hybrid Runbook Workers](automation-linux-hrw-install.md) vorhanden sein. Wenn Sie versuchen, den Worker zu installieren, und das Konto nicht vorhanden ist oder nicht über die entsprechenden Berechtigungen verfügt, tritt bei der Installation ein Fehler auf.
 
-Sie sollten die Berechtigungen bzw. die Besitzeinstellungen für den Ordner `sudoers.d` nicht ändern. Die Berechtigung vom Typ „sudo“ ist für das Konto **nxautomation** erforderlich, und die Berechtigungen sollten nicht entfernt werden. Eine Beschränkung auf bestimmte Ordner oder Befehle kann ggf. eine grundlegende Änderung (Breaking Change) bewirken.
+Ändern Sie keine Berechtigungen oder Besitzeinstellungen für den Ordner `sudoers.d`. Die Berechtigung vom Typ „sudo“ ist für das Konto **nxautomation** erforderlich, und die Berechtigungen sollten nicht entfernt werden. Eine Beschränkung auf bestimmte Ordner oder Befehle kann ggf. eine grundlegende Änderung (Breaking Change) bewirken.
 
 Die für den Log Analytics-Agent und das Konto **nxautomation** verfügbaren Protokolle sind:
 
@@ -118,7 +118,13 @@ Für ein Runbook werden Berechtigungen in Form von Anmeldeinformationen für die
 
 ## <a name="modules"></a>Module
 
-Azure Automation unterstützt eine Reihe von Standardmodulen, z. B. einige AzureRM-Module (AzureRM.Automation) und ein Modul, das mehrere interne Cmdlets enthält. Unterstützt werden auch installierbare Module, einschließlich der Az-Module (Az.Automation), die derzeit gegenüber den AzureRM-Modulen bevorzugt eingesetzt werden. Details zu den Modulen, die für Ihre Runbooks und DSC-Konfigurationen verfügbar sind, finden Sie unter [Verwalten von Modulen in Azure Automation](shared-resources/modules.md).
+Azure Automation enthält die folgenden PowerShell-Module:
+
+* Orchestrator.AssetManagement.Cmdlets: Enthält mehrere interne Cmdlets, die nur verfügbar sind, wenn Sie Runbooks in der Azure-Sandboxumgebung oder auf einem Windows-Hybrid Runbook Worker ausführen. Diese Cmdlets sind dafür konzipiert, anstelle von Azure PowerShell-Cmdlets verwendet zu werden, um mit Ihren Automation-Kontoressourcen zu interagieren.
+* Az.Automation: Das empfohlene PowerShell-Modul für die Interaktion mit Azure Automation, das das AzureRM Automation-Modul ersetzt Das Az.Automation-Modul ist beim Erstellen eines Automation-Kontos nicht automatisch enthalten, und muss manuell importiert werden. 
+* AzureRM.Automation: Wird standardmäßig installiert, wenn Sie ein Automation-Konto erstellen 
+
+Außerdem werden installierbare Module unterstützt, die auf den Cmdlets basieren, die für Ihre Runbooks und DSC-Konfigurationen erforderlich sind. Details zu den Modulen, die für Ihre Runbooks und DSC-Konfigurationen verfügbar sind, finden Sie unter [Verwalten von Modulen in Azure Automation](shared-resources/modules.md).
 
 ## <a name="certificates"></a>Zertifikate
 

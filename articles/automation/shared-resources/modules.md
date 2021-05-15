@@ -3,15 +3,15 @@ title: Verwalten von Modulen in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie PowerShell-Module verwenden, um Cmdlets in Runbooks und DSC-Ressourcen in DSC-Konfigurationen zu aktivieren.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 02/01/2021
+ms.date: 04/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eaff96907b48ddc0fc92296a015ceb063149e6ec
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 48888f9ca840888310aebcc82d38d2af351a8611
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832750"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277892"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwalten von Modulen in Azure Automation
 
@@ -85,10 +85,9 @@ Für Az.Automation weist die Mehrzahl der Cmdlets denselben Namen auf wie bei de
 
 ## <a name="internal-cmdlets"></a>Interne Cmdlets
 
-Azure Automation unterstützt das interne `Orchestrator.AssetManagement.Cmdlets`-Modul für den Log Analytics-Agent für Windows, das standardmäßig installiert wird. In der folgenden Tabelle werden die internen Cmdlets definiert. Diese Cmdlets sind dafür konzipiert, anstelle von Azure PowerShell-Cmdlets verwendet zu werden, um mit freigegebenen Ressourcen zu interagieren. Sie können Geheimnisse aus verschlüsselten Variablen, Anmeldeinformationen und verschlüsselten Verbindungen abrufen.
+Azure Automation unterstützt interne Cmdlets, die nur verfügbar sind, wenn Sie Runbooks in der Sandboxumgebung von Azure oder auf einem Hybrid Runbook Worker unter Windows ausführen. Das interne Modul `Orchestrator.AssetManagement.Cmdlets` wird standardmäßig in Ihrem Automation-Konto installiert und wenn die Windows Hybrid Runbook Worker-Rolle auf dem Computer installiert ist. 
 
->[!NOTE]
->Die internen Cmdlets sind nur verfügbar, wenn Sie Runbooks in der Sandboxumgebung von Azure oder auf einem Hybrid Runbook Worker unter Windows ausführen. 
+In der folgenden Tabelle werden die internen Cmdlets definiert. Diese Cmdlets sind dafür konzipiert, anstelle von Azure PowerShell-Cmdlets verwendet zu werden, um mit Ihren Automation-Kontoressourcen zu interagieren. Sie können Geheimnisse aus verschlüsselten Variablen, Anmeldeinformationen und verschlüsselten Verbindungen abrufen.
 
 |Name|BESCHREIBUNG|
 |---|---|
@@ -100,7 +99,7 @@ Azure Automation unterstützt das interne `Orchestrator.AssetManagement.Cmdlets`
 |Start-AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
 |Wait-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
-Beachten Sie, dass sich die internen Cmdlets bei der Benennung von den Az- und AzureRM-Cmdlets unterscheiden. Namen interner Cmdlets enthalten keine Wörter wie `Azure` oder `Az` als Substantive, verwenden aber das Wort `Automation`. Es wird empfohlen, diese anstelle von Az- oder AzureRM-Cmdlets während der Runbookausführung in einer Azure-Sandbox oder auf einem Hybrid Runbook Worker unter Windows zu verwenden. Sie benötigen weniger Parameter und werden im Kontext Ihres bereits ausgeführten Auftrags ausgeführt.
+Beachten Sie, dass sich die internen Cmdlets bei der Benennung von den Az- und AzureRM-Cmdlets unterscheiden. Namen interner Cmdlets enthalten keine Wörter wie `Azure` oder `Az` als Substantive, verwenden aber das Wort `Automation`. Wir empfehlen, während der Runbookausführung in einer Azure-Sandbox oder auf einem Windows-Hybrid Runbook Worker diese Cmdlets statt der Az- oder AzureRM-Cmdlets zu verwenden, da sie weniger Parameter erfordern und während der Ausführung im Kontext Ihres Auftrags ausgeführt werden.
 
 Verwenden Sie Az- oder AzureRM-Cmdlets zum Bearbeiten von Automation-Ressourcen außerhalb des Kontexts eines Runbooks. 
 
@@ -148,10 +147,13 @@ Beim Importieren eines Az-Moduls in Ihr Automation-Konto wird das Modul nicht au
 
 Sie können die Az-Module aus dem Azure-Portal in das Automation-Konto importieren. Denken Sie daran, nur die benötigten Az-Module zu importieren und nicht alle verfügbaren Az-Module. Da [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) eine Abhängigkeit für die anderen Az-Module darstellt, muss dieses Modul vor den anderen Modulen importiert werden.
 
+1. Melden Sie sich beim Azure-[Portal](https://portal.azure.com) an.
+1. Suchen Sie nach **Automation-Konten**, und wählen Sie diese Option aus.
+1. Wählen Sie auf der Seite **Automation-Konten** in der entsprechenden Liste Ihr Automation-Konto aus.
 1. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus.
-2. Wählen Sie **Katalog durchsuchen** aus.  
-3. Geben Sie in die Suchleiste den Namen des Moduls ein (z. B. `Az.Accounts`).
-4. Wählen Sie auf der Seite „PowerShell-Module“ die Option **Importieren** aus, um das Modul in Ihr Automation-Konto zu importieren.
+1. Wählen Sie **Katalog durchsuchen** aus.  
+1. Geben Sie in die Suchleiste den Namen des Moduls ein (z. B. `Az.Accounts`).
+1. Wählen Sie auf der Seite „PowerShell-Module“ die Option **Importieren** aus, um das Modul in Ihr Automation-Konto zu importieren.
 
     ![Screenshot: Importieren von Modulen in Ihr Automation-Konto](../media/modules/import-module.png)
 
@@ -329,11 +331,12 @@ In diesem Abschnitt sind verschiedene Methoden beschrieben, um ein Modul in Ihr 
 
 So importieren Sie Module im Azure-Portal:
 
-1. Navigieren Sie zu Ihrem Automation-Konto.
-2. Wählen Sie unter **Freigegebene Ressourcen** die Option **Module** aus.
-3. Wählen Sie **Modul hinzufügen** aus.
-4. Wählen Sie die **ZIP**-Datei aus, die Ihr Modul enthält.
-5. Wählen Sie **OK** aus, um den Importvorgang zu starten.
+1. Suchen Sie im Portal nach **Automation-Konten**, und wählen Sie diese Option aus.
+1. Wählen Sie auf der Seite **Automation-Konten** in der entsprechenden Liste Ihr Automation-Konto aus.
+1. Wählen Sie unter **Freigegebene Ressourcen** die Option **Module** aus.
+1. Wählen Sie **Modul hinzufügen** aus.
+1. Wählen Sie die **ZIP**-Datei aus, die Ihr Modul enthält.
+1. Wählen Sie **OK** aus, um den Importvorgang zu starten.
 
 ### <a name="import-modules-by-using-powershell"></a>Importieren von Modulen mithilfe von PowerShell
 
@@ -365,10 +368,12 @@ So importieren Sie ein Modul direkt aus dem PowerShell-Katalog:
 
 So importieren Sie ein Modul im PowerShell-Katalog direkt aus Ihrem Automation-Konto:
 
+1. Suchen Sie im Portal nach **Automation-Konten**, und wählen Sie diese Option aus.
+1. Wählen Sie auf der Seite **Automation-Konten** in der entsprechenden Liste Ihr Automation-Konto aus.
 1. Wählen Sie unter **Freigegebene Ressourcen** die Option **Module** aus. 
-2. Wählen Sie **Katalog durchsuchen** aus, und durchsuchen Sie dann den Katalog nach einem Modul. 
-3. Wählen Sie das zu importierende Modul und dann **Importieren** aus. 
-4. Wählen Sie **OK** aus, um den Importvorgang zu starten.
+1. Wählen Sie **Katalog durchsuchen** aus, und durchsuchen Sie dann den Katalog nach einem Modul. 
+1. Wählen Sie das zu importierende Modul und dann **Importieren** aus. 
+1. Wählen Sie **OK** aus, um den Importvorgang zu starten.
 
 ![Screenshot: Importieren eines Moduls aus dem PowerShell-Katalog über das Azure-Portal](../media/modules/gallery-azure-portal.png)
 
@@ -380,9 +385,11 @@ Wenn Sie Probleme mit einem Modul haben oder ein Rollback auf eine frühere Vers
 
 So entfernen Sie ein Modul im Azure-Portal:
 
-1. Navigieren Sie zu Ihrem Automation-Konto. Wählen Sie unter **Freigegebene Ressourcen** die Option **Module** aus.
-2. Wählen Sie das Modul aus, das Sie entfernen möchten.
-3. Wählen Sie auf der Seite „Modul“ die Option **Löschen** aus. Handelt es sich bei dem Modul um eines der [Standardmodule](#default-modules), wird ein Rollback auf die Version durchgeführt, die beim Erstellen des Automation-Kontos vorhanden war.
+1. Suchen Sie im Portal nach **Automation-Konten**, und wählen Sie diese Option aus.
+1. Wählen Sie auf der Seite **Automation-Konten** in der entsprechenden Liste Ihr Automation-Konto aus.
+1. Wählen Sie unter **Freigegebene Ressourcen** die Option **Module** aus.
+1. Wählen Sie das Modul aus, das Sie entfernen möchten.
+1. Wählen Sie auf der Seite „Modul“ die Option **Löschen** aus. Handelt es sich bei dem Modul um eines der [Standardmodule](#default-modules), wird ein Rollback auf die Version durchgeführt, die beim Erstellen des Automation-Kontos vorhanden war.
 
 ### <a name="delete-modules-by-using-powershell"></a>Löschen von Modulen mithilfe von PowerShell
 

@@ -13,8 +13,6 @@
   items:
     - name: Portal
       items:
-        - name: Erstellen von Diensten
-          href: search-create-service-portal.md
         - name: Erstellen eines Index
           href: search-get-started-portal.md
         - name: Erstellen einer Demo-App
@@ -44,6 +42,28 @@
       href: search-get-started-arm.md
 - name: Tutorials
   items:
+    - name: Hinzufügen von Suchfunktionen zu einer Website
+      items:
+        - name: C#
+          items:
+            - name: Websiteübersicht
+              href: tutorial-csharp-overview.md
+            - name: Erstellen eines Suchindexes
+              href: tutorial-csharp-create-load-index.md
+            - name: Bereitstellen einer statischen Web-App
+              href: tutorial-csharp-deploy-static-web-app.md
+            - name: Spickzettel für die Integration
+              href: tutorial-csharp-search-query-integration.md
+        - name: JavaScript
+          items:
+            - name: Websiteübersicht
+              href: tutorial-javascript-overview.md
+            - name: Erstellen eines Suchindexes
+              href: tutorial-javascript-create-load-index.md
+            - name: Bereitstellen einer statischen Web-App
+              href: tutorial-javascript-deploy-static-web-app.md
+            - name: Spickzettel für die Integration
+              href: tutorial-javascript-search-query-integration.md
     - name: Erstellen einer C#-App
       items:
         - name: 1. Seite für die Standardsuche
@@ -125,23 +145,35 @@
         - name: Zugreifen auf geschützte Inhalte
           href: search-indexer-securing-resources.md
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/cognitive-search-security-baseline?toc=/azure/search/TOC.json
 - name: Anleitungen
   items:
-    - name: Planung
+    - name: Verwaltung
       items:
         - name: 'Wählen Sie eine Ebene aus:'
           href: search-sku-tier.md
-        - name: Schätzen und Verwalten der Kapazität
+        - name: Planen der Kapazität
           href: search-capacity-planning.md
-        - name: Schätzen der Kosten
-          href: search-sku-manage-costs.md
+        - name: Erstellen von Diensten
+          href: search-create-service-portal.md
         - name: Diensteinschränkungen
           href: search-limits-quotas-capacity.md
-        - name: Skalieren zur Verbesserung der Leistung
+        - name: Verwalten von Kosten
+          href: search-sku-manage-costs.md
+        - name: Verfügbarkeit und Wiederherstellung
           href: search-performance-optimization.md
-        - name: Mehrinstanzenfähige Architektur
+        - name: Mehrinstanzenfähigkeit
           href: search-modeling-multitenant-saas-applications.md
+        - name: Verwalten im Portal
+          href: search-manage.md
+        - name: Verwalten mit PowerShell
+          href: search-manage-powershell.md
+        - name: Verwalten mit der Azure CLI
+          href: search-manage-azure-cli.md
+        - name: Regionsübergreifendes Verschieben eines Diensts
+          href: search-howto-move-across-regions.md
+        - name: "Behandeln von Problemen beim Erstellen freigegebener Private\_Link-Ressourcen"
+          href: troubleshoot-shared-private-link-resources.md
     - name: Entwicklung
       items:
         - name: API-Versionen
@@ -257,7 +289,11 @@
         - name: Azure-Tabellen
           href: search-howto-indexing-azure-tables.md
         - name: Azure Cosmos DB
-          href: search-howto-index-cosmosdb.md
+          items:
+            - name: 'SQL-, MongoDB-, Cassandra-APIs'
+              href: search-howto-index-cosmosdb.md
+            - name: Gremlin-API
+              href: search-howto-index-cosmosdb-gremlin.md
         - name: Azure Data Lake Storage Gen2
           href: search-howto-index-azure-data-lake-storage.md
         - name: Azure SQL-Datenbank-Instanzen
@@ -266,6 +302,10 @@
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Azure SQL Server-VMs
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: Behandeln von Indexerproblemen
+          href: search-indexer-troubleshooting.md
+        - name: Behandeln von Indexerfehlern und -warnungen
+          href: cognitive-search-common-errors-warnings.md
     - name: Qualifikationsgruppen
       items:
         - name: Anfügen einer Cognitive Services-Ressource
@@ -286,6 +326,8 @@
           items:
             - name: Integrieren benutzerdefinierter Fertigkeiten
               href: cognitive-search-custom-skill-interface.md
+            - name: Aufskalieren benutzerdefinierter Skills
+              href: cognitive-search-custom-skill-scale.md
             - name: 'Beispiel: Azure Functions (Python)'
               href: cognitive-search-custom-skill-python.md
             - name: 'Beispiel: Azure Functions'
@@ -294,6 +336,8 @@
               href: cognitive-search-custom-skill-form.md
             - name: 'Beispiel: Azure Machine Learning'
               href: cognitive-search-tutorial-aml-custom-skill.md
+            - name: 'Beispiel: Azure Machine Learning-Designer'
+              href: cognitive-search-tutorial-aml-designer-custom-skill.md
         - name: Tipps für den Entwurf
           href: cognitive-search-concept-troubleshooting.md
         - name: Wissensspeicher
@@ -312,6 +356,8 @@
           href: search-query-create.md
         - name: Erstellen einer Semantikabfrage
           href: semantic-how-to-query-request.md
+        - name: Zurückgeben einer semantischen Antwort
+          href: semantic-answers.md
         - name: Hinzufügen der Rechtschreibprüfung zu Abfragen
           href: speller-how-to-add.md
         - name: Abfragetypen und Komposition
@@ -329,7 +375,9 @@
             - name: Erstellen einer Vorschlagsfunktion
               href: index-add-suggesters.md
             - name: Hinzufügen von AutoVervollständigen und Vorschlägen
-              href: search-autocomplete-tutorial.md
+              href: search-add-autocomplete-suggestions.md
+        - name: Paginierung und Anzahl
+          href: search-pagination-page-layout.md
         - name: Syntaxverweis
           items:
             - name: Einfache Abfragesyntax
@@ -350,20 +398,40 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: Grundlegendes zu Sammlungsfiltern
           href: search-query-understand-collection-filters.md
-        - name: Filtern nach Sprache
-          href: search-filters-language.md
-    - name: Ergebnisse
+        - name: Normalisieren von Text
+          href: search-normalizers.md
+    - name: Relevance
       items:
-        - name: Arbeiten mit Ergebnissen
-          href: search-pagination-page-layout.md
-        - name: Strukturieren einer semantischen Antwort
-          href: semantic-how-to-query-response.md
+        - name: Ähnlichkeitsrangfolge
+          href: index-ranking-similarity.md
+        - name: Semantische Rangfolge
+          href: semantic-ranking.md
         - name: Bewertungsprofile
           href: index-add-scoring-profiles.md
-        - name: Ähnlichkeitsalgorithmus
-          href: index-ranking-similarity.md
+    - name: Leistung und Überwachung
+      items:
+        - name: Leistungsanalyse
+          href: search-performance-analysis.md
+        - name: Leistungsbenchmarks
+          href: performance-benchmarks.md
+        - name: Leistungstipps
+          href: search-performance-tips.md
+        - name: Diagnoseprotokollierung
+          href: search-monitor-logs.md
+        - name: Visualisieren von Diagnoseprotokollen
+          href: search-monitor-logs-powerbi.md
+        - name: Übersicht über die Überwachung
+          href: search-monitor-usage.md
+        - name: Überwachen von Abfragen
+          href: search-monitor-queries.md
+        - name: Überwachen der indexerbasierten Indizierung
+          href: search-howto-monitor-indexers.md
+        - name: Überwachen clientseitiger Interaktionen
+          href: search-traffic-analytics.md
     - name: Sicherheit
       items:
+        - name: Administratorrechte
+          href: search-security-rbac.md
         - name: Datenverschlüsselung
           items:
             - name: Vom Kunden verwaltete Schlüssel
@@ -372,7 +440,7 @@
               href: search-security-get-encryption-keys.md
         - name: Sicherheit bei eingehendem Datenverkehr
           items:
-            - name: API-Zugriffsschlüssel
+            - name: Authentifizierung mit API-Schlüssel
               href: search-security-api-keys.md
             - name: Konfigurieren einer IP-Firewall
               href: service-configure-firewall.md
@@ -392,38 +460,6 @@
               href: search-security-trimming-for-azure-search.md
             - name: Filtern nach Benutzeridentitäten
               href: search-security-trimming-for-azure-search-with-aad.md
-    - name: Verwalten
-      items:
-        - name: Portal
-          href: search-manage.md
-        - name: PowerShell
-          href: search-manage-powershell.md
-        - name: Azure CLI
-          href: search-manage-azure-cli.md
-        - name: Regionsübergreifendes Verschieben eines Diensts
-          href: search-howto-move-across-regions.md
-        - name: Rollenbasierter Administratorzugriff
-          href: search-security-rbac.md
-    - name: Überwachen
-      items:
-        - name: Grundlagen
-          href: search-monitor-usage.md
-        - name: Diagnoseprotokollierung
-          href: search-monitor-logs.md
-        - name: Visualisieren von Diagnoseprotokollen
-          href: search-monitor-logs-powerbi.md
-        - name: Überwachen der Abfrageaktivität
-          href: search-monitor-queries.md
-        - name: Überwachen von Indexern
-          href: search-howto-monitor-indexers.md
-        - name: Durchsuchen der Datenverkehrsanalyse
-          href: search-traffic-analytics.md
-    - name: Problembehandlung
-      items:
-        - name: Indexerprobleme
-          href: search-indexer-troubleshooting.md
-        - name: Indexerfehler und -warnungen
-          href: cognitive-search-common-errors-warnings.md
 - name: Verweis
   items:
     - name: Azure CLI

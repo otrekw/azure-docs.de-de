@@ -9,17 +9,17 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6f42f712ecca77c00020304b63f5a1b0dbd77ad0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9dcfb037c946394a157a9f81d5c09303e31cbefe
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172319"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323607"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Installieren von Clienttools zum Bereitstellen und Verwalten von Azure Arc-fähigen Datendiensten
 
 > [!IMPORTANT]
-> Wenn Sie auf ein neues monatliches Release aktualisieren, stellen Sie sicher, dass Sie auch Updates auf die neueste Version von Azure Data Studio, des [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]-Tools und der [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] sowie der Azure Arc-Erweiterungen für Azure Data Studio ausführen.
+> Wenn Sie auf ein neues monatliches Release aktualisieren, stellen Sie sicher, dass Sie auch Updates auf die neueste Version von Azure Data Studio, des [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]-Tools sowie der Azure Arc-Erweiterungen für Azure Data Studio ausführen.
 
 Dieses Dokument führt Sie durch die Schritte zum Installieren der [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)], von Azure Data Studio Azure, der Azure CLI (az) und des Kubernetes CLI-Tools (kubectl) auf Ihrem Clientcomputer.
 

@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: aa0fe33dff0161767b74546aad49003d8fc70c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e2f4cbdf7f84f7b6cbd749225a2e0f7ed60cdd5
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95015255"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202873"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten des Speech-Diensts
 
@@ -34,6 +34,8 @@ Wenn Sie Custom Speech und Custom Voice verwenden, speichert der Speech-Dienst m
 Standardmäßig werden Ihre Daten im Speicher von Microsoft gespeichert, und Ihr Abonnement verwendet von Microsoft verwaltete Verschlüsselungsschlüssel. Sie haben auch die Möglichkeit, Ihr eigenes Speicherkonto vorzubereiten. Der Zugriff auf den Speicher wird durch die verwaltete Identität verwaltet, und der Speech-Dienst kann nicht direkt auf Ihre eigenen Daten zugreifen, wie z. B. Daten der Sprachablaufverfolgung, Daten der Trainingsanpassung und benutzerdefinierte Modelle.
 
 Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten?](../../active-directory/managed-identities-azure-resources/overview.md).
+
+In der Zwischenzeit können Sie Ihr Abonnement mit eigenen Verschlüsselungsschlüsseln verwalten, wenn Sie benutzerdefinierte Befehle verwenden. Kundenseitig verwaltete Schlüssel (Customer-Managed Keys, CMK) werden auch als Bring Your Own Key (BYOK) bezeichnet und bieten eine größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen. Weitere Informationen zu benutzerdefinierten Befehlen und CMK finden Sie unter [Verschlüsselung ruhender Daten mithilfe benutzerdefinierter Befehle](custom-commands-encryption-of-data-at-rest.md).
 
 ## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>Bring Your Own Storage (BYOS) für Anpassung und Protokollierung
 

@@ -4,12 +4,12 @@ description: Installieren Sie die Laufzeit und das SDK, und erstellen Sie einen 
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: fcf0aeec27415d03c528e42ad5341a92bd299d88
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: a06e649fbbe3e7ea1036d9511a87169a5b0a655a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869399"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288254"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -26,17 +26,13 @@ Sie können Service Fabric-Entitäten, die in der Cloud oder lokal gehostet wer
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
+- Vergewissern Sie sich, dass Sie eine unterstützte [Linux-Version](service-fabric-versions.md#supported-linux-versions-and-support-end-date) verwenden.
 
-* Ubuntu 16.04 (`Xenial Xerus`), 18.04 (`Bionic Beaver`)
-
-    Stellen Sie sicher, dass das Paket `apt-transport-https` installiert ist.
+- Installieren Sie das Paket `apt-transport-https`:
          
     ```bash
     sudo apt-get install apt-transport-https
     ```
-* Red Hat Enterprise Linux 7.4 (Unterstützung der Service Fabric-Vorschauversion)
-
 
 ## <a name="installation-methods"></a>Installationsmethoden
 

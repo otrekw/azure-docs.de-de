@@ -3,12 +3,12 @@ title: Einrichten von Project Lead The Way-Labs mit Azure Lab Services
 description: Hier erfahren Sie, wie Sie Labs einrichten, um Project Lead The Way-Kurse zu unterrichten.
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: ca4fdae2372895c17c4a98dd3959935108846744
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12efa11d2062b5a4d919dbdcdb4a824dec33f5fb
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95024618"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278720"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Einrichten von Labs für Project Lead The Way-Kurse
 
@@ -75,15 +75,15 @@ Die für PLTW-Kurse empfohlene VM-Größe hängt von der Art der Workloads ab, d
 
 | Lab-Einrichtung | Wert und Beschreibung | Kursempfehlung |
 | ------------ | ------------------ | --- |
-| VM-Größe | **Kleine GPU (Visualisierung)**<br>Eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. | Es wird empfohlen, diese Größe für die folgenden PLTW-Kurse zu verwenden: Civil Engineering and Architecture (Bauwesen und Architektur), Digital Electronics (Digitale Elektronik), Computer Integrated Manufacturing (CIM) und Engineering Design and Development (Konstruktionsdesign und -entwicklung).
-| VM-Größe | **Groß**<br>Eignet sich am besten für Anwendungen, die schnellere CPUs, eine höhere lokale Datenträgerleistung sowie große Datenbanken und Caches erfordern. | Es wird empfohlen, diese Größe für die folgenden PLTW-Kurse zu verwenden: Introduction to Engineering Design (Einführung in technische Konstruktion), Principles of Engineering (Grundlagen der Konstruktion), Computer Science Essentials (Grundlagen der Informatik), Computer Science Principles (Prinzipien der Informatik) und Computer Science A (Informatik A). |
+| VM-Größe | **Kleine GPU (Visualisierung)**<br>Eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. | Es wird empfohlen, diese Größe für die folgenden PLTW-Kurse zu verwenden: Civil Engineering and Architecture (Bauwesen und Architektur), Digital Electronics (Digitale Elektronik), Computer Integrated Manufacturing (CIM), Engineering Design and Development (Konstruktionsdesign und -entwicklung) und Introduction to Engineering Design (Einführung in technische Konstruktion).
+| VM-Größe | **Groß**<br>Eignet sich am besten für Anwendungen, die schnellere CPUs, eine höhere lokale Datenträgerleistung sowie große Datenbanken und Caches erfordern. | Es wird empfohlen, diese Größe für die folgenden PLTW-Kurse zu verwenden: Principles of Engineering (Grundlagen der Konstruktion), Computer Science Essentials (Grundlagen der Informatik), Computer Science Principles (Prinzipien der Informatik) und Computer Science A (Informatik A). |
 
 <br>
 
 ### <a name="license-server"></a>Lizenzserver
 Der Großteil der Software, die in den oben genannten PLTW-Kursen verwendet wird, erfordert *keinen* Zugriff auf einen Lizenzserver.  Sie müssen jedoch auf einen Lizenzserver zugreifen, wenn Sie beabsichtigen, das Netzwerklizenzierungsmodell von Autodesk für die folgende Software zu verwenden:
 -   Revit
--   Inventor
+-   Inventor CAD
 -   Inventor CAM
 
 Für die Verwendung der Netzwerklizenzierung mit Software von Autodesk sind [detaillierte Schritte von PLTW](https://www.pltw.org/pltw-software) zur Installation von Autodesk Network License Manager auf Ihrem Lizenzserver verfügbar.  Dieser Lizenzserver wird in der Regel in Ihrem lokalen Netzwerk platziert oder auf einer Azure-VM in einem virtuellen Azure-Netzwerk gehostet.

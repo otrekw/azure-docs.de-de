@@ -37,6 +37,8 @@
           href: azure-netapp-files-smb-performance.md
     - name: Kostenmodell für Azure NetApp Files
       href: azure-netapp-files-cost-model.md
+    - name: Grundlegendes zum Volumekontingent
+      href: volume-quota-introduction.md
     - name: Richtlinien für die Azure NetApp Files-Netzwerkplanung
       href: azure-netapp-files-network-topologies.md
     - name: Funktionsweise von Azure NetApp Files-Momentaufnahmen
@@ -61,6 +63,8 @@
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
             - name: Vorteile der Verwendung von Azure NetApp Files mit Windows Virtual Desktop
               href: solutions-windows-virtual-desktop.md
+            - name: "Vorteile der Verwendung von Azure NetApp Files für die SQL\_Server-Bereitstellung"
+              href: solutions-benefits-azure-netapp-files-sql-server.md
     - name: Häufig gestellte Fragen zu Azure NetApp Files
       href: azure-netapp-files-faqs.md
     - name: Worum handelt es sich beim Tool für konsistente Momentaufnahmen in Azure-Anwendungen?
@@ -89,20 +93,26 @@
           href: azure-netapp-files-configure-nfsv41-domain.md
         - name: Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung
           href: configure-kerberos-encryption.md
+        - name: "Konfigurieren von ADDS\_LDAP mit erweiterten Gruppen für NFS"
+          href: configure-ldap-extended-groups.md
         - name: Konfigurieren eines NFS-Clients für Azure NetApp Files
           href: configure-nfs-clients.md
-        - name: Konfigurieren der Exportrichtlinie für ein NFS-Volume
-          href: azure-netapp-files-configure-export-policy.md
     - name: Erstellen eines SMB-Volumes
       href: azure-netapp-files-create-volumes-smb.md
     - name: Erstellen eines Dual-Protokoll-Volumes
       href: create-volumes-dual-protocol.md
-    - name: Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern
+    - name: "Konfigurieren von ADDS\_LDAP über TLS"
+      href: configure-ldap-over-tls.md
+    - name: Konfigurieren der Exportrichtlinie für NFS oder Dual-Protokoll
+      href: azure-netapp-files-configure-export-policy.md
+    - name: Einbinden eines Volumes oder Aufheben der Einbindung
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: Verwalten von Momentaufnahmen
       href: azure-netapp-files-manage-snapshots.md
     - name: Ändern der Größe eines Kapazitätspools oder Volumes
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Überwachen der Kapazität eines Volumes
+      href: monitor-volume-capacity.md
     - name: Dynamisches Ändern der Dienstebene eines Volumes
       href: dynamic-change-volume-service-level.md
     - name: Verwalten der regionsübergreifenden Replikation
@@ -115,6 +125,8 @@
           href: cross-region-replication-manage-disaster-recovery.md
         - name: Löschen von Volumereplikationen oder Volumes
           href: cross-region-replication-delete.md
+    - name: Verwalten der Abrechnung mithilfe von Tags
+      href: manage-billing-tags.md
     - name: Entwickeln
       items:
         - name: REST-API
@@ -135,6 +147,8 @@
           href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: Problembehandlung für Momentaufnahmenrichtlinien
           href: troubleshoot-snapshot-policies.md
+        - name: Behandeln von Problemen mit LDAP-Volumes
+          href: troubleshoot-ldap-volumes.md
         - name: Beheben von Ressourcenanbieterfehlern
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Verweis
@@ -143,8 +157,12 @@
       href: /rest/api/netapp/
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Azure CLI
+      href: /cli/azure/netappfiles
     - name: Tool für konsistente Momentaufnahmen in Azure-Anwendungen (AzAcSnap)
       items:
+        - name: Versionshinweise für AzAcSnap
+          href: azacsnap-release-notes.md
         - name: Erste Schritte mit AzAcSnap
           href: azacsnap-get-started.md
         - name: Installieren von AzAcSnap
@@ -179,3 +197,5 @@
       href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
     - name: Videos
       href: azure-netapp-files-videos.md
+    - name: Vergleich von Azure Files und Azure NetApp Files
+      href: ../storage/files/storage-files-netapp-comparison.md

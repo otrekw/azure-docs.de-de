@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a08dfd1771ab0a8f866ffad1faa2c7d867b3072
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225624"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075499"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Regionsübergreifender Lastenausgleich (Vorschau)
 
@@ -152,5 +152,5 @@ Regionsübergreifender Lastenausgleich, verwendet die [SLA](https://azure.micros
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Siehe [Tutorial: Erstellen eines regionsübergreifenden Lastenausgleichs im Azure-Portal](tutorial-cross-region-portal.md), um einen regionsübergreifenden Lastenausgleich zu erstellen.
-- Informationen zum Erstellen einen standardmäßigen regionsbezogenen Lastenausgleichs finden Sie unter [Erstellen eines öffentlichen Standardlastenausgleichs](quickstart-load-balancer-standard-public-portal.md).
+- Hier erfahren Sie mehr über [den regionsübergreifenden Lastenausgleich](https://www.youtube.com/watch?v=3awUwUIv950).
 - Weitere Informationen zu [Azure Load Balancer](load-balancer-overview.md).

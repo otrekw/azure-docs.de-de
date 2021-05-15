@@ -1,19 +1,19 @@
 ---
 title: 'Herstellen zu einem VNet mit dem P2S-VPN und mehreren Authentifizierungstypen: Portal'
 titleSuffix: Azure VPN Gateway
-description: Stellen Sie über P2S unter Verwendung mehrerer Authentifizierungstypen im Azure-Portal eine Verbindung zu einem VNet her.
+description: Erfahren Sie, wie Sie über P2S unter Verwendung mehrerer Authentifizierungstypen eine Verbindung zu einem VNet herstellen.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: d405f4b10808b7d39c0d116f2c9006c85532b4f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8141d44aa4da394726d8c45a1f8514bdcaac09aa
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743437"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229376"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-multiple-authentication-types-azure-portal"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung mit einem VNet mithilfe mehrerer Authentifizierungstypen: Azure-Portal
 

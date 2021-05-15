@@ -11,18 +11,20 @@
   items:
     - name: Erste Schritte bei der Entwicklung von Geräteanwendungen
       items:
-        - name: Senden von Telemetriedaten an IoT Central (Python)
-          href: quickstart-send-telemetry-python.md
-        - name: Senden von Telemetriedaten an IoT Hub (Python)
-          href: quickstart-send-telemetry-cli-python.md
-        - name: Senden von Telemetriedaten an IoT Hub (Node)
-          href: quickstart-send-telemetry-cli-node.md
+        - name: "Senden von Telemetriedaten an IoT\_Central"
+          href: quickstart-send-telemetry-central.md
+        - name: "Senden von Telemetriedaten an IoT\_Hub"
+          href: quickstart-send-telemetry-iot-hub.md
     - name: Erste Schritte bei der eingebetteten Entwicklung
-      href: quickstart-device-development.md
+      items:
+        - name: Schnellstartanleitungen für die Entwicklung eingebetteter Geräte
+          href: quickstart-device-development.md
+        - name: "Verbinden eines MXCHIP\_AZ3166 mit IoT\_Central"
+          href: quickstart-devkit-mxchip-az3166.md
 - name: Tutorials
   items:
     - name: Sicheres Verknüpfen von IoT-Geräten mit der Cloud
-      href: /learn/paths/securely-connect-iot-devices/
+      href: /learn/paths/securely-connect-iot-devices/?wt.mc_id=iothub_connect_docs_tutorials
 - name: Konzepte
   items:
     - name: Verbindungsoptionen für Geräteentwickler
@@ -76,7 +78,7 @@
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-develop/toc.json&bc=/azure/iot-develop/breadcrumb/toc.json
     - name: "Azure\_IoT-Beispiele"
       items:
         - name: C# (.NET)
@@ -90,7 +92,7 @@
         - name: iOS-Plattform
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: Katalog mit Azure Certified for IoT-Geräten
-      href: 'https://catalog.azureiotsolutions.com/'
+      href: 'https://devicecatalog.azure.com/'
     - name: Azure IoT Developer Center
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure-Roadmap

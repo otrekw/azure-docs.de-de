@@ -43,10 +43,10 @@
           displayName: 'azure stack, ash, windows, linux, hybrid, arc'
           href: quickstart-onboard-machines.md
         - name: Verbinden von AWS-Konten
-          displayName: 'hybrid, multicloud, amazon, arc'
+          displayName: 'hybrid, multicloud, multi-cloud, amazon, arc'
           href: quickstart-onboard-aws.md
         - name: Verbinden von GCP-Konten
-          displayName: 'hybrid, multicloud, google'
+          displayName: 'hybrid, multicloud, multi-cloud, google'
           href: quickstart-onboard-gcp.md
     - name: 6. Erstellen von automatischen Antworten auf Warnungen
       displayName: 'Resource Manager, ARM'
@@ -66,6 +66,8 @@
       href: security-center-compliance-dashboard.md
     - name: Verwalten von Sicherheitsrichtlinien
       href: tutorial-security-policy.md
+    - name: Untersuchen der Integrität Ihrer Ressourcen
+      href: investigate-resource-health.md
 - name: Konzepte
   items:
     - name: Konzepte von Cloud Security Posture Management
@@ -108,7 +110,10 @@
         - name: Automatisieren von Reaktionen auf Empfehlungen
           displayName: workflow
           href: workflow-automation.md
-        - name: Ausschließen einer Ressource aus einer Empfehlung
+        - name: Deaktivieren einer Empfehlung
+          href: tutorial-security-policy.md#disable-security-policies-and-disable-recommendations
+        - name: 'Ausnehmen von Empfehlungen pro Ressource, Abonnement oder Verwaltungsgruppe'
+          displayName: disable
           href: exempt-resource.md
         - name: Erstellen von benutzerdefinierten Sicherheitsinitiativen und -richtlinien
           href: custom-security-policies.md
@@ -141,7 +146,7 @@
               displayName: 'jit, management, ports'
               href: security-center-just-in-time.md
         - name: Verwenden der integrierten Microsoft Defender for Endpoint-Lizenz
-          displayName: 'ATP, mdatp, wdatp'
+          displayName: 'ATP, mdatp, wdatp, mde, mdfe'
           href: security-center-wdatp.md
         - name: Definieren von Listen mit sicheren Anwendungen für Computer
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
@@ -195,6 +200,9 @@
         - name: Deaktivieren bestimmter ermittelter Sicherheitsrisiken bei Images
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md#disable-specific-findings-preview
+        - name: "Schützen von Kubernetes-Clustern mit Azure\_Arc-Unterstützung"
+          displayName: 'k8s, containers, aks, hybrid, arc, azure arc, multicloud'
+          href: defender-for-kubernetes-azure-arc.md
         - name: Schützen Ihrer Kubernetes-Workloads
           displayName: 'k8s, containers, aks'
           href: kubernetes-workload-protections.md
@@ -233,7 +241,8 @@
       href: security-center-partner-integration.md
     - name: Schützen von Netzwerkressourcen
       href: security-center-network-recommendations.md
-    - name: Schützen von Identität und Zugriff
+    - name: Erzwingen und Verwalten der MFA
+      displayName: 'identity, access, AAD, active directory, multi-factor, authentication, multifactor, users, passwords'
       href: security-center-identity-access.md
     - name: Verwenden des zusätzlichen Bedrohungsschutzes von Security Center
       href: other-threat-protections.md
@@ -288,7 +297,7 @@
     - name: Dokumentation zu den REST-APIs
       href: /rest/api/securitycenter/
     - name: Sicherheitsbaseline
-      href: security-baseline.md
+      href: /security/benchmark/azure/baselines/security-center-security-baseline?toc=/azure/security-center/TOC.json
     - name: Häufig gestellte Fragen zu Azure Security Center
       items:
         - name: Allgemeine Fragen
@@ -308,6 +317,8 @@
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 'Endpoint Protection: Bewertung und Empfehlungen'
       href: security-center-endpoint-protection.md
+    - name: Azure CLI
+      href: /cli/azure/security
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

@@ -94,9 +94,9 @@
               href: google-federation.md
             - name: Facebook-Verbund
               href: facebook-federation.md
-            - name: Direkter Verbund
+            - name: SAML-/WS-Fed-IdP-Verbund
               href: direct-federation.md
-            - name: Beispiel eines direkten Verbunds mit AD FS
+            - name: "Beispiel für einen SAML-/WS-Fed-IdP-Verbund (AD\_FS)"
               href: direct-federation-adfs.md
         - name: Aktivieren von Einmalkennungen
           href: one-time-passcode.md
@@ -114,13 +114,11 @@
               href: self-service-sign-up-add-approvals.md
         - name: Verwalten von Gastbenutzerkonten
           items:
-            - name: Hinzufügen eines B2B-Benutzers zu einer Rolle
-              href: add-guest-to-role.md
             - name: Dynamische Gruppen und B2B-Benutzer
               href: use-dynamic-groups.md
             - name: Grundlegendes zu B2B-Benutzern
               href: user-properties.md
-            - name: Zurücksetzen des Einlösungsstatus
+            - name: Zurücksetzen des Einlösungsstatus (Vorschau)
               href: reset-redemption-status.md
             - name: B2B für integrierte Azure AD-Apps
               href: configure-saas-apps.md

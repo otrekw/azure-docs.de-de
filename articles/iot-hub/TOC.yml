@@ -84,8 +84,26 @@
       href: tutorial-firmware-update.md
     - name: Testen der Gerätekonnektivität
       href: tutorial-connectivity.md
+    - name: Verwenden von X.509-Zertifikaten
+      items:
+        - name: Einführung
+          href: tutorial-x509-introduction.md
+        - name: Zertifikatfelder
+          href: tutorial-x509-certificates.md
+        - name: Verwenden der bereitgestellten Skripts
+          href: tutorial-x509-scripts.md
+        - name: Verwenden von OpenSSL
+          href: tutorial-x509-openssl.md
+        - name: Erstellen selbstsignierter Zertifikate
+          href: tutorial-x509-self-sign.md
+        - name: Nachweisen des Besitzes
+          href: tutorial-x509-prove-possession.md
+        - name: Testen der Authentifizierung
+          href: tutorial-x509-test-certificate.md
 - name: Konzepte
   items:
+    - name: Unterstützung für verwaltete Identitäten
+      href: iot-hub-managed-identity.md
     - name: TLS-Unterstützung
       href: iot-hub-tls-support.md
     - name: VNET-Unterstützung
@@ -146,7 +164,13 @@
         - name: Verwalten von Geräteidentitäten
           href: iot-hub-devguide-identity-registry.md
         - name: Verwalten des Zugriffs auf IoT Hub
-          href: iot-hub-devguide-security.md
+          items:
+            - name: Übersicht
+              href: iot-hub-devguide-security.md
+            - name: "Steuern des Zugriffs mit Azure\_AD"
+              href: iot-hub-dev-guide-azure-ad-rbac.md
+            - name: Steuern des Zugriffs mit SAS
+              href: iot-hub-dev-guide-sas.md
         - name: Grundlegendes zu Gerätezwillingen
           href: iot-hub-devguide-device-twins.md
         - name: Grundlegendes zu Modulzwillingen
@@ -175,12 +199,10 @@
               href: iot-hub-mqtt-5-reference.md
         - name: AMQP-Unterstützung
           href: iot-hub-amqp-support.md
-        - name: Glossar
-          href: iot-hub-devguide-glossary.md
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/iot-hub-security-baseline?toc=/azure/iot-hub/TOC.json
         - name: Empfehlungen
           href: ../iot-fundamentals/security-recommendations.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Sicherheit von Anfang an
@@ -321,8 +343,6 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: Mithilfe der Azure-Befehlszeilenschnittstelle
               href: iot-hub-configure-file-upload-cli.md
-        - name: Schützen Ihres Hubs mit einem x. 509-Zertifikat
-          href: iot-hub-security-x509-get-started.md
         - name: Upgrade eines IoT Hubs
           href: iot-hub-upgrade.md
         - name: Konfigurieren der IP-Filterung
@@ -382,26 +402,26 @@
               href: iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md
             - name: Überwachen des magnetischen Sensors und Senden von E-Mail-Benachrichtigungen mit Azure Functions
               href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
-        - name: Erweiterte IoT-Szenarien
-          items:
-            - name: Verwalten von Cloud-zu-Gerät-Nachrichten mit Azure IoT-Tools für VS Code
-              href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
-            - name: Verwalten von Cloud-zu-Gerät-Nachrichten mit dem Cloud-Explorer für Visual Studio
-              href: iot-hub-visual-studio-cloud-device-messaging.md
-            - name: Datenvisualisierung in Power BI
-              href: iot-hub-live-data-visualization-in-power-bi.md
-            - name: Datenvisualisierung in einer Web-App
-              href: iot-hub-live-data-visualization-in-web-apps.md
-            - name: Wettervorhersage mit Azure Machine Learning
-              href: iot-hub-weather-forecast-machine-learning.md
-            - name: Geräteverwaltung mit Azure IoT-Tools für VS Code
-              href: iot-hub-device-management-iot-toolkit.md
-            - name: Geräteverwaltung mit dem Cloud-Explorer für Visual Studio
-              href: iot-hub-device-management-visual-studio.md
-            - name: Geräteverwaltung mit IoT-Erweiterung für Azure CLI
-              href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
-            - name: Remoteüberwachung und Benachrichtigungen mit Logic Apps
-              href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
+    - name: Erweiterte IoT-Szenarien
+      items:
+        - name: Verwalten von Cloud-zu-Gerät-Nachrichten mit Azure IoT-Tools für VS Code
+          href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
+        - name: Verwalten von Cloud-zu-Gerät-Nachrichten mit dem Cloud-Explorer für Visual Studio
+          href: iot-hub-visual-studio-cloud-device-messaging.md
+        - name: Datenvisualisierung in Power BI
+          href: iot-hub-live-data-visualization-in-power-bi.md
+        - name: Datenvisualisierung in einer Web-App
+          href: iot-hub-live-data-visualization-in-web-apps.md
+        - name: Wettervorhersage mit Azure Machine Learning
+          href: iot-hub-weather-forecast-machine-learning.md
+        - name: Geräteverwaltung mit Azure IoT-Tools für VS Code
+          href: iot-hub-device-management-iot-toolkit.md
+        - name: Geräteverwaltung mit dem Cloud-Explorer für Visual Studio
+          href: iot-hub-device-management-visual-studio.md
+        - name: Geräteverwaltung mit IoT-Erweiterung für Azure CLI
+          href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
+        - name: Remoteüberwachung und Benachrichtigungen mit Logic Apps
+          href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
     - name: Problembehandlung und Problemlösung
       items:
         - name: Getrennte Geräteverbindungen
@@ -496,7 +516,9 @@
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-hub/toc.json&bc=/azure/iot-hub/breadcrumb/toc.json
+    - name: IoT-Glossar
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-hub/toc.json&bc=/azure/iot-hub/breadcrumb/toc.json
     - name: Azure IoT-Dienste
       items:
         - name: IoT Hub
@@ -533,8 +555,8 @@
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
         - name: iOS-Plattform
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
-    - name: Katalog mit Azure Certified for IoT-Geräten
-      href: 'https://catalog.azureiotsolutions.com/'
+    - name: Azure Certified Device-Katalog
+      href: 'https://devicecatalog.azure.com/'
     - name: Azure IoT Developer Center
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Kundendatenanforderungen

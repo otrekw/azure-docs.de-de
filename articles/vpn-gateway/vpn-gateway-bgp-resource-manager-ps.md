@@ -1,6 +1,7 @@
 ---
-title: 'Azure-VPN Gateway: BGP konfigurieren: PowerShell'
-description: Dieser Artikel führt Sie durch die Konfiguration von BGP mit Azure VPN Gateways mithilfe von Azure Resource Manager-Manager und PowerShell.
+title: Konfigurieren von BGP für VPN Gateway mit PowerShell
+titleSuffix: Azure VPN Gateway
+description: Erfahren Sie, wie Sie BGP für VPN Gateways mithilfe von PowerShell konfigurieren.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -8,17 +9,16 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8573d9e55299382392927b532966a6e6fdd8c439
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e41fe8bf77c2177deb064e13cf9d3efeef4027db
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94659759"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291260"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Konfigurieren von BGP für Azure VPN Gateways mithilfe von PowerShell
-Dieser Artikel beschreibt die Schritte zum Aktivieren von BGP auf einer standortübergreifenden Site-to-Site (S2)-VPN-Verbindung und einer VNet-to-VNet-Verbindung mithilfe des Resource Manager-Bereitstellungsmodells und PowerShell.
 
-
+Dieser Artikel beschreibt die Schritte zum Aktivieren von BGP für eine standortübergreifende Site-to-Site-VPN-Verbindung (S2S) und eine VNET-zu-VNET-Verbindung über PowerShell.
 
 ## <a name="about-bgp"></a>Informationen zu BGP
 BGP ist das standardmäßige Routingprotokoll, mit dem im Internet üblicherweise Routing- und Erreichbarkeitsinformationen zwischen mehren Netzwerken ausgetauscht werden. Azure VPN Gateways und Ihre lokalen VPN-Geräte (so genannte BGP-Peers oder Nachbarn) können über BGP Routen austauschen, die beide Gateways über die Verfügbarkeit und Erreichbarkeit der Präfixe informieren, welche die beteiligten Gateways oder Router durchlaufen. BGP ermöglicht auch Transitrouting zwischen mehreren Netzwerken. Hierzu werden von einem BGP-Gateway ermittelte Routen eines BGP-Peers an alle anderen BGP-Peers weitergegeben.

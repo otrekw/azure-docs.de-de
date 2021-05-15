@@ -1,18 +1,19 @@
 ---
-title: Informationen zu Azure-Point-to-Site-VPN-Verbindungen | VPN Gateway
-description: Dieser Artikel enthält Informationen zu P2S-Verbindungen (Point-to-Site) und erleichtert Ihnen die Entscheidung, welcher P2S-VPN-Gateway-Authentifizierungstyp verwendet werden sollte.
+title: Informationen zu Azure-Point-to-Site-VPN-Verbindungen
+titleSuffix: Azure VPN Gateway
+description: Erfahren Sie mehr über Point-to-Site-Verbindungen und darüber, welcher P2S-VPN Gateway-Authentifizierungstyp verwendet werden sollte.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 6caf72884ce2566ad25b7dd6d80b15d737bbe664
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c7c9d1ad6aefe9fc05b77925ee6bbf4160b988d8
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543583"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202405"
 ---
 # <a name="about-point-to-site-vpn"></a>Informationen zu Point-to-Site-VPN
 

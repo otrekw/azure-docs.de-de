@@ -20,6 +20,8 @@
       href: walkthrough-exchange-all.md
     - name: "Exemplarische Vorgehensweise für Peering\_Service-Partner"
       href: walkthrough-peering-service-all.md
+    - name: "Exemplarische Vorgehensweise für Communications\_Services-Partner"
+      href: walkthrough-communications-services-partner.md
     - name: Zuordnen der Peer-ASN zum Azure-Abonnement
       items:
         - name: Portal

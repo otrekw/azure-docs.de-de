@@ -9,12 +9,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: 06c6b14d62bb471ecc6dee50d72f11469e3cd161
-  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.openlocfilehash: 25c96daa5bdebb07eb868a5e2d5b574e14e38d96
+  ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100633205"
+  ms.lasthandoff: 04/16/2021
+  ms.locfileid: "107535612"
 landingContent:
 - title: Informationen zu Azure Red Hat OpenShift
   linkLists:
@@ -26,23 +26,27 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Erstellen eines Azure Red Hat OpenShift 4-Clusters
+    - text: Erstellen eines Azure Red Hat OpenShift-Clusters
       url: tutorial-create-cluster.md
     - text: Herstellen einer Verbindung mit einem Azure Red Hat OpenShift 4-Cluster
       url: tutorial-connect-cluster.md
-    - text: Löschen eines Azure Red Hat OpenShift 4-Clusters
+    - text: Löschen eines Azure Red Hat OpenShift-Clusters
       url: tutorial-delete-cluster.md
 - title: Einrichten
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Erstellen eines privaten Azure Red Hat OpenShift 4-Clusters
-      url: ./howto-create-private-cluster-3x.md
-    - text: Konfigurieren der DNS-Weiterleitung für einen Azure Red Hat OpenShift 4-Cluster
+    - text: Erstellen eines privaten Azure Red Hat OpenShift-Clusters
+      url: ./howto-create-private-cluster-4x.md
+    - text: Konfigurieren der DNS-Weiterleitung für einen Azure Red Hat OpenShift-Cluster
       url: dns-forwarding.md
-    - text: Konfigurieren der integrierten Containerregistrierung für Azure Red Hat OpenShift 4
+    - text: Konfigurieren der integrierten Containerregistrierung für Azure Red Hat OpenShift
       url: built-in-container-registry.md
-    - text: Bereitstellen einer Open Liberty-/WebSphere Liberty-Anwendung in Azure Red Hat OpenShift 4-Clustern
+    - text: Bereitstellen einer Anwendung aus der Quelle
+      url: howto-deploy-with-s2i.md
+    - text: Bereitstellen einer Anwendung mithilfe von OpenShift Serverless
+      url: howto-deploy-with-serverless.md
+    - text: Bereitstellen einer Open Liberty-/WebSphere Liberty-Anwendung in einem Azure Red Hat OpenShift-Cluster
       url: howto-deploy-java-liberty-app.md
 - title: Verweis
   linkLists:

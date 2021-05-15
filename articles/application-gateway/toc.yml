@@ -83,13 +83,15 @@
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/application-gateway-security-baseline?toc=/azure/application-gateway/toc.json
     - name: SSL
       items:
         - name: SSL-Terminierung und End-to-End-SSL
           href: ssl-overview.md
         - name: Übersicht über SSL-Richtlinien
           href: application-gateway-ssl-policy-overview.md
+        - name: Gegenseitige Authentifizierung
+          href: mutual-authentication-overview.md
         - name: Verwenden von Key Vault
           href: key-vault-certs.md
     - name: Eingang für AKS
@@ -140,18 +142,28 @@
               href: end-to-end-ssl-portal.md
             - name: 'End-to-End-SSL: PowerShell'
               href: application-gateway-end-to-end-ssl-powershell.md
+        - name: Gegenseitige Authentifizierung
+          items:
+            - name: 'Gegenseitige Authentifizierung: Portal'
+              href: mutual-authentication-portal.md
+            - name: 'Gegenseitige Authentifizierung: PowerShell'
+              href: mutual-authentication-powershell.md
         - name: Verwalten von Zertifikaten
           items:
             - name: Zertifikate für das Back-End
               href: certificates-for-backend-authentication.md
             - name: Erneuern von Zertifikaten
               href: renew-certificates.md
-            - name: Generieren selbstsignierter Zertifikate
+            - name: Generieren selbstsignierter Zertifikate für das Back-End
               href: self-signed-certificates.md
+            - name: Vertrauenswürdige Clientzertifikate
+              href: mutual-authentication-certificate-management.md
         - name: SSL-Richtlinie
           items:
             - name: Konfigurieren einer SSL-Richtlinie
               href: application-gateway-configure-ssl-policy-powershell.md
+            - name: Listenerspezifische SSL-Richtlinie
+              href: application-gateway-configure-listener-specific-ssl-policy.md
     - name: Eingang für AKS
       items:
         - name: Eingang für AKS über Helm (Brownfield)
@@ -254,6 +266,8 @@
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
         - name: Fehler vom Typ „Ungültiges Gateway“ (502)
           href: application-gateway-troubleshooting-502.md
+        - name: Gegenseitige Authentifizierung
+          href: mutual-authentication-troubleshooting.md
         - name: Eingang für AKS
           href: ingress-controller-troubleshoot.md
         - name: Resource Health

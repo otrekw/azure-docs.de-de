@@ -27,6 +27,10 @@
       href: tutorial-connect-virtual-networks-portal.md
     - name: Erstellen und Überprüfen eines NAT-Gateways
       href: tutorial-create-nat-gateway-portal.md
+    - name: "Integrieren des öffentlichen Lastenausgleichs von NAT\_Gateway"
+      href: tutorial-nat-gateway-load-balancer-public-portal.md
+    - name: "Integrieren des internen Lastenausgleichs von NAT\_Gateway"
+      href: tutorial-nat-gateway-load-balancer-internal-portal.md
 - name: Beispiele
   items:
     - name: Azure CLI
@@ -100,13 +104,13 @@
         - name: Routing Preference Unmetered
           href: routing-preference-unmetered.md
         - name: Sicherheitsbaseline für öffentliche IP-Adressen
-          href: public-ip-security-baseline.md
+          href: /security/benchmark/azure/baselines/public-ip-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
     - name: Sicherheit
       items:
         - name: Virtual Network-Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-network-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
         - name: Virtual Network NAT-Sicherheitsbaseline
-          href: nat-security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-network-nat-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
         - name: Netzwerkisolation von Azure-Diensten
           href: vnet-integration-for-azure-services.md
         - name: Netzwerksicherheitsgruppen
@@ -409,17 +413,13 @@
               href: move-across-regions-publicip-powershell.md
     - name: NAT
       items:
-        - name: "Erstellen einer NAT\_Gateway-Instanz: PowerShell"
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: "Erstellen einer NAT\_Gateway-Instanz: CLI"
-          href: quickstart-create-nat-gateway-cli.md
+        - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: PowerShell"
+          href: tutorial-create-nat-gateway-powershell.md
+        - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: CLI"
+          href: tutorial-create-nat-gateway-cli.md
         - name: "Erstellen einer NAT\_Gateway-Instanz: ARM-Vorlage"
           displayname: Resource Manager
           href: quickstart-create-nat-gateway-template.md
-        - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: PowerShell"
-          href: tutorial-create-validate-nat-gateway-powershell.md
-        - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: CLI"
-          href: tutorial-create-validate-nat-gateway-cli.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen mit dem Peering virtueller Netzwerke
@@ -453,7 +453,7 @@
 - name: Verweis
   items:
     - name: Azure CLI
-      href: /cli/azure/network
+      href: /cli/azure/azure-cli-reference-for-network
     - name: Azure PowerShell
       href: /powershell/module/az.network
     - name: .NET

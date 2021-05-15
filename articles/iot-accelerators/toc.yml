@@ -17,28 +17,16 @@
           href: overview-opc-publisher.md
         - name: Was ist die verbundene Factory?
           href: iot-accelerators-connected-factory-features.md
-    - name: Gerätesimulation
-      href: iot-accelerators-device-simulation-overview.md
 - name: Schnellstarts
   items:
     - name: Testen einer Lösung für verbundene Factorys
       href: quickstart-connected-factory-deploy.md
-    - name: Bereitstellen des Solution Accelerators für die Gerätesimulation
-      href: 'https://github.com/Azure/device-simulation-dotnet/blob/master/README.md'
   expanded: true
-- name: Tutorials
-  items:
-    - name: Gerätesimulation
-      items:
-        - name: Erstellen und Ausführen einer Simulation
-          href: iot-accelerators-device-simulation-create-simulation.md
-        - name: Erstellen eines benutzerdefinierten simulierten Geräts
-          href: iot-accelerators-device-simulation-create-custom-device.md
 - name: Konzepte
   items:
     - name: Industrielles IoT
       items:
-        - name: Architektur für OPC-Zwillinge
+        - name: "OPC\_Twin-Architektur"
           href: overview-opc-twin-architecture.md
         - name: "OPC\_Vault-Architektur"
           href: overview-opc-vault-architecture.md
@@ -78,20 +66,12 @@
               href: howto-opc-publisher-configure.md
             - name: Ausführen von OPC Publisher
               href: howto-opc-publisher-run.md
-    - name: Gerätesimulation
-      items:
-        - name: Vorhandenen IoT Hub verwenden
-          href: iot-accelerators-device-simulation-choose-hub.md
-        - name: Erstellen eines erweiterten simulierten Geräts
-          href: iot-accelerators-device-simulation-advanced-device.md
-        - name: Visualisieren von Telemetriedaten mit Time Series Insights
-          href: iot-accelerators-device-simulation-time-series-insights.md
-        - name: Serialisieren von Telemetrie mithilfe von Protobuf
-          href: iot-accelerators-device-simulation-protobuf.md
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: IoT-Glossar
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
     - name: Azure IoT-Dienste
       items:
         - name: IoT Hub
@@ -120,20 +100,16 @@
       items:
         - name: GitHub-Repository
           href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: 'Verbundene Factory: Häufig gestellte Fragen'
-          href: iot-accelerators-faq-cf.md
-    - name: Gerätesimulation
-      items:
-        - name: Referenzhandbuch für Entwickler
-          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
-        - name: GitHub-Repository
-          href: 'https://github.com/Azure/device-simulation-dotnet'
     - name: Referenzarchitektur
       href: /azure/architecture/reference-architectures/iot
       items:
         - name: Herunterladen
           href: /azure/architecture/reference-architectures/iot
     - name: Häufig gestellte Fragen
-      href: iot-accelerators-faq.md
+      items:
+        - name: Häufig gestellte Fragen zu Solution Accelerators
+          href: iot-accelerators-faq.md
+        - name: 'Verbundene Factory: Häufig gestellte Fragen'
+          href: iot-accelerators-faq-cf.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'

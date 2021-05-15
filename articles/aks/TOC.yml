@@ -51,7 +51,7 @@
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/aks-security-baseline?context=/azure/aks/context/aks-context
         - name: Sicherheit für Anwendungen und Cluster
           href: concepts-security.md
         - name: Sicherheitskontrollen von Azure Policy
@@ -136,8 +136,10 @@
       items:
         - name: Skalieren eines AKS-Clusters
           href: scale-cluster.md
-        - name: Beenden eines AKS-Clusters (Vorschauversion)
+        - name: Beenden eines AKS-Clusters
           href: start-stop-cluster.md
+        - name: Verwenden der geplanten Wartung (Vorschau)
+          href: planned-maintenance.md
         - name: Aktualisieren eines AKS-Clusters
           href: upgrade-cluster.md
         - name: Verwenden einer Betriebszeit-SLA
@@ -207,6 +209,8 @@
               href: azure-disk-csi.md
             - name: Azure Files-CSI-Treiber (Vorschau)
               href: azure-files-csi.md
+            - name: Secrets Store CSI-Treiber (Vorschau)
+              href: csi-secrets-store-driver.md
     - name: Konfigurieren der Netzwerkeinstellungen
       items:
         - name: Erstellen oder Verwenden eines vorhandenen virtuellen Netzwerks
@@ -268,7 +272,7 @@
           href: use-pod-security-policies.md
         - name: Definieren der vom API-Server autorisierten IP-Bereiche
           href: api-server-authorized-ip-ranges.md
-        - name: Steuern von Bereitstellungen mit Azure Policy (Vorschauversion)
+        - name: Grundlegendes zu Azure Policy für Azure Kubernetes Service
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: Aktualisieren von Clusteranmeldeinformationen
           href: update-credentials.md
@@ -293,6 +297,8 @@
           href: enable-host-encryption.md
     - name: Überwachung und Protokollierung
       items:
+        - name: Anzeigen von Clustermetriken
+          href: view-metrics.md
         - name: Azure Monitor für Container
           href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
@@ -347,6 +353,8 @@
       items:
         - name: Informationen zu Dienstnetzen
           href: servicemesh-about.md
+        - name: Open Service Mesh AKS-Zusatzmodul (Vorschau)
+          href: servicemesh-osm-about.md
         - name: Verwenden von Istio
           items:
             - name: Informationen zu Istio

@@ -10,17 +10,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/08/2019
-ms.openlocfilehash: d9c1828732b9a4e0e85c3af2263f097edd54437d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c949579d23e3acfbecde3111534209151ed61ac
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91332847"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314551"
 ---
 # <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>Sicheres Verwenden von Azure SQL Managed Instance mit öffentlichen Endpunkten
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL Managed Instance kann Benutzerkonnektivität über [öffentliche Endpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md) bereitstellen. In diesem Artikel wird erläutert, wie Sie diese Konfiguration sicherer machen.
+Azure SQL Managed Instance kann Benutzerkonnektivität über [öffentliche Endpunkte](public-endpoint-configure.md) bereitstellen. In diesem Artikel wird erläutert, wie Sie diese Konfiguration sicherer machen.
 
 ## <a name="scenarios"></a>Szenarien
 
@@ -44,7 +44,7 @@ Das folgende Diagramm zeigt die empfohlenen Sicherheitskonfigurationen:
 
 ![Sicherheitskonfigurationen für das Sperren eingehender und ausgehender Konnektivität](./media/public-endpoint-overview/managed-instance-vnet.png)
 
-Eine verwaltete Instanz verfügt über eine [dedizierte öffentliche Endpunktadresse](management-endpoint-find-ip-address.md). Legen Sie für die clientseitige ausgehende Firewall und in den Netzwerksicherheitsgruppen-Regeln diese IP-Adresse des öffentlichen Endpunkts fest, um ausgehende Konnektivität zu beschränken.
+Eine verwaltete Instanz verfügt über eine öffentliche Endpunktadresse, die für einen Kunden dediziert ist. Dieser Endpunkt teilt die IP-Adresse mit dem [Verwaltungsendpunkt](management-endpoint-find-ip-address.md), verwendet jedoch einen anderen Port. Legen Sie für die clientseitige ausgehende Firewall und in den Netzwerksicherheitsgruppen-Regeln diese IP-Adresse des öffentlichen Endpunkts fest, um ausgehende Konnektivität zu beschränken.
 
 Um sicherzustellen, dass Datenverkehr zur verwalteten Instanz aus vertrauenswürdigen Quellen stammt, sollten nur Verbindungen mit Quellen mit bekannten IP-Adressen hergestellt werden. Verwenden Sie eine Netzwerksicherheitsgruppe, um den Zugriff auf den öffentlichen Endpunkt der verwalteten Instanz auf Port 3342 zu beschränken.
 

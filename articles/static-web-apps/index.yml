@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Static Web Apps
-summary: Mit Azure Static Web Apps können Sie moderne Webanwendungen erstellen, die nach Änderungen auf GitHub automatisch veröffentlicht werden.
+summary: Mit Azure Static Web Apps können Sie moderne Webanwendungen erstellen, die nach Codeänderungen automatisch im Web veröffentlicht werden.
 metadata:
   title: Dokumentation zu Azure Static Web Apps
-  description: Mit Azure Static Web Apps können Sie moderne Webanwendungen erstellen, die nach Änderungen auf GitHub automatisch veröffentlicht werden.
+  description: Mit Azure Static Web Apps können Sie moderne Webanwendungen erstellen, die nach Codeänderungen automatisch im Web veröffentlicht werden.
   ms.topic: landing-page
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
-  ms.date: 12/08/2020
-  ms.openlocfilehash: 880d675915a17e24269361c0ceed320a257d0ba9
-  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+  ms.date: 05/07/2021
+  ms.openlocfilehash: bcf07b325d18be53a15806f1a38cae5b61f13b41
+  ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96906130"
+  ms.lasthandoff: 05/12/2021
+  ms.locfileid: "109813108"
 landingContent:
 - title: Informationen zu Azure Static Web Apps
   linkLists:
@@ -26,14 +26,14 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
+    - text: Erstellen Ihrer ersten App ohne Framework
+      url: ./getting-started.md?tabs=vanilla-javascript
     - text: Erstellen Ihrer ersten Angular-App
       url: ./getting-started.md?tabs=angular
     - text: Erstellen Ihrer ersten React-App
       url: ./getting-started.md?tabs=react
     - text: Erstellen Ihrer ersten Vue-App
       url: ./getting-started.md?tabs=vue
-    - text: Erstellen Ihrer ersten App (ohne Framework)
-      url: ./getting-started.md?tabs=vanilla-javascript
   - linkListType: learn
     links:
     - text: Veröffentlichen einer Angular-, React-, Svelte- oder Vue-JavaScript-App
@@ -62,6 +62,10 @@ landingContent:
       url: deploy-nextjs.md
     - text: Bereitstellen über Nuxt.js
       url: deploy-nuxtjs.md
+    - text: Bereitstellen mit Azure DevOps
+      url: publish-devops.md
+    - text: Bereitstellen mit einer ARM-Vorlage
+      url: publish-azure-resource-manager.md
   - linkListType: learn
     links:
     - text: Veröffentlichen einer statischen Web-App mit Gatsby
@@ -72,11 +76,11 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Routen
-      url: routes.md
+    - text: Anwendungskonfiguration
+      url: configuration.md
     - text: Öffentliche APIs
       url: apis.md
-    - text: Staging
+    - text: Stagingumgebungen
       url: review-publish-pull-requests.md
     - text: Beschränken des Zugriffs
       url: authentication-authorization.md

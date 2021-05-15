@@ -27,6 +27,18 @@
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
     - name: 'JavaScript: SDK mit Formularerkennungs-Clientbibliothek'
       href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
+- name: Verantwortungsvolle Verwendung von KI
+  items:
+    - name: Transparenzhinweise
+      items:
+        - name: Anwendungsfälle für die Formularerkennung
+          href: /legal/cognitive-services/form-recognizer/fr-transparency-note?context=/azure/cognitive-services/form-recognizer/context/context
+        - name: Merkmale und Einschränkungen
+          href: /legal/cognitive-services/form-recognizer/fr-characteristics-and-limitations?context=/azure/cognitive-services/form-recognizer/context/context
+    - name: Integration und verantwortungsvolle Verwendung
+      href: /legal/cognitive-services/form-recognizer/fr-guidance-integration-responsible-use?context=/azure/cognitive-services/form-recognizer/context/context
+    - name: 'Daten, Datenschutz und Sicherheit'
+      href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/cognitive-services/form-recognizer/context/context
 - name: Anleitungen
   items:
     - name: Erstellen eines Trainingsdatasets

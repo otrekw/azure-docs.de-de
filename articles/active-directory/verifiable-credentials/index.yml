@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Active Directory-Nachweisen
+summary: Nachweise helfen Ihnen beim Erstellen von Lösungen, mit denen Kunden ihre eigenen Daten verwalten können.
+metadata:
+  author: barclayn
+  description: Hier erfahren Sie, wie Sie Nachweise in Ihre Lösungen integrieren, mit denen Kunden Informationen über sich selbst steuern können.
+  manager: daveba
+  ms.author: barclayn
+  ms.collection: na
+  ms.date: 03/30/2021
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 13eb88e8e8613c913f66185eba751a1fe3c36e1e
+  ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106176207"
+landingContent:
+- title: Informationen zu Nachweisen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Einführung in Azure Active Directory-Nachweise
+      url: decentralized-identifier-overview.md
+  - linkListType: video
+    links:
+    - text: Steuern des Zugriffs auf Ihre Ressourcen
+      url: https://www.youtube.com/watch?v=r20hCF9NbTo
+- title: Kontrolle über persönliche Informationen dank Nachweisen
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 'Erste Schritte: Nachweise'
+      url: get-started-verifiable-credentials.md
+  - linkListType: concept
+    links:
+    - text: Beispiele für die Kommunikation des Ausstellerdiensts
+      url: issuer-openid.md
+- title: Verknüpfen Ihrer DID
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verknüpfen Ihrer Domäne mit Ihrer dezentralisierten Identität
+      url: how-to-dnsbind.md

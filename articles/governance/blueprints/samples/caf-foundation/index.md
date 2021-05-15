@@ -1,14 +1,14 @@
 ---
 title: 'CAF-Basisblaupausenbeispiel: Übersicht'
 description: Übersicht und Architektur des Framework für die Cloudeinführung (Cloud Adoption Framework, CAF) für das Basisblaupausenbeispiel für Azure
-ms.date: 09/14/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: 77e8b79ec7cf217161099808cee4364e31c6d6dd
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: b605c1af5fcb2a37663d71fecceea169692a5ab9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950277"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757833"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Basisblaupausenbeispiel für Azure
 
@@ -19,7 +19,7 @@ Die Microsoft CAF-Basisblaupause (Cloud Adoption Framework) für Azure stellt ei
 Das CAF-Basisblaupausenbeispiel stellt empfohlene Infrastrukturressourcen in Azure bereit, mit denen Organisationen die grundlegenden Kontrollen einrichten können, die sie zur Verwaltung ihrer Cloudressourcen benötigen. In diesem Beispiel werden Ressourcen, Richtlinien und Vorlagen bereitgestellt und erzwungen, die Organisationen einen problemlosen Einstieg in Azure ermöglichen.
 
 :::image type="complex" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="CAF-Basis: Die Abbildung veranschaulicht, was im Rahmen des CAF-Leitfadens für die Erstellung einer Basis für den Einstieg in Azure installiert wird." border="false":::
-   Beschreibt eine Azure-Architektur, die durch Bereitstellen der CAF-Basisblaupause erreicht wird.  Dies gilt für ein Abonnement mit Ressourcengruppen, das aus einem Speicherkonto zum Speichern von Protokollen und einer für die Speicherung im Speicherkonto konfigurierten Log Analytics-Instanz besteht. Außerdem wird eine Azure Key Vault-Instanz dargestellt, die mit dem Azure Security Center-Standardsetup konfiguriert ist. Der Zugriff auf alle diese Kerninfrastrukturen erfolgt mithilfe von Azure Active Directory und wird mithilfe von Azure Policy erzwungen.     
+   Beschreibt eine Azure-Architektur, die durch Bereitstellen der CAF-Basisblaupause erreicht wird. Dies gilt für ein Abonnement mit Ressourcengruppen, das aus einem Speicherkonto zum Speichern von Protokollen und einer für die Speicherung im Speicherkonto konfigurierten Log Analytics-Instanz besteht. Außerdem wird eine Azure Key Vault-Instanz dargestellt, die mit dem Azure Security Center-Standardsetup konfiguriert ist. Der Zugriff auf alle diese Kerninfrastrukturen erfolgt mithilfe von Azure Active Directory und wird mithilfe von Azure Policy erzwungen.
 :::image-end:::
 
 Diese Implementierung umfasst mehrere Azure-Dienste, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Basis genutzt werden. Diese Umgebung besteht aus den folgenden Komponenten:
@@ -29,14 +29,14 @@ Diese Implementierung umfasst mehrere Azure-Dienste, die für die Bereitstellung
 - [Azure Security Center](../../../../security-center/security-center-introduction.md) (Standardversion) schützt Ihre migrierten Workloads vor Bedrohungen.
 - Von der Blaupause werden außerdem [Azure Policy](../../../policy/overview.md)-Definitionen definiert und bereitgestellt:
   - Richtliniendefinitionen:
-    - Tagging (CostCenter) für Ressourcengruppen
+    - Auf Ressourcengruppen angewendetes Tagging (CostCenter)
     - Anfügung des CostCenter-Tags an Ressourcen in der Ressourcengruppe
     - Zulässige Azure-Region für Ressourcen und Ressourcengruppen
     - Zulässige SKUs für Speicherkonten (werden bei der Bereitstellung ausgewählt)
     - Zulässige SKUs für virtuelle Azure-Computer (werden bei der Bereitstellung ausgewählt)
-    - Erzwingung der Bereitstellung von Network Watcher 
+    - Erzwingung der Bereitstellung von Network Watcher
     - Erzwingung der sicheren Übertragungsverschlüsselung für das Azure Storage-Konto
-    - Ablehnung von Ressourcentypen (werden bei der Bereitstellung ausgewählt)  
+    - Ablehnung von Ressourcentypen (werden bei der Bereitstellung ausgewählt)
   - Richtlinieninitiativen:
     - Aktivieren der Überwachung in Azure Security Center (über 100 Richtliniendefinitionen)
 

@@ -36,7 +36,7 @@
           href: connect-ios.md
         - name: "Herstellen einer Verbindung mit dem Microsoft\_Store-Client"
           href: connect-microsoft-store.md
-        - name: Herstellen einer Verbindung mit Linux-Geräten
+        - name: Herstellen einer Verbindung mit Thin Clients
           href: linux-overview.md
     - name: Konfigurieren von Geräteumleitungen
       href: configure-device-redirections.md
@@ -126,8 +126,14 @@
       href: disaster-recovery.md
     - name: Einrichten des KDC-Proxys
       href: key-distribution-center-proxy.md
-    - name: Einrichten der RD-Gatewayrolle
-      href: rd-gateway-role.md
+    - name: Starten von virtuellen Computern bei der Verbindungsherstellung
+      items:
+        - name: Einrichten des Startens von virtuellen Computern bei der Verbindungsherstellung
+          href: start-virtual-machine-connect.md
+        - name: Häufig gestellte Fragen zum Starten von virtuellen Computern bei der Verbindungsherstellung
+          href: start-virtual-machine-connect-faq.md
+    - name: Festlegen des Ausgleichsmodus
+      href: drain-mode.md
 - name: Konzepte
   items:
     - name: Integrierte Rollen
@@ -150,6 +156,8 @@
           href: safe-url-list.md
         - name: Bandbreitenaspekte
           href: rdp-bandwidth.md
+        - name: Richtlinien für die Proxyunterstützung
+          href: proxy-server-support.md
         - name: Bestimmen der Wartezeit für Benutzerverbindungen
           href: connection-latency.md
     - name: Delegierter Zugriff in Windows Virtual Desktop
@@ -160,12 +168,10 @@
       href: fslogix-containers-azure-files.md
     - name: Speicheroptionen für FSLogix-Profilcontainer
       href: store-fslogix-profile.md
-    - name: Partnerintegrationen
-      href: partners.md
     - name: Häufig gestellte Fragen zu Windows Virtual Desktop
       href: faq.md
     - name: "Häufig gestellte Fragen zu Windows\_10 Enterprise mit mehreren Sitzungen"
-      href: windows-10-multisession-faq.md
+      href: windows-10-multisession-faq.yml
     - name: MSIX-Feature zum Anfügen von Apps
       items:
         - name: Was ist das MSIX-Feature zum Anfügen von Apps?
@@ -181,7 +187,7 @@
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/windows-virtual-desktop-security-baseline?context=/azure/virtual-desktop/context/context
 - name: Problembehandlung
   items:
     - name: 'Problembehandlung: Übersicht, Feedback und Support'
@@ -210,12 +216,16 @@
       href: security-guide.md
     - name: Linux-Unterstützung
       href: linux-overview.md
+    - name: Azure CLI
+      href: /cli/azure/desktopvirtualization
+    - name: Azure-Monitor-Kosten abschätzen
+      href: azure-monitor-costs.md
     - name: Unterstützte RDP-Dateieinstellungen
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
     - name: Leitfaden zur VM-Größe
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure-Befehlszeilenschnittstelle (CLI)
-      href: /cli/azure/ext/desktopvirtualization/
+      href: /cli/azure/
     - name: Azure-Beispielszenarien
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
     - name: E-Mail-Ermittlung
@@ -236,9 +246,11 @@
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: Supportgruppe der technischen Community
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
-    - name: UserVoice-Forum
-      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'
     - name: "Microsoft\_365: Roadmap"
       href: 'https://aka.ms/wvdroadmap'
     - name: Azure-Ressourcen-Manager-Vorlagen
       href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'
+    - name: Complianceangebote von Azure
+      href: 'https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/'
+    - name: Azure Advisor
+      href: ../advisor/advisor-overview.md

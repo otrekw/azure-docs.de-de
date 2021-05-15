@@ -7,9 +7,7 @@
       href: overview.md
     - name: Welche MySQL-Option sollte ich auswählen?
       href: select-right-deployment-type.md
-    - name: Unterstützte Versionen
-      href: concepts-supported-versions.md
-    - name: Versioning policy (Versionsverwaltungsrichtlinie)
+    - name: Richtlinie zur Versionsunterstützung
       href: concepts-version-policy.md
       displayName: version policy
 - name: Einzelner Server
@@ -21,6 +19,10 @@
       items:
         - name: Was ist Single Server?
           href: single-server-overview.md
+        - name: Unterstützte Versionen
+          href: concepts-supported-versions.md
+        - name: Neues in Single Server
+          href: single-server-whats-new.md
         - name: Tarife
           items:
             - name: Tarife
@@ -178,7 +180,7 @@
         - name: Sicherheitsübersicht
           href: concepts-security.md
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/mysql-security-baseline?toc=/azure/mysql/TOC.json
         - name: Authentifizierung
           items:
             - name: Azure AD-Authentifizierung
@@ -376,6 +378,8 @@
         - name: Empfehlungen zur Leistung
           href: concepts-performance-recommendations.md
           displayName: recommendation
+        - name: "Azure\_Advisor-Empfehlungen"
+          href: concepts-azure-advisor-recommendations.md
     - name: Empfehlungen
       items:
         - name: Bewährte Methoden für die Überwachung
@@ -387,23 +391,6 @@
           displayName: application
         - name: Bewährte Methoden für den Betrieb
           href: concept-operation-excellence-best-practices.md
-    - name: Problembehandlung
-      items:
-        - name: Problembehandlung der Abfrageleistung
-          href: howto-troubleshoot-query-performance.md
-          displayName: 'debug, performance issues, query performance'
-        - name: Verwenden von Ansichten im Systemschema
-          href: howto-troubleshoot-sys-schema.md
-          displayName: 'sys schema, views'
-        - name: Problembehandlung für Datenverschlüsselung
-          href: howto-data-encryption-troubleshoot.md
-          displayName: 'encryption, security'
-        - name: Behandeln von Problemen mit der Replikationswartezeit
-          href: howto-troubleshoot-replication-latency.md
-          displayName: 'replication, latency, monitor'
-        - name: Minimieren der Datenbeschädigung
-          href: how-to-fix-corrupt-database.md
-          displayName: corrupt data
 - name: Flexible Server (Vorschau)
   items:
     - name: Dokumentation zu Flexible Server
@@ -412,8 +399,6 @@
       items:
         - name: Was ist Flexible Server?
           href: flexible-server/overview.md
-        - name: Unterstützte Versionen
-          href: concepts-supported-versions.md
         - name: Compute und Speicher
           href: flexible-server/concepts-compute-storage.md
     - name: Schnellstarts
@@ -483,6 +468,8 @@
           href: flexible-server/how-to-stop-start-server-portal.md
         - name: Neustarten des Servers über das Azure-Portal
           href: flexible-server/how-to-restart-server-portal.md
+        - name: "Starten/Beenden/Neustarten mit der Azure\_CLI"
+          href: flexible-server/how-to-restart-stop-start-server-cli.md
     - name: Netzwerk
       items:
         - name: Konzepte
@@ -514,6 +501,8 @@
           href: flexible-server/concepts-high-availability.md
         - name: Konfigurieren von Hochverfügbarkeit über das Azure-Portal
           href: flexible-server/how-to-configure-high-availability.md
+        - name: "Konfigurieren von Hochverfügbarkeit mit der Azure\_CLI"
+          href: flexible-server/how-to-configure-high-availability-cli.md
     - name: Überwachung und Protokolle
       items:
         - name: Konzepte
@@ -524,12 +513,16 @@
               href: flexible-server/concepts-slow-query-logs.md
             - name: Konfigurieren von Protokollen für langsame Abfragen über das Azure-Portal
               href: flexible-server/how-to-configure-slow-query-logs-portal.md
+            - name: "Konfigurieren von Protokollen für langsame Abfragen mit der Azure\_CLI"
+              href: flexible-server/how-to-configure-slow-query-log-cli.md
         - name: Überwachungsprotokolle
           items:
             - name: Konzepte
               href: flexible-server/concepts-audit-logs.md
             - name: Konfigurieren von Überwachungsprotokollen
               href: flexible-server/how-to-configure-audit-logs-portal.md
+            - name: "Konfigurieren von Überwachungsprotokollen mit der Azure\_CLI"
+              href: flexible-server/how-to-configure-audit-log-cli.md
     - name: Replikation
       items:
         - name: Lesereplikate
@@ -546,6 +539,8 @@
           href: flexible-server/concepts-backup-restore.md
         - name: Wiederherstellen eines Servers über das Azure-Portal
           href: flexible-server/how-to-restore-server-portal.md
+        - name: Wiederherstellen eines Servers über die Azure-Befehlszeilenschnittstelle
+          href: flexible-server/how-to-restore-server-cli.md
     - name: Problembehandlung
       items:
         - name: Beheben von Verbindungsproblemen
@@ -567,6 +562,26 @@
     - name: Problembehandlung für häufige Fehler
       href: howto-troubleshoot-common-errors.md
       displayName: 'SUPER privilege, DBA role, Access is denied'
+- name: Problembehandlung
+  items:
+    - name: Behandeln von Migrationsfehlern
+      href: howto-troubleshoot-common-errors.md
+      displayName: 'SUPER privilege, DBA role, Access is denied'
+    - name: Problembehandlung der Abfrageleistung
+      href: howto-troubleshoot-query-performance.md
+      displayName: 'debug, performance issues, query performance'
+    - name: Verwenden von Ansichten im Systemschema
+      href: howto-troubleshoot-sys-schema.md
+      displayName: 'sys schema, views'
+    - name: Problembehandlung für Datenverschlüsselung
+      href: howto-data-encryption-troubleshoot.md
+      displayName: 'encryption, security'
+    - name: Behandeln von Problemen mit der Replikationswartezeit
+      href: howto-troubleshoot-replication-latency.md
+      displayName: 'replication, latency, monitor'
+    - name: Behandeln von Datenbankbeschädigungen
+      href: how-to-fix-corrupt-database.md
+      displayName: corrupt data
 - name: Verweis
   items:
     - name: Azure CLI

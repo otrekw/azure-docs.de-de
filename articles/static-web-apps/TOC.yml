@@ -45,8 +45,14 @@
       href: application-settings.md
     - name: Konfigurieren von Front-End-Frameworks und -Bibliotheken
       href: front-end-frameworks.md
+    - name: Aktivieren der Überwachung
+      href: monitor.md
+      displayName: Application Insights
     - name: Zurücksetzen des Bereitstellungstokens
       href: deployment-token-management.md
+    - name: Problembehandlung
+      href: troubleshooting.md
+      displayName: 'deployment, runtime, errors'
 - name: Tutorials
   items:
     - name: Veröffentlichen über einen Generator für statische Websites
@@ -67,6 +73,16 @@
           href: deploy-nextjs.md
         - name: Nuxt.js
           href: deploy-nuxtjs.md
+    - name: "Hinzufügen einer Datenbank mit Mongoose.js und Cosmos\_DB"
+      href: add-mongoose.md
+    - name: Veröffentlichen mit Azure DevOps
+      href: publish-devops.md
+    - name: Veröffentlichen mit einer ARM-Vorlage
+      href: publish-azure-resource-manager.md
+- name: Verweis
+  items:
+    - name: Azure CLI
+      href: /cli/azure/staticwebapp
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

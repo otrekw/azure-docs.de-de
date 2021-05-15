@@ -21,8 +21,8 @@
       href: tutorial-multiple-components.md
     - name: Herstellen einer Verbindung mit einem Gerät mithilfe von MQTT
       href: tutorial-use-mqtt.md
-    - name: Interagieren mit einem MXChip-Gerät (Beispiel)
-      href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
+    - name: Verbinden eines MXCHIP-Geräts
+      href: /azure/iot-develop/quickstart-devkit-mxchip-az3166
     - name: Herstellen einer Verbindung mit einem Gerätemodul
       href: tutorial-migrate-device-to-module.md
     - name: 'Vorschau: Herstellen einer Verbindung und Analysieren von Daten mit Time Series Insights Gen2'
@@ -35,8 +35,8 @@
       href: concepts-developer-guide-device.md
     - name: Leitfaden für Dienstentwickler
       href: concepts-developer-guide-service.md
-    - name: Komponenten
-      href: concepts-components.md
+    - name: Leitfaden zur Modellierung
+      href: concepts-modeling-guide.md
     - name: IoT Plug & Play-Konventionen
       href: concepts-convention.md
     - name: "IoT Plug\_&\_Play-Brücke"
@@ -44,27 +44,21 @@
     - name: Digital Twins
       href: concepts-digital-twin.md
     - name: Gerätezertifizierung
-      href: concepts-certification-program.md
+      href: ../certification/program-requirements-pnp.md
     - name: Modellrepository
       href: concepts-model-repository.md
     - name: Verwenden von Modellen in einer Lösung
       href: concepts-model-discovery.md
     - name: Modellparser
       href: concepts-model-parser.md
-    - name: Glossar
-      href: iot-plug-and-play-glossary.md
 - name: Anleitungen
   items:
     - name: Installieren und Verwenden des IoT-Explorers
       href: howto-use-iot-explorer.md
     - name: Installieren und Verwenden von DTDL-Erstellungstools
       href: howto-use-dtdl-authoring-tools.md
-    - name: "Verwenden von Embedded\_C"
-      href: howto-use-embedded-c.md
     - name: Verwalten digitaler Zwillinge
       href: howto-manage-digital-twin.md
-    - name: Zertifizieren eines Geräts
-      href: howto-certify-device.md
     - name: Herstellen einer Verbindung mit einem IoT Plug & Play-Bridgebeispiel
       href: howto-use-iot-pnp-bridge.md
     - name: Erstellen und Bereitstellen der IoT Plug & Play-Bridge
@@ -82,7 +76,9 @@
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
+    - name: IoT-Glossar
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
     - name: Azure IoT-Dienste
       items:
         - name: IoT Hub

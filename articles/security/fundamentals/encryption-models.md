@@ -4,7 +4,6 @@ description: Dieser Artikel bietet eine Übersicht über die Datenverschlüsselu
 services: security
 documentationcenter: na
 author: msmbaldwin
-manager: rkarlin
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
 ms.service: security
 ms.subservice: security-fundamentals
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
+ms.date: 04/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 95ab5917779a73b7221a5b431126164aef88b494
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 8e39864e2246e175bb9f699f01b78646782d84eb
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812118"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315343"
 ---
 # <a name="data-encryption-models"></a>Datenverschlüsselungsmodelle
 
@@ -91,7 +90,7 @@ Wenn die serverseitige Verschlüsselung mit vom Dienst verwalteten Schlüsseln v
 
 In Szenarien, in denen es erforderlich ist, die ruhenden Daten zu verschlüsseln und die Verschlüsselungsschlüssel zu steuern, können Kunden die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln in Key Vault verwenden. Einige Diensten speichern möglicherweise nur den Stamm-KEK in Azure Key Vault und speichern den verschlüsselten DEK in einem internen Speicherort, der sich näher an den Daten befindet. In diesem Szenario können Kunden Ihre eigenen Schlüssel in Key Vault mitbringen (BYOK: Bring Your Own Key) oder neue Schlüssel generieren und diese verwenden, um die gewünschten Ressourcen zu verschlüsseln. Während der Ressourcenanbieter die Ver- und Entschlüsselungsvorgänge durchführt, verwendet er den konfigurierten KEK als Stammschlüssel für alle Verschlüsselungsvorgänge.
 
-Der Verlust von KEKs bedeutet, dass Daten verloren gehen. Aus diesem Grund sollten Schlüssel nicht gelöscht werden. Schlüssel sollten immer dann gesichert werden, wenn sie erstellt oder gedreht werden. [Vorläufiges Löschen](../../key-vault/general/soft-delete-overview.md) sollte in jedem Tresor aktiviert werden, in dem KEKs gespeichert werden. Anstatt einen Schlüssel zu löschen, legen Sie die Aktivierungsoption auf „False“ fest, oder legen Sie das Ablaufdatum fest.
+Der Verlust von KEKs bedeutet, dass Daten verloren gehen. Aus diesem Grund sollten Schlüssel nicht gelöscht werden. Schlüssel sollten immer dann gesichert werden, wenn sie erstellt oder gedreht werden. [Der Schutz vor vorläufigem und endgültigem Löschen](../../key-vault/general/soft-delete-overview.md) muss für jeden Tresor aktiviert sein, der Schlüsselverschlüsselungsschlüssel enthält, um Schutz vor versehentlichem oder böswilligem Löschen von Kryptografien zu bieten. Anstatt einen Schlüssel zu löschen, wird empfohlen, die Einstellungen des Schlüsselverschlüsselungsschlüssel von „enabled“ (aktiviert) auf „false“ festzulegen.
 
 ### <a name="key-access"></a>Schlüsselzugriff
 
@@ -198,9 +197,6 @@ Die Azure-Dienste, die die einzelnen Verschlüsselungsmodelle unterstützen:
 | Azure Cosmos DB                  | Ja                | Ja                | -                  |
 | Azure Databricks                 | Ja                | Ja                | -                  |
 | Azure Database Migration Service | Ja                | N/V\*              | -                  |
-| **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | Ja                | -                  | -                  |
-| Azure Repos                      | Ja                | -                  | -                  |
 | **Identität**                     |                    |                    |                    |
 | Azure Active Directory           | Ja                | -                  | -                  |
 | Azure Active Directory Domain Services | Ja          | Ja                | -                  |

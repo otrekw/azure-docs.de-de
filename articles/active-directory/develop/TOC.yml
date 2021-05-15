@@ -24,10 +24,12 @@
       items:
         - name: Angular
           href: quickstart-v2-angular.md
-        - name: 'JavaScript: Autorisierungscodefluss'
+        - name: 'Angular: Autorisierungscodeflow'
+          href: quickstart-v2-javascript-auth-code-angular.md
+        - name: JavaScript
           href: quickstart-v2-javascript-auth-code.md
-        - name: 'JavaScript: Impliziter Fluss'
-          href: quickstart-v2-javascript.md
+        - name: 'React: Autorisierungscodeflow'
+          href: quickstart-v2-javascript-auth-code-react.md
     - name: Web-App
       items:
         - name: ASP.NET
@@ -80,12 +82,14 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
+        - name: 'Angular: Autorisierungscodeflow'
+          href: tutorial-v2-angular-auth-code.md
         - name: Blazor WebAssembly
           href: tutorial-blazor-webassembly.md
-        - name: 'JavaScript: Autorisierungscodefluss'
+        - name: JavaScript
           href: tutorial-v2-javascript-auth-code.md
-        - name: 'JavaScript: Impliziter Fluss'
-          href: tutorial-v2-javascript-spa.md
+        - name: React
+          href: tutorial-v2-react.md
     - name: Web-App
       items:
         - name: ASP.NET
@@ -373,6 +377,8 @@
               href: msal-b2c-overview.md
             - name: Migrieren zu MSAL.js
               href: msal-compare-msal-js-and-adal-js.md
+            - name: Migrieren zu MSAL Node
+              href: msal-node-migration.md
             - name: Einmaliges Anmelden mit MSAL.js
               href: msal-js-sso.md
             - name: 'Überlegungen: IE'
@@ -498,7 +504,7 @@
     - name: Akzeptieren von Anmeldungen von mehreren Mandanten
       items:
         - name: Ändern der von einer App unterstützten Konten
-          href: quickstart-modify-supported-accounts.md
+          href: ./howto-modify-supported-accounts.md
         - name: Aktivieren von Anmeldungen von mehreren Mandanten
           href: howto-convert-app-to-be-multi-tenant.md
         - name: Konfigurieren der Herausgeberdomäne
@@ -512,6 +518,16 @@
           href: howto-add-app-roles-in-azure-ad-apps.md
     - name: Verwenden der Microsoft Graph-API
       href: microsoft-graph-intro.md
+    - name: Erstellen resilienter Lösungen
+      items:
+        - name: Entwicklungsübersicht
+          href: ../fundamentals/resilience-app-development-overview.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+        - name: Clientanwendungen
+          href: ../fundamentals/resilience-client-app.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+        - name: Daemonanwendungen
+          href: ../fundamentals/resilience-daemon-app.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+        - name: "OpenID\_Connect-Metadatenaktualisierung"
+          href: howto-build-services-resilient-to-metadata-refresh.md
     - name: Markteinführung einer App
       items:
         - name: Befolgen der Brandingrichtlinien
@@ -546,7 +562,9 @@
         - name: Diagnostizieren von Fehlern während der Authentifizierung
           href: vs-active-directory-error.md
     - name: Entfernen einer App-Registrierung
-      href: quickstart-remove-app.md
+      href: ./howto-remove-app.md
+    - name: Wiederherstellen oder Entfernen einer gelöschten App-Registrierung
+      href: ./howto-restore-app.md
 - name: Verweis
   items:
     - name: Glossar
@@ -587,6 +605,8 @@
             - name: 'OAuth 2.0: Gewährung für Kennwortanmeldeinformationen des Ressourcenbesitzers'
               displayName: ROPC
               href: v2-oauth-ropc.md
+            - name: OAuth 2.0-SAML-Bearerassertionsflow
+              href: v2-saml-bearer-assertion.md
             - name: Rollover von Signaturschlüsseln
               href: active-directory-signing-key-rollover.md
             - name: Szenarien für den Tokenaustausch
@@ -612,6 +632,8 @@
               href: active-directory-saml-protocol-reference.md
             - name: SAML-Token
               href: reference-saml-tokens.md
+    - name: Azure CLI
+      href: /cli/azure/identity
     - name: "Anwendungstypen und OAuth\_2.0"
       displayName: 'App types, OAuth'
       href: v2-app-types.md
@@ -625,6 +647,8 @@
       href: reference-v2-libraries.md
     - name: Identitäts- und Zugriffs-APIs in Microsoft Graph
       href: /graph/api/resources/azure-ad-overview
+    - name: Richtlinientyp einer Anspruchszuordnung
+      href: reference-claims-mapping-policy-type.md
     - name: Authentifizierungs- und Autorisierungsfehlercodes
       displayName: AADSTS
       href: reference-aadsts-error-codes.md

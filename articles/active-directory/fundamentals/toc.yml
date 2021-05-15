@@ -25,6 +25,8 @@
   items:
     - name: Sicherheit
       items:
+        - name: Sicherheitsbaseline
+          href: /security/benchmark/azure/baselines/aad-security-baseline?toc=/azure/active-directory/fundamentals/toc.json
         - name: "Schützen von Microsoft\_365 vor lokalen Angriffen"
           href: protect-m365-from-on-premises-attacks.md
         - name: Sichere externe Zusammenarbeit
@@ -53,9 +55,9 @@
           items:
             - name: Einführung in Azure-Dienstkonten
               href: service-accounts-introduction-azure.md
-            - name: Sichern von verwalteten Identitäten
+            - name: Schützen verwalteter Identitäten
               href: service-accounts-managed-identities.md
-            - name: Sichern von Dienstprinzipalen
+            - name: Schützen von Dienstprinzipalen
               href: service-accounts-principal.md
             - name: Steuern von Azure-Dienstkonten
               href: service-accounts-governing-azure.md
@@ -67,9 +69,9 @@
               href: service-accounts-standalone-managed.md
             - name: Schützen von Computerkonten
               href: service-accounts-computer.md
-            - name: Schützen benutzerbasierter Dienstkonten
+            - name: Schützen lokaler Benutzerdienstkonten
               href: service-accounts-user-on-premises.md
-            - name: Steuern lokaler Dienstkonten
+            - name: Steuern lokaler Benutzerdienstkonten
               href: service-accounts-govern-on-premises.md
         - name: MFA aktivieren
           href: concept-fundamentals-mfa-get-started.md
@@ -165,6 +167,8 @@
                   href: resilience-client-app.md
                 - name: Daemonanwendungen
                   href: resilience-daemon-app.md
+                - name: "OpenID\_Connect-Metadatenaktualisierung"
+                  href: ../develop/howto-build-services-resilient-to-metadata-refresh.md
             - name: Überwachen der Anwendungsintegrität für Resilienz
               href: monitor-sign-in-health-for-resilience.md
         - name: In Azure verwendete Zertifizierungsstellen
@@ -181,6 +185,8 @@
           href: active-directory-data-storage-eu.md
         - name: Identitätsdatenspeicher für Australien und Neuseeland
           href: active-directory-data-storage-australia-newzealand.md
+    - name: Verwaltung von Frontline-Worker
+      href: frontline-worker-management.md
     - name: Referenz zu Azure AD-Vorgängen
       items:
         - name: Einführung

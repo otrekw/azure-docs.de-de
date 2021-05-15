@@ -1,0 +1,143 @@
+### YamlMime:Landing
+title: Dokumentation mit grundlegenden Informationen zu Azure-Netzwerk
+summary: Mit Azure-Netzwerkdiensten können Sie auf verbundene Azure-Ressourcen und lokale Ressourcen zugreifen sowie Ihre Anwendungen im Azure-Netzwerk schützen, bereitstellen und überwachen.
+metadata:
+  title: Dokumentation mit grundlegenden Informationen zu Azure-Netzwerk
+  description: Hier finden Sie Informationen zu Netzwerkdiensten in Azure, die für Konnektivität zwischen Azure-Ressourcen sowie zwischen einem lokalen Netzwerk und Azure-Ressourcen sorgen, zum Schutz Ihrer Netzwerkressourcen beitragen, die Anwendungsbereitstellung skalieren und die Überwachung Ihres Netzwerks ermöglichen.
+  ms.service: networking
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 03/30/2021
+  ms.openlocfilehash: aff3552a239bb3ed2859001ae02bcabefc66ff39
+  ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 04/07/2021
+  ms.locfileid: "107030371"
+landingContent:
+- title: Informationen zu Azure-Netzwerk
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist das Azure-Netzwerk?
+      url: networking-overview.md
+  - linkListType: concept
+    links:
+    - text: Was ist das globale Microsoft-Netzwerk?
+      url: ../microsoft-global-network.md
+  - linkListType: learn
+    links:
+    - text: Erstellen Ihrer Netzwerkinfrastruktur in Azure
+      url: /learn/paths/architect-network-infrastructure/
+    - text: Grundlagen zu Azure-Netzwerkdiensten
+      url: /learn/modules/azure-networking-fundamentals/
+- title: Erste Schritte
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Virtual Network?
+      url: ../../virtual-network/virtual-networks-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines virtuellen Netzwerks
+      url: ../../virtual-network/quick-create-portal.md
+- title: Kommunizieren mit dem Internet
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist eine öffentliche IP-Adresse?
+      url: ../../virtual-network/virtual-networks-overview.md
+    - text: Was ist Virtual Network NAT Gateway?
+      url: ../../virtual-network/nat-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer öffentlichen IP-Adresse
+      url: ../../virtual-network/create-public-ip-portal.md
+    - text: Erstellen eines NAT-Gateways
+      url: ../../virtual-network/tutorial-create-nat-gateway-portal.md
+  - linkListType: learn
+    links:
+    - text: Entwerfen eines IP-Adressierungsschemas für Ihre Azure-Bereitstellung
+      url: /learn/modules/design-ip-addressing-for-azure/
+- title: Herstellen von Verbindungen zwischen virtuellen Netzwerken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Peering in virtuellen Netzwerken
+      url: ../../virtual-network/virtual-network-peering-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Herstellen einer Verbindung zwischen virtuellen Netzwerken mittels Peering
+      url: ../../virtual-network/tutorial-connect-virtual-networks-portal.md
+- title: Privater Zugriff auf Netzwerkressourcen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist privater Endpunkt in Azure?
+      url: ../../private-link/private-endpoint-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Erstellen eines privaten Endpunkts
+      url: ../../private-link/create-private-endpoint-portal.md
+- title: Verwenden eines Lastausgleichs für Ihre Anwendungen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Lastenausgleich für das Netzwerk
+      url: ../../load-balancer/load-balancer-overview.md
+    - text: Sicheres cloudbasiertes CDN und globaler Lastenausgleich
+      url: ../../frontdoor/front-door-overview.md
+    - text: Lastenausgleich für Webanwendungen
+      url: ../../application-gateway/overview.md
+    - text: DNS-basierter Lastenausgleich
+      url: ../../traffic-manager/traffic-manager-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Erstellen eines Lastenausgleichs für das Netzwerk
+      url: ../../load-balancer/quickstart-load-balancer-standard-public-portal.md
+    - text: Bereitstellen eines sicheren cloudbasierten CDN und eines globalen Lastenausgleichs
+      url: ../../frontdoor/quickstart-create-front-door.md
+    - text: Erstellen eines Lastenausgleichs für Webanwendungen
+      url: ../../application-gateway/quick-create-portal.md
+    - text: Erstellen eines DNS-basierten Lastenausgleichs
+      url: ../../traffic-manager/quickstart-create-traffic-manager-profile.md
+- title: Schützen Ihres virtuellen Netzwerks
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Netzwerksicherheitsgruppen
+      url: ../../virtual-network/network-security-groups-overview.md
+    - text: Azure DDoS Protection Standard
+      url: ../../ddos-protection/ddos-protection-overview.md
+    - text: Azure Firewall
+      url: ../../firewall/overview.md
+  - linkListType: tutorial
+    links:
+    - text: Beschränken des Netzwerkzugriffs auf PaaS-Ressourcen
+      url: ../../virtual-network/tutorial-restrict-network-access-to-resources.md
+    - text: Erstellen und Konfigurieren von Azure DDoS Protection Standard
+      url: ../../ddos-protection/manage-ddos-protection.md
+    - text: Bereitstellen und Konfigurieren von Azure Firewall
+      url: ../../firewall/tutorial-firewall-deploy-portal.md
+  - linkListType: learn
+    links:
+    - text: Sichere Netzwerkkonnektivität in Azure
+      url: /learn/modules/secure-network-connectivity-azure/
+- title: Herstellen einer Verbindung zwischen lokalen und virtuellen Netzwerken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 'VPN-Verbindungen: VPN Gateway'
+      url: ../../vpn-gateway/vpn-gateway-about-vpngateways.md
+    - text: 'Dedizierte private Verbindungen: ExpressRoute'
+      url: ../../expressroute/expressroute-introduction.md
+    - text: 'VPN und dedizierte private Verbindungen: Virtual WAN'
+      url: ../../virtual-wan/virtual-wan-about.md
+  - linkListType: tutorial
+    links:
+    - text: 'Verbinden des lokalen Netzwerks mit einem virtuellen Netzwerk: VPN-Verschlüsselung'
+      url: ../../vpn-gateway/tutorial-site-to-site-portal.md
+    - text: Erweitern des lokalen Netzwerks auf Azure mithilfe von ExpressRoute
+      url: ../../expressroute/expressroute-howto-circuit-portal-resource-manager.md

@@ -34,6 +34,8 @@
           href: how-to-prerequisites.md
         - name: Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
           href: how-to-install.md
+        - name: Installieren des Bereitstellungs-Agents per CLI und PowerShell
+          href: how-to-install-pshell.md
         - name: Konfiguration der Cloudsynchronisierung
           href: how-to-configure.md
         - name: Bedarfsorientierte Bereitstellung
@@ -56,14 +58,16 @@
           href: how-to-manage-registry-options.md
         - name: PowerShell-Cmdlets für den Agent (gMSA)
           href: how-to-gmsa-cmdlets.md
-        - name: Installieren des Bereitstellungs-Agents mithilfe von PowerShell
-          href: how-to-install-pshell.md
+        - name: Zuordnen des Benutzertyps mit der Cloudsynchronisierung
+          href: how-to-map-usertype.md
     - name: Entwickeln
       items:
         - name: Transformationen
           href: how-to-transformation.md
         - name: Programmgesteuertes Konfigurieren der Cloudsynchronisierung mit der MS Graph-API
           href: how-to-inbound-synch-ms-graph.md
+        - name: Ausdrucks-Generator
+          href: how-to-expression-builder.md
         - name: Azure AD-Synchronisierungs-API
           href: /graph/api/resources/synchronization-overview
     - name: Problembehandlung

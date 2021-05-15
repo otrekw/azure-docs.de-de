@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: deb02c161dfe41bf79b7905fde23678425aaf55f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: cd038a0632823e4833e75596378f9b25c386d9d0
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448371"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330528"
 ---
 # <a name="msix-app-attach-glossary"></a>Glossar des MSIX-Features zum Anfügen von Apps
 
@@ -33,7 +33,7 @@ Ein MSIX-Paket ist eine MSIX-Datei oder -Anwendung.
 
 ## <a name="msix-share"></a>MSIX-Freigabe
 
-Eine MSIX0-Freigabe ist eine Netzwerkfreigabe, die erweiterte MSIX-Pakete enthält. MSIX-Freigaben unterstützen SMB 3 oder höher. Anwendungen werden aus dieser MSIX-Freigabe bereitgestellt, ohne dass Anwendungsdateien auf das Systemlaufwerk verschoben werden müssen.
+Eine MSIX0-Freigabe ist eine Netzwerkfreigabe, die erweiterte MSIX-Pakete enthält. MSIX-Freigaben müssen SMB 3 oder höher unterstützen. Die Freigaben müssen auch für die virtuellen Computer im Systemkonto des Hostpools zugänglich sein. MSIX-Pakete werden über die MSIX-Freigabe bereitgestellt, ohne dass Anwendungsdateien auf das Systemlaufwerk verschoben werden müssen. 
 
 ## <a name="msix-image"></a>MSIX-Image
 
@@ -110,7 +110,7 @@ Das Aufheben des Stagings benachrichtigt das Betriebssystem, dass die Einbindung
 
 .CIM ist eine neue Dateierweiterung, die mit dem CimFS (Composite Image Files System) verknüpft ist. Das Einbinden und Aufheben der Einbindung von CIM-Dateien erfolgt schneller als bei VHD-Dateien. CIM verbraucht außerdem weniger CPU und Arbeitsspeicher als VHD.
 
-Eine CIM-Datei ist eine Datei mit der Endung „.cim“, die Metadaten und mindestens sechs weitere Dateien mit den eigentlichen Daten enthält. Die Dateien in der CIM-Datei haben keine Dateiendungen. In der folgenden Tabelle finden Sie eine Liste mit Beispielen für Dateien, die Sie in einer CIM-Datei finden:
+Eine CIM-Datei ist eine Datei mit der Endung „.cim“, die Metadaten und mindestens zwei weitere Dateien mit den eigentlichen Daten enthält. Die Dateien in der CIM-Datei haben keine Dateiendungen. In der folgenden Tabelle finden Sie eine Liste mit Beispielen für Dateien, die Sie in einer CIM-Datei finden:
 
 | Dateiname | Erweiterung | Size |
 |-----------|-----------|------|

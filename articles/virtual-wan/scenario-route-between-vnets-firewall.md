@@ -1,20 +1,20 @@
 ---
 title: 'Szenario: Benutzerdefiniertes Routing über Azure Firewall für Virtual WAN'
 titleSuffix: Azure Virtual WAN
-description: Routingszenarios – direktes Routing von Datenverkehr zwischen VNets, jedoch Verwendung von Azure Firewall für die Datenverkehrsflüsse VNet > Internet/Branch und Branch > VNet
+description: Hier erfahren Sie mehr über Routingszenarios für das direkte Routing von Datenverkehr zwischen VNets, jedoch unter Verwendung von Azure Firewall für die Datenverkehrsflüsse VNet > Internet/Branch und Branch > VNet.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebe1f337e2799e2ebeafc0f4a051ed7c3d81e434
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94515568"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162003"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Szenario: Azure Firewall: Benutzerdefiniert
 
@@ -26,7 +26,7 @@ Sie können eine Verbindungsmatrix erstellen, in der jede Zelle angibt, ob eine 
 
 **Konnektivitätsmatrix**
 
-| From           | Nach:      | *VNETs*      | *Branches*    | *Internet*   |
+| Von           | Nach:      | *VNETs*      | *Branches*    | *Internet*   |
 |---             |---       |---           |---            |---           |
 | **VNETs**      |   &#8594;|    Direkt    |     AzFW      |     AzFW     |
 | **Branches**   |   &#8594;|    AzFW      |    Direkt     |    Direkt    |

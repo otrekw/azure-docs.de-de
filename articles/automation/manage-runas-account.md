@@ -1,17 +1,17 @@
 ---
 title: Verwalten eines ausführenden Azure Automation-Kontos
-description: In diesem Artikel wird beschrieben, wie Sie mit PowerShell oder über das Azure-Portal Ihr ausführendes Konto verwalten.
+description: In diesem Artikel wird beschrieben, wie Sie mit PowerShell oder über das Azure-Portal ein ausführendes Azure Automation-Konto verwalten.
 services: automation
 ms.subservice: ''
-ms.date: 01/19/2021
+ms.date: 04/29/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e440a27c8f7778c800148feb5bec76ca5a48f4f5
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 9ba7ae8218b730408361b6787517b72f2fb5c33b
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833920"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278630"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Verwalten eines ausführenden Azure Automation-Kontos
 
@@ -29,7 +29,7 @@ Beim Erneuern des selbstsignierten Zertifikats wird das aktuell gültige Zertifi
 >Wenn Sie der Meinung sind, dass das ausführende Konto kompromittiert wurde, können Sie das selbstsignierte Zertifikat löschen und neu erstellen.
 
 >[!NOTE]
->Wenn Sie Ihr ausführendes Konto für die Verwendung eines Zertifikats konfiguriert haben, das von Ihrer Unternehmenszertifizierungsstelle ausgestellt wurde, und Sie verwenden die Option zum Erneuern eines selbstsignierten Zertifikats, wird das Unternehmenszertifikat durch ein selbstsigniertes Zertifikat ersetzt.
+>Wenn Sie Ihr ausführendes Konto für die Verwendung eines Zertifikats konfiguriert haben, das von Ihrer Unternehmenszertifizierungsstelle oder der Zertifizierungsstelle eines Drittanbieters ausgestellt wurde, und Sie die Option zum Erneuern eines selbstsignierten Zertifikats verwenden, wird das Unternehmenszertifikat durch ein selbstsigniertes Zertifikat ersetzt.
 
 Verwenden Sie die folgenden Schritte, um das selbstsignierte Zertifikat zu erstellen.
 

@@ -3,12 +3,12 @@ title: Absichern von Azure Functions
 description: Erfahren Sie, wie Sie Ihren in Azure ausgeführten Funktionscode vor gängigen Angriffen schützen können.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e667cd8509e73624d7ef14d978480897d6636f0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368488"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202315"
 ---
 # <a name="securing-azure-functions"></a>Absichern von Azure Functions
 
@@ -62,7 +62,7 @@ In der folgenden Tabelle wird der Zweck der verschiedenen Arten von Zugriffsschl
 |-----------------------------------------------|--------------------------|--------------------|
 | Funktion ausführen                            | Spezifische Funktion        | Funktion           |
 | Funktion ausführen                            | Beliebige Funktion             | Funktion oder Host   |
-| Administratorendpunkt aufrufen                        | Funktions-App             | Host (nur Master) |
+| Administratorendpunkt aufrufen                        | Funktionen-App             | Host (nur Master) |
 | Durable Task-Erweiterungs-APIs aufrufen              | Funktions-App<sup>1</sup> | System<sup>2</sup> |
 | Erweiterungsspezifischen Webhook (intern) aufrufen | Funktions-App<sup>1</sup> | System<sup>2</sup> |
 
