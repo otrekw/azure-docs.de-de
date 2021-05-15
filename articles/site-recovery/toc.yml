@@ -93,7 +93,7 @@
 - name: Konzepte
   items:
     - name: Allgemeine Fragen zu Site Recovery
-      href: site-recovery-faq.md
+      href: site-recovery-faq.yml
     - name: Informationen zur Notfallwiederherstellung für virtuelle Azure-Computer
       items:
         - name: Azure-zu-Azure-Architektur
@@ -179,7 +179,7 @@
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/site-recovery-security-baseline?toc=/azure/site-recovery/toc.json
 - name: Anleitungen
   items:
     - name: Azure-zu-Azure-Notfallwiederherstellung
@@ -200,6 +200,8 @@
           items:
             - name: Ermöglichen der Replikation von Azure zu Azure
               href: azure-to-azure-how-to-enable-replication.md
+            - name: Ermöglichen der Replikation von Azure zu Azure mittels Richtlinie
+              href: azure-to-azure-how-to-enable-policy.md
             - name: Ermöglichen der Replikation von Azure zu Azure für verschlüsselte virtuelle Computer
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
             - name: Aktivieren der Azure-zu-Azure-Replikation für virtuelle Computer mit Datenträgern mit CMK-fähigen Datenträgern
@@ -230,6 +232,8 @@
               href: site-recovery-manage-registration-and-protection.md
             - name: Löschen eines Tresors
               href: delete-vault.md
+            - name: Bereinigungsskript auf einem VMM-Server
+              href: unregister-vmm-server-script.md
     - name: 'Notfallwiederherstellung: VMware zu Azure'
       items:
         - name: Einrichten der skalierbaren Notfallwiederherstellung
@@ -482,6 +486,8 @@
       href: site-recovery-runbook-automation.md
     - name: ARM-Vorlagen
       href: asr-arm-templates.md
+    - name: 'Veraltete Parameter: Cmdlet „New-AzRecoveryServicesAsrVMNicConfig“'
+      href: site-recovery-ipconfig-cmdlet-parameter-deprecation.md
 - name: Überwachung
   items:
     - name: Häufig gestellte Fragen zur Überwachung

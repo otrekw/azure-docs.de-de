@@ -47,6 +47,8 @@
       href: logs/get-started-queries.md
     - name: Erstellen eines Dashboards aus einer Protokollabfrage
       href: visualize/tutorial-logs-dashboards.md
+    - name: Erstellen einer Warnung aus einer Protokollabfrage
+      href: alerts/tutorial-response.md
     - name: Automatische Skalierung von Leistung und Zeitplan
       href: autoscale/tutorial-autoscale-performance-schedule.md
     - name: Application Insights

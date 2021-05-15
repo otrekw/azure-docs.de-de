@@ -3,7 +3,7 @@ title: Betriebssystemsicherung und -wiederherstellung für SAP HANA in Azure (gr
 description: Durchführen von Betriebssystemsicherungen und -wiederherstellungen für SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
-ms.author: juergent
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c044d09626fe4c1d4409f98fc615b5a7d70c7cc8
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: c624f2cdee61d138722632869901e2c59110b1a9
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108230020"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735116"
 ---
 # <a name="os-backup-and-restore"></a>Betriebssystemsicherung und -wiederherstellung
 
@@ -125,7 +125,7 @@ Das folgende Beispiel zeigt einen Cron-Zeitplan in `/etc/crontab` für eine Betr
 ```
 
 Zusätzliche Referenzen:
-- [Einrichten von Speichermomentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots)
+- [Einrichten von Speichermomentaufnahmen](hana-backup-restore.md#set-up-storage-snapshots)
 - Handbuch „Microsoft Snapshot Tools for SAP HANA on Azure“ auf [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md)
 
 ### <a name="how-to-restore-a-backup"></a>Wiederherstellen einer Sicherung

@@ -1,54 +1,63 @@
 ### YamlMime:Landing
 title: Dokumentation zu Lösungen von geprüften Azure Storage-Partnern
-summary: Lösungen von geprüften Azure Storage-Partnern ermöglichen erweiterte Szenarien auf der Grundlage der Azure Storage-Plattform.
+summary: Lösungen von geprüften Azure Storage-Partnern ermöglichen erweiterte Szenarien auf der Grundlage von Azure Storage.
 metadata:
   title: Lösungen von geprüften Azure Storage-Partnern
-  description: Lösungen von geprüften Azure Storage-Partnern ermöglichen erweiterte Szenarien auf der Grundlage der Azure Storage-Plattform.
+  description: Lösungen von geprüften Azure Storage-Partnern ermöglichen erweiterte Szenarien auf der Grundlage von Azure Storage.
   services: storage
   ms.service: storage
+  ms.subservice: partner
   ms.topic: landing-page
   ms.collection: collection
   author: beber-msft
   ms.author: beber
-  ms.date: 12/08/2020
-  ms.openlocfilehash: 2e9a2ac1e8d33020a94c2c783d3d695a459fcea5
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.date: 03/15/2021
+  ms.openlocfilehash: c1a80811c53d26028a7c3f0585bdc0cbc7c126e0
+  ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101742693"
+  ms.lasthandoff: 05/07/2021
+  ms.locfileid: "109482037"
 landingContent:
-- title: Partner für Azure Storage Analytics und Big Data
+- title: Partner für Analysen und Big Data
   linkLists:
   - linkListType: overview
     links:
-    - text: Geprüfte Azure Storage Analytics-Partner
+    - text: Geprüfte Analysepartner
       url: .\validated-partners\analytics\partner-overview.md
-- title: Azure Storage-Partner für Archivierung, Sicherung und BCDR
+- title: Partner für Archivierung, Sicherung und BCDR
   linkLists:
   - linkListType: overview
     links:
-    - text: Geprüfte Azure Storage-Partner für Archivierung und BCDR
+    - text: Geprüfte Partner für Archivierung und BCDR
       url: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
-  - linkListType: quickstart
+  - linkListType: get-started
     links:
-    - text: Schnellstartanleitung zu Commvault
+    - text: Leitfaden zu den ersten Schritten mit Commvault
       url: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
-    - text: Schnellstartanleitung zu Veeam
+    - text: Leitfaden zu den ersten Schritten mit Veeam
       url: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
-- title: Azure Storage-Partner für Containerlösungen
+    - text: Leitfaden zu den ersten Schritten mit DobiProtect
+      url: .\validated-partners\backup-archive-disaster-recovery\datadobi\datadobi-solution-guide.md
+- title: Partner für Containerlösungen
   linkLists:
   - linkListType: overview
     links:
-    - text: Geprüfte Azure Storage-Partner für Containerlösungen
+    - text: Geprüfte Partner für Containerlösungen
       url: .\validated-partners\container-solutions\partner-overview.md
-- title: Azure Storage-Partner für Datenverwaltung und Migration
+- title: Partner für Datenverwaltung und Migration
   linkLists:
   - linkListType: overview
     links:
-    - text: Geprüfte Azure Storage-Partner für Datenverwaltung und Migration
+    - text: Geprüfte Partner für Datenverwaltung und Migration
       url: .\validated-partners\data-management\partner-overview.md
-- title: Azure Storage-Partner für primären und sekundären Speicher
+    - text: Vergleich von Migrationstools
+      url: ./validated-partners/data-management/migration-tools-comparison.md
+  - linkListType: get-started
+    links:
+    - text: Leitfaden zu den ersten Schritten mit DobiMigrate
+      url: ./validated-partners/data-management/dobimigrate-quick-start-guide.md
+- title: Partner für primären und sekundären Speicher
   linkLists:
   - linkListType: overview
     links:

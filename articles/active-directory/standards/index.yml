@@ -1,0 +1,51 @@
+### YamlMime:Landing
+title: Dokumentation zum Konfigurieren von Azure Active Directory für Standards
+summary: Sie können die Compliancezertifizierungen von Azure und Azure Active Directory nutzen, um Ihre Umgebung so konfigurieren, dass sie behördlichen und branchenspezifischen Standards entspricht.
+metadata:
+  title: Dokumentation zum Konfigurieren von Azure Active Directory für Standards
+  description: Hier erfahren Sie, wie Sie Azure und Azure Active Directory für die Erfüllung behördlicher und branchenspezifischer Standards konfigurieren.
+  manager: mtillman
+  ms.author: baselden
+  ms.collection: na
+  ms.date: 04/26/2021
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 765473f21c1572bd9b25fc7fca67e9eb0508d63d
+  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 04/30/2021
+  ms.locfileid: "108293579"
+landingContent:
+- title: Übersichten über Standards
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Konfigurieren für Identitätsstandards
+      url: standards-overview.md
+    - text: Übersicht über NIST AAL
+      url: nist-overview.md
+    - text: Auswirkungsübersicht für FedRAMP High
+      url: configure-azure-active-directory-for-fedramp-high-impact.md
+- title: Konfigurieren von NIST AALs
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erreichen von NIST AAL 1
+      url: nist-authenticator-assurance-level-1.md
+    - text: Erreichen von NIST AAL 2
+      url: nist-authenticator-assurance-level-2.md
+    - text: Erreichen von NIST AAL 3
+      url: nist-authenticator-assurance-level-3.md
+- title: Konfigurieren von FedRAMP-Kontrollen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren der Zugriffssteuerung
+      url: fedramp-access-controls.md
+    - text: Konfigurieren von Identifizierungs- und Authentifizierungskontrollen
+      url: fedramp-identification-and-authentication-controls.md
+    - text: Konfigurieren zusätzlicher Kontrollen
+      url: fedramp-other-controls.md

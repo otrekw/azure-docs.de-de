@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 786e9b472d1f900e94e5d0cfa6a00e0f85547704
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 367dd261e9147c2dc14f1085af553222b621d91e
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037692"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279782"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokollwarnungen in Azure Monitor
 
@@ -165,9 +165,14 @@ Die Abfrageergebnisse werden in eine Zahl transformiert, die mit dem Schwellenwe
 
 ### <a name="frequency"></a>Häufigkeit
 
-Das Intervall für die Ausführung der Abfrage. Hierfür kann ein Zeitraum festgelegt werden, der 5 Minuten bis einen Tag lang sein kann. Der Zeitraum muss kleiner oder gleich dem [Abfragezeitbereich](#query-time-range) sein, damit keine Protokolldatensätze fehlen.
+> [!NOTE]
+> Für Protokollwarnungen im 1-Minuten-Takt fallen zurzeit keine zusätzlichen Gebühren an. Die Preise für Previewfunktionen werden später bekannt gegeben, und vor Abrechnungsbeginn erhalten Sie eine entsprechende Benachrichtigung. Falls Sie sich dafür entscheiden, Protokollwarnungen im 1-Minuten-Takt über den Benachrichtigungszeitraum hinaus zu verwenden, wird Ihnen der entsprechende Tarif in Rechnung gestellt.
+
+Das Intervall für die Ausführung der Abfrage. Kann auf einen Zeitraum von 1 Minute bis zu einem Tag festgelegt werden. Der Zeitraum muss kleiner oder gleich dem [Abfragezeitbereich](#query-time-range) sein, damit keine Protokolldatensätze fehlen.
 
 Beispiel: Sie legen den Zeitraum auf 30 Minuten und die Häufigkeit auf 1 Stunde fest.  Wenn die Abfrage um 00:00 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 23:30 und 00:00 Uhr zurück. Wenn die Abfrage dann das nächste Mal um 01:00 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 00:30 und 01:00 Uhr zurück. Alle Datensätze, die zwischen 00:00 und 00:30 erstellt werden, werden also nicht ausgewertet.
+
+Um Warnungen im 1-Minuten-Takt zu verwenden, müssen Sie eine Eigenschaft über die API festlegen. Wenn Sie in der API-Version `2020-05-01-preview` neue Protokollwarnungsregeln erstellen oder vorhandene Protokollwarnungen aktualisieren, fügen Sie im Abschnitt `properties` `evaluationFrequency` mit dem Wert `PT1M` vom Typ `String` hinzu. Wenn Sie in der API-Version `2018-04-16` neue Protokollwarnungsregeln erstellen oder vorhandene Protokollwarnungen aktualisieren, fügen Sie im Abschnitt `schedule` `frequencyInMinutes` mit dem Wert `1` vom Typ `Int` hinzu. 
 
 ### <a name="number-of-violations-to-trigger-alert"></a>Auslösung der Warnung aufgrund der Anzahl von Verstößen
 
@@ -177,9 +182,9 @@ Wenn für die [**Aggregationsgranularität**](#aggregation-granularity) Ihrer Re
 
 ## <a name="state-and-resolving-alerts"></a>Zustand und Beseitigung von Warnungen
 
-Protokollwarnungen sind zustandslos. Warnungen werden jedes Mal ausgelöst, wenn die Bedingung erfüllt ist. Dies gilt auch, wenn sie bereits zuvor ausgelöst wurden. Ausgelöste Warnungen werden nicht beseitigt. Sie können [die Warnung als geschlossen markieren](../alerts/alerts-managing-alert-states.md). Darüber hinaus können Sie Aktionen auch stummschalten, um zu verhindern, dass sie während eines bestimmten Zeitraums nach der Auslösung einer Warnungsregel ausgelöst werden.
+Protokollwarnungen können entweder zustandslos oder zustandsbehaftet sein (derzeit in der Vorschau bei Verwendung der API). 
 
-Bei Arbeitsbereichen und in Application Insights wird dies als **Warnungen unterdrücken** bezeichnet. Bei allen anderen Ressourcentypen lautet die Bezeichnung **Aktionen unterdrücken**. 
+Zustandslose Warnungen werden jedes Mal ausgelöst, wenn die Bedingung erfüllt ist. Dies gilt auch, wenn sie bereits zuvor ausgelöst wurden. Sie können [die Warnung als geschlossen markieren](../alerts/alerts-managing-alert-states.md), sobald die Warnungsinstanz aufgelöst wurde. Darüber hinaus können Sie Aktionen auch stummschalten, um zu verhindern, dass sie während eines bestimmten Zeitraums nach der Auslösung einer Warnungsregel ausgelöst werden. In Log Analytics-Arbeitsbereichen und Application Insights wird dies als **Warnungen unterdrücken** bezeichnet. Bei allen anderen Ressourcentypen lautet die Bezeichnung **Aktionen unterdrücken**. 
 
 Sehen Sie sich dieses Beispiel für eine Warnungsauswertung an:
 
@@ -189,6 +194,8 @@ Sehen Sie sich dieses Beispiel für eine Warnungsauswertung an:
 | 00:10 | TRUE  | Die Warnung wird ausgelöst, und Aktionsgruppen werden aufgerufen. Neuer Warnungsstatus lautet AKTIV.
 | 00:15 | TRUE  | Die Warnung wird ausgelöst, und Aktionsgruppen werden aufgerufen. Neuer Warnungsstatus lautet AKTIV.
 | 00:20 | FALSE | Warnung wird nicht ausgelöst. Es werden keine Aktionen aufgerufen. Status für vorherige Warnungen lautet weiter AKTIV.
+
+Zustandsbehaftete Warnungen werden einmal pro Vorfall ausgelöst und aufgelöst. Wenn Sie neue Protokollwarnungsregeln erstellen oder vorhandene Protokollwarnungsregeln aktualisieren, fügen Sie unter dem Abschnitt `properties` das Flag `autoMitigate` mit dem Wert `true` vom Typ `Boolean` hinzu. Sie können dieses Feature in den folgenden API-Versionen verwenden: `2018-04-16` und `2020-05-01-preview`.
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Preise und Abrechnung von Protokollwarnungen
 

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: df8a7fde9114f03521f0e57e072f81a867efcf39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5af10bc30a7a3bd8ca211c3fd74364c74ee36fb5
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89075255"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278504"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Erstellen von Service Bus-Ressourcen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -38,7 +38,7 @@ Diese Azure Resource Manager-Vorlagen für Service Bus sind zum Download und zur
 
 ## <a name="deploy-with-powershell"></a>Bereitstellen mit PowerShell
 
-Das folgende Verfahren beschreibt die Verwendung von PowerShell, um eine Azure Resource Manager-Vorlage bereitzustellen, die einen Service Bus-Namespace im Standard-Tarif sowie eine Warteschlange innerhalb dieses Namespace erstellt. Dieses Beispiel basiert auf der Vorlage [Create a Service Bus namespace with queue](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) (Erstellen eines Service Bus-Namespace mit Warteschlange). Der Workflow sieht in etwa folgendermaßen aus:
+Das folgende Verfahren beschreibt die Verwendung von PowerShell, um eine Azure Resource Manager-Vorlage bereitzustellen, die einen Service Bus-Namespace im Standard-Tarif sowie eine Warteschlange innerhalb dieses Namespace erstellt. Dieses Beispiel basiert auf der Vorlage [Create a Service Bus namespace with queue](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json) (Erstellen eines Service Bus-Namespace mit Warteschlange). Der Workflow sieht in etwa folgendermaßen aus:
 
 1. Installieren Sie PowerShell.
 2. Erstellen Sie die Vorlage und (optional) eine Parameterdatei.
@@ -56,7 +56,7 @@ Installieren Sie Azure PowerShell gemäß den Anweisungen unter [Erste Schritte 
 
 ### <a name="create-a-template"></a>Erstellen einer Vorlage
 
-KlonenSie das Repository oder kopieren Sie die Vorlage [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) aus GitHub:
+Klonen Sie das Repository, oder kopieren Sie die Vorlage [servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json) aus GitHub:
 
 ```json
 {
@@ -131,7 +131,7 @@ KlonenSie das Repository oder kopieren Sie die Vorlage [201-servicebus-create-qu
 
 ### <a name="create-a-parameters-file-optional"></a>Erstellen einer Parameterdatei (optional)
 
-Um eine optionale Parameterdatei zu verwenden, kopieren Sie die Datei [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json). Ersetzen Sie den Wert von `serviceBusNamespaceName` durch den Namen des Service Bus-Namespace, den Sie in dieser Bereitstellung erstellen möchten, und ersetzen Sie den Wert von `serviceBusQueueName` durch den Namen der Warteschlange, die Sie erstellen möchten.
+Um eine optionale Parameterdatei zu verwenden, kopieren Sie die Datei [servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.parameters.json). Ersetzen Sie den Wert von `serviceBusNamespaceName` durch den Namen des Service Bus-Namespace, den Sie in dieser Bereitstellung erstellen möchten, und ersetzen Sie den Wert von `serviceBusQueueName` durch den Namen der Warteschlange, die Sie erstellen möchten.
 
 ```json
 {
