@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ced48308673c6688def7b949fc225eeb5b2ced4
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ea502deee0caf5418bf5554473180eb405792567
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551729"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287048"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Problembehandlung von Geräten mit dem Befehl „dsregcmd“
 
@@ -59,7 +59,7 @@ In diesem Abschnitt werden die Statusparameter für den Geräte-Join aufgelistet
 Wird nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden ist (nicht bei Azure AD registriert). In diesem Abschnitt werden die in der Cloud gespeicherten Gerätedetails aufgelistet.
 
 - **DeviceId:** Eindeutige ID des Geräts im Azure AD-Mandanten.
-- **Thumbprint:** Fingerabdruck des Gerätezertifikats. 
+- **Thumbprint:** Fingerabdruck des Gerätezertifikats.
 - **DeviceCertificateValidity:** Gültigkeit des Gerätezertifikats.
 - **KeyContainerId:** Container-ID des privaten Schlüssels des Geräts, der dem Gerätezertifikat zugeordnet ist.
 - **KeyProvider:** KeyProvider (Hardware/Software), der zum Speichern des privaten Schlüssels des Geräts verwendet wird.
@@ -89,7 +89,7 @@ Wird nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden
 > Wenn die MDM-URLs in diesem Abschnitt leer sind, wird angezeigt, dass die MDM entweder nicht konfiguriert wurde oder sich der aktuelle Benutzer nicht im Bereich der MDM-Registrierung befindet. Überprüfen Sie die Mobilitätseinstellungen in Azure AD, um Ihre MDM-Konfiguration zu überprüfen.
 
 > [!NOTE]
-> Auch wenn MDM-URLs angezeigt werden, bedeutet dies nicht, dass das Gerät von einer MDM verwaltet wird. Die Informationen werden angezeigt, wenn der Mandant über eine MDM-Konfiguration für die automatische Registrierung verfügt, auch wenn das Gerät selbst nicht verwaltet wird. 
+> Auch wenn MDM-URLs angezeigt werden, bedeutet dies nicht, dass das Gerät von einer MDM verwaltet wird. Die Informationen werden angezeigt, wenn der Mandant über eine MDM-Konfiguration für die automatische Registrierung verfügt, auch wenn das Gerät selbst nicht verwaltet wird.
 
 ### <a name="sample-tenant-details-output"></a>Beispielausgabe für Mandantendetails
 
@@ -129,15 +129,15 @@ In diesem Abschnitt wird der Status verschiedener Attribute für den aktuell am 
 > [!NOTE]
 > Der Befehl muss in einem Benutzerkontext ausgeführt werden, um einen gültigen Status abzurufen.
 
-- **NgcSet:** Auf „JA“ festlegen, wenn für den aktuell angemeldeten Benutzer eine Windows Hello-Taste eingestellt ist.
-- **NgcKeyId:** ID der Windows Hello-Taste, wenn diese für den aktuell angemeldeten Benutzer eingestellt ist.
-- **CanReset:** Gibt an, ob die Windows Hello-Taste vom Benutzer zurückgesetzt werden kann. 
-- **Mögliche Werte:** „DestructiveOnly“, „NonDestructiveOnly“, „DestructiveAndNonDestructive“ oder „Unknown“ bei einem Fehler. 
+- **NgcSet:** Auf „JA“ festlegen, wenn für den derzeit angemeldeten Benutzer eine Windows Hello-Taste eingestellt ist.
+- **NgcKeyId:** ID der Windows Hello-Taste, wenn diese für den derzeit angemeldeten Benutzer eingestellt ist.
+- **CanReset:** Gibt an, ob die Windows Hello-Taste vom Benutzer zurückgesetzt werden kann.
+- **Mögliche Werte:** „DestructiveOnly“, „NonDestructiveOnly“, „DestructiveAndNonDestructive“ oder „Unknown“ bei einem Fehler.
 - **WorkplaceJoined:** Auf „JA“ festlegen, wenn für Azure AD registrierte Konten im aktuellen NTUSER-Kontext zum Gerät hinzugefügt wurden.
-- **WamDefaultSet:** Auf „JA“ festlegen, wenn für den angemeldeten Benutzer ein standardmäßiges WAM-WebAccount erstellt wird. In diesem Feld wird u.U. ein Fehler angezeigt, wenn „dsreg /status“ von einer Eingabeaufforderung mit erhöhten Rechten ausgeführt wird. 
+- **WamDefaultSet:** Auf „JA“ festlegen, wenn für den angemeldeten Benutzer ein standardmäßiges WAM-WebAccount erstellt wird. In diesem Feld wird u.U. ein Fehler angezeigt, wenn „dsreg /status“ von einer Eingabeaufforderung mit erhöhten Rechten ausgeführt wird.
 - **WamDefaultAuthority:** Für Azure AD auf „organizations“ (Organisationen) festgelegt.
 - **WamDefaultId:** Immer „https://login.microsoft.com“ für Azure AD.
-- **WamDefaultGUID:** Die GUID des WAM-Anbieters (Azure AD/Microsoft-Konto) für das standardmäßige WAM-WebAccount. 
+- **WamDefaultGUID:** Die GUID des WAM-Anbieters (Azure AD/Microsoft-Konto) für das standardmäßige WAM-WebAccount.
 
 ### <a name="sample-user-state-output"></a>Beispielausgabe für den Benutzerstatus
 
@@ -201,7 +201,7 @@ Dieser Abschnitt wird nur angezeigt, wenn das Gerät in eine Domäne eingebunden
 
 In diesem Abschnitt werden verschiedene Tests durchgeführt, um die Diagnose von Join-Fehlern zu erleichtern. Dieser Abschnitt enthält auch die Details des vorherigen (?). Diese Informationen umfassen die Fehlerphase, den Fehlercode, die Serveranfrage-ID, den HTTP-Status der Serverantwort und die Fehlermeldung der Serverantwort.
 
-- **Benutzerkontext:** Der Kontext, in dem die Diagnose durchgeführt wird. Mögliche Werte: SYSTEM, UN-ELEVATED User (Benutzer ohne erhöhte Rechte), ELEVATED User (Benutzer mit erhöhten Rechten). 
+- **Benutzerkontext:** Der Kontext, in dem die Diagnose durchgeführt wird. Mögliche Werte: SYSTEM, UN-ELEVATED User (Benutzer ohne erhöhte Rechte), ELEVATED User (Benutzer mit erhöhten Rechten).
 
    > [!NOTE]
    > Da der eigentliche Join im SYSTEM-Kontext durchgeführt wird, ist die Ausführung der Diagnose im SYSTEM-Kontext dem tatsächlichen Join-Szenario am nächsten. Um die Diagnose im SYSTEM-Kontext auszuführen, muss der Befehl „dsregcmd /status“ über eine Befehlszeile mit erhöhten Rechten ausgeführt werden.
@@ -209,22 +209,24 @@ In diesem Abschnitt werden verschiedene Tests durchgeführt, um die Diagnose von
 - **Client Time (Clientzeit):** Die Systemzeit in UTC.
 - **AD Connectivity Test (AD-Verbindungstest):** Der Test führt einen Verbindungstest mit dem Domänencontroller durch. Ein Fehler in diesem Test wird wahrscheinlich zu Join-Fehlern in der Vorabprüfungsphase führen.
 - **AD Configuration Test (AD-Konfigurationstest):** Der Test liest und überprüft, ob das SCP-Objekt in der lokalen AD-Gesamtstruktur ordnungsgemäß konfiguriert ist. Fehler in diesem Test würden wahrscheinlich zu Join-Fehlern mit dem Fehlercode 0x801c001d in der Ermittlungsphase führen.
-- **DRS Discovery Test (DRS-Ermittlungstest):** Der Test ruft die DRS-Endpunkte vom Endpunkt für die Ermittlung von Metadaten ab und führt eine Benutzerbereichsanforderung durch. Fehler in diesem Test würden wahrscheinlich zu Join-Fehlern in der Ermittlungsphase führen.
-- **DRS Connectivity Test (DRS-Verbindungstest):** Der Test führt einen grundlegenden Verbindungstest mit dem DRS-Endpunkt durch.
+- **DRS Discovery Test (DRS-Ermittlungstest):** Der Test ruft die DRS-Endpunkte vom Endpunkt für die Ermittlung von Metadaten ab und führt eine Benutzerbereichsanforderung aus. Fehler in diesem Test würden wahrscheinlich zu Join-Fehlern in der Ermittlungsphase führen.
+- **DRS Connectivity Test (DRS-Verbindungstest):** Der Test führt einen grundlegenden Verbindungstest mit dem DRS-Endpunkt aus.
 - **Token acquisition Test (Tokenbeschaffungstest):** Der Test versucht, ein Azure AD-Authentifizierungstoken abzurufen, wenn der Benutzermandant einem Verbund hinzugefügt wird. Fehler in diesem Test würden wahrscheinlich zu Join-Fehlern in der Authentifizierungsphase führen. Wenn bei der Authentifizierung ein Fehler auftritt, wird „sync join“ als Fallback versucht, sofern der Fallback nicht explizit mit den folgenden Registrierungsschlüsseleinstellungen deaktiviert wird.
+
 ```
-    Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
-    Value: FallbackToSyncJoin
-    Type:  REG_DWORD
-    Value: 0x0 -> Disabled
-    Value: 0x1 -> Enabled
-    Default (No Key): Enabled
- ```
+Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
+Value: FallbackToSyncJoin
+Type:  REG_DWORD
+Value: 0x0 -> Disabled
+Value: 0x1 -> Enabled
+Default (No Key): Enabled
+```
+
 - **Fallback zu Sync-Join:** Auf „Aktiviert“ festlegen, wenn der obige Registrierungsschlüssel NICHT vorhanden ist, um den Fallback zu „Sync Join“ mit Authentifizierungsfehlern zu vermeiden. Diese Option ist ab Windows 10 1803 verfügbar.
 - **Previous Registration (Vorherige Registrierung):** Zeitpunkt des vorherigen Join-Versuchs. Es werden nur fehlerhafte Join-Versuche protokolliert.
 - **Error Phase (Fehlerphase):** Die Join-Phase, in der der Abbruch erfolgte. Mögliche Werte sind „pre-check“, „discover“, „auth“, „join“.
 - **Client ErrorCode (Clientfehlercode):** Der zurückgegebene Clientfehlercode (HRESULT).
-- **Server ErrorCode (Serverfehlercode):** Serverfehlercode, wenn eine Anforderung an den Server gesendet wurde und der Server mit einem Fehlercode antwortete. 
+- **Server ErrorCode (Serverfehlercode):** Serverfehlercode, wenn eine Anforderung an den Server gesendet wurde und der Server mit einem Fehlercode geantwortet hat.
 - **Server Message (Servermeldung):** Servermeldung, die zusammen mit dem Fehlercode zurückgegeben wird.
 - **Https Status:** Der vom Server zurückgegebene HTTP-Status.
 - **Request ID (Anforderungs-ID):** Die an den Server gesendete Clientanforderungs-ID. Praktisch zum Korrelieren mit serverseitigen Protokollen.
@@ -288,7 +290,7 @@ Das folgende Beispiel zeigt, dass Diagnosetests erfolgreich durchgeführt werden
 
 In diesem Abschnitt wird die Ausgabe von Integritätsprüfungen angezeigt, die für ein in die Cloud eingebundenes Gerät durchgeführt wurden.
 
-- **AadRecoveryEnabled:** Bei „JA“ sind die im Gerät gespeicherten Schlüssel nicht verwendbar und das Gerät ist für die Wiederherstellung markiert. Die nächste Anmeldung löst den Wiederherstellungsflow aus und führt zu einer erneuten Registrierung des Geräts.
+- **AadRecoveryEnabled:** Bei „JA“ sind die im Gerät gespeicherten Schlüssel nicht verwendbar, und das Gerät ist für die Wiederherstellung markiert. Die nächste Anmeldung löst den Wiederherstellungsflow aus und führt zu einer erneuten Registrierung des Geräts.
 - **KeySignTest:** Bei „PASSED“ (Erfolgreich) ist die Integrität der Geräteschlüssel nicht beeinträchtigt. Wenn bei „KeySignTest“ ein Fehler auftritt, wird das Gerät in der Regel zur Wiederherstellung markiert. Die nächste Anmeldung löst den Wiederherstellungsflow aus und führt zu einer erneuten Registrierung des Geräts. Für in Azure AD Hybrid eingebundene Geräte erfolgt die Wiederherstellung im Hintergrund. Obwohl sie in Azure AD eingebunden oder in Azure AD registriert sind, fordern die Geräte zur Benutzerauthentifizierung auf, um das Gerät wiederherzustellen und ggf. neu zu registrieren. **KeySignTest erfordert erhöhte Berechtigungen.**
 
 #### <a name="sample-post-join-diagnostics-output"></a>Beispielausgabe für Diagnose nach dem Join
@@ -305,7 +307,7 @@ In diesem Abschnitt wird die Ausgabe von Integritätsprüfungen angezeigt, die f
 
 ## <a name="ngc-prerequisite-check"></a>Überprüfung der NGC-Voraussetzung
 
-In diesem Abschnitt werden die Voraussetzungen für die Bereitstellung von Windows Hello for Business (WHFB) überprüft. 
+In diesem Abschnitt werden die Voraussetzungen für die Bereitstellung von Windows Hello for Business (WHFB) überprüft.
 
 > [!NOTE]
 > Wenn der Benutzer WHFB bereits erfolgreich konfiguriert hat, werden in „dsregcmd/status“ möglicherweise keine Details zur Überprüfung der NGC-Voraussetzung angezeigt.
@@ -345,4 +347,4 @@ In diesem Abschnitt werden die Voraussetzungen für die Bereitstellung von Windo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Bei Fragen lesen Sie unter [Häufig gestellte Fragen zur Geräteverwaltung](faq.yml) nach.
+- [Das Microsoft-Fehlersuchtool](/windows/win32/debug/system-error-code-lookup-tool)

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/23/2021
+ms.date: 04/28/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a6d054f64201bec04ee18f492f7ba69c3cc810
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: fa7f62c43f9d015c1ab10a204189ccebc2999ae9
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987594"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163011"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)
 
@@ -26,6 +26,10 @@ ms.locfileid: "107987594"
 
 In diesem Artikel wird beschrieben, wie Sie einen direkten Verbund mit einer anderen Organisation für die B2B-Zusammenarbeit einrichten. Sie können einen direkten Verbund mit jeder Organisation einrichten, deren Identitätsanbieter das SAML 2.0- oder WS-Verbund-Protokoll unterstützt.
 Wenn Sie einen direkten Verbund mit dem Identitätsanbieter eines Partners einrichten, können neue Gastbenutzer aus dieser Domäne ihr eigenes, vom Identitätsanbieter verwaltetes Organisationskonto verwenden, um sich bei Ihrem Azure AD-Mandanten anzumelden und mit Ihnen zusammenzuarbeiten. Es ist nicht erforderlich, dass der Gastbenutzer ein separates Azure AD-Konto erstellt.
+
+> [!IMPORTANT]
+> - Wir haben die Einschränkung entfernt, die erforderte, dass die Authentifizierungs-URL-Domäne der Zieldomäne entspricht oder von einem zulässigen Identitätsanbieter stammt. Weitere Informationen finden Sie unter [Schritt 1: Ermitteln, ob der Partner seine DNS-Textdatensätze aktualisieren muss](#step-1-determine-if-the-partner-needs-to-update-their-dns-text-records).
+>-  Es wird nun empfohlen, dass der Partner die Zielgruppe des SAML- oder WS-Fed-basierten Identitätsanbieters auf eine mandantenbasierte Zielgruppe festgelegt. Weitere Informationen finden Sie weiter unten in den Abschnitten zu den erforderlichen [SAML 2.0](#required-saml-20-attributes-and-claims) und [WS-Fed](#required-ws-fed-attributes-and-claims)-Attributen und -Ansprüchen.
 
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Wann wird ein Gastbenutzer mit direktem Verbund authentifiziert?
 Nachdem Sie den direkten Verbund mit einer Organisation eingerichtet haben, werden alle neuen Gastbenutzer, die Sie einladen, mithilfe des direkten Verbunds authentifiziert. Es ist wichtig zu beachten, dass durch das Einrichten des direkten Verbunds nicht die Authentifizierungsmethode für Gastbenutzer geändert wird, die bereits eine Einladung von Ihnen eingelöst haben. Im Folgenden finden Sie einige Beispiele:
@@ -57,21 +61,6 @@ Beim direkten Verbund können Sie Gastbenutzern auch einen direkten Link zu eine
 ### <a name="dns-verified-domains-in-azure-ad"></a>DNS-verifizierte Domänen in Azure AD
 Die Domäne, mit der Sie einen Verbund einrichten möchten, darf in Azure AD ***nicht*** DNS-verifiziert werden. Es ist zulässig, einen direkten Verbund mit nicht verwalteten (E-Mail-verifizierten oder „viralen“) Azure AD-Mandanten einzurichten, da sie nicht DNS-verifiziert sind.
 
-### <a name="authentication-url"></a>Authentifizierungs-URL
-Der direkte Verbund ist nur für Richtlinien zulässig, bei denen die Domäne der Authentifizierungs-URL mit der Zieldomäne übereinstimmt, oder wenn es sich bei der Authentifizierungs-URL um einen dieser zulässigen Identitätsanbieter handelt (diese Liste kann geändert werden):
-
--   accounts.google.com
--   pingidentity.com
--   login.pingone.com
--   okta.com
--   oktapreview.com
--   okta-emea.com
--   my.salesforce.com
--   federation.exostar.com
--   federation.exostartest.com
-
-Wenn Sie z. B. den direkten Verbund für **fabrikam.com** einrichten, besteht die Authentifizierungs-URL `https://fabrikam.com/adfs` die Überprüfung. Ein Host in derselben Domäne wird ebenfalls bestehen, z. B. `https://sts.fabrikam.com/adfs`. Die Authentifizierungs-URL `https://fabrikamconglomerate.com/adfs` oder `https://fabrikam.com.uk/adfs` für dieselbe Domäne wird jedoch nicht bestehen.
-
 ### <a name="signing-certificate-renewal"></a>Signaturzertifikatverlängerung
 Wenn Sie die Metadaten-URL in den Identitätsanbietereinstellungen angeben, verlängert Azure AD das Signaturzertifikat automatisch, wenn es abläuft. Wenn das Zertifikat jedoch aus irgendeinem Grund vor der Ablaufzeit rotiert wird, oder wenn Sie keine Metadaten-URL bereitstellen, kann Azure AD es nicht verlängern. In diesem Fall müssen Sie das Signaturzertifikat manuell aktualisieren.
 
@@ -90,8 +79,36 @@ Wenn direkter Verbund mit einer Partnerorganisation eingerichtet ist, hat dieser
 Nein, in diesem Szenario sollte die Funktion [E-Mail-Einmalkennung](one-time-passcode.md) verwendet werden. Ein „teilweise synchronisierter Mandant“ bezieht sich auf einen Azure AD-Partnermandanten, bei dem lokale Benutzeridentitäten nicht vollständig mit der Cloud synchronisiert sind. Ein Gast, dessen Identität noch nicht in der Cloud vorhanden ist, der aber versucht, Ihre B2B-Einladung einzulösen, kann sich dann nicht anmelden. Die Einmalkennungsfunktion gestattet diesem Gast die Anmeldung. Die direkte Verbundfunktion behandelt Szenarien, in denen der Gast über ein eigenes vom Identitätsanbieter verwaltetes Organisationskonto verfügt, die Organisation aber über gar keine Azure AD-Präsenz verfügt.
 ### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>Wenn der direkte Verbund mit einer Organisation konfiguriert ist, muss dann jedem Gast eine individuelle Einladung gesendet werden, die dieser einlösen muss?
 Durch das Einrichten des direkten Verbunds wird nicht die Authentifizierungsmethode für Gastbenutzer geändert, die bereits eine Einladung von Ihnen eingelöst haben. Sie können die Authentifizierungsmethode eines Gastbenutzers aktualisieren, indem Sie [seinen Einlösungsstatus zurücksetzen](reset-redemption-status.md).
-## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>Schritt 1: Konfigurieren Sie den Identitätsanbieter der Partnerorganisation
-Zunächst muss Ihre Partnerorganisation ihren Identitätsanbieter mit den erforderlichen Ansprüchen und Vertrauenspersonen vertraut machen. 
+
+## <a name="step-1-determine-if-the-partner-needs-to-update-their-dns-text-records"></a>Schritt 1: Ermitteln, ob der Partner seine DNS-Textdatensätze aktualisieren muss
+
+Je nach seinem IdP muss der Partner möglicherweise seine DNS-Einträge aktualisieren, um einen direkten Verbund mit Ihnen zu ermöglichen. Verwenden Sie die folgenden Schritte, um zu ermitteln, ob DNS-Updates erforderlich sind.
+
+1. Wenn der IdP des Partners einer der folgenden zulässigen Identitätsanbieter ist, sind keine DNS-Änderungen erforderlich (Änderungen an der Liste vorbehalten):
+
+     - accounts.google.com
+     - pingidentity.com
+     - login.pingone.com
+     - okta.com
+     - oktapreview.com
+     - okta-emea.com
+     - my.salesforce.com
+     - federation.exostar.com
+     - federation.exostartest.com
+     - idaptive.app
+     - idaptive.qa
+
+2. Wenn der IdP nicht zu den oben aufgeführten zulässigen Anbietern gehört, überprüfen Sie die IdP-Authentifizierungs-URL des Partners, um festzustellen, ob die Domäne mit der Zieldomäne oder einem Host innerhalb der Zieldomäne übereinstimmt. Anders ausgedrückt: Beim Einrichten eines direkten Verbunds für `fabrikam.com` gilt Folgendes:
+
+     - Wenn die Authentifizierungs-URL `https://fabrikam.com` oder `https://sts.fabrikam.com/adfs` (ein Host in derselben Domäne) lautet, sind keine DNS-Änderungen erforderlich.
+     - Wenn die Authentifizierungs-URL `https://fabrikamconglomerate.com/adfs`  oder  `https://fabrikam.com.uk/adfs` lautet, stimmt die Domäne nicht mit der fabrikam.com-Domäne überein. Der Partner muss seiner DNS-Konfiguration somit einen Textdatensatz für die Authentifizierungs-URL hinzufügen. Fahren Sie mit dem nächsten Schritt fort.
+
+3. Wenn gemäß dem vorherigen Schritt DNS-Änderungen erforderlich sind, bitten Sie den Partner, den DNS-Einträgen seiner Domäne einen TXT-Eintrag hinzuzufügen, wie im folgenden Beispiel gezeigt:
+
+   `fabrikam.com.  IN   TXT   DirectFedAuthUrl=https://fabrikamconglomerate.com/adfs`
+## <a name="step-2-configure-the-partner-organizations-identity-provider"></a>Schritt 2: Konfigurieren des Identitätsanbieters der Partnerorganisation
+
+Als Nächstes muss Ihre Partnerorganisation ihren Identitätsanbieter mit den erforderlichen Ansprüchen und Vertrauenspersonen vertraut machen.
 
 > [!NOTE]
 > Wir verwenden als Beispiel Active Directory-Verbunddienste (AD FS), um zu veranschaulichen, wie ein Identitätsanbieter für den direkten Verbund konfiguriert wird. Beispiele zum Konfigurieren von AD FS als SAML 2.0- oder WS-Verbund-Identitätsanbieter zur Vorbereitung des direkten Verbunds finden Sie unter [Konfigurieren des direkten Verbunds mit AD FS](direct-federation-adfs.md).
@@ -111,7 +128,7 @@ Erforderliche Attribute für die SAML 2.0-Antwort des Identitätsanbieters:
 |attribute  |Wert  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|Zielgruppe     |`urn:federation:MicrosoftOnline`         |
+|Zielgruppe     |`https://login.microsoftonline.com/<tenant ID>/` (Empfohlene Mandantengruppe.) Ersetzen Sie `<tenant ID>` durch die Mandanten-ID des Azure AD-Mandanten, mit dem Sie einen direkten Verbund einrichten.<br><br>`urn:federation:MicrosoftOnline` (Dieser Wert ist veraltet.)          |
 |Issuer (Aussteller)     |Der Aussteller-URI des Partneridentitätsanbieters, z. B. `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
@@ -137,7 +154,7 @@ Erforderliche Attribute in der WS-Verbund-Nachricht vom Identitätsanbieter:
 |attribute  |Wert  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
-|Zielgruppe     |`urn:federation:MicrosoftOnline`         |
+|Zielgruppe     |`https://login.microsoftonline.com/<tenant ID>/` (Empfohlene Mandantengruppe.) Ersetzen Sie `<tenant ID>` durch die Mandanten-ID des Azure AD-Mandanten, mit dem Sie einen direkten Verbund einrichten.<br><br>`urn:federation:MicrosoftOnline` (Dieser Wert ist veraltet.)          |
 |Issuer (Aussteller)     |Der Aussteller-URI des Partneridentitätsanbieters, z. B. `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 Erforderliche Ansprüche für das vom Identitätsanbieter ausgegebene WS-Verbund-Token:
@@ -147,7 +164,7 @@ Erforderliche Ansprüche für das vom Identitätsanbieter ausgegebene WS-Verbund
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-## <a name="step-2-configure-direct-federation-in-azure-ad"></a>Schritt 2: Direkten Verbund in Azure AD konfigurieren 
+## <a name="step-3-configure-direct-federation-in-azure-ad"></a>Schritt 3: Konfigurieren des direkten Verbunds in Azure AD 
 Als Nächstes konfigurieren Sie den direkten Verbund mit dem in Schritt 1 in Azure AD konfigurierten Identitätsanbieter. Sie können das Azure AD-Portal oder PowerShell verwenden. Es kann 5–10 Minuten dauern, bis die direkte Verbundrichtlinie wirksam wird. Versuchen Sie während dieser Zeit nicht, eine Einladung für die direkte Verbunddomäne einzulösen. Die folgenden Attribute sind erforderlich:
 - Aussteller-URI des Partneridentitätsanbieters
 - Passiver Authentifizierungsendpunkt des Partneridentitätsanbieters (nur HTTPS wird unterstützt)
@@ -178,13 +195,13 @@ Als Nächstes konfigurieren Sie den direkten Verbund mit dem in Schritt 1 in Azu
 
 ### <a name="to-configure-direct-federation-in-azure-ad-using-powershell"></a>So konfigurieren Sie direkten Verbund in Azure AD mit der PowerShell
 
-1. Installieren Sie die neueste Version des Azure AD PowerShell für Graph-Moduls ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)). (Wenn Sie detaillierte Schritte benötigen, enthält der Schnellstart die Anleitung [PowerShell-Modul](b2b-quickstart-invite-powershell.md#prerequisites).)
+1. Installieren Sie die neueste Version des Azure AD PowerShell für Graph-Moduls ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)). Wenn Sie detaillierte Schritte benötigen, enthält der Schnellstart die Anleitung [PowerShell-Modul](b2b-quickstart-invite-powershell.md#prerequisites).
 2. Führen Sie den folgenden Befehl aus: 
    ```powershell
    Connect-AzureAD
    ```
-1. Melden Sie sich an der Anmeldeaufforderung mit dem verwalteten globalen Administratorkonto an. 
-2. Führen Sie die folgenden Befehle aus, und ersetzen Sie dabei die Werte aus der Verbundmetadatendatei. Für AD FS-Server und Okta lautet die Verbunddatei „federationmetadata.xml“, z. B.: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml`. 
+3. Melden Sie sich an der Anmeldeaufforderung mit dem verwalteten globalen Administratorkonto an. 
+4. Führen Sie die folgenden Befehle aus, und ersetzen Sie dabei die Werte aus der Verbundmetadatendatei. Für AD FS-Server und Okta lautet die Verbunddatei „federationmetadata.xml“, z. B.: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml`. 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -198,7 +215,7 @@ Als Nächstes konfigurieren Sie den direkten Verbund mit dem in Schritt 1 in Azu
    New-AzureADExternalDomainFederation -ExternalDomainName $domainName  -FederationSettings $federationSettings
    ```
 
-## <a name="step-3-test-direct-federation-in-azure-ad"></a>Schritt 3: Direkten Verbund in Azure AD testen
+## <a name="step-4-test-direct-federation-in-azure-ad"></a>Schritt 4: Testen des direkten Verbunds in Azure AD
 Testen Sie nun Ihre Einrichtung des direkten Verbunds, indem Sie einen neuen B2B-Gastbenutzer einladen. Detailinformationen finden Sie unter [Hinzufügen von Azure AD B2B-Zusammenarbeitsbenutzern im Azure-Portal](add-users-administrator.md).
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Wie bearbeite eine direkte Verbundbeziehung?

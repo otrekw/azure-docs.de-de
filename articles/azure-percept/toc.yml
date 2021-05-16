@@ -18,7 +18,7 @@
       href: overview-percept-security.md
     - name: 80/20-Integration
       href: overview-8020-integration.md
-    - name: Aktualisieren Ihrer Percept-Geräte
+    - name: Geräteupdates
       href: overview-update-experience.md
 - name: Schnellstarts
   items:
@@ -44,6 +44,10 @@
       items:
         - name: LED- und Tastenverhalten
           href: audio-button-led-behavior.md
+    - name: Sicherheit
+      items:
+        - name: Empfehlungen für Firewallkonfiguration und Sicherheit
+          href: concept-security-configuration.md
 - name: Anleitungen
   items:
     - name: "Entwicklung von Vision-Lösungen mit Azure Percept\_DK"
@@ -58,14 +62,16 @@
           href: how-to-view-telemetry.md
     - name: "Entwicklung von Sprachlösungen mit Azure Percept\_DK"
       items:
-        - name: Konfigurieren Ihres Sprach-Assistenten in Azure Percept Studio
-          href: how-to-configure-voice-assistant.md
         - name: "Konfigurieren Ihres Sprach-Assistenten in IoT\_Hub"
+          href: how-to-configure-voice-assistant.md
+        - name: Konfigurieren Ihres Sprach-Assistenten in Azure Percept Studio
           href: how-to-manage-voice-assistant.md
     - name: "Aktualisieren Ihrer Azure\_Percept-Geräte"
       items:
         - name: Einrichten von Over-the-Air-Updates
           href: how-to-set-up-over-the-air-updates.md
+        - name: Identifizieren Ihres Updatepakets
+          href: how-to-select-update-package.md
         - name: "Aktualisieren Ihres Azure Percept\_DK-Geräts per Funk (Over-the-Air-Update)"
           href: how-to-update-over-the-air.md
         - name: "Aktualisieren Ihres Azure\_Percept-Geräts über USB"
@@ -78,7 +84,7 @@
           href: how-to-connect-to-percept-dk-over-serial.md
     - name: Tools
       items:
-        - name: DevTools-Paketinstallationsprogramm
+        - name: "Dev\_Tools-Paketinstallationsprogramm"
           href: dev-tools-installer.md
     - name: Problembehandlung
       items:
@@ -100,5 +106,5 @@
           href: azure-percept-dk-datasheet.md
         - name: "Datenblatt für Azure\_Percept-Vision"
           href: azure-percept-vision-datasheet.md
-        - name: Datenblatt für Azure Percept-Audio
+        - name: "Datenblatt für Azure\_Percept-Audio"
           href: azure-percept-audio-datasheet.md

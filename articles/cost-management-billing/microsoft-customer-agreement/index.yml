@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Erste Schritte mit der Microsoft-Kundenvereinbarung
+summary: Hier finden Sie Informationen zu den ersten Schritten im Zusammenhang mit der Verwaltung Ihrer Abrechnung und Abonnements unter Ihrem Microsoft-Kundenvereinbarung. Sie erfahren, wie Sie Ihre Kosten nachvollziehen und optimieren sowie sicheren Zugriff auf Ihre Abrechnungsumgebung gewährleisten.
+metadata:
+  title: Erste Schritte mit der Microsoft-Kundenvereinbarung
+  description: Hier finden Sie Informationen zu den ersten Schritten mit Ihrer Microsoft-Kundenvereinbarung.
+  ms.service: cost-management-billing
+  ms.subservice: billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.date: 05/05/2021
+  ms.openlocfilehash: 6a7627fbce3042f23f680c1d0439e50450645082
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108747825"
+landingContent:
+- title: Erste Schritte
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist eine Microsoft-Kundenvereinbarung?
+      url: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: get-started
+    links:
+    - text: Wichtige nächste Schritte nach dem Annehmen der Vereinbarung
+      url: microsoft-customer-agreement-get-started.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Übertragen des Abrechnungsbesitzes von MOSA auf MCA
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Übertragen des Abrechnungsbesitzes von EA auf MCA
+      url: ../manage/mca-setup-account.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: reference
+    links:
+    - text: 'Übersicht über APIs: Migrieren von EA zu MCA'
+      url: ../costs/migrate-cost-management-api.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: API-Unterschiede zwischen EA und MCA
+      url: /rest/api/billing/
+- title: Verwalten der Abrechnung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zu meinem Abrechnungszyklus
+      url: ../understand/mca-understand-your-invoice.md#billing-period
+  - linkListType: tutorial
+    links:
+    - text: Empfangen einer Rechnung im Rahmen meiner Vereinbarung
+      url: ../understand/review-customer-agreement-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Was ist ein Abrechnungsprofil, und wie wird es verwaltet?
+      url: ../manage/mca-section-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Bezahlen meiner Rechnung
+      url: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Einrichten eines Administrators für die Abrechnungsverwaltung
+      url: ../manage/understand-mca-roles.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Starten der Abrechnung für meine Vereinbarung
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: video
+    links:
+    - text: Strukturieren von Kosten
+      url: https://www.youtube.com/watch?v=7RxTfShGHwU
+    - text: Verwalten des Zugriffs auf das Abrechnungskonto
+      url: https://www.youtube.com/watch?v=9sqglBlKkho
+    - text: Informationen zu Ihrer Rechnung
+      url: https://www.youtube.com/watch?v=e2LGZZ7GubA
+- title: Abonnements verwalten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Was ist Active Directory?
+      url: ../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Verwalten von Mandanten
+      url: manage-tenants.md
+    - text: Hinzufügen, Ändern oder Suchen von Azure-Abonnementadministratoren
+      url: ../manage/add-change-subscription-administrator.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Erstellen neuer Abonnements
+      url: ../manage/create-subscription.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Problembehandlung beim Abonnementzugriff
+      url: troubleshoot-subscription-access.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json

@@ -130,14 +130,11 @@ conceptualContent:
     - title: Tools
       links:
         - itemType: overview
+          text: Informationen zu Speech Studio (Benutzeroberfläche ohne Code)
+          url: speech-studio-overview.md
+        - itemType: overview
           text: Informationen zur Speech-Befehlszeilenschnittstelle (Befehlszeilentool ohne Code)
           url: spx-overview.md
-        - itemType: how-to-guide
-          text: Grundlagen der Speech-Befehlszeilenschnittstelle (Installation und Beispiele)
-          url: spx-basics.md
-        - itemType: overview
-          text: Informationen zu Speech Studio (Anpassungen)
-          url: 'https://speech.microsoft.com'
     - title: Hosting
       links:
         - itemType: how-to-guide

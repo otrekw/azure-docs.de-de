@@ -1,18 +1,18 @@
 ---
 title: 'Medien-Blaupausenbeispiel: Übersicht'
 description: Übersicht über das Medien-Blaupausenbeispiel Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Medienkontrollen.
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: f2b9e29d8f5095947587107cc372beb34b18abb7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 1fb9b611434cba892f94f8a2ccf86acef04cad3c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034984"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757131"
 ---
 # <a name="overview-of-the-media-blueprint-sample"></a>Übersicht über das Medien-Blaupausenbeispiel
 
-Das Medien-Blaupausenbeispiel enthält eine Reihe von Schutzmaßnahmen für Governance, für die [Azure Policy](../../../policy/overview.md) verwendet wird und die für den [Mediennachweis](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) hilfreich sind. 
+Das Medien-Blaupausenbeispiel enthält eine Reihe von Schutzmaßnahmen für Governance, für die [Azure Policy](../../../policy/overview.md) verwendet wird und die für den [Mediennachweis](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) hilfreich sind.
 
 ## <a name="blueprint-sample"></a>Blaupausenbeispiel
 

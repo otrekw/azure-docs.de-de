@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4b95c25400317b2baac694f4ba2b1b1dc1eae098
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3ecc0e84541a9566b3f9e39d40f90a378ea87db5
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435153"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226262"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus-Trigger für Azure Functions
 
@@ -331,7 +331,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**queueName**|**QueueName**|Der Name der zu überwachenden Warteschlange.  Legen Sie diesen nur fest, wenn Sie eine Warteschlange überwachen (nicht für ein Thema).
 |**topicName**|**TopicName**|Der Name des zu überwachenden Themas. Legen Sie diesen nur fest, wenn Sie ein Thema überwachen (nicht für eine Warteschlange).|
 |**subscriptionName**|**SubscriptionName**|Der Name des zu überwachenden Abonnements. Legen Sie diesen nur fest, wenn Sie ein Thema überwachen (nicht für eine Warteschlange).|
-|**connection**|**Connection**|Der Name einer App-Einstellung, die die Service Bus-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyServiceBus“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyServiceBus“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Service Bus-Verbindungszeichenfolge aus der App-Einstellung „AzureWebJobsServiceBus“.<br><br>Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string) aus. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein. |
+|**connection**|**Connection**|Der Name einer App-Einstellung, die die Service Bus-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyServiceBus“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyServiceBus“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Service Bus-Verbindungszeichenfolge aus der App-Einstellung „AzureWebJobsServiceBus“.<br><br>Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string) aus. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein. <br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Siehe [Verbindungen](./functions-reference.md#connections).|
 |**accessRights**|**zugreifen**|Zugriffsberechtigungen für die Verbindungszeichenfolge. Verfügbare Werte sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht über die Berechtigung **Manage** verfügt, legen Sie `accessRights` auf „listen“ fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern. In Version 2.x und höheren Versionen von Azure Functions ist diese Eigenschaft nicht verfügbar, da die aktuelle Version des Service Bus SDK Verwaltungsvorgänge nicht unterstützt.|
 |**isSessionsEnabled**|**IsSessionsEnabled**|`true`, wenn eine Verbindung mit einer [sitzungsabhängigen](../service-bus-messaging/message-sessions.md) Warteschlange oder einem Abonnement hergestellt wird. Andernfalls `false`, wobei es sich um den Standardwert handelt.|
 
@@ -347,9 +347,14 @@ Die folgenden Parametertypen sind für die Warteschlangen- oder Themanachricht v
 * `byte[]`: Nützlich für Binärdaten.
 * Ein benutzerdefinierter Typ: Wenn die Nachricht JSON enthält, versucht Azure Functions, die JSON-Daten zu deserialisieren.
 * `BrokeredMessage`: Gibt die deserialisierte Nachricht mit der [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)-Methode zurück.
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver): Wird zum Empfangen und Bestätigen von Nachrichten aus dem Nachrichtencontainer verwendet (erforderlich, wenn [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) auf `false` festgelegt ist).
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver): Wird zum Empfangen und Bestätigen von Nachrichten aus dem Nachrichtencontainer verwendet (erforderlich, wenn [`autoComplete`](functions-bindings-service-bus.md#hostjson-settings) auf `false` festgelegt ist).
 
 Diese Parametertypen gelten für Azure Functions Version 1.x. Verwenden Sie für 2.x und höhere Versionen [`Message`](/dotnet/api/microsoft.azure.servicebus.message) anstelle von `BrokeredMessage`.
+
+### <a name="additional-types"></a>Zusätzliche Typen 
+Apps, die mindestens Version 5.0.0 der Service Bus-Erweiterung nutzen, verwenden den `ServiceBusReceivedMessage`-Typ in [Azure.Messaging.Service Bus](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) anstelle des Typs im Namespace [Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message). In dieser Version wird Unterstützung des Legacytyps `Message` zugunsten der folgenden Typen aufgegeben:
+
+- [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage)
 
 # <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
@@ -361,6 +366,16 @@ Die folgenden Parametertypen sind für die Warteschlangen- oder Themanachricht v
 * `BrokeredMessage`: Gibt die deserialisierte Nachricht mit der [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)-Methode zurück.
 
 Diese Parameter gelten für Azure Functions Version 1.x. Verwenden Sie für 2.x und höhere Versionen [`Message`](/dotnet/api/microsoft.azure.servicebus.message) anstelle von `BrokeredMessage`.
+
+### <a name="additional-types"></a>Zusätzliche Typen 
+Apps, die mindestens Version 5.0.0 der Service Bus-Erweiterung nutzen, verwenden den `ServiceBusReceivedMessage`-Typ in [Azure.Messaging.Service Bus](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) anstelle des Typs im Namespace [Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message). In dieser Version wird Unterstützung des Legacytyps `Message` zugunsten der folgenden Typen aufgegeben:
+
+- [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage)
+
+### <a name="additional-types"></a>Zusätzliche Typen 
+Apps, die mindestens Version 5.0.0 der Service Bus-Erweiterung nutzen, verwenden den `ServiceBusReceivedMessage`-Typ in [Azure.Messaging.Service Bus](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) anstelle des Typs im Namespace [Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message). In dieser Version wird Unterstützung des Legacytyps `Message` zugunsten der folgenden Typen aufgegeben:
+
+- [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -411,9 +426,20 @@ Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bind
 |`ReplyTo`|`string`|Die Antwort auf die Warteschlangenadresse.|
 |`SequenceNumber`|`long`|Eindeutige Nummer, die vom Service Bus einer Nachricht zugewiesen wird.|
 |`To`|`string`|Die Zieladresse.|
-|`UserProperties`|`IDictionary<string, object>`|Eigenschaften, die vom Absender festgelegt werden.|
+|`UserProperties`|`IDictionary<string, object>`|Eigenschaften, die vom Absender festgelegt werden. (Dies wird ab Version 5.x der Erweiterung nicht unterstützt. Bitte verwenden Sie `ApplicationProperties`.)|
 
 [Codebeispiele](#example) mit diesen Eigenschaften finden Sie weiter oben in diesem Artikel.
+
+### <a name="additional-message-metadata"></a>Zusätzliche Nachrichtenmetadaten
+
+Die folgenden Metadateneigenschaften werden für Apps unterstützt, die mindestens Version 5.0.0 der Erweiterung verwenden. Diese Eigenschaften sind Mitglieder der [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage)-Klasse.
+
+|Eigenschaft|type|BESCHREIBUNG|
+|--------|----|-----------|
+|`ApplicationProperties`|`ApplicationProperties`|Eigenschaften, die vom Absender festgelegt werden. Verwenden Sie dies statt der Metadateneigenschaft `UserProperties`.|
+|`Subject`|`string`|Die anwendungsspezifische Bezeichnung, die statt der Metadateneigenschaft `Label` verwendet werden kann.|
+|`MessageActions`|`ServiceBusMessageActions`|Der Satz von Aktionen, die für `ServiceBusReceivedMessage` ausgeführt werden können. Dies kann statt der Metadateneigenschaft `MessageReceiver` verwendet werden.
+|`SessionActions`|`ServiceBusSessionMessageActions`|Der Satz von Aktionen, die für eine Sitzung und `ServiceBusReceivedMessage` ausgeführt werden können. Dies kann statt der Metadateneigenschaft `MessageSession` verwendet werden.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

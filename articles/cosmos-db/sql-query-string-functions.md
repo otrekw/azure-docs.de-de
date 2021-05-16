@@ -1,19 +1,19 @@
 ---
 title: Zeichenfolgenfunktionen in der Abfragesprache für Azure Cosmos DB
 description: Erfahren Sie mehr über SQL-Systemfunktionen für Zeichenfolgen in Azure Cosmos DB.
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.author: girobins
+ms.date: 05/04/2021
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 5e84a679f0bc26b701dc1d51db3605c452675ea3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fe60a119626dca51f5dd4f38a81f6a2ef99c83c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96545280"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743721"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>Zeichenfolgenfunktionen (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,30 +24,30 @@ Mit Zeichenfolgenfunktionen können Sie Vorgänge für Zeichenfolgen in Azure Co
 
 Die folgenden Skalarfunktionen führen einen Vorgang für einen Zeichenfolgen-Eingabewert durch und geben eine Zeichenfolge, einen numerischen Wert oder einen booleschen Wert zurück:
   
-* [CONCAT](sql-query-concat.md)
-* [CONTAINS](sql-query-contains.md)
-* [ENDSWITH](sql-query-endswith.md)
-* [INDEX_OF](sql-query-index-of.md)
-* [LEFT](sql-query-left.md)
-* [LENGTH](sql-query-length.md)
-* [LOWER](sql-query-lower.md)
-* [LTRIM](sql-query-ltrim.md)
-* [REGEXMATCH](sql-query-regexmatch.md)
-* [REPLACE](sql-query-replace.md)
-* [REPLICATE](sql-query-replicate.md)
-* [REVERSE](sql-query-reverse.md)
-* [RIGHT](sql-query-right.md)
-* [RTRIM](sql-query-rtrim.md)
-* [STARTSWITH](sql-query-startswith.md)
-* [StringToArray](sql-query-stringtoarray.md)
-* [StringToBoolean](sql-query-stringtoboolean.md)
-* [StringToNull](sql-query-stringtonull.md)
-* [StringToNumber](sql-query-stringtonumber.md)
-* [StringToObject](sql-query-stringtoobject.md)
-* [SUBSTRING](sql-query-substring.md)
-* [ToString](sql-query-tostring.md)
-* [TRIM](sql-query-trim.md)
-* [UPPER](sql-query-upper.md)
+| Systemfunktion                                 | Indexnutzung        | Indexnutzung in Abfragen mit [skalaren Aggregatfunktionen](index-overview.md#index-utilization-for-scalar-aggregate-functions) | Bemerkungen                                                      |
+| ----------------------------------------------- | ------------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
+| [CONCAT](sql-query-concat.md)                   | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [CONTAINS](sql-query-contains.md)               | Vollständige Indexüberprüfung    | Vollständige Überprüfung                                              |                                                              |
+| [ENDSWITH](sql-query-endswith.md)               | Vollständige Indexüberprüfung    | Vollständige Überprüfung                                              |                                                              |
+| [INDEX_OF](sql-query-index-of.md)               | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [LEFT](sql-query-left.md)                       | Genaue Indexüberprüfung | Genaue Indexüberprüfung                                     |                                                              |
+| [LENGTH](sql-query-length.md)                   | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [LOWER](sql-query-lower.md)                     | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [LTRIM](sql-query-ltrim.md)                     | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [REGEXMATCH](sql-query-regexmatch.md)           | Vollständige Indexüberprüfung    | Vollständige Überprüfung                                              |                                                              |
+| [REPLACE](sql-query-replace.md)                 | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [REPLICATE](sql-query-replicate.md)             | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [REVERSE](sql-query-reverse.md)                 | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [RIGHT](sql-query-right.md)                     | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [RTRIM](sql-query-rtrim.md)                     | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [STARTSWITH](sql-query-startswith.md)           | Genaue Indexüberprüfung | Genaue Indexüberprüfung                                     | Wird zu „Erweiterte Indexüberprüfung“, wenn die Option „Keine Groß-/Kleinschreibung“ auf „true“ gesetzt ist. |
+| [STRINGEQUALS](sql-query-stringequals.md)       | Indexsuche         | Indexsuche                                             | Wird zu „Erweiterte Indexüberprüfung“, wenn die Option „Keine Groß-/Kleinschreibung“ auf „true“ gesetzt ist. |
+| [StringToArray](sql-query-stringtoarray.md)     | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [StringToBoolean](sql-query-stringtoboolean.md) | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [StringToNull](sql-query-stringtonull.md)       | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+| [StringToNumber](sql-query-stringtonumber.md)   | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
+
+Erfahren Sie mehr über [Indexnutzung](index-overview.md#index-usage) in Azure Cosmos DB.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

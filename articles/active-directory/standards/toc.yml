@@ -1,0 +1,35 @@
+- name: Dokumentation zu Standards
+  href: index.yml
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Übersicht über Identitätsstandards
+      href: standards-overview.md
+- name: Erzielen von NIST AALs
+  expanded: true
+  items:
+    - name: NIST-Übersicht
+      href: nist-overview.md
+    - name: Informationen zu Authentifikator-Sicherheitsstufen
+      href: nist-about-authenticator-assurance-levels.md
+    - name: Authentifikatorgrundlagen
+      href: nist-authentication-basics.md
+    - name: Authentifikatortypen und Microsoft-Methoden
+      href: nist-authenticator-types.md
+    - name: "Erzielen von AAL\_1"
+      href: nist-authenticator-assurance-level-1.md
+    - name: "Erzielen von AAL\_2"
+      href: nist-authenticator-assurance-level-2.md
+    - name: "Erzielen von AAL\_3"
+      href: nist-authenticator-assurance-level-3.md
+- name: "Erzielen von FedRAMP\_High-Compliance"
+  expanded: true
+  items:
+    - name: Konfigurieren von Azure Active Directory für FedRAMP High Impact
+      href: configure-azure-active-directory-for-fedramp-high-impact.md
+    - name: Konfigurieren von FedRAMP-Zugriffskontrollen
+      href: fedramp-access-controls.md
+    - name: Konfigurieren von Identifizierungs- und Authentifizierungskontrollen
+      href: fedramp-identification-and-authentication-controls.md
+    - name: Konfigurieren zusätzlicher Kontrollen
+      href: fedramp-other-controls.md

@@ -1,135 +1,132 @@
 ### YamlMime:Hub
 title: Dokumentation zu Azure Media Services
-summary: Azure Media Services ist eine Sammlung von Medienworkflowdiensten für Cloud und Edge, mit denen Sie Lösungen erstellen können, die Live- und Batchvideoanalyse, Transcodierung, Bereitstellungsdienste für mehrere Geräte, Inhaltsschutz und Übertragung von Liveereignissen im großen Stil erfordern.
+summary: 'Azure Media Services ist eine Sammlung von Medienworkflowdiensten für Cloud und Edge, mit denen Sie Lösungen erstellen können, die Live- und Batchvideoanalyse, Transcodierung, Bereitstellungsdienste für mehrere Geräte, Inhaltsschutz und Übertragung von Liveereignissen im großen Stil erfordern.'
 brand: azure
 metadata:
   title: Dokumentation zu Azure Media Services
-  description: Azure Media Services ist eine Sammlung von Medienworkflowdiensten für Cloud und Edge, mit denen Sie Lösungen erstellen können, die Live- und Batchvideoanalyse, Transcodierung, Bereitstellungsdienste für mehrere Geräte, Inhaltsschutz und Übertragung von Liveereignissen im großen Stil erfordern.
+  description: 'Azure Media Services ist eine Sammlung von Medienworkflowdiensten für Cloud und Edge, mit denen Sie Lösungen erstellen können, die Live- und Batchvideoanalyse, Transcodierung, Bereitstellungsdienste für mehrere Geräte, Inhaltsschutz und Übertragung von Liveereignissen im großen Stil erfordern.'
   services: media-services
   ms.service: media-services
-  ms.subservice: 
+  ms.subservice: null
   ms.topic: hub-page
   ms.collection: collection
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: b2fa1520bf73dcd1608c0f3494f4ccc1a3b13be2
-  ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 01/22/2021
-  ms.locfileid: "98695658"
 highlightedContent:
   items:
-  - title: Informationen zu Azure Media Services v3
-    itemType: overview
-    url: ./latest/media-services-overview.md
-  - title: Konzepte von Azure Media Services v3
-    itemType: concept
-    url: ./latest/concepts-overview.md
-  - title: Informationen zu Azure Media Services Video Indexer
-    itemType: overview
-    url: ./video-indexer/video-indexer-overview.md
-  - title: Vergleich der Voreinstellungen von Media Services v3 und Video Indexer
-    itemType: concept
-    url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
-  - title: Live Video Analytics in IoT Edge (Vorschau)
-    itemType: overview
-    url: ./live-video-analytics-edge/overview.md
-  - title: Azure Media Player
-    itemType: overview
-    url: ./azure-media-player/azure-media-player-overview.md
-  - title: Informationen zu Azure Media Services v2 (Vorgängerversion)
-    itemType: overview
-    url: ./previous/media-services-overview.md
-  - title: Migrieren von Media Services v2 zu v3
-    itemType: concept
-    url: ./latest/migrate-v-2-v-3-migration-introduction.md
+    - title: "Informationen zu Azure Media Services\_v3"
+      itemType: overview
+      url: ./latest/media-services-overview.md
+    - title: "Konzepte von Azure Media Services\_v3"
+      itemType: concept
+      url: ./latest/concepts-overview.md
+    - title: Informationen zu Azure Media Services Video Indexer
+      itemType: overview
+      url: ./video-indexer/video-indexer-overview.md
+    - title: "Vergleich der Voreinstellungen von Media Services\_v3 und Video Indexer"
+      itemType: concept
+      url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
+    - title: Live Video Analytics in IoT Edge (Vorschau)
+      itemType: overview
+      url: ./live-video-analytics-edge/overview.md
+    - title: Azure Media Player
+      itemType: overview
+      url: ./azure-media-player/azure-media-player-overview.md
+    - title: Informationen zu Azure Media Services v2 (Vorgängerversion)
+      itemType: overview
+      url: ./previous/media-services-overview.md
+    - title: Migrieren von Media Services v2 zu v3
+      itemType: concept
+      url: ./latest/migrate-v-2-v-3-migration-introduction.md
 conceptualContent:
   items:
-  - title: Entwickeln mit der Media Services v3-API
-    links:
-    - url: ./latest/media-services-apis-overview.md
-      itemType: concept
-      text: Entwickeln mit Media Services v3
-    - url: /samples/browse/?products=azure-media-services
-      itemType: sample
-      text: Codebeispiele
-    - url: ./latest/release-notes.md
-      itemType: concept
-      text: Informationen zu den Neuerungen in Media Services v3
-  - title: Livestreaming
-    links:
-    - url: ./latest/live-streaming-overview.md
-      itemType: concept
-      text: Livestreaming
-    - url: ./latest/recommended-on-premises-live-encoders.md
-      itemType: concept
-      text: Empfohlene Livestreaming-Encoder
-    - url: ./latest/stream-live-tutorial-with-api.md
-      itemType: tutorial
-      text: Livestreaming
-  - title: Bedarfsabhängiges Streaming
-    links:
-    - url: ./latest/assets-concept.md
-      itemType: concept
-      text: Hochladen
-    - url: ./latest/encoding-concept.md
-      itemType: concept
-      text: Codieren
-    - url: ./latest/stream-files-tutorial-with-rest.md
-      itemType: tutorial
-      text: Codieren von Remotedateien und Streams
-    - url: ./latest/stream-files-tutorial-with-api.md
-      itemType: tutorial
-      text: Codieren von hochgeladenen Dateien und Streams
-  - title: Verschlüsseln von Inhalten
-    links:
-    - url: ./latest/content-protection-overview.md
-      itemType: concept
-      text: Schutz
-    - url: ./latest/protect-with-aes128.md
-      itemType: tutorial
-      text: Dynamische Verschlüsselung mit AES-128
-    - url: ./latest/protect-with-drm.md
-      itemType: tutorial
-      text: Dynamische Verschlüsselung mit DRM
-  - title: Analysieren von Inhalten
-    links:
-    - url: ./latest/analyzing-video-audio-files-concept.md
-      itemType: concept
-      text: Media Analytics
-    - url: ./latest/analyze-videos-tutorial-with-api.md
-      itemType: tutorial
-      text: Analysieren von Videos
-  - title: Informationen zu Media Services-Spezifikationen
-    links:
-    - url: media-services-specifications-live-timed-metadata.md
-      itemType: concept
-      text: Zeitgesteuerte Metadaten in Livestreaming (RTMP und Smooth Streaming)
-    - url: media-services-specifications-ms-sstr-amendment-hevc.md
-      itemType: concept
-      text: Ergänzung zum Smooth Streaming-Protokoll (MS-SSTR) für HEVC
-    - url: media-services-fmp4-live-ingest-overview.md
-      itemType: concept
-      text: Protokoll zur Smooth Streaming-Erfassung
-  - title: Live Video Analytics in IoT Edge (Vorschau)
-    links:
-    - url: ./live-video-analytics-edge/overview.md
-      itemType: overview
-      text: Übersicht
-    - url: ./live-video-analytics-edge/use-your-model-quickstart.md
-      itemType: quickstart
-      text: Ausführen von Live Video Analytics mit eigenem Modell
+    - title: Entwickeln mit der Media Services v3-API
+      links:
+        - url: ./latest/media-services-apis-overview.md
+          itemType: concept
+          text: Entwickeln mit Media Services v3
+        - url: /samples/browse/?products=azure-media-services
+          itemType: sample
+          text: Codebeispiele
+        - url: ./latest/release-notes.md
+          itemType: concept
+          text: "Informationen zu den Neuerungen in Media Services\_v3"
+    - title: Livestreaming
+      links:
+        - url: ./latest/stream-live-streaming-concept.md
+          itemType: concept
+          text: Livestreaming
+        - url: ./latest/encode-recommended-on-premises-live-encoders.md
+          itemType: concept
+          text: Empfohlene Livestreaming-Encoder
+        - url: ./latest/stream-live-tutorial-with-api.md
+          itemType: tutorial
+          text: Livestreaming
+    - title: Bedarfsabhängiges Streaming
+      links:
+        - url: ./latest/assets-concept.md
+          itemType: concept
+          text: Hochladen
+        - url: ./latest/encode-concept.md
+          itemType: concept
+          text: Codieren
+        - url: ./latest/stream-files-tutorial-with-rest.md
+          itemType: tutorial
+          text: Codieren von Remotedateien und Streams
+        - url: ./latest/stream-files-tutorial-with-api.md
+          itemType: tutorial
+          text: Codieren von hochgeladenen Dateien und Streams
+    - title: Verschlüsseln von Inhalten
+      links:
+        - url: ./latest/drm-content-protection-concept.md
+          itemType: concept
+          text: Schutz
+        - url: ./latest/drm-playready-license-template-concept.md
+          itemType: tutorial
+          text: Dynamische Verschlüsselung mit AES-128
+        - url: ./latest/drm-protect-with-drm-tutorial.md
+          itemType: tutorial
+          text: Dynamische Verschlüsselung mit DRM
+    - title: Analysieren von Inhalten
+      links:
+        - url: ./latest/analyze-video-audio-files-concept.md
+          itemType: concept
+          text: Media Analytics
+        - url: ./latest/analyze-videos-tutorial.md
+          itemType: tutorial
+          text: Analysieren von Videos
+        - url: ./latest/analyze-face-redaction-concept.md
+          itemType: concept
+          text: Gesichtserkennung und -bearbeitung
+    - title: Informationen zu Media Services-Spezifikationen
+      links:
+        - url: media-services-specifications-live-timed-metadata.md
+          itemType: concept
+          text: Zeitgesteuerte Metadaten in Livestreaming (RTMP und Smooth Streaming)
+        - url: media-services-specifications-ms-sstr-amendment-hevc.md
+          itemType: concept
+          text: Ergänzung zum Smooth Streaming-Protokoll (MS-SSTR) für HEVC
+        - url: media-services-fmp4-live-ingest-overview.md
+          itemType: concept
+          text: Protokoll zur Smooth Streaming-Erfassung
+    - title: Live Video Analytics in IoT Edge (Vorschau)
+      links:
+        - url: ./live-video-analytics-edge/overview.md
+          itemType: overview
+          text: Übersicht
+        - url: ./live-video-analytics-edge/use-your-model-quickstart.md
+          itemType: quickstart
+          text: Ausführen von Live Video Analytics mit eigenem Modell
 additionalContent:
   sections:
-  - items:
-    - title: Azure Storage
-      summary: Informationen zu Blockblobs und Containern
-      url: ../storage/index.yml
-    - title: CDN
-      summary: Nutzen Sie Azure CDN, um Inhalte bedarfsorientiert mit Diensten von Akamai und Verizon zu streamen oder einen Lastausgleich über mehrere Content Delivery Networks hinweg vorzunehmen.
-      url: ../cdn/index.yml
-    - title: Event Grid
-      summary: Erfahren Sie, wie Sie mithilfe von Azure Event Grid auf relevante Ereignisse reagieren.
-      url: ../event-grid/index.yml
+    - items:
+        - title: Azure Storage
+          summary: Informationen zu Blockblobs und Containern
+          url: ../storage/index.yml
+        - title: CDN
+          summary: 'Nutzen Sie Azure CDN, um Inhalte bedarfsorientiert mit Diensten von Akamai und Verizon zu streamen oder einen Lastausgleich über mehrere Content Delivery Networks hinweg vorzunehmen.'
+          url: ../cdn/index.yml
+        - title: Event Grid
+          summary: 'Erfahren Sie, wie Sie mithilfe von Azure Event Grid auf relevante Ereignisse reagieren.'
+          url: ../event-grid/index.yml

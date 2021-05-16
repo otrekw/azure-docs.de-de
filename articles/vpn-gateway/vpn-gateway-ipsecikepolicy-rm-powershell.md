@@ -1,23 +1,23 @@
 ---
-title: IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen
+title: 'IPsec/IKE-Richtlinie für S2S-VPN- und VNet-to-VNet-Verbindungen: PowerShell'
 titleSuffix: Azure VPN Gateway
-description: Konfigurieren Sie die IPsec-/IKE-Richtlinie für S2S- oder VNET-zu-VNET-Verbindungen mithilfe von Azure-VPN-Gateways per Azure Resource Manager und PowerShell.
+description: Erfahren Sie, wie Sie die IPsec-/IKE-Richtlinie für S2S- oder VNet-zu-VNet-Verbindungen mithilfe von Azure-VPN-Gateways per PowerShell konfigurieren.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14c26c7e1f5751fee3ad53db2e1f72ee975aeaa3
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94649261"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229628"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen
 
-In diesem Artikel werden die Schritte zum Konfigurieren der IPsec/IKE-Richtlinie für Site-to-Site-VPN- oder VNet-zu-VNet-Verbindungen mit dem Resource Manager-Bereitstellungsmodell und PowerShell beschrieben.
+In diesem Artikel werden die Schritte zum Konfigurieren der IPsec/IKE-Richtlinie für Site-to-Site-VPN- oder VNET-to-VNET-Verbindungen über PowerShell beschrieben.
 
 
 

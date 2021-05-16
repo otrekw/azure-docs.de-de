@@ -24,23 +24,21 @@
     - name: Entwickeln von benutzerdefinierten Codemodulen
       items:
         - name: C
-          items:
-            - name: C-Module für Linux-Geräte
-              href: tutorial-c-module.md
-            - name: C-Module für Windows-Geräte
-              href: tutorial-c-module-windows.md
+          href: tutorial-c-module.md
         - name: C#
-          items:
-            - name: C#-Module für Linux-Geräte
-              href: tutorial-csharp-module.md
-            - name: C#-Module für Windows-Geräte
-              href: tutorial-csharp-module-windows.md
+          href: tutorial-csharp-module.md
         - name: Java
           href: tutorial-java-module.md
         - name: Node.js
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
+        - name: Verwenden von Windows-Containern
+          items:
+            - name: C
+              href: tutorial-c-module-windows.md
+            - name: C#
+              href: tutorial-csharp-module-windows.md
     - name: Bereitstellen von Azure-Diensten als Module
       items:
         - name: Filtern von Daten mit Azure Functions
@@ -115,8 +113,6 @@
       href: support.md
     - name: Prüfliste für die Produktionsbereitstellung
       href: production-checklist.md
-    - name: IoT Edge-Glossar
-      href: iot-edge-glossary.md
 - name: Anleitungen
   items:
     - name: Erstellen eines IoT Edge-Geräts
@@ -133,6 +129,8 @@
           href: how-to-update-iot-edge.md
         - name: Verwalten von Gerätezertifikaten
           href: how-to-manage-device-certificates.md
+        - name: Konfigurieren der geschachtelten Virtualisierung für virtuelle Windows-Computer
+          href: nested-virtualization.md
     - name: Alternative Geräteszenarien
       items:
         - name: Ausführen von IoT Edge mit Windows-Containern
@@ -251,14 +249,16 @@
       href: how-to-create-test-certificates.md
     - name: Windows-Geräteverwaltungsskripts
       href: reference-windows-scripts.md
-    - name: IoT Edge für Linux unter Windows (Skripts)
-      href: reference-iot-edge-for-linux-on-windows-scripts.md
+    - name: "Funktionen von IoT\_Edge für Linux unter Windows"
+      href: reference-iot-edge-for-linux-on-windows-functions.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+    - name: IoT-Glossar
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Azure IoT-Dienste
       items:
         - name: IoT Hub
@@ -296,7 +296,7 @@
         - name: iOS-Plattform
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: Katalog mit Azure Certified for IoT-Geräten
-      href: 'https://catalog.azureiotsolutions.com/'
+      href: 'https://devicecatalog.azure.com/'
     - name: Azure IoT Developer Center
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure-Roadmap
