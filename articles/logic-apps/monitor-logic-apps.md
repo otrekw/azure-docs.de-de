@@ -6,21 +6,21 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 174f177080a421ec65f4ba79c550292737284de4
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 356353da639ab97a1a4e5483abf56050f5a236f8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734790"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676059"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Überwachen des Ausführungsstatus, Überprüfen des Triggerverlaufs und Einrichten von Benachrichtigungen für Azure Logic Apps
 
 Nachdem Sie [eine Logik-App erstellt und ausgeführt haben](../logic-apps/quickstart-create-first-logic-app-workflow.md), können Sie den Ausführungsstatus der Logik-App, den [Ausführungsverlauf](#review-runs-history), den [Triggerverlauf](#review-trigger-history) und die Leistung überprüfen. Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfällen oder anderen möglichen Problemen zu erhalten. Beispielsweise können Sie eine Warnung erstellen, mit der erkannt wird, „wenn in einer Stunde mehr als fünf Ausführungen fehlschlagen“.
 
-Für die Ereignisüberwachung in Echtzeit und die Durchführung eines umfassenderen Debuggens richten Sie die Diagnoseprotokollierung für Ihre Logik-App mithilfe der [Azure Monitor-Protokolle](../azure-monitor/overview.md) ein. Dieser Azure-Dienst hilft Ihnen bei der Überwachung Ihrer Cloud- und lokalen Umgebungen, sodass Sie deren Verfügbarkeit und Leistung leichter sicherstellen können. Sie können dann Ereignisse suchen und anzeigen, z. B. Triggereignisse, Ausführungsereignisse und Aktionsereignisse. Durch das Speichern dieser Informationen in [Azure Monitor-Protokollen](../azure-monitor/logs/data-platform-logs.md) können Sie [Protokollabfragen](../azure-monitor/logs/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu finden und zu analysieren. Sie können diese Diagnosedaten auch mit anderen Azure-Diensten verwenden, z. B. Azure Storage und Azure Event Hubs. Weitere Informationen finden Sie unter [Überwachen von Logik-Apps mittels Azure Monitor](../logic-apps/monitor-logic-apps-log-analytics.md).
+Für die Ereignisüberwachung in Echtzeit und die Durchführung eines umfassenderen Debuggens richten Sie die Diagnoseprotokollierung für Ihre Logik-App mithilfe der [Azure Monitor-Protokolle](../azure-monitor/overview.md) ein. Dieser Azure-Dienst hilft Ihnen bei der Überwachung Ihrer Cloud- und lokalen Umgebungen, sodass Sie deren Verfügbarkeit und Leistung leichter sicherstellen können. Sie können dann Ereignisse suchen und anzeigen, z. B. Triggereignisse, Ausführungsereignisse und Aktionsereignisse. Durch das Speichern dieser Informationen in [Azure Monitor-Protokollen](../azure-monitor/platform/data-platform-logs.md) können Sie [Protokollabfragen](../azure-monitor/log-query/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu finden und zu analysieren. Sie können diese Diagnosedaten auch mit anderen Azure-Diensten verwenden, z. B. Azure Storage und Azure Event Hubs. Weitere Informationen finden Sie unter [Überwachen von Logik-Apps mittels Azure Monitor](../logic-apps/monitor-logic-apps-log-analytics.md).
 
 > [!NOTE]
-> Wenn Ihre Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt werden, die für die Verwendung eines [internen Zugriffsendpunkts](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access) erstellt wurde, können Sie *nur innerhalb Ihres virtuellen Netzwerks* Eingaben und Ausgaben aus dem Ausführungsverlauf der Logik-App anzeigen und darauf zugreifen. Stellen Sie sicher, dass Sie über eine Netzwerkverbindung zwischen den privaten Endpunkten und dem Computer verfügen, von dem aus Sie auf den Ausführungsverlauf zugreifen möchten. Beispielsweise kann sich Ihr Clientcomputer im virtuellen Netzwerk der ISE oder innerhalb eines virtuellen Netzwerks, das mit dem virtuellen Netzwerk der ISE verbunden ist, z. B. durch Peering oder ein virtuelles privates Netzwerk, befinden. Weitere Informationen finden Sie unter [ISE-Endpunktzugriff](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access).
+> Wenn Ihre Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt werden, die für die Verwendung eines [internen Zugriffsendpunkts](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access) erstellt wurde, können Sie *nur innerhalb Ihres virtuellen Netzwerks* Eingaben und Ausgaben aus dem Ausführungsverlauf der Logik-App anzeigen und darauf zugreifen. Stellen Sie sicher, dass Sie über eine Netzwerkverbindung zwischen den privaten Endpunkten und dem Computer verfügen, von dem aus Sie auf den Ausführungsverlauf zugreifen möchten. Beispielsweise kann sich Ihr Clientcomputer im virtuellen Netzwerk der ISE oder innerhalb eines virtuellen Netzwerks, das mit dem virtuellen Netzwerk der ISE verbunden ist, z. B. durch Peering oder ein virtuelles privates Netzwerk, befinden. Weitere Informationen finden Sie unter [ISE-Endpunktzugriff](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
 
 <a name="review-runs-history"></a>
 
@@ -43,8 +43,7 @@ Jedes Mal, wenn der Trigger für ein Element oder Ereignis ausgelöst wird, erst
    Im Bereich „Übersicht“ werden unter **Ausführungsverlauf** alle vergangenen, aktuellen und wartenden Ausführungen Ihrer Logik-App angezeigt. Falls die Liste viele Ausführungen enthält und Sie den gewünschten Eintrag nicht finden können, versuchen Sie, die Liste zu filtern.
 
    > [!TIP]
-   > Wenn der Ausführungsstatus nicht angezeigt wird, aktualisieren Sie die Übersichtsseite, indem Sie **Aktualisieren** auswählen.
-   > Für Trigger, die aufgrund von nicht erfüllten Kriterien oder nicht gefundenen Daten übersprungen werden, erfolgt keine Ausführung.
+   > Wenn der Ausführungsstatus nicht angezeigt wird, aktualisieren Sie die Übersichtsseite, indem Sie **Aktualisieren** auswählen. Für Trigger, die aufgrund von nicht erfüllten Kriterien oder nicht gefundenen Daten übersprungen werden, erfolgt keine Ausführung.
 
    ![Übersicht, Ausführungsverlauf und andere Logik-App-Informationen](./media/monitor-logic-apps/overview-pane-logic-app-details-run-history.png)
 
@@ -52,12 +51,12 @@ Jedes Mal, wenn der Trigger für ein Element oder Ereignis ausgelöst wird, erst
 
    | Ausführungsstatus | Beschreibung |
    |------------|-------------|
-   | **Aborted** | Die Ausführung wurde aufgrund externer Probleme beendet oder nicht fertig gestellt, z. B. wegen eines Systemausfalls oder abgelaufenen Azure-Abonnements. |
+   | **Aborted** | Die Ausführung wurde aufgrund externer Probleme beendet oder nicht abgeschlossen (beispielsweise wegen eines Systemausfalls oder abgelaufenen Azure-Abonnements). |
    | **Abgebrochen** | Die Ausführung wurde ausgelöst und gestartet, es wurde jedoch eine Abbruchanforderung empfangen. |
-   | **Fehler** | Mindestens eine Aktion in der Ausführung ist fehlgeschlagen. Es wurden keine nachfolgenden Aktionen im Workflow eingerichtet, um den Fehler zu verarbeiten. |
-   | **Wird ausgeführt** | Die Ausführung wurde ausgelöst und wird gerade ausgeführt. Dieser Status kann jedoch auch für eine Ausführung angezeigt werden, die aufgrund von [Aktionslimits](logic-apps-limits-and-config.md) oder des [aktuellen Tarifs](https://azure.microsoft.com/pricing/details/logic-apps/) gedrosselt wird. <p><p>**Tipp**: Wenn Sie die [Diagnoseprotokollierung](monitor-logic-apps-log-analytics.md) einrichten, erhalten Sie Informationen zu ggf. aufgetretenen Drosselungsereignissen. |
-   | **Erfolgreich** | Die Ausführung war erfolgreich. Wenn eine Aktion fehlgeschlagen ist, wurde dieser Fehler von einer nachfolgenden Aktion im Workflow verarbeitet. |
-   | **Timeout** | Bei der Ausführung ist ein Timeout aufgetreten, weil die aktuelle Dauer die maximale Dauer von Ausführungen überschritten hat, die von der [Einstellung **Aufbewahrung des Ausführungsverlaufs in Tagen**](logic-apps-limits-and-config.md#run-duration-retention-limits) gesteuert wird. Die Dauer der Ausführung wird anhand der Startzeit der Ausführung und der maximalen Dauer von Ausführungen zu dieser Startzeit berechnet. <p><p>**Hinweis**: Wenn die Ausführungsdauer auch das aktuelle *Aufbewahrungslimit im Ausführungsverlauf* überschreitet, das ebenfalls von der [Einstellung **Aufbewahrung des Ausführungsverlaufs in Tagen**](logic-apps-limits-and-config.md#run-duration-retention-limits) gesteuert wird, wird die Ausführung durch einen täglichen Cleanupauftrag aus dem Ausführungsverlauf gelöscht. Unabhängig davon, ob bei der Ausführung ein Timeout auftritt oder ob diese fertig gestellt wird, wird die Aufbewahrungsdauer immer anhand der Startzeit der Ausführung und der *aktuellen* Aufbewahrungsdauer berechnet. Wenn Sie also die maximale Dauer einer aktiven Ausführung herabsetzen, tritt ein Timeout für die Ausführung auf. Je nachdem, ob die Ausführungsdauer die Aufbewahrungsdauer überschreitet, bleibt die Ausführung entweder unverändert oder wird aus dem Ausführungsverlauf gelöscht. |
+   | **Fehler** | Mindestens eine Aktion in der Ausführung war nicht erfolgreich. Es wurden keine nachfolgenden Aktionen im Workflow eingerichtet, um den Fehler zu behandeln. |
+   | **Wird ausgeführt** | Die Ausführung wurde ausgelöst und wird gerade ausgeführt. Dieser Status kann jedoch auch für eine Ausführung angezeigt werden, die aufgrund von [Aktionslimits](logic-apps-limits-and-config.md) oder aufgrund des [aktuellen Tarifs](https://azure.microsoft.com/pricing/details/logic-apps/) gedrosselt wird. <p><p>**Tipp**: Wenn Sie die [Diagnoseprotokollierung](monitor-logic-apps-log-analytics.md) einrichten, erhalten Sie Informationen zu ggf. aufgetretenen Drosselungsereignissen. |
+   | **Erfolgreich** | Die Ausführung war erfolgreich. Sollte bei einer Aktion ein Fehler aufgetreten sein, wurde dieser Fehler von einer nachfolgenden Aktion im Workflow behandelt. |
+   | **Timeout** | Bei der Ausführung ist ein Timeout aufgetreten, da die aktuelle Dauer die maximal zulässige Ausführungsdauer überschritten hat, die durch die [Einstellung **Aufbewahrung des Ausführungsverlaufs in Tagen**](logic-apps-limits-and-config.md#run-duration-retention-limits) gesteuert wird. Die Dauer einer Ausführung wird anhand der Startzeit der Ausführung und der maximalen Ausführungsdauer zu dieser Startzeit berechnet. <p><p>**Hinweis**: Wenn die Ausführungsdauer auch das aktuelle *Aufbewahrungslimit im Ausführungsverlauf* übersteigt, das ebenfalls durch die [Einstellung **Aufbewahrung des Ausführungsverlaufs in Tagen**](logic-apps-limits-and-config.md#run-duration-retention-limits) gesteuert wird, wird die Ausführung durch einen täglichen Bereinigungsauftrag aus dem Ausführungsverlauf gelöscht. Der Aufbewahrungszeitraum wird immer auf der Grundlage der Startzeit der Ausführung und des *aktuellen* Aufbewahrungslimits berechnet – unabhängig davon, ob bei der Ausführung ein Timeout auftritt oder ob die Ausführung abgeschlossen wird. Wenn Sie also die maximale Dauer einer aktiven Ausführung verringern, tritt ein Timeout für die Ausführung auf. Ob die Ausführung im Ausführungsverlauf verbleibt oder daraus entfernt wird, hängt davon ab, ob die Ausführungsdauer das Aufbewahrungslimit übersteigt. |
    | **Wartet** | Die Ausführung wurde nicht gestartet oder wurde angehalten (beispielsweise aufgrund einer früheren Workflowinstanz, die noch ausgeführt wird). |
    |||
 
@@ -92,9 +91,7 @@ Jedes Mal, wenn der Trigger für ein Element oder Ereignis ausgelöst wird, erst
      Sie können jetzt Informationen wie Eingaben unf Ausgaben für diesen Schritt anzeigen, z. B.:
 
    > [!NOTE]
-   > Alle Informationen und Ereignisse zur Laufzeit werden im Logic Apps-Dienst verschlüsselt.
-   > Sie werden nur entschlüsselt, wenn ein Benutzer das Anzeigen dieser Daten anfordert.
-   > Sie können [Eingaben und Ausgaben im Ausführungsverlauf ausblenden](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) oder den Benutzerzugriff auf diese Informationen mithilfe von [rollenbasierter Azure-Zugriffssteuerung (Azure RBAC)](../role-based-access-control/overview.md) kontrollieren.
+   > Alle Informationen und Ereignisse zur Laufzeit werden im Logic Apps-Dienst verschlüsselt. Sie werden nur entschlüsselt, wenn ein Benutzer das Anzeigen dieser Daten anfordert. Sie können [Eingaben und Ausgaben im Ausführungsverlauf ausblenden](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) oder den Benutzerzugriff auf diese Informationen mithilfe von [rollenbasierter Azure-Zugriffssteuerung (Azure RBAC)](../role-based-access-control/overview.md) kontrollieren.
 
 <a name="review-trigger-history"></a>
 
@@ -146,7 +143,7 @@ Jede Logik-App-Ausführung beginnt mit einem Trigger. Der Triggerverlauf enthäl
 
 ## <a name="set-up-monitoring-alerts"></a>Einrichten von Überwachungsbenachrichtigungen
 
-Richten Sie [Benachrichtigungen in Azure Monitor](../azure-monitor/alerts/alerts-overview.md) ein, um auf Metriken oder überschrittenen Schwellenwerten basierende Benachrichtigungen für Ihre Logik-App zu erhalten. Informieren Sie sich über [Metriken in Azure](../azure-monitor/data-platform.md). Führen Sie die hier angegebenen Schritte aus, um Benachrichtigungen ohne [Azure Monitor](../azure-monitor/logs/log-query-overview.md) einzurichten.
+Richten Sie [Benachrichtigungen in Azure Monitor](../azure-monitor/platform/alerts-overview.md) ein, um auf Metriken oder überschrittenen Schwellenwerten basierende Benachrichtigungen für Ihre Logik-App zu erhalten. Informieren Sie sich über [Metriken in Azure](../azure-monitor/platform/data-platform.md). Führen Sie die hier angegebenen Schritte aus, um Benachrichtigungen ohne [Azure Monitor](../azure-monitor/log-query/log-query-overview.md) einzurichten.
 
 1. Wählen Sie im Menü Ihrer Logik-App unter **Überwachung** die Optionen **Benachrichtigungen** > **Neue Benachrichtigungsregel** aus.
 
@@ -192,10 +189,10 @@ Richten Sie [Benachrichtigungen in Azure Monitor](../azure-monitor/alerts/alerts
 
 > [!TIP]
 > Zum Ausführen einer Logik-App über eine Warnung können Sie den [Anforderungstrigger](../connectors/connectors-native-reqres.md) in Ihren Workflow einbinden, um beispielsweise die folgenden Aufgaben durchzuführen:
->
+> 
 > * [Posten an Slack](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
-> * [Senden eines Texts](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-text-message-with-logic-app)
-> * [Hinzufügen von Nachrichten zu einer Warteschlange](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-queue-with-logic-app)
+> * [Senden eines Texts](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
+> * [Hinzufügen von Nachrichten zu einer Warteschlange](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
