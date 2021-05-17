@@ -438,7 +438,7 @@
               href: functions-add-output-binding-storage-queue-vs.md
         - name: Starten/Beenden von virtuellen Computern
           items:
-            - name: Übersicht
+            - name: Überblick
               href: start-stop-vms/overview.md
             - name: Bereitstellen und konfigurieren
               href: start-stop-vms/deploy.md
@@ -642,6 +642,16 @@
           href: functions-bindings-twilio.md
         - name: Warmup
           href: functions-bindings-warmup.md
+    - name: Fehler und Diagnose
+      items:
+        - name: .NET-Workerregeln
+          items:
+            - name: AZFW0001
+              href: errors-diagnostics/net-worker-rules/azfw0001.md
+        - name: SDK-Regeln
+          items:
+            - name: AZF0001
+              href: errors-diagnostics/sdk-rules/azf0001.md
     - name: Referenz zu host.json 2.x
       href: functions-host-json.md
     - name: Referenz zu host.json 1.x

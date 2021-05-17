@@ -18,23 +18,27 @@
           href: get-started-cli.md
 - name: Konzepte
   items:
-    - name: Konfiguration
-      href: configuration.md
-      displayName: Routing
     - name: API-Unterstützung mit Azure Functions
       href: apis.md
-    - name: Routen
-      href: routes.md
-    - name: Authentifizierung und Autorisierung
-      href: authentication-authorization.md
-    - name: Zugreifen auf Benutzerinformationen
-      href: user-information.md
+    - name: Konfiguration
+      items:
+        - name: Anwendungskonfiguration
+          href: configuration.md
+          displayName: 'routing, routes'
+        - name: Build- und Workflowkonfiguration
+          href: github-actions-workflow.md
+    - name: Sicherheit
+      items:
+        - name: Authentifizierung und Autorisierung
+          href: authentication-authorization.md
+        - name: Zugreifen auf Benutzerinformationen
+          href: user-information.md
+        - name: Benutzerdefinierte Authentifizierung
+          href: authentication-custom.md
     - name: Überprüfen von Pull Requests in Präproduktionsumgebungen
       href: review-publish-pull-requests.md
     - name: Benutzerdefinierte Domäne
       href: custom-domain.md
-    - name: Build- und Workflowkonfiguration
-      href: github-actions-workflow.md
 - name: Anleitungen
   items:
     - name: Einrichten der lokalen Entwicklung
@@ -43,6 +47,8 @@
       href: add-api.md
     - name: Konfigurieren von App-Einstellungen
       href: application-settings.md
+    - name: Veröffentlichen mit Azure DevOps
+      href: publish-devops.md
     - name: Konfigurieren von Front-End-Frameworks und -Bibliotheken
       href: front-end-frameworks.md
     - name: Aktivieren der Überwachung
@@ -50,9 +56,13 @@
       displayName: Application Insights
     - name: Zurücksetzen des Bereitstellungstokens
       href: deployment-token-management.md
-    - name: Problembehandlung
+    - name: Fehlerbehandlung
       href: troubleshooting.md
       displayName: 'deployment, runtime, errors'
+    - name: Nutzung eigener Funktionen
+      href: functions-bring-your-own.md
+    - name: Sichere Authentifizierungsgeheimnisse
+      href: key-vault-secrets.md
 - name: Tutorials
   items:
     - name: Veröffentlichen über einen Generator für statische Websites
@@ -95,5 +105,7 @@
           href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
         - name: Erstellen und Veröffentlichen einer statischen Web-App mit Blazor
           href: /learn/modules/publish-app-service-static-web-app-api-dotnet
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/app-service/static/'
     - name: Kontingente
       href: quotas.md

@@ -77,15 +77,17 @@
       href: azure-netapp-files-register.md
     - name: Erstellen eines NetApp-Kontos
       href: azure-netapp-files-create-netapp-account.md
-    - name: Einrichten eines Kapazitätspools
-      href: azure-netapp-files-set-up-capacity-pool.md
-    - name: Verwalten eines manuellen QoS-Kapazitätspools
-      href: manage-manual-qos-capacity-pool.md
+    - name: Erstellen und Verwalten von Kapazitätspools
+      items:
+        - name: Einrichten eines Kapazitätspools
+          href: azure-netapp-files-set-up-capacity-pool.md
+        - name: Verwalten eines manuellen QoS-Kapazitätspools
+          href: manage-manual-qos-capacity-pool.md
     - name: Delegieren eines Subnetzes an Azure NetApp Files
       href: azure-netapp-files-delegate-subnet.md
     - name: "Erstellen und Verwalten von Active\_Directory-Verbindungen"
       href: create-active-directory-connections.md
-    - name: Erstellen und Verwalten eines NFS-Volumes
+    - name: Erstellen und Verwalten von NFS-Volumes
       items:
         - name: Erstellen eines NFS-Volumes
           href: azure-netapp-files-create-volumes.md
@@ -97,15 +99,19 @@
           href: configure-ldap-extended-groups.md
         - name: Konfigurieren eines NFS-Clients für Azure NetApp Files
           href: configure-nfs-clients.md
-    - name: Erstellen eines SMB-Volumes
-      href: azure-netapp-files-create-volumes-smb.md
+    - name: Erstellen und Verwalten von SMB-Volumes
+      items:
+        - name: Erstellen eines SMB-Volumes
+          href: azure-netapp-files-create-volumes-smb.md
+        - name: Konvertieren vorhandener SMB-Volumes zur Verwendung von fortlaufender Verfügbarkeit
+          href: convert-smb-continuous-availability.md
     - name: Erstellen eines Dual-Protokoll-Volumes
       href: create-volumes-dual-protocol.md
     - name: "Konfigurieren von ADDS\_LDAP über TLS"
       href: configure-ldap-over-tls.md
     - name: Konfigurieren der Exportrichtlinie für NFS oder Dual-Protokoll
       href: azure-netapp-files-configure-export-policy.md
-    - name: Einbinden eines Volumes oder Aufheben der Einbindung
+    - name: Mounten oder unmounten eines Volumes
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: Verwalten von Momentaufnahmen
       href: azure-netapp-files-manage-snapshots.md

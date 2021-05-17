@@ -130,14 +130,16 @@
           href: backup.md
     - name: Sicher
       items:
+        - name: Konfigurieren von Netzwerkeinstellungen für Schlüsseltresore
+          href: how-to-azure-key-vault-network-security.md
+        - name: Zugreifen auf Key Vault hinter einer Firewall
+          href: access-behind-firewall.md
         - name: Azure Private Link
           items:
             - name: "Integration in den Azure\_Private\_Link-Dienst"
               href: private-link-service.md
             - name: Diagnostizieren von Problemen bei der Konfiguration privater Links
               href: private-link-diagnostics.md
-        - name: Zugreifen auf Key Vault hinter einer Firewall
-          href: access-behind-firewall.md
     - name: Verschieben von Key Vault
       items:
         - name: Verschieben von Key Vault in eine andere Ressourcengruppe

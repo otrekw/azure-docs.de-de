@@ -2,7 +2,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Azure Logic Apps?
+    - name: Informationen zu Azure Logic Apps
       href: logic-apps-overview.md
 - name: Schnellstarts
   expanded: true
@@ -36,13 +36,15 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
 - name: Konzepte
   items:
-    - name: Übersicht über Connectors für Logic Apps
-      href: ../connectors/apis-list.md
-    - name: "Verwaltete Connectors für Azure Logic\_Apps"
-      href: ../connectors/managed.md
-    - name: Integrierte Connectors für Logic Apps
-      href: ../connectors/built-in.md
-    - name: Planen wiederkehrender Workflows
+    - name: Connectors und integrierte Vorgänge
+      items:
+        - name: Übersicht über Connectors
+          href: ../connectors/apis-list.md
+        - name: Verwaltete Connectors
+          href: ../connectors/managed.md
+        - name: Integrierte Vorgänge
+          href: ../connectors/built-in.md
+    - name: Geplante wiederkehrende Workflows
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Serverlos mit Azure
       href: logic-apps-serverless-overview.md
@@ -61,13 +63,13 @@
           href: /security/benchmark/azure/baselines/logic-apps-security-baseline?toc=/azure/logic-apps/toc.json
 - name: Anleitungen
   items:
-    - name: Vorschauversion von Azure Logic Apps
+    - name: Azure Logic Apps-Instanz mit nur einem Mandanten (Vorschau)
       items:
-        - name: Übersicht über die Vorschauversion von Azure Logic Apps
+        - name: Übersicht über einzelne Mandanten (Vorschau)
           href: logic-apps-overview-preview.md
-        - name: 'Erstellen zustandsbehafteter und zustandsloser Workflows: Azure-Portal'
+        - name: 'Erstellen einer Vorschauversion von Logik-Apps: Portal'
           href: create-stateful-stateless-workflows-azure-portal.md
-        - name: 'Erstellen zustandsbehafteter und zustandsloser Workflows: Visual Studio Code'
+        - name: 'Erstellen einer Vorschauversion von Logik-Apps: Visual Studio Code'
           href: create-stateful-stateless-workflows-visual-studio-code.md
     - name: Entwickeln
       items:

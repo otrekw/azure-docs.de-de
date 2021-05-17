@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Dokumentation zur Microsoft Identity Platform
-summary: Die Microsoft Identity Platform umfasst einen Authentifizierungsdienst, Open-Source-Bibliotheken und Tools für die Anwendungsverwaltung. In unseren Schnellstarts, Tutorials und Codebeispielen erfahren Sie, wie Sie moderne, standardbasierte Authentifizierungslösungen erstellen. Erstellen Sie Anwendungen, bei denen sich Ihre Benutzer und Kunden mit Ihren Microsoft-Identitäten oder Konten für soziale Netzwerke anmelden, und autorisieren Sie den Zugriff auf Ihre APIs oder Microsoft-APIs wie Microsoft Graph.
+summary: Microsoft Identity Platform für Entwickler umfasst einen Authentifizierungsdienst, Open-Source-Bibliotheken und Tools für die Anwendungsverwaltung. In unseren Schnellstarts, Tutorials und Codebeispielen erfahren Sie, wie Sie moderne, standardbasierte Authentifizierungslösungen erstellen. Erstellen Sie Anwendungen, bei denen sich Ihre Benutzer und Kunden mit Ihren Microsoft-Identitäten oder Konten für soziale Netzwerke anmelden, und autorisieren Sie den Zugriff auf Ihre APIs oder Microsoft-APIs wie Microsoft Graph.
 metadata:
   ms.topic: landing-page
-  ms.date: 10/07/2020
+  ms.date: 05/11/2021
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 86e1b4de21738ec584d7b5cae1346f166adfd595
-  ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+  ms.openlocfilehash: 607672d77a71dbcbe60042a2b6c6fd586aab8fe3
+  ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/27/2021
-  ms.locfileid: "108072493"
+  ms.lasthandoff: 05/11/2021
+  ms.locfileid: "109750518"
 landingContent:
 - title: Informationen zu Microsoft Identity Platform
   linkLists:
@@ -51,9 +51,11 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Angular
-      url: quickstart-v2-angular.md
+      url: tutorial-v2-angular-auth-code.md
     - text: JavaScript
-      url: quickstart-v2-javascript-auth-code.md
+      url: tutorial-v2-javascript-auth-code.md
+    - text: React
+      url: tutorial-v2-react.md
 - title: Web-App
   linkLists:
   - linkListType: get-started
@@ -116,13 +118,9 @@ landingContent:
       url: ../managed-identities-azure-resources/overview.md
     - text: Verwaltete Identitäten und Azure-VMs
       url: ../managed-identities-azure-resources/how-managed-identities-work-vm.md
-- title: Neu in der Dokumentation
+- title: Neues in der Dokumentation zu Microsoft Identity Platform
   linkLists:
   - linkListType: whats-new
     links:
     - text: Neues in der Dokumentation
       url: whats-new-docs.md
-    - text: Übersicht über die Microsoft Identity Web-Bibliothek
-      url: microsoft-identity-web.md
-    - text: 'Tutorial: Blazor Server'
-      url: tutorial-blazor-server.md

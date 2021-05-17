@@ -644,11 +644,17 @@ items:
                 href: monitoring/how-to-monitor-spark-pools.md
               - name: Analysieren von JSON mit Apache Spark
                 href: how-to-analyze-complex-schema.md
-          - name: Erfassen und Vorbereiten von Daten
+          - name: Datenquellen
             items:
-              - name: SQL Data Warehouse
+              - name: Azure Cosmos DB
+                href: ./synapse-link/how-to-query-analytical-store-spark.md
+              - name: Azure Data Explorer (Kusto)
+                href: ./spark/data-sources/apache-spark-kusto-connector.md
+              - name: Azure SQL Data Warehouse
                 href: ./spark/synapse-spark-sql-pool-import-export.md
-              - name: Analysieren von JSON
+              - name: Azure SQL und SQL Server
+                href: ./spark/data-sources/apache-spark-sql-connector.md
+              - name: JSON
                 href: how-to-analyze-complex-schema.md
   - name: Synapse Link
     items:

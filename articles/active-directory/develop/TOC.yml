@@ -657,6 +657,8 @@
     - name: 'Mobiles einmaliges Anmelden (Single Sign-On, SSO)'
       href: mobile-sso-support-overview.md
       displayName: 'android, ios'
+    - name: Anspruchsaufforderungen und -anforderungen
+      href: claims-challenge.md
     - name: Berechtigungen und Zustimmung
       displayName: Scopes
       items:

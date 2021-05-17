@@ -51,11 +51,11 @@
     - name: Benutzeroberflächen-Framework
       items:
         - name: Erste Schritte mit zusammengesetzten Komponenten
-          href: quickstarts/ui-framework/get-started-with-composites.md
-        - name: Erste Schritte mit Basiskomponenten
-          href: quickstarts/ui-framework/get-started-with-components.md
-        - name: Erstellen einer eigenen Komponente für das Benutzeroberflächen-Framework
-          href: quickstarts/ui-framework/create-your-own-components.md
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-composites--page'
+        - name: Erste Schritte mit zustandsbehafteten Clients
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-stateful-client--page'
+        - name: Erste Schritte mit Benutzeroberflächenkomponenten
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-ui-components--page'
 - name: Tutorials
   expanded: false
   items:
@@ -139,7 +139,7 @@
       href: concepts/troubleshooting-info.md
 - name: Proben
   items:
-    - name: Übersicht
+    - name: Überblick
       href: samples/overview.md
     - name: Hero-Beispiel für Gruppenanrufe
       href: samples/calling-hero-sample.md

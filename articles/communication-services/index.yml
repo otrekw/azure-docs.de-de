@@ -9,12 +9,12 @@ metadata:
   author: mikben
   ms.author: mikben
   ms.date: 03/10/2021
-  ms.openlocfilehash: b68af98c5b55ddff605bb1c88274daf483f19f35
-  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.openlocfilehash: 151e97123c2704a06a994b3b6fd742ba9373af21
+  ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "108288398"
+  ms.lasthandoff: 05/13/2021
+  ms.locfileid: "109845562"
 landingContent:
 - title: Informationen zu Azure Communication Services
   linkLists:
@@ -64,6 +64,20 @@ landingContent:
       url: concepts/voice-video-calling/calling-sdk-features.md
     - text: Anrufflows
       url: concepts/call-flows.md
+- title: Benutzeroberflächen-Framework
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erste Schritte mit zusammengesetzten Komponenten
+      url: https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-composites--page
+    - text: Erste Schritte mit Benutzeroberflächenkomponenten
+      url: https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-ui-components--page
+  - linkListType: concept
+    links:
+    - text: Übersicht über das Benutzeroberflächen-Framework
+      url: concepts/ui-framework/ui-sdk-overview.md
+    - text: Funktionen des Benutzeroberflächen-Frameworks
+      url: concepts/ui-framework/ui-sdk-features.md
 - title: Telefonie und SMS
   linkLists:
   - linkListType: quickstart

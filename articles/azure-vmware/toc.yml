@@ -76,8 +76,8 @@
       href: configure-site-to-site-vpn-gateway.md
     - name: Konfigurieren von Windows Server-Failoverclustern
       href: configure-windows-server-failover-cluster.md
-    - name: Zurücksetzen von vSphere-Anmeldeinformationen
-      href: reset-vsphere-credentials.md
+    - name: Rotieren von CloudAdmin-Anmeldeinformationen
+      href: rotate-cloudadmin-credentials.md
     - name: Sichern und Wiederherstellen mit Azure Backup Server
       items:
         - name: Sichern virtueller VMware-Computer

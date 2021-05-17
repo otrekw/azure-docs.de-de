@@ -39,6 +39,8 @@
   items:
     - name: App und Bereitstellung
       href: concept-understand-app-and-deployment.md
+    - name: Strategien für die Blau-Grün-Bereitstellung
+      href: concepts-blue-green-deployment-strategies.md
     - name: Kontingente und Grenzwerte
       href: quotas.md
     - name: Metriken
@@ -197,6 +199,8 @@
       href: /cli/azure/spring-cloud
     - name: Azure PowerShell
       href: /powershell/module/az.springcloud
+    - name: Azure Pipelines-Aufgabe
+      href: /azure/devops/pipelines/tasks/deploy/azure-spring-cloud
     - name: Ressourcen
       href: resources.md
     - name: Häufig gestellte Fragen

@@ -282,7 +282,7 @@
               href: managed-aad.md
             - name: "Azure\_AD-Integration (Legacy)"
               href: azure-ad-integration-cli.md
-        - name: Verwenden von Azure RBAC für Kubernetes-Autorisierung (Vorschau)
+        - name: Verwenden von Azure RBAC für die Kubernetes-Autorisierung
           href: manage-azure-rbac.md
         - name: Verwenden der rollenbasierten Zugriffssteuerung von Kubernetes mit Azure AD-Integration
           href: azure-ad-rbac.md

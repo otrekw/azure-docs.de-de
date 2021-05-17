@@ -25,6 +25,8 @@
       href: tutorial-respond-threats-playbook.md
     - name: Erstellen von KQL-Abfragen (Learn-Modul)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
+    - name: "Bereitstellen der Azure\_Sentinel-Lösung für SAP"
+      href: sap-deploy-solution.md
 - name: Konzepte
   items:
     - name: Klassifizieren von Daten anhand von Entitäten
@@ -49,8 +51,12 @@
           href: automate-responses-with-playbooks.md
     - name: Erkennen komplexerer Bedrohungen mit UEBA
       href: identify-threats-with-entity-behavior-analytics.md
+    - name: Verwenden von SOC-ML-Anomalien zum Erkennen von Bedrohungen
+      href: soc-ml-anomalies.md
     - name: Importieren von Threat Intelligence in Azure Sentinel
       href: import-threat-intelligence.md
+    - name: "Threat\_Intelligence-Integrationen"
+      href: threat-intelligence-integration.md
     - name: Verwenden einer eigenen Plattform für maschinelles Lernen (Bring Your Own Machine Learning Platform)
       href: bring-your-own-ml.md
     - name: Integrieren von Microsoft 365 Defender in Azure Sentinel
@@ -59,6 +65,12 @@
       href: watchlists.md
     - name: Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: "Azure\_Sentinel-Lösungen"
+      items:
+        - name: Informationen zu Sentinel-Lösungen
+          href: sentinel-solutions.md
+        - name: Lösungskatalog
+          href: sentinel-solutions-catalog.md
     - name: Übergreifendes Normalisieren Ihrer Daten für Tabellen
       href: normalization.md
     - name: Verwenden von Azure Data Explorer für die langfristige Protokollaufbewahrung
@@ -266,6 +278,16 @@
           href: connect-azure-stack.md
         - name: Überwachen der Integrität des Datenconnectors
           href: monitor-data-connector-health.md
+    - name: Bereitstellen von Lösungen
+      items:
+        - name: Ermitteln und Bereitstellen von Lösungen
+          href: sentinel-solutions-deploy.md
+        - name: 'Erweitert: Lokales Bereitstellen des SAP-Datenconnectors'
+          href: sap-solution-deploy-alternate.md
+    - name: Verwenden von SOC-ML-Anomalieregeln
+      href: work-with-anomaly-rules.md
+    - name: Erstellen benutzerdefinierter Entitätsaktivitäten
+      href: customize-entity-activities.md
     - name: Verwenden von Verhaltensanalysen für Benutzer und Entitäten
       items:
         - name: Aktivieren von UEBA
@@ -284,8 +306,12 @@
       href: surface-custom-details-in-alerts.md
     - name: Erstellen von Incidents auf der Grundlage von Warnungen
       href: create-incidents-from-alerts.md
+    - name: Zusammenarbeiten in Microsoft Teams
+      href: collaborate-in-microsoft-teams.md
     - name: Bessere Verwaltung von SOC mit Incidentmetriken
       href: manage-soc-with-incident-metrics.md
+    - name: Behandeln von False Positives
+      href: false-positives.md
     - name: "Überwachen von Azure\_Sentinel-Abfragen und -Aktivitäten"
       href: audit-sentinel-data.md
     - name: Suche
@@ -341,6 +367,14 @@
       href: cef-name-mapping.md
     - name: "MCAS-Warnungen, für die das Onboarding in Microsoft 365\_Defender nicht durchgeführt wurde"
       href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
+    - name: Referenzen zu SAP-Lösungen
+      items:
+        - name: Detaillierte SAP-Lösungsanforderungen
+          href: sap-solution-detailed-requirements.md
+        - name: Verfügbare SAP-Protokolle
+          href: sap-solution-log-reference.md
+        - name: Sicherheitsinhaltsreferenz für SAP-Lösungen
+          href: sap-solution-security-content.md
 - name: Ressourcen
   items:
     - name: Nützliche Ressourcen

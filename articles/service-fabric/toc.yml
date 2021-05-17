@@ -519,7 +519,10 @@
                 - name: Aktualisieren der Clusterkonfiguration
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: Patchen von Clusterknoten (Windows)
-                  href: service-fabric-patch-orchestration-application.md
+                  href: how-to-patch-cluster-nodes-windows.md
+                  items:
+                    - name: Verwenden der Patchorchestrierungsanwendung (POA)
+                      href: service-fabric-patch-orchestration-application.md
                 - name: Aktivieren der Datenträgerverschlüsselung (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: Aktivieren der Datenträgerverschlüsselung (Linux)
@@ -561,7 +564,7 @@
                 - name: Festlegen der Zugriffssteuerung
                   href: service-fabric-cluster-security-roles.md
                 - name: Patchen von Clusterknoten (Windows)
-                  href: service-fabric-patch-orchestration-application.md
+                  href: how-to-patch-cluster-nodes-windows.md
         - name: Visualisieren mit Service Fabric Explorer
           href: service-fabric-visualizing-your-cluster.md
         - name: Herstellen einer Verbindung mit einem sicheren Cluster
