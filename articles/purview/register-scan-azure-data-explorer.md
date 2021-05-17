@@ -6,13 +6,13 @@ ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 10/9/2020
-ms.openlocfilehash: 7adc7f568fb82692f2c96f610575076e397bd99c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: f218d87fe1f91e206c3b8873c9af0dddddd45b42
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896111"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656492"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>Registrieren und Überprüfen von Azure Data Explorer
 
@@ -51,7 +51,7 @@ Sie können für Überprüfungen eine vorhandene Dienstprinzipalauthentifizierun
 Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals abzurufen:
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Dienstprinzipal.
-1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und von **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
+1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
 1. Navigieren zum Schlüsseltresor
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
 1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie unter **Name** einen gewünschten Namen und den **Wert** als **Geheimen Clientschlüssel** Ihres Dienstprinzipals ein.
@@ -82,10 +82,10 @@ Gehen Sie wie folgt vor, um für Ihren Datenkatalog ein neues Azure Data Explore
 Führen Sie auf dem Bildschirm **Register sources (Azure Data Explorer (Kusto))** (Quellen registrieren (Azure Data Explorer (Kusto))) die folgenden Schritte aus:
 
 1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
-1. Wählen Sie aus, wie auf Ihr gewünschtes Speicherkonto verwiesen werden soll:
-   1. Wählen Sie die Option **Aus Azure-Abonnement** und dann im Dropdownfeld **Azure-Abonnement** das entsprechende Abonnement und im Dropdownfeld **Cluster** den entsprechenden Cluster aus.
-   1. Alternativ können Sie auch die Option **Manuell eingeben** auswählen und einen Dienstendpunkt (URL) eingeben.
-1. Wählen Sie **Fertig stellen** aus, um die Datenquelle zu registrieren.
+2. Wählen Sie Ihr Azure-Abonnement aus, um in Azure Data Explorer zu filtern.
+3. Wählen Sie einen entsprechenden Cluster aus.
+4. Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung (optional).
+5. Wählen Sie **Registrieren** aus, um die Datenquelle zu registrieren.
 
 :::image type="content" source="media/register-scan-azure-data-explorer/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 

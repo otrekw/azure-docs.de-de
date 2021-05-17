@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: 2448609b1184c8e91947bffbd13cfea8e3fe5d52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d17577d7e138c4c04b7f386cb166e765c0e2e10c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390860"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733101"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inkrementelle Anreicherung und Zwischenspeicherung in Azure Cognitive Search
 
@@ -40,6 +40,9 @@ Weitere Informationen zu Schritten und Überlegungen beim Arbeiten mit einem vor
 Die inkrementelle Anreicherung ergänzt die Anreicherungspipeline um einen Zwischenspeicher. Der Indexer speichert die Ergebnisse der Dokumententschlüsselung sowie die Ausgaben der einzelnen Qualifikationen für jedes Dokument zwischen. Wenn ein Skillset aktualisiert wird, werden lediglich die geänderten Qualifikationen (oder die Downstreamqualifikationen) erneut ausgeführt. Die aktualisierten Ergebnisse werden in den Zwischenspeicher geschrieben, und das Dokument wird im Suchindex oder im Wissensspeicher aktualisiert.
 
 Der Zwischenspeicher wird physisch in einem Blobcontainer in Ihrem Azure Storage-Konto gespeichert. Der Cache verwendet auch Table Storage für die interne Aufzeichnung der Verarbeitung von Updates. Alle Indizes in einem Suchdienst können für den Indexercache das gleiche Speicherkonto verwenden. Jedem Indexer wird ein eindeutiger und unveränderlicher Cachebezeichner zum Container zugewiesen, der ihn verwendet.
+
+> [!NOTE]
+> Der Indexercache erfordert ein Speicherkonto vom Typ „Universell“. Weitere Informationen finden Sie im Thema zu den [verschiedenen Typen von Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 
 ## <a name="cache-configuration"></a>Cachekonfiguration
 

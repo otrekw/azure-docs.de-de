@@ -2,14 +2,14 @@
 title: Azure Service Bus -Zugriffssteuerung mit SAS (Shared Access Signatures)
 description: Übersicht über Service Bus-Zugriffssteuerung mithilfe von Shared Access Signatures, Informationen zur SAS-Autorisierung mit Azure Service Bus.
 ms.topic: article
-ms.date: 01/19/2021
+ms.date: 04/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d210da4b653a20dd273dfce723f0bf9d5dbf743b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 622a1dd877be98053fdb9b21bfbb40a81c749f02
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737816"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760623"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus-Zugriffssteuerung mit Shared Access Signatures
 
@@ -28,15 +28,15 @@ SAS schützt den Zugriff auf Service Bus basierend auf Autorisierungsregeln. Die
 
 Shared Access Signatures sind ein anspruchsbasierter Autorisierungsmechanismus mit einfachen Token. Mit SAS werden Schlüssel nie über das Netzwerk übergeben. Schlüssel werden verwendet, um Informationen kryptografisch zu signieren, die später vom Dienst überprüft werden können. SAS kann wie ein Schema aus Benutzername und Kennwort verwendet werden, bei dem der Client unmittelbar den Namen einer Autorisierungsregel und einen passenden Schlüssel besitzt. SAS kann auch ähnlich wie ein Verbundsicherheitsmodell verwendet werden, bei dem der Client ein zeitlich begrenztes und signierte Zugriffstoken von einem Sicherheitstokendienst erhält, ohne den Signaturschlüssel überhaupt zu besitzen.
 
-SAS-Authentifizierung in Service Bus wird mit benannten [SAS-Autorisierungsregeln](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), denen Zugriffsrechte zugeordnet sind, und einem Paar aus primären und sekundären kryptografischen Schlüsseln konfiguriert. Die Schlüssel sind 256-Bit-Werte in Base64-Darstellung. Sie können Regeln auf Namespaceebene für Service Bus-[Relays](../azure-relay/relay-what-is-it.md), -[Warteschlangen](service-bus-messaging-overview.md#queues) und -[Themen](service-bus-messaging-overview.md#topics) konfigurieren.
+SAS-Authentifizierung in Service Bus wird mit benannten [SAS-Autorisierungsrichtlinien](#shared-access-authorization-policies), denen Zugriffsrechte zugeordnet sind, und einem Paar aus primären und sekundären kryptografischen Schlüsseln konfiguriert. Die Schlüssel sind 256-Bit-Werte in Base64-Darstellung. Sie können Regeln auf Namespaceebene für Service Bus-[Warteschlangen](service-bus-messaging-overview.md#queues) und -[Themen](service-bus-messaging-overview.md#topics) konfigurieren.
 
-Das [Shared Access Signature](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider)-Token enthält den Namen der ausgewählten Autorisierungsregel, den URI der Ressource, auf die zugegriffen werden muss, einen Ablaufwert und eine kryptografische HMAC-SHA256-Signatur, die mithilfe des primären oder sekundären Kryptografieschlüssels für die ausgewählte Autorisierungsregel über diese Felder berechnet wird.
+Das Shared Access Signature-Token enthält den Namen der ausgewählten Autorisierungsrichtlinie, den URI der Ressource, auf die zugegriffen werden muss, einen Ablaufwert und eine kryptografische HMAC-SHA256-Signatur, die mithilfe des primären oder sekundären Kryptografieschlüssels für die ausgewählte Autorisierungsregel über diese Felder berechnet wird.
 
 ## <a name="shared-access-authorization-policies"></a>SAS-Autorisierungsrichtlinien
 
 Alle Service Bus-Namespaces und Service Bus-Entitäten verfügen über eine SAS-Autorisierungsrichtlinie, die aus Regeln besteht. Die Richtlinie auf Namespaceebene gilt für alle Entitäten innerhalb des Namespace, unabhängig von ihrer jeweiligen Richtlinienkonfiguration.
 
-Jede Regel einer Autorisierungsrichtlinie erfordert drei Angaben: **Name**, **Bereich** und **Rechte**. Der **Name** ist ein eindeutiger Name innerhalb des Bereichs. Der Bereich ist der URI der betreffenden Ressource. Für einen Service Bus-Namespace wird als Bereich der vollqualifizierte Domänenname (Fully Qualified Domain Name, FQDN) angegeben, z.B. `https://<yournamespace>.servicebus.windows.net/`.
+Jede Regel einer Autorisierungsrichtlinie erfordert drei Angaben: **Name**, **Bereich** und **Rechte**. Der **Name** ist ein eindeutiger Name innerhalb des Bereichs. Der Bereich ist der URI der betreffenden Ressource. Für einen Service Bus-Namespace ist der Bereich der vollqualifizierte Namespace, z. B. `https://<yournamespace>.servicebus.windows.net/`.
 
 Die durch die Richtlinienregel gewährten Rechte können eine Kombination aus Folgendem sein:
 
@@ -68,7 +68,7 @@ Mit den folgenden Empfehlungen für die Verwendung von Shared Access Signatures 
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Konfiguration für SAS-Authentifizierung (Shared Access Signature)
 
-Sie können die Regel [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) für Service Bus-Namespaces, -Warteschlangen oder -Themen konfigurieren. Das Konfigurieren einer [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) für ein Service Bus-Abonnement wird zurzeit nicht unterstützt, aber Sie können Regeln, die für einen Namespace oder ein Thema konfiguriert wurden, auch zum Sichern des Zugriffs auf Abonnements verwenden. Ein funktionierendes Beispiel, das dieses Verfahren veranschaulicht, finden Sie unter [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) (Verwenden der SAS-Authentifizierung mit Service Bus-Abonnements).
+Sie können die SAS-Autorisierungsrichtlinie für Service Bus-Namespaces, -Warteschlangen oder -Themen konfigurieren. Die Konfiguration für ein Service Bus-Abonnement wird zurzeit nicht unterstützt, Sie können die Regeln, die für einen Namespace oder ein Thema konfiguriert wurden, allerdings verwenden, um den Zugriff auf Abonnements zu sichern. Ein funktionierendes Beispiel, das dieses Verfahren veranschaulicht, finden Sie unter [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) (Verwenden der SAS-Authentifizierung mit Service Bus-Abonnements).
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
@@ -91,22 +91,6 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
     urlencode(base64(hmacsha256(urlencode('https://<yournamespace>.servicebus.windows.net/') + "\n" + '<expiry instant>', '<signing key>')))
     ```
 
-Im Folgenden finden Sie C#-Beispielcode zum Generieren eines SAS-Tokens:
-
-```csharp
-private static string createToken(string resourceUri, string keyName, string key)
-{
-    TimeSpan sinceEpoch = DateTime.UtcNow - new DateTime(1970, 1, 1);
-    var week = 60 * 60 * 24 * 7;
-    var expiry = Convert.ToString((int)sinceEpoch.TotalSeconds + week);
-    string stringToSign = HttpUtility.UrlEncode(resourceUri) + "\n" + expiry;
-    HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key));
-    var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
-    var sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), expiry, keyName);
-    return sasToken;
-}
-```
-
 > [!IMPORTANT]
 > Beispiele zum Generieren eines SAS-Tokens unter Verwendung verschiedener Programmiersprachen finden Sie unter [Generieren eines SAS-Tokens](/rest/api/eventhub/generate-sas-token). 
 
@@ -124,9 +108,9 @@ Ein SAS-Token ist für alle Ressourcen mit dem Präfix `<resourceURI>` gültig, 
 
 ## <a name="regenerating-keys"></a>Neugenerieren von Schlüsseln
 
-Es wird empfohlen, die im [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -Objekt verwendeten Schlüssel in regelmäßigen Abständen neu zu generieren. Die Primär- und Sekundärschlüsselslots sind vorhanden, damit Sie Schlüssel schrittweise rotieren können. Wenn Ihre Anwendung im Allgemeinen den Primärschlüssel verwendet, können Sie den Primärschlüssel in den Sekundärschlüsselslot kopieren und erst dann den Primärschlüssel erneut generieren. Der neue Primärschlüsselwert kann dann in den Clientanwendungen konfiguriert werden, die ununterbrochenen Zugriff mit dem alten Primärschlüssel im sekundären Slot haben. Sobald alle Clients aktualisiert wurden, können Sie den Sekundärschlüssel erneut generieren, um schließlich den alten Primärschlüssel außer Kraft zu setzen.
+Es wird empfohlen, die in der SAS-Autorisierungsrichtlinie verwendeten Schlüssel in regelmäßigen Abständen neu zu generieren. Die Primär- und Sekundärschlüsselslots sind vorhanden, damit Sie Schlüssel schrittweise rotieren können. Wenn Ihre Anwendung im Allgemeinen den Primärschlüssel verwendet, können Sie den Primärschlüssel in den Sekundärschlüsselslot kopieren und erst dann den Primärschlüssel erneut generieren. Der neue Primärschlüsselwert kann dann in den Clientanwendungen konfiguriert werden, die ununterbrochenen Zugriff mit dem alten Primärschlüssel im sekundären Slot haben. Sobald alle Clients aktualisiert wurden, können Sie den Sekundärschlüssel erneut generieren, um schließlich den alten Primärschlüssel außer Kraft zu setzen.
 
-Wenn Sie wissen oder vermuten, dass ein Schlüssel gefährdet ist, und Sie die Schlüssel widerrufen müssen, können Sie sowohl den [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) als auch den [SecondaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) eines [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)-Objekts neu generieren und so durch neue Schlüssel ersetzen. Durch dieses Verfahren werden alle Token, die mit den alten Schlüsseln signiert wurden, für ungültig erklärt.
+Wenn Sie wissen oder vermuten, dass ein Schlüssel gefährdet ist, und Sie die Schlüssel widerrufen müssen, können Sie sowohl den Primärschlüssel als auch den Sekundärschlüssel einer SAS-Autorisierungsrichtlinie neu generieren und so durch neue Schlüssel ersetzen. Durch dieses Verfahren werden alle Token, die mit den alten Schlüsseln signiert wurden, für ungültig erklärt.
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>SAS-Authentifizierung bei Service Bus
 
@@ -136,61 +120,15 @@ Ein Beispiel für eine Service Bus-Anwendung, das die Konfiguration veranschauli
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Zugreifen auf SAS-Autorisierungsregeln für eine Entität
 
-Mit .NET Framework-Bibliotheken in Service Bus können Sie auf ein [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)-Objekt, das in einer Service Bus-Warteschlange oder einem Service Bus-Thema konfiguriert wurde, über die [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules)-Sammlung der entsprechenden [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription)- oder [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription)-Objekte zugreifen.
-
-Der folgende Code zeigt, wie Sie Autorisierungsregeln für eine Warteschlange hinzufügen.
-
-```csharp
-// Create an instance of NamespaceManager for the operation
-NamespaceManager nsm = NamespaceManager.CreateFromConnectionString(
-    <connectionString> );
-QueueDescription qd = new QueueDescription( <qPath> );
-
-// Create a rule with send rights with keyName as "contosoQSendKey"
-// and add it to the queue description.
-qd.Authorization.Add(new SharedAccessAuthorizationRule("contosoSendKey",
-    SharedAccessAuthorizationRule.GenerateRandomKey(),
-    new[] { AccessRights.Send }));
-
-// Create a rule with listen rights with keyName as "contosoQListenKey"
-// and add it to the queue description.
-qd.Authorization.Add(new SharedAccessAuthorizationRule("contosoQListenKey",
-    SharedAccessAuthorizationRule.GenerateRandomKey(),
-    new[] { AccessRights.Listen }));
-
-// Create a rule with manage rights with keyName as "contosoQManageKey"
-// and add it to the queue description.
-// A rule with manage rights must also have send and receive rights.
-qd.Authorization.Add(new SharedAccessAuthorizationRule("contosoQManageKey",
-    SharedAccessAuthorizationRule.GenerateRandomKey(),
-    new[] {AccessRights.Manage, AccessRights.Listen, AccessRights.Send }));
-
-// Create the queue.
-nsm.CreateQueue(qd);
-```
+Verwenden Sie die get/update-Vorgänge für Warteschlangen oder Themen in den [Verwaltungsbibliotheken für Service Bus](service-bus-management-libraries.md), um auf die entsprechenden SAS-Autorisierungsregeln zuzugreifen bzw. sie zu aktualisieren. Sie können die Regeln auch hinzufügen, wenn Sie die Warteschlangen oder Themen mithilfe dieser Bibliotheken erstellen.
 
 ## <a name="use-shared-access-signature-authorization"></a>Verwenden der Shared Access Signature-Authentifizierung
 
-Anwendungen, die das Azure .NET SDK mit den .NET-Bibliotheken von Service Bus nutzen, können die SAS-Autorisierung über die [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) -Klasse verwenden. Der folgende Code veranschaulicht die Verwendung des Tokenanbieters zum Senden von Nachrichten an eine Service Bus-Warteschlange. Als Alternative zur hier dargestellten Verwendung können Sie auch ein zuvor ausgestelltes Token an die Factorymethode des Tokenanbieters übergeben.
-
-```csharp
-Uri runtimeUri = ServiceBusEnvironment.CreateServiceUri("sb",
-    <yourServiceNamespace>, string.Empty);
-MessagingFactory mf = MessagingFactory.Create(runtimeUri,
-    TokenProvider.CreateSharedAccessSignatureTokenProvider(keyName, key));
-QueueClient sendClient = mf.CreateQueueClient(qPath);
-
-//Sending hello message to queue.
-BrokeredMessage helloMessage = new BrokeredMessage("Hello, Service Bus!");
-helloMessage.MessageId = "SAS-Sample-Message";
-sendClient.Send(helloMessage);
-```
-
-Sie können zudem den Tokenanbieter direkt zum Ausstellen von Token für die Übergabe an andere Clients verwenden.
+Anwendungen, die ein beliebiges Service Bus SDK in einer der offiziell unterstützten Sprachen wie .NET, Java, JavaScript und Python verwenden, können SAS-Autorisierung über die Verbindungszeichenfolgen nutzen, die an den Clientkonstruktor übergeben werden.
 
 Verbindungszeichenfolgen können einen Regelnamen (*SharedAccessKeyName*) und einen Regelschlüssel (*SharedAccessKey*) oder ein zuvor ausgestelltes Token (*SharedAccessSignature*) enthalten. Wenn diese in der Verbindungszeichenfolge vorhanden sind, die an eine Konstruktor- oder eine Factorymethode übergeben wird, die eine Verbindungszeichenfolge akzeptiert, wird der SAS-Tokenanbieter automatisch erstellt und aufgefüllt.
 
-Beachten Sie, dass Sie zum Verwenden der SAS-Autorisierung mit Service Bus Relays SAS-Schlüssel nutzen können, die für den Service Bus-Namespace konfiguriert sind. Wenn Sie ein Relay explizit im Namespaceobjekt ([NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) mit [RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription)) erstellen, können Sie die SAS-Regeln nur für dieses jeweilige Relay festlegen. Zum Verwenden der SAS-Autorisierung mit Service Bus-Abonnements können Sie SAS-Schlüssel nutzen, die für einen Service Bus-Namespace oder ein Thema konfiguriert sind.
+Zum Verwenden der SAS-Autorisierung mit Service Bus-Abonnements können Sie SAS-Schlüssel nutzen, die für einen Service Bus-Namespace oder ein Thema konfiguriert sind.
 
 ## <a name="use-the-shared-access-signature-at-http-level"></a>Verwenden einer Shared Access Signature (auf HTTP-Ebene)
 
@@ -213,7 +151,7 @@ Im vorherigen Abschnitt wurde gezeigt, wie Sie das SAS-Token mit einer HTTP POST
 
 Bevor Sie beginnen, Daten an Service Bus zu senden, muss der Herausgeber das SAS-Token in einer AMQP-Nachricht an einen ordnungsgemäß definierten AMQP-Knoten mit dem Namen **$cbs** senden (dieser kann als spezielle Warteschlange betrachtet werden, die vom Dienst zum Abrufen und Überprüfen aller SAS-Token verwendet wird). Der Herausgeber muss das Feld **ReplyTo** in der AMQP-Nachricht angeben. Hierbei handelt es sich um den Knoten, den der Dienst für die Antwort an den Herausgeber mit dem Ergebnis der Tokenüberprüfung verwendet (einfaches Anforderungs-/Antwortmuster zwischen Herausgeber und Dienst). Dieser spontan erstellte Antwortknoten beschäftigt sich mit der dynamischen Erstellung von Remoteknoten (siehe AMQP 1.0-Spezifikation). Nachdem die Gültigkeit des SAS-Tokens überprüft wurde, kann der Verleger mit dem Senden von Daten an den Dienst beginnen.
 
-Die folgenden Schritte zeigen, wie das SAS-Token mit dem AMQP-Protokoll über die [AMQP.NET Lite](https://github.com/Azure/amqpnetlite)-Bibliothek gesendet wird. Dies ist hilfreich, wenn Sie das offizielle Service Bus SDK bei der Entwicklung in C\# nicht verwenden können (z. B. bei WinRT, .NET Compact Framework, .NET Micro Framework und Mono). Dank dieser nützlichen Bibliothek können Sie nachvollziehen, wie die anspruchsbasierte Sicherheit auf AMQP-Ebene funktioniert. Wie sie auf HTTP-Ebene funktioniert, haben Sie bereits gesehen (HTTP POST-Anforderung und SAS-Token werden im Autorisierungsheader gesendet). Wenn Sie nicht so genau über AMQP Bescheid wissen müssen, können Sie für .NET Framework-Anwendungen das offizielle Service Bus-SDK, das die erforderlichen Schritte für Sie ausführt verwenden.
+Die folgenden Schritte zeigen, wie das SAS-Token mit dem AMQP-Protokoll über die [AMQP.NET Lite](https://github.com/Azure/amqpnetlite)-Bibliothek gesendet wird. Dies ist hilfreich, wenn Sie das offizielle Service Bus SDK bei der Entwicklung in C\# nicht verwenden können (z. B. bei WinRT, .NET Compact Framework, .NET Micro Framework und Mono). Dank dieser nützlichen Bibliothek können Sie nachvollziehen, wie die anspruchsbasierte Sicherheit auf AMQP-Ebene funktioniert. Wie sie auf HTTP-Ebene funktioniert, haben Sie bereits gesehen (HTTP POST-Anforderung und SAS-Token werden im Autorisierungsheader gesendet). Wenn Sie nicht so tiefgreifende Kenntnisse zu AMQP benötigen, können Sie das offizielle Service Bus SDK in einer der unterstützten Sprachen wie .NET, Java, JavaScript, Python und Go verwenden, das dies für Sie erledigt.
 
 ### <a name="c35"></a>C&#35;
 
@@ -304,7 +242,7 @@ Die folgende Tabelle zeigt die Zugriffsrechte, die für verschiedene Vorgänge f
 | Platzieren einer Nachricht in die Warteschlange für unzustellbare Nachrichten |Lauschen |Beliebige gültige Warteschlangenadresse |
 | Abrufen des einer Nachrichtenwarteschlangensitzung zugeordneten Status |Lauschen |Beliebige gültige Warteschlangenadresse |
 | Festlegen des einer Nachrichtenwarteschlangensitzung zugeordneten Status |Lauschen |Beliebige gültige Warteschlangenadresse |
-| Planen einer Nachricht für spätere Zustellung, beispielsweise [ScheduleMessageAsync()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Lauschen | Beliebige gültige Warteschlangenadresse
+| Planen einer Nachricht für spätere Zustellung |Lauschen | Beliebige gültige Warteschlangenadresse
 | **Thema** | | |
 | Erstellen eines Themas |Verwalten |Jede Namespaceadresse |
 | Löschen eines Themas |Verwalten |Beliebige gültige Themenadresse |

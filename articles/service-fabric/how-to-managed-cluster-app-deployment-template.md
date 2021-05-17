@@ -1,18 +1,18 @@
 ---
-title: Bereitstellen einer Anwendung in einem verwalteten Service Fabric-Cluster (Vorschau) mithilfe einer ARM-Vorlage
-description: Stellen Sie mithilfe einer Azure Resource Manager-Vorlage eine Anwendung in einem verwalteten Azure Service Fabric-Cluster (Vorschau) bereit.
+title: Bereitstellen einer Anwendung in einem verwalteten Service Fabric-Cluster mithilfe einer ARM-Vorlage
+description: Stellen Sie mithilfe einer Azure Resource Manager-Vorlage eine Anwendung in einem verwalteten Azure Service Fabric-Cluster bereit.
 ms.topic: how-to
-ms.date: 02/15/2021
-ms.openlocfilehash: e860c77d77e3aabb70f70defdaa25de14e77e0e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 5/10/2021
+ms.openlocfilehash: 0712040032f0e7b33720df5bef1555652c27fbb0
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728010"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735618"
 ---
-# <a name="deploy-a-service-fabric-managed-cluster-preview-application-using-arm-template"></a>Bereitstellen einer Anwendung in einem verwalteten Service Fabric-Cluster (Vorschau) mithilfe einer ARM-Vorlage
+# <a name="deploy-a-service-fabric-managed-cluster-application-using-arm-template"></a>Bereitstellen einer Anwendung in einem verwalteten Service Fabric-Cluster mithilfe einer ARM-Vorlage
 
-Sie haben für die Bereitstellung von Azure Service Fabric-Anwendungen in Ihrem verwalteten Service Fabric-Cluster mehrere Optionen. Es wird empfohlen, Azure Resource Manager zu verwenden. Bei Verwenden von Resource Manager können Anwendungen und Dienste in JSON beschrieben und anschließend in der gleichen Resource Manager-Vorlage wie der Cluster bereitgestellt werden. Im Unterschied zur Verwendung von PowerShell oder Azure CLI zur Bereitstellung und Verwaltung von Anwendungen müssen Sie bei Einsatz von Resource Manager nicht darauf warten, dass der Cluster bereit ist. Die Registrierung und Bereitstellung von Anwendungen kann in einem Schritt erfolgen. Resource Manager ist die beste Möglichkeit, den Anwendungslebenszyklus in Ihrem Cluster zu verwalten. Weitere Informationen finden Sie unter [Bewährte Methoden: Infrastructure-as-Code](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources).
+Sie haben für die Bereitstellung von Azure Service Fabric-Anwendungen in Ihrem verwalteten Service Fabric-Cluster mehrere Optionen. Es wird empfohlen, Azure Resource Manager zu verwenden. Bei Verwenden von Resource Manager können Anwendungen und Dienste in JSON beschrieben und anschließend in der gleichen Resource Manager-Vorlage wie der Cluster bereitgestellt werden. Im Unterschied zur Verwendung von PowerShell oder Azure CLI zur Bereitstellung und Verwaltung von Anwendungen müssen Sie bei Einsatz von Resource Manager nicht darauf warten, dass der Cluster bereit ist. Die Registrierung und Bereitstellung von Anwendungen kann in einem Schritt erfolgen. Resource Manager ist die beste Möglichkeit, den Anwendungslebenszyklus in Ihrem Cluster zu verwalten. Weitere Informationen finden Sie unter [Bewährte Methoden: Infrastructure-as-Code](service-fabric-best-practices-infrastructure-as-code.md#service-fabric-resources).
 
 Das Verwalten Ihrer Anwendungen als Ressourcen in Resource Manager kann Ihnen helfen, Verbesserungen in diesen Bereichen zu erzielen:
 
@@ -101,25 +101,25 @@ Die Beispielanwendung enthält [Azure Resource Manager-Vorlagen](https://github.
 
 ```json
 {
-    "apiVersion": "2021-01-01-preview",
+    "apiVersion": "2021-05-01",
     "type": "Microsoft.ServiceFabric/managedclusters/applications",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2021-01-01-preview",
+    "apiVersion": "2021-05-01",
     "type": "Microsoft.ServiceFabric/managedclusters/applicationTypes",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2021-01-01-preview",
+    "apiVersion": "2021-05-01",
     "type": "Microsoft.ServiceFabric/managedclusters/applicationTypes/versions",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'), '/', parameters('applicationTypeVersion'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2021-01-01-preview",
+    "apiVersion": "2021-05-01",
     "type": "Microsoft.ServiceFabric/managedclusters/applications/services",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
     "location": "[variables('clusterLocation')]"
@@ -181,12 +181,10 @@ So löschen Sie eine Anwendung, die mithilfe des Anwendungsressourcenmodells in 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Anwendungsressourcenmodell:
+Erfahren Sie mehr über die Bereitstellung einer verwalteten Clusteranwendung:
 
-* [Modellieren einer Anwendung in Service Fabric](service-fabric-application-model.md)
-* [Service Fabric-Anwendungs- und -Dienstmanifeste](service-fabric-application-and-service-manifests.md)
-* [Bewährte Methoden: Infrastructure-as-Code](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
-* [Verwalten von Anwendungen und Diensten als Azure-Ressourcen](service-fabric-best-practices-infrastructure-as-code.md)
+* [Bereitstellen von Anwendungsgeheimnissen für verwaltete Cluster](how-to-managed-cluster-application-secrets.md)
+* [Bereitstellen verwalteter Clusteranwendungen mit verwalteter Identität](how-to-managed-cluster-application-managed-identity.md)
 
 
 <!--Image references-->

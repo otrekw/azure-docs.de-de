@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: bf5445f6ca04e56aab466e97967a58c3e4b735a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac1c623f3ac136f1e16a92d47995c1067818e926
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556942"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787461"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Auflisten von Azure-Rollenzuweisungen mit Azure PowerShell
 
@@ -28,7 +28,7 @@ ms.locfileid: "100556942"
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
+> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [Azure Lighthouse](../lighthouse/overview.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -8,12 +8,12 @@ ms.date: 03/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 8b46ad7a34be99aefeb067591fa1b029dba2361e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 618ae75367fd16469fd56a29e8dce37f4d39351d
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561888"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480507"
 ---
 # <a name="azure-storage-container-management-partners"></a>Azure Storage-Partner für die Containerverwaltung
 
@@ -27,6 +27,7 @@ In diesem Artikel werden Lösungen von Microsoft Partnern vorgestellt, die Autom
 | ![Unternehmenslogo von Portworx](./media/portworx-logo.png) |**Portworx**<br>Portworx von Pure Storage bietet eine Lösung für persistenten Speicher, Business Continuity & Disaster Recovery, Datensicherheit sowie cloudübergreifende Datenmigrationen für Anwendungen, die integriert auf Kubernetes ausgeführt werden.|[Seite des Partnerunternehmens](https://portworx.com/azure/)|
 | ![<n/>Unternehmenslogo von Robin.io](./media/robin-logo.png) |**<n/>Robin.io**<br>Robin.io stellt eine Plattform für die Anwendungs- und Datenverwaltung bereit, mit der Unternehmen und 5G-Dienstanbieter komplexe Anwendungspipelines als Dienst anbieten können. Robin basiert auf dem Branchenstandard Kubernetes und ermöglicht es Entwicklern und Plattformtechnikern, unabhängig von den zugrunde liegenden Infrastrukturressourcen daten- und netzwerkzentrierte Anwendungen schnell bereitzustellen und einfach zu verwalten.<br><br>Robin Cloud Native Storage (CNS) bietet erweiterte Datenvrwaltungsfunktionen für den Azure Kubernetes Service. Robin CNS lässt sich nahtlos in Azure Disk Storage integrieren, um die Verwaltung von zustandsbehafteten Anwendungen zu vereinfachen. Entwickler und DevOps-Teams können Robin CNS als standardmäßigen Kubernetes-Operator in AKS bereitstellen. Robin Cloud Native Storage hilft beim Vereinfachen von Datenverwaltungsvorgängen wie Business Continuity & Disaster Recovery und dem Klonen ganzer Anwendungen. |[Seite des Partnerunternehmens](https://robin.io/robin-cloud-native-storage-for-microsoft-aks/)|
 
+Sind Sie Speicherpartner, aber Ihre Lösung wird noch nicht aufgeführt? Senden Sie uns [hier](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUQjY4QlJYUzFHQ0ZBVDNYWERaUlNRVU5IMyQlQCN0PWcu) Ihre Informationen.
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen über einige unserer Partners erhalten Sie unter:
