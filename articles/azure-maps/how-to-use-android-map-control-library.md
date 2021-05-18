@@ -147,7 +147,7 @@ Das Azure Maps Android SDK unterstützt die Azure Government-Cloud. Der Zugriff 
 
 Fügen Sie an derselben Stelle, an der die Azure Maps-Authentifizierungsdetails angegeben werden, die folgende Codezeile hinzu, um die Karte anzuweisen, die Government-Clouddomäne von Azure Maps zu verwenden.
 
-::: zone pivot=&quot;programming-language-java-android&quot;
+::: zone pivot="programming-language-java-android":::
 
 ```java
 AzureMaps.setDomain(&quot;atlas.azure.us");
