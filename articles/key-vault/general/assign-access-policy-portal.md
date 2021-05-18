@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 443b269e7155fc206ee50e7907a7acded2c22f53
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 09e7d954261b5bfb680486e06ed298e11974847d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751488"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749722"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal
 
@@ -40,7 +40,7 @@ Weitere Informationen zum Erstellen von Gruppen in Azure Active Directory über 
 
     ![Auswählen des Sicherheitsprinzipals für die Zugriffsrichtlinie](../media/authentication/assign-policy-portal-03.png)
 
-    Wenn Sie für die App eine verwaltete Identität verwenden, suchen Sie nach dem Namen der App, und wählen Sie ihn aus. (Weitere Informationen zu verwalteten Identitäten und Dienstprinzipalen finden Sie unter [Authentifizierung mit Key Vault: App-Identität und Dienstprinzipale](authentication.md#app-identity-and-security-principals).)
+    Wenn Sie für die App eine verwaltete Identität verwenden, suchen Sie nach dem Namen der App, und wählen Sie ihn aus. (Weitere Informationen zu Sicherheitsprinzipalen finden Sie unter [Key Vault-Authentifizierung](authentication.md).
  
 1.  Wählen Sie im Bereich **Zugriffsrichtlinie hinzufügen** die Option **Hinzufügen** aus, um die Zugriffsrichtlinie zu speichern.
 
@@ -53,6 +53,5 @@ Weitere Informationen zum Erstellen von Gruppen in Azure Active Directory über 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Key Vault – Sicherheit: Identitäts- und Zugriffsverwaltung](security-overview.md#identity-management)
-- [Sicherer Zugriff auf einen Schlüsseltresor](security-overview.md)
+- [Azure Key Vault – Sicherheit: Identitäts- und Zugriffsverwaltung](security-features.md#identity-management)
 - [Entwicklerhandbuch zu Azure Key Vault](developers-guide.md)

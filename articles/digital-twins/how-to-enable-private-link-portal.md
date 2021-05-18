@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/25/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff1589eb496cbc4482aaf93dfd4f0faeeda5e9cd
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 68c76c92f37ae424bd7e8bc85557e6c204ba742e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208867"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734199"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-portal"></a>Aktivieren des privaten Zugriffs mit Private Link (Vorschau): Azure-Portal
 
@@ -63,7 +63,7 @@ Daraufhin wird eine Seite geöffnet, auf der Sie die Details des neuen privaten 
 
 1. Entscheiden Sie zuletzt, ob Sie die **Integration mit einer privaten DNS-Zone** verwenden möchten. Sie können die Standardoption **Ja** verwenden, oder dem Link im Portal verwenden, um [mehr über die private DNS-Integration zu erfahren](../private-link/private-endpoint-overview.md#dns-configuration).
 
-Nachdem Sie die Konfigurationsoptionen ausgewählt haben, klicken Sie auf **OK**.
+Nachdem Sie die Konfigurationsoptionen ausgefüllt haben, wählen Sie **OK** aus, um den Vorgang abzuschließen.
 
 Dadurch kehren Sie zur Registerkarte **Netzwerk** des Setups der Azure Digital Twins-Instanz zurück, auf der Ihr neuer Endpunkt unter „Private Endpunktverbindungen“ angezeigt werden sollte.
 

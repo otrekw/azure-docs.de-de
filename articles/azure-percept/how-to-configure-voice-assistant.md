@@ -1,22 +1,22 @@
 ---
 title: Konfigurieren der Sprach-Assistenten-Anwendung mithilfe von Azure IoT Hub
 description: Konfigurieren der Sprach-Assistenten-Anwendung mithilfe von Azure IoT Hub
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: b22ef4ee0a8b5978bb2ec1c02fadf368815f3014
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 514bee115ee0e01910fe726ee8ae378352f89d99
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095781"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754359"
 ---
 # <a name="configure-voice-assistant-application-using-azure-iot-hub"></a>Konfigurieren der Sprach-Assistenten-Anwendung mithilfe von Azure IoT Hub
 
-In diesem Artikel wird beschrieben, wie Sie Ihre Sprach-Assistenten-Anwendung mithilfe von IoT Hub konfigurieren. Ein schrittweises Tutorial, das Sie durch den Prozess der Erstellung eines Sprach-Assistenten mithilfe von Demovorlagen führt, finden Sie unter [Erstellen eines Sprach-Assistenten ohne Code mit Azure Percept Studio und Azure Percept-Audio](./tutorial-no-code-speech.md).
+In diesem Artikel wird beschrieben, wie Sie Ihre Sprach-Assistenten-Anwendung mithilfe von IoT Hub konfigurieren. Ein schrittweises Tutorial, das Sie durch den Prozess der Erstellung eines Sprach-Assistenten führt, finden Sie unter [Erstellen eines Sprach-Assistenten ohne Code mit Azure Percept Studio und Azure Percept Audio](./tutorial-no-code-speech.md).
 
 ## <a name="update-your-voice-assistant-configuration"></a>Aktualisieren Ihrer Sprach-Assistenten-Konfiguration
 
@@ -28,11 +28,11 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Sprach-Assistenten-Anwendung mi
 
 1. Wählen Sie das Gerät aus, auf dem Ihre Sprach-Assistenten-Anwendung bereitgestellt wurde.
 
-1. Klicken Sie auf **Module festlegen**.
+1. Wählen Sie **Module festlegen** aus.
 
     :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/set-modules.png" alt-text="Screenshot: Geräteseite mit Hervorhebung von „Module festlegen“":::
 
-1. Vergewissern Sie sich, dass der folgende Eintrag im Abschnitt **Anmeldeinformationen für Container Registry** vorhanden ist. Fügen Sie Anmeldeinformationen hinzu, falls erforderlich.
+1. Vergewissern Sie sich, dass der folgende Eintrag im Abschnitt **Anmeldeinformationen für Container Registry** vorhanden ist. Fügen Sie Anmeldeinformationen hinzu, falls dies erforderlich ist.
 
     |Name|Adresse|Username|Kennwort|
     |----|-------|--------|--------|
@@ -42,17 +42,17 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Sprach-Assistenten-Anwendung mi
 
     :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/modules.png" alt-text="Screenshot: Liste aller IoT Edge-Module des Geräts":::
 
-1. Klicken Sie auf die Registerkarte **Moduleinstellungen**. Überprüfen Sie die folgenden Konfiguration:
+1. Wählen Sie die Registerkarte **Moduleinstellungen** aus. Überprüfen Sie die folgende Konfiguration:
 
     Image-URI|Neustartrichtlinie|Gewünschter Status
     ---------|--------------|--------------
-    mcr.microsoft.com/azureedgedevices/azureearspeechclientmodule:preload-devkit|immer|„Wird ausgeführt“
+    mcr.microsoft.com/azureedgedevices/azureearspeechclientmodule: preload-devkit|immer|„Wird ausgeführt“
 
-    Wenn Ihre Einstellungen nicht übereinstimmen, bearbeiten Sie sie, und klicken Sie auf **Aktualisieren**.
+    Wenn Ihre Einstellungen nicht übereinstimmen, bearbeiten Sie sie, und wählen Sie dann **Aktualisieren** aus.
 
-1. Klicken Sie auf die Registerkarte **Umgebungsvariablen**. Stellen Sie sicher, dass keine Umgebungsvariablen definiert sind.
+1. Wählen Sie die Registerkarte **Umgebungsvariablen** aus. Stellen Sie sicher, dass keine Umgebungsvariablen definiert sind.
 
-1. Klicken Sie auf die Registerkarte **Einstellungen für Modulzwilling**. Aktualisieren Sie den Abschnitt **speechConfigs** wie folgt:
+1. Wählen Sie die Registerkarte **Einstellungen für Modulzwilling** aus. Aktualisieren Sie den Abschnitt **speechConfigs** wie folgt:
 
     ```
     "speechConfigs": {
@@ -72,12 +72,12 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Sprach-Assistenten-Anwendung mi
 Wechseln Sie zu [Speech Studio](https://speech.microsoft.com/), um Ihre **appID**, den **key** und die **region** herauszufinden:
 
 1. Melden Sie sich an, und wählen Sie die entsprechende Sprachressource aus.
-1. Klicken Sie auf der Startseite von **Speech Studio** unter **Sprach-Assistenten** auf **Benutzerdefinierte Befehle**.
+1. Wählen Sie auf der Homepage von **Speech Studio** unter **Sprach-Assistenten** die Option **Benutzerdefinierte Befehle** aus.
 1. Wählen Sie Ihr Zielprojekt aus.
 
     :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/project.png" alt-text="Screenshot: Projektseite in Speech Studio":::
 
-1. Klicken Sie im linken Menübereich auf **Einstellungen**.
+1. Wählen Sie im linken Menübereich die Option **Einstellungen** aus.
 1. **appID** und **key** befinden sich auf der Registerkarte **Allgemein** e Einstellungen.
 
     :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/general-settings.png" alt-text="Screenshot: Allgemeine Einstellungen für Speech-Projekt":::
@@ -86,9 +86,9 @@ Wechseln Sie zu [Speech Studio](https://speech.microsoft.com/), um Ihre **appID*
 
     :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/luis-resources.png" alt-text="Screenshot: LUIS-Ressourcen für Speech-Projekt":::
 
-1. Nachdem Sie Ihre **speechConfigs**-Informationen eingegeben haben, klicken Sie auf **Aktualisieren**.
+1. Nachdem Sie Ihre **speechConfigs**-Informationen eingegeben haben, wählen Sie **Aktualisieren** aus.
 
-1. Klicken Sie oben auf der Seite **Module festlegen** auf die Registerkarte **Routen**. Stellen Sie sicher, dass Sie eine Route mit folgendem Wert besitzen:
+1. Wählen Sie oben auf der Seite **Module festlegen** die Registerkarte **Routen** aus. Stellen Sie sicher, dass Sie eine Route mit folgendem Wert besitzen:
 
     ```
     FROM /messages/modules/azureearspeechclientmodule/outputs/* INTO $upstream
@@ -96,7 +96,7 @@ Wechseln Sie zu [Speech Studio](https://speech.microsoft.com/), um Ihre **appID*
 
     Fügen Sie die Route hinzu, wenn sie nicht vorhanden ist.
 
-1. Klicken Sie auf **Überprüfen und erstellen**.
+1. Klicken Sie auf **Überprüfen + erstellen**.
 
 1. Klicken Sie auf **Erstellen**.
 

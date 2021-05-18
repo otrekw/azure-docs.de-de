@@ -7,13 +7,13 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 7247aa45ae164cd4f2eb5f210e0ec6ec91a0a25f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.custom: contperf-fy21q2, subject-rbac-steps
+ms.openlocfilehash: ec85e47e616841d570236174e1b418f58d2cc42b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104064"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760004"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (Portal)
 
@@ -22,11 +22,10 @@ ms.locfileid: "107104064"
 Dieser Artikel behandelt die Schritte zum **Einrichten einer neuen Azure Digital Twins-Instanz**, einschließlich des Erstellens der Instanz und des Einrichtens der Authentifizierung. Nachdem Sie diesen Artikel durchgearbeitet haben, verfügen Sie über eine Azure Digital Twins-Instanz, die für die Programmierung bereitsteht.
 
 In dieser Version dieses Artikels werden diese Schritte manuell nacheinander mithilfe des Azure-Portals durchlaufen. Das Azure-Portal ist eine webbasierte, zentrale Konsole, die eine Alternative zu Befehlszeilentools darstellt.
-* Wenn Sie diese Schritte manuell mithilfe der CLI durchlaufen möchten, finden Sie weitere Informationen in der CLI-Version dieses Artikels: [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung (CLI)*](how-to-set-up-instance-cli.md).
-* Ein Beispiel zur Ausführung eines automatisierten Setups mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels: [*Verwenden Einrichten einer Instanz und der Authentifizierung (über ein Skript)*](how-to-set-up-instance-scripted.md).
+* Wenn Sie diese Schritte manuell mithilfe der CLI durchlaufen möchten, finden Sie weitere Informationen in der CLI-Version dieses Artikels: [Vorgehensweise: Einrichten einer Instanz und der Authentifizierung (CLI)](how-to-set-up-instance-cli.md) .
+* Ein Beispiel zur Ausführung eines automatisierten Setups mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels: [Verwenden Einrichten einer Instanz und der Authentifizierung (über ein Skript)](how-to-set-up-instance-scripted.md) .
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
-[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Erstellen der Azure Digital Twins-Instanz
 
@@ -43,10 +42,11 @@ Suchen Sie im Suchfeld nach *Azure Digital Twins*, und wählen Sie den Dienst **
 Geben Sie auf der folgenden Seite **Ressource erstellen** die unten angegebenen Werte ein:
 * **Abonnement**: Das Azure-Abonnement, das Sie verwenden.
   - **Ressourcengruppe**: Eine Ressourcengruppe, in der die Instanz bereitgestellt werden soll. Wenn Sie nicht bereits eine vorhandene Ressourcengruppe in Erwägung ziehen, können Sie hier eine Ressourcengruppe erstellen, indem Sie den Link *Neu erstellen* auswählen und einen Namen für eine neue Ressourcengruppe eingeben
-* **Standort**: Eine für Azure Digital Twins aktivierte Region für die Bereitstellung. Weitere Informationen zur regionalen Unterstützung finden Sie unter [*Verfügbare Azure-Produkte nach Region (Azure Digital Twins)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
+* **Standort**: Eine für Azure Digital Twins aktivierte Region für die Bereitstellung. Weitere Informationen zur regionalen Unterstützung finden Sie unter [Verfügbare Azure-Produkte nach Region (Azure Digital Twins)](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins) .
 * **Ressourcenname**: Ein Name für Ihre Azure Digital Twins-Instanz. Wenn in Ihrem Abonnement für die Region eine weitere Azure Digital Twins-Instanz vorhanden ist, die den angegeben Namen bereits verwendet, werden Sie aufgefordert, einen anderen Namen auszuwählen.
+* **Zugriff auf Ressource gewähren**: Wenn Sie das Kontrollkästchen in diesem Abschnitt aktivieren, erhält Ihr Azure-Konto die Berechtigung, auf Daten in der Instanz zuzugreifen und diese zu verwalten. Wenn Sie die Person sind, die die Instanz verwaltet, sollten Sie dieses Kontrollkästchen jetzt aktivieren. Wenn es ausgegraut ist, weil Sie über keine Berechtigung im Abonnement verfügen, können Sie die Erstellung der Ressource fortsetzen und sich die Rolle später von einer Person mit den erforderlichen Berechtigungen zuweisen lassen. Weitere Informationen zu dieser Rolle und zum Zuweisen von Rollen zu Ihrer Instanz finden Sie im nächsten Abschnitt [Einrichten von Benutzerzugriffsberechtigungen](#set-up-user-access-permissions).
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Eingeben der beschriebenen Werte zum Erstellen einer Azure Digital Twins-Ressource":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Screenshot: Prozess zum Erstellen einer Ressource für Azure Digital Twins. Die beschriebenen Werte werden ausgefüllt.":::
 
 Wenn Sie fertig sind, können Sie auf **Überprüfen + erstellen** klicken, wenn Sie keine weiteren Einstellungen für Ihre Instanz konfigurieren möchten. Dadurch gelangen Sie zu einer Zusammenfassungsseite, auf der Sie die eingegebenen Instanzdetails überprüfen und den Vorgang durch Klicken auf **Erstellen** abschließen können. 
 
@@ -56,9 +56,9 @@ Wenn Sie weitere Details für Ihre Instanz konfigurieren möchten, finden Sie In
 
 Im Folgenden finden Sie die zusätzlichen Optionen, die Sie während der Einrichtung mithilfe der anderen Registerkarten im Prozess **Ressource erstellen** verwenden können.
 
-* **Netzwerk**: Auf dieser Registerkarte können Sie private Endpunkte mithilfe von [Azure Private Link](../private-link/private-link-overview.md) aktivieren, um zu verhindern, dass über ein öffentliches Netzwerk auf Ihre Instanz zugegriffen werden kann. Anweisungen dazu finden Sie unter [*Gewusst wie: Aktivieren des privaten Zugriffs mit Private Link (Vorschau)*](./how-to-enable-private-link-portal.md#add-a-private-endpoint-during-instance-creation).
-* **Erweitert**: Auf dieser Registerkarte können Sie eine [vom System verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für Ihre Instanz aktivieren, die beim Weiterleiten von Ereignissen an [Endpunkte](concepts-route-events.md) verwendet werden kann. Anweisungen dazu finden Sie unter [*Gewusst wie: Aktivieren verwalteter Identitäten für das Weiterleiten von Ereignissen (Vorschau)*](./how-to-enable-managed-identities-portal.md#add-a-system-managed-identity-during-instance-creation).
-* **Tags**: Auf dieser Registerkarte können Sie Ihrer Instanz Tags hinzufügen, die Ihnen dabei helfen, die Instanz und andere Azure-Ressourcen zu verwalten. Weitere Informationen zu den Azure-Ressourcentags finden Sie unter [*Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie*](../azure-resource-manager/management/tag-resources.md).
+* **Netzwerk**: Auf dieser Registerkarte können Sie private Endpunkte mithilfe von [Azure Private Link](../private-link/private-link-overview.md) aktivieren, um zu verhindern, dass über ein öffentliches Netzwerk auf Ihre Instanz zugegriffen werden kann. Anweisungen dazu finden Sie unter [Gewusst wie: Aktivieren des privaten Zugriffs mit Private Link (Vorschau)](./how-to-enable-private-link-portal.md#add-a-private-endpoint-during-instance-creation) .
+* **Erweitert**: Auf dieser Registerkarte können Sie eine [vom System verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für Ihre Instanz aktivieren, die beim Weiterleiten von Ereignissen an [Endpunkte](concepts-route-events.md) verwendet werden kann. Anweisungen dazu finden Sie unter [Gewusst wie: Aktivieren verwalteter Identitäten für das Weiterleiten von Ereignissen (Vorschau)](./how-to-enable-managed-identities-portal.md#add-a-system-managed-identity-during-instance-creation) .
+* **Tags**: Auf dieser Registerkarte können Sie Ihrer Instanz Tags hinzufügen, die Ihnen dabei helfen, die Instanz und andere Azure-Ressourcen zu verwalten. Weitere Informationen zu den Azure-Ressourcentags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Überprüfen des Erfolgs und Erfassen wichtiger Werte
 
@@ -81,24 +81,47 @@ Die Azure Digital Twins-Instanz ist jetzt einsatzbereit. Im nächsten Schritt st
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-Öffnen Sie zunächst die Seite für Ihre Azure Digital Twins-Instanz im Azure-Portal. Wählen Sie im Menü der Instanz *Zugriffssteuerung (IAM)* aus. Klicken Sie auf die Schaltfläche **+ Hinzufügen**, um eine neue Rollenzuweisung hinzuzufügen.
+Es gibt zwei Möglichkeiten zum Erstellen einer Rollenzuweisung für einen Benutzer in Azure Digital Twins:
+* [Während Azure Digital Twins-Instanzerstellung](#assign-the-role-during-instance-creation)
+* [Verwenden von Azure Identity & Access Management (IAM)](#assign-the-role-using-azure-identity-management-iam)
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Auswählen der Option zum Hinzufügen einer Rollenzuweisung auf der Seite „Zugriffssteuerung (IAM)“":::
+Beide erfordern die gleichen Berechtigungen.
 
-Geben Sie auf der folgenden Seite *Rollenzuweisung hinzufügen* die Werte ein (dies muss ein Benutzer im Azure-Abonnement mit [ausreichenden Berechtigungen](#prerequisites-permission-requirements) erledigen):
-* **Rolle**: Wählen Sie im Dropdownmenü *Azure Digital Twins Data Owner* (Azure Digital Twins-Datenbesitzer) aus.
-* **Zugriff zuweisen zu**: Verwenden Sie *Benutzer, Gruppe oder Dienstprinzipal*.
-* **Select**: Suchen Sie nach dem Namen oder der E-Mail-Adresse des Benutzers, der zugewiesen werden soll. Wenn Sie das Ergebnis auswählen, wird der Benutzer im Abschnitt *Ausgewählte Mitglieder* angezeigt.
+### <a name="prerequisites-permission-requirements"></a>Voraussetzungen: Berechtigungsanforderungen
 
-:::row:::
-    :::column:::
-        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Eingeben der aufgelisteten Felder im Dialogfeld „Rollenzuweisung hinzufügen“":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
-Nachdem Sie die Werte eingegeben haben, klicken Sie auf die Schaltfläche *Speichern*.
+### <a name="assign-the-role-during-instance-creation"></a>Zuweisen der Rolle während der Instanzerstellung
+
+Bei der Erstellung Ihrer Azure Digital Twins-Ressource durch den [weiter oben in diesem Artikel](#create-the-azure-digital-twins-instance) beschriebenen Prozess wählen Sie unter **Zugriff auf Ressource gewähren** die Option **Azure Digital Twins Rolle „Datenbesitzer“ zuweisen** aus. Dadurch erhalten Sie Vollzugriff auf die APIs der Datenebene.
+
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2-role.png" alt-text="Screenshot: Prozess zum Erstellen einer Ressource für Azure Digital Twins. Das Kontrollkästchen unter „Zugriff auf Ressource gewähren“ ist hervorgehoben.":::
+
+Wenn Sie nicht über die Berechtigung zum Zuweisen einer Rolle zu einer Identität verfügen, wird das Feld ausgegraut angezeigt.
+
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2-role-greyed.png" alt-text="Screenshot: Prozess zum Erstellen einer Ressource für Azure Digital Twins. Das Kontrollkästchen unter „Zugriff auf Ressource gewähren“ ist ausgegraut und nicht klickbar.":::
+
+In diesem Fall können Sie die Azure Digital Twins-Ressource weiterhin erfolgreich erstellen, aber jemand mit den entsprechenden Berechtigungen muss Ihnen oder der Person, die die Daten der Instanz verwalten wird, diese Rolle zuweisen.
+
+### <a name="assign-the-role-using-azure-identity-management-iam"></a>Zuweisen der Rolle mithilfe von Azure Identity & Access Management (IAM)
+
+Sie können die Rolle **Azure Digital Twins-Datenbesitzer** auch mithilfe der Zugriffssteuerungsoptionen in Azure Identity & Access Management (IAM) zuweisen.
+
+1. Öffnen Sie zunächst die Seite für Ihre Azure Digital Twins-Instanz im Azure-Portal. 
+
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
+
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+
+1. Weisen Sie die Rolle **Azure Digital Twins-Datenbesitzer** zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | [Azure Digital Twins Data Owner (Azure Digital Twins-Datenbesitzer)](../role-based-access-control/built-in-roles.md#azure-digital-twins-data-owner) |
+    | Zugriff zuweisen zu | Benutzer, Gruppe oder Dienstprinzipal |
+    | Member | Suchen Sie nach dem Namen oder der E-Mail-Adresse des Benutzers, der zugewiesen werden soll. |
+    
+    ![Seite „Rollenzuweisung hinzufügen“](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ### <a name="verify-success"></a>Überprüfen des erfolgreichen Abschlusses
 
@@ -112,7 +135,7 @@ Sie verfügen nun über eine einsatzbereite Azure Digital Twins-Instanz und habe
 
 Testen Sie einzelne REST-API-Aufrufe für Ihre Instanz mithilfe der Befehle der Azure Digital Twins-CLI: 
 * [az dt reference](/cli/azure/dt)
-* [*Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md)
+* [Konzepte: Befehlssatz der Azure Digital Twins-CLI](concepts-cli.md)
 
 Sie können auch eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie Authentifizierungscode verwenden:
-* [*Verwenden Schreiben von App-Authentifizierungscode*](how-to-authenticate-client.md)
+* [Verwenden Schreiben von App-Authentifizierungscode](how-to-authenticate-client.md)

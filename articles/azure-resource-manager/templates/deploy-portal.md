@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen mit dem Azure-Portal
 description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Bereitstellen Ihrer Ressourcen in einer Ressourcengruppe in Ihrem Abonnement.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: d8467bb4e51fc4e6ba89a84f1260a8d2743758d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/05/2021
+ms.openlocfilehash: 6370b628a8dc2d880168dd3c4ea8a7d10a1cd36c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028674"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737115"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und dem Azure-Portal
 
@@ -95,7 +95,7 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 
     Dieses Tutorial zeigt Ihnen, wie Sie eine Schnellstartvorlage laden.
 
-1. Geben Sie unter **GitHub-Schnellstartvorlage laden** die Zeichenfolge **„101-storage-account-create“** ein, oder wählen Sie sie aus.
+1. Geben Sie unter **GitHub-Schnellstartvorlage laden** die Zeichenfolge **„storage-account-create“** ein, oder wählen Sie sie aus.
 
     Sie haben zwei Möglichkeiten:
 
@@ -118,7 +118,7 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
     - **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
     - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen ein.
     - **Standort**: Wählen Sie einen Azure-Standort aus.
-    - **Speicherkontotyp**: Verwenden Sie den Standardwert.
+    - **Speicherkontotyp**: Verwenden Sie den Standardwert. Der in der Vorlage definierte Camel-Case-Parametername *storageAccountType* wird im Portal in eine durch Leerzeichen getrennte Zeichenfolge eingereiht.
     - **Standort**: Verwenden Sie den Standardwert.
     - **Ich stimme den oben genannten Geschäftsbedingungen zu**: Aktivieren Sie dieses Kontrollkästchen.
 
@@ -129,4 +129,3 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 - Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../management/view-activity-logs.md).
 - Informationen zum Beheben von Bereitstellungsfehlern finden Sie unter [Anzeigen von Bereitstellungsvorgängen](deployment-history.md).
 - Informationen zum Exportieren einer Vorlage aus einer Bereitstellung oder Ressourcengruppe finden Sie unter [Exportieren von ARM-Vorlagen](export-template-portal.md).
-- Informationen zum sicheren Rollout Ihres Dienst über mehrere Regionen finden Sie unter [Sichere Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (öffentliche Vorschau)](deployment-manager-overview.md).

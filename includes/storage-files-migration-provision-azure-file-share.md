@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: c003e765574d764b6653823e8554d0718ea85e0e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 532ac3b60f90a3d587a57ad8ea9663a6cfad3d90
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106081106"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109645371"
 ---
 Eine Azure-Dateifreigabe wird in der Cloud in einem Azure-Speicherkonto gespeichert.
 Im Hinblick auf die Leistung sollten dabei einige wichtige Aspekte berücksichtigt werden.
@@ -21,7 +21,7 @@ Im Hinblick auf die Leistung sollten dabei einige wichtige Aspekte berücksichti
 Wenn Ihre Freigaben intensiv genutzt werden, z. B. von einer großen Anzahl von Benutzern und/oder Anwendungen, wird die maximale Leistung eines Speicherkontos möglicherweise mit zwei Azure-Dateifreigaben erreicht.
 
 Als bewährte Methode empfiehlt es sich, Speicherkonten mit je einer Dateifreigabe bereitzustellen.
-Wenn Sie Archivierungsfreigaben bereitstellen möchten oder davon ausgehen, dass Ihre Freigaben selten genutzt werden, können Sie mehrere Azure-Dateifreigaben zu einem Speicherkonto hinzufügen.
+Sie können mehrere Azure-Dateifreigaben in demselben Speicherkonto zusammenfassen, wenn Sie Archivierungsfreigaben verwenden oder nur eine geringe tägliche Aktivität erwarten.
 
 Diese Überlegungen gelten eher für direkten Cloudzugriff (über eine Azure-VM oder Azure-Dateisynchronisierung) als für die Azure-Dateisynchronisierung. Wenn Sie Freigaben lediglich für die Azure-Dateisynchronisierung verwenden möchten, können Sie mehrere Freigaben in einem einzelnen Azure-Speicherkonto gruppieren.
 
@@ -38,4 +38,4 @@ Azure-Dateifreigaben werden standardmäßig weiterhin mit einem Grenzwert von 5�
 
 Ein weiterer Aspekt, den Sie bei der Bereitstellung eines Speicherkontos berücksichtigen sollten, ist die Redundanz von Azure Storage. Weitere Informationen finden Sie unter [Redundanzoptionen von Azure Storage](../articles/storage/common/storage-redundancy.md).
 
-Auch die Namen Ihrer Ressourcen sind wichtig. Wenn Sie z.B. mehrere Freigaben für die Personalabteilung in einem Azure-Speicherkonto gruppieren, sollten Sie einen entsprechenden Namen für das Speicherkonto wählen. Gleichermaßen sollten Sie beim Benennen Ihrer Azure-Dateifreigaben Namen wählen, die denen der lokalen Entsprechungen ähneln.
+Auch die Namen Ihrer Ressourcen sind wichtig. Wenn Sie z.B. mehrere Freigaben für die Personalabteilung in einem Azure-Speicherkonto gruppieren, sollten Sie einen entsprechenden Namen für das Speicherkonto wählen. Gleichermaßen sollten Sie beim Benennen Ihrer Azure-Dateifreigaben Namen verwenden, die denen der lokalen Entsprechungen ähneln.

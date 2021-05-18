@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
-ms.date: 04/20/2020
-ms.openlocfilehash: e08fe67dece02b936aa3a22e9cac58d809f19f46
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.date: 05/10/2020
+ms.openlocfilehash: 23c9650a4bb53257e369e87e7a03681f94ed9cae
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285682"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684305"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transaktionsreplikation mit Azure SQL Managed Instance (Vorschau)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -152,8 +152,6 @@ Bei dieser Konfiguration ist eine Datenbank in Azure SQL-Datenbank oder Azure SQ
 
 ## <a name="with-failover-groups"></a>Mit Failovergruppen
 
-[Aktive Georeplikation](../database/active-geo-replication-overview.md) wird bei einer SQL Managed Instance, die Transaktionsreplikation nutzt, nicht unterstützt. Verwenden Sie anstelle der aktiven Georeplikation [Autofailover-Gruppen](../database/auto-failover-group-overview.md). Beachten Sie jedoch, dass die Veröffentlichung aus der primären verwalteten Instanz [manuell gelöscht](transact-sql-tsql-differences-sql-server.md#replication) und nach dem Failover in der sekundären SQL Managed Instance neu erstellt werden muss.
-
 Wenn eine als **Herausgeber** oder **Verteiler** fungierende SQL Managed Instance in einer [Failovergruppe](../database/auto-failover-group-overview.md) enthalten ist, muss der SQL Managed Instance-Administrator alle Veröffentlichungen für die alte primäre Instanz bereinigen und nach einem Failover für die neue primäre Instanz erneut konfigurieren. Die folgenden Aktivitäten sind in diesem Szenario erforderlich:
 
 1. Beenden aller Replikationsaufträge, die für die Datenbank ausgeführt werden, sofern vorhanden.
@@ -184,7 +182,7 @@ Wenn eine als **Herausgeber** oder **Verteiler** fungierende SQL Managed Instanc
    EXEC sp_dropdistributor 1,1
    ```
 
-Wenn Georeplikation für eine **Abonnenteninstanz** in einer Failovergruppe aktiviert ist, sollte die Veröffentlichung so konfiguriert werden, dass eine Verbindung mit dem Failovergruppen-Listenerendpunkt für die von einem Abonnenten verwaltete Instanz hergestellt wird. Im Fall eines Failovers hängt die nachfolgende Aktion durch den Administrator der verwalteten Instanz vom Failovertyp ab, der aufgetreten ist:
+Wenn sich eine SQL Managed Instance vom Typ **Abonnent** in einer Failovergruppe befindet, sollte die Veröffentlichung so konfiguriert werden, dass eine Verbindung mit dem Failovergruppen-Listenerendpunkt für die von einem Abonnenten verwaltete Instanz hergestellt wird. Im Fall eines Failovers hängt die nachfolgende Aktion durch den Administrator der verwalteten Instanz vom Failovertyp ab, der aufgetreten ist:
 
 - Bei einem Failover ohne Datenverlust wird die Replikation nach einem Failover fortgesetzt.
 - Bei einem Failover mit Datenverlust funktioniert die Replikation ebenfalls. Die verlorenen Änderungen werden dann erneut repliziert.

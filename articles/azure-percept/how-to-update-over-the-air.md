@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: e5d431d4594a89d4bfcd3b4f09c57b5cdd61b547
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: fc8e3e42e75eacd1c5bc3312b7adf6c8a8150f3c
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929487"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684341"
 ---
 # <a name="update-your-azure-percept-dk-over-the-air-ota"></a>Aktualisieren Ihres Azure Percept DK-Geräts per Funk (Over-the-Air-Update)
 
@@ -30,7 +30,7 @@ In dieser Anleitung erfahren Sie, wie Sie das Betriebssystem und die Firmware de
 > [!NOTE]
 > Falls Sie das Update bereits importiert haben, können Sie direkt mit **Erstellen einer Geräteupdategruppe** fortfahren.
 
-1. [Laden Sie die neueste Manifest-Datei (.json)](https://go.microsoft.com/fwlink/?linkid=2155625) und[ die Aktualisierungsdatei (.swu)](https://go.microsoft.com/fwlink/?linkid=2161538) für Ihr Azure Percept-Gerät herunter.
+1. Bestimmen Sie, welches [Manifest und Updatepaket](./how-to-select-update-package.md) für Ihr Dev Kit geeignet ist.
 
 1. Navigieren Sie zu der Azure IoT Hub-Instanz, die Sie für Ihr Azure Percept-Gerät verwenden. Wählen Sie im Menübereich auf der linken Seite unter **Automatische Geräteverwaltung** die Option **Geräteupdates** aus.
 
@@ -38,16 +38,16 @@ In dieser Anleitung erfahren Sie, wie Sie das Betriebssystem und die Firmware de
 
 1. Wählen Sie unter der Überschrift **Bereitstellung kann durchgeführt werden** die Option **+ Neues Update importieren** aus.
 
-1. Klicken Sie auf die Felder unter **Manifestdatei für Import auswählen** und **Select Update Files** (Updatedateien auswählen), um Ihre Manifestdatei (.json) und Updatedatei (.swu) auszuwählen.
+1. Klicken Sie auf die Felder unter **Manifestdatei für Import auswählen** und **Updatedateien auswählen**, um Ihre Manifestdatei (JSON-Datei) und Updatedatei (SWU-Datei) auszuwählen.
 
-1. Wählen Sie unter **Speichercontainer auswählen** das Ordnersymbol oder das Textfeld und anschließend das passende Speicherkonto aus. Falls Sie bereits einen Speichercontainer erstellt haben, können Sie ihn wiederverwenden. Wählen Sie andernfalls **+ Container** aus, um einen neuen Speichercontainer für OTA-Updates zu erstellen. Wählen Sie den gewünschten Container aus, und klicken Sie auf **Auswählen**.
+1. Wählen Sie unter **Speichercontainer auswählen** das Ordnersymbol oder das Textfeld und anschließend das passende Speicherkonto aus. Wenn Sie bereits einen Speichercontainer erstellt haben, können Sie ihn wiederverwenden. Wählen Sie andernfalls **+ Container** aus, um einen neuen Speichercontainer für OTA-Updates zu erstellen. Wählen Sie den gewünschten Container aus, und klicken Sie auf **Auswählen**.
 
 1. Wählen Sie **Übermitteln** aus, um den Importvorgang zu starten. Aufgrund der Imagegröße kann der Übermittlungsvorgang bis zu fünf Minuten dauern.
 
     > [!NOTE]
     > Möglicherweise werden Sie aufgefordert, eine CORS-Regel (Cross-Origin Resource Sharing, Ressourcenfreigabe zwischen verschiedenen Ursprüngen) für den Zugriff auf den ausgewählten Speichercontainer hinzuzufügen. Wählen Sie **Add rule and retry** (Regel hinzufügen und wiederholen) aus, um den Vorgang fortzusetzen.
 
-1. Wenn der Importvorgang beginnt, werden Sie zur Registerkarte **Importverlauf** der Seite **Geräteupdates** umgeleitet. Klicken Sie auf **Aktualisieren**, um den Fortschritt des Importvorgangs zu überwachen. Der Vorgang kann je nach Größe des Updates einige Minuten oder auch länger dauern. (Zu Spitzenzeiten kann mit einer Dauer von bis zu einer Stunde gerechnet werden.)
+1. Wenn der Importvorgang beginnt, werden Sie zur Registerkarte **Importverlauf** der Seite **Geräteupdates** umgeleitet. Klicken Sie auf **Aktualisieren**, um den Fortschritt des Importvorgangs zu überwachen. Der Vorgang kann je nach Größe des Updates einige Minuten oder auch länger dauern (zu Spitzenzeiten kann mit einer Dauer von bis zu einer Stunde gerechnet werden).
 
 1. Wenn in der Spalte **Status** angezeigt wird, dass der Import erfolgreich war, wählen Sie die Registerkarte **Bereitstellung kann durchgeführt werden** aus, und klicken Sie auf **Aktualisieren**. Ihr importiertes Update sollte nun in der Liste angezeigt werden.
 
@@ -63,7 +63,7 @@ Anforderungen für Gruppentags:
 - Sie können Ihrem Tag einen beliebigen Wert hinzufügen (mit Ausnahme von „Uncategorized“ (Nicht kategorisiert), da es sich dabei um einen reservierten Wert handelt).
 - Der Tagwert darf maximal 255 Zeichen enthalten.
 - Der Tagwert darf nur folgende Sonderzeichen enthalten: „.“, „-“, „_“, „~“.
-- Bei Tag- und Gruppennamen wird die Groß-/Kleinschreibung beachtet.
+- Für Tag- und Gruppennamen wird Groß-/Kleinschreibung beachtet.
 - Ein Gerät kann immer nur über ein einzelnes Tag verfügen. Wenn bereits ein Tag vorhanden ist und ein weiteres Tag hinzugefügt wird, wird das zuvor vorhandene Tag überschrieben.
 - Ein Gerät kann nur einer einzelnen Gruppe angehören.
 

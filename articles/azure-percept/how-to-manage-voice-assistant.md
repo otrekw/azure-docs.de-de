@@ -1,44 +1,44 @@
 ---
 title: Konfigurieren eines Sprach-Assistenten in Azure Percept Studio
 description: Konfigurieren eines Sprach-Assistenten in Azure Percept Studio
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 8f22379049b74428787b738af832802081be7bf8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 764ca28ec6e66d63ffeb98399f654b14eb9b6715
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022890"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754287"
 ---
 # <a name="managing-your-voice-assistant"></a>Verwalten Ihres Sprach-Assistenten
 
-In diesem Artikel wird beschrieben, wie Sie das Schlüsselwort und die Befehle Ihres Sprach-Assistenten in [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) konfigurieren. Eine Anleitung zum Konfigurieren des Schlüsselworts in IoT Hub anstelle des Portals finden Sie in [diesem Artikel](./how-to-configure-voice-assistant.md).
+In diesem Artikel wird beschrieben, wie Sie das Schlüsselwort und die Befehle Ihres Sprach-Assistenten in [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) konfigurieren. Eine Anleitung zum Konfigurieren des Schlüsselworts in IoT Hub und nicht im Portal finden Sie in [diesem Artikel](./how-to-configure-voice-assistant.md).
 
-Haben Sie noch keinen Sprach-Assistenten erstellt, finden Sie weitere Informationen unter [Erstellen eines Sprach-Assistenten ohne Code mit Azure Percept Studio und Azure Percept-Audio](./tutorial-no-code-speech.md).
+Haben Sie noch keinen Sprach-Assistenten erstellt, finden Sie weitere Informationen unter [Erstellen eines Sprach-Assistenten ohne Code mit Azure Percept Studio und Azure Percept Audio](./tutorial-no-code-speech.md).
 
 ## <a name="keyword-configuration"></a>Schlüsselwortkonfiguration
 
-Ein Schlüsselwort ist ein Wort oder ein kurzer Ausdruck, mit dem ein Sprach-Assistent aktiviert wird. „Hey Cortana“ ist z. B. das Schlüsselwort für den Cortana-Assistenten. Die Sprachaktivierung ermöglicht es Ihren Benutzern, völlig ohne Verwendung ihrer Hände mit Ihrem Produkt zu interagieren, indem sie einfach das Schlüsselwort aussprechen. Da Ihr Produkt kontinuierlich auf das Schlüsselwort lauscht, werden sämtliche Audiodaten lokal auf dem Gerät verarbeitet, bis eine Erkennung erfolgt, um sicherzustellen, dass die Benutzerdaten weitestgehend geschützt sind.
+Ein Schlüsselwort ist ein Wort oder ein kurzer Ausdruck, mit dem ein Sprach-Assistent aktiviert wird. „Hey Cortana“ ist z. B. das Schlüsselwort für den Cortana-Assistenten. Die Sprachaktivierung ermöglicht es Ihren Benutzern, ohne Verwendung ihrer Hände mit Ihrem Produkt zu interagieren, indem sie das Schlüsselwort aussprechen. Da Ihr Produkt kontinuierlich auf das Schlüsselwort lauscht, werden sämtliche Audiodaten lokal auf dem Gerät verarbeitet, bis eine Erkennung erfolgt, um sicherzustellen, dass die Benutzerdaten weitestgehend geschützt sind.
 
 ### <a name="configuration-within-the-voice-assistant-demo-window"></a>Konfiguration im Demofenster für den Sprach-Assistenten
 
-1. Klicken Sie auf der Demoseite neben **Benutzerdefiniertes Schlüsselwort** auf **Ändern**.
+1. Wählen Sie auf der Demoseite neben **Benutzerdefiniertes Schlüsselwort** die Option **Ändern** aus.
 
     :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Screenshot: Fenster mit der Demo für das Hotel- und Gaststättengewerbe":::
 
-    Ist die Demoseite nicht geöffnet, navigieren Sie zur Geräteseite (siehe unten), und klicken Sie unter **Aktionen** auf **Sprach-Assistenten testen**, um auf die Demo zuzugreifen.
+    Ist die Demoseite nicht geöffnet, navigieren Sie zur Geräteseite (siehe unten), und wählen Sie unter **Aktionen** die Option **Sprach-Assistenten testen** aus, um auf die Demo zuzugreifen.
 
-1. Wählen Sie eins der verfügbaren Schlüsselwörter aus, und klicken Sie auf **Speichern**, um die Änderungen zu übernehmen.
+1. Wählen Sie eines der verfügbaren Schlüsselwörter aus, und wählen Sie dann **Speichern** aus, um die Änderungen zu übernehmen.
 
 1. Die drei LED-Leuchten auf dem Azure Percept-Audiogerät wechseln zu hellblau (kein Blinken), wenn die Konfiguration abgeschlossen ist und der Sprach-Assistent verwendet werden kann.
 
 ### <a name="configuration-within-the-device-page"></a>Konfiguration auf der Geräteseite
 
-1. Klicken Sie auf der Übersichtsseite von [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) im linken Menübereich auf **Geräte**.
+1. Wählen Sie auf der Übersichtsseite von [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) im linken Menübereich **Geräte** aus.
 
     :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="Screenshot: Übersichtsseite von Azure Percept Studio mit hervorgehobener Option „Geräte“":::
 
@@ -48,11 +48,11 @@ Ein Schlüsselwort ist ein Wort oder ein kurzer Ausdruck, mit dem ein Sprach-Ass
 
     :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="Screenshot: Seite „Edgegerät“ mit hervorgehobener Registerkarte „Sprache“":::
 
-1. Klicken Sie neben **Schlüsselwort** auf **Ändern**.
+1. Wählen Sie neben **Schlüsselwort** die Option **Ändern** aus.
 
     :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="Screenshot: Verfügbare Aktionen der Sprachlösung":::
 
-1. Wählen Sie eins der verfügbaren Schlüsselwörter aus, und klicken Sie auf **Speichern**, um die Änderungen zu übernehmen.
+1. Wählen Sie eines der verfügbaren Schlüsselwörter aus, und wählen Sie dann **Speichern** aus, um die Änderungen zu übernehmen.
 
 1. Die drei LED-Leuchten auf dem Azure Percept-Audiogerät wechseln zu hellblau (kein Blinken), wenn die Konfiguration abgeschlossen ist und der Sprach-Assistent verwendet werden kann.
 
@@ -68,21 +68,21 @@ Mit benutzerdefinierten Befehlen ist es einfach, funktionsreiche Apps mit Sprach
 
 ### <a name="configuration-within-the-voice-assistant-demo-window"></a>Konfiguration im Demofenster für den Sprach-Assistenten
 
-1. Klicken Sie auf der Demoseite neben **Benutzerdefinierter Befehl** auf **Ändern**. Ist die Demoseite nicht geöffnet, navigieren Sie zur Geräteseite (siehe unten), und klicken Sie unter **Aktionen** auf **Sprach-Assistenten testen**, um auf die Demo zuzugreifen.
+1. Wählen Sie auf der Demoseite neben **Benutzerdefinierter Befehl** die Option **Ändern** aus. Ist die Demoseite nicht geöffnet, navigieren Sie zur Geräteseite (siehe unten), und wählen Sie unter **Aktionen** die Option **Sprach-Assistenten testen** aus, um auf die Demo zuzugreifen.
 
-1. Wählen Sie einen der verfügbaren benutzerdefinierten Befehle aus, und klicken Sie auf **Speichern**, um die Änderungen zu übernehmen.
+1. Wählen Sie einen der verfügbaren benutzerdefinierten Befehle und dann **Speichern** aus, um die Änderungen zu übernehmen.
 
 ### <a name="configuration-within-the-device-page"></a>Konfiguration auf der Geräteseite
 
-1. Klicken Sie auf der Übersichtsseite von [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) im linken Menübereich auf **Geräte**.
+1. Wählen Sie auf der Übersichtsseite von [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) im linken Menübereich **Geräte** aus.
 
 1. Wählen Sie das Gerät aus, auf dem der Sprach-Assistent bereitgestellt wurde.
 
 1. Öffnen Sie die Registerkarte **Sprache**.
 
-1. Klicken Sie neben **Befehl** auf **Ändern**.
+1. Wählen Sie neben **Befehl** die Option **Ändern** aus.
 
-1. Wählen Sie einen der verfügbaren benutzerdefinierten Befehle aus, und klicken Sie auf **Speichern**, um die Änderungen zu übernehmen.
+1. Wählen Sie einen der verfügbaren benutzerdefinierten Befehle und dann **Speichern** aus, um die Änderungen zu übernehmen.
 
 ## <a name="create-custom-commands"></a>Erstellen von benutzerdefinierten Befehlen
 

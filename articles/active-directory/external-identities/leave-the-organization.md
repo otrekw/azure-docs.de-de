@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/13/2019
+ms.date: 05/05/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc07e038ef382a44c4672b2d63c49d8f5a961cda
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87907447"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486315"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Verlassen einer Organisation als Gastbenutzer
 
@@ -32,18 +32,18 @@ Um eine Organisation zu verlassen, führen Sie die folgenden Schritte aus.
 1. Wechseln Sie zu Ihrer Seite „Zugriffspanel – Profil“, indem Sie einen der folgenden Schritte ausführen:
    
    - Klicken Sie im [Azure-Portal](https://portal.azure.com) oben rechts auf Ihren Namen, und wählen Sie **Konto anzeigen** aus.
-   - Öffnen Sie Ihren [Zugriffsbereich für Apps](https://myapps.microsoft.com), klicken Sie oben rechts auf Ihren Namen, und wählen Sie neben **Organisationen** das Einstellungssymbol (Zahnrad) aus.
+   - Öffnen Sie Ihren [Zugriffsbereich für Apps](https://myapps.microsoft.com), klicken Sie oben rechts auf Ihren Namen, und wählen Sie dann neben **Organisationen** die Option **Konto anzeigen** aus.
  
-   ![Screenshot mit Benutzereinstellungen im Zugriffsbereich](media/leave-the-organization/UserSettings.png) 
-
-   > [!NOTE]
-   > Wenn Sie noch nicht bei der Organisation angemeldet sind, die Sie verlassen möchten, klicken Sie unter **Organisationen** auf den Link **Zum Verlassen der Organisation anmelden** neben dem Namen der Organisation. Wenn Sie bei der Organisation angemeldet sind, klicken Sie oben rechts auf Ihren Namen, und wählen Sie neben **Organisationen** das Einstellungssymbol (Zahnrad) aus.
-
+ 
+2. Wählen Sie **Organisationen verwalten** aus.
+  ![Screenshot mit Benutzereinstellungen im Zugriffsbereich](media/leave-the-organization/manage-organizations.png) 
+  
 3. Suchen Sie unter **Organisationen** nach der Organisation, die Sie verlassen möchten, und wählen Sie **Organisation verlassen** aus.
 
-   ![Screenshot der Option „Organisation verlassen“ auf der Benutzeroberfläche](media/leave-the-organization/LeaveOrg.png)
-
-4. Wenn Sie aufgefordert werden, Ihre Auswahl zu bestätigen, wählen Sie **Beenden** aus. 
+   ![Screenshot der Option „Organisation verlassen“ auf der Benutzeroberfläche](media/leave-the-organization/leave-org.png)
+4. Wenn Sie aufgefordert werden, Ihre Auswahl zu bestätigen, wählen Sie **Beenden** aus.
+> [!NOTE]
+   > Ihre eigene Organisation können Sie nicht verlassen.
 
 ## <a name="account-removal"></a>Entfernen des Kontos
 

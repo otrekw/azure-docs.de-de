@@ -3,12 +3,12 @@ title: Einrichten des Livetests in einer Containerinstanz
 description: Erfahren Sie, wie Sie Livetests zu Neustart von fehlerhaften Containern in Azure Container Instances konfigurieren.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: befe9693be1413abf455d915814c53aab20db53c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d88133692fbfad4c5e81eefa57c69a843448222
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86169696"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771557"
 ---
 # <a name="configure-liveness-probes"></a>Konfigurieren von Livetests
 
@@ -23,7 +23,7 @@ Azure Container Instances unterstützt darüber hinaus auch [Bereitschaftstests]
 
 ## <a name="yaml-deployment"></a>YAML-Bereitstellung
 
-Erstellen Sie eine `liveness-probe.yaml`-Datei mit dem folgenden Ausschnitt. Diese Datei definiert eine Containergruppe, die einen NGNIX-Container enthält, der letztendlich fehlerhaft ist.
+Erstellen Sie eine `liveness-probe.yaml`-Datei mit dem folgenden Ausschnitt. Diese Datei definiert eine Containergruppe, die einen NGINX-Container enthält, der letztendlich fehlerhaft ist.
 
 ```yaml
 apiVersion: 2019-12-01

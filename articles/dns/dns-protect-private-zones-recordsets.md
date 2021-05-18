@@ -2,17 +2,17 @@
 title: Schützen von privaten DNS-Zonen und -Einträgen – Azure DNS
 description: In diesem Lernpfad erhalten Sie eine Einführung in den Schutz von privaten DNS-Zonen und -Einträgen in Microsoft Azure DNS.
 services: dns
-author: asudbring
 ms.service: dns
+author: twooley
+ms.author: twooley
 ms.topic: how-to
-ms.date: 02/18/2020
-ms.author: allensu
-ms.openlocfilehash: a68b40852750e124749ac838c50acae2212c4732
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/07/2021
+ms.openlocfilehash: 076b4cbbb511102c9814403a387d83267aa03752
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785852"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732396"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Schützen von privaten DNS-Zonen und -Einträgen
 
@@ -36,7 +36,7 @@ Die einfachste Möglichkeit, Azure RBAC-Berechtigungen zuzuweisen, ist das Zuwei
 
 Öffnen Sie die **Zugriffssteuerung (IAM)** für die Ressourcengruppe, klicken Sie auf **Hinzufügen**, und wählen Sie dann die Rolle **Mitwirkender für private DNS-Zone** aus. Wählen Sie Benutzer oder Gruppen aus, denen Sie die Berechtigung erteilen möchten.
 
-![Azure RBAC auf Ressourcengruppenebene über das Azure-Portal](./media/dns-protect-private-zones-recordsets/rbac1.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/resource-group-rbac.png" alt-text="Screenshot: RBAC für private DNS-Ressourcengruppe.":::
 
 Berechtigungen können auch [mithilfe von Azure PowerShell erteilt werden](../role-based-access-control/role-assignments-powershell.md):
 
@@ -69,7 +69,7 @@ Die Ressourcengruppe *myPrivateDNS* enthält beispielsweise die Zone *private.co
 
 Azure RBAC-Berechtigungen auf Zonenebene können über das Azure-Portal erteilt werden.  Öffnen Sie die **Zugriffssteuerung (IAM)** für die Zone, klicken Sie auf **Hinzufügen**, und wählen Sie dann die Rolle **Mitwirkender für private DNS-Zone** aus. Wählen Sie Benutzer oder Gruppen aus, denen Sie die Berechtigung erteilen möchten.
 
-![Azure RBAC auf DNS-Zonenebene über das Azure-Portal](./media/dns-protect-private-zones-recordsets/rbac2.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/zone-rbac.png" alt-text="Screenshot: RBAC für private DNS-Zone.":::
 
 Berechtigungen können auch [mithilfe von Azure PowerShell erteilt werden](../role-based-access-control/role-assignments-powershell.md):
 
@@ -102,9 +102,9 @@ Berechtigungen werden auf Eintragssatzebene angewendet.  Der Benutzer erhält di
 
 Azure RBAC-Berechtigungen auf Eintragssatzebene können im Azure-Portal mithilfe der Schaltfläche **Zugriffssteuerung (IAM)** auf der Seite des Eintragssatzes konfiguriert werden:
 
-![Der Screenshot zeigt die Schaltfläche für die Zugriffssteuerung (IAM).](./media/dns-protect-private-zones-recordsets/rbac3.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/record-set-rbac-1.png" alt-text="Screenshot: RBAC für privaten DNS-Ressourceneintragssatz.":::
 
-![Der Screenshot zeigt die Zugriffssteuerung mit aktivierter Option „Rollenzuweisung hinzufügen“.](./media/dns-protect-private-zones-recordsets/rbac4.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/record-set-rbac-2.png" alt-text="Screenshot: Rollenzuweisung für privaten DNS-Ressourceneintragssatz.":::
 
 Azure RBAC-Berechtigungen auf Ressourceneintragssatz-Ebene können auch [mithilfe von Azure PowerShell erteilt werden](../role-based-access-control/role-assignments-powershell.md):
 
@@ -202,7 +202,7 @@ Um Änderungen zu verhindern, wenden Sie eine ReadOnly-Sperre auf die Zone an. D
 
 Ressourcensperren auf Zonenebene können über das Azure-Portal erstellt werden.  Wählen Sie auf der DNS-Zonenseite **Sperren** und dann **+Hinzufügen** aus:
 
-![Ressourcensperren auf Zonenebene über das Azure-Portal](./media/dns-protect-private-zones-recordsets/locks1.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/zone-locks.png" alt-text="Screenshot: Sperren für private DNS-Zone.":::
 
 Ressourcensperren auf Zonenebene können auch über [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock) erstellt werden:
 

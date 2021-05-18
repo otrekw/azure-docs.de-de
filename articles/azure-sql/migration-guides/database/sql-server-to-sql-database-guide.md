@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: b2e5fdec732b823a42492af03b1cde705814b924
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d39cdc7430e41d788c29b72b129ee7939ac8b611
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136533"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736413"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>Migrationsleitfaden: SQL Server zu Azure SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -40,8 +40,9 @@ Für die [Migration Ihrer SQL Server-Instanz](https://azure.microsoft.com/en-us
 
 - Sie haben eine [Migrationsmethode](sql-server-to-sql-database-overview.md#compare-migration-options) ausgewählt und verfügen über entsprechende Tools.
 - Sie haben den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) auf einem Computer installiert, der eine Verbindung mit Ihrer SQL Server-Quelldatenbank herstellen kann.
-- Sie benötigen eine [Azure SQL-Datenbank](../../database/single-database-create-quickstart.md)-Zielinstanz. 
-- Konnektivität und geeignete Berechtigungen für den Zugriff auf die Quelle und das Ziel. 
+- Sie haben eine [Azure SQL-Datenbank](../../database/single-database-create-quickstart.md)-Zielinstanz erstellt. 
+- Sie haben Konnektivität und geeignete Berechtigungen für den Zugriff auf die Quelle und das Ziel konfiguriert. 
+- Sie haben die [in Azure SQL-Datenbank verfügbaren](../../database/features-comparison.md) Funktionen der Datenbank-Engine überprüft. 
 
 
 

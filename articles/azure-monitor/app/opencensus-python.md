@@ -7,24 +7,34 @@ ms.reviewer: mbullwin
 ms.custom: devx-track-python
 author: lzchen
 ms.author: lechen
-ms.openlocfilehash: 548cfd9d593e9adaeaaf984f756e58d242ca9f45
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 4f3ef03e3561cf054102b5f5c15ff571c3d4d28d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576549"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742623"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung
 
-Azure Monitor unterstützt durch die Integration mit [OpenCensus](https://opencensus.io) die verteilte Ablaufverfolgung, Metrikerfassung und Protokollierung für Python-Anwendungen. In diesem Artikel werden der Prozess zur Einrichtung von OpenCensus für Python und das Senden Ihrer Überwachungsdaten an Azure Monitor beschrieben.
+Azure Monitor unterstützt verteilte Ablaufverfolgung, Metrikerfassung und Protokollierung für Python-Anwendungen.
+
+Die von Microsoft unterstützte Lösung zum Nachverfolgen und Exportieren von Daten für Ihre Python-Anwendungen ist das [OpenCensus Python SDK](#introducing-opencensus-python-sdk) über die [Azure Monitor-Exportprogramme](#instrument-with-opencensus-python-sdk-with-azure-monitor-exporters).
+
+Alle anderen Telemetrie-SDKs für Python werden NICHT UNTERSTÜTZT und von Microsoft nicht als Telemetrielösung empfohlen.
+
+Sie haben vielleicht bemerkt, dass OpenCensus mit [OpenTelemetry](https://opentelemetry.io/) zusammengeführt wird. Wir empfehlen jedoch weiterhin OpenCensus, während OpenTelemetry allmählich ausreift.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- Python-Installation. In diesem Artikel wird [Python 3.7.0](https://www.python.org/downloads/release/python-370/) verwendet, doch können wahrscheinlich auch andere Versionen mit kleineren Änderungen verwendet werden. Das SDK unterstützt nur Python v2.7 und v3.4 bis v3.7.
+- Python-Installation. In diesem Artikel wird [Python 3.7.0](https://www.python.org/downloads/release/python-370/) verwendet, doch können wahrscheinlich auch andere Versionen mit kleineren Änderungen verwendet werden. Das OpenCensus Python SDK unterstützt nur Python v2.7 und v3.4 bis v3.7.
 - Erstellen Sie eine Application Insights-[Ressource](./create-new-resource.md). Ihnen wird ein eigener Instrumentierungsschlüssel (iKey) für Ihre Ressource zugewiesen.
 
-## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrumentieren mit dem OpenCensus Python SDK für Azure Monitor
+## <a name="introducing-opencensus-python-sdk"></a>Einführung in das OpenCensus Python SDK
+
+[OpenCensus ist](https://opencensus.io) eine Reihe von Open-Source-Bibliotheken, die die Erfassung von verteilter Ablaufverfolgung, Metriken und Protokollierungtelemetrie ermöglichen. Durch die Verwendung von [Azure Monitor-Exportprogrammen](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure) können Sie diese erfassten Telemetriedaten an Application Insights senden. In diesem Artikel werden der Prozess zur Einrichtung von OpenCensus und Azure Monitor-Exportprogrammen für Python und das Senden Ihrer Überwachungsdaten an Azure Monitor beschrieben.
+
+## <a name="instrument-with-opencensus-python-sdk-with-azure-monitor-exporters"></a>Instrumentieren mit dem OpenCensus Python SDK mit Azure Monitor-Exportprogrammen
 
 Installieren Sie OpenCensus Azure Monitor Exporters:
 
@@ -539,4 +549,3 @@ Ausführlichere Informationen zur Verwendung von Abfragen und Protokollen finden
 * [Verfügbarkeitstests](./monitor-web-app-availability.md): Erstellen Sie Tests, um sicherzustellen, dass Ihre Website im Web sichtbar ist.
 * [Intelligente Diagnose](./proactive-diagnostics.md): Diese Tests werden automatisch ausgeführt, sodass Sie keinerlei Einrichtungsschritte ausführen müssen. Sie werden darüber benachrichtigt, ob für Ihre App eine ungewöhnlich hohe Zahl von Anforderungen mit Fehlern vorliegt.
 * [Metrikwarnungen](../alerts/alerts-log.md): Richten Sie Warnungen ein, damit Sie gewarnt werden, wenn für eine Metrik ein Schwellenwert überschritten wird. Sie können diese für benutzerdefinierte Metriken festlegen, die Sie in Ihrer App codieren.
-

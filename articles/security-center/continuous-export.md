@@ -1,19 +1,18 @@
 ---
 title: Fortlaufender Export kann Azure Security Center-Warnungen und -Empfehlungen an Log Analytics Arbeitsbereiche oder Azure-Event Hubs senden
 description: Hier erfahren Sie, wie Sie den fortlaufenden Export von Sicherheitswarnungen und -empfehlungen in Log Analytics-Arbeitsbereiche und Azure Event Hubs konfigurieren.
-services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/24/2020
+ms.date: 05/05/2021
 ms.author: memildin
-ms.openlocfilehash: fc3774a01665b88ccae2e25ae8382497f8010c35
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3a64b385cbac972fd55eae5c341b4ecb7a431d5b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096971"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108732975"
 ---
 # <a name="continuously-export-security-center-data"></a>Fortlaufendes Exportieren von Security Center-Daten
 
@@ -59,7 +58,7 @@ Die folgenden Datentypen können mithilfe des fortlaufende Exports exportiert we
 - Daten zur Einhaltung gesetzlicher Bestimmungen
 
 > [!NOTE]
-> Der Export von Daten zur Sicherheitsbewertung und zur Einhaltung gesetzlicher Bestimmungen ist eine Previewfunktion und nicht in Government Clouds verfügbar. 
+> Der Export von Daten zur Sicherheitsbewertung und zur Einhaltung gesetzlicher Bestimmungen ist eine Previewfunktion. 
 
 ## <a name="set-up-a-continuous-export"></a>Einrichten eines fortlaufenden Exports 
 

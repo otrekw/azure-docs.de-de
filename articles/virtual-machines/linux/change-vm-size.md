@@ -1,22 +1,21 @@
 ---
-title: Ändern der Größe einer Linux-VM mit Azure CLI
-description: So skalieren Sie einen virtuellen Linux-Computer zentral hoch oder herunter, indem Sie die VM-Größe ändern.
-author: DavidCBerry13
+title: Ändern der Größe einer VM mit der Azure CLI
+description: So skalieren Sie einen virtuellen Computer hoch oder herunter, indem Sie die VM-Größe ändern.
+author: mimckitt
 ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 02/10/2017
-ms.author: daberry
-ms.collection: linux
-ms.openlocfilehash: 290c42cadd840e5a292201247b1555059b5b4381
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mimckitt
+ms.openlocfilehash: 9361814a12e2f3c0d8c57852c89299e477f43dcb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556637"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738141"
 ---
-# <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Ändern der Größe eines virtuellen Linux-Computers über die Azure CLI 
+# <a name="resize-a-virtual-machine-using-azure-cli"></a>Ändern der Größe eines virtuellen Computers mit der Azure CLI 
 
-Nachdem Sie einen virtuellen Computer (virtual machine, VM) bereitgestellt haben, können Sie ihn zentral hoch- oder herunterskalieren, indem Sie die [VM-Größe][vm-sizes] ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Sie müssen die Zuordnung aufheben, wenn die gewünschte Größe in dem Hardwarecluster nicht verfügbar ist, in dem der virtuelle Computer gehostet wird. In diesem Artikel wird erläutert, wie Sie die Größe eines virtuellen Linux-Computers mithilfe der Azure CLI ändern. 
+Nachdem Sie einen virtuellen Computer (virtual machine, VM) bereitgestellt haben, können Sie ihn zentral hoch- oder herunterskalieren, indem Sie die [VM-Größe][vm-sizes] ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Sie müssen die Zuordnung aufheben, wenn die gewünschte Größe in dem Hardwarecluster nicht verfügbar ist, in dem der virtuelle Computer gehostet wird. In diesem Artikel wird erläutert, wie Sie die Größe eines virtuellen Computers mithilfe der Azure CLI ändern. 
 
 ## <a name="resize-a-vm"></a>Ändern der Größe eines virtuellen Computers
 Zum Ändern der Größe eines virtuellen Computers muss die neueste [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen über [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein.
@@ -47,7 +46,7 @@ Zum Ändern der Größe eines virtuellen Computers muss die neueste [Azure CLI](
    > Die Aufhebung der Zuordnung der VM gibt auch jegliche dynamische IP-Adressen frei, die der VM zugewiesen sind. Das Betriebssystem und die Datenträger sind nicht betroffen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese auf, um zusätzliche Skalierbarkeit zu erhalten. Weitere Informationen finden Sie unter [Automatisches Skalieren von Linux-Computern in einer VM-Skalierungsgruppe][scale-set]. 
+Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese auf, um zusätzliche Skalierbarkeit zu erhalten. Weitere Informationen finden Sie unter [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe][scale-set]. 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/

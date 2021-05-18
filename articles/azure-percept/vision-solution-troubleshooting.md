@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 78de5ef0ef77a181d4a2da91e4b468db1b47f208
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 7befc9648e696e80e0469d5e91173786354574d8
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074691"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685745"
 ---
 # <a name="vision-solution-troubleshooting"></a>Problembehandlung für die Vision-Lösung
 
@@ -94,7 +94,7 @@ Gehen Sie folgendermaßen vor, um den Wert TelemetryIntervalNeuralNetworkMs zu a
 
     :::image type="content" source="./media/vision-solution-troubleshooting/module-page-inline.png" alt-text="Screenshot der Modulseite." lightbox= "./media/vision-solution-troubleshooting/module-page.png":::
 
-1. Scrollen Sie nach unten zu **Eigenschaften**. Beachten Sie, dass die Eigenschaften „Laufen“ und „Protokollierung“ zu diesem Zeitpunkt nicht aktiv sind.
+1. Scrollen Sie nach unten zu **Eigenschaften**. Die Eigenschaften „Running“ (Wird ausgeführt) und „Logging“ (Protokollierung) sind zu diesem Zeitpunkt nicht aktiv.
 
     :::image type="content" source="./media/vision-solution-troubleshooting/module-identity-twin-inline.png" alt-text="Screenshot: Eigenschaften von Modulzwillingen." lightbox= "./media/vision-solution-troubleshooting/module-identity-twin.png":::
 
@@ -104,7 +104,7 @@ Gehen Sie folgendermaßen vor, um den Wert TelemetryIntervalNeuralNetworkMs zu a
 
 Zeigen Sie den RTSP-Videostream Ihres Geräts über [Azure Percept Studio](./how-to-view-video-stream.md) oder [VLC Media Player](https://www.videolan.org/vlc/index.html) an.
 
-Navigieren Sie zum Öffnen des RTSP-Stream in VLC Media Player zu **Medien** -> **Netzwerkstream öffnen** -> **rtsp://[Geräte-IP-Adresse]/result**.
+Navigieren Sie zum Öffnen des RTSP-Stream in VLC Media Player zu **Medien** -> **Netzwerkstream öffnen** -> **rtsp://[Geräte-IP-Adresse]:8554/result**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

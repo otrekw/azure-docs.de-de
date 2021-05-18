@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 4678b6d329e79ef7c4ea6aae27fd5f3a693f25b6
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a8c7584b91b59aa7d807dd8b57f5a9ea3fb5a13d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290792"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754549"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions-Bereitstellungsslots
 
@@ -212,6 +212,7 @@ Azure Functions-Bereitstellungsslots unterliegen folgenden Einschränkungen:
 
 - Die Anzahl der für einen App verfügbaren Slots hängt vom Plan ab. Im Verbrauch-Plan ist nur ein Bereitstellungsslot zulässig. Zusätzliche Slots sind für Apps verfügbar, die unter dem App Service-Plan ausgeführt werden.
 - Durch den Austausch eines Slots werden Schlüssel für Apps zurückgesetzt, die über eine App-Einstellung für `AzureWebJobsSecretStorageType` von `files` verfügen.
+- Wenn Slots aktiviert sind, wird Ihre Functions-App im Portal auf den schreibgeschützten Modus festgelegt.
 
 ## <a name="support-levels"></a>Supportstufen
 

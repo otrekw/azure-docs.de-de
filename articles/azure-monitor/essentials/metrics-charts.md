@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
-ms.openlocfilehash: 444185dc41532bfa55c271e2f0027eb8b71de42f
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 8564f96ad311a07ccf4582f274e44e6ebd1e0c85
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959902"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758511"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Erweiterte Funktionen des Azure-Metrik-Explorers
 
@@ -71,13 +71,17 @@ Wenn Sie mehrere Metriken in demselben Diagramm anzeigen möchten, [erstellen Si
 > [!NOTE]
 > In der Regel sollten in Ihren Diagrammen keine Metriken mit unterschiedlichen Maßeinheiten gemeinsam verwendet werden. Vermeiden Sie z. B. das Kombinieren einer Metrik, die Millisekunden verwendet, mit einer anderen, die Kilobytes verwendet. Vermeiden Sie auch das Kombinieren von Metriken mit deutlich abweichenden Skalierungen. 
 >
-> In diesen Fällen sollten Sie stattdessen mehrere Diagramme verwenden. Wählen Sie im Metrik-Explorer **Diagramm hinzufügen** aus, um ein neues Diagramm zu erstellen.
+> In diesen Fällen sollten Sie stattdessen mehrere Diagramme verwenden. Wählen Sie im Metrik-Explorer **Neues Diagramm** aus, um ein neues Diagramm zu erstellen.
+
+![Screenshot: Mehrere Metriken.](./media/metrics-charts/multiple-metrics-chart.png)
 
 ### <a name="multiple-charts"></a>Mehrere Diagramme
 
-Zum Erstellen eines weiteren Diagramms mit einer anderen Metrik wählen Sie **Diagramm hinzufügen** aus.
+Zum Erstellen eines weiteren Diagramms mit einer anderen Metrik wählen Sie **Neues Diagramm** aus.
 
 Wenn Sie mehrere Diagramme neu anordnen oder löschen möchten, wählen Sie die Schaltfläche mit den Auslassungszeichen ( **...** ) aus, um das Diagrammmenü zu öffnen. Wählen Sie dann **Nach oben**, **Nach unten** oder **Löschen** aus.
+
+![Screenshot: Mehrere Diagramme.](./media/metrics-charts/multiple-charts.png)
 
 ## <a name="time-range-controls"></a>Zeitbereichssteuerungen
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df4cb32720d80dd23289be7e760c9934e9a8db8a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 6b93da489d1d2cbaa96ea8ed99b096ea8b7af45e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501500"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746151"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Einschränken von Gastzugriffsberechtigungen (Vorschau) in Azure Active Directory
 
@@ -34,7 +34,7 @@ Wenn der Gastzugriff eingeschränkt ist, können Gäste nur das eigene Benutzerp
 
 ## <a name="permissions-and-licenses"></a>Berechtigungen und Lizenzen
 
-Sie müssen der Rolle „Globaler Administrator“ angehören, um die Einstellungen für die externe Zusammenarbeit zu konfigurieren. Zum Einschränken des Gastzugriffs bestehen keine zusätzlichen Lizenzierungsanforderungen.
+Sie müssen die Rolle „Globaler Administrator“ oder „Administrator mit privilegierter Rolle“ ausüben, um Gastbenutzerzugriff zu konfigurieren. Zum Einschränken des Gastzugriffs bestehen keine zusätzlichen Lizenzierungsanforderungen.
 
 ## <a name="update-in-the-azure-portal"></a>Aktualisieren im Azure-Portal
 

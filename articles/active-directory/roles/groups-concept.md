@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 04/27/2021
+ms.date: 05/05/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 236606bea3ff4edcd6786828f4cb2379251a77f8
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: c8a3015fa2c078232ca9c37c2b0ce0ded313c859
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203323"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480831"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)
 
@@ -39,8 +39,7 @@ Wenn Sie nicht möchten, dass Mitglieder der Gruppe dauerhaften Zugriff auf die 
 
 Wenn eine Gruppe einer Rolle zugewiesen wird, kann jeder IT-Administrator, der die Gruppenmitgliedschaft verwalten kann, indirekt auch die Mitgliedschaft in dieser Rolle verwalten. Angenommen, eine Gruppe namens „Contoso_User_Administrators“ wird der Rolle des Benutzerkontoadministrators zugewiesen. Ein Exchange-Administrator, der die Gruppenmitgliedschaft ändern kann, kann sich selbst der Gruppe „Contoso_User_Administrators“ hinzufügen und auf diese Weise zu einem Benutzerkontoadministrator werden. Wie Sie sehen, kann ein Administrator seine Berechtigung auf nicht erwünschte Weise erweitern.
 
-Mit Azure AD können Sie eine Gruppe, die einer Rolle zugewiesen ist, durch eine neue Eigenschaft für Gruppen namens „isAssignableToRole“ schützen. Nur Cloudgruppen, bei denen zum Erstellungszeitpunkt die Eigenschaft „isAssignableToRole“ auf „true“ festgelegt wurde, können einer Rolle zugewiesen werden. Diese Eigenschaft ist unveränderlich. Sobald eine Gruppe mit dieser Eigenschaft als „true“ erstellt wurde, kann dies nicht mehr geändert werden. Sie können die Eigenschaft nicht für eine vorhandene Gruppe festlegen.
-Die Zuweisung von Gruppen zu Rollen wurde so konzipiert, dass diese Form einer Verletzung nicht auftreten kann:
+Mit Azure AD können Sie eine Gruppe, die einer Rolle zugewiesen ist, durch eine neue Eigenschaft für Gruppen namens „isAssignableToRole“ schützen. Nur Cloudgruppen, bei denen zum Erstellungszeitpunkt die Eigenschaft „isAssignableToRole“ auf „true“ festgelegt wurde, können einer Rolle zugewiesen werden. Diese Eigenschaft ist unveränderlich. Sobald eine Gruppe mit dieser Eigenschaft als „true“ erstellt wurde, kann dies nicht mehr geändert werden. Sie können die Eigenschaft nicht für eine vorhandene Gruppe festlegen. Die Zuweisung von Gruppen zu Rollen wurde von uns so konzipiert, dass potenzielle Verletzungen verhindert werden können:
 
 - Nur globale Administratoren und Administratoren für privilegierte Rollen können eine Gruppe mit Rollenzuweisung erstellen (mit aktivierter Eigenschaft „isAssignableToRole“).
 - Es darf sich nicht um eine dynamische Azure AD-Gruppe handeln. Das heißt, der Mitgliedschaftstyp muss „Zugewiesen“ lauten. Das automatisierte Auffüllen dynamischer Gruppen kann dazu führen, dass der Gruppe ein unerwünschtes Konto hinzugefügt und sie somit der Rolle zugewiesen wird.
@@ -63,7 +62,7 @@ Folgende Szenarios werden derzeit nicht unterstützt:
 - Verwenden Sie das neue [Exchange Admin Center](https://admin.exchange.microsoft.com/) zum Zuweisen von Rollen über Gruppenmitgliedschaften. Das alte Exchange Admin Center unterstützt dieses Feature noch nicht. Exchange PowerShell-Cmdlets funktionieren den Erwartungen entsprechend.
 - Das Azure Information Protection-Portal (klassisches Portal) erkennt die Rollenmitgliedschaft über eine Gruppe noch nicht. Sie können [zur Plattform für einheitliche Vertraulichkeitsbezeichnungen migrieren](/azure/information-protection/configure-policy-migrate-labels) und dann das Office 365 Security & Compliance Center verwenden, um Gruppenzuweisungen für das Verwalten von Rollen zu nutzen.
 - [Apps Admin Center](https://config.office.com/) unterstützt dieses Feature noch nicht. Weisen Sie Benutzer direkt der Rolle als Office Apps-Administrator zu.
-- Dieses Feature wird von [M365 Compliance Center](https://compliance.microsoft.com/) noch nicht unterstützt. Weisen Sie Benutzer direkt entsprechenden Azure AD-Rollen zu, um dieses Portal zu verwenden.
+- Dieses Feature wird von [Microsoft 365 Compliance Center](https://compliance.microsoft.com/) noch nicht unterstützt. Weisen Sie Benutzer direkt entsprechenden Azure AD-Rollen zu, um dieses Portal zu verwenden.
 
 Diese Probleme werden derzeit behoben.
 

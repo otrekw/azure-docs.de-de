@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: trkeya
 ms.author: trkeya
-ms.date: 10/27/2020
+ms.date: 04/14/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c28ab557f6aac94fa9acde78c7433b850ecba0be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4ffb01b6fcd9fe3e487abcf306470dd9529eec0
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100097251"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109635209"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Aktualisieren bestehender Angebote im kommerziellen Marketplace
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie bestehende Angebote und Pläne aktualisi
 
 Gehen Sie wie folgt vor, um ein Angebot zu aktualisieren, das erfolgreich im Zustand „Vorschau“ oder „Live“ veröffentlicht wurde.
 
-1. Wählen Sie den Namen des Angebots aus, das Sie aktualisieren möchten. Der Status des Angebots kann folgendermaßen gelistet sein: **Vorschau**, **Live**, **Veröffentlichung in Bearbeitung**, **Entwurf**, **Eingreifen erforderlich** oder **Nicht verfügbar** (falls Sie zuvor beschlossen habe, den Verkauf des Angebots zu beenden). Nach Treffen einer Wahl wird die Seite **Offer overview** (Angebotsübersicht) für dieses Angebot geöffnet.
+1. Wählen Sie den Namen des Angebots aus, das Sie aktualisieren möchten. Der Status des Angebots kann folgendermaßen aufgelistet werden: **Vorschau**, **Live**, **Veröffentlichung in Bearbeitung**, **Entwurf**, **Eingreifen erforderlich** oder **Nicht verfügbar** (falls Sie zuvor beschlossen haben, das Angebot als veraltet zu markieren (früher: den Verkauf zu beenden)). Nach Treffen einer Wahl wird die Seite **Offer overview** (Angebotsübersicht) für dieses Angebot geöffnet.
 1. Wählen Sie die Angebotsseite aus, die Sie aktualisieren möchten (beispielsweise **Eigenschaften**, **Angebotsliste** oder **Vorschau**), oder wählen Sie auf der entsprechenden Karte der Seite **Angebotsübersicht** die Option **Aktualisieren** aus.
 1. Nehmen Sie die gewünschten Änderungen vor, und klicken Sie dann auf **Entwurf speichern**. Wiederholen Sie diesen Vorgang, bis alle gewünschten Änderungen erfolgt sind.
 1. Überprüfen Sie Ihre Änderungen auf der Seite **[Vergleichen](#compare-changes-to-your-offer)** .
@@ -71,7 +71,7 @@ Nachdem Sie den Plan mit dem alten Preis ausgeblendet haben, erstellen Sie eine 
 2. Wählen Sie **Neuen Plan erstellen** aus. Geben Sie eine **Plan-ID** und einen **Plannamen** ein, und wählen Sie dann **Erstellen** aus.
 1. Wenn Sie die technische Konfiguration des ausgeblendeten Plans wiederverwenden möchten, aktivieren Sie das Kontrollkästchen **Technische Konfiguration erneut verwenden**. Weitere Informationen finden Sie unter [Erstellen von Plänen für ein VM-Angebot](../azure-vm-create-plans.md).
     > [!IMPORTANT]
-    > Wenn Sie **In diesem Plan wird die technische Konfiguration aus einem anderen Plan wiederverwendet** auswählen, können Sie den Verkauf des übergeordneten Plans später nicht einstellen. Verwenden Sie diese Option nicht, wenn Sie den Verkauf des übergeordneten Plans einstellen möchten.
+    > Wenn Sie **In diesem Plan wird die technische Konfiguration aus einem anderen Plan wiederverwendet** auswählen, können Sie den übergeordneten Plan später nicht als veraltet markieren (früher: Verkauf einstellen). Verwenden Sie diese Option nicht, wenn Sie den übergeordneten Plan als veraltet markieren (früher: Verkauf einstellen) möchten.
 3. Füllen Sie alle erforderlichen Abschnitte für den neuen Plan aus, einschließlich des neuen Preises.
 1. Wähen Sie **Entwurf speichern** aus.
 1. Nachdem Sie alle erforderlichen Abschnitte für den neuen Plan bearbeitet haben, wählen Sie **Überprüfen und veröffentlichen** aus. Dadurch wird Ihr Angebot zur Überprüfung und Veröffentlichung übermittelt. Weitere Informationen finden Sie unter [Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace](../review-publish-offer.md).
@@ -125,17 +125,20 @@ Wenn Sie Änderungen an einer Vorschau vorgenommen haben, die nicht live geschal
 
 Denken Sie daran, Ihr Angebot nach der Aktualisierung erneut zu veröffentlichen, damit die Änderungen wirksam werden.
 
-## <a name="stop-selling-an-offer-or-plan"></a>Einstellen des Verkaufs eines Angebots oder Plans
+## <a name="deprecate-an-offer-or-plan"></a>Ein Angebot oder einen Plan als veraltet markieren
+
+> [!IMPORTANT]
+> Der Name der Option zum Beenden des Verkaufs wurde in als veraltet markieren geändert.
 
 Sie können Angebotsauflistungen und Pläne aus dem kommerziellen Marketplace von Microsoft entfernen, sodass sie von neuen Kunden nicht gefunden und erworben werden können. Kunden, die das Angebot oder den Plan bereits erworben haben, können das Angebot oder den Plan weiterhin nutzen und bei Bedarf erneut herunterladen. Sie erhalten jedoch keine Updates, wenn Sie das Angebot oder den Plan zu einem späteren Zeitpunkt erneut veröffentlichen.
 
-- Um den Verkauf eines Angebots zu beenden, nachdem Sie es veröffentlicht haben, wählen Sie auf der Seite **Angebotsübersicht** die Option **Verkauf beenden** aus. Innerhalb weniger Stunden nach Ihrer Bestätigung wird das Angebot im kommerziellen Marketplace nicht mehr angezeigt.
+- Um ein Angebot als veraltet zu markieren (früher: Verkauf zu beenden), nachdem Sie es veröffentlicht haben, wählen Sie auf der Seite **Angebotsübersicht** die Option **Als veraltet markieren** aus. Innerhalb weniger Stunden nach Ihrer Bestätigung wird das Angebot im kommerziellen Marketplace nicht mehr angezeigt.
 
-- Um den Verkauf eines Plans einzustellen, wählen Sie auf der Seite **Plan overview** (Planübersicht) **Stop selling** (Verkauf einstellen) aus. Die Option zum Beenden des Verkaufs eines Plans ist nur verfügbar, wenn das Angebot mehr als einen Plan enthält. Sie können den Verkauf eines Plans beenden, ohne dass dadurch andere Pläne in Ihrem Angebot beeinträchtigt werden.
+- Um einen Plan als veraltet zu markieren (früher: Verkauf zu beenden), wählen Sie auf der Seite **Planübersicht** die Option **Als veraltet markieren** aus. Die Option zum Markieren eines Plans als veraltet (früher: Verkauf beenden) ist nur verfügbar, wenn das Angebot mehrere Pläne enthält. Sie können einen Plan als veraltet markieren (früher: Verkauf beenden), ohne dass dadurch andere Pläne in Ihrem Angebot beeinträchtigt werden.
      >[!NOTE]
-     > Sobald Sie bestätigt haben, dass Sie den Verkauf des Plans beenden möchten, müssen Sie das Angebot erneut veröffentlichen, damit die Änderung wirksam wird.
+     > Sobald Sie bestätigt haben, dass Sie den Plan als veraltet markieren (früher: Verkauf beenden) möchten, müssen Sie das Angebot erneut veröffentlichen, damit die Änderung wirksam wird.
 
-Nachdem Sie den Verkauf eines Angebots oder Plans beendet haben, wird es in Partner Center weiterhin angezeigt, hat nun aber den Status **Nicht verfügbar**. Wenn Sie sich entscheiden, dieses Angebot oder diesen Plan erneut zu listen oder zu verkaufen, folgen Sie den Anweisungen zum [Aktualisieren eines veröffentlichten Angebots](#update-a-published-offer). Vergessen Sie nicht, dass Sie das Angebot oder den Plan nach etwaigen Änderungen erneut **veröffentlichen** müssen.
+Nachdem Sie ein Angebot oder einen Plan als veraltet markiert (früher: Verkauf beendet) haben, wird es bzw. er in Partner Center weiterhin angezeigt, weist nun aber den Status **Nicht verfügbar** auf. Wenn Sie sich entscheiden, dieses Angebot oder diesen Plan erneut zu listen oder zu verkaufen, folgen Sie den Anweisungen zum [Aktualisieren eines veröffentlichten Angebots](#update-a-published-offer). Vergessen Sie nicht, dass Sie das Angebot oder den Plan nach etwaigen Änderungen erneut **veröffentlichen** müssen.
 
 ## <a name="remove-offers-from-existing-customers"></a>Aufheben von Angeboten für Bestandskunden
 

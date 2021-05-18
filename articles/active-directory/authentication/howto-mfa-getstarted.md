@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 05/03/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 068a3852371c44086717a6f0164e42d6a3ee33a6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861305"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754539"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Planen einer Bereitstellung von Azure AD Multi-Factor Authentication
 
@@ -144,6 +144,9 @@ Eine SMS mit dem Überprüfungscode wird an den Benutzer gesendet, und der Benut
 
 1. Klicken Sie auf **Speichern**.
 1. Schließen Sie die Registerkarte **Diensteinstellungen**.
+
+> [!WARNING]
+> Deaktivieren Sie keine Methoden für Ihre Organisation, wenn Sie [Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) verwenden. Das Deaktivieren von Methoden kann dazu führen, dass Sie sich von Ihrem Mandanten abmelden. Lassen Sie alle **Methoden für Benutzer verfügbar** im Portal für MFA-Diensteinstellungen aktiviert.
 
 ## <a name="plan-registration-policy"></a>Planen der Registrierungsrichtlinie
 

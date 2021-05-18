@@ -2,13 +2,13 @@
 title: Parameter in Vorlagen
 description: In diesem Artikel wird beschrieben, wie Parameter in einer Azure Resource Manager-Vorlage (ARM-Vorlage) und einer Bicep-Datei definiert werden.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: a8608e4733960d7f5ba7e5f548c47f16a2b244bb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/05/2021
+ms.openlocfilehash: c42a1a178785351bb1148c047737f62baebefa30
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123393"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736863"
 ---
 # <a name="parameters-in-arm-templates"></a>Parameter in ARM-Vorlagen
 
@@ -23,6 +23,8 @@ Jeder Parameter muss auf einen der [Datentypen](data-types.md) festgelegt werden
 ## <a name="minimal-declaration"></a>Minimale Deklaration
 
 Jeder Parameter benötigt mindestens einen Namen und einen Typ. In Bicep kann ein Parameter nicht den gleichen Namen wie eine Variable, eine Ressource, eine Ausgabe oder ein anderer Parameter im gleichen Geltungsbereich aufweisen.
+
+Wenn Sie eine Vorlage über das Azure-Portal bereitstellen, werden Parameternamen mit Camel-Case-Schreibweise in durch Leerzeichen getrennte Namen umgewandelt. Beispielsweise wird *demoString* im folgenden Beispiel als *Demo String* angezeigt. Weitere Informationen finden Sie unter [Verwenden einer Bereitstellungsschaltfläche zum Bereitstellen von Vorlagen aus dem GitHub-Repository](./deploy-to-azure-button.md) und [Bereitstellen von Ressourcen mit ARM-Vorlagen und dem Azure-Portal](./deploy-portal.md).
 
 # <a name="json"></a>[JSON](#tab/json)
 

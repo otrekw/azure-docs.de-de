@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 68127a7603db2d408ed1bbdb244f49de4eb21031
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 19e679b3bc899053ddcf75ff058ec19165b785cc
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208489"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790467"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
-Entitäten in Ihrer Umgebung werden durch [digital Zwillinge](concepts-twins-graph.md) dargestellt. Die Verwaltung digitaler Zwillinge kann das Erstellen, Ändern und Löschen umfassen. Für diese Vorgänge können Sie die [Digital Twins-APIs](/rest/api/digital-twins/dataplane/twins), das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) oder die [Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md) verwenden.
+Entitäten in Ihrer Umgebung werden durch [digital Zwillinge](concepts-twins-graph.md) dargestellt. Die Verwaltung digitaler Zwillinge kann das Erstellen, Ändern und Löschen umfassen.
 
 Dieser Artikel beschreibt die Verwaltung digitaler Zwillinge. Informationen zum Arbeiten mit Beziehungen und dem [Zwillingsgraph](concepts-twins-graph.md) als Ganzes finden Sie unter [Gewusst wie: Verwalten des Zwillingsgraphen mit Beziehungen](how-to-manage-graph.md).
 
@@ -27,9 +27,7 @@ Dieser Artikel beschreibt die Verwaltung digitaler Zwillinge. Informationen zum 
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-## <a name="ways-to-manage-twins"></a>Möglichkeiten zum Verwalten von Zwillingen
-
-[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
+[!INCLUDE [digital-twins-developer-interfaces.md](../../includes/digital-twins-developer-interfaces.md)]
 
 ## <a name="create-a-digital-twin"></a>Erstellen eines digitalen Zwillings
 
@@ -95,11 +93,11 @@ Beim Abrufen eines Zwillings mit der Methode `GetDigitalTwin()` werden nur Eigen
 
 Informationen zum Abrufen mehrerer Zwillinge mithilfe eines einzelnen API-Aufrufs finden Sie in den Beispielen zur Abfrage-API unter [Gewusst wie: Abfragen des Zwillingsgraphen](how-to-query-graph.md).
 
-Beachten Sie das folgende Modell (geschrieben in [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)), das einen *Moon* definiert:
+Beachten Sie das folgende Modell (geschrieben in [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)), das einen Zwilling vom Typ Moon definiert:
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Moon.json":::
 
-Das Ergebnis des Aufrufs von `object result = await client.GetDigitalTwinAsync("my-moon");` für einen Zwilling vom Typ *Moon* könnte wie folgt aussehen:
+Das Ergebnis des Aufrufs von `object result = await client.GetDigitalTwinAsync("my-moon");` für einen Zwilling vom Typ Moon könnte wie folgt aussehen:
 
 ```json
 {
@@ -135,11 +133,11 @@ Die definierten Eigenschaften des digitalen Zwillings werden als Eigenschaften d
   - Der Synchronisierungsstatus für jede schreibbare Eigenschaft. Dies ist besonders hilfreich für Geräte, bei denen es möglich ist, dass der Dienst und das Gerät abweichende Status aufweisen (z. B. wenn ein Gerät offline ist). Derzeit gilt diese Eigenschaft nur für physische Geräte, die mit IoT Hub verbunden sind. Mit den Daten im Metadatenabschnitt erfahren Sie den vollständigen Status einer Eigenschaft sowie die Zeitstempel der letzten Änderung. Weitere Informationen zum Synchronisierungsstatus erhalten Sie in [diesem IoT Hub-Tutorial](../iot-hub/tutorial-device-twins.md) zum Synchronisieren des Gerätestatus.
   - Dienstspezifische Metadaten, wie z. B. aus IoT Hub oder Azure Digital Twins 
 
-Weitere Informationen zu den Serialisierungshilfsklassen wie `BasicDigitalTwin` finden Sie unter  [Verwenden der Azure Digital Twins-APIs und SDKs](how-to-use-apis-sdks.md).
+Weitere Informationen zu den Serialisierungshilfsklassen wie `BasicDigitalTwin` finden Sie unter [Konzepte: Azure Digital Twins-APIs und SDKs](concepts-apis-sdks.md).
 
 ## <a name="view-all-digital-twins"></a>Anzeigen aller digitalen Zwillinge
 
-Verwenden Sie zum Anzeigen aller digitalen Zwillinge in Ihrer Instanz eine [Abfrage](how-to-query-graph.md). Sie können eine Abfrage mit den [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder den [CLI-Befehlen](how-to-use-cli.md) ausführen.
+Verwenden Sie zum Anzeigen aller digitalen Zwillinge in Ihrer Instanz eine [Abfrage](how-to-query-graph.md). Sie können eine Abfrage mit den [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder den [CLI-Befehlen](concepts-cli.md) ausführen.
 
 Im Folgenden finden Sie den Text der grundlegenden Abfrage, die eine Liste aller digitalen Zwillinge in der Instanz zurückgibt:
 
@@ -183,8 +181,8 @@ Sehen Sie sich beispielsweise das folgende JSON Patch-Dokument an, das das `$mod
 Dieser Vorgang ist nur erfolgreich, wenn der vom Patch geänderte digitale Zwilling dem neuen Modell entspricht. 
 
 Betrachten Sie das folgenden Beispiel:
-1. Stellen Sie sich einen digitalen Zwilling mit dem Modell *foo_old* vor. *foo_old* definiert die erforderliche *mass*-Eigenschaft.
-2. Das neue Modell *foo_new* definiert die Eigenschaften „mass“ und fügt die neue erforderliche Eigenschaft *temperature* hinzu.
+1. Stellen Sie sich einen digitalen Zwilling mit dem Modell foo_old vor. foo_old definiert die erforderliche *mass*-Eigenschaft.
+2. Das neue Modell foo_new definiert die Eigenschaften „mass“ und fügt die neue erforderliche Eigenschaft *temperature* hinzu.
 3. Nach dem Patch muss der digitale Zwilling die beiden Eigenschaften „mass“ und „temperature“ aufweisen. 
 
 Der Patch für diese Situation muss sowohl das Modell als auch die Eigenschaft „temperature“ des Zwillings wie folgt aktualisieren:
@@ -198,11 +196,11 @@ Azure Digital Twins stellt sicher, dass alle eingehenden Anforderungen nacheinan
 Dieses Verhalten erfolgt für jeden Zwilling einzeln. 
 
 Stellen Sie sich beispielsweise ein Szenario vor, in dem die folgenden drei Aufrufe gleichzeitig eingehen: 
-*   Schreiben von Eigenschaft A auf *Zwilling1*
-*   Schreiben von Eigenschaft B auf *Zwilling1*
-*   Schreiben von Eigenschaft A auf *Zwilling2*
+*   Schreiben von Eigenschaft A auf Zwilling1
+*   Schreiben von Eigenschaft B auf Zwilling1
+*   Schreiben von Eigenschaft A auf Zwilling2
 
-Die beiden Aufrufe, die *Zwilling1* ändern, werden nacheinander ausgeführt, und für jede Änderung werden Änderungsnachrichten generiert. Der Aufruf zum Ändern von *Zwilling2* kann ohne Konflikt zeitgleich ausgeführt werden, sobald er eingeht.
+Die beiden Aufrufe, die Zwilling1 ändern, werden nacheinander ausgeführt, und für jede Änderung werden Änderungsnachrichten generiert. Der Aufruf zum Ändern von Zwilling2 kann ohne Konflikt zeitgleich ausgeführt werden, sobald er eingeht.
 
 ## <a name="delete-a-digital-twin"></a>Löschen eines digitalen Zwillings
 
@@ -220,14 +218,22 @@ Ein Beispiel für das gleichzeitige Löschen aller Zwillinge finden Sie in der B
 
 Sie können das folgende ausführbare Codebeispiel verwenden, um einen Zwilling zu erstellen, seine Details zu aktualisieren und den Zwilling zu löschen. 
 
-### <a name="set-up-the-runnable-sample"></a>Einrichten des ausführbaren Beispiels
+### <a name="set-up-sample-project-files"></a>Einrichten von Beispielprojektdateien
 
-Der Codeausschnitt verwendet die [Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json)-Modelldefinition aus dem [Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App](tutorial-command-line-app.md). Sie können diesen Link verwenden, um direkt zu der Datei zu wechseln, oder sie als Teil des vollständigen [End-to-End-Beispielprojekts](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) herunterzuladen.
+Der Codeausschnitt verwendet eine Beispielmodelldefinition: [Room.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-samples/master/AdtSampleApp/SampleClientApp/Models/Room.json). Um die **Modelldatei herunterzuladen**, damit Sie sie in Ihrem Code verwenden können, verwenden Sie diesen Link, um direkt zur Datei in GitHub zu navigieren. Klicken Sie dann mit der rechten Maustaste auf eine beliebige Stelle auf dem Bildschirm, wählen Sie im Kontextmenü Ihres Browsers **Speichern unter** aus, und verwenden Sie das Fenster „Speichern unter“, um die Datei als **Room.json** zu speichern.
 
-Bevor Sie das Beispiel ausführen, gehen Sie wie folgt vor:
-1. Laden Sie die Modelldatei herunter, platzieren Sie sie in Ihrem Projekt, und ersetzen Sie den Platzhalter `<path-to>` im Code unten, um Ihrem Programm mitzuteilen, wo sie zu finden ist.
+Erstellen Sie als dann **ein neues Konsolen-App-Projekt** in Visual Studio oder einem Editor Ihrer Wahl.
+
+Kopieren Sie dann den **folgenden Code** des ausführbaren Beispiels in Ihr Projekt:
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs":::
+
+### <a name="configure-project"></a>Projekt konfigurieren
+
+Führen Sie als dann die folgenden Schritte aus, um den Projektcode zu konfigurieren:
+1. Fügen Sie Ihrem Projekt die Datei **Room.json** hinzu, die Sie zuvor heruntergeladen haben, und ersetzen Sie den Platzhalter `<path-to>` im Code, um dem Programm den Pfad mitzuteilen.
 2. Ersetzen Sie den Platzhalter `<your-instance-hostname>` durch den Hostnamen Ihrer Azure Digital Twins-Instanz.
-3. Als Nächstes fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu, die erforderlich sind, um Azure Digital Twins verwenden zu können. Bei der ersten handelt es sich um das Paket für das [Azure Digital Twins-SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client), die zweite stellt Tools bereit, die die Authentifizierung bei Azure unterstützen.
+3. Als Nächstes fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu, die erforderlich sind, um Azure Digital Twins verwenden zu können. Bei der ersten handelt es sich um das Paket für das [Azure Digital Twins SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client), und die zweite stellt Tools zur Unterstützung der Authentifizierung bei Azure bereit.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core
@@ -239,9 +245,7 @@ Sie müssen auch lokale Anmeldeinformationen einrichten, wenn Sie das Beispiel d
 
 ### <a name="run-the-sample"></a>Ausführen des Beispiels
 
-Nachdem Sie die obigen Schritte ausgeführt haben, können Sie den folgenden Beispielcode direkt ausführen.
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs":::
+Nachdem Sie das Setup abgeschlossen haben, können Sie das Beispielcodeprojekt ausführen.
 
 Hier ist die Konsolenausgabe des obigen Programms: 
 

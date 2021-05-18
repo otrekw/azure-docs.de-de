@@ -1,24 +1,24 @@
 ---
-title: Aktivieren der automatischen Benutzerbereitstellung für mehrinstanzenfähige Anwendungen – Azure AD
-description: Anleitung für unabhängige Softwarehersteller zum Aktivieren der automatisierten Bereitstellung
+title: Aktivieren der automatischen Benutzerbereitstellung für mehrinstanzenfähige Anwendungen in Azure Active Directory
+description: Anleitung für unabhängige Softwarehersteller zum Aktivieren der automatisierten Bereitstellung in Azure Active Directory
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/23/2019
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: zhchia
-ms.openlocfilehash: 7bd0fc634109beb6cc674d89f56666e7035d33ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: zhchia, arvinh
+ms.openlocfilehash: 03f2f06e29f3641d44be9c4f5bd6e8c58671653f
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255694"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782845"
 ---
-# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Aktivieren der automatischen Benutzerbereitstellung für Ihre mehrinstanzenfähige Anwendung
+# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application-in-azure-active-directory"></a>Aktivieren der automatischen Benutzerbereitstellung für Ihre mehrinstanzenfähige Anwendung in Azure Active Directory
 
 Die automatische Benutzerbereitstellung ist der Vorgang der Automatisierung der Erstellung, Wartung und Entfernung von Benutzeridentitäten in Zielsystemen z. B. Ihren Software-as-a-Service-Anwendungen.
 

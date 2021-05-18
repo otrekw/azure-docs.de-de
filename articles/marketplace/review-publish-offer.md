@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 03/10/2021
-ms.openlocfilehash: f8ddcbef6d2ce4a9cba625374db9908335954424
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: bff07f18d0c72e4c4dc4e6b079924b9062442c9d
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102630893"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633877"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace
 
@@ -30,7 +30,7 @@ Sie können den Status Ihres Angebots im [Partner Center](https://partner.micros
 | Eingreifen erforderlich | Wir haben während der Zertifizierung oder einer anderen Veröffentlichungsphase ein kritisches Problem festgestellt. |
 | Vorschau | Wir haben das Angebot zertifiziert. Nun muss es abschließend durch den Herausgeber verifiziert werden. Wählen Sie **Live schalten** aus, um das Angebot live zu veröffentlichen. |
 | Live | Das Angebot ist im Marketplace live geschaltet und kann von Kunden angezeigt und erworben werden. |
-| Ausstehender Verkaufsstopp | Der Herausgeber hat „Verkaufsstopp“ für ein Angebot oder einen Plan ausgewählt, aber die Aktion ist noch nicht abgeschlossen. |
+| Ausstehende eingestellte Unterstützung | Der Herausgeber hat „Als veraltet markieren (früher: Einstellung des Verkaufs)“ für ein Angebot oder einen Plan ausgewählt, aber die Aktion wurde noch nicht abgeschlossen. |
 | Im Marketplace nicht verfügbar | Ein zuvor im Marketplace veröffentlichtes Angebot wurde entfernt. |
 |||
 
@@ -209,9 +209,9 @@ Zum Anzeigen des Verlaufs Ihres Angebots gehen Sie folgendermaßen vor:
 |---------|---------------|
 |Angebot erstellt    |Das Angebot wurde im Partner Center erstellt. Ein Benutzer hat den Angebotstyp, die Angebots-ID und den Angebotsalias in **Kommerzieller Marketplace** > **Übersicht** ausgewählt.    |
 |Plan erstellt: *Planname*    |Ein Benutzer hat einen neuen Plan erstellt, indem er die Plan-ID und den Plannamen auf der Registerkarte **Planübersicht** eingegeben hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
-|Plan gelöscht    |Ein Benutzer hat einen nicht veröffentlichten Planentwurf gelöscht, indem er auf der Seite **Planübersicht** die Option **Entwurf löschen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
-|Einstellung des Verkaufs für den Plan initiiert: *Planname*    |Ein Benutzer hat die Einstellung des Verkaufs für den Plan initiiert, indem er auf der Seite **Planübersicht** die Option **Verkauf beenden** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
-|Einstellung des Verkaufs für den Plan rückgängig gemacht: *Planname*    |Ein Benutzer hat die Einstellung des Verkaufs für den Plan abgebrochen, indem er auf der Seite **Planübersicht** die Option **Verkaufsstopp rückgängig machen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Plan gelöscht  |Ein Benutzer hat einen nicht veröffentlichten Planentwurf gelöscht, indem er auf der Seite **Planübersicht** die Option **Entwurf löschen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Eingeleitete eingestellte Unterstützung für einen Plan: *Planname*    |Ein Benutzer hat eingestellte Unterstützung für einen Plan (früher: Einstellung des Verkaufs) eingeleitet, indem er auf der Seite **Planübersicht** die Option **Als veraltet markieren** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Eingestellte Unterstützung für einen Plan rückgängig machen: *Planname*    |Ein Benutzer hat eingestellte Unterstützung für einen Plan (früher: Einstellung des Verkaufs) rückgängig gemacht, indem er auf der Seite **Planübersicht** die Option **Als veraltet markieren rückgängig machen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
 |Angebot für die Vorschau übermittelt    |Ein Benutzer hat das Angebot für die Vorschau übermittelt, indem er auf der Seite **Überprüfen und veröffentlichen** die Option **Veröffentlichen** ausgewählt hat.    |
 |Abbruch der Übermittlung für die Vorschau initiiert    |Ein Benutzer hat einen Abbruch der Angebotsveröffentlichung für die Vorschau angefordert, indem er nach der Übermittlung für die Vorschau auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, während die Abbruchanforderung verarbeitet wird*.    |
 |Übermittlung für die Vorschau abgebrochen    |Ein Benutzer hat die Angebotsveröffentlichung für die Vorschau abgebrochen, indem er nach der Übermittlung für die Vorschau auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, nachdem die Abbruchanforderung erfolgreich verarbeitet wurde*.    |
@@ -219,7 +219,7 @@ Zum Anzeigen des Verlaufs Ihres Angebots gehen Sie folgendermaßen vor:
 |Abbruch der Veröffentlichung im Marketplace initiiert    |Ein Benutzer hat einen Abbruch der Angebotsveröffentlichung angefordert, indem er nach Freigabe der Liveschaltung auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, während die Abbruchanforderung verarbeitet wird*.    |
 |Veröffentlichung im kommerziellen Marketplace abgebrochen    |Ein Benutzer hat die Angebotsveröffentlichung abgebrochen, indem er nach Freigabe der Liveschaltung auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, nachdem die Abbruchanforderung erfolgreich verarbeitet wurde*.    |
 |Private Zielgruppe synchronisiert    |Ein Benutzer hat die private Zielgruppe aktualisiert und synchronisiert, indem er auf der Seite **Planübersicht** oder der Seite **Preise und Verfügbarkeit des Plans** die Option **Private Zielgruppe synchronisieren** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die private Pläne unterstützen*.    |
-|Verkauf des Angebots eingestellt    |Ein Benutzer hat den Verkauf des Angebots eingestellt, indem er auf der Seite **Angebotsübersicht** die Option **Verkauf beenden** ausgewählt hat.    |
+|Angebot als veraltet markieren (früher: Einstellung des Verkaufs)    |Ein Benutzer hat den Verkauf des Angebots eingestellt, indem er auf der Seite **Angebotsübersicht** die Option **Als veraltet markieren** ausgewählt hat.    |
 
 > [!NOTE]
 > Die Seite „Verlauf“ gibt nicht an, wann ein Angebotsentwurf gespeichert wurde.

@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b0bc143ca92961d7c358248b73ee5524e6835c3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87284913"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768191"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Benutzerdefinierte Daten und cloud-init auf virtuellen Azure-Computern
 
@@ -92,4 +92,4 @@ Es wird empfohlen, vertrauliche Daten **nicht** in benutzerdefinierten Daten zu 
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>Werden benutzerdefinierte Daten in IMDS zur Verfügung gestellt?
-Nein, dieses Feature ist derzeit nicht verfügbar.
+Benutzerdefinierte Daten sind in IMDS nicht verfügbar. Wir empfehlen stattdessen die Verwendung von Benutzerdaten über IMDS. Weitere Informationen finden Sie unter [Benutzerdaten über Azure Instance Metadata Service](./linux/instance-metadata-service.md?tabs=linux#get-user-data).

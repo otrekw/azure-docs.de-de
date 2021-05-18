@@ -8,20 +8,20 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 05/31/2017
-ms.openlocfilehash: 6d365c7e927c11f52b97fbb0cc01a7aa37ad5afd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7759257f51cb00cd106af7e72e14c6660450cae9
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560054"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754351"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen
-Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf einem Windows-basierten virtuellen Azure-Computer bereit. Sie können diese Funktionen auf dem virtuellen Computer nutzen, indem Sie die Erweiterung in die Azure Resource Manager-Vorlage einbinden. Weitere Informationen zum Einbinden von Erweiterungen in eine Vorlage für virtuelle Computer finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen mit VM-Erweiterungen](../windows/template-description.md#extensions) . Dieser Artikel beschreibt das Hinzufügen der Azure-Diagnoseerweiterung zu einer Vorlage für virtuelle Windows-Computer.  
+Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf einem Windows-basierten virtuellen Azure-Computer bereit. Sie können diese Funktionen auf dem virtuellen Computer nutzen, indem Sie die Erweiterung in die Azure Resource Manager-Vorlage einbinden. Weitere Informationen zum Einbinden von Erweiterungen in eine Vorlage für virtuelle Computer finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen mit VM-Erweiterungen](../windows/template-description.md#extensions) . Dieser Artikel beschreibt das Hinzufügen der Azure-Diagnoseerweiterung zu einer Vorlage für virtuelle Windows-Computer.
 
 ## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>Hinzufügen der Azure-Diagnoseerweiterung zur VM-Ressourcendefinition
 Um die Diagnoseerweiterung auf einem virtuellen Windows-Computer zu aktivieren, müssen Sie die Erweiterung der Resource Manager-Vorlage als VM-Ressource hinzufügen.
 
-Bei einem einfachen, auf Ressourcen-Manager basierenden virtuellen Computer fügen Sie die Erweiterungskonfiguration dem Array *resources* für den virtuellen Computer hinzu. 
+Bei einem einfachen, auf Ressourcen-Manager basierenden virtuellen Computer fügen Sie die Erweiterungskonfiguration dem Array *resources* für den virtuellen Computer hinzu.
 
 ```json
 "resources": [
@@ -55,7 +55,7 @@ Bei einem einfachen, auf Ressourcen-Manager basierenden virtuellen Computer füg
 ]
 ```
 
-Eine weitere gängige Konvention ist es, die Erweiterungskonfiguration im Stammressourcenknoten der Vorlage hinzuzufügen, statt sie unterhalb des Ressourcenknotens des virtuellen Computers zu definieren. Bei diesem Ansatz müssen Sie mithilfe der Werte *name* und *type* explizit eine hierarchische Beziehung zwischen der Erweiterung und dem virtuellen Computer angeben. Beispiel: 
+Eine weitere gängige Konvention ist es, die Erweiterungskonfiguration im Stammressourcenknoten der Vorlage hinzuzufügen, statt sie unterhalb des Ressourcenknotens des virtuellen Computers zu definieren. Bei diesem Ansatz müssen Sie mithilfe der Werte *name* und *type* explizit eine hierarchische Beziehung zwischen der Erweiterung und dem virtuellen Computer angeben. Beispiel:
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -70,14 +70,14 @@ Die *publisher*-Eigenschaft mit dem Wert **Microsoft.Azure.Diagnostics** und die
 
 Der Wert der *name* -Eigenschaft kann zum Verweisen auf die Erweiterung in der Ressourcengruppe verwendet werden. Wenn Sie diese Eigenschaft auf **Microsoft.Insights.VMDiagnosticsSettings** festlegen, kann sie problemlos im Azure-Portal identifiziert werden – so wird sichergestellt, dass die Überwachungsdiagramme im Azure-Portal richtig angezeigt werden.
 
-Die Eigenschaft *typeHandlerVersion* gibt die Version der Erweiterung an, die Sie verwenden möchten. Indem Sie *autoUpgradeMinorVersion* auf **true** festlegen, stellen Sie sicher, dass Sie die neueste verfügbare Nebenversion der Erweiterung erhalten. Es wird dringend empfohlen, *autoUpgradeMinorVersion* immer auf **true** festzulegen, damit Sie jederzeit die neueste verfügbare Diagnoseerweiterung mit allen neuen Funktionen und Bugfixes verwenden. 
+Die Eigenschaft *typeHandlerVersion* gibt die Version der Erweiterung an, die Sie verwenden möchten. Indem Sie *autoUpgradeMinorVersion* auf **true** festlegen, stellen Sie sicher, dass Sie die neueste verfügbare Nebenversion der Erweiterung erhalten. Es wird dringend empfohlen, *autoUpgradeMinorVersion* immer auf **true** festzulegen, damit Sie jederzeit die neueste verfügbare Diagnoseerweiterung mit allen neuen Funktionen und Bugfixes verwenden.
 
-Das Element *settings* enhält Konfigurationseigenschaften für die Erweiterung, die festgelegt und in die Erweiterung eingelesen werden können (wird zuweilen als „öffentliche Konfiguration“ bezeichnet). Die Eigenschaft *xmlcfg* enthält die XML-basierte Konfiguration für die Diagnoseprotokolle, Leistungsindikatoren usw., die vom Diagnose-Agent gesammelt werden. Weitere Informationen zu dem XML-Schema finden Sie unter [Diagnosekonfigurationsschema](../../azure-monitor/agents/diagnostics-extension-schema-windows.md) . Üblicherweise wird die tatsächliche XML-Konfiguration als Variable in der Azure-Ressourcen-Manager-Vorlage gespeichert und dann verkettet und mit Base64 codiert, um den Wert für *xmlcfg* festzulegen. Informationen zum Speichern der XML-Konfiguration in Variablen finden Sie im Abschnitt zu [Diagnosekonfigurationsvariablen](#diagnostics-configuration-variables) . Die *storageAccount*-Eigenschaft gibt den Namen des Speicherkontos an, in das die Diagnosedaten übertragen werden. 
+Das Element *settings* enhält Konfigurationseigenschaften für die Erweiterung, die festgelegt und in die Erweiterung eingelesen werden können (wird zuweilen als „öffentliche Konfiguration“ bezeichnet). Die Eigenschaft *xmlcfg* enthält die XML-basierte Konfiguration für die Diagnoseprotokolle, Leistungsindikatoren usw., die vom Diagnose-Agent gesammelt werden. Weitere Informationen zu dem XML-Schema finden Sie unter [Diagnosekonfigurationsschema](../../azure-monitor/agents/diagnostics-extension-schema-windows.md) . Üblicherweise wird die tatsächliche XML-Konfiguration als Variable in der Azure-Ressourcen-Manager-Vorlage gespeichert und dann verkettet und mit Base64 codiert, um den Wert für *xmlcfg* festzulegen. Informationen zum Speichern der XML-Konfiguration in Variablen finden Sie im Abschnitt zu [Diagnosekonfigurationsvariablen](#diagnostics-configuration-variables) . Die *storageAccount*-Eigenschaft gibt den Namen des Speicherkontos an, in das die Diagnosedaten übertragen werden.
 
-Die Eigenschaften in *protectedSettings* (zuweilen als „private Konfiguration“ bezeichnet) können festgelegt, danach jedoch nicht eingelesen werden. Da *protectedSettings* schreibgeschützt ist, eignet sich diese Eigenschaft sehr gut zum Speichern von Geheimnissen wie etwa des Schlüssels für das Speicherkonto, in das die Diagnosedaten geschrieben werden.    
+Die Eigenschaften in *protectedSettings* (zuweilen als „private Konfiguration“ bezeichnet) können festgelegt, danach jedoch nicht eingelesen werden. Da *protectedSettings* schreibgeschützt ist, eignet sich diese Eigenschaft sehr gut zum Speichern von Geheimnissen wie etwa des Schlüssels für das Speicherkonto, in das die Diagnosedaten geschrieben werden.
 
 ## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Angeben des Diagnosespeicherkontos als Parameter
-Der oben stehende JSON-Codeausschnitt für die Diagnoseerweiterung setzt das Vorhandensein der beiden Parameter *existingdiagnosticsStorageAccountName* und *existingdiagnosticsStorageResourceGroup* voraus, um das Diagnosespeicherkonto anzugeben, in dem Diagnosedaten gespeichert werden. Wenn Sie das Diagnosespeicherkonto als Parameter angeben, lässt es sich für verschiedene Umgebungen ganz einfach ändern – so können Sie z.B. ein Konto zum Testen und ein anderes für Ihre Produktionsbereitstellung verwenden.  
+Der oben stehende JSON-Codeausschnitt für die Diagnoseerweiterung setzt das Vorhandensein der beiden Parameter *existingdiagnosticsStorageAccountName* und *existingdiagnosticsStorageResourceGroup* voraus, um das Diagnosespeicherkonto anzugeben, in dem Diagnosedaten gespeichert werden. Wenn Sie das Diagnosespeicherkonto als Parameter angeben, lässt es sich für verschiedene Umgebungen ganz einfach ändern – so können Sie z.B. ein Konto zum Testen und ein anderes für Ihre Produktionsbereitstellung verwenden.
 
 ```json
 "existingdiagnosticsStorageAccountName": {
@@ -97,12 +97,12 @@ Der oben stehende JSON-Codeausschnitt für die Diagnoseerweiterung setzt das Vor
 Es empfiehlt sich, ein Diagnosespeicherkonto in einer anderen Ressourcengruppe als der Ressourcengruppe für den virtuellen Computer anzugeben. Eine Ressourcengruppe kann als Bereitstellungseinheit mit eigener Lebensdauer angesehen werden. Ein virtueller Computer kann bereitgestellt und bei Konfigurationsupdates erneut bereitgestellt werden. Möglicherweise möchten Sie die Diagnosedaten jedoch für alle VM-Bereitstellungen weiterhin im gleichen Speicherkonto speichern. Indem Sie das Speicherkonto in einer anderen Ressourcengruppe bereitstellen, können Daten aus verschiedenen VM-Bereitstellungen in diesem Konto gespeichert werden, und die Behandlung von Problemen über die verschiedenen Versionen hinweg wird vereinfacht.
 
 > [!NOTE]
-> Wenn Sie eine Vorlage für einen virtuellen Windows-Computer in Visual Studio erstellen, kann das standardmäßige Speicherkonto so eingerichtet werden, dass es das gleiche Speicherkonto verwendet, in das die VHD des virtuellen Computers hochgeladen wurde. Dadurch wird die anfängliche Einrichtung des virtuellen Computers vereinfacht. Bearbeiten Sie die Vorlage, um ein anderes Speicherkonto anzugeben, das als Parameter übergeben werden kann. 
-> 
-> 
+> Wenn Sie eine Vorlage für einen virtuellen Windows-Computer in Visual Studio erstellen, kann das standardmäßige Speicherkonto so eingerichtet werden, dass es das gleiche Speicherkonto verwendet, in das die VHD des virtuellen Computers hochgeladen wurde. Dadurch wird die anfängliche Einrichtung des virtuellen Computers vereinfacht. Bearbeiten Sie die Vorlage, um ein anderes Speicherkonto anzugeben, das als Parameter übergeben werden kann.
+>
+>
 
 ## <a name="diagnostics-configuration-variables"></a>Diagnosekonfigurationsvariablen
-Der oben angegebene JSON-Codeausschnitt für die Diagnoseerweiterung definiert eine Variable vom Typ *accountid*, um das Abrufen des Speicherkontoschlüssels für den Diagnosespeicher zu vereinfachen:   
+Der oben angegebene JSON-Codeausschnitt für die Diagnoseerweiterung definiert eine Variable vom Typ *accountid*, um das Abrufen des Speicherkontoschlüssels für den Diagnosespeicher zu vereinfachen:
 
 ```json
 "accountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',parameters('existingdiagnosticsStorageResourceGroup'), '/providers/','Microsoft.Storage/storageAccounts/', parameters('existingdiagnosticsStorageAccountName'))]"
@@ -121,14 +121,14 @@ Das folgende Beispiel veranschaulicht den XML-Code für die Diagnosekonfiguratio
 "wadcfgxend": "\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>"
 ```
 
-Der XML-Knoten für die Metrikdefinition in der oben stehenden Konfiguration ist ein wichtiges Konfigurationselement, da er festlegt, wie die weiter oben im XML-Code im Knoten *PerformanceCounter* definierten Leistungsindikatoren aggregiert und gespeichert werden. 
+Der XML-Knoten für die Metrikdefinition in der oben stehenden Konfiguration ist ein wichtiges Konfigurationselement, da er festlegt, wie die weiter oben im XML-Code im Knoten *PerformanceCounter* definierten Leistungsindikatoren aggregiert und gespeichert werden.
 
 > [!IMPORTANT]
-> Diese Metriken stellen die Grundlage für die Überwachungsdiagramme und Warnungen im Azure-Portal dar.  Der Knoten **Metriken** muss mit *resourceID* und **MetricAggregation** in der Diagnosekonfiguration für den virtuellen Computer enthalten sein, wenn Sie die Überwachungsdaten für den virtuellen Computer im Azure-Portal anzeigen möchten. 
-> 
-> 
+> Diese Metriken stellen die Grundlage für die Überwachungsdiagramme und Warnungen im Azure-Portal dar.  Der Knoten **Metriken** muss mit *resourceID* und **MetricAggregation** in der Diagnosekonfiguration für den virtuellen Computer enthalten sein, wenn Sie die Überwachungsdaten für den virtuellen Computer im Azure-Portal anzeigen möchten.
+>
+>
 
-Das folgende Beispiel zeigt den XML-Code für Metrikdefinitionen: 
+Das folgende Beispiel zeigt den XML-Code für Metrikdefinitionen:
 
 ```xml
 <Metrics resourceId="/subscriptions/subscription().subscriptionId/resourceGroups/resourceGroup().name/providers/Microsoft.Compute/virtualMachines/vmName">
@@ -139,10 +139,10 @@ Das folgende Beispiel zeigt den XML-Code für Metrikdefinitionen:
 
 Das *resourceID*-Attribut wird verwendet, um den virtuellen Computer in Ihrem Abonnement eindeutig zu identifizieren. Verwenden Sie unbedingt die Funktionen „subscription()“ und „resourceGroup()“, damit die Vorlage diese Werte auf der Grundlage des Abonnements und der Ressourcengruppe für die Bereitstellung automatisch aktualisiert.
 
-Wenn Sie mehrere virtuelle Computer in einer Schleife erstellen, müssen Sie den *resourceID*-Wert mit einer copyIndex()-Funktion auffüllen, um die einzelnen VMs voneinander zu unterscheiden. Der *xmlCfg* -Wert kann folgendermaßen aktualisiert werden, um diese Funktionalität zu unterstützen:  
+Wenn Sie mehrere virtuelle Computer in einer Schleife erstellen, müssen Sie den *resourceID*-Wert mit einer copyIndex()-Funktion auffüllen, um die einzelnen VMs voneinander zu unterscheiden. Der *xmlCfg* -Wert kann folgendermaßen aktualisiert werden, um diese Funktionalität zu unterstützen:
 
 ```json
-"xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), concat(parameters('vmNamePrefix'), copyindex()), variables('wadcfgxend')))]", 
+"xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), concat(parameters('vmNamePrefix'), copyindex()), variables('wadcfgxend')))]",
 ```
 
 Die MetricAggregation-Werte *PT1M* und *PT1H* weisen auf eine Aggregierung während einer Minute bzw. eine Aggregierung während einer Stunde hin.
@@ -156,11 +156,11 @@ Mit der oben angegebenen Metrikkonfiguration werden Tabellen mit den folgenden B
 * **V2S**: Zeichenfolgenkonstante.
 * **jjjjmmtt**: Das Datum, an dem die Tabelle mit dem Sammeln von Daten begonnen hat.
 
-Beispiel: *WADMetricsPT1HP10DV2S20151108* enthält Metrikdaten, die ab dem 11. November 2015 zehn Tage lang gesammelt und innerhalb einer Stunde aggregiert wurden.    
+Beispiel: *WADMetricsPT1HP10DV2S20151108* enthält Metrikdaten, die ab dem 11. November 2015 zehn Tage lang gesammelt und innerhalb einer Stunde aggregiert wurden.
 
 Jede WADMetrics-Tabelle enthält die folgenden Spalten:
 
-* **PartitionKey**: Der Partitionsschlüssel wird basierend auf dem *resourceID*-Wert gebildet, um die VM-Ressource eindeutig zu identifizieren. Beispiel: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **PartitionKey**: Der Partitionsschlüssel wird basierend auf dem *resourceID*-Wert gebildet, um die VM-Ressource eindeutig zu identifizieren. Beispiel: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`
 * **RowKey**: Weist das Format `<Descending time tick>:<Performance Counter Name>` auf. Zur Berechnung der absteigenden Zeiteinheiten werden die maximalen Zeiteinheiten abzüglich der Anfangszeit des Aggregationszeitraums herangezogen. Wenn der Stichprobenzeitraum beispielsweise am 10. November 2015 um 00:00 (UTC) startet, lautet die Berechnung: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. Für den Leistungsindikator zum verfügbaren Arbeitsspeicher in Bytes sieht der Zeilenschlüssel so aus: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`.
 * **CounterName**: Ist der Name des Leistungsindikators. Entspricht dem in der XML-Konfiguration definierten *counterSpecifier* -Wert.
 * **Maximum**: Der Höchstwert des Leistungsindikators während des Aggregationszeitraums.
@@ -170,6 +170,6 @@ Jede WADMetrics-Tabelle enthält die folgenden Spalten:
 * **Average**: Der Durchschnittswert (Total/Count) des Leistungsindikators während des Aggregationszeitraums.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine vollständige Beispielvorlage für einen virtuellen Windows-Computer mit Diagnoseerweiterung finden Sie unter [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension).   
+* Eine vollständige Beispielvorlage für einen virtuellen Windows-Computer mit Diagnoseerweiterung finden Sie unter [vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-monitoring-diagnostics-extension).
 * Stellen Sie die Azure Resource Manager-Vorlage über [Azure PowerShell](../windows/ps-template.md) oder die [Azure-Befehlszeile](../linux/create-ssh-secured-vm-from-template.md) bereit.
 * Weitere Informationen zum [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md)

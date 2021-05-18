@@ -3,12 +3,12 @@ title: Erläuterungen zu dem in Aktivitätsprotokollwarnungen verwendeten Webhoo
 description: Lernen Sie das Schema des JSON-Codes kennen, der beim Aktivieren einer Aktivitätsprotokollwarnung an einen Webhook-URL gesendet wird.
 ms.topic: conceptual
 ms.date: 03/31/2017
-ms.openlocfilehash: 31b9f4b41d741475a031efd4392c7df2fd2260c4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e3b8c435eb1b8572a1accbcef7a5b9e7889186c4
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034335"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736032"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks für Azure-Aktivitätsprotokollwarnungen
 Als Teil der Definition einer Aktionsgruppe können Sie Webhookendpunkte für den Empfang von Aktivitätsprotokollwarnungs-Benachrichtigungen konfigurieren. Mithilfe von Webhooks können Sie diese Benachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. In diesem Artikel erfahren Sie, wie die Nutzlast für die HTTP POST-Methode für einen Webhook aussieht.
@@ -30,13 +30,13 @@ Die JSON-Nutzlast des POST-Vorgangs variiert in Abhängigkeit vom Feld „data.c
 > [!NOTE]
 > Derzeit wird die Beschreibung, die Teil des Aktivitätsprotokollereignisses ist, in die ausgelöste Eigenschaft **Alert Description** kopiert.
 >
-> Um die Nutzlast des Aktivitätsprotokolls an andere Warnungstypen anzupassen, enthält ab dem 1. April 2021 die ausgelöste Warnungseigenschaft **Description** stattdessen die Warnungsregel.
+> Um die Nutzdaten des Aktivitätsprotokolls an andere Warnungstypen anzupassen, enthält ab dem 1. April 2021 die ausgelöste Warnungseigenschaft **„Description“** stattdessen die Warnungsregel.
 >
-> In Vorbereitung auf diese Änderung haben wir die neue Eigenschaft **Activity Log Event Description** für die vom Aktivitätsprotokoll ausgelöste Warnung erstellt. Diese neue Eigenschaft wird mit der Eigenschaft **Description** ausgefüllt, die bereits verfügbar ist. Dies bedeutet, dass das neue Feld **Activity Log Event Description** die Beschreibung enthält, die Teil des Aktivitätsprotokollereignisses ist.
+> In Vorbereitung auf diese Änderung haben wir die neue Eigenschaft **„Activity Log Event Description“** für die vom Aktivitätsprotokoll ausgelöste Warnung erstellt. Diese neue Eigenschaft wird mit der Eigenschaft **Description** ausgefüllt, die bereits verfügbar ist. Dies bedeutet, dass das neue Feld **„Activity Log Event Description“** die Beschreibung enthält, die Teil des Aktivitätsprotokollereignisses ist.
 >
-> Überprüfen Sie Ihre Warnungsregeln, Aktionsregeln, Webhooks, Logik-Apps und andere Konfigurationen, in denen Sie möglicherweise die Eigenschaft **Description** aus der ausgelösten Warnung verwenden, und ersetzen Sie sie durch die Eigenschaft **Activity Log Event Description**.
+> Überprüfen Sie Ihre Warnungsregeln, Aktionsregeln, Webhooks, Logik-Apps und andere Konfigurationen, in denen Sie möglicherweise die Eigenschaft **„Description“** aus der ausgelösten Warnung verwenden, und ersetzen Sie sie durch die Eigenschaft **„Activity Log Event Description“** .
 >
-> Wenn Ihre Bedingung (in ihren Aktionsregeln, Webhooks, Logik-Apps oder anderen Konfigurationen) zurzeit auf der Eigenschaft **Description** für Aktivitätsprotokollwarnungen basiert, müssen Sie sie möglicherweise so ändern, dass sie auf der Eigenschaft **Activity Log Event Description** basiert.
+> Wenn Ihre Bedingung (in ihren Aktionsregeln, Webhooks, Logik-Apps oder anderen Konfigurationen) zurzeit auf der Eigenschaft **„Description“** für Aktivitätsprotokollwarnungen basiert, müssen Sie sie möglicherweise so ändern, dass sie auf der Eigenschaft **„Activity Log Event Description“** basiert.
 >
 > Zum Ausfüllen der neuen Eigenschaft **Description** können Sie in der Definition der Warnungsregel eine Beschreibung hinzufügen.
 > ![Ausgelöste Aktivitätsprotokollwarnungen](media/activity-log-alerts-webhook/activity-log-alert-fired.png)
@@ -102,42 +102,42 @@ Die JSON-Nutzlast des POST-Vorgangs variiert in Abhängigkeit vom Feld „data.c
 
 ```json
 {
-    "schemaId":"Microsoft.Insights/activityLogs",
-    "data":{"status":"Activated",
-        "context":{
-            "activityLog":{
-                "channels":"Operation",
-                "correlationId":"2518408115673929999",
-                "description":"Failed SSH brute force attack. Failed brute force attacks were detected from the following attackers: [\"IP Address: 01.02.03.04\"].  Attackers were trying to access the host with the following user names: [\"root\"].",
-                "eventSource":"Security",
-                "eventTimestamp":"2017-06-25T19:00:32.607+00:00",
-                "eventDataId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
-                "level":"Informational",
-                "operationName":"Microsoft.Security/locations/alerts/activate/action",
-                "operationId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
-                "properties":{
-                    "attackers":"[\"IP Address: 01.02.03.04\"]",
-                    "numberOfFailedAuthenticationAttemptsToHost":"456",
-                    "accountsUsedOnFailedSignInToHostAttempts":"[\"root\"]",
-                    "wasSSHSessionInitiated":"No","endTimeUTC":"06/25/2017 19:59:39",
-                    "actionTaken":"Detected",
-                    "resourceType":"Virtual Machine",
-                    "severity":"Medium",
-                    "compromisedEntity":"LinuxVM1",
-                    "remediationSteps":"[In case this is an Azure virtual machine, add the source IP to NSG block list for 24 hours (see https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/)]",
-                    "attackedResourceType":"Virtual Machine"
-                },
-                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/Microsoft.Security/locations/centralus/alerts/Sec-07f2-4d74-aaf0-03d2f53d5a33",
-                "resourceGroupName":"contoso",
-                "resourceProviderName":"Microsoft.Security",
-                "status":"Active",
-                "subscriptionId":"12345-5645-123a-9867-123b45a6789",
-                "submissionTimestamp":"2017-06-25T20:23:04.9743772+00:00",
-                "resourceType":"MICROSOFT.SECURITY/LOCATIONS/ALERTS"
-            }
+  "schemaId":"Microsoft.Insights/activityLogs",
+  "data":{"status":"Activated",
+    "context":{
+      "activityLog":{
+        "channels":"Operation",
+        "correlationId":"2518408115673929999",
+        "description":"Failed SSH brute force attack. Failed brute force attacks were detected from the following attackers: [\"IP Address: 01.02.03.04\"].  Attackers were trying to access the host with the following user names: [\"root\"].",
+        "eventSource":"Security",
+        "eventTimestamp":"2017-06-25T19:00:32.607+00:00",
+        "eventDataId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
+        "level":"Informational",
+        "operationName":"Microsoft.Security/locations/alerts/activate/action",
+        "operationId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
+        "properties":{
+          "attackers":"[\"IP Address: 01.02.03.04\"]",
+          "numberOfFailedAuthenticationAttemptsToHost":"456",
+          "accountsUsedOnFailedSignInToHostAttempts":"[\"root\"]",
+          "wasSSHSessionInitiated":"No","endTimeUTC":"06/25/2017 19:59:39",
+          "actionTaken":"Detected",
+          "resourceType":"Virtual Machine",
+          "severity":"Medium",
+          "compromisedEntity":"LinuxVM1",
+          "remediationSteps":"[In case this is an Azure virtual machine, add the source IP to NSG block list for 24 hours (see https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/)]",
+          "attackedResourceType":"Virtual Machine"
         },
-        "properties":{}
-    }
+        "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/Microsoft.Security/locations/centralus/alerts/Sec-07f2-4d74-aaf0-03d2f53d5a33",
+        "resourceGroupName":"contoso",
+        "resourceProviderName":"Microsoft.Security",
+        "status":"Active",
+        "subscriptionId":"12345-5645-123a-9867-123b45a6789",
+        "submissionTimestamp":"2017-06-25T20:23:04.9743772+00:00",
+        "resourceType":"MICROSOFT.SECURITY/LOCATIONS/ALERTS"
+      }
+    },
+    "properties":{}
+  }
 }
 ```
 
@@ -145,42 +145,42 @@ Die JSON-Nutzlast des POST-Vorgangs variiert in Abhängigkeit vom Feld „data.c
 
 ```json
 {
-    "schemaId":"Microsoft.Insights/activityLogs",
-    "data":{
-        "status":"Activated",
-        "context":{
-            "activityLog":{
-                "channels":"Operation",
-                "claims":"{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\":\"Microsoft.Advisor\"}",
-                "caller":"Microsoft.Advisor",
-                "correlationId":"123b4c54-11bb-3d65-89f1-0678da7891bd",
-                "description":"A new recommendation is available.",
-                "eventSource":"Recommendation",
-                "eventTimestamp":"2017-06-29T13:52:33.2742943+00:00",
-                "httpRequest":"{\"clientIpAddress\":\"0.0.0.0\"}",
-                "eventDataId":"1bf234ef-e45f-4567-8bba-fb9b0ee1dbcb",
-                "level":"Informational",
-                "operationName":"Microsoft.Advisor/recommendations/available/action",
-                "properties":{
-                    "recommendationSchemaVersion":"1.0",
-                    "recommendationCategory":"HighAvailability",
-                    "recommendationImpact":"Medium",
-                    "recommendationName":"Enable Soft Delete to protect your blob data",
-                    "recommendationResourceLink":"https://portal.azure.com/#blade/Microsoft_Azure_Expert/RecommendationListBlade/recommendationTypeId/12dbf883-5e4b-4f56-7da8-123b45c4b6e6",
-                    "recommendationType":"12dbf883-5e4b-4f56-7da8-123b45c4b6e6"
-                },
-                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/microsoft.storage/storageaccounts/contosoStore",
-                "resourceGroupName":"CONTOSO",
-                "resourceProviderName":"MICROSOFT.STORAGE",
-                "status":"Active",
-                "subStatus":"",
-                "subscriptionId":"12345-5645-123a-9867-123b45a6789",
-                "submissionTimestamp":"2017-06-29T13:52:33.2742943+00:00",
-                "resourceType":"MICROSOFT.STORAGE/STORAGEACCOUNTS"
-            }
+  "schemaId":"Microsoft.Insights/activityLogs",
+  "data":{
+    "status":"Activated",
+    "context":{
+      "activityLog":{
+        "channels":"Operation",
+        "claims":"{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\":\"Microsoft.Advisor\"}",
+        "caller":"Microsoft.Advisor",
+        "correlationId":"123b4c54-11bb-3d65-89f1-0678da7891bd",
+        "description":"A new recommendation is available.",
+        "eventSource":"Recommendation",
+        "eventTimestamp":"2017-06-29T13:52:33.2742943+00:00",
+        "httpRequest":"{\"clientIpAddress\":\"0.0.0.0\"}",
+        "eventDataId":"1bf234ef-e45f-4567-8bba-fb9b0ee1dbcb",
+        "level":"Informational",
+        "operationName":"Microsoft.Advisor/recommendations/available/action",
+        "properties":{
+          "recommendationSchemaVersion":"1.0",
+          "recommendationCategory":"HighAvailability",
+          "recommendationImpact":"Medium",
+          "recommendationName":"Enable Soft Delete to protect your blob data",
+          "recommendationResourceLink":"https://portal.azure.com/#blade/Microsoft_Azure_Expert/RecommendationListBlade/recommendationTypeId/12dbf883-5e4b-4f56-7da8-123b45c4b6e6",
+          "recommendationType":"12dbf883-5e4b-4f56-7da8-123b45c4b6e6"
         },
-        "properties":{}
-    }
+        "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/microsoft.storage/storageaccounts/contosoStore",
+        "resourceGroupName":"CONTOSO",
+        "resourceProviderName":"MICROSOFT.STORAGE",
+        "status":"Active",
+        "subStatus":"",
+        "subscriptionId":"12345-5645-123a-9867-123b45a6789",
+        "submissionTimestamp":"2017-06-29T13:52:33.2742943+00:00",
+        "resourceType":"MICROSOFT.STORAGE/STORAGEACCOUNTS"
+      }
+    },
+    "properties":{}
+  }
 }
 ```
 
@@ -302,6 +302,6 @@ Spezifische Schemainformationen zu allen anderen Aktivitätsprotokollwarnungen f
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zum Aktivitätsprotokoll](../essentials/platform-logs-overview.md).
 * [Ausführen von Azure Automation-Skripts (Runbooks) für Azure-Warnungen](https://go.microsoft.com/fwlink/?LinkId=627081).
-* [Senden einer SMS über Twilio auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
+* [Senden einer SMS über Twilio auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-text-message-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
 * [Senden einer Slack-Nachricht auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
-* [Senden einer Nachricht an eine Azure-Warteschlange auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
+* [Senden einer Nachricht an eine Azure-Warteschlange auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-queue-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.

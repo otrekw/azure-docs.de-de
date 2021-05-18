@@ -1,14 +1,14 @@
 ---
 title: Überwachen von delegierten Ressourcen in beliebigem Umfang
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle für alle von Ihnen verwalteten Mandanten auf skalierbare Weise verwenden.
-ms.date: 02/11/2021
+ms.date: 05/10/2021
 ms.topic: how-to
-ms.openlocfilehash: 98fd984492276dbdfbc2f8001bca19560764a2a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9490d439b0614c0191843c0a25322f6c0183aa3f
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742584"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751309"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Überwachen von delegierten Ressourcen in beliebigem Umfang
 
@@ -31,7 +31,19 @@ Es wird empfohlen, diese Arbeitsbereiche direkt in den Kundenmandanten zu erstel
 Sie können einen Log Analytics-Arbeitsbereich im [Azure-Portal](../../azure-monitor/logs/quick-create-workspace.md), über die [Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md) oder mit [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) erstellen.
 
 > [!IMPORTANT]
-> Selbst wenn alle Arbeitsbereiche im Mandanten des Kunden erstellt werden, muss der Microsoft.Insights-Ressourcenanbieter auch für ein Abonnement im Verwaltungsmandanten registriert werden.
+> Selbst wenn alle Arbeitsbereiche im Mandanten des Kunden erstellt werden, muss der Microsoft.Insights-Ressourcenanbieter auch für ein Abonnement im Verwaltungsmandanten registriert werden. Wenn Ihr Verwaltungsmandant nicht über ein vorhandenes Azure-Abonnement verfügt, können Sie den Ressourcenanbieter manuell registrieren, indem Sie die folgenden PowerShell-Befehle verwenden:
+>
+> ```powershell
+> $ManagingTenantId = "your-managing-Azure-AD-tenant-id"
+> 
+> # Authenticate as a user with admin rights on the managing tenant
+> Connect-AzAccount -Tenant $ManagingTenantId
+> 
+> # Register the Microsoft.Insights resource providers Application Ids
+> New-AzADServicePrincipal -ApplicationId 1215fb39-1d15-4c05-b2e3-d519ac3feab4
+> New-AzADServicePrincipal -ApplicationId 6da94f3c-0d67-4092-a408-bb5d1cb08d2d 
+> ```
+>
 
 ## <a name="deploy-policies-that-log-data"></a>Bereitstellen von Richtlinien zum Protokollieren von Daten
 
