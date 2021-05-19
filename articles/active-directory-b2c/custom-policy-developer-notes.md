@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2021
+ms.date: 05/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e6261699166e0157750fc691bc0c1726d8cefd50
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 9c9d5ae5fec9b9258527606d352cef83d5b5a41c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324057"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742821"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Entwicklerhinweise für Azure Active Directory B2C
 
@@ -40,6 +40,41 @@ Azure Active Directory B2C-[Benutzerströme und benutzerdefinierte Richtlinien](
 | [Kennwortzurücksetzung erzwingen](force-password-reset.md) | Vorschau | Nicht verfügbar | |
 | [Registrieren und melden Sie sich per Telefon an](phone-authentication-user-flows.md) | Allgemein verfügbar | Allgemein verfügbar | |
 
+## <a name="oauth-20-application-authorization-flows"></a>OAuth 2.0-Anwendungsautorisierungsflows
+
+In der folgenden Tabelle sind die OAuth 2.0- und OpenId Connect-Anwendungsauthentifizierungsflows zusammengefasst, die in die Azure AD B2C integriert werden können.
+
+|Funktion  |Benutzerflow  |Benutzerdefinierte Richtlinie  |Notizen  |
+|---------|:---------:|:---------:|---------|
+[Autorisierungscode](authorization-code-flow.md) | Allgemein verfügbar | Allgemein verfügbar | Ermöglicht Benutzern die Anmeldung bei Webanwendungen. Die Webanwendung empfängt einen Autorisierungscode. Der Autorisierungscode wird eingelöst, um ein Token zum Aufrufen von Web-APIs abzurufen.|
+[Autorisierungscode mit PKCE](authorization-code-flow.md)| Allgemein verfügbar | Allgemein verfügbar | Ermöglicht Benutzern die Anmeldung bei mobilen Anwendungen und Single-Page-Anwendungen. Die Anwendung empfängt einen Autorisierungscode mithilfe eines Proof-Schlüssels für den Codeaustausch (Code Exchange, PKCE). Der Autorisierungscode wird eingelöst, um ein Token zum Aufrufen von Web-APIs abzurufen.  |
+[Genehmigung der Clientanmeldeinformationen](https://tools.ietf.org/html/rfc6749#section-4.4)| Allgemein verfügbar | Allgemein verfügbar | Ermöglicht es, über die Identität einer Anwendung auf Ressourcen zugreifen, die im Web gehostet werden. Wird häufig für Interaktionen zwischen Servern verwendet, die ohne direkten Benutzereingriff im Hintergrund ausgeführt werden müssen.  <br />  <br />  Um dieses Feature in einem Azure AD B2C-Mandanten zu verwenden, verwenden Sie den Azure AD-Endpunkt Ihres Azure AD B2C Mandanten. Weitere Informationen erhalten Sie unter [OAuth 2.0 Clientanmeldeinformationsflow](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). Dieser Flow verwendet nicht Ihren benutzerdefinierten Azure AD B2C [oder benutzerdefinierte Richtlinieneinstellungen](user-flow-overview.md). |
+[Geräteautorisierungsgewährung](https://tools.ietf.org/html/rfc8628)| Nicht verfügbar | Nicht verfügbar | Ermöglicht es Benutzern, sich bei Geräten mit Eingabeeinschränkung wie einem Smart-TV, IoT-Gerät oder Drucker anzumelden.  |
+[Impliziter Flow](implicit-flow-single-page-application.md) | Allgemein verfügbar | Allgemein verfügbar |  Ermöglicht Benutzern die Anmeldung bei Single-Page-Anwendungen. Die App ruft Token direkt ab, ohne dass die Anmeldeinformationen für den Back-End-Server ausgetauscht werden müssen.|
+[OBO (On-Behalf-Of)](../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)| Nicht verfügbar | Nicht verfügbar | Eine Anwendung ruft eine Dienst- oder Web-API auf, die wiederum eine andere Dienst- oder Web-API aufrufen muss. <br />  <br /> Damit der Dienst der mittleren Ebene authentifizierte Anforderungen an den Downstreamdienst senden kann, übergeben Sie ein *Client-Anmeldeinformationstoken* im Autorisierungsheader. Optional können Sie einen benutzerdefinierten Header mit dem Token Azure AD B2C-Benutzer hinzufügen.  |
+[OpenID Connect](openid-connect.md) | Allgemein verfügbar | Allgemein verfügbar | OpenID Connect führt das Konzept eines ID-Tokens ein. Hierbei handelt es sich um ein Sicherheitstoken, mit dem der Client die Identität des Benutzers überprüfen kann. |
+[OpenId Connect-Hybridflow](openid-connect.md) | Allgemein verfügbar | Allgemein verfügbar | Ermöglicht einer Webanwendung das Abrufen des ID-Tokens in der Autorisierungsanforderung zusammen mit einem Autorisierungscode.  |
+[Kennwortanmeldeinformationen des Ressourcenbesitzers (ROPC)](add-ropc-policy.md) | Vorschau | Vorschau | Ermöglicht es einer mobilen Anwendung, den Benutzer durch die direkte Verarbeitung seines Kennworts anzumelden. |
+
+### <a name="oauth-20-options"></a>OAuth 2.0-Optionen
+
+|Funktion  |Benutzerflow  |Benutzerdefinierte Richtlinie  |Notizen  |
+|---------|:---------:|:---------:|---------|
+| [Umleiten einer Anmeldung zu einem Anbieter sozialer Netzwerke](direct-signin.md#redirect-sign-in-to-a-social-provider) | Allgemein verfügbar | Allgemein verfügbar | Abfrage-Zeichenfolgenparameter`domain_hint`. |
+| [Auffüllen des Anmeldenamens](direct-signin.md#prepopulate-the-sign-in-name) | Allgemein verfügbar | Allgemein verfügbar | Abfrage-Zeichenfolgenparameter`login_hint`. |
+| Einfügen von JSON in User Journey über `client_assertion`| Nicht verfügbar| Als veraltet markiert |  |
+| Einfügen von JSON in UserJourney als [id_token_hint](id-token-hint.md) | Nicht verfügbar | Allgemein verfügbar | |
+| [Übergeben des Tokens eines Identitätsanbieters an die Anwendung](idp-pass-through-user-flow.md)| Vorschau| Vorschau| z.B. von Facebook in eine App |
+
+## <a name="saml2-application-authentication-flows"></a>SAML2-Anwendungsauthentifizierungsflows
+
+In der folgenden Tabelle sind die Security Assertion Markup Language (SAML)-Anwendungsauthentifizierungsflows zusammengefasst, die in die Azure AD B2C integriert werden können.
+
+|Funktion  |Benutzerflow  |Benutzerdefinierte Richtlinie  |Notizen  |
+|---------|:---------:|:---------:|---------|
+[SP-initiiert](saml-service-provider.md) | Nicht verfügbar | Allgemein verfügbar | POST- und Umleitungsbindungen |
+[IDP-initiiert](saml-service-provider-options.md#identity-provider-initiated-flow) | Nicht verfügbar | Allgemein verfügbar | Gibt an, wo der initiierende Identitätsanbieter Azure AD B2C ist.  |
+
 ## <a name="user-experience-customization"></a>Anpassung der Benutzererfahrung
 
 |Funktion  |Benutzerflow  |Benutzerdefinierte Richtlinie  |Notizen  |
@@ -54,18 +89,6 @@ Azure Active Directory B2C-[Benutzerströme und benutzerdefinierte Richtlinien](
 | [Deaktivieren der E-Mail-Überprüfung](disable-email-verification.md) | Allgemein verfügbar|  Allgemein verfügbar| Nicht für Produktionsumgebungen empfohlen. Die Deaktivierung der E-Mail-Überprüfung während des Registrierungsvorgangs kann zu Spam führen. |
 
 
-## <a name="protocols-and-authorization-flows"></a>Protokolle und Autorisierungsabläufe
-
-|Funktion  |Benutzerflow  |Benutzerdefinierte Richtlinie  |Notizen  |
-|---------|:---------:|:---------:|---------|
-|[OAuth2-Autorisierungscode](authorization-code-flow.md) | Allgemein verfügbar | Allgemein verfügbar |
-|[OAuth2-Autorisierungscode mit PKCE](authorization-code-flow.md)| Allgemein verfügbar | Allgemein verfügbar | Öffentliche Clients und Einzelblatt-Webanwendungen. |
-|[Impliziter OAuth2-Fluss](implicit-flow-single-page-application.md) | Allgemein verfügbar | Allgemein verfügbar | |
-|[Kennwortanmeldeinformationen von Ressourcenbesitzern mittels OAuth2](add-ropc-policy.md) | Vorschau | Vorschau | |
-|OAuth1 | Nicht verfügbar | Nicht verfügbar | Wird nicht unterstützt. |
-|[OpenID Connect](openid-connect.md) | Allgemein verfügbar | Allgemein verfügbar | |
-|[SAML2](saml-service-provider.md) | Nicht verfügbar | Allgemein verfügbar | POST- und Umleitungsbindungen |
-| WSFED | Nicht verfügbar | Nicht verfügbar | Wird nicht unterstützt. |
 
 ## <a name="identity-providers"></a>Identitätsanbieter
 
@@ -110,16 +133,6 @@ Azure Active Directory B2C-[Benutzerströme und benutzerdefinierte Richtlinien](
 |[Sicherheit mit der Client-Zertifikat-Authentifizierung](secure-rest-api.md#https-client-certificate-authentication) | Vorschau | Allgemein verfügbar | |
 |[Mit der OAuth2-Trägerauthentifizierung schützen](secure-rest-api.md#oauth2-bearer-authentication) | Nicht verfügbar | Allgemein verfügbar | |
 |[Sichere API-Schlüssel-Authentifizierung](secure-rest-api.md#api-key-authentication) | Nicht verfügbar | Allgemein verfügbar | |
-
-### <a name="application-and-azure-ad-b2c-integration"></a>Anwendungs- und Azure AD B2C-Integration
-
-|Funktion  |Benutzerflow  |Benutzerdefinierte Richtlinie  |Notizen  |
-|---------|:---------:|:---------:|---------|
-| [Umleiten einer Anmeldung zu einem Anbieter sozialer Netzwerke](direct-signin.md#redirect-sign-in-to-a-social-provider) | Allgemein verfügbar | Allgemein verfügbar | Abfrage-Zeichenfolgenparameter`domain_hint`. |
-| [Auffüllen des Anmeldenamens](direct-signin.md#prepopulate-the-sign-in-name) | Allgemein verfügbar | Allgemein verfügbar | Abfrage-Zeichenfolgenparameter`login_hint`. |
-| Einfügen von JSON in User Journey über `client_assertion`| Nicht verfügbar| Als veraltet markiert |  |
-| Einfügen von JSON in UserJourney als [id_token_hint](id-token-hint.md) | Nicht verfügbar | Allgemein verfügbar | |
-| [Übergeben des Tokens eines Identitätsanbieters an die Anwendung](idp-pass-through-user-flow.md)| Vorschau| Vorschau| z.B. von Facebook in eine App |
 
 
 ## <a name="custom-policy-features"></a>Benutzerdefinierte Richtlinienfunktionen

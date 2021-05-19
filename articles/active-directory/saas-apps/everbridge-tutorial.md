@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 05/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 6e281931eb4646e09bb9aa3226ed7d0735c84e3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74ea971a16d1c16be17f16cc5345e162fd974f43
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643778"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Tutorial: Azure Active Directory-Integration mit Everbridge
 
@@ -79,8 +79,6 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Um die Anwendung **Everbridge** als **Everbridge-Manager-Portal** zu konfigurieren, führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Everbridge](common/idp-intiated.png)
-
     a. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein:
     `https://sso.everbridge.net/<API_Name>`
 
@@ -94,15 +92,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
   * Wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten, führen Sie die folgenden Schritte aus:
 
-     ![SSO-Informationen zur Domäne und zu den URLs für Everbridge für den IDP-initiierten Modus](common/idp-intiated.png)
-
     a. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://sso.everbridge.net/<API_Name>/<Organization_ID>`.
 
     b. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein: `https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`.
 
    * Wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten, wählen Sie **Zusätzliche URLs festlegen** aus, und führen Sie den folgenden Schritt aus:
-
-     ![SSO-Informationen zur Domäne und zu den URLs für Everbridge für den SP-initiierten Modus](common/both-signonurl.png)
 
      a. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`.
 
@@ -141,15 +135,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="configure-everbridge-sso"></a>Konfigurieren des einmaligen Anmeldens für Everbridge
+## <a name="configure-everbridge-sso"></a>Konfigurieren des einmaligen Anmeldens für Everbridge
 
 Führen Sie die folgenden Schritte aus, um SSO in **Everbridge** als **Everbridge -Manager-Portalanwendung** zu konfigurieren.
  
 1. Melden Sie sich in einem anderen Webbrowserfenster als Administrator bei Everbridge an.
 
-1. Wählen Sie im oberen Menü die Registerkarte **Settings** (Einstellungen) aus. Wählen Sie unter **Security** (Sicherheit) die Option **Single Sign-On** (Einmaliges Anmelden) aus.
+1. Wählen Sie im oberen Menü die Registerkarte **Settings** (Einstellungen) aus. Wählen Sie unter **Security** (Sicherheit) die Option **Single Sign-On for Manager Portal** (Einmaliges Anmelden für Manager-Portal) aus.
    
-     ![Einmaliges Anmelden konfigurieren](./media/everbridge-tutorial/sso.png)
+     ![Einmaliges Anmelden konfigurieren](./media/everbridge-tutorial/settings.png)
    
      a. Geben Sie im Feld **Name** den Namen des Identitätsanbieters ein. Ein Beispiel dafür ist der Name Ihres Unternehmens.
    
@@ -165,7 +159,7 @@ Führen Sie die folgenden Schritte aus, um SSO in **Everbridge** als **Everbridg
 
      g. Wählen Sie **Speichern** aus.
 
-### <a name="configure-everbridge-as-everbridge-member-portal-sso"></a>Konfigurieren von Everbridge als Everbridge-Mitgliederportal mit einmaligem Anmelden
+## <a name="configure-everbridge-as-everbridge-member-portal-sso"></a>Konfigurieren von Everbridge als Everbridge-Mitgliederportal mit einmaligem Anmelden
 
 Um einmaliges Anmelden für **Everbridge** als **Everbridge-Mitgliederportal** zu konfigurieren, senden Sie die heruntergeladene **Verbundmetadaten-XML-Datei** an das [Everbridge-Supportteam](mailto:support@everbridge.com). Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -173,7 +167,7 @@ Um einmaliges Anmelden für **Everbridge** als **Everbridge-Mitgliederportal** z
 
 In diesem Abschnitt erstellen Sie in Everbridge den Testbenutzer Britta Simon. Wenn Sie Benutzer auf der Everbridge-Plattform hinzufügen möchten, wenden Sie sich an das [Supportteam von Everbridge](mailto:support@everbridge.com). Benutzer müssen in Everbridge erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 

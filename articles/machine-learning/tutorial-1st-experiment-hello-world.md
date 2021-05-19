@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Ausführen von „Hello World!“ Python-Skript'
 titleSuffix: Azure Machine Learning
-description: Teil 2 der Azure Machine Learning-Einstiegsreihe zeigt, wie Sie ein triviales Python-Skript „Hello World!“ in die Cloud übermitteln.
+description: Teil 1 der Azure Machine Learning-Einstiegsreihe zeigt, wie Sie ein triviales Python-Skript „Hello World!“ in die Cloud übermitteln.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,25 +9,25 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 02/11/2021
+ms.date: 04/27/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 4f2b01b7a04958c4bd1f97332b54a1ff4fc32356
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: d50105b88c7c719aa1d89aaa3f29fad43abc0a28
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522324"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740759"
 ---
-# <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Tutorial: Ausführen eines Python-Skripts „Hello World!“ (Teil 2 von 4)
+# <a name="tutorial-run-a-hello-world-python-script-part-1-of-3"></a>Tutorial: Ausführen eines Python-Skripts „Hello World!“ Python-Skript (Teil 1 von 3)
 
 In diesem Tutorial erfahren Sie, wie das Azure Machine Learning SDK für Python verwendet wird, um ein Python-Skript „Hello World“ zu übermitteln und auszuführen.
 
-Dieses Tutorial ist *Teil 2 einer vierteiligen Tutorialreihe*, in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure ausführen. Dieses Tutorial basiert auf den Schritten aus [Teil 1: Einrichten Ihres lokalen Computers für Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md).
+Dieses Tutorial ist *Teil 1 einer dreiteiligen Tutorialreihe*, in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure durchführen. 
 
 In diesem Tutorial wird Folgendes vermittelt:
 
 > [!div class="checklist"]
-> * Lokales Ausführen eines Python-Skripts „Hello World!“.
+> * Lokales Ausführen eines Python-Skripts Python-Skript.
 > * Erstellen eines Python-Steuerungsskripts zum Übermitteln von „Hello World!“ an Azure Machine Learning.
 > * Verstehen der Azure Machine Learning Konzepte im Steuerungsskript.
 > * Senden und Ausführen des Skripts „Hello World!“.
@@ -35,42 +35,60 @@ In diesem Tutorial wird Folgendes vermittelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Abschluss von [Teil 1](tutorial-1st-experiment-sdk-setup-local.md), wenn Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich verfügen.
+- Schließen Sie [Schnellstart: Einrichten Ihres Arbeitsbereichs für die ersten Schritte mit Azure Machine Learning](quickstart-create-resources.md) ab, um einen Arbeitsbereich, eine Computeinstanz und einen Computecluster für die Verwendung in dieser Tutorialreihe zu erstellen.
 
-## <a name="create-and-run-a-python-script-locally"></a>Lokales Erstellen und Ausführen eines Python-Skripts
+## <a name="create-and-run-a-python-script"></a>Erstellen und Ausführen eines Python-Skripts
 
-Erstellen Sie ein neues Unterverzeichnis mit dem Namen `src` unter dem Verzeichnis `tutorial` zur Speicherung von Code, den Sie auf einem Azure Machine Learning-Computecluster ausführen möchten. Erstellen Sie im Unterverzeichnis `src` das Python-Skript `hello.py`:
+In diesem Tutorial wird die Compute-Instanz als Entwicklungscomputer verwendet.  Erstellen Sie zunächst einige Ordner und das Skript:
+
+1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an und wählen Sie dann nach Aufforderung den Arbeitsbereich aus.
+1. Wählen Sie links **Notebooks** aus.
+1. Wählen Sie auf der Symbolleiste **Dateien** die Option **+** aus und wählen Sie dann **Neuen Ordner erstellen** aus.
+  :::image type="content" source="media/tutorial-1st-experiment-hello-world/create-folder.png" alt-text="Screenshot: Erstellen eines neuen Ordnertools in der Symbolleiste.":::
+1. Nennen Sie den Ordner **get-started**.
+1. Verwenden Sie rechts vom Ordnernamen **...** , um unter **get-started** einen weiteren Ordner zu erstellen.
+  :::image type="content" source="media/tutorial-1st-experiment-hello-world/create-sub-folder.png" alt-text="Screenshot: Menü „Unterordner erstellen“.":::
+1. Nennen Sie den neuen Ordner **scr**.  Verwenden Sie den Link **Speicherort bearbeiten**, wenn der Speicherort der Datei nicht korrekt ist.
+1. Verwenden Sie rechts neben dem **src**-Ordner **...** , um eine neue Datei im **src**-Ordner zu erstellen. 
+1. Geben Sie ihrer Datei den Namen *hello.py*.  Ändern Sie den **Dateityp** in *Python (* .py)*.
+
+Kopieren Sie diesen Code in Ihre Datei:
 
 ```python
 # src/hello.py
 print("Hello world!")
 ```
 
-Ihre Projektverzeichnisstruktur sieht nun wie folgt aus:
+Ihre Ordnerverzeichnisstruktur sieht nun wie folgt aus: 
 
-:::image type="content" source="media/tutorial-1st-experiment-hello-world/directory-structure.png" alt-text="Verzeichnisstruktur mit „hello.py“ im Unterverzeichnis „src“":::
+:::image type="content" source="media/tutorial-1st-experiment-hello-world/directory-structure.png" alt-text="Ordnerstruktur mit „hello.py“ im Unterordner „src“.":::
 
 
-### <a name="test-your-script-locally"></a><a name="test"></a>Lokales Testen des Skripts
+### <a name="test-your-script"></a><a name="test"></a>Testen Sie Ihr Skript
 
-Sie können Ihren Code lokal ausführen, indem Sie Ihre bevorzugte IDE oder ein Terminal verwenden. Das lokale Ausführen von Code hat den Vorteil, dass Sie Code interaktiv debuggen.  Führen Sie in dem Fenster mit der aktivierten Conda-Umgebung *tutorial1* die Python-Datei aus:
+Sie können Ihren Code lokal ausführen, in diesem Fall auf der Compute-Instanz. Das lokale Ausführen von Code hat den Vorteil, dass Sie Code interaktiv debuggen.  
 
-```bash
-cd <path/to/tutorial>
-python ./src/hello.py
-```
+Wenn Sie Ihre Compute-Instanz zuvor beendet haben, starten Sie sie jetzt mit dem **Computetool** rechts von der Compute-Dropdownliste. Warten Sie etwa eine Minute, bis der Status in *Wird ausgeführt* geändert wird.
+
+:::image type="content" source="media/tutorial-1st-experiment-hello-world/start-compute.png" alt-text="Screenshot: Starten der Compute-Instanz, wenn sie zuvor beendet wurde":::
+
+Wählen Sie **Skript speichern und im Terminal ausführen** aus, um das Skript auszuführen.
+
+:::image type="content" source="media/tutorial-1st-experiment-hello-world/save-run-in-terminal.png" alt-text="Screenshot: Speichern und Ausführen eines Skripts im Terminaltool auf der Symbolleiste":::
+
+Die Ausgabe des Skripts wird im Terminalfenster angezeigt, das geöffnet wird. Schließen Sie die Registerkarte, und wählen Sie **Beenden** aus, um die Sitzung zu schließen.
 
 > [!div class="nextstepaction"]
 > [Ich habe das Skript lokal ausgeführt.](?success=run-local#control-script) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C2NTH7?issue=run-local)
 
 ## <a name="create-a-control-script"></a><a name="control-script"></a> Erstellen eines Steuerungsskripts
 
-Mithilfe eines *Steuerungsskripts* können Sie ihr `hello.py`-Skript in der Cloud ausführen. Sie verwenden das Steuerungsskript, um zu steuern, wie und wo Ihr Machine Learning-Code ausgeführt wird.  
+Mit einem *Steuerskript* können Sie Ihr `hello.py` Skript auf verschiedenen Computeressourcen ausführen. Sie verwenden das Steuerungsskript, um zu steuern, wie und wo Ihr Machine Learning-Code ausgeführt wird.  
 
-Erstellen Sie in Ihrem Tutorialverzeichnis eine neue Python-Datei mit dem Namen `03-run-hello.py`, kopieren Sie den folgenden Code, und fügen Sie ihn in diese Datei ein:
+Wählen Sie am Ende des Ordners **get-started** die Option **...** aus, um eine neue Datei zu erstellen.  Erstellen Sie eine neue Python-Datei mit dem Namen *run-hello.py*, kopieren Sie den folgenden Code, und fügen Sie ihn in diese Datei ein:
 
 ```python
-# tutorial/03-run-hello.py
+# get-started/run-hello.py
 from azureml.core import Workspace, Experiment, Environment, ScriptRunConfig
 
 ws = Workspace.from_config()
@@ -82,6 +100,9 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
+
+> [!TIP]
+> Wenn Sie beim Erstellen ihres Computeclusters einen anderen Namen verwendet haben, stellen Sie sicher, dass Sie auch den Namen im Code `compute_target='cpu-cluster'` anpassen.
 
 ### <a name="understand-the-code"></a>Grundlegendes zum Code
 
@@ -133,24 +154,18 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
 
 ## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> Übermitteln und Ausführen Ihres Codes in der Cloud
 
-Führen Sie Ihr Steuerungsskript aus, das seinerseits `hello.py` auf dem Computecluster ausführt, den Sie im [Setup-Tutorial](tutorial-1st-experiment-sdk-setup-local.md) erstellt haben.
+Wählen Sie **Speichern und Ausführen des Skripts im Terminal** aus, um Ihr Steuerungsskript auszuführen, das seinerseits `hello.py` auf dem Computecluster ausführt, den Sie im [Setup-Tutorial](quickstart-create-resources.md) erstellt haben.
 
-
-```bash
-python 03-run-hello.py
-```
-
-> [!TIP]
-> Wenn Sie beim Ausführen dieses Codes den Fehler erhalten, dass Sie keinen Zugriff auf das Abonnement haben, finden Sie Informationen zu Authentifizierungsoptionen unter [Herstellen einer Verbindung mit einem Arbeitsbereich](how-to-manage-workspace.md?tab=python#connect-multi-tenant).
+Im Terminal werden Sie möglicherweise aufgefordert, sich anzumelden, um sich zu authentifizieren.  Kopieren Sie den Code, und folgen Sie dem Link, um diesen Schritt abzuschließen.
 
 > [!div class="nextstepaction"]
 > [Ich habe Code in der Cloud übermittelt.](?success=submit-to-cloud#monitor) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)
 
-## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>Überwachen Ihres Codes in der Cloud mithilfe von Studio
+## <a name="monitor-your-code-in-the-cloud-in-the-studio"></a><a name="monitor"></a>Überwachen Ihres Codes in der Cloud in Studio
 
 Die Ausgabe Ihres Skripts enthält einen Link zu Studio, der etwa wie folgt aussieht: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`.
 
-Klicken Sie auf den Link.  Zunächst sehen Sie den Status **Wird vorbereitet**.  Die erste Ausführung dauert fünf bis zehn Minuten. Dies hat folgende Ursachen:
+Klicken Sie auf den Link.  Zunächst sehen Sie den Status **In der Warteschlange** oder **Wird vorbereitet**.  Die erste Ausführung dauert fünf bis zehn Minuten. Dies hat folgende Ursachen:
 
 * Ein Docker-Image wird in der Cloud erstellt.
 * Die Größe des Computeclusters wird von 0 in 1 Knoten geändert.
@@ -158,7 +173,7 @@ Klicken Sie auf den Link.  Zunächst sehen Sie den Status **Wird vorbereitet**. 
 
 Nachfolgende Ausführungen sind wesentlich schneller (ca. 15 Sekunden), da das Docker-Image in der Computeressource zwischengespeichert wird. Sie können dies testen, indem Sie den nachfolgenden Code nach Abschluss der ersten Ausführung erneut übermitteln.
 
-Navigieren Sie nach Abschluss des Auftrags zur Registerkarte **Ausgaben und Protokolle**. Dort sehen Sie eine Datei `70_driver_log.txt`, die wie folgt aussieht:
+Warten Sie ca. 10 Minuten.  Es wird eine Meldung angezeigt, dass die Ausführung abgeschlossen wurde. Verwenden Sie dann **Aktualisieren,** um die Statusänderung in *Abgeschlossen* zu ändern.  Navigieren Sie nach Abschluss des Auftrags zur Registerkarte **Ausgaben und Protokolle**. Dort sehen Sie eine Datei `70_driver_log.txt`, die wie folgt aussieht:
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.

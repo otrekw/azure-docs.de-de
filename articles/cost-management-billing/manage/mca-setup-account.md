@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: 15aa3acab9fe98a4c2f5103ba211dde34220c54e
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: af9a56dd52a0ee70a457e4e53fd37962dca9c90d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107255681"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739876"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung
 
@@ -60,9 +60,9 @@ Sie können die folgenden Optionen verwenden, um die Migration Ihrer EA-Registri
 
 - Melden Sie sich beim Azure-Portal über den Link in der E-Mail an, die bei Unterzeichnung der Microsoft-Kundenvereinbarung an Sie gesendet wurde.
 
-- Alternativ können Sie sich auch über den folgenden Link anmelden. Ersetzen Sie `enrollmentNumber` durch die Nummer Ihrer Enterprise Agreement-Registrierung, die erneuert wurde.
+- Alternativ können Sie sich auch über den folgenden Link anmelden.
 
-  `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+  `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment`
 
 Wenn Sie über die Rollen „Unternehmensadministrator“ und „Besitzer des Abrechnungskontos“ oder über die Rolle „Besitzer des Abrechnungsprofils“ verfügen, wird im Azure-Portal die folgende Seite angezeigt. Sie können mit der Einrichtung Ihrer EA-Registrierungen und Ihres Microsoft-Kundenvereinbarungskontos für die Umstellung fortfahren.
 
@@ -70,7 +70,7 @@ Wenn Sie über die Rollen „Unternehmensadministrator“ und „Besitzer des Ab
 
 Wenn Sie nicht über die Rolle „Unternehmensadministrator“ für das Enterprise Agreement oder über die Rolle „Besitzer des Abrechnungsprofils“ für die Microsoft-Kundenvereinbarung verfügen, verwenden Sie die folgenden Informationen, um den für die Einrichtung erforderlichen Zugriff zu erhalten.
 
-### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>Wenn Sie kein Unternehmensadministrator für die Registrierung sind
+#### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>Wenn Sie kein Unternehmensadministrator für die Registrierung sind
 
 Wenn Sie über die Rolle „Besitzer des Abrechnungskontos“ oder „Besitzer des Abrechnungsprofils“ verfügen, aber kein Unternehmensadministrator sind, wird im Azure-Portal die folgende Seite angezeigt:
 
@@ -83,9 +83,9 @@ Sie haben zwei Möglichkeiten:
 
 Wenn Sie die Rolle „Unternehmensadministrator“ erhalten, kopieren Sie den Link auf der Seite „Abrechnungskonto einrichten“. Öffnen Sie ihn in Ihrem Webbrowser, um die Einrichtung Ihrer Microsoft-Kundenvereinbarung fortzusetzen. Senden Sie ihn andernfalls an den Unternehmensadministrator.
 
-### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>Wenn Sie kein Besitzer des Abrechnungsprofils sind
+#### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>Wenn Sie kein Besitzer des Abrechnungsprofils sind
 
-Wenn Sie Unternehmensadministrator sind, aber für Ihre Microsoft-Kundenvereinbarung nicht über die Rolle „Besitzer des Abrechnungskontos“ oder „Besitzer des Abrechnungsprofils“ verfügen, wird im Azure-Portal die folgende Seite angezeigt.
+Wenn Sie ein Unternehmensadministrator sind, aber nicht über ein Abrechnungskonto verfügen, wird im Azure-Portal der folgende Fehler angezeigt, der die Umstellung verhindert.
 
 Falls die folgende Meldung angezeigt wird und Sie der Meinung sind, dass Sie über Abrechnungsprofilbesitzer-Zugriff auf die richtige Microsoft-Kundenvereinbarung verfügen, vergewissern Sie sich, dass Sie sich im richtigen Mandanten für Ihre Organisation befinden. Unter Umständen müssen Sie in ein anderes Verzeichnis wechseln.
 
@@ -97,6 +97,42 @@ Sie haben zwei Möglichkeiten:
 - Weisen Sie einem vorhandenen Besitzer des Abrechnungskontos die Rolle „Unternehmensadministrator“ zu. Weitere Informationen finden Sie unter [Erstellen eines weiteren Unternehmensadministrators](ea-portal-administration.md#create-another-enterprise-administrator).
 
 Wenn Sie die Rolle „Besitzer des Abrechnungskontos“ oder Besitzer des Abrechnungsprofils“ erhalten, kopieren Sie den Link auf der Seite „Abrechnungskonto einrichten“. Öffnen Sie ihn in Ihrem Webbrowser, um die Einrichtung Ihrer Microsoft-Kundenvereinbarung fortzusetzen. Senden Sie den Link andernfalls an den Besitzer des Abrechnungskontos.
+
+#### <a name="prepare-enrollment-for-transition"></a>Vorbereiten der Registrierung für die Umstellung
+
+Wenn Sie sowohl für Ihre EA-Registrierung als auch für Ihr Abrechnungsprofil über Zugriff vom Typ „Besitzer“ verfügen, können Sie dafür die Umstellung vorbereiten.
+
+Öffnen Sie die Migration, die Ihnen zuvor angezeigt wurde, oder öffnen Sie den Link, den Sie per E-Mail erhalten haben. Der Link lautet wie folgt: `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment`.
+
+Die folgende Abbildung enthält ein Beispiel für das Fenster zum Vorbereiten der Umstellung Ihrer Enterprise Agreement-Registrierungen.
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition.png" alt-text="Screenshot: Vorbereiten der Umstellung Ihrer Enterprise Agreement-Registrierungen auf der Seite „Abrechnungskonto einrichten“: Bereit für Auswahl" lightbox="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition.png" :::
+
+Wählen Sie als Nächstes die Quellregistrierung für die Umstellung aus. Wählen Sie anschließend das Abrechnungskonto und -profil aus. Wählen Sie **Weiter** aus, um fortzufahren, falls die Überprüfung ohne Probleme bestanden wird (ähnlich wie in der folgenden Darstellung).
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition-continue.png" alt-text="Screenshot: Vorbereiten der Umstellung Ihrer Enterprise Agreement-Registrierungen auf der Seite „Abrechnungskonto einrichten“ mit Überprüfung der Auswahl" lightbox="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition-continue.png" :::
+
+**Fehlerbedingungen**
+
+Wenn Sie über die Rolle „Unternehmensadministrator (nur Leseberechtigung)“ verfügen, wird der folgende Fehler angezeigt, der die Umstellung verhindert. Sie müssen über die Rolle „Unternehmensadministrator“ verfügen, um für Ihre Registrierung die Umstellung durchführen zu können.
+
+`Select another enrollment. You do not hve Enterprise Administrator write permission to the enrollment.`
+
+Falls für Ihre Registrierung noch mehr als 60 Tage bis zum Enddatum vorhanden sind, wird der folgende Fehler angezeigt, der die Umstellung verhindert. Das aktuelle Datum darf maximal 60 Tage vom Enddatum der Registrierung entfernt sein, damit Sie die Umstellung für Ihre Registrierung durchführen können.
+
+`Select another enrollment. This enrollment has more than 60 days before its end date.`
+
+Wenn für Ihre Registrierung noch Guthaben vorhanden ist, wird der folgende Fehler angezeigt, der die Umstellung verhindert. Sie müssen Ihr gesamtes Guthaben aufbrauchen, bevor Sie Ihre Registrierung umstellen können.
+
+`Select another enrollment. This enrollment still has credits and can't be transitioned to a billing account.`
+
+Falls Sie für das Abrechnungsprofil nicht über die Berechtigung „Besitzer“ verfügen, wird der folgende Fehler angezeigt, der die Umstellung verhindert. Sie müssen über die Rolle „Besitzer“ für das Abrechnungsprofil verfügen, um die Umstellung für Ihre Registrierung durchführen zu können.
+
+`Select another Billing Profile. You do not have owner permission to this profile.`
+
+Wenn für Ihr neues Abrechnungsprofil der neue Plan nicht aktiviert ist, wird der folgende Fehler angezeigt. Sie müssen den Plan aktivieren, bevor Sie Ihre Registrierung umstellen können.
+
+`Select another Billing Profile. The current selection does not have Azure Plan and Azure dev test plan enabled on it.`
 
 ## <a name="understand-changes-to-your-billing-hierarchy"></a>Erläuterungen zu den Änderungen an Ihrer Abrechnungshierarchie
 
@@ -197,9 +233,9 @@ Zum Abschließen der Einrichtung benötigen Sie Zugriff sowohl auf das neue Abre
 
 1. Melden Sie sich beim Azure-Portal über den Link in der E-Mail an, die bei Unterzeichnung der Microsoft-Kundenvereinbarung an Sie gesendet wurde.
 
-2. Alternativ können Sie sich auch über den folgenden Link anmelden. Ersetzen Sie `<enrollmentNumber>` durch die Nummer Ihrer Enterprise Agreement-Registrierung, die erneuert wurde.
+2. Alternativ können Sie sich auch über den folgenden Link anmelden.
 
-   `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+   `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment`
 
 3. Wählen Sie **Umstellung starten** im letzten Schritt der Einrichtung aus. Nach dem Starten der Umstellung geschieht Folgendes:
 
@@ -236,7 +272,7 @@ Azure-Abonnements, die von Ihrer Enterprise Agreement-Registrierung auf das neue
 
 ### <a name="azure-reservations"></a>Azure-Reservierungen
 
-Azure-Reservierungen in Ihrer Enterprise Agreement-Registrierung werden zum neuen Abrechnungskonto verschoben, ohne dass die Vorteile oder Bedingungen geändert werden. Transaktionen, die vor dem Übergang abgeschlossen wurden, werden in Ihrem neuen Abrechnungskonto nicht angezeigt. Auf der [Azure-Reservierungsseite](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) können Sie überprüfen, ob die Vorteile Ihrer Reservierungen auf Ihre Abonnements angewendet werden.
+Azure-Reservierungen in Ihrer Enterprise Agreement-Registrierung werden zum neuen Abrechnungskonto verschoben, ohne dass die Vorteile oder Bedingungen geändert werden. Transaktionen, die vor der Umstellung abgeschlossen wurden, werden in Ihrem neuen Abrechnungskonto nicht angezeigt. Auf der [Azure-Reservierungsseite](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) können Sie überprüfen, ob die Vorteile Ihrer Reservierungen auf Ihre Abonnements angewendet werden.
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-account"></a>Zugriff von Unternehmensadministratoren auf das Abrechnungskonto
 

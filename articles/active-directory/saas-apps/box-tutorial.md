@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2021
 ms.author: jeedes
-ms.openlocfilehash: d21ccdcb1f3854733d045b47a5f43e27bbdf4ccb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79153734beb9ddc8bb43c1c4928844c5d4bd18e7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98807902"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739988"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Box
 
@@ -153,12 +153,21 @@ In diesem Abschnitt wird eine Benutzerin mit dem Namen Britta Simon in Box erste
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Box weitergeleitet, wo Sie den Anmeldeflow initiieren können.
+* Wählen Sie die Option **Diese Anwendung testen** im Azure-Portal aus. Sie werden zur Anmelde-URL für Box weitergeleitet, wo Sie den Anmeldeflow initiieren können.
 
 * Rufen Sie direkt die Box-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
 * Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „Box“ klicken, werden Sie zur Anmelde-URL für Box weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
+### <a name="push-an-azure-group-to-box"></a>Pushen einer Azure-Gruppe an Box
+
+Sie können eine Azure-Gruppe per Push an Box übertragen und diese Gruppe synchronisieren. Azure pusht Gruppen über eine Integration auf API-Ebene an Box.
+
+1. Suchen Sie unter **Benutzer & Gruppen** nach der Gruppe, die Sie Box zuweisen möchten.
+1. Stellen Sie unter **Bereitstellung** sicher, dass **Azure Active Directory-Gruppen mit Box synchronisieren** ausgewählt ist. Diese Einstellung synchronisiert die Gruppen, die Sie im vorherigen Schritt zugeordnet haben. Es kann einige Zeit dauern, bis diese Gruppen aus Azure gepusht werden.
+
+> [!NOTE]
+> Setzen Sie sich mit dem [Supportteam von Box](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

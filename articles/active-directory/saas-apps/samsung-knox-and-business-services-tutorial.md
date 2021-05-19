@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 05/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 330c02f15c0818f0a5c69088757c92a91a523589
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c292838305baa44699b6309fcaaf7de7366ba94
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952642"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753379"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Samsung Knox and Business Services
 
@@ -78,7 +78,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    * Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://www.samsungknox.com`.
+    * Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://www2.samsungknox.com/en/sso/login/ad`.
     * Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** die folgende URL ein: `https://central.samsungknox.com/ams/ad/saml/acs`.
     
     ![Grundlegende SAML-Konfigurationswerte](https://docs.samsungknox.com/assets/merge/ad-sso/basic-saml-configuration.png)

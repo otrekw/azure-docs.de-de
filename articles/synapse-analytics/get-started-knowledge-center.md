@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: f4cc631bd3ff05dc63566677ec96ef0360d362c9
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: f36d5deb93f141bb7467a50d4b5dba7f3df1ea92
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517350"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517008"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Überblick über Synapse Knowledge Center
 
@@ -51,7 +51,7 @@ Dieser Abschnitt enthält drei Elemente:
 1. Scrollen Sie zur ersten Abfrage (Zeilen 28 bis 32), und wählen Sie den Abfragetext aus.
 1. Klicken Sie auf "Ausführen". Nur der von Ihnen ausgewählte Code wird ausgeführt.
 
-## <a name="gallery-a-collectiopn-of-sample-data-sets-and-sample-code"></a>Katalog: Eine Sammlung von Beispieldatasets und Beispielcode
+## <a name="gallery-a-collection-of-sample-datasets-and-sample-code"></a>Katalog: Sammlung mit Beispieldatasets und -code
 
 1. Navigieren Sie zu **Knowledge Center**, und klicken Sie auf **Katalog durchsuchen**.
 1. Wählen Sie oben die Registerkarte **SQL scripts** (SQL-Skripts) aus.

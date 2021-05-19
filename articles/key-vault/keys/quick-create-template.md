@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 66d41ed1bb900f55db0d3670c1ce312950ff165d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 261b939d62c4952b7dc6d1f1a4b0e91c2922b4ce
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147047"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744927"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>Schnellstart: Erstellen eines Azure-Schlüsseltresors und eines Schlüssels mithilfe einer ARM-Vorlage 
 
@@ -166,6 +166,17 @@ In der Vorlage sind zwei Ressourcen definiert:
 - Microsoft.KeyVault/vaults/keys
 
 Weitere Vorlagenbeispiele für Azure Key Vault finden Sie in [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular).
+
+## <a name="parameters-and-definitions"></a>Parameter und Definitionen
+
+|Parameter  |Definition  |
+|---------|---------|
+|**Keysize**  | Gibt Vorgänge an, die unter Verwendung des Schlüssels ausgeführt werden können. Ohne Angabe dieses Parameters können alle Vorgänge ausgeführt werden. Zulässige Werte für diesen Parameter sind eine durch Kommas getrennte Liste mit Schlüsselvorgängen gemäß [JWK-Spezifikation (JSON Web Key)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41): <br> `["sign", "verify", "encrypt", "decrypt", " wrapKey", "unwrapKey"]` |
+|**CurveName**  |  Name der elliptischen Kurve für den EC-Schlüsseltyp. Weitere Informationen finden Sie unter [JsonWebKeyCurveName](/rest/api/keyvault/createkey/createkey#jsonwebkeycurvename). |
+|**Kty**  |  Die Art des zu erstellenden Schlüssels. Gültige Werte finden Sie unter [JsonWebKeyType](/rest/api/keyvault/createkey/createkey#jsonwebkeytype). |
+|**Tags** | Anwendungsspezifische Metadaten in Form von Schlüssel-Wert-Paaren.  |
+|**nbf**  |  Gibt die Zeit (als DateTime-Objekt) an, vor der der Schlüssel nicht verwendet werden kann. Das Format ist ein Unix-Zeitstempel (die Anzahl von Sekunden nach der Unix-Epoche am 1. Januar 1970 in UTC).  |
+|**exp**  |  Gibt die Ablaufzeit als DateTime-Objekt an. Das Format ist ein Unix-Zeitstempel (die Anzahl von Sekunden nach der Unix-Epoche am 1. Januar 1970 in UTC). |
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 Sie können auch das [Azure-Portal](../../azure-resource-manager/templates/deploy-portal.md), Azure PowerShell, die Azure CLI oder die REST-API verwenden. Informationen zu Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../../azure-resource-manager/templates/deploy-powershell.md).

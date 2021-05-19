@@ -1,17 +1,17 @@
 ---
 title: Excel-Format in Azure Data Factory
 description: In diesem Thema wird der Umgang mit dem Excel-Format in Azure Data Factory beschrieben.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/08/2020
-ms.author: jingwang
-ms.openlocfilehash: bef29bc958253be0498442f842dda67105ce799b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 4e67778778aad334d7eb7283234ae3bdb5b5eef9
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386525"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484377"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,7 +20,8 @@ Verwenden Sie diesen Artikel, wenn Sie die **Excel-Dateien** analysieren möchte
 
 Das Excel-Format wird für folgende Connectors unterstützt: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md) und [SFTP](connector-sftp.md). Es wird als Quelle, aber nicht als Senke unterstützt. 
 
-**Hinweis:** Das XLS-Format wird bei Verwendung von [HTTP](connector-http.md) nicht unterstützt. 
+>[!NOTE]
+>Das „.xls“-Format wird bei Verwendung von [HTTP](connector-http.md) nicht unterstützt.
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 

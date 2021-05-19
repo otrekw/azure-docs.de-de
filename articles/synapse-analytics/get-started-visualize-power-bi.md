@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Erste Schritte mit Azure Synapse Analytics: Visualisieren von Arbeitsbereichsdaten mit Power BI'
-description: In diesem Tutorial wird beschrieben, wie Sie einen Power BI-Arbeitsbereich erstellen, Ihren Azure Synapse-Arbeitsbereich verlinken und ein Power BI-Dataset erstellen, bei dem Daten im Azure Synapse-Arbeitsbereich genutzt werden.
+description: In diesem Tutorial erfahren Sie, wie Sie mit Power BI Daten in Azure Synapse Analytics visualisieren.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 03/25/2021
-ms.openlocfilehash: 829daaa9c739657528a9085201c61c88635931d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fe830d277fa2e2ff57661500c3c56c0927637ab4
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608441"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516901"
 ---
 # <a name="visualize-data-with-power-bi"></a>Visualisieren von Daten mit Power BI
 

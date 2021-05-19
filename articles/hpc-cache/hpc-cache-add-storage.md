@@ -4,23 +4,23 @@ description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokale
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 05/05/2021
 ms.custom: subject-rbac-steps
 ms.author: v-erkel
-ms.openlocfilehash: 81d361a82a05bed83156857b2381be0d6d113827
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: aae7d29abbb9ef18846e85e9a54ff0fb97f09181
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209893"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738516"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
 *Speicherziele* sind Back-End-Speicher für Dateien, auf die über einen Azure HPC Cache zugegriffen wird. Sie können NFS-Speicher hinzufügen, z. B. ein lokales Hardwaresystem, oder Daten in Azure Blob Storage speichern.
 
-Sie können bis zu 20 verschiedene Speicherziele für einen Cache definieren. Der Cache stellt alle Speicherziele in einem aggregierten Namespace dar.
+Sie können 10 verschiedene Speicherziele für jeden Cache definieren, außerdem können größere Caches [bis zu 20 Speicherziele unterstützen](#size-your-cache-correctly-to-support-your-storage-targets).
 
-Die Namespacepfade werden separat konfiguriert, nachdem Sie die Speicherziele hinzugefügt haben.
+Der Cache stellt alle Speicherziele in einem aggregierten Namespace dar. Die Namespacepfade werden separat konfiguriert, nachdem Sie die Speicherziele hinzugefügt haben.
 
 Beachten Sie, dass der Zugriff auf die Speicherexporte vom virtuellen Netzwerk Ihres Caches aus möglich sein muss. Für einen lokalen Hardwarespeicher müssen Sie möglicherweise einen DNS-Server einrichten, der Hostnamen für den NFS-Speicherzugriff auflösen kann. Weitere Informationen finden Sie unter [DNS-Zugriff](hpc-cache-prerequisites.md#dns-access).
 
@@ -35,6 +35,15 @@ Je nachdem, welche Art von Speicher verwendet wird, weist das Verfahren zum Hinz
 Klicken Sie auf das Bild unten, um eine [Videodemonstration](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) der Cacheerstellung und des Hinzufügens eines Speicherziels im Azure-Portal anzusehen.
 
 [![Videominiaturansicht: Azure HPC Cache: Setup (klicken Sie, um die Videoseite aufzurufen)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
+
+## <a name="size-your-cache-correctly-to-support-your-storage-targets"></a>Korrekte Cachegröße zur Unterstützung Ihrer Speicherziele
+
+Die Anzahl der unterstützten Speicherziele hängt von der Cachegröße ab, die beim Erstellen des Caches festgelegt wird. Die Größe ist eine Kombination aus Durchsatzkapazität (in GB/s) und Speicherkapazität (in TB).
+
+* Bis zu 10 Speicherziele: Wenn Sie die kleinste oder mittlere Cachespeichergröße für den ausgewählten Durchsatzwert auswählen, kann Ihr Cache über bis zu 10 Speicherziele verfügen.
+* Bis zu 20 Speicherziele: Wählen Sie die höchste verfügbare Cachegröße für den ausgewählten Durchsatzwert aus, wenn Sie mehr als 10 Speicherziele verwenden möchten. (Wenn Sie Azure CLI verwenden, wählen Sie die höchste gültige Cachegröße für Ihre Cache-SKU aus.)
+
+Weitere Informationen zu Durchsatz- und Cachegrößeneinstellungen finden Sie unter [Festlegen der Cachekapazität](hpc-cache-create.md#set-cache-capacity).
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Hinzufügen eines neuen Azure Blobspeicherziels
 

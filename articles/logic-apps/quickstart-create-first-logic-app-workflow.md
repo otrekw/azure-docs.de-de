@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: contperf-fy21q4
 ms.date: 04/28/2021
-ms.openlocfilehash: ea115d42f84562e67adb7e6f45ce8d35be21d6b0
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 1ff7ba5e3835fccb2f67fa56cf3737adb9d36b45
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292508"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738894"
 ---
 # <a name="quickstart-create-an-integration-workflow-using-azure-logic-apps-in-the-azure-portal"></a>Schnellstart: Erstellen eines Integrationsworkflows mit Azure Logic Apps im Azure-Portal
 
@@ -51,7 +51,7 @@ Informationen zum Erstellen und Verwalten einer Logik-App mit anderen Tools find
 
 * Falls Sie über eine Firewall verfügen, durch die der Datenverkehr auf bestimmte IP-Adressen beschränkt wird, richten Sie Ihre Firewall so ein, dass der Zugriff für IP-Adressen, die vom Logic Apps-Dienst in der Azure-Region Ihrer Logik-App genutzt werden, in [eingehender](logic-apps-limits-and-config.md#inbound) *und* in [ausgehender](logic-apps-limits-and-config.md#outbound) Richtung zugelassen wird.
 
-  In diesem Beispiel werden auch die [von Microsoft verwalteten](/connectors/managed.md) RRS- und Office 365 Outlook-Connectors verwendet. Für diese Connectors muss Ihre Firewall so eingerichtet werden, dass der Zugriff für *alle* [ausgehenden IP-Adressen des verwalteten Connectors](logic-apps-limits-and-config.md#outbound) in der Azure-Region der Logik-App zugelassen wird.
+  In diesem Beispiel werden auch die [von Microsoft verwalteten](../connectors/managed.md) RRS- und Office 365 Outlook-Connectors verwendet. Für diese Connectors muss Ihre Firewall so eingerichtet werden, dass der Zugriff für *alle* [ausgehenden IP-Adressen des verwalteten Connectors](logic-apps-limits-and-config.md#outbound) in der Azure-Region der Logik-App zugelassen wird.
 
 <a name="create-logic-app-resource"></a>
 
@@ -71,7 +71,7 @@ Informationen zum Erstellen und Verwalten einer Logik-App mit anderen Tools find
 
 1. Geben Sie im Bereich **Logik-App** die grundlegenden Details und Einstellungen für Ihre Logik-App an. Erstellen Sie eine neue [Ressourcengruppe](../azure-resource-manager/management/overview.md#terminology) für diese exemplarische Logik-App.
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | Wert | Beschreibung |
    |----------|-------|-------------|
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements. |
    | **Ressourcengruppe** | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md#terminology). Dieser Name muss regionsübergreifend eindeutig sein. In diesem Beispiel wird „My-First-LA-RG“ verwendet. |

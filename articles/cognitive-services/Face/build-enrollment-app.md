@@ -9,38 +9,52 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 39a74c7f3d5fb8f8b60a66947fcce9837ed6ee13
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 2bc2b12127af175d051f433f15ad4a9ffdee0467
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505104"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627778"
 ---
 # <a name="build-a-react-app-to-add-users-to-a-face-service"></a>Erstellen einer React-App zum Hinzufügen von Benutzern zu einem Gesichtserkennungs-Dienst
 
-In dieser Anleitung lernen Sie die ersten Schritte mit der Registrierungsbeispielanwendung für Gesichtserkennung kennen. Die App veranschaulicht bewährte Methoden, um eine aussagekräftige Zustimmung zum Hinzufügen von Benutzern bei einem Gesichtserkennungsdienst und zum Abrufen von hoch exakten Gesichtserkennungsdaten zu erhalten. Ein integriertes System könnte eine App wie diese verwenden, um eine berührungslose Zugriffssteuerung, eine Identitätsprüfung, eine Anwesenheitserfassung, einen Personalisierungskiosk oder eine auf ihren Gesichtserkennungsdaten basierende Identitätsprüfung bereitzustellen.
+In dieser Anleitung lernen Sie die ersten Schritte mit der Registrierungsbeispielanwendung für Gesichtserkennung kennen. Die App veranschaulicht bewährte Methoden, um eine aussagekräftige Zustimmung zum Hinzufügen von Benutzern bei einem Gesichtserkennungsdienst und zum Abrufen von hoch exakten Gesichtserkennungsdaten zu erhalten. Ein integriertes System könnte eine App wie diese verwenden, um basierend auf den entsprechenden Gesichtserkennungsdaten eine berührungslose Zugriffssteuerung, eine Identitätsprüfung, eine Anwesenheitserfassung oder einen Personalisierungskiosk bereitzustellen.
 
 Wenn die Anwendung gestartet wird, zeigt sie den Benutzern einen detaillierten Zustimmungsbildschirm an. Wenn der Benutzer seine Zustimmung erteilt, fordert die App ihn zur Eingabe eines Benutzernamens und Kennworts auf und erfasst dann ein qualitativ hochwertiges Bild des Gesichts mithilfe der Kamera des Geräts.
 
-Die Beispiel-App wird mit JavaScript und dem React Native-Framework geschrieben. Sie kann derzeit auf Android-Geräten bereitgestellt werden. Weitere Bereitstellungsoptionen werden in Zukunft verfügbar gemacht.
+Die Beispiel-App wird mit JavaScript und dem React Native-Framework geschrieben. Sie kann derzeit auf Android- und iOS-Geräten bereitgestellt werden. Weitere Bereitstellungsoptionen werden in Zukunft verfügbar gemacht.
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 * Azure-Abonnement ([kostenloses Abonnement erstellen](https://azure.microsoft.com/free/cognitive-services/)).  
 * Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie im Azure-Portal [eine Gesichtserkennungsressource erstellen](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace), um Ihren Schlüssel und Endpunkt zu erhalten. Wählen Sie nach Abschluss der Bereitstellung **Zu Ressource wechseln** aus.  
   * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Gesichtserkennungs-API zu verbinden.  
-  * Für lokale Entwicklungs- und Testzwecke können Sie den API-Schlüssel und Endpunkt in die Konfigurationsdatei einfügen. Speichern Sie den API-Schlüssel für die endgültige Bereitstellung an einem sicheren Ort und nie im Code.  
+  * Nur für die lokale Entwicklung und Tests entsprechen der API-Schlüssel und der Endpunkt Umgebungsvariablen. Speichern Sie den API-Schlüssel für die endgültige Bereitstellung an einem sicheren Ort und nie im Code oder den Umgebungsvariablen.  
 
-> [!IMPORTANT]
-> Diese Abonnementschlüssel werden für den Zugriff auf Ihre Cognitive Service-API verwendet. Geben Sie Ihre Schlüssel nicht weiter. Speichern Sie diese beispielsweise sicher mit Azure Key Vault. Es wird außerdem empfohlen, diese Schlüssel regelmäßig neu zu generieren. Für einen API-Aufruf ist nur ein Schlüssel erforderlich. Beim erneuten Generieren des ersten Schlüssels können Sie den zweiten Schlüssel für kontinuierlichen Zugriff auf den Dienst verwenden.
+### <a name="important-security-considerations"></a>Wichtige Sicherheitsaspekte
+* Für die lokale Entwicklung und anfängliche eingeschränkte Tests ist es akzeptabel (wenn auch keine bewährte Methode), Umgebungsvariablen zum Speichern des API-Schlüssels und Endpunkts zu verwenden. Bei Pilotversuchen und endgültigen Bereitstellungen sollte der API-Schlüssel sicher gespeichert werden. Dies umfasst wahrscheinlich die Verwendung eines Zwischendiensts, um ein während der Anmeldung generiertes Benutzertoken zu überprüfen. 
+* Speichern Sie den API-Schlüssel oder Endpunkt in Code, oder committen Sie sie an ein Versionskontrollsystem (z. B. Git). Wenn dies versehentlich geschieht, sollten Sie sofort einen neuen API-Schlüssel bzw. Endpunkt generieren und die vorherigen widerrufen.
+* Eine bewährte Methode besteht darin, separate API-Schlüssel für die Entwicklung und Produktion zu verwenden.
 
 ## <a name="set-up-the-development-environment"></a>Einrichten der Entwicklungsumgebung
 
+#### <a name="android"></a>[Android](#tab/android)
+ 
 1. Klonen Sie das Git-Repository für die [Beispiel-App](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample).
-1. Um Ihre Entwicklungsumgebung einzurichten, befolgen Sie die <a href="https://reactnative.dev/docs/environment-setup"  title=""  target="_blank">React Native-Dokumentation</a>. Wählen Sie **React Native CLI Schnellstart** als Entwicklungsbetriebssystem und **Android** als Zielbetriebssystem aus. Vervollständigen Sie die Abschnitte **Installieren von Abhängigkeiten** und **Android-Entwicklungsumgebung**.
-1. Öffnen Sie die Datei „env.json“ in Ihrem bevorzugten Text-Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/), und fügen Sie Ihren Endpunkt und Schlüssel hinzu. Sie können Ihren Endpunkt und Schlüssel im Azure-Portal auf der Registerkarte **Übersicht** Ihrer Ressource finden. Dieser Schritt dient nur lokalen Testzwecken. Checken Sie nicht Ihren Gesichtserkennungs-API-Schlüssel in Ihrem Remoterepository ein.
-1. Führen Sie die App entweder mit dem Android-Emulator für virtuelle Geräte aus Android Studio oder Ihrem eigenen Android-Gerät aus. Um Ihre App auf einem physischen Gerät zu testen, befolgen Sie die relevante <a href="https://reactnative.dev/docs/running-on-device"  title=""  target="_blank">React Native-Dokumentation</a>.  
+1. Um Ihre Entwicklungsumgebung einzurichten, befolgen Sie die <a href="https://reactnative.dev/docs/environment-setup"  title=""  target="_blank">React Native-Dokumentation<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Klicken Sie auf **React Native CLI Quickstart** (Schnellstart React Native-CLI). Wählen Sie Ihr Entwicklungsbetriebssystem und **Android** als das Zielbetriebssystem aus. Vervollständigen Sie die Abschnitte **Installieren von Abhängigkeiten** und **Android-Entwicklungsumgebung**.
+1. Laden Sie Ihren bevorzugten Text-Editor herunter (z. B. [Visual Studio Code](https://code.visualstudio.com/)).
+1. Rufen Sie den Endpunkt und den Schlüssel für die Gesichtserkennungs-API im Azure-Portal über die Registerkarte **Übersicht** Ihrer Ressource ab. Checken Sie Ihren API-Schlüssel für die Gesichtserkennung nicht bei Ihrem Remoterepository ein.
+1. Führen Sie die App entweder mit dem Android-Emulator für virtuelle Geräte aus Android Studio oder Ihrem eigenen Android-Gerät aus. Um Ihre App auf einem physischen Gerät zu testen, befolgen Sie die relevante <a href="https://reactnative.dev/docs/running-on-device"  title=""  target="_blank">React Native-Dokumentation<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
+#### <a name="ios"></a>[iOS](#tab/ios)
+
+1. Klonen Sie das Git-Repository für die [Beispiel-App](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample).
+1. Um Ihre Entwicklungsumgebung einzurichten, befolgen Sie die <a href="https://reactnative.dev/docs/environment-setup"  title=""  target="_blank">React Native-Dokumentation<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Klicken Sie auf **React Native CLI Quickstart** (Schnellstart React Native-CLI). Wählen Sie **macOS** als Entwicklungsbetriebssystem und **iOS** als Zielbetriebssystem aus. Schließen Sie den Abschnitt **Installing dependencies** (Installieren von Abhängigkeiten) ab.
+1. Laden Sie Ihren bevorzugten Text-Editor herunter (z. B. [Visual Studio Code](https://code.visualstudio.com/)). Außerdem müssen Sie Xcode herunterladen. 
+1. Rufen Sie den Endpunkt und den Schlüssel für die Gesichtserkennungs-API im Azure-Portal über die Registerkarte **Übersicht** Ihrer Ressource ab. Checken Sie Ihren API-Schlüssel für die Gesichtserkennung nicht bei Ihrem Remoterepository ein.
+1. Führen Sie die App entweder mithilfe eines simulierten Geräts von Xcode oder mit Ihrem eigenen iOS-Gerät aus. Um Ihre App auf einem physischen Gerät zu testen, befolgen Sie die relevante <a href="https://reactnative.dev/docs/running-on-device"  title=""  target="_blank">React Native-Dokumentation<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+
+---
 
 ## <a name="create-a-user-add-experience"></a>Erstellen einer Benutzeroberfläche zum Hinzufügen von Benutzern  
 
@@ -72,15 +86,23 @@ Um die Funktionalität der App so zu erweitern, dass Sie die gesamte Erfahrung a
 
 ## <a name="deploy-the-app"></a>Bereitstellen der App
 
-### <a name="android"></a>Android
+#### <a name="android"></a>[Android](#tab/android)
 
-Stellen Sie zunächst sicher, dass Ihre App für die Produktionsbereitstellung bereit ist: Entfernen Sie alle Schlüssel oder Geheimnisse aus dem App-Code, und stellen Sie sicher, dass Sie die [bewährten Sicherheitsmethoden](../cognitive-services-security.md?tabs=command-line%2ccsharp) befolgt haben.
+Stellen Sie zunächst sicher, dass Ihre App für die Produktionsbereitstellung bereit ist: Entfernen Sie alle Schlüssel oder Geheimnisse aus dem App-Code, und stellen Sie sicher, dass Sie die [bewährten Sicherheitsmethoden](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) befolgt haben.
 
 Wenn Sie bereit sind, Ihre App für die Produktion freizugeben, generieren Sie eine releasebereite APK-Datei, bei der es sich um das Paketdateiformat für Android-Apps handelt. Diese APK-Datei muss mit einem privaten Schlüssel signiert werden. Mit diesem Releasebuild können Sie beginnen, die App direkt an Ihre Geräte zu verteilen. 
 
-Befolgen Sie die Dokumentation zur <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title="Vorbereiten für das Release"  target="_blank">Vorbereiten für das Release</a>, um zu erfahren, wie Sie einen privaten Schlüssel generieren, Ihre Anwendung signieren und ein APK-Releasepaket generieren.  
+Befolgen Sie die Dokumentation zur <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title="Vorbereiten für das Release"  target="_blank">Vorbereiten für das Release<span class="docon docon-navigate-external x-hidden-focus"></span></a>, um zu erfahren, wie Sie einen privaten Schlüssel generieren, Ihre Anwendung signieren und ein APK-Releasepaket generieren.  
 
-Wenn Sie ein signiertes APK-Paket erstellt haben, finden Sie weitere Informationen zum Freigeben Ihrer App in der Dokumentation <a href="https://developer.android.com/studio/publish"  title="Veröffentlichen Ihrer App"  target="_blank">Veröffentlichen Ihrer App</a>.
+Wenn Sie ein signiertes APK-Paket erstellt haben, finden Sie weitere Informationen zum Freigeben Ihrer App in der Dokumentation <a href="https://developer.android.com/studio/publish"  title="Veröffentlichen Ihrer App"  target="_blank">Veröffentlichen Ihrer App<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+
+#### <a name="ios"></a>[iOS](#tab/ios)
+
+Stellen Sie zunächst sicher, dass Ihre App für die Produktionsbereitstellung bereit ist: Entfernen Sie alle Schlüssel oder Geheimnisse aus dem App-Code, und stellen Sie sicher, dass Sie die [bewährten Sicherheitsmethoden](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) befolgt haben. Sie müssen zur Vorbereitung der Veröffentlichung ein App-Symbol und einen Startbildschirm erstellen und Einstellungen für die Bereitstellungsinformationen konfigurieren. Befolgen Sie die [Dokumentation von Xcode](https://developer.apple.com/documentation/Xcode/preparing_your_app_for_distribution), um Ihre App für die Veröffentlichung vorzubereiten. 
+
+Wenn Sie bereit sind, Ihre App für die Produktion freizugeben, erstellen Sie ein Archiv Ihrer App. Befolgen Sie die [Xcode-Dokumentation](https://developer.apple.com/documentation/Xcode/distributing_your_app_for_beta_testing_and_releases) zum Erstellen eines Archivbuilds und die Optionen zum Verteilen Ihrer App.  
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

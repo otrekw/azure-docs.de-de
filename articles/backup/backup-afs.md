@@ -2,13 +2,13 @@
 title: Sichern von Azure-Dateifreigaben im Azure-Portal
 description: Erfahren Sie, wie Sie das Azure-Portal zum Sichern von Azure-Dateifreigaben im Recovery Services-Tresor verwenden.
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: e7f44a71388468be432bdfcb0eb2bf67c0fcc8ef
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 05/07/2021
+ms.openlocfilehash: e236980310889e84fe905861c5843f5a7b7039a2
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519934"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516756"
 ---
 # <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
 
@@ -25,7 +25,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 * [Erfahren Sie etwas](azure-file-share-backup-overview.md) über die auf Momentaufnahmen basierende Sicherungslösung für Azure-Dateifreigaben.
 * Stellen Sie sicher, dass sich die Dateifreigabe in einem der [unterstützten Speicherkontotypen](azure-file-share-support-matrix.md) befindet.
-* Bestimmen oder erstellen Sie einen [Recovery Services-Tresor](#create-a-recovery-services-vault) in derselben Region wie das Speicherkonto, das die Dateifreigabe hostet.
+* Bestimmen oder erstellen Sie einen [Recovery Services-Tresor](#create-a-recovery-services-vault) in derselben Region und im selben Abonnement wie das Speicherkonto, das die Dateifreigabe hostet.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

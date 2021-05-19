@@ -3,12 +3,12 @@ title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
 ms.date: 05/01/2021
 ms.topic: overview
-ms.openlocfilehash: 8d261cc958a104b4a11a6f82a8f86352159c0275
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b9cd2becc0c1241c34b7cd887a274088296150ba
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323697"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733481"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -22,7 +22,7 @@ Alle Azure Policy-Daten und -Objekte werden im Ruhezustand verschlüsselt. Weite
 
 Azure Policy wertet Ressourcen in Azure aus, indem die Eigenschaften dieser Ressourcen mit Geschäftsregeln verglichen werden. Diese im [JSON-Format](./concepts/definition-structure.md) beschriebenen Geschäftsregeln werden als [Richtliniendefinitionen](#policy-definition) bezeichnet. Um die Verwaltung zu vereinfachen, können mehrere Geschäftsregeln gruppiert werden, um eine [Richtlinieninitiative](#initiative-definition) (manchmal auch als _policySet_ bezeichnet) zu bilden. Nachdem Ihre Geschäftsregeln erstellt wurden, wird die Richtliniendefinition oder -initiative jedem von Azure unterstützten Ressourcenbereich [zugewiesen](#assignments), z. B. [Verwaltungsgruppen](../management-groups/overview.md), Abonnements, [Ressourcengruppen](../../azure-resource-manager/management/overview.md#resource-groups) oder einzelnen Ressourcen. Die Zuweisung gilt für alle Ressourcen innerhalb des [Resource Manager-Bereichs](../../azure-resource-manager/management/overview.md#understand-scope) dieser Zuweisung. Unterbereiche können ggf. ausgeschlossen werden. Weitere Informationen finden Sie unter [Erläuterungen zum Bereich in Azure Policy](./concepts/scope.md).
 
-Azure Policy verwendet ein [JSON-Format](./concepts/definition-structure.md) zum Erstellen der Logik, die anhand der Auswertung bestimmt, ob eine Ressource konform ist. Definitionen enthalten Metadaten und die Richtlinienregel. Die definierte Regel kann Funktionen, Parameter, logische Operatoren, Bedingungen und Eigenschaften[aliase](./concepts/definition-structure.md#aliases) verwenden, um genau dem gewünschten Szenario zu entsprechen. Die Richtlinienregel bestimmt, welche Ressourcen im Bereich der Zuweisung ausgewertet werden.
+Azure Policy verwendet ein [JSON-Format](./concepts/definition-structure.md) zum Erstellen der Logik, mit der die Auswertung bestimmt, ob eine Ressource konform ist. Definitionen enthalten Metadaten und die Richtlinienregel. Die definierte Regel kann Funktionen, Parameter, logische Operatoren, Bedingungen und Eigenschaften[aliase](./concepts/definition-structure.md#aliases) verwenden, um genau dem gewünschten Szenario zu entsprechen. Die Richtlinienregel bestimmt, welche Ressourcen im Bereich der Zuweisung ausgewertet werden.
 
 ### <a name="understand-evaluation-outcomes"></a>Grundlegendes zu den Auswertungsergebnissen
 
@@ -130,16 +130,16 @@ Weitere Informationen zu Richtlinienparametern finden Sie unter [Struktur von Az
 
 ### <a name="initiative-definition"></a>Initiativdefinition
 
-Eine Initiativdefinition ist eine Auflistung von Richtliniendefinitionen, die auf das Erreichen eines einzigen übergeordneten Ziels ausgerichtet sind. Initiativdefinitionen vereinfachen das Verwalten und Zuweisen von Richtliniendefinitionen. Die Vereinfachung besteht im Gruppieren einer Reihe von Richtlinien zu einem einzelnen Element. Beispielsweise können Sie eine Initiative mit dem Titel **Überwachung im Azure Security Center aktivieren** mit dem Ziel erstellen, alle vorhandenen Sicherheitsempfehlungen in Ihrem Azure Security Center zu überwachen.
+Eine Initiativendefinition ist eine Auflistung von Richtliniendefinitionen, die auf das Erreichen eines einzigen übergeordneten Ziels ausgerichtet sind. Initiativdefinitionen vereinfachen das Verwalten und Zuweisen von Richtliniendefinitionen. Die Vereinfachung besteht im Gruppieren einer Reihe von Richtlinien zu einem einzelnen Element. Beispielsweise können Sie eine Initiative mit dem Titel **Überwachung im Azure Security Center aktivieren** mit dem Ziel erstellen, alle vorhandenen Sicherheitsempfehlungen in Ihrem Azure Security Center zu überwachen.
 
 > [!NOTE]
 > Das SDK, etwa Azure CLI und Azure PowerShell, verwendet zum Verweisen auf Initiativen Eigenschaften und Parameter mit dem Namen **PolicySet**.
 
 Im Rahmen dieser Initiative würden Sie Richtliniendefinitionen wie etwa Folgende haben:
 
-- **Unverschlüsselte SQL-Datenbank im Security Center überwachen** – Zum Überwachen von unverschlüsselten SQL-Datenbanken und Servern.
-- **Betriebssystem-Sicherheitsrisiken in Security Center überwachen** – Zum Überwachen von Servern, die die konfigurierte Baseline nicht erfüllen.
-- **Fehlendes Endpoint Protection im Security Center überwachen** – Zum Überwachen von Servern ohne installierten Endpoint Protection-Agent.
+- **Unverschlüsselte SQL-Datenbank in Security Center überwachen**: Zum Überwachen von unverschlüsselten SQL-Datenbanken und -Servern
+- **Betriebssystem-Sicherheitsrisiken in Security Center überwachen**: Zum Überwachen von Servern, die die konfigurierte Baseline nicht erfüllen
+- **Fehlende Endpoint Protection-Instanz in Security Center überwachen**: Zum Überwachen von Servern ohne installierten Endpoint Protection-Agent
 
 Genau wie Richtlinienparameter vereinfachen auch Initiativparameter die Initiativverwaltung, indem sie die Redundanz verringern. Bei Initiativparametern handelt es sich um Parameter, die von den Richtliniendefinitionen innerhalb der Initiative verwendet werden.
 
@@ -153,7 +153,7 @@ Stellen Sie sich beispielsweise ein Szenario vor, in dem Sie die Initiativdefini
 In diesem Szenario haben Sie bei der Definition der Initiativparameter für **initiativeC** drei Optionen:
 
 - Verwenden Sie die Parameter der Richtliniendefinitionen innerhalb dieser Initiative: In diesem Beispiel werden _allowedLocations_ und _allowedSingleLocation_ zu Initiativparametern für **initiativeC**.
-- Geben Sie Werte für die Parameter der Richtliniendefinitionen innerhalb dieser Initiativdefinition ein. In diesem Beispiel können Sie eine Liste von Standorten für den Parameter von **policyA** – **allowedLocations** und den Parameter von **policyB** – **allowedSingleLocation** zur Verfügung stellen. Bei der Zuweisung dieser Initiative können Sie auch Werte bereitstellen.
+- Geben Sie Werte für die Parameter der Richtliniendefinitionen innerhalb dieser Initiativdefinition ein. In diesem Beispiel können Sie eine Liste von Standorten für den Parameter von **policyA** (**allowedLocations**) und den Parameter von **policyB** (**allowedSingleLocation**) zur Verfügung stellen. Bei der Zuweisung dieser Initiative können Sie auch Werte bereitstellen.
 - Geben Sie eine Liste von _Wertoptionen_ an, die bei der Zuweisung dieser Initiative verwendet werden können. Damit dürfen die von den Richtliniendefinitionen geerbten Parameter innerhalb der Initiative bei der Zuweisung dieser Initiative nur Werte aus der angegebenen Liste enthalten.
 
 Beim Erstellen von Wertoptionen in einer Initiativdefinition können Sie während der Initiativenzuweisung keinen anderen Wert eingeben, da er nicht Teil der Liste ist.

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/16/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f808c9d01ecbd125e2ef0e3a7b61152767b1b4b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5ac851c54a17893082d70bec5d96e8b8cf63b482
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124021"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517890"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Key Vault 
 
@@ -47,7 +47,7 @@ Folgendes wird vermittelt:
 
 In diesem Abschnitt wird gezeigt, wie Sie einem virtuellen Computer den Zugriff auf ein in einer Key Vault-Instanz gespeichertes Geheimnis gewähren. Mithilfe von verwalteten Identitäten für Azure-Ressourcen kann der Code Zugriffstoken zur Authentifizierung von Ressourcen abrufen, die die Azure AD-Authentifizierung unterstützen.Allerdings unterstützen nicht alle Azure-Dienste die Azure AD-Authentifizierung. Um verwaltete Identitäten für Azure-Ressourcen mit diesen Diensten zu verwenden, speichern Sie die Dienstanmeldeinformationen in Azure Key Vault, und greifen Sie mit der verwalteten Identität des virtuellen Computers auf Key Vault zu, um die Anmeldeinformationen abzurufen.
 
-Zunächst müssen Sie eine Key Vault-Instanz erstellen und der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers den Zugriff darauf erteilen.
+Zunächst müssen Sie eine Key Vault-Instanz erstellen und der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers den Zugriff darauf erteilen.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/).
 1. Wählen Sie oben auf der linken Navigationsleiste **Ressource erstellen** aus.  
@@ -97,10 +97,10 @@ Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client.  Wenn Sie Window
 
 >[!IMPORTANT]
 > Alle Azure SDKs unterstützen die Azure.Identity-Bibliothek, die das Erwerben von Azure AD-Token für den Zugriff auf Zieldienste vereinfacht. Erfahren Sie mehr über [Azure SDKs](https://azure.microsoft.com/downloads/), und nutzen Sie die Azure.Identity-Bibliothek.
-> - [.NET](/dotnet/api/overview/azure/identity-readme?view=azure-dotnet)
-> - [JAVA](/java/api/overview/azure/identity-readme?view=azure-java-stable)
-> - [JavaScript](/javascript/api/overview/azure/identity-readme?view=azure-node-latest)
-> - [Python](/python/api/overview/azure/identity-readme?view=azure-python)
+> - [.NET](/dotnet/api/overview/azure/identity-readme)
+> - [JAVA](/java/api/overview/azure/identity-readme)
+> - [JavaScript](/javascript/api/overview/azure/identity-readme)
+> - [Python](/python/api/overview/azure/identity-readme)
 
 
 1. Navigieren Sie im Portal zu Ihrem virtuellen Linux-Computer, und klicken Sie in der **Übersicht** auf **Verbinden**. 
@@ -126,7 +126,7 @@ Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client.  Wenn Sie Window
     "token_type":"Bearer"} 
     ```
     
-    Sie können dieses Zugriffstoken zur Authentifizierung bei Azure Key Vault verwenden.  Die nächste CURL-Anforderung zeigt, wie Sie mithilfe von CURL und der Key Vault-REST-API ein Geheimnis aus der Key Vault lesen.  Sie benötigen die URL Ihrer Key Vaults. Diese befindet sich im Abschnitt **Zusammenfassung** der Seite **Übersicht** der Key Vault.  Darüber hinaus benötigen Sie auch das Zugriffstoken, das Sie im vorhergehenden Aufruf abgerufen haben. 
+    Sie können dieses Zugriffstoken zur Authentifizierung bei Azure Key Vault verwenden.  Die nächste CURL-Anforderung zeigt, wie Sie mithilfe von CURL und der Key Vault-REST-API ein Geheimnis aus der Key Vault lesen.  Sie benötigen die URL Ihrer Key Vault-Instanz. Diese befindet sich in Key Vault auf der Seite **Übersicht** im Abschnitt **Zusammenfassung**.  Darüber hinaus benötigen Sie auch das Zugriffstoken, das Sie im vorhergehenden Aufruf abgerufen haben. 
         
     ```bash
     curl 'https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -138,7 +138,7 @@ Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client.  Wenn Sie Window
     {"value":"p@ssw0rd!","id":"https://mytestkeyvault.vault.azure.net/secrets/MyTestSecret/7c2204c6093c4d859bc5b9eff8f29050","attributes":{"enabled":true,"created":1505088747,"updated":1505088747,"recoveryLevel":"Purgeable"}} 
     ```
     
-Nachdem Sie das Geheimnis aus der Key Vault abgerufen haben, können Sie es für die Authentifizierung bei einem Dienst verwenden, für den ein Name und ein Kennwort angegeben werden müssen.
+Nachdem Sie das Geheimnis aus Key Vault abgerufen haben, können Sie es für die Authentifizierung bei einem Dienst verwenden, für den ein Name und ein Kennwort angegeben werden müssen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

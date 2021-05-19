@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: b7afc6c82f06e977caea90ac3e8d2355d56c920d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 561cc2a32ce7c9d3fd61fafb47326ce9c95cad45
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129763"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753199"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Tutorial: Ausführen einer Onlinemigration von MySQL zu Azure Database for MySQL mithilfe von DMS
 
 Mit Azure Database Migration Service können Sie die Datenbanken mit minimaler Ausfallzeit von einer lokalen MySQL-Instanz zu [Azure Database for MySQL](../mysql/index.yml) migrieren. Somit kommt es bei der Migration nur zu einer geringen Ausfallzeit für die Anwendung. In diesem Tutorial migrieren Sie die Beispieldatenbank **Employees** von einer lokalen Instanz von MySQL 5.7 zu Azure Database for MySQL. Zu diesem Zweck verwenden Sie eine Onlinemigrationsaktivität in Azure Database Migration Service.
 
 > [!IMPORTANT]
-> Das Onlinemigrationsszenario „MySQL zu Azure Database for MySQL“ wird am 1. Juni 2021 durch ein parallelisiertes, äußerst leistungsfähiges Offlinemigrationsszenario ersetzt. Für Onlinemigrationen können Sie dieses neue Angebot zusammen mit [Datenreplikation](../mysql/concepts-data-in-replication.md) verwenden. Alternativ können Sie Open-Source-Tools wie [MyDumper/MyLoader](https://centminmod.com/mydumper.html) mit der Datenreplikation für Onlinemigrationen verwenden. 
+> Das Onlinemigrationsszenario „MySQL zu Azure Database for MySQL“ ist **nach dem 1. Juni 2021 nicht mehr verfügbar**. Eine parallelisierte, äußerst leistungsfähige [Offlinemigrationsfunktion](./tutorial-mysql-azure-mysql-offline-portal.md) ist **jetzt als Vorschau verfügbar**, um Migrationen vom Typ „MySQL zu Azure Database for MySQL“ zu unterstützen. Für Onlinemigrationen können Sie Open-Source-Tools wie [MyDumper/MyLoader](https://centminmod.com/mydumper.html) mit [Datenreplikation](/azure/mysql/concepts-data-in-replication) verwenden.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]

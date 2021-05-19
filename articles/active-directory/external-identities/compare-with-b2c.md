@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78fd91e2ba7badb1936b8603c8ed089130b29ffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d64fd91d3f033c0a04c4936f11d096aa640942a1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644064"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743883"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Worum handelt es sich bei „Externe Identitäten“ in Azure Active Directory?
 
@@ -39,7 +39,7 @@ Die folgende Tabelle enthält einen detaillierten Vergleich der Szenarien, die m
 | ---- | --- | --- |
 | **Primäres Szenario** | Zusammenarbeit über Microsoft-Anwendungen (Microsoft 365, Teams usw.) oder über Ihre eigenen Anwendungen (SaaS-Apps, speziell entwickelte Apps usw.).  | Identitäts- und Zugriffsverwaltung für moderne SaaS-Anwendungen oder speziell entwickelte Anwendungen (keine Erstanbieter-Apps von Microsoft).   |
 | **Vorgesehen für**    | Zusammenarbeit mit Geschäftspartnern aus externen Organisationen wie Lieferanten, Partner und Zulieferer. Benutzer werden als Gastbenutzer in Ihrem Verzeichnis angezeigt. Diese Benutzer können über verwaltete IT verfügen, dies muss aber nicht zwingend der Fall sein.  | Kunden Ihres Produkts. Diese Benutzer werden in einem separaten Azure AD-Verzeichnis verwaltet.  |
-| **Unterstützte Identitätsanbieter** | Externe Benutzer können für die Zusammenarbeit Geschäfts-, Schul- oder Unikonten, eine beliebige E-Mail-Adresse, SAML- und WS-Fed-basierte Identitätsanbieter, Gmail und Facebook verwenden.  | Consumerbenutzer mit lokalen Anwendungskonten (beliebige E-Mail-Adresse oder beliebiger Benutzername), verschiedene unterstützte Social Media-Identitäten sowie Benutzer mit Unternehmensidentität und behördlich ausgegebener Identität per Direktverbund.       |
+| **Unterstützte Identitätsanbieter** | Externe Benutzer können für die Zusammenarbeit Geschäfts-, Schul- oder Unikonten, eine beliebige E-Mail-Adresse, SAML- und WS-Fed-basierte Identitätsanbieter, Gmail und Facebook verwenden.  | Consumerbenutzer mit lokalen Anwendungskonten (beliebige E-Mail-Adresse oder beliebiger Benutzername), verschiedene unterstützte Social Media-Identitäten sowie Benutzer mit Unternehmensidentität und behördlich ausgegebener Identität über SAML/WS-Fed basierten Identity Provider Verbund.       |
 | **Externe Benutzerverwaltung**   | Externe Benutzer werden im gleichen Verzeichnis verwaltet wie Mitarbeiter, sind aber üblicherweise als Gastbenutzer gekennzeichnet. Gastbenutzer können genau wie Mitarbeiter verwaltet und beispielsweise den gleichen Gruppen hinzugefügt werden.    | Externe Benutzer werden im Azure AD B2C-Verzeichnis verwaltet. Sie werden getrennt vom Verzeichnis für Mitarbeiter und Partner (sofern vorhanden) der Organisation verwaltet.  |
 | **Einmaliges Anmelden (Single Sign-On, SSO)**      | Einmaliges Anmelden (Single Sign-On, SSO) bei allen mit Azure AD verbundenen Apps wird unterstützt. Beispielsweise können Sie den Zugriff auf Microsoft 365 oder lokale Apps und auf andere SaaS-Apps wie z. B. Salesforce oder Workday bereitstellen.    | Einmaliges Anmelden bei Kunden-Apps innerhalb der Azure AD B2C-Mandanten wird unterstützt. Einmaliges Anmelden bei Microsoft 365 oder anderen SaaS-Apps von Microsoft wird nicht unterstützt.    |
 | **Sicherheitsrichtlinie und Compliance**        | Wird von der Hostorganisation/einladenden Organisation verwaltet (beispielsweise mit [Richtlinien für den bedingten Zugriff](conditional-access.md)). | Wird von der Organisation über bedingten Zugriff und Identity Protection verwaltet.        |
