@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: fb3c1a7826eaf61476a804159199e83e23ebad3e
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 900c6f08bfda1efc995016209423e3f4d8fa7d95
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209677"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803228"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices---linux"></a>Bewährte Methoden für Azure Automanage für virtuelle Computer: Linux
 
@@ -26,8 +26,8 @@ Bei all diesen Diensten werden wir das Onboarding automatisch durchführen, sie 
 
 Automanage unterstützt die folgenden Linux-Distributionen und -Versionen:
 
-- CentOS 7.3+
-- RHEL 7.4+
+- CentOS 7.3+, 8
+- RHEL 7.4+, 8
 - Ubuntu 16.04 und 18.04
 - SLES 12 (nur SP3–SP5)
 

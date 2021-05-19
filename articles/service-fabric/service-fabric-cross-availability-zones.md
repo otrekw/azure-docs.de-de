@@ -5,53 +5,71 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: 1d4c92d91a620a56afbee9a1f41c8a67aa4b8f6a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 60c9a378c1ac6e7c16bac05a3f6ee0baf47a0076
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072979"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749391"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
-Verfügbarkeitszonen sind in Azure ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
 
-Service Fabric unterstützt Cluster, die sich über Verfügbarkeitszonen erstrecken, indem Knotentypen bereitgestellt werden, die an bestimmte Zonen angeheftet sind. Dadurch wird die Hochverfügbarkeit Ihrer Anwendungen sichergestellt. Azure-Verfügbarkeitszonen sind nur in ausgewählten Regionen verfügbar. Weitere Informationen finden Sie unter [Übersicht über Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md).
+Verfügbarkeitszonen in Azure sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
 
-Es sind Beispielvorlagen verfügbar: [Verfügbarkeitszonenübergreifende Service Fabric-Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates)
+Zur Unterstützung von Clustern, die sich über mehrere Verfügbarkeitszonen erstrecken, bietet Azure Service Fabric Knotentypen, die an bestimmte Zonen angeheftet sind. Verfügbarkeitszonen sind nur in ausgewählten Regionen verfügbar. Weitere Informationen finden Sie in der [Übersicht über Verfügbarkeitszonen](../availability-zones/az-overview.md).
+
+Beispielvorlagen sind auf der Seite mit [verfügbarkeitszonenübergreifenden Service Fabric-Vorlagen](https://github.com/Azure-Samples/service-fabric-cluster-templates) verfügbar.
 
 ## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>Empfohlene Topologie für den primären Knotentyp von Azure Service Fabric-Clustern, die sich über Verfügbarkeitszonen erstrecken
-Ein Service Fabric-Cluster, der über die Verfügbarkeitszonen verteilt ist, stellt die Hochverfügbarkeit des Clusterzustands sicher. Um einen Service Fabric-Cluster zonenübergreifend zu verteilen, müssen Sie in jeder von der Region unterstützten Verfügbarkeitszone einen primären Knotentyp erstellen. Dadurch werden Startknoten gleichmäßig auf jeden der primären Knotentypen verteilt.
 
-Die empfohlene Topologie für den primären Knotentyp erfordert die nachfolgend beschriebenen Ressourcen:
+Um einen Service Fabric-Cluster über mehrere Verfügbarkeitszonen hinweg zu verteilen, müssen Sie in jeder von der Region unterstützten Verfügbarkeitszone einen primären Knotentyp erstellen. Dadurch werden Startknoten gleichmäßig auf jeden der primären Knotentypen verteilt.
 
-* Die Clusterzuverlässigkeitsstufe ist auf „Platinum“ (Platin) festgelegt.
-* Drei Knotentypen sind als „primär“ markiert.
-    * Jeder Knotentyp sollte seiner eigenen VM-Skalierungsgruppe zugeordnet sein, die sich in verschiedenen Zonen befinden.
-    * Jede VM-Skalierungsgruppe sollte mindestens fünf Knoten aufweisen (Dauerhaftigkeit „Silver“ (Silber)).
-* Eine einzelne öffentliche IP-Ressource mit Standard-SKU.
-* Eine einzelne Load Balancer-Ressource mit Standard-SKU.
-* Eine Netzwerksicherheitsgruppe (NSG), auf die das Subnetz verweist, in dem Sie Ihren virtuellen Computer bereitstellen.
+Für die empfohlene Topologie für den primären Knotentyp werden die folgenden Ressourcen benötigt:
+
+* Die Clusterzuverlässigkeitsstufe muss auf `Platinum` festgelegt werden
+* Es müssen drei Knotentypen vorhanden sein, die als primäre Knotentypen markiert sind
+  * Jeder Knotentyp sollte einer eigenen VM-Skalierungsgruppe zugeordnet sein, die sich in einer anderen Zone befindet.
+  * Jede VM-Skalierungsgruppe sollte mindestens fünf Knoten aufweisen (Dauerhaftigkeit „Silver“ (Silber)).
+* Eine einzelne Ressource für öffentliche IP-Adressen mit Standard-SKU
+* Eine einzelne Lastenausgleichsressource mit Standard-SKU
+* Eine Netzwerksicherheitsgruppe (Network Security Group, NSG), auf die das Subnetz verweist, in dem Sie Ihre VM-Skalierungsgruppen bereitstellen
 
 >[!NOTE]
-> Die Eigenschaft für die einzelne Platzierungsgruppe der VM-Skalierungsgruppe muss auf „true“ festgelegt werden.
+>Die Eigenschaft für die einzelne Platzierungsgruppe der VM-Skalierungsgruppe muss auf `true` festgelegt werden.
 
-Diagramm der Architektur der Azure Service Fabric-Verfügbarkeitszone![Diagramm der Architektur der Azure Service Fabric-Verfügbarkeitszone.][sf-architecture]
+Das folgende Diagramm zeigt die Architektur der Azure Service Fabric-Verfügbarkeitszonen:
 
-Beispiel Knotenliste mit FD/UD-Formaten in einer zonenübergreifenden VM-Skalierungsgruppe
+![Diagramm der Architektur der Azure Service Fabric-Verfügbarkeitszone][sf-architecture]
 
- ![Beispiel Knotenliste mit FD/UD-Formaten in einer zonenübergreifenden VM-Skalierungsgruppe.][sf-multi-az-nodes]
+Die folgende Beispielknotenliste zeigt FD/UD-Formate in einer zonenübergreifenden VM-Skalierungsgruppe:
 
-**Zonenübergreifende Verteilung von Dienst-Replikaten**: Wenn ein Dienst auf den zonenübergreifenden NodeTypes bereitgestellt wird, werden die Replikate so platziert, dass sichergestellt ist, dass sie in separaten Zonen angeordnet werden. Dies wird sichergestellt, da die Fehlerdomäne auf den Knoten, die in jedem dieser NodeTypes vorhanden sind, mit den Zoneninformationen konfiguriert ist (d. h. FD = fd:/zone1/1 usw.). Beispiel: für 5 Replikate oder Instanzen eines Dienstes lautet die Verteilung 2-2-1, und die Runtime versucht, eine gleichmäßige Verteilung über AZs hinweg sicherzustellen.
+![Screenshot einer Beispielknotenliste mit FD/UD-Formaten in einer zonenübergreifenden VM-Skalierungsgruppe.][sf-multi-az-nodes]
 
-**Replikatkonfigurationfür den Benutzerdienst**: Zustandsbehaftete Benutzerdienste, die auf den nodeTypes für zonenübergreifende Verfügbarkeit bereitgestellt werden, müssen mit dieser Konfiguration konfiguriert werden: Replikatanzahl mit Ziel = 9, min = 5. Diese Konfiguration unterstützt den Dienst auch dann, wenn eine Zone ausfällt, da in den anderen beiden Zonen weiterhin 6 Replikate in Betrieb sind. Auch ein Anwendungsupgrade wird in einem solchen Szenario durchlaufen.
+## <a name="distribution-of-service-replicas-across-zones"></a>Zonenübergreifende Verteilung von Dienstreplikaten
 
-**Cluster-ReliabilityLevel**: Hiermit werden die Anzahl der Seed-Knoten im Cluster und die Replikatgröße der Systemdienste definiert. Wenn eine Konfiguration mit zonenübergreifender Verfügbarkeit eine größere Anzahl von Knoten aufweist, die über Zonen hinweg verteilt sind, um Zonenresilienz zu ermöglichen, wird durch einen höheren Zuverlässigkeitswert sichergestellt, dass mehr Seed-Knoten und Systemdienstreplikate vorhanden und gleichmäßig über Zonen verteilt sind, sodass bei der Cluster und die Systemdienste einem Zonenausfall nicht beeinträchtigt werden. Mit „Reliabilitylevel = Platin“ wird sichergestellt, dass neun Seed-Knoten über die Zonen im Cluster verteilt sind, wobei in jeder Zone drei Seeds vorhanden sind. Dies ist also die Empfehlung für die Konfiguration von zonenübergreifender Verfügbarkeit.
+Wenn ein Dienst für Knotentypen bereitgestellt wird, die sich über mehrere Verfügbarkeitszonen erstrecken, werden die Replikate in verschiedenen Zonen platziert. Die Fehlerdomänen für die Knoten dieser Knotentypen werden mit den Zoneninformationen konfiguriert (FD = fd:/zone1/1 usw.). Beispiel: Bei fünf Replikaten oder Dienstinstanzen lautet die Verteilung 2-2-1, und die Laufzeit versucht, die Replikate bzw. Instanzen gleichmäßig auf die Verfügbarkeitszonen zu verteilen.
 
-**Szenario bei Zonenausfall**: Wenn eine Zone ausfällt, werden alle Knoten in dieser Zone als ausgefallen angezeigt. Auch die Dienstreplikate auf diesen Knoten sind ausgefallen. Da in den anderen Zonen Replikate vorhanden sind, reagiert der Dienst weiterhin mit einem Failover der primären Replikate auf die Zonen, die funktionsfähig sind. Die Dienste werden mit dem Status „Warnung“ angezeigt, da die Anzahl der Zielreplikate noch nicht erreicht wurde und die Anzahl der virtuellen Computer immer noch über der minimalen Zielreplikatgröße liegt. Anschließend startet Service Fabric-Lastenausgleich in den Arbeitszonen so viele Replikate, dass die Anzahl mit der konfigurierten Zielreplikatanzahl übereinstimmt. An diesem Punkt erscheinen die Dienste fehlerfrei. Wenn die ausgefallene Zone wieder verfügbar ist, verteilt der Lastenausgleich alle Dienstreplikate gleichmäßig auf alle Zonen.
+### <a name="user-service-replica-configuration"></a>Konfiguration von Benutzerdienstreplikaten
+
+Zustandsbehaftete Benutzerdienste, die auf den Knotentypen innerhalb der Verfügbarkeitszonen bereitstellt werden, sollten wie folgt konfiguriert werden: Replikatanzahl mit Ziel = 9, Minimum = 5. Diese Konfiguration unterstützt den Dienst auch dann, wenn eine Zone ausfällt, da in den anderen beiden Zonen weiterhin sechs Replikate verfügbar sind. Ein Anwendungsupgrade ist in diesem Szenario ebenfalls erfolgreich.
+
+## <a name="cluster-reliabilitylevel"></a>Clusterzuverlässigkeitsstufe
+
+Mit diesem Wert werden die Anzahl von Startknoten im Cluster sowie die Replikatgröße der Systemdienste definiert. Ein verfügbarkeitszonenübergreifendes Setup verfügt über eine größere Anzahl von Knoten, die für Zonenresilienz auf mehrere Zonen verteilt sind.
+  
+Mit einem höheren `ReliabilityLevel`-Wert wird sichergestellt, dass mehr Startknoten und Systemdienstreplikate vorhanden und gleichmäßig auf die Zonen verteilt sind. Sollte es zum Ausfall einer Zone kommen, wirkt sich dies bei einer solchen Konfiguration nicht auf den Cluster und die Systemdienste aus. Mit der Einstellung `ReliabilityLevel = Platinum` (empfohlen) wird sichergestellt, dass neun Startknoten auf die Zonen (drei Startknoten pro Zone) innerhalb des Clusters verteilt sind.
+
+### <a name="zone-down-scenario"></a>Szenario mit Zonenausfall
+
+Wenn eine Zone ausfällt, werden alle Knoten und Dienstreplikate für diese Zone als ausgefallen angezeigt. Da in den anderen Zonen Replikate vorhanden sind, ist der Dienst jedoch weiterhin verfügbar. Für primäre Replikate wird ein Failover auf die funktionierenden Zonen durchgeführt. Für die Dienste wird ein Warnungszustand angezeigt, da die Anzahl von Zielreplikaten noch nicht erreicht wurde und die Anzahl von VMs immer noch höher ist als der Mindestwert der Zielreplikate.
+
+Der Service Fabric-Lastenausgleich stellt in den Arbeitszonen die erforderliche Anzahl von Zielreplikaten bereit. An diesem Punkt erscheinen die Dienste fehlerfrei. Wenn die ausgefallene Zone wieder verfügbar ist, verteilt die Lastenausgleichsressource alle Dienstreplikate gleichmäßig auf die Zonen.
 
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
-### <a name="public-ip-and-load-balancer-resource"></a>Öffentliche IP- und Load Balancer-Ressource
-Um die Zoneneigenschaft für eine VM-Skalierungsgruppenressource zu aktivieren, müssen die Load Balancer- und die IP-Ressource, auf die diese VM-Skalierungsgruppe verweist, beide eine *Standard*-SKU verwenden. Das Erstellen einer Load Balancer- oder IP-Ressource ohne die SKU-Eigenschaft erstellt eine Basic-SKU, die keine Verfügbarkeitszonen unterstützt. Ein Standard-SKU-Lastenausgleich blockiert standardmäßig den gesamten Datenverkehr von außen. Sie müssen eine NSG im Subnetz bereitstellen, um den externen Datenverkehr zu ermöglichen.
+
+### <a name="public-ip-and-load-balancer-resource"></a>Ressource für öffentliche IP-Adressen und Lastenausgleichsressource
+
+Um die Eigenschaft `zones` für eine VM-Skalierungsgruppenressource zu aktivieren, müssen die Lastenausgleichs- und IP-Ressource, auf die diese VM-Skalierungsgruppe verweist, die Standard-SKU verwenden. Beim Erstellen einer Lastenausgleichs- oder IP-Ressource ohne die SKU-Eigenschaft wird eine Basic-SKU erstellt, die keine Verfügbarkeitszonen unterstützt. Eine Lastenausgleichsressource mit Standard-SKU blockiert standardmäßig den gesamten externen Datenverkehr. Um externen Datenverkehr zuzulassen, stellen Sie eine NSG im Subnetz bereit.
 
 ```json
 {
@@ -99,10 +117,11 @@ Um die Zoneneigenschaft für eine VM-Skalierungsgruppenressource zu aktivieren, 
 ```
 
 >[!NOTE]
-> Es ist nicht möglich, eine direkte Änderung der SKU an den öffentlichen IP- und Load Balancer-Ressourcen vorzunehmen. Informationen zum Migrieren von vorhandenen Ressourcen mit Basic-SKU finden Sie im Abschnitt zur Migration in diesem Artikel.
+> Es ist nicht möglich, eine direkte Änderung der SKU für die Ressource der öffentlichen IP-Adresse und die Lastenausgleichsressource vorzunehmen. Informationen zum Migrieren von vorhandenen Ressourcen mit Basic-SKU finden Sie im Abschnitt zur Migration in diesem Artikel.
 
-### <a name="virtual-machine-scale-set-nat-rules"></a>NAT-Regeln für VM-Skalierungsgruppen
-Die NAT-Regeln für eingehenden Datenverkehr des Lastenausgleichs müssen mit den NAT-Pools aus der VM-Skalierungsgruppe übereinstimmen. Jede VM-Skalierungsgruppe muss über einen eindeutigen NAT-Pool für eingehenden Datenverkehr verfügen.
+### <a name="nat-rules-for-virtual-machine-scale-sets"></a>NAT-Regeln für VM-Skalierungsgruppen
+
+Die Regeln für eingehende Netzwerkadressenübersetzung für den Lastenausgleich sollten mit den NAT-Pools der VM-Skalierungsgruppe übereinstimmen. Jede VM-Skalierungsgruppe muss über einen eindeutigen NAT-Pool für eingehenden Datenverkehr verfügen.
 
 ```json
 {
@@ -147,22 +166,23 @@ Die NAT-Regeln für eingehenden Datenverkehr des Lastenausgleichs müssen mit de
 }
 ```
 
-### <a name="standard-sku-load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln der Standard-SKU
-Load Balancer Standard und Standard Public IP führen im Vergleich zur Verwendung der Basic-SKUs neue Fähigkeiten und andere Verhaltensweisen für ausgehende Verbindungen ein. Wenn Sie bei der Arbeit mit Standard-SKUs ausgehende Verbindungen wünschen, müssen Sie diese explizit entweder mit Standard Public IP-Adressen oder Standard Public Load Balancer definieren. Weitere Informationen finden Sie unter [Ausgehende Verbindungen](../load-balancer/load-balancer-outbound-connections.md) und [Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md).
+### <a name="outbound-rules-for-a-standard-sku-load-balancer"></a>Ausgangsregeln für eine Lastenausgleichsressource mit Standard-SKU
+
+Die Ressource für öffentlichen IP-Adressen und die Lastenausgleichsressource mit Standard-SKU bieten neue Funktionen und gehen mit einem anderen Verhalten bei ausgehenden Verbindungen einher als bei Verwendung von Basic-SKUs. Wenn Sie über Standard-SKUs verfügen und ausgehende Verbindungen nutzen möchten, müssen sie diese explizit mit öffentlichen IP-Adressen oder einer Lastenausgleichsressource mit Standard-SKU definieren. Weitere Informationen finden Sie unter [Ausgehende Verbindungen](../load-balancer/load-balancer-outbound-connections.md) und [Was ist Azure Load Balancer?](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
-> Die Standardvorlage verweist auf eine Netzwerksicherheitsgruppe, die standardmäßig den gesamten ausgehenden Datenverkehr gestattet. Der eingehende Datenverkehr ist auf die Ports beschränkt, die für Vorgänge zur Service Fabric-Verwaltung erforderlich sind. Die Regeln der Netzwerksicherheitsgruppe können an Ihre Anforderungen angepasst werden.
+> Die Standardvorlage verweist auf eine Netzwerksicherheitsgruppe, die standardmäßig jeglichen ausgehenden Datenverkehr zulässt. Der eingehende Datenverkehr ist auf die Ports beschränkt, die für Vorgänge zur Service Fabric-Verwaltung erforderlich sind. Die Regeln der Netzwerksicherheitsgruppe können an Ihre Anforderungen angepasst werden.
 
->[!NOTE]
-> Jeder Service Fabric-Cluster, der die Standard-SKU für SLB verwendet, muss sicherstellen, dass jeder Knotentyp über eine Regel verfügt, die ausgehenden Datenverkehr an Port 443 zulässt. Dies ist erforderlich, um die Clustereinrichtung abzuschließen, und jede Bereitstellung ohne diese Regel schlägt fehl.
+>[!IMPORTANT]
+> Für jeden Knotentyp in einem Service Fabric-Cluster, der eine Lastenausgleichsressource mit Standard-SKU verwendet, muss eine Regel definiert werden, die ausgehenden Datenverkehr an Port 443 zulässt. Dieser Schritt ist erforderlich, um die Clustereinrichtung abzuschließen. Bei Bereitstellungen ohne diese Regel tritt ein Fehler auf.
 
+### <a name="enable-zones-on-a-virtual-machine-scale-set"></a>Aktivieren von Zonen für VM-Skalierungsgruppen
 
-### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Aktivieren von Zonen für eine VM-Skalierungsgruppe
-Um eine Zone zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgenden drei Werte in die Ressourcen der VM-Skalierungsgruppe aufnehmen.
+Um eine Zone für eine VM-Skalierungsgruppe zu aktivieren, fügen Sie die folgenden drei Werte in der VM-Skalierungsgruppenressource hinzu:
 
-* Der erste Wert ist die **zones**-Eigenschaft, die angibt, in welcher Verfügbarkeitszone die VM-Skalierungsgruppe bereitgestellt wird.
-* Der zweite Wert ist die Eigenschaft „singlePlacementGroup“, die auf „true“ festgelegt werden muss.
-* Der dritte Wert ist die Eigenschaft „faultDomainOverride“ in der Erweiterung der Service Fabric-VM-Skalierungsgruppe. Der Wert für diese Eigenschaft sollte nur die Zone enthalten, in der diese VM-Skalierungsgruppe platziert wird. Beispiel: „faultDomainOverride“: „az1“. Alle Ressourcen der VM-Skalierungsgruppe müssen in derselben Region positioniert werden, da Azure Service Fabric-Cluster keine regionsübergreifende Unterstützung aufweisen.
+* Der erste Wert ist die `zones`-Eigenschaft, die angibt, in welcher Verfügbarkeitszone die VM-Skalierungsgruppe bereitgestellt wird.
+* Der zweite Wert ist die Eigenschaft `singlePlacementGroup`, die auf `true` festgelegt werden muss.
+* Der dritte Wert ist die Eigenschaft `faultDomainOverride` in der Erweiterung der Service Fabric-VM-Skalierungsgruppe. Diese Eigenschaft sollte nur die Zone enthalten, in der diese VM-Skalierungsgruppe platziert wird. Beispiel: `"faultDomainOverride": "az1"`. Da Azure Service Fabric-Cluster keine regionsübergreifende Unterstützung bieten, müssen alle VM-Skalierungsgruppenressourcen in derselben Region platziert werden.
 
 ```json
 {
@@ -202,8 +222,9 @@ Um eine Zone zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgen
 }
 ```
 
-### <a name="enabling-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>Aktivieren mehrerer primärer Knotentypen in der Service Fabric-Clusterressource
-Legen Sie die „isPrimary“-Eigenschaft auf „true“ fest, um mindestens einen Knotentyp in einer Clusterressource als „primär“ festzulegen. Wenn Sie einen Service Fabric-Cluster über Verfügbarkeitszonen hinweg bereitstellen, sollten Sie drei Knotentypen in unterschiedlichen Zonen verwenden.
+### <a name="enable-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>Aktivieren mehrerer primärer Knotentypen in der Service Fabric-Clusterressource
+
+Legen Sie die `isPrimary`-Eigenschaft auf `true` fest, um einen oder mehrere Knotentypen in einer Clusterressource als primären Knotentyp festzulegen. Wenn Sie einen Service Fabric-Cluster über mehrere Verfügbarkeitszonen hinweg bereitstellen, sollten drei Knotentypen in unterschiedlichen Zonen bereitgestellt werden.
 
 ```json
 {
@@ -261,106 +282,113 @@ Legen Sie die „isPrimary“-Eigenschaft auf „true“ fest, um mindestens ein
 }
 ```
 
-## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migration zur Verwendung von Verfügbarkeitszonen aus einem Cluster mit einem Basic-SKU-Load Balancer und einer Basic-SKU-IP
-Sie müssen zunächst eine völlig neue Load Balancer- und IP-Ressource mit der Standard-SKU erstellen, um einen Cluster zu migrieren, der einen Load Balancer und eine IP mit einer Basic-SKU verwendet hat. Es ist nicht möglich, diese Ressourcen direkt zu aktualisieren.
+## <a name="migrate-to-availability-zones-from-a-cluster-by-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migration zu Verfügbarkeitszonen aus einem Cluster mit einer Lastenausgleichs- und IP-Ressource mit Basic-SKU
 
-Auf den neuen Load Balancer und die neue IP sollte in den neuen Knotentypen der Verfügbarkeitszone verwiesen werden, die Sie verwenden möchten. Im obigen Beispiel wurden drei neue VM-Skalierungsgruppenressourcen in den Zonen 1, 2 und 3 hinzugefügt. Diese VM-Skalierungsgruppen verweisen auf den neu erstellten Load Balancer und die neue IP und sind in der Service Fabric-Clusterresource als primäre Knotentypen gekennzeichnet.
+Wenn Sie einen Cluster migrieren möchten, der eine Lastenausgleichs- und IP-Ressource mit Basic-SKU nutzt, müssen Sie zunächst eine neue Lastenausgleichs- und IP-Ressource mit der Standard-SKU erstellen. Diese Ressourcen können nicht aktualisiert werden.
 
-Damit Sie beginnen können, müssen Sie die neuen Ressourcen zu Ihrer bestehenden Resource Manager-Vorlage hinzufügen. Diese Ressourcen umfassen Folgendes:
-* Eine öffentliche IP-Ressource mit Standard-SKU.
-* Eine Load Balancer-Ressource mit Standard-SKU.
-* Eine Netzwerksicherheitsgruppe (NSG), auf die das Subnetz verweist, in dem Sie Ihren virtuellen Computer bereitstellen.
-* Drei Knotentypen sind als „primär“ markiert.
-    * Jeder Knotentyp sollte seiner eigenen VM-Skalierungsgruppe zugeordnet sein, die sich in verschiedenen Zonen befinden.
-    * Jede VM-Skalierungsgruppe sollte mindestens fünf Knoten aufweisen (Dauerhaftigkeit „Silver“ (Silber)).
+Verweisen Sie in den neuen verfügbarkeitszonenübergreifenden Knotentypen, die Sie verwenden möchten, auf die neuen Lastenausgleichs- und IP-Ressourcen. Im obigen Beispiel wurden drei neue VM-Skalierungsgruppenressourcen in den Zonen 1, 2 und 3 hinzugefügt. Diese VM-Skalierungsgruppen verweisen auf die neu erstellten Lastenausgleichs- und IP-Ressourcen, die in der Service Fabric-Clusterressource als primäre Knotentypen gekennzeichnet sind.
 
-Ein Beispiel für diese Ressourcen finden Sie in der [Beispielvorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure).
+1. Fügen Sie zunächst die neuen Ressourcen zu Ihrer vorhandenen Azure Resource Manager-Vorlage hinzu. Diese Ressourcen umfassen Folgendes:
 
-```powershell
-New-AzureRmResourceGroupDeployment `
-    -ResourceGroupName $ResourceGroupName `
-    -TemplateFile $Template `
-    -TemplateParameterFile $Parameters
-```
+   * Eine Ressource für öffentliche IP-Adressen mit Standard-SKU
+   * Eine Lastenausgleichsressource mit Standard-SKU
+   * Eine Netzwerksicherheitsgruppe (NSG), auf die das Subnetz verweist, in dem Sie Ihre VM-Skalierungsgruppen bereitstellen
+   * Es müssen drei Knotentypen vorhanden sein, die als primäre Knotentypen markiert sind
+     * Jeder Knotentyp sollte einer eigenen VM-Skalierungsgruppe zugeordnet sein, die sich in einer anderen Zone befindet.
+     * Jede VM-Skalierungsgruppe sollte mindestens fünf Knoten aufweisen (Dauerhaftigkeit „Silver“ (Silber)).
 
-Nachdem die Ressourcen die Bereitstellung abgeschlossen haben, können Sie beginnen, die Knoten im primären Knotentyp aus dem ursprünglichen Cluster zu deaktivieren. Wenn die Knoten deaktiviert sind, migrieren die Systemdienste zum neuen primären Knotentyp, der im obigen Schritt bereitgestellt wurde.
+   Ein Beispiel für diese Ressourcen finden Sie in der [Beispielvorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure).
 
-```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
-    -KeepAliveIntervalInSec 10 `
-    -X509Credential `
-    -ServerCertThumbprint $thumb  `
-    -FindType FindByThumbprint `
-    -FindValue $thumb `
-    -StoreLocation CurrentUser `
-    -StoreName My 
+   ```powershell
+   New-AzureRmResourceGroupDeployment `
+       -ResourceGroupName $ResourceGroupName `
+       -TemplateFile $Template `
+       -TemplateParameterFile $Parameters
+   ```
 
-Write-Host "Connected to cluster"
+1. Nach der Bereitstellung der Ressourcen können Sie die Knoten im primären Knotentyp des ursprünglichen Clusters deaktivieren. Sobald die Knoten deaktiviert sind, werden die Systemdienste zum neuen primären Knotentyp migriert, der im obigen Schritt bereitgestellt wurde.
 
-$nodeNames = @("_nt0_0", "_nt0_1", "_nt0_2", "_nt0_3", "_nt0_4")
+   ```powershell
+   Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
+       -KeepAliveIntervalInSec 10 `
+       -X509Credential `
+       -ServerCertThumbprint $thumb  `
+       -FindType FindByThumbprint `
+       -FindValue $thumb `
+       -StoreLocation CurrentUser `
+       -StoreName My 
 
-Write-Host "Disabling nodes..."
-foreach($name in $nodeNames) {
-    Disable-ServiceFabricNode -NodeName $name -Intent RemoveNode -Force
-}
-```
+   Write-Host "Connected to cluster"
 
-Sobald die Knoten alle deaktiviert sind, werden die Systemdienste auf dem primären Knotentyp ausgeführt, der über Zonen verteilt ist. Sie können dann die deaktivierten Knoten aus dem Cluster entfernen. Nachdem die Knoten entfernt wurden, können Sie die ursprünglichen IP-, Load Balancer- und VM-Skalierungsgruppenressourcen entfernen.
+   $nodeNames = @("_nt0_0", "_nt0_1", "_nt0_2", "_nt0_3", "_nt0_4")
 
-```powershell
-foreach($name in $nodeNames){
-    # Remove the node from the cluster
-    Remove-ServiceFabricNodeState -NodeName $name -TimeoutSec 300 -Force
-    Write-Host "Removed node state for node $name"
-}
+   Write-Host "Disabling nodes..."
+   foreach($name in $nodeNames) {
+       Disable-ServiceFabricNode -NodeName $name -Intent RemoveNode -Force
+   }
+   ```
 
-$scaleSetName="nt0"
-Remove-AzureRmVmss -ResourceGroupName $groupname -VMScaleSetName $scaleSetName -Force
+1. Nachdem alle Knoten deaktiviert wurden, werden die Systemdienste auf dem primären Knotentyp ausgeführt, der auf mehrere Zonen verteilt ist. Sie können dann die deaktivierten Knoten aus dem Cluster entfernen. Nachdem die Knoten entfernt wurden, können Sie die ursprünglichen IP-, Lastenausgleichs- und VM-Skalierungsgruppenressourcen entfernen.
 
-$lbname="LB-cluster-nt0"
-$oldPublicIpName="LBIP-cluster-0"
-$newPublicIpName="LBIP-cluster-1"
+   ```powershell
+   foreach($name in $nodeNames){
+       # Remove the node from the cluster
+       Remove-ServiceFabricNodeState -NodeName $name -TimeoutSec 300 -Force
+       Write-Host "Removed node state for node $name"
+   }
 
-Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
-Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
-```
+   $scaleSetName="nt0"
+   Remove-AzureRmVmss -ResourceGroupName $groupname -VMScaleSetName $scaleSetName -Force
 
-Sie sollten dann die Verweise auf diese Ressourcen aus der Resource Manager-Vorlage entfernen, die Sie bereitgestellt haben.
+   $lbname="LB-cluster-nt0"
+   $oldPublicIpName="LBIP-cluster-0"
+   $newPublicIpName="LBIP-cluster-1"
 
-Der abschließende Schritt besteht in der Aktualisierung des DNS-Namens und der öffentlichen IP-Adresse.
+   Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
+   Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
+   ```
 
-```powershell
-$oldprimaryPublicIP = Get-AzureRmPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $groupname
-$primaryDNSName = $oldprimaryPublicIP.DnsSettings.DomainNameLabel
-$primaryDNSFqdn = $oldprimaryPublicIP.DnsSettings.Fqdn
+1. Dann sollten Sie die Verweise auf diese Ressourcen aus der Resource Manager-Vorlage entfernen, die Sie bereitgestellt haben.
 
-Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
-Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
+1. Abschließend aktualisieren Sie den DNS-Namen und die öffentliche IP-Adresse.
 
-$PublicIP = Get-AzureRmPublicIpAddress -Name $newPublicIpName  -ResourceGroupName $groupname
-$PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
-$PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
-Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
+   ```powershell
+   $oldprimaryPublicIP = Get-AzureRmPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $groupname
+   $primaryDNSName = $oldprimaryPublicIP.DnsSettings.DomainNameLabel
+   $primaryDNSFqdn = $oldprimaryPublicIP.DnsSettings.Fqdn
 
-```
+   Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
+   Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
+
+   $PublicIP = Get-AzureRmPublicIpAddress -Name $newPublicIpName  -ResourceGroupName $groupname
+   $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
+   $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
+   Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
+ 
+   ```
 
 ## <a name="preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set"></a>(Vorschau) Aktivieren mehrerer Verfügbarkeitszonen in einer einzelnen VM-Skalierungsgruppe
 
-Die zuvor erwähnte Lösung verwendet einen NodeType pro VZ. Die folgende Lösung ermöglicht Benutzern die Bereitstellung von 3 VZs in demselben NodeType.
+In der vorherigen Lösung wird ein Knotentyp in jeder Verfügbarkeitszone verwendet. Mit der folgenden Lösung können Benutzer drei Verfügbarkeitszonen für einen einzelnen Knotentyp bereitstellen.
 
-**Da dieses Feature derzeit in der Vorschauphase ist, wird es derzeit nicht für Produktionsszenarien unterstützt.**
+> [!NOTE]
+> Da dieses Feature sich derzeit in der Vorschauphase befindet, wird es in Produktionsszenarien aktuell jedoch nicht unterstützt.
 
-Eine vollständige Beispielvorlage finden Sie [hier](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure).
+Eine vollständige Beispielvorlage ist auf [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure) verfügbar.
 
-![Architektur der Azure Service Fabric-Verfügbarkeitszone][sf-multi-az-arch]
+![Darstellung der Architektur mit Azure Service Fabric-Verfügbarkeitszonen.][sf-multi-az-arch]
 
 ### <a name="configuring-zones-on-a-virtual-machine-scale-set"></a>Konfigurieren von Zonen für eine VM-Skalierungsgruppe
-Um Zonen zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgenden drei Werte in die Ressourcen der VM-Skalierungsgruppe aufnehmen.
 
-* Der erste Wert ist die **zones**-Eigenschaft, die angibt, welche Verfügbarkeitszonen in der VM-Skalierungsgruppe vorhanden sind.
-* Der zweite Wert ist die Eigenschaft „singlePlacementGroup“, die auf „true“ festgelegt werden muss. **Die Skalierungsgruppe erstreckt sich über drei Verfügbarkeitszonen und kann auf bis zu 300 VMs skaliert werden, auch mit „singlePlacementGroup = true“.**
-* Der dritte Wert zoneBalance stellt das strikte Zonengleichgewicht sicher. Dieser Wert muss „true“ lauten. Dadurch wird sichergestellt, dass die zonenübergreifenden VM-Verteilungen nicht unausgeglichen sind, sodass sichergestellt ist, dass die beiden anderen Zonen, wenn eine der Zonen ausfällt, über ausreichend viele VMs verfügen, um sicherzustellen, dass der Cluster ununterbrochen ausgeführt wird. Ein Cluster mit einer unausgeglichenen VM-Verteilung kann in einem Szenario mit Zonenausfall möglicherweise nicht überstehen, da diese Zone möglicherweise die Mehrzahl der VMs enthält. Eine unausgeglichene zonenübergreifende VM-Verteilung führt außerdem zu Problemen mit der Dienstplatzierung und dazu, dass Infrastrukturupdates nicht erfolgreich abgeschlossen werden können. Informieren Sie sich über [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
-* Die Außerkraftsetzungen für FaultDomain und UpgradeDomain müssen nicht konfiguriert werden.
+Um Zonen für eine VM-Skalierungsgruppe zu aktivieren, fügen Sie die folgenden drei Werte in der VM-Skalierungsgruppenressource hinzu:
+
+* Der erste Wert ist die `zones`-Eigenschaft, die angibt, welche Verfügbarkeitszonen in der VM-Skalierungsgruppe vorhanden sind.
+* Der zweite Wert ist die Eigenschaft `singlePlacementGroup`, die auf `true` festgelegt werden muss. Die Skalierungsgruppe, die sich über drei Verfügbarkeitszonen erstreckt, kann selbst mit der Einstellung `singlePlacementGroup = true` auf bis zu 300 VMs hochskaliert werden.
+* Der dritte Wert ist `zoneBalance`, der einen strikten Zonenausgleich sicherstellt. Dieser Wert sollte auf `true` festgelegt werden. Dadurch wird sichergestellt, dass die zonenübergreifenden VM-Verteilungen nicht unausgeglichen sind. Beim Ausfall einer Zone verfügen die anderen Zonen also über genügend VMs für einen unterbrechungsfreien Betrieb des Clusters.
+
+  Ein Cluster mit einer unausgeglichenen VM-Verteilung ist in einem Szenario mit Zonenausfall möglicherweise nicht länger verfügbar, da diese Zone gegebenenfalls über die meisten VMs verfügt. Eine unausgeglichene zonenübergreifende VM-Verteilung führt außerdem zu Problemen bei der Dienstplatzierung sowie dazu, dass Infrastrukturupdates nicht erfolgreich abgeschlossen werden können. Weitere Informationen finden Sie unter [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+
+Die Außerkraftsetzungen `FaultDomain` und `UpgradeDomain` müssen nicht konfiguriert werden.
 
 ```json
 {
@@ -377,25 +405,32 @@ Um Zonen zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgenden 
 ```
 
 >[!NOTE]
-> * **Service Fabric-Cluster müssen mindestens einen primären nodeType aufweisen. Primäre nodeTypes müssen mindestens den DurabilityLevel-Wert „Silver“ aufweisen.**
-> * Die verfügbarkeitszonenübergreifende VM-Skalierungsgruppe sollte unabhängig vom durabilityLevel-Wert mit mindestens 3 Verfügbarkeitszonen konfiguriert werden.
-> * Eine verfügbarkeitszonenübergreifende VM-Skalierungsgruppe mit der Dauerhaftigkeit „Silver“ (oder höher) sollte mindestens 15 VMs umfassen.
-> * Eine verfügbarkeitszonenübergreifende VM-Skalierungsgruppe mit der Dauerhaftigkeit „Bronze“ sollte mindestens 6 VMs aufweisen.
+>
+> * Service Fabric-Cluster sollten über mindestens einen primären Knotentyp verfügen. Die Dauerhaftigkeitsstufe primärer Knotentypen sollte auf „Silver“ (Silber) oder höher festgelegt werden.
+> * Die Verfügbarkeitszone, die VM-Skalierungsgruppen umfasst, sollte mit mindestens drei Verfügbarkeitszonen konfiguriert werden (unabhängig von der Dauerhaftigkeitsstufe).
+> * Verfügbarkeitszonen, die VM-Skalierungsgruppen mit der Dauerhaftigkeit „Silver“ (Silber) oder höher umfassen, sollten über mindestens 15 VMs verfügen.
+> * Verfügbarkeitszonen, die VM-Skalierungsgruppen mit der Dauerhaftigkeit „Bronze“ umfassen, sollten über mindestens sechs VMs verfügen.
 
-### <a name="enabling-the-support-for-multiple-zones-in-the-service-fabric-nodetype"></a>Aktivieren der Unterstützung für mehrere Zonen im Service Fabric-NodeType
-Der Service Fabric-NodeType muss aktiviert werden, um mehrere Verfügbarkeitszonen zu unterstützen.
+### <a name="enable-support-for-multiple-zones-in-the-service-fabric-node-type"></a>Aktivieren der Unterstützung für mehrere Zonen im Service Fabric-Knotentyp
 
-* Der erste Wert, der für NodeType auf „true“ festgelegt werden sollte, ist **multipleAvailabilityZones**.
-* Der zweite, optionale Wert ist **sfZonalUpgradeMode**. Diese Eigenschaft kann nicht geändert werden, wenn im Cluster bereits ein Knotentyp mit mehreren Verfügbarkeitszonen vorhanden ist.
-  Die Eigenschaft steuert die logische Gruppierung von VMs in Upgradedomänen.
-  **Folgendes gilt, wenn der Wert auf „Parallel“ festgelegt wird**: VMs unter dem Knotentyp werden in Upgradedomänen gruppiert, wobei die Zoneninformationen in 5 Upgradedomänen ignoriert werden. Dies führt dazu, dass UD0 in allen Zonen gleichzeitig aktualisiert wird. Dieser Bereitstellungsmodus ist für Upgrades schneller, wird jedoch nicht empfohlen, da er gegen die Richtlinien für sichere Bereitstellungen verstößt, nach denen Updates jeweils in nur einer Zone gleichzeitig angewendet werden sollten.
-  **Folgendes gilt, wenn der Wert ausgelassen oder auf „Hierarchical“ (Hierarchisch) festgelegt wird:** VMs werden gruppiert, um die zonale Verteilung in bis zu 15 UDs widerzuspiegeln. Jede der drei Zonen erhält fünf UDS. Dadurch wird sichergestellt, dass die Aktualisierungen pro Zoneerfolgen und erst nach Abschluss von 5 UDs in der ersten Zone mit der nächsten Zone fortfahren. Dies ist über 15 UDs hin (3 Zonen, 5 UDS) zwar langsam, aber aus der Perspektive des Clusters und der Benutzeranwendung sicherer.
-  Diese Eigenschaft definiert nur das Upgradeverhalten für ServiceFabric-Anwendungs- und Codeupgrades. Die zugrunde liegenden Upgrades für VM-Skalierungsgruppen werden in allen VZ weiterhin parallel durchlaufen.
-  Diese Eigenschaft wirkt sich nicht auf die UD-Verteilung für Knotentypen aus, für die nicht mehrere Zonen aktiviert sind.
-* Der dritte Wert ist **vmssZonalUpgradeMode = Parallel**. Dies ist eine *erforderliche* Eigenschaft, die im Cluster konfiguriert werden soll, wenn ein NodeType mit mehreren VZs hinzugefügt wird. Diese Eigenschaft definiert den Upgrademodus für die Updates der VM-Skalierungsgruppe, die in allen VZs parallel ausgeführt werden.
-  Diese Eigenschaft kann derzeit nur auf „Parallel“ festgelegt werden.
-* Die apiVersion der Service Fabric-Clusterressource sollte „2020-12-01-preview“ oder höher lauten.
-* Die Clustercodeversion sollte „7.2.445“ oder höher sein.
+Der Service Fabric-Knotentyp muss aktiviert werden, um mehrere Verfügbarkeitszonen zu unterstützen.
+
+* Der erste Wert lautet `multipleAvailabilityZones`. Dieser Wert sollte für den Knotentyp auf `true` gesetzt werden.
+* Der zweite, optionale Wert ist `sfZonalUpgradeMode`. Diese Eigenschaft kann nicht geändert werden, wenn im Cluster bereits ein Knotentyp mit mehreren Verfügbarkeitszonen vorhanden ist.
+  Diese Eigenschaft steuert die logische Gruppierung von VMs in Upgradedomänen.
+  
+  * Bei Festlegung auf `Parallel` gilt Folgendes: VMs, die dem Knotentyp zugeordnet sind, werden in Upgradedomänen gruppiert. Die Zoneninformationen zu den fünf Upgradedomänen werden ignoriert. Mit dieser Einstellung werden die Upgradedomänen aller Zonen gleichzeitig aktualisiert. Dieser Bereitstellungsmodus ist bei Upgrades schneller, wird jedoch nicht empfohlen, da er gegen die SDP-Richtlinien verstößt, die festlegen, dass Updates jeweils in nur einer Zone angewendet werden sollten.
+  * Wird dieser Wert ausgelassen oder auf `Hierarchical` festgelegt, gilt Folgendes: VMs werden gemäß der Zonenverteilung in bis zu 15 Upgradedomänen gruppiert. Jede der drei Zonen verfügt über fünf Upgradedomänen. Dadurch wird sichergestellt, dass die Zonen nacheinander aktualisiert werden. Erst wenn der Vorgang für die fünf Upgradedomänen innerhalb der ersten Zone abgeschlossen wurde, wird mit der nächsten Zone fortgefahren. Dieser Updatevorgang bietet eine höhere Sicherheit für den Cluster und die Benutzeranwendung.
+  
+  Diese Eigenschaft definiert lediglich das Upgradeverhalten für Service Fabric-Anwendungen und Codeupgrades. Upgrades der zugrunde liegenden VM-Skalierungsgruppen werden weiterhin in allen Verfügbarkeitszonen parallel ausgeführt. Diese Eigenschaft wirkt sich nicht auf die Verteilung von Upgradedomänen für Knotentypen aus, für die nicht mehrere Zonen aktiviert sind.
+* Der dritte Wert ist `vmssZonalUpgradeMode = Parallel`. Diese Eigenschaft ist obligatorisch, wenn ein Knotentyp mit mehreren Verfügbarkeitszonen hinzugefügt wird. Diese Eigenschaft definiert den Upgrademodus für die Updates der VM-Skalierungsgruppen, die in allen Verfügbarkeitszonen gleichzeitig ausgeführt werden.
+  
+  Diese Eigenschaft kann derzeit nur auf „parallel“ festgelegt werden.
+
+>[!IMPORTANT]
+>Die API-Version der Service Fabric-Clusterressource sollte „2020-12-01-preview“ oder höher lauten.
+>
+>Die Clustercodeversion sollte 7.2.445 oder höher sein.
 
 ```json
 {
@@ -420,23 +455,25 @@ Der Service Fabric-NodeType muss aktiviert werden, um mehrere Verfügbarkeitszon
 ```
 
 >[!NOTE]
-> * Öffentliche IP- und Load Balancer-Ressourcen sollten die Standard SKU verwenden, wie zuvor in diesem Artikel beschrieben.
-> * Die Eigenschaft „multipleAvailabilityZones“ für NodeType kann nur zum Zeitpunkt der Erstellung von „NodeType“ definiert und später nicht geändert werden. Folglich können vorhandene NodeType-Typen nicht mit dieser Eigenschaft konfiguriert werden.
-> * Wenn „sfZonalUpgradeMode“ ausgelassen oder auf „Hierarchisch“ festgelegt wird, werden die Cluster- und Anwendungsbereitstellungen langsamer, da im Cluster weitere Upgradedomänen vorhanden sind. Es ist wichtig, die Upgraderichtlinientimeouts ordnungsgemäß für die Upgradezeitdauer für 15 Upgradedomänen anzupassen. Die Upgraderichtlinie für App und Cluster sollte aktualisiert werden, um sicherzustellen, dass die Bereitstellung nicht das Timeout von 12 Stunden für die Azure-Ressourcendienstbereitstellung überschreitet. Dies bedeutet, dass die Bereitstellung für 15 Upgradedomänen nicht mehr als 12 Stunden gesamt und nicht mehr als 40 Min./UD in Anspruch nehmen darf.
-> * Legen Sie für den Cluster **reliabilityLevel = Platinum** fest, um sicherzustellen, dass der Cluster das Szenario mit einer ausgefallenen Zone übersteht.
+>
+> * Die Ressource für öffentliche IP-Adressen und die Lastenausgleichsressource sollten die Standard-SKU verwenden, wie zuvor in diesem Artikel beschrieben.
+> * Die Eigenschaft `multipleAvailabilityZones` kann für den Knotentyp nur beim Erstellen definiert werden. Eine spätere Änderung ist nicht möglich. Vorhandene Knotentypen können also nicht mit dieser Eigenschaft konfiguriert werden.
+> * Wenn `sfZonalUpgradeMode` ausgelassen oder auf `Hierarchical` festgelegt wird, werden die Cluster- und Anwendungsbereitstellungen langsamer, da im Cluster mehr Upgradedomänen vorhanden sind. Für die erforderliche Upgradedauer der 15 Upgradedomänen müssen angemessene Upgraderichtlinientimeouts festgelegt werden. Die Upgraderichtlinie für App und Cluster sollte aktualisiert werden, um sicherzustellen, dass die Bereitstellung nicht das Timeout von 12 Stunden überschreitet, das für die Azure-Ressourcendienstbereitstellung festgelegt ist. Das bedeutet, dass die Bereitstellung für 15 Upgradedomänen nicht länger als 12 Stunden dauern sollte (also nicht mehr als 40 Minuten pro Upgradedomäne).
+> * Legen Sie für den Cluster die Zuverlässigkeitsstufe `Platinum` fest, um sicherzustellen, dass der Cluster in einem Szenario mit einer ausgefallenen Zone weiterhin verfügbar ist.
 
->[!NOTE]
-> Für bewährte Methoden empfiehlt es sich, sfZonalUpgradeMode auf „Hierarchisch“ festzulegen oder wegzulassen. Die Bereitstellung befolgt die zonale Verteilung von virtuellen Computern, die sich auf eine geringere Anzahl von Replikaten und/oder Instanzen auswirkt und sie sicherer macht.
-> Verwenden Sie sfZonalUpgradeMode mit der Einstellung „Parallel“, wenn die Bereitstellungsgeschwindigkeit eine Priorität ist oder nur eine zustandslose Workload auf dem Knotentyp mit mehreren VZs ausgeführt wird. Dies führt dazu, dass der Upgradedomänenvorgang in allen Verfügbarkeitszonen parallel erfolgt.
+>[!TIP]
+> Es wird empfohlen, `sfZonalUpgradeMode` auf `Hierarchical` festzulegen oder diesen Wert auszulassen. Bei der Bereitstellung wird die Zonenverteilung von VMs befolgt, die sich auf eine geringere Anzahl von Replikaten oder Instanzen auswirkt und sie dadurch sicherer macht.
+> Verwenden Sie `sfZonalUpgradeMode` mit der Einstellung `Parallel`, wenn die Bereitstellungsgeschwindigkeit Priorität hat oder lediglich eine zustandslose Workload auf dem Knotentyp mit mehreren Verfügbarkeitszonen ausgeführt wird. Dies führt dazu, dass die Upgradedomänen in allen Verfügbarkeitszonen parallel aktualisiert werden.
 
-### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migration zum Knotentyp mit mehreren Verfügbarkeitszonen
-Für alle Migrationsszenarien muss ein neuer Knotentyp hinzugefügt werden, der mehrere Verfügbarkeitszonen unterstützt. Ein vorhandener nodeType kann nicht migriert werden, um mehrere Zonen zu unterstützen.
-[Dieser Artikel](./service-fabric-scale-up-primary-node-type.md) enthält ausführliche Informationen zum Hinzufügen eines neuen nodeType und der weiteren Ressourcen, die für den neuen Knotentyp erforderlich sind, beispielsweise die IP- und LB-Ressourcen. Außerdem wird in diesem Artikel beschrieben, wie Sie den vorhandenen Knotentyp außer Betrieb nehmen, nachdem der nodeType mit mehreren Verfügbarkeitszonen dem Cluster hinzugefügt wurde.
+### <a name="migrate-to-the-node-type-with-multiple-availability-zones"></a>Migration zum Knotentyp mit mehreren Verfügbarkeitszonen
 
-* Migration von einem nodeType, der die SKU „Basic“ für LB- und IP-Ressourcen verwendet: Diese Migration wird bereits [hier](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) für die Lösung mit einem Knotentyp pro Verfügbarkeitszone beschrieben. 
-    Der einzige Unterschied für den neuen Knotentyp besteht darin, dass nur 1 VM-Skalierungsgruppe und 1 Knotentyp für alle Verfügbarkeitszonen (anstelle von 1 Knotentyp für jede Verfügbarkeitszone) vorhanden ist.
-* Migration von einem nodeType, der die SKU „Standard“ für LB- und IP-Ressourcen mit NSG verwendet: Gehen Sie wie oben beschrieben vor, mit folgenden Abweichungen: Es ist nicht erforderlich, neue LB-, IP- und NSG-Ressourcen hinzuzufügen, und im neuen nodeType können dieselben Ressourcen wiederverwendet werden.
+Für jedes Migrationsszenario muss ein neuer Knotentyp hinzugefügt werden, der mehrere Verfügbarkeitszonen unterstützt. Vorhandene Knotentypen können nicht migriert werden, um mehrere Zonen zu unterstützen.
+Im Artikel [Hochskalieren des primären Knotentyps eines Service Fabric-Clusters](./service-fabric-scale-up-primary-node-type.md) sind die Schritte zum Hinzufügen eines neuen Knotentyps sowie weiterer Ressourcen beschrieben, die für den neuen Knotentyp benötigt werden (z. B. IP- und Lastenausgleichsressourcen). Außerdem wird in diesem Artikel beschrieben, wie Sie den vorhandenen Knotentyp außer Betrieb nehmen, nachdem der neue Knotentyp mit mehreren Verfügbarkeitszonen dem Cluster hinzugefügt wurde.
 
+* Migration von einem Knotentyp mit Lastenausgleichs- und IP-Ressourcen der Basic-SKU: Dieser Vorgang ist in [einem vorherigen Abschnitt](#migrate-to-availability-zones-from-a-cluster-by-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) für die Lösung mit einem Knotentyp pro Verfügbarkeitszone beschrieben.
+
+  Der einzige Unterschied für den neuen Knotentyp besteht darin, dass nur eine VM-Skalierungsgruppe und ein Knotentyp für alle Verfügbarkeitszonen vorhanden sind (anstelle von einem Knotentyp pro Verfügbarkeitszone).
+* Migration von einem Knotentyp mit Lastenausgleichs- und IP-Ressourcen der Standard-SKU: Befolgen Sie die zuvor beschriebenen Schritte. Es ist jedoch nicht erforderlich, neue Lastenausgleichs-, IP- und NSG-Ressourcen hinzuzufügen. Für den neuen Knotentyp können dieselben Ressourcen wiederverwendet werden.
 
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
 [sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png

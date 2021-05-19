@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 05/10/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 74c77356df4f35461a8b9f1459712cdcf7f77cbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77075388b28878f7256639489ef1f83a961f5a6e
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95559071"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738343"
 ---
 Freigegebene Azure-Datenträger sind ein neues Feature für verwaltete Azure-Datenträger, mit dem Sie einen verwalteten Datenträger gleichzeitig an mehrere virtuelle Computer anfügen können. Durch das Anfügen eines verwalteten Datenträgers an mehrere virtuelle Computer können Sie entweder neue gruppierte Anwendungen in Azure bereitstellen oder bereits vorhandene gruppierte Anwendungen zu Azure migrieren.
 
@@ -46,6 +46,7 @@ Freigegebene Azure-Datenträgen werden unter Windows Server 2008 und höher unt
 Die folgende Liste enthält einige beliebte Anwendungen, die unter WSFC ausgeführt werden:
 
 - [Erstellen einer FCI mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
+    - [Migrieren Ihrer Failoverclusterinstanz zu SQL Server auf Azure-VMs mit freigegebenen Datenträgern](../articles/azure-sql/migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)
 - Dateiserver mit horizontaler Skalierung (Scale-Out File Server, SOFS) [Vorlage] (https://aka.ms/azure-shared-disk-sofs-template)
 - SAP ASCS/SCS [Vorlage] (https://aka.ms/azure-shared-disk-sapacs-template)
 - Dateiserver zur allgemeinen Verwendung (IW-Workload)

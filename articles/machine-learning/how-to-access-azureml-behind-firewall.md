@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 11/18/2020
+ms.date: 05/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 64d110243a8be5756e7de635b55e229078251a3c
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: fc04655db898902a93c4e404f51d15393db3d92e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897341"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785257"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Verwenden des Arbeitsbereichs hinter einer Firewall für Azure Machine Learning
 
@@ -131,10 +131,6 @@ Die Hosts in diesem Abschnitt befinden sich im Besitz von Microsoft und stellen 
 | ----- | ----- | ----- | ----- |
 | Azure Machine Learning Studio | ml.azure.com | ml.azure.us | studio.ml.azure.cn |
 | API |\*.azureml.ms | \*.ml.azure.us | \*.ml.azure.cn |
-| Experimentieren, Verlauf, Hyperdrive, Beschriftung | \*.experiments.azureml.net | \*.ml.azure.us | \*.ml.azure.cn |
-| Modellverwaltung | \*.modelmanagement.azureml.net | \*.ml.azure.us | \*.ml.azure.cn |
-| Pipeline | \*.aether.ms | \*.ml.azure.us | \*.ml.azure.cn |
-| Designer (Studio-Dienst) | \*.studioservice.azureml.com | \*.ml.azure.us | \*.ml.azure.cn |
 | Integriertes Notebook | \*.notebooks.azure.net | \*.notebooks.usgovcloudapi.net |\*.notebooks.chinacloudapi.cn |
 | Integriertes Notebook | \*.file.core.windows.net | \*.file.core.usgovcloudapi.net | \*.file.core.chinacloudapi.cn |
 | Integriertes Notebook | \*.dfs.core.windows.net | \*.dfs.core.usgovcloudapi.net | \*.dfs.core.chinacloudapi.cn |
@@ -150,6 +146,9 @@ Die Hosts in diesem Abschnitt befinden sich im Besitz von Microsoft und stellen 
 | Computecluster/-Instanz | graph.windows.net | graph.windows.net | graph.chinacloudapi.cn |
 | Compute-Instanz | \*.instances.azureml.net | \*.instances.azureml.us | \*.instances.azureml.cn |
 | Compute-Instanz | \*.instances.azureml.ms |  |  |
+
+> [!IMPORTANT]
+> Ihre Firewall muss die Kommunikation mit \*.instances.azureml.ms über den __TCP__-Port __18881__ zulassen.
 
 **Zugeordnete Ressourcen, die von Azure Machine Learning verwendet werden**
 

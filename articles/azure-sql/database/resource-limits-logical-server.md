@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 03/25/2021
-ms.openlocfilehash: 5e95bc50a74413389bd2583beb90128b3fd0810a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 08b2d3ec205e22c85188a718a12b13aff04f311e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543515"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771701"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Ressourcenlimits für Azure SQL-Datenbank und Azure Synapse Analytics-Server.
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -132,7 +132,7 @@ Die Azure SQL-Datenbank-Ressourcenkontrolle ist hierarchisch strukturiert. Grenz
 
 In Azure SQL-Datenbank ist die Daten-E/A-Governance ein Prozess zum Begrenzen der physischen E/A-Lese- und -Schreibvorgänge für Datendateien einer Datenbank. IOPS-Grenzwerte werden für jeden Servicelevel festgelegt, um den „Noisy Neighbor“-Effekt zu minimieren, eine gerechte Ressourcenzuordnung im mehrinstanzenfähigen Dienst zu gewährleisten und die Funktionen der zugrunde liegenden Hardware und Speicher zu unterstützen.
 
-Bei Einzeldatenbanken gelten die Grenzwerte für Arbeitsauslastungsgruppen für alle Speicher-E/A-Vorgänge für die Datenbank, während die Grenzwerte für Ressourcenpools für alle Speicher-E/A-Vorgänge für alle Datenbanken im gleichen dedizierten SQL-Pool (einschließlich der Datenbank `tempdb`) gelten. Bei Pools für elastische Datenbanken gelten die Grenzwerte für Arbeitsauslastungsgruppen für jede Datenbank im Pool, während die Grenzwerte für Ressourcenpools für den gesamten Pool für elastische Datenbanken gelten, einschließlich der Datenbank `tempdb`, die von allen Datenbanken im Pool gemeinsam genutzt wird. Im Allgemeinen können die Grenzwerte für Ressourcenpools nicht von der Workload einer Datenbank (entweder einzeln oder in einem Pool) erreicht werden, weil die Grenzwerte für Arbeitsauslastungsgruppen niedriger sind als die Grenzwerte für Ressourcenpools und IOPS/den Durchsatz früher begrenzen. Poolgrenzwerte können jedoch von der kombinierten Workload mehrerer Datenbanken für denselben Pool erreicht werden.
+Bei Einzeldatenbanken gelten die Grenzwerte für Arbeitsauslastungsgruppen für alle Speicher-E/A-Vorgänge für die Datenbank, während die Ressourcenpool-Grenzwerte für alle Speicher-E/A-Vorgänge bei allen Datenbanken im gleichen Ressourcenpool (einschließlich der Datenbank `tempdb`) gelten. Bei Pools für elastische Datenbanken gelten die Grenzwerte für Arbeitsauslastungsgruppen für jede Datenbank im Pool, während die Grenzwerte für Ressourcenpools für den gesamten Pool für elastische Datenbanken gelten, einschließlich der Datenbank `tempdb`, die von allen Datenbanken im Pool gemeinsam genutzt wird. Im Allgemeinen können die Grenzwerte für Ressourcenpools nicht von der Workload einer Datenbank (entweder einzeln oder in einem Pool) erreicht werden, weil die Grenzwerte für Arbeitsauslastungsgruppen niedriger sind als die Grenzwerte für Ressourcenpools und IOPS/den Durchsatz früher begrenzen. Poolgrenzwerte können jedoch von der kombinierten Workload mehrerer Datenbanken für denselben Pool erreicht werden.
 
 Beispiel: Wenn eine Abfrage 1.000 IOPS ohne E/A-Ressourcenkontrolle generiert, der maximale IOPS-Grenzwert für die Workloadgruppe aber auf 900 IOPS festgelegt ist, kann die Abfrage maximal 900 IOPS generieren. Wenn der maximale IOPS-Grenzwert für den Ressourcenpool jedoch auf 1.500 IOPS festgelegt ist und die Gesamtanzahl der E/A-Vorgänge aller dem Ressourcenpool zugeordneten Arbeitsauslastungsgruppen 1.500 IOPS überschreitet, kann die Anzahl der E/A-Vorgänge der gleichen Abfrage so reduziert werden, dass sie unter dem Grenzwert von 900 IOPS liegt.
 

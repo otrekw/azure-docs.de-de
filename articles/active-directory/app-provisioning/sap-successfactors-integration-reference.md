@@ -1,21 +1,22 @@
 ---
 title: Referenz zur Integration von Azure Active Directory mit SAP SuccessFactors
-description: Fundierte technische Einblicke in die HR-Bereitstellung mit SAP SuccessFactors
+description: Fundierte technische Einblicke in die HR-Bereitstellung mit SAP SuccessFactors für Azure Active Directory.
 services: active-directory
-author: cmmdesai
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/19/2021
-ms.author: chmutali
-ms.openlocfilehash: ed97600ca1802629f81f93f4f51c92ad4b1c9bd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.author: kenwith
+ms.reviewer: chmutali
+ms.openlocfilehash: 7c7ba58383481e2b776b27015f98080b35f3084d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256220"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784933"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Integration der Azure Active Directory-Bereitstellung mit SAP SuccessFactors 
 

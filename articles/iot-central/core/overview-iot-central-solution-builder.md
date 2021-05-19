@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: e762b8c2e2d7f72b89629c520560b205cedcd036
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: dc8ca48d11f31f69ca9db5dce53cce4d9d6e8f25
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728554"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772331"
 ---
 # <a name="iot-central-solution-builder-guide"></a>Leitfaden für IoT Central-Lösungsentwickler
-
-*Dieser Artikel richtet sich an Lösungsentwickler.*
 
 Mit einer IoT Central-Anwendung können Sie Millionen von Geräten während ihres gesamten Lebenszyklus überwachen und verwalten. Dieser Leitfaden ist für Lösungsentwickler bestimmt, die mithilfe von IoT Central integrierte Lösungen erstellen. Mit einer IoT Central-Anwendung können Sie Geräte verwalten sowie Telemetriedaten von Geräten analysieren und in andere Back-End-Dienste integrieren.
 
@@ -56,6 +54,14 @@ Als Lösungsentwickler können Sie die Funktionen für Datenexport und Regeln ve
 - [Erweitern von Azure IoT Central mit benutzerdefinierten Regeln mithilfe von Stream Analytics, Azure Functions und SendGrid](howto-create-custom-rules.md)
 - [Erweitern von Azure IoT Central mit benutzerdefinierten Analysen mithilfe von Azure Databricks](howto-create-custom-analytics.md)
 - [Visualisieren und Analysieren der Azure IoT Central-Daten in einem Power BI-Dashboard](howto-connect-powerbi.md)
+
+## <a name="apis"></a>APIs
+
+Mit IoT Central-APIs können Sie tiefe Integrationen mit anderen Diensten in Ihrer IoT-Lösung erstellen. Die verfügbaren APIs werden als *Datenebenen*- oder *Steuerungsebenen*-APIs kategorisiert.
+
+Sie verwenden Datenebenen-APIs für den Zugriff auf die Entitäten in und die Funktionen Ihrer IoT Central-Anwendung. Beispiel: Verwalten von Geräten, Gerätevorlagen, Benutzern und Rollen. Die REST-API-Vorgänge von IoT Central sind Vorgänge auf *Datenebene.* Weitere Informationen finden Sie unter [Verwenden der IoT Central-REST-API zum Verwalten von Benutzern und Rollen](howto-manage-users-roles-with-rest-api.md).
+
+Mithilfe der *Steuerungsebene* verwalten Sie IoT Central-bezogene Ressourcen in Ihrem Azure-Abonnement. Sie können die Vorlagen „Azure CLI“ und „Resource Manager“ für Vorgänge auf Steuerungsebene verwenden. Beispielsweise können Sie mithilfe der Azure-CLI eine IoT Central-Anwendung erstellen. Weitere Informationen finden Sie unter [Verwalten von IoT Central aus Azure CLI](howto-manage-iot-central-from-cli.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

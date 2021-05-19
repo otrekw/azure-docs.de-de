@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: yushwang
-ms.openlocfilehash: 0fee7a7a58a6aabc7d545981b1f8b56033bf9857
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 2c2730025d39f03824489c6f46ae625de49ea0cf
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203755"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753541"
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -219,6 +219,10 @@ Nein. Alle VPN-Tunnel (einschließlich Punkt-zu-Standort-VPNs) verwenden das gle
 ### <a name="can-i-configure-multiple-tunnels-between-my-virtual-network-and-my-on-premises-site-using-multi-site-vpn"></a>Kann ich mithilfe eines VPNs mit mehreren Standorten mehrere Tunnel zwischen meinem virtuellen Netzwerk und meinem lokalen Standort konfigurieren?
 
 Ja. Sie müssen aber BGP für beide Tunnel zu demselben Standort konfigurieren.
+
+### <a name="does-azure-vpn-gateway-honor-as-path-prepending-to-influence-routing-decisions-between-multiple-connections-to-my-on-premises-sites"></a>Werden bei Azure VPN Gateway vorangestellte AS-Pfade zum Beeinflussen von Routingentscheidungen zwischen mehreren Verbindungen mit meinen lokalen Standorten berücksichtigt?
+
+Ja, das Azure-VPN-Gateway nutzt den vorangestellten AS-Pfad für Routingentscheidungen, wenn BGP aktiviert ist. Bei der BGP-Pfadauswahl wird ein kürzerer AS-Pfad bevorzugt.
 
 ### <a name="can-i-use-point-to-site-vpns-with-my-virtual-network-with-multiple-vpn-tunnels"></a>Kann ich Punkt-zu-Standort-VPNs mit meinem virtuellen Netzwerk und mehreren VPN-Tunneln kombinieren?
 

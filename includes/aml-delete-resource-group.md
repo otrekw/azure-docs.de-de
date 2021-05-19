@@ -8,18 +8,18 @@ ms.topic: include
 author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: 9c6d29287f86cd6334692e2be5376caf9dd98bdd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8aeff540c323905f91af94af29a8be9a980afc19
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91372566"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760648"
 ---
 >[!IMPORTANT]
 >Die von Ihnen erstellten Ressourcen können ggf. auch in anderen Azure Machine Learning-Tutorials und -Anleitungen verwendet werden. 
 
 
-Wenn Sie die erstellten Ressourcen nicht mehr benötigen, löschen Sie sie, damit Ihnen keine Kosten entstehen:
+Wenn Sie die erstellten Ressourcen nicht mehr benötigen, löschen Sie diese, damit Ihnen keine Kosten entstehen:
 
 1. Wählen Sie ganz links im Azure-Portal **Ressourcengruppen** aus.
  

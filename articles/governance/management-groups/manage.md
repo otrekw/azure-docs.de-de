@@ -3,12 +3,12 @@ title: 'Verwenden von Verwaltungsgruppen: Azure Governance'
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7e0e4a2a58802895ac579015ac116373c03f0ead
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 31d63cf493ae548b8172071c133655900d8c3be7
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326397"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753811"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -19,7 +19,7 @@ Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonne
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 > [!IMPORTANT]
-> Azure Resource Manager-Benutzertoken und der Verwaltungsgruppencache gelten für 30 Minuten, bevor sie gezwungen werden, sich zu aktualisieren. Nach der Durchführung einer Aktion, wie dem Verschieben einer Verwaltungsgruppe oder eines Abonnements, kann die Anzeige bis zu 30 Minuten dauern. Um die Updates früher anzuzeigen, müssen Sie Ihr Token aktualisieren, indem Sie den Browser aktualisieren, sich an- und abmelden oder ein neues Token anfordern.  
+> Azure Resource Manager-Benutzertoken und der Verwaltungsgruppencache gelten für 30 Minuten, bevor sie gezwungen werden, sich zu aktualisieren. Nach der Durchführung einer Aktion, wie dem Verschieben einer Verwaltungsgruppe oder eines Abonnements, kann die Anzeige bis zu 30 Minuten dauern. Um die Updates früher anzuzeigen, müssen Sie Ihr Token aktualisieren, indem Sie den Browser aktualisieren, sich an- und abmelden oder ein neues Token anfordern.
 
 ## <a name="change-the-name-of-a-management-group"></a>Ändern des Namens einer Verwaltungsgruppe
 
@@ -67,8 +67,7 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 
 1. Unter der Verwaltungsgruppe gibt es keine untergeordneten Verwaltungsgruppen oder Abonnements. Informationen zum Verschieben eines Abonnements oder einer Verwaltungsgruppe in eine andere Verwaltungsgruppe finden Sie unter [Verschieben von Verwaltungsgruppen und Abonnements in der Hierarchie](#moving-management-groups-and-subscriptions).
 
-1. Sie benötigen Schreibzugriff auf die Verwaltungsgruppe (Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“). Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu Azure-Rollen finden Sie unter  
-   [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/overview.md).
+1. Sie benötigen Schreibzugriff auf die Verwaltungsgruppe (Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“). Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu Azure-Rollen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md).
 
 ### <a name="delete-in-the-portal"></a>Löschen im Portal
 
@@ -111,7 +110,7 @@ az account management-group delete --name 'Contoso'
 
 ## <a name="view-management-groups"></a>Anzeigen von Verwaltungsgruppen
 
-Sie können jede Verwaltungsgruppe anzeigen, für die Sie eine direkte oder geerbte Azure-Rolle besitzen.  
+Sie können jede Verwaltungsgruppe anzeigen, für die Sie eine direkte oder geerbte Azure-Rolle besitzen.
 
 ### <a name="view-in-the-portal"></a>Anzeigen im Portal
 
@@ -127,7 +126,7 @@ Sie können jede Verwaltungsgruppe anzeigen, für die Sie eine direkte oder geer
 
 ### <a name="view-in-powershell"></a>Anzeigen in PowerShell
 
-Mit dem Befehl „Get-AzManagementGroup“ rufen Sie alle Gruppen ab. Im Modul [Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) finden Sie die vollständige Liste der GET-Befehle in PowerShell für Verwaltungsgruppen.  
+Mit dem Befehl „Get-AzManagementGroup“ rufen Sie alle Gruppen ab. Im Modul [Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) finden Sie die vollständige Liste der GET-Befehle in PowerShell für Verwaltungsgruppen.
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
@@ -139,7 +138,7 @@ Verwenden Sie den Parameter „-GroupName“, um die Informationen einer einzeln
 Get-AzManagementGroup -GroupName 'Contoso'
 ```
 
-Verwenden Sie die Parameter **-Expand** und **-Recurse**, um eine bestimmte Verwaltungsgruppe und die untergeordnete Hierarchie mit allen Ebenen zurückzugeben.  
+Verwenden Sie die Parameter **-Expand** und **-Recurse**, um eine bestimmte Verwaltungsgruppe und die untergeordnete Hierarchie mit allen Ebenen zurückzugeben.
 
 ```azurepowershell-interactive
 PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
@@ -176,7 +175,7 @@ Children    :
 
 ### <a name="view-in-azure-cli"></a>Anzeigen in der Azure CLI
 
-Verwenden Sie den Befehl „list“, um alle Gruppen abzurufen.  
+Verwenden Sie den Befehl „list“, um alle Gruppen abzurufen.
 
 ```azurecli-interactive
 az account management-group list
@@ -194,13 +193,13 @@ Verwenden Sie die Parameter **-Expand** und **-Recurse**, um eine bestimmte Verw
 az account management-group show --name 'Contoso' -e -r
 ```
 
-## <a name="moving-management-groups-and-subscriptions"></a>Verschieben von Verwaltungsgruppen und Abonnements   
+## <a name="moving-management-groups-and-subscriptions"></a>Verschieben von Verwaltungsgruppen und Abonnements
 
 Ein Grund zum Erstellen einer Verwaltungsgruppe ist das Bündeln von Abonnements. Nur Verwaltungsgruppen und Abonnements können als untergeordnete Elemente einer anderen Verwaltungsgruppe festgelegt werden. Ein Abonnement, das in eine Verwaltungsgruppe verschoben wird, erbt den gesamten Benutzerzugriff und alle Richtlinien von der übergeordneten Verwaltungsgruppe.
 
 Wenn eine Verwaltungsgruppe oder ein Abonnement verschoben und einer anderen Verwaltungsgruppe untergeordnet wird, müssen drei Regeln als TRUE ausgewertet werden.
 
-Wenn Sie die Verschiebung durchführen, muss Folgendes zutreffen: 
+Wenn Sie die Verschiebung durchführen, muss Folgendes zutreffen:
 
 - Verwaltungsgruppenschreib- und Rollenzuweisungsschreibberechtigung für das untergeordnete Abonnement oder die untergeordnete Verwaltungsgruppe.
   - Beispiel für eine integrierte Rolle: **Besitzer**
@@ -215,7 +214,7 @@ Wenn die Rolle „Besitzer“ in Ihrem Abonnement von der aktuellen Verwaltungsg
 
 Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgruppe und dann **IAM** aus. Weitere Informationen zu Azure-Rollen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md).
 
-## <a name="move-subscriptions"></a>Verschieben von Abonnements 
+## <a name="move-subscriptions"></a>Verschieben von Abonnements
 
 ### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Hinzufügen eines vorhandenen Abonnements zu einer Verwaltungsgruppe im Portal
 
@@ -239,7 +238,7 @@ Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgru
 
 1. Klicken Sie auf **Alle Dienste** > **Verwaltungsgruppen**.
 
-1. Wählen Sie die geplante Verwaltungsgruppe aus. Hierbei handelt es sich um die aktuelle übergeordnete Gruppe.  
+1. Wählen Sie die geplante Verwaltungsgruppe aus. Hierbei handelt es sich um die aktuelle übergeordnete Gruppe.
 
 1. Klicken Sie in der Liste am Ende der Zeile des zu verschiebenden Abonnements auf die Ellipse.
 
@@ -255,7 +254,7 @@ Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgru
 
 ### <a name="move-subscriptions-in-powershell"></a>Verschieben von Abonnements in PowerShell
 
-Verschieben Sie Abonnements in PowerShell mit dem Befehl „New-AzManagementGroupSubscription“.  
+Verschieben Sie Abonnements in PowerShell mit dem Befehl „New-AzManagementGroupSubscription“.
 
 ```azurepowershell-interactive
 New-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
@@ -275,7 +274,7 @@ Verwenden Sie zum Verschieben eines Abonnements in der CLI den Befehl „add“.
 az account management-group subscription add --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
-Verwenden Sie zum Entfernen des Abonnements aus der Verwaltungsgruppe den Befehl „remove“.  
+Verwenden Sie zum Entfernen des Abonnements aus der Verwaltungsgruppe den Befehl „remove“.
 
 ```azurecli-interactive
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
@@ -283,7 +282,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ### <a name="move-subscriptions-in-arm-template"></a>Verschieben von Abonnements in einer ARM-Vorlage
 
-Verwenden Sie die folgende Vorlage, um ein Abonnement in eine Azure Resource Manager-Vorlage (ARM-Vorlage) zu verschieben.
+Verwenden Sie die folgende Vorlage, um ein Abonnement in eine Azure Resource Manager-Vorlage (ARM-Vorlage) zu verschieben, und stellen Sie sie auf [Mandantenebene](../../azure-resource-manager/templates/deploy-to-tenant.md) bereit.
 
 ```json
 {
@@ -305,7 +304,7 @@ Verwenden Sie die folgende Vorlage, um ein Abonnement in eine Azure Resource Man
     },
     "resources": [
         {
-            "scope": "/", 
+            "scope": "/",
             "type": "Microsoft.Management/managementGroups/subscriptions",
             "apiVersion": "2020-05-01",
             "name": "[concat(parameters('targetMgId'), '/', parameters('subscriptionId'))]",
@@ -317,7 +316,7 @@ Verwenden Sie die folgende Vorlage, um ein Abonnement in eine Azure Resource Man
 }
 ```
 
-## <a name="move-management-groups"></a>Verschieben von Verwaltungsgruppen 
+## <a name="move-management-groups"></a>Verschieben von Verwaltungsgruppen
 
 ### <a name="move-management-groups-in-the-portal"></a>Verschieben von Verwaltungsgruppen im Portal
 
@@ -332,7 +331,7 @@ Verwenden Sie die folgende Vorlage, um ein Abonnement in eine Azure Resource Man
 1. Ein Menü wird geöffnet, in dem Sie auswählen, ob Sie eine neue oder vorhandene Verwaltungsgruppe verwenden möchten.
 
    - Durch die Auswahl von „Neu“ wird eine neue Verwaltungsgruppe erstellt.
-   - Wenn Sie eine vorhandene Verwaltungsgruppe auswählen, wird eine Dropdownliste mit allen Verwaltungsgruppen angezeigt, die Sie in diese Verwaltungsgruppe verschieben können.  
+   - Wenn Sie eine vorhandene Verwaltungsgruppe auswählen, wird eine Dropdownliste mit allen Verwaltungsgruppen angezeigt, die Sie in diese Verwaltungsgruppe verschieben können.
 
    :::image type="content" source="./media/add_context_MG.png" alt-text="Screenshot: Optionen unter „Verwaltungsgruppe hinzufügen“ zum Erstellen einer neuen Verwaltungsgruppe" border="false":::
 
@@ -345,7 +344,7 @@ Verwenden Sie den Befehl „Update-AzureRmManagementGroup“ in PowerShell, um e
 ```azurepowershell-interactive
 $parentGroup = Get-AzManagementGroup -GroupName ContosoIT
 Update-AzManagementGroup -GroupName 'Contoso' -ParentId $parentGroup.id
-```  
+```
 
 ### <a name="move-management-groups-in-azure-cli"></a>Verschieben von Verwaltungsgruppen in der Azure CLI
 
@@ -365,7 +364,7 @@ Wenn Sie Verwaltungsgruppen außerhalb des Azure-Portals abfragen möchten, sieh
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>Verweisen auf Verwaltungsgruppen von anderen Ressourcenanbietern
 
-Wenn Sie von den Aktionen eines anderen Ressourcenanbieters auf Verwaltungsgruppen verweisen, verwenden Sie den folgenden Pfad als Bereich. Dieser Pfad wird sowohl in PowerShell, als auch an der Azure-Befehlszeilenschnittstelle (CLI) und in REST-APIs verwendet.  
+Wenn Sie von den Aktionen eines anderen Ressourcenanbieters auf Verwaltungsgruppen verweisen, verwenden Sie den folgenden Pfad als Bereich. Dieser Pfad wird sowohl in PowerShell, als auch an der Azure-Befehlszeilenschnittstelle (CLI) und in REST-APIs verwendet.
 
 `/providers/Microsoft.Management/managementGroups/{yourMgID}`
 

@@ -1,0 +1,116 @@
+---
+title: Support- und Hilfeoptionen für Azure Virtual Machines
+description: Erfahren Sie, wie Sie bei Fragen oder Problemen im Zusammenhang mit der Erstellung von Lösungen unter Verwendung von Azure Virtual Machines Hilfe und Unterstützung erhalten.
+author: mimckitt
+ms.author: mimckitt
+ms.service: virtual-machines
+ms.topic: troubleshooting
+ms.date: 4/28/2021
+ms.custom: support-help-page
+ms.openlocfilehash: b1497144364a519a9e8abb6029a2e7c38f0c07f5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108776564"
+---
+# <a name="support-and-troubleshooting-for-azure-vms"></a>Support und Problembehandlung für Azure-VMs
+
+Hier finden Sie Vorschläge dazu, wo Sie Hilfe bei der Entwicklung Ihrer Azure Virtual Machines-Lösungen erhalten.
+
+## <a name="self-help-troubleshooting-content"></a>Inhalt der Selbsthilfe zur Problembehandlung
+<div class='icon is-large'>
+    <img alt='Self help content' src='https://docs.microsoft.com/media//common/i_article.svg'>
+</div>
+
+In verschiedenen Artikeln wird erläutert, wie Sie Probleme, die bei der Verwendung von Azure Virtual Machines auftreten können, ermitteln, diagnostizieren und beheben. Nutzen Sie diese Artikel, um Bereitstellungsfehler, unerwartete Neustarts, Verbindungsprobleme und mehr zu beheben. 
+
+Eine vollständige Liste der Inhalte zur Selbsthilfe bei der Problembehandlung finden Sie in der [Dokumentation zur Problembehandlung für Azure Virtual Machines](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines).
+
+
+## <a name="post-a-question-on-microsoft-qa"></a>Stellen einer Frage bei Microsoft Q&A (Fragen und Antworten)
+
+<div class='icon is-large'>
+    <img alt='Microsoft Q&A' src='./media/microsoft-logo.png'>
+</div>   
+
+Bei [Microsoft Q&A (Fragen und Antworten)](/answers/products/azure), der bevorzugten Azure-Plattform für Communitysupport, erhalten Sie von Microsoft-Technikern, Azure MVPs (Most Valuable Professionals) oder unserer fachkundigen Community schnell und zuverlässig Antworten auf technische Produktfragen. 
+
+Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermitteln Sie eine neue Frage an Microsoft Q&A (Fragen und Antworten). Verwenden Sie für Ihre Frage eines der folgenden Tags:
+
+
+| Bereich | Tag |
+|-------|----------------------|
+| [Dokumentation zu virtuellen Computern](./linux/overview.md) | [azure-virtual-machines](/answers/topics/azure-virtual-machines.html) | 
+| [Azure SQL-VMs](https://docs.microsoft.com/azure/azure-sql/virtual-machines/) | [azure-sql-virtual-machines](/answers/topics/azure-sql-virtual-machines.html)| 
+| [Sicherung von Azure-VMs](backup-recovery.md) | [azure-virtual-machine-backup](/answers/topics/azure-virtual-machine-backup.html) | 
+| [Azure-VM-Erweiterung](./extensions/overview.md) | [azure-virtual-machine-extension](/answers/topics/azure-virtual-machine-extension.html)| 
+| [Azure-VM-Images](shared-image-galleries.md) | [azure-virtual-machine-images](/answers/topics/azure-virtual-machine-images.html) | 
+| [Migration zu Azure Virtual Machines](classic-vm-deprecation.md) | [azure-virtual-machine-migration](/answers/topics/azure-virtual-machine-migration.html) | 
+| [Überwachen von Azure-VMs](../azure-monitor/vm/monitor-vm-azure.md) | [azure-virtual-machine-monitoring](/answers/topics/azure-virtual-machine-monitoring.html) |
+| [Azure-VM-Netzwerke](network-overview.md) | [azure-virtual-machine-networking](/answers/topics/azure-virtual-machine-networking.html) | 
+| [Azure-VM-Speicher](managed-disks-overview.md) | [azure-virtual-machine-storage](/answers/topics/azure-virtual-machine-storage.html) | 
+| [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) | [azure-virtual-machine-scale-set](/answers/topics/azure-virtual-machine-scale-set.html) | 
+
+## <a name="create-an-azure-support-request"></a>Erstellen einer Azure-Supportanfrage
+
+<div class='icon is-large'>
+    <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
+</div>
+
+Erkunden Sie die verschiedenen [Azure-Supportoptionen, und wählen Sie den Plan aus](https://azure.microsoft.com/support/plans), der am besten zu Ihren Anforderungen passt – unabhängig davon, ob Sie als Entwickler gerade erst damit beginnen, sich mit der Cloud zu beschäftigen, oder ob Sie in einer großen Organisation für die Bereitstellung geschäftskritischer, strategischer Anwendungen zuständig sind. Azure-Kunden können Supportanfragen im Azure-Portal erstellen und verwalten.
+
+- Wenn Sie bereits einen Azure-Supportplan haben, [stellen Sie hier eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+- Um sich für einen neuen Azure-Supportplan zu registrieren, [vergleichen Sie die Supportpläne](https://azure.microsoft.com/support/plans/), und wählen Sie einen geeigneten Plan aus. 
+
+
+## <a name="create-a-github-issue"></a>Erstellen eines GitHub-Problems
+
+<div class='icon is-large'>
+    <img alt='GitHub-image' src='../active-directory/develop/media/common/github.svg'>
+</div>
+
+Wenn Sie Hilfe bei der Programmiersprache und den Tools zum Entwickeln und Verwalten von Azure-VMs benötigen, öffnen Sie ein Problem im zugehörigen Repository auf GitHub.
+
+| Bibliothek | URL für GitHub-Probleme|
+| --- | --- |
+| Azure PowerShell | https://github.com/Azure/azure-powershell/issues |
+| Azure CLI | https://github.com/Azure/azure-cli/issues | 
+| Azure-REST-API | https://github.com/Azure/azure-rest-api-specs/issues | 
+| Azure SDK für Java | https://github.com/Azure/azure-sdk-for-java/issues | 
+| Azure SDK für Python | https://github.com/Azure/azure-sdk-for-python/issues | 
+| Azure SDK für .NET | https://github.com/Azure/azure-sdk-for-net/issues | 
+| Azure SDK für JavaScript | https://github.com/Azure/azure-sdk-for-js/issues | 
+| Jenkins | https://github.com/Azure/jenkins/issues | 
+| Terraform | https://github.com/Azure/terraform/issues | 
+| Ansible | https://github.com/Azure/Ansible/issues | 
+
+
+
+## <a name="submit-feature-requests-on-azure-feedback"></a>Übermitteln von Featureanforderungen über Azure-Feedback
+
+<div class='icon is-large'>
+    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
+</div>
+
+Neue Features können per Azure-Feedback angefordert werden. Teilen Sie uns Ihre Ideen zur Verbesserung von Azure Virtual Machines mit.
+
+| Dienst                       | URL für Azure-Feedback |
+|-------------------------------|---------------|
+| Azure Virtual Machines  | https://feedback.azure.com/forums/216843-virtual-machines 
+
+## <a name="stay-informed-of-updates-and-new-releases"></a>Erhalten von Informationen zu Updates und neuen Releases
+
+<div class='icon is-large'>
+    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
+</div>
+
+Informieren Sie sich unter [Azure-Updates](https://azure.microsoft.com/updates/?category=compute) über wichtige Produktupdates, über die Roadmap sowie über Ankündigungen.
+
+Neuigkeiten und Informationen zu Azure Virtual Machines werden im [Azure-Blog](https://azure.microsoft.com/blog/topics/virtual-machines/) veröffentlicht.
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/)

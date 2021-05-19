@@ -1,5 +1,5 @@
 ---
-title: Installieren des Azure AD Connect-Cloudbereitstellungs-Agents mit PowerShell
+title: Installieren des Azure AD Connect Cloudbereitstellungs-Agents mithilfe einer Befehlszeilenschnittstelle (Command-Line Interface, CLI) und PowerShell
 description: Erfahren Sie, wie Sie den Azure AD Connect-Cloudbereitstellungs-Agent mithilfe von PowerShell-Cmdlets installieren.
 services: active-directory
 author: billmath
@@ -11,16 +11,18 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c20cfb96b5cd6e1d05e332fa7157fe6e0cde8656
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5f560321b13e4c7a47aed262a1d312093e9be56
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612653"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758823"
 ---
-# <a name="install-the-azure-ad-connect-provisioning-agent-using-powershell-cmdlets"></a>Installieren des Azure AD Connect-Cloudbereitstellungs-Agents mit PowerShell-Cmdlets 
+# <a name="install-the-azure-ad-connect-provisioning-agent-using-a-command-line-interface-cli-and-powershell"></a>Installieren des Azure AD Connect-Bereitstellungsagenten mithilfe einer Befehlszeilenschnittstelle (CLI) und PowerShell
 Im folgenden Dokument wird erläutert, wie Sie den Azure AD Connect-Bereitstellungs-Agent mithilfe von PowerShell-Cmdlets installieren.
  
+>[!NOTE]
+>In diesem Dokument wird die Installation des Bereitstellungsagenten über die Befehlszeilenschnittstelle behandelt.  Informationen zum Installieren des Azure AD Connect-Bereitstellungsagenten mithilfe des Assistenten finden Sie unter [Installieren des Azure AD Connect-Bereitstellungsagenten](how-to-install.md).
 
 ## <a name="prerequisite"></a>Voraussetzung: 
 
@@ -28,11 +30,11 @@ Im folgenden Dokument wird erläutert, wie Sie den Azure AD Connect-Bereitstell
 >[!IMPORTANT]
 >In den folgenden Installationsanweisungen wird davon ausgegangen, dass alle [Voraussetzungen](how-to-prerequisites.md) erfüllt sind.
 >
-> Auf dem Windows-Server muss TLS 1.2 aktiviert sein, bevor Sie den Azure AD Connect-Cloudbereitstellungs-Agent mithilfe von PowerShell-Cmdlets installieren können. Zum Aktivieren von TLS 1.2 können Sie die [hier](how-to-prerequisites.md#tls-requirements) aufgeführten Schritte ausführen.
+> Auf dem Windows-Server muss TLS 1.2 aktiviert sein, bevor Sie den Azure AD Connect-Cloudbereitstellungsagenten mithilfe von PowerShell-Cmdlets installieren können. Zum Aktivieren von TLS 1.2 können Sie die [hier](how-to-prerequisites.md#tls-requirements) aufgeführten Schritte ausführen.
 
  
 
-## <a name="install-the-azure-ad-connect-provisioning-agent-using-powershell-cmdlets"></a>Installieren des Azure AD Connect-Cloudbereitstellungs-Agents mit PowerShell-Cmdlets 
+## <a name="install-the-azure-ad-connect-provisioning-agent-using-powershell-cmdlets"></a>Installieren des Azure AD Connect-Cloudbereitstellungsagenten mit PowerShell-Cmdlets 
 
 
  1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu **Azure Active Directory**.
@@ -51,7 +53,7 @@ Im folgenden Dokument wird erläutert, wie Sie den Azure AD Connect-Bereitstell
  7. Importieren des PS-Moduls für den Bereitstellungs-Agent 
 
    ```
-   Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.Powershell.dll" 
+   Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.PowerShell.dll" 
    ```
  8. Stellen Sie mithilfe der Anmeldeinformationen des globalen Administrators eine Verbindung mit Azure AD her, um diesen Abschnitt anzupassen und das Kennwort aus einem sicheren Speicher abzurufen. 
 

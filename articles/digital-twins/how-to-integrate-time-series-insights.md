@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5aa74920919e7af98368d08bfea892494273f946
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 18089da198d842f19eb6c42e82188dc615888993
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208633"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789928"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrieren von Azure Digital Twins in Azure Time Series Insights
 
@@ -24,10 +24,8 @@ Mithilfe der in diesem Artikel beschriebenen Lösung können Sie Verlaufsdaten z
 
 Bevor Sie eine Beziehung mit Time Series Insights einrichten können, müssen Sie die folgenden Ressourcen einrichten:
 * Einen **IoT-Hub**. Anweisungen hierzu finden Sie unter Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Durchführen der Überwachung per Azure CLI im Abschnitt *[Erstellen eines IoT Hubs](../iot-hub/quickstart-send-telemetry-cli.md#create-an-iot-hub)*.
-* Eine **Azure Digital Twins-Instanz**.
-Anweisungen dazu finden Sie unter [Gewusst wie: Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung](./how-to-set-up-instance-portal.md).
-* Ein **Modell und einen Zwilling in der Azure Digital Twins-Instanz**.
-Sie müssen die Informationen des Zwillings einige Male aktualisieren, damit die Daten in Time Series Insights nachverfolgt werden können. Anweisungen finden Sie im Artikel Erfassen von IoT Hub Telemetriedaten in Azure Digital Twins im Abschnitt *[Hinzufügen eines Modells und eines Zwillings](how-to-ingest-iot-hub-data.md#add-a-model-and-twin)*.
+* Eine **Azure Digital Twins-Instanz**. Anweisungen dazu finden Sie unter [Gewusst wie: Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung](./how-to-set-up-instance-portal.md).
+* Ein **Modell und einen Zwilling in der Azure Digital Twins-Instanz**. Sie müssen die Informationen des Zwillings einige Male aktualisieren, damit die Daten in Time Series Insights nachverfolgt werden können. Anweisungen finden Sie im Artikel Erfassen von IoT Hub Telemetriedaten in Azure Digital Twins im Abschnitt *[Hinzufügen eines Modells und eines Zwillings](how-to-ingest-iot-hub-data.md#add-a-model-and-twin)*.
 
 > [!TIP]
 > In diesem Artikel werden die geänderten Werte für digitale Zwillinge, die in Time Series Insights angezeigt werden, der Einfachheit halber manuell aktualisiert. Wenn Sie diesen Artikel jedoch mit simulierten Livedaten durcharbeiten möchten, können Sie eine Azure-Funktion einrichten, die digitale Zwillinge basierend auf IoT-Telemetrieereignissen von einem simulierten Gerät aktualisiert. Anweisungen hierzu finden Sie unter [Erfassen von IoT Hub-Telemetriedaten in Azure Digital Twins](how-to-ingest-iot-hub-data.md). In diesem Artikel werden u. a. die letzten Schritte zum Ausführen des Gerätesimulators und zum Überprüfen der ordnungsgemäßen Funktion des Datenflusses erläutert.
@@ -52,7 +50,7 @@ Sie fügen Time Series Insights über den folgenden Pfad an Azure Digital Twins 
 Bevor Sie die Event Hubs erstellen, erstellen Sie zuerst einen Event Hub-Namespace, der Ereignisse von Ihrer Azure Digital Twins-Instanz empfängt. Sie können entweder die folgenden Azure CLI Anweisungen oder das Azure-Portal verwenden: [Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md). Informationen zu Regionen, die Event Hubs unterstützen, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs).
 
 ```azurecli-interactive
-az eventhubs namespace create --name <name-for-your-event-hubs-namespace> --resource-group <your-resource-group> -l <region>
+az eventhubs namespace create --name <name-for-your-event-hubs-namespace> --resource-group <your-resource-group> --location <region>
 ```
 
 > [!TIP]
@@ -95,7 +93,7 @@ az eventhubs eventhub authorization-rule create --rights Listen Send --name <nam
 Erstellen Sie einen Azure Digital Twins-[Endpunkt](concepts-route-events.md#create-an-endpoint), der Ihren Event Hub mit Ihrer Azure Digital Twins-Instanz verknüpft. Geben Sie einen Namen für den Endpunkt Ihres Zwillingshubs an.
 
 ```azurecli-interactive
-az dt endpoint create eventhub -n <your-Azure-Digital-Twins-instance-name> --eventhub-resource-group <your-resource-group> --eventhub-namespace <your-event-hubs-namespace-from-earlier> --eventhub <your-twins-hub-name-from-above> --eventhub-policy <your-twins-hub-auth-rule-from-earlier> --endpoint-name <name-for-your-twins-hub-endpoint>
+az dt endpoint create eventhub --dt-name <your-Azure-Digital-Twins-instance-name> --eventhub-resource-group <your-resource-group> --eventhub-namespace <your-event-hubs-namespace-from-earlier> --eventhub <your-twins-hub-name-from-above> --eventhub-policy <your-twins-hub-auth-rule-from-earlier> --endpoint-name <name-for-your-twins-hub-endpoint>
 ```
 
 ### <a name="create-twins-hub-event-route"></a>Erstellen einer Ereignisroute für den Zwillingshub
@@ -105,7 +103,7 @@ Azure Digital Twins-Instanzen können [Ereignisse zur Aktualisierung von Zwillin
 Erstellen Sie eine [Route](concepts-route-events.md#create-an-event-route) in Azure Digital Twins, um Ereignisse zur Aktualisierung von Zwillingen an Ihren obigen Endpunkt zu senden. Der Filter in dieser Route erlaubt nur das Weitergeben von Nachrichten über Zwillingsaktualisierungen an Ihren Endpunkt. Geben Sie einen Namen für die Zwillingshub-Ereignisroute an.
 
 ```azurecli-interactive
-az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <your-twins-hub-endpoint-from-above> --route-name <name-for-your-twins-hub-event-route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
+az dt route create --dt-name <your-Azure-Digital-Twins-instance-name> --endpoint-name <your-twins-hub-endpoint-from-above> --route-name <name-for-your-twins-hub-event-route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
 ```
 
 ### <a name="get-twins-hub-connection-string"></a>Abrufen der Verbindungszeichenfolge für den Zwillingshub
@@ -202,13 +200,13 @@ Als Nächstes fügen Sie Umgebungsvariablen in den Einstellungen der Funktions-A
 Verwenden Sie den zuvor gespeicherten Zwillingshubwert für **primaryConnectionString**, um in Ihrer Funktions-App eine App-Einstellung zu erstellen, die die Zwillingshub-Verbindungszeichenfolge enthält:
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<your-twins-hub-primaryConnectionString>" -g <your-resource-group> -n <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<your-twins-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>
 ```
 
 Verwenden Sie den zuvor gespeicherten Zeitreihenhubwert für **primaryConnectionString**, um in Ihrer Funktions-App eine App-Einstellung zu erstellen, die die Zeitreihenhub-Verbindungszeichenfolge enthält:
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-time-series-hub-primaryConnectionString>" -g <your-resource-group> -n <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-time-series-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>
 ```
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Erstellen und Verbinden einer Time Series Insights-Instanz
@@ -252,10 +250,10 @@ In diesem Abschnitt richten Sie eine Time Series Insights-Instanz zum Empfangen 
 
 Um mit dem Senden von Daten an Time Series Insights zu beginnen, müssen Sie zunächst die Eigenschaften des digitalen Zwillings in Azure Digital Twins mit sich ändernden Datenwerten aktualisieren.
 
-Verwenden Sie den folgenden CLI-Befehl, um die *Temperature*-Eigenschaft des *Thermostat67*-Zwillings zu aktualisieren, den Sie Ihrer Instanz im Abschnitt [Voraussetzungen](#prerequisites) hinzugefügt haben.
+Verwenden Sie den folgenden CLI-Befehl, um die *Temperature*-Eigenschaft des Thermostat67-Zwillings zu aktualisieren, den Sie Ihrer Instanz im Abschnitt [Voraussetzungen](#prerequisites) hinzugefügt haben.
 
 ```azurecli-interactive
-az dt twin update -n <your-azure-digital-twins-instance-name> --twin-id thermostat67 --json-patch '{"op":"replace", "path":"/Temperature", "value": 20.5}'
+az dt twin update --dt-name <your-azure-digital-twins-instance-name> --twin-id thermostat67 --json-patch '{"op":"replace", "path":"/Temperature", "value": 20.5}'
 ```
 
 **Wiederholen Sie den Befehl mindestens vier weitere Male mit unterschiedlichen Temperaturwerten**, um mehrere Datenpunkte zu erstellen, die später in der Time Series Insights-Umgebung beobachtet werden können.
@@ -272,9 +270,9 @@ Nun sollten Daten in Ihre Time Series Insights-Instanz übertragen werden, die z
 
     :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Screenshot: Auswählen der Time Series Insights-Explorer-URL im Azure-Portal auf der Übersichtsregisterkarte Ihrer Time Series Insights-Umgebung" lightbox="media/how-to-integrate-time-series-insights/view-environment.png":::
 
-2. Im Explorer werden die Zwillinge in der Azure Digital Twins-Instanz auf der linken Seite angezeigt. Wählen Sie den Zwilling *thermostat67* und anschließend die Eigenschaft *Temperature* aus, und klicken Sie auf **Hinzufügen**.
+2. Im Explorer werden die Zwillinge in der Azure Digital Twins-Instanz auf der linken Seite angezeigt. Wählen Sie den Zwilling „thermostat67“, anschließend die *Temperature*-Eigenschaft und dann **Hinzufügen** aus.
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Screenshot: Auswählen von „thermostat67“ im Time Series Insights-Explorer, Auswählen der Eigenschaftstemperatur und Klicken auf „Hinzufügen“" lightbox="media/how-to-integrate-time-series-insights/add-data.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Screenshot der Auswahl von „thermostat67“ im Time Series Insights-Explorer, der Temperature-Eigenschaft und von „Hinzufügen“" lightbox="media/how-to-integrate-time-series-insights/add-data.png":::
 
 3. Sie sollten jetzt die anfänglichen Temperaturmesswerte Ihres Thermostats wie unten dargestellt sehen: 
 

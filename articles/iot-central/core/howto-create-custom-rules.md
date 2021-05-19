@@ -9,16 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: a65d9dbaed4d197c2e0843e73ff3f45b8678017e
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 2eb776add1e4a53edc6f4f57983074af31d8f52d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864215"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750039"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Regeln mithilfe von Stream Analytics, Azure Functions und SendGrid
 
-Diese Schrittanleitung veranschaulicht, wie Sie als Lösungsentwickler Ihre IoT Central-Anwendung um benutzerdefinierte Regeln und Benachrichtigungen erweitern können. Das Beispiel zeigt, wie eine Benachrichtigung an einen Bediener gesendet wird, wenn ein Gerät keine Telemetriedaten mehr sendet. Die Lösung verwendet eine [Azure Stream Analytics](../../stream-analytics/index.yml)-Abfrage, um zu erkennen, wenn ein Gerät das Senden von Telemetriedaten einstellt. Der Stream Analytics-Auftrag verwendet [Azure Functions](../../azure-functions/index.yml), um mithilfe von [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) Benachrichtigungs-E-Mails zu senden.
+Dieser Leitfaden veranschaulicht, wie Sie Ihre IoT Central-Anwendung um benutzerdefinierte Regeln und Benachrichtigungen erweitern können. Das Beispiel zeigt, wie eine Benachrichtigung an einen Bediener gesendet wird, wenn ein Gerät keine Telemetriedaten mehr sendet. Die Lösung verwendet eine [Azure Stream Analytics](../../stream-analytics/index.yml)-Abfrage, um zu erkennen, wenn ein Gerät das Senden von Telemetriedaten einstellt. Der Stream Analytics-Auftrag verwendet [Azure Functions](../../azure-functions/index.yml), um mithilfe von [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) Benachrichtigungs-E-Mails zu senden.
 
 Diese Schrittanleitung zeigt, wie Sie IoT Central mithilfe von integrierten Regeln und Aktionen über die bisherige Funktionalität hinaus erweitern.
 

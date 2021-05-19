@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 8bc3c3dfba8414381c4bc26508e96d12925df7ab
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9cb46ef11ab7cc86efa0842fe5952b92170aa648
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135777"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737400"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -39,7 +39,9 @@ Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstati
 |Vorkonfiguriert&nbsp;für&nbsp;ML|Sparen Sie Zeit bei der Einrichtung von Aufgaben mit vorkonfigurierten und aktuellen ML-Paketen, Deep Learning- Frameworks und GPU-Treibern.|
 |Vollständig anpassbar|Umfassende Unterstützung für Azure-VM-Typen einschließlich GPUs und durchweg einfache Anpassungen wie die Installation von Paketen und Treibern machen erweiterte Szenarien zu einem Kinderspiel. |
 
-Sie können selbst [eine Compute-Instanz erstellen](how-to-create-manage-compute-instance.md?tabs=python#create), oder ein Administrator kann [eine Compute-Instanz für Sie erstellen](how-to-create-manage-compute-instance.md?tabs=python#create-on-behalf-of-preview).
+Sie können selbst eine [Compute-Instanz erstellen](how-to-create-manage-compute-instance.md?tabs=python#create) oder ein Administrator kann eine **[Compute-Instanz für Sie erstellen](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)** .
+
+Sie können auch ein **[Setupskript (Vorschau) verwenden](how-to-create-manage-compute-instance.md#setup-script)** , um die Computeinstanz gemäß Ihren Anforderungen automatisch anzupassen und zu konfigurieren.
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Tools und Umgebungen
 
@@ -84,7 +86,7 @@ Die folgenden Tools und Umgebungen sind in der Compute-Instanz bereits installie
 |ONNX-Pakete|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Python- und R-SDK-Beispiele für Azure Machine Learning||
 
-Python-Pakete sind alle in der **Python 3.6 – AzureML**-Umgebung installiert.  
+Python-Pakete sind alle in der **Python 3.8 – AzureML**-Umgebung installiert. Die Compute-Instanz verfügt über Ubuntu 18.04 als Basisbetriebssystem.
 
 ## <a name="accessing-files"></a>Zugreifen auf Dateien
 
@@ -98,7 +100,7 @@ Sie können auch die neuesten Azure Machine Learning-Beispiele in Ihren Ordner i
 
 Das Schreiben kleiner Dateien kann auf Netzlaufwerken langsamer sein als das Schreiben auf den lokalen Datenträger der Compute-Instanz selbst.  Wenn Sie viele kleine Dateien schreiben, sollten Sie versuchen, ein Verzeichnis direkt auf der Compute-Instanz zu verwenden, z. B. ein `/tmp`-Verzeichnis. Beachten Sie, dass auf diese Dateien von anderen Compute-Instanzen nicht zugegriffen werden kann. 
 
-Sie können das Verzeichnis `/tmp` auf der Compute-Instanz für Ihre temporären Daten verwenden.  Schreiben Sie jedoch keine großen Dateien mit Daten auf den Betriebssystemdatenträger der Compute-Instanz.  Verwenden Sie stattdessen [Datenspeicher](concept-azure-machine-learning-architecture.md#datasets-and-datastores). Wenn Sie die JupyterLab Git-Erweiterung installiert haben, kann dies auch zu einer Verlangsamung der Leistung von Compute-Instanzen führen.
+Speichern Sie keine Trainingsdaten auf der Notebook-Dateifreigabe. Sie können das Verzeichnis `/tmp` auf der Compute-Instanz für Ihre temporären Daten verwenden.  Schreiben Sie jedoch keine sehr großen Dateien mit Daten auf den Betriebssystemdatenträger der Compute-Instanz. Der Betriebssystemdatenträger der Compute-Instanz verfügt über eine Kapazität von 128 GB. Sie können temporäre Trainingsdaten auch auf einem temporären Datenträger speichern, der auf /mnt eingebunden ist. Die temporäre Datenträgergröße kann basierend auf der gewählten VM-Größe konfiguriert werden und kann größere Datenmengen speichern, wenn eine VM mit höherer Größe ausgewählt wird. Sie können auch [Datenspeicher und Datasets](concept-azure-machine-learning-architecture.md#datasets-and-datastores) einbinden. 
 
 ## <a name="managing-a-compute-instance"></a>Verwalten einer Compute-Instanz
 
@@ -106,41 +108,18 @@ Wählen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio **Compute** au
 
 ![Verwalten einer Compute-Instanz](./media/concept-compute-instance/manage-compute-instance.png)
 
-Sie können folgende Aktionen ausführen:
-
-* [Erstellen einer Compute-Instanz](#create). 
-* Aktualisieren der Registerkarte „Compute-Instanzen“.
-* Starten, Beenden und erneutes Starten einer Compute-Instanz.  Sie zahlen für die Instanz, wann immer sie ausgeführt wird. Beenden Sie die Compute-Instanz, wenn Sie sie nicht verwenden, um Kosten zu sparen. Das Beenden einer Compute-Instanz gibt diese frei. Starten Sie sie dann erneut, wenn Sie sie benötigen. Beachten Sie, dass das Beenden der Compute-Instanz die Abrechnung der Computestunden stoppt, aber Ihnen werden weiterhin Datenträger, öffentliche IP-Adresse und Standardlastenausgleich in Rechnung gestellt.
-* Löschen einer Compute-Instanz.
-* Filtern Sie die Liste der Compute-Instanzen, um nur diejenigen anzuzeigen, die Sie erstellt haben.
-
-Für jede Compute-Instanz in Ihrem Arbeitsbereich, die Sie verwenden können, haben Sie folgende Möglichkeiten:
-
-* Zugreifen auf Jupyter, JupyterLab, RStudio auf der Computeinstanz
-* SSH-Verbindung mit Compute-Instanz. Der SSH-Zugriff ist standardmäßig deaktiviert, kann aber zum Zeitpunkt der Erstellung der Compute-Instanz aktiviert werden. Der SSH-Zugriff erfolgt über einen Mechanismus mit öffentlichem/privatem Schlüssel. Auf der Registerkarte finden Sie Details zur SSH-Verbindung wie IP-Adresse, Benutzername und Portnummer.
-* Informieren Sie sich über Details einer bestimmten Compute-Instanz wie IP-Adresse und Region.
-
-Mithilfe von [Azure RBAC](../role-based-access-control/overview.md) können Sie steuern, welche Benutzer im Arbeitsbereich eine Compute-Instanz erstellen, löschen, starten, beenden und neu starten können. Alle Benutzer mit der Rolle „Mitwirkender“ und „Besitzer“ des Arbeitsbereichs können Compute-Instanzen im gesamten Arbeitsbereich erstellen, löschen, starten, beenden und neu starten. Allerdings darf nur der Ersteller einer bestimmten Compute-Instanz oder der zugewiesene Benutzer (falls sie in seinem Namen erstellt wurde) auf dieser Compute-Instanz auf Jupyter, JupyterLab und RStudio zugreifen. Eine Compute-Instanz ist für einen einzelnen Benutzer vorgesehen, der über Root-Zugriff und Terminalzugriff über Jupyter/JupyterLab/RStudio verfügt. Die Compute-Instanz weist die Einzelbenutzeranmeldung auf, und alle Aktionen verwenden die Identität dieses Benutzers für Azure RBAC und die Zuordnung von Experimentausführungen. Der SSH-Zugriff wird über einen Mechanismus mit öffentlichem/privatem Schlüssel gesteuert.
-
-Diese Aktionen können von Azure RBAC gesteuert werden:
-* *Microsoft.MachineLearningServices/workspaces/computes/read*
-* *Microsoft.MachineLearningServices/workspaces/computes/write*
-* *Microsoft.MachineLearningServices/workspaces/computes/delete*
-* *Microsoft.MachineLearningServices/workspaces/computes/start/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
-
-Zum Erstellen einer Compute-Instanz müssen Sie über Berechtigungen für die folgenden Aktionen verfügen:
-* *Microsoft.MachineLearningServices/workspaces/computes/write*
-* *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
-
+Weitere Informationen zum Verwalten der Compute-Instanz finden Sie unter [Erstellen und Verwalten einer Azure Machine Learning-Computeinstanz](how-to-create-manage-compute-instance.md).
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>Erstellen einer Compute-Instanz
 
-Erstellen Sie in Ihrem Arbeitsbereich im Azure Machine Learning Studio [eine neue Compute-Instanz](how-to-create-attach-compute-studio.md#compute-instance) entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen. 
+Als Administrator können Sie eine **[Compute-Instanz für andere Benutzer im Arbeitsbereich (Vorschau) erstellen](how-to-create-manage-compute-instance.md#on-behalf)** .  
+
+Sie können auch ein **[Setupskript (Vorschau) verwenden](how-to-create-manage-compute-instance.md#setup-script)** , um die Computeinstanz gemäß Ihren Anforderungen automatisch anzupassen und zu konfigurieren.
+
+[Erstellen Sie für eine neue Compute-Instanz](how-to-create-attach-compute-studio.md#compute-instance) in Ihrem Arbeitsbereich im Azure Machine Learning Studio eine neue Compute-Instanz entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen. 
 
 Sie können auch eine Instanz
-* direkt in der [integrierten Notebookumgebung](tutorial-1st-experiment-sdk-setup.md#azure) erstellen.
+* direkt in der [integrierten Notebookumgebung](tutorial-train-models-with-aml.md#azure) erstellen.
 * Im Azure-Portal
 * Über eine Azure Resource Manager-Vorlage. Eine Beispielvorlage finden Sie unter [Erstellen einer Azure Machine Learning Compute-Instanzvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).
 * Mit dem [Azure Machine Learning SDK](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/concept-compute-instance.md)
@@ -150,24 +129,6 @@ Das Kontingent dedizierter Kerne pro Region pro VM-Familie und gesamte regionale
 
 Die Compute-Instanz verfügt über einen P10-Betriebssystemdatenträger. Der Typ des temporären Datenträgers hängt von der ausgewählten VM-Größe ab. Derzeit ist es nicht möglich, den Betriebssystemdatenträgertyp zu ändern.
 
-
-### <a name="create-on-behalf-of-preview"></a>Erstellen im Namen von (Vorschau)
-
-Als Administrator können Sie im Namen einer wissenschaftlichen Fachkraft für Daten eine Compute-Instanz erstellen und ihr die Instanz mit der folgenden Methode zuweisen:
-* [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Ausführliche Informationen zum Suchen der in dieser Vorlage benötigten „TenantID“ und „ObjectID“ finden Sie unter [Ermitteln von Identitätsobjekt-IDs für die Authentifizierungskonfiguration](../healthcare-apis/fhir/find-identity-object-ids.md).  Sie können diese Werte auch im Azure Active Directory-Portal abrufen.
-* REST-API
-
-Die wissenschaftliche Fachkraft für Daten, für die Sie die Compute-Instanz erstellen, benötigt die folgenden Azure RBAC-Berechtigungen: 
-* *Microsoft.MachineLearningServices/workspaces/computes/start/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action*
-
-Die wissenschaftliche Fachkraft für Daten kann die Compute-Instanz starten, beenden und neu starten. Sie kann die Compute-Instanz für folgende Zwecke verwenden:
-* Jupyter
-* JupyterLab
-* RStudio
-* Integrierte Notebooks
 
 ## <a name="compute-target"></a>Computeziel
 
@@ -182,7 +143,7 @@ Folgendes gilt für eine Compute-Instanz:
 Sie können die Compute-Instanz als gefolgertes lokales Bereitstellungsziel für Test-/Debugszenarien verwenden.
 
 > [!TIP]
-> Die Compute-Instanz verfügt über einen 120 GB Betriebssystemdatenträger. Wenn kein Speicherplatz mehr verfügbar ist und Sie in einen nicht arbeitsfähigen Zustand geraten, löschen Sie mindestens 5 GB Speicherplatz auf dem Betriebssystemdatenträger (/dev/sda1/-Dateisystem, das in „/“ eingebunden ist) über das JupyterLab-Terminal, indem Sie Dateien/Ordner entfernen und dann einen sudo-Neustart ausführen. Um auf das JupyterLab-Terminal zuzugreifen, wechseln Sie zu https://ComputeInstanceName.AzureRegion.instances.azureml.ms/lab, wobei Sie den Namen der Compute-Instanz und der Azure-Region ersetzen, und klicken Sie dann auf „Datei->Neu->Terminal“. Löschen Sie mindestens 5 GB, bevor Sie die Compute-Instanz [beenden oder neu starten](how-to-create-manage-compute-instance.md#manage). Sie können den verfügbaren Speicherplatz auf dem Datenträger überprüfen, indem Sie „df -h“ im Terminal ausführen.
+> Die Compute-Instanz verfügt über einen 120 GB Betriebssystemdatenträger. Wenn kein Speicherplatz mehr verfügbar ist und Sie in einen nicht arbeitsfähigen Zustand geraten, löschen Sie mindestens 5 GB Speicherplatz auf dem Betriebssystemdatenträger (in „/“ eingebunden) über das Computeinstanz-Terminal, indem Sie Dateien bzw. Ordner entfernen und anschließend `sudo reboot` ausführen. Um auf das Terminal zuzugreifen, wechseln Sie zur Seite „Computeliste“ oder zur Seite „Computeinstanz-Details“, und klicken Sie auf den Link **Terminal**. Sie können den verfügbaren Speicherplatz auf dem Datenträger überprüfen, indem Sie `df -h` im Terminal ausführen. Löschen Sie mindestens 5 GB Speicherplatz, bevor Sie `sudo reboot` ausführen. Beenden oder starten Sie die Computeinstanz erst dann über Studio neu, wenn 5 GB Speicherplatz gelöscht wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

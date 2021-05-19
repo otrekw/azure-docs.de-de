@@ -3,12 +3,12 @@ title: Upgrade von Azure Service Fabric-Clustern
 description: Erfahren Sie mehr über die Optionen zum Aktualisieren Ihres Azure Service Fabric-Clusters.
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 636d4cb11f7cc6780d560d3d0043a89c69840a4f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9af6a9b4d515fcede5bc0444a93ae8118077e7dd
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731110"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738750"
 ---
 # <a name="upgrading-and-updating-azure-service-fabric-clusters"></a>Upgrade und Update von Azure Service Fabric-Clustern
 
@@ -116,7 +116,7 @@ Viele verschiedene Konfigurationseinstellungen wie Zuverlässigkeitsstufe des Cl
 
 ### <a name="upgrading-os-images-for-cluster-nodes"></a>Aktualisieren von Betriebssystemimages für Clusterknoten
 
-Die Aktivierung automatischer Upgrades von Betriebssystemimages für Ihre Service Fabric-Clusterknoten ist eine bewährte Methode. Zu diesem Zweck müssen mehrere Clusteranforderungen erfüllt und Schritte ausgeführt werden. Eine weitere Option ist die Verwendung der Patchorchestrierungsanwendung (POA), einer Service Fabric-Anwendung, mit der das Patchen des Betriebssystems in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann. Weitere Informationen zu diesen Optionen finden Sie unter [Patchen des Windows-Betriebssystems in Ihrem Service Fabric-Cluster](service-fabric-patch-orchestration-application.md).
+Die Aktivierung automatischer Upgrades von Betriebssystemimages für Ihre Service Fabric-Clusterknoten ist eine bewährte Methode. Zu diesem Zweck müssen mehrere Clusteranforderungen erfüllt und Schritte ausgeführt werden. Eine weitere Option ist die Verwendung der Patchorchestrierungsanwendung (POA), einer Service Fabric-Anwendung, mit der das Patchen des Betriebssystems in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann. Weitere Informationen zu diesen Optionen finden Sie unter [Patchen des Windows-Betriebssystems in Ihrem Service Fabric-Cluster](how-to-patch-cluster-nodes-windows.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

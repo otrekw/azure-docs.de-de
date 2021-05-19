@@ -1,7 +1,7 @@
 ---
-title: 'Livestreaming mit Media Services v3: Node.js'
+title: Livestreaming mit Media Services, Node.js und TypeScript
 titleSuffix: Azure Media Services
-description: Hier finden Sie eine Anleitung zum Livestreaming mit Node.js.
+description: Erfahren Sie, wie Sie Liveereignisse mithilfe von Node.js, TypeScript und OBS Studio streamen.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -15,30 +15,32 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-nodejs
 ms.date: 04/15/2021
 ms.author: inhenkel
-ms.openlocfilehash: 749d2fc845f036a2802c80c161b3fc8c171c2555
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 5b7c080e532a7a8cb220a501fb7239300b3f2d3e
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107730208"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109712872"
 ---
-# <a name="tutorial-stream-live-with-media-services-using-nodejs-and-typescript"></a>Tutorial: Livestreaming mit Media Services, Node.js und TypeScript
+# <a name="tutorial-stream-live-with-media-services-by-using-nodejs-and-typescript"></a>Tutorial: Livestreaming mit Media Services, Node.js und TypeScript
 
-> [!NOTE]
-> In diesem Tutorial werden Node.js-Beispiele verwendet. Die allgemeinen Schritte sind jedoch auch bei Verwendung der [REST-API](/rest/api/media/liveevents), der [CLI](/cli/azure/ams/live-event) oder anderer unterstützter [SDKs](media-services-apis-overview.md#sdks) gleich. 
+In Azure Media Services sind [Liveereignisse](/rest/api/media/liveevents) für die Verarbeitung von Livestreaminginhalten zuständig. Ein Liveereignis stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann für einen Liveencoder bereitstellen. Das Liveereignis empfängt Eingabestreams aus dem Liveencoder und stellt diese zum Streamen durch einen oder mehrere [Streamingendpunkte](/rest/api/media/streamingendpoints) zur Verfügung. Zudem stellen Liveereignisse einen Vorschauendpunkt (Vorschau-URL) bereit, mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie ihn weiter verarbeiten und übermitteln. 
 
-In Azure Media Services sind [Liveereignisse](/rest/api/media/liveevents) für die Verarbeitung von Livestreaminginhalten zuständig. Ein Liveereignis stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann für einen Liveencoder bereitstellen. Das Liveereignis empfängt Live-Eingabestreams aus dem Liveencoder und stellt diese zum Streamen durch einen oder mehrere [Streamingendpunkte](/rest/api/media/streamingendpoints) zur Verfügung. Zudem stellen Liveereignisse einen Vorschauendpunkt (Vorschau-URL) bereit, mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie ihn weiter verarbeiten und übermitteln. In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von Node.js ein Liveereignis vom Typ **Passthrough** erstellen und mit [OBS Studio](https://obsproject.com/download) einen Livestream dafür übertragen.
+In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von Node.js und TypeScript ein Liveereignis vom Typ *Passthrough* erstellen und mit [OBS Studio](https://obsproject.com/download) einen Livestream dafür übertragen.
 
-Das Tutorial veranschaulicht folgende Vorgehensweisen:
+In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Herunterladen des in diesem Thema beschriebenen Beispiel-Codes
+> * Laden Sie den Beispielcode herunter.
 > * Untersuchen des Codes zum Konfigurieren und Durchführen des Livestreamings
-> * Wiedergabe des Ereignisses mit [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) unter [https://ampdemo.azureedge.net](https://ampdemo.azureedge.net).
+> * Sehen Sie sich das Ereignis mit [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) auf der [Media Player Demowebsite](https://ampdemo.azureedge.net) an.
 > * Bereinigen der Ressourcen
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+> In diesem Tutorial werden Node.js-Beispiele verwendet. Die allgemeinen Schritte sind jedoch auch bei Verwendung der [REST-API](/rest/api/media/liveevents), der [CLI](/cli/azure/ams/live-event) oder anderer unterstützter [SDKs](media-services-apis-overview.md#sdks) gleich. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,50 +48,52 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 - Installieren Sie [Node.js](https://nodejs.org/en/download/).
 - Installieren Sie [TypeScript](https://www.typescriptlang.org/).
-- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
-- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie werden für den Zugriff auf die API sowie zum Konfigurieren Ihrer Umgebungsvariablendatei benötigt.
-- Lesen Sie sich zunächst die Anleitung zum [Konfigurieren und Herstellen einer Verbindung mit Node.js](./configure-connect-nodejs-howto.md) durch, um sich mit der Verwendung des Node.js-Client-SDK vertraut zu machen.
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) Merken Sie sich die Werte, die Sie für die Namen von Ressourcengruppe und Media Services-Konto verwendet haben.
+- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](./access-api-howto.md) aus und speichern Sie die Anmeldeinformationen. Sie werden für den Zugriff auf die API sowie zum Konfigurieren Ihrer Umgebungsvariablendatei benötigt.
+- Lesen Sie sich zunächst die Anleitung zum [Konfigurieren und Verbinden mit Node.js](./configure-connect-nodejs-howto.md) durch, um sich mit der Verwendung der Node.js-Client-SDK vertraut zu machen.
 - Installieren Sie Visual Studio Code oder Visual Studio.
-- [Richten Sie Ihre Visual Studio Code-Umgebung ein](https://code.visualstudio.com/Docs/languages/typescript), um die TypeScript-Sprache zu unterstützen.
+- [Richten Sie Ihre Visual Studio Code-Umgebung ein](https://code.visualstudio.com/Docs/languages/typescript), damit sie die TypeScript-Sprache unterstützt.
 
-## <a name="additional-settings-for-live-streaming-software"></a>Zusätzliche Einstellungen für Livestreamingsoftware
+Sie benötigen diese zusätzlichen Elemente für Livestreamingsoftware:
 
 - Eine Kamera oder ein Gerät (beispielsweise ein Laptop) zum Übertragen eines Ereignisses.
-- Ein lokaler Softwareencoder, der Ihren Kameradatenstrom codiert und unter Verwendung des RTM-Protokolls an den Media Services-Livestreamingdienst sendet (siehe [Überprüfte lokale Livestreamingencoder](encode-recommended-on-premises-live-encoders.md)). Der Datenstrom muss das Format **RTMP** oder **Smooth Streaming** haben.  
-- Für dieses Beispiel empfiehlt es sich, mit einem Softwareencoder wie [Open Broadcast Software OBS Studio](https://obsproject.com/download) (kostenlos) zu beginnen, um den Einstieg zu erleichtern.
+- Ein lokaler Softwareencoder, der Ihren Kameradatenstrom codiert und über das Real-Time Messaging Protocol (RTMP) an den Media Services-Livestreamingdienst sendet. Weitere Informationen finden Sie unter [Empfohlene lokale Liveencoder](encode-recommended-on-premises-live-encoders.md). Der Datenstrom muss das Format RTMP oder Smooth Streaming haben.
 
-In diesem Beispiel wird davon ausgegangen, dass Sie OBS Studio verwenden, um RTMP an den Erfassungsendpunkt zu übertragen. Installieren Sie zunächst OBS Studio.
-Verwenden Sie in OBS Studio die folgenden Codierungseinstellungen:
+  In diesem Beispiel wird davon ausgegangen, dass Sie OBS Studio (Open Broadcaster Software) verwenden, um RTMP an den Erfassungsendpunkt zu übertragen. [Installieren Sie OBS Studio](https://obsproject.com/download). 
 
-- Encoder: NVIDIA NVENC (sofern verfügbar) oder x264
-- Ratensteuerung: CBR
-- Bitrate: 2.500 KBit/s (oder eine andere sinnvolle Bitrate für Ihren Laptop)
-- Keyframe-Intervall: zwei Sekunden (oder eine Sekunde für geringe Wartezeit)  
-- Voreinstellung: „Low-Latency Quality“ (Geringe Wartezeit: Qualität) oder „Low-Latency Performance“ (Geringe Wartezeit: Leistung) bei Verwendung von NVENC oder „veryfast“ (sehr schnell) bei Verwendung von x264
-- Profil: „high“ (hoch)
-- GPU: 0 (Auto)
-- Max. B-Frames: 2
+  Verwenden Sie in OBS Studio die folgenden Codierungseinstellungen:
+
+  - Encoder: NVIDIA NVENC (sofern verfügbar) oder x264
+  - Ratensteuerung: CBR
+  - Bitrate: 2.500 KBit/s (bzw. für Ihren Computer geeignete Rate)
+  - Keyframe-Intervall: 2 Sekunden (oder 1 Sekunde für geringe Latenzzeit)  
+  - Voreinstellung: „Low-Latency Quality“ (Geringe Wartezeit: Qualität) oder „Low-Latency Performance“ (Geringe Wartezeit: Leistung) bei Verwendung von NVENC oder „veryfast“ (sehr schnell) bei Verwendung von x264
+  - Profil: „high“ (hoch)
+  - GPU: 0 (Auto)
+  - Max. B-Frames: 2
 
 > [!TIP]
-> Lesen Sie [Live streaming with Azure Media Services v3](stream-live-streaming-concept.md) (Livestreaming mit Azure Media Services v3), bevor Sie mit diesem Tutorial fortfahren.
+> Lesen Sie [Livestreaming mit Azure Media Services v3](stream-live-streaming-concept.md), bevor Sie mit diesem Tutorial fortfahren.
 
 ## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
-Klonen Sie auf Ihrem Computer das folgende GitHub-Repository mit dem Livestreamingbeispiel für Node.js. Verwenden Sie dazu den folgenden Befehl:  
+Klonen Sie mit folgendem Befehl das GitHub-Repository auf Ihren Computer, welches das Beispiel für Livestreaming mit Node.js enthält:  
 
- ```bash
- git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
- ```
+```bash
+git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
+```
 
-Das Livestreamingbeispiel befindet sich im Ordner [Live](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/Live).
+Das Livestreaming-Beispiel befindet sich im Ordner [Live](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/Live).
 
-Kopieren Sie im Ordner [AMSv3Samples](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples) die Datei „sample.env“ in eine neue Datei namens „.env“. Diese Datei dient zum Speichern Ihrer Umgebungsvariableneinstellungen, die Sie im Artikel [Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API](./access-api-howto.md) erfasst haben.
+Kopieren Sie im Ordner [AMSv3Samples](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples) die Datei *sample.env* in eine neue Datei mit dem Namen *.env*, um die Einstellungen Ihrer Umgebungsvariablen zu speichern, die Sie im Artikel [Mit Azure CLI auf Azure Media Services-API zugreifen](./access-api-howto.md) gesammelt haben.
 Achten Sie darauf, dass der Dateiname den Punkt (.) vor „env“ enthält, damit das Codebeispiel ordnungsgemäß funktioniert.
 
-Die [ENV-Datei](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/main/AMSv3Samples/sample.env) enthält Ihren AAD-Anwendungsschlüssel und Ihr Geheimnis sowie den Kontonamen und Abonnementinformationen, die zum Authentifizieren des SDK-Zugriffs auf Ihr Media Services-Konto erforderlich sind. Die GITIGNORE-Datei ist bereits so konfiguriert, dass diese Datei nicht in Ihrem geforkten Repository veröffentlicht wird. Achten Sie darauf, dass diese Anmeldeinformationen nicht kompromittiert werden, da es sich hierbei um wichtige Geheimnisse für Ihr Konto handelt.
+In der [ENV-Datei](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/main/AMSv3Samples/sample.env) befinden sich Azure Active Directory-Anwendungsschlüssel (Azure AD) und -geheimnis. Sie enthält zudem Kontonamen und Abonnementinformationen, die zum Authentifizieren des SDK-Zugriffs auf Ihr Media Services-Konto erforderlich sind. Die Datei *.gitignore* ist bereits konfiguriert, um das Veröffentlichen dieser Datei auf Ihr geforktes Repository zu verhindern. Achten Sie auf die Sicherheit dieser Anmeldeinformationen, da diese wichtige Geheimnisse Ihres Kontos sind.
 
 > [!IMPORTANT]
-> In diesem Beispiel wird für jede Ressourcen ein eindeutiges Suffix verwendet. Wenn Sie das Debuggen abbrechen oder die App beenden, ohne das Beispiel vollständig zu durchlaufen, werden in Ihrem Konto mehrere Liveereignisse generiert. <br/>Die aktiven Liveereignisse müssen unbedingt beendet werden. Andernfalls **fallen für die Ereignisse Kosten an**! Am Ende der Programmausführung werden die Ressourcen automatisch bereinigt. Falls das Programm abstürzt oder Sie versehentlich den Debugger beenden und dadurch die Programmausführung abgebrochen wird, vergewissern Sie sich im Portal, dass keine Liveereignisse im Ausführungs- oder Standby-Zustand vorhanden sind, um unerwünschte Abrechnungsgebühren zu vermeiden.
+> In diesem Beispiel wird für jede Ressourcen ein eindeutiges Suffix verwendet. Wenn Sie das Debuggen abbrechen oder die App beenden, ohne das Beispiel vollständig zu durchlaufen, werden in Ihrem Konto mehrere Liveereignisse generiert. 
+>
+> Stellen Sie sicher, dass Sie die ausgeführten Liveereignisse beenden. Andernfalls *fallen für die Ereignisse Kosten an*! Am Ende der Programmausführung werden die Ressourcen automatisch bereinigt. Falls Programm bzw. Debugger vorzeitig beendet werden und dadurch die Programmausführung abgebrochen wird, vergewissern Sie sich im Portal, dass keine Liveereignisse im Ausführungs- oder Standby-Zustand vorhanden sind, um unerwünschte Abrechnungsgebühren zu vermeiden.
 
 ## <a name="examine-the-typescript-code-for-live-streaming"></a>Untersuchen des TypeScript-Codes für Livestreaming
 
@@ -97,18 +101,18 @@ In diesem Abschnitt werden die in der Datei [index.ts](https://github.com/Azure-
 
 Das Beispiel erstellt für jede Ressource ein eindeutiges Suffix, damit keine Namenskonflikte auftreten, wenn Sie das Beispiel ohne Bereinigung der Ressourcen mehrmals ausführen.
 
-### <a name="start-using-media-services-sdk-for-nodejs-with-typescript"></a>Erste Schritte mit dem Media Services SDK für Node.js mit TypeScript
+### <a name="start-using-the-media-services-sdk-for-nodejs-with-typescript"></a>Erste Schritte mit dem Media Services SDK für Node.js mit TypeScript
 
-Um Media Services-APIs mit Node.js verwenden zu können, muss zunächst das SDK-Modul [@azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices) mithilfe des Paket-Managers npm hinzugefügt werden.
+Um Media Services-APIs mit Node.js verwenden zu können, muss zunächst das SDK-Modul [@azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices) mithilfe des npm-Paket-Managers hinzugefügt werden.
 
 ```bash
 npm install @azure/arm-mediaservices
 ```
 
-In „package.json“ ist dies bereits für Sie konfiguriert. Sie müssen daher nur noch *npm install* ausführen, um die Module und Abhängigkeiten zu laden.
+In der Datei *package.json* ist dies bereits für Sie konfiguriert. Sie müssen nur `npm install` ausführen, um die Module und Abhängigkeiten zu laden:
 
-1. Öffnen Sie eine **Eingabeaufforderung**, und navigieren Sie zum Verzeichnis für das Beispiel.
-1. Wechseln Sie zum Ordner „AMSv3Samples“.
+1. Öffnen Sie eine Eingabeaufforderung und navigieren Sie zum Verzeichnis für das Beispiel.
+1. Wechseln Sie zum Ordner *AMSv3Samples*.
 
     ```bash
     cd AMSv3Samples
@@ -128,102 +132,115 @@ In „package.json“ ist dies bereits für Sie konfiguriert. Sie müssen daher 
     ```
 
 Öffnen Sie den Ordner für *Live*, und öffnen Sie die Datei *index.ts* im Visual Studio Code-Editor.
-Drücken Sie bei geöffneter Datei *index.ts* die Taste F5, um den Debugger zu starten.
+
+Drücken Sie in der Datei *index.ts* die Taste F5, um den Debugger zu öffnen.
 
 ### <a name="create-the-media-services-client"></a>Erstellen des Media Services-Clients
 
 Im folgenden Codeausschnitt wird die Erstellung des Media Services-Clients in Node.js gezeigt.
-Wie Sie sehen, wird in diesem Code zuerst die Eigenschaft **longRunningOperationRetryTimeout** von „AzureMediaServicesOptions“ auf zwei Sekunden festgelegt, um die Zeit zu verringern, die benötigt wird, um den Status eines zeitintensiven Vorgangs am Azure-Ressourcenverwaltungsendpunkt abzurufen.  Da die meisten Vorgänge für Liveereignisse asynchron sind und einige Zeit dauern können, empfiehlt es sich, dieses standardmäßig auf 30 Sekunden festgelegte Abrufintervall für das SDK zu verringern, um wichtige Vorgänge wie das Erstellen von Liveereignissen oder das Starten und Beenden (jeweils asynchrone Aufrufe) zu beschleunigen. Für die meisten Anwendungsfallszenarien wird ein Wert von zwei Sekunden empfohlen.
+
+In diesem Code ändern Sie die `longRunningOperationRetryTimeout`-Eigenschaft von `AzureMediaServicesOptions` vom Standardwert (30 Sekunden) zu 2 Sekunden. Diese Änderung reduziert die Zeit, die benötigt wird, um den Status eines Vorgangs mit langer Ausführungsdauer auf dem Azure Resource Manager-Endpunkt abzufragen. Es verkürzt die Zeit zum Abschließen wichtiger Vorgänge wie das Erstellen von Liveereignissen, das Starten und Beenden, bei denen es sich um asynchrone Aufrufe handelt. Für die meisten Szenarien wird ein Wert von 2 Sekunden empfohlen.
 
 [!code-typescript[Main](../../../media-services-v3-node-tutorials/AMSv3Samples/Live/index.ts#CreateMediaServicesClient)]
 
 ### <a name="create-a-live-event"></a>Erstellen eines Liveereignisses
 
-In diesem Abschnitt erfahren Sie, wie Sie ein Liveereignis vom Typ **Pass-Through** erstellen. („LiveEventEncodingType“ ist in diesem Fall auf „None“ festgelegt.) Weitere Informationen zu den anderen verfügbaren Arten von Liveereignissen finden Sie unter [Liveereignistypen](live-event-outputs-concept.md#live-event-types). Neben Passthrough können Sie ein Liveereignis mit Livetranscodierung für eine Cloudcodierung mit adaptiver Bitrate (720p oder 1080p) verwenden.
+In diesem Abschnitt wird das Erstellen eines Liveereignesses vom Typ *Pass-Through* (`LiveEventEncodingType` festgelegt auf `None`) beschrieben. Weitere Informationen zu den verfügbaren Typen finden Sie unter [Liveereignisse](live-event-outputs-concept.md#live-event-types). Neben Passthrough können Sie ein Liveereignis mit Liveencodierung für eine Cloudcodierung mit adaptiver Bitrate (720p oder 1080p) verwenden.
  
-Beim Erstellen des Liveereignisses können Sie folgende Punkte angeben:
+Möglicherweise möchten Sie beim Erstellen des Liveereignisses Folgendes angeben:
 
-* Erfassungsprotokoll für das Liveereignis (aktuell unterstützte Protokolle: RTMP(S) und Smooth Streaming).<br/>Die Protokolloption kann nicht geändert werden, während das Liveereignis oder die zugehörigen Liveausgaben aktiv sind. Sollten Sie verschiedene Protokolle benötigen, erstellen Sie für jedes Streamingprotokoll ein separates Liveereignis.  
-* IP-Einschränkungen für Erfassung und Vorschau. Sie können die IP-Adressen definieren, die ein Video für dieses Liveereignis erfassen dürfen. Zulässige IP-Adressen können als einzelne IP-Adresse (Beispiel: 10.0.0.1), als IP-Adressbereiche mit einer IP-Adresse und einer CIDR-Subnetzmaske (Beispiel: 10.0.0.1/22) oder als IP-Adressbereiche mit einer IP-Adresse und einer Subnetzmaske in Punkt-Dezimalschreibweise (Beispiel: 10.0.0.1(255.255.252.0)) angegeben werden.<br/>Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen 0.0.0.0/0 fest.<br/>Die IP-Adressen müssen in einem der folgenden Formate vorliegen: IPv4-Adresse mit vier Ziffern oder CIDR-Adressbereich
-* Bei der Ereigniserstellung können Sie angeben, dass das Ereignis automatisch gestartet werden soll. <br/>Wenn für den automatischen Start „true“ festgelegt ist, wird das Liveereignis nach der Erstellung gestartet. Dies bedeutet, dass die Abrechnung beginnt, sobald das Liveereignis startet. Sie müssen für die Liveereignisressource explizit „Beenden“ auswählen, damit keine Gebühren mehr anfallen. Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing-concept.md).
-Es stehen auch Standbymodi zur Verfügung, um das Liveereignis in einem preisgünstigeren „zugeordneten“ Zustand zu starten, der einen schnelleren Wechsel zu einem Ausführungszustand ermöglicht. Dies ist etwa im Falle von Pools der heißen Ebene hilfreich, die schnell Kanäle für Streamer bereitstellen müssen.
-* Legen Sie die Eigenschaft „useStaticHostname“ auf „true“ fest, und verwenden Sie eine benutzerdefinierte eindeutige GUID in „accessToken“, um eine Erfassungs-URL zu erhalten, die vorhersagbar und in einem hardwarebasierten Liveencoder einfacher zu verwalten ist. Ausführliche Informationen finden Sie unter [Erfassungs-URLs für Liveereignisse](live-event-outputs-concept.md#live-event-ingest-urls).
+* **Das Erfassungsprotokoll für das Liveereignis**. Derzeit werden die Protokolle RTMP, RTMPS und Smooth Streaming unterstützt. Die Protokolloption kann nicht geändert werden, während das Liveereignis oder die zugehörigen Liveausgaben aktiv sind. Sollten Sie verschiedene Protokolle benötigen, erstellen Sie für jedes Streamingprotokoll ein separates Liveereignis.  
+* **IP-Einschränkungen für Erfassung und Vorschau**. Sie können die IP-Adressen definieren, die ein Video für dieses Liveereignis erfassen dürfen. Zulässige IP-Adressen können als eine der folgenden Optionen angegeben werden:
+
+  * Einzelne IP-Adresse (z. B. `10.0.0.1`)
+  * Ein IP-Adressbereich, der eine IP-Adresse und eine CIDR-Subnetzmaske (Classless Inter-Domain Routing) verwendet (z. B. `10.0.0.1/22`).
+  * IP-Adressbereich, für den eine IP-Adresse und Subnetzmaske in punktierter Dezimalschreibweise (z. B. `10.0.0.1(255.255.252.0)`) verwendet werden
+
+  Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen Sie `0.0.0.0/0` fest. Die IP-Adressen müssen in einem der folgenden Formate vorliegen: IPv4-Adresse mit vier Ziffern oder CIDR-Adressbereich.
+* **Autostart für ein Ereignis, während Sie es erstellen**. Wenn für den automatischen Start `true` festgelegt ist, wird das Liveereignis nach der Erstellung gestartet. Dies bedeutet, dass die Abrechnung beginnt, sobald das Liveereignis startet. Sie müssen für die Liveereignisressource explizit `Stop` auswählen, damit keine weiteren Gebühren anfallen. Weitere Informationen finden Sie unter [Zustandswerte von Liveereignissen und Abrechnung](live-event-states-billing-concept.md).
+
+  Standbymodi sind verfügbar, um das Liveereignis in einem kostengünstigeren „zugeordneten“ Zustand zu starten, der den Wechsel in einen ausgeführten Zustand beschleunigt. Dies ist etwa im Falle von Pools der heißen Ebene hilfreich, die schnell Kanäle für Streamer bereitstellen müssen.
+* **Ein statischer Hostname und eine eindeutige GUID**. Legen Sie die Eigenschaft `useStaticHostname` auf `true` fest, um eine vorhersagbare Erfassungs-URL zu erhalten, die zudem einfacher in einem hardwarebasierten Liveencoder verwaltet werden kann. Verwenden Sie für `accessToken` eine benutzerdefinierte, eindeutige GUID. Ausführliche Informationen finden Sie unter [Erfassungs-URLs für Liveereignisse](live-event-outputs-concept.md#live-event-ingest-urls).
 
 [!code-typescript[Main](../../../media-services-v3-node-tutorials/AMSv3Samples/Live/index.ts#CreateLiveEvent)]
 
-### <a name="create-an-asset-to-record-and-archive-the-live-event"></a>Erstellen eines Medienobjekts zum Aufzeichnen und Archivieren des Liveereignisses
+### <a name="create-an-asset-to-record-and-archive-the-live-event"></a>Erstellen eines Assets zum Aufzeichnen und Archivieren des Liveereignisses
 
-In diesem Codeblock wird ein leeres Medienobjekt als „Videokassette“ zum Aufzeichnen Ihres Liveereignisarchivs erstellt.
-Das Medienobjekt können Sie sich als Videokassette vorstellen, wie sie früher einmal in einen Videorekorder eingelegt wurde. Die Liveausgabe ist der Videorekorder selbst. Das Liveereignis ist das vom Videorekorder ausgegebene Videosignal.
+Im folgenden Codeblock wird ein leeres Asset als „Videokassette“ zum Aufzeichnen Ihres Liveereignisarchivs erstellt.
 
-Das Medienobjekt (die „Videokassette“) kann zu einem beliebigen Zeitpunkt erstellt werden. Sie ist lediglich ein leeres Medienobjekt, das an das Objekt für die Liveausgabe (in dieser Analogie: der Videorekorder) übergeben wird.
+Beim Lernen dieser Konzepte ist es hilfreich, wenn Sie sich dieses Medienobjekt als „Videokassette“ vorstellen, wie sie früher einmal in einen Videorekorder eingelegt wurde. Die Liveausgabe ist der „Videorekorder“ selbst. Das Liveereignis ist das vom Computer ausgegebene „Videosignal“.
+
+Das Medienobjekt (die „Videokassette“) kann zu einem beliebigen Zeitpunkt erstellt werden. Sie werden das leere Objekt an das Liveausgabeobjekt, den „Videorekorder“ in dieser Analogie, übertragen.
 
 [!code-typescript[Main](../../../media-services-v3-node-tutorials/AMSv3Samples/Live/index.ts#CreateAsset)]
 
 ### <a name="create-the-live-output"></a>Erstellen der Liveausgabe
 
 In diesem Abschnitt wird eine Liveausgabe erstellt, die den Medienobjektnamen als Eingabe verwendet, um anzugeben, wo das Liveereignis aufgezeichnet werden soll. Darüber hinaus wird das Timeshift-Fenster (DVR) für die Aufzeichnung eingerichtet.
-Im Beispielcode wird die Einrichtung eines Timeshift-Fensters von einer Stunde gezeigt. Dadurch können Clients die letzte Stunde des Ereignisses ab einer beliebigen Stelle wiedergeben.  Darüber hinaus wird nur die letzte Stunde des Liveereignisses im Archiv gespeichert. Dieser Wert kann auf bis zu 25 Stunden erhöht werden.  Beachten Sie außerdem, dass Sie die Benennung des Ausgabemanifests steuern können, die nach der Veröffentlichung für die HLS- und DASH-Manifeste in Ihren URL-Pfaden verwendet wird.
 
-Die Liveausgabe (in dieser Analogie: der Videorekorder) kann ebenfalls zu einem beliebigen Zeitpunkt erstellt werden. Sie können also eine Liveausgabe vor oder nach dem Starten der Signalübertragung erstellen. Wenn es schnell gehen muss, empfiehlt es sich häufig, sie vor dem Starten der Signalübertragung zu erstellen.
+Im Beispielcode wird die Einrichtung eines Timeshift-Fensters von 1 Stunde gezeigt. Dadurch können Clients die letzte Stunde des Ereignisses ab einer beliebigen Stelle wiedergeben. Darüber hinaus wird nur die letzte Stunde des Liveereignisses im Archiv gespeichert. Dieser Wert kann auf bis zu 25 Stunden erhöht werden.  Beachten Sie auch, dass Sie die Benennung der Ausgabemanifeste steuern können, welche die Manifeste für HTTP LIVE STREAMING (HLS) und das dynamische adaptive Streaming per HTTP (Dynamic Adaptive Streaming over HTTP, DASH) bei der Veröffentlichung in Ihren URL-Pfaden verwenden.
 
-Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet.  Wenn Sie die Liveausgabe löschen, bleiben das zugrunde liegende Medienobjekt und dessen Inhalt erhalten. Der Vorgang ist mit dem Auswerfen der Videokassette vergleichbar. Das Medienobjekt mit der Aufzeichnung kann beliebig lange erhalten bleiben, und nach dem Auswerfen (also nach dem Löschen der Liveausgabe) steht es umgehend für die On-Demand-Wiedergabe zur Verfügung.
+Die Liveausgabe (in dieser Analogie der „Videorekorder“) kann ebenfalls zu einem beliebigen Zeitpunkt erstellt werden. Sie können also eine Liveausgabe vor oder nach dem Starten der Signalübertragung erstellen. Wenn es schnell gehen muss, empfiehlt es sich häufig, die Ausgabe vor dem Starten der Signalübertragung zu erstellen.
+
+Liveausgaben beginnen, wenn sie erstellt werden, und werden beim Löschen angehalten.  Wenn Sie die Liveausgabe löschen, bleiben das zugrunde liegende Medienobjekt und dessen Inhalt erhalten. Der Vorgang ist mit dem „Auswerfen der Videokassette“ vergleichbar. Das Asset mit Aufzeichnung hält so lange wie Sie möchten. Wenn es ausgeworfen wird (d. h. wenn die Liveausgabe gelöscht wird), ist sie sofort für die bedarfsbasierte Anzeige verfügbar.
 
 [!code-typescript[Main](../../../media-services-v3-node-tutorials/AMSv3Samples/Live/index.ts#CreateLiveOutput)]
 
 
 ### <a name="get-ingest-urls"></a>Abrufen von Erfassungs-URLs
 
-Sobald das Liveereignis erstellt wurde, können Sie Erfassungs-URLs abrufen, die Sie dem Liveencoder bereitstellen. Diese URLs werden vom Encoder zur Eingabe eines Livestreams mit dem RTMP-Protokoll verwendet.
+Sobald das Liveereignis erstellt wurde, können Sie Erfassungs-URLs abrufen, die Sie dem Liveencoder bereitstellen. Der Encoder gibt mit diesen URLs einen Livestream per RTMP-Protokoll ein.
 
 [!code-typescript[Main](../../../media-services-v3-node-tutorials/AMSv3Samples/Live/index.ts#GetIngestURL)]
 
 ### <a name="get-the-preview-url"></a>Abrufen der Vorschau-URL
 
-Verwenden Sie den Vorschauendpunkt (previewEndpoint), um eine Vorschau anzuzeigen und sich zu vergewissern, dass die Eingabe des Encoders auch tatsächlich empfangen wird.
+Rufen Sie mit `previewEndpoint` die Vorschau-URL ab und prüfen Sie, ob die Eingabe des Encoders empfangen wird.
 
 > [!IMPORTANT]
-> Vergewissern Sie sich, dass das Video an die Vorschau-URL übertragen wird, bevor Sie fortfahren.
+> Vergewissern Sie sich vor dem Fortfahren, dass das Video an die Vorschau-URL übertragen wird.
 
 [!code-typescript[Main](../../../media-services-v3-node-tutorials/AMSv3Samples/Live/index.ts#GetPreviewURL)]
 
 ### <a name="create-and-manage-live-events-and-live-outputs"></a>Erstellen und Verwalten von Liveereignissen und Liveausgaben
 
-Sobald der Datenstrom bei Ihrem Liveereignis eingeht, können Sie das Streamingereignis starten, indem Sie einen Streaminglocator für Ihre Clientplayer veröffentlichen. Dadurch wird der Datenstrom über den Streamingendpunkt für die Zuschauer verfügbar gemacht.
+Sobald der Stream bei Ihrem Liveereignis eingeht, können Sie das Streamingereignis starten, indem Sie einen Streaminglocator für Ihre Clientplayer veröffentlichen. Dadurch wird er über den Streamingendpunkt für die Zuschauer verfügbar gemacht.
 
-Als Erstes erstellen Sie das Signal, indem Sie das Liveereignis erstellen.  Das Signal wird erst übertragen, wenn Sie dieses Liveereignis starten und Ihren Encoder mit der Eingabe verbinden.
+Erstellen Sie zunächst das Signal, indem Sie das Liveereignis erstellen. Das Signal wird erst übertragen, wenn Sie dieses Liveereignis starten und Ihren Encoder mit der Eingabe verbinden.
 
-Zum Anhalten des „Videorekorders“ muss „delete“ für die Liveausgabe (LiveOutput) aufgerufen werden. Dadurch wird lediglich der „Videorekorder“ gelöscht und die Archivierung beendet. Der **Inhalt** Ihres Archivs auf der „Videokassette“ (Medienobjekt) wird dagegen nicht gelöscht. Das Medienobjekt bleibt mit dem archivierten Videoinhalt erhalten, bis Sie „delete“ explizit für das Medienobjekt aufrufen. Nach dem Löschen der Liveausgabe (LiveOutput) kann der aufgezeichnete Inhalt des Medienobjekts weiterhin über alle bereits veröffentlichten Streaminglocator-URLs wiedergegeben werden. Sollen Kunden den archivierten Inhalt nicht mehr wiedergeben können, müssen Sie zunächst alle Locators aus dem Medienobjekt entfernen und auch den CDN-Cache für den URL-Pfad leeren, falls Sie ein CDN für die Übermittlung verwenden. Andernfalls bleibt der Inhalt für den Zeitraum, der im CDN als Standardgültigkeitsdauer festgelegt ist (bis zu 72 Stunden), im CDN-Cache erhalten.
+Um die „Videoaufnahme“ zu beenden, rufen Sie `delete` bei `LiveOutput` auf. Durch diese Aktion wird der *Inhalt* Ihres Archivs auf dem „Video“ (Asset) nicht gelöscht. Es wird nur der „Videorekorder“ gelöscht und die Archivierung beendet. Das Medienobjekt bleibt mit dem archivierten Videoinhalt erhalten, bis Sie explizit `delete` für das Medienobjekt aufrufen. Nach dem Löschen von `LiveOutput` kann der aufgezeichnete Inhalt des Medienobjekts weiterhin über alle bereits veröffentlichten Streaminglocator-URLs wiedergegeben werden. 
+
+Wenn Sie verhindern möchten, dass ein Client die archivierten Inhalte abspielen kann, müssen Sie zunächst alle Locatoren vom Asset entfernen. Leeren Sie auch den CDN-Cache (Content Delivery Network) im URL-Pfad, wenn Sie ein CDN für die Übermittlung verwenden. Andernfalls bleibt der Inhalt im CDN-Cache erhalten für den Zeitraum, der im CDN als Standardgültigkeitsdauer festgelegt ist (bis zu 72 Stunden).
 
 #### <a name="create-a-streaming-locator-to-publish-hls-and-dash-manifests"></a>Erstellen eines Streaminglocators zum Veröffentlichen von HLS- und DASH-Manifesten
 
 > [!NOTE]
-> Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein **Standard**-Streamingendpunkt im Zustand **Beendet** hinzugefügt. Um mit dem Streamen Ihrer Inhalte zu beginnen und die [dynamische Paketerstellung](encode-dynamic-packaging-concept.md) und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Zustand **Wird ausgeführt** aufweisen.
+> Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein Standard-Streamingendpunkt im Zustand „Beendet“ hinzugefügt. Um mit dem Streamen Ihrer Inhalte zu beginnen und die [dynamische Paketerstellung](encode-dynamic-packaging-concept.md) und dynamische Verschlüsselung zu nutzen, muss sich der Streamingendpunkt, von dem Sie Inhalte streamen möchten, im Zustand „Wird ausgeführt“ befinden.
 
-Wenn Sie das Medienobjekt mit einem Streaminglocator veröffentlicht haben, ist das Liveereignis (bis zur DVR-Fensterlänge) weiterhin bis zum Ablauf oder zur Löschung des Streaminglocators sichtbar (je nachdem, was zuerst eintritt). Auf diese Weise können Sie die virtuelle Aufzeichnung so verfügbar machen, dass sie von Ihrer Zielgruppe live und nach Bedarf angesehen werden kann. Die gleiche URL kann verwendet werden, um das Liveereignis, das DVR-Fenster oder das On-Demand-Medienobjekt anzusehen, wenn die Aufzeichnung abgeschlossen ist (nach dem Löschen der Liveausgabe).
+Wenn Sie das Medienobjekt mit einem Streaminglocator veröffentlichen, ist das Liveereignis (bis zur DVR-Fensterlänge) weiterhin bis zum Ablaufen oder Löschen des Streaminglocators sichtbar (je nachdem, was zuerst eintritt). Auf diese Weise können Sie die virtuelle Aufzeichnung so verfügbar machen, dass sie von Ihrer Zielgruppe live und nach Bedarf angesehen werden kann. Mit der gleichen URL kann das Liveereignis, das DVR-Fenster oder das On-Demand-Medienobjekt angesehen werden, wenn die Aufzeichnung abgeschlossen ist (nach dem Löschen der Liveausgabe).
 
 [!code-typescript[Main](../../../media-services-v3-node-tutorials/AMSv3Samples/Live/index.ts#CreateStreamingLocator)]
 
 #### <a name="build-the-paths-to-the-hls-and-dash-manifests"></a>Erstellen der Pfade zu den HLS- und DASH-Manifesten
 
-Die Methode „BuildManifestPaths“ im Beispiel zeigt die deterministische Erstellung der Streamingpfade für die DASH- oder HLS-Übermittlung an verschiedene Clients und Playerframeworks.
+Die Methode `BuildManifestPaths` im Beispiel zeigt die deterministische Erstellung der Streamingpfade für die HLS- oder DASH-Übermittlung an verschiedene Clients und Playerframeworks.
 
 [!code-typescript[Main](../../../media-services-v3-node-tutorials/AMSv3Samples/Live/index.ts#BuildManifestPaths)]
 
 ## <a name="watch-the-event"></a>Ansehen des Ereignisses
 
-Kopieren Sie zur Wiedergabe des Ereignisses die Streaming-URL, die Sie beim Ausführen des Codes in „Erstellen eines Streaminglocators“ erhalten haben. Sie können einen Medienplayer Ihrer Wahl verwenden. Um Ihren Stream zu testen, können Sie den [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) unter https://ampdemo.azureedge.net verwenden.
+Kopieren Sie zur Wiedergabe des Ereignisses die Streaming-URL, die Sie beim Ausführen des Codes in „Erstellen eines Streaminglocators“ erhalten haben. Sie können einen Medienplayer Ihrer Wahl verwenden. [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) ist verfügbar, um Ihren Stream auf der [Media Player-Demowebsite](https://ampdemo.azureedge.net) zu testen.
 
-Das Liveereignis konvertiert Ereignisse automatisch in On-Demand-Inhalt, wenn es beendet wird. Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivierte Inhalte als Video auf Abruf streamen, solange Sie das Medienobjekt nicht löschen. Ein Medienobjekt kann nicht gelöscht werden, wenn es von einem Ereignis verwendet wird. Zuerst muss das betreffende Ereignis gelöscht werden.
+Ein Liveereignis konvertiert Ereignisse bei Beenden automatisch in bedarfsbasierte Inhalte. Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivierte Inhalte als Video auf Abruf streamen, solange Sie das Medienobjekt nicht löschen. Ein Medienobjekt kann nicht gelöscht werden, wenn es ein Ereignis verwendet. Zuerst muss das betreffende Ereignis gelöscht werden.
 
-### <a name="cleaning-up-resources-in-your-media-services-account"></a>Bereinigen der Ressourcen in Ihrem Media Services-Konto
+## <a name="clean-up-resources-in-your-media-services-account"></a>Bereinigen von Ressourcen in Ihrem Media Services-Konto
 
-Wenn Sie die Anwendung bis zum Ende ausführen, werden in der Funktion „cleanUpResources“ automatisch alle verwendeten Ressourcen bereinigt. Stellen Sie sicher, dass die Anwendung bzw. der Debugger bis zum Ende ausgeführt wird. Andernfalls kommt es womöglich zu einem Ressourcenleck sowie zu aktiven Liveereignissen in Ihrem Konto. Vergewissern Sie sich im Azure-Portal, dass alle Ressourcen in Ihrem Media Services-Konto bereinigt wurden.  
+Wenn Sie die Anwendung bis zum Ende ausführen, werden in der Funktion `cleanUpResources` automatisch alle verwendeten Ressourcen bereinigt. Stellen Sie sicher, dass die Anwendung bzw. der Debugger bis zum Ende ausgeführt wird. Andernfalls kommt es möglicherweise zu einem Ressourcenleck sowie zu aktiven Liveereignissen in Ihrem Konto. Vergewissern Sie sich im Azure-Portal, dass alle Ressourcen in Ihrem Media Services-Konto bereinigt wurden. 
 
-Sehen Sie sich im Beispielcode die Methode **cleanUpResources** an, um weitere Details zu erhalten.
+Sehen Sie sich im Beispielcode die Methode `cleanUpResources` an, um weitere Details zu erhalten.
 
 > [!IMPORTANT]
-> Wenn Sie das Liveereignis nicht beenden, fallen weiter Kosten dafür an. Falls das Projekt/Programm abstürzt oder aus einem anderen Grund geschlossen wird, bleibt das Liveereignis unter Umständen aktiv und verursacht weitere Kosten.
+> Wenn Sie das Liveereignis nicht beenden, fallen weiter Kosten dafür an. Beachten Sie, dass das Liveereignis möglicherweise im Abrechnungszustand bleibt, wenn das Projekt oder Programm nicht mehr reagiert oder aus irgendeinem Grund geschlossen wird.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
 
@@ -232,7 +249,7 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 ## <a name="more-developer-documentation-for-nodejs-on-azure"></a>Weitere Entwicklerdokumentation für Node.js in Azure
 
 - [Azure für JavaScript- und Node.js-Entwickler](/azure/developer/javascript/)
-- [Media Services-Quellcode im GitHub-Repository @azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
+- [Media Services-Quellcode im @azure/azure-sdk-for-jsGitHub-Repository](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
 - [Dokumentation zum Azure-Paket für Node.js-Entwickler](/javascript/api/overview/azure/)
 
 

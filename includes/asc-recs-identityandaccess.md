@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 05/11/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: d35fbc6f16b018f55e4ec7bcd6257884c3f10186
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1ab9e1895c29222b252c54e6bb8356fd6cabb14
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466158"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784293"
 ---
-Diese Kategorie enthält **21** Empfehlungen.
+Diese Kategorie enthält **22** Empfehlungen.
 
 |Empfehlung |BESCHREIBUNG |severity |
 |---|---|---|
@@ -29,6 +29,7 @@ Diese Kategorie enthält **21** Empfehlungen.
 |Key Vault-Geheimnisse sollten ein Ablaufdatum aufweisen. |Geheimnisse sollten ein definiertes Ablaufdatum aufweisen und nicht dauerhaft sein. Geheimnisse, die immer gültig sind, bieten einem potenziellen Angreifer mehr Zeit, sie zu kompromittieren. Als empfohlene Sicherheitsmethode sollte für Geheimnisse ein Ablaufdatum festgelegt werden.<br />(Zugehörige Richtlinie: [Key Vault-Geheimnisse müssen ein Ablaufdatum aufweisen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f98728c90-32c7-4049-8429-847dc0f4fe37)) |High |
 |Für Schlüsseltresore sollte der Löschschutz aktiviert sein. |Das böswillige Löschen eines Schlüsseltresors kann zu dauerhaftem Datenverlust führen. Ein böswilliger Insider in Ihrer Organisation kann möglicherweise Schlüsseltresore löschen oder bereinigen. Der Löschschutz schützt Sie vor Insiderangriffen, indem ein verbindlicher Aufbewahrungszeitraum für vorläufig gelöschte Schlüsseltresore durchgesetzt wird. Niemand innerhalb Ihrer Organisation oder von Microsoft kann Ihre Schlüsseltresore während des Aufbewahrungszeitraums für vorläufiges Löschen löschen.<br />(Zugehörige Richtlinie: [Für Schlüsseltresore muss der Löschschutz aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0b60c0b2-2dc2-4e1c-b5c9-abbed971de53)) |Medium |
 |Für Schlüsseltresore sollte vorläufiges Löschen aktiviert sein. |Wenn Sie einen Schlüsseltresor löschen und vorläufiges Löschen nicht aktiviert ist, werden alle Geheimnisse, Schlüssel und Zertifikate, die im Schlüsseltresor gespeichert sind, dauerhaft gelöscht. Das versehentliche Löschen eines Schlüsseltresors kann zu dauerhaftem Datenverlust führen. Vorläufiges Löschen ermöglicht es Ihnen, einen versehentlich gelöschten Schlüsseltresor innerhalb des konfigurierbaren Aufbewahrungszeitraums wiederherzustellen.<br />(Zugehörige Richtlinie: [Für Schlüsseltresore muss vorläufiges Löschen aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d)) |Hoch |
+|MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein. |MFA (Multi-Factor Authentication) muss für alle Abonnementkonten mit Besitzerberechtigungen aktiviert werden, um eine Sicherheitsverletzung für Konten oder Ressourcen zu verhindern.<br />(Zugehörige Richtlinie: [Für Konten mit Besitzerberechtigungen für Ihr Abonnement muss MFA aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faa633080-8b72-40c4-a2d7-d00c03e80bed)) |Hoch |
 |MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein. |MFA (Multi-Factor Authentication) muss für alle Abonnementkonten mit Besitzerberechtigungen aktiviert werden, um eine Sicherheitsverletzung für Konten oder Ressourcen zu verhindern.<br />(Zugehörige Richtlinie: [Für Konten mit Besitzerberechtigungen für Ihr Abonnement muss MFA aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faa633080-8b72-40c4-a2d7-d00c03e80bed)) |Hoch |
 |MFA sollte für Ihre Abonnementkonten mit Leseberechtigungen aktiviert sein |MFA (Multi-Factor Authentication) muss für alle Abonnementkonten mit Leserechten aktiviert sein, um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.<br />(Zugehörige Richtlinie: [Für Konten mit Leseberechtigungen für Ihr Abonnement muss MFA aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe3576e28-8b17-4677-84c3-db2990658d64)) |Hoch |
 |MFA sollte für Konten mit Schreibberechtigungen für Ihr Abonnement aktiviert werden. |MFA (Multi-Factor Authentication) muss für alle Abonnementkonten mit Schreibrechten aktiviert sein, um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.<br />(Zugehörige Richtlinie: [Für Konten mit Schreibberechtigungen für Ihr Abonnement sollte MFA aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f9297c21d-2ed6-4474-b48f-163f75654ce3)) |Hoch |

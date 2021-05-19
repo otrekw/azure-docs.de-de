@@ -1,14 +1,14 @@
 ---
 title: Überlegungen zum Cloud Solution Provider-Programm
 description: Die delegierte Azure-Ressourcenverwaltung unterstützt CSP-Partner bei der Verbesserung der Sicherheit und Kontrolle durch die Aktivierung präziser Berechtigungen.
-ms.date: 03/12/2021
+ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8736cf913739f2bd16fb519aed98fd336f6876a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 338c2086826a6b23810f5b2dc13c9a34d9c65f8b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419387"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788749"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse und das Programm für Cloud-Lösungsanbieter
 
@@ -25,13 +25,13 @@ Mit AOBO erhält jeder Benutzer mit der Rolle [Administrator-Agent](/partner-cen
 
 ![Diagramm der Mandantenverwaltung mithilfe von AOBO](../media/csp-1.jpg)
 
-## <a name="azure-delegated-resource-management"></a>Delegierte Azure-Ressourcenverwaltung
+## <a name="azure-lighthouse"></a>Azure Lighthouse
 
-Mit Azure Lighthouse können Sie verschiedenen Kunden oder Rollen unterschiedliche Gruppen zuweisen, wie im folgenden Diagramm dargestellt. Da Benutzer durch die delegierte Azure-Ressourcenverwaltung über die geeignete Zugriffsebene verfügen, können Sie die Anzahl der Benutzer verringern, die über die Rolle „Administrator-Agent“ verfügen (und somit über AOBO-Vollzugriff verfügen). Dies hilft, die Sicherheit zu verbessern, indem unnötiger Zugriff auf die Ressourcen deiner Kunden vermieden wird. Es verleiht Ihnen außerdem mehr Flexibilität, um mehrere Kunden skaliert zu verwalten.
+Mit Azure Lighthouse können Sie verschiedenen Kunden oder Rollen unterschiedliche Gruppen zuweisen, wie im folgenden Diagramm dargestellt. Da Benutzer durch die [delegierte Azure-Ressourcenverwaltung](architecture.md) über die geeignete Zugriffsebene verfügen, können Sie die Anzahl der Benutzer verringern, die über die Rolle „Admin-Agent“ verfügen (und somit über AOBO-Vollzugriff verfügen). Dies hilft, die Sicherheit zu verbessern, indem unnötiger Zugriff auf die Ressourcen deiner Kunden vermieden wird. Außerdem erhalten Sie mehr Flexibilität bei der Verwaltung mehrerer Kunden im großen Stil, indem sie die [integrierte Azure-Rolle](tenants-users-roles.md) verwenden, die für die Aufgaben der einzelnen Benutzer am besten geeignet ist.
 
 Das Onboarding eines Abonnements, das Sie über das CSP-Programm erstellt haben, erfolgt gemäß den Schritten, die in [Onboarding eines Kunden zu Azure Lighthouse](../how-to/onboard-customer.md) beschrieben sind. Jeder Benutzer, der in Ihrem Mandanten über die Rolle „Administrator-Agent“ verfügt, kann dieses Onboarding durchführen.
 
-![Diagramm der Mandantenverwaltung mithilfe von AOBO und delegierter Azure-Ressourcenverwaltung](../media/csp-2.jpg)
+![Diagramm der Mandantenverwaltung mithilfe von AOBO und Azure Lighthouse.](../media/csp-2.jpg)
 
 > [!TIP]
 > [Verwaltete Dienstangebote](managed-services-offers.md) mit privaten Plänen werden bei Abonnements, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) eingerichtet wurden, nicht unterstützt. Sie können diese Abonnements in Azure Lighthouse integrieren, indem Sie [Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) verwenden.

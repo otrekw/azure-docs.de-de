@@ -4,16 +4,16 @@ titleSuffix: Azure Storage
 description: Microsoft Partner, die Kundenlösungen für primären und sekundären Speicher mit Azure Storage erstellen
 author: beber-msft
 ms.author: beber
-ms.date: 03/15/2021
+ms.date: 04/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 5fa17083be01a702ebac888eecc17a4969b754ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8efcc6b9837596175a8bcf9a0a7b159f0560cff0
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561594"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486087"
 ---
 # <a name="azure-storage-partners-for-primary-and-secondary-storage"></a>Azure Storage-Partner für primären und sekundären Speicher
 
@@ -29,6 +29,7 @@ In diesem Artikel werden Partnerunternehmen von Microsoft vorgestellt, die eine 
 | ![Scality](./media/scality-logo.png) |**Scality**<br>Scality baut eine softwaredefinierte Datei- und Objektplattform für lokale und hybride Umgebungen sowie Umgebungen mit mehreren Clouds. Die Integration von Scality in Azure Blob Storage ermöglicht Unternehmen die Verwaltung und den Schutz ihrer Daten zwischen lokalen Umgebungen und Azure. Gleichzeitig können Unternehmen die Anforderungen an hochleistungsfähige, cloudbasierte Dateiworkloads erfüllen. |[Seite des Partnerunternehmens](https://www.scality.com/partners/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/scality.scalityconnecthourly?tab=Overview)|
 | ![Unternehmenslogo von Tiger Technology](./media/tiger-logo.png) |**Tiger Technology**<br>Tiger Technology bietet hochleistungsfähige und sichere Softwarelösungen für die Datenverwaltung. Tiger Technology versetzt Organisationen jeder Größe in die Lage, ihre digitalen Ressourcen lokal, in einer beliebigen öffentlichen Cloud oder über ein Hybridmodell zu verwalten. <br><br> Tiger Bridge ist ein nicht proprietäres, rein softwarebasiertes System für Daten- und Speicherverwaltung. Das System kombiniert lokale Speicher und mehrstufige Cloudspeicher an einem einzigen Ort und ermöglicht hybride Workflows. Dank dieser transparenten Dateiservererweiterung können Sie von der Skalierbarkeit und den Diensten von Microsoft Azure profitieren und gleichzeitig ältere Anwendungen und Workflows weiter nutzen. Tiger Bridge hilft bei einer Reihe von Herausforderungen bei der Datenverwaltung: Dateiservererweiterung, Notfallwiederherstellung, Cloudmigration, Sicherung und Archivierung, Remotezusammenarbeit und Synchronisierung mehrerer Standorte. Tiger Bridge sorgt auch für forlaufenden Datenschutz. |[Seite des Partnerunternehmens](https://www.tiger-technology.com/partners/microsoft-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tiger-technology.tigerbridge_vm)|
 
+Sind Sie ein Speicherpartner, aber Ihre Lösung ist noch nicht aufgeführt? Senden Sie uns Ihre Informationen [hier](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUQjY4QlJYUzFHQ0ZBVDNYWERaUlNRVU5IMyQlQCN0PWcu).
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen über einige unserer Partners erhalten Sie unter:

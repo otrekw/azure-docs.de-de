@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 05/05/2021
 ms.author: duau
-ms.openlocfilehash: b133f1cce4af07d8d5e50e04670741fcf7c936a4
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b659fee979fd936a85c0cd5a711390594bbe79b1
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097073"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795754"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Erstellen von ExpressRoute Direct mit dem Portal
 
@@ -81,7 +81,13 @@ Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonneme
 
 ## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Generieren des Genehmigungsschreibens (Letter of Authorization, LOA)
 
-Die Generierung des Genehmigungsschreibens steht aktuell im Portal nicht zur Verfügung. Verwenden Sie **[Azure PowerShell](expressroute-howto-erdirect.md#authorization)** , um das Genehmigungsschreiben abzurufen.
+1. Wechseln Sie zur Übersichtsseite der ExpressRoute Direct-Ressource, und wählen Sie **Schriftliche Vollmacht generieren** aus.
+
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/overview.png" alt-text="Screenshot der Schaltfläche „Schriftliche Vollmacht generieren“ auf der Übersichtsseite":::
+
+1. Geben Sie den Namen Ihres Unternehmens ein, und wählen Sie **Herunterladen** aus, um die Vollmacht zu generieren.
+
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/letter-of-authorization-page.png" alt-text="Screenshot der Seite „Schriftliche Vollmacht“":::
 
 ## <a name="change-admin-state-of-links"></a><a name="state"></a>Ändern des Verwaltungsstatus von Verknüpfungen
 

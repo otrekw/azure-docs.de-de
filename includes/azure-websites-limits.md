@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/17/2020
 ms.author: msangapu
-ms.openlocfilehash: dad7799cb5a7579b28847e3968b6b38f1f98298a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e2f75c6305fb3a9879f1e801ad59cd8581dd2fd4
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327787"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109644726"
 ---
 | Resource | Kostenlos | Shared | Basic | Standard | Premium (v1-v3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -29,7 +29,7 @@ ms.locfileid: "107327787"
 | App Service-Zertifikate pro Abonnement<sup>9</sup>| Nicht unterstützt | Nicht unterstützt |10 |10 |10 |10 |
 | Benutzerdefinierte Domänen pro App</a> |0 (nur Unterdomäne azurewebsites.net)|500 |500 |500 |500 |500 |
 | benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/configure-ssl-certificate.md) |Nicht unterstützt, Platzhalterzertifikat für „\*.azurewebsites.net“ standardmäßig verfügbar|Nicht unterstützt, Platzhalterzertifikat für „\*.azurewebsites.net“ standardmäßig verfügbar|Unbegrenzte Anzahl von SNI SSL-Verbindungen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen|
-| Hybridverbindungen | | | 5 pro Plan | 25 pro Plan | 200 pro App | 200 pro App |
+| [Hybridverbindungen](../articles/app-service/app-service-hybrid-connections.md) | | | 5 pro Plan | 25 pro Plan | 220 pro App | 220 pro App |
 | [Virtual Network-Integration](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | [Private Endpunkte](../articles/app-service/networking/private-endpoint.md) | | |   |   |  100 pro App  |    |
 | Integrierter Lastenausgleich | |X |X |X |X |X<sup>10</sup> |

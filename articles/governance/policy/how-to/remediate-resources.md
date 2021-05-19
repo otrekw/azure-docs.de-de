@@ -3,12 +3,12 @@ title: Korrigieren nicht konformer Ressourcen
 description: Dieser Leitfaden führt Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
 ms.date: 05/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 677e203b724f2046dfd7ba8d7a509965a36a8172
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 886087a22712e316f4ecd50674f48594d6953dab
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326163"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747465"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
@@ -22,7 +22,7 @@ Azure Policy erstellt für jede Ihrer Zuweisungen eine verwaltete Identität, mu
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
 
 > [!IMPORTANT]
-> In den folgenden Szenarios muss der verwalteten Identität der Zuweisung [manuell der Zugriff erteilt werden](#manually-configure-the-managed-identity), da andernfalls ein Fehler bei der Wartungsbereitstellung auftritt.
+> In den folgenden Szenarios muss der verwalteten Identität der Zuweisung [manuell der Zugriff erteilt werden](#manually-configure-the-managed-identity), da andernfalls ein Fehler bei der Wartungsbereitstellung auftritt:
 >
 > - Die Zuweisung wird über das SDK erstellt.
 > - Eine von **deployIfNotExists** oder **modify** geänderte Ressource liegt außerhalb des Bereichs der Richtlinienzuweisung.
@@ -141,7 +141,7 @@ Führen Sie die folgenden Schritte aus, um einen **Wartungstask** zu erstellen:
    > [!NOTE]
    > Eine alternative Möglichkeit zum Öffnen der Seite **Wiederherstellungstask** besteht darin, über die Seite **Konformität** nach der Richtlinie zu suchen, diese und anschließend die Schaltfläche **Wartungstask erstellen** auszuwählen.
 
-1. Filtern Sie auf der Seite **Neuer Wartungstask** die zu korrigierenden Ressourcen, indem Sie die über die Auslassungspunkte bei **Bereich** untergeordnete Ressourcen auswählen, von denen aus die Richtlinie zugewiesen wurde (bis hin zu den einzelnen Ressourcenobjekten). Darüber hinaus können Sie die Ressourcen über das Dropdownfeld **Standorte** weiter filtern. Nur in der Tabelle aufgeführte Ressourcen werden gewartet.
+1. Filtern Sie auf der Seite **Neuer Wartungstask** die zu korrigierenden Ressourcen, indem Sie die über die Auslassungspunkte bei **Bereich** untergeordnete Ressourcen auswählen, von denen aus die Richtlinie zugewiesen wurde (bis hin zu den einzelnen Ressourcenobjekten). Darüber hinaus können Sie die Ressourcen über die Dropdownliste **Standorte** weiter filtern. Nur in der Tabelle aufgeführte Ressourcen werden gewartet.
 
    :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Screenshot: Knoten „Wartung“ und das Raster mit Ressourcen für die Wartung" border="false":::
 

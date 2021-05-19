@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/20/2021
+ms.date: 05/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: efa88e1be5c5df5dd09cb5a97c8ece352496ccdb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c663282865e19df0e103e75a7e32d86651232a93
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769695"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762549"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -35,7 +35,7 @@ Weitere Informationen dazu, warum diese Sicherheitsstandards verfügbar gemacht 
 
 ## <a name="availability"></a>Verfügbarkeit
 
-Microsoft stellt allen Benutzern Sicherheitsstandards zur Verfügung. Das Ziel ist sicherzustellen, dass in allen Organisationen eine Standardsicherheitsebene ohne zusätzliche Kosten aktiviert ist. Sie aktivieren die Sicherheitsstandards im Azure-Portal. Wenn Ihr Mandant am oder nach dem 22. Oktober 2019 erstellt wurde, ist es möglich, dass in Ihrem Mandanten bereits Sicherheitsstandards aktiviert sind. Zum Schutz unserer Benutzer werden Sicherheitsstandards für alle neu erstellten Mandanten eingeführt.
+Microsoft stellt allen Benutzern Sicherheitsstandards zur Verfügung. Das Ziel ist sicherzustellen, dass in allen Organisationen eine Standardsicherheitsebene ohne zusätzliche Kosten aktiviert ist. Sie aktivieren die Sicherheitsstandards im Azure-Portal. Wenn Ihr Mandant am oder nach dem 22. Oktober 2019 erstellt wurde, ist es möglich, dass in Ihrem Mandanten bereits Sicherheitsstandards aktiviert sind. Zum Schutz aller Benutzer werden Sicherheitsstandards für alle neu erstellten Mandanten eingeführt.
 
 ### <a name="whos-it-for"></a>Für wen eignet sich diese Funktion?
 
@@ -135,6 +135,9 @@ Diese kostenlosen Sicherheitsstandards ermöglichen die Registrierung für und V
 
 - ** Benutzer können Prüfcodes von der Microsoft Authenticator-App verwenden, können sich jedoch nur mit der Benachrichtigungsoption registrieren.
 - ** App-Kennwörter sind nur in Szenarien mit benutzerbasierter MFA mit Legacyauthentifizierung verfügbar, wenn diese Methode von Administratoren aktiviert wurde.
+
+> [!WARNING]
+> Deaktivieren Sie keine Methoden für Ihre Organisation, wenn Sie Sicherheitsstandards verwenden. Das Deaktivieren von Methoden kann dazu führen, dass Sie sich von Ihrem Mandanten abmelden. Lassen Sie alle **Methoden für Benutzer verfügbar** im [Portal für MFA-Diensteinstellungen](../authentication/howto-mfa-getstarted.md#choose-verification-options) aktiviert.
 
 ### <a name="disabled-mfa-status"></a>Deaktivierter MFA-Status
 

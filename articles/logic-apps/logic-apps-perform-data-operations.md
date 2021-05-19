@@ -3,15 +3,15 @@ title: Ausführen von Vorgängen für Daten
 description: Konvertieren, Verwalten und Bearbeiten von Datenausgaben und -formaten in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 09/20/2019
-ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: cc4952acd8d5949485b9bd1fe5fac91296839493
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84710370"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753649"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Durchführen von Datenvorgängen in Azure Logic Apps
 
@@ -22,33 +22,6 @@ In diesem Artikel wird veranschaulicht, wie Sie in Ihren Logik-Apps mit Daten ar
 * Erstellen von benutzerfreundlichen Token aus JSON-Objekteigenschaften (JavaScript Object Notation), damit Sie diese Eigenschaften leicht in Ihrem Workflow nutzen können
 
 Wenn Sie hier nicht die gewünschte Aktion finden, können Sie die vielen verschiedenen [Funktionen zur Bearbeitung von Daten](../logic-apps/workflow-definition-language-functions-reference.md) durchsuchen, die von Azure Logic Apps bereitgestellt werden.
-
-In diesen Tabellen sind die Datenvorgänge zusammengefasst, die Sie nutzen können. Sie sind anhand des Quelldatentyps organisiert, der von den Vorgängen verwendet wird, aber die Beschreibungen sind alphabetisch angegeben.
-
-**Arrayaktionen** 
-
-Diese Aktionen erleichtern Ihnen die Arbeit mit Daten in Arrays.
-
-| Aktion | BESCHREIBUNG |
-|--------|-------------|
-| [**Create CSV table**](#create-csv-table-action) | Dient zum Erstellen einer CSV-Tabelle (durch Trennzeichen getrennt) aus einem Array. |
-| [**Create HTML table**](#create-html-table-action) | Dient zum Erstellen einer HTML-Tabelle aus einem Array. |
-| [**Filter array**](#filter-array-action) | Dient zum Erstellen einer Arrayteilmenge aus einem Array basierend auf dem angegebenen Filter bzw. der Bedingung. |
-| [**Join**](#join-action) | Dient zum Erstellen einer Zeichenfolge aus allen Elementen eines Arrays und Trennen der Elemente mit dem angegebenen Zeichen. |
-| [**Select**](#select-action) | Dient zum Erstellen eines Arrays aus den angegebenen Eigenschaften für alle Elemente eines anderen Arrays. |
-||| 
-
-**JSON-Aktionen**
-
-Diese Aktionen erleichtern Ihnen die Arbeit mit Daten im JSON-Format (JavaScript Object Notation).
-
-| Aktion | BESCHREIBUNG |
-|--------|-------------|
-| [**Compose**](#compose-action) | Dient zum Erstellen einer Nachricht oder Zeichenfolge aus mehreren Eingaben, die unterschiedliche Datentypen aufweisen können. Sie können diese Zeichenfolge dann als einzelne Eingabe verwenden, anstatt immer wieder die gleichen Eingaben vornehmen zu müssen. Beispielsweise können Sie eine einzelne JSON-Nachricht aus unterschiedlichen Eingaben erstellen. |
-| [**Parse JSON**](#parse-json-action) | Dient zum Erstellen von benutzerfreundlichen Datentoken für Eigenschaften in JSON-Inhalten, damit Sie die Eigenschaften leichter in Ihren Logik-Apps nutzen können. |
-|||
-
-Informationen zur Erstellung von komplexeren JSON-Transformationen finden Sie unter [Perform advanced JSON transformations with Liquid templates](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md) (Durchführen von erweiterten JSON-Transformationen mit Liquid-Vorlagen).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -61,6 +34,35 @@ Informationen zur Erstellung von komplexeren JSON-Transformationen finden Sie un
 * Ein [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), der als erster Schritt in Ihrer Logik-App verwendet wird. 
 
   Datenvorgänge sind nur als Aktionen verfügbar. Bevor Sie diese Aktionen nutzen können, müssen Sie also Ihre Logik-App mit einem Trigger starten und alle anderen Aktionen einbinden, die zum Erstellen der gewünschten Ausgaben erforderlich sind.
+
+## <a name="data-operation-actions"></a>Datenvorgangsaktionen
+
+In diesen Tabellen sind die Datenvorgänge zusammengefasst, die Sie nutzen können. Sie sind anhand des Quelldatentyps organisiert, der von den Vorgängen verwendet wird, aber die Beschreibungen sind alphabetisch angegeben.
+
+### <a name="array-actions"></a>Arrayaktionen
+
+Diese Aktionen erleichtern Ihnen die Arbeit mit Daten in Arrays.
+
+| Aktion | BESCHREIBUNG |
+|--------|-------------|
+| [**Create CSV table**](#create-csv-table-action) | Dient zum Erstellen einer CSV-Tabelle (durch Trennzeichen getrennt) aus einem Array. |
+| [**Create HTML table**](#create-html-table-action) | Dient zum Erstellen einer HTML-Tabelle aus einem Array. |
+| [**Filter array**](#filter-array-action) | Dient zum Erstellen einer Arrayteilmenge aus einem Array basierend auf dem angegebenen Filter bzw. der Bedingung. |
+| [**Join**](#join-action) | Dient zum Erstellen einer Zeichenfolge aus allen Elementen eines Arrays und Trennen der Elemente mit dem angegebenen Zeichen. |
+| [**Select**](#select-action) | Dient zum Erstellen eines Arrays aus den angegebenen Eigenschaften für alle Elemente eines anderen Arrays. |
+||| 
+
+### <a name="json-actions"></a>JSON-Aktionen
+
+Diese Aktionen erleichtern Ihnen die Arbeit mit Daten im JSON-Format (JavaScript Object Notation).
+
+| Aktion | BESCHREIBUNG |
+|--------|-------------|
+| [**Compose**](#compose-action) | Dient zum Erstellen einer Nachricht oder Zeichenfolge aus mehreren Eingaben, die unterschiedliche Datentypen aufweisen können. Sie können diese Zeichenfolge dann als einzelne Eingabe verwenden, anstatt immer wieder die gleichen Eingaben vornehmen zu müssen. Beispielsweise können Sie eine einzelne JSON-Nachricht aus unterschiedlichen Eingaben erstellen. |
+| [**Parse JSON**](#parse-json-action) | Dient zum Erstellen von benutzerfreundlichen Datentoken für Eigenschaften in JSON-Inhalten, damit Sie die Eigenschaften leichter in Ihren Logik-Apps nutzen können. |
+|||
+
+Informationen zur Erstellung von komplexeren JSON-Transformationen finden Sie unter [Perform advanced JSON transformations with Liquid templates](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md) (Durchführen von erweiterten JSON-Transformationen mit Liquid-Vorlagen).
 
 <a name="compose-action"></a>
 
@@ -273,6 +275,9 @@ Sie können sich vergewissern, dass mit der Aktion **Create CSV table** die erwa
 
    ![Felder „Ausgabe“ für die Aktion „Create CSV table“](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
 
+   > [!NOTE]
+    > Wenn die Tabelle mit einer falschen Formatierung zurückgegeben wird, sehen Sie unter [Überprüfen der Tabellendatenformatierung](#format-table-data) nach.
+
 1. Führen Sie Ihre Logik-App jetzt manuell aus. Wählen Sie auf der Symbolleiste des Designers **Ausführen** aus.
 
    Hier sind die Ergebnisse angegeben, die Sie basierend auf dem verwendeten E-Mail-Connector erhalten:
@@ -426,6 +431,9 @@ Sie können sich vergewissern, dass mit der Aktion **Create HTML table** die erw
 
    > [!NOTE]
    > Stellen Sie beim Einbinden der Ausgabe der HTML-Tabelle in eine E-Mail-Aktion sicher, dass Sie die Eigenschaft **Ist HTML** in den erweiterten Optionen der E-Mail-Aktion auf **Ja** festlegen. Die HTML-Tabelle wird dann von der E-Mail-Aktion richtig formatiert.
+
+   > [!NOTE]
+   > Wenn die Tabelle mit einer falschen Formatierung zurückgegeben wird, sehen Sie unter [Überprüfen der Tabellendatenformatierung](#format-table-data) nach.
 
 1. Führen Sie Ihre Logik-App jetzt manuell aus. Wählen Sie auf der Symbolleiste des Designers **Ausführen** aus.
 
@@ -707,6 +715,51 @@ Sie können sich vergewissern, dass mit der Aktion **Select** die erwarteten Erg
 
    ![E-Mail mit Ergebnissen der Aktion „Select“](./media/logic-apps-perform-data-operations/select-email-results.png)
 
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="format-table-data"></a>Formatieren von Tabellendaten
+
+Wenn Ihre [CSV-Tabelle](#create-csv-table-action) oder [HTML-Tabelle](#create-html-table-action) mit einer falschen Formatierung zurückgegeben wird, stellen Sie sicher, dass Ihre Eingabedaten Zeilenumbrüche zwischen den Zeilen aufweisen. 
+
+Falsche Formatierung:
+
+```text
+Fruit,Number Apples,1 Oranges,2
+```
+
+Richtige Formatierung:
+
+```text
+Fruit,Number
+Apples,1
+Oranges,2
+```
+
+Um Zeilenumbrüche zwischen Zeilen hinzuzufügen, fügen Sie Ihrer Tabelle einen der folgenden Ausdrücke hinzu:
+
+```text
+replace(body('Create_CSV_table'),'','<br/>')
+```
+
+```text
+replace(body('Create_HTML_table'),'','<br/>')
+```
+
+Beispiel: 
+
+```json
+{
+    "Send_an_email_": {
+        "inputs": {
+            "body": {
+                "Body": "<p>Results from Create CSV table action:<br/>\n<br/>\n<br/>\n@{replace(body('Create_CSV_table'),'\r\n','<br/>')}</p>",
+                "Subject": "Create CSV table results",
+                "To": "sophia.owen@fabrikam.com"
+            }
+        }
+    }
+}
+```
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über [Logic Apps-Connectors](../connectors/apis-list.md).

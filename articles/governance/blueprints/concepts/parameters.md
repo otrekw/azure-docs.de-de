@@ -3,12 +3,12 @@ title: Verwenden von Parametern für das Erstellen dynamischer Blaupausen
 description: Hier erhalten Sie Informationen zu statischen und dynamischen Parametern und dazu, wie Sie sie zum Erstellung sicherer und dynamischer Blaupausen verwenden können.
 ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 324763d6518acf0b57e4f9048f2773027e71ca23
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 6db29a058bd8022c2f1224a8a8bf6e4fb85a398f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323895"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761343"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Erstellen dynamischer Blaupausen mithilfe von Parametern
 
@@ -174,7 +174,7 @@ Das Gegenteil eines statischen Parameters ist ein **dynamischer Parameter**. Die
 
 1. Klicken Sie mit der rechten Maustaste auf die Blaupause, die Sie zuweisen möchten. Wählen Sie **Blaupause zuweisen** aus, ODER wählen Sie die Blaupause aus, die Sie zuweisen möchten, und verwenden Sie dann die Schaltfläche **Blaupause zuweisen**.
 
-1. Auf der Seite **Blaupause zuweisen** finden Sie den Abschnitt **Artefaktparameter**. Für jedes Artefakt mit mindestens einem **dynamischen Parameter** werden das Artefakt und die zugehörigen Konfigurationsoptionen angezeigt. Geben Sie erforderliche Werte für die Parameter an, bevor Sie die Blaupause zuweisen. Im folgenden Beispiel ist _Name_ ein **dynamischer Parameter**, der definiert werden muss, um die Blaupausenzuweisung abzuschließen.
+1. Auf der Seite **Blaupause zuweisen** finden Sie den Abschnitt **Artefaktparameter**. Für jedes Artefakt mit mindestens einem **dynamischen Parameter** werden das Artefakt und die zugehörigen Konfigurationsoptionen angezeigt. Geben Sie erforderliche Werte für die Parameter an, bevor Sie die Blaupause zuweisen. Im folgenden Beispiel ist _Name_ ein **dynamischer Parameter**, der definiert werden muss, um die Blueprint-Zuweisung abzuschließen.
 
    :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Screenshot der Festlegung dynamischer Parameter während der Blaupausenzuweisung." border="false":::
 

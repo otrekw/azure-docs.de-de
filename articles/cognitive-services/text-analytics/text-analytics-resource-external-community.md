@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 9c3908c81e7d89efe3da90f9707023cb7c184795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74e01ffe3ed846ebc56a82d352894e8424bb3f7a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94365006"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748005"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Externe Inhalte und Community-Inhalte für die Textanalyse in Cognitive Service
 
@@ -27,7 +27,7 @@ ms.locfileid: "94365006"
 
 + [Using Text Analytics Key Phrase Cognitive Services API from PowerShell (AutomationNext blog) (Verwenden der Textanalyse-API für Schlüsselbegriffe für Cognitive Services aus PowerShell (AutomationNext-Blog))](https://automationnext.wordpress.com/tag/text-analytics/)
 
-+ [R Quick tip: Microsoft Cognitive Services’ Text Analytics API (R Bloggers) (Schneller Tipp zu R: Für Cognitive Services allgemein verfügbare Textanalyse-API (R-Blogger))](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
++ [Schneller Tipp zu R: Für Azure Cognitive Services allgemein verfügbare Textanalyse-API (R-Blogger)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
 
 + [Sentiment analysis in Logic App using SQL Server data (TechNet blog) (Standpunktanalyse in einer Logik-App unter Verwendung von SQL Server-Daten (TechNet-Blog))](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
 
@@ -43,13 +43,13 @@ ms.locfileid: "94365006"
 
 + [Logic App to detect sentiment and extract key phrases from your text (Logik-App zur Standpunktermittlung und Extraktion von Schlüsselbegriffen aus Ihrem Text)](https://www.youtube.com/watch?v=jVN9NObAzgk)
 
-+ [Sentiment Analysis using Power BI and Microsoft Cognitive Services (Standpunktanalyse mithilfe von Power BI und Microsoft Cognitive Services)](https://www.youtube.com/watch?v=gJ1j3N7Y75k)
++ [Standpunktanalyse mithilfe von Power BI und Microsoft Cognitive Services](https://www.youtube.com/watch?v=gJ1j3N7Y75k)
 
-+ [Text analytics extract key phrases using Power BI and Microsoft Cognitive Services (Extrahieren von Schlüsselbegriffen durch Textanalyse unter Verwendung von Power BI und Microsoft Cognitive Services)](https://www.youtube.com/watch?v=R_-1TB2BF14)
++ [Extrahieren von Schlüsselbegriffen durch Textanalyse unter Verwendung von Power BI und Azure Cognitive Services](https://www.youtube.com/watch?v=R_-1TB2BF14)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Benötigen Sie Informationen zu einem Feature oder einem Anwendungsfall, die wir nicht abdecken? Ziehen Sie in Betracht, eine Anforderung auf [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics) zu erstellen oder dafür abzustimmen. 
+Benötigen Sie Informationen zu einem Feature oder einem Anwendungsfall, die wir nicht abdecken? Erwägen Sie, sie mit dem [Feedbacktool](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)anzufordern oder dafür zu stimmen. 
 
 ## <a name="see-also"></a>Siehe auch
 

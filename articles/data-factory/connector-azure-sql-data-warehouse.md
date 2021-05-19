@@ -1,17 +1,17 @@
 ---
 title: Kopieren und Transformieren von Daten in Azure Synapse Analytics
 description: Hier erfahren Sie, wie Sie mithilfe von Data Factory Daten in und aus Azure Synapse Analytics kopieren sowie Daten in Azure Synapse Analytics transformieren.
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 9c843ededd1fa863cc5eb4dc0db3a6da3478466d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: b4c90f8fa7efb002e9bcc243a55ba903002855c8
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597520"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736968"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory
 
@@ -48,7 +48,7 @@ Für die Kopieraktivität unterstützt dieser Connector von Azure Synapse Analyt
 > [!TIP]
 > Das beste Ergebnis erzielen Sie, indem Sie Daten mithilfe von PolyBase oder der COPY-Anweisung in Azure Synapse Analytics laden. Details finden Sie in den Abschnitten [Verwenden von PolyBase zum Laden von Daten in Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) und [Verwenden der COPY-Anweisung zum Laden von Daten in Azure Synapse Analytics (Vorschau)](#use-copy-statement). Eine exemplarische Vorgehensweise mit einem Anwendungsfall finden Sie unter [Laden von 1 TB in Azure Synapse Analytics in weniger als 15 Minuten mit Azure Data Factory](load-azure-sql-data-warehouse.md).
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften für das Definieren von Data Factory-Entitäten speziell für den Connector von Azure Synapse Analytics.
 
@@ -56,7 +56,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften für das Definieren 
 
 Folgende Eigenschaften werden für einen mit Azure Synapse Analytics verknüpften Dienst unterstützt:
 
-| Eigenschaft            | Beschreibung                                                  | Erforderlich                                                     |
+| Eigenschaft            | BESCHREIBUNG                                                  | Erforderlich                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | Die „type“-Eigenschaft muss auf **AzureSqlDW** festgelegt sein.             | Ja                                                          |
 | connectionString    | Geben Sie Informationen, die zur Verbindung mit der Instanz von Azure Synapse Analytics erforderlich sind, für die Eigenschaft **connectionString** ein. <br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort/den Dienstprinzipalschlüssel in Azure Key Vault speichern und bei Verwendung der SQL-Authentifizierung die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie im JSON-Beispiel unter der Tabelle und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja                                                          |
@@ -220,7 +220,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Die folgenden Eigenschaften werden beim Dataset von Azure Synapse Analytics unterstützt:
 
-| Eigenschaft  | Beschreibung                                                  | Erforderlich                    |
+| Eigenschaft  | BESCHREIBUNG                                                  | Erforderlich                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | Die **type**-Eigenschaft des Datasets muss auf **AzureSqlDWTable** festgelegt sein. | Ja                         |
 | schema | Name des Schemas. |Quelle: Nein, Senke: Ja  |
@@ -259,7 +259,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus Azure Synapse Analytics die Eigenschaft **type** der Quelle der Kopieraktivität auf **SqlDWSource** fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft                     | Beschreibung                                                  | Erforderlich |
+| Eigenschaft                     | BESCHREIBUNG                                                  | Erforderlich |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **SqlDWSource** festgelegt sein. | Ja      |
 | sqlReaderQuery               | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `select * from MyTable`. | Nein       |
@@ -378,7 +378,7 @@ Azure Data Factory unterstützt drei Methoden zum Laden von Daten in Azure Synap
 
 Legen Sie zum Kopieren von Daten in Azure Synapse Analytics den Senkentyp in der Kopieraktivität auf **SqlDWSink** fest. Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft          | Beschreibung                                                  | Erforderlich                                      |
+| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **SqlDWSink** festgelegt sein. | Ja                                           |
 | allowPolyBase     | Gibt an, ob PolyBase zum Laden von Daten in Azure Synapse Analytics verwendet werden soll. `allowCopyCommand` und `allowPolyBase` können nicht beide auf „true“ festgelegt sein. <br/><br/>Einschränkungen und Einzelheiten finden Sie im Abschnitt [Verwenden von PolyBase zum Laden von Daten in Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics).<br/><br/>Zulässige Werte sind **true** und **false** (Standard). | Nein.<br/>Beim Verwenden von PolyBase anwenden.     |
@@ -485,7 +485,7 @@ Mit [PolyBase](/sql/relational-databases/polybase/polybase-guide) lassen sich gr
 
 Die folgenden PolyBase-Eigenschaften werden unter `polyBaseSettings` in der Kopieraktivität unterstützt:
 
-| Eigenschaft          | Beschreibung                                                  | Erforderlich                                      |
+| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | rejectValue       | Gibt die Anzahl oder den Prozentsatz von Zeilen an, die abgelehnt werden können, bevor für die Abfrage ein Fehler auftritt.<br/><br/>Weitere Informationen zu den PolyBase-Ablehnungsoptionen finden Sie im Abschnitt „Argumente“ in [CREATE EXTERNAL TABLE (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql). <br/><br/>Zulässige Werte sind „0“ (Standard), „1“, „2“ usw. | Nein                                            |
 | rejectType        | Gibt an, ob die **rejectValue**-Option als Literalwert oder Prozentsatz angegeben ist.<br/><br/>Zulässige Werte sind **Value** (Standard) und **Percentage**. | Nein                                            |
@@ -726,7 +726,7 @@ Das Verwenden der COPY-Anweisung unterstützt die folgende Konfiguration:
 
 Die folgenden Einstellungen der COPY-Anweisung werden unter `allowCopyCommand` in der Kopieraktivität unterstützt:
 
-| Eigenschaft          | Beschreibung                                                  | Erforderlich                                      |
+| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | defaultValues | Gibt die Standardwerte für die einzelnen Zielspalten in Azure Synapse Analytics an.  Die Standardwerte in der Eigenschaft überschreiben die in Data Warehouse festgelegte DEFAULT-Einschränkung, und die Identitätsspalte darf keinen Standardwert haben. | Nein |
 | additionalOptions | Zusätzliche Optionen, die direkt in der WITH-Klausel in der [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql) an eine COPY-Anweisung in Azure Synapse Analytics übergeben werden. Geben Sie den Wert so an, wie er gemäß den Anforderungen der COPY-Anweisung erforderlich ist. | Nein |
@@ -832,6 +832,24 @@ Spezifische Einstellungen für Azure Synapse Analytics sind auf der Registerkart
 **Pre- und Post SQL-Skripts**: Geben Sie mehrzeilige SQL-Skripts ein, die ausgeführt werden, bevor Daten in die Senkendatenbank geschrieben werden (Vorverarbeitung) und danach (Nachbearbeitung).
 
 ![Vorverarbeitungs- und Nachbearbeitungs-SQL-Skripts](media/data-flow/prepost1.png "SQL-Verarbeitungsskripts")
+
+### <a name="error-row-handling"></a>Fehlerzeilenbehandlung
+
+Beim Schreiben in Azure Synapse Analytics können aufgrund von Einschränkungen durch das Ziel Fehler bei bestimmten Datenzeilen auftreten. Häufige Fehler sind z. B. folgende:
+
+*    Zeichenfolgen- oder Binärdaten würden in der Tabelle abgeschnitten.
+*    Der Wert NULL kann nicht in die Spalte einfügt werden.
+*    Fehler beim Konvertieren des Werts in den Datentyp
+
+Standardmäßig scheitert eine Datenflussausführung beim ersten erhaltenen Fehler. Sie können die Option **Bei Fehler fortsetzen** auswählen, die einen Abschluss des Datenflusses auch dann ermöglicht, wenn einzelne Zeilen Fehler aufweisen. Azure Data Factory bietet verschiedene Optionen, mit denen Sie diese Fehlerzeilen behandeln können.
+
+**Transaktionscommit:** Wählen Sie aus, ob Ihre Daten in einer einzelnen Transaktion oder in Batches geschrieben werden. Eine einzelne Transaktion führt zu einer besseren Leistung, und es werden keine geschriebenen Daten für andere sichtbar gemacht, bis die Transaktion abgeschlossen ist. Batchtransaktionen haben eine schlechtere Leistung, können aber für große Datasets verwendet werden.
+
+**Abgelehnte Daten ausgeben:** Wenn diese Option aktiviert ist, können Sie die Fehlerzeilen in eine CSV-Datei in Azure Blob Storage oder ein Azure Data Lake Storage Gen2-Konto Ihrer Wahl ausgeben. Dadurch werden die Fehlerzeilen mit drei zusätzlichen Spalten geschrieben: dem SQL-Vorgang wie INSERT oder UPDATE, dem Datenfluss-Fehlercode und der Fehlermeldung für die Zeile.
+
+**Bericht bei Fehler als erfolgreich markieren:** Wenn diese Option aktiviert ist, wird der Datenfluss als erfolgreich markiert, auch wenn Fehlerzeilen gefunden werden. 
+
+:::image type="content" source="media/data-flow/sql-error-row-handling.png" alt-text="Screenshot der Behandlung von Fehlerzeilen" border="false":::
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 

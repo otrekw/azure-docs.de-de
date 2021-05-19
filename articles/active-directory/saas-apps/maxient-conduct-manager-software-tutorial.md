@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4b57b3fbb338774eb8d66fc4d3c0c817e19aff4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2790ae787831fb5dfa81656d32473c98ac4bb4bd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92458199"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739941"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Maxient Conduct Manager Software
 
@@ -64,7 +64,7 @@ Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Maxient Cond
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Maxient Conduct Manager Software zu konfigurieren:
 
 1. **[Konfigurieren des einmaligen Anmeldens für Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzer die Authentifizierung für die Verwendung von Maxient Conduct Manager-Software zu ermöglichen.
-    1. **[Zuweisen aller Benutzer zur Verwendung von Maxient](#assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software)** , um allen Benutzern in Ihrer Einrichtung die Möglichkeit zu geben, sich zu authentifizieren.
+   - **[Legen Sie „Benutzerzuweisung erforderlich?“ auf Nein fest](#set-user-assignment-required-to-no)** , damit sich jeder in Ihrer Einrichtung authentifizieren kann.
 1. **[Testen von Azure AD Setup mit Maxient](#test-with-maxient)** , um zu überprüfen, ob die Konfiguration funktioniert und die richtigen Attribute freigegeben werden.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -90,21 +90,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
-### <a name="assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software"></a>Allen Benutzern die Möglichkeit zum Authentifizieren für die Maxient Conduct Manager-Software zuweisen
+<a name="set-user-assignment-required-to-no"></a>
+    
+### <a name="set-user-assignment-required-to-no"></a>Legen Sie „Benutzerzuweisung erforderlich?“ fest. auf Nein
 
-In diesem Abschnitt gewähren Sie allen Konten Zugriff, um sich mithilfe des Azure-Systems für die Maxient Conduct Manager-Software zu authentifizieren.  Es ist wichtig zu beachten, dass dieser Schritt **ERFORDERLICH** ist, damit Maxient ordnungsgemäß funktioniert.  Maxient nutzt das Azure AD-System, um Benutzer zu *authentifizieren*. Die *Autorisierung* von Benutzern wird innerhalb des Maxient-Systems für die jeweilige Funktion ausgeführt, die diese durchführen möchten. Maxient verwendet keine Attribute aus Ihrem Verzeichnis, um diese Entscheidungen zu treffen.
+Es ist wichtig zu beachten, dass dieser Schritt **ERFORDERLICH** ist, damit Maxient ordnungsgemäß funktioniert.  Maxient nutzt das Azure AD-System, um Benutzer zu *authentifizieren*. Die *Autorisierung* von Benutzern wird innerhalb des Maxient-Systems für die jeweilige Funktion ausgeführt, die diese durchführen möchten. Maxient verwendet keine Attribute aus Ihrem Verzeichnis, um diese Entscheidungen zu treffen.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste die Option **Maxient Conduct Manager Software** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** alle Benutzer (oder die entsprechenden Gruppen) aus, und **weisen** Sie diese zu, damit sie sich bei Maxient authentifizieren können.
+1. Ändern Sie auf der Übersichtsseite der App die Einstellung „Benutzerzuweisung erforderlich“ auf Nein.
 
 ## <a name="test-with-maxient"></a>Testen mit Maxient 
 

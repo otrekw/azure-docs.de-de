@@ -3,12 +3,12 @@ title: Ermitteln der Ursachen für Nichtkonformität
 description: Wenn eine Ressource nicht konform ist, kann das viele mögliche Ursachen haben. Erfahren Sie, wie Sie die Ursache für die Nichtkonformität ermitteln können.
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 66b0c6d7d0575e7361d04d16e6ba6fb06e36801b
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d36ed90990d2f8ba6677281ed865625da8cd3c17
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094114"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752703"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -34,7 +34,7 @@ Führen Sie die folgenden Schritte durch, um die Konformitätsdetails anzuzeigen
 
 1. Wählen Sie auf der Seite **Übersicht** oder **Konformität** eine Richtlinie mit dem **Konformitätsstatus**_Nicht konform_ aus.
 
-1. Öffnen Sie auf der Seite **Richtlinienkonformität** auf der Registerkarte **Ressourcenkonformität** das Kontextmenü, oder klicken Sie auf die Auslassungspunkte neben einer Ressource mit dem **Konformitätsstatus**_Nicht konform_. Wählen Sie dann **Konformitätsdetails anzeigen** aus.
+1. Öffnen Sie auf der Seite **Richtlinienkompatibilität** auf der Registerkarte **Ressourcenkonformität** das Kontextmenü, oder wählen Sie die Auslassungspunkte neben einer Ressource mit dem **Konformitätszustand** _Nicht konform_ aus. Wählen Sie dann **Konformitätsdetails anzeigen** aus.
 
    :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Screenshot: Link „Konformitätsdetails anzeigen“ auf der Registerkarte „Ressourcenkonformität“" border="false":::
 

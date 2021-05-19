@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 05/10/2021
 ms.author: alkohli
-ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d98141c52acc3cd0628943d17a89ec9822299d48
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147925"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738138"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box- und Azure Data Box Heavy-Importaufträge
 
 Ein Data Box- oder Data Box Heavy-Importauftrag durchläuft die folgenden Schritte: Bestellen, Einrichten, Kopieren von Daten, Zurücksenden, Hochladen in Azure und Überprüfen und Löschen von Daten. Für jeden Schritt des Auftrags können Sie mehrere Aktionen durchführen, um den Zugriff auf den Auftrag zu steuern, die Ereignisse zu überwachen, den Auftrag zu verfolgen und die verschiedenen Protokolle zu interpretieren, die generiert werden.
 
-Die folgende Tabelle enthält eine Übersicht der Schritte eines Data Box- oder Data Box Heavy-Importauftrags und die verfügbaren Tools zum Nachverfolgen und Überwachen des Auftrags in jedem Schritt.
+Die folgende Tabelle enthält eine Zusammenfassung der einzelnen Schritte bei der Verarbeitung eines Importauftrags und der Tools, die zum Nachverfolgen und Überwachen des Auftrags während des Schritts verfügbar sind.
 
-| Phase des Data Box-Importauftrags       | Tool zum Nachverfolgen und Überwachen                                                                        |
-|----------------------------|------------------------------------------------------------------------------------------------|
+| Phase des Data Box-Importauftrags| Tool zum Nachverfolgen und Überwachen|
+|----------------------------|------------------------|
 | Erstellung des Auftrags               | [Einrichten der Zugriffssteuerung für den Auftrag über Azure RBAC](#set-up-access-control-on-the-order)                                                    |
 | Auftrag verarbeitet            | [Nachverfolgen des Auftrags](#track-the-order) über <ul><li> Azure-Portal </li><li> Website des Spediteurs </li><li>E-Mail-Benachrichtigungen</ul> |
 | Einrichten des Geräts              | In [Aktivitätsprotokollen](#query-activity-logs-during-setup) protokollierter Zugriff auf Geräteanmeldeinformation                                              |
@@ -78,8 +78,8 @@ Während des Kopiervorgangs von Daten auf die Data Box oder Data Box Heavy wird 
 
 Vergewissern Sie sich, dass die Kopieraufträge ohne Fehler abgeschlossen wurden. Sollte während des Kopiervorgangs ein Fehler aufgetreten sein, laden Sie die Protokolle von der Seite **Verbindung herstellen und Daten kopieren** herunter.
 
-- Falls Sie eine Datei kopiert haben, die in einem Ordner für verwaltete Datenträger in Ihrer Data Box keinem ganzzahligen Vielfachen von 512 Byte entspricht, wird die Datei nicht als Seitenblob in Ihr Stagingspeicherkonto hochgeladen. Die Protokolle enthalten dann einen Fehler. Entfernen Sie die Datei, und kopieren Sie eine Datei, die einem ganzzahligen Vielfachen von 512 Bytes entspricht.
-- Wenn Sie eine VHDX, eine dynamische VHD oder eine differenzierende VHD (nicht unterstützt) kopiert haben, wird ein Fehler protokolliert.
+- Falls Sie eine Datei kopiert haben, die in einem Ordner für verwaltete Datenträger in Ihrer Data Box keinem ganzzahligen Vielfachen von 512 Byte entspricht, wird die Datei nicht als Seiten-Blob in Ihr Staging-Speicherkonto hochgeladen. Die Protokolle enthalten dann einen Fehler. Entfernen Sie die Datei und kopieren Sie eine Datei, die einem ganzzahligen Vielfachen von 512 Bytes entspricht.
+- Wenn Sie eine VHDX, eine dynamische oder andere VHD kopiert haben (diese Dateitypen werden nicht unterstützt), wird in den Protokollen ein Fehler angezeigt.
 
 Hier finden Sie ein Beispiel für die Datei *error.xml* für verschiedene Fehler beim Kopieren auf verwaltete Datenträger.
 
@@ -161,7 +161,7 @@ Weitere Informationen zu den Fehlern während der Vorbereitung auf den Versand f
 
 ### <a name="bom-or-manifest-file"></a>BOM- oder Manifestdatei
 
-Die BOM- oder Manifestdatei enthält die Liste aller Dateien, die auf das Data Box-Gerät kopiert werden. Die BOM-Datei enthält die Dateinamen und die entsprechenden Größen sowie die Prüfsumme. Eine separate BOM-Datei wird für die Blockblobs, Seitenblobs, Azure Files, für das Kopieren über die REST-APIs und für das Kopieren auf verwaltete Datenträger in der Data Box erstellt. Sie können die BOM-Dateien während der Vorbereitung auf den Versand über die lokale Webbenutzeroberfläche des Geräts herunterladen.
+Die BOM- oder Manifestdatei enthält die Liste aller Dateien, die auf das Data Box-Gerät kopiert werden. Die BOM-Datei verfügt über Dateinamen, Dateigrößen sowie Prüfsumme. Eine separate BOM-Datei wird für die Blockblobs, Seitenblobs, Azure Files, für das Kopieren über die REST-APIs und für das Kopieren auf verwaltete Datenträger in der Data Box erstellt. Sie können die BOM-Dateien während der Vorbereitung auf den Versand über die lokale Webbenutzeroberfläche des Geräts herunterladen.
 
 Diese Dateien befinden sich auch auf dem Data Box-Gerät und werden in das zugehörige Speicherkonto im Azure-Rechenzentrum hochgeladen.
 
@@ -199,7 +199,7 @@ Beim Hochladen von Daten in Azure wird ein Kopierprotokoll erstellt.
 
 ### <a name="copy-log"></a>Kopierprotokoll
 
-Für jeden verarbeiteten Auftrag erstellt der Data Box-Dienst im zugeordneten Speicherkonto ein Kopierprotokoll. Das Kopierprotokoll enthält die Gesamtanzahl der hochgeladenen Dateien sowie die Anzahl der Dateien, bei denen während des Kopierens aus der Data Box in Ihr Azure-Speicherkonto Fehler aufgetreten sind.
+Für jede verarbeitete Reihenfolge erstellt der Data Box-Dienst im zugeordneten Speicherkonto eine Protokollkopie. Das Kopierprotokoll enthält die Gesamtanzahl der hochgeladenen Dateien sowie die Anzahl der Dateien, bei denen während des Kopierens aus der Data Box in Ihr Azure-Speicherkonto Fehler aufgetreten sind.
 
 Während des Uploads in Azure wird eine CRC-Berechnung (Cyclic Redundancy Check) durchgeführt. Die CRC-Werte des Datenkopiervorgangs und werden mit denen nach dem Datenupload verglichen. Wenn die CRC-Werte nicht übereinstimmen, weist dies darauf hin, dass der Upload der entsprechenden Dateien fehlgeschlagen ist.
 
@@ -211,7 +211,7 @@ Der Pfad des Kopierprotokolls wird auch auf dem Blatt **Übersicht** für das Po
 
 ![Pfad zum Kopierprotokoll nach Abschluss auf dem Blatt „Übersicht“](media/data-box-logs/copy-log-path-1.png)
 
-### <a name="upload-completed-successfully"></a>Upload erfolgreich abgeschlossen 
+### <a name="upload-completed-successfully"></a>Upload erfolgreich abgeschlossen
 
 Im folgenden Beispiel wird das allgemeine Format eines Kopierprotokolls für einen Data Box-Upload beschrieben, der erfolgreich abgeschlossen wurde:
 
@@ -224,40 +224,15 @@ Im folgenden Beispiel wird das allgemeine Format eines Kopierprotokolls für ein
 </CopyLog>
 ```
 
-### <a name="upload-completed-with-errors"></a>Upload mit Fehlern abgeschlossen 
-
-Der Upload in Azure kann auch mit Fehlern abgeschlossen werden.
-
-![Der Pfad zum Kopierprotokoll nach Abschluss mit Fehlern auf dem Blatt „Übersicht“](media/data-box-logs/copy-log-path-2.png)
-
-Hier finden Sie ein Beispiel eines Kopierprotokolls, nachdem der Upload mit Fehlern abgeschlossen wurde:
-
-```xml
-<ErroredEntity Path="iso\samsungssd.iso">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>409</ErrorCode>
-  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><ErroredEntity Path="iso\iSCSI_Software_Target_33.iso">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>409</ErrorCode>
-  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><CopyLog Summary="Summary">
-  <Status>Failed</Status>
-  <TotalFiles_Blobs>72</TotalFiles_Blobs>
-  <FilesErrored>2</FilesErrored>
-</CopyLog>
-```
 ### <a name="upload-completed-with-warnings"></a>Upload mit Warnungen abgeschlossen
 
-Der Upload in Azure wird mit Warnungen abgeschlossen, wenn Ihre Daten Container-, Blob- oder Dateinamen hatten, die nicht den Azure-Namenskonventionen entsprachen, und die Namen geändert wurden, damit die Daten in Azure hochgeladen werden konnten.
+Der Upload in Azure wird mit Warnungen abgeschlossen, wenn Ihre Daten Container-, Blob- oder Dateinamen hatten, die nicht den Azure-Namenskonventionen entsprachen, und die Namen zum Hochladen der Daten in Azure geändert wurden.
 
 ![Der Pfad zum Kopierprotokoll nach Abschluss mit Warnungen auf dem Blatt „Übersicht“](media/data-box-logs/copy-log-path-3.png)
 
-Hier ist ein Beispiel eines Kopierprotokolls, bei dem die Container, die nicht den Azure-Namenskonventionen entsprachen, während des Hochladens der Daten in Azure umbenannt wurden.
+Hier ist ein Beispiel einer Protokollkopie, bei der die Container, die nicht den Azure-Namenskonventionen entsprachen, während des Hochladens der Daten in Azure umbenannt wurden.
 
-Die neuen eindeutigen Namen für Container haben das Format `DataBox-GUID`, und die Daten für den Container werden in dem neu umbenannten Container platziert. Das Kopierprotokoll gibt den alten und neuen Namen des Containers an.
+Die eindeutigen Namen für die neuen Container haben das Format `DataBox-GUID` . Die Daten aus den ursprünglichen Containern werden in den neuen umbenannten Containern gespeichert. Die Protokollkopie gibt die alten und neuen Containernamen an.
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -268,7 +243,7 @@ Die neuen eindeutigen Namen für Container haben das Format `DataBox-GUID`, und 
 </ErroredEntity>
 ```
 
-Hier ist ein Beispiel eines Kopierprotokolls, bei dem die Blobs oder Dateien, die nicht den Azure-Namenskonventionen entsprachen, während des Hochladens der Daten in Azure umbenannt wurden. Die neuen Blob- oder Dateinamen werden in den SHA256-Digest des relativen Pfads zum Container konvertiert und basierend auf dem Zieltyp in den Pfad hochgeladen. Als Ziel kommen Blockblobs, Seitenblobs oder Azure Files infrage.
+Hier ist ein Beispiel einer Protokollkopie, bei der die Blobs oder Dateien, die nicht den Azure-Namenskonventionen entsprachen, während des Hochladens der Daten in Azure umbenannt wurden. Die neuen Blob- oder Dateinamen werden in den SHA256-Digest des relativen Pfads zum Container konvertiert und basierend auf dem Zieltyp in den Pfad hochgeladen. Als Ziel kommen Blockblobs, Seitenblobs oder Azure Files infrage.
 
 Das `copylog` gibt den alten und neuen Blob- oder Dateinamen und den Pfad in Azure an.
 
@@ -289,6 +264,35 @@ Das `copylog` gibt den alten und neuen Blob- oder Dateinamen und den Pfad in Azu
   <ErrorMessage>The original container/share/blob has been renamed to: BlockBlob/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
   <Type>File</Type>
 </ErroredEntity>
+```
+
+
+### <a name="upload-completed-with-errors"></a>Upload mit Fehlern abgeschlossen
+
+Der Upload in Azure kann auch mit Fehlern abgeschlossen werden.
+
+![Der Pfad zum Kopierprotokoll nach Abschluss mit Fehlern auf dem Blatt „Übersicht“](media/data-box-logs/copy-log-path-2.png)
+
+Es kann gelegentlich zu einem nicht wiederversuchbaren Fehler kommen, der dazu führt, dass eine Datei nicht hochgeladen wird. In diesem Fall erhalten Sie eine Benachrichtigung. Informationen zur Nachverarbeitung der Benachrichtigung finden Sie unter [Überprüfen von Kopierfehlern bei Datenuploads von Azure Data Box und Azure Data Box Heavy-Geräten](data-box-troubleshoot-data-upload.md).
+
+Hier finden Sie ein Beispiel eines Kopierprotokolls, nachdem der Upload mit Fehlern abgeschlossen wurde:
+
+```xml
+<ErroredEntity Path="iso\samsungssd.iso">
+  <Category>UploadErrorCloudHttp</Category>
+  <ErrorCode>409</ErrorCode>
+  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><ErroredEntity Path="iso\iSCSI_Software_Target_33.iso">
+  <Category>UploadErrorCloudHttp</Category>
+  <ErrorCode>409</ErrorCode>
+  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><CopyLog Summary="Summary">
+  <Status>Failed</Status>
+  <TotalFiles_Blobs>72</TotalFiles_Blobs>
+  <FilesErrored>2</FilesErrored>
+</CopyLog>
 ```
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Abrufen der Kette von Protokollen zur Rückverfolgbarkeit nach dem Löschen von Daten

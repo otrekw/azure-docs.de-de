@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: c38b7c33cfe787ba933ca1fc4961080eaa4ada61
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 324ff6f29aef76ef5baded89db92bb4e4b5ec362
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276058"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755547"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Häufig gestellte Fragen (FAQ) zur Textanalyse-API
 
@@ -39,7 +39,7 @@ Nein, die Modelle sind vortrainiert. Die einzigen Vorgänge zum Hochladen von Da
 
 Die Stimmungsanalyse und Schlüsselbegriffserkennung sind für eine [bestimmte Auswahl von Sprachen](./language-support.md) verfügbar. Die Verarbeitung natürlicher Sprache ist komplex und erfordert umfangreiche Tests, bevor neue Funktionen veröffentlicht werden können. Aus diesem Grund wird die Unterstützung nicht frühzeitig angekündigt, sodass niemand sich auf eine Funktion verlässt, die mehr Entwicklungszeit benötigt. 
 
-Sie können für bestimmte Sprachen auf der [User Voice](https://cognitive.uservoice.com/forums/555922-text-analytics)-Website abstimmen, damit die Entscheidung leichter fällt, welche Sprache als nächstes priorisiert wird. 
+Sie können mit dem [Feedbacktool](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749) für bestimmte Sprachen stimmen, damit die Entscheidung leichter fällt, welche Sprache als nächstes priorisiert wird. 
 
 ## <a name="why-does-key-phrase-extraction-return-some-words-but-not-others"></a>Wieso werden manche Worte von der Schlüsselbegriffserkennung zurückgegeben und andere nicht?
 
@@ -63,7 +63,7 @@ Es ist keine Kundenkonfiguration erforderlich, um Zonenresilienz zu ermöglichen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? Erwägen Sie, eine Anforderung auf der [UserVoice-Website](https://cognitive.uservoice.com/forums/555922-text-analytics) zu erstellen oder dafür abzustimmen.
+Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? Erwägen Sie, sie mit dem [Feedbacktool](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749) anzufordern oder dafür zu stimmen.
 
 ## <a name="see-also"></a>Siehe auch
 

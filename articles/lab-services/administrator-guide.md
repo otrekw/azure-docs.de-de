@@ -3,12 +3,12 @@ title: Azure Lab Services – Administratorhandbuch | Microsoft-Dokumentation
 description: Dieses Handbuch hilft Administratoren, die Lab-Konten mit Azure Lab Services erstellen und verwalten.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5dff57eb663324679941a043ebaa97f39c6aa20
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462471"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770711"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Administratorhandbuch
 IT-Administratoren, die die Cloudressourcen einer Universität verwalten, sind in der Regel auch dafür verantwortlich, das Lab-Konto für diese Universität einzurichten. Nachdem sie ein Lab-Konto eingerichtet haben, erstellen Administratoren oder Dozenten Labs, die im Lab-Konto enthalten sind. Dieser Artikel bietet eine allgemeine Übersicht über die beteiligten Azure-Ressourcen und die Anleitungen zu deren Erstellung.
@@ -216,12 +216,27 @@ Wenn Sie Rollen zuweisen, sollten Sie diese Tipps befolgen:
    - Um Dozenten die Möglichkeit zum Erstellen neuer Labs und Verwalten der Labs zu bieten, die sie erstellen, müssen Sie ihnen nur Zugriff auf die Rolle „Lab-Ersteller“ zuweisen.
    - Um Dozenten die Möglichkeit zu geben, bestimmte Labs zu verwalten, aber *nicht* die Möglichkeit, neue Labs zu erstellen, weisen Sie ihnen für jedes Lab, das sie verwalten, die Rolle „Besitzer“ oder „Mitwirkender“ zu. Sie könnten beispielsweise einem Professor und seinem Assistenten den Mitbesitz eines Labs erlauben. Weitere Informationen finden Sie unter [Hinzufügen zusätzlicher Benutzer zu einem vorhandenen Lab in Azure Lab Services](./how-to-add-user-lab-owner.md).
 
+## <a name="content-filtering"></a>Inhaltsfilterung
+
+Ihre Schule muss möglicherweise Inhalte filtern, damit Kursteilnehmer nicht auf ungeeignete Websites zugreifen.  Um beispielsweise dem [Children's Internet Protection Act (CIPA)](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act) zu entsprechen.  Lab Services bietet keine integrierte Unterstützung für die Inhaltsfilterung.
+
+Es gibt zwei Ansätze, welche Schulen in der Regel für die Inhaltsfilterung berücksichtigen:
+- Konfigurieren Sie eine Firewall, um Inhalte auf Netzwerkebene zu filtern.
+- Installieren Sie Drittanbieter-Software direkt auf jedem Computer, der Inhalte filtert.
+
+Der erste Ansatz wird von Lab Services derzeit nicht unterstützt.  Lab Services hostet das virtuelle Netzwerk jedes Labs innerhalb eines von Microsoft verwalteten Azure-Abonnements.  Daher haben Sie zum Filtern von Inhalten auf Netzwerkebene keinen Zugriff auf das zugrundeliegende virtuelle Netzwerk.  Weitere Information zur Architektur von Lab Services finden Sie im Artikel [Grundlagen der Architektur](./classroom-labs-fundamentals.md).
+
+Wir empfehlen stattdessen den zweiten Ansatz, d. h. das Installieren von Drittanbieter-Software auf jedem Vorlagen-VM des Labs.  Als Teil dieser Lösung müssen wir einige zentrale Punkte hervorheben:
+- Wenn Sie die [Einstellungen zum automatischen Herunterfahren](./cost-management-guide.md#automatic-shutdown-settings-for-cost-control) verwenden möchten, müssen Sie die Blockierungen diverser Azure-Hostnamen bei der Drittanbieter-Software aufheben.  Die Einstellungen zum automatischen Herunterfahren verwenden eine diagnostische Erweiterung, die mit Lab Services kommunizieren muss.  Andernfalls können die Einstellungen zum automatischen Herunterfahren im Lab nicht aktiviert werden.
+- Darüberhinaus muss jeder Lernende auf seiner VM ein Nicht-Administratorkonto verwenden, damit sie die Software zum Filtern von Inhalten nicht deinstallieren können.  Standardmäßig erstellt Lab Services ein Administratorkonto, mit dem sich jeder Kursteilnehmer bei seiner VM anmeldet.  Es ist möglich, ein Konto ohne Administratorrechte mithilfe eines spezialisierten Images hinzuzufügen, es gibt jedoch einige bekannte Einschränkungen.
+
+Wenn Ihre Schule inhaltsfiltern muss, kontaktieren Sie uns über die [Foren der Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices), um weitere Informationen zu erhalten.
+
 ## <a name="pricing"></a>Preise
 
 ### <a name="azure-lab-services"></a>Azure Lab Services
 
 Weitere Informationen zu den aktuellen Preisen finden Sie unter [Azure Lab Services – Preise](https://azure.microsoft.com/pricing/details/lab-services/).
-
 
 ### <a name="shared-image-gallery"></a>Gemeinsamer Image-Katalog
 

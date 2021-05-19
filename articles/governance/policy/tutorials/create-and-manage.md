@@ -3,16 +3,16 @@ title: 'Tutorial: Erstellen von Richtlinien zur Konformitätserzwingung'
 description: In diesem Tutorial verwenden Sie Richtlinien zum Erzwingen von Standards, Steuern der Kosten, Gewährleisten der Sicherheit und Erzwingen von unternehmensweiten Entwurfsprinzipien.
 ms.date: 05/01/2021
 ms.topic: tutorial
-ms.openlocfilehash: 68621ee5a4cdfcb3bdbdddb2baa423d443eba36a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 8f5b68190691651855bae31bae2885f80a16111f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325209"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752235"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
-Zur Einhaltung Ihrer Unternehmensstandards und Vereinbarungen zum Servicelevel müssen Sie mit der Erstellung und Verwaltung von Richtlinien in Azure vertraut sein. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Policy einige allgemeinere Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Zuweisung und Verwaltung von Richtlinien durchführen:
+Es ist wichtig, zu verstehen, wie Richtlinien in Azure erstellt und verwaltet werden, um die Konformität mit Ihren Unternehmensstandards und Servicelevel-Vereinbarungen zu gewährleisten. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Policy einige allgemeinere Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Zuweisung und Verwaltung von Richtlinien durchführen:
 
 > [!div class="checklist"]
 > - Zuweisen einer Richtlinie zur Erzwingung einer Bedingung für die spätere Erstellung von Ressourcen
@@ -98,12 +98,12 @@ Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weit
      > Wenn Sie diese Richtliniendefinition auf mehrere Abonnements anwenden möchten, muss der Speicherort eine Verwaltungsgruppe sein, die die Abonnements enthält, denen Sie die Richtlinie zuweisen. Dasselbe gilt für eine Initiativdefinition.
 
    - Den Namen der Richtliniendefinition: _Require VM SKUs not in the G series_ (VM-SKUs dürfen nicht der G-Serie angehören)
-   - Den Zweck der Richtliniendefinition: _This policy definition enforces that all virtual machines created in this scope have SKUs other than the G series to reduce cost._ (Diese Richtliniendefinition dient zur Kostensenkung und bewirkt, dass alle virtuellen Computer, die in diesem Bereich erstellt werden, andere SKUs als die der G-Serie aufweisen.)
+   - Zweck der Richtliniendefinition: _Diese Richtliniendefinition bewirkt, dass zur Kostensenkung alle in diesem Bereich erstellten virtuellen Computer andere SKUs als die der G-Serie aufweisen._
    - Wählen Sie eine der vorhandenen Optionen (etwa _Compute_) aus, oder erstellen Sie für diese Richtliniendefinition eine neue Kategorie.
    - Kopieren Sie den folgenden JSON-Code, und aktualisieren Sie ihn dann Ihren Anforderungen entsprechend mit folgenden Angaben:
       - Richtlinienparameter
-      - Richtlinienregeln/-bedingungen (in unserem Fall: VM-SKU-Größe gleich G-Serie)
-      - Wirkung der Richtlinie (in unserem Fall: **deny**, also „Ablehnen“)
+      - Richtlinienregeln bzw. -bedingungen (hier: VM-SKU-Größe wie bei G-Serie)
+      - Wirkung der Richtlinie (hier: **Ablehnen**).
 
    Der JSON-Code sollte wie folgt aussehen. Fügen Sie den überarbeiteten Code in das Azure-Portal ein.
 
@@ -400,7 +400,7 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
    > [!NOTE]
    > Werden einige `strongType`-Parameter verwendet, kann die Liste der Werte nicht automatisch ermittelt werden. In diesem Fall wird rechts neben der Parameterzeile eine Ellipse angezeigt. Wenn Sie sie auswählen, wird die Seite „Parameterbereich (&lt;Parametername&gt;)“ geöffnet. Wählen Sie auf dieser Seite das Abonnement aus, mit dem die Wertoptionen bereitgestellt werden sollen. Dieser Parameterbereich wird nur während der Erstellung der Initiativendefinition verwendet und wirkt sich bei der Zuweisung nicht auf die Richtlinienauswertung oder den Bereich der Initiative aus.
 
-   Legen Sie den _Werttyp_ für „Zulässige Standorte“ auf „Wert festlegen“ fest, und wählen Sie in der Dropdownliste den Wert „USA, Osten 2“ aus. Legen Sie für die beiden Instanzen der Richtliniendefinition _Tag für Ressourcen hinzufügen oder ersetzen_ die Parameter **Tagname** auf „Env“ bzw. „CostCenter“ und die Parameter **Tagwert** auf „Test“ bzw. „Lab“ fest, wie im Anschluss gezeigt. Behalten Sie bei den anderen die Option „Standardwert“ bei. Da in der Initiative die gleiche Definition zweimal verwendet wird, aber jeweils unterschiedliche Parameter angegeben wurden, werden ein Tag vom Typ „Env“ mit dem Wert „Test“ und ein Tag vom Typ „CostCenter“ mit dem Wert „Lab“ für Ressourcen hinzugefügt oder ersetzt, die sich im Gültigkeitsbereich der Zuweisung befinden.
+   Legen Sie den _Werttyp_ „Zulässige Standorte“ auf „Wert festlegen“ fest und wählen Sie in der Dropdownmenü den Wert „USA, Osten 2“ aus. Legen Sie für die beiden Instanzen der Richtliniendefinition _Tag für Ressourcen hinzufügen oder ersetzen_ die Parameter **Tagname** auf „Env“ bzw. „CostCenter“ und die Parameter **Tagwert** auf „Test“ bzw. „Lab“ fest, wie im Anschluss gezeigt. Behalten Sie bei den anderen die Option „Standardwert“ bei. Da in der Initiative die gleiche Definition zweimal verwendet wird, aber jeweils unterschiedliche Parameter angegeben wurden, werden ein Tag vom Typ „Env“ mit dem Wert „Test“ und ein Tag vom Typ „CostCenter“ mit dem Wert „Lab“ für Ressourcen hinzugefügt oder ersetzt, die sich im Gültigkeitsbereich der Zuweisung befinden.
 
    :::image type="content" source="../media/create-and-manage/initiative-definition-4.png" alt-text="Screenshot: Eingegebene Optionen für zulässige Werte für den Definitionsparameter „Zulässige Standorte“ und Werte für beide Tagparametersätze auf der Registerkarte „Richtlinienparameter“ der Seite „Initiativendefinition“":::
 
@@ -457,7 +457,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
    :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Screenshot: Schaltfläche „Zuweisen“ auf der Seite „Initiativendefinition“" border="false":::
 
-   Sie können auch mit der rechten Maustaste auf die ausgewählte Zeile klicken oder die Auslassungspunkte am Ende der Zeile für ein Kontextmenü auswählen. Wählen Sie dann **Zuweisen** aus.
+   Sie können für ein Kontextmenü auch mit der rechten Maustaste auf die ausgewählte Zeile klicken (bzw. auswählen und halten) oder die Auslassungspunkte am Ende der Zeile auswählen. Wählen Sie dann **Zuweisen** aus.
 
    :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Screenshot: Kontextmenü für eine Initiative zum Auswählen der Funktion „Zuweisen“" border="false":::
 

@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 12/14/2020
-ms.openlocfilehash: f1171bdd087d6ca72a09a2e3efb7f4767a575d21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/04/2021
+ms.openlocfilehash: bc1297790322202713d06c4d1f7a474c1b9dcda8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100517789"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108774077"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videotutorials zum Zuordnungsdatenfluss
 
@@ -93,6 +93,8 @@ Da das Produkt kontinuierlich aktualisiert wird, verfügen einige Features auf d
 
 [Analysieren der Transformation](https://www.youtube.com/watch?v=r7O7AJcuqoY)
 
+[Transformieren komplexer Datentypen](https://youtu.be/Wk0C76wnSDE)
+
 ## <a name="source-and-sink"></a>Quelle und Senke
 
 [Lesen und Schreiben von JSONs](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
@@ -130,6 +132,8 @@ Da das Produkt kontinuierlich aktualisiert wird, verfügen einige Features auf d
 [Optimieren der Startzeiten für den Datenfluss](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
 [Azure Integration Runtimes für Datenflüsse](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
+[Schnelle Clusterstartzeit mit Azure IR](https://www.youtube.com/watch?v=mxzsOZX6WVY)
 
 ## <a name="mapping-data-flow-scenarios"></a>Szenarien für Zuordnungsdatenflüsse
 

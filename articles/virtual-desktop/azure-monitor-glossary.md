@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8ed4c2cffffca79ea545358b8ad639118e87e013
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 13dfc7d7015ff293a1d6c05d94232412c8ec4fac
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448201"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753721"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-glossary"></a>Azure Monitor für Windows Virtual Desktop - Glossar
 
@@ -21,7 +21,7 @@ In diesem Artikel werden Schlüsselbegriffe und Konzepte im Zusammenhang mit Azu
 
 ## <a name="alerts"></a>Warnungen
 
-Alle aktiven Azure Monitor-Warnungen, die Sie für das Abonnement konfiguriert und mit [Schweregrad 0](#severity-0-alerts) klassifiziert haben, werden auf der Seite „Übersicht" angezeigt. Weitere Informationen zum Einrichten von Warnungen finden Sie unter [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/alerts/tutorial-response.md).
+Alle aktiven Azure Monitor-Warnungen, die Sie für das Abonnement konfiguriert und mit [Schweregrad 0](#severity-0-alerts) klassifiziert haben, werden auf der Seite „Übersicht" angezeigt. Weitere Informationen zum Einrichten von Warnungen finden Sie unter [Azure Monitor-Protokollwarnungen](../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="available-sessions"></a>Verfügbare Sitzungen
 
@@ -182,7 +182,7 @@ Weitere Informationen zu Windows-Ereignissen finden Sie unter [Eigenschaften der
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie zum Einstieg [Verwenden von Azure Monitor für Windows Virtual Desktop zum Überwachen Ihrer Bereitstellung](azure-monitor.md).
+- Lesen Sie zum Einstieg [Verwenden von Azure Monitor für Windows Virtual Desktop zum Überwachen der Bereitstellung](azure-monitor.md).
 - Informationen dazu, wie Sie Ihre Datenspeicherkosten schätzen, messen und verwalten können, finden Sie unter [Schätzung der Azure Monitor-Kosten](azure-monitor-costs.md).
 - Wenn ein Problem auftritt, finden Sie weitere Informationen im [Leitfaden zur Problembehebung](troubleshoot-azure-monitor.md).
 

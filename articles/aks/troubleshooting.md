@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Az
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 1d3dff19bd75bfa4e7564eb4b188ffe68d605025
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0892f11a79c62669d77cceb2dbc4f9a9f86c623a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952030"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765933"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -439,7 +439,7 @@ In Kubernetes-Versionen **vor 1.15.0** erhalten Sie möglicherweise eine Fehlerm
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Warum tritt bei Upgrades auf Kubernetes 1.16 ein Fehler auf, wenn Knotenbezeichnungen mit dem Präfix „kubernetes.io“verwendet werden?
 
-Ab Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) kann das Kubelet [nur eine definierte Teilmenge von Bezeichnungen mit dem Präfix „kubernetes.io“](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/) auf Knoten anwenden. AKS kann ohne Ihre Zustimmung keine aktiven Bezeichnungen in Ihrem Auftrag entfernen, da dies Ausfallzeiten für betroffene Workloads verursachen kann.
+Ab Kubernetes 1.16 kann [nur eine definierte Teilmenge von Bezeichnungen mit dem Präfix kubernetes.io](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/) von „kubelet“ auf Knoten angewendet werden. AKS kann ohne Ihre Zustimmung keine aktiven Bezeichnungen in Ihrem Auftrag entfernen, da dies Ausfallzeiten für betroffene Workloads verursachen kann.
 
 Daher können Sie zum Entschärfen des Problems eine der folgenden Maßnahmen durchführen:
 

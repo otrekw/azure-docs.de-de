@@ -9,16 +9,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 62035b2fe6c3db71e392a05946ea3f230dfa030e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e2c44b80390fc1fcf4f9b579daba65d0387a0f7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604625"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751191"
 ---
-# <a name="how-to-enable-key-vault-logging"></a>Aktivieren der Protokollierung in Key Vault
+# <a name="enable-key-vault-logging"></a>Aktivieren der Protokollierung in Key Vault
 
-Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie vermutlich überwachen, wie, wann und von wem auf die Schlüsseltresore zugegriffen wird. Ausführliche Informationen zum Feature finden Sie unter [Key Vault-Protokollierung](logging.md).
+Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie vermutlich überwachen, wie, wann und von wem auf die Schlüsseltresore zugegriffen wird. Ausführliche Informationen zum Feature finden Sie unter [Azure Key Vault-Protokollierung](logging.md).
 
 Protokollierte Inhalte
 
@@ -28,23 +28,23 @@ Protokollierte Inhalte
   * Erstellen, Ändern oder Löschen dieser Schlüssel oder Geheimnisse.
   * Signieren, Verifizieren, Verschlüsseln, Entschlüsseln, Ver- und Entpacken von Schlüsseln, Erhalten von Geheimnissen und Auflisten von Schlüsseln und Geheimnissen (und deren Versionen).
 * Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Beispiele sind Anforderungen ohne Bearertoken, falsch formatierte oder abgelaufene Anforderungen oder Anforderungen, deren Token ungültig ist.  
-* Event Grid-Benachrichtigungsereignisse für „Läuft demnächst ab“, „Abgelaufen“ und „Tresorzugriffsrichtlinie geändert“ (neues Versionsereignis wird nicht protokolliert). Ereignisse werden unabhängig davon protokolliert, ob im Schlüsseltresor ein Ereignisabonnement erstellt wurde. Weitere Informationen finden Sie unter [Event Grid-Ereignisschema für Schlüsseltresor](../../event-grid/event-schema-key-vault.md).
+* Azure Event Grid-Benachrichtigungsereignisse für die folgenden Bedingungen: abgelaufen, demnächst ablaufend und geänderte Tresorzugriffsrichtlinie (das Ereignis bei einer neuen Version wird nicht protokolliert). Ereignisse werden auch dann protokolliert, wenn im Schlüsseltresor ein Ereignisabonnement erstellt wurde. Weitere Informationen finden Sie unter [Azure Key Vault als Event Grid-Quelle](../../event-grid/event-schema-key-vault.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Vorhandenen Schlüsseltresor, der von Ihnen genutzt wird  
-* [Azure Cloud Shell](https://shell.azure.com) – Bash-Umgebung
+* [Azure Cloud Shell](https://shell.azure.com) mit Bash-Umgebung
 * Ausreichend Speicherplatz unter Azure für Ihre Schlüsseltresor-Protokolle
 
-Die Befehle in diesem Leitfaden sind für [Cloud Shell](https://shell.azure.com) mit Bash als Umgebung formatiert.
+Die Befehle in diesem Artikel sind für [Cloud Shell](https://shell.azure.com) mit Bash als Umgebung formatiert.
 
 ## <a name="connect-to-your-key-vault-subscription"></a>Herstellen einer Verbindung zu Ihrem Key Vault-Abonnement
 
-Der erste Schritt für das Einrichten der Schlüsselprotokollierung ist das Herstellen einer Verbindung zum Abonnement, das Ihren Schlüsseltresor enthält. Dies ist besonders dann wichtig, wenn Ihrem Konto mehrere Abonnements zugeordnet sind.
+Der erste Schritt für das Einrichten der Schlüsselprotokollierung ist das Herstellen einer Verbindung mit dem Abonnement, das Ihren Schlüsseltresor enthält. Dies ist besonders dann wichtig, wenn Ihrem Konto mehrere Abonnements zugeordnet sind.
 
-Mithilfe der Azure CLI können Sie alle Abonnements anzeigen, indem Sie den Befehl [az account list](/cli/azure/account#az_account_list) verwenden. Stellen Sie dann mit dem Befehl [az account set](/cli/azure/account#az_account_set) eine Verbindung zu einem Abonnement her:
+Mithilfe der Azure-Befehlszeilenschnittstelle können Sie alle Abonnements anzeigen, indem Sie den Befehl [az account list](/cli/azure/account#az_account_list) ausführen. Stellen Sie dann mit dem Befehl [az account set](/cli/azure/account#az_account_set) eine Verbindung mit einem Abonnement her:
 
 ```azurecli-interactive
 az account list
@@ -52,7 +52,7 @@ az account list
 az account set --subscription "<subscriptionID>"
 ```
 
-In Azure PowerShell können Sie Ihre Abonnements zunächst auflisten, indem Sie das Cmdlet [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) verwenden. Dann können Sie mithilfe des Cmdlet [Set-AzContext](/powershell/module/az.accounts/set-azcontext) eine Verbindung zu einem Abonnement herstellen: 
+In Azure PowerShell können Sie Ihre Abonnements zunächst auflisten, indem Sie das Cmdlet [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) ausführen. Dann können Sie mithilfe des Cmdlets [Set-AzContext](/powershell/module/az.accounts/set-azcontext) eine Verbindung mit einem Abonnement herstellen: 
 
 ```powershell-interactive
 Get-AzSubscription
@@ -64,9 +64,9 @@ Set-AzContext -SubscriptionId "<subscriptionID>"
 
 Sie können zwar ein vorhandenes Speicherkonto für Ihre Protokolle verwenden, aber hier soll ein neues für Key Vault-Protokolle dediziertes Speicherkonto erstellt werden. 
 
-Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Ressourcengruppe wie die Gruppe, die den Schlüsseltresor enthält. Im [Azure CLI-Schnellstart](quick-create-cli.md) und im [Azure PowerShell-Schnellstart](quick-create-powershell.md) wird diese Ressourcengruppe als **myResourceGroup** (meineRessourcengruppe) bezeichnet. Der Standort ist *eastus*. Ersetzen Sie diese Werte gegebenenfalls durch Ihre eigenen. 
+Um die Verwaltung noch weiter zu vereinfachen, verwenden Sie außerdem die gleiche Ressourcengruppe, die auch den Schlüsseltresor enthält. Im [Azure CLI-Schnellstart](quick-create-cli.md) und im [Azure PowerShell-Schnellstart](quick-create-powershell.md) wird diese Ressourcengruppe als **myResourceGroup** (meineRessourcengruppe) bezeichnet. Der Standort ist *eastus*. Ersetzen Sie diese Werte gegebenenfalls durch Ihre eigenen. 
 
-Geben Sie außerdem einen Speicherkontonamen an. Speicherkontonamen müssen eindeutig und zwischen drei und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.  Zuletzt wird ein Speicherkonto mit der SKU „Standard_LRS“ erstellt.
+Geben Sie außerdem einen Speicherkontonamen an. Speicherkontonamen müssen eindeutig und zwischen drei und 24 Zeichen lang sein, und sie dürfen nur Zahlen und Kleinbuchstaben enthalten. Abschließend erstellen Sie ein Speicherkonto mit der SKU `Standard_LRS`.
 
 Verwenden Sie in der Azure CLI den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create). 
 
@@ -80,23 +80,23 @@ Verwenden Sie bei Verwendung von Azure PowerShell das Cmdlet [New-AzStorageAccou
  New-AzStorageAccount -ResourceGroupName myResourceGroup -Name "<your-unique-storage-account-name>" -Type "Standard_LRS" -Location "eastus"
 ```
 
-Notieren Sie sich in jedem Fall den id-Wert des Speicherkontos. Beim Azure CLI-Vorgang wird der id-Wert in der Ausgabe zurückgegeben. Wenn Sie Azure PowerShell verwenden, erhalten Sie den id-Wert mithilfe des Cmdlet [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount). Weisen Sie die Ausgabe dann der Variable $sa zu. Das Speicherkonto wird dann mit $sa.id angezeigt. (Die $sa.Context-Eigenschaft wird später in diesem Artikel ebenfalls noch verwendet.)
+Notieren Sie sich in jedem Fall die ID des Speicherkontos. Bei Verwendung der Azure-Befehlszeilenschnittstelle wird die ID in der Ausgabe zurückgegeben. Wenn Sie Azure PowerShell verwenden, erhalten Sie die ID mithilfe des Cmdlet [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount). Weisen Sie die Ausgabe dann der Variable `$sa` zu. Das Speicherkonto wird dann mit `$sa.id` angezeigt. (Die `$sa.Context`-Eigenschaft wird auch später in diesem Artikel noch verwendet.)
 
 ```powershell-interactive
 $sa = Get-AzStorageAccount -Name "<your-unique-storage-account-name>" -ResourceGroup "myResourceGroup"
 $sa.id
 ```
 
-Der id-Wert des Speicherkontos weist das folgende Format auf: /Abonnements/<Ihre-Abonnement-ID>/Ressourcengruppen/meineRessourcengruppe/Anbieter/Microsoft.Storage/Speicherkonten/<Ihr-eindeutiger-Speicherkontoname>.
+Die ID des Speicherkontos weist das folgende Format auf: /subscriptions/*Ihre-Abonnement-ID*/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/ *<Ihr-eindeutiger-Speicherkontoname>* .
 
 > [!NOTE]
-> Wenn Sie ein vorhandenes Speicherkonto verwenden möchten, muss dafür dasselbe Abonnement wie für den Schlüsseltresor verwendet werden. Außerdem muss das Azure Resource Manager-Bereitstellungsmodell genutzt werden, nicht das klassische Bereitstellungsmodell.
+> Wenn Sie sich für die Verwendung eines bestehenden Speicherkontos entscheiden, muss dieses das gleiche Abonnement wie Ihr Schlüsseltresor verwenden. Anstelle des klassischen Bereitstellungsmodells muss das Konto das Azure Resource Manager-Bereitstellungsmodell verwenden.
 
 ## <a name="obtain-your-key-vault-resource-id"></a>Abrufen der Ressourcen-ID des Schlüsseltresors
 
-Im [CLI-Schnellstart](quick-create-cli.md) bzw. [PowerShell-Schnellstart](quick-create-powershell.md) haben Sie einen Schlüssel mit eindeutigem Namen erstellt.  Verwenden Sie diesen Namen für die Schritte unten noch mal.  Wenn Sie sich an den Namen Ihres Schlüsseltresors nicht mehr erinnern, können Sie den Azure CLI-Befehl [az keyvault list](/cli/azure/keyvault#az_keyvault_list) oder das Azure PowerShell-Cmdlet [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault) verwenden, um den Namen abzurufen.
+Im [CLI-Schnellstart](quick-create-cli.md) bzw. [PowerShell-Schnellstart](quick-create-powershell.md) haben Sie einen Schlüssel mit eindeutigem Namen erstellt. Verwenden Sie diesen Namen in den folgenden Schritten erneut. Wenn Sie sich an den Namen Ihres Schlüsseltresors nicht mehr erinnern, können Sie ihn mit dem Azure CLI-Befehl [az keyvault list](/cli/azure/keyvault#az_keyvault_list) oder dem Azure PowerShell-Cmdlet [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault) abrufen.
 
-Verwenden Sie den Namen Ihres Schlüsseltresors, um nach seiner Ressourcen-ID zu suchen.  Verwenden Sie bei Verwendung der Azure CLI den Befehl [az keyvault show](/cli/azure/keyvault#az_keyvault_show).
+Verwenden Sie den Namen Ihres Schlüsseltresors, um nach seiner Ressourcen-ID zu suchen. Verwenden Sie bei Verwendung der Azure-Befehlszeilenschnittstelle den Befehl [az keyvault show](/cli/azure/keyvault#az_keyvault_show).
 
 ```azurecli-interactive
 az keyvault show --name "<your-unique-keyvault-name>"
@@ -108,17 +108,17 @@ In Azure PowerShell verwenden Sie das Cmdlet [Get-AzKeyVault](/powershell/module
 Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
 ```
 
-Die Ressourcen-ID für Ihren Schlüsseltresor weist das folgende Format auf: /Abonnements/<Ihre-Abonnement-ID>/Ressourcengruppen/meineRessourcengruppe/Anbieter/Microsoft.KeyVault/Tresore/<Ihr-eindeutiger-Schlüsseltresorname>. Speichern Sie ihn für den nächsten Schritt.
+Die Ressourcen-ID für Ihren Schlüsseltresor weist das folgende Format auf: /subscriptions/ *<Ihre-Abonnement-ID>* /resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/ *<Ihr-eindeutiger-Schlüsseltresorname>* . Speichern Sie ihn für den nächsten Schritt.
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
-Sie können die Protokollierung für Key Vault mithilfe der Azure CLI, Azure PowerShell oder dem Azure-Portal aktivieren.
+Sie können die Protokollierung für Key Vault mithilfe der Azure-Befehlszeilenschnittstelle, mit Azure PowerShell oder im Azure-Portal aktivieren.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Verwenden Sie den Azure CLI-Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings) zusammen mit der Speicherkonto-ID und der Ressourcen-ID für den Schlüsseltresor.
+Verwenden Sie den Azure CLI-Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings) mit der Speicherkonto-ID und der Ressourcen-ID für den Schlüsseltresor wie folgt:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
@@ -134,7 +134,7 @@ az monitor diagnostic-settings update --name "Key vault retention policy" --reso
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-Verwenden Sie das Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting). Legen Sie das **-Enabled**-Flag dabei auf **$true** und die Kategorie auf `AuditEvent` fest. Dabei handelt es sich um die einzige Kategorie für die Protokollierung in Azure Key Vault:
+Verwenden Sie das Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting). Legen Sie das `-Enabled`-Flag dabei auf `$true` und die `category` auf `AuditEvent` fest. Dabei handelt es sich um die einzige Kategorie für die Protokollierung in Key Vault:
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
@@ -148,33 +148,33 @@ In Azure PowerShell verwenden Sie das Cmdlet [Set-AzDiagnosticSetting](/powershe
 Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
-# <a name="azure-portal"></a>[Azure-Portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
 
-Führen Sie die folgenden Schritte aus, um die Diagnoseeinstellungen im Portal zu konfigurieren.
+Führen Sie die folgenden Schritte aus, um die Diagnoseeinstellungen im Azure-Portal zu konfigurieren:
 
-1. Klicken Sie im Ressourcenblattmenü auf „Diagnoseeinstellungen“.
+1. Wählen Sie im Menü im **Ressourcenbereich** die Option **Diagnoseeinstellungen** aus.
 
-    :::image type="content" source="../media/diagnostics-portal-1.png" alt-text="Diagnoseeinstellungen im Portal 1":::
+   :::image type="content" source="../media/diagnostics-portal-1.png" alt-text="Screenshot der Auswahl von Diagnoseeinstellungen":::
 
-1. Klicken Sie auf die Option „+ Diagnoseeinstellung hinzufügen“.
+1. Wählen Sie **+Diagnoseeinstellung hinzufügen**  aus.
 
-    :::image type="content" source="../media/diagnostics-portal-2.png" alt-text="Diagnoseeinstellungen im Portal 2":::
+    :::image type="content" source="../media/diagnostics-portal-2.png" alt-text="Screenshot des Hinzufügens einer Diagnoseeinstellung":::
  
-1. Wählen Sie einen Namen aus, um alle Ihre Diagnoseeinstellungen aufzurufen. Wählen Sie die Option „AuditEvent“ aus, und klicken Sie dann auf „An Log Analytics-Arbeitsbereich senden“, um die Protokollierung für Azure Monitor für Key Vault zu konfigurieren. Wählen Sie dann das Abonnement und den Log Analytics-Arbeitsbereich aus, an die Sie Ihre Protokolle senden möchten.
+1. Wählen Sie einen Namen für die Diagnoseeinstellung aus. Wählen Sie **AuditEvent** und **An Log Analytics-Arbeitsbereich senden** aus, um die Protokollierung in Azure Monitor für Key Vault zu konfigurieren. Wählen Sie dann das Abonnement und den Log Analytics-Arbeitsbereich aus, an die Sie Ihre Protokolle senden möchten.
 
-    :::image type="content" source="../media/diagnostics-portal-3.png" alt-text="Diagnoseeinstellungen im Portal 3":::
+    :::image type="content" source="../media/diagnostics-portal-3.png" alt-text="Screenshot der Optionen für Diagnoseeinstellungen":::
 
     Wählen Sie andernfalls die Optionen aus, die sich auf die Protokolle beziehen, die Sie auswählen möchten.
 
-1. Nachdem Sie die gewünschten Optionen ausgewählt haben, klicken Sie auf „Speichern“.
+1. Nachdem Sie die gewünschten Optionen ausgewählt haben, wählen Sie **Speichern** aus.
 
-    :::image type="content" source="../media/diagnostics-portal-4.png" alt-text="Diagnoseeinstellungen im Portal 4":::
+    :::image type="content" source="../media/diagnostics-portal-4.png" alt-text="Screenshot der Speicherung der ausgewählten Optionen":::
 
 ---
 
 ## <a name="access-your-logs"></a>Zugreifen auf Ihre Protokolle
 
-Key Vault-Protokolle werden im Container „insights-logs-auditevent“ im von Ihnen angegebenen Speicherkonto gespeichert. Zur Anzeige der Protokolle müssen Sie Blobs herunterladen.
+Ihre Key Vault-Protokolle befinden sich im Container *insights-logs-auditevent* in dem von Ihnen angegebenen Speicherkonto. Zur Anzeige der Protokolle müssen Sie Blobs herunterladen.
 
 Rufen Sie zunächst alle Blobs im Container ab.  Verwenden Sie in der Azure CLI den Befehl [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list).
 
@@ -182,29 +182,29 @@ Rufen Sie zunächst alle Blobs im Container ab.  Verwenden Sie in der Azure CLI 
 az storage blob list --account-name "<your-unique-storage-account-name>" --container-name "insights-logs-auditevent"
 ```
 
-In Azure PowerShell können Sie das Cmdlet [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob) nutzen, um alle Blobs im Container aufzulisten. Geben Sie dazu Folgendes ein:
+Verwenden Sie bei Azure PowerShell das Cmdlet [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob). Geben Sie Folgendes ein, um alle Blobs in diesem Container aufzulisten:
 
 ```powershell
 Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
 ```
 
-Wie an der Ausgabe entweder des Azure CLI-Befehls oder des Azure PowerShell-Cmdlet ersichtlich wird, weisen die Blobnamen das folgende Format auf: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`. Für die Werte für Datum und Uhrzeit wird UTC verwendet.
+An der Ausgabe des Azure CLI-Befehls oder des Azure PowerShell-Cmdlets können Sie erkennen, dass die Blobnamen das folgende Format aufweisen: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`. Für die Datums- und Zeitwerte wird die koordinierte Weltzeit (UTC) verwendet.
 
-Da dasselbe Speicherkonto zum Erfassen von Protokollen für mehrere Ressourcen verwendet werden kann, ist die vollständige Ressourcen-ID im Blobnamen sehr hilfreich, um nur auf die benötigten Blobs zuzugreifen bzw. diese herunterzuladen. Zuerst wird aber beschrieben, wie Sie alle Blobs herunterladen.
+Da dasselbe Speicherkonto zum Erfassen von Protokollen für mehrere Ressourcen verwendet werden kann, ist die vollständige Ressourcen-ID im Blobnamen sehr hilfreich, um nur auf die benötigten Blobs zuzugreifen bzw. diese herunterzuladen.
 
-Wenn Sie die Azure CLI verwenden, nutzen Sie den Befehl [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download). Übergeben Sie dabei die Blobnamen sowie den Pfad zur Datei, in der die Ergebnisse gespeichert werden sollen.
+Laden Sie zunächst alle Blobs herunter. Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden, führen Sie den Befehl [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download) aus. Übergeben Sie dabei die Blobnamen sowie den Pfad zur Datei, in der die Ergebnisse gespeichert werden sollen.
 
 ```azurecli-interactive
 az storage blob download --container-name "insights-logs-auditevent" --file <path-to-file> --name "<blob-name>" --account-name "<your-unique-storage-account-name>"
 ```
 
-In Azure PowerShell verwenden Sie das Cmdlet [Gt-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob), um eine Liste der Blobs abzurufen, und übergeben diese über eine Pipeline an das Cmdlet [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent), um die Protokolle in den von Ihnen ausgewählten Pfad herunterzuladen.
+In Azure PowerShell können Sie das Cmdlet [Get-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob) ausführen, um eine Liste aller Blobs abzurufen. Übergeben Sie diese Liste dann über eine Pipeline an das Cmdlet [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent), um die Protokolle in den von Ihnen ausgewählten Pfad herunterzuladen.
 
 ```powershell-interactive
 $blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
 ```
 
-Beim Ausführen dieses zweiten Cmdlet in PowerShell wird mit dem Trennzeichen **/** in den Blobnamen eine vollständige Ordnerstruktur unter dem Zielordner erstellt. Sie verwenden diese Struktur, um die Blobs herunterzuladen und als Dateien zu speichern.
+Beim Ausführen dieses zweiten Cmdlet in PowerShell wird mit dem Trennzeichen `/` in den Blobnamen eine vollständige Ordnerstruktur unter dem Zielordner erstellt. Sie verwenden diese Struktur, um die Blobs herunterzuladen und als Dateien zu speichern.
 
 Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 
@@ -226,10 +226,6 @@ Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
   Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
-Sie können sich nun ansehen, was in den Protokollen enthalten ist. Aber bevor wir damit fortfahren, sollten Sie noch zwei weitere Befehle kennen:
-
-Informationen zum Lesen der Protokolle finden Sie unter [Key Vault-Protokollierung: Interpretieren Ihrer Key Vault-Protokolle](logging.md#interpret-your-key-vault-logs).
-
 ## <a name="use-azure-monitor-logs"></a>Verwenden von Azure Monitor-Protokollen
 
 Sie können die Key Vault-Lösung in Azure Monitor verwenden, um `AuditEvent`-Protokolle von Key Vault zu überprüfen. In Azure Monitor-Protokollen verwenden Sie Protokollabfragen, um Daten zu analysieren und die benötigten Informationen zu erhalten.
@@ -238,6 +234,6 @@ Weitere Informationen, z. B. zur Einrichtung, finden Sie im Artikel zu [Azure K
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Konzeptionelle Informationen einschließlich dazu, wie Protokolle in Key Vault interpretiert werden, finden Sie unter [Key Vault-Protokollierung](logging.md).
+- Konzeptionelle Informationen auch zur Interpretation von Protokollen in Key Vault finden Sie unter [Key Vault-Protokollierung](logging.md).
 - Ein Tutorial zur Verwendung von Azure Key Vault in einer .NET-Webanwendung finden Sie unter [Verwenden von Azure Key Vault aus einer Webanwendung](tutorial-net-create-vault-azure-web-app.md).
-- Eine Referenz zur Programmierung finden Sie im [Entwicklerhandbuch für den Azure-Schlüsseltresor](developers-guide.md).
+- Eine Programmierreferenz finden Sie im [Entwicklerhandbuch für Azure Key Vault](developers-guide.md).

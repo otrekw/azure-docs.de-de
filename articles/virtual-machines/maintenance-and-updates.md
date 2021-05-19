@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 51df72e31acaadc83f4c094b99fa938377e5f023
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b332b1871c92d36821e8f797ceac5b6697e5dc1
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500001"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632185"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Wartung für VMs in Azure
 
@@ -48,6 +48,9 @@ Um die Kontrolle über alle Wartungsaktivitäten zu erhalten, einschließlich Ak
 
 Die Livemigration erfordert keinen Neustart und behält den Arbeitsspeicherinhalt virtueller Computer bei. Sie bewirkt eine Pause oder ein Einfrieren; dies dauert in der Regel höchstens 5 Sekunden. Mit Ausnahme der Serien G, M, N und H sind alle IaaS-VMs (Infrastructure-as-a-Service) für die Livemigration geeignet. Geeignete virtuelle Computer machen mehr als 90 Prozent der IaaS-VMs aus, die in der Azure-Flotte bereitgestellt werden. 
 
+> [!NOTE]
+> Sie erhalten keine Benachrichtigung im Azure-Portal über Livemigrationsvorgänge, für die kein Neustart erforderlich ist. Um eine Liste der Livemigrationsvorgänge anzuzeigen, die keinen Neustart erfordern, [fragen Sie nach geplanten Ereignissen ab](./windows/scheduled-events.md#query-for-events).
+
 Die Azure-Plattform startet die Livemigration in den folgenden Szenarien:
 - Geplante Wartung
 - Hardwarefehler
@@ -56,6 +59,8 @@ Die Azure-Plattform startet die Livemigration in den folgenden Szenarien:
 Einige Szenarien mit geplanter Wartung nutzen die Livemigration, und Sie können Scheduled Events verwenden, um im Voraus zu wissen, wann Livemigrationsvorgänge gestartet werden.
 
 Per Livemigration können auch VMs verschoben werden, wenn Azure Machine Learning-Algorithmen einen Hardwarefehler vorhersagen, oder wenn Sie VM-Zuordnungen optimieren möchten. Weitere Informationen zur Vorhersagemodellierung, die Instanzen von beeinträchtigter Hardware erkennt, finden Sie unter [Improving Azure Virtual Machine resiliency with predictive ML and live migration](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure) (Verbessern der Resilienz von virtuellen Azure-Computern mit Machine Learning zur Vorhersage und Livemigration). Livemigrationsbenachrichtigungen werden im Azure-Portal in den Monitor- und Service Health-Protokollen sowie in Scheduled Events angezeigt, wenn Sie diese Dienste verwenden.
+
+
 
 ## <a name="maintenance-that-requires-a-reboot"></a>Einen Neustart erfordernde Wartung
 

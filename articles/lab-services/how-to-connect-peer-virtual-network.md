@@ -3,12 +3,12 @@ title: Herstellen einer Verbindung mit einem Peernetzwerk in Azure Lab Services 
 description: Hier erfahren Sie, wie Sie eine Peerverbindung zwischen Ihrem Labnetzwerk und einem anderen Netzwerk herstellen. Sie können z. B. Ihr lokales Organisations- oder Schul-/Universitätsnetzwerk mit dem virtuellen Netzwerk eines Labs in Azure verbinden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 99ea72f11c8f389a15171a1fe3b376646494903a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 645e99681f5615c3082d784e4e540a6200f618b8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96434242"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755133"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Verbinden des Netzwerks Ihres Labs mit einem virtuellen Peernetzwerk in Azure Lab Services
 
@@ -27,6 +27,9 @@ Einige lokale Netzwerke sind über [ExpressRoute](../expressroute/expressroute-i
 
 > [!NOTE]
 > Beim Erstellen eines Azure Virtual Network, für das Peering mit einem Lab-Konto verwendet wird, ist es wichtig zu verstehen, wie sich die Region des virtuellen Netzwerks auf den Ort der Erstellung von Labs auswirkt.  Weitere Informationen finden Sie im Administratorleitfaden im Abschnitt zu [Regionen/Speicherorten](./administrator-guide.md#regionslocations).
+
+> [!NOTE]
+> Wenn Ihre Schule eine Inhaltsfilterung durchführen muss, etwa um den [Children‘s Internet Protection Act (CIPA)](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act) einzuhalten, müssen Sie Drittanbietersoftware verwenden.  Weitere Informationen finden Sie im Leitfaden zum [Filtern von Inhalten mit Lab Services](./administrator-guide.md#content-filtering).
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurieren zum Zeitpunkt der Labkontoerstellung
 

@@ -12,18 +12,23 @@ ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ea087513cf628c42362a295c51913b0a31c6db3f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 367657b803ce50cd923c08b4b7b58dc3f945e1f4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285698"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748983"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Deaktivieren von schwachen Verschlüsselungen und der Kennworthashsynchronisierung zum Schützen einer verwalteten Azure Active Directory Domain Services-Domäne
+# <a name="harden-an-azure-active-directory-domain-services-managed-domain"></a>Härten einer über Azure Active Directory Domain Services verwalteten Domäne
 
 Standardmäßig erlaubt Azure Active Directory Domain Services (Azure AD DS) die Verwendung von Verschlüsselungen wie NTLM v1 und TLS v1. Diese Verschlüsselungen sind möglicherweise für einige Legacyanwendungen erforderlich, gelten jedoch als schwach und können deaktiviert werden, wenn Sie sie nicht benötigen. Wenn Sie über eine lokale Hybridverbindung über Azure AD Connect verfügen, können Sie auch die NTLM-Kennworthashsynchronisierung deaktivieren.
 
-In diesem Artikel erfahren Sie, wie Sie NTLM v1- und TLS v1-Verschlüsselungen sowie die NTLM-Kennworthashsynchronisierung deaktivieren.
+In diesem Artikel erfahren Sie, wie Sie eine verwaltete Domäne mithilfe von Einstellungen härten, wie z. B.: 
+
+- Deaktivieren von NTLM v1- und TLS v1-Verschlüsselungen
+- Deaktivieren der NTLM-Kennworthashsynchronisierung
+- Deaktivieren der Möglichkeit zum Ändern von Kennwörtern mit RC4-Verschlüsselung
+- Aktivieren von Kerberos Armoring
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,7 +41,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance], sofern erforderlich.
 
-## <a name="use-security-settings-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Verwenden von Sicherheitseinstellungen zum Deaktivieren schwacher Verschlüsselungen und der NTLM-Kennworthashsynchronisierung
+## <a name="use-security-settings-to-harden-your-domain"></a>Verwenden von Sicherheitseinstellungen zum Härten Ihrer Domäne
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Azure AD Domain Services**, und wählen Sie den Eintrag aus.
@@ -46,10 +51,12 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
    - **Reiner TLS 1.2-Modus**
    - **NTLM-Authentifizierung**
    - **NTLM-Kennwortsynchronisierung aus lokaler Umgebung**
+   - **RC4-Verschlüsselung**
+   - **Kerberos-Schutz**
 
    ![Screenshot der Sicherheitseinstellungen zum Deaktivieren schwacher Verschlüsselungen und der NTLM-Kennworthashsynchronisierung](media/secure-your-domain/security-settings.png)
 
-## <a name="use-powershell-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Verwenden von PowerShell zum Deaktivieren schwacher Verschlüsselungen und der NTLM-Kennworthashsynchronisierung
+## <a name="use-powershell-to-harden-your-domain"></a>Verwenden von PowerShell zum Härten Ihrer Domäne
 
 Bei Bedarf [installieren und konfigurieren Sie Azure PowerShell](/powershell/azure/install-az-ps). Stellen Sie sicher, dass Sie sich mit dem Cmdlet [Connect-AzAccount][Connect-AzAccount] bei Ihrem Azure-Abonnement anmelden. 
 
@@ -76,13 +83,13 @@ Definieren Sie als Nächstes *DomainSecuritySettings*, um die folgenden Sicherhe
 > Benutzer- und Dienstkonten können keine einfachen LDAP-Bindungen mehr ausführen, wenn Sie die NTLM-Kennworthashsynchronisierung für Ihre verwaltete Azure AD DS-Domäne deaktivieren. Wenn Sie einfache LDAP-Bindungen ausführen müssen, legen Sie im folgenden Befehl die Sicherheitskonfigurationsoption *"SyncNtlmPasswords"="Disabled"* nicht fest.
 
 ```powershell
-$securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
+$securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled";"KerberosRc4Encryption"="Disabled";"KerberosArmoring"="Disabled"}}
 ```
 
 Wenden Sie schließlich mithilfe des Cmdlets [Set-AzResource][Set-AzResource] die definierten Sicherheitseinstellungen auf die verwaltete Domäne an. Geben Sie die Azure AD DS-Ressource aus dem ersten Schritt und die Sicherheitseinstellungen aus dem vorherigen Schritt an.
 
 ```powershell
-Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
+Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -ApiVersion “2021-03-01” -Verbose -Force
 ```
 
 Es dauert einen Moment, bis die Sicherheitseinstellungen auf die verwaltete Domäne angewendet werden.

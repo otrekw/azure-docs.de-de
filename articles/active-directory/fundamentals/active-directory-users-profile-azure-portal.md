@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 04/11/2019
+ms.date: 05/04/2021
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 173bd167a0814ddf735d90b257089a685d99cc58
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92370915"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762603"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory
 Lernen Sie, wie Sie Benutzerprofilinformationen, z.B. ein Profilbild oder Angaben zur Beschäftigung, und einige Einstellungen mit Azure Active Directory (Azure AD) hinzufügen. Weitere Informationen zum Hinzufügen neuer Benutzer finden Sie unter [Hinzufügen oder Löschen von Benutzern in Azure Active Directory](add-users-azure-active-directory.md).
@@ -26,7 +26,11 @@ Lernen Sie, wie Sie Benutzerprofilinformationen, z.B. ein Profilbild oder Angabe
 Wie Sie sehen werden, lassen sich in Benutzerprofilen mehr Informationen angeben, als Sie beim Erstellen eines Benutzers hinzufügen können. Alle diese zusätzlichen Informationen sind optional und können bei Bedarf von Ihrer Organisation hinzugefügt werden.
 
 ## <a name="to-add-or-change-profile-information"></a>Hinzufügen oder Ändern von Profilinformationen
-1. Melden Sie sich als Benutzeradministrator für die Organisation beim [Azure-Portal](https://portal.azure.com/) an.
+
+>[!Note]
+>Die Eigenschaften für Benutzername und E-Mail-Adresse dürfen keine Akzentzeichen enthalten.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) für die Organisation in der Rolle „Benutzeradministrator“ an.
 
 2. Wählen Sie **Azure Active Directory**, **Benutzer** und dann einen Benutzer aus. Beispielsweise _Alain Charon_.
 

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: f6416a688c7f1c94d7d8a90b0531b1ccd684ee29
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: f6740363396bcf6f9bd61e383810465fb5d76f51
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031102"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794680"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -236,8 +236,9 @@ Die folgende Tabelle enthält die spezifischen Grenzwerte für die Unterstützun
 | Resource | Standardlimit |
 | --- | --- |
 | Maximale Speichergröße für MongoDB-Abfragen (diese Einschränkung gilt ausschließlich für die Serverversion 3.2) | 40MB |
-|Maximale Ausführungszeit für MongoDB-Vorgänge (für Serverversion 3.2)| 15 Sekunden|
-|Maximale Ausführungszeit für MongoDB-Vorgänge (für Serverversion 3.6)| 60 Sekunden|
+| Maximale Ausführungszeit für MongoDB-Vorgänge (für Serverversion 3.2)| 15 Sekunden|
+| Maximale Ausführungszeit für MongoDB-Vorgänge (für Serverversionen 3.6 und 4.0)| 60 Sekunden|
+| Maximale Schachtelungsebene für eingebettete Objekte/Arrays in Indexdefinitionen | 6 |
 | Zeitlimit für Leerlaufverbindung für serverseitige Verbindungsschließung* | 30 Minuten |
 
 \* Wir empfehlen, dass Clientanwendungen das Zeitlimit für die Leerlaufverbindung in den Treibereinstellungen auf 2-3 Minuten festlegen, da das [Standardzeitlimit für Azure Load Balancer 4 Minuten beträgt](../load-balancer/load-balancer-tcp-idle-timeout.md).  Dieses Zeitlimit stellt sicher, dass Leerlaufverbindungen nicht durch einen zwischengeschalteten Lastenausgleich zwischen dem Clientcomputer und Azure Cosmos DB geschlossen werden.

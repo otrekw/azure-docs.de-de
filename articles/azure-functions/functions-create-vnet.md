@@ -3,12 +3,12 @@ title: Verwenden privater Endpunkte zum Integrieren von Azure Functions in ein 
 description: In diesem Tutorial wird erläutert, wie Sie eine Funktion mit einem virtuellen Azure-Netzwerk verbinden und mithilfe privater Endpunkte sperren.
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: e1ed944250f05f52860c47f6cb61130f50b08e7c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 0f18712e9881c60754d5729751609f6458104daf
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078773"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715482"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Tutorial: Integrieren von Azure Functions in ein virtuelles Azure-Netzwerk mithilfe privater Endpunkte
 
@@ -18,10 +18,10 @@ In diesem Tutorial gehen Sie wie folgt vor:
 
 > [!div class="checklist"]
 > * Erstellen einer Funktions-App im Premium-Plan.
-> * Erstellen von Azure-Ressourcen (z. B. Service Bus, Speicherkonto, virtuelles Netzwerk).
+> * Erstellen von Azure-Ressourcen (z. B. Service Bus-Instanz, Speicherkonto, virtuelles Netzwerk)
 > * Sperren des Speicherkontos hinter einem privaten Endpunkt.
-> * Sperren der Service Bus-Instanz hinter einem privaten Endpunkt.
-> * Bereitstellen einer Funktions-App, die sowohl Service Bus- als auch HTTP-Trigger verwendet.
+> * Sperren der Service Bus-Instanz hinter einem privaten Endpunkt
+> * Bereitstellen einer Funktions-App, die sowohl Service Bus- als auch HTTP-Trigger verwendet
 > * Sperren der Funktions-App hinter einem privaten Endpunkt.
 > * Testen, ob die Funktions-App hinter dem virtuellen Netzwerk geschützt ist.
 > * Bereinigen der Ressourcen
@@ -36,7 +36,7 @@ Sie erstellen eine .NET-Funktions-App im Premium-Plan, da in diesem Tutorial C# 
 
 1. Verwenden Sie auf der Seite **Grundlagen** die folgende Tabelle, um die Einstellungen der Funktions-App zu konfigurieren.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
     | ------------ | ---------------- | ----------- |
     | **Abonnement** | Ihr Abonnement | Abonnement, unter dem diese neue Funktions-App erstellt wird. |
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Name der neuen Ressourcengruppe, in der Sie Ihre Funktions-App erstellen. |
@@ -71,7 +71,7 @@ Glückwunsch! Sie haben Ihre neue Premium-Funktions-App erfolgreich erstellt.
 
 ## <a name="create-azure-resources"></a>Erstellen von Azure-Ressourcen
 
-Als Nächstes erstellen Sie ein Speicherkonto, einen Service Bus und ein virtuelles Netzwerk. 
+Als Nächstes erstellen Sie ein Speicherkonto, eine Service Bus-Instanz und ein virtuelles Netzwerk. 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Ihre virtuellen Netzwerke benötigen ein Speicherkonto, das von dem Konto getrennt ist, das Sie mit ihrer Funktions-APP erstellt haben.
@@ -82,7 +82,7 @@ Ihre virtuellen Netzwerke benötigen ein Speicherkonto, das von dem Konto getren
 
 1. Verwenden Sie auf der Seite **Grundlagen** die folgende Tabelle, um die Einstellungen für das Speicherkonto zu konfigurieren. Für alle anderen Einstellungen können Sie die Standardwerte beibehalten.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
@@ -97,14 +97,14 @@ Ihre virtuellen Netzwerke benötigen ein Speicherkonto, das von dem Konto getren
 
 1. Suchen Sie auf der Seite **Neu** nach *Service Bus*. Klicken Sie anschließend auf **Erstellen**.
 
-1. Verwenden Sie auf der Registerkarte **Grundlagen** die folgende Tabelle, um die Einstellungen für den Service Bus zu konfigurieren. Für alle anderen Einstellungen können Sie die Standardwerte beibehalten.
+1. Verwenden Sie auf der Registerkarte **Grundlagen** die folgende Tabelle, um die Einstellungen für Service Bus zu konfigurieren. Für alle anderen Einstellungen können Sie die Standardwerte beibehalten.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. |
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
-    | **Name** | myServiceBus| Der Name der Service Bus-Instanz, auf die der private Endpunkt angewendet wird. |
-    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Die Region, in der Sie Ihre Funktions-App erstellt haben. |
+    | **Namespacename** | myServiceBus| Der Name der Service Bus-Instanz, auf die der private Endpunkt angewandt wird |
+    | **[Location](https://azure.microsoft.com/regions/)** | myFunctionRegion | Die Region, in der Sie Ihre Funktions-App erstellt haben. |
     | **Preisstufe** | Premium | Wählen Sie diesen Tarif aus, um private Endpunkte mit Azure Service Bus zu verwenden können. |
 
 1. Klicken Sie auf **Überprüfen + erstellen**. Wählen Sie **Erstellen** aus, wenn die Validierung erfolgreich war.
@@ -125,20 +125,20 @@ Erstellen Sie das virtuelle Netzwerk, in das die Funktions-App integriert wird:
 
 1. Verwenden Sie auf der Registerkarte **Grundlagen** die folgende Tabelle, um die Einstellungen für das virtuelle Netzwerk zu konfigurieren.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
-    | **Name** | myVirtualNet| Der Name des virtuellen Netzwerks, mit dem Ihre Funktions-App eine Verbindung herstellt. |
+    | **Name** | myVirtualNet| Der Name des virtuellen Netzwerks, mit dem Ihre Funktions-App eine Verbindung herstellt |
     | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Die Region, in der Sie Ihre Funktions-App erstellt haben. |
 
 1. Wählen Sie auf der Registerkarte **IP-Adressen** die Option **Subnetz hinzufügen** aus. Verwenden Sie die folgende Tabelle zum Konfigurieren der Subnetz-Einstellungen.
 
     :::image type="content" source="./media/functions-create-vnet/1-create-vnet-ip-address.png" alt-text="Screenshot der Konfigurationsansicht für das Erstellen eines virtuellen Netzwerks.":::
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
-    | **Subnetzname** | functions | Der Name des Subnetzes, mit dem Ihre Funktions-App eine Verbindung herstellt. | 
+    | **Subnetzname** | functions | Der Name des Subnetzes, mit dem Ihre Funktions-App eine Verbindung herstellt | 
     | **Subnetzadressbereich** | 10.0.1.0/24 | Subnetzadressbereich. Beachten Sie, dass der IPv4-Adressraum in der obigen Abbildung 10.0.0.0/16 lautet. Beim Adressraum 10.1.0.0/16 würde der empfohlene Subnetzadressbereich 10.1.1.0/24 lauten. |
 
 1. Klicken Sie auf **Überprüfen + erstellen**. Wählen Sie **Erstellen** aus, wenn die Validierung erfolgreich war.
@@ -157,7 +157,7 @@ Erstellen Sie die privaten Endpunkte für Azure Files-Speicher und Azure Blob S
 
 1. Verwenden Sie auf der Registerkarte **Grundlagen** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Wählen Sie die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
@@ -166,7 +166,7 @@ Erstellen Sie die privaten Endpunkte für Azure Files-Speicher und Azure Blob S
 
 1. Verwenden Sie auf der Registerkarte **Ressource** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **Ressourcentyp**  | Microsoft.Storage/storageAccounts | Der Ressourcentyp für Speicherkonten. |
@@ -179,26 +179,30 @@ Erstellen Sie die privaten Endpunkte für Azure Files-Speicher und Azure Blob S
 
 1. Erstellen Sie einen weiteren privaten Endpunkt für Blobs. Verwenden Sie auf der Registerkarte **Ressourcen** die in der folgenden Tabelle aufgeführten Einstellungen. Verwenden Sie für alle anderen Einstellungen die gleichen Werte, die Sie zum Erstellen des privaten Endpunkts für Dateien verwendet haben.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **Ressourcentyp**  | Microsoft.Storage/storageAccounts | Der Ressourcentyp für Speicherkonten. |
+    | **Name** | blob-endpoint | Der Name des privaten Endpunkts für Blobs aus Ihrem Speicherkonto |
     | **Ressource** | mysecurestorage | Das Speicherkonto, das Sie erstellt haben. |
     | **Zielunterressource** | Blob | Der private Endpunkt, der für Blobs aus dem Speicherkonto verwendet wird. |
+1. Kehren Sie nach dem Erstellen der privaten Endpunkte zum Abschnitt **Firewalls und virtuelle Netzwerke** Ihres Speicherkontos zurück.  
+1. Vergewissern Sie sich, dass **Ausgewählte Netzwerke** ausgewählt ist.  Es ist nicht erforderlich, ein vorhandenes virtuelles Netzwerk hinzuzufügen.
 
-## <a name="lock-down-your-service-bus"></a>Sperren Sie Ihren Service Bus
+Ressourcen im virtuellen Netzwerk können jetzt über den privaten Endpunkt mit dem Speicherkonto kommunizieren.
+## <a name="lock-down-your-service-bus"></a>Sperren Ihrer Service Bus-Instanz
 
-Erstellen Sie den privaten Endpunkt, um den Service Bus zu sperren:
+Erstellen Sie den privaten Endpunkt, um die Service Bus-Instanz zu sperren:
 
-1. Wählen Sie im neuen Service Bus im Menü auf der linken Seite die Option **Netzwerk** aus.
+1. Wählen Sie in der neuen Service Bus-Instanz im Menü auf der linken Seite **Netzwerk** aus.
 
 1. Wählen Sie auf der Registerkarte **Verbindungen mit privatem Endpunkt** **Privater Endpunkt** aus.
 
-    :::image type="content" source="./media/functions-create-vnet/3-navigate-private-endpoint-service-bus.png" alt-text="Screenshot: Navigation zu privaten Endpunkten für den Service Bus.":::
+    :::image type="content" source="./media/functions-create-vnet/3-navigate-private-endpoint-service-bus.png" alt-text="Screenshot der Navigation zu privaten Endpunkten für die Service Bus-Instanz":::
 
 1. Verwenden Sie auf der Registerkarte **Grundlagen** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
@@ -207,18 +211,35 @@ Erstellen Sie den privaten Endpunkt, um den Service Bus zu sperren:
 
 1. Verwenden Sie auf der Registerkarte **Ressource** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
-    | **Ressourcentyp**  | Microsoft.ServiceBus/namespaces | Der Ressourcentyp für den Service Bus. |
-    | **Ressource** | myServiceBus | Der Service Bus, den Sie zuvor in diesem Tutorial erstellt haben. |
-    | **Untergeordnete Zielressource** | namespace | Der private Endpunkt, der für den Namespace der Service Bus-Instanz verwendet wird. |
+    | **Ressourcentyp**  | Microsoft.ServiceBus/namespaces | Der Ressourcentyp für die Service Bus-Instanz |
+    | **Ressource** | myServiceBus | Die Service Bus-Instanz, die Sie zuvor in diesem Tutorial erstellt haben. |
+    | **Untergeordnete Zielressource** | Namespace | Der private Endpunkt, der für den Namespace der Service Bus-Instanz verwendet wird. |
 
 1. Wählen Sie auf der Registerkarte **Konfiguration** für die Einstellung **Subnetz** die Option **Standard** aus.
 
 1. Klicken Sie auf **Überprüfen + erstellen**. Wählen Sie **Erstellen** aus, wenn die Validierung erfolgreich war. 
+1. Kehren Sie nach dem Erstellen des privaten Endpunkts zum Abschnitt **Firewalls und virtuelle Netzwerke** Ihres Service Bus-Namespace zurück.
+1. Vergewissern Sie sich, dass **Ausgewählte Netzwerke** ausgewählt ist.
+1. Wählen Sie **+ Vorhandenes virtuelles Netzwerk hinzufügen** aus, um das zuvor erstellte virtuelle Netzwerk hinzuzufügen.
+1. Verwenden Sie auf der Registerkarte **Netzwerke hinzufügen** die Netzwerkeinstellungen aus der folgenden Tabelle:
 
-Ressourcen im virtuellen Netzwerk können nun mit dem Service Bus kommunizieren.
+    | Einstellung | Vorgeschlagener Wert | Beschreibung|
+    |---------|-----------------|------------|
+    | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. |
+    | **Virtuelle Netzwerke** | myVirtualNet | Der Name des virtuellen Netzwerks, mit dem Ihre Funktions-App eine Verbindung herstellt |
+    | **Subnetze** | functions | Der Name des Subnetzes, mit dem Ihre Funktions-App eine Verbindung herstellt |
+
+1. Wählen Sie **Client-IP-Adresse hinzufügen** aus, um Ihrer aktuellen Client-IP-Adresse Zugriff auf den Namespace zu gewähren.
+    > [!NOTE]
+    > Das Zulassen Ihrer Client-IP-Adresse ist erforderlich, damit im Azure-Portal [später in diesem Tutorial Nachrichten in der Warteschlange veröffentlicht werden können](#test-your-locked-down-function-app).
+1. Wählen Sie **Aktivieren** aus, um den Dienstendpunkt zu aktivieren.
+1. Wählen Sie **Hinzufügen** aus, um das ausgewählte virtuelle Netzwerk und das Subnetz den Firewallregeln für die Service Bus-Instanz hinzuzufügen.
+1. Wählen Sie **Speichern** aus, um die aktualisierten Firewallregeln zu speichern.
+
+Ressourcen im virtuellen Netzwerk können jetzt über den privaten Endpunkt mit der Service Bus-Instanz kommunizieren.
 
 ## <a name="create-a-file-share"></a>Erstellen einer Dateifreigabe
 
@@ -240,23 +261,23 @@ Ressourcen im virtuellen Netzwerk können nun mit dem Service Bus kommunizieren.
 
 ## <a name="create-a-queue"></a>Erstellen einer Warteschlange
 
-Erstellen Sie die Warteschlange, aus der Ihr Azure Functions-Service Bus-Trigger Ereignisse abruft:
+Erstellen Sie die Warteschlange, aus der Ihr Azure Functions-Service Bus-Trigger Ereignisse abruft:
 
-1. Wählen Sie in Ihrem Service Bus im Menü auf der linken Seite **Warteschlangen** aus.
+1. Wählen Sie in Ihrer Service Bus-Instanz im Menü auf der linken Seite **Warteschlangen** aus.
 
-1. Klicken Sie auf **Freigegebene Zugriffsrichtlinien**. Benennen Sie die Liste für die Zwecke dieses Tutorials mit *Wateschlange*.
+1. Wählen Sie **Warteschlange** aus. Geben Sie für dieses Tutorial *queue* als Namen der neuen Warteschlange an.
 
-    :::image type="content" source="./media/functions-create-vnet/6-create-queue.png" alt-text="Screenshot: Erstellen einer Service Bus-Warteschlange":::
+    :::image type="content" source="./media/functions-create-vnet/6-create-queue.png" alt-text="Screenshot der Erstellung einer Service Bus-Warteschlange":::
 
-1. Klicken Sie auf **Erstellen**.
+1. Wählen Sie **Erstellen** aus.
 
-## <a name="get-a-service-bus-connection-string"></a>Abrufen einer Service Bus-Verbindungszeichenfolge
+## <a name="get-a-service-bus-connection-string"></a>Abrufen einer Service Bus-Verbindungszeichenfolge
 
-1. Wählen Sie in Ihrem Service Bus im Menü auf der linken Seite die Option **Freigegebene Zugriffsrichtlinien** aus.
+1. Wählen Sie in Ihrer Service Bus-Instanz im Menü auf der linken Seite die Option **Richtlinien für gemeinsamen Zugriff** aus.
 
 1. Wählen Sie **RootManageSharedAccessKey**. Kopieren Sie die **primäre Verbindungszeichenfolge**, und speichern Sie sie. Sie benötigen diese Verbindungszeichenfolge, wenn Sie die App-Einstellungen konfigurieren.
 
-    :::image type="content" source="./media/functions-create-vnet/7-get-service-bus-connection-string.png" alt-text="Screenshot: Abrufen der Service Bus-Verbindungszeichenfolge":::
+    :::image type="content" source="./media/functions-create-vnet/7-get-service-bus-connection-string.png" alt-text="Screenshot des Abrufens der Service Bus-Verbindungszeichenfolge":::
 
 ## <a name="integrate-the-function-app"></a>Integrieren der Funktions-App
 
@@ -272,7 +293,7 @@ Wenn Sie Ihre Funktions-App mit virtuellen Netzwerken verwenden möchten, müsse
 
 1. Unter **Virtuelles Netzwerk** wählen Sie das zuvor erstellte virtuelle Netzwerk aus.
 
-1. Wählen Sie das zuvor erstellte **Funktions**-Subnetz aus. Ihre Funktions-App ist jetzt in Ihr virtuelles Netzwerk integriert.
+1. Wählen Sie das zuvor erstellte **Funktions**-Subnetz aus. Klicken Sie auf **OK**.  Ihre Funktions-App ist jetzt in Ihr virtuelles Netzwerk integriert.
 
     :::image type="content" source="./media/functions-create-vnet/9-connect-app-subnet.png" alt-text="Screenshot: Verbinden einer Funktions-App mit einem Subnetz":::
 
@@ -289,7 +310,7 @@ Wenn Sie Ihre Funktions-App mit virtuellen Netzwerken verwenden möchten, müsse
     | **AzureWebJobsStorage** | mysecurestorageConnectionString | Die Verbindungszeichenfolge des Speicherkontos, das Sie erstellt haben. Diese Verbindungszeichenfolge stammt aus dem Abschnitt [Beschaffen der Verbindungszeichenfolge für das Speicherkonto](#get-the-storage-account-connection-string). Mit dieser Einstellung kann Ihre Funktions-App das sichere Speicherkonto für normale Vorgänge zur Laufzeit verwenden. | 
     | **WEBSITE_CONTENTAZUREFILECONNECTIONSTRING**  | mysecurestorageConnectionString | Die Verbindungszeichenfolge des Speicherkontos, das Sie erstellt haben. Mit dieser Einstellung kann Ihre Funktions-App das sichere Speicherkonto für Azure Files verwenden, was bei der Bereitstellung verwendet wird. |
     | **WEBSITE_CONTENTSHARE** | files | Der Name der Dateifreigabe, die Sie im Speicherkonto erstellt haben. Verwenden Sie diese Einstellung in Verbindung mit WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. |
-    | **SERVICEBUS_CONNECTION** | myServiceBusConnectionString | Erstellen Sie diese App-Einstellung für die Verbindungszeichenfolge Ihres Service Bus. Diese Verbindungszeichenfolge stammt aus dem Abschnitt [Beschaffen der Verbindungszeichenfolge für den Service Bus](#get-a-service-bus-connection-string).|
+    | **SERVICEBUS_CONNECTION** | myServiceBusConnectionString | Erstellen Sie diese App-Einstellung für die Verbindungszeichenfolge Ihrer Service Bus-Instanz. Diese Verbindungszeichenfolge stammt aus dem Abschnitt [Abrufen einer Service Bus-Verbindungszeichenfolge](#get-a-service-bus-connection-string).|
     | **WEBSITE_CONTENTOVERVNET** | 1 | Erstellen Sie diese App-Einstellung. Der Wert 1 ermöglicht das Skalieren Ihrer Funktions-App, wenn Ihr Speicherkonto auf ein virtuelles Netzwerk beschränkt ist. |
     | **WEBSITE_DNS_SERVER** | 168.63.129.16 | Erstellen Sie diese App-Einstellung. Sobald Ihre App in ein virtuelles Netzwerk integriert ist, verwendet sie den gleichen DNS-Server wie das virtuelle Netzwerk. Ihre Funktions-App benötigt diese Einstellung, damit sie zusammen mit privaten Zonen in Azure DNS funktionieren kann. Dies ist erforderlich, wenn Sie private Endpunkte verwenden. Mit dieser Einstellung und WEBSITE_VNET_ROUTE_ALL werden alle ausgehenden Aufrufe von Ihrer App an das virtuelle Netzwerk gesendet. |
     | **WEBSITE_VNET_ROUTE_ALL** | 1 | Erstellen Sie diese App-Einstellung. Sobald Ihre App in ein virtuelles Netzwerk integriert ist, verwendet es den gleichen DNS-Server wie das virtuelle Netzwerk. Ihre Funktions-App benötigt diese Einstellung, damit sie zusammen mit privaten Zonen in Azure DNS funktionieren kann. Dies ist erforderlich, wenn Sie private Endpunkte verwenden. Mit dieser Einstellung und WEBSITE_DNS_SERVER werden alle ausgehenden Aufrufe von Ihrer App an das virtuelle Netzwerk gesendet. |
@@ -302,7 +323,7 @@ Wenn Sie Ihre Funktions-App mit virtuellen Netzwerken verwenden möchten, müsse
 
 ## <a name="deploy-a-service-bus-trigger-and-http-trigger"></a>Bereitstellen eines Service Bus- und HTTP-Triggers
 
-1. Wechseln Sie in GitHub zum folgenden Beispiel-Repository. Es enthält eine Funktions-APP und zwei Funktionen, einen HTTP-Trigger und einen Service Bus-Warteschlangen-Trigger.
+1. Wechseln Sie in GitHub zum folgenden Beispiel-Repository. Es enthält eine Funktions-App und zwei Funktionen, einen HTTP-Trigger und einen Service Bus-Warteschlangentrigger.
 
     <https://github.com/Azure-Samples/functions-vnet-tutorial>
 
@@ -316,9 +337,10 @@ Wenn Sie Ihre Funktions-App mit virtuellen Netzwerken verwenden möchten, müsse
     | ------------ | ---------------- | ---------------- |
     | **Quelle** | GitHub | Sie sollten ein GitHub-Repository für den Beispielcode aus Schritt 2 erstellt haben. | 
     | **Organisation**  | myOrganization | Die Organisation, in der Ihr Repository eingecheckt ist. Das ist in der Regel Ihr Konto. |
-    | **Repository** | myRepo | Das Repository, das Sie für den Beispielcode erstellt haben. |
+    | **Repository** | functions-vnet-tutorial | Das Repository wurde von https://github.com/Azure-Samples/functions-vnet-tutorial geforkt. |
     | **Branch** | Standard | Screenshot der Hauptverzweigung des von Ihnen erstellten Repositorys. |
     | **Runtimestapel** | .NET | Der Beispielcode ist in C# geschrieben. |
+    | **Version** | .NET Core 3.1 | Die Runtimeversion |
 
 1. Wählen Sie **Speichern** aus. 
 
@@ -348,7 +370,7 @@ Weitere Informationen finden Sie in der [Dokumentation zum privaten Endpunkt](..
 
 1. Wählen Sie **OK** aus, um den privaten Endpunkt hinzuzufügen. 
  
-Glückwunsch! Sie haben Ihre Funktions-App, Ihre Service Bus-Instanz und Ihr Speicherkonto erfolgreich durch Hinzufügen von privaten Endpunkten geschützt.
+Glückwunsch! Sie haben Ihre Funktions-App, Ihre Service Bus-Instanz und Ihr Speicherkonto erfolgreich durch Hinzufügen von privaten Endpunkten geschützt.
 
 ### <a name="test-your-locked-down-function-app"></a>Testen der gesperrten Funktions-App
 
@@ -368,7 +390,7 @@ Im folgenden finden Sie eine alternative Möglichkeit zum Überwachen ihrer Funk
 
 1. Wählen Sie im Menü auf der linken Seite die Option **Livemetriken** aus.
 
-1. Öffnen Sie eine neue Registerkarte. Wählen Sie in Ihrem Service Bus im Menü auf der linken Seite **Warteschlangen** aus.
+1. Öffnen Sie eine neue Registerkarte. Wählen Sie in Ihrer Service Bus-Instanz im Menü auf der linken Seite **Warteschlangen** aus.
 
 1. Wählen Sie Ihre Warteschlange aus.
 
@@ -376,9 +398,9 @@ Im folgenden finden Sie eine alternative Möglichkeit zum Überwachen ihrer Funk
 
 1. Wählen Sie **Senden** aus, um die Nachricht zu senden.
 
-    :::image type="content" source="./media/functions-create-vnet/17-send-service-bus-message.png" alt-text="Screenshot: Senden von Service Bus-Nachrichten mithilfe des Portals.":::
+    :::image type="content" source="./media/functions-create-vnet/17-send-service-bus-message.png" alt-text="Screenshot des Sendens von Service Bus-Nachrichten über das Portal":::
 
-1. Auf der Registerkarte **Livemetriken** sollte angezeigt werden, dass der Service Bus-Warteschlangen--Dienst ausgelöst hat. Ist dies nicht der Fall, senden Sie die Nachricht über **Service Bus Explorer** erneut.
+1. Auf der Registerkarte **Livemetriken** sollte angezeigt werden, dass der Service Bus-Warteschlangentrigger ausgelöst wurde. Ist dies nicht der Fall, senden Sie die Nachricht über **Service Bus Explorer** erneut.
 
     :::image type="content" source="./media/functions-create-vnet/18-hello-world.png" alt-text="Screenshot: Anzeigen von Nachrichten mithilfe von Livemetriken für Funktions-Apps.":::
 
@@ -400,13 +422,11 @@ Die folgenden DNS-Zonen wurden in diesem Tutorial erstellt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Premium-Funktions-App, ein Speicherkonto und einen Service Bus erstellt. Sie haben alle diese Ressourcen hinter privaten Endpunkten geschützt. 
+In diesem Tutorial haben Sie eine Premium-Funktions-App, ein Speicherkonto und eine Service Bus-Instanz erstellt. Sie haben alle diese Ressourcen hinter privaten Endpunkten geschützt. 
 
-Verwenden Sie die folgenden Links, um mehr über die verfügbaren Netzwerkfeatures zu erfahren:
+Verwenden Sie die folgenden Links, um mehr über die Netzwerkoptionen von Azure Functions und über private Endpunkte zu erfahren:
 
-> [!div class="nextstepaction"]
-> [Netzwerkoptionen in Azure Functions](./functions-networking-options.md)
-
-
-> [!div class="nextstepaction"]
-> [Premium-Tarif für Azure Functions](./functions-premium-plan.md)
+- [Netzwerkoptionen in Azure Functions](./functions-networking-options.md)
+- [Premium-Tarif für Azure Functions](./functions-premium-plan.md)
+- [Private Endpunkte für Service Bus](../service-bus-messaging/private-link-service.md)
+- [Private Endpunkte für Azure Storage](../storage/common/storage-private-endpoints.md)

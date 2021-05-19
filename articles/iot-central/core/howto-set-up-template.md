@@ -1,6 +1,6 @@
 ---
 title: Definieren eines neuen IoT-Gerätetyps in Azure IoT Central | Microsoft-Dokumentation
-description: In diesem Artikel für Lösungsersteller erfahren Sie, wie Sie in Ihrer Azure IoT Central-Anwendung eine neue Azure IoT-Gerätevorlage erstellen. Sie definieren die Telemetriedaten, den Zustand, die Eigenschaften und die Befehle für den Typ.
+description: In diesem Artikel erfahren Sie, wie Sie in Ihrer Azure IoT Central-Anwendung eine neue Azure IoT-Gerätevorlage erstellen. Sie definieren die Telemetriedaten, den Zustand, die Eigenschaften und die Befehle für den Typ.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/06/2019
@@ -10,16 +10,14 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 9ef4be54f5c6025a09314a04504cff40fc39478d
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 8d51297b353a72861f864e42bf87cad4f1a712b3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168160"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747195"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung
-
-*Dieser Artikel gilt für Lösungsersteller und Geräteentwickler.*
 
 Eine Gerätevorlage ist eine Blaupause, die die Merkmale und das Verhalten eines Gerätetyps definiert, der eine Verbindung mit einer [Azure IoT Central-Anwendung](concepts-app-templates.md) herstellt.
 
@@ -284,4 +282,4 @@ Nachdem Sie eine Gerätevorlage veröffentlicht haben, kann ein Bediener zur Sei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie ein Geräteentwickler sind, sollten Sie sich als Nächstes über [Versionsverwaltung für Gerätevorlagen](./howto-version-device-template.md) informieren.
+Als Nächstes sollten Sie sich über die [Versionsverwaltung für Gerätevorlagen](./howto-version-device-template.md) informieren.

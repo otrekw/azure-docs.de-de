@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 713a829ee8c7a3d036bc82f6f509e5c79dfb71aa
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ad6d006157424c995ea94e89163d69a0db242ce1
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205771"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789681"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Grundlegendes zu Zwillingsmodellen in Azure Digital Twins
 
@@ -77,7 +77,7 @@ Zwischen Eigenschaften und Telemetrie für Azure Digital Twins-Modelle gibt es f
 
 Wenn Sie ein Modell in Azure Digital Twins entwerfen, verwenden Sie deshalb in den meisten Fällen wahrscheinlich **Eigenschaften** zum Modellieren Ihrer Zwillinge. Dies erlaubt Ihnen die Nutzung des Sicherungsspeichers und die Möglichkeit zum Lesen und Abfragen der Datenfelder.
 
-Telemetrie und Eigenschaften arbeiten oft zusammen, um den Dateneingang von Geräten zu verarbeiten. Da der gesamte Eingang bei Azure Digital Twins über [APIs](how-to-use-apis-sdks.md) abgewickelt wird, verwenden Sie normalerweise deren Eingangsfunktion zum Lesen der Telemetrie oder der Eigenschaftsereignisse von Geräten und legen als Reaktion darauf eine Eigenschaft in Azure Digital Twins fest. 
+Telemetrie und Eigenschaften arbeiten oft zusammen, um den Dateneingang von Geräten zu verarbeiten. Da der gesamte Eingang bei Azure Digital Twins über [APIs](concepts-apis-sdks.md) abgewickelt wird, verwenden Sie normalerweise deren Eingangsfunktion zum Lesen der Telemetrie oder der Eigenschaftsereignisse von Geräten und legen als Reaktion darauf eine Eigenschaft in Azure Digital Twins fest. 
 
 Sie können ein Telemetrieereignis auch über die Azure Digital Twins-API veröffentlichen. Wie bei anderer Telemetrie handelt es sich dabei um ein kurzlebiges Ereignis, das zur Verarbeitung einen Listener benötigt.
 
@@ -87,13 +87,13 @@ DTDL ermöglicht auch, dass **Beziehungen** eigene Eigenschaften aufweisen. Beim
 
 ## <a name="model-inheritance"></a>Vererbung im Modell
 
-Mitunter möchten Sie ein Modell eventuell weiter spezialisieren. Beispielsweise kann es sinnvoll sein, mit einem generischen Modell wie *Raum* und spezialisierte Varianten *Konferenzraum* und *Fitnessraum* zu arbeiten. Um Spezialisierung auszudrücken, unterstützt DTDL Vererbung. Schnittstellen können von einer oder mehreren anderen Schnittstellen erben. 
+Mitunter möchten Sie ein Modell eventuell weiter spezialisieren. Beispielsweise kann es sinnvoll sein, mit einem generischen Modell wie Raum und spezialisierte Varianten Konferenzraum und Fitnessraum zu arbeiten. Um Spezialisierung auszudrücken, unterstützt DTDL Vererbung. Schnittstellen können von einer oder mehreren anderen Schnittstellen erben. 
 
-Im folgenden Beispiel wird das Modell *Planet* aus dem vorherigen DTDL-Beispiel als Untertyp des größeren Modells *CelestialBody* neu konzipiert. Das übergeordnete Modell wird zuerst definiert. Anschließend baut das untergeordnete Modell unter Verwendung des Felds `extends` darauf auf.
+Im folgenden Beispiel wird das Modell Planet aus dem vorherigen DTDL-Beispiel als Untertyp des größeren Modells CelestialBody neu konzipiert. Das übergeordnete Modell wird zuerst definiert. Anschließend baut das untergeordnete Modell unter Verwendung des Felds `extends` darauf auf.
 
 :::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
 
-In diesem Beispiel trägt *CelestialBody* einen Namen, eine Masse und eine Temperatur zu *Planet* bei. Der Abschnitt `extends` ist ein Schnittstellenname oder Array von Schnittstellennamen (der es der erweiternden Schnittstelle ermöglicht, falls gewünscht, von mehreren übergeordneten Modellen zu erben).
+In diesem Beispiel trägt CelestialBody einen Namen, eine Masse und eine Temperatur zu Planet bei. Der Abschnitt `extends` ist ein Schnittstellenname oder Array von Schnittstellennamen (der es der erweiternden Schnittstelle ermöglicht, falls gewünscht, von mehreren übergeordneten Modellen zu erben).
 
 Nach Anwendung der Vererbung macht die erweiternde Schnittstelle alle Eigenschaften in der gesamten Vererbungskette verfügbar.
 
@@ -101,7 +101,7 @@ Die erweiternde Schnittstelle kann keine Definitionen der übergeordneten Schnit
 
 ## <a name="model-code"></a>Modellcode
 
-Modelle von Digital Twin-Typen können ein einem beliebigen Text-Editor geschrieben werden. Die Sprache DTDL folgt der JSON-Syntax, weshalb Sie Modelle mit der Erweiterung *.json* speichern müssen. Durch Verwendung der JSON-Erweiterung wird vielen Text-Editoren zur Programmierung ermöglicht, eine grundlegende Syntaxprüfung und Hervorhebung für Ihre DTDL-Dokumente bereitzustellen. Es ist auch eine [DTDL-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) für [Visual Studio Code](https://code.visualstudio.com/) verfügbar.
+Modelle von Digital Twin-Typen können ein einem beliebigen Text-Editor geschrieben werden. Die Sprache DTDL folgt der JSON-Syntax, weshalb Sie Modelle mit der Erweiterung .json speichern müssen. Durch Verwendung der JSON-Erweiterung wird vielen Text-Editoren zur Programmierung ermöglicht, eine grundlegende Syntaxprüfung und Hervorhebung für Ihre DTDL-Dokumente bereitzustellen. Es ist auch eine [DTDL-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) für [Visual Studio Code](https://code.visualstudio.com/) verfügbar.
 
 ### <a name="possible-schemas"></a>Mögliche Schemas
 
@@ -118,13 +118,13 @@ Zusätzlich zu den einfachen Typen können die Felder *Eigenschaft* und *Telemet
 
 Dieser Abschnitt enthält ein Beispiel für ein typisches Modell, das als DTDL-Schnittstelle geschrieben wurde. Das Modell beschreibt **Planeten** mit jeweils Name, Masse und Temperatur.
  
-Beachten Sie, dass die-Planeten auch mit **Monden** interagieren können, die ihre Satelliten sind und **Krater** aufweisen können. Im folgenden Beispiel drückt das `Planet`-Modell Verbindungen mit diesen anderen Entitäten aus, indem auf zwei externe Modelle verwiesen wird: `Moon` und `Crater`. Diese Modelle werden auch im folgenden Beispielcode definiert, sind jedoch sehr einfach gehalten, sodass Sie nicht vom primären `Planet`-Beispiel ablenken.
+Beachten Sie, dass die-Planeten auch mit **Monden** interagieren können, die ihre Satelliten sind und **Krater** aufweisen können. Im folgenden Beispiel drückt das Planet-Modell Verbindungen mit diesen anderen Entitäten aus, indem auf zwei externe Modelle verwiesen wird: „Moon“ und „Crater“. Diese Modelle werden auch im folgenden Beispielcode definiert, sind jedoch sehr einfach gehalten, sodass sie nicht vom primären Planet-Beispiel ablenken.
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Planet-Crater-Moon.json":::
 
 Die Felder des Modells sind wie folgt:
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | --- | --- |
 | `@id` | Ein Bezeichner für das Modell. Muss das Format `dtmi:<domain>:<unique model identifier>;<model version number>` haben. |
 | `@type` | Gibt die Art der beschriebenen Informationen an. Bei einer Schnittstelle ist der Typ *Schnittstelle*. |
@@ -133,7 +133,7 @@ Die Felder des Modells sind wie folgt:
 | `contents` | Alle übrigen Schnittstellendaten werden hier als ein Array von Attributdefinitionen platziert. Jedes Attribut muss einen `@type` (eine *Eigenschaft*, *Telemetrie*, einen *Befehl*, eine *Beziehung* oder *Komponente*) enthalten, um die Art der Schnittstelleninformationen zu bestimmen, die beschrieben werden, und dann eine Reihe von Eigenschaften, die das eigentliche Attribut definieren (z. B. `name` und `schema` zur Definition einer *Eigenschaft*). |
 
 > [!NOTE]
-> Beachten Sie, dass die Komponentenschnittstelle (in diesem Beispiel *Crater*) im gleichen Array definiert ist wie die Schnittstelle, die sie verwendet (*Planet*). Komponenten müssen auf diese Weise in API-Aufrufen definiert werden, damit die Schnittstelle gefunden werden kann.
+> Beachten Sie, dass die Komponentenschnittstelle (in diesem Beispiel Crater) im gleichen Array definiert ist wie die Schnittstelle, die sie verwendet (Planet). Komponenten müssen auf diese Weise in API-Aufrufen definiert werden, damit die Schnittstelle gefunden werden kann.
 
 ## <a name="best-practices-for-designing-models"></a>Bewährte Methoden für das Entwerfen von Modellen
 
@@ -153,9 +153,9 @@ In diesem Abschnitt werden die aktuellen Beispiele ausführlicher beschrieben.
 
 _**Zum Hochladen von Modellen in Azure Digital Twins**_
 
-Sobald Sie Ihre Modelle erstellt, erweitert oder ausgewählt haben, können Sie diese in Ihre Azure Digital Twins-Instanz hochladen, um sie zur Verwendung in Ihrer Lösung zur Verfügung zu stellen. Hierzu verwenden Sie die [Azure Digital Twins-APIs](how-to-use-apis-sdks.md) wie unter [Exemplarische Vorgehensweise: Verwalten von DTDL-Modellen](how-to-manage-model.md#upload-models) beschrieben.
+Sobald Sie Ihre Modelle erstellt, erweitert oder ausgewählt haben, können Sie diese in Ihre Azure Digital Twins-Instanz hochladen, um sie zur Verwendung in Ihrer Lösung zur Verfügung zu stellen. Hierzu verwenden Sie die [Azure Digital Twins-APIs](concepts-apis-sdks.md) wie unter [Exemplarische Vorgehensweise: Verwalten von DTDL-Modellen](how-to-manage-model.md#upload-models) beschrieben.
 
-Wenn Sie jedoch viele Modelle hochladen müssen oder viele gegenseitige Abhängigkeiten vorliegen, die einzelne Uploads erschweren würden, können Sie das folgende Beispiel verwenden, um mehrere Modelle gleichzeitig hochzuladen: [Azure Digital Twins-Modelluploader](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader). Befolgen Sie die im Beispiel bereitgestellten Anweisungen, um dieses Projekt zu konfigurieren und zum Hochladen von Modellen in Ihre eigene Instanz zu verwenden.
+Wenn Sie jedoch viele Modelle hochladen müssen oder viele gegenseitige Abhängigkeiten vorliegen, die einzelne Uploads erschweren würden, können Sie das Beispiel [Azure Digital Twins-Modelluploader](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader) verwenden, um mehrere Modelle gleichzeitig hochzuladen. Befolgen Sie die im Beispiel bereitgestellten Anweisungen, um dieses Projekt zu konfigurieren und zum Hochladen von Modellen in Ihre eigene Instanz zu verwenden.
 
 ### <a name="model-visualizer"></a>Modellvisualisierer 
 

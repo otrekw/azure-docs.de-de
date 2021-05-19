@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer VM in einer Zone über das Azure-Portal
-description: Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal
+description: Erstellen einer VM in einer Verfügbarkeitszone über das Azure-Portal
 documentationcenter: virtual-machines
 author: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 3/8/2021
+ms.date: 5/10/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 7c7f135d4033a31f855342c172d73f51478931ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3abbe547b8788d468c2273f037d52c9d61e3f9ce
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501684"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752948"
 ---
 # <a name="create-a-virtual-machine-in-an-availability-zone-using-the-azure-portal"></a>Erstellen einer VM in einer Verfügbarkeitszone über das Azure-Portal
 
@@ -24,29 +24,25 @@ Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure 
 
-Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
-## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
+1. Klicken Sie auf **Ressource erstellen** > **Compute** > **Virtueller Computer**. 
 
-1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
+3. Geben Sie die Informationen zum virtuellen Computer ein. Der Benutzername und das Kennwort werden zum Anmelden auf der VM verwendet. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen. 
 
-2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
+4. Wählen Sie eine Region wie z. B. „USA, Osten 2“ aus, die Verfügbarkeitszonen unterstützt. 
 
-3. Geben Sie die Informationen zum virtuellen Computer ein. Der hier eingegebene Benutzername und das Kennwort werden zum Anmelden am virtuellen Computer verwendet. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen. Wählen Sie einen Speicherort wie z.B. „USA, Osten 2“, der Verfügbarkeitszonen unterstützt. Klicken Sie abschließend auf **OK**.
+5. Wählen Sie unter **Verfügbarkeitsoptionen** die Dropdownliste **Verfügbarkeitszone** aus. 
 
-    ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer im Portalblatt](./media/create-portal-availability-zone/create-windows-vm-portal-basic-blade.png)
-
+1. Wählen Sie unter **Verfügbarkeitszone** eine Zone in der Dropdownliste aus.
+        
 4. Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie eine empfohlene Größe aus, oder filtern Sie basierend auf Features. Vergewissern Sie sich, dass die Größe in der Zone verfügbar ist, die Sie verwenden möchten.
 
-    ![VM-Größe auswählen](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
+6. Füllen Sie die Informationen zu Ihrer VM aus. Wählen Sie abschließend **Überprüfen + Erstellen** aus.
 
-5. Wählen Sie unter **Einstellungen** > **Hochverfügbarkeit** eine der nummerierten Zonen aus der Dropdownliste **Verfügbarkeitszone** aus, behalten Sie die restlichen Standardeinstellungen bei, und klicken Sie auf **OK**.
+7. Nachdem die Informationen überprüft wurden, wählen Sie **Erstellen** aus.
 
-    ![Auswählen einer Verfügbarkeitszone](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
-
-6. Klicken Sie auf der Zusammenfassungsseite auf **Erstellen**, um die Bereitstellung des virtuellen Computers zu starten.
-
-7. Die VM wird im Dashboard des Azure-Portals angeheftet. Nach Abschluss der Bereitstellung wird automatisch die VM-Zusammenfassung geöffnet.
+1. Nachdem die VM erstellt wurde, wird die Verfügbarkeitszone auf der Seite der VM im Abschnitt **Grundlagen** aufgeführt.
 
 ## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>Bestätigen der Zone für verwalteten Datenträger und IP-Adresse
 
@@ -54,18 +50,11 @@ Bei der Bereitstellung des virtuellen Computers in einer Verfügbarkeitszone wir
 
 Sie können die Zoneneinstellungen für diese Ressourcen im Portal überprüfen.  
 
-1. Klicken Sie auf **Ressourcengruppen** und dann auf den Namen der Ressourcengruppe für den virtuellen Computer, z.B. *myResourceGroup*.
+1. Wählen Sie im linken Menü **Datenträger** und dann den Betriebssystemdatenträger aus. Die Seite für den Datenträger enthält Details über den Standort und die Verfügbarkeitszone des Datenträgers.
 
-2. Klicken Sie auf den Namen der Datenträgerressource. Die Seite **Übersicht** enthält Details über den Speicherort und die Verfügbarkeitszone der Ressource.
+1. Wählen Sie zurück auf der Seite der VM die öffentliche IP-Adresse aus. Wählen Sie im Menü auf der linken Seite die Option **Eigenschaften** aus. Die Seite „Eigenschaften“ enthält Details über den Standort und die Verfügbarkeitszone der öffentlichen IP-Adresse.
 
-    ![Verfügbarkeitszone für den verwalteten Datenträger](./media/create-portal-availability-zone/create-windows-vm-portal-disk.png)
-
-3. Klicken Sie auf den Namen der öffentlichen IP-Adressressource. Die Seite **Übersicht** enthält Details über den Speicherort und die Verfügbarkeitszone der Ressource.
-
-    ![Verfügbarkeitszone für IP-Adresse](./media/create-portal-availability-zone/create-windows-vm-portal-ip.png)
-
-
-
+    
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie gelernt, wie Sie einen virtuellen Computer in einer Verfügbarkeitszone erstellen. Erfahren Sie mehr über die [Verfügbarkeit](../availability.md) virtueller Azure-Computer.
