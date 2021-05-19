@@ -4,14 +4,14 @@ description: Voraussetzungen für die Verwendung von Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/14/2021
+ms.date: 05/06/2021
 ms.author: v-erkel
-ms.openlocfilehash: 3cddbba3dca64561d7e2b7b27715152a26a8c9e9
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 59b83132f4de25886494bdc5c23819243240e962
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717583"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737328"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
@@ -94,6 +94,8 @@ Weitere Informationen zu virtuellen Azure-Netzwerken und DNS-Serverkonfiguration
 <!-- heading is linked in create storage target GUI as aka.ms/hpc-cache-prereq#storage-infrastructure - make sure to fix that if you change the wording of this heading -->
 
 Der Cache unterstützt Azure-Blobcontainer, NFS-Hardwarespeicherexporte und in NFS eingebundene ADLS-Blobcontainer (derzeit in der Vorschauphase). Fügen Sie nach dem Erstellen des Caches Speicherziele hinzu.
+
+Die Größe Ihres Caches bestimmt, wie viele Speicherziele unterstützt werden können – bis zu 10 Speicherziele für die meisten Caches oder bis zu 20 für die größten Caches. Weitere Informationen finden Sie unter [Korrekte Cachegröße zur Unterstützung Ihrer Speicherziele](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets).
 
 Für jeden Speichertyp gelten bestimmte Voraussetzungen.
 

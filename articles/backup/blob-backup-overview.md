@@ -1,16 +1,16 @@
 ---
 title: Übersicht über die operative Sicherung für Azure-Blobs
-description: Erfahren Sie mehr über die operative Sicherung für Azure-Blobs (Vorschau).
+description: Erfahren Sie mehr über die operative Sicherung für Azure-Blobs.
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: 1f6bc98b92a2af4b05cae766a2186f2970b7133c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/05/2021
+ms.openlocfilehash: 5d6113108a41430e9d864ff05095be4d440989ee
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558753"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767237"
 ---
-# <a name="overview-of-operational-backup-for-azure-blobs-in-preview"></a>Übersicht über die operative Sicherung für Azure-Blobs (Vorschau)
+# <a name="overview-of-operational-backup-for-azure-blobs"></a>Übersicht über die operative Sicherung für Azure-Blobs
 
 Die operative Sicherung für Blobs ist eine verwaltete, lokale Datensicherungslösung, mit der Sie Ihre Blockblobs vor verschiedenen Datenverlustszenarien wie Beschädigungen, Bloblöschungen und dem versehentlichen Löschen von Speicherkonten schützen können. Die Daten werden lokal im Quellspeicherkonto selbst gespeichert und können bei Bedarf zu einem ausgewählten Zeitpunkt wiederhergestellt werden. Die operative Sicherung bietet also eine einfache, sichere und kostengünstige Möglichkeit, Ihre Blobs zu schützen.
 

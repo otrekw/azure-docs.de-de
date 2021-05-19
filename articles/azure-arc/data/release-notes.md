@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 04/29/2021
+ms.date: 05/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: f062782ec2b28ca155b49c9d6ecd5c169c0430eb
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 58dd7baa612e2dcf302ce87b2d77cd0e71f90187
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286832"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763845"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Versionshinweise – Azure Arc-fähige Datendienste (Vorschauversion)
 
@@ -60,6 +60,7 @@ In diesem Abschnitt werden die neuen Features beschrieben, die für dieses Relea
 - Im direkten Konnektivitätsmodus ist das Hochladen von Verbrauch, Metriken und Protokollen mit `azdata arc dc upload` derzeit blockiert. Der Verbrauch wird automatisch hochgeladen. Der Upload für einen Datencontroller, der im indirekten Konnektivitätsmodus erstellt wurde, sollte weiterhin funktionieren.
 - Der automatische Upload von Verbrauchsdaten im direkten Konnektivitätsmodus schlägt fehl, wenn ein Proxy über `–proxy-cert <path-t-cert-file>` verwendet wird.
 - Azure Arc-aktivierte SQL Managed-Instanz und Azure Arc-aktivierte PostgreSQL Hyperscale sind nicht GB18030-zertifiziert.
+- Derzeit wird nur ein Azure Arc-Datencontroller im direkten Konnektivitätsmodus pro Kubernetes-Cluster unterstützt.
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc-fähige SQL Managed Instance-Instanz
 

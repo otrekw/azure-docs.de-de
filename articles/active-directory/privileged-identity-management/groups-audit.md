@@ -14,19 +14,19 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94dd5c2579eb7ce96dea70c6354df8ec84125bd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5947d9bcd6109e4d13d0f4492911b0cd8ead3f40
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88141668"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790611"
 ---
 # <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Aktivitäten und Überwachungsverlauf für Zuweisungen von Gruppen mit privilegiertem Zugriff (Vorschau) in Privileged Identity Management
 
 Mit Privileged Identity Management (PIM) können Sie Aktivitäten, Aktivierungen und den Überwachungsverlauf für Mitglieder und Besitzer von Azure-Gruppen mit privilegiertem Zugriff innerhalb Ihrer Azure Active Directory (Azure AD)-Organisation anzeigen.
 
 > [!NOTE]
-> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
+> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [Azure Lighthouse](../../lighthouse/overview.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
 
 Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Gruppen mit privilegiertem Zugriff anzuzeigen.
 

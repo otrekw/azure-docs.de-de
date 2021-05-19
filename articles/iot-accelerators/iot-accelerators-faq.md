@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 61993df77b0831926f16339a741a2553e80c2a0d
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: b9b8c97f7b87fc96bb0ea9e60958e5579a27d89c
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713838"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484665"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Häufig gestellte Fragen zu IoT-Solution Accelerators
 
@@ -24,19 +24,18 @@ Informationen finden Sie auch in den [häufig gestellten Fragen zur verbundenen 
 Der Quellcode wird in den folgenden GitHub-Repositorys gespeichert:
 
 * [Solution Accelerator für verbundene Factorys](https://github.com/Azure/azure-iot-connected-factory)
-* [Solution Accelerator für die Gerätesimulation](https://github.com/Azure/azure-iot-pcs-device-simulation)
 
 ### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>Wo finde ich die Solution Accelerators für Remoteüberwachung und Predictive Maintenance?
 
 Mit Stand vom 10. Dezember 2020 wurden die Accelerators für Remoteüberwachung und Predictive Maintenance von der Website der [Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) entfernt und stehen nicht mehr für neue Bereitstellungen zur Verfügung. Die GitHub-Repository für die beiden Accelerators wurden archiviert. Der Code ist weiterhin für alle zugänglich, aber die Repositorys nehmen keine neuen Beiträge an.
 
+### <a name="where-can-i-find-the-device-simulation-solution-accelerator"></a>Wo finde ich den Solution Accelerator für die Gerätesimulation?
+
+Das GitHub-Repository für den Beschleuniger wurde archiviert. Der Code ist weiterhin für alle zugänglich, aber die Repositorys nehmen keine neuen Beiträge an.
+
 ### <a name="what-happens-to-my-existing-remote-monitoring-and-predictive-maintenance-deployments"></a>Was geschieht mit meinen vorhandenen Remoteüberwachungs- und Predictive Maintenance-Bereitstellungen?
 
 Auf vorhandene Bereitstellungen hat das Entfernen der Solution Accelerators für Remoteüberwachung und Predictive Maintenance keine Auswirkungen, sie funktionieren weiterhin. Auch geforkte Repositorys sind nicht betroffen. Die Masterrepositorys auf GitHub wurden archiviert.
-
-### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>Wie stelle ich den Solution Accelerator für die Gerätesimulation bereit?
-
-Informationen zum Bereitstellen des Solution Accelerators für die Gerätesimulation finden Sie im GitHub-Repository zur [Gerätesimulation](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md).
 
 ### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>Wo finde ich Informationen zu den entfernten Solution Accelerators?
 
@@ -44,6 +43,7 @@ Weitere Informationen finden Sie auf den folgenden Seiten der Website für die f
 
 * [Remoteüberwachung](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
 * [Predictive Maintenance](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
+* [Gerätesimulation](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Welche SDKs kann ich zum Entwickeln von Geräteclients für die Solution Accelerators verwenden?
 

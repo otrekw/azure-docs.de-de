@@ -1,25 +1,23 @@
 ---
 title: Überwachen der Integrität einer Azure IoT Central-Anwendung | Microsoft-Dokumentation
-description: Überwachen Sie als Bediener oder Administrator die Gesamtintegrität der mit Ihrer IoT Central-Anwendung verbundenen Geräte.
+description: Überwachen der Gesamtintegrität der mit Ihrer IoT Central-Anwendung verbundenen Geräte
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: df89d53e6b5043c1ef3caa1c92f2abaae542d6ec
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 6a9751ba40f39a1a6f6166f6c6bce2149ed06984
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599008"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685061"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Überwachen der Gesamtintegrität einer IoT Central-Anwendung
 
 > [!NOTE]
 > Metriken sind nur für IoT Central-Anwendungen der Version 3 verfügbar. Informationen zum Überprüfen Ihrer Anwendungsversion finden Sie unter [Über Ihre Anwendung](./howto-get-app-info.md).
-
-*Dieser Artikel gilt für Bediener und Administratoren.*
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe der von IoT Central bereitgestellten Metriken die Integrität von mit Ihrer IoT Central-Anwendung verbundenen Geräten sowie die Integrität Ihrer aktiven Datenexporte bewerten.
 
@@ -31,7 +29,7 @@ Weil Anwendungen, die den kostenlosen Testplan verwenden, kein Azure-Abonnement 
 
 ## <a name="view-metrics-in-the-azure-portal"></a>Anzeigen von Metriken im Azure-Portal
 
-Bei den folgenden Schritten wird davon ausgegangen, dass Sie über eine [IoT Central-Anwendung](./quick-deploy-iot-central.md) mit einigen [verbundenen Geräten](./tutorial-connect-device.md) oder über einen aktiven [Datenexport](howto-export-data.md) verfügen.
+Bei den folgenden Schritten wird davon ausgegangen, dass Sie über eine [IoT Central-Anwendung](./howto-create-iot-central-application.md) mit einigen [verbundenen Geräten](./tutorial-connect-device.md) oder über einen aktiven [Datenexport](howto-export-data.md) verfügen.
 
 So zeigen Sie IoT Central-Metriken im Portal an:
 
@@ -54,7 +52,7 @@ Metriken können von den Zahlen abweichen, die in Ihrer Azure IoT Central-Rechnu
 
 - Die [Standard-Tarife](https://azure.microsoft.com/pricing/details/iot-central/) von IoT Central enthalten zwei Geräte und kostenlose variierende Nachrichtenkontingente. Die kostenlosen Elemente sind in der Abrechnung nicht enthalten, werden in den Metriken aber dennoch gezählt.
 
-- IoT Central generiert automatisch eine einzige Testgeräte-ID für jede Gerätevorlage in der Anwendung. Diese Geräte-ID wird auf der Seite **Testgerät verwalten** für eine Gerätevorlage angezeigt. Lösungsentwickler können wahlweise ihre Gerätevorlagen überprüfen, bevor sie sie veröffentlichen. Dazu generieren sie Code, in dem diese Testgeräte-IDs verwendet werden. Diese Geräte sind in der Abrechnung nicht enthalten, werden in den Metriken aber dennoch gezählt.
+- IoT Central generiert automatisch eine einzige Testgeräte-ID für jede Gerätevorlage in der Anwendung. Diese Geräte-ID wird auf der Seite **Testgerät verwalten** für eine Gerätevorlage angezeigt. Sie können Ihre Gerätevorlagen vor der Veröffentlichung überprüfen, indem Sie Code generieren, der diese Testgeräte-IDs verwendet. Diese Geräte sind in der Abrechnung nicht enthalten, werden in den Metriken aber dennoch gezählt.
 
 - Während Metriken möglicherweise eine Teilmenge der Gerät-zu-Cloud-Kommunikation zeigen, wird die gesamte Kommunikation zwischen dem Gerät und der Cloud [als Nachricht zur Abrechnung gezählt](https://azure.microsoft.com/pricing/details/iot-central/).
 

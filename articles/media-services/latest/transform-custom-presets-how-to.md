@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 05/11/2021
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: d4877bd1b4f3eec6eb5f192f2db5040cc31a69eb
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 21aae19b92be4afe8af5f3a1e658084547c97d5f
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930333"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790863"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Codieren mit einer benutzerdefinierten Transformation – .NET
 
@@ -44,7 +44,7 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das vollständige .NET 
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
  ```
  
-Das benutzerdefinierte voreingestellte Beispiel befindet sich im Ordner [Encoding with a custom preset using .NET](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_H264) (Codierung mit benutzerdefinierter Voreinstellung mit .NET).
+Das benutzerdefinierte voreingestellte Beispiel befindet sich im Ordner [Encoding with a custom preset using .NET](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264) (Codierung mit benutzerdefinierter Voreinstellung mit .NET).
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Erstellen einer Transformation mit einer benutzerdefinierten Voreinstellung
 
@@ -52,6 +52,12 @@ Beim Erstellen einer neuen [Transformation](/rest/api/media/transforms) müssen 
 
 Beim Erstellen einer [Transformation](/rest/api/media/transforms) sollten Sie zunächst mit der **Get**-Methode überprüfen, ob eine solche bereits vorhanden ist. Der folgende Code zeigt dies. In Media Services v3 geben **Get**-Methoden für Entitäten **NULL** zurück, wenn die Entität nicht vorhanden ist (eine Überprüfung des Namens ohne Unterscheidung zwischen Groß-/Kleinschreibung).
 
+### <a name="example-custom-transform"></a>Beispiel für eine benutzerdefinierte Transformation
+
+Im folgenden Beispiel wird ein Satz von Ausgaben definiert, der bei Verwendung dieser Transformation generiert werden soll. Zuerst fügen wir eine AacAudio-Ebene für die Audiocodierung und zwei H264Video-Ebenen für die Videocodierung hinzu. In den Videoebenen weisen wir Bezeichnungen zu, damit sie in den Ausgabedateinamen verwendet werden können. Als Nächstes soll die Ausgabe auch Miniaturansichten enthalten. Im Beispiel unten geben wir Bilder im PNG-Format an, die mit 50 % der Auflösung vom Eingabevideo generiert wurden und drei Zeitstempel aufweisen – {25 %, 50 %, 75 %} der Länge des Eingabevideos. Schließlich geben wir das Format für die Ausgabedateien an – eine für Video+Audio und eine andere für die Miniaturansichten. Weil wir mehrere H264-Ebenen haben, müssen wir Makros verwenden, die eindeutige Namen pro Ebene generieren. Wir können entweder ein `{Label}`- oder ein `{Bitrate}`-Makro verwenden. Im Beispiel wird erstere Option verwendet.
+
+[!code-csharp[Main](../../../media-services-v3-dotnet/VideoEncoding/Encoding_H264/Program.cs#EnsureTransformExists)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Streamingdateien](stream-files-tutorial-with-api.md) 
+[Streamingdateien](stream-files-tutorial-with-api.md)

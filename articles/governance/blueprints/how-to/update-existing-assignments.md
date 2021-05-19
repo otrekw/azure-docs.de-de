@@ -3,12 +3,12 @@ title: Aktualisieren einer vorhandenen Zuweisung über das Portal
 description: Hier werden die Mechanismen beim Aktualisieren einer vorhandenen Blaupausenzuweisung in Azure Blueprints über das Portal erläutert.
 ms.date: 05/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 67ce41d6d7b4497d84d960e96813f20db940c965
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b08862ba32dbdd52faff85115553e59ae856b453
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323733"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761361"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Aktualisieren einer vorhandenen Blaupausenzuweisung
 
@@ -24,7 +24,7 @@ Wenn eine Blaupause zugewiesen ist, kann die Zuweisung aktualisiert werden. Es g
 
 1. Wählen Sie auf der Seite links die Option **Zugewiesene Blaupausen**.
 
-1. Wählen Sie in der Liste der Blaupausen die Blaupausenzuweisung aus. Verwenden Sie anschließend die Schaltfläche **Zuweisung aktualisieren**, ODER klicken Sie mit der rechten Maustaste auf die Blaupausenzuweisung, und wählen Sie **Zuweisung aktualisieren** aus.
+1. Wählen Sie in der Liste der Blaupausen die Blaupausenzuweisung aus. Verwenden Sie anschließend die Schaltfläche **Zuweisung aktualisieren**, ODER wählen und halten Sie die Blaupausenzuweisung (oder klicken Sie mit der rechten Maustaste darauf), und wählen Sie dann **Zuweisung aktualisieren** aus.
 
    :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Screenshot der Seite für Blaupausenzuweisung mit hervorgehobener Schaltfläche „Zuweisung aktualisieren“" border="false":::
 
@@ -56,7 +56,7 @@ Bei der Bereitstellung der aktualisierten Zuweisungen werden einige wichtige Reg
 
 Beim Aktualisieren von Zuweisungen können Änderungen vorgenommen werden, die bei der Ausführung eine Unterbrechung bewirken. Ein Beispiel hierfür ist das Ändern des Speicherorts einer Ressourcengruppe, nachdem diese bereits bereitgestellt wurde. Jede von [Resource Manager](../../../azure-resource-manager/management/overview.md) unterstützte Änderung kann vorgenommen werden. Jede Änderung, die bei Resource Manager einen Fehler verursacht, bewirkt jedoch ebenso einen Fehler bei der Zuweisung.
 
-Es gibt keine Beschränkung in Bezug darauf, wie oft eine Zuweisung aktualisiert werden kann. Wenn ein Fehler auftritt, identifizieren Sie ihn, und aktualisieren Sie die Zuweisung erneut.  Beispielszenarien für Fehler:
+Es gibt keine Beschränkung in Bezug darauf, wie oft eine Zuweisung aktualisiert werden kann. Wenn ein Fehler auftritt, identifizieren Sie ihn, und aktualisieren Sie die Zuweisung erneut. Beispielszenarien für Fehler:
 
 - Falscher Parameter
 - Ein bereits vorhandenes Objekt

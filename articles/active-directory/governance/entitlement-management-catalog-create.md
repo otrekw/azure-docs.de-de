@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8cea26bcb0926cd3af360a6489377767d681079
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 394565c857320c8fd94d72a0ca15358c83b0d09d
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532550"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714384"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erstellen und Verwalten eines Ressourcenkatalogs in der Azure AD-Berechtigungsverwaltung
 
@@ -29,7 +29,7 @@ ms.locfileid: "107532550"
 
 Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen einen Katalog, wenn Sie zugehörige Ressourcen und Zugriffspakete gruppieren möchten. Der Benutzer, der den Katalog erstellt, ist der erste Katalogbesitzer. Ein Katalogbesitzer kann weitere Katalogbesitzer hinzufügen.
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogersteller
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator oder Katalogersteller
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -116,7 +116,7 @@ Der Benutzer, der einen Katalog erstellt hat, ist der erste Katalogbesitzer. Wen
 
 Führen Sie die folgenden Schritte aus, um einem Benutzer die Rolle „Katalogbesitzer“ zuzuweisen:
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator oder Katalogbesitzer
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -134,7 +134,7 @@ Führen Sie die folgenden Schritte aus, um einem Benutzer die Rolle „Katalogbe
 
 Sie können den Namen und die Beschreibung eines Katalogs bearbeiten. Benutzern werden diese Informationen in den Details eines Zugriffspakets angezeigt.
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator oder Katalogbesitzer
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -152,7 +152,7 @@ Sie können den Namen und die Beschreibung eines Katalogs bearbeiten. Benutzern 
 
 Sie können einen Katalog nur löschen, wenn er keine Zugriffspakete enthält.
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator oder Katalogbesitzer
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

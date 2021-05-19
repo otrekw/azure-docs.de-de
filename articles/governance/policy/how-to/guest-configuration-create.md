@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Windows
 description: Erfahren Sie, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows erstellen.
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: e1c71acd8544073c861a8ad62fb06d78e9d139c5
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 8fbe3528f998a70ad489174274bda0a54b5e2455
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165333"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733515"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Erstellen von Richtlinien für Gastkonfigurationen für Windows
 
@@ -23,10 +23,10 @@ Die [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) kann nu
 Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprüfen des Zustands eines Azure- oder Nicht-Azure-Computers zu erstellen.
 
 > [!IMPORTANT]
-> Bei benutzerdefinierten Richtliniendefinitionen mit Gastkonfiguration in den Umgebungen „Azure Government“ und „Azure China“ handelt es sich um eine Previewfunktion.
+> Bei benutzerdefinierten Richtliniendefinitionen mit Gastkonfiguration in den Umgebungen „Azure Government“ und „Azure China 21Vianet“ handelt es sich um eine Previewfunktion.
 >
 > Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich. Weisen Sie die folgenden Richtliniendefinitionen zu, um die Erweiterung auf allen Windows-Computern im gewünschten Umfang bereitzustellen: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
-> 
+>
 > Verwenden Sie in Paketen mit benutzerdefiniertem Inhalt keine Geheimnisse oder vertraulichen Informationen.
 
 ## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
@@ -122,7 +122,7 @@ return @{
 Die Reasons-Eigenschaft muss dem Schema-MOF für die Ressource als eingebettete Klasse hinzugefügt werden.
 
 ```mof
-[ClassVersion("1.0.0.0")] 
+[ClassVersion("1.0.0.0")]
 class Reason
 {
     [Read] String Phrase;
@@ -257,7 +257,7 @@ Das Cmdlet unterstützt auch Eingaben aus der PowerShell-Pipeline. Fügen Sie di
 New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./AuditBitlocker/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-Im nächsten Schritt wird die Datei in Azure Blob Storage veröffentlicht. Es werden keine besonderen Anforderungen an das Speicherkonto gestellt, aber es ist ratsam, die Datei in einer Region in der Nähe Ihrer Computer zu hosten. Wenn Sie nicht über ein Speicherkonto verfügen, verwenden Sie das folgende Beispiel. Die folgenden Befehle, einschließlich `Publish-GuestConfigurationPackage`, erfordern das `Az.Storage`-Modul.
+Im nächsten Schritt wird die Datei in Azure Blob Storage veröffentlicht. Es werden keine besonderen Anforderungen an das Speicherkonto gestellt, aber es ist ratsam, die Datei in einer Region in der Nähe Ihrer Computer zu hosten. Wenn Sie nicht über ein Speicherkonto verfügen, verwenden Sie das folgende Beispiel. Die folgenden Befehle, einschließlich `Publish-GuestConfigurationPackage`, erfordern das Modul `Az.Storage`.
 
 ```azurepowershell-interactive
 # Creates a new resource group, storage account, and container
@@ -283,7 +283,7 @@ Nachdem ein benutzerdefiniertes Richtlinienpaket für Gastkonfigurationen erstel
 
 Parameter des Cmdlets `New-GuestConfigurationPolicy`:
 
-- **ContentUri**: Öffentlicher HTTP(S)-URI des Pakets mit dem Inhalt der Gastkonfiguration.
+- **ContentUri**: Öffentlicher HTTP-/HTTPS-URI des Pakets mit dem Inhalt der Gastkonfiguration.
 - **DisplayName**: Anzeigename der Richtlinie.
 - **Beschreibung**: Beschreibung der Richtlinie.
 - **Parameter**: Richtlinienparameter im Hashtabellenformat.
@@ -415,7 +415,7 @@ Für die Erweiterung der Gastkonfiguration müssen zwei Komponenten entwickelt w
 Für die DSC-Ressource muss eine benutzerdefinierte Entwicklung durchgeführt werden, falls noch keine Communitylösung vorhanden ist.
 Sie können überprüfen, ob Communitylösungen verfügbar sind, indem Sie im PowerShell-Katalog nach dem Tag [GuestConfiguration](https://www.powershellgallery.com/packages?q=Tags%3A%22GuestConfiguration%22) suchen.
 
-> [!Note]
+> [!NOTE]
 > Für die Erweiterbarkeit der Gastkonfiguration gilt das Szenario „BYOL (Bring Your Own License)“. Stellen Sie sicher, dass Sie die für Drittanbietertools geltenden Bedingungen erfüllt haben, bevor Sie diese verwenden.
 
 Nachdem die DSC-Ressource in der Entwicklungsumgebung installiert wurde, sollten Sie den Parameter **FilesToInclude** für `New-GuestConfigurationPackage` verwenden, um den Inhalt für die Drittanbieterplattform in das Inhaltsartefakt einzubinden.
@@ -429,7 +429,7 @@ Wenn Sie ein Update für die Richtlinie freigeben möchten, ändern Sie die Deta
 
 Geben Sie zunächst beim Ausführen von `New-GuestConfigurationPackage` einen Namen für das Paket an, der es gegenüber früheren Versionen eindeutig kennzeichnet. Sie können z. B. eine Versionsnummer in den Namen einschließen wie in `PackageName_1.0.0`. Die Zahl in diesem Beispiel dient nur dazu, das Paket eindeutig zu machen, und nicht dazu, das Paket als neuer oder älter als andere Pakete zu kennzeichnen.
 
-Aktualisieren Sie als Zweites die Parameter für das Cmdlet `New-GuestConfigurationPolicy` gemäß den folgenden Erläuterungen.
+Aktualisieren Sie anschließend die Parameter für das Cmdlet `New-GuestConfigurationPolicy` gemäß den folgenden Erläuterungen.
 
 - **Version**: Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist.
 - **contentUri**: Wenn Sie das Cmdlet `New-GuestConfigurationPolicy` ausführen, müssen Sie einen URI zum Speicherort des Pakets angeben. Durch Einschließen einer Paketversion in den Dateinamen wird sichergestellt, dass sich der Wert dieser Eigenschaft in jedem Release ändert.

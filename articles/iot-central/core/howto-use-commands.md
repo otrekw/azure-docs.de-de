@@ -1,22 +1,22 @@
 ---
 title: Verwenden von Gerätebefehlen in einer Azure IoT Central-Lösung
-description: Erfahren Sie, wie Sie Gerätebefehle in einer Azure IoT Central-Lösung verwenden. In diesem Tutorial für Geräteentwickler erfahren Sie, wie Sie Gerätebefehle in einer Client-App Ihrer Azure IoT Central-Anwendung verwenden.
+description: Erfahren Sie, wie Sie Gerätebefehle in einer Azure IoT Central-Lösung verwenden. In diesem Tutorial erfahren Sie, wie Sie Gerätebefehle in einer Client-App Ihrer Azure IoT Central-Anwendung verwenden.
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: e53bf377a7ef8f2293debd288ba25ef8f04ff4fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0a7b24c2d28e27c44a130383e852838950abe49
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98610997"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733191"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>Verwenden von Befehlen in einer Azure IoT Central-Lösung
 
-In dieser Schrittanleitung für Geräteentwickler erfahren Sie, wie Sie Befehle verwenden können, die in einer Gerätevorlage definiert sind.
+In dieser Schrittanleitung erfahren Sie, wie Sie Befehle verwenden können, die in einer Gerätevorlage definiert sind.
 
 Ein Operator kann über die Benutzeroberfläche von IoT Central einen Befehl auf einem Gerät aufrufen. Befehle steuern das Verhalten eines Geräts. Beispielsweise kann ein Operator einen Befehl zum Neustarten eines Geräts oder zum Sammeln von Diagnosedaten aufrufen.
 

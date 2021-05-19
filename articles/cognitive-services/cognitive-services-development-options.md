@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 975f7eec31839aefcb1782f573d0210df29a4d00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 243c17bee08e2aad878eb78406c9ed8091abe8ab
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98873568"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758157"
 ---
 # <a name="cognitive-services-development-options"></a>Entwicklungsoptionen für Cognitive Services
 
@@ -89,7 +89,7 @@ Sowohl [Azure Functions-](../azure-functions/index.yml) als auch [Azure App Serv
 
 Power Automate ist ein Dienst der [Power Platform](/power-platform/), der Sie beim Erstellen automatisierter Workflows zwischen Apps und Services unterstützt, ohne dass Sie Code schreiben müssten. Wir bieten verschiedene Connectors, um Ihnen die Interaktion mit Ihrer Cognitive Services-Ressource in einer Power Automate-Lösung zu erleichtern. Power Automate basiert auf Logic Apps. 
 
-* **Zielbenutzer**: Geschäftsbenutzer (Analysten) und Sharepoint-Administratoren
+* **Zielbenutzer**: Geschäftsbenutzer (Analysten) und SharePoint-Administratoren
 * **Vorteile:** Automatisieren Sie sich wiederholende manuelle Aufgaben, indem Sie einfach Mausklicks, Tastendrücke und Kopieren-/Einfügen-Schritte auf Ihrem Desktop aufzeichnen!
 * **Tools mit Benutzeroberfläche**: Ja – nur Benutzeroberfläche
 * **Abonnement(s)** : Azure-Konto + Cognitive Services-Ressource + Power Automate-Abonnement + Office 365-Abonnement
@@ -98,7 +98,7 @@ Power Automate ist ein Dienst der [Power Platform](/power-platform/), der Sie be
 
 [AI Builder](/ai-builder/overview) ist eine Microsoft Power Platform-Funktion, die Sie verwenden können, um die Unternehmensleistung zu steigern, indem Sie Prozesse automatisieren und Ergebnisse vorhersagen. Dank AI Builder können Ihre Lösungen die Leistungsfähigkeit von KI mithilfe einer Point-and-Klick-Oberfläche nutzen. Viele Cognitive Services, wie die Formularerkennung, die Textanalyse und maschinelles Sehen, wurden hier direkt integriert, und Sie brauchen keine eigenen Cognitive Services zu erschaffen. 
 
-* **Zielbenutzer**: Geschäftsbenutzer (Analysten) und Sharepoint-Administratoren
+* **Zielbenutzer**: Geschäftsbenutzer (Analysten) und SharePoint-Administratoren
 * **Vorteile:** Eine schlüsselfertige Lösung, die die Leistungsfähigkeit von KI über eine Point-and-Klick-Benutzeroberfläche verfügbar macht. Es sind keine Fähigkeiten zur Codeerstellung oder Datenanalyse erforderlich.
 * **Tools mit Benutzeroberfläche**: Ja – nur Benutzeroberfläche
 * **Abonnement(s)** : AI Builder

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/24/2019
+ms.date: 05/04/2021
 ms.author: alkohli
-ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b3a89178648d90d1b9aa54fe7963a1baa7270ef
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91744150"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735938"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Öffnen eines Supporttickets für Azure Data Box
 
@@ -83,5 +83,9 @@ Nach dem Erstellen einer Supportanfrage können Sie den Lebenszyklus des Tickets
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über das [Behandeln von Problemen mit Data Box Disk](data-box-disk-troubleshoot.md).
+
 Erfahren Sie mehr über das [Behandeln von Problemen mit Data Box](data-box-troubleshoot.md).
+
+Erhalten Sie Informationen über das [Überprüfen von Kopierfehlern bei einem Upload aus einer Data Box oder einem Data Box Disk-Gerät](data-box-troubleshoot-data-upload.md).
+
 Erfahren Sie mehr über das [Behandeln von Problemen mit Data Box-Blobspeicher](data-box-troubleshoot-rest.md).

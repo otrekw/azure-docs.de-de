@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 3337607c8e4dd9dca230456cdf268ec3fbfb2f12
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 16f436c4b81aac60075be8cb3bf34a9706f739ab
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884406"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746781"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Trainieren von Scikit-learn-Modellen im großen Stil mit Azure Machine Learning
 
@@ -30,7 +30,7 @@ Unabhängig davon, ob Sie ein Scikit-learn-Machine Learning-Modell von Grund au
 Führen Sie diesen Code in einer dieser Umgebungen aus:
  - Azure Machine Learning-Compute-Instanz: keine Downloads oder Installationen erforderlich
 
-    - Absolvieren Sie [Tutorial: Einrichten von Umgebung und Arbeitsbereich](tutorial-1st-experiment-sdk-setup.md), um einen dedizierten Notebook-Server zu erstellen, auf dem das SDK und Beispielrepository vorinstalliert sind.
+    - Schließen Sie den [Schnellstart: Erste Schritte mit Azure Machine Learning](quickstart-create-resources.md) ab, um einen dedizierten Notebook-Server zu erstellen, der mit dem SDK und dem Beispielrepository vorab geladen wurde.
     - Im Beispieltrainingsordner auf dem Notebookserver finden Sie im folgenden Ordner ein fertiges und erweitertes Notebook: **how-to-use-azureml > ml-frameworks > scikit-learn > train-hyperparameter-tune-deploy-with-sklearn**.
 
  - Ihr eigener Jupyter Notebook-Server

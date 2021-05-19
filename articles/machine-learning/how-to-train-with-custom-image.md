@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 953d43f93635e25da008515afd9baf9a9e9b7afa
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 7340b137ddc2eb1e51c3734c85e860636ef9797b
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817069"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752641"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Trainieren eines Modells mithilfe eines benutzerdefinierten Docker-Images
 
@@ -28,7 +28,7 @@ Azure Machine Learning bietet ein standardmäßig verwendetes Docker-Basisimage.
 Führen Sie den Code in einer der folgenden Umgebungen aus:
 
 * Azure Machine Learning-Compute-Instanz (weder Download noch Installation erforderlich):
-  * Führen Sie die Schritte im Tutorial zum [Einrichten der Umgebung und des Arbeitsbereichs](tutorial-1st-experiment-sdk-setup.md) aus, um einen dedizierten Notebookserver zu erstellen, der bereits über das SDK und das Beispielrepository verfügt.
+  * Schließen Sie das Tutorial [Schnellstart: Erste Schritte mit Azure Machine Learning](quickstart-create-resources.md) ab, um einen dedizierten Notebook-Server zu erstellen, der mit dem SDK und dem Beispielrepository vorab geladen wurde.
   * Navigieren Sie im [Azure Machine Learning-Beispielrepository](https://github.com/Azure/azureml-examples) zum Verzeichnis **notebooks** > **fastai** > **train-pets-resnet34.ipynb**, um dort nach einem fertigen Notebook zu suchen. 
 * Auf Ihrem eigenen Jupyter Notebook-Server:
   * Erstellen Sie eine [Konfigurationsdatei für den Arbeitsbereich](how-to-configure-environment.md#workspace).
@@ -107,6 +107,7 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 > * Ubuntu 16.04 oder höher.
 > * Conda 4.5.# oder höher.
 > * Python 3.6+
+> * Eine unter „/bin/sh“ verfügbare POSIX-kompatible Shell ist in jedem Containerimage erforderlich, das für das Training verwendet wird. 
 
 Weitere Informationen zum Erstellen und Verwalten von Azure Machine Learning-Umgebungen finden Sie unter [Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning](how-to-use-environments.md). 
 

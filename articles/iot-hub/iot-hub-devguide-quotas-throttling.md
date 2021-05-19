@@ -1,5 +1,5 @@
 ---
-title: Inhaltsleistung http://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-quotas-throttling
+title: Informationen zu Kontingenten und Drosselung bei Azure IoT Hub
 description: 'Entwicklerhandbuch: Beschreibung der für IoT Hub geltenden Kontingente und des erwarteten Drosselungsverhaltens'
 author: robinsh
 ms.author: robinsh
@@ -11,13 +11,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-- ms.custom:contperf-fy21q4
-ms.openlocfilehash: a18ca18a6e9f7e26c6189cf66322b16f36a42ecb
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+- contperf-fy21q4
+ms.openlocfilehash: ae8d4efbf5080cbb675402f84cfb2709cc12e8cc
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277802"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713016"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 

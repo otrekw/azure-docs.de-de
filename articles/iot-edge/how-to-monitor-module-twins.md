@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a5a31e15c88cef588c93f44c8fe5303d930b5b2c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6a0d8bcce8e036cf7fc0efc1fe3956006f276f9e
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479371"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633895"
 ---
 # <a name="monitor-module-twins"></a>Überwachen von Modulzwillingen
 
@@ -220,6 +220,19 @@ Die [az iot hub module-twin](/cli/azure/iot/hub/module-twin)-Struktur bietet fol
 * **az iot hub module-twin show**: Zeigt eine Modulzwillingsdefinition an.
 * **az iot hub module-twin update**: Aktualisiert eine Modulzwillingsdefinition.
 * **az iot hub module-twin replace**: Ersetzt eine Modulzwillingsdefinition durch einen JSON-Zielcode.
+
+>[!TIP]
+>Um die Runtimemodule mit CLI-Befehlen anzusprechen, müssen Sie möglicherweise das Zeichen `$` in der Modul-ID mit Escapezeichen versehen. Zum Beispiel:
+>
+>```azurecli
+>az iot hub module-twin show -m '$edgeAgent' -n <hub name> -d <device name>
+>```
+>
+>Oder:
+>
+>```azurecli
+>az iot hub module-twin show -m \$edgeAgent -n <hub name> -d <device name>
+>```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

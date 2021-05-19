@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 04/19/2021
 ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: f286e2bcded99ad59b706bd7e6d8b2b29f4b4c0a
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 265f7376ea919b1dff13a1ed5dd3b5f0c48fa9a6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292360"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758211"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Satzpaarbildung und -zuordnung in parallelen Dokumenten
 
@@ -46,7 +46,8 @@ Die folgende Tabelle enthält die für ein erfolgreiches Training erforderliche 
 > - Das Training wird nicht gestartet und ist nicht erfolgreich, wenn die Mindestanzahl von 10.000 Sätzen für das Training unterschritten wird.
 > - „Optimierung“ und „Testen“ sind optional. Ohne diese Optionen entfernt das System einen gewissen Prozentsatz aus dem Training, um ihn für die Überprüfung und zu Testzwecken zu verwenden.
 > - Sie können ein Modell nur mit Wörterbuchdaten trainieren. Weitere Informationen finden Sie unter [Definition: Wörterbuch](./what-is-dictionary.md).
-> - Wenn Ihr Wörterbuch mehr als 250.000 Sätze enthält, ist die **[Dokumentübersetzung](../document-translation/overview.md)** wahrscheinlich eine bessere Wahl.
+> -  Wenn Ihr Wörterbuch mehr als 250.000 Sätze enthält, ist unsere Dokumentübersetzung eine bessere Wahl. Weitere Informationen finden Sie unter [Dokumentübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator/document-translation/overview).
+> - Das kostenlose Abonnementtraining (F0) ist auf maximal 2.000.000 Zeichen begrenzt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 72fd005ce44d116f86d9a0b4c0d1932e2e4facfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5fc09bd554bc61f38a3b208de808a621cbfda80
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102425769"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748023"
 ---
 # <a name="specify-a-face-detection-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -102,7 +102,7 @@ Die verschiedenen Gesichtserkennungsmodelle wurden für unterschiedliche Aufgabe
 |---------|---------|---|
 |Standardauswahl für alle Gesichtserkennungsvorgänge. | Im Mai 2019 veröffentlich und optional in allen Gesichtserkennungsvorgängen verfügbar. |  Im Februar 2021 veröffentlich und optional bei allen Gesichtserkennungsvorgängen verfügbar.
 |Nicht optimiert für kleine oder unscharfe Gesichter bzw. Gesichter in der Profilansicht.  | Verbesserte Genauigkeit bei kleinen oder unscharfen Gesichtern bzw. Gesichtern in der Profilansicht. | Weitere Verbesserung der Genauigkeit, auch bei kleineren Gesichtern (64 × 64 Pixel) und bei gedrehten Gesichtern.
-|Gibt Hauptgesichtsattribute (Kopfhaltung, Alter, Stimmung usw.) zurück, wenn sie im Erkennungsaufruf angegeben werden. |  Gibt keine Gesichtsattribute zurück.     | Gibt die Attribute „faceMask“ und „noseAndMouthCovered“ zurück, wenn sie im Erkennungsaufruf angegeben werden.
+|Gibt Hauptgesichtsattribute (Kopfhaltung, Alter, Stimmung usw.) zurück, wenn sie im Erkennungsaufruf angegeben werden. |  Gibt keine Gesichtsattribute zurück.     | Gibt das Attribut „mask“ zurück, wenn es im Erkennungsaufruf angegeben ist.
 |Gibt Orientierungspunkte im Gesicht zurück, wenn sie im Erkennungsaufruf angegeben werden.   | Gibt keine Orientierungspunkte im Gesicht zurück.  | Gibt keine Orientierungspunkte im Gesicht zurück.
 
 Am besten lassen sich die Ergebnisse der Erkennungsmodelle anhand eines Beispieldatasets vergleichen. Es wird empfohlen die API [Face – Detect] unter Verwendung der beiden Erkennungsmodelle für verschiedene Bilder aufzurufen, insbesondere für Bilder mit zahlreichen oder schwer erkennbaren Gesichtern. Achten Sie auf die Anzahl der Gesichter, die jedes Modell zurückgibt.

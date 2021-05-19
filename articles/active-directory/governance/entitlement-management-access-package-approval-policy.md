@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48b5260e883d85899953240f6ee4f83127681c9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c857de5c9182d49e2527c9cbf416d7012c46370
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97591298"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713952"
 ---
 # <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern Sie die Einstellungen zu Genehmigungs- und Anfordererinformationen (Vorschau) für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung.
 
@@ -52,7 +52,7 @@ Eine Demonstration, wie einer Anforderungsrichtlinie mehrstufige Genehmigung hin
 
 Führen Sie diese Schritte aus, um die Genehmigungseinstellungen für Anforderungen des Zugriffspakets festzulegen:
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

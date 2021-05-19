@@ -3,12 +3,12 @@ title: Weiterleiten von Warnungsinformation
 description: Sie können Weiterleitungsregeln verwenden, um Warnungsinformation an Partnersysteme zu senden.
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.openlocfilehash: bc405f7d4837bf81d9cfcd859d562b7152cfc54b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fec86a6212cc0f4cb3df67280a0e6d39ed329ac
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778796"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732222"
 ---
 # <a name="forward-alert-information"></a>Weiterleiten von Warnungsinformation
 
@@ -140,6 +140,20 @@ Legen Sie die folgenden Parameter fest:
 | `Message` | Sensorname: Der Name der Azure Defender für IoT-Appliance. <br />LEEF:1.0 <br />Azure Defender für IoT <br />Sensor  <br />Sensorversion <br />Azure Defender für IoT-Warnung <br />Titel: Der Titel der Warnung. <br />msg: Der Meldungstext der Warnung. <br />Protokoll: Protokoll der Warnung.<br />Schweregrad:  **Warning**, **Minor**, **Major** oder **Critical**. <br />Typ: Der Typ der Warnung: **Protocol Violation**, **Policy Violation**, **Malware**, **Anomaly** oder **Operational**. <br />start: Der Zeitpunkt der Warnung. Beachten Sie, dass der Zeitpunkt von der Uhrzeit des Syslog-Servercomputers abweichen kann. (Dies hängt von der Zeitzonenkonfiguration ab.) <br />src_ip: IP-Adresse des Quellgeräts.<br />dst_ip: IP-Adresse des Zielgeräts. <br />cat: Die der Warnung zugeordnete Warnungsgruppe. |
 
 Nachdem Sie die Informationen eingegeben haben, wählen Sie **Senden** aus.
+
+#### <a name="webhook-server-action"></a>Webhookserveraktion
+
+Senden Sie Warnungsinformationen an einen Webhookserver. Mit Webhookservern können Sie Integrationen einrichten, die Warnungsereignisse mit Defender für IoT abonnieren. Wenn ein Warnungsereignis ausgelöst wird, sendet die Verwaltungskonsole entsprechende HTTP POST-Nutzdaten an die konfigurierte URL des Webhooks. Webhooks können verwendet werden, um ein externes SIEM-System, SOAR-Systeme, Incident Management-Systeme usw. zu aktualisieren.   
+
+**So definieren Sie eine Webhookaktion**
+
+1. Wählen Sie die Webhookaktion aus.
+
+:::image type="content" source="media/how-to-work-with-alerts-sensor/webhook.png" alt-text="Definieren Sie eine Webhookweiterleitungsregel.":::
+
+1. Geben Sie die Serveradresse in das Feld **URL** ein.
+1. Passen Sie in den Feldern **Schlüssel** und **Wert** den HTTP-Header mit einer Schlüssel- und Wertdefinition an. Dieses Feld darf nur Buchstaben, Ziffern, Bindestriche und Unterstriche enthalten. Werte dürfen nur ein führendes und/oder ein nachstehendes Leerzeichen enthalten.
+1. Wählen Sie **Speichern** aus.
 
 #### <a name="netwitness-action"></a>NetWitness-Aktion
 

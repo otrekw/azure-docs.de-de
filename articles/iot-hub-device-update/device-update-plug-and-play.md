@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d1817db4615d321db3d5f098d449410ee5b0606c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 819e3574a2341d2a9f946e7fa7e008c798bd099f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141847"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756429"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>Device Update for IoT Hub und IoT Plug & Play
 
@@ -36,7 +36,7 @@ Agent-Metadaten enthalten Felder, die vom Gerät oder Device Update-Agent zum Se
 |resultCode|integer|Gerät an Cloud|Ein Code, der Informationen zum Ergebnis der letzten Aktualisierungsaktion enthält. Kann bei Erfolg oder Fehler mit Daten aufgefüllt werden und sollte der [HTTP-Statuscodespezifikation](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) genügen.|500|
 |extendedResultCode|integer|Gerät an Cloud|Ein Code, der zusätzliche Informationen zum Ergebnis enthält. Kann bei Erfolg oder Fehler mit Daten aufgefüllt werden.|0x80004005|
 |state|integer|Gerät an Cloud|Dabei handelt es sich um einen Integerwert, der den aktuellen Status des Device Update-Agents angibt. Weitere Informationen siehe unten. |Idle|
-|installedUpdateId|Zeichenfolge|Gerät an Cloud|Eine ID des Updates, das zurzeit (über Device Update) installiert wird. Dieser Wert ist NULL für ein Gerät, das noch nie ein Update über Device Update erhalten hat.|Null|
+|installedUpdateId|Zeichenfolge|Gerät an Cloud|Eine ID des Updates, das zurzeit (über Device Update) installiert wird. Bei diesem Wert handelt es sich um eine Zeichenfolge, die den JSON-Code der Update-ID oder NULL für ein Gerät erfasst, das noch nie ein Update über Device Update durchgeführt hat.|"{\"provider\":\"contoso\",\"name\":\"image-update\",\"version\":\"1.0.0\"}"|
 |`deviceProperties`|Karte|Gerät an Cloud|Der Satz von Eigenschaften, die den Hersteller und das Modell enthalten.|Weitere Informationen siehe unten.
 
 #### <a name="state"></a>State

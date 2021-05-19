@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 05/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 094b2ee101b10da4ec6eda9d6537656e5de28e54
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 5c00090ec6b63f41a92beb485433d4667fc85860
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891036"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766014"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection und B2B-Benutzer
 
 Identity Protection erkennt kompromittierte Anmeldeinformationen für Azure AD-Benutzer. Wenn Ihre Anmeldeinformationen als kompromittiert erkannt werden, bedeutet dies, dass eine andere Person möglicherweise Ihr Kennwort kennt und es unrechtmäßig verwenden kann. Um weitere Risiken für Ihr Konto zu vermeiden, ist es wichtig, Ihr Kennwort sicher zurückzusetzen, damit der bösartige Akteur Ihr kompromittiertes Kennwort nicht mehr verwenden kann. Identity Protection kennzeichnet möglicherweise kompromittierte Konten als „gefährdet“.
 
-Sie können Ihre Organisationsanmeldeinformationen verwenden, um sich bei einer anderen Organisation als Gast anzumelden. Dieser Prozess wird als B2B-Authentifizierung bezeichnet. Organisationen können Richtlinien konfigurieren, um die Anmeldung von Benutzern zu blockieren, wenn deren Anmeldeinformationen gefährdet sind. Wenn Ihr Konto gefährdet ist und Sie für die Anmeldung bei einer anderen Organisation als Gast gesperrt sind, können Sie Ihr Konto mithilfe der folgenden Schritte möglicherweise selbst bereinigen. Wenn Ihre Organisation die Self-Service-Kennwortzurücksetzung nicht aktiviert hat, muss Ihr Administrator Ihr Konto manuell bereinigen.
+Sie können die Anmeldeinformationen Ihrer Organisation verwenden, um sich als Gast bei einer anderen Organisation anzumelden. Dieser Prozess wird als [Business-to-Business oder B2B Collaboration](../external-identities/what-is-b2b.md) bezeichnet. Organisationen können Richtlinien konfigurieren, um die Anmeldung von Benutzern zu blockieren, wenn deren Anmeldeinformationen als [gefährdet](concept-identity-protection-risks.md) gelten. Wenn Ihr Konto gefährdet ist und Sie für die Anmeldung bei einer anderen Organisation als Gast gesperrt sind, können Sie Ihr Konto mithilfe der folgenden Schritte möglicherweise selbst bereinigen. Wenn Ihre Organisation die Self-Service-Kennwortzurücksetzung nicht aktiviert hat, muss Ihr Administrator Ihr Konto manuell bereinigen.
 
 ## <a name="how-to-unblock-your-account"></a>Entsperren Ihres Kontos 
 

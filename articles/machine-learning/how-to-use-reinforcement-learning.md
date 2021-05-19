@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 84338f81f5f75665c0aa874a0da16786887b4422
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 84fbea3d7d38e16a2069c40a459d5f86e7412a09
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897431"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739041"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Lernen durch Bestärkung (Vorschau) mit Azure Machine Learning
 
@@ -42,7 +42,7 @@ Führen Sie diesen Code in einer dieser Umgebungen aus. Wir empfehlen Ihnen, die
 
  - Azure Machine Learning-Computeinstanz
 
-     - Erfahren Sie, wie Sie Beispielnotebooks klonen können: [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](tutorial-1st-experiment-sdk-setup.md).
+     - Erfahren Sie, wie Sie Beispielnotebooks klonen können: [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](tutorial-train-models-with-aml.md).
          - Klonen Sie anstelle von **tutorials** den Ordner **how-to-use-azureml**.
      - Führen Sie das Setup-Notebook für virtuelle Netzwerke unter `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb` aus, um die Netzwerkports zu öffnen, die für das verteilte Lernen durch Bestärkung verwendet werden.
      - Führen Sie das Beispielnotebook `/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb` aus.

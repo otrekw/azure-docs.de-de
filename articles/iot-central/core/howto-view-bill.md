@@ -1,6 +1,6 @@
 ---
 title: Verwalten Ihrer Rechnung und Umstellen vom kostenlosen Testtarif in der Azure IoT Central-Anwendung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie als Administrator Ihre Rechnung verwalten und in Ihrer Azure IoT Central-Anwendung vom kostenlosen Tarif zu einem Standardtarif wechseln.
+description: Erfahren Sie, wie Sie Ihre Rechnung verwalten und in Ihrer Azure IoT Central-Anwendung vom kostenlosen Tarif zu einem Standardtarif wechseln.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/23/2019
@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 50d0119b08d2c76a5f6111e485408ebcdace83c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8c268965f94f5d362fb4874566e10f39ee80b18
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96549020"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747231"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>Verwalten Ihrer Rechnung in einer IoT Central-Anwendung
 
-In diesem Artikel wird beschrieben, wie Sie als Administrator Ihre Azure IoT Central-Abrechnung verwalten können. Sie können Ihre Anwendung vom kostenlosen Tarif auf einen Standardtarif umstellen und außerdem für Ihren Tarif ein Upgrade oder Downgrade durchführen.
+In diesem Artikel wird beschrieben, wie Sie Ihre Azure IoT Central-Abrechnung verwalten können. Sie können Ihre Anwendung vom kostenlosen Tarif auf einen Standardtarif umstellen und außerdem für Ihren Tarif ein Upgrade oder Downgrade durchführen.
 
 Damit Sie auf den Abschnitt **Verwaltung** zugreifen können, muss Ihnen die Rolle *Administrator* zugewiesen sein, oder Sie müssen eine *benutzerdefinierte Benutzerrolle* haben, die Ihnen das Anzeigen der Abrechnung erlaubt. Wenn Sie eine Azure IoT Central-Anwendung erstellen, wird Ihnen die Rolle **Administrator** automatisch zugewiesen.
 

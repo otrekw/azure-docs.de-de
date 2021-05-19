@@ -7,12 +7,12 @@ ms.date: 04/01/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 49205025e26f7c0eb609638e70a58c9c0c14748e
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: d9827eab8c9d6187c78a979591f2c7ee0cad99e7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385410"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741885"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Problembehandlung bei der Pipelineorchestrierung und Pipelinetriggern in Azure Data Factory
 
@@ -26,7 +26,7 @@ Zur Instanziierung von Pipelineausführungen werden in der Regel Argumente an in
 
 ### <a name="an-azure-functions-app-pipeline-throws-an-error-with-private-endpoint-connectivity"></a>Eine Pipeline für eine Azure Functions-App löst einen Fehler bei privaten Endpunktverbindungen aus
  
-Sie führen Data Factory und eine Azure-Funktions-App auf einem privaten Endpunkt aus. Sie versuchen, eine Pipeline auszuführen, die mit der Funktions-App interagiert. Sie haben drei verschiedene Methoden ausprobiert, aber eine gibt den Fehler „Ungültige Anforderung“ zurück, und die anderen beiden Methoden geben „Fehler 103: Unzulässig“ zurück.
+Sie führen Data Factory und eine Funktions-App auf einem privaten Endpunkt in Azure aus. Sie versuchen, eine Pipeline auszuführen, die mit der Funktions-App interagiert. Sie haben drei verschiedene Methoden ausprobiert, aber eine gibt den Fehler „Ungültige Anforderung“ zurück, und die anderen beiden Methoden geben „Fehler 103: Unzulässig“ zurück.
 
 **Ursache**
 

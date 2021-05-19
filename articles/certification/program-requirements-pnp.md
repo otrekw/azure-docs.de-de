@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 06c09527556c92cc3a1bd4bb2784084aeb373d97
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: eaf3ef6016388404761e913f878972df4a333061
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131745"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109712800"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>Anforderungen für IoT Plug & Play-Zertifizierungen
 
@@ -25,9 +25,9 @@ IoT Plug & Play (Vorschauversion) ermöglicht es Lösungsentwicklern, intellig
 Dies sind die Versprechen der IoT Plug & Play-Zertifizierung:
 
 1.  Definierte Gerätemodelle und Schnittstellen sind mit der [Digital Twin Definition Language](https://github.com/Azure/opendigitaltwins-dtdl) kompatibel  
-2.  Sichere Bereitstellung und einfache Übertragung des ID-Bereichsbesitzes in Device Provisioning Services
-3.  Einfache Integration mit Azure IoT-basierten Lösungen mithilfe der [Digital Twin-APIs](../iot-pnp/concepts-digital-twin.md): Azure IoT Hub und Azure IoT Central
-4.  Validierte Produktwahrheit auf zertifizierten Geräten
+1.  Einfache Integration mit Azure IoT-basierten Lösungen mithilfe der [Digital Twin-APIs](../iot-pnp/concepts-digital-twin.md): Azure IoT Hub und Azure IoT Central
+1.  Validierte Produktwahrheit auf zertifizierten Geräten
+1.  Erfüllt alle Anforderungen von [Azure Certified Device](./program-requirements-azure-certified-device.md)
 
 ## <a name="requirements"></a>Anforderungen
 
@@ -42,16 +42,6 @@ Dies sind die Versprechen der IoT Plug & Play-Zertifizierung:
 | **Überprüfung**          | Das Gerät muss alle Telemetrieschemas an IoT Hub senden. Microsoft stellt den [Portalworkflow](https://certify.azure.com) zum Ausführen der Tests bereit. Gerät an Cloud (erforderlich): **1.** Überprüft, ob das Gerät Nachrichten an den vom AICS verwalteten IoT Hub senden kann **2.** Der Benutzer muss die Anzahl und die Häufigkeit der Nachrichten angeben. **3.** AICS überprüft, ob die Telemetrie von der Hub-Instanz empfangen wird. |
 | **Ressourcen**           | [Zertifizierungsschritte](./overview.md) (enthält alle zusätzlichen Ressourcen) |
 
-**[Erforderlich] DPS: Der Zweck des Tests ist die Überprüfung mit einer der drei Nachweismethoden, ob das Gerät den IoT Hub Device Provisioning Service implementiert und unterstützt**
-
-| **Name**                | IoTPnP.DPS                                               |
-| ----------------------- | ------------------------------------------------------------ |
-| **Zielverfügbarkeit** | Jetzt verfügbar                                                |
-| **Gilt für**          | Jedes Gerät                                                   |
-| **Betriebssystem**                  | Agnostisch                                                     |
-| **Überprüfungstyp**     | Automatisiert                                                    |
-| **Überprüfung**          | Das Gerät muss eine einfache Besitzübertragung des DPS-ID-Bereichs implementieren, ohne dass der eingebettete Code neu kompiliert werden muss. Microsoft stellt den [Portalworkflow](https://certify.azure.com) für die Ausführung der Tests zur Verfügung, um zu prüfen, ob das Gerät DPS unterstützt **1.** Der Benutzer muss eine der Nachweismethoden (X.509, TPM und SAS-Schlüssel) auswählen **2.** Je nach gewählter Nachweismethode muss der Benutzer entsprechende Maßnahmen ergreifen, wie etwa **a)** Hochladen eines X.509-Zertifikats in den AICS-verwalteten DPS-Bereich **b)** Implementieren des SAS-Schlüssels oder Endorsement Keys auf dem Gerät |
-| **Ressourcen**           | **a)** [Device Provisioning Service – Übersicht](../iot-dps/about-iot-dps.md), **b)** [Beispielkonfigurationsdatei für die DPS ID-Bereichsübertragung](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample) |
 
 **[Erforderlich] DTDL v2: Der Zweck des Test ist, sicherzustellen, dass die definierten Gerätemodelle und Schnittstellen mit der Digital Twins Definition Language v2 kompatibel sind.**                                                              
 

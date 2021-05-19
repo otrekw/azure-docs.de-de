@@ -7,18 +7,18 @@ ms.date: 01/08/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: c909fd1438488e3625f3674dd26f959cf6fad79f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e93da2bec3753ba6efda2b4eb16d6ef78b42234b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98127973"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747213"
 ---
 # <a name="use-location-data-in-an-azure-iot-central-solution"></a>Verwenden von Standortdaten in einer Azure IoT Central-Lösung
 
 In diesem Artikel wird gezeigt, wie Sie Standortdaten in einer IoT Central-Anwendung verwenden. Ein mit IoT Central verbundenes Gerät kann Standortdaten als Telemetriedatenstrom senden oder sie mithilfe einer Geräteeigenschaft melden.
 
-Ein Lösungsentwickler kann die Standortdaten für Folgendes verwenden:
+Sie können die Standortdaten für Folgendes verwenden:
 
 * Zeichnen des gemeldeten Standorts auf einer Karte.
 * Zeichnen des Telemetrie-Standortverlaufs in einer Karte.

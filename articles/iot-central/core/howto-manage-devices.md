@@ -1,6 +1,6 @@
 ---
 title: Verwalten der Geräte in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie als Operator Gerätegruppen in der Azure IoT Central-Anwendung verwalten. Erfahren Sie, wie Sie einzelne Geräte verwalten und Massenimporte und -exporte der Geräte in Ihrer Anwendung ausführen.
+description: Erfahren Sie, wie Sie Gerätegruppen in der Azure IoT Central-Anwendung verwalten. Erfahren Sie, wie Sie einzelne Geräte verwalten und Massenimporte und -exporte der Geräte in Ihrer Anwendung ausführen.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/08/2020
@@ -9,16 +9,16 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2ea75adfb7c2d990cfa543270f245113e15e4ee2
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: e1b4ca90cf7b4d8c5bdc23ea311a5a1feaada89c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389841"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741093"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
-In diesem Artikel wird beschrieben, wie Sie als Operator Geräte in Ihrer Azure IoT Central-Anwendung verwalten. Als Operator können Sie folgende Aktionen ausführen:
+In diesem Artikel wird beschrieben, wie Sie Geräte in Ihrer Azure IoT Central-Anwendung verwalten. Sie haben folgende Möglichkeiten:
 
 - Mit der **Geräte**-Seite Geräte anzeigen, hinzufügen und löschen, die mit Ihrer Azure IoT Central-Anwendung verbunden sind.
 - Führen Sie Massenimporte und -exporte von Geräten aus.

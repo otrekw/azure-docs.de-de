@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 07bbd50dbc415b86aa0c511d46ead9f0612df107
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c9c0b2807962aaddc2f3b6cef6a261084b21714c
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642493"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715770"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -38,7 +38,7 @@ Ein IoT Hub verfügt über einen standardmäßigen integrierten Endpunkt (**mess
 
 Jede Nachricht wird an alle Endpunkte weitergeleitet, die mit ihren Routingabfragen übereinstimmen. Anders ausgedrückt: Eine Nachricht kann an mehrere Endpunkte weitergeleitet werden.
 
-Wenn Ihr benutzerdefinierter Endpunkt über Firewallkonfigurationen verfügt, sollten Sie erwägen, die Ausnahme für vertrauenswürdige Microsoft-Erstanbieter zu verwenden, um Ihrem IoT Hub Zugriff auf diesen speziellen Endpunkt zu gewähren: [Azure Storage](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing), [Azure Event Hubs](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) und [Azure Service Bus](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing). Dies ist in ausgewählten Regionen für IoT Hubs mit [verwalteten Dienstidentitäten](./virtual-network-support.md) verfügbar.
+Wenn Ihr benutzerdefinierter Endpunkt über Firewallkonfigurationen verfügt, sollten Sie die [Ausnahme vertrauenswürdiger Microsoft-Erstanbieter](./virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources) verwenden.
 
 IoT Hub unterstützt derzeit folgende Endpunkte:
 
@@ -59,7 +59,7 @@ IoT Hub unterstützt das Schreiben von Daten in Azure Storage in den Formaten [A
 
 Das Codierungsformat kann nur festgelegt werden, wenn der Endpunkt für Blobspeicher konfiguriert wurde. Bei einem vorhandenen Endpunkt kann es nicht bearbeitet werden. Wenn Sie Codierungsformate bei einem vorhandenen Endpunkt wechseln möchten, müssen Sie den benutzerdefinierten Endpunkt löschen und mit dem gewünschten Format neu erstellen. Eine hilfreiche Strategie könnte das Erstellen eines neuen benutzerdefinierten Endpunkts mit Ihrem gewünschten Codierungsformat und das Hinzufügen einer parallelen Route zu diesem Endpunkt sein. Auf diese Weise können Sie Ihre Daten überprüfen, bevor Sie den vorhandenen Endpunkt löschen.
 
-Sie können das Codierungsformat über die IoT Hub-REST-API „Create“ oder „Update“ auswählen – insbesondere [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), das Azure-Portal, die [Azure CLI](/cli/azure/iot/hub/routing-endpoint) oder die [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint). Die folgende Abbildung zeigt, wie Sie das Codierungsformat im Azure-Portal auswählen.
+Sie können das Codierungsformat über die IoT Hub-REST-API „Create“ oder „Update“ (insbesondere [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)), das [Azure-Portal](https://portal.azure.com), die [Azure CLI](/cli/azure/iot/hub/routing-endpoint) oder [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint) auswählen. Die folgende Abbildung zeigt, wie Sie das Codierungsformat im Azure-Portal auswählen.
 
 ![Endpunktcodierung für Blobspeicher](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -105,7 +105,7 @@ Sie können Daten nicht nur an den mit Event Hubs kompatiblen integrierten Endpu
 
 Sie können mit diesem [Tutorial](tutorial-routing.md) eine Route konfigurieren.
 
-Verwenden Sie die folgenden Tutorials, um zu erfahren, wie Sie Nachrichten aus einem Endpunkt auslesen.
+Verwenden Sie die folgenden Tutorials, um zu erfahren, wie Sie Nachrichten aus einem Endpunkt lesen:
 
 * Lesen vom [integrierten Endpunkt](quickstart-send-telemetry-node.md)
 

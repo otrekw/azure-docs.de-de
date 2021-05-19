@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/04/2021
+ms.date: 05/03/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63d4c39c2c48312ca68adc501710ee23fb3bbf73
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466251"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754485"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
@@ -81,6 +81,8 @@ Bei einem Upgrade von DirSync werden die Anmeldeinformationen des AD DS-Unterne
 
 ### <a name="azure-ad-global-admin-credentials"></a>Anmeldeinformationen eines globalen Azure AD-Administrators
 Diese Anmeldeinformationen werden während der Installation verwendet, nach Abschluss der Installation jedoch nicht mehr. Sie dienen zum Erstellen des Azure AD Connector-Kontos, das zum Synchronisieren der Änderungen mit Azure AD verwendet wird. Das Konto aktiviert auch die Synchronisierung als Feature in Azure AD.
+
+Weitere Informationen zu globalen Administratorkonten finden Sie unter [Globaler Administrator](../../active-directory/roles/permissions-reference.md#global-administrator).
 
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS Connector-Konto zum Erstellen von Berechtigungen für Expresseinstellungen
 Das AD DS Connector-Konto wird zum Erstellen von Lese- und Schreibvorgängen in Windows Server AD erstellt und besitzt die folgenden Berechtigungen, wenn es mit den Expresseinstellungen erstellt wird:

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 68d1e9744d937cf80327c3f41cc69f4af97d3400
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a8abb31b2442a8823437bb155b5b9970db1d181
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98600187"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742263"
 ---
 # <a name="face-detection-and-attributes"></a>Gesichtserkennung und -attribute
 
@@ -39,6 +39,7 @@ Die Koordinaten der Punkte werden in Pixel zurückgegeben.
 
 Attribute sind ein Satz von Merkmalen, die optional durch die API [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) erkannt werden können. Die folgenden Attribute können erkannt werden:
 
+* **Accessoires** Gibt an, ob das Gesicht Accessoires aufweist. Dieses Attribut gibt die möglichen Accessoires zurück, einschließlich Kopfbedeckung, Brille und Maske, mit einem Vertrauenswert zwischen 0 (null) und 1 für jedes Accessoire.
 * **Alter:** Das geschätzte Alter eines bestimmten Gesichts in Jahren.
 * **Weichzeichnung:** Die Unschärfe des Gesichts im Bild. Dieses Attribut gibt einen Wert zwischen 0 und 1 und eine informelle Bewertung von gering, mittel oder hoch zurück.
 * **Emotionen:** Eine Liste von Emotionen und deren Erkennungssicherheit für das jeweilige Gesicht. Die Zuverlässigkeitsbewertungen werden normalisiert, und die Bewertungen über alle Emotionen hinweg ergeben eine Summe von eins. Die zurückgegebenen Emotionen sind Glück, Traurigkeit, Neutralität, Wut, Verachtung, Ekel, Überraschung und Angst.
@@ -51,6 +52,7 @@ Attribute sind ein Satz von Merkmalen, die optional durch die API [Face – Dete
 
     ![Kopf mit Bezeichnungen für Roll-, Nick- und Gierachse](../Images/headpose.1.jpg)
 * **Makeup:** Gibt an, ob das Gesicht Makeup trägt. Dieses Attribut gibt einen booleschen Wert für eyeMakeup und lipMakeup zurück.
+* **Maske:**  Gibt an, ob das Gesicht eine Maske trägt. Dieses Attribut gibt einen möglichen Maskentyp und einen booleschen Wert zurück, um anzugeben, ob Nase und Mund bedeckt sind.
 * **Rauschen:** Visuelle Störungen, die im Gesicht erkannt wurden. Dieses Attribut gibt einen Wert zwischen 0 und 1 und eine informelle Bewertung von gering, mittel oder hoch zurück.
 * **Okklusion:** Gibt an, ob Objekte Teile des Gesichts verdecken. Dieses Attribut gibt einen booleschen Wert für die eyeOccluded, foreheadOccluded und mouthOccluded zurück.
 * **Lächeln:** Gibt die Stärke des Lächelns des jeweiligen Gesichts an. Dieser Wert liegt zwischen 0 (kein Lächeln) und 1 (deutliches Lächeln).

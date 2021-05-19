@@ -1,18 +1,20 @@
 ---
-title: Lebenszyklusverwaltung von Azure VMware Solution-VMs
+title: Überwachen und Verwalten von Azure VMware Solution-VMs
 description: Erfahren Sie, wie Sie alle Aspekte des Lebenszyklus Ihrer Azure VMware Solution-VMs mit nativen Tools in Microsoft Azure verwalten.
-ms.topic: conceptual
-ms.date: 02/08/2021
-ms.openlocfilehash: 2cb9964b68769b1e784cebf62b4d336b355c68fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.date: 05/04/2021
+ms.openlocfilehash: 3cffba1147a52a48d5005aa22e3a08a33956d66e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572207"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769253"
 ---
-# <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Lebenszyklusverwaltung von Azure VMware Solution-VMs
+# <a name="monitor-and-manage-azure-vmware-solution-vms"></a>Überwachen und Verwalten von Azure VMware Solution-VMs
 
-Sie können die nativen Tools in Microsoft Azure verwenden, um Ihre virtuellen Computer (VMs) in der Azure-Umgebung zu überwachen und zu verwalten. Sie können damit jedoch auch Ihre virtuellen Computer in Azure VMware Solution und Ihre lokalen VMs überwachen und verwalten. In dieser Übersicht betrachten wir die integrierte Überwachungsarchitektur in Azure und die Möglichkeiten, die Ihnen mit den enthaltenen nativen Tools zum Verwalten Ihrer Azure VMware Solution-VMs über den gesamten Lebenszyklus zur Verfügung stehen.
+
+
+Sie können die nativen Tools in Microsoft Azure verwenden, um Ihre virtuellen Computer (VMs) in der Azure-Umgebung zu überwachen und zu verwalten. Sie können damit jedoch auch Ihre virtuellen Computer in Azure VMware Solution und Ihre lokalen VMs überwachen und verwalten. In diesem Artikel betrachten wir die integrierte Überwachungsarchitektur in Azure und die Möglichkeiten, die Ihnen mit den enthaltenen nativen Tools zum Verwalten Ihrer Azure VMware Solution-VMs über den gesamten Lebenszyklus zur Verfügung stehen.
 
 ## <a name="benefits"></a>Vorteile
 
@@ -36,7 +38,7 @@ Sie können die nativen Tools in Microsoft Azure verwenden, um Ihre virtuellen C
 
 ## <a name="integrated-azure-monitoring-architecture"></a>Integrierte Azure-Überwachungsarchitektur
 
-Das folgende Diagramm zeigt die integrierte Überwachungsarchitektur für Azure VMware Solution-VMs.
+Das Diagramm zeigt die integrierte Überwachungsarchitektur für Azure VMware Solution-VMs.
 
 ![Integrierte Azure-Überwachungsarchitektur](media/lifecycle-management-azure-vmware-solutions-virtual-machines/integrated-azure-monitoring-architecture.png)
 
@@ -51,7 +53,7 @@ Wenn Sie neu in Azure sind oder mit einem der oben genannten Dienste nicht vertr
 - [Was sind Server mit Azure Arc-Aktivierung?](../azure-arc/servers/overview.md) und [Was ist Kubernetes mit Azure Arc-Aktivierung?](../azure-arc/kubernetes/overview.md)
 - [Übersicht über die Updateverwaltung](../automation/update-management/overview.md)
 
-## <a name="integrating-and-deploying-azure-native-services"></a>Integrieren und Bereitstellen von nativen Azure-Diensten
+## <a name="integrate-and-deploy-azure-native-services"></a>Integrieren und Bereitstellen nativer Azure-Dienste
 
 ### <a name="enable-azure-update-management"></a>Aktivieren der Azure-Updateverwaltung
 

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 500833d1bb4fc492942c08239bd488c2d2c16d30
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: d0fdc9e322d2aec76b04c96a75e727b84f95cb10
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484318"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770729"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten IoT Edge-Geräts mit einem Azure IoT Edge-Gateway
 
@@ -87,6 +87,11 @@ Der `create`-Befehl beinhaltet Parameter für das Hinzufügen von untergeordnete
 Weitere Befehle für Geräteidentitäten, z. B. `add-children`, `list-children` und `remove-children` oder `get-parent` und `set-parent`, ermöglichen es Ihnen, die Beziehungen zwischen übergeordneten und untergeordneten Geräten für vorhandene Geräte zu verwalten.
 
 ---
+
+>[!NOTE]
+>Wenn Sie Beziehungen zwischen über- und untergeordneten Elementen programmgesteuert einrichten möchten, können Sie das [IoT Hub Service SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) für C#, Java oder Node.js verwenden.
+>
+>Dies ist ein [Beispiel für die Zuordnung von untergeordneten Geräten](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/e2e/test/iothub/service/RegistryManagerE2ETests.cs) mit dem C#-SDK. Die Aufgabe `RegistryManager_AddAndRemoveDeviceWithScope()` zeigt, wie Sie programmgesteuert eine Hierarchie mit drei Ebenen erstellen. Ein IoT Edge-Gerät befindet sich als übergeordnetes Element auf der ersten Ebene. Ein weiteres IoT Edge-Gerät befindet sich auf der zweiten Ebene und dient sowohl als untergeordnetes als auch als übergeordnetes Element. Schließlich befindet sich ein IoT-Gerät auf der dritten Ebene als untergeordnetes Gerät der untersten Ebene.
 
 ## <a name="prepare-certificates"></a>Vorbereiten von Zertifikaten
 
