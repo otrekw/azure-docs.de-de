@@ -2,17 +2,17 @@
 title: Erstellen und Bereitstellen von Vorlagenspezifikationen
 description: Erfahren Sie, wie Sie eine Vorlagenspezifikation aus einer ARM-Vorlage erstellen. Stellen Sie dann die Vorlagenspezifikation für eine Ressourcengruppe in Ihrem Abonnement bereit.
 author: tfitzmac
-ms.date: 12/14/2020
+ms.date: 05/04/2021
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 28987486726f5a88d20efe9fe8a766e536062c2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0775d58bebaf487d5a536818aec788fabdace909
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889959"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754179"
 ---
-# <a name="quickstart-create-and-deploy-template-spec-preview"></a>Schnellstart: Erstellen und Bereitstellen von Vorlagenspezifikationen (Vorschau)
+# <a name="quickstart-create-and-deploy-template-spec"></a>Schnellstart: Erstellen und Bereitstellen von Vorlagenspezifikationen
 
 Dieser Schnellstart zeigt Ihnen, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) in eine [Vorlagenspezifikation](template-specs.md) packen. Anschließend stellen Sie diese Vorlagenspezifikation bereit. Ihre Vorlagenspezifikation enthält eine ARM-Vorlage, mit der ein Speicherkonto bereitgestellt wird.
 
@@ -21,13 +21,13 @@ Dieser Schnellstart zeigt Ihnen, wie Sie eine Azure Resource Manager-Vorlage (AR
 Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Vorlagenspezifikationen befinden sich derzeit in der Vorschauphase. Zur Verwendung mit Azure PowerShell müssen Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) installieren. Zur Verwendung mit der Azure CLI verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli).
+> Um Vorlagenspezifikationen mit Azure PowerShell zu verwenden, müssen Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) installieren. Zur Verwendung mit der Azure CLI verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli).
 
 ## <a name="create-template"></a>Erstellen der Vorlage
 
 Sie erstellen eine Vorlagenspezifikation aus einer lokalen Vorlage. Kopieren Sie die folgende Vorlage, und speichern Sie sie lokal in einer Datei namens **azuredeploy.json**. In dieser Schnellstartanleitung wird davon ausgegangen, dass die Speicherung im Pfad **c:\Templates\azuredeploy.json** erfolgt ist, aber Sie können einen beliebigen Pfad verwenden.
 
-:::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json":::
 
 ## <a name="create-template-spec"></a>Erstellen von Vorlagenspezifikationen
 
@@ -126,7 +126,7 @@ Die Vorlagenspezifikation ist ein Ressourcentyp namens `Microsoft.Resources/temp
       "resources": [
         {
           "type": "Microsoft.Resources/templateSpecs",
-          "apiVersion": "2019-06-01-preview",
+          "apiVersion": "2021-05-01",
           "name": "storageSpec",
           "location": "westus2",
           "properties": {
@@ -136,12 +136,12 @@ Die Vorlagenspezifikation ist ein Ressourcentyp namens `Microsoft.Resources/temp
           "resources": [
             {
               "type": "versions",
-              "apiVersion": "2019-06-01-preview",
+              "apiVersion": "2021-05-01",
               "name": "1.0",
               "location": "westus2",
               "dependsOn": [ "storageSpec" ],
               "properties": {
-                "template": {
+                "mainTemplate": {
                   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
                   "contentVersion": "1.0.0.0",
                   "parameters": {
@@ -490,7 +490,7 @@ Anstatt eine neue Vorlagenspezifikation für die überarbeitete Vorlage zu erste
       "resources": [
         {
           "type": "Microsoft.Resources/templateSpecs",
-          "apiVersion": "2019-06-01-preview",
+          "apiVersion": "2021-05-01",
           "name": "storageSpec",
           "location": "westus2",
           "properties": {
@@ -500,12 +500,12 @@ Anstatt eine neue Vorlagenspezifikation für die überarbeitete Vorlage zu erste
           "resources": [
             {
               "type": "versions",
-              "apiVersion": "2019-06-01-preview",
+              "apiVersion": "2021-05-01",
               "name": "2.0",
               "location": "westus2",
               "dependsOn": [ "storageSpec" ],
               "properties": {
-                "template": {
+                "mainTemplate": {
                   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
                   "contentVersion": "1.0.0.0",
                   "parameters": {

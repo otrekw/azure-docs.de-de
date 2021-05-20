@@ -3,12 +3,12 @@ title: Beispiele erweiterter Abfragen
 description: Verwenden Sie Azure Resource Graph, um einige erweiterte Abfragen auszuführen, z. B. mit Verwendung von Spalten, zum Auflisten sämtlicher verwendeter Tags und zum Abgleichen von Ressourcen mit regulären Ausdrücken.
 ms.date: 03/23/2021
 ms.topic: sample
-ms.openlocfilehash: c6a140b0392affea252e05d63055232532305c75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef26a12b2b9d8b0d2bfe473ca91c12985185ade8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104949854"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751551"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Erweiterte Beispiele für Resource Graph-Abfragen
 
@@ -218,7 +218,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb"></a>Auflisten von Cosmos DB mit bestimmten Schreibstandorten
 
-Die folgende Abfrage schränkt die Cosmos DB-Ressourcen ein, verwendet `mv-expand`, um den Eigenschaftenbehälter für **properties.writeLocations** zu erweitern, anschließend bestimmte Felder zu projizieren und die Ergebnisse weiter auf **properties.writeLocations.locationName**-Werte einzuschränken, die „USA, Osten“ oder „USA, Westen“ entsprechen.
+Die folgende Abfrage schränkt die Azure Cosmos DB-Ressourcen ein und verwendet `mv-expand`, um den Eigenschaftenbehälter für **properties.writeLocations** zu erweitern. Anschließend werden bestimmte Felder projiziert und die Ergebnisse weiter auf **properties.writeLocations.locationName**-Werte für „USA, Osten“ oder „USA, Westen“ eingeschränkt.
 
 ```kusto
 Resources
@@ -330,15 +330,15 @@ Diese Abfrage verwendet zwei **leftouter** `join`-Befehle, um mit dem Resource 
 ```kusto
 Resources
 | where type =~ 'microsoft.compute/virtualmachines'
-| extend nics=array_length(properties.networkProfile.networkInterfaces) 
-| mv-expand nic=properties.networkProfile.networkInterfaces 
-| where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) 
-| project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) 
+| extend nics=array_length(properties.networkProfile.networkInterfaces)
+| mv-expand nic=properties.networkProfile.networkInterfaces
+| where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic)
+| project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id)
 | join kind=leftouter (
     Resources
     | where type =~ 'microsoft.network/networkinterfaces'
-    | extend ipConfigsCount=array_length(properties.ipConfigurations) 
-    | mv-expand ipconfig=properties.ipConfigurations 
+    | extend ipConfigsCount=array_length(properties.ipConfigurations)
+    | mv-expand ipconfig=properties.ipConfigurations
     | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true'
     | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id))
 on nicId
@@ -390,7 +390,7 @@ Resources
 | join kind=leftouter(
     Resources
     | where type == 'microsoft.compute/virtualmachines/extensions'
-    | extend 
+    | extend
         VMId = toupper(substring(id, 0, indexof(id, '/extensions'))),
         ExtensionName = name
 ) on $left.JoinID == $right.VMId
@@ -532,7 +532,6 @@ Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/sub
 
 Diese Abfrage verwendet die [erweiterten Eigenschaften](../concepts/query-language.md#extended-properties) auf virtuellen Computern, um sie nach Energiezuständen zusammenzufassen.
 
-
 ```kusto
 Resources
 | where type == 'microsoft.compute/virtualmachines'
@@ -563,7 +562,8 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 
 ## <a name="count-of-non-compliant-guest-configuration-assignments"></a><a name="count-gcnoncompliant"></a>Anzahl der nicht konformen Gastkonfigurationszuweisungen
 
-Zeigt die Anzahl der nicht kompatiblen Computer pro [Gastkonfigurationszuweisungs-Grund](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration). Die Ergebnisse werden aus Leistungsgründen auf die ersten 100 beschränkt.
+Zeigt die Anzahl der nicht kompatiblen Computer pro [Gastkonfigurationszuweisungs-Grund](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration).
+Die Ergebnisse werden aus Leistungsgründen auf die ersten 100 beschränkt.
 
 ```kusto
 GuestConfigurationResources

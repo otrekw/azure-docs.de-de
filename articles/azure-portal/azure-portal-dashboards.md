@@ -3,13 +3,13 @@ title: Erstellen eines Dashboards im Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Dashboards im Azure-Portal erstellt und angepasst werden.
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
-ms.date: 04/15/2021
-ms.openlocfilehash: 0666a9f8ca9df2fa44a7eaa4045c9b5e9a724ff5
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.date: 05/06/2021
+ms.openlocfilehash: 668aead7b448cd462fab80003e498e956a6484d2
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726078"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794893"
 ---
 # <a name="create-a-dashboard-in-the-azure-portal"></a>Erstellen eines Dashboards im Azure-Portal
 
@@ -42,7 +42,7 @@ In diesem Beispiel wird gezeigt, wie Sie ein neues privates Dashboard mit einem 
 
     :::image type="content" source="media/azure-portal-dashboards/dashboard-name.png" alt-text="Screenshot: Leeres Rasters mit dem Kachelkatalog":::
 
-1. Um das Dashboard ohne Änderungen zu speichern, wählen Sie in der Seitenkopfzeile **Anpassung abgeschlossen** aus. Fahren Sie alternativ mit dem nächsten Abschnitt fort, um Kacheln hinzuzufügen und Ihr Dashboard zu speichern.
+1. Um das Dashboard ohne Änderungen zu speichern, wählen Sie in der Seitenkopfzeile **Anpassung abgeschlossen** aus. Fahren Sie alternativ mit Schritt 2 des nächsten Abschnitts fort, um Kacheln hinzuzufügen und Ihr Dashboard zu speichern.
 
 In der Dashboardansicht wird nun das neue Dashboard angezeigt. Wählen Sie den Pfeil neben dem Namen des Dashboards aus, um die für Sie verfügbaren Dashboards anzuzeigen. Die Liste kann Dashboards enthalten, die von anderen Benutzern erstellt und freigegeben wurden.
 
@@ -68,21 +68,26 @@ Führen Sie die folgenden Schritte aus, um einem Dashboard Kacheln hinzuzufügen
 
     - Wenn Sie mit mehreren Organisationen arbeiten, fügen Sie dem Dashboard die Kachel **Organisationsidentität** hinzu, um die Organisation eindeutig anzuzeigen, zu der die Ressourcen gehören.
 
-1. Ändern Sie bei Bedarf die Größe der Kachel, indem Sie die untere rechte Ecke der Kachel ziehen und loslassen.
+1. Falls gewünscht, [ändern Sie die Größe oder die Anordnung](#resize-or-rearrange-tiles) ihrer Kacheln.
 
-1. Wählen Sie zum Speichern der Änderungen in der Seitenkopfzeile **Speichern** aus. Sie können auch eine Vorschau der Änderungen anzeigen, ohne sie zu speichern, indem Sie in der Seitenkopfzeile **Vorschau** auswählen. Auf dem Vorschaubildschirm können Sie **Speichern** auswählen, um die Änderungen beizubehalten, **Verwerfen**, um sie zu entfernen, oder **Bearbeiten**, um zu den Bearbeitungsoptionen zurückzukehren und weitere Änderungen vorzunehmen.
+1. Wählen Sie zum Speichern der Änderungen in der Seitenkopfzeile **Speichern** aus. Sie können auch eine Vorschau der Änderungen anzeigen, ohne sie zu speichern, indem Sie in der Seitenkopfzeile **Vorschau** auswählen. In diesem Vorschaumodus können Sie auch sehen, wie sich [Filter](#set-and-override-dashboard-filters) auf Ihre Kacheln auswirken. Auf dem Vorschaubildschirm können Sie **Speichern** auswählen, um die Änderungen beizubehalten, **Verwerfen**, um sie zu entfernen, oder **Bearbeiten**, um zu den Bearbeitungsoptionen zurückzukehren und weitere Änderungen vorzunehmen.
 
    :::image type="content" source="media/azure-portal-dashboards/dashboard-save.png" alt-text="Screenshot: Optionen „Vorschau“, „Speichern“ und „Verwerfen“":::
+
+> [!NOTE]
+> Mithilfe einer Markdownkachel können Sie benutzerdefinierte, statische Inhalte in Ihrem Dashboard anzeigen. Dabei kann es sich um grundlegende Anweisungen, ein Bild, eine Reihe von Links oder sogar um Kontaktinformationen handeln. Weitere Informationen zum Verwenden einer Markdownkachel finden Sie unter [Verwenden einer Markdownkachel in Azure-Dashboards zum Anzeigen benutzerdefinierter Inhalte](azure-portal-markdown-tile.md).
 
 ### <a name="pin-content-from-a-resource-page"></a>Anheften von Inhalten von einer Ressourcenseite
 
 Sie können Kacheln auch direkt über eine Ressourcenseite zu Ihrem Dashboard hinzufügen.
 
-Viele Ressourcenseiten enthalten ein Stecknadelsymbol in der Befehlsleiste. Wenn Sie dieses Symbol auswählen, können Sie eine Kachel, die die Quellseite darstellt, an ein vorhandenes Dashboard oder an ein von Ihnen erstelltes neues Dashboard anheften.
+Viele Ressourcenseiten enthalten ein Reißzweckensymbol oben auf der Seite, was bedeutet, dass Sie eine Kachel anheften können, die die Quellseite darstellt. Manchmal wird auch ein Reißzweckensymbol für einen bestimmten Inhalt auf einer Seite angezeigt. Das bedeutet, dass Sie eine Kachel für diesen bestimmten Inhalt anstatt für die gesamte Seite anheften können.
 
-![Screenshot der Befehlsleiste der Seite mit Reißzweckensymbol](./media/azure-portal-dashboards/dashboard-pin-blade.png)
+:::image type="content" source="media/azure-portal-dashboards/dashboard-pin-blade.png" alt-text="Screenshot der Befehlsleiste der Seite mit Reißzweckensymbol.":::
 
-Manchmal wird auch ein Stecknadelsymbol für einen bestimmten Inhalt auf einer Seite angezeigt. Das bedeutet, dass Sie eine Kachel für diesen bestimmten Inhalt anstatt für die gesamte Seite anheften können.
+Wenn Sie dieses Symbol auswählen, können Sie die Kachel an ein vorhandenes privates oder freigegebenes Dashboard anheften. Sie können auch ein neues Dashboard erstellen, das diesen Reißzwecken enthält, indem Sie **Neu erstellen** auswählen.
+
+:::image type="content" source="media/azure-portal-dashboards/dashboard-pin-pane.png" alt-text="Screenshot: an Dashboard-Optionen anheften.":::
 
 ### <a name="resize-or-rearrange-tiles"></a>Ändern der Größe oder Neuanordnung von Kacheln
 
@@ -96,26 +101,45 @@ Führen Sie die folgenden Schritte aus, um die Größe einer Kachel zu ändern o
 
 1. Wählen Sie eine Kachel aus, und ziehen Sie sie an eine neue Position im Raster, um das Dashboard anzuordnen.
 
-### <a name="additional-tile-configuration"></a>Zusätzliche Kachelkonfiguration
+### <a name="set-and-override-dashboard-filters"></a>Festlegen und Überschreiben von Dashboard-Filtern
 
-Einige Kacheln erfordern möglicherweise weitere Konfiguration, um die gewünschten Informationen anzuzeigen. Beispielsweise muss die Kachel **Metrikdiagramm** so eingerichtet werden, dass eine Metrik aus Azure Monitor angezeigt wird. Sie können Kacheldaten auch anpassen, um die Standardzeiteinstellungen des Dashboards außer Kraft zu setzen.
+Im oberen Bereich des Dashboards werden Optionen zum Festlegen der Einstellungen für **automatische Aktualisierung** und **Uhrzeit** für im Dashboard angezeigte Daten sowie eine Option zum Hinzufügen zusätzlicher Filter angezeigt.
 
-Für alle Kacheln, die eingerichtet werden müssen, wird ein Banner angezeigt, bis Sie die Kachel anpassen. Beim **Metrikdiagramm** ist das Banner **In Metriken bearbeiten**. So passen Sie die Kachel an
+:::image type="content" source="media/azure-portal-dashboards/dashboard-global-filters.png" alt-text="Screenshot: Globale Filter eines Dashboards.":::
+
+Standardmäßig werden die Daten stündlich aktualisiert. Um dies zu ändern, wählen Sie **Automatische Aktualisierung** und dann ein neues Aktualisierungsintervall aus. Wenn Sie Ihre Auswahl getroffen haben, wählen Sie **Anwenden** aus.
+
+Die Standardzeiteinstellungen sind **UTC-Zeit** und zeigen Daten für die **letzten 24 Stunden** an. Um dies zu ändern, wählen Sie die Schaltfläche und dann einen neuen Zeitbereich, eine neue Zeitgranularität und/oder Zeitzone aus und wählen Sie schließlich **Anwenden** aus.
+
+Um zusätzliche Filter anzuwenden, wählen Sie **Filter hinzufügen** aus. Die angezeigten Optionen variieren abhängig von den Kacheln in Ihrem Dashboard. Beispielsweise können Sie möglicherweise nur Daten für ein bestimmtes Abonnement oder einen bestimmten Standort anzeigen. Wählen Sie den Filter aus, den Sie verwenden möchten, und treffen Sie Ihre Auswahl. Der Filter wird dann auf Ihre Daten angewendet. Um einen Filter zu entfernen, wählen Sie das **X** in der zugehörigen Schaltfläche aus.
+
+Kacheln, die das Filtern unterstützen, verfügen über ein ![Filtersymbol](./media/azure-portal-dashboards/dashboard-filter.png) in der oberen linken Ecke der Kachel. Einige Kacheln ermöglichen es Ihnen, die globalen Filter mit spezifischen Filtern für diese Kachel zu überschreiben. Klicken Sie hierzu im Kontextmenü auf **Kacheldaten konfigurieren** oder wählen Sie das Filtersymbol aus und wenden Sie dann die gewünschten Filter an.
+
+Wenn Sie Filter für eine bestimmte Kachel festlegen, zeigt die linke Ecke dieser Kachel ein doppeltes Filtersymbol an, das angibt, dass die Daten in dieser Kachel ihre eigenen Filter widerspiegeln.
+
+:::image type="content" source="media/azure-portal-dashboards/dashboard-filter-override.png" alt-text="Screenshot: Symbol für eine Kachel mit einer Filterüberschreibung.":::
+
+## <a name="modify-tile-settings"></a>Ändern von Kacheleinstellungen
+
+Einige Kacheln erfordern möglicherweise weitere Konfiguration, um die gewünschten Informationen anzuzeigen. Beispielsweise muss die Kachel **Metrikdiagramm** so eingerichtet werden, dass eine Metrik aus Azure Monitor angezeigt wird. Sie können Kacheldaten auch anpassen, um die Standardzeiteinstellungen und Filter des Dashboards außer Kraft zu setzen.
+
+## <a name="complete-tile-configuration"></a>Abschließen der Kachelkonfiguration
+
+Für alle Kacheln, die eingerichtet werden müssen, wird ein Banner angezeigt, bis Sie die Kachel anpassen. Im **Diagramm mit den Metriken** lautet das Banner beispielsweise **In Metriken bearbeiten**. Andere Banner können einen anderen Text verwenden, z. B. **Kachel konfigurieren**.
+
+So passen Sie die Kachel an
 
 1. Wählen Sie im Seitenkopf **Speichern** aus, um den Bearbeitungsmodus zu beenden.
 
 1. Wählen Sie das Banner aus, und nehmen Sie dann die gewünschte Einrichtung vor.
 
-    ![Screenshot einer Kachel, die konfiguriert werden muss](./media/azure-portal-dashboards/dashboard-configure-tile.png)
+    ![Screenshot einer Kachel, die konfiguriert werden muss.](./media/azure-portal-dashboards/dashboard-configure-tile.png)
 
-> [!NOTE]
-> Mithilfe einer Markdownkachel können Sie benutzerdefinierte, statische Inhalte in Ihrem Dashboard anzeigen. Dabei kann es sich um grundlegende Anweisungen, ein Bild, eine Reihe von Links oder sogar um Kontaktinformationen handeln. Weitere Informationen zum Verwenden einer Markdownkachel finden Sie unter [Verwenden einer Markdownkachel in Azure-Dashboards zum Anzeigen benutzerdefinierter Inhalte](azure-portal-markdown-tile.md).
+### <a name="customize-time-span-for-a-tile"></a>Anpassen der Zeitspanne für eine Kachel
 
-### <a name="customize-tile-data"></a>Anpassen von Kacheldaten
+Daten auf dem Dashboard zeigen Aktivitäten und Aktualisierungen basierend auf den globalen Filtern an. Bei einigen Kacheln können Sie eine andere Zeitspanne für nur eine Kachel auswählen. Gehen Sie dazu folgendermaßen vor:
 
-Die Daten im Dashboard zeigen automatisch Aktivitäten der letzten 24 Stunden an. Gehen Sie folgendermaßen vor, um eine andere Zeitspanne nur für diese Kachel anzuzeigen:
-
-1. Wählen Sie im Kontextmenü oder über den Filter ![Filtersymbol](./media/azure-portal-dashboards/dashboard-filter.png) in der linken oberen Ecke der Kachel die Option **Kacheldaten anpassen** aus.
+1. Wählen Sie im Kontextmenü oder über das ![Filtersymbol](./media/azure-portal-dashboards/dashboard-filter.png) in der linken oberen Ecke der Kachel die Option **Kacheldaten anpassen** aus.
 
     ![Screenshot: Kontextmenü einer Kachel](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
@@ -125,7 +149,7 @@ Die Daten im Dashboard zeigen automatisch Aktivitäten der letzten 24 Stunden an
 
 1. Wählen Sie die Zeitspanne aus, die für diese Kachel angezeigt werden soll. Sie können zwischen den letzten 30 Minuten bis zu den letzten 30 Tagen wählen oder einen benutzerdefinierten Bereich definieren.
 
-1. Wählen Sie die anzuzeigende Zeitgranularität aus. Sie können ein beliebiges Inkrement zwischen einer Minute und einem Monat anzeigen.
+1. Wählen Sie die anzuzeigende Zeitgranularität aus.  Sie können ein beliebiges Inkrement zwischen einer Minute und einem Monat anzeigen.
 
 1. Wählen Sie **Übernehmen**.
 

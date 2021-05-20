@@ -14,12 +14,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 14760b4244d42e57aaed7f7d96f487a66147a554
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5dd610d473073e5976b0e7197a1c4e4e68c0f551
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359505"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769829"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Verwenden des Azure-Portals zum Konfigurieren einer Verfügbarkeitsgruppe (Vorschau) für SQL Server auf einem virtuellen Azure-Computer 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,6 +31,9 @@ Im Azure-Portal können Sie einen neuen Cluster erstellen oder einen vorhandenen
 Diese Funktion steht derzeit als Vorschau zur Verfügung. 
 
 In diesem Artikel wird die Umgebung der Verfügbarkeitsgruppen über das Azure-Portal konfiguriert. Diese Konfiguration kann aber auch über [PowerShell oder die Azure CLI](availability-group-az-commandline-configure.md), [Azure-Schnellstartvorlagen](availability-group-quickstart-template-configure.md) oder aber [manuell](availability-group-manually-configure-tutorial.md) erledigt werden. 
+
+> [!NOTE]
+> Sie können Ihre Verfügbarkeitsgruppenlösung jetzt mithilfe von Azure Migrate per Lift & Shift zu SQL Server auf Azure-VMs migrieren. Weitere Informationen finden Sie unter [Migrieren von Verfügbarkeitsgruppen](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md). 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen

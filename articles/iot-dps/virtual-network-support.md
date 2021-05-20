@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5b1947a8d037dbdd20a3335a79f90ebf10b2ca6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94959780"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749895"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Unterstützung von Azure IoT Hub Device Provisioning Service (DPS) für virtuelle Netzwerke
 
@@ -28,7 +28,7 @@ Standardmäßig werden DPS-Hostnamen einem öffentlichen Endpunkt mit einer öff
 
 Aus verschiedenen Gründen möchten Kunden möglicherweise die Verbindung mit Azure-Ressourcen wie DPS einschränken. Zu den Gründen gehören die folgenden:
 
-* Verhindern, dass die Verbindung über das öffentliche Internet offengelegt wird. Die Offenlegung kann reduziert werden, indem durch Isolation auf Netzwerkebene zusätzliche Sicherheitsschichten für Ihren IoT-Hub und Ihre DPS-Ressourcen eingeführt werden.
+* Verhindern, dass die Verbindung über das öffentliche Internet offengelegt wird. Die Offenlegung kann reduziert werden, indem durch Isolation auf Netzwerkebene weitere Sicherheitsschichten für Ihren IoT-Hub und Ihre DPS-Ressourcen eingeführt werden.
 
 * Aktivieren einer privaten Konnektivitätsumgebung von Ihren lokalen Netzwerkressourcen, um sicherzustellen, dass Ihre Daten und der Datenverkehr direkt an das Azure-Backbone-Netzwerk übertragen wird
 
@@ -110,6 +110,38 @@ Führen Sie die folgenden Schritte aus, um einen privaten Endpunkt einzurichten:
     ![Konfigurieren des privaten Endpunkts](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
 6. Klicken Sie auf **Überprüfen und erstellen** und dann auf **Erstellen**, um die Ressource für den privaten Endpunkt zu erstellen.
+
+
+## <a name="use-private-endpoints-with-devices"></a>Verwenden privater Endpunkte mit Geräten
+
+Um private Endpunkte mit Gerätebereitstellungscode zu verwenden, muss Ihr Bereitstellungscode den bestimmten **Dienstendpunkt** für Ihre DPS-Ressource verwenden, wie auf der Übersichtsseite Ihrer DPS-Ressource im [Azure-Portal](https://portal.azure.com) angezeigt. Der Dienstendpunkt hat die folgende Form.
+
+`<Your DPS Tenant Name>.azure-devices-provisioning.net`
+
+Die meisten Beispiele, die in unserer Dokumentation und den SDKs gezeigt werden, verwenden den **globalen Geräteendpunkt** (`global.azure-devices-provisioning.net`) und den **ID-Bereich**, um eine bestimmte DPS-Ressource aufzulösen. Verwenden Sie den Dienstendpunkt anstelle des globalen Geräteendpunkts, wenn Sie über private Verbindungen eine Verbindung mit einer DPS-Ressource herstellen, um Ihre Geräte zur Verfügung zu stellen.
+
+Das Beispiel für den Bereitstellungsgeräteclient ([pro_dev_client_sample](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/prov_dev_client_sample)) im [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) ist so konzipiert, dass der **globale Geräteendpunkt** als globaler Bereitstellungs-URI (`global_prov_uri`) in [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) verwendet wird.
+
+:::code language="c" source="~/iot-samples-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c" range="60-64" highlight="4":::
+
+:::code language="c" source="~/iot-samples-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c" range="138-144" highlight="3":::
+
+Um das Beispiel mit einer privaten Verbindung zu verwenden, wird der oben hervorgehobene Code so geändert, dass der Dienstendpunkt für Ihre DPS-Ressource verwendet wird. Wenn Ihr Dienstendpunkt z. B. `mydps.azure-devices-provisioning.net` lautet, sieht der Code wie folgt aus.
+
+```C
+static const char* global_prov_uri = "global.azure-devices-provisioning.net";
+static const char* service_uri = "mydps.azure-devices-provisioning.net";
+static const char* id_scope = "[ID Scope]";
+```
+
+```C
+    PROV_DEVICE_RESULT prov_device_result = PROV_DEVICE_RESULT_ERROR;
+    PROV_DEVICE_HANDLE prov_device_handle;
+    if ((prov_device_handle = Prov_Device_Create(service_uri, id_scope, prov_transport)) == NULL)
+    {
+        (void)printf("failed calling Prov_Device_Create\r\n");
+    }
+```
 
 
 ## <a name="request-a-private-endpoint"></a>Anfordern eines privaten Endpunkts

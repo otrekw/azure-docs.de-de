@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 04/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 84fd1a2d3d0dc4ce6960469ea3212b8ca1d4d07c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9480bc7ddb03ba537ea7f13057492aa05ed66bae
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023022"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770181"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Deaktivieren und Löschen eines StorSimple Virtual Array
 
@@ -27,7 +27,7 @@ ms.locfileid: "96023022"
 
 Wenn Sie ein StorSimple Virtual Array deaktivieren, trennen Sie die Verbindung zwischen dem Gerät und dem entsprechenden StorSimple-Geräte-Manager-Dienst. In diesem Tutorial werden folgende Punkte erläutert:
 
-* Deaktivieren eines Geräts 
+* Deaktivieren eines Geräts
 * Löschen eines deaktivierten Geräts
 
 Die in diesem Artikel veröffentlichten Informationen gelten nur für StorSimple Virtual Arrays. Informationen zur 8000-Serie finden Sie unter [Deaktivieren und Löschen eines Geräts](./storsimple-8000-deactivate-and-delete-device.md).
@@ -42,11 +42,11 @@ Die Deaktivierung ist ein ENDGÜLTIGER Vorgang und kann nicht rückgängig gemac
 
 ## <a name="deactivate-a-device"></a>Deaktivieren eines Geräts
 
-Führen Sie die folgenden Schritte aus, um Ihr Gerät zu deaktivieren.
+Führen Sie die folgenden Schritte aus, um Ihr Gerät zu deaktivieren. Ein Gerät muss online sein, damit es deaktiviert werden kann.
 
 #### <a name="to-deactivate-the-device"></a>So deaktivieren Sie das Gerät
 
-1. Wechseln Sie in Ihrem Dienst zu **Management > Geräte**. Klicken Sie auf dem Blatt **Geräte** auf das Gerät, das Sie deaktivieren möchten, und wählen Sie es aus.
+1. Wechseln Sie in Ihrem Dienst zu **Management > Geräte**. Klicken Sie auf dem Blatt **Geräte** auf das Gerät, das Sie deaktivieren möchten, und wählen Sie es aus. Als Gerätestatus sollte **Online** angezeigt werden.
    
     ![Zu deaktivierendes Gerät auswählen](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
 2. Klicken Sie auf Ihrem Blatt **Gerätedashboard** auf **... More** (... Weitere), und wählen Sie aus der Liste **Deaktivieren** aus.
@@ -59,6 +59,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät zu deaktivieren.
     Der Deaktivierungsvorgang beginnt und kann einige Minuten in Anspruch nehmen.
    
     ![Deaktivierung wird durchgeführt](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete2.png)
+
 4. Nach der Deaktivierung wird die Liste mit den Geräten aktualisiert.
    
     ![Vollständig deaktivieren](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete3.png)
@@ -67,7 +68,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät zu deaktivieren.
 
 ## <a name="delete-the-device"></a>Löschen des Geräts
 
-Ein Gerät muss zuerst deaktiviert werden, bevor es gelöscht werden kann. Das Löschen eines Geräts entfernt es aus der Liste der mit dem Dienst verbundenen Geräte. Der Dienst kann das gelöschte Gerät dann nicht mehr länger verwalten. Die Daten, die dem Gerät zugeordnet sind, verbleiben jedoch in der Cloud. Für diese Daten fallen dann Gebühren an.
+Ein Gerät muss zuerst deaktiviert werden, bevor es gelöscht werden kann. Das Löschen eines Geräts entfernt es aus der Liste der mit dem Dienst verbundenen Geräte. Der Dienst kann das gelöschte Gerät dann nicht mehr länger verwalten. Die dem Gerät zugeordneten Daten verbleiben jedoch in der Cloud. Für diese Daten fallen dann Gebühren an.
 
 Führen Sie die folgenden Schritte aus, um das Gerät zu löschen.
 

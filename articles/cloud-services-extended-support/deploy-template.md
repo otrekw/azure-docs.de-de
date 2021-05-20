@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 855cbb619f536354010c5bfe05c6c03f8bfc6985
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 7c013cbaf8a64d12b132e3dd4c599920bd3f6a2a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291476"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736108"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von ARM-Vorlagen
 
@@ -27,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
  
 3. Erstellen Sie über das [Azure-Portal](../storage/common/storage-account-create.md?tabs=azure-portal) oder mithilfe von [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell) ein neues Speicherkonto. Bei Verwendung eines vorhandenen Speicherkontos ist dieser Schritt optional.
 
-4. Laden Sie die Dienstdefinitionsdatei (.csdef) und die Dienstkonfigurationsdatei (.cscfg) per [Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) oder [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) in das Speicherkonto hoch. Rufen Sie die SAS-URIs der beiden Dateien ab. Sie werden später in diesem Tutorial der ARM-Vorlage hinzugefügt.
+4. Laden Sie Ihr Paket (.cspkg) und die Dienstkonfigurationsdatei (.cscfg) per [Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) oder [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) in das Speicherkonto hoch. Rufen Sie die SAS-URIs der beiden Dateien ab. Sie werden später in diesem Tutorial der ARM-Vorlage hinzugefügt.
 
 5. (Optional): Erstellen Sie einen Schlüsseltresor, und laden Sie die Zertifikate hoch.
 

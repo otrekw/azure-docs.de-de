@@ -7,13 +7,13 @@ author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: e139c15ef6de00376a4e1a88000d263c3486994b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: 16808be9b4a0c3a03a2a56a5255809b585aa404f
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92101374"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715792"
 ---
 # <a name="indexer-access-to-azure-storage-using-the-trusted-service-exception-azure-cognitive-search"></a>Indexer-Zugriff auf Azure Storage mithilfe der Ausnahme für vertrauenswürdige Dienste (Azure Cognitive Search)
 
@@ -25,6 +25,9 @@ Indexer in einem Azure Cognitive Search-Dienst, die auf Daten in Azure Storage-
 ## <a name="step-1-configure-a-connection-using-a-managed-identity"></a>Schritt 1: Konfigurieren einer Verbindung mithilfe einer verwalteten Identität
 
 Befolgen Sie die Anweisungen unter [Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität](search-howto-managed-identities-storage.md). Wenn Sie fertig sind, haben Sie Ihren Suchdienst bei Azure Active Directory als vertrauenswürdigen Dienst registriert und Berechtigungen in Azure Storage erteilt, die der Suchidentität bestimmte Rechte für den Zugriff auf Daten oder Informationen bietet.
+
+> [!NOTE]
+> Die Anweisungen führen Sie durch einen Portalansatz zum Konfigurieren von Cognitive Search als vertrauenswürdiger Dienst. Um dies im Code zu erreichen, können Sie die [REST-API](/rest/api/searchmanagement/services/createorupdate), [Azure PowerShell](search-manage-powershell.md#create-a-service-with-a-system-assigned-managed-identity)oder [Azure CLI](search-manage-azure-cli.md#create-a-service-with-a-system-assigned-managed-identity) verwenden.
 
 ## <a name="step-2-allow-trusted-microsoft-services-to-access-the-storage-account"></a>Schritt 2: Gewähren des Zugriffs vertrauenswürdiger Microsoft-Dienste auf das Speicherkonto
 

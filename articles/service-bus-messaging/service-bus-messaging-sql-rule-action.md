@@ -3,12 +3,12 @@ title: SQL-Aktionssyntax für Azure Service Bus-Abonnementregel | Microsoft-Doku
 description: Dieser Artikel enthält eine Referenz für die SQL-Regelaktionssyntax. Die Aktionen werden in auf der SQL-Sprache basierender Syntax geschrieben, die für eine Nachricht ausgeführt wird.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7aceb1992aafbbf92718a6bf558a72060f3275df
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652835"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770081"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>SQL-Aktionssyntax für Abonnementregeln
 
@@ -53,7 +53,10 @@ Eine *SQL-Aktion* wird zum Bearbeiten von Nachrichtenmetadaten verwendet, nachde
   
 ## <a name="arguments"></a>Argumente  
   
--   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` und `user`. Der Wert `sys` gibt die Systembereich an, in dem `<property_name>` ein öffentlicher Eigenschaftenname der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. `user` gibt den Benutzerbereich an, in dem `<property_name>` ein Schlüssel des Wörterbuchs der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
+-   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` und `user`. 
+    - Der Wert `sys` gibt den Systembereich an, wobei es sich bei `<property_name>` um eine der Eigenschaften der Service Bus-Nachricht handelt, wie unter [Nachrichten, Nutzlasten und Serialisierung](service-bus-messages-payloads.md) beschrieben.
+    - Der Wert `user` gibt den Benutzerbereich an, wobei es sich bei `<property_name>` um einen Schlüssel der benutzerdefinierten Eigenschaften handelt, die Sie beim Senden der Nachricht an die Service Bus-Instanz festlegen können.
+    - Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
   
 ### <a name="remarks"></a>Bemerkungen  
 

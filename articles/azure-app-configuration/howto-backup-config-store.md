@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: b3e0bcad7beccc31e1772fbb24ffad7f502b8140
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b72de537f573d03f37a9b1de4341a14830479e7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454242"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748419"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Automatisches Sichern von App Configuration-Speichern
 
@@ -127,7 +127,7 @@ In diesem Artikel arbeiten Sie mit C#-Funktionen, die die folgenden Eigenschafte
 - Azure Functions Runtimeversion 3.x
 - Funktion wird vom Timer alle 10 Minuten ausgelöst
 
-Wir haben [eine Funktion getestet und veröffentlicht](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup), die Sie ohne Änderungen am Code verwenden können, um Ihnen den Einstieg in das Sichern Ihrer Daten zu erleichtern. Laden Sie die Projektdateien herunter, und [veröffentlichen Sie sie in Ihrer eigenen Azure-Funktions-App aus Visual Studio](../azure-functions/functions-develop-vs.md#publish-to-azure).
+Wir haben [eine Funktion getestet und veröffentlicht](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup), die Sie ohne Änderungen am Code verwenden können, um Ihnen den Einstieg in das Sichern Ihrer Daten zu erleichtern. Laden Sie die Projektdateien herunter, und [veröffentlichen Sie sie in Ihrer eigenen Funktions-App aus Visual Studio](../azure-functions/functions-develop-vs.md#publish-to-azure).
 
 > [!IMPORTANT]
 > Nehmen Sie keine Änderungen an den Umgebungsvariablen im heruntergeladen Code vor. Im nächsten Abschnitt nehmen Sie die erforderlichen App-Einstellungen vor.

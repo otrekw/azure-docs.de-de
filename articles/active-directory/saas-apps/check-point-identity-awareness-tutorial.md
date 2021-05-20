@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/08/2021
+ms.date: 04/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 0024d6b3f7e692a7caf13457b27c32d0ba9dc1e8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3f517698c1e44ccb5bdddb5a0bf78578c62b481e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134373"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740049"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-identity-awareness"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Check Point Identity Awareness
 
@@ -85,13 +85,14 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den Check Point Identity Awareness-Client](mailto:support@checkpoint.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+    ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
 1. Kopieren Sie im Abschnitt **Check Point Identity Awareness einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
@@ -136,7 +137,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     d. Kopieren Sie den Wert für **Reply URL** (Antwort-URL), und fügen Sie diesen Wert im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Antwort-URL** ein.
 
-    e. Wählen Sie **Import Metadata File** (Metadatendatei importieren) aus, um das heruntergeladene **Zertifikat (Base64)** aus dem Azure-Portal hochzuladen.
+    e. Klicken Sie auf **Import Metadata File** (Metadatendatei importieren), und laden Sie die heruntergeladene **Verbundmetadaten-XML** aus dem Azure-Portal hoch.
 
     > [!NOTE]
     > Alternativ können Sie auch **Insert Manually** (Manuell einfügen) auswählen, um die Werte für **Entitäts-ID** und **Anmelde-URL** in die entsprechenden Felder einzufügen und die **Zertifikatdatei** aus dem Azure-Portal hochzuladen.

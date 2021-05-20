@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: 570bfed5ae5fc6fafea36b9ed1f2673a0daae22b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 75e87e004190ebe86c983c5956105ec629dcc673
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521508"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772277"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Tutorial: Erstellen einer Azure Machine Learning-Pipeline für die Batchbewertung
 
@@ -40,8 +40,11 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Absolvieren Sie [Teil 1 des Einrichtungstutorials](tutorial-1st-experiment-sdk-setup.md), falls Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich oder einen virtuellen Notebook-Computer verfügen.
-* Verwenden Sie nach Abschluss des Einrichtungstutorials den gleichen Notebook-Server, um das Notebook *tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb* zu öffnen.
+* Arbeiten Sie [Schnellstart: Erste Schritte mit Azure Machine Learning](quickstart-create-resources.md) durch, falls Sie nicht bereits über einen Azure Machine Learning-Arbeitsbereich oder eine Compute-Instanz verfügen.
+* Nach Abschluss der Schnellstartanleitung:
+    1. Wählen Sie in Studio die Option **Notebooks** aus.
+    1. Wählen Sie die Registerkarte **Beispiele** aus.
+    1. Öffnen Sie das Notebook *tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb*.
 
 Falls Sie das Einrichtungstutorial in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) ausführen möchten, können Sie über [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) auf das Tutorial zugreifen. Führen Sie `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` aus, um die erforderlichen Pakete abzurufen.
 

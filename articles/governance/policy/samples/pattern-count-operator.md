@@ -3,12 +3,12 @@ title: 'Muster: Der Operator „count“ in einer Richtliniendefinition'
 description: Dieses Azure Policy-Muster enthält ein Beispiel für die Verwendung des Operators „count“ in einer Richtliniendefinition.
 ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: dc2914028887ae5a91e3379e2a94ddbc57a7cef3
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 4b4a2615491632caf1a7abddd1b6ace96ccc608d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093451"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752523"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure Policy-Muster: Der Operator „count“
 
@@ -22,7 +22,7 @@ Mit der folgenden Richtliniendefinition wird eine [Überwachung](../concepts/eff
 
 ### <a name="explanation"></a>Erklärung
 
-Die Kernkomponenten des Operators **count** sind _field_, _where_ und die Bedingung. Sie sind jeweils im folgenden Codeausschnitt hervorgehoben.
+Die Kernkomponenten des Operators **count** sind _field_, _where_ und die Bedingung. Diese Komponenten sind im folgenden Codeausschnitt hervorgehoben.
 
 - _field_ dient zum Angeben des [Alias](../concepts/definition-structure.md#aliases), dessen Mitglieder ausgewertet werden sollen. In diesem Beispiel wird das Alias-_Array_ **securityRules\[\*\]** der Netzwerksicherheitsgruppe betrachtet.
 - Mithilfe von _where_ wird unter Verwendung der Richtliniensprache definiert, welche Mitglieder des _Arrays_ die Kriterien erfüllen. In diesem Beispiel werden mithilfe eines logischen Operators vom Typ **allOf** drei verschiedene Bedingungsauswertungen der Eigenschaften des Alias-_Arrays_ gruppiert: _direction_, _access_ und _destinationPortRange_.

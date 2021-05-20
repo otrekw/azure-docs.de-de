@@ -3,17 +3,17 @@ title: Neuheiten in Windows Virtual Desktop - Azure
 description: Neue Features und Produktupdates für Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 04/08/2021
+ms.date: 05/03/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 242dd2476783a3d1db6b74452d35e87c5cd189b6
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: b2ab740134ab41a76bd0170eabfda2167efb678c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516551"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740283"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Neuheiten in Windows Virtual Desktop
 
@@ -42,7 +42,8 @@ Der Windows Virtual Desktop-Agent wird mindestens einmal pro Monat aktualisiert.
 
 Nachfolgend sind die Änderungen im Windows Virtual Desktop-Agent aufgeführt:
 
-- Version 1.0.2990.800: Dieses Update wurde am 13. April 2021 veröffentlicht und enthält die folgenden Änderungen:
+- Version 1.0.2944.1400 für die Produktion und Version 1.0.2990.800 für alle Überprüfungshostpools: Dieses Update wurde am 27. April 2021 veröffentlicht.
+- Version 1.0.2990.800: Dieses Update wurde am 13. April 2021 veröffentlicht und umfasst die folgenden Änderungen:
     - Agent-Fehlermeldungen aktualisiert
     - Ausnahme hinzugefügt, die verhindert, dass Sie Nicht-Windows 7-Agents auf virtuellen Windows 7-Computern installieren
     - Heartbeatdienstlogik aktualisiert
@@ -59,6 +60,45 @@ Nachfolgend sind die Änderungen im Windows Virtual Desktop-Agent aufgeführt:
 ## <a name="fslogix-updates"></a>FSLogix-Updates
 
 Sie sind neugierig auf die neuesten Updates für FSLogix? Informieren Sie sich über die [Neuerungen für FSLogix](/fslogix/whats-new).
+
+## <a name="april-2021"></a>April 2021
+
+Neuerungen im April:
+
+### <a name="use-the-start-vm-on-connect-feature-preview-in-the-azure-portal"></a>Verwenden des Features „VM bei Verbindung starten“ (Vorschau) im Azure-Portal
+
+Sie können jetzt das Feature „VM bei Verbindung starten“ (Vorschau) im Azure-Portal konfigurieren. Mit diesem Update können Benutzer über die Android- und macOS-Clients auf ihre VMs zugreifen. Weitere Informationen finden Sie im Abschnitt zum Thema [VM bei Verbindung starten](start-virtual-machine-connect.md#use-the-azure-portal).
+
+### <a name="required-url-check-tool"></a>Erforderliches URL-Überprüfungstool 
+
+Version 1.0.2944.400 des Windows Virtual Desktop-Agents enthält ein Tool, mit dem URLs überprüft werden und angezeigt wird, ob der virtuelle Computer auf die benötigten URLs zugreifen kann. Wenn der Zugriff auf erforderliche URLs möglich ist, werden diese vom Tool aufgelistet, damit Sie bei Bedarf dafür die Blockierung aufheben können. Weitere Informationen finden Sie in der [Liste mit den sicheren URLs](safe-url-list.md#required-url-check-tool).
+
+### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>Updates der Azure-Portal-Benutzeroberfläche für Windows Virtual Desktop
+
+Folgendes hat sich mit dem letzten Update der Azure-Portal-Benutzeroberfläche für Windows Virtual Desktop geändert:
+
+- Es wurde ein Problem behoben, das zu einem Fehler beim Abrufen des Sitzungshosts bei aktiviertem Ausgleichsmodus geführt hat.
+- Für das Portal-SDK wurde das Upgrade auf Version 7.161.0 durchgeführt.
+- Es wurde ein Problem behoben, bei dem auf der Registerkarte „Benutzersitzungen“ eine Fehlermeldung zu einer fehlenden Ressourcen-ID angezeigt wurde.
+- Im Azure-Portal werden jetzt detaillierte Meldungen zum Unterstatus für Sitzungshosts angezeigt.
+
+### <a name="april-2021-updates-for-teams-on-windows-virtual-desktop"></a>Updates für Teams unter Windows Virtual Desktop vom April 2021
+
+Neuerungen für Teams unter Windows Virtual Desktop:
+
+- Hardwarebeschleunigung für die Videoverarbeitung von ausgehenden Videodatenströmen für Windows 10-basierte Clients wurde hinzugefügt.
+- Beim Beitritt zu einer Besprechung mit einer nach vorn gerichteten Kamera und einer nach hinten gerichteten oder externen Kamera wird standardmäßig die vordere Kamera ausgewählt.
+- Es wurde ein Problem behoben, bei dem Teams auf x86-basierten Computern abgestürzt ist.
+- Es wurde ein Problem behoben, das während der Bildschirmfreigabe zu Streifenbildung geführt hat.
+- Es wurde ein Problem behoben, bei dem Besprechungsteilnehmer eingehende Videodaten oder freigegebene Bildschirme nicht sehen konnten.
+
+### <a name="msix-app-attach-is-now-generally-available"></a>MSIX-App-Anfügung ist jetzt allgemein verfügbar
+
+Für die MSIX-App-Anfügung für Windows Virtual Desktop wurde die öffentliche Vorschauphase abgeschlossen und die allgemeine Verfügbarkeit für alle Benutzer erreicht. Weitere Informationen zur MSIX-App-Anfügung finden Sie in [unserer Tech Community-Ankündigung](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-is-now-generally-available/m-p/2270468).
+
+### <a name="the-macos-client-now-supports-apple-silicon-and-big-sur"></a>Für den macOS-Client werden jetzt Apple Silicon und Big Sur unterstützt
+
+Für den Windows Virtual Desktop-Client unter macOS werden jetzt Apple Silicon und Big Sur unterstützt. Die Liste mit allen Updates finden Sie unter [Neues beim macOS-Client](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew).
 
 ## <a name="march-2021"></a>März 2021
 
@@ -315,7 +355,7 @@ Sie können nun den [Qualitätsschätzer](https://azure.microsoft.com/services/v
 
 - Azure Advisor ist jetzt Teil von Windows Virtual Desktop. Wenn Sie über das Azure-Portal auf Windows Virtual Desktop zugreifen, können Sie Empfehlungen zur Optimierung der Windows Virtual Desktop-Umgebung anzeigen. Weitere Informationen zu [Azure Advisor](azure-advisor.md)
 
-- Die Azure CLI unterstützt jetzt Windows Virtual Desktop (`az desktopvirtualization`), um Sie bei der Automatisierung der Windows Virtual Desktop-Bereitstellungen zu unterstützen. Eine Liste der Erweiterungsbefehle finden Sie unter [desktopvirtualization](/cli/azure/ext/desktopvirtualization/).
+- Die Azure CLI unterstützt jetzt Windows Virtual Desktop (`az desktopvirtualization`), um Sie bei der Automatisierung der Windows Virtual Desktop-Bereitstellungen zu unterstützen. Eine Liste der Erweiterungsbefehle finden Sie unter [desktopvirtualization](/cli/azure/desktopvirtualization).
 
 - Wir haben die Bereitstellungsvorlagen aktualisiert, damit sie vollständig mit den Azure Resource Manager-Schnittstellen von Windows Virtual Desktop kompatibel sind. Die Vorlagen finden Sie auf [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates).
 

@@ -5,12 +5,12 @@ ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom:
 - mode-api
-ms.openlocfilehash: 8c568e223e12a6315e7fa5e63431f8102211f71a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 51fbac59aef82d0f7a8edbb7ce271e2eb049b699
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323409"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747576"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit PowerShell
 
@@ -108,7 +108,7 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
      Das Blaupausenobjekt wird standardmäßig im Standardabonnement erstellt. Verwenden Sie zum Angeben der Verwaltungsgruppe den Parameter **ManagementGroupId**. Verwenden Sie zum Angeben des Abonnements den Parameter **SubscriptionId**.
 
-1. Fügen Sie eine Rollenzuweisung für das Abonnement hinzu. **ArtifactFile** definiert die _Art_ des Artefakts. Die Eigenschaften orientieren sich am Rollendefinitionsbezeichner, und die Prinzipalbezeichner werden als Array von Werten übergeben. Im Beispiel unten ist für die Prinzipalbezeichner, denen die angegebene Rolle zugewiesen wird, ein Parameter konfiguriert, der bei der Blaupausenzuweisung festgelegt wird. In diesem Beispiel wird die integrierte Rolle _Mitwirkender_ mit der GUID `b24988ac-6180-42a0-ab88-20f7382dd24c` verwendet.
+1. Fügen Sie eine Rollenzuweisung für das Abonnement hinzu. **ArtifactFile** definiert die _Art_ des Artefakts. Die Eigenschaften orientieren sich am Rollendefinitionsbezeichner, und die Prinzipalbezeichner werden als Array von Werten übergeben. Im folgenden Beispiel ist für die Prinzipalbezeichner, denen die angegebene Rolle zugewiesen wird, ein Parameter konfiguriert, der bei der Blaupausenzuweisung festgelegt wird. In diesem Beispiel wird die integrierte Rolle _Mitwirkender_ mit der GUID `b24988ac-6180-42a0-ab88-20f7382dd24c` verwendet.
 
    - JSON-Datei: \artifacts\roleContributor.json
 

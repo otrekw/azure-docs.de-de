@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f3496df2276e7f2bbf3d7cb4b1b82b426392ca7a
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 4898ebf01e6796daa23e26e8801072ec485f83d0
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108183176"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745996"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[\[Vorschau:\] \[Private ASC-Vorschau\] Bereitstellen: Systemseitig zugewiesene verwaltete Identität zum Aktivieren von Azure Monitor-Zuweisungen für VMs konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17b3de92-f710-4cf4-aa55-0e7859f1ed7b) |[Private ASC-Vorschau] Konfigurieren Sie eine systemseitig zugewiesene verwaltete Identität für in Azure gehostete VMs, die von Azure Monitor unterstützt werden und über keine systemseitig zugewiesene verwaltete Identität verfügen. Eine systemseitig zugewiesene verwaltete Identität ist Voraussetzung für sämtliche Azure Monitor-Zuweisungen und muss den Computern zugewiesen werden, bevor eine Azure Monitor-Erweiterung verwendet wird. Ziel-VMs müssen sich an einem unterstützten Standort befinden. |modify |[1.2.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_AddSystemIdentity_Prerequisite.json) |
+|[\[Vorschau\]: \[Private ASC-Vorschau\] Systemseitig zugewiesene verwaltete Identität zum Aktivieren von Azure Monitor-Zuweisungen für VMs konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17b3de92-f710-4cf4-aa55-0e7859f1ed7b) |[Private ASC-Vorschau] Konfigurieren Sie eine systemseitig zugewiesene verwaltete Identität für in Azure gehostete VMs, die von Azure Monitor unterstützt werden und über keine systemseitig zugewiesene verwaltete Identität verfügen. Eine systemseitig zugewiesene verwaltete Identität ist Voraussetzung für sämtliche Azure Monitor-Zuweisungen und muss den Computern zugewiesen werden, bevor eine Azure Monitor-Erweiterung verwendet wird. Ziel-VMs müssen sich an einem unterstützten Standort befinden. |Modify, Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_AddSystemIdentity_Prerequisite.json) |
 |[Das Aktivitätsprotokoll muss mindestens ein Jahr lang aufbewahrt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |Diese Richtlinie überwacht das Aktivitätsprotokoll, wenn die Aufbewahrung nicht auf 365 Tage oder unbegrenzt (Festlegung der Aufbewahrungstage auf 0) festgelegt ist. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |
 |[Für bestimmte administrative Vorgänge muss eine Aktivitätsprotokollwarnung vorliegen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |Diese Richtlinie überwacht bestimmte administrative Vorgänge ohne Konfiguration von Aktivitätsprotokollwarnungen. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
 |[Für bestimmte Richtlinienvorgänge muss eine Aktivitätsprotokollwarnung vorliegen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc5447c04-a4d7-4ba8-a263-c9ee321a6858) |Diese Richtlinie überwacht bestimmte Richtlinienvorgänge ohne Konfiguration von Aktivitätsprotokollwarnungen. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_PolicyOperations_Audit.json) |

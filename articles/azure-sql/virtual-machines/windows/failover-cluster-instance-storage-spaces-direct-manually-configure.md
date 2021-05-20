@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: aa19cf6b59b1efa4b14501fbf64e319da3e4c0b3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9a6b2673694d7290d964302de2a91795c3d9bd3c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048640"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769595"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Erstellen einer FCI mit „Direkte Speicherplätze“ (SQL-Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,6 +27,9 @@ ms.locfileid: "102048640"
 In diesem Artikel wird erläutert, wie Sie mit SQL-Server auf virtuellen Azure-Computern (VMs) eine Failoverclusterinstanz (FCI) mit [Direkte Speicherplätze](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) erstellen. „Direkte Speicherplätze“ fungiert hierbei als softwarebasiertes virtuelles Storage Area Network (VSAN), in dem der Speicher (Datenträger) zwischen den Knoten (Azure-VMs) in einem Windows-Cluster synchronisiert wird. 
 
 Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md) und über [Bewährte Methoden für Cluster](hadr-cluster-best-practices.md). 
+
+> [!NOTE]
+> Sie können Ihre Failoverclusterinstanzlösung jetzt mithilfe von Azure Migrate per Lift-und-Shift-Verfahren zu SQL Server auf Azure-VMs verschieben. Weitere Informationen finden Sie unter [Migrieren einer Failoverclusterinstanz](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md). 
 
 
 ## <a name="overview"></a>Übersicht 
@@ -109,7 +112,7 @@ Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem 
 Führen Sie zum Validieren des Clusters mit PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus:
 
    ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
+   Test-Cluster –Node ("<node1>&quot;,&quot;<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
 Erstellen Sie nach dem Validieren des Clusters den Failovercluster.

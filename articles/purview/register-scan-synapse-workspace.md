@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 3/31/2021
-ms.openlocfilehash: 230894b8e474c8d230322fb1e240f0317512d036
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: a7f8a572198dd097d412348efdc508682ace1d5b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031276"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773735"
 ---
 # <a name="register-and-scan-azure-synapse-workspaces"></a>Registrieren und Überprüfen von Azure Synapse-Arbeitsbereichen
 
@@ -62,13 +62,13 @@ Es gibt drei Möglichkeiten, die Authentifizierung für eine Azure Synapse-Quell
 1. Navigieren Sie zu Ihrem **Synapse-Arbeitsbereich**.
 1. Navigieren Sie zum Abschnitt **Daten** und zu einer Ihrer serverlosen SQL-Datenbanken.
 1. Klicken Sie auf das Symbol mit den Auslassungspunkten, und starten Sie ein neues SQL-Skript.
-1. Fügen Sie die MSI des Azure Purview-Kontos (dargestellt durch den Kontonamen) als **db_owner** in der dedizierten SQL-Datenbank hinzu, indem Sie den folgenden Befehl in Ihrem SQL-Skript ausführen:
+1. Fügen Sie die MSI des Azure Purview-Kontos (dargestellt durch den Kontonamen) als **db_datareader** in der dedizierten SQL-Datenbank hinzu, indem Sie den folgenden Befehl in Ihrem SQL-Skript ausführen:
 
     ```sql
     CREATE USER [PurviewAccountName] FROM EXTERNAL PROVIDER
     GO
     
-    EXEC sp_addrolemember 'db_owner', [PurviewAccountName]
+    EXEC sp_addrolemember 'db_datareader', [PurviewAccountName]
     GO
     ```
 #### <a name="using-managed-identity-for-serverless-sql-databases"></a>Verwenden der verwalteten Identität für serverlose SQL-Datenbanken
@@ -90,13 +90,13 @@ Es gibt drei Möglichkeiten, die Authentifizierung für eine Azure Synapse-Quell
 1. Navigieren Sie zu Ihrem **Synapse-Arbeitsbereich**.
 1. Navigieren Sie zum Abschnitt **Daten** und zu einer Ihrer serverlosen SQL-Datenbanken.
 1. Klicken Sie auf das Symbol mit den Auslassungspunkten, und starten Sie ein neues SQL-Skript.
-1. Fügen Sie die **Dienstprinzipal-ID** als **db_owner** für die dedizierte SQL-Datenbank-Instanz hinzu, indem Sie den folgenden Befehl in Ihrem SQL-Skript ausführen:
+1. Fügen Sie die **Dienstprinzipal-ID** als **db_datareader** für die dedizierte SQL-Datenbank-Instanz hinzu, indem Sie den folgenden Befehl in Ihrem SQL-Skript ausführen:
 
     ```sql
     CREATE USER [ServicePrincipalID] FROM EXTERNAL PROVIDER
     GO
     
-    EXEC sp_addrolemember 'db_owner', [ServicePrincipalID]
+    EXEC sp_addrolemember 'db_datareader', [ServicePrincipalID]
     GO
     ```
 

@@ -4,12 +4,12 @@ description: In diesem Tutorial wird Event Grid konfiguriert, um auf Ereignisse 
 ms.date: 03/29/2021
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1fe87e4fd3349df7d8f5d57b2b2d95f95ed3fba8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d2017b4e85c4d064fc206d9b908be126559032bd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105734875"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752019"
 ---
 # <a name="tutorial-route-policy-state-change-events-to-event-grid-with-azure-cli"></a>Tutorial: Weiterleiten von Ereignissen vom Typ „Richtlinienzustandsänderung“ an Event Grid mithilfe der Azure CLI
 
@@ -39,7 +39,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Policy-Ereignisabonnements einric
 
 Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe platziert werden. Die Azure-Ressourcengruppe ist eine logische Sammlung, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe.
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `<resource_group_name>` am Standort _westus_ erstellt. Ersetzen Sie `<resource_group_name>` durch einen eindeutigen Namen für Ihre Ressourcengruppe.
 
@@ -116,7 +116,7 @@ In dem Befehl werden folgende Informationen verwendet:
 - **Name:** Der tatsächliche Name der Zuweisung. Für dieses Beispiel wurde _requiredtags-events_ verwendet.
 - **DisplayName:** Der Anzeigename für die Richtlinienzuweisung. In diesem Fall wird _Require tag on RG_ verwendet.
 - **Bereich:** Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Er kann von einem Abonnement bis zu Ressourcengruppen reichen. Ersetzen Sie &lt;scope&gt; durch den Namen Ihrer Ressourcengruppe. Ein Ressourcengruppenbereich hat folgendes Format: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>`.
-- **Richtlinie:** Die Richtliniendefinitions-ID, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall handelt es sich hierbei um die ID der Richtliniendefinition _Tag für Ressourcengruppen erforderlich_. Führen Sie den folgenden Befehl aus, um die Richtliniendefinitions-ID abzurufen: `az policy definition list --query "[?displayName=='Require a tag on resource groups']"`
+- **Richtlinie**: Die Richtliniendefinitions-ID, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall handelt es sich hierbei um die ID der Richtliniendefinition _Tag für Ressourcengruppen erforderlich_. Führen Sie den folgenden Befehl aus, um die Richtliniendefinitions-ID abzurufen: `az policy definition list --query "[?displayName=='Require a tag on resource groups']"`
 
 Warten Sie nach dem Erstellen der Richtlinienzuweisung, bis in der Web-App eine Ereignisbenachrichtigung vom Typ **Microsoft.PolicyInsights.PolicyStateCreated** angezeigt wird. Der Wert `data.complianceState` der erstellten Ressourcengruppe lautet zunächst _NonCompliant_ (Nicht konform).
 

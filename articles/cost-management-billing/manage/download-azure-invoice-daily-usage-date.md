@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 05/05/2021
 ms.author: banders
-ms.openlocfilehash: e380aa1f4d50e6ced34254ceca9d899022142f6d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 96ebde17272929cca424a4dddce55b194c974157
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911289"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750597"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
 
@@ -77,7 +77,7 @@ Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung seh
 
 ## <a name="get-your-invoice-in-email-pdf"></a>Empfangen Ihrer Rechnung per E-Mail (PDF)
 
-Sie können die entsprechende Option aktivieren und zusätzliche Empfänger konfigurieren, die Ihre Azure-Rechnung in einer E-Mail erhalten. Diese Funktion ist für bestimmte Abonnements möglicherweise nicht verfügbar, z.B. für Supportangebote, Enterprise Agreements oder Azure in Open. Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, finden Sie weitere Informationen unter „Abrufen der Rechnungen für Abonnements per E-Mail“.
+Sie können die entsprechende Option aktivieren und zusätzliche Empfänger konfigurieren, die Ihre Azure-Rechnung in einer E-Mail erhalten. Diese Funktion ist für bestimmte Abonnements möglicherweise nicht verfügbar, z.B. für Supportangebote, Enterprise Agreements oder Azure in Open. Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, helfen Ihnen die Informationen unter [Abrufen der Rechnungen für Abonnements per E-Mail](../understand/download-azure-invoice.md#get-your-billing-profiles-invoice-in-email) weiter.
 
 ### <a name="get-your-subscriptions-invoices-in-email"></a>Abrufen der Rechnungen für Abonnements per E-Mail
 
@@ -85,7 +85,7 @@ Sie können die entsprechende Option aktivieren und zusätzliche Empfänger konf
 
     ![Screenshot mit dem Ablauf der Aktivierung](./media/download-azure-invoice-daily-usage-date/invoicesdeeplink01.png)
 
-2. Klicken Sie auf **Aktivieren** , und stimmen Sie den Bedingungen zu.
+2. Klicken Sie auf **Aktivieren**, und stimmen Sie den Bedingungen zu.
 
     ![Screenshot mit dem Ablauf von Schritt 2 der Aktivierung](./media/download-azure-invoice-daily-usage-date/invoicearticlestep02.png)
 

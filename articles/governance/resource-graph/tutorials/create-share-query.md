@@ -3,12 +3,12 @@ title: 'Tutorial: Verwalten von Abfragen im Azure-Portal'
 description: In diesem Tutorial erstellen Sie im Azure-Portal eine Resource Graph-Abfrage und geben die neue Abfrage für andere Benutzer frei.
 ms.date: 05/01/2021
 ms.topic: tutorial
-ms.openlocfilehash: a7c2e5917abc89aded225bc7a62746399bec050b
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 75942cf681384d2759a8cf0f32c938efa793df86
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324831"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751425"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Erstellen und Freigeben einer Azure Resource Graph-Abfrage im Azure-Portal
 
@@ -44,7 +44,7 @@ Private Abfragen sind nur für das Konto sichtbar und zugänglich, das die Abfra
 
    Klicken Sie auf **Abfrage ausführen**, um die Abfrageergebnisse im unteren Bereich anzuzeigen.
 
-   Weitere Informationen über diese Abfrage finden Sie unter [Beispiele: Zählen von virtuellen Computern nach Betriebssystemtyp](../samples/starter.md#count-os).
+   Weitere Informationen zu dieser Abfrage finden Sie unter [Beispiele: Anzahl von virtuellen Computern nach Betriebssystemtyp](../samples/starter.md#count-os).
 
 1. Wählen Sie **Speichern** oder **Speichern unter** aus, geben Sie **VMs nach Betriebssystem zählen** als Namen ein, behalten Sie den Typ **Private Abfrage** bei, und klicken Sie dann unten im Bereich **Abfrage speichern** auf **Speichern**. Der Titel der Registerkarte ändert sich von **Abfrage 1** zu **VMs nach Betriebssystem zählen**.
 
@@ -52,7 +52,7 @@ Private Abfragen sind nur für das Konto sichtbar und zugänglich, das die Abfra
 
 1. Wählen Sie **Abfrage öffnen** aus. Stellen Sie sicher, dass der Typ **Private Abfrage** lautet. Der gespeicherte Name **VMs nach Betriebssystem zählen** wird jetzt in der Liste **Abfragename** angezeigt. Wenn Sie den Titellink der gespeicherten Abfrage auswählen, wird sie in einer neuen Registerkarte mit dem Namen dieser Abfrage geladen.
 
-   > [!NOTE] 
+   > [!NOTE]
    > Wenn eine gespeicherte Abfrage offen ist und die Registerkarte ihren Namen angezeigt, wird die Abfrage beim Klicken auf die Schaltfläche **Speichern** mit allen vorgenommenen Änderungen gespeichert. Um eine neue gespeicherte Abfrage aus einer offenen Abfrage zu erstellen, wählen Sie **Speichern unter** aus, und fahren Sie so fort, als würden Sie eine ganz neue Abfrage speichern.
 
 1. Um eine gespeicherte Abfrage zu löschen, wählen Sie erneut **Abfrage öffnen** aus, und überprüfen Sie, ob der **Typ** als **Private Abfrage** festgelegt ist. Klicken Sie in der Zeile der gespeicherten Abfrage `Count VMs by OS` auf **Löschen** (Papierkorbsymbol). Klicken Sie im Bestätigungsdialogfeld auf **Ja**, um das Löschen der Abfrage abzuschließen.
@@ -71,10 +71,10 @@ Im Gegensatz zu einer privaten Abfrage ist eine freigegebene Abfrage eine Resour
    | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
-    
+
    Klicken Sie auf **Abfrage ausführen**, um die Abfrageergebnisse im unteren Bereich anzuzeigen.
 
-   Weitere Informationen über diese Abfrage finden Sie unter [Beispiele: Zählen von virtuellen Computern nach Betriebssystemtyp](../samples/starter.md#count-os).
+   Weitere Informationen zu dieser Abfrage finden Sie unter [Beispiele: Anzahl von virtuellen Computern nach Betriebssystemtyp](../samples/starter.md#count-os).
 
 1. Wählen Sie **Speichern** oder **Speichern unter** aus.
 
@@ -87,10 +87,10 @@ Im Gegensatz zu einer privaten Abfrage ist eine freigegebene Abfrage eine Resour
 1. Lassen Sie das Kontrollkästchen **In Ressourcengruppe „resource-graph-queries“ veröffentlichen** aktiviert, und behalten Sie den **Ressourcengruppenstandort** als **(USA) USA, Westen-Mitte** bei.
 
 1. Klicken Sie unten im Bereich **Abfrage speichern** auf **Speichern**. Der Titel der Registerkarte ändert sich von **Abfrage 1** zu **VMs nach Betriebssystem zählen**. Wenn die Ressourcengruppe **resource-graph-queries** zum ersten Mal verwendet wird, dauert der Speichervorgang länger als erwartet, weil die Ressourcengruppe zuerst erstellt werden muss.
-   
+
    :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Speichern der neuen Abfrage als freigegebene Abfrage" border="false":::
 
-   > [!NOTE] 
+   > [!NOTE]
    > Sie können das Kontrollkästchen **In Ressourcengruppe „resource-graph-queries“ veröffentlichen** deaktivieren, wenn Sie den Namen einer vorhandenen Ressourcengruppe angeben möchten, in der die Abfrage gespeichert werden soll. Die Verwendung des Standardnamens für Ressourcengruppen für Abfragen vereinfacht die Entdeckung von freigegebenen Abfragen. Dadurch wird auch der Zweck dieser Ressourcengruppe offensichtlicher. Sie können jedoch aus Sicherheitsgründen eine vorhandene Ressourcengruppe basierend auf vorhandenen Berechtigungen auswählen.
 
 1. Verlassen Sie den Azure Resource Graph-Explorer im Azure-Portal, und kehren Sie wieder zurück. Beachten Sie, dass die gespeicherte Abfrage nicht mehr angezeigt wird, und die Registerkarte **Abfrage 1** wieder zu sehen ist.
@@ -99,7 +99,7 @@ Im Gegensatz zu einer privaten Abfrage ist eine freigegebene Abfrage eine Resour
 
    :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Anzeige der freigegebenen Abfrage mit Symbol" border="false":::
 
-   > [!NOTE] 
+   > [!NOTE]
    > Wenn eine gespeicherte Abfrage offen ist und die Registerkarte ihren Namen angezeigt, wird die Abfrage beim Klicken auf die Schaltfläche **Speichern** mit allen vorgenommenen Änderungen gespeichert. Um eine neue gespeicherte Abfrage zu erstellen, wählen Sie **Speichern unter** aus, und fahren Sie so fort, als würden Sie eine ganz neue Abfrage speichern.
 
 ## <a name="discover-shared-queries"></a>Entdecken von freigegebenen Abfragen
@@ -122,7 +122,7 @@ Sie gelangen zur Seite mit Resource Graph-Abfragen, indem Sie im Portalmenü **A
 ### <a name="list-resource-groups-resources"></a>Auflisten von Ressourcengruppenressourcen
 
 Die Resource Graph-Abfrage wird neben anderen Ressourcen aufgelistet, die zu einer Ressourcengruppe gehören.
-Durch Auswählen der Resource Graph-Abfrage wird die Seite für diese Abfrage geöffnet. Die im Kontextmenü und über die Auslassungspunkte verfügbaren Optionen (Zugriff per Rechtsklick) funktionieren genauso wie auf der Seite der Resource Graph-Abfrage.
+Durch Auswählen der Resource Graph-Abfrage wird die Seite für diese Abfrage geöffnet. Die über die Auslassungspunkte und im Kontextmenü verfügbaren Optionen, die durch Auswählen und Halten (oder per Rechtsklick) angezeigt werden, funktionieren genauso wie auf der Seite der Resource Graph-Abfrage.
 
 ### <a name="query-resource-graph"></a>Abfragen von Resource Graph
 
@@ -154,7 +154,7 @@ Wenn Sie mit diesem Tutorial fertig sind, löschen Sie die privaten und freigege
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie private und freigegebene Abfragen erstellt. Fahren Sie mit der Seite mit den Details zur Abfragesprache fort, um weitere Informationen zur Resource Graph-Sprache zu erhalten.
+In diesem Tutorial haben Sie private und freigegebene Abfragen erstellt. Wenn Sie mehr über die Resource Graph-Sprache erfahren möchten, fahren Sie mit der Seite mit den Details zur Abfragesprache fort.
 
 > [!div class="nextstepaction"]
 > [Erfahren Sie mehr über die Abfragesprache](../concepts/query-language.md).
