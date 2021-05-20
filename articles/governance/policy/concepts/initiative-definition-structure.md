@@ -3,12 +3,12 @@ title: Details der Struktur von Initiativendefinitionen
 description: Beschreibt, wie Initiativendefinitionen von Richtlinien verwendet werden, um Richtliniendefinitionen für die Bereitstellung in Azure-Ressourcen in Ihrer Organisation zu gruppieren.
 ms.date: 03/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: edd3f25dd528d1a718c9287c9f30988b87fb73e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7efe34c76df46bb4499def5b92521eedecaee22d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587218"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744945"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Struktur von Azure Policy-Initiativendefinitionen
 
@@ -123,7 +123,7 @@ Kunden können alle für ihre Organisation nützlichen Eigenschaften und Werte i
 
 ## <a name="parameters"></a>Parameter
 
-Parameter vereinfachen Ihre Richtlinienverwaltung, indem sie die Anzahl von Richtliniendefinitionen reduzieren. Es handelt sich dabei z.B. um Parameter wie die folgenden Felder auf einem Formular: `name`, `address`, `city`, `state`. Diese Parameter bleiben immer gleich, allerdings ändern sich ihre Werte auf Grundlage der Einträge des Einzelnen.
+Parameter vereinfachen Ihre Richtlinienverwaltung, indem sie die Anzahl von Richtliniendefinitionen reduzieren. Diese Parameter verhalten sich wie Felder in einem Formular: `name`, `address`, `city`, `state`. Diese Parameter bleiben immer gleich, allerdings ändern sich ihre Werte auf Grundlage der Einträge des Einzelnen.
 Parameter funktionieren beim Erstellen von Richtlinieninitiativen genauso. Wenn Sie Parameter in eine Richtlinieninitiativendefinition einschließen, können Sie sie in den enthaltenen Richtlinien wiederverwenden.
 
 > [!NOTE]

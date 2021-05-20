@@ -11,35 +11,35 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: b4d39492a05ee90c0ba2e081336d7b04579a5c43
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d440a765ba9504ecae351477c1583a45f293b967
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519027"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804411"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Tutorial: Azure Active Directory-Integration in Zscaler Two
 
 In diesem Tutorial erfahren Sie, wie Sie Zscaler Two in Azure Active Directory (Azure AD) integrieren. Die Integration von Zscaler Two in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Zscaler Two hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Zscaler Two anzumelden.
-* Verwalten Sie Ihre Konten zentral im Azure-Portal.
+- Steuern Sie in Azure AD, wer Zugriff auf Zscaler Two hat.
+- Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Zscaler Two anzumelden.
+- Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration in Zscaler Two konfigurieren zu können, ist Folgendes erforderlich:
 
-* Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
-* Zscaler Two-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
+- Zscaler Two-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Zscaler Two unterstützt **SP**-initiiertes einmaliges Anmelden.
+- Zscaler Two unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-* Zscaler Two unterstützt die **Just-In-Time**-Benutzerbereitstellung.
+- Zscaler Two unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
@@ -62,10 +62,10 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Zscaler T
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Zscaler Two die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+   1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+   1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Zscaler Two](#configure-zscaler-two-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Zscaler Two-Testbenutzers](#create-zscaler-two-test-user)** , um ein Pendant von B. Simon in Zscaler Two zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+   1. **[Erstellen eines Zscaler Two-Testbenutzers](#create-zscaler-two-test-user)** , um ein Pendant von B. Simon in Zscaler Two zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -80,48 +80,47 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Zscaler Two-Anwendung verwendete URL ein.
+   Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Zscaler Two-Anwendung verwendete URL ein.
 
-    > [!NOTE]
-    > Sie ersetzen diesen Wert durch die tatsächliche Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den Zscaler Two-Client](https://www.zscaler.com/company/contact). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+   > [!NOTE]
+   > Sie ersetzen diesen Wert durch die tatsächliche Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den Zscaler Two-Client](https://www.zscaler.com/company/contact). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Ihre Zscaler Two-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+1. Ihre Zscaler Two-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![Screenshot: Benutzerattribute mit ausgewähltem Bearbeitungssymbol](common/edit-attribute.png)
+   ![Screenshot: Benutzerattribute mit ausgewähltem Bearbeitungssymbol](common/edit-attribute.png)
 
-6. Darüber hinaus wird von der Zscaler Two-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
-    
-    | Name | Quellattribut |
-    | ---------| ------------ |
-    | memberOf | user.assignedroles |
+1. Darüber hinaus wird von der Zscaler Two-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
 
-    a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
+   | Name     | Quellattribut   |
+   | -------- | ------------------ |
+   | memberOf | user.assignedroles |
 
-    ![Screenshot: Benutzeransprüche mit Option zum Hinzufügen eines neuen Anspruchs](common/new-save-attribute.png)
+   a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![Screenshot des Dialogfelds „Benutzeransprüche verwalten“, in dem Sie die hier beschriebenen Werte eingeben können](common/new-attribute-details.png)
+   ![Screenshot: Benutzeransprüche mit Option zum Hinzufügen eines neuen Anspruchs](common/new-save-attribute.png)
 
-    b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
+   ![Screenshot des Dialogfelds „Benutzeransprüche verwalten“, in dem Sie die hier beschriebenen Werte eingeben können](common/new-attribute-details.png)
 
-    c. Lassen Sie den **Namespace** leer.
+   b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
-    d. Wählen Sie „Source“ als **Attribut** aus.
+   c. Lassen Sie den **Namespace** leer.
 
-    e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
-    
-    f. Klicken Sie auf **Speichern**.
+   d. Wählen Sie „Source“ als **Attribut** aus.
 
-    > [!NOTE]
-    > Klicken Sie [hier](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview), um herauszufinden, wie Sie die Rolle in Azure AD konfigurieren.
+   e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
 
-7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+   f. Klicken Sie auf **Speichern**.
 
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+   > [!NOTE]
+   > Klicken Sie [hier](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui), um herauszufinden, wie Sie die Rolle in Azure AD konfigurieren.
 
-8. Kopieren Sie im Abschnitt **Zscaler Two einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+   ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
+1. Kopieren Sie im Abschnitt **Zscaler Two einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+
+   ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -130,7 +129,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
@@ -151,49 +150,49 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wenn Sie die Konfiguration in Zscaler Two automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
-    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+   ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
 
 2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Zscaler Two einrichten**, um zur Zscaler Two-Anwendung weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Zscaler Two anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
 
-    ![Einrichten des einmaligen Anmeldens](common/setup-sso.png)
+   ![Einrichten des einmaligen Anmeldens](common/setup-sso.png)
 
 3. Wenn Sie Zscaler Two manuell einrichten möchten, öffnen Sie ein neues Webbrowserfenster, melden Sie sich bei der Zscaler Two-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
 
 4. Navigieren Sie zu **Verwaltung > Authentifizierung > Authentifizierungseinstellungen**, und führen Sie die folgenden Schritte aus:
-   
-    ![Screenshot der Zscaler One-Website mit den beschriebenen Schritten](./media/zscaler-two-tutorial/administrator.png "Verwaltung")
 
-    a. Wählen Sie **SAML** als Authentifizierungstyp aus.
+   ![Screenshot der Zscaler One-Website mit den beschriebenen Schritten](./media/zscaler-two-tutorial/administrator.png "Verwaltung")
 
-    b. Klicken Sie auf **Configure SAML**.
+   a. Wählen Sie **SAML** als Authentifizierungstyp aus.
+
+   b. Klicken Sie auf **Configure SAML**.
 
 5. Führen Sie im Fenster **Edit SAML** (SAML bearbeiten) die folgenden Schritte aus, und klicken Sie auf „Speichern“.  
-            
-    ![Benutzer & Authentifizierung verwalten](./media/zscaler-two-tutorial/authentication.png "Benutzer & Authentifizierung verwalten")
-    
-    a. Fügen Sie in das Textfeld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
-    b. Geben Sie im Textfeld **Login Name Attribute** (Anmeldenamensattribut) die Zeichenfolge **NameID** ein.
+   ![Benutzer & Authentifizierung verwalten](./media/zscaler-two-tutorial/authentication.png "Benutzer & Authentifizierung verwalten")
 
-    c. Klicken Sie auf **Upload** (Hochladen), um das Azure-SAML-Signaturzertifikat hochzuladen, das Sie aus dem Azure-Portal unter **Public SSL Certificate** (Öffentliches SSL-Zertifikat) heruntergeladen haben.
+   a. Fügen Sie in das Textfeld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
-    d. Betätigen Sie den Umschalter **Automatische SAML-Bereitstellung aktivieren**.
+   b. Geben Sie im Textfeld **Login Name Attribute** (Anmeldenamensattribut) die Zeichenfolge **NameID** ein.
 
-    e. Geben Sie im Textfeld **User Display Name Attribute** (Benutzeranzeigenamens-Attribut) die Zeichenfolge **displayName** ein, wenn Sie die automatische SAML-Bereitstellung für displayName-Attribute aktivieren möchten.
+   c. Klicken Sie auf **Hochladen**, um das Azure-SAML-Signaturzertifikat hochzuladen, das Sie über das Azure-Portal unter **Öffentliches SSL-Zertifikat** heruntergeladen haben.
 
-    f. Geben Sie im Textfeld **Group Name Attribute** (Gruppennamensattribut) die Zeichenfolge **memberOf** ein, wenn Sie die automatische SAML-Bereitstellung für memberOf-Attribute aktivieren möchten.
+   d. Betätigen Sie den Umschalter **Automatische SAML-Bereitstellung aktivieren**.
 
-    g. Geben Sie unter **Department Name Attribute** (Abteilungsnamensattribut) die Zeichenfolge **department** ein, wenn Sie die automatische SAML-Bereitstellung für Abteilungsattribute aktivieren möchten.
+   e. Geben Sie im Textfeld **User Display Name Attribute** (Benutzeranzeigenamens-Attribut) die Zeichenfolge **displayName** ein, wenn Sie die automatische SAML-Bereitstellung für displayName-Attribute aktivieren möchten.
 
-    h. Klicken Sie auf **Speichern**.
+   f. Geben Sie im Textfeld **Group Name Attribute** (Gruppennamensattribut) die Zeichenfolge **memberOf** ein, wenn Sie die automatische SAML-Bereitstellung für memberOf-Attribute aktivieren möchten.
+
+   g. Geben Sie unter **Department Name Attribute** (Abteilungsnamensattribut) die Zeichenfolge **department** ein, wenn Sie die automatische SAML-Bereitstellung für Abteilungsattribute aktivieren möchten.
+
+   h. Klicken Sie auf **Speichern**.
 
 6. Führen Sie auf der Dialogseite **Benutzerauthentifizierung konfigurieren** die folgenden Schritte aus:
 
-    ![Screenshot des Dialogfelds „Benutzerauthentifizierung konfigurieren“ mit ausgewählter Option „Aktivieren“](./media/zscaler-two-tutorial/activation.png)
+   ![Screenshot des Dialogfelds „Benutzerauthentifizierung konfigurieren“ mit ausgewählter Option „Aktivieren“](./media/zscaler-two-tutorial/activation.png)
 
-    a. Bewegen Sie den Mauszeiger unten links auf das Menü **Aktivierung**.
+   a. Bewegen Sie den Mauszeiger unten links auf das Menü **Aktivierung**.
 
-    b. Klicken Sie auf **Aktivieren**.
+   b. Klicken Sie auf **Aktivieren**.
 
 ## <a name="configuring-proxy-settings&quot;></a>Konfigurieren von Proxyeinstellungen
 
@@ -201,49 +200,48 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Starten Sie **Internet Explorer**.
 
-2. Wählen Sie im Menü **Extras** die Option **Internetoptionen**, um das Dialogfeld **Internetoptionen** zu öffnen.   
-    
-     ![Internetoptionen](./media/zscaler-two-tutorial/internet.png &quot;Internetoptionen")
+2. Wählen Sie im Menü **Extras** die Option **Internetoptionen**, um das Dialogfeld **Internetoptionen** zu öffnen.
 
-3. Klicken Sie auf die Registerkarte **Verbindungen** .   
-  
-     ![Verbindungen](./media/zscaler-two-tutorial/ic769493.png "Verbindungen")
+   ![Internetoptionen](./media/zscaler-two-tutorial/internet.png &quot;Internetoptionen")
+
+3. Klicken Sie auf die Registerkarte **Verbindungen** .
+
+   ![Verbindungen](./media/zscaler-two-tutorial/ic769493.png "Verbindungen")
 
 4. Klicken Sie zum Öffnen des Dialogfelds **LAN-Einstellungen** auf **LAN-Einstellungen**.
 
-5. Führen Sie im Abschnitt "Proxyserver" die folgenden Schritte aus:   
-   
-    ![Proxyserver](./media/zscaler-two-tutorial/proxy.png "Proxyserver")
+5. Führen Sie im Abschnitt "Proxyserver" die folgenden Schritte aus:
 
-    a. Wählen Sie **Proxyserver für LAN verwenden** aus.
+   ![Proxyserver](./media/zscaler-two-tutorial/proxy.png "Proxyserver")
 
-    b. Geben Sie in das Textfeld „Adresse“ die Adresse **gateway.Zscaler Two.net** ein.
+   a. Wählen Sie **Proxyserver für LAN verwenden** aus.
 
-    c. Geben Sie im Textfeld „Port“ **80** ein.
+   b. Geben Sie in das Textfeld „Adresse“ die Adresse **gateway.Zscaler Two.net** ein.
 
-    d. Wählen Sie **Proxyserver für lokale Adressen umgehen**.
+   c. Geben Sie im Textfeld „Port“ **80** ein.
 
-    e. Klicken Sie zum Schließen des Dialogfelds **Einstellungen für lokales Netzwerk** auf **OK**.
+   d. Wählen Sie **Proxyserver für lokale Adressen umgehen**.
+
+   e. Klicken Sie zum Schließen des Dialogfelds **Einstellungen für lokales Netzwerk** auf **OK**.
 
 6. Klicken Sie zum Schließen des Dialogfelds **Internetoptionen** auf **OK**.
-
 
 ### <a name="create-zscaler-two-test-user"></a>Erstellen eines Zscaler Two-Testbenutzers
 
 In diesem Abschnitt wird in Zscaler Two ein Benutzer namens Britta Simon erstellt. Zscaler Two unterstützt die Just-in-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Zscaler Two vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
->[!Note]
->Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam von Zscaler Two](https://www.zscaler.com/company/contact).
+> [!Note]
+> Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam von Zscaler Two](https://www.zscaler.com/company/contact).
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Zscaler Two weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+- Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Zscaler Two weitergeleitet, wo Sie den Anmeldeflow initiieren können.
 
-* Rufen Sie direkt die Zscaler Two-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+- Rufen Sie direkt die Zscaler Two-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Zscaler Two“ klicken, werden Sie zur Anmelde-URL für Zscaler Two umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+- Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Zscaler Two“ klicken, werden Sie zur Anmelde-URL für Zscaler Two umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

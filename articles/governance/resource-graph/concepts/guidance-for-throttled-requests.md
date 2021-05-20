@@ -4,12 +4,12 @@ description: Lernen Sie, parallel zu gruppieren, zu staffeln, zu paginieren und 
 ms.date: 04/09/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 891d5951670dd6022b66ae2936ee855f73f8b33a
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 87d94da5ae247f80d1d7eb26e7aea3d9f582b370
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107283540"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751965"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Leitfaden für gedrosselte Anforderungen in Azure Resource Graph
 
@@ -31,7 +31,7 @@ In jeder Abfrageantwort fügt Azure Resource Graph zwei Drosselungsheader ein:
 - `x-ms-user-quota-remaining` (int): Das verbleibende Ressourcenkontingent für den Benutzer. Dieser Wert entspricht der Anzahl von Abfragen.
 - `x-ms-user-quota-resets-after` (hh:mm:ss): Der Zeitraum, bis die Kontingentnutzung eines Benutzers zurückgesetzt wird.
 
-Wenn ein Sicherheitsprinzipal Zugriff auf mehr als 5000 Abonnements innerhalb des [Abfragebereichs](./query-language.md#query-scope) der Mandanten- oder Verwaltungsgruppe hat, ist die Antwort auf die ersten 5000 Abonnements begrenzt, und der Header `x-ms-tenant-subscription-limit-hit` wird als `true` zurückgegeben.
+Wenn ein Sicherheitsprinzipal Zugriff auf mehr als 5.000 Abonnements innerhalb des [Abfragebereichs](./query-language.md#query-scope) der Mandanten- oder Verwaltungsgruppe hat, ist die Antwort auf die ersten 5.000 Abonnements begrenzt, und der Header `x-ms-tenant-subscription-limit-hit` wird als `true` zurückgegeben.
 
 Zur Veranschaulichung der Funktionsweise von Headern sehen wir uns eine Abfrageantwort mit dem Header und den Werten von `x-ms-user-quota-remaining: 10` und `x-ms-user-quota-resets-after: 00:00:03` an.
 
@@ -174,7 +174,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
         var azureOperationResponse = await this.resourceGraphClient
             .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
             .ConfigureAwait(false);
-        
+
         var responseHeaders = azureOperationResponse.response.Headers;
         int remainingQuota = /* read and parse x-ms-user-quota-remaining from responseHeaders */
         TimeSpan resetAfter = /* read and parse x-ms-user-quota-resets-after from responseHeaders */
@@ -190,7 +190,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="pagination"></a>Paginierung
 
-Da Azure Resource Graph in einer einzelnen Abfrageantwort höchstens 1000 Einträge zurückgibt, müssen Sie Ihre Abfragen möglicherweise [paginieren](./work-with-data.md#paging-results), um das vollständige Dataset zu erhalten, das Sie suchen. Einige Azure Resource Graph-Clients verarbeiten die Paginierung jedoch unterschiedlich.
+Da Azure Resource Graph in einer einzelnen Abfrageantwort höchstens 1.000 Einträge zurückgibt, müssen Sie Ihre Abfragen möglicherweise [paginieren](./work-with-data.md#paging-results), um das vollständige Dataset zu erhalten, das Sie suchen. Einige Azure Resource Graph-Clients verarbeiten die Paginierung jedoch unterschiedlich.
 
 - C# SDK
 
@@ -219,7 +219,7 @@ Da Azure Resource Graph in einer einzelnen Abfrageantwort höchstens 1000 Eintr
 
 - Azure CLI/Azure PowerShell
 
-  Wenn Sie die Azure CLI oder Azure PowerShell verwenden, werden Abfragen an Azure Resource Graph automatisch paginiert, um maximal 5000 Einträge zu fetchen. Die Abfrageergebnisse geben eine kombinierte Liste mit Einträgen aus allen paginierten Aufrufen zurück. In diesem Fall nutzt eine einzelne paginierte Abfrage (je nach Anzahl der Einträge im Abfrageergebnis) möglicherweise mehr als ein Abfragekontingent. Im folgenden Beispiel werden bei der einzelnen Ausführung einer Abfrage etwa bis zu fünf Abfragekontingente verwendet:
+  Wenn Sie die Azure CLI oder Azure PowerShell verwenden, werden Abfragen an Azure Resource Graph automatisch paginiert, um maximal 5.000 Einträge zu fetchen. Die Abfrageergebnisse geben eine kombinierte Liste mit Einträgen aus allen paginierten Aufrufen zurück. In diesem Fall nutzt eine einzelne paginierte Abfrage (je nach Anzahl der Einträge im Abfrageergebnis) möglicherweise mehr als ein Abfragekontingent. Im folgenden Beispiel werden bei der einzelnen Ausführung einer Abfrage etwa bis zu fünf Abfragekontingente verwendet:
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000

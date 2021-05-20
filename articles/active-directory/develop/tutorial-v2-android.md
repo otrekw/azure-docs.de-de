@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7d297d96ba764c812a3d4db6d9383122c73cfe31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f54d4a704779aab1b84a92ef3b152e9319c55e89
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103140"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713358"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Android-Anwendung
 
@@ -152,18 +152,36 @@ Falls Sie noch nicht über eine Android-Anwendung verfügen, gehen Sie wie folgt
 
 ### <a name="add-msal-to-your-project"></a>Hinzufügen von MSAL zu Ihrem Projekt
 
-1. Navigieren Sie im Android Studio-Projektfenster zu **app** > **src** > **build.gradle**, und fügen Sie Folgendes hinzu:
+1. Navigieren Sie im Android Studio-Projektfenster zu **app** > **build.gradle**, und fügen Sie Folgendes hinzu:
 
     ```gradle
-    repositories{
+    apply plugin: 'com.android.application'
+   
+    allprojects {
+     repositories {
+        mavenCentral()
+        google()
+        mavenLocal()
+        maven {
+            url 'https://pkgs.dev.azure.com/MicrosoftDeviceSDK/DuoSDK-Public/_packaging/Duo-SDK-Feed/maven/v1'
+        }
+        maven {
+            name "vsts-maven-adal-android"
+            url "https://identitydivision.pkgs.visualstudio.com/_packaging/AndroidADAL/maven/v1"
+            credentials {
+                username System.getenv("ENV_VSTS_MVN_ANDROIDADAL_USERNAME") != null ? System.getenv("ENV_VSTS_MVN_ANDROIDADAL_USERNAME") : project.findProperty("vstsUsername")
+                password System.getenv("ENV_VSTS_MVN_ANDROIDADAL_ACCESSTOKEN") != null ? System.getenv("ENV_VSTS_MVN_ANDROIDADAL_ACCESSTOKEN") : project.findProperty("vstsMavenAccessToken")
+            }
+        }
         jcenter()
+     }
     }
     dependencies{
-        implementation 'com.microsoft.identity.client:msal:2.+'
-        implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
-    }
+     implementation 'com.microsoft.identity.client:msal:2.+'
+     implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
+     }
     packagingOptions{
-        exclude("META-INF/jersey-module-version")
+     exclude("META-INF/jersey-module-version")
     }
     ```
     [Weitere Informationen zum Microsoft Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-java/)

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 5585eb210b54dfa016d25c430256508e1b0b9f61
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 9285928c94f0e1ce3de37f357aed57c32b5be01d
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076886"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713034"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Tutorial: Onlinemigration von SQL Server zu Azure SQL Managed Instance mithilfe von DMS
 
@@ -83,6 +83,9 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Stellen Sie sicher, dass das Dienstkonto, unter dem die SQL Server-Quellinstanz ausgeführt wird, über Schreibberechtigungen für die Netzwerkfreigabe verfügt, die Sie erstellt haben, und dass das Computerkonto für den Quellserver über Lese-/Schreibzugriff auf dieselbe Freigabe verfügt.
 * Notieren Sie sich einen Windows-Benutzer (mit Kennwort), der Vollzugriff auf die von Ihnen zuvor erstellte Netzwerkfreigabe hat. Azure Database Migration Service verwendet die Benutzeranmeldeinformationen, um die Sicherungsdateien für Wiederherstellungsvorgänge in den Azure Storage-Container hochzuladen.
 * Erstellen Sie eine Azure Active Directory-Anwendungs-ID, die den Anwendungs-ID-Schlüssel generiert, den Azure Database Migration Service für die Verbindungsherstellung mit dem Ziel Azure Database Managed Instance und Azure Storage-Container verwenden kann. Weitere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../active-directory/develop/howto-create-service-principal-portal.md).
+
+  > [!NOTE]
+  > Die vom Dienst verwendete Anwendungs-ID unterstützt Azure Database Migration Service (kennwortbasierte)-Authentifizierung für Dienstprinzipale. Die zertifikatbasierte Authentifizierung wird nicht unterstützt.
 
   > [!NOTE]
   > Azure Database Migration Service erfordert die Berechtigung „Mitwirkender“ für das Abonnement für die angegebene Anwendungs-ID. Alternativ können Sie auch benutzerdefinierte Rollen erstellen, die die speziellen Berechtigungen gewähren, die Azure Database Migration Service erfordert. Eine Schrittanleitung zur Verwendung benutzerdefinierter Rollen finden Sie im Artikel [Benutzerdefinierte Rollen für die Onlinemigration von SQL Server zu SQL Managed Instance](./resource-custom-roles-sql-db-managed-instance.md).
@@ -209,7 +212,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
 
 1. Geben Sie auf dem Bildschirm **Migrationseinstellungen konfigurieren** die folgenden Details an:
 
-    | Parameter | BESCHREIBUNG |
+    | Parameter | Beschreibung |
     |--------|---------|
     |**SMB-Netzwerkadressfreigabe** | Die lokale SMB-Netzwerkfreigabe oder Azure-Dateifreigabe, die alle vollständigen Datenbanksicherungsdateien sowie Sicherungsdateien des Transaktionsprotokolls enthält, die Azure Database Migration Service für die Migration verwenden kann. Das Dienstkonto, unter dem die SQL Server-Quellinstanz ausgeführt wird, muss über Lese-/Schreibberechtigungen für diese Netzwerkfreigabe verfügen. Geben Sie in der Netzwerkfreigabe einen FQDN oder IP-Adressen des Servers an, wie z.B. „\\\servername.domainname.com\backupfolder\\“ oder „\IP address\backupfolder“. Zur Verbesserung der Leistung wird empfohlen, für jede zu migrierende Datenbank einen eigenen Ordner zu verwenden. Sie können den Dateifreigabepfad auf Datenbankebene mithilfe der Option **Erweiterte Einstellungen** angeben. Wenn beim Herstellen einer Verbindung mit der SMB-Freigabe Probleme auftreten, finden Sie weitere Informationen unter [Bekannte Probleme/Einschränkungen bei Onlinemigrationsvorgängen zu verwalteten Azure SQL-Instanzen](known-issues-azure-sql-db-managed-instance-online.md#smb-file-share-connectivity). |
     |**Benutzername** | Achten Sie darauf, dass der Windows-Benutzer eine Berechtigung für Vollzugriff auf die von Ihnen angegebene Netzwerkfreigabe besitzt. Azure Database Migration Service nimmt die Anmeldeinformationen des Benutzers an, um die Sicherungsdateien für Wiederherstellungsvorgänge in den Azure Storage-Container hochzuladen. Verwenden Sie bei der Nutzung der Azure-Dateifreigabe als Benutzernamen den Speicherkontonamen, dem „AZURE\“ vorangestellt ist. |

@@ -3,12 +3,12 @@ title: Abrufen von Daten zur Richtlinienkonformität
 description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen Ihrer Azure-Ressourcen abrufen.
 ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: e1a9a7fcbbcbd7f490b2f665b40c7ed922ec61ee
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: fcc82e2f86746f68000e9cfcafedf2d7b8b3105d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864593"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733566"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -55,22 +55,21 @@ Dieser Scan ist ein asynchroner Prozess.
 
 Verwenden Sie die [Aktion „Azure Policy-Konformitätsprüfung“](https://github.com/marketplace/actions/azure-policy-compliance-scan), um von Ihrem [GitHub-Workflow](https://docs.github.com/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows) aus für eine oder mehrere Ressourcen, Ressourcengruppen oder Abonnements bei Bedarf einen Auswertungsscan auszulösen und den Workflow basierend auf dem Konformitätsstatus der Ressourcen zu steuern. Sie können den Workflow auch so konfigurieren, dass er zu einer geplanten Zeit abläuft, sodass Sie zu einem geeigneten Zeitpunkt den neuesten Konformitätsstatus erhalten. Optional kann mit dieser GitHub-Aktion ein Bericht über den Konformitätsstatus der überprüften Ressourcen zur weiteren Analyse oder zur Archivierung erstellt werden.
 
-Im folgenden Beispiel wird eine Konformitätsprüfung für ein Abonnement ausgeführt. 
+Im folgenden Beispiel wird eine Konformitätsprüfung für ein Abonnement ausgeführt.
 
 ```yaml
 on:
-  schedule:    
+  schedule:
     - cron:  '0 8 * * *'  # runs every morning 8am
 jobs:
-  assess-policy-compliance:    
+  assess-policy-compliance:
     runs-on: ubuntu-latest
-    steps:         
+    steps:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}} 
+        creds: ${{secrets.AZURE_CREDENTIALS}}
 
-    
     - name: Check for resource compliance
       uses: azure/policy-compliance-scan@v0
       with:
@@ -115,9 +114,9 @@ Während der Kompatibilitätsüberprüfung ergibt die Überprüfung der `$job`-O
 ```azurepowershell-interactive
 $job
 
-Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
---     ----            -------------   -----         -----------     --------             -------
-2      Long Running O… AzureLongRunni… Running       True            localhost            Start-AzPolicyCompliance…
+Id     Name              PSJobTypeName     State         HasMoreData     Location             Command
+--     ----              -------------     -----         -----------     --------             -------
+2      Long Running O... AzureLongRunni... Running       True            localhost            Start-AzPolicyCompliance...
 ```
 
 Wenn die Kompatibilitätsüberprüfung abgeschlossen ist, ändert sich die **Status**-Eigenschaft in _Abgeschlossen_.
@@ -181,7 +180,7 @@ In einer Zuweisung ist eine Ressource **nicht konform**, wenn dafür die Richtli
 Angenommen, Sie verfügen über die Ressourcengruppe ContosoRG mit einigen Speicherkonten (rot hervorgehoben), die in öffentlichen Netzwerken verfügbar gemacht werden.
 
 :::image type="complex" source="../media/getting-compliance-data/resource-group01.png" alt-text="Diagramm der Speicherkonten, die für öffentliche Netzwerke in der Ressourcengruppe „ContosoRG“ verfügbar gemacht werden." border="false":::
-   Im Diagramm werden Bilder für fünf Speicherkonten in der Ressourcengruppe „ContosoRG“ angezeigt.  Die Speicherkonten 1 und 3 sind blau, und die Speicherkonten zwei, vier und fünf sind rot.
+   Im Diagramm werden Bilder für fünf Speicherkonten in der Ressourcengruppe „ContosoRG“ angezeigt. Die Speicherkonten 1 und 3 sind blau, und die Speicherkonten zwei, vier und fünf sind rot.
 :::image-end:::
 
 In diesem Beispiel ist Vorsicht aufgrund von Sicherheitsrisiken geboten. Nachdem Sie nun eine Richtlinienzuweisung erstellt haben, wird sie für alle eingeschlossenen und nicht ausgenommenen Speicherkonten in der Ressourcengruppe „ContosoRG“ ausgewertet. Sie überprüft die drei nicht konformen Speicherkonten und ändert den Status daher jeweils in **nicht konform**.
@@ -229,7 +228,7 @@ Ereignisse (Anfügung, Überwachung, Verweigerung, Bereitstellung, Änderung), d
 
 :::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Screenshot der Registerkarte „Komponentenkonformität“ und Konformitätsdetails für eine Zuweisung im Ressourcenanbietermodus" border="false":::
 
-Wenn Sie sich wieder auf der Seite für Ressourcenkonformität befinden, klicken Sie mit der rechten Maustaste auf die Zeile des Ereignisses, über das Sie gern mehr Details erhalten möchten, und wählen Sie **Aktivitätsprotokolle anzeigen** aus. Die Seite des Aktivitätsprotokolls wird geöffnet und wird durch die Suche gefiltert. Die Details für die Zuweisung und Ereignisse werden angezeigt. Das Aktivitätsprotokoll stellt zusätzlichen Kontext sowie Informationen über diese Ereignisse bereit.
+Wenn Sie sich wieder auf der Seite für Ressourcenkonformität befinden, öffnen Sie das Kontextmenü der Zeile des Ereignisses, über das Sie mehr Details erhalten möchten, und wählen Sie **Aktivitätsprotokolle anzeigen** aus. Die Seite des Aktivitätsprotokolls wird geöffnet und wird durch die Suche gefiltert. Die Details für die Zuweisung und Ereignisse werden angezeigt. Das Aktivitätsprotokoll stellt zusätzlichen Kontext sowie Informationen über diese Ereignisse bereit.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Screenshot des Aktivitätsprotokolls für Azure Policy -Aktivitäten und -Auswertungen" border="false":::
 

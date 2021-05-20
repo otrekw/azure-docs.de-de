@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/10/2019
+ms.date: 05/10/2021
 ms.author: jeedes
-ms.openlocfilehash: b3b62e7c16106fd9d94d4a3438331dab4ce8b6e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afad903734fded062681f18683cb74492993fe1c
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539042"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684215"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung
 
@@ -162,6 +162,8 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
   Wird das Problem dadurch immer noch nicht behoben, wenden Sie sich an den ServiceNow-Support, und bitten Sie ihn, zur Problembehandlung das SOAP-Debuggen zu aktivieren. 
 
 * Der Azure AD-Bereitstellungsdienst wird zurzeit unter bestimmten [IP-Adressbereichen](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges) betrieben. Falls erforderlich, können Sie andere IP-Adressbereiche einschränken und diese bestimmten IP-Adressbereiche der Zulassungsliste Ihrer Anwendung hinzufügen. Dadurch wird der Datenverkehrsfluss vom Azure AD-Bereitstellungsdienst zu Ihrer Anwendung ermöglicht.
+
+* Selbstgehostete ServiceNow-Instanzen werden nicht unterstützt. 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

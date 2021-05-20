@@ -3,16 +3,16 @@ title: Blaupausenbeispiel für den Vergleichstest für die Azure-Sicherheit – 
 description: Übersicht über das Blaupausenbeispiel für den Vergleichstest für die Azure-Sicherheit Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Kontrollen.
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 58e8c3972b0f05e5b0a3f15da0dfd3eae301ad31
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 0e4a8eab295690770745362480251a4a8c2c3959
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386991"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757851"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Blaupausenbeispiel für den Azure-Sicherheitsvergleichstest
 
-Das Blaupausenbeispiel für den Azure-Sicherheitsvergleichstest bietet mithilfe von [Azure Policy](../../policy/overview.md) Schutzmaßnahmen für Governance, die Ihnen beim Bewerten bestimmter Steuerungen des [Azure-Sicherheitsvergleichstest v1](../../../security/benchmarks/overview.md) helfen. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, in der sie die Implementierung von Steuerungen des Vergleichstests für die Azure-Sicherheit beabsichtigen.
+Das Blueprint-Beispiel für den Azure-Sicherheitsvergleichstest bietet mithilfe von [Azure Policy](../../policy/overview.md) Schutzmaßnahmen für Governance, die Ihnen beim Bewerten bestimmter Steuerungen des [Azure-Sicherheitsvergleichstest v1](../../../security/benchmarks/overview.md) helfen. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, in der sie die Implementierung von Steuerungen des Vergleichstests für die Azure-Sicherheit beabsichtigen.
 
 ## <a name="control-mapping"></a>Steuerungszuordnung
 

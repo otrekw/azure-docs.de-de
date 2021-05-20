@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d146be642050c169dabf009352a34ad595fab84
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646383"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746421"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Häufig gestellte Fragen (FAQs) zur Bereitstellung hybrider FIDO2-Sicherheitsschlüssel in Azure AD 
 
@@ -65,6 +65,10 @@ Weitere Informationen zur Registrierung und Verwendung von FIDO2-Sicherheitsschl
 ### <a name="is-there-a-way-for-admins-to-provision-the-keys-for-the-users-directly"></a>Können Administratoren die Schlüssel direkt für die Benutzer bereitstellen?
 
 Nein, das ist derzeit nicht möglich.
+
+### <a name="why-i-am-getting-notallowederror-in-the-browser-when-registering-fido2-keys"></a>Warum erhalte ich im Browser „NotAllowedError“, wenn ich FIDO2-Schlüssel registriere?
+
+Sie erhalten „NotAllowedError“ von der Fido2-Schlüsselregistrierungsseite. Dies geschieht in der Regel, wenn sich der Benutzer im privaten Fenster (Inkognito) befindet oder einen Remotedesktop verwendet, auf dem der Zugriff auf den privaten FIDO2-Schlüssel nicht möglich ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

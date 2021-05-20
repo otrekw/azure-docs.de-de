@@ -11,17 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 74ce36652b1a00ac6813c62a17d44e2a5486645f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cea5ed5d75bbba4e2e6cdc8793bf5ce7503a5912
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831711"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755349"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Tutorial:  Anpassen des Dashboards für Bediener und Verwalten von Geräten in Azure IoT Central
 
 
-In diesem Tutorial erfahren Sie, wie Sie als Ersteller das Bedienerdashboard in Ihrer Azure IoT Central-Anwendung für die In-Store-Analyse anpassen können. Anwendungsbediener können das angepasste Dashboard verwenden, um die Anwendung auszuführen und die angeschlossenen Geräte zu verwalten.
+In diesem Tutorial erfahren Sie, wie Sie das Dashboard für Operators in Ihrer Azure IoT Central-Anwendung für die In-Store-Analyse anpassen können. Anwendungsbediener können das angepasste Dashboard verwenden, um die Anwendung auszuführen und die angeschlossenen Geräte zu verwalten.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]

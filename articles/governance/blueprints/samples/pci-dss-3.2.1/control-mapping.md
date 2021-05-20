@@ -3,12 +3,12 @@ title: Steuerungen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 description: Steuerungszuordnung des Blaupausenbeispiels „Payment Card Industry Data Security Standard v3.2.1“ zu Azure Policy und Azure RBAC
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 7011f0b55e73f193fb85881ed18812de97876fda
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 5d45e78af9bb07d433ea5aa52581fdbda6d1efea
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166665"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756951"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels PCI-DSS v3.2.1
 
@@ -59,12 +59,11 @@ Mit dieser Blaupause können Sie Sicherheitsrisiken im Informationssystem verwal
 Bei nur einem Azure-Abonnementbesitzer ist keine administrative Redundanz möglich. Im umgekehrten Fall können zu viele Azure-Abonnementbesitzer das Potenzial einer Sicherheitsverletzung durch ein kompromittiertes Besitzerkonto erhöhen. Mit dieser Blaupause können Sie eine angemessene Anzahl von Azure-Abonnementbesitzern beibehalten, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die die Anzahl der Besitzer für Azure-Abonnements überwachen. Über die Verwaltung von Berechtigungen für Abonnementbesitzer können Sie eine entsprechende Aufgabentrennung implementieren.
 
 - Ihrem Abonnement sollte mehr als ein Besitzer zugewiesen sein.
-- Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein. 
+- Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2, 7.2.1, 8.3.1.a und 8.3.1.b Verwaltung von Rechten für den privilegierten Zugriff
 
-Mit dieser Blaupause können Sie Rechte für den privilegierten Zugriff einschränken und steuern, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, um externe Konten mit Besitzer-, Schreib- und/oder Leseberechtigungen und Mitarbeiterkonten mit Besitzer- und/oder Schreibberechtigungen ohne aktivierte mehrstufige Authentifizierung zu überwachen. Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Azure-Ressourcen hat. Wenn Sie wissen, wo benutzerdefinierte Azure RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte Azure RBAC-Regeln fehleranfällig sind. Diese Blaupause weist auch [Azure Policy](../../../policy/overview.md)-Definitionen zu, um die Verwendung der Azure Active Directory-Authentifizierung für SQL-Server-Instanzen zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung vereinfacht die Verwaltung von Berechtigungen und zentralisiert die Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft  
--Diensten.
+Mit dieser Blaupause können Sie Rechte für den privilegierten Zugriff einschränken und steuern, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, um externe Konten mit Besitzer-, Schreib- und/oder Leseberechtigungen und Mitarbeiterkonten mit Besitzer- und/oder Schreibberechtigungen ohne aktivierte mehrstufige Authentifizierung zu überwachen. Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Azure-Ressourcen hat. Wenn Sie wissen, wo benutzerdefinierte Azure RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte Azure RBAC-Regeln fehleranfällig sind. Diese Blaupause weist auch [Azure Policy](../../../policy/overview.md)-Definitionen zu, um die Verwendung der Azure Active Directory-Authentifizierung für SQL-Server-Instanzen zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung vereinfacht die Verwaltung von Berechtigungen und zentralisiert die Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten.
 
 - Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
 - Externe Konten mit Schreibberechtigungen sollten aus Ihrem Abonnement entfernt werden.
@@ -87,7 +86,8 @@ Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Si
 
 ## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 Entfernung oder Anpassung von Zugriffsrechten
 
-Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Ressourcen in Azure hat. Mithilfe von Azure Active Directory und Azure RBAC können Sie Benutzerrollen aktualisieren, um Organisationsänderungen umzusetzen. Bei Bedarf kann die Anmeldung für Konten blockiert werden (oder Konten können entfernt werden), wodurch die Zugriffsrechte für Azure-Ressourcen sofort entfernt werden. Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zur Überprüfung des veralteten Kontos zu, die bei der Entfernung berücksichtigt werden sollten.
+Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Ressourcen in Azure hat.
+Mithilfe von Azure Active Directory und Azure RBAC können Sie Benutzerrollen aktualisieren, um Organisationsänderungen umzusetzen. Bei Bedarf kann die Anmeldung für Konten blockiert werden (oder Konten können entfernt werden), wodurch die Zugriffsrechte für Azure-Ressourcen sofort entfernt werden. Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zur Überprüfung des veralteten Kontos zu, die bei der Entfernung berücksichtigt werden sollten.
 
 - Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.
 - Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.

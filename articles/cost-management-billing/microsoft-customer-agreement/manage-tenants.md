@@ -6,15 +6,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 05/05/2021
 ms.author: banders
 ms.reviewer: baolcsva
-ms.openlocfilehash: dc34d0f12430838be29897ccc5cbeee382ecaa2b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a1d66e1a28717feb66bc223d10ae44e8d5457728
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107485588"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747861"
 ---
 # <a name="manage-tenants-in-your-microsoft-customer-agreement-billing-account"></a>Verwalten von Mandanten in Ihrem Abrechnungskonto der Microsoft-Kundenvereinbarung
 
@@ -43,6 +43,24 @@ Abrechnungsbesitzer können Abonnements erstellen, wenn sie über die [entsprech
 
 - Sie können Abonnements von anderen Mandanten mit Ihrem Abrechnungskonto der Microsoft-Kundenvereinbarung verknüpfen. Wenn Sie den Abrechnungsbesitz eines Abonnements übernehmen, ändert sich nur die Rechnungsstellung. Dies hat keine Auswirkungen auf den Dienstmandanten oder die Azure RBAC-Rollen.
 - Um den Abonnementbesitzer im Dienstmandanten zu ändern, müssen Sie das [Abonnement in ein anderes Azure Active Directory-Verzeichnis übertragen](../../role-based-access-control/transfer-subscription.md).
+
+Ein MCA-Abrechnungskonto wird von einem einzelnen Mandanten/Verzeichnis verwaltet. Das Abrechnungskonto steuert nur die Abrechnung für die Abonnements in seinem Mandanten. Sie können jedoch eine Übertragung des Abrechnungsbesitzes verwenden, um ein Abonnement mit einem Abrechnungskonto in einem anderen Mandanten zu verknüpfen.
+
+### <a name="billing-ownership-transfer"></a>Übertragen des Abrechnungsbesitzes
+
+Eine Übertragung des Abrechnungsbesitzes ändert nur die Rechnungsstellung für ein einzelnes Abonnement. Die Benutzer- und Ressourcenverwaltung für das Abonnement ändert sich nicht.
+
+Bei der Übertragung des Abrechnungsbesitzes geschehen zwei Dinge:
+
+- Der ursprüngliche Abrechnungsbesitz des Abonnements wird entfernt.
+- Der Abonnementabrechnungsbesitz ist mit dem Zielabrechnungskonto *verknüpft*, das sich in einem anderen Mandanten/Verzeichnis befinden kann.
+
+Die Übertragung des Abrechnungsbesitzes hat keine Auswirkungen auf:
+
+- Benutzer
+- Ressourcen
+- Azure RBAC-Berechtigungen
+
 
 ## <a name="add-guest-users-to-your-microsoft-customer-agreement-tenant"></a>Hinzufügen von Gastbenutzern zum Mandanten Ihrer Microsoft-Kundenvereinbarung
 

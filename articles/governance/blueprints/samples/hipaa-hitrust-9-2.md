@@ -3,16 +3,17 @@ title: 'HIPAA HITRUST 9.2-Blaupausenbeispiel: Übersicht'
 description: Enthält eine Übersicht über das HIPAA HITRUST 9.2-Blaupausenbeispiel. Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer HIPAA HITRUST 9.2-Steuerungen.
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 168946319c11f31ee41594d82d9ff186dea232cd
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: eda98807a48a43132b9bbf6c7f9b6293aefdbacb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386583"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757149"
 ---
 # <a name="hipaa-hitrust-92-blueprint-sample"></a>HIPAA HITRUST 9.2-Blaupausenbeispiel
 
-Im Blaupausenbeispiel „HIPAA HITRUST 9.2“ werden mithilfe von [Azure Policy](../../policy/overview.md) Schutzmaßnahmen für Governance bereitgestellt, die Ihnen beim Bewerten bestimmter HIPAA HITRUST 9.2-Steuerungen helfen. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, für die HIPAA HITRUST 9.2-Steuerungen implementiert werden müssen.
+Im Blaupausenbeispiel „HIPAA HITRUST 9.2“ werden mithilfe von [Azure Policy](../../policy/overview.md) Schutzmaßnahmen für Governance bereitgestellt, die zum Bewerten bestimmter HIPAA HITRUST 9.2-Steuerungen hilfreich sind.
+Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, für die HIPAA HITRUST 9.2-Steuerungen implementiert werden müssen.
 
 ## <a name="control-mapping"></a>Steuerungszuordnung
 

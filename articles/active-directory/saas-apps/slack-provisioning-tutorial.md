@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 92c2ae13b840d7a73d86365ce88584bcafc878e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 673dca65726a4258e267e8dd3e403329b47f6d98
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181457"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739977"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
 
@@ -36,9 +36,12 @@ Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Slack und Azure AD ausführ
 Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * [Einen Azure AD-Mandanten](../develop/quickstart-create-new-tenant.md)
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
 * Einen Slack-Mandanten, für den mindestens der [Plus-Plan](https://aadsyncfabric.slack.com/pricing) aktiviert ist.
 * Ein Benutzerkonto mit Teamadministratorberechtigungen in Slack.
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
 1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](../app-provisioning/user-provisioning.md).
@@ -125,6 +128,7 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
    |profileUrl|String|
    |timezone|String|
    |userType|String|
+   |preferredLanguage|String|
    |urn:scim:schemas:extension:enterprise:1.0.department|String|
    |urn:scim:schemas:extension:enterprise:1.0.manager|Verweis|
    |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|String|

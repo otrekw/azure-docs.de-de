@@ -1,17 +1,17 @@
 ---
 title: Datenblatt für Azure Percept DK
 description: Das Datenblatt für Azure Percept DK enthält ausführliche Informationen zu Gerätespezifikationen.
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 0c9f848827db452710b4bca355aae0db99a2c95c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a8e06e99730388a25f4d00b016f90cd74c336fbe
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027362"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742443"
 ---
 # <a name="azure-percept-dk-datasheet"></a>Datenblatt für Azure Percept DK
 
@@ -33,8 +33,8 @@ ms.locfileid: "105027362"
 |Storage                         |16 GB     |
 |Arbeitsspeicher                          |4 GB     |
 |Ports                           |1x Ethernet <br> 2x USB-A 3.0 <br> 1x USB-C     |
-|Betriebstemperatur           |0 bis 35 Grad C     |
-|Lagertemperatur       |-40 bis 85 Grad C     |
+|Betriebstemperatur           |-0 °C bis 35 °C     |
+|Lagertemperatur       |-40 °C bis 85 °C     |
 |Relative Luftfeuchtigkeit               |10 % bis 95 %    |
 |Zertifizierung                   |FCC <br> IC <br> RoHS-Richtlinien <br> REACH <br> UL   |
-|Stromversorgung                    |19 V (Gleichstrom) bei 3,42 A (65 W) |
+|Stromversorgung                    |19 VDC bei 3,42 A (65 W) |

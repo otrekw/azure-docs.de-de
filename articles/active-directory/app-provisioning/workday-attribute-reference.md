@@ -1,24 +1,24 @@
 ---
-title: Workday-Attributreferenz
-description: Hier erfahren Sie, welche Attribute Sie mithilfe von XPATH-Abfragen aus Workday abrufen können.
+title: Workday-Attributreferenz für Azure Active Directory
+description: Hier erfahren Sie, welche Attribute Sie mithilfe von XPATH-Abfragen in Azure Active Directory aus Workday abrufen können.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: celested
-ms.openlocfilehash: 0ff9b3d4cc3bee28c8e5e95d8854f64eaa546b0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: beb15748086db6d2fb813a4ff636650d38472e36
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255473"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784681"
 ---
-# <a name="workday-attribute-reference"></a>Workday-Attributreferenz
+# <a name="workday-attribute-reference-for-azure-active-directory"></a>Workday-Attributreferenz für Azure Active Directory
 
 Dieser Abschnitt enthält eine Liste der Attribute, die Sie mithilfe von XPATH-Abfragen aus Workday abrufen können. Lesen Sie je nach Version der Workday Web Services-API, die Sie verwenden möchten, den entsprechenden Abschnitt. 
 

@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 030f19d61e19349de7e2d3416a3aee1385fd03c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbd3d9c3607a0326e7ad9403c8e69d20dafc952a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607521"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740301"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure-Startdiagnose
 
@@ -102,7 +102,7 @@ Ab API-Version 2020-06-01 wird die verwaltete Startdiagnose unterstützt. Weite
 ```
 
 ## <a name="limitations"></a>Einschränkungen
-- Die Startdiagnose ist nur für VMs verfügbar, die über Azure Resource Manager bereitgestellt wurden.
+- Die verwaltete Startdiagnose ist nur für VMs verfügbar, die über Azure Resource Manager bereitgestellt wurden. 
 - Bei der verwalteten Startdiagnose werden keine VMs unterstützt, die nicht verwaltete Betriebssystemdatenträger verwenden.
 - Die Startdiagnose unterstützt keine Storage Premium-Konten. Wenn ein solches Konto für die Startdiagnose verwendet wird, erhalten Benutzer beim Starten der VM einen `StorageAccountTypeNotSupported`-Fehler. 
 - Verwaltete Speicherkonten werden ab Resource Manager-API-Version 2020-06-01 unterstützt.

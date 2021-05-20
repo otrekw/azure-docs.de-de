@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: df38f9b3482847ea0415af5cb47540e244b0510b
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 726e482f64f7d9c1513f5ce362c232e225b9ee27
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739888"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109712854"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität
 
@@ -80,219 +80,12 @@ Ausführliche Preisinformationen finden Sie unter [Azure Private Link – Preise
 
 ## <a name="egress-connectivity-from-iot-hub-to-other-azure-resources"></a>Ausgehende Konnektivität von IoT Hub zu anderen Azure-Ressourcen
 
-IoT Hub kann für das [Nachrichtenrouting](./iot-hub-devguide-messages-d2c.md), den [Dateiupload](./iot-hub-devguide-file-upload.md) und das [Importieren und Exportieren von Geräten per Massenvorgang](./iot-hub-bulk-identity-mgmt.md) über den öffentlichen Endpunkt der Ressourcen eine Verbindung mit Azure Blob Storage-, Event Hub- und Service Bus-Ressourcen herstellen. Durch Binden einer Ressource an ein VNET wird standardmäßig die Konnektivität mit dieser Ressource blockiert. Dies führt dazu, dass diese Konfiguration IoT Hub daran hindert, Daten an Ihre Ressourcen zu senden. Um dieses Problem zu beheben, müssen Sie die Konnektivität von Ihrer IoT Hub-Ressource mit Ihren Speicherkonto-, Event Hub- oder Service Bus-Ressourcen über die Option **Vertrauenswürdige Microsoft-Dienste** aktivieren.
+IoT Hub kann für das [Nachrichtenrouting](./iot-hub-devguide-messages-d2c.md), den [Dateiupload](./iot-hub-devguide-file-upload.md) und das [Importieren und Exportieren von Geräten per Massenvorgang](./iot-hub-bulk-identity-mgmt.md) über den öffentlichen Endpunkt der Ressourcen eine Verbindung mit Azure Blob Storage-, Event Hub- und Service Bus-Ressourcen herstellen. Durch Binden einer Ressource an ein VNET wird standardmäßig die Konnektivität mit dieser Ressource blockiert. Dies führt dazu, dass diese Konfiguration IoT Hub daran hindert, Daten an Ihre Ressourcen zu senden. Um dieses Problem zu beheben, müssen Sie die Konnektivität von Ihrer IoT Hub-Ressource mit Ihren Speicherkonto-, Event Hub- oder Service Bus-Ressourcen über die Option **Vertrauenswürdige Microsoft-Dienste** aktivieren. 
 
-### <a name="turn-on-managed-identity-for-iot-hub"></a>Aktivieren einer verwalteten Identität für IoT Hub
+Damit andere Dienste Ihren IoT-Hub als vertrauenswürdigen Microsoft-Dienst finden können, muss Ihr Hub die verwaltete Identität verwenden. Sobald eine verwaltete Identität bereitgestellt ist, müssen Sie der verwalteten Identität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihren benutzerdefinierten Endpunkt erteilen. Befolgen Sie den Artikel [Unterstützung verwalteter Identitäten in IoT-Hub](./iot-hub-managed-identity.md), um eine verwaltete Identität mit der Azure RBAC-Berechtigung bereitzustellen und den benutzerdefinierten Endpunkt zu Ihrem IoT-Hub hinzuzufügen. Stellen Sie sicher, dass Sie die Ausnahme für vertrauenswürdige Microsoft-Erstanbieter aktivieren, um den Zugriff Ihres IoT-Hubs auf den benutzerdefinierten Endpunkt zu ermöglichen, wenn Sie die Firewallkonfigurationen eingerichtet haben.
 
-Damit andere Dienste Ihre IoT Hub-Instanz als vertrauenswürdigen Microsoft-Dienst finden können, muss diese über eine systemseitig zugewiesene verwaltete Identität verfügen.
-
-1. Navigieren Sie im IoT Hub-Portal zu **Identität**.
-
-1. Klicken Sie unter **Status** auf **Ein** und dann auf **Speichern**.
-
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Screenshot, der zeigt, wie eine verwaltete Identität für IoT Hub aktiviert wird":::
-
-So verwenden Sie Azure CLI, um die verwaltete Identität zu aktivieren:
-
-```azurecli-interactive
-az iot hub update --name <iot-hub-resource-name> --set identity.type="SystemAssigned"
-```
-
-### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Zuweisen einer verwalteten Identität zu Ihrem IoT-Hub zum Zeitpunkt der Erstellung mithilfe einer ARM-Vorlage
-
-Verwenden Sie die folgende ARM-Vorlage, um Ihrem IoT-Hub bei der Ressourcenbereitstellung eine verwaltete Identität zuzuweisen. Für diese ARM-Vorlage müssen zwei erforderliche Ressourcen bereitgestellt werden, bevor andere Ressourcen wie `Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups` erstellt werden. 
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "type": "Microsoft.Devices/IotHubs",
-      "apiVersion": "2020-03-01",
-      "name": "<provide-a-valid-resource-name>",
-      "location": "<any-of-supported-regions>",
-      "identity": {
-        "type": "SystemAssigned"
-      },
-      "sku": {
-        "name": "<your-hubs-SKU-name>",
-        "tier": "<your-hubs-SKU-tier>",
-        "capacity": 1
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-02-01",
-      "name": "createIotHub",
-      "dependsOn": [
-        "[resourceId('Microsoft.Devices/IotHubs', '<provide-a-valid-resource-name>')]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-          "contentVersion": "0.9.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.Devices/IotHubs",
-              "apiVersion": "2020-03-01",
-              "name": "<provide-a-valid-resource-name>",
-              "location": "<any-of-supported-regions>",
-              "identity": {
-                "type": "SystemAssigned"
-              },
-              "sku": {
-                "name": "<your-hubs-SKU-name>",
-                "tier": "<your-hubs-SKU-tier>",
-                "capacity": 1
-              }
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
-
-Nachdem Sie die Werte für Ihre Ressourcen `name`, `location`, `SKU.name` und `SKU.tier` ersetzt haben, können Sie die Ressource mithilfe der Azure CLI in einer vorhandenen Ressourcengruppe bereitstellen, indem Sie Folgendes verwenden:
-
-```azurecli-interactive
-az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
-```
-
-Nachdem die Ressource erstellt wurde, können Sie die verwaltete Dienstidentität, die Ihrem Hub zugewiesen ist, mithilfe der Azure CLI abrufen:
-
-```azurecli-interactive
-az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
-```
-
-### <a name="pricing-for-managed-identity"></a>Preise für verwaltete Identitäten
-
+### <a name="pricing-for-trusted-microsoft-service-option"></a>Preise für vertrauenswürdige Microsoft-Dienstoption
 Das Feature für die Ausnahme für vertrauenswürdige Microsoft-Erstanbieterdienste ist kostenlos. Die Gebühren für die bereitgestellten Speicherkonten, Event Hubs oder Service Bus-Ressourcen werden separat berechnet.
-
-### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>Ausgehende Konnektivität zu Speicherkontoendpunkten für das Routing
-
-IoT Hub kann Nachrichten an ein Speicherkonto im Kundenbesitz weiterleiten. Damit die Routingfunktion trotz Firewalleinschränkungen auf ein Speicherkonto zugreifen kann, muss Ihre IoT Hub-Instanz über eine verwaltete Identität verfügen, um auf das Speicherkonto zugreifen zu können. Zuerst benötigt Ihr Hub eine [verwaltete Identität](#turn-on-managed-identity-for-iot-hub). Nachdem eine verwaltete Identität bereitgestellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihr Speicherkonto zu erteilen.
-
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Speicherkontos, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
-
-2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
-
-3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
-
-4. Navigieren Sie auf der Seite Ihrer IoT Hub-Ressource zur Registerkarte **Nachrichtenrouting**.
-
-5. Navigieren Sie zum Abschnitt **Benutzerdefinierte Endpunkte**, und klicken Sie auf **Hinzufügen**. Wählen Sie **Storage** als Endpunkttyp aus.
-
-6. Geben Sie auf der angezeigten Seite einen Namen für den Endpunkt ein, wählen Sie den Container aus, den Sie in Blob Storage verwenden möchten, und geben Sie das Codierungs- und Dateinamenformat an. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** für Ihren Speicherendpunkt aus. Klicken Sie auf die Schaltfläche **Erstellen** .
-
-Nun ist Ihr benutzerdefinierter Speicherendpunkt für die Verwendung der vom System zugewiesenen Identität des Hubs eingerichtet und verfügt trotz der Firewalleinschränkungen über die Berechtigung, auf Ihre Speicherressource zuzugreifen. Sie können diesen Endpunkt jetzt zum Einrichten einer Routingregel verwenden.
-
-### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>Ausgehende Konnektivität zu Event Hub-Endpunkten für das Routing
-
-IoT Hub kann so konfiguriert werden, dass Nachrichten an einen Event Hub-Namespace im Besitz von Kunden weitergeleitet werden. Damit die Routingfunktion trotz Firewalleinschränkungen auf eine Event Hub-Ressource zugreifen kann, muss Ihre IoT Hub-Instanz über eine verwaltete Identität verwenden, um auf die Event Hub-Ressource zuzugreifen. Zuerst benötigt Ihr Hub eine verwaltete Identität. Nachdem eine verwaltete Identität erstellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihre Event Hub-Instanzen zu erteilen.
-
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Event Hubs, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
-
-2. Wählen Sie **Azure Event Hubs-Datensender** als **Rolle** und **Azure AD user, group, or service principal** (Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal) für **Assigning access to** (Zugriff für) aus, und klicken Sie dann auf den Ressourcennamen Ihres IoT-Hubs in der Dropdownliste. Klicken Sie auf die Schaltfläche **Save** .
-
-3. Navigieren Sie in Ihren Event Hubs zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Allow trusted Microsoft services to access event hubs** (Vertrauenswürdigen Microsoft-Diensten den Zugriff auf Event Hubs erlauben). Klicken Sie auf die Schaltfläche **Save** .
-
-4. Navigieren Sie auf der Seite Ihrer IoT Hub-Ressource zur Registerkarte **Nachrichtenrouting**.
-
-5. Navigieren Sie zum Abschnitt **Benutzerdefinierte Endpunkte**, und klicken Sie auf **Hinzufügen**. Wählen Sie **Event Hubs** als Endpunkttyp aus.
-
-6. Geben Sie auf der angezeigten Seite einen Namen für den Endpunkt ein, und wählen Sie den Event Hubs-Namespace und die Event Hubs-Instanz aus. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** aus, und klicken Sie auf die Schaltfläche **Erstellen**.
-
-Nun ist Ihr benutzerdefinierter Event Hub-Endpunkt für die Verwendung der vom System zugewiesenen Identität des Hubs eingerichtet und verfügt trotz der Firewalleinschränkungen über die Berechtigung, auf Ihre Event Hubs zuzugreifen. Sie können diesen Endpunkt jetzt zum Einrichten einer Routingregel verwenden.
-
-### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>Ausgehende Konnektivität zu Service Bus-Endpunkten für das Routing
-
-IoT Hub kann so konfiguriert werden, dass Nachrichten an einen Service Bus-Namespace im Besitz von Kunden weitergeleitet werden. Damit die Routingfunktion trotz Firewalleinschränkungen auf eine Servicebus-Ressource zugreifen kann, muss Ihre IoT Hub-Instanz über eine verwaltete Identität verwenden, um auf die Servicebus-Ressource zuzugreifen. Zuerst benötigt Ihr Hub eine verwaltete Identität. Nachdem eine verwaltete Identität bereitgestellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihre Service Bus-Instanz zu erteilen.
-
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Service Bus, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
-
-2. Wählen Sie **Azure Service Bus-Datensender** als **Rolle** und **Azure AD user, group, or service principal** (Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal) für **Assigning access to** (Zugriff für) aus, und klicken Sie dann auf den Ressourcennamen Ihres IoT-Hubs in der Dropdownliste. Klicken Sie auf die Schaltfläche **Save** .
-
-3. Navigieren Sie in Ihrem Service Bus zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Allow trusted Microsoft services to access this service bus** (Vertrauenswürdigen Microsoft-Diensten den Zugriff auf Service Bus erlauben). Klicken Sie auf die Schaltfläche **Save** .
-
-4. Navigieren Sie auf der Seite Ihrer IoT Hub-Ressource zur Registerkarte **Nachrichtenrouting**.
-
-5. Navigieren Sie zum Abschnitt **Benutzerdefinierte Endpunkte**, und klicken Sie auf **Hinzufügen**. Wählen Sie **Service Bus-Warteschlange** oder **Service Bus-Thema** (sofern zutreffend) als Endpunkttyp aus.
-
-6. Geben Sie auf der angezeigten Seite einen Namen für den Endpunkt ein, und wählen Sie den Namespace, die Warteschlange oder das Thema (sofern zutreffend) Ihres Service Bus aus. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** aus, und klicken Sie auf die Schaltfläche **Erstellen**.
-
-Nun ist Ihr benutzerdefinierter Service Bus-Endpunkt für die Verwendung der vom System zugewiesenen Identität des Hubs eingerichtet und verfügt trotz der Firewalleinschränkungen über die Berechtigung, auf Ihre Service Bus-Ressource zuzugreifen. Sie können diesen Endpunkt jetzt zum Einrichten einer Routingregel verwenden.
-
-### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>Ausgehende Konnektivität zu Speicherkonten für den Dateiupload
-
-Das IoT Hub-Feature für den Dateiupload ermöglicht Geräten das Hochladen von Dateien in ein Speicherkonto, das im Besitz von Kunden ist. Sowohl Geräte als auch IoT Hub müssen eine Verbindung mit dem Speicherkonto herstellen, damit der Dateiuploadvorgang funktioniert. Wenn Firewalleinschränkungen für das Speicherkonto vorhanden sind, müssen Ihre Geräte einen der unterstützten Mechanismen des Speicherkontos verwenden (z. B. [private Endpunkte](../private-link/tutorial-private-endpoint-storage-portal.md), [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) oder eine [direkte Firewallkonfiguration](../storage/common/storage-network-security.md)), um die Verbindung herzustellen. Wenn Firewalleinschränkungen im Speicherkonto vorhanden sind, muss IoT Hub entsprechend konfiguriert werden, um über die Ausnahme für vertrauenswürdige Microsoft-Dienste auf die Speicherressource zuzugreifen. Zu diesem Zweck muss Ihre IoT Hub-Instanz über eine verwaltete Identität verfügen. Nachdem eine verwaltete Identität bereitgestellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihr Speicherkonto zu erteilen.
-
-[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
-
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Speicherkontos, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
-
-2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
-
-3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
-
-4. Navigieren Sie auf der Seite Ihrer IoT Hub-Ressource zur Registerkarte **Dateiupload**.
-
-5. Wählen Sie auf der angezeigten Seite den Container aus, den Sie in Blob Storage verwenden möchten, und konfigurieren Sie die **Dateibenachrichtigungseinstellungen**, **SAS TTL**, **Standard-TTL** und die **Anzahl maximaler Zustellungen** nach Bedarf. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** für Ihren Speicherendpunkt aus. Klicken Sie auf die Schaltfläche **Erstellen** . Wenn bei diesem Schritt eine Fehlermeldung angezeigt wird, legen Sie Ihr Speicherkonto vorübergehend so fest, dass der Zugriff aus **Allen Netzwerken** ermöglicht wird, und wiederholen Sie dann den Vorgang. Sie können die Firewall für das Speicherkonto konfigurieren, sobald die Konfiguration des Dateiuploads beendet ist.
-
-Nun ist Ihr Speicherendpunkt für den Dateiupload für die Verwendung der vom System zugewiesenen Identität des Hubs eingerichtet und verfügt trotz der Firewalleinschränkungen über die Berechtigung, auf Ihre Speicherressource zuzugreifen.
-
-### <a name="egress-connectivity-to-storage-accounts-for-bulk-device-importexport"></a>Ausgehende Konnektivität zu Speicherkonten für das Importieren und Exportieren von Geräten per Massenvorgang
-
-IoT Hub unterstützt die Funktion zum [Importieren und Exportieren](./iot-hub-bulk-identity-mgmt.md) von Geräteinformationen per Massenvorgang von/in vom Kunden bereitgestellte Azure Storage Blob-Instanzen. Sowohl Geräte als auch IoT Hub müssen eine Verbindung mit dem Speicherkonto herstellen, damit das Feature für den Massenimport/-export funktioniert.
-
-Diese Funktion erfordert Konnektivität von IoT Hub mit dem Speicherkonto. Damit der Zugriff auf eine Service Bus-Ressource trotz Firewalleinschränkungen funktioniert, muss Ihre IoT Hub-Instanz über eine verwaltete Identität verfügen. Nachdem eine verwaltete Identität bereitgestellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihre Service Bus-Instanz zu erteilen.
-
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Speicherkontos, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
-
-2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
-
-3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
-
-Sie können jetzt die Azure IoT-REST-APIs zum [Erstellen von Import-/Exportaufträgen](/rest/api/iothub/service/jobs/getimportexportjobs) verwenden, um Informationen zur Verwendung der Funktion für Massenimporte/-exporte zu erhalten. Sie müssen `storageAuthenticationType="identityBased"` im Anforderungstext bereitstellen und `inputBlobContainerUri="https://..."` und `outputBlobContainerUri="https://..."` als Eingabe- bzw. Ausgabe-URLs des Speicherkontos verwenden.
-
-Azure IoT Hub SDKs unterstützen diese Funktion im Registrierungs-Manager des Dienstclients. Der folgende Codeausschnitt zeigt, wie ein Importauftrag bzw. ein Exportauftrag mithilfe des C# SDK ausgelöst werden.
-
-```csharp
-// Call an import job on the IoT Hub
-JobProperties importJob = 
-await registryManager.ImportDevicesAsync(
-  JobProperties.CreateForImportJob(inputBlobContainerUri, outputBlobContainerUri, null, StorageAuthenticationType.IdentityBased), 
-  cancellationToken);
-
-// Call an export job on the IoT Hub to retrieve all devices
-JobProperties exportJob = 
-await registryManager.ExportDevicesAsync(
-    JobProperties.CreateForExportJob(outputBlobContainerUri, true, null, StorageAuthenticationType.IdentityBased),
-    cancellationToken);
-```
-
-Gehen Sie folgendermaßen vor, um diese Version der Azure IoT SDKs mit Unterstützung virtueller Netzwerke für C#, Java und Node.js zu verwenden:
-
-1. Erstellen Sie eine Umgebungsvariable namens `EnableStorageIdentity`, und legen Sie ihren Wert auf `1` fest.
-
-2. Laden Sie das SDK herunter:  [Java](https://aka.ms/vnetjavasdk) | [C#](https://aka.ms/vnetcsharpsdk) | [Node.js](https://aka.ms/vnetnodesdk)
- 
-Laden Sie für Python die beschränkte Version von GitHub herunter.
-
-1. Navigieren Sie zur [GitHub-Releaseseite](https://aka.ms/vnetpythonsdk).
-
-2. Laden Sie die folgende Datei herunter, die sich unten auf der Releaseseite unter dem Header namens **Assets** befindet.
-    > *azure_iot_hub-2.2.0_limited-py2.py3-none-any.whl*
-
-3. Öffnen Sie ein Terminal, und navigieren Sie zum Ordner mit der heruntergeladenen Datei.
-
-4. Führen Sie den folgenden Befehl aus, um das Python-Dienst-SDK mit Unterstützung für virtuelle Netzwerke zu installieren:
-    > pip install ./azure_iot_hub-2.2.0_limited-py2.py3-none-any.whl
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Verwenden Sie die unten angegebenen Links, um weitere Informationen zu IoT Hub-Features zu erhalten:

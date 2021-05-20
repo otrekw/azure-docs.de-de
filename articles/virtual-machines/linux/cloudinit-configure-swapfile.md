@@ -1,19 +1,19 @@
 ---
 title: Verwenden von „cloud-init“ zum Konfigurieren einer Swap-Partition auf einer Linux-VM
 description: Es wird beschrieben, wie Sie „cloud-init“ zum Konfigurieren einer Swap-Partition auf einer Linux-VM während der Erstellung mit der Azure CLI verwenden.
-author: rickstercdn
-manager: gwallace
+author: mimckitt
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
-ms.author: rclaus
-ms.openlocfilehash: b9f4adc4e1e980db2af4fcc20b3a4492309c89f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mimckitt
+ms.subservice: cloud-init
+ms.openlocfilehash: bc55bf12b766002fff7fda45af0d802164a2b503
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559374"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784123"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Verwenden von „cloud-init“ zum Konfigurieren einer Swap-Partition auf einer Linux-VM
 In diesem Artikel wird veranschaulicht, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren der Swap-Partition auf verschiedenen Linux-Distributionen verwenden. Die Swap-Partition wurde traditionell vom Linux-Agent (WALA) konfiguriert – abhängig davon, für welche Distributionen eine Auslagerungsdatei benötigt wurde.  In diesem Dokument wird das Vorgehen für die bedarfsgesteuerte Erstellung der Swap-Partition zur Bereitstellungszeit unter Verwendung von „cloud-init“ beschrieben.  Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).
@@ -39,8 +39,10 @@ fs_setup:
     filesystem: swap
 mounts:
   - ["ephemeral0.1", "/mnt"]
-  - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+  - ["ephemeral0.2", "none", "swap", "sw,nofail,x-systemd.requires=cloud-init.service", "0", "0"]
 ```
+
+Die Bereitstellung wird mit der `nofail`-Option erstellt, um sicherzustellen, dass der Start auch dann fortgesetzt wird, wenn die Bereitstellung nicht erfolgreich abgeschlossen wurde.
 
 Vor der Bereitstellung dieses Images müssen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe erstellen. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 

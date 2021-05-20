@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: b765d92778df40caec0864dc6f547324216fdb07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad357c53d64a9bd9fdb5822e7a7c6a94b60a3ee1
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611979"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732324"
 ---
 # <a name="infrastructure-as-code"></a>Infrastructure-as-Code
 
@@ -42,7 +42,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -TemplateParameterFile $Parameters
 ```
 
-## <a name="azure-service-fabric-resources"></a>Azure Service Fabric-Ressourcen
+## <a name="service-fabric-resources"></a>Service Fabric-Ressourcen
 
 Sie können Anwendungen und Dienste mithilfe von Azure Resource Manager in Ihrem Service Fabric-Cluster bereitstellen. Ausführliche Informationen finden Sie unter [Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen](./service-fabric-application-arm-resource.md). Der folgende Codeausschnitt zeigt bewährte Service Fabric-spezifische Anwendungsressourcen, die Sie in Ihre Resource Manager-Vorlagenressourcen einschließen können.
 
@@ -90,8 +90,9 @@ for root, dirs, files in os.walk(self.microservices_app_package_path):
 microservices_sfpkg.close()
 ```
 
-## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Konfiguration des automatischen Betriebssystemupgrades für virtuelle Azure-Computer 
-Das Upgraden Ihrer virtuellen Computer ist ein vom Benutzer initiierter Vorgang, und es empfiehlt sich, [automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](service-fabric-patch-orchestration-application.md) für die Hostpatchverwaltung von Azure Service Fabric-Clustern zu verwenden. Die Patchorchestrierungsanwendung (POA) ist eine alternative Lösung für das Hosten außerhalb von Azure. Die POA kann zwar auch in Azure verwendet werden, aufgrund des Zusatzaufwands, der durch das Hosten von POA in Azure entsteht, werden für virtuelle Computer jedoch häufig automatische Betriebssystemupgrades über POA bevorzugt. Im Anschluss finden Sie die Resource Manager-Vorlageneigenschaften für Compute-VM-Skalierungsgruppen, um automatische Betriebssystemupgrades zu aktivieren:
+## <a name="virtual-machine-os-automatic-upgrade-configuration"></a>Konfiguration des automatischen Upgrades für das Betriebssystem des virtuellen Computers
+
+Das Upgrade Ihrer virtuellen Computer ist ein vom Benutzer initiierter Vorgang, und es wird empfohlen, [automatische Imageupgrades für ihre Service Fabric Clusterknoten-Patchverwaltung zu aktivieren](how-to-patch-cluster-nodes-windows.md). Patch Orchestration Application (POA) ist eine alternative Lösung für Cluster, die nicht von Azure gehostet werden. Obwohl POA in Azure verwendet werden kann, erfordert das Hosten mehr Verwaltung als das einfache Aktivieren automatischer Upgrades von Betriebssystemimages für Skalierungssets. Im Anschluss finden Sie die Resource Manager-Vorlageneigenschaften für Compute-VM-Skalierungsgruppen, um automatische Betriebssystemupgrades zu aktivieren:
 
 ```json
 "upgradePolicy": {
@@ -106,7 +107,7 @@ Wenn Sie automatische Betriebssystemupgrades mit Service Fabric verwenden, wird 
 
 Der folgende Registrierungsschlüssel muss auf „false“ festgelegt sein, um die Initiierung unkoordinierter Updates durch Ihre Windows-Hostcomputer zu verhindern: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
 
-Im Anschluss finden Sie die Resource Manager-Vorlageneigenschaften für Compute-VM-Skalierungsgruppen, um den WindowsUpdate-Registrierungsschlüssel auf „false“ festzulegen:
+Legen Sie die folgenden Vorlageneigenschaften für die Skalierungsgruppe fest, um das Windows Update zu deaktivieren:
 ```json
 "osProfile": {
         "computerNamePrefix": "{vmss-name}",
@@ -119,12 +120,16 @@ Im Anschluss finden Sie die Resource Manager-Vorlageneigenschaften für Compute
       },
 ```
 
-## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Konfiguration von Azure Service Fabric-Clusterupgrades
-Im Anschluss finden Sie die Resource Manager-Vorlageneigenschaft für Compute-VM-Skalierungsgruppen zum Aktivieren automatischer Upgrades:
+## <a name="service-fabric-cluster-upgrade-configuration"></a>Konfiguration von Service Fabric-Clusterupgrades
+
+Im Anschluss finden Sie die Vorlageneigenschaft für Compute-VM-Skalierungsgruppen zum Aktivieren automatischer Upgrades:
+
 ```json
 "upgradeMode": "Automatic",
 ```
+
 Wenn Sie Ihren Cluster manuell upgraden möchten, laden Sie die cab-/deb-Distribution auf einen virtuellen Clustercomputer herunter, und rufen Sie anschließend den folgenden PowerShell-Befehl auf:
+
 ```powershell
 Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
 Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"

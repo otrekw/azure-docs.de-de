@@ -3,12 +3,12 @@ title: Verwalten einzelner Sensoren
 description: Erfahren Sie, wie Sie einzelne Sensoren verwalten. Dazu gehören das Verwalten von Aktivierungsdateien, Ausführen von Sicherungen und Aktualisieren eines eigenständigen Sensors.
 ms.date: 02/02/2021
 ms.topic: how-to
-ms.openlocfilehash: df1d1dd6ca2085fb3ab12c104723c63e32249403
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8dd46552216e166fcfbf4126b1854681911225fb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781958"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734890"
 ---
 # <a name="manage-individual-sensors"></a>Verwalten einzelner Sensoren
 
@@ -520,7 +520,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie einen eigenständigen Sensor mi
 
 5. Wählen Sie in der Seitenleiste der Sensorkonsole **Systemeinstellungen** aus.
 
-6. Wählen Sie im Bereich **Versionsupgrade** die Option **Upgrade** aus.
+6. Wählen Sie im Bereich **Versionsupdate** die Option **Update** aus.
 
     :::image type="content" source="media/how-to-manage-individual-sensors/upgrade-pane-v2.png" alt-text="Screenshot des Upgradebereichs":::
 

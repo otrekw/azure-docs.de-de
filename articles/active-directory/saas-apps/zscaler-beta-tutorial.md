@@ -11,35 +11,35 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 4e8dce970c9e7cfb2aa7887cf1fb3ed6ef9030a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 080217c511470422d563b64f7609d71a4f9a6594
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735581"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Tutorial: Azure Active Directory-Integration in Zscaler Beta
 
 In diesem Tutorial erfahren Sie, wie Sie Zscaler Beta in Azure Active Directory (Azure AD) integrieren.
 Bei der Integration von Zscaler Beta in Azure AD haben Sie folgende Möglichkeiten:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Zscaler Beta hat.
-* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Zscaler Beta anzumelden (einmaliges Anmelden; Single Sign-On, SSO). Diese Zugriffssteuerung wird als einmaliges Anmelden (Single Sign-On, SSO) bezeichnet.
-* Verwalten Sie Ihre Konten zentral im Azure-Portal.
+- Steuern Sie in Azure AD, wer Zugriff auf Zscaler Beta hat.
+- Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Zscaler Beta anzumelden (einmaliges Anmelden; Single Sign-On, SSO). Diese Zugriffssteuerung wird als einmaliges Anmelden (Single Sign-On, SSO) bezeichnet.
+- Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration in Zscaler Beta konfigurieren zu können, ist Folgendes erforderlich:
 
-* Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
-* Zscaler Beta-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
+- Zscaler Beta-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Zscaler Beta unterstützt **SP**-initiiertes einmaliges Anmelden.
-* Zscaler Beta unterstützt die **Just-In-Time**-Benutzerbereitstellung.
+- Zscaler Beta unterstützt **SP**-initiiertes einmaliges Anmelden.
+- Zscaler Beta unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-zscaler-beta-from-the-gallery"></a>Hinzufügen von Zscaler Beta aus dem Katalog
 
@@ -58,12 +58,11 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Zscaler B
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Zscaler Beta die folgenden Schritte aus:
 
-
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+   1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+   1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Zscaler Beta](#configure-zscaler-beta-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Zscaler Beta-Testbenutzers](#create-zscaler-beta-test-user)** , um ein Pendant von B. Simon in Zscaler Beta zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+   1. **[Erstellen eines Zscaler Beta-Testbenutzers](#create-zscaler-beta-test-user)** , um ein Pendant von B. Simon in Zscaler Beta zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -78,45 +77,45 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei der Zscaler Beta-Anwendung verwendete URL ein.
+   Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei der Zscaler Beta-Anwendung verwendete URL ein.
 
-    > [!NOTE]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den Zscaler Beta-Client](https://www.zscaler.com/company/contact).
+   > [!NOTE]
+   > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den Zscaler Beta-Client](https://www.zscaler.com/company/contact).
 
-5. Die Zscaler Beta-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Sie müssen Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+1. Die Zscaler Beta-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Sie müssen Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![Dialogfeld „Benutzerattribute“](common/edit-attribute.png)
+   ![Dialogfeld „Benutzerattribute“](common/edit-attribute.png)
 
-6. Die Zscaler Beta-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
-    
-    | Name | Quellattribut | 
-    | ---------------| --------------- |
-    | memberOf  | user.assignedroles |
+1. Die Zscaler Beta-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
 
-    a. Wählen Sie **Neuen Anspruch hinzufügen** aus, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
+   | Name     | Quellattribut   |
+   | -------- | ------------------ |
+   | memberOf | user.assignedroles |
 
-    b. Geben Sie im Feld **Name** den für die Zeile angezeigten Attributnamen ein.
+   a. Wählen Sie **Neuen Anspruch hinzufügen** aus, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    c. Lassen Sie das Feld **Namespace** leer.
+   b. Geben Sie im Feld **Name** den für die Zeile angezeigten Attributnamen ein.
 
-    d. Wählen Sie für **Quelle** die Option **Attribut** aus.
+   c. Lassen Sie das Feld **Namespace** leer.
 
-    e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
+   d. Wählen Sie für **Quelle** die Option **Attribut** aus.
 
-    f. Klicken Sie auf **OK**.
+   e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
 
-    g. Wählen Sie **Speichern** aus.
+   f. Klicken Sie auf **OK**.
 
-    > [!NOTE]
-    > Klicken Sie [hier](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview), um herauszufinden, wie Sie die Rolle in Azure AD konfigurieren.
+   g. Wählen Sie **Speichern** aus.
 
-7. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Option **Herunterladen** aus, um das **Zertifikat (Base64)** herunterzuladen. Speichern Sie das Zertifikat auf Ihrem Computer.
+   > [!NOTE]
+   > Klicken Sie [hier](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui), um herauszufinden, wie Sie die Rolle in Azure AD konfigurieren.
 
-    ![Downloadlink für Zertifikat](common/certificatebase64.png)
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Option **Herunterladen** aus, um das **Zertifikat (Base64)** herunterzuladen. Speichern Sie das Zertifikat auf Ihrem Computer.
 
-8. Kopieren Sie im Abschnitt **Zscaler Beta einrichten** die URLs gemäß Ihren Anforderungen:
+   ![Downloadlink für Zertifikat](common/certificatebase64.png)
 
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+1. Kopieren Sie im Abschnitt **Zscaler Beta einrichten** die URLs gemäß Ihren Anforderungen:
+
+   ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -125,7 +124,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
@@ -146,78 +145,77 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wenn Sie die Konfiguration in Zscaler Beta automatisieren möchten, installieren Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung**, indem Sie **Erweiterung installieren** auswählen.
 
-    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+   ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
 
 2. Wenn Sie die Erweiterung zum Browser hinzugefügt haben, werden Sie durch die Auswahl von **Zscaler Beta einrichten** zur Ihrer Zscaler Beta-Anwendung weitergeleitet. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Zscaler Beta anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
 
-    ![Einrichtungskonfiguration](common/setup-sso.png)
+   ![Einrichtungskonfiguration](common/setup-sso.png)
 
 3. Öffnen Sie zum manuellen Einrichten von Zscaler Beta ein neues Webbrowserfenster. Melden Sie sich bei Ihrer Zscaler Beta-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
 
 4. Navigieren Sie zu **Administration** > **Authentication** > **Authentication Settings** (Verwaltung > Authentifizierung > Authentifizierungseinstellungen), und führen Sie die folgenden Schritte aus.
-   
-    ![Verwaltung](./media/zscaler-beta-tutorial/ic800206.png "Verwaltung")
 
-    a. Wählen Sie unter **Authentifizierungstyp** die Option **SAML** aus.
+   ![Verwaltung](./media/zscaler-beta-tutorial/ic800206.png "Verwaltung")
 
-    b. Wählen Sie **Configure SAML** (SAML konfigurieren) aus.
+   a. Wählen Sie unter **Authentifizierungstyp** die Option **SAML** aus.
 
-5. Gehen Sie im Fenster **Edit SAML** (SAML bearbeiten) wie folgt vor: 
-            
-    ![Benutzer & Authentifizierung verwalten](./media/zscaler-beta-tutorial/ic800208.png "Benutzer & Authentifizierung verwalten")
-    
-    a. Fügen Sie im Feld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
+   b. Wählen Sie **Configure SAML** (SAML konfigurieren) aus.
 
-    b. Geben Sie im Feld **Login Name Attribute** (Anmeldenamensattribut) die Zeichenfolge **NameID** ein.
+5. Gehen Sie im Fenster **Edit SAML** (SAML bearbeiten) nach den folgenden Schritten vor: ![Benutzer verwalten & Authentifizierung](./media/zscaler-beta-tutorial/ic800208.png "Benutzer & Authentifizierung verwalten")
 
-    c. Wählen Sie im Feld **Public SSL Certificate** (Öffentliches SSL-Zertifikat) die Option **Upload** (Hochladen) aus, um das Azure-SAML-Signaturzertifikat hochzuladen, das Sie aus dem Azure-Portal heruntergeladen haben.
+   a. Fügen Sie im Feld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
-    d. Schalten Sie **Enable SAML Auto-Provisioning** (Automatische SAML-Bereitstellung aktivieren) um.
+   b. Geben Sie im Feld **Login Name Attribute** (Anmeldenamensattribut) die Zeichenfolge **NameID** ein.
 
-    e. Geben Sie im Feld **User Display Name Attribute** (Benutzeranzeigenamens-Attribut) die Zeichenfolge **displayName** ein, wenn Sie die automatische SAML-Bereitstellung für displayName-Attribute aktivieren möchten.
+   c. Wählen Sie im Feld **Public SSL Certificate** (Öffentliches SSL-Zertifikat) die Option **Upload** (Hochladen) aus, um das Azure-SAML-Signaturzertifikat hochzuladen, das Sie aus dem Azure-Portal heruntergeladen haben.
 
-    f. Geben Sie im Feld **Group Name Attribute** (Gruppennamensattribut) die Zeichenfolge **memberOf** ein, wenn Sie die automatische SAML-Bereitstellung für memberOf-Attribute aktivieren möchten.
+   d. Schalten Sie **Enable SAML Auto-Provisioning** (Automatische SAML-Bereitstellung aktivieren) um.
 
-    g. Geben Sie im Feld **Department Name Attribute** (Abteilungsnamensattribut) die Zeichenfolge **department** ein, wenn Sie die automatische SAML-Bereitstellung für Abteilungsattribute aktivieren möchten.
+   e. Geben Sie im Feld **User Display Name Attribute** (Benutzeranzeigenamens-Attribut) die Zeichenfolge **displayName** ein, wenn Sie die automatische SAML-Bereitstellung für displayName-Attribute aktivieren möchten.
 
-    h. Wählen Sie **Speichern** aus.
+   f. Geben Sie im Feld **Group Name Attribute** (Gruppennamensattribut) die Zeichenfolge **memberOf** ein, wenn Sie die automatische SAML-Bereitstellung für memberOf-Attribute aktivieren möchten.
+
+   g. Geben Sie im Feld **Department Name Attribute** (Abteilungsnamensattribut) die Zeichenfolge **department** ein, wenn Sie die automatische SAML-Bereitstellung für Abteilungsattribute aktivieren möchten.
+
+   h. Wählen Sie **Speichern** aus.
 
 6. Führen Sie auf der Dialogseite **Configure User Authentication** (Benutzerauthentifizierung konfigurieren) die folgenden Schritte aus:
 
-    ![Menü „Activation“ (Aktivierung) und Schaltfläche „Activate“ (Aktivieren)](./media/zscaler-beta-tutorial/ic800207.png)
+   ![Menü „Activation“ (Aktivierung) und Schaltfläche „Activate“ (Aktivieren)](./media/zscaler-beta-tutorial/ic800207.png)
 
-    a. Bewegen Sie den Mauszeiger unten links auf das Menü **Activation** (Aktivierung).
+   a. Bewegen Sie den Mauszeiger unten links auf das Menü **Activation** (Aktivierung).
 
-    b. Wählen Sie **Aktivieren** aus.
+   b. Wählen Sie **Aktivieren** aus.
 
 ## <a name="configure-proxy-settings&quot;></a>Konfigurieren von Proxyeinstellungen
+
 Führen Sie zum Konfigurieren der Proxyeinstellungen in Internet Explorer die folgenden Schritte aus:
 
 1. Starten Sie **Internet Explorer**.
 
-2. Wählen Sie im Menü **Extras** die Option **Internetoptionen** aus, um das Dialogfeld **Internetoptionen** zu öffnen. 
-    
-     ![Dialogfeld „Internetoptionen“](./media/zscaler-beta-tutorial/ic769492.png &quot;Internetoptionen")
+2. Wählen Sie im Menü **Extras** die Option **Internetoptionen** aus, um das Dialogfeld **Internetoptionen** zu öffnen.
 
-3. Wählen Sie die Registerkarte **Verbindungen** aus. 
-  
-     ![Registerkarte „Verbindungen“](./media/zscaler-beta-tutorial/ic769493.png "Verbindungen")
+   ![Dialogfeld „Internetoptionen“](./media/zscaler-beta-tutorial/ic769492.png &quot;Internetoptionen")
+
+3. Wählen Sie die Registerkarte **Verbindungen** aus.
+
+   ![Registerkarte „Verbindungen“](./media/zscaler-beta-tutorial/ic769493.png "Verbindungen")
 
 4. Wählen Sie **LAN-Einstellungen** aus, um das Dialogfeld **Einstellungen für lokales Netzwerk** zu öffnen.
 
-5. Gehen Sie im Abschnitt **Proxyserver** wie folgt vor: 
-   
-    ![Abschnitt „Proxyserver“](./media/zscaler-beta-tutorial/ic769494.png "Proxyserver")
+5. Gehen Sie im Abschnitt **Proxyserver** wie folgt vor:
 
-    a. Aktivieren Sie das Kontrollkästchen **Proxyserver für LAN verwenden**.
+   ![Abschnitt „Proxyserver“](./media/zscaler-beta-tutorial/ic769494.png "Proxyserver")
 
-    b. Geben Sie in das Feld **Adresse** die Adresse **gateway.Zscaler Beta.net** ein.
+   a. Aktivieren Sie das Kontrollkästchen **Proxyserver für LAN verwenden**.
 
-    c. Geben Sie im Feld **Port** den Port **80** ein.
+   b. Geben Sie in das Feld **Adresse** die Adresse **gateway.Zscaler Beta.net** ein.
 
-    d. Aktivieren Sie das Kontrollkästchen **Proxyserver für lokale Adressen umgehen**.
+   c. Geben Sie im Feld **Port** den Port **80** ein.
 
-    e. Wählen Sie zum Schließen des Dialogfelds **Einstellungen für lokales Netzwerk** die Option **OK** aus.
+   d. Aktivieren Sie das Kontrollkästchen **Proxyserver für lokale Adressen umgehen**.
+
+   e. Wählen Sie zum Schließen des Dialogfelds **Einstellungen für lokales Netzwerk** die Option **OK** aus.
 
 6. Wählen Sie zum Schließen des Dialogfelds **Internetoptionen** die Option **OK** aus.
 
@@ -225,19 +223,18 @@ Führen Sie zum Konfigurieren der Proxyeinstellungen in Internet Explorer die fo
 
 In diesem Abschnitt wird in Zscaler Beta der Benutzer Britta Simon erstellt. Zscaler Beta unterstützt die **Just-in-Time-Benutzerbereitstellung**, die standardmäßig aktiviert ist. In diesem Abschnitt müssen Sie keine Schritte ausführen. Ist ein Benutzer noch nicht in Zscaler Beta vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
->[!Note]
->Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam von Zscaler Beta](https://www.zscaler.com/company/contact).
+> [!Note]
+> Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam von Zscaler Beta](https://www.zscaler.com/company/contact).
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Zscaler Beta weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+- Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Zscaler Beta weitergeleitet, wo Sie den Anmeldeflow initiieren können.
 
-* Rufen Sie direkt die Zscaler Beta-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+- Rufen Sie direkt die Zscaler Beta-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Zscaler Beta“ klicken, werden Sie zur Anmelde-URL für Zscaler Beta umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
-
+- Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Zscaler Beta“ klicken, werden Sie zur Anmelde-URL für Zscaler Beta umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

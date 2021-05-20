@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 05/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 15a9a2becea9751903e99f6ef1d55bc6f7b65ca8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e19ab526df864bba7bd164a15c11185439d35d7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95998616"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742857"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-allyio"></a>Tutorial: Integrieren von Ally.io in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -49,7 +49,7 @@ Zum Konfigurieren der Integration von Ally.io in Azure AD müssen Sie Ihrer Lis
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** im Suchfeld den Begriff **Ally.io** ein.
 1. Wählen Sie im Ergebnisbereich den Eintrag **Ally.io** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
@@ -64,7 +64,6 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Ally.io 
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Ally.io](#configure-allyio-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-    1. **[Erstellen eines Ally.io-Testbenutzers](#create-allyio-test-user)** , um eine Entsprechung von B. Simon in Ally.io zu erhalten, die mit der Benutzerdarstellung in Azure AD verknüpft ist.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -92,7 +91,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Die Ally.io-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
-    ![image](common/default-attributes.png)
+    ![Screenshot: Liste der Standardattribute](common/default-attributes.png)
 
 1. Darüber hinaus erwartet die Ally.io-Anwendung, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
     
@@ -142,11 +141,24 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-allyio-sso"></a>Konfigurieren des einmaligen Anmeldens für Ally.io
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Ally.io** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Ally.io](mailto:contact@ally.io) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von Ally.io müssen Sie das Zertifikat (Base64) und die geeigneten URLs aus dem Azure-Portal kopieren und Sie bei Ally.io hinzufügen.
 
-### <a name="create-allyio-test-user"></a>Erstellen eines Ally.io-Testbenutzers
+1. Melden Sie sich bei Ally.io mit einem Administratorkonto an.
+1. Wählen Sie in der Navigationsleiste links im Bildschirm **Admin** > **Integrationen** aus.
+1. Scrollen Sie zum Abschnitt **Authentifizierung** und wählen Sie **Einmaliges Anmelden** aus. Wählen Sie anschließend **Aktivieren** aus.
 
-In diesem Abschnitt wird in Ally.io ein Benutzer namens B. Simon erstellt. Ally.io unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Falls noch kein Benutzer in Ally.io vorhanden ist, wird beim Versuch, auf Ally.io zuzugreifen, ein neuer Benutzer erstellt.
+    ![Screenshot: Schaltfläche „Aktivieren“ in Ally.io](./media/ally-tutorial/ally-enable.png)
+
+    Die Seite **SSO-Konfiguration** wird geöffnet und Sie können das Zertifikat und die kopierten URLs aus dem Azure-Portal konfigurieren.
+
+    ![Screenshot: SSO-Konfigurationsbereich in Ally.io](./media/ally-tutorial/ally-single-sign-on-configuration.png)
+
+1. Geben Sie in **SSO-Konfiguration** die folgenden Einstellungen ein oder wählen Sie diese aus: 
+
+    * **Ally**: Azure AD
+    * **SAML 2.0 Endpunkt-URL**: Login-URL
+    * **Aussteller-URL des Identitätsanbieters**: Azure AD-Bezeichner
+    * **Public(X.509)-Zertifikat**: Zertifikat (Base64)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
@@ -154,9 +166,11 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Ally.io“ klicken, sollten Sie automatisch bei der Ally.io-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
+In diesem Abschnitt wird in Ally.io ein Benutzer namens „B. Simon“ erstellt. Ally.io unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Falls noch kein Benutzer in Ally.io vorhanden ist, wird beim Versuch, auf Ally.io zuzugreifen, ein neuer Benutzer erstellt.
+
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 

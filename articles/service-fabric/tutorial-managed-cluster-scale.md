@@ -1,16 +1,16 @@
 ---
-title: Aufskalieren eines verwalteten Service Fabric-Clusters (Vorschau)
+title: Aufskalieren eines verwalteten Service Fabric-Clusters
 description: In diesem Tutorial erfahren Sie, wie Sie Knotentypen eines verwalteten Service Fabric-Clusters aufskalieren.
 ms.topic: tutorial
-ms.date: 09/28/2020
-ms.openlocfilehash: 769bcb339b2cc1419c7a3d92d0f08130029a9f95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 5/10/2021
+ms.openlocfilehash: ebce8b0506866e52d79395a3abfcda280c460532
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98785430"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685763"
 ---
-# <a name="tutorial-scale-out-a-service-fabric-managed-cluster-preview"></a>Tutorial: Aufskalieren eines verwalteten Service Fabric-Clusters (Vorschau)
+# <a name="tutorial-scale-out-a-service-fabric-managed-cluster"></a>Tutorial: Aufskalieren eines verwalteten Service Fabric-Clusters
 
 In dieser Tutorialreihe wird Folgendes behandelt:
 

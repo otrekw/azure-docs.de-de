@@ -3,12 +3,12 @@ title: Beispiele einfacher Abfragen
 description: Verwenden Sie Azure Resource Graph, um einige einfache Abfragen auszuführen, etwa Abfragen zum Zählen oder Bestellen von Ressourcen oder Abfragen anhand eines bestimmten Tags.
 ms.date: 05/01/2021
 ms.topic: sample
-ms.openlocfilehash: 52744c3d1e83874d4ac469a93eef86ae12155b5a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ddb4b57a9f2bae8298de8dad74e99edc19353e42
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326001"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751497"
 ---
 # <a name="starter-resource-graph-query-samples"></a>Beispiele für den Einstieg in Resource Graph-Abfragen
 
@@ -17,7 +17,7 @@ Der erste Schritt zum Verstehen von Abfragen mit Azure Resource Graph sind Grund
 Wir behandeln die folgenden einfachen Abfragen:
 
 - [Anzahl der Azure-Ressourcen](#count-resources)
-- [Anzahl der Schlüsseltresorressourcen](#count-keyvaults)
+- [Anzahl von Key Vault-Ressourcen](#count-keyvaults)
 - [Auflisten von Ressourcen nach Namen sortiert](#list-resources)
 - [Anzeigen aller virtuellen Computer in absteigender Folge nach Namen sortiert](#show-vms)
 - [Anzeigen der ersten fünf virtuellen Computer nach Name und BS-Typ](#show-sorted)
@@ -69,7 +69,7 @@ Search-AzGraph -Query "Resources | summarize count()"
 
 ---
 
-## <a name="count-key-vault-resources"></a><a name="count-keyvaults"></a>Anzahl der Schlüsseltresorressourcen
+## <a name="count-key-vault-resources"></a><a name="count-keyvaults"></a>Anzahl von Key Vault-Ressourcen
 
 Diese Abfrage verwendet `count` anstelle von `summarize`, um die Anzahl der zurückgegebenen Datensätze zu zählen. In der Anzahl sind nur Schlüsseltresore enthalten.
 
@@ -468,7 +468,7 @@ Diese Abfrage listet Tags in Verwaltungsgruppen, Abonnements und Ressourcen sowi
 Die Abfrage wird zunächst auf Ressourcen mit nicht leeren Tags (`isnotempty()`) beschränkt. Außerdem werden die einbezogenen Felder beschränkt, indem nur _tags_ in `project` und `mvexpand` eingeschlossen wird, und es wird `extend` verwendet, um die Datenpaare aus dem Eigenschaftenbehälter abzurufen. Anschließend wird `union` verwendet, um die Ergebnisse aus _ResourceContainers_ mit den gleichen Ergebnissen aus _Resources_ zu kombinieren, wodurch eine umfassende Abdeckung der abgerufenen Tags erzielt wird. Abschließend werden die Ergebnisse auf individuelle (`distinct`) Datenpaare beschränkt, und vom System ausgeblendete Tags werden ausgeschlossen.
 
 ```kusto
-ResourceContainers 
+ResourceContainers
 | where isnotempty(tags)
 | project tags
 | mvexpand tags
@@ -555,7 +555,7 @@ advisorresources
     solution = tostring(properties.shortDescription.solution),
     currency = tostring(properties.extendedProperties.savingsCurrency)
 | summarize
-    dcount(resources), 
+    dcount(resources),
     bin(sum(savings), 0.01)
     by solution, currency
 | project solution, dcount_resources, sum_savings, currency

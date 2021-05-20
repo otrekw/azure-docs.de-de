@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
 adobe-target: true
-ms.openlocfilehash: 48c4b2a73628ab2105e23054d747e28acc105d01
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: ca53c42c5c80a86e50db5ac52e6efee75c17cd8e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563186"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770639"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 
@@ -105,8 +105,10 @@ Nachfolgend sind einige Vorteile der Umstellung auf Azure Machine Learning aufge
 
 Sehen Sie sich [Studio](https://ml.azure.com) an, oder informieren Sie sich in den folgenden Tutorials ausführlicher über die verschiedenen Erstellungsoptionen:  
 
-- + [Erste Schritte in Ihrer eigenen Entwicklungsumgebung](tutorial-1st-experiment-sdk-setup-local.md)
-  + [Verwenden von Jupyter-Notebooks auf einer Compute-Instanz zum Trainieren und Bereitstellen von Modellen](tutorial-1st-experiment-sdk-setup.md)
+Beginnen Sie mit [Schnellstart: Erste Schritte mit Azure Machine Learning](quickstart-create-resources.md).  Verwenden Sie dann diese Ressourcen, um Ihr erstes Experiment mit Ihrer bevorzugten Methode zu erstellen:
+
+  + [Ausführen eines „Hallo Welt“-Python-Skripts (Teil 1 von 3)](tutorial-1st-experiment-hello-world.md)
+  + [Verwenden eines Jupyter Notebooks zum Trainieren von Bildklassifizierungsmodellen](tutorial-train-models-with-aml.md)
   + [Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning](tutorial-first-experiment-automated-ml.md)  
   + [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer (Vorschau)](tutorial-designer-automobile-price-train-score.md)
   + [Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)

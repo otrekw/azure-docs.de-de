@@ -2,13 +2,13 @@
 title: Neuerungen in Azure Defender für IoT
 description: In diesem Artikel wird beschrieben, welche Neuerungen das aktuelle Release von Defender für IoT enthält.
 ms.topic: overview
-ms.date: 04/25/2021
-ms.openlocfilehash: f7631caedcb26227abf65d6fad216fc629d41dd4
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 05/05/2021
+ms.openlocfilehash: e731d45d527a3bb2a59e532065fefc78a3237fd5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987091"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755259"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Neuerungen in Azure Defender für IoT  
 
@@ -104,11 +104,6 @@ Sie können die Sicherheit Ihrer Bereitstellung nun verbessern, indem Sie Ihrer 
 
 Dieses Feature ist in der lokalen Verwaltungskonsole mit Veröffentlichung von Version 10.2 verfügbar.
 
-### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>Hinzufügen einer zweiten Netzwerkschnittstelle zur lokalen Verwaltungskonsole (Public Preview)
-
-Sie können die Sicherheit Ihrer Bereitstellung nun verbessern, indem Sie Ihrer lokalen Verwaltungskonsole eine zweite Netzwerkschnittstelle hinzufügen. Mit diesem Feature können Sie die verbundenen Sensoren Ihrer lokalen Verwaltung in einem sicheren Netzwerk verwenden und gleichzeitig Ihren Benutzern den Zugriff auf die lokale Verwaltungskonsole über eine zweite separate Netzwerkschnittstelle ermöglichen.
-
-Dieses Feature ist in der lokalen Verwaltungskonsole mit Veröffentlichung von Version 10.2 verfügbar.
 ### <a name="device-builder---new-micro-agent-public-preview"></a>Gerätehersteller: neuer Mikro-Agent (öffentliche Vorschau)
 
 Ein neues Geräteherstellermodul ist verfügbar. Das Modul, das als Micro-Agent bezeichnet wird, ermöglicht Folgendes:

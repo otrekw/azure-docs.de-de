@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/20/2021
+ms.date: 05/09/2021
 ms.author: memildin
-ms.openlocfilehash: 3307d3aed422c3eab63412388244ef14ef3be699
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: ed9ea3abf984f537ab693ccbadb90e2ba091f52d
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750990"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683567"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Wichtige bevorstehende Änderungen an Azure Security Center
 
@@ -28,27 +28,12 @@ Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Cen
 
 | Geplante Änderung                                                                                                                                                        | Voraussichtliches Datum der Änderung |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| [Verschiebung von 21 Empfehlungen zwischen Sicherheitskontrollen](#21-recommendations-moving-between-security-controls)                                                           | April 2021                |
 | [Zwei Empfehlungen der Sicherheitskontrolle „Systemupdates anwenden“ als veraltet eingestuft](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | April 2021                |
+| [Änderung des Präfix für Kubernetes-Warnungen von „AKS_“ in „K8s_“](#prefix-for-kubernetes-alerts-changing-from-aks_-to-k8s_)                                               | Juni 2021                 |
 | [Die Legacy-Implementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)          | Juni 2021                 |
 | [Die Empfehlungen von AWS werden zur allgemeinen Verfügbarkeit (GA) veröffentlicht.](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **August** 2021           |
 | [Verbesserungen für die Empfehlung zur SQL-Datenklassifizierung](#enhancements-to-sql-data-classification-recommendation)                                                     | Q2 2021                   |
 |                                                                                                                                                                       |                           |
-
-
-### <a name="21-recommendations-moving-between-security-controls"></a>Verschiebung von 21 Empfehlungen zwischen Sicherheitskontrollen 
-
-**Geschätztes Datum der Änderung:** April 2021
-
-Die folgenden Empfehlungen werden in eine andere Sicherheitskontrolle verschoben. Bei Sicherheitskontrollen handelt es sich um logische Gruppen verwandter Sicherheitsempfehlungen, die anfällige Angriffsflächen widerspiegeln. Durch die Verschiebung wird sichergestellt, dass sich jede dieser Empfehlungen in der am besten geeigneten Kontrolle befindet, um das jeweilige Ziel zu erreichen. 
-
-Informationen dazu, welche Empfehlungen in den einzelnen Sicherheitssteuerungen enthalten sind, finden Sie unter Sicherheitskontrollen und deren Empfehlungen.
-
-|Empfehlung |Änderung und Auswirkung  |
-|---------|---------|
-|Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.<br>Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren<br>Sicherheitsrisiken in Ihren SQL-Datenbanken müssen entschärft werden (neu)<br>Die Sicherheitsrisiken für Ihre SQL-Datenbanken in VMs müssen entschärft werden.     |Verschiebung aus „Sicherheitsrisiken entschärfen“ (Wert: sechs Punkte)<br>in „Sicherheitskonfigurationen bereinigen“ (Wert: vier Punkte).<br>Diese Empfehlungen haben je nach Umgebung eine geringere Auswirkung auf Ihre Bewertung.|
-|Ihrem Abonnement sollte mehr als ein Besitzer zugewiesen sein.<br>Automation-Kontovariablen sollten verschlüsselt werden.<br> IoT-Geräte: Überwachter Prozess hat das Senden von Ereignissen beendet<br> IoT-Geräte: Fehler bei Validierung von Baseline von Betriebssystem<br> IoT-Geräte:Upgrade der TLS-Verschlüsselungssammlung erforderlich<br> IoT-Geräte: offene Ports auf Gerät<br> IoT-Geräte: In einer der Ketten wurde eine zu wenig einschränkende Firewallrichtlinie gefunden<br> IoT-Geräte: In der Eingabekette wurde eine zu wenig einschränkende Firewallregel gefunden<br> IoT-Geräte: In der Ausgabekette wurde eine zu wenig einschränkende Firewallregel gefunden<br>In IoT Hub sollten Diagnoseprotokolle aktiviert sein.<br> IoT-Geräte: Agent sendet Nachrichten zu Unterauslastung<br>IoT-Geräte: Die Standard-IP-Filterrichtlinie sollte auf „Verweigern“ festgelegt werden<br>IoT-Geräte: Großer IP-Adressbereich für IP-Filterregel<br>IoT-Geräte: Agent-Nachrichtenintervalle und -größe müssen angepasst werden<br>IoT-Geräte: Identische Anmeldeinformationen für die Authentifizierung<br>IoT-Geräte – Auditd-Prozess hat das Senden von Ereignissen beendet<br>IoT-Geräte: Baselinekonfiguration des Betriebssystems (OS) muss korrigiert werden|Verschiebung in **Bewährte Sicherheitsmethoden implementieren**.<br>Wenn eine Empfehlung in die Sicherheitskontrolle „Bewährte Sicherheitsmethoden implementieren“ (Wert: null Punkte) verschoben wird, wirkt sie sich nicht mehr auf Ihre Sicherheitsbewertung aus.|
-|||
 
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Zwei Empfehlungen der Sicherheitskontrolle „Systemupdates anwenden“ als veraltet eingestuft
@@ -60,6 +45,30 @@ Die beiden folgenden Empfehlungen werden als veraltet eingestuft:
 - **Die Betriebssystemversion sollte für Ihre Clouddienstrollen aktualisiert werden**: Azure aktualisiert Ihr Gastbetriebssystem standardmäßig in regelmäßigen Abständen auf das neueste Image innerhalb der BS-Familie, die Sie in der Dienstkonfiguration (CSCFG-Datei) angegeben haben (z B. Windows Server 2016).
 - **Für Kubernetes Service muss ein Upgrade auf eine Kubernetes-Version ohne Sicherheitsrisiko durchgeführt werden**: Die Evaluierungen dieser Empfehlung sind uns nicht weitreichend genug. Die aktuelle Version dieser Empfehlung wird später durch eine verbesserte Version ersetzt, die besser auf die Sicherheitsanforderungen unserer Kunden abgestimmt ist.
 
+
+### <a name="prefix-for-kubernetes-alerts-changing-from-aks_-to-k8s_"></a>Änderung des Präfix für Kubernetes-Warnungen von „AKS_“ in „K8s_“
+
+**Voraussichtliches Datum der Änderung:** Juni 2021
+
+Azure Defender für Kubernetes wurde kürzlich erweitert, um Kubernetes-Cluster zu schützen, die lokal und in Umgebungen mit mehreren Clouds gehostet werden. Weitere Informationen finden Sie unter [Verwenden von Azure Defender für Kubernetes zum Schutz von Hybrid- und Multi-Cloud-Bereitstellungen von Kubernetes (Vorschau)](release-notes.md#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview).
+
+Um deutlich zu machen, dass die von Azure Defender für Kubernetes bereitgestellten Sicherheitswarnungen nicht mehr auf Cluster in Azure Kubernetes Service beschränkt sind, ändert sich das Präfix für die Warnungstypen von „AKS_“ in „K8s_“. Bei Bedarf werden auch die Namen und Beschreibungen aktualisiert. Ein Beispiel:
+
+|Warnung (Warnungstyp)|Beschreibung|
+|----|----|
+|Erkannte Tools für Kubernetes-Penetrationstests<br>(**AKS** _PenTestToolsKubeHunter)|Die Analyse des Kubernetes-Überwachungsprotokolls hat die Verwendung von Kubernetes-Penetrationstesttools im **AKS**-Cluster erkannt. Dieses Verhalten kann zwar legitim sein, aber Angreifer können solche öffentlichen Tools für böswillige Zwecke nutzen.
+|||
+
+Diese Warnung wird zu:
+
+|Warnung (Warnungstyp)|Beschreibung|
+|----|----|
+|Erkannte Tools für Kubernetes-Penetrationstests<br>(**K8s** _PenTestToolsKubeHunter)|Die Analyse des Kubernetes-Überwachungsprotokolls hat die Verwendung von Kubernetes-Penetrationstesttools im **Kubernetes**-Cluster erkannt. Dieses Verhalten kann zwar legitim sein, aber Angreifer können solche öffentlichen Tools für böswillige Zwecke nutzen.|
+|||
+
+Unterdrückungsregeln, in denen auf mit „AKS_“ beginnende Warnungen verwiesen wird, werden automatisch konvertiert. Wenn Sie SIEM-Exporte oder benutzerdefinierte Automatisierungsskripts eingerichtet haben, in denen anhand des Warnungstyps auf Kubernetes-Warnungen verwiesen wird, müssen diese mit den neuen Warnungstypen aktualisiert werden.
+
+Eine vollständige Liste der Kubernetes-Warnungen finden Sie unter [Warnungen für Container: Kubernetes-Cluster](alerts-reference.md#alerts-akscluster).
 
 ### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>Die Legacyimplementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.
 

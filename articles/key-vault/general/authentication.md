@@ -6,19 +6,15 @@ ms.author: mbaldwin
 ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
-ms.topic: how-to
-ms.openlocfilehash: 7d219b752b894bbce9815911658c804ecb850ea1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.topic: conceptual
+ms.openlocfilehash: 08ed6fc4c4a18a699a8a27b2436f5eb92252fa7e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753432"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755211"
 ---
-# <a name="authenticate-to-azure-key-vault"></a>Authentifizieren bei Azure Key Vault
-
-Mit Azure Key Vault können Sie in einem zentralen, sicheren Cloudrepository Geheimnisse speichern und ihre Verteilung steuern. So müssen Anmeldeinformationen nicht mehr in Anwendungen gespeichert werden. Anwendungen müssen sich nur zur Laufzeit bei Key Vault authentifizieren, um auf diese Geheimnisse zugreifen zu können.
-
-## <a name="app-identity-and-security-principals"></a>App-Identität und Sicherheitsprinzipale
+# <a name="authentication-in-azure-key-vault"></a>Authentifizierung in Azure Key Vault
 
 Die Authentifizierung mit Key Vault funktioniert in Verbindung mit [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md), was für die Authentifizierung der Identität eines bestimmten **Sicherheitsprinzipals** zuständig ist.
 
@@ -40,49 +36,23 @@ Für Anwendungen gibt es zwei Möglichkeiten, einen Dienstprinzipal abzurufen:
 
 * Wenn Sie die verwaltete Identität nicht verwenden können, **registrieren** Sie die Anwendung stattdessen bei Ihrem Azure AD-Mandanten gemäß Beschreibung in [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](../../active-directory/develop/quickstart-register-app.md). Bei der Registrierung wird auch ein zweites Anwendungsobjekt erstellt, das die App für alle Mandanten identifiziert.
 
-## <a name="authorize-a-security-principal-to-access-key-vault"></a>Autorisieren eines Sicherheitsprinzipals für den Zugriff auf Key Vault
-
-Key Vault funktioniert mit zwei separaten Autorisierungsebenen:
-
-- **Zugriffsrichtlinien** steuern, ob ein Benutzer, eine Gruppe oder ein Dienstprinzipal für den Zugriff auf Geheimnisse, Schlüssel und Zertifikate *innerhalb* einer vorhandenen Key Vault-Ressource autorisiert ist (manchmal auch als „Datenebene“-Vorgänge bezeichnet). Zugriffsrichtlinien werden in der Regel Benutzern, Gruppen und Anwendungen gewährt.
-
-    Informationen zum Zuweisen von Zugriffsrichtlinien finden Sie in den folgenden Artikeln:
-
-    - [Azure portal](assign-access-policy-portal.md)
-    - [Azure-Befehlszeilenschnittstelle](assign-access-policy-cli.md)
-    - [Azure PowerShell](assign-access-policy-portal.md)
-
-- **Rollenberechtigungen** steuern, ob ein Benutzer, eine Gruppe oder ein Dienstprinzipal autorisiert ist, eine Key Vault Ressource zu erstellen, zu löschen und anderweitig zu verwalten (manchmal auch als „Verwaltungsebene“-Vorgänge bezeichnet). Solche Rollen werden meistens nur Administratoren gewährt.
- 
-    Informationen zum Zuweisen und Verwalten von Rollen finden Sie in den folgenden Artikeln:
-
-    - [Azure portal](../../role-based-access-control/role-assignments-portal.md)
-    - [Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md)
-    - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-
-    Allgemeine Informationen zu Rollen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
-
-
-> [!IMPORTANT]
-> Um maximale Sicherheit zu gewährleisten, beachten Sie stets das Prinzip der geringsten Rechte, und legen Sie Zugriffsrichtlinien so spezifisch wie möglich fest, vergeben Sie Rollen so spezifisch wie möglich und beschränken Sie sich auf das Notwendige. 
-    
 ## <a name="configure-the-key-vault-firewall"></a>Konfigurieren der Key Vault-Firewall
 
 Standardmäßig ermöglicht Key Vault den Zugriff auf Ressourcen über öffentliche IP-Adressen. Der höheren Sicherheit willen können Sie auch den Zugriff auf bestimmte IP-Adressbereiche, Dienstendpunkte, virtuelle Netzwerke oder private Endpunkte einschränken.
 
 Weitere Informationen finden Sie unter [Zugreifen auf Azure Key Vault hinter einer Firewall](./access-behind-firewall.md).
 
+## <a name="the-key-vault-request-operation-flow-with-authentication"></a>Ablauf des Key Vault-Anforderungsvorgangs mit Authentifizierung
 
-## <a name="the-key-vault-authentication-flow"></a>Der Key Vault-Authentifizierungsfluss
+Die Key Vault-Authentifizierung ist Teil jedes Anforderungsvorgang für Key Vault. Das abgerufene Token kann bei nachfolgenden Aufrufen wiederverwendet werden. Exemplarischer Ablauf der Authentifizierung:
 
-1. Ein Dienstprinzipal erfordert das Authentifizieren bei Azure AD, z. B.:
+1. Von einem Token wird die Authentifizierung bei Azure AD angefordert. Beispiele:
+    * Eine Azure-Ressource (beispielsweise ein virtueller Computer oder eine App Service-Anwendung mit einer verwalteten Identität) kontaktiert den REST-Endpunkt, um ein Zugriffstoken abzurufen.
     * Ein Benutzer meldet sich beim Azure-Portal mit einem Benutzernamen und einem Kennwort an.
-    * Eine Anwendung ruft eine Azure-REST-API auf und stellt eine Client-ID und einen geheimen Schlüssel oder ein Clientzertifikat bereit.
-    * Eine Azure-Ressource, z. B. ein virtueller Computer mit einer verwalteten Identität, kontaktiert den REST-Endpunkt des [Azure-Instanzmetadatendiensts](../../virtual-machines/windows/instance-metadata-service.md) (Azure Instance Metadata Service, IMDS), um ein Zugriffstoken abzurufen.
 
-1. Wenn die Authentifizierung bei Azure AD erfolgreich ist, wird dem Dienstprinzipal ein OAuth-Token gewährt.
+1. Wenn die Authentifizierung bei Azure AD erfolgreich ist, wird dem Sicherheitsprinzipal ein OAuth-Token gewährt.
 
-1. Der Dienstprinzipal ruft über den Key Vault-Endpunkt (URI) die Key Vault-REST-API auf.
+1. Die Key Vault-REST-API wird über den Endpunkt (URI) der Key Vault-Instanz aufgerufen.
 
 1. Die Key Vault-Firewall überprüft die folgenden Kriterien. Wenn ein Kriterium erfüllt ist, ist der Aufruf zulässig. Andernfalls wird der Aufruf blockiert, und eine unzulässige Antwort wird zurückgegeben.
 
@@ -91,9 +61,9 @@ Weitere Informationen finden Sie unter [Zugreifen auf Azure Key Vault hinter ein
     * Die aufrufende Funktion ist in der Firewall nach IP-Adresse, virtuellem Netzwerk oder Dienstendpunkt aufgelistet.
     * Die aufrufende Funktion kann Key Vault über eine konfigurierte Private Link-Verbindung erreichen.    
 
-1. Wenn die Firewall den Aufruf zulässt, ruft Key Vault Azure AD auf, um das Zugriffstoken des Dienstprinzipals zu validieren.
+1. Wird der Aufruf durch die Firewall zugelassen, ruft Key Vault Azure AD auf, um das Zugriffstoken des Sicherheitsprinzipals zu überprüfen.
 
-1. Key Vault überprüft, ob der Dienstprinzipal über die erforderliche Zugriffsrichtlinie für den angeforderten Vorgang verfügt. Wenn dies nicht der Fall ist, gibt Key Vault eine unzulässige Antwort zurück.
+1. Von Key Vault wird überprüft, ob der Sicherheitsprinzipal über die erforderliche Berechtigung für den angeforderten Vorgang verfügt. Wenn dies nicht der Fall ist, gibt Key Vault eine unzulässige Antwort zurück.
 
 1. Key Vault führt den angeforderten Vorgang aus und gibt das Ergebnis zurück.
 
@@ -104,24 +74,24 @@ Das folgende Diagramm veranschaulicht den Prozess für eine Anwendung, die eine 
 > [!NOTE]
 > Von Key Vault SDK-Clients für Geheimnisse, Zertifikate und Schlüssel wird ein zusätzlicher Aufruf ohne Zugriffstoken an Key Vault gesendet. Dies hat eine 401-Antwort zum Abrufen von Mandanteninformationen zur Folge. Weitere Informationen finden Sie unter [Authentifizierung, Anforderungen und Antworten](authentication-requests-and-responses.md).
 
-## <a name="code-examples"></a>Codebeispiele
+## <a name="authentication-to-key-vault-in-application-code"></a>Authentifizierung bei Key Vault in Anwendungscode
 
-Die folgende Tabelle ist mit verschiedenen Artikeln verknüpft, die veranschaulichen, wie Sie mit Key Vault im Anwendungscode arbeiten können, indem Sie die Azure SDK-Bibliotheken für die betreffende Sprache verwenden. Andere Benutzeroberflächen wie Azure CLI und Azure-Portal werden der Vollständigkeit halber einbezogen.
+Das Key Vault SDK verwendet die Azure Identity-Clientbibliothek. Dies ermöglicht eine nahtlose, umgebungsübergreifende Authentifizierung bei Key Vault mit dem gleichen Code.
 
-| Key Vault-Geheimnisse | Key Vault-Schlüssel | Key Vault-Zertifikate |
-|  --- | --- | --- |
-| [Python](../secrets/quick-create-python.md) | [Python](../keys/quick-create-python.md) | [Python](../certificates/quick-create-python.md) | 
-| [.NET](../secrets/quick-create-net.md) | [.NET](../keys/quick-create-net.md) | [.NET](../certificates/quick-create-net.md) |
-| [Java](../secrets/quick-create-java.md) | [Java](../keys/quick-create-java.md) | [Java](../certificates/quick-create-java.md) |
-| [JavaScript](../secrets/quick-create-node.md) | [JavaScript](../keys/quick-create-node.md) | [JavaScript](../certificates/quick-create-node.md) | 
-| [Azure portal](../secrets/quick-create-portal.md) | [Azure portal](../keys/quick-create-portal.md) | [Azure portal](../certificates/quick-create-portal.md) |
-| [Azure-Befehlszeilenschnittstelle](../secrets/quick-create-cli.md) | [Azure-Befehlszeilenschnittstelle](../keys/quick-create-cli.md) | [Azure-Befehlszeilenschnittstelle](../certificates/quick-create-cli.md) |
-| [Azure PowerShell](../secrets/quick-create-powershell.md) | [Azure PowerShell](../keys/quick-create-powershell.md) | [Azure PowerShell](../certificates/quick-create-powershell.md) |
-| [ARM-Vorlage](../secrets/quick-create-net.md) | -- | -- |
+**Azure Identity-Clientbibliotheken**
+
+| .NET | Python | Java | JavaScript |
+|--|--|--|--|
+|[Azure Identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](/python/api/overview/azure/identity-readme)|[Azure Identity SDK Java](/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](/javascript/api/overview/azure/identity-readme)|   
+
+Weitere Informationen zu bewährten Methoden sowie Entwicklerbeispiele finden Sie unter [Authentifizieren bei Key Vault mit Code](developers-guide.md#authenticate-to-key-vault-in-code).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Entwicklerhandbuch für Key Vault](developers-guide.md)
+- [Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal](assign-access-policy-portal.md)
+- [Zuweisen einer Azure RBAC-Rolle zu Key Vault](rbac-guide.md)
 - [Behandeln von Problemen mit Schlüsseltresor-Zugriffsrichtlinien](troubleshooting-access-issues.md)
 - [Azure Key Vault: REST-API-Fehlercodes](rest-error-codes.md)
-- [Entwicklerhandbuch für Key Vault](developers-guide.md)
+
 - [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md)

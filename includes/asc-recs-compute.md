@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 04/26/2021
+ms.date: 05/11/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: f2b7fac28d1da7f74091e78808eef7604e6c74f1
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 7187599a269b37c1eb2b305bbcd8346a53bfb2e2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001880"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784282"
 ---
-Diese Kategorie enthält **51** Empfehlungen.
+Diese Kategorie enthält **50** Empfehlungen.
 
 |Empfehlung |BESCHREIBUNG |severity |
 |---|---|---|
@@ -48,7 +48,6 @@ Diese Kategorie enthält **51** Empfehlungen.
 |Verwaltungsports virtueller Computer müssen mit der Just-In-Time-Netzwerkzugriffssteuerung geschützt werden |Azure Security Center hat einige zu wenig einschränkende Regeln für eingehenden Datenverkehr für die Verwaltungsports in Ihrer Netzwerksicherheitsgruppe identifiziert. Aktivieren Sie die Just-In-Time-Zugriffssteuerung, um Ihre VM vor Brute-Force-Angriffen aus dem Internet zu schützen. <a href="https://docs.microsoft.com/azure/security-center/security-center-just-in-time">Weitere Informationen.</a><br />(Zugehörige Richtlinie: [Verwaltungsports virtueller Computer müssen mit der Just-In-Time-Netzwerkzugriffssteuerung geschützt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fb0f33259-77d7-4c9e-aac6-3aabcfae693c)) |Hoch |
 |Der Datensammlungs-Agent für Netzwerkdatenverkehr muss auf virtuellen Linux-Computern installiert werden. |Security Center verwendet den Microsoft Dependency-Agent, um Daten zum Netzwerkdatenverkehr Ihrer Azure-VMs zu erfassen. Dies ermöglicht die Aktivierung erweiterter Netzwerkschutzfunktionen, darunter die Datenverkehrsvisualisierung in der Netzwerkübersicht sowie Empfehlungen zur Netzwerkhärtung und zu bestimmten Netzwerkbedrohungen.<br />(Zugehörige Richtlinie: [Der Datensammlungs-Agent für Netzwerkdatenverkehr muss auf Linux-VMs installiert werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f04c4380f-3fae-46e8-96c9-30193528f602)) |Medium |
 |Der Datensammlungs-Agent für Netzwerkdatenverkehr muss auf virtuellen Windows-Computern installiert werden. |Security Center verwendet den Microsoft Dependency-Agent, um Daten zum Netzwerkdatenverkehr Ihrer Azure-VMs zu erfassen. Dies ermöglicht die Aktivierung erweiterter Netzwerkschutzfunktionen, darunter die Datenverkehrsvisualisierung in der Netzwerkübersicht sowie Empfehlungen zur Netzwerkhärtung und zu bestimmten Netzwerkbedrohungen.<br />(Zugehörige Richtlinie: [Der Datensammlungs-Agent für Netzwerkdatenverkehr muss auf Windows-VMs installiert werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2f2ee1de-44aa-4762-b6bd-0893fc3f306d)) |Medium |
-|Die Betriebssystemversion sollte für Ihre Clouddienstrollen aktualisiert werden |Aktualisieren Sie die Betriebssystemversion für Ihre Clouddienstrollen auf die aktuelle Version für Ihre Betriebssystemfamilie.<br />(Zugehörige Richtlinie: [Das Betriebssystem muss die neueste Version für Ihre Clouddienstrollen aufweisen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5a913c68-0590-402c-a531-e57e19379da3)) |Hoch |
 |Für Kubernetes Service müssen Podsicherheitsrichtlinien definiert werden (veraltet) |(Veraltet) Definieren Sie Podsicherheitsrichtlinien, um den Angriffsvektor zu reduzieren, indem nicht erforderliche Anwendungsberechtigungen entfernt werden. Es empfiehlt sich, Podsicherheitsrichtlinien zu konfigurieren, um sicherzustellen, dass Pods, die nicht zugelassene Ressourcen anfordern, nicht im AKS-Cluster ausgeführt werden können.<br />(Keine zugehörige Richtlinie) |Hoch |
 |Sicherer Start muss auf Ihrem virtuellen Linux-Computer aktiviert sein |Die Aktivierung von „Sicherer Start“ auf Ihrem virtuellen Computer dient als Schutz vor schädlichen und nicht autorisierten Änderungen an der Startzeichenfolge. Nach der Aktivierung darf nur signierter Code auf Ihrer VM bzw. auf dem Server ausgeführt werden.<br />(Keine zugehörige Richtlinie) |Niedrig |
 |Service Fabric Cluster sollten die Eigenschaft ClusterProtectionLevel auf EncryptAndSign setzen |Service Fabric bietet drei Schutzebenen („None“, „Sign“ und „EncryptAndSign“) für die Kommunikation zwischen zwei Knoten unter Verwendung eines primären Clusterzertifikats. Legen Sie die Schutzebene fest, um sicherzustellen, dass alle zwischen zwei Knoten übertragenen Nachrichten verschlüsselt und digital signiert werden.<br />(Zugehörige Richtlinie: [Für Service Fabric-Cluster sollte die Eigenschaft „ClusterProtectionLevel“ auf „EncryptAndSign“ festgelegt sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f617c02be-7f02-4efd-8836-3180d47b6c68)) |Hoch |

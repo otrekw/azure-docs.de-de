@@ -3,12 +3,12 @@ title: Bereitstellen des CAF-Blaupausenbeispiels für die Migrationslandezone
 description: Bereitstellungsschritte für das CAF-Blaupausenbeispiel für die Migrationslandezone, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: d5aed1d492fea102598a22921d04ed8681c727cb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9c953c5ec7f6c8a9a9ae7a1ff784b5c0d0f8f877
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470114"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757815"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Bereitstellen des Microsoft Cloud Adoption Framework-Blaupausenbeispiel für die Azure-Migrationslandezone
 
@@ -35,7 +35,7 @@ Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispie
 1. Navigieren Sie unter _Weitere Beispiele_ zum Blaupausenbeispiel für die **CAF-Migrationslandezone**, und wählen Sie **Dieses Beispiel verwenden** aus.
 
 1. Geben Sie die _Grundlagen_ des Blaupausenbeispiels ein:
-   - **Name der Blaupause**: Geben Sie einen Namen für Ihre Kopie des Blaupausenbeispiels für die CAF-Migrationslandezone an.
+   - **Name der Blaupause**: Geben Sie einen Namen für Ihre Kopie des Blaupausenbeispiels für die Zielzone für CAF-Migration an.
    - **Definitionsspeicherort**: Klicken Sie auf die Schaltfläche mit den Auslassungspunkten, und wählen Sie die Verwaltungsgruppe aus, in der Sie Ihre Kopie des Beispiels speichern möchten.
 
 1. Wählen Sie oben auf der Seite die Registerkarte _Artefakte_ oder unten auf der Seite die Option **Weiter: Artefakte** aus.
@@ -72,7 +72,7 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
      - Azure Blueprint verwendet diese verwaltete Identität zum Bereitstellen aller Artefakte in der zugewiesenen Blaupause.
        Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Version der Blaupausendefinition:** Wählen Sie eine **veröffentlichte** Version Ihrer Kopie des Blaupausenbeispiels aus.
-    
+
    - Zuweisung sperren
 
      Wählen Sie die Blaupausensperreinstellung für die Umgebung aus. Weitere Informationen finden Sie unter [Grundlegendes zur Ressourcensperre in Azure Blueprint](../../concepts/resource-locking.md).
@@ -85,9 +85,9 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 
      Die in diesem Abschnitt definierten Parameter werden in vielen der Artefakte in der Blaupausendefinition verwendet, um Konsistenz zu gewährleisten.
 
-       - **Organisation**: Geben Sie den (eindeutigen) Namen Ihrer Organisation ein, etwa Contoso oder Fabrikam.
-       - **AzureRegion**: Wählen Sie eine Azure-Region für die Bereitstellung aus.
-       
+     - **Organisation**: Geben Sie den (eindeutigen) Namen Ihrer Organisation ein, etwa Contoso oder Fabrikam.
+     - **AzureRegion**: Wählen Sie eine Azure-Region für die Bereitstellung aus.
+
    - Artefaktparameter
 
      Die in diesem Abschnitt definierten Parameter gelten für das Artefakt, unter dem sie definiert werden. Diese Parameter sind [dynamische Parameter](../../concepts/parameters.md#dynamic-parameters), da sie während der Zuweisung der Blaupause definiert werden. Eine vollständige Liste der Artefaktparameter und die zugehörigen Beschreibungen finden Sie in der [Tabelle der Artefaktparameter](#artifact-parameters-table).

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/29/2021
+ms.date: 05/07/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00c6fc7916355586787bb91225e71c4db280ed26
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 2b3ce98a55057b90f26cdc91d52a514fe4bb3c9e
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315912"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517692"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
@@ -156,12 +156,20 @@ Um mit FIDO2-Sicherheitsschlüsseln zu beginnen, lesen Sie folgende Anleitung:
 
 Es gelten die folgenden Bedingungen:
 
-- Administratoren können kennwortlose Authentifizierungsmethoden für ihre Mandanten aktivieren
-- Administratoren können die einzelnen Methoden für alle Benutzer oder ausgewählte Benutzer/Gruppen in ihrem Mandanten anwenden
-- Endbenutzer können diese kennwortlosen Authentifizierungsmethoden in ihrem Kontoportal registrieren und verwalten
-- Endbenutzer können sich mit diesen kennwortlosen Authentifizierungsmethoden anmelden:
+- Administratoren können kennwortlose Authentifizierungsmethoden für ihre Mandanten aktivieren.
+
+- Administratoren können die einzelnen Methoden für alle Benutzer oder ausgewählte Benutzer bzw. Gruppen in ihrem Mandanten anwenden.
+
+- Benutzer können diese kennwortlosen Authentifizierungsmethoden in ihrem Kontoportal registrieren und verwalten.
+
+- Benutzer können sich mit diesen kennwortlosen Authentifizierungsmethoden anmelden:
    - Microsoft Authenticator-App: Funktioniert in Szenarien, in denen die Azure AD-Authentifizierung verwendet wird, einschließlich aller Browser, während der Einrichtung von Windows 10 und mit integrierten mobilen Apps unter jedem Betriebssystem.
-   - Sicherheitsschlüssel: Funktionieren beim Windows 10-Setup auf der Windows-Willkommensseite mit oder ohne Windows Autopilot, auf dem Sperrbildschirm für Windows 10 und im Web in unterstützten Browsern wie Microsoft Edge (Legacyversionen und neue Edge-Version).
+   - Sicherheitsschlüssel: Funktioniert auf Sperrbildschirm für Windows 10 und im Internet in unterstützten Browsern wie Microsoft Edge (sowohl ältere als auch neue Edge-Version).
+
+- Benutzer können kennwortlose Anmeldeinformationen für den Zugriff auf Ressourcen in Mandanten verwenden, in denen sie nur Gäste sind, müssen aber dennoch die mehrstufige Authentifizierung in diesem Ressourcenmandanten ausführen. Weitere Informationen finden Sie unter [Mögliche doppelte Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/external-identities/current-limitations#possible-double-multi-factor-authentication).  
+
+- Benutzer dürfen keine kennwortlosen Anmeldeinformationen innerhalb eines Mandanten registrieren, in denen sie Gäste sind. Außerdem verfügen sie über kein in diesem Mandanten verwaltetes Kennwort.  
+
 
 ## <a name="choose-a-passwordless-method"></a>Auswählen einer kennwortlosen Methode
 

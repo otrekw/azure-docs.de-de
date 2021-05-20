@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 96c67327a8272a02e677cc40b46c3177e470b684
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 5efc74ec150dcd18181404d93dc2142552a2c792
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106125784"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108807483"
 ---
 Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardgrenzwerten, die sicherstellen sollen, dass Kundenabonnements vor anderen Workloads geschützt sind. Wenden Sie sich an den Support, um die Grenzwerte bis zum Höchstwert für Ihr Abonnement zu erhöhen.
 
@@ -21,7 +21,7 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 
 | Resource | Standardlimit | Maximales Limit |
 | -------- | ------------- | ------------- |
-| Data Factorys in einem Azure-Abonnement | 800 | 800 |
+| Data Factorys pro Ressourcengruppe | 800 | 800 |
 | Gesamtanzahl von Entitäten (z. B. Pipelines, Datasets, Trigger, verknüpfte Dienste, private Endpunkte und Integration Runtimes) in einer Data Factory | 5\.000 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gesamtanzahl CPU-Kerne für Azure-SSIS Integration Runtimes unter einem Abonnement | 256 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gleichzeitige Pipelineausführungen pro Data Factory (von allen Pipelines der Factory gemeinsam genutzt) | 10.000  | 10.000 |

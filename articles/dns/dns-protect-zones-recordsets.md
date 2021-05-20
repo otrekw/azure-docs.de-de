@@ -2,17 +2,17 @@
 title: 'Azure DNS: Schützen von Azure DNS-Zonen und -Einträgen'
 description: In diesem Lernpfad erhalten Sie eine Einführung in den Schutz von DNS-Zonen und Datensätzen in Microsoft Azure DNS.
 services: dns
-author: asudbring
+author: duongau
 ms.service: dns
 ms.topic: how-to
-ms.date: 2/20/2020
-ms.author: allensu
-ms.openlocfilehash: 9d65e024e9efa3ad2bcb1c70d44360c8bd0de384
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/05/2021
+ms.author: duau
+ms.openlocfilehash: 66a19ae5ce4eb80b9c6fb04abeb24abc833f0353
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785850"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771078"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>So schützen Sie DNS-Zonen und -Ressourceneintragssätze
 
@@ -34,13 +34,13 @@ Die Ressourcengruppe *myResourceGroup* enthält fünf Zonen für die Contoso Cor
 
 Die einfachste Möglichkeit, Azure RBAC-Berechtigungen zuzuweisen, ist das Zuweisen [über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).  
 
-Öffnen Sie die **Zugriffssteuerung (IAM)** für die Ressourcengruppe, wählen Sie **Hinzufügen** und dann die Rolle **Mitwirkender für DNS-Zone** aus. Wählen Sie Benutzer oder Gruppen aus, denen Sie die Berechtigung erteilen möchten.
+Öffnen Sie die **Zugriffssteuerung (IAM)** für die Ressourcengruppe, wählen Sie **+Hinzufügen** und dann die Rolle **Mitwirkender für DNS-Zone** aus. Wählen Sie Benutzer oder Gruppen aus, denen Sie die Berechtigung erteilen möchten.
 
-![Azure RBAC auf Ressourcengruppenebene über das Azure-Portal](./media/dns-protect-zones-recordsets/rbac1.png)
+:::image type="content" source="./media/dns-protect-zones-recordsets/resource-group-rbac.png" alt-text="Screenshot: Seite „Zugriffssteuerung (IAM)“ für Ressourcengruppe.":::
 
 Berechtigungen können auch [mithilfe von Azure PowerShell erteilt werden](../role-based-access-control/role-assignments-powershell.md):
 
-```azurepowershell
+```azurepowershell-interactive
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 
 $usr = "<user email address>"
@@ -52,7 +52,7 @@ New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupNam
 
 Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../role-based-access-control/role-assignments-cli.md):
 
-```azurecli
+```azurecli-interactive
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 
 az role assignment create \
@@ -67,13 +67,13 @@ Azure-RBAC-Regeln können auf ein Abonnement, eine Ressourcengruppe oder eine ei
 
 Die Ressourcengruppe *myResourceGroup* enthält beispielsweise die Zone *contoso.com* und die Teilzone *customers.contoso.com*. Für jedes Kundenkonto werden CNAME-Einträge erstellt. Dem Administratorkonto, das zum Verwalten der CNAME-Einträge verwendet wird, werden Berechtigungen zum Erstellen von Einträgen in der Zone *customers.contoso.com* zugewiesen. Das Konto kann nur *customers.contoso.com* verwalten.
 
-Azure RBAC-Berechtigungen auf Zonenebene können über das Azure-Portal erteilt werden.  Öffnen Sie **Zugriffssteuerung (IAM)** für die Zone, klicken Sie auf **Hinzufügen**, und wählen Sie anschließend die Rolle **Mitwirkender für DNS-Zone** sowie die erforderlichen Benutzer oder Gruppen aus, um Berechtigungen zu erteilen.
+Azure RBAC-Berechtigungen auf Zonenebene können über das Azure-Portal erteilt werden.  Öffnen Sie **Zugriffssteuerung (IAM)** für die Zone, klicken Sie auf **+Hinzufügen** und wählen Sie anschließend die Rolle **Mitwirkender für DNS-Zone** sowie die erforderlichen Benutzer oder Gruppen aus, um Berechtigungen zu erteilen.
 
-![Azure RBAC auf DNS-Zonenebene über das Azure-Portal](./media/dns-protect-zones-recordsets/rbac2.png)
+:::image type="content" source="./media/dns-protect-zones-recordsets/zone-rbac.png" alt-text="Screenshot: Zugriffssteuerungsseite für DNS-Zone":::.
 
 Berechtigungen können auch [mithilfe von Azure PowerShell erteilt werden](../role-based-access-control/role-assignments-powershell.md):
 
-```azurepowershell
+```azurepowershell-interactive
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 
 $usr = "<user email address>"
@@ -87,7 +87,7 @@ New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupNam
 
 Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../role-based-access-control/role-assignments-cli.md):
 
-```azurecli
+```azurecli-interactive
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 
 az role assignment create \
@@ -100,13 +100,13 @@ az role assignment create \
 
 Berechtigungen werden auf Eintragssatzebene angewendet.  Der Benutzer erhält die Kontrolle über die benötigten Einträge und kann keine weiteren Änderungen vornehmen.
 
-Azure RBAC-Berechtigungen auf Eintragssatzebene können im Azure-Portal mithilfe der Schaltfläche **Zugriffssteuerung (IAM)** auf der Seite des Eintragssatzes konfiguriert werden:
+Azure RBAC-Berechtigungen auf Ressourceneintragssatz-Ebene können über das Azure-Portal konfiguriert werden, indem die Schaltfläche **Benutzer** auf der Seite „Ressourceneintragssatz“ verwendet wird:
 
-![Azure RBAC auf Ressourceneintragssatz-Ebene über das Azure-Portal](./media/dns-protect-zones-recordsets/rbac3.png)
+:::image type="content" source="./media/dns-protect-zones-recordsets/record-set-rbac-1.png" alt-text="Screenshot: Schaltfläche „Benutzer“ im Dateneintragssatz":::.
 
 Azure RBAC-Berechtigungen auf Ressourceneintragssatz-Ebene können auch [mithilfe von Azure PowerShell erteilt werden](../role-based-access-control/role-assignments-powershell.md):
 
-```azurepowershell
+```azurepowershell-interactive
 # Grant permissions to a specific record set
 
 $usr = "<user email address>"
@@ -119,7 +119,7 @@ New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -Scope $sco
 
 Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../role-based-access-control/role-assignments-cli.md):
 
-```azurecli
+```azurecli-interactive
 # Grant permissions to a specific record set
 
 az role assignment create \
@@ -172,14 +172,14 @@ Die verbleibenden Aktionen werden aus der [integrierten Rolle „DNS Zone Contri
 
 Benutzerdefinierte Rollendefinitionen können derzeit nicht über das Azure-Portal definiert werden. Eine benutzerdefinierte Rolle basierend auf dieser Rollendefinition kann mithilfe von Azure PowerShell erstellt werden:
 
-```azurepowershell
+```azurepowershell-interactive
 # Create new role definition based on input file
 New-AzRoleDefinition -InputFile <file path>
 ```
 
 Sie kann außerdem über die Azure CLI erstellt werden:
 
-```azurecli
+```azurecli-interactive
 # Create new role definition based on input file
 az role create -inputfile <file path>
 ```
@@ -198,13 +198,13 @@ Es gibt zwei Arten von Ressourcensperren: **CanNotDelete** und **ReadOnly**. Die
 
 Um Änderungen zu verhindern, wenden Sie eine ReadOnly-Sperre auf die Zone an. Diese Sperre verhindert das Erstellen neuer Eintragssätze sowie das Bearbeiten oder Löschen vorhandener Eintragssätze.
 
-Ressourcensperren auf Zonenebene können über das Azure-Portal erstellt werden.  Wählen Sie auf der DNS-Zonenseite **Sperren** und dann **+Hinzufügen** aus:
+Ressourcensperren auf Zonenebene können über das Azure-Portal erstellt werden. Wählen Sie auf der DNS-Zonenseite **Sperren** und dann **+Hinzufügen** aus:
 
-![Ressourcensperren auf Zonenebene über das Azure-Portal](./media/dns-protect-zones-recordsets/locks1.png)
+:::image type="content" source="./media/dns-protect-zones-recordsets/zone-locks.png" alt-text="Screenshot: Ressourcensperren auf Zonenebene":::.
 
 Ressourcensperren auf Zonenebene können auch über [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock) erstellt werden:
 
-```azurepowershell
+```azurepowershell-interactive
 # Lock a DNS zone
 
 $lvl = "<lock level>"
@@ -218,7 +218,7 @@ New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceTy
 
 Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](/cli/azure/lock#az_lock_create):
 
-```azurecli
+```azurecli-interactive
 # Lock a DNS zone
 
 az lock create \
@@ -239,7 +239,7 @@ Um zu verhindern, dass ein vorhandener DNS-Ressourceneintragssatz bearbeitet wir
 
 Ressourcensperren auf Ressourceneintragssatz-Ebene können derzeit nur mithilfe von Azure PowerShell konfiguriert werden.  Sie werden im Azure-Portal und in der Azure CLI nicht unterstützt.
 
-```azurepowershell
+```azurepowershell-interactive
 # Lock a DNS record set
 
 $lvl = "<lock level>"
@@ -261,7 +261,7 @@ Als Alternative können Sie eine CanNotDelete-Sperre auf einen Eintragssatz in d
 
 Der folgende PowerShell-Befehl erstellt eine CanNotDelete-Sperre für den SOA-Eintragssatz der angegebenen Zone:
 
-```azurepowershell
+```azurepowershell-interactive
 # Protect against zone delete with CanNotDelete lock on the record set
 
 $lvl = "CanNotDelete"

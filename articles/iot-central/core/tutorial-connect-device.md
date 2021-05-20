@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Verbinden einer generischen Client-App mit Azure IoT Central | Microsoft-Dokumentation'
-description: In diesem Tutorial für Geräteentwickler erfahren Sie, wie Sie ein Gerät, auf dem eine C-, C#-, Java-, JavaScript- oder Python-Client-App ausgeführt wird, mit Ihrer Azure IoT Central-Anwendung verbinden. Sie ändern die automatisch generierte Gerätevorlage durch Hinzufügen von Ansichten, über die ein Operator mit einem verbundenen Gerät interagieren kann.
+description: In diesem Tutorial erfahren Sie, wie Sie ein Gerät, auf dem eine C-, C#-, Java-, JavaScript- oder Python-Client-App ausgeführt wird, mit Ihrer Azure IoT Central-Anwendung verbinden. Sie ändern die automatisch generierte Gerätevorlage durch Hinzufügen von Ansichten, über die ein Operator mit einem verbundenen Gerät interagieren kann.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/24/2020
@@ -11,18 +11,16 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 479c12ca00614b2d34bd08f41e3451826a253035
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 0e6f4ac3cd95873c8b735a1843438499f2405bef
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001812"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750021"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>Tutorial: Erstellen einer Clientanwendung und Verbinden dieser Anwendung mit Ihrer Azure IoT Central-Anwendung
 
-*Dieser Artikel gilt für Lösungsersteller und Geräteentwickler.*
-
-In diesem Tutorial für Geräteentwickler erfahren Sie, wie Sie eine Clientanwendung mit Ihrer Azure IoT Central-Anwendung verbinden. Die Anwendung simuliert das Verhalten eines Thermostatsgerät. Wenn die Anwendung eine Verbindung mit IoT Central herstellt, sendet sie die Modell-ID des Thermostatgerätemodells. IoT Central verwendet die Modell-ID, um das Gerätemodell abzurufen und eine Gerätevorlage für Sie zu erstellen. Sie fügen der Gerätevorlage Anpassungen und Ansichten hinzu, um einem Operator die Interaktion mit einem Gerät zu ermöglichen.
+In diesem Tutorial erfahren Sie, wie Sie eine Clientanwendung mit Ihrer Azure IoT Central-Anwendung verbinden. Die Anwendung simuliert das Verhalten eines Thermostatsgerät. Wenn die Anwendung eine Verbindung mit IoT Central herstellt, sendet sie die Modell-ID des Thermostatgerätemodells. IoT Central verwendet die Modell-ID, um das Gerätemodell abzurufen und eine Gerätevorlage für Sie zu erstellen. Sie fügen der Gerätevorlage Anpassungen und Ansichten hinzu, um einem Operator die Interaktion mit einem Gerät zu ermöglichen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -66,7 +64,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="view-raw-data"></a>Anzeigen von Rohdaten
 
-Als Geräteentwickler können Sie die Ansicht **Rohdaten** verwenden, um die Rohdaten zu untersuchen, die von Ihrem Gerät an IoT Central gesendet werden:
+Sie können die Ansicht **Rohdaten** verwenden, um die Rohdaten zu untersuchen, die von Ihrem Gerät an IoT Central gesendet werden:
 
 :::image type="content" source="media/tutorial-connect-device/raw-data.png" alt-text="Ansicht „Rohdaten“":::
 
@@ -82,10 +80,3 @@ Wenn Sie mit den Tutorials zu IoT Central fortfahren und mehr über das Erstell
 
 > [!div class="nextstepaction"]
 > [Erstellen einer Gatewaygerätevorlage](./tutorial-define-gateway-device-type.md)
-
-Als Geräteentwickler haben Sie hier die Grundlagen zur Erstellung eines Geräts kennengelernt. Vorschläge für die nächsten Schritte:
-
-* Unter [Was sind Gerätevorlagen?](./concepts-device-templates.md) erfahren Sie mehr über die Rolle von Gerätevorlagen beim Implementieren Ihres Gerätecodes.
-* Weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md).
-* Weitere Informationen zu den Daten, die das Gerät mit IoT Central austauscht, finden Sie unter [Telemetrie-, Eigenschaften- und Befehlsnutzlasten](concepts-telemetry-properties-commands.md).
-* Lesen Sie den [Leitfaden für IoT Plug & Play-Geräteentwickler](../../iot-pnp/concepts-developer-guide-device.md).

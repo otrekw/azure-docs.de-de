@@ -3,12 +3,12 @@ title: Steuerungen des Blaupausenbeispiels „FedRAMP High“
 description: Steuerungszuordnung des Blaupausenbeispiels „FedRAMP High“. Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 88449bfb52dfe2452e1dd6b744f67600242edf79
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 3e1cea90e7b1553fb3b8b9e93994208ecfa564da
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386739"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757455"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels „FedRAMP High“
 
@@ -160,19 +160,19 @@ Für diese integrierte Richtlinie ist es erforderlich, dass Sie ein Array mit Re
 
 ## <a name="cm-7-2-least-functionality--prevent-program-execution"></a>CM-7 (2) Mindestfunktionalität | Unterbinden der Programmausführung
 
-Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Filterlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Anwendungssteuerung kann in einem Erzwingungsmodus ausgeführt werden, der die Ausführung nicht genehmigter Anwendungen verhindert. Diese Blaupause weist eine Azure Policy-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
+Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Filterlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Anwendungssteuerung kann in einem Erzwingungsmodus ausgeführt werden, der die Ausführung nicht genehmigter Anwendungen verhindert. Diese Blaupause weist eine Azure Policy-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
 
 - Die adaptive Anwendungssteuerung sollte auf virtuellen Computern aktiviert werden.
 
 ## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) Mindestfunktionalität | Autorisierte Software und Whitelists
 
-Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Filterlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie Listen von genehmigten Anwendungen für Ihre virtuellen Computer erstellen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
+Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Filterlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie Listen von genehmigten Anwendungen für Ihre virtuellen Computer erstellen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
 
 - Die adaptive Anwendungssteuerung sollte auf virtuellen Computern aktiviert werden.
 
 ## <a name="cm-11-user-installed-software"></a>CM-11 Von Benutzern installierte Software
 
-Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Filterlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie die Einhaltung von Software-Einschränkungsrichtlinien durchsetzen und überwachen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
+Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Filterlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie die Einhaltung von Software-Einschränkungsrichtlinien durchsetzen und überwachen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
 
 - Die adaptive Anwendungssteuerung sollte auf virtuellen Computern aktiviert werden.
 
@@ -182,7 +182,7 @@ Azure Site Recovery repliziert Workloads, die auf virtuellen Computern ausgefüh
 
 - Überwachen von virtuellen Computern ohne konfigurierte Notfallwiederherstellung
 
-## <a name="cp-9-05--information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05): Sicherung des Informationssystems | Übertragung an den alternativen Speicherort
+## <a name="cp-9-05-information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05): Sicherung des Informationssystems | Übertragung an den alternativen Speicherort
 
 Mit dieser Blaupause werden Azure Policy-Definitionen zugewiesen, mit denen die Systemsicherungsinformationen der Organisation am alternativen Speicherstandort elektronisch überwacht werden. Erwägen Sie für den physischen Versand der Speichermetadaten die Verwendung von Azure Data Box.
 
@@ -248,7 +248,7 @@ Azure Security Center umfasst Funktionen zur Berichterstellung, über die Sie in
 
 ## <a name="sc-5-denial-of-service-protection"></a>SC-5 Schutz vor Denial-of-Service-Angriffen
 
-Die DDoS-Standard-Tarif (Distributed Denial of Service) von Azure bietet mehr Features und Risikominderungsfunktionen als die Dienstebene „Basic“. Zu diesen zusätzlichen Features gehören die Integration von Azure Monitor und die Möglichkeit, Berichte zur Entschärfung nach einem Angriff zu überprüfen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, die prüft, ob der DDoS-Standard-Tarif aktiviert ist. Das Verständnis des Funktionsunterschieds zwischen den Dienstebene kann Ihnen helfen, die beste Lösung für den Schutz vor Denial-of-Service-Angriffen für Ihre Azure-Umgebung auszuwählen.
+Der DDoS-Standard-Tarif (Distributed Denial of Service) von Azure bietet mehr Features und Risikominderungsfunktionen als die Dienstebene „Basic“. Zu diesen zusätzlichen Features gehören die Integration von Azure Monitor und die Möglichkeit, Berichte zur Entschärfung nach einem Angriff zu überprüfen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, die prüft, ob der DDoS-Standard-Tarif aktiviert ist. Das Verständnis des Funktionsunterschieds zwischen den Dienstebene kann Ihnen helfen, die beste Lösung für den Schutz vor Denial-of-Service-Angriffen für Ihre Azure-Umgebung auszuwählen.
 
 - DDoS Protection Standard sollte aktiviert sein.
 
@@ -352,7 +352,7 @@ Advanced Threat Protection für Azure Storage erkennt ungewöhnliche und möglic
 - Bereitstellen von Advanced Threat Protection für Speicherkonten
 
 > [!NOTE]
-> Die Verfügbarkeit spezifischer Azure Policy-Definitionen kann in Azure Government und anderen nationalen Clouds variieren. 
+> Die Verfügbarkeit spezifischer Azure Policy-Definitionen kann in Azure Government und anderen nationalen Clouds variieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

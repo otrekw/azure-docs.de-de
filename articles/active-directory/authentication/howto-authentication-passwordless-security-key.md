@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 05/04/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 436a972693aafd220d277d7411c0da12636e9cc6
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c164b52682d6f4aef2db70a5724f3f74db68c53f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829798"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746445"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln 
 
@@ -54,6 +54,22 @@ Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung s
    1. **Aktivieren**: „Ja“ oder „Nein“
    1. **Ziel**: „Alle Benutzer“ oder „Benutzer auswählen“
 1. **Speichern** Sie die Konfiguration.
+
+
+### <a name="fido-security-key-optional-settings"></a>Optionale Einstellungen für FIDO-Sicherheitsschlüssel 
+
+Es gibt einige optionale Einstellungen für die Verwaltung von Sicherheitsschlüsseln pro Mandant.  
+
+![Screenshot: FIDO2-Sicherheitsschlüsseloptionen](media/howto-authentication-passwordless-security-key/optional-settings.png) 
+
+**Allgemein**
+
+- **Self-Service-Einrichtung zulassen** sollte auf **Ja** festgelegt bleiben. Wenn diese Einstellung auf „Nein“ festgelegt ist, können Ihre Benutzer keinen FIDO-Schlüssel über das MySecurityInfo-Portal registrieren, auch wenn dies durch die Richtlinie für Authentifizierungsmethoden aktiviert ist.  
+- Die **Nachweis erzwingen**-Einstellung auf **Ja** erfordert, dass die FIDO-Sicherheitsschlüsselmetadaten mit der FIDO Alliance Metadata Service veröffentlicht und überprüft werden, und sie müssen auch den zusätzlichen Überprüfungstest von Microsoft bestehen. Weitere Informationen finden Sie unter [Was ist ein Microsoft-kompatibler Sicherheitsschlüssel?](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)
+
+**Schlüsseleinschränkungsrichtlinie**
+
+- **Erzwingung von Schlüsseleinschränkungen** sollte nur auf **Ja** festgelegt werden, wenn Ihre Organisation nur bestimmte FIDO-Sicherheitsschlüssel zulassen oder nicht zulassen möchte, die durch ihre AAGuids identifiziert werden. Sie können mit Ihrem Sicherheitsschlüsselanbieter zusammenarbeiten, um die AAGuids ihrer Geräte zu bestimmen. Wenn der Schlüssel bereits registriert ist, kann AAGUID auch durch Anzeigen der Details der Authentifizierungsmethode des Schlüssels pro Benutzer gefunden werden. 
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>Benutzerregistrierung und Verwaltung von FIDO2-Sicherheitsschlüsseln
 

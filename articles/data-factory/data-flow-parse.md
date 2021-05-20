@@ -5,19 +5,19 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/08/2021
-ms.openlocfilehash: 4db9503ea84ae13148a89a03048c73399413e5cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: 7a01d2d17a4c98656588530f5b288c6a69b8a206
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101710191"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734160"
 ---
 # <a name="parse-transformation-in-mapping-data-flow"></a>Analysetransformation in einem Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Verwenden Sie die Analysetransformation zum Analysieren von Spalten in Ihren Daten, die in Dokumentform sind. Die zurzeit unterstützten Typen von eingebetteten Dokumenten, die analysiert werden können, sind JSON und Text mit Trennzeichen.
+Verwenden Sie die Analysetransformation zum Analysieren von Spalten in Ihren Daten, die in Dokumentform sind. Aktuell werden die folgenden Typen eingebetteter Dokumente zur Analyse unterstützt: JSON, XML und durch Trennzeichen getrennter Text.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWykdO]
 
@@ -29,11 +29,22 @@ Im Konfigurationspanel für Analysetransformation wählen Sie zuerst den Datenty
 
 ### <a name="column"></a>Column
 
-Ähnlich wie bei abgeleiteten Spalten und Aggregaten ändern Sie an dieser Stelle eine vorhandene Spalte, indem Sie sie in der Dropdownauswahl auswählen. Sie können hier aber auch den Namen einer neuen Spalte eingeben. ADF speichert die analysierten Quelldaten in dieser Spalte.
+Ähnlich wie bei abgeleiteten Spalten und Aggregaten ändern Sie an dieser Stelle eine vorhandene Spalte, indem Sie sie in der Dropdownauswahl auswählen. Sie können hier aber auch den Namen einer neuen Spalte eingeben. ADF speichert die analysierten Quelldaten in dieser Spalte. In den meisten Fällen müssen Sie eine neue Spalte definieren, die das eingehende Feld für das eingebettete Dokument analysiert.
 
 ### <a name="expression"></a>Ausdruck
 
 Verwenden Sie den Ausdrucks-Generator zum Festlegen der Quelle für Ihre Analyse. Dazu können Sie einfach die Quellspalte mit den eigenständigen Daten, die Sie analysieren möchten, auswählen oder aber komplexe Ausdrücke zum Analysieren erstellen.
+
+#### <a name="example-expressions"></a>Beispielausdrücke
+
+* Quellzeichenfolgendaten: ```chrome|steel|plastic```
+  * Ausdruck: ```(desc1 as string, desc2 as string, desc3 as string)```
+
+* Quell-JSON-Daten: ```{"ts":1409318650332,"userId":"309","sessionId":1879,"page":"NextSong","auth":"Logged In","method":"PUT","status":200,"level":"free","itemInSession":2,"registration":1384448}```
+  * Ausdruck: ```(level as string, registration as long)```
+
+* Quell-XML-Daten: ```<Customers><Customer>122</Customer><CompanyName>Great Lakes Food Market</CompanyName></Customers>```
+  * Ausdruck: ```(Customers as (Customer as integer, CompanyName as string))```
 
 ### <a name="output-column-type"></a>Typ der Ausgabespalte
 
@@ -105,7 +116,7 @@ ParseCsv select(mapColumn(
 ```
 parse(json = jsonString ? (trade as boolean,
                                 customers as string[]),
-                format: 'json',
+                format: 'json|XML|delimited',
                 documentForm: 'singleDocument') ~> ParseJson
 
 parse(csv = csvString ? (id as integer,

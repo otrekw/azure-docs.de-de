@@ -5,15 +5,15 @@ services: automation
 author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 02/08/2021
+ms.date: 05/04/2021
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 3ee44509997a16fc7f06fd5a24e473d7011bde40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1949fe7e795d7f671462f8c2a78204690dfa0595
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99974597"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108807486"
 ---
 #### <a name="process-automation"></a>Prozessautomatisierung
 
@@ -49,6 +49,7 @@ Die folgende Tabelle zeigt die Grenzwerte der nachverfolgten Elemente pro Comput
 | **Ressource** | **Begrenzung**| **Hinweise** |
 |---|---|---|
 |Datei|500||
+|Dateigröße|5 MB||
 |Registrierung|250||
 |Windows-Software|250|Softwareupdates nicht inbegriffen|
 |Linux-Pakete|1\.250||
@@ -62,3 +63,4 @@ In der folgenden Tabelle werden die Grenzwerte für die Updateverwaltung aufgef�
 | **Ressource** | **Begrenzung**| **Hinweise** |
 |---|---|---|
 |Anzahl der Computer pro Aktualisierungsbereitstellung|1000||
+|Anzahl von dynamischen Gruppen pro Updatebereitstellung |500 ||

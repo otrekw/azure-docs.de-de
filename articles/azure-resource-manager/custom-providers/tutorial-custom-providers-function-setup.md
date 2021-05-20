@@ -1,27 +1,27 @@
 ---
 title: Einrichten von Azure Functions
-description: In diesem Tutorial wird beschrieben, wie Sie eine Azure-Funktions-App erstellen und für benutzerdefinierte Azure-Anbieter einrichten.
+description: In diesem Tutorial wird beschrieben, wie Sie eine Funktions-App in Azure Functions erstellen und für benutzerdefinierte Azure-Anbieter einrichten.
 author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b63dc2e47a494b50ea756728afc39e74200f8d39
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737319"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745827"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Einrichten von Azure-Funktionen für benutzerdefinierte Azure-Anbieter
 
-Ein benutzerdefinierter Anbieter ist ein Vertrag zwischen Azure und einem Endpunkt. Mit benutzerdefinierten Anbietern können Sie Workflows in Azure ändern. In diesem Tutorial wird erläutert, wie Sie eine Azure-Funktions-App zur Verwendung als benutzerdefinierter Anbieterendpunkt einrichten.
+Ein benutzerdefinierter Anbieter ist ein Vertrag zwischen Azure und einem Endpunkt. Mit benutzerdefinierten Anbietern können Sie Workflows in Azure ändern. In diesem Tutorial wird erläutert, wie Sie eine Funktions-App in Azure Functions zur Verwendung als benutzerdefinierter Anbieterendpunkt einrichten.
 
-## <a name="create-the-azure-function-app"></a>Erstellen der Azure-Funktions-App
+## <a name="create-the-function-app"></a>Erstellen der Funktionen-App
 
 > [!NOTE]
-> In diesem Tutorial erstellen Sie einen einfachen Dienstendpunkt, der eine Azure-Funktions-App verwendet. Ein benutzerdefinierter Anbieter kann jedoch jeden öffentlich zugänglichen Endpunkt verwenden. Zu den Alternativen gehören Azure Logic Apps, Azure API Management und die Web-Apps-Funktion von Azure App Service.
+> In diesem Tutorial erstellen Sie einen einfachen Dienstendpunkt, der eine Funktions-App in Azure Functions verwendet. Ein benutzerdefinierter Anbieter kann jedoch jeden öffentlich zugänglichen Endpunkt verwenden. Zu den Alternativen gehören Azure Logic Apps, Azure API Management und die Web-Apps-Funktion von Azure App Service.
 
-Als Einstieg in dieses Tutorial sollten Sie zuerst das Tutorial [Erstellen Ihrer ersten Funktion im Azure-Portal](../../azure-functions/functions-get-started.md) durcharbeiten. In diesem Tutorial wird eine .NET Core-Webhookfunktion erstellt, die im Azure-Portal geändert werden kann. Sie dient auch als Grundlage für das aktuelle Tutorial.
+Als Einstieg in dieses Tutorial sollten Sie zuerst das Tutorial [Erstellen Ihrer ersten Funktions-App im Azure-Portal](../../azure-functions/functions-get-started.md) durcharbeiten. In diesem Tutorial wird eine .NET Core-Webhookfunktion erstellt, die im Azure-Portal geändert werden kann. Sie dient auch als Grundlage für das aktuelle Tutorial.
 
 ## <a name="install-azure-table-storage-bindings"></a>Installieren von Azure-Tabellenspeicherbindungen
 
@@ -77,6 +77,6 @@ Das folgende XML-Element ist ein Beispiel für eine C#-Projektdatei:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Azure-Funktions-App zur Verwendung als benutzerdefinierter Anbieterendpunkt eingerichtet.
+In diesem Tutorial haben Sie eine Funktions-App in Azure Functions zur Verwendung als benutzerdefinierter Anbieterendpunkt eingerichtet.
 
 Informationen zum Erstellen eines benutzerdefinierten RESTful-Anbieterendpunkts finden Sie unter [Erstellen eines RESTful-Endpunkts für benutzerdefinierte Anbieter](./tutorial-custom-providers-function-authoring.md).

@@ -9,12 +9,12 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 868b0bc3e09768a26b895e35306de574e4bfc444
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 9f07a4f9c42923ac42735155fb0da21dee3a2353
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287588"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632365"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Programmgesteuertes Erstellen von Azure Enterprise Agreement-Abonnements mit den neuesten APIs
 
@@ -32,7 +32,7 @@ Sie müssen über die Rolle „Besitzer“ für ein Registrierungskonto verfüge
 
 * Der Enterprise-Administrator Ihrer Registrierung kann [Sie zum Kontobesitzer machen](https://ea.azure.com/helpdocs/addNewAccount) (Anmeldung erforderlich), damit Sie zum Besitzer des Registrierungskontos werden.
 * Ein vorhandener Besitzer des Registrierungskontos kann [Ihnen Zugriff gewähren](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Wenn Sie einen Dienstprinzipal verwenden möchten, um ein EA-Abonnement zu erstellen, müssen Sie entsprechend [diesem Dienstprinzipal die Berechtigung zum Erstellen von Abonnements erteilen](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put).  
-    Wenn Sie Abonnements mithilfe eines SPN erstellen, verwenden Sie die Objekt-ID (ObjectId) der Azure AD-Anwendungsregistrierung als Dienstprinzipalobjekt-ID mit [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true ) oder der [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list).
+    Wenn Sie Abonnements mithilfe eines SPN erstellen, verwenden Sie die Objekt-ID (ObjectId) der Azure AD-Anwendungsregistrierung als Dienstprinzipalobjekt-ID mit [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true ) oder der [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list). Weitere Informationen zur API-Anforderung für die EA-Rollenzuweisung finden Sie unter [Zuweisen von Rollen zu Azure Enterprise Agreement-Dienstprinzipalnamen](assign-roles-azure-service-principals.md). Diese Seite enthält eine Liste der Rollen (und Rollendefinitions-IDs), die einem SPN zugewiesen werden können.
   > [!NOTE]
   > Stellen Sie sicher, dass Sie die richtige API-Version verwenden, um dem Registrierungskonto Besitzerberechtigungen zu erteilen. Verwenden Sie für diesen Artikel und die darin dokumentierten APIs die API [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Wenn Sie zur Verwendung der neueren APIs eine Migration durchführen, müssen Sie die Besitzerberechtigung mithilfe von [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) erneut erteilen. Die vorherige Konfiguration, die mit der [Version 2015-07-01](grant-access-to-create-subscription.md) erstellt wurde, wird nicht automatisch für die Verwendung mit den neueren APIs konvertiert.
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie bei der Verwendung von Azure Resource Graph D
 ms.date: 05/01/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 822539b595e5a2d5e19b08a8131c25b45810de4d
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 44fb92287eada08a573d6ff70cea5d33612cfa23
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324291"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751893"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
@@ -69,7 +69,7 @@ enthält folgende Werte, um anzugeben, dass ein Resultset aufgeteilt wurde: **re
 
 **resultTruncated** ist **true**, wenn Paging deaktiviert oder aufgrund der fehlenden Spalte `id` nicht möglich ist oder wenn weniger Ressourcen verfügbar sind, als von einer Abfrage angefordert werden. Wenn **resultTruncated** auf **true** festgelegt ist, wird die Eigenschaft **$skipToken** nicht festgelegt.
 
-Die folgenden Beispiele zeigen, wie Sie mit Azure CLI und Azure PowerShell die ersten 3000 Datensätze **überspringen** und die **ersten** 1000 Datensätze nach den übersprungenen Datensätzen zurückgeben:
+Die folgenden Beispiele zeigen, wie Sie mit Azure CLI und Azure PowerShell die ersten 3.000 Datensätze **überspringen** und die **ersten** 1.000 Datensätze nach den übersprungenen Datensätzen zurückgeben:
 
 ```azurecli-interactive
 az graph query -q "Resources | project id, name | order by id asc" --first 1000 --skip 3000
