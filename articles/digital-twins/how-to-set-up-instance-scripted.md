@@ -8,33 +8,35 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 4ef4e1f11018c82d96907518b79cc5737c49b946
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5b6b2a2c8fdee17cef6c74ebfab758fe2fdb7bc0
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104047"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766823"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Einrichten einer Azure Digital Twins-Instanz und -Authentifizierung (per Skript)
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
-Dieser Artikel beschreibt die Schritte zum **Einrichten einer neuen Azure Digital Twins-Instanz**, einschließlich des Erstellens der Instanz und des Einrichtens der Authentifizierung. Nachdem Sie die Schritte in diesem Artikel durchgeführt haben, verfügen Sie über eine Azure Digital Twins-Instanz, die zum Programmieren bereitsteht.
+Dieser Artikel beschreibt die Schritte zum **Einrichten einer neuen Azure Digital Twins-Instanz**, einschließlich des Erstellens der Instanz und des Einrichtens der Authentifizierung. Nachdem Sie diesen Artikel durchgearbeitet haben, verfügen Sie über eine Azure Digital Twins-Instanz, die für die Programmierung bereitsteht.
 
-Bei dieser Version dieses Artikels werden die Schritte durchgeführt, indem ein [Beispiel für ein **automatisiertes Bereitstellungsskript**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) zum Optimieren des Prozesses ausgeführt wird. 
-* Die manuellen CLI-Schritte, die das Skript im Hintergrund durchläuft, finden Sie in der CLI-Version dieses Artikels: [*Verwenden Einrichten einer Instanz und Authentifizierung (CLI)*](how-to-set-up-instance-cli.md).
-* Eine Beschreibung der manuellen Schritte im Azure-Portal finden Sie in der Portalversion dieses Artikels: [*Verwenden Einrichten einer Instanz und Authentifizierung (Portal)*](how-to-set-up-instance-portal.md).
+Bei dieser Version dieses Artikels werden die Schritte durchgeführt, indem ein Beispiel für ein [automatisiertes Bereitstellungsskript](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) zum Optimieren des Prozesses ausgeführt wird. 
+* Die manuellen CLI-Schritte, die das Skript im Hintergrund durchläuft, finden Sie in der CLI-Version dieses Artikels: [Verwenden Einrichten einer Instanz und Authentifizierung (CLI)](how-to-set-up-instance-cli.md) .
+* Eine Beschreibung der manuellen Schritte im Azure-Portal finden Sie in der Portalversion dieses Artikels: [Verwenden Einrichten einer Instanz und Authentifizierung (Portal)](how-to-set-up-instance-portal.md) .
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+
+## <a name="prerequisites-permission-requirements"></a>Voraussetzungen: Berechtigungsanforderungen
 [!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="prerequisites-download-the-script"></a>Voraussetzungen: Herunterladen des Skripts
 
-Das Beispielskript ist in PowerShell geschrieben. Es ist Teil der [**End-to-End-Beispiele für Azure Digital Twins**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), die Sie auf Ihren Computer herunterladen können, indem Sie dem Beispiellink folgen und unterhalb des Titels auf die Schaltfläche *Code durchsuchen* klicken. Dadurch gelangen Sie zum GitHub-Repository für die Beispiele, die Sie als *ZIP-Datei* herunterladen können. Wählen Sie hierzu die Schaltfläche *Code* und anschließend *ZIP herunterladen* aus.
+Das Beispielskript ist in PowerShell geschrieben. Es ist Teil der [End-to-End-Beispiele für Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), die Sie auf Ihren Computer herunterladen können, indem Sie dem Beispiellink folgen und unterhalb des Titels auf die Schaltfläche *Code durchsuchen* klicken. Dadurch gelangen Sie zum GitHub-Repository für die Beispiele, die Sie als .zip-Datei herunterladen können. Wählen Sie hierzu die Schaltfläche *Code* und anschließend *ZIP herunterladen* aus.
 
-:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub-Repository „digital-twins-samples“. Die Schaltfläche „Code“ wurde ausgewählt, und ein kleines Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="media/includes/download-repo-zip.png":::
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="Ansicht des Repositorys „digital-twins-samples“ auf GitHub. Die Schaltfläche „Code“ wurde ausgewählt, und ein kleines Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="media/includes/download-repo-zip.png":::
 
-Dadurch wird ein *ZIP*-Ordner als **digital-twins-samples-master.zip** auf Ihren Computer heruntergeladen. Navigieren Sie zu dem Ordner auf Ihrem Computer, und entpacken Sie ihn, um die Dateien zu extrahieren.
+Dadurch wird ein .zip-Ordner als **digital-twins-samples-master.zip** auf Ihren Computer heruntergeladen. Navigieren Sie zu dem Ordner auf Ihrem Computer, und entpacken Sie ihn, um die Dateien zu extrahieren.
 
 Im entpackten Ordner befindet sich das Bereitstellungsskript unter _digital-twins-samples-master > scripts > **deploy.ps1**_.
 
@@ -59,7 +61,7 @@ Im Folgenden sind die Schritte zum Ausführen des Bereitstellungsskripts in Clou
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell-Fenster: Auswahl des Symbols „Hochladen“":::
 
-    Navigieren Sie auf Ihrem Computer zur Datei _**deploy.ps1**_ (in _digital-twins-samples-master > scripts > **deploy.ps1**_), und klicken Sie auf „Öffnen“. Dadurch wird die Datei in Cloud Shell hochgeladen, sodass Sie diese im Cloud Shell-Fenster ausführen können.
+    Navigieren Sie auf Ihrem Computer zur Datei _**deploy.ps1**_ (in _digital-twins-samples-master > scripts > **deploy.ps1**_), und wählen Sie „Öffnen“. Dadurch wird die Datei in Cloud Shell hochgeladen, sodass Sie diese im Cloud Shell-Fenster ausführen können.
 
 4. Führen Sie das Skript aus, indem Sie im Cloud Shell-Fenster den Befehl `./deploy.ps1` absenden. Sie können den Befehl unten kopieren (denken Sie daran, dass Sie zum Einfügen in Cloud Shell **STRG+UMSCHALT+V** unter Windows und Linux oder **CMD+UMSCHALT+V** unter macOS verwenden können. Sie können auch das Kontextmenü verwenden).
 
@@ -71,7 +73,7 @@ Im Folgenden sind die Schritte zum Ausführen des Bereitstellungsskripts in Clou
 
     Während das Skript die automatisierten Einrichtungsschritte durchläuft, werden Sie dazu aufgefordert, die folgenden Werte zu übergeben:
     * Für die Instanz: die *Abonnement-ID* Ihres zu verwendenden Azure-Abonnements.
-    * Für die Instanz: einen *Speicherort*, an dem Sie die Instanz bereitstellen möchten. Informationen zu Regionen mit Unterstützung von Azure Digital Twins finden Sie unter [*Verfügbare Produkte nach Region*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
+    * Für die Instanz: einen *Speicherort*, an dem Sie die Instanz bereitstellen möchten. Informationen zu Regionen mit Unterstützung von Azure Digital Twins finden Sie unter [Verfügbare Azure-Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
     * Für die Instanz: einen Namen für die *Ressourcengruppe*. Sie können eine vorhandene Ressourcengruppe verwenden oder einen neuen Namen einer zu erstellenden Ressourcengruppe eingeben.
     * Für die Instanz: einen *Namen* für Ihre Azure Digital Twins-Instanz. Wenn in Ihrem Abonnement für die Region eine weitere Azure Digital Twins-Instanz vorhanden ist, die den angegeben Namen bereits verwendet, werden Sie aufgefordert, einen anderen Namen auszuwählen.
 
@@ -87,9 +89,9 @@ Wird das Skript erfolgreich abgeschlossen, zeigt die Ausgabe am Ende `Deployment
 >[!NOTE]
 >Zurzeit gibt es ein **bekanntes Problem** beim skriptgesteuerten Setup, bei dem einige Benutzer (insbesondere Benutzer mit persönlichen [Microsoft-Konten (MSAs)](https://account.microsoft.com/account)) möglicherweise feststellen, dass die **Rollenzuweisung für _Azure Digital Twins Data Owner_ (Azure Digital Twins-Datenbesitzer) nicht erstellt wurde**.
 >
->Sie können die Rollenzuweisung über den Abschnitt [*Überprüfen der Benutzerrollenzuweisung*](#verify-user-role-assignment) weiter unten in diesem Artikel überprüfen und bei Bedarf die Rollenzuweisung manuell über das [Azure-Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) oder mithilfe der [Befehlszeilenschnittstelle](how-to-set-up-instance-cli.md#set-up-user-access-permissions) manuell einrichten.
+>Sie können die Rollenzuweisung über den Abschnitt [Überprüfen der Benutzerrollenzuweisung](#verify-user-role-assignment) weiter unten in diesem Artikel überprüfen und bei Bedarf die Rollenzuweisung manuell über das [Azure-Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) oder mithilfe der [Befehlszeilenschnittstelle](how-to-set-up-instance-cli.md#set-up-user-access-permissions) manuell einrichten.
 >
->Weitere Informationen zu diesem Problem finden Sie unter [*Problembehandlung: Bekannte Probleme in Azure Digital Twins*](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup).
+>Weitere Informationen zu diesem Problem finden Sie unter [Problembehandlung: Bekannte Probleme in Azure Digital Twins](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup).
 
 ## <a name="verify-success-and-collect-important-values"></a>Überprüfen des Erfolgs und Erfassen wichtiger Werte
 
@@ -124,7 +126,7 @@ Wenn die Überprüfung nicht erfolgreich war, können Sie Ihre eigene Rollenzuwe
 
 Testen Sie einzelne REST-API-Aufrufe für Ihre Instanz mithilfe der Befehle der Azure Digital Twins-CLI: 
 * [az dt reference](/cli/azure/dt)
-* [*Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md)
+* [Konzepte: Befehlssatz der Azure Digital Twins-CLI](concepts-cli.md)
 
 Sie können auch eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie Authentifizierungscode verwenden:
-* [*Verwenden Schreiben von App-Authentifizierungscode*](how-to-authenticate-client.md)
+* [Verwenden Schreiben von App-Authentifizierungscode](how-to-authenticate-client.md)

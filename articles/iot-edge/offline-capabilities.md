@@ -7,18 +7,18 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c748034145781f639da244b16e3df7053da3d5d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41610bb956273fa69119d6b87a016072a5e4faa2
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489964"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749877"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Azure IoT Edge unterstützt erweiterte Offlinevorgänge auf Ihren IoT Edge-Geräten und ermöglicht Offlinevorgänge auch auf untergeordneten Nicht-IoT Edge-Geräten. Wenn ein IoT Edge-Gerät einmal eine Verbindung mit IoT Hub herstellen konnte, kann das Gerät zusammen mit allen untergeordneten Geräten auch mit unregelmäßiger oder ohne Internetverbindung funktionieren.
+Azure IoT Edge unterstützt erweiterte Offlinevorgänge auf Ihren IoT Edge-Geräten und ermöglicht Offlinevorgänge auch auf untergeordneten Geräten. Wenn ein IoT Edge-Gerät einmal eine Verbindung mit IoT Hub herstellen konnte, kann das Gerät zusammen mit allen untergeordneten Geräten auch mit unregelmäßiger oder ohne Internetverbindung funktionieren.
 
 ## <a name="how-it-works"></a>Funktionsweise
 
@@ -28,7 +28,7 @@ Das folgende Beispiel veranschaulicht ein IoT Edge-Szenario im Offlinemodus:
 
 1. **Geräte konfigurieren**
 
-   Für IoT Edge-Geräte werden automatisch Offlinefunktionen aktiviert. Um diese Funktionen auf andere IoT-Geräte auszuweiten, müssen Sie eine Beziehung über- und untergeordneter Elemente zwischen den Geräten in IoT Hub deklarieren. Anschließend konfigurieren Sie die untergeordneten Geräte so, dass sie dem zugewiesenen übergeordneten Gerät vertrauen, und leiten die Gerät-zu-Cloud-Kommunikation über das übergeordnete Gerät als Gateway.
+   Für IoT Edge-Geräte werden automatisch Offlinefunktionen aktiviert. Um diese Funktion auf andere Geräte auszudehnen, müssen Sie die untergeordneten Geräte so konfigurieren, dass sie dem ihnen zugewiesenen übergeordneten Gerät vertrauen und die Geräte-zu-Cloud-Kommunikation über das übergeordnete Gerät als Gateway leiten.
 
 2. **Synchronisieren mit IoT Hub**
 
@@ -36,68 +36,57 @@ Das folgende Beispiel veranschaulicht ein IoT Edge-Szenario im Offlinemodus:
 
 3. **Offlineschalten**
 
-   Während sie von IoT Hub getrennt sind, können das IoT Edge-Gerät, seine bereitgestellten Module und alle untergeordneten IoT-Geräte ohne zeitliche Beschränkung betrieben werden. Module und untergeordnete Geräte können gestartet und neu gestartet werden, indem im Offlinemodus die Authentifizierung mit dem IoT Edge-Hub durchgeführt wird. Telemetriedaten für die Upstreamübermittlung an IoT Hub werden lokal gespeichert. Die Kommunikation zwischen Modulen und untergeordneten IoT-Geräten wird durch direkte Methoden oder Nachrichten aufrechterhalten.
+   Während sie von IoT Hub getrennt sind, können das IoT Edge-Gerät, seine bereitgestellten Module und alle untergeordneten Geräte ohne zeitliche Beschränkung betrieben werden. Module und untergeordnete Geräte können gestartet und neu gestartet werden, indem im Offlinemodus die Authentifizierung mit dem IoT Edge-Hub durchgeführt wird. Telemetriedaten für die Upstreamübermittlung an IoT Hub werden lokal gespeichert. Die Kommunikation zwischen Modulen und untergeordneten Geräten wird durch direkte Methoden oder Nachrichten aufrechterhalten.
 
 4. **Erneutes Verbinden und Synchronisieren mit IoT Hub**
 
    Nach dem Wiederherstellen der Verbindung mit IoT Hub wird die Synchronisierung des IoT Edge-Geräts wieder ausgeführt. Lokal gespeicherte Nachrichten werden umgehend an IoT Hub übermittelt, dies hängt jedoch von der Verbindungsgeschwindigkeit, der IoT Hub-Latenz und ähnlichen Faktoren ab. Die Nachrichten werden in der Reihenfolge übermittelt, in der sie gespeichert wurden.
 
-   Unterschiede zwischen den gewünschten und gemeldeten Eigenschaften der Module und Geräte werden ausgeglichen. Das IoT Edge-Gerät aktualisiert seine Gruppe von zugewiesenen untergeordneten IoT-Geräten mit den Änderungen.
+   Unterschiede zwischen den gewünschten und gemeldeten Eigenschaften der Module und Geräte werden ausgeglichen. Das IoT Edge-Gerät aktualisiert seine Gruppe von zugewiesenen untergeordneten Geräten mit den Änderungen.
 
 ## <a name="restrictions-and-limits"></a>Einschränkungen
 
 Die in diesem Artikel beschriebenen erweiterten Offlinefunktionen sind in der [IoT Edge-Version 1.0.7 oder höher](https://github.com/Azure/azure-iotedge/releases) verfügbar. Frühere Versionen verfügen nur über einen Teil dieser Offlinefunktionen. Für vorhandene IoT Edge-Geräte, die über keine erweiterten Offlinefunktionen verfügen, kann kein Upgrade durch Ändern der Runtime-Version ausgeführt werden. Stattdessen sind sie mit einer neuen IoT Edge-Geräteidentität zu konfigurieren, damit diese Funktionen verfügbar werden.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 Lediglich Nicht-IoT Edge-Geräte können als untergeordnete Geräte hinzugefügt werden.
+
+:::moniker-end
+<!-- end 1.1 -->
 
 Azure IOT Edge-Geräte und ihre zugewiesenen untergeordneten Geräte können nach dem anfänglichen einmaligen synchronisieren unbegrenzt Offline funktionieren. Die Speicherung von Nachrichten hängt jedoch von der Gültigkeitsdauer (Time to Live, TTL) und dem verfügbaren Speicherplatz zum Speichern der Nachrichten ab.
 
 ## <a name="set-up-parent-and-child-devices"></a>Einrichten von übergeordneten und untergeordneten Geräten
 
-Damit ein IoT Edge-Gerät seine erweiterten Offlinefunktionen auf untergeordnete IoT-Geräte ausweiten kann, müssen Sie zwei Schritte ausführen. Zuerst deklarieren Sie die Beziehungen über- und untergeordneter Geräte im Azure-Portal. Als Zweites schaffen Sie eine Vertrauensstellung zwischen dem übergeordneten Gerät und allen untergeordneten Geräten und konfigurieren anschließend die Gerät-zu-Cloud-Kommunikation über das übergeordnete Gerät als Gateway.
+Übergeordnete Geräte können über mehrere untergeordnete Geräte verfügen, doch weist ein untergeordnetes Gerät nur ein übergeordnetes Gerät auf.
 
-### <a name="assign-child-devices"></a>Zuweisen von untergeordneten Geräten
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
-Untergeordnete Geräte können beliebige Nicht-IoT Edge-Geräte sein, die beim selben IoT Hub registriert sind. Übergeordnete Geräte können über mehrere untergeordnete Geräte verfügen, doch weist ein untergeordnetes Gerät nur ein übergeordnetes Gerät auf. Es gibt drei Möglichkeiten, untergeordnete Geräte für ein Edge-Gerät festzulegen: über das Azure-Portal, mithilfe der Azure CLI oder über das IoT Hub Service SDK.
+Untergeordnete Geräte können beliebige Nicht-IoT Edge-Geräte sein, die beim selben IoT Hub registriert sind.
 
-Die folgenden Abschnitte enthalten Beispiele dafür, wie Sie die Beziehung über- und untergeordneter Geräte in IoT Hub für vorhandene IoT-Geräte deklarieren können. Wenn Sie neue Geräteidentitäten für Ihre untergeordneten Geräte erstellen, finden Sie weitere Informationen dazu unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md).
+:::moniker-end
+<!-- end 1.1 -->
 
-#### <a name="option-1-iot-hub-portal"></a>Option 1: IoT Hub-Portal
+<!-- 1.2 -->
+:::moniker range="iotedge-2020-11"
 
-Sie können die Beziehung über- und untergeordneter Geräte beim Erstellen eines neuen Geräts deklarieren. Bei bereits vorhandenen Geräten können Sie die Beziehung auf der Gerätedetailseite des übergeordneten IoT Edge-Geräts oder des untergeordneten IoT-Geräts deklarieren.
+Untergeordnete Geräte können beliebige Geräte (IoT Edge- oder Nicht-IoT Edge-Geräte) sein, die beim selben IoT Hub registriert sind.
 
-   ![Verwalten untergeordneter Geräte auf der Detailseite des IoT Edge-Geräts](./media/offline-capabilities/manage-child-devices.png)
+:::moniker-end
+<!-- end 1.2 -->
 
-#### <a name="option-2-use-the-az-command-line-tool"></a>Option 2: Verwenden des `az`-Befehlszeilentools
+Wenn Sie mit dem Erstellen einer Beziehung zwischen einem über- und untergeordnetem Element (zwischen einem IoT Edge- und einem IoT-Gerät) nicht vertraut sind, lesen Sie den Abschnitt [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md). Die Abschnitte zu symmetrischen Schlüsseln, selbstsigniertem X.509 und durch Zertifizierungsstelle signiertem X.509 zeigen Beispiele, wie Sie das Azure-Portal und die Azure-Befehlszeilenschnittstelle verwenden, um die Beziehungen zwischen über- und untergeordnetem Element beim Erstellen von Geräten zu definieren. Bei vorhandenen Geräten können Sie die Beziehung auf der Seite mit den Gerätedetails entweder des übergeordneten oder des untergeordneten Geräts deklarieren.
 
-Mithilfe der [Azure-Befehlszeilenschnittstelle](/cli/azure/) mit [IoT-Erweiterung](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 oder höher) können Sie Beziehungen zwischen über- und untergeordneten Geräten über die [device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity)-Unterbefehle verwalten. Im folgenden Beispiel wird eine Abfrage verwendet, um alle Nicht-IoT Edge-Geräte auf dem Hub als untergeordnete Geräte eines IoT Edge-Geräts zuzuweisen.
+<!-- 1.2 -->
+:::moniker range="iotedge-2020-11"
 
-```azurecli
-# Set IoT Edge parent device
-egde_device="edge-device1"
+Wenn Sie mit dem Erstellen einer über- und untergeordneten Beziehung zwischen zwei IoT Edge-Geräten nicht vertraut sind, finden Sie weitere Informationen unter [Verbinden eines nachgeschalteten IoT Edge-Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-iot-edge-device.md).
 
-# Get All IoT Devices
-device_list=$(az iot hub query \
-        --hub-name replace-with-hub-name \
-        --subscription replace-with-sub-name \
-        --resource-group replace-with-rg-name \
-        -q "SELECT * FROM devices WHERE capabilities.iotEdge = false" \
-        --query 'join(`, `, [].deviceId)' -o tsv)
-
-# Add all IoT devices to IoT Edge (as child)
-az iot hub device-identity add-children \
-  --device-id $egde_device \
-  --child-list $device_list \
-  --hub-name replace-with-hub-name \
-  --resource-group replace-with-rg-name \
-  --subscription replace-with-sub-name
-```
-
-Sie können die [Abfrage](../iot-hub/iot-hub-devguide-query-language.md) so ändern, dass eine andere Teilmenge von Geräten ausgewählt wird. Der Befehl kann mehrere Sekunden in Anspruch nehmen, wenn Sie eine große Gruppe von Geräten angeben.
-
-#### <a name="option-3-use-iot-hub-service-sdk"></a>Option 3: Verwenden des IoT Hub Service SDK
-
-Beziehungen zwischen über- und untergeordneten Geräten können Sie außerdem programmgesteuert mit einem C#-, Java- oder Node.js-IoT Hub Service SDK verwalten. Dies ist ein [Beispiel für die Zuordnung eines untergeordneten Geräts](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/e2e/test/iothub/service/RegistryManagerE2ETests.cs) mit dem C#-SDK.
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>Einrichten des übergeordneten Geräts als Gateway
 

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 80c3409a69b8605d0d8ba9902c2be68d88e825c3
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: f59c8b4e4f4ddc32cb0ec14e264e4dbb5b093971
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905970"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762855"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>Schützen von Kubernetes-Clustern mit Azure Arc-Unterstützung, die in lokalen und Multicloud-Umgebungen ausgeführt werden
 
@@ -30,7 +30,7 @@ Die Erweiterung kann auch Kubernetes-Cluster bei anderen Cloudanbietern schütze
 | Releasestatus | **Vorschau**<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
 | Erforderliche Rollen und Berechtigungen | Der [Sicherheitsadministrator](../role-based-access-control/built-in-roles.md#security-admin) kann Warnungen verwerfen.<br>Der [Sicherheitsleseberechtigte](../role-based-access-control/built-in-roles.md#security-reader) kann Ergebnisse anzeigen. |
 | Preise | [Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md) erforderlich |
-| Unterstützte Kubernetes-Distributionen | [Azure Kubernetes Service in Azure Stack HCI](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS-Engine](https://github.com/Azure/aks-engine)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/) (Version 4.6 oder höher) |
+| Unterstützte Kubernetes-Distributionen | [Azure Kubernetes Service in Azure Stack HCI](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS-Engine](https://github.com/Azure/aks-engine)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/) (Version 4.6 oder höher)<br> [VMware Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid)<br> [Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/) |
 | Einschränkungen | Managed Kubernetes-Angebote wie Google Kubernetes Engine und Elastic Kubernetes Service werden von Kubernetes mit Azure Arc-Unterstützung und der Azure Defender-Erweiterung **nicht unterstützt**. [Azure Defender ist für Azure Kubernetes Service (AKS) nativ verfügbar](defender-for-kubernetes-introduction.md). Eine Verbindung des Clusters mit Azure Arc ist nicht erforderlich. |
 | Umgebungen und Regionen | Die Verfügbarkeit dieser Erweiterung stimmt mit der von [Kubernetes mit Azure Arc-Unterstützung](../azure-arc/kubernetes/overview.md) überein.|
 
@@ -168,7 +168,7 @@ Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, b
 
     Im Folgenden werden die Eigenschaften beschrieben:
 
-    | Eigenschaft | Beschreibung | 
+    | Eigenschaft | BESCHREIBUNG | 
     | -------- | ----------- |
     | logAnalytics.workspaceId | Arbeitsbereichs-ID der Log Analytics-Ressource |
     | logAnalytics.key         | Schlüssel der Log Analytics-Ressource | 

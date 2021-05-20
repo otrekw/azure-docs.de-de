@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: c4ba48377d868404ff130ec458e50e2b42fae977
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 14a235337a1b3bf26874cffe8893f0c21f2ed9f7
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790515"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517872"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Abfragesyntax für das IoT Hub-Nachrichtenrouting
 
@@ -58,6 +58,7 @@ Mithilfe von Systemeigenschaften werden Inhalt und Quelle von Nachrichten identi
 | contentType | string | Der Benutzer gibt den Inhaltstyp der Nachricht an. Dieser Wert sollte auf „application/JSON“ festgelegt werden, damit Abfragen für den Nachrichtentext ausgeführt werden können. |
 | contentEncoding | string | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
 | iothub-connection-device-id | string | Dieser Wert wird von IoT Hub festgelegt, und er identifiziert die ID des Geräts. Verwenden Sie `$connectionDeviceId` für die Abfrage. |
+| iothub-connection-module-id | Zeichenfolge | Dieser Wert wird von IoT Hub festgelegt und dient der Identifikation der Edge-Modul-ID. Verwenden Sie `$connectionModuleId` für die Abfrage. |
 | iothub-enqueuedtime | string | Dieser Wert wird von IoT Hub festgelegt und stellt den tatsächlichen Zeitpunkt dar, zu dem die Nachricht in UTC eingereiht wird. Verwenden Sie `enqueuedTime` für die Abfrage. |
 | dt-dataschema | string |  Dieser Wert wird von IoT Hub für Gerät-zu-Cloud-Nachrichten festgelegt. Er enthält die in der Geräteverbindung festgelegte Gerätemodell-ID. Verwenden Sie `$dt-dataschema` für die Abfrage. |
 | dt-subject | Zeichenfolge | Der Name der Komponente, die die Gerät-zu-Cloud-Nachrichten sendet. Verwenden Sie `$dt-subject` für die Abfrage. |

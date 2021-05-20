@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 81cd2ca1cb47e6fdfb4858df930b73c1bd10118a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dadec45a23191763ad803560f1362c61917c95c5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091816"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756663"
 ---
 # <a name="change-iot-central-application-settings"></a>Ändern der Einstellungen für eine Azure IoT Central-Anwendung
-
-
 
 In diesem Artikel wird beschrieben, wie Sie als Administrator Anwendungen verwalten können, indem Sie den Anwendungsnamen und die URL ändern, das Image hochladen und eine Anwendung in ihrer Azure IoT Central-Anwendung löschen.
 

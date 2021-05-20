@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/28/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4e408832affd84fcde41c79d33ec7f157611ef08
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: aba837ab590ae941e161e10e88782dcce944c085
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166809"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760461"
 ---
 # <a name="tutorial-create-logical-data-warehouse-with-serverless-sql-pool"></a>Tutorial: Erstellen eines logischen Data Warehouse mit serverlosem SQL-Pool
 
@@ -52,9 +52,9 @@ CREATE EXTERNAL DATA SOURCE ecdc_cases WITH (
 Ein Aufrufer kann ohne Anmeldeinformationen auf die Datenquelle zugreifen, wenn ein Besitzer der Datenquelle anonymen Zugriff zugelassen hat oder der Azure AD-Identität des Aufrufers explizit Zugriff gewährt.
 
 Sie können explizit benutzerdefinierte Anmeldeinformationen definieren, die beim Zugriff auf Daten in einer externen Datenquelle verwendet werden.
-- Verwaltete Identität des Synapse-Arbeitsbereichs
-- Shared Access Signature des Azure-Speichers
-- Schreibgeschützter Cosmos DB-Kontoschlüssel
+- [Verwaltete Identität](develop-storage-files-storage-access-control.md?tabs=managed-identity) des Synapse-Arbeitsbereichs
+- [Shared Access Signature](develop-storage-files-storage-access-control.md?tabs=shared-access-signature) des Azure-Speichers
+- Schreibgeschützter Cosmos DB-Kontoschlüssel, mit dem Sie analytischen Cosmos DB-Speicher lesen können
 
 Zunächst muss in der Datenbank ein Hauptschlüssel erstellt werden:
 ```sql
@@ -77,7 +77,8 @@ Für den Zugriff auf den Cosmos DB-Analysespeicher müssen Anmeldeinformationen
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL MyCosmosDbAccountCredential
-WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+     SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 ```
 
 ### <a name="define-external-file-formats"></a>Definieren externer Dateiformate
@@ -118,19 +119,19 @@ In der folgenden externen Tabelle wird auf die ECDC-COVID-Parquet-Datei im Azure
 
 ```sql
 create external table ecdc_adls.cases (
-    date_rep        date,
-    day    smallint,
-    month             smallint,
-    year  smallint,
-    cases smallint,
-    deaths            smallint,
-    countries_and_territories       varchar(256),
-    geo_id             varchar(60),
-    country_territory_code           varchar(16),
-    pop_data_2018           int,
-    continent_exp             varchar(32),
-    load_date      datetime2(7),
-    iso_country   varchar(16)
+    date_rep                   date,
+    day                        smallint,
+    month                      smallint,
+    year                       smallint,
+    cases                      smallint,
+    deaths                     smallint,
+    countries_and_territories  varchar(256),
+    geo_id                     varchar(60),
+    country_territory_code     varchar(16),
+    pop_data_2018              int,
+    continent_exp              varchar(32),
+    load_date                  datetime2(7),
+    iso_country                varchar(16)
 ) with (
     data_source= ecdc_cases,
     location = 'latest/ecdc_cases.parquet',
@@ -195,6 +196,12 @@ Die Sicherheitsregeln hängen von Ihren Sicherheitsrichtlinien ab. Einige allgem
 - Verweigern Sie den neuen Benutzern die Berechtigung `ADMINISTER DATABASE BULK OPERATIONS`, da sie nur Daten aus den von Ihnen vorbereiteten externen Tabellen und Sichten lesen können sollen.
 - Gewähren Sie die Berechtigung `SELECT` nur für die Tabellen, die für einige Benutzer nutzbar sein sollen.
 - Wenn Sie Datenzugriff mithilfe der Sichten gewähren, erteilen Sie den Anmeldeinformationen, die für den Zugriff auf externe Datenquellen verwendet werden, die Berechtigung `REFERENCES`.
+
+Dieser Benutzer verfügt über die Mindestberechtigungen, die zum Abfragen externer Daten erforderlich sind. Wenn Sie einen Poweruser erstellen möchten, der Berechtigungen, externe Tabellen und Ansichten einrichten kann, können Sie dem Benutzer die Berechtigung `CONTROL` erteilen:
+
+```sql
+GRANT CONTROL TO [jovan@contoso.com]
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

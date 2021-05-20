@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 04/22/2021
+ms.date: 05/06/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cc163f02873cf1827af515791e254261149fc4f9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3214069f68233fb3cb4facc08a409f4b1e05222a
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124435"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109654866"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Hinzufügen von bedingtem Zugriff zu Benutzerflows in Azure Active Directory B2C
 
@@ -48,9 +48,18 @@ Das folgende Beispiel zeigt ein technisches Profil für den bedingten Zugriff, d
 </TechnicalProfile>
 ```
 
+Für die richtige Auswertung von Identity Protection-Signalen sollten Sie das technische Profil `ConditionalAccessEvaluation` für alle Benutzer aufrufen, einschließlich der [lokalen und Social Media-Konten](technical-overview.md#consumer-accounts). Andernfalls wird von Identity Protection ein falscher Risikograd für Benutzer angegeben.
+
 ::: zone-end
 
-In der folgenden **Abwehrphase** wird der Benutzer zu mehrstufiger Authentifizierung aufgefordert. Nach Abschluss der Authentifizierung wird Identity Protection von Azure AD B2C darüber informiert, dass und mit welcher Methode die identifizierte Anmeldungsbedrohung abgewehrt wurde. In diesem Beispiel signalisiert Azure AD B2C, dass der Benutzer die mehrstufige Authentifizierung erfolgreich abgeschlossen hat. 
+In der folgenden *Abwehrphase* wird der Benutzer zu mehrstufiger Authentifizierung aufgefordert. Nach Abschluss der Authentifizierung wird Identity Protection von Azure AD B2C darüber informiert, dass und mit welcher Methode die identifizierte Anmeldungsbedrohung abgewehrt wurde. In diesem Beispiel signalisiert Azure AD B2C, dass der Benutzer die mehrstufige Authentifizierung erfolgreich abgeschlossen hat.
+
+Die Abwehrmaßnahmen können auch über andere Kanäle erfolgen. Ein Beispiel hierfür ist das Zurücksetzen des Kennworts für das Konto durch den Administrator oder den Benutzer. Sie können den *Risikozustand* eines Benutzers im [Bericht zu riskanten Benutzern](identity-protection-investigate-risk.md#navigating-the-risky-users-report) überprüfen.
+
+> [!IMPORTANT]
+> Um das Risiko während der Journey erfolgreich einzudämmen, sollten Sie sicherstellen, dass nach dem Ausführen des technischen Profils *Evaluation* (Evaluierung) das technische Profil *Remediation* (Eindämmung) aufgerufen wird. Wenn *Evaluation* (Evaluierung) ohne *Remediation* (Eindämmung) aufgerufen wird, lautet der Risikozustand *Risiko*.
+
+Wenn von der Empfehlung des technischen Profils *Evaluation* (Evaluierung) die Antwort `Block` zurückgegeben wird, muss das technische Profil *Evaluation* (Evaluierung) nicht aufgerufen werden. Der Risikozustand lautet *Risiko*.
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -155,21 +164,15 @@ So fügen Sie eine Richtlinie für bedingten Zugriff hinzu:
 
 1. Wählen Sie **Erstellen** aus, um Ihre Testrichtlinie für bedingten Zugriff zu aktivieren.
 
-## <a name="add-conditional-access-to-a-user-flow"></a>Hinzufügen von bedingtem Zugriff zu Benutzerflows
-
-Nachdem Sie die Azure AD Richtlinie für bedingten Zugriff hinzugefügt haben, aktivieren Sie den bedingten Zugriff im Benutzerflow oder in der benutzerdefinierten Richtlinie. Wenn Sie bedingten Zugriff aktivieren, müssen Sie keinen Richtliniennamen angeben.
-
-Mehrere Richtlinien für bedingten Zugriff können jederzeit auf einen einzelnen Benutzer angewendet werden. In diesem Fall hat die strenge Zugriffssteuerungsrichtlinie Vorrang. Wenn z. B. eine Richtlinie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erfordert, während eine andere den Zugriff blockiert, wird der Benutzer blockiert.
-
 ## <a name="conditional-access-template-1-sign-in-risk-based-conditional-access"></a>Vorlage 1 für bedingten Zugriff: Risikobasierter bedingter Zugriff beim Anmelden
 
 Die meisten Benutzer weisen ein normales Verhalten auf, das nachverfolgt werden kann. Wenn sie sich aber außerhalb dieser Norm bewegen, ist es ggf. riskant, ihnen das Anmelden ohne Weiteres zu erlauben. Es kann ratsam sein, den entsprechenden Benutzer zu blockieren oder ggf. einfach um die Durchführung einer mehrstufigen Authentifizierung zu bitten. So kann bewiesen werden, ob es sich auch wirklich um die Person handelt, die vorgegeben wird.
 
-Ein Anmelderisiko stellt die Wahrscheinlichkeit dar, dass eine bestimmte Authentifizierungsanforderung vom Identitätsbesitzer nicht autorisiert wurde. Organisationen mit P2-Lizenzen können Richtlinien für bedingten Zugriff erstellen, die [Azure AD Identity Protection-Risikoerkennungen](../active-directory/identity-protection/concept-identity-protection-risks.md#sign-in-risk) enthalten. Beachten Sie die [Einschränkungen bei Identity Protection-Erkennungen für B2C](./identity-protection-investigate-risk.md?pivots=b2c-user-flow#service-limitations-and-considerations).
+Ein Anmelderisiko stellt die Wahrscheinlichkeit dar, dass eine bestimmte Authentifizierungsanforderung vom Identitätsbesitzer nicht autorisiert wurde. Azure AD B2C-Mandanten mit P2-Lizenzen können Richtlinien für bedingten Zugriff erstellen, die [Azure AD Identity Protection-Risikoerkennungen](../active-directory/identity-protection/concept-identity-protection-risks.md#sign-in-risk) enthalten. Beachten Sie die [Einschränkungen bei Identity Protection-Erkennungen für B2C](./identity-protection-investigate-risk.md?pivots=b2c-user-flow#service-limitations-and-considerations).
 
 Wenn Risiken erkannt werden, können die Benutzer die mehrstufige Authentifizierung zur Eigenwartung durchführen und das riskante Anmeldeereignis schließen, um unnötigen Aufwand für Administratoren zu vermeiden.
 
-Organisationen sollten eine der folgenden Optionen auswählen, um eine Richtlinie für den risikobasierten bedingten Zugriff beim Anmelden zu aktivieren, für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erforderlich ist, wenn das Anmelderisiko mittel ODER hoch ist.
+Konfigurieren Sie den bedingten Zugriff über das Azure-Portal oder die Microsoft Graph-APIs, um eine risikobasierte Richtlinie für bedingten Zugriff für die Anmeldung zu aktivieren, bei der bei einem Anmelderisiko der Stufe *Mittel* oder *Hoch* MFA erzwungen wird.
 
 ### <a name="enable-with-conditional-access-policy"></a>Aktivieren mit einer Richtlinie für bedingten Zugriff
 
@@ -189,11 +192,11 @@ Organisationen sollten eine der folgenden Optionen auswählen, um eine Richtlini
 9. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 10. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
-### <a name="enable-with-conditional-access-apis"></a>Aktivieren mit APIs für bedingten Zugriff
+### <a name="enable-with-conditional-access-apis-optional"></a>Aktivieren mit APIs für bedingten Zugriff (optional)
 
-Informationen zum Erstellen einer Richtlinie für den risikobasierten bedingten Zugriff beim Anmelden mit APIs für bedingten Zugriff finden Sie in der Dokumentation zu [APIs für bedingten Zugriff](../active-directory/conditional-access/howto-conditional-access-apis.md#graph-api).
+Erstellen Sie mit MS Graph-APIs eine risikobasierte Richtlinie für bedingten Zugriff für die Anmeldung. Weitere Informationen finden Sie unter [APIs für bedingten Zugriff](../active-directory/conditional-access/howto-conditional-access-apis.md#graph-api).
 
-Mit der folgenden Vorlage kann eine Richtlinie für bedingten Zugriff mit dem Anzeigenamen „CA002: Require MFA for medium+ sign-in risk“ im Modus „Nur melden“ erstellt werden.
+Mit der folgenden Vorlage kann eine Richtlinie für bedingten Zugriff mit dem Anzeigenamen „Template 1: Require MFA for medium+ sign-in risk“ im Modus „Nur melden“ erstellt werden.
 
 ```json
 {
@@ -226,6 +229,12 @@ Mit der folgenden Vorlage kann eine Richtlinie für bedingten Zugriff mit dem An
 }
 ```
 
+## <a name="add-conditional-access-to-a-user-flow"></a>Hinzufügen von bedingtem Zugriff zu Benutzerflows
+
+Nachdem Sie die Azure AD-Richtlinie für bedingten Zugriff hinzugefügt haben, aktivieren Sie den bedingten Zugriff im Benutzerflow oder in der benutzerdefinierten Richtlinie. Wenn Sie bedingten Zugriff aktivieren, müssen Sie keinen Richtliniennamen angeben.
+
+Mehrere Richtlinien für bedingten Zugriff können jederzeit auf einen einzelnen Benutzer angewendet werden. In diesem Fall hat die strenge Zugriffssteuerungsrichtlinie Vorrang. Wenn für eine Richtlinie beispielsweise MFA erforderlich ist, während bei einer anderen der Zugriff blockiert wird, wird der Benutzer blockiert.
+
 ## <a name="enable-multi-factor-authentication-optional"></a>Aktivieren der mehrstufigen Authentifizierung (optional)
 
 Wenn Sie einem Benutzerflow bedingten Zugriff hinzufügen, sollten Sie die Verwendung von **mehrstufiger Authentifizierung (Multi-Factor Authentication, MFA)** in Betracht ziehen. Benutzer können für die mehrstufige Authentifizierung einen Einmalcode per SMS oder Sprachanruf oder ein Einmalkennwort per E-Mail erhalten. MFA-Einstellungen sind unabhängig von Einstellungen für bedingten Zugriff. Sie können zwischen den folgenden MFA-Optionen wählen:
@@ -233,9 +242,6 @@ Wenn Sie einem Benutzerflow bedingten Zugriff hinzufügen, sollten Sie die Verwe
    - **Deaktiviert:** MFA wird während der Anmeldung nie erzwungen, und Benutzer werden während der Registrierung oder Anmeldung nicht aufgefordert, sich für MFA zu registrieren.
    - **Immer aktiv:** MFA ist unabhängig von der Konfiguration des bedingten Zugriffs immer erforderlich. Wenn Benutzer noch nicht für MFA registriert sind, werden sie während der Anmeldung aufgefordert, sich zu registrieren. Während der Registrierung werden Benutzer aufgefordert, sich für MFA zu registrieren.
    - **Bedingt (Vorschau):** MFA ist nur erforderlich, wenn dies durch eine aktive Richtlinie für bedingten Zugriff angefordert wird. Wenn das Ergebnis der Auswertung des bedingten Zugriffs eine MFA-Abfrage ohne Risiko ist, wird MFA während der Anmeldung erzwungen. Wenn das Ergebnis eine MFA-Abfrage aufgrund eines Risikos ist *und* der Benutzer nicht für MFA registriert ist, wird die Anmeldung blockiert. Während der Registrierung werden Benutzer nicht aufgefordert, sich für MFA zu registrieren.
-
-> [!IMPORTANT]
-> Wenn die Richtlinie für bedingten Zugriff den Zugriff mit MFA gewährt, der Benutzer aber keine Telefonnummer registriert hat, wird der Benutzer möglicherweise blockiert.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -269,6 +275,23 @@ Um bedingten Zugriff für einen Benutzerflow zu aktivieren, stellen Sie sicher, 
 1. Rufen Sie das Beispiel für eine Richtlinie für bedingten Zugriff auf [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access) ab.
 1. Ersetzen Sie in jeder Datei die Zeichenfolge `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten. Wenn der Name des B2C-Mandanten z.B. *contosob2c* lautet, werden alle Instanzen von `yourtenant.onmicrosoft.com` zu `contosob2c.onmicrosoft.com`.
 1. Laden Sie die Richtliniendateien hoch.
+ 
+### <a name="configure-claim-other-than-phone-number-to-be-used-for-mfa"></a>Konfigurieren eines anderen Anspruchs als die für MFA bestimmte Telefonnummer
+
+Oben in der Richtlinie für bedingten Zugriff wird mit der Methode `DoesClaimExist` für die Anspruchstransformation überprüft, ob ein Anspruch einen Wert enthält. Ein Beispiel hierfür ist die Überprüfung, ob der Anspruch `strongAuthenticationPhoneNumber` eine Telefonnummer enthält. 
+
+Die Anspruchstransformation ist nicht auf den Anspruch `strongAuthenticationPhoneNumber` beschränkt. Sie können je nach Szenario auch einen beliebigen anderen Anspruch verwenden. Im folgenden XML-Codeausschnitt wird stattdessen der Anspruch `strongAuthenticationEmailAddress` überprüft. Der von Ihnen ausgewählte Anspruch muss über einen gültigen Wert verfügen. Andernfalls wird der Anspruch `IsMfaRegistered` auf `False` festgelegt. Bei Festlegung auf `False` wird bei der Auswertung der Richtlinie für bedingten Zugriff der Gewährungstyp `Block` zurückgegeben, um zu verhindern, dass der Benutzer den Benutzerflow durchführen kann.
+
+```XML
+ <ClaimsTransformation Id="IsMfaRegisteredCT" TransformationMethod="DoesClaimExist">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="strongAuthenticationEmailAddress" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="IsMfaRegistered" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+ </ClaimsTransformation>
+```
 
 ## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 

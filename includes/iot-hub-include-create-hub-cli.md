@@ -6,82 +6,27 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: 4999bd93f338ca7b34b141b88e06e4a769a4aaa1
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: a1e2833d49d519d563937783a64db6573414bad2
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876425"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109805194"
 ---
-In den folgenden Abschnitten richten Sie ein Terminal ein und verwenden die Azure CLI zum Erstellen eines IoT-Hubs. Zum Konfigurieren eines Terminals, auf dem Azure CLI-Befehle ausgeführt werden, können Sie entweder den browserbasierten Azure Cloud Shell-Dienst oder ein lokales Terminal verwenden.
-* Wenn Sie Cloud Shell verwenden möchten, fahren Sie mit dem nächsten Abschnitt fort: [Starten der Cloud Shell](#launch-the-cloud-shell). 
-* Wenn Sie ein lokales Terminal verwenden möchten, überspringen Sie den nächsten Abschnitt, und wechseln Sie zu [Öffnen eines lokalen Terminals](#open-a-local-terminal).
-
-## <a name="launch-the-cloud-shell"></a>Starten der Cloud Shell
-In diesem Abschnitt erstellen Sie eine Cloud Shell-Sitzung und konfigurieren die Terminalumgebung.
-
-Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.  
-
-Starten Sie die Cloud Shell wie folgt:
-
-1. Wählen Sie im Azure-Portal oben rechts in der Menüleiste die Schaltfläche **Cloud Shell** aus. 
-
-    ![Schaltfläche „Cloud Shell“ im Azure-Portal](media/iot-hub-include-create-hub-cli/cloud-shell-button.png)
-
-    > [!NOTE]
-    > Falls Sie die Cloud Shell bisher noch nicht verwendet haben, werden Sie zum Erstellen von Speicher aufgefordert, der für die Nutzung der Cloud Shell erforderlich ist.  Wählen Sie ein Abonnement aus, in dem ein Speicherkonto und eine Microsoft Azure Files-Freigabe erstellt werden sollen. 
-
-2. Wählen Sie in der Dropdownliste **Umgebung auswählen** Ihre bevorzugte CLI-Umgebung aus. In dieser Schnellstartanleitung wird die **Bash**-Umgebung verwendet. Alle folgenden CLI-Befehle funktionieren auch in der PowerShell-Umgebung. 
-
-    ![Auswählen der CLI-Umgebung](media/iot-hub-include-create-hub-cli/cloud-shell-environment.png)
-
-3. Überspringen Sie den nächsten Abschnitt, und wechseln Sie zu [Installieren der Azure IoT-Erweiterung](#install-the-azure-iot-extension). 
-
-## <a name="open-a-local-terminal"></a>Öffnen eines lokalen Terminals
-Wenn Sie sich für die Verwendung eines lokalen Terminals anstelle von Cloud Shell entschieden haben, schließen Sie diesen Abschnitt ab.  
-
-1. Öffnen Sie ein lokales Terminal.
-1. Führen Sie den Befehl [az login](/cli/azure/reference-index#az_login) aus:
-
-   ```azurecli
-   az login
-   ```
-
-    Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Azure-Anmeldeseite.
-
-    Öffnen Sie andernfalls die Browserseite https://aka.ms/devicelogin, und geben Sie den in Ihrem Terminal angezeigten Autorisierungscode ein.
-
-    Falls kein Webbrowser verfügbar ist oder nicht geöffnet werden kann, verwenden Sie den Gerätecodefluss mit `az login --use-device-code`.
-
-1. Melden Sie sich im Browser mit Ihren Anmeldeinformationen an.
-
-    Weitere Informationen zu verschiedenen Authentifizierungsmethoden finden Sie unter [Anmelden mit der Azure CLI]( /cli/azure/authenticate-azure-cli ).
-
-1. Gehen Sie zum nächsten Abschnitt: [Installieren der Azure IoT-Erweiterung](#install-the-azure-iot-extension). 
-
-## <a name="install-the-azure-iot-extension"></a>Installieren der Azure IoT-Erweiterung
-In diesem Abschnitt installieren Sie die Microsoft Azure IoT-Erweiterung für die Azure CLI in Ihrer CLI-Shell. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
-
-> [!IMPORTANT]
-> Die Funktionsweise der Terminalbefehle im weiteren Verlauf dieser Schnellstartanleitung ist in Cloud Shell oder einem lokalen Terminal identisch. Wählen Sie zum Ausführen eines Befehls die Option **Kopieren** aus, um einen Codeblock aus dieser Schnellstartanleitung zu kopieren. Fügen Sie ihn dann in Ihre CLI-Shell ein, und führen Sie ihn aus.
-
-Führen Sie den Befehl [az extension add](/cli/azure/extension#az_extension_add) aus. 
-
-   ```azurecli
-   az extension add --name azure-iot
-   ```
-[!INCLUDE [iot-hub-cli-version-info](iot-hub-cli-version-info.md)]
-
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
-In diesem Abschnitt verwenden Sie die Azure CLI zum Erstellen eines IoT-Hubs und einer Ressourcengruppe.  Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Ein IoT-Hub fungiert als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung und den Geräten. 
+In diesem Abschnitt verwenden Sie die Azure CLI zum Erstellen eines IoT-Hubs und einer Ressourcengruppe.  Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Ein IoT-Hub fungiert als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung und den Geräten.
 
 So erstellen Sie einen IoT-Hub und eine Ressourcengruppe:
 
-1. Führen Sie den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen. Mit dem folgenden Befehl wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* am Standort *eastus* erstellt. 
+1. Starten der CLI-App.  Kopieren Sie zum Ausführen der CLI-Befehle im restlichen Teil dieses Schnellstarts die Befehlssyntax, fügen Sie sie in Ihre CLI-App ein, bearbeiten Sie die Variablenwerte und drücken Sie Enter.
+    - Wenn Sie die Verwendung von Cloud Shell möchten, können Sie die Schaltfläche **Ausprobieren** in den CLI-Befehlen auswählen, um Cloud Shell in einem geteilten Browserfenster zu starten. Oder um Cloud Shell in einem separaten Fenster zu öffnen, können Sie mit der rechten Maustaste auf den Link für [Cloud Shell](https://shell.azure.com/bash) klicken und die Option zum Öffnen auf einer neuen Registerkarte auswählen.
+    - Wenn Sie die Befehlszeilenanwendung Azure CLI verwenden, starten Sie Ihre CLI-Konsolen-App und melden Sie sich bei Azure CLI an.
+
+1. Führen Sie in Ihrer CLI-App den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen. Mit dem folgenden Befehl wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* am Standort *eastus* erstellt. 
     >[!NOTE]
     > Optional können Sie auch einen alternativen Standort festlegen. Führen Sie zum Anzeigen der verfügbaren Standorte `az account list-locations` aus. In diesem Tutorial wird *eastus* verwendet, wie im Beispielbefehl gezeigt. 
 
-    ```azurecli
+    ```azurecli-interactive
     az group create --name MyResourceGroup --location eastus
     ```
 
@@ -89,9 +34,11 @@ So erstellen Sie einen IoT-Hub und eine Ressourcengruppe:
 
     *YourIotHubName*: Ersetzen Sie diesen Platzhalter und die umgebenden geschweiften Klammern im folgenden Befehl durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben. Der Name eines IoT-Hubs muss in Azure global eindeutig sein. Verwenden Sie im weiteren Verlauf dieser Schnellstartanleitung den Namen des IoT-Hubs für alle Vorkommen dieses Platzhalters.
 
-    ```azurecli
+    ```azurecli-interactive
     az iot hub create --resource-group MyResourceGroup --name {YourIoTHubName}
     ```
+    > [!TIP]
+    > Nach dem Erstellen eines IoT Hubs können Sie im restlichen Teil dieser Schnellstartanleitung weiterhin CLI-Befehle verwenden, um mit dem Hub zu interagieren. Optional können Sie den Azure IoT-Explorer statt der CLI-Befehle verwenden. IoT Explorer ist eine GUI-Anwendung, mit der Sie eine Verbindung mit einer vorhandenen IoT Hub sowie Geräte hinzufügen, verwalten und überwachen können. Weitere Informationen finden Sie unter [Installieren und Verwenden des Azure IoT-Explorers](../articles/iot-pnp/howto-use-iot-explorer.md).
 
 ## <a name="create-a-simulated-device"></a>Erstellen Sie ein simuliertes Gerät.
 In diesem Abschnitt erstellen Sie ein simuliertes IoT-Gerät, das mit Ihrem IoT-Hub verbunden ist. 
@@ -103,13 +50,13 @@ So erstellen Sie ein simuliertes Gerät:
 
     *myDevice*. Sie können diesen Namen im weiteren Verlauf dieses Artikels direkt für die ID des simulierten Geräts verwenden. Optional können Sie auch einen anderen Namen nutzen. 
 
-    ```azurecli
+    ```azurecli-interactive
     az iot hub device-identity create --device-id myDevice --hub-name {YourIoTHubName} 
     ```
 
 1.  Führen Sie den Befehl [az iot hub device-identity connection-string show](/cli/azure/iot/hub/device-identity/connection-string#az_iot_hub_device_identity_connection_string_show) aus. 
 
-    ```azurecli
+    ```azurecli-interactive
     az iot hub device-identity connection-string show --device-id myDevice --hub-name {YourIoTHubName}
     ```
 
@@ -122,4 +69,4 @@ So erstellen Sie ein simuliertes Gerät:
 1. Speichern Sie die Verbindungszeichenfolge an einem sicheren Ort. 
 
 > [!NOTE]
-> Lassen Sie die CLI-Shell geöffnet. Sie werden ihn später benötigen.
+> Lassen Sie Ihre CLI-App geöffnet. Sie werden ihn später benötigen.

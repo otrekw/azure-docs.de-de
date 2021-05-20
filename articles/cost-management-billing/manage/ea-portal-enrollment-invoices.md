@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 71ba1d6e1e45c5c2e72e2be620158b1aa4b71582
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 8750ad846b832eb4fe037568d3b99f299cfe121b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430807"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790629"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure Enterprise-Registrierung
 
@@ -231,7 +231,7 @@ Sie müssen die folgenden Kriterien erfüllen, um Ihre Azure-Vorauszahlung auf �
 - Ihr verfügbarer Azure-Vorauszahlungsbetrag deckt die angefallenen Gebühren vollständig ab, einschließlich aller vergangenen unbezahlten Azure-Rechnungen.
 - Der Abrechnungszeitraum, den Sie abschließen möchten, muss vollständig geschlossen werden. Die Abrechnung wird am fünften Tag jedes Monats vollständig geschlossen.
 - Der Abrechnungszeitraum, den Sie ausgleichen möchten, muss vollständig geschlossen werden.
-- Ihr Azure-Vorauszahlungsrabatt (Azure Prepayment Discount) basiert auf der neuen Vorauszahlung abzüglich der Beträge, die für den vorherigen Verbrauch geplant wurden. Diese Anforderung gilt nur für angefallene Überschreitungsgebühren. Sie gilt nur für Dienste, für die eine Azure-Vorauszahlung gültig ist, und ist nicht auf Azure Marketplace-Gebühren anwendbar. Azure Marketplace-Gebühren werden separat in Rechnung gestellt.
+- Ihr Azure-Vorauszahlungsrabatt (Azure Prepayment Discount, APD) basiert auf der neuen Vorauszahlung abzüglich der Beträge, die für den vorherigen Verbrauch geplant wurden. Diese Anforderung gilt nur für angefallene Überschreitungsgebühren. Sie gilt nur für Dienste, für die eine Azure-Vorauszahlung gültig ist, und ist nicht auf Azure Marketplace-Gebühren anwendbar. Azure Marketplace-Gebühren werden separat in Rechnung gestellt.
 
 Um einen Überschreitungsausgleich durchzuführen, können Sie oder das Kontoteam eine Supportanfrage eröffnen. Eine per E-Mail gesendete Genehmigung Ihres Unternehmensadministrators oder „Bill to Contact“ ist erforderlich.
 

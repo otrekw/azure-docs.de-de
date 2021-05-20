@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/27/2020
+ms.date: 05/04/2021
 ms.author: trbye
-ms.openlocfilehash: ab22ad75b5b49588bbdcedf5fc995ce65fe4e690
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 4ac14a82fa5698faf6f79c97cd1cdd729f1966a8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104731"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769439"
 ---
 Um die Schnellstartanleitung zur Absichtserkennung durchzuführen, müssen Sie über das LUIS-Vorschauportal ein LUIS-Konto und ein Projekt erstellen. Für diese Schnellstartanleitung benötigen Sie nur ein LUIS-Abonnement. Ein Abonnement der Speech-Dienste ist *nicht* erforderlich.
 
@@ -31,7 +31,7 @@ Diese Informationen finden Sie im [LUIS-Vorschauportal](https://preview.luis.ai/
 
 1. Wählen Sie im LUIS-Vorschauportal Ihre App und dann die Schaltfläche **Veröffentlichen** aus.
 
-2. Wählen Sie den Slot **Produktion** aus. Legen Sie bei Verwendung von `en-US` die Option **Sprachvorbereitung** auf **Ein** fest. Wählen Sie anschließend die Schaltfläche **Veröffentlichen** aus.
+2. Wählen Sie den Slot **Produktion** aus. Wählen Sie bei Verwendung von `en-US` die Option **Einstellungen ändern** aus, und legen Sie die Option **Spracherkennungsvorbereitung** auf **Ein** fest. Wählen Sie anschließend die Schaltfläche **Veröffentlichen** aus.
 
     > [!IMPORTANT]
     > Die Verwendung von **Sprachvorbereitung** wird dringend empfohlen, da hierdurch die Genauigkeit der Spracherkennung verbessert wird.
@@ -39,12 +39,12 @@ Diese Informationen finden Sie im [LUIS-Vorschauportal](https://preview.luis.ai/
     > [!div class="mx-imgBorder"]
     > ![Veröffentlichen von LUIS auf dem Endpunkt](../../../media/luis/publish-app-popup.png)
 
-3. Wählen Sie im LUIS-Vorschauportal **Verwalten** und dann **Azure-Ressourcen** aus. Auf dieser Seite finden Sie Ihren LUIS-Schlüssel und -Speicherort (zuweilen auch als _Region_ bezeichnet).
+3. Wählen Sie im LUIS-Vorschauportal **Verwalten** und dann **Azure-Ressourcen** aus. Auf dieser Seite finden Sie Ihren LUIS-Schlüssel und -Speicherort (zuweilen auch als _Region_ bezeichnet) für Ihre LUIS-Vorhersageressource.
 
    > [!div class="mx-imgBorder"]
    > ![LUIS-Schlüssel und -Speicherort](../../../media/luis/luis-key-region.png)
 
-4. Nachdem Sie Schlüssel und Speicherort abgerufen haben, benötigen Sie die App-ID. Wählen Sie **Anwendungseinstellungen** aus. Auf dieser Seite finden Sie Ihre App-ID.
+4. Nachdem Sie Schlüssel und Speicherort abgerufen haben, benötigen Sie die App-ID. Wählen Sie **Einstellungen** aus. Ihre App-ID ist auf dieser Seite verfügbar.
 
    > [!div class="mx-imgBorder"]
    > ![LUIS-App-ID](../../../media/luis/luis-app-id.png)

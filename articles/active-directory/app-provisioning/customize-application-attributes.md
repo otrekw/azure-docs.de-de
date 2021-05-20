@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial: Anpassen von Attributzuordnungen in Azure Active Directory'
-description: Erfahren Sie, was Attributzuordnungen für SaaS-Apps in Azure Active Directory sind und wie Sie sie an Ihre geschäftlichen Anforderungen anpassen können.
+title: 'Tutorial: Anpassen von Azure Active Directory-Attributzuordnungen in der Anwendungsbereitstellung'
+description: Hier erfahren Sie, was Attributzuordnungen für SaaS-Apps (Software-as-a-Service) in der Azure Active Directory-Anwendungsbereitstellung sind und wie Sie sie an Ihre geschäftlichen Anforderungen anpassen können.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.openlocfilehash: 8534c21bb0dad782b89c6518ea2313b4232639a6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.reviewer: arvinh
+ms.openlocfilehash: 78e2b01da1b47a51309a9e26500514aea396190b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128665"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783007"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -79,7 +80,7 @@ Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die fol
   - **Nur während der Erstellung**: Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>Abgleichen von Benutzern im Quell- und Zielsystem
-Der Azure AD-Bereitstellungsdienst kann sowohl in Greenfield-Szenarien (Benutzer sind im Zielsystem nicht vorhanden) als auch in Brownfield-Szenarien (Benutzer sind im Zielsystem bereits vorhanden) bereitgestellt werden. Zur Unterstützung beider Szenarien verwendet der Bereitstellungsdienst das Konzept des Attributabgleichs. Anhand eines oder mehrerer übereinstimmender Attribute können Sie bestimmen, wie ein Benutzer im Quellsystem eindeutig identifiziert und mit dem Benutzer im Zielsystem abgeglichen wird. Identifizieren Sie im Rahmen der Planung Ihrer Bereitstellung das Attribut, das zur eindeutigen Identifizierung eines Benutzers im Quell-und Zielsystem verwendet werden kann. Hinweise:
+Der Azure AD-Bereitstellungsdienst kann sowohl in Greenfield-Szenarien (Benutzer sind im Zielsystem nicht vorhanden) als auch in Brownfield-Szenarien (Benutzer sind bereits im Zielsystem vorhanden) bereitgestellt werden. Zur Unterstützung beider Szenarien verwendet der Bereitstellungsdienst das Konzept des Attributabgleichs. Anhand eines oder mehrerer übereinstimmender Attribute können Sie bestimmen, wie ein Benutzer im Quellsystem eindeutig identifiziert und mit dem Benutzer im Zielsystem abgeglichen wird. Identifizieren Sie im Rahmen der Planung Ihrer Bereitstellung das Attribut, das zur eindeutigen Identifizierung eines Benutzers im Quell-und Zielsystem verwendet werden kann. Hinweise:
 
 - **Übereinstimmende Attribute sollten eindeutig sein:** Kunden verwenden häufig Attribute wie „userPrincipalName“, „mail“ oder „objectID“ als übereinstimmendes Attribut.
 - **Als übereinstimmende Attribute können auch mehrere Attribute verwendet werden:** Sie können mehrere Attribute festlegen, die beim Abgleich von Benutzern ausgewertet werden sollen, und auch die Auswertungsreihenfolge angeben (auf der Benutzeroberfläche als „Rangfolge für Abgleich“ definiert). Wenn Sie z. B. drei Attribute als übereinstimmende Attribute definieren und ein Benutzer nach der Auswertung der ersten beiden Attribute eindeutig zugeordnet werden kann, wertet der Dienst das dritte Attribut nicht mehr aus. Der Dienst wertet übereinstimmende Attribute in der angegebenen Reihenfolge aus und beendet die Auswertung, wenn eine Übereinstimmung gefunden wird.  

@@ -3,16 +3,16 @@ title: 'Tutorial: Stream Analytics im Edgebereich mit Azure IoT Edge'
 description: In diesem Tutorial stellen Sie Azure Stream Analytics als Modul auf einem IoT Edge-Gerät bereit.
 author: kgremban
 ms.author: kgremban
-ms.date: 07/29/2020
+ms.date: 05/03/2021
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 323973b7646acee07a0c4dbc59834e0aceca75ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cafb9cdbc5ca9851130ea4d9b2ef60c1616d213
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462047"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790719"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul
 
@@ -89,7 +89,7 @@ Wenn Sie einen Azure Stream Analytics-Auftrag zur Ausführung auf einem IoT Edge
    | Subscription | Wählen Sie das gleiche Abonnement wie für Ihren IoT Hub. |
    | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe für alle Testressourcen zu verwenden, die Sie während der IoT Edge-Schnellstarts und -Tutorials erstellen. Beispielsweise **IoTEdgeResources**. |
    | Standort | Wählen Sie einen Standort in Ihrer Nähe aus. |
-   | Hosting-Umgebung | Wählen Sie **Edge** aus. |
+   | Hosting-Umgebung | Wählen Sie **Edge** aus. Durch diese Option wird angegeben, dass der Auftrag auf einem IoT Edge-Gerät bereitgestellt wird, anstatt in der Cloud gehostet zu werden. |
 
 1. Klicken Sie auf **Erstellen**.
 
@@ -101,11 +101,13 @@ Mithilfe der drei Elemente – Eingabe, Ausgabe und Abfrage – wird in diesem A
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics-Auftrag.
 
-1. Wählen Sie unter **Auftragstopologie** die Option **Eingaben** und dann **Datenstromeingabe hinzufügen**.
+1. Wählen Sie unter **Auftragstopologie** die Option **Eingaben** und dann **Datenstromeingabe hinzufügen** aus.
 
    ![Azure Stream Analytics: Hinzufügen einer Eingabe](./media/tutorial-deploy-stream-analytics/asa-input.png)
 
 1. Wählen Sie in der Dropdownliste die Option **Edge-Hub** aus.
+
+   Sollte die Option **Edge-Hub** in der Liste nicht angezeigt werden, haben Sie möglicherweise Ihren Stream Analytics-Auftrag als in der Cloud gehosteten Auftrag erstellt. Erstellen Sie einen neuen Auftrag mit **Edge** als Hostingumgebung.
 
 1. Geben Sie im Bereich **Neue Eingabe** die **Temperatur** als Eingabealias ein.
 
@@ -140,15 +142,15 @@ Mithilfe der drei Elemente – Eingabe, Ausgabe und Abfrage – wird in diesem A
 
 ### <a name="configure-iot-edge-settings"></a>Konfigurieren von IoT Edge-Einstellungen
 
-Um Ihren Stream Analytics-Auftrag auf die Bereitstellung als IoT Edge-Gerät vorzubereiten, müssen Sie den Auftrag einem Container in einem Speicherkonto zuordnen. Wenn Sie Ihren Auftrag bereitstellen, wird die Auftragsdefinition in den Speichercontainer extrahiert.
+Um Ihren Stream Analytics-Auftrag auf die Bereitstellung auf einem IoT Edge-Gerät vorzubereiten, müssen Sie den Auftrag einem Speicherkonto zuordnen. Wenn Sie Ihren Auftrag bereitstellen, wird die Auftragsdefinition in Form eines Containers in das Speicherkonto exportiert.
 
 1. Wählen Sie unter **Konfigurieren** die Option **Speicherkontoeinstellungen** und anschließend **Speicherkonto hinzufügen** aus.
 
    ![Azure Stream Analytics: Hinzufügen eines Speicherkontos](./media/tutorial-deploy-stream-analytics/add-storage-account.png)
 
-1. Wählen Sie über das Dropdownmenü das **Speicherkonto** aus, das Sie zu Beginn dieses Tutorials erstellt haben.
+1. Wählen Sie die Option **Blobspeicher/ADLS Gen 2 aus Ihren Abonnements auswählen** aus.
 
-1. Klicken Sie für das Feld **Container** auf **Neu erstellen**, und geben Sie einen Namen für den Speichercontainer an.
+1. Wählen Sie in den Dropdownmenüs das **Abonnement** und das **Speicherkonto** aus, die Sie am Anfang dieses Tutorials eingerichtet haben.
 
 1. Wählen Sie **Speichern** aus.
 

@@ -1,16 +1,16 @@
 ---
 title: Konfigurieren der operativen Sicherung für Azure-Blobs
-description: Informationen zum Konfigurieren und Verwalten der operativen Sicherung für Azure-Blobs (Vorschau)
+description: Informationen zum Konfigurieren und Verwalten der operativen Sicherung für Azure-Blobs
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: 0dc490842389ba9286799aef5d37c1cf7c1ba64e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/05/2021
+ms.openlocfilehash: cb2bc525018b33eb3441a8ed949d3e808c5051d8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102051071"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767408"
 ---
-# <a name="configure-operational-backup-for-azure-blobs-in-preview"></a>Konfigurieren der operativen Sicherung für Azure-Blobs (Vorschau)
+# <a name="configure-operational-backup-for-azure-blobs"></a>Konfigurieren der operativen Sicherung für Azure-Blobs
 
 Mit Azure Backup können Sie die operative Sicherung zum Schutz von Blockblobs in Ihren Speicherkonten einfach konfigurieren. In diesem Artikel wird erläutert, wie Sie die operative Sicherung für ein oder mehrere Speicherkonten über das Azure-Portal konfigurieren. In dem Artikel werden die folgenden Themen behandelt:
 
@@ -40,7 +40,14 @@ Anweisungen zum Erstellen eines Sicherungstresors finden Sie in der [Dokumentati
 
 ## <a name="grant-permissions-to-the-backup-vault-on-storage-accounts"></a>Erteilen von Berechtigungen für den Sicherungstresor auf Speicherkonten
 
-Die operative Sicherung schützt auch das Speicherkonto (das die zu schützenden Blobs enthält) vor versehentlichem Löschen, indem eine sicherungseigene Löschsperre angewendet wird. Hierfür ist es erforderlich, dass der Sicherungstresor über bestimmte Berechtigungen auf den Speicherkonten verfügt, die geschützt werden müssen. Aus Gründen der Benutzerfreundlichkeit wurden diese Berechtigungen unter der Rolle „Mitwirkender für Speicherkontosicherung“ zusammengefasst. Befolgen Sie die nachstehenden Anweisungen für Speicherkonten, die geschützt werden müssen:
+Die operative Sicherung schützt auch das Speicherkonto (das die zu schützenden Blobs enthält) vor versehentlichem Löschen, indem eine sicherungseigene Löschsperre angewendet wird. Hierfür ist es erforderlich, dass der Sicherungstresor über bestimmte Berechtigungen auf den Speicherkonten verfügt, die geschützt werden müssen. Aus Gründen der Benutzerfreundlichkeit wurden diese minimalen Berechtigungen unter der Rolle **Mitwirkender für Speicherkontosicherung** zusammengefasst. 
+
+Es wird empfohlen, diese Rolle dem Sicherungstresor zuzuweisen, bevor Sie die Sicherung konfigurieren. Sie können die Rollenzuweisung jedoch auch beim Konfigurieren der Sicherung vornehmen. [Erfahren Sie mehr](#using-backup-center) über das Konfigurieren der Sicherung über Backup Center. 
+
+Führen Sie die folgenden Schritte aus, um die erforderliche Rolle für Speicherkonten zuzuweisen, die Sie schützen müssen:
+
+>[!NOTE]
+>Sie können die Rollen dem Tresor auch nach Belieben auf Abonnement- oder Ressourcengruppenebene zuweisen.
 
 1. Navigieren Sie in dem zu schützenden Speicherkonto zur Registerkarte **Access Control (IAM)** im linken Navigationsbereich.
 1. Wählen Sie **Rollenzuordnungen hinzufügen** aus, um die gewünschte Rolle zuzuweisen.
@@ -51,13 +58,13 @@ Die operative Sicherung schützt auch das Speicherkonto (das die zu schützenden
 
     1. Wählen Sie unter **Rolle** die Option **Mitwirkender für Speicherkontosicherung** aus.
     1. Wählen Sie unter **Zugriff zuweisen zu** die Option **Benutzer, Gruppe oder Dienstprinzipal** aus.
-    1. Geben Sie den **Namen des Sicherungstresors** ein, in dem Sie die Blobs in diesem Speicherkonto schützen möchten, und wählen Sie ihn in den Suchergebnissen aus.
-    1. Wählen Sie anschließend **Save** (Speichern) aus.
+    1. Suchen Sie nach dem Sicherungstresor, den Sie zum Sichern von Blobs in diesem Speicherkonto verwenden möchten, und wählen Sie ihn in den Suchergebnissen aus.
+    1. Wählen Sie **Speichern** aus.
 
         ![Rollenzuweisungsoptionen](./media/blob-backup-configure-manage/role-assignment-options.png)
 
         >[!NOTE]
-        >Es kann bis zu 10 Minuten dauern, bis die Rollenzuweisung wirksam wird.
+        >Die Zuweisung der Rolle kann bis zu 10 Minuten dauern.
 
 ## <a name="create-a-backup-policy"></a>Erstellen einer Sicherungsrichtlinie
 
@@ -91,9 +98,14 @@ Hier finden Sie die Schritte zum Erstellen einer Sicherungsrichtlinie für die o
 
 Die Sicherung von Blobs wird auf der Ebene des Speicherkontos konfiguriert. So sind alle Blobs im Speicherkonto mit der operativen Sicherung geschützt.
 
+Sie können die Sicherung für mehrere Speicherkonten über Backup Center konfigurieren. Sie können die Sicherung für ein Speicherkonto auch mithilfe der Eigenschaften für den **Schutz von Daten** des Speicherkontos konfigurieren. In diesem Abschnitt werden beide Möglichkeiten zum Konfigurieren der Sicherung erläutert.
+
+### <a name="using-backup-center"></a>Verwenden von Backup Center
+
 So beginnen Sie mit dem Konfigurieren der Sicherung
 
 1. Suchen Sie in der Suchleiste nach **Backup Center**.
+
 1. Navigieren Sie zu **Übersicht** ->  **+ Sicherung**.
 
     ![Backup Center-Übersicht](./media/blob-backup-configure-manage/backup-center-overview.png)
@@ -102,36 +114,91 @@ So beginnen Sie mit dem Konfigurieren der Sicherung
 
     ![Registerkarte „Initiieren: Sicherung konfigurieren“](./media/blob-backup-configure-manage/initiate-configure-backup.png)
 
-1. Geben Sie auf der Registerkarte **Grundlagen** die Option **Azure-Blobs (Azure Storage)** als **Datenquellentyp** an, und wählen Sie den Sicherungstresor aus, dem Sie Ihre Speicherkonten zuordnen möchten. In dem Bereich können Sie Details zum ausgewählten Tresor anzeigen.
+1. Geben Sie auf der Registerkarte **Grundlagen** die Option **Azure-Blobs (Azure Storage)** als Datenquellentyp an, und wählen Sie den Sicherungstresor aus, dem Sie Ihre Speicherkonten zuordnen möchten.<br></br>In demselben Bereich können Sie Details zum ausgewählten Tresor anzeigen.
 
-    ![Registerkarte „Grundlagen“](./media/blob-backup-configure-manage/basics-tab.png)
+    ![Registerkarte „Grundeinstellungen“](./media/blob-backup-configure-manage/basics-tab.png)
 
-1. Wählen Sie als Nächstes die Sicherungsrichtlinie aus, die Sie zum Festlegen der Aufbewahrung verwenden möchten. Im unteren Teil des Bildschirms können Sie die Details der ausgewählten Richtlinie anzeigen. In der Spalte „Speicher für operative Daten“ wird die in der Richtlinie definierte Aufbewahrungsdauer angezeigt. „Operativ“ bedeutet, dass die Daten lokal im Quellspeicherkonto selbst verwaltet werden.
+    >[!NOTE]
+    >Nur operative Sicherungen werden für Blobs aktiviert, die Sicherungen im Quellspeicherkonto (und nicht im Sicherungstresor) speichern. Daher gilt der für den Tresor ausgewählte Redundanztyp für Sicherungsspeicher nicht für die Sicherung von Blobs.
 
+1. Wählen Sie die Sicherungsrichtlinie aus, die Sie zum Festlegen der Aufbewahrung verwenden möchten.<br></br>Im unteren Teil des Bildschirms können Sie die Details der ausgewählten Richtlinie anzeigen. In der Spalte „Speicher für operative Daten“ wird die in der Richtlinie definierte Aufbewahrungsdauer angezeigt. **Operativ** impliziert, dass die Daten lokal im Quellspeicherkonto verwaltet werden.
+    
     ![Auswählen der Sicherungsrichtlinie](./media/blob-backup-configure-manage/choose-backup-policy.png)
 
     Sie können auch eine neue Sicherungsrichtlinie erstellen. Wählen Sie dazu **Neu erstellen** aus, und führen Sie die folgenden Schritte aus:
+    
+    1. Geben Sie einen Namen für die Richtlinie an, die Sie erstellen möchten.<br></br>Stellen Sie sicher, dass in den anderen Feldern der richtige Datenquellentyp und Tresorname angezeigt werden.
+    
+    1. Wählen Sie auf der Registerkarte **Sicherungsrichtlinie** das Symbol **Aufbewahrungsregel bearbeiten** für die Aufbewahrungsregel aus, um die Dauer der Datenaufbewahrung zu ändern.<br></br>Sie können eine Aufbewahrungsdauer von bis zu **360** Tagen festlegen. 
+    
+        >[!NOTE]
+        >Sicherungen sind zwar vom Aufbewahrungszeitraum nicht betroffen, der Wiederherstellungsvorgang zum Wiederherstellen älterer Sicherungen kann jedoch länger dauern.
 
-    1. Geben Sie einen Namen für die Richtlinie an, die Sie erstellen möchten. Stellen Sie sicher, dass in den anderen Feldern der richtige Datenquellentyp und Tresorname angezeigt werden.
-    1. Wählen Sie auf der Registerkarte **Sicherungsrichtlinie** das Symbol „Aufbewahrungsregel bearbeiten“ aus, um die Dauer der Aufbewahrung der Daten zu bearbeiten und festzulegen. Sie können eine Aufbewahrungsdauer von bis zu 360 Tagen angeben. Eine Wiederherstellung über einen längeren Zeitraum kann dazu führen, dass die Wiederherstellungsvorgänge länger dauern.
+       ![Erstellen einer neuen Sicherungsrichtlinie](./media/blob-backup-configure-manage/new-backup-policy.png)
 
-        ![Erstellen einer neuen Sicherungsrichtlinie](./media/blob-backup-configure-manage/new-backup-policy.png)
+    1. Wählen Sie **Überprüfen + erstellen** aus, um die Sicherungsrichtlinie zu erstellen.
 
-    1. Wählen Sie anschließend **Überprüfen + Erstellen** aus, um die Sicherungsrichtlinie zu erstellen.
+1. Wählen Sie die erforderlichen Speicherkonten zum Konfigurieren des Schutzes von Blobs aus. Sie können mehrere Speicherkonten auf einmal auswählen und dann auf Auswählen klicken.<br></br>Stellen Sie jedoch sicher, dass dem von Ihnen ausgewählten Tresor die erforderliche RBAC-Rolle zugewiesen ist, um die Sicherung für Speicherkonten zu konfigurieren. Erfahren Sie mehr über das [Erteilen von Berechtigungen für den Sicherungstresor auf Speicherkonten](#grant-permissions-to-the-backup-vault-on-storage-accounts).<br></br>Wenn die Rolle nicht zugewiesen ist, können Sie sie beim Konfigurieren der Sicherung weiterhin zuweisen. Weitere Informationen finden Sie unter Schritt 7.
 
-1. Als Nächstes müssen Sie die Speicherkonten auswählen, für die Sie den Schutz von Blobs konfigurieren möchten. Sie können mehrere Speicherkonten auf einmal auswählen und dann auf **Auswählen** klicken.
+    ![Überprüfen von Berechtigungen für den Tresor](./media/blob-backup-configure-manage/verify-vault-permissions.png)
 
-    Vergewissern Sie sich jedoch, dass der von Ihnen gewählte Tresor über die erforderlichen Berechtigungen verfügt, um die Sicherung auf den Speicherkonten zu konfigurieren, wie oben unter [Erteilen von Berechtigungen für den Sicherungstresor auf Speicherkonten](#grant-permissions-to-the-backup-vault-on-storage-accounts) beschrieben.
+    Azure Backup überprüft, ob der Tresor über ausreichende Berechtigungen verfügt, um die Konfiguration der Sicherung auf den ausgewählten Speicherkonten zu ermöglichen. Es dauert eine Weile, bis die Überprüfungen abgeschlossen sind.
+    
+    ![Berechtigungen zum Konfigurieren der Sicherung](./media/blob-backup-configure-manage/permissions-for-configuring-backup.png)
 
-    ![Auswählen der zu sichernden Ressourcen](./media/blob-backup-configure-manage/select-resources.png)
+1. Nach Abschluss der Überprüfungen informiert die Spalte **Sicherungsbereitschaft** darüber, ob der Sicherungstresor über ausreichende Berechtigungen zum Konfigurieren von Sicherungen für jedes Speicherkonto verfügt.
 
-    Azure Backup überprüft, ob der Tresor über ausreichende Berechtigungen verfügt, um die Konfiguration der Sicherung auf den ausgewählten Speicherkonten zu ermöglichen.
+   ![Informationen zu Backup-Tresorberechtigungen](./media/blob-backup-configure-manage/information-of-backup-vault-permissions.png)
 
-    ![Azure Backup überprüft Berechtigungen](./media/blob-backup-configure-manage/validate-permissions.png)
+    Wenn bei der Überprüfung Fehler angezeigt werden (für zwei der in der obigen Abbildung aufgeführten Speicherkonten), haben Sie diesen [Speicherkonten](#grant-permissions-to-the-backup-vault-on-storage-accounts) nicht die Rolle **Mitwirkender für Speicherkontosicherung** zugewiesen. Außerdem können Sie hier die erforderliche Rolle basierend auf Ihren aktuellen Berechtigungen zuweisen. Die Fehlermeldung bietet Ihnen Informationen, ob Sie über die erforderlichen Berechtigungen verfügen, damit Sie die entsprechende Maßnahme ergreifen können:
 
-    Wenn die Validierung zu Fehlern führt (wie bei einem der Speicherkonten im Screenshot), navigieren Sie zu den ausgewählten Speicherkonten, und weisen Sie die entsprechenden Rollen zu, wie [hier](#grant-permissions-to-the-backup-vault-on-storage-accounts) beschrieben, und wählen Sie **Erneut überprüfen** aus. Die Zuweisung der neuen Rolle kann bis zu 10 Minuten dauern.
+    - **Rollenzuweisung nicht erfolgt:** Dieser Fehler (wie für das Element _blobbackupdemo3_ in der obigen Abbildung dargestellt) gibt an, dass Sie (der Benutzer) über Berechtigungen zum Zuweisen der Rolle **Mitwirkender für Speicherkontosicherung** und der anderen erforderlichen Rollen für das Speicherkonto zum Tresor verfügen. Wählen Sie die Rollen aus, und klicken Sie auf der Symbolleiste auf **Fehlende Rollen zuweisen**. Dadurch wird dem Sicherungstresor automatisch die erforderliche Rolle zugewiesen, und es wird auch eine erneute automatische Überprüfung ausgelöst.<br><br>Manchmal kann die Rollenweitergabe eine Weile dauern (bis zu 10 Minuten), was dazu führt, dass die erneute Überprüfung nicht erfolgreich durchgeführt wird. Warten Sie in einem solchen Szenario einige Minuten, und klicken Sie auf die Schaltfläche „Erneut überprüfen“, um die Überprüfung zu wiederholen.
+    
+    - **Unzureichende Berechtigungen für die Rollenzuweisung:** Dieser Fehler (wie für das Element _blobbackupdemo4_ in der obigen Abbildung gezeigt) weist darauf hin, dass der Tresor nicht über die erforderliche Rolle zum Konfigurieren der Sicherung verfügt und Sie (der Benutzer) nicht über ausreichende Berechtigungen zum Zuweisen der erforderlichen Rolle verfügen. Um die Rollenzuweisung zu vereinfachen, können Sie mit Backup die Rollenzuweisungsvorlage herunterladen, die Sie für Benutzer mit Berechtigungen zum Zuweisen von Rollen für Speicherkonten freigeben können. Wählen Sie hierzu solche Speicherkonten aus, und klicken Sie auf **Rollenzuweisungsvorlage herunterladen**, um die Vorlage herunterzuladen.<br><br>Nachdem die Rollen zugewiesen wurden, können Sie sie für die entsprechenden Benutzer freigeben. Klicken Sie bei erfolgreicher Zuweisung der Rolle auf **Erneut überprüfen**, um die Berechtigungen erneut zu überprüfen, und konfigurieren Sie dann die Sicherung.
+        >[!NOTE]
+        >Die Vorlage würde nur Details für ausgewählte Speicherkonten enthalten. Wenn also mehrere Benutzer Rollen für verschiedene Speicherkonten zuweisen müssen, können Sie entsprechend unterschiedliche Vorlagen auswählen und herunterladen.
+1. Wenn die Überprüfung für alle ausgewählten Speicherkonten erfolgreich war, fahren Sie mit **Überprüfen und konfigurieren** für die Sicherung fort.<br><br>Sie erhalten Benachrichtigungen zum Status der Schutzkonfiguration und deren Abschluss.
 
-1. Wenn die Validierung für alle ausgewählten Speicherkonten erfolgreich war, fahren Sie mit **Überprüfen und Konfigurieren** fort, um die Sicherung zu konfigurieren. Es werden Benachrichtigungen angezeigt, die Sie über den Status der Schutzkonfiguration und deren Abschluss informieren.
+### <a name="using-data-protection-settings-of-the-storage-account"></a>Verwenden von Datenschutzeinstellungen des Speicherkontos
+
+Sie können die Sicherung für Blobs in einem Speicherkonto direkt über die Datenschutzeinstellungen des Speicherkontos konfigurieren. 
+
+1. Wechseln Sie zu dem Speicherkonto, für das Sie die Sicherung für Blobs konfigurieren möchten, und navigieren Sie dann im linken Bereich (unter **Datenverwaltung**) zu **Datenschutz**.
+
+1. In den verfügbaren Datenschutzoptionen können Sie mit der ersten Option die operative Sicherung mithilfe von Azure Backup aktivieren.
+
+    ![Operative Sicherung mit Azure Backup](./media/blob-backup-configure-manage/operational-backup-using-azure-backup.png)
+
+1. Aktivieren Sie das Kontrollkästchen zum **Aktivieren der operativen Sicherung mit Azure Backup**. Wählen Sie dann den Sicherungstresor und die Sicherungsrichtlinie aus, die Sie zuordnen möchten.<br><br>Sie können den vorhandenen Tresor und eine vorhandene Richtlinie auswählen oder bei Bedarf neue erstellen.
+
+    >[!IMPORTANT]
+    >Sie sollten dem ausgewählten Tresor die Rolle **Mitwirkender für Speicherkontosicherung** zugewiesen haben. Erfahren Sie mehr über das [Erteilen von Berechtigungen für den Sicherungstresor auf Speicherkonten](#grant-permissions-to-the-backup-vault-on-storage-accounts).
+    
+    - Wenn Sie die erforderliche Rolle bereits zugewiesen haben, klicken Sie auf **Speichern**, um die Konfiguration der Sicherung abzuschließen. Folgen Sie den Portalbenachrichtigungen, um den Fortschritt der Konfiguration der Sicherung nachzuverfolgen.
+    - Wenn Sie sie noch nicht zugewiesen haben, klicken Sie auf **Identität verwalten**, und führen Sie die folgenden Schritte aus, um die Rollen zuzuweisen. 
+
+        ![Aktivieren der operativen Sicherung mit Azure Backup](./media/blob-backup-configure-manage/enable-operational-backup-with-azure-backup.png)
+
+
+        1. Wenn Sie auf **Identität verwalten** klicken, gelangen Sie zum Blatt „Identität“ des Speicherkontos. 
+        
+        1. Klicken Sie auf **Rollenzuweisung hinzufügen**, um die Rollenzuweisung zu initiieren.
+
+            ![Hinzufügen einer Rollenzuweisung zum Initiieren der Rollenzuweisung](./media/blob-backup-configure-manage/add-role-assignment-to-initiate-role-assignment.png)
+
+
+        1. Wählen Sie den Bereich, das Abonnement, die Ressourcengruppe oder das Speicherkonto aus, das Sie der Rolle zuweisen möchten.<br><br>Es wird empfohlen, die Rolle auf Ressourcengruppenebene zuzuweisen, wenn Sie die operative Sicherung für Blobs für mehrere Speicherkonten konfigurieren möchten.
+
+        1. Wählen Sie in der Dropdownliste **Rolle** die Rolle **Mitwirkender für Speicherkontosicherung** aus.
+
+            ![Auswählen der Rolle „Mitwirkender für Speicherkontosicherung“](./media/blob-backup-configure-manage/select-storage-account-backup-contributor-role.png)
+
+
+        1. Klicken Sie auf **Speichern**, um die Rollenzuweisung abzuschließen.<br><br>Sie werden über das Portal benachrichtigt, sobald dies erfolgreich abgeschlossen wurde. Sie können auch die neue Rolle anzeigen, die der Liste der vorhandenen Rollen für den ausgewählten Tresor hinzugefügt wurde.
+
+            ![Abschließen der Rollenzuweisung](./media/blob-backup-configure-manage/finish-role-assignment.png)
+
+        1. Klicken Sie rechts oben auf das Abbrechensymbol (**x**), um zum Blatt **Datenschutz** des Speicherkontos zurückzukehren.<br><br>Sobald Sie zurück sind, fahren Sie mit der Konfiguration der Sicherung fort.
 
 ## <a name="effects-on-backed-up-storage-accounts"></a>Auswirkungen auf gesicherte Speicherkonten
 
@@ -166,8 +233,31 @@ Sie können Backup Center als zentralisierte Benutzeroberfläche für die Verwal
 
     ![Backup Center](./media/blob-backup-configure-manage/backup-center.png)
 
-Weitere Informationen finden Sie in der [Übersicht über Backup Center (Vorschau)](backup-center-overview.md).
+Weitere Informationen finden Sie in der [Übersicht über Backup Center](backup-center-overview.md).
+
+## <a name="stopping-protection"></a>Beenden des Schutzes
+
+Sie können die operative Sicherung für Ihr Speicherkonto gemäß Ihren Anforderungen beenden.
+
+>[!NOTE]
+>Durch das Beenden des Schutzes wird die Zuordnung des Speicherkontos zum Sicherungstresor (und den Sicherungstools wie Backup Center) aufgehoben, und die konfigurierte Zeitpunktwiederherstellung für Blobs, die Versionsverwaltung und die Änderungsfeeds werden nicht deaktiviert.
+
+Führen Sie die folgenden Schritte aus, um die Sicherung für ein Speicherkonto zu beenden:
+
+1. Navigieren Sie zur Sicherungsinstanz für das zu sichernde Speicherkonto.<br><br>Zu dieser können Sie aus dem Speicherkonto über **Speicherkonto** -> **Datenschutz** -> **Sicherungseinstellungen verwalten** oder direkt aus dem Backup Center über **Backup Center** -> **Sicherungsinstanzen** -> „Suche nach dem Speicherkontonamen“ navigieren.
+
+    ![Standort des Speicherkontos](./media/blob-backup-configure-manage/storage-account-location.png)
+
+    ![Standort des Speicherkontos über Backup Center](./media/blob-backup-configure-manage/storage-account-location-through-backup-center.png)
+
+
+1. Klicken Sie in der Sicherungsinstanz auf **Löschen**, um die operative Sicherung für das bestimmte Speicherkonto zu beenden. 
+ 
+    ![Beenden der operativen Sicherung](./media/blob-backup-configure-manage/stop-operational-backup.png)
+
+Nach dem Beenden der Sicherung können Sie andere Speicherdatenschutzfunktionen (die zum Konfigurieren der Sicherung aktiviert sind) auf dem Blatt „Datenschutz“ des Speicherkontos deaktivieren.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Wiederherstellen von Azure-Blobs](blob-restore.md)
+[Wiederherstellen von Azure-Blobs](blob-restore.md)

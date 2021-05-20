@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 419e609c4b78007f215d67ab4a69671bc9cbb198
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 1cee1a33f74b11793d9b12db0b8bc6f65fda29a3
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205627"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787676"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>Tutorial: Erstellen eines Azure Digital Twins-Graphen unter Verwendung Beispielclient-App
 
@@ -72,7 +72,7 @@ Wählen Sie die Datei *Room.json* aus, um sie im Bearbeitungsfenster zu öffnen,
 
 Nach dem Entwerfen von Modellen müssen Sie diese in Ihre Azure Digital Twins-Instanz hochladen. Dadurch wird die Azure Digital Twins-Dienstinstanz mit Ihrem eigenen benutzerdefinierten Domänenvokabular konfiguriert. Nach dem Hochladen der Modelle können Sie Zwillingsinstanzen erstellen, die diese verwenden.
 
-1. Führen Sie im Projektkonsolenfenster den folgenden Befehl aus, um das aktualisierte *Room*-Modell sowie ein *Floor*-Modell hochzuladen, das Sie auch im nächsten Abschnitt verwenden, um unterschiedliche Arten von Zwillingen zu erstellen.
+1. Führen Sie im Projektkonsolenfenster den folgenden Befehl aus, um das aktualisierte Room-Modell sowie ein Floor-Modell hochzuladen, das Sie auch im nächsten Abschnitt verwenden, um unterschiedliche Arten von Zwillingen zu erstellen.
 
     ```cmd/sh
     CreateModels Room Floor
@@ -80,7 +80,7 @@ Nach dem Entwerfen von Modellen müssen Sie diese in Ihre Azure Digital Twins-In
     
     In der Ausgabe sollte die erfolgreiche Erstellung der Modelle angegeben sein.
 
-1. Vergewissern Sie sich, dass die Modelle erstellt wurden, indem Sie den Befehl `GetModels true` ausführen. Dadurch werden alle hochgeladenen Modelle aus der Azure Digital Twins-Instanz abgefragt und ausführliche Informationen ausgegeben. Suchen Sie in den Ergebnissen nach dem bearbeiteten *Room*-Modell:
+1. Vergewissern Sie sich, dass die Modelle erstellt wurden, indem Sie den Befehl `GetModels true` ausführen. Dadurch werden alle hochgeladenen Modelle aus der Azure Digital Twins-Instanz abgefragt und ausführliche Informationen ausgegeben. Suchen Sie in den Ergebnissen nach dem bearbeiteten Room-Modell:
 
     :::image type="content" source="media/tutorial-command-line/app/output-get-models.png" alt-text="Screenshot: Ergebnis von „GetModels“ mit dem aktualisierten Raummodell" lightbox="media/tutorial-command-line/app/output-get-models.png":::
 
@@ -116,7 +116,7 @@ Sie haben einige Modelle in Ihre Azure Digital Twins-Instanz hochgeladen und kö
 
 Zum Erstellen eines digitalen Zwillings verwenden Sie den Befehl `CreateDigitalTwin`. Sie müssen auf das Modell verweisen, auf dem der Zwilling basiert, und können optional Anfangswerte für Eigenschaften im Modell definieren. Sie müssen in dieser Phase keine Beziehungsinformationen übergeben.
 
-1. Führen Sie diesen Code in der ausgeführten Projektkonsole aus, um mehrere Zwillinge basierend auf dem zuvor aktualisierten *Room*-Modell und dem *Floor*-Modell zu erstellen. Denken Sie daran, dass *Room* drei Eigenschaften hat, sodass Sie Argumente mit den Anfangswerten für diese angeben können. (Die Initialisierung von Eigenschaftswerten ist grundsätzlich optional, für dieses Tutorial werden sie allerdings benötigt.)
+1. Führen Sie diesen Code in der ausgeführten Projektkonsole aus, um mehrere Zwillinge basierend auf dem zuvor aktualisierten Room-Modell und dem Floor-Modell zu erstellen. Denken Sie daran, dass Room drei Eigenschaften hat, sodass Sie Argumente mit den Anfangswerten für diese angeben können. (Die Initialisierung von Eigenschaftswerten ist grundsätzlich optional, für dieses Tutorial werden sie allerdings benötigt.)
 
     ```cmd/sh
     CreateDigitalTwin dtmi:example:Room;2 room0 RoomName string Room0 Temperature double 70 HumidityLevel double 30
@@ -129,7 +129,7 @@ Zum Erstellen eines digitalen Zwillings verwenden Sie den Befehl `CreateDigitalT
     
     :::image type="content" source="media/tutorial-command-line/app/output-create-digital-twin.png" alt-text="Screenshot: Auszug aus dem Ergebnis der Befehle vom Typ „CreateDigitalTwin“ mit „floor0“, „floor1“, „room0“ und „room1“" lightbox="media/tutorial-command-line/app/output-create-digital-twin.png":::
 
-1. Führen Sie den Befehl `Query` aus, um sich zu vergewissern, dass die Zwillinge erstellt wurden. Mit diesem Befehl werden alle digitalen Zwillinge der Azure Digital Twins-Instanz abgefragt. Suchen Sie in den Ergebnissen nach den Zwillingen *room0*, *room1*, *floor0* und *floor1*.
+1. Führen Sie den Befehl `Query` aus, um sich zu vergewissern, dass die Zwillinge erstellt wurden. Mit diesem Befehl werden alle digitalen Zwillinge der Azure Digital Twins-Instanz abgefragt. Suchen Sie in den Ergebnissen nach den Zwillingen room0, room1, floor0 und floor1.
 
 ### <a name="modify-a-digital-twin"></a>Ändern eines digitalen Zwillings
 
@@ -138,7 +138,7 @@ Sie können auch die Eigenschaften eines von Ihnen erstellten Zwillings ändern.
 > [!NOTE]
 > Die zugrunde liegende REST-API verwendet das Format [JSON Patch](http://jsonpatch.com/), um Aktualisierungen für einen Zwilling zu definieren. Die Befehlszeilen-App verwendet dieses Format ebenfalls, um besser widerzuspiegeln, was von den zugrunde liegenden APIs erwartet wird.
 
-1. Führen Sie den folgenden Befehl aus, um den RoomName-Wert für *room0* von *Room0* in *PresidentialSuite* zu ändern:
+1. Führen Sie den folgenden Befehl aus, um den RoomName-Wert für „room0“ von „Room0“ in „PresidentialSuite“ zu ändern:
     
     ```cmd/sh
     UpdateDigitalTwin room0 add /RoomName string PresidentialSuite
@@ -159,11 +159,11 @@ Sie können auch die Eigenschaften eines von Ihnen erstellten Zwillings ändern.
 
 Im nächsten Schritt können Sie einige **Beziehungen** zwischen diesen Zwillingen erstellen, um Sie in einem [Zwillingsgraphen](concepts-twins-graph.md) zu verbinden. Zwillingsgraphen werden verwendet, um eine gesamte Umgebung darzustellen. 
 
-Die Arten von Beziehungen, die Sie zwischen Zwillingen erstellen können, werden in den zuvor hochgeladenen [Modellen](#model-a-physical-environment-with-dtdl) definiert. In der [Modelldefinition für „Floor“](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) ist angegeben, dass Etagen eine Beziehung vom Typ *contains* (enthält) haben können. Dies ermöglicht die Erstellung einer Beziehung vom Typ *enthält* zwischen jedem Etagenzwilling (*Floor*) und dem entsprechenden enthaltenen Raum.
+Die Arten von Beziehungen, die Sie zwischen Zwillingen erstellen können, werden in den zuvor hochgeladenen [Modellen](#model-a-physical-environment-with-dtdl) definiert. In der [Modelldefinition für „Floor“](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) ist angegeben, dass Etagen eine Beziehung vom Typ *contains* (enthält) haben können. Dies ermöglicht die Erstellung einer Beziehung vom Typ *enthält* zwischen jedem Etagenzwilling (Floor) und dem entsprechenden enthaltenen Raum.
 
 Verwenden Sie zum Hinzufügen einer Beziehung den Befehl `CreateRelationship`. Geben Sie den Zwilling, von dem die Beziehung ausgeht, die Art der Beziehung sowie den Zwilling an, mit dem die Beziehung hergestellt wird. Geben Sie abschließend eine eindeutige ID für die Beziehung an.
 
-1. Führen Sie den folgenden Code aus, um eine Beziehung vom Typ „contains“ von jedem der zuvor erstellten *Floor*-Zwillinge zu einem entsprechenden *Room*-Zwilling hinzuzufügen. Die Beziehungen heißen *relationship0* und *relationship1*.
+1. Führen Sie den folgenden Code aus, um eine Beziehung vom Typ „contains“ von jedem der zuvor erstellten Floor-Zwillinge zu einem entsprechenden Room-Zwilling hinzuzufügen. Die Beziehungen heißen relationship0 und relationship1.
 
     ```cmd/sh
     CreateRelationship floor0 contains room0 relationship0
@@ -172,7 +172,7 @@ Verwenden Sie zum Hinzufügen einer Beziehung den Befehl `CreateRelationship`. G
 
     >[!TIP]
     >Da die Beziehung vom Typ *contains* (enthält) im Modell [Floor (Etage)](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) mit zwei Zeichenfolgeneigenschaften (`ownershipUser` und `ownershipDepartment`) definiert wurde, können Sie beim Erstellen der Beziehungen auch Argumente mit den Anfangswerten für diese Eigenschaften angeben.
-    > Hier sehen Sie eine alternative Version des obigen Befehls zum Erstellen von *relationship0*, bei der auch Anfangswerte für diese Eigenschaften angegeben werden:
+    > Hier sehen Sie eine alternative Version des obigen Befehls zum Erstellen von relationship0, bei der auch Anfangswerte für diese Eigenschaften angegeben werden:
     > ```cmd/sh
     > CreateRelationship floor0 contains room0 relationship0 ownershipUser string MyUser ownershipDepartment string myDepartment
     > ``` 
@@ -219,7 +219,7 @@ Führen Sie in der ausgeführten Projektkonsole die folgenden Befehle aus, um ei
     :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="Screenshot: Teilergebnis der Zwillingsabfrage mit „room0“ und „floor1“":::
 
     >[!NOTE]
-    >Im Beispielprojekt entspricht der Befehl `Query` ohne zusätzliche Argumente `Query SELECT * FROM DIGITALTWINS`. Wenn Sie alle Zwillinge in Ihrer Instanz mithilfe der [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder der [CLI-Befehle](how-to-use-cli.md) abfragen möchten, verwenden Sie die längere (vollständige) Abfrage.
+    >Im Beispielprojekt entspricht der Befehl `Query` ohne zusätzliche Argumente `Query SELECT * FROM DIGITALTWINS`. Wenn Sie alle Zwillinge in Ihrer Instanz mithilfe der [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder der [CLI-Befehle](concepts-cli.md) abfragen möchten, verwenden Sie die längere (vollständige) Abfrage.
 
 1. **Welche Räume sind in meiner Umgebung vorhanden?** (Abfrage nach Modell)
 
@@ -227,7 +227,7 @@ Führen Sie in der ausgeführten Projektkonsole die folgenden Befehle aus, um ei
     Query SELECT * FROM DIGITALTWINS T WHERE IS_OF_MODEL(T, 'dtmi:example:Room;2')
     ```
 
-    Sie können Ihre Abfrage auf Zwillinge eines bestimmten Typs beschränken, um spezifischere Informationen zu den dargestellten Elementen zu erhalten. Im Ergebnis werden *room0* und *room1*, aber **nicht** *floor0* oder *floor1* angezeigt (da es sich dabei um Etagen und nicht um Räume handelt).
+    Sie können Ihre Abfrage auf Zwillinge eines bestimmten Typs beschränken, um spezifischere Informationen zu den dargestellten Elementen zu erhalten. Im Ergebnis werden „room0“ und „room1“, aber **nicht** „floor0“ oder „floor1“ angezeigt (da es sich dabei um Etagen und nicht um Räume handelt).
     
     :::image type="content" source="media/tutorial-command-line/app/output-query-model.png" alt-text="Screenshot: Ergebnis der Modellabfrage, nur mit „room0“ und „room1“":::
 
@@ -237,7 +237,7 @@ Führen Sie in der ausgeführten Projektkonsole die folgenden Befehle aus, um ei
     Query SELECT room FROM DIGITALTWINS floor JOIN room RELATED floor.contains where floor.$dtId = 'floor0'
     ```
 
-    Sie können Abfragen basierend auf den Beziehungen in Ihrem Graphen durchführen, um Informationen zu den Beziehungen zwischen Zwillingen zu erhalten oder um die Abfrage auf einen bestimmten Bereich zu beschränken. Auf *floor0* befindet sich nur *room0*, daher ist dies der einzige Raum im Ergebnis.
+    Sie können Abfragen basierend auf den Beziehungen in Ihrem Graphen durchführen, um Informationen zu den Beziehungen zwischen Zwillingen zu erhalten oder um die Abfrage auf einen bestimmten Bereich zu beschränken. Auf floor0 befindet sich nur room0, daher ist dies der einzige Raum im Ergebnis.
 
     :::image type="content" source="media/tutorial-command-line/app/output-query-relationship.png" alt-text="Screenshot: Ergebnis der Beziehungsabfrage mit „room0“":::
 
@@ -247,7 +247,7 @@ Führen Sie in der ausgeführten Projektkonsole die folgenden Befehle aus, um ei
     Query SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
     ```
 
-    Sie können den Graphen auf der Grundlage von Eigenschaften abfragen, um eine Vielzahl von Fragen zu beantworten. Dazu zählt auch das Auffinden von Ausreißern in Ihrer Umgebung, die möglicherweise Ihre Aufmerksamkeit erfordern. Andere Vergleichsoperatoren ( *<* , *>* , *=* oder *!=* ) werden ebenfalls unterstützt. *room1* wird hier in den Ergebnissen angezeigt, da die Temperatur 80 beträgt.
+    Sie können den Graphen auf der Grundlage von Eigenschaften abfragen, um eine Vielzahl von Fragen zu beantworten. Dazu zählt auch das Auffinden von Ausreißern in Ihrer Umgebung, die möglicherweise Ihre Aufmerksamkeit erfordern. Andere Vergleichsoperatoren ( *<* , *>* , *=* oder *!=* ) werden ebenfalls unterstützt. room1 wird hier in den Ergebnissen angezeigt, da die Temperatur 80 beträgt.
 
     :::image type="content" source="media/tutorial-command-line/app/output-query-property.png" alt-text="Screenshot: Ergebnis der Eigenschaftenabfrage, nur mit „room1“":::
 
@@ -257,7 +257,7 @@ Führen Sie in der ausgeführten Projektkonsole die folgenden Befehle aus, um ei
     Query SELECT room FROM DIGITALTWINS floor JOIN room RELATED floor.contains where floor.$dtId = 'floor0' AND IS_OF_MODEL(room, 'dtmi:example:Room;2') AND room.Temperature > 75
     ```
 
-    Sie können die Abfragen oben auch wie in SQL mithilfe von Kombinationsoperatoren (etwa `AND`, `OR`, `NOT`) kombinieren. Diese Abfrage verwendet `AND`, um die vorherige Abfrage der Zwillingstemperatur spezifischer zu gestalten. Das Ergebnis enthält jetzt nur noch Räume mit einer Temperatur von über 75, die sich auf *floor0* befinden – in diesem Fall kein Raum. Das Resultset ist leer.
+    Sie können die Abfragen oben auch wie in SQL mithilfe von Kombinationsoperatoren (etwa `AND`, `OR`, `NOT`) kombinieren. Diese Abfrage verwendet `AND`, um die vorherige Abfrage der Zwillingstemperatur spezifischer zu gestalten. Das Ergebnis enthält jetzt nur noch Räume mit einer Temperatur von über 75, die sich auf floor0 befinden – in diesem Fall kein Raum. Das Resultset ist leer.
 
     :::image type="content" source="media/tutorial-command-line/app/output-query-compound.png" alt-text="Screenshot: Ergebnis der Verbundabfrage (keine Ergebnisse)" lightbox="media/tutorial-command-line/app/output-query-compound.png":::
 

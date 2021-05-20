@@ -3,12 +3,12 @@ title: 'Tutorial: Schützen neuer Ressourcen mit Sperren'
 description: In diesem Tutorial verwenden Sie die Ressourcensperrenoptionen „Schreibgeschützt“ und „Nicht löschen“ von Azure Blueprints, um neu bereitgestellte Ressourcen zu schützen.
 ms.date: 03/08/2021
 ms.topic: tutorial
-ms.openlocfilehash: 87da0f5a1fff2feb103b32533c8d314fb7690f80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abb880923da71c437507245917c8e8fddb92b2fa
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485740"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733857"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren
 
@@ -161,7 +161,7 @@ Nach der Veröffentlichung der Blaupausendefinition können Sie sie einem Abonne
      |-|-|-|-|-|
      |Ressourcengruppe „RGtoLock“|Resource group|Name|TestingBPLocks|Definiert den Namen der neuen Ressourcengruppe, auf die Blaupausensperren angewendet werden sollen.|
      |Ressourcengruppe „RGtoLock“|Resource group|Standort|USA, Westen 2|Definiert den Standort der neuen Ressourcengruppe, auf die Blaupausensperren angewendet werden sollen.|
-     |StorageAccount|Resource Manager-Vorlage|storageAccountType (StorageAccount)|Standard_GRS|Speicher-SKU. Der Standardwert lautet _Standard_LRS_.|
+     |StorageAccount|Resource Manager-Vorlage|storageAccountType (StorageAccount) |Standard_GRS|Speicher-SKU. Der Standardwert lautet _Standard_LRS_.|
 
 1. Nachdem Sie alle Parameter eingegeben haben, wählen Sie unten auf der Seite die Option **Zuweisen** aus.
 
@@ -177,7 +177,7 @@ Die Zuweisung erstellt die Ressourcengruppe _TestingBPLocks_ und das vom ARM-Vor
 
 1. Wählen Sie links die Seite **Zugewiesene Blaupausen** aus. Suchen Sie mithilfe der Filter nach der Blaupausenzuweisung **assignment-locked-storageaccount-TestingBPLocks**, und wählen Sie sie aus.
 
-   Auf dieser Seite sehen Sie, dass die Zuweisung erfolgreich war und die Ressourcen mit dem neuen Blaupausensperrzustand bereitgestellt wurden. Wenn die Zuweisung aktualisiert wird, werden in der Dropdownliste **Zuweisungsvorgang** Details zur Bereitstellung jeder Definitionsversion angezeigt. Sie können die Ressourcengruppe auswählen, um die Eigenschaftenseite zu öffnen.
+   Auf dieser Seite sehen Sie, dass die Zuweisung erfolgreich war und die Ressourcen mit dem neuen Blaupausensperrzustand bereitgestellt wurden. Wenn die Zuweisung aktualisiert wird, werden in der Dropdownliste **Zuweisungsvorgang** Details zur Bereitstellung der einzelnen Definitionsversionen angezeigt. Sie können die Ressourcengruppe auswählen, um die Eigenschaftenseite zu öffnen.
 
 1. Wählen Sie die Ressourcengruppe **TestingBPLocks** aus.
 

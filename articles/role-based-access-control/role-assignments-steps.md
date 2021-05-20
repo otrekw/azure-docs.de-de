@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/14/2021
 ms.author: rolyon
-ms.openlocfilehash: 40a17da6383fb1f368c74a82fefa71991cdc1b19
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: f0fc0611e48f25c8faec415b8702a420402280c5
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517673"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483837"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Schritte zum Zuweisen einer Azure-Rolle
 
@@ -68,7 +68,7 @@ Wenn Sie eine Rolle in einem übergeordneten Bereich zuweisen, werden diese Bere
 - Wenn Sie einer Gruppe im Abonnementbereich die Rolle [Abrechnungsleser](built-in-roles.md#billing-reader) zuweisen, können die Mitglieder dieser Gruppe Abrechnungsdaten für alle Ressourcengruppen und Ressourcen im Abonnement lesen.
 - Wenn Sie einer Anwendung im Ressourcengruppenkontext die Rolle [Mitwirkender](built-in-roles.md#contributor) zuweisen, kann diese Ressourcen aller Typen in dieser Ressourcengruppe verwalten, jedoch keine anderen Ressourcengruppen des Abonnements.
 
- Weitere Informationen finden Sie unter [Grundlagen des Bereichs für Azure RBAC](scope-overview.md).
+[!INCLUDE [Scope for Azure RBAC least privilege](../../includes/role-based-access-control/scope-least.md)] Weitere Informationen finden Sie unter [Grundlegendes zu Bereichen](scope-overview.md).
 
 ## <a name="step-4-check-your-prerequisites"></a>Schritt 4. Überprüfen Ihrer Voraussetzungen
 

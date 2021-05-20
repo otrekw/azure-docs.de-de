@@ -1,16 +1,16 @@
 ---
-title: Verbessern der Port- und VLAN-Namensauflösung
-description: Hier erfahren Sie, wie Sie Port- und VLAN-Namen auf ihren Sensoren anpassen können, um die Geräteauflösung zu erweitern.
-ms.date: 04/28/2021
+title: Konfigurieren der Windows-Endpunktüberwachung
+description: Anreichern von Daten, die auf Geräten durch die Windows-Endpunktüberwachung (Windows Endpoint Monitoring, WMI) aufgelöst werden.
+ms.date: 05/03/2021
 ms.topic: how-to
-ms.openlocfilehash: f47011b5ecab97596783f8e51be0505774a94f88
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 4d701cfda88a2c257b001a52a19853a937661714
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108210181"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734991"
 ---
-# <a name="configure-windows-endpoint-monitoring"></a>Konfigurieren der Windows-Endpunktüberwachung
+# <a name="configure-windows-endpoint-monitoring-wmi"></a>Konfigurieren der Windows-Endpunktüberwachung (WMI)
 
 Mit der Windows-Funktion zur Endpunktüberwachung können Sie in Azure Defender für IoT selektive Stichproben auf Windows-Systemen konfigurieren. Dadurch erhalten Sie stärker fokussierte und genauere Informationen über Ihre Geräte, etwa über die Service Pack-Stufen.
 

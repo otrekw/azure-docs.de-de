@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Percept-Dokumentation
+title: Azure Percept-Dokumentation
 summary: Azure Percept ist eine End-to-End-Lösung zum Erstellen und Bereitstellen von perzeptionsbasierter Edge-KI.
 metadata:
   title: Azure Percept-Dokumentation
@@ -10,12 +10,12 @@ metadata:
   author: mimcco
   ms.author: mimcco
   ms.date: 03/25/2021
-  ms.openlocfilehash: 0cf9e95897554cb51ff6837dec72700124471025
-  ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+  ms.openlocfilehash: 1a18b819a96f8f84fb7d8e96b61f0b2d9f33709a
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/01/2021
-  ms.locfileid: "106107726"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110098864"
 landingContent:
 - title: Was ist Azure Percept?
   linkLists:
@@ -109,7 +109,7 @@ landingContent:
     links:
     - text: Dev Tools-Paketinstallationsprogramm
       url: dev-tools-installer.md
-- title: Aktualisieren Ihres Azure Percept DK
+- title: Aktualisieren von Azure Percept DK
   linkLists:
   - linkListType: overview
     links:
@@ -121,5 +121,5 @@ landingContent:
       url: how-to-set-up-over-the-air-updates.md
     - text: Aktualisieren Ihres Geräts per Funk (Over-the-Air, OTA)
       url: how-to-update-over-the-air.md
-    - text: Aktualisieren Ihres Geräts über USB
+    - text: Aktualisieren des Geräts über eine USB-C-Kabelverbindung
       url: how-to-update-via-usb.md

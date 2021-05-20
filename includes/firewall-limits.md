@@ -5,19 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 04/07/2021
+ms.date: 05/04/2021
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: c4c36c0e099ed7474a5d27f6edcbd4b3ac435f4f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 498352dad95e9a891c6a49d583e3b7842d4f6420
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030820"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108793511"
 ---
 | Resource | Begrenzung |
 | --- | --- |
-| Datendurchsatz |30 GBit/s<sup>1</sup> |
+| Datendurchsatz |30 GBit/s|
 |Regelgrenzwerte|10.000 eindeutige Quellen/Ziele in Netzwerkregeln|
 |Maximale Anzahl von DNAT-Regeln|298 für eine einzelne öffentliche IP-Adresse.<br>Alle zusätzlichen öffentlichen IP-Adressen tragen zu den verfügbaren SNAT-Ports bei, verringern jedoch die Anzahl der verfügbaren DNAT-Regeln. Beispielsweise lassen zwei öffentliche IP-Adressen 297 DNAT-Regeln zu. Wenn das Protokoll einer Regel sowohl für TCP als auch für UDP konfiguriert ist, zählt dies als zwei Regeln.|
 |Mindestgröße für AzureFirewallSubnet |/26|
@@ -26,5 +26,3 @@ ms.locfileid: "107030820"
 |IP-Adressen in IP-Gruppen|Maximal 100 IP-Gruppen pro Firewall.<br>Maximal 5000 einzelne IP-Adressen oder IP-Präfixe pro IP-Gruppe.
 |Routingtabelle|Standardmäßig verfügt AzureFirewallSubnet über die Route „0.0.0.0/0“, bei der der Wert „NextHopType“ auf **Internet** festgelegt ist.<br><br>Azure Firewall muss über eine direkte Internetverbindung verfügen. Wenn Ihr Subnetz „AzureFirewallSubnet“ eine Standardroute zu Ihrem lokalen Netzwerk über BGP erfasst, müssen Sie diese mit der benutzerdefinierten Route 0.0.0.0/0 überschreiben. Legen Sie dabei den Wert **NextHopType** auf **Internet** fest, um die direkte Internetkonnektivität beizubehalten. Standardmäßig unterstützt Azure Firewall keine Tunnelerzwingung für ein lokales Netzwerk.<br><br>Wenn Ihre Konfiguration jedoch die Tunnelerzwingung für ein lokales Netzwerk erfordert, wird Microsoft dies im Einzelfall unterstützen. Wenden Sie sich in diesem Fall an den Support, damit Ihr Fall überprüft werden kann. Bei einer Annahme wird Ihr Abonnement zugelassen, damit die erforderliche Internetkonnektivität der Firewall auch sicher erhalten bleibt.|
 |FQDNs in Netzwerkregeln|Um eine gute Leistung zu erzielen, sollte der Wert von 1.000 FQDNs in allen Netzwerkregeln pro Firewall nicht überschritten werden.|
-
-<sup>1</sup> Wenden Sie sich an den Azure-Support, falls Sie diese Grenzwerte erhöhen müssen.

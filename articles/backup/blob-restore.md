@@ -1,16 +1,16 @@
 ---
 title: Wiederherstellen von Azure-Blobs
-description: Hier erfahren Sie, wie Sie Azure-Blobs wiederherstellen (Vorschau).
+description: Erfahren Sie, wie Sie Azure-Blobs wiederherstellen.
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: 4cbd47ea654115f00095e30f7d5114aec0f2c85a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/05/2021
+ms.openlocfilehash: aaca425e2ea13948fbd52bf60ed30d64c29c27d3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743395"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767273"
 ---
-# <a name="restore-azure-blobs-in-preview"></a>Wiederherstellen von Azure-Blobs (Vorschau)
+# <a name="restore-azure-blobs"></a>Wiederherstellen von Azure-Blobs
 
 Blockblobs in Speicherkonten, für die eine operationale Sicherung konfiguriert sind, können auf einen beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums wiederhergestellt werden. Außerdem können Sie die Wiederherstellung aller Blockblobs im Speicherkonto oder einer Teilmenge von Blobs festlegen.
 
@@ -84,4 +84,4 @@ In dem in der Abbildung gezeigten Wiederherstellungsvorgang werden die folgenden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Übersicht über die operative Sicherung für Azure-Blobs (Vorschau)](blob-backup-overview.md)
+- [Übersicht über die operative Sicherung für Azure-Blobs](blob-backup-overview.md)

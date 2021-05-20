@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1e05435f364cc30b351275439a04caff47c35512
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 4fd5d7bfc7a4ac8ab3b255091b4383085a87d4da
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107871793"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634525"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
@@ -65,7 +65,7 @@ Zum Schützen einer benutzerdefinierten Domäne in einer TLS-Bindung gelten für
 
 Das von App Service verwaltete kostenlose Zertifikat ist eine vorgefertigte Lösung zum Schützen Ihres benutzerdefinierten DNS-Namens in App Service. Es handelt sich dabei um ein voll funktionsfähiges TLS-/SSL-Zertifikat, das von App Service verwaltet und automatisch verlängert wird. Für das kostenlose Zertifikat gelten die folgenden Einschränkungen:
 
-- Platzhalterzertifikate werden nicht unterstützt.
+- Platzhalterzertifikate werden nicht unterstützt, und das Zertifikat sollte nicht als Clientzertifikat verwendet werden.
 - Es kann nicht exportiert werden.
 - Es wird in einer App Service-Umgebung (App Service Environment, ASE) nicht unterstützt.
 - Es wird nicht mit Stammdomänen unterstützt, die in Traffic Manager integriert sind.
@@ -117,7 +117,7 @@ Starten Sie eine App Service-Zertifikatreihenfolge auf der <a href="https://port
 
 Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |-|-|
 | Name | Ein Anzeigename für Ihr App Service-Zertifikat. |
 | Reiner Domänenhostname | Geben Sie hier die Stammdomäne an. Das ausgestellte Zertifikat sichert *sowohl* die Stamm Domäne als auch die Unterdomäne `www`. Im ausgestellten Zertifikat enthält das Feld „Allgemeiner Name“ die Stammdomäne, und das Feld „Alternativer Antragstellername“ enthält die Domäne `www`. Um eine beliebige Unterdomäne zu sichern, geben Sie den vollqualifizierten Domänennamen der Unterdomäne hier an (z.B. `mysubdomain.contoso.com`).|
@@ -142,7 +142,7 @@ Wählen Sie das Zertifikat auf der Seite [App Service-Zertifikate](https://porta
 
 Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um einen neuen Tresor zu erstellen oder einen vorhandenen Tresor auszuwählen. Wenn Sie einen neuen Tresor erstellen möchten, konfigurieren Sie mithilfe der folgende Tabelle den Tresor, und klicken Sie auf „Erstellen“. Erstellen Sie die neue Key Vault-Instanz im gleichen Abonnement und in der gleichen Ressourcengruppe wie Ihre App Service-App.
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |-|-|
 | Name | Ein eindeutiger Name aus alphanumerischen Zeichen und Bindestrichen. |
 | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
@@ -206,7 +206,7 @@ Wählen Sie im linken Navigationsbereich Ihrer App **TLS-/SSL-Einstellungen** > 
 
 Die folgende Tabelle unterstützt Sie beim Auswählen des Zertifikats:
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |-|-|
 | Subscription | Das Abonnement, zu dem die Key Vault-Instanz gehört |
 | Key Vault | Der Tresor mit dem zu importierenden Zertifikat |
