@@ -3,12 +3,12 @@ title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
 ms.date: 05/01/2021
 ms.topic: overview
-ms.openlocfilehash: 263bd0120ea80340f20ae29db0d0c4d8310f74a9
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 00fd2732f1a1176bd231675361e65ad451fd6de9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324364"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761289"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
 
@@ -49,7 +49,7 @@ Eine Blaupause besteht aus _Artefakten_. Azure Blueprints unterstützt derzeit d
 
 |Resource  | Hierarchieoptionen| BESCHREIBUNG  |
 |---------|---------|---------|
-|Ressourcengruppen | Subscription | Erstellen einer neuen Ressourcengruppe zur Verwendung durch andere Artefakte innerhalb der Blaupause.  Diese Platzhalter-Ressourcengruppen ermöglichen es, Ressourcen genau auf die gewünschte Weise zu strukturieren. Sie umfassen eine Bereichsbeschränkung für enthaltene Richtlinien- und Rollenzuweisungsartefakte und ARM-Vorlagen. |
+|Ressourcengruppen | Subscription | Erstellen einer neuen Ressourcengruppe zur Verwendung durch andere Artefakte innerhalb der Blaupause. Diese Platzhalter-Ressourcengruppen ermöglichen es, Ressourcen genau auf die gewünschte Weise zu strukturieren. Sie umfassen eine Bereichsbeschränkung für enthaltene Richtlinien- und Rollenzuweisungsartefakte und ARM-Vorlagen. |
 |ARM-Vorlage | Abonnement, Ressourcengruppe | Vorlagen, einschließlich geschachtelter und verknüpfter Vorlagen, werden zum Erstellen komplexer Umgebungen verwendet. Beispielumgebungen: SharePoint-Farm, Azure Automation State Configuration oder Log Analytics-Arbeitsbereich. |
 |Richtlinienzuweisung | Abonnement, Ressourcengruppe | Ermöglicht die Zuweisung einer Richtlinie oder Initiative zum Abonnement, dem die Blaupause zugewiesen ist. Die Richtlinie oder Initiative muss innerhalb des Bereichs des Definitionsspeicherorts der Blaupause liegen. Wenn die Richtlinie oder Initiative über Parameter verfügt, werden diese bei der Erstellung der Blaupause oder bei der Blaupausenzuweisung zugewiesen. |
 |Rollenzuweisung | Abonnement, Ressourcengruppe | Fügt einer integrierten Rolle einen vorhandenen Benutzer oder eine vorhandene Gruppe zu, um sicherzustellen, dass die richtigen Personen geeigneten Zugriff auf Ihre Ressourcen haben. Rollenzuweisungen können für das gesamte Abonnement definiert oder in einer bestimmten in der Blaupause enthaltenen Ressourcengruppe geschachtelt werden. |

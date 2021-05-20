@@ -3,12 +3,12 @@ title: 'Schnellstart: Neue Richtlinienzuweisung mit der REST-API'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe der REST-API eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
 ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: e6353c24b6c1e641a236837036a0105d6c5e02d2
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 7c7657143673e773e1c4108ecb8d86ddc8d1c559
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326271"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763107"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mit der REST-API
 

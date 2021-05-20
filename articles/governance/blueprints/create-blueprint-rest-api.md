@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Blaupause mit REST-API'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte mithilfe der REST-API zu erstellen, zu definieren und bereitzustellen.
 ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 37f67e6db753969344b8c442de78b867dd41ecd6
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 5b65350f47e470fc9f4797d768a32acded241266
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323823"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761505"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
 
@@ -124,7 +124,7 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
      }
      ```
 
-1. Fügen Sie eine Rollenzuweisung für das Abonnement hinzu. Der **Anforderungstext** definiert die _Art_ des Artefakts sowie die Eigenschaften, die am Rollendefinitionsbezeichner ausgerichtet sind. Die Prinzipalbezeichner werden als Array von Werten übergeben. Im Beispiel unten ist für die Prinzipalbezeichner, denen die angegebene Rolle zugewiesen wird, ein Parameter konfiguriert, der bei der Blaupausenzuweisung festgelegt wird. In diesem Beispiel wird die integrierte Rolle _Mitwirkender_ mit der GUID `b24988ac-6180-42a0-ab88-20f7382dd24c` verwendet.
+1. Fügen Sie eine Rollenzuweisung für das Abonnement hinzu. Der **Anforderungstext** definiert die _Art_ des Artefakts sowie die Eigenschaften, die am Rollendefinitionsbezeichner ausgerichtet sind. Die Prinzipalbezeichner werden als Array von Werten übergeben. Im folgenden Beispiel ist für die Prinzipalbezeichner, denen die angegebene Rolle zugewiesen wird, ein Parameter konfiguriert, der bei der Blaupausenzuweisung festgelegt wird. In diesem Beispiel wird die integrierte Rolle _Mitwirkender_ mit der GUID `b24988ac-6180-42a0-ab88-20f7382dd24c` verwendet.
 
    - REST-API-URI
 
@@ -435,4 +435,4 @@ Verwenden Sie den folgenden REST-API-Vorgang, um die Blaupause zu löschen:
 In dieser Schnellstartanleitung haben Sie eine Blaupause mit der REST-API erstellt, zugewiesen und entfernt. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
 
 > [!div class="nextstepaction"]
-> [Informationen zum Lebenszyklus von Blaupausen](./concepts/lifecycle.md)
+> [Informationen zum Lebenszyklus von Blaupausen](./concepts/lifecycle.md) 

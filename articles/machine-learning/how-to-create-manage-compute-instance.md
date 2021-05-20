@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 4ae4094e4a356c5394c2bdf887d3b60e40989ecd
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 5dd61207d3155c1279b8e8609b8aa8abf65e7ee2
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885738"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109518160"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz
 
@@ -41,6 +41,10 @@ Sie können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-secur
 * Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
 
 ## <a name="create"></a>Erstellen
+
+> [!IMPORTANT]
+> Die unten markierten Elemente (Vorschau) sind aktuell als öffentliche Vorschau verfügbar.
+> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 **Geschätzter Zeitaufwand**: Ca. fünf Minuten.
 
@@ -105,10 +109,14 @@ Weitere Informationen zum Erstellen einer Compute-Instanz in Studio finden Sie u
 
 Sie können eine Compute-Instanz auch mit einer [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance) erstellen. 
 
-### <a name="create-on-behalf-of-preview"></a>Erstellen im Namen von (Vorschau)
+
+
+## <a name="create-on-behalf-of-preview"></a><a name="on-behalf"></a> Erstellen im Namen von (Vorschau)
 
 Als Administrator können Sie im Namen einer wissenschaftlichen Fachkraft für Daten eine Compute-Instanz erstellen und ihr die Instanz mit der folgenden Methode zuweisen:
+
 * [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Ausführliche Informationen zum Suchen der in dieser Vorlage benötigten „TenantID“ und „ObjectID“ finden Sie unter [Ermitteln von Identitätsobjekt-IDs für die Authentifizierungskonfiguration](../healthcare-apis/fhir/find-identity-object-ids.md).  Sie können diese Werte auch im Azure Active Directory-Portal abrufen.
+
 * REST-API
 
 Die wissenschaftliche Fachkraft für Daten, für die Sie die Compute-Instanz erstellen, benötigt die folgenden [Azure RBAC-Berechtigungen](../role-based-access-control/overview.md) (rollenbasierte Zugriffssteuerung in Azure): 
@@ -123,9 +131,107 @@ Die wissenschaftliche Fachkraft für Daten kann die Compute-Instanz starten, bee
 * RStudio
 * Integrierte Notebooks
 
+## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> Anpassen der Compute-Instanz mit einem Skript (Vorschau)
+
+> [!TIP]
+> Diese Vorschauversion ist derzeit für Arbeitsbereiche in den Regionen „USA, Westen-Mitte“ und „USA, Osten“ verfügbar.
+
+Verwenden Sie ein Setupskript, um die Compute-Instanz zum Zeitpunkt der Bereitstellung automatisch anzupassen und zu konfigurieren. Als Administrator können Sie ein Anpassungsskript schreiben, mit dem alle Compute-Instanzen im Arbeitsbereich gemäß Ihren Anforderungen bereitgestellt werden. 
+
+Einige Beispiele für die Verwendungsmöglichkeiten eines Setupskripts:
+
+* Installieren von Paketen, Tools und Software
+* Einbinden von Daten
+* Erstellen einer benutzerdefinierten Conda-Umgebung und von Jupyter-Kernels
+* Klonen von Git-Repositorys und Festlegen der Git-Konfiguration
+* Festlegen von Netzwerkproxys
+* Festlegen von Umgebungsvariablen
+* Installieren von JupyterLab-Erweiterungen
+
+### <a name="create-the-setup-script"></a>Erstellen des Setupskripts
+
+Das Setup-Skript ist ein Shellskript, das als *rootuser* ausgeführt wird.  Erstellen Sie das Skript, oder laden Sie es in Ihre **Notebooks**-Dateien hoch:
+
+1. Melden Sie sich bei [Studio](https://ml.azure.com) an, und wählen Sie Ihren Arbeitsbereich aus.
+2. Wählen Sie links **Notebooks** aus.
+3. Verwenden Sie das Tool **Dateien hinzufügen**, um das Setupshellskript zu erstellen oder hochzuladen.  Der Skriptdateiname muss unbedingt mit „.sh“ enden.  Wenn Sie eine neue Datei erstellen, ändern Sie auch den **Dateityp** in *bash(.sh)* .
+
+:::image type="content" source="media/how-to-create-manage-compute-instance/create-or-upload-file.png" alt-text="Erstellen oder Hochladen Ihres Setupskripts in die Notebooks-Datei in Studio":::
+
+Wenn das Skript ausgeführt wird, ist das aktuelle Arbeitsverzeichnis des Skriptes das Verzeichnis, in das es hochgeladen wurde. Wenn Sie z. B. das Skript in **Benutzer>admin** hochladen, ist der Speicherort des Skripts auf der Compute-Instanz und des aktuellen Arbeitsverzeichnisses, wenn das Skript ausgeführt wird, */home/azureuser/cloudfiles/code/Users/admin*. Dadurch können Sie relative Pfade im Skript verwenden.
+
+Skriptargumente können im Skript als $1, $2 usw. bezeichnet werden. 
+
+Wenn Ihr Skript für azureuser bestimmt war, z. B. die Installation der Conda-Umgebung oder des Jupyter-Kernels, müssen Sie es wie folgt im *sudo -u azureuser*-Block speichern
+
+```shell
+sudo -u azureuser -i <<'EOF'
+
+EOF
+```
+Beachten Sie, dass *sudo -u azureuser* das aktuelle Arbeitsverzeichnis in */home/azureuser* ändert. Sie können auch nicht auf die Skriptargumente in diesem Block zugreifen.
+
+In Ihrem Skript können zudem die folgenden Umgebungsvariablen verwendet werden:
+
+1. CI_RESOURCE_GROUP
+2. CI_WORKSPACE
+3. CI_NAME
+4. CI_LOCAL_UBUNTU_USER. Dies verweist auf azureuser
+
+### <a name="use-the-script-in-the-studio"></a>Verwenden des Skripts in Studio
+
+Nachdem Sie das Skript gespeichert haben, geben Sie es während der Erstellung Ihrer Compute-Instanz an:
+
+1. Melden Sie sich bei [Studio](https://ml.azureml.com) an, und wählen Sie Ihren Arbeitsbereich aus.
+1. Wählen Sie links **Compute** aus.
+1. Wählen Sie **+Neu** aus, um eine neue Compute-Instanz zu erstellen.
+1. [Füllen Sie das Formular aus.](how-to-create-attach-compute-studio.md#compute-instance)
+1. Öffnen Sie auf der zweiten Seite des Formulars **Erweiterte Einstellungen anzeigen**.
+1. Aktivieren Sie die Option **Provision with setup script** (Mit Setupskript bereitstellen).
+1. Navigieren Sie zu dem Shellskript, das Sie gespeichert haben.  Oder laden Sie ein Skript von Ihrem Computer hoch.
+1. Fügen Sie nach Bedarf Befehlsargumente hinzu.
+
+:::image type="content" source="media/how-to-create-manage-compute-instance/setup-script.png" alt-text="Bereitstellen einer Compute-Instanz mit einem Setupskript in Studio":::
+
+### <a name="use-script-in-a-resource-manager-template"></a>Verwenden eines Skripts in einer Resource Manager-Vorlage
+
+Fügen Sie `setupScripts` zu einer Resource Manager-[Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance) hinzu, um das Setupskript beim Bereitstellen der Compute-Instanz aufzurufen. Beispiel:
+
+```json
+"setupScripts":{
+    "scripts":{
+        "creationScript":{
+        "scriptSource":"workspaceStorage",
+        "scriptData":"[parameters('creationScript.location')]",
+        "scriptArguments":"[parameters('creationScript.cmdArguments')]"
+        }
+    }
+}
+```
+
+Sie können das Skript stattdessen inline für eine Resource Manager-Vorlage bereitstellen.  Der Shellbefehl kann auf alle Abhängigkeiten verweisen, die in die Notebooks-Dateifreigabe hochgeladen wurden.  Wenn Sie eine Inlinezeichenfolge verwenden, ist das Arbeitsverzeichnis für das Skript */mnt/batch/tasks/shared/LS_root/mounts/clusters/**ciname**/code/Users*.
+
+Geben Sie beispielsweise eine Base64-codierte Befehlszeichenfolge für `scriptData` an:
+
+```json
+"setupScripts":{
+    "scripts":{
+        "creationScript":{
+        "scriptSource":"inline",
+        "scriptData":"[base64(parameters('inlineCommand'))]",
+        "scriptArguments":"[parameters('creationScript.cmdArguments')]"
+        }
+    }
+}
+```
+
+### <a name="setup-script-logs"></a>Setupskriptprotokolle
+
+Protokolle der Setupskriptausführung werden im Protokollordner auf der Detailseite der Compute-Instanz angezeigt. Protokolle werden wieder in Ihrer Notebooks-Dateifreigabe im Ordner „Protokolle\<compute instance name>“ gespeichert. Skriptdatei- und Befehlsargumente für eine bestimmte Compute-Instanz werden auf der Detailseite angezeigt.
+
 ## <a name="manage"></a>Verwalten
 
-Starten, Beenden, Neustarten und Löschen einer Compute-Instanz. Eine Compute-Instanz wird nicht automatisch herunterskaliert. Stellen Sie daher sicher, dass die Ressource beendet wird, um laufende Gebühren zu vermeiden.
+Starten, Beenden, Neustarten und Löschen einer Compute-Instanz. Eine Compute-Instanz wird nicht automatisch herunterskaliert. Stellen Sie daher sicher, dass die Ressource beendet wird, um laufende Gebühren zu vermeiden. Das Beenden einer Compute-Instanz gibt diese frei. Starten Sie sie dann erneut, wenn Sie sie benötigen. Das Beenden der Compute-Instanz stoppt zwar die Abrechnung der Computestunden, es werden Ihnen aber weiterhin Datenträger, öffentliche IP-Adresse und Standardlastenausgleich in Rechnung gestellt.
 
 > [!TIP]
 > Die Compute-Instanz verfügt über einen 120 GB Betriebssystemdatenträger. Wenn Ihnen der Speicherplatz ausgeht, [verwenden Sie das Terminal](how-to-access-terminal.md), um mindestens 1–2 GB zu löschen, bevor Sie die Compute-Instanz beenden oder neu starten.
@@ -229,8 +335,7 @@ Für jede Compute-Instanz in Ihrem Arbeitsbereich, die Sie erstellt haben (oder 
 
 ---
 
-
-Mithilfe von [Azure RBAC](../role-based-access-control/overview.md) können Sie steuern, welche Benutzer im Arbeitsbereich eine Compute-Instanz erstellen, löschen, starten, beenden und neu starten können. Alle Benutzer mit der Rolle „Mitwirkender“ und „Besitzer“ des Arbeitsbereichs können Compute-Instanzen im gesamten Arbeitsbereich erstellen, löschen, starten, beenden und neu starten. Allerdings darf nur der Ersteller einer bestimmten Compute-Instanz oder der zugewiesene Benutzer (falls sie in seinem Namen erstellt wurde) auf dieser Compute-Instanz auf Jupyter, JupyterLab und RStudio zugreifen. Eine Compute-Instanz ist für einen einzelnen Benutzer vorgesehen, der über Root-Zugriff und Terminalzugriff über Jupyter/JupyterLab/RStudio verfügt. Die Compute-Instanz verfügt über eine Einzelbenutzeranmeldung, und bei allen Aktionen wird die Identität dieses Benutzers für Azure RBAC und die Zuordnung von Experimentausführungen verwendet. Der SSH-Zugriff wird über einen Mechanismus mit öffentlichem/privatem Schlüssel gesteuert.
+Mithilfe von [Azure RBAC](../role-based-access-control/overview.md) können Sie steuern, welche Benutzer im Arbeitsbereich eine Compute-Instanz erstellen, löschen, starten, beenden und neu starten können. Alle Benutzer mit der Rolle „Mitwirkender“ und „Besitzer“ des Arbeitsbereichs können Compute-Instanzen im gesamten Arbeitsbereich erstellen, löschen, starten, beenden und neu starten. Allerdings darf nur der Ersteller einer bestimmten Compute-Instanz oder der zugewiesene Benutzer (falls sie in seinem Namen erstellt wurde) auf dieser Compute-Instanz auf Jupyter, JupyterLab und RStudio zugreifen. Eine Compute-Instanz ist für einen einzelnen Benutzer vorgesehen, der über Root-Zugriff und Terminalzugriff über Jupyter/JupyterLab/RStudio verfügt. Die Compute-Instanz weist die Einzelbenutzeranmeldung auf, und alle Aktionen verwenden die Identität dieses Benutzers für Azure RBAC und die Zuordnung von Experimentausführungen. Der SSH-Zugriff wird über einen Mechanismus mit öffentlichem/privatem Schlüssel gesteuert.
 
 Diese Aktionen können von Azure RBAC gesteuert werden:
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
@@ -239,6 +344,11 @@ Diese Aktionen können von Azure RBAC gesteuert werden:
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
+
+Zum Erstellen einer Compute-Instanz müssen Sie über Berechtigungen für die folgenden Aktionen verfügen:
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
+* *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

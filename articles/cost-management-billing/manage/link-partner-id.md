@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: a214e91307308e191ce92b6461c1454d2cc7dd2b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 416bb5f477396a17d1003c537149b4c90378e652
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370477"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784555"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
@@ -31,7 +31,7 @@ Bevor Sie Ihre Partner-ID verknüpfen, muss Ihr Kunde Ihnen über eine der folge
 
 - **Dienstprinzipal**: Ihr Kunde kann eine App oder ein Skript von Ihrer Organisation in seinem Verzeichnis hinzufügen und dieser oder diesem eine beliebige Azure-Rolle zuweisen. Die Identität der App oder des Skripts wird als Dienstprinzipal bezeichnet.
 
-- **Azure Lighthouse**: Ihr Kunde kann ein Abonnement (oder eine Ressourcengruppe) delegieren, sodass Ihre Benutzer innerhalb Ihres Mandanten daran arbeiten können. Weitere Informationen finden Sie unter [Delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md).
+- **Azure Lighthouse**: Ihr Kunde kann ein Abonnement (oder eine Ressourcengruppe) delegieren, sodass Ihre Benutzer innerhalb Ihres Mandanten daran arbeiten können. Weitere Informationen finden Sie unter [Azure Lighthouse](../../lighthouse/overview.md).
 
 ## <a name="link-to-a-partner-id"></a>Verknüpfen einer Partner-ID
 

@@ -6,13 +6,13 @@ ms.author: navits
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/22/2020
-ms.openlocfilehash: d5eb253fb24f463106866f8b0fe17f634e805cbb
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/14/2021
+ms.openlocfilehash: 346824a9a64fa9c6b01ae29c74dca693e31f67ac
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107476"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109635263"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Erstellen eines Power BI-App-Angebots
 
@@ -56,7 +56,7 @@ Diese Seite zeigt eine visuelle Darstellung der zum Veröffentlichen dieses Ange
 Sie enthält Links zum Durchführen von Vorgängen für dieses Angebot auf der Grundlage der von Ihnen ausgewählten Optionen. Beispiel:
 
 - Wenn das Angebot einen Entwurf darstellt: Delete draft offer (Angebotsentwurf löschen)
-- Wenn es sich um ein Liveangebot handelt: [Stop selling the offer](update-existing-offer.md#stop-selling-an-offer-or-plan) (Angebot nicht mehr verkaufen)
+- Wenn das Angebot live geschaltet ist – [Angebot als veraltet markieren (zuvor „Verkauf des Angebots einstellen“)](update-existing-offer.md#deprecate-an-offer-or-plan)
 - Wenn das Angebot in der Vorschau ist: [Go-live](../review-publish-offer.md#previewing-and-approving-your-offer) (Live schalten)
 - Wenn Sie die Abmeldung beim Herausgeber nicht abgeschlossen haben: [Cancel publishing](../review-publish-offer.md#cancel-publishing) (Veröffentlichung abbrechen).
 

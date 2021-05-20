@@ -1,16 +1,16 @@
 ---
-title: 'Tutorial: Skalieren einer privaten Cloud'
+title: 'Tutorial: Vergrößern oder Verkleinern von Clustern in einer privaten Cloud'
 description: In diesem Tutorial wird das Azure-Portal verwendet, um eine private Azure VMware Solution-Cloud zu skalieren.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: 2129a3f5d04311883369b7b708689a13f07ec118
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 23fa38f41a1effab212896e59118978202ef17a7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463601"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769289"
 ---
-# <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>Tutorial: Skalieren einer privaten Azure VMware Solution-Cloud
+# <a name="tutorial-expand-or-shrink-clusters-in-a-private-cloud"></a>Tutorial: Vergrößern oder Verkleinern von Clustern in einer privaten Cloud
 
 Skalieren Sie die Cluster und Hosts so, dass sie Ihren Bedarf für geplante Workloads optimal erfüllen, um den größtmöglichen Nutzen aus der privaten Azure VMware Solution-Cloud zu ziehen. Sie können die Cluster und Hosts in einer privaten Cloud gemäß dem Bedarf Ihrer Anwendungsworkload skalieren. Leistungs- und Verfügbarkeitseinschränkungen für bestimmte Dienste sollten von Fall zu Fall behandelt werden. Informationen zu den Cluster- und Hostgrenzwerten finden Sie im [Konzeptartikel zur privaten Cloud](concepts-private-clouds-clusters.md).
 

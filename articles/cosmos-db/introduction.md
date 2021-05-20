@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 10/23/2020
-ms.openlocfilehash: 9df5c63ef175d0cf736ce16036466158ab6565f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/07/2021
+ms.openlocfilehash: 4432de4bb5f156ed1be0230759fcf3cd86adfe60
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618303"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634309"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -82,6 +82,7 @@ Erste Schritte mit Azure Cosmos DB mit einem unserer Schnellstarts:
 - [Erste Schritte mit der Cassandra-API von Azure Cosmos DB](create-cassandra-dotnet.md)
 - [Erste Schritte mit der Gremlin-API von Azure Cosmos DB](create-graph-dotnet.md)
 - [Erste Schritte mit der Tabellen-API von Azure Cosmos DB](create-table-dotnet.md)
+- [Whitepaper zur Entwicklung von Apps der nächsten Generation mit Azure Cosmos DB](https://azure.microsoft.com/resources/microsoft-azure-cosmos-db-flexible-reliable-cloud-nosql-at-any-scale/)
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/)

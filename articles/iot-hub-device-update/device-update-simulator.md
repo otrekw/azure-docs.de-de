@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 77bfab51cf7ccc9ec6ffe3b0018c0a488b601a0a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7381d7f233bc813118f310b08352d1642904a907
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070207"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753793"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Device Update for Azure IoT Hub: Tutorial zum Verwenden des Ubuntu (18.04 x64) Simulator Reference Agent
 
@@ -75,9 +75,9 @@ PS> wsl --list
 
 ## <a name="download-device-update-ubuntu-1804-x64-simulator-reference-agent"></a>Herunterladen des Device Update Ubuntu (18.04 x64) Simulator Reference Agent
 
-Das Ubuntu-Updateimage kann [hier](https://github.com/Azure/iot-hub-device-update/releases) aus dem Abschnitt *Assets* in den Versionshinweisen heruntergeladen werden.
+Der Ubuntu-Referenz-Agent kann in den [Versionshinweisen](https://github.com/Azure/iot-hub-device-update/releases) im Abschnitt *Assets* heruntergeladen werden.
 
-Es gibt zwei Versionen des Agents. Wenn Ihr Szenario imagebasiert ist, verwenden Sie AducIotAgentSim-microsoft-swupdate, wenn Ihr Szenario paketbasiert ist, verwenden Sie AducIotAgentSim-microsoft-apt.
+Es gibt zwei Versionen des Agents. Da Sie für dieses Tutorial das imagebasierte Szenario nutzen, verwenden Sie „AducIotAgentSim-microsoft-swupdate“. Wenn Sie stattdessen das paketbasierte Szenario nutzen möchten, müssen Sie „AducIotAgentSim-microsoft-apt“ verwenden.
 
 ## <a name="install-device-update-agent-simulator"></a>Installieren des Simulators des Device Update-Agents
 
@@ -161,14 +161,14 @@ Agent running. [main]
 
 ## <a name="import-update"></a>Importieren des Updates
 
-1. Erstellen Sie anhand [dieser Anweisungen](import-update.md) ein Importmanifest.
-2. Wählen Sie in der linken Navigationsleiste unter „Automatic Device Management“ (Automatische Geräteverwaltung) die Option „Device Updates“ aus.
+1. Laden Sie das [Beispielimportmanifest](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/TutorialImportManifest.json) und das [Beispielimageupdate](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/adu-update-image-raspberrypi3-0.6.5073.1.swu) herunter.
+2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrer IoT Hub-Instanz mit Device Update. Wählen Sie anschließend auf der linken Navigationsleiste unter „Automatic Device Management“ (Automatische Geräteverwaltung) die Option „Device Updates“ (Geräteupdates) aus.
 
 3. Wählen Sie die Registerkarte „Updates“ aus.
 
 4. Wählen Sie „+ Import New Update“ (Neues Update importieren) aus.
 
-5. Wählen Sie das Ordnersymbol oder das Textfeld unter „Select an Import Manifest File“ (Importmanifestdatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das weiter oben erstellte Importmanifest aus.  Wählen Sie als Nächstes das Ordnersymbol oder das Textfeld unter „Select one or more update files“ (Mindestens eine Updatedatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das Ubuntu-Updateimage aus, das Sie zuvor heruntergeladen haben. 
+5. Wählen Sie das Ordnersymbol oder das Textfeld unter „Select an Import Manifest File“ (Importmanifestdatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das _Beispielimportmanifest_ aus, das Sie oben in Schritt 1 heruntergeladen haben.  Wählen Sie als Nächstes das Ordnersymbol oder das Textfeld unter „Select one or more update files“ (Mindestens eine Updatedatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das _Beispielimageupdate_ aus, das Sie oben in Schritt 1 heruntergeladen haben. 
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Screenshot: Auswahl der Updatedatei." lightbox="media/import-update/select-update-files.png":::
 
