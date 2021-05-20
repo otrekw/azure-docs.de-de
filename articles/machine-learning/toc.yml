@@ -500,6 +500,9 @@
         - name: Erweiterte Eingabeskripterstellung
           displayName: swagger inference schema binary cors
           href: how-to-deploy-advanced-entry-script.md
+        - name: HTTP-Rückschlussserver
+          href: how-to-inference-server-http.md
+          displayName: local debug
         - name: Überwachen von Webdiensten
           items:
             - name: Sammeln und Bewerten von Modelldaten

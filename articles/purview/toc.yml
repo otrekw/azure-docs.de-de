@@ -112,6 +112,8 @@ items:
                 displayName: Register and scan Azure SQL DB Managed Instance
               - name: "Dedizierter Azure-SQL-Pool (vormals SQL\_DW)"
                 href: register-scan-azure-synapse-analytics.md
+              - name: Hive-Metastore-Datenbank
+                href: register-scan-hive-metastore-source.md
               - name: 'Lokaler SQL-Server:'
                 href: register-scan-on-premises-sql-server.md
               - name: Oracle
@@ -184,6 +186,8 @@ items:
         items:
           - name: Verwalten von privaten Endpunkten
             href: catalog-private-link.md
+          - name: "Häufig gestellte Fragen zu privaten Azure\_Purview-Endpunkten"
+            href: catalog-private-link-faqs.md
       - name: Notfallwiederherstellung
         items:
           - name: Notfallwiederherstellung

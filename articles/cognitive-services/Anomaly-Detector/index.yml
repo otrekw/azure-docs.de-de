@@ -1,31 +1,33 @@
 ### YamlMime:Landing
 title: Dokumentation zur Anomalieerkennungs-API
-summary: Mithilfe der API für die Anomalieerkennung können Sie Daten im Zeitverlauf überwachen und Anomalien mithilfe des Machine Learning-Diensts ermitteln. Sie erhalten unabhängig von Umfang, Branche oder Szenario Einblicke in Ihre Daten.
+summary: Hier erfahren Sie, wie Sie mithilfe der univariaten und multivariaten APIs für die Anomalieerkennung Daten im Zeitverlauf überwachen und Anomalien mithilfe von maschinellem Lernen ermitteln. Sie erhalten unabhängig von Umfang, Branche oder Szenario Einblicke in Ihre Daten.
 metadata:
   title: 'Anomalieerkennungs-API: Tutorials, Schnellstarts, API-Referenz'
   titleSuffix: Azure Cognitive Services
-  description: Mithilfe der API für die Anomalieerkennung können Sie Daten im Zeitverlauf überwachen und Anomalien mithilfe des Machine Learning-Diensts ermitteln. Sie erhalten unabhängig von Umfang, Branche oder Szenario Einblicke in Ihre Daten.
+  description: Mithilfe der univariaten und multivariaten APIs für die Anomalieerkennung können Sie Daten im Zeitverlauf überwachen und Anomalien mithilfe von maschinellem Lernen ermitteln. Sie erhalten unabhängig von Umfang, Branche oder Szenario Einblicke in Ihre Daten.
   services: cognitive-services
-  author: aahill
+  author: mrbullwinkle
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 09/10/2019
-  ms.author: aahi
-  ms.openlocfilehash: 24f6ec0afc0760b2f57f7ac9409f0b84f2e630da
-  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.date: 05/12/2021
+  ms.author: mbullwin
+  ms.openlocfilehash: 5737b7c44231053a3de0665bd4fd147729b53a3a
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/20/2021
-  ms.locfileid: "107789103"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110082304"
 landingContent:
-- title: Informationen zur Anomalieerkennungs-API
+- title: Informationen zu den Anomalieerkennungs-API
   linkLists:
   - linkListType: overview
     links:
-    - text: Worum handelt es sich bei der Anomalieerkennungs-API?
+    - text: Worum handelt es sich bei der univariaten Anomalieerkennung?
       url: overview.md
+    - text: Worum handelt es sich bei der multivariaten Anomalieerkennung?
+      url: overview-multivariate.md
   - linkListType: get-started
     links:
     - text: Demo zur Anomalieerkennung
@@ -48,12 +50,20 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Verwenden von C#
+    - text: Verwenden von C# (univariat)
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-csharp
-    - text: Verwenden von JavaScript
+    - text: Verwenden von JavaScript (univariat)
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-javascript
-    - text: Verwenden von Python
+    - text: Verwenden von Python (univariat)
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-python
+    - text: Verwenden von C# (multivariat)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-csharp
+    - text: Verwenden von JavaScript (multivariat)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-javascript
+    - text: Verwenden von Python (multivariat)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-python
+    - text: Verwenden von Java (multivariat)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-java
   - linkListType: tutorial
     links:
     - text: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI

@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 05/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 4817a68ad74ed9a51f8b9ea67f3d271bbaa3423b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8be9c97e23b579acf138a2861a77a5b8f219b886
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466171"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766473"
 ---
 Diese Kategorie enthält **31** Empfehlungen.
 
@@ -40,7 +40,7 @@ Diese Kategorie enthält **31** Empfehlungen.
 |Python sollte für Ihre Funktions-App auf die aktuelle Version aktualisiert werden |Für die Python-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen.<br>Es wird empfohlen, die aktuelle Python-Version für Funktions-App zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren.<br />(Zugehörige Richtlinie: [Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7238174a-fd10-4ef0-817e-fc820a951d73)) |Medium |
 |Python sollte für Ihre Web-App auf die aktuelle Version aktualisiert werden |Für die Python-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen.<br>Es wird empfohlen, die aktuelle Python-Version für Web-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren.<br />(Zugehörige Richtlinie: [Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7008174a-fd10-4ef0-817e-fc820a951d73)) |Medium |
 |Remotedebuggen für API-App deaktivieren |Für das Remotedebuggen müssen die eingehenden Ports für eine API-App geöffnet sein. Das Remotedebuggen muss deaktiviert werden.<br />(Zugehörige Richtlinie: [Remotedebuggen sollte für API-Apps deaktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2fe9c8d085-d9cc-4b17-9cdc-059f1f01f19e)) |Niedrig |
-|Remotedebuggen sollte für Funktions-Apps deaktiviert werden |Für das Remotedebuggen müssen eingehende Ports für eine Funktions-App geöffnet werden. Das Remotedebuggen muss deaktiviert werden.<br />(Zugehörige Richtlinie: [Remotedebuggen sollte für Funktions-Apps deaktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f0e60b895-3786-45da-8377-9c6b4b6ac5f9)) |Niedrig |
+|Remotedebuggen sollte für Funktions-Apps deaktiviert werden |Für das Remotedebuggen müssen eingehende Ports für eine Azure-Funktions-App geöffnet werden. Das Remotedebuggen muss deaktiviert werden.<br />(Zugehörige Richtlinie: [Remotedebuggen sollte für Funktions-Apps deaktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f0e60b895-3786-45da-8377-9c6b4b6ac5f9)) |Niedrig |
 |Remotedebuggen sollte für Webanwendungen deaktiviert sein. |Für das Remotedebuggen müssen eingehende Ports für eine Webanwendung geöffnet werden. Das Remotedebuggen ist derzeit aktiviert. Falls Sie das Remotedebuggen nicht mehr benötigen, sollten Sie diese Funktion ausschalten.<br />(Zugehörige Richtlinie: [Remotedebuggen sollte für Webanwendungen deaktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2fcb510bfd-1cba-4d9f-a230-cb0976f4bb71)) |Niedrig |
 |TLS sollte für Ihre API-App auf die aktuelle Version aktualisiert werden |Upgrade auf neueste TLS-Version durchführen<br />(Zugehörige Richtlinie: [API-App muss neueste TLS-Version verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f8cb6aa8b-9e41-4f4e-aa25-089a7ac2581e)) |Hoch |
 |TLS sollte für Ihre Funktions-App auf die aktuelle Version aktualisiert werden |Upgrade auf neueste TLS-Version durchführen<br />(Zugehörige Richtlinie: [Funktions-App muss neueste TLS-Version verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff9d614c5-c173-4d56-95a7-b4437057d193)) |Hoch |

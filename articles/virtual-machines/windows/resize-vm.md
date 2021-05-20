@@ -1,21 +1,20 @@
 ---
-title: Ändern der Größe einer Windows-VM in Azure
+title: Ändern der Größe eines virtuellen Computers mithilfe von Azure-Portal oder PowerShell
 description: Ändern der VM-Größe für einen virtuellen Azure-Computer
 author: cynthn
 ms.service: virtual-machines
-ms.collection: windows
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: f7f41c0fb2bf949dd47491761fde8025a2d35155
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3bd921d8c17f89d4f9adbc7d0409d48c00cba7a1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560649"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768119"
 ---
-# <a name="resize-a-windows-vm"></a>Ändern der Größe eines virtuellen Windows-Computers
+# <a name="resize-a-virtual-machine-using-the-azure-portal-or-powershell"></a>Ändern der Größe eines virtuellen Computers mithilfe von Azure-Portal oder PowerShell
 
 In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer auf eine andere [VM-Größe](../sizes.md) verschieben.
 
@@ -119,4 +118,4 @@ $virtualMachines | Start-AzVM
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese auf, um zusätzliche Skalierbarkeit zu erhalten. Weitere Informationen finden Sie unter [Automatisches Skalieren von Windows-Computern in einer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md).
+Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese auf, um zusätzliche Skalierbarkeit zu erhalten. Weitere Informationen finden Sie unter [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md).

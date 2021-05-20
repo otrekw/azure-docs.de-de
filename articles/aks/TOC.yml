@@ -209,8 +209,6 @@
               href: azure-disk-csi.md
             - name: Azure Files-CSI-Treiber (Vorschau)
               href: azure-files-csi.md
-            - name: Secrets Store CSI-Treiber (Vorschau)
-              href: csi-secrets-store-driver.md
     - name: Konfigurieren der Netzwerkeinstellungen
       items:
         - name: Erstellen oder Verwenden eines vorhandenen virtuellen Netzwerks
@@ -295,6 +293,8 @@
           href: azure-disk-customer-managed-keys.md
         - name: Aktivieren der hostbasierten Verschlüsselung
           href: enable-host-encryption.md
+        - name: Secrets Store CSI-Treiber (Vorschau)
+          href: csi-secrets-store-driver.md
     - name: Überwachung und Protokollierung
       items:
         - name: Anzeigen von Clustermetriken

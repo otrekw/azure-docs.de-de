@@ -10,12 +10,12 @@ author: mx-iao
 ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 1a261a972636021bec88244704b2b491ae8bcc61
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 5a107bd8548b313ad2ac0bf2fa86c9f5b7527e26
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888438"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764799"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Bedarfsgerechtes Trainieren von PyTorch-Modellen mit Azure Machine Learning
 
@@ -31,7 +31,7 @@ Führen Sie diesen Code in einer dieser Umgebungen aus:
 
 - Azure Machine Learning-Compute-Instanz: keine Downloads oder Installationen erforderlich
 
-    - Absolvieren Sie [Tutorial: Einrichten von Umgebung und Arbeitsbereich](tutorial-1st-experiment-sdk-setup.md), um einen dedizierten Notebookserver zu erstellen, auf dem das SDK und Beispielrepository vorinstalliert sind.
+    - Schließen Sie [Schnellstart: Erste Schritte mit Azure Machine Learning](quickstart-create-resources.md) ab, um einen dedizierten Notebook-Server zu erstellen, der mit dem SDK und dem Beispiel-Repository vorab geladen wurde.
     - Suchen Sie im Deep Learning-Beispielordner auf dem Notebookserver ein fertiges und erweitertes Notebook. Dazu navigieren Sie zum folgenden Verzeichnis: **how-to-use-azureml > ml-frameworks > pytorch > train-hyperparameter-tune-deploy-with-pytorch**. 
  
  - Ihr eigener Jupyter Notebook-Server
