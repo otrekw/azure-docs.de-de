@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84b2d75c03644e346dfad84ae01be31d8589f4ec
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91534419"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481929"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Zuweisen der Berechtigung für eine Gruppe mit privilegiertem Zugriff (Vorschau) in Privileged Identity Management
 
@@ -56,7 +56,10 @@ Führen Sie die folgenden Schritte aus, um einen Benutzer als berechtigt für di
 
 1. Wählen Sie in der Liste **Zuweisungstyp** entweder **Berechtigt** oder **Aktiv** aus. Gruppen mit privilegiertem Zugriff bieten zwei verschiedene Zuweisungstypen:
 
-    - Für **berechtigte** Zuweisungen muss das Mitglied der Rolle eine Aktion durchführen, um die Rolle verwenden zu können. Beispiele für Aktionen sind eine erfolgreiche Multi-Factor Authentication-Überprüfung (MFA), die Angabe einer geschäftlichen Begründung oder das Anfordern einer Genehmigung von den angegebenen genehmigenden Personen.
+    - Für **berechtigte** Zuweisungen muss das Mitglied der Rolle eine Aktion durchführen, um die Rolle verwenden zu können. Beispiele für Aktionen sind eine erfolgreiche Multi-Factor Authentication-Überprüfung (MFA), die Angabe einer geschäftlichen Begründung oder das Anfordern einer Genehmigung von den angegebenen genehmigenden Personen. 
+
+      > [!Important]
+      > Für Gruppen mit berechtigtem Zugriff, die für die Erhöhung Azure AD Rollen verwendet werden, empfiehlt Microsoft, dass Sie einen Genehmigungsprozess für berechtigte Mitgliedszuweisungen benötigen. Zuweisungen, die ohne Genehmigung aktiviert werden können, können Sie anfällig für ein Sicherheitsrisiko von einem anderen Administrator mit der Berechtigung zum Zurücksetzen der Kennwörter eines berechtigten Benutzers machen.
 
     - Für **aktive** Zuweisungen ist es nicht erforderlich, dass das Mitglied eine Aktion durchführt, um die Rolle nutzen zu können. Für Mitglieder, die als „Aktiv“ zugewiesen sind, sind die Berechtigungen immer der Rolle zugewiesen.
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: 7879db0e059358a2df550a8c82f3b692597de8f6
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e1868794f7e47ccce3efa36b7954a1a2a704e8d6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888996"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739023"
 ---
 # <a name="how-to-create-and-manage-files-in-your-workspace"></a>Erstellen und Verwalten von Dateien in Ihrem Arbeitsbereich
 
@@ -58,7 +58,7 @@ So erstellen Sie eine neue Datei in einem anderen Ordner
 
 Ihr Arbeitsbereich enthält einen Ordner mit **Beispiel-Notebooks**, die Ihnen helfen sollen, das SDK zu erkunden und als Beispiele für Ihre eigenen Projekte für maschinelles Lernen zu dienen.   Klonen Sie diese Notebooks in Ihren eigenen Ordner, um sie auszuführen und zu bearbeiten.  
 
-Ein Beispiel finden Sie unter [Tutorial: Erstellen Ihres ersten ML-Experiments](tutorial-1st-experiment-sdk-setup.md#azure).
+Ein Beispiel finden Sie unter [Tutorial: Erstellen Ihres ersten ML-Experiments](tutorial-train-models-with-aml.md#azure).
 
 ## <a name="share-files"></a>Freigeben von Dateien
 

@@ -1,9 +1,9 @@
 ---
-title: Einführung in Azure IoT Hub| Microsoft-Dokumentation
-description: Erfahren Sie mehr über Azure IoT Hub. Dieser IoT-Dienst ist für eine skalierbare Datenerfassung, Geräteverwaltung und Sicherheit konzipiert.
-author: nberdy
-ms.author: nberdy
-ms.date: 08/08/2019
+title: Was ist Azure IoT Hub | Microsoft-Dokumentation
+description: In diesem Artikel werden die Verwendungsmöglichkeiten für eine Azure IoT Hub erläutert. Sie ermöglicht ihnen das skalierbare Lesen von Daten und die sichere Verwaltung von Geräten.
+author: robinsh
+ms.author: robinsh
+ms.date: 05/03/2021
 ms.topic: overview
 ms.custom:
 - mvc
@@ -11,20 +11,21 @@ ms.custom:
 - mqtt
 - 'role: Direction'
 - 'role: System Architecture'
+- contentperf:fy21q3
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 86a373844b370cc9f9ce31dc65b2039a81279803
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95247a1485bac7282ffe95ddcc2ddd37883738dd
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454769"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783818"
 ---
-# <a name="what-is-azure-iot-hub"></a>Was ist Azure IoT Hub?
+# <a name="what-is-azure-iot-hub"></a>Was ist Azure IoT Hub
 
-IoT Hub ist ein in der Cloud gehosteter, verwalteter Dienst, der als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung und den Geräten dient, die von der Anwendung verwaltet werden. Sie können Azure IoT Hub verwenden, um IoT-Lösungen mit zuverlässiger und sicherer Kommunikation zwischen Millionen von IoT-Geräten und einem in der Cloud gehosteten Lösungs-Back-End zu erstellen. Sie können praktisch jedes Gerät mit IoT Hub verbinden.
+IoT Hub ist ein verwalteter Dienst, der in der Cloud gehostet wird und als zentraler Nachrichten-Hub für die Kommunikation in beide Richtungen zwischen einer IoT-Anwendung und den angeschlossenen Geräten fungiert. Sie können Millionen von Geräten und deren Back-End-Lösungen zuverlässig und sicher verbinden. Fast jedes Gerät kann mit einem IoT Hub verbunden werden. 
 
-IoT Hub unterstützt die Kommunikation sowohl vom Gerät an die Cloud als auch von der Cloud an das Gerät. IoT Hub unterstützt mehrere Messagingmuster wie z.B. Gerät-zu-Cloud-Telemetrie, Dateiuploads von Geräten und Anforderungs-Antwort-Methoden zum Steuern der Geräte über die Cloud. Die IoT Hub-Überwachung unterstützt Sie dabei, die Integrität Ihrer Lösung sicherzustellen, indem Ereignisse wie Geräteerstellung, Geräteausfälle und Geräteverbindungen nachverfolgt werden.
+Es werden mehrere Messagingmuster unterstützt, einschließlich D2C-Telemetrie, Hochladen von Dateien von Geräten und Anforderung-Antwort-Methoden zum Steuern Ihrer Geräte aus der Cloud. IoT Hub unterstützt auch die Überwachung, um das Erstellen von Geräten, das Verbinden von Geräten und Gerätefehler nachzuverfolgen.
 
 Mit den IoT Hub-Funktionen können Sie skalierbare IoT-Lösungen mit vollem Funktionsumfang erstellen, z.B. für die Verwaltung von Werkzeugen und Maschinen für die industrielle Fertigung, für die Nachverfolgung wertvoller Ressourcen im Gesundheitswesen oder für die Überwachung der Nutzung von Bürogebäuden.
 
@@ -34,7 +35,7 @@ IoT Hub lässt sich auf Millionen von gleichzeitig verbundenen Geräten und Mill
 
 ## <a name="secure-your-communications"></a>Sichern der Kommunikation
 
-IoT Hub bietet einen sicheren Kommunikationskanal, über den Ihre Geräte Daten senden können.
+Sie können Daten mithilfe von IoT Hub sicher senden.
 
 * Dank der gerätebasierten Authentifizierung kann jedes Gerät eine sichere Verbindung mit IoT Hub herstellen und sicher verwaltet werden.
 
@@ -46,19 +47,19 @@ IoT Hub bietet einen sicheren Kommunikationskanal, über den Ihre Geräte Daten 
 
   * Tokenbasierte SAS-Authentifizierung, damit Sie schnell mit Ihrer IoT-Lösung loslegen können.
 
-  * Individuelle X.509-Zertifikate für eine sichere, standardbasierte Authentifizierung.
+  * Individuelle X.509-Zertifikate stehen für eine sichere, standardbasierte Authentifizierung zur Verfügung.
 
-  * Authentifizierung über X.509-Zertifizierungsstellen für eine einfache, standardbasierte Registrierung.
+  * Authentifizierung über X.509-Zertifizierungsstellen können für eine einfache, standardbasierte Registrierung verwendet werden.
 
 ## <a name="route-device-data"></a>Weiterleiten von Gerätedaten
 
 Integrierte Funktionen für die Nachrichtenweiterleitung sorgen für Flexibilität bei der Einrichtung einer automatischen regelbasierten Nachrichtenauffächerung:
 
-* Verwenden Sie die [Nachrichtenweiterleitung](iot-hub-devguide-messages-d2c.md), um zu steuern, wohin Ihr Hub Gerätetelemetriedaten sendet.
+* Die [Nachrichtenweiterleitung](iot-hub-devguide-messages-d2c.md) wird verwendet, um zu steuern, wohin Ihr Hub Gerätetelemetriedaten sendet.
 
 * Bei der Weiterleitung von Nachrichten an mehrere Endpunkte fallen keine zusätzlichen Kosten an.
 
-* Routingregeln, für die keinerlei Code erforderlich ist, ersetzen benutzerdefinierten Nachrichtenverteilercode.
+* Routingregeln können so konfiguriert werden, dass Nachrichten basierend auf dem Inhalt dieser Nachrichten automatisch weitergeleitet werden, ohne einen Code schreiben zu müssen.
 
 ## <a name="integrate-with-other-services"></a>Integration in andere Dienste
 
@@ -84,7 +85,7 @@ Sie können Ihre mit IoT Hub verbundenen Geräte mit einer Vielzahl von integrie
 
 ## <a name="make-your-solution-highly-available"></a>Hochverfügbarkeit für Ihre Lösung
 
-Für [IoT Hub besteht eine Vereinbarung zum Servicelevel](https://azure.microsoft.com/support/legal/sla/iot-hub/) von 99,9 %. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
+IoT Hub hat eine [IoT Hub Vereinbarung zum Servicelevel](https://azure.microsoft.com/support/legal/sla/iot-hub/) von 99,9 %. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
 
 ## <a name="connect-your-devices"></a>Verbinden von Geräten
 
@@ -117,7 +118,7 @@ Wenn Ihre Lösung keines der unterstützten Protokolle nutzen kann, können Sie 
 
 ## <a name="quotas-and-limits"></a>Kontingente und Grenzwerte
 
-Für jedes Azure-Abonnement gelten standardmäßig bestimmte Kontingentgrenzen, um den Missbrauch von Diensten zu verhindern. Diese Grenzwerte können den Umfang Ihrer IoT-Lösung beeinträchtigen. Der derzeitige Grenzwert liegt bei 50 IoT Hub-Instanzen pro Abonnement. Wenden Sie sich an den Support, um eine Erhöhung des Kontingents anzufordern. Weitere Informationen finden Sie unter [IoT Hub-Kontingente und -Drosselung](iot-hub-devguide-quotas-throttling.md). Weitere Details zu Kontingentgrenzen finden Sie in einem der folgenden Artikel:
+Jedes Azure-Abonnement verfügt über standardmäßige Kontingentgrenzen, um einen Missbrauch des Dienstes zu verhindern. Diese Grenzen können sich auf den Umfang Ihrer IoT-Lösung auswirken. Der derzeitige Grenzwert liegt bei 50 IoT Hub-Instanzen pro Abonnement. Wenden Sie sich an den Support, um eine Erhöhung des Kontingents anzufordern. Weitere Informationen finden Sie unter [IoT Hub-Kontingente und -Drosselung](iot-hub-devguide-quotas-throttling.md). Weitere Details zu Kontingentgrenzen finden Sie in einem der folgenden Artikel:
 
 * [Einschränkungen bei Azure-Abonnementdiensten](../azure-resource-manager/management/azure-subscription-service-limits.md)
 

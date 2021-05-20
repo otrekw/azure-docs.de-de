@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: aebc1013dcead6c32dab55512ce915e25f60f94a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1430095861b4e8232127fe6d22b87afe5babcf67
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047574"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750733"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>Häufig gestellte Fragen zu Azure Object Anchors
 
@@ -33,11 +33,11 @@ Weitere Informationen finden Sie unter [Azure Object Anchors-Übersicht](overvie
 * Klare Hintergründe ohne bzw. mit nur wenig anderen herumliegenden Objekten
 * Gescanntes Objekt sollte 1:1 dem Modell entsprechen, mit dem Sie trainiert haben
 
-**F: Wie lauten die maximalen Objektabmessungen, die bei der Modellerfassung verarbeitet werden können?**
+**F: Wie lauten die maximalen Objektabmessungen, die bei der Modellkonvertierung verarbeitet werden können?**
 
 **A:** Alle Maße eines CAD-Modells sollten weniger als zehn Meter betragen.
 
-**F: Wie lautet die maximale CAD-Modellgröße, die bei der Erfassung verarbeitet werden kann?**
+**F: Wie lautet die maximale CAD-Modellgröße, die bei der Konvertierung verarbeitet werden kann?**
 
 **A:** Die Modelldateigröße sollte kleiner als 150 MB sein.
 
@@ -45,17 +45,21 @@ Weitere Informationen finden Sie unter [Azure Object Anchors-Übersicht](overvie
 
 **A:** Zurzeit werden die Dateitypen `fbx`, `ply`, `obj`, `glb` und `gltf` unterstützt.
 
-**F: Welche Schwerkraftrichtung und Einheit erfordert der Modellerfassungsdienst? Wie werden diese ermittelt?**
+**F: Welche Schwerkraftrichtung und Einheit erfordert der Modellkonvertierungsdienst? Wie werden diese ermittelt?**
 
 **A:** Die Schwerkraftrichtung ist der Down-Vektor, der zur Erde zeigt. Bei CAD-Modellen ist die Richtung der Schwerkraft in der Regel das Gegenteil der Richtung „Nach oben“. In vielen Fällen steht „+Z“ für die Aufwärtsrichtung, sodass in diesem Fall „–Z“ oder `Vector3(0.0, 0.0, -1.0)` die Richtung der Schwerkraft darstellen würden. Beim Ermitteln der Schwerkraft sollten Sie nicht nur das Modell, sondern auch die Ausrichtung berücksichtigen, in der das Modell während der Laufzeit betrachtet wird. Wenn Sie versuchen, einen Stuhl in der realen Welt auf einer glatten Oberfläche zu erkennen, kann der Wert für die Schwerkraft `Vector3(0.0, 0.0, -1.0)` lauten. Wenn der Stuhl mit einer Neigung von 45 Grad positioniert ist, könnte die Schwerkraft `Vector3(0.0, -Sqrt(2)/2, -Sqrt(2)/2)` sein.
 
 Die Richtung der Schwerkraft kann mit einem 3D-Renderingtool wie [MeshLab](http://www.meshlab.net/) ermittelt werden.
 
-Die Einheit stellt die Maßeinheit des Modells dar. Die unterstützten Einheiten finden Sie mithilfe der Enumeration **Microsoft.Azure.ObjectAnchors.Ingestion.Unit**.
+Die Einheit stellt die Maßeinheit des Modells dar. Die unterstützten Einheiten finden Sie mithilfe der Enumeration **Microsoft.Azure.ObjectAnchors.Conversion.AssetLengthUnit**.
 
-**F: Wie lange dauert es, um ein CAD-Modell zu erfassen?**
+**F: Wie lange dauert es, ein CAD-Modell zu konvertieren?**
 
 **A:** Für ein `ply`-Modell werden in der Regel 3 bis 15 Minuten benötigt. Wenn Sie Modelle in anderen Formaten übermitteln, müssen Sie je nach Dateigröße mit 15 bis 60 Minuten rechnen.
+
+**F: Wie führe ich nach einem Modellkonvertierungsfehler eine Wiederherstellung aus?**
+
+**A:** Ausführliche Informationen zu den verschiedenen Fehlercodes, die bei einem fehlerhaften Modellkonvertierungsauftrag angezeigt werden können, und deren Handhabung finden Sie auf der Seite mit den [Konvertierungsfehlercodes](.\model-conversion-error-codes.md).
 
 **F: Welche Geräte werden von Object Anchors unterstützt?**
 
@@ -144,7 +148,7 @@ Die Einheit stellt die Maßeinheit des Modells dar. Die unterstützten Einheiten
 **F: Kann ich Object Anchors ohne Internetverbindung nutzen?**
 
 **A:** 
-* Für die Modellerfassung und das Training wird eine Internetverbindung benötigt, da diese Vorgänge über die Cloud durchgeführt werden.
+* Für die Modellkonvertierung und das Training wird eine Internetverbindung benötigt, da diese Vorgänge in der Cloud durchgeführt werden.
 * Laufzeitsitzungen erfolgen vollständig auf dem Gerät und erfordern keine Internetverbindung, da alle Berechnungen über HoloLens 2 erfolgen.
 
 ## <a name="privacy-faq"></a>Datenschutz: Häufig gestellte Fragen

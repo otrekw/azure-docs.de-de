@@ -6,13 +6,13 @@ ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/17/2020
-ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: 137b77c09cc1ae4f18555568287324a373ca8786
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98882398"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109655413"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Registrieren und Überprüfen von Azure Data Lake Storage Gen2
 
@@ -82,7 +82,7 @@ Zur Nutzung eines Dienstprinzipals können Sie einen vorhandenen Dienstprinzipal
 Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals abzurufen:
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Dienstprinzipal.
-1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und von **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
+1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
 1. Navigieren zum Schlüsseltresor
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
 1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie unter **Name** einen gewünschten Namen und den **Wert** als **Geheimen Clientschlüssel** Ihres Dienstprinzipals ein.
@@ -101,7 +101,7 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 > [!NOTE]
 > Wenn Sie für das Speicherkonto eine Firewall aktiviert haben, müssen Sie beim Einrichten einer Überprüfung als Authentifizierungsmethode **Verwaltete Identität** verwenden.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem ADLS Gen2-Konto.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem ADLS Gen2-Konto
 1. Navigieren Sie zu **Einstellungen > Netzwerk**.
 1. Wählen Sie unter **Zugriff erlauben von** die Option **Ausgewählte Netzwerke** aus.
 1. Aktivieren Sie im Abschnitt **Ausnahmen** das Kontrollkästchen **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**, und wählen Sie dann **Speichern** aus.
@@ -122,9 +122,9 @@ Führen Sie auf dem Bildschirm **Register sources (Azure Data Lake Storage Gen2)
 
 1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
 2. Wählen Sie Ihr Abonnement aus, um die Speicherkonten zu filtern.
-3. Auswählen eines Speicherkontos
-4. Optional: Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung.
-5. Wählen Sie **Fertig stellen** aus, um die Datenquelle zu registrieren.
+3. Wählen Sie ein Speicherkonto aus.
+4. Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung (optional).
+5. Wählen Sie **Registrieren** aus, um die Datenquelle zu registrieren.
 
 :::image type="content" source="media/register-scan-adls-gen2/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 

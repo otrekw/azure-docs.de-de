@@ -3,16 +3,16 @@ title: Blaupausenbeispiel „CMMC Level 3“
 description: Übersicht über das Blaupausenbeispiel „CMMC Level 3“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Kontrollen.
 ms.date: 03/24/2021
 ms.topic: sample
-ms.openlocfilehash: 100e404567f0241e814280650944e620435dc60c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: df3dac17ce91757640f5b437f5915d41c901afc4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145085"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757635"
 ---
 # <a name="cmmc-level-3-blueprint-sample"></a>Blaupausenbeispiel „CMMC Level 3“
 
-Das Blaupausenbeispiel „CMMC Level 3“ bietet mithilfe von [Azure Policy](../../policy/overview.md) Schutzmaßnahmen für Governance, die Ihnen beim Bewerten spezifischer Kontrollen für das [CMMC-Framework (Cybersecurity Maturity Model Certification)](https://www.acq.osd.mil/cmmc/index.html) helfen. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, die Kontrollen für CMMC Level 3 implementieren muss.
+Im Blaupausenbeispiel „CMMC Level 3“ werden mithilfe von [Azure Policy](../../policy/overview.md) Schutzmaßnahmen für Governance bereitgestellt, die zum Bewerten von spezifischen Steuerungen für das [CMMC-Framework (Cybersecurity Maturity Model Certification)](https://www.acq.osd.mil/cmmc/index.html) hilfreich sind. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, die Kontrollen für CMMC Level 3 implementieren muss.
 
 ## <a name="control-mapping"></a>Steuerungszuordnung
 
@@ -101,7 +101,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 
 |Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
-|CMMC Level 3|Richtlinienzuweisung|Mit Arc verbundene Server beim Auswerten der Gastkonfigurationsrichtlinien einbeziehen|Durch Auswahl von TRUE stimmen Sie einer monatlichen Abrechnung pro verbundenem Arc-Computer zu. Weitere Informationen finden Sie unter https://aka.ms/policy-pricing.|
+|CMMC Level 3|Richtlinienzuweisung|Mit Arc verbundene Server beim Auswerten der Gastkonfigurationsrichtlinien einbeziehen|Durch Auswahl von „true“ stimmen Sie einer monatlichen Abrechnung pro verbundenem Arc-Computer zu. Weitere Informationen finden Sie unter https://aka.ms/policy-pricing.|
 |CMMC Level 3|Richtlinienzuweisung|Liste der Benutzer, die aus der Windows-VM-Administratorgruppe ausgeschlossen werden müssen|Eine durch Semikolon getrennte Liste von Benutzern, die nicht in der Gruppe der lokalen Administratoren enthalten sein sollen, z. B. Administrator; myUser1; myUser2|
 |CMMC Level 3|Richtlinienzuweisung|Liste der Benutzer, die in der Windows-VM-Administratorengruppe enthalten sein müssen|Eine durch Semikolon getrennte Liste von Benutzern, die in der Gruppe der lokalen Administratoren enthalten sein sollen, z. B. Administrator; myUser1; myUser2|
 |CMMC Level 3|Richtlinienzuweisung|Log Analytics-Arbeitsbereichs-ID für VM-Agent-Berichterstellung|ID (GUID) des Log Analytics-Arbeitsbereichs, in dem VM-Agents Bericht erstatten sollen|

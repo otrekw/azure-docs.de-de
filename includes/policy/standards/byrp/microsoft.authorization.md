@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 2fd2e24aea191e629c07ba9c3f4eff46fb29da3a
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 490eb691f612cfde0a9f369f0308c9cbf7c8f721
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178164"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754815"
 ---
 ## <a name="azure-security-benchmark"></a>Vergleichstest für die Azure-Sicherheit
 
@@ -70,6 +70,15 @@ Weitere Informationen zu diesem Konformitätsstandard finden Sie unter [HIPAA HI
 |Aufgabentrennung |1230.09c2Organizational.1 - 09.c |Einzelpersonen können ohne Autorisierung oder Erkennung nicht auf Informationssysteme zugreifen und diese nicht ändern oder nutzen. |[Verwendung benutzerdefinierter RBAC-Regeln überwachen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa451c1ef-c6ca-483d-87ed-f49761e3ffb5) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/Subscription_AuditCustomRBACRoles_Audit.json) |
 |Aufgabentrennung |1276.09c2Organizational.2 - 09.c |Mit der Sicherheitsüberwachung verbundene Aktivitäten werden unabhängig behandelt. |[Benutzerdefinierte Rollen für Abonnementbesitzer dürfen nicht vorhanden sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F10ee2ea2-fb4d-45b8-a7e9-a2e770044cd9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/CustomSubscription_OwnerRole_Audit.json) |
 |Aufgabentrennung |1278.09c2Organizational.56 - 09.c |Die Organisation identifiziert Aufgaben, für die eine Trennung erforderlich ist, und definiert Zugriffsautorisierungen für Informationssysteme, um die Trennung von Aufgaben zu unterstützen. Inkompatible Aufgaben sind auf mehrere Benutzer verteilt, um die Wahrscheinlichkeit für Missbrauchs- oder Betrugsfälle zu verringern. |[Benutzerdefinierte Rollen für Abonnementbesitzer dürfen nicht vorhanden sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F10ee2ea2-fb4d-45b8-a7e9-a2e770044cd9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/CustomSubscription_OwnerRole_Audit.json) |
+
+## <a name="irs-1075-september-2016"></a>IRS 1075, September 2016
+
+Weitere Informationen dazu, wie die verfügbaren Azure Policy-Integrationen für alle Azure-Dienste diesem Konformitätsstandard entsprechen, finden Sie unter [Einhaltung gesetzlicher Bestimmungen in Azure Policy: IRS 1075, September 2016](../../../../articles/governance/policy/samples/irs-1075-sept2016.md).
+Weitere Informationen zu diesem Compliancestandard finden Sie unter [IRS 1075, September 2016](https://www.irs.gov/pub/irs-pdf/p1075.pdf).
+
+|Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|Zugriffssteuerung |9.3.1.2 |Kontoverwaltung (AC-2) |[Verwendung benutzerdefinierter RBAC-Regeln überwachen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa451c1ef-c6ca-483d-87ed-f49761e3ffb5) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/Subscription_AuditCustomRBACRoles_Audit.json) |
 
 ## <a name="iso-270012013"></a>ISO 27001:2013
 

@@ -3,12 +3,12 @@ title: Sichern einer SharePoint-Farm in Azure mit MABS
 description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd0c6ede50151114994152ed2375cf53f708c620
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89375396"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769361"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Sichern einer SharePoint-Farm in Azure mit MABS
 
@@ -80,7 +80,7 @@ Um die SharePoint-Farm zu sichern, konfigurieren Sie den Schutz für SharePoint 
 
 1. Erweitern Sie in **Gruppenmitglieder auswählen** den Server, auf dem sich die WFE-Rolle befindet. Wenn mehrere WFE-Server vorhanden sind, wählen Sie den Server aus, auf dem Sie die Datei „ConfigureSharePoint.exe“ konfiguriert haben.
 
-    Wenn Sie den SharePoint-Server erweitern, wird VSS von fragt MABS abgefragt, um zu ermitteln, welche Daten MABS schützen kann.  Wenn es sich bei der SharePoint-Datenbank um eine Remotedatenbank handelt, stellt MABS eine Verbindung mit der Datenbank her. Wenn SharePoint-Datenquellen nicht angezeigt werden, vergewissern Sie sich, dass der VSS Writer auf dem SharePoint-Server und allen SQL Server-Remoteinstanzen ausgeführt wird, und stellen Sie sicher, dass der MABS-Agent sowohl auf dem SharePoint-Server als auch auf der SQL Server-Remoteinstanz installiert ist. Stellen Sie außerdem sicher, dass SharePoint-Datenbanken nicht an anderer Stelle als SQL Server-Datenbanken geschützt werden.
+    Wenn Sie den Computer erweitern, auf dem SharePoint ausgeführt wird, wird VSS von MABS abgefragt, um zu ermitteln, welche Daten MABS schützen kann. Wenn es sich bei der SharePoint-Datenbank um eine Remotedatenbank handelt, stellt MABS eine Verbindung mit der Datenbank her. Wenn SharePoint-Datenquellen nicht angezeigt werden, überprüfen Sie, ob der VSS Writer auf dem Computer ausgeführt wird, auf dem SharePoint ausgeführt wird, und auf einer beliebigen Remoteinstanz SQL Server. Stellen Sie anschließend sicher, dass der MABS-Agent sowohl auf dem Computer, auf dem SharePoint ausgeführt wird, als auch auf der Remoteinstanz von SQL Server installiert ist. Stellen Sie außerdem sicher, dass SharePoint-Datenbanken nicht an anderer Stelle als SQL Server-Datenbanken geschützt werden.
 
 1. Geben Sie unter **Datenschutzmethode auswählen** an, wie Sie die kurz- und langfristige Sicherung handhaben möchten. Die kurzfristige Sicherung erfolgt immer zuerst auf Datenträger, mit der Option der Sicherung vom Datenträger in die Azure\-Cloud mit Azure Backup \(kurz\- oder langfristig\).
 

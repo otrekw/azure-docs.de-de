@@ -6,15 +6,15 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: f1f1ea787406d900c8035c0462ef903b848d7e81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 248f070c37e32cb0d90c3e31eebddc6245446828
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608213"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765663"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Übersicht über den Azure Monitor-Agent (Vorschauversion)
-Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer und übermittelt sie an Azure Monitor. Dieser Artikel enthält eine Übersicht über den Azure Monitor-Agent sowie Informationen zur Installation und zur Konfiguration der Datensammlung.
+Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer von Azure und übermittelt sie an Azure Monitor. Dieser Artikel enthält eine Übersicht über den Azure Monitor-Agent sowie Informationen zur Installation und zur Konfiguration der Datensammlung.
 
 ## <a name="relationship-to-other-agents"></a>Beziehung zu anderen Agents
 Der Azure Monitor-Agent ersetzt die folgenden Agents, die derzeit von Azure Monitor verwendet werden, um Gastdaten von virtuellen Computern zu sammeln:

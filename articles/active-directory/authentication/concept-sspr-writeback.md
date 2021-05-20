@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b8a84da331568d36b6f6910054fdb2aea76f490
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a5b8f1404e95ed2ccceb8400fdabeff2d60b6706
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530330"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766113"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Funktionsweise des Rückschreibens von Self-Service-Kennwortzurücksetzungen in Azure Active Directory
 
@@ -149,7 +149,7 @@ Kennwörter werden in folgenden Situationen nicht zurückgeschrieben:
 * **Nicht unterstützte Vorgänge für Endbenutzer**
    * Jegliches Zurücksetzen des eigenen Kennworts durch einen Endbenutzer über PowerShell Version 1, Version 2 oder die Microsoft Graph-API
 * **Nicht unterstützte Vorgänge für Administratoren**
-   * Jegliche durch einen Administrator initiierte Endbenutzerkennwortzurücksetzung mithilfe von PowerShell Version 1, Version 2 oder der Microsoft-Graph-API ([Microsoft Graph-API](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http) wird unterstützt).
+   * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung mithilfe von PowerShell Version 1, oder Version 2.
    * Jegliche durch einen Administrator initiierte Kennwortzurücksetzung durch den Endbenutzer über das [Microsoft 365 Admin Center](https://admin.microsoft.com)
    * Administratoren können das Tool zum Zurücksetzen von Kennwörtern nicht zum Zurücksetzen des eigenen Kennworts für das Kennwortrückschreiben verwenden.
 

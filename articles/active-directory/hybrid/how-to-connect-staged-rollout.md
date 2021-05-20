@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8534d4dd8df1e60e1b341088cbfaaa944ec1221b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8460e428239a652d2accb3d1818b0a709dc16c3e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073393"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758662"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts
 
@@ -106,11 +106,11 @@ Weitere Informationen dazu, welche PowerShell-Cmdlets verwendet werden sollten, 
 
 1. Aktivieren Sie die *Kennworthashsynchronisierung* über die Seite [Optionale Features](how-to-connect-install-custom.md#optional-features) in Azure AD Connect. 
 
-   ![Screenshot der Seite „Optionale Features“ in Azure Active Directory Connect](media/how-to-connect-staged-rollout/sr1.png)
+   ![Screenshot der Seite „Optionale Features“ in Azure Active Directory Connect](media/how-to-connect-staged-rollout/staged-1.png)
 
 1. Stellen Sie sicher, dass ein vollständiger Zyklus der *Kennworthashsynchronisierung* ausgeführt wurde, damit alle Kennworthashes der Benutzer mit Azure AD synchronisiert wurden. Zum Überprüfen des Status der *Kennworthashsynchronisierung* können Sie die PowerShell-Diagnose unter [Problembehandlung der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](tshoot-connect-password-hash-synchronization.md) verwenden.
 
-   ![Screenshot des AADConnect-Problembehandlungsprotokolls](./media/how-to-connect-staged-rollout/sr2.png)
+   ![Screenshot des AADConnect-Problembehandlungsprotokolls](./media/how-to-connect-staged-rollout/staged-2.png)
 
 Wenn Sie *Passthrough-Authentifizierung* testen möchten, melden Sie sich mithilfe des gestaffelten Rollouts an, und aktivieren Sie diese dann, indem Sie die Anweisungen zu den vorbereitenden Schritten im nächsten Abschnitt befolgen.
 
@@ -146,7 +146,7 @@ Aktivieren Sie *nahtloses einmaliges Anmelden*, indem Sie die folgenden Schritte
 
 5. Rufen Sie `Get-AzureADSSOStatus | ConvertFrom-Json` auf. Dieser Befehl zeigt eine Liste der Active Directory-Gesamtstrukturen (siehe Liste „Domänen“) an, für die diese Funktion aktiviert wurde. Standardmäßig ist die Option auf der Mandantenebene auf „false“ festgelegt.
 
-   ![Beispiel der Windows PowerShell-Ausgabe](./media/how-to-connect-staged-rollout/sr3.png)
+   ![Beispiel der Windows PowerShell-Ausgabe](./media/how-to-connect-staged-rollout/staged-3.png)
 
 6. Rufen Sie `$creds = Get-Credential` auf. Geben Sie an der Eingabeaufforderung die Anmeldeinformationen des Domänenadministrators für die vorgesehene Active Directory-Gesamtstruktur ein.
 
@@ -198,24 +198,24 @@ Wir haben Überwachungsereignisse für die verschiedenen Aktionen aktiviert, die
   >[!NOTE]
   >Es wird ein Überwachungsereignis protokolliert, wenn *nahtloses SSO* mithilfe des gestaffelten Rollouts aktiviert wird.
 
-  ![Bereich „Rolloutrichtlinie für Feature erstellen“, Registerkarte „Aktivität“](./media/how-to-connect-staged-rollout/sr7.png)
+  ![Bereich „Rolloutrichtlinie für Feature erstellen“, Registerkarte „Aktivität“](./media/how-to-connect-staged-rollout/staged-7.png)
 
-  ![Bereich „Rolloutrichtlinie für Feature erstellen“, Registerkarte „Geänderte Eigenschaften“](./media/how-to-connect-staged-rollout/sr8.png)
+  ![Bereich „Rolloutrichtlinie für Feature erstellen“, Registerkarte „Geänderte Eigenschaften“](./media/how-to-connect-staged-rollout/staged-8.png)
 
 - Überwachungsereignis: Eine Gruppe wird dem Feature *Kennworthashsynchronisierung*, *Passthrough-Authentifizierung* oder *nahtloses SSO* hinzugefügt.
 
   >[!NOTE]
   >Es wird ein Überwachungsereignis protokolliert, wenn eine Gruppe der *Kennworthashsynchronisierung* für den gestaffelten Rollout hinzugefügt wird.
 
-  ![Bereich „Gruppe zum Featurerollout hinzufügen“, Registerkarte „Aktivität“](./media/how-to-connect-staged-rollout/sr9.png)
+  ![Bereich „Gruppe zum Featurerollout hinzufügen“, Registerkarte „Aktivität“](./media/how-to-connect-staged-rollout/staged-9.png)
 
-  ![Bereich „Gruppe zum Featurerollout hinzufügen“, Registerkarte „Geänderte Eigenschaften“](./media/how-to-connect-staged-rollout/sr10.png)
+  ![Bereich „Gruppe zum Featurerollout hinzufügen“, Registerkarte „Geänderte Eigenschaften“](./media/how-to-connect-staged-rollout/staged-10.png)
 
 - Überwachungsereignis: Ein der Gruppe hinzugefügter Benutzer wird für den gestaffelten Rollout aktiviert.
 
-  ![Bereich „Benutzer zum Featurerollout hinzufügen“, Registerkarte „Aktivität“](media/how-to-connect-staged-rollout/sr11.png)
+  ![Bereich „Benutzer zum Featurerollout hinzufügen“, Registerkarte „Aktivität“](media/how-to-connect-staged-rollout/staged-11.png)
 
-  ![Bereich „Benutzer zum Featurerollout hinzufügen“, Registerkarte „Ziel(e)“](./media/how-to-connect-staged-rollout/sr12.png)
+  ![Bereich „Benutzer zum Featurerollout hinzufügen“, Registerkarte „Ziel(e)“](./media/how-to-connect-staged-rollout/staged-12.png)
 
 ## <a name="validation"></a>Überprüfen
 
@@ -236,6 +236,11 @@ Gehen Sie wie folgt vor, um die Anmeldung mit *nahtlosem SSO* zu testen:
 1. Stellen Sie sicher, dass die Anmeldung im [Azure AD-Bericht zu Anmeldeaktivitäten](../reports-monitoring/concept-sign-ins.md) erfolgreich angezeigt wird, indem Sie nach dem Benutzerprinzipalnamen (UserPrincipalName) filtern.
 
    Um Benutzeranmeldungen nachzuverfolgen, die weiterhin für Active Directory-Verbunddienste (AD FS) für ausgewählte Benutzer mit gestaffeltem Rollout auftreten, befolgen Sie die Anweisungen unter [Problembehandlung von AD FS: Ereignisse und Protokollierung](/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events). Lesen Sie in der Dokumentation des Herstellers nach, wie dies für Drittanbieter von Verbunddiensten überprüft wird.
+
+## <a name="monitoring"></a>Überwachung
+Mithilfe der neuen Hybrid Auth-Arbeitsmappen im Azure-Portal können Sie die Benutzer und Gruppen, die während des gestaffelten Rollouts hinzugefügt oder daraus entfernt wurden, und die Benutzeranmeldungen während des gestaffelten Rollouts überwachen.
+
+ ![Hybrid Auth-Arbeitsmappen](./media/how-to-connect-staged-rollout/staged-13.png)
 
 ## <a name="remove-a-user-from-staged-rollout"></a>Entfernen eines Benutzers aus dem gestaffelten Rollout
 
@@ -259,3 +264,5 @@ A: Ja. Informationen zum Verwenden von PowerShell zum Ausführen eines gestaffel
 - [Azure AD 2.0 Vorschau](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
 - [Ändern der Anmeldemethode in die Kennworthashsynchronisierung](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
 - [Ändern der Anmeldemethode in die Passthrough-Authentifizierung](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+- [Interaktiver Leitfaden für den gestaffelten Rollout](https://mslearn.cloudguides.com/en-us/guides/Test%20migration%20to%20cloud%20authentication%20using%20staged%20rollout%20in%20Azure%20AD)
+
