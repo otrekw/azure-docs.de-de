@@ -49,8 +49,6 @@
       items:
         - name: Sicherheitsfeatures
           href: security-features.md
-        - name: "Grundlagen der Key\_Vault-Authentifizierung"
-          href: authentication.md
         - name: "Key\_Vault-Authentifizierung"
           href: authentication.md
         - name: Sicherheitsumgebungen und geografische Regionen

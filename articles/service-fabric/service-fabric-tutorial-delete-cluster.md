@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen in Azure gehosteten 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 083c6047a8b5279b9f03db5ba5196c9a109f2d25
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: c6187d2bd5b8f2101c21b3eb35362e443854e8a4
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075949"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734760"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Tutorial: Entfernen eines in Azure ausgeführten Service Fabric-Clusters
 
@@ -37,7 +37,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie [Azure PowerShell](/powershell/azure//install-az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure PowerShell](/powershell/azure//install-az-ps) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>Löschen der Ressourcengruppe, die den Service Fabric-Cluster enthält
@@ -108,5 +108,5 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 Nachdem Sie dieses Tutorial abgeschlossen haben, fahren Sie mit Folgendem fort:
 * Erfahren Sie, wie Sie einen Service Fabric-Cluster mithilfe von [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) untersuchen und verwalten.
-* Erfahren Sie, wie Sie [Patches für das Windows-Betriebssystem](service-fabric-patch-orchestration-application.md) der Clusterknoten aufspielen.
+* Informieren Sie sich über das [Patchen von Clusterknoten, die unter Windows ausgeführt werden](how-to-patch-cluster-nodes-windows.md).
 * Erfahren Sie, wie Sie Ereignisse für [Windows-Cluster](service-fabric-diagnostics-event-aggregation-wad.md) aggregieren und erfassen und [Log Analytics einrichten](service-fabric-diagnostics-oms-setup.md), um Clusterereignisse zu überwachen.

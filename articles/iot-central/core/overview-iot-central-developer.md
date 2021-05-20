@@ -10,16 +10,14 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: ebd2759d4dfb8ee79130f9b4876eba8d45226d04
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 7cb52dba88d94ed52baa8272c7f20fed4bcde0fd
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718789"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787543"
 ---
 # <a name="iot-central-device-development-guide"></a>Entwicklungshandbuch für IoT Central-Geräte
-
-*Dieser Artikel gilt für Geräteentwickler.*
 
 Mit einer IoT Central-Anwendung können Sie Millionen von Geräten während ihres gesamten Lebenszyklus überwachen und verwalten. Dieses Handbuch ist für Geräteentwickler konzipiert, die Code zur Ausführung auf Geräten implementieren, die eine Verbindung mit IoT Central herstellen.
 
@@ -35,27 +33,25 @@ Ein Lösungsentwickler ist zuständig für die Konfiguration von Dashboards und 
 
 In den folgenden Abschnitten werden die wichtigsten Gerätetypen beschrieben, die Sie mit einer IoT Central-Anwendung verbinden können:
 
-### <a name="standalone-device"></a>Eigenständiges Gerät
+### <a name="iot-device"></a>IoT-Gerät
 
-Ein eigenständiges Gerät stellt eine direkte Verbindung mit IoT Central her. Ein eigenständiges Gerät sendet normalerweise Telemetriedaten aus seinen integrierten oder verbundenen Sensoren an Ihre IoT Central-Anwendung. Eigenständige Geräte können auch Eigenschaftswerte melden, schreibbare Eigenschaftswerte empfangen und auf Befehle reagieren.
+Ein IoT-Gerät ist ein eigenständiges Gerät und stellt eine direkte Verbindung mit IoT Central her. Ein IoT-Gerät sendet normalerweise Telemetriedaten aus seinen integrierten oder verbundenen Sensoren an Ihre IoT Central-Anwendung. Eigenständige Geräte können auch Eigenschaftswerte melden, schreibbare Eigenschaftswerte empfangen und auf Befehle reagieren.
 
-### <a name="gateway-device"></a>Gatewaygerät
+### <a name="iot-edge-device"></a>IoT Edge-Gerät
 
-Ein Gatewaygerät verwaltet ein oder mehrere nachgeschaltete Geräte, die eine Verbindung mit ihrer IoT Central-Anwendung herstellen. Sie verwenden IoT Central zum Konfigurieren der Beziehungen zwischen den nachgeschalteten Geräten und dem Gatewaygerät. Weitere Informationen finden Sie unter [Definieren eines neuen IoT-Gatewaygerätetyps in Ihrer Azure IoT Central-Anwendung](./tutorial-define-gateway-device-type.md).
+Ein IoT Edge-Gerät stellt eine direkte Verbindung mit IoT Central her. Ein IoT Edge-Gerät kann seine eigenen Telemetriedaten senden, seine Eigenschaften melden sowie auf Aktualisierungen von schreibbaren Eigenschaften und Befehle reagieren. IoT Edge-Module können Daten lokal auf dem IoT Edge-Gerät verarbeiten. Ein IoT Edge-Gerät kann auch als Vermittler für andere Geräte fungieren, die als Blattgeräte bezeichnet werden. IoT Edge-Geräte werden u. a. in den folgenden Szenarien verwendet:
 
-### <a name="edge-device"></a>Edgegerät
-
-Ein Edgegerät stellt eine direkte Verbindung mit IoT Central her, fungiert aber als Vermittler für andere Geräte, die als _Blattgeräte_ bezeichnet werden. Ein Edgegerät befindet sich normalerweise in der Nähe der Blattgeräte, für die es als Vermittler fungiert. Szenarien, in denen Edgegeräte verwendet werden, sind die folgenden:
-
-- Ermöglichen Sie es Geräten, die keine direkte Verbindung mit IoT Central herstellen können, dies über das Edgegerät zu erledigen. So könnte ein Blattgerät beispielsweise über Bluetooth eine Verbindung mit dem Edgegerät herstellen, das dann über das Internet eine Verbindung mit IoT Central herstellt.
-- Aggregieren Sie Telemetriedaten, bevor sie an IoT Central gesendet werden. Mithilfe dieses Ansatzes können Sie die Kosten für das Senden von Daten an IoT Central senken.
+- Aggregieren oder filtern Sie Telemetriedaten, bevor sie an IoT Central gesendet werden. Mithilfe dieses Ansatzes können Sie die Kosten für das Senden von Daten an IoT Central senken.
+- Ermöglichen Sie es Geräten, die keine direkte Verbindung mit IoT Central herstellen können, dies über das IoT Edge-Gerät zu erledigen. So könnte ein Blattgerät beispielsweise über Bluetooth eine Verbindung mit dem IoT Edge-Gerät herstellen, das dann über das Internet eine Verbindung mit IoT Central herstellt.
 - Steuern Sie Blattgeräte lokal, um die Latenz beim Herstellen einer Verbindung mit IoT Central über das Internet zu vermeiden.
 
-Ein Edgegerät kann auch seine eigenen Telemetriedaten senden, seine Eigenschaften melden sowie auf Aktualisierungen von schreibbaren Eigenschaften und Befehle reagieren.
-
-IoT Central „sieht“ nur das Edgegerät, nicht die mit ihm verbundenen Blattgeräte.
+IoT Central „sieht“ nur das IoT Edge-Gerät, nicht die mit ihm verbundenen Blattgeräte.
 
 Weitere Informationen finden Sie unter [Hinzufügen eines Azure IoT Edge-Geräts zu Ihrer Azure IoT Central-Anwendung](./tutorial-add-edge-as-leaf-device.md).
+
+### <a name="gateways"></a>Gateways
+
+Ein Gatewaygerät verwaltet ein oder mehrere nachgeschaltete Geräte, die eine Verbindung mit ihrer IoT Central-Anwendung herstellen. Sie verwenden IoT Central zum Konfigurieren der Beziehungen zwischen den nachgeschalteten Geräten und dem Gatewaygerät. Sowohl IoT-Geräte als auch IoT Edge-Geräte können als Gateways fungieren. Weitere Informationen finden Sie unter [Definieren eines neuen IoT-Gatewaygerätetyps in Ihrer Azure IoT Central-Anwendung](./tutorial-define-gateway-device-type.md).
 
 ## <a name="connect-a-device"></a>Verbinden eines Geräts
 

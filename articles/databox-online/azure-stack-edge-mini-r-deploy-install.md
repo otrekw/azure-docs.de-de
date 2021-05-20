@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/20/2020
+ms.date: 03/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b154dabd6f672c6fdaf77c5f8d48f80fb40d5d8
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8bf73374545fa10c1b26ccbc9b932962fcabb6b3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060107"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759867"
 ---
 # <a name="tutorial-install-azure-stack-edge-mini-r"></a>Tutorial: Installieren von Azure Stack Edge Mini R
 
@@ -82,7 +82,10 @@ Bevor Sie mit der Verkabelung Ihres Geräts beginnen, benötigen Sie Folgendes:
 - Ihr physisches Azure Stack Edge Mini R-Gerät am Installationsort
 - Ein Netzkabel
 - Mindestens ein Netzwerkkabel (1 GbE, RJ45) zum Anschließen an die Verwaltungsschnittstelle. Das Gerät verfügt über zwei 1-GbE-Netzwerkschnittstellen: eine für die Verwaltung und eine für Daten.
-- Ein SFP+-Kupferkabel (10 GbE) für jede zu konfigurierende Datennetzwerkschnittstelle. Mindestens eine Datennetzwerkschnittstelle (PORT 3 oder PORT 4) muss mit dem Internet verbunden sein und über Azure-Konnektivität verfügen.  
+- Ein SFP+-Kabel (10 GbE) für jede zu konfigurierende Datennetzwerkschnittstelle. Mindestens eine Datennetzwerkschnittstelle (PORT 3 oder PORT 4) muss mit dem Internet verbunden sein und über Azure-Konnektivität verfügen.
+
+  Wir empfehlen dringend die Verwendung des leistungsstärksten SFP+-Kupfertransceivers (10 GBit/s). Kompatible Glasfasertransceiver können zwar verwendet werden, wurden aber noch nicht getestet. Weitere Informationen finden Sie unter [Spezifikationen für Transceiver und Kabel](azure-stack-edge-mini-r-technical-specifications-compliance.md#transceivers-cables) für Azure Stack Edge Mini R.
+   
 - Zugang zu einer PDU (Power Distribution Unit) (empfohlen)
 
 > [!NOTE]
@@ -97,10 +100,10 @@ Azure Stack Edge-Gerät:
     - In dem Einschub des Geräts befindet sich ein einzelner SSD-Datenträger. 
     - Außerdem verfügt das Gerät über eine CFX-Karte, die als Speicher für den Betriebssystemdatenträger fungiert.
     
-- Auf der Vorderseite befinden sich Netzwerkschnittstellen und das WLAN-Modul.
+- Auf der Vorderseite befinden sich Netzwerkschnittstellen und das WLAN-Modul. 
 
-    - Zwei RJ-45-Netzwerkschnittstellen mit 1 GbE („PORT 1“ und „PORT 2“ auf der lokalen Benutzeroberfläche des Geräts)
-    - Zwei SFP+-Netzwerkschnittstellen mit 10 GbE („PORT 3“ und „PORT 4“ auf der lokalen Benutzeroberfläche des Geräts) 
+    - Zwei RJ-45-Netzwerkschnittstellen mit 1 GbE (PORT 1 und PORT 2 auf der lokalen Benutzeroberfläche des Geräts)
+    - Zwei SFP+-Netzwerkschnittstellen mit 10 GbE (PORT 3 und PORT 4 auf der lokalen Benutzeroberfläche des Geräts) 
     - Ein WLAN-Port mit angeschlossenem WLAN-Transceiver
 
 - Auf der Vorderseite befindet sich auch ein Ein-/Aus-Schalter. 

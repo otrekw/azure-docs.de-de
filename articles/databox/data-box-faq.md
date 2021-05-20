@@ -6,15 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 02/25/2021
+ms.date: 05/11/2021
 ms.author: alkohli
 ms.custom: references_regions
-ms.openlocfilehash: a692aeba312b6fcad580eac901f4b7bc65f059fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 819a67cd049f5aed9eb66e65613d7e86be5db0c4
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730574"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786715"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -26,7 +26,7 @@ Die Fragen und Antworten sind in folgende Kategorien unterteilt:
 - Bestellen des Geräts
 - Konfigurieren und Verbinden 
 - Nachverfolgen des Status
-- Kopieren von Daten 
+- Migrieren von Daten 
 - Versenden des Geräts
 - Überprüfen und Hochladen von Daten 
 - Unterstützung der Rückverfolgbarkeit
@@ -259,10 +259,10 @@ A.  Während des Versands dienen die folgenden Merkmale der Data Box dem Schutz 
  - Das Gerät ist gesperrt und benötigt ein Entsperrkennwort, um Daten eingeben und darauf zugreifen zu können.
 Weitere Informationen finden Sie unter [Sicherheitsmerkmale von Azure Data Box](data-box-security.md).  
 
-### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-the-data-box"></a>Q. Ich habe den Schritt „Für den Versand vorbereiten“ für meinen Importauftrag abgeschlossen und das Gerät heruntergefahren. Kann ich der Data Box noch weitere Daten hinzufügen?
-A. Ja. Sie können das Gerät einschalten und weitere Daten hinzufügen. Sie müssen den Schritt **Für den Versand vorbereiten** erneut ausführen, nachdem Sie den Kopiervorgang abgeschlossen haben.
+### <a name="q-i-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-the-data-box"></a>Q. Ich habe „Für den Versand vorbereiten“ für meinen Import-Auftrag abgeschlossen und das Gerät heruntergefahren. Kann ich der Data Box noch weitere Daten hinzufügen?
+A. Ja. Sie können das Gerät einschalten und weitere Daten hinzufügen. Nach Abschluss der Datenkopie müssen Sie **Zum Versand vorbereiten** erneut ausführen.
 
-### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>Q. Ich habe mein Gerät erhalten, und es startet nicht. Wie kann ich das Gerät zurücksenden?
+### <a name="q-i-received-my-device-and-its-not-booting-up-how-do-i-ship-the-device-back"></a>Q. Ich habe mein Gerät erhalten, aber es startet nicht. Wie kann ich das Gerät zurücksenden?
 A. Wenn Ihr Gerät nicht startet, navigieren Sie im Azure-Portal zu Ihrer Bestellung. Laden Sie ein Adressetikett herunter, und fügen Sie es an das Gerät an. Weitere Informationen finden Sie unter [Herunterladen von Adressetiketten](data-box-portal-admin.md#download-shipping-label).
 
 ## <a name="verify-and-upload"></a>Überprüfen und Hochladen
@@ -281,6 +281,13 @@ A.  Wenn Sie die Daten in die Data Box kopieren, werden sie in einen der folgend
 A.  Wenn die Containernamen Großbuchstaben enthalten, werden diese Namen automatisch in Kleinbuchstaben konvertiert. Wenn die Namen auf sonstige Weise nicht konform sind (Sonderzeichen, andere Sprachen usw.), tritt beim Upload ein Fehler auf. Weitere Anleitungen zum Benennen von Freigaben, Containern und Dateien finden Sie unter:
 - [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [Grundlegendes zu Blockblobs, Anfügeblobs und Seitenblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+
+
+### <a name="q-i-was-notified-of-copy-errors-during-a-data-upload-from-my-data-box-what-should-i-do"></a>Q. Ich wurde während eines Datenuploads aus meiner Data Box über Kopierfehler benachrichtigt. Wie sollte ich vorgehen?
+A.  Wenn nicht erneut versuchbare Datenkopierfehler verhindern, dass Dateien in Ihrem Importauftrag in Azure hochgeladen werden, werden die Fehler im Datenkopierprotokoll protokolliert und Sie erhalten eine Benachrichtigung. Sie können die Fehler nicht beheben. Der Upload wurde mit Fehlern abgeschlossen. Die Benachrichtigung wird gesendet, damit Sie wissen, dass die Dateien nicht hochgeladen wurden, damit Sie Konfigurationsfehler beheben können, bevor Sie es erneut versuchen. Wenn Sie bestätigen, dass Sie bereit zum Fortfahren sind, werden die Daten sicher vom Gerät gelöscht. Wenn Sie nicht antworten, wird der Auftrag nach 14 Tagen automatisch abgeschlossen.
+
+Fehlerinformationen und Schritte zum Fortfahren mit Ihrem Auftrag finden Sie unter [Überprüfen von Kopierfehlern in Uploads von Azure Data Box und Azure Data Box Heavy Geräten](data-box-troubleshoot-data-upload.md).  
+
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>Q. Wie kann ich die Daten überprüfen, die in Data Box kopiert wurden?
 A.  Nachdem der Datenkopiervorgang abgeschlossen ist, werden Ihre Daten überprüft, wenn Sie **Für den Versand vorbereiten** ausführen. Data Box generiert während des Validierungsprozesses eine Liste von Dateien und Prüfsummen für die Daten. Sie können die Liste der Dateien herunterladen und diese mit den Dateien in den Quelldaten vergleichen. Weitere Informationen finden Sie unter [Für den Versand vorbereiten](data-box-deploy-picked-up.md#prepare-to-ship).

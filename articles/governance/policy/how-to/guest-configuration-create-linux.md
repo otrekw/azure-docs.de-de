@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Ga
 ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 926c6d472b3e4e3b6837a4d4136ee591a3d7e6c5
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: b28d7f0ccd2f4b8cca7bdb5015dce6e8ee8f2f17
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165369"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762981"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Erstellen von Richtlinien für Gastkonfigurationen für Linux
 
@@ -24,10 +24,10 @@ Die [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) kann nu
 Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprüfen des Zustands eines Azure- oder Nicht-Azure-Computers zu erstellen.
 
 > [!IMPORTANT]
-> Bei benutzerdefinierten Richtliniendefinitionen mit Gastkonfiguration in den Umgebungen „Azure Government“ und „Azure China“ handelt es sich um eine Previewfunktion.
+> Bei benutzerdefinierten Richtliniendefinitionen mit Gastkonfiguration in den Umgebungen „Azure Government“ und „Azure China 21Vianet“ handelt es sich um eine Previewfunktion.
 >
 > Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich. Weisen Sie die folgende Richtliniendefinition zu, um die Erweiterung auf allen Linux-Computern im gewünschten Umfang bereitzustellen: `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
-> 
+>
 > Verwenden Sie in Paketen mit benutzerdefiniertem Inhalt keine Geheimnisse oder vertraulichen Informationen.
 
 ## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
@@ -98,7 +98,7 @@ Für die Gastkonfiguration unter Linux wird die Ressource `ChefInSpecResource` v
 
 Erstellen Sie zuerst die YAML-Datei, die von InSpec verwendet wird. Die Datei enthält grundlegende Informationen zur Umgebung. Nachfolgend sehen Sie ein Beispiel:
 
-```YaML
+```yaml
 name: linux-path
 title: Linux path
 maintainer: Test
@@ -113,7 +113,7 @@ Speichern Sie diese Datei mit dem Namen `inspec.yml` in einem Ordner namens `lin
 
 Erstellen Sie dann die Ruby-Datei mit der InSpec-Sprachabstraktion, die zum Überwachen des Computers verwendet wird.
 
-```Ruby
+```ruby
 describe file('/tmp') do
     it { should exist }
 end
@@ -147,7 +147,7 @@ AuditFilePathExists -out ./Config
 
 Speichern Sie diese Datei mit dem Namen `config.ps1` im Projektordner. Führen Sie sie in PowerShell aus, indem Sie `./config.ps1` im Terminal ausführen. Eine neue MOF-Datei wird erstellt.
 
-Der Befehl `Node AuditFilePathExists` ist aus technischer Sicht nicht erforderlich, doch wird damit eine Datei namens `AuditFilePathExists.mof` anstelle der Standarddatei `localhost.mof` erstellt. Wenn der Name der MOF-Datei der Konfiguration folgt, können beim Arbeiten in großem Umfang viele Dateien problemlos organisiert werden.
+Der Befehl `Node AuditFilePathExists` ist aus technischer Sicht nicht erforderlich, doch wird damit eine Datei namens `AuditFilePathExists.mof` anstelle der Standarddatei `localhost.mof` erstellt. Wenn der Name der MOF-Datei der Konfiguration folgt, können bei umfangreichen Systemen viele Dateien problemlos organisiert werden.
 
 Sie sollten jetzt über folgende Projektstruktur verfügen:
 
@@ -158,7 +158,7 @@ Sie sollten jetzt über folgende Projektstruktur verfügen:
     / linux-path
         inspec.yml
         / controls
-            linux-path.rb 
+            linux-path.rb
 ```
 
 Die unterstützenden Dateien müssen in einem Paket zusammengefasst werden. Das fertige Paket wird von der Gastkonfiguration verwendet, um die Azure Policy-Definitionen zu erstellen.
@@ -222,7 +222,7 @@ Nachdem ein benutzerdefiniertes Richtlinienpaket für Gastkonfigurationen erstel
 
 Parameter des Cmdlets `New-GuestConfigurationPolicy`:
 
-- **ContentUri**: Öffentlicher HTTP(S)-URI des Pakets mit dem Inhalt der Gastkonfiguration.
+- **ContentUri**: Öffentlicher HTTP-/HTTPS-URI des Pakets mit dem Inhalt der Gastkonfiguration.
 - **DisplayName**: Anzeigename der Richtlinie.
 - **Beschreibung**: Beschreibung der Richtlinie.
 - **Parameter**: Richtlinienparameter im Hashtabellenformat.
@@ -281,7 +281,7 @@ Mit InSpec werden Parameter in der Regel entweder als Eingabe zur Laufzeit oder 
 
 Definieren Sie die Eingabe in der Ruby-Datei, in der Sie festlegen, was auf dem Computer überwacht werden soll. Nachfolgend sehen Sie ein Beispiel.
 
-```Ruby
+```ruby
 attr_path = attribute('path', description: 'The file path to validate.')
 
 describe file(attr_path) do
@@ -289,8 +289,8 @@ describe file(attr_path) do
 end
 ```
 
-Fügen Sie die **AttributesYmlContent**-Eigenschaft in Ihrer Konfiguration mit einer beliebigen Zeichenfolge als Wert hinzu.
-Der Gastkonfigurations-Agent erstellt automatisch die YAML-Datei, die von InSpec zum Speichern der Attribute genutzt wird. Betrachten Sie das folgende Beispiel.
+Fügen Sie die **AttributesYmlContent**-Eigenschaft in Ihrer Konfiguration mit einer beliebigen Zeichenfolge als Wert hinzu. Der Gastkonfigurations-Agent erstellt automatisch die YAML-Datei, die von InSpec zum Speichern der Attribute genutzt wird.
+Siehe folgendes Beispiel.
 
 ```powershell
 Configuration AuditFilePathExists
@@ -340,7 +340,6 @@ New-GuestConfigurationPolicy -ContentUri $uri `
     -Version 1.0.0
 ```
 
-
 ## <a name="policy-lifecycle"></a>Lebenszyklus von Richtlinien
 
 Wenn Sie ein Update für die Richtlinie freigeben möchten, ändern Sie die Details für das Gastkonfigurationspaket und die Azure Policy-Definition.
@@ -350,7 +349,7 @@ Wenn Sie ein Update für die Richtlinie freigeben möchten, ändern Sie die Deta
 
 Geben Sie zunächst beim Ausführen von `New-GuestConfigurationPackage` einen Namen für das Paket an, der es gegenüber früheren Versionen eindeutig kennzeichnet. Sie können z. B. eine Versionsnummer in den Namen einschließen wie in `PackageName_1.0.0`. Die Zahl in diesem Beispiel dient nur dazu, das Paket eindeutig zu machen, und nicht dazu, das Paket als neuer oder älter als andere Pakete zu kennzeichnen.
 
-Aktualisieren Sie als Zweites die Parameter für das Cmdlet `New-GuestConfigurationPolicy` gemäß den folgenden Erläuterungen.
+Aktualisieren Sie als anschließend die Parameter für das Cmdlet `New-GuestConfigurationPolicy` gemäß den folgenden Erläuterungen.
 
 - **Version**: Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist.
 - **contentUri**: Wenn Sie das Cmdlet `New-GuestConfigurationPolicy` ausführen, müssen Sie einen URI zum Speicherort des Pakets angeben. Durch Einschließen einer Paketversion in den Dateinamen wird sichergestellt, dass sich der Wert dieser Eigenschaft in jedem Release ändert.

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 05/04/2021
 ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36455b3f6395216bd1ed26c8bd193f0e3ca10b5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34342111aa0067b4f275820ac0111692c4a590f6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594596"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762567"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Hinzufügen oder Löschen von Benutzern in Azure Active Directory
 
@@ -28,9 +28,12 @@ Sie können Ihrer Azure Active Directory-Organisation neue Benutzer hinzufügen 
 
 Sie können einen neuen Benutzer im Azure Active Directory-Portal erstellen.
 
+>[!Note]
+>Die Eigenschaften für Benutzername und E-Mail-Adresse dürfen keine Akzentzeichen enthalten.
+
 Um einen neuen Benutzer hinzuzufügen, führen Sie diese Schritte aus:
 
-1. Melden Sie sich als Benutzeradministrator für die Organisation beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) für die Organisation in der Rolle „Benutzeradministrator“ an.
 
 1. Suchen Sie auf einer beliebigen Seite nach *Azure Active Directory*, und wählen Sie es aus.
 

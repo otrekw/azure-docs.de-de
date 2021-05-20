@@ -3,17 +3,17 @@ title: Einrichten der AWS-Integration mit Azure Cost Management
 description: Dieser Artikel erläutert das Einrichten und Konfigurieren der Integration von AWS-Kosten- und Nutzungsberichten in Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/23/2020
+ms.date: 05/10/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 2b8a008decc41a5686fb2c8d9fee271f95f0fef3
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: e1d332ba3ff2da50db9f59ce844844ac4c87cc0b
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122404"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738444"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Einrichten und Konfigurieren der Integration von AWS-Kosten- und Nutzungsberichten
 
@@ -147,14 +147,22 @@ Der JSON-Code der Richtlinie sollte wie im folgenden Beispiel aussehen: Ersetzen
 
 ## <a name="set-up-a-new-connector-for-aws-in-azure"></a>Einrichten eines neuen Connectors für AWS in Azure
 
-Verwenden Sie die folgenden Informationen, um einen AWS-Connector zu erstellen und mit der Überwachung Ihrer AWS-Kosten zu beginnen:
+Verwenden Sie die folgenden Informationen, um einen AWS-Connector zu erstellen und mit der Überwachung Ihrer AWS-Kosten zu beginnen.
+
+### <a name="prerequisites"></a>Voraussetzungen
+
+- Stellen Sie sicher, dass mindestens eine Verwaltungsgruppe aktiviert ist. Eine Verwaltungsgruppe ist erforderlich, um Ihr Abonnement mit dem AWS-Dienst zu verknüpfen. Weitere Informationen zum Erstellen einer Verwaltungsgruppe finden Sie unter [Schnellstart: Erstellen einer Verwaltungsgruppe](../../governance/management-groups/create-management-group-portal.md). 
+- Vergewissern Sie sich, dass Sie Administrator für das Abonnement sind.
+- Schließen Sie die Einrichtung ab, die für einen neuen AWS-Connector erforderlich ist, wie im Abschnitt [Erstellen eines Kosten- und Nutzungsberichts in AWS](#create-a-cost-and-usage-report-in-aws) beschrieben.
+
+
+### <a name="create-a-new-connector"></a>Erstellen eines neuen Connectors
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Rufen Sie die Azure-Startseite auf, indem Sie im Menü auf der linken Seite auf **Start** klicken („Hamburger“-Menüsymbol mit drei Strichen).
-3. Navigieren Sie zu **Tools** > **Cost Management** unten auf der Seite.
-3. Wählen Sie unter **Einstellungen** die Option **Connectors für AWS** aus.  
-4. Wählen Sie **+ Hinzufügen** oben auf der Seite aus, um einen Connector zu erstellen.  
-    :::image type="content" source="./media/aws-integration-setup-configure/aws-connector.png" alt-text="Beispiel für die Einstellung „Connectors für AWS“" :::
+1. Navigieren Sie zu **Kostenverwaltung + Abrechnung**, und wählen Sie bei Bedarf einen Abrechnungsbereich aus.
+1. Wählen Sie **Kostenanalyse** und dann **Einstellungen** aus. 
+1. Wählen Sie **Connectors für AWS** aus.
+1. Wählen Sie **Connector hinzufügen** aus.
 1. Geben Sie auf der Seite **Connector erstellen** in **Anzeigename** einen Namen für Ihren Connector ein.  
     :::image type="content" source="./media/aws-integration-setup-configure/create-aws-connector01.png" alt-text="Beispiel für die Seite zum Erstellen eines AWS-Connectors" :::
 1. Wählen Sie optional die Standardverwaltungsgruppe aus. Darin werden alle erkannten verknüpftem Konten gespeichert. Sie können sie später einrichten.

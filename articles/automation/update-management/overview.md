@@ -3,14 +3,14 @@ title: 'Azure Automation-Updateverwaltung: Übersicht'
 description: Dieser Artikel bietet eine Übersicht über die Updateverwaltungsfunktion, die Updates für Ihre Windows- und Linux-Computer implementiert.
 services: automation
 ms.subservice: update-management
-ms.date: 04/01/2021
+ms.date: 05/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 62ae2eab33063416fdd6265b14dd8c30da55e174
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: f04334b4b9704d1048d03ed82aaef400806b219f
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166699"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787023"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
@@ -42,7 +42,7 @@ Das folgende Diagramm veranschaulicht, wie die Updateverwaltung alle verbundenen
 
 ![Updateverwaltungs-Workflow](./media/overview/update-mgmt-updateworkflow.png)
 
-Die Aktualisierungsverwaltung kann zur nativen Bereitstellung auf Maschinen in mehreren Abonnements im selben Anker oder über Anker hinweg unter Verwendung der [delegierten Ressourcenverwaltung von Azure](../../lighthouse/concepts/azure-delegated-resource-management.md) verwendet werden.
+Die Aktualisierungsverwaltung kann zur nativen Bereitstellung auf Maschinen in mehreren Abonnements im selben Anker oder über Anker hinweg unter Verwendung von [Azure Lighthouse](../../lighthouse/overview.md) verwendet werden.
 
 Nachdem ein Paket veröffentlicht wurde, dauert es zwei bis drei Stunden, bis der Patch für Linux-Computer für die Bewertung angezeigt wird. Bei Windows-Computern dauert es 12 bis 15 Stunden, bis der Patch nach der Veröffentlichung für die Bewertung angezeigt wird. Wenn ein Computer einen Scanvorgang abgeschlossen hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Monitor-Protokolle weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt. Für einen Linux-Computer wird der Konformitätsscan standardmäßig jede Stunde durchgeführt. Wenn der Log Analytics-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten gestartet.
 
@@ -64,6 +64,10 @@ Updates werden mit Runbooks in Azure Automation installiert. Sie können diese R
 Wenn die Datums- bzw. Uhrzeitangabe der Updatebereitstellung erreicht ist, führen die Zielcomputer die Bereitstellung parallel aus. Vor der Installation wird ein Scan ausgeführt, um sicherzustellen, dass die Updates weiterhin erforderlich sind. Für WSUS-Clientcomputer tritt ein Fehler bei der Updatebereitstellung auf, wenn die Updates in WSUS nicht genehmigt wurden.
 
 Die Registrierung eines Computers für die Updateverwaltung in mehreren Log Analytics-Arbeitsbereichen (auch als „Multi-Homing“ bezeichnet) wird nicht unterstützt.
+
+## <a name="limits"></a>Grenzwerte
+
+Grenzwerte, die für Updateverwaltung gelten, finden Sie unter [Azure Automation Dienstgrenzwerte](../../azure-resource-manager/management/azure-subscription-service-limits.md#update-management).
 
 ## <a name="clients"></a>Clients
 

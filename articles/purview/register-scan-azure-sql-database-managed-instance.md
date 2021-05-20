@@ -6,13 +6,13 @@ ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: aaca73d71731ee18eb8f12468ec26ece746f1b8f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.date: 05/08/2021
+ms.openlocfilehash: 3ead96a49e2bacca526cd9ee3b8c8e00abbba426
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288362"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656288"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Registrieren und Überprüfen einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -111,7 +111,7 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 
 1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
 
-1. Wählen Sie **Registrieren** aus.
+1. Wählen Sie **Registrieren**.
 
 1. Wählen Sie **Verwaltete Azure SQL-Datenbank-Instanz** und anschließend **Weiter** aus.
 
@@ -119,7 +119,7 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 
 1. Wählen Sie die Option **Aus Azure-Abonnement** und dann im Dropdownfeld **Azure-Abonnement** das entsprechende Abonnement und im Dropdownfeld **Servername** den entsprechenden Server aus.
 
-1. Geben Sie den **vollqualifizierten Domänennamen des öffentlichen Endpunkts** und die **Portnummer** ein. Wählen Sie dann **Fertig stellen** aus, um die Datenquelle zu registrieren.
+1. Geben Sie den **vollqualifizierten Domänennamen des öffentlichen Endpunkts** und die **Portnummer** ein. Wählen Sie anschließend **Registrieren** aus, um die Datenquelle zu registrieren.
 
     :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/add-azure-sql-database-managed-instance.png" alt-text="Hinzufügen einer verwalteten Azure SQL-Datenbank-Instanz":::
 

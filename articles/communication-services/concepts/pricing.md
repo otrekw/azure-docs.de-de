@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5f7b1e6d600f5d3652ce6a66a72cbfbf33b336c4
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 0615d95c922ef3f04618d9f2339e82b53bd359df
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091870"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763683"
 ---
 # <a name="pricing-scenarios"></a>Preisszenarien
 
@@ -85,13 +85,15 @@ Hinweis: Die gemischten US-Tarife für `+1-425` liegen bei 0,013 USD. Details f
 Die Ärztin Alice hat eine Besprechung mit dem Patienten Bob. Alice tritt über die Teams-Desktopanwendung bei. Bob erhält einen Link, mit dem er der Besprechung über die Website des Gesundheitsdienstleisters beitreten kann. Die Verbindung wird dabei unter Verwendung der Communication Services JavaScript SDK hergestellt. Bob verwendet sein Mobiltelefon (iPhone mit Safari), um über einen Webbrowser an der Besprechung teilzunehmen. Während des virtuellen Besuchs ist Chat verfügbar.
 
 - Der Anruf dauert insgesamt 30 Minuten.
-- Alice und Bob nehmen am gesamten Anruf teil. Fünf Minuten nach Beginn des Anrufs schaltet Alice ihre Videoübertragung ein und teilt 13 Minuten lang ihren Bildschirm. Bob hat seine Videoübertragung während des gesamten Anrufs aktiviert.
+- Wenn Bob der Besprechung beitritt, wird er gemäß Teams-Richtlinie im Wartebereich für Teams-Besprechungen platziert. Nach einer Minute ermöglicht Alice ihm den Beitritt zur Besprechung.
+- Nachdem Bob der Besprechung beigetreten ist, nehmen Alice und Bob am gesamten Anruf teil. Fünf Minuten nach Beginn des Anrufs schaltet Alice ihre Videoübertragung ein und teilt 13 Minuten lang ihren Bildschirm. Bob hat seine Videoübertragung während des gesamten Anrufs aktiviert.
 - Alice sendet fünf Nachrichten, Bob antwortet mit drei Nachrichten.
 
 
 **Berechnung der Kosten**
 
-- 1 Teilnehmer (Bob) · 30 Minuten · 0,004 USD pro Teilnehmer und Minute = 0,12 USD [gleicher Preis für Video und Audio]
+- 1 Teilnehmer (Bob) mit Verbindung zum Teams-Wartebereich · 1 Minute · 0,004 USD pro Teilnehmer pro Minute (für den Wartebereich gilt der Standard-Besprechungspreis) = 0,004 USD
+- 1 Teilnehmer (Bob) · 29 Minuten · 0,004 USD pro Teilnehmer und Minute = 0,116 USD [gleicher Preis für Video und Audio]
 - 1 Teilnehmer (Alice) · 30 Minuten · 0,000 USD pro Teilnehmer und Minute = 0,0 USD*.
 - 1 Teilnehmer (Bob) · 3 Chatnachrichten · 0,0008 USD = 0,0024 USD.
 - 1 Teilnehmer (Alice) · 5 Chatnachrichten · 0,000 USD = 0,0 USD.
@@ -99,7 +101,7 @@ Die Ärztin Alice hat eine Besprechung mit dem Patienten Bob. Alice tritt über 
 *Die Teilnahme von Alice ist durch ihre Teams-Lizenz abgedeckt. Der Einfachheit halber enthält Ihre Azure-Rechnung die Minuten und Chatnachrichten zwischen Teams- und Communication Services-Benutzern, die Minuten und Nachrichten des Teams-Clients sind jedoch kostenlos.
 
 **Gesamtkosten für den Besuch:**
-- Benutzer, der über das Communication Services JavaScript SDK teilnimmt: 0,12 USD + 0,0024 USD = 0,1224 USD
+- Benutzer, der über das Communication Services JavaScript SDK teilnimmt: 0,004 USD + 0,116 USD + 0,0024 USD = 0,1224 USD
 - Benutzer, der über die Teams-Desktopanwendung teilnimmt: 0 USD (abgedeckt durch die Teams-Lizenz)
 
 

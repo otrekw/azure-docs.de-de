@@ -5,12 +5,12 @@ description: Hier finden Sie häufig gestellte Fragen zum Ausführen von Windows
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: cc5a5ec2bbfb64a1e787277bf67579bad0543cd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e9b2072ddcb688cd320700d47bb5f5f3670e6543
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739575"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790071"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Häufig gestellte Fragen zu Windows Server-Knotenpools in AKS
 
@@ -82,6 +82,24 @@ So beheben Sie diesen Fehler
 Windows-Knotenpools unterstützen die Rotation von Dienstprinzipalen nicht. Erstellen Sie einen neuen Windows-Knotenpool, und migrieren Sie Ihre Pods vom älteren Pool zum neuen, um den Dienstprinzipal zu aktualisieren. Löschen Sie nach Abschluss des Vorgangs den älteren Knotenpool.
 
 Verwenden Sie stattdessen verwaltete Identitäten, bei denen es sich um Wrapper um Dienstprinzipale handelt. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten in Azure Kubernetes Service][managed-identity].
+
+## <a name="how-do-i-change-the-administrator-password-for-windows-server-nodes-on-my-cluster"></a>Wie ändere ich das Administratorkennwort für Windows Server-Knoten in meinem Cluster?
+
+Wenn Sie Ihren AKS-Cluster erstellen, geben Sie die Parameter `--windows-admin-password` und `--windows-admin-username` an, um die Administratoranmeldeinformationen für alle Windows Server-Knoten im Cluster festzulegen. Wenn Sie keine Administratoranmeldeinformationen angegeben haben, z. B. beim Erstellen eines Clusters über das Azure-Portal oder beim Festlegen von `--vm-set-type VirtualMachineScaleSets` und `--network-plugin azure` beim Verwenden von Azure CLI, wird der Benutzername standardmäßig auf *azureuser* und ein zufälliges Kennwort festgelegt.
+
+Verwenden Sie den `az aks update`-Befehl, um das Administratorkennwort zu ändern:
+
+```azurecli
+az aks update \
+    --resource-group $RESOURCE_GROUP \
+    --name $CLUSTER_NAME \
+    --windows-admin-password $NEW_PW
+```
+
+> [!IMPORTANT]
+> Beim Ausführen dieses Vorgangs werden alle Windows Server-Knotenpools aktualisiert. Linux-Knotenpools sind nicht betroffen.
+> 
+> Wenn Sie `--windows-admin-password` ändern, muss das neue Kennwort mindestens 14 Zeichen lang sein und die [Windows Server-Kennwortanforderungen erfüllen][windows-server-password].
 
 ## <a name="how-many-node-pools-can-i-create"></a>Wie viele Knotenpools kann ich erstellen?
 
@@ -200,3 +218,4 @@ Erstellen Sie zum Einstieg in Windows Server-Container in AKS [einen Knotenpool,
 [hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
 [resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks
 [dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference

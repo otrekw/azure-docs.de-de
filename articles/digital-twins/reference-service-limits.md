@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 04/08/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: d61a87294fe5c5c8794c1b0d5f1eda5e81b88786
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: bc2dee9f1aa24708197b7edc53bb30e6d851666d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205735"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763348"
 ---
 # <a name="azure-digital-twins-service-limits"></a>Einschränkungen des Azure Digital Twins-Diensts
 
@@ -32,8 +32,9 @@ Dies sind die Diensteinschänkungen von Azure Digital Twins.
 Wenn ein Grenzwert erreicht wird, drosselt der Dienst zusätzliche Anforderungen. Dies führt zu einer 429-Fehlerantwort von diesen Anforderungen.
 
 Um dies zu verwalten, finden Sie hier einige Empfehlungen für die Arbeit mit Grenzwerten.
-* **Verwenden Sie Wiederholungslogik.** Die [Azure Digital Twins SDKs](how-to-use-apis-sdks.md) implementieren Wiederholungslogik für fehlgeschlagene Anforderungen. Wenn Sie also mit einem bereitgestellten SDK arbeiten, ist dies bereits integriert. Andernfalls sollten Sie die Wiederholungslogik in Ihrer eigenen Anwendung implementieren. Der Dienst sendet einen `Retry-After`-Header in der Fehlerantwort zurück, den Sie verwenden können, um zu bestimmen, wie lange vor der Wiederholung gewartet werden soll.
+* **Verwenden Sie Wiederholungslogik.** Die [Azure Digital Twins SDKs](concepts-apis-sdks.md) implementieren Wiederholungslogik für fehlgeschlagene Anforderungen. Wenn Sie also mit einem bereitgestellten SDK arbeiten, ist dies bereits integriert. Andernfalls sollten Sie die Wiederholungslogik in Ihrer eigenen Anwendung implementieren. Der Dienst sendet einen `Retry-After`-Header in der Fehlerantwort zurück, den Sie verwenden können, um zu bestimmen, wie lange vor der Wiederholung gewartet werden soll.
 * **Verwenden Sie Schwellenwerte und Benachrichtigungen, um vor dem Erreichen von Grenzwerten zu warnen.** Einige der Dienstgrenzwerte für Azure Digital Twins verfügen über entsprechende [Metriken](troubleshoot-metrics.md), die zum Nachverfolgen der Nutzung in diesen Bereichen verwendet werden können. Informationen zum Konfigurieren von Schwellenwerten und Einrichten einer Warnung für eine Metrik, wenn ein Schwellenwert erreicht wird, finden Sie in den Anweisungen unter [Problembehandlung: Einrichten von Warnungen](troubleshoot-alerts.md). Um Benachrichtigungen für andere Grenzwerte einzurichten, bei denen keine Metriken bereitgestellt werden, sollten Sie diese Logik in Ihren eigenen Anwendungscode implementieren.
+* **Bereitstellung in großem Umfang über mehrere Instanzen hinweg.** Vermeiden Sie einen Single Point of Failure. Statt eines großen Diagramms für Ihre gesamte Bereitstellung sollten Sie erwägen, Teilmengen von Zwillingen logisch (z. B. nach Region oder Mandant) über mehrere Instanzen hinweg zu bereitzustellen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
