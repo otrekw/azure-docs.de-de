@@ -5,19 +5,19 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jobreen
-ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49a2d242ef5cdb9304a9b94d29328c8379a05f46
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98200208"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755619"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>Erstellen eines RESTful-Endpunkts für benutzerdefinierte Anbieter
 
 Ein benutzerdefinierter Anbieter ist ein Vertrag zwischen Azure und einem Endpunkt. Mit benutzerdefinierten Anbietern können Sie Workflows in Azure anpassen. In diesem Tutorial wird gezeigt, wie Sie einen RESTful-Endpunkt für benutzerdefinierte Anbieter erstellen. Sollten Sie noch nicht mit benutzerdefinierten Azure-Anbietern vertraut sein, sehen Sie sich die [Übersicht über benutzerdefinierte Ressourcenanbieter](overview.md) an.
 
 > [!NOTE]
-> Dieses Tutorial baut auf dem Tutorial [Einrichten von Azure-Funktionen für benutzerdefinierte Azure-Anbieter](./tutorial-custom-providers-function-setup.md) auf. Einige der Schritte in diesem Tutorial funktionieren nur, wenn eine Funktions-App für die Nutzung benutzerdefinierter Anbieter eingerichtet wurde.
+> Dieses Tutorial baut auf dem Tutorial [Einrichten von Azure-Funktionen für benutzerdefinierte Azure-Anbieter](./tutorial-custom-providers-function-setup.md) auf. Einige der Schritte in diesem Tutorial funktionieren nur, wenn in Azure Functions eine Funktions-App für die Nutzung benutzerdefinierter Anbieter eingerichtet wurde.
 
 ## <a name="work-with-custom-actions-and-custom-resources"></a>Verwenden von benutzerdefinierten Aktionen und Ressourcen
 
@@ -134,7 +134,7 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 
 Die Methode **CreateCustomResource** aktualisiert die eingehende Anforderung so, dass sie die Azure-spezifischen Felder **id**, **name** und **type** enthält. Bei diesen Feldern handelt es sich um die Eigenschaften der obersten Ebene, die von Diensten innerhalb von Azure verwendet werden. Sie ermöglichen es dem benutzerdefinierten Anbieter, mit anderen Diensten wie Azure Policy, Azure Resource Manager-Vorlagen und dem Azure-Aktivitätsprotokoll zu interagieren.
 
-Eigenschaft | Beispiel | BESCHREIBUNG
+Eigenschaft | Beispiel | Beschreibung
 ---|---|---
 **name** | {myCustomResourceName} | Der Name der benutzerdefinierten Ressource.
 **type** | Microsoft.CustomProviders/resourceProviders/{resourceTypeName} | Der Namespace des Ressourcentyps.
@@ -259,7 +259,7 @@ Nachdem der Funktion alle RESTful-Methoden hinzugefügt wurden, aktualisieren Si
 
 ```csharp
 /// <summary>
-/// Entry point for the Azure function app webhook that acts as the service behind a custom provider.
+/// Entry point for the function app webhook that acts as the service behind a custom provider.
 /// </summary>
 /// <param name="requestMessage">The HTTP request message.</param>
 /// <param name="log">The logger.</param>

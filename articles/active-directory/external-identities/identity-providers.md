@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 184ef66a0175c301497fa536c86eddc169995698
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 4fd158c5d19c805fe7b7592904fc42ed3117bef6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315361"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764349"
 ---
 # <a name="identity-providers-for-external-identities"></a>Identitätsanbieter für externe Identitäten
 
@@ -32,13 +32,13 @@ Zusätzlich zu Azure AD-Konten bietet External Identities verschiedene Identit�
 
 - **Google**: Mit dem Google-Verbund können externe Benutzer Ihre Einladungen einlösen, indem sie sich mit ihren eigenen Gmail-Konten bei Ihren Apps anmelden. Der Google-Verbund kann auch in Ihren Benutzerflows mit Self-Service-Registrierung verwendet werden. Weitere Informationen finden Sie unter [Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer](google-federation.md).
    > [!IMPORTANT]
-   > **Ab der zweiten Hälfte des Jahres 2021** [stellt Google die Unterstützung für die Anmeldung in der Webansicht ein](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie die Google Föderation für B2B-Einladungen oder [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) verwenden, oder wenn Sie die Selbstbedienungsanmeldung mit Google Mail verwenden, können sich Google Gmail-Benutzer nicht anmelden, wenn Ihre Apps die Benutzer anhand einer eingebetteten Webanzeige authentifizieren. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
+   > **Ab der zweiten Hälfte des Jahres 2021** [stellt Google die Unterstützung für die Anmeldung in der Webansicht ein](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie den Google-Verbund für B2B-Einladungen oder [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) verwenden oder die Self-Service-Registrierung mit Gmail verwenden, können sich Google Gmail-Benutzer nicht anmelden, wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
 
 - **Facebook**: Beim Entwickeln einer App können Sie die Self-Service-Registrierung konfigurieren und den Facebook-Verbund aktivieren, damit sich Benutzer mit ihren eigenen Facebook-Konten für Ihre App registrieren können. Facebook kann nur für Benutzerflows mit Self-Service-Registrierung verwendet werden und steht nicht als Anmeldeoption zur Verfügung, wenn Benutzer Ihre Einladungen einlösen. Weitere Informationen finden Sie unter [Hinzufügen von Facebook als Identitätsanbieter für externe Identitäten](facebook-federation.md).
 
-- **Direkter Verbund**: Sie können auch einen direkten Verbund mit einem beliebigen externen Identitätsanbieter einrichten, der das SAML- oder WS-Fed-Protokoll unterstützt. Mit dem direkten Verbund können externe Benutzer Ihre Einladungen einlösen, indem sie sich mit ihren eigenen Social Media- oder Unternehmenskonten bei Ihren Apps anmelden. Weitere Informationen finden Sie unter [Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)](direct-federation.md).
+- **SAML/WS-Fed Identitätsanbieterverbund**: Sie können auch einen Verbund mit einem beliebigen externen IdP einrichten, der das SAML- oder WS-Fed-Protokoll unterstützt. Mit dem SAML/WS-Fed-IdP-Verbund können externe Benutzer Ihre Einladungen einlösen, indem sie sich mit ihren eigenen Social Media- oder Unternehmenskonten bei Ihren Apps anmelden. Wie das [Einrichten eines SAML-/WS-Fed-IdP-Verbunds](direct-federation.md) funktioniert.
    > [!NOTE]
-   > Identitätsanbieter für den direkten Verbund können in Ihren Benutzerflows mit Self-Service-Registrierung nicht verwendet werden.
+   > SAML-/WS-Fed-IdP-Verbünde können nicht in Ihren Benutzerabläufen für die Self-Service-Anmeldung verwendet werden.
 
 ## <a name="adding-social-identity-providers"></a>Hinzufügen von sozialen Netzwerken als Identitätsanbieter
 
@@ -60,4 +60,4 @@ Lesen Sie die folgenden Artikel, um Informationen zum Hinzufügen von Identität
 - [Hinzufügen der Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md)
 - [Hinzufügen von Google](google-federation.md) als zulässiger Identitätsanbieter
 - [Hinzufügen von Facebook](facebook-federation.md) als zulässiger Identitätsanbieter
-- [Richten Sie einen direkten Verbund](direct-federation.md) mit jeder Organisation ein, deren Identitätsanbieter das SAML 2.0- oder WS-Fed-Protokoll unterstützt. Für Benutzerflows für die Self-Service-Registrierung ist der direkte Verbund keine Option.
+- [Einrichten eines SAML-/WS-Fed-IdP-Verbunds](direct-federation.md) mit jeder Organisation, deren Identitätsanbieter das SAML 2.0- oder WS-Fed-Protokoll unterstützt. Für Benutzerflows für die Self-Service-Registrierung ist der SAML/WS-Fed-IdP-Verbund keine Option.

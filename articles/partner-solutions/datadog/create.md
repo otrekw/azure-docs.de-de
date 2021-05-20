@@ -3,24 +3,24 @@ title: 'Erstellen von Datadog: Azure-Partner-Lösungen'
 description: In diesem Artikel wird beschrieben, wie Sie das Azure-Portal verwenden, um eine Instanz von Datadog zu erstellen.
 ms.service: partner-services
 ms.topic: quickstart
-ms.date: 02/19/2021
+ms.date: 05/05/2021
 author: tfitzmac
 ms.author: tomfitz
 ms.custom: references_regions
-ms.openlocfilehash: 7af8b82c5da6c60527b45b6e8e292b9f067016ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d9c364c1367986f4ebe47cc00b4cb8b2434b90c
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101747588"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517458"
 ---
 # <a name="quickstart-get-started-with-datadog"></a>Schnellstart: Erste Schritte mit Datadog
 
-In dieser Schnellstartanleitung erstellen Sie eine Instanz von Datadog. Sie können entweder eine neue Datadog-Organisation erstellen oder eine Verknüpfung zu einer vorhandenen Datadog-Organisation herstellen.
+In dieser Schnellstartanleitung erstellen Sie eine Instanz von Datadog. Sie können entweder eine neue Datadog-Organisation erstellen oder eine Verknüpfung zu einer vorhandenen Datadog-Organisation herstellen. Azure wird nur mit vorhandenen Datadog-Organisationen in **US3** verknüpft.
 
-## <a name="pre-requisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Einrichten der Azure Datadog-Integration müssen Sie über **Besitzer**-Zugriff auf das Azure-Abonnement verfügen. Stellen Sie sicher, dass Sie über den richtigen Zugriff verfügen, bevor Sie mit der Einrichtung beginnen.
+Zum Einrichten der Azure-Datadog-Integration müssen Sie über die Zugriffsberechtigung **Besitzer** für das Azure-Abonnement verfügen. Stellen Sie sicher, dass Sie über den richtigen Zugriff verfügen, bevor Sie mit der Einrichtung beginnen.
 
 Wenn Sie die Funktion „Einmaliges Anmelden“ (SSO, Single-Sign-On) für Security Assertion Markup Language (SAML) in der Datadog-Ressource verwenden möchten, müssen Sie eine Unternehmensanwendung einrichten. Zum Hinzufügen einer Unternehmensanwendung benötigen Sie eine der folgenden Rollen: globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
 
@@ -71,7 +71,7 @@ Im Portal wird ein Formular zum Erstellen der Datadog-Ressource angezeigt.
 
 Geben Sie die folgenden Werte an:
 
-|Eigenschaft | BESCHREIBUNG
+|Eigenschaft | Beschreibung
 |:-----------|:-------- |
 | Subscription | Wählen Sie das Azure-Abonnement aus, das Sie zum Erstellen der Datadog-Ressource verwenden möchten. Sie müssen über Besitzerzugriff verfügen. |
 | Resource group | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine [Ressourcengruppe](../../azure-resource-manager/management/overview.md#resource-groups) ist ein Container, der zusammengehörige Ressourcen für eine Azure-Lösung enthält. |
@@ -85,7 +85,7 @@ Wenn Sie eine Verknüpfung mit einer vorhandenen Datadog-Organisation herstellen
 
 ## <a name="link-to-existing-datadog-organization"></a>Link zu vorhandener Datadog-Organisation
 
-Sie können Ihre neue Datadog-Ressource in Azure mit einer vorhandenen Datadog-Organisation verknüpfen.
+Sie können Ihre neue Datadog-Ressource in Azure mit einer vorhandenen Datadog-Organisation in **US3** verknüpfen.
 
 Wählen Sie **Vorhandene** für Datenorganisation aus, und wählen Sie dann **mit Datadog-Org verknüpfen** aus.
 
@@ -127,7 +127,7 @@ Es gibt zwei Arten von Protokollen, die von Azure an Datadog ausgegeben werden k
 
 Um Protokolle auf Abonnementebene an Datadog zu senden, wählen Sie **Abonnement-Aktivitätsprotokolle senden** aus. Wenn diese Option nicht aktiviert ist, wird keines der Protokolle auf Abonnementebene an Datadog gesendet.
 
-Um Azure-Ressourcenprotokolle an Datadog zu senden, wählen Sie **Azure-Ressourcenprotokolle für alle definierten Ressourcen senden** aus. Die Typen von Azure-Ressourcenprotokollen sind unter [Azure Monitor-Ressourcenprotokollkategorien](../../azure-monitor/essentials/resource-logs-categories.md)aufgeführt.  Verwenden Sie Azure-Ressourcentags, um den Satz von Azure-Ressourcen zu filtern, die Protokolle an Datadog senden.  
+Um Azure-Ressourcenprotokolle an Datadog zu senden, wählen Sie **Azure-Ressourcenprotokolle für alle definierten Ressourcen senden** aus. Die Typen von Azure-Ressourcenprotokollen sind unter [Azure Monitor-Ressourcenprotokollkategorien](../../azure-monitor/essentials/resource-logs-categories.md)aufgeführt.  Verwenden Sie Azure-Ressourcentags, um den Satz von Azure-Ressourcen zu filtern, die Protokolle an Datadog senden.
 
 Die an Datadog gesendeten Protokolle werden von Azure abgerechnet. Weitere Informationen finden Sie unter [Preisgestaltung von Plattformprotokollen](https://azure.microsoft.com/pricing/details/monitor/), die an Azure Marketplace-Partner gesendet werden.
 

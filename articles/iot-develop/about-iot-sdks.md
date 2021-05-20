@@ -6,12 +6,12 @@ ms.author: philmea
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: c35a9045bf809c03630fbb7c57f9d31e7b143422
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 7c8aa496d44ba72c5a8d62631108b8e332dd4fbf
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876455"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795814"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Übersicht über Azure IoT-Geräte-SDKs
 
@@ -49,7 +49,7 @@ Wählen Sie nach Möglichkeit ein SDK, mit dem Ihr Entwicklungsteam vertraut ist
 
 ## <a name="how-can-i-get-started"></a>Wie fange ich an?
 
-Sehen Sie sich zunächst die GitHub-Repositorys der Azure-Geräte-SDKs an. Sie können auch eine [Schnellstartanleitung](quickstart-send-telemetry-python.md) durchlaufen, in der gezeigt wird, wie Sie ein SDK verwenden, um Telemetriedaten an Azure IoT zu senden.
+Sehen Sie sich zunächst die GitHub-Repositorys der Azure-Geräte-SDKs an. Sie können auch eine [Schnellstartanleitung](quickstart-send-telemetry-central.md) durchlaufen, in der gezeigt wird, wie Sie ein SDK verwenden, um Telemetriedaten an Azure IoT zu senden.
 
 Ihre Optionen für den Einstieg hängen von der Art Ihres Geräts ab:
 - Verwenden Sie für eingeschränkte Geräte das [Embedded C SDK](#embedded-c-sdk). 
@@ -163,7 +163,7 @@ IoT Hub Device Provisioning Service (DPS) ist ein Hilfsdienst für IoT Hub und
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Senden von Telemetriedaten von einem Gerät an Azure IoT Central (Python)](quickstart-send-telemetry-python.md)
-* [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine Azure IoT Hub-Instanz (Python)](quickstart-send-telemetry-cli-python.md)
+* [Schnellstart: Senden von Telemetriedaten an IoT Central](quickstart-send-telemetry-central.md)
+* [Schnellstart: Senden von Telemetriedaten an IoT Hub](quickstart-send-telemetry-iot-hub.md)
 * [Erste Schritte bei der eingebetteten Entwicklung](quickstart-device-development.md)
 * Weitere Informationen zu den Vorteilen der Entwicklung mit Azure IoT-SDKs finden Sie [hier](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/).

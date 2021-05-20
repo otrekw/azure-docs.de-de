@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Upgrade eines Azure Kubernetes Service-Cl
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: d6a5ed468541090d433dba732707a59841e6ff41
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 925edc3d83b9acc0a2c91001ada39921d3653824
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779613"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737655"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -126,6 +126,7 @@ Zusätzlich zum Ausführen von manuellen Upgrades eines Clusters können Sie fü
 | `patch`| Es wird automatisch ein Upgrade des Clusters auf die neueste unterstützte Patchversion durchgeführt, sobald dieses verfügbar wird. Die Nebenversion wird beibehalten.| Ein Beispiel: In einem Cluster wird derzeit Version *1.17.7* ausgeführt, und die Versionen *1.17.9*, *1.18.4*, *1.18.6* und *1.19.1* sind verfügbar. In diesem Fall wird ein Upgrade auf *1.17.9* ausgeführt.|
 | `stable`| In diesem Kanal wird automatisch ein Upgrade des Clusters auf die neueste unterstützte Patchversion der Nebenversion *N-1* ausgeführt. *N* steht dabei für die neueste unterstützte Nebenversion.| Ein Beispiel: Auf einem Cluster wird derzeit Version *1.17.7* ausgeführt, und die Versionen *1.17.9*, *1.18.4*, *1.18.6* und *1.19.1* sind verfügbar. In diesem Fall wird ein Upgrade auf *1.18.6* ausgeführt.
 | `rapid`| In diesem Kanal wird automatisch ein Upgrade des Clusters auf die neueste unterstützte Patchversion der neuesten unterstützten Nebenversion ausgeführt.| Falls der Cluster eine Kubernetes-Version mit Nebenversion *N-2* aufweist, wobei *N* für die neueste unterstützte Nebenversion steht, wird zuerst ein Upgrade des Clusters auf die neueste unterstützte Patchversion der Nebenversion *N-1* ausgeführt. Ein Beispiel: Auf einem Cluster wird derzeit Version *1.17.7* ausgeführt, und die Versionen *1.17.9*, *1.18.4*, *1.18.6* und *1.19.1* sind verfügbar. In diesem Fall wird zuerst ein Upgrade auf *1.18.6* und dann ein Upgrade auf *1.19.1* ausgeführt.
+| `node-image`| automatisches Upgrade des Knotenimages auf die neueste verfügbare Version.| Microsoft stellt häufig Patches und neue Images für Imageknoten bereit (in der Regel wöchentlich), aber Ihre ausgeführten Knoten erhalten die neuen Images nur, wenn Sie ein Knotenimage-Upgrade durchführen. Wenn Sie den Knotenimage-Kanal aktivieren, werden Ihre Knotenimages automatisch aktualisiert, sobald eine neue Version verfügbar ist. |
 
 > [!NOTE]
 > Bei den automatischen Clusterupgrades wird immer nur auf Kubernetes-Versionen mit allgemeiner Verfügbarkeit aktualisiert, niemals auf Vorschauversionen.

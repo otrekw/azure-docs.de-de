@@ -3,12 +3,12 @@ title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme mit verschiedenen SDKs beim Abfragen von Azure-Ressourcen mit Azure Resource Graph beheben können.
 ms.date: 05/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 54b680169c38cd4517c225e6452c02de8ecd4dd2
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 86d60f888dfd702e8895f560258b8ddb02d35827
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325803"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751479"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problembehandlung mit Azure Resource Graph
 
@@ -43,15 +43,15 @@ Es gibt mehrere Methoden für den Umgang mit gedrosselten Anforderungen:
 
 #### <a name="issue"></a>Problem
 
-Kunden mit Zugriff auf mehr als 1000 Abonnements, einschließlich mandantenübergreifender Abonnements über [Azure Lighthouse](../../../lighthouse/overview.md), können nicht über einen einzigen Aufruf von Azure Resource Graph Daten zu allen Abonnements abrufen.
+Kunden mit Zugriff auf mehr als 1.000 Abonnements, einschließlich mandantenübergreifender Abonnements über [Azure Lighthouse](../../../lighthouse/overview.md), können nicht über einen einzigen Aufruf von Azure Resource Graph Daten zu allen Abonnements abrufen.
 
 #### <a name="cause"></a>Ursache
 
-Die Azure CLI und PowerShell leiten nur die ersten 1000 Abonnements an Azure Resource Graph weiter. Die Rest-API für Azure Resource Graph akzeptiert eine maximale Anzahl von Abonnements, für die die Abfrage durchgeführt werden soll.
+Die Azure CLI und PowerShell leiten nur die ersten 1.000 Abonnements an Azure Resource Graph weiter. Die Rest-API für Azure Resource Graph akzeptiert eine maximale Anzahl von Abonnements, für die die Abfrage durchgeführt werden soll.
 
 #### <a name="resolution"></a>Lösung
 
-Verwenden Sie Batchanforderungen für die Abfrage, die nur aus einem Teil der Abonnements bestehen, um unter der Grenze von 1000 Abonnements zu bleiben. Verwenden Sie den Parameter **Subscription** (Abonnement) in PowerShell, um das Problem zu lösen.
+Verwenden Sie Batchanforderungen für die Abfrage, die nur aus einem Teil der Abonnements bestehen, um unter der Grenze von 1.000 Abonnements zu bleiben. Verwenden Sie den Parameter **Subscription** (Abonnement) in PowerShell, um das Problem zu lösen.
 
 ```azurepowershell-interactive
 # Replace this query with your own
@@ -109,5 +109,5 @@ Fügen Sie mindestens ein Abonnement in die Abonnementliste ein, für das der Ku
 Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
 - Erhalten Sie Antworten von Azure-Experten über [Azure-Foren](https://azure.microsoft.com/support/forums/).
-- Mit [@AzureSupport](https://twitter.com/azuresupport) verbinden – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit durch Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
+- Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
 - Wenn Sie weitere Hilfe benötigen, können Sie einen Azure-Supportvorgang anlegen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten** aus.

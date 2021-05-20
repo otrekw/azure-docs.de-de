@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy 
 ms.date: 03/22/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9ca33c3a937b0a155928f20469830388a95a08e3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 2610d788c18883d7aaffc3f7cae3ab7774eed1fa
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107506022"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752595"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster
 
@@ -358,7 +358,7 @@ Sind die obigen Voraussetzungen erfüllt, installieren Sie das Azure Policy-Add
      Weitere Informationen dazu, was mit dem Helm-Diagramm des Add-Ons installiert wird, finden Sie in der [Definition des Helm-Diagramms für das Azure Policy Add-On](https://github.com/Azure/azure-policy/tree/master/extensions/policy-addon-kubernetes/helm-charts/azure-policy-addon-aks-engine) auf GitHub.
 
      > [!NOTE]
-     > Aufgrund der Beziehung zwischen Azure Policy Add-On und Ressourcengruppen-ID unterstützt Azure Policy nur einen AKS-Engine-Cluster für jede Ressourcengruppe.
+     > Aufgrund der Beziehung zwischen Azure Policy-Add-On und Ressourcengruppen-ID unterstützt Azure Policy nur einen AKS-Engine-Cluster für jede Ressourcengruppe.
 
 Führen Sie den folgenden Befehl aus, um zu überprüfen, ob die Installation des Add-Ons erfolgreich war und die Pods _azure-policy_ und _gatekeeper_ ausgeführt werden:
 
@@ -501,7 +501,6 @@ Wenn Sie das Azure Policy Add-On und Gatekeeper aus dem AKS-Engine-Cluster entfe
 - Bei Installation durch Festlegen der **addons**-Eigenschaft in der Clusterdefinition für die AKS-Engine:
 
   Stellen Sie die Clusterdefinition erneut für die AKS-Engine bereit, nachdem Sie die **addons**-Eigenschaft für _azure-policy_ in „false“ geändert haben:
-
 
   ```json
   "addons": [{

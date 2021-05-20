@@ -2,14 +2,14 @@
 title: Sperren von Ressourcen, um Änderungen zu verhindern
 description: Verhindern Sie, dass Benutzer Azure-Ressourcen aktualisieren oder löschen, indem Sie eine Sperre für alle Benutzer und Rollen anwenden.
 ms.topic: conceptual
-ms.date: 04/28/2021
+ms.date: 05/07/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 52e61dd1c84e0f5fa6267e687ab55ce386d5767b
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5d8af2529039aa6e9435243249d7724d996b119d
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314803"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634795"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
@@ -17,40 +17,49 @@ Als Administrator können Sie ein Abonnement, eine Ressourcengruppe oder eine Re
 
 Sie können die Sperrebene auf **CanNotDelete** oder **ReadOnly** festlegen. Im Portal heißen die Sperren **Löschen** und **Schreibgeschützt**.
 
-* **CanNotDelete** bedeutet, dass autorisierte Benutzer weiterhin eine Ressource lesen und ändern, aber nicht löschen können.
-* **ReadOnly** bedeutet, dass autorisierte Benutzer eine Ressource zwar lesen, aber nicht löschen oder aktualisieren können. Mit dieser Sperre erzielen Sie einen ähnlichen Effekt wie durch die Beschränkung sämtlicher autorisierter Benutzer auf die Berechtigungen der **Leserolle**.
-
-## <a name="how-locks-are-applied"></a>Anwenden von Sperren
-
-Wenn Sie eine Sperre in einem übergeordneten Bereich anwenden, erben alle Ressourcen in diesem Bereich die entsprechende Sperre. Auch Ressourcen, die Sie später hinzufügen, erben die Sperre aus dem übergeordneten Element. Die restriktivste Sperre in der Vererbung hat Vorrang.
+- **CanNotDelete** bedeutet, dass autorisierte Benutzer weiterhin eine Ressource lesen und ändern, aber nicht löschen können.
+- **ReadOnly** bedeutet, dass autorisierte Benutzer eine Ressource zwar lesen, aber nicht löschen oder aktualisieren können. Mit dieser Sperre erzielen Sie einen ähnlichen Effekt wie durch die Beschränkung sämtlicher autorisierter Benutzer auf die Berechtigungen der **Leserolle**.
 
 Im Gegensatz zur rollenbasierten Zugriffssteuerung verwenden Sie Verwaltungssperren, um eine Einschränkung für alle Benutzer und Rollen zu aktivieren. Informationen zum Festlegen von Benutzer- und Rollenberechtigungen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 
-Resource Manager-Sperren gelten nur für Vorgänge auf der Verwaltungsebene (also für Vorgänge, die an `https://management.azure.com` gesendet werden). Die Ausführung ressourceneigener Funktionen wird durch die Sperren nicht eingeschränkt. Die Ressourcenänderungen sind eingeschränkt, die Ressourcenvorgänge jedoch nicht. Beispielsweise verhindert eine ReadOnly-Sperre auf einem logischen SQL-Datenbankserver das Löschen oder Ändern des Servers. Sie verhindert jedoch nicht das Erstellen, Aktualisieren oder Löschen von Daten in den Datenbanken auf diesem Server. Datentransaktionen sind zulässig, da diese Vorgänge nicht an `https://management.azure.com` gesendet werden.
+## <a name="lock-inheritance"></a>Vererbung von Sperren
+
+Wenn Sie eine Sperre in einem übergeordneten Bereich anwenden, erben alle Ressourcen in diesem Bereich die entsprechende Sperre. Auch Ressourcen, die Sie später hinzufügen, erben die Sperre aus dem übergeordneten Element. Die restriktivste Sperre in der Vererbung hat Vorrang.
+
+## <a name="understand-scope-of-locks"></a>Grundlegendes zum Umfang von Sperren
+
+> [!NOTE]
+> Ein grundlegender Aspekt von Sperren besteht darin, dass sie nicht für alle Arten von Vorgängen gelten. Azure-Vorgänge können in zwei Kategorien unterteilt werden: auf Steuerungsebene und auf Datenebene. **Sperren gelten nur für Vorgänge der Steuerungsebene**.
+
+Vorgänge der Steuerungsebene werden an `https://management.azure.com` übermittelt. Vorgänge der Datenebene sind Vorgänge, die an Ihre Instanz eines Dienst gesendet werden, z. B. an `https://myaccount.blob.core.windows.net/`. Weitere Informationen finden Sie unter [Steuerungsebene und Datenebene von Azure](control-plane-and-data-plane.md). Informationen dazu, welche Vorgänge die URL der Steuerungsebene verwenden, finden Sie unter [Azure REST-API](/rest/api/azure/).
+
+Dieser Unterschied bedeutet, dass Sperren Änderungen an einer Ressource verhindern, aber nicht einschränken, wie Ressourcen ihre eigenen Funktionen ausführen.  Beispielsweise verhindert eine ReadOnly-Sperre auf einem logischen SQL-Datenbankserver das Löschen oder Ändern des Servers. Sie verhindert jedoch nicht das Erstellen, Aktualisieren oder Löschen von Daten in den Datenbanken auf diesem Server. Datentransaktionen sind zulässig, da diese Vorgänge nicht an `https://management.azure.com` gesendet werden.
+
+Weitere Beispiele zu den Unterschieden zwischen Vorgängen der Steuerungs- und Datenebenen finden Sie im nächsten Abschnitt.
 
 ## <a name="considerations-before-applying-locks"></a>Überlegungen vor der Anwendung von Sperren
 
 Das Anwenden von Sperren kann zu unerwarteten Ergebnissen führen, da einige Vorgänge, die die Ressource nicht zu ändern scheinen, tatsächlich Aktionen erfordern, die von der Sperre blockiert werden. Sperren verhindern alle Vorgänge, für die eine POST-Anforderung an die Azure Resource Manager-API erforderlich ist. Einige gängige Beispiele für die Vorgänge, die durch Sperren blockiert werden, sind:
 
-* Eine Schreibschutzsperre für ein **Speicherkonto** hindert Benutzer am Auflisten der Kontoschlüssel. Der Vorgang Azure Storage [List Keys](/rest/api/storagerp/storageaccounts/listkeys) wird durch eine Post-Anforderung verarbeitet, um den Zugriff auf die Kontoschlüssel zu schützen, die den gesamten Zugriff auf die Daten im Speicherkonto ermöglichen. Wenn eine Schreibschutzsperre für ein Speicherkonto konfiguriert ist, müssen Benutzer, die nicht über die Kontoschlüssel verfügen, Azure AD-Anmeldeinformationen verwenden, um auf Blob- oder Warteschlangendaten zuzugreifen. Eine Schreibschutzsperre verhindert auch die Zuweisung von Azure RBAC-Rollen, die auf das Speicherkonto oder einen Datencontainer (Blobcontainer oder Warteschlange) beschränkt sind.
+- Eine Schreibschutzsperre für ein **Speicherkonto** hindert Benutzer am Auflisten der Kontoschlüssel. Der Vorgang Azure Storage [List Keys](/rest/api/storagerp/storageaccounts/listkeys) wird durch eine Post-Anforderung verarbeitet, um den Zugriff auf die Kontoschlüssel zu schützen, die den gesamten Zugriff auf die Daten im Speicherkonto ermöglichen. Wenn eine Schreibschutzsperre für ein Speicherkonto konfiguriert ist, müssen Benutzer, die nicht über die Kontoschlüssel verfügen, Azure AD-Anmeldeinformationen verwenden, um auf Blob- oder Warteschlangendaten zuzugreifen. Eine Schreibschutzsperre verhindert auch die Zuweisung von Azure RBAC-Rollen, die auf das Speicherkonto oder einen Datencontainer (Blobcontainer oder Warteschlange) beschränkt sind.
 
-* Eine Löschschutzsperre für ein **Speicherkonto** verhindert nicht, dass Daten innerhalb dieses Kontos gelöscht oder geändert werden. Durch diese Art von Schutz wird nur das Speicherkonto selbst vor dem Löschen geschützt. Blob-, Warteschlangen-, Tabellen- oder Dateidaten in diesem Speicherkonto werden nicht geschützt. 
+- Eine Löschschutzsperre für ein **Speicherkonto** verhindert nicht, dass Daten innerhalb dieses Kontos gelöscht oder geändert werden. Durch diese Art von Schutz wird nur das Speicherkonto selbst vor dem Löschen geschützt. Blob-, Warteschlangen-, Tabellen- oder Dateidaten in diesem Speicherkonto werden nicht geschützt.
 
-* Eine Schreibschutzsperre für ein **Speicherkonto** verhindert nicht, dass Daten innerhalb dieses Kontos gelöscht oder geändert werden. Durch diese Art von Schutz wird nur das Speicherkonto selbst vor dem Löschen oder Ändern geschützt. Blob-, Warteschlangen-, Tabellen- oder Dateidaten in diesem Speicherkonto werden nicht geschützt. 
+- Eine Schreibschutzsperre für ein **Speicherkonto** verhindert nicht, dass Daten innerhalb dieses Kontos gelöscht oder geändert werden. Durch diese Art von Schutz wird nur das Speicherkonto selbst vor dem Löschen oder Ändern geschützt. Blob-, Warteschlangen-, Tabellen- oder Dateidaten in diesem Speicherkonto werden nicht geschützt.
 
-* Das Festlegen einer Schreibschutzsperre für eine **App Service**-Ressource verhindert, dass der Server-Explorer von Visual Studio Dateien für die Ressource anzeigen kann, da für diese Interaktion Schreibzugriff erforderlich ist.
+- Das Festlegen einer Schreibschutzsperre für eine **App Service**-Ressource verhindert, dass der Server-Explorer von Visual Studio Dateien für die Ressource anzeigen kann, da für diese Interaktion Schreibzugriff erforderlich ist.
 
-* Durch eine Schreibschutzsperre für eine **Ressourcengruppe**, die einen **App Service-Plan** enthält, werden Sie am [Hochskalieren Ihres Tarifs](../../app-service/manage-scale-up.md) gehindert.
+- Durch eine Schreibschutzsperre für eine **Ressourcengruppe**, die einen **App Service-Plan** enthält, werden Sie am [Hochskalieren Ihres Tarifs](../../app-service/manage-scale-up.md) gehindert.
 
-* Eine Schreibschutzsperre für eine **Ressourcengruppe**, die einen **virtuellen Computer** enthält, hindert alle Benutzer am Starten bzw. Neustarten des virtuellen Computers. Diese Vorgänge erfordern eine POST-Anforderung.
+- Eine Schreibschutzsperre für eine **Ressourcengruppe**, die einen **virtuellen Computer** enthält, hindert alle Benutzer am Starten bzw. Neustarten des virtuellen Computers. Diese Vorgänge erfordern eine POST-Anforderung.
 
-* Eine Löschschutzsperre für eine **Ressourcengruppe** verhindert, dass mit Azure Resource Manager automatisch Bereitstellungen aus dem Verlauf [gelöscht](../templates/deployment-history-deletions.md) werden. Wenn im Verlauf 800 Bereitstellungen erreicht werden, treten bei weiteren Bereitstellungen Fehler auf.
+- Eine Löschschutzsperre für eine **Ressourcengruppe** verhindert, dass mit Azure Resource Manager automatisch Bereitstellungen aus dem Verlauf [gelöscht](../templates/deployment-history-deletions.md) werden. Wenn im Verlauf 800 Bereitstellungen erreicht werden, treten bei weiteren Bereitstellungen Fehler auf.
 
-* Eine vom **Azure Backup-Dienst** erstellte Löschschutzsperre für die **Ressourcengruppe** führt dazu, dass Sicherungen fehlschlagen. Der Dienst unterstützt maximal 18 Wiederherstellungspunkte. Bei einer Sperrung kann der Sicherungsdienst Wiederherstellungspunkte nicht bereinigen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Sichern von Azure-VMs](../../backup/backup-azure-vm-backup-faq.yml).
+- Eine vom **Azure Backup-Dienst** erstellte Löschschutzsperre für die **Ressourcengruppe** führt dazu, dass Sicherungen fehlschlagen. Der Dienst unterstützt maximal 18 Wiederherstellungspunkte. Bei einer Sperrung kann der Sicherungsdienst Wiederherstellungspunkte nicht bereinigen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Sichern von Azure-VMs](../../backup/backup-azure-vm-backup-faq.yml).
 
-* Eine Nichtlöschsperre für eine **Resourcengruppe** verhindert, dass **Azure Machine Learning** [Azure Machine Learning-Computeclusters](../../machine-learning/concept-compute-target.md#azure-machine-learning-compute-managed) automatisch skaliert, um nicht verwendete Knoten zu entfernen.
+- Eine Nichtlöschsperre für eine **Resourcengruppe** verhindert, dass **Azure Machine Learning** [Azure Machine Learning-Computeclusters](../../machine-learning/concept-compute-target.md#azure-machine-learning-compute-managed) automatisch skaliert, um nicht verwendete Knoten zu entfernen.
 
-* Eine Schreibschutzsperre für ein **Abonnement** verhindert, dass **Azure Advisor** ordnungsgemäß funktioniert. Advisor kann die Ergebnisse seiner Abfragen nicht speichern.
+- Eine Schreibschutzsperre für ein **Abonnement** verhindert, dass **Azure Advisor** ordnungsgemäß funktioniert. Advisor kann die Ergebnisse seiner Abfragen nicht speichern.
 
 ## <a name="who-can-create-or-delete-locks"></a>Voraussetzungen für das Erstellen oder Löschen von Sperren
 
@@ -88,87 +97,142 @@ Wenn Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) zum Bereitstellen ein
 
 Die folgende Vorlage wendet eine Sperre auf die Ressourcengruppe an, in der sie bereitgestellt ist. Beachten Sie, dass für die Sperrressource keine Eigenschaft „scope“vorhanden ist, weil der Bereich der Sperre mit dem Bereich der Bereitstellung übereinstimmt. Diese Vorlage wird auf Ressourcengruppenebene bereitgestellt.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {  
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/locks",
-            "apiVersion": "2016-09-01",
-            "name": "rgLock",
-            "properties": {
-                "level": "CanNotDelete",
-                "notes": "Resource Group should not be deleted."
-            }
-        }
-    ]
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/locks",
+      "apiVersion": "2016-09-01",
+      "name": "rgLock",
+      "properties": {
+        "level": "CanNotDelete",
+        "notes": "Resource group should not be deleted."
+      }
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
+  name: 'rgLock'
+  properties: {
+    level: 'CanNotDelete'
+    notes: 'Resource group should not be deleted.'
+  }
+}
+```
+
+---
 
 Um eine Ressourcengruppe zu erstellen und zu sperren, stellen Sie die folgende Vorlage auf Abonnementebene bereit.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "rgName": {
-            "type": "string"
-        },
-        "rgLocation": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "rgName": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2019-10-01",
-            "name": "[parameters('rgName')]",
-            "location": "[parameters('rgLocation')]",
-            "properties": {}
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "lockDeployment",
-            "resourceGroup": "[parameters('rgName')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "variables": {},
-                    "resources": [
-                        {
-                            "type": "Microsoft.Authorization/locks",
-                            "apiVersion": "2016-09-01",
-                            "name": "rgLock",
-                            "properties": {
-                                "level": "CanNotDelete",
-                                "notes": "Resource group and its resources should not be deleted."
-                            }
-                        }
-                    ],
-                    "outputs": {}
-                }
+    "rgLocation": {
+      "type": "string"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2020-10-01",
+      "name": "[parameters('rgName')]",
+      "location": "[parameters('rgLocation')]",
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "lockDeployment",
+      "resourceGroup": "[parameters('rgName')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "variables": {},
+          "resources": [
+            {
+              "type": "Microsoft.Authorization/locks",
+              "apiVersion": "2016-09-01",
+              "name": "rgLock",
+              "properties": {
+                "level": "CanNotDelete",
+                "notes": "Resource group and its resources should not be deleted."
+              }
             }
+          ],
+          "outputs": {}
         }
-    ],
-    "outputs": {}
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Die Bicep-Hauptdatei erstellt eine Ressourcengruppe und verwendet ein [Modul](../templates/bicep-modules.md), um die Sperre zu erstellen.
+
+```Bicep
+targetScope = 'subscription'
+
+param rgName string
+param rgLocation string
+
+resource createRg 'Microsoft.Resources/resourceGroups@2020-10-01' = {
+  name: rgName
+  location: rgLocation
+}
+
+module deployRgLock './lockRg.bicep' = {
+  name: 'lockDeployment'
+  scope: resourceGroup(createRg.name)
+}
+```
+
+Das Modul verwendet eine Bicep-Datei namens _lockRg.bicep_, die die Ressourcengruppensperre hinzufügt.
+
+```bicep
+resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
+  name: 'rgLock'
+  properties: {
+    level: 'CanNotDelete'
+    notes: 'Resource group and its resources should not be deleted.'
+  }
+}
+```
+
+---
+
 Wenn Sie eine Sperre auf eine **Ressource** in der Ressourcengruppe anwenden, fügen Sie die Eigenschaft „scope“ hinzu. Legen Sie „scope“ auf den Namen der zu sperrenden Ressource fest.
 
-Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Website und eine Sperre für die Website erstellt. Der Bereich der Sperre wird auf die Website festgelegt.
+Im folgenden Beispiel wird eine Vorlage gezeigt, die einen App Service-Plan, eine Website und eine Sperre für die Website erstellt. Der Umfang der Sperre wird auf die Website festgelegt.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -179,8 +243,8 @@ Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Websi
       "type": "string"
     },
     "location": {
-        "type": "string",
-        "defaultValue": "[resourceGroup().location]"
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
@@ -189,7 +253,7 @@ Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Websi
   "resources": [
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2020-12-01",
       "name": "[parameters('hostingPlanName')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -203,7 +267,7 @@ Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Websi
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2020-12-01",
       "name": "[variables('siteName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -229,6 +293,47 @@ Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Websi
   ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param hostingPlanName string
+param location string = resourceGroup().location
+
+var siteName = concat('ExampleSite', uniqueString(resourceGroup().id))
+
+resource serverFarm 'Microsoft.Web/serverfarms@2020-12-01' = {
+  name: hostingPlanName
+  location: location
+  sku: {
+    tier: 'Free'
+    name: 'f1'
+    capacity: 0
+  }
+  properties: {
+    targetWorkerCount: 1
+  }
+}
+
+resource webSite 'Microsoft.Web/sites@2020-12-01' = {
+  name: siteName
+  location: location
+  properties: {
+    serverFarmId: serverFarm.name
+  }
+}
+
+resource siteLock 'Microsoft.Authorization/locks@2016-09-01' = {
+  name: 'siteLock'
+  scope: webSite
+  properties:{
+    level: 'CanNotDelete'
+    notes: 'Site should not be deleted.'
+  }
+}
+```
+
+---
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -351,6 +456,6 @@ Schließen Sie in die Anforderung ein JSON-Objekt ein, das die Eigenschaften fü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum logischen Organisieren von Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](tag-resources.md).
-* Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../governance/policy/overview.md).
-* Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance).
+- Informationen zum logischen Organisieren von Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](tag-resources.md).
+- Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../governance/policy/overview.md).
+- Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance).

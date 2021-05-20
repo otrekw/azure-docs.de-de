@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: fb53fc37227e040ed7bd7fc8e47de9aed538bc2e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b85855238beb9887a35369011ff8daaaf58bef9e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721391"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787237"
 ---
 # <a name="use-azure-spot-virtual-machines"></a>Verwenden von Azure-Spot-VMs 
 
@@ -39,7 +39,7 @@ Sie können sich für den Empfang von Benachrichtigungen in der VM über [Azure 
 | Der maximale Preis ist auf >= dem aktuellen Preis festgelegt. | Wenn Kapazität und Kontingent verfügbar sind, wird die VM bereitgestellt. |
 | Der maximale Preis ist auf < der aktuelle Preis festgelegt. | Die VM wird nicht bereitgestellt. Sie erhalten eine Fehlermeldung, die besagt, dass der maximale Preis auf >= dem aktuellen Preis festgelegt werden muss. |
 | Neustarten eines virtuellen Computers, der beendet/entfernt wurde, wenn der maximale Preis > = dem aktuellen Preis ist | Wenn Kapazität und Kontingent verfügbar sind, wird die VM bereitgestellt. |
-| Neustarten eines virtuellen Computers, der beendet/entfernt wurde, wenn der maximale Preis < der aktuelle Preis ist | Sie erhalten eine Fehlermeldung, die besagt, dass der maximale Preis auf >= dem aktuellen Preis festgelegt werden muss. | 
+| Neustarten eines virtuellen Computers, der beendet/entfernt wurde, wenn der maximale Preis < als der aktuellen Preis ist | Sie erhalten eine Fehlermeldung, die besagt, dass der maximale Preis auf >= dem aktuellen Preis festgelegt werden muss. | 
 | Der Preis für den virtuellen Computer wurde überschritten und ist nun > der maximale Preis. | Die VM wird entfernt. Sie erhalten 30 Sekunden vor der Entfernung eine Benachrichtigung. | 
 | Nach der Entfernung wechselt der Preis für den virtuellen Computer zurück zu < der maximale Preis. | Die VM wird nicht automatisch neu gestartet. Sie können die VM selbst neu starten. Sie wird dann zum aktuellen Preis in Rechnung gestellt. |
 | Wenn der maximale Preis auf `-1` festgelegt ist | Die VM wird nicht aus Preisgründen entfernt. Der maximale Preis ist der aktuelle Preis bis hin zum Preis für Standard-VMs. Ihnen wird niemals mehr als der Standardpreis in Rechnung gestellt.| 

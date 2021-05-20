@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 8457d64b541bd012dc85cf9964f09e69b10e962c
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: 1f28ee0cb174c02ba05d93ac0c8eba309bfc3872
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108006690"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739815"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
@@ -326,7 +326,8 @@ Sie können diese Instrumentierungen auch unterdrücken, indem Sie folgende Umge
 
 (dies hat dann Vorrang vor der Aktivierung, die in der JSON-Konfiguration angegeben ist).
 
-> HINWEIS Wenn Sie eine detailliertere Steuerung wünschen, z. B. um einige, aber nicht alle Redis-Aufrufe zu unterdrücken, finden Sie Informationen dazu unter [Stichprobenüberschreibungen](./java-standalone-sampling-overrides.md).
+> [!NOTE]
+> Wenn Sie eine detailliertere Steuerung wünschen, z. B. um einige, aber nicht alle Redis-Aufrufe zu unterdrücken, finden Sie Informationen dazu unter [Stichprobenüberschreibungen](./java-standalone-sampling-overrides.md).
 
 ## <a name="heartbeat"></a>Heartbeat
 

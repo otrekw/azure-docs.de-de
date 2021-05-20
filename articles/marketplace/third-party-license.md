@@ -1,5 +1,5 @@
 ---
-title: 'Verwaltung von Drittanbieter-App-Lizenzen über Microsoft: Azure'
+title: 'Drittanbieter-App-Lizenzverwaltung über Microsoft: Azure und Microsoft AppSource'
 description: Hier erfahren Sie mehr über das Verwalten von Drittanbieter-App-Lizenzen über Microsoft.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,12 +8,12 @@ author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
 ms.date: 04/30/2021
-ms.openlocfilehash: de39afe0b88c78b75948fc7c702f0ae06916e2ff
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 8535d124596b2ce5bd80df0d95f0fb5af5bb68f9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331500"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759489"
 ---
 # <a name="third-party-app-license-management-through-microsoft"></a>Verwaltung von Drittanbieter-App-Lizenzen über Microsoft
 
@@ -49,11 +49,11 @@ In dieser Tabelle wird der allgemeine Prozess zum Verwalten von Drittanbieter-Ap
 
 | Schritt | Details |
 | ------------ | ------------- |
-| Schritt 1: Erstellen eines Angebots | Der ISV erstellt ein Angebot in Partner Center und entscheidet sich für dieses Angebot für die Verwaltung von Lizenzen über Microsoft. Dazu gehört auch das Definieren von mindestens einem Lizenzplan für das Angebot. |
-| Schritt 2: Aktualisieren des Pakets | Der ISV erstellt ein Lösungspaket für das Angebot, das Lizenzplaninformationen als Metadaten enthält, und lädt es in Partner Center hoch, um es in Microsoft AppSource zu veröffentlichen. Weitere Informationen finden Sie unter [Hinzufügen von Lizenzmetadaten zu Ihrer Lösung](https://go.microsoft.com/fwlink/?linkid=2162161&clcid=0x409). |
+| Schritt 1: Erstellen eines Angebots | Der ISV erstellt ein Angebot in Partner Center und entscheidet sich für dieses Angebot für die Verwaltung von Lizenzen über Microsoft. Dazu gehört auch das Definieren von mindestens einem Lizenzplan für das Angebot. Weitere Informationen finden Sie unter [Erstellen eines Dynamics 365 für Customer Engagement-& Power Apps-Angebots auf Microsoft AppSource](dynamics-365-customer-engage-offer-setup.md). |
+| Schritt 2: Aktualisieren des Pakets | Der ISV erstellt ein Lösungspaket für das Angebot, das Lizenzplaninformationen als Metadaten enthält, und lädt es in Partner Center hoch, um es in Microsoft AppSource zu veröffentlichen. Weitere Informationen finden Sie unter [Hinzufügen von Lizenzmetadaten zu Ihrer Lösung](/powerapps/developer/data-platform/appendix-add-license-information-to-your-solution). |
 | Schritt 3: Erwerben von Lizenzen | Kunden finden das Angebot des ISV in AppSource oder direkt auf der Website des ISV. Kunden erwerben Lizenzen für die gewünschten Pläne direkt über den ISV. (Diese Angebote können derzeit nicht über AppSource erworben werden.) |
-| Schritt 4: Registrieren des Geschäftsabschlusses | Der ISV registriert den Kauf bei Microsoft in Partner Center. Im Rahmen der [Registrierung des Geschäftsabschlusses](/partner-center/csp-commercial-marketplace-licensing) gibt der ISV den Typ und die Menge der einzelnen Lizenzierungspläne an, die vom Kunden erworben wurden. |
-| Schritt 5: Verwalten von Lizenzen | Die Lizenzpläne werden im Microsoft 365 Admin Center angezeigt, damit der Kunde sie Benutzern oder Gruppen in seiner Organisation zuweisen kann. Der Kunde kann die Anwendung auch über das Power Platform Admin Center in seinem Mandanten installieren. |
+| Schritt 4: Registrieren des Geschäftsabschlusses | Der ISV registriert den Kauf bei Microsoft in Partner Center. Im Rahmen der [Registrierung des Geschäftsabschlusses](/partner-center/csp-commercial-marketplace-licensing#register-isv-connect-deal-in-deal-registration) gibt der ISV den Typ und die Menge der einzelnen Lizenzierungspläne an, die vom Kunden erworben wurden. |
+| Schritt 5: Verwalten von Lizenzen | Die Lizenzpläne werden im Microsoft 365 Admin Center angezeigt, damit sie der Kunde [Benutzern oder Gruppen](/microsoft-365/commerce/licenses/manage-third-party-app-licenses) in seiner Organisation zuweisen kann. Der Kunde kann die Anwendung auch über das Power Platform Admin Center in seinem Mandanten installieren. |
 | Schritt 6: Durchführen der Lizenzüberprüfung | Wenn ein Benutzer innerhalb der Organisation des Kunden versucht, eine Anwendung auszuführen, überprüft Microsoft vor dem Zulassen der Ausführung, ob der Benutzer über eine Lizenz verfügt. Verfügt er nicht über eine Lizenz, wird dem Benutzer eine Meldung mit dem Hinweis angezeigt, dass er für eine Lizenz einen Administrator kontaktieren muss. |
 | Schritt 7: Anzeigen von Berichten | ISVs können Informationen zu bereitgestellten und zugewiesenen Lizenzen über einen bestimmten Zeitraum und nach Geografie anzeigen. |
 |||

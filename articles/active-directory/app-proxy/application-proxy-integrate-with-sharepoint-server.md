@@ -1,6 +1,6 @@
 ---
 title: Aktivieren des Remotezugriffs auf SharePoint – Azure Active Directory-Anwendungsproxy
-description: Hier werden die Grundlagen der Konfiguration eines lokalen SharePoint-Servers mit dem Azure Active Directory-Anwendungsproxy erörtert.
+description: Im Folgenden werden die Grundlagen zur Integration einer lokalen SharePoint Server-Instanz in den Azure Active Directory-Anwendungsproxy beschrieben.
 services: active-directory
 author: kenwith
 manager: mtillman
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 3bbe0480fcf6e4e1cf828cc61c5778fdd096ed8b
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 45433268a61772f499b5d2672a8b81044c1e3414
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186297"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764457"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-active-directory-application-proxy"></a>Aktivieren des Remotezugriffs auf SharePoint mit dem Azure Active Directory-Anwendungsproxy
 
@@ -180,7 +180,7 @@ Konfigurieren Sie KCD so, dass der Azure AD-Anwendungsproxydienst Benutzeridenti
 Führen Sie zum Konfigurieren von KCD für jeden Connectorcomputer die folgenden Schritte aus:
 
 1. Melden Sie sich bei einem Domänencontroller als Domänenadministrator an, und öffnen Sie dann „Active Directory-Benutzer und -Computer“.
-1. Suchen Sie nach dem Computer, auf dem der Azure AD-Proxyconnector ausgeführt wird. In diesem Beispiel ist das der SharePoint-Server.
+1. Suchen Sie nach dem Computer, auf dem der Azure AD-Proxyconnector ausgeführt wird. In diesem Beispiel ist es der Computer, auf dem die SharePoint Server-Instanz ausgeführt wird.
 1. Doppelklicken Sie auf den Computer, und wählen Sie anschließend die Registerkarte **Delegierung** aus.
 1. Stellen Sie sicher, dass die Delegierungsoptionen auf **Computer bei Delegierungen angegebener Dienste vertrauen** festgelegt sind. Wählen Sie dann die Option **Beliebiges Authentifizierungsprotokoll verwenden** aus.
 1. Wählen Sie die Schaltfläche **Hinzufügen** und anschließend **Benutzer oder Computer** aus, und suchen Sie nach dem SharePoint-Anwendungspoolkonto. Beispiel: `Contoso\spapppool`.

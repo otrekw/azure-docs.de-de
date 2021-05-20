@@ -8,12 +8,12 @@ ms.date: 11/18/2020
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 115c55a5833906aa0dcc616a5b1b659468647282
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 2fd9ac25d08cf4439278565f90258a230eeedb50
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814548"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627760"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Entwickeln für Azure Files mit Java
 
@@ -259,7 +259,7 @@ Erfahren Sie, wie Sie eine Datei aus dem lokalen Speicher hochladen.
 
 # <a name="azure-java-sdk-v12"></a>[Azure Java SDK v12](#tab/java)
 
-Mit dem folgenden Code wird eine lokale Datei in Azure Files-Speicher hochgeladen, indem die [ShareFileClient.uploadFromFile](/java/api/com.azure.storage.file.share.sharefileclient.uploadfromfile)-Methode aufgerufen wird. Die folgende Beispielmethode gibt einen `Boolean`-Wert zurück, der angibt, ob die angegebene Datei erfolgreich hochgeladen wurde.
+Mit dem folgenden Code wird eine lokale Datei in Azure Files hochgeladen, indem die [ShareFileClient.uploadFromFile](/java/api/com.azure.storage.file.share.sharefileclient.uploadfromfile)-Methode aufgerufen wird. Die folgende Beispielmethode gibt einen `Boolean`-Wert zurück, der angibt, ob die angegebene Datei erfolgreich hochgeladen wurde.
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_uploadFile":::
 

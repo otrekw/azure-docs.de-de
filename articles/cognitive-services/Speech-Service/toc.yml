@@ -120,12 +120,12 @@
               items:
                 - name: Worum handelt es sich bei „Benutzerdefinierte neuronale Stimme“?
                   href: custom-neural-voice.md
-                - name: Erste Schritte mit Custom Voice
+                - name: Erste Schritte mit „Benutzerdefinierte neuronale Stimme“
                   displayName: 'custom voice, neural voice'
                   href: how-to-custom-voice.md
-                - name: Vorbereiten von Daten
+                - name: Aufbereiten von Daten für das Training
                   href: how-to-custom-voice-prepare-data.md
-                - name: Erstellen und Verwenden von Custom Voice-Modellen
+                - name: Erstellen und Verwenden Ihres Sprachmodells
                   href: how-to-custom-voice-create-voice.md
                 - name: Aufnehmen von Sprachbeispielen
                   href: record-custom-voice-samples.md
@@ -295,12 +295,16 @@
       items:
         - name: REST-API für die Sprechererkennung
           href: /rest/api/speakerrecognition/
-- name: Benutzerdefiniertes Schlüsselwort
+- name: Schlüsselworterkennung
   items:
-    - name: Übersicht über benutzerdefinierte Schlüsselwörter
-      href: custom-keyword-overview.md
-    - name: Grundlagen zu benutzerdefinierten Schlüsselwörtern
+    - name: Übersicht über die Schlüsselworterkennung
+      href: keyword-recognition-overview.md
+    - name: Schnellstart zu „Benutzerdefiniertes Schlüsselwort“
       href: custom-keyword-basics.md
+    - name: Empfehlungen und Richtlinien
+      href: keyword-recognition-guidelines.md
+    - name: Unterstützung für Regionen
+      href: keyword-recognition-region-support.md
 - name: Detaillierte Informationen zu Szenarien
   items:
     - name: Konversationsszenarien
