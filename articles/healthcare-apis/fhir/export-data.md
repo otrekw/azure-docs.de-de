@@ -5,14 +5,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 3/18/2021
+ms.date: 5/17/2021
 ms.author: cavoeg
-ms.openlocfilehash: 7df88f1a425b563733310d69fc14d85f9251ae44
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 50f79d8b73b6c716e14504d6d763d900a7bed488
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108794374"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078656"
 ---
 # <a name="how-to-export-fhir-data"></a>Exportieren von FHIR-Daten
 
@@ -74,15 +74,35 @@ Die Azure API for FHIR unterstützt die folgenden Abfrageparameter, die alle opt
 
 ## <a name="secure-export-to-azure-storage"></a>Sicherer Export in Azure Storage
 
-Für Azure API for FHIR wird ein sicherer Exportvorgang unterstützt. Eine Möglichkeit zum Durchführen eines sicheren Exports besteht darin, für bestimmte IP-Adressen, die Azure API for FHIR zugeordnet sind, den Zugriff auf das Azure-Speicherkonto zuzulassen. Die Konfigurationen richten sich jeweils danach, ob sich das Speicherkonto an demselben Ort wie Azure API for FHIR oder einem anderen Ort befindet.
+Für Azure API for FHIR wird ein sicherer Exportvorgang unterstützt. Wählen Sie eine der beiden folgenden Optionen aus:
 
-### <a name="when-the-azure-storage-account-is-in-a-different-region"></a>Azure-Speicherkonto in einer anderen Region
+* Zulassen, dass Azure API for FHIR als vertrauenswürdiger Microsoft-Dienst auf das Azure-Speicherkonto zugreifen.
+ 
+* Zulassen, dass bestimmte IP-Adressen, die Azure API for FHIR zugeordnet sind, auf das Azure-Speicherkonto zugreifen können. Diese Option bietet zwei unterschiedliche Konfigurationen, je nachdem, ob sich das Speicherkonto am selben Standort wie befindet oder sich an einem anderen Speicherort als das der Azure API for FHIR befindet.
 
-Wählen  Sie im Portal Netzwerk des Azure-Speicherkontos aus. 
+### <a name="allowing-azure-api-for-fhir-as-a-microsoft-trusted-service"></a>Zulassen Azure API for FHIR als vertrauenswürdiger Microsoft-Dienst
 
-   :::image type="content" source="media/export-data/storage-networking.png" alt-text="Netzwerkeinstellungen für Azure-Speicher" lightbox="media/export-data/storage-networking.png":::
+Wählen Sie in der Azure-Portal ein Speicherkonto aus, und wählen Sie dann das **Blatt Netzwerk** aus. Wählen **Sie auf der Registerkarte** **Firewalls und virtuelle Netzwerke** die Option Ausgewählte Netzwerke aus.
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass Sie dem Speicherkonto mithilfe seiner verwalteten Identität Azure API for FHIR Zugriffsberechtigung erteilt haben. Weitere Informationen finden Sie unter [Konfigurieren der Exporteinstellung und Einrichten des Speicherkontos.](https://docs.microsoft.com/azure/healthcare-apis/fhir/configure-export-data)
+
+  :::image type="content" source="media/export-data/storage-networking.png" alt-text="Netzwerkeinstellungen für Azure-Speicher" lightbox="media/export-data/storage-networking.png":::
+
+Aktivieren Sie **im Abschnitt** Ausnahmen das Kontrollkästchen Vertrauenswürdigen Benutzern Microsoft-Dienste Zugriff **auf** dieses Speicherkonto erlauben, und speichern Sie die Einstellung. 
+
+:::image type="content" source="media/export-data/exceptions.png" alt-text="Vertrauenswürdigen Microsoft-Dienste Zugriff auf dieses Speicherkonto erlauben.":::
+
+Sie können jetzt FHIR-Daten sicher in das Speicherkonto exportieren. Beachten Sie, dass sich das Speicherkonto in ausgewählten Netzwerken befindet und nicht öffentlich zugänglich ist. Für den Zugriff auf die Dateien können Sie entweder private Endpunkte für das Speicherkonto aktivieren und verwenden oder für kurze Zeit alle Netzwerke für das Speicherkonto aktivieren.
+
+> [!IMPORTANT]
+> Die Benutzeroberfläche wird später aktualisiert, damit Sie den Ressourcentyp für Azure API for FHIR eine bestimmte Dienstinstanz auswählen können.
+
+### <a name="allowing-specific-ip-addresses-for-the-azure-storage-account-in-a-different-region"></a>Zulassen bestimmter IP-Adressen für das Azure-Speicherkonto in einer anderen Region
+
+Wählen **Sie im** Portal Netzwerk des Azure-Speicherkontos aus. 
    
-Klicken Sie auf **Ausgewählte Netzwerke**. Geben Sie im Abschnitt Firewall die IP-Adresse im Feld **Adressbereich an.** Fügen Sie IP-Adressbereiche hinzu, um den Zugriff über das Internet oder Ihre lokalen Netzwerke zuzulassen. Sie finden die IP-Adresse in der folgenden Tabelle für die Azure-Region, in der der Azure API for FHIR-Dienst bereitgestellt wird.
+Klicken Sie auf **Ausgewählte Netzwerke**. Geben Sie im Abschnitt Firewall die IP-Adresse im Feld **Adressbereich** an. Fügen Sie IP-Adressbereiche hinzu, um den Zugriff über das Internet oder Ihre lokalen Netzwerke zu ermöglichen. Die IP-Adresse finden Sie in der folgenden Tabelle für die Azure-Region, in der Azure API for FHIR bereitgestellt wird.
 
 |**Azure-Region**         |**Öffentliche IP-Adresse** |
 |:----------------------|:-------------------|
@@ -111,16 +131,16 @@ Klicken Sie auf **Ausgewählte Netzwerke**. Geben Sie im Abschnitt Firewall die 
 > [!NOTE]
 > Die obigen Schritte ähneln den Konfigurationsschritten, die im Dokument Konvertieren von Daten in FHIR (Vorschau) beschrieben werden. Weitere Informationen finden Sie unter [Hosten und Verwenden von Vorlagen.](https://docs.microsoft.com/azure/healthcare-apis/fhir/convert-data#host-and-use-templates)
 
-### <a name="when-the-azure-storage-account-is-in-the-same-region"></a>Azure-Speicherkonto in derselben Region
+### <a name="allowing-specific-ip-addresses-for-the-azure-storage-account-in-the-same-region"></a>Zulassen bestimmter IP-Adressen für das Azure-Speicherkonto in derselben Region
 
 Der Konfigurationsprozess entspricht dem obigen Prozess, aber mit der Ausnahme, dass ein bestimmter IP-Adressbereich im CIDR-Format verwendet wird: 100.64.0.0/10. Der IP-Adressbereich (100.64.0.0 bis 100.127.255.255) muss angegeben werden, da die tatsächlich vom Dienst genutzte IP-Adresse variiert. Sie liegt für jede $export-Anforderung aber immer in diesem Bereich.
 
 > [!Note] 
-> Es ist möglich, dass stattdessen eine private IP-Adresse im Bereich 10.0.2.0/24 genutzt wird. In diesem Fall ist der $export nicht erfolgreich. Sie können die $export-Anforderung wiederholen, aber es gibt keine Garantie, dass beim nächsten Mal eine IP-Adresse im Bereich von 100.64.0.0/10 verwendet wird. Dies ist das bekannte standardmäßige Netzwerkverhalten. Die Alternative besteht darin, das Speicherkonto in einer anderen Region zu konfigurieren.
+> Es ist möglich, dass stattdessen eine private IP-Adresse im Bereich 10.0.2.0/24 genutzt wird. In diesem Fall ist der $export vorgang nicht erfolgreich. Sie können die $export Anforderung wiederholen, aber es gibt keine Garantie, dass eine IP-Adresse im Bereich von 100.64.0.0/10 beim nächsten Mal verwendet wird. Dies ist das bekannte standardmäßige Netzwerkverhalten. Die Alternative besteht darin, das Speicherkonto in einer anderen Region zu konfigurieren.
     
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie FHIR-Ressourcen mithilfe des Befehls $export exportieren. Als Nächstes erfahren Sie, wie Sie nicht identifizierte Daten exportieren:
+In diesem Artikel haben Sie erfahren, wie Sie FHIR-Ressourcen mithilfe des Befehls $export exportieren. Weitere Informationen zum Exportieren von nicht identifizierten Daten finden Sie unter:
  
 >[!div class="nextstepaction"]
 >[Exportieren anonymisierter Daten](de-identified-export.md)

@@ -1,17 +1,16 @@
 ---
-title: Bereitstellen eines verwalteten Service Fabric-Clusters (Vorschauversion) mit Azure Resource Manager
+title: Bereitstellen eines verwalteten Service Fabric-Clusters mithilfe von Azure Resource Manager
 description: Es wird beschrieben, wie Sie einen verwalteten Service Fabric-Cluster mit einer Azure Resource Manager-Vorlage erstellen.
 ms.topic: quickstart
-ms.date: 09/28/2020
-ms.custom: references_regions
-ms.openlocfilehash: 079e8e3e39bd306332abb43fa2ae1f8cc04e305b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 5/10/2021
+ms.openlocfilehash: 0775d5f6874de8fafb1d9a32cf19071f4a7a99b4
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91410419"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685205"
 ---
-# <a name="quickstart-deploy-a-service-fabric-managed-cluster-preview-with-an-azure-resource-manager-template"></a>Schnellstart: Bereitstellen eines verwalteten Service Fabric-Clusters (Vorschauversion) mit einer Azure Resource Manager-Vorlage
+# <a name="quickstart-deploy-a-service-fabric-managed-cluster-with-an-azure-resource-manager-template"></a>Schnellstart: Bereitstellen eines verwalteten Service Fabric-Clusters mithilfe einer Azure Resource Manager-Vorlage
 
 Verwaltete Service Fabric-Cluster sind eine Weiterentwicklung des Azure Service Fabric-Clusterressourcenmodells zur Optimierung Ihrer Bereitstellungs- und Clusterverwaltung. Bei einem verwalteten Service Fabric-Cluster handelt es sich um eine vollständig gekapselte Ressource, mit der Sie Service Fabric-Clusterressourcen einzeln bereitstellen können – anstatt alle zugrunde liegenden Ressourcen, aus denen ein Service Fabric-Cluster besteht. In diesem Artikel wird die Bereitstellung eines verwalteten Service Fabric-Clusters in Azure zu Testzwecken mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) beschrieben.
 
@@ -47,7 +46,7 @@ Notieren Sie sich den Zertifikatfingerabdruck, da Sie ihn im nächsten Schritt z
 
     * **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
     * **Ressourcengruppe**: Wählen Sie **Neu erstellen**. Geben Sie einen eindeutigen Namen für die Ressourcengruppe an, z. B. *myResourceGroup*, und wählen Sie dann **OK** aus.
-    * **Standort**: Wählen Sie einen Standort aus, z. B. **eastus2**. Zu den unterstützten Regionen für verwaltete Service Fabric-Cluster (Vorschauversion) zählen `centraluseuap`, `eastus2euap`, `eastasia`, `northeurope`, `westcentralus` und `eastus2`.
+    * **Standort**: Wählen Sie einen Standort aus.
     * **Clustername**: Geben Sie einen eindeutigen Namen für Ihren Cluster ein, z. B. *mysfcluster*.
     * **Administratorbenutzername**: Geben Sie einen Administratornamen ein, der auf den zugrunde liegenden VMs des Clusters für RDP verwendet werden soll.
     * **Administratorkennwort**: Geben Sie ein Administratorkennwort ein, das auf den zugrunde liegenden VMs des Clusters für RDP verwendet werden soll.

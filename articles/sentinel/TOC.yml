@@ -387,3 +387,5 @@
       href: 'https://azure.microsoft.com/pricing/details/azure-sentinel/'
     - name: "Featureverfügbarkeit für US\_Government-Clouds"
       href: /azure/security/fundamentals/feature-availability
+    - name: "Archivierte Neuerungen (älter als sechs\_Monate)"
+      href: whats-new-archive.md

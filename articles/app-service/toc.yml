@@ -32,8 +32,6 @@
       href: quickstart-custom-container.md
     - name: App mit mehreren Containern
       href: quickstart-multi-container.md
-    - name: App in Azure Arc (Vorschau)
-      href: quickstart-arc.md
 - name: Tutorials
   items:
     - name: Zugreifen auf Speicher und Microsoft Graph durch eine sichere App
@@ -88,6 +86,10 @@
       href: tutorial-send-email.md
     - name: Beheben von Fehlern
       href: tutorial-troubleshoot-monitor.md
+    - name: GitHub-Aktionen
+      items:
+        - name: ASP.NET Core mit einem Container
+          href: app-service-sql-github-actions.md
 - name: Beispiele
   items:
     - name: Azure CLI
@@ -108,8 +110,6 @@
       href: operating-system-functionality.md
     - name: Best Practices für die Bereitstellung
       href: deploy-best-practices.md
-    - name: Azure Arc-Hosting (Vorschau)
-      href: overview-arc-integration.md
     - name: Sicherheit
       items:
         - name: Empfehlungen
@@ -279,8 +279,6 @@
           href: app-service-undelete.md
         - name: Wiederherstellen aus der ausgefallenen Region
           href: manage-disaster-recovery.md
-        - name: Aktivieren in Azure Arc
-          href: manage-create-arc-environment.md
     - name: Verschieben einer App
       items:
         - name: Verschieben zwischen Regionen

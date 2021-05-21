@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/15/2021
+ms.date: 05/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 390ccfa828ebaa0d3dec15990ffeb60cbb24360e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f94c19f52ab5b49f63d02296f30108f643f5c66d
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648576"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734503"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Tutorial: Azure Active Directory-Integration mit Overdrive
 
@@ -82,9 +82,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den Overdrive-Client](https://help.overdrive.com/), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um die Ihren Anforderungen entsprechende **App-Verbundmetadaten-URL** aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Downloadlink für das Zertifikat](common/metadataxml.png)
+    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
 6. Kopieren Sie im Abschnitt **Overdrive einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
@@ -123,7 +123,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ## <a name="configure-overdrive-sso"></a>Konfigurieren des einmaligen Anmeldens für Overdrive
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Overdrive** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Overdrive](https://help.overdrive.com/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Für die Konfiguration des einmaligen Anmeldens aufseiten von **Overdrive** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von Overdrive](https://help.overdrive.com/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-overdrive-test-user"></a>Erstellen eines Overdrive-Testbenutzers
 
