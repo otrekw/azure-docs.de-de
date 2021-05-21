@@ -66,11 +66,19 @@
     - name: Azure Logic Apps-Instanz mit nur einem Mandanten (Vorschau)
       items:
         - name: Übersicht über einzelne Mandanten (Vorschau)
-          href: logic-apps-overview-preview.md
-        - name: 'Erstellen einer Vorschauversion von Logik-Apps: Portal'
-          href: create-stateful-stateless-workflows-azure-portal.md
-        - name: 'Erstellen einer Vorschauversion von Logik-Apps: Visual Studio Code'
-          href: create-stateful-stateless-workflows-visual-studio-code.md
+          href: single-tenant-overview-compare.md
+        - name: 'Erstellen von Workflows mit nur einem Mandanten: Portal'
+          href: create-single-tenant-workflows-azure-portal.md
+        - name: 'Erstellen von Workflows mit nur einem Mandanten: Visual Studio Code'
+          href: create-single-tenant-workflows-visual-studio-code.md
+        - name: DevOps-Bereitstellung für einen einzelnen Mandanten
+          href: devops-deployment-single-tenant-azure-logic-apps.md
+        - name: Einrichten der DevOps-Bereitstellung für einen einzelnen Mandanten
+          href: set-up-devops-deployment-single-tenant-azure-logic-apps.md
+        - name: Schützen des Datenverkehrs zwischen Workflows mit nur einem Mandanten und virtuellen Netzwerken
+          href: secure-single-tenant-workflow-virtual-network-private-endpoint.md
+        - name: Schätzen der Speicherkosten für Workflows mit nur einem Mandanten
+          href: estimate-storage-costs.md
     - name: Entwickeln
       items:
         - name: Erstellen auf der Grundlage von vorgefertigten Vorlagen
@@ -350,7 +358,7 @@
           href: test-logic-apps-mock-data-static-results.md
     - name: Bereitstellen
       items:
-        - name: 'Übersicht: Automatisieren der Bereitstellung von Logik-Apps'
+        - name: Informationen zur automatisierten Bereitstellung (mehrere Mandanten)
           href: logic-apps-azure-resource-manager-templates-overview.md
         - name: Erstellen von Logik-App-Vorlagen
           href: logic-apps-create-azure-resource-manager-templates.md

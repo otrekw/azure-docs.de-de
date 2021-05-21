@@ -4,6 +4,8 @@
   items:
     - name: Informationen zu Azure Static Web Apps
       href: overview.md
+    - name: Hostingpläne
+      href: plans.md
 - name: Schnellstarts
   expanded: true
   items:

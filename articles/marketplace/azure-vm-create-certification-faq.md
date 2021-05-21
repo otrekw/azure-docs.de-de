@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: mathapli
 ms.author: mathapli
-ms.date: 01/18/2021
-ms.openlocfilehash: 7a9fa4a6f44e88caa6f98d5e1c56adaa065fa29a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/13/2021
+ms.openlocfilehash: 20f69edac6338c07132e004acc6c0ce1cd58ab29
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558707"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634327"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Problembehandlung bei der Zertifizierung von virtuellen Computern
 
@@ -540,13 +540,13 @@ Wenden Sie sich an den [Partner Center-Support](https://aka.ms/marketplacepublis
 In diesem Abschnitt wird beschrieben, wie Sie ein neues VM-Image bereitstellen, wenn ein Sicherheitsrisiko oder Exploit bei einem Ihrer VM-Images erkannt wird. Dies gilt nur für Azure-VM-Angebote, die auf Azure Marketplace veröffentlicht werden.
 
 > [!NOTE]
-> Sie können weder das letzte VM-Image aus einem Plan entfernen noch den Verkauf des letzten Plans für ein Angebot einstellen.
+> Sie können weder das letzte VM-Image aus einem Plan entfernen noch den Verkauf des letzten Plans für ein Angebot ablehnen (früher Verkauf stoppen).
 
 Führen Sie eine der folgenden Aktionen aus:
 
 - Falls Sie über ein neues VM-Image als Ersatz für das gefährdete VM-Image verfügen, helfen Ihnen die Informationen unter [Bereitstellen eines korrigierten VM-Images](#provide-a-fixed-vm-image) weiter.
-- Wenn Sie kein neues VM-Image als Ersatz für das einzige VM-Image in einem Plan besitzen und den Plan beenden möchten, können Sie [den Verkauf des Plans einstellen](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan).
-- Wenn das einzige VM-Image im Angebot nicht ersetzt werden soll, empfiehlt es sich, [den Verkauf des Angebots einzustellen](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan).
+- Wenn Sie kein neues VM-Image als Ersatz für das einzige VM-Image in einem Plan besitzen und den Plan beenden möchten, können Sie [den Verkauf des Plans ablehnen (früher Verkauf stoppen)](partner-center-portal/update-existing-offer.md#deprecate-an-offer-or-plan).
+- Wenn das einzige VM-Image im Angebot nicht ersetzt werden soll, empfiehlt es sich, [den Verkauf des Angebots abzulehnen (früher Verkauf stoppen)](partner-center-portal/update-existing-offer.md#deprecate-an-offer-or-plan).
 
 ### <a name="provide-a-fixed-vm-image"></a>Bereitstellen eines korrigierten VM-Images
 

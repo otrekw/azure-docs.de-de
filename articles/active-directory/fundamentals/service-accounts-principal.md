@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f101c8a3d3af9658414e816afff9050402d71ce
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: d8a4b97ef095f5860ddf99751186ca04926e1698
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064069"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761739"
 ---
 # <a name="securing-service-principals"></a>Sichern von Dienstprinzipalen
 
@@ -37,7 +37,7 @@ Eine bestimmte Anwendungsinstanz verfügt über zwei Eigenschaften: die Applicat
 > Es scheint so zu sein, als ob die Begriffe „Anwendung“ und „Dienstprinzipal“ austauschbar wären, wenn im Kontext von Authentifizierungsaufgaben grob auf eine Anwendung verwiesen wird. Es handelt sich hierbei aber um zwei unterschiedliche Darstellungen von Anwendungen in Azure AD.
  
 
-Die ApplicationID steht für die globale Anwendung und ist für alle Anwendungsinstanzen mandantenübergreifend identisch. Die ObjectID ist ein eindeutiger Wert für ein Anwendungsobjekt und repräsentiert den Dienstprinzipal. Wie bei Benutzern, Gruppen und anderen Ressourcen auch, dient die ObjectID als Hilfe beim eindeutigen Identifizieren einer Anwendungsinstanz in Azure AD.
+Die ApplicationID steht für die globale Anwendung und ist für alle Anwendungsinstanzen mandantenübergreifend identisch. Die ObjectID ist ein eindeutiger Wert für ein Anwendungsobjekt. Wie bei Benutzern, Gruppen und anderen Ressourcen auch, dient die ObjectID als Hilfe beim eindeutigen Identifizieren einer Anwendungsinstanz in Azure AD.
 
 Ausführlichere Informationen zu diesem Thema finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../develop/app-objects-and-service-principals.md).
 

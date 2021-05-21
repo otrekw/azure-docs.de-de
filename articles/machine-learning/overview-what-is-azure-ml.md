@@ -10,12 +10,12 @@ author: BlackMist
 ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: cd395f0ff29eed1e09f5bdac882482b201052c90
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 086c1f6ebd1b9e448a8f5e229bc6706493729422
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814824"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762891"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -126,9 +126,10 @@ Das Azure Storage-Konto, die Computeziele und andere Ressourcen können innerhal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erstellen Sie Ihr erstes Experiment mit Ihrer bevorzugten Methode:
-- + [Erste Schritte in Ihrer eigenen Entwicklungsumgebung](tutorial-1st-experiment-sdk-setup-local.md)
-  + [Verwenden von Jupyter-Notebooks auf einer Compute-Instanz zum Trainieren und Bereitstellen von ML-Modellen](tutorial-1st-experiment-sdk-setup.md)
+Beginnen Sie mit [Schnellstart: Erste Schritte mit Azure Machine Learning](quickstart-create-resources.md).  Verwenden Sie dann diese Ressourcen, um Ihr erstes Experiment mit Ihrer bevorzugten Methode zu erstellen:
+
+  + [Ausführen eines „Hallo Welt“-Python-Skripts (Teil 1 von 3)](tutorial-1st-experiment-hello-world.md)
+  + [Tutorial: Trainieren von Bildklassifizierungsmodellen mit MNIST-Daten und scikit-learn](tutorial-train-models-with-aml.md)
   + [Verwenden von automatisiertem Machine Learning zum Trainieren und Bereitstellen von ML-Modellen](tutorial-first-experiment-automated-ml.md) 
   + [Verwalten von Ressourcen in Visual Studio Code](how-to-manage-resources-vscode.md)
   + [Verwenden von Visual Studio Code zum Trainieren und Bereitstellen eines Bildklassifizierungsmodells](tutorial-train-deploy-image-classification-model-vscode.md)

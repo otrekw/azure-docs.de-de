@@ -10,12 +10,12 @@ metadata:
   author: mingshen-ms
   ms.author: mingshen
   ms.date: 09/02/2020
-  ms.openlocfilehash: 2610013e7f5c2ee856a6fb1cd10fe4aebcbeb4c5
-  ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+  ms.openlocfilehash: 28ef4a1b2531de4462a1ae313732b1dae17e09f1
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "108318979"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110071828"
 landingContent:
 - title: Verwenden des kommerziellen Marketplace
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
       url: ./marketplace-faq-publisher-guide.md
     - text: Microsoft-Herausgebervereinbarung
       url: https://go.microsoft.com/fwlink/?LinkID=699560
-    - text: Neues
+    - text: Neuigkeiten
       url: what-is-new.md
 - title: Gängige Szenarien und Aufgaben
   linkLists:
@@ -111,22 +111,16 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: Leitfaden zu Marketplace-APIs
+      url: marketplace-apis-guide.md
+    - text: API-Voraussetzungen
+      url: ./cloud-partner-portal-api-prerequisites.md
     - text: SaaS-Fulfillment-APIs
       url: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
     - text: Marketplace-Messungsdienst-APIs
       url: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-    - text: Cloud-Partnerportal-API-Referenz
-      url: ./cloud-partner-portal-api-overview.md
-    - text: API-Voraussetzungen
-      url: ./cloud-partner-portal-api-prerequisites.md
-    - text: Abrufen von Angeboten
-      url: ./cloud-partner-portal-api-retrieve-offers.md
-    - text: Erstellen oder Ändern ein Angebots
-      url: ./cloud-partner-portal-api-creating-offer.md
-    - text: Preise für VM-Angebote
-      url: ./cloud-partner-portal-api-setting-price.md
-    - text: Live schalten
-      url: ./cloud-partner-portal-api-go-live.md
+    - text: Berichterstellungs-API (PDF)
+      url: https://partneranalytics-api.azureedge.net/partneranalytics-api/Programmatic%20Access%20to%20Commercial%20Marketplace%20Analytics%20Data_v1.pdf
 - title: Support
   linkLists:
   - linkListType: get-started
