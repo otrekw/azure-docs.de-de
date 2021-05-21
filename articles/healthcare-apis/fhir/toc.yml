@@ -106,6 +106,8 @@
           href: export-data.md
         - name: Anonymisierter Export
           href: de-identified-export.md
+        - name: Exportieren von Daten in Synapse
+          href: export-to-synapse.md
     - name: Konvertieren von Daten
       expanded: false
       items:

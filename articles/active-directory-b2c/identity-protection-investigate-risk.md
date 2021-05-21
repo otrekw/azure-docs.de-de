@@ -11,12 +11,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8919285f31e04a51ce10afe3313b28cf86b64ee0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f15fd789264922865acb792bdb766b9624665d91
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055196"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109654758"
 ---
 # <a name="investigate-risk-with-identity-protection-in-azure-ad-b2c"></a>Untersuchen eines Risikos mit Identity Protection in Azure AD B2C
 
@@ -70,7 +70,7 @@ Azure AD B2C Premium P2 ist für einige Identity Protection-Features erforderlic
 
 Mit den Informationen im Bericht „Riskante Benutzer“ können Administratoren folgendes ermitteln:
 
-- Welche Benutzer sind gefährdet und für welche Benutzer wurden Risiken behoben oder verworfen?
+- Der **Risikozustand**, der anzeigt, welche Benutzer gefährdet sind (**Risiko**) und für welche Benutzer Risiken **bereinigt** oder **verworfen** wurden.
 - Details zu Erkennungen
 - Verlauf aller riskanten Anmeldungen
 - Risikoverlauf
@@ -82,6 +82,8 @@ Administratoren können dann Aktionen für diese Ereignisse ausführen. Administ
 - Benutzerrisiko verwerfen
 - Anmeldung eines Benutzers blockieren
 - Mit Azure ATP weitere Untersuchungen ausführen
+
+Ein Administrator kann auswählen, ob das Risiko eines Benutzers im Azure-Portal oder programmgesteuert über die Microsoft Graph-API unter [Benutzerrisiko ignorieren](https://docs.microsoft.com/graph/api/riskyusers-dismiss?view=graph-rest-beta&preserve-view=true) verworfen werden soll. Es werden Administratorrechte benötigt, um das Risiko für einen Benutzer zu verwerfen. Die Bereinigung eines Risikos kann vom Risikobenutzer selbst oder von einem Administrator im Namen des Benutzers durchgeführt werden, z. B. per Kennwortzurücksetzung.
 
 ### <a name="navigating-the-risky-users-report"></a>Navigieren im Bericht „Risikobenutzer“
 
@@ -107,7 +109,7 @@ Der Bericht „Risikoerkennungen“ enthält filterbare Daten der letzten 90 Ta
 Mit den Informationen im Bericht „Risikoerkennungen“ können Administratoren folgendes ermitteln:
 
 - Informationen zu den einzelnen Risikoerkennungen, einschließlich des Typs.
-- Andere gleichzeitig ausgelöste Risiken.
+- Andere, gleichzeitig ausgelöste Risiken.
 - Ort des Anmeldeversuchs.
 
 Administratoren können dann zum Risiko- oder Anmeldebericht des Benutzers zurückkehren, um basierend auf gesammelten Informationen Aktionen auszuführen.

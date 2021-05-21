@@ -1,22 +1,22 @@
 ---
 title: 'Tutorial: Verwenden von Gerätegruppen in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation'
-description: 'Tutorial: Hier erfahren Sie, wie Sie als Operator mithilfe von Gerätegruppen Telemetriedaten von Geräten in Ihrer Azure IoT Central-Anwendung analysieren.'
+description: 'Tutorial: Hier erfahren Sie, wie Sie mithilfe von Gerätegruppen Telemetriedaten von Geräten in Ihrer Azure IoT Central-Anwendung analysieren.'
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/16/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0cc9c0825761099f7f5f665cd3a7f27c88f9cdbc
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ce02c86fff5ccece1528e0d08413acb5c0a7f9c6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325317"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743379"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Tutorial: Verwenden von Gerätegruppen zum Analysieren von Gerätetelemetriedaten
 
-In diesem Artikel wird beschrieben, wie Sie als Operator Gerätegruppen zum Analysieren von Gerätetelemetriedaten in Ihrer Azure IoT Central-Anwendung verwenden.
+In diesem Artikel wird beschrieben, wie Sie Gerätegruppen zum Analysieren von Gerätetelemetriedaten in Ihrer Azure IoT Central-Anwendung verwenden.
 
 Eine Gerätegruppe ist eine Liste der Geräte, die gruppiert werden, weil sie einigen der angegebenen Kriterien entsprechen. Gerätegruppen unterstützen Sie bei der Verwaltung, Visualisierung und Analyse aller im Umfang enthaltenen Geräte, indem Geräte in kleineren, logischen Gruppen gruppiert werden. Sie können beispielsweise eine Gerätegruppe zum Auflisten aller Klimageräte in Seattle erstellen, damit ein Techniker alle Geräte finden kann, für die er zuständig ist.
 

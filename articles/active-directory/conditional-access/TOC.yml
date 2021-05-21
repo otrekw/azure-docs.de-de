@@ -39,6 +39,8 @@
       href: service-dependencies.md
     - name: Standortbedingungen
       href: location-condition.md
+    - name: Filter für Geräte
+      href: concept-condition-filters-for-devices.md
     - name: Was-wäre-wenn-Tool
       href: what-if-tool.md
     - name: Fortlaufende Zugriffsevaluierung

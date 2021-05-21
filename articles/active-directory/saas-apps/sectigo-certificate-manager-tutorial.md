@@ -9,26 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 05/04/2021
 ms.author: jeedes
-ms.openlocfilehash: c589db84b6221aa23868b3b49aea84f33623619f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 862138903721ddfb27547adb2b287df0526c32c6
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92673867"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735924"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Tutorial: Azure Active Directory-Integration in Sectigo Certificate Manager
 
-In diesem Tutorial erfahren Sie, wie Sie Sectigo Certificate Manager (auch als SCM bezeichnet) in Azure Active Directory (Azure AD) integrieren.
+In diesem Tutorial erfahren Sie, wie Sie Sectigo Certificate Manager in Azure Active Directory (Azure AD) integrieren. Die Integration von Sectigo Certificate Manager in Azure AD ermöglicht Folgendes:
 
-Die Integration von Sectigo Certificate Manager in Azure AD bietet Ihnen die folgenden Vorteile:
-
-* Sie können Azure AD verwenden, um zu steuern, wer Zugriff auf Sectigo Certificate Manager hat.
-* Benutzer können sich mit ihren Azure AD-Konten automatisch bei Sectigo Certificate Manager anmelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten an einem zentralen Ort, im Azure-Portal, verwalten.
-
-Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+* Steuern Sie in Azure AD, wer Zugriff auf Sectigo Certificate Manager hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Sectigo Certificate Manager anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,58 +45,42 @@ Sectigo Certificate Manager unterstützt die folgenden Features:
 * **SP-initiiertes einmaliges Anmelden**
 * **IDP-initiiertes einmaliges Anmelden**
 
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+
 ## <a name="add-sectigo-certificate-manager-in-the-azure-portal"></a>Hinzufügen von Sectigo Certificate Manager im Azure-Portal
 
-Um Sectigo Certificate Manager in Azure AD zu integrieren, müssen Sie Sectigo Certificate Manager Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Sectigo Certificate Manager in Azure AD müssen Sie Sectigo Certificate Manager aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Sectigo Certificate Manager** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Sectigo Certificate Manager** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-1. Wählen Sie im linken Menü **Azure Active Directory** aus.
+## <a name="configure-and-test-azure-ad-sso-for-sectigo-certificate-manager"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Sectigo Certificate Manager
 
-    ![Die Option „Azure Active Directory“](common/select-azuread.png)
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Sectigo Certificate Manager mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Sectigo Certificate Manager eingerichtet werden.
 
-1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen**.
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Sectigo Certificate Manager zu konfigurieren und zu testen:
 
-    ![Bereich „Unternehmensanwendungen“](common/enterprise-applications.png)
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Sectigo Certificate Manager](#configure-sectigo-certificate-manager-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Sectigo Certificate Manager-Testbenutzers](#create-sectigo-certificate-manager-test-user)** , um eine Entsprechung von B. Simon in Sectigo Certificate Manager zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-1. Wählen Sie zum Hinzufügen einer Anwendung **Neue Anwendung** aus.
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-    ![Die Option „Neue Anwendung“](common/add-new-app.png)
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Geben Sie **Sectigo Certificate Manager** in das Suchfeld ein. Wählen Sie in den Suchergebnissen **Sectigo Certificate Manager** aus, und klicken Sie dann auf **Hinzufügen**.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Sectigo Certificate Manager** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-    ![Sectigo Certificate Manager in der Ergebnisliste](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Sectigo Certificate Manager mithilfe eines Testbenutzers namens **Britta Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Sectigo Certificate Manager eingerichtet werden.
-
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Sectigo Certificate Manager müssen Sie die folgenden Schritte ausführen:
-
-| Aufgabe | BESCHREIBUNG |
-| --- | --- |
-| **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** | Ermöglicht Ihren Benutzern die Verwendung dieses Features. |
-| **[Konfigurieren des einmaligen Anmeldens für Sectigo Certificate Manager](#configure-sectigo-certificate-manager-single-sign-on)** | Konfiguriert die Einstellungen für einmaliges Anmelden in der Anwendung. |
-| **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** | Testet das einmalige Anmelden von Azure AD für einen Benutzer namens Britta Simon. |
-| **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** | Ermöglicht Britta Simon die Verwendung des einmaligen Anmeldens von Azure AD. |
-| **[Erstellen eines Sectigo Certificate Manager-Testbenutzers](#create-a-sectigo-certificate-manager-test-user)** | Erstellt eine Entsprechung von Britta Simon in Sectigo Certificate Manager, die mit ihrer Darstellung in Azure AD verknüpft ist. |
-| **[Testen des einmaligen Anmeldens](#test-single-sign-on)** | Überprüft, ob die Konfiguration funktioniert. |
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD bei Sectigo Certificate Manager im Azure-Portal.
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) im Anwendungsintegrationsbereich für **Sectigo Certificate Manager** die Option **Einmaliges Anmelden** aus.
-
-    ![Option „Einmaliges Anmelden konfigurieren“](common/select-sso.png)
-
-1. Wählen Sie im Bereich **SSO-Methode auswählen** den Modus **SAML** oder **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-1. Wählen Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** die Option **Bearbeiten** (Stiftsymbol) aus, um den Bereich **Grundlegende SAML-Konfiguration** zu öffnen.
-
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
@@ -109,15 +89,13 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD bei Se
     1. Geben Sie im Feld **Antwort-URL** für die Hauptinstanz von Sectigo Certificate Manager **https:\//cert-manager.com/Shibboleth.sso/SAML2/POST** ein.
         
     > [!NOTE]
-    > Im Allgemeinen ist die **Anmelde-URL** für den *SP-initiierten Modus* zwar erforderlich, sie wird jedoch nicht für die Anmeldung über Sectigo Certificate Manager benötigt.        
+    > Im Allgemeinen ist die **Anmelde-URL** für den **SP-initiierten Modus** zwar erforderlich, sie wird jedoch nicht für die Anmeldung über Sectigo Certificate Manager benötigt.        
 
-1. Führen Sie im Abschnitt *Grundlegende SAML-Konfiguration* zum Konfigurieren des **IDP-initiierten Modus** und zum Ermöglichen von **Tests** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** zum Konfigurieren des **IDP-initiierten Modus** und zum Ermöglichen von **Tests** die folgenden Schritte aus:
 
     1. Wählen Sie **Zusätzliche URLs festlegen** aus.
 
     1. Geben Sie in das Feld **Relayzustand** die kundenspezifische URL für Sectigo Certificate Manager ein. Geben Sie für die Hauptinstanz von Sectigo Certificate Manager **https:\//cert-manager.com/customer/\<customerURI\>/idp** ein.
-
-    ![SSO-Informationen zur Domäne und zu den URLs für Sectigo Certificate Manager](common/idp-relay.png)
 
 1. Führen Sie im Abschnitt **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
 
@@ -138,65 +116,39 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD bei Se
 
     ![Downloadoption für Verbundmetadaten-XML](common/metadataxml.png)
 
-### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Sectigo Certificate Manager
-
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von Sectigo Certificate Manager senden Sie die heruntergeladene Verbundmetadaten-XML-Datei an das [Supportteam von Sectigo Certificate Manager](https://sectigo.com/support). Anhand der von Ihnen gesendeten Informationen stellt das Supportteam von Sectigo Certificate Manager sicher, dass die SAML-Verbindung für einmaliges Anmelden auf beiden Seiten ordnungsgemäß eingerichtet ist.
-
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
-In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Namen Britta Simon.
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-1. Wählen Sie im Azure-Portal **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
-
-    ![Optionen „Benutzer“ und „Alle Benutzer“](common/users.png)
-
-1. Wählen Sie **Neuer Benutzer** aus.
-
-    ![Option „Neuer Benutzer“](common/new-user.png)
-
-1. Führen Sie im Bereich **Benutzer** die folgenden Schritte aus:
-
-    1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-  
-    1. Geben Sie in das Feld **Benutzername** den Namen **brittasimon\@\<your-company-domain>.\<extension\>** ein. Beispiel: **brittasimon\@contoso.com**
-
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**. Notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
-
-    1. Klicken Sie auf **Erstellen**.
-
-    ![Der Bereich „Benutzer“](common/user-properties.png)
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Sectigo Certificate Manager, damit sie das einmalige Anmelden von Azure verwenden kann.
+In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure, indem Sie ihr Zugriff auf Sectigo Certificate Manager gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** > **Sectigo Certificate Manager** aus.
-
-    ![Bereich „Unternehmensanwendungen“](common/enterprise-applications.png)
-
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Sectigo Certificate Manager** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-    ![Sectigo Certificate Manager in der Anwendungsliste](common/all-applications.png)
+## <a name="configure-sectigo-certificate-manager-sso"></a>Konfigurieren des einmaligen Anmeldens für Sectigo Certificate Manager
 
-1. Wählen Sie im Menü die Option **Benutzer und Gruppen** aus.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von Sectigo Certificate Manager senden Sie die heruntergeladene Verbundmetadaten-XML-Datei an das [Supportteam von Sectigo Certificate Manager](https://sectigo.com/support). Anhand der von Ihnen gesendeten Informationen stellt das Supportteam von Sectigo Certificate Manager sicher, dass die SAML-Verbindung für einmaliges Anmelden auf beiden Seiten ordnungsgemäß eingerichtet ist.
 
-    ![Option „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-1. Klicken Sie auf **Benutzer hinzufügen**. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
-
-1. Wählen Sie im Bereich **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus. Wählen Sie **Auswählen**.
-
-1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Bereich **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie **Auswählen**.
-
-1. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Zuweisen** aus.
-
-### <a name="create-a-sectigo-certificate-manager-test-user"></a>Erstellen eines Sectigo Certificate Manager-Testbenutzers
+### <a name="create-sectigo-certificate-manager-test-user"></a>Erstellen eines Sectigo Certificate Manager-Testbenutzers
 
 In diesem Abschnitt erstellen Sie in Sectigo Certificate Manager einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam von Sectigo Certificate Manager](https://sectigo.com/support), um den Benutzer der Sectigo Certificate Manager-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für das einmalige Anmelden.
 
@@ -214,8 +166,4 @@ Wählen Sie im Portal „Meine Apps“ die Option **Sectigo Certificate Manager*
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie in den folgenden Artikeln:
-
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
-- [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
+Nach dem Konfigurieren von Sectigo Certificate Manager können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

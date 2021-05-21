@@ -3,12 +3,12 @@ title: Erstellen von Definitionen der Gastkonfigurationsrichtlinie anhand der Gr
 description: Erfahren Sie, wie Sie die Gruppenrichtlinie aus der Sicherheitsbaseline von Windows Server 2019 in eine Richtliniendefinition konvertieren.
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: a49c8044914c8c23b4f99cad7838652eb94c4b92
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: fa6012702bf00ee062b4d9d46f47bb673bb460ef
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096579"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762999"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Erstellen von Definitionen der Gastkonfigurationsrichtlinie anhand der Gruppenrichtlinien-Baseline für Windows
 
@@ -20,12 +20,12 @@ Die [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) führt 
 > [!IMPORTANT]
 > Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich. Weisen Sie die folgenden Richtliniendefinitionen zu, um die Erweiterung auf allen Windows-Computern im gewünschten Umfang bereitzustellen:
 > - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Windows-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
-> 
+>
 > Verwenden Sie keine geheimen oder vertraulichen Informationen in benutzerdefinierten Inhaltspaketen.
 
 Von der DSC-Community wurde das [BaselineManagement-Modul](https://github.com/microsoft/BaselineManagement) veröffentlicht, mit dem exportierte Gruppenrichtlinienvorlagen in das DSC-Format konvertiert werden können. In Verbindung mit dem Cmdlet GuestConfiguration erstellt das BaselineManagement-Modul ein Azure Policy-Gastkonfigurationspaket für Windows aus dem Gruppenrichtlinieninhalt. Ausführliche Informationen zur Verwendung des BaselineManagement-Moduls finden Sie im Artikel [Schnellstart: Konvertieren von Gruppenrichtlinien in DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
 
-In diesem Leitfaden werden die Schritte zum Erstellen eines Azure Policy-Gastkonfigurationspakets aus einem Gruppenrichtlinienobjekt (GPO) beschrieben. Zwar wird in der exemplarischen Vorgehensweise die Konvertierung der Sicherheitsbaseline von Windows Server 2019 beschrieben, derselbe Prozess kann jedoch auch auf andere GPOs angewendet werden.  
+In diesem Leitfaden werden die Schritte zum Erstellen eines Azure Policy-Gastkonfigurationspakets aus einem Gruppenrichtlinienobjekt (GPO) beschrieben. Zwar wird in der exemplarischen Vorgehensweise die Konvertierung der Sicherheitsbaseline von Windows Server 2019 beschrieben, derselbe Prozess kann jedoch auch auf andere GPOs angewendet werden.
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Herunterladen der Windows Server 2019-Sicherheitsbaseline und Installieren der zugehörigen PowerShell-Module
 
@@ -97,15 +97,15 @@ Im nächsten Schritt wird die heruntergeladene Server 2019-Baseline mithilfe der
 
    ```azurepowershell-interactive
    $NewGuestConfigurationPolicySplat = @{
-        ContentUri = $Uri 
-        DisplayName = 'Server 2019 Configuration Baseline' 
-        Description 'Validation of using a completely custom baseline configuration for Windows VMs' 
+        ContentUri = $Uri
+        DisplayName = 'Server 2019 Configuration Baseline'
+        Description 'Validation of using a completely custom baseline configuration for Windows VMs'
         Path = 'C:\git\policyfiles\policy'  
-        Platform = Windows 
+        Platform = Windows
    }
    New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
-    
+
 1. Veröffentlichen Sie die Richtliniendefinitionen mit dem Cmdlet `Publish-GuestConfigurationPolicy`. Das Cmdlet verfügt nur über den Parameter **Path**, mit dem auf den Speicherort der JSON-Dateien verwiesen wird, die mit `New-GuestConfigurationPolicy` erstellt werden. Um den Befehl „Veröffentlichen“ auszuführen, benötigen Sie Zugriff zum Erstellen von Richtliniendefinitionen in Azure. Die entsprechenden Autorisierungsanforderungen sind auf der Seite mit der [Übersicht über Azure Policy](../overview.md#getting-started) dokumentiert. Die beste integrierte Rolle ist **Mitwirkender bei Ressourcenrichtlinien**.
 
    ```azurepowershell-interactive

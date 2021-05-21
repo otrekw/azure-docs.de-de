@@ -1,24 +1,24 @@
 ---
 title: Bereitstellen und Erstellen von Vorhersagen mit ONNX
 titleSuffix: SQL machine learning
-description: Hier erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, anschließend in Azure SQL Edge oder Azure SQL Managed Instance (Vorschau) bereitstellen und dann mithilfe des hochgeladenen ONXX-Modells PREDICT (nativ) für Daten ausführen.
+description: Hier erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, anschließend in Azure SQL Edge oder Azure SQL Managed Instance bereitstellen und dann mithilfe des hochgeladenen ONXX-Modells PREDICT (nativ) für Daten ausführen.
 keywords: SQL Edge bereitstellen
 ms.prod: sql
 ms.technology: machine-learning
 ms.topic: quickstart
 author: dphansen
 ms.author: davidph
-ms.date: 10/13/2020
-ms.openlocfilehash: 755111b2fc48ec119c30d09f2e51b9db6c333848
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/06/2021
+ms.openlocfilehash: bd85ab065e7b3e2500cbbee262c5f7f4ddfb5c39
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653209"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634003"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-and-sql-machine-learning"></a>Bereitstellen eines ONNX-Modells sowie von maschinellem Lernen in SQL und Treffen von Vorhersagen damit
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, anschließend in [Azure SQL Edge](onnx-overview.md) oder [Azure SQL Managed Instance (Vorschau)](../azure-sql/managed-instance/machine-learning-services-overview.md) bereitstellen und dann mithilfe des hochgeladenen ONXX-Modells PREDICT (nativ) für Daten ausführen.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, anschließend in [Azure SQL Edge](onnx-overview.md) oder [Azure SQL Managed Instance](../azure-sql/managed-instance/machine-learning-services-overview.md) bereitstellen und dann mithilfe des hochgeladenen ONXX-Modells PREDICT (nativ) für Daten ausführen.
 
 Dieser Schnellstart basiert auf **SciKit-learn** und verwendet das [Boston Housing-Dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html).
 

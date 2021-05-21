@@ -1,18 +1,18 @@
 ---
 title: 'Vorgehensweise: Verwenden des Komponentenfeatures im Azure Certified Device-Portal'
 description: Eine Anleitung zur optimalen Verwendung des Komponentenfeatures des Abschnitts „Gerätedetails“ zur genauen Beschreibung Ihres Geräts.
-author: nikuntjo
+author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 05/04/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 091a666026853d677f1e9ed7e5e1736307cecbe8
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 0041299031934bd76e4ef0700d2e75e2d61516cd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975775"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745458"
 ---
 # <a name="add-components-on-the-portal"></a>Hinzufügen von Komponenten im Portal
 
@@ -26,9 +26,9 @@ Wenn Sie das [Tutorial: Hinzufügen von Gerätedetails](tutorial-02-adding-devic
 
 Jedes Projekt, das zur Zertifizierung übermittelt wird, enthält eine **Sofort einsatzfähiges Produkt**-Komponente (die in vielen Fällen das ganze Produkt selbst darstellt). Um die Besonderheit einer „Sofort einsatzfähiges Produkt“-Komponente besser zu verstehen, konsultieren Sie unser [Zertifizierungsglossar](./resources-glossary.md). Alle zusätzlichen Komponenten können Sie nach eigenem Ermessen einbeziehen, um Ihre Gerät präzise zu charakterisieren.
 
-1. Wählen Sie `Add a component` auf der Registerkarte „Produktdetails“ aus.
+1. Wählen Sie im Hardware-Tab `Add a component` aus.
 
-    ![Hinzufügen eines Komponentenlinks](./media/images/add-a-component-link.png)
+    ![Hinzufügen eines Komponentenlinks](./media/images/add-component-new.png)
 
 1. Füllen Sie die relevanten Formularfelder für die Komponente aus.
 
@@ -62,7 +62,7 @@ Möglicherweise haben Sie Fragen dazu, wie viele Komponenten eingeschlossen werd
 
 | Produkttyp                                       | Nein. Komponenten | Komponente 1/Anlagentyp      | Komponenten 2+/Anlagentyp                    |
 |----------------------------------------------------|------------|----------------------------------|--------------------------------------------------|
-| Fertiges Produkt                                   | 1          | Sofort einsatzfähiges Produkt, Eigenständig | –                                              |
+| Fertiggestelltes Produkt                                   | 1          | Sofort einsatzfähiges Produkt, Eigenständig | –                                              |
 | Fertiges Produkt mit **abnehmbaren Peripheriegeräten** | 2 oder mehr  | Sofort einsatzfähiges Produkt, Eigenständig | Peripheriegerät/Eigenständig oder integriert              |
 | Fertiges Produkt mit **integrierten Komponenten**  | 2 oder mehr  | Sofort einsatzfähiges Produkt, Eigenständig | Geeigneten Typ auswählen/Eigenständig oder Integriert |
 | Implementierungsfertiges Entwicklungskit                             | 2 oder mehr  | Sofort einsatzfähiges Produkt, Eigenständig | Geeigneten Typ auswählen/Eigenständig oder integriert |
@@ -112,4 +112,3 @@ Da Sie nun bereit sind, unser Komponentenfeature zu verwenden, können Sie jetzt
 
 - [Tutorial: Hinzufügen von Gerätedetails](tutorial-02-adding-device-details.md)
 - [Bearbeiten Ihres veröffentlichten Geräts](how-to-edit-published-device.md)
-

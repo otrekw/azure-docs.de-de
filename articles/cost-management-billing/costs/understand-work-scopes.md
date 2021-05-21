@@ -3,18 +3,18 @@ title: Verstehen von und Arbeiten mit Bereichen in Azure Cost Management
 description: Dieser Artikel hilft Ihnen, die in Azure verfügbaren Bereiche für Abrechnung und Ressourcenverwaltung zu verstehen und wie Sie die Bereiche in Cost Management und APIs verwenden können.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/19/2021
+ms.date: 05/05/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: f1b98cdf662f6f518e0bc1c3e869de3774c1bf7e
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: afa2811fe6e0dab3bc5c114febeec8aae25bd891
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204151"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765573"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -186,7 +186,7 @@ Abrechnungskonten der Microsoft-Kundenvereinbarung haben die folgenden Bereiche:
 
 - **Kunde**: Stellt eine Gruppe von Abonnements dar, die einem bestimmten Kunden zugeordnet sind, der von einem Partner in eine Microsoft-Kundenvereinbarung aufgenommen wird. Dieser Bereich gilt spezifisch für Cloud Solution Provider (CSP).
 
-Im Gegensatz zu EA-Abrechnungsbereichen _sind_ Abrechnungskonten der Kundenvereinbarung an ein einzelnes Verzeichnis gebunden und lassen keine Abonnements in mehreren Azure AD-Verzeichnissen zu.
+Im Gegensatz zu EA-Abrechnungsbereichen _werden_ Abrechnungskonten der Kundenvereinbarung über ein einzelnes Verzeichnis verwaltet. Abrechnungskonten der Microsoft-Kundenvereinbarung können über *verknüpfte* Abonnements verfügen, die sich in unterschiedlichen Azure AD-Verzeichnissen befinden können.
 
 Abrechnungsbereiche der Kundenvereinbarung gelten nicht für Partner. Partnerrollen und -berechtigungen sind unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](/partner-center/permissions-overview) dokumentiert.
 

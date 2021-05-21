@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1f7d73a6553d8baed86c87da0c4e7a5b036e99f7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 29830357f7899d821d627595a3e533788e788205
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134319"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769847"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Tutorial: Voraussetzungen für die Erstellung von Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
@@ -35,6 +35,9 @@ In diesem Artikel wird die Umgebung der Verfügbarkeitsgruppen manuell konfiguri
 Das folgende Diagramm veranschaulicht, was Sie im Rahmen dieses Tutorials erstellen.
 
 ![Verfügbarkeitsgruppe](./media/availability-group-manually-configure-prerequisites-tutorial-/00-EndstateSampleNoELB.png)
+
+>[!NOTE]
+> Sie können Ihre Verfügbarkeitsgruppenlösung jetzt mithilfe von Azure Migrate per Lift-und-Shift-Verfahren zu SQL Server auf Azure-VMs verschieben. Weitere Informationen finden Sie unter [Migrieren von Verfügbarkeitsgruppen](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md). 
 
 ## <a name="review-availability-group-documentation"></a>Lesen der Dokumentation zu Verfügbarkeitsgruppen
 

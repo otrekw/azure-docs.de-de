@@ -9,12 +9,12 @@ ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 0072ce81fc619c39770eba52e24dc5a0c57280a6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 397a26c7a0ba3771c47e2971fecde09f166cc90f
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604575"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751220"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrieren von virtuellen Hyper-V-Computern zu Azure 
 
@@ -69,7 +69,18 @@ Zum Migrieren von Hyper-V-VMs werden bei der Azure Migrate-Servermigration Soft
     ![Anbieter und Schlüssel herunterladen](./media/tutorial-migrate-hyper-v/download-provider-hyper-v.png)
 
 4. Kopieren Sie die Setupdatei für den Anbieter und die Datei mit dem Registrierungsschlüssel auf alle Hyper-V-Hosts (oder Clusterknoten), auf denen zu replizierende VMs ausgeführt werden.
-5. Führen Sie die Setupdatei für den Anbieter auf jedem Host aus, wie dies im nächsten Schritt beschrieben ist.
+5. Führen Sie die Setupdatei für den Anbieter auf jedem Host aus, wie nachfolgend beschrieben:
+    - Kopieren Sie die Setupdatei für den Anbieter und die Datei mit dem Registrierungsschlüssel auf alle Hyper-V-Hosts (oder Clusterknoten), auf denen zu replizierende VMs ausgeführt werden.
+    - Klicken Sie auf der Taskleiste auf das Dateisymbol, um den Ordner zu öffnen, in den die Installationsdatei und der Registrierungsschlüssel heruntergeladen werden.
+    - Wählen Sie **AzureSiteRecoveryProvider** aus. 
+    - Vergewissern Sie sich im Anbieterinstallations-Assistenten, dass **Ein (empfohlen)** aktiviert ist, und klicken Sie dann auf **Weiter**.
+    - Wählen Sie **Installieren** aus, um den Standardinstallationsordner zu übernehmen.
+    - Wählen Sie **Registrieren** aus, um diesen Server im Azure Site Recovery-Tresor zu registrieren.
+    - Klicken Sie auf **Durchsuchen**.
+    - Suchen Sie nach dem Registrierungsschlüssel, und klicken Sie auf **Öffnen**.
+    - Klicken Sie auf **Weiter**.
+    - Vergewissern Sie sich, dass **Direkt mit Azure Site Recovery verbinden (ohne Proxyserver)** aktiviert ist, und klicken Sie dann auf **Weiter**.
+    - Klicken Sie auf **Fertig stellen**.
 6. Nachdem der Anbieter auf den Hosts installiert wurde, klicken Sie unter **Computer ermitteln** auf **Finalize registration** (Registrierung abschließen).
 
     ![Registrierung abschließen](./media/tutorial-migrate-hyper-v/finalize-registration.png)

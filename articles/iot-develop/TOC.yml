@@ -9,17 +9,17 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erste Schritte bei der Entwicklung von Geräteanwendungen
+    - name: Entwicklung von Geräteanwendungen
       items:
         - name: "Senden von Telemetriedaten an IoT\_Central"
           href: quickstart-send-telemetry-central.md
         - name: "Senden von Telemetriedaten an IoT\_Hub"
           href: quickstart-send-telemetry-iot-hub.md
-    - name: Erste Schritte bei der eingebetteten Entwicklung
+    - name: Entwicklung von eingebetteten Geräten
       items:
         - name: Schnellstartanleitungen für die Entwicklung eingebetteter Geräte
           href: quickstart-device-development.md
-        - name: "Verbinden eines MXCHIP\_AZ3166 mit IoT\_Central"
+        - name: MXCHIP AZ3166
           href: quickstart-devkit-mxchip-az3166.md
 - name: Tutorials
   items:
