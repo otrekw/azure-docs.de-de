@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 111d3d48680523f334c67d9a1a02043f1ed35233
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: bbc068db59bb0a5cd4ef334d3e8ce0a63f74079d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286562"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752659"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform – Codebesipiele (V2.0-Endpunkt)
 
@@ -87,6 +87,8 @@ In den folgenden Beispielen werden öffentliche Clientanwendungen (Desktop-/mobi
 | Desktop-Tutorial (.NET Core): Optionale Verwendung von:</p>– plattformübergreifendes Tokencache</p>– benutzerdefinierte Web-Benutzeroberfläche | ![Diese Abbildung zeigt das .NET/C#-Logo.](media/sample-v2-code/logo_NETcore.png) | [Autorisierungscode](msal-authentication-flows.md#authorization-code)| [ms-identity-dotnet-desktop-tutorial](https://github.com/azure-samples/ms-identity-dotnet-desktop-tutorial) | |
 | Desktop (WPF)      | ![Diese Abbildung zeigt das .NET-Desktop/C#-Logo](media/sample-v2-code/logo_NET.png) | [Autorisierungscode](msal-authentication-flows.md#authorization-code)| [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
 | Desktop (Konsole)   | ![Diese Abbildung zeigt das .NET/C#-Logo (Desktop)](media/sample-v2-code/logo_NET.png) | [Integrierte Windows-Authentifizierung](msal-authentication-flows.md#integrated-windows-authentication) | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
+| Desktop (Konsole) | ![Diese Abbildung zeigt das .NET/C#-Logo (Desktop)](media/sample-v2-code/logo_NET.png) |  [Autorisierungscode](msal-authentication-flows.md#authorization-code) | [active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph) |[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/2-Call-OwnApi/README.md)  |
+| Desktop (Konsole) <br> Verwenden von Zertifikaten anstelle von Geheimnissen | ![Diese Abbildung zeigt das .NET/C#-Logo (Desktop)](media/sample-v2-code/logo_NET.png) |  [Autorisierungscode](msal-authentication-flows.md#authorization-code) | [active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#variation-daemon-application-using-client-credentials-with-certificates) |[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi#variation-daemon-application-using-client-credentials-with-certificates)  |
 | Desktop (Konsole)   | ![Diese Abbildung zeigt das Java-Logo.](media/sample-v2-code/logo_java.png) | [Integrierte Windows-Authentifizierung](msal-authentication-flows.md#integrated-windows-authentication) |[ms-identity-java-desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | Desktop (Konsole)   | ![Dies ist das .NET/C#-Logo (Desktop)](media/sample-v2-code/logo_NETcore.png) | [Benutzername/Kennwort](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
 | Desktop (Konsole) mit WAM  | ![Dies ist das Logo für .NET/C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | Interaktiv mit [Web Account Manager](/windows/uwp/security/web-account-manager) (WAM) |[dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  |
@@ -125,7 +127,7 @@ In den folgenden Beispielen wird eine öffentliche Clientanwendung veranschaulic
 
 In den folgenden Beispielen wird gezeigt, wie Sie Ihre Anwendung so konfigurieren, dass Anmeldungen von einem beliebigen Azure AD-Mandanten (Azure Active Directory) akzeptiert werden. Wenn Sie Ihre Anwendung als *mehrinstanzenfähig* konfigurieren, bedeutet das, dass Sie eine **SaaS-Anwendung (Software-as-a-Service)** für viele Organisationen anbieten können. Die Benutzer können sich dann nach Erteilung der Einwilligung bei Ihrer Anwendung anmelden.
 
-| Plattform | BESCHREIBUNG | Link |
+| Plattform | Beschreibung | Link |
 | -------- | --------------------- | -------- |
 | ![Diese Abbildung zeigt das Angular-Logo.](media/sample-v2-code/logo_angular.png) [Angular (MSAL Angular 2.0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | Mehrinstanzenfähige SPA ruft mehrinstanzenfähige benutzerdefinierte Web-API auf. |[ms-identity-javascript-angular-spa-aspnet-webapi-multitenant](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter2) |
 | ![Diese Abbildung zeigt das ASP.NET Core-Logo.](media/sample-v2-code/logo_NETcore.png) [.NET Core (MSAL.NET)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | ASP.NET Core-MVC-Webanwendung ruft Graph-API auf. |[active-directory-aspnetcore-webapp-openidconnect-v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-3-Multi-Tenant) |

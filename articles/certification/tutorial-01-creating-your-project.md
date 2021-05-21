@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: tutorial
 ms.date: 03/01/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 44c053eac2215354fbd43e4c0068f02419010a85
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ab7f552602fa4eacc249d01ca2e255d8a0297a1a
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131853"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738678"
 ---
 # <a name="tutorial-create-your-project"></a>Tutorial: Erstellen Ihres Projekts
 
@@ -27,8 +27,13 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie benötigen ein gültiges [Azure Active Directory-Konto](../active-directory/fundamentals/active-directory-whatis.md) (Geschäfts-, Schul- oder Unikonto).
-- Sie benötigen ein verifiziertes MPN-Konto (Microsoft Partner Network). Falls Sie kein MPN-Konto haben, müssen Sie zunächst dem [Partnernetzwerk beitreten](https://partner.microsoft.com/).
+
+- Gültiges [Azure Active Directory-Konto](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Geschäfts-, Schul- oder Unikonto)
+- Verifiziertes MPN-Konto (Microsoft Partner Network). Falls Sie kein MPN-Konto haben, müssen Sie zunächst dem [Partnernetzwerk beitreten](https://partner.microsoft.com/). 
+
+> [!NOTE] 
+> Wenn beim Einrichten oder Überprüfen Ihres MPN-Kontos Probleme auftreten, lesen Sie die Informationen in der [Partner Center-Dokumentation](https://docs.microsoft.com/partner-center).
+
 
 ## <a name="signing-into-the-azure-certified-device-portal"></a>Anmelden beim Azure Certified Device-Portal
 

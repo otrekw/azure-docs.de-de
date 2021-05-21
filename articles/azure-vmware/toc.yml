@@ -55,7 +55,7 @@
 - name: Anleitungen
   items:
     - name: Anfordern des Hostkontingents für Azure VMware Solution
-      href: enable-azure-vmware-solution.md
+      href: request-host-quota-azure-vmware-solution.md
     - name: Verschieben von Ressourcen
       items:
         - name: "Verschieben von Azure\_VMware\_Solution-Abonnements"
@@ -64,8 +64,10 @@
       href: reserved-instance.md
     - name: "Erstellen einer Azure\_VMware\_Solution-Bewertung"
       href: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
-    - name: Verwalten von DHCP
-      href: manage-dhcp.md
+    - name: Konfigurieren und Verwalten von DHCP
+      href: configure-dhcp-azure-vmware-solution.md
+    - name: "Konfigurieren von DHCP in VMware\_HCX-Netzwerken mit L2-Stretching"
+      href: configure-l2-stretched-vmware-hcx-networks.md
     - name: Konfigurieren von NSX-Netzwerkkomponenten
       href: configure-nsx-network-components-azure-portal.md
     - name: "Konfigurieren des GitHub\_Enterprise-Servers"
@@ -147,7 +149,7 @@
     - name: Häufig gestellte Fragen
       items:
         - name: Allgemein
-          href: /azure/azure-vmware/faq#general
+          href: faq.yml
         - name: Kundenkommunikation
           href: /azure/azure-vmware/faq#customer-communication
         - name: Konfiguration und Setup

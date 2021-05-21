@@ -1,24 +1,24 @@
 ---
 title: Bedarfsorientierte Bereitstellung von Benutzern mithilfe von Azure Active Directory
-description: Synchronisierung erzwingen
+description: Erfahren Sie, wie Sie Benutzer bei Bedarf in Azure Active Directory bestimmen.
 services: active-directory
-author: msmimart
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/01/2020
-ms.author: mimart
+ms.date: 05/11/2021
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: be03a149f34c16621905081a2f9bb663d85bc53c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56c86e5d0f06d66eea1841e5c1157432fd92f0ac
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255660"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785005"
 ---
-# <a name="on-demand-provisioning"></a>Bedarfsorientierte Bereitstellung
+# <a name="on-demand-provisioning-in-azure-active-directory"></a>On-demand Benutzerbereitstellung in Azure Active Directory
 Mit der bedarfsorientierten Bereitstellung können Sie einen Benutzer innerhalb von Sekunden in einer Anwendung bereitstellen. Unter anderem können Sie dieses Feature für Folgendes verwenden:
 
 * zum schnellen Behandeln von Konfigurationsproblemen

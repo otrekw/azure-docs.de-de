@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 04/15/2021
-ms.openlocfilehash: acae55ca82b82de8459068bb1ac4363d6a9faafe
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8a8e8fae151b0d9be318d4dfad832ead34ef04da
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206635"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738084"
 ---
 # <a name="analyze-data-with-a-serverless-sql-pool"></a>Analysieren von Daten mit einem serverlosen SQL-Pool
 
@@ -28,6 +28,9 @@ Mit serverlosen SQL-Pools können Sie SQL verwenden, ohne dass Sie Kapazität re
 Jeder Arbeitsbereich wird mit einem vorkonfigurierten serverlosen SQL-Pool namens **Built-in** (Integriert) bereitgestellt. 
 
 ## <a name="analyze-nyc-taxi-data-with-a-serverless-sql-pool"></a>Analysieren von NYC Taxi-Daten mit einem serverlosen SQL-Pool
+ 
+> [!NOTE]
+> Stellen Sie sicher, dass Sie die [Beispieldaten im primären Speicherkonto platziert haben](get-started-create-workspace.md#place-sample-data-into-the-primary-storage-account).
 
 1. Navigieren Sie in Synapse Studio zum Hub **Entwickeln**.
 1. Erstellen Sie ein neues SQL-Skript.
@@ -97,7 +100,7 @@ Wenn Sie die Datenuntersuchung fortsetzen, möchten Sie vielleicht jedoch einige
     FROM
         OPENROWSET(
                 BULK '/users/NYCTripSmall.parquet',
-                DATA_SOURCE = 'ContosoLake'
+                DATA_SOURCE = 'ContosoLake',
                 FORMAT='PARQUET'
         ) AS [result]
     ```

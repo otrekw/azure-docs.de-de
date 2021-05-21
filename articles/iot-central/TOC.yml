@@ -203,8 +203,8 @@
           href: core/howto-create-iot-central-application.md
         - name: Einrichten einer Gerätevorlage
           href: core/howto-set-up-template.md
-        - name: Gerätevorlagenversion
-          href: core/howto-version-device-template.md
+        - name: Bearbeiten einer Gerätevorlage
+          href: core/howto-edit-device-template.md
         - name: Verwenden von Eigenschaften
           href: core/howto-use-properties.md
         - name: Verwenden von Befehlen

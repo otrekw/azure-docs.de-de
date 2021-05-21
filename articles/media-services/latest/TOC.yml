@@ -81,6 +81,10 @@
       items:
         - name: Codieren und Streamen einer Remotedatei (CLI)
           href: stream-files-cli-quickstart.md
+        - name: "Verwenden eines Key\_Vault-Schlüssels zum Verschlüsseln von Daten"
+          href: security-encrypt-data-managed-identity-cli-tutorial.md
+        - name: Zugreifen auf Speicher mit einer verwalteten Identität
+          href: security-access-storage-managed-identity-cli-tutorial.md
     - name: Node.js
       items:
         - name: Codieren und Streamen einer Remotedatei (Node.js)
@@ -455,6 +459,10 @@
           href: security-trusted-storage-rest-tutorial.md
         - name: Kundenseitig verwaltete Schlüssel mit REST-API
           href: security-customer-managed-keys-rest-postman-tutorial.md
+        - name: "Verwenden eines Key\_Vault-Schlüssels zum Verschlüsseln von Daten"
+          href: security-encrypt-data-managed-identity-cli-tutorial.md
+        - name: Zugreifen auf Speicher mit einer verwalteten Identität
+          href: security-access-storage-managed-identity-cli-tutorial.md
     - name: Verwenden von Media Playern
       items:
         - name: Vollständiges Setup von Azure Media Player
