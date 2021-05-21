@@ -1,14 +1,14 @@
 ---
 title: Aktivieren und Einrichten der lokalen Verwaltungskonsole
 description: Durch die Aktivierung der Verwaltungskonsole wird sichergestellt, dass Sensoren bei Azure registriert werden, Informationen an die lokale Verwaltungskonsole gesendet werden und die lokale Verwaltungskonsole Verwaltungsaufgaben auf verbundenen Sensoren ausführt.
-ms.date: 4/6/2021
+ms.date: 05/05/2021
 ms.topic: how-to
-ms.openlocfilehash: db0d2a84feeb5bf52932842badda8c126994c05d
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: c491ebfe68c85b222818c9a9cf2e8e66abe8d959
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492153"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108735165"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivieren und Einrichten der lokalen Verwaltungskonsole 
 
@@ -24,7 +24,7 @@ Durch die Aktivierung und Einrichtung der lokalen Verwaltungskonsole wird Folgen
 
 ## <a name="sign-in-for-the-first-time"></a>Erstmaliges Anmelden
 
-So melden Sie sich bei der Verwaltungskonsole an:
+**So melden Sie sich bei der Verwaltungskonsole an:**
 
 1. Navigieren Sie zu der IP-Adresse, die Sie während der Systeminstallation für die lokale Verwaltungskonsole erhalten haben.
  
@@ -37,7 +37,7 @@ Wenn Sie Ihr Kennwort vergessen haben, wählen Sie die Option **Kennwort wiederh
 
 Nachdem Sie sich zum ersten Mal angemeldet haben, müssen Sie die lokale Verwaltungskonsole aktivieren, indem Sie eine Aktivierungsdatei abrufen und hochladen. 
 
-Um die lokale Verwaltungskonsole zu aktivieren:
+**Um die lokale Verwaltungskonsole zu aktivieren:**
 
 1. Melden Sie sich bei der lokalen Verwaltungskonsole an.
 
@@ -51,15 +51,46 @@ Um die lokale Verwaltungskonsole zu aktivieren:
  
 1. Wählen Sie ein Abonnement aus, dem die lokale Verwaltungskonsole zugeordnet werden soll, und wählen Sie dann die Schaltfläche **Aktivierungsdatei für die lokale Verwaltungskonsole herunterladen aus**. Die Aktivierungsdatei wird heruntergeladen.
 
-   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="Laden Sie die Aktivierungsdatei herunter.":::
+   Die lokale Verwaltungskonsole kann einem oder mehreren Abonnements zugeordnet werden. Die Aktivierungsdatei wird mit allen ausgewählten Abonnements und der Anzahl der bestätigten Geräte zum Zeitpunkt des Downloads verknüpft.
+
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/multiple-subscriptions.png" alt-text="Sie können mehrere Abonnements für das Onboarding Ihrer lokalen Verwaltungskonsole auswählen.":::
 
    Wenn Sie noch kein Onboarding für das Abonnement durchgeführt haben, können Sie [ein Onboarding für das Abonnement durchführen](how-to-manage-subscriptions.md#onboard-a-subscription).
+
+   > [!Note]
+   > Wenn Sie ein Abonnement löschen, müssen Sie eine neue Aktivierungsdatei in alle lokalen Verwaltungskonsolen hochladen, die mit dem gelöschten Abonnement verbunden waren.
 
 1. Navigieren Sie zurück zur **Aktivierungs**-Pop-up-Anzeige, und wählen Sie **Datei auswählen** aus.
 
 1. Wählen Sie die heruntergeladene Datei aus.
 
-Nach der erstmaligen Aktivierung kann die Anzahl der überwachten Geräte die Anzahl der zugesicherten Geräte überschreiten, die während des Onboardings definiert wurden. Dieser Fall tritt ein, wenn Sie weitere Sensoren mit der Verwaltungskonsole verbinden. Bei einer Abweichung zwischen der Anzahl überwachter Geräte und der Anzahl zugesicherter Geräte wird in der Verwaltungskonsole eine Warnung angezeigt. In diesem Fall laden Sie eine neue Aktivierungsdatei hoch.
+Nach der erstmaligen Aktivierung kann die Anzahl der überwachten Geräte die Anzahl der zugesicherten Geräte überschreiten, die während des Onboardings definiert wurden. Dieses Problem tritt auf, wenn Sie weitere Sensoren mit der Verwaltungskonsole verbinden. Bei einer Abweichung zwischen der Anzahl überwachter Geräte und der Anzahl zugesicherter Geräte wird in der Verwaltungskonsole eine Warnung angezeigt. 
+
+:::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/device-commitment-update.png" alt-text="Wenn die Warnung zur Gerätezusage angezeigt wird, müssen Sie eine neue Aktivierungsdatei hochladen.":::
+
+Wenn diese Warnung angezeigt wird, müssen Sie eine neue [Aktivierungsdatei hochladen](#activate-the-on-premises-management-console).
+
+### <a name="activate-an-expired-license-versions-under-100"></a>Aktivieren einer abgelaufenen Lizenz (Versionen unter 10.0)
+
+Für Benutzer mit Versionen unter 10.0 läuft die Lizenz möglicherweise ab und die folgende Warnung wird angezeigt. 
+
+:::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/activation-popup.png" alt-text="Wenn Ihre Lizenz abläuft, müssen Sie Ihre Lizenz über die Aktivierungsdatei aktualisieren.":::
+
+**So aktivieren Sie Ihre Lizenz:**
+
+1. Öffnen Sie einen Fall beim [Support](https://ms.portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support).
+
+1. Stellen Sie dem Support Ihre Aktivierungs-ID-Nummer bereit.
+
+1. Der Support stellt Ihnen neue Lizenzinformationen in Form einer Zeichenfolge aus Buchstaben zur Verfügung.
+
+1. Lesen Sie die Geschäftsbedingungen, und aktivieren Sie zur Genehmigung das Kontrollkästchen.
+
+1. Fügen Sie die Zeichenfolge in das vorgesehene Feld ein.
+
+    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/add-license.png" alt-text="Fügen Sie die Zeichenfolge in das vorgesehene Feld ein.":::
+
+1. Wählen Sie **Aktivieren** aus.
 
 ## <a name="set-up-a-certificate"></a>Einrichten eines Zertifikats
 
@@ -68,6 +99,7 @@ Nachdem Sie die Verwaltungskonsole installiert haben, wird ein lokales selbst si
 Zwei Sicherheitsstufen stehen zur Verfügung:
 
 - Erfüllen spezifischer Zertifikat- und Verschlüsselungsanforderungen, die von Ihrer Organisation angefordert wurden, durch Hochladen des von der Zertifizierungsstelle signierten Zertifikats.
+
 - Zulassen der Überprüfung zwischen der Verwaltungskonsole und verbundenen Sensoren. Die Überprüfung wird anhand einer Zertifikatssperrliste und des Ablaufdatums des Zertifikats ausgewertet. *Wenn bei der Überprüfung ein Fehler auftritt, wird die Kommunikation zwischen der Verwaltungskonsole und dem Sensor angehalten, und in der Konsole wird ein Überprüfungsfehler angezeigt.* Diese Option wird nach der Installation standardmäßig aktiviert.  
 
 Die Konsole unterstützt die folgenden Arten von Zertifikaten:
@@ -79,9 +111,9 @@ Die Konsole unterstützt die folgenden Arten von Zertifikaten:
 - Lokal auf dem Gerät generiert (lokal selbstsigniert) 
 
   > [!IMPORTANT]
-  > Wir empfehlen, dass Sie kein selbstsigniertes Zertifikat verwenden. Das Zertifikat ist nicht sicher und sollte nur für Testumgebungen verwendet werden. Der Besitzer des Zertifikats kann nicht überprüft und die Sicherheit Ihres Systems nicht aufrechterhalten werden. Verwenden Sie diese Option niemals bei Produktionsnetzwerken.
+  > Wir empfehlen, dass Sie kein selbstsigniertes Zertifikat verwenden. Das Zertifikat ist nicht sicher und sollte nur für Testumgebungen verwendet werden. Der Besitzer des Zertifikats kann nicht überprüft und die Sicherheit Ihres Systems nicht aufrechterhalten werden. Verwenden Sie diese Option auf keinen Fall in Produktionsnetzwerken.
 
-So laden Sie ein Zertifikat hoch:
+**So laden Sie ein Zertifikat hoch:**
 
 1. Wenn Sie nach der Anmeldung dazu aufgefordert werden, definieren Sie einen Zertifikatnamen.
 
@@ -91,7 +123,7 @@ So laden Sie ein Zertifikat hoch:
 
 Möglicherweise müssen Sie die Anzeige aktualisieren, nachdem Sie das von einer Zertifizierungsstelle signierte Zertifikat hochgeladen haben.
 
-So deaktivieren Sie die Überprüfung zwischen der Verwaltungskonsole und verbundenen Sensoren:
+**So deaktivieren Sie die Überprüfung zwischen der Verwaltungskonsole und verbundenen Sensoren:**
 
 1. Wählen Sie **Weiter** aus.
 
@@ -101,7 +133,7 @@ Informationen zum Hochladen eines neuen Zertifikats, unterstützter Zertifikatda
 
 ## <a name="connect-sensors-to-the-on-premises-management-console"></a>Verbinden von Sensoren mit der lokalen Verwaltungskonsole
 
-Sie müssen sicherstellen, dass Sensoren Informationen an die lokale Verwaltungskonsole senden und dass die lokale Verwaltungskonsole Sicherungen ausführen, Warnungen verwalten sowie andere Aktivitäten auf den Sensoren ausführen kann. Mit den folgenden Verfahren können Sie überprüfen, ob eine anfängliche Verbindung zwischen Sensoren und der lokalen Verwaltungskonsole hergestellt wird.
+Stellen Sie sicher, dass Sensoren Informationen an die lokale Verwaltungskonsole senden und dass die lokale Verwaltungskonsole Sicherungen ausführen, Warnungen verwalten sowie andere Aktivitäten auf den Sensoren ausführen kann. Mit den folgenden Verfahren können Sie überprüfen, ob eine anfängliche Verbindung zwischen Sensoren und der lokalen Verwaltungskonsole hergestellt wird.
 
 Zum Verbinden von Azure Defender für IoT-Sensoren mit der lokalen Verwaltungskonsole gibt es zwei Optionen:
 
@@ -113,7 +145,7 @@ Nachdem Sie eine Verbindung hergestellt haben, müssen Sie mit diesen Sensoren e
 
 ### <a name="connect-sensors-to-the-on-premises-management-console-from-the-sensor-console"></a>So verbinden Sie bestimmte Sensoren über die Sensorkonsole mit der lokalen Verwaltungskonsole
 
-Sie können bestimmte Sensoren über die Sensorkonsole mit der lokalen Verwaltungskonsole verbinden:
+**So verbinden Sie bestimmte Sensoren über die Sensorkonsole mit der lokalen Verwaltungskonsole:**
 
 1. Wählen Sie in der lokalen Verwaltungskonsole die Option **Systemeinstellungen** aus.
 
@@ -135,7 +167,7 @@ Ermöglichen Sie eine gesicherte Tunnelverbindung zwischen Organisationssensoren
 
 Mithilfe von Tunneln können Sie die lokale Verwaltungskonsole über deren IP-Adresse und einen einzelnen Port (9000) mit einem beliebigen Sensor verbinden.
 
-So richten Sie Tunneln in der lokalen Verwaltungskonsole ein:
+**So richten Sie Tunneln in der lokalen Verwaltungskonsole ein:**
 
 - Melden Sie sich bei der lokalen Verwaltungskonsole an, und führen Sie die folgenden Befehle aus:
 
@@ -146,7 +178,7 @@ So richten Sie Tunneln in der lokalen Verwaltungskonsole ein:
   service apache2 reload
   ```
 
-So richten Sie Tunneln auf dem Sensor ein:
+**So richten Sie Tunneln auf dem Sensor ein:**
 
 1. Öffnen Sie den TCP-Port 9000 manuell auf dem Sensor („network.properties“). Wenn der Port nicht geöffnet ist, lehnt der Sensor die Verbindung über lokale Verwaltungskonsole ab.
 
@@ -176,7 +208,7 @@ Zugriffsgruppen ermöglichen eine bessere Kontrolle darüber, wo Benutzer Gerät
 
 Sie können eine Geschäftseinheit und eine Region für jeden Standort in Ihrer Organisation definieren. Anschließend können Sie Zonen hinzufügen, die logische Entitäten in Ihrem Netzwerk sind. 
 
-Sie sollten jeder Zone mindestens einen Sensor zuweisen. Das fünfstufige Modell bietet die Flexibilität und Granularität, die für die Bereitstellung des Schutzsystems erforderlich sind, das die Struktur Ihrer Organisation widerspiegelt.
+Weisen Sie jeder Zone mindestens einen Sensor zu. Das fünfstufige Modell bietet die Flexibilität und Granularität, die für die Bereitstellung des Schutzsystems erforderlich sind, das die Struktur Ihrer Organisation widerspiegelt.
 
 :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/diagram-of-sensor-showing-relationships.png" alt-text="Das Diagramm zeigt Sensoren und eine regionale Beziehung.":::
 
@@ -184,7 +216,7 @@ Mithilfe der Unternehmensansicht können Sie Ihre Sites direkt bearbeiten. Wenn 
 
 :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/console-map-with-data-overlay-v2.png" alt-text="Screenshot einer Karte der lokalen Verwaltungskonsole mit eingeblendeten Daten zu Berlin.":::
 
-So richten Sie einen Standort ein:
+**So richten Sie einen Standort ein:**
 
 1. Fügen Sie neue Geschäftseinheiten hinzu, um die logische Struktur Ihrer Organisation widerzuspiegeln.
 
@@ -194,7 +226,7 @@ So richten Sie einen Standort ein:
 
    1. Geben Sie den Namen der neuen Geschäftseinheit ein, und wählen Sie **HINZUFÜGEN** aus.
 
-1. Fügen Sie neue Regionen hinzu, um die Regionen Ihrer Organisation zu reflektieren.
+1. Fügen Sie neue Regionen hinzu, um die Regionen Ihrer Organisation widerzuspiegeln.
 
    1. Wählen Sie in der Unternehmensansicht **Alle Regionen** > **Regionen verwalten** aus.
 
@@ -222,7 +254,7 @@ So richten Sie einen Standort ein:
 
 Wenn Sie einen Standort nicht mehr benötigen, können Sie ihn über die lokale Verwaltungskonsole löschen.
 
-So löschen Sie einen Standort:
+**So löschen Sie einen Standort:**
 
 1. Wählen Sie im Fenster **Standortverwaltung** in der Leiste, die den Zonennamen enthält, :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: und dann **Zone löschen** aus. Das Bestätigungsfeld wird angezeigt, und es wird überprüft, ob Sie den Standort löschen möchten.
 
@@ -255,7 +287,7 @@ In der folgenden Tabelle werden die Parameter im Fenster **Standortverwaltung** 
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/number-of-alerts-icon.png" border="false"::: | Gibt die Anzahl der Warnungen an, die von der Zone zugewiesenen Sensoren gesendet werden. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassign-sensor-icon.png" border="false"::: | Hebt die Zuweisung von Sensoren zu Zonen auf. |
 
-So fügen Sie eine Zone zu einem Standort hinzu:
+**So fügen Sie eine Zone zu einem Standort hinzu:**
 
 1. Wählen Sie im Fenster **Standortverwaltung** in der Leiste, die den Zonennamen enthält, :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: und dann **Zone hinzufügen** aus. Das Dialogfeld **Neue Zone erstellen** wird angezeigt.
 
@@ -267,7 +299,7 @@ So fügen Sie eine Zone zu einem Standort hinzu:
 
 1. Wählen Sie **SAVE** (SPEICHERN) aus. Die neue Zone wird im Fenster **Standortverwaltung** unter dem Standort angezeigt, zu dem diese Zone gehört.
 
-So bearbeiten Sie eine Zone:
+**So bearbeiten Sie eine Zone:**
 
 1. Wählen Sie im Fenster **Standortverwaltung** in der Leiste, die den Zonennamen enthält, :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: und dann **Zone bearbeiten** aus. Das Dialogfeld **Zone bearbeiten** wird angezeigt.
 
@@ -275,13 +307,13 @@ So bearbeiten Sie eine Zone:
 
 1. Bearbeiten Sie die Zonenparameter, und wählen Sie **SPEICHERN** aus.
 
-So löschen Sie eine Zone
+**So löschen Sie eine Zone**
 
 1. Wählen Sie im Fenster **Standortverwaltung** in der Leiste, die den Zonennamen enthält, :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: und dann **Zone löschen** aus.
 
 1. Wählen Sie im Bestätigungsfeld **JA** aus.
 
-So filtern Sie nach dem Konnektivitätsstatus:
+**So filtern Sie nach dem Konnektivitätsstatus:**
 
 - Wählen Sie in der oberen linken Ecke neben **Konnektivität** :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/down-pointing-icon.png" border="false"::: und dann eine der folgenden Optionen aus:
 
@@ -291,7 +323,7 @@ So filtern Sie nach dem Konnektivitätsstatus:
 
   - **Getrennt**: Zeigt nur getrennte Sensoren an.
 
-So filtern Sie nach dem Upgradestatus:
+**So filtern Sie nach dem Upgradestatus:**
 
 - Wählen Sie in der oberen linken Ecke neben **Upgradestatus** :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/down-pointing-icon.png" border="false"::: und dann eine der folgenden Optionen aus:
 
@@ -307,7 +339,7 @@ So filtern Sie nach dem Upgradestatus:
 
 Sie müssen für jede Zone Sensoren zuweisen, die eine lokale Datenverkehrsanalyse durchführen und Warnungen ausgeben. Sie können nur die Sensoren zuweisen, die mit der lokalen Verwaltungskonsole verbunden sind.
 
-So weisen Sie einen Sensor zu:
+**So weisen Sie einen Sensor zu:**
 
 1. Wählen Sie **Standortverwaltung** aus. Die nicht zugewiesenen Sensoren werden in der oberen linken Ecke des Dialogfelds angezeigt.
 
@@ -323,7 +355,7 @@ So weisen Sie einen Sensor zu:
 
 1. Wählen Sie **ZUWEISEN** aus.
 
-So heben Sie die Zuweisung eines Sensors auf und löschen ihn:
+**So heben Sie die Zuweisung eines Sensors auf und löschen ihn:**
 
 1. Trennen Sie die Verbindung des Sensors mit der lokalen Verwaltungskonsole. Informationen dazu finden Sie unter [Verbinden von Sensoren mit der lokalen Verwaltungskonsole](#connect-sensors-to-the-on-premises-management-console).
 

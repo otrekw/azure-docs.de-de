@@ -4,12 +4,12 @@ description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur 
 ms.date: 04/28/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 777f052cfb726a1370a84b76a643fdaf539ce7b3
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: b3624500632d0f02d4b255aef6b836ee0491ff83
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176286"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733618"
 ---
 # <a name="what-are-azure-management-groups"></a>Was sind Azure-Verwaltungsgruppen?
 
@@ -47,19 +47,17 @@ Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, di
 
 - Der Anzeigename der Stammverwaltungsgruppe lautet standardmäßig **Mandantenstammgruppe**. Die ID ist die Azure Active Directory-ID.
 - Damit Sie den Anzeigenamen ändern können, muss Ihrem Konto die Rolle „Besitzer“ oder „Mitwirkender“ für die Stammverwaltungsgruppe zugewiesen sein. Die Schritte zum Aktualisieren des Namens einer Verwaltungsgruppe finden Sie unter [Ändern des Namens einer Verwaltungsgruppe](manage.md#change-the-name-of-a-management-group).
-- Die Stammverwaltungsgruppe kann im Gegensatz zu anderen Verwaltungsgruppen nicht verschoben oder gelöscht werden.  
+- Die Stammverwaltungsgruppe kann im Gegensatz zu anderen Verwaltungsgruppen nicht verschoben oder gelöscht werden.
 - Alle Abonnements und Verwaltungsgruppen sind der Stammverwaltungsgruppe im Verzeichnis untergeordnet.
   - Alle Ressourcen im Verzeichnis sind der Stammverwaltungsgruppe für die globale Verwaltung untergeordnet.
   - Neue Abonnements werden bei ihrer Erstellung standardmäßig der Stammverwaltungsgruppe zugeordnet.
 - Alle Azure-Kunden können die Stammverwaltungsgruppe sehen, aber nicht alle Kunden besitzen Zugriff, um diese Stammverwaltungsgruppe zu verwalten.
-  - Jeder Benutzer, der Zugriff auf ein Abonnement besitzt, kann den Kontext erkennen, in dem sich das Abonnement in der Hierarchie befindet.  
-  - Niemand erhält Standardzugriff auf die Stammverwaltungsgruppe. Globale Azure AD-Administratoren sind die einzigen Benutzer, die ihre Rechte erhöhen können, um Zugriff zu erlangen. Sobald die globalen Administratoren über Zugriff auf die Stammverwaltungsgruppe verfügen, können sie anderen Benutzern eine beliebige Azure-Rolle zur Verwaltung  
-    zuweisen.
+  - Jeder Benutzer, der Zugriff auf ein Abonnement besitzt, kann den Kontext erkennen, in dem sich das Abonnement in der Hierarchie befindet.
+  - Niemand erhält Standardzugriff auf die Stammverwaltungsgruppe. Globale Azure AD-Administratoren sind die einzigen Benutzer, die ihre Rechte erhöhen können, um Zugriff zu erlangen. Sobald die globalen Administratoren über Zugriff auf die Stammverwaltungsgruppe verfügen, können sie anderen Benutzern eine beliebige Azure-Rolle zur Verwaltung zuweisen.
 - Im SDK fungiert die Stammverwaltungsgruppe, auch „Mandantenstamm“, als Verwaltungsgruppe.
 
 > [!IMPORTANT]
-> Jede Zuweisung von Benutzerzugriff oder Richtlinienzuweisung für die Stammverwaltungsgruppe **gilt für alle Ressourcen im Verzeichnis**. Aus diesem Grund sollten alle Kunden die Notwendigkeit untersuchen, Elemente in diesem Bereich zu definieren. Benutzerzugriff und Richtlinienzuweisungen sollten nur in diesem Bereich ein „Muss“  
-> sein.
+> Jede Zuweisung von Benutzerzugriff oder Richtlinienzuweisung für die Stammverwaltungsgruppe **gilt für alle Ressourcen im Verzeichnis**. Aus diesem Grund sollten alle Kunden die Notwendigkeit untersuchen, Elemente in diesem Bereich zu definieren. Benutzerzugriff und Richtlinienzuweisungen sollten nur in diesem Bereich ein „Muss“ sein.
 
 ## <a name="initial-setup-of-management-groups"></a>Erstmalige Einrichtung von Verwaltungsgruppen
 
@@ -82,7 +80,7 @@ Sie haben zwei Optionen zur Behebung dieses Problems.
     Dabei werden keine Zuweisungen auf Stammebene geändert. Durch Aufrufen der API geben Sie an, dass die Anwendung einer Richtlinien- oder Zugriffszuweisung auf Stammebene auf alle Abonnements akzeptabel ist.
 
 Sollten Sie Fragen zu diesem Abgleichvorgang haben, wenden Sie sich an `managementgroups@microsoft.com`.
-  
+
 ## <a name="management-group-access"></a>Zugriff auf die Verwaltungsgruppe
 
 Azure-Verwaltungsgruppen unterstützen die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md) für alle Ressourcenzugriffe und Rollendefinitionen. Diese Berechtigungen werden an untergeordnete Ressourcen in der Hierarchie vererbt. Eine beliebige Azure-Rolle kann einer Verwaltungsgruppe zugewiesen werden, die an die untergeordneten Ressourcen in der Hierarchie vererbt wird. Beispielsweise kann die Azure-Rolle „VM-Mitwirkender“ einer Verwaltungsgruppe zugewiesen werden. Diese Rolle verfügt über keine Aktion für die Verwaltungsgruppe, wird jedoch an alle virtuellen Computer unter dieser Verwaltungsgruppe vererbt.
@@ -99,12 +97,12 @@ Die folgende Abbildung zeigt die Liste der Rollen und die unterstützten Aktione
 |Ressourcenrichtlinienmitwirkender |        |        |          |        |               | X             |       |
 |Benutzerzugriffsadministrator   |        |        |          |        | X             | X             |       |
 
-\*: MG-Mitwirkender und MG-Leser lassen nur zu, dass Benutzer diese Aktionen im Bereich der Verwaltungsgruppe ausführen.  
+\*: MG-Mitwirkender und MG-Leser lassen nur zu, dass Benutzer diese Aktionen im Bereich der Verwaltungsgruppe ausführen.
 \*\*: Bei Rollenzuweisungen für die Stammverwaltungsgruppe muss kein Abonnement bzw. keine Verwaltungsgruppe in die und aus der Stammverwaltungsgruppe verschoben werden. Ausführliche Informationen zum Verschieben von Elementen in der Hierarchie finden Sie unter [Verwalten von Ressourcen mit Verwaltungsgruppen](manage.md).
 
 ## <a name="azure-custom-role-definition-and-assignment"></a>Definition und Zuweisung der benutzerdefinierten Azure-Rolle
 
-Die Unterstützung benutzerdefinierter Azure-Rollen für Verwaltungsgruppen befindet sich derzeit in der Vorschauphase und weist einige [Einschränkungen](#limitations) auf. Sie können den Verwaltungsgruppenbereich im zuweisbaren Bereich der Rollendefinition definieren. Diese benutzerdefinierte Azure-Rolle steht dann für die Zuweisung zu dieser Verwaltungsgruppe und allen ihr untergeordneten Verwaltungsgruppen, Abonnements, Ressourcengruppen oder Ressourcen zur Verfügung. Diese benutzerdefinierte Rolle wird wie jede andere integrierte Rolle an die untergeordneten Ressourcen in der Hierarchie vererbt.  
+Die Unterstützung benutzerdefinierter Azure-Rollen für Verwaltungsgruppen befindet sich derzeit in der Vorschauphase und weist einige [Einschränkungen](#limitations) auf. Sie können den Verwaltungsgruppenbereich im zuweisbaren Bereich der Rollendefinition definieren. Diese benutzerdefinierte Azure-Rolle steht dann für die Zuweisung zu dieser Verwaltungsgruppe und allen ihr untergeordneten Verwaltungsgruppen, Abonnements, Ressourcengruppen oder Ressourcen zur Verfügung. Diese benutzerdefinierte Rolle wird wie jede andere integrierte Rolle an die untergeordneten Ressourcen in der Hierarchie vererbt.
 
 ### <a name="example-definition"></a>Beispieldefinition
 
@@ -116,7 +114,7 @@ Verwenden Sie die ID der Verwaltungsgruppe und nicht ihren Anzeigenamen. Dieser 
 ...
 {
   "Name": "MG Test Custom Role",
-  "Id": "id", 
+  "Id": "id",
   "IsCustom": true,
   "Description": "This role provides members understand custom roles.",
   "Actions": [
@@ -153,21 +151,21 @@ Wir betrachten nun als Beispiel einen kleinen Abschnitt einer Hierarchie für ei
    Das Diagramm konzentriert sich auf die Stammverwaltungsgruppe mit den untergeordneten Verwaltungsgruppen „IT“ und „Marketing“. Die Verwaltungsgruppe „IT“ weist eine einzige untergeordnete Verwaltungsgruppe namens „Production“ auf, während die Verwaltungsgruppe „Marketing“ über zwei untergeordnete kostenlose Testabonnements verfügt.
 :::image-end:::
 
-Angenommen, für die Verwaltungsgruppe „Marketing“ ist eine benutzerdefinierte Rolle definiert. Diese benutzerdefinierte Rolle wird dann zwei kostenlosen Abonnements zugewiesen.  
+Angenommen, für die Verwaltungsgruppe „Marketing“ ist eine benutzerdefinierte Rolle definiert. Diese benutzerdefinierte Rolle wird dann zwei kostenlosen Abonnements zugewiesen.
 
-Wenn wir versuchen, eines dieser Abonnements zu verschieben, sodass es der Verwaltungsgruppe „Production“ untergeordnet ist, würde diese Verschiebung den Pfad von der Abonnementrollenzuweisung zur Rollenddefinition der Verwaltungsgruppe „Marketing“ unterbrechen. In diesem Szenario wird eine Fehlermeldung angezeigt, die besagt, dass die Verschiebung nicht zulässig ist, da sie diese Beziehung unterbricht.  
+Wenn wir versuchen, eines dieser Abonnements zu verschieben, sodass es der Verwaltungsgruppe „Production“ untergeordnet ist, würde diese Verschiebung den Pfad von der Abonnementrollenzuweisung zur Rollenddefinition der Verwaltungsgruppe „Marketing“ unterbrechen. In diesem Szenario wird eine Fehlermeldung angezeigt, die besagt, dass die Verschiebung nicht zulässig ist, da sie diese Beziehung unterbricht.
 
 Es gibt verschiedene Optionen, um dieses Szenario zu beheben:
 - Entfernen Sie die Rollenzuweisung aus dem Abonnement, bevor Sie das Abonnement in eine neue übergeordnete Verwaltungsgruppe verschieben.
 - Fügen Sie das Abonnement dem zuweisbaren Bereich der Rollendefinition hinzu.
-- Ändern Sie den zuweisbaren Bereich innerhalb der Rollendefinition. Im obigen Beispiel können Sie die Bereiche von „Marketing“ aktualisieren, die der „Root Management Group“ zuweisbar sind, damit die Definition von beiden Verzweigungen der Hierarchie erreicht werden kann.  
-- Erstellen Sie eine weitere benutzerdefinierte Rolle, die in der anderen Verzweigung definiert wird. Diese neue Rolle erfordert, dass die Rollenzuweisung auch für das Abonnement geändert wird.  
+- Ändern Sie den zuweisbaren Bereich innerhalb der Rollendefinition. Im obigen Beispiel können Sie die Bereiche von „Marketing“ aktualisieren, die der „Root Management Group“ zuweisbar sind, damit die Definition von beiden Verzweigungen der Hierarchie erreicht werden kann.
+- Erstellen Sie eine weitere benutzerdefinierte Rolle, die in der anderen Verzweigung definiert wird. Diese neue Rolle erfordert, dass die Rollenzuweisung auch für das Abonnement geändert wird.
 
-### <a name="limitations"></a>Einschränkungen  
+### <a name="limitations"></a>Einschränkungen
 
 Es bestehen Einschränkungen für die Verwendung benutzerdefinierter Rollen für Verwaltungsgruppen.
 
-- Sie können nur eine Verwaltungsgruppe in den zuweisbaren Bereichen einer neuen Rolle definieren. Diese Einschränkung soll die Anzahl der Situationen verringern, in denen Rollendefinitionen und Rollenzuweisungen getrennt werden. Diese Situation tritt auf, wenn ein Abonnement oder eine Verwaltungsgruppe mit einer Rollenzuweisung in ein anderes übergeordnetes Element verschoben wird, das nicht über die Rollendefinition verfügt.  
+- Sie können nur eine Verwaltungsgruppe in den zuweisbaren Bereichen einer neuen Rolle definieren. Diese Einschränkung soll die Anzahl der Situationen verringern, in denen Rollendefinitionen und Rollenzuweisungen getrennt werden. Diese Situation tritt auf, wenn ein Abonnement oder eine Verwaltungsgruppe mit einer Rollenzuweisung in ein anderes übergeordnetes Element verschoben wird, das nicht über die Rollendefinition verfügt.
 - Aktionen der Datenebene des Ressourcenanbieters können in benutzerdefinierten Rollen für Verwaltungsgruppen nicht definiert werden. Diese Einschränkung besteht, weil beim Aktualisieren der Ressourcenanbieter für die Datenebene ein Latenzproblem auftritt. An diesem Latenzproblem wird gearbeitet, und diese Aktionen werden bei der Rollendefinition deaktiviert, um Risiken zu verringern.
 - Der Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist. Wenn ein Tippfehler vorhanden oder eine falsche Verwaltungsgruppen-ID aufgelistet ist, wird die Rollendefinition dennoch erstellt.
 - Die Rollenzuweisung für eine Rolle mit _dataActions_ wird nicht unterstützt. Erstellen Sie die Rollenzuweisung stattdessen auf der Abonnementebene.
@@ -176,11 +174,11 @@ Es bestehen Einschränkungen für die Verwendung benutzerdefinierter Rollen für
 > Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
 > Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="moving-management-groups-and-subscriptions"></a>Verschieben von Verwaltungsgruppen und Abonnements 
+## <a name="moving-management-groups-and-subscriptions"></a>Verschieben von Verwaltungsgruppen und Abonnements
 
 Damit eine Verwaltungsgruppe oder ein Abonnement als untergeordnetes Element einer anderen Verwaltungsgruppe verschoben werden kann, müssen drei Regeln als „true“ ausgewertet werden.
 
-Wenn Sie die Verschiebung durchführen, muss Folgendes zutreffen: 
+Wenn Sie die Verschiebung durchführen, muss Folgendes zutreffen:
 
 - Verwaltungsgruppenschreib- und Rollenzuweisungsschreibberechtigung für das untergeordnete Abonnement oder die untergeordnete Verwaltungsgruppe.
   - Beispiel für eine integrierte Rolle: **Besitzer**

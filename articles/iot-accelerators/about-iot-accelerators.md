@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: c966051ed5699d408fe83f1e9c862ca78b3282c4
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 8a89462ca132ddbf20ecc7f70502747d4a664b58
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714540"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486015"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Was sind Azure IoT Solution Accelerators?
 
 Für eine cloudbasierte IoT-Lösung werden normalerweise benutzerdefinierter Code und Clouddienste verwendet, um die Gerätekonnektivität, die Datenverarbeitung und -analyse und die Darstellung zu verwalten.
 
-Die IoT Solution Accelerators sind vollständige, sofort bereitstellbare IoT-Lösungen, die allgemeine IoT-Szenarien implementieren. Zu den Szenarien zählen verbundene Factory und Gerätesimulation. Wenn Sie einen Solution Accelerator bereitstellen, enthält die Bereitstellung alle erforderlichen cloudbasierten Dienste sowie den gesamten erforderlichen Anwendungscode.
+Die IoT Solution Accelerators sind vollständige, sofort bereitstellbare IoT-Lösungen, die allgemeine IoT-Szenarien implementieren. Wenn Sie einen Solution Accelerator bereitstellen, enthält die Bereitstellung alle erforderlichen cloudbasierten Dienste sowie den gesamten erforderlichen Anwendungscode.
 
 Die Solution Accelerators sind Ausgangspunkte für Ihre eigenen IoT-Lösungen. Der Quellcode für alle Solution Accelerators ist Open-Source-Code und auf GitHub verfügbar. Wir empfehlen Ihnen, die Solution Accelerators herunterzuladen und anzupassen, damit sie Ihre Anforderungen erfüllen.
 
@@ -33,7 +33,7 @@ Der Anwendungscode in den einzelnen Solution Accelerators enthält eine Web-App,
 
 ## <a name="supported-iot-scenarios"></a>Unterstützte IoT-Szenarien
 
-Derzeit sind zwei Solution Accelerators verfügbar, die Sie bereitstellen können:
+Derzeit ist ein Solution Accelerator verfügbar, die Sie bereitstellen können:
 
 ### <a name="connected-factory"></a>Verbundene Factory
 
@@ -42,14 +42,6 @@ Verwenden Sie den [Solution Accelerator „Verbundene Factory“](iot-accelerato
 Sie können das Dashboard für verbundene Factorys zum Überwachen und Verwalten Ihrer Industriegeräte verwenden:
 
 :::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="Screenshot, der das Dashboard für die Lösung „Verbundene Factory“ zeigt." lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
-
-### <a name="device-simulation"></a>Gerätesimulation
-
-Verwenden Sie den [Solution Accelerator „Gerätesimulation“](iot-accelerators-device-simulation-overview.md), um simulierte Geräte auszuführen, die realistische Telemetriedaten generieren. Sie können diesen Solution Accelerator nutzen, um das Verhalten der anderen Solution Accelerators oder Ihre eigenen benutzerdefinierten IoT-Lösungen zu testen.
-
-Sie können die Gerätesimulations-Web-App zum Konfigurieren und Ausführen von Simulationen verwenden:
-
-:::image type="content" source="./media/about-iot-accelerators/ds-dashboard-inline.png" alt-text="Screenshot: Dashboard für die Lösung „Gerätesimulation“" lightbox="./media/about-iot-accelerators/ds-dashboard-expanded.png":::
 
 ## <a name="design-principles"></a>Entwurfsprinzipien
 
@@ -68,7 +60,6 @@ Die ursprünglichen Solution Accelerators wurden mit .NET geschrieben, indem ein
 | Solution Accelerator   | Aufbau  | Languages     |
 | ---------------------- | ------------- | ------------- |
 | Verbundene Factory      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
-| Gerätesimulation      | Microservices | [.NET](https://github.com/Azure/azure-iot-pcs-device-simulation)          |
 
 Weitere Informationen zur Microservicearchitektur finden Sie unter [Introduction to the Azure IoT reference architecture](/azure/architecture/reference-architectures/iot/) (Einführung in die Azure IoT-Referenzarchitektur).
 

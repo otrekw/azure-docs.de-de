@@ -3,18 +3,18 @@ title: 'Tutorial: Erstellen und Verwalten von exportierten Daten aus Azure Cost 
 description: Dieser Artikel erläutert, wie Sie aus Azure Cost Management exportierte Daten erstellen und verwalten können, um sie in externen Systemen zu verwenden.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2021
+ms.date: 05/06/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 100f4252768f6a141253d4df03a73da9f4f6b4bc
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 9f9afe0b7c27fb2199f9bdcd1fa5edbe4da01602
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290205"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517638"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -262,6 +262,8 @@ Exporte für Verwaltungsgruppen anderer Abonnementtypen werden nicht unterstütz
 Wenn Sie über eine Microsoft-Kundenvereinbarung oder eine Microsoft Partner-Vereinbarung verfügen, können Sie Exporte aktivieren, um Ihre Datei in mehrere kleinere Dateipartitionen aufzuteilen und so die Datenerfassung zu erleichtern. Wenn Sie den Export erstmalig konfigurieren, legen Sie die Einstellung **Dateipartitionierung** auf **Ein** fest. Diese Einstellung ist standardmäßig **Aus**.
 
 :::image type="content" source="./media/tutorial-export-acm-data/file-partition.png" alt-text="Screenshot der Option „Dateipartitionierung“." lightbox="./media/tutorial-export-acm-data/file-partition.png" :::
+
+Wenn Sie keine Microsoft-Kundenvereinbarung oder Microsoft Partner-Vereinbarung haben, wird die Option **Dateipartitionierung** nicht angezeigt.
 
 #### <a name="update-existing-exports-to-use-file-partitioning"></a>Aktualisieren vorhandener Exporte zur Verwendung der Dateipartitionierung
 

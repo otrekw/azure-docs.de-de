@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/13/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b22552147bec789c4b1d796cad2c52165d266334
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: c238f847994b6317085fbbc7d132168c88797e03
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207715"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734253"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins"></a>Erstellen einer App-Registrierung für die Verwendung mit Azure Digital Twins
 
@@ -24,7 +24,7 @@ Dies ist nicht für alle Authentifizierungsszenarien erforderlich. Wenn Sie jedo
 
 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Das Einrichten einer **App-Registrierung** in Azure AD ist eine Möglichkeit, einer Client-App Zugriff auf Azure Digital Twins zu gewähren.
 
-Über diese App-Registrierung konfigurieren Sie die Zugriffsberechtigungen für die [Azure Digital Twins-APIs](how-to-use-apis-sdks.md). Ihre Client-App kann sich später für die App-Registrierung mit den **Client- und Mandanten-ID-Werten** der Registrierung authentifizieren. Daraufhin werden ihr die konfigurierten Zugriffsberechtigungen für die APIs erteilt.
+Über diese App-Registrierung konfigurieren Sie die Zugriffsberechtigungen für die [Azure Digital Twins-APIs](concepts-apis-sdks.md). Ihre Client-App kann sich später für die App-Registrierung mit den **Client- und Mandanten-ID-Werten** der Registrierung authentifizieren. Daraufhin werden ihr die konfigurierten Zugriffsberechtigungen für die APIs erteilt.
 
 >[!TIP]
 > Es empfiehlt sich, bei Bedarf jeweils eine neue App-Registrierung einzurichten. Wenn Sie diesen Vorgang nur ein Mal ausführen möchten, können Sie *alternativ* eine einzelne App-Registrierung einrichten, die von allen Szenarien gemeinsam verwendet wird.
@@ -40,7 +40,7 @@ Geben Sie auf der folgenden Seite *Anwendung registrieren* die angeforderten Wer
 * **Unterstützte Kontotypen**: Wählen Sie *Nur Konten in diesem Organisationsverzeichnis (nur Standardverzeichnis – einzelner Mandant)* aus.
 * **Umleitungs-URI**: Eine *Azure AD-Antwort-URL der Anwendung* für die Azure AD-Anwendung. Fügen Sie einen URI vom Typ *Öffentlicher Client/nativ (mobil und Desktop)* für `http://localhost` hinzu.
 
-Wenn Sie fertig sind, klicken Sie auf die Schaltfläche *Registrieren*.
+Wenn Sie fertig sind, wählen Sie die Schaltfläche *Registrieren* aus.
 
 :::image type="content" source="media/how-to-create-app-registration/register-an-application.png" alt-text="Ansicht der Seite „Anwendung registrieren“ mit den eingegebenen beschriebenen Werten":::
 
@@ -58,11 +58,11 @@ Notieren Sie sich die _**Anwendungs-ID (Client)**_ und die _**Verzeichnis-ID (Ma
 
 Konfigurieren Sie nun die App-Registrierung, die Sie erstellt haben, mit Baselineberechtigungen für die Azure Digital Twins-APIs.
 
-Wählen Sie auf der Portalseite für Ihre App-Registrierung im Menü *API-Berechtigungen* aus. Klicken Sie auf der folgenden Berechtigungsseite auf die Schaltfläche *+ Berechtigung* hinzufügen.
+Wählen Sie auf der Portalseite für Ihre App-Registrierung im Menü *API-Berechtigungen* aus. Wählen Sie auf der folgenden Berechtigungsseite die Schaltfläche *+ Berechtigung hinzufügen* aus.
 
 :::image type="content" source="media/how-to-create-app-registration/add-permission.png" alt-text="Ansicht der App-Registrierung im Azure-Portal mit hervorgehobener Menüoption „App-Berechtigungen“ und Schaltfläche „+ Berechtigung hinzufügen“":::
 
-Wechseln Sie auf der folgenden Seite *API-Berechtigungen anfordern* zur Registerkarte *Von meiner Organisation verwendete APIs*, und suchen Sie dann nach *azure digital twins*. Wählen Sie _**Azure Digital Twins**_ aus den Suchergebnissen aus, um mit dem Zuweisen von Berechtigungen für die Azure Digital Twins-APIs fortzufahren.
+Wechseln Sie auf der folgenden Seite *API-Berechtigungen anfordern* zur Registerkarte *Von meiner Organisation verwendete APIs*, und suchen Sie nach *Azure Digital Twins*. Wählen Sie _**Azure Digital Twins**_ aus den Suchergebnissen aus, um mit dem Zuweisen von Berechtigungen für die Azure Digital Twins-APIs fortzufahren.
 
 :::image type="content" source="media/how-to-create-app-registration/request-api-permissions-1.png" alt-text="Ansicht des Suchergebnisses „Azure Digital Twins“ der Seite „API-Berechtigungen anfordern“ mit der Anwendungs-ID (Client) 0b07f429-9f4b-4714-9392-cc5e8e80c8b0.":::
 
@@ -74,7 +74,7 @@ Nun wählen Sie die Berechtigungen aus, die für diese APIs erteilt werden solle
 
 :::image type="content" source="media/how-to-create-app-registration/request-api-permissions-2.png" alt-text="Ansicht der Seite „API-Berechtigungen anfordern“ mit ausgewählten Berechtigungen „Read.Write“ für die Azure Digital Twins-APIs":::
 
-Klicken Sie auf *Berechtigungen hinzufügen*, wenn Sie fertig sind.
+Wählen Sie *Berechtigungen hinzufügen* aus, wenn Sie fertig sind.
 
 ### <a name="verify-success"></a>Überprüfen des erfolgreichen Abschlusses
 

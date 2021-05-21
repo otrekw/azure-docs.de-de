@@ -71,6 +71,8 @@
           href: enable-rdp.md
         - name: Anwenden der WAD-Erweiterung
           href: enable-wad.md
+        - name: "Anwenden der Key\_Vault-Erweiterung"
+          href: enable-key-vault-virtual-machine.md
     - name: Aktivieren von Warnungen
       href: enable-alerts.md
     - name: Konfigurieren der Skalierung

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 0ce8e45f301ac0fd84f7d5d27d81b63103768f89
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9212c538ff0cf95e0383defe1881e877462de71e
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567711"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488139"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private Link für Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -50,25 +50,17 @@ Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann 
 1. Nach der Genehmigung oder Ablehnung wird der entsprechende Zustand zusammen mit dem Antworttext in der Liste angezeigt.
 ![Screenshot: Alle PECs nach der Genehmigung][5]
 
-## <a name="on-premises-connectivity-over-private-peering"></a>Lokale Konnektivität über privates Peering
+1. Der Klick auf den Namen des privaten Endpunkts ![Screenshot: PEC-Details][7]   
 
-Wenn Kunden von lokalen Computern aus eine Verbindung mit dem öffentlichen Endpunkt herstellen, muss ihre IP-Adresse mithilfe einer [Firewallregel auf Serverebene](firewall-create-server-level-portal-quickstart.md) der IP-basierten Firewall hinzugefügt werden. Dieses Modell eignet sich zwar gut, um den Zugriff auf einzelne Computer für Entwicklungs- oder Testworkloads zuzulassen, in einer Produktionsumgebung gestaltet sich die Verwaltung jedoch schwierig.
+   führt zu den Details der Netzwerkschnittstelle ![ Screenshot: NIC-Details][8]
 
-Mit Private Link können Kunden standortübergreifenden Zugriff auf den privaten Endpunkt mittels [ExpressRoute](../../expressroute/expressroute-introduction.md), privatem Peering oder VPN-Tunneling ermöglichen. Kunden haben dann die Möglichkeit, den gesamten Zugriff über den öffentlichen Endpunkt zu deaktivieren und nicht die IP-basierte Firewall zu verwenden, um IP-Adressen zuzulassen.
-
-## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Private Link-Anwendungsfälle für Azure SQL-Datenbank 
-
-Clients können über das gleiche virtuelle Netzwerk, über ein mittels Peering verknüpftes virtuelles Netzwerk in derselben Region oder über eine regionsübergreifende VNET-zu-VNET-Verbindung eine Verbindung mit dem privaten Endpunkt herstellen. Darüber hinaus können Clients von der lokalen Umgebung aus eine Verbindung über ExpressRoute, privates Peering oder VPN-Tunneling herstellen. Die gängigen Anwendungsfälle sind im folgenden Diagramm vereinfacht dargestellt:
-
- ![Diagramm: Konnektivitätsoptionen][1]
-
-Außerdem können Dienste, die nicht direkt im virtuellen Netzwerk ausgeführt werden, aber darin integriert sind (z. B. App Service-Web-Apps oder Azure Functions), auch eine private Konnektivität mit der Datenbank herstellen. Weitere Informationen zu diesem speziellen Anwendungsfall finden Sie im Architekturszenario [Private Konnektivität von Web-Apps mit Azure SQL-Datenbank](/azure/architecture/example-scenario/private-web-app/private-web-app).
+   die schließlich zur IP-Adresse für den privaten Endpunkt führen ![ Screenshot: private IP-Adresse][9]
 
 ## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>Testen der Konnektivität mit SQL-Datenbank über einen virtuellen Azure-Computer im gleichen virtuellen Netzwerk
-
-Für dieses Szenario wird davon ausgegangen, dass Sie einen virtuellen Azure-Computer unter Windows Server 2016 erstellt haben. 
+In diesem Szenario wird davon ausgegangen, dass Sie einen virtuellen Azure-Computer (VM) erstellt haben, auf dem eine aktuelle Version von Windows im gleichen virtuellen Netzwerk wie der private Endpunkt ausgeführt wird.
 
 1. [Starten Sie eine RDP-Sitzung (Remotedesktop), und stellen Sie eine Verbindung mit dem virtuellen Computer her.](../../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine) 
+
 1. Anschließend können Sie mithilfe der folgenden Tools einige grundlegende Konnektivitätsprüfungen durchführen, um sicherzugehen, dass der virtuelle Computer die Verbindung mit SQL-Datenbank über den privaten Endpunkt herstellt:
     1. Telnet
     1. PsPing
@@ -82,7 +74,7 @@ Der [Telnet-Client](/previous-versions/windows/it-pro/windows-server-2008-R2-and
 Öffnen Sie nach der Installation von Telnet ein Eingabeaufforderungsfenster. Führen Sie den Telnet-Befehl aus, und geben Sie dabei die IP-Adresse und den privaten Endpunkt der Datenbank in SQL-Datenbank an:
 
 ```
->telnet 10.1.1.5 1433
+>telnet 10.9.0.4 1433
 ```
 
 Wenn Telnet erfolgreich eine Verbindung herstellt, wird im Befehlsfenster ein leerer Bildschirm angezeigt:
@@ -91,27 +83,23 @@ Wenn Telnet erfolgreich eine Verbindung herstellt, wird im Befehlsfenster ein le
 
 ### <a name="check-connectivity-using-psping"></a>Überprüfen der Konnektivität mithilfe von PsPing
 
-[PsPing](/sysinternals/downloads/psping) kann wie folgt verwendet werden, um sich zu vergewissern, dass die private Endpunktverbindung (Private Endpoint Connection, PEC) auf Verbindungen am Port 1433 lauscht.
+[PsPing](/sysinternals/downloads/psping) kann wie folgt verwendet werden, um sich zu vergewissern, dass der private Endpunkt auf Verbindungen am Port 1433 lauscht.
 
 Führen Sie PsPing wie folgt aus, und geben Sie dabei den FQDN für den logischen Server und den Port 1433 an:
 
 ```
 >psping.exe mysqldbsrvr.database.windows.net:1433
-
-PsPing v2.10 - PsPing - ping, latency, bandwidth measurement utility
-Copyright (C) 2012-2016 Mark Russinovich
-Sysinternals - www.sysinternals.com
-
-TCP connect to 10.6.1.4:1433:
+...
+TCP connect to 10.9.0.4:1433:
 5 iterations (warmup 1) ping test:
-Connecting to 10.6.1.4:1433 (warmup): from 10.6.0.4:49953: 2.83ms
-Connecting to 10.6.1.4:1433: from 10.6.0.4:49954: 1.26ms
-Connecting to 10.6.1.4:1433: from 10.6.0.4:49955: 1.98ms
-Connecting to 10.6.1.4:1433: from 10.6.0.4:49956: 1.43ms
-Connecting to 10.6.1.4:1433: from 10.6.0.4:49958: 2.28ms
+Connecting to 10.9.0.4:1433 (warmup): from 10.6.0.4:49953: 2.83ms
+Connecting to 10.9.0.4:1433: from 10.6.0.4:49954: 1.26ms
+Connecting to 10.9.0.4:1433: from 10.6.0.4:49955: 1.98ms
+Connecting to 10.9.0.4:1433: from 10.6.0.4:49956: 1.43ms
+Connecting to 10.9.0.4:1433: from 10.6.0.4:49958: 2.28ms
 ```
 
-Die Ausgabe zeigt, dass PsPing die private IP-Adresse pingen konnte, die der PEC zugeordnet ist.
+Die Ausgabe zeigt, dass PsPing die private IP-Adresse pingen konnte, die dem privaten Endpunkt zugeordnet ist.
 
 ### <a name="check-connectivity-using-nmap"></a>Überprüfen der Konnektivität mithilfe von Nmap
 
@@ -120,46 +108,38 @@ Nmap (Network Mapper) ist ein kostenloses Open-Source-Tool für die Netzwerkermi
 Führen Sie Nmap wie folgt aus, und geben Sie dabei den Adressbereich des Subnetzes an, in dem der private Endpunkt gehostet wird:
 
 ```
->nmap -n -sP 10.1.1.0/24
+>nmap -n -sP 10.9.0.0/24
 ...
-...
-Nmap scan report for 10.1.1.5
+Nmap scan report for 10.9.0.4
 Host is up (0.00s latency).
 Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 ```
-
 Das Ergebnis zeigt, dass eine einzelne IP-Adresse aktiv ist. Diese entspricht der IP-Adresse für den privaten Endpunkt.
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Überprüfen der Konnektivität mithilfe von SQL Server Management Studio (SSMS)
 > [!NOTE]
 > Verwenden Sie den **vollqualifizierten Domänennamen** (Fully Qualified Domain Name, FQDN) des Servers in Verbindungszeichenfolgen für Ihre Clients (`<server>.database.windows.net`). Alle direkt für die IP-Adresse vorgenommenen Anmeldeversuche oder die Verwendung des Private Link-FQDN (`<server>.privatelink.database.windows.net`) schlagen fehl. Dieses Verhalten ist entwurfsbedingt, da ein privater Endpunkt Datenverkehr an das SQL-Gateway in der Region weiterleitet und der richtige FQDN angegeben werden muss, damit Anmeldungen erfolgreich sind.
 
-Führen Sie die Schritte zur [Verwendung von SSMS zum Herstellen einer Verbindung mit der SQL-Datenbank-Instanz](connect-query-ssms.md) aus. Nachdem Sie mithilfe von SSMS eine Verbindung mit der SQL-Datenbank-Instanz hergestellt haben, führen Sie die folgende Abfrage aus, um sich zu vergewissern, dass für die Verbindung die private IP-Adresse des virtuellen Azure-Computers verwendet wird:
+Führen Sie die Schritte zur [Verwendung von SSMS zum Herstellen einer Verbindung mit der SQL-Datenbank-Instanz](connect-query-ssms.md) aus. Nachdem Sie mithilfe von SSMS eine Verbindung mit der SQL-Datenbank hergestellt haben, sollte die folgende Abfrage client_net_address zurückgeben, die der privaten IP-Adresse des virtuellen Azure-Computers entspricht, von dem aus Sie eine Verbindung herstellen:
 
 ````
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
 
-## <a name="data-exfiltration-prevention"></a>Verhinderung der Datenexfiltration
+## <a name="on-premises-connectivity-over-private-peering"></a>Lokale Konnektivität über privates Peering
 
-Datenexfiltration in Azure SQL-Datenbank bedeutet, dass ein autorisierter Benutzer (etwa ein Datenbankadministrator) Daten aus einem System extrahieren und an einen anderen Ort oder in ein anderes System außerhalb der Organisation verschieben kann. So kann ein Benutzer beispielsweise Daten in ein Speicherkonto eines Dritten verschieben.
+Wenn Kunden von lokalen Computern aus eine Verbindung mit dem öffentlichen Endpunkt herstellen, muss ihre IP-Adresse mithilfe einer [Firewallregel auf Serverebene](firewall-create-server-level-portal-quickstart.md) der IP-basierten Firewall hinzugefügt werden. Dieses Modell eignet sich zwar gut, um den Zugriff auf einzelne Computer für Entwicklungs- oder Testworkloads zuzulassen, in einer Produktionsumgebung gestaltet sich die Verwaltung jedoch schwierig.
 
-Stellen Sie sich ein Szenario vor, in dem ein Benutzer SQL Server Management Studio (SSMS) auf einem virtuellen Azure-Computer ausführt, von dem eine Verbindung mit einer Datenbank in SQL-Datenbank hergestellt wird. Die Datenbank befindet sich im Rechenzentrum „USA, Westen“. Das folgende Beispiel zeigt, wie Sie den Zugriff mit öffentlichen Endpunkten in SQL-Datenbank unter Verwendung von Netzwerkzugriffssteuerungen einschränken.
+Mit Private Link können Kunden standortübergreifenden Zugriff auf den privaten Endpunkt mittels [ExpressRoute](../../expressroute/expressroute-introduction.md), privatem Peering oder VPN-Tunneling ermöglichen. Kunden haben dann die Möglichkeit, den gesamten Zugriff über den öffentlichen Endpunkt zu deaktivieren und nicht die IP-basierte Firewall zu verwenden, um IP-Adressen zuzulassen.
 
-1. Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zur SQL-Datenbank-Instanz über den öffentlichen Endpunkt, indem Sie die Option zum Zulassen von Azure-Diensten auf **AUS** festlegen. Vergewissern Sie sich, dass durch die Firewallregeln auf Server- und Datenbankebene keine IP-Adressen zugelassen werden. Weitere Informationen finden Sie unter [Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse](network-access-controls-overview.md).
-1. Lassen Sie nur Datenverkehr für die Datenbank in SQL-Datenbank mit der privaten IP-Adresse des virtuellen Computers zu. Weitere Informationen finden Sie in den Artikeln [Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank](vnet-service-endpoint-rule-overview.md) und [IP-Firewallregeln für Azure SQL-Datenbank und Azure Synapse](firewall-configure.md).
-1. Beschränken Sie auf dem virtuellen Azure-Computer den Bereich der ausgehenden Verbindung mithilfe von [Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/manage-network-security-group.md) und Diensttags:
-    - Geben Sie eine NSG-Regel an, um Datenverkehr für das Diensttag „SQL.WestUs“ zuzulassen. Dadurch ist nur eine Verbindung mit der SQL-Datenbank-Instanz in „USA, Westen“ möglich.
-    - Geben Sie eine NSG-Regel (mit einer **höheren Priorität**) an, um Datenverkehr für das Diensttag „SQL“ zu verweigern. Dadurch werden Verbindungen mit der SQL-Datenbank-Instanz in allen Regionen verweigert.
+## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Private Link-Anwendungsfälle für Azure SQL-Datenbank 
 
-Am Ende dieser Einrichtung kann der virtuelle Azure-Computer nur eine Verbindung mit einer Datenbank in SQL-Datenbank in der Region „USA, Westen“ herstellen. Die Konnektivität ist jedoch nicht auf ein Singleton in SQL-Datenbank beschränkt. Der virtuelle Computer kann weiterhin eine Verbindung mit beliebigen Datenbanken in der Region „USA, Westen“ herstellen – also auch mit den Datenbanken, die nicht Teil des Abonnements sind. Wir haben den Bereich der Datenexfiltration im obigen Szenario auf eine bestimmte Region reduziert, sie aber nicht vollständig unterbunden.
+Clients können über das gleiche virtuelle Netzwerk, über ein mittels Peering verknüpftes virtuelles Netzwerk in derselben Region oder über eine regionsübergreifende VNET-zu-VNET-Verbindung eine Verbindung mit dem privaten Endpunkt herstellen. Darüber hinaus können Clients von der lokalen Umgebung aus eine Verbindung über ExpressRoute, privates Peering oder VPN-Tunneling herstellen. Die gängigen Anwendungsfälle sind im folgenden Diagramm vereinfacht dargestellt:
 
-Mit Private Link können Kunden jetzt Netzwerkzugriffssteuerungen wie NSGs einrichten, um den Zugriff auf den privaten Endpunkt einzuschränken. Einzelne Azure-PaaS-Ressourcen werden dann bestimmten privaten Endpunkten zugeordnet. Ein böswilliger Insider kann somit nur auf die zugeordnete PaaS-Ressource (etwa eine Datenbank in SQL-Datenbank), aber nicht auf andere Ressourcen zugreifen. 
+ ![Diagramm: Konnektivitätsoptionen][1]
 
-## <a name="limitations"></a>Einschränkungen 
-Für Verbindungen mit dem privaten Endpunkt wird nur **Proxy** als [Verbindungsrichtlinie](connectivity-architecture.md#connection-policy) unterstützt.
-
+Außerdem können Dienste, die nicht direkt im virtuellen Netzwerk ausgeführt werden, aber darin integriert sind (z. B. App Service-Web-Apps oder Azure Functions), auch eine private Konnektivität mit der Datenbank herstellen. Weitere Informationen zu diesem speziellen Anwendungsfall finden Sie im Architekturszenario [Private Konnektivität von Web-Apps mit Azure SQL-Datenbank](/azure/architecture/example-scenario/private-web-app/private-web-app).
 
 ## <a name="connecting-from-an-azure-vm-in-peered-virtual-network"></a>Herstellen einer Verbindung über einen virtuellen Azure-Computer in einem virtuellen Netzwerk mit Peering 
 
@@ -176,10 +156,25 @@ Verwenden oder implementieren Sie eine der folgenden Optionen, um in einer lokal
 - [Site-to-Site-VPN-Verbindung](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 - [ExpressRoute-Verbindung](../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
-
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase-and-the-copy-statement"></a>Herstellen einer Verbindung zwischen Azure Synapse Analytics und Azure Storage mit PolyBase und der COPY-Anweisung
 
 PolyBase und die COPY-Anweisung werden häufig verwendet, um Daten aus Azure Storage-Konten in Azure Synapse Analytics zu laden. Wenn das Azure Storage-Konto, aus dem Sie Daten laden, den Zugriff auf einen Satz von Subnetzen virtueller Netzwerke über private Endpunkte, Dienstendpunkte oder IP-basierte Firewalls einschränkt, wird die Konnektivität von PolyBase und der COPY-Anweisung mit dem Konto unterbrochen. Führen Sie die [hier](vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage) angegebenen Schritte aus, um Import- und Exportszenarien zu ermöglichen, in denen Azure Synapse Analytics eine Verbindung mit Azure Storage (mit VNET-Schutz) herstellt. 
+
+## <a name="data-exfiltration-prevention"></a>Verhinderung der Datenexfiltration
+
+Datenexfiltration in Azure SQL-Datenbank bedeutet, dass ein Benutzer (etwa ein Datenbankadministrator) Daten aus einem System extrahieren und an einen anderen Ort oder in ein anderes System außerhalb der Organisation verschieben kann. So kann ein Benutzer beispielsweise Daten in ein Speicherkonto eines Dritten verschieben.
+
+Stellen Sie sich ein Szenario vor, in dem ein Benutzer SQL Server Management Studio (SSMS) auf einem virtuellen Azure-Computer ausführt, von dem eine Verbindung mit einer Datenbank in SQL-Datenbank hergestellt wird. Die Datenbank befindet sich im Rechenzentrum „USA, Westen“. Das folgende Beispiel zeigt, wie Sie den Zugriff mit öffentlichen Endpunkten in SQL-Datenbank unter Verwendung von Netzwerkzugriffssteuerungen einschränken.
+
+1. Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zur SQL-Datenbank-Instanz über den öffentlichen Endpunkt, indem Sie die Option zum Zulassen von Azure-Diensten auf **AUS** festlegen. Vergewissern Sie sich, dass durch die Firewallregeln auf Server- und Datenbankebene keine IP-Adressen zugelassen werden. Weitere Informationen finden Sie unter [Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse](network-access-controls-overview.md).
+1. Lassen Sie nur Datenverkehr für die Datenbank in SQL-Datenbank mit der privaten IP-Adresse des virtuellen Computers zu. Weitere Informationen finden Sie in den Artikeln [Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank](vnet-service-endpoint-rule-overview.md) und [IP-Firewallregeln für Azure SQL-Datenbank und Azure Synapse](firewall-configure.md).
+1. Beschränken Sie auf dem virtuellen Azure-Computer den Bereich der ausgehenden Verbindung mithilfe von [Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/manage-network-security-group.md) und Diensttags:
+    - Geben Sie eine NSG-Regel an, um Datenverkehr für das Diensttag „SQL.WestUs“ zuzulassen. Dadurch ist nur eine Verbindung mit der SQL-Datenbank-Instanz in „USA, Westen“ möglich.
+    - Geben Sie eine NSG-Regel (mit einer **höheren Priorität**) an, um Datenverkehr für das Diensttag „SQL“ zu verweigern. Dadurch werden Verbindungen mit der SQL-Datenbank-Instanz in allen Regionen verweigert.
+
+Am Ende dieser Einrichtung kann der virtuelle Azure-Computer nur eine Verbindung mit einer Datenbank in SQL-Datenbank in der Region „USA, Westen“ herstellen. Die Konnektivität ist jedoch nicht auf ein Singleton in SQL-Datenbank beschränkt. Der virtuelle Computer kann weiterhin eine Verbindung mit beliebigen Datenbanken in der Region „USA, Westen“ herstellen – also auch mit den Datenbanken, die nicht Teil des Abonnements sind. Wir haben den Bereich der Datenexfiltration im obigen Szenario auf eine bestimmte Region reduziert, sie aber nicht vollständig unterbunden.
+
+Mit Private Link können Kunden jetzt Netzwerkzugriffssteuerungen wie NSGs einrichten, um den Zugriff auf den privaten Endpunkt einzuschränken. Einzelne Azure-PaaS-Ressourcen werden dann bestimmten privaten Endpunkten zugeordnet. Ein böswilliger Insider kann somit nur auf die zugeordnete PaaS-Ressource (etwa eine Datenbank in SQL-Datenbank), aber nicht auf andere Ressourcen zugreifen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -188,9 +183,12 @@ PolyBase und die COPY-Anweisung werden häufig verwendet, um Daten aus Azure Sto
 - Möglicherweise interessieren Sie sich auch für das Architekturszenario [Web-App mit privater Konnektivität mit Azure SQL-Datenbank](/azure/architecture/example-scenario/private-web-app/private-web-app). Darin wird eine Webanwendung außerhalb des virtuellen Netzwerks mit dem privaten Endpunkt einer Datenbank verbunden.
 
 <!--Image references-->
-[1]: media/quickstart-create-single-database/pe-connect-overview.png
-[2]: media/quickstart-create-single-database/telnet-result.png
-[3]: media/quickstart-create-single-database/pec-list-before.png
-[4]: media/quickstart-create-single-database/pec-approve.png
-[5]: media/quickstart-create-single-database/pec-list-after.png
-[6]: media/quickstart-create-single-database/pec-select.png
+[1]: media/private-endpoint/pe-connect-overview.png
+[2]: media/private-endpoint/telnet-result.png
+[3]: media/private-endpoint/pec-list-before.png
+[4]: media/private-endpoint/pec-approve.png
+[5]: media/private-endpoint/pec-list-after.png
+[6]: media/private-endpoint/pec-select.png
+[7]: media/private-endpoint/pec-click.png
+[8]: media/private-endpoint/pec-nic-click.png
+[9]: media/private-endpoint/pec-ip-display.png

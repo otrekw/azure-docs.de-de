@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: 144e8058e640f98dc6b0ef60534405525532b00e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 681900e2d2175e3e52a906072ae0b31a835cd1c8
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547865"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483657"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Kognitive Qualifikation „Dokumentextrahierung“
 
@@ -26,6 +26,12 @@ Die Qualifikation **Dokumentextrahierung** extrahiert Inhalt aus einer Datei inn
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.DocumentExtractionSkill
+
+## <a name="supported-document-formats"></a>Unterstützte Dokumentformate
+
+DocumentExtractionSkill kann Text aus den folgenden Dokumentformaten extrahieren:
+
+[!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="skill-parameters"></a>Skillparameter
 
@@ -60,13 +66,23 @@ Die Eingabe „file_data“ muss ein Objekt sein, das wie folgt definiert wurde:
 }
 ```
 
+oder
+
+```json
+{
+  "$type": "file",
+  "url": "URL to download file",
+  "sasToken": "OPTIONAL: SAS token for authentication if the URL provided is for a file in blob storage"
+}
+```
+
 Dieses Dateiverweisobjekt kann auf eine von drei Arten generiert werden:
 
  - Indem Sie den `allowSkillsetToReadFileData`-Parameters in Ihrer Indexerdefinition auf „true“ festlegen.  Dadurch wird der Pfad `/document/file_data` erstellt, bei dem es sich um ein Objekt handelt, das die aus der Blobdatenquelle heruntergeladenen ursprünglichen Dateidaten darstellt. Dieser Parameter gilt nur für Daten in Blobspeicher.
 
  - Indem Sie den `imageAction`-Parameters in Ihrer Indexerdefinition auf einen anderen Wert als `none` festlegen.  Dadurch wird ein Array von Bildern erstellt, die die erforderliche Konvention für die Eingaben für diese Qualifikation erfüllen, wenn sie einzeln übermittelt werden (d. h. `/document/normalized_images/*`).
 
- - Indem Sie eine benutzerdefinierte Qualifikation ein JSON-Objekt zurückgeben lassen, das EXAKT wie oben definiert ist.  Der `$type`-Parameter muss exakt auf `file` festgelegt werden, und der `data`-Parameter muss die Per Base-64 verschlüsselte Bytearraydaten des Dateiinhalts enthalten.
+ - Indem Sie eine benutzerdefinierte Qualifikation ein JSON-Objekt zurückgeben lassen, das EXAKT wie oben definiert ist.  Der `$type` Parameter muss genau auf `file` festgelegt werden und der `data` Parameter muss die Base64-codierten Bytearraydaten des Dateiinhalts sein – oder der `url` Parameter muss eine ordnungsgemäß formatierte URL mit Zugriff sein, um die Datei an diesem Speicherort herunterzuladen.
 
 ## <a name="skill-outputs"></a>Skillausgaben
 
