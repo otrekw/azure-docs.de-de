@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: ca50c0221843b4e24a6287177f36608b86a0a1a9
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: d56c4b8fc17dc29578366e3d84e9ba20ca95a9dd
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075659"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789711"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Schnellstart: Untersuchen eines Azure Digital Twins-Beispielszenarios mit Azure Digital Twins-Explorer
 
@@ -41,7 +41,7 @@ Für diese Schnellstartanleitung ist ein Azure-Abonnement erforderlich. Bei Beda
 
 Außerdem benötigen Sie **Node.js** auf Ihrem Computer. Die neueste Version finden Sie unter [Node.js](https://nodejs.org/).
 
-Schließlich müssen Sie auch das Beispiel herunterladen, das für diesen Schnellstart verwendet wird. Die Beispielanwendung ist **Azure Digital Twins-Explorer**. Dieses Beispiel enthält die App, die im Rahmen des Schnellstarts verwendet wird, um ein Azure Digital Twins-Szenario zu laden und zu untersuchen. Es enthält auch die Dateien für das Beispielszenario. Navigieren Sie zum Abrufen des Beispiels zu [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Wählen Sie unterhalb des Titels die Schaltfläche **Code durchsuchen** aus. Dadurch werden Sie zum GitHub-Repository für das Beispiel weitergeleitet. Wählen Sie die Schaltfläche **Code** und dann **ZIP herunterladen** aus, um das Beispiel als *ZIP-Datei* herunterzuladen. 
+Schließlich müssen Sie auch das Beispiel herunterladen, das für diesen Schnellstart verwendet wird. Die Beispielanwendung ist **Azure Digital Twins-Explorer**. Dieses Beispiel enthält die App, die im Rahmen des Schnellstarts verwendet wird, um ein Azure Digital Twins-Szenario zu laden und zu untersuchen. Es enthält auch die Dateien für das Beispielszenario. Navigieren Sie zum Abrufen des Beispiels zu [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Wählen Sie unterhalb des Titels die Schaltfläche **Code durchsuchen** aus. Dadurch werden Sie zum GitHub-Repository für das Beispiel weitergeleitet. Wählen Sie die Schaltfläche **Code** und dann **ZIP herunterladen** aus, um das Beispiel als ZIP-Datei herunterzuladen. 
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/download-repo-zip.png" alt-text="Screenshot: GitHub-Repository „digital-twins-explorer“. Die Schaltfläche „Code“ wurde ausgewählt, und ein kleines Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="media/quickstart-azure-digital-twins-explorer/download-repo-zip.png":::
 
@@ -155,7 +155,7 @@ Diese Modelldateien werden nun von Azure Digital Twins-Explorer in Ihre Azure D
 
 Nachdem Sie nun Modelle in Ihre Azure Digital Twins-Instanz hochgeladen haben, können Sie [digitale Zwillinge](concepts-twins-graph.md) hinzufügen, die den Modelldefinitionen entsprechen.
 
-Digitale Zwillinge stellen die tatsächlichen Entitäten in Ihrer Geschäftsumgebung dar. Es kann sich z. B. um Sensoren für eine Farm, Scheinwerfer in einem Auto oder – in diesem Schnellstart – Räume auf einer Etage eines Gebäudes sein. Sie können viele Zwillinge eines beliebigen Modelltyps erstellen, z. B. mehrere Räume, die alle das Modell *Room* (Raum) verwenden. Sie verbinden diese mit Beziehungen zu einem **Zwillingsgraphen**, der die gesamte Umgebung darstellt.
+Digitale Zwillinge stellen die tatsächlichen Entitäten in Ihrer Geschäftsumgebung dar. Es kann sich z. B. um Sensoren für eine Farm, Scheinwerfer in einem Auto oder – in diesem Schnellstart – Räume auf einer Etage eines Gebäudes sein. Sie können viele Zwillinge eines beliebigen Modelltyps erstellen, z. B. mehrere Räume, die alle das Modell Room (Raum) verwenden. Sie verbinden diese mit Beziehungen zu einem **Zwillingsgraphen**, der die gesamte Umgebung darstellt.
 
 In diesem Abschnitt laden Sie vorab erstellte Zwillinge hoch, die in einem vorab erstellten Graphen miteinander verknüpft werden. Der Graph enthält zwei Etagen und zwei Räume mit folgendem Layout:
 
@@ -212,7 +212,7 @@ Nun können Sie sich den hochgeladenen Graphen des Beispielszenarios ansehen.
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="Ansicht des Bereichs „Graph View“ (Graphansicht) mit enthaltenem Zwillingsgraphen. Ein Kreis mit der Bezeichnung „floor1“ (Etage1) ist über einen Pfeil mit der Bezeichnung „contains“ (enthält) mit einem Kreis mit der Bezeichnung „room1“ (Raum1) verbunden. Ein Kreis mit der Bezeichnung „floor0“ (Etage0) ist über einen Pfeil mit der Bezeichnung „contains“ (enthält) mit einem Kreis mit der Bezeichnung „room0“ (Raum0) verbunden.":::
 
-Die Kreise (Graph„knoten“) stellen digitale Zwillinge dar. Die Linien stellen Beziehungen dar. **Room0** (Raum0) ist im Zwilling **Floor0** (Etage0) und **Room1** (Raum1) im Zwilling **Floor1** (Etage1) enthalten.
+Die Kreise (Graph„knoten“) stellen digitale Zwillinge dar. Die Linien stellen Beziehungen dar. Room0 (Raum0) ist im Zwilling Floor0 (Etage0) und Room1 (Raum1) im Zwilling Floor1 (Etage1) enthalten.
 
 Mit einer Maus können Sie auf Teile des Graphen klicken und sie durch Ziehen verschieben.
 
@@ -283,7 +283,7 @@ Die Eigenschaften in dieser Liste können bearbeitet werden. Wählen Sie den Tem
     :::column-end:::
 :::row-end:::
 
-Nun wird das Fenster **Patch Information** (Patchinformationen) mit dem Patchcode angezeigt, der im Hintergrund mit den [APIs](how-to-use-apis-sdks.md) von Azure Digital Twins verwendet wurde, um die Aktualisierung durchzuführen. Klicken Sie auf **Schließen**.
+Nun wird das Fenster **Patch Information** (Patchinformationen) mit dem Patchcode angezeigt, der im Hintergrund mit den [APIs](concepts-apis-sdks.md) von Azure Digital Twins verwendet wurde, um die Aktualisierung durchzuführen. Klicken Sie auf **Schließen**.
 
 ### <a name="query-to-see-the-result"></a>Ausführen der Abfrage, um die Ergebnisse anzuzeigen
 

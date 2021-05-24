@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0948c7c82d7577bae07057bff9d1be4d7e09f978
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3de7a322d90f3a6a45a0965da72a1f53d5edc3a2
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462285"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751849"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Erstellen und Verwenden von Ansichten mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -55,7 +55,11 @@ WITH (
 ) AS [r];
 ```
 
-Bei der Ansicht in diesem Beispiel wird die Funktion `OPENROWSET` mit dem absoluten Pfad zu den zugrunde liegenden Dateien verwendet. Wenn Sie über `EXTERNAL DATA SOURCE` mit einer Stamm-URL Ihres Speichers verfügen, können Sie `OPENROWSET` mit `DATA_SOURCE` und dem relativen Dateipfad verwenden:
+In der Ansicht wird `EXTERNAL DATA SOURCE` mit einer Stamm-URL Ihres Speichers als `DATA_SOURCE` verwendet und den Dateien ein neuer relativer Dateipfad hinzugefügt.
+
+## <a name="create-a-partitioned-view"></a>Erstellen einer partitionierten Ansicht
+
+Wenn Sie über Dateien verfügen, die in der hierarchischen Ordnerstruktur partitioniert sind, können Sie das Partitionsmuster mithilfe der Platzhalter im Dateipfad beschreiben. Verwenden Sie die Funktion `FILEPATH`, um Teile des Ordnerpfads als Partitionierungsspalten verfügbar zu machen.
 
 ```sql
 CREATE VIEW TaxiView
@@ -67,6 +71,8 @@ FROM
         FORMAT='PARQUET'
     ) AS nyc
 ```
+
+Die partitionierten Ansichten führen die Löschung der Ordnerpartition durch, wenn Sie diese Ansicht mit den Filtern für die Partitionierungsspalten abfragen. Dadurch kann die Leistung Ihrer Abfragen verbessert werden.
 
 ## <a name="use-a-view"></a>Verwenden einer Ansicht
 

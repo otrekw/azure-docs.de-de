@@ -6,13 +6,13 @@ ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 10/02/2020
-ms.openlocfilehash: 9873ec2113c0c5704ccca4fa10daf6ac8d572989
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 05/08/2021
+ms.openlocfilehash: 47cc0eeb052d980e5c33061dc4721e2f819b3b34
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107430"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109654920"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrieren und Überprüfen von Azure SQL-Datenbank
 
@@ -141,7 +141,7 @@ Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Azure SQL-Datenbank-
 
 1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
 
-1. Wählen Sie **Registrieren** aus.
+1. Wählen Sie **Registrieren**.
 
 1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure SQL-Datenbank** aus. Wählen Sie **Weiter**.
 
@@ -151,7 +151,7 @@ Gehen Sie auf dem Bildschirm **Register sources (Azure SQL Database)** (Quellen 
 
 1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
 1. Wählen Sie die Option **Aus Azure-Abonnement** und dann im Dropdownfeld **Azure-Abonnement** das entsprechende Abonnement und im Dropdownfeld **Servername** den entsprechenden Server aus.
-1. Wählen Sie **Fertig stellen** aus, um die Datenquelle zu registrieren.
+1. Wählen Sie **Registrieren** aus, um die Datenquelle zu registrieren.
 
 :::image type="content" source="media/register-scan-azure-sql-database/add-azure-sql-database.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 

@@ -1,89 +1,16 @@
 ---
-title: Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
-description: In diesem Artikel wird erläutert, wie Sie mithilfe von Patch Orchestration Application das Patchen des Betriebssystems in einem Service Fabric-Cluster automatisieren.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
-ms.service: service-fabric
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
+title: Verwenden der Patch Orchestration-Anwendung
+description: Automatisieren Sie das Patchen von Betriebssystemen auf nicht in Azure gehosteten Service Fabric Clustern mithilfe der Patch Orchestration Application-Anwendung.
+ms.topic: how-to
 ms.date: 2/01/2019
-ms.author: atsenthi
-ms.openlocfilehash: e94b809513bda8edc7a51baf79ec05a2c9c77489
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 9c3f1eb767f0dac0e5be3d9fd2b344d538b95ee0
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448553"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738696"
 ---
-# <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
-
-## <a name="automatic-os-image-upgrades"></a>Automatische Upgrades für Betriebssystemimages
-
-Das Durchführen [automatischer Upgrades von Betriebssystemimages in Ihrer Virtual Machine Scale Sets-Instanz](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) gilt als bewährte Methode, um das Betriebssystem in Azure gepatcht zu halten. Für automatische Betriebssystemupgrades, die auf VM-Skalierungsgruppen basieren, ist für eine Skalierungsgruppe mindestens die Dauerhaftigkeitsstufe „Silver“ (Silber) erforderlich.
-
-Anforderungen an automatische Upgrades von Betriebssystemimages durch Virtual Machine Scale Sets
--   Die [Dauerhaftigkeitsstufe](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) von Service Fabric lautet „Silber“ oder „Gold“ (nicht „Bronze“).
--   Die Service Fabric-Erweiterung in der Skalierungsgruppenmodell-Definition muss über TypeHandlerVersion 1.1 oder höher verfügen.
--   Die Dauerhaftigkeitsstufe sollte im Service Fabric-Cluster und für die Service Fabric-Erweiterung in der Skalierungsgruppenmodell-Definition gleich sein.
-- Ein zusätzlicher Integritätstest oder die Verwendung einer Anwendungsintegritätserweiterung ist für Virtual Machine Scale Sets nicht erforderlich.
-
-Stellen Sie sicher, dass die Dauerhaftigkeitseinstellungen im Service Fabric-Cluster und für die Service Fabric-Erweiterung nicht in Konflikt stehen, weil dies zu Upgradefehlern führt. Dauerhaftigkeitsstufen können mit den Richtlinien geändert werden, die auf [dieser Seite](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels) beschrieben sind.
-
-Beim Dauerhaftigkeitsgrad „Bronze“ sind keine automatischen Betriebssystemupgrades verfügbar. Während die [Anwendung zur Patchorchestrierung](#patch-orchestration-application ) (nur für nicht in Azure gehostete Cluster) für den Dauerhaftigkeitsgrad Silber oder höher *nicht empfohlen* wird, stellt diese die einzige Möglichkeit dar, Windows-Updates unter Einbeziehung von Service Fabric-Upgradedomänen zu automatisieren.
-
-> [!IMPORTANT]
-> Upgrades auf einer VM, bei denen Windows Update Betriebssystempatches anwendet, ohne den Betriebssystemdatenträger zu ersetzen, werden in Azure Service Fabric nicht unterstützt.
-
-Es sind zwei Schritte erforderlich, um die Funktion mit deaktiviertem Windows Update ordnungsgemäß auf dem Betriebssystem zu aktivieren.
-
-1. Aktivieren automatischer Upgrades von Betriebssystemimages, Deaktivieren von Windows Update: ARM 
-    ```json
-    "virtualMachineProfile": { 
-        "properties": {
-          "upgradePolicy": {
-            "automaticOSUpgradePolicy": {
-              "enableAutomaticOSUpgrade":  true
-            }
-          }
-        }
-      }
-    ```
-    
-    ```json
-    "virtualMachineProfile": { 
-        "osProfile": { 
-            "windowsConfiguration": { 
-                "enableAutomaticUpdates": false 
-            }
-        }
-    }
-    ```
-
-    Azure PowerShell
-    ```azurepowershell-interactive
-    Update-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -AutomaticOSUpgrade $true -EnableAutomaticUpdate $false
-    ``` 
-    
-1. Aktualisieren des Skalierungsgruppenmodells. Nach dieser Konfigurationsänderung ist ein Reimaging aller Computer erforderlich, um das Skalierungsgruppenmodell zu aktualisieren und damit die Änderung anzuwenden.
-    
-    Azure PowerShell
-    ```azurepowershell-interactive
-    $scaleSet = Get-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName
-    $instances = foreach($vm in $scaleSet)
-    {
-        Set-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -InstanceId $vm.InstanceID -Reimage
-    }
-    ``` 
-    
-Weitere Anweisungen finden Sie unter [Automatische Upgrades für Betriebssystemimages durch Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md).
-
-## <a name="patch-orchestration-application"></a>Patch Orchestration Application
+# <a name="use-patch-orchestration-application"></a>Verwenden der Patch Orchestration-Anwendung
 
 > [!IMPORTANT]
 > Patch Orchestration Application Version 1.2.* wird seit dem 30. April 2019 nicht mehr unterstützt. Führen Sie daher ein Upgrade auf die aktuelle Version durch.
@@ -212,7 +139,7 @@ Um das Anwendungspaket herunterzuladen, wechseln Sie zur [Releaseseite von Patch
 
 Sie können das POA-Verhalten entsprechend Ihren Anforderungen konfigurieren. Überschreiben Sie die Standardwerte, indem Sie während der Erstellung oder Aktualisierung einer Anwendung den Anwendungsparameter übergeben. Sie können Anwendungsparameter durch Angeben von `ApplicationParameter` in den Cmdlets `Start-ServiceFabricApplicationUpgrade` oder `New-ServiceFabricApplication` festlegen.
 
-| Parameter        | Typ                          | Details |
+| Parameter        | type                          | Details |
 |:-|-|-|
 |MaxResultsToCache    |Long                              | Die maximale Anzahl von Windows Update-Ergebnissen, die zwischengespeichert werden sollen. <br><br>Der Standardwert ist 3.000, wobei Folgendes angenommen wird: <br> &nbsp;&nbsp;- Es sind 20 Knoten vorhanden. <br> &nbsp;&nbsp;- Jeden Monat können 5 Updates für einen Knoten durchgeführt werden. <br> &nbsp;&nbsp;- Pro Vorgang können 10 Ergebnisse vorliegen. <br> &nbsp;&nbsp;- Es sollen die Ergebnisse für die letzten drei Monate gespeichert werden. |
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Windows-Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br><br>Zulässige Werte sind: <br>*NodeWise:* Windows-Updates werden immer nur auf jeweils einem Knoten installiert. <br> *UpgradeDomainWise:* Windows-Updates werden immer nur in jeweils einer Updatedomäne installiert. (Allenfalls kann ein Windows-Update für alle Knoten in einer Updatedomäne verwendet werden.)<br><br> Informationen dazu, welche Richtlinie für Ihren Cluster am besten geeignet ist, finden Sie im Abschnitt [Häufig gestellte Fragen](#frequently-asked-questions).

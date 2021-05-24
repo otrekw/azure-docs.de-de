@@ -372,7 +372,7 @@ Bei einer Abmeldeanforderung einer Anwendung versucht Azure AD B2C, sich von I
 
 ## <a name="debug-saml-protocol"></a>Debuggen des SAML-Protokolls
 
-Um das Konfigurieren und Debuggen des Verbunds mit einem SAML-Identitätsanbieter zu vereinfachen, können Sie eine Browsererweiterung für das SAML-Protokoll (z. B. die [SAML DevTools-Erweiterung](https://chrome.google.com/webstore/detail/saml-devtools-extension/jndllhgbinhiiddokbeoeepbppdnhhio) für Chrome, [SAML-tracer](https://addons.mozilla.org/es/firefox/addon/saml-tracer/) für FireFox oder [Edge- oder IE-Entwicklertools](https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/gathering-a-saml-token-using-edge-or-ie-developer-tools/ba-p/320957)) verwenden.
+Um das Konfigurieren und Debuggen des Verbunds mit einem SAML-Identitätsanbieter zu vereinfachen, können Sie eine Browsererweiterung für das SAML-Protokoll (z. B. die [SAML DevTools-Erweiterung](https://chrome.google.com/webstore/detail/saml-devtools-extension/jndllhgbinhiiddokbeoeepbppdnhhio) für Chrome, [SAML-tracer](https://addons.mozilla.org/es/firefox/addon/saml-tracer/) für FireFox oder [Microsoft Edge- oder IE-Entwicklertools](https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/gathering-a-saml-token-using-edge-or-ie-developer-tools/ba-p/320957)) verwenden.
 
 Mithilfe dieser Tools können Sie die Integration zwischen Azure AD B2C und Ihrem SAML-Identitätsanbieter überprüfen. Beispiel:
 

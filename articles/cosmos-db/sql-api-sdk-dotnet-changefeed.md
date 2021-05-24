@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
-ms.openlocfilehash: 8f38ed175241bdb9235795d7a999a82d0799d46d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 8f35e0fcf369616e5e95ce41554370e2bb7b604d
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876560"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632635"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Versionshinweise
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,6 +52,10 @@ ms.locfileid: "107876560"
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="v2-builds"></a>V2-Builds
+
+### <a name="240"></a><a id="2.4.0"></a>2.4.0
+* Unterstützung für Leasesammlungen, die mit einem als /partitionKey definierten Partitionsschlüssel partitioniert werden können, wurde hinzugefügt. Vor dieser Änderung musste der Partitionsschlüssel der Leasesammlung als /id definiert werden.
+* Dieses Release ermöglicht die Verwendung von Leasesammlungen mit der Gremlin-API, da der Partitionsschlüssel für Gremlin-Sammlungen nicht als /id definiert werden kann.
 
 ### <a name="232"></a><a id="2.3.2"></a>2.3.2
 * Leasespeicherkompatibilität mit dem [V3 SDK] wurde hinzugefügt, um Pfade für die Livemigration zu ermöglichen. Eine Anwendung kann zu V3 SDK migriert und zur Änderungsfeed-Prozessorbibliothek zurück migriert werden, ohne dass ein Zustand verloren geht.
@@ -199,6 +203,7 @@ Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher 
 
 | Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |6\. Mai 2021 |--- |
 | [2.3.2](#2.3.2) |11. August 2020 |--- |
 | [2.3.1](#2.3.1) |30. Juli 2020 |--- |
 | [2.3.0](#2.3.0) |2\. April 2020 |--- |

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2021
 ms.author: yelevin
-ms.openlocfilehash: 365ba9df39b4b3bd7397e86e6a51b285bf049242
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b2a98e92630fcdc46228cc36579cfe9787b92daf
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600581"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786643"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel
 
@@ -36,7 +36,7 @@ In diesem Tutorial erfahren Sie, wie Sie Playbooks mit Automatisierungsregeln ve
 
 ## <a name="what-are-automation-rules-and-playbooks"></a>Was sind Automatisierungsregeln und Playbooks?
 
-Automatisierungsregeln helfen bei der Selektierung von Vorfällen in Azure Sentinel. Mit ihnen können Sie automatisch Vorfälle den richtigen Mitarbeitern zuweisen, überflüssige Vorfälle oder bekannte False Positives schließen, den Schweregrad ändern und Tags hinzufügen. Außerdem sind sie der Mechanismus, mit dem Playbooks als Reaktion auf Vorfälle ausgeführt werden können.
+Automatisierungsregeln helfen bei der Selektierung von Vorfällen in Azure Sentinel. Hiermit können Sie Vorfälle automatisch den richtigen Mitarbeitern zuweisen, überflüssige Vorfälle oder bekannte [False Positives](false-positives.md) schließen, den Schweregrad ändern und Tags hinzufügen. Außerdem sind sie der Mechanismus, mit dem Playbooks als Reaktion auf Vorfälle ausgeführt werden können.
 
 Bei Playbooks handelt es sich um eine Sammlung von Prozeduren, die über Azure Sentinel als Reaktion auf eine Warnung oder einen Vorfall ausgeführt werden können. Ein Playbook kann Ihnen dabei helfen, Ihre Reaktion zu automatisieren und zu orchestrieren, und es kann so festgelegt werden, dass es automatisch ausgeführt wird, wenn bestimmte Warnungen oder Vorfälle generiert werden. Hierzu wird es an eine Analyseregel oder an eine Automatisierungsregel angefügt. Bei Bedarf kann es aber auch manuell ausgeführt werden.
 

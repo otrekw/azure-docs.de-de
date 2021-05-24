@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adbc653c8b698cb7b439b54b0a77d2b8cd4042a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 607a68870d3124eadba63b7a04b73ec7705a97a0
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100547399"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713970"
 ---
 # <a name="tutorial-manage-access-to-resources-in-azure-ad-entitlement-management"></a>Tutorial: Verwalten des Zugriffs auf Ressourcen in der Azure AD-Berechtigungsverwaltung
 
@@ -78,7 +78,7 @@ Ein Ressourcenverzeichnis hat mindestens eine Ressource, die freigegeben (geteil
 
 Bei einem *Zugriffspaket* handelt es sich um eine Gruppe von Ressourcen, die von einem Team oder Projekt benötigt wird und Richtlinien unterliegt. Zugriffspakete sind in Containern definiert, die als *Kataloge* bezeichnet werden. In diesem Schritt erstellen Sie ein Zugriffspaket namens **Marketing Campaign** im Katalog **Allgemein**.
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 ![Erstellen eines Zugriffspakets](./media/entitlement-management-access-package-first/elm-access-package.png)
 

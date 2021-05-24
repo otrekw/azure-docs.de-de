@@ -3,12 +3,12 @@ title: Einrichten der SNMP-MIB-Überwachung
 description: Sie können die Überwachung der Sensorintegrität mithilfe von SNMP durchführen. Der Sensor antwortet auf SNMP-Abfragen, die von einem autorisierten Überwachungsserver gesendet wurden.
 ms.date: 12/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 1ba52236f65c6c5daba68c67677cdc6adfb699b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14803fd2f9c088fb4454f97ff1524e8d651ccd05
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781669"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109654830"
 ---
 # <a name="set-up-snmp-mib-monitoring"></a>Einrichten der SNMP-MIB-Überwachung
 
@@ -22,17 +22,19 @@ Bevor Sie mit der Konfiguration der SNMP-Überwachung beginnen, müssen Sie den 
 
 | Verwaltungskonsole und Sensor | OID | Format | BESCHREIBUNG |
 |--|--|--|--|
-| Appliance-Name | 1.3.6.1.2.1.1.5.0 | DISPLAYSTRING | Name der Appliance für die lokale Verwaltungskonsole |
-| Hersteller | 1.3.6.1.2.1.1.4.0 | DISPLAYSTRING | Microsoft-Support (support.microsoft.com) |
-| Plattform | 1.3.6.1.2.1.1.1.0 | DISPLAYSTRING | Sensor oder lokale Verwaltungskonsole |
-| Seriennummer | 1.3.6.1.4.1.9.9.53313.1 | DISPLAYSTRING | Von der Lizenz verwendete Zeichenfolge |
-| Softwareversion | 1.3.6.1.4.1.9.9.53313.2 | DISPLAYSTRING | Zeichenfolge der Xsense-Vollversion und Zeichenfolge der Vollversion der Verwaltung |
-| CPU-Auslastung | 1.3.6.1.4.1.9.9.53313.3.1 | GAUGE32 | Angabe für 0 (null) bis 100 |
-| CPU-Temperatur | 1.3.6.1.4.1.9.9.53313.3.2 | DISPLAYSTRING | Celsius-Angabe für 0 (null) bis 100 basierend auf der Linux-Eingabe |
-| Speicherauslastung | 1.3.6.1.4.1.9.9.53313.3.3 | GAUGE32 | Angabe für 0 (null) bis 100 |
-| Datenträgerverwendung | 1.3.6.1.4.1.9.9.53313.3.4 | GAUGE32 | Angabe für 0 (null) bis 100 |
-| Dienststatus | 1.3.6.1.4.1.9.9.53313.5 | DISPLAYSTRING | Online oder offline, wenn eine der vier entscheidenden Komponenten ausfällt |
-| Bandbreite | Außerhalb des gültigen Bereichs für 2.4 |  | Die an jeder Monitorschnittstelle in Xsense empfangene Bandbreite |
+| Appliance-Name | 1.3.6.1.2.1.1.5.0 | STRING | Name der Appliance für die lokale Verwaltungskonsole |
+| Hersteller | 1.3.6.1.2.1.1.4.0 | STRING | Microsoft-Support (support.microsoft.com) |
+| Plattform | 1.3.6.1.2.1.1.1.0 | STRING | Sensor oder lokale Verwaltungskonsole |
+| Seriennummer | 1.3.6.1.4.1.53313.1 |STRING | Von der Lizenz verwendete Zeichenfolge |
+| Softwareversion | 1.3.6.1.4.1.53313.2 | STRING | Zeichenfolge der Xsense-Vollversion und Zeichenfolge der Vollversion der Verwaltung |
+| CPU-Auslastung | 1.3.6.1.4.1.53313.3.1 | GAUGE32 | Angabe für 0 (null) bis 100 |
+| CPU-Temperatur | 1.3.6.1.4.1.53313.3.2 | STRING | Hierbei handelt es sich um eine Celsius-Angabe für 0 (null) bis 100, die auf der Linux-Eingabe basiert. Von jedem Computer, der über keinen tatsächlichen Temperatursensor verfügt (z. B. VMs), wird „No sensors found“ (Keine Sensoren gefunden) zurückgegeben.|
+| Speicherauslastung | 1.3.6.1.4.1.53313.3.3 | GAUGE32 | Angabe für 0 (null) bis 100 |
+| Datenträgerverwendung | 1.3.6.1.4.1.53313.3.4 | GAUGE32 | Angabe für 0 (null) bis 100 |
+| Dienststatus | 1.3.6.1.4.1.53313.5  |STRING | Online oder offline, wenn eine der vier entscheidenden Komponenten ausfällt |
+| Dienststatus | 1.3.6.1.4.1.53313.5  |STRING | Online oder offline, wenn eine der vier entscheidenden Komponenten ausfällt |
+| Lokal/Verbunden mit Cloud | 1.3.6.1.4.1.53313.6   |STRING | Hiermit wird angegeben, ob der Sensor mit dem Azure Defender für IoT-Portal verbunden ist oder nur lokal verwaltet wird. |
+| Lizenzstatus | 1.3.6.1.4.1.53313.5  |STRING | Hiermit wird angegeben, ob die Aktivierungsdatei abgelaufen ist oder nicht. |
 
    - Nicht vorhandene Schlüssel antworten mit Null, HTTP 200, basierend auf [Stack Overflow](https://stackoverflow.com/questions/51419026/querying-for-non-existing-record-returns-null-with-http-200).
     

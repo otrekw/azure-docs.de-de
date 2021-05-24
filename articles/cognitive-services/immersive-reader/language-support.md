@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metang
-ms.openlocfilehash: 80da6776412e0df7b5b9ae5759ac770c04673992
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c36933a13bf3373930acf5dbb36513aa171748f9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631069"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768893"
 ---
 # <a name="language-support-for-immersive-reader"></a>Sprachunterstützung für den plastischen Reader
 
@@ -53,6 +53,7 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Dänisch | da |
 | Dänisch (Dänemark) | da-DK |
 | Niederländisch | nl |
+| Niederländisch (Belgien) | nl-BE |
 | Niederländisch (Niederlande) | nl-NL |
 | Englisch | en |
 | Englisch (Australien) | en-AU |
@@ -61,11 +62,14 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Englisch (Indien) | en-IN |
 | Englisch (Irland) | en-IE |
 | Englisch (Neuseeland) | en-NZ |
+| Englisch (Philippinen) | en-PH |
 | Walisisch (Großbritannien) | en-GB |
 | Englisch (USA) | de-DE |
+| Estnisch | et-EE |
 | Finnisch | fi |
 | Finnisch (Finnland) | fi-FI |
 | Französisch | fr |
+| Französisch (Belgien) | fr-BE |
 | Französisch (Kanada) | fr-CA |
 | Französisch (Frankreich) | fr-FR |
 | Französisch (Schweiz) | fr-CH |
@@ -83,14 +87,18 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Ungarisch (Ungarn) | hu-HU |
 | Indonesisch | id |
 | Indonesisch (Indonesien) | id-ID |
+| Irisch | ga-IE |
 | Italienisch | it |
 | Italienisch (Italien) | it-IT |
 | Japanisch | ja |
 | Japanisch (Japan) | ja-JP |
 | Koreanisch | ko |
 | Koreanisch (Korea) | ko-KR |
+| Lettisch | lv-LV |
+| Litauisch | lt-LT |
 | Malaiisch | ms |
 | Malaiisch (Malaysia) | ms-MY |
+| Maltesisch | mt-MT |
 | Norwegisch Bokmål| nb |
 | Norwegisch Bokmål (Norwegen) | nb-NO |
 | Polnisch | pl |
@@ -120,21 +128,29 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Thai (Thailand) | th-TH |
 | Türkisch | tr |
 | Türkisch (Türkei) | tr-TR |
+| Ukrainisch | ur-PK |
 | Vietnamesisch | vi |
 | Vietnamesisch (Vietnam) | vi-VN |
+| Walisisch | cy-GB |
 
 ## <a name="translation"></a>Sprachübersetzung
 
 | Sprache | Tag |
 |----------|-----|
 | Afrikaans | af |
+| Albanisch | sq |
+| Amharisch | am |
 | Arabisch | ar |
 | Arabisch (ägyptisch) | ar-EG |
 | Arabisch (Saudi-Arabien) | ar-SA |
+| Armenisch | hy |
+| Aserbaidschanisch | az |
+| Afrikaans | af |
 | Bengalisch | bn |
 | Bosnisch | bs |
 | Bulgarisch | bg |
 | Bulgarisch (Bulgarien) | bg-BG |
+| Birmanisch | my |
 | Katalanisch | ca |
 | Katalanisch (Katalanisch) | ca-ES |
 | Chinesisch | zh |
@@ -202,11 +218,14 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Japanisch | ja |
 | Japanisch (Japan) | ja-JP |
 | Kannada | kn |
+| Kasachisch | kk |
+| Khmer | km |
 | Suaheli | sw |
 | Koreanisch | ko |
 | Koreanisch (Korea) | ko-KR |
 | Kurdisch (zentral) | ku |
 | Kurdisch (nördlich) | kmr |
+| Laotisch | lo |
 | Lettisch | lv |
 | Litauisch | lt |
 | Madagassisch | mg |
@@ -216,9 +235,10 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Maltesisch | Mt |
 | Maori | mi |
 | Marathi | mr |
+| Nepalesisch | ne |
 | Norwegisch Bokmål| nb |
 | Norwegisch Bokmål (Norwegen) | nb-NO |
-| Oriya | oder |
+| Odia | oder |
 | Paschtu (Afghanistan) | ps |
 | Persisch | fa |
 | Polnisch | pl |
@@ -253,6 +273,7 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Telugu (Indien) | te-IN |
 | Thailändisch | th |
 | Thai (Thailand) | th-TH |
+| Tigrinya | ti |
 | Tongaisch | zu |
 | Türkisch | tr |
 | Türkisch (Türkei) | tr-TR |
@@ -548,31 +569,3 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Spanisch (Spanien) | es-ES |
 | Schwedisch | sv |
 | Schwedisch (Schweden) | sv-SE |
-
-## <a name="dictionary"></a>Wörterbuch
-
-| Sprache | Tag |
-|----------|-----|
-| Englisch | en |
-| Englisch (Australien) | en-AU |
-| Englisch (Kanada) | en-CA |
-| Englisch (Hongkong SAR) | en-HK |
-| Englisch (Indien) | en-IN |
-| Englisch (Irland) | en-IE |
-| Englisch (Neuseeland) | en-NZ |
-| Walisisch (Großbritannien) | en-GB |
-| Englisch (USA) | de-DE |
-| Französisch | fr |
-| Französisch (Kanada) | fr-CA |
-| Französisch (Frankreich) | fr-FR |
-| Französisch (Schweiz) | fr-CH |
-| Deutsch | de |
-| Deutsch (Österreich) | de-AT |
-| Deutsch (Deutschland) | de-DE |
-| Deutsch (Schweiz)| de-CH |
-| Italienisch | it |
-| Italienisch (Italien) | it-IT |
-| Spanisch | es |
-| Spanisch (Lateinamerika) | es-419 |
-| Spanisch (Mexiko) | es-MX |
-| Spanisch (Spanien) | es-ES |

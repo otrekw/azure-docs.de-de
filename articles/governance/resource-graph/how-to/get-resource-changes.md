@@ -3,12 +3,12 @@ title: Abrufen von Ressourcenänderungen
 description: Erfahren Sie, wie Sie feststellen können, wann eine Ressource geändert wurde, und wie Sie eine Liste der geänderten Eigenschaften abrufen und die Unterschiede auswerten.
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 500a2d58c5fc9e1b63a544978c4b583eba60a63e
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 103ebf0303ee2b8613ccafd13d9c8916ed7e1fbc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219075"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751605"
 ---
 # <a name="get-resource-changes"></a>Abrufen von Ressourcenänderungen
 

@@ -3,17 +3,17 @@ title: Steuerungen des Blaupausenbeispiels „DoD-Auswirkungsstufe 5“
 description: Steuerungszuordnung des Blaupausenbeispiels „DoD-Auswirkungsstufe 5“ Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: af68ee959c50102b8344f91f8c3aa2fe11a0e2c2
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: fdfa0cb3824234b68710600bd70ebf074cf3d157
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386691"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757509"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels „DoD-Auswirkungsstufe 5“
 
 In diesem Artikel wird erläutert, wie das Blaupausenbeispiel „DoD-Auswirkungsstufe 5“ (Department of Defense Impact Level 5, DoD IL5) von Azure Blueprints den Steuerungen von „DoD-Auswirkungsstufe 5“ zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie im [Handbuch für Sicherheitsanforderungen für Cloudcomputing des US-Verteidigungsministeriums](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf).
-Die Behörde für Informationssysteme (Defense Information Systems Agency, DISA) des US-Verteidigungsministeriums (US Department of Defense, DoD) ist für die Entwicklung und Verwaltung des Handbuchs für Sicherheitsanforderungen für Cloudcomputing des US-Verteidigungsministeriums zuständig. In diesem Handbuch sind die grundlegenden Sicherheitsanforderungen für Clouddienstanbieter (Cloud Service Providers, CSPs), die DoD-Informationen, -Systeme und -Anwendungen hosten, sowie für die Verwendung von Clouddiensten durch das DoD festgelegt.  
+Die Behörde für Informationssysteme (Defense Information Systems Agency, DISA) des US-Verteidigungsministeriums (US Department of Defense, DoD) ist für die Entwicklung und Verwaltung des Handbuchs für Sicherheitsanforderungen für Cloudcomputing des US-Verteidigungsministeriums zuständig. In diesem Handbuch sind die grundlegenden Sicherheitsanforderungen für Clouddienstanbieter (Cloud Service Providers, CSPs), die DoD-Informationen, -Systeme und -Anwendungen hosten, sowie für die Verwendung von Clouddiensten durch das DoD festgelegt.
 
 Die folgenden Zuordnungen gelten für die Steuerungen für **DoD-Auswirkungsstufe 5**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Vorschauversion\]: DoD-Auswirkungsstufe 5**.
 
@@ -154,19 +154,19 @@ Für diese integrierte Richtlinie ist es erforderlich, dass Sie ein Array mit Re
 
 ## <a name="cm-7-2-least-functionality--prevent-program-execution"></a>CM-7 (2) Mindestfunktionalität | Unterbinden der Programmausführung
 
-Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Zulassungslistenlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Anwendungssteuerung kann in einem Erzwingungsmodus ausgeführt werden, der die Ausführung nicht genehmigter Anwendungen verhindert. Diese Blaupause weist eine Azure Policy-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
+Die adaptive Anwendungssteuerung in Azure Security Center ist eine intelligente, automatisierte End-to-End-Zulassungslistenlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Anwendungssteuerung kann in einem Erzwingungsmodus ausgeführt werden, der die Ausführung nicht genehmigter Anwendungen verhindert. Diese Blaupause weist eine Azure Policy-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
 
 - Adaptive Anwendungssteuerung zum Definieren sicherer Anwendungen muss auf Computern aktiviert sein
 
 ## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) Mindestfunktionalität | Autorisierte Software und Whitelists
 
-Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Zulassungslistenlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie Listen von genehmigten Anwendungen für Ihre virtuellen Computer erstellen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
+Die adaptive Anwendungssteuerung in Azure Security Center ist eine intelligente, automatisierte End-to-End-Zulassungslistenlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie Listen von genehmigten Anwendungen für Ihre virtuellen Computer erstellen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
 
 - Adaptive Anwendungssteuerung zum Definieren sicherer Anwendungen muss auf Computern aktiviert sein
 
 ## <a name="cm-11-user-installed-software"></a>CM-11 Von Benutzern installierte Software
 
-Die adaptive Anwendungssteuerung im Azure Security Center ist eine intelligente, automatisierte End-to-End-Zulassungslistenlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie die Einhaltung von Software-Einschränkungsrichtlinien durchsetzen und überwachen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
+Die adaptive Anwendungssteuerung in Azure Security Center ist eine intelligente, automatisierte End-to-End-Zulassungslistenlösung für Anwendungen, die die Ausführung bestimmter Software auf Ihren virtuellen Computern blockieren oder verhindern kann. Mit Anwendungssteuerung können Sie die Einhaltung von Software-Einschränkungsrichtlinien durchsetzen und überwachen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, mit der Sie virtuelle Computer überwachen können, für die eine Anwendungszulassungsliste empfohlen wird, aber noch nicht konfiguriert wurde.
 
 - Adaptive Anwendungssteuerung zum Definieren sicherer Anwendungen muss auf Computern aktiviert sein
 
@@ -176,7 +176,7 @@ Azure Site Recovery repliziert Workloads, die auf virtuellen Computern ausgefüh
 
 - Überwachen von virtuellen Computern ohne konfigurierte Notfallwiederherstellung
 
-## <a name="cp-9-05--information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05): Sicherung des Informationssystems | Übertragung an den alternativen Speicherort
+## <a name="cp-9-05-information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05): Sicherung des Informationssystems | Übertragung an den alternativen Speicherort
 
 Mit dieser Blaupause werden Azure Policy-Definitionen zugewiesen, mit denen die Systemsicherungsinformationen der Organisation am alternativen Speicherstandort elektronisch überwacht werden. Erwägen Sie für den physischen Versand der Speichermetadaten die Verwendung von Azure Data Box.
 
@@ -250,7 +250,7 @@ Azure Security Center umfasst Funktionen zur Berichterstellung, über die Sie in
 
 ## <a name="sc-5-denial-of-service-protection"></a>SC-5 Schutz vor Denial-of-Service-Angriffen
 
-Die DDoS-Standard-Tarif (Distributed Denial of Service) von Azure bietet mehr Features und Risikominderungsfunktionen als die Dienstebene „Basic“. Zu diesen zusätzlichen Features gehören die Integration von Azure Monitor und die Möglichkeit, Berichte zur Entschärfung nach einem Angriff zu überprüfen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, die prüft, ob der DDoS-Standard-Tarif aktiviert ist. Das Verständnis des Funktionsunterschieds zwischen den Dienstebene kann Ihnen helfen, die beste Lösung für den Schutz vor Denial-of-Service-Angriffen für Ihre Azure-Umgebung auszuwählen.
+Der DDoS-Standard-Tarif (Distributed Denial of Service) von Azure bietet mehr Features und Risikominderungsfunktionen als die Dienstebene „Basic“. Zu diesen zusätzlichen Features gehören die Integration von Azure Monitor und die Möglichkeit, Berichte zur Entschärfung nach einem Angriff zu überprüfen. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, die prüft, ob der DDoS-Standard-Tarif aktiviert ist. Das Verständnis des Funktionsunterschieds zwischen den Dienstebene kann Ihnen helfen, die beste Lösung für den Schutz vor Denial-of-Service-Angriffen für Ihre Azure-Umgebung auszuwählen.
 
 - Azure DDoS Protection Standard muss aktiviert sein
 
@@ -309,15 +309,15 @@ Mit dieser Blaupause können Sie Fehler im Informationssystem verwalten, indem [
 
 Mit dieser Blaupause werden Richtliniendefinitionen zugewiesen, mit denen Sie sicherstellen können, dass Anwendungen die neueste Version von HTTP, Java, PHP, Python und TLS verwenden. Diese Blaupause weist darüber hinaus eine Richtliniendefinition zu, mit der sichergestellt wird, dass Kubernetes Service auf die Version ohne Sicherheitsrisiko aktualisiert wird.
 
-- Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der API-App verwendet wird.
+- Sicherstellen, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der API-App verwendet wird
 - Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Funktions-App verwendet wird.
 - Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Web-App verwendet wird.
-- Stellen Sie sicher, dass die neueste Java-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
+- Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der API-App verwendet wird
 - Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird
 - Stellen Sie sicher, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
-- Stellen Sie sicher, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
+- Sicherstellen, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der API-App verwendet wird
 - Stellen Sie sicher, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
-- Stellen Sie sicher, dass die neueste Python-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
+- Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie als Teil der API-App verwendet wird
 - Stellen Sie sicher, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
 - Stellen Sie sicher, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
 - In Ihrer API-App sollte die neueste TLS-Version verwendet werden.
@@ -360,7 +360,7 @@ Diese Blaupause enthält Richtliniendefinitionen, mit denen Sie sicherstellen k�
 - Für Ihr Abonnement muss eine Telefonnummer für den Sicherheitskontakt angegeben werden
 
 > [!NOTE]
-> Die Verfügbarkeit spezifischer Azure Policy-Definitionen kann in Azure Government und anderen nationalen Clouds variieren. 
+> Die Verfügbarkeit spezifischer Azure Policy-Definitionen kann in Azure Government und anderen nationalen Clouds variieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
