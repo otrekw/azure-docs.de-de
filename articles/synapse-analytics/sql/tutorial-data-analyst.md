@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d37597f8667c461e8d61f8214483f57eb702c2a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91f9bab7ca85275f914b8421cb4eb7517396ff8a
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97007550"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685007"
 ---
 # <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool"></a>Tutorial: Untersuchen und Analysieren von Data Lakes mit einem serverlosen SQL-Pool
 
@@ -25,6 +25,13 @@ Die OPENROWSET(BULK...)-Funktion ermöglicht den Zugriff auf Dateien in Azure St
 ## <a name="automatic-schema-inference"></a>Automatischer Schemarückschluss
 
 Da die Daten im Parquet-Dateiformat vorliegen, steht der automatische Schemarückschluss zur Verfügung. Die Daten können somit problemlos abgefragt werden, ohne die Datentypen aller Spalten in den Dateien aufzulisten. Außerdem können Sie den Mechanismus für virtuelle Spalten sowie die Dateipfadfunktion verwenden, um einen Teil der Dateien herauszufiltern.
+
+> [!NOTE]
+> Falls Sie eine Datenbank mit einer nicht standardmäßigen Sortierung (Standardsortierung: SQL_Latin1_General_CP1_CI_AS) verwenden, sollten Sie die Groß-/Kleinschreibung beachten. 
+> 
+> Wenn Sie eine Datenbank mit einer Sortierung erstellen, bei der die Groß-/Kleinschreibung beachtet wird, sollten Sie beim Angeben von Spalten sicherstellen, dass Sie den richtigen Namen der Spalte verwenden.
+> 
+> Beispiel für einen Spaltennamen: „tpepPickupDateTime“ ist korrekt, während „tpeppickupdatetime“ bei einer nicht standardmäßigen Sortierung nicht funktioniert.
 
 Führen Sie zunächst die folgende Abfrage aus, um sich mit den NYC-Taxidaten vertraut zu machen:
 

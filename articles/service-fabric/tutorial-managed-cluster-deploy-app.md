@@ -1,16 +1,16 @@
 ---
-title: Bereitstellen einer Anwendung in einem verwalteten Service Fabric-Cluster mit PowerShell (Vorschau)
+title: Bereitstellen einer Anwendung in einem verwalteten Service Fabric-Cluster mit PowerShell
 description: In diesem Tutorial stellen Sie eine Verbindung mit einem verwalteten Service Fabric-Cluster her und stellen eine Anwendung mit PowerShell bereit.
 ms.topic: tutorial
-ms.date: 09/28/2020
-ms.openlocfilehash: 36a91d2852bcda5f958441b48ef4721d6ccc83c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 5/10/2021
+ms.openlocfilehash: c51d753f3d0aa5d3c05c66fc45ae653f0bfa8e71
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91410229"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685421"
 ---
-# <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster-preview"></a>Tutorial: Bereitstellen einer App in einem verwalteten Service Fabric-Cluster (Vorschau)
+# <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster"></a>Tutorial: Bereitstellen einer App in einem verwalteten Service Fabric-Cluster
 
 In dieser Tutorialreihe wird Folgendes behandelt:
 
@@ -39,7 +39,7 @@ Zum Herstellen einer Verbindung mit Ihrem Cluster benötigen Sie den Clusterzert
 Der folgende Befehl kann verwendet werden, um die Clusterressource nach dem Clusterzertifikat-Fingerabdruck abzufragen.
 
 ```powershell
-$serverThumbprint = (Get-AzResource -ResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceFabric/managedclusters/mysfcluster).Properties.clusterCertificateThumbprint
+$serverThumbprint = (Get-AzResource -ResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceFabric/managedclusters/mysfcluster).Properties.clusterCertificateThumbprints
 ```
 
 Sobald Sie über den Clusterzertifikat-Fingerabdruck verfügen, können Sie eine Verbindung mit Ihrem Cluster herstellen.
@@ -93,7 +93,12 @@ Remove-ServiceFabricApplication fabric:/Voting
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schritt haben wir eine App in einem verwalteten Service Fabric-Cluster bereitgestellt. Weitere Informationen zu verwalteten Service Fabric-Clustern finden Sie in den folgenden Artikeln:
+In diesem Schritt haben wir eine Anwendung in einem verwalteten Service Fabric-Cluster bereitgestellt. Weitere Informationen zu den Optionen für die Anwendungsbereitstellung finden Sie unter:
 
-> [!div class="nextstepaction"]
-> [Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern](faq-managed-cluster.md)
+* [Bereitstellen von Anwendungsgeheimnissen für verwaltete Cluster](how-to-managed-cluster-application-secrets.md)
+* [Bereitstellen von verwalteten Clusteranwendungen mithilfe einer ARM-Vorlage](how-to-managed-cluster-app-deployment-template.md)
+* [Bereitstellen verwalteter Clusteranwendungen mit verwalteter Identität](how-to-managed-cluster-application-managed-identity.md)
+
+Weitere Informationen zu Konfigurationsoptionen für verwaltete Cluster finden Sie unter:
+
+* [Konfigurieren des verwalteten Clusters](how-to-managed-cluster-configuration.md)

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 4bc5732c1b2349f34297ecaacc7eb3176fdba611
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39b21a849f13af39731c31590cf92f8ffc12cd7d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570484"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783601"
 ---
 # <a name="what-is-azure-sentinel"></a>Was ist Azure Sentinel?
 
@@ -31,7 +31,7 @@ Mit Azure Sentinel können Sie Ihr gesamtes Unternehmen sozusagen aus der Vogelp
 
 - **Sammeln Sie Daten auf Cloudebene** über alle Benutzer, Geräte, Anwendungen und Infrastrukturen hinweg, lokal und in mehreren Clouds. 
 
-- **Ermitteln Sie bisher unentdeckte Bedrohungen**, und minimieren Sie falsch positive Ergebnisse mithilfe der Analysefunktionen und unvergleichlichen Informationen zu Bedrohungen von Microsoft. 
+- **Ermitteln Sie bisher unentdeckte Bedrohungen**, und [minimieren Sie falsch positive Ergebnisse](false-positives.md) mithilfe der Analysefunktionen und unvergleichlichen Informationen zu Bedrohungen von Microsoft. 
 
 - **Untersuchen Sie Bedrohungen mit künstlicher Intelligenz (KI)** , und verfolgen Sie verdächtige Aktivitäten in großem Stil. Dabei profitieren Sie von der jahrelangen Erfahrung von Microsoft in Sachen Cybersicherheit. 
 
