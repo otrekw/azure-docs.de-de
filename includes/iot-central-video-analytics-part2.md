@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 472c1770e2793d8da4e8fc76fafbf3b9073b746d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e99dcb0d7edaf79356f54c930e24e35153c26c3f
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96763424"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109719358"
 ---
 ## <a name="deploy-and-configure-azure-media-services"></a>Bereitstellen und Konfigurieren von Azure Media Services
 
@@ -78,7 +78,7 @@ Erstellen Sie wie folgt eine neue Videoanalyseanwendung:
 
 1. Wählen Sie bei Verwendung eines Azure-Abonnements Ihr **Verzeichnis**, **Azure-Abonnement** und als **Standort** die Option **USA** aus. Wenn Sie kein Abonnement haben, können Sie eine **7-tägige kostenlose Testversion** aktivieren und die erforderlichen Kontaktinformationen eingeben. In diesem Tutorial werden drei Geräte verwendet: zwei Kameras und ein IoT Edge-Gerät. Wenn Sie nicht die kostenlose Testversion nutzen, werden Ihnen also Kosten für die Nutzung berechnet.
 
-    Weitere Informationen zu Verzeichnissen, Abonnements und Standorten finden Sie in der Schnellstartanleitung unter [Erstellen einer Azure IoT Central-Anwendung](../articles/iot-central/core/quick-deploy-iot-central.md).
+    Weitere Informationen zu Verzeichnissen, Abonnements und Standorten finden Sie unter [Erstellen einer IoT Central-Anwendung](../articles/iot-central/core/howto-create-iot-central-application.md).
 
 1. Klicken Sie auf **Erstellen**.
 

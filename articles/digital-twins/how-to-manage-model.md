@@ -7,30 +7,26 @@ ms.author: baanders
 ms.date: 4/07/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ac794fda92e2ad005b30fc1aa153cc0546430fbe
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 3947267959bd5cc90cc5d74512417df97eadae9e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208561"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789844"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
-Sie können die [Modelle](concepts-models.md), Ihrer Azure Digital Twins-Instanz mithilfe der [DigitalTwinModels-APIs](/rest/api/digital-twins/dataplane/models), mit dem [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) oder über die [Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md) verwalten. 
-
-Zu den Verwaltungsvorgängen gehören das Hochladen, Überprüfen, Abrufen und Löschen von Modellen. 
+In diesem Artikel wird beschrieben, wie Sie die [Modelle](concepts-models.md) in Ihrer Azure Digital Twins-Instanz verwalten. Zu den Verwaltungsvorgängen gehören das Hochladen, Überprüfen, Abrufen und Löschen von Modellen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-## <a name="ways-to-manage-models"></a>Möglichkeiten zum Verwalten von Modellen
-
-[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
+[!INCLUDE [digital-twins-developer-interfaces.md](../../includes/digital-twins-developer-interfaces.md)]
 
 ## <a name="create-models"></a>Erstellen von Modellen
 
-Azure Digital Twins-Modelle werden in DTDL geschrieben und als *JSON*-Dateien gespeichert. Für [Visual Studio Code](https://code.visualstudio.com/) gibt es auch eine [DTDL-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl), die die Syntaxüberprüfung und andere Features zum Schreiben von DTDL-Dokumenten umfasst.
+Azure Digital Twins-Modelle werden in DTDL geschrieben und als JSON-Dateien gespeichert. Für [Visual Studio Code](https://code.visualstudio.com/) gibt es auch eine [DTDL-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl), die die Syntaxüberprüfung und andere Features zum Schreiben von DTDL-Dokumenten umfasst.
 
 Angenommen, ein Krankenhaus möchte seine Räume digital überwachen. Jeder Raum enthält einen intelligenten Seifenspender, der das Händewaschen überwacht, sowie Sensoren, die den Durchgangsverkehr im Raum nachverfolgen.
 
@@ -41,7 +37,7 @@ Der erste Schritt zur Lösung besteht darin, Modelle zu erstellen, die verschied
 > [!NOTE]
 > Dies ist ein Beispieltext für eine JSON-Datei, in der ein Modell definiert und gespeichert wird, das als Teil eines Clientprojekts hochgeladen werden soll. Der REST-API-Aufruf hingegen verwendet ein Array mit Modelldefinitionen wie die obige (die einer `IEnumerable<string>` im .NET SDK zugeordnet ist). Damit Sie dieses Modell direkt in der REST-API verwenden können, sollten Sie es in Klammern setzen.
 
-Dieses Modell definiert einen Namen und eine eindeutige ID für das Patientenzimmer sowie Eigenschaften zur Darstellung der Anzahl der Besucher und zum Status des Händewaschens. Diese Werte werden von Bewegungssensoren und intelligenten Seifenspendern aktualisiert und gemeinsam verwendet, um eine Eigenschaft für das *Händewaschen (in Prozent)* zu berechnen. Das Modell definiert außerdem eine *hasDevices*-Beziehung, die verwendet wird, um einen [digitalen Zwilling](concepts-twins-graph.md) basierend auf dem *Raummodell* mit den tatsächlichen Geräten zu verbinden.
+Dieses Modell definiert einen Namen und eine eindeutige ID für das Patientenzimmer sowie Eigenschaften zur Darstellung der Anzahl der Besucher und zum Status des Händewaschens. Diese Werte werden von Bewegungssensoren und intelligenten Seifenspendern aktualisiert und gemeinsam verwendet, um eine Eigenschaft für das *Händewaschen (in Prozent)* zu berechnen. Das Modell definiert außerdem eine *hasDevices*-Beziehung, die verwendet wird, um einen [digitalen Zwilling](concepts-twins-graph.md) basierend auf dem Raummodell mit den tatsächlichen Geräten zu verbinden.
 
 Mit dieser Methode können Sie Modelle für die Stationen oder Bereiche des Krankenhauses oder sogar das gesamte Krankenhaus definieren.
 
@@ -94,7 +90,7 @@ Wenn Sie stattdessen Änderungen an einem Modell vornehmen möchten, wie ein Upd
 
 ### <a name="model-versioning"></a>Versionsverwaltung der Modelle
 
-Um eine neue Version eines bestehenden Modells zu erstellen, beginnen Sie mit der DTDL des ursprünglichen Modells. Aktualisieren Sie die Felder, die Sie ändern möchten, oder fügen Sie sie hinzu bzw. entfernen sie.
+Um eine neue Version eines bestehenden Modells zu erstellen, beginnen Sie mit der DTDL des ursprünglichen Modells. Sie können die Felder, die Sie ändern möchten, aktualisieren, hinzufügen oder entfernen.
 
 Markieren Sie diese dann als neuere Version des Modells, indem Sie das `id`-Feld des Modells aktualisieren. Der letzte Abschnitt der Modell-ID, nach dem `;`, stellt die Modellnummer dar. Um anzuzeigen, dass es sich jetzt um eine aktualisierte Version dieses Modells handelt, erhöhen Sie die Zahl am Ende des `id`-Werts auf eine beliebige Zahl, die größer als die aktuelle Versionsnummer ist.
 
@@ -150,7 +146,7 @@ Im Rest dieses Abschnitts wird das Löschen von Modellen ausführlicher beschrie
 
 Generell können Modelle jederzeit gelöscht werden.
 
-Allerdings stellen Modelle, von denen andere Modelle abhängig sind (durch eine `extends`-Beziehung oder weil es sich um eine Komponente handelt), eine Ausnahme dar. Wenn beispielsweise ein *ConferenceRoom*-Modell ein *Room*-Modell erweitert und über ein *ACUnit*-Modell als Komponente verfügt, können Sie die Modelle *Room* und *ACUnit* erst löschen, wenn die jeweiligen Verweise für das Modell *ConferenceRoom* entfernt werden. 
+Allerdings stellen Modelle, von denen andere Modelle abhängig sind (durch eine `extends`-Beziehung oder weil es sich um eine Komponente handelt), eine Ausnahme dar. Wenn beispielsweise ein ConferenceRoom-Modell ein Room-Modell erweitert und über ein ACUnit-Modell als Komponente verfügt, können Sie die Modelle Room und ACUnit erst löschen, wenn die jeweiligen Verweise für das Modell ConferenceRoom entfernt werden. 
 
 Hierzu können Sie das abhängige Modell aktualisieren, um die Abhängigkeiten zu entfernen, oder das abhängige Modell vollständig löschen.
 

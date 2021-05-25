@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 263397aa2cd09ba24fa750131b76047801869a65
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b0295c994a736e26d7b581bd13b6167819833360
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798934"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748707"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Desktop-App, die Web-APIs aufruft: App-Registrierung
 
@@ -43,9 +43,10 @@ Die in einer Desktopanwendung zu verwendenden Umleitungs-URIs hängen von dem Fl
 Geben Sie den Umleitungs-URI für Ihre App an, indem Sie im Azure-Portal unter **App-Registrierungen** die [Plattformeinstellungen konfigurieren](quickstart-register-app.md#add-a-redirect-uri).
 
 - Für Apps mit interaktiver Authentifizierung:
-  - Apps mit eingebettetem Browser: `https://login.microsoftonline.com/common/oauth2/nativeclient`
-  - Apps mit Systembrowser: `http://localhost`
 
+  - Apps, die eingebettete Browser verwenden: `https://login.microsoftonline.com/common/oauth2/nativeclient` (Hinweis: Wenn Ihre App ein Fenster öffnet, das in der Regel keine Adressleiste enthält, wird der „eingebettete Browser“ verwendet.)
+  - Apps, die Systembrowser verwenden: `http://localhost` (Hinweis: Wenn Ihre App den Standardbrowser Ihres Systems (z. B. Edge, Chrome, Firefox usw.) zum Besuchen des Microsoft-Anmeldeportals verwenden würde, wird der „Systembrowser“ verwendet.)
+  
   > [!IMPORTANT]
   > Als bewährte Sicherheitsmaßnahme wird empfohlen, als Umleitungs-URI `https://login.microsoftonline.com/common/oauth2/nativeclient` oder `http://localhost` festzulegen. Manche Authentifizierungsbibliotheken wie MSAL.NET verwenden als Standardeinstellung `urn:ietf:wg:oauth:2.0:oob` (nicht empfohlen), wenn kein anderer Umleitungs-URI angegeben wird. Diese Standardeinstellung wird als Breaking Change in der nächsten Hauptversion aktualisiert.
 

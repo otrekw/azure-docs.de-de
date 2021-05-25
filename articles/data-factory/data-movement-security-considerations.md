@@ -6,13 +6,13 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/26/2020
-ms.openlocfilehash: 1a99fbd3d3163808a364e8b26e770563a901dc18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/03/2021
+ms.openlocfilehash: 54c96aced03853b8a3f78ff0f348eeb6459afccc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371327"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760282"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 
@@ -130,10 +130,11 @@ Die Anmeldeinformationen können in Data Factory gespeichert oder während der L
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Beim Verschlüsseln des verknüpften Diensts auf der selbstgehosteten Integration Runtime verwendete Ports
 
-Standardmäßig verwendet PowerShell den Port 8060 auf dem Computer mit der selbstgehosteten Integration Runtime für die sichere Kommunikation. Dieser Port kann bei Bedarf geändert werden.  
+Wenn der Remotezugriff aus dem Intranet aktiviert ist, verwendet PowerShell standardmäßig Port 8060 auf dem Computer mit selbstgehosteter Integration Runtime für die sichere Kommunikation. Bei Bedarf kann dieser Port über den Integration Runtime-Konfigurationsmanager auf der Registerkarte „Einstellungen“ geändert werden:
 
-![HTTPS-Port für das Gateway](media/data-movement-security-considerations/https-port-for-gateway.png)
+:::image type="content" source="media/data-movement-security-considerations/integration-runtime-configuration-manager-settings.png" alt-text="Konfigurationsmanager für die Einstellung der Integration Runtime":::
 
+:::image type="content" source="media/data-movement-security-considerations/https-port-for-gateway.png" alt-text="HTTPS-Port für das Gateway":::
 
 ### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 
@@ -175,7 +176,7 @@ In einem Unternehmen wird eine Unternehmensfirewall auf dem zentralen Router der
 
 Die folgende Tabelle enthält die Anforderungen für ausgehende Ports und die Domänenanforderungen für die Unternehmensfirewalls:
 
-[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
+[!INCLUDE [domain-and-outbound-port-requirements](includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE]
 > Möglicherweise müssen Sie Ports verwalten oder eine Zulassungsliste für Domänen auf Ebene der Unternehmensfirewall entsprechend den Anforderungen der jeweiligen Datenquellen einrichten. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure Synapse Analytics und Azure Data Lake Store als Beispiele verwendet.   

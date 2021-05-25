@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: a64564887fa2738fd3c0586d1040be3c95193927
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 050512da539e08d029786983fbda46da0fea27ce
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205789"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789621"
 ---
 # <a name="what-is-azure-digital-twins"></a>Was ist Azure Digital Twins?
 
-**Azure Digital Twins** ist ein PaaS-Angebot (Platform-as-a-Service), mit dem Sie basierend auf digitalen Modellen ganzer Umgebungen Wissensdiagramme erstellen können. Bei einer solchen Umgebung kann es sich um Gebäude, Fabriken, Höfe, Energieversorgungsnetze, Eisenbahnstrecken, Stadien und mehr handeln. Sogar ganze Städte lassen sich modellieren. Diese digitalen Modelle liefern wichtige Einblicke, um Produkte zu verbessern, Vorgänge zu optimieren, Kosten zu senken und die Benutzerfreundlichkeit zu revolutionieren.
+**Azure Digital Twins** ist ein PaaS-Angebot (Platform-as-a-Service), mit dem Sie basierend auf digitalen Modellen ganzer Umgebungen Zwillingsgraphen erstellen können. Bei einer solchen Umgebung kann es sich um Gebäude, Fabriken, Höfe, Energieversorgungsnetze, Eisenbahnstrecken, Stadien und mehr handeln. Sogar ganze Städte lassen sich modellieren. Diese digitalen Modelle liefern wichtige Einblicke, um Produkte zu verbessern, Vorgänge zu optimieren, Kosten zu senken und die Benutzerfreundlichkeit zu revolutionieren.
 
 Nutzen Sie Ihre umfassenden Fachkenntnisse, um mit Azure Digital Twins individuell angepasste, verbundene Lösungen zu erstellen, die Folgendes ermöglichen:
 * Abbilden beliebiger Umgebungen in naturgetreuen Digital Twins-Modellen, die durch Skalierbarkeit und Sicherheit überzeugen
@@ -37,7 +37,7 @@ Sie können sich diese Modelldefinitionen als eine Art spezialisiertes Vokabular
 [!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 Modelle werden mit der JSON-ähnlichen Sprache [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) definiert. Sie enthalten Angaben wie Statuseigenschaften, Telemetrieereignisse, Befehle, Komponenten und Beziehungen zum Beschreiben der Zwillinge.
-* Darüber hinaus werden mit Modellen semantische **Beziehungen** zwischen ihren Entitäten definiert. Mit diesen Beziehungen lassen sich Zwillinge in einem Diagramm verbinden, das Aufschluss über die Interaktionen der Zwillinge gibt. In einer Beschreibung Ihrer Umgebung können Modelle als Nomen und die Beziehungen als Verben betrachtet werden.
+* Darüber hinaus werden mit Modellen semantische **Beziehungen** zwischen ihren Entitäten definiert. Mit diesen Beziehungen lassen sich Zwillinge in einem Graphen verbinden, der Aufschluss über die Interaktionen der Zwillinge gibt. In einer Beschreibung Ihrer Umgebung können Modelle als Nomen und die Beziehungen als Verben betrachtet werden.
 * Außerdem lassen sich Zwillinge mithilfe der Modellvererbung spezialisieren. Ein Modell kann Informationen von einem anderen Modell erben.
 
 DTDL wird auch in anderen Azure IoT-Diensten für Datenmodelle verwendet. Dazu zählen u. a. [IoT Plug & Play (PnP)](../iot-pnp/overview-iot-plug-and-play.md) und [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md). Dadurch wird sichergestellt, dass Ihre Azure Digital Twins-Lösung mit anderen Bereichen des Azure-Ökosystems verbunden werden kann und kompatibel ist.
@@ -48,7 +48,7 @@ Bei den digitalen Modellen in Azure Digital Twins handelt es sich um aktuelle Li
 
 Sie können eine Visualisierung Ihres Azure Digital Twins-Diagramms mithilfe einer Beispielanwendung anzeigen, [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/).
 
-Hier sehen Sie, wie die Beispiel Visualisierung aussieht:
+Hier sehen Sie die Beispielvisualisierung:
 
 :::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Screenshot der Beispielanwendung für den Azure Digital Twins-Explorer mit einem Diagramm von Knoten, die digitale Zwillinge darstellen" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
@@ -94,11 +94,11 @@ Die folgende Abbildung zeigt, wie sich Azure Digital Twins im Kontext einer grö
 
 ## <a name="service-limits"></a>Diensteinschränkungen
 
-Informationen zu den **Grenzwerten** für den Dienst von Azure-Digital Zwillingen finden Sie unter [Grenzwerte für Azure Digital Zwillinge](reference-service-limits.md). Dies kann nützlich sein, wenn Sie mit dem Dienst zusammenarbeiten, um die Funktions-und Raten Einschränkungen zu verstehen, und welche Grenzwerte bei Bedarf angepasst werden können.
+Informationen zu den **Diensteinschränkungen** für Azure Digital Twins finden Sie unter [Einschränkungen des Azure Digital Twins-Diensts](reference-service-limits.md). Dies kann nützlich sein, wenn Sie mit dem Dienst zusammenarbeiten, um die Funktions-und Raten Einschränkungen zu verstehen, und welche Grenzwerte bei Bedarf angepasst werden können.
 
 ## <a name="terminology"></a>Begriff
 
-Eine Liste allgemeiner **IOT-Begriffe** und ihrer Verwendungsmöglichkeiten für die Azure IOT-Dienste, einschließlich Azure Digital Twins, finden Sie hier: [Azure IOT Glossar](../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json). Dies kann hilfreich sein, wenn Sie mit Azure Digital Zwillingen beginnen und eine IOT-Lösung entwickeln.
+Eine Liste **allgemeiner IoT-Begriffe** und ihrer Verwendung in den Azure IoT-Diensten, einschließlich Azure Digital Twins, finden Sie im [Glossar mit IoT-Begriffen](../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json). Diese Ressource kann hilfreich sein, wenn Sie erste Schritte mit Azure Digital Twins ausführen und eine IoT-Lösung entwickeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

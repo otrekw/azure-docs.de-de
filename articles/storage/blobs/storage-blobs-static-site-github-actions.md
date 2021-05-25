@@ -6,15 +6,15 @@ ms.service: storage
 ms.topic: how-to
 ms.author: jukullam
 ms.reviewer: dineshm
-ms.date: 01/11/2021
+ms.date: 05/05/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3ae0904eda2608026ad09ba8b8993008380725f4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5ab81f442aaf45328892de42cbf9aef651d3fe8d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788527"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762801"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Einrichten eines GitHub Actions-Workflows zum Bereitstellen einer statischen Website in Azure Storage
 
@@ -117,7 +117,7 @@ Ersetzen Sie im obigen Beispiel die Platzhalter durch Ihre Abonnement-ID und den
               creds: ${{ secrets.AZURE_CREDENTIALS }}
     ```
 
-1. Verwenden Sie die Azure CLI-Aktion, um Ihren Code in Azure Blob Storage hochzuladen und den CDN-Endpunkt zu bereinigen. Ersetzen Sie für `az storage blob upload-batch` den Platzhalter durch den Namen Ihres Speicherkontos. Das Skript wird in den `$web`-Container hochgeladen. Ersetzen Sie für `az cdn endpoint purge` die Platzhalter durch den Namen Ihres CDN-Profils, CDN-Endpunkts und der Ressourcengruppe.
+1. Verwenden Sie die Azure CLI-Aktion, um Ihren Code in Azure Blob Storage hochzuladen und den CDN-Endpunkt zu bereinigen. Ersetzen Sie für `az storage blob upload-batch` den Platzhalter durch den Namen Ihres Speicherkontos. Das Skript wird in den `$web`-Container hochgeladen. Ersetzen Sie für `az cdn endpoint purge` die Platzhalter durch den Namen Ihres CDN-Profils, CDN-Endpunkts und der Ressourcengruppe. Um die CDN-Bereinigung zu beschleunigen, können Sie die `--no-wait`-Option zu `az cdn endpoint purge` hinzufügen.
 
     ```yaml
         - name: Upload to blob storage

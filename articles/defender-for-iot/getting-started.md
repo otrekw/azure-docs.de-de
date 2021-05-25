@@ -2,13 +2,13 @@
 title: 'Schnellstart: Erste Schritte'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie sich mit dem grundlegenden Workflow für die Bereitstellung von Defender für IoT vertraut machen.
 ms.topic: quickstart
-ms.date: 04/17/2021
-ms.openlocfilehash: b1e7686e1d68d5a3f239320930d69f22c78e13cb
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.date: 05/10/2021
+ms.openlocfilehash: 97d08d1911634db0a2d1ce4583f7b61090d01bfc
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750444"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109664760"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Schnellstart: Erste Schritte mit Defender für IoT
 
@@ -20,9 +20,12 @@ Dieser Artikel bietet eine Übersicht über die erforderlichen Schritte für die
 
 ## <a name="permission-requirements"></a>Berechtigungsanforderungen
 
+### <a name="for-sensors-and-on-premises-management-consoles"></a>Für Sensoren und lokale Verwaltungskonsolen
+
 Für einige der Einrichtungsschritte sind bestimme Benutzerberechtigungen erforderlich.
 
 Benutzerberechtigungen eines Administrators sind erforderlich, um die Sensor- und Verwaltungskonsole zu aktivieren, SSL-/TLS-Zertifikate hochzuladen und neue Kennwörter zu generieren.
+### <a name="for-the-defender-for-iot-portal"></a>Für das Defender für IoT-Portal
 
 In der folgenden Tabelle werden die Benutzerzugriffsberechtigungen für Tools im Portal für Azure Defender für IoT beschrieben:
 

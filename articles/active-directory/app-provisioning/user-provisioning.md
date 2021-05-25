@@ -1,24 +1,24 @@
 ---
-title: Was ist die automatisierte Bereitstellung von SaaS-App-Benutzern in Azure AD?
-description: Einführung in die Verwendung von Azure AD für die automatisierte Bereitstellung, Bereitstellungsaufhebung und fortlaufende Aktualisierung von Benutzerkonten für verschiedene SaaS-Drittanbieteranwendungen.
+title: Was ist die automatisierte Bereitstellung von SaaS-App-Benutzern in Azure Active Directory?
+description: Einführung in die Verwendung von Azure Active Directory für die automatisierte Bereitstellung, Bereitstellungsaufhebung und fortlaufende Aktualisierung von Benutzerkonten für verschiedene SaaS-Drittanbieteranwendungen.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: overview
 ms.workload: identity
-ms.date: 02/08/2021
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: f899c4d67321482dab62729632fe031bb23f71ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87b74ecb8517ac54327eff189c4b32e989a748af
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99830667"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784699"
 ---
-# <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Was ist die automatisierte Bereitstellung von SaaS-App-Benutzern in Azure AD?
+# <a name="what-is-automated-saas-app-user-provisioning-in-azure-active-directory"></a>Was ist die automatisierte Bereitstellung von SaaS-App-Benutzern in Azure Active Directory?
 
 In Azure Active Directory (Azure AD) bezieht sich der Ausdruck **App-Bereitstellung** auf die automatische Erstellung von Benutzeridentitäten und Rollen in den Cloudanwendungen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), auf die Benutzer Zugriff benötigen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die automatische Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern. Gängige Szenarien sind die Bereitstellung eines Azure AD-Benutzers in Anwendungen wie [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) und anderen.
 

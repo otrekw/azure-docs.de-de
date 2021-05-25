@@ -9,18 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 7d2321189e32c77d9360ff6d772fcebf9c6abb1d
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: d1a730a20ef2ab0fe5e455ef86a428aa1d83fc19
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324561"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683927"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen IoT-Gatewaygerätetyps in Ihrer Azure IoT Central-Anwendung
 
-*Dieser Artikel richtet sich an Lösungs- und Geräteentwickler.*
-
-In diesem Tutorial für Lösungsersteller erfahren Sie, wie Sie in Ihrer IoT Central-Anwendung mithilfe einer Gatewaygerätevorlage ein Gatewaygerät definieren. Anschließend konfigurieren Sie mehrere nachgeschaltete Geräte, die über das Gatewaygerät eine Verbindung mit Ihrer IoT Central-Anwendung herstellen. 
+In diesem Tutorial erfahren Sie, wie Sie in Ihrer IoT Central-Anwendung mithilfe einer Gatewaygerätevorlage ein Gatewaygerät definieren. Anschließend konfigurieren Sie mehrere nachgeschaltete Geräte, die über das Gatewaygerät eine Verbindung mit Ihrer IoT Central-Anwendung herstellen. 
 
 In diesem Tutorial erstellen Sie eine Vorlage für ein Gatewaygerät vom Typ **Smart Building**. Ein Gatewaygerät vom Typ **Smart Building** verfügt über Beziehungen mit anderen nachgeschalteten Geräten.
 
@@ -37,7 +35,9 @@ Neben der Kommunikation von nachgeschalteten Geräten mit Ihrer IoT Central-Anw
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial müssen Sie [eine Azure IoT Central-Anwendung erstellen](./quick-deploy-iot-central.md).
+Zum Durchführen der Schritte in diesem Tutorial benötigen Sie Folgendes:
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 ## <a name="create-downstream-device-templates"></a>Erstellen von Vorlagen für nachgeschaltete Geräte
 
@@ -221,7 +221,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 * Hinzufügen von Beziehungen
 * Veröffentlichen Ihrer Gerätevorlage
 
-Als Geräteentwickler können Sie als Nächstes mit dem folgenden Artikel fortfahren:
+Als Nächstes können Sie das folgende Tutorial durcharbeiten:
 
 > [!div class="nextstepaction"]
 > [Tutorial: Hinzufügen eines Azure IoT Edge-Geräts zu Ihrer Azure IoT Central-Anwendung](tutorial-add-edge-as-leaf-device.md)

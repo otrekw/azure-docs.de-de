@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 537378ef11333bd8942a61ab2bbb4e8a251c2b59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 721c13ea31f812dd5f5b5c335373884766764c80
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103196872"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750699"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit GitHub AE
 
@@ -95,7 +95,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Bearbeiten Sie **Benutzerattribute und Ansprüche**.
 
-1. Klicken Sie auf **Neuen Anspruch hinzufügen**, und geben Sie in das Textfeld als Namen **Administrator** ein.
+1. Klicken Sie auf **Neuen Anspruch hinzufügen**, und geben Sie in das Textfeld als Namen **Administrator** ein (beim **Administrator**-Wert muss die Groß-/Kleinschreibung beachtet werden).
 
 1. Erweitern Sie **Anspruchsbedingungen**, und wählen Sie unter **Benutzertyp** die Option **Mitglieder** aus.
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e41f372cd0105896765d5a267456b6bda767dd4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b66ef767795b320368224e5ef855332a735b210
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798425"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714312"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Delegieren der Zugriffssteuerung an Katalogersteller in der Azure AD-Berechtigungsverwaltung
 
@@ -33,7 +33,7 @@ Wenn Sie an Benutzer delegieren möchten, die keine Administratoren sind, damit 
 
 Führen Sie diese Schritte aus, um einen Benutzer der Katalogerstellerrolle zuzuordnen.
 
-**Erforderliche Rolle:** Globaler Administrator oder Benutzeradministrator
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator oder Benutzeradministrator
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

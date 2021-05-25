@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
 ms.date: 02/10/2021
-ms.openlocfilehash: 3e61b6a0f17d2d21aaaebc5ff42b0221cf851a4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4be6e297fafb3184224806f0bde4db468ce3b79
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389497"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788180"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 
@@ -44,15 +44,13 @@ Hier ist eine allgemeine Zusammenfassung der Datenflussschritte zum Kopieren per
 
 ![Allgemeine Übersicht über den Datenfluss](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
-1. Ein Datenentwickler erstellt eine selbstgehostete Integration Runtime in einer Azure Data Factory über das Azure-Portal oder per PowerShell-Cmdlet.
+1. Ein Datenentwickler erstellt zunächst eine selbstgehostete Integration Runtime in einer Azure Data Factory über das Azure-Portal oder per PowerShell-Cmdlet.  Anschließend erstellt der Datenentwickler einen verknüpften Dienst für einen lokalen Datenspeicher, indem er die Instanz der selbstgehosteten Integration Runtime angibt, die der Dienst zum Verbinden der Datenspeicher verwenden soll.
 
-2. Der Datenentwickler erstellt einen verknüpften Dienst für einen lokalen Datenspeicher. Der Entwickler gibt hierfür die Instanz der selbstgehosteten Integration Runtime an, die vom Dienst zum Verbinden der Datenspeicher verwendet werden soll.
+2. Über den Knoten der selbstgehosteten Integration Runtime werden die Anmeldeinformationen per DPAPI (Windows Data Protection Application Programming Interface) verschlüsselt und lokal gespeichert. Falls mehrere Knoten festgelegt sind, um Hochverfügbarkeit zu erzielen, werden die Anmeldeinformationen für andere Knoten weiter synchronisiert. Jeder Knoten verschlüsselt die Anmeldeinformationen mithilfe von DPAPI und speichert sie lokal. Die Synchronisierung der Anmeldeinformationen ist für den Datenentwickler transparent und wird von der selbstgehosteten IR verarbeitet.
 
-3. Über den Knoten der selbstgehosteten Integration Runtime werden die Anmeldeinformationen per DPAPI (Windows Data Protection Application Programming Interface) verschlüsselt und lokal gespeichert. Falls mehrere Knoten festgelegt sind, um Hochverfügbarkeit zu erzielen, werden die Anmeldeinformationen für andere Knoten weiter synchronisiert. Jeder Knoten verschlüsselt die Anmeldeinformationen mithilfe von DPAPI und speichert sie lokal. Die Synchronisierung der Anmeldeinformationen ist für den Datenentwickler transparent und wird von der selbstgehosteten IR verarbeitet.
+3. Azure Data Factory kommuniziert mit der selbstgehosteten Integration Runtime, um Aufträge zu planen und zu verwalten. Die Kommunikation erfolgt über einen Steuerkanal, der eine freigegebene [Azure Relay](../azure-relay/relay-what-is-it.md#wcf-relay)-Verbindung verwendet. Wenn ein Aktivitätsauftrag ausgeführt werden muss, reiht Data Factory die Anforderung zusammen mit den Anmeldeinformationen in die Warteschlange ein. Dies wird durchgeführt, falls die Anmeldeinformationen nicht bereits unter der selbstgehosteten Integration Runtime gespeichert sind. Die selbstgehostete Integration Runtime startet den Auftrag, nachdem die Warteschlange abgefragt wurde.
 
-4. Azure Data Factory kommuniziert mit der selbstgehosteten Integration Runtime, um Aufträge zu planen und zu verwalten. Die Kommunikation erfolgt über einen Steuerkanal, der eine freigegebene [Azure Relay](../azure-relay/relay-what-is-it.md#wcf-relay)-Verbindung verwendet. Wenn ein Aktivitätsauftrag ausgeführt werden muss, reiht Data Factory die Anforderung zusammen mit den Anmeldeinformationen in die Warteschlange ein. Dies wird durchgeführt, falls die Anmeldeinformationen nicht bereits unter der selbstgehosteten Integration Runtime gespeichert sind. Die selbstgehostete Integration Runtime startet den Auftrag, nachdem die Warteschlange abgefragt wurde.
-
-5. Die selbstgehostete Integration Runtime kopiert Daten zwischen einem lokalen Speicher und Cloudspeicher. Die Richtung des Kopiervorgangs hängt davon ab, wie die Kopieraktivität in der Datenpipeline konfiguriert ist. Für diesen Schritt kommuniziert die selbstgehostete Integration Runtime über einen sicheren HTTPS-Kanal direkt mit einem cloudbasierten Speicherdienst, z. B. Azure Blob Storage.
+4. Die selbstgehostete Integration Runtime kopiert Daten zwischen einem lokalen Speicher und Cloudspeicher. Die Richtung des Kopiervorgangs hängt davon ab, wie die Kopieraktivität in der Datenpipeline konfiguriert ist. Für diesen Schritt kommuniziert die selbstgehostete Integration Runtime über einen sicheren HTTPS-Kanal direkt mit einem cloudbasierten Speicherdienst, z. B. Azure Blob Storage.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -332,7 +330,7 @@ Wenn Sie die Option **Systemproxy verwenden** für den HTTP-Proxy auswählen, ve
 > [!IMPORTANT]
 > Vergessen Sie nicht, beide Dateien – „diahost.exe.config“ und „diawp.exe.config“ – zu aktualisieren.
 
-Sie müssen auch sicherstellen, dass Microsoft Azure in der Zulassungsliste Ihres Unternehmens aufgeführt ist. Sie können die Liste mit den gültigen Azure-IP-Adressen im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen.
+Sie müssen auch sicherstellen, dass Microsoft Azure in der Positivliste Ihres Unternehmens enthalten ist. Sie können die Liste mit den gültigen Azure-IP-Adressen im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen.
 
 ### <a name="possible-symptoms-for-issues-related-to-the-firewall-and-proxy-server"></a>Mögliche Symptome für Probleme im Zusammenhang mit der Firewall und dem Proxyserver
 
@@ -389,7 +387,7 @@ Für einige Clouddatenbanken, z. B. Azure SQL-Datenbank und Azure Data Lake, m�
 
 ### <a name="get-url-of-azure-relay"></a>Abrufen der URL für Azure Relay
 
-Für die Kommunikation mit Azure Relay müssen Sie eine Domäne und einen Port in die Zulassungsliste Ihrer Firewall eintragen. Die selbstgehostete Integration Runtime verwendet sie bei Aktivitäten der interaktiven Erstellung, wie z. B. zum Testen der Verbindung, zum Durchsuchen von Ordner- und Tabellenlisten, zum Abrufen eines Schemas und zum Anzeigen einer Datenvorschau. Wenn Sie **.servicebus.windows.net** nicht zulassen und lieber spezifischere URLs verwenden möchten, können Sie alle vollqualifizierten Domänennamen, die für Ihre selbstgehostete Integration Runtime erforderlich sind, aus dem ADF-Portal abrufen. Folgen Sie diesen Schritten:
+Für die Kommunikation mit Azure Relay müssen Sie eine Domäne und einen Port in die Positivliste Ihrer Firewall eintragen. Die selbstgehostete Integration Runtime verwendet sie bei Aktivitäten der interaktiven Erstellung, wie z. B. zum Testen der Verbindung, zum Durchsuchen von Ordner- und Tabellenlisten, zum Abrufen eines Schemas und zum Anzeigen einer Datenvorschau. Wenn Sie **.servicebus.windows.net** nicht zulassen und lieber spezifischere URLs verwenden möchten, können Sie alle vollqualifizierten Domänennamen, die für Ihre selbstgehostete Integration Runtime erforderlich sind, aus dem ADF-Portal abrufen. Folgen Sie diesen Schritten:
 
 1. Wechseln Sie zum ADF-Portal, und wählen Sie Ihre selbstgehostete Integration Runtime aus.
 2. Wählen Sie auf der Seite „Bearbeiten“ die Option **Knoten** aus.
@@ -397,7 +395,7 @@ Für die Kommunikation mit Azure Relay müssen Sie eine Domäne und einen Port i
 
    ![Azure Relay-URLs](media/create-self-hosted-integration-runtime/Azure-relay-url.png)
 
-4. Sie können diese vollqualifizierten Domänennamen der Zulassungsliste Ihrer Firewallregeln hinzufügen.
+4. Sie können diese vollqualifizierten Domänennamen der Positivliste Ihrer Firewallregeln hinzufügen.
 
 ### <a name="copy-data-from-a-source-to-a-sink"></a>Kopieren von Daten von einer Quelle in eine Senke
 

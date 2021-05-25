@@ -11,16 +11,16 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: caa61170504c3ee4b7162cc06db4df16d1232395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 183693963d66a5df13cbb4dd1e561b26f5495f08
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014365"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685691"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central
 
-In diesem Tutorial wird für Lösungsersteller erläutert, wie sie in Azure IoT Central eine Anwendung für die In-Store-Analyse entwickeln können. Die Beispielanwendung ist für einen Laden im Einzelhandel gedacht. Es handelt sich um eine Lösung für die allgemeine Geschäftsanforderung, die Auslastung und Umgebungsbedingungen zu überwachen und entsprechende Anpassungen vornehmen zu können.
+In diesem Tutorial wird beschrieben, wie Sie in Azure IoT Central eine Anwendung für die In-Store-Analyse entwickeln. Die Beispielanwendung ist für einen Laden im Einzelhandel gedacht. Es handelt sich um eine Lösung für die allgemeine Geschäftsanforderung, die Auslastung und Umgebungsbedingungen zu überwachen und entsprechende Anpassungen vornehmen zu können.
 
 Die Beispielanwendung, die Sie gleich erstellen werden, umfasst drei echte Geräte: ein Rigado Cascade 500-Gateway und zwei RuuviTag-Sensoren. Das Tutorial zeigt außerdem, wie Sie zu Testzwecken den in der Anwendungsvorlage enthaltenen simulierten Auslastungssensor verwenden können. Das Rigado C500-Gateway dient in Ihrer Anwendung als Kommunikationshub. Es kommuniziert mit Sensoren in Ihrem Laden und verwaltet deren Verbindungen mit der Cloud. Der RuuviTag ist ein Umgebungssensor, der Telemetriedaten zu beispielsweise Temperatur, Luftfeuchtigkeit und Luftdruck bereitstellt. Der simulierte Auslastungssensor bietet eine Möglichkeit, Bewegungen und Kundenaufkommen in den Kassenbereichen eines Ladens zu verfolgen. 
 
@@ -72,8 +72,6 @@ Erstellen Sie wie folgt eine neue Anwendung vom Typ „In-Store-Analyse – Ausc
     > Wenn Sie einen benutzerfreundlichen **Anwendungsnamen** verwenden, müssen Sie dennoch einen eindeutigen Wert für die Anwendungs-**URL** angeben.
 
 1. Wenn Sie ein Azure-Abonnement haben, geben Sie die entsprechenden Angaben für *Verzeichnis, Azure-Abonnement und Region* ein. Wenn Sie kein Abonnement haben, können Sie eine **7-tägige kostenlose Testversion** aktivieren und die erforderlichen Kontaktinformationen eingeben.  
-
-    Weitere Informationen zu Verzeichnissen und Abonnements finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](../core/quick-deploy-iot-central.md).
 
 1. Klicken Sie auf **Erstellen**.
 

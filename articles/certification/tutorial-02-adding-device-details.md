@@ -5,14 +5,14 @@ author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: tutorial
-ms.date: 03/02/2021
+ms.date: 05/04/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: f4f3d045a2530fa54d22bec789918454cba80097
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: be6bcf84ebb9c979cd60e6ca6803b7a24a0944a1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310426"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736300"
 ---
 # <a name="tutorial-add-device-details"></a>Tutorial: Hinzufügen von Gerätedetails
 
@@ -29,24 +29,32 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Sie müssen angemeldet sein und über ein Projekt für Ihr Gerät im [Azure Certified Device-Portal](https://certify.azure.com) verfügen. Weitere Informationen finden Sie im [Tutorial](tutorial-01-creating-your-project.md).
-* Sie müssen über eine Anleitung für die ersten Schritte mit Ihrem Gerät im PDF-Format verfügen. Wir stellen eine Reihe von Vorlagen für die ersten Schritte bereit, die Sie je nach Zertifizierungsprogramm und ihrer bevorzugten Sprache verwenden können. Die Vorlagen finden Sie an unserem GitHub-Speicherort [Get_Started_Templates](https://aka.ms/GSTemplate "Vorlagen für die ersten Schritte").
+* Sie müssen über eine Anleitung für die ersten Schritte mit Ihrem Gerät im PDF-Format verfügen. Wir stellen viele Vorlagen für die ersten Schritte bereit, die Sie je nach Zertifizierungsprogramm und ihrer bevorzugten Sprache verwenden können. Die Vorlagen finden Sie an unserem GitHub-Speicherort [Get_Started_Templates](https://aka.ms/GSTemplate "Vorlagen für die ersten Schritte").
 
 ## <a name="adding-technical-device-details"></a>Hinzufügen von technischen Gerätedetails
 
 Im ersten Abschnitt der Projektseite mit dem Namen „Gerätedetails eingeben“ können Sie Informationen zu den wichtigsten Hardwarefunktionen Ihres Geräts angeben, z. B. Gerätename, Beschreibung, Prozessor, Betriebssystem, Konnektivitätsoptionen, Hardwareschnittstellen, Branchenprotokolle, Abmessungen usw. Viele der Felder sind zwar optional, aber die meisten dieser Informationen werden potenziellen Kunden im Azure Certified Device-Katalog zur Verfügung gestellt, wenn Sie Ihr Gerät nach der Zertifizierung veröffentlichen möchten.
 
-1. Klicken Sie auf der Projektübersichtsseite im Abschnitt „Gerätedetails eingeben“ auf `Add`, um den Abschnitt mit den Gerätedetails zu öffnen. Ihnen werden fünf Abschnitte angezeigt, die Sie ausfüllen können.
+1. Klicken Sie auf der Projektübersichtsseite im Abschnitt „Gerätedetails eingeben“ auf `Add`, um den Abschnitt mit den Gerätedetails zu öffnen. Ihnen werden sechs Abschnitte angezeigt, die Sie ausfüllen können.
 
 ![Abbildung: Seite mit Projektdetails](./media/images/device-details-menu.png)
 
 2. Überprüfen Sie die Informationen, die Sie zuvor beim Erstellen des Projekts auf der Registerkarte `Basics` angegeben haben.
 1. Überprüfen Sie die Zertifizierungen, die Sie für Ihr Gerät beantragen, auf der Registerkarte `Certifications`.
-1. Öffnen Sie die Registerkarte `Product details`, und wählen Sie mindestens ein Betriebssystem aus.
-1. Fügen Sie **mindestens** eine diskrete Komponente hinzu, die Ihr Gerät beschreibt. Weitere Anleitungen zur Verwendung von Komponenten finden Sie [hier](how-to-using-the-components-feature.md).
+1. Öffnen Sie den `Hardware`-Tab und fügen Sie **mindestens** eine diskrete Komponente hinzu, die Ihr Gerät beschreibt. Sie können auch unsere Anleitung zur [Verwendung von Komponenten](how-to-using-the-components-feature.md) einsehen.
 1. Klicken Sie auf `Save`. Anschließend können Sie das Komponentengerät bearbeiten und erweiterte Details hinzufügen.
-1. Listen Sie zusätzliche Gerätedetails, die nicht von den Komponentendetails erfasst werden, unter `Additional product details` auf.
+1. Fügen Sie alle relevanten Informationen zu Betriebsbedingungen hinzu (z. B. IP-Bewertung, Betriebstemperatur oder Sicherheitszertifizierung).
+
+![Abbildung des Hardwareabschnitts](./media/images/hardware-section.png)
+
+7. Listen Sie zusätzliche Gerätedetails, die nicht von den Komponentendetails erfasst werden, unter `Additional product details` auf.
 1. Wenn Sie in einem der Komponentenfelder `Other` angekreuzt haben oder das Azure-Zertifizierungsteam über einen besonderen Umstand informieren möchten, geben Sie im Abschnitt `Comments for reviewer` einen erklärenden Kommentar ein.
-1. Verwenden Sie die Registerkarte `Dependencies`, um alle Abhängigkeiten aufzulisten, wenn Ihr Gerät zusätzliche Hardware oder Dienste benötigt, um Daten an Azure zu senden. Weitere Anleitungen zum Auflisten von Abhängigkeiten finden Sie [hier](how-to-indirectly-connected-devices.md).
+1. Öffnen Sie die Registerkarte `Software`, und wählen Sie **mindestens** ein Betriebssystem aus.
+1. (**Erforderlich für Dev Kit-Geräte** und dringend empfohlen für alle anderen) Wählen Sie eine Ebene aus, um den erwarteten Einrichtungsprozess für die Verbindung Ihres Geräts mit Azure anzugeben. Wenn Sie Ebene 2 auswählen, müssen Sie einen Link zum verfügbaren Softwareimage bereitstellen.
+
+![Abbildung des Softwareabschnitts](./media/images/software-section.png)
+
+11. Verwenden Sie die Registerkarte `Dependencies`, um alle Abhängigkeiten aufzulisten, wenn Ihr Gerät zusätzliche Hardware oder Dienste benötigt, um Daten an Azure zu senden. Sie können auch unsere zusätzliche Anleitung zum [Auflisten von Abhängigkeiten](how-to-indirectly-connected-devices.md) anzeigen.
 1. Wenn Sie mit den angegebenen Informationen zufrieden sind, finden Sie auf der Registerkarte `Review` einen schreibgeschützten Überblick über alle eingegebenen Geräte.
 1. Klicken Sie oben auf der Seite auf `Project summary`, um zur Zusammenfassungsseite zurückzukehren.
 

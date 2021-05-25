@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zu den unterstützten Szenari
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: cbf910a0291e90965c9698a8b2a43c587cbfe0b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a3a05ad41affa52a62456e7d0ad41c55b69cf5b
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101707233"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684935"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -24,8 +24,8 @@ Azure Backup unterstützt die Sicherung von SAP HANA-Datenbanken in Azure. In d
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topologie**               | Nur SAP HANA-Ausführung auf virtuellen Azure-Computern unter Linux                    | SAP HANA (große Instanzen)                                   |
 | **Regionen**                   | **GA:**<br> **Nord- und Südamerika** – USA, Mitte; USA, Osten 2; USA, Osten; USA, Norden-Mitte; USA, Süden-Mitte; USA, Westen 2; USA, Westen-Mitte; USA, Westen; Kanada, Mitte; Kanada, Osten; Brasilien, Süden <br> **Asien-Pazifik** – Australien, Mitte; Australien, Mitte 2; Australien, Osten; Australien, Südosten; Japan, Osten; Japan, Westen; Südkorea, Mitte; Südkorea, Süden; Asien, Osten; Asien, Südosten; Indien, Mitte; Indien, Süden; Indien, Westen; China, Osten; China, Norden; China Osten 2; China, Norden 2 <br> **Europa** – Europa, Westen; Europa, Norden; Frankreich, Mitte; Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen; Deutschland, Norden; Deutschland, Westen-Mitte; Schweiz, Norden; Schweiz, Westen; Schweiz, Norden; Norwegen, Osten; Norwegen, Westen <br> **Afrika/Naher Osten** – Südafrika, Norden; Südafrika, Westen; VAE, Norden; VAE, Mitte  <BR>  **Azure Government-Regionen** | Frankreich, Süden; Deutschland, Mitte; Deutschland, Nordosten; US Gov IOWA |
-| **Betriebssystemversionen**            | SLES 12 mit SP2, SP3, SP4 und SP5; SLES 15 mit SP0, SP1, SP2 <br><br>  RHEL 7.4, 7.6, 7.7, 8.1 und 8.2                |                                             |
-| **HANA-Versionen**          | SDC unter HANA 1.x, MDC unter HANA 2.x SPS04, SPS05 Rev <= 53 (auch für Szenarien mit aktivierter Verschlüsselung überprüft)      |                                                            |
+| **Betriebssystemversionen**            | SLES 12 mit SP2, SP3, SP4 und SP5; SLES 15 mit SP0, SP1, SP2 <br><br>  RHEL 7.4, 7.6, 7.7, 7.9, 8.1 und 8.2                |                                             |
+| **HANA-Versionen**          | SDC unter HANA 1.x, MDC unter HANA 2.x SPS04, SPS05 Rev <= 55 (auch für Szenarien mit aktivierter Verschlüsselung überprüft)      |                                                            |
 | **HANA-Bereitstellungen**       | SAP HANA auf einem einzelnen virtuellen Azure-Computer: nur zentrales Hochskalieren. <br><br> Bei Bereitstellungen mit hoher Verfügbarkeit werden beide Knoten auf den beiden verschiedenen Computern als einzelne Knoten mit separaten Datenketten behandelt.               | Horizontales Skalieren <br><br> Bei Bereitstellungen mit hoher Verfügbarkeit wird kein automatisches Failover der Sicherung auf den sekundären Knoten ausgeführt. Das Konfigurieren der Sicherung sollte für jeden Knoten separat durchgeführt werden.                                           |
 | **HANA-Instanzen**         | Eine einzelne SAP HANA-Instanz auf einem einzelnen virtuellen Azure-Computer: nur Hochskalieren | Mehrere SAP HANA-Instanzen auf einem einzelnen virtuellen Computer. Sie können nur eine dieser mehreren Instanzen gleichzeitig schützen.                  |
 | **HANA-Datenbanktypen**    | Container mit Einzeldatenbank (Single Database Container, SDC) unter 1.x, Container mit mehreren Datenbanken (Multi-Database Container, MDC) unter 2.x | MDC unter HANA 1.x                                              |

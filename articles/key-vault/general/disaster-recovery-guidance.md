@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 3c5afc92044fcb109bedd38298b0b027ebeb437d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 7a23522da2bf6d1c5f9c6a76ab3d9c92cbc64897
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749688"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749535"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault: Verfügbarkeit und Redundanz
 
@@ -22,13 +22,13 @@ Azure Key Vault-Features bieten mehrere Redundanzebenen, um sicherzustellen, das
 > [!NOTE]
 > Diese Anleitung gilt für Tresore. Pools verwalteter HSMs verwenden ein anderes Modell für Hochverfügbarkeit und Notfallwiederherstellung. Weitere Informationen finden Sie unter [Notfallwiederherstellung für „Verwaltetes HSM“](../managed-hsm/disaster-recovery-guide.md).
 
-Der Inhalt Ihres Schlüsseltresors wird innerhalb der Region sowie in eine sekundäre Region repliziert, die mindestens 240 km entfernt ist (jedoch innerhalb des gleichen Gebiets liegt), um eine hohe Dauerhaftigkeit Ihrer Schlüssel und Geheimnisse zu gewährleisten. Einzelheiten zu spezifischen Regionspaaren finden Sie im Dokument [Azure-Regionspaare](../../best-practices-availability-paired-regions.md). Eine Ausnahme vom Modell mit Regionspaaren ist die Region „Brasilien, Süden“. Sie bietet nur die Möglichkeit, Daten in „Brasilien, Süden“ zu speichern. „Brasilien, Süden“ nutzt zonenredundanten Speicher (ZRS), um Ihre Daten dreimal innerhalb des einzelnen Standorts/der einzelnen Region zu replizieren. Bei AKV Premium werden nur zwei der drei Regionen verwendet, um Daten aus dem HSM zu replizieren.  
+Der Inhalt Ihres Schlüsseltresors wird innerhalb der Region sowie in eine sekundäre Region repliziert, die mindestens 240 km entfernt ist (jedoch innerhalb des gleichen Gebiets liegt), um eine hohe Dauerhaftigkeit Ihrer Schlüssel und Geheimnisse zu gewährleisten. Einzelheiten zu spezifischen Regionspaaren finden Sie im Dokument [Azure-Regionspaare](../../best-practices-availability-paired-regions.md). Eine Ausnahme für das Modell der gekoppelten Regionen ist eine einzelne geografische Region, z. B. Brasilien (Süden), Katar (Zentrum). Solche Regionen ermöglichen nur die Option, Daten innerhalb derselben Region zu speichern. Sowohl Brasilien (Süden) als auch Katar (Mitte) verwenden zonenredundanten Speicher (ZRS), um Ihre Daten dreimal innerhalb des einzelnen Standorts bzw. der Region zu replizieren. Bei AKV Premium werden nur zwei der drei Regionen verwendet, um Daten aus dem HSM zu replizieren.
 
 Wenn einzelne Komponenten innerhalb des Key Vault-Diensts ausfallen, springen andere Komponenten in der Region ein, um Ihre Anforderung zu erfüllen, sodass die Funktionalität nicht beeinträchtigt wird. Sie müssen keine Maßnahmen ergreifen, um diesen Prozess zu starten. Dieser wird automatisch initiiert und ist für Sie transparent.
 
-In dem seltenen Fall, dass eine gesamte Azure-Region nicht verfügbar sein sollte, werden die Anforderungen an den Azure Key Vault in dieser Region automatisch an eine sekundäre Region weitergeleitet, was als *Failover* bezeichnet wird (gilt nicht für die Region „Brasilien, Süden“). Wenn die primäre Region wieder verfügbar ist, werden Anforderungen wieder zurück an die primäre Region geleitet (was als *Failback* bezeichnet wird). Sie müssen wiederum keine Maßnahmen ergreifen, da diese Schritte automatisch erfolgen.
+In dem seltenen Fall, dass eine gesamte Azure-Region nicht verfügbar ist, werden die Anforderungen an den Azure Key Vault in dieser Region automatisch an eine sekundäre Region weitergeleitet, was als *Failover* bezeichnet wird (gilt nicht für die Region „Brasilien (Süden)“). Wenn die primäre Region wieder verfügbar ist, werden Anforderungen wieder zurück an die primäre Region geleitet (was als *Failback* bezeichnet wird). Sie müssen wiederum keine Maßnahmen ergreifen, da diese Schritte automatisch erfolgen.
 
-In der Region „Brasilien, Süden“ muss die Wiederherstellung Ihrer Azure-Schlüsseltresore in einem Szenario mit Regionsausfall geplant werden. Führen Sie die unter [Sicherung in Azure Key Vault](backup.md) erläuterten Schritte aus, um Ihren Azure-Schlüsseltresor in einer Region Ihrer Wahl zu sichern und wiederherzustellen. 
+In der Region „Brasilien (Süden)“ und „Katar (Zentrum)“ muss die Wiederherstellung Ihrer Azure-Schlüsseltresore in einem Szenario mit Regionsausfall geplant werden. Führen Sie die unter [Sicherung in Azure Key Vault](backup.md) erläuterten Schritte aus, um Ihren Azure-Schlüsseltresor in einer Region Ihrer Wahl zu sichern und wiederherzustellen. 
 
 Durch diesen Entwurf für Hochverfügbarkeit erfordert Azure Key Vault keine Ausfallzeiten für Wartungsarbeiten.
 

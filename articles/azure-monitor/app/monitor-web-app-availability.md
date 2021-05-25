@@ -4,12 +4,12 @@ description: Richten Sie Pingtests in Application Insights ein. Erhalten Sie Ben
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 60698862e26175425221940a4b69867cb414fe86
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: eba55212b4b40a364f37d6f86d41a25a1564281a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598872"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767327"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Überwachen der Verfügbarkeit von Websites
 
@@ -144,3 +144,4 @@ Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](../essent
 * [Availability Alerts (Verfügbarkeitswarnungen)](availability-alerts.md)
 * [Multi-step web tests (Mehrstufige Webtests)](availability-multistep.md)
 * [Problembehandlung](troubleshoot-availability.md)
+* [Webtests: Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/templates/microsoft.insights/webtests?tabs=json)

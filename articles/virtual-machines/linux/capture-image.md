@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: dddbad2403734bc749497a7acca16b2a5b6076f4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dff0425c119015d69ef994540e03e56dfc2decb6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792253"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744585"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Erstellen eines verwalteten Images eines virtuellen Computers oder einer VHD
 
@@ -82,12 +82,14 @@ Verwenden Sie Azure CLI, um die VM als generalisiert zu kennzeichnen und das Ima
     ```azurecli
     az image create \
         --resource-group myResourceGroup \
-        --name myImage --source myVM
+    --name myImage --source myVM
     ```
    
    > [!NOTE]
    > Das Image wird in derselben Ressourcengruppe wie der virtuelle Quellcomputer erstellt. Sie können aus diesem Image virtuelle Computer in einer beliebigen Ressourcengruppe in Ihrem Abonnement erstellen. Angesichts der Verwaltung können Sie eine spezifische Ressourcengruppe für die VM-Ressourcen und Images erstellen.
    >
+   > Wenn Sie ein Image eines virtuellen Computers der Generation 2 erfassen, verwenden Sie auch den `--hyper-v-generation V2`-Parameter. Weitere Informationen finden Sie unter [VMs der Generation 2](../generation-2.md).
+   > 
    > Wenn Sie das Image in Speicher mit Zonenresilienz speichern möchten, müssen Sie es in einer Region erstellen, die [Verfügbarkeitszonen](../../availability-zones/az-overview.md) unterstützt, und den `--zone-resilient true`-Parameter einbeziehen.
    
 Dieser Befehl gibt JSON zurück, das das VM-Image beschreibt. Speichern Sie diese Ausgabe zur späteren Referenznahme.
