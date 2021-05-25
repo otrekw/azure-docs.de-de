@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742b9fc79489feba8192b6e62a6431bb37f55ad4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d83b617f08c143ee09251667c4f9bee89577a23
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612666"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758859"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>Installieren des Azure AD Connect-Bereitstellungs-Agents
 In diesem Dokument erhalten Sie Informationen zum Installationsvorgang für den Azure AD Connect-Bereitstellungs-Agent (Azure Active Directory) und dessen Erstkonfiguration im Azure-Portal.
@@ -30,6 +30,8 @@ Die Installation und Konfiguration der Azure AD Connect-Cloudsynchronisierung e
 - [Installieren des Agents](#install-the-agent)
 - [Überprüfen der Agent-Installation](#verify-agent-installation)
 
+>[!NOTE]
+>In diesem Dokument wird die Installation des Bereitstellungs-Agents mithilfe des Assistenten behandelt.  Informationen zum Installieren des Azure AD Connect-Bereitstellungs-Agents mithilfe einer Befehlszeilenschnittstelle (CLI) finden Sie unter [Installieren des Azure AD Connect Bereitstellungs-Agents mithilfe einer Befehlszeilenschnittstelle (CLI) und PowerShell](how-to-install-pshell.md).
 
 ## <a name="group-managed-service-accounts"></a>Gruppenverwaltete Dienstkonten
 Ein gruppenverwaltetes Dienstkonto ist ein verwaltetes Domänenkonto, das eine automatische Kennwortverwaltung, eine vereinfachte Verwaltung von Dienstprinzipalnamen (Service Principal Name, SPN) und die Möglichkeit bietet, die Verwaltung an andere Administratoren zu delegieren, wobei diese Funktionalität auch auf mehrere Server erweitert wird.  Azure AD Connect Cloud Sync unterstützt und empfiehlt die Verwendung eines gruppenverwalteten Dienstkontos für die Ausführung des Agents.  Weitere Informationen zu einem gruppenverwalteten Dienstkonto (Group Managed Service Account, GMSA) finden Sie unter [Gruppenverwaltete Dienstkonten](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview). 
@@ -37,6 +39,8 @@ Ein gruppenverwaltetes Dienstkonto ist ein verwaltetes Domänenkonto, das eine a
 
 ### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>Aktualisieren eines vorhandenen Agents für die Verwendung des gruppenverwalteten Dienstkontos
 Um einen vorhandenen Agent für die Verwendung des während der Installation erstellten gruppenverwalteten Dienstkontos zu aktualisieren, müssen Sie einfach den Agent-Dienst auf die neueste Version aktualisieren, indem Sie die Datei „AADConnectProvisioningAgent.msi“ ausführen.  Dadurch wird der Dienst auf die neueste Version aktualisiert.  Führen Sie jetzt den Installations-Assistenten erneut aus, und geben Sie bei entsprechender Aufforderung die Anmeldeinformationen ein, um das Konto zu erstellen.
+
+
 
 
 

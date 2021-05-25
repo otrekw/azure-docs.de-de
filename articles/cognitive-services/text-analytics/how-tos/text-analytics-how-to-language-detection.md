@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 04/02/2021
 ms.author: aahi
-ms.openlocfilehash: d7f62082d860d8ec39a5937af5c1bae81b372caa
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: b1af48aa2aad3daa37a3ca4073d44574b5b05e6c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906582"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742119"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Beispiel: Sprachenerkennung mithilfe der Textanalyse
 
@@ -91,9 +91,9 @@ Alle POST-Anforderungen geben eine Antwort im JSON-Format mit den IDs und erkann
 
 Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei im lokalen System speichern. Importieren Sie dann die Ausgabe in eine Anwendung, mit der Sie die Daten sortieren, durchsuchen und bearbeiten können.
 
-Ergebnisse für die Beispielanforderung sollten wie im folgenden JSON-Code aussehen. Beachten Sie, dass es sich hierbei um ein einzelnes Dokument mit mehreren Elementen handelt. Die Ausgabe erfolgt in englischer Sprache. Sprachen-IDs enthalten einen Anzeigenamen und einen Sprachcode im Format [ISO 639-1](https://www.iso.org/standard/22109.html).
+Ergebnisse für die Beispielanforderung sollten wie im folgenden JSON-Dokument aussehen. Beachten Sie, dass es sich um ein JSON-Dokument mit mehreren Elementen handelt, bei dem jedes Element das Erkennungsergebnis für jedes Dokument darstellt, das Sie übermittelt haben. Die Ausgabe erfolgt in englischer Sprache. 
 
-Das positive Ergebnis 1,0 steht für die höchstmögliche Zuverlässigkeit der Analyse.
+Die Spracherkennung gibt eine vorherrschende Sprache für ein Dokument sowie den [ISO 639-1-Namen](https://www.iso.org/standard/22109.html), den Anzeigenamen und die Konfidenzpunktzahl zurück. Das positive Ergebnis 1,0 steht für die höchstmögliche Zuverlässigkeit der Analyse.
 
 ```json
 {

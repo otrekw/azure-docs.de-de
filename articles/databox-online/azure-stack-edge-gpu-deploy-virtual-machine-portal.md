@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von VMs auf Azure Stack Edge Pro über das Azure-Portal
+title: Bereitstellen von VMs auf einem Azure Stack Edge Pro-GPU-Gerät über das Azure-Portal
 description: Erfahren Sie, wie Sie VMs auf Azure Stack Edge Pro über das Azure-Portal erstellen und verwalten.
 services: databox
 author: alkohli
@@ -8,20 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: alkohli
-ms.openlocfilehash: 139b543160b679ba063a0633f9091e7bc0ef1fc1
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 68f0ee86d0882f0a8e44f5af926af4a92d824082
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074856"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758290"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Bereitstellen von VMs auf einem Azure Stack Edge Pro-GPU-Gerät über das Azure-Portal
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Sie können virtuelle Computer (Virtual Machines, VMs) auf einem Azure Stack Edge-Gerät über das Azure-Portal, Vorlagen, Azure PowerShell-Cmdlets sowie über die Azure CLI bzw. Python-Skripts erstellen und verwalten. In diesem Artikel wird beschrieben, wie Sie eine VM auf Ihrem Azure Stack Edge-Gerät über das Azure-Portal erstellen und verwalten. 
-
-Dieser Artikel bezieht sich auf Geräte vom Typ „Azure Stack Edge Pro-GPU“, „Azure Stack Edge Pro R“ und „Azure Stack Edge Mini R“. 
+Sie können virtuelle Computer (Virtual Machines, VMs) auf einem Azure Stack Edge-Gerät über das Azure-Portal, Vorlagen und Azure PowerShell-Cmdlets sowie über die Azure CLI bzw. Python-Skripts erstellen und verwalten. In diesem Artikel wird beschrieben, wie Sie eine VM auf Ihrem Azure Stack Edge-Gerät über das Azure-Portal erstellen und verwalten. 
 
 > [!IMPORTANT] 
 > Es wird empfohlen, für Benutzer, die auf Ihrem Gerät bereitgestellte VMs über die Cloud verwalten, die mehrstufige Authentifizierung zu aktivieren.
@@ -30,28 +28,27 @@ Dieser Artikel bezieht sich auf Geräte vom Typ „Azure Stack Edge Pro-GPU“, 
 
 Die allgemeine Zusammenfassung des Bereitstellungsworkflows lautet wie folgt:
 
-1. Aktivieren einer Netzwerkschnittstelle für Compute auf dem Azure Stack Edge-Gerät Dadurch wird ein virtueller Switch an der angegebenen Netzwerkschnittstelle erstellt.
+1. Aktivieren einer Netzwerkschnittstelle für Compute auf dem Azure Stack Edge-Gerät In diesem Schritt wird ein virtueller Switch an der angegebenen Netzwerkschnittstelle erstellt.
 1. Aktivieren Sie die Cloudverwaltung von virtuellen Computern über das Azure-Portal.
-1. Laden Sie mit dem Storage-Explorer eine VHD in ein Azure Storage-Konto hoch. 
+1. Laden Sie mit dem Azure Storage-Explorer eine VHD in ein Azure Storage-Konto hoch. 
 1. Verwenden Sie die hochgeladene VHD, um diese auf das Gerät herunterzuladen und ein VM-Image von der VHD zu erstellen. 
 1. Verwenden Sie die Ressourcen, die Sie in den vorherigen Schritten erstellt haben:
     1. VM-Image, das Sie erstellt haben
-    1. VSwitch, der der Netzwerkschnittstelle zugeordnet ist, an der Sie Compute aktiviert haben
-    1. Das Subnetz, das dem VSwitch zugeordnet ist
+    1. Virtueller Switch, der der Netzwerkschnittstelle zugeordnet ist, an der Sie Compute aktiviert haben
+    1. Subnetz, das dem virtuellen Switch zugeordnet ist
 
     Und erstellen Sie die folgenden Ressourcen inline, oder geben Sie diese inline an:
     1. VM-Name – wählen Sie eine unterstützte VM-Größe und Anmeldeinformationen für die VM aus. 
     1. Erstellen Sie neue Datenträger, oder fügen Sie vorhandene Datenträger an.
     1. Konfigurieren Sie eine statische oder dynamische IP-Adresse für die VM. Wenn Sie eine statische IP-Adresse bereitstellen, wählen Sie eine freie IP-Adresse im Subnetzbereich der für Compute aktivierten Netzwerkschnittstelle aus.
 
-    Verwenden Sie die oben aufgeführten Ressourcen, um einen virtuellen Computer zu erstellen.
-
+    Verwenden Sie die oben genannten Ressourcen, um einen virtuellen Computer zu erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie mit dem Erstellen und Verwalten von VMs auf Ihrem Gerät über das Azure-Portal beginnen, stellen Sie Folgendes sicher:
 
-1. Sie haben die Netzwerkeinstellungen auf dem Azure Stack Edge Pro-Gerät wie unter [Schritt 1: Konfigurieren des Azure Stack Edge Pro-Geräts](./azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device) angegeben festgelegt.
+1. Sie haben die Netzwerkeinstellungen auf Ihrem Azure Stack Edge Pro-Gerät wie unter [Schritt 1: Konfigurieren eines Azure Stack Edge Pro-Geräts](./azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device) beschrieben festgelegt.
 
     1. Sie haben eine Netzwerkschnittstelle für Compute aktiviert. Diese IP-Adresse der Netzwerkschnittstelle wird verwendet, um einen virtuellen Switch für die VM-Bereitstellung zu erstellen. Navigieren Sie auf der lokalen Benutzeroberfläche Ihres Geräts zu **Compute**. Wählen Sie die Netzwerkschnittstelle aus, die Sie verwenden möchten, um einen virtuellen Switch zu erstellen.
 
@@ -64,26 +61,27 @@ Bevor Sie mit dem Erstellen und Verwalten von VMs auf Ihrem Gerät über das Azu
 
 ## <a name="deploy-a-vm"></a>Bereitstellen einer VM
 
-Führen Sie die folgenden Schritte aus, um auf Ihrem Azure Stack Edge-Gerät einen virtuellen Computer zu erstellen.
+Führen Sie die folgenden Schritte aus, um auf Ihrem Azure Stack Edge-Gerät eine VM zu erstellen.
 
 ### <a name="add-a-vm-image"></a>Hinzufügen eines VM-Images
 
-1. Laden Sie eine VHD in ein Azure Storage-Konto hoch. Führen Sie die Schritte unter [Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure Storage-Explorers](../devtest-labs/devtest-lab-upload-vhd-using-storage-explorer.md) aus.
+1. Laden Sie eine VHD in ein Azure Storage-Konto hoch. Führen Sie die Schritte unter [Hochladen einer VHD mithilfe des Azure Storage-Explorers](../devtest-labs/devtest-lab-upload-vhd-using-storage-explorer.md) aus.
 
-1. Wechseln Sie im Azure-Portal zur Azure Stack Edge-Ressource für Ihr Azure Stack Edge-Gerät. Wechseln Sie zu **Edgecomputing -> Virtuelle Computer**.
+1. Wechseln Sie im Azure-Portal zur Azure Stack Edge-Ressource für Ihr Azure Stack Edge-Gerät. Wechseln Sie zu **Edgecomputing** > **Virtuelle Computer**.
 
-    ![VM-Image hinzufügen 1](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
+    ![Screenshot: Edgecomputing und virtuelle Computer](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
 
-1. Wählen Sie **Virtuelle Computer** aus, um zur Seite **Übersicht** zu wechseln. **Aktivieren** Sie die Cloudverwaltung für virtuelle Computer.
-    ![VM-Image hinzufügen 2](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-2.png)
+1. Wählen Sie **Virtuelle Computer** aus, um zur Seite **Übersicht** zu wechseln. Wählen Sie **Aktivieren** aus, um die Cloudverwaltung für virtuelle Computer zu aktivieren.
+
+    ![Screenshot der Seite „Übersicht“ mit Schaltfläche „Aktivieren“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-2.png)
 
 1. Der erste Schritt besteht darin, ein VM-Image hinzuzufügen. Sie haben im vorherigen Schritt bereits eine VHD in das Speicherkonto hochgeladen. Sie verwenden diese VHD, um ein VM-Image zu erstellen.
 
-    Wählen Sie **Image hinzufügen** aus, um die VHD aus dem Speicherkonto herunterzuladen und zum Gerät hinzuzufügen. Der Downloadvorgang dauert einige Minuten und ist von der Größe der VHD und der für den Download verfügbaren Internetbandbreite abhängig. 
+    Wählen Sie **Hinzufügen** aus, um die VHD aus dem Speicherkonto herunterzuladen und zum Gerät hinzuzufügen. Der Downloadvorgang dauert einige Minuten und ist von der Größe der VHD und der für den Download verfügbaren Internetbandbreite abhängig. 
 
-    ![VM-Image hinzufügen 3](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-3.png)
+    ![Screenshot der Seite „Übersicht“ mit Schaltfläche „Hinzufügen“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-3.png)
 
-1. Geben Sie auf dem Blatt **Image hinzufügen** die folgenden Parameter ein. Wählen Sie **Hinzufügen**.
+1. Geben Sie im Bereich **Image hinzufügen** die folgenden Parameter ein. Wählen Sie **Hinzufügen**.
 
 
     |Parameter  |BESCHREIBUNG  |
@@ -94,22 +92,24 @@ Führen Sie die folgenden Schritte aus, um auf Ihrem Azure Stack Edge-Gerät ein
     |Betriebssystemtyp     |Wählen Sie Windows oder Linux als Betriebssystem der VHD aus, die Sie zum Erstellen des VM-Images verwenden.         |
    
 
-    ![VM-Image hinzufügen 4](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-6.png)
+    ![Screenshot der Seite „Image hinzufügen“ mit Schaltfläche „Hinzufügen“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-6.png)
 
 1. Die VHD wird heruntergeladen, und das VM-Image wird erstellt. Die Imageerstellung dauert einige Minuten. Sie werden benachrichtigt, sobald das VM-Image erfolgreich erstellt wurde.
 
-    ![VM-Image hinzufügen 5](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-8.png)
+    ![Screenshot mit der Benachrichtigung über den erfolgreichen Abschluss](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-8.png)
 
 
-1. Nachdem das VM-Image erfolgreich erstellt wurde, wird es der Liste der Images auf dem Blatt **Images** hinzugefügt.
-    ![VM-Image hinzufügen 6](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-9.png)
+1. Nachdem das VM-Image erfolgreich erstellt wurde, wird es der Liste der Images im Bereich **Images** hinzugefügt.
 
-    Das Blatt **Bereitstellungen** wird aktualisiert, um den Status der Bereitstellung widerzuspiegeln.
+    ![Screenshot des Bereichs „Images“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-9.png)
 
-    ![VM-Image hinzufügen 7](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-10.png)
+    Der Bereich **Bereitstellungen** wird aktualisiert, um den Status der Bereitstellung widerzuspiegeln.
+
+    ![Screenshot des Bereichs „Bereitstellungen“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-10.png)
 
     Das neu hinzugefügte Image wird auch auf der Seite **Übersicht** angezeigt.
-    ![VM-Image hinzufügen 8](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-11.png)
+
+    ![Screenshot der Seite „Übersicht“ mit dem Image](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-11.png)
 
 
 ### <a name="add-a-vm"></a>Hinzufügen eines virtuellen Computers
@@ -118,9 +118,9 @@ Führen Sie diese Schritte aus, um eine VM zu erstellen, nachdem Sie ein VM-Imag
 
 1. Wählen Sie auf der Seite **Übersicht** die Option **Virtuellen Computer hinzufügen** aus.
 
-    ![VM hinzufügen 1](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-1.png)
+    ![Screenshot der Seite „Übersicht“ mit der Schaltfläche „Virtuellen Computer hinzufügen“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-1.png)
 
-1. Geben Sie auf dem Blatt **Grundlagen** die folgenden Parameter ein.
+1. Geben Sie auf der Registerkarte **Grundlagen** die folgenden Parameter ein.
 
 
     |Parameter |BESCHREIBUNG  |
@@ -129,13 +129,13 @@ Führen Sie diese Schritte aus, um eine VM zu erstellen, nachdem Sie ein VM-Imag
     |Edgeressourcengruppe     | Erstellen Sie eine neue Ressourcengruppe für alle Ressourcen, die der VM zugeordnet sind.        |
     |Image     | Wählen Sie aus den VM-Images aus, die auf dem Gerät verfügbar sind.        |
     |Size     | Wählen Sie aus den [Unterstützten VM-Größen](azure-stack-edge-gpu-virtual-machine-sizes.md) aus.        |
-    |Username     | Verwenden Sie den Standardbenutzernamen *azureuser* für den Administrator, um sich bei der VM anzumelden.        |
+    |Username     | Verwenden Sie den Standardbenutzernamen **azureuser** für den Administrator, um sich bei der VM anzumelden.        |
     |Authentifizierungsart    | Wählen Sie einen öffentlichen SSH-Schlüssel oder ein benutzerdefiniertes Kennwort aus.       |
-    |Kennwort     | Geben Sie ein Kennwort ein, um sich beim virtuellen Computer anzumelden. Das Kennwort muss mindestens zwölf Zeichen lang sein und die definierten [Komplexitätsanforderungen](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.        |
+    |Kennwort     | Geben Sie ein Kennwort zur Anmeldung bei der VM ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die definierten [Komplexitätsanforderungen](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.        |
     |Kennwort bestätigen    | Geben Sie das Kennwort erneut ein.        |
 
 
-    ![VM hinzufügen 2](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-basics-1.png)
+    ![Screenshot der Registerkarte „Grundlagen“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-basics-1.png)
 
     Klicken Sie auf **Weiter: Datenträger**.
 
@@ -143,13 +143,13 @@ Führen Sie diese Schritte aus, um eine VM zu erstellen, nachdem Sie ein VM-Imag
     
     1. Sie können **Neuen Datenträger erstellen und anfügen** oder **Vorhandenen Datenträger anfügen** auswählen.
 
-        ![VM hinzufügen 3](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-1.png)
+        ![Screenshot mit der Registerkarte „Datenträger“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-1.png)
 
-    1. Wählen Sie **Neuen Datenträger erstellen und anfügen** aus. Geben Sie auf dem Blatt **Neuen Datenträger erstellen** einen Namen für den Datenträger und die Größe in GiB an.
+    1. Wählen Sie **Neuen Datenträger erstellen und anfügen** aus. Geben Sie im Bereich **Neuen Datenträger erstellen** einen Namen für den Datenträger und die Größe in GiB an.
 
-        ![VM hinzufügen 4](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-2.png)
+        ![Screenshot der Registerkarte „Neuen Datenträger erstellen“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-2.png)
 
-    1.  Wiederholen Sie den obigen Vorgang, um weitere Datenträger hinzuzufügen. Nachdem die Datenträger erstellt wurden, werden sie auf der Registerkarte **Datenträger** angezeigt. Wählen Sie **Weiter: Netzwerk** aus.
+    1. Wiederholen Sie den vorherigen Vorgang, um weitere Datenträger hinzuzufügen. Nachdem die Datenträger erstellt wurden, werden sie auf der Registerkarte **Datenträger** angezeigt. Wählen Sie **Weiter: Netzwerk** aus.
 
 1. Auf der Registerkarte **Netzwerk** konfigurieren Sie die Netzwerkkonnektivität für die VM.
 
@@ -160,48 +160,50 @@ Führen Sie diese Schritte aus, um eine VM zu erstellen, nachdem Sie ein VM-Imag
     |Subnet     | Dieses Feld wird automatisch mit dem Subnetz ausgefüllt, das der Netzwerkschnittstelle zugeordnet ist, an der Sie Compute aktiviert haben.         |
     |IP-Adresse     | Geben Sie eine statische oder dynamische IP-Adresse für die VM an. Die statische IP-Adresse sollte eine verfügbare, freie IP-Adresse aus dem angegebenen Subnetzbereich sein.        |
 
-    ![VM hinzufügen 6](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-networking-1.png)
+    ![Screenshot: Registerkarte „Netzwerk“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-networking-1.png)
 
-    Klicken Sie auf **Weiter: Überprüfen + erstellen**.
+    Klicken Sie auf **Weiter: Erweitert**.
 
 1. Auf der Registerkarte **Erweitert** können Sie die benutzerdefinierten Daten oder cloud-init angeben, um Ihre VM anzupassen. 
 
-    Mit cloud-init können Sie eine VM beim ersten Start anpassen. Verwenden Sie cloud-init zum Installieren von Paketen und Schreiben von Dateien oder zum Konfigurieren von Benutzern und Sicherheit. Da cloud-init während des ersten Startvorgangs ausgeführt wird, sind keine zusätzlichen Schritte zum Anwenden Ihrer Konfiguration erforderlich. Ausführliche Informationen zu cloud-init finden Sie unter [Übersicht zu cloud-init](../virtual-machines/linux/tutorial-automate-vm-deployment.md#cloud-init-overview).
+    Mit cloud-init können Sie eine VM beim ersten Start anpassen. Verwenden Sie cloud-init zum Installieren von Paketen und Schreiben von Dateien oder zum Konfigurieren von Benutzern und Sicherheit. Da cloud-init während des ersten Startvorgangs ausgeführt wird, sind keine weiteren Schritte zum Anwenden Ihrer Konfiguration erforderlich. Weitere Informationen zu cloud-init finden Sie unter [Übersicht zu cloud-init](../virtual-machines/linux/tutorial-automate-vm-deployment.md#cloud-init-overview).
 
-    ![VM hinzufügen 7](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-advanced-1.png)    
+    ![Screenshot der Registerkarte „Erweitert“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-advanced-1.png)
 
-1. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die Angaben für die VM, und wählen Sie **Erstellen** aus.
+    Klicken Sie auf **Weiter: Überprüfen + erstellen**.
 
-    ![VM hinzufügen 8](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
+1. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die Angaben für die VM. Klicken Sie anschließend auf **Erstellen**.
+
+    ![Screenshot der Registerkarte „Überprüfen + erstellen“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
 
 1. Die Erstellung der VM wird gestartet und kann bis zu 20 Minuten dauern. Sie können zu **Bereitstellungen** wechseln, um die VM-Erstellung zu überwachen.
 
-    ![VM hinzufügen 9](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
+    ![Screenshot der Seite „Bereitstellungen“](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
 
     
 1. Nachdem die VM erfolgreich erstellt wurde, wird die Seite **Übersicht** aktualisiert, damit die neue VM angezeigt wird.
 
-    ![VM hinzufügen 10](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
+    ![Screenshot der Seite „Übersicht“ mit aufgeführter neuer VM](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
 
 1. Wählen Sie die neu erstellte VM aus, um zu **Virtuelle Computer** zu wechseln.
 
-    ![VM hinzufügen 11](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
+    ![Screenshot zur Auswahl der neuen VM](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
 
     Wählen Sie die VM aus, um die Details anzuzeigen. 
 
-    ![VM hinzufügen 12](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
+    ![Screenshot zu den VM-Details](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
 
 ## <a name="connect-to-a-vm"></a>Herstellen einer Verbindung mit einem virtuellen Computer
 
-Je nachdem, ob Sie eine Windows- oder Linux-VM erstellt haben, können die Schritte abweichen. Sie können keine Verbindung mit den auf Ihrem Gerät bereitgestellten VMs über das Azure-Portal herstellen. Sie müssen die folgenden Schritte ausführen, um eine Verbindung mit Ihrer Linux- oder Windows-VM herzustellen.
+Je nachdem, ob Sie eine Linux- oder Windows-VM erstellt haben, können die Schritte abweichen. Sie können keine Verbindung mit den auf Ihrem Gerät bereitgestellten VMs über das Azure-Portal herstellen. Befolgen Sie die Schritte, um eine Verbindung mit Ihrer Linux- oder Windows-VM herzustellen.
 
-### <a name="connect-to-linux-vm"></a>Herstellen einer Verbindung mit einer Linux-VM
+### <a name="connect-to-a-linux-vm"></a>Herstellen einer Verbindung mit einem virtuellen Linux-Computer
 
 Führen Sie diese Schritte aus, um eine Verbindung mit einer Linux-VM herzustellen.
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
-### <a name="connect-to-windows-vm"></a>Herstellen einer Verbindung mit einer Windows-VM
+### <a name="connect-to-a-windows-vm"></a>Herstellen einer Verbindung mit einem virtuellen Windows-Computer
 
 Führen Sie diese Schritte aus, um eine Verbindung mit einer Windows-VM herzustellen.
 

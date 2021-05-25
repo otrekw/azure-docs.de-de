@@ -3,12 +3,12 @@ title: Schützen der Ressourcenhierarchie – Azure Governance
 description: Erfahren Sie, wie Sie Ihre Ressourcenhierarchie mit Hierarchieeinstellungen schützen, unter anderem durch Festlegen der Standardverwaltungsgruppe.
 ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 11c20ccf5aff74d810533cd56e0a7b116f2dc64b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c87603510d036efded1331a5c08a7aae17326d09
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303643"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765159"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Schützen der Ressourcenhierarchie
 

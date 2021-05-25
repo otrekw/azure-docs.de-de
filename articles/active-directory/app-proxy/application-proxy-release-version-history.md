@@ -11,17 +11,17 @@ ms.date: 04/27/2021
 ms.subservice: app-proxy
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 2062b957a751d80bb278fe830688b1db3cfa5dfe
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: c340d0b51e1d4326bba575094491cdd5ea756616
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186257"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764385"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen
-In diesem Artikel werden die veröffentlichten Versionen und Features des Anwendungsproxys von Azure Active Directory (Azure AD) aufgeführt. Das Azure AD-Team aktualisiert den Anwendungsproxy regelmäßig mit neuen Features und Funktionen. Anwendungsproxyconnectors werden automatisch aktualisiert, wenn eine neue Version veröffentlicht wird. 
+In diesem Artikel werden die veröffentlichten Versionen und Features des Anwendungsproxys von Azure Active Directory (Azure AD) aufgeführt. Das Azure AD-Team aktualisiert den Anwendungsproxy regelmäßig mit neuen Features und Funktionen. Anwendungsproxyconnectors werden [automatisch aktualisiert, wenn eine neue größere Version veröffentlicht wird](application-proxy-faq.yml#why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version-). 
 
-Wir empfehlen die Aktivierung von automatischen Updates für Ihre Connectors, um sicherzustellen, dass Sie über die neuesten Features und Fehlerbehebungen verfügen. Microsoft bietet direkte Unterstützung für die neueste Connectorversion und die unmittelbare Vorgängerversion.
+Wir empfehlen die Aktivierung von automatischen Updates für Ihre Connectors, um sicherzustellen, dass Sie über die neuesten Features und Fehlerbehebungen verfügen. Microsoft-Support bitten Sie möglicherweise, die neueste Connectorversion zu installieren, um ein Problem zu beheben.
 
 Hier finden Sie eine Liste der zugehörigen Ressourcen:
 
@@ -35,7 +35,7 @@ Hier finden Sie eine Liste der zugehörigen Ressourcen:
 
 ### <a name="release-status"></a>Releasestatus
 
-22. Juli 2020: Für den Download veröffentlicht: Diese Version steht nur über die Downloadseite zur Installation zur Verfügung. Ein automatisches Upgrade dieser Version wird zu einem späteren Zeitpunkt veröffentlicht.
+22. Juli 2020: Für den Download veröffentlicht: Diese Version steht nur über die Downloadseite zur Installation zur Verfügung. 
 
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
 -   Verbesserte Unterstützung für Azure Government-Cloudumgebungen. Ausführliche Informationen zur ordnungsgemäßen Installation des Connectors für die Azure Government-Cloudprüfung finden Sie unter [Voraussetzungen](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) und [Installieren des Agents für die Azure Government-Cloud](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
@@ -51,7 +51,7 @@ Hier finden Sie eine Liste der zugehörigen Ressourcen:
 
 ### <a name="release-status"></a>Releasestatus
 
-17. Juli 2020 Für den Download veröffentlicht. Diese Version ist nur über die Downloadseite für die Installation verfügbar. Ein automatisches Upgrade dieser Version wird zu einem späteren Zeitpunkt veröffentlicht.
+17. Juli 2020 Für den Download veröffentlicht. Diese Version ist nur über die Downloadseite für die Installation verfügbar. 
 
 ### <a name="fixed-issues"></a>Behobene Probleme
 - Behoben: Arbeitsspeicherverlust in vorheriger Version
@@ -61,7 +61,7 @@ Hier finden Sie eine Liste der zugehörigen Ressourcen:
 
 ### <a name="release-status"></a>Releasestatus
 
-07. April 2020: Für den Download veröffentlicht: Diese Version steht nur über die Downloadseite zur Installation zur Verfügung. Ein automatisches Upgrade dieser Version wird zu einem späteren Zeitpunkt veröffentlicht.
+07. April 2020: Für den Download veröffentlicht: Diese Version steht nur über die Downloadseite zur Installation zur Verfügung. 
 
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
 -   Connectors verwenden für alle Verbindungen ausschließlich TLS 1.2. Weitere Informationen finden Sie unter [Voraussetzungen für Connectors](application-proxy-add-on-premises-application.md#prerequisites).

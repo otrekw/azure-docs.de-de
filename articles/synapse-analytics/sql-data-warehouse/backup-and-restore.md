@@ -80,7 +80,7 @@ Wenn Sie keine Geosicherungen für Ihren dedizierten SQL-Pool benötigen, könne
 
 Wenn sich das gekoppelte Rechenzentrum außerhalb ihrer geografischen Grenzen befindet, können Sie sicherstellen, dass Ihre Daten innerhalb Ihrer geografischen Grenze verbleiben, indem Sie den georedundanten Speicher deaktivieren. Dies kann geschehen, wenn Sie Ihren dedizierten SQL-Pool (ehemals SQL DW) über die Option „georedundanter Speicher“ bereitstellen, wenn Sie einen dedizierten SQL-Pool (früher SQL DW) erstellen oder wiederherstellen. 
 
-Unter [Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) können Sie überprüfen, ob sich das gekoppelte Rechenzentrum in einem anderen Land befindet.
+Unter [Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) können Sie überprüfen, ob sich das gekoppelte Rechenzentrum in einem anderen Land/einer anderen Region befindet.
 
 ## <a name="backup-and-restore-costs"></a>Kosten für Sicherung und Wiederherstellung
 

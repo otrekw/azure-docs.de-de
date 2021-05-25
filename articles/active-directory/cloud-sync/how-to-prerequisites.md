@@ -11,12 +11,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0277d4ce263610576178e3844a0665ab6506fbfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd2d660a0591506b59aaa1b11526175582d2785b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579160"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758769"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Voraussetzungen für die Azure AD Connect-Cloudsynchronisierung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory Connect-Cloudsynchronisierung (Azure AD) als Identitätslösung.
@@ -116,7 +116,7 @@ Es gelten die folgenden bekannten Einschränkungen:
 
 ### <a name="delta-synchronization"></a>Deltasynchronisierung
 
-- Bei der Gruppenbereichsfilterung für die Deltasynchronisierung werden nicht mehr als 1.500 Mitglieder unterstützt.
+- Bei der Gruppenbereichsfilterung für die Deltasynchronisierung werden nicht mehr als 50.000 Mitglieder unterstützt.
 - Wenn Sie eine Gruppe löschen, die für einen Gruppenbereichsfilter verwendet wird, werden Benutzer, die Mitglieder der Gruppe sind, nicht gelöscht. 
 - Wenn Sie die im Bereich befindliche Organisationseinheit oder Gruppe umbenennen, werden die Benutzer bei der Deltasynchronisierung nicht entfernt.
 
@@ -125,6 +125,11 @@ Es gelten die folgenden bekannten Einschränkungen:
 
 ### <a name="group-re-naming-or-ou-re-naming"></a>Umbenennen von Gruppen oder Organisationseinheiten
 - Wenn Sie eine Gruppe oder Organisationseinheit in AD umbenennen, die sich im Bereich einer bestimmten Konfiguration befindet, wird die Namensänderung in AD vom Cloudsynchronisierungsauftrag nicht erkannt. Der Auftrag wird nicht unter Quarantäne gestellt und bleibt im fehlerfreien Zustand.
+
+### <a name="scoping-filter"></a>Bereichsfilter
+Bei Verwendung des Bereichsfilters für Organisationseinheiten
+- Sie können für eine bestimmte Konfiguration nur bis zu 59 separate Organisationseinheiten synchronisieren. 
+- Geschachtelte Organisationseinheiten werden unterstützt (d. h., Sie **können** eine Organisationseinheit mit 130 geschachtelten Organisationseinheiten synchronisieren, aber Sie **können nicht** 60 separate Organisationseinheiten in derselben Konfiguration synchronisieren). 
 
 
 ## <a name="next-steps"></a>Nächste Schritte 

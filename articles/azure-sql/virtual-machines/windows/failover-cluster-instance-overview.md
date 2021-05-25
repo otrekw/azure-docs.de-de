@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82c5cbc2b938ef8cd27a17da394b467a7f5ba8aa
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690922"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755601"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +32,10 @@ SQL Server in Azure Virtual Machines nutzt die Funktion Windows Server-Failover
 Der restliche Artikel konzentriert sich auf die Unterschiede bei Failoverclusterinstanzen, wenn diese mit SQL Server auf Azure-VMs verwendet werden. Weitere Informationen zur Failoverclusteringtechnologie finden Sie unter: 
 
 - [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)
-- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+
+> [!NOTE]
+> Sie können Ihre Failoverclusterinstanzlösung jetzt mithilfe von Azure Migrate per Lift-und-Shift-Verfahren zu SQL Server auf Azure-VMs migrieren. Weitere Informationen finden Sie unter [Migrieren einer Failoverclusterinstanz zu SQL Server auf Azure-VMs](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md). 
 
 ## <a name="quorum"></a>Quorum
 

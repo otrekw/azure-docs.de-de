@@ -1,14 +1,14 @@
 ---
 title: 'Steuerungen des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“'
 description: 'Steuerelementzuordnung des Blaupausenbeispiels „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ zu Azure Policy und Azure RBAC'
-ms.date: 02/05/2021
+ms.date: 04/30/2021
 ms.topic: sample
-ms.openlocfilehash: f4bd340e67547ee22a558a63b56619171a1749c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ad15e7ebc980a72b079ff965e3f94a46c470af7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99627466"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753009"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Steuerelementzuordnung des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“
 
@@ -179,7 +179,7 @@ Mit dieser Blaupause können Sie Netzwerke verwalten und steuern, indem eine [Az
 
 ## <a name="a1321-information-transfer-policies-and-procedures"></a>A.13.2.1 Richtlinien und Verfahren zur Übertragung von Informationen
 
-Mit dieser Blaupause können Sie sicherstellen, dass die Übertragung von Informationen mit Azure-Diensten sicher ist, indem zwei [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die unsichere Verbindungen mit Speicherkonten und Redis Cache überwachen.
+Mit dieser Blaupause können Sie sicherstellen, dass die Übertragung von Informationen mit Azure-Diensten sicher ist, indem zwei [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die unsichere Verbindungen mit Speicherkonten und Azure Cache for Redis überwachen.
 
 - Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein
 - Sichere Übertragung in Speicherkonten sollte aktiviert werden.

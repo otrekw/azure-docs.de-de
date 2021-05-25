@@ -101,7 +101,7 @@ Führen Sie zum Erstellen einer neuen Azure Stack Edge Pro-Ressource für ein v
 
 1. Wählen Sie **+ Ressource erstellen**. Suchen Sie nach **Azure Stack Edge**, und wählen Sie den Eintrag aus. Klicken Sie anschließend auf **Erstellen**.
 
-1. Wählen Sie das Abonnement für das Azure Stack Edge Pro-Gerät und unter **Liefern an** das Land aus, in das das Gerät versendet werden soll.
+1. Wählen Sie das Abonnement für das Azure Stack Edge Pro-Gerät und unter **Liefern an** das Land/die Region aus, in das bzw. die das Gerät versendet werden soll.
 
    ![Auswählen des Abonnements und des Lands des Empfängers für Ihr Gerät](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-01.png)
 

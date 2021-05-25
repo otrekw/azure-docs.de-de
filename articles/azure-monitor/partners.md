@@ -5,12 +5,12 @@ author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 04/14/2021
-ms.openlocfilehash: d449f660fa97af8b5c24542258029834a964b3f2
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d69935c663106e9377fe78b77bcad063b0e528b4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751614"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746169"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 
@@ -101,8 +101,6 @@ Mit der neuen Datadog-Integration in Azure können Organisationen nun ihre Legac
 -   Optimieren von einmaligem Anmelden (Single Sign-On, SSO). Ein separates Anmelden über das Datadog-Portal ist nicht mehr erforderlich. 
 -   Einheitliche Abrechnung für den Datadog-Dienst über die Azure-Abonnementabrechnung.
 
-Registrieren Sie sich für die [öffentliche Vorschau](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u) der neuen Datadog-Integration in Azure.  Die öffentliche Vorschauversion wird ab Oktober 2020 im Azure Marketplace verfügbar sein.
-
 Abonnieren Sie die Vorschau der „Datadog-Integration in Azure“, die im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadog1591740804488.dd_liftr_v2?tab=Overview) verfügbar ist.
 
 Wenn Sie noch die vorherige manuell konfigurierte Integration verwenden, finden Sie Informationen dazu in der [Dokumentation auf der Datadog-Website](https://docs.datadoghq.com/integrations/azure/).
@@ -111,7 +109,16 @@ Wenn Sie noch die vorherige manuell konfigurierte Integration verwenden, finden 
 
 ![Dynatrace-Logo](./media/partners/dynatrace.png)
 
-OneAgent von Dynatrace lässt sich über Azure-Erweiterungsmechanismen in virtuelle Azure-Computer und App Services integrieren. So kann Dynatrace OneAgent Leistungsmetriken zu Hosts, Netzwerk und Diensten erfassen. Neben der einfachen Anzeige von Metriken kann Dynatrace auch vollständige Umgebungen visualisieren. Es werden Transaktionen von der Clientseite bis hin zur Datenbankschicht angezeigt. Dynatrace bietet auf künstlicher Intelligenz beruhende Korrelation von Problemen und die vollständig integrierte Ursachenanalyse zur Bereitstellung von Einblicken in Code und Datenbank auf Methodenebene. Durch diese Einblicke werden die Problembehandlung und Leistungsoptimierungen wesentlich vereinfacht.
+Dynatrace vereinfacht die Cloudkomplexität und ist eine zentrale Wahrheitsquelle für Ihre Cloudplattformen, sodass Sie die Integrität Ihrer gesamten Azure-Anwendungen und -Infrastruktur überwachen können.  Dynatrace kann in Azure Monitor/App Insights integriert werden, indem die Daten erweitert und die Beobachtbarkeit auf die Plattform erweitert wird, indem zusätzliche Metriken für Cloudinfrastruktur, Load Balancer, API Management Services und mehr bereitgestellt werden. Dynatrace unterstützt über 80 Azure Monitor-Dienste, die Anwendungs- und Microservice-Workloads umfassen, sowie infrastrukturbezogene Dienste. 
+
+Automatisierte, KI-gestützte Beobachtbarkeit über Azure-Umgebungen hinweg:
+
+- Vollständige Stapelüberwachung in Minuten, alles im Ausführungskontext, einschließlich Metriken, Protokollen und Ablaufverfolgungen.
+- Automatische Ermittlung, kontinuierliche Abhängigkeitszuordnung und sofortige Antworten zum Automatisieren der Überwachung von Azure-Clouddiensten, einschließlich App Service, Datenbankleistung, AKS, HDInsight und vielem mehr.
+- Der KI-Dienst von Dynatrace analysiert kontinuierlich Milliarden von Abhängigkeiten, um eine genaue Grundursache zu liefern.
+- Zentrale Wahrheitsquelle für Teams, die zusammenarbeiten und innovieren, unabhängig davon, wo sie sich befinden.
+- Beschleunigen Sie Azure-Cloudmigrationen.
+
 
 [Dynatrace-Dokumentation](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/microsoft-azure-services/)
 

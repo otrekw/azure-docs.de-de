@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: b4d69157f4544daad962cca15e53802e7b912399
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: b6071370d510881d06c5b81f8660781169596a72
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530433"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764410"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welche Authentifizierungs- und Prüfmethoden stehen in Azure Active Directory zur Verfügung?
 
@@ -89,6 +89,9 @@ Weitere Informationen zur Funktionsweise der einzelnen Authentifizierungsmethode
 
 > [!NOTE]
 > In Azure AD wird häufig ein Kennwort als primäre Authentifizierungsmethode verwendet. Die Authentifizierungsmethode über Kennwort kann nicht deaktiviert werden. Wenn Sie ein Kennwort als primären Authentifizierungsfaktor verwenden, sollten Sie die Sicherheit von Anmeldeereignissen mithilfe von Azure AD Multi-Factor Authentication erhöhen.
+
+> [!IMPORTANT]
+> Fido2 erfüllt zwar die erforderlichen Anforderungen, um als Form der MFA zu dienen, FIDO2 kann jedoch nur als kennwortlose Form der Authentifizierung verwendet werden.
 
 In bestimmten Szenarien können die folgenden zusätzlichen Überprüfungsmethoden verwendet werden:
 

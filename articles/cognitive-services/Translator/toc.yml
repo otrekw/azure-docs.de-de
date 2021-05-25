@@ -3,17 +3,19 @@
 - name: Übersicht
   expanded: true
   items:
+    - name: Worum handelt es sich bei Translator?
+      href: translator-info-overview.md
     - name: Sprachunterstützung
       href: language-support.md
     - name: Preise
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/translator'
+    - name: Neuigkeiten
+      href: whats-new.md
+    - name: 'Übersetzung: Häufig gestellte Fragen'
+      href: translator-faq.md
 - name: Textübersetzung
   expanded: true
   items:
-    - name: Worum handelt es sich bei Translator?
-      href: translator-info-overview.md
-    - name: 'Übersetzung: Häufig gestellte Fragen'
-      href: 'https://www.microsoft.com/translator/faq.aspx'
     - name: Schnellstart
       href: quickstart-translator.md
     - name: Beispiele
@@ -50,10 +52,6 @@
           href: dynamic-dictionary.md
         - name: Übersetzen hinter Firewalls
           href: firewalls.md
-    - name: Konzepte
-      items:
-        - name: Vorgehensweise der API beim Zählen von Zeichen
-          href: character-counts.md
     - name: Tutorials
       items:
         - name: Erstellen einer WPF-App für Translator (C#)
@@ -66,8 +64,6 @@
           href: reference/v3-0-reference.md
         - name: Languages
           href: reference/v3-0-languages.md
-        - name: Regionale Verfügbarkeit
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Anforderungsgrenzwerte
           href: request-limits.md
         - name: Translate
@@ -82,7 +78,37 @@
           href: reference/v3-0-dictionary-lookup.md
         - name: Wörterbuchbeispiele
           href: reference/v3-0-dictionary-examples.md
-- name: Benutzerdefinierte Übersetzung
+- name: Dokumentübersetzung
+  items:
+    - name: Was ist die Dokumentübersetzung?
+      href: document-translation/overview.md
+    - name: Schnellstart
+      href: document-translation/get-started-with-document-translation.md
+    - name: Anleitungen
+      items:
+        - name: Erstellen von SAS-Token für die Dokumentübersetzung
+          href: document-translation/create-sas-tokens.md
+    - name: Referenz
+      items:
+        - name: Abrufen unterstützter Dokumentformate
+          href: document-translation/reference/get-supported-document-formats.md
+        - name: Abrufen unterstützter Glossarformate
+          href: document-translation/reference/get-supported-glossary-formats.md
+        - name: Abrufen unterstützter Speicherquellen
+          href: document-translation/reference/get-supported-storage-sources.md
+        - name: Starten der Übersetzung
+          href: document-translation/reference/start-translation.md
+        - name: Abrufen des Dokumentstatus
+          href: document-translation/reference/get-documents-status.md
+        - name: Abrufen des Dokumentstatus
+          href: document-translation/reference/get-document-status.md
+        - name: Abrufen des Übersetzungsstatus
+          href: document-translation/reference/get-translations-status.md
+        - name: Abrufen des Übersetzungsstatus
+          href: document-translation/reference/get-translation-status.md
+        - name: Abbrechen der Übersetzung
+          href: document-translation/reference/cancel-translation.md
+- name: Benutzerdefinierter Translator
   items:
     - name: Worum handelt es sich bei Custom Translator?
       href: custom-translator/overview.md
@@ -140,45 +166,9 @@
       items:
         - name: Versionshinweise
           href: custom-translator/release-notes.md
-- name: Dokumentübersetzung
-  items:
-    - name: Was ist die Dokumentübersetzung?
-      href: document-translation/overview.md
-    - name: Schnellstart
-      href: document-translation/get-started-with-document-translation.md
-    - name: Anleitungen
-      items:
-        - name: Erstellen von SAS-Token für die Dokumentübersetzung
-          href: document-translation/create-sas-tokens.md
-    - name: Referenz
-      items:
-        - name: Abrufen unterstützter Dokumentformate
-          href: document-translation/reference/get-supported-document-formats.md
-        - name: Abrufen unterstützter Glossarformate
-          href: document-translation/reference/get-supported-glossary-formats.md
-        - name: Abrufen unterstützter Speicherquellen
-          href: document-translation/reference/get-supported-storage-sources.md
-        - name: Starten der Übersetzung
-          href: document-translation/reference/start-translation.md
-        - name: Abrufen des Dokumentstatus
-          href: document-translation/reference/get-documents-status.md
-        - name: Abrufen des Dokumentstatus
-          href: document-translation/reference/get-document-status.md
-        - name: Abrufen des Übersetzungsstatus
-          href: document-translation/reference/get-translations-status.md
-        - name: Abrufen des Übersetzungsstatus
-          href: document-translation/reference/get-translation-status.md
-        - name: Abbrechen der Übersetzung
-          href: document-translation/reference/cancel-translation.md
 - name: Ressourcen
   items:
-    - name: Unterstützung für Regionen
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Konformität und Zertifizierung
       href: 'https://www.microsoft.com/translator/business/notrace/'
-    - name: Support- und Hilfeoptionen
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
     - name: Codebeispiele auf GitHub
       href: 'https://aka.ms/TranslatorGitHub'
-    - name: Datenschutz und Cookies
-      href: 'https://privacy.microsoft.com/en-US/privacystatement'

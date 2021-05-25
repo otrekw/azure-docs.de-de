@@ -17,7 +17,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: ".NET\_Framework"
+        - name: .NET Framework
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
@@ -90,6 +90,12 @@
           href: howto-feature-filters-aspnet-core.md
         - name: Aktivieren einer Funktion für bestimmte Benutzer/Gruppen
           href: howto-targetingfilter-aspnet-core.md
+    - name: Aktivieren der Azure-Überwachung
+      items:
+        - name: Überwachen von App Configuration
+          href: monitor-app-configuration.md
+        - name: Überwachen von Datenverweisen
+          href: monitor-app-configuration-reference.md
 - name: Beispiele
   items:
     - name: Azure CLI

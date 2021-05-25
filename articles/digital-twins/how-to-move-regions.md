@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: b21915b6cf0cd018ccbf7b79fc9a5ab8dc222925
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 301e4d4fe3efa9821c2f63948bc3d3c528de4254
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076079"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772799"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Verschieben einer Azure Digital Twins-Instanz in eine andere Azure-Region
 
@@ -52,7 +52,7 @@ Dabei stellen sich unter anderem folgende Fragen:
     - Azure IoT Hub Device Provisioning-Dienst
 * Welche anderen *persönlichen oder Unternehmens-Apps* besitze ich, die eine Verbindung mit meiner Instanz herstellen?
 
-Sie können diese Informationen über das [Azure-Portal](https://portal.azure.com), mithilfe der [Azure Digital Twins-APIs und -SDKs](how-to-use-apis-sdks.md), den [Befehlen der Azure Digital Twins-CLI](how-to-use-cli.md) oder das Beispiel [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) erfassen.
+Sie können diese Informationen über das [Azure-Portal](https://portal.azure.com), mithilfe der [Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md), den [Befehlen der Azure Digital Twins-CLI](concepts-cli.md) oder das Beispiel [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) erfassen.
 
 ## <a name="prepare"></a>Vorbereiten
 
@@ -74,14 +74,14 @@ Dieses Beispiel ist kein vollständiges Tool. Es wurde keinen Belastungstests un
 
 Wenn die Beispiel-App nicht für die Größe Ihres Graphen geeignet ist, können Sie den Graphen mithilfe anderer Azure Digital Twins-Entwicklertools exportieren und importieren:
 
-* [Befehle der Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md)
-* [Azure Digital Twins-APIs und -SDKs](how-to-use-apis-sdks.md)
+* [Befehle der Azure Digital Twins-Befehlszeilenschnittstelle](concepts-cli.md)
+* [Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md)
 
 ### <a name="set-up-the-azure-digital-twins-explorer-application"></a>Einrichten der Azure Digital Twins-Explorer-Anwendung
 
 Um mit Azure Digital Twins-Explorer fortzufahren, laden Sie zunächst den Code der Beispielanwendung herunter, und richten Sie die Anwendung so ein, dass sie auf Ihrem Computer ausgeführt wird.
 
-Navigieren Sie zum Abrufen des Beispiels zu [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Wählen Sie unterhalb des Titels die Schaltfläche **Code durchsuchen** aus. Dadurch werden Sie zum GitHub-Repository für das Beispiel weitergeleitet. Wählen Sie die Schaltfläche **Code** und dann **ZIP herunterladen** aus, um das Beispiel als *ZIP-Datei* auf Ihre Machine herunterzuladen.
+Navigieren Sie zum Abrufen des Beispiels zu [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Wählen Sie unterhalb des Titels die Schaltfläche **Code durchsuchen** aus. Dadurch werden Sie zum GitHub-Repository für das Beispiel weitergeleitet. Wählen Sie die Schaltfläche **Code** und dann **ZIP herunterladen** aus, um das Beispiel als ZIP-Datei auf Ihren Computer herunterzuladen.
 
 :::image type="content" source="media/how-to-move-regions/download-repo-zip.png" alt-text="Screenshot: GitHub-Repository „digital-twins-explorer“. Die Schaltfläche „Code“ wurde ausgewählt, und ein kleines Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="media/how-to-move-regions/download-repo-zip.png":::
 
@@ -229,9 +229,9 @@ Nachdem Sie diesen Schritt abgeschlossen haben, sollte Ihre neue Instanz in der 
 Zum Überprüfen, ob Ihre neue Instanz ordnungsgemäß eingerichtet wurde, verwenden Sie die folgenden Tools:
 
 * [Azure-Portal](https://portal.azure.com). Das Portal eignet sich gut, um zu überprüfen, ob Ihre neue Instanz vorhanden ist und sich in der richtigen Zielregion befindet. Außerdem eignet es sich gut zum Überprüfen von Endpunkten und Routen sowie Verbindungen mit anderen Azure-Diensten.
-* [Befehle der Azure Digital Twins-Cli](how-to-use-cli.md). Diese Befehle eignen sich gut, um zu überprüfen, ob Ihre neue Instanz vorhanden ist und sich in der richtigen Zielregion befindet. Sie können auch zum Überprüfen von Instanzdaten verwendet werden.
+* [Befehle der Azure Digital Twins-Cli](concepts-cli.md). Diese Befehle eignen sich gut, um zu überprüfen, ob Ihre neue Instanz vorhanden ist und sich in der richtigen Zielregion befindet. Sie können auch zum Überprüfen von Instanzdaten verwendet werden.
 * [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Azure Digital Twins-Explorer eignet sich gut für die Überprüfung von Instanzdaten wie Modellen, Zwillingen und Graphen.
-* [Azure Digital Twins-APIs und -SDKs](how-to-use-apis-sdks.md). Diese Ressourcen eignen sich gut für die Überprüfung von Instanzdaten wie Modellen, Zwillingen und Graphen. Sie sind auch für die Überprüfung von Endpunkten und Routen geeignet.
+* [Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md). Diese Ressourcen eignen sich gut für die Überprüfung von Instanzdaten wie Modellen, Zwillingen und Graphen. Sie sind auch für die Überprüfung von Endpunkten und Routen geeignet.
 
 Sie können auch versuchen, alle benutzerdefinierten Apps oder End-to-End-Flows, die Sie mit Ihrer ursprünglichen Instanz ausgeführt haben, auszuführen, um zu überprüfen, ob sie mit der neuen Instanz ordnungsgemäß funktionieren.
 
@@ -239,7 +239,7 @@ Sie können auch versuchen, alle benutzerdefinierten Apps oder End-to-End-Flows,
 
 Nachdem Ihre neue Instanz jetzt in der Zielregion mit einer Kopie der Daten und Verbindungen der ursprünglichen Instanz eingerichtet ist, können Sie die ursprüngliche Instanz löschen.
 
-Sie können das [Azure-Portal](https://portal.azure.com), die [Azure CLI](how-to-use-cli.md) oder die [APIs der Steuerungsebene](how-to-use-apis-sdks.md#overview-control-plane-apis) verwenden.
+Sie können das [Azure-Portal](https://portal.azure.com), die [Azure CLI](concepts-cli.md) oder die [APIs der Steuerungsebene](concepts-apis-sdks.md#overview-control-plane-apis) verwenden.
 
 Um die Instanz über das Azure-Portal zu löschen, [öffnen Sie das Portal](https://portal.azure.com) in einem Browserfenster, und navigieren Sie zu Ihrer ursprünglichen Azure Digital Twins-Instanz, indem Sie in der Portalsuchleiste nach dem Namen suchen.
 

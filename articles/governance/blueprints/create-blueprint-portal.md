@@ -5,12 +5,12 @@ ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 42982ec488fcbd354f110c4778ecbd8c42cd3055
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 9371ebfbb89e30b53183ad364514b5bba904c56b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323787"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761559"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Schnellstart: Definieren und Zuweisen einer Blaupause im Portal
 
@@ -159,7 +159,7 @@ Unter [Erstellen einer Blaupause](#create-a-blueprint) haben Sie keine Beschreib
 
 1. Wählen Sie auf der Seite links die Option **Blaupausendefinitionen**.
 
-1. Klicken Sie in der Liste mit den Blaupausen mit der rechten Maustaste auf Ihren zuvor erstellten Eintrag, und wählen Sie **Blaupause bearbeiten**.
+1. Wählen Sie in der Liste mit den Blaupausen Ihren zuvor erstellten Eintrag aus, und halten Sie ihn gedrückt (oder klicken Sie mit der rechten Maustaste darauf), und wählen Sie **Blaupause bearbeiten** aus.
 
 1. Geben Sie in der **Blaupausenbeschreibung** einige Informationen über die Blaupause und die Artefakte an, aus denen sie besteht. Geben Sie in diesem Fall etwa Folgendes ein: **Diese Blaupause legt die Richtlinien- und Rollenzuweisung für das Abonnement fest, erstellt eine Ressourcengruppe und stellt eine Ressourcenvorlage und Rollenzuweisung für diese Ressourcengruppe bereit.**
 
@@ -192,7 +192,7 @@ Durch die Veröffentlichung kann die Blaupause einem Abonnement zugewiesen werde
 
 1. Wählen Sie auf der Seite links die Option **Blaupausendefinitionen**.
 
-1. Klicken Sie in der Liste mit den Blaupausen mit der rechten Maustaste auf Ihren zuvor erstellten Eintrag, und wählen Sie **Blaupause veröffentlichen**.
+1. Wählen Sie in der Liste mit den Blaupausen Ihren zuvor erstellten Eintrag aus, und halten Sie ihn gedrückt (oder klicken Sie mit der rechten Maustaste darauf), und wählen Sie **Blaupause veröffentlichen** aus.
 
 1. Geben Sie im Bereich, der geöffnet wird, eine **Version** ein (Buchstaben, Zahlen und Bindestriche und eine maximale Länge von 20 Zeichen), z. B. **v1**. Geben Sie unter **Änderungshinweise** optional Text ein, z. B. **Erste Veröffentlichung**.
 
@@ -204,7 +204,7 @@ Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen w
 
 1. Wählen Sie auf der Seite links die Option **Blaupausendefinitionen**.
 
-1. Klicken Sie in der Liste mit den Blaupausen mit der rechten Maustaste auf Ihren zuvor erstellten Eintrag (oder wählen Sie die Auslassungspunkte), und wählen Sie **Blaupause zuweisen**.
+1. Wählen Sie in der Liste mit den Blaupausen Ihren zuvor erstellten Eintrag aus, und halten Sie ihn gedrückt (oder klicken Sie mit der rechten Maustaste darauf bzw. wählen die Auslassungspunkte aus), und wählen Sie **Blaupause zuweisen** aus.
 
 1. Wählen Sie auf der Seite **Blaupause zuweisen** in der Dropdownliste **Abonnement** die Abonnements aus, für die Sie diese Blaupause bereitstellen möchten.
 
@@ -232,7 +232,7 @@ Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen w
 
 1. Wählen Sie unter **Standort** eine Region aus, in der die verwaltete Identität und das Abonnementbereitstellungsobjekt erstellt werden sollen. Azure Blueprint verwendet diese verwaltete Identität zum Bereitstellen aller Artefakte in der zugewiesenen Blaupause. Weitere Informationen finden Sie unter [What is managed identities for Azure resources?](../../active-directory/managed-identities-azure-resources/overview.md) (Worum handelt es sich bei verwalteten Identitäten für Azure-Ressourcen?).
 
-1. Behalten Sie in der Dropdownliste **Version der Blaupausendefinition** die Auswahl von **Veröffentlicht** für den Eintrag **v1** bei. (Der Standardwert ist die zuletzt veröffentlichte Version.)
+1. Behalten Sie in der Dropdownliste **Version der Blaupausendefinition** die Listenauswahl von **Veröffentlicht** für den Eintrag **v1** bei. (Der Standardwert ist die zuletzt veröffentlichte Version.)
 
 1. Behalten Sie für **Zuweisung der Sperre** den Standardwert **Nicht sperren** bei. Weitere Informationen finden Sie unter [Grundlegendes zur Ressourcensperre in Azure Blueprint](./concepts/resource-locking.md).
 
@@ -244,7 +244,7 @@ Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen w
 
 1. Legen Sie für die Richtlinienzuweisung auf Abonnementebene die Option **Tagname** auf **CostCenter** und **Tagwert** auf **ContosoIT** fest.
 
-1. Geben Sie für **ResourceGroup** unter **Name** den Namen **StorageAccount** und unter **Standort** den Standort **USA, Osten 2** aus der Dropdownliste ein.
+1. Geben Sie für **ResourceGroup** unter **Name** den Namen **StorageAccount** ein, und wählen Sie unter **Standort** den Standort **USA, Osten 2** aus der Dropdownliste aus.
 
    > [!NOTE]
    > Jedes Artefakt, das Sie während der Blaupausendefinition unter der Ressourcengruppe hinzugefügt haben, wird eingerückt, um es an der Ressourcengruppe oder dem Objekt auszurichten, mit der bzw. dem Sie es bereitstellen.
@@ -265,7 +265,7 @@ Wenn mindestens einem Abonnement eine Blaupause zugewiesen wurde, passieren zwei
 
 1. Wählen Sie auf der Seite links die Option **Zugewiesene Blaupausen**.
 
-1. Klicken Sie in der Liste mit den Blaupausen mit der rechten Maustaste auf Ihre zuvor zugewiesene Blaupause, und wählen Sie **Zuweisungsdetails anzeigen**.
+1. Wählen Sie in der Liste mit den Blaupausen Ihren zuvor erstellten Eintrag aus, und halten Sie ihn gedrückt (oder klicken Sie mit der rechten Maustaste darauf), und wählen Sie **Zuweisungsdetails anzeigen** aus.
 
    :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Screenshot: Kontextmenü der Blaupausenzuweisung mit ausgewählter Option „Zuweisungsdetails anzeigen“" border="false":::
 

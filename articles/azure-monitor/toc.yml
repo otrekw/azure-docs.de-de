@@ -47,8 +47,6 @@
       href: logs/get-started-queries.md
     - name: Erstellen eines Dashboards aus einer Protokollabfrage
       href: visualize/tutorial-logs-dashboards.md
-    - name: Erstellen einer Warnung aus einer Protokollabfrage
-      href: alerts/tutorial-response.md
     - name: Automatische Skalierung von Leistung und Zeitplan
       href: autoscale/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
@@ -131,7 +129,7 @@
           href: logs/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Alerts
+    - name: Warnungen
       items:
         - name: Übersicht
           href: alerts/alerts-overview.md
@@ -372,6 +370,9 @@
             - name: Datensammlung
               displayname: 'data collection rule,Azure Monitor agent'
               href: agents/data-collection-rule-azure-monitor-agent.md
+            - name: Häufig gestellte Fragen
+              displayname: Azure Monitor agent FAQ
+              href: faq.md#azure-monitor-agent-preview
         - name: Log Analytics-Agent
           items:
             - name: Übersicht
@@ -649,15 +650,15 @@
               items:
                 - name: Web-Apps
                   displayname: java
-                  href: app/java-get-started.md
+                  href: app/java-2x-get-started.md
                 - name: Protokollablaufverfolgungen
-                  href: app/java-trace-logs.md
+                  href: app/java-2x-trace-logs.md
                 - name: Abhängigkeiten
-                  href: app/java-agent.md
+                  href: app/java-2x-agent.md
                 - name: Filtern von Telemetriedaten
-                  href: app/java-filter-telemetry.md
+                  href: app/java-2x-filter-telemetry.md
                 - name: Problembehandlung
-                  href: app/java-troubleshoot.md
+                  href: app/java-2x-troubleshoot.md
             - name: Node.js
               href: app/nodejs.md
             - name: Python
@@ -787,6 +788,8 @@
             - name: Mehrstufige Tests
               displayname: 'availability, GSM, visual studio web test, web test'
               href: app/availability-multistep.md
+            - name: Private Tests
+              href: app/availability-private-test.md
             - name: Verfügbarkeit und Azure Functions
               href: app/availability-azure-functions.md
               displayname: 'availability,azure functions,TrackAvailability(), timer function, azure gov, azure china, custom test, customized tests, contentmatch'
@@ -1442,10 +1445,10 @@
         - name: Key Vault-Analyse (veraltet)
           href: insights/azure-key-vault-deprecated.md
         - name: UNIX-Metriken
-          href: app/java-collectd.md
+          href: app/java-2x-collectd.md
         - name: Mikrometer-Metriken
           displayname: java
-          href: app/micrometer-java.md
+          href: app/java-2x-micrometer.md
         - name: Sichten
           items:
             - name: Sicht-Designer
