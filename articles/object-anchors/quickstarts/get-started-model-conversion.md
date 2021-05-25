@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/22/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 69d23b9d02eb176a2e42985ef5c3673e83d9bb7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb2de2c9076ae17598b761ba7dc2c17286d1352d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607899"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750787"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>Schnellstart: Erstellen eines Object Anchors-Modells aus einem 3D-Modell
 
@@ -125,6 +125,9 @@ Nun können Sie Ihr 3D-Modell konvertieren.
    Notieren Sie sich die **Auftrags-ID**, um sie später zu verwenden. Diese kann beim Debuggen oder bei der Problembehandlung hilfreich sein.
 
 4. Sobald der Auftrag erfolgreich abgeschlossen ist, sollte eine Datei im Format `<Model-Filename-Without-Extension>_<JobID>.ou` am angegebenen Ausgabespeicherort angezeigt werden. Wenn der Dateiname Ihres 3D-Modells beispielsweise `chair.ply` und Ihre Auftrags-ID `00000000-0000-0000-0000-000000000000` ist, dann lautet der Dateiname, der vom Dienst ausgegeben wird, `chair_00000000-0000-0000-0000-000000000000.ou`.
+
+## <a name="error-codes"></a>Fehlercodes
+Ausführliche Informationen zu den verschiedenen Fehlercodes, die bei einem fehlerhaften Objektkonvertierungsauftrag angezeigt werden können, und deren Handhabung finden Sie auf der Seite mit den [Konvertierungsfehlercodes](..\model-conversion-error-codes.md).
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
