@@ -3,17 +3,17 @@ title: Zuteilen von Azure-Kosten
 description: In diesem Artikel wird erläutert, wie Sie Kostenzuteilungsregeln erstellen, um die Kosten von Abonnements, Ressourcengruppen oder Tags an andere zu verteilen.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/23/2021
+ms.date: 05/10/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: e7afef7e0a10bb4be3c30112fc207467167e4a17
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: b837e5819318707b44932f5915746479e27646ec
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726518"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734898"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Erstellen und Verwalten von Azure-Kostenzuteilungsregeln (Vorschauversion)
 
@@ -76,6 +76,10 @@ Die Verarbeitung der Zuteilungsregel wird gestartet. Wenn die Regel aktiv ist, w
 > [!NOTE] 
 > Die Verarbeitung der neuen Regel kann bis zu zwei Stunden dauern. Erst dann ist sie abgeschlossen und aktiv.
 
+Im folgenden Video wird die Erstellung einer Kostenzuteilungsregel veranschaulicht:
+
+>[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+
 ## <a name="verify-the-cost-allocation-rule"></a>Überprüfen der Kostenzuteilungsregel
 
 Wenn die Kostenzuteilungsregel aktiv ist, werden die Kosten der ausgewählten Quellen an die angegebenen Zuteilungsziele verteilt. Überprüfen Sie anhand der folgenden Informationen, ob die Kosten den Zielen korrekt zugeteilt werden.
@@ -96,10 +100,17 @@ Navigieren Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung** > **Kostenve
 
 :::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Beispiel für die Anzeige der Kosten für markierte Elemente" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
-Im folgenden Video wird die Erstellung einer Kostenzuteilungsregel veranschaulicht:
+### <a name="view-cost-allocation-in-the-downloaded-usage-details-and-in-exports-csv-files"></a>Anzeigen der Kostenzuteilung in den heruntergeladenen CSV-Dateien mit Nutzungsdetails und Exporten
 
->[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+Kostenzuteilungsregeln sind auch in der heruntergeladenen Datei mit den Nutzungsdetails sowie in den exportierten Daten verfügbar. Die Datendateien haben den Spaltennamen `costAllocationRuleName`. Wenn eine Kostenzuteilungsregel für einen Eintrag in der Datei mit Nutzungsdetails oder Exporten gilt, wird die Zeile mit dem Namen der Kostenzuteilungsregel aufgefüllt. Die folgende Beispielabbildung zeigt eine negative Gebühr mit einem Eintrag für das Quellabonnement. Dies ist die Gebühr, von der aus Kosten zugeteilt werden. Es gibt auch eine positive Gebühr für das Ziel der Kostenzuteilungsregel.
 
+:::image type="content" source="./media/allocate-costs/rule-costs-allocated.png" alt-text="Screenshot: Zugeteilte Kosten in der Datei mit den Nutzungsdetails" lightbox="./media/allocate-costs/rule-costs-allocated.png" :::
+
+#### <a name="azure-invoice-reconciliation"></a>Azure-Rechnungsabgleich 
+
+Die Datei mit den Nutzungsdetails wird auch für den Azure-Rechnungsabgleich verwendet. Die Anzeige intern zugeteilter Kosten während des Abgleichs kann verwirrend sein. Sie können alle Kostenzuteilungsregeln herausfiltern, um Verwirrungen zu vermeiden und die Anzeige auf die Daten aus der Rechnung abzustimmen. Nach Entfernung der Kostenzuteilungsregeln sollte Ihre Datei mit den Nutzungsdetails den Kosten entsprechen, die in der Rechnung des abgerechneten Abonnements angegeben sind.
+
+:::image type="content" source="./media/allocate-costs/rule-name-filtered.png" alt-text="Screenshot: Zugeteilte Kosten mit herausgefilterten Regelnamen" lightbox="./media/allocate-costs/rule-name-filtered.png" :::
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>Bearbeiten einer vorhandenen Kostenzuteilungsregel
 
@@ -111,7 +122,6 @@ Derzeit wird die Kostenzuteilung in den Kostenanalyse-, Budget- und Prognoseansi
 
 Folgendes wird in der Public Preview der Kostenzuteilung derzeit nicht unterstützt:
 
-- Geplante [Exporte](tutorial-export-acm-data.md)
 - Von der [Nutzungsdetails](/rest/api/consumption/usagedetails/list)-API verfügbar gemachte Daten
 - Bereich für Abrechnungsabonnements
 - [Cost Management-Power BI-App](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)

@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Blaupause mit Azure CLI'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprint, um Artefakte mithilfe der Azure CLI zu erstellen, zu definieren und bereitzustellen.
 ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: df21354f1ce60c23a5a6e232422fc03c105b9715
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 2b5f9fe3ff8d2c43d3e0744e358c52240006e830
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323445"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747681"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit der Azure CLI
 
@@ -130,7 +130,7 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
       --description 'Contains the resource template deployment and a role assignment.'
    ```
 
-1. Fügen Sie eine Rollenzuweisung für das Abonnement hinzu. Im Beispiel unten ist für die Prinzipalbezeichner, denen die angegebene Rolle zugewiesen wird, ein Parameter konfiguriert, der bei der Blaupausenzuweisung festgelegt wird. In diesem Beispiel wird die integrierte Rolle _Mitwirkender_ mit der GUID `b24988ac-6180-42a0-ab88-20f7382dd24c` verwendet.
+1. Fügen Sie eine Rollenzuweisung für das Abonnement hinzu. Im folgenden Beispiel ist für die Prinzipalbezeichner, denen die angegebene Rolle zugewiesen wird, ein Parameter konfiguriert, der bei der Blaupausenzuweisung festgelegt wird. In diesem Beispiel wird die integrierte Rolle _Mitwirkender_ mit der GUID `b24988ac-6180-42a0-ab88-20f7382dd24c` verwendet.
 
    ```azurecli-interactive
    az blueprint artifact role create \

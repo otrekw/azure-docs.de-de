@@ -281,7 +281,7 @@ Jeder CSV-Bericht enthält einige allgemeine Informationen, und diese sind in al
 | StartDateUTC | Der Beginn des Datumsbereichs, für den Sie den Bericht generiert haben, in koordinierter Weltzeit (UTC) |
 | EndDateUTC | Das Ende des Datumsbereichs, für den Sie den Bericht generiert haben, in koordinierter Weltzeit (UTC) |
 | GeneratedTimeUTC | Das Datum und die Uhrzeit der Berichtsgenerierung, in koordinierter Weltzeit (UTC) |
-| Standort | Die Liste der Länder, aus denen die Clientanforderungen stammen. Der Standardwert lautet „ALL“. Gilt nicht für den Sicherheitsbericht. |
+| Standort | Die Liste der Länder/Regionen, aus denen die Clientanforderungen stammen. Der Standardwert lautet „ALL“. Gilt nicht für den Sicherheitsbericht. |
 | Protocol | Das Protokoll der Anforderung, HTTP oder HTTPS. Gilt nicht für „Top URL“ (Top-URL) und „Traffic by User Agent“ (Datenverkehr nach Benutzer-Agent) in Berichten und im Sicherheitsbericht. |
 | Aggregation | Die Granularität der Datenaggregation in jeder Zeile: alle 5 Minuten, jede Stunde oder jeden Tag. Gilt nicht für „Traffic by Domain“ (Datenverkehr nach Domäne) „Top URL“ (Top-URL) und „Traffic by User Agent“ (Datenverkehr nach Benutzer-Agent) in Berichten und im Sicherheitsbericht. |
 

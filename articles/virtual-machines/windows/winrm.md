@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
-ms.openlocfilehash: eb2bf1badb699060a0c1576956db395d612433c2
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ffd531cb7eaa54b8b65bc564455eb17c193bd397
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325737"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753127"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager
 
@@ -25,7 +25,7 @@ Sie müssen folgende Schritte ausführen, um einen virtuellen Computer mit WinRM
 4. Abrufen der URL für das selbstsignierte Zertifikat im Schlüsseltresor
 5. Verweisen auf die URL für selbstsignierte Zertifikate beim Erstellen eines virtuellen Computers
 
- 
+
 
 ## <a name="step-1-create-a-key-vault"></a>Schritt 1: Erstellen eines Schlüsseltresors
 Sie können den folgenden Befehl verwenden, um den Schlüsseltresor zu erstellen.
@@ -127,9 +127,9 @@ Beim Erstellen eines virtuellen Computers mittels Vorlagen wird im Abschnitt mit
     },
 ```
 
-Eine Vorlage zum oben genannten Beispiel finden Sie unter [201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
+Eine Vorlage zum oben genannten Beispiel finden Sie unter [vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/demos/vm-winrm-keyvault-windows).
 
-Den Quellcode für diese Vorlage finden Sie auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
+Den Quellcode für diese Vorlage finden Sie auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows)
 
 #### <a name="powershell"></a>PowerShell
 ```azurepowershell
@@ -151,8 +151,8 @@ Enable-PSRemoting -Force
 
 > [!NOTE]
 > Wenn die oben genannte Methode nicht funktioniert, müssen Sie sicherstellen, dass der WinRM-Dienst ausgeführt wird. Verwenden Sie dazu `Get-Service WinRM`
-> 
-> 
+>
+>
 
 Wenn das Setup abgeschlossen ist, können Sie mit dem folgenden Befehl eine Verbindung mit dem virtuellen Computer erstellen:
 

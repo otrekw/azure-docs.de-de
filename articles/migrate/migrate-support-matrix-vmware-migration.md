@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4fb2ea534954ae6c64d0da2d992ce8b1c8a62c0c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 37e6777f206e980e7ea37c00559ad6988c38cc7b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557563"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738987"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -68,7 +68,18 @@ In der Tabelle werden die Migrationsanforderungen ohne Agent für VMware-VMs zus
 **IPv6** | Wird nicht unterstützt.
 **Zieldatenträger** | Virtuelle Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Standard, SSD Premium) in Azure migriert werden.
 **Gleichzeitige Replikation** | Bis zu 300 gleichzeitig replizierende VMs pro vCenter Server mit 1 Anwendung. Bis zu 500 gleichzeitig replizierende VMs pro vCenter Server, wenn eine zusätzliche [horizontale Anwendung](./how-to-scale-out-for-migration.md) eingesetzt wird. 
-**Automatische Installation des Azure-VM-Agents (Windows- und Linux-Agent)** | Unterstützt ab Windows Server 2008 R2. <br/> Unterstützt für RHEL6, RHEL7, CentOS7, Ubuntu 14.04, Ubuntu 16.04, Ubuntu 18.04. Sehen Sie sich die Liste der [erforderlichen Pakete](../virtual-machines/extensions/agent-linux.md#requirements) für diese Linux-Betriebssysteme an.
+**Automatische Installation des Azure-VM-Agents (Windows- und Linux-Agent)** | Unterstützt ab Windows Server 2008 R2. <br/> Unterstützt für RHEL6, RHEL7, CentOS7, Ubuntu 14.04, Ubuntu 16.04, Ubuntu 18.04. 
+
+> [!Note]
+> Stellen Sie bei Linux-VMs sicher, dass die folgenden Pakete installiert sind, um Microsoft Azure Linux-Agent (waagent) erfolgreich zu installieren:
+>- Python 2.6+
+>- OpenSSL 1.0+
+>- OpenSSH 5.3+
+>- Dienstprogramme für das Dateisystem: sfdisk, fdisk, mkfs, parted
+>- Kennworttools: chpasswd, sudo
+>- Textverarbeitungstools: sed, grep
+>- Netzwerktools: ip-route 
+>- Aktivieren des rc.local-Diensts auf dem virtuellen Quellcomputer
 
 > [!TIP]
 >  Über das Azure-Portal können Sie bis zu 10 VMs auf einmal auswählen, um die Replikation zu konfigurieren. Um mehr VMs zu replizieren, können Sie das Portal verwenden und die zu replizierenden VMs in mehreren Stapeln von 10 VMs hinzufügen oder die Azure Migrate PowerShell-Schnittstelle zur Konfiguration der Replikation verwenden. Stellen Sie sicher, dass Sie die gleichzeitige Replikation nicht auf mehr als die maximal unterstützte Anzahl von VMs für gleichzeitige Replikationen konfigurieren.

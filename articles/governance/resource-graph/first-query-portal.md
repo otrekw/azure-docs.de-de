@@ -5,12 +5,12 @@ ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: fddf208a51254d70fb8cc2aa1c9322a22506003a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b01bc4ceefd1d0c645ed584648a34851d741aed1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324273"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751767"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers
 
@@ -115,7 +115,7 @@ Wenn Sie die Resource Graph-Beispieldashboards aus der Azure-Portalumgebung entf
 
 1. Wählen Sie im linken Bereich **Dashboard** aus.
 
-1. Wählen Sie im Dropdownmenü des Dashboards das Resource Graph-Beispieldashboard aus, das Sie löschen möchten.
+1. Wählen Sie in der Dropdownliste des Dashboards das Resource Graph-Beispieldashboard aus, das Sie löschen möchten.
 
 1. Wählen Sie im Dashboardmenü oben auf dem Dashboard die Option **Löschen** aus, und bestätigen Sie dies anschließend mit **OK**.
 

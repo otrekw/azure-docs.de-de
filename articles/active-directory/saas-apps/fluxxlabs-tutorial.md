@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 04/20/2021
 ms.author: jeedes
-ms.openlocfilehash: d201f80aea2c22e1bee06c776d2a84fb69f2bd7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b0ec0709d714cda7eb714b13aa061147cd49b4b
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92452599"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109733456"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Fluxx Labs
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie Fluxx Labs in Azure Active Directory (A
 * Sie können in Azure AD steuern, wer Zugriff auf Fluxx Labs hat.
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Fluxx Labs anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,24 +38,23 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Fluxx Labs unterstützt **IDP**-initiiertes einmaliges Anmelden.
-* Nach dem Konfigurieren von Fluxx Labs können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
-## <a name="adding-fluxx-labs-from-the-gallery"></a>Hinzufügen von Fluxx Labs aus dem Katalog
+## <a name="add-fluxx-labs-from-the-gallery"></a>Hinzufügen von Fluxx Labs aus dem Katalog
 
 Zum Konfigurieren der Integration von Fluxx Labs in Azure AD müssen Sie Fluxx Labs aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Fluxx Labs** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Fluxx Labs** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-fluxx-labs"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Fluxx Labs
+## <a name="configure-and-test-azure-ad-sso-for-fluxx-labs"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Fluxx Labs
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Fluxx Labs mithilfe einer Testbenutzerin mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Fluxx Labs eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Fluxx Labs die folgenden Schritte aus:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Fluxx Labs die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
@@ -70,22 +67,22 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Fluxx Labs** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Fluxx Labs** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 1. Führen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:
+    a. Geben Sie im Textfeld **Bezeichner** eine URL in einem der folgenden Formate ein:
 
     | Environment | URL-Muster|
     |-------------|------------|
     | Bereitstellung | `https://<subdomain>.fluxx.io` |
     | Vor der Bereitstellung | `https://<subdomain>.preprod.fluxxlabs.com`|
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein:
 
     | Environment | URL-Muster|
     |-------------|------------|
@@ -122,15 +119,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Fluxx Labs** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-fluxx-labs-sso"></a>Konfigurieren des einmaligen Anmeldens für Fluxx Labs
@@ -139,15 +130,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Wählen Sie unten im Abschnitt **Settings** (Einstellungen) die Option **Admin** (Administrator).
 
-    ![Screenshot des Abschnitts „Settings“ mit ausgewählter Option „Admin“](./media/fluxxlabs-tutorial/config1.png)
+    ![Screenshot des Abschnitts „Settings“ mit ausgewählter Option „Admin“](./media/fluxxlabs-tutorial/configure-1.png)
 
 3. Klicken Sie im Verwaltungsbereich auf **Plug-Ins** > **Integrations** (Integrationen) und anschließend auf **SAML SSO-(Disabled)** (SAML-SSO (Deaktiviert)).
 
-    ![Screenshot der Registerkarte „Integrations“ mit ausgewählter Option „SAML SSO - (Disabled)“](./media/fluxxlabs-tutorial/config2.png)
+    ![Screenshot der Registerkarte „Integrations“ mit ausgewählter Option „SAML SSO - (Disabled)“](./media/fluxxlabs-tutorial/configure-2.png)
 
 4. Führen Sie im Abschnitt mit den Attributen die folgenden Schritte aus:
 
-    ![Screenshot des Abschnitts „Attributes“ mit aktivierter Option „SAML SSO“, in die Felder eingegebenen Werten und ausgewählter Schaltfläche „Save“](./media/fluxxlabs-tutorial/config3.png)
+    ![Screenshot des Abschnitts „Attributes“ mit aktivierter Option „SAML SSO“, in die Felder eingegebenen Werten und ausgewählter Schaltfläche „Save“](./media/fluxxlabs-tutorial/configure-3.png)
 
     a. Aktivieren Sie das Kontrollkästchen **SAML SSO** (SAML-SSO).
 
@@ -180,15 +171,15 @@ Damit sich Azure AD-Benutzer bei Fluxx Labs anmelden können, müssen sie in Flu
 
 2. Klicken Sie auf das unten angezeigte **Symbol**.
 
-    ![Screenshot mit den Administratoroptionen, in dem das „Plus“-Symbol unter „Your Dashboard is Empty“ ausgewählt ist](./media/fluxxlabs-tutorial/config6.png)
+    ![Screenshot mit den Administratoroptionen, in dem das „Plus“-Symbol unter „Your Dashboard is Empty“ ausgewählt ist](./media/fluxxlabs-tutorial/configure-6.png)
 
 3. Klicken Sie auf dem Dashboard auf das unten dargestellte Symbol, um die Karte **New PEOPLE** (Neue PERSONEN) zu öffnen.
 
-    ![Screenshot des Menüs „Contact Management“, in dem das „Plus“-Symbol neben „People“ ausgewählt ist](./media/fluxxlabs-tutorial/config4.png)
+    ![Screenshot des Menüs „Contact Management“, in dem das „Plus“-Symbol neben „People“ ausgewählt ist](./media/fluxxlabs-tutorial/configure-4.png)
 
 4. Führen Sie im Abschnitt **NEW PEOPLE** (NEUE PERSONEN) die folgenden Schritte aus:
 
-    ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config5.png)
+    ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/configure-5.png)
 
     a. Fluxx Labs verwendet die E-Mail-Adresse als eindeutigen Bezeichner für SSO-Anmeldenamen. Geben Sie im Feld **SSO UID** (SSO-UID) die E-Mail-Adresse des Benutzers ein, die der Benutzer für die SSO-Anmeldung verwendet.
 
@@ -196,20 +187,12 @@ Damit sich Azure AD-Benutzer bei Fluxx Labs anmelden können, müssen sie in Flu
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Fluxx Labs“ klicken, sollten Sie automatisch bei der Fluxx Labs-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Fluxx Labs-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Fluxx Labs“ klicken, sollten Sie automatisch bei der Fluxx Labs-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [Testen von Fluxx Labs mit Azure AD](https://aad.portal.azure.com/)
-
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Schützen von Fluxx Labs mit erweiterter Sichtbarkeit und komplexeren Kontrollen](/cloud-app-security/proxy-intro-aad)
+Nach dem Konfigurieren von Fluxx Labs können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: af957758918b99dcb44732eb536c0ca031231a7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de855e53f6d54c9175963b34d8cd3da572e02790
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868221"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736536"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals
 
@@ -42,7 +42,7 @@ Zu diesem Zeitpunkt ermöglicht die Ressource für mehrere Dienste den Zugriff a
 * **Vision:** Maschinelles Sehen, Custom Vision, Formularerkennung, Gesichtserkennung
 * **Speech:** Speech
 * **Sprache:** Language Understanding (LUIS), Textanalyse, Textübersetzung
-* **Entscheidung:** Personalisierung, Content Moderator
+* **Entscheidungsfindung:** Content Moderator
 
 ### <a name="single-service-resource"></a>[Ressource für einen einzelnen Dienst](#tab/singleservice)
 

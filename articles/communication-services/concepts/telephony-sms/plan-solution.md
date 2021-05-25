@@ -61,7 +61,7 @@ In der folgenden Tabelle sind diese Telefonnummerntypen zusammengefasst:
 
 Für die meisten Telefonnummern können die Funktionen beliebig zusammengestellt werden. Diese Funktionen können ausgewählt werden, wenn Sie Ihre Telefonnummern in Azure Communication Services leasen.
 
-Welche Funktionen Ihnen zur Verfügung stehen, hängt von dem Land ab, in dem Sie tätig sind, von Ihrem Anwendungsfall und von der Art der Telefonnummer, die Sie gewählt haben. Diese Funktionen variieren aufgrund der rechtlichen Anforderungen je nach Land. Azure Communication Services bietet die folgenden Telefonnummernfunktionen:
+Welche Funktionen Ihnen zur Verfügung stehen, hängt von dem Land ab, in dem Sie tätig sind, von Ihrem Anwendungsfall und von der Art der Telefonnummer, die Sie gewählt haben. Diese Funktionen variieren aufgrund der rechtlichen Anforderungen je nach Land/Region. Azure Communication Services bietet die folgenden Telefonnummernfunktionen:
 
 - **Unidirektionale ausgehende SMS:** Diese Option ermöglicht es Ihnen, SMS-Nachrichten an Ihre Benutzer zu senden. Sie ist nützlich für die Benachrichtigung und Szenarien mit zweistufiger Authentifizierung.
 - **Bidirektionale ein- und ausgehende SMS:** Diese Option ermöglicht es Ihnen, Nachrichten von Ihren Benutzern mithilfe von Telefonnummern zu senden und zu empfangen. Diese Option ist in Kundendienstszenarien hilfreich.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: e410e5de529bde122fe42d21b593a6fc483dcbc0
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: c190af2532f28bd183a92b37b814210cb794501d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726675"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748491"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Bereitstellen von Updates und Überprüfen von Ergebnissen
 
@@ -61,6 +61,9 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
 
     > [!NOTE]
     > Diese Option ist nicht verfügbar, wenn Sie einen virtuellen Azure-Computer oder einen Arc-fähigen Server ausgewählt haben. Der Computer wird automatisch als Ziel für die geplante Bereitstellung festgelegt.
+
+   > [!IMPORTANT]
+   > Beim Erstellen einer dynamischen Gruppe von Azure-VMs unterstützt Updateverwaltung max. 500 Abfragen, die Abonnements oder Ressourcengruppen im Bereich der Gruppe kombinieren.
 
 6. Wählen Sie im Bereich **Zu aktualisierende Computer** eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü die Option **Computer** und anschließend einzelne Computer aus. Mit dieser Option können Sie die Bereitschaft des Log Analytics-Agents für jeden Computer erkennen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../../azure-monitor/logs/computer-groups.md). Sie können maximal 1.000 Computer in eine geplante Updatebereitstellung miteinbeziehen.
 

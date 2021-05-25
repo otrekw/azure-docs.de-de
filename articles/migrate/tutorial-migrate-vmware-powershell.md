@@ -5,13 +5,13 @@ author: rahulg1190
 ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
-ms.date: 03/02/2021
-ms.openlocfilehash: 24dd33495915a9f4d47a00fbbfe9e894df839d4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: f78aec2d220b0ee322523fcc16e1356c0d33d40b
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715070"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738480"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>Migrieren virtueller VMware-Computer zu Azure (ohne Agent): PowerShell
 
@@ -70,10 +70,12 @@ Im Rahmen der Vorbereitung haben Sie bereits ein Azure Migrate-Projekt erstellt
 ```azurepowershell-interactive
 # Get resource group of the Azure Migrate project
 $ResourceGroup = Get-AzResourceGroup -Name MyResourceGroup
-
+```
+```azurepowershell-interactive
 # Get details of the Azure Migrate project
 $MigrateProject = Get-AzMigrateProject -Name MyMigrateProject -ResourceGroupName $ResourceGroup.ResourceGroupName
-
+```
+```azurepowershell-interactive
 # View Azure Migrate project details
 Write-Output $MigrateProject
 ```
@@ -139,22 +141,20 @@ Nach Abschluss der Ermittlung und der Initialisierung der Replikationsinfrastruk
 
 Die Replikationseigenschaften können wie folgt angegeben werden:
 
-- **Zielabonnement und -ressourcengruppe:** Geben Sie das Abonnement und die Ressourcengruppe an, zu dem bzw. zu der die VM migriert werden soll. Geben Sie hierzu mithilfe des Parameters `TargetResourceGroupId` die Ressourcengruppen-ID an.
-- **Ziel-VNet und -Subnetz:** Geben Sie mithilfe der Parameter `TargetNetworkId` und `TargetSubnetName` die ID der Azure Virtual Network-Instanz und den Namen des Subnetzes ein, zu der bzw. zu dem die VM migriert werden soll.
-- **Name der Ziel-VM:** Geben Sie mithilfe des Parameters `TargetVMName` den Namen der zu erstellenden Azure-VM an.
-- **Größe der Ziel-VM:** Geben Sie mithilfe des Parameters `TargetVMSize` die Größe der Azure-VM an, die für die replizierende VM verwendet werden soll. Wenn Sie also beispielsweise eine VM zu „D2_v2“ in Azure migrieren möchten, geben Sie für `TargetVMSize` den Wert „Standard_D2_v2“ an.
-- **Lizenz:** Wenn Sie den Azure-Hybridvorteil für Ihre Windows Server-Computer nutzen möchten, die durch aktive Software Assurance- oder Windows Server-Abonnements abgedeckt sind, geben Sie für den Parameter `LicenseType` den Wert **WindowsServer** an. Geben Sie andernfalls für den Parameter `LicenseType` den Wert „NoLicenseType“ an.
-- **Betriebssystemdatenträger:** Geben Sie den eindeutigen Bezeichner des Datenträgers an, auf dem sich der Bootloader und das Installationsprogramm des Betriebssystems befinden. Die zu verwendende Datenträger-ID ist die UUID-Eigenschaft (Unique Identifier, eindeutiger Bezeichner) für den Datenträger, die mithilfe des Cmdlets [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) abgerufen wurde.
-- **Datenträgertyp:** Geben Sie den Wert für den Parameter `DiskType` wie folgt an:
-    - Wenn Sie verwaltete Premium-Datenträger verwenden möchten, geben Sie für den Parameter `DiskType` den Wert „Premium_LRS“ an.
-    - Wenn Sie Standard-SSD-Datenträger verwenden möchten, geben Sie für den Parameter `DiskType` den Wert „StandardSSD_LRS“ an.
-    - Wenn Sie Standard-HDD-Datenträger verwenden möchten, geben Sie für den Parameter `DiskType` den Wert „Standard_LRS“ an.
-- **Infrastrukturredundanz:** Geben Sie die Option für die Infrastrukturredundanz wie folgt an:
-    - Verfügbarkeitszone, um den migrierten Computer einer bestimmten Verfügbarkeitszone in der Region anzuheften. Verteilen Sie mit dieser Option Server, die eine Anwendungsebene mit mehreren Knoten bilden, über Verfügbarkeitszonen. Diese Option ist nur verfügbar, wenn die für die Migration ausgewählte Zielregion Verfügbarkeitszonen unterstützt. Falls Sie Verfügbarkeitszonen verwenden möchten, geben Sie für den Parameter `TargetAvailabilityZone` den Wert der Verfügbarkeitszone an.
-    - Verfügbarkeitsgruppe, um den migrierten Computer in einer Verfügbarkeitsgruppe zu platzieren. Um diese Option verwenden zu können, muss die ausgewählte Zielressourcengruppe über mindestens eine Verfügbarkeitsgruppe verfügen. Falls Sie eine Verfügbarkeitsgruppe verwenden möchten, geben Sie für den Parameter `TargetAvailabilitySet` die ID der Verfügbarkeitsgruppe an.
- - **Startdiagnose-Speicherkonto:** Wenn Sie ein Startdiagnose-Speicherkonto verwenden möchten, geben Sie die ID für den Parameter `TargetBootDiagnosticStorageAccount` an.
-    -  Das für Startdiagnosen verwendete Speicherkonto sollte sich in dem Abonnement befinden, in das Sie auch Ihre VMs migrieren.  
-    - Standardmäßig ist für diesen Parameter kein Wert festgelegt. 
+**Parameter** | **Typ** | **Beschreibung**
+--- | --- | ---
+ Zielabonnement und -ressourcengruppe |  Obligatorisch. | Geben Sie mithilfe des Parameters `TargetResourceGroupId` das Abonnement und die Ressourcengruppe an, zu dem bzw. der virtuelle Computer migriert werden soll.
+ Virtuelles Zielnetzwerk und -subnetz | Obligatorisch. | Geben Sie mithilfe der Parameter `TargetNetworkId` und `TargetSubnetName` die ID der Azure Virtual Network-Instanz und den Namen des Subnetzes ein, zu der bzw. zu dem der virtuelle Computer migriert werden soll.
+ Computer-ID | Obligatorisch. | Geben Sie die ID des ermittelten Computers an, der repliziert und migriert werden muss. Geben Sie mithilfe von `InputObject` das ermittelte VM-Objekt für die Replikation an.  
+ Name des virtuellen Zielcomputers | Obligatorisch. | Geben Sie mithilfe des Parameters `TargetVMName` den Namen des zu erstellenden virtuellen Azure-Computers an. 
+ Größe der Ziel-VM | Obligatorisch. | Geben Sie mithilfe des Parameters `TargetVMSize` die Größe des virtuellen Azure-Computers an, der für den replizierenden virtuellen Computer verwendet werden soll. Wenn Sie also beispielsweise eine VM zu „D2_v2“ in Azure migrieren möchten, geben Sie für `TargetVMSize` den Wert „Standard_D2_v2“ an. 
+ Lizenz | Obligatorisch. | Wenn Sie den Azure-Hybridvorteil für Ihre Windows Server-Computer nutzen möchten, die durch aktive Software Assurance- oder Windows Server-Abonnements abgedeckt sind, geben Sie für den Parameter `LicenseType` den Wert **WindowsServer** an. Geben Sie andernfalls den Wert **NoLicenseType** an. 
+ Betriebssystemdatenträger | Obligatorisch. | Geben Sie den eindeutigen Bezeichner des Datenträgers an, auf dem sich der Bootloader und das Installationsprogramm des Betriebssystems befinden. Die zu verwendende Datenträger-ID ist die UUID-Eigenschaft (Unique Identifier, eindeutiger Bezeichner) für den Datenträger, die mithilfe des Cmdlets [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) abgerufen wurde.
+ Datenträgertyp | Obligatorisch. | Geben Sie den Namen des zu erstellenden Lastenausgleichs an. 
+ Redundanz bei der Infrastruktur | Optional | Geben Sie die Option für die Infrastrukturredundanz wie folgt an: <br/><br/> - **Verfügbarkeitszone**, um den migrierten Computer an eine bestimmte Verfügbarkeitszone in der Region anzuheften. Verteilen Sie mit dieser Option Server, die eine Anwendungsebene mit mehreren Knoten bilden, über Verfügbarkeitszonen. Diese Option ist nur verfügbar, wenn die für die Migration ausgewählte Zielregion Verfügbarkeitszonen unterstützt. Falls Sie Verfügbarkeitszonen verwenden möchten, geben Sie für den Parameter `TargetAvailabilityZone` den Wert der Verfügbarkeitszone an. <br/> - **Verfügbarkeitsgruppe**, um den migrierten Computer in einer Verfügbarkeitsgruppe zu platzieren. Um diese Option verwenden zu können, muss die ausgewählte Zielressourcengruppe über mindestens eine Verfügbarkeitsgruppe verfügen. Falls Sie eine Verfügbarkeitsgruppe verwenden möchten, geben Sie für den Parameter `TargetAvailabilitySet` die ID der Verfügbarkeitsgruppe an. 
+ Speicherkonto für die Startdiagnose | Optional | Wenn Sie ein Startdiagnose-Speicherkonto verwenden möchten, geben Sie die ID für den Parameter `TargetBootDiagnosticStorageAccount` an. <br/> - Das für Startdiagnosen verwendete Speicherkonto sollte sich in dem Abonnement befinden, in das Sie auch Ihre virtuellen Computer migrieren. <br/> - Standardmäßig ist für diesen Parameter kein Wert festgelegt. 
+
+
 
 ### <a name="replicate-vms-with-all-disks"></a>Replizieren von virtuellen Computern mit allen Datenträgern
 
@@ -163,13 +163,17 @@ In diesem Tutorial werden alle Datenträger des ermittelten virtuellen Computers
 ```azurepowershell-interactive
 # Retrieve the resource group that you want to migrate to
 $TargetResourceGroup = Get-AzResourceGroup -Name MyTargetResourceGroup
+```
 
+```azurepowershell-interactive
 # Retrieve the Azure virtual network and subnet that you want to migrate to
 $TargetVirtualNetwork = Get-AzVirtualNetwork -Name MyVirtualNetwork
-
+```
+```azurepowershell-interactive
 # Start replication for a discovered VM in an Azure Migrate project
 $MigrateJob =  New-AzMigrateServerReplication -InputObject $DiscoveredServer -TargetResourceGroupId $TargetResourceGroup.ResourceId -TargetNetworkId $TargetVirtualNetwork.Id -LicenseType NoLicenseType -OSDiskID $DiscoveredServer.Disk[0].Uuid -TargetSubnetName $TargetVirtualNetwork.Subnets[0].Name -DiskType Standard_LRS -TargetVMName MyMigratedTestVM -TargetVMSize Standard_DS2_v2
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -195,7 +199,9 @@ Im folgenden Beispiel werden nur zwei Datenträger des ermittelten virtuellen Co
 ```azurepowershell-interactive
 # View disk details of the discovered server
 Write-Output $DiscoveredServer.Disk
+```
 
+```azurepowershell-interactive
 # Create a new disk mapping for the disks to be replicated
 $DisksToReplicate = @()
 $OSDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[0].Uuid -DiskType StandardSSD_LRS -IsOSDisk true
@@ -203,16 +209,24 @@ $DataDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[1].Uuid -Dis
 
 $DisksToReplicate += $OSDisk
 $DisksToReplicate += $DataDisk
+```
 
+```azurepowershell-interactive
 # Retrieve the resource group that you want to migrate to
 $TargetResourceGroup = Get-AzResourceGroup -Name MyTargetResourceGroup
+```
 
+```azurepowershell-interactive
 # Retrieve the Azure virtual network and subnet that you want to migrate to
 $TargetVirtualNetwork = Get-AzVirtualNetwork -Name MyVirtualNetwork
+```
 
+```azurepowershell-interactive
 # Start replication for the VM
 $MigrateJob =  New-AzMigrateServerReplication -InputObject $DiscoveredServer -TargetResourceGroupId $TargetResourceGroup.ResourceId -TargetNetworkId $TargetVirtualNetwork.Id -LicenseType NoLicenseType -DiskToInclude $DisksToReplicate -TargetSubnetName $TargetVirtualNetwork.Subnets[0].Name -TargetVMName MyMigratedTestVM -TargetVMSize Standard_DS2_v2
+```
 
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -238,7 +252,8 @@ Verfolgen Sie den Status der Replikation mithilfe des Cmdlets [Get-AzMigrateServ
 ```azurepowershell-interactive
 # List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
 $ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
-
+```
+```azurepowershell-interactive
 # Retrieve all properties of a replicating VM 
 $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 ```
@@ -320,26 +335,26 @@ $job = Get-AzMigrateJob -InputObject $job
 
 Folgende Eigenschaften können für einen virtuellen Computer aktualisiert werden:
 
-- **VM-Name:** Geben Sie mithilfe des Parameters `TargetVMName` den Namen der zu erstellenden Azure-VM an.
-- **VM-Größe:** Geben Sie mithilfe des Parameters `TargetVMSize` die Größe der Azure-VM an, die für die replizierenden VM verwendet werden soll. Wenn Sie also beispielsweise eine VM zu „D2_v2“ in Azure migrieren möchten, geben Sie für `TargetVMSize` den Wert `Standard_D2_v2` an.
-- **Virtuelles Netzwerk:** Geben Sie mithilfe des Parameters `TargetNetworkId` die ID der Azure Virtual Network-Instanz ein, zu der die VM migriert werden soll.
-- **Ressourcengruppe:** Geben Sie mithilfe des Parameters `TargetResourceGroupId` die ID der Ressourcengruppe an, zu der die VM migriert werden soll.
-- **Netzwerkschnittstelle:** Die NIC-Konfiguration kann mithilfe des Cmdlets [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) angegeben werden. Das Objekt wird dann als Eingabe an den Parameter `NicToUpdate` im Cmdlet [Set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) übergeben.
 
-    - **Ändern der IP-Zuordnung:** Wenn Sie eine statische IP-Adresse für eine NIC angeben möchten, geben Sie mithilfe des Parameters `TargetNicIP` die IPv4-Adresse an, die als statische IP für den virtuellen Computer verwendet werden soll. Wenn für eine NIC dynamisch eine IP-Adresse zugewiesen werden soll, geben Sie für den Parameter **TargetNicIP** den Wert `auto` an.
-    - Verwenden Sie für den Parameter `TargetNicSelectionType` den Wert `Primary`, `Secondary` oder `DoNotCreate`, um anzugeben, ob die NIC als primäre oder sekundäre NIC fungieren oder nicht auf der migrierten VM erstellt werden soll. Es kann nur eine einzelne NIC als primäre NIC für den virtuellen Computer angegeben werden.
-    - Wenn eine NIC als primäre NIC fungieren soll, müssen Sie auch die anderen NICs angeben, die als sekundäre NICs fungieren oder nicht auf dem migrierten virtuellen Computer erstellt werden sollen.
-    - Wenn Sie das Subnetz für die NIC ändern möchten, geben Sie mithilfe des Parameters `TargetNicSubnet` den Namen des Subnetzes an.
+**Parameter** | **Typ** | **Beschreibung**
+--- | --- | ---
+VM-Name | Optional | Geben Sie mithilfe des Parameters `TargetVMName` den Namen des zu erstellenden virtuellen Azure-Computers an. 
+Größe des virtuellen Computers | Optional | Geben Sie mithilfe des Parameters `TargetVMSize` die Größe des virtuellen Azure-Computers an, der für den replizierenden virtuellen Computer verwendet werden soll. Wenn Sie also beispielsweise eine VM zu „D2_v2“ in Azure migrieren möchten, geben Sie für `TargetVMSize` den Wert `Standard_D2_v2` an.
+Virtual Network | Optional | Geben Sie mithilfe des Parameters `TargetNetworkId` die ID der Azure Virtual Network-Instanz ein, zu der der virtuelle Computer migriert werden soll. 
+Ressourcengruppe | Optional | Die NIC-Konfiguration kann mithilfe des Cmdlets [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) angegeben werden. Das Objekt wird dann als Eingabe an den Parameter `NicToUpdate` im Cmdlet [Set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) übergeben. <br/><br/> - **Ändern der IP-Zuordnung:** Wenn Sie eine statische IP-Adresse für eine NIC angeben möchten, geben Sie mithilfe des Parameters `TargetNicIP` die IPv4-Adresse an, die als statische IP für den virtuellen Computer verwendet werden soll. Wenn für eine NIC dynamisch eine IP-Adresse zugewiesen werden soll, geben Sie für den Parameter **TargetNicIP** den Wert `auto` an. <br/> - Verwenden Sie für den Parameter `TargetNicSelectionType` den Wert `Primary`, `Secondary` oder `DoNotCreate`, um anzugeben, ob die NIC als primäre oder sekundäre NIC fungieren oder nicht auf dem migrierten virtuellen Computer erstellt werden soll. Es kann nur eine einzelne NIC als primäre NIC für den virtuellen Computer angegeben werden. <br/> - Wenn eine NIC als primäre NIC fungieren soll, müssen Sie auch die anderen NICs angeben, die als sekundäre NICs fungieren oder nicht auf dem migrierten virtuellen Computer erstellt werden sollen. <br/> - Wenn Sie das Subnetz für die NIC ändern möchten, geben Sie mithilfe des Parameters `TargetNicSubnet` den Namen des Subnetzes an.
+Netzwerkschnittstelle | Optional | Geben Sie mithilfe des Parameters `TargetVMName` den Namen des zu erstellenden virtuellen Azure-Computers an. 
+Verfügbarkeitszone | Optional | Falls Sie Verfügbarkeitszonen verwenden möchten, geben Sie für den Parameter `TargetAvailabilityZone` den Wert der Verfügbarkeitszone an. 
+Verfügbarkeitsgruppe | Optional | Falls Sie eine Verfügbarkeitsgruppe verwenden möchten, geben Sie für den Parameter `TargetAvailabilitySet` die ID der Verfügbarkeitsgruppe an. 
 
- - **Verfügbarkeitszone:** Falls Sie Verfügbarkeitszonen verwenden möchten, geben Sie für den Parameter `TargetAvailabilityZone` den Wert der Verfügbarkeitszone an.
- - **Verfügbarkeitsgruppe:** Falls Sie eine Verfügbarkeitsgruppe verwenden möchten, geben Sie für den Parameter `TargetAvailabilitySet` die ID der Verfügbarkeitsgruppe an.
 
 Das Cmdlet [Get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) gibt einen Auftrag zurück, der zur Überwachung des Vorgangsstatus nachverfolgt werden kann.
 
 ```azurepowershell-interactive
 # List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
 $ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
+```
 
+```azurepowershell-interactive
 # Retrieve all properties of a replicating VM 
 $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 
@@ -357,10 +372,12 @@ $NicMapping2 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecifi
 
 $NicMapping += $NicMapping1
 $NicMapping += $NicMapping2
-
+```
+```azurepowershell-interactive
 # Update the name, size and NIC configuration of a replicating server
 $UpdateJob = Set-AzMigrateServerReplication -InputObject $ReplicatingServer -TargetVMSize Standard_DS13_v2 -TargetVMName MyMigratedVM -NicToUpdate $NicMapping
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -386,10 +403,12 @@ Wählen Sie die Azure Virtual Network-Instanz aus, die zum Testen verwendet werd
 ```azurepowershell-interactive
 # Retrieve the Azure virtual network created for testing
 $TestVirtualNetwork = Get-AzVirtualNetwork -Name MyTestVirtualNetwork
-
+```
+```azurepowershell-interactive
 # Start test migration for a replicating server
 $TestMigrationJob = Start-AzMigrateTestMigration -InputObject $ReplicatingServer -TestNetworkID $TestVirtualNetwork.Id
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($TestMigrationJob.State -eq 'InProgress') -or ($TestMigrationJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -405,7 +424,8 @@ Bereinigen Sie die Testmigration nach Abschluss des Tests mithilfe des Cmdlets [
 ```azurepowershell-interactive
 # Clean-up test migration for a replicating server
 $CleanupTestMigrationJob = Start-AzMigrateTestMigrationCleanup -InputObject $ReplicatingServer
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($CleanupTestMigrationJob.State -eq "InProgress") -or ($CleanupTestMigrationJob.State -eq "NotStarted")){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -425,7 +445,8 @@ Soll der Quellserver nicht ausgeschaltet werden, lassen Sie den Parameter `TurnO
 ```azurepowershell-interactive
 # Start migration for a replicating server and turn off source server as part of migration
 $MigrateJob = Start-AzMigrateServerMigration -InputObject $ReplicatingServer -TurnOffSourceServer
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -443,7 +464,8 @@ Write-Output $MigrateJob.State
    ```azurepowershell-interactive
    # Stop replication for a migrated server
    $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $ReplicatingServer
-
+   ```
+   ```azurepowershell-interactive
    # Track job status to check for completion
    while (($StopReplicationJob.State -eq 'InProgress') -or ($StopReplicationJob.State -eq 'NotStarted')){
            #If the job hasn't completed, sleep for 10 seconds before checking the job status again

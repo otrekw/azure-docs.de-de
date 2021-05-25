@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d22f2fb0bb550d966cbc5e181882552514513b2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e51cb6faf51484944fc3f8fa739b76d50411feac
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936579"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745341"
 ---
 # <a name="specify-a-face-recognition-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -74,12 +74,12 @@ Ein **PersonGroup**-Objekt sollte ein eindeutiges Erkennungsmodell für alle **P
 Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 
 ```csharp
-// Create an empty PersonGroup with "recognition_02" model
+// Create an empty PersonGroup with "recognition_04" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_04");
 ```
 
-In diesem Code wird ein **PersonGroup**-Objekt mit der ID `mypersongroupid` erstellt, das so eingerichtet ist, dass es das Modell _recognition_02_ zum Extrahieren von Gesichtsmerkmalen verwendet.
+In diesem Code wird ein **PersonGroup**-Objekt mit der ID `mypersongroupid` erstellt, das so eingerichtet ist, dass es das Modell _recognition_04_ zum Extrahieren von Gesichtsmerkmalen verwendet.
 
 Dementsprechend müssen Sie angeben, welches Modell bei der Gesichtserkennung verwendet werden soll, um es mit diesem **PersonGroup**-Objekt zu vergleichen (über die API [Face – Detect]). Das von Ihnen verwendete Modell sollte immer mit der Konfiguration des **PersonGroup**-Objekts übereinstimmen, da bei der Operation andernfalls aufgrund inkompatibler Modelle Fehler auftreten können.
 

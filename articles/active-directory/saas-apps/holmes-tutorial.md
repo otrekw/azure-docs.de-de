@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 2eb6bcb2fcaeb3afddfb8605b9065766fa0af5ee
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 677ce4e66a3d9f870e21785327f382b9974b2cdf
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130564"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748653"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-holmes"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Holmes
 
@@ -36,8 +36,6 @@ Für die ersten Schritte benötigen Sie Folgendes:
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
-
-* Holmes unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden
 
 ## <a name="adding-holmes-from-the-gallery"></a>Hinzufügen von Holmes aus dem Katalog
 
@@ -74,18 +72,20 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+2. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<WorkspaceID>.holmescloud.com`.
+   1. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:
 
-1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
-
-    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://www.holmescloud.com/login`.
+      `https://<WorkspaceID>.holmescloud.com`
+      
+   1. Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** `https://holmescloud.com/sso/acs` ein.
+   
+   1. Geben Sie im Textfeld **Abmelde-URL** den Text `https://holmescloud.com/sso/logout` ein.
 
     > [!NOTE]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Den Wert erhalten Sie vom [Supportteam für den Holmes-Client](mailto:team-dev@holmescloud.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner, der auf die Seite Holmes Admin verweist. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
+3. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
@@ -115,15 +115,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
 
 ## <a name="configure-holmes-sso"></a>Konfigurieren des einmaligen Anmeldens für Holmes
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Holmes** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Holmes](mailto:team-dev@holmescloud.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Um Single Sign-On auf der **Holmes**-Seite zu konfigurieren, müssen Sie das heruntergeladene **Zertifikat (Base64)** und die entsprechenden kopierten URLs aus dem Azure-Portal auf der Holmes-Admin-Seite registrieren. 
 
 ### <a name="create-holmes-test-user"></a>Erstellen eines Holmes-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Holmes einen Benutzer namens Britta Simon. Wenden Sie sich an das [Holmes-Supportteam](mailto:team-dev@holmescloud.com), um die Benutzer auf der Holmes-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Holmes einen Benutzer namens B. Simon. Sie können einen Benutzer auf der Seite Mitgliederverwaltung erstellen/einladen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

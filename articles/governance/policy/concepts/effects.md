@@ -3,12 +3,12 @@ title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5d819c20c27a2c2f4a316e60da1c0fdb7c8bb859
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: a1f7d8584aada19e565aa4eff40c44f94b1bbaba
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896890"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752973"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -181,7 +181,7 @@ Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die fo
 
 ### <a name="auditifnotexists-example"></a>Beispiel für „AuditIfNotExists“
 
-Beispiel: Mithilfe einer Auswertung wird ermittelt, ob die Antischadsoftware-Erweiterung auf virtuellen Computern vorhanden ist. Fehlt die Erweiterung, wird eine Überwachung ausgelöst.
+Beispiel: Wertet Virtual Machines aus, um zu bestimmen, ob die Antischadsoftware-Erweiterung vorhanden ist, und überprüft, wenn sie fehlt.
 
 ```json
 {
@@ -314,7 +314,8 @@ Die **details**-Eigenschaft der Auswirkung „DeployIfNotExists“ umfasst alle 
 
 ### <a name="deployifnotexists-example"></a>Beispiel für „DeployIfNotExists“
 
-Beispiel: Mithilfe einer Auswertung von SQL Server-Datenbanken wird bestimmt, ob „transparentDataEncryption“ aktiviert ist. Falls nicht, wird eine Bereitstellung zur Aktivierung dieser Option durchgeführt.
+Beispiel: Wertet SQL Server-Datenbanken aus, um zu bestimmen, ob „transparentDataEncryption“ aktiviert ist.
+Falls nicht, wird eine Bereitstellung zur Aktivierung dieser Option durchgeführt.
 
 ```json
 "if": {
@@ -391,7 +392,7 @@ Die Eigenschaft **details** der Auswirkung EnforceOPAConstraint hat die Untereig
 - **constraintTemplate** (erforderlich)
   - Die Einschränkungsvorlage CustomResourceDefinition (CRD), die neue Einschränkungen definiert. Die Vorlage definiert die Rego-Logik, das Einschränkungsschema und die Einschränkungsparameter, die über **values** von Azure Policy übergeben werden.
 - **constraint** (erforderlich)
-  - Die CRD-Implementierung der Einschränkungsvorlage. Verwendet Parameter, die über **values** als `{{ .Values.<valuename> }}`übergeben werden. Im folgenden Beispiel sind diese Werte `{{ .Values.cpuLimit }}` und `{{ .Values.memoryLimit }}`.
+  - Die CRD-Implementierung der Einschränkungsvorlage. Verwendet Parameter, die über **values** als `{{ .Values.<valuename> }}`übergeben werden. Im folgenden Beispiel sind die Werte `{{ .Values.cpuLimit }}` und `{{ .Values.memoryLimit }}`.
 - **values** (optional)
   - Definiert Parameter und Werte, die an die Einschränkung übergeben werden. Jeder Wert muss in der CRD der Einschränkungsvorlage vorhanden sein.
 
@@ -540,7 +541,7 @@ Die **details**-Eigenschaft der Modify-Auswirkung enthält alle Untereigenschaft
 
 ### <a name="modify-operations"></a>Vorgänge für „Modify“
 
-Das **operations**-Eigenschaftenarray ermöglicht es, mehrere Tags auf unterschiedliche Weise aus einer einzelnen Richtliniendefinition zu ändern. Jeder Vorgang besteht aus den Eigenschaften **operation**, **field** und **value**. „Operation“ bestimmt, wie die Wartungsaufgabe mit den Tags verfährt, „field“ bestimmt, welches Tag geändert wird und „value“ definiert die neue Einstellung für dieses Tag. Das folgende Beispiel führt die folgenden Tagänderungen durch:
+Das **operations**-Eigenschaftenarray ermöglicht es, mehrere Tags auf unterschiedliche Weise aus einer einzelnen Richtliniendefinition zu ändern. Jeder Vorgang besteht aus den Eigenschaften **operation**, **field** und **value**. „Operation“ bestimmt, wie die Wartungsaufgabe mit den Tags verfährt, „field“ bestimmt, welches Tag geändert wird und „value“ definiert die neue Einstellung für dieses Tag. Im folgenden Beispiel werden die folgenden Tag-Änderungen vorgenommen:
 
 - Legt das `environment`-Tag auf „Test“ fest, auch wenn es bereits mit einem anderen Wert vorhanden ist.
 - Entfernt das Tag `TempResource`.
@@ -647,7 +648,7 @@ Beispiel 3: Sicherstellen, dass ein Speicherkonto keinen öffentlichen Zugriff a
 
 ## <a name="layering-policy-definitions"></a>Schichten von Richtliniendefinitionen
 
-Eine Ressource kann durch mehrere Zuweisungen beeinflusst werden. Diese Zuweisungen können für denselben Bereich oder verschiedene Bereiche gelten. Für jede dieser Zuweisungen ist wahrscheinlich auch eine andere Auswirkung definiert. Die Bedingung und die Auswirkung für jede Richtlinie werden unabhängig ausgewertet. Beispiel:
+Eine Ressource kann von mehreren Zuweisungen betroffen sein. Diese Zuweisungen können für denselben Bereich oder verschiedene Bereiche gelten. Für jede dieser Zuweisungen ist wahrscheinlich auch eine andere Auswirkung definiert. Die Bedingung und die Auswirkung für jede Richtlinie werden unabhängig ausgewertet. Beispiel:
 
 - Richtlinie 1
   - Schränkt den Ressourcenstandort auf „USA, Westen“ ein
@@ -657,7 +658,7 @@ Eine Ressource kann durch mehrere Zuweisungen beeinflusst werden. Diese Zuweisun
   - Schränkt den Ressourcenstandort auf „USA, Osten“ ein
   - Ressourcengruppe B im Abonnement A zugewiesen
   - Auswirkung „audit“
-  
+
 Dies würde zu folgendem Ergebnis führen:
 
 - Jede Ressource, die sich bereits in Ressourcengruppe B und am Standort „USA, Osten“ befindet, ist gemäß Richtlinie 2 konform und gemäß Richtlinie 1 nicht konform.

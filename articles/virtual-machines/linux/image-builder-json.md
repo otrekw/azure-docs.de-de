@@ -3,18 +3,18 @@ title: Erstellen einer Azure Image Builder-Vorlage (Preview)
 description: Erfahren Sie, wie Sie eine Vorlage für die Verwendung mit Azure Image Builder erstellen.
 author: danielsollondon
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 05/04/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 77460d1675b806e04c72e5f46da0ec4274d99d41
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 94083c8811d92d05a68295f9ac75f38123b3f771
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762531"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732594"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -38,6 +38,7 @@ Das grundlegende Format der Vorlage:
         "vmProfile": 
             {
             "vmSize": "<vmSize>",
+        "proxyVmSize": "<vmSize>",
             "osDiskSizeGB": <sizeInGB>,
             "vnetConfig": {
                 "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
@@ -72,19 +73,43 @@ Das grundlegende Format der Vorlage:
 - USA, Westen 2
 - Nordeuropa
 - Europa, Westen
+- USA Süd Mitte
 
+Demnächst verfügbar (Mitte 2021):
+- Südostasien
+- Australien, Südosten
+- Australien (Osten)
+- UK, Süden
+- UK, Westen
 
 ```json
     "location": "<region>",
 ```
-## <a name="vmprofile"></a>vmProfile
-Standardmäßig wird von Image Builder eine Build-VM des Typs „Standard_D1_v2“ verwendet. Sie können dies überschreiben. Wenn Sie beispielsweise ein Image für eine GPU-VM anpassen möchten, benötigen Sie eine GPU-VM-Größe. Diese Eingabe ist optional.
 
+### <a name="data-residency"></a>Datenresidenz
+Der Azure VM Image Builder-Dienst speichert/verarbeitet Kundendaten nicht außerhalb von Regionen, die strenge Anforderungen an die Datenresidenz in einer Region haben, wenn ein Kunde einen Build in dieser Region an fordert. Bei einem Dienstausfall für Regionen mit Anforderungen an die Datenresidenz müssen Sie Vorlagen in einer anderen Region und Geografie erstellen.
+
+ 
+## <a name="vmprofile"></a>vmProfile
+## <a name="buildvm"></a>buildVM
+Standardmäßig verwendet Image Builder eine „Standard_D1_v2“-Build-VM. Diese wird aus dem Image erstellt, das Sie in `source` festlegen. Sie können dies außer Kraft setzen und dies aus folgenden Gründen tun:
+1. Durchführen von Anpassungen, die mehr Arbeitsspeicher, CPU und Verarbeitung großer Dateien (GBs) erfordern.
+2. Wenn Sie Windows-Builds ausführen, sollten Sie „Standard_D2_v2“ oder eine gleichmäßige VM-Größe verwenden.
+3. Forderung nach [VM-Isolation](https://docs.microsoft.com/azure/virtual-machines/isolation).
+4. Passen Sie ein Image an, das bestimmte Hardware erfordert, z. B. für eine GPU-VM benötigen Sie eine GPU-VM-Größe. 
+5. Fordern Sie End-to-end-Verschlüsselung im Ruhespeicher des virtuellen Buildcomputers an. Sie müssen die [Größe des virtuellen Buildcomputers](https://docs.microsoft.com/azure/virtual-machines/azure-vms-no-temp-disk) angeben, für den keine lokalen temporären Datenträger verwendet werden.
+ 
+Diese Eingabe ist optional.
+
+
+## <a name="proxy-vm-size"></a>Proxy-VM-Größe
+Die Proxy-VM wird zum Senden von Befehlen zwischen dem Azure Image Builder-Dienst und der Build-VM verwendet. Diese wird nur bereitgestellt, wenn ein vorhandenes VNET angegeben wird. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking#why-deploy-a-proxy-vm) zu Netzwerkoptionen.
 ```json
  {
-    "vmSize": "Standard_D1_v2"
+    "proxyVmSize": "Standard A1_v2"
  },
 ```
+Diese Eingabe ist optional.
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 

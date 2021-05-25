@@ -438,7 +438,7 @@
               href: functions-add-output-binding-storage-queue-vs.md
         - name: Starten/Beenden von virtuellen Computern
           items:
-            - name: Überblick
+            - name: Übersicht
               href: start-stop-vms/overview.md
             - name: Bereitstellen und konfigurieren
               href: start-stop-vms/deploy.md
@@ -568,7 +568,7 @@
               displayName: HTTP
             - name: Trigger
               href: functions-bindings-http-webhook-trigger.md
-              displayName: HTTP
+              displayName: 'HTTP, keys, authorization keys, function keys, access keys'
             - name: Output
               href: functions-bindings-http-webhook-output.md
               displayName: HTTP

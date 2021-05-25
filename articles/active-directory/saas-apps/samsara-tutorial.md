@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 05/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 9512287f656c6c64399cb8749b7451a5a780bba8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49c1430eb0ccf6529b0fbc24b795182113d008f6
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92677637"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734762"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsara"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Samsara
 
@@ -40,29 +40,16 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Samsara unterstützt **SP**- und **IDP**-initiiertes einmaliges Anmelden.
 * Samsara unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-## <a name="adding-samsara-from-the-gallery"></a>Hinzufügen von Samsara über den Katalog
+## <a name="add-samsara-from-the-gallery"></a>Hinzufügen von Samsara über den Katalog
 
 Zum Konfigurieren der Integration von Samsara in Azure AD müssen Sie Samsara aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
-    
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
-
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
-
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Samsara** in das Suchfeld ein.
-
-     ![OneTrust Privacy Management Software in der Ergebnisliste](common/search-new-app.png)
-
 1. Wählen Sie im Ergebnisbereich **Samsara** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-samsara"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Samsara
 
@@ -82,20 +69,14 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Samsara** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
-
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
-
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie in das Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://cloud.samsara.com/signin/<ORGID>` für Cloudkunden in den USA bzw. `https://cloud.eu.samsara.com/signin/<ORGID>` für Cloudkunden in Europa.
+    a. Geben Sie in das Textfeld **Anmelde-URL** eine URL in einem der folgenden Formate ein: `https://cloud.samsara.com/signin/<ORGID>` für Cloudkunden in den USA bzw. `https://cloud.eu.samsara.com/signin/<ORGID>` für Cloudkunden in Europa.
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `urn:auth0:samsara-dev:samlp-orgid-<ORGID>`.
 
@@ -148,13 +129,18 @@ In diesem Abschnitt wird in Samsara ein Benutzer namens B. Simon erstellt. Sams
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Samsara weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-2. Rufen Sie direkt die Samsara-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Samsara weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „Samsara“ klicken, werden Sie zur Anmelde-URL für Samsara umgeleitet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Rufen Sie direkt die Samsara-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
+#### <a name="idp-initiated"></a>IDP-initiiert:
+
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Samsara-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie in „Meine Apps“ auf die Kachel „Samsara“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Samsara-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Samsara können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Samsara können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

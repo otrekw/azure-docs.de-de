@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentation zu Virtual WAN
-summary: Hier erfahren Sie, wie Sie eine Azure Virtual WAN-Instanz konfigurieren, erstellen und verwalten. Erstellen Sie eine sichere Branch-Konnektivität mit globaler Reichweite.
+summary: Hier erfahren Sie, wie Sie eine Azure Virtual WAN-Instanz konfigurieren, erstellen und verwalten. Azure Virtual WAN ist ein Netzwerkdienst, der viele Netzwerk-, Sicherheits- und Routingfunktionen auf einer einzigen Bedienoberfläche vereint.
 metadata:
   title: Dokumentation zu Virtual WAN
   description: Informationen zu Virtual WAN
@@ -11,12 +11,12 @@ metadata:
   ms.author: cherylmc
   ms.date: 01/15/2020
   ms.custom: e2e-hybrid
-  ms.openlocfilehash: a6a0660d960ad04145288475986f1bd40143b0aa
-  ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+  ms.openlocfilehash: 8a5db17d58a96f3669d824d78ba11061cf758e75
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/27/2021
-  ms.locfileid: "108071829"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110080594"
 landingContent:
 - title: Über Virtual WAN
   linkLists:

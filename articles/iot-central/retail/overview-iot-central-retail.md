@@ -8,18 +8,18 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 56198cf661001bcfcec45d483d0f691234851894
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2d11051bee2a1e5960ba0756c0b067efcd26f9d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99832282"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749931"
 ---
 # <a name="what-are-the-iot-central-retail-solutions"></a>Welche IoT Central-Lösungen für den Einzelhandel gibt es?
 
 Azure IoT Central ist eine IoT-App-Plattform, die Aufwand und Kosten im Zusammenhang mit der Entwicklung, Verwaltung und Wartung von IoT-Lösungen auf Unternehmensniveau verringert. Die Entscheidung zur Entwicklung mit Azure IoT Central gibt Ihnen die Möglichkeit, Zeit, Geld und Energie auf die Transformation Ihres Unternehmens mit IoT-Daten zu konzentrieren, anstatt sich lediglich mit der Wartung und Aktualisierung einer komplexen und sich ständig weiterentwickelnden IoT-Infrastruktur zu beschäftigen.
 
-In diesem Artikel werden verschiedene einzelhandelsspezifische IoT Central-Anwendungsvorlagen beschrieben. Mithilfe dieser Vorlagen können Lösungsentwickler IoT-Lösungen zur Optimierung der Lieferkette, zur Verbesserung des Einkaufserlebnisses für Kunden sowie zur effizienteren Nachverfolgung des Bestands erstellen.
+In diesem Artikel werden verschiedene einzelhandelsspezifische IoT Central-Anwendungsvorlagen beschrieben. Mithilfe dieser Vorlagen können Sie IoT-Lösungen zur Optimierung der Lieferkette, zur Verbesserung des Einkaufserlebnisses für Kunden sowie zur effizienteren Nachverfolgung des Bestands erstellen.
 
 :::image type="content" source="media/overview-iot-central-retail/retail-app-templates.png" alt-text="Azure IoT: Übersicht für den Bereich Einzelhandel":::
 
@@ -72,7 +72,7 @@ Weitere Informationen finden Sie im Tutorial [Bereitstellen und Durchlaufen eine
 
 Die Umgebungsbedingungen in Geschäften sind für viele Einzelhändler eine wichtige Möglichkeit, sich von der Konkurrenz abzuheben. Einzelhändler möchten den Kunden in ihren Geschäften eine angenehme Umgebung bieten.  
 
-Mithilfe der IoT Central-Anwendungsvorlage „In-Store-Analyse – Bedingungsüberwachung“ können Lösungsentwickler eine End-to-End-Lösung erstellen. Die Anwendungsvorlage ermöglicht die Herstellung einer digitalen Verbindung mit einer Einzelhandelsumgebung sowie deren digitale Überwachung mithilfe verschiedener Sensorgeräte. Diese Sensorgeräte generieren Telemetriedaten, aus denen Sie geschäftliche Erkenntnisse gewinnen können, die den Einzelhändler dabei unterstützen, seine Betriebskosten zu senken und eine erstklassige Kundenerfahrung zu bieten.
+Mithilfe der IoT Central-Anwendungsvorlage „In-Store-Analyse – Bedingungsüberwachung“ können Sie eine End-to-End-Lösung erstellen. Die Anwendungsvorlage ermöglicht die Herstellung einer digitalen Verbindung mit einer Einzelhandelsumgebung sowie deren digitale Überwachung mithilfe verschiedener Sensorgeräte. Diese Sensorgeräte generieren Telemetriedaten, aus denen Sie geschäftliche Erkenntnisse gewinnen können, die den Einzelhändler dabei unterstützen, seine Betriebskosten zu senken und eine erstklassige Kundenerfahrung zu bieten.
 
 Verwenden Sie die Anwendungsvorlage für Folgendes:
 
@@ -94,7 +94,7 @@ Weitere Informationen finden Sie im Tutorial [Erstellen einer Anwendung für die
 
 Einige Einzelhändler nutzen die Kassenumgebung (Checkout) in ihren Geschäften, um sich von der Konkurrenz abzuheben. Einzelhändler möchten Kunden in ihren Geschäften durch einen reibungslosen Ablauf an der Kasse dazu animieren, erneut bei ihnen einzukaufen.  
 
-Mithilfe der IoT Central-Anwendungsvorlage „In-Store-Analyse – Auschecken“ können Lösungsentwickler eine Lösung erstellen, die Mitarbeiter mit Erkenntnissen aus dem Kassenbereich eines Geschäfts versorgt. So können beispielsweise Sensoren Informationen zur Länge von Warteschlangen sowie zur durchschnittlichen Wartezeit an den einzelnen Kassen liefern.
+Mithilfe der IoT Central-Anwendungsvorlage „In-Store-Analyse – Auschecken“ können Sie eine Lösung erstellen, die Mitarbeiter mit Erkenntnissen aus dem Kassenbereich eines Geschäfts versorgt. So können beispielsweise Sensoren Informationen zur Länge von Warteschlangen sowie zur durchschnittlichen Wartezeit an den einzelnen Kassen liefern.
 
 Verwenden Sie die Anwendungsvorlage für Folgendes:
 
@@ -136,7 +136,7 @@ Weitere Informationen finden Sie im Tutorial [Bereitstellen und Durchlaufen eine
 
 Aufgrund des stetig wachsenden Wettbewerbsdrucks im Einzelhandel müssen Einzelhändler kontinuierlich versuchen, die Lücke zwischen Nachfrage und Deckung zu schließen. Ein neuer Trend zur Deckung der steigenden Kundennachfrage besteht darin, den Bestand in der Nähe der Endkunden und der von ihnen besuchten Geschäfte vorzuhalten.
 
-Mithilfe der IoT Central-Anwendungsvorlage „Micro-Fulfillment-Center“ können Lösungsentwickler sämtliche Aspekte ihrer vollständig automatisierten Fulfillment-Center überwachen und verwalten. Die Vorlage enthält eine Reihe simulierter Sensoren für die Bedingungsüberwachung sowie simulierte Transportroboter, um die Lösungsentwicklung zu beschleunigen. Diese Sensorgeräte erfassen aussagekräftige Signale, aus denen geschäftliche Erkenntnisse gewonnen werden können, auf deren Grundlage Einzelhändler ihre Betriebskosten senken und Kundenerfahrungen generieren können.
+Mithilfe der IoT Central-Anwendungsvorlage „Micro-Fulfillment-Center“ können Sie sämtliche Aspekte Ihrer vollständig automatisierten Fulfillment-Center überwachen und verwalten. Die Vorlage enthält eine Reihe simulierter Sensoren für die Bedingungsüberwachung sowie simulierte Transportroboter, um die Lösungsentwicklung zu beschleunigen. Diese Sensorgeräte erfassen aussagekräftige Signale, aus denen geschäftliche Erkenntnisse gewonnen werden können, auf deren Grundlage Einzelhändler ihre Betriebskosten senken und Kundenerfahrungen generieren können.
 
 Die Anwendungsvorlage ermöglicht Folgendes: 
 

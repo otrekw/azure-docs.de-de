@@ -3,12 +3,12 @@ title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen von Richtliniendefinitionen, mit dem jeweiligen SDK und dem Add-On für Kubernetes beheben.
 ms.date: 04/19/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c4feae11c6d8d78a43bae9882405e292a18e90bd
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6f369b16755c09468dbdae2076cc7828a53c8a17
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725060"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752163"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Problembehandlung mit Azure Policy
 
@@ -67,7 +67,7 @@ Die Ressource befindet sich nicht im richtigen Bereich für die Richtlinienzuwei
 
 Befolgen Sie diese Schritte zur Problembehandlung bei der Richtliniendefinition:
 
-1. Warten Sie zuerst den entsprechenden Zeitraum ab, bis eine Auswertung abgeschlossen ist und die Konformitätsergebnisse im Azure-Portal oder SDK zur Verfügung stehen. 
+1. Warten Sie zuerst den entsprechenden Zeitraum ab, bis eine Auswertung abgeschlossen ist und die Konformitätsergebnisse im Azure-Portal oder SDK zur Verfügung stehen.
 
 1. Informationen zum Starten einer neuen Konformitätsprüfung mit Azure PowerShell oder der REST-API finden Sie unter [Bedarfsgesteuerter Auswertungsscan](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
 1. Stellen Sie sicher, dass die Zuordnungsparameter und der Zuordnungsbereich ordnungsgemäß festgelegt sind.
@@ -98,7 +98,7 @@ Bei deaktiviertem **enforcementMode** wird die Richtlinienauswirkung nicht erzwu
 
 Führen Sie die folgenden Schritte zur Problembehandlung bei der Erzwingung Ihrer Richtlinienzuweisung aus:
 
-1. Warten Sie zuerst den entsprechenden Zeitraum ab, bis eine Auswertung abgeschlossen ist und die Konformitätsergebnisse im Azure-Portal oder SDK zur Verfügung stehen. 
+1. Warten Sie zuerst den entsprechenden Zeitraum ab, bis eine Auswertung abgeschlossen ist und die Konformitätsergebnisse im Azure-Portal oder SDK zur Verfügung stehen.
 
 1. Informationen zum Starten einer neuen Konformitätsprüfung mit Azure PowerShell oder der REST-API finden Sie unter [Bedarfsgesteuerter Auswertungsscan](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
 1. Stellen Sie sicher, dass die Zuweisungsparameter und der Zuweisungsbereich ordnungsgemäß festgelegt und **enforcementMode** auf _Enabled_ eingestellt ist.
@@ -238,7 +238,7 @@ Stellen Sie sicher, dass die Domänen und Ports in den folgenden Artikeln geöff
 
 Das Add-On kann den Dienstendpunkt von Azure Policy nicht erreichen und gibt einen der folgenden Fehler zurück:
 
-- `azure.BearerAuthorizer#WithAuthorization: Failed to refresh the Token for request to https://gov-prod-policy-data.trafficmanager.net/checkDataPolicyCompliance?api-version=2019-01-01-preview: StatusCode=404`
+- `azure.BearerAuthorizer#WithAuthorization: Failed to refresh the Token for request to https://gov-prod-policy-data.trafficmanager.net/checkDataPolicyCompliance?api-version=2019-01-01-preview: StatusCode=404`
 - `adal: Refresh request failed. Status Code = '404'. Response body: getting assigned identities for pod kube-system/azure-policy-8c785548f-r882p in CREATED state failed after 16 attempts, retry duration [5]s, error: <nil>`
 
 #### <a name="cause"></a>Ursache

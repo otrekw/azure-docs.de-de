@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: e33dd4a6578c22cf0ce002db6a5bcc456643a305
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 22e5a2f648993cbe24266702ce33f81e35bfaea3
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888204"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751363"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning
 
@@ -85,6 +85,12 @@ for env in envs:
 > [!WARNING]
 >  Beginnen Sie den Namen Ihrer eigenen Umgebung nicht mit dem Präfix _AzureML_. Dieses Präfix ist für zusammengestellte Umgebungen reserviert.
 
+Um eine zusammengestellte Umgebung anzupassen, klonen Sie die Umgebung und benennen sie um. 
+```python 
+env = Environment.get(workspace=ws, name="AzureML-Minimal")
+curated_clone = env.clone("customize_curated")
+```
+
 ### <a name="use-conda-dependencies-or-pip-requirements-files"></a>Verwenden von Conda-Abhängigkeiten oder pip-Anforderungsdateien
 
 Sie können eine Umgebung aus einer Conda-Spezifikations- oder einer pip-Anforderungsdatei erstellen. Verwenden Sie die [`from_conda_specification()`](/python/api/azureml-core/azureml.core.environment.environment#from-conda-specification-name--file-path-)-Methode oder die [`from_pip_requirements()`](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-)-Methode. Schließen Sie den Namen Ihrer Umgebung und den Dateipfad der gewünschten Datei in das Methodenargument ein. 
@@ -126,7 +132,8 @@ myenv.docker.base_image_registry="your_registry_location"
 > Azure Machine Learning unterstützt nur Docker-Images, die die folgende Software enthalten:
 > * Ubuntu 16.04 oder höher.
 > * Conda 4.5.# oder höher.
-> * Python 3.6 oder höher
+> * Python 3.6+
+> * Eine unter „/bin/sh“ verfügbare POSIX-kompatible Shell ist in jedem Containerimage erforderlich, das für das Training verwendet wird. 
 
 #### <a name="use-your-own-dockerfile"></a>Verwenden Ihres eigenen Dockerfiles 
 
