@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 12/18/2020
+ms.date: 04/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 13c07da7393c70bb1fc61930dd1179994c68ed75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6da5dfcded067420fd6d43f4a5b2841da060898a
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389806"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738120"
 ---
 # <a name="what-is-azure-data-box"></a>Was ist Azure Data Box?
 
@@ -99,6 +99,17 @@ Data Box umfasst die folgenden Komponenten:
 * **Lokale Webbenutzeroberfläche:** Eine webbasierte Benutzeroberfläche zum Konfigurieren des Geräts für das Herstellen der Verbindung mit dem lokalen Netzwerk und anschließende Registrieren des Geräts beim Data Box-Dienst. Auf der lokalen Webbenutzeroberfläche können Sie auch das Data Box-Gerät herunterfahren und neu starten, Kopierprotokolle anzeigen und den Microsoft-Support kontaktieren, um eine Serviceanfrage zu stellen.
 
     ![Die lokale Webbenutzeroberfläche von Data Box](media/data-box-overview/data-box-local-web-ui.png)
+
+    Die lokale Webbenutzeroberfläche auf dem Gerät unterstützt derzeit die folgenden Sprachen mit ihren jeweiligen Sprachcodes:
+
+    | Sprache             | Code | Sprache                | Code   | Sprache                | Code         |
+    |----------------------|------|-------------------------|--------|-------------------------|--------------|
+    | Englisch (Standard)    | en   |  Tschechisch                  | cs     | Deutsch                  | de           |
+    | Spanisch              | es   | Französisch                  | fr     | Ungarisch               | hu           |
+    | Italienisch              | it   | Japanisch                | ja     | Koreanisch                  | ko           |
+    | Niederländisch                | nl   | Polnisch                  | pl     | Portugiesisch (Brasilien)     | pt-br        |
+    | Portugiesisch (Portugal)| pt-pt| Russisch                 | ru     | Schwedisch                 | sv           |
+    | Türkisch              | tr   | Chinesisch (vereinfacht)    | zh-hans|    |       |    
 
     Informationen zur Verwendung der webbasierten Benutzeroberfläche finden Sie unter [Verwenden der webbasierten Benutzeroberfläche zum Verwalten Ihrer Data Box](data-box-portal-ui-admin.md).
 

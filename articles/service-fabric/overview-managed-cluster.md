@@ -1,16 +1,16 @@
 ---
-title: Verwaltete Service Fabric-Cluster (Vorschau)
+title: Verwaltete Service Fabric-Cluster
 description: Verwaltete Service Fabric-Cluster sind eine Weiterentwicklung des Azure Service Fabric-Clusterressourcenmodells, das die Bereitstellung und Clusterverwaltung optimiert.
 ms.topic: overview
-ms.date: 02/15/2021
-ms.openlocfilehash: 271852214097ee96ba6b10de7a94904981cd8ef8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 5/10/2021
+ms.openlocfilehash: a412899f4aa37ce2257a3351c3e27da4d5d3add2
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041228"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685259"
 ---
-# <a name="service-fabric-managed-clusters-preview"></a>Verwaltete Service Fabric-Cluster (Vorschau)
+# <a name="service-fabric-managed-clusters"></a>Verwaltete Service Fabric-Cluster
 
 Verwaltete Service Fabric-Cluster sind eine Weiterentwicklung des Azure Service Fabric-Clusterressourcenmodells, das Ihr Bereitstellungs- und Clusterverwaltungsszenario optimiert.
 
@@ -47,7 +47,10 @@ Verwaltete Service Fabric-Cluster bieten im Vergleich zu herkömmlichen Clustern
 **Standardmäßig bewährte Methoden**
 - Vereinfachte Zuverlässigkeits- und Dauerhaftigkeitseinstellungen
 
-Für verwaltete Service Fabric-Cluster fallen keine zusätzlichen Kosten an, die über die Kosten der zugrunde liegenden Ressourcen hinausgehen, die für den Cluster erforderlich sind.
+Für verwaltete Service Fabric-Cluster fallen abgesehen von den Kosten für zugrunde liegende Ressourcen, die für den Cluster erforderlich sind, keine weiteren Kosten an, und für verwaltete Cluster gilt die gleiche Service Fabric-SLA.
+
+> [!NOTE]
+> Es gibt keinen Migrationspfad von vorhandenen Service Fabric-Clustern zu verwalteten Clustern. Wenn Sie diesen neuen Ressourcentyp verwenden möchten, müssen Sie einen neuen verwalteten Service Fabric-Cluster erstellen.
 
 ## <a name="service-fabric-managed-cluster-skus"></a>SKUs für verwaltete Service Fabric-Cluster
 
@@ -62,30 +65,26 @@ Verwaltete Service Fabric-Cluster sind sowohl in der SKU „Basic“ als auch �
 | Hinzufügen/Entfernen von Knotentypen | Nein | Ja |
 | Zonenredundanz | Nein | Ja |
 
-## <a name="whats-new-for-service-fabric-managed-clusters"></a>Neuerungen für verwaltete Service Fabric-Cluster
+## <a name="feature-support"></a>Featureunterstützung
 
-Die neuesten Features für die Vorschau verwalteter Service Fabric-Cluster umfassen Unterstützung für:
+Die Funktionen verwalteter Cluster werden noch erweitert. Aktuell wird Folgendes unterstützt:
 
-* [Bereitstellen von Anwendungen mithilfe von ARM-Vorlagen](how-to-managed-cluster-app-deployment-template.md)
-* [Automatische Betriebssystemupgrades](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
-* [Datenträgerverschlüsselung](how-to-enable-managed-cluster-disk-encryption.md)
-* [Anwenden von NSG-Regeln](how-to-managed-cluster-networking.md)
-
-In zukünftigen Versionen werden u. a. folgende Features hinzugefügt:
-
-* Bereitstellen von Anwendungen mithilfe von Visual Studio
-* Unterstützung für verwaltete Identitäten
-* Verfügbarkeitszonen
-* Reverse-Proxy
-* Automatische Skalierung
+* [Anwendungsbereitstellung mit ARM-Vorlagen](how-to-managed-cluster-app-deployment-template.md)
+* [Anwendungsgeheimnisse](how-to-managed-cluster-application-secrets.md)
+* [Automatische Upgrades für Betriebssystemimages](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
+* [Verfügbarkeitszonenübergreifende Bereitstellung](how-to-managed-cluster-availability-zones.md)
+* Auswahl von [Datenträgerverschlüsselung](how-to-enable-managed-cluster-disk-encryption.md) und [verwaltetem Datenträgertyp](how-to-managed-cluster-managed-disk.md)
+* Unterstützung verwalteter Identitäten für [verwaltete Clusterknotentypen](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) sowie für die [Anwendungsauthentifizierung](how-to-managed-cluster-application-managed-identity.md)
+* [NSG-Regeln und andere Netzwerkoptionen](how-to-managed-cluster-networking.md)
+* [Ausschließlich zustandslose Knotentypen](how-to-managed-cluster-stateless-node-type.md)
+* [VM-Skalierungsgruppenerweiterungen](how-to-managed-cluster-vmss-extension.md) für Knotentypen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Um erste Schritte mit verwalteten Service Fabric-Clustern auszuführen, probieren Sie den folgenden Schnellstart aus:
 
 > [!div class="nextstepaction"]
-> [Erstellen eines verwalteten Service Fabric-Clusters (Vorschau)](quickstart-managed-cluster-template.md)
-
+> [Erstellen eines verwalteten Service Fabric-Clusters](quickstart-managed-cluster-template.md)
 
 [sf-composition]: ./media/overview-managed-cluster/sfrp-composition-resource.png
 [sf-encapsulation]: ./media/overview-managed-cluster/sfrp-encapsulated-resource.png

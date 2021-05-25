@@ -398,14 +398,20 @@
   items:
     - name: "Verwenden von verwalteten Service\_Fabric-Clustern"
       items:
+        - name: Konfigurieren des verwalteten Clusters
+          href: how-to-managed-cluster-configuration.md
         - name: Hinzufügen einer VM-Skalierungsgruppenerweiterung zu einem verwalteten Clusterknotentyp
           href: how-to-managed-cluster-vmss-extension.md
         - name: Hinzufügen von NSG-Regeln und anderen Netzwerkoptionen für den verwalteten Cluster
           href: how-to-managed-cluster-networking.md
         - name: Konfigurieren des Verfügbarkeitszonenumfangs für verwaltete Cluster
           href: how-to-managed-cluster-availability-zones.md
-        - name: Konfigurieren des verwalteten Clusters
-          href: how-to-managed-cluster-configuration.md
+        - name: Aktivieren der Datenträgerverschlüsselung für verwaltete Clusterknoten
+          href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: Auswählen verwalteter Datenträgertypen für verwaltete Clusterknoten
+          href: how-to-managed-cluster-managed-disk.md
+        - name: Konfigurieren von Upgradeoptionen für verwaltete Cluster
+          href: how-to-managed-cluster-upgrades.md
         - name: Bereitstellen von Anwendungsgeheimnissen für verwaltete Cluster
           href: how-to-managed-cluster-application-secrets.md
         - name: Bereitstellen von verwalteten Clusteranwendungen mithilfe einer ARM-Vorlage
@@ -414,10 +420,6 @@
           href: how-to-managed-cluster-application-managed-identity.md
         - name: Bereitstellen ausschließlich zustandsloser Knotentypen in einem verwalteten Cluster
           href: how-to-managed-cluster-stateless-node-type.md
-        - name: Aktivieren der Datenträgerverschlüsselung für verwaltete Clusterknoten
-          href: how-to-enable-managed-cluster-disk-encryption.md
-        - name: Auswählen verwalteter Datenträgertypen für verwaltete Clusterknoten
-          href: how-to-managed-cluster-managed-disk.md
         - name: Verwenden einer verwalteten Identität für verwaltete Clusterknoten
           href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: Einrichten der Entwicklungsumgebung
@@ -954,13 +956,11 @@
       href: release-notes.md
     - name: Beispielcode
       href: /samples/browse/?products=azure
-    - name: Supportoptionen
-      href: service-fabric-support.md
     - name: Service Fabric-Versionen
       href: service-fabric-versions.md
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=service-fabric'
-    - name: Leitfäden zur Problembehandlung
-      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: Videos
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'
+- name: Support und Problembehandlung
+  href: service-fabric-support.md

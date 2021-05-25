@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 05/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 07529b18191c71776a9a36edbfa4cfd8ded5af4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75e5737f8ad7b0f40e8480c17e150669220007ff
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99524548"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753685"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Verwenden des selbst verwalteten Versands für Azure Data Box im Azure-Portal
 
@@ -32,6 +32,7 @@ Der selbst verwaltete Versand ist als Option verfügbar, wenn Sie [Azure Data Bo
 * Indien
 * Südafrika
 * Australien
+* Brasilien
 
 ## <a name="use-self-managed-shipping"></a>Verwenden des selbst verwalteten Versands
 
@@ -59,36 +60,72 @@ Beim Aufgeben einer Data Box-Bestellung können Sie die Option für selbst verwa
 
    ![Anweisungen zu „Abholung für Azure planen“](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-email-01.png)
 
+   **Anweisungen für Brasilien:** Wenn Sie die Abholung eines Geräts in Brasilien planen, fügen Sie die folgenden Informationen in Ihre E-Mail ein. Das Rechenzentrum wird die Abholung planen, nachdem es eine eingehende `Nota Fiscal` empfangen hat. Dies kann bis zu vier Werktage dauern.
+
+   ```
+   Subject: Request Azure Data Box Disk pickup for order: <ordername>
+
+   - Order name
+   - Company name
+   - Company legal name (if different) 
+   - Tax ID 
+   - Address 
+   - Country 
+   - Phone number 
+   - Contact name of the person who will pick up the Data Box Disk (A government-issued photo ID will be required to validate the contact’s identity upon arrival.)   
+   ```
+
 6. Nachdem Sie die Abholung Ihres Geräts geplant haben, können Sie Ihren Geräteautorisierungscode im Bereich **Abholung für Azure planen** anzeigen.
 
    ![Anzeigen Ihres Geräteautorisierungscodes](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   Notieren Sie sich diesen **Autorisierungscode**. Gemäß den Sicherheitsanforderungen muss bei der Planung der Abholung der Name der Person angegeben werden, die das Gerät abholt.
+   Notieren Sie sich diesen **Autorisierungscode**. Die Person, die das Gerät abholt, muss ihn vorlegen.
 
-   Darüber hinaus müssen Sie Details zu der Person angeben, die zur Abholung in das Rechenzentrum kommen wird. Sie oder Ihre Kontaktperson müssen einen amtlichen Lichtbildausweis mit sich führen, der im Rechenzentrum überprüft wird.
+   Gemäß den Sicherheitsanforderungen müssen bei der Planung der Abholung unbedingt der Name und weitere Informationen zu der Person angegeben werden, die das Gerät abholen wird. Sie oder Ihre Kontaktperson müssen einen amtlichen Lichtbildausweis mit sich führen, der im Rechenzentrum überprüft wird.
 
-   Außerdem muss die Person, die das Gerät abholt, ebenfalls über den **Autorisierungscode** verfügen. Der Autorisierungscode wird bei der Abholung im Rechenzentrum überprüft.
+7. Holen Sie die Data Box zum geplanten Zeitpunkt im Rechenzentrum ab.
 
-7. Sobald das Gerät im Rechenzentrum abgeholt wurde, ändert sich der Status Ihrer Bestellung automatisch in **Abgeholt**.
+   Die Person, die das Gerät abholt, muss Folgendes mitbringen:
+
+   * Eine Kopie der E-Mail-Bestätigung für den Besuch des Rechenzentrums von Microsoft Operations
+
+   * Den Autorisierungscode. Die Referenznummer ist für eine Abholung oder Abgabe eindeutig und wird im Rechenzentrum überprüft.
+
+   * Einen amtlichen Lichtbildausweis. Die ID wird im Rechenzentrum überprüft. Der Name und die Details der Person, die das Gerät abholt, müssen beim Planen der Abholung angegeben werden.
+
+   > [!NOTE]
+   > Wenn ein geplanter Termin verpasst wird, müssen Sie einen neuen Termin vereinbaren.
+
+8. Sobald das Gerät im Rechenzentrum abgeholt wurde, ändert sich der Status Ihrer Bestellung automatisch in **Abgeholt**.
 
     ![Ein Auftrag mit dem Zustand „Abgeholt“](media\data-box-portal-customer-managed-shipping\data-box-portal-picked-up-boxed-01.png)
 
-8. Nachdem das Gerät abgeholt wurde, kopieren Sie die Daten in die Data Box an Ihrem Standort. Nach Abschluss des Datenkopiervorgangs können Sie die Data Box für den Versand vorbereiten. Weitere Informationen finden Sie unter [Für den Versand vorbereiten](data-box-deploy-picked-up.md#prepare-to-ship).
+9. Nachdem das Gerät abgeholt wurde, kopieren Sie die Daten in die Data Box an Ihrem Standort. Nach Abschluss des Datenkopiervorgangs können Sie die Data Box für den Versand vorbereiten. Weitere Informationen finden Sie unter [Für den Versand vorbereiten](data-box-deploy-picked-up.md#prepare-to-ship).
 
    Der Schritt **Versandvorbereitung** muss ohne kritische Fehler abgeschlossen werden. Andernfalls müssen Sie diesen Schritt wiederholen, nachdem Sie die erforderlichen Korrekturen vorgenommen haben. Nach erfolgreichem Abschluss des Schritts **Versandvorbereitung** können Sie den Autorisierungscode für die Abgabe auf der lokalen Benutzeroberfläche anzeigen.
 
    > [!NOTE]
    > Versenden Sie den Autorisierungscode nicht per E-Mail. Dieser muss im Datacenter nämlich nur während der Abgabe überprüft werden.
 
-9. Wenn Sie einen Termin für die Abgabe erhalten haben, sollte der Status der Bestellung im Azure-Portal **Bereit für den Empfang im Azure-Rechenzentrum** lauten. Befolgen Sie die Anweisungen unter **Abgabe planen**, um das Gerät zurückzusenden.
+   **Anweisungen für Brasilien:** Um die Rückgabe eines Geräts in Brasilien zu planen, senden Sie eine E-Mail mit den folgenden Informationen an [adbops@microsoft.com](mailto:adbops@microsoft.com):
 
-   ![Anweisungen für Geräteabgabe](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+   ```
+   Subject: Request Azure Data Box Disk drop-off for order: <ordername>
 
-10. Nachdem Ihre ID und Ihr Autorisierungscode überprüft wurden und Sie das Gerät im Rechenzentrum abgegeben haben, sollte der Auftragsstatus **Empfangen** lauten.
+   - Order name
+   - Contact name of the person who will drop off the Data Box Disk (A government-issued photo ID will be required to validate the contact’s identity upon arrival.) 
+   - Inbound Nota Fiscal (A copy of the inbound Nota Fiscal will be required at drop-off.)   
+   ```
+
+10. Wenn Sie einen Termin für die Abgabe erhalten haben, sollte der Status der Bestellung im Azure-Portal **Bereit für den Empfang im Azure-Rechenzentrum** lauten. Befolgen Sie die Anweisungen unter **Abgabe planen**, um das Gerät zurückzusenden.
+
+    ![Anweisungen für Geräteabgabe](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+
+11. Nachdem Ihre ID und Ihr Autorisierungscode überprüft wurden und Sie das Gerät im Rechenzentrum abgegeben haben, sollte der Auftragsstatus **Empfangen** lauten.
 
     ![Ein Auftrag mit dem Status „Empfangen“](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-01.png)
 
-11. Nachdem das Gerät empfangen wurde, wird der Datenkopiervorgang fortgesetzt. Nach Beendigung des Kopiervorgangs ist die Bestellung abgeschlossen.
+12. Nachdem das Gerät empfangen wurde, wird der Datenkopiervorgang fortgesetzt. Nach Beendigung des Kopiervorgangs ist die Bestellung abgeschlossen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

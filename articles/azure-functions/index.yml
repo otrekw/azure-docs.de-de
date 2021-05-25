@@ -8,13 +8,14 @@ metadata:
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
-  ms.date: 09/17/2019
-  ms.openlocfilehash: de93d836731f9f8e21170d896d8c7dd2c4b90ffa
-  ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+  ms.date: 05/18/2021
+  ms.custom: contperf-fy21q4
+  ms.openlocfilehash: 4d8ffa41ede2f675ee838ecc4f4d98784d3fe128
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/14/2021
-  ms.locfileid: "103463888"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110069344"
 landingContent:
 - title: Informationen zu Azure Functions
   linkLists:
@@ -22,48 +23,42 @@ landingContent:
     links:
     - text: Übersicht zu Azure Functions
       url: functions-overview.md
-  - linkListType: get-started
-    links:
-    - text: Erste Schritte
-      url: functions-get-started.md
   - linkListType: concept
     links:
     - text: Hostingoptionen
       url: functions-scale.md
     - text: Vergleichen von serverlosen Optionen
       url: functions-compare-logic-apps-ms-flow-webjobs.md
-  - linkListType: learn
-    links:
-    - text: Wählen einer serverlosen Computeoption
-      url: /learn/modules/choose-azure-service-to-integrate-and-automate-business-processes/index
+    - text: Langlebige Funktionen
+      url: durable/durable-functions-overview.md
   - linkListType: video
     links:
     - text: Wo sollte ich meinen Code hosten?
       url: https://azure.microsoft.com/resources/videos/build-2019-where-should-i-host-my-code-choosing-between-kubernetes-containers-and-serverless/
-- title: Erste Schritte
+- title: Erstellen Ihrer ersten Funktion
   linkLists:
+  - linkListType: get-started
+    links:
+    - text: Erste Schritte
+      url: functions-get-started.md
   - linkListType: quickstart
     links:
-    - text: Erstellen Ihrer ersten Funktion (C#)
+    - text: C# (.NET Core 3.1)
       url: create-first-function-vs-code-csharp.md
-    - text: Erstellen Ihrer ersten Funktion (Go)
-      url: create-first-function-vs-code-other.md?tabs=go
-    - text: Erstellen Ihrer ersten Funktion (Java)
-      url: create-first-function-cli-java.md?tabs=bash%2Cazure-cli%2Cbrowser
-    - text: Erstellen Ihrer ersten Funktion (JavaScript)
+    - text: C# (.NET 5.0)
+      url: dotnet-isolated-process-developer-howtos.md
+    - text: Java (Maven)
+      url: create-first-function-cli-java.md
+    - text: JavaScript
       url: create-first-function-vs-code-node.md
-    - text: Erstellen Ihrer ersten Funktion (PowerShell)
+    - text: PowerShell
       url: create-first-function-vs-code-powershell.md
-    - text: Erstellen Ihrer ersten Funktion (Python)
+    - text: Python
       url: create-first-function-vs-code-python.md
-    - text: Erstellen Ihrer ersten Funktion (Rust)
-      url: create-first-function-vs-code-other.md?tabs=rust
-    - text: Erstellen Ihrer ersten Funktion (TypeScript)
+    - text: Rust/Go
+      url: create-first-function-vs-code-other.md
+    - text: TypeScript
       url: create-first-function-vs-code-typescript.md
-  - linkListType: learn
-    links:
-    - text: Erstellen von serverloser Logik
-      url: /learn/modules/create-serverless-logic-with-azure-functions/
   - linkListType: video
     links:
     - text: Ansehen, wie Sie loslegen können
@@ -76,99 +71,11 @@ landingContent:
       url: functions-reference.md
     - text: Unterstützte Sprachen
       url: supported-languages.md
-  - linkListType: how-to-guide
-    links:
+    - text: Verbinden mit Diensten
+      url: functions-triggers-bindings.md
     - text: Lokale Entwicklung
       url: functions-develop-local.md
-    - text: Testfunktionen
-      url: functions-test-a-function.md
-    - text: Fehlerbehandlung
-      url: functions-bindings-error-pages.md
-  - linkListType: learn
-    links:
-    - text: Entwickeln von Funktionen mithilfe von Visual Studio
-      url: /learn/modules/develop-test-deploy-azure-functions-with-visual-studio/index
-    - text: Entwickeln von Funktionen über die Befehlszeile
-      url: /learn/modules/develop-test-deploy-azure-functions-with-core-tools/index
-  - linkListType: video
-    links:
-    - text: Entwickeln mit Visual Studio Code
-      url: https://azure.microsoft.com/resources/videos/build-nodejs-apis-using-serverless/
-- title: Verbinden mit Diensten
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Ereignisgesteuerte Trigger
-      url: functions-triggers-bindings.md
-    - text: Netzwerkoptionen
-      url: functions-networking-options.md
-  - linkListType: tutorial
-    links:
-    - text: Integration in Logic Apps
-      url: functions-twitter-email.md
-    - text: Nutzen von Event Grid-Ereignissen
-      url: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
-  - linkListType: learn
-    links:
-    - text: Verketten von Funktionen mit Bindungen
-      url: /learn/modules/chain-azure-functions-data-using-bindings/index
-    - text: Herstellen einer Verbindung mit GitHub-Webhook
-      url: /learn/modules/monitor-github-events-with-a-function-triggered-by-a-webhook/index
-- title: Bereitstellen von Funktionen
-  linkLists:
-  - linkListType: deploy
-    links:
-    - text: Bereitstellungsoptionen
-      url: functions-deployment-technologies.md
-    - text: Bereitstellungsslots
-      url: functions-deployment-slots.md
-    - text: Automatische Ressourcenbereitstellung
-      url: functions-infrastructure-as-code.md
-  - linkListType: how-to-guide
-    links:
-    - text: Einrichten der fortlaufenden Bereitstellung
-      url: functions-continuous-deployment.md
-    - text: Erstellen und Bereitstellen mithilfe von Azure Pipelines
-      url: functions-how-to-azure-devops.md
-    - text: Bereitstellen des Jenkins-Plug-Ins
-      url: /azure/developer/jenkins/deploy-to-azure-functions
-- title: Bewährte Methoden für Leistung und Überwachung
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Leistung und Zuverlässigkeit
-      url: functions-best-practices.md
-    - text: Verwalten von Verbindungen
-      url: manage-connections.md
-    - text: Speicheraspekt
-      url: storage-considerations.md
-    - text: Fehlerbehandlung und Funktionswiederholungen
-      url: functions-bindings-error-pages.md
-    - text: Sicherheit
-      url: security-concepts.md
-    - text: Überwachungsfunktionen
-      url: functions-monitoring.md
-    - text: Überlegungen zum Netzwerkbetrieb
-      url: functions-networking-options.md
-  - linkListType: how-to-guide
-    links:
-    - text: Problembehandlung
-      url: functions-recover-storage-account.md
-- title: Funktionen mit langer Ausführungszeit
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Premium-Hostingplan
-      url: functions-premium-plan.md
-    - text: Langlebige Funktionen
-      url: durable/durable-functions-overview.md
-  - linkListType: learn
-    links:
-    - text: Erstellen eines serverlosen Workflows mit langer Ausführungszeit
-      url: /learn/modules/create-long-running-serverless-workflow-with-durable-functions/index
-- title: Beispiele
-  linkLists:
-  - linkListType: download
+  - linkListType: sample
     links:
     - text: Azure Functions-Beispiele
       url: /samples/browse/?products=azure-functions
@@ -176,7 +83,7 @@ landingContent:
       url: https://www.serverlesslibrary.net/
     - text: Azure-Ressourcen-Manager-Vorlagen
       url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Web&term=functions
-  - linkListType: how-to-guide
+  - linkListType: video
     links:
-    - text: Azure CLI-Beispiele
-      url: functions-cli-samples.md
+    - text: Entwickeln mit Visual Studio Code
+      url: https://azure.microsoft.com/resources/videos/build-nodejs-apis-using-serverless/
