@@ -41,7 +41,7 @@
             - name: Einführung in die Autoskalierung
               href: provision-throughput-autoscale.md
             - name: Häufig gestellte Fragen zur Autoskalierung
-              href: autoscale-faq.md
+              href: autoscale-faq.yml
         - name: Serverlos
           href: serverless.md
         - name: Wählen zwischen automatisch skaliertem Durchsatz und Standarddurchsatz (manuell)
@@ -116,6 +116,8 @@
           href: optimize-dev-test.md
         - name: Optimieren der Kosten mit Reservekapazität
           href: cosmos-db-reserved-capacity.md
+        - name: Optimieren mithilfe der Ratenbegrenzung
+          href: rate-limiting-requests.md
     - name: Übersicht über den Änderungsfeed
       href: change-feed.md
     - name: "Integrierte Jupyter\_Notebook-Instanzen"
@@ -637,21 +639,6 @@
           href: sql-sdk-connection-modes.md
     - name: Anleitungen
       items:
-        - name: Verwalten von Azure Cosmos DB-Ressourcen
-          items:
-            - name: Verwalten eines Azure Cosmos-Kontos
-              href: how-to-manage-database-account.md
-            - name: PowerShell
-              href: manage-with-powershell.md
-            - name: Verwenden der Azure-Befehlszeilenschnittstelle
-              href: manage-with-cli.md
-            - name: Verwenden von Resource Manager-Vorlagen
-              href: manage-with-templates.md
-              displayName: ARM
-            - name: Verschieben zwischen Regionen
-              href: how-to-move-regions.md
-            - name: Verhindern von Änderungen oder Löschungen
-              href: resource-locks.md
         - name: Globale Verteilung
           items:
             - name: Konfigurieren von Schreibvorgängen in mehreren Regionen
@@ -924,7 +911,7 @@
             - name: "Java-Bulk\_Executor-Bibliothek v2"
               href: sql-api-sdk-bulk-executor-java.md
         - name: Azure CLI
-          href: /cli/azure/cosmosdb
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
         - name: Node.js
           href: sql-api-sdk-node.md
         - name: Python
@@ -1055,6 +1042,8 @@
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager-Vorlage
           href: /azure/templates/microsoft.documentdb/allversions
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: MongoDB-API
   items:
     - name: Übersicht
@@ -1110,7 +1099,7 @@
         - name: "API-Version\_3.2"
           href: mongodb-feature-support.md
         - name: Häufig gestellte Fragen
-          href: mongodb-api-faq.md
+          href: mongodb-api-faq.yml
         - name: Zuordnen von Konsistenzebenen
           href: mongodb-consistency.md
     - name: Anleitungen
@@ -1187,6 +1176,8 @@
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager-Vorlage
           href: /azure/templates/microsoft.documentdb/allversions
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: Gremlin-API
   displayName: 'graph, graph database'
   items:
@@ -1217,7 +1208,7 @@
     - name: Konzepte
       items:
         - name: Häufig gestellte Fragen
-          href: gremlin-api-faq.md
+          href: gremlin-api-faq.yml
         - name: Antwortheader
           href: gremlin-headers.md
         - name: Einschränkungen
@@ -1267,6 +1258,8 @@
           href: /rest/api/cosmos-db-resource-provider/2021-03-15/gremlinresources
         - name: Resource Manager-Vorlage
           href: /azure/templates/microsoft.documentdb/allversions
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: Tabelle-API
   items:
     - name: Übersicht
@@ -1316,7 +1309,7 @@
     - name: Konzepte
       items:
         - name: Häufig gestellte Fragen
-          href: table-api-faq.md
+          href: table-api-faq.yml
     - name: Anleitungen
       items:
         - name: Erstellen von Apps mit der Tabellen-API
@@ -1351,8 +1344,25 @@
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Table Storage-REST-APIs
           href: /rest/api/storageservices/table-service-rest-api
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: Anleitungen
   items:
+    - name: Verwalten von Azure Cosmos DB-Ressourcen
+      items:
+        - name: Verwalten eines Azure Cosmos-Kontos
+          href: how-to-manage-database-account.md
+        - name: PowerShell
+          href: manage-with-powershell.md
+        - name: Verwenden der Azure-Befehlszeilenschnittstelle
+          href: manage-with-cli.md
+        - name: Verwenden von Resource Manager-Vorlagen
+          href: manage-with-templates.md
+          displayName: ARM
+        - name: Verschieben zwischen Regionen
+          href: how-to-move-regions.md
+        - name: Verhindern von Änderungen oder Löschungen
+          href: resource-locks.md
     - name: Verwenden von Entwicklertools
       items:
         - name: Lokales Entwickeln mit Emulator
@@ -1471,7 +1481,7 @@
     - name: Arbeiten mit SQL
       href: 'https://www.documentdb.com/sql/demo'
     - name: Häufig gestellte Fragen
-      href: faq.md
+      href: faq.yml
     - name: Whitepaper
       href: whitepapers.md
     - name: Partner

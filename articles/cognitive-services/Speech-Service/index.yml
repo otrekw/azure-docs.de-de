@@ -89,7 +89,7 @@ conceptualContent:
       links:
         - itemType: overview
           text: Informationen zum benutzerdefinierten Schlüsselwort
-          url: custom-keyword-overview.md
+          url: keyword-recognition-overview.md
         - itemType: quickstart
           text: Erste Schritte mit dem benutzerdefinierten Schlüsselwort
           url: custom-keyword-basics.md

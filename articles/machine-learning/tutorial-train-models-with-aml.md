@@ -8,17 +8,16 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 09/28/2020
+ms.date: 04/26/2021
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 6c5691759983d8ec40598834e5dbcd507ccf00cf
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 41f7870bdab36de69251bb1274472ec16d05d0a5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816870"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773861"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Tutorial: Trainieren von Bildklassifizierungsmodellen mit MNIST-Daten und scikit-learn 
-
 
 In diesem Tutorial wird ein Modell für maschinelles Lernen auf Remotecomputeressourcen trainiert. Hierbei wird der Trainings- und Bereitstellungsworkflow für Azure Machine Learning in einer Python Jupyter Notebook-Instanz verwendet.  Anschließend können Sie das Notebook als Vorlage verwenden, um Ihr eigenes Machine Learning-Modell mit Ihren eigenen Daten zu trainieren. Dieses Tutorial ist der **erste Teil einer zweiteiligen Reihe**.  
 
@@ -41,15 +40,56 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Absolvieren Sie [Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK](tutorial-1st-experiment-sdk-setup.md), um folgende Aktionen auszuführen:
-    * Erstellen eines Arbeitsbereichs
-    * Klonen Sie das Tutorial-Notebook in Ihrem Ordner im Arbeitsbereich.
-    * Erstellen Sie eine cloudbasierte Computeinstanz.
+* Arbeiten Sie [Schnellstart: Erste Schritte mit Azure Machine Learning](quickstart-create-resources.md) durch, um Folgendes durchzuführen:
+    * Erstellen eines Arbeitsbereichs.
+    * Erstellen einer cloudbasierten Compute-Instanz, die für Ihre Entwicklungsumgebung verwendet werden soll
+    * Erstellen eines cloudbasierten Computeclusters, der für das Training Ihres Modells verwendet werden soll
 
-* Öffnen Sie im geklonten Ordner *tutorials/image-classification-mnist-data* das Notebook *img-classification-part1-training.ipynb*. 
+## <a name="run-a-notebook-from-your-workspace"></a><a name="azure"></a>Ausführen eines Notebooks aus Ihrem Arbeitsbereich
+
+Azure Machine Learning enthält einen cloudbasierten Notebook-Server in Ihrem Arbeitsbereich als vorkonfigurierte Umgebung ohne Installation. Verwenden Sie [Ihre eigene Umgebung](how-to-configure-environment.md#local), wenn Sie Ihre Umgebung, Pakete und Abhängigkeiten lieber selbst gestalten möchten.
+
+ Sehen Sie sich das folgende Video an, oder führen Sie die angegebenen detaillierten Schritte aus, um das Notebook für das Tutorial über Ihren Arbeitsbereich zu klonen und auszuführen.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
+
+### <a name="clone-a-notebook-folder"></a><a name="clone"></a> Klonen eines Notebook-Ordners
+
+Sie führen die folgenden Schritte zum Einrichten und Ausführen des Experiments in Azure Machine Learning Studio aus. Diese konsolidierte Benutzeroberfläche umfasst Tools für maschinelles Lernen zur Durchführung von Data Science-Szenarien für Datenwissenschaftler aller Qualifikationsstufen.
+
+1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an.
+
+1. Wählen Sie Ihr Abonnement und den erstellten Arbeitsbereich aus.
+
+1. Wählen Sie links **Notebooks** aus.
+
+1. Wählen Sie oben die Registerkarte **Beispiele** aus.
+
+1. Öffnen Sie den Ordner **Python**.
+
+1. Öffnen Sie den Ordner mit Versionsnummer. Diese Zahl stellt die aktuelle Version des Python SDK dar.
+
+1. Wählen Sie rechts vom Ordner **Tutorials** die Auslassungspunkte ( **...** ) und anschließend **Klonen** aus.
+
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="Screenshot: Klonen des Ordners „Tutorials“":::
+
+1. Eine Liste der Ordner mit den einzelnen Benutzern wird angezeigt, die auf den Arbeitsbereich zugreifen. Wählen Sie Ihren Ordner aus, um den Ordner **Tutorials** dort zu klonen.
+
+### <a name="open-the-cloned-notebook"></a><a name="open"></a> Öffnen des geklonten Notebooks
+
+1. Öffnen Sie den Ordner **Tutorials**, den Sie im Abschnitt **Benutzerdateien** geschlossen haben.
+
+    > [!IMPORTANT]
+    > Im Ordner **Beispiele** können Notebooks angezeigt, aber nicht ausgeführt werden. Öffnen Sie zum Ausführen eines Notebooks die geklonte Version des Notebooks unbedingt im Abschnitt **Benutzerdateien**.
+    
+1. Wählen Sie die Datei **img-classification-part1-training.ipynb** im Ordner **tutorials/image-classification-mnist-data** aus.
+
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Screenshot: Öffnen des Ordners „Tutorials“":::
+
+1. Wählen Sie in der oberen Leiste Ihre Compute-Instanz aus, die zum Ausführen des Notebooks verwendet werden soll.
 
 
-Das Tutorial und die zugehörige Datei **utils.py** sind auch auf [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) verfügbar, falls Sie sie in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) verwenden möchten. Führen Sie `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` aus, um Abhängigkeiten für dieses Tutorial zu installieren.
+Das Tutorial und die zugehörige Datei **utils.py** sind auch auf [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) verfügbar, falls Sie sie in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) verwenden möchten. Gehen Sie wie folgt vor, falls Sie die Compute-Instanz nicht nutzen: Führen Sie `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` aus, um die Abhängigkeiten für dieses Tutorial zu installieren. 
 
 > [!Important]
 > Der Rest dieses Artikels enthält denselben Inhalt, den Sie auch im Notebook sehen.  
@@ -110,9 +150,12 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 Unter Verwendung von Azure Machine Learning Compute, einem verwalteten Dienst, können Datenanalysten Machine Learning-Modelle in Clustern von virtuellen Azure-Computern trainieren. Beispiele hierfür sind unter anderem VMs mit GPU-Unterstützung. In diesem Tutorial erstellen Sie Azure Machine Learning Compute als Trainingsumgebung. Sie übermitteln Python-Code, der auf diesem virtuellen Computer ausgeführt wird, weiter unten in diesem Tutorial. 
 
-Mit dem folgenden Code werden die Computecluster für Sie erstellt, sofern sie in Ihrem Arbeitsbereich noch nicht vorhanden sind. Ein Cluster wird eingerichtet, der auf 0 herunterskaliert wird, wenn er nicht verwendet wird, und der auf maximal vier Knoten hochskaliert werden kann. 
+Mit dem folgenden Code werden die Computecluster für Sie erstellt, sofern sie in Ihrem Arbeitsbereich noch nicht vorhanden sind. Ein Cluster wird eingerichtet, der auf 0 herunterskaliert wird, wenn er nicht verwendet wird, und der auf maximal vier Knoten hochskaliert werden kann.
 
- **Die Erstellung des Computeziels dauert etwa fünf Minuten.** Wenn die Computeressource bereits im Arbeitsbereich enthalten ist, wird sie vom Code verwendet, und der Erstellungsvorgang wird übersprungen.
+ **Die Erstellung des Computeziels dauert etwa fünf Minuten.** Wenn die Computeressource bereits im Arbeitsbereich enthalten ist, wird sie vom Code verwendet, und der Erstellungsvorgang wird übersprungen.  
+
+> [!TIP]
+> Falls Sie im Rahmen der Schnellstartanleitung einen Computecluster erstellt haben, sollten Sie sicherstellen, dass für `compute_name` unten im Code der gleiche Name verwendet wird.
 
 ```python
 from azureml.core.compute import AmlCompute
