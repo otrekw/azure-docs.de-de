@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 72bf8e76217e8a3bcecd381d8d61815c539dd196
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: d9025038727c6f71022f30f80ee67db6ccc5289b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209586"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740319"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von Parquet-Dateien mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
@@ -40,7 +40,9 @@ Stellen Sie sicher, dass Sie auf diese Datei zugreifen können. Wenn Ihre Datei 
 > [!IMPORTANT]
 > Stellen Sie sicher, dass Sie eine UTF-8-Datenbanksortierung (z. B. `Latin1_General_100_BIN2_UTF8`) verwenden, da Zeichenfolgenwerte in Parquet-Dateien mit UTF-8 codiert sind.
 > Ein Konflikt zwischen der Textcodierung in der Parquet-Datei und der Sortierung kann zu unerwarteten Konvertierungsfehlern führen.
-> Die Standardsortierung der aktuellen Datenbank kann mit der folgenden T-SQL-Anweisung problemlos geändert werden: `alter database current collate Latin1_General_100_BIN2_UTF8`.
+> Die Standardsortierung der aktuellen Datenbank kann mit der folgenden T-SQL-Anweisung problemlos geändert werden: `alter database current collate Latin1_General_100_BIN2_UTF8`'
+
+Wenn Sie eine _BIN2 Sortierung verwenden, erhalten Sie eine zusätzliche Leistungssteigerung. Die BIN2-Sortierung ist mit Sortierungsregeln für Parquet-Zeichenfolgen kompatibel, sodass einige Teile der Parquet-Dateien, die keine in den Abfragen benötigten Daten enthalten (Datei-/Spaltensegmentbereinigung), entfernt werden können. Wenn Sie eine Nicht-BIN2-Sortierung verwenden, werden alle Daten aus der Parquet-Füllung in Synapse SQL geladen, wobei die Filterung innerhalb des SQL-Prozesses erfolgt, die möglicherweise viel langsamer als die Dateientfernung der nicht benötigten Daten ist. Die BIN2-Sortierung verfügt über eine zusätzliche Leistungsoptimierung, die nur für Parquet und CosmosDB funktioniert. Der Nachteil ist, dass Sie differenzierte Vergleichsregeln wie die Groß-/Kleinschreibung nicht beachten.
 
 ### <a name="data-source-usage"></a>Datenquellennutzung
 

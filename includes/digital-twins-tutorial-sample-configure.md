@@ -5,28 +5,28 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 67a2799a93141ad84f458642d8499a58784cc19c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1eceb842947abd8975036c3145c1da755ef59526
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463765"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766753"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurieren des Beispielprojekts
 
 Richten Sie als Nächstes eine Beispielclient-Anwendung ein, die mit Ihrer Azure Digital Twins-Instanz interagiert.
 
-Navigieren Sie auf Ihrem Computer zu der Datei, die Sie zuvor von [*Azure Digital Twins-End-to-End-Beispiele*](/samples/azure-samples/digital-twins-samples/digital-twins-samples) heruntergeladen haben (und entpacken Sie sie, sofern noch nicht geschehen).
+Navigieren Sie auf Ihrem Computer zu der Datei, die Sie zuvor von [Azure Digital Twins-End-to-End-Beispiele](/samples/azure-samples/digital-twins-samples/digital-twins-samples) heruntergeladen haben (und entpacken Sie sie, sofern noch nicht geschehen).
 
 Navigieren Sie dann im Ordner zu _AdtSampleApp_. Öffnen Sie _**AdtE2ESample.sln**_ in Visual Studio 2019. 
 
 Wählen Sie in Visual Studio die Datei _SampleClientApp > **appsettings.json**_ aus, um sie im Bearbeitungsfenster zu öffnen. Sie dient als voreingestellte JSON-Datei mit den erforderlichen Konfigurationsvariablen zum Ausführen des Projekts.
 
-Ändern Sie im Dateitext `instanceUrl` in die *hostName-URL* der Azure Digital Twins-Instanz (fügen Sie **_https://_** vor *hostName* ein, wie nachfolgend gezeigt):
+Ändern Sie im Dateitext `instanceUrl` in die *Hostnamen-URL* der Azure Digital Twins-Instanz. (Fügen Sie **_https://_** vor dem *Hostnamen* ein, wie nachfolgend gezeigt.)
 
 ```json
 {
-  "instanceUrl": "https://<your-Azure-Digital-Twins-instance-hostName>"
+  "instanceUrl": "https://<your-Azure-Digital-Twins-instance-host-name>"
 }
 ```
 

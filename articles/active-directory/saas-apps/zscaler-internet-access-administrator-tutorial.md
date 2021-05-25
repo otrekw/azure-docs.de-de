@@ -11,27 +11,27 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 70afa0a02f4e303105aec1884b966796854c6f49
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f94aee8fd609870e2ac0e49721e8d7c21892428b
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449322"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804284"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Tutorial: Azure Active Directory-Integration mit Zscaler Internet Access Administrator
 
 In diesem Tutorial erfahren Sie, wie Sie Zscaler Internet Access Administrator in Azure Active Directory (Azure AD) integrieren. Die Integration von Zscaler Internet Access Administrator in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Zscaler Internet Access Administrator hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Zscaler Internet Access Administrator anzumelden.
-* Verwalten Sie Ihre Konten zentral im Azure-Portal.
+- Steuern Sie in Azure AD, wer Zugriff auf Zscaler Internet Access Administrator hat.
+- Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Zscaler Internet Access Administrator anzumelden.
+- Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Abonnement für Zscaler Internet Access Administrator, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+- Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+- Ein Abonnement für Zscaler Internet Access Administrator, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 > [!NOTE]
 > Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
@@ -40,7 +40,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Zscaler Internet Access Administrator unterstützt **IDP**-initiiertes SSO.
+- Zscaler Internet Access Administrator unterstützt **IDP**-initiiertes SSO.
 
 ## <a name="add-zscaler-internet-access-administrator-from-the-gallery"></a>Hinzufügen von Zscaler Internet Access Administrator aus dem Katalog
 
@@ -60,10 +60,10 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Zscaler In
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Zscaler Internet Access Administrator die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+   1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+   1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 2. **[Konfigurieren des einmaligen Anmeldens für Zscaler Internet Access Administrator](#configure-zscaler-internet-access-administrator-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Testbenutzers für Zscaler Internet Access Administrator](#create-zscaler-internet-access-administrator-test-user)** , um eine Entsprechung von Britta Simon in Zscaler Internet Access Administrator zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+   1. **[Erstellen eines Testbenutzers für Zscaler Internet Access Administrator](#create-zscaler-internet-access-administrator-test-user)** , um eine Entsprechung von Britta Simon in Zscaler Internet Access Administrator zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 3. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -78,56 +78,56 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine der folgenden URLs gemäß Ihren Anforderungen ein:
+   a. Geben Sie im Textfeld **Bezeichner** eine der folgenden URLs gemäß Ihren Anforderungen ein:
 
-    | Bezeichner |
-    |------------|
-    | `https://admin.zscaler.net` |
-    | `https://admin.zscalerone.net` |
-    | `https://admin.zscalertwo.net` |
-    | `https://admin.zscalerthree.net` |
-    | `https://admin.zscloud.net` |
-    | `https://admin.zscalerbeta.net` |
+   | Bezeichner                       |
+   | -------------------------------- |
+   | `https://admin.zscaler.net`      |
+   | `https://admin.zscalerone.net`   |
+   | `https://admin.zscalertwo.net`   |
+   | `https://admin.zscalerthree.net` |
+   | `https://admin.zscloud.net`      |
+   | `https://admin.zscalerbeta.net`  |
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine der folgenden URLs gemäß Ihren Anforderungen ein:
+   b. Geben Sie im Textfeld **Antwort-URL** eine der folgenden URLs gemäß Ihren Anforderungen ein:
 
-    | Antwort-URL |
-    |-----------|
-    | `https://admin.zscaler.net/adminsso.do` |
-    | `https://admin.zscalerone.net/adminsso.do` |
-    | `https://admin.zscalertwo.net/adminsso.do` |
-    | `https://admin.zscalerthree.net/adminsso.do` |
-    | `https://admin.zscloud.net/adminsso.do` |
-    | `https://admin.zscalerbeta.net/adminsso.do` |
+   | Antwort-URL                                    |
+   | -------------------------------------------- |
+   | `https://admin.zscaler.net/adminsso.do`      |
+   | `https://admin.zscalerone.net/adminsso.do`   |
+   | `https://admin.zscalertwo.net/adminsso.do`   |
+   | `https://admin.zscalerthree.net/adminsso.do` |
+   | `https://admin.zscloud.net/adminsso.do`      |
+   | `https://admin.zscalerbeta.net/adminsso.do`  |
 
-5. Die Zscaler Internet Access Administrator-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute und Ansprüche** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute und Ansprüche** zu öffnen.
+1. Die Zscaler Internet Access Administrator-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute und Ansprüche** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute und Ansprüche** zu öffnen.
 
-    ![Attributlink](./media/zscaler-internet-access-administrator-tutorial/attributes.png)
+   ![Attributlink](./media/zscaler-internet-access-administrator-tutorial/attributes.png)
 
-6. Konfigurieren Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
+1. Konfigurieren Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
 
-    | Name  | Quellattribut  |
-    | ---------| ------------ |
-    | Role | user.assignedroles |
+   | Name | Quellattribut   |
+   | ---- | ------------------ |
+   | Role | user.assignedroles |
 
-    a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
+   a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    b. Wählen Sie in der Liste **Quellattribut** den Attributwert aus.
+   b. Wählen Sie in der Liste **Quellattribut** den Attributwert aus.
 
-    c. Klicken Sie auf **OK**.
+   c. Klicken Sie auf **OK**.
 
-    d. Klicken Sie auf **Speichern**.
+   d. Klicken Sie auf **Speichern**.
 
-    > [!NOTE]
-    > Klicken Sie [hier](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview), um herauszufinden, wie Sie die Rolle in Azure AD konfigurieren.
+   > [!NOTE]
+   > Klicken Sie [hier](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui), um herauszufinden, wie Sie die Rolle in Azure AD konfigurieren.
 
-7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+   ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-8. Kopieren Sie im Abschnitt für die **Einrichtung von Zscaler Internet Access Administrator** die URLs, die Ihre Anforderungen erfüllen.
+1. Kopieren Sie im Abschnitt für die **Einrichtung von Zscaler Internet Access Administrator** die URLs, die Ihre Anforderungen erfüllen.
 
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+   ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -136,7 +136,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
@@ -159,21 +159,21 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Navigieren Sie zu **Administration > Administrator Management** (Administration > Administratorverwaltung), und führen Sie die folgenden Schritte aus. Klicken Sie anschließend auf „Speichern“:
 
-    ![Screenshot der Administratorverwaltung mit Optionen zum Aktivieren der SAML-Authentifizierung, Hochladen des SSL-Zertifikats und Angeben eines Ausstellers](./media/zscaler-internet-access-administrator-tutorial/management.png "Verwaltung")
+   ![Screenshot der Administratorverwaltung mit Optionen zum Aktivieren der SAML-Authentifizierung, Hochladen des SSL-Zertifikats und Angeben eines Ausstellers](./media/zscaler-internet-access-administrator-tutorial/management.png "Verwaltung")
 
-    a. Aktivieren Sie die Option **SAML-Authentifizierung aktivieren**.
+   a. Aktivieren Sie die Option **SAML-Authentifizierung aktivieren**.
 
-    b. Klicken Sie auf **Upload** (Hochladen), um das Azure-SAML-Signaturzertifikat hochzuladen, das Sie aus dem Azure-Portal unter **Public SSL Certificate** (Öffentliches SSL-Zertifikat) heruntergeladen haben.
+   b. Klicken Sie auf **Upload** (Hochladen), um das Azure-SAML-Signaturzertifikat hochzuladen, das Sie aus dem Azure-Portal unter **Public SSL Certificate** (Öffentliches SSL-Zertifikat) heruntergeladen haben.
 
-    c. Fügen Sie zur Erhöhung der Sicherheit optional die Details zum **Aussteller** hinzu, um den Aussteller der SAML-Antwort zu überprüfen.
+   c. Fügen Sie zur Erhöhung der Sicherheit optional die Details zum **Aussteller** hinzu, um den Aussteller der SAML-Antwort zu überprüfen.
 
 3. Führen Sie auf der Administratorbenutzeroberfläche die folgenden Schritte aus:
 
-    ![Screenshot der Administratorbenutzeroberfläche zum Ausführen der Schritte](./media/zscaler-internet-access-administrator-tutorial/activation.png)
+   ![Screenshot der Administratorbenutzeroberfläche zum Ausführen der Schritte](./media/zscaler-internet-access-administrator-tutorial/activation.png)
 
-    a. Bewegen Sie den Mauszeiger unten links auf das Menü **Aktivierung**.
+   a. Bewegen Sie den Mauszeiger unten links auf das Menü **Aktivierung**.
 
-    b. Klicken Sie auf **Aktivieren**.
+   b. Klicken Sie auf **Aktivieren**.
 
 ### <a name="create-zscaler-internet-access-administrator-test-user"></a>Erstellen des Zscaler Internet Access Administrator-Testbenutzers
 
@@ -186,9 +186,9 @@ https://help.zscaler.com/zia/adding-admins
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-* Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Zscaler Internet Access Administrator-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
+- Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Zscaler Internet Access Administrator-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel für Zscaler Internet Access Administrator klicken, sollten Sie automatisch bei der Zscaler Internet Access Administrator-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+- Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel für Zscaler Internet Access Administrator klicken, sollten Sie automatisch bei der Zscaler Internet Access Administrator-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

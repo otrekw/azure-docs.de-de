@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b947d9169347c00b693f27a3683a76173188070
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 24c93d189dd4c11ff5c8c08ad75bd62085dc225a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175062"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766095"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -338,7 +338,7 @@ Der Proxydienst unterstützt nicht die Verwendung von spezifischen Anmeldeinform
 
 ### <a name="configure-the-proxy-service-to-listen-on-a-specific-port"></a>Konfigurieren des Proxydiensts für das Lauschen an einem bestimmten Port
 
-Die DC-Agent-Software für den Azure AD-Kennwortschutz verwendet RPC über TCP für die Kommunikation mit dem Proxydienst. Standardmäßig lauscht der Azure AD-Kennwortschutz-Proxydienst auf jedem verfügbaren dynamischen RPC-Endpunkt. Sie können den Dienst so konfigurieren, dass er an einem bestimmten TCP-Port lauscht, wenn dies aufgrund von Netzwerktopologie- oder Firewallanforderungen in Ihrer Umgebung erforderlich ist.
+Die DC-Agent-Software für den Azure AD-Kennwortschutz verwendet RPC über TCP für die Kommunikation mit dem Proxydienst. Standardmäßig lauscht der Azure AD-Kennwortschutz-Proxydienst auf jedem verfügbaren dynamischen RPC-Endpunkt. Sie können den Dienst so konfigurieren, dass er an einem bestimmten TCP-Port lauscht, wenn dies aufgrund von Netzwerktopologie- oder Firewallanforderungen in Ihrer Umgebung erforderlich ist. Wenn Sie einen statischen Port konfigurieren, müssen Sie Port 135 und den statischen Port Ihrer Wahl öffnen.
 
 <a id="static" /></a>Verwenden Sie das Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration` wie folgt, um den Dienst für die Ausführung unter einem statischen Port zu konfigurieren.
 

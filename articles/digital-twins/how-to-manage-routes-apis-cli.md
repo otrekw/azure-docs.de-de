@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9adc69734a1b2de806d7af6cf0e987110b605ec4
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 01511a1c857ff2b4daad2b5865872a717b60a9f1
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208597"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789963"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)
 
@@ -20,7 +20,7 @@ ms.locfileid: "108208597"
 
 In Azure Digital Twins können Sie [Ereignisbenachrichtigungen](concepts-event-notifications.md) an Downstreamdienste oder verbundene Computeressourcen weiterleiten. Dies erfolgt, indem zunächst **Endpunkte** eingerichtet werden, die die Ereignisse empfangen können. Anschließend können Sie [Ereignisrouten](concepts-route-events.md) erstellen, die angeben, welche von Azure Digital Twins generierten Ereignisse an welche Endpunkte übermittelt werden.
 
-In diesem Artikel wird das Erstellen von Endpunkten und Routen mit den [REST-APIs](/rest/api/azure-digitaltwins/), dem [.NET SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client) und der [Azure Digital Twins-CLI](how-to-use-cli.md) ausführlich erläutert.
+In diesem Artikel wird das Erstellen von Endpunkten und Routen mit den [REST-APIs](/rest/api/azure-digitaltwins/), dem [.NET SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client) und der [Azure Digital Twins-CLI](concepts-cli.md) ausführlich erläutert.
 
 Alternativ können Sie auch Endpunkte und Routen mit dem [Azure-Portal](https://portal.azure.com) verwalten. Eine Version dieses Artikels, die stattdessen das Portal verwendet, finden Sie unter [Vorgehensweise: Verwalten von Endpunkten und Routen (Portal)](how-to-manage-routes-portal.md) .
 
@@ -48,22 +48,22 @@ In diesem Abschnitt wird erläutert, wie diese Endpunkte mithilfe der Azure CLI 
 
 ### <a name="create-the-endpoint"></a>Erstellen des Endpunkts
 
-Sobald Sie die Endpunktressourcen erstellt haben, können Sie sie für einen Azure Digital Twins-Endpunkt verwenden. In den folgenden Beispielen wird gezeigt, wie Endpunkte mithilfe des Befehls [az dt endpoint create](/cli/azure/dt/endpoint/create) für die [Azure Digital Twins-CLI](how-to-use-cli.md) erstellt werden. Ersetzen Sie die Platzhalter in den Befehlen durch die Details Ihrer eigenen Ressourcen.
+Sobald Sie die Endpunktressourcen erstellt haben, können Sie sie für einen Azure Digital Twins-Endpunkt verwenden. In den folgenden Beispielen wird gezeigt, wie Endpunkte mithilfe des Befehls [az dt endpoint create](/cli/azure/dt/endpoint/create) für die [Azure Digital Twins-CLI](concepts-cli.md) erstellt werden. Ersetzen Sie die Platzhalter in den Befehlen durch die Details Ihrer eigenen Ressourcen.
 
 Erstellen eines Event Grid-Endpunkts:
 
 ```azurecli-interactive
-az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
+az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> --dt-name <your-Azure-Digital-Twins-instance-name>
 ```
 
 Erstellen eines Event Hubs-Endpunkts (schlüsselbasierte Authentifizierung):
 ```azurecli-interactive
-az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
+az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> --dt-name <your-Azure-Digital-Twins-instance-name>
 ```
 
 Erstellen eines Service Bus-Themenendpunkts (schlüsselbasierte Authentifizierung):
 ```azurecli-interactive 
-az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
+az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> --dt-name <your-Azure-Digital-Twins-instance-name>
 ```
 
 Nachdem Sie diese Befehle erfolgreich ausgeführt haben, steht das Event Grid-, Event Hub- oder Service Bus-Thema mit dem von Ihnen mit dem `--endpoint-name`-Argument angegebenen Namen als Endpunkt in Azure Digital Twins zur Verfügung. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute**, die Sie [später in diesem Artikel](#create-an-event-route) erstellen.
@@ -88,7 +88,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 
 Wenn ein Endpunkt innerhalb eines bestimmten Zeitraums oder nach einer bestimmten Anzahl von Übermittlungsversuchen nicht übermittelt werden kann, kann Event Grid das nicht übermittelte Ereignis an ein Speicherkonto senden. Dieser Prozess wird als Speicherung **unzustellbarer Nachrichten** bezeichnet.
 
-Endpunkte mit aktivierter Funktion für unzustellbare Nachrichten können mit der [Azure Digital Twins-CLI](how-to-use-cli.md) oder mit [Steuerungsebenen-APIs](how-to-use-apis-sdks.md#overview-control-plane-apis) eingerichtet werden.
+Endpunkte mit aktivierter Funktion für unzustellbare Nachrichten können mit der [Azure Digital Twins-CLI](concepts-cli.md) oder mit [Steuerungsebenen-APIs](concepts-apis-sdks.md#overview-control-plane-apis) eingerichtet werden.
 
 Weitere Informationen zu unzustellbaren Nachrichten finden Sie unter [Konzepte: Ereignisrouten](concepts-route-events.md#dead-letter-events). Anweisungen zum Einrichten eines Endpunkts mit unzustellbaren Nachrichten finden Sie im Rest dieses Abschnitts.
 
@@ -119,7 +119,7 @@ Führen Sie die folgenden Schritte aus, um diese Speicherressourcen in Ihrem Azu
     
 #### <a name="create-the-dead-letter-endpoint"></a>Erstellen des Endpunkts für unzustellbare Nachrichten
 
-Fügen Sie die folgenden Parameter für unzustellbare Nachrichten zum Befehl [az dt endpoint create](/cli/azure/dt/endpoint/create) für die [Azure Digital Twins-CLI](how-to-use-cli.md) hinzu, um einen Endpunkt mit aktivierter Funktion für unzustellbare Nachrichten zu erstellen.
+Fügen Sie die folgenden Parameter für unzustellbare Nachrichten zum Befehl [az dt endpoint create](/cli/azure/dt/endpoint/create) für die [Azure Digital Twins-CLI](concepts-cli.md) hinzu, um einen Endpunkt mit aktivierter Funktion für unzustellbare Nachrichten zu erstellen.
 
 Der Wert für den Parameter ist der **SAS-URI für unzustellbare Nachrichten**, der aus dem Speicherkontonamen, dem Containernamen und dem SAS-Token besteht, die Sie im [vorherigen Abschnitt](#set-up-storage-resources) gesammelt haben. Dieser Parameter erstellt den Endpunkt mit der schlüsselbasierten Authentifizierung.
 
@@ -129,7 +129,7 @@ Der Wert für den Parameter ist der **SAS-URI für unzustellbare Nachrichten**, 
 
 Fügen Sie diesen Parameter am Ende des Befehls zum Erstellen des Endpunkts aus dem Abschnitt [Erstellen des Endpunkts](#create-the-endpoint) hinzu, um einen Endpunkt des gewünschten Typs zu erstellen, für den die Funktion für unzustellbare Nachrichten aktiviert ist.
 
-Alternativ können Sie Endpunkte für unzustellbare Nachrichten mithilfe der [Azure Digital Twins-Steuerungsebenen-APIs](how-to-use-apis-sdks.md#overview-control-plane-apis) anstelle der CLI verwenden. Lesen Sie hierzu die [DigitalTwinsEndpoint-Dokumentation](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate), um herauszufinden, wie Sie die Anforderung strukturieren und die Parameter für unzustellbare Nachrichten hinzufügen.
+Alternativ können Sie Endpunkte für unzustellbare Nachrichten mithilfe der [Azure Digital Twins-Steuerungsebenen-APIs](concepts-apis-sdks.md#overview-control-plane-apis) anstelle der CLI verwenden. Lesen Sie hierzu die [DigitalTwinsEndpoint-Dokumentation](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate), um herauszufinden, wie Sie die Anforderung strukturieren und die Parameter für unzustellbare Nachrichten hinzufügen.
 
 #### <a name="create-a-dead-letter-endpoint-with-identity-based-authentication"></a>Erstellen eines Endpunkts für unzustellbare Nachrichten mit identitätsbasierter Authentifizierung
 
@@ -208,7 +208,7 @@ Ereignisrouten können mit den [EventRoutes-Datenebenen-APIs](/rest/api/digital-
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Erstellen von Routen mit den APIs und dem C#-SDK
 
-Eine Möglichkeit zum Definieren von Ereignisrouten sind die [Datenebenen-APIs](how-to-use-apis-sdks.md#overview-data-plane-apis). Die Beispiele in diesem Abschnitt verwenden das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client).
+Eine Möglichkeit zum Definieren von Ereignisrouten sind die [Datenebenen-APIs](concepts-apis-sdks.md#overview-data-plane-apis). Die Beispiele in diesem Abschnitt verwenden das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client).
 
 `CreateOrReplaceEventRouteAsync` ist der SDK-Aufruf, der zum Hinzufügen einer Ereignisroute verwendet wird. Hier ist ein Beispiel für seine Verwendung:
 
@@ -227,7 +227,7 @@ Die folgende Beispielmethode zeigt, wie Sie eine Ereignisroute mit dem C#-SDK er
 
 Routen können auch mithilfe der [az dt route](/cli/azure/dt/route)-Befehle für die Azure Digital Twins-CLI verwaltet werden. 
 
-Weitere Informationen zur Verwendung der CLI und zu den verfügbaren Befehlen finden Sie unter [Vorgehensweise: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md).
+Weitere Informationen zur Verwendung der Befehlszeilenschnittstelle und zu den verfügbaren Befehlen finden Sie unter [Konzepte: Befehlssatz der Azure Digital Twins-Befehlszeilenschnittstelle](concepts-cli.md).
 
 ## <a name="filter-events"></a>Filtern von Ereignissen
 
@@ -243,7 +243,7 @@ Sie können die gesendeten Ereignisse einschränken, indem Sie der Ereignisroute
 >
 > Für Telemetriefilter bedeutet dies, dass die Groß-/Kleinschreibung mit der Groß-/Kleinschreibung in der vom Gerät gesendeten Telemetrie übereinstimmen muss und nicht unbedingt mit der im Modell des Zwillings definierten Groß-/Kleinschreibung. 
 
-Um einen Filter hinzuzufügen, können Sie eine PUT-Anforderung für *https://{Your-azure-digital-twins-hostname}/eventRoutes/{event-route-name}?api-version=2020-10-31* mit folgendem Textkörper verwenden:
+Um einen Filter hinzuzufügen, können Sie eine PUT-Anforderung für `https://{Your-azure-digital-twins-host-name}/eventRoutes/{event-route-name}?api-version=2020-10-31` mit folgendem Textkörper verwenden:
 
 :::code language="json" source="~/digital-twins-docs-samples/api-requests/filter.json":::
 

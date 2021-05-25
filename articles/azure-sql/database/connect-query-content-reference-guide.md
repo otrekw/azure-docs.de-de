@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/17/2021
-ms.openlocfilehash: 96b52c80fa06be8c157ad39fd65be4e491e0cbe3
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 548d7ee7495d579557cfff89f415298326807338
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874853"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803726"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Artikel zum Verbinden mit und Abfragen von Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -78,6 +78,20 @@ Außerdem empfiehlt es sich, TLS 1.1 und 1.0 auf dem Client zu deaktivieren, wen
 
 Nicht von Microsoft stammende Treiber verwenden TLS möglicherweise nicht standardmäßig. Dies kann beim Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Managed Instance von Bedeutung sein. Bei Anwendungen mit eingebetteten Treibern können Sie diese Verbindungseinstellungen möglicherweise nicht steuern. Wir empfehlen Ihnen, die Sicherheit solcher Treiber und Anwendungen zu überprüfen, bevor Sie sie auf Systemen verwenden, die mit vertraulichen Daten interagieren.
 
+## <a name="drivers"></a>Treiber
+
+Die folgenden Mindestversionen der Tools und Treiber werden empfohlen, wenn Sie eine Verbindung mit Azure SQL-Datenbank herstellen möchten:
+
+| Treiber/Tool | Version |
+| --- | --- |
+|.NET Framework | 4.6.1 (oder .NET Core) |
+|ODBC-Treiber| v17 |
+|PHP-Treiber| 5.2.0 |
+|JDBC-Treiber| 6.4.0 |
+|Node.js-Treiber| 2.1.1 |
+|OLEDB-Treiber| 18.0.2.0 |
+|[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) oder höher |
+
 ## <a name="libraries"></a>Bibliotheken
 
 Sie können verschiedene Bibliotheken und Frameworks zum Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Managed Instance verwenden. Unsere [Tutorials „Erste Schritte“](https://aka.ms/sqldev) ermöglichen Ihnen den schnellen Einstieg in Programmiersprachen wie C#, Java, Node.js, PHP und Python. Erstellen Sie anschließend mit SQL Server unter Linux oder Windows oder mit Docker unter macOS eine App.
@@ -93,6 +107,8 @@ Die folgende Tabelle enthält Verbindungsbibliotheken oder *Treiber*, die Client
 | Python | Windows, Linux, macOS | [Python-SQL-Treiber](/sql/connect/python/python-driver-for-sql-server/) | Installationsoptionen: <br/> \* [pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \* [pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [Erste Schritte](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows, Linux, macOS | [Ruby-Treiber für SQL Server](/sql/connect/ruby/ruby-driver-for-sql-server/) | [Installieren](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development/) | [Erste Schritte](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Windows, Linux, macOS | [Microsoft ODBC Driver for SQL Server](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server/) | [Download](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server/) |  
+
+### <a name="data-access-frameworks"></a>Datenzugriffsframeworks
 
 Die folgende Tabelle enthält Beispiele für ORM (Object-Relational Mapping)-Frameworks und Webframeworks, die Clientanwendungen mit SQL Server, Azure SQL-Datenbank, Azure SQL Managed Instance oder Azure Synapse Analytics nutzen können. Sie können die Frameworks unter Linux und Windows oder mit Docker verwenden.
 

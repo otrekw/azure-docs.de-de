@@ -2,13 +2,13 @@
 title: Konzepte – Identität und Zugriff
 description: Informationen zu den Identitäts- und Zugriffskonzepten von Azure VMware Solution
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: 352daaec87c2df7a0bc062abd38a96ad0285180a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.date: 05/11/2021
+ms.openlocfilehash: cd04cc6265faf480d80903ea65ba9886a413e356
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108069829"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788269"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Identitätskonzepte von Azure VMware Solution
 
@@ -31,8 +31,10 @@ Der Benutzer der privaten Cloud hat keinen Zugriff auf bestimmte Verwaltungskomp
 
 Sie können die Berechtigungen anzeigen, die der Azure VMware Solution-Rolle CloudAdmin in vCenter Ihrer privaten Azure VMware Solution-Cloud erteilt wurden.
 
-1. Melden Sie sich beim vSphere-Client des SDDC an, und gehen Sie zu **Menü** > **Verwaltung**.
+1. Melden Sie sich beim vSphere-Client an und gehen Sie zu **Menü** > **Verwaltung**.
+
 1. Wählen Sie unter **Zugriffssteuerung** die Option **Rollen** aus.
+
 1. Wählen Sie in der Liste der Rollen den Eintrag **CloudAdmin** aus, und wählen Sie dann **Berechtigungen** aus. 
 
    :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="Anzeigen der Berechtigungen der CloudAdmin-Rolle im vSphere-Client":::
@@ -64,31 +66,38 @@ Die Azure VMware Solution-Rolle CloudAdmin verfügt über die folgenden Berechti
 
 Azure VMware Solution unterstützt die Verwendung benutzerdefinierter Rollen mit den gleichen oder geringeren Berechtigung wie die Cloudadministratorrolle. 
 
-Die Cloudadministratorrolle kann benutzerdefinierte Rollen erstellen, ändern und löschen, wenn deren Berechtigungen kleiner oder gleich ihrer aktuellen Rolle sind. Möglicherweise können Sie auch Rollen mit Berechtigungen erstellen, die größer als die eines Cloudadministrators sind, aber Sie können diese Rolle dann keinen Benutzern oder Gruppen zuweisen und die Rolle auch nicht löschen.
+Mithilfe der Cloudadministratorrolle erstellen Sie benutzerdefinierte Rolle, ändern und löschen sie, wenn deren Berechtigungen kleiner oder gleich ihrer aktuellen Rolle sind. Sie können auch Rollen mit Berechtigungen erstellen, die größer als die eines Cloudadministrators sind, aber Sie können diese Rolle dann keinen Benutzern oder Gruppen zuweisen und die Rolle auch nicht löschen.
 
-Um die Erstellung von Rollen zu verhindern, die nicht zugewiesen oder gelöscht werden können, empfiehlt Azure VMware Solution, einen Klon der Cloudadministratorrolle als Grundlage für die Erstellung neuer benutzerdefinierter Rollen zu verwenden.
+Klonen Sie die CloudAdmin-Rolle als Grundlage zum Erstellen neuer benutzerdefinierter Rollen, um zu verhindern, dass Rollen erstellt werden, die nicht zugewiesen oder gelöscht werden können.
 
 #### <a name="create-a-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
 1. Melden Sie sich bei vCenter als „cloudadmin\@vsphere.local“ oder als ein Benutzer mit der Cloudadministratorrolle an.
-2. Navigieren Sie zum Konfigurationsabschnitt **Rollen**, und wählen Sie **Menü** > **Verwaltung** > **Zugriffssteuerung** > **Rollen** aus.
-3. Wählen Sie die Rolle **Cloudadministrator** und dann das Symbol **Rollenaktion klonen** aus.
 
-   > [!NOTE] 
-   > Klonen Sie nicht die Rolle **Administrator**. Diese Rolle kann nicht verwendet werden, und die erstellte benutzerdefinierte Rolle kann von „cloudadmin\@vsphere.local“ nicht gelöscht werden.
+1. Navigieren Sie zum Konfigurationsabschnitt **Rollen**, und wählen Sie **Menü** > **Verwaltung** > **Zugriffssteuerung** > **Rollen** aus.
 
-4. Geben Sie den gewünschten Namen für die geklonte Rolle an.
-5. Fügen Sie Berechtigungen für die Rolle hinzu, oder entfernen Sie Berechtigungen, und wählen Sie dann **OK** aus. Die geklonte Rolle sollte nun in der Liste **Rollen** angezeigt werden.
+1. Wählen Sie die Rolle **Cloudadministrator** und dann das Symbol **Rollenaktion klonen** aus.
+
+   >[!NOTE] 
+   >Klonen Sie die **Administratorrolle** nicht, da Sie sie nicht verwenden können. Außerdem kann die erstellte benutzerdefinierte Rolle nicht von cloudadmin\@vsphere.local gelöscht werden.
+
+1. Geben Sie den gewünschten Namen für die geklonte Rolle an.
+
+1. Fügen Sie Berechtigungen für die Rolle hinzu, oder entfernen Sie Berechtigungen, und wählen Sie dann **OK** aus. Die geklonte Rolle wird nun in der Liste **Rollen** angezeigt.
 
 
-#### <a name="use-a-custom-role"></a>Verwenden benutzerdefinierter Rollen
+#### <a name="apply-a-custom-role"></a>Anwenden einer benutzerdefinierten Rolle
 
 1. Navigieren Sie zu dem Objekt, das die hinzugefügte Berechtigung erfordert. Wenn Sie die Berechtigung z. B. auf einen Ordner anwenden möchten, navigieren Sie zu **Menü** > **VMs und Vorlagen** > **Ordnername**.
+
 1. Klicken Sie mit der rechten Maustaste auf das Objekt, und wählen Sie **Berechtigung hinzufügen** aus.
+
 1. Wählen Sie im Fenster **Berechtigung hinzufügen** in der Dropdownliste **Benutzer** die Identitätsquelle aus, in der die Gruppe oder der Benutzer enthalten ist.
+
 1. Suchen Sie nach dem Auswählen der Identitätsquelle im Abschnitt **Benutzer** nach dem Benutzer oder der Gruppe. 
+
 1. Wählen Sie die Rolle aus, die auf den Benutzer oder die Gruppe angewandt werden soll.
-1. Aktivieren Sie bei Bedarf die Option **In untergeordnete Elemente propagieren**, und wählen Sie **OK** aus.
-   Die hinzugefügte Berechtigung wird im Abschnitt **Berechtigungen** des Objekts angezeigt.
+
+1. Aktivieren Sie bei Bedarf die Option **In untergeordnete Elemente propagieren**, und wählen Sie **OK** aus. Die hinzugefügte Berechtigung wird im Abschnitt **Berechtigungen** angezeigt.
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Manager – Zugriff und Identität
 
@@ -96,9 +105,6 @@ Um die Erstellung von Rollen zu verhindern, die nicht zugewiesen oder gelöscht 
 >NSX-T 2.5 wird derzeit von allen neuen Private Clouds unterstützt.
 
 Für den Zugriff auf NSX-T Manager verwenden Sie das Konto *Administrator*. Es verfügt über umfassende Berechtigungen und ermöglicht Ihnen, Tier-1-Gateways (T1), Segmente (logische Switches) und alle Dienste zu erstellen und zu verwalten. Durch die Berechtigungen erhalten Sie Zugriff auf das NSX-T-Tier-0-Gateway (T0). Eine Änderung am T0-Gateway kann dazu führen, dass die Netzwerkleistung beeinträchtigt wird oder nicht auf die private Cloud zugegriffen werden kann. Erstellen Sie im Azure-Portal eine Supportanfrage, um Änderungen an Ihrem NSX-T-T0-Gateway anzufordern.
-
->[!TIP]
->Alternativ zur Verwendung von NSX-T Manager können Sie die [vereinfachte NSX-Funktion im Azure-Portal](configure-nsx-network-components-azure-portal.md) verwenden.
 
  
 ## <a name="next-steps"></a>Nächste Schritte
@@ -108,7 +114,7 @@ Nachdem Sie sich mit den Zugriffs- und Identitätskonzepten von Azure VMware Sol
 - [So aktivieren Sie die Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
 - [Details der einzelnen Berechtigungen](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
 - [Wie die Azure VMware Solution private Clouds überwacht und repariert](/azure/azure-vmware/concepts-private-clouds-clusters#host-monitoring-and-remediation)
-- [So aktivieren Sie die Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
+
 
 
 <!-- LINKS - external-->

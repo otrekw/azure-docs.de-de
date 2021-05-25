@@ -3,12 +3,12 @@ title: Steuerungen des Blaupausenbeispiels „SWIFT CSP-CSCF v2020“
 description: Steuerungszuordnung des SWIFT CSP-CSCF v2020-Blaupausenbeispiels Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 9d385cfddae11b026cd93f49c1bc41ca48265a87
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5f534853fb34be75f5bafcf0eb5dc90cf5afcc1a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386175"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733965"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Steuerungszuordnung des SWIFT CSP-CSCF v2020-Blaupausenbeispiels
 
@@ -37,7 +37,7 @@ Mithilfe der [rollenbasierten Zugriffssteuerung von Azure](../../../../role-base
 - Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden
 - Service Fabric-Cluster sollten nur Azure Active Directory für die Clientauthentifizierung verwenden.
 
-## <a name="29a--account-management--account-monitoring--atypical-usage"></a>2.9A Kontoverwaltung | Kontoüberwachung/ungewöhnliche Nutzung
+## <a name="29a-account-management--account-monitoring--atypical-usage"></a>2.9A Kontoverwaltung | Kontoüberwachung/ungewöhnliche Nutzung
 
 Mit Just-In-Time-Zugriff (JIT) auf virtuelle Computer wird eingehender Datenverkehr auf den virtuellen Azure-Computern gesperrt, um die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen. Alle JIT-Anforderungen des Zugriffs auf virtuelle Computer werden im Aktivitätsprotokoll protokolliert, sodass Sie atypische Nutzung überwachen können. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, die Ihnen hilft, virtuelle Computer zu überwachen, die Just-In-Time-Zugriff unterstützen können, aber noch nicht konfiguriert wurden.
 
@@ -188,7 +188,7 @@ Azure Security Center umfasst Funktionen zur Berichterstellung, über die Sie in
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Die Überwachung in SQL Server muss aktiviert werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
-- Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden. 
+- Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
 
 ## <a name="13-denial-of-service-protection"></a>1.3 Schutz vor Denial-of-Service-Angriffen

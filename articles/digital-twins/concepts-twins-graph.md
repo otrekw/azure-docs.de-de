@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0e0df10d9bbcb69e6a0bf56020c1ef70e1f81df6
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e0591d9897b1ea20978afc663e63e74af7153832
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207805"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788508"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Grundlegendes zu digitalen Zwillingen und zum zugehörigen Zwillingsgraphen
 
@@ -25,7 +25,7 @@ In einer Azure Digital Twins-Lösung werden die Entitäten in Ihrer Umgebung dur
 
 Bevor Sie auf Ihrer Azure Digital Twins-Instanz einen digitalen Zwilling erstellen können, müssen Sie ein *Modell* in den Dienst hochladen. Mit einem Modell wird unter anderem die Gruppe mit den Eigenschaften, Telemetrienachrichten und Beziehungen beschrieben, über die ein bestimmter Zwilling verfügen kann. Informationen zu den Informationsarten, die in einem Modell definiert sind, finden Sie unter [Konzepte: Benutzerdefinierte Modelle](concepts-models.md).
 
-Nachdem Sie ein Modell erstellt und hochgeladen haben, kann Ihre Client-App eine Instanz des entsprechenden Typs erstellen. Hierbei handelt es sich um einen digitalen Zwilling. Nachdem Sie beispielsweise ein Modell vom Typ *Floor* (Etage) erstellt haben, können Sie einen oder mehrere digitale Zwillinge erstellen, die diesen Typ nutzen (z. B. ein Zwilling vom Typ *Floor* mit dem Namen *GroundFloor*, einen anderen mit dem Namen *Floor2* usw.).
+Nachdem Sie ein Modell erstellt und hochgeladen haben, kann Ihre Client-App eine Instanz des entsprechenden Typs erstellen. Hierbei handelt es sich um einen digitalen Zwilling. Nachdem Sie beispielsweise ein Modell vom Typ Floor (Etage) erstellt haben, können Sie einen oder mehrere digitale Zwillinge erstellen, die diesen Typ nutzen (z. B. ein Zwilling vom Typ Floor mit dem Namen GroundFloor, einen anderen mit dem Namen Floor2 usw.).
 
 [!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
@@ -33,7 +33,7 @@ Nachdem Sie ein Modell erstellt und hochgeladen haben, kann Ihre Client-App eine
 
 Zwillinge werden anhand ihrer Beziehungen zu einem Zwillingsgraphen vereint. Die Beziehungen, die ein Zwilling aufweisen kann, werden als Teil des Modells definiert.  
 
-Beispielsweise kann für das Modell *Floor* (Etage) eine Beziehung vom Typ *contains* (enthält) definiert werden, die für Zwillinge vom Typ *Room* (Zimmer) bestimmt ist. Mit dieser Definition können Sie mit Azure Digital Twins *contains*-Beziehungen von allen *Floor*-Zwillingen zu allen *Room*-Zwillingen erstellen (einschließlich Zwillingen mit Untertypen von *Room*). 
+Beispielsweise kann für das Modell „Etage“ eine Beziehung vom Typ *contains* (enthält) definiert werden, die für Zwillinge vom Typ „Room“ (Zimmer) bestimmt ist. Mit dieser Definition können Sie mit Azure Digital Twins *contains*-Beziehungen von allen Floor-Zwillingen zu allen Room-Zwillingen erstellen (einschließlich Zwillingen mit Untertypen von Room). 
 
 Das Ergebnis dieses Prozesses ist eine Gruppe mit Knoten (die digitalen Zwillinge), die über Edges (die Beziehungen) in einem Graphen verbunden sind.
 
@@ -45,7 +45,7 @@ In diesem Abschnitt wird gezeigt, wie das Erstellen digitaler Zwillinge und Bezi
 
 ### <a name="create-digital-twins"></a>Erstellen digitaler Zwillinge
 
-Unten ist ein Ausschnitt des Clientcodes angegeben, in dem die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) zum Instanziieren eines Zwillings vom Typ *Room* (Zimmer) verwendet wird.
+Unten ist ein Ausschnitt des Clientcodes angegeben, in dem die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) zum Instanziieren eines Zwillings vom Typ „Room“ (Zimmer) verwendet wird.
 
 Sie können die Eigenschaften eines Zwillings bei der Erstellung initialisieren oder später festlegen. Um einen Zwilling mit initialisierten Eigenschaften zu erstellen, erstellen Sie ein JSON-Dokument, das die erforderlichen Initialisierungswerte bereitstellt.
 

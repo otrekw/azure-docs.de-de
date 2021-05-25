@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 05/06/2021
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fce963bd9ffdc6f768d7b3de4a9e4870add06136
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf1ca72d7afaace847fb1b8321723f57fbe133f6
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104245"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802166"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Vorgehensweise: Hinzufügen von App-Rollen zu Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -37,15 +37,12 @@ App-Rollen definieren Sie im [Azure-Portal](https://portal.azure.com). App-Rolle
 
 Es gibt zwei Möglichkeiten, App-Rollen mithilfe des Azure-Portals zu deklarieren:
 
-* [Benutzeroberfläche der App-Rollen](#app-roles-ui--preview) | Vorschau
-* [App-Manifest-Editor](#app-manifest-editor)
+- [App-Rollen-UI](#app-roles-ui)
+- [App-Manifest-Editor](#app-manifest-editor)
 
 Die Anzahl der von Ihnen hinzugefügten Rollen wird durch Beschränkungen begrenzt, die Azure Active Directory erzwingt. Informationen zu diesen Grenzwerten finden Sie im Abschnitt [Grenzwerte für das Manifest](./reference-app-manifest.md#manifest-limits) der [Azure Active Directory-App-Manifestreferenz](reference-app-manifest.md).
 
-### <a name="app-roles-ui--preview"></a>Benutzeroberfläche der App-Rollen | Vorschau
-
-> [!IMPORTANT]
-> Das Benutzeroberflächenfeature des Portals für App-Rollen[!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
+### <a name="app-roles-ui"></a>App-Rollen-UI
 
 So erstellen Sie eine App-Rolle mithilfe der Benutzeroberfläche des Azure-Portals:
 
@@ -53,20 +50,21 @@ So erstellen Sie eine App-Rolle mithilfe der Benutzeroberfläche des Azure-Porta
 1. Wählen Sie den Filter **Verzeichnis + Abonnement** im oberen Menü und dann den Azure Active Directory-Mandanten aus, der die App-Registrierung enthält, zu der Sie eine App-Rolle hinzufügen möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** und dann die Anwendung aus, in der Sie App-Rollen definieren möchten.
-1. Wählen Sie **App-Rollen | Vorschau** und dann **App-Rolle erstellen** aus.
+1. Wählen Sie **App-Rollen** und dann **App-Rolle erstellen** aus.
 
    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-overview-pane.png" alt-text="Bereich „App-Rollen“ einer App-Registrierung im Azure-Portal":::
+
 1. Geben Sie im Bereich **App-Rolle erstellen** die Einstellungen für die Rolle ein. Die Tabelle im Anschluss an das Bild beschreibt die einzelnen Einstellungen und ihre Parameter.
 
-    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Bereich „App-Rollen, Kontext erstellen“ einer App-Registrierung im Azure-Portal":::
+   :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Bereich „App-Rollen, Kontext erstellen“ einer App-Registrierung im Azure-Portal":::
 
-    | Feld | BESCHREIBUNG | Beispiel |
-    |-------|-------------|---------|
-    | **Anzeigename** | Anzeigename für die App-Rolle, die auf den Administratorbildschirmen für Zustimmung und App-Zuweisung angezeigt wird. Dieser Wert kann Leerzeichen enthalten. | `Survey Writer` |
-    | **Zulässige Mitgliedstypen** | Gibt an, ob diese App-Rolle Benutzern, Anwendungen oder beiden zugeordnet werden kann.<br/><br/>Wenn App-Rollen für `applications` verfügbar sind, werden sie als Anwendungsberechtigungen im Abschnitt **Verwalten** einer App-Registrierung unter **API-Berechtigungen > Berechtigung hinzufügen > Meine APIs > API auswählen > Anwendungsberechtigungen** angezeigt. | `Users/Groups` |
-    | **Wert** | Gibt den Wert des Rollenanspruchs an, den die Anwendung in den Token erwarten sollte. Der Wert sollte genau mit der Zeichenfolge übereinstimmen, auf die im Code der Anwendung verwiesen wird. Der Wert darf keine Leerzeichen enthalten. | `Survey.Create` |
-    | **Beschreibung** | Eine ausführlichere Beschreibung der App-Rolle, die dem Administrator auf den App-Zuweisungs- und -Zustimmungsoberflächen angezeigt wird. | `Writers can create surveys.` |
-    | **Möchten Sie diese App-Rolle aktivieren?** | Gibt an, ob die App-Rolle aktiviert ist. Um eine App-Rolle zu löschen, deaktivieren Sie dieses Kontrollkästchen, und wenden Sie die Änderung an, bevor Sie den Löschvorgang starten. | *Überprüft* |
+   | Feld                                    | Beschreibung                                                                                                                                                                                                                                                                                                       | Beispiel                       |
+   | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+   | **Anzeigename**                         | Anzeigename für die App-Rolle, die auf den Administratorbildschirmen für Zustimmung und App-Zuweisung angezeigt wird. Dieser Wert kann Leerzeichen enthalten.                                                                                                                                                                                    | `Survey Writer`               |
+   | **Zulässige Mitgliedstypen**                 | Gibt an, ob diese App-Rolle Benutzern, Anwendungen oder beiden zugeordnet werden kann.<br/><br/>Wenn App-Rollen für `applications` verfügbar sind, werden sie als Anwendungsberechtigungen im Abschnitt **Verwalten** einer App-Registrierung unter **API-Berechtigungen > Berechtigung hinzufügen > Meine APIs > API auswählen > Anwendungsberechtigungen** angezeigt. | `Users/Groups`                |
+   | **Wert**                                | Gibt den Wert des Rollenanspruchs an, den die Anwendung in den Token erwarten sollte. Der Wert sollte genau mit der Zeichenfolge übereinstimmen, auf die im Code der Anwendung verwiesen wird. Der Wert darf keine Leerzeichen enthalten.                                                                                                          | `Survey.Create`               |
+   | **Beschreibung**                          | Eine ausführlichere Beschreibung der App-Rolle, die dem Administrator auf den App-Zuweisungs- und -Zustimmungsoberflächen angezeigt wird.                                                                                                                                                                                                        | `Writers can create surveys.` |
+   | **Möchten Sie diese App-Rolle aktivieren?** | Gibt an, ob die App-Rolle aktiviert ist. Um eine App-Rolle zu löschen, deaktivieren Sie dieses Kontrollkästchen, und wenden Sie die Änderung an, bevor Sie den Löschvorgang starten.                                                                                                                                                             | _Überprüft_                     |
 
 1. Wählen Sie **Übernehmen** aus, um die Änderungen zu speichern.
 
@@ -154,7 +152,7 @@ Vergewissern Sie sich, dass die hinzugefügten Benutzer und Gruppen in der Liste
 
 Nachdem Sie App-Rollen in Ihrer Anwendung hinzugefügt haben, können Sie eine App-Rolle einer Client-App im Azure-Portal oder programmgesteuert mit [Microsoft Graph](/graph/api/user-post-approleassignments) zuweisen.
 
-Wenn Sie einer Anwendung App-Rollen zuweisen, erstellen Sie *Anwendungsberechtigungen*. Anwendungsberechtigungen werden in der Regel von Daemon-Apps oder Back-End-Diensten verwendet, die ohne Benutzerinteraktion sich selbst authentifizieren und autorisierte API-Aufrufe ausführen müssen.
+Wenn Sie einer Anwendung App-Rollen zuweisen, erstellen Sie _Anwendungsberechtigungen_. Anwendungsberechtigungen werden in der Regel von Daemon-Apps oder Back-End-Diensten verwendet, die ohne Benutzerinteraktion sich selbst authentifizieren und autorisierte API-Aufrufe ausführen müssen.
 
 So weisen Sie einer Anwendung mithilfe des Azure-Portals App-Rollen zu:
 
@@ -172,7 +170,7 @@ Die neu hinzugefügten Rollen sollten im Bereich **API-Berechtigungen** der Regi
 
 #### <a name="grant-admin-consent"></a>Gewähren der Administratoreinwilligung
 
-Da es sich hierbei um *Anwendungsberechtigungen* handelt, nicht um delegierte Berechtigungen, muss ein Administrator die Zustimmung zur Verwendung der App-Rollen erteilen, die der Anwendung zugewiesen sind.
+Da es sich hierbei um _Anwendungsberechtigungen_ handelt, nicht um delegierte Berechtigungen, muss ein Administrator die Zustimmung zur Verwendung der App-Rollen erteilen, die der Anwendung zugewiesen sind.
 
 1. Wählen Sie im Bereich **API-Berechtigungen** der App-Registrierung **Administratorzustimmung für \<tenant name\> erteilen** aus.
 1. Wählen Sie **Ja**, wenn Sie aufgefordert werden, die Zustimmung für die angeforderten Berechtigungen zu erteilen.
@@ -189,11 +187,11 @@ Informationen zum Hinzufügen der Autorisierung zu Ihrer Web-API finden Sie unte
 
 Obwohl Sie App-Rollen oder Gruppen für die Autorisierung verwenden können, können wichtige Unterschiede zwischen ihnen Ihre Entscheidung beeinflussen, welche für das Szenario verwendet werden sollen.
 
-| App-Rollen                                                                          | Gruppen                                                      |
-|------------------------------------------------------------------------------------|-------------------------------------------------------------|
+| App-Rollen                                                                                                    | Gruppen                                                      |
+| ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
 | Sie sind für eine Anwendung spezifisch und werden in der App-Registrierung definiert. Sie werden mit der Anwendung verschoben. | Sie sind nicht spezifisch für eine App, sondern für einen Azure AD-Mandanten. |
-| App-Rollen werden entfernt, wenn Ihre App-Registrierung entfernt wird.                      | Gruppen bleiben intakt, auch wenn die App entfernt wird.            |
-| Werden im `roles`-Anspruch bereitgestellt.                                                     | Werden im `groups`-Anspruch bereitgestellt.                                 |
+| App-Rollen werden entfernt, wenn Ihre App-Registrierung entfernt wird.                                                | Gruppen bleiben intakt, auch wenn die App entfernt wird.            |
+| Werden im `roles`-Anspruch bereitgestellt.                                                                               | Werden im `groups`-Anspruch bereitgestellt.                                 |
 
 Entwickler können mit App-Rollen steuern, ob ein Benutzer sich bei einer App anmelden kann oder eine App ein Zugriffstoken für eine Web-API abrufen kann. Um diese Sicherheitssteuerung auf Gruppen auszuweiten, können Entwickler und Administratoren auch Sicherheitsgruppen zu App-Rollen zuweisen.
 
@@ -203,12 +201,12 @@ App-Rollen werden von Entwicklern bevorzugt, wenn sie die Parameter der Autorisi
 
 In den folgenden Ressourcen erfahren Sie mehr über App-Rollen.
 
-* Codebeispiele auf GitHub
-  * [Add authorization using groups and group claims to an ASP.NET Core web app that signs-in users with the Microsoft identity platform](https://aka.ms/groupssample) (Hinzufügen der Autorisierung mit Gruppen und Gruppenansprüchen zu einer ASP.NET Core-Web-App, die Benutzer mit der Microsoft Identity Platform anmeldet)
-  * [Angular Single-Page Application (SPA) calling a .NET Core Web API and using App Roles and Security Groups to implement Role-Based Access Control (RBAC)](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups/blob/master/README.md) (Aufrufen einer .NET Core-Web-API durch eine Angular-SPA (Single-Page Application) und Verwenden von App-Rollen und Sicherheitsgruppen zum Implementieren rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC))
-* Referenzdokumentation
-  * [Azure AD-App-Manifest](./reference-app-manifest.md)
-  * [Azure AD-Zugriffstoken](access-tokens.md)
-  * [Azure AD-ID-Token](id-tokens.md)
-  * [Bereitstellen optionaler Ansprüche für Ihre App](active-directory-optional-claims.md)
-* Video: [Implement authorization in your applications with Microsoft identity platform ](https://www.youtube.com/watch?v=LRoc-na27l0) (Implementieren der Autorisierung in Ihren Anwendungen mit Microsoft Identity Platform) (1:01:15)
+- Codebeispiele auf GitHub
+  - [Add authorization using groups and group claims to an ASP.NET Core web app that signs-in users with the Microsoft identity platform](https://aka.ms/groupssample) (Hinzufügen der Autorisierung mit Gruppen und Gruppenansprüchen zu einer ASP.NET Core-Web-App, die Benutzer mit der Microsoft Identity Platform anmeldet)
+  - [Angular Single-Page Application (SPA) calling a .NET Core Web API and using App Roles and Security Groups to implement Role-Based Access Control (RBAC)](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups/blob/master/README.md) (Aufrufen einer .NET Core-Web-API durch eine Angular-SPA (Single-Page Application) und Verwenden von App-Rollen und Sicherheitsgruppen zum Implementieren rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC))
+- Referenzdokumentation
+  - [Azure AD-App-Manifest](./reference-app-manifest.md)
+  - [Azure AD-Zugriffstoken](access-tokens.md)
+  - [Azure AD-ID-Token](id-tokens.md)
+  - [Bereitstellen optionaler Ansprüche für Ihre App](active-directory-optional-claims.md)
+- Video: [Implement authorization in your applications with Microsoft identity platform ](https://www.youtube.com/watch?v=LRoc-na27l0) (Implementieren der Autorisierung in Ihren Anwendungen mit Microsoft Identity Platform) (1:01:15)
