@@ -1,17 +1,17 @@
 ---
 title: Erstellen Ihrer ersten dauerhaften Funktion in Azure mit C#
 description: Hier erfahren Sie, wie Sie eine dauerhafte Azure-Funktion mit Visual Studio oder Visual Studio Code erstellen und veröffentlichen.
-author: jeffhollan
+author: anthonychu
 ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: 36566baac2885c449e1eae762924357bf571b39f
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: da5819c6a40e1d5a513e9d742702d5435f4efbeb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490215"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465970"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Erstellen Ihrer ersten dauerhaften Funktion in C\#
 
@@ -53,7 +53,7 @@ In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Func
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | Wert | BESCHREIBUNG |
+    | Prompt | Wert | Beschreibung |
     | ------ | ----- | ----------- |
     | Auswählen einer Sprache für Ihr Funktions-App-Projekt | C# | Erstellen Sie ein lokales C#-Functions-Projekt. |
     | „Select a version“ (Wählen Sie eine Version aus.) | Azure Functions v3 | Diese Option wird nur angezeigt, wenn die Core Tools noch nicht installiert sind. In diesem Fall werden die Core Tools beim erstmaligen Ausführen der App installiert. |
@@ -70,7 +70,7 @@ In den folgenden Schritten wird eine Vorlage zum Erstellen des dauerhaften Funkt
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | Wert | BESCHREIBUNG |
+    | Prompt | Wert | Beschreibung |
     | ------ | ----- | ----------- |
     | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | DurableFunctionsOrchestration | Erstellen Sie eine Orchestrierung für Durable Functions. |
     | Angeben eines Funktionsnamens | HelloOrchestration | Der Name der Klasse, in der Funktionen erstellt werden. |
@@ -78,7 +78,7 @@ In den folgenden Schritten wird eine Vorlage zum Erstellen des dauerhaften Funkt
 
 1. Wenn Sie von VS Code zum Auswählen eines Speicherkontos aufgefordert werden, wählen Sie **Speicherkonto auswählen** aus. Geben Sie bei den Eingabeaufforderungen die folgenden Informationen an, um ein neues Speicherkonto in Azure zu erstellen:
 
-    | Prompt | Wert | BESCHREIBUNG |
+    | Prompt | Wert | Beschreibung |
     | ------ | ----- | ----------- |
     | Auswählen des Abonnements | *Name Ihres Abonnements* | Auswählen des Azure-Abonnements |
     | Auswählen eines Speicherkontos | Erstellen eines neuen Speicherkontos |  |
@@ -193,7 +193,7 @@ Mit der Azure Functions-Vorlage wird ein Projekt erstellt, das in einer Funktion
 
     ![Dialogfeld „Neue Azure Functions-Anwendung erstellen“ in Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Version** | Azure Functions 3.0 <br />(.NET Core) | Erstellt ein Funktionsprojekt mit der Version 3.0 der Runtime von Azure Functions, die .NET Core 3.1 unterstützt. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](../functions-versions.md).   |
     | **Vorlage** | Leer | Erstellt eine leere Funktions-App. |

@@ -3,15 +3,15 @@ title: Bereitstellung ohne Ausfallzeit für Durable Functions
 description: Erfahren Sie, wie Sie für Ihre Durable Functions-Orchestrierung Bereitstellungen ohne Ausfallzeit aktivieren.
 author: tsushi
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 05/11/2021
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 707d624c47c536e00e98910a8902772703733515
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab3c9db7cc06add6019be7a92faf3f523e50f039
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558762"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368056"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Bereitstellung ohne Ausfallzeit für Durable Functions
 
@@ -29,6 +29,11 @@ Das folgende Diagramm enthält einen Vergleich der drei Hauptstrategien, um eine
 | [Statusüberprüfung mit Slot](#status-check-with-slot) | Ein System, das keine zeitintensiven Orchestrierungen mit einer Länge von mehr als 24 Stunden oder sich häufig überlappenden Orchestrierungen aufweist. | Einfache Codebasis<br/>Keine zusätzliche Funktions-App-Verwaltung erforderlich | Zusätzliche Verwaltung des Speicherkontos oder des Aufgabenhubs erforderlich<br/>Zeiträume erforderlich, in denen keine Orchestrierungen ausgeführt werden |
 | [Anwendungsrouting](#application-routing) | Ein System ohne Zeiträume, in denen keine Orchestrierungen ausgeführt werden, z.B. bei Zeiträumen mit Orchestrierungen mit einer Länge von mehr als 24 Stunden oder sich häufig überlappenden Orchestrierungen. | Verarbeitung neuer Versionen von Systemen mit fortlaufend ausgeführten Orchestrierungen, die Breaking Changes aufweisen | Intelligenter Anwendungsrouter erforderlich<br/>Mögliche Erreichung der maximal zulässigen Anzahl von Funktions-Apps für Ihr Abonnement. Der Standardwert ist 100. |
 
+Im restlichen Teil dieses Dokuments werden diese Strategien ausführlicher beschrieben.
+
+> [!NOTE]
+> In den Beschreibungen für diese Bereitstellungsstrategien ohne Ausfallzeiten wird davon ausgegangen, dass Sie den Azure Storage-Standardanbieter für Durable Functions verwenden. Die Anleitung ist möglicherweise nicht geeignet, wenn Sie einen anderen Speicheranbieter als den Azure Storage-Standardanbieter verwenden. Weitere Informationen zu den verschiedenen Speicheranbieteroptionen und deren Vergleich finden Sie in der Dokumentation zu [Durable Functions-Speicheranbietern](durable-functions-storage-providers.md).
+
 ## <a name="versioning"></a>Versionsverwaltung
 
 Definieren Sie neue Versionen Ihrer Funktionen, und belassen Sie die alten Versionen in Ihrer Funktions-App. Wie im Diagramm dargestellt, wird die Version einer Funktion zu einem Teil ihres Namens. Da frühere Versionen von Funktionen beibehalten werden, kann von ausgeführten Orchestrierungsinstanzen weiterhin darauf verwiesen werden. In der Zwischenzeit wird bei Anforderungen neuer Orchestrierungsinstanzen die aktuelle Version benötigt, auf die die Funktion Ihres Orchestrierungsclients über eine App-Einstellung verweisen kann.
@@ -37,8 +42,8 @@ Definieren Sie neue Versionen Ihrer Funktionen, und belassen Sie die alten Versi
 
 Bei dieser Strategie muss jede Funktion kopiert werden, und die zugehörigen Verweise auf andere Funktionen müssen aktualisiert werden. Sie können dies vereinfachen, indem Sie ein Skript schreiben. Hier ist ein [Beispielprojekt](https://github.com/TsuyoshiUshio/DurableVersioning) mit einem Migrationsskript.
 
->[!NOTE]
->Bei dieser Strategie werden Bereitstellungsslots verwendet, um Ausfälle während der Bereitstellung zu vermeiden. Ausführlichere Informationen zur Erstellung und Verwendung neuer Bereitstellungsslots finden Sie unter [Azure Functions-Bereitstellungsslots](../functions-deployment-slots.md).
+> [!NOTE]
+> Bei dieser Strategie werden Bereitstellungsslots verwendet, um Ausfälle während der Bereitstellung zu vermeiden. Ausführlichere Informationen zur Erstellung und Verwendung neuer Bereitstellungsslots finden Sie unter [Azure Functions-Bereitstellungsslots](../functions-deployment-slots.md).
 
 ## <a name="status-check-with-slot"></a>Statusüberprüfung mit Slot
 
@@ -50,7 +55,7 @@ Verwenden Sie das folgende Verfahren, um dieses Szenario einzurichten.
 
 1. [Fügen Sie Ihrer Funktions-App für Staging und Produktion Bereitstellungsslots hinzu](../functions-deployment-slots.md#add-a-slot).
 
-1. Legen Sie für jeden Slot die [AzureWebJobsStorage-Anwendungseinstellung](../functions-app-settings.md#azurewebjobsstorage) auf die Verbindungszeichenfolge eines freigegebenen Speicherkontos fest. Diese Verbindungszeichenfolge für das Speicherkonto wird von der Azure Functions-Runtime verwendet. Dieses Konto wird von der Azure Functions-Runtime verwendet und verwaltet die Schlüssel der Funktion.
+1. Legen Sie für jeden Slot die [AzureWebJobsStorage-Anwendungseinstellung](../functions-app-settings.md#azurewebjobsstorage) auf die Verbindungszeichenfolge eines freigegebenen Speicherkontos fest. Diese Speicherkonto-Verbindungszeichenfolge wird von der Azure Functions-Runtime verwendet, um die [Zugriffsschlüssel der Funktionen](../security-concepts.md#function-access-keys) sicher zu speichern.
 
 1. Erstellen Sie für jeden Slot eine neue App-Einstellung (z.B. `DurableManagementStorage`). Legen Sie den zugehörigen Wert auf die Verbindungszeichenfolge unterschiedlicher Speicherkonten fest. Diese Speicherkonten werden von der Durable Functions-Erweiterung für [zuverlässige Ausführung](./durable-functions-orchestrations.md) verwendet. Verwenden Sie ein separates Speicherkonto für jeden Slot. Markieren Sie diese Einstellung nicht als Einstellung für den Bereitstellungsslot.
 

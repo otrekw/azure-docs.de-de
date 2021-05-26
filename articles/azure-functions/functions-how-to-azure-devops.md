@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 478f8be017ced99776a0b69ef034d54ba8075c6e
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7d3a108185c43be2f6de72466db10db5e2ec94f1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076795"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077318"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Continuous Delivery mit Azure DevOps
 
@@ -177,7 +177,7 @@ steps:
 
 Sie müssen abhängig vom Hostbetriebssystem eines der folgenden YAML-Beispiele in der YAML-Datei angeben.
 
-#### <a name="windows-function-app"></a>Windows-Funktions-App
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Der folgende Codeausschnitt kann verwendet werden, um eine Windows-Funktions-App bereitzustellen:
 
@@ -194,7 +194,7 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Linux-Funktions-App
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Der folgende Codeausschnitt kann verwendet werden, um eine Linux-Funktions-App bereitzustellen:
 
@@ -211,6 +211,7 @@ steps:
     #resourceGroupName: '<Resource Group Name>'
     #slotName: '<Slot name>'
 ```
+---
 
 ## <a name="template-based-pipeline"></a>Vorlagenbasierte Pipeline
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ed6edeadfb1c6f73cc10771d4a5328e7bddb3642
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 921a2c6425010dbf98c170d8435267e440883aa5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835162"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075140"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Anleitung zum Bereitstellen von Web-Apps mit Azure Resource Manager-Vorlagen
 
@@ -53,7 +53,7 @@ Sie stellen Ressourcen in der folgenden Reihenfolge bereit:
 
 In der Regel enthält Ihre Lösung nur einige dieser Ressourcen und Ebenen. Bei fehlenden Ebenen ordnen Sie die Ressourcen auf niedrigerer Ebene der nächsthöheren Ebene zu.
 
-Das folgende Beispiel zeigt einen Teil einer Vorlage. Der Wert der Verbindungszeichenfolgen-Konfiguration hängt von der MSDeploy-Erweiterung ab. Die MS Deploy-Erweiterung hängt von der Web-App und der Datenbank ab. 
+Das folgende Beispiel zeigt einen Teil einer Vorlage. Der Wert der Verbindungszeichenfolgen-Konfiguration hängt von der MSDeploy-Erweiterung ab. Die MS Deploy-Erweiterung hängt von der Web-App und der Datenbank ab.
 
 ```json
 {
@@ -82,7 +82,7 @@ Das folgende Beispiel zeigt einen Teil einer Vorlage. Der Wert der Verbindungsze
 }
 ```
 
-Ein lauffähiges Beispiel, das den oben stehenden Code verwendet, finden Sie unter [Vorlage: Erstellen einer einfachen Umbraco-Web-App](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
+Ein lauffähiges Beispiel, das den oben stehenden Code verwendet, finden Sie unter [Vorlage: Erstellen einer einfachen Umbraco-Web-App](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/umbraco/umbraco-webapp-simple).
 
 ## <a name="find-information-about-msdeploy-errors"></a>Suchen von Informationen zu MS Deploy-Fehlern
 

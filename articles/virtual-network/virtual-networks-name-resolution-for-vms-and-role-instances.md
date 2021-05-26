@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5af424ff79cb8dc919590db7e236323b2d16fc4e
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 2e2f9876c77e292a2634b5ba29958f64f1f32679
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752893"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110079298"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -162,7 +162,7 @@ Ihre Namensauflösungsanforderungen gehen möglicherweise über die von Azure be
 
 DNS-Server in einem virtuellen Netzwerk können DNS-Abfragen an die rekursiven Resolver in Azure weiterleiten. Dadurch können Sie Hostnamen innerhalb dieses virtuellen Netzwerks auflösen. Beispielsweise kann ein in Azure ausgeführter Domänencontroller (DC) auf DNS-Abfragen für die eigenen Domänen antworten und alle anderen Abfragen an Azure weiterleiten. Durch das Weiterleiten von Abfragen sind sowohl Ihre lokalen Ressourcen (über den DC) als auch die von Azure bereitgestellten Hostnamen (über die Weiterleitung) für die virtuellen Computer sichtbar. Der Zugriff auf die rekursiven Resolver in Azure wird über die virtuelle IP-Adresse 168.63.129.16 bereitgestellt.
 
-Durch die DNS-Weiterleitung wird außerdem eine DNS-Auflösung zwischen virtuellen Netzwerken ermöglicht, sodass die lokalen Computer von Azure bereitgestellte Hostnamen auflösen können. Um den Hostnamen eines virtuellen Computers aufzulösen, muss sich die DNS-Server-VM im selben virtuellen Netzwerk befinden und zur Weiterleitung von Abfragen für Hostnamen an Azure konfiguriert sein. Da jedes virtuelle Netzwerk ein eigenes DNS-Suffix verwendet, können Sie mithilfe von Regeln für die bedingte Weiterleitung DNS-Abfragen zur Auflösung an das richtige virtuelle Netzwerk senden. In der folgenden Abbildung sind zwei virtuelle Netzwerke und ein lokales Netzwerk dargestellt, in dem eine DNS-Auflösung zwischen virtuellen Netzwerken mithilfe dieser Methode ausgeführt wird. Ein Beispiel für eine DNS-Weiterleitung steht im [Azure-Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/demos/dns-forwarder/) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) zur Verfügung.
+Durch die DNS-Weiterleitung wird außerdem eine DNS-Auflösung zwischen virtuellen Netzwerken ermöglicht, sodass die lokalen Computer von Azure bereitgestellte Hostnamen auflösen können. Um den Hostnamen eines virtuellen Computers aufzulösen, muss sich die DNS-Server-VM im selben virtuellen Netzwerk befinden und zur Weiterleitung von Abfragen für Hostnamen an Azure konfiguriert sein. Da jedes virtuelle Netzwerk ein eigenes DNS-Suffix verwendet, können Sie mithilfe von Regeln für die bedingte Weiterleitung DNS-Abfragen zur Auflösung an das richtige virtuelle Netzwerk senden. In der folgenden Abbildung sind zwei virtuelle Netzwerke und ein lokales Netzwerk dargestellt, in dem eine DNS-Auflösung zwischen virtuellen Netzwerken mithilfe dieser Methode ausgeführt wird. Ein Beispiel für eine DNS-Weiterleitung steht im [Azure-Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/en-us/resources/templates/dns-forwarder) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) zur Verfügung.
 
 > [!NOTE]
 > Eine Rolleninstanz kann die Namensauflösung von virtuellen Computern innerhalb des gleichen virtuellen Netzwerks ausführen. Diese erfolgt mithilfe des FQDN, der aus dem Hostnamen des virtuellen Computers und dem DNS-Suffix **internal.cloudapp.net** besteht. In diesem Fall ist die Namensauflösung jedoch nur erfolgreich, wenn für die Rolleninstanz der Namen des virtuellen Computers im [Rollenschema (CSCFG-Datei)](/previous-versions/azure/reference/jj156212(v=azure.100)) definiert ist.
@@ -199,7 +199,7 @@ Angenommen, Sie müssen Namensauflösung aus Ihrer Web-App, die mithilfe von App
 
 Wenn Sie eine Namensauflösung von Ihrer mit App Service erstellten und mit einem virtuellen Netzwerk verknüpften Web-App aus in virtuelle Computer in einem anderen virtuellen Netzwerk durchführen müssen, müssen Sie in beiden virtuellen Netzwerken folgendermaßen benutzerdefinierte DNS-Server verwenden:
 
-* Richten Sie einen DNS-Server im virtuellen Zielnetzwerk auf einem virtuellen Computer ein, der auch Abfragen an den rekursiven Resolver in Azure (virtuelle IP-Adresse 168.63.129.16) weiterleiten kann. Ein Beispiel für eine DNS-Weiterleitung steht im [Azure-Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/demos/dns-forwarder) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) zur Verfügung.
+* Richten Sie einen DNS-Server im virtuellen Zielnetzwerk auf einem virtuellen Computer ein, der auch Abfragen an den rekursiven Resolver in Azure (virtuelle IP-Adresse 168.63.129.16) weiterleiten kann. Ein Beispiel für eine DNS-Weiterleitung steht im [Azure-Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/en-us/resources/templates/dns-forwarder/) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) zur Verfügung.
 * Richten Sie eine DNS-Weiterleitung im virtuellen Quellnetzwerk auf einem virtuellen Computer ein. Konfigurieren Sie diese DNS-Weiterleitung für das Weiterleiten von Abfragen an den DNS-Server in Ihrem virtuellen Zielnetzwerk.
 * Konfigurieren Sie den DNS-Quellserver in den Einstellungen für Ihr virtuelles Quellnetzwerk.
 * Aktivieren Sie die Integration virtueller Netzwerke für Ihre Web-App, um eine Verknüpfung mit dem virtuellen Quellnetzwerk herzustellen. Befolgen Sie dazu die Anweisungen unter [Integrieren Ihrer App in ein virtuelles Netzwerk](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 08/03/2020
+ms.date: 05/13/2021
 ms.author: alkohli
-ms.openlocfilehash: b3d4ec54d6db88a04f7aca46c0c96fa2d4d17ac7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 45a82d85510bd432efa93211ffc9dba8b911c557
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101730645"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070745"
 ---
 Stellen Sie eine Verbindung mit dem virtuellen Computer her, und verwenden Sie dabei die private IP-Adresse, die Sie im Rahmen der VM-Erstellung übergeben haben.
 
@@ -64,11 +64,3 @@ Stellen Sie eine Verbindung mit dem virtuellen Computer her, und verwenden Sie d
     
     Administrator@mylinuxvm:
     ```
-
-1. Wenn Sie während der Erstellung der VM eine öffentliche IP-Adresse verwendet haben, können Sie über diese IP-Adresse eine Verbindung mit der VM herstellen. Um die öffentliche IP-Adresse abzurufen, führen Sie den folgenden Befehl aus: 
-
-   ```powershell
-   $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
-   ```
-
-   Die öffentliche IP-Adresse ist in diesem Fall identisch mit der privaten IP-Adresse, die Sie beim Erstellen der virtuellen Netzwerkschnittstelle übermittelt haben.

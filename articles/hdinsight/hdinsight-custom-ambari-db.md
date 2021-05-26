@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: fe38ddc594060c78a2d26e9b25476e38736b4cf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d5b67bb25f6f2425016824e5b73783a8db8e806
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946050"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072152"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>Einrichten von HDInsight-Clustern mit einer benutzerdefinierten Ambari-Datenbank
 
@@ -49,7 +49,7 @@ Beachten Sie beim Hosten der Apache Ambari-Datenbank in einer externen Datenbank
 
 ## <a name="deploy-clusters-with-a-custom-ambari-db"></a>Bereitstellen von HDInsight-Clustern mit einer benutzerdefinierten Ambari-Datenbank
 
-Verwenden Sie die [Schnellstartvorlage für die benutzerdefinierte Ambari-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-custom-ambari-db), um einen HDInsight-Cluster zu erstellen, in dem Ihre benutzerdefinierte externe Ambari-Datenbank verwendet wird.
+Verwenden Sie die [Schnellstartvorlage für die benutzerdefinierte Ambari-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-custom-ambari-db), um einen HDInsight-Cluster zu erstellen, in dem Ihre benutzerdefinierte externe Ambari-Datenbank verwendet wird.
 
 Bearbeiten Sie die Parameter in `azuredeploy.parameters.json`, um Informationen zum neuen Cluster und der Datenbank anzugeben, die Ambari enthält.
 

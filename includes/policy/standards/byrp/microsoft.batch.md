@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fba180f54b4bc662108925e77608cd04a11346ca
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: be2b4f90bc16b8eebe5c925c91ac8d9a93961296
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745383"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072374"
 ---
 ## <a name="azure-security-benchmark"></a>Vergleichstest für die Azure-Sicherheit
 
@@ -20,7 +20,7 @@ Weitere Informationen dazu, wie die verfügbaren Azure Policy-Build-Ins für all
 
 |Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
-|Protokollierung und Bedrohungserkennung |LT-4 |Aktivieren der Protokollierung für Azure-Ressourcen |[In Batch-Konten müssen Ressourcenprotokolle aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F428256e6-1fac-4f48-a757-df34c2b3336d) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_AuditDiagnosticLog_Audit.json) |
+|Protokollierung und Bedrohungserkennung |LT-4 |Aktivieren der Protokollierung für Azure-Ressourcen |[In Batch-Konten müssen Ressourcenprotokolle aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F428256e6-1fac-4f48-a757-df34c2b3336d) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="azure-security-benchmark-v1"></a>Azure-Sicherheitsvergleichstest v1
 
@@ -30,7 +30,7 @@ Weitere Informationen dazu, wie die verfügbaren Azure Policy-Build-Ins für all
 
 |Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
-|Protokollierung und Überwachung |2.3 |Aktivieren der Überwachungsprotokollierung für Azure-Ressourcen |[In Batch-Konten müssen Ressourcenprotokolle aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F428256e6-1fac-4f48-a757-df34c2b3336d) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_AuditDiagnosticLog_Audit.json) |
+|Protokollierung und Überwachung |2.3 |Aktivieren der Überwachungsprotokollierung für Azure-Ressourcen |[In Batch-Konten müssen Ressourcenprotokolle aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F428256e6-1fac-4f48-a757-df34c2b3336d) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="cis-microsoft-azure-foundations-benchmark-130"></a>CIS Microsoft Azure Foundations Benchmark 1.3.0
 
@@ -48,5 +48,5 @@ Weitere Informationen zu diesem Konformitätsstandard finden Sie unter [HIPAA HI
 
 |Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
-|Überwachungsprotokollierung |1205.09aa2System.1 - 09.aa |Es werden Protokolle mit gesendeten und empfangenen Nachrichten geführt. Sie enthalten Informationen wie Datum, Uhrzeit, Ursprung und Ziel der Nachricht, aber nicht ihren Inhalt. |[In Batch-Konten müssen Ressourcenprotokolle aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F428256e6-1fac-4f48-a757-df34c2b3336d) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_AuditDiagnosticLog_Audit.json) |
+|Überwachungsprotokollierung |1205.09aa2System.1 - 09.aa |Es werden Protokolle mit gesendeten und empfangenen Nachrichten geführt. Sie enthalten Informationen wie Datum, Uhrzeit, Ursprung und Ziel der Nachricht, aber nicht ihren Inhalt. |[In Batch-Konten müssen Ressourcenprotokolle aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F428256e6-1fac-4f48-a757-df34c2b3336d) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_AuditDiagnosticLog_Audit.json) |
 

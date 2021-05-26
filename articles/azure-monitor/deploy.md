@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7656efeb26a8a8b3c752ea996c8e644c68a48626
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dc73ac91320e1860c5c30f1b31962ad826a1038f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043999"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076796"
 ---
 # <a name="deploy-azure-monitor"></a>Bereitstellen von Azure Monitor
 Die Aktivierung von Azure Monitor für die Überwachung aller Ihrer Azure-Ressourcen umfasst die Konfiguration von Azure Monitor-Komponenten und von Azure-Ressourcen, damit diese Überwachungsdaten generieren, die Azure Monitor dann sammeln kann. In diesem Artikel werden die erforderlichen Schritte für eine vollständige Implementierung von Azure Monitor anhand einer allgemeinen Konfiguration beschrieben, mit der alle Ressourcen in Ihrem Azure-Abonnement überwacht werden können. Die grundlegenden Beschreibungen der einzelnen Schritte enthalten Links zu weiteren Informationen mit detaillierten Konfigurationsanforderungen.
@@ -137,7 +137,7 @@ Die **codebasierte Überwachung** bietet mehr Anpassungsmöglichkeiten und samme
 - [ASP.NET-Anwendungen](app/asp-net.md)
 - [ASP.NET Core-Anwendungen](app/asp-net-core.md)
 - [.NET-Konsolenanwendungen](app/console.md)
-- [Java](app/java-get-started.md)
+- [Java](app/java-in-process-agent.md)
 - [Node.js](app/nodejs.md)
 - [Python](app/opencensus-python.md)
 - [Andere Plattformen](app/platforms.md)

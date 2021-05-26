@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 12d78846f5892e71388de6e6e76b868f9b14d4de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0a912a3023ba6d8504d5856d5a45a93d0dc9488
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88008915"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809398"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Behandeln von serverseitigen Problemen bei Azure Cache for Redis
 
@@ -33,7 +33,7 @@ Wenn der Arbeitsspeicher auf der Serverseite sehr stark ausgelastet ist, führt 
 - Der Cache wird bis fast zu seiner maximalen Kapazität mit Daten gefüllt.
 - Redis stellt eine hohe Fragmentierung des Arbeitsspeichers fest. Diese Fragmentierung wird am häufigsten durch das Speichern großer Objekte verursacht, da Redis für kleine Objekte optimiert ist.
 
-Redis macht zwei Statistiken durch den Befehl [INFO](https://redis.io/commands/info) verfügbar, der Ihnen bei der Identifizierung des folgenden Problems helfen kann: „used_memory“ und „used_memory_rss“. Sie können mithilfe des Portals [diese Metriken anzeigen](cache-how-to-monitor.md#view-metrics-with-azure-monitor).
+Redis macht zwei Statistiken durch den Befehl [INFO](https://redis.io/commands/info) verfügbar, der Ihnen bei der Identifizierung des folgenden Problems helfen kann: „used_memory“ und „used_memory_rss“. Sie können mithilfe des Portals [diese Metriken anzeigen](cache-how-to-monitor.md#view-metrics-with-azure-monitor-metrics-explorer).
 
 Sie können mehrere Änderungen vornehmen, um die Speicherauslastung in einem gesunden Rahmen zu halten:
 
@@ -47,7 +47,7 @@ Sie können mehrere Änderungen vornehmen, um die Speicherauslastung in einem ge
 
 Eine hohe Serverauslastung oder CPU-Auslastung bedeutet, dass der Server Anforderungen nicht rechtzeitig verarbeiten kann. Der Server weist möglicherweise langsame Reaktionszeiten auf und kann mit den Anforderungsraten nicht Schritt halten.
 
-[Überwachen Sie Metriken](cache-how-to-monitor.md#view-metrics-with-azure-monitor) wie CPU- oder Serverauslastung. Beobachten Sie die Spitzen bei der CPU-Auslastung, denn sie korrespondieren mit Timeouts.
+[Überwachen Sie Metriken](cache-how-to-monitor.md#view-metrics-with-azure-monitor-metrics-explorer) wie CPU- oder Serverauslastung. Beobachten Sie die Spitzen bei der CPU-Auslastung, denn sie korrespondieren mit Timeouts.
 
 Sie können mehrere Änderungen vornehmen, um hohe Serverauslastung zu mindern:
 
@@ -65,7 +65,7 @@ Mithilfe des Befehls[SLOWLOG](https://redis.io/commands/slowlog) können Sie spe
 
 Verschiedene Cachegrößen verfügen über unterschiedliche Netzwerkbandbreitenkapazitäten. Wenn der Server die verfügbare Bandbreite überschreitet, werden die Daten nicht so schnell an den Client gesendet wie erwartet. Es könnte bei Anforderungen von Clients zu Timeouts kommen, weil der Server die Daten nicht schnell genug an den Client übertragen kann.
 
-Die Metriken „Cache Read“ (Cachelesevorgänge) und „Cache Write“ (Cacheschreibvorgänge) können verwendet werden, um festzustellen, wie viel Bandbreite auf der Serverseite verwendet wird. Sie können [diese Metriken im Portal anzeigen](cache-how-to-monitor.md#view-metrics-with-azure-monitor).
+Die Metriken „Cache Read“ (Cachelesevorgänge) und „Cache Write“ (Cacheschreibvorgänge) können verwendet werden, um festzustellen, wie viel Bandbreite auf der Serverseite verwendet wird. Sie können [diese Metriken im Portal anzeigen](cache-how-to-monitor.md#view-metrics-with-azure-monitor-metrics-explorer).
 
 So mindern Sie Situationen, in denen der Netzwerkbandbreitenverbrauch am Rande der maximalen Kapazität liegt
 

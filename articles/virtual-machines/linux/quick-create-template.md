@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 97a9d3632cb0e78b899844b1aaa84a030c6da23e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6c72f62db310155c9b2fa1d09476ab9406f2d330
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549616"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813198"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Schnellstart: Erstellen eines virtuellen Ubuntu Linux-Computers mithilfe einer ARM-Vorlage
 
@@ -24,7 +24,7 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine Azure Resourc
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
+[![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-linux%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/).
 
-:::code language="json" source="~/quickstart-templates/101-vm-simple-linux/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-linux/azuredeploy.json":::
 
 
 In der Vorlage sind mehrere Ressourcen definiert:
@@ -51,7 +51,7 @@ In der Vorlage sind mehrere Ressourcen definiert:
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt einen Schlüsseltresor und ein Geheimnis.
 
-    [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
+    [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-linux%2fazuredeploy.json)
 
 1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein. Verwenden Sie die Standardwerte, sofern diese verfügbar sind.
 
@@ -82,7 +82,7 @@ Im Azure-Portal können Sie das Vorhandensein der VM und der anderen erstellten 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, wenn Sie die Ressourcen nicht mehr benötigen. Hierbei werden die VM und alle in der Ressourcengruppe enthaltenen Ressourcen gelöscht. 
+Löschen Sie die Ressourcengruppe, wenn Sie die Ressourcen nicht mehr benötigen. Hierbei werden die VM und alle in der Ressourcengruppe enthaltenen Ressourcen gelöscht.
 
 1. Wählen Sie die **Ressourcengruppe** aus.
 1. Wählen Sie auf der Seite für die Ressourcengruppe die Option **Löschen** aus.

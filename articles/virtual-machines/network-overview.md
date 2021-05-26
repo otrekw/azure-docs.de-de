@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: c0fa311f03de1805d2487fe469d9305c0e01af78
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: a3c07457a193e4a1285dc8a2b3c7197f6151a984
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751867"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077608"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Virtuelle Netzwerke und virtuelle Computer in Azure
 
@@ -50,7 +50,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer Net
 | Azure-Portal | Beim Erstellen einer VM im Azure-Portal wird automatisch eine Netzwerkschnittstelle für Sie erstellt (die Verwendung einer separat erstellten NIC ist nicht möglich). Das Portal erstellt eine VM mit nur einer NIC. Falls Sie eine VM mit mehr als einer NIC erstellen möchten, müssen Sie eine andere Methode verwenden. |
 | [Azure PowerShell](./windows/multiple-nics.md) | Verwenden Sie [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) mit dem Parameter **-PublicIpAddressId**, um den Bezeichner der zuvor erstellten öffentlichen IP-Adresse anzugeben. |
 | [Azure-Befehlszeilenschnittstelle](./linux/multiple-nics.md) | Verwenden Sie zum Angeben des Bezeichners der zuvor erstellten öffentlichen IP-Adresse [az network nic create](/cli/azure/network/nic) mit dem Parameter **--public-ip-address**. |
-| [Vorlage](../virtual-network/template-samples.md) | Verwenden Sie [Network Interface in a Virtual Network with Public IP Address](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) (Netzwerkschnittstelle in einem virtuellen Netzwerk mit öffentlicher IP-Adresse) als Anleitung zum Bereitstellen einer Netzwerkschnittstelle mit einer Vorlage. |
+| [Vorlage](../virtual-network/template-samples.md) | Verwenden Sie [Network Interface in a Virtual Network with Public IP Address](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/nic-publicip-dns-vnet) (Netzwerkschnittstelle in einem virtuellen Netzwerk mit öffentlicher IP-Adresse) als Anleitung zum Bereitstellen einer Netzwerkschnittstelle mit einer Vorlage. |
 
 ## <a name="ip-addresses"></a>IP-Adressen
 
@@ -114,7 +114,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer Net
 | [Azure portal](../virtual-network/tutorial-filter-network-traffic.md) | Wenn Sie im Azure-Portal eine VM erstellen, wird automatisch eine NSG erstellt und der vom Portal erstellten NIC zugeordnet. Der Name der NSG ist eine Kombination aus dem Namen der VM und dem Zusatz **-nsg**. Diese NSG enthält eine Regel für eingehenden Datenverkehr mit einer Priorität von 1000, RDP als Dienst, TCP als Protokoll, 3389 als Port und der Einstellung „Allow“ als Aktion. Wenn Sie anderen eingehenden Datenverkehr für die VM zulassen möchten, müssen Sie der NSG zusätzliche Regeln hinzufügen. |
 | [Azure PowerShell](../virtual-network/tutorial-filter-network-traffic.md) | Verwenden Sie [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig), und geben Sie die erforderlichen Informationen für die Regel an. Verwenden Sie [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup), um die NSG zu erstellen. Verwenden Sie [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig), um die NSG für das Subnetz zu konfigurieren. Verwenden Sie [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork), um die NSG im VNET hinzuzufügen. |
 | [Azure-Befehlszeilenschnittstelle](../virtual-network/tutorial-filter-network-traffic-cli.md) | Verwenden Sie [az network nsg create](/cli/azure/network/nsg) für die erste Erstellung der NSG. Verwenden Sie [az network nsg rule create](/cli/azure/network/nsg/rule), um der NSG Regeln hinzuzufügen. Verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet), um die NSG dem Subnetz hinzuzufügen. |
-| [Vorlage](../virtual-network/template-samples.md) | Verwenden Sie [Create a Network Security Group](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create) (Erstellen einer Netzwerksicherheitsgruppe) als Anleitung zum Bereitstellen einer Netzwerksicherheitsgruppe mit einer Vorlage. |
+| [Vorlage](../virtual-network/template-samples.md) | Verwenden Sie [Create a Network Security Group](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/security-group-create) (Erstellen einer Netzwerksicherheitsgruppe) als Anleitung zum Bereitstellen einer Netzwerksicherheitsgruppe mit einer Vorlage. |
 
 ## <a name="load-balancers"></a>Load Balancer
 
@@ -138,7 +138,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines Las
 | Azure-Portal |  Sie können [einen Lastausgleich für den Internetdatenverkehr an virtuelle Computer mit dem Azure-Portal vornehmen](../load-balancer/quickstart-load-balancer-standard-public-portal.md). |
 | [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-public-powershell.md) | Verwenden Sie zum Angeben des Bezeichners der zuvor erstellten öffentlichen IP-Adresse [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) mit dem Parameter **-PublicIpAddress**. Verwenden Sie [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig), um die Konfiguration des Back-End-Adresspools zu erstellen. Verwenden Sie [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig), um NAT-Regeln für den eingehenden Datenverkehr zu erstellen, die der von Ihnen erstellten Front-End-IP-Konfiguration zugeordnet sind. Verwenden Sie [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig), um die erforderlichen Tests zu erstellen. Verwenden Sie [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig), um die Konfiguration für den Lastenausgleich zu erstellen. Verwenden Sie [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer), um den Lastenausgleich zu erstellen.|
 | [Azure-Befehlszeilenschnittstelle](../load-balancer/quickstart-load-balancer-standard-public-cli.md) | Verwenden Sie [az network lb create](/cli/azure/network/lb), um die erste Konfiguration für den Lastenausgleich zu erstellen. Verwenden Sie [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip), um die zuvor erstellte öffentliche IP-Adresse hinzuzufügen. Verwenden Sie [az network lb address-pool create](/cli/azure/network/lb/address-pool), um die Konfiguration des Back-End-Adresspools hinzuzufügen. Verwenden Sie [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule), um NAT-Regeln hinzuzufügen. Verwenden Sie [az network lb rule create](/cli/azure/network/lb/rule), um die Lastenausgleichsregeln hinzuzufügen. Verwenden Sie [az network lb probe create](/cli/azure/network/lb/probe), um die Tests hinzuzufügen. |
-| [Vorlage](../load-balancer/quickstart-load-balancer-standard-public-template.md) | Verwenden Sie [Create an Internet-facing Standard Load Balancer with three VMs](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create) (Erstellen eines Lastenausgleichs mit Internetzugriff mit drei VMs, in englischer Sprache) als Leitfaden zum Bereitstellen eines Lastenausgleichs mit einer Vorlage. |
+| [Vorlage](../load-balancer/quickstart-load-balancer-standard-public-template.md) | Verwenden Sie [Create an Internet-facing Standard Load Balancer with three VMs](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-standard-create) (Erstellen eines Lastenausgleichs mit Internetzugriff mit drei VMs, in englischer Sprache) als Leitfaden zum Bereitstellen eines Lastenausgleichs mit einer Vorlage. |
 
 In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines internen Lastenausgleichs verwenden können.
 
@@ -168,7 +168,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer VM 
 | [Azure portal](./windows/quick-create-portal.md) | Es werden die bereits erwähnten Standard-Netzwerkeinstellungen verwendet, um eine VM mit einer einzelnen NIC zu erstellen. Zum Erstellen einer VM mit mehreren NICs müssen Sie eine andere Methode verwenden. |
 | [Azure PowerShell](./windows/tutorial-manage-vm.md) | Umfasst die Verwendung von [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) zum Hinzufügen der zuvor erstellten NIC zur VM-Konfiguration. |
 | [Azure-Befehlszeilenschnittstelle](./linux/create-cli-complete.md) | Erstellen Sie eine VM, und stellen Sie dafür eine Verbindung mit einem VNet, einem Subnetz und einer Netzwerkkarte her, indem Sie die einzelnen erforderlichen Schritte ausführen. |
-| [Vorlage](./windows/ps-template.md) | Verwenden Sie [Very simple deployment of a Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) (Sehr einfache Bereitstellung einer Windows-VM) als Anleitung zum Bereitstellen einer VM mit einer Vorlage. |
+| [Vorlage](./windows/ps-template.md) | Verwenden Sie [Very simple deployment of a Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows) (Sehr einfache Bereitstellung einer Windows-VM) als Anleitung zum Bereitstellen einer VM mit einer Vorlage. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zu den VM-spezifischen Schritten zum Verwalten von virtuellen Azure-Netzwerken für VMs finden Sie in den Tutorials für [Windows](../virtual-machines/windows/tutorial-virtual-network.md) oder [Linux](../virtual-machines/linux/tutorial-virtual-network.md).

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 33860e35785e65396851bcd9f8cf9d9577a9d0a5
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f8c95fb0af8db0fd975388a9fc6286ef2a5ebf9c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790899"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110079059"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Tutorial: Erstellen einer End-to-End-Lösung
 
@@ -48,7 +48,7 @@ Für dieses Szenario interagieren Sie mit den Komponenten der vorab geschriebene
 
 Hier sind die Komponenten aufgeführt, die mit der Beispiel-App *AdtSampleApp* für das Gebäudeszenario implementiert werden:
 * Geräte-Authentifizierung 
-* Beispiele für die Nutzung des [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) (in *CommandLoop.cs*)
+* Beispiele für die Nutzung des [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) (in *CommandLoop.cs*)
 * Konsolenschnittstelle zum Aufrufen der Azure Digital Twins-API
 * *SampleClientApp*: Azure Digital Twins-Beispiellösung
 * *SampleFunctionsApp*: Eine Azure Functions-App, mit der Ihr Azure Digital Twins-Graph basierend auf den Telemetriedaten von IoT Hub- und Azure Digital Twins-Ereignissen aktualisiert wird
@@ -426,9 +426,9 @@ Nach Abschluss dieses Tutorials können Sie die zu entfernenden Ressourcen ausw�
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* **Wenn Sie die in diesem Artikel eingerichtete Azure Digital Twins-Instanz weiterhin verwenden, aber einige oder alle ihrer Modelle, Zwillinge und Beziehungen entfernen möchten**, können Sie die CLI-Befehle vom Typ [az dt](/cli/azure/dt) in einem [Azure Cloud Shell](https://shell.azure.com)-Fenster verwenden, um die gewünschten Elemente zu löschen.
+* **Wenn Sie die in diesem Artikel eingerichtete Azure Digital Twins-Instanz weiterhin verwenden, aber einige oder alle ihrer Modelle, Zwillinge und Beziehungen entfernen möchten**, können Sie die CLI-Befehle vom Typ [az dt](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) in einem [Azure Cloud Shell](https://shell.azure.com)-Fenster verwenden, um die gewünschten Elemente zu löschen.
 
-    Mit dieser Option werden keine der anderen in diesem Tutorial erstellten Azure-Ressourcen (IoT Hub, Azure Functions-App usw.) entfernt. Sie können diese einzeln mithilfe der entsprechenden [dt-Befehle](/cli/azure/reference-index) für jeden Ressourcentyp löschen.
+    Mit dieser Option werden keine der anderen in diesem Tutorial erstellten Azure-Ressourcen (IoT Hub, Azure Functions-App usw.) entfernt. Sie können diese einzeln mithilfe der entsprechenden [dt-Befehle](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true) für jeden Ressourcentyp löschen.
 
 Löschen Sie ggf. auch den Projektordner von Ihrem lokalen Computer.
 

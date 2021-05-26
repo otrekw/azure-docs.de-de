@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 576c1f0b087775ee3784229147b3715b22135217
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1d7c017b2be76a7b5df1e92658a848d209218138
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090674"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465901"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Hochverfügbarkeit für Azure Cache for Redis
 
@@ -21,9 +21,9 @@ Azure Cache for Redis implementiert Hochverfügbarkeit durch Verwendung mehrerer
 
 | Option | BESCHREIBUNG | Verfügbarkeit | Standard | Premium | Enterprise |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
-| [Standardreplikation](#standard-replication)| Replizierte Konfiguration mit zwei Knoten in einem Rechenzentrum mit automatischem Failover | 99,9 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |✔|✔|-|
-| [Zonenredundanz](#zone-redundancy) | Replizierte Konfiguration mit mehreren Knoten in allen Verfügbarkeitszonen mit automatischem Failover | Bis zu 99,99 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |-|✔|✔|
-| [Georeplikation](#geo-replication) | Verknüpfte Cacheinstanzen in zwei Regionen mit benutzergesteuertem Failover | Bis zu 99,999 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |-|✔|Vorschau|
+| [Standardreplikation](#standard-replication)| Replizierte Konfiguration mit zwei Knoten in einem Rechenzentrum mit automatischem Failover | 99,9 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_1/)) |✔|✔|-|
+| [Zonenredundanz](#zone-redundancy) | Replizierte Konfiguration mit mehreren Knoten in allen Verfügbarkeitszonen mit automatischem Failover | Bis zu 99,99 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_1/)) |-|✔|✔|
+| [Georeplikation](#geo-replication) | Verknüpfte Cacheinstanzen in zwei Regionen mit benutzergesteuertem Failover | Bis zu 99,999 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_1/)) |-|✔|Vorschau|
 
 ## <a name="standard-replication"></a>Standardreplikation
 

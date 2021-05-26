@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Lokal, Docker, Container
-ms.openlocfilehash: efc92bbd149bf66abf8d1582902443df054ce0e6
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: e4b79dc278bf41015c84f72994dd68419ae6e230
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930217"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097946"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installieren und Ausführen von Docker-Containern für die APIs des Speech-Diensts 
 
@@ -40,11 +40,11 @@ Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur 
 
 | Container | Features | Neueste Version |
 |--|--|--|
-| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.11.0 |
-| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.11.0 |
-| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.13.0 |
+| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.12.0 |
+| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.12.0 |
+| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.14.0 |
 | Speech-Sprachenerkennung | Erkennen der in Audiodateien gesprochenen Sprache | 1.0 |
-| Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.5.0 |
+| Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.6.0 |
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
