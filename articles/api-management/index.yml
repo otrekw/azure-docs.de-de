@@ -7,15 +7,15 @@ metadata:
   services: api-management
   ms.service: api-management
   ms.topic: landing-page
-  author: georgewallace
-  ms.author: gwallace
-  ms.date: 03/08/2020
-  ms.openlocfilehash: 5a3b09c3835e09d734c1083f84893224c3fe8cfd
-  ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+  author: dlepow
+  ms.author: danlep
+  ms.date: 05/13/2021
+  ms.openlocfilehash: 996bd32a932d866978267ae19f1811f76036517c
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 12/14/2020
-  ms.locfileid: "97399093"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110368800"
 landingContent:
 - title: Informationen zu API Management
   linkLists:
@@ -23,8 +23,12 @@ landingContent:
     links:
     - text: Was ist API Management?
       url: api-management-key-concepts.md
-    - text: Verfügbarkeit von Features
+    - text: Dienstebenen und -features
       url: api-management-features.md
+  - linkListType: architecture
+    links:
+    - text: Einfache Unternehmensintegration
+      url: /azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration
 - title: Erstellen einer Instanz
   linkLists:
   - linkListType: quickstart
@@ -73,9 +77,15 @@ landingContent:
       url: powershell-samples.md
     - text: Azure Policy-Integrationen
       url: ./policy-reference.md
-- title: Aufbau
+- title: Aktivieren der Hybridverwaltung und Multi-Cloud-Verwaltung
   linkLists:
-  - linkListType: architecture
+  - linkListType: overview
     links:
-    - text: Einfache Unternehmensintegration
-      url: /azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration
+    - text: Übersicht über das selbstgehostete Gateway
+      url: self-hosted-gateway-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Hostgateway auf Azure Arc
+      url: how-to-deploy-self-hosted-gateway-azure-arc.md
+    - text: Hostgateway in Kubernetes
+      url: how-to-deploy-self-hosted-gateway-kubernetes.md

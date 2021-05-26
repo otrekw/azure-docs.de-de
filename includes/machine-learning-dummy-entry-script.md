@@ -6,12 +6,12 @@ ms.subservice: core
 ms.topic: include
 ms.date: 04/21/2021
 ms.author: gopalv
-ms.openlocfilehash: 0bac8d2b70ea1dc0dd624cae669f6b2f4c2e1c6e
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 30237f94d5961d853509e303f50be1e8a42de9b0
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952158"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846100"
 ---
 Das Eingangsskript empfängt an einen bereitgestellten Webdienst übermittelte Daten und übergibt sie an das Modell. Anschließend wird die Antwort des Modells an den Client zurückgegeben. *Das Skript ist auf Ihr Modell zugeschnitten*. Im Einstiegsskript muss die Struktur der vom Modell erwarteten und zurückgegebenen Daten bekannt sein.
 
@@ -22,7 +22,7 @@ Sie müssen die folgenden beiden Schritte in Ihrem Eingabeskript ausführen:
 
 Verwenden Sie für die erste Bereitstellung ein Dummyeinstiegsskript, das die empfangenen Daten ausgibt.
 
-```python
+<!-- ```python
 import json
 
 def init():
@@ -33,7 +33,10 @@ def run(data):
     print(f'received data {test}')
     return(f'test is {test}')
 
-```
+``` -->
+
+:::code language="python" source="~/azureml-examples-main/python-sdk/tutorials/deploy-local/source_dir/echo_score.py":::
+
 Speichern Sie diese Datei als `echo_score.py` in einem Verzeichnis mit dem Namen `source_dir`.
 
 Wenn ein Benutzer Ihr Modell beispielsweise folgendermaßen aufruft:

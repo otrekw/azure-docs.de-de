@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: fc85eec008ef099d63d538e4871a1a84573f5a18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a3d99a0befd336d37b02b448a65df406d3a8e6e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98790444"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059012"
 ---
 # <a name="what-is-a-voice-assistant"></a>Was ist ein Sprachassistent?
 
@@ -74,7 +74,7 @@ Sprachassistenten, die mit Azure Speech-Diensten erstellt wurden, können die ge
 
 * [Custom Speech Service](./custom-speech-overview.md)
 * [Custom Voice](how-to-custom-voice.md)
-* [Benutzerdefiniertes Schlüsselwort](custom-keyword-overview.md)
+* [Benutzerdefiniertes Schlüsselwort](keyword-recognition-overview.md)
 
 > [!NOTE]
 > Die Anpassungsoptionen unterscheiden sich je nach Sprache/Gebietsschema. Weitere Informationen erhalten Sie unter [Unterstützte Sprachen](language-support.md).

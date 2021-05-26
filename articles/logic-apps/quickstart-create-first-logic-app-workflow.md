@@ -1,22 +1,22 @@
 ---
-title: 'Schnellstart: Erstellen eines Integrationsworkflows im Azure-Portal'
-description: Hier erfahren Sie, wie Sie im Azure-Portal Ihren ersten automatisierten Integrationsworkflow mit Azure Logic Apps erstellen.
+title: Schnellstart - Erstellen von Integrationsworkflows mit Azure Logic Apps im Azure-Portal
+description: Erstellen Sie Ihren ersten automatisierten Integrations-Workflow mit Mandanten-fähigen Azure Logic Apps im Azure-Portal.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: contperf-fy21q4
-ms.date: 04/28/2021
-ms.openlocfilehash: 1ff7ba5e3835fccb2f67fa56cf3737adb9d36b45
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.date: 05/25/2021
+ms.openlocfilehash: b7419986137632561cae71b91dd55a2af64912a7
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738894"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373284"
 ---
-# <a name="quickstart-create-an-integration-workflow-using-azure-logic-apps-in-the-azure-portal"></a>Schnellstart: Erstellen eines Integrationsworkflows mit Azure Logic Apps im Azure-Portal
+# <a name="quickstart-create-an-integration-workflow-with-multi-tenant-azure-logic-apps-and-the-azure-portal"></a>Schnellstart: Erstellen eines Integrationsworkflows mit Mandanten-fähigen Azure Logic Apps und dem Azure-Portal
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie bei Verwendung von [Azure Logic Apps](logic-apps-overview.md) einen automatisierten Beispielworkflow erstellen, der zwei Dienste integriert: einen RSS-Feed für eine Website und ein E-Mail-Konto. Dieses Beispiel ist zwar cloudbasiert, von Logic Apps werden aber auch Workflows unterstützt, die Apps, Daten, Dienste und Systeme in der Cloud, in lokalen Umgebungen und in Hybridumgebungen miteinander verbinden.
+Dieser Schnellstart zeigt, wie Sie einen automatisierten Beispielworkflow erstellen, der zwei Dienste integriert, einen RSS-Feed für eine Website und ein E-Mail-Konto, wenn Sie [Azure Logic Apps](logic-apps-overview.md) mit *mehreren Mandanten* verwenden. Dieses Beispiel ist zwar cloudbasiert, von Logic Apps werden jedoch auch Workflows unterstützt, die Apps, Daten, Dienste und Systeme in der Cloud, in lokalen Umgebungen und in Hybridumgebungen miteinander verbinden. Weitere Informationen zum Multi-Mandanten- versus Einzel-Mandanten-Modell finden Sie unter [Einzel-Mandant versus Multi-Mandant und Integrationsdienstumgebung](single-tenant-overview-compare.md).
 
 In diesem Beispiel wird ein Workflow mit RSS-Connector und Office 365 Outlook-Connector erstellt. Der RSS-Connector verfügt über einen Trigger, durch den basierend auf einem Zeitplan ein RSS-Feed überprüft wird. Der Office 365 Outlook-Connector verfügt über eine Aktion, durch die für jedes neue Element eine E-Mail gesendet wird. Die Connectors in diesem Beispiel sind nur zwei von [Hunderten von Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors), die Sie in einem Workflow verwenden können.
 
@@ -71,7 +71,7 @@ Informationen zum Erstellen und Verwalten einer Logik-App mit anderen Tools find
 
 1. Geben Sie im Bereich **Logik-App** die grundlegenden Details und Einstellungen für Ihre Logik-App an. Erstellen Sie eine neue [Ressourcengruppe](../azure-resource-manager/management/overview.md#terminology) für diese exemplarische Logik-App.
 
-   | Eigenschaft | Wert | Beschreibung |
+   | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements. |
    | **Ressourcengruppe** | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md#terminology). Dieser Name muss regionsübergreifend eindeutig sein. In diesem Beispiel wird „My-First-LA-RG“ verwendet. |

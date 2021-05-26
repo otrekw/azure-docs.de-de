@@ -77,6 +77,8 @@
       href: durable-functions-instance-management.md
     - name: Versionsverwaltung
       href: durable-functions-versioning.md
+    - name: Speicheranbieter
+      href: durable-functions-storage-providers.md
     - name: Leistung und Skalierbarkeit
       href: durable-functions-perf-and-scale.md
     - name: Hochverfügbarkeit

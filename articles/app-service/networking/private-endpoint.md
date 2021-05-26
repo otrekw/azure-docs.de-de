@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: c95c90e7860b0257f63802b321c35b38ec00bb23
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 582a3303d5e43fff2390025bc35281c8ac916d84
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140963"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110096362"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Verwenden von Private Endpoint für eine Azure-Web-App
 
@@ -68,7 +68,7 @@ Wenn Sie einen privaten Endpunkt für die Web-App verwenden, muss die angeforder
 Standardmäßig ist der öffentliche Name Ihrer Web-App ohne einen privaten Endpunkt ein kanonischer Name für den Cluster.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |type |Wert |
+|Name |Typ |Wert |
 |-----|-----|------|
 |mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
 |clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
@@ -78,7 +78,7 @@ Der Name wird beispielsweise wie folgt aufgelöst:
 Wenn Sie einen privaten Endpunkt bereitstellen, wird der DNS-Eintrag so aktualisiert, dass er auf den kanonischen Namen mywebapp.privatelink.azurewebsites.net verweist.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |type |Wert |Anmerkung |
+|Name |Typ |Wert |Anmerkung |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
@@ -89,7 +89,7 @@ Sie müssen einen privaten DNS-Server oder eine private Azure DNS-Zone einrichte
 Die DNS-Zone, die Sie erstellen müssen, ist: **privatelink.azurewebsites.net**. Registrieren Sie den Eintrag für Ihre Web-App mit einem A-Eintrag und der IP des privaten Endpunkts.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |type |Wert |Anmerkung |
+|Name |Typ |Wert |Anmerkung |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|<--Azure erstellt diesen Eintrag im öffentlichen Azure-DNS, um die App auf die private Verbindung zu verweisen. Dies wird von uns verwaltet.|
 |mywebapp.privatelink.azurewebsites.net|Ein|10.10.10.8|<– Sie verwalten diesen Eintrag in Ihrem DNS-System, sodass er auf die IP-Adresse Ihres privaten Endpunkts verweist|
@@ -101,7 +101,7 @@ Wenn Sie einen benutzerdefinierten DNS-Namen verwenden müssen, müssen Sie den 
 
 Für die Kudu-Konsole oder die Kudu-REST-API (z. B. zusammen mit selbstgehosteten DevOps-Agents bereitgestellt) müssen Sie zwei Einträge in Ihrer privaten Azure DNS-Zone oder auf Ihrem benutzerdefinierten DNS-Server erstellen. 
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 |-----|-----|-----|
 | mywebapp.privatelink.azurewebsites.net | Ein | PrivateEndpointIP | 
 | mywebapp.scm.privatelink.azurewebsites.net | Ein | PrivateEndpointIP | 
@@ -150,6 +150,6 @@ Wir verbessern regelmäßig die Funktionen private Verbindung (Private Link) und
 [howtoguide2]: ../scripts/cli-deploy-privateendpoint.md
 [howtoguide3]: ../scripts/powershell-deploy-private-endpoint.md
 [howtoguide4]: ../scripts/template-deploy-private-endpoint.md
-[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
+[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-privateendpoint-vnet-injection
 [howtoguide6]: ../scripts/terraform-secure-backend-frontend.md
 [TiP]: https://docs.microsoft.com/azure/app-service/deploy-staging-slots#route-traffic

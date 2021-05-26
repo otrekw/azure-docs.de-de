@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/11/2020
+ms.date: 05/17/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c68f76e56f49f055466f7332d7751ac468e034d8
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: aefaf2ca96ac697a74561ff3df68bacbadf1ec99
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616738"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067203"
 ---
 ::: zone target="docs"
 
@@ -80,7 +80,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 
 3. Öffnen Sie ein Befehlsfenster, um über Ihren Hostcomputer auf die Freigaben zuzugreifen, die mit Ihrem Speicherkonto (*utsac1* im folgenden Beispiel) verknüpft sind. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
-    `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
+    `net use \\<IP address of the device>\<share name>  /u:<IP address of the device>\<user name for the share>`
 
     Abhängig von Ihrem Datenformat lauten die Freigabepfade wie folgt:
     - Azure-Blockblob: `\\10.126.76.138\utSAC1_202006051000_BlockBlob`
@@ -90,7 +90,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 4. Geben Sie das Kennwort für die Freigabe ein, wenn Sie dazu aufgefordert werden. Wenn das Kennwort Sonderzeichen enthält, fügen Sie vor und hinter dem Kennwort doppelte Anführungszeichen ein. Das folgende Beispiel zeigt das Herstellen einer Verbindung mit einer Freigabe über den obigen Befehl.
 
     ```
-    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
+    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:10.126.76.138\testuser1
     Enter the password for 'testuser1' to connect to '10.126.76.138': "ab1c2def$3g45%6h7i&j8kl9012345"
     The command completed successfully.
     ```

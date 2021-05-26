@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/05/2021
-ms.openlocfilehash: 98e849791acd71ea8bf3ac9cb1949da9f562e749
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: c8589911e4424afe1ff2f5dbed32c375cb29c706
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490827"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095728"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Planen und Verwalten von Kosten für Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,7 +41,7 @@ Wenn Sie planen, Azure Cosmos DB im Modus „bereitgestellter Durchsatz“ zu v
 
 Im folgenden Screenshot sind der Durchsatz und die Kostenschätzung bei Verwendung des Capacity Calculators dargestellt:
 
-:::image type="content" source="./media/plan-manage-costs/capacity-calculator-cost-estimate.png" alt-text="Kostenschätzung im Azure Cosmos DB Capacity Calculator":::
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode-sql-api.png" alt-text="Capacity Planner: Modus „Basic“" border="true":::
 
 ### <a name="estimate-serverless-costs"></a><a id="estimating-serverless-costs"></a> Schätzung der serverlosen Kosten
 

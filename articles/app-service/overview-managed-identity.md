@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: badc6b6f1b45938e950ffadeefe30d81ed383440
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 27e17fd6cc9f50a5a46bf3de9bf2603209894bf3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762441"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368246"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Verwenden verwalteter Identitäten für App Service und Azure Functions
 
@@ -20,6 +20,9 @@ In diesem Thema erfahren Sie, wie eine verwaltete Identität für App Service- u
 
 > [!Important] 
 > Verwaltete Identitäten für App Service und Azure Functions verhalten sich nicht wie erwartet, wenn Ihre App abonnement- bzw. mandantenübergreifend migriert wird. Die App muss eine neue Identität abrufen. Zu diesem Zweck deaktivieren Sie die Funktion und aktivieren Sie anschließend erneut. Weitere Informationen finden Sie im Abschnitt [Entfernen einer Identität](#remove) weiter unten. Für nachgeschaltete Ressourcen müssen außerdem die Zugriffsrichtlinien für die Verwendung der neuen Identität aktualisiert werden.
+
+> [!NOTE]
+> Verwaltete Identitäten sind für [Apps, die in Azure Arc bereitgestellt sind](overview-arc-integration.md), nicht verfügbar.
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
@@ -338,7 +341,7 @@ Bei **IDENTITY_ENDPOINT** handelt es sich um eine lokale URL, über die Ihre App
 
 Eine erfolgreiche 200 OK-Antwort enthält einen JSON-Text mit folgenden Eigenschaften:
 
-> | Eigenschaftenname | Beschreibung                                                                                                                                                                                                                                        |
+> | Eigenschaftenname | BESCHREIBUNG                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | Das angeforderte Zugriffstoken. Der aufrufende Webdienst kann dieses Token verwenden, um die Authentifizierung für den empfangenden Webdienst durchzuführen.                                                                                                                               |
 > | client_id     | Die Client-ID der verwendeten Identität                                                                                                                                                                                                       |

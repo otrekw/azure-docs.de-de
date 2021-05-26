@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 573fc4fac413ceed50246bc6fb8df1d9db021c94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ae981ed39276d7b4a3a338c0ab822afd2d8e456
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247453"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373473"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Preismodell in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -37,7 +37,7 @@ Wenn Sie Ihr Azure Cosmos DB-Konto in einer Region in den USA bereitstellen, d
 
 Azure Cosmos DB bietet viele Optionen für Entwickler kostenlos an. Die Optionen umfassen:
 
-* **Free-Tarif von Azure Cosmos DB**: Der Free-Tarif von Azure Cosmos DB erleichtert Ihnen den Einstieg, die Entwicklung und die Durchführung von Tests für Ihre Anwendungen. Sie können sogar kleinere Produktionsworkloads kostenlos ausführen. Wenn für ein Konto der Free-Tarif aktiviert ist, sind die ersten 400 RU/s und 5 GB Speicher während der gesamten Lebensdauer des Kontos kostenlos. Sie können pro Azure-Abonnement maximal ein Konto im Free-Tarif einrichten und müssen sich beim Erstellen des Kontos registrieren. [Erstellen Sie zunächst ein neues Konto im Azure-Portal mit aktiviertem Free-Tarif](create-cosmosdb-resources-portal.md), oder verwenden Sie eine [Resource Manager-Vorlage](./manage-with-templates.md#free-tier).
+* **Free-Tarif von Azure Cosmos DB**: Der Free-Tarif von Azure Cosmos DB erleichtert Ihnen den Einstieg, die Entwicklung und die Durchführung von Tests für Ihre Anwendungen. Sie können sogar kleinere Produktionsworkloads kostenlos ausführen. Wenn für ein Konto der Free-Tarif aktiviert ist, sind die ersten 1000 RU/s und 25 GB Speicher während der gesamten Lebensdauer des Kontos kostenlos. Sie können pro Azure-Abonnement maximal ein Konto im Free-Tarif einrichten und müssen sich beim Erstellen des Kontos registrieren. Weitere Informationen finden Sie im Artikel [Erstellen eines Kontos im Free-Tarif](free-tier.md).
 
 * **Kostenloses Azure-Konto**: Azure bietet einen [Free-Tarif](https://azure.microsoft.com/free/) an, mit dem Sie ein Azure-Guthaben von 200 USD für die ersten 30 Tage und 12 Monate lang eine begrenzte Anzahl kostenloser Dienste erhalten. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](../cost-management-billing/manage/avoid-charges-free-account.md). Azure Cosmos DB ist Bestandteil des kostenlosen Azure-Kontos. Speziell für Azure Cosmos DB bietet dieses kostenlose Konto einen Speicher von 25 GB und einen bereitgestellten Durchsatz von 400 RU/s für das ganze Jahr.
 
