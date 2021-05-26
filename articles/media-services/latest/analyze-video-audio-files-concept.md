@@ -8,16 +8,16 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: 8a2c65355f4cb423c17ade6b6f821dcb5b5bd23e
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 97aff4bf97a8d79813afb1bd5b7a5e14f6d545c4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963762"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375273"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analysieren von Video- und Audiodateien mit Azure Media Services
 
-[!INCLUDE [regulation](../video-indexer/includes/regulation.md)]
+[!INCLUDE [regulation](../../azure-video-analyzer/video-analyzer-for-media-docs/includes/regulation.md)]
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -35,10 +35,10 @@ Wichtig: Ihre Nutzung von Video Indexer darf nicht gegen geltende Gesetze versto
 
 Media Services unterstützt derzeit die folgenden integrierten Analysevoreinstellungen:  
 
-|**Name der Voreinstellung**|**Szenario/Modus**|**Details**|
+|**Name der Voreinstellung**|**Szenario / Modus**|**Details**|
 |---|---|---|
-|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audioanalyse-Standardmodus|Die Voreinstellung wendet einen vordefinierten Satz von AI-basierten Analysevorgängen, einschließlich Sprachtranskription, an. Die Voreinstellung unterstützt derzeit die Verarbeitung von Inhalten mit einer einzelnen, einsprachigen Audiospur. Sie können die Sprache für die Audionutzlast in der Eingabe angeben. Verwenden Sie dazu das BCP-47-Format des Tags zur Identifizierung von Sprache und Region. Folgende Sprachen werden unterstützt: Englisch („en-US“, „en-GB“ und „en-AU“), Spanisch („es-ES“ und „es-MX“), Französisch („fr-FR“ und „fr-CA“), Italienisch („it-IT“), Japanisch („ja-JP“), Portugiesisch („pt-BR“), Chinesisch („zh-CN“), Deutsch („de-DE“), Arabisch („ar-BH“, „ar-EG“, „ar-IQ“, „ar-JO“, „ar-KW“, „ar-LB“, „ar-OM“, „ar-QA“, „ar-SA“ und „ar-SY“), Russisch („ru-RU“), Hindi („hi-IN“), Koreanisch („ko-KR“), Dänisch („da-DK“), Norwegisch („nb-NO“), Schwedisch („sv-SE“), Finnisch („fi-FI“), Thailändisch („th-TH“) und Türkisch („tr-TR“).<br/><br/> Wenn keine Sprache angegeben oder NULL festgelegt ist, wählt die automatische Spracherkennung die erste erkannte Sprache aus und verwendet diese für die gesamte Datei. Die automatische Spracherkennung unterstützt derzeit Englisch, Chinesisch, Französisch, Deutsch, Italienisch, Japanisch, Spanisch, Russisch und Portugiesisch. Sie unterstützt nicht das dynamische Wechseln zwischen Sprachen, nachdem die erste Sprache erkannt wurde. Die automatische Spracherkennung funktioniert am besten mit Audioaufnahmen mit deutlicher Sprache. Kann die Sprache nicht automatisch erkannt werden, wird standardmäßig Englisch für die Transkription verwendet.|
-|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audioanalyse Basic-Modus|In diesem voreingestellten Modus wird Sprache-in-Text-Transkription und die Generierung einer VTT-Datei mit Untertiteln/Untertiteln für Hörgeschädigte ausgeführt. Die Ausgabe in diesem Modus beinhaltet eine Insights JSON-Datei, die nur die Stichwörter, die Transkription und Zeitinformationen enthält. Eine automatische Spracherkennung und Sprecherdiarisierung sind nicht Bestandteil dieses Modus. Die Liste der unterstützten Sprachen ist mit dem oben genannten Standardmodus identisch.|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio analysieren Standardmodus|Die Voreinstellung wendet einen vordefinierten Satz von AI-basierten Analysevorgängen, einschließlich Sprachtranskription, an. Die Voreinstellung unterstützt derzeit die Verarbeitung von Inhalten mit einer einzelnen, einsprachigen Audiospur. Sie können die Sprache für die Audionutzlast in der Eingabe angeben. Verwenden Sie dazu das BCP-47-Format des Tags zur Identifizierung von Sprache und Region. Folgende Sprachen werden unterstützt: Englisch („en-US“, „en-GB“ und „en-AU“), Spanisch („es-ES“ und „es-MX“), Französisch („fr-FR“ und „fr-CA“), Italienisch („it-IT“), Japanisch („ja-JP“), Portugiesisch („pt-BR“), Chinesisch („zh-CN“), Deutsch („de-DE“), Arabisch („ar-BH“, „ar-EG“, „ar-IQ“, „ar-JO“, „ar-KW“, „ar-LB“, „ar-OM“, „ar-QA“, „ar-SA“ und „ar-SY“), Russisch („ru-RU“), Hindi („hi-IN“), Koreanisch („ko-KR“), Dänisch („da-DK“), Norwegisch („nb-NO“), Schwedisch („sv-SE“), Finnisch („fi-FI“), Thailändisch („th-TH“) und Türkisch („tr-TR“).<br/><br/> Wenn keine Sprache angegeben oder NULL festgelegt ist, wählt die automatische Spracherkennung die erste erkannte Sprache aus und verwendet diese für die gesamte Datei. Die automatische Spracherkennung unterstützt derzeit Englisch, Chinesisch, Französisch, Deutsch, Italienisch, Japanisch, Spanisch, Russisch und Portugiesisch. Sie unterstützt nicht das dynamische Wechseln zwischen Sprachen, nachdem die erste Sprache erkannt wurde. Die automatische Spracherkennung funktioniert am besten mit Audioaufnahmen mit deutlicher Sprache. Kann die Sprache nicht automatisch erkannt werden, wird standardmäßig Englisch für die Transkription verwendet.|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio analysieren Basismodus|Dieser voreingestellte Modus führt eine Sprache-zu-Text-Transkription und die Generierung einer VTT-Untertitel-/Beschreibungsdatei aus. Die Ausgabe in diesem Modus beinhaltet eine Insights JSON-Datei, die nur die Stichwörter, die Transkription und Zeitinformationen enthält. Eine automatische Spracherkennung und Sprecherdiarisierung sind nicht Bestandteil dieses Modus. Die Liste der unterstützten Sprachen ist mit dem obengenannten Standardmodus identisch.|
 |[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analysieren von Audio und Video|Extrahiert Erkenntnisse (umfangreiche Metadaten) von Audio- und Videoinhalten und gibt eine Datei im JSON-Format aus. Beim Verarbeiten einer Videodatei können Sie angeben, ob Sie nur Audioerkenntnisse erhalten möchten. Weitere Informationen finden Sie unter [Analysieren von Videos](analyze-videos-tutorial.md).|
 |[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|Erkennen von Gesichtern in Videos|Beschreibt die Einstellungen, die bei der Analyse eines Videos verwendet werden, um alle erscheinenden Gesichter zu erkennen|
 

@@ -2,15 +2,15 @@
 title: Problembehandlung von „VMs starten/beenden (Vorschau)“
 description: In diesem Artikel erfahren Sie, wie Sie Probleme behandeln, die bei der Funktion „VMs starten/beenden (Vorschau)“ für Ihre Azure-VMs auftreten.
 services: azure-functions
-ms.subservice: ''
+ms.subservice: start-stop-vms
 ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3c379c1eb36fc19368630188f1b584e1d8a7b8ad
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 83633b6f107aee995c19e1cda94f4f93a96e84e2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111101"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076778"
 ---
 # <a name="troubleshoot-common-issues-with-startstop-vms-preview"></a>Behandeln allgemeiner Probleme bei „VMs starten/beenden (Vorschau)“
 

@@ -6,15 +6,15 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
-ms.openlocfilehash: 8e510cf2e6fed9f9ffdec1dcc4dacf16a866d66b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c0e8ae9e642caad0486b862b48d94ba392256a45
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049014"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839489"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für einen virtuellen Windows-Computer
-Leistungsdaten vom Gastbetriebssystem auf virtuellen Azure-Computern werden nicht wie andere [Platformmetriken](./monitor-azure-resource.md#monitoring-data) automatisch erfasst. Installieren Sie die Azure Monitor-[Diagnoseerweiterung](../agents/diagnostics-extension-overview.md), um Gastbetriebssystemmetriken in der Metrikdatenbank zu erfassen, damit sie für alle Features von Azure Monitor-Metriken verwendet werden können, einschließlich zeitnaher Benachrichtigung, Diagrammerstellung, Routing und Zugriff über eine REST-API. In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer mithilfe einer Resource Manager-Vorlage an die Metrikendatenbank senden. 
+Leistungsdaten vom Gastbetriebssystem auf virtuellen Azure-Computern werden nicht wie andere [Platformmetriken](./monitor-azure-resource.md#monitoring-data) automatisch erfasst. Installieren Sie die Azure Monitor-[Diagnoseerweiterung](../agents/diagnostics-extension-overview.md), um Gastbetriebssystemmetriken in der Metrikdatenbank zu erfassen, damit sie für alle Features von Azure Monitor-Metriken verwendet werden können, einschließlich zeitnaher Benachrichtigung, Diagrammerstellung, Routing und Zugriff über eine REST-API. In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer mithilfe einer Resource Manager-Vorlage an die Metrikendatenbank senden.
 
 > [!NOTE]
 > Ausführliche Informationen zum Konfigurieren der Diagnoseerweiterung für das Erfassen von Gastbetriebssystemmetriken über das Azure-Portal finden Sie unter [Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)](../agents/diagnostics-extension-windows-install.md).
@@ -28,14 +28,14 @@ Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie
 
 - [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](../../cloud-shell/overview.md) muss installiert sein.
 
-- Die VM-Ressource muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](./metrics-custom-overview.md#supported-regions). 
+- Die VM-Ressource muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](./metrics-custom-overview.md#supported-regions).
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Einrichten von Azure Monitor als Datensenke
 Die Azure-Diagnoseerweiterung verwendet eine Funktion namens „Datensenken“, um Metriken und Protokolle an verschiedene Standorte zu leiten. Die folgenden Schritte zeigen, wie Sie eine Resource Manager-Vorlage und PowerShell verwenden, um eine VM mit der neuen Datensenke „Azure Monitor“ bereitzustellen.
 
 ## <a name="author-resource-manager-template"></a>Erstellen von Resource Manager-Vorlagen
-Für dieses Beispiel können Sie eine öffentlich zugängliche Beispielvorlage verwenden. Die Startvorlagen befinden sich unter https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows.
+Für dieses Beispiel können Sie eine öffentlich zugängliche Beispielvorlage verwenden. Die Startvorlagen befinden sich unter https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows.
 
 - **Azuredeploy.json** ist eine vorkonfigurierte Resource Manager-Vorlage für die Bereitstellung eines virtuellen Computers.
 

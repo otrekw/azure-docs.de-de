@@ -2,13 +2,13 @@
 title: Reservierte Instanzen von Azure VMware Solution
 description: Es wird beschrieben, wie Sie eine reservierte Instanz für Azure VMware Solution erwerben. Die reservierte Instanz deckt nur den Computebereich Ihrer Nutzung ab und schließt die Softwarelizenzierungskosten ein.
 ms.topic: how-to
-ms.date: 04/09/2021
-ms.openlocfilehash: fb30ae2fcf06abfa25770aff85f2668d7aaca770
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 05/13/2021
+ms.openlocfilehash: 2ec43374561db9b0de39f4d1c571b85a75df13ba
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753729"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063098"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Sparen von Kosten mit Azure VMware Solution
 
@@ -20,7 +20,7 @@ Reservierte Instanzen sind mit einigen Ausnahmen verfügbar.
 
 -   **Clouds**:Reservierungen sind nur in den Regionen verfügbar, die auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) aufgeführt sind.
 
--   **Kontingent reicht nicht aus**: Für eine Reservierung, die einem einzelnen/gemeinsamen Abonnement zugeordnet ist, muss im Abonnement ein Hostkontingent für die neue reservierte Instanz verfügbar sein. Um dieses Problem zu beheben, können Sie eine [Anforderung zur Kontingenterhöhung erstellen](enable-azure-vmware-solution.md).
+-   **Kontingent reicht nicht aus**: Für eine Reservierung, die einem einzelnen/gemeinsamen Abonnement zugeordnet ist, muss im Abonnement ein Hostkontingent für die neue reservierte Instanz verfügbar sein. Um dieses Problem zu beheben, können Sie eine [Anforderung zur Kontingenterhöhung erstellen](request-host-quota-azure-vmware-solution.md).
 
 -   **Angebotsberechtigung**: Sie benötigen ein [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) mit Microsoft.
 
@@ -138,6 +138,6 @@ CSP können für ihre Kunden erworbene Reservierungen mit bestimmten Einschränk
 Nachdem Sie sich mit reservierten Instanzen von Azure VMware Solution vertraut gemacht haben, können Sie sich nun den folgenden Themen zuwenden:
 
 - [Erstellen einer Azure VMware Solution-Bewertung](../migrate/how-to-create-azure-vmware-solution-assessment.md)
-- [Verwalten von DHCP in Azure VMware Solution](manage-dhcp.md)
+- [Verwalten von DHCP in Azure VMware Solution](configure-dhcp-azure-vmware-solution.md)
 - [Überwachen und Verwalten von Azure VMware Solution VMs](lifecycle-management-of-azure-vmware-solution-vms.md).
  

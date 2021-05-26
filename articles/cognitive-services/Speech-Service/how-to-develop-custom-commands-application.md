@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: ddf36530e52703ab1033b8e2e787b42b6dc60332
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 84253f897e8b85029ea4425a7919be4bf71028ed
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553276"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451943"
 ---
 # <a name="develop-custom-commands-applications"></a>Entwickeln von Anwendungen mit benutzerdefinierten Befehlen
 
@@ -42,7 +42,7 @@ Beginnen Sie, indem Sie eine leere Anwendung mit benutzerdefinierten Befehlen er
 
 ### <a name="update-luis-resources-optional"></a>Aktualisieren von LUIS-Ressourcen (optional)
 
-Sie können die ausgewählte Erstellungsressource im Fenster **Neues Projekt** aktualisieren. Sie können außerdem eine Vorhersageressource festlegen. 
+Sie können die ausgewählte Erstellungsressource im Fenster **Neues Projekt** aktualisieren. Sie können außerdem eine Vorhersageressource festlegen.
 
 Eine Vorhersageressource wird zur Erkennung verwendet, nachdem Ihre Anwendung mit benutzerdefinierten Befehlen veröffentlicht wurde. Während der Entwicklungs- und Testphasen benötigen Sie keine Vorhersageressource.
 
@@ -54,7 +54,7 @@ Fügen Sie in der von Ihnen erstellten leeren Smart-Room-Lite-Anwendung mit benu
 1. Geben Sie im Feld **Name** den Wert `TurnOn` ein.
 1. Klicken Sie auf **Erstellen**.
 
-Im mittleren Bereich werden die Eigenschaften des Befehls aufgelistet. 
+Im mittleren Bereich werden die Eigenschaften des Befehls aufgelistet.
 
 In der folgenden Tabelle werden die Konfigurationseigenschaften des Befehls erläutert: Weitere Informationen finden Sie unter [Konzepte und Definitionen für benutzerdefinierte Befehle](./custom-commands-references.md).
 
@@ -86,14 +86,14 @@ Derzeit verfügen Sie noch nicht über Parameter, daher können Sie mit dem Absc
 
 #### <a name="add-a-completion-rule"></a>Hinzufügen einer Vervollständigungsregel
 
-Als nächstes benötigt der Befehl eine Vervollständigungsregel. Diese Regel teilt dem Benutzer mit, dass ein Vervollständigungsvorgang durchgeführt wird. 
+Als nächstes benötigt der Befehl eine Vervollständigungsregel. Diese Regel teilt dem Benutzer mit, dass ein Vervollständigungsvorgang durchgeführt wird.
 
 Weitere Informationen über Regeln und Vervollständigungsregeln finden Sie unter [Konzepte und Definitionen für benutzerdefinierte Befehle](./custom-commands-references.md).
 
 1. Wählen Sie die Standardvervollständigungsregel **Erledigt** aus. Bearbeiten Sie sie anschließend wie folgt:
 
-    
-    | Einstellung    | Vorgeschlagener Wert                          | BESCHREIBUNG                                        |
+
+    | Einstellung    | Vorgeschlagener Wert                          | Beschreibung                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Name**       | `ConfirmationResponse`                  | Ein Name, der den Zweck der Regel beschreibt.          |
     | **Bedingungen** | Keine                                     | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |
@@ -103,7 +103,7 @@ Weitere Informationen über Regeln und Vervollständigungsregeln finden Sie unte
    > ![Screenshot der zeigt, wo eine Sprachressource erstellt werden soll.](media/custom-commands/create-speech-response-action.png)
 
 1. Wählen Sie **Speichern** aus, um die Aktion zu speichern.
-1. Wählen Sie wieder im Abschnitt **Vervollständigungsregeln** **Speichern** aus, um alle Änderungen zu speichern. 
+1. Wählen Sie wieder im Abschnitt **Vervollständigungsregeln** **Speichern** aus, um alle Änderungen zu speichern.
 
     > [!NOTE]
     > Sie brauchen nicht die Standard-Vervollständigungsregel für den Befehl zu verwenden. Sie können die Standardvervollständigungsregel löschen und eine eigene Regel hinzufügen.
@@ -138,10 +138,10 @@ Wählen Sie **Speichern** aus, um sämtliche Änderungen am Befehl zu speichern.
 
 ### <a name="try-it-out"></a>Ausprobieren
 
-Testen Sie das Verhalten der Anwendung mithilfe des Testbereichs: 
+Testen Sie das Verhalten der Anwendung mithilfe des Testbereichs:
 
-1. Wählen Sie in der oberen rechten Ecke des Bereichs das Symbol **Trainieren** aus. 
-1. Wenn das Training abgeschlossen ist, wählen Sie **Testen** aus. 
+1. Wählen Sie in der oberen rechten Ecke des Bereichs das Symbol **Trainieren** aus.
+1. Wenn das Training abgeschlossen ist, wählen Sie **Testen** aus.
 
 Probieren Sie die folgenden Beispieläußerungen aus, indem Sie Sprache oder Text verwenden:
 
@@ -168,7 +168,7 @@ Bearbeiten Sie zunächst den vorhandenen `TurnOn`-Befehl zum Ein- und Ausschalte
 
 1. Da der Befehl jetzt die Szenarien zum Ein- und Ausschalten behandelt, benennen Sie den Befehl in *TurnOnOff* um.
    1. Wählen Sie den Befehl **TurnOn** im linken Bereich aus. Wählen Sie dann neben dem **Neu-Befehl** oben im Bereich die Schaltfläche mit den Auslassungspunkten ( **...** ) aus.
-   
+
    1. Wählen Sie **Umbenennen** aus. Ändern Sie im Fenster **Befehl umbenennen** den Namen in *TurnOnOff*.
 
 1. Fügen Sie dem Befehl einen neuen Parameter hinzu. Der Parameter gibt an, ob der Benutzer das Gerät ein- oder ausschalten möchte.
@@ -179,11 +179,11 @@ Bearbeiten Sie zunächst den vorhandenen `TurnOn`-Befehl zum Ein- und Ausschalte
 
        > [!div class="mx-imgBorder"]
        > ![Screenshot: Abschnitt „Add response for a required parameter“ (Antwort für einen erforderlichen Parameter hinzufügen) mit ausgewählter Registerkarte „Simple Editor“ (Einfacher Editor)](media/custom-commands/add-required-on-off-parameter-response.png)
-   
-   1. Konfigurieren Sie die Eigenschaften des Parameters mithilfe der folgenden Tabelle. Informationen zu sämtlichen Konfigurationseigenschaften eines Befehls finden Sie unter [Konzepte und Definitionen für benutzerdefinierte Befehle](./custom-commands-references.md).
-      
 
-       | Konfiguration      | Vorgeschlagener Wert     | BESCHREIBUNG                                                      |
+   1. Konfigurieren Sie die Eigenschaften des Parameters mithilfe der folgenden Tabelle. Informationen zu sämtlichen Konfigurationseigenschaften eines Befehls finden Sie unter [Konzepte und Definitionen für benutzerdefinierte Befehle](./custom-commands-references.md).
+
+
+       | Konfiguration      | Vorgeschlagener Wert     | Beschreibung                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
        | **Name**               | `OnOff`           | Ein aussagekräftiger Name für den Parameter                                                                           |
        | **Is Global**          | Nicht markiert       | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter global auf alle Befehle in der Anwendung angewendet wird.|
@@ -192,15 +192,15 @@ Bearbeiten Sie zunächst den vorhandenen `TurnOn`-Befehl zum Ein- und Ausschalte
        | **Typ**               | **String**          | Parametertyp, z. B. Zahl, Zeichenfolge, Datum/Uhrzeit oder Geografie.   |
        | **Configuration**      | **Accept predefined input values from an internal catalog** (Vordefinierte Eingabewerte aus einem internen Katalog akzeptieren) | Für Zeichenfolgen schränkt diese Einstellung Eingaben auf eine Reihe möglicher Werte ein. |
        | **Vordefinierte Eingabewerte**     | `on`, `off`           | Menge der möglichen Werte und ihrer Aliase.         |
-       
-        
+
+
    1. Zum Hinzufügen vordefinierter Eingabewerte wählen Sie **Vordefinierte Eingabe hinzufügen** aus. Geben Sie im Fenster **Neues Element** *Name* ein, wie in der vorstehenden Tabelle abgebildet. In diesem Fall verwenden Sie keine Aliase, daher können Sie dieses Feld leer lassen.
-   
+
       > [!div class="mx-imgBorder"]
       > ![Screenshot zum Erstellen eines Parameters.](media/custom-commands/create-on-off-parameter.png)
 
    1. Wählen Sie **Speichern** aus, um alle Konfigurationen des Parameters zu speichern.
- 
+
 #### <a name="add-a-subjectdevice-parameter"></a>Hinzufügen eines SubjectDevice-Parameters
 
 1. Zum Hinzufügen eines zweiten Parameters, der den Namen der Geräte angibt, die mithilfe dieses Befehls gesteuert werden können, wählen Sie **Hinzufügen** aus. Verwenden Sie die folgende Konfiguration.
@@ -251,7 +251,6 @@ Wählen Sie **Speichern** aus.
 
 1. Wählen Sie im Abschnitt **Bedingung** die Option **Bedingung hinzufügen** aus.
 1. Wählen Sie im Fenster **Neue Bedingung** in der Liste **Typ** die Option **Erforderliche Parameter** aus. Wählen Sie in der anschließenden Liste sowohl **OnOff** als auch **SubjectDevice** aus.
-1. Lassen Sie **IsGlobal** deaktiviert.
 1. Klicken Sie auf **Erstellen**.
 1. Bearbeiten Sie im Abschnitt **Aktionen** die Aktion **Sprachantwort senden**, indem Sie mit der Maus darauf zeigen und die Bearbeiten-Schaltfläche auswählen. Verwenden Sie dieses Mal die neu erstellten Parameter `OnOff` und `SubjectDevice`:
 
@@ -260,7 +259,7 @@ Wählen Sie **Speichern** aus.
     ```
 1. Wählen Sie **Speichern** aus.
 
-Testen Sie die Änderungen, indem Sie das Symbol **Trainieren** oben im rechten Bereich auswählen. 
+Testen Sie die Änderungen, indem Sie das Symbol **Trainieren** oben im rechten Bereich auswählen.
 
 Wenn das Training abgeschlossen ist, wählen Sie **Testen** aus. Es wird ein Fenster **Testen Ihrer Anwendung** angezeigt. Probieren Sie die folgenden Interaktionen aus:
 
@@ -307,11 +306,11 @@ Bearbeiten Sie die vorhandenen Vervollständigungsregeln. Verwenden Sie die folg
 
 Fügen Sie einen Parameter mit dem Namen `DateTime` hinzu. Verwenden Sie die folgende Konfiguration.
 
-   | Einstellung                           | Vorgeschlagener Wert                     | 
+   | Einstellung                           | Vorgeschlagener Wert                     |
    | --------------------------------- | ----------------------------------------|
    | **Name**                              | `DateTime`                               |
    | **Erforderlich**                          | Aktiviert                                 |
-   | **Antwort auf erforderlichen Parameter**   | **Einfacher Editor** > `For what time?`            | 
+   | **Antwort auf erforderlichen Parameter**   | **Einfacher Editor** > `For what time?`            |
    | **Typ**                              | **DateTime**                                |
    | **Datumsstandardwerte**                     | Wenn das Datum fehlt, nehmen Sie Heute.            |
    | **Uhrzeitstandardwerte**                     | Verwenden Sie bei fehlender Uhrzeit den Tagesbeginn.     |
@@ -369,7 +368,7 @@ Beginnen Sie das Auslagern des Inhalts mit dem Hinzufügen eines neuen Webendpun
 
 
 Wenn sich der vorgeschlagene Wert für die URL für Ihre Zwecke nicht eignet, konfigurieren und hosten Sie einen Webendpunkt, der eine JSON-Datei zurückgibt, die aus der Liste der zu steuernden Geräte besteht. Der Webendpunkt sollte eine JSON-Datei im folgenden Format zurückgeben:
-    
+
 ```json
 {
     "fan" : [],
@@ -466,13 +465,13 @@ Zum Hinzufügen einer Bestätigung verwenden Sie den `SetTemperature`-Befehl. Um
         1. Fügen Sie eine neue Bedingung hinzu: **Erforderliche Parameter** > **Temperatur**.
         1. Fügen Sie eine neue Aktion hinzu: **Typ** > **Sprachantwort senden** > **Möchten Sie die Temperatur wirklich auf {Temperature} Grad festlegen?**
         1. Behalten Sie im Abschnitt **Erwartungen** den Standardwert **Bestätigung vom Benutzer erwarten** bei.
-      
+
          > [!div class="mx-imgBorder"]
          > ![Screenshot, der das Erstellen der erforderlichen Parameterantwort zeigt.](media/custom-speech-commands/add-validation-set-temperature.png)
-    
+
 
     1. Ändern Sie die Interaktionsregel **Bestätigung erfolgreich**, um eine erfolgreiche Bestätigung zu behandeln (der Benutzer hat mit „Ja“ geantwortet).
-      
+
           1. Ändern Sie den Namen in **Temperaturbestätigung erfolgreich**.
           1. Belassen Sie die bestehende Bedingung **Bestätigung war erfolgreich**.
           1. Fügen Sie eine neue Bedingung hinzu: **Typ** > **Erforderliche Parameter** > **Temperatur**.
@@ -488,7 +487,7 @@ Zum Hinzufügen einer Bestätigung verwenden Sie den `SetTemperature`-Befehl. Um
 
 > [!IMPORTANT]
 > In diesem Artikel verwenden Sie die integrierte Bestätigungsfunktion. Sie können Interaktionsregeln auch einzeln manuell hinzufügen.
-   
+
 Testen Sie die Änderungen, indem Sie **Trainieren** auswählen. Wenn das Training abgeschlossen ist, wählen Sie **Testen** aus.
 
 - **Eingabe**: *Stelle die Temperatur auf 80 Grad ein*.
@@ -505,7 +504,7 @@ Testen Sie die Änderungen, indem Sie **Trainieren** auswählen. Wenn das Traini
 In diesem Abschnitt konfigurieren Sie eine Korrektur in einem Schritt. Diese Korrektur wird nach dem Ausführen des Vervollständigungsvorgangs angewendet. Es wird auch ein Beispiel dafür bereitgestellt, wie die Korrektur standardmäßig aktiviert wird, falls der Befehl noch nicht erfüllt ist. Um eine Korrektur hinzuzufügen, wenn der Befehl nicht abgeschlossen ist, fügen Sie den neuen `AlarmTone`-Parameter hinzu.
 
 Wählen Sie im linken Bereich den Befehl **SetAlarm** aus. Fügen Sie dann den neuen Parameter **AlarmTone** hinzu.
-        
+
 - **Name** > `AlarmTone`
 - **Typ** > **Zeichenfolge**
 - **Standardwert** > **Chimes**
@@ -524,7 +523,7 @@ Aktualisieren Sie als Nächstes die Antwort für den **DateTime**-Parameter in *
 
 #### <a name="implement-a-correction-when-a-command-is-finished"></a>Implementieren einer Korrektur, wenn ein Befehl abgeschlossen ist
 
-Die Plattform für benutzerdefinierte Befehle ermöglicht eine Korrektur in einem Schritt auch nach dem Abschluss eines Befehls. Dieses Feature ist nicht standardmäßig aktiviert. Er muss explizit konfiguriert werden. 
+Die Plattform für benutzerdefinierte Befehle ermöglicht eine Korrektur in einem Schritt auch nach dem Abschluss eines Befehls. Dieses Feature ist nicht standardmäßig aktiviert. Er muss explizit konfiguriert werden.
 
 Verwenden Sie die folgenden Schritte, um eine Korrektur in einem Schritt zu konfigurieren:
 
@@ -553,7 +552,7 @@ Sprachgenerierungsvorlagen (LG-Vorlagen) ermöglichen es Ihnen, die an den Clien
 * Sprachgenerierungsvorlagen
 * Adaptive Ausdrücke
 
-Vorlagen für benutzerdefinierte Befehle basieren auf den [LG-Vorlagen](/azure/bot-service/file-format/bot-builder-lg-file-format#templates) des Bot Frameworks. Da das Feature Benutzerdefinierte Befehle bei Bedarf eine neue LG-Vorlage erstellt (für Sprachantworten in Parametern oder Aktionen), müssen Sie den Namen der LG-Vorlage nicht angeben. 
+Vorlagen für benutzerdefinierte Befehle basieren auf den [LG-Vorlagen](/azure/bot-service/file-format/bot-builder-lg-file-format#templates) des Bot Frameworks. Da das Feature Benutzerdefinierte Befehle bei Bedarf eine neue LG-Vorlage erstellt (für Sprachantworten in Parametern oder Aktionen), müssen Sie den Namen der LG-Vorlage nicht angeben.
 
 Daher müssen Sie Ihre Vorlage nicht wie folgt definieren:
 
@@ -572,7 +571,7 @@ Stattdessen können Sie den Text der Vorlage nur wie folgt ohne den Namen defini
 
 Diese Änderung führt eine Variation in die Sprachantworten ein, die an den Client gesendet werden. Für eine Äußerung wird die entsprechende Sprachantwort nach dem Zufallsprinzip aus den bereitgestellten Optionen ausgewählt.
 
-Die Nutzung von LG-Vorlagen ermöglicht es Ihnen außerdem, komplexe Sprachantworten für Befehle mithilfe adaptiver Ausdrücke zu definieren. Weitere Informationen finden Sie unter [LG-Vorlagenformat](/azure/bot-service/file-format/bot-builder-lg-file-format#templates). 
+Die Nutzung von LG-Vorlagen ermöglicht es Ihnen außerdem, komplexe Sprachantworten für Befehle mithilfe adaptiver Ausdrücke zu definieren. Weitere Informationen finden Sie unter [LG-Vorlagenformat](/azure/bot-service/file-format/bot-builder-lg-file-format#templates).
 
 Standardmäßig unterstützt das Feature Benutzerdefinierte Befehle alle Funktionen mit den folgenden geringfügigen Unterschieden:
 
@@ -585,14 +584,14 @@ Standardmäßig unterstützt das Feature Benutzerdefinierte Befehle alle Funktio
 
 Ändern Sie den Befehl `TurnOnOff`, um einen neuen Parameter hinzuzufügen. Verwenden Sie die folgende Konfiguration.
 
-| Einstellung            | Vorgeschlagener Wert       | 
-| ------------------ | --------------------- | 
-| **Name**               | `SubjectContext`         | 
-| **Is Global**          | Nicht markiert             | 
-| **Erforderlich**           | Nicht markiert               | 
+| Einstellung            | Vorgeschlagener Wert       |
+| ------------------ | --------------------- |
+| **Name**               | `SubjectContext`         |
+| **Is Global**          | Nicht markiert             |
+| **Erforderlich**           | Nicht markiert               |
 | **Typ**               | **String**                |
 | **Standardwert**      | `all` |
-| **Configuration**      | **Vordefinierte Eingabewerte aus einem internen Katalog akzeptieren** | 
+| **Configuration**      | **Vordefinierte Eingabewerte aus einem internen Katalog akzeptieren** |
 | **Vordefinierte Eingabewerte** | `room`, `bathroom`, `all`|
 
 #### <a name="modify-a-completion-rule"></a>Ändern einer Vervollständigungsregel
@@ -642,5 +641,4 @@ Die Anwendung antwortet nun in der ausgewählten Stimme statt in der Standardsti
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, wie Sie mithilfe des Speech SDKs Ihre [Anwendung für benutzerdefinierte Befehle in eine Client-App integrieren](how-to-custom-commands-setup-speech-sdk.md) können.
-* [Richten Sie Continuous Deployment](how-to-custom-commands-deploy-cicd.md) für Ihre Anwendung für benutzerdefinierte Befehle mithilfe von Azure DevOps ein. 
-                      
+* [Richten Sie Continuous Deployment](how-to-custom-commands-deploy-cicd.md) für Ihre Anwendung für benutzerdefinierte Befehle mithilfe von Azure DevOps ein.

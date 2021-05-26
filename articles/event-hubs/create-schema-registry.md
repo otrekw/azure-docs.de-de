@@ -2,21 +2,21 @@
 title: Erstellen einer Azure Event Hubs-Schemaregistrierung
 description: In diesem Artikel erfahren Sie, wie Sie eine Schemaregistrierung in einem Azure Event Hubs-Namespace erstellen.
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 05/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 45791cd69772be97ca6768184ed17179e04ad9dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9794d1521b8b16b99a108517bfd19a3c9e29b21
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96576807"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373614"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Erstellen einer Azure Event Hubs-Schemaregistrierung (Vorschau)
 In diesem Artikel erfahren Sie, wie Sie eine Schemagruppe mit Schemas in einer Schemaregistrierung erstellen, die von Azure Event Hubs gehostet wird. Eine Übersicht über das Schemaregistrierung-Feature von Azure Event Hubs finden Sie unter [Azure-Schemaregistrierung in Event Hubs (Vorschau)](schema-registry-overview.md).
 
 > [!NOTE]
 > - Die Funktion **Schemaregistrierung** ist derzeit als **Vorschau** verfügbar und nicht für Produktionsworkloads vorgesehen.
-> - Das Feature ist nur in den Tarifen **Standard** und **Dediziert** verfügbar, nicht im Tarif **Basic**.
+> - Das Feature ist im **Basic**-Tarif nicht verfügbar.
 > - Wenn sich der Event Hub in einem **virtuellen Netzwerk** befindet, können Sie keine Schemas im Azure-Portal erstellen, es sei denn, Sie greifen von einem virtuellen Computer im gleichen virtuellen Netzwerk aus auf das Portal zu. 
 
 ## <a name="prerequisites"></a>Voraussetzungen

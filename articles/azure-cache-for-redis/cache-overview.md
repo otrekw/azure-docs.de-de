@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 49a697e6c3a6a6c931f2bb9c545647e2d6f1322d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a7f37df7d312e9279eecaa49851d13957bd418d3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056656"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075626"
 ---
 # <a name="about-azure-cache-for-redis"></a>Informationen zu Azure Cache for Redis
 Azure Cache for Redis bietet einen auf der Software [Redis](https://redis.io/) basierenden In-Memory-Datenspeicher. Redis verbessert die Leistung und Skalierbarkeit einer Anwendung, die intensiven Gebrauch von Back-End-Datenspeichern macht. Mit Redis können große Mengen von Anwendungsanforderungen verarbeitet werden, indem häufig verwendete Daten im Arbeitsspeicher des Servers behalten werden, um schnelle Schreib- und Lesevorgänge zu ermöglichen. Redis stellt eine kritische Datenspeicherlösung mit geringer Wartezeit und hohem Durchsatz für moderne Anwendungen bereit.
@@ -58,7 +58,7 @@ Unter [Azure Cache for Redis – Preise](https://azure.microsoft.com/pricing/de
 | [Skalieren](cache-how-to-scale.md) |✔|✔|✔|✔|✔|
 | [OSS-Cluster](cache-how-to-premium-clustering.md) |-|-|✔|✔|✔|
 | [Datenpersistenz](cache-how-to-premium-persistence.md) |-|-|✔|Vorschau|Vorschau|
-| [Zonenredundanz](cache-how-to-zone-redundancy.md) |-|-|Vorschau|✔|✔|
+| [Zonenredundanz](cache-how-to-zone-redundancy.md) |-|-|✔|✔|✔|
 | [Georeplikation](cache-how-to-geo-replication.md) |-|-|✔|Vorschau|Vorschau|
 | [Module](https://redis.io/modules) |-|-|-|✔|✔|
 | [Import/Export](cache-how-to-import-export-data.md) |-|-|✔|✔|✔|

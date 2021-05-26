@@ -5,21 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 05/13/2021
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2ec8af824d573493d1da743923956e587ded62e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 37118a84468743053e6f825bf982b3073c5545d3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033825"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060800"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Identity Protection und bedingter Zugriff für Azure AD B2C
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 Verbessern Sie die Sicherheit von Azure Active Directory B2C (Azure AD B2C) mit Azure AD Identity Protection und bedingtem Zugriff. Die Identity Protection-Features zur Erkennung von Risiken wie Risikobenutzern und Risikoanmeldungen werden automatisch erkannt und in Ihrem Azure AD B2C-Mandanten angezeigt. Sie können Richtlinien für bedingten Zugriff erstellen, die diese Risikoerkennungen nutzen, um Aktionen zu bestimmen und Organisationsrichtlinien zu erzwingen. Zusammen geben diese Funktionen Azure AD B2C-Anwendungsbesitzern mehr Kontrolle über risikobehaftete Authentifizierungen und Zugriffsrichtlinien.
   

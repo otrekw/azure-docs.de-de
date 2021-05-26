@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: risverma
-ms.openlocfilehash: e0797dfd8c4bf1cf86e2eeafb824298c412e5f1f
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 54958eb6fa6d3ef855bdc3667921535ab47c7b29
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491813"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468269"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Größen von virtuellen Burstable-Computern der B-Serie
 
@@ -28,7 +28,7 @@ Die B-Serie ist in den folgenden VM-Größen erhältlich:
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) Unterstützt \*\*<br>
-[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Unterstützt <br>
+[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 
 *VMs der B-Serie sind burstfähig, daher variieren die ACU-Nummern je nach Workloads und Kernnutzung.<br>
 ** Der beschleunigte Netzwerkbetrieb wird nur für *Standard_B12ms*, *Standard_B16ms* und *Standard_B20ms* unterstützt.

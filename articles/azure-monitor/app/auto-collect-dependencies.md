@@ -4,12 +4,12 @@ description: Mit Application Insights können Abhängigkeiten automatisch gesamm
 ms.topic: reference
 ms.custom: devx-track-dotnet
 ms.date: 05/06/2020
-ms.openlocfilehash: aa4d39ca8964e95ca787d236223e2b475a9597c1
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: c81be9762af658d0149dd6547f50aa9a7503601d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107873827"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097280"
 ---
 # <a name="dependency-auto-collection"></a>Automatisches Sammeln von Abhängigkeiten
 
@@ -61,7 +61,7 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 
 > [!NOTE]
 > \* Mit Ausnahme der Unterstützung für reaktive Programmierung.
-> <br>†Installation des [JVM-Agents](./java-agent.md#install-the-application-insights-agent-for-java) erforderlich.
+> <br>†Installation des [JVM-Agents](java-2x-agent.md#install-the-application-insights-agent-for-java) erforderlich.
 
 ## <a name="nodejs"></a>Node.js
 
@@ -88,7 +88,7 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [.NET](./asp-net-dependencies.md)
-- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [Java](./java-agent.md)
+- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [Java](java-2x-agent.md)
 - Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [OpenCensus Python](./opencensus-python-dependency.md)
 - [Schreiben benutzerdefinierter Telemetriedaten zu Abhängigkeiten](./api-custom-events-metrics.md#trackdependency)
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](./data-model.md).

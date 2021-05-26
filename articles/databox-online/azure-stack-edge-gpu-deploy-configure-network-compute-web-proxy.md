@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 05/11/2021
 ms.author: alkohli
-ms.openlocfilehash: dfef9b3078b17e4758d5fd886ecd1b3fbefc5794
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 38259febaed159217379ba131fb2bffb808e65e7
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055228"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838145"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Pro mit GPU
 
@@ -128,7 +128,6 @@ Befolgen Sie diese Schritte, um Compute zu aktivieren und das Computenetzwerk zu
 Dies ist eine optionale Konfiguration.
 
 > [!IMPORTANT]
-> * Wenn Sie Compute aktivieren und ein IoT Edge-Modul auf Ihrem Azure Stack Edge Pro-Gerät verwenden, sollten Sie für „Webproxyauthentifizierung“ die Option **Keine** festlegen. NTLM wird nicht unterstützt.
 > * Dateien für die automatische Proxykonfiguration (Proxy Auto Config, PAC) werden nicht unterstützt. Eine PAC-Datei definiert, wie Webbrowser und andere Benutzer-Agents automatisch den entsprechenden Proxyserver (Zugriffsmethode) zum Abrufen einer bestimmten URL auswählen können. 
 > * Transparente Proxys funktionieren gut mit Azure Stack Edge Pro. Für nicht transparente Proxys, die den gesamten Datenverkehr (über ihre eigenen auf dem Proxyserver installierten Zertifikate) abfangen und lesen, laden Sie den öffentlichen Schlüssel des Proxyzertifikats als Signaturkette auf Ihrem Azure Stack Edge Pro-Gerät hoch. Anschließend können Sie die Proxyservereinstellungen auf Ihrem Azure Stack Edge-Gerät konfigurieren. Weitere Informationen finden Sie unter [Bereitstellen eigener Zertifikate](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).  
 
@@ -139,15 +138,11 @@ Dies ist eine optionale Konfiguration.
 
 1. Führen Sie auf der Seite **Webproxyeinstellungen** die folgenden Schritte aus:
 
-    1. Geben Sie im Feld **Webproxy-URL** die URL im folgenden Format ein: `http://host-IP address or FQDN:Port number`. HTTPS-URLs werden nicht unterstützt.
+   1. Geben Sie im Feld **Webproxy-URL** die URL im folgenden Format ein: `http://host-IP address or FQDN:Port number`. HTTPS-URLs werden nicht unterstützt.
 
-    2. Klicken Sie unter **Authentifizierung** auf **Keine** oder **NTLM**. Wenn Sie Compute aktivieren und ein IoT Edge-Modul auf Ihrem Azure Stack Edge Pro-Gerät verwenden, sollten Sie für „Webproxyauthentifizierung“ die Option **Keine** festlegen. **NTLM** wird nicht unterstützt.
+   2. Klicken Sie auf **Anwenden**, um die konfigurierten Webproxyeinstellungen zu überprüfen und anzuwenden.
 
-    3. Falls Sie eine Authentifizierung verwenden, geben Sie einen Benutzernamen und ein Kennwort ein.
-
-    4. Klicken Sie auf **Anwenden**, um die konfigurierten Webproxyeinstellungen zu überprüfen und anzuwenden.
-    
-   ![Seite „Webproxyeinstellungen“ der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
+   ![Seite „Webproxyeinstellungen“ der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)<!--UI text update for instruction text is needed.-->
 
 2. Nachdem die Einstellungen angewendet wurden, wählen Sie **Weiter: Gerät** ein.
 

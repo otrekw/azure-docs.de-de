@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 504d66501cc041d6fec4671b6955723505910d0c
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 272c6e80633da826bf14389fbe0a1d2783d34a3d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788443"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098668"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau): Azure CLI
 
@@ -99,7 +99,7 @@ az dt create --dt-name {instance_name} --resource-group {resource_group} --assig
 
 Weitere Beispiele für Rollenzuweisungen mit diesem Befehl finden Sie in der Referenzdokumentation zu [az dt create](/cli/azure/dt#az_dt_create).
 
-Alternativ können Sie auch die Befehlsgruppe [az role assignment](/cli/azure/role/assignment) verwenden, um Rollen zu erstellen und zu verwalten. Sie können diese Vorgehensweise verwenden, um weitere Szenarios zu unterstützen, in denen Sie die Rollenzuweisung nicht mit dem Erstellbefehl gruppieren möchten.
+Alternativ können Sie auch die Befehlsgruppe [az role assignment](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) verwenden, um Rollen zu erstellen und zu verwalten. Sie können diese Vorgehensweise verwenden, um weitere Szenarios zu unterstützen, in denen Sie die Rollenzuweisung nicht mit dem Erstellbefehl gruppieren möchten.
 
 ## <a name="create-an-endpoint-with-identity-based-authentication"></a>Erstellen eines Endpunkts mit identitätsbasierter Authentifizierung
 
@@ -108,7 +108,7 @@ Nachdem Sie eine systemseitig verwaltete Identität für Ihre Azure Digital Twin
 >[!NOTE]
 > Sie können einen Endpunkt nicht bearbeiten, der bereits mit einer schlüsselbasierten Identität erstellt wurde, um zur identitätsbasierten Authentifizierung zu wechseln. Sie müssen den Authentifizierungstyp auswählen, wenn der Endpunkt erstellt wird.
 
-Hierzu wird ein `--auth-type`-Parameter zum `az dt endpoint create`-Befehl hinzugefügt, der zum Erstellen des Endpunkts verwendet wird. (Weitere Informationen zu diesem Befehl finden Sie in der zugehörigen [Referenzdokumentation](/cli/azure/dt/endpoint/create) oder in den [allgemeinen Anweisungen zum Einrichten eines Azure Digital Twins-Endpunkts](how-to-manage-routes-apis-cli.md#create-the-endpoint).)
+Hierzu wird ein `--auth-type`-Parameter zum `az dt endpoint create`-Befehl hinzugefügt, der zum Erstellen des Endpunkts verwendet wird. (Weitere Informationen zu diesem Befehl finden Sie in der zugehörigen [Referenzdokumentation](/cli/azure/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) oder in den [allgemeinen Anweisungen zum Einrichten eines Azure Digital Twins-Endpunkts](how-to-manage-routes-apis-cli.md#create-the-endpoint).)
 
 Zum Erstellen eines Endpunkts, der die identitätsbasierte Authentifizierung verwendet, legen Sie den Authentifizierungstyp `IdentityBased` mit dem Parameter `--auth-type` fest. Im folgenden Beispiel wird diese Vorgehensweise für einen Event Hubs-Endpunkt veranschaulicht.
 
