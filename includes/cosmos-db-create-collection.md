@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 076afcfc8abf4e90d3ccedbb26653656032e59be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e83acf3b2c0762a6e6622edaa345215faa6192e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85115385"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073737"
 ---
 Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Datenbank und einen Container erstellen. 
 
@@ -27,11 +27,11 @@ Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Datenbank
 
     |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG
     |---|---|---|
-    |**Datenbank-ID**|Aufgaben|Geben Sie *Tasks* als Namen für die neue Datenbank ein. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder `/, \\, #, ?` noch nachgestellte Leerzeichen enthalten. Aktivieren Sie die Option **Provision database throughput** (Datenbankdurchsatz bereitstellen). Diese Option ermöglicht es Ihnen, den für die Datenbank bereitgestellten Durchsatz auf alle Container in der Datenbank zu verteilen. Darüber hinaus hilft sie Ihnen dabei, Kosten zu sparen. |
-    |**Durchsatz**|400|Belassen Sie den Durchsatz bei 400 Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später hochskalieren, wenn Sie Wartezeiten reduzieren möchten.| 
+    |**Datenbank-ID**|ToDoList|Geben Sie *Tasks* als Namen für die neue Datenbank ein. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder `/, \\, #, ?` noch nachgestellte Leerzeichen enthalten. Aktivieren Sie die Option **Durchsatz über Container hinweg teilen**. Diese Option ermöglicht es Ihnen, den für die Datenbank bereitgestellten Durchsatz auf alle Container in der Datenbank zu verteilen. Darüber hinaus hilft sie Ihnen dabei, Kosten zu sparen. |
+    | **Datenbank-Durchsatz**| Sie können **automatische Skalierung** oder **manuellen** Durchsatz bereitstellen. Mit dem manuellen Durchsatz können Sie RU/s selbst skalieren, während der durch autoskalierungsbasierte Durchsatz dem System ermöglicht, RU/s basierend auf der Nutzung zu skalieren. Wählen Sie für dieses Beispiel **Manuell** aus. <br><br> Belassen Sie den Durchsatz bei 400 Anforderungseinheiten pro Sekunde (RU/s). Wenn Sie die Latenz reduzieren möchten, können Sie den Durchsatz später hochskalieren, indem Sie die erforderlichen RU/s mit dem [Kapazitätsrechner](../articles/cosmos-db/estimate-ru-with-capacity-planner.md) schätzen.<br><br>**Hinweis**: Diese Einstellung ist nicht verfügbar, wenn ein neuer Container in einem serverlosen Konto erstellt wird. |
     |**Container-ID**|Items|Geben Sie *Items* als Namen für den neuen Container ein. Für Container-IDs gelten dieselben Zeichenanforderungen wie für Datenbanknamen.|
     |**Partitionsschlüssel**| /category| Das in diesem Artikel beschriebene Beispiel verwendet */category* als Partitionsschlüssel.|
-    
-    Zusätzlich zu den zuvor beschriebenen Einstellungen können Sie optional auch **eindeutige Schlüssel** für den Container hinzufügen. In diesem Beispiel lassen wir das Feld leer. Eindeutige Schlüssel bieten Entwicklern die Möglichkeit, ihrer Datenbank eine zusätzliche Datenintegritätsebene hinzuzufügen. Durch das Erstellen einer Richtlinie für eindeutige Schlüssel beim Erstellen eines Containers wird die Eindeutigkeit von einem oder mehreren Werten pro Partitionsschlüssel gewährleistet. Weitere Informationen finden Sie im Artikel [Eindeutige Schlüssel in Azure Cosmos DB](../articles/cosmos-db/unique-keys.md).
+
+    Fügen Sie für dieses Beispiel keine **eindeutigen Schlüssel** hinzu, oder aktivieren Sie den **Analysespeicher** nicht. Mit eindeutigen Schlüsseln können Sie die Datenbank mit einer Datenintegritätsebene versehen, indem Sie die Eindeutigkeit von Werten per Partitionsschlüssel sicherstellen. Weitere Informationen finden Sie unter [Eindeutige Schlüssel in Azure Cosmos DB.](../articles/cosmos-db/unique-keys.md) [Der Analysespeicher](../articles/cosmos-db/analytical-store-introduction.md) wird verwendet, um umfangreiche Analysen für operative Daten ohne Auswirkungen auf Ihre Transaktionsworkloads zu ermöglichen.
     
     Klicken Sie auf **OK**. Im Daten-Explorer werden die neue Datenbank und der neue Container angezeigt.

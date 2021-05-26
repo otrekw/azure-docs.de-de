@@ -2,13 +2,13 @@
 title: Firewallregeln für Azure Event Hubs | Microsoft-Dokumentation
 description: Verwenden von Firewallregeln zum Zulassen von Verbindungen von bestimmten IP-Adressen mit Azure Event Hubs.
 ms.topic: article
-ms.date: 03/29/2021
-ms.openlocfilehash: 12240135401b267fd7c60e579fdf5a12e10ffce9
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.date: 05/10/2021
+ms.openlocfilehash: e0cefa24db8728ebe9d268c00718c2276ed7cee4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963001"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375005"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Zulassen des Zugriffs auf Azure Event Hubs-Namespaces von bestimmten IP-Adressen oder -Adressbereichen
 Standardmäßig kann über das Internet auf Event Hubs-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
@@ -20,7 +20,7 @@ Die IP-Firewallregeln werden auf der Event Hubs-Namespaceebene angewendet. Daher
 
 
 ## <a name="important-points"></a>Wichtige Punkte
-- Diese Funktion wird sowohl für den Tarif **Standard** als auch für den Tarif **Dedicated** unterstützt. Im **Basic**-Tarif werden sie nicht unterstützt.
+- Dieses Feature wird im **Basic**-Tarif nicht unterstützt.
 - Durch das Aktivieren von Firewallregeln für Ihren Event Hubs-Namespace werden eingehende Anforderungen automatisch blockiert, es sei denn, die Anforderungen stammen von einem Dienst, der von zulässigen öffentlichen IP-Adressen aus operiert. Unter anderem werden Anforderungen von anderen Azure-Diensten, aus dem Azure-Portal und von Protokollierungs-/Metrikdiensten blockiert. Als Ausnahme können Sie bestimmten **vertrauenswürdigen Diensten** selbst dann den Zugriff auf Event Hubs-Ressourcen erlauben, wenn IP-Filter aktiviert sind. Eine Liste der vertrauenswürdigen Dienste finden Sie unter [Vertrauenswürdige Microsoft-Dienste](#trusted-microsoft-services).
 - Geben Sie **mindestens eine IP-Firewallregel oder VNET-Regel** für den Namespace an, um nur Datenverkehr von den angegebenen IP-Adressen oder dem Subnetz eines virtuellen Netzwerks zuzulassen. Wenn keine IP- und VNET-Regeln vorliegen, kann (mithilfe des Zugriffsschlüssels) über das öffentliche Internet auf den Namespace zugegriffen werden.  
 
@@ -29,7 +29,7 @@ Die IP-Firewallregeln werden auf der Event Hubs-Namespaceebene angewendet. Daher
 In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für einen Event Hubs-Namespace erstellen. 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Event Hubs-Namespace**.
-4. Wählen Sie im linken Menü unter **Einstellungen** die Option **Netzwerk** aus. Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Standard** oder **Dediziert** angezeigt. 
+4. Wählen Sie im linken Menü unter **Einstellungen** die Option **Netzwerk** aus. 
     
     > [!WARNING]
     > Wenn Sie die Option **Ausgewählte Netzwerke** auswählen und auf dieser Seite nicht mindestens eine IP-Firewallregel oder ein virtuelles Netzwerk hinzufügen, kann (mit dem Zugriffsschlüssel) über das **öffentliche Internet** auf den Namespace zugegriffen werden.  
@@ -59,7 +59,7 @@ In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für
 ## <a name="use-resource-manager-template"></a>Verwenden von Resource Manager-Vorlagen
 
 > [!IMPORTANT]
-> Firewallregeln werden in den Tarifen **Standard** und **Dediziert** von Event Hubs unterstützt. Sie werden nicht im Basic-Tarif unterstützt.
+> Das Feature „Firewall“ wird im Basic-Tarif nicht unterstützt.
 
 Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Event Hubs-Namespace eine IP-Filterregel hinzufügen.
 

@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fac3ad13f34620bb2ec817601041001ccf393d4e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91317258"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369060"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>Erstellen Ihrer ersten dauerhaften Funktion in PowerShell
 
@@ -90,7 +90,7 @@ Sie verwenden eine Vorlage, um den Code Ihrer dauerhaften Funktion in Ihrem Proj
 
     | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
-    | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | Orchestrator für Durable Functions (Vorschau) | Erstellen Sie eine Orchestrierung für Durable Functions. |
+    | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | Orchestrator für Durable Functions | Erstellen Sie eine Orchestrierung für Durable Functions. |
     | Angeben eines Funktionsnamens | HelloOrchestrator | Der Name Ihrer dauerhaften Funktion. |
 
 Sie haben einen Orchestrator für die Koordinierung von Aktivitätsfunktionen hinzugefügt. Öffnen Sie *HelloOrchestrator/run.ps1*, um die Orchestratorfunktion anzuzeigen. Mit jedem Aufruf des Cmdlets `Invoke-ActivityFunction` wird eine Aktivitätsfunktion namens `Hello` aufgerufen.
@@ -105,7 +105,7 @@ Fügen Sie als Nächstes die referenzierte Aktivitätsfunktion `Hello` hinzu.
 
     | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
-    | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | Aktivität für Durable Functions (Vorschau) | Erstellen Sie eine Aktivitätsfunktion. |
+    | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | Aktivität für Durable Functions | Erstellen Sie eine Aktivitätsfunktion. |
     | Angeben eines Funktionsnamens | Hallo | Der Name Ihrer Aktivitätsfunktion. |
 
 Sie haben die Aktivitätsfunktion `Hello` hinzugefügt, die vom Orchestrator aufgerufen wird. Öffnen Sie *Hello/run.ps1*, um zu überprüfen, ob sie einen Namen als Eingabe akzeptiert und eine Begrüßung zurückgibt. Eine Aktivitätsfunktion dient zum Ausführen von Aktionen wie Datenbankaufrufen oder Berechnungen.
@@ -120,7 +120,7 @@ Abschließend fügen Sie noch eine per HTTP ausgelöste Funktion hinzu, durch di
 
     | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
-    | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | HTTP-Starter für Durable Functions (Vorschau) | Erstellen Sie eine HTTP-Startfunktion. |
+    | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | HTTP-Starter für Durable Functions | Erstellen Sie eine HTTP-Startfunktion. |
     | Angeben eines Funktionsnamens | HttpStart | Der Name Ihrer Aktivitätsfunktion. |
     | Autorisierungsstufe | Anonym | Lassen Sie zu Demonstrationszwecken das Aufrufen der Funktion ohne Authentifizierung zu. |
 

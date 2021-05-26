@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 03/17/2021
-ms.openlocfilehash: 160797367e2daf0cb6fe708d626cbf217c9992c8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 66ddc9f080383dac7703b00e62878df7714c4201
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448598"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061260"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-central"></a>Schnellstart: Verbinden eines MXCHIP AZ3166-DevKit mit IoT Central
 
@@ -76,51 +76,7 @@ So installieren Sie die Tools
     cmake --version
     ```
 
-## <a name="create-the-cloud-components"></a>Erstellen der Cloudkomponenten
-
-### <a name="create-the-iot-central-application"></a>Erstellen der IoT Central-Anwendung
-
-Es gibt verschiedene Möglichkeiten zum Verbinden von Geräten mit Azure IoT. In diesem Abschnitt wird beschrieben, wie Sie Azure IoT Central verwenden, um die Verbindung für ein Gerät herzustellen. Bei IoT Central handelt es sich um eine IoT-Anwendungsplattform, mit der die Kosten und die Komplexität der Erstellung und Verwaltung von IoT-Lösungen reduziert werden.
-
-Erstellen Sie wie folgt eine neue Anwendung:
-1. Wählen Sie im [Azure IoT Central-Portal](https://apps.azureiotcentral.com/) im seitlichen Navigationsmenü die Option **Meine Apps** aus.
-1. Wählen Sie **+ Neue Anwendung** aus.
-1. Klicken Sie auf **Benutzerdefinierte Apps**.
-1. Fügen Sie einen Anwendungsnamen und eine URL hinzu.
-1. Wählen Sie den Tarif **Free** aus, um eine 7-tägige Testversion zu aktivieren.
-
-    :::image type="content" source="media/quickstart-devkit-mxchip-az3166/iot-central-create-custom.png" alt-text="Erstellen einer benutzerdefinierten App in Azure IoT Central":::
-
-1. Wählen Sie **Erstellen** aus.
-
-    Nachdem die Anwendung von IoT Central bereitgestellt wurde, werden Sie automatisch zum neuen Anwendungsdashboard geleitet.
-
-    > [!NOTE]
-    > Falls Sie bereits über eine IoT Central-Anwendung verfügen, können Sie diese verwenden, um die Schritte in diesem Artikel auszuführen, und müssen keine neue Anwendung erstellen.
-
-### <a name="create-a-new-device"></a>Erstellen eines neuen Geräts
-
-In diesem Abschnitt verwenden Sie das IoT Central-Anwendungsdashboard, um ein neues Gerät zu erstellen. In einem späteren Abschnitt verwenden Sie die Verbindungsinformationen für das neu erstellte Gerät, um für Ihr physisches Gerät eine sichere Verbindung herzustellen.
-
-Erstellen Sie wie folgt ein Gerät:
-1. Wählen Sie im Anwendungsdashboard im seitlichen Navigationsmenü die Option **Geräte** aus.
-1. Wählen Sie **+ Neu** aus, um das Fenster **Neues Gerät erstellen** zu öffnen.
-1. Behalten Sie für die Gerätevorlage die Einstellung **Nicht zugewiesen** bei.
-1. Geben Sie den gewünschten Gerätenamen und die Geräte-ID ein.
-
-    :::image type="content" source="media/quickstart-devkit-mxchip-az3166/iot-central-create-device.png" alt-text="Erstellen eines Geräts in Azure IoT Central":::
-
-1. Wählen Sie die Schaltfläche **Erstellen**.
-1. Das neu erstellte Gerät wird in der Liste **Alle Geräte** angezeigt.  Wählen Sie den Gerätenamen aus, um die Details anzuzeigen.
-1. Wählen Sie in der Menüleiste oben rechts die Option **Verbinden** aus, um die Verbindungsinformationen anzuzeigen, die im nächsten Abschnitt zum Konfigurieren des Geräts verwendet werden.
-
-    :::image type="content" source="media/quickstart-devkit-mxchip-az3166/iot-central-device-connection-info.png" alt-text="Anzeigen der Details zur Geräteverbindung":::
-
-1. Notieren Sie sich die Verbindungswerte für die folgenden Parameter der Verbindungszeichenfolge, die im Dialogfeld **Verbinden** angezeigt werden. Sie fügen diese Werte im nächsten Schritt einer Konfigurationsdatei hinzu:
-
-    > * `ID scope`
-    > * `Device ID`
-    > * `Primary key`
+[!INCLUDE [iot-develop-embedded-create-central-app-with-device](../../includes/iot-develop-embedded-create-central-app-with-device.md)]
 
 ## <a name="prepare-the-device"></a>Vorbereiten des Geräts
 
@@ -182,7 +138,7 @@ Sie können die **Termite**-App verwenden, um die Kommunikation zu überwachen u
 1. Starten Sie **Termite**.
     > [!TIP]
     > Falls Sie für Termite keine Verbindung mit Ihrem DevKit herstellen können, sollten Sie den [ST-LINK-Treiber](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip) installieren und es anschließend erneut versuchen. Weitere Schritte finden Sie auf der Seite zur [Problembehandlung](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md).
-1. Wählen Sie **Settings** aus.
+1. Klicken Sie auf **Einstellungen**.
 1. Überprüfen Sie im Dialogfeld **Serial port settings** (Einstellungen für den seriellen Anschluss) die folgenden Einstellungen, und ändern Sie sie bei Bedarf:
     * **Baud rate** (Baudrate): 115.200
     * **Port** (Anschluss): Der Anschluss, an dem Ihr MXCHIP-DevKit angeschlossen ist. Falls die Dropdownliste mehrere Anschlussoptionen enthält, können Sie hier den richtigen Anschluss auswählen. Öffnen Sie den **Geräte-Manager** von Windows, und ermitteln Sie unter **Anschlüsse**, welcher Anschluss verwendet wird.

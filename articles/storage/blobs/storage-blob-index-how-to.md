@@ -1,20 +1,20 @@
 ---
 title: Verwenden von Blobindextags zum Verwalten und Suchen von Daten in Azure Blob Storage
 description: Hier finden Sie Beispiele für die Verwendung von Blobindextags zum Kategorisieren, Verwalten und Abfragen von Daten für Blobobjekte.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a820f7efc39af8c6ab66c883d285b507c7bc7368
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63f06b9cab7896bcd98b6b6cd9c037b7ee83b47f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563267"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451767"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage
 
@@ -32,7 +32,7 @@ Weitere Informationen zu diesem Feature sowie zu bekannten Problemen und Einschr
 - Ein Azure-Abonnement ist registriert und wurde für den Zugriff auf die Blobindex-Vorschauversion genehmigt.
 - Zugriff auf das [Azure-Portal](https://portal.azure.com/)
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 Da sich der Blobindex in der Vorschauphase befindet, wird das .NET-Speicherpaket im NuGet-Vorschaufeed veröffentlicht. Diese Bibliothek kann während der Vorschauphase geändert werden.
 
@@ -76,7 +76,7 @@ Diese Aufgabe kann von einem [Besitzer von Speicherblobdaten](../../role-based-a
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png" alt-text="Screenshot des Azure-Portals beim Hochladen eines Blobs mit Indextags":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 Im folgenden Beispiel wird das Erstellen eines Anfügeblobs gezeigt, bei dem Tags während der Erstellung festgelegt wurden.
 
@@ -136,7 +136,7 @@ Das Festlegen und Aktualisieren von Blobindextags kann von einem [Besitzer von S
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Screenshot des Azure-Portals beim Abrufen, Festlegen, Aktualisieren und Löschen von Indextags für Blobs":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 ```csharp
 static async Task BlobIndexTagsExample()
@@ -213,7 +213,7 @@ Im Azure-Portal wendet der Filter für Blobindextags den `@container`-Parameter 
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Screenshot des Azure-Portals beim Filtern und Suchen von Blobs mit Indextags":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 ```csharp
 static async Task FindBlobsByTagsExample()
@@ -313,7 +313,7 @@ static async Task FindBlobsByTagsExample()
 
 6. Wählen Sie **Hinzufügen** aus, um die neue Regel auf die Richtlinie für die Lebenszyklusverwaltung anzuwenden.
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 Richtlinien für die [Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md) werden für jedes Speicherkonto auf der Steuerungsebene angewendet. Installieren Sie für .NET die [Microsoft Azure Management Storage Library](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) ab Version 16.0.0.
 

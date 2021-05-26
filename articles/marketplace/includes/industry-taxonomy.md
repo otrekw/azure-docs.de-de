@@ -5,16 +5,16 @@ documentationcenter: partner-center-commercial-marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-ms.date: 12/02/2020
+ms.date: 12/14/2020
 ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 869bc472439c7264943ee540e57644b8161380ba
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 836c4cb3c64cdd88307461e1893848dff5b13d69
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820133"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467427"
 ---
 Sie können optional bis zu zwei Branchen und zwei Sektoren in jeder Branche auswählen. Diese Kategorien werden zum Anzeigen Ihres Angebots verwendet, wenn Branche und Sektor in Suchfiltern verwendet und im Onlineshop übernommen werden. Wenn Ihr Angebot auf eine bestimmte Branche und/oder einen Sektor ausgerichtet ist, erläutern Sie in der Angebotsbeschreibung, wie Ihr Angebot die ausgewählten Branchen oder Sektoren unterstützt. Wenn Ihr Angebot nicht branchenspezifisch ist, treffen Sie hier keine Auswahl, sondern lassen diesen Abschnitt leer.
 

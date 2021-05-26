@@ -1,33 +1,25 @@
 ---
-title: Hinzufügen von Replikaten zu Azure Cache for Redis (Vorschau)
+title: Hinzufügen von Replikaten zu Azure Cache for Redis
 description: Erfahren Sie, wie Sie weitere Replikate für Ihre Azure Cache for Redis-Instanzen im Premium-Tarif hinzufügen.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 87b5ec5eb13f2bc53bdf993547ce3da1c74404bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aef8055d289ada8a62078185517c3ba129972488
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91566787"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099853"
 ---
-# <a name="add-replicas-to-azure-cache-for-redis-preview"></a>Hinzufügen von Replikaten zu Azure Cache for Redis (Vorschau)
+# <a name="add-replicas-to-azure-cache-for-redis"></a>Hinzufügen von Replikaten zu Azure Cache for Redis
 In diesem Artikel erfahren Sie, wie Sie eine Azure Cache-Instanz mit weiteren Replikaten über das Azure-Portal einrichten.
 
 Azure Cache for Redis im Standard- und Premium-Tarif bietet Redundanz durch das Hosten jedes Caches auf zwei dedizierten virtuellen Computern (VMs). Diese VMs werden als primäre VM und als Replikat konfiguriert. Wenn die primäre VM nicht mehr verfügbar ist, erkennt das Replikat dies und übernimmt automatisch als neue primäre VM. Sie können jetzt die Anzahl der Replikate in einem Premium-Cache auf bis zu drei erhöhen, sodass Sie insgesamt vier VMs zur Unterstützung eines Caches nutzen können. Das Vorhandensein mehrerer Replikate führt zu einer höheren Resilienz als bei einem einzelnen Replikat.
 
-> [!IMPORTANT]
-> Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> 
-
 ## <a name="prerequisites"></a>Voraussetzungen
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-
-> [!NOTE]
-> Diese Funktion befindet sich zurzeit in der Vorschauphase. [Wenden Sie sich an uns](mailto:azurecache@microsoft.com), wenn Sie daran interessiert sind.
->
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
 Führen Sie die folgenden Schritte aus, um einen Cache zu erstellen:
@@ -40,7 +32,7 @@ Führen Sie die folgenden Schritte aus, um einen Cache zu erstellen:
    
 1. Konfigurieren Sie auf der Seite **Grundlagen** die Einstellungen für den neuen Cache.
    
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Abonnement** | Wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese neue Azure Cache for Redis-Instanz erstellt wird. | 
     | **Ressourcengruppe** | Wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr Cache und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 

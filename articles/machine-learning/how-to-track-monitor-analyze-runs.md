@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 04/19/2021
 ms.topic: how-to
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d50820e954c1a34f1ccffe133a338538bf0abd18
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: f61e1a604c9296f85bbfd508f39dcbc74e256caf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888528"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098720"
 ---
 # <a name="start-monitor-and-track-run-history"></a>Ausführungsverlauf starten, überwachen und verfolgen
 
@@ -194,11 +194,11 @@ So zeigen Sie Ihre Ausführungen in Studio an:
 Auf der Seite **Alle Ausführungen** können Sie die Liste der Ausführungen nach Tags, Experimenten, Computeziel und mehr filtern, um Ihre Arbeit besser zu organisieren und zu optimieren.  
     
 1. Nehmen Sie Anpassungen an der Seite vor, indem Sie zu vergleichende Ausführungen auswählen, Diagramme hinzufügen oder Filter anwenden. Diese Änderungen können als **Benutzerdefinierte Ansicht** gespeichert werden, sodass Sie problemlos zu Ihrer Arbeit zurückkehren können. Benutzer mit Arbeitsbereich-Berechtigungen können die benutzerdefinierte Ansicht bearbeiten oder anzeigen. Außerdem können Sie die benutzerdefinierte Ansicht zur besseren Zusammenarbeit für Teammitglieder freigeben, indem Sie **Ansicht freigeben** auswählen.   
-    
+
+1. Wenn Sie die Ausführungsprotokolle anzeigen möchten, wählen Sie eine bestimmte Ausführung aus, und auf der Registerkarte **Ausgaben und Protokolle** finden Sie Diagnose- und Fehlerprotokolle für Ihre Ausführung.    
+
 :::image type="content" source="media/how-to-track-monitor-analyze-runs/custom-views.gif" alt-text="Screenshot: Erstellen einer benutzerdefinierten Ansicht":::
     
-1. Wenn Sie die Ausführungsprotokolle anzeigen möchten, wählen Sie eine bestimmte Ausführung aus, und auf der Registerkarte **Ausgaben und Protokolle** finden Sie Diagnose- und Fehlerprotokolle für Ihre Ausführung.
-
 ## <a name="run-description"></a>Ausführungsbeschreibung 
 
 Eine Ausführungsbeschreibung kann einer Ausführung hinzugefügt werden, um mehr Informationen zur Ausführung zu liefern, u. a. zum Kontext. Sie können diese Beschreibungen auch in der Liste der Ausführungen suchen und die Ausführungsbeschreibung als Spalte der Liste der Ausführungen hinzufügen. 

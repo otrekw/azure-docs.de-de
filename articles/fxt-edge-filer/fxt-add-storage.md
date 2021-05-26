@@ -2,16 +2,16 @@
 title: 'Tutorial: Hinzufügen von Speicher zu einem Azure FXT Edge Filer-Cluster'
 description: Konfigurieren von Back-End-Speicher und des clientseitigen Pseudo-Namespace für Azure FXT Edge Filer
 author: ekpgh
-ms.author: rohogue
+ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87d6d24f1cc325909249c7ad65c2b63ffe228a2a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92217523"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456270"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Tutorial: Hinzufügen von Back-End-Speicher und Konfigurieren des virtuellen Namespace
 
