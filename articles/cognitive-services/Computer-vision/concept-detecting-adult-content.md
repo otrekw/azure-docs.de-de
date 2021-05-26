@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a3c8a5a0ee31b827c41c4a5a07af8c69c8a8cecd
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 5a3d8ab8a14a2b3ed5bb20d7c97d82a26d30ade3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714881"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465485"
 ---
 # <a name="detect-adult-content"></a>Erkennen nicht jugendfreier Inhalte
 
@@ -37,4 +37,4 @@ Die Klassifizierung „Nicht jugendfrei“ enthält mehrere verschiedene Kategor
 
 Mit der API [Bild analysieren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) können Sie nicht jugendfreie Inhalte erkennen. Wenn Sie den Wert von `Adult` zum **visualFeatures**-Abfrageparameter hinzufügen, gibt die API in ihrer JSON-Antwort drei boolesche Eigenschaften (`isAdultContent`, `isRacyContent` und `isGoryContent`) zurück. Die Methode gibt auch die entsprechenden Eigenschaften (`adultScore`, `racyScore` und `goreScore`) zurück, die Zuverlässigkeitsbewertungen zwischen 0 und 1 für jede Kategorie darstellen.
 
-- [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+- [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/image-analysis-client-library.md?pivots=programming-language-csharp)

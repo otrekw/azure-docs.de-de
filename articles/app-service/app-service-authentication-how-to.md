@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Feature zur Authentifizierung und Autoris
 ms.topic: article
 ms.date: 03/29/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 9335bb62e494fab50f7beadf3d7bbc423d80cf14
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7209f5176480577f14ba5b02fafc5a249c58fd1c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775725"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452220"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service
 
@@ -302,9 +302,6 @@ Mithilfe der folgenden Schritte können Sie die Anwendung manuell zur V2-API mig
    ```azurecli
    # For Web Apps
    az webapp auth show -g <group_name> -n <site_name>
-
-   # For Azure Functions
-   az functionapp auth show -g <group_name> -n <site_name>
    ```
 
    Notieren Sie sich aus der resultierenden JSON-Nutzlast den Geheimniswert für jeden von Ihnen konfigurierten Anbieter:

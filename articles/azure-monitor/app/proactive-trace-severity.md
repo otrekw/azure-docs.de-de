@@ -3,18 +3,18 @@ title: Verschlechterung des Schweregrads der Ablaufverfolgung – Azure Applicat
 description: Überwachen Sie Anwendungsablaufverfolgungen mit Azure Application Insights und der intelligenten Erkennung auf ungewöhnliche Muster in der Ablaufverfolgungstelemetrie.
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 2b27860adfc1652b58fe9c51d4d0b0a6c271fc0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8432ce53a4d630839a62d29833e3863fff4e8afa
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86539872"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072422"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>Verschlechterung des Schweregrads der Ablaufverfolgung (Vorschau)
 
 Ablaufverfolgungen werden häufig in Anwendungen verwendet, weil sie dabei helfen, die Abläufe im Hintergrund nachzuvollziehen. Wenn etwas schief geht, bieten Ablaufverfolgungen entscheidende Einblicke in die Abfolge der Ereignisse, die zu dem unerwünschten Zustand geführt haben. Ablaufverfolgungen sind zwar in der Regel unstrukturiert, aber dennoch kann man von ihnen konkret etwas ableiten – ihren Schweregrad. Im stabilen Zustand einer Anwendung erwarten wir, dass das Verhältnis zwischen „guten“ Ablaufverfolgungen (*Info* und *Ausführlich*) und „schlechten“ Ablaufverfolgungen (*Warnung*, *Fehler* und *Kritisch*) stabil bleibt. Es wird davon ausgegangen, dass „schlechte“ Ablaufverfolgungen in gewissem Umfang aus einer Vielzahl von Gründen (z. B. aufgrund vorübergehender Netzwerkprobleme) regelmäßig auftreten können. Aber wenn ein echtes Problem wächst, manifestiert es sich in der Regel als eine Zunahme des relativen Anteils von „schlechten“ und „guten“ Ablaufverfolgungen. Die intelligente Erkennung von Application Insights analysiert die von Ihrer Anwendung protokollierten Ablaufverfolgungen automatisch und kann Sie vor ungewöhnlichen Mustern im Schweregrad der Ablaufverfolgungstelemetrie warnen.
 
-Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der Konfiguration der Ablaufverfolgungsprotokollierung für Ihre App. (Lesen Sie die Informationen zum Konfigurieren eines Ablaufverfolgungs-Protokolllisteners für [.NET](./asp-net-trace-logs.md) oder [Java](./java-trace-logs.md).) Sie ist aktiv, wenn Ihre App genügend Ausnahmetelemetriedaten generiert.
+Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der Konfiguration der Ablaufverfolgungsprotokollierung für Ihre App. (Lesen Sie die Informationen zum Konfigurieren eines Ablaufverfolgungs-Protokolllisteners für [.NET](./asp-net-trace-logs.md) oder [Java](java-2x-trace-logs.md).) Sie ist aktiv, wenn Ihre App genügend Ausnahmetelemetriedaten generiert.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wann erhalte ich diese Art von Benachrichtigung der intelligenten Erkennung?
 Sie können diese Art von Benachrichtigung erhalten, wenn das Verhältnis zwischen „guten“ (mit dem Status *Info* oder *Ausführlich* protokollierten) Ablaufverfolgungen und „schlechten“ (mit dem Status *Warnung*, *Fehler* oder *Schwerwiegend* protokollierten) Ablaufverfolgungen an einem bestimmten Tag abnimmt, im Vergleich zu einer Baseline, die über die letzten sieben Tage berechnet wurde.
