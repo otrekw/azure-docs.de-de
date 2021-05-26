@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4721598961ae912e8f0a9ef2f61022e5feb39e6c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86257052"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462248"
 ---
 # <a name="sfctl"></a>sfctl
 Befehle zum Verwalten von Service Fabric-Clustern und -Entitäten. Diese Version ist mit der Service Fabric 7.0-Runtime kompatibel.
@@ -27,7 +27,6 @@ Befehle folgen dem Muster „Nomen-Verb“. Weitere Informationen finden Sie in 
 | [container](service-fabric-sfctl-container.md) | Führt containerbezogene Befehle auf einem Clusterknoten aus. |
 | [events](service-fabric-sfctl-events.md) | Ruft Ereignisse aus dem Ereignisspeicher ab (wenn der EventStore-Dienst bereits installiert ist). |
 | [is](service-fabric-sfctl-is.md) | Ermöglicht es, Befehle an den Infrastrukturdienst abzufragen und zu senden. |
-| [mesh](service-fabric-sfctl-mesh.md) | Löschen und Verwalten von Service Fabric Mesh-Anwendungen. |
 | [Node](service-fabric-sfctl-node.md) | Ermöglicht es, Knoten zu verwalten, die einen Cluster bilden. |
 | [partition](service-fabric-sfctl-partition.md) | Ermöglicht es, Partitionen für jeden Dienst abzufragen und zu verwalten. |
 | [property](service-fabric-sfctl-property.md) | Speichern und Abfragen von Eigenschaften unter Service Fabric-Namen. |

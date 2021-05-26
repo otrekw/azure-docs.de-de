@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 4fc71f3242cc5607acebc68b62c5c0565b8f8e56
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 88ed92f4db7037753e93386eea329ab560f0847b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715008"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464214"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektur der Azure Migrate-Appliance
 
@@ -51,7 +51,7 @@ Die Appliance verfügt über die folgenden Dienste:
 - **SQL Discovery and Assessment Agent**: Sendet die Konfigurations- und Leistungsmetadaten von SQL Server-Instanzen und -Datenbanken an Azure.
 
 > [!Note]
-> Die letzten drei Dienste sind nur auf der Appliance verfügbar, die für die Ermittlung und Bewertung von in Ihrer VMware-Umgebung ausgeführten Servern verwendet wird.<br/> Das Feature zur Ermittlung und Bewertung von SQL Server-Instanzen und -Datenbanken, die in Ihrer VMware-Umgebung ausgeführt werden, befindet sich nun in der Vorschauphase. Verwenden Sie [**diesen Link**](https://aka.ms/AzureMigrate/SQL), und erstellen Sie ein Projekt in der Region **Australien, Osten**, um dieses Feature zu testen. Falls Sie bereits über ein Projekt in „Australien, Osten“ verfügen und dieses Feature ausprobieren möchten, sollten Sie sicherstellen, dass Sie im Portal die [**Voraussetzungen**](how-to-discover-sql-existing-project.md) erfüllt haben.
+> Die letzten drei Dienste sind nur auf der Appliance verfügbar, die für die Ermittlung und Bewertung von in Ihrer VMware-Umgebung ausgeführten Servern verwendet wird.
 
 ## <a name="discovery-and-collection-process"></a>Ermittlungs- und Sammlungsprozess
 

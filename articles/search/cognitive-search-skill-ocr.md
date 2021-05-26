@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: aa9c8e1d5579538df11358edc08eb7e2043cea74
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 12b6c8e71052d8d821d4b253d5f921bbff82e02d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285840"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473876"
 ---
 # <a name="ocr-cognitive-skill"></a>Der Skill „OCR“
 
 Mit dem Skill für die **optische Zeichenerkennung (OCR)** wird gedruckter und handschriftlicher Text in Bilddateien erkannt. Dieser Skill verwendet die Machine Learning-Modelle, die durch [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) der [Maschinelles Sehen](../cognitive-services/computer-vision/overview.md)-API in Cognitive Services bereitgestellt werden. Die Qualifikation **OCR** ist den folgenden Funktionen zugeordnet:
 
 + Für Englisch, Spanisch, Deutsch Französisch, Italienisch, Portugiesisch und Niederländisch wird die neue [Lese](../cognitive-services/computer-vision/overview-ocr.md#read-api)-API verwendet.
-+ Für alle anderen Sprachen wird die [Legacy-OCR](../cognitive-services/computer-vision/overview-ocr.md#ocr-api)-API verwendet.
++ Für alle anderen Sprachen wird die [Legacy-OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20d)-API verwendet.
 
 Der Skill **OCR** extrahiert Text aus Bilddateien. Folgende Dateiformate werden unterstützt:
 

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cd6147fbe38710bcefd580e71be1d6f5d446a21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a68697d6dffad6aad857bb59d66beeb42dec62d2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89010748"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475394"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>Erstellen einer gespeicherten Zugriffsrichtlinie mit .NET
 
@@ -42,7 +42,7 @@ Der zugrunde liegende REST-Vorgang zum Erstellen einer gespeicherten Zugriffsric
 
 In den folgenden Codebeispielen wird eine gespeicherte Zugriffsrichtlinie für einen Container erstellt. Sie können mit der Zugriffsrichtlinie Einschränkungen für eine Dienst-SAS für den Container oder seine Blobs festlegen.
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Rufen Sie eine der folgenden Methoden auf, um mit Version 12 der .NET-Clientbibliothek für Azure Storage eine gespeicherte Zugriffsrichtlinie für einen Container zu erstellen:
 
@@ -93,7 +93,7 @@ async static Task CreateStoredAccessPolicyAsync(string containerName)
 }
 ```
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Rufen Sie eine der folgenden Methoden auf, um mit Version 12 der .NET-Clientbibliothek für Azure Storage eine gespeicherte Zugriffsrichtlinie für einen Container zu erstellen:
 

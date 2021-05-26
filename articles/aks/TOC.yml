@@ -393,8 +393,6 @@
       items:
         - name: Häufige Probleme
           href: troubleshooting.md
-        - name: Suchen nach Best Practices
-          href: kube-advisor-tool.md
         - name: SSH-Knotenzugriff
           href: ssh.md
         - name: Linux-Leistungstools

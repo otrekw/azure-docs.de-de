@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2918b845430a6fc6dc59eca7041c114fc9d06515
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e08962c0cff2e9aa04601f89e677334878e2f53
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97092209"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461860"
 ---
 # <a name="create-an-account-sas-with-net"></a>Erstellen einer Konto-SAS mit .NET
 
@@ -26,13 +26,13 @@ In diesem Artikel wird beschrieben, wie Sie den Speicherkontoschlüssel zum Erst
 
 ## <a name="create-an-account-sas"></a>Erstellen einer Konto-SAS
 
-### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Eine Konto-SAS wird mit dem Kontozugriffsschlüssel signiert. Verwenden Sie die [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential)-Klasse, um die Informationen zu erstellen, die zum Signieren der SAS verwendet werden. Erstellen Sie als Nächstes ein neues [AccountSasBuilder](/dotnet/api/azure.storage.sas.accountsasbuilder)-Objekt, und rufen Sie [ToSasQueryParameters](/dotnet/api/azure.storage.sas.accountsasbuilder.tosasqueryparameters) auf, um die SAS-Tokenzeichenfolge abzurufen.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetAccountSASToken":::
 
-### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 Um eine Konto-SAS für einen Container zu erstellen, rufen Sie die Methode [CloudStorageAccount.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) auf.
 
@@ -66,11 +66,11 @@ static string GetAccountSASToken()
 
 Um die Konto-SAS zum Zugreifen auf APIs auf Dienstebene für den Blob-Dienst zu verwenden, erstellen Sie ein Blobdienst-Clientobjekt, indem Sie die SAS und den Blob-Speicherendpunkt für Ihr Speicherkonto verwenden.
 
-### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_UseAccountSAS":::
 
-### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 Ersetzen Sie in diesem Codeausschnitt den Platzhalter `<storage-account>` durch den Namen Ihres Speicherkontos.
 

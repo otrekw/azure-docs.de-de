@@ -3,16 +3,16 @@ title: 'Schnellstart: Erstellen von Integrationsworkflows mit Azure Logic Apps i
 description: Erstellen und Verwalten von Workflowdefinitionen mit mehrinstanzenfähigen Azure Logic Apps in Visual Studio Code.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, deli, logicappspm
+ms.reviewer: azla
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/25/2021
-ms.openlocfilehash: 001a97f07655c4af78e14e07d9204045cec9502b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 41ed5f3e85390a51fa30316bc9f95c8b320c4468
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372548"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474459"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-multi-tenant-azure-logic-apps-and-visual-studio-code"></a>Schnellstart: Erstellen und Verwalten von Logik-App-Workflowdefinitionen mit mehrinstanzenfähigen Azure Logic Apps und Visual Studio Code
 
