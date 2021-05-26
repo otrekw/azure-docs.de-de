@@ -3,16 +3,16 @@ title: Übersicht über dedizierte Event Hubs – Azure Event Hubs | Microsoft-D
 description: Dieser Artikel enthält eine Übersicht über dedizierte Azure Event Hubs, die Bereitstellungen von Event Hubs mit einzelnen Mandanten bieten.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 7f4693857f2c963623cb7ab7c132781d1061f5d7
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 5468588c0dc1dc8660c2ddfbb44c554029cffa0c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017461"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376116"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
-*Event Hubs-Cluster* bieten Bereitstellungen mit einem einzelnen Mandanten für Kunden mit äußerst anspruchsvollen Streaminganforderungen. Dieses Einzelmandantangebot verfügt über ein garantiertes 99,99 %-SLA und ist nur in unserem Dedicated-Tarif verfügbar. Ein Event Hubs-Cluster kann Millionen Ereignisse pro Sekunde mit garantierter Kapazität und Latenz im Sekundenbruchteilbereich erfassen. Namespaces und Event Hubs, die innerhalb des dedizierten Clusters erstellt werden, bieten alle Funktionen des Standardangebots und mehr, aber ohne jegliche Einschränkung bei eingehenden Daten. Er umfasst auch das verbreitete Feature [Event Hubs Capture](event-hubs-capture-overview.md) ohne zusätzliche Kosten. Mit diesem Feature können Sie Datenströme automatisch in Batches zusammenfassen und in Azure Storage oder Azure Data Lake protokollieren. 
+*Event Hubs-Cluster* bieten Bereitstellungen mit einem einzelnen Mandanten für Kunden mit äußerst anspruchsvollen Streaminganforderungen. Dieses Einzelmandantangebot verfügt über ein garantiertes 99,99 %-SLA und ist nur in unserem Dedicated-Tarif verfügbar. Ein Event Hubs-Cluster kann Millionen Ereignisse pro Sekunde mit garantierter Kapazität und Latenz im Sekundenbruchteilbereich erfassen. Namespaces und Event Hubs, die innerhalb des dedizierten Clusters erstellt werden, bieten alle Features des Premium-Angebots und mehr, aber ohne jegliche Einschränkung bei eingehenden Daten. Er umfasst auch das verbreitete Feature [Event Hubs Capture](event-hubs-capture-overview.md) ohne zusätzliche Kosten. Mit diesem Feature können Sie Datenströme automatisch in Batches zusammenfassen und in Azure Storage oder Azure Data Lake protokollieren. 
 
 Cluster werden in Form von **Kapazitätseinheiten (Capacity Units, CUs)** bereitgestellt und abgerechnet, einem vorab zugewiesenen Maß an CPU- und Arbeitsspeicherressourcen. Sie können für jeden Cluster 1, 2, 4, 8, 12, 16 oder 20 CUs erwerben. Wie viel Sie pro CU erfassen und streamen können, hängt von einer Vielzahl von Faktoren ab, z. B. den folgenden: 
 
@@ -35,27 +35,8 @@ Ein dedizierter Cluster garantiert die Kapazität in vollem Umfang. Er kann mehr
 
 Das Dedicated-Angebot umfasst Features wie Capture ohne Zusatzkosten und exklusiven Zugang zu Funktionen wie Bring Your Own Key (BYOK). Der Dienst verwaltet auch den Lastenausgleich, Betriebssystemupdates, Sicherheitspatches und die Partitionierung. Daher müssen Sie weniger Zeit für die Infrastrukturwartung aufwenden und haben mehr Zeit für das Entwickeln von clientseitigen Features.  
 
-#### <a name="cost-savings"></a>Kostenersparnis
-
-Bei hohen Eingangsvolumen (> 100 Durchsatzeinheiten) kostet ein Cluster bedeutend weniger pro Stunde als der Kauf einer vergleichbaren Menge an Durchsatzeinheiten im Standard-Angebot.
-
-
 ## <a name="event-hubs-dedicated-quotas-and-limits"></a>Event Hubs Dedicated: Kontingente und Grenzwerte
-
-Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Minimum von vier Stunden Nutzung in Rechnung gestellt. Der Dedicated-Tarif umfasst alle Features des Standard-Tarifs, jedoch mit Kapazitäten und Grenzwerten auf Unternehmensniveau für Kunden mit anspruchsvollen Workloads. 
-
-| Funktion | Standard | Dediziert |
-| --- |:---|:---|
-| Bandbreite | 20 TUs (bis zu 40 TUs) | 20 CUs |
-| Namespaces |  1 | 50 pro CU |
-| Event Hubs |  10 pro Namespace | 1000 pro Namespace |
-| Eingangsereignisse | Bezahlung pro Million Ereignisse | Enthalten |
-| Nachrichtengröße | 1 Million Bytes | 1 Million Bytes |
-| Partitionen | 32 pro Event Hub | 1\.024 pro Event Hub<br/>2000 pro CU |
-| Verbrauchergruppen | 20 pro Event Hub | Kein Limit pro CU, 1000 pro Event Hub |
-| Brokerverbindungen | 1\.000 enthalten, max. 5.000 | 100.000 enthalten, gleichzeitig Max. |
-| [Aufbewahrung von Ereignissen](event-hubs-features.md#event-retention) | 7 Tage, 84 GB enthalten pro TU | 90 Tage, 10 TB enthalten pro CU |
-| Erfassung | Bezahlung pro Stunde | Enthalten |
+Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Minimum von vier Stunden Nutzung in Rechnung gestellt. Der Dedicated-Tarif umfasst alle Features des Premium-Tarifs, jedoch mit Kapazitäten und Grenzwerten auf Unternehmensniveau für Kunden mit anspruchsvollen Workloads. 
 
 Weitere Informationen zu Kontingenten und Grenzwerten finden Sie unter [Kontingente und Grenzwerte in Event Hubs](event-hubs-quotas.md).
 

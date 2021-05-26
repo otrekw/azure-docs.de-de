@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Textübersetzung, Übersetzerdienst, Text übersetzen, Text transkribieren, Sprachenerkennung
-ms.openlocfilehash: 7cb3eb259cc21a5a10b426e4da53513d1f42fb56
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 87e67e5c62180c9120aaf7a426a4195960d9bcf8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488697"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076526"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Schnellstart: Erste Schritte mit der Textübersetzung
 
@@ -2833,10 +2833,5 @@ Wenn Verbindungsprobleme auftreten, ist möglicherweise das SSL-Zertifikat abgel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Informationen zur Vorgehensweise der API beim Zählen von Zeichen](character-counts.md)
-* [Anpassen und Verbessern der Übersetzung](customization.md)
-
-## <a name="see-also"></a>Weitere Informationen
-
-* [Textübersetzung v3 API-Referenz](reference/v3-0-reference.md)
-* [Sprachunterstützung](language-support.md)
+> [!div class="nextstepaction"]
+> [Anpassen und Verbessern der Übersetzung](customization.md)

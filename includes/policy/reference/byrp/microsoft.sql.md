@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 718ed77d00c574de891a1d015072a7c1db0ab0eb
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f04dbd73d8bc5222de7bfccb095854586b9da1b2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753861"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071439"
 ---
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -25,7 +25,7 @@ ms.locfileid: "108753861"
 |[Für SQL Server-Instanzen muss die Überwachung aktiviert werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4c68484-132f-41f9-9b6d-3e4b1cb55036) |Um sicherzustellen, dass die für Ihre SQL-Ressourcen ausgeführten Vorgänge erfasst werden, muss für SQL Server-Instanzen die Überwachung aktiviert sein. Dies ist gelegentlich zur Einhaltung gesetzlicher Standards erforderlich. |DeployIfNotExists, Disabled |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Deploy.json) |
 |[Bereitstellen: Diagnoseeinstellungen für SQL-Datenbanken in Log Analytics-Arbeitsbereich konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb79fa14e-238a-4c2d-b376-442ce508fc84) |Hiermit werden die Diagnoseeinstellungen für SQL-Datenbanken für das Streaming von Ressourcenprotokollen in einen Log Analytics-Arbeitsbereich bereitgestellt, wenn eine SQL-Datenbank erstellt oder aktualisiert wird, in der diese Diagnoseeinstellungen fehlen. |DeployIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/DataConnectosSqlLogs_PolicyAssignment.json) |
 |[Advanced Data Security auf SQL Server-Instanzen bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6134c3db-786f-471e-87bc-8f479dc890f6) |Mit dieser Richtlinie wird Advanced Data Security auf SQL Server-Instanzen aktiviert. Dazu gehört auch die Aktivierung der Bedrohungserkennung und der Sicherheitsrisikobewertung. Es wird automatisch ein Speicherkonto in derselben Region und derselben Ressourcengruppe wie die SQL Server-Instanz erstellt, um Überprüfungsergebnisse mit dem Präfix „sqlva“ zu speichern. |Auswirkung „DeployIfNotExists“ |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAdvancedDataSecurity_Deploy.json) |
-|[Diagnoseeinstellungen für Azure SQL-Datenbank in Event Hub bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9a7c7a7d-49e5-4213-bea8-6a502b6272e0) |Hiermit werden die Diagnoseeinstellungen für Azure SQL-Datenbank zum Streamen in eine regionale Event Hub-Instanz für alle erstellten oder aktualisierten Azure SQL-Datenbank-Instanzen bereitgestellt, in denen diese Diagnoseeinstellungen fehlen. |Auswirkung „DeployIfNotExists“ |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDB_DiagnosticsLog_Deploy.json) |
+|[Diagnoseeinstellungen für Azure SQL-Datenbank in Event Hub bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9a7c7a7d-49e5-4213-bea8-6a502b6272e0) |Hiermit werden die Diagnoseeinstellungen für Azure SQL-Datenbank zum Streamen in eine regionale Event Hub-Instanz für alle erstellten oder aktualisierten Azure SQL-Datenbank-Instanzen bereitgestellt, in denen diese Diagnoseeinstellungen fehlen. |Auswirkung „DeployIfNotExists“ |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDB_DiagnosticsLog_Deploy.json) |
 |[Transparente SQL DB-Datenverschlüsselung bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86a912f6-9a06-4e26-b447-11b16ba8659f) |Ermöglicht die transparente Datenverschlüsselung für SQL-Datenbanken. |Auswirkung „DeployIfNotExists“ |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Deploy.json) |
 |[Bedrohungserkennung auf SQL Server-Instanzen bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F36d49e87-48c4-4f2e-beed-ba4ed02b71f5) |Diese Richtlinie stellt sicher, dass die Bedrohungserkennung auf SQL Server-Instanzen aktiviert ist. |Auswirkung „DeployIfNotExists“ |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/DeployTdOnSqlServers_Deploy.json) |
 |[Langfristige georedundante Sicherung muss für Azure SQL-Datenbank aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd38fc420-0735-4ef3-ac11-c806f651a570) |Diese Richtlinie überwacht alle Azure SQL-Datenbank-Instanzen mit nicht aktivierter langfristiger georedundanter Sicherung. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_SQLDatabase_AuditIfNotExists.json) |

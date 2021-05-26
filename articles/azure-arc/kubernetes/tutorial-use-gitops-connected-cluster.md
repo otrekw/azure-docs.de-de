@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial , devx-track-azurecli
-ms.openlocfilehash: 66d00ae738cc693d46f1df333ce64accea4b12a8
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b6b15d39616db88af9c8ccebd1d739c734a714c8
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883938"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373155"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Tutorial: Bereitstellen von Konfigurationen mithilfe von GitOps in einem Kubernetes-Cluster mit Azure Arc-Aktivierung 
 
@@ -149,7 +149,7 @@ Wie private Schlüssel können Sie Ihren known_hosts-Inhalt (bekannte Hosts) dir
 >[!NOTE]
 >* Die Chartversion 1.2.0+ des Helm-Operators unterstützt die private Authentifizierung von HTTPS Helm Release.
 >* HTTPS Helm Release wird für verwaltete AKS-Cluster nicht unterstützt.
->* Wenn Sie Flux benötigen, um über Ihren Proxy auf das Git-Repository zuzugreifen, müssen Sie die Azure Arc-Agents mit den Proxyeinstellungen aktualisieren. Informationen finden Sie unter [Herstellen einer Verbindung mithilfe eines ausgehenden Proxyservers](./quickstart-connect-cluster.md#connect-using-an-outbound-proxy-server).
+>* Wenn Sie Flux benötigen, um über Ihren Proxy auf das Git-Repository zuzugreifen, müssen Sie die Azure Arc-Agents mit den Proxyeinstellungen aktualisieren. Informationen finden Sie unter [Herstellen einer Verbindung mithilfe eines ausgehenden Proxyservers](./quickstart-connect-cluster.md#5-connect-using-an-outbound-proxy-server).
 
 
 ## <a name="additional-parameters"></a>Zusätzliche Parameter

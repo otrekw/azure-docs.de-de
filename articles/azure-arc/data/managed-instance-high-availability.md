@@ -10,12 +10,12 @@ ms.topic: conceptual
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: bd4541f8c8471c68ed539f407d9ff79684ccb3bf
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: a847eb04745895fb903385715296a2c5c5d8898e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733498"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061514"
 ---
 # <a name="azure-arc-enabled-managed-instance-high-availability"></a>Verwaltete Instanz mit Azure Arc-Unterstützung und Hochverfügbarkeit
 
@@ -79,7 +79,7 @@ Verfügbarkeitsgruppen ermöglichen Folgendes:
 
 - Alle Datenbanken werden automatisch zur Verfügbarkeitsgruppe hinzugefügt, einschließlich aller Benutzer- und Systemdatenbanken wie `master` und `msdb`. Diese Funktion bietet eine Einzelsystemansicht zu den Replikaten der Verfügbarkeitsgruppen. Beachten die beiden Datenbanken `containedag_master` und `containedag_msdb`, wenn Sie eine direkte Verbindung mit der Instanz herstellen. Die `containedag_*`-Datenbanken repräsentieren die Elemente `master` und `msdb` innerhalb der Verfügbarkeitsgruppe.
 
-- Ein externer Endpunkt wird automatisch für die Verbindung mit Datenbanken innerhalb der Verfügbarkeitsgruppe bereitgestellt. Der Endpunkt `<managed_instance_name>-svc-external` übernimmt die Rolle des Listeners der Verfügbarkeitsgruppe.
+- Ein externer Endpunkt wird automatisch für die Verbindung mit Datenbanken innerhalb der Verfügbarkeitsgruppe bereitgestellt. Der Endpunkt `<managed_instance_name>-external-svc` übernimmt die Rolle des Listeners der Verfügbarkeitsgruppe.
 
 ### <a name="deploy"></a>Bereitstellen
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/07/2021
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: ead4004813cf6415dfa1c7da3d308d93ea49a773
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: a46978e55e41cb05bb4a270c8c241c244e3c5021
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365908"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100430"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Schnellstart: Verwenden von Node.js zum Herstellen einer Verbindung mit einem und Abfragen von Daten aus einem Azure Cosmos DB-SQL-API-Konto
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,26 +57,7 @@ Für die Option „Azure Cosmos DB kostenlos testen“ ist kein Azure-Abonnemen
 
 ## <a name="add-a-container"></a>Hinzufügen eines Containers
 
-Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Datenbank und einen Container erstellen.
-
-1. Wählen Sie **Daten-Explorer** > **Neuer Container** aus.
-
-   Der Bereich **Container hinzufügen** wird ganz rechts angezeigt. Möglicherweise müssen Sie nach rechts scrollen, damit Sie ihn sehen.
-
-   :::image type="content" source="./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png" alt-text="Daten-Explorer im Azure-Portal, Bereich „Container hinzufügen“":::
-
-2. Geben Sie auf der Seite **Container hinzufügen** die Einstellungen für den neuen Container ein.
-
-   | Einstellung           | Vorgeschlagener Wert | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                           |
-   | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Datenbank-ID**   | Aufgaben           | Geben Sie _Tasks_ als Namen für die neue Datenbank ein. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder `/, \\, #, ?` noch nachgestellte Leerzeichen enthalten. Aktivieren Sie die Option **Provision database throughput** (Datenbankdurchsatz bereitstellen). Diese Option ermöglicht es Ihnen, den für die Datenbank bereitgestellten Durchsatz auf alle Container in der Datenbank zu verteilen. Darüber hinaus hilft sie Ihnen dabei, Kosten zu sparen. |
-   | **Durchsatz**    | 400             | Belassen Sie den Durchsatz bei 400 Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später hochskalieren, wenn Sie Wartezeiten reduzieren möchten.                                                                                                                                                                                                                                                    |
-   | **Container-ID**  | Items           | Geben Sie _Items_ als Namen für den neuen Container ein. Für Container-IDs gelten dieselben Zeichenanforderungen wie für Datenbanknamen.                                                                                                                                                                                                                                                               |
-   | **Partitionsschlüssel** | /category       | Das in diesem Artikel beschriebene Beispiel verwendet _/category_ als Partitionsschlüssel.                                                                                                                                                                                                                                                                                                           |
-
-   Zusätzlich zu den zuvor beschriebenen Einstellungen können Sie optional auch **eindeutige Schlüssel** für den Container hinzufügen. In diesem Beispiel lassen wir das Feld leer. Eindeutige Schlüssel bieten Entwicklern die Möglichkeit, ihrer Datenbank eine zusätzliche Datenintegritätsebene hinzuzufügen. Durch das Erstellen einer Richtlinie für eindeutige Schlüssel beim Erstellen eines Containers wird die Eindeutigkeit von einem oder mehreren Werten pro Partitionsschlüssel gewährleistet. Weitere Informationen finden Sie im Artikel [Eindeutige Schlüssel in Azure Cosmos DB](unique-keys.md).
-
-   Klicken Sie auf **OK**. Im Daten-Explorer werden die neue Datenbank und der neue Container angezeigt.
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
 ## <a name="add-sample-data"></a>Hinzufügen von Beispieldaten
 

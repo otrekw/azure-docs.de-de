@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/03/2021
+ms.date: 05/25/2021
 ms.author: b-juche
-ms.openlocfilehash: 08e46f056a63fe82c8a41afb9934963f55e13c36
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 476bed754c6ccc2cab1cd9c97b52873a9b430770
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742515"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480321"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -197,10 +197,6 @@ Bei Verwendung von Azure NetApp Files mit Azure Active Directory Domain Services
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Welche Versionen von Windows Server Active Directory werden unterstützt?
 
 Azure NetApp Files unterstützt die Windows Server-Versionen 2008 R2 SP1 – 2019 von Active Directory Domain Services.
-
-### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Warum zeigt der verfügbare Speicherplatz auf meinem SMB-Client die bereitgestellte Größe nicht an?
-
-Die vom SMB-Client gemeldete Volumegröße ist die maximale Größe, auf die das Azure NetApp Files-Volume vergrößert werden kann. Die Größe des Azure NetApp Files-Volumes, die auf dem SMB-Client angezeigt wird, spiegelt nicht das Kontingent oder die Größe des Volumes wieder. Sie können die Größe und das Kontingent des Azure NetApp Files-Volumes über das Azure-Portal oder die API abrufen.
 
 ### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>Ich habe Probleme beim Herstellen einer Verbindung mit meiner SMB-Freigabe.   Wie sollte ich vorgehen?
 

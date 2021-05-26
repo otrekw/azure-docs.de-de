@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: e88925743422e5bc3b58efc0e501a203a84288cf
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 127ce4aceff536ef8ce4d2a988a26070ef06b6ec
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787100"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078404"
 ---
 Gehen Sie wie folgt vor, um Azure Digital Twins in einem geöffneten [Azure Cloud Shell](https://shell.azure.com)-Fenster zu verwenden: Melden Sie sich an, und legen Sie zunächst den Shellkontext für diese Sitzung auf Ihr Abonnement fest. Führen Sie diese Befehle in Ihrer Cloud Shell aus:
 
@@ -27,7 +27,7 @@ Wenn Sie dieses Abonnement zum ersten Mal mit Azure Digital Twins nutzen, führe
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-Als Nächstes fügen Sie die [Microsoft Azure IoT-Erweiterung für Azure CLI](/cli/azure/service-page/azure%20iot) zu Ihrer Cloud Shell hinzu, um Befehle für die Interaktion mit Azure Digital Twins und anderen IoT-Diensten zu aktivieren. Führen Sie den folgenden Befehl aus, um sicherzustellen, dass Sie über die neueste Version der Erweiterung verfügen:
+Als Nächstes fügen Sie die [Microsoft Azure IoT-Erweiterung für Azure CLI](/cli/azure/service-page/azure%20iot?view=azure-cli-latest&preserve-view=true) zu Ihrer Cloud Shell hinzu, um Befehle für die Interaktion mit Azure Digital Twins und anderen IoT-Diensten zu aktivieren. Führen Sie den folgenden Befehl aus, um sicherzustellen, dass Sie über die neueste Version der Erweiterung verfügen:
 
 ```azurecli-interactive
 az extension add --upgrade --name azure-iot

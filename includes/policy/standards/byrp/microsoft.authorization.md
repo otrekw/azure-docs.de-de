@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 490eb691f612cfde0a9f369f0308c9cbf7c8f721
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c4cdcb3beba99f96435c7b8b7baf46503e9f4889
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754815"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077954"
 ---
 ## <a name="azure-security-benchmark"></a>Vergleichstest für die Azure-Sicherheit
 
@@ -73,8 +73,8 @@ Weitere Informationen zu diesem Konformitätsstandard finden Sie unter [HIPAA HI
 
 ## <a name="irs-1075-september-2016"></a>IRS 1075, September 2016
 
-Weitere Informationen dazu, wie die verfügbaren Azure Policy-Integrationen für alle Azure-Dienste diesem Konformitätsstandard entsprechen, finden Sie unter [Einhaltung gesetzlicher Bestimmungen in Azure Policy: IRS 1075, September 2016](../../../../articles/governance/policy/samples/irs-1075-sept2016.md).
-Weitere Informationen zu diesem Compliancestandard finden Sie unter [IRS 1075, September 2016](https://www.irs.gov/pub/irs-pdf/p1075.pdf).
+Weitere Informationen dazu, wie die verfügbaren Azure Policy-Integrationen für alle Azure-Dienste diesem Konformitätsstandard entsprechen, finden Sie unter [Einhaltung gesetzlicher Bestimmungen in Azure Policy: IRS 1075 September 2016](../../../../articles/governance/policy/samples/irs-1075-sept2016.md).
+Weitere Informationen zu diesem Compliancestandard finden Sie unter [IRS 1075 September 2016](https://www.irs.gov/pub/irs-pdf/p1075.pdf).
 
 |Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|

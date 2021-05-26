@@ -8,17 +8,97 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/20/2021
+ms.date: 05/15/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 99385bbb5783f6dd4cfd87f6586983e1d784e387
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 2c09e17c6324ba71e15d9eeff387788620cd0ccf
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287751"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368975"
 ---
 # <a name="speech-service-release-notes"></a>Versionshinweise zum Speech-Dienst
+
+## <a name="text-to-speech-2021-may-release"></a>Sprachsynthese – Version aus Mai 2021
+
+**Neue Sprachen und Stimmen zur neuronalen Sprachsynthese hinzugefügt**
+
+- **Zehn neue Sprachen wurden eingeführt:** 20 neue Stimmen in 10 neuen Gebietsschemas werden der neuronalen TTS-Sprachliste hinzugefügt: Yan in `en-HK` Englisch (Hongkong), Sam in `en-HK` Englisch (Hongkong), Molly in `en-NZ` Englisch (Neuseeland), Mitchell in `en-NZ` Englisch (Neuseeland), Luna in `en-SG` Englisch (Singapur), Wayne in `en-SG` Englisch (Singapur), Leah in `en-ZA` Englisch (Südafrika), Luke in `en-ZA` Englisch (Südafrika), Dhwani in `gu-IN` Gujarati (Indien), Niranjan in `gu-IN` Gujarati (Indien), Aarohi in `mr-IN` Marathi (Indien), Manohar in `mr-IN` Marathi (Indien), Elena in `es-AR` Spanisch (Argentinien), Tomas in `es-AR` Spanisch (Argentinien), Salome in `es-CO` Spanisch (Kolumbien), Gonzalo in `es-CO` Spanisch (Kolumbien), Paloma in `es-US` Spanisch (USA), Alonso in `es-US` Spanisch (USA), Zuri in `sw-KE` Suaheli (Kenia), Rafiki in `sw-KE` Suaheli (Kenia).
+
+- **Elf neue en-US-Stimmen in der Vorschauversion:** 11 neue en-US-Stimmen in der Vorschauversion werden dem amerikanischen Englisch hinzugefügt: Ashley, Amber, Ana, Brandon, Christopher, Cora, Elizabeth, Eric, Michelle, Monica, Jacob.
+
+- **Fünf chinesische `zh-CN`-Stimmen (Mandarin, vereinfacht) sind allgemein verfügbar.** 5 chinesische Stimmen (Mandarin, vereinfacht) werden von der Vorschauversion in die allgemein verfügbare Version geändert. Dabei handelt es sich um Yunxi, Xiaomo, Xiaoman, Xiaoxuan, Xiaorui. Jetzt sind diese Stimmen in allen [Regionen](regions.md#neural-and-standard-voices) verfügbar. Yunxi wird mit einem neuen „Assistenten“-Stil hinzugefügt, der für Chatbots und Sprach-Agents geeignet ist. Die Stimmstile von Xiaomo wurden so optimiert, dass sie natürlicher und charakteristischer sind. 
+
+## <a name="speech-sdk-1170-2021-may-release"></a>Speech SDK 1.17.0: Version aus Mai 2021
+
+>[!NOTE]
+>Erste Schritte mit dem Speech SDK finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk):
+
+**Zusammenfassung der Highlights**
+
+- Geringerer Speicherbedarf: Wir verringern weiterhin den Speicher- und Datenträgerbedarf des Speech SDK und seiner Komponenten.
+- Mit einer neuen eigenständigen Spracherkennungs-API können Sie erkennen, welche Sprache gesprochen wird.
+- Entwickeln Sie sprachaktivierte Mixed Reality- und Gaminganwendungen mit Unity unter macOS.
+- Sie können jetzt zusätzlich zur Spracherkennung über die Programmiersprache Go auch die Sprachsynthese verwenden.
+- Es gibt verschiedene Fehlerbehebungen für von unseren geschätzten Kunden auf GitHub gekennzeichneten Issues. VIELEN DANK! Es wäre schön, wenn Sie uns weiter Feedback senden würden.
+
+#### <a name="new-features"></a>Neue Funktionen
+
+- **C++/C#** : Neue eigenständige Einstufige/Start- und fortlaufende Sprachenerkennung über die `SourceLanguageRecognizer`-API. Wenn Sie nur die in Audioinhalten gesprochene(n) Sprache(n) erkennen möchten, ist dies die richtige API dafür.
+- **C++/C#** : Die Sprach- und Übersetzungserkennung unterstützt jetzt sowohl eine einstufige als auch eine fortlaufende Sprachenerkennung, sodass Sie programmgesteuert bestimmen können, welche Sprachen gesprochen werden, bevor sie transkribiert oder übersetzt werden. Weitere Informationen [zur Spracherkennung finden Sie hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection) und weitere Informationen [zur Sprachübersetzung finden Sie hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-translation).
+- **C#** : Unterstützung für Unity wurde zu macOS (x64) hinzugefügt. Dadurch werden Anwendungsfälle für Spracherkennung und Sprachsynthese in Mixed Reality und Gaming ermöglicht.
+- **Go**: Wir haben die Unterstützung für Sprachsynthese/Text-zu-Sprache zur Programmiersprache Go hinzugefügt, um die Sprachsynthese in noch mehr Anwendungsfällen zur Verfügung zu stellen. Weitere Informationen finden Sie in unserer [Schnellstartanleitung](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-text-to-speech?tabs=windowsinstall&pivots=programming-language-go) oder in unserer [Referenzdokumentation](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go).
+- **C++/C#/Java/Python/Objective-C/Go**: Der Sprachsynthetizer unterstützt jetzt das `connection`-Objekt. Dies hilft Ihnen bei der Verwaltung und Überwachung der Verbindung mit dem Spracherkennungsdienst und ist besonders hilfreich, um eine Vorabverbindung zur Verringerung der Wartezeit herzustellen. Die zugehörige Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-lower-tts-latency).
+- **C++/C#/Java/Python/Objective-C/Go**: Wir machen jetzt die Warte- und Unterschreitungszeit in `SpeechSynthesisResult` verfügbar, um Sie bei der Überwachung und Diagnose von Wartezeitproblemen bei der Sprachsynthese zu unterstützen. Weitere Informationen finden Sie unter den Details für [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesisresult), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisresult), [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisresult), [Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesisresult) und [Go](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go#readme-reference). 
+- **C++/C#/Java/Python/Objective-C/Go**: Wir haben eine Eigenschaft für das Geschlecht zu den Synthesestimmeninformationen hinzugefügt, um die Auswahl von Stimmen basierend auf dem Geschlecht zu erleichtern. Dies behandelt das [GitHub-Problem 1055](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1055).
+- **C++, C#, Java, JavaScript**: Wir unterstützen jetzt `retrieveEnrollmentResultAsync`, `getAuthorizationPhrasesAsync` und `getAllProfilesAsync()` in der Sprechererkennung, um dem Benutzer die Verwaltung aller Stimmenprofile für ein bestimmtes Konto zu erleichtern. Weitere Informationen finden Sie in der Dokumentation für [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.voiceprofileclient?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.voiceprofileclient?view=azure-java-stable), [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest). Dies behandelt das [GitHub-Problem 338](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/338).
+- **JavaScript**: Wir haben Wiederholungsversuche bei Verbindungsfehlern hinzugefügt, die Ihre JavaScript-basierten Sprachanwendungen robuster gestalten.
+
+#### <a name="improvements"></a>Verbesserungen
+
+- Speech SDK-Binärdateien für Linux und Android wurden aktualisiert, um die neueste Version von OpenSSL (1.1.1k) zu verwenden.
+- Verbesserungen beim Codeumfang:
+    - Language Understanding ist jetzt in eine separate „lu“-Bibliothek unterteilt.
+    - Die Größe der Binärdateien für den Windows x64-Kern wurde um 14,4 % verringert. 
+    - Die Größe der Binärdateien für den Android ARM64-Kern wurde um 13,7 % verringert.
+    - Andere Komponenten wurden ebenfalls verkleinert.
+
+#### <a name="bug-fixes"></a>Behebung von Programmfehlern
+
+- **Alle**: Das [GitHub-Problem 842](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/842) für ServiceTimeout wurde behoben. Sie können jetzt sehr lange Audiodateien mithilfe des Speech SDK transkribieren, ohne dass die Verbindung mit dem Dienst mit diesem Fehler beendet wird. Es wird jedoch weiterhin empfohlen, die [Batchtranskription](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription) für lange Dateien zu verwenden.
+- **C#** : Das [GitHub-Problem 947](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/947) wurde behoben, bei dem eine fehlende Spracheingabe Ihre App in einem fehlerhaften Zustand hinterlassen konnte. 
+- **Java**: Das [GitHub-Problem 997](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/997) wurde behoben, bei dem das Java Speech SDK 1.16 abstürzt, wenn „DialogServiceConnector“ ohne Netzwerkverbindung oder mit einem ungültigen Abonnementschlüssel verwendet wird.
+- Ein Absturz beim abrupten Beenden der Spracherkennung (z. B. mithilfe von STRG+C in der Konsolen-App) wurde behoben.
+- **Java**: Es wurde eine Korrektur zum Löschen temporärer Dateien unter Windows hinzugefügt, wenn das Java Speech SDK verwendet wird.
+- **Java**: Das [GitHub-Problem 994](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/994) wurde behoben, bei dem der Aufruf von `DialogServiceConnector.stopListeningAsync` zu einem Fehler führen konnte. 
+- **Java**: Es wurde ein Kundenproblem im [Schnellstart des virtuellen Assistenten](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre/virtual-assistant) behoben.
+- **JavaScript**: Das [GitHub-Problem 366](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/366), bei dem `ConversationTranslator` den Fehler „this.cancelSpeech ist keine Funktion“ ausgelöst hat, wurde behoben. 
+- **JavaScript**: Das [GitHub-Problem 298](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/298), bei dem das Beispiel „Abrufen des Ergebnisses als InMemory-Datenstrom“ den Ton laut wiedergegeben hat, wurde behoben.
+- **JavaScript**: Das [GitHub-Problem 350](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/350), bei dem der Aufruf von `AudioConfig` zu „ReferenceError: MediaStream ist nicht definiert“ geführt hat, wurde behoben. 
+- **JavaScript**: Eine „UnhandledPromiseRejection“-Warnung in Node.js für zeitintensive Sitzungen wurde behoben.
+
+#### <a name="samples"></a>Beispiele
+
+- Die Unity-Beispieldokumentation für macOS wurde [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk)aktualisiert.
+- Ein React Native-Beispiel für den Cognitive Services-Spracherkennungsdienst ist jetzt [hier](https://github.com/microsoft/cognitive-services-sdk-react-native-example) verfügbar.
+
+## <a name="speech-cli-also-known-as-spx-2021-may-release"></a>Speech-Befehlszeilenschnittstelle (auch als SPX bezeichnet): Release von Mai 2021
+
+>[!NOTE]
+>Informationen zu den ersten Schritten mit der Azure Speech-Befehlszeilenschnittstelle (Command-Line Interface, CLI) finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics). Die Befehlszeilenschnittstelle ermöglicht Ihnen die Verwendung von Azure Speech, ohne Code schreiben zu müssen.
+
+#### <a name="new-features"></a>Neue Funktionen
+
+- SPX unterstützt jetzt Profile, Sprecher-ID und Sprecherüberprüfung – Versuchen Sie `spx profile` und `spx speaker` über die SPX-Befehlszeile.
+- Wir haben auch die Dialogunterstützung hinzugefügt – Versuchen Sie `spx dialog` über die SPX-Befehlszeile.
+- Verbesserungen der SPX-Hilfe. Senden Sie uns Ihr Feedback, wie dies für Sie funktioniert, indem Sie ein [GitHub-Problem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) öffnen.
+- Wir haben die Größe der Installation des SPX .NET-Tools verringert.
+
+**Abgekürzte Tests aufgrund von COVID-19:**
+
+Da unsere Entwickler aufgrund der fortwährenden Pandemie weiterhin von zu Hause aus arbeiten müssen, wurden die manuellen Überprüfungsskripts aus den Zeiten vor der Pandemie erheblich reduziert. Es wird auf weniger Geräten mit weniger Konfigurationen getestet, und die Wahrscheinlichkeit, dass umgebungsspezifische Fehler nicht erkannt werden, ist möglicherweise höher. Dennoch werden weiterhin viele verschiedene Automatisierungsansätze für die Überprüfung verwendet. Falls wir doch entgegen aller Wahrscheinlichkeit etwas übersehen haben sollten, informieren Sie uns bitte auf [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
+Bleiben Sie gesund!
 
 ## <a name="text-to-speech-2021-april-release"></a>Sprachsynthese – Version aus April 2021
 
@@ -516,7 +596,7 @@ Bleiben Sie gesund!
 **Neue Features**
 - **Go**: Neue Unterstützung der Sprache Go für [Spracherkennung](./get-started-speech-to-text.md?pivots=programming-language-go) und [benutzerdefinierten Sprachassistenten](./quickstarts/voice-assistants.md?pivots=programming-language-go). Ihre Entwicklungsumgebung können Sie [hier](./quickstarts/setup-platform.md?pivots=programming-language-go) einrichten. Beispielcode finden Sie weiter unten im Abschnitt „Beispiele“. 
 - **JavaScript:** Browserunterstützung für Sprachsynthese hinzugefügt. Die zugehörige Dokumentation finden Sie [hier](./get-started-text-to-speech.md?pivots=programming-language-JavaScript).
-- **C++, C#, Java:** Unterstützung des neuen `KeywordRecognizer`-Objekts sowie neuer APIs unter Windows, Android, Linux und iOS. Lesen Sie die [Dokumentation](./custom-keyword-overview.md). Beispielcode finden Sie weiter unten im Abschnitt „Beispiele“. 
+- **C++, C#, Java:** Unterstützung des neuen `KeywordRecognizer`-Objekts sowie neuer APIs unter Windows, Android, Linux und iOS. Lesen Sie die [Dokumentation](./keyword-recognition-overview.md). Beispielcode finden Sie weiter unten im Abschnitt „Beispiele“. 
 - **Java**: Konversation mit mehreren Geräten mit Übersetzungsunterstützung hinzugefügt. Die zugehörige Referenzdokumentation finden Sie [hier](/java/api/com.microsoft.cognitiveservices.speech.transcription).
 
 **Verbesserungen und Optimierungen**

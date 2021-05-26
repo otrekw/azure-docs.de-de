@@ -1,6 +1,6 @@
 ---
 title: 'Belege: Formularerkennung'
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Lernen Sie die Konzepte im Zusammenhang mit Beleganalyse mit der Formularerkennung (Verwendung und Einschränkungen) kennen.
 services: cognitive-services
 author: laujan
@@ -10,33 +10,55 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 96625959c089c46b04b13216bbb9ea4b74ef4feb
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 9d37811c89cd42053333bfb8ddc17dfbb47b907c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331860"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374686"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Vordefiniertes Belegmodell der Formularerkennung
 
-Die Azure-Formularerkennung kann Informationen aus Belegen mithilfe der dazugehörigen vordefinierten Belegmodelle analysieren und extrahieren. Sie kombiniert unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/overview-ocr.md) mit Deep Learning-Modellen, um wichtige Informationen aus Belegen in englischer Sprache zu extrahieren.
-
-## <a name="understanding-receipts"></a>Informationen zu Belegen
-
 Viele Unternehmen und Einzelpersonen sind nach wie vor auf manuell extrahierte Daten aus Verkaufsbelegen angewiesen. Das automatische Extrahieren von Daten aus diesen Belegen kann kompliziert sein. Belege können zerknittert und schwer lesbar sein und handschriftliche Teile und mit dem Smartphone aufgenommene Fotos von geringer Qualität enthalten. Auch die Belegvorlagen und -felder können je nach Markt, Region und Anbieter stark variieren. Diese Herausforderungen bei der Datenextraktion und der Felderkennung machen die Belegverarbeitung zu einem besonderen Problem.
 
-Die Beleg-API verwendet optische Zeichenerkennung (OCR) und unser vordefiniertes Modell und ermöglicht so umfangreiche Szenarien zur Belegverarbeitung. Mit der Beleg-API ist es nicht erforderlich, ein Modell zu trainieren. Sie senden ein Bild des Belegs an die Beleganalyse-API, und die Daten werden extrahiert.
+Die Azure-Formularerkennung kann Informationen aus Belegen mithilfe der dazugehörigen vordefinierten Belegmodelle analysieren und extrahieren. Sie kombiniert unsere [leistungsstarken OCR-Funktionen (Optical Character Recognition)](../computer-vision/overview-ocr.md) mit Deep Learning-Modellen, um wichtige Informationen wie Händlername, Händlertelefonnummer, Transaktionsdatum, Transaktionssumme und vieles mehr aus englischsprachigen Belegen zu extrahieren.
 
-![Beispielbeleg](./media/receipts-example.jpg)
+## <a name="customer-scenarios"></a>Kundenszenarien
 
+### <a name="business-expense-reporting"></a>Berichterstattung zu Geschäftsausgaben
+
+Bei der Archivierung von Geschäftsausgaben wird oft Zeit damit verbracht, Daten von Bildern von Belegen manuell einzugeben. Mit der Beleg-API können Sie die extrahierten Felder verwenden, um diesen Prozess teilweise zu automatisieren und Ihre Belege schnell zu analysieren.
+
+Bei der Beleg-API handelt es sich um eine einfache JSON-Ausgabe, sodass Sie die extrahierten Feldwerte auf verschiedene Weise verwenden können. Integrieren Sie sie in interne Ausgabenanwendungen, um Spesenabrechnungen vorab mit Daten aufzufüllen. Wenn Sie mehr über dieses Szenario erfahren möchten, informieren Sie sich darüber, wie Acumatica die Beleg-API nutzt, damit [die Kostenabrechnung zu einem weniger beschwerlichen Vorgang wird](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure).
+
+### <a name="auditing-and-accounting"></a>Rechnungsprüfung und Rechnungswesen
+
+Die Ausgabe der Beleg-API kann auch dazu verwendet werden, Analysen zu einer großen Anzahl von Ausgaben an verschiedenen Punkten im Vorgang der Kostenabrechnung und -erstattung durchzuführen. Sie können Belege verarbeiten, um sie für manuelle Überwachung oder schnelle Genehmigungen zu selektieren.
+
+Die Belegausgabe ist auch für die allgemeine Buchhaltung für den geschäftlichen oder privaten Gebrauch nützlich. Verwenden Sie die Beleg-API, um alle Rohdaten der Belege als Foto oder PDF-Datei in eine digitale Ausgabe umzuwandeln, die verwertbar ist.
+
+### <a name="consumer-behavior"></a>Kundenverhalten
+
+Belege enthalten nützliche Daten, die Sie verwenden können, um Kundenverhalten und Einkaufstrends zu analysieren.
+
+Die Beleg-API unterstützt außerdem das [AI Builder-Belegverarbeitungsfeature](/ai-builder/prebuilt-receipt-processing).
+
+## <a name="try-it-out"></a>Ausprobieren
+
+Wenn Sie den Belegdienst „Formularerkennung“ ausprobieren möchten, wechseln Sie zum Onlinetool für die Beispielbenutzeroberfläche:
+
+> [!div class="nextstepaction"]
+> [Ausprobieren von vordefinierten Modellen](https://aka.ms/fott-2.1-ga)
 
 ## <a name="what-does-the-receipt-service-do"></a>Wie funktioniert der Belegdienst?
 
 Der vordefinierte Belegdienst extrahiert den Inhalt von Verkaufsbelegen – die Art von Beleg, die Sie üblicherweise in einem Restaurant, von einem Einzelhändler oder im Lebensmittelgeschäft erhalten würden.
 
+![Beispielbeleg](./media/receipts-example.jpg)
+
 ### <a name="fields-extracted"></a>Extrahierte Felder
 
-|Name| type | BESCHREIBUNG | Text | Wert (standardisierte Ausgabe) |
+|Name| Typ | BESCHREIBUNG | Text | Wert (standardisierte Ausgabe) |
 |:-----|:----|:----|:----| :----|
 | ReceiptType | Zeichenfolge | Der Typ des Belegs | Aufgeschlüsselt |  |
 | MerchantName | Zeichenfolge | Der Name des Händlers, der den Beleg ausstellt | Contoso |  |
@@ -62,21 +84,14 @@ Die Beleg-API gibt außerdem die folgenden Informationen zurück:
 * OCR-Rohtext (OCR-extrahierte Textausgabe für den gesamten Beleg)
 * Begrenzungsrahmen für die einzelnen Werte, Zeilen und Wörter
 
-## <a name="try-it-out"></a>Ausprobieren
-
-Wenn Sie den Belegdienst „Formularerkennung“ ausprobieren möchten, wechseln Sie zum Onlinetool für die Beispielbenutzeroberfläche:
-
-> [!div class="nextstepaction"]
-> [Ausprobieren von vordefinierten Modellen](https://fott-preview.azurewebsites.net/)
-
 ## <a name="input-requirements"></a>Eingabeanforderungen
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="supported-locales"></a>Unterstützte Gebietsschemas
 
-* **Pre-built receipt v2.0** (GA) unterstützt Verkaufsquittungen im **en-us** Gebietsschema
-* **Pre-built Receipt v2.1-preview.3** (Öffentliche Vorschau) bietet zusätzliche Unterstützung für die folgenden EN-Quittungs-Gebietsschemas:
+* **Pre-built receipt v2.0** unterstützt Verkaufsquittungen im Gebietsschema **en-us**
+* **Pre-built receipt v2.1** bietet außerdem Unterstützung für Belege in folgenden englischsprachigen Gebietsschemas:
 
 * **en-au**
 * **en-ca**
@@ -86,12 +101,11 @@ Wenn Sie den Belegdienst „Formularerkennung“ ausprobieren möchten, wechseln
   > [!NOTE]
   > Spracheingabe
   >
-  > Prebuilt Receipt v2.1-preview.3 enthält einen optionalen Anforderungsparameter, um ein Beleggebietsschema aus zusätzlichen englischsprachigen Märkten anzugeben. Für Verkaufsbelege in englischer Sprache aus Australien (en-AU), Kanada (en-CA), Großbritannien (en-GB) und Indien (en-IN) können Sie das Gebietsschema angeben, um verbesserte Ergebnisse zu erhalten. Wenn in v2.1-preview.3 kein Gebietsschema angegeben wird, wird standardmäßig das Modell „en-US“ verwendet.
-
+  > Prebuilt Receipt v2.1 enthält einen optionalen Anforderungsparameter, um ein Beleggebietsschema aus zusätzlichen englischsprachigen Märkten anzugeben. Für Verkaufsbelege in englischer Sprache aus Australien (en-au), Kanada (en-ca), Großbritannien (en-gb) und Indien (en-in) können Sie das Gebietsschema angeben, um verbesserte Ergebnisse zu erhalten. Wenn in v2.1 kein Gebietsschema angegeben wird, wird standardmäßig das Modell „en-us“ verwendet.
 
 ## <a name="the-analyze-receipt-operation"></a>Der Vorgang zum Analysieren von Belegen
 
-[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync) nimmt ein Bild oder eine PDF-Datei als Eingabe an und extrahiert die relevanten Werte und relevanten Text. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
+[Analyze Receipt](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync) nimmt ein Bild oder eine PDF-Datei als Eingabe an und extrahiert die relevanten Werte und relevanten Text. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
 
 |Antwortheader| Ergebnis-URL |
 |:-----|:----|
@@ -99,7 +113,7 @@ Wenn Sie den Belegdienst „Formularerkennung“ ausprobieren möchten, wechseln
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Der Vorgang zum Abrufen des Ergebnisses der Beleganalyse
 
-Im zweiten Schritt wird der Vorgang zum [Abrufen des Ergebnisses der Beleganalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeReceiptResult) aufgerufen. Dieser Vorgang nimmt als Eingabe die Ergebnis-ID an, die durch den Vorgang „Beleg analysieren“ erstellt wurde. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
+Im zweiten Schritt wird der Vorgang zum [Abrufen des Ergebnisses der Beleganalyse](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeReceiptResult) aufgerufen. Dieser Vorgang nimmt als Eingabe die Ergebnis-ID an, die durch den Vorgang „Beleg analysieren“ erstellt wurde. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
 
 |Feld| type | Mögliche Werte |
 |:-----|:----:|:----|
@@ -113,7 +127,6 @@ Wenn im Feld **status** der Wert **succeeded** angezeigt wird, enthält die JSON
 ![Ergebnisse des Beispielbelegs](./media/contoso-receipt-2-information.png)
 
 ### <a name="sample-json-output"></a>JSON-Beispielausgabe
-
 
 Die Antwort auf den Vorgang zum Abrufen des Ergebnisses der Beleganalyse ist die strukturierte Darstellung des Belegs mit allen extrahierten Informationen.  Hier sehen Sie eine [Beispieldatei eines Belegs](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg) und die dazugehörige strukturierte Ausgabe ([Beispielausgabe eines Belegs](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)).
 
@@ -446,37 +459,7 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
 }
 ```
 
-## <a name="customer-scenarios"></a>Kundenszenarien
-
-Die Daten, die mit der Beleg-API extrahiert werden, können für eine Vielzahl von Aufgaben verwendet werden. Nachfolgend finden Sie einige Beispiele dafür, was Kunden mit der Beleg-API erreicht haben.
-
-### <a name="business-expense-reporting"></a>Berichterstattung zu Geschäftsausgaben
-
-Bei der Archivierung von Geschäftsausgaben wird oft Zeit damit verbracht, Daten von Bildern von Belegen manuell einzugeben. Mit der Beleg-API können Sie die extrahierten Felder verwenden, um diesen Prozess teilweise zu automatisieren und Ihre Belege schnell zu analysieren.
-
-Bei der Beleg-API handelt es sich um eine einfache JSON-Ausgabe, sodass Sie die extrahierten Feldwerte auf verschiedene Weise verwenden können. Integrieren Sie sie in interne Ausgabenanwendungen, um Spesenabrechnungen vorab mit Daten aufzufüllen. Wenn Sie mehr über dieses Szenario erfahren möchten, informieren Sie sich darüber, wie Acumatica die Beleg-API nutzt, damit [die Kostenabrechnung zu einem weniger beschwerlichen Vorgang wird](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure).
-
-### <a name="auditing-and-accounting"></a>Rechnungsprüfung und Rechnungswesen
-
-Die Ausgabe der Beleg-API kann auch dazu verwendet werden, Analysen zu einer großen Anzahl von Ausgaben an verschiedenen Punkten im Vorgang der Kostenabrechnung und -erstattung durchzuführen. Sie können Belege verarbeiten, um sie für manuelle Überwachung oder schnelle Genehmigungen zu selektieren.
-
-Die Belegausgabe ist auch für die allgemeine Buchhaltung für den geschäftlichen oder privaten Gebrauch nützlich. Verwenden Sie die Beleg-API, um alle Rohdaten der Belege als Foto oder PDF-Datei in eine digitale Ausgabe umzuwandeln, die verwertbar ist.
-
-### <a name="consumer-behavior"></a>Kundenverhalten
-
-Belege enthalten nützliche Daten, die Sie verwenden können, um Kundenverhalten und Einkaufstrends zu analysieren.
-
-Die Beleg-API unterstützt außerdem das [AI Builder-Belegverarbeitungsfeature](/ai-builder/prebuilt-receipt-processing).
-
 ## <a name="next-steps"></a>Nächste Schritte
 
- Schreiben Sie eine Belegverarbeitungs-App mit der Formularerkennung in der gewünschten Programmiersprache.
-
-> [!div class="nextstepaction"]
-> [Durcharbeiten eines Schnellstarts zur Formularerkennung](quickstarts/client-library.md)
-
-## <a name="see-also"></a>Weitere Informationen
-
-* [Was ist die Formularerkennung?](overview.md)
-* [Referenz zur Formularerkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync)
->
+* Testen Sie eigene Belege und Beispiele in der [Beispielbenutzeroberfläche für die Formularerkennung](https://fott-preview.azurewebsites.net/).
+* Sehen Sie sich die Informationen unter [Schnellstart: Verwenden der Clientbibliothek für die Formularerkennung](quickstarts/client-library.md) an, um damit zu beginnen, eine Belegverarbeitungs-App mit Formularerkennung in einer Entwicklungssprache Ihrer Wahl zu schreiben.

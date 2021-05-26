@@ -1,6 +1,6 @@
 ---
 title: 'IDs: Formularerkennung'
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Konzepte der Datenextraktion aus Ausweisdokumenten mit der vordefinierten ID-API der Formularerkennung.
 services: cognitive-services
 author: laujan
@@ -10,16 +10,35 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: d59df677fda920be5ed9547bee3855d4c9511187
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 9ab936f90fb890d50e6e476e216b327ed26fc4f5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330834"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374849"
 ---
 # <a name="form-recognizer-prebuilt-identification-id-document-model"></a>Vordefiniertes ID-Modell der Formularerkennung für Ausweise
 
-Mit der Azure-Formularerkennung können Informationen aus amtlichen Ausweisen unter Verwendung des vordefinierten ID-Modells analysiert und extrahiert werden. Dabei werden unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/overview-ocr.md) mit ID-Erkennungsfunktionen kombiniert, um wesentliche Informationen aus internationalen Reisepässen und US-amerikanischen Führerscheinen (alle 50 Bundesstaaten). Mit der ID-API werden wesentliche Informationen aus diesen Ausweisdokumenten extrahiert, z. B. Vorname, Nachname, Geburtsdatum und Dokumentnummer. Diese API ist in der Vorschauversion 2.1 der Formularerkennung als Clouddienst und als lokaler Container verfügbar.
+Mit der Azure-Formularerkennung können Informationen aus amtlichen Ausweisen unter Verwendung des vordefinierten ID-Modells analysiert und extrahiert werden. Dabei werden unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/overview-ocr.md) mit ID-Erkennungsfunktionen kombiniert, um wesentliche Informationen aus internationalen Reisepässen und US-amerikanischen Führerscheinen (alle 50 Bundesstaaten). Mit der ID-API werden wesentliche Informationen aus diesen Ausweisdokumenten extrahiert, z. B. Vorname, Nachname, Geburtsdatum und Dokumentnummer. Diese API ist in der Formularerkennung v2.1 als Clouddienst verfügbar. 
+
+## <a name="customer-scenarios"></a>Kundenszenarien
+
+Die mit der ID-API extrahierten Daten können verwendet werden, um eine Vielzahl von Aufgaben für Szenarien wie Know Your Customer (KYC) in Branchen wie Finanzen, Gesundheitswesen und Versicherungswesen, Behörden usw. auszuführen. Im Folgenden finden Sie einige Beispiele:
+
+* Digitales Onboarding: Endbenutzer können eine mobile App verwenden, um ihre Ausweise zu scannen und das Onboarding für verschiedene Dienste durchzuführen. Eine Remotekundenüberprüfung wird durch die Extraktion von Ausweisdaten erleichtert. 
+
+* Überprüfung und Ausweisabgleich: Endbenutzer können einen Antrag ausfüllen und Ausweisbilder anfügen. Mit vordefinierten Ausweisen kann eine Bank überprüfen, ob die Informationen mit den vorliegenden Daten übereinstimmen.
+
+* Formularvorauffüllung: Im Rahmen eines Versicherungsfalls übermittelt der Endbenutzer seinen Ausweis. Die Felder in Onlinedokumenten werden dann vorab aufgefüllt, um Zeit zu sparen.
+
+Die ID-API unterstützt auch die [AI Builder-Ausweisleserfunktion](/ai-builder/prebuilt-id-reader).
+
+## <a name="try-it-out"></a>Ausprobieren
+
+Zum Testen des ID-Diensts der Formularerkennung wechseln Sie zum Onlinetool für die Beispielbenutzeroberfläche:
+
+> [!div class="nextstepaction"]
+> [Ausprobieren von vordefinierten Modellen](https://aka.ms/fott-2.1-ga)
 
 ## <a name="what-does-the-id-service-do"></a>Funktionsweise des ID-Diensts
 
@@ -35,7 +54,7 @@ Der vorgefertigte ID-Dienst extrahiert die Schlüsselwerte aus den international
 
 ### <a name="fields-extracted"></a>Extrahierte Felder
 
-|Name| type | BESCHREIBUNG | Wert |
+|Name| Typ | BESCHREIBUNG | Wert |
 |:-----|:----|:----|:----|
 |  Land | country | Ländercode, konform zu ISO 3166-Standard | „USA“ |
 |  DateOfBirth | date | Geburtsdatum im Format JJJJ-MM-TT | „1980-01-01“ |
@@ -55,7 +74,7 @@ Der vorgefertigte ID-Dienst extrahiert die Schlüsselwerte aus den international
 Mit der ID-API werden außerdem die folgenden Informationen zurückgegeben:
 
 * Feldvertrauensgrad (jedes Feld gibt einen zugehörigen Vertrauenswert zurück)
-* OCR-Rohtext (OCR-extrahierte Textausgabe für den gesamten Beleg)
+* OCR-Rohtext (OCR-extrahierte Textausgabe für das gesamte Ausweisdokument)
 * Begrenzungsrahmen für jedes extrahierte Feld bei US-Führerscheinen
 * Begrenzungsrahmen für jeden maschinenlesbaren Bereich in Reisepässen
 
@@ -64,24 +83,17 @@ Mit der ID-API werden außerdem die folgenden Informationen zurückgegeben:
   >
   > Mit der vordefinierten ID-API der Formularerkennung werden wesentliche Daten aus ID-Daten extrahiert. Die Gültigkeit oder Echtheit des Originalausweisdokuments kann jedoch nicht erkannt werden.
 
-## <a name="try-it-out"></a>Ausprobieren
-
-Zum Testen des ID-Diensts der Formularerkennung wechseln Sie zum Onlinetool für die Beispielbenutzeroberfläche:
-
-> [!div class="nextstepaction"]
-> [Ausprobieren von vordefinierten Modellen](https://fott-preview.azurewebsites.net/)
-
 ## <a name="input-requirements"></a>Eingabeanforderungen
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="supported-locales"></a>Unterstützte Gebietsschemas
 
- **Die vorgefertigte ID v2.1-preview.3** (Vorschauversion) unterstützt Identitätsdokumente im Gebietsschema **en-us**.
+ **Pre-built ID v2.1** unterstützt Ausweisdokumente im Gebietsschema **en-us**.
 
 ## <a name="supported-identity-document-types"></a>Unterstützte Identitätsdokumenttypen
 
-* **Pre-built IDs v2.1-preview.3:** Extrahiert die Schlüsselwerte aus internationalen Reisepässen und US-Führerscheinen.
+* **Pre-built ID v2.1** extrahiert die Schlüsselwerte aus internationalen Reisepässen und US-Führerscheinen.
 
   > [!NOTE]
   > Unterstützung von ID-Typen
@@ -90,19 +102,19 @@ Zum Testen des ID-Diensts der Formularerkennung wechseln Sie zum Onlinetool für
 
 ## <a name="post-analyze-id-document"></a>POST Analyze ID Document
 
-Beim Vorgang [Analyze ID](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7daad1f2612c46f5822) wird ein Bild oder eine PDF-Datei eines Ausweisdokuments als Eingabe verwendet und die relevanten Werte extrahiert. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
+Beim Vorgang [Analyze ID](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7daad1f2612c46f5822) wird ein Bild oder eine PDF-Datei eines Ausweisdokuments als Eingabe verwendet und die relevanten Werte extrahiert. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
 
 |Antwortheader| Ergebnis-URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/idDocument/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/prebuilt/idDocument/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
-## <a name="get-analyze-id-document-result"></a>GET Analyze Id Document Result
+## <a name="get-analyze-id-document-result"></a>GET Analyze ID Document Result
 
 <!---
 Need to update this with updated APIM links when available
 -->
 
-Im zweiten Schritt wird der Vorgang [**Get Analyze idDocument Result**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7738978e467c5fb8707) aufgerufen. Bei diesem Vorgang wird die Ergebnis-ID, die durch den Vorgang „Analyze ID“ erstellt wurde, als Eingabe verwendet. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
+Im zweiten Schritt wird der Vorgang [**Get Analyze idDocument Result**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707) aufgerufen. Bei diesem Vorgang wird die Ergebnis-ID, die durch den Vorgang „Analyze ID“ erstellt wurde, als Eingabe verwendet. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
 
 |Feld| type | Mögliche Werte |
 |:-----|:----:|:----|
@@ -253,10 +265,7 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der `re
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Testen Sie eigene Ausweisdokumente und Beispiele in der [Beispielbenutzeroberfläche für die Formularerkennung](https://fott-preview.azurewebsites.net/).
+* Testen Sie eigene Ausweisdokumente und Beispiele in der [Beispielbenutzeroberfläche für die Formularerkennung](https://aka.ms/fott-2.1-ga).
 * Sehen Sie sich die Informationen in einem [Schnellstart zur Formularerkennung](quickstarts/client-library.md) an, um eine Anwendung zur Verarbeitung von Ausweisdokumenten mit Formularerkennung in der gewünschten Programmiersprache zu schreiben.
 
-## <a name="see-also"></a>Siehe auch
 
-* [**Was ist die Formularerkennung?**](./overview.md)
-* [**REST-API-Referenzdokumente**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
