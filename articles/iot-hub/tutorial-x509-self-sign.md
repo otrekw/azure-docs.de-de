@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 982e402946cbd71d946bc1e316cef99621c536a3
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 69bef0938a65777d025e2ffa64de6f133416fc7f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378192"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067130"
 ---
 # <a name="tutorial-using-openssl-to-create-self-signed-certificates"></a>Tutorial: Verwenden von OpenSSL zum Erstellen selbstsignierter Zertifikate
 
@@ -84,13 +84,13 @@ openssl x509 -req -days 365 -in device2.csr -signkey device2.key -out device2.cr
 ## <a name="step-7---retrieve-the-thumbprint-for-certificate-1"></a>Schritt 7: Abrufen des Fingerabdrucks für das erste Zertifikat
 
 ```bash
-openssl x509 -in device.crt -text -fingerprint
+openssl x509 -in device.crt -noout -fingerprint
 ```
 
 ## <a name="step-8---retrieve-the-thumbprint-for-certificate-2"></a>Schritt 8: Abrufen des Fingerabdrucks für das zweite Zertifikat
 
 ```bash
-openssl x509 -in device2.crt -text -fingerprint
+openssl x509 -in device2.crt -noout -fingerprint
 ```
 
 ## <a name="step-9---create-a-new-iot-device"></a>Schritt 9: Erstellen eines neuen IoT-Geräts

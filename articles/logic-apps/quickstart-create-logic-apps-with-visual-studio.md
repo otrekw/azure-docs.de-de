@@ -1,22 +1,22 @@
 ---
-title: Automatisieren von Aufgaben und Workflows mit Visual Studio
-description: Erstellen, Planen und Ausführen automatisierter Workflows für die Integration in Unternehmen mit Azure Logic Apps und Visual Studio
+title: 'Schnellstart: Erstellen von Integrationsworkflows mit mehrinstanzenfähigen Azure Logic Apps in Visual Studio Code'
+description: Erstellen automatisierter Integrationsworkflows mit mehrinstanzenfähigen Azure Logic Apps und Visual Studio Code.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/24/2021
-ms.openlocfilehash: 5ae67e5708a7298385a4e27d612566008884b972
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/25/2021
+ms.openlocfilehash: 8aa96455eba49dd624f1ced469d34f0cf0f48757
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790057"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372496"
 ---
-# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
+# <a name="quickstart-create-automated-integration-workflows-with-multi-tenant-azure-logic-apps-and-visual-studio"></a>Schnellstart: Erstellen automatisierter Integrationsworkflows mit mehrinstanzenfähigen Azure Logic Apps und Visual Studio Code
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und Visual Studio können Sie Workflows zur Automatisierung von Aufgaben und Prozessen für die Integration von Apps, Daten, Systemen und Diensten in Unternehmen und Organisationen erstellen. In diesem Schnellstart wird veranschaulicht, wie Sie diese Workflows entwerfen und erstellen, indem Sie in Visual Studio Logik-Apps erstellen und diese Apps über Azure bereitstellen. Sie können diese Aufgaben zwar auch im Azure-Portal durchführen, aber mit Visual Studio können Sie Ihre Logik-Apps der Quellcodeverwaltung hinzufügen, unterschiedliche Versionen veröffentlichen und Azure Resource Manager-Vorlagen für verschiedene Bereitstellungsumgebungen erstellen.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie automatisierte Workflows entwerfen, entwickeln und bereitstellen, die Apps, Daten, Systeme und Dienste unternehmens- und organisationsübergreifend mithilfe von mehrinstanzenfähigen [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und Visual Studio integrieren. Sie können diese Aufgaben zwar auch im Azure-Portal durchführen, aber mit Visual Studio können Sie Ihre Logik-Apps der Quellcodeverwaltung hinzufügen, unterschiedliche Versionen veröffentlichen und Azure Resource Manager-Vorlagen für verschiedene Bereitstellungsumgebungen erstellen. Weitere Informationen zum Mehrinstanzenmodell im Vergleich zu einem Einzelinstanzenmodell finden Sie unter [Einzelinstanz im Vergleich zu Mehrinstanzen und Integrationsdienstumgebung](single-tenant-overview-compare.md).
 
 Wenn Sie mit Azure Logic Apps noch nicht vertraut sind und sich nur über die grundlegenden Konzepte informieren möchten, hilft Ihnen der [Schnellstart zur Erstellung einer Logik-App im Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) weiter. Der Logik-App-Designer funktioniert im Azure-Portal und in Visual Studio ähnlich.
 

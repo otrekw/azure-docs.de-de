@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: beb77517a953163c9d1dd34b59fa429b5d58cdd2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3e0bcef30d13403d8067c41568b7ee321fb46995
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478034"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377190"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -317,7 +317,7 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 
 Verwenden Sie diese Tabelle, um die unterstützten Rollen und deren Definitionen zu überprüfen.
 
-|Role                     | BESCHREIBUNG                |
+|Rolle                     | BESCHREIBUNG                |
 |-------------------------|----------------------------|
 |`role="Girl"`            | Die Stimme imitiert ein Mädchen. |
 |`role="Boy"`             | Die Stimme imitiert einen Jungen. |
@@ -396,20 +396,20 @@ Ermitteln Sie anhand dieser Tabelle, welche gesprochenen Sprachen für die einze
 
 | Sprache                            | Gebietsschemasprache           | Beschreibung                                                 |
 |----------------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-JennyMultilingualNeural`  | `lang="en-US"`            | Sprechen für das Gebietsschema en-US, dem primären Gebietsschema dieser Stimme |
-|                                  | `lang="en-CA"`            | Sprechen der Gebietsschemasprache en-CA                                  |
-|                                  | `lang="en-AU"`            | Sprechen der Gebietsschemasprache en-AU                                  |
-|                                  | `lang="en-GB"`            | Sprechen der Gebietsschemasprache en-GB                                  |
-|                                  | `lang="de-DE"`            | Sprechen der Gebietsschemasprache de-DE                                  |
-|                                  | `lang="fr-FR"`            | Sprechen der Gebietsschemasprache fr-FR                                  |
-|                                  | `lang="fr-CA"`            | Sprechen der Gebietsschemasprache fr-CA                                  |
-|                                  | `lang="es-ES"`            | Sprechen der Gebietsschemasprache es-ES                                  |
-|                                  | `lang="es-MX"`            | Sprechen der Gebietsschemasprache es-MX                                  |
-|                                  | `lang="zh-CN"`            | Sprechen der Gebietsschemasprache zh-CN                                  |
-|                                  | `lang="ko-KR"`            | Sprechen der Gebietsschemasprache ko-KR                                  |
-|                                  | `lang="ja-JP"`            | Sprechen der Gebietsschemasprache ja-JP                                  |
-|                                  | `lang="it-IT"`            | Sprechen der Gebietsschemasprache it-IT                                  |
-|                                  | `lang="pt-BR"`            | Sprechen der Gebietsschemasprache pt-BR                                  |
+| `en-US-JennyMultilingualNeural`  | `lang="en-us"`            | Sprechen für das Gebietsschema en-US, dem primären Gebietsschema dieser Stimme |
+|                                  | `lang="en-ca"`            | Sprechen der Gebietsschemasprache en-CA                                  |
+|                                  | `lang="en-au"`            | Sprechen der Gebietsschemasprache en-AU                                  |
+|                                  | `lang="en-gb"`            | Sprechen der Gebietsschemasprache en-GB                                  |
+|                                  | `lang="de-de"`            | Sprechen der Gebietsschemasprache de-DE                                  |
+|                                  | `lang="fr-fr"`            | Sprechen der Gebietsschemasprache fr-FR                                  |
+|                                  | `lang="fr-ca"`            | Sprechen der Gebietsschemasprache fr-CA                                  |
+|                                  | `lang="es-es"`            | Sprechen der Gebietsschemasprache es-ES                                  |
+|                                  | `lang="es-mx"`            | Sprechen der Gebietsschemasprache es-MX                                  |
+|                                  | `lang="zh-cn"`            | Sprechen der Gebietsschemasprache zh-CN                                  |
+|                                  | `lang="ko-kr"`            | Sprechen der Gebietsschemasprache ko-KR                                  |
+|                                  | `lang="ja-jp"`            | Sprechen der Gebietsschemasprache ja-JP                                  |
+|                                  | `lang="it-it"`            | Sprechen der Gebietsschemasprache it-IT                                  |
+|                                  | `lang="pt-br"`            | Sprechen der Gebietsschemasprache pt-BR                                  |
 
 **Beispiel**
 
@@ -420,10 +420,10 @@ Dieser SSML-Codeausschnitt zeigt, wie sie `<lang xml:lang>` verwenden, um die ge
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
     <voice name="en-US-JennyMultilingualNeural">
         I am looking forward to the exciting things.
-        <lang xml:lang="es-MX">
+        <lang xml:lang="es-mx">
             Estoy deseando que lleguen las cosas emocionantes.
         </lang>
-        <lang xml:lang="de-DE">
+        <lang xml:lang="de-de">
             Ich freue mich auf die spannenden Dinge.
         </lang>
     </voice>

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe42b98813f1687c78827b355a707b0147d6d2a4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8553da2ff1ff80dcaba8c6ff782c31602820a2ec
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067281"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378333"
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 
@@ -60,7 +60,7 @@ Version 3 bietet Folgendes:
  
 - Liveereignisunterstützung rund um die Uhr
 - ARM REST APIs, Client-SDKs für .NET Core, Node.js, Python, Java, Go und Ruby
-- Kundenseitig verwaltete Schlüssel, vertrauenswürdige Speicherintegration, Unterstützung für private Verbindungen und [vieles mehr](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- Kundenseitig verwaltete Schlüssel, vertrauenswürdige Speicherintegration, Unterstützung für private Verbindungen und [vieles mehr](../latest/migrate-v-2-v-3-migration-benefits.md)
 
 #### <a name="action-required"></a>Erforderliche Aktion:
 
@@ -89,7 +89,7 @@ Einige Analytics-Medienprozessoren werden außer Betrieb genommen. Die entsprech
 
 ### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
 
-Wir kündigen die Einstellung von *Azure Media Indexer* und *Azure Media Indexer 2 Preview* an. [Azure Media Services Video Indexer](../video-indexer/index.yml) ersetzt diese Legacy-Medienprozessoren.
+Wir kündigen die Einstellung von *Azure Media Indexer* und *Azure Media Indexer 2 Preview* an. Azure Media Services Video Indexer ersetzt diese Legacy-Medienprozessoren.
 
 Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md).
 
@@ -444,7 +444,7 @@ Die folgenden Fehlerkorrekturen wurden für Azure Media Services Packager und En
 
 ## <a name="may-2014-release"></a><a id="may_changes_14"></a>Release von Mai 2014
 ### <a name="general-media-services-updates"></a><a id="may_14_changes"></a>Allgemeine Media Services-Updates
-Sie können jetzt die [dynamische Paketerstellung] zum Streamen von HLS Version 3 verwenden. Fügen Sie zum Streamen von HLS Version 3 das folgende Format zum Pfad für den Ursprungslocator hinzu: *.ism/manifest(format=m3u8-aapl-v3). Weitere Informationen finden Sie in [diesem Forum](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3).
+Sie können jetzt die [dynamische Paketerstellung] zum Streamen von HLS Version 3 verwenden. Fügen Sie zum Streamen von HLS Version 3 das folgende Format zum Pfad für den Ursprungslocator hinzu: *.ism/manifest(format=m3u8-aapl-v3). Weitere Informationen finden Sie in [diesem Forum](https://social.msdn.microsoft.com/Forums/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3).
 
 Die dynamische Paketerstellung unterstützt jetzt auch die Bereitstellung von mit PlayReady verschlüsseltem HLS (Version 3 und Version 4) basierend auf statisch mit PlayReady verschlüsseltem Smooth Streaming. Informationen zum Verschlüsseln von Smooth Streaming mit PlayReady finden Sie unter [Dynamische Paketerstellung](/previous-versions/azure/dn189154(v=azure.100)).
 

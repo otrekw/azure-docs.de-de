@@ -4,15 +4,15 @@ description: Senden von ausgehenden HTTP- oder HTTPS-Anforderungen an Dienstendp
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: conceptual
-ms.date: 02/18/2021
+ms.topic: how-to
+ms.date: 05/25/2021
 tags: connectors
-ms.openlocfilehash: dab5b755347e46d8d509e8014bba8f496ca9c900
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45c6945818016618252e69554c62391691d2fb6a
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719439"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368854"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps
 
@@ -111,7 +111,7 @@ Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger ode
 | `status code` | Integer | Der Statuscode aus der Anforderung |
 |||
 
-| Statuscode | Beschreibung |
+| Statuscode | BESCHREIBUNG |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Zulässig |
@@ -194,6 +194,41 @@ Alle HTTP-basierten Aktionen in Azure Logic Apps befolgen erst einmal das [Stand
 
 * In der JSON-Definition (JavaScript Object Notation), die der HTTP-Aktion zugrunde liegt, folgt implizit dem Muster für asynchrone Vorgänge.
 
+<a name="tsl-ssl-certificate-authentication"></a>
+
+## <a name="tslssl-certificate-authentication"></a>TSL/SSL-Zertifikatauthentifizierung
+
+Wenn Sie in Azure Logic Apps mit nur einem Mandanten über eine **Logic App-Ressource (Standard)** verfügen und versuchen, einen HTTPS-Endpunkt aus Ihrem Workflow mithilfe des HTTP-Vorgangs und eines TSL/SSL-Zertifikats für die Authentifizierung aufzurufen, schlägt der Aufruf fehl, sofern Sie nicht auch die folgenden Schritte ausführen:
+
+1. In den App-Einstellungen Ihrer Logic App-Ressource müssen Sie die [App-Einstellung `WEBSITE_LOAD_ROOT_CERTIFICATES`hinzufügen oder aktualisieren](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings).
+
+1. Geben Sie als Wert für die Einstellung den Fingerabdruck für Ihr TSL/SSL-Zertifikat als vertrauenswürdiges Stammzertifikat an.
+
+   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
+
+Wenn Sie z. B. in Visual Studio Code arbeiten, führen Sie die folgenden Schritte aus:
+
+1. Öffnen Sie die Datei **local.settings.json** des Logic App-Projekts.
+
+1. Fügen Sie im JSON-Objekt `Values` die Einstellung `WEBSITE_LOAD_ROOT_CERTIFICATES` hinzu, oder aktualisieren Sie diese:
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         <...>
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
+         <...>
+      }
+   }
+   ```
+
+Weitere Informationen finden Sie in der folgenden Dokumentation:
+
+* [Bearbeiten von Einstellungen für Hosts und Apps für Logik-Apps in Azure Logic Apps-Instanzen mit einem einzelnen Mandanten](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
+* [Private Clientzertifikate – Azure App Service](../app-service/environment/certificates.md#private-client-certificate)
+
 <a name="disable-asynchronous-operations"></a>
 
 ## <a name="disable-asynchronous-operations"></a>Deaktivieren asynchroner Vorgänge
@@ -233,7 +268,7 @@ HTTP-Anforderungen unterliegen einem [Timeoutlimit](../logic-apps/logic-apps-lim
 
 ## <a name="disable-checking-location-headers"></a>Deaktivieren der Überprüfung von Location-Headern
 
-Einige Endpunkte, Dienste, Systeme oder APIs geben eine Antwort mit dem Statuscode „202 ACCEPTED“ zurück. Dieser Antworttyp enthält keinen `location`-Header. Damit eine HTTP-Aktion nicht fortlaufend den Anforderungsstatus überprüft, obwohl kein `location`-Header vorhanden ist, können Sie wie folgt vorgehen:
+Einige Endpunkte, Dienste, Systeme oder APIs geben eine Antwort mit dem Code `202 ACCEPTED` zurück, die keinen `location`-Header enthält. Damit eine HTTP-Aktion nicht fortlaufend den Anforderungsstatus überprüft, obwohl kein `location`-Header vorhanden ist, können Sie wie folgt vorgehen:
 
 * [Deaktivieren des Musters für asynchrone Vorgänge, das die HTTP-Aktion befolgt](#disable-asynchronous-operations), damit die Aktion nicht fortlaufend den Anforderungsstatus abfragt oder überprüft. Die Aktion wartet dann stattdessen darauf, dass der Empfänger den Status und die Ergebnisse in der Antwort sendet, nachdem die Verarbeitung der Anforderung abgeschlossen wurde.
 
@@ -262,7 +297,7 @@ Logic Apps verhindert nicht, dass Sie Logik-Apps speichern, in denen ein HTTP-Tr
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Weitere Informationen zu Trigger- und Aktionsparametern finden Sie in diesen Abschnitten:
+Weitere Informationen zu Trigger- und Aktionsparametern finden Sie in den folgenden Abschnitten:
 
 * [HTTP-Triggerparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
 * [HTTP-Aktionsparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)

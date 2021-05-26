@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: bb331f8829252b69499944e5354c9343e96c78bd
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 1b3d13402e18659d0deba723eaf52d4eb5959253
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684736"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379249"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -284,7 +284,7 @@ Media Services v3 gibt die Vorschauversion von 24 Stunden x 365 Tagen linearer L
 
 #### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
 
-Wir kündigen die Einstellung von *Azure Media Indexer* und *Azure Media Indexer 2 Preview* an. Die Daten zur Einstellung finden Sie im Artikel [Legacykomponenten](../previous/legacy-components.md). [Azure Media Services Video Indexer](../video-indexer/index.yml) ersetzt diese Legacy-Medienprozessoren.
+Wir kündigen die Einstellung von *Azure Media Indexer* und *Azure Media Indexer 2 Preview* an. Die Daten zur Einstellung finden Sie im Artikel [Legacykomponenten](../previous/legacy-components.md). Azure Media Services Video Indexer ersetzt diese Legacy-Medienprozessoren.
 
 Weitere Informationen finden Sie unter [Migration von Azure Media Indexer v1 und Azure Media Indexer v2 zu Azure Media Services Video Indexer](../previous/migrate-indexer-v1-v2.md).
 

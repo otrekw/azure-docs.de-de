@@ -5,14 +5,15 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e42bb29a00486a16d697b68d7bcf337017da7998
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001047"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368923"
 ---
 # <a name="advanced-filtering"></a>Erweiterte Filterung
 In Event Grid können Filter für eine beliebige Eigenschaft in der JSON-Nutzlast angegeben werden. Diese Filter werden als Gruppe von `AND`-Bedingungen erstellt, wobei jede äußere Bedingung über optionale innere `OR`-Bedingungen verfügt. Für jede `AND`-Bedingung geben Sie die folgenden Werte an:

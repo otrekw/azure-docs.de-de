@@ -5,14 +5,15 @@ author: arduppal
 manager: brymat
 ms.author: arduppal
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 461e8c20b70abe3b6b5361de95451a72ea8a0996
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96005060"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378299"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Tutorial: Reagieren auf Blob Storage-Ereignisse in IoT Edge (Preview)
 In diesem Artikel erfahren Sie, wie Sie Azure Blob Storage für das IoT-Modul bereitstellen, das als Event Grid-Herausgeber fungieren würde, um Ereignisse bei der Blob-Erstellung und Blob-Löschung an Event Grid zu senden.  
@@ -324,7 +325,7 @@ Glückwunsch! Sie haben das Tutorial abgeschlossen. Die folgenden Abschnitte bie
 
 Im Folgenden finden Sie die Liste der unterstützten Ereigniseigenschaften mit ihren zugehörigen Typen und Beschreibungen. 
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -337,7 +338,7 @@ Im Folgenden finden Sie die Liste der unterstützten Ereigniseigenschaften mit i
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | api | Zeichenfolge | Der Vorgang, durch den das Ereignis ausgelöst wurde. Es kann sich um einen der folgenden Werte handeln: <ul><li>BlobCreated: zulässige Werte sind: `PutBlob` und `PutBlockList`.</li><li>BlobDeleted: zulässige Werte sind: `DeleteBlob`, `DeleteAfterUpload` und `AutoDelete`. <p>Das `DeleteAfterUpload`-Ereignis wird generiert, wenn ein Blob automatisch gelöscht wird, weil die gewünschte Eigenschaft „deleteAfterUpload“ auf „true“ festgelegt ist. </p><p>Das `AutoDelete`-Ereignis wird generiert, wenn ein Blob automatisch gelöscht wird, weil der Wert der gewünschten Eigenschaft „deleteAfterMinutes“ abgelaufen ist.</p></li></ul>|
 | clientRequestId | Zeichenfolge | Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang. Diese ID kann zur Korrelation mit Azure Storage-Diagnoseprotokollen anhand des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem Header „x-ms-client-request-id“ bereitgestellt werden. Ausführliche Informationen finden Sie unter [Protokollformat](/rest/api/storageservices/storage-analytics-log-format). |

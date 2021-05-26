@@ -3,15 +3,15 @@ title: Abrechnungs- und Preismodelle
 description: Übersicht über die Funktionsweise von Preis- und Abrechnungsmodellen in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: a3c20dd85c94c359259cf69e25bb9083d56857fc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/25/2021
+ms.openlocfilehash: 629b7a4a52dcc5749941de695eec4558085263df
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777147"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372703"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Preis- und Abrechnungsmodelle für Azure Logic Apps
 
@@ -19,9 +19,9 @@ ms.locfileid: "107777147"
 
 <a name="consumption-pricing"></a>
 
-## <a name="multi-tenant-pricing"></a>Preismodell für mehrere Mandanten
+## <a name="consumption-pricing-multi-tenant"></a>Nutzungspreise (mehrere Mandanten)
 
-Für Logik-Apps, die im öffentlichen, „globalen“, mehrinstanzenfähigen Dienst Azure Logic Apps ausgeführt werden, gilt ein nutzungsabhängiges Preismodell. Alle erfolgreichen und fehlgeschlagenen Ausführungen werden gezählt und abgerechnet.
+Für Logik-Apps, die in der öffentlichen, „globalen“, mehrinstanzenfähigen Logic Apps-Umgebung ausgeführt werden, gilt ein nutzungsabhängiges Preismodell. Alle erfolgreichen und fehlgeschlagenen Ausführungen werden gezählt und abgerechnet.
 
 So wird z. B. eine Anforderung, die ein Abfragetrigger stellt, auch dann als Ausführung gezählt, wenn dieser Trigger übersprungen und keine Workflowinstanz der Logik-App erstellt wird.
 
@@ -29,7 +29,7 @@ So wird z. B. eine Anforderung, die ein Abfragetrigger stellt, auch dann als Au
 |-------|-------------|
 | [Integrierte](../connectors/built-in.md) Trigger und Aktionen | Werden im Dienst Azure Logic Apps nativ ausgeführt und mit dem Preis von [**Aktionen** gemessen](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>Beispielsweise sind die Trigger „HTTP“ und „Anforderung“ integrierte Trigger, während die Aktionen „HTTP“ und „Antwort“ integrierte Aktionen sind. Daten-, Batch- und Variablenvorgänge sowie [Aktionen zum Steuern von Workflows](../connectors/built-in.md) wie Schleifen, Bedingungen, Schalter, parallele Verzweigungen usw. sind ebenfalls integrierte Aktionen. |
 | Trigger und Aktionen des Typs [Standardconnector](../connectors/managed.md) <p><p>Trigger und Aktionen des Typs [Benutzerdefinierter Connector](../connectors/apis-list.md#custom-apis-and-connectors) | Gemessen mit dem Preis für [Standardconnector](https://azure.microsoft.com/pricing/details/logic-apps/). |
-| Trigger und Aktionen des Typs [Unternehmensconnector](../connectors/managed.md) | Gemessen mit dem Preis für [Unternehmensconnector](https://azure.microsoft.com/pricing/details/logic-apps/). In der öffentlichen Vorschauphase werden Unternehmensconnectors jedoch mit dem Preis für [*Standardconnectors*](https://azure.microsoft.com/pricing/details/logic-apps/)abgerechnet. |
+| Trigger und Aktionen des Typs [Unternehmensconnector](../connectors/managed.md) | Gemessen mit dem Preis für [Unternehmensconnector](https://azure.microsoft.com/pricing/details/logic-apps/). In der Connectorvorschau werden Unternehmensconnectors jedoch mit dem Preis für [*Standardconnectors*](https://azure.microsoft.com/pricing/details/logic-apps/) abgerechnet. |
 | Aktionen innerhalb von [Schleifen](logic-apps-control-flow-loops.md) | Jede Aktion, die in einer Schleife erfolgt, wird für jeden ausgeführten Schleifenzyklus gemessen. <p><p>Angenommen, Sie haben eine FOR EACH-Schleife mit Aktionen zum Verarbeiten einer Liste. Der Dienst Azure Logic Apps erfasst jede Aktion in dieser Schleife, indem die Anzahl der Listenelemente mit der Anzahl der Aktionen in der Schleife multipliziert wird. Anschließend wird die Aktion zum Starten der Schleife hinzugefügt. Daher lautet die Berechnung für eine Liste mit zehn Elementen (10 * 1) + 1, sodass sich 11 Aktionsausführungen ergeben. |
 | Wiederholungsversuche | Um die grundlegendsten Ausnahmen und Fehler zu behandeln, können Sie, sofern unterstützt, eine [Wiederholungsrichtlinie](logic-apps-exception-handling.md#retry-policies) für Trigger und Aktionen einrichten. Diese Wiederholungen werden zusammen mit der ursprünglichen Anforderung zu Tarifen in Rechnung gestellt, die darauf basieren, ob der Trigger oder die Aktion den Typ „Integriert“, „Standard“ oder „Unternehmen“ hat. Beispielsweise werden für eine Aktion, die mit zwei Wiederholungen ausgeführt wird, drei Aktionsausführungen berechnet. |
 | [Datenaufbewahrung und Speichernutzung](#data-retention) | Wird mit dem Preis für Datenaufbewahrung gemessen, den Sie auf der [Preisseite für Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) unter der Tabelle **Preisdetails** finden. |
@@ -64,11 +64,47 @@ Diese Tipps helfen Ihnen beim Schätzen genauerer Nutzungskosten:
 
   Angenommen, Sie haben einen Trigger eingerichtet, der täglich einen Endpunkt überprüft. Wenn der Trigger den Endpunkt überprüft und 15 Ereignisse findet, die die Kriterien erfüllen, wird der Trigger ausgelöst und führt den entsprechenden Workflow 15 mal aus. Der Dienst Azure Logic Apps misst alle Aktionen, die diese 15 Workflows ausführen, einschließlich der Triggeranforderungen.
 
+<a name="standard-pricing"></a>
+
+## <a name="standard-pricing-single-tenant"></a>Standardpreise (einzelner Mandant)
+
+Wenn Sie die Ressource **Logik-App (Standard)** im Azure-Portal erstellen oder über Visual Studio Code bereitstellen, müssen Sie einen Hostingplan und einen Tarif für Ihre Logik-App auswählen. Diese Optionen bestimmen die Preise, die beim Ausführen Ihrer Workflows in Azure Logic Apps mit einzelnem Mandanten gelten.
+
+<a name="hosting-plans"></a>
+
+### <a name="hosting-plans-and-pricing-tiers"></a>Hostingpläne und Tarife
+
+Verwenden Sie für Logik-Apps, die auf einem einzelnen Mandanten basieren, den Hostingplan **Workflow-Standard**. In der folgenden Liste sind die verfügbaren Tarife aufgeführt, die Sie auswählen können:
+
+| Tarif | Kerne | Arbeitsspeicher | Storage |
+|--------------|-------|--------|---------|
+| **WS1** | 1 | 3,5 GB | 250 GB |
+| **WS2** | 2 | 7 GB | 250 GB |
+| **WS3** | 2 | 14 GB | 250 GB |
+|||||
+
+<a name="storage-transactions"></a>
+
+### <a name="storage-transactions"></a>Speichertransaktionen
+
+Azure Logic Apps verwendet [Azure Storage](/storage) für alle Speichervorgänge. In Azure Logic Apps für mehrere Mandanten werden die gesamte Speichernutzung und alle Speicherkosten an die Logik-App gebunden. Mit Azure Logic Apps mit einem einzelnen Mandanten können Sie Ihr eigenes Azure-[Speicherkonto](../azure-functions/storage-considerations.md#storage-account-requirements) verwenden. Diese Funktion bietet Ihnen mehr Kontrolle und Flexibilität für Ihre Logic Apps-Daten.
+
+Wenn *zustandsbehaftete* Workflows ihre Vorgänge ausführen, führt die Azure Logic Apps-Runtime Speichertransaktionen durch. Beispielsweise werden Warteschlangen für die Zeitplanung verwendet, während Tabellen und Blobs zum Speichern von Workflowzuständen verwendet werden. Die Speicherkosten ändern sich basierend auf dem Inhalt Ihres Workflows. Verschiedene Auslöser, Vorgänge und Nutzdaten führen zu unterschiedlichen Speichervorgängen und Anforderungen. Speichertransaktionen folgen dem [Azure Storage-Preismodell](https://azure.microsoft.com/pricing/details/storage/). Speicherkosten werden in Ihrer Azure-Rechnung separat aufgeführt.
+
+### <a name="tips-for-estimating-storage-needs-and-costs"></a>Tipps zum Schätzen von Speicheranforderungen und -kosten
+
+Um eine Vorstellung von der Anzahl der Speichervorgänge, die ein Workflow ausführen könnte, und deren Kosten zu erhalten, verwenden Sie den [Logic Apps-Speicherrechner](https://logicapps.azure.com/calculator). Sie können entweder einen Beispielworkflow auswählen oder eine vorhandene Workflowdefinition verwenden. Die erste Berechnung schätzt die Anzahl der Speichervorgänge in Ihrem Workflow. Sie können diese Zahlen dann verwenden, um mögliche Kosten mithilfe des [Azure-Preisrechners](https://azure.microsoft.com/pricing/calculator/) zu schätzen.
+
+Weitere Informationen finden Sie in der folgenden Dokumentation:
+
+* [Abschätzen der Speicheranforderungen und -kosten für Workflows in Azure Logic Apps für nur einen Mandanten](estimate-storage-costs.md)
+* [Azure Storage – Preisdetails](https://azure.microsoft.com/pricing/details/storage/)
+
 <a name="fixed-pricing"></a>
 
-## <a name="ise-pricing"></a>ISE-Preise
+## <a name="ise-pricing-dedicated"></a>ISE-Preise (dediziert)
 
-Für Logik-Apps, die in einer [*Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt werden, gilt ein Festpreismodell. Eine ISE wird mit dem [Preis für Integrationsdienstumgebungen](https://azure.microsoft.com/pricing/details/logic-apps) abgerechnet, der von der von Ihnen erstellten [ISE-Stufe oder *SKU*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) abhängt. Diese Preise unterscheiden sich von den Preisen für mehrere Mandanten, da Sie für reservierte Kapazität und dedizierte Ressourcen unabhängig davon zahlen, ob Sie diese nutzen oder nicht.
+Für Logik-Apps, die in der dedizierten [*Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt werden, gilt ein Festpreismodell. Eine ISE wird mit dem [Preis für Integrationsdienstumgebungen](https://azure.microsoft.com/pricing/details/logic-apps) abgerechnet, der von der von Ihnen erstellten [ISE-Stufe oder *SKU*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) abhängt. Diese Preise unterscheiden sich von den Preisen für mehrere Mandanten, da Sie für reservierte Kapazität und dedizierte Ressourcen unabhängig davon zahlen, ob Sie diese nutzen oder nicht.
 
 | ISE SKU | BESCHREIBUNG |
 |---------|-------------|
@@ -81,7 +117,7 @@ Für Logik-Apps, die in einer [*Integrationsdienstumgebung* (ISE)](../logic-apps
 | Elemente | Beschreibung |
 |-------|-------------|
 | [Integrierte](../connectors/built-in.md) Trigger und Aktionen | Werden mit der Beschriftung **Core** angezeigt und in derselben ISE ausgeführt wie Ihre Logik-Apps. |
-| [Standardconnectors](../connectors/managed.md) <p><p>[Unternehmensconnector](../connectors/managed.md#enterprise-connectors) | Verwaltete Connectors, die mit der Beschriftung **ISE** versehen sind, wurden speziell für den Betrieb ohne das lokale Datengateways entwickelt und werden in derselben ISE wie Ihre Logik-Apps ausgeführt. Die ISE-Preise decken so viele Unternehmensverbindungen wie gewünscht ab. <p><p>Connectors ohne die Beschriftung „ISE“ werden im mehrinstanzenfähigen Dienst Azure Logic Apps ausgeführt. Die ISE-Preise decken diese Ausführungen jedoch für in einer ISE ausgeführte Logik-Apps ab. |
+| [Standardconnectors](../connectors/managed.md) <p><p>[Unternehmensconnector](../connectors/managed.md#enterprise-connectors) | Verwaltete Connectors, die mit der Beschriftung **ISE** versehen sind, wurden speziell für den Betrieb ohne das lokale Datengateways entwickelt und werden in derselben ISE wie Ihre Logik-Apps ausgeführt. Die ISE-Preise decken so viele Unternehmensverbindungen wie gewünscht ab. <p><p>Connectors ohne die Beschriftung „ISE“ werden im Azure Logic Apps-Dienst für einen einzelnen Mandanten ausgeführt. Die ISE-Preise decken diese Ausführungen jedoch für in einer ISE ausgeführte Logik-Apps ab. |
 | Aktionen innerhalb von [Schleifen](logic-apps-control-flow-loops.md) | Die ISE-Preise decken jede in einer Schleife ausgeführte Aktion für jeden ausgeführten Schleifenzyklus ab. <p><p>Angenommen, Sie haben eine FOR EACH-Schleife mit Aktionen zum Verarbeiten einer Liste. Zur Ermittlung der Gesamtanzahl der Ausführungen von Aktionen multiplizieren Sie die Anzahl der Listenelemente mit der Anzahl der Aktionen in der Schleife und addieren die Aktion zum Starten der Schleife. Daher lautet die Berechnung für eine Liste mit zehn Elementen (10 * 1) + 1, sodass sich 11 Aktionsausführungen ergeben. |
 | Wiederholungsversuche | Um die grundlegendsten Ausnahmen und Fehler zu behandeln, können Sie, sofern unterstützt, eine [Wiederholungsrichtlinie](logic-apps-exception-handling.md#retry-policies) für Trigger und Aktionen einrichten. Die ISE-Preise berücksichtigen Wiederholungen ebenso wie die ursprüngliche Anforderung. |
 | [Datenaufbewahrung und Speichernutzung](#data-retention) | Für Logik-Apps in einer ISE fallen keine Aufbewahrungs- und Speicherkosten an. |

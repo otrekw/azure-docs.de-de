@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Swift-Clientbibliothek für den plastischen Reader'
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: In dieser Schnellstartanleitung erstellen Sie eine iOS-App von Grund auf neu und fügen die Funktion der API für den plastischen Reader hinzu.
 services: cognitive-services
 author: nitinme
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
-ms.openlocfilehash: 5dc4e38eb0e29cc9fa272f6e740fcc7d1dbfe44a
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 090fe51ab2734629e8d4d44862df5aca827d7c83
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102619207"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376544"
 ---
 [Plastischer Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden, wie z. B. Dyslexie, zu verbessern. Sie können den plastischen Reader in Ihren Anwendungen verwenden, um Text zu isolieren, den Fokus zu verbessern, Bilder für häufig verwendete Wörter anzuzeigen, Wortarten hervorzuheben, markierten Text laut vorzulesen, Wörter und Ausdrücke in Echtzeit zu übersetzen und vieles mehr.
 

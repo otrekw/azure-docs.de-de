@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/26/2020
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: c3a832da7e58dd986c2a6e49801fe318cdd46f77
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 98f53e27c1853d4ddce3140aa1d5aaad17ed22c0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752353"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063242"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Azure Resource Manager-Vorlagen für App Service
 
@@ -26,15 +26,15 @@ Weitere Informationen zur JSON-Syntax und zu den Eigenschaften für App Services
 | [App Service-Plan und einfache Windows-App](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-basic-windows) | Stellt eine für Windows konfigurierte App Service-App bereit. |
 | [Mit einem GitHub-Repository verknüpfte App](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-github-deploy)| Stellt eine App Service-App bereit, die Code aus GitHub bezieht. |
 | [App mit benutzerdefinierten Bereitstellungsslots](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-custom-deployment-slots)| Stellt eine App Service-App mit benutzerdefinierten Bereitstellungsslots/-umgebungen bereit. |
-| [App mit privatem Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-private-endpoint-webapp)| Hier wird eine App Service-App mit einem privaten Endpunkt bereitgestellt. |
+| [App mit privatem Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/private-endpoint-webapp)| Hier wird eine App Service-App mit einem privaten Endpunkt bereitgestellt. |
 |**Konfigurieren einer App**| **Beschreibung** |
 | [App-Zertifikat aus Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Stellt ein App Service-App-Zertifikat auf der Grundlage eines Azure Key Vault-Geheimnisses bereit und verwendet es für die TLS-/SSL-Bindung. |
 | [App mit benutzerdefinierter Domäne und SSL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Stellt eine App Service-App mit einem benutzerdefinierten Hostnamen bereit und ruft aus Key Vault ein App-Zertifikat für die TLS-/SSL-Bindung ab. |
 | [App mit Golang-Erweiterung](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Stellt eine App Service-App mit der Golang-Websiteerweiterung bereit. Dies ermöglicht die Ausführung von mit Golang entwickelten Webanwendungen in Azure. |
-| [App mit Java 8 und Tomcat 8](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Stellt eine App Service-App mit aktiviertem Java 8 und Tomcat 8 bereit. Dies ermöglicht die Ausführung von Java-Anwendungen in Azure. |
-| [App mit regionaler VNET-Integration](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-service-regional-vnet-integration)| Stellt eine App Service-App mit aktivierter regionaler VNET-Integration bereit. |
+| [App mit Java 8 und Tomcat 8](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-java-tomcat)| Stellt eine App Service-App mit aktiviertem Java 8 und Tomcat 8 bereit. Dies ermöglicht die Ausführung von Java-Anwendungen in Azure. |
+| [App mit regionaler VNET-Integration](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/app-service-regional-vnet-integration)| Stellt eine App Service-App mit aktivierter regionaler VNET-Integration bereit. |
 |**Schützen einer App**| **Beschreibung** |
-| [In Azure Application Gateway integrierte App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2)| Stellt eine App Service-App und Application Gateway bereit und isoliert den Datenverkehr mithilfe eines Dienstendpunkts und mithilfe von Zugriffsbeschränkungen. |
+| [In Azure Application Gateway integrierte App](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-with-app-gateway-v2)| Stellt eine App Service-App und Application Gateway bereit und isoliert den Datenverkehr mithilfe eines Dienstendpunkts und mithilfe von Zugriffsbeschränkungen. |
 |**Linux-App mit verbundenen Ressourcen**| **Beschreibung** |
 | [App unter Linux mit MySQL](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-linux-managed-mysql) | Stellt eine App Service-App unter Linux mit Azure Database for MySQL bereit. |
 | [App unter Linux mit PostgreSQL](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-linux-managed-postgresql) | Stellt eine App Service-App unter Linux mit Azure Database for PostgreSQL bereit. |
@@ -44,7 +44,7 @@ Weitere Informationen zur JSON-Syntax und zu den Eigenschaften für App Services
 | [App mit Datenbank in Azure SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-sql-database)| Stellt eine App Service-App und eine Datenbank in Azure SQL-Datenbank auf der Dienstebene „Basic“ bereit. |
 | [App mit Blob Storage-Verbindung](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Stellt eine App Service-App mit einer Azure Blob Storage-Verbindungszeichenfolge bereit. Dies ermöglicht die Verwendung von Blob Storage über die App. |
 | [App mit Azure Cache for Redis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Stellt eine App Service-App mit einer Azure Cache for Redis-Instanz bereit. |
-| [Mit einer Back-End-Web-App verbundene App](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection)| Stellt zwei Web-Apps (Front-End und Back-End) sicher miteinander verbunden mit VNET-Injektion und privatem Endpunkt bereit. |
+| [Mit einer Back-End-Web-App verbundene App](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-privateendpoint-vnet-injection)| Stellt zwei Web-Apps (Front-End und Back-End) sicher miteinander verbunden mit VNET-Injektion und privatem Endpunkt bereit. |
 |**App Service-Umgebung**| **Beschreibung** |
 | [Erstellen einer App Service-Umgebung v2](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-asev2-create) | Erstellt eine App Service-Umgebung v2 in Ihrem virtuellen Netzwerk. |
 | [Erstellen einer App Service-Umgebung v2 mit einer ILB-Adresse](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-asev2-ilb-create) | Erstellt eine App Service-Umgebung v2 in Ihrem virtuellen Netzwerk mit einer privaten Adresse des internen Lastenausgleichs. |

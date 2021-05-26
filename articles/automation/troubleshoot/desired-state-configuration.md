@@ -6,12 +6,12 @@ ms.subservice: ''
 ms.date: 04/16/2019
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 91c4780981851b62027fecf18da2c3b78625f272
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 5fe977851011bdfa4f7bbf2bde24e5e4b6fd480d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831202"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457855"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Problembehandlung bei Azure Automation State Configuration
 
@@ -90,7 +90,7 @@ Dieser Fehler wird normalerweise durch eine Firewall, durch einen Computer hinte
 
 Stellen Sie sicher, dass Ihr Computer Zugriff auf die richtigen Endpunkte für DSC hat, und wiederholen Sie den Vorgang. Eine Liste der erforderlichen Ports und Adressen finden Sie unter [Netzwerkplanung](../automation-dsc-overview.md#network-planning).
 
-## <a name="a-nameunauthorizedscenario-status-reports-return-the-response-code-unauthorized"></a><a name="unauthorized"><a/>Szenario: Antwortcode „Nicht autorisiert“ in Statusberichten
+## <a name="scenario-status-reports-return-the-response-code-unauthorized"></a><a name="unauthorized"></a>Szenario: Antwortcode „Nicht autorisiert“ in Statusberichten
 
 ### <a name="issue"></a>Problem
 

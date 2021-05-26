@@ -1,35 +1,30 @@
 ---
-title: Grenzwerte und Konfiguration
+title: Referenzleitfaden zu Grenzwerten und zur Konfiguration
 description: Referenzhandbuch zu Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: rohithah, logicappspm
-ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: a074009b29c5414b356022f08afe81210fc0f60c
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.reviewer: rohithah, rarayudu, azla
+ms.topic: reference
+ms.date: 05/25/2021
+ms.openlocfilehash: 49f9a04351d243f4011b35370b99e30327446f5d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634687"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378179"
 ---
-# <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
+# <a name="limits-and-configuration-reference-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsreferenz für Azure Logic Apps
 
 > Informationen zu Power Automate finden Sie unter [Grenzwerte und Konfiguration in Microsoft Flow](/flow/limits-and-config).
 
-In diesem Artikel werden die Grenzwert- und Konfigurationsinformationen für Azure Logic Apps und ähnliche Ressourcen beschrieben. Viele Grenzwerte sind für mehrere Mandanten und einzelne Mandanten der Dienste (Vorschauversion) für Logic Apps gleich, etwaige Unterschiede werden angegeben.
+In diesem Artikel werden die Grenzwert- und Konfigurationsinformationen für Azure Logic Apps und ähnliche Ressourcen beschrieben. Wählen Sie basierend auf Ihrem Szenario, den Lösungsanforderungen, den gewünschten Funktionen sowie der Umgebung, in der die Workflows ausgeführt werden sollen, den **Logik-App**-Ressourcentyp aus, um Logik-App-Workflows zu erstellen.
 
-Die folgende Tabelle enthält weitere Informationen zu den Bestimmungen, *mehrere Mandanten*, *einzelne Mandanten* und *Integrationsdienstumgebung*, die in diesem Artikel auftauchen:
+> [!NOTE]
+> Viele Grenzwerte sind in diesen Hostumgebungen identisch, es gibt jedoch trotzdem Unterschiede. [Wenden Sie sich an das Logic Apps-Team](mailto://logicappspm@microsoft.com), wenn Ihr Szenario unterschiedliche Grenzwerte erfordert, um Ihre Anforderungen zu besprechen.
 
-| Umgebung | Ressourcenfreigabe und -nutzung | [Preismodell](logic-apps-pricing.md) | Notizen |
-|-------------|----------------------------|----------------------------------------|-------|
-| Azure Logic Apps <br>(Mehrere Mandanten) | Workflows in Logik-Apps auf *mehreren Mandanten* nutzen dieselben Ressourcen für die Verarbeitung (Compute), den Speicher, das Netzwerk usw. | Nutzung | Azure Logic Apps verwaltet die Standardwerte für diese Grenzwerte, aber Sie können einige dieser Werte ändern, wenn diese Option für einen bestimmten Grenzwert vorhanden ist. |
-| Azure Logic Apps <br>(Einzelner Mandant (Vorschauversion)) | Workflows *in derselben Logik-App und einzelnen Mandanten* nutzen dieselben Ressourcen für die Verarbeitung (Compute), den Speicher, das Netzwerk usw. | Vorschau, bei der es sich entweder um den [Premium-Hostingplan](../azure-functions/functions-scale.md)oder den [App Service-Hostingplan](../azure-functions/functions-scale.md) mit einem bestimmten [Tarif](../app-service/overview-hosting-plans.md) handelt <p><p>Wenn Sie über *zustandsbehaftete* Workflows verfügen, die [externen Speicherverwenden](../azure-functions/storage-considerations.md#storage-account-requirements), macht die Azure Logic Apps Runtime Speichertransaktionen, die den [Azure Storage-Preisen](https://azure.microsoft.com/pricing/details/storage/) folgen. | Sie können die Standardwerte für viele Grenzwerte basierend auf den Anforderungen Ihres Szenarios ändern. <p><p>**Wichtig**: Einige Grenzwerte haben harte Obergrenzen. In Visual Studio Code werden die Änderungen, die Sie an den Standardgrenzwerten in den Konfigurationsdateien Ihrer Logik-App-Projekte vornehmen, nicht in der Designererfahrung angezeigt. <p><p>Weitere Informationen finden Sie unter [Erstellen von Workflows für Ein-Mandanten-Azure Logic Apps mit Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md). |
-| Integrationsdienstumgebung | Workflows *in derselben Umgebung* nutzen dieselben Ressourcen für die Verarbeitung (Compute), den Speicher, das Netzwerk usw. | Fest | Azure Logic Apps verwaltet die Standardwerte für diese Grenzwerte, aber Sie können einige dieser Werte ändern, wenn diese Option für einen bestimmten Grenzwert vorhanden ist. |
-|||||
+In der folgenden Tabelle werden die Unterschiede zwischen dem ursprünglichen Ressourcentyp **Logik-App (Verbrauch)** und dem Ressourcentyp **Logik-App (Standard)** kurz zusammengefasst. Außerdem lernen Sie die Unterschiede zwischen einer *Einzelmandantenumgebung* und einer *Umgebung mit mehreren Mandanten* sowie der *Integrationsdienstumgebung* (Integration Service Environment, ISE) in Hinblick auf Bereitstellung, Hosten und Ausführung Ihrer Logik-App-Workflows kennen.
 
-> [!TIP]
-> [Wenden Sie sich an das Logic Apps-Team](mailto://logicappspm@microsoft.com), wenn Sie ein Szenario haben, dass unterschiedliche Grenzwerte erfordert, um Ihre Anforderungen zu besprechen.
+[!INCLUDE [Logic app resource type and environment differences](../../includes/logic-apps-resource-environment-differences-table.md)]
 
 <a name="definition-limits"></a>
 
@@ -39,18 +34,18 @@ In den folgenden Tabellen sind die Werte für eine einzelne Workflowdefinition a
 
 | Name | Begrenzung | Notizen |
 | ---- | ----- | ----- |
-| Workflows pro Region und Abonnement | 1 000 Workflows | |
+| Workflows pro Region und Abonnement | 1 000 Workflows ||
 | Trigger pro Workflow | 10 Trigger | Dieser Grenzwert gilt nur, wenn Sie an der JSON-Workflowdefinition arbeiten, unabhängig davon, ob sie in der Codeansicht oder in einer ARM-Vorlage (Azure Resource Manager) und nicht im Designer vorliegt. |
 | Aktionen pro Workflow | 500 Aktionen | Zur Erhöhung dieses Grenzwerts können Sie bei Bedarf geschachtelte Workflows verwenden. |
 | Schachtelungstiefe von Aktionen | 8 Aktionen | Zur Erhöhung dieses Grenzwerts können Sie bei Bedarf geschachtelte Workflows verwenden. |
-| Trigger oder Aktion: Maximale Namenslänge | 80 Zeichen | |
-| Trigger oder Aktion: Maximale Eingabe- oder Ausgabegröße | 104 857 600 Bytes <br>(105 MB) |
-| Aktion: Maximale Kombinierte Eingabe- und Ausgabegröße | 209 715 200 Bytes <br>(210 MB) |
-| Ausdruckszeichenlimit | 8 192 Zeichen | |
-| `description` - Maximale Länge | 256 Zeichen | |
-| `parameters` - Maximale Anzahl von Elementen | 50 Parameter | |
-| `outputs` - Maximale Anzahl Elemente | 10 Ausgaben | |
-| `trackedProperties` - Maximale Größe | 16.000 Zeichen |
+| Trigger oder Aktion: Maximale Namenslänge | 80 Zeichen ||
+| Trigger oder Aktion: Maximale Eingabe- oder Ausgabegröße | 104 857 600 Bytes <br>(105 MB) | Weitere Informationen zum Bearbeiten der Standardgrenzwerte im Einzelmandantenmodell finden Sie unter [Bearbeiten von Einstellungen für Hosts und Apps für Logik-Apps in Azure Logic Apps-Instanzen mit einem einzelnen Mandanten](edit-app-settings-host-settings.md). |
+| Aktion: Maximale Kombinierte Eingabe- und Ausgabegröße | 209 715 200 Bytes <br>(210 MB) ||
+| Ausdruckszeichenlimit | 8 192 Zeichen ||
+| `description` - Maximale Länge | 256 Zeichen ||
+| `parameters` - Maximale Anzahl von Elementen | 50 Parameter ||
+| `outputs` - Maximale Anzahl Elemente | 10 Ausgaben ||
+| `trackedProperties` - Maximale Größe | 16.000 Zeichen ||
 ||||
 
 <a name="run-duration-retention-limits"></a>
@@ -59,8 +54,8 @@ In den folgenden Tabellen sind die Werte für eine einzelne Workflowdefinition a
 
 In der folgenden Tabelle sind die Werte für eine einzelne Workflow-Ausführung aufgeführt:
 
-| Name | Mehrinstanzenfähig | Einzelner Mandant (Vorschauversion) | Integrationsdienstumgebung | Notizen |
-|------|--------------|-------------------------|---------------------------------|-------|
+| Name | Mehrinstanzenfähig | Einzelmandant | Integrationsdienstumgebung | Notizen |
+|------|--------------|---------------|---------------------------------|-------|
 | Aufbewahrung des Ausführungsverlaufs im Speicher | 90 Tage | 90 Tage | 366 Tage | Die Zeitdauer, für die der Workflowlaufverlauf im Speicher gespeichert wird, nachdem eine Ausführung gestartet wurde. Wenn die Dauer einer Ausführung den aktuellen Aufbewahrungsgrenzwert für Ausführungsverläufe überschreitet, wird die Ausführung aus dem Ausführungsverlauf im Speicher entfernt. <p>Egal, ob die Ausführung abgeschlossen wird oder einen Timeout hat, wird die Aufbewahrung des Ausführungsverlaufs immer mithilfe der Startzeit der Ausführung und des durch die Workfloweinstellung [**Aufbewahrung des Ausführungsverlaufs in Tagen**](#change-retention) festgelegten aktuellen Grenzwerts berechnet. Unabhängig vom vorherigen Grenzwert wird immer der aktuelle Grenzwert zum Berechnen der Aufbewahrung verwendet. <p><p>Weitere Informationen finden Sie unter [Ändern der Dauer und Aufbewahrung des Ausführungsverlaufs im Speicher](#change-retention). <p><p>**Tipp**: [Wenden Sie sich an das Logic Apps-Team](mailto://logicappspm@microsoft.com), wenn Sie ein Szenario haben, dass unterschiedliche Grenzwerte erfordert, um Ihre Anforderungen zu besprechen. |
 | Ausführungsdauer | 90 Tage | - Zustandsvoller Workflow: 90 Tage <p><p>- Zustandsloser Workflow: 5 Min | 366 Tage | Die Zeit, die ein Workflow weiter ausgeführt werden kann, bevor ein Timeout erzwungen wird. <p>Die Ausführungsdauer wird mithilfe der Startzeit einer Ausführung und des durch die Workfloweinstellung [**Aufbewahrung des Ausführungsverlaufs in Tagen**](#change-duration) zum Startzeitpunkt festgelegten Grenzwerts berechnet. <p>**Wichtig**: Stellen Sie sicher, dass der Wert für die Ausführungsdauer immer kleiner oder gleich der Aufbewahrungsdauer des Ausführungsverlaufs im Speicherwert ist. Andernfalls werden Ausführungsverläufe möglicherweise gelöscht, bevor die zugeordneten Aufträge abgeschlossen sind. <p><p>Weitere Informationen finden Sie unter [Ändern der Ausführungsdauer und der Verlaufsaufbewahrung im Speicher](#change-duration). <p><p>**Tipp**: [Wenden Sie sich an das Logic Apps-Team](mailto://logicappspm@microsoft.com), wenn Sie ein Szenario haben, dass unterschiedliche Grenzwerte erfordert, um Ihre Anforderungen zu besprechen. |
 | Wiederholungsintervall | - Min: 1 sek <p><p>- Max: 500 Tage | - Min: 1 sek <p><p>- Max: 500 Tage  | - Min: 1 sek <p><p>- Max: 500 Tage ||
@@ -75,7 +70,7 @@ Dieselbe Einstellung steuert im Designer die maximale Anzahl von Tagen, die ein 
 
 * Für den Dienst mit mehreren Mandanten ist der Standardgrenzwert von 90 Tagen gleich dem maximalen Grenzwert. Sie können diesen Wert nur verringern.
 
-* Für den Einzelmandantendienst (Vorschauversion) können Sie das Standardlimit von 90 Tagen verringern oder erhöhen. Weitere Informationen finden Sie unter [Erstellen von Workflows für Ein-Mandanten-Azure Logic Apps mit Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md).
+* Für den Einzelmandantendienst können Sie das Standardlimit von 90 Tagen verringern oder erhöhen. Weitere Informationen finden Sie unter [Erstellen von Workflows für Ein-Mandanten-Azure Logic Apps mit Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md).
 
 * Für eine Integrationsdienstumgebung können Sie den Standardgrenzwert von 90 Tagen verringern oder erhöhen.
 
@@ -136,22 +131,26 @@ In der folgenden Tabelle sind die Werte für eine einzelne Workflow-Ausführung 
 
 ### <a name="loop-actions"></a>Schleifenaktionen
 
+<a name="for-each-loop"></a>
+
 #### <a name="for-each-loop"></a>Für jede Schleife
 
 In der folgenden Tabelle werden die Werte einer **For each**-Schleife aufgelistet:
 
-| Name | Mehrinstanzenfähig | Einzelner Mandant (Vorschauversion) | Integrationsdienstumgebung | Notizen |
-|------|--------------|-------------------------|---------------------------------|-------|
+| Name | Mehrinstanzenfähig | Einzelmandant | Integrationsdienstumgebung | Notizen |
+|------|--------------|---------------|---------------------------------|-------|
 | Array-Elemente | 100 000 Elemente | - Zustandsvoller Workflow: 100 000 Elemente <p><p>- Zustandsloser Workflow: 100 Elemente | 100 000 Elemente | Die Anzahl der Arrayelemente, die eine **For each**-Schleife verarbeiten kann. <p><p>Sie können die [Abfrageaktion](logic-apps-perform-data-operations.md#filter-array-action) verwenden, um größere Arrays zu filtern. |
 | Gleichzeitige Iterationen | Parallelität aus: 20 <p><p>Parallelität an: <p>- Standardwert: 20 <br>- Min: 1 <br>- Max: 50 | Parallelität aus: 20 <p><p>Parallelität an: <p><p>- Standardwert: 20 <br>- Min: 1 <br>- Max: 50 | Parallelität aus: 20 <p><p>Parallelität an: <p>- Standardwert: 20 <br>- Min: 1 <br>- Max: 50 | Dieser Grenzwert entspricht der maximalen Anzahl von **For each**-Schleifeniterationen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern dieses Werts im mehr mandantenübergreifenden Dienst finden Sie unter [Ändern **des** For each-Parallelitätslimits](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) oder [Sequenzielles Ausführen der **For each**-Schleifen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
 ||||||
+
+<a name="until-loop"></a>
 
 #### <a name="until-loop"></a>Until-Schleife
 
 In der folgenden Tabelle werden die Werte für die **Until**-Schleife aufgelistet:
 
-| Name | Mehrinstanzenfähig | Einzelner Mandant (Vorschauversion) | Integrationsdienstumgebung | Notizen |
-|------|--------------|-------------------------|---------------------------------|-------|
+| Name | Mehrinstanzenfähig | Einzelmandant | Integrationsdienstumgebung | Notizen |
+|------|--------------|---------------|---------------------------------|-------|
 | Iterationen | - Standardwert: 60 <br>- Min: 1 <br>- Max: 5.000 | Zustandsvoller Workflow: <p><p>- Standardwert: 60 <br>- Min: 1 <br>- Max: 5.000 <p><p>\- Zustandsloser Workflow: <p><p>- Standardwert: 60 <br>- Min: 1 <br>- Max: 100 | - Standardwert: 60 <br>- Min: 1 <br>- Max: 5.000 | Die Anzahl von Zyklen, die eine **Until**-Schleife während einer Workflowausführung aufweisen kann. <p><p>Um diesen Wert zu ändern, wählen Sie in der **Until**-Schleife die Option **Grenzwerte ändern** aus und geben einen Wert für die **Count**-Eigenschaft an. |
 | Timeout | Standardwert: PT1H (1 Stunde) | Zustandsbehafteter Workflow: PT1H (1 Stunde) <p><p>Zustandsloser Workflow: PT5M (5 Min.) | Standardwert: PT1H (1 Stunde) | Die maximale Zeitspanne, die die **Until**-Schleife vor dem Beenden ausgeführt wird. Die Angabe erfolgt im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601). Der Timeoutwert wird für jeden Schleifendurchlauf ausgewertet. Wenn eine Aktion in der Schleife länger als die Zeitüberschreitung dauert, wird der aktuelle Zyklus nicht beendet. Der nächste Zyklus beginnt jedoch nicht, weil die Grenzwertbedingung nicht erfüllt ist. <p><p>Um diesen Wert zu ändern, wählen Sie in der **Until**-Schleife die Option **Grenzwerte ändern** aus und geben einen Wert für die **Timeout**-Eigenschaft an. |
 ||||||
@@ -160,8 +159,8 @@ In der folgenden Tabelle werden die Werte für die **Until**-Schleife aufgeliste
 
 ### <a name="concurrency-and-debatching"></a>Parallelität und Auflösen von Batches
 
-| Name | Mehrinstanzenfähig | Einzelner Mandant (Vorschauversion) | Integrationsdienstumgebung | Notizen |
-|------|--------------|-------------------------|---------------------------------|-------|
+| Name | Mehrinstanzenfähig | Einzelmandant | Integrationsdienstumgebung | Notizen |
+|------|--------------|---------------|---------------------------------|-------|
 | Trigger: gleichzeitige Ausführungen | Parallelität aus: Unbegrenzt <p><p>Parallelität ein (nicht rückgängig zu machen): <p><p>- Standardwert: 25 <br>- Min: 1 <br>- Max: 100 | Parallelität aus: Unbegrenzt <p><p>Parallelität ein (nicht rückgängig zu machen): <p><p>- Standardwert: 25 <br>- Min: 1 <br>- Max: 100 | Parallelität aus: Unbegrenzt <p><p>Parallelität ein (nicht rückgängig zu machen): <p><p>- Standardwert: 25 <br>- Min: 1 <br>- Max: 100 | Die Anzahl gleichzeitiger Ausführungen, die ein Trigger gleichzeitig oder parallel starten kann. <p><p>**Hinweis**: Wenn Parallelität aktiviert ist, wird das **SplitOn**-Limit auf 100 Elemente für das [Auflösen von Arraybatches](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) reduziert. <p><p>Informationen zum Ändern dieses Werts im mehr mandantenübergreifenden Dienst finden Sie unter [Ändern des Trigger-Parallelitätslimits](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) oder [Sequentielles Auslösen von Trigger-Instanzen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maximale Anzahl von wartenden Ausführungen | Parallelität aus: <p><p>- Min = 1 Ausführung <p>- Max: 50 Ausführungen <p><p>Parallelität an: <p><p>- Min: 10 Ausführungen plus die Anzahl gleichzeitiger Ausführungen <p>- Max: 100 Ausführungen | Parallelität aus: <p><p>- Min = 1 Ausführung <p>- Max: 50 Ausführungen <p><p>Parallelität an: <p><p>- Min: 10 Ausführungen plus die Anzahl gleichzeitiger Ausführungen <p>- Max: 100 Ausführungen | Parallelität aus: <p><p>- Min = 1 Ausführung <p>- Max: 50 Ausführungen <p><p>Parallelität an: <p><p>- Min: 10 Ausführungen plus die Anzahl gleichzeitiger Ausführungen <p>- Max: 100 Ausführungen | Die Anzahl von Workflowinstanzen, die auf die Ausführung warten können, wenn für Ihre akktuelle Workflowinstanz bereits die maximale Anzahl von gleichzeitigen Instanzen ausgeführt wird. <p><p>Informationen zum Ändern dieses Werts im mehrinstanzenfähigen Dienst finden Sie unter Ändern des [Grenzwerts für wartende Ausführungen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | **SplitOn**-Elemente | Parallelität aus: 100 000 Elemente <p><p>Parallelität ein: 100 Elemente | Parallelität aus: 100 000 Elemente <p><p>Parallelität ein: 100 Elemente | Parallelität aus: 100 000 Elemente <p><p>Parallelität ein: 100 Elemente | Für Trigger, die ein Array zurückgeben, können Sie einen Ausdruck angeben, der eine **SplitOn**-Eigenschaft verwendet, um [Arrayelemente für die Verarbeitung in mehrere Workflowinstanzen aufzuteilen bzw. aufzulösen](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch), anstatt eine **For each**-Schleife zu verwenden. Dieser Ausdruck verweist auf das Array, das zum Erstellen und Ausführen einer Workflowinstanz für jedes Arrayelement verwendet werden soll. <p><p>**Hinweis**: Wenn Parallelität aktiviert ist, wird das **SplitOn**-Limit auf 100 Elemente reduziert. |
@@ -173,7 +172,7 @@ In der folgenden Tabelle werden die Werte für die **Until**-Schleife aufgeliste
 
 In der folgenden Tabelle sind die Werte für eine einzelne Workflowdefinition aufgeführt:
 
-### <a name="multi-tenant--single-tenant-preview"></a>Mehrinstanzenfähig und Einzelmandant (Vorschau)
+### <a name="multi-tenant--single-tenant"></a>Mehrinstanzenfähig und Einzelmandant
 
 | Name | Begrenzung | Notizen |
 | ---- | ----- | ----- |
@@ -265,8 +264,8 @@ Azure Logic Apps unterstützt Schreibvorgänge, einschließlich Einfügungen und
 
 In der folgenden Tabelle sind die Werte für eine einzelne Workflowdefinition aufgeführt:
 
-| Name | Mehrinstanzenfähig | Einzelner Mandant (Vorschauversion) | Integrationsdienstumgebung | Notizen |
-|------|--------------|-------------------------|---------------------------------|-------|
+| Name | Mehrinstanzenfähig | Einzelmandant | Integrationsdienstumgebung | Notizen |
+|------|--------------|---------------|---------------------------------|-------|
 | Variablen pro Workflow | 250 Variablen | 250 Variablen | 250 Variablen ||
 | Variable: Maximale Inhaltsgröße | 104 857 600 Zeichen | Zustandsvoller Workflow: 104 857 600 Zeichen <p><p>Zustandsloser Workflow: 1 024 Zeichen | 104 857 600 Zeichen ||
 | Variable (Arraytyp): Maximale Anzahl von Arrayelementen | 100 000 Elemente | 100 000 Elemente | Premium-SKU: 100 000 Elemente <p><p>Developer-SKU: 5 000 Elemente ||
@@ -282,10 +281,13 @@ In den folgenden Tabellen sind die Werte für einen einzelnen eingehenden oder a
 
 ### <a name="timeout-duration"></a>Timeoutdauer
 
-Standardmäßig folgen die HTTP-Aktion und die APIConnection-Aktionen dem standardmäßigen [asynchronen Vorgangsmuster](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply), während die Response-Aktion (Antwort) dem *synchronen Vorgangsmuster* folgt. Einige verwaltete Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webhookanforderungen, sodass das Timeout für diese Vorgänge länger sein kann, als die folgenden Grenzwerte angeben. Weitere Informationen finden Sie auf [der technischen Referenzseite jedes Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors) sowie in der Dokumentation zu [Workflowtriggern und -aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
+Standardmäßig folgen die HTTP-Aktion und die APIConnection-Aktionen dem standardmäßigen [asynchronen Vorgangsmuster](/architecture/patterns/async-request-reply), während die Response-Aktion (Antwort) dem *synchronen Vorgangsmuster* folgt. Einige verwaltete Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webhookanforderungen, sodass das Timeout für diese Vorgänge länger sein kann, als die folgenden Grenzwerte angeben. Weitere Informationen finden Sie auf [der technischen Referenzseite jedes Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors) sowie in der Dokumentation zu [Workflowtriggern und -aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
-| Name | Mehrinstanzenfähig | Einzelner Mandant (Vorschauversion) | Integrationsdienstumgebung | Notizen |
-|------|--------------|-------------------------|---------------------------------|-------|
+> [!NOTE]
+> Für den Ressourcentyp **Logik-App (Standard)** im Einzelmandantenmodell können zustandslose Workflows nur *synchron* ausgeführt werden.
+
+| Name | Mehrinstanzenfähig | Einzelmandant | Integrationsdienstumgebung | Notizen |
+|------|--------------|---------------|---------------------------------|-------|
 | Ausgehende Anforderung | 120 Sekunden <br>(2 min) | 230 sek <br>(3,9 min) | 240 Sekunden <br>(4 min) | Ausgehende Anforderungen sind beispielsweise Aufrufe durch einen HTTP-Trigger bzw. eine HTTP-Aktion. <p><p>**Tipp**: Verwenden Sie für Vorgänge, die länger ausgeführt werden, ein [asynchrones Abrufmuster](../logic-apps/logic-apps-create-api-app.md#async-pattern) oder eine [„Until“-Schleife](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). Um Timeoutlimits zu umgehen, wenn Sie einen anderen Workflow aufrufen, der einen [aufrufbaren Endpunkt](logic-apps-http-endpoint.md) besitzt, können Sie stattdessen die integrierte Azure Logic Apps-Aktion verwenden, die Sie in der Auswahl für den Designervorgang unter **Integriert** finden. |
 | Eingehende Anforderungen | 120 Sekunden <br>(2 min) | 230 sek <br>(3,9 min) | 240 Sekunden <br>(4 min) | Eingehende Anforderungen sind beispielsweise Aufrufe, die von einem Anforderungstrigger, einem HTTP-Webhooktrigger oder einer HTTP-Webhookaktion empfangen werden. <p><p>**Hinweis**: Damit der ursprüngliche Aufrufer die Antwort erhält, müssen alle Schritte in der Antwort innerhalb des Grenzwerts abgeschlossen werden, es sei denn, Sie rufen einen anderen geschachtelten Workflow auf. Weitere Informationen hierzu finden Sie unter [Aufrufen, Auslösen oder Schachteln von Logik-Apps](../logic-apps/logic-apps-http-endpoint.md). |
 ||||||
@@ -294,7 +296,7 @@ Standardmäßig folgen die HTTP-Aktion und die APIConnection-Aktionen dem standa
 
 ### <a name="messages"></a>Nachrichten
 
-| Name | Blockierung aktiviert | Mehrinstanzenfähig | Einzelner Mandant (Vorschauversion) | Integrationsdienstumgebung | Notizen |
+| Name | Blockierung aktiviert | Mehrinstanzenfähig | Einzelmandant | Integrationsdienstumgebung | Notizen |
 |------|------------------|--------------|-------------------------|---------------------------------|-------|
 | Inhaltsdownload: Maximale Anzahl von Anforderungen | Ja | 1 000 Anforderungen | 1 000 Anforderungen | 1 000 Anforderungen ||
 | Nachrichtengröße | Nein | 100 MB | 100 MB | 200 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Einige Connectors und APIs unterstützen die Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert allerdings nicht. <p><p>- Connectors wie AS2, X12 und EDIFACT verfügen über eigene [B2B-Nachrichtenlimits](#b2b-protocol-limits). <p>- ISE-Connectors verwenden den ISE-Grenzwert, nicht die Grenzwerte für Nicht-ISE-Connectors. |
@@ -351,22 +353,22 @@ In der folgenden Tabelle sind die Werte für eine einzelne Workflowdefinition au
 
 In der folgenden Tabelle sind die Werte für eine einzelne Workflowdefinition aufgeführt:
 
-| Name | Mehrinstanzenfähig | Einzelner Mandant (Vorschauversion) | Integrationsdienstumgebung | Notizen |
-|------|--------------|-------------------------|---------------------------------|-------|
-| Maximale Anzahl von Codezeichen | 1\.024 Zeichen | 100 000 Zeichen | 1\.024 Zeichen | Um den höheren Grenzwert zu verwenden, erstellen Sie eine **Logik-App-Ressource (Vorschau)** , die in einem einzelnen Mandanten (Vorschauversion) Logic Apps ausgeführt wird, entweder mithilfe des [Azure-Portals](create-stateful-stateless-workflows-azure-portal.md) oder [mithilfe von Visual Studio Code und der **Azure Logic Apps (Vorschau)** -Erweiterung](create-stateful-stateless-workflows-visual-studio-code.md). |
-| Maximale Dauer für die Codeausführung | 5 Sekunden | 15 Sekunden | 1\.024 Zeichen | Um den höheren Grenzwert zu verwenden, erstellen Sie eine **Logik-App-Ressource (Vorschau)** , die in einem einzelnen Mandanten (Vorschauversion) Logic Apps ausgeführt wird, entweder mithilfe des [Azure-Portals](create-stateful-stateless-workflows-azure-portal.md) oder [mithilfe von Visual Studio Code und der **Azure Logic Apps (Vorschau)** -Erweiterung](create-stateful-stateless-workflows-visual-studio-code.md). |
+| Name | Mehrinstanzenfähig | Einzelmandant | Integrationsdienstumgebung | Notizen |
+|------|--------------|---------------|---------------------------------|-------|
+| Maximale Anzahl von Codezeichen | 1\.024 Zeichen | 100 000 Zeichen | 1\.024 Zeichen | Um den höheren Grenzwert zu verwenden, erstellen Sie eine **Logik-App-Ressource (Standard)** , die in einem einzelnen Azure Logic Apps-Mandanten ausgeführt wird, entweder mithilfe des [Azure-Portals](create-single-tenant-workflows-azure-portal.md) oder [mithilfe von Visual Studio Code und der **Erweiterung „Azure Logic Apps (Standard)“**](create-single-tenant-workflows-visual-studio-code.md). |
+| Maximale Dauer für die Codeausführung | 5 Sekunden | 15 Sekunden | 1\.024 Zeichen | Um den höheren Grenzwert zu verwenden, erstellen Sie eine **Logik-App-Ressource (Standard)** , die in einem einzelnen Azure Logic Apps-Mandanten ausgeführt wird, entweder mithilfe des [Azure-Portals](create-single-tenant-workflows-azure-portal.md) oder [mithilfe von Visual Studio Code und der **Erweiterung „Azure Logic Apps (Standard)“**](create-single-tenant-workflows-visual-studio-code.md). |
 ||||||
 
 <a name="custom-connector-limits"></a>
 
 ## <a name="custom-connector-limits"></a>Grenzwerte für einen benutzerdefinierten Connector
 
-Nur für Umgebungen mit mehreren Mandanten und Integrationsdienst können Sie [benutzerdefinierte verwaltete Connectors](/connectors/custom-connectors) erstellen und verwenden, bei denen es sich um Wrapper um eine vorhandene REST-API oder SOAP-API handelt. Nur für Einzelmandanten (Vorschauversion) können Sie [benutzerdefinierte integrierte Connectors](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) erstellen und verwenden.
+Nur für Umgebungen mit mehreren Mandanten und Integrationsdienst können Sie [benutzerdefinierte verwaltete Connectors](/connectors/custom-connectors) erstellen und verwenden, bei denen es sich um Wrapper um eine vorhandene REST-API oder SOAP-API handelt. Sie können nur für Einzelmandanten [benutzerdefinierte integrierte Connectors](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) erstellen und verwenden.
 
 In der folgenden Tabelle werden die Werte für jeden benutzerdefinierten Connector aufgelistet:
 
-| Name | Mehrinstanzenfähig | Einzelner Mandant (Vorschauversion) | Integrationsdienstumgebung | Notizen |
-|------|--------------|-------------------------|---------------------------------|-------|
+| Name | Mehrinstanzenfähig | Einzelmandant | Integrationsdienstumgebung | Notizen |
+|------|--------------|---------------|---------------------------------|-------|
 | Benutzerdefinierte Connectors | 1\.000 pro Azure-Abonnement | Unbegrenzt | 1\.000 pro Azure-Abonnement ||
 | Anforderungen pro Minute für einen benutzerdefinierten Connector | 500 Anforderungen pro Minute und Verbindung | Basierend auf Ihrer Implementierung | 2\.000 Anforderungen pro Minute und *benutzerdefiniertem Connector* ||
 | Verbindungstimeout | 2 Min. | Verbindung im Leerlauf: <br>4 min <p><p>Aktive Verbindung: <br>10 Min. | 2 Min. ||
@@ -375,7 +377,7 @@ In der folgenden Tabelle werden die Werte für jeden benutzerdefinierten Connect
 Weitere Informationen finden Sie in der folgenden Dokumentation:
 
 * [Übersicht über verwaltete benutzerdefinierte Connectors](/connectors/custom-connectors)
-* [Aktivieren der integrierten Connectorerstellung – Visual Studio Code mit Azure Logic Apps (Vorschauversion)](create-stateful-stateless-workflows-visual-studio-code.md#enable-built-in-connector-authoring)
+* [Aktivieren der integrierten Connectorerstellung – Visual Studio Code mit Azure Logic Apps-Erweiterung (Standard)](create-single-tenant-workflows-visual-studio-code.md#enable-built-in-connector-authoring)
 
 <a name="managed-identity"></a>
 
@@ -388,7 +390,7 @@ Weitere Informationen finden Sie in der folgenden Dokumentation:
 |||
 
 > [!NOTE] 
-> Standardmäßig wird die systemseitig zugewiesene verwaltete Identität einer Logik-App-Ressource (Vorschau) automatisch aktiviert, um Verbindungen zur Laufzeit zu authentifizieren. Diese Identität unterscheidet sich von den Anmeldeinformationen für die Authentifizierung oder der Verbindungszeichenfolge, die Sie verwenden, wenn Sie eine Verbindung herstellen. Wenn Sie diese Identität deaktivieren, funktionieren Verbindungen zur Laufzeit nicht. Wählen Sie zum Anzeigen dieser Einstellung im Menü Ihrer Logik-App unter **Einstellungen** die Option **Identität** aus.
+> Standardmäßig wird die systemseitig zugewiesene verwaltete Identität einer Logik-App-Ressource (Standard) automatisch aktiviert, um Verbindungen zur Laufzeit zu authentifizieren. Diese Identität unterscheidet sich von den Anmeldeinformationen für die Authentifizierung oder der Verbindungszeichenfolge, die Sie verwenden, wenn Sie eine Verbindung herstellen. Wenn Sie diese Identität deaktivieren, funktionieren Verbindungen zur Laufzeit nicht. Wählen Sie zum Anzeigen dieser Einstellung im Menü Ihrer Logik-App unter **Einstellungen** die Option **Identität** aus.
 
 <a name="integration-account-limits"></a>
 
@@ -471,11 +473,13 @@ In der folgenden Tabelle sind die Grenzwerte für die Nachrichtengröße aufgef�
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>Firewallkonfiguration: IP-Adressen und Diensttags
 
-Wenn Ihr Workflow durch eine Firewall kommunizieren muss, die den Datenverkehr auf bestimmte IP-Adressen beschränkt, muss diese Firewall den Zugriff *sowohl* für die [eingehenden](#inbound) als auch für die [ausgehenden](#outbound) IP-Adressen zulassen, die vom Logic Apps-Dienst oder der Laufzeit in der Azure-Region verwendet werden, in der Ihre Logic App-Ressource existiert. Für *alle* Logik-Apps in derselben Region werden dieselben IP-Adressbereiche verwendet.
+Wenn Ihre Umgebung strenge Netzwerkanforderungen oder Firewalls besitzt, die den Datenverkehr auf bestimmte IP-Adressen beschränken, muss Ihre Umgebung oder Firewall den Zugriff *sowohl* für die [eingehenden](#inbound) als auch für die [ausgehenden](#outbound) IP-Adressen zulassen, die vom Azure Logic Apps-Dienst oder der Runtime in der Azure-Region verwendet werden, in der Ihre Logic App-Ressource existiert. Für *alle* Logik-Apps in derselben Region werden dieselben IP-Adressbereiche verwendet.
 
-Um z. B. Aufrufe zu unterstützen, die Logik-Apps in der Region „USA, Westen“ über integrierte Trigger und Aktionen wie [den HTTP-Trigger oder die HTTP-Aktion](../connectors/connectors-native-http.md) senden bzw. empfangen, muss Ihre Firewall den Zugriff für *alle* eingehenden IP-Adressen des Logic Apps-Diensts *und* alle ausgehenden IP-Adressen, die in der Region „USA, Westen“ vorhanden sind, zulassen.
+Angenommen, Ihre Logik-Apps werden in der Region „USA, Westen“ bereitgestellt. Ihre Firewall muss den Zugriff für *alle* eingehenden IP-Adressen des Azure Logic Apps-Diensts *und* alle ausgehenden IP-Adressen, die in der Region „USA, Westen“ vorhanden sind, zulassen, damit alle Aufrufe unterstützt werden, die Ihre Logik-Apps über integrierte Trigger und Aktionen senden bzw. empfangen, wie etwa [HTTP-Trigger oder -Aktionen](../connectors/connectors-native-http.md).
 
-Falls für Ihr Worfklow auch [verwaltete Connectors](../connectors/managed.md) (Office 365 Outlook-Connector oder SQL-Connector) oder [benutzerdefinierte Connectors](/connectors/custom-connectors/) verwendet werden, muss in der Firewall in der Azure-Region Ihrer Logik-App zusätzlich der Zugriff für *alle* [ausgehenden IP-Adressen der verwalteten Connectors](#outbound) zulässig sein. Außerdem, wenn Sie benutzerdefinierte Connectors verwenden, die über die [lokale Datengatewayressource in Azure](logic-apps-gateway-connection.md) auf lokale Ressourcen zugreifen, müssen Sie die Gatewayinstallation so einrichten, dass der Zugriff auf die *[ausgehenden IP-Adressen](#outbound)* des entsprechenden verwalteten Connectors zugelassen wird.
+Falls für Ihr Worfklow auch [verwaltete Connectors](../connectors/managed.md) (Office 365 Outlook-Connector oder SQL-Connector) oder [benutzerdefinierte Connectors](/connectors/custom-connectors/) verwendet werden, muss in der Firewall in der Azure-Region Ihrer Logik-App zusätzlich der Zugriff für *alle* [ausgehenden IP-Adressen der verwalteten Connectors](#outbound) zulässig sein.
+
+Wenn Sie benutzerdefinierte Connectors verwenden, die über die [lokale Datengatewayressource in Azure](logic-apps-gateway-connection.md) auf lokale Ressourcen zugreifen, müssen Sie die Gatewayinstallation so einrichten, dass der Zugriff auf die *[ausgehenden IP-Adressen](#outbound)* des entsprechenden verwalteten Connectors zugelassen wird.
 
 Weitere Informationen zum Einrichten von Kommunikationseinstellungen auf dem Gateway finden Sie in den folgenden Themen:
 
@@ -492,7 +496,12 @@ Bevor Sie Ihre Firewall mit IP-Adressen einrichten, überprüfen Sie die folgend
 
 * Für [Azure China 21Vianet](/azure/china/) sind keine festen oder reservierten IP-Adressen für [benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md) und [verwaltete Connectors](../connectors/managed.md) (z. B. Azure Storage, SQL Server, Office 365 Outlook usw.) verfügbar.
 
-* Wenn Ihre Logik-Apps in einer [Integrationsdienstumgebung (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt werden, stellen Sie sicher, dass Sie [diese Ports ebenfalls öffnen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
+* Wenn Ihre Logik-App-Workflows in Azure Logic Apps mit Einzelmandanten ausgeführt werden, müssen Sie die vollqualifizierten Domänenname (FQDNs) für Ihre Verbindungen ermitteln. Weitere Informationen finden Sie in den entsprechenden Abschnitten in folgenden Artikeln:
+
+  * [Firewallberechtigungen für Logik-Apps für einzelinstanzenfähige Logik-Apps – Azure-Portal](create-single-tenant-workflows-azure-portal.md#firewall-setup)
+  * [Firewallberechtigungen für Logik-Apps für einzelinstanzenfähige Logik-Apps – Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md#firewall-setup)
+
+* Wenn Ihre Logik-App-Workflows in einer [Integrationsdienstumgebung (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt werden, stellen Sie sicher, dass Sie [diese Ports ebenfalls öffnen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
 
 * Um Sicherheitsregeln, die Sie erstellen möchten, zu vereinfachen, können Sie optional stattdessen [Diensttags](../virtual-network/service-tags-overview.md) verwenden, statt für jede Region IP-Adresspräfixe anzugeben. Diese Tags funktionieren in den Regionen, in denen der Logic Apps-Dienst verfügbar ist:
 
@@ -523,10 +532,10 @@ In diesem Abschnitt sind nur die IP-Adressen des Azure Logic Apps-Diensts für d
 
 <a name="multi-tenant-inbound"></a>
 
-#### <a name="multi-tenant-azure---inbound-ip-addresses"></a>Mehrinstanzenfähige Azure-Umgebung: IP-Adressen für die eingehende Richtung
+#### <a name="multi-tenant--single-tenant---inbound-ip-addresses"></a>Mehrinstanzenfähig und einzelmandantenfähig: Eingehende IP-Adressen
 
-| Mehrinstanzenfähige Region | IP |
-|---------------------|----|
+| Region | IP |
+|--------|----|
 | Australien (Osten) | 13.75.153.66, 104.210.89.222, 104.210.89.244, 52.187.231.161 |
 | Australien, Südosten | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
 | Brasilien Süd | 191.235.86.199, 191.235.95.229, 191.235.94.220, 191.234.166.198 |

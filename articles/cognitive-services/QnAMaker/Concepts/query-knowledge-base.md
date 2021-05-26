@@ -3,12 +3,12 @@ title: 'Abfragen der Wissensdatenbank: QnA Maker'
 description: Eine Wissensdatenbank muss veröffentlicht werden. Nach der Veröffentlichung wird die Wissensdatenbank mithilfe der generateAnswer-API am Vorhersageendpunkt der Runtime abgefragt.
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: c723d1446c90290929bc8cad066b4744e284f3f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d36e1feb0279eec638a3602c5188e8af1cb7c17
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008670"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369301"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Abfragen der Wissensdatenbank nach Antworten
 
@@ -39,7 +39,7 @@ Der Prozess wird in der folgenden Tabelle erläutert:
 
 Zu den verwendeten Funktionen gehören u. a. Semantik auf Wortebene, Wichtigkeit auf Begriffsebene in einem Korpus und Deep Learning-Semantikmodelle, um die Ähnlichkeit und Relevanz zwischen zwei Textzeichenfolgen zu ermitteln.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 Die trainierte und [veröffentlichte](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker-Wissensdatenbank empfängt eine Benutzerabfrage von einem Bot oder einer anderen Clientanwendung über die [GenerateAnswer-API](../how-to/metadata-generateanswer-usage.md). Im folgenden Diagramm ist der Prozess nach dem Empfang der Benutzerabfrage dargestellt.
 

@@ -2,13 +2,13 @@
 title: 'Schnellstart: Datenstreaming mit Azure Event Hubs mithilfe des Kafka-Protokolls'
 description: 'Schnellstart: Dieser Artikel enthält Informationen zum Streamen in Azure Event Hubs mit dem Kafka-Protokoll und APIs.'
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: 2020534a3984453bcd6eff7ad0f5c02d9e7a29ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: 601f9293c99ab68e10b39e33d036961900835db5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92368348"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379061"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Schnellstart: Datenstreaming mit Event Hubs mithilfe des Kafka-Protokolls
 In dieser Schnellstartanleitung erfahren Sie, wie Daten an Event Hubs gestreamt werden, ohne dass Sie Protokollclients ändern oder eigene Cluster betreiben müssen. Sie lernen, wie Sie über Ihre Producer und Consumer mit Event Hubs kommunizieren – mit nur einer Konfigurationsänderung in Ihren Anwendungen. 
@@ -28,10 +28,10 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Erstellen eines Event Hubs-Namespace
-Wenn Sie einen Event Hubs-Namespace im **Standard**-Tarif erstellen, wird der Kafka-Endpunkt für den Namespace automatisch aktiviert. Sie können Ereignisse von Ihren Anwendungen, die das Kafka-Protokoll verwenden, in Event Hubs im Standard-Tarif streamen. Befolgen Sie die Schritt-für-Schritt-Anleitung unter [Erstellen eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md), um einen Event Hubs-Namespace mit dem **Standard**-Tarif zu erstellen. 
+Wenn Sie einen Event Hubs-Namespace erstellen, wird der Kafka-Endpunkt für den Namespace automatisch aktiviert. Sie können Ereignisse von Ihren Anwendungen streamen, die das Kafka-Protokoll in Event Hubs verwenden. Befolgen Sie die Schritt-für-Schritt-Anleitung unter [Erstellen eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md), um einen Event Hubs-Namespace zu erstellen. Wenn Sie einen dedizierten Cluster verwenden, finden Sie weitere Informationen unter [Erstellen eines Namespace und eines Event Hubs in einem dedizierten Cluster](event-hubs-dedicated-cluster-create-portal.md#create-a-namespace-and-event-hub-within-a-cluster).
 
 > [!NOTE]
-> Event Hubs für Kafka ist nur für die Tarife **Standard** und **Dediziert** verfügbar. Für den Tarif **Basic** wird Kafka auf Event Hubs nicht unterstützt.
+> Event Hubs für Kafka wird im **Basic-Tarif** nicht unterstützt.
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Senden und Empfangen von Nachrichten mit Kafka in Event Hubs
 

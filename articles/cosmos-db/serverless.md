@@ -5,15 +5,15 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.openlocfilehash: 3ee8d5f36977a5a9f20c7e636118ffa9f6ee0b6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: 146a1dba3e13ac594e3b4d9edc358d46b0d54201
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570996"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378489"
 ---
-# <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB serverlos (Vorschau)
+# <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB serverlos
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Mit Azure Cosmos DB serverlos können Sie Ihr Azure Cosmos-Konto auf verbrauchsbasierte Weise verwenden. Dabei werden Ihnen nur die Anforderungseinheiten in Rechnung gestellt, die von den Datenbankvorgängen und dem von Ihren Daten genutzten Speicher beansprucht werden. Serverlose Container können Tausende von Anforderungen pro Sekunde ohne Mindestgebühren und ohne erforderliche Kapazitätsplanung verarbeiten.
@@ -45,9 +45,6 @@ Serverlos ist ein neuer Azure Cosmos-Kontotyp. Dies bedeutet, dass Sie zwischen 
 
 Jeder Container, der in einem serverlosen Konto erstellt wird, ist ein serverloser Container. Serverlose Container stellen dieselben Funktionen wie Container bereit, die im Modusfpr bereitgestellten Durchsatz erstellt wurden, sodass Sie Ihre Daten genau auf die gleiche Weise lesen, schreiben und abfragen. Serverlose Konten und Container haben jedoch auch bestimmte Merkmale:
 
-> [!IMPORTANT]
-> Einige dieser Einschränkungen können gelockert oder aufgehoben werden, wenn serverlos allgemein verfügbar wird, und **Ihr Feedback** wird uns bei der Entscheidung unterstützen! Nehmen Sie Kontakt mit uns auf, und erzählen Sie uns mehr über Ihre Erfahrungen mit serverlos: [azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com).
-
 - Ein serverloses Konto kann nur in einer einzelnen Azure-Region ausgeführt werden. Es ist nicht möglich, einem serverlosen Konto nach der Erstellung zusätzliche Azure-Regionen hinzuzufügen.
 - Es ist nicht möglich, die [Synapse Link-Vorschaufunktion](synapse-link.md) für ein serverloses Konto zu aktivieren.
 - Bereitstellung von Durchsatz ist für serverlose Container nicht erforderlich, daher gelten die folgenden Aussagen:
@@ -68,7 +65,7 @@ Sie finden dasselbe Diagramm, wenn Sie Azure Monitor verwenden, wie [hier](monit
 
 ## <a name="performance"></a><a id="performance"></a>Leistung
 
-Serverlose Ressourcen ergeben bestimmte Leistungsmerkmale, die sich von den Merkmalen von Ressourcen mit bereitgestelltem Durchsatz unterscheiden. Nachdem das serverlose Angebot allgemein verfügbar ist, wird die Latenz der serverlosen Container durch ein Servicelevelziel (SLO) von 10 Millisekunden oder weniger für Punktlesevorgänge und 30 Millisekunden oder weniger für Schreibvorgänge abgedeckt. Ein Punktlesevorgang besteht aus dem Abrufen eines einzelnen Elements anhand seiner ID und seines Partitionsschlüsselwerts.
+Serverlose Ressourcen ergeben bestimmte Leistungsmerkmale, die sich von den Merkmalen von Ressourcen mit bereitgestelltem Durchsatz unterscheiden. Die Latenz von serverlosen Containern wird durch ein Servicelevelziel (SLO) von 10 Millisekunden oder weniger für Punkt-Lesevorgänge und 30 Millisekunden oder weniger für Schreibvorgänge abgedeckt. Ein Punktlesevorgang besteht aus dem Abrufen eines einzelnen Elements anhand seiner ID und seines Partitionsschlüsselwerts.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
