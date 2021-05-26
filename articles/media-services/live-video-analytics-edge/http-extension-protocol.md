@@ -1,16 +1,18 @@
 ---
-title: HTTP-Erweiterungsprotokoll – Azure
-description: In diesem Artikel erfahren Sie mehr über die Verwendung des HTTP-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul.
+title: 'HTTP-Erweiterungsprotokoll in Live Video Analytics: Azure'
+description: In diesem Artikel erfahren Sie mehr über die Verwendung des HTTP-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Azure Live Video Analytics-Modul und Ihrem KI- oder CV-Modul.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 54b25894c60a39de9c0ec00cdc4982f691bf1ee3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3dbb329e1210ce27fa33f2b1e7ec8b0cf4f8b3e9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565740"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375474"
 ---
-# <a name="http-extension-protocol"></a>HTTP-Erweiterungsprotokoll
+# <a name="http-extension-protocol-in-live-video-analytics"></a>HTTP-Erweiterungsprotokoll in Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen [Grapherweiterungsknoten](./media-graph-extension-concept.md) erweitern. Wenn Sie den HTTP-Erweiterungsprozessor als Erweiterungsknoten verwenden, erfolgt die Kommunikation zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul über HTTP.
 

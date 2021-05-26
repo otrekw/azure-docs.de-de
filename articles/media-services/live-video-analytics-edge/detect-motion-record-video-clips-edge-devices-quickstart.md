@@ -1,18 +1,20 @@
 ---
-title: 'Erkennen von Bewegung und Aufzeichnen von Videos auf Edgegeräten: Azure'
-description: In diesem Schnellstart erfahren Sie, wie Sie Live Video Analytics in IoT Edge verwenden, um den Livevideofeed von einer (simulierten) IP-Kamera zu analysieren und zu erkennen, ob Bewegungen vorhanden sind, und in diesem Fall einen MP4-Videoclip im lokalen Dateisystem auf dem Edgegerät aufzuzeichnen.
+title: Erkennen von Bewegungen und Aufzeichnen von Videos auf Edgegeräten mit Live Video Analytics – Azure
+description: In diesem Schnellstart erfahren Sie, wie Sie Azure Live Video Analytics in IoT Edge verwenden, um den Livevideofeed von einer (simulierten) IP-Kamera zu analysieren und zu erkennen, ob Bewegungen vorhanden sind, und in diesem Fall einen MP4-Videoclip im lokalen Dateisystem auf dem Edgegerät aufzuzeichnen.
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: e4334cdd14242337a2a870f31886606020654685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d563aea803b92c10db1309365bb3ee3b29da57f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498352"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372009"
 ---
-# <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Schnellstart: Erkennen von Bewegung und Aufzeichnen von Videos auf Edgegeräten
+# <a name="quickstart-detect-motion-and-record-video-on-edge-devices-with-live-video-analytics"></a>Schnellstart: Erkennen von Bewegungen und Aufzeichnen von Videos auf Edgegeräten mit Live Video Analytics
  
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
+
 In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe von Live Video Analytics in IoT Edge den Livevideofeed einer (simulierten) IP-Kamera analysieren. Es wird veranschaulicht, wie Bewegung im Video erkannt wird, damit dann ein MP4-Videoclip im lokalen Dateisystem auf dem Edgegerät aufgezeichnet werden kann. Für die Schnellstartanleitung werden ein virtueller Azure-Computer als IoT Edge-Gerät und ein simulierter Livevideostream verwendet. 
 
 ::: zone pivot="programming-language-csharp"

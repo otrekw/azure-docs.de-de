@@ -1,17 +1,19 @@
 ---
-title: Analysieren von Livevideos mithilfe der KI-Erweiterung für OpenVINO™ Model Server von Intel
+title: Analysieren von Livevideos mithilfe von Live Video Analytics und der KI-Erweiterung für OpenVINO™ Model Server von Intel
 description: In diesem Tutorial wird ein von Intel bereitgestellter KI-Modellserver verwendet, um den Livevideofeed einer (simulierten) IP-Kamera zu analysieren.
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 5751184493fffeeaf647507e9e9b00834f63ab5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f6445a5bfffe6d359de66e8eda8b9ec82ea56dc0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557257"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368419"
 ---
-# <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Tutorial: Analysieren von Livevideos mithilfe der KI-Erweiterung für OpenVINO™ Model Server von Intel 
+# <a name="tutorial-analyze-live-video-by-using-live-video-analytics-with-openvino-model-server--ai-extension-from-intel"></a>Tutorial: Analysieren von Livevideos mithilfe von Live Video Analytics und der KI-Erweiterung für OpenVINO™ Model Server von Intel 
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie die KI-Erweiterung für OpenVINO™ Model Server von Intel verwenden, um einen Livevideofeed einer (simulierten) IP-Kamera zu analysieren. Es wird gezeigt, wie Sie über diesen Rückschlussserver auf Modelle für die Objekterkennung (Person, Fahrzeug oder Fahrrad) sowie auf ein Modell für die Klassifizierung von Fahrzeugen zugreifen. Eine Teilmenge der Frames aus dem Livevideofeed wird an diesen Rückschlussserver gesendet, und die Ergebnisse werden an den IoT Edge-Hub übermittelt.
 

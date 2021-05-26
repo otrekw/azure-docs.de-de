@@ -1,17 +1,19 @@
 ---
-title: 'Erkennen von Bewegung und Ausgeben von Ereignissen: Azure'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Live Video Analytics in IoT Edge verwenden, um durch das programmgesteuerte Aufrufen direkter Methoden Bewegung zu erkennen und Ereignisse auszugeben.
+title: Erkennen von Bewegung und Ausgeben von Ereignissen mit Azure Live Video Analytics
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Live Video Analytics in IoT Edge verwenden, um durch das programmgesteuerte Aufrufen direkter Methoden Bewegung zu erkennen und Ereignisse auszugeben.
 ms.topic: quickstart
 ms.date: 08/10/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 09a17712287c73fa165b4bec77682831a51edfa3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1119d6ab2295138b7c13ca19e36a48417e72b6cb
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98060571"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379592"
 ---
-# <a name="quickstart-detect-motion-and-emit-events"></a>Schnellstart: Erkennen von Bewegung und Ausgeben von Ereignissen
+# <a name="quickstart-detect-motion-and-emit-events-with-live-video-analytics"></a>Schnellstart: Erkennen von Bewegung und Ausgeben von Ereignissen mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In dieser Schnellstartanleitung werden die ersten Schritte mit Live Video Analytics in IoT Edge erläutert. Dabei werden ein virtueller Azure-Computer als IoT Edge-Gerät und ein simulierter Livevideostream verwendet. Nach dem Ausführen der Setupschritte können Sie einen simulierten Livevideostream über einen Mediengraphen ausführen, der Bewegungen im Stream erkennt und meldet. Das folgende Diagramm enthält eine grafische Darstellung dieses Mediengraphen.
 

@@ -1,16 +1,18 @@
 ---
-title: 'Schema für Rückschlussmetadaten: Azure'
-description: Dieser Artikel enthält Informationen zum Schema für Rückschlussmetadaten.
+title: Schema für Rückschlussmetadaten in Live Video Analytics – Azure
+description: Dieser Artikel enthält Informationen zum Schema für Rückschlussmetadaten in Live Video Analytics.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c79071609c291b6d09fe9c83d90d2cac137241b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92019493"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376985"
 ---
-# <a name="inference-metadata-schema"></a>Schema für Rückschlussmetadaten 
+# <a name="inference-metadata-schema-in-live-video-analytics"></a>Schema für Rückschlussmetadaten in Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Jedes Rückschlussobjekt basiert auf dem in diesem Thema beschriebenen Objektmodell. Das gilt sowohl bei Verwendung eines HTTP-basierten Vertrags als auch bei Verwendung eines gRPC-basierten Vertrags.
 
@@ -20,14 +22,14 @@ Jedes Rückschlussobjekt basiert auf dem in diesem Thema beschriebenen Objektmod
  
 |Typendefinition|Beschreibung|
 |---|---|
-|Tag|Tag oder Beschriftung, das bzw. die dem Ergebnis zugeordnet ist. Neben dem Tagging erhalten Sie auch den mit dem Tag verknüpften Zuverlässigkeitswert.|
+|Tag|Tag oder Etikett, das dem Ergebnis zugeordnet ist. Zusammen mit der Kennzeichnung erhalten Sie sogar den mit der Kennzeichnung verbundenen Vertrauenswert.|
 |attribute|Zusätzliche Attribute, die dem Ergebnis zugeordnet sind. Sie können neue Attribute hinzufügen, die Sie von der Rückschlussengine zusammen mit dem Zuverlässigkeitswert erhalten.|
 |Attributliste|Liste optionaler Attribute.|
-|Rechteck|Rechteckiger Bereich relativ zur linken oberen Ecke des Bilds. Zu den erforderlichen Eigenschaften zählen Länge, Breite, Höhe und Abstand von der Oberkante des Originals.|
+|Rechteck|Rechteckiger Bereich relativ zum linken oberen Winkel der Abbildung. Zu den erforderlichen Eigenschaften zählen Länge, Breite, Höhe und Abstand von der Oberkante des Originals.|
 |Klassifizierung|Klassifizierungsbeschriftung, die häufig für die gesamte Stichprobe gilt. Mithilfe von „tag“ können Sie das Ergebnis klassifizieren.|
-|Entität|In der Stichprobe erkannte oder identifizierte Entität. Wenn eine Entität von der Rückschlussengine erkannt wird, erhält sie ein Tag. Außerdem werden zusätzliche Attribute, die abgeleitet wurden, sowie die Koordinaten eines rechteckigen Felds um die gefundene Entität zurückgegeben.|
-|Ereignis|In der Stichprobe erkanntes Ereignis. Wenn in der Stichprobe ein Ereignis erkannt wird, werden der Name des Ereignisses und die ereignisspezifischen Eigenschaften zurückgegeben.|
-|Bewegung|In der Stichprobe erkannte Bewegung. Wenn in der Stichprobe eine Bewegung erkannt wird, werden die Koordinaten eines umgebenden Rechtecks für die Position zurückgegeben, an der die Bewegung erkannt wurde.|
+|Entität|In der Stichprobe erkannte oder identifizierte Entität. Wenn eine Entität von der Inferenz-Maschine erkannt wird, erhält sie einen Tag. Zudem werden zusätzliche Attribute, die abgeleitet wurden, sowie die Koordinaten eines rechteckigen Felds um die gefundene Entität zurückgegeben.|
+|Ereignis|In der Stichprobe erkanntes Ereignis. Wenn in der Stichprobe ein Ereignis erkannt wird, werden der Name des Ereignisses und die Ereignis-spezifischen Eigenschaften zurückgegeben.|
+|Bewegung|In der Stichprobe erkannte Bewegung. Wenn eine Bewegung in der Probe erkannt wird, werden die Koordinaten eines rechteckigen Begrenzungsrahmens (Bounding Box) zurückgegeben, in dem die Bewegung erkannt wurde.|
 |Text|Mit der Stichprobe verknüpfter Text sowie die Zeitstempel für Textbeginn und Textende werden zurückgegeben.|
 |Sonstiges|Gibt weitere generische Nutzlastinformationen zurück.|
 

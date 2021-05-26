@@ -1,16 +1,18 @@
 ---
-title: 'Videoaufzeichnung: Azure'
-description: Im Kontext eines Videoverwaltungssystems für CCTV-Kameras bezieht sich Videoaufzeichnung auf den Vorgang des Erfassens von Videosignalen von den Kameras und ihre Aufzeichnung für die Wiedergabe über mobile und Browser-Apps. Die Videoaufzeichnung kann in die Kategorien fortlaufende Videoaufzeichnung und ereignisbasierte Videoaufzeichnung unterteilt werden.
+title: 'Videoaufzeichnung mit Live Video Analytics: Azure'
+description: Im Kontext eines Videoverwaltungssystems für CCTV-Kameras bezieht sich Videoaufzeichnung auf den Vorgang des Erfassens von Videosignalen von den Kameras und ihre Aufzeichnung für die Wiedergabe über mobile und Browser-Apps. Die Videoaufzeichnung kann in die Kategorien fortlaufende Videoaufzeichnung und ereignisbasierte Videoaufzeichnung unterteilt werden. In diesem Artikel wird die Videoaufzeichnung erläutert.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c03472f577e67d5b2705a2ebe3f53e85e0849819
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fea0d2daaa4724cf4d354c8ab16b6b6ba3e76bf5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84260193"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368368"
 ---
-# <a name="video-recording"></a>Videoaufzeichnung
+# <a name="video-recording-with-live-video-analytics"></a>Videoaufzeichnung mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Im Kontext eines Videoverwaltungssystems für CCTV-Kameras bezieht sich Videoaufzeichnung auf den Vorgang des Erfassens von Videosignalen von den Kameras und ihre Aufzeichnung für die Wiedergabe über mobile und Browser-Apps. Die Videoaufzeichnung kann in die Kategorien fortlaufende Videoaufzeichnung und ereignisbasierte Videoaufzeichnung unterteilt werden. 
 

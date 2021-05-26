@@ -1,16 +1,18 @@
 ---
-title: 'Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät: Azure'
-description: In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen und/oder zuvor ein Azure Media Services-Konto erstellt haben.
+title: Bereitstellen von Azure Live Video Analytics auf einem IoT Edge-Gerät
+description: In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Azure Live Video Analytics auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen und/oder zuvor ein Azure Media Services-Konto erstellt haben.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 466cc236c1482b2ae6a31b40b6f3461a2c2fbfc1
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 75b91855ff8e46a45fac96e90be08a272ef52dfb
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280291"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367456"
 ---
-# <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät
+# <a name="deploy-azure-live-video-analytics-on-an-iot-edge-device"></a>Bereitstellen von Azure Live Video Analytics auf einem IoT Edge-Gerät
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen und/oder zuvor ein Azure Media Services-Konto erstellt haben.
 

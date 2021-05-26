@@ -1,16 +1,18 @@
 ---
-title: 'Fortlaufende Videoaufzeichnung: Azure'
-description: Fortlaufende Videoaufzeichnung (Continuous Video Recording, CVR) bezeichnet die kontinuierliche Erfassung von Videodaten von einer Videoquelle. In diesem Thema wird erläutert, was CVR bedeutet.
+title: Fortlaufende Videoaufzeichnung mit Live Video Analytics – Azure
+description: Fortlaufende Videoaufzeichnung (Continuous Video Recording, CVR) bezeichnet die kontinuierliche Erfassung von Videodaten von einer Videoquelle mit Live Video Analytics. In diesem Thema wird erläutert, was CVR bedeutet.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: f8b25d74db279f8cfff68f08efeab2975484a0c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28fbe234984e3d75ef854bb8a001e5979d2bb97c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453749"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367674"
 ---
-# <a name="continuous-video-recording"></a>Fortlaufende Videoaufzeichnung  
+# <a name="continuous-video-recording-with-live-video-analytics"></a>Fortlaufende Videoaufzeichnung mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="suggested-pre-reading"></a>Empfohlene Lektüre zur Vorbereitung  
 

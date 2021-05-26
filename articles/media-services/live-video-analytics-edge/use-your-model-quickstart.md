@@ -1,17 +1,19 @@
 ---
-title: 'Analysieren von Livevideos mithilfe eines eigenen HTTP-Modells: Azure'
-description: In diesem Schnellstart wenden Sie maschinelles Sehen an, um den Livevideofeed von einer (simulierten) IP-Kamera mithilfe Ihres eigenen HTTP-Modells zu analysieren.
+title: 'Analysieren von Livevideos mit einem eigenen HTTP-Modell: Azure'
+description: In dieser Schnellstartanleitung wenden Sie maschinelles Sehen an, um den Livevideofeed von einer (simulierten) IP-Kamera mithilfe Ihres eigenen HTTP-Modells zu analysieren.
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: d3ba937abcc7bbfd9bb2afe7b15aec28ebb57446
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 685deddb9a55d024081acd0b7d4ff639d1eecd43
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99508510"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368542"
 ---
-# <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>Schnellstart: Analysieren von Livevideos mithilfe eines eigenen HTTP-Modells
+# <a name="quickstart-analyze-live-video-with-your-own-http-model"></a>Schnellstart: Analysieren von Livevideos mit einem eigenen HTTP-Modell
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe von Live Video Analytics in IoT Edge einen Livevideofeed einer (simulierten) IP-Kamera analysieren. Sie erfahren, wie Sie ein Modell für maschinelles Sehen anwenden, um Objekte zu erkennen. Eine Teilmenge der Einzelbilder des Livevideofeeds wird an einen Rückschlussdienst gesendet. Die Ergebnisse werden an IoT Edge Hub gesendet. 
 

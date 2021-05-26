@@ -1,16 +1,18 @@
 ---
-title: 'Wiedergeben von mehrtägigen Aufzeichnungen: Azure'
+title: 'Wiedergabe von mehrtägigen Aufzeichnungen mit Live Video Analytics: Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Media Service-APIs verwenden, um eine mehrtägige fortlaufende Videoaufzeichnung wiederzugeben.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 81a778b40649c1318b3738a289f0db37fd35376a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7c224b6267dd7eac4df669a7ccbd6f59abeb8ef
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492788"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372132"
 ---
-# <a name="tutorial-playback-of-multi-day-recordings"></a>Tutorial: Wiedergeben von mehrtägigen Aufzeichnungen  
+# <a name="tutorial-playback-of-multi-day-recordings-with-live-video-analytics"></a>Tutorial: Wiedergabe von mehrtägigen Aufzeichnungen mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Dieses Tutorial baut auf dem Tutorial zur [fortlaufenden Videoaufzeichnung](continuous-video-recording-concept.md) (Continuous Video Recording, CVR) auf. In diesem Tutorial erfahren Sie, wie Sie Azure Media Service-APIs verwenden, um eine mehrtägige fortlaufende Videoaufzeichnung aus der Cloud wiederzugeben. 
 

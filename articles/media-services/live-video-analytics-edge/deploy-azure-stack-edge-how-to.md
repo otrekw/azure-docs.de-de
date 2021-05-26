@@ -1,16 +1,18 @@
 ---
-title: Bereitstellen von Live Video Analytics in Azure Stack Edge
-description: In diesem Artikel werden die Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics in Azure Stack Edge unterstützen.
+title: Bereitstellen von Azure Live Video Analytics in Azure Stack Edge
+description: In diesem Artikel werden die Schritte aufgelistet, die Sie bei der Bereitstellung von Azure Live Video Analytics in Azure Stack Edge unterstützen.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 3f751a69bf4d5efca80047479917b5f40e14fe3f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 186b6d95572c6d3772d7271cde1fedccb7d47528
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144725"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378957"
 ---
-# <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Bereitstellen von Live Video Analytics in Azure Stack Edge
+# <a name="deploy-azure-live-video-analytics-on-azure-stack-edge"></a>Bereitstellen von Azure Live Video Analytics in Azure Stack Edge
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In diesem Artikel werden die Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics in Azure Stack Edge unterstützen. Nachdem das Gerät eingerichtet und aktiviert wurde, ist es für die Bereitstellung von Live Video Analytics bereit. 
 

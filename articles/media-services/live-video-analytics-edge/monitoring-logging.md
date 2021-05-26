@@ -1,16 +1,18 @@
 ---
-title: 'Überwachung und Protokollierung: Azure'
-description: Dieser Artikel bietet eine Übersicht der Überwachung und Protokollierung in Live Video Analytics in IoT Edge.
+title: 'Überwachung und Protokollierung in Live Video Analytics: Azure'
+description: Dieser Artikel bietet eine Übersicht über die Überwachung und Protokollierung in Azure Live Video Analytics in IoT Edge.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 08b2f5cce80581d71ce73e97ab30900aa8957c77
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4bc69192d0d36d01755d625ee46cd77cd9eec1b9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564481"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372137"
 ---
-# <a name="monitoring-and-logging"></a>Überwachung und Protokollierung
+# <a name="monitoring-and-logging-in-live-video-analytics-on-iot-edge"></a>Überwachung und Protokollierung in Live Video Analytics in IoT Edge
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Ereignisse vom Modul Live Video Analytics in IoT Edge für die Remoteüberwachung empfangen können. 
 

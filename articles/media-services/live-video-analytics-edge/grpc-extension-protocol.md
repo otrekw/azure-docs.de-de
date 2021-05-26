@@ -1,16 +1,18 @@
 ---
-title: gRPC-Erweiterungsprotokoll – Azure
-description: Dieser Artikel enthält Informationen zur Verwendung des gRPC-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrer benutzerdefinierten KI- oder CV-Erweiterung.
+title: 'gRPC-Erweiterungsprotokoll in Live Video Analytics: Azure'
+description: Dieser Artikel enthält Informationen zur Verwendung des gRPC-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Azure Live Video Analytics-Modul und Ihrer benutzerdefinierten KI- oder CV-Erweiterung.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 8d153b472e54b221b60a2b584043ffaf68e8ff82
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1bbcee9a964e95b8a32d7229ae7045e012a5a6e5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565808"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379921"
 ---
-# <a name="grpc-extension-protocol"></a>gRPC-Erweiterungsprotokoll
+# <a name="grpc-extension-protocol-in-live-video-analytics"></a>gRPC-Erweiterungsprotokoll in Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen [Grapherweiterungsknoten](./media-graph-extension-concept.md) erweitern. Wenn Sie den gRPC-Erweiterungsprozessor als Erweiterungsknoten verwenden, erfolgt die Kommunikation zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul über ein gRPC-basiertes, sehr leistungsfähiges strukturiertes Protokoll.
 

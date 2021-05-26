@@ -1,16 +1,18 @@
 ---
-title: Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse – Azure
-description: In diesem Tutorial wird gezeigt, wie Sie Live Video Analytics zusammen mit dem KI-Feature Maschinelles Sehen für die räumliche Analyse aus Azure Cognitive Services verwenden, um einen Livevideofeed von einer (simulierten) IP-Kamera zu analysieren.
+title: 'Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse mit Live Video Analytics: Azure'
+description: In diesem Tutorial wird gezeigt, wie Sie Live Video Analytics zusammen mit dem KI-Feature „Maschinelles Sehen“ für die räumliche Analyse aus Azure Cognitive Services verwenden, um einen Livevideofeed von einer (simulierten) IP-Kamera zu analysieren.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 1c3fd411e60cabb504f01bece62d497ddeea31d8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 549c1405e7deb3531da65ff4425befa2d29aaeef
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561014"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373561"
 ---
-# <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse (Vorschau)
+# <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-and-live-video-analytics-preview"></a>Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse und Live Video Analytics (Vorschau)
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In diesem Tutorial wird gezeigt, wie Sie Live Video Analytics zusammen mit dem [KI-Dienst Maschinelles Sehen für die räumliche Analyse aus Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/computer-vision/) verwenden, um einen Livevideofeed von einer (simulierten) IP-Kamera zu analysieren. Es wird gezeigt, wie Sie mit diesem Rückschlussserver das Streamingvideo analysieren können, um räumliche Beziehungen zwischen Personen und Bewegung im physischen Raum zu ermitteln.  Eine Teilmenge der Frames im Videofeed wird an den Rückschlussserver gesendet, und die Ergebnisse werden an IoT Edge Hub gesendet. Wenn bestimmte Bedingungen erfüllt sind, werden Videoclips aufgezeichnet und als Azure Media Services-Medienobjekte gespeichert.
 

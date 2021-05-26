@@ -1,17 +1,19 @@
 ---
-title: Analysieren von Livevideo mit Live Video Analytics in IoT Edge and Azure Custom Vision
-description: Erfahren Sie, wie Sie mit Azure Custom Vision ein Containermodell erstellen können, mit dem ein Spielzeug-LKW erkannt wird. Stellen Sie mithilfe der KI-Erweiterbarkeitsfunktion von Azure Live Video Analytics in Azure IoT Edge das Modell auf Edge-Ebene bereit, um in einem Livevideostream Spielzeug-LKW zu erkennen.
+title: Analysieren von Livevideo mit Azure Live Video Analytics in IoT Edge and Azure Custom Vision
+description: Erfahren Sie, wie Sie mit Azure Custom Vision ein Containermodell erstellen können, mit dem ein Spielzeug-LKW erkannt wird. Stellen Sie mithilfe der KI-Erweiterbarkeitsfunktion von Live Video Analytics in Azure IoT Edge das Modell auf Edge-Ebene bereit, um in einem Livevideostream Spielzeug-LKW zu erkennen.
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 1abf123883a89bb41909e8aa67aedfadffc3d37e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d9718a8c7cf6f93af32a3bd33bcf1e8c75c6aa8
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561201"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378264"
 ---
-# <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Tutorial: Analysieren von Livevideo mit Live Video Analytics in IoT Edge and Azure Custom Vision
+# <a name="tutorial-analyze-live-video-with-azure-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Tutorial: Analysieren von Livevideo mit Azure Live Video Analytics in IoT Edge and Azure Custom Vision
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie mit [Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) ein Containermodell erstellen, mit dem ein Spielzeug-LKW erkannt wird, und mithilfe der [KI-Erweiterbarkeitsfunktion](analyze-live-video-concept.md#analyzing-video-using-a-custom-vision-model) von Azure Live Video Analytics in Azure IoT Edge das Modell auf Edge-Ebene bereitstellen, um in einem Livevideostream Spielzeug-LKW zu erkennen.
 

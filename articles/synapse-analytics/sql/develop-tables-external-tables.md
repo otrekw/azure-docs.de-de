@@ -9,32 +9,36 @@ ms.subservice: sql
 ms.date: 04/26/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a02938d2c294d80b2c3f4a98aea905a4d431199
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 41825ceed38203c88ddfc28eca9a738663b9d7e6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070189"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378664"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Verwenden externer Tabellen mit Synapse SQL
 
 Eine externe Tabelle verweist auf Daten in Hadoop, Azure Storage Blob oder Azure Data Lake Store. Externe Tabellen werden verwendet, um Daten aus Dateien zu lesen oder Daten in Dateien in Azure Storage zu schreiben. Mit Synapse SQL können Sie externe Tabellen verwenden, um externe Daten unter Verwendung eines dedizierten oder serverlosen SQL-Pools zu lesen.
 
 Je nach Art der externen Datenquelle können zwei Arten von externen Tabellen verwendet werden:
-- Externe Hadoop-Tabellen zum Lesen und Exportieren von Daten in verschiedenen Datenformaten wie CSV, Parquet und ORC. Externe Hadoop-Tabellen sind in dedizierten Synapse SQL-Pools, aber nicht in serverlosen SQL-Pools verfügbar.
-- Native externe Tabellen zum Lesen und Exportieren von Daten in verschiedenen Datenformaten wie CSV und Parquet. Native externe Tabellen sind in serverlosen Synapse SQL-Pools, aber nicht in dedizierten Synapse SQL-Pools verfügbar.
+- Externe Hadoop-Tabellen zum Lesen und Exportieren von Daten in verschiedenen Datenformaten wie CSV, Parquet und ORC. Die in dedizierten Synapse SQL-Pools verfügbaren externen Hadoop-Tabellen sind in serverlosen SQL-Pools nicht verfügbar.
+- Native externe Tabellen zum Lesen und Exportieren von Daten in verschiedenen Datenformaten wie CSV und Parquet. Native externe Tabellen sind in serverlosen Synapse SQL-Pools verfügbar und befinden sich in dedizierten Synapse SQL-Pools in der Vorschauphase.
 
 In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen externen Hadoop-Tabellen und nativen externen Tabellen aufgeführt:
 
 | Art der externen Tabelle | Hadoop | Systemeigenes Format |
 | --- | --- | --- |
-| Dedizierter SQL-Pool | Verfügbar | Nicht verfügbar |
+| Dedizierter SQL-Pool | Verfügbar | Parquet-Tabellen sind in der **geschlossenen Vorschau** verfügbar. Wenden Sie sich an Ihren Microsoft Technical Account Manager oder Cloud Solution Architect, um zu überprüfen, ob Ihr dedizierter Pool der Vorschauversion beitreten kann. |
 | Serverloser SQL-Pool | Nicht verfügbar | Verfügbar |
-| Unterstützte Formate | Trennzeichen/CSV, Parquet, ORC, Hive RC und RC | Trennzeichen/CSV und Parquet |
-| Ordnerpartitionsentfernung | Nein | Nur für die partitionierten Tabellen, die aus Apache Spark-Pools im Synapse-Arbeitsbereich synchronisiert werden |
-| Benutzerdefiniertes Format für Speicherort | Nein | Ja, mit Platzhaltern wie `/year=*/month=*/day=*` |
-| Rekursive Ordnerüberprüfung | Immer | Nur bei Angabe von `/**` im Speicherortpfad |
+| Unterstützte Formate | Trennzeichen/CSV, Parquet, ORC, Hive RC und RC | Serverloser Pool: Trennzeichen/CSV, Parquet und Delta Lake (Vorschau)<br/>Dedizierter Pool: Parquet |
+| Ordnerpartitionsentfernung | Nein | Nur für partitionierte Tabellen, die aus Apache Spark-Pools im Synapse-Arbeitsbereich in serverlose SQL-Pools synchronisiert werden |
+| Benutzerdefiniertes Format für Speicherort | Yes | Ja, mit Platzhaltern wie `/year=*/month=*/day=*` |
+| Rekursive Ordnerüberprüfung | No | Nur in serverlosen SQL-Pools, wenn `/**` am Ende des Pfads zum Speicherort angegeben wurde |
+| Pushdown für Speicherfilter | No | Ja im serverlosen SQL-Pool. Für den Zeichenfolgen-Pushdown muss die Sortierung `Latin1_General_100_BIN2_UTF8` für die `VARCHAR`-Spalten verwendet werden. |
 | Speicherauthentifizierung | Speicherzugriffsschlüssel (Storage Access Key, SAK), AAD-Passthrough, verwaltete Identität, benutzerdefinierte Azure AD-Anwendungsidentität | Shared Access Signature (SAS), AAD-Passthrough, verwaltete Identität |
+
+> [!NOTE]
+> Native externe Tabellen im Delta Lake-Format befinden sich in der öffentlichen Vorschauphase. [CETAS](develop-tables-cetas.md) bietet keine Unterstützung für den Export von Inhalten in das Delta Lake-Format.
 
 ## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>Externe Tabellen im dedizierten SQL-Pool und serverlosen SQL-Pool
 
@@ -51,14 +55,14 @@ Externe Tabellen können für Folgendes verwendet werden:
 
 Externe Tabellen können mithilfe der folgenden Schritte in Synapse SQL-Pools erstellt werden:
 
-1. CREATE EXTERNAL DATA SOURCE
-2. CREATE EXTERNAL FILE FORMAT
-3. CREATE EXTERNAL TABLE
+1. Verwenden Sie [CREATE EXTERNAL DATA SOURCE](#create-external-data-source), um auf einen externen Azure-Speicher zu verweisen, und geben Sie die Anmeldeinformationen für den Zugriff auf den Speicher an.
+2. Beschreiben Sie das Format von CSV- oder Parquet-Dateien mithilfe von [CREATE EXTERNAL FILE FORMAT](#create-external-file-format).
+3. Verwenden Sie [CREATE EXTERNAL TABLE](#create-external-table) für die Dateien in der Datenquelle mit demselben Dateiformat.
 
 ### <a name="security"></a>Sicherheit
 
 Der Benutzer muss über die Berechtigung `SELECT` für eine externe Tabelle verfügen, um die Daten lesen zu können.
-Externer Tabellenzugriff auf den zugrunde liegenden Azure-Speicher mithilfe der datenbankweit gültigen Anmeldeinformationen, die in der Datenquelle mit den folgenden Regeln definiert wurden:
+Externe Tabellen greifen auf den zugrunde liegenden Azure-Speicher mithilfe der datenbankweit gültigen Anmeldeinformationen zu, die in der Datenquelle mit den folgenden Regeln definiert wurden:
 - Eine Datenquelle ohne Anmeldeinformationen ermöglicht externen Tabellen den Zugriff auf öffentlich verfügbare Dateien im Azure-Speicher.
 - Eine Datenquelle kann über Anmeldeinformationen verfügen, die externen Tabellen den Zugriff nur auf die Dateien im Azure-Speicher mithilfe des SAS-Tokens oder der verwalteten Identität für den Arbeitsbereich ermöglichen. Entsprechende Beispiele finden Sie im Artikel [Develop storage files storage access control](develop-storage-files-storage-access-control.md#examples) (Entwickeln der Speicherzugriffssteuerung für Speicherdateien).
 
@@ -84,7 +88,7 @@ WITH
 
 #### <a name="native"></a>[Systemeigenes Format](#tab/native)
 
-Externe Datenquellen ohne `TYPE=HADOOP` sind nur in serverlosen SQL-Pools verfügbar.
+Externe Datenquellen ohne `TYPE=HADOOP` sind in serverlosen SQL-Pools allgemein verfügbar und befinden sich in dedizierten Pools in der öffentlichen Vorschauphase.
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -99,7 +103,7 @@ WITH
 
 ### <a name="arguments-for-create-external-data-source"></a>Argumente für „CREATE EXTERNAL DATA SOURCE“
 
-data_source_name
+#### <a name="data_source_name"></a>data_source_name
 
 Gibt den benutzerdefinierten Namen für die Datenquelle an. Dieser Name muss innerhalb der Datenbank eindeutig sein.
 
@@ -154,7 +158,7 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 #### <a name="native"></a>[Systemeigenes Format](#tab/native)
 
-Im folgenden Beispiel wird eine externe Datenquelle im serverlosen SQL-Pool für Azure Data Lake Gen2 erstellt, auf die mithilfe von SAS-Anmeldeinformationen zugegriffen werden kann:
+Im folgenden Beispiel wird eine externe Datenquelle im serverlosen oder dedizierten SQL-Pool für Azure Data Lake Gen2 erstellt, auf die mithilfe von SAS-Anmeldeinformationen zugegriffen werden kann:
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [sqlondemand]
@@ -322,7 +326,7 @@ Dient zum Angeben des Ordners oder des Dateipfads und Dateinamens für die tats�
 
 ![Rekursive Daten für externe Tabellen](./media/develop-tables-external-tables/folder-traversal.png)
 
-Im Gegensatz zu externen Hadoop-Tabellen geben native externe Tabellen keine Unterordner zurück, es sei denn, Sie geben „/**“ am Ende des Pfads an. In diesem Beispiel werden von einer Abfrage des serverlosen SQL-Pools Zeilen aus „mydata.txt“ zurückgegeben, wenn „LOCATION='/webdata/'“ angegeben wird. „mydata2.txt“ und „mydata3.txt“ werden nicht zurückgegeben, da sie sich in einem Unterordner befinden. Von Hadoop-Tabellen werden alle Dateien in einem beliebigen Unterordner zurückgegeben.
+Im Gegensatz zu externen Hadoop-Tabellen geben native externe Tabellen keine Unterordner zurück, es sei denn, Sie geben „/**“ am Ende des Pfads an. In diesem Beispiel werden von einer Abfrage des serverlosen SQL-Pools Zeilen aus „mydata.txt“ zurückgegeben, wenn „LOCATION='/webdata/'“ angegeben wird. „mydata2.txt“ und „mydata3.txt“ werden nicht zurückgegeben, da sie sich in einem Unterordner befinden. Hadoop-Tabellen geben alle Dateien in einem beliebigen Unterordner zurück.
  
 Dateien, deren Name mit einem Unterstrich (_) oder Punkt (.) beginnt, werden sowohl bei externen Hadoop-Tabellen als auch bei nativen externen Tabellen übersprungen.
 
@@ -366,7 +370,7 @@ Mithilfe der Data Lake-Erkundungsfunktionen von Synapse Studio können Sie nun 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Für den Zugriff auf den Arbeitsbereich müssen Sie mindestens über die Zugriffsrolle `Storage Blob Data Contributor` für das ADLS Gen2-Konto verfügen.
+- Für den Zugriff auf den Arbeitsbereich müssen Sie mindestens über die Zugriffsrolle `Storage Blob Data Contributor` für das ADLS Gen2-Konto verfügen. Alternativ werden Zugriffssteuerungslisten benötigt, mit denen Sie die Dateien abfragen können.
 
 - Sie müssen mindestens über [Berechtigungen zum Erstellen](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#permissions-2&preserve-view=true) und Abfragen externer Tabellen im Synapse SQL-Pool (dediziert oder serverlos) verfügen.
 

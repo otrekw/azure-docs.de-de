@@ -1,16 +1,18 @@
 ---
-title: 'Bereitstellen für IoT Edge für Linux unter Windows: Azure'
-description: Dieser Artikel enthält eine Anleitung für die Bereitstellung für IoT Edge für Linux auf einem Windows-Gerät.
+title: Bereitstellen in einem IoT Edge für Linux unter Windows mit Live Video Analytics – Azure
+description: Dieser Artikel enthält eine Anleitung für die Bereitstellung für IoT Edge für Linux auf einem Windows-Gerät mit Live Video Analytics.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: d5c3d89ae7447b062714ad90be117a6426a39581
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c504ecf2bb7405ee49d6e9ee94f069336924f5c0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561082"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378093"
 ---
-# <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Bereitstellen für IoT Edge für Linux auf einem Windows-Gerät (EFLOW)
+# <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device-with-live-video-analytics"></a>Bereitstellen in einem EFLOW-Gerät (IoT Edge für Linux unter Windows) mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In diesem Artikel wird beschrieben, wie Sie Live Video Analytics auf einem Edgegerät bereitstellen, das über [IoT Edge für Linux unter Windows (EFLOW)](../../iot-edge/iot-edge-for-linux-on-windows.md) verfügt. Nachdem Sie die Schritte in diesem Dokument befolgt haben, können Sie einen [Mediengraphen](media-graph-concept.md) ausführen, mit dem Bewegung in einem Video erkannt wird und die entsprechenden Ereignisse an den IoT-Hub in der Cloud ausgegeben werden. Anschließend können Sie den Mediengraphen für erweiterte Szenarien einsetzen und die Leistungsstärke von Live Video Analytics für Ihr Windows-basiertes IoT Edge-Gerät nutzen.
 

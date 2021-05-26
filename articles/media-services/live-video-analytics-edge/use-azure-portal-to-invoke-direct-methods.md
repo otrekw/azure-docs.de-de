@@ -1,6 +1,6 @@
 ---
-title: Verwenden des Azure-Portals zum Aufrufen direkter Methoden
-description: Dieser Artikel bietet eine Übersicht über die Verwendung des Azure-Portals zum Aufrufen direkter Methoden.
+title: Verwenden des Azure-Portals zum Aufrufen direkter Methoden in Live Video Analytics
+description: Dieser Artikel vermittelt einen Überblick über die Verwendung des Azure-Portals zum Aufrufen direkter Methoden in Live Video Analytics.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,14 +13,16 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: ddd6a94015829a0b5dd4053f4d3a2fd6d2650d32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d91395f148db2245c48784e00c3403a5c76a5b0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492653"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368525"
 ---
-# <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Verwenden des Azure-Portals zum Aufrufen direkter Methoden
+# <a name="how-to-use-azure-portal-to-invoke-live-video-analytics-direct-methods"></a>Verwenden des Azure-Portals zum Aufrufen direkter Methoden in Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 IoT Hub gibt Ihnen die Möglichkeit, [direkte Methoden](../../iot-hub/iot-hub-devguide-direct-methods.md#method-invocation-for-iot-edge-modules) auf Edgegeräten von der Cloud aus aufzurufen. Das Modul „Live Video Analytics in IoT Edge (LVA)“ stellt mehrere [direkte Methoden](./direct-methods.md) vor, die zur Definition, Bereitstellung und Instanziierung verschiedener Workflows für die Analyse von Livevideos verwendet werden können.
 

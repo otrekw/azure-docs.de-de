@@ -1,19 +1,21 @@
 ---
-title: 'Edge AI Extension per gRPC: Analysieren von Livevideos mit Intel OpenVINO™ DL Streamer'
-description: In diesem Tutorial erfahren Sie, wie Sie die Edge AI Extension „Intel OpenVINO™ DL Streamer“ von Intel verwenden, um einen Livevideofeed einer (simulierten) IP-Kamera zu analysieren.
+title: Analysieren von Livevideos mithilfe der Edge-KI-Erweiterung „Intel OpenVINO™ DL Streamer“ über gRPC mit Live Video Analytics
+description: In diesem Tutorial erfahren Sie, wie Sie Live Video Analytics mit der Edge-KI-Erweiterung „Intel OpenVINO™ DL Streamer“ von Intel verwenden, um einen Livevideofeed einer (simulierten) IP-Kamera zu analysieren.
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 07a7daf6363f0e528f84635ed6713ac462f89ca5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d6d842a59a184470720da50917726eae069c6b02
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562850"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368507"
 ---
-# <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Tutorial: Analysieren von Livevideos mit Intel OpenVINO™ DL Streamer über die Edge AI Extension 
+# <a name="tutorial-analyze-live-video-by-using-live-video-analytics-with-intel-openvino-dl-streamer--edge-ai-extension"></a>Tutorial: Analysieren von Livevideos mithilfe von Live Video Analytics und der Edge-KI-Erweiterung „Intel OpenVINO™ DL Streamer“ 
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie die Edge AI Extension „Intel OpenVINO™ DL Streamer“ von Intel verwenden, um einen Livevideofeed einer (simulierten) IP-Kamera zu analysieren. Außerdem wird veranschaulicht, wie dieser Rückschlussserver Ihnen Zugriff auf diverse Modelle zum Erkennen von Objekten (z. B. eine Person, ein Fahrzeug oder ein Fahrrad) oder für die Objektklassifizierung (z. B. Fahrzeugzuordnungen) sowie ein Modell für die Objektnachverfolgung (Personen, Fahrzeuge und Fahrräder). Die Integration mit dem gRPC-Modul ermöglicht Ihnen das Senden von Videoframes an den KI-Rückschlussserver. Die Ergebnisse werden dann an den IoT Edge-Hub gesendet. Wenn Sie diesen Rückschlussdienst auf demselben Computeknoten wie Live Video Analytics ausführen, können Sie Videodaten über gemeinsam genutzten Speicher senden. Dies ermöglicht Ihnen die Ausführen von Rückschlüssen in der Geschwindigkeit der Bildfrequenz des Livevideofeeds (z. B. 30 Frames pro Sekunde). 
 
@@ -66,7 +68,7 @@ Inhalt des Tutorials:
 
 Das Edge AI Extension-Modul „OpenVINO™ DL Streamer“ ist ein Microservice, der auf Video Analytics Serving (VA Serving) von Intel basiert. Dabei handelt es sich um eine Anwendung, die Videoanalysepipelines mit Daten versorgt, die mit OpenVINO™ DL Streamer erstellt wurden. Entwickler können entschlüsselte Videoframes an das Edge AI Extension-Modul senden, das die Erkennung, Klassifizierung oder Nachverfolgung durchführt und dann die Ergebnisse zurückgibt. Das Edge AI Extension-Modul stellt gRPC-APIs zur Verfügung, die mit Videoanalyseplattformen wie Live Video Analytics in IoT Edge von Microsoft kompatibel sind. 
 
-Zur Erstellung komplexer Hochleistungslösungen für die Livevideoanalyse empfiehlt es sich, Live Video Analytics im IoT Edge-Modul mit einer leistungsfähigen Rückschluss-Engine zu kombinieren, die das Skalierungspotential am Edge nutzen kann. In diesem Tutorial werden Rückschlussanforderungen an die [Edge AI Extension „Intel OpenVINO™ DL Streamer“]() gesendet. Dabei handelt es sich um ein Edge-Modul, das für die Zusammenarbeit mit Live Video Analytics in IoT Edge konzipiert wurde. 
+Zur Erstellung komplexer Hochleistungslösungen für die Livevideoanalyse empfiehlt es sich, Live Video Analytics im IoT Edge-Modul mit einer leistungsfähigen Rückschluss-Engine zu kombinieren, die das Skalierungspotential am Edge nutzen kann. In diesem Tutorial werden Rückschlussanforderungen an die [Edge AI Extension „Intel OpenVINO™ DL Streamer“]() gesendet. Dabei handelt es sich um ein Edge-Modul, das für die Zusammenarbeit mit Live Video Analytics in IoT Edge konzipiert wurde.
 
 Das erste Release dieses Rückschlussservers bietet Zugriff auf folgende [Modelle](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options):
 

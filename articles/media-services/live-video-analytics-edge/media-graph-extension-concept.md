@@ -1,16 +1,18 @@
 ---
-title: 'Informationen zur Mediengrapherweiterung: Azure'
-description: Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen Grapherweiterungsknoten erweitern.
+title: 'Live Video Analytics-Mediengrapherweiterung: Azure'
+description: Mit Azure Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen Grapherweiterungsknoten erweitern.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 4a7aea7cc60a67603d8a0376cf84228072659d6c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8f3165d948e636bda49128f080af00df7f30c977
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557614"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372410"
 ---
-# <a name="media-graph-extension"></a>Mediengrapherweiterung
+# <a name="live-video-analytics-media-graph-extension"></a>Live Video Analytics-Mediengrapherweiterung
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen Grapherweiterungsknoten erweitern. Ihr Analyseerweiterungs-Plug-In kann herkömmliche Bildverarbeitungstechniken oder KI-Modelle des maschinellen Sehens nutzen. Zur Aktivierung von Grapherweiterungen wird ein Erweiterungsprozessorknoten in einen Mediengraphen eingeschlossen. Der Erweiterungsprozessorknoten leitet Videoframes an den konfigurierten Endpunkt weiter und fungiert als Schnittstelle für Ihre Erweiterung. Die Verbindung kann zu einem lokalen oder entfernten Endpunkt hergestellt und bei Bedarf durch Authentifizierung und TLS-Verschlüsselung gesichert werden. Außerdem ermöglicht der Graph-Erweiterungsprozessorknoten optional die Skalierung und Codierung der Videoframes, bevor sie an Ihre benutzerdefinierte Erweiterung übermittelt werden. 
 

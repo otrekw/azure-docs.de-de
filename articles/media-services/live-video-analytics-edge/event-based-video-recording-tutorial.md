@@ -1,16 +1,18 @@
 ---
-title: 'Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud: Azure'
+title: 'Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud: Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Live Video Analytics in Azure IoT Edge verwenden, um eine ereignisbasierte Videoaufzeichnung in der Cloud durchzuführen und sie aus der Cloud wiederzugeben.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: de1a4d423108ddb18af4f8478c9bac60672d6062
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: bf5bd39805aa581553bdf2e663f462251bf418d1
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279815"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371537"
 ---
-# <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
+# <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud-with-live-video-analytics"></a>Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In diesem Tutorial lernen Sie, wie Sie Azure Live Video Analytics in Azure IoT Edge verwenden, um selektiv Teile einer Live-Videoquelle in Azure Media Services in der Cloud aufzuzeichnen. Dieser Anwendungsfall wird in diesem Tutorial als [ereignisbasierte Videoaufzeichnung](event-based-video-recording-concept.md) (Event Based Video Recording, EVR) bezeichnet. Um Teile eines Livevideos aufzuzeichnen, verwenden Sie ein KI-Modell zur Objekterkennung, um im Videosignal nach Objekten zu suchen und Videoclips nur aufzuzeichnen, wenn ein bestimmter Objekttyp erkannt wird. Außerdem erfahren Sie mehr über die Wiedergabe der aufgezeichneten Videoclips mithilfe von Media Services. Diese Funktionalität ist für eine Vielzahl von Szenarien nützlich, bei denen die Notwendigkeit besteht, ein Archiv interessierender Videoclips zu unterhalten. 
 

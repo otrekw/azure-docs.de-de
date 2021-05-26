@@ -1,16 +1,18 @@
 ---
-title: 'Wiedergeben von Aufzeichnungen: Azure'
-description: Sie können Live Video Analytics in IoT Edge für die fortlaufende Videoaufzeichnung verwenden. Die Videoaufzeichnungen können Sie für Wochen oder Monate in der Cloud speichern. Sie können Ihre Aufzeichnung auch auf die für Sie interessanten Clips beschränken, indem Sie die ereignisbasierte Aufzeichnung verwenden. In diesem Artikel wird beschrieben, wie Sie Aufzeichnungen wiedergeben.
+title: Wiedergabe von Aufzeichnungen mit Live Video Analytics – Azure
+description: Sie können Azure Live Video Analytics in IoT Edge für die fortlaufende Videoaufzeichnung verwenden. Die Videoaufzeichnungen können Sie für Wochen oder Monate in der Cloud speichern. Sie können Ihre Aufzeichnung auch auf die für Sie interessanten Clips beschränken, indem Sie die ereignisbasierte Aufzeichnung verwenden. In diesem Artikel wird beschrieben, wie Sie Aufzeichnungen wiedergeben.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 0351f10d9fac3ad7e3b4fdd5fd549eb7c0023694
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc8698fc9317421513677eb64403ac2cdc3905c3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99490893"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372078"
 ---
-# <a name="playback-of-recordings"></a>Wiedergeben von Aufzeichnungen 
+# <a name="playback-of-recordings-with-live-video-analytics"></a>Wiedergabe von Aufzeichnungen mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="pre-read"></a>Voraussetzungen  
 

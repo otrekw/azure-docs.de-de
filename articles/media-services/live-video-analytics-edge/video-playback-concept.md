@@ -1,16 +1,18 @@
 ---
-title: 'Videowiedergabe: Azure'
-description: Platzhalter
+title: 'Videowiedergabe mit Live Video Analytics: Azure'
+description: In diesem Artikel erfahren Sie mehr über die auszuführenden Schritte, um ein Medienobjekt mithilfe der vorhandenen Streamingfunktionen von Azure Media Services wiederzugeben.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: be42b39c167798e4e288c77dbd48a8734eb71fdf
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 9669194f3dff8f64d54cb15c8cb6fee0d7a2667b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278591"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368385"
 ---
-# <a name="video-playback"></a>Videowiedergabe 
+# <a name="video-playback-with-live-video-analytics"></a>Videowiedergabe mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="suggested-pre-reading"></a>Empfohlene Lektüre zur Vorbereitung 
 
@@ -20,7 +22,7 @@ ms.locfileid: "106278591"
 
 ## <a name="overview"></a>Übersicht  
 
-Sie können [Mediengraphen](media-graph-concept.md) verwenden, um Video in einem [Medienobjekt](terminology.md#asset) von Azure Media Services aufzuzeichnen. In diesem Dokument erfahren Sie mehr über die auszuführenden Schritte, um ein Medienobjekt mithilfe der Streamingfunktionen von Azure Media Services wiederzugeben.
+Sie können [Mediengraphen](media-graph-concept.md) verwenden, um Video in einem [Medienobjekt](terminology.md#asset) von Azure Media Services aufzuzeichnen. In diesem Artikel erfahren Sie mehr über die auszuführenden Schritte, um ein Medienobjekt mithilfe der vorhandenen Streamingfunktionen von Azure Media Services wiederzugeben.
 
 ## <a name="streaming-endpoint"></a>Streamingendpunkt 
 

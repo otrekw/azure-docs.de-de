@@ -1,16 +1,18 @@
 ---
-title: 'Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und Zuweisen der Rolle an einen Dienstprinzipal: Azure'
-description: Dieser Artikel enthält Anleitungen zum Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und zum Zuweisen der Rolle an den Dienstprinzipal für Live Video Analytics in IoT Edge mithilfe der Azure-Befehlszeilenschnittstelle.
+title: Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und Zuweisen der Rolle zu einem Dienstprinzipal mit Azure Live Video Analytics
+description: Dieser Artikel enthält Anleitungen zum Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und zum Zuweisen der Rolle zum Dienstprinzipal für Azure Live Video Analytics in IoT Edge mithilfe der Azure-Befehlszeilenschnittstelle.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 6c33f6703522fc0b28237e22c16c96587467df40
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4cf819fdcdb0c046070e90dd9c2aa1a42a1d8a1b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788509"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373752"
 ---
-# <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und Zuweisen der Rolle an einen Dienstprinzipal
+# <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal-with-live-video-analytics"></a>Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und Zuweisen der Rolle zu einem Dienstprinzipal mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Die Instanz von Live Video Analytics im IoT Edge-Modul benötigt ein aktives Azure Media Services-Konto für die ordnungsgemäße Funktion. Die Beziehung zwischen Live Video Analytics im IoT Edge-Modul und dem Azure Media Service-Konto wird über einen Satz von Eigenschaften des Modulzwillings hergestellt. Eine dieser Eigenschaften des Modulzwillings ist ein [Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object), der es der Modulinstanz ermöglicht, mit dem Media Services-Konto zu kommunizieren und erforderliche Operationen für es auszulösen. Um potenziellen Missbrauch und/oder versehentliche Offenlegung von Daten auf dem Edge-Gerät zu minimieren, sollte dieser Dienstprinzipal über die geringsten möglichen Rechte verfügen.
 

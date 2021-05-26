@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f9626ebdcc52f9aeb2b9283dac6c5790e3df8cf
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 7503c0ffff064f0fee0352beb0955c964c7770b9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108179958"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368350"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von Speicherdateien mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -34,6 +34,7 @@ Um reibungslose Vorgänge beim Abfragen von Daten in Azure Storage-Dateien zu g
 - [Abfragen mehrerer Dateien oder Ordner](#query-multiple-files-or-folders)
 - [Parquet-Dateiformat](#query-parquet-files)
 - [Abfragen von CSV-Dateien und Text mit Trennzeichen (Feldabschlusszeichen, Zeilenabschlusszeichen, Escapezeichen)](#query-csv-files)
+- [DELTA LAKE-Format](#query-delta-lake-format)
 - [Lesen einer ausgewählten Teilmenge von Spalten](#read-a-chosen-subset-of-columns)
 - [Schemarückschluss](#schema-inference)
 - [filename-Funktion](#filename-function)
@@ -42,11 +43,11 @@ Um reibungslose Vorgänge beim Abfragen von Daten in Azure Storage-Dateien zu g
 
 ## <a name="query-parquet-files"></a>Abfragen von PARQUET-Dateien
 
-Um Parquet-Quelldaten abzufragen, verwenden Sie FORMAT = 'PARQUET'.
+Um Parquet-Quelldaten abzufragen, verwenden Sie FORMAT = 'PARQUET':
 
 ```syntaxsql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
@@ -67,6 +68,19 @@ Es gibt noch einige zusätzliche Optionen, die Sie verwenden können, um Analyse
 Der Parameter „ESCAPE_CHAR“ wird unabhängig davon angewendet, ob FIELDQUOTE aktiviert ist. Er fungiert nicht als Escapezeichen für das Zitierzeichen. Das Anführungszeichen muss mit einem weiteren Anführungszeichen als Escapezeichen versehen werden. Anführungszeichen können nur in Spaltenwerten enthalten sein, wenn der Wert mit Anführungszeichen gekapselt ist.
 - FIELDTERMINATOR ='field_terminator': Dient zum Angeben des zu verwendenden Feldabschlusszeichens. Das Standard-Feldabschlusszeichen ist das Komma ( **,** ).
 - ROWTERMINATOR ='row_terminator': Dient zum Angeben des zu verwendenden Zeilenabschlusszeichens. Das Standard-Zeilenabschlusszeichen ist das Zeilenvorschubzeichen:  **\r\n**.
+
+
+## <a name="query-delta-lake-format"></a>Abfragen von Daten im DELTA LAKE-Format
+
+Um Delta Lake-Quelldaten abzufragen, verwenden Sie FORMAT = 'DELTA' und verweisen auf den Stammordner mit Ihren Delta Lake-Dateien.
+
+```syntaxsql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder', FORMAT = 'DELTA') 
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
+```
+
+Der Stammordner muss einen Unterordner `_delta_log` enthalten. Beispiele zur Verwendung finden Sie im Artikel zum [Abfragen von Daten im Delta Lake-Format](query-delta-lake-format.md).
 
 ## <a name="file-schema"></a>Dateischema
 
@@ -101,7 +115,7 @@ SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 ```
 
-Verwenden Sie unbedingt [geeignete abgeleitete Datentypen](./best-practices-serverless-sql-pool.md#check-inferred-data-types), um eine optimale Leistung zu erzielen. 
+Verwenden Sie unbedingt [geeignete abgeleitete Datentypen](best-practices-sql-on-demand.md#check-inferred-data-types), um eine optimale Leistung zu erzielen. 
 
 ## <a name="query-multiple-files-or-folders"></a>Abfragen mehrerer Dateien oder Ordner
 

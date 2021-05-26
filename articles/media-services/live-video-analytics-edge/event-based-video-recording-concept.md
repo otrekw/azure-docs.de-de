@@ -1,17 +1,19 @@
 ---
-title: Ereignisbasierte Videoaufzeichnung – Azure
-description: Ereignisbasierte Videoaufzeichnung (EVR) bezeichnet den Vorgang des Aufzeichnen von Videos mit Auslösung durch ein Ereignis. Das betreffende Ereignis kann bei der Verarbeitung des Videosignals selbst (z. B. Erkennung einer Bewegung) entstehen oder von einer unabhängigen Quelle (z. B. Öffnen einer Tür) stammen.  In diesem Artikel werden einige Anwendungsfälle im Zusammenhang mit der ereignisbasierten Videoaufzeichnung beschrieben.
+title: Ereignisbasierte Videoaufzeichnung mit Azure Live Video Analytics
+description: Die ereignisbasierte Videoaufzeichnung (EVR) bezieht sich auf die durch ein Ereignis ausgelöste Aufzeichnung von Videos mit Live Video Analytics. Das betreffende Ereignis kann bei der Verarbeitung des Videosignals selbst (z. B. Erkennung einer Bewegung) entstehen oder von einer unabhängigen Quelle (z. B. Öffnen einer Tür) stammen.  In diesem Artikel werden einige Anwendungsfälle im Zusammenhang mit der ereignisbasierten Videoaufzeichnung beschrieben.
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 6a5f4873b2cfef8d9a6594916d82cd30a3bc1cc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7970bc6e29a6fb9f914541a52188bf0b53b83b86
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97401599"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371485"
 ---
-# <a name="event-based-video-recording"></a>Ereignisbasierte Videoaufzeichnung  
- 
+# <a name="event-based-video-recording-with-live-video-analytics"></a>Ereignisbasierte Videoaufzeichnung mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
+
 ## <a name="suggested-pre-reading"></a>Empfohlene Lektüre zur Vorbereitung  
 
 * [Fortlaufende Videoaufzeichnung](continuous-video-recording-concept.md)

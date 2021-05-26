@@ -1,16 +1,18 @@
 ---
-title: Konfigurieren eines Signalgates für ereignisbasierte Videoaufzeichnungen – Azure
-description: In diesem Artikel wird erläutert, wie Sie ein Signalgate in einem Mediendiagramm konfigurieren.
+title: Konfigurieren eines Signalgates für die ereignisbasierte Videoaufzeichnung mit Live Video Analytics – Azure
+description: In diesem Artikel wird erläutert, wie Sie ein Signalgate in einem Mediengraphen mit Live Video Analytics konfigurieren.
 ms.topic: how-to
 ms.date: 11/3/2020
-ms.openlocfilehash: afcec7c03f1353f08b58311278f5a533e0c911bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fc36757c44ad69d61466b373756bdd9428dbab9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94410792"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367691"
 ---
-# <a name="configure-a-signal-gate-for-event-based-video-recording"></a>Konfigurieren eines Signalgates für ereignisbasierte Videoaufzeichnungen
+# <a name="configure-a-signal-gate-for-event-based-video-recording-with-live-video-analytics"></a>Konfigurieren eines Signalgates für die ereignisbasierte Videoaufzeichnung mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In einem Mediendiagramm ermöglicht ein [Signalgateprozessor-Knoten](media-graph-concept.md#signal-gate-processor) die Weiterleitung von Medien von einem Knoten zu einem anderen, wenn das Gate durch ein Ereignis ausgelöst wird. Wenn das Gate ausgelöst wird, öffnet es sich und erlaubt die Übertragung von Mediendaten für einen festgelegten Zeitraum. Wenn keine Ereignisse vorhanden sind, die das Gate auslösen, wird es geschlossen, und der Mediendatenfluss wird beendet. Sie können den Signalgateprozessor für ereignisbasierte Videoaufzeichnungen verwenden.
 

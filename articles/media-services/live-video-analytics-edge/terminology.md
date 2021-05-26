@@ -1,16 +1,18 @@
 ---
-title: 'Terminologie zu Live Video Analytics in IoT Edge: Azure'
-description: Dieser Artikel bietet eine Übersicht über die Terminologie für Live Video Analytics in IoT Edge.
+title: Terminologie zu Azure Live Video Analytics in IoT Edge
+description: Dieser Artikel bietet eine Übersicht über die Terminologie zu Azure Live Video Analytics in IoT Edge.
 ms.topic: conceptual
 ms.date: 05/30/2020
-ms.openlocfilehash: e3a77b69adf2241a4af2652db4edb6673a63b4f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a017a7ddb946bf5bb8c01b9a61c322843c9815f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88690611"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378402"
 ---
-# <a name="terminology"></a>Begriff
+# <a name="live-video-analytics-terminology"></a>Terminologie für Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Dieser Artikel bietet eine Übersicht über die Terminologie im Zusammenhang mit [Live Video Analytics in IoT Edge](overview.md).
 

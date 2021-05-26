@@ -1,16 +1,18 @@
 ---
-title: 'JSON-Schema des Modulzwillings: Azure'
-description: In diesem Thema wird das JSON-Schema des Modulzwillings für Live Video Analytics in IoT Edge beschrieben.
+title: 'JSON-Schema des Modulzwillings in Live Video Analytics: Azure'
+description: In diesem Thema wird das JSON-Schema des Modulzwillings von Azure Live Video Analytics in IoT Edge beschrieben.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be80b5782d76f1ec490395013310058f1cb2fe79
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87053074"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371169"
 ---
-# <a name="module-twin-json-schema"></a>JSON-Schema des Modulzwillings
+# <a name="module-twin-json-schema-in-live-video-analytics"></a>JSON-Schema des Modulzwillings in Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen gespeichert werden, z. B. Metadaten, Konfigurationen und Bedingungen. Azure IoT Hub pflegt einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden. Eine ausführliche Beschreibung finden Sie unter [Verstehen und Verwenden von Modulzwillingen in IoT Hub](../../iot-hub/iot-hub-devguide-module-twins.md).
 

@@ -1,16 +1,18 @@
 ---
-title: Kontingente und Einschränkungen von Live Video Analytics in IoT Edge | Azure
+title: 'Kontingente und Einschränkungen von Azure Live Video Analytics in IoT Edge: Azure'
 description: In diesem Artikel werden die Kontingente und Einschränkungen von Live Video Analytics in IoT Edge beschrieben.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 68c7b91bb1051348b5a8e52f841d443894f0a632
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02347b5ae963008b3f8dd256afe2d8c264245650
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97400523"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378419"
 ---
-# <a name="quotas-and-limitations"></a>Kontingente und Einschränkungen
+# <a name="quotas-and-limitations-in-live-video-analytics"></a>Kontingente und Einschränkungen in Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In diesem Artikel werden die Kontingente und Einschränkungen im Modul Live Video Analytics in IoT Edge aufgelistet.
 

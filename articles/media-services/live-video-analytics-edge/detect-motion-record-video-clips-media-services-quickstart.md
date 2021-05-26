@@ -1,16 +1,18 @@
 ---
-title: Erkennen von Bewegung, Aufzeichnen von Videos in Azure Media Services
-description: In diesem Schnellstart erfahren Sie, wie Sie Live Video Analytics in IoT Edge verwenden, um Bewegungen in einem Livevideostream zu erkennen und Videoclips in Azure Media Services aufzuzeichnen.
+title: Erkennen von Bewegung, Aufzeichnen von Videos in Azure Media Services mit Live Video Analytics
+description: In diesem Schnellstart erfahren Sie, wie Sie Azure Live Video Analytics in IoT Edge verwenden, um Bewegungen in einem Livevideostream zu erkennen und Videoclips in Azure Media Services aufzuzeichnen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 135e68e2630d74dace6c3a6b70bb3666f77aad89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 890d527eea0486bf42c1e5319d65e67dbeb05c06
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99575533"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378974"
 ---
-# <a name="quickstart-detect-motion-record-video-to-media-services"></a>Schnellstart: Erkennen von Bewegung, Aufzeichnen von Video in Media Services
+# <a name="quickstart-detect-motion-record-video-to-azure-media-services"></a>Schnellstart: Erkennen von Bewegung, Aufzeichnen von Videos in Azure Media Services
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In diesem Artikel werden die Schritte zur Verwendung von Live Video Analytics in IoT Edge für die [ereignisbasierte Aufzeichnung](event-based-video-recording-concept.md) beschrieben. Dabei werden ein virtueller Linux-Computer in Azure als IoT Edge-Gerät und ein simulierter Livevideostream verwendet. Der Videostream wird auf das Vorhandensein sich bewegender Objekte analysiert. Wenn Bewegungen erkannt werden, werden Ereignisse an Azure IoT Hub gesendet, und der relevante Teil des Videostreams wird als Medienobjekt in Azure Media Services aufgezeichnet.
 

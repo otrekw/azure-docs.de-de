@@ -1,16 +1,18 @@
 ---
-title: 'Analysieren von Livevideos ohne Aufzeichnung: Azure'
-description: Ein Mediendiagramm kann auch nur verwendet werden, um Analysen aus einem Livevideostream zu extrahieren, ohne dass dieser am Edge oder in der Cloud aufgezeichnet werden muss. Dieses Konzept wird in diesem Artikel erläutert.
+title: 'Analysieren von Livevideos ohne Aufzeichnung mit Live Video Analytics: Azure'
+description: Ein Mediendiagramm kann auch nur verwendet werden, um Analysen aus einem Livevideostream zu extrahieren, ohne dass dieser am Edge oder in der Cloud aufgezeichnet werden muss. In diesem Artikel werden dieses Konzept und die Analyse von Livevideos ohne Aufzeichnung mit Live Video Analytics erläutert.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 25a7cadc47603b726542fa391d441e1fbca78908
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4f880646410ba77015663915575cdc32a7c188b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97398969"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378923"
 ---
-# <a name="analyzing-live-video-without-any-recording"></a>Analysieren von Livevideos ohne Aufzeichnung
+# <a name="analyze-live-video-without-any-recording-with-live-video-analytics"></a>Analysieren von Livevideos ohne Aufzeichnung mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="suggested-pre-reading"></a>Empfohlene Lektüre zur Vorbereitung 
 

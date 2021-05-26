@@ -1,17 +1,19 @@
 ---
-title: 'Analysieren von Livevideos mithilfe eines eigenen gRPC-Modells: Azure'
-description: In diesem Schnellstart wenden Sie maschinelles Sehen an, um den Livevideofeed von einer (simulierten) IP-Kamera zu analysieren.
+title: 'Analysieren von Livevideos mithilfe eines eigenen gRPC-Modells mit Live Video Analytics: Azure'
+description: In diesem Schnellstart wenden Sie maschinelles Sehen an, um den Livevideofeed von einer (simulierten) IP-Kamera mit Live Video Analytics zu analysieren.
 ms.topic: quickstart
 ms.date: 08/14/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 907d402a4b0ef5d5e437322d02431a0ccd2d8da3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1079e374d34512e3054c4185302059ffd178c804
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89421522"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371730"
 ---
-# <a name="quickstart-analyze-live-video-by-using-your-own-grpc-model"></a>Schnellstart: Analysieren von Livevideos mithilfe eines eigenen gRPC-Modells
+# <a name="quickstart-analyze-live-video-by-using-your-own-grpc-model-with-live-video-analytics"></a>Schnellstart: Analysieren von Livevideos mithilfe eines eigenen gRPC-Modells mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe von Live Video Analytics in IoT Edge einen Livevideofeed einer (simulierten) IP-Kamera analysieren. Sie erfahren, wie Sie ein Modell für maschinelles Sehen anwenden, um Objekte zu erkennen. Eine Teilmenge der Einzelbilder des Livevideofeeds wird an einen Rückschlussdienst gesendet. Die Ergebnisse werden an IoT Edge Hub gesendet.
 

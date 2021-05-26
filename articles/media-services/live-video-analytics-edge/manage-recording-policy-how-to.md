@@ -1,16 +1,18 @@
 ---
-title: 'Verwalten der Aufzeichnungsrichtlinie: Azure'
-description: In diesem Thema wird das Verwalten einer Aufzeichnungsrichtlinie erläutert.
+title: 'Verwalten der Aufzeichnungsrichtlinie mit Live Video Analytics: Azure'
+description: In diesem Thema wird erklärt, wie Sie die Aufzeichnungsrichtlinie mit Live Video Analytics verwalten.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: ec72f28496c1392b9d95134c343e1892998a0c28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52c9011e81c4e9d43aa32158d8577a7388dc20d2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99224988"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379044"
 ---
-# <a name="manage-recording-policy"></a>Verwalten der Aufzeichnungsrichtlinie
+# <a name="manage-recording-policy-with-live-video-analytics"></a>Verwalten der Aufzeichnungsrichtlinie mit Live Video Analytics
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Sie können Live Video Analytics in IoT Edge für die [fortlaufende Videoaufzeichnung](continuous-video-recording-concept.md) verwenden. Die Videoaufzeichnungen können Sie für Wochen oder Monate in der Cloud speichern. Sie können die Dauer (in Tagen) dieses Cloudarchivs mithilfe der in Azure Storage integrierten [Tools zur Lebenszyklusverwaltung](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal) verwalten.  
 
