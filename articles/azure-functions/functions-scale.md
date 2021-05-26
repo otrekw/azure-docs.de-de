@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 079ac41f8b138bccbe4d435a79836d3acee71b7d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2cf201c17b97464386ce52f4d689c2c1006d0970
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728622"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377414"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions-Hostingoptionen
 
@@ -22,7 +22,10 @@ Der von Ihnen gewählte Hostingplan bestimmt folgendes Verhalten:
 * Die für jede Instanz der Funktions-App verfügbaren Ressourcen.
 * Die Unterstützung für erweiterte Funktionen wie Azure Virtual Network-Konnektivität
 
-Dieser Artikel enthält einen ausführlichen Vergleich zwischen den verschiedenen Hostingplänen und dem Kubernetes-basierten Hosting.
+Dieser Artikel enthält einen ausführlichen Vergleich der verschiedenen Hostingpläne und [Kubernetes-basiertem Hosting](functions-kubernetes-keda.md).
+
+> [!NOTE]
+> Wenn Sie Ihre Funktionen in einem Kubernetes-Cluster hosten möchten, sollten Sie einen [Azure Arc-fähigen Kubernetes-Cluster](../azure-arc/kubernetes/overview.md) verwenden. Hosting auf einem für Azure Arc aktivierten Kubernetes-Cluster befindet sich derzeit in der Vorschau. Weitere Informationen finden Sie unter [App Service, Funktionen und Logic Apps in Azure Arc](../app-service/overview-arc-integration.md).  
 
 ## <a name="overview-of-plans"></a>Übersicht über die Pläne
 
@@ -39,7 +42,7 @@ Die Vergleichstabellen in diesem Artikel enthalten auch die folgenden Hostingopt
 | Hostingoption | Details |
 | --- | --- |  
 |**[ASE](dedicated-plan.md)** | Die App Service-Umgebung (App Service Environment, ASE) ist ein App Service-Feature, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps in großem Maßstab bereitstellt.<br/><br/>App Service-Umgebungen eignen sich ideal für Anwendungsworkloads mit folgenden Anforderungen: <br/><br/>✔ Sehr großer Umfang.<br/>✔ Vollständige Computeisolation und sicherer Netzwerkzugriff<br/>✔ Hohe Speicherauslastung|  
-| **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes bietet eine vollständig isolierte und dedizierte Umgebung, die auf der Kubernetes-Plattform aufsetzt.<br/><br/> Kubernetes eignet sich für Anwendungsworkloads mit folgenden Anforderungen: <br/>✔ Benutzerdefinierte Hardwareanforderungen.<br/>✔ Isolierung und sicherer Netzwerkzugriff.<br/>✔ Möglichkeit zur Ausführung in Hybrid- oder Multicloudumgebungen.<br/>✔ Parallele Ausführung mit vorhandenen Kubernetes-Anwendungen und -Diensten.|  
+| **Kubernetes**<br/>([Direkt](functions-kubernetes-keda.md) oder<br/>[Azure Arc](../app-service/overview-arc-integration.md)) | Kubernetes bietet eine vollständig isolierte und dedizierte Umgebung, die auf der Kubernetes-Plattform aufsetzt.<br/><br/> Kubernetes eignet sich für Anwendungsworkloads mit folgenden Anforderungen: <br/>✔ Benutzerdefinierte Hardwareanforderungen.<br/>✔ Isolierung und sicherer Netzwerkzugriff.<br/>✔ Möglichkeit zur Ausführung in Hybrid- oder Multicloudumgebungen.<br/>✔ Parallele Ausführung mit vorhandenen Kubernetes-Anwendungen und -Diensten.|  
 
 In den verbleibenden Tabellen in diesem Artikel werden die verschiedenen Features und Verhaltensweisen der Pläne verglichen. Einen Kostenvergleich zwischen dynamischen Hostingplänen (Verbrauch und Premium) finden Sie auf der Seite [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/). Die Preise für die verschiedenen Optionen bei einem dedizierten Plan finden Sie auf der Seite [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/windows/). 
 
@@ -53,7 +56,8 @@ In der folgenden Tabelle werden die in den einzelnen Hostingplänen unterstützt
 | **[Premium-Plan](functions-premium-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
 | **[Dedizierter Plan](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 | **[ASE](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
-| **[Kubernetes](functions-kubernetes-keda.md)** | – | – |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Kubernetes (direkt)](functions-kubernetes-keda.md)** | – | – |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Azure Arc (Vorschauversion)](../app-service/overview-arc-integration.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | – |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 
 <sup>1</sup> Linux ist das einzige unterstützte Betriebssystem für den Python-Runtimestapel. <br/>
 <sup>2</sup> Windows ist das einzige unterstützte Betriebssystem für den PowerShell-Runtimestapel.<br/>

@@ -3,14 +3,14 @@ title: HTTP-APIs in Durable Functions – Azure Functions
 description: Es wird beschrieben, wie Sie HTTP-APIs in der Erweiterung „Durable Functions“ für Azure Functions implementieren.
 author: cgillum
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 0ab9f33616547c073e8e3a2128a441238bf3a17d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: eff6a44734600a6399f76fc7be331835ae395593
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220452"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377448"
 ---
 # <a name="http-api-reference"></a>HTTP-API-Referenz
 
@@ -21,10 +21,10 @@ Alle HTTP-APIs, die von der Erweiterung implementiert werden, benötigen die fol
 | Parameter        | Parametertyp  | BESCHREIBUNG |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | Abfragezeichenfolge    | Der Name des [Aufgabenhub](durable-functions-task-hubs.md). Wenn er nicht angegeben ist, wird der Name des Aufgabenhub der aktuellen Funktionen-App verwendet. |
-| **`connection`** | Abfragezeichenfolge    | Der **Name** der Verbindungszeichenfolge für das Speicherkonto. Wenn nichts angegeben ist, wird die Standardverbindungszeichenfolge für die Funktionen-App genutzt. |
+| **`connection`** | Abfragezeichenfolge    | Dies ist der **Name** der Einstellung der Verbindungs-App für den Back-End-Speicheranbieter. Wenn nichts angegeben ist, wird die Standardverbindungskonfiguration für die Funktions-App genutzt. |
 | **`systemKey`**  | Abfragezeichenfolge    | Der Autorisierungsschlüssel, der zum Aufrufen der API erforderlich ist. |
 
-`systemKey` ist ein Autorisierungsschlüssel, der vom Azure Functions-Host automatisch generiert wird. Er gewährt spezifischen Zugriff auf die APIs der Erweiterung „Durable Task“ und kann genauso wie [andere Autorisierungsschlüssel](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API) verwaltet werden. Sie können URLs, die die korrekten Werte der Abfragezeichenfolge für `taskHub`, `connection` und `systemKey` enthalten, mithilfe von [Orchestrierungsclientbindungs](durable-functions-bindings.md#orchestration-client)-APIs wie z. B. der `CreateCheckStatusResponse`- und `CreateHttpManagementPayload`-APIs in .NET oder der `createCheckStatusResponse`- und `createHttpManagementPayload`-APIs in JavaScript generieren.
+`systemKey` ist ein Autorisierungsschlüssel, der vom Azure Functions-Host automatisch generiert wird. Der Name gewährt spezifischen Zugriff auf die APIs der Erweiterung „Durable Task“ und kann genauso wie [andere Azure Functions-Zugriffsschlüssel](../security-concepts.md#function-access-keys) verwaltet werden. Sie können URLs, die die korrekten Werte der Abfragezeichenfolge für `taskHub`, `connection` und `systemKey` enthalten, mithilfe von [Orchestrierungsclientbindungs](durable-functions-bindings.md#orchestration-client)-APIs wie z. B. der `CreateCheckStatusResponse`- und `CreateHttpManagementPayload`-APIs in .NET oder der `createCheckStatusResponse`- und `createHttpManagementPayload`-APIs in JavaScript generieren.
 
 In den nächsten Abschnitten werden die spezifischen HTTP-APIs behandelt, die von der Erweiterung unterstützt werden, und es sind Anwendungsbeispiele vorhanden.
 
@@ -169,7 +169,7 @@ Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
 Die Antwortnutzlast für die Fälle **HTTP 200** und **HTTP 202** ist ein JSON-Objekt mit den folgenden Feldern:
 
-| Feld                 | Datentyp | BESCHREIBUNG |
+| Feld                 | Datentyp | Beschreibung |
 |-----------------------|-----------|-------------|
 | **`runtimeStatus`**   | Zeichenfolge    | Der Laufzeitstatus der Instanz. Mögliche Werte sind *Running*, *Pending*, *Failed*, *Canceled*, *Terminated* und *Completed*. |
 | **`input`**           | JSON      | Die JSON-Daten, die zum Initialisieren der Instanz verwendet werden. Dieses Feld lautet `null`, wenn der Abfragezeichenfolgenparameter `showInput` auf `false` festgelegt ist.|
@@ -239,9 +239,6 @@ Die Antwort **HTTP 202** enthält auch den Antwortheader **Location**, in dem au
 ## <a name="get-all-instances-status"></a>Abrufen aller Instanzstatus
 
 Sie können auch den Status aller Instanzen abfragen, indem Sie die `instanceId` aus der Anforderung „Get instance status“ (Abrufen des Instanzstatus) entfernen. In diesem Fall entsprechen die grundlegenden Parameter der Anforderung „Get instance status“. Abfragezeichenfolgeparameter zum Filtern werden auch unterstützt.
-
-Beachten Sie jedoch, dass `connection` und `code` optional sind. Wenn Sie für die Funktion anonyme Authentifizierung verwenden, ist kein `code` erforderlich.
-Wenn Sie keine andere Verbindungszeichenfolge für den Speicher als die in der AzureWebJobsStorage-App-Einstellung definierte verwenden möchten, können Sie den Verbindungszeichenfolgen-Parameter unbesorgt ignorieren.
 
 ### <a name="request"></a>Anforderung
 
@@ -340,8 +337,7 @@ Hier ist ein Beispiel für Antwortnutzlasten einschließlich des Orchestrierungs
 ```
 
 > [!NOTE]
-> Dieser Vorgang kann in Bezug auf Azure Storage-E/A-Vorgänge sehr teuer sein, wenn die Instanztabelle viele Zeilen umfasst. Weitere Informationen zur Instanztabelle finden Sie in der Dokumentation [Leistung und Skalierbarkeit in Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md#instances-table).
->
+> Dieser Vorgang kann im Hinblick auf die Azure Storage-E/A sehr teuer sein, wenn Sie den standardmäßigen [Azure Storage-Anbieter](durable-functions-storage-providers.md#azure-storage) verwenden und viele Zeilen in der Instances-Tabelle vorhanden sind. Weitere Informationen zur Instanztabelle finden Sie in der Dokumentation [Leistung und Skalierbarkeit in Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md#instances-table).
 
 Wenn mehr Ergebnisse vorhanden sind, wird ein Fortsetzungstoken im Antwortheader zurückgegeben.  Der Name des Headers lautet `x-ms-continuation-token`.
 
@@ -437,7 +433,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`runtimeStatus`**   | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der gelöschten Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Artikel [Abfragen von Instanzen](durable-functions-instance-management.md). |
 
 > [!NOTE]
-> Dieser Vorgang kann in Bezug auf Azure Storage-E/A-Vorgänge sehr teuer sein, wenn die Instanztabelle viele Zeilen und/oder Verlaufstabellen umfasst. Weitere Informationen zu diesen Tabellen finden Sie in der Dokumentation [Leistung und Skalierbarkeit in Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md#instances-table).
+> Dieser Vorgang kann im Hinblick auf die Azure Storage-E/A sehr teuer sein, wenn Sie den standardmäßigen [Azure Storage-Anbieter](durable-functions-storage-providers.md#azure-storage) verwenden und viele Zeilen in den Instances- und/oder History-Tabellen vorhanden sind. Weitere Informationen zu diesen Tabellen finden Sie in der Dokumentation [Leistung und Skalierbarkeit in Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md#instances-table).
 
 ### <a name="response"></a>Antwort
 

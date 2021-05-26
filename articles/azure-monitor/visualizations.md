@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: b90d628f0d24e43d7b9f2e3fa87e74d426648c6e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1da3f75fb95488d45a3f29284bdc8c7424b6bc9a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048572"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459103"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Visualisieren von Daten aus Azure Monitor
 Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
@@ -29,10 +29,6 @@ Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Übe
 - Option für persönliche oder freigegebene Arbeitsmappen.
 - Einfache und zusammenarbeitsfreundliche Benutzeroberfläche für die Erstellung.
 - Die Vorlagen unterstützen den öffentlichen Vorlagenkatalog auf GitHub-Basis.
-
-### <a name="limitations"></a>Einschränkungen
-- Keine automatische Aktualisierung.
-- Kein dichtes Layout wie bei Dashboards, sodass Arbeitsmappen weniger als zentrale Konsole geeignet sind. Eher für tiefere Einblicke vorgesehen.
 
 
 ## <a name="azure-dashboards"></a>Azure-Dashboards

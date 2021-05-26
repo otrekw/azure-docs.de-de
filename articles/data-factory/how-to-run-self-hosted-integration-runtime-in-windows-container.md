@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: fe951881d2f8fa4c38e529122a96f3ca1ed078bb
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 0fb633dea9239aadfeb797e5659f8442ceb19728
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483495"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470691"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Ausführen einer selbstgehosteten Integration Runtime in einem Windows-Container
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird erläutert, wie Sie eine selbstgehostete Integration Runtime in einem Windows-Container ausführen.
 Azure Data Factory stellt die offizielle Windows-Containerunterstützung für die selbstgehostete Integration Runtime bereit. Sie können den Quellcode des Docker-Builds herunterladen und den Prozess der Erstellung und Ausführung in Ihrer eigenen kontinuierlichen Lieferpipeline kombinieren. 

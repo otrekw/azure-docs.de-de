@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
-ms.openlocfilehash: 529fc432bf8777ef7e2b527f08e9cb59e42bf156
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cb4f074cb9487c22fc340b2e7b2941cd7b69ca98
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041024"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459051"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Protokollabfragen in Azure Monitor
 Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Protokollabfragen werden in der Abfragesprache Kusto (Kusto Query Language, KQL) geschrieben. Hierbei handelt es sich um eine umfangreiche Sprache, die einfach zu lesen und zu verwenden ist, sodass Sie nach einer grundlegenden Einarbeitung mit dem Schreiben von Abfragen beginnen können.
@@ -30,7 +30,7 @@ Die beste Methode für den Einstieg in das Schreiben von Protokollabfragen mithi
 
 - [Log Analytics-Tutorial](./log-analytics-tutorial.md): Tutorial zur Verwendung der Funktionen von Log Analytics, dem Tool, das Sie im Azure-Portal zum Bearbeiten und Ausführen von Abfragen verwenden. Es ermöglicht zudem das Schreiben einfacher Abfragen, ohne direkt mit der Abfragesprache zu arbeiten. Wenn Sie Log Analytics bisher noch nicht verwendet haben, beginnen Sie hier, damit Sie das Tool verstehen, das Sie dann in den anderen Tutorials und Beispielen verwenden.
 - [KQL-Tutorial](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor): Einführung in grundlegende KQL-Konzepte und gängige Operatoren. Dies ist der beste Ausgangspunkt, um sich mit der Sprache selbst und der Struktur von Protokollabfragen vertraut zu machen. 
-- [Beispielabfragen](../logs/example-queries.md): Beschreibung der in Log Analytics verfügbaren Beispielabfragen. Sie können die Abfragen ohne Änderungen verwenden oder als Beispiele zum Erlernen von KQL nutzen.
+- [Beispielabfragen](../logs/queries.md): Beschreibung der in Log Analytics verfügbaren Beispielabfragen. Sie können die Abfragen ohne Änderungen verwenden oder als Beispiele zum Erlernen von KQL nutzen.
 - [Abfragebeispiele](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor): Beispielabfragen, die eine Vielzahl verschiedener Konzepte veranschaulichen.
 
 

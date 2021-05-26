@@ -1,6 +1,6 @@
 ---
-title: Was ist der plastische Reader?
-titleSuffix: Azure Cognitive Services
+title: Was ist der plastische Reader in Azure?
+titleSuffix: Azure Applied AI Services
 description: Der plastische Reader ist ein Tool, das Personen mit Lernschwierigkeiten sowie Leseanfänger und Sprachenlernende beim Leseverständnis unterstützt.
 services: cognitive-services
 author: metanMSFT
@@ -12,16 +12,16 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: Leser, Sprachenlernende, Bilder anzeigen, Lesen verbessern, Inhalte lesen, übersetzen
-ms.openlocfilehash: 1911d3ce62434f1dc24966798e9ace259ae072bc
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: a8a8f26f6b79d5a687b3adf5d68bdfd89cc837d4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801569"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377637"
 ---
-# <a name="what-is-immersive-reader"></a>Worum handelt es sich beim plastischen Reader?
+# <a name="what-is-azure-immersive-reader"></a>Was ist der plastische Reader in Azure?
 
-Der [plastische Reader](https://www.onenote.com/learningtools) ist ein für die Inklusion konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernschwierigkeiten (beispielsweise Dyslexie) zu verbessern. Mit der Clientbibliothek für den plastischen Reader können Sie Ihre Webanwendungen mit der gleichen Technologie verbessern, die auch in Microsoft Word und Microsoft OneNote zum Einsatz kommt. 
+[Plastischer Reader](https://www.onenote.com/learningtools) ist ein Teil der [Azure Applied AI Services](../../applied-ai-services/what-are-applied-ai-services.md) und ein inklusiv konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden, wie z. B. Dyslexie, zu verbessern. Mit der Clientbibliothek für den plastischen Reader können Sie Ihre Webanwendungen mit der gleichen Technologie verbessern, die auch in Microsoft Word und Microsoft OneNote zum Einsatz kommt. 
 
 Diese Dokumentation enthält die folgenden Arten von Artikeln:  
 

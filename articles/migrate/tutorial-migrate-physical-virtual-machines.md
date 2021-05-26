@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: 1563543dec0a27094c00e446a205e94535e54229
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 97901b851353007d6b99dd39f4ecb36b7284eaf8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713512"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470409"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrieren von Computern als physische Server zu Azure
 
@@ -141,7 +141,7 @@ Der erste Schritt bei der Migration besteht darin, die Replikationsappliance ein
     ![Anbieter herunterladen](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
 8. Kopieren Sie die Setupdatei für die Appliance und die Schlüsseldatei auf den Windows Server 2016-Computer, den Sie für die Appliance erstellt haben.
-9. Nach Abschluss der Installation wird automatisch der Assistent zur Appliancekonfiguration gestartet. (Sie können den Assistenten auch manuell über die cspsconfigtool-Verknüpfung starten, die auf dem Desktop der Appliance erstellt wird.) Fügen Sie über die Registerkarte „Konten verwalten“ des Assistenten Kontodetails hinzu, die für die Pushinstallation des Mobilitätsdiensts verwendet werden. In diesem Tutorial installieren wir den Mobilitätsdienst manuell auf den Quell-VMs, die repliziert werden sollen. Erstellen Sie daher in diesem Schritt ein Dummykonto, und fahren Sie fort. Sie können die folgenden Details zum Erstellen des Dummykontos angeben: „guest“ als Anzeigename, „username“ als Benutzername und „password“ als Kennwort für das Konto. Sie verwenden dieses Dummykonto in der Phase zum Aktivieren der Replikation. 
+9. Nach Abschluss der Installation wird automatisch der Assistent zur Appliancekonfiguration gestartet. (Sie können den Assistenten auch manuell über die cspsconfigtool-Verknüpfung starten, die auf dem Desktop der Appliance erstellt wird.) In diesem Tutorial installieren wir den Mobilitätsdienst manuell auf den Quell-VMs, die repliziert werden sollen. Erstellen Sie daher in diesem Schritt ein Dummykonto, und fahren Sie fort. Sie können die folgenden Details zum Erstellen des Dummykontos angeben: „guest“ als Anzeigename, „username“ als Benutzername und „password“ als Kennwort für das Konto. Sie verwenden dieses Dummykonto in der Phase zum Aktivieren der Replikation. 
 
 10. Nachdem die Appliance nach Abschluss des Setupvorgangs neu gestartet wurde, wählen Sie im Bereich **Computer ermitteln** die neue Appliance unter **Konfigurationsserver auswählen** aus. Klicken Sie anschließend auf **Finalize registration** (Registrierung abschließen). Beim Abschließen der Registrierung werden einige letzte Schritte ausgeführt, um die Replikationsappliance vorzubereiten.
 

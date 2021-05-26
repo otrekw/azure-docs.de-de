@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 05/24/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: bilderkennung, bilderkennungs-app, custom vision
-ms.openlocfilehash: d25b226f5dfff34aa572b40d1e4de142cf8e0b7b
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: a436dd8b4553add0d88958fa625f6f2d2fea0f80
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221243"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453779"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Schnellstart: Erstellen einer Klassifizierung mit der Custom Vision-Website
 

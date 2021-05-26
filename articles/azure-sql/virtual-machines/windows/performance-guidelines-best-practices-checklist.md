@@ -15,12 +15,12 @@ ms.date: 05/06/2021
 ms.author: dpless
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: a30c9e3da8d7f64fd2cfec4480fc157d5bcac399
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 3649c593fcc7a0d27ed7326efa03b1325763649d
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632491"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190897"
 ---
 # <a name="checklist-performance-best-practices-for-sql-server-on-azure-vms"></a>Checkliste: Bewährte Methoden zur Leistung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -69,8 +69,6 @@ Im folgenden finden Sie eine kurze Checkliste mit bewährten Methoden für die S
     - Vor dem Ändern der Cacheeinstellungen Ihres Datenträgers sollten Sie den SQL Server-Dienst immer anhalten.
 - Für die Entwicklung und Test-Arbeitsauslastungen sollten Sie den Standardspeicher verwenden. Es wird nicht empfohlen, HDD Standard/SDD für Produktionsworkloads zu verwenden.
 - [Auf Guthaben basierendes Datenträgerbursting](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) sollte nur für kleinere Dev-/Test-Workloads und Abteilungssysteme in Betracht gezogen werden.
-- Stellen Sie das Speicherkonto in derselben Region wie die SQL Server-VM bereit. 
-- Deaktivieren Sie den georedundanten Azure-Speicher (Georeplikation), und verwenden Sie LRS (lokal redundanter Speicher) für das Speicherkonto.
 - Formatieren Sie den Datenträger, um die Größe der Zuordnungseinheiten für 64 KB für alle Datendateien zu verwenden, die auf einem anderen Laufwerk als dem temporären Laufwerk abgelegt werden `D:\` (Standardwert: 4 KB). SQL Server über Azure Marketplace bereitgestellten virtuellen Computer verfügen über Datenträger, die mit der Größe der Zuordnungseinheit formatiert sind, und Interleave für den Speicherpool auf 64 KB. 
 
 Weitere Informationen finden Sie in den [bewährten Methoden für den Speicher](performance-guidelines-best-practices-storage.md). 

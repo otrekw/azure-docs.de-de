@@ -153,6 +153,8 @@
       href: v2-permissions-and-consent.md
     - name: Bedingter Zugriff
       href: v2-conditional-access-dev-guide.md
+    - name: Authentifizierungskontext
+      href: developer-guide-conditional-access-authentication-context.md
     - name: Automatische Benutzerbereitstellung (SCIM)
       href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
 - name: Vorgehensweise

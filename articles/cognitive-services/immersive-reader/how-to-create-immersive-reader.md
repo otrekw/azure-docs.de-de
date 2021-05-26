@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Ressource für den plastischen Reader
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: In diesem Artikel wird beschrieben, wie Sie eine neue Plastischer Reader-Ressource mit einer benutzerdefinierten Unterdomäne erstellen und dann Azure AD in Ihrem Azure-Mandanten konfigurieren.
 services: cognitive-services
 author: rwaller
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 369905ed5ee0ce9a93ec2be879b5e40114b0a380
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 56d7c56e77382dcf2b06c2ab79c712b42796e67e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048662"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377744"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Erstellen einer Plastischer Reader-Ressource und Konfigurieren der Azure Active Directory-Authentifizierung
 
