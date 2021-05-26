@@ -1,25 +1,31 @@
 ---
-title: Benutzerdefinierte Speicherorte in Kubernetes-Clustern mit Azure Arc-Unterstützung
+title: Erstellen und Verwalten benutzerdefinierter Standorte in Kubernetes mit Azure Arc-Unterstützung
 services: azure-arc
 ms.service: azure-arc
-ms.date: 04/05/2021
+ms.date: 05/25/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
 description: Verwenden benutzerdefinierter Speicherorte zum Bereitstellen von Azure-PaaS-Diensten in Kubernetes-Clustern mit Azure Arc-Unterstützung
-ms.openlocfilehash: d8e1c11069a1097b0bfea3319eeb90fcee3eec82
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 15309599b12b10344b59d46c47c11dfa243726db
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287733"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367184"
 ---
-# <a name="custom-locations-on-azure-arc-enabled-kubernetes"></a>Benutzerdefinierte Speicherorte in Kubernetes-Clustern mit Azure Arc-Unterstützung
+# <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>Erstellen und Verwalten benutzerdefinierter Standorte in Kubernetes mit Azure Arc-Unterstützung
 
 Als Azure-Speicherorterweiterung bietet *Benutzerdefinierte Speicherorte* Mandantenadministratoren eine Möglichkeit, ihre Kubernetes-Cluster mit Azure Arc-Unterstützung als Zielspeicherorte für die Bereitstellung von Instanzen von Azure-Diensten zu verwenden. Beispiele für Azure-Ressourcen sind u. a. SQL Managed Instance mit Azure Arc-Unterstützung und PostgreSQL Hyperscale mit Azure Arc-Unterstützung.
 
 Ähnlich wie bei Azure-Speicherorten können Endbenutzer im Mandanten mit Zugriff auf „Benutzerdefinierte Speicherorte“ dort Ressourcen bereitstellen, indem sie das private Compute Ihres Unternehmens verwenden.
+
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
+> [!div class="checklist"]
+> * Sie aktivieren benutzerdefinierte Standorte in Ihrem Kubernetes-Cluster mit Azure Arc-Unterstützung.
+> * Sie stellen die Azure-Dienstclustererweiterung der Azure-Dienstinstanz für Ihren Cluster bereit.
+> * Erstellen Sie einen benutzerdefinierten Speicherort in Ihrem Kubernetes-Cluster mit Azure Arc-Unterstützung.
 
 Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benutzerdefinierte Speicherorte“ auf Basis von Kubernetes mit Azure Arc-Unterstützung](conceptual-custom-locations.md).
 
@@ -29,7 +35,10 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benut
 
 - [Installieren oder aktualisieren Sie Azure CLI](/cli/azure/install-azure-cli) auf eine Version >= 2.16.0.
 
-- Azure CLI-Erweiterungen`connectedk8s` (Version >= 1.1.0), `k8s-extension` (Version >= 0.2.0), and `customlocation` (Version >= 0.1.0). Installieren Sie diese Azure CLI-Erweiterungen, indem Sie die folgenden Befehle ausführen:
+- Installieren Sie die folgenden Azure CLI-Erweiterungen:
+    - `connectedk8s` (Version 1.1.0 oder höher)
+    - `k8s-extension` (Version 0.2.0 oder höher)
+    - `customlocation` (Version 0.1.0 oder höher) 
   
     ```azurecli
     az extension add --name connectedk8s
@@ -37,7 +46,7 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benut
     az extension add --name customlocation
     ```
     
-    Wenn die Erweiterungen `connectedk8s`, `k8s-extension` und `customlocation` bereits installiert sind, können Sie sie mit dem folgenden Befehl auf die neueste Version aktualisieren:
+    Wenn Sie zuvor die Erweiterungen `connectedk8s`, `k8s-extension` und `customlocation` installiert haben, aktualisieren Sie die neueste Version über den folgenden Befehl:
 
     ```azurecli
     az extension update --name connectedk8s
@@ -45,7 +54,7 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benut
     az extension update --name customlocation
     ```
 
-- Die Anbieterregistrierung ist für `Microsoft.ExtendedLocation` abgeschlossen.
+- Überprüfen Sie die abgeschlossene Anbieterregistrierung für `Microsoft.ExtendedLocation`.
     1. Geben Sie die folgenden Befehle ein:
     
     ```azurecli
@@ -57,6 +66,9 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benut
     ```azurecli
     az provider show -n Microsoft.ExtendedLocation -o table
     ```
+
+- Überprüfen Sie, ob Sie über einen [verbundenen, Azure Arc-fähigen Kubernetes-Cluster](quickstart-connect-cluster.md) verfügen.
+    - [Führen Sie für Ihre Agents ein Upgrade](agent-upgrade.md#manually-upgrade-agents) auf Version 1.1.1.0 oder höher aus.
 
 >[!NOTE]
 >**Unterstützte Regionen für benutzerdefinierte Speicherorte:**
@@ -78,18 +90,28 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 ## <a name="create-custom-location"></a>Erstellen eines benutzerdefinierten Speicherorts
 
-1. Erstellen eines Kubernetes-Clusters mit Azure Arc-Unterstützung.
-    - Wenn Sie noch keine Verbindung mit einem Cluster hergestellt haben, verwenden Sie unseren [Schnellstart](quickstart-connect-cluster.md).
-    - [Aktualisieren Sie Ihre Agents](agent-upgrade.md#manually-upgrade-agents) auf Version >= 1.1.0.
+1. Stellen Sie die Azure-Dienstclusterinstanz der Azure-Dienstinstanz bereit, die letztendlich auf Ihrem Cluster vorhanden sein soll.
 
-1. Stellen Sie die Clustererweiterung des Azure-Dienstanbieters bereit, dessen Instanz Sie schließlich zusätzlich zum benutzerdefinierten Speicherort benötigen:
+    * Azure Arc-fähige Data Services
 
-    ```azurecli
-    az k8s-extension create --name <extensionInstanceName> --extension-type microsoft.arcdataservices --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace arc --config Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper
-    ```
+        ```azurecli
+        az k8s-extension create --name <extensionInstanceName> --extension-type microsoft.arcdataservices --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace arc --config Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper
+        ```
+        > [!NOTE]
+        > Der Proxy für ausgehenden Datenverkehr ohne Authentifizierung und der Proxy für ausgehenden Datenverkehr mit Standardauthentifizierung werden von der Data Services-Clustererweiterung mit Arc-Unterstützung aktiviert. Proxys für ausgehenden Datenverkehr, von denen Zertifikate erwartet werden, werden aktuell nicht unterstützt.
 
-    > [!NOTE]
-    > Der Proxy für ausgehenden Datenverkehr ohne Authentifizierung und der Proxy für ausgehenden Datenverkehr mit Standardauthentifizierung werden von der Data Services-Clustererweiterung mit Arc-Unterstützung aktiviert. Proxys für ausgehenden Datenverkehr, von denen Zertifikate erwartet werden, werden aktuell nicht unterstützt.
+
+    * [Azure App Service in Azure Arc](../../app-service/overview-arc-integration.md)
+
+        ```azurecli
+        az k8s-extension create --name <extensionInstanceName> --extension-type 'Microsoft.Web.Appservice' --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace appservice-ns --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" --configuration-settings "appsNamespace=appservice-ns" 
+        ```
+
+    * [Event Grid in Kubernetes](/azure/event-grid/kubernetes/overview)
+
+        ```azurecli
+          az k8s-extension create --name <extensionInstanceName> --extension-type Microsoft.EventGrid --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace eventgrid-ext --configuration-protected-settings-file protected-settings-extension.json --configuration-settings-file settings-extension.json
+        ```
 
 1. Rufen Sie den Azure Resource Manager-Bezeichner des Kubernetes-Clusters mit Azure Arc-Unterstützung ab, auf den in späteren Schritten als `connectedClusterId` verwiesen wird:
 
@@ -111,5 +133,8 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> Sicheres Herstellen einer Verbindung mit dem Cluster über [Cluster Connect](cluster-connect.md)
+- Stellen Sie eine sichere Verbindung mit dem Cluster über [Cluster Connect](cluster-connect.md) her.
+- Fahren Sie mit [Azure App Service auf Azure Arc](../../app-service/overview-arc-integration.md) fort, um umfassende Anweisungen zum Installieren von Erweiterungen, Erstellen benutzerdefinierter Standorte und Erstellen der App Service-Kubernetes-Umgebung abzurufen. 
+- Erstellen Sie ein Event Grid-Thema und ein Ereignisabonnement für [Event Grid in Kubernetes](/azure/event-grid/kubernetes/overview).
+- In den derzeit verfügbaren [Azure Arc-fähigen Kubernetes-Erweiterungen](extensions.md#currently-available-extensions) finden Sie weitere Details.
+

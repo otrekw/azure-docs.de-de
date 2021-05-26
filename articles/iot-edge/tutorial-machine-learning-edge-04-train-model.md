@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16d5fe90be71f39d448e4c1ce10c0373f6bfc86c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73e4edd25946f71cfb6d14a379d5b004343cc4e3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463101"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367235"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Tutorial: Trainieren und Bereitstellen eines Azure Machine Learning-Modells
 
@@ -52,7 +52,7 @@ Wir verwenden Machine Learning Studio, um die beiden Jupyter-Notebooks und die u
 
 ### <a name="install-azure-machine-learning-visual-studio-code-extension"></a>Installieren der Azure Machine Learning-Erweiterung für Visual Studio Code
 
-Diese Erweiterung für Visual Studio Code muss auf dem virtuellen Entwicklungscomputer installiert sein. Wenn Sie eine andere Instanz ausführen, installieren Sie die Erweiterung erneut, wie unter [Einrichten der Azure Machine Learning-Erweiterung für Visual Studio Code](../machine-learning/tutorial-setup-vscode-extension.md) beschrieben.
+Diese Erweiterung für Visual Studio Code muss auf dem virtuellen Entwicklungscomputer installiert sein. Wenn Sie eine andere Instanz ausführen, installieren Sie die Erweiterung erneut, wie unter [Einrichten der Azure Machine Learning-Erweiterung für Visual Studio Code](../machine-learning/how-to-setup-vs-code.md) beschrieben.
 
 ### <a name="create-an-azure-machine-learning-account"></a>Erstellen eines Azure Machine Learning-Kontos
 

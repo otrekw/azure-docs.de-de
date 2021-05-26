@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/22/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 80ea49436e9bfec5203f3a0493d441cfdbd1dbde
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: dde8291bce52e8f36aa712e294109dfe156fb426
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755115"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367201"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Einrichten einer Python-Entwicklungsumgebung für Azure Machine Learning
 
@@ -132,7 +132,7 @@ Unter [Beispielnotebooks des Azure Machine Learning-Diensts](https://github.com/
 So verwenden Visual Studio Code für die Entwicklung
 
 1. Installieren Sie [Visual Studio Code](https://code.visualstudio.com/Download).
-1. Installieren Sie die [Visual Studio Code-Erweiterung für Azure Machine Learning (Vorschau)](tutorial-setup-vscode-extension.md).
+1. Installieren Sie die [Visual Studio Code-Erweiterung für Azure Machine Learning (Vorschau)](how-to-setup-vs-code.md).
 
 Nachdem Sie die Visual Studio Code-Erweiterung installiert haben, verwenden Sie sie zu Folgendem:
 

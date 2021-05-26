@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 3ff48ff5a3f46d8ec0fbf81b4cd20d20c217344b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54c0d8aa8ba17beb5a2f5a51c4a19795f767733a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98787636"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089433"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
 
@@ -33,7 +33,7 @@ Migration ist der Prozess des Änderns der Erstellungsauthentifizierung von eine
 Eine Migration muss über das [LUIS-Portal](https://www.luis.ai) erfolgen. Wenn Sie die Erstellungsschlüssel beispielsweise mithilfe der LUIS-Befehlszeilenschnittstelle erstellen, müssen Sie den Migrationsvorgang trotzdem im LUIS-Portal abschließen. Nach einer Migration können Sie weiterhin Mitautoren bei Ihren Anwendungen haben, doch diese werden auf der Azure-Ressourcenebene hinzugefügt anstatt auf Anwendungsebene. Die Kontomigration kann nicht rückgängig gemacht werden.
 
 > [!Note]
-> * Wenn Sie eine Vorhersageruntimeressource erstellen müssen, gibt es [einen gesonderten Prozess](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal), um diese zu erstellen.
+> * Wenn Sie eine Vorhersageruntimeressource erstellen müssen, gibt es [einen gesonderten Prozess](luis-how-to-azure-subscription.md#create-luis-resources), um diese zu erstellen.
 > * Informationen zu den Auswirkungen auf Ihre Anwendungen und Mitwirkenden finden Sie weiter unten im Abschnitt [Migrationshinweise](#migration-notes). 
 > * Das Erstellen Ihrer LUIS-App ist kostenlos, wie der F0-Tarif zeigt. Hier finden Sie [weitere Informationen zu Tarifen](luis-limits.md#key-limits).
 

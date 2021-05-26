@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: f325dd445e778bf03049d2c9e2e00fed7a427ccf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c954db5c75f1cf32833ec5ecb270ef3c4b57c10b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443999"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110093176"
 ---
 # <a name="quickstart-route-to-shared-services-vnets-using-an-arm-template"></a>Schnellstart: Routen zu VNets für gemeinsame Dienste mithilfe einer ARM-Vorlage
 
@@ -24,7 +24,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer ARM-Vor
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f301-virtual-wan-with-route-tables%2fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.network%2fvirtual-wan-with-route-tables%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +33,7 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 
 ## <a name="review-the-template"></a><a name="review"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/301-virtual-wan-with-route-tables). Die Vorlage für diesen Artikel ist zu lang und kann hier nicht angezeigt werden. Die Vorlage können Sie sich in [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/301-virtual-wan-with-route-tables/azuredeploy.json) ansehen.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templatesvirtual-wan-with-route-tables). Die Vorlage für diesen Artikel ist zu lang und kann hier nicht angezeigt werden. Die Vorlage können Sie sich in [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/virtual-wan-with-route-tables/azuredeploy.json) ansehen.
 
 In dieser Schnellstartanleitung erstellen Sie eine Azure Virtual WAN-Bereitstellung mit mehreren Hubs, die alle Gateways und VNET-Verbindungen umfasst. Die Liste mit den Eingabeparametern wurde absichtlich so kurz wie möglich gehalten. Das Schema für die IP-Adressierung kann geändert werden, indem die Variablen in der Vorlage modifiziert werden. Das Szenario wird im Artikel [Szenario: Routen zu VNets für gemeinsame Dienste](scenario-shared-services-vnet.md) ausführlicher erläutert.
 
@@ -78,7 +78,7 @@ Für die korrekte Bereitstellung dieser Vorlage müssen Sie anstelle von anderen
 
 1. Klicken Sie auf Schaltfläche zum **Bereitstellen in Azure**.
 
-   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f301-virtual-wan-with-route-tables%2fazuredeploy.json)
+   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.network%2fvirtual-wan-with-route-tables%2fazuredeploy.json)
 1. Klicken Sie zum Anzeigen der Vorlage auf **Vorlage bearbeiten**. Auf dieser Seite können Sie einige Werte anpassen, z. B. den Adressraum oder den Namen bestimmter Ressourcen. Wählen Sie **Speichern** aus, um Ihre Änderungen zu speichern, oder wählen Sie **Verwerfen** aus.
 1. Geben Sie auf der Vorlagenseite die Werte ein. Für diese Vorlage werden die Daten des öffentlichen P2S-Zertifikats benötigt. Falls Sie diesen Artikel zu Übungszwecken nutzen, können Sie die folgenden Daten aus dieser CER-Datei als Beispieldaten für beide Hubs verwenden. Nachdem die Vorlage ausgeführt wurde und die Bereitstellung abgeschlossen ist, müssen Sie diese Informationen zur Verwendung der P2S-Konfiguration durch die [Daten des Zertifikats](certificates-point-to-site.md#cer) mit einem öffentlichen Schlüssel ersetzen, die für Ihre eigene Bereitstellung gelten.
 

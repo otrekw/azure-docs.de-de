@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
-ms.openlocfilehash: 152b96bee63b6d2280a807ca53842ed3a67ab67d
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: b7191e4d1cff49ff31fa66f80c3aafbc4dfd9924
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279764"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814278"
 ---
-# <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Konfigurieren von Anwendungseinstellungen für Azure Static Web Apps (Vorschau)
+# <a name="configure-application-settings-for-azure-static-web-apps"></a>Konfigurieren von Anwendungseinstellungen für Azure Static Web Apps
 
 Anwendungseinstellungen enthalten Konfigurationseinstellungen für Werte, die sich ggf. ändern können, z. B. Datenbank-Verbindungszeichenfolgen. Indem Sie Anwendungseinstellungen hinzufügen, können Sie die Konfigurationseingabe für Ihre App ändern, ohne dass Sie dafür den Anwendungscode ändern müssen.
 

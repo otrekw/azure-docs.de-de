@@ -7,12 +7,12 @@ ms.topic: guide
 author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: 2975d1f1558bc7f9e4a12c18882e43a163b97982
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 867b9dfefd47e38b5bcfd54ae54aab607e7acea5
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593423"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814908"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Häufige Fragen zu VMs im Azure Marketplace
 
@@ -474,8 +474,8 @@ New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgNa
 ## <a name="how-do-i-test-a-hidden-preview-image"></a>Wie teste ich ein ausgeblendetes Vorschauimage?
 
 Sie können ausgeblendete Vorschauimages mithilfe von Schnellstartvorlagen bereitstellen.
-So stellen Sie ein Vorschauimage bereit: 
-1. Navigieren Sie zu der jeweiligen Schnellstartvorlage für [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux) oder [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows), und wählen Sie „in Azure bereitstellen“. Dadurch werden Sie zum Azure-Portal geführt.
+So stellen Sie ein Vorschauimage bereit:
+1. Navigieren Sie zu der jeweiligen Schnellstartvorlage für [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-linux/) oder [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows), und wählen Sie „in Azure bereitstellen“. Dadurch werden Sie zum Azure-Portal geführt.
 2. Wählen Sie im Azure-Portal die Option „Vorlage bearbeiten“ aus.
 3. Suchen Sie in der JSON-Vorlage nach „imageReference“, und aktualisieren Sie die Parameter „publisherid“, „offerid“, „skuid“ und „version“ des Images. Zum Testen des Vorschauimages hängen Sie „-PREVIEW“ an „offerid“ an.
  ![image](https://user-images.githubusercontent.com/79274470/110191995-71c7d500-7de0-11eb-9f3c-6a42f55d8f03.png)
