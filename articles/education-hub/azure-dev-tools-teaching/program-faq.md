@@ -7,12 +7,12 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c2690b625454c7767619ba756f61383fc8f509c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92675692"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481030"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Häufig gestellte Fragen zu Education Hub
 
@@ -22,7 +22,7 @@ In diesem Artikel finden Sie Antworten auf einige häufig gestellte Fragen zu Az
 
 ### <a name="what-happens-after-i-use-my-100-credit-or-im-at-the-end-of-12-months"></a>Was geschieht, wenn ich mein Guthaben von 100 USD verbraucht habe oder die 12 Monate abgelaufen sind?
 
-Nachdem Sie Ihr verfügbares Guthaben aufgebraucht haben oder 12 Monaten vergangen sind, wird Ihr Azure-Abonnement deaktiviert. Um [Azure](https://account.azure.com/) weiterhin verwenden zu können, können Sie im Azure-Kontoportal ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen. Ausführliche Nutzungsbedingungen für Azure for Students finden Sie in den [Angebotsbedingungen](https://azure.microsoft.com/offers/ms-azr-0170p/).
+Nachdem Sie Ihr verfügbares Guthaben aufgebraucht haben oder 12 Monaten vergangen sind, wird Ihr Azure-Abonnement deaktiviert. Um Azure weiterhin verwenden zu können, können Sie im Azure-Portal ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen. Ausführliche Nutzungsbedingungen für Azure for Students finden Sie in den [Angebotsbedingungen](https://azure.microsoft.com/offers/ms-azr-0170p/).
 
 ### <a name="can-i-get-azure-for-students-again-next-year"></a>Kann ich Azure for Students im nächsten Jahr erneut nutzen?
 

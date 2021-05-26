@@ -2,15 +2,15 @@
 title: Testfälle für das Testtoolkit
 description: Beschreibt die Tests, die vom Resource Manager-Vorlagen-Testtoolkit ausgeführt werden.
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 05/17/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5dc4891bbc8bf6397a0f041fa845f4fb0ad6c600
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8e771d8c15e26367ab205ea77a451fae443ac981
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142511"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064394"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Standardtestfälle für das Resource Manager-Vorlagen-Testtoolkit
 
@@ -40,30 +40,6 @@ Die schema-Eigenschaft in der Vorlage muss auf eines der folgenden Schemas festg
 * `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`
 * `https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#`
 * `https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json`
-
-## <a name="parameters-must-exist"></a>Vorhandensein des parameters-Elements
-
-Testname: **Parameters Property Must Exist**
-
-Die Vorlage muss ein parameters-Element enthalten. Parameter sind erforderlich, um die Wiederverwendung Ihrer Vorlagen in verschiedenen Umgebungen zu ermöglichen. Fügen Sie der Vorlage Parameter für Werte hinzu, die sich bei der Bereitstellung in unterschiedlichen Umgebungen ändern.
-
-Im folgenden Beispiel ist der Test **erfolgreich**:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-      "vmName": {
-          "type": "string",
-          "defaultValue": "linux-vm",
-          "metadata": {
-            "description": "Name for the Virtual Machine."
-          }
-      }
-  },
-  ...
-```
 
 ## <a name="declared-parameters-must-be-used"></a>Verwendung deklarierter Parameter
 

@@ -3,12 +3,12 @@ title: Azure Service Bus-Tarife Premium und Standard
 description: Dieser Artikel beschreibt die Tarife Standard und Premium von Azure Service Bus. Er vergleicht diese Tarife und erläutert technische Unterschiede.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: b7117da6a959181704dd136c6d5be5ab62edef55
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: e0149f0ad1ee608179cc7dbdfaa61b498dd60ca0
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389484"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190745"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
 
@@ -69,7 +69,7 @@ Die Anzahl von Messagingeinheiten, die dem Service Bus-Namespace im Tarif „Pr
 Bei der Entscheidung über die Anzahl von Messagingeinheiten für Ihre Architektur muss eine Reihe von Faktoren berücksichtigt werden:
 
 - Beginnen Sie mit ***ein bis zwei Messagingeinheiten***, die Ihrem Namespace zugeordnet sind.
-- Sehen Sie sich in den [Metriken zur Ressourcennutzung](service-bus-metrics-azure-monitor.md#resource-usage-metrics) für Ihren Namespace die Metriken zur CPU-Auslastung an.
+- Sehen Sie sich in den [Metriken zur Ressourcennutzung](monitor-service-bus-reference.md#resource-usage-metrics) für Ihren Namespace die Metriken zur CPU-Auslastung an.
     - Bei einer CPU-Auslastung von ***unter 20 Prozent** _ können Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, ggf. _ *_herunterskalieren_**.
     - Bei einer CPU-Auslastung von ***über 70 Prozent** _ verbessert sich die Leistung Ihrer Anwendung, wenn Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, _ *_hochskalieren_**.
 

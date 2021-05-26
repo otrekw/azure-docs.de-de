@@ -3,12 +3,12 @@ title: Übersicht über Azure Service Bus-Drosselung | Microsoft-Dokumentation
 description: 'Übersicht über Service Bus-Drosselung: Tarif „Standard“ und „Premium“'
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95b03859b26d97c1089b6112b41511618abdcffe
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85340957"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191103"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Drosselungsvorgänge für Azure Service Bus
 
@@ -89,7 +89,7 @@ Falls die Anzahl von Anforderungen so hoch ist, dass sie von den aktuellen Resso
 ### <a name="how-will-i-know-that-im-being-throttled"></a>Woher weiß ich, dass bei mir die Drosselung durchgeführt wird?
 
 Es gibt verschiedene Möglichkeiten, die Drosselung in Azure Service Bus Premium zu identifizieren: 
-  * **Gedrosselte Anforderungen** werden in den [Azure Monitor-Anforderungsmetriken](service-bus-metrics-azure-monitor.md#request-metrics) angezeigt, um ermitteln zu können, wie viele Anforderungen gedrosselt wurden.
+  * **Gedrosselte Anforderungen** werden in den [Azure Monitor-Anforderungsmetriken](monitor-service-bus-reference.md#request-metrics) angezeigt, um ermitteln zu können, wie viele Anforderungen gedrosselt wurden.
   * Eine hohe **CPU-Auslastung** ist ein Hinweis darauf, dass die derzeitige Ressourcenzuordnung hoch ist und Anforderungen ggf. gedrosselt werden, falls die aktuelle Arbeitsauslastung nicht reduziert wird.
   * Eine hohe **Arbeitsspeicherauslastung** ist ein Hinweis darauf, dass die derzeitige Ressourcenzuordnung hoch ist und Anforderungen ggf. gedrosselt werden, falls die aktuelle Arbeitsauslastung nicht reduziert wird.
 

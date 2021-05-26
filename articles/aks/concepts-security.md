@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: mlearned
-ms.openlocfilehash: 3fafbe3f4b1c53f929682f4ca160fb19a5e91918
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 7f754aa8d454949c74ccd31e3f52423f755b2fa4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105305"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372392"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)
 
@@ -45,15 +45,15 @@ Mithilfe der rollenbasierten Zugriffssteuerung von Kubernetes (Kubernetes RBAC) 
 ## <a name="node-security"></a>Knotensicherheit
 
 AKS-Knoten sind virtuelle Azure-Computer (VMs), die von Ihnen verwaltet und gewartet werden. 
-* Auf Linux-Knoten wird eine optimierte Ubuntu-Distribution mit der Containerruntime `containerd` oder Moby ausgeführt. 
-* Auf Windows Server-Knoten wird eine optimierte Version von Windows Server 2019 mithilfe der Containerruntime `containerd` oder Moby ausgeführt. 
+* Auf Linux-Knoten wird eine optimierte Ubuntu-Distribution mit `containerd` oder Docker als Containerruntime ausgeführt. 
+* Auf Windows Server-Knoten wird eine optimierte Version von Windows Server 2019 mit `containerd` oder Docker als Containerruntime ausgeführt.
 
 Wenn ein AKS-Cluster erstellt oder zentral hochskaliert wird, werden die Knoten automatisch mit den aktuellen Betriebssystem-Sicherheitsupdates und -konfigurationen bereitgestellt.
 
 > [!NOTE]
 > AKS-Cluster mit:
-> * Knotenpools der Kubernetes-Version 1.19 und höher verwenden `containerd` als Containerruntime. 
-> * Knotenpools mit älteren Kubernetes-Versionen als 1.19 verwenden [Moby](https://mobyproject.org/) (Upstream-Docker) als Containerruntime.
+> * Kubernetes Version 1.19 und höher für Linux-Knotenpools verwenden `containerd` als Containerruntime. Die Verwendung von `containerd` mit Windows Server 2019-Knotenpools befindet sich derzeit in der Vorschau. Weitere Informationen finden Sie unter [Hinzufügen eines Windows Server-Knotenpools mit `containerd`][aks-add-np-containerd].
+> * Ältere Kubernetes-Versionen (vor Version 1.19) für Linux-Knotenpools verwenden Docker als Containerruntime. Für Windows Server 2019-Knotenpools wird Docker als Standardcontainerruntime verwendet.
 
 ### <a name="node-security-patches"></a>Sicherheitspatches für Knoten
 
@@ -160,6 +160,7 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets
 [aks-upgrade-cluster]: upgrade-cluster.md
 [aks-aad]: ./managed-aad.md
+[aks-add-np-containerd]: windows-container-cli.md#add-a-windows-server-node-pool-with-containerd-preview
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-scale]: concepts-scale.md

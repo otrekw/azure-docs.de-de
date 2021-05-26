@@ -5,16 +5,16 @@ description: Anhand dieser Beispiele und exemplarischen Vorgehensweisen erfahren
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
 ms.service: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: timoklimmer
+ms.author: tklimmer
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: cda5dfd936243602775e1f4f965032b9d746b0b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/12/2021
+ms.openlocfilehash: 5ce6b2d80341a9c6ebb8afcbbe8f7072b54ca93c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519761"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087902"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Beispiele in Azure Data Science Virtual Machine-Instanzen
 
@@ -35,8 +35,6 @@ Um diese Beispiele ausführen zu können, müssen Sie eine [Ubuntu-Data Science 
 | Azure Machine Learning  | Veranschaulicht, wie Machine Learning-Modelle und Deep Learning-Modelle mit Machine Learning erstellt werden. Stellen Sie die Modelle an beliebigen Speicherorten bereit. Verwenden Sie automatisiertes maschinelles Lernen und intelligente Optimierung von Hyperparametern. Nutzen Sie darüber hinaus Modellverwaltung und verteiltes Training. <br/> [Machine Learning](#azure-machine-learning) | <br/>`~notebooks/AzureML`<br/> <br/>|
 | PyTorch-Notebooks  | Deep Learning-Beispiele, die neuronale Netze auf der Grundlage von PyTorch verwenden. Mit Notebooks von Einsteiger- bis zu fortgeschrittenen Szenarien.  <br/> [PyTorch-Notebooks](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
 | TensorFlow  |  Eine Vielzahl von Beispielen und Techniken für neuronale Netzwerke, die mithilfe des TensorFlow-Frameworks implementiert werden. <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
-| Microsoft Cognitive Toolkit <br/>   | Deep Learning-Beispiele, die vom Cognitive Toolkit-Team von Microsoft veröffentlicht wurden.  <br/> [Cognitive Toolkit](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
-| Caffe2 | Deep Learning-Beispiele, die neuronale Netze auf der Grundlage von Caffe2 verwenden. Verschiedene Notebooks machen Benutzer mit Caffe2 und seinem effektiven Einsatz vertraut. Zu den Beispielen gehören Imagevorverarbeitung und Dataseterstellung. Regression und die Verwendung vortrainierter Modelle werden ebenfalls behandelt. <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
 | H2O   | Python-basierte Beispiele, die H2O für praxisorientierte Aufgabenstellungen verwenden. <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
 | SparkML (Programmiersprache)  | Beispiele, in denen Features des Apache Spark MLLib-Toolkits über pySpark und MMLSpark verwendet werden: Microsoft Machine Learning for Apache Spark on Apache Spark 2.x.  <br/> [SparkML (Programmiersprache)](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
 | XGBoost | Standardmäßige Machine Learning-Beispiele in XGBoost für Szenarien wie Klassifizierung und Regression. <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
@@ -77,14 +75,6 @@ Melden Sie sich mit dem Kennwort an, das Sie für ein Anmelden bei der Data Scie
 ## <a name="tensorflow"></a>TensorFlow 
 <br/>![Beispiele für TensorFlow](./media/tensorflow-samples.png)<br/>
 
-
-## <a name="cntk"></a>CNTK 
-<br/>![Beispiele für CNTK](./media/cntk-samples.png)<br/>
-
-
-## <a name="caffe2"></a>Caffe2 
-<br/>![Beispiele für caffe2](./media/caffe2-samples.png)<br/>
-
 ## <a name="h2o"></a>H2O 
 <br/>![Beispiele für H2O](./media/h2o-samples.png)<br/>
 
@@ -93,4 +83,3 @@ Melden Sie sich mit dem Kennwort an, das Sie für ein Anmelden bei der Data Scie
 
 ## <a name="xgboost"></a>XGBoost 
 <br/>![Beispiele für XGBoost](./media/xgboost-samples.png)<br/>
-
