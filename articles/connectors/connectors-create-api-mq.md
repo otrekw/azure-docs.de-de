@@ -7,14 +7,14 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 04/26/2021
+ms.date: 05/25/2021
 tags: connectors
-ms.openlocfilehash: 80ff8508caefd355f00a0407df0d9a65c76c999a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e852f0ce1584a0858f9523c1ea055d4f2cd616d2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742101"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376253"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-a-workflow-in-azure-logic-apps"></a>Herstellen einer Verbindung mit einem IBM MQ-Server über einen Workflow in Azure Logic Apps
 
@@ -30,11 +30,9 @@ Dieser Connector umfasst einen Microsoft-Client zum Kommunizieren mit einem MQ-R
 
 ## <a name="available-operations"></a>Verfügbare Vorgänge
 
-Der IBM MQ-Connector bietet Aktionen, aber keine Auslöser.
+* Mehrinstanzenfähige Azure Logic Apps: Wenn Sie eine **Logik-App-Ressource (nutzungsbasiert)** erstellen, können Sie die Verbindung zu einem MQ-Server nur über den *verwalteten* MQ-Connector herstellen. Dieser Connector stellt nur Aktionen und keine Trigger bereit.
 
-* Mehrinstanzenfähige Azure Logic Apps: Wenn Sie einen nutzungsbasierten Logik-App-Workflow erstellen, können Sie mithilfe des *verwalteten* MQ-Connectors eine Verbindung mit einem MQ-Server herstellen.
-
-* Einzelmandanten-Azure Logic Apps (Vorschau): Wenn Sie einen Logik-App-Vorschauworkflow erstellen, können Sie eine Verbindung mit einem MQ-Server herstellen, indem Sie entweder den verwalteten MQ-Connector oder die *integrierten* MQ-Vorgänge (Vorschau) verwenden.
+* Azure Logic Apps mit nur einem Mandanten: Wenn Sie einen Logik-App-Workflow mit nur einem Mandanten erstellen, können Sie für eine Verbindung mit einem MQ-Server entweder den verwalteten MQ-Connector, der *nur* Aktionen enthält, oder die *integrierten* MQ-Operationen verwenden, die Trigger *und* Aktionen enthalten.
 
 Weitere Informationen zum Unterschied zwischen einem verwalteten Connector und integrierten Vorgängen finden Sie unter den [Schlüsselbedingungen in Logic Apps](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
@@ -49,14 +47,17 @@ In der folgenden Liste werden nur einige der verwalteten Vorgänge beschrieben, 
 
 Informationen zu allen verwalteten Connectorvorgängen und anderen technischen Informationen wie Eigenschaften, Grenzwerten usw. finden Sie auf der [Referenzseite des MQ-Connectors](/connectors/mq/).
 
-#### <a name="built-in-preview"></a>[Integriert (Vorschau)](#tab/built-in)
+#### <a name="built-in"></a>[Integriert](#tab/built-in)
 
 In der folgenden Liste werden nur einige der integrierten Vorgänge beschrieben, die für MQ verfügbar sind:
 
-* Empfangen einer einzelnen Nachricht oder eine Reihe von Nachrichten vom MQ-Server. Für mehrere Nachrichten können Sie die maximale Anzahl von Nachrichten angeben, die pro Batch zurückgegeben werden sollen, und die maximale Stapelgröße in KB angeben.
+* Wenn eine Nachricht in einer Warteschlange verfügbar ist, führen Sie eine Aktion aus.
+* Wenn eine oder mehrere Nachrichten von einer Warteschlange eingehen (AutoVervollständigen), führen Sie eine Aktion aus.
+* Wenn eine oder mehrere Nachrichten von einer Warteschlange eingehen (Peek-Lock), führen Sie eine Aktion aus.
+* Empfangen einer einzelnen Nachricht oder eine Reihe von Nachrichten von einer Warteschlange. Für mehrere Nachrichten können Sie die maximale Anzahl von Nachrichten angeben, die pro Batch zurückgegeben werden sollen, und die maximale Stapelgröße in KB angeben.
 * Senden einer einzelnen Nachricht oder eine Reihe von Nachrichten an den MQ-Server.
 
-Diese integrierten MQ-Vorgänge verfügen auch über die folgenden Funktionen sowie die Vorteile aller anderen Funktionen für Logik-Apps im [Einzelmandanten-basierten Logic Apps-Dienst](../logic-apps/logic-apps-overview-preview.md):
+Diese integrierten MQ-Vorgänge verfügen auch über die folgenden Funktionen sowie die Vorteile aller anderen Funktionen für Logik-Apps im [Einzelmandanten-basierten Logic Apps-Dienst](../logic-apps/single-tenant-overview-compare.md):
 
 * Transport Layer Security (TLS) Verschlüsselung bei der Übertragung
 * Nachrichtencodierung für Sendungs- und Empfangsvorgänge
@@ -125,7 +126,7 @@ Wenn Sie zum ersten Mal eine MQ-Aktion hinzufügen, werden Sie aufgefordert, ein
 
 1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
-#### <a name="built-in-preview"></a>[Integriert (Vorschau)](#tab/built-in)
+#### <a name="built-in"></a>[Integriert](#tab/built-in)
 
 1. Geben Sie die Verbindungsinformationen für den MQ-Server an.
 

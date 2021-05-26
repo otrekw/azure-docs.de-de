@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 05/17/2021
 ms.author: banders
-ms.openlocfilehash: 37ce1a292b6ff2efe0abecdb2ab934f096689f87
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: b98e9af17b20482a1c5c3178aa183198e936bef7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "105560660"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069200"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Anzeigen und Herunterladen der Microsoft Azure-Rechnung
 
@@ -116,7 +116,7 @@ So laden Sie eine Rechnung herunter:
 
 ## <a name="get-mosp-subscription-invoice-in-email"></a>Erhalten der MOSP-Abonnementrechnung per E-Mail
 
-Sie müssen über eine Kontoadministratorrolle für ein Abonnement oder einen Supportplan verfügen, um die zugehörige Rechnung per E-Mail erhalten zu können. E-Mail-Rechnungen sind nur für Abonnements und Supportpläne verfügbar, nicht für Reservierungen oder Azure Marketplace-Käufe. Nach der Aktivierung können weitere Empfänger hinzugefügt werden, die die Rechnung ebenfalls per E-Mail erhalten sollen.
+Sie müssen über eine Kontoadministratorrolle für ein Abonnement oder einen Supportplan verfügen, um die zugehörige Rechnung per E-Mail erhalten zu können. Nach der Aktivierung können weitere Empfänger hinzugefügt werden, die die Rechnung ebenfalls per E-Mail erhalten sollen.
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2.  Suchen Sie nach **Kostenverwaltung + Abrechnung**.  

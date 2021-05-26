@@ -5,14 +5,14 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: helohr
-ms.reviewer: sefriend
+ms.reviewer: denisgun
 manager: femila
-ms.openlocfilehash: cb2bd4ddb553380a037f58cf8c51e80247e9c055
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7928c86375eb66a6518326bfcadfb1278193cfc3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108077667"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454069"
 ---
 # <a name="proxy-server-guidelines-for-windows-virtual-desktop"></a>Richtlinien für Proxyserver in Windows Virtual Desktop
 
@@ -111,8 +111,8 @@ In der folgenden Tabelle sind die Windows Virtual Desktop-Clients aufgeführt, d
 | Windows Desktop | Ja |
 | Webclient | Ja |
 | Android | Nein |
-| iOS | Nein |
-| macOS | Nein |
+| iOS | Ja |
+| macOS | Ja |
 | Windows Store | Ja |
 
 Weitere Informationen zur Proxyunterstützung auf Linux-basierten Thin Clients finden Sie unter [Thin Client-Unterstützung](linux-overview.md).

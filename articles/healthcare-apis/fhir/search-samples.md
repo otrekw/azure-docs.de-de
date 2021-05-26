@@ -5,14 +5,14 @@ author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 05/03/2021
+ms.date: 05/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 33dcd9ace7af6d4ff820654fef20aa0a5aa3ff9d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6e3a074c24305209047fbd3e741fdb81256374e5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756789"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460101"
 ---
 # <a name="fhir-search-examples"></a>FHIR-Suchbeispiele
 
@@ -22,7 +22,7 @@ Im Folgenden finden Sie einige Beispiele für die Verwendung von FHIR-Suchvorgä
 
 ### <a name="_include"></a>_include
 
-`_include` durchsucht ressourcenübergreifend nach ressourcenübergreifenden Ressourcen, die den angegebenen Parameter der Ressource enthalten. Beispielsweise können Sie ressourcenübergreifend suchen, um nur diejenigen zu finden, die Informationen zu den Behandlungen für einen bestimmten Patienten `MedicationRequest` enthalten. Dies ist der `reference` Parameter `patient` :
+`_include` durchsucht ressourcenübergreifend nach ressourcenübergreifenden Ressourcen, die den angegebenen Parameter der Ressource enthalten. Sie können z. B. ressourcenübergreifend suchen, um nur diejenigen zu finden, die Informationen zu den Behandlungen für einen bestimmten Patienten enthalten, der `MedicationRequest` den `reference` Parameter `patient` enthält. Im folgenden Beispiel werden alle Patienten, auf die verwiesen wird, aus `MedicationRequests` dem `MedicationRequests` pullen:
 
 ```rest
  GET [your-fhir-server]/MedicationRequest?_include=MedicationRequest:patient
@@ -34,10 +34,10 @@ Im Folgenden finden Sie einige Beispiele für die Verwendung von FHIR-Suchvorgä
 
 ### <a name="_revinclude"></a>_revinclude
 
-`_revinclude` ist eine zusätzliche Suche zusätzlich zu `_include` , die die Ressourcen durchsucht, die auf die Suchergebnisse von `_include` verweisen. Beispielsweise können Sie Ressourcen `MedicationRequest` durchsuchen. Suchen Sie für jede zurückgegebene Ressource nach `DetectedIssue` Ressourcen, die die medizinischen Probleme mit dem `patient` zeigen:
+`_revinclude` ermöglicht es Ihnen, die entgegengesetzte Richtung als zu `_include` suchen. Sie können z. B. nach Patienten suchen und dann alle Gefundenen, die auf die Patienten verweisen, in umgekehrter Reihenfolge enthalten:
 
 ```rest
-GET [your-fhir-server]/MedicationRequest?_revinclude=DetectedIssue:patient
+GET [your-fhir-server]/Patient?_revinclude=Encounter:subject
 
 ```
 ### <a name="_elements"></a>_elements
@@ -55,7 +55,7 @@ In dieser Anforderung erhalten Sie ein Bündel von Patienten zurück, aber jede 
 
 ### <a name="not"></a>:not
 
-`:not` ermöglicht es Ihnen, Ressourcen zu finden, bei denen ein Attribut nicht true ist. Sie könnten z. B. nach Patienten suchen, bei denen das Geschlecht nicht frauenspezifisch ist:
+`:not` ermöglicht es Ihnen, Ressourcen zu finden, bei denen ein Attribut nicht true ist. Beispielsweise könnten Sie nach Patienten suchen, bei denen das Geschlecht nicht frauenspezifisch ist:
 
 ```rest
 GET [your-fhir-server]/Patient?gender:not=female
@@ -69,7 +69,7 @@ Als Rückgabewert erhalten Sie alle Patienteneinträge, bei denen das Geschlecht
 `:missing` gibt alle Ressourcen zurück, die keinen Wert für das angegebene Element haben, wenn der Wert `true` ist, und gibt alle Ressourcen zurück, die das angegebene Element enthalten, wenn der Wert `false` ist. Bei einfachen Datentypelementen `:missing=true` stimmt für alle Ressourcen überein, in denen das Element mit Erweiterungen vorhanden ist, aber einen leeren Wert aufweist. Wenn Sie beispielsweise alle Ressourcen suchen möchten, für die Informationen zum Geburtsdatum fehlen, haben Sie folgende `Patient` Möglichkeiten:
 
 ```rest
-GET [your-fhir-server]/Patient?birthDate:missing=true
+GET [your-fhir-server]/Patient?birthdate:missing=true
 
 ```
 
@@ -91,7 +91,7 @@ GET [your-fhir-server]/Patient?address:contains=Meadow
 
 ```
 
-Diese Anforderung gibt Alle `Patient` Ressourcen mit `address` Feldern zurück, die Werte enthalten, die die Zeichenfolge "Umschließung" enthalten. Dies bedeutet, dass Adressen, die Werte wie "Lädter" oder "59 Uhr ST" enthalten, als Suchergebnisse zurückgegeben werden können.
+Diese Anforderung gibt Alle `Patient` Ressourcen mit `address` Feldern zurück, die Werte enthalten, die die Zeichenfolge "Ziehzeichen" enthalten. Dies bedeutet, dass Sie Adressen, die Werte wie "Betreuer" oder "59 Uhr ST" enthalten, als Suchergebnisse zurückgegeben haben können.
 
 ## <a name="chained-search"></a>Verkettete Suche 
 
@@ -104,7 +104,7 @@ Um eine Reihe von Suchvorgängen auszuführen, die mehrere Verweisparameter abde
 
 Diese Anforderung würde alle Ressourcen mit dem Patientensubjekt "Sarah" zurückgeben. Der `.` Zeitraum, nach dem das `Patient` Feld die verkettete Suche für den Verweisparameter des Parameters `subject` ausführt.
 
-Eine weitere häufige Verwendung der verketteten Suche ist die Suche nach allen Gefundenen für einen bestimmten Patienten. `Patient`s verfügen häufig über ein oder mehrere `Encounter` s mit einem Betreff. So suchen Sie nach allen `Encounter` Ressourcen für eine mit dem `Patient` bereitgestellten `id` :
+Eine weitere häufige Verwendung einer regulären Suche (keine verkettete Suche) besteht in der Suche nach allen Gefundenen für einen bestimmten Patienten. `Patient`s verfügen häufig über ein oder mehrere `Encounter` s mit einem Betreff. So suchen Sie nach allen `Encounter` Ressourcen für eine mit dem `Patient` bereitgestellten `id` :
 
 ```rest
 GET [your-fhir-server]/Encounter?subject=Patient/78a14cbe-8968-49fd-a231-d43e6619399f
@@ -114,7 +114,7 @@ GET [your-fhir-server]/Encounter?subject=Patient/78a14cbe-8968-49fd-a231-d43e661
 Mithilfe der verketteten Suche können Sie alle Ressourcen finden, die mit einer bestimmten Information wie z. `Encounter` `Patient` B. dem -Wert () in Übereinstimmung mit einer bestimmten Information `birthdate` stehen:
 
 ```rest
-GET [your-fhir-server]/Encounter?subject:Patient.birthDate=1987-02-20
+GET [your-fhir-server]/Encounter?subject:Patient.birthdate=1987-02-20
 
 ```
 
@@ -140,7 +140,7 @@ GET [base]/Patient?_has:Observation:patient:code=527
 
 ```
 
-Diese Anforderung gibt Patientenressourcen zurück, auf die mit dem Code verwiesen `Observation` `527` wird. 
+Diese Anforderung gibt Patientenressourcen zurück, auf die von mit dem Code verwiesen `Observation` `527` wird. 
 
 Darüber hinaus kann die umgekehrte Kettensuche eine rekursive Struktur aufweisen. Wenn Sie beispielsweise nach allen Patienten suchen möchten, bei `Observation` denen die Beobachtung über ein Überwachungsereignis eines bestimmten Benutzers `janedoe` verfügt, können Sie Folgendes tun:
 
@@ -150,7 +150,7 @@ GET [base]/Patient?_has:Observation:patient:_has:AuditEvent:entity:user=janedoe
 ``` 
 
 > [!NOTE]
-> Im Azure API for FHIR und auf dem Open-Source-FHIR-Server, der von Cosmos unterstützt wird, ist die verkettete Suche und die umgekehrte verkettete Suche eine MVP-Implementierung. Um die verkettete Suche auf Cosmos DB durchzuführen, führt die Implementierung den Suchausdruck durch und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Featureflag. Um die verkettete Suche auf Cosmos DB zu verwenden, verwenden Sie den Header x-ms-enable-chained-search: true.
+> Im Azure API for FHIR und auf dem Open-Source-FHIR-Server, der von Cosmos unterstützt wird, ist die verkettete Suche und die umgekehrte verkettete Suche eine MVP-Implementierung. Um die verkettete Suche auf Cosmos DB durchzuführen, führt die Implementierung den Suchausdruck durch und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Featureflag. Um die verkettete Suche für Cosmos DB zu verwenden, verwenden Sie den Header x-ms-enable-chained-search: true.
 
 ## <a name="composite-search"></a>Zusammengesetzte Suche
 

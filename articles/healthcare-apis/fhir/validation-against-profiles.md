@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 05/06/2021
 ms.author: ginle
-ms.openlocfilehash: 679d8b2ac86ec63d33fcd5cd069a3135d33ab981
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 2c367dbed14e0dba9a8a95a3ce2709d2415c7cd6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109657043"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466699"
 ---
 # <a name="how-to-validate-fhir-resources-against-profiles"></a>Überprüfen von FHIR-Ressourcen anhand von Profilen
 
@@ -24,7 +24,7 @@ Azure API for FHIR ermöglicht die Überprüfung von Ressourcen anhand von Profi
 
 ## <a name="fhir-profile-the-basics"></a>FHIR-Profil: Grundlagen
 
-Ein Profil legt zusätzlichen Kontext für die Ressource fest, der normalerweise als Ressource dargestellt `StructureDefinition` wird. `StructureDefinition` definiert einen Satz von Regeln für den Inhalt einer Ressource oder eines Datentyps, z. B. welche Felder eine Ressource enthält und welche Werte diese Felder annehmen können. Profile können beispielsweise die Kardinalität einschränken (z. B. die maximale Kardinalität auf 0 festlegen, um das Element auszuschließen), den Inhalt eines Elements auf einen einzelnen festen Wert beschränken oder erforderliche Erweiterungen für die Ressource definieren. Sie kann auch zusätzliche Einschränkungen für ein vorhandenes Profil angeben. Eine `StructureDefinition` wird durch ihre kanonische URL identifiziert:
+Ein Profil legt zusätzlichen Kontext für die Ressource fest, der normalerweise als Ressource dargestellt `StructureDefinition` wird. `StructureDefinition` definiert einen Satz von Regeln für den Inhalt einer Ressource oder eines Datentyps, z. B. welche Felder eine Ressource hat und welche Werte diese Felder annehmen können. Profile können beispielsweise die Kardinalität einschränken (z. B. die maximale Kardinalität auf 0 festlegen, um das Element auszuschließen), den Inhalt eines Elements auf einen einzelnen festen Wert beschränken oder erforderliche Erweiterungen für die Ressource definieren. Sie kann auch zusätzliche Einschränkungen für ein vorhandenes Profil angeben. Eine `StructureDefinition` wird durch ihre kanonische URL identifiziert:
 
 ```rest
 http://hl7.org/fhir/StructureDefinition/{profile}
@@ -50,7 +50,7 @@ Es gibt zwei Arten von Profilen: Basisprofil und benutzerdefiniertes Profil. Ein
 }
 ```
 
-Ein benutzerdefiniertes Profil besteht aus einer Reihe zusätzlich zu einem Basisprofil zusätzlicher Einschränkungen, die Ressourcenparameter einschränken oder hinzufügen, die nicht Teil der Basisspezifikation sind. Ein benutzerdefiniertes Profil ist nützlich, da Sie Ihre eigenen Ressourcendefinitionen anpassen können, indem Sie die Einschränkungen und Erweiterungen für die vorhandene Basisressource angeben. Beispielsweise können Sie ein Profil erstellen, das Ressourceninstanzen basierend auf Geschlecht zeigt. In diesem Fall erstellen Sie zusätzlich zu einem vorhandenen Profil mit Profil ein `AllergyIntolerance` `Patient` benutzerdefiniertes `Patient` `AllergyIntolerance` Profil.
+Ein benutzerdefiniertes Profil ist eine Reihe zusätzlich zu einem Basisprofil zusätzlicher Einschränkungen, die Ressourcenparameter einschränken oder hinzufügen, die nicht Teil der Basisspezifikation sind. Ein benutzerdefiniertes Profil ist nützlich, da Sie Ihre eigenen Ressourcendefinitionen anpassen können, indem Sie die Einschränkungen und Erweiterungen für die vorhandene Basisressource angeben. Beispielsweise können Sie ein Profil erstellen, das Ressourceninstanzen basierend auf Geschlecht zeigt. In diesem Fall erstellen Sie zusätzlich zu einem vorhandenen Profil mit Profil ein `AllergyIntolerance` `Patient` benutzerdefiniertes `Patient` `AllergyIntolerance` Profil.
 
 > [!NOTE]
 > Benutzerdefinierte Profile müssen auf der Basisressource aufbauen und dürfen keinen Konflikt mit der Basisressource haben. Wenn ein Element beispielsweise die Kardinalität 1..1 auf hat, kann es vom benutzerdefinierten Profil nicht optional werden.
@@ -66,9 +66,96 @@ Argonaut |<http://www.fhir.org/guides/argonaut/pd/>
 
 ## <a name="accessing-profiles-and-storing-profiles"></a>Zugreifen auf Profile und Speichern von Profilen
 
+### <a name="storing-profiles"></a>Speichern von Profilen
+
+Zum Speichern von Profilen auf dem Server können Sie eine Anforderung `POST` ausführen:
+
+```rest
+POST http://<your FHIR service base URL>/{Resource}
+```
+
+In dem das Feld durch ersetzt wird und Ihre Ressource dem Server im - oder `{Resource}` `StructureDefinition` `StructureDefinition` `POST` -Format `JSON` angezeigt `XML` wird. Wenn Sie beispielsweise ein Profil speichern `us-core-allergyintolerance` möchten, gehen Sie folgendermaßen vor:
+
+```rest
+POST http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance
+```
+
+Hier würde das Profil "US Core All über all jetzt" gespeichert und abgerufen werden:
+
+```json
+{
+    "resourceType" : "StructureDefinition",
+    "id" : "us-core-allergyintolerance",
+    "text" : {
+        "status" : "extensions"
+    },
+    "url" : "http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance",
+    "version" : "3.1.1",
+    "name" : "USCoreAllergyIntolerance",
+    "title" : "US  Core AllergyIntolerance Profile",
+    "status" : "active",
+    "experimental" : false,
+    "date" : "2020-06-29",
+        "publisher" : "HL7 US Realm Steering Committee",
+    "contact" : [
+    {
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "http://www.healthit.gov"
+        }
+      ]
+    }
+  ],
+    "description" : "Defines constraints and extensions on the AllergyIntolerance resource for the minimal set of data to query and retrieve allergy information.",
+
+...
+```
+
+Die meisten Profile verfügen über den Ressourcentyp `StructureDefinition` , können aber auch die Typen und aufweisen, bei denen es sich um `ValueSet` `CodeSystem` [Terminologieressourcen](http://hl7.org/fhir/terminologies.html) handelt. Wenn Sie beispielsweise `POST` ein Profil in einem `ValueSet` JSON-Formular verwenden, gibt der Server das gespeicherte Profil mit dem für das Profil zugewiesenen `id` zurück, genau wie bei `StructureDefinition` . Im Folgenden finden Sie ein Beispiel, das Sie erhalten, wenn Sie ein Profil für den Schweregrad der [Bedingung](https://www.hl7.org/fhir/valueset-condition-severity.html) hochladen, das die Kriterien für die Bewertung des Schweregrads einer Bedingung/Diagnose angibt:
+
+```json
+{
+    "resourceType": "ValueSet",
+    "id": "35ab90e5-c75d-45ca-aa10-748fefaca7ee",
+    "meta": {
+        "versionId": "1",
+        "lastUpdated": "2021-05-07T21:34:28.781+00:00",
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+        ]
+    },
+    "text": {
+        "status": "generated"
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+            "valueCode": "pc"
+        }
+    ],
+    "url": "http://hl7.org/fhir/ValueSet/condition-severity",
+    "identifier": [
+        {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:oid:2.16.840.1.113883.4.642.3.168"
+        }
+    ],
+    "version": "4.0.1",
+    "name": "Condition/DiagnosisSeverity",
+    "title": "Condition/Diagnosis Severity",
+    "status": "draft",
+    "experimental": false,
+    "date": "2019-11-01T09:29:23+11:00",
+    "publisher": "FHIR Project team",
+...
+```
+
+Sie können sehen, dass `resourceType` ein `ValueSet` ist, und der `url` für das Profil auch angibt, dass dies ein Typ `ValueSet` ist: `"http://hl7.org/fhir/ValueSet/condition-severity"` .
+
 ### <a name="viewing-profiles"></a>Anzeigen von Profilen
 
-Sie können mithilfe einer Anforderung auf Ihre vorhandenen benutzerdefinierten Profile auf dem Server `GET` zugreifen. Auf alle gültigen Profile, z. B. profile mit gültigen kanonischen URLs in Implementierungshandbüchern, sollte durch Abfragen von zugegriffen werden können:
+Sie können mithilfe einer Anforderung auf Ihre vorhandenen benutzerdefinierten Profile auf dem Server `GET` zugreifen. Auf alle gültigen Profile, z. B. die Profile mit gültigen kanonischen URLs in Implementierungshandbüchern, sollte durch Abfragen zugegriffen werden können:
 
 ```rest
 GET http://<your FHIR service base URL>/StructureDefinition?url={canonicalUrl} 
@@ -115,55 +202,6 @@ Unser FHIR-Server gibt keine `StructureDefinition` Instanzen für die Basisprofi
 - `http://hl7.org/fhir/Observation.profile.json.html`
 - `http://hl7.org/fhir/Patient.profile.json.html`
 
-### <a name="storing-profiles"></a>Speichern von Profilen
-
-Zum Speichern von Profilen auf dem Server können Sie eine `POST` Anforderung durchführen:
-
-```rest
-POST http://<your FHIR service base URL>/{Resource}
-```
-
-In dem das Feld `{Resource}` durch ersetzt wird und Ihre Ressource im - oder `StructureDefinition` `StructureDefinition` `POST` -Format an den Server gesendet `JSON` `XML` wird.
-
-Die meisten Profile verfügen über den Ressourcentyp `StructureDefinition` , können aber auch die Typen und aufweisen, bei denen es sich um `ValueSet` `CodeSystem` [Terminologieressourcen](http://hl7.org/fhir/terminologies.html) handelt. Wenn Sie beispielsweise `POST` ein Profil in einem `ValueSet` JSON-Formular verwenden, gibt der Server das gespeicherte Profil mit dem für das Profil zugewiesenen `id` zurück, genau wie bei `StructureDefinition` . Im Folgenden finden Sie ein Beispiel, das Sie erhalten, wenn Sie ein Profil für den Schweregrad der [Bedingung](https://www.hl7.org/fhir/valueset-condition-severity.html) hochladen, das die Kriterien für die Bewertung des Schweregrads einer Bedingung/Diagnose angibt:
-
-```json
-{
-    "resourceType": "ValueSet",
-    "id": "35ab90e5-c75d-45ca-aa10-748fefaca7ee",
-    "meta": {
-        "versionId": "1",
-        "lastUpdated": "2021-05-07T21:34:28.781+00:00",
-        "profile": [
-            "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
-        ]
-    },
-    "text": {
-        "status": "generated",
-        "div": "<div>!-- Snipped for Brevity --></div>"
-    },
-    "extension": [
-        {
-            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
-            "valueCode": "pc"
-        }
-    ],
-    "url": "http://hl7.org/fhir/ValueSet/condition-severity",
-    "identifier": [
-        {
-            "system": "urn:ietf:rfc:3986",
-            "value": "urn:oid:2.16.840.1.113883.4.642.3.168"
-        }
-    ],
-    "version": "4.0.1",
-    "name": "Condition/DiagnosisSeverity",
-    "title": "Condition/Diagnosis Severity",
-    "status": "draft",
-    "experimental": false,
-    "date": "2019-11-01T09:29:23+11:00",
-    "publisher": "FHIR Project team",
-...
-```
 
 ### <a name="profiles-in-the-capability-statement"></a>Profile in der Capability-Anweisung
 
@@ -172,9 +210,9 @@ Die meisten Profile verfügen über den Ressourcentyp `StructureDefinition` , k�
 - `CapabilityStatement.rest.resource.profile`
 - `CapabilityStatement.rest.resource.supportedProfile`
 
-Diese zeigen die gesamte Spezifikation für das Profil, das die allgemeine Unterstützung für die Ressource beschreibt, einschließlich einschränkungen für Kardinalität, Bindungen, Erweiterungen oder andere Einschränkungen. Wenn Sie also `POST` ein Profil in Form von und die `StructureDefinition` `GET` Ressourcenmetadaten zum Anzeigen der vollständigen Funktionsanweisung verwenden, werden neben dem Parameter alle Details des profils angezeigt, `supportedProfiles` das Sie hochgeladen haben.
+Diese zeigen die gesamte Spezifikation für das Profil, das die allgemeine Unterstützung für die Ressource beschreibt, einschließlich einschränkungen für Kardinalität, Bindungen, Erweiterungen oder andere Einschränkungen. Wenn Sie also ein Profil in Form von und die Ressourcenmetadaten verwenden, um die vollständige Funktions-Anweisung anzuzeigen, werden neben dem Parameter alle Details des profils angezeigt, das Sie `POST` `StructureDefinition` hochgeladen `GET` `supportedProfiles` haben.
 
-Wenn Sie z. B. `POST` ein US Core Patient-Profil haben, das wie folgt beginnt:
+Wenn Sie z. B. ein `POST` US Core Patient-Profil erstellen, das wie das folgende beginnt:
 
 ```json
 {
@@ -212,9 +250,9 @@ Sie werden mit einem zurückgegeben, der die folgenden Informationen zum US Core
 
 ## <a name="validating-resources-against-the-profiles"></a>Überprüfen von Ressourcen für die Profile
 
-FHIR-Ressourcen wie oder können ihre Konformität `Patient` `Observation` mit bestimmten Profilen ausdrücken. Dadurch kann unser FHIR-Server **bestimmte Ressourcen** anhand der zugeordneten Profile oder der angegebenen Profile überprüfen. Das Überprüfen einer Ressource mit Profilen bedeutet, zu überprüfen, ob Ihre Ressource den Profilen entspricht, einschließlich der spezifikationen, die in oder in einem `Resource.meta.profile` Implementierungshandbuch aufgeführt sind.
+FHIR-Ressourcen wie oder können ihre Konformität `Patient` `Observation` mit bestimmten Profilen ausdrücken. Dadurch kann unser FHIR-Server **bestimmte Ressourcen** anhand der zugeordneten Profile oder der angegebenen Profile überprüfen. Das Überprüfen einer Ressource mit Profilen bedeutet, zu überprüfen, ob Ihre Ressource den Profilen entspricht, einschließlich der in oder in einem `Resource.meta.profile` Implementierungshandbuch aufgeführten Spezifikationen.
 
-Es gibt zwei Möglichkeiten, ihre Ressource zu überprüfen. Zunächst können Sie den Vorgang `$validate` für eine Ressource verwenden, die sich bereits auf dem FHIR-Server befindet. Zweitens können Sie `POST` ihn als Teil einer Ressource oder eines Vorgangs an den Server `Update` `Create` senden. In beiden Fällen können Sie über ihre FHIR-Serverkonfiguration entscheiden, was zu tun ist, wenn die Ressource nicht dem gewünschten Profil entspricht.
+Es gibt zwei Möglichkeiten, ihre Ressource zu überprüfen. Zunächst können Sie den Vorgang `$validate` für eine Ressource verwenden, die sich bereits auf dem FHIR-Server befindet. Zweitens können Sie `POST` es als Teil einer Ressource oder eines Vorgangs auf den Server `Update` `Create` übertragen. In beiden Fällen können Sie über ihre FHIR-Serverkonfiguration entscheiden, was zu tun ist, wenn die Ressource nicht dem gewünschten Profil entspricht.
 
 ### <a name="using-validate"></a>Verwenden $validate
 
@@ -239,7 +277,7 @@ Beispiel:
 GET http://my-fhir-server.azurewebsites.net/Patient/a6e11662-def8-4dde-9ebc-4429e68d130e/$validate
 ```
 
-Im obigen Beispiel würden Sie die vorhandene Ressource `Patient` `a6e11662-def8-4dde-9ebc-4429e68d130e` überprüfen. Wenn sie gültig ist, erhalten Sie eine `OperationOutcome` wie die folgende:
+Im obigen Beispiel würden Sie die vorhandene `Patient` Ressource `a6e11662-def8-4dde-9ebc-4429e68d130e` überprüfen. Wenn sie gültig ist, erhalten Sie eine `OperationOutcome` wie die folgende:
 
 ```json
 {
@@ -296,7 +334,7 @@ Wenn die Ressource ungültig ist, erhalten Sie einen Fehlercode und eine Fehlerm
 }
 ```
 
-In diesem Beispiel oben entsprach die Ressource nicht dem bereitgestellten `Patient` Profil, das einen Patientenbezeichnerwert und ein Geschlecht erforderte.
+In diesem Beispiel oben entsprach die Ressource nicht dem bereitgestellten `Patient` Profil, das einen Patientenbezeichnerwert und geschlechtlichen Wert erforderte.
 
 Wenn Sie ein Profil als Parameter angeben möchten, können Sie die kanonische URL für das Zu überprüfende Profil angeben, z. B. das folgende Beispiel mit US `Patient` Core-Profil und einem Basisprofil für `heartrate` :
 
@@ -342,7 +380,7 @@ Sie können auswählen, wann Sie Ihre Ressource überprüfen möchten, z. B. fü
 ```
 
 Wenn die Ressource dem bereitgestellten entspricht `Resource.meta.profile` und das Profil im System vorhanden ist, reagiert der Server entsprechend der oben genannten Konfigurationseinstellung. Wenn das bereitgestellte Profil nicht auf dem Server vorhanden ist, wird die Validierungsanforderung ignoriert und in `Resource.meta.profile` belassen.
-Die Validierung ist in der Regel ein aufwendiger Vorgang, daher wird sie in der Regel nur auf Testservern oder auf einer kleinen Teilmenge von Ressourcen ausgeführt. Daher ist es wichtig, diese Möglichkeiten zum Aktivieren oder Deaktivieren der Validierung auf serverseitiger Seite zu verwenden. Wenn die Serverkonfiguration angibt, dass die Überprüfung für ressource Create/Update nicht mehr durchgeführt werden soll, kann der Benutzer das Verhalten überschreiben, indem er es in `header` der Create/Update-Anforderung angibt:
+Die Validierung ist in der Regel ein aufwendiger Vorgang, daher wird sie in der Regel nur auf Testservern oder auf einer kleinen Teilmenge von Ressourcen ausgeführt. Daher ist es wichtig, diese Möglichkeiten zum Aktivieren oder Deaktivieren der Validierung auf serverseitiger Seite zu verwenden. Wenn die Serverkonfiguration angibt, dass die Überprüfung für die Ressource Erstellen/Aktualisieren deaktivieren soll, kann der Benutzer das Verhalten überschreiben, indem er es in der `header` Create/Update-Anforderung angibt:
 
 ```rest
 x-ms-profile-validation: true
@@ -350,7 +388,7 @@ x-ms-profile-validation: true
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie mehr über FHIR-Profile erfahren und erfahren, wie Sie Ressourcen mithilfe von $validate anhand von Profilen überprüfen. Weitere Informationen zu Azure API for FHIR unterstützten Features finden Sie hier:
+In diesem Artikel haben Sie mehr über FHIR-Profile erfahren und erfahren, wie Sie Ressourcen anhand von Profilen mithilfe von $validate. Weitere Informationen zu Azure API for FHIR unterstützten Features finden Sie hier:
 
 >[!div class="nextstepaction"]
 >[Von FHIR unterstützte Features](fhir-features-supported.md)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 40d54d9e495efef4b0e1ddb8dc8b8c7114421414
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: c7d960735ee3ebd056858b93576d219ade514a00
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165567"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459699"
 ---
 # <a name="tutorial-work-with-azure-queue-storage-queues-in-net"></a>Tutorial: Arbeiten mit Azure Queue Storage-Warteschlangen in .NET
 
@@ -101,7 +101,7 @@ Erstellen Sie eine .NET Core-Anwendung mit dem Namen `QueueApp`. Der Einfachheit
 
 1. Fügen Sie dem Projekt mit dem Befehl `dotnet add package` die Azure Storage Client-Bibliotheken hinzu.
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    Führen Sie den folgenden Befehl aus dem Projektordner im Konsolenfenster aus.
 
@@ -109,7 +109,7 @@ Erstellen Sie eine .NET Core-Anwendung mit dem Namen `QueueApp`. Der Einfachheit
    dotnet add package Azure.Storage.Queues
    ```
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    Führen Sie die folgenden Befehle aus dem Projektordner im Konsolenfenster aus.
 
@@ -129,11 +129,11 @@ Erstellen Sie eine .NET Core-Anwendung mit dem Namen `QueueApp`. Der Einfachheit
 
 1. Öffnen Sie die Quelldatei `Program.cs`, und fügen Sie die folgenden Namespaces direkt nach der Anweisung `using System;` hinzu. Diese App verwendet Typen aus diesen Namespaces zum Herstellen einer Verbindung mit Azure Storage und zum Arbeiten mit Warteschlangen.
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
@@ -165,21 +165,21 @@ Fügen Sie die Verbindungszeichenfolge in die App ein, damit sie auf das Speiche
 
 1. Ersetzen Sie in der Methode `Main` den Code `Console.WriteLine("Hello, World");` durch die folgende Zeile, die die Verbindungszeichenfolge aus der Umgebungsvariablen abruft.
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
 1. Fügen Sie `Main` den folgenden Code zum Erstellen eines Warteschlangenobjekts hinzu, das später an die Methoden zum Senden und Empfangen übergeben wird.
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
 
@@ -191,13 +191,13 @@ Erstellen Sie eine neue Methode zum Senden einer Nachricht in die Warteschlange.
 
 1. Fügen Sie Ihrer Klasse `Program` die folgende `InsertMessageAsync`-Methode hinzu.
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    Dieser Methode wird ein Warteschlangenverweis übergeben. Wenn sie nicht bereits vorhanden ist, wird durch Aufrufen von [`CreateIfNotExistsAsync`](/dotnet/api/azure.storage.queues.queueclient.createifnotexistsasync) eine neue Warteschlange erstellt. Anschließend fügt sie der Warteschlange durch Aufrufen von [`SendMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) die `newMessage` hinzu.
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_InsertMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    Dieser Methode wird ein Warteschlangenverweis übergeben. Wenn sie nicht bereits vorhanden ist, wird durch Aufrufen von [`CreateIfNotExistsAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync) eine neue Warteschlange erstellt. Anschließend fügt sie der Warteschlange durch Aufrufen von [`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) die `newMessage` hinzu.
 
@@ -205,13 +205,13 @@ Erstellen Sie eine neue Methode zum Senden einer Nachricht in die Warteschlange.
 
 1. **Optional:** Die maximale Gültigkeitsdauer für eine Nachricht wird standardmäßig auf sieben Tage festgelegt. Sie können für die Gültigkeitsdauer der Nachricht eine beliebige positive Zahl angeben. Der folgende Codeausschnitt fügt eine Nachricht hinzu, die **nie** abläuft.
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
     Zum Hinzufügen einer Nachricht, die nicht abläuft, geben Sie in Ihrem Aufruf von `SendMessageAsync` den Wert `Timespan.FromSeconds(-1)` an.
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
     Zum Hinzufügen einer Nachricht, die nicht abläuft, geben Sie in Ihrem Aufruf von `AddMessageAsync` den Wert `Timespan.FromSeconds(-1)` an.
 
@@ -227,7 +227,7 @@ Erstellen Sie eine neue Methode zum Abrufen einer Nachricht aus der Warteschlang
 
 1. Fügen Sie Ihrer `Program`-Klasse die neue Methode `RetrieveNextMessageAsync` hinzu.
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    Diese Methode empfängt durch Aufrufen von [`ReceiveMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) eine Nachricht aus der Warteschlange. Dabei wird im ersten Parameter der Wert `1` zum Abrufen nur der nächsten Nachricht in der Warteschlange übergeben. Löschen Sie die empfangene Nachricht durch Aufrufen von [`DeleteMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync) aus der Warteschlange.
 
@@ -235,7 +235,7 @@ Erstellen Sie eine neue Methode zum Abrufen einer Nachricht aus der Warteschlang
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    Diese Methode empfängt durch Aufrufen von [`GetMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync) eine Nachricht aus der Warteschlange. Löschen Sie die empfangene Nachricht durch Aufrufen von [`DeleteMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync) aus der Warteschlange.
 
@@ -249,11 +249,11 @@ Es empfiehlt sich, am Ende eines Projekts zu ermitteln, ob Sie die erstellten Re
 
 1. Erweitern Sie die Methode `RetrieveNextMessageAsync`, um eine Aufforderung zum Löschen der leeren Warteschlange einzubeziehen.
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
@@ -269,11 +269,11 @@ Warten Sie schließlich auf die Benutzereingabe, bevor Sie den Vorgang durch Auf
 
 1. Erweitern Sie die Methode `Main`, um auf Befehlszeilenargumente zu überprüfen und auf die Benutzereingabe zu warten.
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_Main":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_Main":::
 
@@ -283,11 +283,11 @@ Warten Sie schließlich auf die Benutzereingabe, bevor Sie den Vorgang durch Auf
 
 Hier ist die vollständige Codeauflistung für dieses Projekt.
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_AllCode":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_AllCode":::
    ---

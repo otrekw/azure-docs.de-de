@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 04/08/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f394b6b44b2030253f7b78ec68459819c82c3c27
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 43b3332629922bb60eefb68782b84e996b692848
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480901"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461480"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Ändern der Kontaktinformationen für ein Azure-Abrechnungskonto
 
@@ -79,6 +79,20 @@ Wenn Sie die Auftragsnummer für ein Abrechnungsprofil hinzufügen oder ändern 
 1. Wählen Sie im linken Menü unter **Einstellungen** die Option **Eigenschaften** aus.
 1. Wählen Sie **Auftragsnummer aktualisieren** aus.
 1. Geben Sie eine Auftragsnummer ein, und wählen Sie dann **Aktualisieren** aus.
+
+## <a name="update-your-tax-id"></a>Aktualisieren Ihrer Steuernummer
+
+Stellen Sie sicher, dass Sie Ihre Steuernummer nach dem Verschieben Ihrer Abonnements aktualisieren. Die Steuernummer wird auf Ihrer Rechnung angezeigt und für die Berechnung von Steuerbefreiungen verwendet.
+
+**So aktualisieren Sie Abrechnungskontoinformationen**
+
+1. Melden Sie sich beim [Microsoft Store für Unternehmen](https://businessstore.microsoft.com/) oder beim [Microsoft Store für Bildungseinrichtungen](https://educationstore.microsoft.com/) an.
+1. Wählen Sie **Verwalten** und dann **Abrechnungskonten** aus.
+1. Wählen Sie unter **Übersicht** die Option **Abrechnungskontoinformationen bearbeiten** aus.
+1. Nehmen Sie die gewünschten Aktualisierungen vor, und wählen Sie dann **Speichern** aus.
+
+Informieren Sie sich ausführlicher über das [Aktualisieren der Abrechnungskontoeinstellungen](/microsoft-store/update-microsoft-store-for-business-account-settings).
+
 
 ## <a name="service-and-marketing-emails"></a>Dienst- und Marketing-E-Mails
 

@@ -3,12 +3,12 @@ title: 'Muster für Nachrichtenreplikationsaufgaben: Azure Service Bus | Microso
 description: Dieser Artikel enthält eine ausführliche Anleitung zur Implementierung spezifischer Muster für Nachrichtenreplikationsaufgaben.
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: d823ee7ccd4f53bfc3e10211a4f44908273a110d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e6161d39281dc48284737cf3ee1f83853db17ef
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97663453"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462316"
 ---
 # <a name="message-replication-tasks-patterns"></a>Muster für Nachrichtenreplikationsaufgaben
 
@@ -59,7 +59,7 @@ In der Zone Ihrer Anwendung erstellen Sie dann einen CNAME-Eintrag mit einem Ver
 
 | CNAME-Eintrag                 | Alias
 |------------------------------|-------------------------------------------------------------
-| `servicebus.test.example.com`  | `test1.test.example.com`
+| `servicebus.test.example.com`  | `sb1.test.example.com`
 
 Mit einem DNS-Client, der das Abfragen von CNAME- und SRV-Einträgen explizit zulässt (die integrierten Clients von Java und .NET lassen nur die einfache Auflösung von Namen in IP-Adressen zu), können Sie dann den gewünschten Endpunkt auflösen. Bei [DnsClient.NET](https://dnsclient.michaco.net/) ist die Lookupfunktion beispielsweise wie folgt:
 
