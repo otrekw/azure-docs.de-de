@@ -628,6 +628,14 @@
               href: stored-procedures-triggers-udfs.md
             - name: JavaScript-Abfrage-API
               href: javascript-query-api.md
+        - name: Integrierter Cache
+          items:
+            - name: Übersicht über dedizierte Gateways
+              href: dedicated-gateway.md
+            - name: Übersicht über den integrierten Cache
+              href: integrated-cache.md
+            - name: Häufig gestellte Fragen zum integrierten Cache
+              href: integrated-cache-faq.md
         - name: Sicherheit
           items:
             - name: Sicherer Zugriff auf Daten
@@ -718,6 +726,8 @@
                   href: performance-tips-async-java.md
                 - name: Sync Java SDK v2
                   href: performance-tips-java.md
+            - name: Konfigurieren des integrierten Caches
+              href: how-to-configure-integrated-cache.md
             - name: 'Leistungstest: Beispiel-App'
               href: performance-testing.md
             - name: Kostengünstige Lese- und Schreibvorgänge
@@ -850,6 +860,8 @@
               displayName: 'msi, managed service identity, aad, azure active directory, identity'
             - name: Verwenden von Zertifikaten für den Datenzugriff
               href: certificate-based-authentication.md
+            - name: Verwenden von Always Encrypted
+              href: how-to-always-encrypted.md
         - name: Integrieren in andere Azure-Dienste
           items:
             - name: 'Änderungsfeed: E-Commerce-Lösung'
@@ -1348,6 +1360,9 @@
           href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: Anleitungen
   items:
+    - name: Free-Tarif
+      href: free-tier.md
+      displayName: free tier
     - name: Verwalten von Azure Cosmos DB-Ressourcen
       items:
         - name: Verwalten eines Azure Cosmos-Kontos
@@ -1369,6 +1384,12 @@
           items:
             - name: Installieren und Verwenden des Emulators
               href: local-emulator.md
+            - name: Ausführen des Emulators in Docker
+              items:
+                - name: Ausführen des Emulators in Docker für Linux
+                  href: linux-emulator.md
+                - name: Ausführen des Emulators in Docker für Windows
+                  href: local-emulator-on-docker-windows.md
             - name: Exportieren von Emulatorzertifikaten
               href: local-emulator-export-ssl-certificates.md
             - name: Befehlszeilenparameter für den Emulator

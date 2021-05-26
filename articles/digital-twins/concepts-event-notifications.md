@@ -8,12 +8,12 @@ ms.date: 4/8/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 625f69b0088ffe6931410afc6f2a825c3156fd70
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8b8205681da7ea24fdafcef337ad903fff06c589
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209947"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474627"
 ---
 # <a name="event-notifications"></a>Ereignisbenachrichtigungen
 
@@ -234,7 +234,7 @@ Hier folgen die Felder des Hauptteils einer Änderungsbenachrichtigung zu einer 
 | `specversion` | *1.0*<br>Die Meldung entspricht dieser Version der [CloudEvents-Spezifikation](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete` |
 | `datacontenttype` | `application/json` |
-| `subject` | ID der Beziehung, z. B. `<twinID>/relationships/<relationshipID>`. |
+| `subject` | ID der Beziehung, z. B. `<twin-ID>/relationships/<relationshipID>`. |
 | `time` | Zeitstempel für den Zeitpunkt, an dem der Vorgang in der Beziehung aufgetreten ist. |
 | `traceparent` | Ein W3C-Ablaufverfolgungskontext für das Ereignis. |
 
@@ -280,7 +280,7 @@ Hier folgen die Felder des Hauptteils einer Telemetrienachricht.
 | Name    | Wert |
 | --- | --- |
 | `id` | Bezeichner der Benachrichtigung, die vom Kunden beim Aufrufen der Telemetrie-API bereitgestellt wird. |
-| `source` | Vollqualifizierte Name des Zwillings, an den das Telemetrieereignis gesendet wurde. Verwenden Sie das folgende Format: `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net/<twinId>`. |
+| `source` | Vollqualifizierte Name des Zwillings, an den das Telemetrieereignis gesendet wurde. Verwenden Sie das folgende Format: `<your-Digital-Twin-instance>.api.<your-region>.digitaltwins.azure.net/<twin-ID>`. |
 | `specversion` | *1.0*<br>Die Meldung entspricht dieser Version der [CloudEvents-Spezifikation](https://github.com/cloudevents/spec). |
 | `type` | `microsoft.iot.telemetry` |
 | `data` | Die Telemetrienachricht, die an Zwillinge gesendet wurde. Die Payload ist unverändert und entspricht möglicherweise nicht dem Schema des Zwillings, dem die Telemetriedaten gesendet wurden. |

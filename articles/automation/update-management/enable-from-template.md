@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 09/18/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 687c3d49f98fe6832d23dc1529a9761d862e0666
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: f6a32bdef2269e1235534ca99144a61c5ea023db
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830878"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463370"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Aktivieren der Updateverwaltung mithilfe einer Azure Resource Manager-Vorlage
 
@@ -22,8 +22,6 @@ Sie können eine [Azure Resource Manager-Vorlage](../../azure-resource-manager/t
 * Verknüpfen des Automation-Kontos mit dem Log Analytics-Arbeitsbereich
 * Hinzufügen von Automation-Beispielrunbooks zum Konto.
 * Aktiviert das Feature „Updateverwaltung“.
-
-Die Vorlage automatisiert nicht die Aktivierung der Updateverwaltung auf virtuellen Azure-Computern oder virtuellen Azure-fremden Computern.
 
 Wenn Sie in Ihrem Abonnement bereits einen Log Analytics-Arbeitsbereich und ein Automation-Konto in einer unterstützten Region bereitgestellt haben, sind diese nicht verknüpft. Bei Verwendung dieser Vorlage werden der Link erstellt und die Updateverwaltung bereitgestellt.
 

@@ -3,12 +3,12 @@ title: 'Tutorial: Verwenden von Azure Event Grid zum Automatisieren der Größen
 description: 'Tutorial: Azure Event Grid kann bei Blob-Uploads in Azure Storage ausgelöst werden. Sie können diese Funktion verwenden, um in Azure Storage hochgeladene Bilddateien an andere Dienste (z. B. Azure Functions) für die Größenänderung und andere Optimierungen zu senden.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: e88dff9dcf06ad5eb120c11c4c17c3ef318e4418
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 5b5630fe969f248f10065f1fb5049112da03e391
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897125"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457750"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Tutorial: Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -22,7 +22,7 @@ Sie verwenden die Azure-CLI und das Azure-Portal, um die Größenänderungsfunkt
 
 ![Screenshot, der eine veröffentlichte Web-App in einem Browser für das \.NET v12 SDK zeigt.](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 ![Screenshot, der eine veröffentlichte Web-App in einem Browser für das \.NET v10 SDK zeigt.](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
@@ -163,7 +163,7 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 ```bash
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
@@ -217,7 +217,7 @@ az functionapp deployment source config --name $functionapp --resource-group $re
   --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 Die Node.js-Beispielfunktion für die Größenänderung ist auf [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10) verfügbar. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) bereit.
 
@@ -245,7 +245,7 @@ In diesem Projekt wird `EventGridTrigger` als Triggertyp verwendet. Es wird empf
 
 Weitere Informationen zu dieser Funktion finden Sie unter in den [Dateien „function.json“ und „run.csx“](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions).
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 Weitere Informationen zu dieser Funktion finden Sie in den [Dateien „function.json“ und „index.js“](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
 
@@ -269,7 +269,7 @@ Ein Ereignisabonnement gibt an, welche vom Anbieter generierten Ereignisse an ei
     
     ![Erstellen eines Ereignisabonnements aus der Funktion im Azure-Portal](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                                        |
     | ------------ | ---------------- | -------------------------------------------------- |
     | **Name** | imageresizersub | Der Name, der Ihr neues Ereignisabonnement angibt. |
     | **Thementyp** | Speicherkonten | Wählen Sie den Speicherkonto-Ereignisanbieter aus. |
@@ -303,7 +303,7 @@ Beachten Sie, dass eine Kopie des hochgeladenen Bilds im Karussell **Generierte 
 
 ![Screenshot, der eine veröffentlichte Web-App namens „ImageResizer“ in einem Browser für das \.NET v12 SDK zeigt.](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 Klicken Sie auf **Datei auswählen**, um eine Datei auszuwählen, und klicken Sie dann auf **Bild hochladen**. Ist der Upload erfolgreich, wird im Browser eine Erfolgsmeldung angezeigt. Klicken Sie auf den Link, um zur Startseite zurückzukehren. Eine Kopie des hochgeladenen Bilds wird im Bereich **Generierte Miniaturansichten** angezeigt. (Wird das Bild zuerst nicht angezeigt, laden Sie die Seite erneut.) Die Größe dieses Bilds wurde von der Funktion angepasst, und das Bild wurde dem Container *thumbnails* hinzugefügt und vom Webclient heruntergeladen.
 

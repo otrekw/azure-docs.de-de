@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b8e5b95b0d1853d81de5a4ec603a3a59563da9d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171345"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379798"
 ---
 # <a name="common-issues"></a>Häufige Probleme
 
@@ -20,7 +21,7 @@ Wenn in Ihrer Umgebung Probleme bei der Verwendung von Azure Event Grid in IoT E
 
 ## <a name="view-event-grid-module-logs"></a>Anzeigen der Protokolle des Event Grid-Moduls
 
-Für die Problembehandlung müssen Sie möglicherweise auf die Protokolle des Event Grid-Moduls zugreifen. Führen Sie dazu auf der VM, auf der das Modul bereitgestellt ist, den folgenden Befehl aus:
+Für die Problembehandlung müssen Sie möglicherweise auf die Protokolle des Event Grid-Moduls zugreifen. Führen Sie auf der VM, auf der das Modul bereitgestellt wird, den folgenden Befehl aus:
 
 Unter Windows:
 
@@ -84,13 +85,13 @@ Standardmäßig ist das Event Grid-Modul so konfiguriert, dass Clients mit einem
 
 Die **IoTSecurity**-Klasse in [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) zeigt, wie Zertifikate aus dem IoT Edge-Sicherheits-Daemon abgerufen und zum Konfigurieren von ausgehenden Aufrufen verwendet werden.
 
-Handelt es sich nicht um eine Produktionsumgebung, können Sie die Clientauthentifizierung deaktivieren. Ausführliche Informationen zur Vorgehensweise finden Sie unter [Sicherheit und Authentifizierung](security-authentication.md).
+Handelt es sich nicht um eine Produktionsumgebung, können Sie Clientauthentifizierung deaktivieren. Weitere Informationen finden Sie unter [Sicherheit und Authentifizierung](security-authentication.md).
 
 ## <a name="debug-events-not-received-by-subscriber"></a>Vom Abonnenten nicht empfangene Debugereignisse
 
 Typische Gründe:
 
-* Das Ereignis wurde nie erfolgreich veröffentlicht. Der HTTP-Statuscode 200(OK) sollte beim Veröffentlichen eines Ereignisses im Event Grid-Modul empfangen werden.
+* Das Ereignis wurde nie erfolgreich veröffentlicht. Der Client sollte beim Senden eines Ereignisses an das Event Grid-Modul einen HTTP-StatusCode 200 (OK) empfangen haben.
 
 * Überprüfen Sie im Ereignisabonnement Folgendes:
     * Die Endpunkt-URL ist gültig.

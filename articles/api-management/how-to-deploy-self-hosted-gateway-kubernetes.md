@@ -8,17 +8,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
-ms.date: 04/23/2020
-ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: fa62dc3470ef4d4ab79045379a8b76b057b44628
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89500129"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379215"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Bereitstellen eines selbstgehosteten Gateways für Kubernetes
 
 In diesem Artikel werden die Schritte für die Bereitstellung der selbstgehosteten Gatewaykomponente von Azure API Management für einen Kubernetes-Cluster beschrieben.
+
+> [!NOTE]
+> Sie können auch das selbstgehostete Gateway in einem [Azure Arc-fähigen Kubernetes-Cluster](how-to-deploy-self-hosted-gateway-azure-arc.md) als [Clustererweiterung](../azure-arc/kubernetes/extensions.md) bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -130,3 +133,4 @@ Erwägen Sie das [Einrichten einer lokalen Überwachung](how-to-configure-local-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum selbstgehosteten Gateway finden Sie unter [Selbstgehostetes Gateway – Übersicht](self-hosted-gateway-overview.md).
+* Hier erfahren Sie, wie Sie [das selbstgehostete API Management-Gateway für Azure Arc-fähige Kubernetes-Cluster bereitstellen](how-to-deploy-self-hosted-gateway-azure-arc.md).

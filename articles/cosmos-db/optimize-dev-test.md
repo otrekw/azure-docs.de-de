@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 3ddae808fbb2e3dcfe20909c8b3d0c5a20bb04bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: 130499c2dd2b421be2c739ea392c1272069e7186
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247521"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379283"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Optimieren der Entwicklungs- und Testkosten in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -24,12 +24,9 @@ In diesem Artikel werden die unterschiedlichen Optionen zur kostenlosen Verwendu
 
 ## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB: Free-Tarif
 
-Der Free-Tarif von Azure Cosmos DB erleichtert Ihnen den Einstieg, die Entwicklung und die Durchführung von Tests für Ihre Anwendungen. Sie können sogar kleinere Produktionsworkloads kostenlos ausführen. Wenn für ein Konto der Free-Tarif aktiviert ist, sind die ersten 400 RU/s und 5 GB Speicher für das Konto kostenlos. Sie können auch eine Datenbank mit gemeinsam genutztem Durchsatz mit 25 Containern erstellen, für die 400 RU/s unter dem Free-Tarif auf Datenbankebene gemeinsam genutzt werden (maximal fünf Datenbanken mit gemeinsam genutztem Durchsatz pro Free-Tarif-Konto). Wenn Sie den Free-Tarif verwenden und eine freigegebene Datenbank mit einem Durchsatz von mindestens 400 RU/s bereitstellen, kann der Durchsatz von allen Containern in dieser Datenbank gemeinsam genutzt werden. Alle neuen Datenbanken mit gemeinsam genutztem Durchsatz oder Container mit dediziertem Durchsatz werden zu den regulären Preisen abgerechnet.
+Der Free-Tarif von Azure Cosmos DB erleichtert Ihnen den Einstieg, die Entwicklung und die Durchführung von Tests für Ihre Anwendungen. Sie können sogar kleinere Produktionsworkloads kostenlos ausführen. Wenn für ein Konto der Free-Tarif aktiviert ist, sind die ersten 1.000 RU/s und 25 GB Speicher für das Konto kostenlos.
 
-> [!NOTE]
-> Der Free-Tarif ist nur im Modus „bereitgestellter Durchsatz“ verfügbar.
-
-Der Free-Tarif gilt unbegrenzt während der Lebensdauer des Kontos und verfügt über alle [Vorteile und Features](introduction.md#key-benefits) eines regulären Azure Cosmos DB-Kontos, z. B. unbegrenzter Speicher und Durchsatz (RU/s), SLAs, Hochverfügbarkeit, globale, sofort einsatzbereite Verteilung in allen Azure-Regionen usw. Sie können pro Azure-Abonnement maximal ein Konto im Free-Tarif einrichten und müssen sich beim Erstellen des Kontos registrieren. [Erstellen Sie zunächst ein neues Konto im Azure-Portal mit aktiviertem Free-Tarif](create-cosmosdb-resources-portal.md), oder verwenden Sie eine [Resource Manager-Vorlage](./manage-with-templates.md#free-tier). Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/cosmos-db/).
+Der Free-Tarif gilt unbegrenzt während der Lebensdauer des Kontos und verfügt über alle [Vorteile und Features](introduction.md#key-benefits) eines regulären Azure Cosmos DB-Kontos, z. B. unbegrenzter Speicher und Durchsatz (RU/s), SLAs, Hochverfügbarkeit, globale, sofort einsatzbereite Verteilung in allen Azure-Regionen usw. Sie können ein Konto im Free-Tarif über das Azure-Portal, die Befehlszeilenschnittstelle, PowerShell und eine Resource Manager-Vorlage erstellen. Weitere Informationen finden Sie im Artikel [Erstellen eines Kontos im Free-Tarif](free-tier.md) und auf der Seite [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB kostenlos testen
 
