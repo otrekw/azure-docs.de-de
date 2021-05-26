@@ -6,19 +6,16 @@ ms.author: vlvinogr
 ms.date: 02/18/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 051bf4398555f318f613c66d58ec65be1d30e215
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d12945642e4a948df7f81da3ac89d5f8814fa4b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646808"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472732"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management-Richtlinien für die Integration von Dapr
 
 Dieses Thema enthält Informationen zu den API Management-Richtlinien für die Integration von Dapr. Dapr ist eine portierbare Runtime zur Erstellung zustandsloser und zustandsbehafteter, auf Microservices basierender Anwendungen mit jeder Sprache bzw. jedem Framework. Sie stellt die gängigen Microservice-Muster wie Dienstermittlung und -aufruf mit integrierter Retry-Logik, Veröffentlichen und Abonnieren mit At-Least-Once-Übermittlungssemantik oder steckbare Bindungsressourcen als Code bereit, um die Komposition mithilfe externer Dienste zu erleichtern. Ausführliche Informationen und Anleitungen für den Einstieg in Dapr finden Sie unter [dapr.io](https://dapr.io). Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).
-
-> [!CAUTION]
-> Die Richtlinien, auf die in diesem Artikel verwiesen wird, befinden sich in der öffentlichen Vorschau und unterliegen den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 > [!IMPORTANT]
 > Die Richtlinien, auf die in diesem Artikel verwiesen wird, funktionieren nur in der [selbstgehosteten Version des API Management-Gateways](self-hosted-gateway-overview.md) mit aktivierter Dapr-Unterstützung.
@@ -83,18 +80,18 @@ Die Richtlinie `forward-request` wird hier der besseren Verständlichkeit halber
 
 ### <a name="elements"></a>Elemente
 
-| Element             | BESCHREIBUNG  | Erforderlich |
+| Element             | Beschreibung  | Erforderlich |
 |---------------------|--------------|----------|
 | set-backend-service | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| Attribut        | BESCHREIBUNG                     | Erforderlich | Standard |
+| attribute        | Beschreibung                     | Erforderlich | Standard |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | Muss auf „dapr“ festgelegt werden           | Ja      | N/V     |
 | dapr-app-id      | Der Name des Ziel-Microservice. Wird zum Erstellen des Parameters [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) in Dapr verwendet.| Ja | N/V |
 | dapr-method      | Der Name der Methode oder eine URL, die auf dem Ziel-Microservice aufgerufen werden soll. Wird dem Parameter [method-name](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) in Dapr zugeordnet.| Ja | – |
-| dapr-namespace   | Der Name des Namespace, in dem sich der Ziel-Microservice befindet. Wird zum Erstellen des Parameters [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) in Dapr verwendet.| Nein | – |
+| dapr-namespace   | Der Name des Namespace, in dem sich der Ziel-Microservice befindet. Wird zum Erstellen des Parameters [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) in Dapr verwendet.| Nein | N/V |
 
 ### <a name="usage"></a>Verwendung
 
@@ -152,13 +149,13 @@ Der Abschnitt „backend“ ist leer, und die Anforderung wird nicht an das Back
 
 ### <a name="elements"></a>Elemente
 
-| Element             | BESCHREIBUNG  | Erforderlich |
+| Element             | Beschreibung  | Erforderlich |
 |---------------------|--------------|----------|
 | publish-to-dapr     | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| Attribut        | BESCHREIBUNG                     | Erforderlich | Standard |
+| attribute        | Beschreibung                     | Erforderlich | Standard |
 |------------------|---------------------------------|----------|---------|
 | pubsub-name      | Der Name der PubSub-Zielkomponente. Wird dem Parameter [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) in Dapr zugeordnet. Falls nicht vorhanden, muss der Attributwert __Thema__ die Form `pubsub-name/topic-name` haben.    | Nein       | Keine    |
 | topic            | Der Name des Themas. Wird dem Parameter [topic](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) in Dapr zugeordnet.               | Ja      | –     |
@@ -235,7 +232,7 @@ Der Abschnitt „backend“ ist leer, und die Anforderung wird nicht an das Back
 
 ### <a name="elements"></a>Elemente
 
-| Element             | BESCHREIBUNG  | Erforderlich |
+| Element             | Beschreibung  | Erforderlich |
 |---------------------|--------------|----------|
 | invoke-dapr-binding | Stammelement | Ja      |
 | metadata            | Bindung spezifischer Metadaten in Form von Schlüssel-Wert-Paaren. Der Eigenschaft [metadata](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) in Dapr zugeordnet. | Nein |
@@ -244,7 +241,7 @@ Der Abschnitt „backend“ ist leer, und die Anforderung wird nicht an das Back
 
 ### <a name="attributes"></a>Attributes
 
-| Attribut        | BESCHREIBUNG                     | Erforderlich | Standard |
+| attribute        | Beschreibung                     | Erforderlich | Standard |
 |------------------|---------------------------------|----------|---------|
 | name            | Name der Zielbindung. Muss dem Namen der Bindungen entsprechen, die in Dapr [definiert](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure) sind.           | Ja      | N/V     |
 | operation       | Name des Zielvorgangs (bindungsspezifisch). Der Eigenschaft [operation](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) in Dapr zugeordnet. | Nein | Keine |
