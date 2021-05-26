@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: a8df14dc5fbd3f69f9c4e1b29ddb04c1a04073d9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b965a4b8ee83765de8eceeb9c2a27ecca558a3ea
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108792598"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110163369"
 ---
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 *Wenn Sie bereits über einen Schlüsseltresor verfügen, können Sie mit dem [Festlegen von erweiterten Zugriffsrichtlinien für Schlüsseltresore](#set-key-vault-advanced-access-policies) fortfahren.*
 
-Erstellen Sie mit dem Azure CLI-Befehl [az keyvault create](/cli/azure/keyvault#az_keyvault_create), dem Azure PowerShell-Befehl [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault), dem [Azure-Portal](https://portal.azure.com) oder einer [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) einen Schlüsseltresor.
+Erstellen Sie mit dem Azure CLI-Befehl [az keyvault create](/cli/azure/keyvault#az_keyvault_create), dem Azure PowerShell-Befehl [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault), dem [Azure-Portal](https://portal.azure.com) oder einer [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.keyvault/key-vault-create) einen Schlüsseltresor.
 
 >[!WARNING]
 > Der Schlüsseltresor und die VMs müssen sich im selben Abonnement befinden. Um sicherzustellen, dass die Verschlüsselungsgeheimnisse die Regionsgrenzen nicht verlassen, müssen sich der Schlüsseltresor und die VMs außerdem für Azure Disk Encryption in derselben Region befinden. Erstellen und verwenden Sie einen Schlüsseltresor, der sich im selben Abonnement und derselben Region wie die zu verschlüsselnden VMs befindet. 
@@ -61,7 +61,7 @@ New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourc
 ```
 ### <a name="resource-manager-template"></a>Resource Manager-Vorlage
 
-Sie können auch mit der [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) einen Schlüsseltresor erstellen.
+Sie können auch mit der [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.keyvault/key-vault-create) einen Schlüsseltresor erstellen.
 
 1. Klicken Sie in der Azure-Schnellstartvorlage auf **Deploy to Azure** (In Azure bereitstellen).
 2. Wählen Sie Abonnement, Ressourcengruppe, Ressourcengruppenstandort, Schlüsseltresorname, Objekt-ID, rechtliche Bedingungen und Vereinbarung aus, und klicken Sie auf **Kaufen**. 

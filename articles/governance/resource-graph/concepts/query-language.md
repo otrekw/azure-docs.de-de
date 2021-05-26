@@ -1,14 +1,14 @@
 ---
 title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
-ms.date: 03/10/2021
+ms.date: 05/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: a980e285061e986e55920fc4558b44daf552f102
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 3a0e6c1e824016dbfdef4a1e351972a34ea2daa5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790755"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099188"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -40,7 +40,7 @@ Resource Graph umfasst mehrere Tabellen für die Daten, die in Bezug auf Azure R
 |PatchInstallationResources|Nein |Umfasst Ressourcen _im Zusammenhang mit_ der Azure Virtual Machines-Patchinstallation. |
 |PolicyResources |Nein |Umfasst Ressourcen, die mit `Microsoft.PolicyInsights`_in Zusammenhang stehen_. (**Vorschau**) |
 |RecoveryServicesResources |Teilweise, nur Beitritt _zu_. (Vorschauversion) |Umfasst Ressourcen _im Zusammenhang mit_ `Microsoft.DataProtection` und `Microsoft.RecoveryServices`. |
-|SecurityResources |Teilweise, nur Beitritt _zu_. (Vorschauversion) |Umfasst Ressourcen, die mit `Microsoft.Security`_in Zusammenhang stehen_. |
+|SecurityResources |Ja (Vorschau) |Umfasst Ressourcen, die mit `Microsoft.Security`_in Zusammenhang stehen_. |
 |ServiceHealthResources |Nein |Umfasst Ressourcen, die mit `Microsoft.ResourceHealth`_in Zusammenhang stehen_. |
 |WorkloadMonitorResources |Nein |Umfasst Ressourcen, die mit `Microsoft.WorkloadMonitor`_in Zusammenhang stehen_. |
 

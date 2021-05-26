@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b729720d82c34ced583038e8f3bde56f9e52f299
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0ea6ec45eba1dfb25af188901572df8ccc08593a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761691"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100508"
 ---
 ## <a name="azure-security-benchmark"></a>Vergleichstest für die Azure-Sicherheit
 
@@ -21,7 +21,7 @@ Weitere Informationen dazu, wie die verfügbaren Azure Policy-Build-Ins für all
 |Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
 |Netzwerksicherheit |NS-2 |Verbinden privater Netzwerke |[Azure Cache for Redis muss sich in einem virtuellen Netzwerk befinden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d092e0a-7acd-40d2-a975-dca21cae48c4) |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_CacheInVnet_Audit.json) |
-|Datenschutz |DP-4 |Verschlüsseln vertraulicher Informationen während der Übertragung |[Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+|Schutz von Daten |DP-4 |Verschlüsseln vertraulicher Informationen während der Übertragung |[Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 
 ## <a name="azure-security-benchmark-v1"></a>Azure-Sicherheitsvergleichstest v1
 
@@ -70,8 +70,8 @@ Weitere Informationen zu diesem Konformitätsstandard finden Sie unter [HIPAA HI
 
 ## <a name="irs-1075-september-2016"></a>IRS 1075, September 2016
 
-Weitere Informationen dazu, wie die verfügbaren Azure Policy-Integrationen für alle Azure-Dienste diesem Konformitätsstandard entsprechen, finden Sie unter [Einhaltung gesetzlicher Bestimmungen in Azure Policy: IRS 1075, September 2016](../../../../articles/governance/policy/samples/irs-1075-sept2016.md).
-Weitere Informationen zu diesem Compliancestandard finden Sie unter [IRS 1075, September 2016](https://www.irs.gov/pub/irs-pdf/p1075.pdf).
+Weitere Informationen dazu, wie die verfügbaren Azure Policy-Integrationen für alle Azure-Dienste diesem Konformitätsstandard entsprechen, finden Sie unter [Einhaltung gesetzlicher Bestimmungen in Azure Policy: IRS 1075 September 2016](../../../../articles/governance/policy/samples/irs-1075-sept2016.md).
+Weitere Informationen zu diesem Compliancestandard finden Sie unter [IRS 1075 September 2016](https://www.irs.gov/pub/irs-pdf/p1075.pdf).
 
 |Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
@@ -118,7 +118,7 @@ Weitere Informationen zu diesem Compliancestandard finden Sie unter [NIST SP 800
 
 ## <a name="uk-official-and-uk-nhs"></a>UK OFFICIAL und UK NHS
 
-Weitere Informationen dazu, wie die verfügbaren Azure Policy-Integrationen für alle Azure-Dienste diesem Konformitätsstandard entsprechen, finden Sie unter [Einhaltung gesetzlicher Bestimmungen in Azure Policy: UK OFFICIAL und UK NHS](../../../../articles/governance/policy/samples/ukofficial-uknhs.md).
+Weitere Informationen dazu, wie die verfügbaren Azure Policy-Integrationen für alle Azure-Dienste diesem Konformitätsstandard entsprechen, finden Sie unter [Einhaltung gesetzlicher Bestimmungen in Azure Policy: UK OFFICIAL and UK NHS](../../../../articles/governance/policy/samples/ukofficial-uknhs.md).
 Weitere Informationen zu diesem Compliancestandard finden Sie unter [UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications).
 
 |Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
