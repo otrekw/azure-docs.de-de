@@ -1,6 +1,6 @@
 ---
 title: 'Benutzerdefinierte Modelle: Formularerkennung'
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Konzepte in Verbindung mit benutzerdefinierten Modellen der Formularerkennungs-API – Verwendung und Einschränkungen.
 services: cognitive-services
 author: laujan
@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9d339d02310fddc3e5fd463f7d37e253614dba17
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 329176e40b1a8cf187a4b2154a26b1adbbca4233
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067587"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374730"
 ---
 # <a name="form-recognizer-custom-models"></a>Benutzerdefinierte Formularerkennungsmodelle
 
@@ -46,7 +46,7 @@ Sie müssen die Trainingsdaten in einen Azure Blob Storage-Container hochladen. 
 > [!div class="nextstepaction"]
 >[&#120785;. Trainieren des benutzerdefinierten Modells](quickstarts/client-library.md#train-a-custom-model)
 
-Sie können Ihr Modell [ohne](quickstarts/client-library.md#train-a-model-without-labels) oder [mit](quickstarts/client-library.md#train-a-model-with-labels) bezeichneten Datasets trainieren. Nicht bezeichnete Datasets basieren zur Erkennung und Identifizierung der wesentlichen Informationen ohne weitere Benutzereingabe ausschließlich auf der Layout-API. Auch bezeichnete Datasets basieren auf der Layout-API, enthalten jedoch zusätzliche Benutzereingaben, z. B. Ihre spezifischen Bezeichnungen und Feldpositionen. Wenn Sie sowohl bezeichnete als auch nicht bezeichnete Daten verwenden möchten, beginnen Sie mit mindestens fünf ausgefüllten Formularen desselben Typs für die bezeichneten Trainingsdaten, und fügen Sie dann dem gewünschten Dataset nicht bezeichnete Daten hinzu.  
+Das [Trainieren Ihres Modells](quickstarts/client-library.md#train-a-custom-model) ist mit oder ohne bezeichnete Datasets möglich. Nicht bezeichnete Datasets basieren zur Erkennung und Identifizierung der wesentlichen Informationen ohne weitere Benutzereingabe ausschließlich auf der Layout-API. Auch bezeichnete Datasets basieren auf der Layout-API, enthalten jedoch zusätzliche Benutzereingaben, z. B. Ihre spezifischen Bezeichnungen und Feldpositionen. Wenn Sie sowohl bezeichnete als auch nicht bezeichnete Daten verwenden möchten, beginnen Sie mit mindestens fünf ausgefüllten Formularen desselben Typs für die bezeichneten Trainingsdaten, und fügen Sie dann dem gewünschten Dataset nicht bezeichnete Daten hinzu.  
 
 >[!div class="nextstepaction"]
 >[&#120786;. Analysieren von Dokumenten mit dem benutzerdefinierten Modell](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
@@ -63,5 +63,5 @@ Sie können jederzeit eine Liste aller benutzerdefinierten Modelle in Ihrem Abon
 Weitere Informationen zur Formularerkennungs Clientbibliothek finden Sie in unserer API-Referenzdokumentation.
 
 > [!div class="nextstepaction"]
-> [Referenz zur Formularerkennungs-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
+> [Referenz zur Formularerkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)
 >

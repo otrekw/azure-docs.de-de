@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 27d3253d1bd2ec407968ff03e22c34222797ad81
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 62d5d3095d2c68741a61f2df64d54287fb429110
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656342"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375979"
 ---
 # <a name="what-are-durable-functions"></a>Was ist Durable Functions?
 
@@ -25,7 +25,7 @@ Durable Functions unterstützt derzeit die folgenden Sprachen:
 * **JavaScript**: nur für Version 2.x der Azure Functions-Runtime unterstützt. Erfordert mindestens Version 1.7.0 der Durable Functions-Erweiterung. 
 * **Python**: Hierfür ist mindestens Version 2.3.1 der Durable Functions-Erweiterung erforderlich.
 * **F#** : vorkompilierte Klassenbibliotheken und F#-Skript. F#-Skript wird nur für Version 1.x der Azure Functions-Runtime unterstützt.
-* **PowerShell**: Die Unterstützung für Durable Functions befindet sich derzeit in der öffentlichen Vorschauphase. Wird nur für Version 3.x der Azure Functions-Runtime und PowerShell 7 unterstützt. Erfordert mindestens Version 2.2.2 der Durable Functions-Erweiterung. Derzeit werden nur die folgenden Muster unterstützt: [Funktionsverkettung](#chaining), [Auffächern nach außen/innen](#fan-in-out) und [asynchrone HTTP-APIs](#async-http).
+* **PowerShell** wird nur für Version 3.x der Azure Functions-Runtime und PowerShell 7 unterstützt. Es ist die Version 2.x der Bundleerweiterungen erforderlich.
 
 Zum Zugreifen auf die aktuellen Features und Updates empfehlen wir Ihnen, die aktuellen Versionen der Durable Functions-Erweiterung und die sprachspezifischen Durable Functions-Bibliotheken zu verwenden. Lesen Sie die weiteren Informationen zu den [Durable Functions-Versionen](durable-functions-versions.md).
 
@@ -127,13 +127,13 @@ Sie können das Objekt `context` verwenden, um andere Funktionen anhand des Name
 ```PowerShell
 param($Context)
 
-$X = Invoke-ActivityFunction -FunctionName 'F1'
-$Y = Invoke-ActivityFunction -FunctionName 'F2' -Input $X
-$Z = Invoke-ActivityFunction -FunctionName 'F3' -Input $Y
-Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
+$X = Invoke-DurableActivity -FunctionName 'F1'
+$Y = Invoke-DurableActivity -FunctionName 'F2' -Input $X
+$Z = Invoke-DurableActivity -FunctionName 'F3' -Input $Y
+Invoke-DurableActivity -FunctionName 'F4' -Input $Z
 ```
 
-Sie können den Befehl `Invoke-ActivityFunction` verwenden, um andere Funktionen anhand des Namens aufzurufen, Parameter zu übergeben und Funktionsausgaben zurückzugeben. Jedes Mal, wenn der Code `Invoke-ActivityFunction` ohne den Switch `NoWait` aufruft, erstellt das Durable Functions-Framework Prüfpunkte zum Status der aktuellen Funktionsinstanz. Wenn der Prozess oder der virtuelle Computer mitten in der Ausführung neu gestartet wird, wird die Funktionsinstanz ab dem vorherigen Aufruf von `Invoke-ActivityFunction` fortgesetzt. Weitere Informationen finden Sie im nächsten Abschnitt, Muster 2: Auffächern auswärts/einwärts.
+Sie können den Befehl `Invoke-DurableActivity` verwenden, um andere Funktionen anhand des Namens aufzurufen, Parameter zu übergeben und Funktionsausgaben zurückzugeben. Jedes Mal, wenn der Code `Invoke-DurableActivity` ohne den Switch `NoWait` aufruft, erstellt das Durable Functions-Framework Prüfpunkte zum Status der aktuellen Funktionsinstanz. Wenn der Prozess oder der virtuelle Computer mitten in der Ausführung neu gestartet wird, wird die Funktionsinstanz ab dem vorherigen Aufruf von `Invoke-DurableActivity` fortgesetzt. Weitere Informationen finden Sie im nächsten Abschnitt, Muster 2: Auffächern auswärts/einwärts.
 
 ---
 
@@ -234,18 +234,18 @@ Die automatische Prüfpunkterstellung, die beim Aufruf von `yield` für `context
 param($Context)
 
 # Get a list of work items to process in parallel.
-$WorkBatch = Invoke-ActivityFunction -FunctionName 'F1'
+$WorkBatch = Invoke-DurableActivity -FunctionName 'F1'
 
 $ParallelTasks =
     foreach ($WorkItem in $WorkBatch) {
-        Invoke-ActivityFunction -FunctionName 'F2' -Input $WorkItem -NoWait
+        Invoke-DurableActivity -FunctionName 'F2' -Input $WorkItem -NoWait
     }
 
 $Outputs = Wait-ActivityFunction -Task $ParallelTasks
 
 # Aggregate all outputs and send the result to F3.
 $Total = ($Outputs | Measure-Object -Sum).Sum
-Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
+Invoke-DurableActivity -FunctionName 'F3' -Input $Total
 ```
 
 Das Auffächern nach außen ist auf mehrere Instanzen der `F2`-Funktion verteilt. Beachten Sie die Verwendung des Switches `NoWait` für den Aufruf der `F2`-Funktion: Dieser Switch ermöglicht es dem Orchestrator, `F2` weiterhin aufzurufen, ohne dass auf den Abschluss von Aktivitäten gewartet werden muss. Die Arbeit wird mithilfe einer dynamischen Aufgabenliste nachverfolgt. Der Befehl `Wait-ActivityFunction` wird aufgerufen, um zu warten, bis alle aufgerufenen Funktionen beendet sind. Anschließend werden die Ausgaben der `F2`-Funktion aus der dynamischen Aufgabenliste aggregiert und an die `F3`-Funktion übergeben.
@@ -399,7 +399,32 @@ main = df.Orchestrator.create(orchestrator_function)
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Monitor wird in PowerShell derzeit nicht unterstützt.
+```powershell
+param($Context)
+
+$output = @()
+
+$jobId = $Context.Input.JobId
+$machineId = $Context.Input.MachineId
+$pollingInterval = New-TimeSpan -Seconds $Context.Input.PollingInterval
+$expiryTime = $Context.Input.ExpiryTime
+
+while ($Context.CurrentUtcDateTime -lt $expiryTime) {
+    $jobStatus = Invoke-DurableActivity -FunctionName 'GetJobStatus' -Input $jobId
+    if ($jobStatus -eq "Completed") {
+        # Perform an action when a condition is met.
+        $output += Invoke-DurableActivity -FunctionName 'SendAlert' -Input $machineId
+        break
+    }
+
+    # Orchestration sleeps until this time.
+    Start-DurableTimer -Duration $pollingInterval
+}
+
+# Perform more work here, or let the orchestration end.
+
+$output
+```
 
 ---
 
@@ -501,7 +526,32 @@ Rufen Sie zum Erstellen des permanenten Timers `context.create_timer` auf. Die B
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Menschliche Interaktion wird in PowerShell derzeit nicht unterstützt.
+```powershell
+param($Context)
+
+$output = @()
+
+$duration = New-TimeSpan -Seconds $Context.Input.Duration
+$managerId = $Context.Input.ManagerId
+
+$output += Invoke-DurableActivity -FunctionName "RequestApproval" -Input $managerId
+
+$durableTimeoutEvent = Start-DurableTimer -Duration $duration -NoWait
+$approvalEvent = Start-DurableExternalEventListener -EventName "ApprovalEvent" -NoWait
+
+$firstEvent = Wait-DurableTask -Task @($approvalEvent, $durableTimeoutEvent) -Any
+
+if ($approvalEvent -eq $firstEvent) {
+    Stop-DurableTimerTask -Task $durableTimeoutEvent
+    $output += Invoke-DurableActivity -FunctionName "ProcessApproval" -Input $approvalEvent
+}
+else {
+    $output += Invoke-DurableActivity -FunctionName "EscalateApproval"
+}
+
+$output
+```
+Rufen Sie zum Erstellen des permanenten Timers `Start-DurableTimer` auf. Die Benachrichtigung wird von `Start-DurableExternalEventListener` empfangen. Anschließend wird `Wait-DurableTask` aufgerufen, um zu entscheiden, ob eine Eskalation erfolgt (Timeout tritt zuerst auf) oder die Genehmigung verarbeitet wird (Genehmigung wird vor dem Timeout empfangen).
 
 ---
 
@@ -552,7 +602,11 @@ async def main(client: str):
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Menschliche Interaktion wird in PowerShell derzeit nicht unterstützt.
+```powershell
+
+Send-DurableExternalEvent -InstanceId $InstanceId -EventName "ApprovalEvent" -EventData "true"
+
+``````
 
 ---
 

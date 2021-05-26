@@ -3,26 +3,36 @@ title: Aufgabenhubs in Durable Functions – Azure
 description: Sie erfahren, was ein Aufgabenhub in der Erweiterung Durable Functions für Azure Functions ist. Informationen zum Konfigurieren von Aufgabenhubs.
 author: cgillum
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 05/12/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 26234039c77601bc1d29beeebd3fcb8461d6d6c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9172075ca22937a85fd7fd5827ebb40a4b58bcfa
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009516"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375756"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Aufgabenhubs in Durable Functions (Azure Functions)
 
-Ein *Aufgabenhub* in [Durable Functions](durable-functions-overview.md) ist ein logischer Container für Azure Storage-Ressourcen, die zur Orchestrierung verwendet werden. Orchestrator- und Aktivitätsfunktionen können nur miteinander interagieren, wenn sie zum selben Aufgabenhub gehören.
+Ein *Aufgabenhub* in [Durable Functions](durable-functions-overview.md) ist ein logischer Container für dauerhafte Speicherressourcen, die für Orchestrierungen und Entitäten verwendet werden. Orchestrator-, Aktivitäts- und Entitätsfunktionen können nur direkt miteinander interagieren, wenn sie zum selben Aufgabenhub gehören.
 
-Wenn sich mehrere Funktions-Apps ein Speicherkonto teilen, *muss* jede Funktions-App mit einem separaten Aufgabenhubnamen konfiguriert werden. Ein Speicherkonto kann mehrere Aufgabenhubs enthalten. Das folgende Diagramm veranschaulicht einen Aufgabenhub pro Funktions-App in freigegebenen und dedizierten Speicherkonten.
+> [!NOTE]
+> In diesem Dokument werden die Details von Aufgabenhubs auf eine Weise beschrieben, die für den [Azure Storage-Standardanbieter für Durable Functions](durable-functions-storage-providers.md#azure-storage) spezifisch ist. Wenn Sie einen nicht standardmäßigen Speicheranbieter für Ihre Durable Functions-App verwenden, finden Sie eine ausführliche Dokumentation zu Aufgabenhubs in der anbieterspezifischen Dokumentation:
+> 
+> * [Aufgabenhubinformationen für den Netherite-Speicheranbieter](https://microsoft.github.io/durabletask-netherite/#/storage)
+> * [Aufgabenhubinformationen für den Microsoft SQL-Speicheranbieter (MSSQL)](https://microsoft.github.io/durabletask-mssql/#/taskhubs)
+> 
+> Weitere Informationen zu den verschiedenen Speicheranbieteroptionen und deren Vergleich finden Sie in der Dokumentation zu [Durable Functions-Speicheranbietern](durable-functions-storage-providers.md).
+
+Wenn sich mehrere Funktions-Apps ein Speicherkonto teilen, *muss* jede Funktions-App mit einem separaten Aufgabenhubnamen konfiguriert werden. Ein Speicherkonto kann mehrere Aufgabenhubs enthalten. Diese Einschränkung gilt im Allgemeinen auch für andere Speicheranbieter.
+
+Die folgende Abbildung veranschaulicht einen Aufgabenhub pro Funktions-App in freigegebenen und dedizierten Azure Storage-Konten.
 
 ![Diagramm mit freigegebenen und dedizierten Speicherkonten](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
 ## <a name="azure-storage-resources"></a>Azure Storage-Ressourcen
 
-Ein Aufgabenhub umfasst folgende Speicherressourcen:
+Ein Aufgabenhub in Azure Storage umfasst die folgenden Ressourcen:
 
 * Mindestens eine Steuerwarteschlange.
 * Eine Arbeitselement-Warteschlange.
@@ -31,11 +41,11 @@ Ein Aufgabenhub umfasst folgende Speicherressourcen:
 * Einen Speichercontainer, der mindestens ein Lease-Blob enthält.
 * Ein Speichercontainer, der große Nachrichtennutzlasten enthält, falls zutreffend.
 
-Alle diese Ressourcen werden automatisch im standardmäßigen Azure Storage-Konto erstellt, wenn Orchestrator-, Entitäts- oder Aktivitätsfunktionen ausgeführt werden oder ihre Ausführung geplant wird. Im Artikel [Performance and Scale](durable-functions-perf-and-scale.md) (Leistung und Skalierung) wird erläutert, wie diese Ressourcen verwendet werden.
+Alle diese Ressourcen werden automatisch im konfigurierten Azure Storage-Konto erstellt, wenn Orchestrator-, Entitäts- oder Aktivitätsfunktionen ausgeführt werden oder ihre Ausführung geplant wird. Im Artikel [Performance and Scale](durable-functions-perf-and-scale.md) (Leistung und Skalierung) wird erläutert, wie diese Ressourcen verwendet werden.
 
 ## <a name="task-hub-names"></a>Aufgabenhubnamen
 
-Aufgabenhubs werden anhand eines Namens identifiziert, der den folgenden Regeln entspricht:
+Aufgabenhubs in Azure Storage werden anhand eines Namens identifiziert, der den folgenden Regeln entspricht:
 
 * Enthält ausschließlich alphanumerische Zeichen.
 * Beginnen mit einem Buchstaben.
@@ -102,7 +112,7 @@ Der Name des Aufgabenhubs wird auf den Wert der App-Einstellung `MyTaskHub` fest
 }
 ```
 
-Der folgende Code veranschaulicht das Schreiben einer Funktion, die eine [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) verwendet, um mit einem als App-Einstellung konfigurierten Aufgabenhub zusammenzuarbeiten:
+Namen von Aufgabenhubs können nicht nur in **host.json**, sondern auch in Metadaten der [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) konfiguriert werden. Dies ist nützlich, wenn Sie auf Orchestrierungen oder Entitäten zugreifen müssen, die sich in einer separaten Funktions-App befinden. Der folgende Code veranschaulicht das Schreiben einer Funktion, die eine [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) verwendet, um mit einem als App-Einstellung konfigurierten Aufgabenhub zusammenzuarbeiten:
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -155,7 +165,10 @@ Die Aufgabenhubeigenschaft in der Datei `function.json` wird über eine App-Eins
 
 ---
 
-Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn kein Name angegeben ist, wird ein Aufgabenhub-Standardname verwendet, wie in der folgenden Tabelle gezeigt:
+> [!NOTE]
+> Das Konfigurieren von Aufgabenhubnamen in Clientbindungsmetadaten ist nur erforderlich, wenn Sie eine Funktions-App verwenden, um auf Orchestrierungen und Entitäten in einer anderen Funktions-App zuzugreifen. Wenn die Clientfunktionen in derselben Funktions-App wie die Orchestrierungen und Entitäten definiert sind, sollten Sie die Angabe von Aufgabenhubnamen in den Bindungsmetadaten vermeiden. Standardmäßig erhalten alle Clientbindungen ihre Taskhubmetadaten aus den Einstellungen in **host.json**.
+
+Aufgabenhubnamen in Azure Storage müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn kein Name angegeben ist, wird ein Aufgabenhub-Standardname verwendet, wie in der folgenden Tabelle gezeigt:
 
 | Version der Durable-Erweiterung | Aufgabenhub-Standardname |
 | - | - |

@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: e27923ff1f29163f5d3390c2c92a11f3adfa5c87
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3d7b88007a27b05119ebe93217c64279c8c541ff
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126613"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373402"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Tutorial: Implementieren von Continuous Integration und Continuous Delivery (CI/CD) mit GitOps unter Verwendung von Kubernetes-Clustern mit Azure Arc-Unterstützung
 
@@ -28,7 +28,7 @@ In diesem Tutorial richten Sie eine CI/CD-Lösung mithilfe von GitOps und Kubern
 > * Bereitstellen der `dev`- und `stage`-Umgebungen.
 > * Testen der Anwendungsumgebungen.
 
-Sollten Sie über kein Azure-Abonnement verfügen, können Sie [ein kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -40,7 +40,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie mit Azure DevOps, Azure Repo
 * Schließen Sie das [vorherige Tutorial](./tutorial-use-gitops-connected-cluster.md) ab, um sich mit den Schritten zum Bereitstellen von GitOps für Ihre CI/CD-Umgebung vertraut zu machen.
 * Machen Sie sich mit dem [Nutzen und der Architektur](./conceptual-configurations.md) dieser Funktion vertraut.
 * Überprüfen Sie, ob Folgendes vorhanden ist:
-  * Ein [verbundener Kubernetes-Cluster mit Azure Arc-Unterstützung](./quickstart-connect-cluster.md#connect-an-existing-kubernetes-cluster), dessen Name **arc-cicd-cluster** lautet.
+  * Ein [verbundener Kubernetes-Cluster mit Azure Arc-Unterstützung](./quickstart-connect-cluster.md#3-connect-an-existing-kubernetes-cluster), dessen Name **arc-cicd-cluster** lautet.
   * Eine verbundene ACR-Instanz (Azure Container Registry) mit [AKS-Integration](../../aks/cluster-container-registry-integration.md) oder [einer anderen Clusterauthentifizierung als AKS](../../container-registry/container-registry-auth-kubernetes.md).
   * Die Berechtigungen „Buildadministrator“ und „Projektadministrator“ für [Azure Repos](/azure/devops/repos/get-started/what-is-repos) und [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-get-started).
 * Installieren Sie die folgenden Kubernetes-CLI-Erweiterungen mit Azure Arc-Aktivierung der Versionen >= 1.0.0:
@@ -181,14 +181,13 @@ Um zu vermeiden, dass für jeden Pod ein Geheimnis für Imagepullvorgänge festg
 | ENVIRONMENT_NAME | Entwicklung |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_REPO | Die Git-Verbindungszeichenfolge für Ihr GitOps-Repository |
-| Persönliche Zugriffstoken | Ein [erstelltes persönliches Zugriffstoken](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate#create-a-pat) mit Lese-/Schreibberechtigung für die Quelle. Speichern Sie dieses Token zur späteren Verwendung beim Erstellen der `stage`-Variablengruppe. |
+| ORGANIZATION_NAME | Dies ist der Name der Azure DevOps-Organisation. |
+| PROJECT_NAME | Dies ist der Name des GitOps-Projekts in Azure DevOps. |
+| REPO_URL | Dies ist die vollständige URL für das GitOps-Repository. |
 | SRC_FOLDER | `azure-vote` | 
 | TARGET_CLUSTER | `arc-cicd-cluster` |
 | TARGET_NAMESPACE | `dev` |
 
-> [!IMPORTANT]
-> Markieren Sie Ihr persönliches Zugriffstoken als geheim. Ziehen Sie die Verknüpfung von Geheimnissen aus einer [Azure Key Vault](/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)-Instanz in Ihren Anwendungen in Betracht.
->
 ### <a name="stage-environment-variable-group"></a>Stagen der Gruppe aus Umgebungsvariablen
 
 1. Klonen Sie die Variablengruppe **az-vote-app-dev**.
@@ -201,6 +200,20 @@ Um zu vermeiden, dass für jeden Pod ein Geheimnis für Imagepullvorgänge festg
 | TARGET_NAMESPACE | `stage` |
 
 Sie können die `dev`- und `stage`-Umgebungen jetzt bereitstellen.
+
+## <a name="give-more-permissions-to-the-build-service"></a>Erteilen von weiteren Berechtigungen für den Builddienst
+Die CD-Pipeline verwendet das Sicherheitstoken des ausgeführten Builds zur Authentifizierung beim GitOps-Repository. Für die Pipeline sind weitere Berechtigungen erforderlich, um einen neuen Branch zu erstellen, Änderungen zu pushen und Pull Requests zu erstellen.
+
+1. Wechseln Sie von der Hauptseite des Azure DevOps-Projekts zu `Project settings`.
+1. Wählen Sie `Repositories` aus.
+1. Wählen Sie `<GitOps Repo Name>` aus.
+1. Wählen Sie `Security` aus. 
+1. Lassen Sie für `<Project Name> Build Service (<Organization Name>)` die Optionen `Contribute`, `Contribute to pull requests` und `Create branch` zu.
+
+Weitere Informationen finden Sie unter
+- [Erteilen von VC-Berechtigungen für den Builddienst](https://docs.microsoft.com/azure/devops/pipelines/scripts/git-commands?view=azure-devops&tabs=yaml&preserve-view=true#version-control )
+- [Verwalten der Berechtigungen für das Builddienstkonto](https://docs.microsoft.com/azure/devops/pipelines/process/access-tokens?view=azure-devops&tabs=yaml&preserve-view=true#manage-build-service-account-permissions)
+
 
 ## <a name="deploy-the-dev-environment-for-the-first-time"></a>Erstmaliges Bereitstellen der Entwicklungsumgebung
 Nachdem Sie die CI- und CD-Pipelines erstellt haben, führen Sie die CI-Pipeline aus, um die App erstmalig bereitzustellen.
@@ -219,6 +232,8 @@ Die CI-Pipeline:
 * Überprüft, ob das Docker-Image geändert wurde und das neue Image per Push übertragen wird.
 
 ### <a name="cd-pipeline"></a>CD-Pipeline
+Während der ersten Ausführung der CD-Pipeline werden Sie aufgefordert, der Pipeline Zugriff auf das GitOps-Repository zu geben. Wählen Sie „Anzeigen“ aus, wenn angegeben wird, dass die Pipeline die Berechtigung für den Zugriff auf eine Ressource benötigt. Wählen Sie dann „Zulassen“ aus, um die Berechtigung zum Verwenden des GitOps-Repositorys für die aktuellen und zukünftigen Pipelineläufe zu erteilen.
+
 Bei erfolgreicher Ausführung der CI-Pipeline wird das Abschließen des Bereitstellungsvorgangs durch die CD-Pipeline ausgelöst. Die einzelnen Umgebungen werden inkrementell bereitgestellt.
 
 > [!TIP]

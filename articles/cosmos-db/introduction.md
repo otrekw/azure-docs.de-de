@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 05/07/2021
-ms.openlocfilehash: 4432de4bb5f156ed1be0230759fcf3cd86adfe60
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: f435ed599e39b2dd0c204ef8c2cdcbb23146bc08
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634309"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367865"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ Azure Cosmos DB ist eine vollständig verwaltete NoSQL-Datenbank für die modern
 > [!NOTE]
 > Möchten Sie zur Verbesserung der Azure Cosmos DB-Dokumentation beitragen, indem Sie an einer Benutzerstudie teilnehmen? Nehmen Sie sich einige Minuten Zeit, um diese 5-minütige [Vorabbefragung ](https://aka.ms/cosmosdb-documentation-screener-survey) auszufüllen. Wenn Sie infrage kommen, werden Sie zu einem Zeitplanungsmodul umgeleitet, in dem Sie ein Zeitfenster für die Teilnahme an einer interaktiven Untersuchung reservieren können. Während dieses Prozesses werden gemäß unseren [Datenschutzbestimmungen](https://go.microsoft.com/fwlink/?LinkId=521839) keine personenbezogenen Daten gesammelt.
 
-Sie können [Azure Cosmos DB kostenlos ohne Azure-Abonnement und ohne Verpflichtungen testen](https://azure.microsoft.com/try/cosmosdb/) oder ein [Azure Cosmos DB-Konto im Tarif „Free“](optimize-dev-test.md#azure-cosmos-db-free-tier) nutzen, bei dem die ersten 400 RU/s und 5 GB Speicher kostenlos sind.
+Sie können [Azure Cosmos DB kostenlos ohne Azure-Abonnement und ohne Verpflichtungen testen](https://azure.microsoft.com/try/cosmosdb/) oder ein [Azure Cosmos DB-Konto im Tarif „Free“](free-tier.md) nutzen, bei dem die ersten 1000 RU/s und 25 GB Speicher kostenlos sind.
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/)
