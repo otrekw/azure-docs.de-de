@@ -12,20 +12,20 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: f9c2c15bbfcf9a9271e629ef26c11ecc4cbaaa6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7a26bfd979fd58ba0519aeba274b22ae502f8a8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98740107"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085922"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>App-Zustimmungsberechtigungen für benutzerdefinierte Rollen in Azure Active Directory
 
 Dieser Artikel enthält die derzeit verfügbaren Berechtigungen zur App-Zustimmung für benutzerdefinierte Rollendefinitionen in Azure Active Directory (Azure AD). In diesem Artikel finden Sie die Berechtigungen, die bei einigen häufigen Szenarien im Zusammenhang mit der Zustimmung zu Apps und den entsprechenden Berechtigungen erforderlich sind.
 
-## <a name="required-license-plan"></a>Erforderlicher Lizenzplan
+## <a name="license-requirements"></a>Lizenzanforderungen
 
-Für dieses Feature benötigen Sie eine Azure AD Premium P1-Lizenz für Ihre Azure AD-Organisation. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
+[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="app-consent-permissions"></a>App-Zustimmungsberechtigungen
 

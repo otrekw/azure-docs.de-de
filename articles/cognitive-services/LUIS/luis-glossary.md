@@ -4,13 +4,13 @@ description: In diesem Glossar werden Begriffe erläutert, auf die Sie mögliche
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 05/08/2020
-ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: 15235ddd1ae6bfe3166b523004bc8fe80a5b5be9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98786943"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061460"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit dem LUIS-Dienst stoßen.
@@ -44,7 +44,7 @@ Der [Erstellungsschlüssel](luis-how-to-azure-subscription.md) wird zum Erstelle
 
 ### <a name="authoring-resource"></a>Erstellungsressource
 
-Ihre LUIS-[Erstellungsressource](luis-how-to-azure-subscription.md#azure-resources-for-luis) ist ein verwaltbares Element, das über Azure erhältlich ist. Die Ressource ist Ihr Zugang zu den zugehörigen Erstellungs-, Trainings- und Veröffentlichungsfunktionen des Azure-Diensts. Die Ressource enthält Authentifizierungs-, Autorisierungs- und Sicherheitsinformationen, die Sie für den Zugriff auf den zugehörigen Azure-Dienst benötigen.
+Ihre LUIS-[Erstellungsressource](luis-how-to-azure-subscription.md) ist ein verwaltbares Element, das über Azure erhältlich ist. Die Ressource ist Ihr Zugang zu den zugehörigen Erstellungs-, Trainings- und Veröffentlichungsfunktionen des Azure-Diensts. Die Ressource enthält Authentifizierungs-, Autorisierungs- und Sicherheitsinformationen, die Sie für den Zugriff auf den zugehörigen Azure-Dienst benötigen.
 
 Die Erstellungsressource weist die Azure-Art `LUIS-Authoring` auf.
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4907a81fc8cb55499fa97f2b02a3e19e7117bbbc
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 2f9eca1600ffe9270ac2f02db38c815e92498afe
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286384"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086210"
 ---
 # <a name="find-and-redact-blur-faces-with-the-face-detector-preset"></a>Suchen und bearbeiten (verwischen) Sie Gesichter mit der Gesichtserkennungs-Voreinstellung
 
@@ -29,10 +29,8 @@ Azure Media Services V3-API enthält eine Gesichtserkennungs-Voreinstellung, die
 
 Dieser Artikel enthält Details zum zur **Gesichtserkennungsvoreinstellung** und zeigt, wie sie mit Azure Media Services SDK für .NET verwendet werden kann.
 
-[!INCLUDE [regulation](../video-indexer/includes/regulation.md)]
-
 ## <a name="compliance-privacy-and-security"></a>Compliance, Datenschutz und Sicherheit
- 
+
 Eine wichtige Erinnerung: Sie müssen bei der Verwendung von Analysen in Azure Media Services alle geltenden Gesetze einhalten. Sie dürfen Azure Media Services oder einen anderen Azure-Dienst nicht in einer Weise nutzen, welche die Rechte anderer verletzt. Bevor Sie Videos, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in den Azure Media Services-Dienst hochladen, müssen Sie über alle erforderlichen Rechte, einschließlich aller entsprechenden Zustimmungen der Personen im Video, verfügen. IUm mehr über Compliance, Datenschutz und Sicherheit in Azure Media Services zu erfahren, lesen Sie die rechtlichen Begriffe zum [Azure Erkennungsdienst](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Bestimmungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Bestimmungen für Onlinedienste und [hier](../video-indexer/faq.md). Durch die Nutzung von Azure Media Services erklären Sie sich mit den Bedingungen für Cognitive Services, den OST, DPA und der Datenschutzerklärung einverstanden
 
 ## <a name="face-redaction-modes"></a>Modi der Gesichtsbearbeitung
@@ -55,7 +53,7 @@ Dadurch wird in einem einzigen Durchgang eine bearbeitete MP4-Videodatei erzeugt
 
 ### <a name="analyze-mode"></a>Analysemodus
 
-Im **Analyze**-Durchlauf des zweistufigen Workflows wird eine Videoeingabe verwendet, und es werden eine JSON-Datei mit Gesichtspositionen und JPG-Bilder für jedes erkannte Gesicht erstellt. 
+Im **Analyze**-Durchlauf des zweistufigen Workflows wird eine Videoeingabe verwendet, und es werden eine JSON-Datei mit Gesichtspositionen und JPG-Bilder für jedes erkannte Gesicht erstellt.
 
 | Phase | Dateiname | Notizen |
 | --- | --- | --- |
@@ -149,7 +147,6 @@ Im Modus **Kombiniert** oder **Bearbeiten** sind fünf verschiedene Verwischungs
 
 Untenstehend finden Sie Beispiele für Weichzeichnertypen.
 
-
 #### <a name="low"></a>Niedrig
 
 ![Beispiel für eine Einstellung mit niedriger Auflösung.](./media/media-services-face-redaction/blur-1.png)
@@ -214,4 +211,3 @@ Dieses Codebeispiel zeigt, wie die Voreinstellung bei der Erstellung an ein Tran
 ## <a name="provide-feedback"></a>Feedback geben
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

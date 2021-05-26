@@ -2,16 +2,16 @@
 title: 'Tutorial: Verkabeln von Azure FXT Edge Filer'
 description: Hier finden Sie Informationen zum Verkabeln der Netzwerkanschlüsse sowie zum Herstellen der Stromversorgung für Azure FXT Edge Filer-Hardware.
 author: ekpgh
-ms.author: rohogue
+ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: 80458d99ed6ad19c8a837f0989798d4dcc156b61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4646f1e72ef999ad5d7596f54af2a36827a0c00
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92219529"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456094"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Tutorial: Herstellen von Netzwerkverbindungen und Stromversorgung für den Azure FXT Edge Filer-Knoten
 

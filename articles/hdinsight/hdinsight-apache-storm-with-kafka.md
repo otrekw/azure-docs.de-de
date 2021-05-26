@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 2078ba177d68cfaa0a91b79611d92e5c68e4e245
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a62b255da4d6082dccaf8e965c044e965b7a288f
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868414"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189680"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von Apache Storm mit Apache Kafka in HDInsight
 
@@ -469,7 +469,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
     Der zurückgegebene Wert ähnelt dem folgenden Text:
 
     ```output
-    wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+    <brokername1>.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,<brokername2>.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
      ```
 
     > [!IMPORTANT]  
@@ -498,7 +498,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
     Der zurückgegebene Wert ähnelt dem folgenden Text:
 
     ```output
-    zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    <zookeepername1>.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,<zookeepername2>.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
     ```
 
     > [!IMPORTANT]  
@@ -509,8 +509,8 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
 3. Bearbeiten Sie die Datei `dev.properties` im Stammverzeichnis des Projekts. Fügen Sie die Broker- und Zookeeper-Hostinformationen für den __Kafka__-Cluster in die entsprechenden Zeilen in dieser Datei ein. Das folgende Beispiel wird mithilfe der Beispielwerte aus den vorherigen Schritten konfiguriert:
 
     ```bash
-    kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
-    kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+    kafka.zookeeper.hosts: <zookeepername1>.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,<zookeepername2>.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    kafka.broker.hosts: <brokername1>.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,<brokername2>.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
     kafka.topic: stormtopic
     ```
 

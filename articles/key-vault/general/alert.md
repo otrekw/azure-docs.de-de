@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 51a354bfc6df43938d8e2117a7d93f9bd6749225
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3229e8a3ee482067677cdd5af1fb98b120ef8dd0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140783"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082106"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Überwachung und Warnungen für Azure Key Vault
 
@@ -26,7 +26,7 @@ Sobald Sie damit begonnen haben, Ihre Produktionsgeheimnisse im Schlüsseltresor
 + Konfigurieren von Metriken und Erstellen eines Dashboards
 + Erstellen von Warnungen bei angegebenen Schwellenwerten
 
-Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um eine globale Überwachungslösung bereitzustellen. [Erfahren Sie hier mehr über Azure Monitor für den Schlüsseltresor](../../azure-monitor/insights/key-vault-insights-overview.md#introduction-to-azure-monitor-for-key-vault)
+Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um eine globale Überwachungslösung bereitzustellen. [Erfahren Sie hier mehr über Azure Monitor für den Schlüsseltresor](../../azure-monitor/insights/key-vault-insights-overview.md#introduction-to-key-vault-insights)
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>Grundlegende Key Vault-Metriken für die Überwachung
 

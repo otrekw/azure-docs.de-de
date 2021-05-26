@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Java-Clientbibliothek (Android) für den plastischen Reader'
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: In dieser Schnellstartanleitung erstellen Sie eine Android-App von Grund auf neu und fügen die Funktion der API für den plastischen Reader hinzu.
 services: cognitive-services
 author: dylankil
@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 7119e1d029bb682f004e65323df5b50087c0634c
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 49420e073644f8884bdcc19ac55a9d7e0d987bac
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102619250"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376569"
 ---
 [Plastischer Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden, wie z. B. Dyslexie, zu verbessern. Sie können den plastischen Reader in Ihren Anwendungen verwenden, um Text zu isolieren, den Fokus zu verbessern, Bilder für häufig verwendete Wörter anzuzeigen, Wortarten hervorzuheben, markierten Text laut vorzulesen, Wörter und Ausdrücke in Echtzeit zu übersetzen und vieles mehr.
 

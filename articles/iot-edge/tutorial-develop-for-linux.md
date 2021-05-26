@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 10742ec277f5742067c432a2823cbb7592e6a752
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 63740e6d3f6df757cc7cc8847ed10a03b8831fd5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874691"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060182"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Tutorial: Entwickeln von IoT Edge-Modulen mit Linux-Containern
 
@@ -226,10 +226,10 @@ Geben Sie Ihre Anmeldeinformationen für die Containerregistrierung für Docker 
    ```
 
    Möglicherweise wird Ihnen in einem Sicherheitshinweis die Verwendung von `--password-stdin` empfohlen. Diese bewährte Methode wird für Produktionsszenarien empfohlen, aber sie ist nicht Gegenstand dieses Tutorials. Weitere Informationen finden Sie in der [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin)-Referenz.
-   
+
 3. Anmelden bei Azure Container Registry
 
-   ```cmd/sh
+   ```azurecli
    az acr login -n <ACR registry name>
    ```
 

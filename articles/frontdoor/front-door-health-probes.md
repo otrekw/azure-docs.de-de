@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 05/17/2021
 ms.author: duau
-ms.openlocfilehash: dd56740b7153cdbafdfa847a22d34b57f862cdf3
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6fb47cf8c3bea7080151d635620bde549070060d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550742"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084986"
 ---
 # <a name="health-probes"></a>Integritätstests
 
@@ -26,7 +26,7 @@ Um die Integrität und Entfernung der einzelnen Back-Ends für eine bestimmte Fr
 > Da Front Door weltweit viele Edge-Umgebungen hat, kann das Volumen der Integritätstests für Ihre Back-Ends recht hoch sein. Es variiert zwischen 25 Anforderungen pro Minute und bis zu 1200 Anforderungen pro Minute abhängig von der konfigurierten Häufigkeit von Integritätstests. Bei der standardmäßigen Testfrequenz von 30 Sekunden sollte das Testvolumen in Ihrem Back-End etwa 200 Anforderungen pro Minute betragen.
 
 > [!NOTE]
-> Die HTTP-/HTTPS-Tests von Front Door werden mit dem auf den folgenden Wert festgelegten `User-Agent`-Header gesendet: `Edge Health Probes`. 
+> Die HTTP-/HTTPS-Tests von Front Door werden mit dem auf den folgenden Wert festgelegten `User-Agent`-Header gesendet: `Edge Health Probe`. 
 
 ## <a name="supported-protocols"></a>Unterstützte Protokolle
 
@@ -46,7 +46,7 @@ Front Door unterstützt die folgenden HTTP-Methoden zum Senden der Integritätst
 
 | Antworten  | BESCHREIBUNG | 
 | ------------- | ------------- |
-| Ermitteln der Integrität  |  Der Statuscode „200 OK“ gibt an, dass das Back-End fehlerfrei ist. Alle anderen Antworten werden als Fehler betrachtet. Wenn für einen Test aus irgendeinem Grund (einschließlich Netzwerkausfall) keine gültige HTTP-Antwort eingeht, gilt der Test als fehlerhaft.|
+| Ermitteln der Integrität  | Der Statuscode „200 OK“ gibt an, dass das Back-End fehlerfrei ist. Alle anderen Antworten werden als Fehler betrachtet. Wenn für einen Test aus irgendeinem Grund (einschließlich Netzwerkausfall) keine gültige HTTP-Antwort eingeht, gilt der Test als fehlerhaft.|
 | Messen der Latenzzeit  | Latenz ist die Gesamtbetrachtungszeit, gemessen ab dem Zeitpunkt unmittelbar vor dem Senden der Testanforderung bis zu dem Moment, in dem wir das letzte Byte der Antwort erhalten. Wir verwenden für jede Anforderung eine neue TCP-Verbindung, damit diese Messung nicht zugunsten von Back-Ends mit vorhandenen betriebsbereiten Verbindungen ausfällt.  |
 
 ## <a name="how-front-door-determines-backend-health"></a>Vorgehensweise beim Ermitteln der Back-End-Integrität mit Front Door
