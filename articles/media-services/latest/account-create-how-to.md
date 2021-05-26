@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 11/4/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b9234b27e2f08e65f569393bde342cba3f37adee
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 7c6486c156cfc9cec9065854c55b2d8e2788fdc0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963683"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062547"
 ---
 # <a name="create-a-media-services-account"></a>Erstellen eines Media Services-Kontos
 
@@ -52,6 +52,12 @@ Um mit dem Verschlüsseln, Codieren, Analysieren, Verwalten und Streamen von Med
 [!INCLUDE [Create a resource group with CLI](./includes/task-create-resource-group-cli.md)]
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
+
+Wenn Sie ein Media Services-Konto erstellen, müssen Sie den Namen einer Azure Storage-Kontoressource angeben. Das angegebene Speicherkonto wird an Ihr Media Services-Konto angefügt. Weitere Informationen zur Verwendung von Speicherkonten in Media Services finden Sie unter [Storage accounts](storage-account-concept.md) (Storage-Konten).
+
+Sie müssen über ein **primäres** Storage-Konto verfügen. Darüber hinaus können Sie beliebig viele **sekundäre** Storage-Konten an Ihr Media Services-Konto anfügen. Media Services unterstützt Konten des Typs **Allgemein v2** (GPv2) oder **Allgemein v1** (GPv1). Reine Blobkonten sind als **primäre** Konten nicht zulässig. Weitere Informationen zu Storage-Konten finden Sie unter [Optionen für Azure Storage-Konten](../../storage/common/storage-account-overview.md).
+
+In diesem Beispiel erstellen Sie ein universelles LRS-Standardkonto der Version 2. Falls Sie mit Speicherkonten experimentieren möchten, verwenden Sie `--sku Standard_LRS`. Wenn Sie eine SKU für die Produktion auswählen, sollten Sie jedoch die Verwendung von `--sku Standard_RAGRS` erwägen, da diese Option geografische Replikation zum Gewährleisten der Geschäftskontinuität bietet. Weitere Informationen finden Sie unter [Storage accounts](/cli/azure/storage/account) (Speicherkonten).
 
 [!INCLUDE [Create a storage account with CLI](./includes/task-create-storage-account-cli.md)]
 

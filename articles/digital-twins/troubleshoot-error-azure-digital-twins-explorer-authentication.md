@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/8/2021
-ms.openlocfilehash: 7d04b98014abbf6bf732da292df3b7bb9172f281
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 59d2d561945ed55f3140099117c2f8dc9d8cc766
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203575"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084554"
 ---
 # <a name="authentication-failed"></a>Fehler bei der Authentifizierung.
 
@@ -27,7 +27,7 @@ Beim Einrichten und Ausführen des Azure Digital Twins-Explorers führen Versuch
 
 ### <a name="cause-1"></a>Ursache 1
 
-Der Azure Digital Twins-Explorer sucht mithilfe von [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) (Teil der Bibliothek `Azure.Identity`) in Ihrer lokalen Umgebung nach Anmeldeinformationen.
+Der Azure Digital Twins-Explorer sucht mithilfe von [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) (Teil der Bibliothek `Azure.Identity`) in Ihrer lokalen Umgebung nach Anmeldeinformationen.
 
 Wie der Fehlertext besagt, kann dieser Fehler auftreten, wenn Sie keine lokalen Anmeldeinformationen für `DefaultAzureCredential` angegeben haben.
 

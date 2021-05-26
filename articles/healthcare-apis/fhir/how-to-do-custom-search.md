@@ -1,18 +1,18 @@
 ---
 title: How to do custom search in Azure API for FHIR
 description: In diesem Artikel wird beschrieben, wie Sie eigene benutzerdefinierte Suchparameter definieren können, die in der Datenbank verwendet werden sollen.
-author: stevewohl
+author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 05/03/2021
 ms.author: cavoeg
-ms.openlocfilehash: d61e886771fb3bc667ff9e219de736c03e591ba7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5453b11cb49bb48c48e6c949a00654a797c89202
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765195"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476663"
 ---
 # <a name="defining-custom-search-parameters"></a>Definieren von benutzerdefinierten Suchparametern
 
@@ -88,7 +88,7 @@ Wichtige Elemente eines `SearchParameter` :
 
 Obwohl Sie die Suchparameter erst in der Produktion verwenden können, wenn Sie einen Neuindizierungsauftrag ausführen, gibt es einige Möglichkeiten, Ihre Suchparameter zu testen, bevor Sie die gesamte Datenbank neu indizieren. 
 
-Zunächst können Sie ihren neuen Suchparameter testen, um zu sehen, welche Werte zurückgegeben werden. Wenn Sie den folgenden Befehl für eine bestimmte Ressourceninstanz ausführen (durch Eingabe ihrer ID), erhalten Sie eine Liste von Wertpaaren mit dem Namen des Suchparameters und dem für den spezifischen Patienten gespeicherten Wert. Dies schließt alle Suchparameter für die Ressource ein, und Sie können durchblättern, um den von Ihnen erstellten Suchparameter zu finden. Wenn Sie diesen Befehl ausführen, ändert sich kein Verhalten auf Dem FHIR-Server. 
+Zunächst können Sie den neuen Suchparameter testen, um zu sehen, welche Werte zurückgegeben werden. Wenn Sie den folgenden Befehl für eine bestimmte Ressourceninstanz ausführen (durch Eingabe ihrer ID), erhalten Sie eine Liste von Wertpaaren mit dem Namen des Suchparameters und dem für den spezifischen Patienten gespeicherten Wert. Dies schließt alle Suchparameter für die Ressource ein, und Sie können durchblättern, um den von Ihnen erstellten Suchparameter zu finden. Wenn Sie diesen Befehl ausführen, ändert sich kein Verhalten auf Dem FHIR-Server. 
 
 ```rest
 GET https://{{FHIR_URL}}/{{RESOURCE}}/{{RESOUCE_ID}}/$reindex

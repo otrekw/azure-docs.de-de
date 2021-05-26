@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 670176d7478ddab3d17e15526df512dfa7e99fd4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 800fa34901ee63434d3f4798ec4c16dd52479fa6
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762063"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191844"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Azure SQL-Datenbank und SQL Managed Instance: Wiederherstellen automatisierter Datenbanksicherungen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -191,7 +191,7 @@ Ein PowerShell-Skript, das zeigt, wie die Geowiederherstellung für eine Datenba
 
 ### <a name="geo-restore-considerations"></a>Überlegungen zur Geowiederherstellung
 
-Sie können keine Point-in-Time-Wiederherstellung für eine sekundäre Geodatenbank durchführen. Dies ist nur für eine primäre Datenbank möglich. Ausführliche Informationen zum Verwenden der Geowiederherstellung nach einem Ausfall finden Sie unter [Wiederherstellen nach einem Ausfall](../../key-vault/general/disaster-recovery-guidance.md).
+Sie können keine Point-in-Time-Wiederherstellung für eine sekundäre Geodatenbank durchführen. Dies ist nur für eine primäre Datenbank möglich. Ausführliche Informationen zum Verwenden der Geowiederherstellung nach einem Ausfall finden Sie unter [Wiederherstellen nach einem Ausfall](disaster-recovery-guidance.md#recover-using-geo-restore).
 
 > [!IMPORTANT]
 > Die Geowiederherstellung ist die einfachste in SQL-Datenbank und SQL Managed Instance verfügbare Lösung für die Notfallwiederherstellung. Sie beruht auf automatisch erstellten georeplizierten Sicherungen mit einem RPO (Recovery Point Objective) von bis zu 1 Stunde und einer geschätzten Wiederherstellungszeit von bis zu 12 Stunden. Sie garantiert nicht, dass die Zielregion über die Kapazität zum Wiederherstellen Ihrer Datenbanken nach einem regionalen Ausfall verfügt, da der Bedarf voraussichtlich stark ansteigen wird. Für nicht unternehmenskritische Anwendungen, die relativ kleine Datenbanken verwenden, ist die Geowiederherstellung eine geeignete Lösung für die Notfallwiederherstellung. 

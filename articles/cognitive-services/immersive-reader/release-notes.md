@@ -1,6 +1,6 @@
 ---
 title: Versionshinweise zum SDK für den plastischen Reader
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Erfahren Sie mehr über die neuen Funktionen des JavaScript-SDK für den plastischen Reader.
 services: cognitive-services
 author: dylankil
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: dylankil
-ms.openlocfilehash: 6b041916c6fa446732e95d49391d9ead63eb1b17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8aa1282234a324fae294274e7720c6138d9b059b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93135459"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370769"
 ---
 # <a name="immersive-reader-javascript-sdk-release-notes"></a>Versionshinweise zum JavaScript-SDK für den plastischen Reader
 

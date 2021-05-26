@@ -3,15 +3,15 @@ title: Schützen eines benutzerdefinierten DNS mit einer TLS-/SSL-Bindung
 description: Schützen Sie den HTTPS-Zugriff auf Ihre benutzerdefinierte Domäne durch Erstellung einer TLS/SSL-Bindung mit einem Zertifikat. Verbessern Sie die Sicherheit Ihrer Website, indem Sie HTTPS oder TLS 1.2 erzwingen.
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: a713d869a754f17f4030c531999c822a2cbb76ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ae0ca07d0aad72a38ee4eccbefbdb826da9627b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039800"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373031"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service
 
@@ -42,7 +42,7 @@ Im Rahmen dieser Schrittanleitung müssen Sie folgende Schritte durchführen:
 - [Hinzufügen eines privaten Zertifikats zu Ihrer App](configure-ssl-certificate.md)
 
 > [!NOTE]
-> Die einfachste Möglichkeit zum Hinzufügen eines privaten Zertifikats besteht darin, [ein von App Service verwaltetes kostenloses Zertifikat zu erstellen](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (Vorschau).
+> Die einfachste Möglichkeit zum Hinzufügen eines privaten Zertifikats besteht darin, [ein von App Service verwaltetes kostenloses Zertifikat zu erstellen](configure-ssl-certificate.md#create-a-free-managed-certificate).
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -73,7 +73,7 @@ Verfügt Ihre App über kein Zertifikat für die ausgewählte benutzerdefinierte
 - **Importieren eines App Service-Zertifikats:** Führen Sie den Workflow unter [Importieren eines App Service-Zertifikats](configure-ssl-certificate.md#import-an-app-service-certificate) aus, und wählen Sie dann diese Option hier aus.
 
 > [!NOTE]
-> Sie können auch ein [kostenloses Zertifikat erstellen](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (Vorschau) oder [ein Key Vault-Zertifikat importieren](configure-ssl-certificate.md#import-a-certificate-from-key-vault). Sie müssen diesen Schritt jedoch separat ausführen und anschließend zum Dialogfeld **TLS-/SSL-Bindung** zurückkehren.
+> Sie können auch ein [kostenloses Zertifikat erstellen](configure-ssl-certificate.md#create-a-free-managed-certificate) oder [ein Key Vault-Zertifikat importieren](configure-ssl-certificate.md#import-a-certificate-from-key-vault). Sie müssen diesen Schritt jedoch separat ausführen und anschließend zum Dialogfeld **TLS-/SSL-Bindung** zurückkehren.
 
 ### <a name="create-binding"></a>Erstellen einer Bindung
 

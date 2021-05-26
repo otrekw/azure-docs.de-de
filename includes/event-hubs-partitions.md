@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/15/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 1dd78ba3799573e05e4ebbf55887bae3d9674b7c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 05a54a5e240f528ca5662b05e37127741ce4722e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310075"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367086"
 ---
 In Event Hubs werden Sequenzen von an einen Event Hub gesendeten Ereignissen in einer oder mehreren Partitionen organisiert. Neu eingehende Ereignisse werden am Ende dieser Sequenz hinzugefügt. 
 
@@ -32,7 +32,7 @@ Event Hubs wurde zur Unterstützung der Verarbeitung von großen Ereignismengen 
 ### <a name="number-of-partitions"></a>Anzahl von Partitionen
 Die Anzahl von Partitionen wird bei der Erstellung angegeben und muss für Event Hubs Standard zwischen 1 und 32 liegen. Die Partitionsanzahl kann für Event Hubs Dedicated bei bis zu 2.000 Partitionen pro Kapazitätseinheit liegen. 
 
-Wir empfehlen Ihnen, mindestens so viele Partitionen auszuwählen, wie Sie voraussichtlich in dauerhaften [Durchsatzeinheiten](../articles/event-hubs/event-hubs-faq.yml#what-are-event-hubs-throughput-units-) während der Spitzenlast Ihrer Anwendung für den entsprechenden Event Hub benötigen. Sie sollten für die Berechnung davon ausgehen, dass eine Partition über eine Durchsatzkapazität von 1 Durchsatzeinheit verfügt (1 MB eingehend, 2 MB ausgehend). Sie können die Durchsatzeinheiten in Ihrem Namespace oder die Kapazitätseinheiten Ihres Clusters unabhängig von der Partitionsanzahl skalieren. Für einen Event Hub mit 32 Partitionen oder einen Event Hub mit nur einer Partition fallen die gleichen Kosten an, wenn der Namespace auf eine Kapazität von einer Durchsatzeinheit festgelegt ist. 
+Wir empfehlen Ihnen, mindestens so viele Partitionen auszuwählen, wie Sie voraussichtlich in dauerhaften [Durchsatzeinheiten](../articles/event-hubs/event-hubs-scalability.md#throughput-units) während der Spitzenlast Ihrer Anwendung für den entsprechenden Event Hub benötigen. Sie sollten für die Berechnung davon ausgehen, dass eine Partition über eine Durchsatzkapazität von 1 Durchsatzeinheit verfügt (1 MB eingehend, 2 MB ausgehend). Sie können die Durchsatzeinheiten in Ihrem Namespace oder die Kapazitätseinheiten Ihres Clusters unabhängig von der Partitionsanzahl skalieren. Für einen Event Hub mit 32 Partitionen oder einen Event Hub mit nur einer Partition fallen die gleichen Kosten an, wenn der Namespace auf eine Kapazität von einer Durchsatzeinheit festgelegt ist. 
 
 Die Partitionsanzahl für einen Event Hub in einem [dedizierten Event Hubs-Cluster](../articles/event-hubs/event-hubs-dedicated-overview.md) kann nach seiner Erstellung [erhöht](../articles/event-hubs/dynamically-add-partitions.md) werden, aber dann ändert sich die Verteilung von Datenströmen auf die Partitionen, da sich die Zuordnung von Partitionsschlüsseln zu den Partitionen ändert. Daher sollten Sie Änderungen dieser Art unbedingt vermeiden, falls die relative Reihenfolge der Ereignisse in Ihrer Anwendung wichtig ist.
 

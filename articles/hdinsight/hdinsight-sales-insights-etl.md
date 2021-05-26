@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: f41f202ede49892608e1ca3c5fdfbe703b6a5293
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8fc2654dfb41ef4b9e1e2491f6c130229b856682
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074941"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091700"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Tutorial: Erstellen einer End-to-End-Datenpipeline zum Gewinnen von Erkenntnissen aus Vertriebsdaten in Azure HDInsight
 
@@ -168,7 +168,7 @@ ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.out
 Das Skript führt folgende Schritte aus:
 
 1. Es erstellt einen Dienstprinzipal mit `Storage Blob Data Contributor`-Berechtigungen für das Data Lake Storage Gen2-Speicherkonto.
-1. Es ruft ein Authentifizierungstoken zum Autorisieren von POST-Anforderungen an die [REST-API für das Data Lake Storage Gen2-Dateisystem](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/filesystem/create) ab.
+1. Es ruft ein Authentifizierungstoken zum Autorisieren von POST-Anforderungen an die [REST-API für das Data Lake Storage Gen2-Dateisystem](/rest/api/storageservices/datalakestoragegen2/filesystem/create) ab.
 1. Es trägt in den Dateien `sparktransform.py` und `query.hql` den tatsächlichen Namen Ihres Data Lake Storage Gen2-Speicherkontos ein.
 1. Es ruft Speicherschlüssel für die Data Lake Storage Gen2- und Blob Storage-Konten ab.
 1. Es erstellt eine weitere Ressourcenbereitstellung, um eine Azure Data Factory-Pipeline mit den zugehörigen verknüpften Diensten und Aktivitäten zu erstellen. Es übergibt die Speicherschlüssel als Parameter an die Vorlagendatei, sodass die verknüpften Dienste korrekt auf die Speicherkonten zugreifen können.
@@ -265,8 +265,8 @@ Weitere Möglichkeiten zum Transformieren von Daten mithilfe von HDInsight finde
 
 1. Wählen Sie im **Navigator** den Eintrag `sales` und/oder `sales_raw` aus, um eine Vorschau der Daten anzuzeigen. Nachdem die Daten geladen wurden, können Sie mit dem Dashboard experimentieren, das Sie erstellen möchten. Informationen zu den ersten Schritten mit Power BI-Dashboards finden Sie unter den folgenden Links:
 
-* [Einführung in Dashboards für Power BI-Designer](https://docs.microsoft.com/power-bi/service-dashboards)
-* [Tutorial: Erste Schritte mit dem Power BI-Dienst](https://docs.microsoft.com/power-bi/service-get-started)
+* [Einführung in Dashboards für Power BI-Designer](/power-bi/service-dashboards)
+* [Tutorial: Erste Schritte mit dem Power BI-Dienst](/power-bi/service-get-started)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

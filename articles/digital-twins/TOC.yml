@@ -101,8 +101,6 @@
           href: how-to-create-azure-function.md
         - name: Abfragen des Zwillingsgraphen
           href: how-to-query-graph.md
-        - name: Erstellen von RBAC auf Zwillingsebene mit Markertags
-          href: how-to-create-twin-level-role-based-access-control.md
     - name: Entwickeln von Client-Apps
       items:
         - name: Senden von Anforderungen mit Postman

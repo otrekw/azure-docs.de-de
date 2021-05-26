@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 483377d0376a5a98d822392af1fa2d84ad8498e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37a116752062e722f65acb6ca01431b5176ea60e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92458590"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085472"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Tutorial: Azure Active Directory-Integration mit Lifesize Cloud
 
@@ -115,7 +115,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Lifesize 
     d. Geben Sie im Textfeld **Relayzustand** eine URL nach folgendem Muster ein: `https://webapp.lifesizecloud.com/?ent=<identifier>`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte von Anmelde-URL, Bezeichner und Relayzustand. Wenden Sie sich an das [Kundensupportteam von Lifesize Cloud](https://www.lifesize.com/en/support), um die Werte für die Anmelde-URL und den Bezeichner zu erhalten. Den Wert für den Relayzustand können Sie der SSO-Konfiguration entnehmen, die später in diesem Tutorial erläutert wird. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte von Anmelde-URL, Bezeichner und Relayzustand. Wenden Sie sich an das [Kundensupportteam von Lifesize Cloud](https://legacy.lifesize.com/en/support), um die Werte für die Anmelde-URL und den Bezeichner zu erhalten. Den Wert für den Relayzustand können Sie der SSO-Konfiguration entnehmen, die später in diesem Tutorial erläutert wird. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 

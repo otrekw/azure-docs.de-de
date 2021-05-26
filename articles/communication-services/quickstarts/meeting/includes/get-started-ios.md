@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 222ae284f77950c729a6a790e2ad29453a9ce34a
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 671c86790a3c90f948edb574bc015c0f41c5fbdf
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903157"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109858218"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit der Azure Communication Services-Bibliothek zum Einbetten von Teams für iOS einer Microsoft Teams-Besprechung beitreten.
 
@@ -86,7 +86,7 @@ Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektst
 
 ### <a name="add-the-teams-embed-framework"></a>Hinzufügen des Frameworks zum Einbetten von Teams
 
-1. Laden Sie das [iOS-Paket `MicrosoftTeamsSDK`](https://github.com/Azure/communication-teams-embed/releases) herunter.
+1. Laden Sie das iOS-Paket `MicrosoftTeamsSDK` herunter.
 2. Erstellen Sie im Stammverzeichnis den Ordner `Frameworks`. Ex. `\TeamsEmbedGettingStarted\Frameworks\`
 3. Kopieren Sie die heruntergeladenen Frameworks `TeamsAppSDK.framework` und `MeetingUIClient.framework` sowie weitere im Releasepaket bereitgestellten Frameworks in diesen Ordner.
 4. Fügen Sie die Frameworks zum Projektziel auf der Registerkarte „Allgemein“ hinzu. Verwenden Sie `Add Other` -> `Add Files...`, um zu den Framework-Dateien zu navigieren und sie hinzuzufügen.

@@ -2,13 +2,13 @@
 title: 'Azure Event Hubs: Resource Manager-Ausnahmen | Microsoft-Dokumentation'
 description: Enthält eine Liste mit den Azure Event Hubs-Ausnahmen, die von Azure Resource Manager angezeigt werden, und vorgeschlagene Aktionen.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: cec24696d0d49ba408860f6562c34dd14876c311
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: 5ca80024e317063acacd3fe54a1eb57cc3115a95
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91334207"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371239"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure Event Hubs – Resource Manager-Ausnahmen
 In diesem Artikel werden die Ausnahmen aufgelistet, die bei der Interaktion mit Azure Event Hubs mithilfe von Azure Resource Manager (über Vorlagen oder direkte Aufrufe) generiert werden.
@@ -37,14 +37,14 @@ Die folgenden Abschnitte enthalten verschiedene Ausnahmen/Fehler, die von Azure 
 
 | Fehlercode | Untergeordneter Fehlercode | Fehlermeldung | BESCHREIBUNG | Empfehlung |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| BadRequest | 40.000 | PartitionCount kann für einen Event Hub nicht geändert werden. | Für den Tarif „Basic“ oder „Standard“ von Azure Event Hubs wird das Ändern von Partitionen nicht unterstützt. | Erstellen Sie in Ihrem Namespace im Tarif „Basic“ oder „Standard“ einen neuen Event Hub mit der gewünschten Anzahl von Partitionen. Das horizontale Hochskalieren von Partitionen wird für [dedizierte Cluster](event-hubs-dedicated-overview.md) unterstützt. |
+| BadRequest | 40.000 | PartitionCount kann für einen Event Hub nicht geändert werden. | Für den Tarif „Basic“, „Standard“ oder „Premium“ von Azure Event Hubs wird das Ändern von Partitionen nicht unterstützt. | Erstellen Sie in Ihrem Namespace im Tarif „Basic“, „Standard“ oder „Premium“ einen neuen Event Hub mit der gewünschten Anzahl von Partitionen. Das horizontale Hochskalieren von Partitionen wird für [dedizierte Cluster](event-hubs-dedicated-overview.md) unterstützt. |
 | BadRequest | 40.000 | Der Wert „#“ für „MessageRetentionInDays“ ist für den Tarif „Basic“ nicht gültig. Der Wert darf nicht höher als „1“ Tag sein. | Für Event Hubs-Namespaces im Tarif „Basic“ wird für die Nachrichtenaufbewahrung nur ein Zeitraum von maximal einem Tag unterstützt. | [Erstellen Sie einen Event Hubs-Standardnamespace](event-hubs-create.md), falls Sie Nachrichten länger als einen Tag lang aufbewahren möchten. | 
 | BadRequest | none | Der angegebene Name ist nicht verfügbar. | Namespacenamen müssen eindeutig sein, und der angegebene Name wird bereits verwendet. | Wenn Sie der Besitzer des vorhandenen Namespace mit dem angegebenen Namen sind, können Sie ihn löschen. Dies führt zu Datenverlust. Versuchen Sie es anschließend erneut mit demselben Namen. Wenn das Löschen des Namespace nicht sicher ist (oder Sie nicht der Besitzer sind), sollten Sie einen anderen Namespacenamen auswählen. |
 | BadRequest | none | Für das angegebene Abonnement wurde das Namespacekontingent erreicht. | Für Ihr Abonnement wurde das zulässige [Kontingent](event-hubs-quotas.md) für die Anzahl von Namespaces erreicht. | Erwägen Sie, nicht verwendete Namespaces unter diesem Abonnement zu löschen, erstellen Sie ein anderes Abonnement, oder führen Sie ein Upgrade auf einen [dedizierten Cluster](event-hubs-dedicated-overview.md) durch. |
 | BadRequest | none | Sekundärer Namespace kann nicht aktualisiert werden | Der Namespace kann nicht aktualisiert werden, weil es sich um den sekundären Namespace der [Kopplung einer Notfallwiederherstellung mit Georeplikation](event-hubs-geo-dr.md) handelt. | Nehmen Sie die Änderung stattdessen am primären Namespace der Kopplung vor, falls dies möglich ist. Lösen Sie andernfalls die Kopplung einer Notfallwiederherstellung mit Georeplikation auf, um die Änderung vorzunehmen. |
-| BadRequest | none | Automatische Vergrößerung kann in Basic-SKU nicht festgelegt werden | Die automatische Vergrößerung kann für Event Hubs-Namespaces im Tarif „Basic“ nicht aktiviert werden. | Sie müssen den Tarif „Standard“ verwenden, um für einen Namespace die [automatische Vergrößerung zu aktivieren](event-hubs-auto-inflate.md). |
+| BadRequest | none | Automatische Vergrößerung kann in Basic-SKU nicht festgelegt werden | Die automatische Vergrößerung kann für Event Hubs-Namespaces im Tarif „Basic“ nicht aktiviert werden. | Sie müssen den Tarif „Standard“ oder „Premium“ verwenden, um für einen Namespace [automatische Vergrößerung zu aktivieren](event-hubs-auto-inflate.md). |
 | BadRequest | none | Es ist nicht genügend Kapazität vorhanden, um den Namespace zu erstellen. Wenden Sie sich an Ihren Event Hubs-Administrator. | Für die ausgewählte Region ist keine Kapazität mehr vorhanden, und es können keine weiteren Namespaces erstellt werden. | Wählen Sie eine andere Region für Ihren Namespace aus. |
-| BadRequest | none | Der Vorgang kann nicht für den Entitätstyp „ConsumerGroup“ durchgeführt werden, weil für den Namespace „Namespacename“ der Tarif „Basic“ verwendet wird.  | Event Hubs-Namespaces im Tarif „Basic“ verfügen über ein Kontingent (event-hubs-quotas.md) von einer Consumergruppe (Standardeinstellung). Die Erstellung von weiteren Consumergruppen wird nicht unterstützt. | Verwenden Sie die Standardconsumergruppe ($Default) weiter, oder erwägen Sie stattdessen die Verwendung eines Event Hubs-Namespace im Tarif „Standard“, falls Sie weitere Consumergruppen benötigen. | 
+| BadRequest | none | Der Vorgang kann nicht für den Entitätstyp „ConsumerGroup“ durchgeführt werden, weil für den Namespace „Namespacename“ der Tarif „Basic“ verwendet wird.  | Event Hubs-Namespaces im Tarif „Basic“ verfügen über ein Kontingent (event-hubs-quotas.md) von einer Consumergruppe (Standardeinstellung). Die Erstellung von weiteren Consumergruppen wird nicht unterstützt. | Verwenden Sie die Standardconsumergruppe ($Default) weiterhin, oder erwägen Sie stattdessen die Verwendung eines Event Hubs-Namespace im Tarif „Standard“ oder „Premium“, falls Sie weitere Consumergruppen benötigen. | 
 | BadRequest | none | Der Namespace „Namespacename“ ist nicht vorhanden. | Der angegebene Namespace wurde nicht gefunden. | Überprüfen Sie, ob der Namespacename stimmt und in Ihrem Abonnement auffindbar ist. Wenn nicht, sollten Sie einen [Event Hubs-Namespace erstellen](event-hubs-create.md). | 
 | BadRequest | none | Die Standorteigenschaft der Ressource stimmt nicht mit dem Namespace überein, in dem diese enthalten ist. | Beim Erstellen eines Event Hubs in einer bestimmten Region ist ein Fehler aufgetreten, weil diese nicht mit der Region des Namespace übereinstimmt. | Versuchen Sie, den Event Hub in derselben Region wie den Namespace zu erstellen. | 
 

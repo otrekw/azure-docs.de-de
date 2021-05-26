@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: bf006c6ade92cc2d1286dc1173d09efea0294f50
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e5f71566d3e31858a60f805bf45fe95793dd9b20
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754467"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094256"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -178,26 +178,6 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für AK
 | *.ods.opinsights.azure.com    | **`HTTPS:443`**    | Dieser Endpunkt wird von Azure Monitor zur Erfassung von Log Analytics-Daten verwendet. |
 | *.oms.opinsights.azure.com | **`HTTPS:443`** | Dieser Endpunkt wird von „omsagent“ verwendet. „omsagent“ dient zur Authentifizierung des Log Analytics-Diensts. |
 | *.monitoring.azure.com | **`HTTPS:443`** | Dieser Endpunkt wird zum Senden von Metrikdaten an Azure Monitor verwendet. |
-
-### <a name="azure-dev-spaces"></a>Azure Dev Spaces
-
-Aktualisieren Sie Ihre Firewall- oder Sicherheitskonfiguration, um Netzwerkdatenverkehr zu und von allen unten genannten FQDNs und [Azure Dev Spaces-Infrastrukturdiensten][dev-spaces-service-tags] zuzulassen.
-
-#### <a name="required-network-rules"></a>Benötigte Netzwerkregeln
-
-| Zielendpunkt                                                             | Protokoll | Port    | Zweck  |
-|----------------------------------------------------------------------------------|----------|---------|------|
-| [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureDevSpaces`**  | TCP           | 443      | Dieser Endpunkt dient zum Senden von Metrikdaten und Protokollen an Azure Monitor und Log Analytics. |
-
-#### <a name="required-fqdn--application-rules"></a>Benötigte FQDNs/Anwendungsregeln
-
-Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für AKS-Cluster mit aktiviertem Azure Dev Spaces-Dienst erforderlich.
-
-| FQDN                                    | Port      | Zweck      |
-|-----------------------------------------|-----------|----------|
-| `cloudflare.docker.com` | **`HTTPS:443`** | Diese Adresse wird verwendet, um Linux Alpine und andere Azure Dev Spaces-Images zu pullen. |
-| `gcr.io` | **`HTTPS:443`** | Diese Adresse wird zum Abrufen von Helm/Tiller-Images verwendet. |
-| `storage.googleapis.com` | **`HTTPS:443`** | Diese Adresse wird zum Abrufen von Helm/Tiller-Images verwendet. |
 
 ### <a name="azure-policy"></a>Azure Policy
 
@@ -802,4 +782,3 @@ Informationen zur Einschränkung der Kommunikation zwischen Pods sowie zu Ost-We
 [aks-upgrade]: upgrade-cluster.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[dev-spaces-service-tags]: ../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations

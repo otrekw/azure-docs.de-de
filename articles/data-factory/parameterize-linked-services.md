@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/18/2021
 author: chez-charlie
 ms.author: chez
-ms.openlocfilehash: 2bbb4017d0f5bd700bfbc9964f8949d59999ea4d
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 48e8c9ff5111b6b67e835676e3bc56e4536248a0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903684"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091466"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrisieren von verknüpften Diensten in Azure Data Factory
 
@@ -38,6 +38,7 @@ Für die Erstellung verknüpfter Dienste auf der Benutzeroberfläche bietet Data
 
 - Amazon Redshift
 - Amazon S3
+- Amazon S3 Compatible Storage
 - Azure Blob Storage
 - Azure Cosmos DB (SQL-API)
 - Azure Data Lake Storage Gen2
@@ -52,6 +53,7 @@ Für die Erstellung verknüpfter Dienste auf der Benutzeroberfläche bietet Data
 - Generisches REST
 - MySQL
 - Oracle
+- Oracle Cloud Storage
 - SQL Server
 
 Für andere Arten verknüpfter Dienste, die nicht in der obigen Liste enthalten sind, können Sie den verknüpften Dienst parametrisieren, indem Sie die JSON über die Benutzeroberfläche bearbeiten:

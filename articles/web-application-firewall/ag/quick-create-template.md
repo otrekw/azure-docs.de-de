@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: victorh
 ms.custom: subject-armqs
-ms.openlocfilehash: 4c5d5c4cafee9402e2afd7ddc047fd3b68e84540
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebe235d24c8c8c926ceeb6b82db23d03075ed764
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92091320"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845454"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure WAF v2 für Application Gateway mithilfe einer ARM-Vorlage
 
@@ -38,7 +38,7 @@ Diese Vorlage dient zum Erstellen einer einfachen Web Application Firewall (v2)
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/).
 
-:::code language="json" source="~/quickstart-templates/ag-docs-wafv2/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/demos/ag-docs-wafv2/azuredeploy.json":::
 
 In der Vorlage sind mehrere Azure-Ressourcen definiert:
 

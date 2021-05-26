@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Supporttickets für Azure Stack Edge Pro und Azure Data Box Gateway | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie bei Problemen im Zusammenhang mit Ihren Azure Stack Edge Pro- oder Data Box Gateway-Aufträgen Supportanfragen erstellen.
+title: Erstellen eines Supporttickets für Azure Stack Edge und Azure Data Box Gateway | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie bei Problemen im Zusammenhang mit Ihren Azure Stack Edge- oder Data Box Gateway-Aufträgen Supportanfragen erstellen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: f76652600f42d7e82914836537935ac9a74decb4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e109c09a70b96e81daad8929fc82b6059b3619b6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102436792"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060542"
 ---
-# <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Öffnen eines Supporttickets für Azure Stack Edge Pro und Azure Data Box Gateway
+# <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Öffnen eines Support-Tickets für Azure Stack Edge und Azure Data Box Gateway
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-databox-gateway-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-databox-gateway-sku.md)]
 
-Dieser Artikel bezieht sich auf Azure Stack Edge Pro und Azure Data Box Gateway, die beide vom Azure Stack Edge Pro-/Azure Data Box Gateway-Dienst verwaltet werden. Wenn Probleme mit Ihrem Dienst auftreten, können Sie eine Serviceanfrage für den technischen Support erstellen. In diesem Artikel wird Folgendes beschrieben:
+Dieser Artikel bezieht sich auf Azure Stack Edge und Azure Data Box Gateway, die beide vom Azure Stack Edge-/Azure Data Box Gateway-Dienst verwaltet werden. Wenn Probleme mit Ihrem Dienst auftreten, können Sie eine Serviceanfrage für den technischen Support erstellen. In diesem Artikel wird Folgendes beschrieben:
 
 * Erstellen einer Supportanfrage
 * Verwalten des Lebenszyklus einer Supportanfrage innerhalb des Portals
@@ -28,13 +28,13 @@ Dieser Artikel bezieht sich auf Azure Stack Edge Pro und Azure Data Box Gateway,
 
 Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen:
 
-1. Wechseln Sie zu Ihrem Azure Stack Edge Pro- oder Data Box Gateway-Auftrag. Navigieren Sie zum Abschnitt **Support + Problembehandlung**, und wählen Sie anschließend die Option **Neue Supportanfrage**.
+1. Wechseln Sie zu Ihrem Azure Stack Edge- oder Data Box Gateway-Auftrag. Navigieren Sie zum Abschnitt **Support + Problembehandlung**, und wählen Sie anschließend die Option **Neue Supportanfrage**.
 
 2. Führen Sie unter **Neue Supportanfrage** auf der Registerkarte **Grundlagen** die folgenden Schritte aus:
 
     1. Wählen Sie aus der Dropdownliste **Problemtyp** den Eintrag **Technisch** aus.
     2. Wählen Sie Ihr **Abonnement** aus.
-    3. Überprüfen Sie unter **Dienst** die Option **Meine Dienste**. Wählen Sie in der Dropdownliste die Option **Azure Stack Edge Pro und Data Box Gateway** aus.
+    3. Überprüfen Sie unter **Dienst** die Option **Meine Dienste**. Wählen Sie in der Dropdownliste die Option **Azure Stack Edge und Data Box Gateway** aus.
     4. Wählen Sie Ihre **Ressource** aus. Dies entspricht dem Namen Ihres Auftrags.
     5. Geben Sie eine kurze **Zusammenfassung** des aufgetretenen Problems an. 
     6. Wählen Sie Ihren **Problemtyp** aus.
@@ -100,5 +100,5 @@ Nach dem Erstellen einer Supportanfrage können Sie den Lebenszyklus des Tickets
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über das [Behandeln von Problemen mit Azure Stack Edge Pro](azure-stack-edge-troubleshoot.md).
+Erfahren Sie mehr über das [Behandeln von Problemen mit Azure Stack Edge](azure-stack-edge-troubleshoot.md).
 Erfahren Sie mehr über das [Behandeln von Problemen mit Data Box Gateway](../databox-gateway/data-box-gateway-troubleshoot.md).

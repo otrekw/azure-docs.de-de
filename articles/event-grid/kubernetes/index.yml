@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Event Grid in Kubernetes mit Azure Arc (Vorschau) – Dokumentation
+summary: Erfahren Sie, wie Sie Event Grid in Kubernetes verwenden können, um nahezu in Echtzeit auf relevante Ereignisse zu reagieren, die in Kubernetes-Clustern generiert werden, die mit Azure Arc verbunden sind.
+metadata:
+  title: Event Grid in Kubernetes mit Azure Arc (Vorschau) – Dokumentation
+  description: Erfahren Sie, wie Sie Event Grid in Kubernetes verwenden können, um nahezu in Echtzeit auf relevante Ereignisse zu reagieren, die in Kubernetes-Clustern generiert werden, die mit Azure Arc verbunden sind.
+  services: event-grid
+  ms.service: event-grid
+  ms.subservice: kubernetes
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 05/25/2021
+  ms.openlocfilehash: 6403b71a1b29a41b47915e8d76cff75535a92066
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110383466"
+landingContent:
+- title: Informationen zu Event Grid in Kubernetes
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Event Grid in Kubernetes?
+      url: overview.md
+    - text: Funktionen
+      url: features.md
+- title: Konzepte
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Konzepte zu Event Grid in Kubernetes
+      url: concepts.md
+    - text: Ereignishandler
+      url: event-handlers.md
+    - text: Ereignisschemas
+      url: event-schemas.md
+    - text: Ereignisschemas
+      url: event-schemas.md
+    - text: Batch-Ereignisübermittlung
+      url: batch-event-delivery.md
+    - text: Batch-Ereignisübermittlung
+      url: delivery-retry.md
+    - text: Filtern von Ereignissen
+      url: filter-events.md
+- title: Schnellstart und Vorgehensweise
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines Themas und Abonnements
+      url: create-topic-subscription.md
+    - text: Installieren der Event Grid-Erweiterung im Kubernetes-Cluster
+      url: install-k8s-extension.md
+    - text: Anfordern von Support
+      url: get-support.md
