@@ -2,16 +2,16 @@
 title: 'Tutorial: Initialisieren der Hardware – Azure FXT Edge Filer'
 description: Hier erfahren Sie, wie Sie eine Verbindung mit dem Hardwareknoten herstellen und ein anfängliches Kennwort für Azure FXT Edge Filer-Knoten festlegen.
 author: ekpgh
-ms.author: rohogue
+ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 79d908077d3bd66a3ed86759e37574383358881b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc63e436778c99f4ac0d10a4e708097b9dd27cdb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92218849"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456076"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>Tutorial: Festlegen von Hardwarekennwörtern
 

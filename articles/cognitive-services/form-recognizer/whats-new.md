@@ -1,33 +1,50 @@
 ---
 title: Neuerungen in der Formularerkennung
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Informieren Sie sich über die neuesten Änderungen an der Formularerkennungs-API.
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
-ms.topic: conceptual
-ms.date: 04/28/2021
+ms.topic: overview
+ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: 58430c94fa1b22954ca640188ced5bfb1fb197d0
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 691094164a9aa57ab9b029455b5e3a0e9fefd63f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293319"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373969"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
-# <a name="whats-new-in-form-recognizer"></a>Neuerungen in der Formularerkennung
+# <a name="whats-new-in-form-recognizer"></a>Neuerungen bei der Formularerkennung
 
-Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel finden Sie aktuelle Informationen zu Featureverbesserungen, Fixes und Dokumentationsaktualisierungen.
+Der Formularerkennungsdienst wird fortlaufend aktualisiert. Speichern Sie ein Lesezeichen für diese Seite, um zu Versionshinweisen, Featureerweiterungen und Dokumentationsupdates auf dem neuesten Stand zu bleiben.
+
+## <a name="may-2021"></a>Mai 2021
+
+### <a name="form-recognizer-21-ga"></a>Formularerkennung 2.1 (allgemeine Verfügbarkeit)
+
+Die Formularerkennung 2.1 ist allgemein verfügbar. Bei dieser Version können Sie Informationen und Daten aus folgenden Ressourcen erkennen und extrahieren:
+
+* [Dokumente](concept-layout.md)
+* [Receipts](concept-receipts.md)
+* [Visitenkarten](concept-business-cards.md)
+* [Invoices](concept-invoices.md)
+* [Identitätsdokumente](concept-identification-cards.md)
+* [Benutzerdefinierte Formulare](concept-custom.md)
+
+### <a name="layout-adds-table-headers"></a>Layout unterstützt jetzt Tabellenkopfzeilen
+
+Das Tabellenfeature der aktualisierten Layout-API wurde um die Kopfzeilenerkennung bei Spaltenköpfen erweitert, die mehrere Zeilen umfassen können. Jede Tabellenzelle verfügt über ein Attribut, das angibt, ob sie Teil einer Kopfzeile ist oder nicht. Anhand dessen kann bestimmt werden, welche Zeilen den Tabellenkopf bilden.
 
 ## <a name="april-2021"></a>April 2021
 <!-- markdownlint-disable MD029 -->
 
 ### <a name="sdk-preview-updates-for-api--version-21-preview3"></a>SDK-Vorschauupdates für API-Version 2.1-preview.3
 
-### <a name="c"></a>[**C#** ](#tab/csharp)
+### <a name="c"></a>[**C#**](#tab/csharp)
 
 NuGet package version 3.1.0-beta.4
 
@@ -258,7 +275,7 @@ pip-Paketversion 3.1.0b4
 **Neue Beispiele** sind auf GitHub verfügbar.
 
 * Unter [Knowledge Extraction Recipes - Forms Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) werden bewährte Methoden aus echten Kundenengagements mit der Formularerkennung gesammelt und nützliche Codebeispiele, Checklisten und Beispielpipelines für die Entwicklung dieser Projekte bereitgestellt.
-* Das [Samplebezeichnungstool](https://github.com/microsoft/OCR-Form-Tools) wurde aktualisiert, um die neue Funktionalität von v2.1 zu unterstützen. Informationen zu den ersten Schritten mit dem Tool finden Sie in diesem [Schnellstart](quickstarts/label-tool.md).
+* Das [Samplebezeichnungstool](https://github.com/microsoft/OCR-Form-Tools) wurde aktualisiert, um die neue Funktionalität von v2.1 zu unterstützen. Informationen zu den ersten Schritten mit dem Tool finden Sie in diesem [Schnellstart](label-tool.md).
 * Im Formularerkennungsbeispiel [Intelligent Kiosk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) wird gezeigt, wie `Analyze Receipt` und `Train Custom Model` - _Trainieren ohne Bezeichnungen_ integriert werden.
 
 ## <a name="july-2020"></a>Juli 2020
@@ -322,7 +339,7 @@ pip-Paketversion 3.1.0b4
   * `time`
   * `integer`
 
-  Weitere Informationen zur Verwendung dieses Features finden Sie in der Anleitung zum [Tool zum Beschriften von Beispielen](./quickstarts/label-tool.md#specify-tag-value-types).
+  Weitere Informationen zur Verwendung dieses Features finden Sie in der Anleitung zum [Tool zum Beschriften von Beispielen](label-tool.md#specify-tag-value-types).
 
 * **Visualisierung von Tabellen** Im Tool für die Beschriftung von Beispielen werden nun im Dokument erkannte Tabellen angezeigt. Mithilfe dieses Features können Sie die im Dokument erkannten und aus dem Dokument extrahierten Tabellen anzeigen, bevor Sie die Beschriftung und Analyse durchführen. Dieses Feature kann mithilfe der Ebenenoption aktiviert bzw. deaktiviert werden.
 

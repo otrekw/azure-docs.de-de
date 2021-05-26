@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 2e892e5d6b14db6f880cda7545122287dd68d7ec
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 77c840b85b8b2c3b3282e531a7dafa80b17a3d68
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761946"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110074393"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure Backup muss für Virtual Machines aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F013e242c-8828-4970-87b3-ab247555486d) |Schützen Sie Ihre Azure Virtual Machines-Instanzen, indem Sie Azure Backup aktivieren. Azure Backup ist eine sichere und kostengünstige Lösung zum Schutz von Daten für Azure. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachines_EnableAzureBackup_Audit.json) |
 |[\[Vorschau:\] Azure Recovery Services-Tresore müssen für die Verschlüsselung von Sicherungsdaten kundenseitig verwaltete Schlüssel verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2e94d99a-8a36-4563-bc77-810d8893b671) |Verwenden Sie kundenseitig verwaltete Schlüssel, um die Verschlüsselung im Ruhezustand für Ihre Sicherungsdaten zu verwalten. Standardmäßig werden Kundendaten mit dienstseitig verwalteten Schlüsseln verschlüsselt. Häufig sind aber kundenseitig verwaltete Schlüssel (CMKs) zur Einhaltung gesetzlicher Bestimmungen erforderlich. Mit kundenseitig verwalteten Schlüsseln können die Daten mit einem Azure Key Vault-Schlüssel verschlüsselt werden, der von Ihnen erstellt wird und sich in Ihrem Besitz befindet. Sie verfügen über die volle Kontrolle über und Verantwortung für den Schlüssellebenszyklus, einschließlich Rotation und Verwaltung. Weitere Informationen finden Sie unter [https://aka.ms/AB-CmkEncryption](https://aka.ms/AB-CmkEncryption). |Audit, Deny, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/AzBackupRSVault_CMKEnabled_Audit.json) |

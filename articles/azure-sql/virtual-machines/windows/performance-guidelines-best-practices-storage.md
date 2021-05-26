@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: f1138f0b33e75968f51965355528805dd29033b3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9a9cfc444c101b603b5287fa862c36d5befef91a
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145626"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189656"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>Speicher: Bewährte Methoden zur Leistung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,8 +51,6 @@ In der folgenden Prüfliste finden Sie eine kurze Übersicht über die bewährte
     - Vor dem Ändern der Cacheeinstellungen Ihres Datenträgers sollten Sie den SQL Server-Dienst immer anhalten.
 - Für Workloads in Entwicklungs- und Testumgebungen sowie für die langfristige Archivierung von Sicherungskopien sollten Sie Standardspeicher verwenden. Es wird nicht empfohlen, Standard-HDD/SDD für Produktionsworkloads zu verwenden.
 - [Auf Guthaben basierendes Datenträgerbursting](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) sollte nur für kleinere Dev-/Test-Workloads und Abteilungssysteme in Betracht gezogen werden.
-- Stellen Sie das Speicherkonto in derselben Region wie die SQL Server-VM bereit. 
-- Deaktivieren Sie den georedundanten Azure-Speicher (Georeplikation), und verwenden Sie LRS (lokal redundanter Speicher) für das Speicherkonto.
 - Formatieren Sie den Datenträger, um die Blockgröße (Größe der Zuordnungseinheiten) von 64 KB für alle Datendateien zu verwenden, die auf einem anderen Laufwerk als dem temporären Laufwerk `D:\` abgelegt werden (Standardwert: 4 KB). Virtuelle SQL Server-Computer, die über Azure Marketplace bereitgestellt werden, werden mit Datenträgern geliefert, die mit der Blockgröße und dem Interleave für den Speicherpool auf 64 KB formatiert sind. 
 
 Informationen zum Vergleichen der Prüfliste für den Speicher mit den anderen, finden Sie unter [Prüfliste für bewährte Methoden für die Leistung](performance-guidelines-best-practices-checklist.md). 

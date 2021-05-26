@@ -2,29 +2,29 @@
 title: Status der benutzerdefinierten Orchestrierung in Durable Functions – Azure
 description: Erfahren Sie, wie Sie den Status der benutzerdefinierten Orchestrierung für Durable Functions konfigurieren und verwenden.
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 05/10/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 4a95e7c74fac7043d0adb5f31d2bdcdd73b9577a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de74c2d8c4e7abf5735dad0b1c04f2cce88aa2c1
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97766327"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370924"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Status der benutzerdefinierten Orchestrierung in Durable Functions (Azure Functions)
 
-Mit dem benutzerdefinierten Orchestrierungsstatus können Sie einen benutzerdefinierten Statuswert für Ihre Orchestratorfunktion festlegen. Dieser Status wird über die [HTTP GetStatus-API](durable-functions-http-api.md#get-instance-status) oder die [`GetStatusAsync`-API](durable-functions-instance-management.md#query-instances) im Orchestrierungsclient bereitgestellt.
+Mit dem benutzerdefinierten Orchestrierungsstatus können Sie einen benutzerdefinierten Statuswert für Ihre Orchestratorfunktion festlegen. Dieser Status wird über die [HTTP GetStatus-API](durable-functions-http-api.md#get-instance-status) oder die entsprechende [SDK-API](durable-functions-instance-management.md#query-instances) im Orchestrierungsclientobjekt bereitgestellt.
 
 ## <a name="sample-use-cases"></a>Beispiele für Anwendungsfälle
-
-> [!NOTE]
-> Die folgenden Beispiele zeigen, wie das benutzerdefinierte Statusfeature in C#, JavaScript und Python verwendet wird. Die C#-Beispiele wurden für Durable Functions 2.x geschrieben und sind nicht mit Durable Functions 1.x kompatibel. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
 ### <a name="visualize-progress"></a>Visualisieren des Fortschritts
 
 Clients können den Statusendpunkt per Poll abrufen und eine Statusanzeige zur Visualisierung der aktuellen Ausführungsphase anzeigen. Das folgende Beispiel veranschaulicht die Ausführungsfreigabe:
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+> [!NOTE]
+> Diese C#-Beispiele wurden für Durable Functions 2.x geschrieben und sind nicht mit Durable Functions 1.x kompatibel. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -108,7 +108,33 @@ def main(name: str) -> str:
     return f"Hello {name}!"
 
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
+### <a name="e1_hellosequence-orchestrator-function"></a>`E1_HelloSequence`-Orchestratorfunktion
+```powershell
+param($Context)
+
+$output = @()
+
+$output += Invoke-DurableActivity -FunctionName 'E1_SayHello' -Input 'Tokyo'
+Set-DurableCustomStatus -CustomStatus 'Tokyo'
+
+$output += Invoke-DurableActivity -FunctionName 'E1_SayHello' -Input 'Seattle'
+Set-DurableCustomStatus -CustomStatus 'Seattle'
+
+$output += Invoke-DurableActivity -FunctionName 'E1_SayHello' -Input 'London'
+Set-DurableCustomStatus -CustomStatus 'London'
+
+
+return $output
+```
+
+### <a name="e1_sayhello-activity-function"></a>`E1_SayHello`-Aktivitätsfunktion
+```powershell
+param($name)
+
+"Hello $name"
+```
 ---
 
 Und dann erhält der Client die Ausgabe der Orchestrierung nur, wenn das `CustomStatus`-Feld auf "London" festgelegt ist:
@@ -202,6 +228,10 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 > [!NOTE]
 > In Python wird das `custom_status`-Feld festgelegt, wenn die nächste `yield`- oder `return`-Aktion geplant wird.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Das Feature ist derzeit nicht in PowerShell implementiert.
 
 ---
 
@@ -315,6 +345,36 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
 main = df.Orchestrator.create(orchestrator_function)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+#### <a name="cityrecommender-orchestrator"></a>`CityRecommender`-Orchestrator
+
+```powershell
+param($Context)
+
+$userChoice = $Context.Input -as [int]
+
+if ($userChoice -eq 1) {
+    Set-DurableCustomStatus -CustomStatus @{ recommendedCities = @('Tokyo', 'Seattle'); 
+                                             recommendedSeasons = @('Spring', 'Summer') 
+                                            }  
+}
+
+if ($userChoice -eq 2) {
+    Set-DurableCustomStatus -CustomStatus @{ recommendedCities = @('Seattle', 'London'); 
+                                             recommendedSeasons = @('Summer') 
+                                            }  
+}
+
+if ($userChoice -eq 3) {
+    Set-DurableCustomStatus -CustomStatus @{ recommendedCities = @('Tokyo', 'London'); 
+                                             recommendedSeasons = @('Spring', 'Summer') 
+                                            }  
+}
+
+# Wait for user selection and refine the recommendation
+```
 ---
 
 ### <a name="instruction-specification"></a>Anweisungsspezifikation
@@ -399,7 +459,33 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
 main = df.Orchestrator.create(orchestrator_function)
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
+```powershell
+param($Context)
+
+$userId = $Context.Input -as [int]
+
+$discount = Invoke-DurableActivity -FunctionName 'CalculateDiscount' -Input $userId
+
+$status = @{
+            discount = $discount;
+            discountTimeout = 60;
+            bookingUrl = "https://www.myawesomebookingweb.com"
+            }
+
+Set-DurableCustomStatus -CustomStatus $status
+
+$isBookingConfirmed = Invoke-DurableActivity -FunctionName 'BookingConfirmed'
+
+if ($isBookingConfirmed) {
+    Set-DurableCustomStatus -CustomStatus @{message = 'Thank you for confirming your booking.'}
+} else {
+    Set-DurableCustomStatus -CustomStatus @{message = 'The booking was not confirmed on time. Please try again.'}
+}
+
+return $isBookingConfirmed
+```
 ---
 
 ## <a name="sample"></a>Beispiel
@@ -453,6 +539,20 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
 main = df.Orchestrator.create(orchestrator_function)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+# ...do work...
+
+Set-DurableCustomStatus -CustomStatus @{ nextActions = @('A', 'B', 'C'); 
+                                         foo = 2 
+                                        }  
+
+# ...do more work...
+```
 ---
 
 Während der Ausführung der Orchestrierung können externe Clients diesen benutzerdefinierten Status abrufen:
@@ -475,7 +575,7 @@ Clients erhalten folgende Antwort:
 ```
 
 > [!WARNING]
-> Die Nutzlast des benutzerdefinierten Status ist auf UTF-16-JSON-Text mit einer Größe von 16 KB beschränkt, da dieser in eine Azure Table Storage-Spalte passen muss. Es wird empfohlen, externen Speicher zu verwenden, wenn Sie eine größere Nutzlast benötigen.
+> Die benutzerdefinierten Statusnutzdaten sind auf 16 KB UTF-16-JSON-Text beschränkt. Es wird empfohlen, externen Speicher zu verwenden, wenn Sie eine größere Nutzlast benötigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

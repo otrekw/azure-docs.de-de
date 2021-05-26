@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a26012512759cf614239e755beb0ea704335de69
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 91f20f959568f92bb72d79cd125a1db1c4a3c2b6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761999"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110074445"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure Event Grid-Domänen müssen den Zugriff über öffentliche Netzwerke deaktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff8f774be-6aee-492a-9e29-486ef81f3a68) |Die Deaktivierung des Zugriff über öffentliche Netzwerke erhöht die Sicherheit, da die Ressource nicht über das öffentliche Internet zugänglich ist. Sie können die Offenlegung von Ressourcen einschränken, indem Sie stattdessen private Endpunkte erstellen. Weitere Informationen finden Sie unter [https://aka.ms/privateendpoints](https://aka.ms/privateendpoints). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Domains_PublicNetworkAccess_AuditDeny.json) |
 |[Azure Event Grid-Domänen sollten Private Link verwenden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9830b652-8523-49cc-b1b3-e17dce1127ca) |Mit Azure Private Link können Sie Ihr virtuelles Netzwerk mit Azure-Diensten verbinden, ohne auf der Quelle oder auf dem Ziel eine öffentliche IP-Adresse zu verwenden. Die Private Link-Plattform verarbeitet die Konnektivität zwischen dem Consumer und den Diensten über das Azure-Backbone-Netzwerk. Indem Sie private Endpunkte nicht dem gesamten Dienst, sondern nur Ihrer Event Grid-Domäne zuordnen, sind Sie auch vor Risiken aufgrund von Datenlecks geschützt. Weitere Informationen finden Sie unter [https://aka.ms/privateendpoints](https://aka.ms/privateendpoints). |Audit, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Domains_PrivateEndpoint_Audit.json) |

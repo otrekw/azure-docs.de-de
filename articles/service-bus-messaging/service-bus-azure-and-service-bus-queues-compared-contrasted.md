@@ -3,12 +3,12 @@ title: Vergleich von Azure Storage-Warteschlangen und Service Bus-Warteschlangen
 description: Analysiert die Unterschiede und Gemeinsamkeiten zwischen den beiden zurzeit von Azure angebotenen Warteschlangentypen.
 ms.topic: article
 ms.date: 04/12/2021
-ms.openlocfilehash: 1c3b0fda12d5e301b17a342c5d5ed11ab76c76da
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a63ed276981a692b96b7e7369093af221b3d3a5f
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304357"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190132"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
 In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen untersucht, die in Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Anhand dieser Informationen können Sie eine fundierte Entscheidung darüber treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
@@ -100,7 +100,7 @@ In diesem Abschnitt werden die von Storage-Warteschlangen und Service Bus-Wartes
 | Unterstützung für nicht verarbeitbare Nachrichten |**Ja** |**Ja** |
 | Direktes Update |**Ja** |**Ja** |
 | Serverseitiges Transaktionsprotokoll |**Ja** |**Nein** |
-| Speichermetrik |**Ja**<br/><br/>**Minutenmetriken** bieten Echtzeitmetriken zu Verfügbarkeit, TPS, Anzahl von API-Aufrufen, Anzahl von Fehlern u. v. m. Diese Metriken werden in Echtzeit minutenweise aggregiert und innerhalb weniger Minuten ab dem Vorfall in der Produktionsumgebung gemeldet. Weitere Informationen finden Sie unter [Informationen zu Metriken der Speicheranalyse](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Ja**<br/><br/>Informationen zu Metriken, die von Azure Service Bus unterstützt werden, finden Sie unter [Nachrichtenmetriken](service-bus-metrics-azure-monitor.md#message-metrics). |
+| Speichermetrik |**Ja**<br/><br/>**Minutenmetriken** bieten Echtzeitmetriken zu Verfügbarkeit, TPS, Anzahl von API-Aufrufen, Anzahl von Fehlern u. v. m. Diese Metriken werden in Echtzeit minutenweise aggregiert und innerhalb weniger Minuten ab dem Vorfall in der Produktionsumgebung gemeldet. Weitere Informationen finden Sie unter [Informationen zu Metriken der Speicheranalyse](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Ja**<br/><br/>Informationen zu Metriken, die von Azure Service Bus unterstützt werden, finden Sie unter [Nachrichtenmetriken](monitor-service-bus-reference.md#message-metrics). |
 | Zustandsverwaltung |**Nein** |**Ja** (Aktiv, Deaktiviert, SendDisabled, ReceiveDisabled. Weitere Informationen zu diesen Zuständen finden Sie unter [Warteschlangenstatus](entity-suspend.md#queue-status).) |
 | Automatische Weiterleitung von Nachrichten |**No** |**Ja** |
 | Warteschlangeninhalt endgültig löschen |**Ja** |**Nein** |

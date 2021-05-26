@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: a54a09bd1fb6393098064906fc9c746d3e00b0a2
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 60b12d1daed851018ef8a9fbb9a2a7bc73bd1dc2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100551882"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110163807"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für C# unter der universellen Windows-Plattform (UWP) installieren. Führen Sie `Install-Package Microsoft.CognitiveServices.Speech` in der NuGet-Konsole aus, wenn Sie nur den Paketnamen benötigen und selbständig einsteigen möchten.
 
@@ -34,8 +34,6 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 ## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Erstellen eines Visual Studio-Projekts und Installieren des Speech SDK
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
-
-Nun können Sie mit den [nächsten Schritten](#next-steps) fortfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

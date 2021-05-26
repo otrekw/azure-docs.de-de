@@ -2,17 +2,17 @@
 title: 'Benutzerdefinierte Speicherorte: Kubernetes mit Azure Arc-Unterstützung'
 services: azure-arc
 ms.service: azure-arc
-ms.date: 04/05/2021
+ms.date: 05/25/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Dieser Artikel bietet eine konzeptionelle Übersicht über die Funktionalität „Benutzerdefinierte Speicherorte“ von Kubernetes mit Azure Arc-Unterstützung.
-ms.openlocfilehash: 1235c6adfe97a943ef77584a6a0c8683d691be91
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: fa707822ea385b0f9812e9d71a35bef8f8edfe1f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450818"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376338"
 ---
 # <a name="custom-locations-on-top-of-azure-arc-enabled-kubernetes"></a>„Benutzerdefinierte Speicherorte“ auf Basis von Kubernetes mit Azure Arc-Unterstützung
 

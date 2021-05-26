@@ -3,20 +3,23 @@ title: Notfallwiederherstellung und geografische Verteilung in Azure Durable Fun
 description: Hier erfahren Sie mehr zur Notfallwiederherstellung und zur geografischen Verteilung in Durable Functions.
 author: MS-Santi
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 01c400f51cce85ef39e9d39bcad1221253c6942d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18919b56ffdc9368f2593f2384b3d7a8e836afd0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89071209"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375962"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Notfallwiederherstellung und geografische Verteilung in Azure Durable Functions
 
 Microsoft möcht sicherstellen, dass Azure-Dienste immer verfügbar sind. Es kann jedoch zu ungeplanten Dienstausfällen kommen. Wenn die Anwendung Resilienz erfordert, empfiehlt Microsoft Ihnen, Ihre App für die Georedundanz zu konfigurieren. Darüber hinaus müssen Kunden einen Notfallwiederherstellungsplan haben, um einen regionalen Dienstausfall handhaben zu können. Ein wichtiger Teil eines Notfallwiederherstellungsplans ist die Vorbereitung auf das Failover des sekundären Replikats Ihrer App und Ihres Speichers, falls das primäre Replikat nicht mehr verfügbar ist.
 
 In Durable Functions werden sämtliche Zustände in Azure Storage standardmäßig persistent gespeichert. Ein [Aufgabenhub](durable-functions-task-hubs.md) ist ein logischer Container für Azure Storage-Ressourcen, die für [Orchestrierungen](durable-functions-types-features-overview.md#orchestrator-functions) und [Entitäten](durable-functions-types-features-overview.md#entity-functions) verwendet werden. Orchestrator-, Aktivitäts- und Entitätsfunktionen können nur miteinander interagieren, wenn sie zum selben Aufgabenhub gehören. Dieses Dokument bezieht sich auf Aufgabenhubs, wenn Szenarios beschrieben werden, die dazu dienen, diese Azure Storage-Ressourcen hoch verfügbar zu halten.
+
+> [!NOTE]
+> Die Anleitungen in diesem Artikel gehen davon aus, dass Sie den standardmäßigen Azure Storage-Anbieter zum Speichern des Durable Functions-Laufzeitstatus verwenden. Es ist jedoch möglich, alternative Speicheranbieter zu konfigurieren, die den Zustand an anderer Stelle speichern, z. B. eine SQL Server-Datenbank. Für die alternativen Speicheranbieter können unterschiedliche Notfallwiederherstellungs- und geografische Verteilungsstrategien erforderlich sein. Weitere Informationen zu den alternativen Speicheranbietern finden Sie in der Dokumentation zu [Durable Functions-Speicheranbietern](durable-functions-storage-providers.md).
 
 Orchestrierungen und Entitäten können mithilfe von [Clientfunktionen](durable-functions-types-features-overview.md#client-functions) ausgelöst werden, die selbst über HTTP oder einen der anderen unterstützten Azure Functions-Triggertypen ausgelöst werden. Sie können auch mit [integrierten HTTP-APIs](durable-functions-http-features.md#built-in-http-apis) ausgelöst werden. Der Einfachheit halber konzentriert sich dieser Artikel auf Szenarios, in denen Azure Storage- und HTTP-basierte Funktionstrigger verwendet werden, sowie Optionen zum Erhöhen der Verfügbarkeit und Minimieren der Ausfallzeiten bei Aktivitäten zur Notfallwiederherstellung. Andere Triggertypen wie Service Bus- oder Cosmos DB-Trigger werden nicht explizit abgedeckt.
 

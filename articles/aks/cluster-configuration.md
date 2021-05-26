@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/09/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5740c1c299e8a6a2e8874bd13aae76b0353cc6a2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3937e0a6c00de78acfa774ab6446d2b3d8e68206
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775868"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377122"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurieren eines AKS-Clusters
 
@@ -74,11 +74,9 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 
 ## <a name="container-runtime-configuration"></a>Konfiguration der Containerruntime
 
-Eine Containerruntime ist eine Software, die Container ausführt und Containerimages auf einem Knoten verwaltet. Die Runtime erleichtert die Abstraktion von sys-Aufrufen oder betriebssystemspezifischen Funktionen zum Ausführen von Containern unter Linux oder Windows. AKS-Cluster, die Knotenpools mit Version 1.19 und höheren Versionen von Kubernetes verwenden, nutzen `containerd` als Containerruntime. AKS-Cluster, die Knotenpools mit älteren Kubernetes-Versionen als 1.19 verwenden, nutzen [Moby](https://mobyproject.org/) (Upstream-Docker) als Containerruntime.
+Eine Containerruntime ist eine Software, die Container ausführt und Containerimages auf einem Knoten verwaltet. Die Runtime erleichtert die Abstraktion von sys-Aufrufen oder betriebssystemspezifischen Funktionen zum Ausführen von Containern unter Linux oder Windows. Bei Linux-Knotenpools wird `containerd` für Knotenpools mit Kubernetes Version 1.19 und höher und Docker für Knotenpools mit Kubernetes 1.18 und früher verwendet. Für Windows Server 2019-Knotenpools ist `containerd` in der Vorschau verfügbar und kann in Knotenpools mit Kubernetes 1.20 und höher verwendet werden. Docker wird jedoch weiterhin standardmäßig verwendet.
 
-![Docker CRI 1](media/cluster-configuration/docker-cri.png)
-
-[`Containerd`](https://containerd.io/) ist eine mit [OCI](https://opencontainers.org/) (Open Container Initiative) kompatible Kerncontainerruntime, die den Mindestsatz erforderlicher Funktionen zum Ausführen von Containern und zum Verwalten von Images auf einem Knoten bereitstellt. Sie wurde im März 2017 an die Cloud Native Compute Foundation (CNCF) [übergeben](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/). Die aktuelle Moby-Version, die AKS verwendet, baut bereits auf `containerd` auf, wie oben dargestellt.
+[`Containerd`](https://containerd.io/) ist eine mit [OCI](https://opencontainers.org/) (Open Container Initiative) kompatible Kerncontainerruntime, die den Mindestsatz erforderlicher Funktionen zum Ausführen von Containern und zum Verwalten von Images auf einem Knoten bereitstellt. Sie wurde im März 2017 an die Cloud Native Compute Foundation (CNCF) [übergeben](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/). Die aktuelle Moby-Version (Upstream-Docker), die AKS verwendet, baut bereits auf `containerd` auf, wie oben dargestellt.
 
 Bei Knoten und Knotenpools, die auf `containerd` basieren, kommuniziert das Kubelet statt mit `dockershim` direkt über das CRI-Plug-In (Container Runtime Interface) mit `containerd`. Gegenüber der Docker CRI-Implementierung benötigt der Flow so weniger Hops. Daraus ergibt sich eine verringerte Latenz beim Podstart und eine geringere Ressourcenauslastung (CPU und Arbeitsspeicher).
 
@@ -89,21 +87,21 @@ Durch die Verwendung von `containerd` für AKS-Knoten werden die Podstartlatenz 
 `Containerd` funktioniert mit jeder allgemein verfügbaren Version von Kubernetes in AKS und mit jeder Upstream-Kubernetes-Version ab 1.19 und unterstützt alle Features von Kubernetes und AKS.
 
 > [!IMPORTANT]
-> Cluster mit Knotenpools, die unter Kubernetes 1.19 oder höher erstellt wurden, verwenden standardmäßig `containerd` für die Containerruntime. Cluster mit Knotenpools unter einer unterstützten Kubernetes-Version vor 1.19 erhalten `Moby` als Containerruntime, werden jedoch auf `ContainerD` aktualisiert, sobald die Kubernetes-Version des Knotenpools auf 1.19 oder höher aktualisiert wird. Sie können `Moby`-Knotenpools und -Cluster unter älteren unterstützten Versionen verwenden, solange diese noch unterstützt werden.
+> Cluster mit Knotenpools, die mit Kubernetes v1.19 oder höher erstellt wurden, verwenden standardmäßig `containerd` als Containerruntime. Cluster mit Knotenpools mit früheren unterstützten Kubernetes-Versionen erhalten Docker als Containerruntime. Linux-Knotenpools werden auf `containerd` aktualisiert, sobald die Kubernetes-Version des Knotenpools auf eine Version aktualisiert wird, die `containerd` unterstützt. Sie können weiterhin Docker-Knotenpools und -Cluster unter älteren unterstützten Versionen verwenden, bis diese nicht mehr unterstützt werden.
 > 
-> Es wird dringend empfohlen, Ihre Workloads in AKS-Knotenpools mit `containerD` zu testen, bevor Sie Cluster unter 1.19 oder höher verwenden.
+> Die Verwendung von `containerd` mit Windows Server 2019-Knotenpools befindet sich derzeit in der Vorschau. Weitere Informationen finden Sie unter [Hinzufügen eines Windows Server-Knotenpools mit `containerd`][aks-add-np-containerd].
+> 
+> Es wird dringend empfohlen, Ihre Workloads in AKS-Knotenpools mit `containerd` zu testen, bevor Sie Cluster mit einer Kubernetes-Version verwenden, die `containerd` für Ihre Knotenpools unterstützt.
 
 ### <a name="containerd-limitationsdifferences"></a>Einschränkungen und Unterschiede von `Containerd`
 
-* Wenn Sie `containerd` als Containerruntime verwenden möchten, müssen Sie AKS Ubuntu 18.04 als Betriebssystem-Basisimage verwenden.
-* Obwohl das Docker-Toolset weiterhin auf den Knoten vorhanden ist, verwendet Kubernetes `containerd` als Containerruntime. Da Moby/Docker mit Kubernetes erstellte Container auf den Knoten nicht verwaltet, ist es nicht möglich, die Container mithilfe von Docker-Befehlen (wie `docker ps`) oder der Docker-API anzuzeigen oder mit ihnen zu interagieren.
 * Bei `containerd` wird empfohlen, [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) anstelle der Docker-CLI als Ersatz-CLI für die **Problembehandlung** bei Pods, Containern und Containerimages auf Kubernetes-Knoten zu verwenden (z. B. `crictl ps`). 
    * Diese unterstützt nicht alle Funktionen der Docker-CLI. Sie ist nur für die Problembehandlung gedacht.
    * `crictl` bietet eine für Kubernetes besser geeignete Ansicht von Containern mit Unterstützung von Konzepten wie Pods.
 * Bei `Containerd` wird die Protokollierung im standardisierten `cri`-Protokollierungsformat eingerichtet. (Dieses unterscheidet sich vom Format des aktuellen Docker-JSON-Treibers.) Ihre Protokollierungslösung muss das `cri`-Protokollierungsformat unterstützen (wie z. B. [Azure Monitor für Container](../azure-monitor/containers/container-insights-enable-new-cluster.md)).
 * Sie können nicht mehr auf die Docker-Engine `/var/run/docker.sock` zugreifen oder Docker-in-Docker (DinD) verwenden.
   * Wenn Sie zurzeit Anwendungsprotokolle oder Überwachungsdaten aus der Docker-Engine extrahieren, verwenden Sie stattdessen z. B. [Azure Monitor für Container](../azure-monitor/containers/container-insights-enable-new-cluster.md). Darüber hinaus unterstützt AKS keine Ausführung von Out-of-Band-Befehlen auf den Agent-Knoten, die zu einer Instabilität führen könnten.
-  * Selbst bei Verwendung von Moby/Docker wird dringend davon abgeraten, direkt über die oben genannten Methoden Images zu erstellen und die Docker-Engine zu nutzen. Kubernetes erkennt diese genutzten Ressourcen nicht vollständig, und diese Ansätze bringen zahlreiche Probleme mit sich, die z. B. [hier](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) und [hier](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/) erläutert werden.
+  * Selbst bei Verwendung von Docker wird dringend davon abgeraten, direkt über die oben genannten Methoden Images zu erstellen und die Docker-Engine zu nutzen. Kubernetes erkennt diese genutzten Ressourcen nicht vollständig, und diese Ansätze bringen zahlreiche Probleme mit sich, die z. B. [hier](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) und [hier](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/) erläutert werden.
 * Erstellen von Images: Sie können Ihren aktuellen Docker-Buildworkflow weiterhin wie gewohnt verwenden, es sei denn, Sie erstellen Images in Ihrem AKS-Cluster. Erwägen Sie in diesem Fall die Umstellung auf die empfohlene Vorgehensweise zum Erstellen von Images mithilfe von [ACR Tasks](../container-registry/container-registry-quickstart-task-cli.md) oder eine sicherere clusterinterne Option wie [docker buildx](https://github.com/docker/buildx).
 
 ## <a name="generation-2-virtual-machines"></a>Virtuelle Computer der Generation 2
@@ -124,7 +122,7 @@ Im Gegensatz dazu werden kurzlebige Betriebssystemdatenträger genau wie ein tem
 Ein kurzlebiger Betriebssystemdatenträger ist genau wie der temporäre Datenträger im Preis des virtuellen Computers enthalten. Es entstehen also keine zusätzlichen Speicherkosten.
 
 > [!IMPORTANT]
->Wenn ein Benutzer nicht explizit verwaltete Datenträger für das Betriebssystem anfordert, verwendet AKS standardmäßig nach Möglichkeit das kurzlebige Betriebssystem für eine bestimmte Knotenpoolkonfiguration.
+>Wenn ein Benutzer nicht explizit verwaltete Datenträger für das Betriebssystem anfordert, verwendet AKS standardmäßig (soweit möglich) das kurzlebige Betriebssystem für eine bestimmte Knotenpoolkonfiguration.
 
 Wenn das kurzlebige Betriebssystem verwendet wird, muss der Betriebssystemdatenträger in den VM-Cache passen. Die Größen für den VM-Cache sind in der [Azure-Dokumentation](../virtual-machines/dv3-dsv3-series.md) in Klammern neben dem E/A-Durchsatz („Cachegröße in GiB“) aufgeführt.
 
@@ -132,7 +130,7 @@ Beispiel: Standard_DS2_v2, die Standard-VM-Größe für AKS mit der standardmä�
 
 Wenn ein Benutzer dieselbe Größe Standard_DS2_v2 mit einem 60-GB-Betriebssystemdatenträger anfordert, würde diese Konfiguration standardmäßig das kurzlebige Betriebssystem unterstützen: die angeforderte Größe von 60 GB liegt unter der maximalen Cachegröße von 86 GB.
 
-Wenn Sie Standard_D8s_v3 mit 100-GB-Betriebssystemdatenträger verwenden, unterstützt diese VM-Größe das kurzlebige Betriebssystem und hat 200 GB Cachespeicher. Wenn ein Benutzer den Betriebssystemdatenträger-Typ nicht angibt, erhält der Knotenpool standardmäßig das kurzlebige Betriebssystem. 
+Wenn Sie Standard_D8s_v3 mit 100-GB-Betriebssystemdatenträger verwenden, unterstützt diese VM-Größe das kurzlebige Betriebssystem und hat 200 GB Cachespeicher. Wenn ein Benutzer den Typ des Betriebssystemdatenträgers nicht angibt, erhält der Knotenpool standardmäßig das kurzlebige Betriebssystem. 
 
 Ein kurzlebiges Betriebssystem erfordert mindestens Version 2.15.0 der Azure CLI.
 
@@ -197,3 +195,4 @@ Denken Sie bei der Arbeit mit der Knotenressourcengruppe daran, dass Folgendes n
 [az-feature-register]: /cli/azure/feature#az_feature_register
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-provider-register]: /cli/azure/provider#az_provider_register
+[aks-add-np-containerd]: windows-container-cli.md#add-a-windows-server-node-pool-with-containerd-preview
