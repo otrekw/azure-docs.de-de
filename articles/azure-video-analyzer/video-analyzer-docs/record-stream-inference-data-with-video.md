@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie Azure Video Analyzer verwe
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 05/12/2021
-ms.openlocfilehash: 38d47ec6f27984eb7cc204b8421cec9016d2db65
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7b1122c098fc30150699f6c878058d37f74a007f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386085"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465815"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>Tutorial: Aufzeichnen und Streamen von Rückschlussmetadaten mit Video
   
@@ -132,7 +132,7 @@ Navigieren Sie als Nächstes zum Ordner „src/cloud-to-device-console-app“. H
 1. Vergewissern Sie sich anschließend unter den Knoten **livePipelineSet** und **pipelineTopologyDelete**, dass der Wert von **topologyName** dem Wert der Eigenschaft **name** in der obigen Pipelinetopologie entspricht:
 
     `"pipelineTopologyName" : "CVRHttpExtensionObjectTracking"`
-1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-objTracking/topology.json) in einem Browser, und sehen Sie die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-cvr-inferencing` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera über eine Videoressource mit einem eindeutigen Namen erfolgt.  
+1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-objTracking/topology.json) in einem Browser, und sehen Sie die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-cvr-with-inference-metadata` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera über eine Videoressource mit einem eindeutigen Namen erfolgt.  
 
 1. Überprüfen Sie die Einstellungen für den HTTP-Erweiterungsknoten.
 
@@ -300,7 +300,7 @@ Wenn der Videosenke-Knoten mit dem Aufzeichnen der Mediendaten beginnt, wird das
 {
   "body": {
     "outputType": "videoName",
-    "outputLocation&quot;: &quot;sample-cvr-inferencing"
+    "outputLocation&quot;: &quot;sample-cvr-with-inference-metadata"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/videoAnalyzers/{ava-account-name}",
@@ -325,7 +325,7 @@ Wie der Name bereits vermuten lässt, wird das Ereignis „RecordingStarted“ g
 {
   "body": {
     "outputType": "videoName",
-    "outputLocation&quot;: &quot;sample-cvr-inferencing"
+    "outputLocation&quot;: &quot;sample-cvr-with-inference-metadata"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/videoAnalyzers/{ava-account-name}",
@@ -352,7 +352,7 @@ Wenn Sie die Livepipeline deaktivieren, beendet der Videosenke-Knoten die Aufzei
 {
   "body": {
     "outputType": "videoName",
-    "outputLocation&quot;: &quot;sample-cvr-inferencing"
+    "outputLocation&quot;: &quot;sample-cvr-with-inference-metadata"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/videoAnalyzers/{ava-account-name}",
@@ -377,7 +377,7 @@ Sie können von der Livepipeline erstellte Video Analyzer-Ressource für Videoda
 1. Öffnen Sie Ihren Webbrowser, und navigieren Sie zum [Azure-Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinformationen ein, um sich beim Portal anzumelden. Die Standardansicht ist Ihr Dienstdashboard.
 1. Suchen Sie unter den Ressourcen Ihres Abonnements nach Ihrem Video Analyzer-Konto, und öffnen Sie den Kontobereich.
 1. Wählen Sie in der Liste **Video Analyzers** die Option **Videos** aus.
-1. Ein Video mit dem Namen `sample-cvr-inferencing` ist aufgeführt. Dies ist der Name, den Sie in Ihrer Datei mit der Pipelinetopologie ausgewählt haben.
+1. Ein Video mit dem Namen `sample-cvr-with-inference-metadata` ist aufgeführt. Dies ist der Name, den Sie in Ihrer Datei mit der Pipelinetopologie ausgewählt haben.
 1. Wählen Sie das Video aus.
 1. Klicken Sie auf der Seite mit den Videodetails auf das **Wiedergabesymbol**.
 

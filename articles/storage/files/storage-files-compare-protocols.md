@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 0ed41cc01fcf5aa35b3d2195518b8e2bb0f3b9c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 792f869aff0e7a91eeacd23e52c795d2c1243c0c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588238"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062378"
 ---
 # <a name="azure-file-share-protocols"></a>Azure-Dateifreigabeprotokolle
 
@@ -23,7 +23,7 @@ Azure Files bietet zwei Protokolle zum Verbinden und Einbinden Ihrer Azure-Datei
 
 |Komponente  |NFS (Vorschau)  |SMB  |
 |---------|---------|---------|
-|Zugriffsprotokolle     |NFS 4.1         |SMB 2.1, SMB 3.0         |
+|Zugriffsprotokolle     |NFS 4.1         |SMB 3.1.1, SMB 3.0, SMB 2.1         |
 |Empfohlenes Betriebssystem     |Linux-Kernelversion 4.3 und höher         |Windows 2008 R2 und höher, Linux-Kernel Version 4.11 und höher         |
 |[Verfügbare Tarife](storage-files-planning.md#storage-tiers)     |Storage Premium         |Storage Premium, transaktionsoptimiert, heiß, kalt         |
 |Abrechnungsmodell         |[Bezahlen für bereitgestellte Kapazität](./understanding-billing.md#provisioned-model)         |[Bezahlen für bereitgestellte Kapazität im Premium-Tarif](./understanding-billing.md#provisioned-model), [Nutzungsbasierte Bezahlung für Standard-Tarif](./understanding-billing.md#pay-as-you-go-model)         |

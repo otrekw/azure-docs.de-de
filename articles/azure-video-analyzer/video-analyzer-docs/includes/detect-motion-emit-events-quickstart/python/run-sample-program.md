@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 05/05/2021
 ms.author: faneerde
-ms.openlocfilehash: edf0e4b8ddb3ca4361296856672fd92c92c40254
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b66de47b5429f869b798092475ce93e1c1f740a2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385942"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110487419"
 ---
 Führen Sie diese Schritte aus, um den Beispielcode auszuführen:
 
@@ -28,7 +28,7 @@ Führen Sie diese Schritte aus, um den Beispielcode auszuführen:
 1. Vergewissern Sie sich auf dem Knoten `pipelineTopologySet`, dass der folgende Wert angezeigt wird:
 
    ```
-   "topologyUrl" : "https://raw.githubusercontent.com/azure/azure-video-analyzer/main/pipelines/live/topologies/motion-detection/topology.json"
+   "topologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/motion-detection/topology.json"
    ```
 
 1. Vergewissern Sie sich unter den Knoten `livePipelineSet` und `livePipelineDelete`, dass der Wert für **topologyName** dem Wert der Eigenschaft **name** in der Pipelinetopologie entspricht:
@@ -57,7 +57,7 @@ Führen Sie diese Schritte aus, um den Beispielcode auszuführen:
 
    Im **Terminalfenster** werden die nächsten Aufrufe direkter Methoden angezeigt:
 
-   - Ein Aufruf von `pipelineTopologySet`, der das vorherige pipelineTopologyUrl-Element verwendet
+   - Ein Aufruf von `pipelineTopologySet`, bei dem das vorherige „pipelineTopologyUrl“-Element verwendet wird
    - Ein Aufruf von `livePipelineSet`, der den folgenden Textkörper verwendet:
 
    ```json
@@ -85,8 +85,8 @@ Führen Sie diese Schritte aus, um den Beispielcode auszuführen:
    }
    ```
 
-   - Ein Aufruf von `livePipelineActivate`, der die Livepipeline und den Videodatenfluss startet
-   - Ein zweiter Aufruf von `livePipelineList` mit der Anzeige, dass sich die Livepipeline im ausgeführten Zustand befindet
+   - Ein Aufruf von `livePipelineActivate`, mit dem die Livepipeline und der Videodatenfluss gestartet werden
+   - Ein zweiter Aufruf von `livePipelineList`, um anzuzeigen, dass sich die Livepipeline im ausgeführten Zustand befindet
 
 1. Die Ausgabe im **Terminalfenster** wird mit der folgenden Meldung angehalten: `Press Enter to continue`. Warten Sie noch mit dem Drücken der EINGABETASTE. Scrollen Sie nach oben, um die JSON-Antwortnutzlasten für die aufgerufenen direkten Methoden anzuzeigen.
 1. Wechseln Sie in Visual Studio Code zum **Ausgabefenster**. Es werden Nachrichten angezeigt, die vom Azure Video Analyzer-Modul an den IoT-Hub gesendet werden. Im folgenden Abschnitt dieser Schnellstartanmeldung sind diese Meldungen beschrieben.
