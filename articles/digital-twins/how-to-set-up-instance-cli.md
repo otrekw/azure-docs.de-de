@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 51af805bf157edbfed8022730bb7f7a429b715db
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 6370e8646c561ae88e27acf4355bfa2e4bf66f98
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787099"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078405"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (CLI)
 
@@ -100,7 +100,7 @@ Sie verfügen nun über eine einsatzbereite Azure Digital Twins-Instanz und habe
 ## <a name="next-steps"></a>Nächste Schritte
 
 Testen Sie einzelne REST-API-Aufrufe für Ihre Instanz mithilfe der Befehle der Azure Digital Twins-CLI: 
-* [az dt reference](/cli/azure/dt)
+* [az dt reference](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)
 * [Konzepte: Befehlssatz der Azure Digital Twins-CLI](concepts-cli.md)
 
 Sie können auch eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie Authentifizierungscode verwenden:

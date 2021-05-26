@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 176e2b9fbb8c2b4331f4e84a76a4847c139b7540
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9df6cbb5c1828c43fa730612b7d15b970fb1ca09
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755164"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110079652"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Für ein verwaltetes Azure Key Vault-HSM muss der Löschschutz aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc39ba22d-4428-4149-b981-70acb31fc383) |Das böswillige Löschen eines verwalteten Azure Key Vault-HSM kann zu dauerhaftem Datenverlust führen. Ein böswilliger Insider in Ihrer Organisation kann ein verwaltetes Azure Key Vault-HSM löschen oder bereinigen. Der Löschschutz schützt Sie vor Insiderangriffen, indem ein verbindlicher Aufbewahrungszeitraum für ein vorläufig gelöschtes verwaltetes Azure Key Vault-HSM durchgesetzt wird. Niemand innerhalb Ihrer Organisation oder von Microsoft kann Ihr verwaltetes Azure Key Vault-HSM während des Aufbewahrungszeitraums für vorläufiges Löschen löschen. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_Recoverable_Audit.json) |
 |[Für Azure Key Vault muss der Zugriff über öffentliche Netzwerke deaktiviert werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55615ac9-af46-4a59-874e-391cc3dfb490). |Deaktivieren Sie für Ihren Schlüsseltresor den Zugriff über öffentliche Netzwerke, sodass er nicht über das öffentliche Internet zugänglich ist. Dies kann das Risiko von Datenlecks verringern. Weitere Informationen finden Sie unter [https://aka.ms/akvprivatelink](https://aka.ms/akvprivatelink). |Audit, Deny, Disabled |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultFirewallEnabled_Audit.json) |

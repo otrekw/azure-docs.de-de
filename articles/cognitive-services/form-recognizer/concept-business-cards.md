@@ -1,6 +1,6 @@
 ---
 title: Visitenkarten – Formularerkennung
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Lernen Sie die Konzepte im Zusammenhang mit der Visitenkartenanalyse mit der Formularerkennungs-API (Verwendung und Einschränkungen) kennen.
 services: cognitive-services
 author: laujan
@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: a7fb5eeb90a26d85b3e56706e0c2b32ceadc8d11
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: eea2ec77a22a430ac5202a2fda446bc70a69138c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330888"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374919"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Vordefiniertes Visitenkartenmodell der Formularerkennung
 
-Mit der Azure-Formularerkennung können Kontaktinformationen aus Visitenkarten mithilfe des vordefinierten Modells für Visitenkarten analysiert und extrahiert werden. Hierbei werden die leistungsstarken Funktionen der optischen Zeichenerkennung (Optical Character Recognition, OCR) mit unserem Modell zur Visitenkartenerfassung kombiniert, um die wichtigsten Informationen auf Visitenkarten zu extrahieren (in englischer Sprache). Dabei werden persönliche Kontaktinformationen, der Firmenname, die Position und weitere Details extrahiert. Die vordefinierte Visitenkarten-API ist in der Vorschauversion der Formularerkennung (v2.1) öffentlich verfügbar.
+Mit der Azure-Formularerkennung können Kontaktinformationen aus Visitenkarten mithilfe des vordefinierten Modells für Visitenkarten analysiert und extrahiert werden. Hierbei werden die leistungsstarken Funktionen der optischen Zeichenerkennung (Optical Character Recognition, OCR) mit unserem Modell zur Visitenkartenerfassung kombiniert, um die wichtigsten Informationen auf Visitenkarten zu extrahieren (in englischer Sprache). Dabei werden persönliche Kontaktinformationen, der Firmenname, die Position und weitere Details extrahiert. Die vordefinierte Visitenkarten-API ist in der Formularerkennung (v2.1) öffentlich verfügbar.
 
 ## <a name="what-does-the-business-card-service-do"></a>Wozu wird der Dienst für Visitenkarten eingesetzt?
 
@@ -29,7 +29,7 @@ Die vorgefertigte Visitenkarten-API extrahiert wichtige Felder von Visitenkarten
 
 ### <a name="fields-extracted"></a>Extrahierte Felder:
 
-|Name| type | BESCHREIBUNG | Text |
+|Name| Typ | BESCHREIBUNG | Text |
 |:-----|:----|:----|:----|
 | ContactNames | Array von Objekten | Aus der Visitenkarte extrahierter Name des Kontakts | [{ "FirstName": "John", "LastName": "Doe" }] |
 | FirstName | Zeichenfolge | Vorname des Kontakts | „John“ |
@@ -54,7 +54,7 @@ Darüber hinaus kann die Visitenkarten-API auch den gesamten erkannten Text auf 
 
 ## <a name="supported-locales"></a>Unterstützte Gebietsschemas
 
-**Vordefinierte Visitenkarten v2.1-preview.3** (Vorschauversion) unterstützen die folgenden Gebietsschemas:
+**Vordefinierte Visitenkarten v2.1** unterstützt die folgenden Gebietsschemas:
 
 * **de-de**
 * **en-au**
@@ -64,15 +64,15 @@ Darüber hinaus kann die Visitenkarten-API auch den gesamten erkannten Text auf 
 
 ## <a name="the-analyze-business-card-operation"></a>Der Vorgang zur Analyse der Visitenkarte
 
-Beim Vorgang zur [Analyse der Visitenkarte](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync) wird ein Bild oder eine PDF-Version einer Visitenkarte als Eingabe verwendet, um die relevanten Werte zu extrahieren. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
+Beim Vorgang zur [Analyse der Visitenkarte](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync) wird ein Bild oder eine PDF-Version einer Visitenkarte als Eingabe verwendet, um die relevanten Werte zu extrahieren. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
 
 |Antwortheader| Ergebnis-URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync` |
 
 ## <a name="the-get-analyze-business-card-result-operation"></a>Der Vorgang zum Abrufen des Ergebnisses der Visitenkartenanalyse
 
-Im zweiten Schritt wird der Vorgang zum [Abrufen des Ergebnisses der Visitenkartenanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeBusinessCardResult) aufgerufen. Bei diesem Vorgang wird die Ergebnis-ID als Eingabe verwendet, die durch den Vorgang zur Analyse der Visitenkarte erstellt wurde. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
+Im zweiten Schritt wird der Vorgang zum [Abrufen des Ergebnisses der Visitenkartenanalyse](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeBusinessCardResult) aufgerufen. Bei diesem Vorgang wird die Ergebnis-ID als Eingabe verwendet, die durch den Vorgang zur Analyse der Visitenkarte erstellt wurde. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
 
 |Feld| type | Mögliche Werte |
 |:-----|:----:|:----|
@@ -410,4 +410,4 @@ Die Visitenkarten-API unterstützt zudem die [AI Builder-Funktion zur Verarbeit
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Was ist die Formularerkennung?](./overview.md)
-* [REST-API-Referenzdokumente](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)
+* [REST-API-Referenzdokumente](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)

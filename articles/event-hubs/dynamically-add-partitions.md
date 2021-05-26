@@ -2,13 +2,13 @@
 title: Dynamisches Hinzufügen von Partitionen zu einem Event Hub in Azure Event Hubs
 description: In diesem Artikel erfahren Sie, wie Sie einem Event Hub in Azure Event Hubs dynamisch Partitionen hinzufügen.
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: aeeee1bcefe58b006dac0b6913aaa609cbeefb8c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/04/2021
+ms.openlocfilehash: 00163a74564e4cac5ac0b62cf6de98b7ae3ef23e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775118"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376099"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamisches Hinzufügen von Partitionen zu einem Event Hub (Apache Kafka-Thema) in Azure Event Hubs
 Event Hubs bietet Nachrichtenstreaming über ein partitioniertes Consumermuster, in dem jeder Consumer nur eine bestimmte Teilmenge oder Partition des Nachrichtenstreams liest. Dieses Muster ermöglicht eine horizontale Skalierung für die Ereignisverarbeitung und bietet andere datenstrombezogene Features, die in Warteschlangen und Themen nicht verfügbar sind. Eine Partition ist eine geordnete Sequenz von Ereignissen, die in einem Event Hub besteht. Neu eingehende Ereignisse werden am Ende dieser Sequenz hinzugefügt. Weitere Informationen zu Partitionen im Allgemeinen finden Sie unter [Partitionen](event-hubs-scalability.md#partitions).
@@ -16,7 +16,7 @@ Event Hubs bietet Nachrichtenstreaming über ein partitioniertes Consumermuster,
 Sie können die Anzahl der Partitionen zum Zeitpunkt der Erstellung eines Event Hub angeben. In einigen Szenarien müssen Sie Partitionen möglicherweise nach der Erstellung des Event Hub hinzufügen. In diesem Artikel wird beschrieben, wie Sie einem vorhandenen Event Hub dynamisch Partitionen hinzufügen. 
 
 > [!IMPORTANT]
-> Das dynamische Hinzufügen von Partitionen ist nur in **dedizierten** Event Hubs-Clustern verfügbar.
+> Dynamische Hinzufügungen von Partitionen sind nur in **Premium**- und **dedizierten** Tarifen von Event Hubs verfügbar. 
 
 > [!NOTE]
 > Bei Apache Kafka-Clients wird ein **Event Hub** einem **Kafka-Thema** zugeordnet. Weitere Zuordnungen zwischen Azure Event Hubs und Apache Kafka finden Sie unter [Konzeptionelle Zuordnung zwischen Kafka und Event Hubs](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping).

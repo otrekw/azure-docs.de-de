@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 423e08511003c8ba1f810bd024d0e253df612473
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: beb77517a953163c9d1dd34b59fa429b5d58cdd2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293276"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478034"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -202,14 +202,11 @@ Anpassungen der Sprechweise werden derzeit für folgende neuronale Stimmen unter
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
-* `zh-CN-YunxiNeural` (Vorschau)
-* `zh-CN-XiaohanNeural` (Vorschau)
-* `zh-CN-XiaomoNeural` (Vorschau)
-* `zh-CN-XiaoxuanNeural` (Vorschau)
-* `zh-CN-XiaoruiNeural` (Vorschau)
-
-> [!NOTE]
-> Die sich in der Vorschau befindlichen Stimmen sind nur in den folgenden drei Regionen verfügbar: „USA, Osten“, „Europa, Westen“ und „Asien, Südosten“.
+* `zh-CN-YunxiNeural` 
+* `zh-CN-XiaohanNeural` 
+* `zh-CN-XiaomoNeural` 
+* `zh-CN-XiaoxuanNeural` 
+* `zh-CN-XiaoruiNeural`
 
 Die Intensität der Sprechweise kann weiter verändert werden, damit sie besser zu Ihrem Anwendungsfall passt. Sie können mit `styledegree` eine kräftigere oder sanftere Sprechweise angeben, um die Sprache ausdrucksstärker oder gedämpfter zu gestalten. Zurzeit werden Anpassungen in der Sprechweise der  neuronalen Stimmen für Chinesisch (Mandarin, vereinfacht) unterstützt.
 
@@ -376,6 +373,63 @@ Dieser SSML-Codeausschnitt veranschaulicht, wie das Attribut `role` verwendet wi
 </speak>
 ```
 
+## <a name="adjust-speaking-languages"></a>Anpassen der gesprochenen Sprachen
+
+> [!IMPORTANT]
+>  Sie können die gesprochenen Sprachen nur für neuronale Stimmen anpassen.
+> Ermöglichen Sie es einer Stimme, mithilfe des `<lang xml:lang>`-Elements verschiedene Sprachen (z. B. Englisch, Spanisch und Chinesisch) flüssig zu sprechen. Dies ist ein optionales Element und für den Speech-Dienst eindeutig. Ohne dieses Element spricht die Stimme ihre primäre Sprache.
+> Anpassungen der gesprochenen Sprache werden derzeit bei den folgenden neuronalen Stimmen unterstützt: `en-US-JennyMultilingualNeural`. Die obigen Änderungen werden auf der Satz- und Wortebene vorgenommen. Wenn eine Sprache nicht unterstützt wird, gibt der Dienst keinen Audiodatenstrom zurück.
+
+**Syntax**
+
+```xml
+<lang xml:lang="string"></lang>
+```
+
+**Attribute**
+
+| attribute | BESCHREIBUNG | Erforderlich/optional |
+|-----------|-------------|---------------------|
+| `lang` | Gibt die gesprochenen Sprachen an. Derzeit ist das Sprechen verschiedener Sprachen von der Stimme abhängig. | Erforderlich, wenn die gesprochene Sprache für eine neuronale Stimme angepasst wird. Bei Verwendung von `lang xml:lang` muss das Gebietsschema angegeben werden. |
+
+Ermitteln Sie anhand dieser Tabelle, welche gesprochenen Sprachen für die einzelnen neuronalen Stimmen unterstützt werden.
+
+| Sprache                            | Gebietsschemasprache           | Beschreibung                                                 |
+|----------------------------------|---------------------------|-------------------------------------------------------------|
+| `en-US-JennyMultilingualNeural`  | `lang="en-US"`            | Sprechen für das Gebietsschema en-US, dem primären Gebietsschema dieser Stimme |
+|                                  | `lang="en-CA"`            | Sprechen der Gebietsschemasprache en-CA                                  |
+|                                  | `lang="en-AU"`            | Sprechen der Gebietsschemasprache en-AU                                  |
+|                                  | `lang="en-GB"`            | Sprechen der Gebietsschemasprache en-GB                                  |
+|                                  | `lang="de-DE"`            | Sprechen der Gebietsschemasprache de-DE                                  |
+|                                  | `lang="fr-FR"`            | Sprechen der Gebietsschemasprache fr-FR                                  |
+|                                  | `lang="fr-CA"`            | Sprechen der Gebietsschemasprache fr-CA                                  |
+|                                  | `lang="es-ES"`            | Sprechen der Gebietsschemasprache es-ES                                  |
+|                                  | `lang="es-MX"`            | Sprechen der Gebietsschemasprache es-MX                                  |
+|                                  | `lang="zh-CN"`            | Sprechen der Gebietsschemasprache zh-CN                                  |
+|                                  | `lang="ko-KR"`            | Sprechen der Gebietsschemasprache ko-KR                                  |
+|                                  | `lang="ja-JP"`            | Sprechen der Gebietsschemasprache ja-JP                                  |
+|                                  | `lang="it-IT"`            | Sprechen der Gebietsschemasprache it-IT                                  |
+|                                  | `lang="pt-BR"`            | Sprechen der Gebietsschemasprache pt-BR                                  |
+
+**Beispiel**
+
+Dieser SSML-Codeausschnitt zeigt, wie sie `<lang xml:lang>` verwenden, um die gesprochenen Sprachen in `en-US`, `es-MX` und `de-DE` zu ändern.
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
+    <voice name="en-US-JennyMultilingualNeural">
+        I am looking forward to the exciting things.
+        <lang xml:lang="es-MX">
+            Estoy deseando que lleguen las cosas emocionantes.
+        </lang>
+        <lang xml:lang="de-DE">
+            Ich freue mich auf die spannenden Dinge.
+        </lang>
+    </voice>
+</speak>
+```
+
 ## <a name="add-or-remove-a-breakpause"></a>Hinzufügen oder Entfernen einer Unterbrechung/Pause
 
 Verwenden Sie das `break`-Element zum Einfügen von Pausen (oder Unterbrechungen) zwischen Wörtern oder um Pausen zu verhindern, die vom Sprachsynthesedienst automatisch hinzugefügt werden.
@@ -506,7 +560,7 @@ Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zah
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-JennyNeural">
-        <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
+        <phoneme alphabet="ipa" ph="təˈmeɪtoʊ"> tomato </phoneme>
     </voice>
 </speak>
 ```
@@ -529,7 +583,7 @@ Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zah
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Verwenden eines benutzerdefinierten Lexikons zum Verbessern der Aussprache
 
-Manchmal kann ein Wort vom Sprachsynthesedienst nicht korrekt ausgesprochen werden. Beispielsweise der Name eines Unternehmens oder ein medizinischer Begriff. Mit den Tags `phoneme` und `sub` können Entwickler die Aussprache einzelner Entitäten in SSML definieren. Wenn Sie dagegen die Aussprache mehrerer Entitäten definieren möchten, können Sie mithilfe des Tags `lexicon` ein benutzerdefiniertes Lexikon erstellen.
+Manchmal kann ein Wort vom Sprachsynthesedienst nicht korrekt ausgesprochen werden. Beispielsweise der Name eines Unternehmens, ein medizinischer Begriff oder ein Emoji. Mit den Tags `phoneme` und `sub` können Entwickler die Aussprache einzelner Entitäten in SSML definieren. Wenn Sie dagegen die Aussprache mehrerer Entitäten definieren möchten, können Sie mithilfe des Tags `lexicon` ein benutzerdefiniertes Lexikon erstellen.
 
 > [!NOTE]
 > Für das benutzerdefinierte Lexikon wird derzeit die UTF-8-Codierung unterstützt.
@@ -570,10 +624,16 @@ Wenn Sie die Aussprache mehrerer Entitäten definieren möchten, können Sie ein
     <grapheme> Benigni </grapheme>
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
+  <lexeme>
+    <grapheme>😀</grapheme> 
+    <alias>test emoji</alias> 
+  </lexeme>
 </lexicon>
 ```
 
-Das `lexicon`-Element enthält mindestens ein `lexeme`-Element. Jedes `lexeme`-Element enthält mindestens ein `grapheme`-Element und mindestens eines der Elemente `grapheme`, `alias` und `phoneme`. Das `grapheme`-Element enthält Text, der die <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">Orthografie</a> beschreibt. Mithilfe der `alias`-Elemente wird die Aussprache eines Akronyms oder eines abgekürzten Begriffs angegeben. Das `phoneme`-Element stellt Text bereit, der die Aussprache von `lexeme` beschreibt.
+Das `lexicon`-Element enthält mindestens ein `lexeme`-Element. Jedes `lexeme`-Element enthält mindestens ein `grapheme`-Element und mindestens eines der Elemente `grapheme`, `alias` und `phoneme`. Das `grapheme`-Element enthält Text, der die <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">Orthografie</a> beschreibt. Mithilfe der `alias`-Elemente wird die Aussprache eines Akronyms oder eines abgekürzten Begriffs angegeben. Das `phoneme`-Element stellt Text bereit, der die Aussprache von `lexeme` beschreibt. Wenn die Elemente `alias` und `phoneme` mit demselben `grapheme`-Element bereitgestellt werden, weist `alias` eine höhere Priorität auf.
+
+Das Lexikon enthält das erforderliche `xml:lang`-Attribut, um anzugeben, auf welches Gebietsschema es angewendet werden soll. Ein benutzerdefiniertes Lexikon ist standardmäßig auf ein einzelnes Gebietsschema beschränkt, sodass die Anwendung auf ein anderes Gebietsschema nicht funktioniert.
 
 Wichtig: Die Aussprache eines Ausdrucks kann mit dem benutzerdefinierten Lexikon nicht direkt festgelegt werden. Wenn Sie die Aussprache für ein Akronym oder einen abgekürzten Begriff festlegen möchten, müssen Sie zuerst einen Alias (`alias`) angeben und anschließend das Phonem (`phoneme`) diesem Alias (`alias`) zuordnen. Beispiel:
 
@@ -632,7 +692,7 @@ Im obigen Beispiel wird das als IPA-Phonemsatz bezeichnete internationale phonet
 
 Da das IPA nicht leicht zu merken ist, definiert der Speech-Dienst einen phonetischen Satz für sieben Sprachen (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN` und `zh-TW`).
 
-`sapi` kann wie unten gezeigt als Wert des Attributs `alphabet` mit benutzerdefinierten Lexika verwendet werden:
+`x-microsoft-sapi` kann wie unten gezeigt als Wert des Attributs `alphabet` mit benutzerdefinierten Lexika verwendet werden:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -641,7 +701,7 @@ Da das IPA nicht leicht zu merken ist, definiert der Speech-Dienst einen phoneti
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
         http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
-      alphabet="sapi" xml:lang="en-US">
+      alphabet="x-microsoft-sapi" xml:lang="en-US">
   <lexeme>
     <grapheme>BTW</grapheme>
     <alias> By the way </alias>
@@ -906,7 +966,7 @@ Beispielsweise können Sie den Zeitversatz (Offset) jedes Blumenworts wie folgt 
 Sie können das `BookmarkReached` Ereignis in Sprach-SDK abonnieren, um die Lesezeichen-Offsets zu erhalten.
 
 > [!NOTE]
-> `BookmarkReached` Ereignis ist erst ab Sprach-SDK-Version 1.16.0 verfügbar.
+> Das `BookmarkReached`-Ereignis ist erst ab Speech SDK Version 1.16 verfügbar.
 
 Ereignisse vom Typ `BookmarkReached` werden ausgelöst, wenn die ausgegebenen Audiodaten verfügbar werden, was schneller passiert als die Wiedergabe über ein Ausgabegerät.
 

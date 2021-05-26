@@ -1,26 +1,27 @@
 ---
 title: 'Schnellstart: Formularerkennungs-Clientbibliothek für Java'
-description: Verwenden Sie die Clientbibliothek der Formularerkennung für Java, um eine Formularverarbeitungs-App zu erstellen, die Schlüssel-Wert-Paare und Tabellendaten aus Ihren benutzerdefinierten Dokumenten extrahiert.
+description: Verwenden Sie die Java-Clientbibliothek der Formularerkennung, um eine Formularverarbeitungs-App zu erstellen, die Schlüssel-Wert-Paare und Tabellendaten aus Ihren benutzerdefinierten Dokumenten extrahiert.
 services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 05/12/2021
 ms.custom: devx-track-java
 ms.author: lajanuar
-ms.openlocfilehash: cd5e6383e71e3f37a26b866156b64c86302f6990
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: fa98977d25f6c1c406b95d0817e841d25c28394f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516407"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374171"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
+
 > [!IMPORTANT]
 > Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet.
 
@@ -60,7 +61,7 @@ In dieser Schnellstartanleitung wird der Gradle-Abhängigkeits-Manager verwendet
 
 Fügen Sie in die Datei *build.gradle.kts* Ihres Projekts die Clientbibliothek als als `implementation`-Anweisung sowie die erforderlichen Plug-Ins und Einstellungen ein.
 
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 ```kotlin
 plugins {
@@ -81,7 +82,7 @@ dependencies {
 > [!NOTE]
 > Für das SDK von Formularerkennung 3.1.0-beta.3 wird _API-Version 2.1-preview.3_ verwendet.
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 ```kotlin
 plugins {
@@ -106,7 +107,6 @@ dependencies {
 
 ### <a name="create-a-java-file"></a>Erstellen einer Java-Datei
 
-
 Führen Sie in Ihrem Arbeitsverzeichnis den folgenden Befehl aus:
 
 ```console
@@ -119,7 +119,6 @@ Navigieren Sie zu dem neuen Ordner, und erstellen Sie eine Datei mit dem Namen *
 
 > [!TIP]
 > Möchten Sie sich sofort die gesamte Codedatei für die Schnellstartanleitung ansehen? Die Datei steht [auf GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/FormRecognizer/FormRecognizer.java) zur Verfügung. Dort finden Sie die Codebeispiele aus dieser Schnellstartanleitung.
-
 
 Erstellen Sie in der **FormRecognizer**-Klasse der Anwendung Variablen für den Schlüssel und Endpunkt Ihrer Ressource.
 
@@ -138,13 +137,13 @@ Fügen Sie in der **main**-Methode der Anwendung Aufrufe für die Methoden hinzu
 * Um die URL eines zu testenden Formulars zu erhalten, können Sie anhand der oben beschriebenen Schritte die SAS-URL eines einzelnen Dokuments im Blobspeicher abrufen. Sie können auch die URL eines Dokuments an einem anderen Speicherort verwenden.
 * Verwenden Sie die obige Methode, um auch die URL eines Belegbilds zu erhalten.
 <!-- markdownlint-disable MD024 -->
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
@@ -174,13 +173,13 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 * Kopieren eines benutzerdefinierten Modells aus einer Formularerkennungsressource in eine andere
 
 > [!NOTE]
-> Modelle können auch mithilfe einer grafischen Benutzeroberfläche trainiert werden, z. B. mit dem [Formularerkennungstool für die Bezeichnung](../../quickstarts/label-tool.md).
+> Modelle können auch mithilfe einer grafischen Benutzeroberfläche trainiert werden, z. B. mit dem [Formularerkennungstool für die Bezeichnung](../../label-tool.md).
 
 ## <a name="code-examples"></a>Codebeispiele
 
 Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formularerkennungs-Clientbibliothek für Java ausgeführt werden:
 <!-- markdownlint-disable MD001 -->
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Analysieren des Layouts](#analyze-layout)
@@ -190,16 +189,16 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formu
 * [Analysieren von Ausweisdokumenten](#analyze-identity-documents)
 * [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
-* [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
+* [Verwalten benutzerdefinierter Modelle](#manage-custom-models)
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Analysieren des Layouts](#analyze-layout)
 * [Analysieren von Belegen](#analyze-receipts)
 * [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
-* [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
+* [Verwalten benutzerdefinierter Modelle](#manage-custom-models)
 
 ---
 
@@ -223,6 +222,7 @@ Verwenden Sie die Methode **beginRecognizeContentFromUrl**, um die Inhalte einer
 Der zurückgegebene Wert ist eine Sammlung aus **FormPage**-Objekten: eines für jede Seite im übermittelten Dokument. Der folgende Code durchläuft diese Objekte und gibt die extrahierten Schlüssel-Wert-Paare und Tabellendaten aus.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_print)]
+
 ### <a name="output"></a>Output
 
 ```console
@@ -241,6 +241,7 @@ Cell has text 4/16/2018.
 Cell has text $89,024.34.
 Cell has text ET.
 ```
+
 ## <a name="analyze-receipts"></a>Analysieren von Belegen
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gängige Felder in US-Belegen analysieren und extrahieren. Weitere Informationen zur Beleganalyse finden Sie im [Konzeptleitfaden zu Belegen](../../concept-receipts.md).
@@ -279,7 +280,7 @@ Total Price: null, confidence: 0.93
 
 ## <a name="analyze-business-cards"></a>Analysieren von Visitenkarten
 
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten analysieren und extrahieren. Weitere Informationen zur Analyse von Visitenkarten finden Sie im [Konzeptleitfaden zu Visitenkarten](../../concept-business-cards.md).
 
@@ -294,7 +295,7 @@ Der zurückgegebene Wert ist eine Sammlung mit Objekten vom Typ **RecognizedForm
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
@@ -303,7 +304,7 @@ Der zurückgegebene Wert ist eine Sammlung mit Objekten vom Typ **RecognizedForm
 
 ## <a name="analyze-invoices"></a>Analysieren von Rechnungen
 
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Rechnungsfelder analysieren und extrahieren. Weitere Informationen zur Rechnungsanalyse finden Sie im [Konzeptleitfaden zu Rechnungen](../../concept-invoices.md).
 
@@ -318,7 +319,7 @@ Der zurückgegebene Wert ist eine Sammlung mit Objekten vom Typ **RecognizedForm
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
@@ -327,7 +328,7 @@ Der zurückgegebene Wert ist eine Sammlung mit Objekten vom Typ **RecognizedForm
 
 ## <a name="analyze-identity-documents"></a>Analysieren von Ausweisdokumenten
 
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe des vordefinierten Formularerkennungs-ID-Modells wichtige Informationen aus von staatlichen Behörden ausgestellten Ausweisdokumenten (internationale Reisepässe und US-Führerscheine) analysieren und extrahieren. Weitere Informationen zur Ausweisdokumentanalyse finden Sie unter [Vordefiniertes ID-Modell der Formularerkennung für Ausweise](../../concept-identification-cards.md).
 
@@ -342,7 +343,7 @@ Der folgende Code verarbeitet das Ausweisdokument unter dem angegebenen URI und 
 
 :::code language="java" source="~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java" id="snippet_id_print":::
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
@@ -354,7 +355,7 @@ Der folgende Code verarbeitet das Ausweisdokument unter dem angegebenen URI und 
 In diesem Abschnitt wird gezeigt, wie Sie ein Modell mit eigenen Daten trainieren. Ein trainiertes Modell kann strukturierte Daten ausgeben, die die Schlüssel-Wert-Beziehungen im ursprünglichen Formulardokument enthalten. Nachdem das Modell trainiert wurde, können Sie es testen, neu trainieren und schließlich verwenden, um Daten aus weiteren Formularen zuverlässig nach Ihren Bedürfnissen zu extrahieren.
 
 > [!NOTE]
-> Sie können Modelle auch mithilfe einer grafischen Benutzeroberfläche trainieren, z. B. dem [Formularerkennungstool für die Bezeichnung von Beispielen](../../quickstarts/label-tool.md).
+> Sie können Modelle auch mithilfe einer grafischen Benutzeroberfläche trainieren, z. B. dem [Formularerkennungstool für die Bezeichnung von Beispielen](../../label-tool.md).
 
 ### <a name="train-a-model-without-labels"></a>Trainieren eines Modells ohne Bezeichnungen
 
@@ -394,15 +395,13 @@ The model found field 'field-6' with label: VAT ID
 
 ### <a name="train-a-model-with-labels"></a>Trainieren eines Modells mit Bezeichnungen
 
-Sie können benutzerdefinierte Modelle auch trainieren, indem Sie die Trainingsdokumente manuell bezeichnen. Das Training mit Bezeichnungen führt in einigen Szenarien zu einer besseren Leistung. Zum Training mit Bezeichnungen benötigen Sie zusätzlich zu den Trainingsdokumenten spezielle Informationsdateien mit Bezeichnungen ( *\<filename\>.pdf.labels.json*) in Ihrem Blobspeichercontainer. Das [Formularerkennungstool für die Bezeichnung von Beispielen](../../quickstarts/label-tool.md) bietet eine Benutzeroberfläche, auf der Sie diese Bezeichnungsdateien erstellen können. Sobald Sie darüber verfügen, können Sie die **beginTraining**-Methode mit dem auf `true` festgelegten Parameter *useTrainingLabels* aufrufen.
+Sie können benutzerdefinierte Modelle auch trainieren, indem Sie die Trainingsdokumente manuell bezeichnen. Das Training mit Bezeichnungen führt in einigen Szenarien zu einer besseren Leistung. Zum Training mit Bezeichnungen benötigen Sie zusätzlich zu den Trainingsdokumenten spezielle Informationsdateien mit Bezeichnungen ( *\<filename\>.pdf.labels.json*) in Ihrem Blobspeichercontainer. Das [Formularerkennungstool für die Bezeichnung von Beispielen](../../label-tool.md) bietet eine Benutzeroberfläche, auf der Sie diese Bezeichnungsdateien erstellen können. Sobald Sie darüber verfügen, können Sie die **beginTraining**-Methode mit dem auf `true` festgelegten Parameter *useTrainingLabels* aufrufen.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_trainlabels_call)]
-
 
 Das zurückgegebene **CustomFormModel** gibt die Felder an, die das Modell extrahieren kann, und bietet Informationen zur geschätzten Genauigkeit in jedem Feld. Der folgende Codeblock gibt diese Informationen an der Konsole aus.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_trainlabels_print)]
-
 
 ### <a name="output"></a>Output
 
@@ -442,7 +441,6 @@ Der zurückgegebene Wert ist eine Sammlung aus **RecognizedForm**-Objekten: eine
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_print)]
 
-
 ### <a name="output"></a>Output
 
 ```console
@@ -458,21 +456,17 @@ Field 'field-5' has label 'Charges' with a confidence score of 1.00.
 Field 'field-6' has label 'VAT ID' with a confidence score of 1.00.
 ```
 
-
-
 ## <a name="manage-custom-models"></a>Verwalten benutzerdefinierter Modelle
 
 In diesem Abschnitt wird veranschaulicht, wie Sie die in Ihrem Konto gespeicherten benutzerdefinierten Modelle verwalten. Der folgende Code verarbeitet beispielsweise sämtliche Modellverwaltungstasks in einer einzelnen Methode. Kopieren Sie zunächst die nachstehende Methodensignatur:
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage)]
 
-
 ### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Überprüfen der Anzahl von Modellen im FormRecognizer-Ressourcenkonto
 
 Der folgende Codeblock überprüft, wie viele Modelle in Ihrem Formularerkennungskonto gespeichert sind, und vergleicht diese Zahl mit dem Kontolimit.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage_count)]
-
 
 #### <a name="output"></a>Output
 
@@ -485,7 +479,6 @@ The account has 12 custom models, and we can have at most 250 custom models
 Der folgende Codeblock listet die aktuell in Ihrem Konto vorhandenen Modelle auf und gibt ihre Details an der Konsole aus.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage_list)]
-
 
 #### <a name="output"></a>Output
 

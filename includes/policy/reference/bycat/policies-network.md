@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fcd177870bcb44f5ae61b3c153e4653dcd70898d
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: aed4ed856ae0983b61574c2b94b397569742d687
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498792"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110074529"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Eine benutzerdefinierte IPSec-/IKE-Richtlinie muss auf alle Gatewayverbindungen in virtuellen Azure-Netzwerken angewendet werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Mit dieser Richtlinie wird sichergestellt, dass alle Gatewayverbindungen in virtuellen Azure-Netzwerken eine benutzerdefinierte Richtlinie für IPsec (Internetprotokollsicherheit) und IKE (Internetschlüsselaustausch) verwenden. Informationen zu unterstützten Algorithmen und Schlüsselstärken finden Sie unter [https://aka.ms/AA62kb0](https://aka.ms/AA62kb0). |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json) |
 |[\[Vorschau:\] Gesamten Internetdatenverkehr über Ihre bereitgestellte Azure Firewall-Instanz leiten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |Azure Security Center hat festgestellt, dass einige Ihrer Subnetze nicht durch eine Firewall der nächsten Generation geschützt werden. Schützen Ihrer Subnetze vor möglichen Bedrohungen durch Einschränken des Zugriffs auf die Subnetze mit Azure Firewall oder einer unterstützten Firewall der nächsten Generation |AuditIfNotExists, Disabled |[3.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |

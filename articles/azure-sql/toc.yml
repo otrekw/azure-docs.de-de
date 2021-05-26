@@ -299,6 +299,9 @@
             - name: ARM-Vorlage
               displayName: Resource Manager
               href: database/single-database-create-arm-template-quickstart.md
+            - name: Mit Ledger und Digestspeicher
+              displayName: Create Azure SQL Database with ledger
+              href: database/ledger-create-a-single-database-with-ledger-enabled.md
         - name: Konfigurieren
           items:
             - name: IP-Firewallregeln auf Serverebene
@@ -434,14 +437,32 @@
               href: database/auditing-overview.md
             - name: Format der Überwachungsprotokolle
               href: database/audit-log-format.md
-            - name: Kontrolle des Netzwerkzugriffs
-              href: database/network-access-controls-overview.md
             - name: DNS-Aliase
               href: database/dns-alias-overview.md
-            - name: VNET-Endpunkte
-              href: database/vnet-service-endpoint-rule-overview.md
+            - name: Ledger
+              items:
+                - name: Ledger
+                  href: database/ledger-landing.yml
+                - name: Ledgerübersicht
+                  href: database/ledger-overview.md
+                - name: Datenbankledger
+                  href: database/ledger-database-ledger.md
+                - name: Aktualisierbare Ledgertabellen
+                  href: database/ledger-updatable-ledger-tables.md
+                - name: 'Ledgertabellen, die nur Anfügevorgänge unterstützen'
+                  href: database/ledger-append-only-ledger-tables.md
+                - name: Digest-Verwaltung und Datenbanküberprüfung
+                  href: database/ledger-digest-management-and-database-verification.md
+                - name: Ledgerüberwachung
+                  href: database/ledger-audit.md
+                - name: Ledgereinschränkungen
+                  href: database/ledger-limits.md
+            - name: Kontrolle des Netzwerkzugriffs
+              href: database/network-access-controls-overview.md
             - name: Private Link
               href: database/private-endpoint-overview.md
+            - name: VNET-Endpunkte
+              href: database/vnet-service-endpoint-rule-overview.md
         - name: Datenbank-Sharding
           items:
             - name: Datenbank-Sharding
@@ -522,6 +543,17 @@
               href: database/dynamic-data-masking-configure-portal.md
             - name: IP-basierte Firewall
               href: database/firewall-configure.md
+            - name: Ledger
+              items:
+                - name: 'Erstellen von Ledgertabellen, die nur Anfügevorgänge unterstützen'
+                  href: database/ledger-how-to-append-only-ledger-tables.md
+                - name: Erstellen von aktualisierbaren Ledgertabellen
+                  href: database/ledger-how-to-updatable-ledger-tables.md
+                - name: Zugreifen auf den Azure Confidential Ledger-Digest
+                  displayName: Access Azure Confidential Ledger digest
+                  href: database/ledger-how-to-access-acl-digest.md
+                - name: Überprüfen der Ledgerdatenbank auf Manipulation
+                  href: database/ledger-verify-database.md
             - name: 'VNET-Endpunkte: PowerShell'
               href: database/scripts/vnet-service-endpoint-rule-powershell-create.md
         - name: Geschäftskontinuität

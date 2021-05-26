@@ -4,12 +4,12 @@ description: Lernen Sie die Best Practices des Clusteroperators für die Verwend
 services: container-service
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 8c0f1d0cda61638abe03b92c627a5ea0455c31cb
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 034b7e18d3114804f846d77aa4feb001492c8883
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104897"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467062"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,6 @@ Dieser Artikel zu Best Practices konzentriert sich auf grundlegende Kubernetes-P
 > [!div class="checklist"]
 > * Verwenden von Ressourcenkontingenten, um eine feste Menge an Ressourcen für Teams oder Workloads bereitzustellen
 > * Beschränken der Auswirkungen der geplanten Wartung mithilfe von Budgets für die Unterbrechung von Pods
-> * Überprüfen fehlender Podressourcenanforderungen und -grenzwerte mithilfe des `kube-advisor`-Tools
 
 ## <a name="enforce-resource-quotas"></a>Durchsetzen von Ressourcenkontingenten
 
@@ -134,18 +133,6 @@ Arbeiten Sie mit Ihren Anwendungsentwicklern und -besitzern zusammen, um deren A
 
 Weitere Informationen zur Verwendung von Budgets für die Unterbrechung von Pods finden Sie unter [Spezifizieren von Budgets für die Unterbrechung für Ihre Anwendung][k8s-pdbs].
 
-## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Regelmäßiges Überprüfen auf Clusterprobleme mit dem Kube-Advisor
-
-> **Best Practices-Leitfaden** 
->
-> Führen Sie regelmäßig die neueste Version des Open-Source-Tools `kube-advisor` aus, um Probleme in Ihrem Cluster zu erkennen. Wenn Sie Ressourcenkontingente auf einen bestehenden AKS-Cluster anwenden, führen Sie zuerst `kube-advisor` aus, um Pods zu finden, die keine Ressourcenanforderungen und -grenzwerte definiert haben.
-
-Das [kube-advisor][kube-advisor]-Tool ist ein verwandtes Open-Source-Projekt für AKS, das einen Kubernetes-Cluster scannt und erkannte Probleme meldet. `kube-advisor` ist nützlich, um Pods ohne Ressourcenanforderungen und Grenzwerte zu identifizieren.
-
-Während das `kube-advisor`-Tool Berichte zur Ressourcenanforderung und Grenzwerten erstellen kann, die in PodSpecs für Windows- und Linux-Anwendungen fehlen, muss das Tool selbst auf einem Linux-Pod geplant werden. Um einen Pod für die Ausführung in einem Knotenpool mit einem bestimmten Betriebssystem zu planen, verwenden Sie einen [Knotenselektor][k8s-node-selector] in der Konfiguration des Pods.
-
-Das Nachverfolgen von Pods ohne festgelegte Ressourcenanforderungen und Grenzwerte in einem AKS-Cluster, der mehrere Entwicklungsteams und Anwendungen hostet, kann schwierig sein. Als Best Practice sollten Sie `kube-advisor` regelmäßig auf Ihren AKS-Clustern ausführen, insbesondere wenn Sie Namespaces keine Ressourcenkontingente zuweisen.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Dieser Artikel konzentriert sich auf grundlegende Funktionen des Kubernetes-Schedulers. Weitere Informationen zu Clustervorgängen in AKS finden Sie in den folgenden Best Practices:
@@ -157,7 +144,6 @@ Dieser Artikel konzentriert sich auf grundlegende Funktionen des Kubernetes-Sche
 <!-- EXTERNAL LINKS -->
 [k8s-resource-quotas]: https://kubernetes.io/docs/concepts/policy/resource-quotas/
 [configure-default-quotas]: https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/
-[kube-advisor]: https://github.com/Azure/kube-advisor
 [k8s-pdbs]: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
 
 <!-- INTERNAL LINKS -->

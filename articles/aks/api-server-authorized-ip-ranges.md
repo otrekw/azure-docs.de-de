@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ihre Cluster durch Verwendung von IP-Adressbe
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 9b6ee4a17c15b6ada39798db40408d1d26971dfe
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: e97ed38d3491ace658a92e2abfbc7cd417ca9cf1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016345"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100556"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Sicherer Zugriff auf den API-Server mit autorisierten IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -61,7 +61,6 @@ az aks create \
 > Sie sollten diese Bereiche einer Zulassungsliste hinzufügen:
 > - Öffentliche IP-Adresse der Firewall
 > - Alle Bereiche mit Netzwerken, von denen aus Sie den Cluster verwalten
-> - Wenn Sie in Ihrem AKS-Cluster Azure Dev Spaces verwenden, müssen Sie [zusätzliche Bereiche (auf der Grundlage Ihrer Region)][dev-spaces-ranges] zulassen.
 >
 > Die Obergrenze für die Anzahl von IP-Adressbereichen, die Sie angeben können, ist „200“.
 >

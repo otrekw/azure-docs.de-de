@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: e5de54384d59423ac5e4b8ab851faf98070d027d
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 072aa17783382c7d46298b2757b3bda9390e5e29
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278846"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368749"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -56,7 +56,7 @@ Für eine Funktions-App wird ein Azure Storage-Konto benötigt. Sie benötigen e
 }
 ```
 
-Darüber hinaus muss die Eigenschaft `AzureWebJobsStorage` als App-Einstellung in der Standortkonfiguration angegeben werden. Wenn die Funktions-App nicht Application Insights für die Überwachung verwendet, müssen Sie auch `AzureWebJobsDashboard` als App-Einstellung angeben.
+Sie müssen die `AzureWebJobsStorage`-Eigenschaft auch als App-Einstellung in der Standortkonfiguration angeben. Wenn die Funktions-App nicht Application Insights für die Überwachung verwendet, müssen Sie auch `AzureWebJobsDashboard` als App-Einstellung angeben.
 
 Die Azure Functions-Laufzeit verwendet die Verbindungszeichenfolge `AzureWebJobsStorage` zum Erstellen interner Warteschlangen.  Wenn Application Insights nicht aktiviert ist, verwendet die Runtime die Verbindungszeichenfolge `AzureWebJobsDashboard` zur Anmeldung beim Azure Table-Speicher und zur Nutzung der Registerkarte **Überwachen** im Portal.
 
@@ -186,16 +186,16 @@ Ein Verbrauchsplan muss nicht definiert werden. Er wird automatisch erstellt ode
 Der Verbrauchsplan ist ein besonderer Typ einer „Serverfarm“-Ressource. Für Windows können Sie ihn mithilfe des `Dynamic`-Werts für die Eigenschaften `computeMode` und `sku` angeben:
 
 ```json
-{  
+{
    "type":"Microsoft.Web/serverfarms",
    "apiVersion":"2016-09-01",
    "name":"[variables('hostingPlanName')]",
    "location":"[resourceGroup().location]",
-   "properties":{  
+   "properties":{
       "name":"[variables('hostingPlanName')]",
       "computeMode":"Dynamic"
    },
-   "sku":{  
+   "sku":{
       "name":"Y1",
       "tier":"Dynamic",
       "size":"Y1",
@@ -212,7 +212,7 @@ Wenn Sie Ihren Verbrauchstarif explizit definieren, müssen Sie die `serverFarmI
 
 ### <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
-Die erforderlichen Einstellungen für eine Funktions-App, die im Verbrauchstarif ausgeführt wird, unterscheiden sich zwischen Windows und Linux. 
+Die erforderlichen Einstellungen für eine Funktions-App, die im Verbrauchstarif ausgeführt wird, unterscheiden sich zwischen Windows und Linux.
 
 #### <a name="windows"></a>Windows
 
@@ -258,11 +258,11 @@ Unter Windows erfordert der Verbrauchstarif eine zusätzliche Einstellung in der
 ```
 
 > [!IMPORTANT]
-> Legen Sie die Einstellung [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nicht fest, da der Wert beim Erstellen der Website generiert wird.  
+> Legen Sie die Einstellung [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nicht fest, da der Wert beim Erstellen der Website generiert wird.
 
 #### <a name="linux"></a>Linux
 
-Unter Linux muss `kind` der Funktions-App auf `functionapp,linux` festgelegt werden, und die `reserved`-Eigenschaft muss auf `true` festgelegt werden. 
+Unter Linux muss `kind` der Funktions-App auf `functionapp,linux` festgelegt werden, und die `reserved`-Eigenschaft muss auf `true` festgelegt werden.
 
 ```json
 {
@@ -342,7 +342,7 @@ Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem Premium-Plan mu
     "type": "Microsoft.Web/sites",
     "name": "[variables('functionAppName')]",
     "location": "[resourceGroup().location]",
-    "kind": "functionapp",            
+    "kind": "functionapp",
     "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
@@ -377,7 +377,7 @@ Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem Premium-Plan mu
 }
 ```
 > [!IMPORTANT]
-> Legen Sie die Einstellung [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nicht fest, da der Wert beim Erstellen der Website generiert wird.  
+> Legen Sie die Einstellung [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nicht fest, da der Wert beim Erstellen der Website generiert wird.
 
 <a name="app-service-plan"></a>
 
@@ -569,6 +569,109 @@ Wenn Sie [ein benutzerdefiniertes Containerimage bereitstellen](./functions-crea
 }
 ```
 
+## <a name="deploy-to-azure-arc"></a>Bereitstellen in Azure Arc
+
+Azure Functions kann in einer für [Azure Arc aktivierten Kubernetes-Umgebung](../app-service/overview-arc-integration.md) bereitgestellt werden. Dieser Prozess entspricht größtenteils der [Bereitstellung in einem App Service-Plan](#deploy-on-app-service-plan), wobei einige Unterschiede zu beachten sind.
+
+Um die App und Planressourcen zu erstellen, müssen Sie bereits eine [App Service Kubernetes-Umgebung](../app-service/manage-create-arc-environment.md) für einen für Azure Arc aktivierten Kubernetes-Cluster erstellt haben. In diesen Beispielen wird davon ausgegangen, dass Sie über die Ressourcen-ID des benutzerdefinierten Speicherorts und der App Service Kubernetes-Umgebung verfügen, in der Sie die Bereitstellung durchführen. Inden meisten Vorlagen können Sie diese als Parameter angeben.
+
+```json
+{
+    "parameters": {
+        "kubeEnvironmentId" : {
+            "type": "string"
+        },
+        "customLocationId" : {
+            "type": "string"
+        }
+    }
+}
+```
+
+Sowohl Sites als auch Pläne müssen über ein `extendedLocation`-Feld auf den benutzerdefinierten Speicherort verweisen. Dieser Block befindet sich außerhalb von `properties` und ist ein Peer von `kind` und `location`:
+
+```json
+{
+    "extendedLocation": {
+        "type": "customlocation",
+        "name": "[parameters('customLocationId')]"
+    },
+}
+```
+
+Die Planressource sollte die Kubernetes-SKU (K1) verwenden, und ihr `kind`-Feld sollte „linux,kubernetes“ lauten. In `properties` sollte `reserved` „TRUE“ sein, und `kubeEnvironmentProfile.id` sollte auf die Ressourcen-ID der App Service Kubernetes-Umgebung festgelegt werden. Eine Beispielplan könnte folgendermaßen aussehen:
+
+```json
+{
+    "type": "Microsoft.Web/serverfarms",
+    "name": "[variables('hostingPlanName')]",
+    "location": "[parameters('location')]",
+    "apiVersion": "2020-12-01",
+    "kind": "linux,kubernetes",
+    "sku": {
+        "name": "K1",
+        "tier": "Kubernetes"
+    },
+    "extendedLocation": {
+        "type": "customlocation",
+        "name": "[parameters('customLocationId')]"
+    },
+    "properties": {
+        "name": "[variables('hostingPlanName')]",
+        "location": "[parameters('location')]",
+        "workerSizeId": "0",
+        "numberOfWorkers": "1",
+        "kubeEnvironmentProfile": {
+            "id": "[parameters('kubeEnvironmentId')]"
+        },
+        "reserved": true
+    }
+}
+```
+
+Für die Funktions-App-Ressource sollte das `kind`-Feld auf „functionapp,linux,kubernetes“ oder „functionapp,linux,kubernetes,container“ festgelegt sein, je nachdem, ob Sie die Bereitstellung über Code oder Container beabsichtigen. Eine Funktionsbeispiel-App kann beispielsweise wie folgt aussehen:
+
+```json
+ {
+    "apiVersion": "2018-11-01",
+    "type": "Microsoft.Web/sites",
+    "name": "[variables('appName')]",
+    "kind": "kubernetes,functionapp,linux,container",
+    "location": "[parameters('location')]",
+    "extendedLocation": {
+        "type": "customlocation",
+        "name": "[parameters('customLocationId')]"
+    },
+    "dependsOn": [
+        "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+        "[variables('hostingPlanId')]"
+    ],
+    "properties": {
+        "serverFarmId": "[variables('hostingPlanId')]",
+        "siteConfig": {
+            "linuxFxVersion": "DOCKER|mcr.microsoft.com/azure-functions/dotnet:3.0-appservice-quickstart",
+            "appSettings": [
+                {
+                    "name": "FUNCTIONS_EXTENSION_VERSION",
+                    "value": "~3"
+                },
+                {
+                    "name": "AzureWebJobsStorage",
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+
+                },
+                {
+                    "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                    "value": "[reference(resourceId('microsoft.insights/components/', variables('appInsightsName')), '2015-05-01').InstrumentationKey]"
+                }
+            ],
+            "alwaysOn": true
+        }
+    }
+}
+```
+
 ## <a name="customizing-a-deployment"></a>Anpassen einer Bereitstellung
 
 Eine Funktions-App verfügt über viele untergeordnete Ressourcen, die Sie in Ihrer Bereitstellung verwenden können. Hierzu zählen beispielsweise App-Einstellungen und Quellcodeverwaltungsoptionen. Sie können die untergeordnete Ressource **sourcecontrols** auch entfernen und stattdessen eine andere [Bereitstellungsoption](functions-continuous-deployment.md) verwenden.
@@ -697,4 +800,4 @@ Machen Sie sich näher mit dem Entwickeln und Konfigurieren von Azure Functions 
 <!-- LINKS -->
 
 [Funktions-App im Verbrauchsplan]: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.web/function-app-create-dynamic/azuredeploy.json
-[Funktions-App im Azure App Service-Plan]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json
+[Funktions-App im Azure App Service-Plan]: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.web/azuredeploy.json

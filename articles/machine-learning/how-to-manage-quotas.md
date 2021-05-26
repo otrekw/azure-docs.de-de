@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 author: SimranArora904
 ms.author: siarora
-ms.date: 12/1/2020
+ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 3fde5a7290c97c4bcf7c8da0fdc5ea21e05abbd3
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b9890ad85bea81b918a9b625a2cd62adb11a5820
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889032"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368871"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 
@@ -102,6 +102,25 @@ In der folgenden Tabelle sind weitere Grenzwerte der Plattform angegeben. Wenden
 
 <sup>1</sup> Die maximale Lebensdauer bezieht sich auf die Zeitspanne zwischen dem Start und Ende einer Ausführung. Abgeschlossene Ausführungen bleiben unbegrenzt erhalten. Daten für Ausführungen, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, sind nicht verfügbar.
 <sup>2</sup> Aufträge auf einem Knoten niedriger Priorität können vorzeitig entfernt werden, wenn eine Kapazitätseinschränkung besteht. Wir empfehlen Ihnen, in Ihrem Auftrag Prüfpunkte zu implementieren.
+
+### <a name="azure-machine-learning-managed-online-endpoints-preview"></a>Verwaltete Azure Machine Learning-Onlineendpunkte (Vorschau)
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
+
+Für verwaltete Azure Machine Learning-Onlineendpunkte gelten die folgenden Grenzwerte:
+
+| **Ressource** | **Begrenzung** |
+| --- | --- |
+| Endpunktname| Für Endpunktnamen gilt Folgendes: <li> Sie müssen mit einem Buchstaben beginnen. <li> Sie müssen zwischen 3 und 32 Zeichen lang sein.  <li> Sie dürfen nur aus Buchstaben und Ziffern bestehen.<sup>1</sup> |
+| „Deployment name“ (Bereitstellungsname)| Für Bereitstellungsnamen gilt Folgendes: <li> Sie müssen mit einem Buchstaben beginnen. <li> Sie müssen zwischen 3 und 32 Zeichen lang sein.  <li>  Sie dürfen nur aus Buchstaben und Ziffern bestehen.<sup>1</sup> |
+| Anzahl privater Endpunkte pro Abonnement | 50 |
+| Anzahl von Bereitstellungen pro Abonnement | 200 |
+| Anzahl von Bereitstellungen pro Endpunkt | 20 |
+| Anzahl von Instanzen pro Bereitstellung | 20 |
+| Maximale Nutzdatengröße auf Endpunktebene |1,5 MB |
+| Maximales Anforderungstimeout auf Endpunktebene  | 60 Sekunden |
+| Gesamtanzahl von QPS auf Endpunktebene für alle Bereitstellungen  | 100 |
+
+<sup>1</sup> Einzelne Bindestriche (etwa `my-endpoint-name`) sind in Endpunkt- und Bereitstellungsnamen zulässig.
 
 #### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning-Pipelines
 Für [Azure Machine Learning-Pipelines](concept-ml-pipelines.md) gelten die unten angegebenen Grenzwerte.

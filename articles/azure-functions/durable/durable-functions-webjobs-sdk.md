@@ -2,14 +2,14 @@
 title: Ausführen von Durable Functions als WebJobs – Azure
 description: Erfahren Sie, wie Sie Durable Functions so codieren und konfigurieren, dass diese in WebJobs mit dem WebJobs SDK ausgeführt werden.
 ms.topic: conceptual
-ms.date: 04/25/2018
+ms.date: 05/12/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1bfc285d1afba0c83d07dcd7da3851231553e2f1
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009499"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375722"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Ausführen von Durable Functions als WebJobs
 
@@ -37,7 +37,7 @@ Zur Durchführung der in diesem Artikel aufgeführten Schritte ist Folgendes erf
 
   (Sie können stattdessen [Visual Studio Code](https://code.visualstudio.com/) verwenden, aber einige der Anweisungen sind spezifisch für Visual Studio.)
 
-* Installieren Sie den [Azure-Speicheremulator](../../storage/common/storage-use-emulator.md) Version 5.2 oder höher, und führen Sie ihn aus. Alternativ können Sie die Datei *App.config* mit einer Azure Storage-Verbindungszeichenfolge aktualisieren.
+* Installieren Sie einen [Azure Storage Emulator](../../storage/common/storage-use-emulator.md) und führen Sie ihn aus. Eine Alternative ist die Aktualisierung der *App.config-* Datei mit einer authentischen Azure Storage-Verbindungszeichenfolge.
 
 ## <a name="webjobs-sdk-versions"></a>WebJobs SDK-Versionen
 
@@ -58,7 +58,7 @@ Sie benötigen NuGet-Pakete für das WebJobs SDK, Hauptbindungen, das Protokolli
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0
 Install-Package Microsoft.Extensions.Logging -version 2.0.1
-Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.3
+Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.7
 ```
 
 Darüber hinaus benötigen Sie Protokollanbieter. Die folgenden Befehle installieren den Azure Application Insights-Anbieter und den `ConfigurationManager`. Mit dem `ConfigurationManager` können Sie den Application Insights-Instrumentierungsschlüssel aus den App-Einstellungen abrufen.

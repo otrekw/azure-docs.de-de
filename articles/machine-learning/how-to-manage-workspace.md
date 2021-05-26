@@ -10,18 +10,18 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a9afef0e2616664578e66be3735104c47bfcffa9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8583229104d29f48784c7790e505852ac4b08dfd
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760749"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376287"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen 
 
 In diesem Artikel erstellen, betrachten und löschen Sie [**Azure Machine Learning-Arbeitsbereiche**](concept-workspace.md) für [Azure Machine Learning](overview-what-is-azure-ml.md) über das Azure-Portal oder mit dem [SDK für Python](/python/api/overview/azure/ml/).
 
-Wenn sich Ihre Anforderungen ändern oder die Anforderungen an die Automatisierung zunehmen, können Sie Arbeitsbereiche auch [mithilfe der CLI](reference-azure-machine-learning-cli.md) oder [über die VS-Code-Erweiterung](tutorial-setup-vscode-extension.md) erstellen und löschen.
+Wenn sich Ihre Anforderungen ändern oder die Anforderungen an die Automatisierung zunehmen, können Sie Arbeitsbereiche auch [mithilfe der CLI](reference-azure-machine-learning-cli.md) oder [über die VS-Code-Erweiterung](how-to-setup-vs-code.md) erstellen und löschen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: 7b7ac20672ee653cbf6d2b82b7a9454c1d742b2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7b4bbafd5630c2c116e002ee6ebafaa5444ce2d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612693"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369318"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problembehandlung f체r QnA Maker
 
@@ -49,7 +49,7 @@ Die kuratierte Liste der am h채ufigsten gestellten Fragen in Bezug auf den QnA M
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 <details>
 <summary><b>Wie kann ich die Durchsatzleistung f체r Abfragevorhersagen verbessern?</b></summary>
@@ -173,7 +173,7 @@ Wenn Sie 체ber Inhalte in verschiedenen Sprachen verf체gen, stellen Sie sicher, 
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 <details>
 <summary><b>Warum extrahieren meine URLs/Dateien keine Frage-Antwort-Paare?</b></summary>
@@ -349,7 +349,7 @@ Wenn Sie 체ber Inhalte in verschiedenen Sprachen verf체gen, stellen Sie sicher, 
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 
 <details>
@@ -432,7 +432,7 @@ Der Endpunktschl체ssel der Wissensdatenbank ist im ABS-Dienst mit `QnAAuthkey` g
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 
 <details>
@@ -494,7 +494,7 @@ Als Sie den QnA Maker-Dienst erstellt haben, haben Sie eine Azure-Region ausgew�
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 <details>
 <summary><b>Welche Daten werden gespeichert, und wo werden sie gespeichert?</b></summary>

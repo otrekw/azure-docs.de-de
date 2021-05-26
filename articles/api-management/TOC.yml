@@ -133,6 +133,8 @@
           href: zone-redundancy.md
         - name: Bereitstellen eines selbstgehosteten Gateways
           href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Stellen Sie ein Azure API Management-Gateway auf Azure Arc bereit
+          href: how-to-deploy-self-hosted-gateway-azure-arc.md
         - name: Bereitstellen eines selbstgehosteten Gateways für Azure Kubernetes Service
           href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
         - name: Bereitstellen eines selbstgehosteten Gateways für Kubernetes
