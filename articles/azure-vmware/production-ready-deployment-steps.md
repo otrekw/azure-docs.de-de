@@ -3,13 +3,13 @@ title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
 ms.custom: contperf-fy21q4
-ms.date: 04/27/2021
-ms.openlocfilehash: bc78830180f12c947b195b8525ea9b100b123836
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.date: 05/13/2021
+ms.openlocfilehash: 0b8826582957e02ec3f18d09dec7283cc92188a1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108179532"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097118"
 ---
 # <a name="plan-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
@@ -24,15 +24,15 @@ Durch die beschriebenen Schritte erhalten Sie eine produktionsbereite Umgebung z
 ## <a name="request-a-host-quota"></a>Anfordern eines Hostkontingents 
 
 Es ist wichtig, frühzeitig ein Hostkontingent anzufordern, wenn Sie sich auf die Erstellung Ihrer Azure VMware Solution-Ressource vorbereiten. Sie können jetzt ein Hostkontingent anfordern. Wenn der Planungsprozess abgeschlossen ist, können Sie direkt die private Azure VMware Solution-Cloud bereitstellen: Nachdem das Supportteam Ihre Anforderung eines Hostkontingents erhalten hat, dauert es bis zu fünf Werktage, bis die Anforderung bestätigt wurde und Ihre Hosts zugewiesen wurden. Wenn Sie über eine vorhandene private Azure VMware Solution-Cloud verfügen und weitere Hosts zugeordnet werden sollen, müssen Sie auf die gleiche Weise vorgehen. Weitere Informationen finden Sie je nach Abonnementtyp unter den folgenden Links:
-- [EA-Kunden](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-ea-customers)
-- [CSP-Kunden](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-csp-customers)
+- [EA-Kunden](request-host-quota-azure-vmware-solution.md#request-host-quota-for-ea-customers)
+- [CSP-Kunden](request-host-quota-azure-vmware-solution.md#request-host-quota-for-csp-customers)
 
 ## <a name="identify-the-subscription"></a>Identifizieren des Abonnements
 
 Identifizieren Sie das Abonnement, das Sie zum Bereitstellen von Azure VMware Solution verwenden möchten.  Sie können entweder ein neues Abonnement erstellen oder ein vorhandenes wiederverwenden.
 
 >[!NOTE]
->Das Abonnement muss einem Microsoft Enterprise Agreement oder einem Azure-Plan für Cloud Solution Provider zugeordnet sein. Weitere Informationen finden Sie unter [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md).
+>Das Abonnement muss einem Microsoft Enterprise Agreement oder einem Azure-Plan für Cloud Solution Provider zugeordnet sein. Weitere Informationen finden Sie unter [Aktivieren einer Azure VMware Solution-Ressource](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider).
 
 ## <a name="identify-the-resource-group"></a>Identifizieren der Ressourcengruppe
 

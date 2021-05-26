@@ -11,12 +11,12 @@ ms.date: 12/01/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea0bed0884a3a03e2cd15b274b2afb0f054b0cbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53005bffde698030221751ec0638a6cc6cbd98c7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96523302"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478932"
 ---
 # <a name="managing-concurrency-in-blob-storage"></a>Verwalten der Parallelität im Blobspeicher
 
@@ -49,11 +49,11 @@ Dieser Prozess ist folgendermaßen gegliedert:
 
 In den folgenden Codebeispielen wird gezeigt, wie Sie eine **If-Match**-Bedingung für die Schreibanforderung erstellen, die den ETag-Wert für ein Blob überprüft. Azure Storage überprüft, ob das aktuelle ETag des Blobs mit dem ETag übereinstimmt, das in der Anforderung bereitgestellt wurde, und führt den Schreibvorgang nur aus, wenn die beiden ETag-Werte übereinstimmen. Falls das Blob in der Zwischenzeit von einem anderen Prozess aktualisiert wurde, gibt Azure Storage die Statusmeldung HTTP 412 (Vorbedingung nicht erfüllt) zurück.  
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Concurrency.cs" id="Snippet_DemonstrateOptimisticConcurrencyBlob":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 public void DemonstrateOptimisticConcurrencyBlob(string containerName, string blobName)
@@ -116,11 +116,11 @@ Leases ermöglichen die Unterstützung verschiedener Synchronisierungsstrategien
 
 In den folgenden Codebeispielen wird veranschaulicht, wie Sie eine exklusive Lease für ein Blob abrufen, den Inhalt des Blobs aktualisieren, indem Sie die Lease-ID angeben, und dann die Lease freigeben. Wenn die Lease aktiv ist und die Lease-ID für eine Schreibanforderung nicht angegeben ist, führt der Schreibvorgang zum Fehlercode 412 (Vorbedingung nicht erfüllt).  
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Concurrency.cs" id="Snippet_DemonstratePessimisticConcurrencyBlob":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 public void DemonstratePessimisticConcurrencyBlob(string containerName, string blobName)

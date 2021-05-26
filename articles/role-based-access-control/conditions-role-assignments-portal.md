@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2021
 ms.author: rolyon
-ms.openlocfilehash: fd13fa81d3b6081468bc4071ffe3c41bf3294c7a
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 7d7b8732cedc05759fe4aa343a58eb89a3cec3c9
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656655"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109844668"
 ---
 # <a name="add-or-edit-azure-role-assignment-conditions-using-the-azure-portal-preview"></a>Hinzufügen oder Bearbeiten von Azure-Rollenzuweisungsbedingungen über das Azure-Portal (Vorschau)
 
@@ -24,7 +24,7 @@ ms.locfileid: "109656655"
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Eine [Azure-Rollenzuweisungsbedingung](conditions-overview.md) ist eine zusätzliche Überprüfung, die Sie Ihrer Rollenzuweisung optional hinzufügen können, um eine genauere Zugriffssteuerung zu ermöglichen. Sie können z. B. eine Bedingung hinzufügen, mit der festgelegt wird, dass ein Objekt über ein bestimmtes Tag zum Lesen des Objekts verfügen muss. In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal Bedingungen für Ihre Rollenzuweisungen hinzufügen, bearbeiten, anzeigen oder löschen.
+Eine [Azure-Rollenzuweisungsbedingung](conditions-overview.md) ist eine zusätzliche Überprüfung, die Sie Ihrer Rollenzuweisung optional hinzufügen können, um die Zugriffssteuerung präziser zu gestalten. Sie können z. B. eine Bedingung hinzufügen, mit der festgelegt wird, dass ein Objekt über ein bestimmtes Tag zum Lesen des Objekts verfügen muss. In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal Bedingungen für Ihre Rollenzuweisungen hinzufügen, bearbeiten, anzeigen oder löschen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -124,7 +124,7 @@ Nachdem die Seite zum Hinzufügen einer Rollenzuweisungsbedingung geöffnet wurd
 
 1. Geben Sie im Feld „Wert“ einen Wert für die rechte Seite des Ausdrucks ein.
 
-    ![Abschnitt zum Erstellen eines Ausdrucks mit Werten für Blobindextags.](./media/conditions-role-assignments-portal/condition-expressions.png)
+    ![Abschnitt zum Erstellen eines Ausdrucks mit Werten für Blobindextags.](./media/shared/condition-expressions.png)
 
 ## <a name="step-6-review-and-add-condition"></a>Schritt 6: Überprüfen und Hinzufügen der Bedingung
 
@@ -158,6 +158,6 @@ Nachdem die Seite zum Hinzufügen einer Rollenzuweisungsbedingung geöffnet wurd
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Beispiele für Azure-Rollenzuweisungsbedingungen (Vorschau)](../storage/common/storage-auth-abac-examples.md)
+- [Beispiel für Azure-Rollenzuweisungsbedingungen (Vorschau)](../storage/common/storage-auth-abac-examples.md)
 - [Tutorial: Hinzufügen einer Rollenzuweisungsbedingung zum Einschränken des Zugriffs auf Blobs mit dem Azure-Portal (Vorschau)](../storage/common/storage-auth-abac-portal.md)
 - [Problembehandlung: Bedingungen für die Azure-Rollenzuweisung (Vorschau)](conditions-troubleshoot.md)

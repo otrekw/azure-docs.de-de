@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: f421274513cc3d76f7e8c1119cf98e4e5d36b1f9
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: a0644342c417cb06c257372e526fff55df62f9b9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950267"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095426"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning?
 
@@ -56,7 +56,7 @@ Sie können Azure Machine Learning-Compute-Instanzen oder -Computecluster erstel
     * [Compute-Instanz](how-to-create-manage-compute-instance.md)
     * [Computecluster](how-to-create-attach-compute-cluster.md)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Vorschau)
-* Azure Resource Manager-Vorlage Eine Beispielvorlage finden Sie unter [Erstellen eines Azure Machine Learning-Computeclusters](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute).
+* Azure Resource Manager-Vorlage Eine Beispielvorlage finden Sie unter [Erstellen eines Azure Machine Learning-Computeclusters](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-amlcompute).
 * Eine [Machine-Learning-Erweiterung für die Azure CLI](reference-azure-machine-learning-cli.md#resource-management)
 
 Nach der Erstellung sind diese Computeressourcen im Gegensatz zu anderen Arten von Computezielen automatisch Teil Ihres Arbeitsbereichs.
@@ -103,11 +103,11 @@ In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Seri
 | NC | Keine. |  GPU | Computecluster und -instanzen |
 | NC Promo | Keine. | GPU | Computecluster und -instanzen |
 | NCsv2 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
-| NCsv3 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |  
-| NDs | Genehmigung erforderlich. | GPU | Computecluster und -instanzen | 
-| NDv2 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen | 
-| SH | Keine. | GPU | Computecluster und -instanzen | 
-| NVv3 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen | 
+| NCsv3 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| NDs | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| NDv2 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| SH | Keine. | GPU | Computecluster und -instanzen |
+| NVv3 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
 
 
 Obwohl Azure Machine Learning diese VM-Serien unterstützt, sind sie möglicherweise nicht in allen Azure-Regionen verfügbar. Informationen zum Überprüfen, ob VM-Serien verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
