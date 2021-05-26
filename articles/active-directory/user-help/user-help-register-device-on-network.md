@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 08/31/2020
+ms.date: 05/24/2020
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b38a0d4c5baf0f19140f2a210959b4904bf130a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90033046"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466370"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Registrieren Ihres persönlichen Geräts im Netzwerk Ihrer Organisation
 Registrieren Sie Ihr persönliches Gerät (in der Regel ein Smartphone oder Tablet) im Netzwerk Ihrer Organisation. Nachdem Ihr Gerät registriert wurde, können Sie damit auf die geschützten Ressourcen Ihrer Organisation zugreifen.
@@ -45,24 +45,27 @@ Folgen Sie diesen Schritten, um Ihr persönliches Gerät in Ihrem Netzwerk zu re
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** und dann auf dem Bildschirm **Auf Arbeits- oder Schulkonto zugreifen** die Option **Verbinden** aus.
+1. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** und dann auf dem Bildschirm **Auf Arbeits- oder Schulkonto zugreifen** die Option **Verbinden** aus.
 
     ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit hervorgehobener Option „Verbinden“](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. Geben Sie auf dem Bildschirm **Add a work or school account** (Geschäfts-, Schul- oder Unikonto hinzufügen) Ihre E-Mail-Adresse für Ihr Geschäfts-, Schul- oder Unikonto ein, und klicken Sie dann auf **Weiter**. Beispiel: alain@contoso.com.
+1. Geben Sie auf dem Bildschirm **Add a work or school account** (Geschäfts-, Schul- oder Unikonto hinzufügen) Ihre E-Mail-Adresse für Ihr Geschäfts-, Schul- oder Unikonto ein, und klicken Sie dann auf **Weiter**. Beispiel: alain@contoso.com.
 
-4. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und wählen Sie dann **Anmelden** aus.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und wählen Sie dann **Anmelden** aus.
 
-5. Schließen Sie die restlichen Schritte des Registrierungsprozesses ab, einschließlich der Genehmigung Ihrer Identitätsüberprüfungsanforderung (wenn Sie eine zweistufige Überprüfung verwenden) und dem Einrichten von Windows Hello (falls erforderlich).
+1. Schließen Sie die restlichen Schritte des Registrierungsprozesses ab, einschließlich der Genehmigung Ihrer Identitätsüberprüfungsanforderung (wenn Sie eine zweistufige Überprüfung verwenden) und dem Einrichten von Windows Hello (falls erforderlich).
+
+1. Starten Sie das Gerät neu.
 
 ## <a name="to-verify-that-youre-registered"></a>So überprüfen Sie, ob Sie registriert sind
+
 Um sicherzustellen, dass Sie registriert wurden, können Sie Ihre Einstellungen überprüfen.
 
 1. Öffnen Sie **Einstellungen**, und klicken Sie dann auf **Konten**.
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass Ihr Geschäfts-, Schul- oder Unikonto angezeigt wird.
+1. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass Ihr Geschäfts-, Schul- oder Unikonto angezeigt wird.
 
     ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-register-device-on-network/register-device-setup-verify.png)
 

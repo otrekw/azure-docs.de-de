@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: d0fdc9e322d2aec76b04c96a75e727b84f95cb10
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: cdc7ce9fbb24dc593ebd4dedc7c2c4ce82afa3f0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770729"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094818"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten IoT Edge-Geräts mit einem Azure IoT Edge-Gateway
 
@@ -89,7 +89,7 @@ Weitere Befehle für Geräteidentitäten, z. B. `add-children`, `list-children`
 ---
 
 >[!NOTE]
->Wenn Sie Beziehungen zwischen über- und untergeordneten Elementen programmgesteuert einrichten möchten, können Sie das [IoT Hub Service SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) für C#, Java oder Node.js verwenden.
+>Wenn Sie Beziehungen zwischen über- und untergeordneten Elementen programmgesteuert einrichten möchten, können Sie das [IoT Hub Service SDK](../iot-hub/iot-hub-devguide-sdks.md) für C#, Java oder Node.js verwenden.
 >
 >Dies ist ein [Beispiel für die Zuordnung von untergeordneten Geräten](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/e2e/test/iothub/service/RegistryManagerE2ETests.cs) mit dem C#-SDK. Die Aufgabe `RegistryManager_AddAndRemoveDeviceWithScope()` zeigt, wie Sie programmgesteuert eine Hierarchie mit drei Ebenen erstellen. Ein IoT Edge-Gerät befindet sich als übergeordnetes Element auf der ersten Ebene. Ein weiteres IoT Edge-Gerät befindet sich auf der zweiten Ebene und dient sowohl als untergeordnetes als auch als übergeordnetes Element. Schließlich befindet sich ein IoT-Gerät auf der dritten Ebene als untergeordnetes Gerät der untersten Ebene.
 
@@ -421,7 +421,7 @@ Das API-Proxymodul wurde so entworfen, dass es angepasst werden kann, um die hä
 
 1. Geben Sie den folgenden Befehl ein, um eine Bereitstellung auf ein IoT Edge-Gerät zu erstellen:
 
-   ```bash
+   ```azurecli
    az iot edge set-modules --device-id <device_id> --hub-name <iot_hub_name> --content ./<deployment_file_name>.json
    ```
 

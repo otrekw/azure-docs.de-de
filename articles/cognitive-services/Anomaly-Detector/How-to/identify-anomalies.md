@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6657147d044d49ff72532ad270552a175c197c8f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97703431"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078218"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Gewusst wie: Verwenden der Anomalieerkennungs-API für Zeitreihendaten  
 
@@ -41,7 +41,7 @@ Indem Sie Ihre Zeitreihendaten auf einmal senden, generiert die API ein Modell, 
 
 Verwenden Sie den folgenden Anforderungs-URI mit Ihrem neuesten Datenpunkt, um kontinuierlich Anomalien beim Streaming der Daten zu erkennen: 
 
-`/timeseries/last/detect'`. 
+`/timeseries/last/detect`. 
 
 Indem Sie neue Datenpunkte während der Generierung senden, können Sie Ihre Daten in Echtzeit überwachen. Es wird ein Modell mit den von Ihnen gesendeten Datenpunkten erstellt, und die API ermittelt, ob der letzte Punkt in der Zeitreihe eine Anomalie darstellt.
 

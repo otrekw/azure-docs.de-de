@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: how-to
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 86e1d74d5e4ab9f6e799c73bcf0d807d0d874f21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: v-erkel
+ms.openlocfilehash: 2ebc8ccb32034091e270bf85d7a9ac43becd0366
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92219716"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456183"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Überwachen des Azure FXT Edge Filer-Hardwarestatus
 
@@ -60,7 +60,7 @@ Die Statusanzeigen auf der linken Seite leuchten gelb, wenn in diesem System ein
 
 Wenn der Fehler nach dem Ausprobieren dieser Lösungen weiterhin besteht, [wenden Sie sich an den Support](fxt-support-ticket.md), um Hilfe zu erhalten.
 
-| Symbol | BESCHREIBUNG | Fehlerzustand | Lösungsvorschläge |
+| Symbol | Beschreibung | Fehlerzustand | Lösungsvorschläge |
 |----------------|---------------|--------------------|----------------------|
 | ![Laufwerksymbol](media/fxt-monitor/fxt-hd-icon.jpg) | Laufwerkstatus | Laufwerkfehler | Überprüfen Sie im Systemereignisprotokoll, ob ein Laufwerkfehler vorliegt, oder <br>Führen Sie den entsprechenden Onlinediagnosetest aus; starten Sie das System neu, und führen Sie eine eingebettete Diagnose (ePSA) durch, oder <br>Wenn die Laufwerke in einem RAID-Array konfiguriert sind, starten Sie das System neu, und geben Sie die das Hilfsprogramm für die Hostadapterkonfiguration ein. |
 |![Temperatursymbol](media/fxt-monitor/fxt-temp-icon.jpg) | Temperaturstatus | Temperaturfehler – z. B. ein Lüfter ausgefallen oder Umgebungstemperatur liegt außerhalb des Bereichs | Überprüfen Sie die folgenden adressierbaren Bedingungen: <br>Ein Lüfter fehlt oder ist ausgefallen. <br>Die Abdeckung des Systems, die Luftschutzhaube, die Blindblende für das Speichermodul oder die Rückseite wurde entfernt. <br>Die Umgebungstemperatur ist zu hoch. <br>Der externe Luftstrom ist blockiert. |

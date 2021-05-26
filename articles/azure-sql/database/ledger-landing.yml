@@ -1,0 +1,96 @@
+### YamlMime:Landing
+title: Dokumentation zum Azure SQL-Datenbank-Ledger
+summary: Hier finden Sie die Dokumentation zum Azure SQL-Datenbank-Ledger
+metadata:
+  title: Dokumentation zum Azure SQL-Datenbank-Ledger
+  description: Hier finden Sie die Ledger-Dokumentation für Azure SQL-Datenbank
+  ms.service: sql-database
+  ms.subservice: security
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: VanMSFT
+  ms.author: vanto
+  ms.reviewer: 
+  ms.date: 05/25/2021
+  ms.openlocfilehash: 18bbf2d2747d65cd177520c44d68fdda224f385c
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110402063"
+landingContent:
+- title: Azure SQL-Datenbank-Ledger – Übersicht
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist der Azure SQL-Datenbank-Ledger?
+      url: ledger-overview.md
+- title: Ledgerkonzepte
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Was ist der Datenbankledger?
+      url: ledger-database-ledger.md
+    - text: Ledgertabellen, die nur Anfügevorgänge unterstützen
+      url: ledger-append-only-ledger-tables.md
+    - text: Aktualisierbare Ledgertabellen
+      url: ledger-updatable-ledger-tables.md
+- title: Ledger-Schnellstarts
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen einer Azure SQL-Datenbank mit aktiviertem Ledger
+      url: ledger-create-a-single-database-with-ledger-enabled.md
+- title: Verwenden des Ledgers
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen von Ledgertabellen, die nur Anfügevorgänge unterstützen
+      url: ledger-how-to-append-only-ledger-tables.md
+    - text: Erstellen von aktualisierbaren Ledgertabellen
+      url: ledger-how-to-updatable-ledger-tables.md
+    - text: Zugreifen auf die in Azure Confidential Ledger (ACL) gespeicherten Digests
+      url: ledger-how-to-access-acl-digest.md
+    - text: Überprüfen einer Ledgertabelle zum Erkennen von Manipulationen
+      url: ledger-verify-database.md
+- title: Ledgerverwaltung, -überprüfung und -speicherung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Digest-Verwaltung und Datenbanküberprüfung
+      url: ledger-digest-management-and-database-verification.md
+    - text: Ledgerüberwachung
+      url: ledger-audit.md
+- title: Ledgerverweise
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Einschränkungen beim aktuellen Ledger
+      url: ledger-limits.md
+    - text: Whitepaper zum Azure SQL-Datenbank-Ledger
+      url: https://aka.ms/sql-ledger-whitepaper
+- title: Ledger-Systemkatalogsichten
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: sys.database_ledger_blocks (Transact-SQL)
+      url: /sql/relational-databases/system-catalog-views/sys-database-ledger-blocks-transact-sql
+    - text: sys.database_ledger_transactions (Transact-SQL)
+      url: /sql/relational-databases/system-catalog-views/sys-database-ledger-transactions-transact-sql
+    - text: sys.database_ledger_digest_locations (Transact-SQL)
+      url: /sql/relational-databases/system-catalog-views/sys-database-ledger-digest-locations-transact-sql
+    - text: sys.ledger_table_history (Transact-SQL)
+      url: /sql/relational-databases/system-catalog-views/sys-ledger-table-history-transact-sql
+    - text: sys.ledger_column_history (Transact-SQL)
+      url: /sql/relational-databases/system-catalog-views/sys-ledger-column-history-transact-sql
+- title: Ledgerspeicherverfahren
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: sys.sp_generate_database_ledger_digest (Transact-SQL)
+      url: /sql/relational-databases/system-stored-procedures/sys-sp-generate-database-ledger-digest-transact-sql
+    - text: sys.sp_verify_database_ledger (Transact-SQL)
+      url: /sql/relational-databases/system-stored-procedures/sys-sp-verify-database-ledger-transact-sql
+    - text: sys.sp_verify_database_ledger_from_digest_storage (Transact-SQL)
+      url: /sql/relational-databases/system-stored-procedures/sys-sp-verify-database-ledger-from-digest-storage-transact-sql

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1af2c1b912afbcf44cefbfb021c592836dbde5b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 258dcb7c66b043828e55d6c0dbfe101c0992f8c6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466285"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092888"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Berechtigungen für Anwendungsregistrierung für benutzerdefinierte Rollen in Azure Active Directory
 
@@ -163,7 +163,7 @@ Berechtigungen zum Aktualisieren der Eigenschaften der delegierten Berechtigunge
 
 Erteilt die gleichen Berechtigungen wie microsoft.directory/applications/permissions/update, jedoch nur für Einzelmandantenanwendungen.
 
-## <a name="required-license-plan"></a>Erforderlicher Lizenzplan
+## <a name="license-requirements"></a>Lizenzanforderungen
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 

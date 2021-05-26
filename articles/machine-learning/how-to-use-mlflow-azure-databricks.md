@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: c1bef16d89a22e7df43e1f473697b4577d080d4c
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: dcaa0f964b2a3c047826bb82ae8d1121e38f1796
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888168"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378854"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Nachverfolgen für ML-Experimente in Azure Databricks mit MLflow und Azure Machine Learning (Vorschau)
 
@@ -25,6 +25,8 @@ In diesem Artikel erfahren Sie, wie Sie den Nachverfolgungs-URI und die Protokol
 [MLflow](https://www.mlflow.org) ist eine Open-Source-Bibliothek zum Verwalten des Lebenszyklus Ihrer Machine Learning-Experimente. MLflow Tracking ist eine Komponente von MLflow, die Metriken zu Trainingsausführungen und Modellartefakte protokolliert und nachverfolgt. Erfahren Sie mehr zu [Azure Databricks und MLflow](/azure/databricks/applications/mlflow/). 
 
 Weitere Informationen zur Integration von MLflow- und Azure Machine Learning Funktionen finden Sie unter [Nachverfolgen von Experimentausführungen mit MLflow und Azure Machine Learning](how-to-use-mlflow.md).
+
+Informationen zum Trainieren eines MLflow-Projekts mit Azure Machine Learning finden Sie unter [Trainieren von ML-Modellen mit MLflow-Projekten und Azure Machine Learning (Vorschau)](how-to-train-mlflow-projects.md).
 
 >[!NOTE]
 > Als Open Source-Bibliothek wird MLflow häufig geändert. Daher sollte die Funktionalität, die über die Integration von Azure Machine Learning und MLflow zur Verfügung gestellt wird, als Vorschau betrachtet und nicht vollständig von Microsoft unterstützt werden.

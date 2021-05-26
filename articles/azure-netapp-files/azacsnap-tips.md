@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 6b777c834917d2a5b1fba72d7c18ef536109675a
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 857bcba07b281f58d7c7c044a56763b61b5d4456
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929649"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810064"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool"></a>Tipps und Tricks zur Verwendung des Tools für konsistente Momentaufnahmen in Azure-Anwendungen für Azure NetApp Files
 
@@ -31,7 +31,7 @@ Möglicherweise ist es erforderlich, den Berechtigungsbereich des AzAcSnap-Diens
 
 Im Folgenden finden Sie eine Beispielrollendefinition mit den mindestens erforderlichen Aktionen, die für die Funktion von AzAcSnap erforderlich sind.
 
-```bash
+```azurecli
 az role definition create --role-definition '{ \
   "Name": "Azure Application Consistent Snapshot tool", \
   "IsCustom": "true", \
@@ -50,7 +50,7 @@ az role definition create --role-definition '{ \
 
 Damit Wiederherstellungsoptionen erfolgreich funktionieren, muss der AzAcSnap-Dienstprinzipal auch Volumes erstellen können.  In diesem Fall benötigt die Rollendefinition eine zusätzliche Aktion. Daher sollte der gesamte Dienstprinzipal wie im folgenden Beispiel aussehen.
 
-```bash
+```azurecli
 az role definition create --role-definition '{ \
   "Name": "Azure Application Consistent Snapshot tool", \
   "IsCustom": "true", \

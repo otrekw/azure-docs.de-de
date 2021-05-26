@@ -4,17 +4,17 @@ description: Erstellen eines Azure-VM-Images von Windows Virtual Desktop mithilf
 author: danielsollondon
 ms.author: danis
 ms.reviewer: cynthn
-ms.date: 01/27/2021
+ms.date: 05/12/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
-ms.openlocfilehash: 45f4cbea20d6e223738adf3bcb9782a0c939946d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a4bc152f2eb12008b942d3da8fdd1dfa1ba1aa74
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744135"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846480"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Erstellen eines Windows Virtual Desktop-Images mithilfe von Azure VM Image Builder und PowerShell
 
@@ -54,7 +54,7 @@ Dieser Artikel ist als Kopier- und Einfügeübung gedacht.
           "name": "installFsLogix",
           "runElevated": true,
           "runAsSystem": true,
-          "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/14_Building_Images_WVD/0_installConfFsLogix.ps1"
+          "scriptUri": "https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/14_Building_Images_WVD/0_installConfFsLogix.ps1"
     ```
 - Kommentieren des Codes: Das AIB-Buildprotokoll (customization.log) ist sehr ausführlich. Wenn Sie die Skripts mit „write-host“ kommentieren, werden sie an die Protokolle gesendet und erleichtern die Problembehandlung.
 
@@ -150,7 +150,7 @@ $idenityNamePrincipalId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageRe
 Weisen Sie der Identität Berechtigungen zum Verteilen von Images zu. Mit diesem Befehl wird die Vorlage mit den zuvor angegebenen Parametern heruntergeladen und aktualisiert.
 
 ```azurepowershell-interactive
-$aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
+$aibRoleImageCreationUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
 $aibRoleImageCreationPath = "aibRoleImageCreation.json"
 
 # download config
@@ -226,7 +226,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsDesktop -Offer
 Nun müssen Sie die Vorlage herunterladen und für Ihre spezifische Verwendung konfigurieren.
 
 ```azurepowershell-interactive
-$templateUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json"
+$templateUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json"
 $templateFilePath = "armTemplateWVD.json"
 
 Invoke-WebRequest -Uri $templateUrl -OutFile $templateFilePath -UseBasicParsing
@@ -243,7 +243,7 @@ Invoke-WebRequest -Uri $templateUrl -OutFile $templateFilePath -UseBasicParsing
 
 ```
 
-Sehen Sie sich die [Vorlage](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json) an, der gesamte Code kann angezeigt werden.
+Sehen Sie sich die [Vorlage](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json) an, der gesamte Code kann angezeigt werden.
 
 
 ## <a name="submit-the-template"></a>Übermitteln der Vorlage
@@ -281,7 +281,7 @@ $getStatus.LastRunStatusRunSubState
 ## <a name="create-a-vm"></a>Erstellen einer VM
 Wenn der Buildprozess abgeschlossen ist, können Sie eine VM aus dem Image erstellen. Sie können dazu die [hier](/powershell/module/az.compute/new-azvm#examples) aufgeführten Beispiele verwenden.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Löschen Sie zunächst die Ressourcengruppenvorlage. Löschen Sie nicht nur die gesamte Ressourcengruppe, da andernfalls nicht die in AIB verwendete Stagingressourcengruppe (*IT_* ) bereinigt wird.
 
@@ -311,4 +311,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Beispiele finden Sie in [GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
+Weitere Beispiele finden Sie in [GitHub](https://github.com/azure/azvmimagebuilder/tree/master/quickquickstarts).
