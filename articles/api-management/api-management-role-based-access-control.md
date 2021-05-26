@@ -11,15 +11,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 05/18/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ef71591d6d5a26aa737db4e7cb547c8b2c39d92a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 407defa76b5677e3e5136a5e28a64eb4a78c3cd2
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812172"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191223"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Verwenden der rollenbasierten Zugriffssteuerung in Azure API Management
 
@@ -38,14 +38,10 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Sie 
 | Mitwirkender des API-Verwaltungsdienstes | ✓ | ✓ | ✓ | ✓ | Superuser. Besitzt CRUD-Vollzugriff auf API Management-Dienste und -Entitäten (z.B. APIs, Richtlinien). Besitzt Zugriff auf das Legacy-Herausgeberportal. |
 | Leser des API Management-Diensts | ✓ | | || Besitzt schreibgeschützten Zugriff auf API Management-Dienste und -Entitäten. |
 | Operator des API Management-Diensts | ✓ | | ✓ | | Kann API Management-Dienste, jedoch keine Entitäten verwalten.|
-| Editor des API Management-Diensts<sup>*</sup> | ✓ | ✓ | |  | Kann API Management-Entitäten, jedoch keine Dienste verwalten.|
-| Inhalts-Manager von API Management<sup>*</sup> | ✓ | | | ✓ | Kann das Entwicklerportal verwalten. Schreibgeschützter Zugriff auf Dienste und Entitäten.|
 
 <sup>[1] Lesezugriff auf API Management-Dienste und -Entitäten (z.B. APIs, Richtlinien)</sup>
 
 <sup>[2] Schreibzugriff auf API Management-Dienste und -Entitäten mit Ausnahme der folgenden Vorgänge: Erstellen, Löschen und Skalieren von Instanzen; VPN-Konfiguration; Einrichten benutzerdefinierter Domänen</sup>
-
-<sup>\* Die Rolle des Dienst-Editors steht zur Verfügung, nachdem die gesamte Administrator-UI vom vorhandenen Herausgeberportal zum Azure-Portal migriert wurde. Die Inhalts-Manager-Rolle ist verfügbar, sobald das Herausgeberportal so umgestaltet wurde, dass darin nur noch Funktionen im Zusammenhang mit der Verwaltung des Entwicklerportals enthalten sind.</sup>  
 
 ## <a name="custom-roles"></a>Benutzerdefinierte Rollen
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: f993ffa8d0d141d04ad399c5d1d4f0fc28cc82ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 881e37143d9ba77786889e4228069872cdac941a
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505136"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190210"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight mithilfe von PowerShell
 
@@ -207,7 +207,7 @@ In diesem Abschnitt rufen Sie die Hostinformationen aus der Apache Ambari-REST-A
 
     Die Ausgabe dieses Befehls sieht in etwa wie folgt aus:
 
-    `zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181`
+    `<zookeepername1>.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,<zookeepername2>.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181`
 
 5. Verwenden Sie den folgenden Befehl, um eine Umgebungsvariable mit Kafka-Brokerhostinformationen festzulegen:
 
@@ -225,7 +225,7 @@ In diesem Abschnitt rufen Sie die Hostinformationen aus der Apache Ambari-REST-A
 
     Die Ausgabe dieses Befehls sieht in etwa wie folgt aus:
    
-    `wn1-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092,wn0-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
+    `<brokername1>.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092,<brokername2>.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
 
 ## <a name="manage-apache-kafka-topics"></a>Verwalten von Apache Kafka-Themen
 

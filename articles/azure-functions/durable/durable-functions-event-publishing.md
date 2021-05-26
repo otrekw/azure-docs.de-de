@@ -1,16 +1,16 @@
 ---
-title: Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
+title: Veröffentlichen von Durable Functions in Azure Event Grid
 description: Erfahren Sie, wie Sie eine automatische Veröffentlichung in Azure Event Grid für Durable Functions konfigurieren.
 ms.topic: conceptual
-ms.date: 04/25/2020
-ms.openlocfilehash: 44df100a5c794abf918a09dea0f94d30ddf916d3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/11/2020
+ms.openlocfilehash: 51069504bef29d9761d5c36be77fef33fd3d1ca6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175956"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377551"
 ---
-# <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
+# <a name="durable-functions-publishing-to-azure-event-grid"></a>Veröffentlichen von Durable Functions in Azure Event Grid
 
 In diesem Artikel wird gezeigt, wie Sie Durable Functions so einrichten, dass Lebenszyklusereignisse einer Orchestrierung (z.B. Erstellen, Abschließen und Fehlschlagen) in einem benutzerdefinierten [Azure Event Grid-Thema](../../event-grid/overview.md) veröffentlicht werden.
 
@@ -25,7 +25,7 @@ Es folgen einige Szenarien, in denen diese Funktion hilfreich ist:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Installieren Sie [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) in Ihrem Durable Functions-Projekt.
-* Installieren Sie [Azure Storage Emulator](../../storage/common/storage-use-emulator.md) (nur Windows), oder verwenden Sie ein vorhandenes Azure Storage-Konto.
+* Installieren Sie einen [Azure-Speicheremulator](../../storage/common/storage-use-emulator.md), oder verwenden Sie ein vorhandenes Azure Storage-Konto.
 * Installieren Sie [Azure CLI](/cli/azure/), oder verwenden Sie die [Azure Cloud Shell](../../cloud-shell/overview.md).
 
 ## <a name="create-a-custom-event-grid-topic"></a>Erstellen eines benutzerdefinierten Event Grid-Themas
@@ -103,22 +103,21 @@ Fügen Sie den Abschnitt `notifications` zur Eigenschaft `durableTask` der Datei
 
 Die möglichen Konfigurationseigenschaften von Azure Event Grid finden Sie in der [host.json-Dokumentation](../functions-host-json.md#durabletask). Nach dem Konfigurieren der Datei `host.json` sendet die Funktions-App Lebenszyklusereignisse an das Event Grid-Thema. Diese Aktion startet, wenn Sie die Funktions-App sowohl lokal als auch in Azure ausführen.
 
-Legen Sie die App-Einstellung für den Schlüssel des Themas in der Funktions-App und in der Datei `local.settings.json` fest. Die folgende JSON-Datei dient als Beispiel für die Datei `local.settings.json` für lokales Debuggen. Ersetzen Sie `<topic_key>` durch den Schlüssel für das Thema.  
+Legen Sie die App-Einstellung für den Schlüssel des Themas in der Funktions-App und in der Datei `local.settings.json` fest. Die folgende JSON-Datei dient als Beispiel für die Datei `local.settings.json` für lokales Debuggen mithilfe eines Azure-Speicheremulators. Ersetzen Sie `<topic_key>` durch den Schlüssel für das Thema.  
 
 ```json
 {
     "IsEncrypted": false,
     "Values": {
         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-        "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
         "EventGridKey": "<topic_key>"
     }
 }
 ```
 
-Wenn Sie den [Speicheremulator](../../storage/common/storage-use-emulator.md) (nur Windows) verwenden, vergewissern Sie sich, dass er funktioniert. Es ist ratsam, vor der Ausführung den Befehl `AzureStorageEmulator.exe clear all` auszuführen.
+Wenn Sie den [Speicheremulator](../../storage/common/storage-use-emulator.md) anstelle eines vorhandenen Azure Storage-Kontos verwenden, stellen Sie sicher, dass er ausgeführt wird. Vor der Ausführung sollten Sie alle vorhandenen Speicherdaten löschen.
 
-Wenn Sie ein vorhandenes Azure Storage-Konto verwenden, ersetzen Sie `UseDevelopmentStorage=true` in `local.settings.json` durch die zugehörige Verbindungszeichenfolge.
+Wenn Sie ein vorhandenes Azure Storage-Konto verwenden, ersetzen Sie `UseDevelopmentStorage=true` in `local.settings.json` durch die entsprechende Verbindungszeichenfolge.
 
 ## <a name="create-functions-that-listen-for-events"></a>Erstellen von Funktionen, die auf Ereignisse warten
 
