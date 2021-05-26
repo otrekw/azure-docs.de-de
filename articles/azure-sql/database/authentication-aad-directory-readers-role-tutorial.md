@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: bc809cf02b827b7498890cb7d929c44bd360ab53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14f21939e53a284619f18049df84706cab6fd594
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99094708"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087057"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Tutorial: Zuweisen der Rolle „Verzeichnisleseberechtigte“ zu einer Azure AD-Gruppe und Verwalten von Rollenzuweisungen
 
@@ -94,7 +94,7 @@ Bei SQL-Datenbank und Azure Synapse ist die Zuweisung der Rolle **Verzeichnisles
 ## <a name="directory-readers-role-assignment-using-powershell"></a>Zuweisen der Rolle „Verzeichnisleseberechtigte“ mithilfe von PowerShell
 
 > [!IMPORTANT]
-> Diese ersten Schritte müssen von einem Benutzer vom Typ [Globaler Administrator](../../active-directory/roles/permissions-reference.md#global-administrator) oder [Administrator für privilegierte Rollen](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) ausgeführt werden. Neben PowerShell bietet Azure AD die Microsoft Graph-API zum [Erstellen einer Gruppe, der Rollen zugewiesen werden können, in Azure AD](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api).
+> Diese ersten Schritte müssen von einem Benutzer vom Typ [Globaler Administrator](../../active-directory/roles/permissions-reference.md#global-administrator) oder [Administrator für privilegierte Rollen](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) ausgeführt werden. Neben PowerShell bietet Azure AD die Microsoft Graph-API zum [Erstellen einer Gruppe, der Rollen zugewiesen werden können, in Azure AD](../../active-directory/roles/groups-create-eligible.md#microsoft-graph-api).
 
 1. Laden Sie das Azure AD PowerShell-Vorschaumodul mithilfe der folgenden Befehle herunter. PowerShell muss ggf. mit Administratorrechten ausgeführt werden.
 

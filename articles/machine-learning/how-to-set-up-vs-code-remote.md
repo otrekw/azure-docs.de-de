@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 04/08/2021
-ms.openlocfilehash: 7199534fa581ccb235bc8091d9459c640d53b74f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 534becdfcba1ccc992daadc5007e2eb56337a45e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884622"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379266"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Herstellen einer Verbindung mit einer Azure Machine Learning-Compute-Instanz in Visual Studio Code (Vorschau)
 
@@ -31,7 +31,7 @@ Es gibt zwei Möglichkeiten, wie Sie von Visual Studio Code aus eine Verbindung 
 
 Um eine Remotecompute-Instanz für die Entwicklung zu konfigurieren, sind ein paar Voraussetzungen erforderlich.
 
-* Die Azure Machine Learning-Erweiterung für Visual Studio Code. Weitere Informationen finden Sie in der Anleitung zur Einrichtung der [Azure Machine Learning-Erweiterung für Visual Studio Code](tutorial-setup-vscode-extension.md).
+* Die Azure Machine Learning-Erweiterung für Visual Studio Code. Weitere Informationen finden Sie in der Anleitung zur Einrichtung der [Azure Machine Learning-Erweiterung für Visual Studio Code](how-to-setup-vs-code.md).
 * Einen Azure Machine Learning-Arbeitsbereich. [Verwenden Sie die Azure Machine Learning-Erweiterung für Visual Studio Code, um einen neuen Arbeitsbereich zu erstellen](how-to-manage-resources-vscode.md#create-a-workspace), wenn Sie noch nicht über einen verfügen.
 * Azure Machine Learning-Compute-Instanz. [Verwenden Sie die Azure Machine Learning-Erweiterung für Visual Studio Code, um eine neue Compute-Instanz zu erstellen](how-to-manage-resources-vscode.md#create-compute-instance), wenn Sie keine besitzen.
 
@@ -98,7 +98,7 @@ Nachdem Sie eine Verbindung mit Ihrer Remotecompute-Instanz hergestellt haben, v
 
 Sie benötigen folgende Voraussetzungen, um eine Compute-Instanz als Jupyter Notebook-Remoteserver konfigurieren zu können:
 
-* Die Azure Machine Learning-Erweiterung für Visual Studio Code. Weitere Informationen finden Sie in der Anleitung zur Einrichtung der [Azure Machine Learning-Erweiterung für Visual Studio Code](tutorial-setup-vscode-extension.md).
+* Die Azure Machine Learning-Erweiterung für Visual Studio Code. Weitere Informationen finden Sie in der Anleitung zur Einrichtung der [Azure Machine Learning-Erweiterung für Visual Studio Code](how-to-setup-vs-code.md).
 * Einen Azure Machine Learning-Arbeitsbereich. [Verwenden Sie die Azure Machine Learning-Erweiterung für Visual Studio Code, um einen neuen Arbeitsbereich zu erstellen](how-to-manage-resources-vscode.md#create-a-workspace), wenn Sie noch nicht über einen verfügen.
 
 So stellen Sie eine Verbindung mit einer Compute-Instanz her:

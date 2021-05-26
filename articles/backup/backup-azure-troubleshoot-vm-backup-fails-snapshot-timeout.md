@@ -2,14 +2,14 @@
 title: Beheben von Probleme mit Agents und Erweiterungen
 description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Azure Backup-Fehlern in Verbindung mit dem Agent, der Erweiterung und Datenträgern.
 ms.topic: troubleshooting
-ms.date: 07/05/2019
+ms.date: 05/25/2021
 ms.service: backup
-ms.openlocfilehash: 0313394ad149460f82c98c63cab95b922b4a3da2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 57a0002d353ebb75570dc3b70c55d2f17f70db35
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519604"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472472"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -34,7 +34,7 @@ Die häufigsten Sicherungsfehler können mithilfe der unten aufgeführten Schrit
     - Der Azure-VM-Agent wird standardmäßig auf allen Windows-VMs installiert, die über ein Azure Marketplace-Image über das Portal, PowerShell, die Befehlszeilenschnittstelle oder eine Azure Resource Manager-Vorlage bereitgestellt werden. Eine [manuelle Installation des Agents](../virtual-machines/extensions/agent-windows.md#manual-installation) kann erforderlich sein, wenn Sie ein benutzerdefiniertes VM-Image erstellen, das in Azure bereitgestellt wird.
     - Überprüfen Sie die Unterstützungsmatrix, um zu prüfen, ob die VM auf dem [unterstützten Windows-Betriebssystem](backup-support-matrix-iaas.md#operating-system-support-windows) ausgeführt wird.
   - Auf einer Linux-VM:
-    - Indem Sie den Befehl `ps-e` ausführen, können Sie sicherstellen, dass der Gast-Agent-Dienst auf der Azure-VM ausgeführt wird. Stellen Sie außerdem sicher, dass die [neueste Version](../virtual-machines/extensions/update-linux-agent.md) installiert ist. Weitere Informationen finden Sie unter [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms).
+    - Indem Sie den Befehl `ps -e` ausführen, können Sie sicherstellen, dass der Gast-Agent-Dienst auf der Azure-VM ausgeführt wird. Stellen Sie außerdem sicher, dass die [neueste Version](../virtual-machines/extensions/update-linux-agent.md) installiert ist. Weitere Informationen finden Sie unter [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms).
     - Stellen Sie sicher, dass die [Linux-VM-Agent-Abhängigkeiten von Systempaketen](../virtual-machines/extensions/agent-linux.md#requirements) die unterstützte Konfiguration aufweisen. Beispiel: Die unterstützte Python-Version ist Version 2.6 oder höher.
     - Überprüfen Sie die Unterstützungsmatrix, um zu prüfen, ob die VM auf dem [unterstützten Linux-Betriebssystem](backup-support-matrix-iaas.md#operating-system-support-linux) ausgeführt wird.
 

@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: fac66e8f82ea4c04e866b28fed5f8d0860ab81ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b11b2591ad90111c7a2d96ae1f7bf7bdde0673d5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755961"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471414"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Konten und Mandantenprofile (Android)
 
@@ -118,7 +118,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 ```
 
 > [!TIP]
-> Eine Liste der Ansprüche, die im Konto-Objekt verfügbar sind, finden Sie unter [Ansprüche in einem id_token](./id-tokens.md#claims-in-an-id_token)
+> Eine Liste der Ansprüche, die im Konto-Objekt verfügbar sind, finden Sie unter [Ansprüche in einem id_token](./id-tokens.md#claims-in-an-id-token)
 
 > [!TIP]
 > Wenn Sie weitere Ansprüche in Ihr id_token einschließen möchten, lesen Sie die Dokumentation zu optionalen Ansprüchen in [So geht’s: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App](./active-directory-optional-claims.md)
