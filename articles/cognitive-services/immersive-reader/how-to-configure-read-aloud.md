@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren des Vorlesens
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: In diesem Artikel erfahren Sie, wie Sie die verschiedenen Optionen für das Vorlesen konfigurieren.
 author: metanMSFT
 manager: guillasi
@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: metang
-ms.openlocfilehash: 8b45fe07b4bd42059199197bc5b99f20f6b2a8cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 27b40631c5fdbe4f502a9e779e9a79d3050b3a3e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102608715"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377778"
 ---
 # <a name="how-to-configure-read-aloud"></a>Konfigurieren des Vorlesens
 

@@ -8,17 +8,17 @@ ms.author: shipatel
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.date: 12/23/2020
+ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 41ea16c72794115052234831c8d84a37821645f6
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 783be7d595022ba08d7896540683635dbc59ade4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884262"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378837"
 ---
-# <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Trainieren und Nachverfolgen von ML-Modellen mit MLflow und Azure Machine Learning (Vorschauversion)
+# <a name="track-ml-models-with-mlflow-and-azure-machine-learning"></a>Nachverfolgen von ML-Modellen mit MLflow und Azure Machine Learning
 
 In diesem Artikel erfahren Sie, wie Sie den Nachverfolgungs-URI und die Protokollierungs-API von MLflow (zusammen als [MLflow-Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) bezeichnet) zum Verbinden von Azure Machine Learning als Back-End Ihrer MLflow-Experimente nutzen. 
 
@@ -26,14 +26,11 @@ Unterstützte Funktionen umfassen u. a.:
 
 + Sie können die Metriken und Artefakte von Experimenten im [Azure Machine Learning-Arbeitsbereich](./concept-azure-machine-learning-architecture.md#workspace) nachverfolgen und protokollieren. Falls Sie MLflow-Tracking bereits für Ihre Experimente verwenden, ist der Arbeitsbereich ein zentraler, sicherer und skalierbarer Ort zum Speichern von Trainingsmetriken und -modellen.
 
-+ Übermitteln Sie Trainingsaufträge mit [MLflow-Projekten](https://www.mlflow.org/docs/latest/projects.html) mit Azure Machine Learning Back-End-Unterstützung (Vorschau). Sie können Aufträge lokal über die Azure Machine Learning-Nachverfolgung übermitteln oder Ihre Ausführungen zur Cloud migrieren, z. B. über [Azure Machine Learning Compute](./how-to-create-attach-compute-cluster.md).
++ [Übermitteln Sie Trainingsaufträge mit MLflow-Projekten mit Azure Machine Learning-Back-End-Unterstützung (Vorschau).](how-to-train-mlflow-projects.md) Sie können Aufträge lokal über die Azure Machine Learning-Nachverfolgung übermitteln oder Ihre Ausführungen zur Cloud migrieren, z. B. über [Azure Machine Learning Compute](how-to-create-attach-compute-cluster.md).
 
 + Sie können Modelle in MLflow und der Azure Machine Learning-Modellregistrierung nachverfolgen und verwalten.
 
 [MLflow](https://www.mlflow.org) ist eine Open-Source-Bibliothek zum Verwalten des Lebenszyklus Ihrer Machine Learning-Experimente. MLFlow-Nachverfolgung ist eine Komponente von MLflow, die Ihre Trainingsausführungsmetriken und Modellartefakte unabhängig von der Umgebung Ihres Experiments protokolliert und nachverfolgt: lokal auf Ihrem Computer, auf einem Remotecomputeziel, auf einem virtuellen Computer oder in einem [Azure Databricks-Cluster](how-to-use-mlflow-azure-databricks.md). 
-
->[!NOTE]
-> Als Open Source-Bibliothek wird MLflow häufig geändert. Daher sollte die Funktionalität, die über die Integration von Azure Machine Learning und MLflow zur Verfügung gestellt wird, als Vorschau betrachtet und nicht vollständig von Microsoft unterstützt werden.
 
 Im folgenden Diagramm ist dargestellt, wie Sie mit MLflow-Tracking die Ausführungsmetriken eines Experiments nachverfolgen und Modellartefakte in Ihrem Azure Machine Learning-Arbeitsbereich speichern.
 
@@ -41,6 +38,9 @@ Im folgenden Diagramm ist dargestellt, wie Sie mit MLflow-Tracking die Ausführu
 
 > [!TIP]
 > Die Informationen in diesem Dokument sind hauptsächlich für Datenanalysten und Entwickler gedacht, die den Modelltrainingsprozess überwachen möchten. Wenn Sie Administrator sind und sich für die Überwachung der Nutzung und Ereignisse von Azure Machine Learning (z. B. Kontingente, abgeschlossene Trainingsausführungen oder abgeschlossene Modellimplementierungen) interessieren, helfen Ihnen die Informationen im Artikel [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md) weiter.
+
+> [!NOTE] 
+> Sie können den [MLflow Skinny-Client](https://github.com/mlflow/mlflow/blob/master/README_SKINNY.rst) verwenden. Dabei handelt es sich um ein einfaches MLflow-Paket ohne SQL-Speicher, Server, Benutzeroberfläche oder Data Science-Abhängigkeiten. Dies wird für Benutzer empfohlen, die in erster Linie die Nachverfolgungs- und Protokollierungsfunktionen benötigen, ohne die gesamte Suite von MLflow-Features einschließlich Bereitstellungen zu importieren. 
 
 ## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>Vergleich von MLflow mit Azure Machine Learning-Clients
 
@@ -115,6 +115,7 @@ dependencies:
   - numpy
   - pip:
     - azureml-mlflow
+    - mlflow
     - numpy
 ```
 
@@ -131,72 +132,6 @@ Verwenden Sie bei dieser Konfiguration für Computevorgänge und Trainingsausfü
 
 ```Python
 run = exp.submit(src)
-```
-
-## <a name="train-with-mlflow-projects"></a>Training mit MLflow-Projekten
-
-[MLflow-Projekte](https://mlflow.org/docs/latest/projects.html) ermöglichen es Ihnen, Ihren Code zu organisieren und zu beschreiben, damit Sie von anderen Datenanalysten (oder automatisierten Tools) ausgeführt werden können. MLflow-Projekte mit Azure Machine Learning erlauben es, Trainingsausführungen in Ihrem Arbeitsbereich zu verfolgen und zu verwalten. 
-
-Dieses Beispiel zeigt, wie Sie MLflow-Projekte mit Azure Machine Learning-Nachverfolgung lokal übermitteln.
-
-Installieren Sie das Paket `azureml-mlflow`, um MLflow-Nachverfolgung mit Azure Machine Learning lokal für Ihre Experimente zu nutzen. Ihre Experimente können über ein Jupyter Notebook oder einen Code-Editor ausgeführt werden.
-
-```shell
-pip install azureml-mlflow
-```
-
-Importieren Sie die Klassen `mlflow` und [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29), um auf den Tracking-URI von MLflow zuzugreifen und Ihren Arbeitsbereich zu konfigurieren.
-
-```Python
-import mlflow
-from azureml.core import Workspace
-
-ws = Workspace.from_config()
-
-mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
-```
-
-Legen Sie den Namen des MLflow-Experiments mit `set_experiment()` fest, und starten Sie Ihre Trainingsausführung mit `start_run()`. Verwenden Sie anschließend `log_metric()`, um die API für die MLflow-Protokollierung zu aktivieren, und beginnen Sie mit dem Protokollieren Ihrer Metriken für die Trainingsausführungen.
-
-```Python
-experiment_name = 'experiment-with-mlflow-projects'
-mlflow.set_experiment(experiment_name)
-```
-
-Erstellen Sie das Back-End-Konfigurationsobjekt, in dem die erforderlichen Informationen für die Integration gespeichert werden sollen, z. B. das Computeziel und den Typ der zu verwendenden verwalteten Umgebung.
-
-```python
-backend_config = {"USE_CONDA": False}
-```
-Fügen Sie das `azureml-mlflow`-Paket als PIP-Abhängigkeit Ihrer Umgebungskonfigurationsdatei hinzu, um Metriken und wichtige Artefakte in Ihrem Arbeitsbereich zu verfolgen. 
-
-``` shell
-name: mlflow-example
-channels:
-  - defaults
-  - anaconda
-  - conda-forge
-dependencies:
-  - python=3.6
-  - scikit-learn=0.19.1
-  - pip
-  - pip:
-    - mlflow
-    - azureml-mlflow
-```
-Senden Sie die lokale Ausführung, und stellen Sie sicher, dass Sie den Parameter `backend = "azureml" ` festlegen. Mit dieser Einstellung können Sie Testläufe lokal senden und die zusätzliche Unterstützung für die automatische Ausgabenachverfolgung, Protokolldateien, Momentaufnahmen und im Arbeitsbereich ausgegebene Fehler nutzen. 
-
-Zeigen Sie Ihre Ausführungen und Metriken in [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) an. 
-
-
-```python
-local_env_run = mlflow.projects.run(uri=".", 
-                                    parameters={"alpha":0.3},
-                                    backend = "azureml",
-                                    use_conda=False,
-                                    backend_config = backend_config, 
-                                    )
-
 ```
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Anzeigen von Metriken und Artefakten in Ihrem Arbeitsbereich

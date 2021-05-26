@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 295a46f6d1074ddf8422233ea3ccfa4d65c28fd8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f52796cd5477ecd692296213e337ded4f52503cd
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571593"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189589"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop – RDP Shortpath (Vorschau)
 
@@ -57,6 +57,7 @@ Das folgende Diagramm bietet eine allgemeine Übersicht über die RDP Shortpath
 
 Zur Unterstützung von RDP Shortpath muss der virtuelle Windows Virtual Desktop-Client über eine direkte Sichtverbindung zum Sitzungshost verfügen. Eine direkte Sichtverbindung können Sie mit einer der folgenden Technologien herstellen:
 
+* Auf den Remoteclientcomputern muss entweder Windows 10 oder Windows 7 ausgeführt werden, und der [Windows Desktop-Client](/windows-server/remote/remote-desktop-services/clients/windowsdesktop) muss installiert sein. Derzeit wird der Webclient nicht unterstützt.
 * [Privates ExpressRoute-Peering](../expressroute/expressroute-circuit-peerings.md)
 * [Site-to-Site-VPN (IPsec-basiert)](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Point-to-Site-VPN (IPsec-basiert)](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)

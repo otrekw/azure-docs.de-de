@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4310c724707548cd55df5591504736d8f3c3857
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100097635"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460050"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Übersicht über die Sicherheit für Azure Cognitive Search
 
@@ -109,7 +109,7 @@ Dienstverwaltungsvorgänge werden über die [rollenbasierte Zugriffskontrolle vo
 
 In Azure Cognitive Search wird der Resource Manager zum Erstellen oder Löschen des Diensts, zum Verwalten der API-Schlüssel und zum Skalieren des Diensts verwendet. Daher bestimmen die Azure-Rollenzuweisungen, wer diese Aufgaben ausführen kann, unabhängig davon, ob dazu das [Portal](search-manage.md), [PowerShell](search-manage-powershell.md) oder die [Verwaltungs-REST-APIs](/rest/api/searchmanagement/search-howto-management-rest-api) verwendet werden.
 
-Für Suchdienstadministratoren sind [drei grundlegende Rollen](search-security-rbac.md#management-tasks-by-role) definiert. Die Rollenzuweisungen können mit jeder unterstützten Methodik (Portal, PowerShell usw.) vorgenommen werden und werden dienstübergreifend beachtet. Mit den Rollen „Besitzer“ und „Mitwirkender“ können verschiedene Verwaltungsfunktionen durchgeführt werden. Sie können die Rolle „Leser“ Benutzern zuweisen, die wichtige Informationen anzeigen können sollen.
+Für Suchdienstadministratoren sind [drei grundlegende Rollen](search-security-rbac.md) definiert. Die Rollenzuweisungen können mit jeder unterstützten Methodik (Portal, PowerShell usw.) vorgenommen werden und werden dienstübergreifend beachtet. Mit den Rollen „Besitzer“ und „Mitwirkender“ können verschiedene Verwaltungsfunktionen durchgeführt werden. Sie können die Rolle „Leser“ Benutzern zuweisen, die wichtige Informationen anzeigen können sollen.
 
 > [!Note]
 > Mithilfe von Azure-weit gültigen Mechanismen können Sie ein Abonnement oder eine Ressource sperren, um die versehentliche oder nicht autorisierte Löschung Ihres Suchdiensts durch Benutzer mit Administratorrechten zu verhindern. Weitere Informationen finden Sie unter [Sperren von Ressourcen zum Verhindern unerwarteter Löschungen](../azure-resource-manager/management/lock-resources.md).

@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.openlocfilehash: 3f5c3400f319a3f9d5f1544457b009f90d479634
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: 057004a7a322505b137c04b76c3407e4c36f6f89
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98049829"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378196"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Wählen zwischen bereitgestelltem Durchsatz und serverlos
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -24,16 +24,12 @@ Azure Cosmos DB ist in zwei verschiedenen Kapazitätsmodi verfügbar: [bereitges
 
 | Kriterien | Bereitgestellter Durchsatz | Serverlos |
 | --- | --- | --- |
-| Status | Allgemein verfügbar | In der Vorschau |
 | Am besten geeignet für | Workloads mit anhaltendem Datenverkehr, die vorhersagbare Leistung erfordern | Workloads mit zeitweiligem oder unvorhersehbarem Datenverkehr und einem geringen Verhältnis zwischen durchschnittlichem und hohem Datenverkehrsaufkommen |
 | Funktionsweise | Für jeden Ihrer Container stellen Sie eine gewisse Durchsatzmenge bereit, ausgedrückt in [Anforderungseinheiten](request-units.md) pro Sekunde. Jede Sekunde steht diese Menge von Anforderungseinheiten für Ihre Datenbankvorgänge zur Verfügung. Bereitgestellter Durchsatz kann manuell aktualisiert oder automatisch mit [Autoskalierung](provision-throughput-autoscale.md) angepasst werden. | Sie führen die Datenbankvorgänge für Ihre Container aus, ohne Kapazität bereitstellen zu müssen. |
 | Geografische Verteilung | Verfügbar (unbegrenzte Anzahl von Azure-Regionen) | Nicht verfügbar (serverlose Konten können nur in einer einzigen Azure-Region ausgeführt werden) |
 | Maximale Speicherkapazität pro Container | Unbegrenzt | 50 GB |
 | Leistung | < 10 ms Latenz für Punktlese- und Schreibvorgänge abgedeckt durch SLA | < 10 ms Latenz für Punktlese- und < 30 ms für Schreibvorgänge abgedeckt durch SLA |
 | Abrechnungsmodell | Die Abrechnung erfolgt auf Stundenbasis für die bereitgestellten RU/s und unabhängig davon, wie viele RUs verbraucht wurden. | Die Abrechnung erfolgt auf Stundenbasis für die Menge an RUs, die von den Datenbankvorgängen beansprucht werden. |
-
-> [!IMPORTANT]
-> Einige dieser serverlosen Einschränkungen können gelockert oder aufgehoben werden, wenn serverlos allgemein verfügbar wird, und **Ihr Feedback** wird uns bei der Entscheidung unterstützen! Nehmen Sie Kontakt mit uns auf, und erzählen Sie uns mehr über Ihre Erfahrungen mit serverlos: [azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com).
 
 ## <a name="estimating-your-expected-consumption"></a>Schätzen der erwarteten Nutzung
 

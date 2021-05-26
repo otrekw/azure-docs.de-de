@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Azure Event Grid-Systemthem
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
-ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b8db19b1ef99d81f47ec19254e1f6622c6a4ba2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89082202"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481048"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>Verschieben von Azure Event Grid-Systemthemen in eine andere Region
 Sie möchten Ihre Ressourcen ggf. aus verschiedenen Gründen in eine andere Region verschieben. Beispielsweise, um eine neue Azure-Region zu nutzen, interne Richtlinien- und Governanceanforderungen zu erfüllen oder als Reaktion auf Anforderungen der Kapazitätsplanung. 
@@ -118,6 +118,5 @@ Sie haben gelernt, wie Sie eine Azure-Ereignisquelle und das zugehörige Systemt
 
 - [Regionsübergreifendes Verschieben von benutzerdefinierten Themen](move-custom-topics-across-regions.md). 
 - [Regionsübergreifendes Verschieben von Domänen](move-domains-across-regions.md). 
-- [Regionsübergreifendes Verschieben von Partnernamespaces](move-partner-namespaces-across-regions.md). 
 
 Weitere Informationen zum Verschieben von Ressourcen zwischen Regionen und zur Notfallwiederherstellung in Azure finden Sie im folgenden Artikel: [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).

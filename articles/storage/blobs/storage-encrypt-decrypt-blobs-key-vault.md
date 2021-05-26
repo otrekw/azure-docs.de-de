@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2daed4a8df89ed176749900dc75eb231c00af87
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6affeacd119682a76f648feff05429f1e3173b1c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049269"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461894"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs mit Azure Key Vault
 
@@ -90,11 +90,11 @@ Fügen Sie der Datei „App.Config“ AppSettings hinzu.
 
 Fügen Sie die folgenden `using`-Anweisungen hinzu, und stellen Sie sicher, dass Sie dem Projekt einen Verweis auf „System.Configuration“ hinzufügen.
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -113,11 +113,11 @@ using System.IO;
 
 Die folgende Methode wird von Schlüsseltresorklassen verwendet, für die eine Authentifizierung des Zugriffs auf den Schlüsseltresor erforderlich ist.
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 private async static Task<string> GetToken(string authority, string resource, string scope)
@@ -140,11 +140,11 @@ private async static Task<string> GetToken(string authority, string resource, st
 
 Fügen Sie in der „Main()“-Methode den folgenden Code hinzu:
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 // This is standard code to interact with Blob storage.
@@ -178,11 +178,11 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 
 Fügen Sie den folgenden Code hinzu, um ein BLOB zu verschlüsseln und in Ihr Azure-Speicherkonto hochzuladen. Die **ResolveKeyAsync**-Methode, die verwendet wird, gibt einen IKey zurück.
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 // Retrieve the key that you created previously.
@@ -216,11 +216,11 @@ Der private Schlüssel eines RSA-Schlüssels verbleibt im Schlüsseltresor. Dami
 
 Fügen Sie Folgendes hinzu, um das Blob zu entschlüsseln, das Sie gerade hochgeladen haben.
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 // In this case, we will not pass a key and only pass the resolver because
@@ -262,11 +262,11 @@ $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret
 
 In Ihrer Konsolenanwendung können Sie den gleichen Aufruf wie vorher verwenden, um diesen geheimen Schlüssel als "SymmetricKey" abzurufen.
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(

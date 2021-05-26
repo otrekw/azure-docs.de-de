@@ -4,20 +4,17 @@ description: Hier erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung mit
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 05/25/2021
 ms.author: thweiss
-ms.openlocfilehash: 9de41835e33d50a670a44089cb10d44cc57e92a7
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 35e3d4668fc3a5eb260bc187ec1cb6177f91911b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818697"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378472"
 ---
-# <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurieren der rollenbasierten Zugriffssteuerung mit Azure Active Directory für Ihr Azure Cosmos DB-Konto (Vorschau)
+# <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account"></a>Konfigurieren der rollenbasierten Zugriffssteuerung mit Azure Active Directory für Ihr Azure Cosmos DB-Konto
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
-
-> [!IMPORTANT]
-> Die rollenbasierte Zugriffssteuerung für Azure Cosmos DB befindet sich derzeit in der Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 > [!NOTE]
 > In diesem Artikel geht es um die rollenbasierte Zugriffssteuerung für Vorgänge auf Datenebene in Azure Cosmos DB. Falls Sie Vorgänge auf Verwaltungsebene verwenden, finden Sie weitere Informationen in dem Artikel zur [rollenbasierten Zugriffssteuerung](role-based-access-control.md), die für Vorgänge auf Verwaltungsebene angewendet wird.
@@ -40,14 +37,11 @@ RBAC auf Datenebene in Azure Cosmos DB basiert auf Konzepten, die in anderen RB
 
   :::image type="content" source="./media/how-to-setup-rbac/concepts.png" alt-text="RBAC-Konzepte":::
 
-> [!NOTE]
-> Azure Cosmos DB-RBAC bietet derzeit keine integrierten Rollendefinitionen.
-
 ## <a name="permission-model"></a><a id="permission-model"></a> Berechtigungsmodell
 
 > [!IMPORTANT]
 > Dieses Berechtigungsmodell deckt nur Datenbankvorgänge ab, mit denen Daten gelesen und geschrieben werden können. Es deckt **keine** Verwaltungsvorgänge ab, wie das Erstellen von Containern oder das Ändern ihres Durchsatzes. Dies bedeutet, dass Sie **kein Azure Cosmos DB-Datenebenen-SDK verwenden können**, um Verwaltungsvorgänge mit einer AAD-Identität zu authentifizieren. Stattdessen müssen Sie [Azure RBAC](role-based-access-control.md) verwenden über:
-> - [ARM-Vorlagen](manage-with-templates.md)
+> - [Azure Resource Manager-Vorlagen](manage-with-templates.md)
 > - [Azure PowerShell-Skripts](manage-with-powershell.md),
 > - [Azure CLI-Skripts](manage-with-cli.md),
 > - Azure-Verwaltungsbibliotheken, die verfügbar sind in
@@ -95,13 +89,22 @@ Die tatsächlich von der Aktion `Microsoft.DocumentDB/databaseAccounts/readMetad
 | Datenbank | – Lesen von Datenbankmetadaten<br>– Auflisten der Container unter der Datenbank<br>– Für jeden Container unter der Datenbank: die zulässigen Aktionen im Containerbereich |
 | Container | – Lesen von Containermetadaten<br>– Auflisten physischer Partitionen unter dem Container<br>– Auflösen der Adresse der einzelnen physischen Partitionen |
 
-## <a name="create-role-definitions"></a><a id="role-definitions"></a> Erstellen von Rollendefinitionen
+## <a name="built-in-role-definitions"></a>Definitionen integrierter Rollen
 
-Beim Erstellen einer Rollendefinition müssen Sie Folgendes angeben:
+Azure Cosmos DB macht zwei integrierte Rollendefinitionen verfügbar:
+
+| id | Name | Eingeschlossene Aktionen |
+|---|---|---|
+| 00000000-0000-0000-0000-000000000001 | Integrierter Cosmos DB-Datenleser | `Microsoft.DocumentDB/databaseAccounts/readMetadata`<br>`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read`<br>`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery`<br>`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed` |
+| 00000000-0000-0000-0000-000000000002 | Integrierter Mitwirkender an Cosmos DB-Daten | `Microsoft.DocumentDB/databaseAccounts/readMetadata`<br>`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`<br>`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*` |
+
+## <a name="create-custom-role-definitions"></a><a id="role-definitions"></a> Erstellen benutzerdefinierter Rollendefinitionen
+
+Beim Erstellen einer benutzerdefinierten Rollendefinition müssen Sie Folgendes angeben:
 
 - Den Namen Ihres Azure Cosmos DB-Kontos.
 - Die Ressourcengruppe, die Ihr Konto enthält.
-- Den Typ der Rollendefinition. Derzeit wird nur `CustomRole` unterstützt.
+- Den Typ der Rollendefinition: `CustomRole`
 - Den Namen der Rollendefinition.
 - Eine Liste von [Aktionen](#permission-model), die von der Rolle zugelassen werden sollen.
 - Mindestens einen Bereich, in dem die Rollendefinition zugewiesen werden kann. Die folgende Bereiche werden unterstützt:
@@ -273,9 +276,13 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 ]
 ```
 
+### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
+
+Auf [dieser Seite](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/sqlresources2/createupdatesqlroledefinition) finden Sie eine Referenz und Beispiele für die Verwendung Azure Resource Manager-Vorlagen zum Erstellen von Rollendefinitionen.
+
 ## <a name="create-role-assignments"></a><a id="role-assignments"></a> Erstellen von Rollenzuweisungen
 
-Nachdem Sie die Rollendefinitionen erstellt haben, können Sie diese Ihren AAD-Identitäten zuordnen. Beim Erstellen einer Rollenzuweisung müssen Sie Folgendes angeben:
+Sie können Ihren Azure AD-Identitäten integrierte oder benutzerdefinierte Rollendefinitionen zuordnen. Beim Erstellen einer Rollenzuweisung müssen Sie Folgendes angeben:
 
 - Den Namen Ihres Azure Cosmos DB-Kontos.
 - Die Ressourcengruppe, die Ihr Konto enthält.
@@ -324,6 +331,10 @@ principalId = '<aadPrincipalId>'
 az cosmosdb sql role assignment create --account-name $accountName --resource-group $resourceGroupName --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
 ```
 
+### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
+
+Auf [dieser Seite](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/sqlresources2/createupdatesqlroleassignment) finden Sie eine Referenz und Beispiele für die Verwendung Azure Resource Manager-Vorlagen zum Erstellen von Rollenzuweisungen.
+
 ## <a name="initialize-the-sdk-with-azure-ad"></a>Initialisieren des SDK mit Azure AD
 
 Wenn Sie Azure Cosmos DB-RBAC in Ihrer Anwendung verwenden möchten, müssen Sie die Methode zur Initialisierung des Azure Cosmos DB-SDK aktualisieren. Anstatt den Primärschlüssel Ihres Kontos zu übergeben, müssen Sie eine Instanz einer `TokenCredential`-Klasse übergeben. Diese Instanz stellt dem Azure Cosmos DB-SDK den Kontext bereit, der zum Abrufen eines AAD-Tokens im Namen der zu verwendenden Identität erforderlich ist.
@@ -333,7 +344,6 @@ Die Methode zur Erstellung einer `TokenCredential`-Instanz wird in diesem Artike
 - [In .NET](/dotnet/api/overview/azure/identity-readme#credential-classes)
 - [In Java](/java/api/overview/azure/identity-readme#credential-classes)
 - [In JavaScript](/javascript/api/overview/azure/identity-readme#credential-classes)
-- In REST-API
 
 In den folgenden Beispielen wird ein Dienstprinzipal mit einer `ClientSecretCredential`-Instanz verwendet.
 
@@ -381,13 +391,20 @@ const client = new CosmosClient({
 });
 ```
 
-### <a name="in-rest-api"></a>In REST-API
+## <a name="authenticate-requests-on-the-rest-api"></a>Authentifizieren von Anforderungen an die REST-API
 
-Azure Cosmos DB RBAC wird derzeit in der Version 2021-03-15 der REST-API unterstützt. Legen Sie beim Erstellen des [Autorisierungsheaders](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) den Parameter **type** auf **aad** und die Hashsignatur **(sig)** auf das **OAuth-Token** fest, wie im folgenden Beispiel gezeigt:
+Die rollenbasierte Zugriffssteuerung (RBAC) von Azure Cosmos DB wird derzeit in der Version `2021-03-15` der REST-API unterstützt. Legen Sie beim Erstellen des [Autorisierungsheaders](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) den Parameter **type** auf **aad** und die Hashsignatur **(sig)** auf das **OAuth-Token** fest, wie im folgenden Beispiel gezeigt:
 
 `type=aad&ver=1.0&sig=<token-from-oauth>`
 
-## <a name="auditing-data-requests"></a>Überwachen von Datenanforderungen
+## <a name="use-data-explorer"></a>Verwenden des Daten-Explorers
+
+> [!NOTE]
+> Der im Azure-Portal verfügbare Daten-Explorer unterstützt die rollenbasierte Zugriffssteuerung (RBAC) von Azure Cosmos DB noch nicht. Um Ihre Azure AD-Identität beim Erkunden Ihrer Daten zu verwenden, müssen Sie stattdessen den [Azure Cosmos DB-Explorer](https://cosmos.azure.com/) verwenden.
+
+Beim Durchsuchen der in Ihrem Konto gespeicherten Daten versucht der [Azure Cosmos DB-Explorer](https://cosmos.azure.com/) zunächst, den Primärschlüssel Ihres Kontos im Namen des angemeldeten Benutzers abzurufen und diesen Schlüssel für den Zugriff auf die Daten zu verwenden. Wenn dieser Benutzer nicht berechtigt ist, den Primärschlüssel abzurufen, wird für den Datenzugriff stattdessen seine Azure AD-Identität verwendet.
+
+## <a name="audit-data-requests"></a>Überwachen von Datenanforderungen
 
 Bei Verwendung von Azure Cosmos DB-RBAC werden [Diagnoseprotokolle](cosmosdb-monitor-resource-logs.md) durch Identitäts- und Autorisierungsinformationen für jeden Datenvorgang erweitert. Dies ermöglicht eine detaillierte Überwachung und das Abrufen der AAD-Identität, die für jede an Ihr Azure Cosmos DB-Konto gesendete Datenanforderung verwendet wurde.
 
@@ -402,7 +419,6 @@ Diese zusätzlichen Informationen fließen in die Protokollkategorie **DataPlane
 - Sie können Rollendefinitionen nur Azure AD-Identitäten zuweisen, die demselben Azure AD-Anker wie Ihr Azure Cosmos DB-Konto angehören.
 - Die Azure AD-Gruppenauflösung wird derzeit für Identitäten, die zu mehr als 200 Gruppen gehören, nicht unterstützt.
 - Das Azure AD-Token wird zurzeit mit jeder einzelnen an den Azure Cosmos DB-Dienst gesendeten Anforderung als Header übergeben und erhöht so die Gesamtnutzlastgröße.
-- Der Zugriff auf Ihre Daten mit Azure AD über den [Azure Cosmos DB-Explorer](data-explorer.md) wird noch nicht unterstützt. Wenn Sie den Azure Cosmos DB-Explorer verwenden, muss der Benutzer vorerst noch Zugriff auf den Primärschlüssel des Kontos haben.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -416,15 +432,15 @@ Eine Unterstützung für die Rollenverwaltung ist im Azure-Portal noch nicht ver
 
 ### <a name="which-sdks-in-azure-cosmos-db-sql-api-support-rbac"></a>Welche SDKs in der SQL-API von Azure Cosmos DB unterstützen RBAC?
 
-Derzeit werden die SDKs [.NET V3](sql-api-sdk-dotnet-standard.md) und [Java V4](sql-api-sdk-java-v4.md) unterstützt.
+Die SDKs für [.NET v3](sql-api-sdk-dotnet-standard.md), [Java v4](sql-api-sdk-java-v4.md) und [JavaScript v3](sql-api-sdk-node.md) werden derzeit unterstützt.
 
 ### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>Wird das Azure AD-Token bei Ablauf automatisch von den Azure Cosmos DB-SDKs aktualisiert?
 
 Ja.
 
-### <a name="is-it-possible-to-disable-the-usage-of-the-account-primary-key-when-using-rbac"></a>Kann die Verwendung des Primärschlüssels für das Konto bei Nutzung von RBAC deaktiviert werden?
+### <a name="is-it-possible-to-disable-the-usage-of-the-account-primarysecondary-keys-when-using-rbac"></a>Kann die Verwendung der Primär-/Sekundärschlüssel für das Konto bei Nutzung von RBAC deaktiviert werden?
 
-Das Deaktivieren des Primärschlüssels für das Konto ist derzeit nicht möglich.
+Das Deaktivieren der Primär-/Sekundärschlüssel für das Konto ist derzeit nicht möglich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c362603771744cf94f3e1d70a9f636f31bbd399a
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 03c6697f07f66cd1d12cae55ddc5f4c73db70505
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750967"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461688"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor
 
@@ -35,7 +35,7 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
 
 1. Navigieren Sie zu der Ressource, für die Sie eine Warnung einrichten möchten. Es empfiehlt sich, Warnungsregeln für mehrere Ressourcen einzurichten, indem nach Möglichkeit ein Abonnement- oder Ressourcengruppenbereich ausgewählt wird. Warnungen für mehrere Ressourcen reduzieren die Kosten und die Notwendigkeit, mehrere Warnungsregeln zu verwalten.
 1. Wählen Sie unter **Monitor** die Option **Protokolle** aus.
-1. Fragen Sie die Protokolldaten ab, die ggf. einen Hinweis auf das Problem enthalten. Unter [Gespeicherte Abfragen in Azure Monitor Log Analytics](../logs/example-queries.md) können Sie sich anhand von Beispielen mit den Ermittlungsoptionen vertraut machen. Alternativ können Sie [mit dem Schreiben einer eigenen Abfrage beginnen](../logs/log-analytics-tutorial.md). Informieren Sie sich auch über das [Erstellen von optimierten Warnungsabfragen](alerts-log-query.md).
+1. Fragen Sie die Protokolldaten ab, die ggf. einen Hinweis auf das Problem enthalten. Unter [Gespeicherte Abfragen in Azure Monitor Log Analytics](../logs/queries.md) können Sie sich anhand von Beispielen mit den Ermittlungsoptionen vertraut machen. Alternativ können Sie [mit dem Schreiben einer eigenen Abfrage beginnen](../logs/log-analytics-tutorial.md). Informieren Sie sich auch über das [Erstellen von optimierten Warnungsabfragen](alerts-log-query.md).
 1. Klicken Sie auf die Schaltfläche „+ Neue Warnungsregel“, um mit der Warnungserstellung zu beginnen.
 
     ![Log Analytics – Warnung festlegen](media/alerts-log/AlertsAnalyticsCreate.png)

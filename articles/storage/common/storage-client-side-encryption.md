@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eca43b43606828ebb514f3f22e1839d96db4e0fa
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588255"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461792"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage
 
@@ -125,7 +125,7 @@ Die Speicherclientbibliothek verwendet die Key Vault-Schnittstellen in der Kernb
 
 ### <a name="interface-and-dependencies"></a>Schnittstelle und Abhängigkeiten
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Es gibt zwei erforderliche Pakete für die Key Vault Integration:
 
@@ -134,7 +134,7 @@ Es gibt zwei erforderliche Pakete für die Key Vault Integration:
 
 Der Schlüsseltresor ist für hochwertige Hauptschlüssel ausgelegt und der Begrenzungsdrosselung über den Schlüsseltresor liegt dieses Konzept zugrunde. Ab Azure.Security.KeyVault.Keys 4.1.0 ist keine `IKeyEncryptionKeyResolver`-Implementierung vorhanden, die das Zwischenspeichern von Schlüsseln unterstützt. Sollte das Zwischenspeichern aufgrund einer Drosselung notwendig sein, kann nach [diesem Beispiel](/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) eine Zwischenspeicherungsebene in eine `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver`-Instanz eingefügt werden.
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Es gibt drei Schlüsseltresorpakete:
 
@@ -179,7 +179,7 @@ Benutzer können optional einen Betriebsmodus aktivieren, in dem alle hoch- oder
 
 ### <a name="blob-service-encryption"></a>Blob-Diensterschlüsselung
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Erstellen Sie ein **ClientSideEncryptionOptions**-Objekt, und legen Sie es bei der Clienterstellung mit **SpecializedBlobClientOptions** fest. Verschlüsselungsoptionen können nicht pro API festgelegt werden. Alles Weitere wird intern von der Clientbibliothek behandelt.
 
@@ -229,7 +229,7 @@ ClientSideEncryptionOptions encryptionOptions;
 BlobClient clientSideEncryptionBlob = plaintextBlob.WithClientSideEncryptionOptions(encryptionOptions);
 ```
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Erstellen Sie ein **BlobEncryptionPolicy**-Objekt, und legen Sie es in den Anforderungsoptionen fest (über die API oder auf Clientebene mit **DefaultRequestOptions**). Alles Weitere wird intern von der Clientbibliothek behandelt.
 
@@ -255,7 +255,7 @@ blob.DownloadToStream(outputStream, null, options, null);
 
 ### <a name="queue-service-encryption"></a>Warteschlangendienst-Verschlüsselung
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Erstellen Sie ein **ClientSideEncryptionOptions**-Objekt, und legen Sie es bei der Clienterstellung mit **SpecializedQueueClientOptions** fest. Verschlüsselungsoptionen können nicht pro API festgelegt werden. Alles Weitere wird intern von der Clientbibliothek behandelt.
 
@@ -333,7 +333,7 @@ QueueMessage[] messages = queue.ReceiveMessages(maxMessages: 5).Value;
 Debug.Assert(messages.Length == 4)
 ```
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Erstellen Sie ein **QueueEncryptionPolicy**-Objekt, und legen Sie es in den Anforderungsoptionen fest (über die API oder auf Clientebene mit **DefaultRequestOptions**). Alles Weitere wird intern von der Clientbibliothek behandelt.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e0591d9897b1ea20978afc663e63e74af7153832
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 29430671cd5879f140127c94541dd50d765fa87e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788508"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460274"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Grundlegendes zu digitalen Zwillingen und zum zugehörigen Zwillingsgraphen
 
@@ -75,17 +75,17 @@ Bei der Darstellung als JSON-Objekt zeigt ein digitaler Zwilling die folgenden F
 | `$dtId` | Eine vom Benutzer angegebene Zeichenfolge zur Darstellung der ID des digitalen Zwillings |
 | `$etag` | Ein vom Webserver zugewiesenes Standard-HTTP-Feld |
 | `$conformance` | Eine Enumeration mit dem Konformitätsstatus dieses digitalen Zwillings (*conformant* (konform), *non-conformant* (nicht konform), *unknown* (unbekannt)) |
-| `{propertyName}` | Den Wert einer Eigenschaft im JSON-Format (`string`, Zahlentyp oder Objekt) |
+| `<property-name>` | Den Wert einer Eigenschaft im JSON-Format (`string`, Zahlentyp oder Objekt) |
 | `$relationships` | Die URL des Pfads zur Sammlung mit den Beziehungen. Dieses Feld ist nicht vorhanden, wenn der digitale Zwilling keine ausgehenden Beziehungsedges aufweist. |
 | `$metadata.$model` | [Optional] Die ID der Modellschnittstelle, die diesen digitalen Zwilling kennzeichnet |
-| `$metadata.{propertyName}.desiredValue` | [Nur für schreibbare Eigenschaften] Der gewünschte Wert der angegebenen Eigenschaft |
-| `$metadata.{propertyName}.desiredVersion` | [Nur für schreibbare Eigenschaften] Die Version des gewünschten Werts |
-| `$metadata.{propertyName}.ackVersion` | Die von der Geräte-App, die den digitalen Zwilling implementiert, bestätigte Version |
-| `$metadata.{propertyName}.ackCode` | [Nur für schreibbare Eigenschaften] Der von der Geräte-App, die den digitalen Zwilling implementiert, zurückgegebene `ack`-Code |
-| `$metadata.{propertyName}.ackDescription` | [Nur für schreibbare Eigenschaften] Die von der Geräte-App, die den digitalen Zwilling implementiert, zurückgegebene `ack`-Beschreibung |
-| `{componentName}` | Ein JSON-Objekt mit den Eigenschaftswerten und Metadaten der Komponente, die denen des Stammobjekts ähneln. Dieses Objekt ist auch vorhanden, wenn die Komponente keine Eigenschaften hat. |
-| `{componentName}.{propertyName}` | Den Wert der Komponenteneigenschaft im JSON-Format (`string`, Zahlentyp oder Objekt) |
-| `{componentName}.$metadata` | Die Metadateninformationen für die Komponente, die dem Objekt `$metadata` auf der Stammebene ähneln |
+| `$metadata.<property-name>.desiredValue` | [Nur für schreibbare Eigenschaften] Der gewünschte Wert der angegebenen Eigenschaft |
+| `$metadata.<property-name>.desiredVersion` | [Nur für schreibbare Eigenschaften] Die Version des gewünschten Werts |
+| `$metadata.<property-name>.ackVersion` | Die von der Geräte-App, die den digitalen Zwilling implementiert, bestätigte Version |
+| `$metadata.<property-name>.ackCode` | [Nur für schreibbare Eigenschaften] Der von der Geräte-App, die den digitalen Zwilling implementiert, zurückgegebene `ack`-Code |
+| `$metadata.<property-name>.ackDescription` | [Nur für schreibbare Eigenschaften] Die von der Geräte-App, die den digitalen Zwilling implementiert, zurückgegebene `ack`-Beschreibung |
+| `<component-name>` | Ein JSON-Objekt mit den Eigenschaftswerten und Metadaten der Komponente, die denen des Stammobjekts ähneln. Dieses Objekt ist auch vorhanden, wenn die Komponente keine Eigenschaften hat. |
+| `<component-name>.<property-name>` | Den Wert der Komponenteneigenschaft im JSON-Format (`string`, Zahlentyp oder Objekt) |
+| `<component-name>.$metadata` | Die Metadateninformationen für die Komponente, die dem Objekt `$metadata` auf der Stammebene ähneln |
 
 Hier ist ein Beispiel für einen digitalen Zwilling angegeben, der als JSON-Objekt formatiert ist:
 
@@ -144,7 +144,7 @@ Bei der Darstellung als JSON-Objekt zeigt die Beziehung eines digitalen Zwilling
 | `$sourceId` | Die ID des digitalen Quellzwillings |
 | `$targetId` | Die ID des digitalen Zielzwillings |
 | `$relationshipName` | Den Namen der Beziehung |
-| `{propertyName}` | [Optional] Den Wert einer Eigenschaft dieser Beziehung im JSON-Format (`string`, Zahlentyp oder Objekt) |
+| `<property-name>` | [Optional] Den Wert einer Eigenschaft dieser Beziehung im JSON-Format (`string`, Zahlentyp oder Objekt) |
 
 Hier ist ein Beispiel für eine Beziehung angegeben, die als JSON-Objekt formatiert ist:
 
