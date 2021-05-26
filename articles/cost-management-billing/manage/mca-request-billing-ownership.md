@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.author: banders
-ms.openlocfilehash: c3294c09012339cb19f04327f1933688b05ae077
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 1e9e5582c95183a5e832950c5ac0b154cdef8362
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321463"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088118"
 ---
 # <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>Übertragen des Abrechnungsbesitzes für ein Azure-Abonnement für eine Microsoft-Kundenvereinbarung
 
@@ -157,7 +157,7 @@ Möglicherweise möchten Sie auf die Rechnungen für das Konto Ihres alten Micro
 
 Sie müssen die Kontoadministrator-Anmeldeinformationen für Ihr altes Konto verwenden, wenn sich die Anmeldeinformationen von denen unterscheiden, die für den Zugriff auf Ihr neues Konto der Microsoft-Kundenvereinbarung verwendet.
 
-1.  Melden Sie sich unter https://azure.portal.com beim Azure-Portal an.
+1.  Melden Sie sich unter https://portal.azure.com/ beim Azure-Portal an.
 1.  Navigieren Sie zu **Kostenverwaltung und Abrechnung**.
 1.  Wählen Sie im linken Bereich **Abrechnungsbereiche** aus.
 1.  Wählen Sie das Abrechnungskonto aus, das Ihrem Microsoft Online-Abonnementvertrag zugeordnet ist.

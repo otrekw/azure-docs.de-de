@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 6c44c87221442797f063877385ac5eb7f8585850
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 576c1f0b087775ee3784229147b3715b22135217
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719095"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090674"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Hochverfügbarkeit für Azure Cache for Redis
 
@@ -22,7 +22,7 @@ Azure Cache for Redis implementiert Hochverfügbarkeit durch Verwendung mehrerer
 | Option | BESCHREIBUNG | Verfügbarkeit | Standard | Premium | Enterprise |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
 | [Standardreplikation](#standard-replication)| Replizierte Konfiguration mit zwei Knoten in einem Rechenzentrum mit automatischem Failover | 99,9 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |✔|✔|-|
-| [Zonenredundanz](#zone-redundancy) | Replizierte Konfiguration mit mehreren Knoten in allen Verfügbarkeitszonen mit automatischem Failover | Bis zu 99,99 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |-|Vorschau|✔|
+| [Zonenredundanz](#zone-redundancy) | Replizierte Konfiguration mit mehreren Knoten in allen Verfügbarkeitszonen mit automatischem Failover | Bis zu 99,99 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |-|✔|✔|
 | [Georeplikation](#geo-replication) | Verknüpfte Cacheinstanzen in zwei Regionen mit benutzergesteuertem Failover | Bis zu 99,999 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |-|✔|Vorschau|
 
 ## <a name="standard-replication"></a>Standardreplikation
@@ -40,11 +40,6 @@ Wenn der primäre Knoten in einem Redis-Cache nicht verfügbar ist, wird der Rep
 
 Ein primärer Knoten kann als Teil einer geplanten Wartungsaktivität (z. B. Redis-Softwareupdate oder Betriebssystemupdate) außer Betrieb genommen werden. Er kann auch aufgrund ungeplanter Ereignisse wie z. B. Fehlern in der zugrunde liegenden Hardware, Software oder im Netzwerk ausfallen. Unter [Failover und Patching für Azure Cache for Redis](cache-failover.md) finden Sie eine ausführliche Erläuterung zu den verschiedenen Redis-Failovertypen. Eine Azure Cache for Redis-Instanz durchläuft während ihrer Lebensdauer viele Failover. Die Hochverfügbarkeitsarchitektur ist so konzipiert, dass diese Änderungen in einem Cache für die Clients so transparent wie möglich sind.
 
->[!NOTE]
->Folgendes ist als Vorschauversion verfügbar.
->
->
-
 Darüber hinaus ermöglicht Azure Cache for Redis die Verwendung zusätzlicher Replikatknoten im Tarif „Premium“. Ein [Cache mit mehreren Replikaten](cache-how-to-multi-replicas.md) kann mit bis zu drei Replikatknoten konfiguriert werden. Durch mehrere Replikate verbessert sich im Allgemeinen die Resilienz, da der primäre Knoten durch zusätzliche Knoten abgesichert wird. Auch bei mehreren Replikaten kann eine Azure Cache for Redis-Instanz dennoch durch einen Ausfall eines Rechenzentrums oder einen Ausfall auf Verfügbarkeitszonenebene beeinträchtigt werden. Sie können die Cacheverfügbarkeit erhöhen, indem Sie mehrere Replikate in Verbindung mit [Zonenredundanz](#zone-redundancy) verwenden.
 
 ## <a name="zone-redundancy"></a>Zonenredundanz
@@ -52,11 +47,6 @@ Darüber hinaus ermöglicht Azure Cache for Redis die Verwendung zusätzlicher R
 Zonenredundante Konfigurationen werden von Azure Cache for Redis in den Tarifen „Premium“ und „Enterprise“ unterstützt. Bei einem [zonenredundanten Cache](cache-how-to-zone-redundancy.md) können die zugehörigen Knoten in unterschiedlichen [Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md) derselben Region platziert werden. Ausfälle im Rechenzentrum oder in einer Verfügbarkeitszone werden als Single Point of Failure behoben. Damit wird die Gesamtverfügbarkeit des Caches erhöht.
 
 ### <a name="premium-tier"></a>Premium-Tarif
-
->[!NOTE]
->Dies ist als Vorschauversion verfügbar.
->
->
 
 Das folgende Diagramm veranschaulicht die zonenredundante Konfiguration für den Premium-Tarif:
 

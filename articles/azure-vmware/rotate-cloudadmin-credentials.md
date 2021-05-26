@@ -3,12 +3,12 @@ title: Rotieren der Anmeldeinformationen von Cloudadministratoren für Azure VMw
 description: Erfahren Sie, wie Sie die vCenter Server- und NSX-T Manager-Anmeldeinformationen für Ihre private Cloud in Azure VMware Solution rotieren.
 ms.topic: how-to
 ms.date: 05/11/2021
-ms.openlocfilehash: 6e7a37a1c262548e49952ed162cf725b1a7d6ed1
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: fbfed495fd904b67ce283934791cee516349dfa6
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789748"
+ms.locfileid: "109814950"
 ---
 # <a name="rotate-the-cloudadmin-credentials-for-azure-vmware-solution"></a>Rotieren der Anmeldeinformationen von Cloudadministratoren für Azure VMware Solution
 
@@ -51,7 +51,7 @@ In diesem Schritt überprüfen Sie, ob der HCX-Connector über die aktualisierte
 
 2. Wählen Sie auf dem VMware-HCX-Dashboard **Site Pairing** (Websitekopplung) aus.
     
-   :::image type="content" source="media/reset-vsphere-credentials/hcx-site-pairing.png" alt-text="Screenshot des VMware-HCX-Dashboards mit hervorgehobener Websitekopplung.":::
+   :::image type="content" source="media/rotate-cloudadmin-credentials/hcx-site-pairing.png" alt-text="Screenshot des VMware-HCX-Dashboards mit hervorgehobener Websitekopplung.":::
  
 3. Wählen Sie die richtige Verbindung mit Azure VMware Solution und dann **Verbindung bearbeiten** aus.
  

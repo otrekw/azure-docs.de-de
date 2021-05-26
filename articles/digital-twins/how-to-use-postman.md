@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 13f8e12944349bea667110585af71ea078ef7656
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 93a3e6aca050c6fcf74008e7fac23c6f146c984f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784105"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090188"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Verwenden von Postman zum Senden von Anforderungen an die Azure Digital Twins-APIs
 
@@ -56,7 +56,7 @@ Andernfalls können Sie ein [Azure Cloud Shell](https://shell.azure.com)-Fenster
     az login
     ```
 
-2. Verwenden Sie als Nächstes den Befehl [az account get-access-token](/cli/azure/account#az_account_get_access_token), um ein Bearertoken mit Zugriff auf den Azure Digital Twins-Dienst abzurufen. In diesem Befehl übergeben Sie die Ressourcen-ID für den Azure Digital Twins-Dienstendpunkt, um ein Zugriffstoken zu erhalten, das auf Azure Digital Twins-Ressourcen zugreifen kann. 
+2. Verwenden Sie als Nächstes den Befehl [az account get-access-token](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az_account_get_access_token), um ein Bearertoken mit Zugriff auf den Azure Digital Twins-Dienst abzurufen. In diesem Befehl übergeben Sie die Ressourcen-ID für den Azure Digital Twins-Dienstendpunkt, um ein Zugriffstoken zu erhalten, das auf Azure Digital Twins-Ressourcen zugreifen kann. 
 
     Der erforderliche Kontext für das Token hängt vom verwendeten API-Satz ab. Verwenden Sie daher die unten aufgeführten Registerkarten, um zwischen den APIs der [Datenebene](concepts-apis-sdks.md#overview-data-plane-apis) und denen der [Steuerungsebene](concepts-apis-sdks.md#overview-control-plane-apis) auszuwählen.
 

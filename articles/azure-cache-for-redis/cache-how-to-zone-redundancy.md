@@ -1,29 +1,25 @@
 ---
-title: Aktivieren der Zonenredundanz für Azure Cache for Redis (Vorschau)
+title: Aktivieren der Zonenredundanz für Azure Cache for Redis
 description: Hier erfahren Sie, wie Sie Zonenredundanz für Ihre Azure Cache for Redis-Instanzen im Premium- und Enterprise-Tarif einrichten.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 0623f47528d0530838f62c28cf5546e1e66c187b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c355939191e6da9a9408edde02deac97d69c9bbf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508264"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084428"
 ---
-# <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Aktivieren der Zonenredundanz für Azure Cache for Redis (Vorschau)
+# <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>Aktivieren der Zonenredundanz für Azure Cache for Redis
 In diesem Artikel erfahren Sie, wie Sie eine zonenredundante Azure Cache-Instanz über das Azure-Portal konfigurieren.
 
 Azure Cache for Redis im Standard-, Premium- und Enterprise-Tarif bietet integrierte Redundanz durch das Hosting jedes Caches auf zwei dedizierten virtuellen Computern (VMs). Obwohl sich diese VMs in separaten [Azure-Fehler- und Updatedomänen befinden](../virtual-machines/availability.md) und hoch verfügbar sind, sind Sie anfällig für Ausfälle auf Rechenzentrumsebene. Azure Cache for Redis unterstützt auch Zonenredundanz im Premium- und Enterprise-Tarif. Ein zonenredundanter Cache wird auf VMs ausgeführt, die auf mehrere [Verfügbarkeitszonen](../availability-zones/az-overview.md) verteilt sind. Dies bietet höhere Resilienz und Verfügbarkeit.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-
-> [!NOTE]
-> Diese Funktion befindet sich zurzeit in der Vorschauphase. [Wenden Sie sich an uns](mailto:azurecache@microsoft.com), wenn Sie daran interessiert sind.
->
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
 Führen Sie die folgenden Schritte aus, um einen Cache zu erstellen:

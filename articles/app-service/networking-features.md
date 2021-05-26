@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9ba85ecfe2b57ceb1eed5c51929107a95f5a4669
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7410793a429395b7f1b1e826c66cb2647eb77cd2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889143"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367708"
 ---
 # <a name="app-service-networking-features"></a>App Service-Netzwerkfunktionen
 
@@ -23,6 +23,9 @@ Es gibt zwei Hauptbereitstellungsarten für Azure App Service:
 - Die App Service-Umgebung (App Service Environment, ASE) für einzelne Mandanten hostet App Service-Pläne für SKUs im Tarif „Isoliert“ direkt in Ihrem Azure Virtual Network. 
 
 Sie verwenden unterschiedliche Funktionen abhängig davon, ob Sie sich im mehrinstanzenfähigen Dienst oder in einer ASE befinden. 
+
+> [!NOTE]
+> Netzwerkfeatures sind für [Apps, die in Azure Arc bereitgestellt sind](overview-arc-integration.md), nicht verfügbar.
 
 ## <a name="multitenant-app-service-networking-features"></a>Netzwerkfunktionen für mehrinstanzenfähigen App Service 
 

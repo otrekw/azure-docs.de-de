@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8c418f7cbeb56b94b7a85b12e833301b979bff32
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347421"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871546"
 ---
 ::: zone target = "docs"
 
@@ -89,7 +89,7 @@ Verwenden Sie die folgenden Azure CLI-Befehle, um einen Data Box Heavy-Auftrag 
    az storage account create --resource-group databox-rg --name databoxtestsa
    ```
 
-1. Führen Sie den Befehl [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) aus, um einen Data Box-Auftrag mit dem Wert `DataBoxHeavy` für **--sku** zu erstellen:
+1. Führen Sie den Befehl [az databox job create](/cli/azure/databox/job#az_databox_job_create) aus, um einen Data Box-Auftrag mit dem Wert `DataBoxHeavy` für **--sku** zu erstellen:
 
    ```azurecli
    az databox job create --resource-group databox-rg --name databoxheavy-job \
@@ -102,37 +102,37 @@ Verwenden Sie die folgenden Azure CLI-Befehle, um einen Data Box Heavy-Auftrag 
    > [!NOTE]
    > Stellen Sie sicher, dass Ihr Abonnement Data Box Heavy unterstützt.
 
-1. Führen Sie den Befehl [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) aus, um einen Auftrag zu aktualisieren, wie im folgenden Beispiel zum Ändern des Namens und der E-Mail-Adresse des Kontakts gezeigt:
+1. Führen Sie den Befehl [az databox job update](/cli/azure/databox/job#az_databox_job_update) aus, um einen Auftrag zu aktualisieren, wie im folgenden Beispiel zum Ändern des Namens und der E-Mail-Adresse des Kontakts gezeigt:
 
    ```azurecli
    az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
    ```
 
-   Führen Sie den Befehl [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) aus, um Informationen zum Auftrag abzurufen:
+   Führen Sie den Befehl [az databox job show](/cli/azure/databox/job#az_databox_job_show) aus, um Informationen zum Auftrag abzurufen:
 
    ```azurecli
    az databox job show --resource-group databox-rg --name databox-job
    ```
 
-   Verwenden Sie den Befehl [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list), um alle Data Box-Aufträge für eine Ressourcengruppe anzuzeigen:
+   Verwenden Sie den Befehl [az databox job list]( /cli/azure/databox/job#az_databox_job_list), um alle Data Box-Aufträge für eine Ressourcengruppe anzuzeigen:
 
    ```azurecli
    az databox job list --resource-group databox-rg
    ```
 
-   Führen Sie den Befehl [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) aus, um einen Auftrag abzubrechen:
+   Führen Sie den Befehl [az databox job cancel](/cli/azure/databox/job#az_databox_job_cancel) aus, um einen Auftrag abzubrechen:
 
    ```azurecli
    az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
    ```
 
-   Führen Sie den Befehl [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) aus, um einen Auftrag zu löschen:
+   Führen Sie den Befehl [az databox job delete](/cli/azure/databox/job#az_databox_job_delete) aus, um einen Auftrag zu löschen:
 
    ```azurecli
    az databox job delete –resource-group databox-rg --name databox-job
    ```
 
-1. Verwenden Sie den Befehl [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials), um Anmeldeinformationen für einen Data Box-Auftrag aufzulisten:
+1. Verwenden Sie den Befehl [az databox job list-credentials]( /cli/azure/databox/job#az_databox_job_list_credentials), um Anmeldeinformationen für einen Data Box-Auftrag aufzulisten:
 
    ```azurecli
    az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
@@ -206,7 +206,7 @@ Die Dauer dieses Vorgangs hängt von der Datenmenge und der Geschwindigkeit des 
 
 Der Zeitraum, der für die Durchführung dieses Vorgangs erforderlich ist, hängt von Ihrer Datengröße ab.
 
-1. Nachdem das Kopieren der Daten ohne Fehler abgeschlossen wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zur Seite **Für den Versand vorbereiten** , und beginnen Sie mit der Versandvorbereitung.
+1. Nachdem das Kopieren der Daten ohne Fehler abgeschlossen wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zur Seite **Für den Versand vorbereiten**, und beginnen Sie mit der Versandvorbereitung.
 2. Nachdem **Für den Versand vorbereiten** auf beiden Knoten erfolgreich abgeschlossen wurde, deaktivieren Sie das Gerät auf der lokalen Webbenutzeroberfläche.
 
 ## <a name="ship-to-azure"></a>Senden an Azure
@@ -232,9 +232,9 @@ Der Zeitraum, der für die Durchführung dieses Vorgangs erforderlich ist, häng
 
 Dieser Schritt dauert zwei bis drei Minuten.
 
-- Im Azure-Portal können Sie den Data Box Heavy-Auftrag stornieren, bevor er verarbeitet wurde. Nachdem der Auftrag verarbeitet wurde, kann er nicht mehr storniert werden. Der Auftrag wird abgearbeitet, bis er den Status „Abgeschlossen“ erreicht hat. Navigieren Sie zum Stornieren des Auftrags zu **Übersicht** , und klicken Sie in der Befehlsleiste auf **Stornieren**.
+- Im Azure-Portal können Sie den Data Box Heavy-Auftrag stornieren, bevor er verarbeitet wurde. Nachdem der Auftrag verarbeitet wurde, kann er nicht mehr storniert werden. Der Auftrag wird abgearbeitet, bis er den Status „Abgeschlossen“ erreicht hat. Navigieren Sie zum Stornieren des Auftrags zu **Übersicht**, und klicken Sie in der Befehlsleiste auf **Stornieren**.
 
-- Sie können einen Auftrag löschen, wenn im Azure-Portal dafür der Status **Abgeschlossen** oder **Abgebrochen** angezeigt wird. Navigieren Sie zum Löschen des Auftrags zu **Übersicht** , und klicken dann in der Befehlsleiste auf **Löschen**.
+- Sie können einen Auftrag löschen, wenn im Azure-Portal dafür der Status **Abgeschlossen** oder **Abgebrochen** angezeigt wird. Navigieren Sie zum Löschen des Auftrags zu **Übersicht**, und klicken dann in der Befehlsleiste auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

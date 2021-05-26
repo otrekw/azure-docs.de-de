@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: f6740363396bcf6f9bd61e383810465fb5d76f51
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 7f7e6cb896d5284a7bc4ff54c7396600463260c9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108794680"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367622"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -200,7 +200,7 @@ Azure Cosmos DB verwaltet Systemmetadaten für jedes Konto. Diese Metadaten erm�
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Grenzwerte für den per Autoskalierung bereitgestellten Durchsatz
 
-Die Durchsatz- und Speichergrenzwerte im Zusammenhang mit der Autoskalierung werden im [Artikel zur Autoskalierung](provision-throughput-autoscale.md#autoscale-limits) sowie in den [häufig gestellten Fragen](autoscale-faq.md#lowering-the-max-rus) ausführlicher erläutert.
+Die Durchsatz- und Speichergrenzwerte im Zusammenhang mit der Autoskalierung werden im [Artikel zur Autoskalierung](provision-throughput-autoscale.md#autoscale-limits) sowie in den [häufig gestellten Fragen](autoscale-faq.yml#lowering-the-max-ru-s) ausführlicher erläutert.
 
 | Resource | Standardlimit |
 | --- | --- |
@@ -266,15 +266,12 @@ Die folgende Tabelle enthält die Limits für [Free-Tarif-Konten in Azure Cosmos
 | --- | --- |
 | Anzahl der Free-Tarif-Konten pro Azure-Abonnement | 1 |
 | Dauer des Free-Tarif-Rabatts | Gültigkeitsdauer des Kontos. Aktivierung ist während der Kontoerstellung erforderlich. |
-| Maximale Anzahl kostenloser RU/s | 400 RU/s |
-| Maximaler kostenloser Speicherplatz | 5 GB |
+| Maximale Anzahl kostenloser RU/s | 1.000 RU/s |
+| Maximaler kostenloser Speicherplatz | 25 GB |
 | Maximale Anzahl von Datenbanken mit gemeinsam genutztem Durchsatz | 5 |
 | Maximale Anzahl von Containern in einer Datenbank mit gemeinsam genutztem Durchsatz | 25 <br>Bei Konten mit Free-Tarif hat eine Datenbank mit gemeinsam genutztem Durchsatz mit bis zu 25 Containern mindestens 400 RU/s. |
 
-Zusätzlich zu den oben genannten Einschränkungen gelten die [Grenzwerte pro Konto](#per-account-limits) auch für Free-Tarif-Konten.
-
-> [!NOTE]
-> Der Free-Tarif von Azure Cosmos DB unterscheidet sich vom kostenlosen Azure-Konto. Das kostenlose Azure-Konto bietet Azure-Gutschriften und -Ressourcen kostenlos für einen begrenzten Zeitraum. Wenn Sie Azure Cosmos DB im Rahmen dieses kostenlosen Kontos nutzen, erhalten Sie 25 GB Speicher und 400 RU/s von bereitgestelltem Durchsatz für 12 Monate.
+Zusätzlich zu den oben genannten Einschränkungen gelten die [Grenzwerte pro Konto](#per-account-limits) auch für Free-Tarif-Konten. Weitere Informationen finden Sie im Artikel [Erstellen eines Kontos im Free-Tarif](free-tier.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

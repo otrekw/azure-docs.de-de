@@ -55,6 +55,12 @@
         - name: ARM-Vorlage
           displayName: Resource Manager
           href: functions-create-first-function-resource-manager.md
+        - name: Azure Arc (Vorschauversion)
+          items:
+            - name: Veröffentlichen eines Code-Projekts
+              href: create-first-function-arc-cli.md
+            - name: Veröffentlichen eines Linux-Containers
+              href: create-first-function-arc-custom-container.md
     - name: Mit Datenbank verbinden
       items:
         - name: Visual Studio Code
@@ -73,8 +79,9 @@
       href: functions-twitter-email.md
     - name: Bereitstellen von Python-Funktionen mit VS Code
       href: /azure/python/tutorial-vs-code-serverless-python-01
-    - name: OpenAPI-Definition für serverlose APIs
-      href: functions-openapi-definition.md
+    - name: Erstellen serverloser APIs mit Visual Studio
+      href: openapi-apim-integrate-visual-studio.md
+      displayName: 'OpenAPI, Swagger'
     - name: Netzwerk
       items:
         - name: Herstellen einer Verbindung mit einem virtuellen Netzwerk
@@ -438,7 +445,7 @@
               href: functions-add-output-binding-storage-queue-vs.md
         - name: Starten/Beenden von virtuellen Computern
           items:
-            - name: Übersicht
+            - name: Überblick
               href: start-stop-vms/overview.md
             - name: Bereitstellen und konfigurieren
               href: start-stop-vms/deploy.md
@@ -452,8 +459,14 @@
           href: functions-scenario-database-table-cleanup.md
         - name: Herstellen einer Verbindung mit einem virtuellen Netzwerk
           href: ./functions-create-vnet.md
-        - name: Erstellen einer Open API 2.0-Definition
-          href: ./functions-openapi-definition.md
+        - name: Erstellen von OpenAPI-Definitionen
+          items:
+            - name: API Management-Integration (Portal)
+              href: ./functions-openapi-definition.md
+              displayName: 'OpenAPI, Swagger'
+            - name: Visual Studio mit API Management (C#)
+              href: openapi-apim-integrate-visual-studio.md
+              displayName: 'OpenAPI, Swagger'
         - name: Verwenden einer verwalteten Identität
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Anpassen des HTTP-Funktionsendpunkts
@@ -658,8 +671,6 @@
       href: functions-host-json-v1.md
     - name: Häufig gestellte Fragen zu Netzwerken
       href: functions-networking-faq.md
-    - name: OpenAPI-Referenz
-      href: functions-api-definition.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

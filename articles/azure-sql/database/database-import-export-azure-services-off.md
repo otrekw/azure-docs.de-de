@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b649c8e51224043b02be791eee217bed98c7130
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724168"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838553"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Importieren oder Exportieren einer Azure SQL-Datenbank, ohne Azure-Diensten Zugriff auf den Server zu erlauben
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,9 +34,9 @@ Erstellen Sie einen virtuellen Azure-Computer, indem Sie die Schaltfläche **In 
 Diese Vorlage bietet die Möglichkeit, einen einfachen virtuellen Windows-Computer mit einigen wenigen Optionen für die Windows-Version bereitzustellen, wobei die neueste gepatchte Version verwendet wird. Damit wird ein virtueller Computer der Größe A2 an der Position der Ressourcengruppe bereitgestellt, und es wird der voll qualifizierte Domänenname des virtuellen Computers zurückgegeben.
 <br><br>
 
-[![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
+[![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-simple-windows%2Fazuredeploy.json)
 
-Weitere Informationen finden Sie unter [Sehr einfache Bereitstellung eines virtuellen Windows-Computers](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows).
+Weitere Informationen finden Sie unter [Sehr einfache Bereitstellung eines virtuellen Windows-Computers](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows).
 
 ## <a name="connect-to-the-virtual-machine"></a>Verbinden mit dem virtuellen Computer
 
@@ -44,13 +44,13 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Remotedesktopverbindung zu
 
 1. Navigieren Sie zur VM-Ressource, nachdem die Bereitstellung abgeschlossen wurde.
 
-   ![Der Screenshot zeigt eine Seite „Übersicht über virtuelle Computer“ mit der Schaltfläche „Verbinden“.](./media/database-import-export-azure-services-off/vm.png)  
+   ![Der Screenshot zeigt eine Seite „Übersicht über virtuelle Computer“ mit der Schaltfläche „Verbinden“.](./media/database-import-export-azure-services-off/vm.png)
 
 2. Wählen Sie **Verbinden**.
 
    Eine Formular für eine RDP-Datei (Remotedesktopprotokoll) wird mit der öffentlichen IP-Adresse und der Portnummer für den virtuellen Computer angezeigt.
 
-   ![RDP-Formular](./media/database-import-export-azure-services-off/rdp.png)  
+   ![RDP-Formular](./media/database-import-export-azure-services-off/rdp.png)
 
 3. Wählen Sie **RDP-Datei herunterladen** aus.
 
