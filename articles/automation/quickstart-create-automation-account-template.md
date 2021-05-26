@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 50a8c057a6fdf6350a18225cd2dc538942d6686d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: effdb8ec511a6060fffb571864273a1f84901ab6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538401"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081296"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Schnellstart: Erstellen eines Automation-Kontos mithilfe einer ARM-Vorlage
 
@@ -26,7 +26,7 @@ Mit Azure Automation wird ein cloudbasierter Automatisierungs- und Konfiguration
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-automation%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.automation%2F101-automation%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,7 +48,7 @@ Nachdem Sie diese Schritte ausgeführt haben, müssen Sie [Diagnoseeinstellungen
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-automation/).
 
-:::code language="json" source="~/quickstart-templates/101-automation/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.automation/101-automation/azuredeploy.json":::
 
 ### <a name="api-versions"></a>API-Versionen
 
@@ -92,7 +92,7 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt ein Azure Automation-Konto, einen Log Analytics-Arbeitsbereich und verknüpft das Automation-Konto mit dem Arbeitsbereich.
 
-    [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-automation%2Fazuredeploy.json)
+    [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.automation%2F101-automation%2Fazuredeploy.json)
 
 2. Gehen Sie die Werte ein.
 
@@ -104,7 +104,7 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Öffnen Sie im Azure-Portal das gerade erstellte Automation-Konto. 
+2. Öffnen Sie im Azure-Portal das gerade erstellte Automation-Konto.
 
 3. Wählen Sie im linken Bereich **Runbooks** aus. Auf der Seite **Runbooks** werden drei Tutorial-Runbooks aufgelistet, die mit dem Automation-Konto erstellt wurden.
 

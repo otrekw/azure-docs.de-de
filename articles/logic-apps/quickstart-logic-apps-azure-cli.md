@@ -1,20 +1,20 @@
 ---
-title: Erstellen und Verwalten von Logik-Apps mit der Azure-Befehlszeilenschnittstelle
-description: Hier erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle eine Logik-App erstellen und sie mithilfe von Vorgängen wie Auflisten, Anzeigen (Abrufen), Aktualisieren und Löschen verwalten.
+title: 'Schnellstart: Erstellen und Verwalten von Workflows mit mehrinstanzenfähigen Azure Logic Apps und der Azure CLI'
+description: Erstellen von Logik-App-Workflows mit mehrinstanzenfähigen Azure Logic Apps mithilfe der CLI und Verwalten der Logik mit Vorgängen wie Auflisten, Anzeigen (Abrufen), Aktualisieren und Löschen.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
-ms.date: 04/23/2021
-ms.openlocfilehash: 48d71d3736737e88825bbae19e0a5274bacd21a1
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 05/25/2021
+ms.openlocfilehash: 4a848b560fd0302690f1e52661b165182082dd9b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161085"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375927"
 ---
-# <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Logik-Apps mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="quickstart-create-and-manage-workflows-in-multi-tenant-azure-logic-apps-using-the-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Workflows in mehrinstanzenfähigen Azure Logic Apps mithilfe der Azure CLI
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Logik-Apps mithilfe der [Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle](/cli/azure/logic) (`az logic`) erstellen und verwalten. Über die Befehlszeile können Sie eine Logik-App erstellen und dabei die JSON-Datei für eine Logik-App-Workflowdefinition verwenden. Anschließend können Sie Ihre Logik-App durch Ausführen von Vorgängen wie `list`, `show` (`get`), `update` und `delete` über die Befehlszeile verwalten.
 
@@ -177,9 +177,9 @@ Das Löschen einer Logik-App wirkt sich wie folgt auf Workflow-Instanzen aus:
 
   Selbst bei einer großen Menge oder einem umfangreichen Backlog werden die meisten Ausführungen abgebrochen, bevor sie abgeschlossen oder gestartet werden. Es kann jedoch einige Zeit dauern, bis der Abbruchvorgang abgeschlossen ist. In der Zwischenzeit werden möglicherweise einige Ausführungen gestartet, während die Runtime den Abbruchprozess durchläuft.
 
-* Vom Logic Apps-Dienst werden keine neuen Workflowinstanzen erstellt oder ausgeführt.
+* Der Logic Apps-Dienst erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
 
-* Wenn Sie einen Workflow löschen und dann denselben Workflow neu erstellen, hat der neu erstellte Workflow nicht die gleichen Metadaten wie der gelöschte Workflow. Sie müssen jeden Workflow, der den gelöschten Workflow aufgerufen hat, neu speichern. Auf diese Weise ruft der Aufrufer die richtigen Informationen für den neu erstellten Workflow ab. Andernfalls tritt bei Aufrufen des neu erstellten Workflows der Fehler `Unauthorized` auf. Dieses Verhalten gilt auch für Workflows, die Artefakte in Integrationskonten verwenden, sowie Workflows, die Azure-Funktionen aufrufen.
+* Wenn Sie einen Workflow löschen und dann denselben Workflow neu erstellen, hat der neu erstellte Workflow nicht die gleichen Metadaten wie der gelöschte Workflow. Sie müssen jeden Workflow, der den gelöschten Workflow aufgerufen hat, neu speichern. Auf diese Weise ruft der Aufrufer die richtigen Informationen für den neu erstellten Workflow ab. Andernfalls schlagen Aufrufe des neu erstellten Workflows mit einem `Unauthorized`-Fehler fehl. Dieses Verhalten gilt auch für Workflows, die Artefakte in Integrationskonten verwenden, sowie Workflows, die Azure-Funktionen aufrufen.
 
 ## <a name="show-logic-apps-in-cli"></a>Anzeigen von Logik-Apps über die Befehlszeilenschnittstelle
 

@@ -1,18 +1,18 @@
 ---
 title: 'Tutorial: Erste Schritte mit Azure Active Directory-Nachweisen im Rahmen einer Beispiel-App (Vorschau)'
 description: In diesem Tutorial erfahren Sie anhand einer Beispiel-App und eines Testmandanten, wie Sie Nachweise ausstellen.
-ms.service: identity
+ms.service: active-directory
 ms.subservice: verifiable-credentials
 author: barclayn
 ms.author: barclayn
 ms.topic: tutorial
 ms.date: 04/01/2021
-ms.openlocfilehash: deebaf31197d8b7335f887ae447f05add45278b2
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 2fba830b93be35b1bc55ad85531737ebe8a8c982
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222884"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466230"
 ---
 #  <a name="tutorial---get-started-with-azure-active-directory-verifiable-credentials-using-a-sample-app-preview"></a>Tutorial: Erste Schritte mit Azure Active Directory-Nachweisen im Rahmen einer Beispiel-App (Vorschau)
 

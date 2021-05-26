@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: df1b90a638052de7b56854060badfb8e3483d4c2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8d3913d367adf9863f82e65883c8820bcd6bc179
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065428"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "110079316"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke mit der Azure CLI
 
@@ -168,6 +168,8 @@ Die Erstellung des virtuellen Computers dauert einige Minuten. Nach dem Erstelle
 ```
 
 Notieren Sie sich **publicIpAddress**. Über diese Adresse wird in einem späteren Schritt über das Internet auf den virtuellen Computer zugegriffen.
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="communicate-between-vms"></a>Kommunikation zwischen VMs
 

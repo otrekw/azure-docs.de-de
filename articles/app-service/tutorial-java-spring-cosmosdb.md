@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 87dff97f6e086803413cb86b8374793361f77008
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: fae722934f22503cd37f7d48569fd52667fa5e0c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732702"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457923"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Tutorial: Erstellen einer Java Spring Boot-Web-App mit Azure App Service für Linux und Azure Cosmos DB
 
@@ -80,7 +80,7 @@ Führen Sie diese Schritte aus, um eine Azure Cosmos DB-Datenbank in Ihrem Abonn
 4. Rufen Sie Ihren Azure Cosmos DB-Schlüssel für die Verbindung zur App ab. Halten Sie die Werte für `primaryMasterKey` und `documentEndpoint` bereit, da Sie sie im nächsten Schritt brauchen.
 
     ```azurecli
-    az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
+    az cosmosdb keys list -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
     ```
 
 ## <a name="configure-the-todo-app-properties"></a>Konfigurieren der TODO-App-Eigenschaften
@@ -193,12 +193,12 @@ Wenn Ausnahmen anstelle der Meldung „Started TodoApplication“ angezeigt werd
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
-
+            <pricingTier>P1V2</princingTier>
             <!-- Java Runtime Stack for Web App on Linux-->
             <runtime>
                  <os>linux</os>
-                 <javaVersion>jre8</javaVersion>
-                 <webContainer>jre8</webContainer>
+                 <javaVersion>Java 8</javaVersion>
+                 <webContainer>Java SE</webContainer>
              </runtime>
              <deployment>
                  <resources>
@@ -299,9 +299,9 @@ az appservice plan update --number-of-workers 2 \
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie diese Ressourcen nicht für ein anderes Tutorial benötigen (siehe [Nächste Schritte](#next)), können Sie sie löschen, indem Sie den folgenden Befehl in Cloud Shell ausführen: 
+Wenn Sie diese Ressourcen nicht für ein anderes Tutorial benötigen (siehe [Nächste Schritte](#next)), können Sie sie löschen, indem Sie den folgenden Befehl in Cloud Shell ausführen:
 ```azurecli
-az group delete --name <your-azure-group-name>
+az group delete --name <your-azure-group-name> --yes
 ```
 
 <a name="next"></a>

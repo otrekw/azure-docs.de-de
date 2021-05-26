@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: edc1ebe53969ceac0452818bee016e35de1e9322
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e3e2de040c80692824c648ee15f6ae0c97e2786c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167837"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110453316"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen einer Front Door-Ressource mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 
@@ -29,7 +29,7 @@ Sie können das Azure-Portal verwenden, um eine Instanz von [Front Door](quickst
 1. Wählen Sie ein *Abonnement* aus, und verwenden Sie dann eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Wählen Sie **Weiter** aus, um auf die Registerkarte „Konfiguration“ zu gelangen.
 
     > [!NOTE]
-    > Der Speicherort, der in der Benutzeroberfläche abgefragt wird, bezieht sich nur auf die Ressourcengruppe. Die Front Door-Konfiguration wird an allen [POP-Standorten von Azure Front Door](front-door-faq.yml#what-are-the-pop-locations-for-azure-front-door-) bereitgestellt.
+    > Der Speicherort, der in der Benutzeroberfläche abgefragt wird, bezieht sich nur auf die Ressourcengruppe. Die Front Door-Konfiguration wird an allen [POP-Standorten von Azure Front Door](front-door-faq.yml#where-are-the-edge-locations-for-azure-front-door-) bereitgestellt.
 
     :::image type="content" source="./media/front-door-url-redirect/front-door-create-basics.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
 

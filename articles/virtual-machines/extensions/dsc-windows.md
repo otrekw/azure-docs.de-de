@@ -8,16 +8,16 @@ author: bobbytreed
 ms.author: robreed
 ms.collection: windows
 ms.date: 03/26/2018
-ms.openlocfilehash: 5d2591fa3b6d69e403935faeca075a2c747026c1
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: a782d94b40be7fb07009f46cc69883cc529d91c6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734736"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081512"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-Erweiterung
 
-## <a name="overview"></a>Übersicht
+## <a name="overview"></a>Überblick
 
 Die PowerShell-DSC-Erweiterung für Windows wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung lädt eine PowerShell-DSC-Konfiguration auf einer Azure-VM hoch und wendet diese an. Die DSC-Erweiterung richtet einen Aufruf an PowerShell DSC, um die empfangene DSC-Konfiguration auf der VM in Kraft zu setzen. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die DSC-VM-Erweiterung für Windows.
 
@@ -125,7 +125,7 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden.
 Vorlagen sind ideal, wenn Sie virtuelle Computer bereitstellen, die nach der Bereitstellung konfiguriert werden müssen.
-Eine Resource Manager-Beispielvorlage mit der DSC-Erweiterung für Windows finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/automation-configuration/automation-configuration/nested/provisionServer.json#L91).
+Eine Resource Manager-Beispielvorlage mit der DSC-Erweiterung für Windows finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.automation/automation-configuration/nested/provisionServer.json#L91).
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/16/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: c6b83a25816c29f1642625618e66624aa3e0a6de
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 09279e476f2d130c4938937e2c9e60df863c688d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289802"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110450604"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Was ist Azure Cognitive Services?
 
@@ -42,8 +42,6 @@ In den folgenden Abschnitten dieses Artikels werden die zugehörigen Dienste die
 |[Maschinelles Sehen](./computer-vision/index.yml "Maschinelles Sehen")|Über den Dienst für maschinelles Sehen haben Sie Zugriff auf erweiterte kognitive Algorithmen für die Bildverarbeitung und die Rückgabe von Informationen. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./computer-vision/quickstarts-sdk/client-library.md).|
 |[Custom Vision Service](./custom-vision-service/index.yml "Custom Vision Service")|Der Custom Vision-Dienst ermöglicht Ihnen das Erstellen, Bereitstellen und Optimieren eigener Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der basierend auf den visuellen Merkmalen in einem Bild Bezeichnungen auf Bilder anwendet. |
 |[Gesichtserkennung](./face/index.yml "Gesicht")| Der Gesichtserkennungsdienst ermöglicht den Zugriff auf erweiterte Algorithmen zur Gesichtserkennung, wodurch die Ermittlung von Gesichtsmerkmalen sowie die Gesichtserkennung ermöglicht wird. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Verwenden der Clientbibliothek für die Gesichtserkennung](./face/quickstarts/client-libraries.md).|
-|[Formularerkennung](./form-recognizer/index.yml "Formularerkennung")|Die Formularerkennung identifiziert und extrahiert Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten und gibt dann strukturierte Daten aus, die auch die Beziehungen in der ursprünglichen Datei umfassen. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Verwenden der Clientbibliothek oder REST-API für die Formularerkennung](./form-recognizer/quickstarts/client-library.md).|
-|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer ermöglicht es Ihnen, Erkenntnisse aus Ihrem Video zu extrahieren. Informationen zu den ersten Schritten finden Sie in der [Schnellstartanleitung zu Video Indexer](../media-services/video-indexer/video-indexer-get-started.md).|
 
 ## <a name="speech-apis"></a>Spracherkennungs-APIs
 
@@ -63,7 +61,6 @@ In den folgenden Abschnitten dieses Artikels werden die zugehörigen Dienste die
 |[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker ermöglicht es Ihnen, aus Ihren teilstrukturierten Inhalten einen Frage- und Antwortdienst zu erstellen. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank](./qnamaker/quickstarts/create-publish-knowledge-base.md).|
 |[Textanalyse](./text-analytics/index.yml "Textanalyse")| Die Textanalyse bietet die Verarbeitung von natürlicher Sprache für unformatierten Text für die Standpunktanalyse, die Schlüsselbegriffserkennung und die Sprachenerkennung. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Verwenden der Textanalyse-Clientbibliothek und der REST-API](./text-analytics/quickstarts/client-libraries-rest-api.md).|
 |[Translator](./translator/index.yml "Übersetzer")|Translator ermöglicht eine maschinenbasierte Textübersetzung in Quasi-Echtzeit.|
-| [Plastischer Reader](./immersive-reader/index.yml "Plastischer Reader") | Plastischer Reader erweitert Ihre Anwendungen um Sprachausgabe sowie um Funktionen zum besseren Verständnis. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Erste Schritte mit dem plastischen Reader](./immersive-reader/quickstarts/client-libraries.md). |
 
 ## <a name="decision-apis"></a>Entscheidungs-APIs
 
@@ -71,7 +68,6 @@ In den folgenden Abschnitten dieses Artikels werden die zugehörigen Dienste die
 |:-----------|:------------------|
 |[Anomalieerkennung](./anomaly-detector/index.yml "Anomalieerkennung") |Die Anomalieerkennung bietet Ihnen die Möglichkeit, Abweichungen in Ihren Zeitreihendaten zu überwachen und zu erkennen. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Verwenden der Anomalieerkennungs-Clientbibliothek](./anomaly-detector/quickstarts/client-libraries.md).|
 |[Content Moderator](./content-moderator/overview.md "Content Moderator")|Der Content Moderator bietet die Überwachung auf möglicherweise anstößige, unerwünschte und risikobehaftete Inhalte. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Verwenden der Content Moderator-Clientbibliothek](./content-moderator/client-libraries.md).|
-|[Metrics Advisor](./metrics-advisor/index.yml) (Vorschauversion) | Metrics Advisor bietet eine anpassbare Anomalieerkennung für multivariate Zeitreihendaten sowie ein umfassendes Webportal, das Sie bei der Verwendung des Diensts unterstützt. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Verwenden der Clientbibliotheken oder REST-APIs zum Anpassen Ihrer Lösung](./metrics-advisor/quickstarts/rest-api-and-client-library.md). |
 |[Personalisierung](./personalizer/index.yml "Personalisierung")|Mit der Personalisierung können Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Personalisierungsclientbibliothek](./personalizer/quickstart-personalizer-sdk.md).|
 
 ## <a name="search-apis"></a>Such-APIs

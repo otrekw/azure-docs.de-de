@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2018
+ms.date: 05/14/2021
 ms.author: genli
-ms.openlocfilehash: ed250e3f32965fc450102fb14b93b93d6753ab3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d793dddcfd51c9d9bd2527298d958482a9216b88
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222784"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110080617"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Anzeigen und Ändern von Hostnamen
 Damit auf Ihre Rolleninstanzen mit dem Hostnamen verwiesen werden kann, müssen Sie den Wert für den Hostnamen in der Dienstkonfigurationsdatei für jede Rolle festlegen. Hierzu fügen Sie den gewünschten Hostnamen dem **vmName**-Attribut des **Role**-Elements hinzu. Der Wert des **vmName** -Attributs wird als Grundlage für den Hostnamen der einzelnen Rolleninstanzen verwendet. Wenn **vmName** beispielsweise *webrole* lautet und drei Instanzen dieser Rolle vorhanden sind, lauten die Hostnamen der Instanzen *webrole0*, *webrole1* und *webrole2*. Sie müssen keinen Hostnamen für virtuelle Computer in der Konfigurationsdatei angeben, da der Hostname für einen virtuellen Computer auf Grundlage des Namens des virtuellen Computers erstellt wird. Weitere Informationen zum Konfigurieren eines Microsoft Azure-Diensts finden Sie unter [Azure-Dienstkonfigurationsschema (.cscfg-Datei)](/previous-versions/azure/reference/ee758710(v=azure.100))
@@ -41,7 +41,7 @@ Gehen Sie auf einem REST-Client wie folgt vor:
 
 1. Stellen Sie sicher, dass Sie über ein Clientzertifikat für die Verbindung zum Azure-Portal verfügen. Um ein Clientzertifikat zu erhalten, befolgen Sie die Schritte in [How to: Download and Import Publish Settings and Subscription Information](/previous-versions/dynamicsnav-2013/dn385850(v=nav.70)). 
 2. Legen Sie einen Headereintrag mit dem Namen "x-ms-version" mit einem Wert von "2013-11-01" fest.
-3. Senden Sie eine Anforderung im folgenden Format: https:\//management.core.windows.net/\<subscrition-id\>/services/hostedservices/\<service-name\>?embed-detail=true.
+3. Senden Sie eine Anforderung im folgenden Format: `https://management.core.windows.net/<subscription-id>/services/hostedservices/<service-name>?embed-detail=true`
 4. Suchen Sie das **HostName**-Element für jedes **RoleInstance**-Element.
 
 > [!WARNING]

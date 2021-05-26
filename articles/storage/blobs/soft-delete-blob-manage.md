@@ -10,12 +10,12 @@ ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d5ef85d947ae999fd94ba5a6e9cdb00baec9786
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 7e951de46b5220e5c2edde2fcd84673c9a16cebc
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555899"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477704"
 ---
 # <a name="manage-and-restore-soft-deleted-blobs"></a>Verwalten und Wiederherstellen vorläufig gelöschter Blobs
 
@@ -70,7 +70,7 @@ Sie können die Azure Storage-Clientbibliotheken verwenden, um vorläufig gelös
 
 ### <a name="restore-soft-deleted-objects-when-versioning-is-disabled"></a>Wiederherstellen vorläufig gelöschter Objekte bei deaktivierter Versionsverwaltung
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Für das Wiederherstellen gelöschter Blobs bei aktivierter Versionsverwaltung rufen Sie den Vorgang [Undelete Blobs](/rest/api/storageservices/undelete-blob) für diese Blobs auf. Der Vorgang **Undelete Blobs** stellt vorläufig gelöschte Blobs und alle diesem Blob zugeordneten vorläufig gelöschten Momentaufnahmen wieder her.
 
@@ -82,7 +82,7 @@ Wenn Sie eine spezifische Version wiederherstellen möchten, rufen Sie den Vorga
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobSnapshot":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Für das Wiederherstellen gelöschter Blobs bei aktivierter Versionsverwaltung rufen Sie den Vorgang [Undelete Blobs](/rest/api/storageservices/undelete-blob) für diese Blobs auf. Der Vorgang **Undelete Blobs** stellt vorläufig gelöschte Blobs und alle diesem Blob zugeordneten vorläufig gelöschten Momentaufnahmen wieder her.
 
@@ -118,11 +118,11 @@ blockBlob.StartCopy(copySource);
 
 Um ein vorläufig gelöschtes Blob bei aktivierter Versionsverwaltung wiederherzustellen, kopieren Sie mithilfe des Vorgangs [Copy Blob](/rest/api/storageservices/copy-blob) oder [Copy Blob From URL](/rest/api/storageservices/copy-blob-from-url) eine vorherige Version über das Basisblob.  
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RestorePreviousVersion":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Nicht zutreffend Die Blobversionsverwaltung wird nur in den Azure Storage-Clientbibliotheken der Version 12.x und höher unterstützt.
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0775df0d5ca1061bff127ba5491040a90ddb8597
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 98f9ffdfa7addd8689b01332b88261311a525c81
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447011"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469327"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Verwenden von Log Analytics für die Diagnosefunktion
 
@@ -134,7 +134,7 @@ Greifen Sie über die Azure Monitor Log Analytics-Benutzeroberfläche auf Beispi
 1. Wählen Sie **Windows Virtual Desktop** aus, um verfügbare Abfragen zu überprüfen.
 1. Wählen Sie **Ausführen** aus, um die ausgewählte Abfrage auszuführen.
 
-Erfahren Sie mehr über die Benutzeroberfläche der Beispielabfrage in [Gespeicherte Abfragen in Azure Monitor Log Analytics](../azure-monitor/logs/example-queries.md).
+Erfahren Sie mehr über die Benutzeroberfläche der Beispielabfrage in [Gespeicherte Abfragen in Azure Monitor Log Analytics](../azure-monitor/logs/queries.md).
 
 Mit der folgenden Abfrageliste können Sie Verbindungsinformationen oder Probleme für einen einzelnen Benutzer überprüfen. Sie können diese Abfragen im [Log Analytics-Abfrage-Editor](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query) ausführen. Ersetzen Sie für jede Abfrage `userupn` durch den UPN des Benutzers, den Sie suchen möchten.
 

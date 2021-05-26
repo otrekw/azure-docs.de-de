@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 39db32a7ee7eb8fed1da9ac8c9eb609efcf57c74
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 5feb16227653bdc7e51925b7a327c3eb50c88491
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070819"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453808"
 ---
 # <a name="call-the-image-analysis-api"></a>Aufrufen der Bildanalyse-API
 
@@ -71,7 +71,7 @@ Eine aufgefüllte URL kann folgendermaßen aussehen:
 > [!NOTE]
 > **Bereichsbezogene API-Aufrufe**
 >
-> Einige der Funktionen in der Bildanalyse können sowohl direkt als auch über den Aufruf der Analyse-API aufgerufen werden. Sie können beispielsweise eine Bereichsanalyse nur von Bildtags durchführen, indem Sie eine Anforderung an `https://{endpoint}/vision/v3.2-preview.3/tag` senden. Informationen zu weiteren Funktionen, die separat aufgerufen werden können, finden Sie in der [Referenzdokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b).
+> Einige der Funktionen in der Bildanalyse können sowohl direkt als auch über den Aufruf der Analyse-API aufgerufen werden. Sie können beispielsweise eine Bereichsanalyse nur von Bildtags durchführen, indem Sie eine Anforderung an `https://{endpoint}/vision/v3.2/tag` senden. Informationen zu weiteren Funktionen, die separat aufgerufen werden können, finden Sie in der [Referenzdokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b).
 
 ## <a name="get-results-from-the-service"></a>Abrufen von Ergebnissen aus dem Dienst
 

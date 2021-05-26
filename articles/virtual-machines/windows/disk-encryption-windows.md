@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 2d8173e8b79e8696c2a3e4a7ea722b2947b1aee6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 745b423b9353580c5de2f77aec253fb09968e2cd
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776788"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083330"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
 
@@ -29,9 +29,9 @@ Sie können Datenträgerverschlüsselung nur auf virtuelle Computer mit [unterst
 - [Speicheranforderungen für Verschlüsselungsschlüssel](disk-encryption-overview.md#encryption-key-storage-requirements)
 
 >[!IMPORTANT]
-> - Wenn Sie zuvor Azure Disk Encryption mit Azure AD zum Verschlüsseln eines virtuellen Computers verwendet haben, müssen Sie diese Option auch weiterhin zum Verschlüsseln Ihres virtuellen Computers verwenden. Weitere Informationen finden Sie unter [Azure Disk Encryption mit Azure AD (vorheriges Release)](disk-encryption-overview-aad.md). 
+> - Wenn Sie zuvor Azure Disk Encryption mit Azure AD zum Verschlüsseln eines virtuellen Computers verwendet haben, müssen Sie diese Option auch weiterhin zum Verschlüsseln Ihres virtuellen Computers verwenden. Weitere Informationen finden Sie unter [Azure Disk Encryption mit Azure AD (vorheriges Release)](disk-encryption-overview-aad.md).
 >
-> - In allen Fällen sollten Sie [eine Momentaufnahme](snapshot-copy-managed-disk.md) oder eine Sicherung erstellen, bevor Datenträger verschlüsselt werden. Durch Sicherungen wird sichergestellt, dass eine Wiederherstellungsoption verfügbar ist, falls während der Verschlüsselung ein unerwarteter Fehler auftritt. Für VMs mit verwalteten Datenträgern ist eine Sicherung erforderlich, bevor die Verschlüsselung durchgeführt wird. Nach dem Erstellen einer Sicherung können Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) verwenden, um verwaltete Datenträger durch das Angeben des Parameters „-skipVmBackup“ zu verschlüsseln. Weitere Informationen zum Sichern und Wiederherstellen von verschlüsselten VMs finden Sie unter [Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers](../../backup/backup-azure-vms-encryption.md). 
+> - In allen Fällen sollten Sie [eine Momentaufnahme](snapshot-copy-managed-disk.md) oder eine Sicherung erstellen, bevor Datenträger verschlüsselt werden. Durch Sicherungen wird sichergestellt, dass eine Wiederherstellungsoption verfügbar ist, falls während der Verschlüsselung ein unerwarteter Fehler auftritt. Für VMs mit verwalteten Datenträgern ist eine Sicherung erforderlich, bevor die Verschlüsselung durchgeführt wird. Nach dem Erstellen einer Sicherung können Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) verwenden, um verwaltete Datenträger durch das Angeben des Parameters „-skipVmBackup“ zu verschlüsseln. Weitere Informationen zum Sichern und Wiederherstellen von verschlüsselten VMs finden Sie unter [Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers](../../backup/backup-azure-vms-encryption.md).
 >
 > - Beim Verschlüsseln oder Deaktivieren der Verschlüsselung kann eine VM neu gestartet werden.
 
@@ -42,8 +42,8 @@ Sie können Datenträgerverschlüsselung nur auf virtuelle Computer mit [unterst
 ## <a name="enable-encryption-on-an-existing-or-running-windows-vm"></a>Aktivieren der Verschlüsselung auf einem vorhandenen oder ausgeführten virtuellen Windows-Computer
 In diesem Szenario können Sie die Verschlüsselung aktivieren, indem Sie die Resource Manager-Vorlage, PowerShell-Cmdlets oder CLI-Befehle verwenden. Wenn Sie Schemainformationen für die Erweiterung des virtuellen Computers benötigen, finden Sie diese im Artikel [Azure Disk Encryption für Windows](../extensions/azure-disk-enc-windows.md).
 
-### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>Aktivieren der Verschlüsselung auf vorhandenen oder ausgeführten VMs mit Azure PowerShell 
-Verwenden Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension), um die Verschlüsselung auf einem ausgeführten virtuellen IaaS-Computer in Azure zu aktivieren. 
+### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>Aktivieren der Verschlüsselung auf vorhandenen oder ausgeführten VMs mit Azure PowerShell
+Verwenden Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension), um die Verschlüsselung auf einem ausgeführten virtuellen IaaS-Computer in Azure zu aktivieren.
 
 -  **Verschlüsseln eines ausgeführten virtuellen Computers:** Das folgende Skript initialisiert Ihre Variablen und führt das Cmdlet „Set-AzVMDiskEncryptionExtension“ aus. Die Ressourcengruppe, der virtuelle Computer und der Schlüsseltresor wurden bereits bei der Vorbereitung erstellt. Ersetzen Sie „MyKeyVaultResourceGroup“, „MyVirtualMachineResourceGroup“, „MySecureVM“ und „MySecureVault“ durch Ihre eigenen Werte.
 
@@ -58,7 +58,7 @@ Verwenden Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az
 
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId;
     ```
-- **Verschlüsseln eines ausgeführten virtuellen Computers mit KEK:** 
+- **Verschlüsseln eines ausgeführten virtuellen Computers mit KEK:**
 
      ```azurepowershell
      $KVRGname = 'MyKeyVaultResourceGroup';
@@ -74,15 +74,16 @@ Verwenden Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az
      Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
 
      ```
-     
-   >[!NOTE]
-   > Die Syntax für den Wert des Parameters „disk-encryption-keyvault“ ist die vollständige Bezeichnerzeichenfolge: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> Die Syntax für den Wert des Parameters „key-encryption-key“ ist der vollständige URI für den KEK, z.B.: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
 
-- **Überprüfen der Datenträgerverschlüsselung:** Verwenden Sie das Cmdlet [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus), um den Verschlüsselungsstatus eines virtuellen IaaS-Computers zu überprüfen. 
+   >[!NOTE]
+   > Die Syntax für den Wert des Parameters „disk-encryption-keyvault“ ist die vollständige Bezeichnerzeichenfolge: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br>
+Die Syntax für den Wert des Parameters „key-encryption-key“ ist der vollständige URI für den KEK, z.B.: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
+
+- **Überprüfen der Datenträgerverschlüsselung:** Verwenden Sie das Cmdlet [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus), um den Verschlüsselungsstatus eines virtuellen IaaS-Computers zu überprüfen.
      ```azurepowershell-interactive
      Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
-    
+
 - **Deaktivieren der Datenträgerverschlüsselung:** Verwenden Sie das Cmdlet [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption), um die Verschlüsselung zu deaktivieren. Das Deaktivieren der Datenträgerverschlüsselung auf einem virtuellen Windows-Computer funktioniert nicht wie erwartet, wenn sowohl das Betriebssystem als auch Datenträger verschlüsselt wurden. Deaktivieren Sie stattdessen die Verschlüsselung auf allen Datenträgern.
 
      ```azurepowershell-interactive
@@ -105,9 +106,10 @@ Verwenden Sie den Befehl [az vm encryption enable](/cli/azure/vm/encryption#az_v
      ```
 
      >[!NOTE]
-     > Die Syntax für den Wert des Parameters „disk-encryption-keyvault“ ist die vollständige Bezeichnerzeichenfolge: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] </br> Die Syntax für den Wert des Parameters „key-encryption-key“ ist der vollständige URI für den KEK, z.B.: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
+     > Die Syntax für den Wert des Parameters „disk-encryption-keyvault“ ist die vollständige Bezeichnerzeichenfolge: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] </br>
+  Die Syntax für den Wert des Parameters „key-encryption-key“ ist der vollständige URI für den KEK, z.B.: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
 
-- **Überprüfen der Datenträgerverschlüsselung:** Verwenden Sie den Befehl [az vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show), um den Verschlüsselungsstatus eines virtuellen IaaS-Computers zu überprüfen. 
+- **Überprüfen der Datenträgerverschlüsselung:** Verwenden Sie den Befehl [az vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show), um den Verschlüsselungsstatus eines virtuellen IaaS-Computers zu überprüfen.
 
      ```azurecli-interactive
      az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
@@ -121,7 +123,7 @@ Verwenden Sie den Befehl [az vm encryption enable](/cli/azure/vm/encryption#az_v
 
 ### <a name="using-the-resource-manager-template"></a>Erstellen der Resource Manager-Vorlage
 
-Sie können die Datenträgerverschlüsselung auf vorhandenen oder ausgeführten virtuellen IaaS-Windows-VMs in Azure aktivieren, indem Sie die [Resource Manager-Vorlage zum Verschlüsseln eines ausgeführten virtuellen Windows-Computers](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad) verwenden.
+Sie können die Datenträgerverschlüsselung auf vorhandenen oder ausgeführten virtuellen IaaS-Windows-VMs in Azure aktivieren, indem Sie die [Resource Manager-Vorlage zum Verschlüsseln eines ausgeführten virtuellen Windows-Computers](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm-without-aad) verwenden.
 
 
 1. Klicken Sie in der Azure-Schnellstartvorlage auf **Deploy to Azure** (In Azure bereitstellen).
@@ -136,7 +138,7 @@ Die folgende Tabelle enthält die Resource Manager-Vorlagenparameter für vorhan
 | keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden soll. Sie können ihn abrufen, indem Sie das Cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` oder den Azure CLI-Befehl `az keyvault list --resource-group "MyKeyVaultResourceGroup"` verwenden.|
 | keyVaultResourceGroup | Der Name der Ressourcengruppe mit dem Schlüsseltresor|
 |  keyEncryptionKeyURL | Die URL des Schlüsselverschlüsselungsschlüssels im Format „https://&lt;keyvault-name&gt;.vault.azure.net/key/&lt;key-name&gt;. Wenn Sie keinen Schlüsselverschlüsselungsschlüssels verwenden möchten, lassen Sie dieses Feld leer. |
-| volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige Werte sind _OS_, _Data_ und _All_. 
+| volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige Werte sind _OS_, _Data_ und _All_.
 | forceUpdateTag | Dient zum Übergeben eines eindeutigen Werts (beispielsweise einer GUID), wenn die Ausführung des Vorgangs erzwungen werden muss. |
 | resizeOSDisk | Gibt an, ob die Größe der Betriebssystempartition angepasst werden soll, um die gesamte Betriebssystem-VHD einzunehmen, bevor das Systemvolume aufgeteilt wird. |
 | location | Der Standort für alle Ressourcen. |
@@ -171,13 +173,13 @@ Zusätzlich zu den im Abschnitt [Nicht unterstützte Szenarien](#unsupported-sce
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>Neue virtuelle IaaS-Computer, die aus einer vom Kunden verschlüsselten VHD und mit Verschlüsselungsschlüsseln erstellt wurden
 
-In diesem Szenario können Sie mithilfe von PowerShell-Cmdlets oder CLI-Befehlen eine neue VM aus einer vorverschlüsselten VHD und den zugehörigen Verschlüsselungsschlüsseln erstellen. 
+In diesem Szenario können Sie mithilfe von PowerShell-Cmdlets oder CLI-Befehlen eine neue VM aus einer vorverschlüsselten VHD und den zugehörigen Verschlüsselungsschlüsseln erstellen.
 
 Befolgen Sie die Anweisungen unter [Vorbereiten einer vorverschlüsselten Windows-VHD](disk-encryption-sample-scripts.md#prepare-a-pre-encrypted-windows-vhd). Nach dem Erstellen des Images können Sie die Schritte im nächsten Abschnitt ausführen, um eine verschlüsselte Azure-VM zu erstellen.
 
 
 ### <a name="encrypt-vms-with-pre-encrypted-vhds-with-azure-powershell"></a>Verschlüsseln von VMs mit vorverschlüsselten VHDs mithilfe von Azure PowerShell
-Sie können die Datenträgerverschlüsselung auf einer verschlüsselten VHD aktivieren, indem Sie das PowerShell-Cmdlet [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples) verwenden. Im folgenden Beispiel sind einige häufig verwendete Parameter angegeben. 
+Sie können die Datenträgerverschlüsselung auf einer verschlüsselten VHD aktivieren, indem Sie das PowerShell-Cmdlet [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples) verwenden. Im folgenden Beispiel sind einige häufig verwendete Parameter angegeben.
 
 ```azurepowershell
 $VirtualMachine = New-AzVMConfig -VMName "MySecureVM" -VMSize "Standard_A1"
@@ -186,14 +188,14 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 ```
 
 ## <a name="enable-encryption-on-a-newly-added-data-disk"></a>Aktivieren der Verschlüsselung auf einem neu hinzugefügten Datenträger
-Sie können [einer Windows-VM einen neuen Datenträger mit PowerShell](attach-disk-ps.md) oder [über das Azure-Portal](attach-managed-disk-portal.md) hinzufügen. 
+Sie können [einer Windows-VM einen neuen Datenträger mit PowerShell](attach-disk-ps.md) oder [über das Azure-Portal](attach-managed-disk-portal.md) hinzufügen.
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>Aktivieren der Verschlüsselung für einen neu hinzugefügten Datenträger mit Azure PowerShell
- Bei Verwendung von PowerShell zum Verschlüsseln eines neuen Datenträgers für Windows-VMs sollte eine neue Sequenzversion angegeben werden. Die Sequenzversion muss eindeutig sein. Mit dem unten angegebenen Skript wird eine GUID für die Sequenzversion generiert. In einigen Fällen kann ein neu hinzugefügter Datenträger ggf. automatisch über die Azure Disk Encryption-Erweiterung verschlüsselt werden. Die automatische Verschlüsselung tritt normalerweise auf, wenn der virtuelle Computer neu gestartet wird, nachdem die neue Festplatte online ist. Dies wird in der Regel dadurch verursacht, dass für den Datenträgertyp „Alle“ angegeben wurde, wenn die Festplattenverschlüsselung zuvor auf dem virtuellen Computer ausgeführt wurde. Wenn die automatische Verschlüsselung auf einem neu hinzugefügten Datenträger auftritt, wird empfohlen, das Cmdlet „Set-AzVmDiskEncryptionExtension“ erneut mit der neuen Sequenzversion auszuführen. Wenn Ihr neuer Datenträger automatisch verschlüsselt ist und Sie diese Verschlüsselung nicht wünschen, entschlüsseln Sie zuerst alle Laufwerke und verschlüsseln Sie dann mit einer neuen Sequenzversion, die das Betriebssystem für den Datenträgertyp angibt. 
-  
- 
+ Bei Verwendung von PowerShell zum Verschlüsseln eines neuen Datenträgers für Windows-VMs sollte eine neue Sequenzversion angegeben werden. Die Sequenzversion muss eindeutig sein. Mit dem unten angegebenen Skript wird eine GUID für die Sequenzversion generiert. In einigen Fällen kann ein neu hinzugefügter Datenträger ggf. automatisch über die Azure Disk Encryption-Erweiterung verschlüsselt werden. Die automatische Verschlüsselung tritt normalerweise auf, wenn der virtuelle Computer neu gestartet wird, nachdem die neue Festplatte online ist. Dies wird in der Regel dadurch verursacht, dass für den Datenträgertyp „Alle“ angegeben wurde, wenn die Festplattenverschlüsselung zuvor auf dem virtuellen Computer ausgeführt wurde. Wenn die automatische Verschlüsselung auf einem neu hinzugefügten Datenträger auftritt, wird empfohlen, das Cmdlet „Set-AzVmDiskEncryptionExtension“ erneut mit der neuen Sequenzversion auszuführen. Wenn Ihr neuer Datenträger automatisch verschlüsselt ist und Sie diese Verschlüsselung nicht wünschen, entschlüsseln Sie zuerst alle Laufwerke und verschlüsseln Sie dann mit einer neuen Sequenzversion, die das Betriebssystem für den Datenträgertyp angibt.
 
--  **Verschlüsseln eines ausgeführten virtuellen Computers:** Das folgende Skript initialisiert Ihre Variablen und führt das Cmdlet „Set-AzVMDiskEncryptionExtension“ aus. Die Ressourcengruppe, der virtuelle Computer und der Schlüsseltresor wurden bereits bei der Vorbereitung erstellt. Ersetzen Sie „MyKeyVaultResourceGroup“, „MyVirtualMachineResourceGroup“, „MySecureVM“ und „MySecureVault“ durch Ihre eigenen Werte. In diesem Beispiel wird „All“ für den Parameter „-VolumeType“ verwendet, wodurch Betriebssystem- und Datenvolumes enthalten sind. Wenn Sie nur das Betriebssystemvolume verschlüsseln möchten, verwenden Sie „OS“ für den Parameter „-VolumeType“. 
+
+
+-  **Verschlüsseln eines ausgeführten virtuellen Computers:** Das folgende Skript initialisiert Ihre Variablen und führt das Cmdlet „Set-AzVMDiskEncryptionExtension“ aus. Die Ressourcengruppe, der virtuelle Computer und der Schlüsseltresor wurden bereits bei der Vorbereitung erstellt. Ersetzen Sie „MyKeyVaultResourceGroup“, „MyVirtualMachineResourceGroup“, „MySecureVM“ und „MySecureVault“ durch Ihre eigenen Werte. In diesem Beispiel wird „All“ für den Parameter „-VolumeType“ verwendet, wodurch Betriebssystem- und Datenvolumes enthalten sind. Wenn Sie nur das Betriebssystemvolume verschlüsseln möchten, verwenden Sie „OS“ für den Parameter „-VolumeType“.
 
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
@@ -226,10 +228,11 @@ Sie können [einer Windows-VM einen neuen Datenträger mit PowerShell](attach-di
      ```
 
     >[!NOTE]
-    > Die Syntax für den Wert des Parameters „disk-encryption-keyvault“ ist die vollständige Bezeichnerzeichenfolge: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> Die Syntax für den Wert des Parameters „key-encryption-key“ ist der vollständige URI für den KEK, z.B.: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
+    > Die Syntax für den Wert des Parameters „disk-encryption-keyvault“ ist die vollständige Bezeichnerzeichenfolge: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br>
+Die Syntax für den Wert des Parameters „key-encryption-key“ ist der vollständige URI für den KEK, z.B.: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-cli"></a>Aktivieren der Verschlüsselung für einen neu hinzugefügten Datenträger per Azure CLI
- Mit dem Azure CLI-Befehl wird automatisch eine neue Sequenzversion für Sie bereitgestellt, wenn Sie den Befehl zum Aktivieren der Verschlüsselung ausführen. Im Beispiel wird „All“ für den Parameter „-VolumeType“ verwendet. Möglicherweise müssen Sie den Parameter „-VolumeType“ in „OS“ ändern, wenn Sie nur den Betriebssystemdatenträger verschlüsseln. Im Gegensatz zur PowerShell-Syntax erfordert die Befehlszeilenschnittstelle vom Benutzer keine Angabe einer eindeutigen Sequenzversion beim Aktivieren der Verschlüsselung. Die Befehlszeilenschnittstelle wird automatisch generiert und verwendet einen eigenen eindeutigen Sequenzversionswert.   
+ Mit dem Azure CLI-Befehl wird automatisch eine neue Sequenzversion für Sie bereitgestellt, wenn Sie den Befehl zum Aktivieren der Verschlüsselung ausführen. Im Beispiel wird „All“ für den Parameter „-VolumeType“ verwendet. Möglicherweise müssen Sie den Parameter „-VolumeType“ in „OS“ ändern, wenn Sie nur den Betriebssystemdatenträger verschlüsseln. Im Gegensatz zur PowerShell-Syntax erfordert die Befehlszeilenschnittstelle vom Benutzer keine Angabe einer eindeutigen Sequenzversion beim Aktivieren der Verschlüsselung. Die Befehlszeilenschnittstelle wird automatisch generiert und verwendet einen eigenen eindeutigen Sequenzversionswert.
 
 -  **Verschlüsseln eines ausgeführten virtuellen Computers:**
 

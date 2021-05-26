@@ -1,24 +1,24 @@
 ---
 title: Übersicht über die Suche in Azure API for FHIR
 description: In diesem Artikel wird eine Übersicht über die FHIR-Suche beschrieben, die in der Azure API for FHIR
-author: stevewohl
+author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 5/17/2021
 ms.author: cavoeg
-ms.openlocfilehash: 93468d2be1c9ab8fbdbce1e82a58f04f0676f260
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2d1bccbd40689a06a13b7a2283ad02a0ac43ce84
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071180"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477825"
 ---
 # <a name="overview-of-fhir-search"></a>Übersicht über die FHIR-Suche
 
-Die FHIR-Spezifikation definiert die Grundlagen der Suche nach FHIR-Ressourcen. Dieser Artikel führt Sie durch einige wichtige Aspekte bei der Suche nach Ressourcen in FHIR. Vollständige Informationen zum Durchsuchen von FHIR-Ressourcen finden Sie unter [Suchen](https://www.hl7.org/fhir/search.html) in der HL7 FHIR-Spezifikation. In diesem Artikel werden Beispiele für die Suchsyntax erläutert. Jede Suche wird für Ihren FHIR-Server ausgeführt, der in der Regel über die URL `https://<FHIRSERVERNAME>.azurewebsites.net` verfügt. In den Beispielen verwenden wir den Platzhalter {{FHIR_URL}} für diese URL. 
+Die FHIR-Spezifikation definiert die Grundlagen der Suche nach FHIR-Ressourcen. Dieser Artikel führt Sie durch einige wichtige Aspekte bei der Suche nach Ressourcen in FHIR. Vollständige Informationen zum Durchsuchen von FHIR-Ressourcen finden Sie unter [Suchen](https://www.hl7.org/fhir/search.html) in der HL7 FHIR-Spezifikation. In diesem Artikel werden Beispiele für die Suchsyntax gezeigt. Jede Suche wird für Ihren FHIR-Server ausgeführt, der in der Regel über die URL `https://<FHIRSERVERNAME>.azurewebsites.net` verfügt. In den Beispielen verwenden wir den Platzhalter {{FHIR_URL}} für diese URL. 
 
-FHIR-Suchvorgänge können für einen bestimmten Ressourcentyp, ein [angegebenes](https://www.hl7.org/fhir/compartmentdefinition.html)Abteil oder alle Ressourcen durchgeführt werden. Die einfachste Möglichkeit zum Ausführen einer Suche in FHIR ist die Verwendung einer `GET` Anforderung. Wenn Sie beispielsweise alle Patienten in die Datenbank pullen möchten, können Sie die folgende Anforderung verwenden: 
+FHIR-Suchvorgänge können für einen bestimmten Ressourcentyp, ein [angegebenes](https://www.hl7.org/fhir/compartmentdefinition.html)Abteil oder alle Ressourcen durchgeführt werden. Die einfachste Möglichkeit, eine Suche in FHIR auszuführen, ist die Verwendung einer `GET` Anforderung. Wenn Sie beispielsweise alle Patienten in die Datenbank pullen möchten, können Sie die folgende Anforderung verwenden: 
 
 ```rest
 GET {{FHIR_URL}}/Patient
@@ -28,7 +28,7 @@ Sie können auch mithilfe von `POST` suchen. Dies ist nützlich, wenn die Abfrag
 
 Wenn die Suchanforderung erfolgreich ist, erhalten Sie eine FHIR-Bündelantwort vom Typ `searchset` . Wenn bei der Suche ein Fehler auftritt, finden Sie die Fehlerdetails im , damit Sie nachvollziehen können, warum `OperationOutcome` die Suche fehlgeschlagen ist.
 
-In den folgenden Abschnitten werden die verschiedenen Aspekte der Suche erläutert. Nachdem Sie diese Details überprüft haben, finden Sie auf unserer Seite mit Beispielen Beispiele für Suchvorgänge, die Sie in der Azure API for FHIR. [](search-samples.md)
+In den folgenden Abschnitten werden die verschiedenen Aspekte der Suche beschrieben. Nachdem Sie diese Details überprüft haben, sehen Sie sich unsere Beispielseite an, die Beispiele für Suchvorgänge enthält, die Sie in der Azure API for FHIR. [](search-samples.md)
 
 ## <a name="search-parameters"></a>Suchparameter
 
@@ -70,7 +70,7 @@ Es gibt [allgemeine Suchparameter,](https://www.hl7.org/fhir/search.html#all) di
 
 ### <a name="resource-specific-parameters"></a>Ressourcenspezifische Parameter
 
-Mit dem Azure API for FHIR unterstützen wir fast alle [ressourcenspezifischen Suchparameter,](https://www.hl7.org/fhir/searchparameter-registry.html) die durch die FHIR-Spezifikation definiert sind. Die einzigen Suchparameter, die wir nicht unterstützen, sind unter den folgenden Links verfügbar:
+Mit der Azure API for FHIR unterstützen wir fast alle [ressourcenspezifischen Suchparameter,](https://www.hl7.org/fhir/searchparameter-registry.html) die durch die FHIR-Spezifikation definiert sind. Die einzigen Suchparameter, die wir nicht unterstützen, sind unter den folgenden Links verfügbar:
 
 * [NICHT unterstützte Suchparameter fürHEIT3](https://github.com/microsoft/fhir-server/blob/main/src/Microsoft.Health.Fhir.Core/Data/Stu3/unsupported-search-parameters.json)
 
@@ -82,13 +82,13 @@ Sie können auch die aktuelle Unterstützung für Suchparameter in der [FHIR Cap
 GET {{FHIR_URL}}/metadata
 ```
 
-Um die Suchparameter in der Capability-Anweisung zu sehen, navigieren Sie zu , um die Suchparameter für jede Ressource und die Suchparameter für `CapabilityStatement.rest.resource.searchParam` `CapabilityStatement.rest.searchParam` alle Ressourcen zu suchen.
+Um die Suchparameter in der Capability-Anweisung zu sehen, navigieren Sie zu , um die Suchparameter für jede Ressource und die Suchparameter für alle `CapabilityStatement.rest.resource.searchParam` `CapabilityStatement.rest.searchParam` Ressourcen zu suchen.
 
 > [!NOTE]
 > Die Azure API for FHIR erstellt oder indiziert nicht automatisch Suchparameter, die nicht durch die FHIR-Spezifikation definiert sind. Wir unterstützen Sie jedoch bei der Definition Ihrer eigenen [Suchparameter.](how-to-do-custom-search.md)
 
 ### <a name="composite-search-parameters"></a>Zusammengesetzte Suchparameter
-Mit der zusammengesetzten Suche können Sie nach Wertpaaren suchen. Wenn Sie beispielsweise nach einer Höhenerkennung suchen, bei der die Person 60 Zoll beträgt, möchten  Sie sicherstellen, dass eine einzelne Komponente der Beobachtung den Höhencode und den Wert von 60 enthielt. Sie möchten keine Beobachtung erhalten, bei der eine Gewichtung von 60 und eine Höhe von 48 gespeichert wurde, obwohl die Beobachtung Einträge mit einem Wert von 60 und einem Höhencode nur in verschiedenen Komponentenabschnitten enthalten würde. 
+Mit der zusammengesetzten Suche können Sie nach Wertpaaren suchen. Wenn Sie beispielsweise nach einer Höhenerkennung suchen, bei der die Person 60 Zoll beträgt, möchten  Sie sicherstellen, dass eine einzelne Komponente der Beobachtung den Höhencode und den Wert von 60 enthielt. Sie möchten keine Beobachtung erhalten, bei der eine Gewichtung von 60 und eine Höhe von 48 gespeichert wurde, obwohl die Beobachtung Einträge mit einem Wert von 60 und einen Höhencode nur in verschiedenen Komponentenabschnitten enthalten würde. 
 
 Mit dem Azure API for FHIR unterstützen wir die folgenden Suchparametertyppaare:
 
