@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f1136676002a737f4e860e33e8b3b855712d3928
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 31c99fbac936ab6ec96d6e24bc824d9cb2069e0f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789819"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078776"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Verwalten eines Graphen von digitalen Zwillingen mithilfe von Beziehungen
 
@@ -95,7 +95,7 @@ Sie können die abgerufenen Beziehungen verwenden, um zu anderen Zwillingen in I
 Azure Digital Twins verfügt auch über eine API, um alle **eingehenden** Beziehungen für einen bestimmten Zwilling zu finden. Dies ist oft nützlich bei der umgekehrten Navigation oder beim Löschen eines Zwillings.
 
 >[!NOTE]
-> `IncomingRelationship`-Aufrufe geben nicht den vollständigen Text der Beziehung zurück. Weitere Informationen finden Sie in der [Referenzdokumentation](/dotnet/api/azure.digitaltwins.core.incomingrelationship) zur `IncomingRelationship`-Klasse.
+> `IncomingRelationship`-Aufrufe geben nicht den vollständigen Text der Beziehung zurück. Weitere Informationen finden Sie in der [Referenzdokumentation](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true) zur `IncomingRelationship`-Klasse.
 
 Das Codebeispiel oben hat sich auf die Suche nach ausgehenden Beziehungen eines Zwillings konzentriert. Das folgende Beispiel ist ähnlich strukturiert, findet aber stattdessen *eingehende* Beziehungen vom Zwilling. Für dieses Beispiel wird auch der SDK-Aufruf (hervorgehoben) innerhalb einer benutzerdefinierten Methode verwendet, die im Kontext eines größeren Programms angezeigt werden kann.
 
@@ -182,7 +182,7 @@ Kopieren Sie dann den **folgenden Code** des ausführbaren Beispiels in Ihr Proj
 Führen Sie als Nächstes die folgenden Schritte aus, um den Projektcode zu konfigurieren:
 1. Fügen Sie Ihrem Projekt die Dateien **Room.json** und **Floor.json** hinzu, die Sie zuvor heruntergeladen haben, und ersetzen Sie die Platzhalter `<path-to>` im Code, um dem Programm mitzuteilen, wo sie zu finden sind.
 1. Ersetzen Sie den Platzhalter `<your-instance-hostname>` durch den Hostnamen Ihrer Azure Digital Twins-Instanz.
-1. Als Nächstes fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu, die erforderlich sind, um Azure Digital Twins verwenden zu können. Bei der ersten handelt es sich um das Paket für das [Azure Digital Twins SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client), und die zweite stellt Tools zur Unterstützung der Authentifizierung bei Azure bereit.
+1. Als Nächstes fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu, die erforderlich sind, um Azure Digital Twins verwenden zu können. Bei der ersten handelt es sich um das Paket für das [Azure Digital Twins SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), und die zweite stellt Tools zur Unterstützung der Authentifizierung bei Azure bereit.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

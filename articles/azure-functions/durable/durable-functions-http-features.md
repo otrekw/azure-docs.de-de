@@ -3,14 +3,14 @@ title: HTTP-Features in Durable Functions – Azure Functions
 description: Erfahren Sie mehr über die integrierten HTTP-Features in der Durable Functions-Erweiterung für Azure Functions.
 author: cgillum
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 64d40de50f21811a56318971de1836abc8fbf8c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67a28bccf3353ed7e33826b0ef5b82fc1cc5f981
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93027260"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376880"
 ---
 # <a name="http-features"></a>HTTP-Features
 
@@ -106,6 +106,48 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 }
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+**run.ps1**
+
+```powershell
+$FunctionName = $Request.Params.FunctionName
+$InstanceId = Start-NewOrchestration -FunctionName $FunctionName
+Write-Host "Started orchestration with ID = '$InstanceId'"
+
+$Response = New-OrchestrationCheckStatusResponse -Request $Request -InstanceId $InstanceId
+Push-OutputBinding -Name Response -Value $Response
+```
+
+**function.json**
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "Request",
+      "type": "httpTrigger",
+      "direction": "in",
+      "route": "orchestrators/{FunctionName}",
+      "methods": [
+        "post",
+        "get"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
+    }
+  ]
+}
+```
 ---
 
 Das Starten einer Orchestratorfunktion mithilfe der oben gezeigten HTTP-Triggerfunktionen kann über einen beliebigen HTTP-Client erfolgen. Der folgende cURL-Befehl startet die Orchestratorfunktion `DoWork`:
@@ -216,6 +258,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Das Feature wird derzeit in PowerShell unterstützt.
+
 ---
 
 Mit der Aktion „call HTTP“ sind in Ihren Orchestratorfunktionen folgende Aktionen möglich:
@@ -313,6 +359,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell) 
+
+Das Feature wird derzeit in PowerShell unterstützt.
+
 ---
 
 Im vorherigen Beispiel ist der `tokenSource`-Parameter so konfiguriert, dass Azure AD-Token für [Azure Resource Manager](../../azure-resource-manager/management/overview.md) abgerufen werden. Die Token werden durch den Ressourcen-URI `https://management.core.windows.net/.default` identifiziert. Im Beispiel wird davon ausgegangen, dass die aktuelle Funktions-App entweder lokal ausgeführt wird oder als eine Funktions-App mit einer verwalteten Identität bereitgestellt wurde. Es wird davon ausgegangen, dass die lokale Identität oder die verwaltete Identität über Berechtigungen zum Verwalten virtueller Computer in der angegebenen Ressourcengruppe `myRG` verfügt.
@@ -331,10 +381,10 @@ Verwaltete Identitäten sind nicht auf die Azure-Ressourcenverwaltung beschränk
 
 Die integrierte Unterstützung für das Aufrufen von HTTP-APIs ist ein praktisches Feature. Es ist nicht für alle Szenarien geeignet.
 
-Von Orchestratorfunktionen gesendete HTTP-Anforderungen und ihre Antworten werden serialisiert und als Warteschlangennachrichten dauerhaft gespeichert. Dieses Warteschlangenverhalten stellt sicher, dass HTTP-Aufrufe [zuverlässig und beim Wiedergeben der Orchestrierung sicher sind](durable-functions-orchestrations.md#reliability). Für das Queuingverhalten gelten jedoch ebenfalls Einschränkungen:
+Von Orchestratorfunktionen gesendete HTTP-Anforderungen und ihre Antworten werden [serialisiert und im Durable Functions-Speicheranbieter dauerhaft beibehalten](durable-functions-serialization-and-persistence.md). Dieses persistente Queuingverhalten stellt sicher, dass HTTP-Aufrufe [zuverlässig und beim Wiedergeben der Orchestrierung sicher sind](durable-functions-orchestrations.md#reliability). Für das persistente Queuingverhalten gelten jedoch ebenfalls Einschränkungen:
 
 * Jede HTTP-Anforderung umfasst eine zusätzliche Wartezeit im Vergleich zu einem nativen HTTP-Client.
-* Umfangreiche Anforderungs- oder Antwortnachrichten, die nicht in eine Warteschlangennachricht passen, können die Orchestrierungsleistung erheblich beeinträchtigen. Der Mehraufwand für die Abladung von Nachrichtennutzlasten im Blobspeicher kann zu einer Leistungsbeeinträchtigung führen.
+* Abhängig vom [konfigurierten Speicheranbieter](durable-functions-storage-providers.md) können große Anforderungs- oder Antwortnachrichten die Orchestrierungsleistung erheblich beeinträchtigen. Wenn Sie beispielsweise Azure Storage verwenden, werden HTTP-Payloads, die zu groß sind, um in Azure-Warteschlangennachrichten zu passen, komprimiert und in Azure Blob Storage gespeichert.
 * Streaming und segmentierte und binäre Nutzlasten werden nicht unterstützt.
 * Die Möglichkeit, das Verhalten des HTTP-Clients anzupassen, ist begrenzt.
 

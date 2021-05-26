@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: cc6ce30855d17f45636e0df04978fed88dcecff7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07ce54e796cdda3cf7661036ba62ee2b6c5a826a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549140"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454033"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4- und Dsv4-Serie
 
@@ -33,7 +33,7 @@ Speicher für Remotedatenträger wird separat zu virtuellen Computern abgerechne
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
-[Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br>

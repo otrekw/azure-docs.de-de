@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie einen Automatisierungsdienstprinzipal de
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 05/14/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f28d7e46acd5d9c22729ff7878f44a27d5cb6363
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93100727"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065690"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle 
 
@@ -103,7 +103,7 @@ Eine verwaltete Identität kann auch der Liste der Analysis Services-Administrat
 
 Im Azure-Portal und den APIs werden verwaltete Identitäten überwiegend über ihre Dienstprinzipalobjekt-ID identifiziert. Analysis Services erfordert jedoch, dass sie über ihre Client-ID identifiziert werden. Zum Abrufen der Client-ID für einen Dienstprinzipal können Sie die Azure-Befehlszeilenschnittstelle verwenden:
 
-```bash
+```azurecli
 az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
 ```
 

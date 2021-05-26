@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9fb77179a00969da7a3dc372dc70c99cfe4220ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e2a8e6893fbcc10fc1c528438034fd36d5b745f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92090997"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477653"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Verwalten von Containereigenschaften und -metadaten mit .NET
 
@@ -30,7 +30,7 @@ Name-Wert-Paare für Metadaten sind gültige HTTP-Header und sollten daher allen
 
 ## <a name="retrieve-container-properties"></a>Abrufen von Containereigenschaften
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Rufen Sie zum Abrufen von Containereigenschaften eine der folgenden Methoden auf:
 
@@ -41,7 +41,7 @@ Das folgende Codebeispiel ruft die Systemeigenschaften eines Containers ab und s
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Das Abrufen von Eigenschafts- und Metadatenwerten einer Blobspeicherressource ist ein zweistufiger Prozess. Bevor Sie diese Werte lesen können, müssen Sie sie explizit durch Aufrufen der **FetchAttributesAsync** oder **FetchAttributesAsync**-Methode abrufen. Ausnahme: Die Methoden **Exists** und **ExistsAsync** rufen die entsprechende Methode vom Typ **FetchAttributes** im Hintergrund auf. Wenn Sie eine dieser Methoden aufrufen, müssen Sie **FetchAttributes** nicht aufrufen.
 
@@ -81,7 +81,7 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 
 ## <a name="set-and-retrieve-metadata"></a>Festlegen und Abrufen von Metadaten
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Sie können Metadaten als ein oder mehrere Name-Wert-Paare für eine Blob- oder Containerressource angeben. Fügen Sie zum Festlegen von Metadaten Name-Wert-Paare zu einem Objekt vom Typ [IDictionary](/dotnet/api/system.collections.idictionary) hinzu, und rufen Sie dann eine der folgenden Methoden auf, um die Werte zu schreiben:
 
@@ -103,7 +103,7 @@ Lesen Sie anschließend die Werte, wie im folgenden Beispiel gezeigt:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Sie können Metadaten als ein oder mehrere Name-Wert-Paare für eine Blob- oder Containerressource angeben. Fügen Sie zum Festlegen von Metadaten Name-Wert-Paare zur Sammlung **Metadaten** der Ressource hinzu, und rufen Sie dann eine der folgenden Methoden auf, um die Werte zu schreiben:
 

@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie externe Ereignisse in der Erweiterung 
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: a7625a6fcd1000595c2c582935c839ba6d26b20d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 513bb1837a50ba05314afb7e89745438e3b8ed79
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728486"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376908"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Behandeln von externen Ereignissen in Durable Functions (Azure Functions)
 
@@ -73,6 +73,20 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
         # approval denied - send a notification
 
 main = df.Orchestrator.create(orchestrator_function)
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+$approved = Start-DurableExternalEventListener -EventName "Approval"
+
+if ($approved) {
+    # approval granted - do the approved action
+} else {
+    # approval denied - send a notification
+}
 ```
 
 ---
@@ -154,6 +168,25 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+$event1 = Start-DurableExternalEventListener -EventName "Event1" -NoWait
+$event2 = Start-DurableExternalEventListener -EventName "Event2" -NoWait
+$event3 = Start-DurableExternalEventListener -EventName "Event3" -NoWait
+
+$winner = Wait-DurableTask -Task @($event1, $event2, $event3) -Any
+
+if ($winner -eq $event1) {
+    # ...
+} else if ($winner -eq $event2) {
+    # ...
+} else if ($winner -eq $event3) {
+    # ...
+}
+```
 ---
 
 Im vorherigen Beispiel wird auf *alle* von mehreren Ereignissen gelauscht. Es ist auch möglich, auf *alle* Ereignisse zu warten.
@@ -221,6 +254,20 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+$applicationId = $Context.Input
+$gate1 = Start-DurableExternalEventListener -EventName "CityPlanningApproval" -NoWait
+$gate2 = Start-DurableExternalEventListener -EventName "FireDeptApproval" -NoWait
+$gate3 = Start-DurableExternalEventListener -EventName "BuildingDeptApproval" -NoWait
+
+Wait-DurableTask -Task @($gate1, $gate2, $gate3)
+
+Invoke-ActivityFunction -FunctionName 'IssueBuildingPermit' -Input $applicationId
+```
 ---
 
 `WaitForExternalEvent` wartet unbegrenzt auf Eingaben.  Die Funktionen-App kann während des Wartens problemlos entladen werden. Wenn ein Ereignis für diese Orchestrierungsinstanz eingeht, wird sie automatisch aktiviert und verarbeitet das Ereignis sofort.
@@ -278,9 +325,16 @@ async def main(instance_id:str, starter: str) -> func.HttpResponse:
     await client.raise_event(instance_id, 'Approval', True)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($instanceId)
+
+Send-DurableExternalEvent -InstanceId $InstanceId -EventName "Approval"
+```
 ---
 
-Intern fügt `RaiseEventAsync` (.NET), `raiseEvent` (JavaScript) oder `raise_event` (Python) eine Nachricht in die Warteschlange ein, die von der wartenden Orchestratorfunktion erfasst wird. Falls die Instanz nicht auf den angegebenen *Ereignisnamen* wartet, wird die Ereignisnachricht einer In-Memory-Warteschlange hinzugefügt. Wenn die Orchestrierungsinstanz später auf den *Ereignisnamen* lauscht, überprüft sie die Warteschlange auf Ereignisnachrichten.
+Intern fügt `RaiseEventAsync` (.NET), `raiseEvent` (JavaScript), `raise_event` (Python) oder `Send-DurableExternalEvent` (PowerShell) eine Nachricht in die Warteschlange ein, die von der wartenden Orchestratorfunktion erfasst wird. Falls die Instanz nicht auf den angegebenen *Ereignisnamen* wartet, wird die Ereignisnachricht einer In-Memory-Warteschlange hinzugefügt. Wenn die Orchestrierungsinstanz später auf den *Ereignisnamen* lauscht, überprüft sie die Warteschlange auf Ereignisnachrichten.
 
 > [!NOTE]
 > Ist keine Orchestrierungsinstanz mit der angegebenen *Instanz-ID* vorhanden, wird die Ereignisnachricht verworfen.

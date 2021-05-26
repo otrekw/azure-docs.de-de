@@ -6,21 +6,21 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 356353da639ab97a1a4e5483abf56050f5a236f8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d6d497d241a91c0125f5ebe1c8437e90679768b8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676059"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064988"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Überwachen des Ausführungsstatus, Überprüfen des Triggerverlaufs und Einrichten von Benachrichtigungen für Azure Logic Apps
 
 Nachdem Sie [eine Logik-App erstellt und ausgeführt haben](../logic-apps/quickstart-create-first-logic-app-workflow.md), können Sie den Ausführungsstatus der Logik-App, den [Ausführungsverlauf](#review-runs-history), den [Triggerverlauf](#review-trigger-history) und die Leistung überprüfen. Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfällen oder anderen möglichen Problemen zu erhalten. Beispielsweise können Sie eine Warnung erstellen, mit der erkannt wird, „wenn in einer Stunde mehr als fünf Ausführungen fehlschlagen“.
 
-Für die Ereignisüberwachung in Echtzeit und die Durchführung eines umfassenderen Debuggens richten Sie die Diagnoseprotokollierung für Ihre Logik-App mithilfe der [Azure Monitor-Protokolle](../azure-monitor/overview.md) ein. Dieser Azure-Dienst hilft Ihnen bei der Überwachung Ihrer Cloud- und lokalen Umgebungen, sodass Sie deren Verfügbarkeit und Leistung leichter sicherstellen können. Sie können dann Ereignisse suchen und anzeigen, z. B. Triggereignisse, Ausführungsereignisse und Aktionsereignisse. Durch das Speichern dieser Informationen in [Azure Monitor-Protokollen](../azure-monitor/platform/data-platform-logs.md) können Sie [Protokollabfragen](../azure-monitor/log-query/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu finden und zu analysieren. Sie können diese Diagnosedaten auch mit anderen Azure-Diensten verwenden, z. B. Azure Storage und Azure Event Hubs. Weitere Informationen finden Sie unter [Überwachen von Logik-Apps mittels Azure Monitor](../logic-apps/monitor-logic-apps-log-analytics.md).
+Für die Ereignisüberwachung in Echtzeit und die Durchführung eines umfassenderen Debuggens richten Sie die Diagnoseprotokollierung für Ihre Logik-App mithilfe der [Azure Monitor-Protokolle](../azure-monitor/overview.md) ein. Dieser Azure-Dienst hilft Ihnen bei der Überwachung Ihrer Cloud- und lokalen Umgebungen, sodass Sie deren Verfügbarkeit und Leistung leichter sicherstellen können. Sie können dann Ereignisse suchen und anzeigen, z. B. Triggereignisse, Ausführungsereignisse und Aktionsereignisse. Durch das Speichern dieser Informationen in [Azure Monitor-Protokollen](../azure-monitor/logs/data-platform-logs.md) können Sie [Protokollabfragen](../azure-monitor/logs/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu finden und zu analysieren. Sie können diese Diagnosedaten auch mit anderen Azure-Diensten verwenden, z. B. Azure Storage und Azure Event Hubs. Weitere Informationen finden Sie unter [Überwachen von Logik-Apps mittels Azure Monitor](../logic-apps/monitor-logic-apps-log-analytics.md).
 
 > [!NOTE]
-> Wenn Ihre Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt werden, die für die Verwendung eines [internen Zugriffsendpunkts](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access) erstellt wurde, können Sie *nur innerhalb Ihres virtuellen Netzwerks* Eingaben und Ausgaben aus dem Ausführungsverlauf der Logik-App anzeigen und darauf zugreifen. Stellen Sie sicher, dass Sie über eine Netzwerkverbindung zwischen den privaten Endpunkten und dem Computer verfügen, von dem aus Sie auf den Ausführungsverlauf zugreifen möchten. Beispielsweise kann sich Ihr Clientcomputer im virtuellen Netzwerk der ISE oder innerhalb eines virtuellen Netzwerks, das mit dem virtuellen Netzwerk der ISE verbunden ist, z. B. durch Peering oder ein virtuelles privates Netzwerk, befinden. Weitere Informationen finden Sie unter [ISE-Endpunktzugriff](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
+> Wenn Ihre Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt werden, die für die Verwendung eines [internen Zugriffsendpunkts](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access) erstellt wurde, können Sie *nur innerhalb Ihres virtuellen Netzwerks* Eingaben und Ausgaben aus dem Ausführungsverlauf der Logik-App anzeigen und darauf zugreifen. Stellen Sie sicher, dass Sie über eine Netzwerkverbindung zwischen den privaten Endpunkten und dem Computer verfügen, von dem aus Sie auf den Ausführungsverlauf zugreifen möchten. Beispielsweise kann sich Ihr Clientcomputer im virtuellen Netzwerk der ISE oder innerhalb eines virtuellen Netzwerks, das mit dem virtuellen Netzwerk der ISE verbunden ist, z. B. durch Peering oder ein virtuelles privates Netzwerk, befinden. Weitere Informationen finden Sie unter [ISE-Endpunktzugriff](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access).
 
 <a name="review-runs-history"></a>
 
@@ -43,7 +43,8 @@ Jedes Mal, wenn der Trigger für ein Element oder Ereignis ausgelöst wird, erst
    Im Bereich „Übersicht“ werden unter **Ausführungsverlauf** alle vergangenen, aktuellen und wartenden Ausführungen Ihrer Logik-App angezeigt. Falls die Liste viele Ausführungen enthält und Sie den gewünschten Eintrag nicht finden können, versuchen Sie, die Liste zu filtern.
 
    > [!TIP]
-   > Wenn der Ausführungsstatus nicht angezeigt wird, aktualisieren Sie die Übersichtsseite, indem Sie **Aktualisieren** auswählen. Für Trigger, die aufgrund von nicht erfüllten Kriterien oder nicht gefundenen Daten übersprungen werden, erfolgt keine Ausführung.
+   > Wenn der Ausführungsstatus nicht angezeigt wird, aktualisieren Sie die Übersichtsseite, indem Sie **Aktualisieren** auswählen.
+   > Für Trigger, die aufgrund von nicht erfüllten Kriterien oder nicht gefundenen Daten übersprungen werden, erfolgt keine Ausführung.
 
    ![Übersicht, Ausführungsverlauf und andere Logik-App-Informationen](./media/monitor-logic-apps/overview-pane-logic-app-details-run-history.png)
 
@@ -91,7 +92,9 @@ Jedes Mal, wenn der Trigger für ein Element oder Ereignis ausgelöst wird, erst
      Sie können jetzt Informationen wie Eingaben unf Ausgaben für diesen Schritt anzeigen, z. B.:
 
    > [!NOTE]
-   > Alle Informationen und Ereignisse zur Laufzeit werden im Logic Apps-Dienst verschlüsselt. Sie werden nur entschlüsselt, wenn ein Benutzer das Anzeigen dieser Daten anfordert. Sie können [Eingaben und Ausgaben im Ausführungsverlauf ausblenden](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) oder den Benutzerzugriff auf diese Informationen mithilfe von [rollenbasierter Azure-Zugriffssteuerung (Azure RBAC)](../role-based-access-control/overview.md) kontrollieren.
+   > Alle Informationen und Ereignisse zur Laufzeit werden im Logic Apps-Dienst verschlüsselt.
+   > Sie werden nur entschlüsselt, wenn ein Benutzer das Anzeigen dieser Daten anfordert.
+   > Sie können [Eingaben und Ausgaben im Ausführungsverlauf ausblenden](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) oder den Benutzerzugriff auf diese Informationen mithilfe von [rollenbasierter Azure-Zugriffssteuerung (Azure RBAC)](../role-based-access-control/overview.md) kontrollieren.
 
 <a name="review-trigger-history"></a>
 
@@ -143,7 +146,7 @@ Jede Logik-App-Ausführung beginnt mit einem Trigger. Der Triggerverlauf enthäl
 
 ## <a name="set-up-monitoring-alerts"></a>Einrichten von Überwachungsbenachrichtigungen
 
-Richten Sie [Benachrichtigungen in Azure Monitor](../azure-monitor/platform/alerts-overview.md) ein, um auf Metriken oder überschrittenen Schwellenwerten basierende Benachrichtigungen für Ihre Logik-App zu erhalten. Informieren Sie sich über [Metriken in Azure](../azure-monitor/platform/data-platform.md). Führen Sie die hier angegebenen Schritte aus, um Benachrichtigungen ohne [Azure Monitor](../azure-monitor/log-query/log-query-overview.md) einzurichten.
+Richten Sie [Benachrichtigungen in Azure Monitor](../azure-monitor/alerts/alerts-overview.md) ein, um auf Metriken oder überschrittenen Schwellenwerten basierende Benachrichtigungen für Ihre Logik-App zu erhalten. Informieren Sie sich über [Metriken in Azure](../azure-monitor/data-platform.md). Führen Sie die hier angegebenen Schritte aus, um Benachrichtigungen ohne [Azure Monitor](../azure-monitor/logs/log-query-overview.md) einzurichten.
 
 1. Wählen Sie im Menü Ihrer Logik-App unter **Überwachung** die Optionen **Benachrichtigungen** > **Neue Benachrichtigungsregel** aus.
 
@@ -189,10 +192,10 @@ Richten Sie [Benachrichtigungen in Azure Monitor](../azure-monitor/platform/aler
 
 > [!TIP]
 > Zum Ausführen einer Logik-App über eine Warnung können Sie den [Anforderungstrigger](../connectors/connectors-native-reqres.md) in Ihren Workflow einbinden, um beispielsweise die folgenden Aufgaben durchzuführen:
-> 
-> * [Posten an Slack](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
-> * [Senden eines Texts](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
-> * [Hinzufügen von Nachrichten zu einer Warteschlange](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
+>
+> * [Posten an Slack](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-slack-with-logic-app)
+> * [Senden eines Texts](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-text-message-with-logic-app)
+> * [Hinzufügen von Nachrichten zu einer Warteschlange](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-queue-with-logic-app)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 4/5/2021
 keywords: ARO, OpenShift, Red Hat, serverlos
-ms.openlocfilehash: 6db87e752745e3df919c93b2ffc8144e5886b319
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0cd6ac8ae31c43bf1fe1be1d42ec27f183512442
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532809"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063624"
 ---
 # <a name="deploy-an-application-to-azure-red-hat-openshift-using-openshift-serverless"></a>Bereitstellen einer Anwendung in Azure Red Hat OpenShift mit OpenShift Serverless
 
@@ -377,4 +377,4 @@ In diesem Leitfaden haben Sie Folgendes gelernt:
 > * Bereitstellen eines serverlosen Projekts mithilfe der Knative-CLI (kn)
 > * Konfigurieren von Blue/Green- und Canary-Bereitstellungen mit der Knative-CLI (kn)
 
-Weitere Informationen zum Erstellen und Bereitstellen serverloser, ereignisgesteuerter Anwendungen in Azure Red Hat OpenShift mithilfe von [OpenShift Serverless](https://www.openshift.com/learn/topics/serverless) finden Sie in den Dokumentationen zu den [ersten Schritten mit OpenShift Serverless](https://docs.openshift.com/container-platform/4.6/serverless/serverless-getting-started.html) und zum [Erstellen und Verwalten serverloser Anwendungen](https://docs.openshift.com/container-platform/4.6/serverless/serving-creating-managing-apps.html).
+Weitere Informationen zum Erstellen und Bereitstellen serverloser, ereignisgesteuerter Anwendungen in Azure Red Hat OpenShift mithilfe von [OpenShift Serverless](https://www.openshift.com/learn/topics/serverless) finden Sie in den Dokumentationen zu den [ersten Schritten mit OpenShift Serverless](https://docs.openshift.com/container-platform/4.6/serverless/serverless-getting-started.html) und zum [Erstellen und Verwalten serverloser Anwendungen](https://docs.openshift.com/container-platform/4.5/serverless/serving-creating-managing-apps.html).

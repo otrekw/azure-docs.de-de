@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 1cb902c4b59193c46dbeca47bb355f0695a0f2c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f70a43efd0b56f76ee4b68e8fede3ce4e255063d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572794"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466022"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Tutorial: Überwachen von veröffentlichten APIs
 
@@ -151,7 +151,7 @@ Wenn Sie die Sammlung von Gatewayprotokollen (GatewayLogs) oder Metriken in eine
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="Screenshot: Element „Protokolle“ im Menü „Überwachung“":::
 
-Führen Sie Abfragen aus, um die Daten anzuzeigen. Es stehen mehrere [Beispielabfragen](../azure-monitor/logs/example-queries.md) zur Verfügung. Sie können aber auch eine eigene Abfrage verwenden. Mit der folgenden Abfrage werden beispielsweise die Daten der letzten 24 Stunden aus der Tabelle „GatewayLogs“ abgerufen:
+Führen Sie Abfragen aus, um die Daten anzuzeigen. Es stehen mehrere [Beispielabfragen](../azure-monitor/logs/queries.md) zur Verfügung. Sie können aber auch eine eigene Abfrage verwenden. Mit der folgenden Abfrage werden beispielsweise die Daten der letzten 24 Stunden aus der Tabelle „GatewayLogs“ abgerufen:
 
 ```kusto
 ApiManagementGatewayLogs

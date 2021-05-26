@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: 4d66b766e1fb3996194b34f88abb4245398f70d2
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: fed4081aaea965e54f229e673718a6d523f82870
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017065"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110080558"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurieren einer Java-App für Azure App Service
 
@@ -189,7 +189,7 @@ Die Azure Blob Storage-Protokollierung für App Services auf Linux-Basis kann nu
 
 ::: zone-end
 
-Wenn Ihre Anwendung [Logback](https://logback.qos.ch/) oder [Log4j](https://logging.apache.org/log4j) für die Ablaufverfolgung verwendet, können Sie diese Ablaufverfolgungen mithilfe der Konfigurationsanweisungen für das Protokollierungsframework unter [Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights](../azure-monitor/app/java-trace-logs.md) zur Überprüfung an Azure Application Insights weiterleiten.
+Wenn Ihre Anwendung [Logback](https://logback.qos.ch/) oder [Log4j](https://logging.apache.org/log4j) für die Ablaufverfolgung verwendet, können Sie diese Ablaufverfolgungen mithilfe der Konfigurationsanweisungen für das Protokollierungsframework unter [Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights](../azure-monitor/app/java-2x-trace-logs.md) zur Überprüfung an Azure Application Insights weiterleiten.
 
 ## <a name="customization-and-tuning"></a>Anpassung und Optimierung
 

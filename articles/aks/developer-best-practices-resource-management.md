@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 2cd2bab05346f66b933512e677f1d38f4514796c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: f45c3a0bb425b9b4d780a78bb32afa3186232b11
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105271"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467096"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Bewährte Anwendungsentwicklermethoden zum Verwalten von Ressourcen in Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,6 @@ Dieser Artikel konzentriert sich auf das Ausführen Ihrer Cluster und Workloads 
 > [!div class="checklist"]
 > * Podressourcenanforderungen und -grenzwerte
 > * Methoden zum Entwickeln und Bereitstellen von Anwendungen mit Bridge to Kubernetes und Visual Studio Code
-> * Verwenden des `kube-advisor`-Tools für die Suche nach Problemen mit Bereitstellungen
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Definieren von Podressourcenanforderungen und -grenzwerten
 
@@ -113,18 +112,6 @@ Die [Visual Studio Code-Erweiterung für Kubernetes][vscode-kubernetes] hilft Ih
 
     ![VS Code-Erweiterung für Kubernetes-Warnung zu fehlenden Arbeitsspeicherlimits](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
 
-## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Regelmäßiges Überprüfen auf Anwendungsprobleme mit dem Kube-Advisor
-
-> **Best Practices-Leitfaden** 
-> 
-> Führen Sie regelmäßig die neueste Version des Open-Source-Tools `kube-advisor` aus, um Probleme in Ihrem Cluster zu erkennen. Führen Sie `kube-advisor` aus, bevor Sie Ressourcenkontingente auf einen bestehenden AKS-Cluster anwenden, um Pods zu finden, für die keine Ressourcenanforderungen und -grenzwerte definiert sind.
-
-Das [kube-advisor][kube-advisor]-Tool ist ein verwandtes Open-Source-Projekt für AKS, das einen Kubernetes-Cluster scannt und erkannte Probleme meldet. Eine nützliche Überprüfung ist die Identifizierung von Pods, für die keine Ressourcenanforderungen und -grenzwerte angegeben sind.
-
-Während das `kube-advisor`-Tool Berichte zu Ressourcenanforderungen und -grenzwerten erstellen kann, die in PodSpecs für Windows- und Linux-Anwendungen fehlen, muss `kube-advisor` selbst auf einem Linux-Pod geplant werden. Verwenden Sie einen [Knotenselektor][k8s-node-selector] in der Konfiguration eines Pods, um ihn für die Ausführung in einem Knotenpool mit einem bestimmten Betriebssystem zu planen.
-
-In einem AKS-Cluster, der viele Entwicklungsteams und Anwendungen hostet, kann es einfacher sein, Pods anhand von Ressourcenanforderungen und -grenzwerten zu verfolgen. Führen Sie als Best Practice regelmäßig `kube-advisor` in Ihren AKS-Clustern aus.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Dieser Artikel konzentriert sich darauf, wie Sie Ihre Cluster und Workloads aus der Perspektive des Clusteroperators ausführen. Weitere Informationen zu bewährten Verwaltungsmethoden finden Sie unter [Bewährte Methoden der Clusterisolierung in Azure Kubernetes Service (AKS)][operator-best-practices-isolation].
@@ -132,16 +119,13 @@ Dieser Artikel konzentriert sich darauf, wie Sie Ihre Cluster und Workloads aus 
 Um einige dieser Best Practices zu implementieren, lesen Sie folgende Artikel:
 
 * [Entwickeln mit Bridge to Kubernetes][btk]
-* [Überprüfen auf Probleme mit dem Kube-Advisor][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
 [k8s-resource-limits]: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 [vscode-kubernetes]: https://github.com/Azure/vscode-kubernetes-tools
-[kube-advisor]: https://github.com/Azure/kube-advisor
 [minikube]: https://kubernetes.io/docs/setup/minikube/
 
 <!-- INTERNAL LINKS -->
-[aks-kubeadvisor]: kube-advisor-tool.md
 [btk]: /visualstudio/containers/overview-bridge-to-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas

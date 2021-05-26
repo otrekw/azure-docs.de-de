@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Clientbibliothek für den plastischen Reader'
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Mit der Clientbibliothek für den plastischen Reader können Sie den Dienst „Plastischer Reader“ problemlos in Ihre Webanwendungen integrieren, um das Leseverständnis zu verbessern. In dieser Schnellstartanleitung erfahren Sie, wie Sie den plastischen Reader für die Textauswahl, die Erkennung von Wortarten, das laute Vorlesen von markiertem Text, die Übersetzung und vieles mehr verwenden.
 services: cognitive-services
 author: nitinme
@@ -13,12 +13,12 @@ ms.date: 03/08/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
 keywords: Bilder anzeigen, Wortarten, markierten Text lesen, Wörter übersetzen, Leseverständnis
-ms.openlocfilehash: 78270700c49e3f0943940db3271a6605d583308c
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 2b368e23063a921b9a7f1cd22d404414b2e9f91d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102619234"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376553"
 ---
 # <a name="quickstart-get-started-with-immersive-reader"></a>Schnellstart: Erste Schritte mit dem plastischen Reader
 

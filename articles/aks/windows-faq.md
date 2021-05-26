@@ -5,12 +5,12 @@ description: Hier finden Sie häufig gestellte Fragen zum Ausführen von Windows
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: e9b2072ddcb688cd320700d47bb5f5f3670e6543
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 192306d2aeb9abddef641c0b55adaacaf8442de2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790071"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065708"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Häufig gestellte Fragen zu Windows Server-Knotenpools in AKS
 
@@ -116,10 +116,6 @@ Kubenet wird derzeit nicht für Windows-Knoten unterstützt.
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Kann ich Eingangscontroller auf Windows-Knoten ausführen?
 
 Ja. Ein Eingangscontroller, der Windows Server-Container unterstützt, kann auf Windows-Knoten in AKS ausgeführt werden.
-
-## <a name="can-i-use-azure-dev-spaces-with-windows-nodes"></a>Kann ich Azure Dev Spaces mit Windows-Knoten verwenden?
-
-Azure Dev Spaces ist derzeit nur für Linux-basierte Knotenpools verfügbar.
 
 ## <a name="can-my-windows-server-containers-use-gmsa"></a>Können meine Windows Server-Container gMSA verwenden?
 
