@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 04/20/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: d6a2b6c30d4ff6212a905e454ff56e844e423d22
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e6841afabe36667070ca595810c423c61db03837
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124633"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377037"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors für Azure Logic Apps
 
@@ -44,7 +44,7 @@ Eine *Aktion* ist ein Vorgang, der dem Trigger folgt und eine Art von Aufgabe in
 
 ## <a name="connector-categories"></a>Konnektorkategorien
 
-In Logic Apps sind die meisten Trigger und Aktionen entweder in einer *integrierten* Version oder in einer *verwalteten Connectorversion* verfügbar. In beiden Versionen ist eine kleine Anzahl von Triggern und Aktionen verfügbar. Die vorhandenen Versionen hängen davon ab, ob Sie eine mehrstufige Logik-App oder eine Logik-App mit nur einem Mandanten erstellen, die derzeit nur in der [Vorschauversion von Logic Apps](../logic-apps/logic-apps-overview-preview.md) verfügbar ist.
+In Logic Apps sind die meisten Trigger und Aktionen entweder in einer *integrierten* Version oder in einer *verwalteten Connectorversion* verfügbar. In beiden Versionen ist eine kleine Anzahl von Triggern und Aktionen verfügbar. Die vorhandenen Versionen hängen davon ab, ob Sie eine mehrstufige Logik-App oder eine Logik-App mit nur einem Mandanten erstellen, die derzeit nur in [Azure Logic Apps mit einem Mandanten](../logic-apps/single-tenant-overview-compare.md) verfügbar ist.
 
 [Integrierte Trigger und Aktionen](built-in.md) werden nativ in der Logic Apps-Runtime ausgeführt, erfordern keine Verbindungen und führen diese Arten von Aufgaben aus:
 

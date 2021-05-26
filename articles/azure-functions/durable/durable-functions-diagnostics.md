@@ -3,14 +3,14 @@ title: Diagnose in Durable Functions – Azure
 description: Es wird beschrieben, wie Sie mit der Erweiterung „Durable Functions“ für Azure Functions Probleme diagnostizieren.
 author: cgillum
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 05/12/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 62cc5e1762a2a54b26cbebae5aa7cfbf64204ba5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1125c2de0f548f1a6086819573acf1a2ac9c3c9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584620"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370890"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnose in Durable Functions in Azure
 
@@ -154,10 +154,12 @@ Das Ergebnis ist eine Liste mit Instanz-IDs und dem aktuellen Laufzeitstatus.
 
 Die Durable-Erweiterungsprotokolle sind nützlich, um das Verhalten Ihrer Orchestrierungslogik zu verstehen. Diese Protokolle enthalten jedoch nicht immer genügend Informationen, um Probleme hinsichtlich Leistung und Zuverlässigkeit auf Frameworkebene zu debuggen. Ab **v2.3.0** der Durable-Erweiterung stehen auch Protokolle, die vom zugrunde liegenden Durable Task Framework (DTFx) ausgegeben werden, zur Erfassung bereit.
 
-Beim Betrachten der vom DTFx ausgegebenen Protokolle ist es wichtig zu verstehen, dass sich die DTFx-Engine aus zwei Komponenten zusammensetzt: der Kern-Dispatch-Engine (`DurableTask.Core`) und einem von vielen unterstützten Speicheranbietern (Durable Functions verwendet standardmäßig `DurableTask.AzureStorage`).
+Beim Betrachten der vom DTFx ausgegebenen Protokolle ist es wichtig zu verstehen, dass sich die DTFx-Engine aus zwei Komponenten zusammensetzt: aus der Kern-Dispatch-Engine (`DurableTask.Core`) und aus einem von vielen unterstützten Speicheranbietern (Durable Functions verwendet standardmäßig `DurableTask.AzureStorage`, es sind jedoch auch [andere Optionen verfügbar](durable-functions-storage-providers.md)).
 
-* **DurableTask.Core**: Enthält Informationen zur Orchestrierungsausführung und Planung auf niedriger Ebene.
-* **DurableTask.AzureStorage**: Enthält Informationen in Bezug auf Interaktionen mit Azure Storage-Artefakten, einschließlich der internen Warteschlangen, Blobs und Speichertabellen, die zum Speichern und Abrufen des internen Orchestrierungszustands verwendet werden.
+* **DurableTask.Core**: zentrale Orchestrierungsausführung und Planungsprotokolle sowie Telemetrie auf niedriger Ebene
+* **DurableTask.AzureStorage**: Back-End-Protokolle des jeweiligen Azure Storage-Zustandsanbieters. Diese Protokolle enthalten ausführliche Informationen mit den internen Warteschlangen, Blobs und Speichertabellen, die zum Speichern und Abrufen des internen Orchestrierungszustands verwendet wurden.
+* **DurableTask.Netherite**: Back-End-Protokolle des jeweiligen [Netherite-Speicheranbieters](https://microsoft.github.io/durabletask-netherite), sofern aktiviert
+* **DurableTask.SqlServer**: Back-End-Protokolle des jeweiligen [Microsoft SQL-Speicheranbieters (MSSQL)](https://microsoft.github.io/durabletask-mssql), sofern aktiviert
 
 Sie können diese Protokolle aktivieren, indem Sie den Abschnitt `logging/logLevel` in der Datei **host.json** Ihrer Funktions-App aktualisieren. Das folgende Beispiel zeigt, wie Warn- und Fehlerprotokolle sowohl von `DurableTask.Core` als auch von `DurableTask.AzureStorage` aktiviert werden können:
 
@@ -176,7 +178,7 @@ Sie können diese Protokolle aktivieren, indem Sie den Abschnitt `logging/logLev
 Wenn Sie Application Insights aktiviert haben, werden diese Protokolle automatisch der `trace`-Sammlung hinzugefügt. Sie können sie auf dieselbe Weise durchsuchen wie andere `trace`-Protokolle mit Kusto-Abfragen.
 
 > [!NOTE]
-> Für Anwendungen in der Produktionsumgebung wird empfohlen, die Protokolle `DurableTask.Core` und `DurableTask.AzureStorage` mit dem Filter `"Warning"` zu aktivieren. Höhere Ausführlichkeitsfilter wie `"Information"` sind sehr nützlich für die Fehlersuche bei Leistungsproblemen. Diese Protokollereignisse weisen jedoch ein hohes Volumen auf und können die Kosten für die Datenspeicherung von Application Insights erheblich erhöhen.
+> Für Produktionsanwendungen wird empfohlen, `DurableTask.Core` und die entsprechenden Protokolle des Speicheranbieters (z. B. `DurableTask.AzureStorage`) mithilfe des `"Warning"`-Filters zu aktivieren. Höhere Ausführlichkeitsfilter wie `"Information"` sind sehr nützlich für die Fehlersuche bei Leistungsproblemen. Diese Protokollereignisse können jedoch ein hohes Volumen aufweisen und die Kosten für die Datenspeicherung von Application Insights erheblich erhöhen.
 
 Die folgende Kusto-Abfrage zeigt, wie DTFx-Protokolle abgefragt werden. Der wichtigste Teil der Abfrage ist `where customerDimensions.Category startswith "DurableTask"`, da dies die Ergebnisse nach Protokollen in den Kategorien `DurableTask.Core` und `DurableTask.AzureStorage` filtert.
 
@@ -471,6 +473,13 @@ Dies ist hilfreich beim Debuggen, da Sie genau sehen, in welchem Zustand sich ei
 
 > [!WARNING]
 > Es ist zwar bequem, den Ausführungsverlauf im Tabellenspeicher angezeigt zu bekommen, aber Sie sollten es vermeiden, Abhängigkeiten von dieser Tabelle einzurichten. Dies kann sich im Rahmen der Weiterentwicklung der Erweiterung Durable Functions ändern.
+
+> [!NOTE]
+> Anstelle des Azure Storage-Standardanbieters können andere Speicheranbieter konfiguriert werden. Je nach dem für Ihre App konfigurierten Speicheranbieter müssen Sie möglicherweise verschiedene Tools verwenden, um den zugrunde liegenden Zustand zu überprüfen. Weitere Informationen finden Sie in der Dokumentation zu [Durable Functions-Speicheranbietern](durable-functions-storage-providers.md).
+
+## <a name="3rd-party-tools"></a>Drittanbietertools
+
+Die Durable Functions-Community veröffentlicht eine Vielzahl von Debug-, Diagnose- oder Überwachungstools. Eines dieser Tools ist das Open-Source-Tool [Durable Functions Monitor](https://github.com/scale-tone/DurableFunctionsMonitor#durable-functions-monitor), ein grafisches Tool zum Überwachen, Verwalten und Debuggen Ihrer Orchestrierungsinstanzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

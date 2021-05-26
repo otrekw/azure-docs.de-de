@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bddb03094b73dbd6d3b8d44c76ab242caa515dc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: efd71944d0c29b9e796c4e5508f6b5116df99ec2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727857"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092816"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Übersicht über die rollenbasierte Zugriffssteuerung in Azure Active Directory
 
@@ -79,9 +79,9 @@ Eine Rollendefinition oder Rolle ist eine Sammlung von Berechtigungen. Eine Roll
 
 Ein Bereich ist die Beschränkung zulässiger Aktionen auf eine bestimmte Azure AD-Ressource im Rahmen einer Rollenzuweisung. Beim Zuweisen einer Rolle können Sie einen Bereich angeben, der den Zugriff des Administrators auf eine bestimmte Ressource beschränkt. Wenn Sie z. B. einem Entwickler eine benutzerdefinierte Rolle – jedoch nur zum Verwalten einer bestimmten Anwendungsregistrierung – zuweisen möchten, können Sie die entsprechende Anwendungsregistrierung als Bereich in die Rollenzuweisung einschließen.
 
-## <a name="required-license-plan"></a>Erforderlicher Lizenzplan
+## <a name="license-requirements"></a>Lizenzanforderungen
 
-Die Nutzung integrierter Rollen in Azure AD ist kostenlos, während für benutzerdefinierte Rollen eine Azure AD Premium P1-Lizenz erforderlich ist. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium](https://azure.microsoft.com/pricing/details/active-directory).
+Die Nutzung integrierter Rollen in Azure AD ist kostenlos, während für benutzerdefinierte Rollen eine Azure AD Premium P1-Lizenz erforderlich ist. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich der allgemein verfügbaren Features der Editionen Free und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.custom: seo-nov-2020
-ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 675cd12c905a65cec0dd2fbb4209b5e2cc3a59ac
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368663"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065258"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken mit automatisch skaliertem Durchsatz
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -59,7 +59,7 @@ Der Einstiegspunkt für den maximalen Durchsatz `Tmax` bei Autoskalierung beträ
 
 ## <a name="enable-autoscale-on-existing-resources"></a>Aktivieren der Autoskalierung für vorhandene Ressourcen
 
-Verwenden Sie [Azure-Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), eine [Azure Resource Manager-Vorlage](how-to-provision-autoscale-throughput.md#azure-resource-manager), [CLI](how-to-provision-autoscale-throughput.md#azure-cli) oder [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell), um die automatische Skalierung für eine vorhandene Datenbank oder einen Container zu aktivieren. Sie können jederzeit zwischen per Autoskalierung bereitgestelltem Durchsatz und Standarddurchsatz (manuell) wechseln. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work).
+Verwenden Sie [Azure-Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), eine [Azure Resource Manager-Vorlage](how-to-provision-autoscale-throughput.md#azure-resource-manager), [CLI](how-to-provision-autoscale-throughput.md#azure-cli) oder [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell), um die automatische Skalierung für eine vorhandene Datenbank oder einen Container zu aktivieren. Sie können jederzeit zwischen per Autoskalierung bereitgestelltem Durchsatz und Standarddurchsatz (manuell) wechseln. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Durchsatz- und Speicherlimits für die Autoskalierung
 
@@ -67,7 +67,7 @@ Für einen beliebigen Wert `Tmax` kann die Datenbank oder der Container insgesam
 
 Wenn Sie z. B. mit dem Höchstwert von 50.000 RU/s beginnen (Skalierungen zwischen 5.000 und 50.000 RU/s), können Sie bis zu 500 GB an Daten speichern. Wenn Sie 500 GB überschreiten (z. B. 600 GB), gilt als neuer Höchstwert 60.000 RU/s (Skalierungen zwischen 6.000 und 60.000 RU/s).
 
-Wenn Sie den Durchsatz auf Datenbankebene mit Autoskalierung verwenden, gilt für die ersten 25 Container ein maximaler automatisch skalierter Durchsatz von 4.000 RU/s (Skalierungen zwischen 400 und 4.000 RU/s), solange Sie nicht mehr als 40 GB Speicher benötigen. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container).
+Wenn Sie den Durchsatz auf Datenbankebene mit Autoskalierung verwenden, gilt für die ersten 25 Container ein maximaler automatisch skalierter Durchsatz von 4.000 RU/s (Skalierungen zwischen 400 und 4.000 RU/s), solange Sie nicht mehr als 40 GB Speicher benötigen. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.yml#can-i-change-the-max-ru-s-on-the-database-or-container--).
 
 ## <a name="comparison--containers-configured-with-manual-vs-autoscale-throughput"></a>Vergleich – Container mit manuell skaliertem und automatisch skaliertem Durchsatz
 Weitere Informationen finden Sie in diesem [Dokument](how-to-choose-offer.md), in dem erläutert wird, wie Sie zwischen Standarddurchsatz (manuell) und Durchsatz mit Autoskalierung wählen.  
@@ -82,7 +82,7 @@ Weitere Informationen finden Sie in diesem [Dokument](how-to-choose-offer.md), i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr in den [häufig gestellten Fragen zur Autoskalierung](autoscale-faq.md).
+* Erfahren Sie mehr in den [häufig gestellten Fragen zur Autoskalierung](autoscale-faq.yml).
 * Erfahren Sie, wie Sie sich [zwischen manuellem Durchsatz und automatisch skaliertem Durchsatz entscheiden](how-to-choose-offer.md).
 * Erfahren Sie mehr über das [Bereitstellen von automatisch skaliertem Durchsatz für eine Datenbank oder einen Container in Azure Cosmos DB](how-to-provision-autoscale-throughput.md).
 * Erfahren Sie mehr über die [Partitionierung](partitioning-overview.md) in Azure Cosmos DB.

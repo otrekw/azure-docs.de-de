@@ -3,17 +3,17 @@ title: 'Häufig gestellte Fragen: überprüfbare Azure-Anmeldeinformationen (Vor
 description: Hier finden Sie Antworten auf häufig gestellte Fragen zu überprüfbaren Anmeldeinformationen.
 author: barclayn
 manager: davba
-ms.service: identity
+ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 3c43cfb537c84fb25a6bf879d32a8034342ff605
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c9253ce81b64b45d0ab8a72605eeba4c0d49f3f6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280716"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457889"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 

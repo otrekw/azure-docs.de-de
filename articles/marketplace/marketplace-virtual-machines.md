@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 6e391ca79c9dcf9ab533a7e67961c654b5f8630b
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 25cfca98857d33a90b2c1f11692d83ae30911bb7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103367"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480869"
 ---
 # <a name="plan-a-virtual-machine-offer"></a>Planen eines VM-Angebots
 
@@ -59,12 +59,7 @@ Detaillierte Anleitungen für das Vorbereiten Ihrer technischen Ressourcen finde
 
 ## <a name="preview-audience"></a>Vorschauzielgruppe
 
-Eine Vorschauzielgruppe kann vor der Liveveröffentlichung im Azure Marketplace auf Ihr VM-Angebot zugreifen, um die gesamte Funktionalität vorab zu testen. Auf der Seite **Vorschauzielgruppe** können Sie eine eingeschränkte Vorschauzielgruppe definieren. 
-
-> [!NOTE]
-> Eine Vorschauzielgruppe unterscheidet sich von einem privaten Plan. Ein privater Plan ist ein Angebot, das nur einem bestimmten Publikum zur Verfügung steht. Darüber hinaus können Sie einen benutzerdefinierten Plan mit bestimmten Kunden aushandeln. Weitere Informationen finden Sie im nächsten Abschnitt: zu Plänen.
-
-Sie können Einladungen an E-Mail-Adressen mit Microsoft-Konto (MSA) oder in Azure Active Directory (Azure AD) senden. Fügen Sie bis zu 10 E-Mail-Adressen manuell hinzu, oder importieren Sie über eine CSV-Datei bis zu 20 E-Mail-Adressen. Wenn Ihr Angebot bereits live geschaltet ist, können Sie dennoch eine Vorschauzielgruppe für das Testen von Änderungen oder für Aktualisierungen Ihres Angebots definieren.
+[!INCLUDE [Test drives section](includes/preview-audience.md)]
 
 ## <a name="plans-and-pricing"></a>Pläne und Preise
 
@@ -77,7 +72,7 @@ VMs können vollständig kommerziell genutzt werden, wobei dafür das Modell der
 
 ### <a name="licensing-options"></a>Lizenzierungsoptionen
 
-Wenn Sie die Veröffentlichung eines neuen VM-Angebots vorbereiten, müssen Sie sich für eine Lizenzierungsoption entscheiden. Davon hängt ab, welche zusätzlichen Informationen Sie später bei der Erstellung Ihres Angebots in Partner Center bereitstellen müssen.
+Wenn Sie die Veröffentlichung eines neuen Angebots vorbereiten, müssen Sie sich für eine Lizenzierungsoption entscheiden. Davon hängt ab, welche zusätzlichen Informationen Sie später bei der Erstellung eines Angebots in Partner Center bereitstellen müssen.
 
 Für VM-Angebote sind die folgenden Lizenzierungsoptionen verfügbar:
 
@@ -106,23 +101,16 @@ Weitere Informationen finden Sie unter [Pläne und Preise für Angebote im komme
 
 Sie können eine Testversion für Ihre VM aktivieren. Über Testversionen können Kunden für eine feste Anzahl von Stunden auf eine vorkonfigurierte Umgebung zugreifen. Sie können Testversionen für beliebige Veröffentlichungsoptionen aktivieren, allerdings gelten für dieses Feature zusätzliche Anforderungen. Weitere Informationen zu Testversionen finden Sie unter [Was ist eine Testversion?](what-is-test-drive.md) Weitere Informationen zum Konfigurieren verschiedener Arten von Testversionen finden Sie unter [Technische Konfiguration der Testversion](test-drive-technical-configuration.md).
 
-> [!TIP]
-> Eine Testversion unterscheidet sich von einer [kostenlosen Testversion](plans-pricing.md#free-trials). Sie können entweder eine Testversion, eine kostenlose Testversion oder beides anbieten. Mit beiden Optionen können Kunden Ihre Lösung für einen festen Zeitraum nutzen. Eine Testversion umfasst jedoch auch eine praktische, selbstgesteuerte Tour durch die wichtigsten Features und Vorteile Ihres Produkts, die in einem praxisnahen Implementierungsszenario veranschaulicht werden.
+[!INCLUDE [Test drives section](includes/test-drives.md)]
 
 ## <a name="customer-leads"></a>Kundenleads
 
-Um Kundeninformationen zu sammeln, müssen Sie Ihr Angebot mit Ihrem CRM-System (Customer Relationship Management) verbinden. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Onlineshop, auf dem der Kunde Ihr Angebot gefunden hat, werden an das von Ihnen konfigurierte CRM-System gesendet. Der kommerzielle Marketplace unterstützt eine Vielzahl von CRM-Systemen. Außerdem können Sie optional eine Azure-Tabelle verwenden oder einen HTTPS-Endpunkt mithilfe von Power Automate konfigurieren.
-
-Eine CRM-Verbindung kann während der Angebotserstellung zu einem beliebigen Zeitpunkt hinzugefügt oder geändert werden. Eine detaillierte Anleitung finden Sie unter [Kundenleads aus Ihrem Angebot im kommerziellen Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md).
+[!INCLUDE [Customer leads section](includes/customer-leads.md)]
 
 ## <a name="legal-contracts"></a>Verträge
 
-Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Reduzierung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft eine Vorlage für Standardverträge bereit, die Sie für Ihre Angebote im kommerziellen Marketplace verwenden können. Wenn Sie Ihre Software unter dem Standardvertrag anbieten, müssen Kunden ihn nur einmal lesen und akzeptieren, und Sie müssen keine benutzerdefinierten Geschäftsbedingungen erstellen.
-
-Wenn Sie sich für die Verwendung des Standardvertrags entscheiden, können Sie dem Standardvertrag universelle Zusatzbedingungen und bis zu 10 benutzerdefinierte Ergänzungen hinzufügen. Sie können anstelle des Standardvertrags Ihre eigenen Geschäftsbedingungen verwenden. Diese Details werden auf der Seite **Eigenschaften** verwaltet. Ausführliche Informationen finden Sie unter [Standardvertrag für den kommerziellen Microsoft-Marketplace](standard-contract.md).
-
-> [!NOTE]
-> Nachdem Sie ein Angebot mit dem Standardvertrag für den kommerziellen Marketplace veröffentlicht haben, können Sie keine eigenen benutzerdefinierten Geschäftsbedingungen mehr verwenden. Es handelt sich um ein „oder“-Szenario. Entweder bieten Sie Ihre Lösung im Rahmen des Standardvertrags oder Ihrer eigenen Geschäftsbedingungen an. Wenn Sie die Bedingungen des Standardvertrags ändern möchten, können Sie dies über Zusatzvereinbarungen für den Standardvertrag erreichen.
+[!INCLUDE [Legal contracts section](includes/legal-contracts-intro.md)]
+[!INCLUDE [Legal section for Standard contracts](includes/legal-contracts-standard.md)]
 
 ## <a name="cloud-solution-providers"></a>Cloud Solution Provider (CSP)
 

@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/15/2021
-ms.openlocfilehash: 536b9092a7bddd353b58874e7aa97291839bafcc
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 613a537dc01262a111c8db70a5013b3346c7aab0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589532"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091610"
 ---
 # <a name="getting-started-with-azure-iot-embedded-device-development"></a>Einstieg in die Entwicklung eingebetteter Azure IoT-Geräte
 
@@ -35,7 +35,6 @@ Die folgenden Tutorials sind im Leitfaden für die ersten Schritte enthalten:
 |[Erste Schritte mit dem NXP MIMXRT1060-EVK Evaluation-Kit](https://go.microsoft.com/fwlink/p/?linkid=2129821) |[NXP MIMXRT1060-EVK](https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/mimxrt1060-evk-i-mx-rt1060-evaluation-kit:MIMXRT1060-EVK)|
 |[Erste Schritte mit dem NXP MIMXRT1050-EVKB Evaluation-Kit](https://github.com/azure-rtos/getting-started/tree/master/NXP/MIMXRT1050-EVKB) |[NXP MIMXRT1050-EVKB](https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt1050-evaluation-kit:MIMXRT1050-EVK)|
 |[Erste Schritte mit dem Microchip ATSAME54-XPRO Evaluation-Kit](https://go.microsoft.com/fwlink/p/?linkid=2129537) |[Microchip ATSAME54-XPRO](https://www.microchip.com/developmenttools/productdetails/atsame54-xpro)|
-|[Erste Schritte mit dem MXChip AZ3166 IoT DevKit](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166) |[MXChip AZ3166 IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/)|
 |[Erste Schritte mit dem Renesas Starter Kit+ für RX65N-2MB](https://github.com/azure-rtos/getting-started/tree/master/Renesas/RSK_RX65N_2MB) |[Renesas Starter Kit+ für RX65N-2MB](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rx-32-bit-performance-efficiency-mcus/rx65n-2mb-starter-kit-plus-renesas-starter-kit-rx65n-2mb)|
 
 ## <a name="next-steps"></a>Nächste Schritte

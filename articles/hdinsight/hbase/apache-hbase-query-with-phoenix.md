@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: bb4996b413528377262c5f28e8ca492ebaa46086
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 5aaea00013c2bc0ed1e8e398348a23b09754c2d1
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065095"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190993"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Schnellstart: Abfragen von Apache HBase in Azure HDInsight mit Apache Phoenix
 
@@ -36,11 +36,11 @@ Ein Teil der Ausgabe ähnelt der folgenden:
 
 ```output
     {
-      "href" : "http://hn*.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net:8080/api/v1/clusters/myCluster/hosts/zk0-brim.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net/host_components/ZOOKEEPER_SERVER",
+      "href" : "http://hn*.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net:8080/api/v1/clusters/myCluster/hosts/<zookeepername1>.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net/host_components/ZOOKEEPER_SERVER",
       "HostRoles" : {
         "cluster_name" : "myCluster",
         "component_name" : "ZOOKEEPER_SERVER",
-        "host_name" : "zk0-brim.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net"
+        "host_name" : "<zookeepername1>.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net"
       }
 ```
 
@@ -56,7 +56,7 @@ Sie können SSH verwenden, um eine Verbindung mit HBase-Clustern herzustellen, u
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Wechseln Sie in das Verzeichnis des Phoenix-Clients. Geben Sie den folgenden Befehl ein:
+2. Wechseln Sie in das Verzeichnis des Phoenix-Clients. Geben Sie folgenden Befehl ein:
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
@@ -68,44 +68,44 @@ Sie können SSH verwenden, um eine Verbindung mit HBase-Clustern herzustellen, u
     ./sqlline.py ZOOKEEPER:2181:/hbase-unsecure
     ```
 
-4. Erstellen Sie eine HBase-Tabelle. Geben Sie den folgenden Befehl ein:
+4. Erstellen Sie eine HBase-Tabelle. Geben Sie folgenden Befehl ein:
 
     ```sql
     CREATE TABLE Company (company_id INTEGER PRIMARY KEY, name VARCHAR(225));
     ```
 
-5. Verwenden Sie den SQLLine-Befehl `!tables`, um alle Tabellen in HBase aufzulisten. Geben Sie den folgenden Befehl ein:
+5. Verwenden Sie den SQLLine-Befehl `!tables`, um alle Tabellen in HBase aufzulisten. Geben Sie folgenden Befehl ein:
 
     ```sqlline
     !tables
     ```
 
-6. Fügen Sie Werte in die Tabelle ein. Geben Sie den folgenden Befehl ein:
+6. Fügen Sie Werte in die Tabelle ein. Geben Sie folgenden Befehl ein:
 
     ```sql
     UPSERT INTO Company VALUES(1, 'Microsoft');
     UPSERT INTO Company VALUES(2, 'Apache');
     ```
 
-7. Fragen Sie die Tabelle ab. Geben Sie den folgenden Befehl ein:
+7. Fragen Sie die Tabelle ab. Geben Sie folgenden Befehl ein:
 
     ```sql
     SELECT * FROM Company;
     ```
 
-8. Löschen Sie einen Datensatz. Geben Sie den folgenden Befehl ein:
+8. Löschen Sie einen Datensatz. Geben Sie folgenden Befehl ein:
 
     ```sql
     DELETE FROM Company WHERE COMPANY_ID=1;
     ```
 
-9. Löschen Sie die Tabelle. Geben Sie den folgenden Befehl ein:
+9. Löschen Sie die Tabelle. Geben Sie folgenden Befehl ein:
 
     ```hbase
     DROP TABLE Company;
     ```
 
-10. Verwenden Sie den SQLLine-Befehl `!quit`, um SQLLine zu beenden. Geben Sie den folgenden Befehl ein:
+10. Verwenden Sie den SQLLine-Befehl `!quit`, um SQLLine zu beenden. Geben Sie folgenden Befehl ein:
 
     ```sqlline
     !quit
