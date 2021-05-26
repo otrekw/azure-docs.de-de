@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de328fb70f8abc32a89b8d5b54b0cb40a12f9356
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171566"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370376"
 ---
 # <a name="event-schemas"></a>Ereignisschemas
 
@@ -52,16 +53,16 @@ Das EventGrid-Schema besteht aus einem Satz erforderlicher Eigenschaften, die ei
 
 Alle Ereignisse weisen die folgenden Daten auf oberster Ebene auf:
 
-| Eigenschaft | type | Erforderlich | BESCHREIBUNG |
+| Eigenschaft | Typ | Erforderlich | BESCHREIBUNG |
 | -------- | ---- | ----------- |-----------
-| topic | Zeichenfolge | Nein | Sollte dem Thema entsprechen, für das es veröffentlicht wurde. Event Grid füllt dies mit dem Namen des Themas auf, für das es veröffentlicht wird, wenn nichts angegeben ist. |
+| topic | Zeichenfolge | No | Sollte dem Thema entsprechen, für das es veröffentlicht wurde. Event Grid füllt dies mit dem Namen des Themas auf, für das es veröffentlicht wird, wenn nichts angegeben ist. |
 | subject | Zeichenfolge | Ja | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | eventType | Zeichenfolge | Ja | Der Ereignistyp für diese Ereignisquelle, z. B. BlobCreated. |
 | eventTime | Zeichenfolge | Ja | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Nein | Eindeutiger Bezeichner für das Ereignis. |
+| id | Zeichenfolge | No | Eindeutiger Bezeichner für das Ereignis. |
 | data | Objekt (object) | Nein | Wird zum Erfassen von Ereignisdaten verwendet, die für die Veröffentlichungsentität spezifisch sind. |
 | dataVersion | Zeichenfolge | Ja | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Nein | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| metadataVersion | Zeichenfolge | No | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 ### <a name="example--eventgrid-schema-event"></a>Beispiel – EventGrid-Schemaereignis
 

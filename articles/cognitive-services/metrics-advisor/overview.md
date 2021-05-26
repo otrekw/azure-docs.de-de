@@ -1,6 +1,6 @@
 ---
-title: Was ist der Metrics Advisor-Dienst?
-titleSuffix: Azure Cognitive Services
+title: Was ist der Azure Metrics Advisor-Dienst?
+titleSuffix: Azure Applied AI Services
 description: Was ist Metrics Advisor?
 services: cognitive-services
 author: mrbullwinkle
@@ -10,16 +10,16 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: dfdd7286013bbb6462fb8e5b1bdf52e6ed738029
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 34ab524cfc00cf4f74d632883ffeb18b904342a6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384679"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376845"
 ---
-# <a name="what-is-metrics-advisor-preview"></a>Was ist Metrics Advisor (Vorschauversion)? 
+# <a name="what-is-azure-metrics-advisor-preview"></a>Was ist Azure Metrics Advisor (Vorschau)? 
 
-Metrics Advisor ist Teil von Azure Cognitive Services und nutzt künstliche Intelligenz zur Datenüberwachung und Anomalieerkennung in Zeitreihendaten. Der Dienst automatisiert die Anwendung von Modellen auf Ihre Daten und bietet eine Reihe von APIs sowie einen webbasierten Arbeitsbereich für die Datenerfassung, Anomalieerkennung und Diagnose, die ganz ohne Maschinen-Lernkenntnisse verwendet werden können. Entwickler können zusätzlich zum Dienst aiops-, präative Wartungs-und Business Monitor-Anwendungen erstellen. Metrics Advisor ermöglicht Folgendes:
+Metrics Advisor ist Teil von [Azure Applied AI Services](../../applied-ai-services/what-are-applied-ai-services.md) und nutzt künstliche Intelligenz zur Datenüberwachung und Anomalieerkennung in Zeitreihendaten. Der Dienst automatisiert die Anwendung von Modellen auf Ihre Daten und bietet eine Reihe von APIs sowie einen webbasierten Arbeitsbereich für die Datenerfassung, Anomalieerkennung und Diagnose, die ganz ohne Maschinen-Lernkenntnisse verwendet werden können. Entwickler können zusätzlich zum Dienst aiops-, präative Wartungs-und Business Monitor-Anwendungen erstellen. Metrics Advisor ermöglicht Folgendes:
 
 * Analysieren mehrdimensionaler Daten aus mehreren Datenquellen
 * Identifizieren und Korrelieren von Anomalien

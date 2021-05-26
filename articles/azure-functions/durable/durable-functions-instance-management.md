@@ -3,30 +3,22 @@ title: Verwalten von Instanzen in Durable Functions – Azure
 description: Es wird beschrieben, wie Instanzen in der Erweiterung Durable Functions für Azure Functions verwaltet werden.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 7329962d547fcb0635e3a9af3d80e562da59f7f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4145ae79f1d25b80852c5c54fcc02044391f602f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199788"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376863"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Verwalten von Instanzen in Durable Functions in Azure
 
-Wenn Sie die [Durable Functions](durable-functions-overview.md)-Erweiterung für Azure Functions verwenden oder damit beginnen möchten, stellen Sie sicher, dass Sie den optimalen Nutzen daraus ziehen. Sie können Ihre Durable Functions-Orchestrierungsinstanzen optimieren, wenn Sie mehr über ihre Verwaltung erfahren. In diesem Artikel wird jeder Instanzenverwaltungsvorgang im Detail erläutert.
-
-Sie können Instanzen z.B. starten und beenden, und Sie können Instanzen abfragen, einschließlich der Möglichkeit, alle Instanzen und Instanzen mit Filtern abzufragen. Darüber hinaus können Sie Ereignisse an Instanzen senden, auf den Abschluss der Orchestrierung warten und HTTP-Management-Webhook-URLs abrufen. Dieser Artikel behandelt auch andere Verwaltungsvorgänge, einschließlich des Zurückspulens von Instanzen, Löschen des Instanzverlaufs und Löschen eines Aufgabenhubs.
-
-In Durable Functions stehen Ihnen für die Implementierung jedes dieses Verwaltungsvorgänge Optionen zur Verfügung. Dieser Artikel enthält Beispiele, in denen die [Azure Functions Core Tools](../functions-run-local.md) für .NET (C#), JavaScript und Python verwendet werden.
+Orchestrierungen in Durable Functions sind zustandsbehaftete Funktionen mit langer Ausführungszeit, die mithilfe integrierter Verwaltungs-APIs gestartet, abgefragt und beendet werden können. Auch einige andere Instanzverwaltungs-APIs werden durch die [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) von Durable Functions verfügbar gemacht, zum Beispiel das Senden externer Ereignisse an Instanzen oder das Löschen des Instanzverlaufs. In diesem Artikel werden alle unterstützten Instanzverwaltungsvorgänge detailliert erläutert.
 
 ## <a name="start-instances"></a>Starten von Instanzen
 
-Es ist wichtig, eine Instanz der Orchestrierung starten zu können. Dies geschieht im Allgemeinen, wenn Sie eine Durable Functions-Bindung im Trigger einer anderen Funktion verwenden.
-
-Die Methoden `StartNewAsync` (.NET), `startNew` (JavaScript) oder `start_new` (Python) für die [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) starten eine neue Instanz. Intern stellt diese Methode eine Nachricht in die Steuerwarteschlange, die dann den Start einer Funktion mit dem angegebenen Namen auslöst, der die [Orchestrierungstriggerbindung](durable-functions-bindings.md#orchestration-trigger) verwendet.
-
-Dieser asynchrone Vorgang wird abgeschlossen, wenn der Orchestrierungsprozess erfolgreich geplant wurde.
+Die Methoden `StartNewAsync` (.NET), `startNew` (JavaScript) oder `start_new` (Python) für die [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) starten eine neue Orchestrierungsinstanz. Intern schreibt diese Methode eine Meldung über den [Durable Functions-Speicheranbieter](durable-functions-storage-providers.md) und wird dann zurückgegeben. Diese Meldung löst asynchron die Ausführung der [Orchestrierungsfunktion](durable-functions-types-features-overview.md#orchestrator-functions) aus, deren Namen angegeben wurde.
 
 Die Parameter zum Starten einer neuen Orchestrierungsinstanz lauten wie folgt:
 
@@ -35,7 +27,7 @@ Die Parameter zum Starten einer neuen Orchestrierungsinstanz lauten wie folgt:
 * **InstanceId**: (Optional) Die eindeutige ID der Instanz. Ohne Angabe dieses Parameters verwendet die Methode eine zufällige ID.
 
 > [!TIP]
-> Verwenden Sie einen zufälligen Bezeichner für die Instanz-ID. Zufällige Instanz-IDs gewährleisten eine gleichmäßige Lastenverteilung, wenn Sie Orchestratorfunktionen über mehrere virtuelle Computer hinweg skalieren. Wenn die ID aus einer externen Quelle stammen muss oder bei der Implementierung des [Singleton-Orchestrator](durable-functions-singletons.md)-Musters sollten Sie nicht zufällige Instanz-IDs verwenden.
+> Verwenden Sie nach Möglichkeit einen zufälligen Bezeichner für die Instanz-ID. Zufällige Instanz-IDs gewährleisten eine gleichmäßige Lastenverteilung, wenn Sie Orchestratorfunktionen über mehrere virtuelle Computer hinweg skalieren. Wenn die ID aus einer externen Quelle stammen muss oder bei der Implementierung des [Singleton-Orchestrator](durable-functions-singletons.md)-Musters sollten Sie nicht zufällige Instanz-IDs verwenden.
 
 Der folgende Code ist eine Beispielfunktion, die eine neue Orchestrierungsinstanz startet:
 
@@ -167,6 +159,9 @@ Sie können eine Instanz auch direkt mit dem Befehl `durable start-new` von [Azu
 > [!NOTE]
 > Bei Core Tools-Befehlen wird davon ausgegangen, dass Sie sie im Stammverzeichnis einer Funktions-App ausführen. Wenn Sie den `connection-string-setting`- und `task-hub-name`-Parameter explizit angeben, können Sie die Befehle von jedem beliebigen Verzeichnis aus ausführen. Sie können diese Befehle zwar ausführen, ohne dass ein Funktions-App-Host ausgeführt wird, aber möglicherweise stellen Sie fest, dass Sie einige Auswirkungen nur dann beobachten können, wenn der Host ausgeführt wird. Beispielsweise reiht der Befehl `start-new` eine Startmeldung in die Warteschlange für den Zielaufgabenhub ein, die Orchestrierung wird jedoch nicht ausgeführt, bis ein Funktions-App-Hostprozess ausgeführt wird, der die Nachricht verarbeiten kann.
 
+> [!NOTE]
+> Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
+
 Der folgende Befehl startet die Funktion HelloWorld und übergibt dieser den Inhalt der Datei `counter-data.json`:
 
 ```bash
@@ -175,7 +170,7 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 ## <a name="query-instances"></a>Abfragen von Instanzen
 
-Im Rahmen Ihres Aufwands zum Verwalten von Orchestrierungen müssen Sie wahrscheinlich Informationen über den Status einer Orchestrierungsinstanz sammeln (z.B., ob sie normal abgeschlossen wurde oder ein Fehler aufgetreten ist).
+Nach dem Starten neuer Orchestrierungsinstanzen müssen Sie wahrscheinlich deren Runtimestatus abfragen, um zu ermitteln, ob diese derzeit ausgeführt werden, erfolgreich ausgeführt wurden oder ein Fehler aufgetreten ist.
 
 Die Methoden `GetStatusAsync` (.NET), `getStatus` (JavaScript) oder `get_status` (Python) für die [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) fragen den Status einer Orchestrierungsinstanz ab.
 
@@ -258,7 +253,12 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Es ist auch möglich, den Status der Orchestrierung direkt über den Befehl `durable get-runtime-status` von [Azure Functions Core Tools](../functions-run-local.md) abzurufen. Hierfür werden die folgenden Parameter verwendet:
+Es ist auch möglich, den Status der Orchestrierung direkt über den Befehl `durable get-runtime-status` von [Azure Functions Core Tools](../functions-run-local.md) abzurufen.
+
+> [!NOTE]
+> Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
+
+Für den Befehl `durable get-runtime-status` werden die folgenden Parameter verwendet:
 
 * **`id` (erforderlich)** : Die ID der Orchestrierungsinstanz.
 * **`show-input` (optional)** : Bei Festlegung auf `true` enthält die Antwort die Eingabe der Funktion. Standardwert: `false`.
@@ -284,16 +284,14 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 ## <a name="query-all-instances"></a>Abfragen aller Instanzen
 
-Anstatt jeweils eine Instanz in Ihrer Orchestrierung abzufragen, finden Sie es möglicherweise effizienter, alle auf einmal abzufragen.
-
-Sie können die Methoden [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET), [getStatusAll](/javascript/api/durable-functions/durableorchestrationclient#getstatusall--) (JavaScript) oder `get_status_all` (Python) verwenden, um die Status aller Orchestrierungsinstanzen abzufragen. In .NET können Sie ein `CancellationToken`-Objekt übergeben, falls Sie die Methode abbrechen möchten. Die Methode gibt eine Liste von Objekten zurück, die die Orchestrierungsinstanzen darstellen, die den Abfrageparametern entsprechen.
+Sie können die Methoden [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync) (.NET), [getStatusAll](/javascript/api/durable-functions/durableorchestrationclient#getstatusall--) (JavaScript) oder `get_status_all` (Python) verwenden, um die Status aller Orchestrierungsinstanzen in Ihrem [Aufgabenhub](durable-functions-task-hubs.md) abzufragen. Diese Methode gibt eine Liste der Objekte zurück, die die Orchestrierungsinstanzen darstellen, die den Abfrageparametern entsprechen.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("GetAllStatus")]
 public static async Task Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestMessage req,
     [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
@@ -354,7 +352,12 @@ Die „function.json“-Konfiguration finden Sie unter [Starten von Instanzen](#
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Es ist auch möglich, Instanzen direkt über den Befehl `durable get-instances` von [Azure Functions Core Tools](../functions-run-local.md) abzufragen. Hierfür werden die folgenden Parameter verwendet:
+Es ist auch möglich, Instanzen direkt über den Befehl `durable get-instances` von [Azure Functions Core Tools](../functions-run-local.md) abzufragen.
+
+> [!NOTE]
+> Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
+
+Für den Befehl `durable get-instances` werden die folgenden Parameter verwendet:
 
 * **`top` (optional)** : Dieser Befehl unterstützt Paging. Dieser Parameter entspricht der Anzahl der pro Anforderung abgerufenen Instanzen. Der Standardwert ist 10.
 * **`continuation-token` (optional)** : Ein Token, das angibt, welche Seite oder welcher Abschnitt der Instanzen abgerufen werden soll. Jede Ausführung von `get-instances` gibt ein Token an den nächsten Satz von Instanzen zurück.
@@ -376,7 +379,7 @@ Mit den Methoden [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extens
 ```csharp
 [FunctionName("QueryStatus")]
 public static async Task Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestMessage req,
     [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
@@ -419,8 +422,8 @@ module.exports = async function(context, req) {
         df.OrchestrationRuntimeStatus.Running,
     ];
     const instances = await client.getStatusBy(
-        new Date(2018, 3, 10, 10, 1, 0),
-        new Date(2018, 3, 10, 10, 23, 59),
+        new Date(2021, 3, 10, 10, 1, 0),
+        new Date(2021, 3, 10, 10, 23, 59),
         runtimeStatus
     );
     instances.forEach((instance) => {
@@ -447,8 +450,8 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
     runtime_status = [OrchestrationRuntimeStatus.Completed, OrchestrationRuntimeStatus.Running]
 
     instances = await client.get_status_by(
-        datetime(2018, 3, 10, 10, 1, 0),
-        datetime(2018, 3, 10, 10, 23, 59),
+        datetime(2021, 3, 10, 10, 1, 0),
+        datetime(2021, 3, 10, 10, 23, 59),
         runtime_status
     )
 
@@ -462,6 +465,11 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 In den Azure Functions Core Tools können Sie auch den Befehl `durable get-instances` mit Filtern verwenden. Zusätzlich zu den oben genannten Parametern `top`, `continuation-token`, `connection-string-setting` und `task-hub-name` können Sie drei Filterparameter (`created-after`, `created-before` und `runtime-status`) verwenden.
 
+> [!NOTE]
+> Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
+
+Im Folgenden sind die Parameter für den Befehl `durable get-instances` angegeben.
+
 * **`created-after` (optional)** : Ruft die nach diesem Datum/dieser Uhrzeit (UTC) erstellten Instanzen ab. Es werden nach ISO 8601 formatierte datetime-Werte akzeptiert.
 * **`created-before` (optional)** : Ruft die vor diesem Datum/dieser Uhrzeit (UTC) erstellten Instanzen ab. Es werden nach ISO 8601 formatierte datetime-Werte akzeptiert.
 * **`runtime-status` (optional)** : Rufen Sie die Instanzen mit einem bestimmten Status ab (z.B. „Ausgeführt“ oder „Abgeschlossen“). Es können mehrere Status angegeben werden (Leerzeichen als Trennzeichen).
@@ -473,12 +481,12 @@ In den Azure Functions Core Tools können Sie auch den Befehl `durable get-insta
 Wenn Sie keine Filter angeben (`created-after`, `created-before` oder `runtime-status`), ruft der Befehl einfach unabhängig von Laufzeitstatus oder Erstellungszeit `top`-Instanzen ab.
 
 ```bash
-func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before  2018-03-10T23:59Z --top 15
+func durable get-instances --created-after 2021-03-10T13:57:31Z --created-before  2021-03-10T23:59Z --top 15
 ```
 
 ## <a name="terminate-instances"></a>Beenden von Instanzen
 
-Wenn die Ausführung einer Orchestrierungsinstanz zu lange dauert, oder Sie sie einfach aus beliebigem Grund vor dem Abschluss beenden müssen, können Sie sie beenden.
+Wenn die Ausführung einer Orchestrierungsinstanz zu lange dauert oder Sie sie aus beliebigem Grund vor dem Abschluss unterbrechen müssen, können Sie sie beenden.
 
 Sie können die Methoden `TerminateAsync` (.NET), `terminate` (JavaScript) oder `terminate` (Python) der [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) zum Beenden von Instanzen verwenden. Die beiden Parameter sind eine `instanceId` und eine `reason`-Zeichenfolge, die in Protokolle und den Instanzenstatus geschrieben werden.
 
@@ -490,7 +498,7 @@ public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
     [QueueTrigger("terminate-queue")] string instanceId)
 {
-    string reason = "It was time to be done.";
+    string reason = "Found a bug";
     return client.TerminateAsync(instanceId, reason);
 }
 ```
@@ -506,7 +514,7 @@ const df = require("durable-functions");
 module.exports = async function(context, instanceId) {
     const client = df.getClient(context);
 
-    const reason = "It was time to be done.";
+    const reason = "Found a bug";
     return client.terminate(instanceId, reason);
 };
 ```
@@ -522,7 +530,7 @@ import azure.durable_functions as df
 async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
     client = df.DurableOrchestrationClient(starter)
 
-    reason = "It was time to be done."
+    reason = "Found a bug"
     return client.terminate(instance_id, reason)
 ```
 
@@ -535,7 +543,12 @@ Eine beendete Instanz wechselt schließlich in den Zustand `Terminated`. Dieser 
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Sie können eine Orchestrierungsinstanz auch direkt mit dem Befehl `durable terminate` von [Azure Functions Core Tools](../functions-run-local.md) beenden. Hierfür werden die folgenden Parameter verwendet:
+Sie können eine Orchestrierungsinstanz auch direkt mit dem Befehl `durable terminate` von [Azure Functions Core Tools](../functions-run-local.md) beenden.
+
+> [!NOTE]
+> Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
+
+Für den Befehl `durable terminate` werden die folgenden Parameter verwendet:
 
 * **`id` (erforderlich)** : Die ID der zu beendenden Orchestrierungsinstanz.
 * **`reason` (optional)** : Der Grund für die Beendigung.
@@ -545,14 +558,14 @@ Sie können eine Orchestrierungsinstanz auch direkt mit dem Befehl `durable term
 Der folgende Befehl beendet die Orchestrierungsinstanz mit der ID 0ab8c55a66644d68a3a8b220b12d209c:
 
 ```bash
-func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was time to be done."
+func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Found a bug"
 ```
 
 ## <a name="send-events-to-instances"></a>Senden von Ereignissen an Instanzen
 
-In einigen Szenarien müssen Ihre Orchestratorfunktionen warten und auf externe Ereignisse lauschen können. Dies schließt [Überwachungsfunktionen](durable-functions-overview.md#monitoring) und Funktionen ein, die auf [menschliche Interaktion](durable-functions-overview.md#human) warten.
+In einigen Szenarios müssen Orchestratorfunktionen auf externe Ereignisse warten und lauschen. Das ist beispielsweise bei Szenarios wie [Überwachung](durable-functions-overview.md#monitoring) oder [menschlicher Interaktion](durable-functions-overview.md#human) nützlich.
 
-Senden Sie Ereignisbenachrichtigungen an aktuell ausgeführte Instanzen, indem Sie die Methode `RaiseEventAsync` (.NET) oder `raiseEvent` (JavaScript) der [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) verwenden. Instanzen, die diese Ereignisse verarbeiten können, warten auf einen Aufruf von `WaitForExternalEvent` (.NET) oder werden für einen Aufruf von `waitForExternalEvent` angehalten (JavaScript).
+Sie können Ereignisbenachrichtigungen an aktuell ausgeführte Instanzen senden, indem Sie die Methode `RaiseEventAsync` (.NET), `raiseEvent` (JavaScript) oder `raise_event` (Python) des [Orchestrierungsclients](durable-functions-bindings.md#orchestration-client) verwenden. Instanzen, die diese Ereignisse verarbeiten können, warten auf einen Aufruf von `WaitForExternalEvent` (.NET) oder auf das Ergebnis eines `waitForExternalEvent`- (JavaScript) oder `wait_for_external_event`-Tasks (Python).
 
 Die Parameter für `RaiseEventAsync` (.NET) und `raiseEvent` (JavaScript) lauten wie folgt:
 
@@ -611,7 +624,12 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Sie können ein Ereignis für eine Orchestrierungsinstanz auch direkt mit dem Befehl `durable raise-event` von [Azure Functions Core Tools](../functions-run-local.md) auslösen. Hierfür werden die folgenden Parameter verwendet:
+Sie können ein Ereignis für eine Orchestrierungsinstanz auch direkt mit dem Befehl `durable raise-event` von [Azure Functions Core Tools](../functions-run-local.md) auslösen.
+
+> [!NOTE]
+> Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
+
+Für den Befehl `durable raise-event` werden die folgenden Parameter verwendet:
 
 * **`id` (erforderlich)** : Die ID der Orchestrierungsinstanz.
 * **`event-name`** : Der Name des auszulösenden Ereignisses.
@@ -631,7 +649,7 @@ func durable raise-event --id 1234567 --event-name MyOtherEvent --event-data 3
 
 Bei lange andauernden Orchestrierungen möchten Sie vielleicht warten und die Ergebnisse einer Orchestrierung erhalten. In diesen Fällen ist es auch sinnvoll, ein Timeout für die Orchestrierung definieren zu können. Wenn das Timeout überschritten wird, sollte der Status der Orchestrierung anstelle der Ergebnisse zurückgegeben werden.
 
-Die Methode `WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET) oder `waitForCompletionOrCreateCheckStatusResponse` (JavaScript) kann verwendet werden, um synchron die tatsächliche Ausgabe einer Orchestrierungsinstanz zu erhalten. Standardmäßig verwenden diese Methoden einen Standardwert von 10 Sekunden für `timeout` und von einer Sekunde für `retryInterval`.  
+Die Methode `WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET), `waitForCompletionOrCreateCheckStatusResponse` (JavaScript) oder `wait_for_completion_or_create_check_status_response` (Python) kann verwendet werden, um synchron die tatsächliche Ausgabe einer Orchestrierungsinstanz abzurufen. Standardmäßig verwenden diese Methoden einen Standardwert von 10 Sekunden für `timeout` und von einer Sekunde für `retryInterval`.  
 
 Hier ist ein Beispiel für eine HTTP-Triggerfunktion angegeben, mit dem die Nutzung dieser API veranschaulicht wird:
 
@@ -683,46 +701,46 @@ def get_time_in_seconds(req: func.HttpRequest, query_parameter_name: str):
 Rufen Sie die Funktion mit der folgenden Zeile auf. Verwenden Sie 2 Sekunden für das Timeout und 0,5 Sekunden für das Wiederholungsintervall:
 
 ```bash
-    http POST http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5
+curl -X POST "http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5"
 ```
 
 Je nach Zeitraum, der zum Abrufen der Antwort aus der Orchestrierungsinstanz erforderlich ist, gibt es zwei Fälle:
 
 * Die Orchestrierungsinstanzen werden innerhalb des definierten Zeitraums (hier: 2 Sekunden) abgeschlossen, und die Antwort ist die tatsächliche Orchestrierungsinstanzausgabe, die synchron bereitgestellt wird:
 
-    ```http
-        HTTP/1.1 200 OK
-        Content-Type: application/json; charset=utf-8
-        Date: Thu, 14 Dec 2018 06:14:29 GMT
-        Transfer-Encoding: chunked
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Thu, 14 Dec 2021 06:14:29 GMT
+Transfer-Encoding: chunked
 
-        [
-            "Hello Tokyo!",
-            "Hello Seattle!",
-            "Hello London!"
-        ]
-    ```
+[
+    "Hello Tokyo!",
+    "Hello Seattle!",
+    "Hello London!"
+]
+```
 
 * Die Orchestrierungsinstanzen können nicht innerhalb des definierten Timeouts abgeschlossen werden, und die Antwort ist die Standardantwort, die unter [Ermittlung der HTTP-API-URL](durable-functions-http-api.md) beschrieben ist:
 
-    ```http
-        HTTP/1.1 202 Accepted
-        Content-Type: application/json; charset=utf-8
-        Date: Thu, 14 Dec 2018 06:13:51 GMT
-        Location: http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}
-        Retry-After: 10
-        Transfer-Encoding: chunked
+```http
+HTTP/1.1 202 Accepted
+Content-Type: application/json; charset=utf-8
+Date: Thu, 14 Dec 2021 06:13:51 GMT
+Location: http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}
+Retry-After: 10
+Transfer-Encoding: chunked
 
-        {
-            "id": "d3b72dddefce4e758d92f4d411567177",
-            "sendEventPostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
-            "statusQueryGetUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
-            "terminatePostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
-        }
-    ```
+{
+    "id": "d3b72dddefce4e758d92f4d411567177",
+    "sendEventPostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
+    "statusQueryGetUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
+    "terminatePostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
+}
+```
 
 > [!NOTE]
-> Das Format der Webhook-URLs kann in Abhängigkeit davon variieren, welche Version des Azure Functions-Hosts Sie ausführen. Das obige Beispiel gilt für den Azure Functions 2.0-Host.
+> Das Format der Webhook-URLs kann in Abhängigkeit davon variieren, welche Version des Azure Functions-Hosts Sie ausführen. Das obige Beispiel gilt für den Azure Functions 3.0-Host.
 
 ## <a name="retrieve-http-management-webhook-urls"></a>Abrufen von HTTP-Management-Webhook-URLs
 
@@ -867,7 +885,12 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Sie können eine Orchestrierungsinstanz auch direkt mit dem Befehl `durable rewind` von [Azure Functions Core Tools](../functions-run-local.md) zurückspulen. Hierfür werden die folgenden Parameter verwendet:
+Sie können eine Orchestrierungsinstanz auch direkt mit dem Befehl `durable rewind` von [Azure Functions Core Tools](../functions-run-local.md) zurückspulen.
+
+> [!NOTE]
+> Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
+
+Für den Befehl `durable rewind` werden die folgenden Parameter verwendet:
 
 * **`id` (erforderlich)** : Die ID der Orchestrierungsinstanz.
 * **`reason` (optional)** : Der Grund für das Zurückspulen der Orchestrierungsinstanz.
@@ -880,7 +903,7 @@ func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator
 
 ## <a name="purge-instance-history"></a>Löschen des Instanzverlaufs
 
-Um alle Daten im Zusammenhang mit einer Orchestrierung zu entfernen, können Sie den Instanzverlauf löschen. Beispielsweise möchten Sie möglicherweise alle Azure Table-Zeilen und große Nachrichtenblobs löschen, die einer abgeschlossenen Instanz zugeordnet sind. Verwenden Sie zu diesem Zweck die Methode `PurgeInstanceHistoryAsync` (.NET) oder `purgeInstanceHistory` (JavaScript) der [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client).
+Um alle Daten im Zusammenhang mit einer Orchestrierung zu entfernen, können Sie den Instanzverlauf löschen. Beispielsweise möchten Sie möglicherweise alle Azure Table-Zeilen und große Nachrichtenblobs löschen, die einer abgeschlossenen Instanz zugeordnet sind. Hierfür können Sie die Methode `PurgeInstanceHistoryAsync` (.NET), `purgeInstanceHistory` (JavaScript) oder `purge_instance_history` (Python) des [Orchestrierungsclientobjekts](durable-functions-bindings.md#orchestration-client) verwenden.
 
 Diese Methode verfügt über zwei Überladungen. Bei der ersten Überladung wird der Verlauf durch die ID der Orchestrierungsinstanz bereinigt:
 
@@ -923,7 +946,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ---
 
-Das nächste Beispiel zeigt eine von einem Timer ausgelöste Funktion, die den Verlauf für alle Orchestrierungsinstanzen löscht, die nach Ablauf der angegebenen Zeitspanne abgeschlossen wurden. In diesem Fall werden die Daten für alle Instanzen entfernt, die vor mindestens 30 Tagen abgeschlossen wurden. Die Ausführung der Funktion ist einmal pro Tag um 24 Uhr geplant:
+Das nächste Beispiel zeigt eine von einem Timer ausgelöste Funktion, die den Verlauf für alle Orchestrierungsinstanzen löscht, die nach Ablauf der angegebenen Zeitspanne abgeschlossen wurden. In diesem Fall werden die Daten für alle Instanzen entfernt, die vor mindestens 30 Tagen abgeschlossen wurden. Diese Beispielfunktion wird einmal täglich um 12:00 Uhr UTC ausgeführt:
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -931,7 +954,7 @@ Das nächste Beispiel zeigt eine von einem Timer ausgelöste Funktion, die den V
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [TimerTrigger("0 0 12 * * *")]TimerInfo myTimer)
+    [TimerTrigger("0 0 12 * * *")] TimerInfo myTimer)
 {
     return client.PurgeInstanceHistoryAsync(
         DateTime.MinValue,
@@ -987,6 +1010,7 @@ module.exports = async function (context, myTimer) {
     return client.purgeInstanceHistoryBy(createdTimeFrom, createdTimeTo, runtimeStatuses);
 };
 ```
+
 # <a name="python"></a>[Python](#tab/python)
 
 ```python
@@ -1010,7 +1034,12 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Sie können den Verlauf einer Orchestrierungsinstanz mit dem Befehl `durable purge-history` von [Azure Functions Core Tools](../functions-run-local.md) löschen. Ähnlich wie im zweiten C#-Beispiel im vorherigen Abschnitt wird der Verlauf für alle Orchestrierungsinstanzen gelöscht, die während eines angegebenen Zeitintervalls erstellt wurden. Sie können gelöschte Instanzen weiter nach dem Laufzeitstatus filtern. Der Befehl verfügt über mehrere Parameter:
+Sie können den Verlauf einer Orchestrierungsinstanz mit dem Befehl `durable purge-history` von [Azure Functions Core Tools](../functions-run-local.md) löschen. Ähnlich wie im zweiten C#-Beispiel im vorherigen Abschnitt wird der Verlauf für alle Orchestrierungsinstanzen gelöscht, die während eines angegebenen Zeitintervalls erstellt wurden. Sie können gelöschte Instanzen weiter nach dem Laufzeitstatus filtern.
+
+> [!NOTE]
+> Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
+
+Der Befehl `durable purge-history` verfügt über mehrere Parameter:
 
 * **`created-after` (optional)** : Löscht den Verlauf der nach diesem Datum/dieser Uhrzeit (UTC) erstellten Instanzen. Es werden nach ISO 8601 formatierte datetime-Werte akzeptiert.
 * **`created-before` (optional)** : Löscht den Verlauf der vor diesem Datum/dieser Uhrzeit (UTC) erstellten Instanzen. Es werden nach ISO 8601 formatierte datetime-Werte akzeptiert.
@@ -1018,15 +1047,20 @@ Sie können den Verlauf einer Orchestrierungsinstanz mit dem Befehl `durable pur
 * **`connection-string-setting` (optional)** : Der Name der Anwendungseinstellung mit der zu verwendenden Speicherverbindungszeichenfolge. Der Standardwert lautet `AzureWebJobsStorage`.
 * **`task-hub-name` (optional)** : Der Name des zu verwendenden Durable Functions-Aufgabenhubs. Standardmäßig wird der Aufgabenhubname in der Datei [host.json](durable-functions-bindings.md#host-json) verwendet.
 
-Der folgende Befehl löscht den Verlauf aller fehlerhaften Instanzen, die vor dem 14. November 2018 um 19:35 Uhr (UTC) erstellt wurden.
+Der folgende Befehl löscht den Verlauf aller fehlerhaften Instanzen, die vor dem 14. November 2021 um 19:35 Uhr UTC erstellt wurden.
 
 ```bash
-func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runtime-status failed
+func durable purge-history --created-before 2021-11-14T19:35:00.0000000Z --runtime-status failed
 ```
 
 ## <a name="delete-a-task-hub"></a>Löschen eines Aufgabenhubs
 
-Mithilfe des Befehls `durable delete-task-hub` von [Azure Functions Core Tools](../functions-run-local.md) können Sie alle Speicherartefakte löschen, die einem bestimmten Aufgabenhub zugeordnet sind, einschließlich Azure Storage-Tabellen. -Abfragen und -Blobs. Der Befehl verfügt über zwei Parameter:
+Mithilfe des Befehls `durable delete-task-hub` von [Azure Functions Core Tools](../functions-run-local.md) können Sie alle Speicherartefakte löschen, die einem bestimmten Aufgabenhub zugeordnet sind, einschließlich Azure Storage-Tabellen. -Abfragen und -Blobs. 
+
+> [!NOTE]
+> Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
+
+Der Befehl `durable delete-task-hub` verfügt über zwei Parameter:
 
 * **`connection-string-setting` (optional)** : Der Name der Anwendungseinstellung mit der zu verwendenden Speicherverbindungszeichenfolge. Der Standardwert lautet `AzureWebJobsStorage`.
 * **`task-hub-name` (optional)** : Der Name des zu verwendenden Durable Functions-Aufgabenhubs. Standardmäßig wird der Aufgabenhubname in der Datei [host.json](durable-functions-bindings.md#host-json) verwendet.
