@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: aef8055d289ada8a62078185517c3ba129972488
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c9be8958dada7acc5d53e6c99c79527e10142121
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099853"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463091"
 ---
 # <a name="add-replicas-to-azure-cache-for-redis"></a>Hinzufügen von Replikaten zu Azure Cache for Redis
 In diesem Artikel erfahren Sie, wie Sie eine Azure Cache-Instanz mit weiteren Replikaten über das Azure-Portal einrichten.
@@ -45,10 +45,6 @@ Führen Sie die folgenden Schritte aus, um einen Cache zu erstellen:
     :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Replikatanzahl.":::
 
 1. Behalten Sie bei den anderen Optionen die Standardeinstellungen bei. 
-
-    > [!NOTE]
-    > Die Unterstützung für mehrere Replikate funktioniert zurzeit nur mit nicht gruppierten Caches.
-    >
 
 1. Klicken Sie auf **Erstellen**.
    

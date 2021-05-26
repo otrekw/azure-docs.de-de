@@ -4,12 +4,12 @@ description: Suchen Sie nach mit Trace, NLog oder Log4Net generierten Protokolle
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f94920d44e37aae17c484be4f8e74a4f351e1b1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937553"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082772"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Untersuchen von .NET/.NET Core- und Python-Ablaufverfolgungsprotokollen in Application Insights
 
@@ -195,7 +195,7 @@ Sie haben beispielsweise folgende Möglichkeiten:
 ### <a name="how-do-i-do-this-for-java"></a>Wie geht das mit Java?
 In der Java-Instrumentierung ohne Code (empfohlen) werden die Protokolle standardmäßig erfasst. Verwenden Sie den [Java 3.0-Agent](./java-in-process-agent.md).
 
-Wenn Sie das Java-SDK verwenden, verwenden Sie die [Java-Protokolladapter](./java-trace-logs.md).
+Wenn Sie das Java-SDK verwenden, verwenden Sie die [Java-Protokolladapter](java-2x-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Keine Application Insights-Option im Kontextmenü des Projekts
 * Stellen Sie sicher, dass die Developer Analytics Tools auf diesem Entwicklungscomputer installiert sind. Suchen Sie in Visual Studio im Menü **Extras** > **Erweiterungen und Updates** nach **Developer Analytics Tools**. Wenn die Option nicht auf der Registerkarte **Installiert** angezeigt wird, öffnen Sie die Registerkarte **Online** und installieren sie.

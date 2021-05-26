@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 8964248bb23b2b615c7e73e26d730fbd79b4e9e7
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4b15d683a54f665e948dc31b51df039d20c58f7a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102184456"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081369"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Erstellen einer Oracle-Datenbank auf einem virtuellem Azure-Computer
 
@@ -69,7 +69,7 @@ Nach der Erstellung des virtuellen Computers zeigt die Azure CLI Informationen a
 ## <a name="create-and-attach-a-new-disk-for-oracle-datafiles-and-fra"></a>Erstellen und Anfügen eines neuen Datenträgers für Oracle-Datendateien und FRA
 
 ```bash
-az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 128 --sku StandardSSD_LRS --vm-name vmoracle19c
+az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 64 --sku StandardSSD_LRS --vm-name vmoracle19c
 ```
 
 ## <a name="open-ports-for-connectivity"></a>Öffnen der Ports für Konnektivität

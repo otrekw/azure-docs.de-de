@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: df71c1a92840ae0e7fa263e2ababcf5b3e059789
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 11761a7ec3716703d6714b515957d3a085791354
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832534"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068246"
 ---
 # <a name="create-an-app-service-app-and-deploy-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Erstellen einer App Service-App und Bereitstellen eines privaten Endpunkts mithilfe einer Azure Resource Manager-Vorlage
 
@@ -32,13 +32,13 @@ Mit dieser Vorlage wird ein privater Endpunkt für eine Azure-Web-App erstellt.
 
 ### <a name="review-the-template"></a>Überprüfen der Vorlage
 
-:::code language="json" source="~/quickstart-templates/101-private-endpoint-webapp/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/private-endpoint-webapp/azuredeploy.json" :::
 
 ### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 So stellen Sie die Azure Resource Manager-Vorlage in Azure bereit:
 
-1. Wählen Sie den folgenden Link aus, um sich bei Azure anzumelden und die Vorlage zu öffnen:  [Bereitstellung in Microsoft Azure:](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json) Die Vorlage erstellt das virtuelle Netzwerk, die Web-App, den privaten Endpunkt und die private DNS-Zone.
+1. Wählen Sie den folgenden Link aus, um sich bei Azure anzumelden und die Vorlage zu öffnen:  [Bereitstellung in Microsoft Azure:](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.web%2Fprivate-endpoint-webapp%2Fazuredeploy.json) Die Vorlage erstellt das virtuelle Netzwerk, die Web-App, den privaten Endpunkt und die private DNS-Zone.
 2. Wählen Sie Ihre Ressourcengruppe aus, oder erstellen Sie sie.
 3. Geben Sie den Namen Ihrer Web-App, den Azure App Service-Plan und den privaten Endpunkt ein.
 5. Lesen Sie die Geschäftsbedingungen. Wenn Sie einverstanden sind, wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** > **Kaufen** aus. Die Bereitstellung kann einige Minuten dauern.

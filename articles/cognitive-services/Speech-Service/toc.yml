@@ -116,7 +116,7 @@
           href: how-to-speech-synthesis-viseme.md
         - name: Anpassung
           items:
-            - name: "Custom\_Voice-Portal"
+            - name: Benutzerdefinierte neuronale Stimme
               items:
                 - name: Worum handelt es sich bei „Benutzerdefinierte neuronale Stimme“?
                   href: custom-neural-voice.md

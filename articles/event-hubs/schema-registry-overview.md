@@ -2,14 +2,14 @@
 title: Azure-Schemaregistrierung in Event Hubs (Vorschau)
 description: Dieser Artikel bietet eine Übersicht über die Unterstützung der Schemaregistrierung durch Azure Event Hubs (Vorschau).
 ms.topic: overview
-ms.date: 04/28/2021
+ms.date: 05/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 578bb082cf439d48b186461742ed51c39ce85e80
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 43380ccd4f20616676f4eeb53fb2231b4f76f4e9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226442"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371203"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure-Schemaregistrierung in Event Hubs (Vorschau)
 In vielen Ereignisstreaming- und Messagingszenarien enthält die Ereignis- oder Nachrichtennutzlast strukturierte Daten, die entweder serialisiert oder mithilfe eines schemagesteuerten Formats wie Apache Avro deserialisiert werden. Absender und Empfänger können die Integrität der Daten mit einem Schemadokument wie bei einem JSON-Schema überprüfen. Bei schemagesteuerten Formaten ist die Bereitstellung des Schemas für den Nachrichtenconsumer eine Voraussetzung für den Consumer, und die Daten deserialisieren zu können. 
@@ -18,7 +18,7 @@ Die **Azure-Schemaregistrierungs** ist eine Funktion von Event Hubs, die ein zen
 
 > [!NOTE]
 > - Die Funktion **Schemaregistrierung** ist derzeit als **Vorschau** verfügbar und nicht für Produktionsworkloads vorgesehen.
-> - Das Feature ist nur in den Tarifen **Standard** und **Dediziert** verfügbar, nicht im Tarif **Basic**.
+> - Das Feature ist im **Basic**-Tarif nicht verfügbar.
 
 Bei schemagesteuerten Serialisierungsframeworks wie Apache Avro kann die Externalisierung von Serialisierungsmetadaten in gemeinsam genutzte Schemas auch dazu beitragen, den Mehraufwand für Typinformationen und Feldnamen pro Nachricht, die in jedem Datensatz enthalten sind, drastisch zu reduzieren, der bei getaggten Formaten wie JSON anfällt. Durch die Speicherung von Schemas zusammen mit den Ereignissen und innerhalb der Ereignisinfrastruktur wird sichergestellt, dass die für die Serialisierung/Deserialisierung erforderlichen Metadaten immer erreichbar sind und Schemas nicht falsch platziert werden können. 
 
@@ -47,8 +47,8 @@ Die folgende Abbildung zeigt den Informationsfluss der Schemaregistrierung mit E
 
 :::image type="content" source="./media/schema-registry-overview/flow-diagram.png" alt-text="Flussdiagramm":::
 
-## <a name="standard-vs-dedicated-limits"></a>Standard- und dedizierte Grenzwerte im Vergleich
-Informationen zu Grenzwerten (z. B. zur Anzahl von Schemagruppen in einem Namespace), die identisch sind und für Standard- und Dedicated-Tarife von Event Hubs unterschiedlich sind, finden Sie unter [Kontingente und Grenzwerte in Azure Event Hubs](event-hubs-quotas.md).
+## <a name="limits"></a>Grenzwerte
+Informationen zu Grenzwerten (z. B. zur Anzahl von Schemagruppen in einem Namespace) von Event Hubs finden Sie unter [Kontingente und Grenzwerte in Azure Event Hubs](event-hubs-quotas.md).
 
 ## <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 Wenn Sie programmgesteuert auf die Schemaregistrierung zugreifen, müssen Sie eine Anwendung in Azure Active Directory (Azure AD) registrieren und den Sicherheitsprinzipal der Anwendung einer der Rollen der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC) hinzufügen:

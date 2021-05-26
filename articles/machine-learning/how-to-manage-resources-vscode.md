@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwalten von Ressourcen mit der VS Code-Erweiterung (Vorschau)
+title: Erstellen und Verwalten von Ressourcen mit der VS Code-Erweiterung (Vorschau)
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie Azure Machine Learning-Ressourcen mithilfe der Azure Machine Learning Visual Studio Code-Erweiterung erstellen und verwalten.
 services: machine-learning
@@ -9,13 +9,13 @@ ms.reviewer: luquinta
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 11/16/2020
-ms.openlocfilehash: a968f50b1a867e17659195a53e7aa4383628500a
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 05/25/2021
+ms.openlocfilehash: e0922d4b32162660e5ede7501eb4a23db519b9b2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888942"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377162"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Verwalten von Azure Machine Learning-Ressourcen mit der VS Code-Erweiterung (Vorschau)
 
@@ -27,9 +27,37 @@ Hier erfahren Sie, wie Sie Azure Machine Learning-Ressourcen mit der VS Code-Erw
 
 - Azure-Abonnement. Wenn Sie keins besitzen, können Sie sich für die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) registrieren.
 - Visual Studio Code. Sollte diese Komponente noch nicht vorhanden sein, [installieren Sie sie](https://code.visualstudio.com/docs/setup/setup-overview).
-- VS Code-Azure Machine Learning-Erweiterung. Befolgen Sie die [Anleitung zur Installation der Azure Machine Learning-Erweiterung für VS Code](tutorial-setup-vscode-extension.md#install-the-extension), um die Erweiterung zu installieren.
+- Azure Machine Learning-Erweiterung. Befolgen Sie die [Anleitung zur Installation der Azure Machine Learning-Erweiterung für VS Code](how-to-setup-vs-code.md), um die Erweiterung einzurichten.
 
-Bei allen folgenden Prozessen wird davon ausgegangen, dass Sie die Azure Machine Learning-Ansicht in Visual Studio Code verwenden. Wählen Sie zum Starten der Erweiterung das Symbol **Azure** in der VS Code-Aktivitätsleiste aus.
+## <a name="create-resources"></a>Erstellen von Ressourcen
+
+Am schnellsten können Sie Ressourcen erstellen, indem Sie die Symbolleiste der Erweiterung verwenden.
+
+1. Öffnen Sie die Azure Machine Learning-Ansicht.
+1. Wählen Sie in der Aktivitätsleiste das Pluszeichen ( **+** ) aus.
+1. Wählen Sie Ihre Ressource in der Dropdownliste aus.
+1. Konfigurieren Sie die Spezifikationsdatei. Die erforderlichen Informationen richten sich nach der Art der Ressource, die Sie erstellen möchten.
+1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+
+Alternativ können Sie eine Ressource auch mit der Befehlspalette erstellen:
+
+1. Öffnen Sie die Befehlspalette mit **Ansicht > Befehlspalette**.
+1. Geben Sie `> Azure ML: Create <RESOURCE-TYPE>` in das Textfeld ein. Ersetzen Sie `RESOURCE-TYPE` durch den Typ der Ressource, die Sie erstellen möchten.
+1. Konfigurieren Sie die Spezifikationsdatei.
+1. Öffnen Sie die Befehlspalette mit **Ansicht > Befehlspalette**.
+1. Geben Sie `> Azure ML: Create Resource` in das Textfeld ein.
+
+## <a name="version-resources"></a>Versehen von Ressourcen mit einer Version
+
+Bei einigen Arten von Ressourcen, z. B. Umgebungen, Datasets und Modellen, können Sie Änderungen vornehmen und die unterschiedlichen Versionen speichern.
+
+Versehen Sie eine Ressource wie folgt mit einer Version:
+
+1. Verwenden Sie die vorhandene Spezifikationsdatei, die für die Erstellung der Ressource verwendet wurde, oder befolgen Sie den Prozess zum Erstellen von Ressourcen, um eine neue Spezifikationsdatei zu erstellen.
+1. Inkrementieren Sie die Versionsnummer in der Vorlage.
+1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+
+Sofern der Name der aktualisierten Ressource dem Namen der vorherigen Version entspricht, werden die Änderungen von Azure Machine Learning übernommen, und es wird eine neue Version erstellt.
 
 ## <a name="workspaces"></a>Arbeitsbereiche
 
@@ -37,20 +65,13 @@ Weitere Informationen finden Sie im [Artikel zu Arbeitsbereichen](concept-worksp
 
 ### <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
-1. Klicken Sie in der Azure Machine Learning-Ansicht mit der rechten Maustaste auf Ihren Abonnementknoten, und wählen Sie **Create workspace** (Arbeitsbereich erstellen) aus.
-1. An der Eingabeaufforderung:
-    1. Geben Sie einen Namen für den Arbeitsbereich ein.
-    1. Wählen Sie Ihr Azure-Abonnement aus.
-    1. Wählen Sie eine Ressourcengruppe aus, in der der Arbeitsbereich bereitgestellt werden soll, oder erstellen Sie sie.
-    1. Wählen Sie den Speicherort aus, in dem der Arbeitsbereich bereitgestellt werden soll.
+1. Klicken Sie in der Azure Machine Learning-Ansicht mit der rechten Maustaste auf Ihren Abonnementknoten, und wählen Sie **Arbeitsbereich erstellen** aus.
+1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
+1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
-Alternative Verfahren zum Erstellen eines Arbeitsbereichs:
+Alternativ können Sie auch den Befehl `> Azure ML: Create Workspace` in der Befehlspalette verwenden.
 
-- Öffnen Sie die Befehlspalette **Ansicht > Befehlspalette**, und geben Sie in die Texteingabeaufforderung **Azure ML: Arbeitsbereich erstellen** ein.
-- Klicken Sie oben in der Azure Machine Learning-Ansicht auf das Symbol `+`.
-- Erstellen Sie einen neuen Arbeitsbereich, wenn Sie während der Bereitstellung anderer Ressourcen aufgefordert werden, einen Arbeitsbereich auszuwählen.
-
-### <a name="remove-a-workspace"></a>Entfernen eines Arbeitsbereichs
+### <a name="remove-workspace"></a>Entfernen des Arbeitsbereichs
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Klicken Sie mit der rechten Maustaste auf den Arbeitsbereich, den Sie entfernen möchten.
@@ -58,14 +79,16 @@ Alternative Verfahren zum Erstellen eines Arbeitsbereichs:
     - *Only the workspace* (Nur Arbeitsbereich): Mit dieser Option wird **nur** die Azure-Ressource für den Arbeitsbereich gelöscht. Die Ressourcengruppe, Speicherkonten und alle anderen Ressourcen, mit denen der Arbeitsbereich verknüpft ist, befinden sich immer noch in Azure.
     - *With associated resources* (Mit zugeordneten Ressourcen): Mit dieser Option werden der Arbeitsbereich **und** alle zugehörigen Ressourcen gelöscht.
 
+Alternativ können Sie auch den Befehl `> Azure ML: Remove Workspace` in der Befehlspalette verwenden.
+
 ## <a name="datastores"></a>Datenspeicher
 
-Die VS Code-Erweiterung unterstützt derzeit Datenspeicher der folgenden Typen:
+Die Erweiterung unterstützt derzeit die folgenden Typen von Datenspeichern:
 
-- Azure-Dateifreigabe
-- Azure Blob Storage
-
-Wenn Sie einen Arbeitsbereich erstellen, wird ein Datenspeicher für jeden dieser Typen erstellt.
+- Azure Blob
+- Azure Data Lake Gen1
+- Azure Data Lake Gen2
+- Azure File
 
 Weitere Informationen finden Sie im [Artikel zu Datenspeichern](concept-data.md#datastores).
 
@@ -73,29 +96,29 @@ Weitere Informationen finden Sie im [Artikel zu Datenspeichern](concept-data.md#
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Arbeitsbereichsknoten, unter dem Sie den Datenspeicher erstellen möchten.
-1. Klicken Sie mit der rechten Maustaste auf den Knoten **Datastores** (Datenspeicher), und wählen Sie **Register datastore** (Datenspeicher registrieren) aus.
-1. An der Eingabeaufforderung:
-    1. Geben Sie einen Namen für den Datenspeicher an.
-    1. Wählen Sie den Datenspeichertyp aus.
-    1. Wählen Sie die Speicherressource aus. Sie können entweder eine Speicherressource auswählen, die dem Arbeitsbereich zugeordnet ist, oder eine beliebige gültige Speicherressource in ihren Azure-Abonnements auswählen.
-    1. Wählen Sie den Container aus, in dem sich Ihre Daten in der zuvor ausgewählten Speicherressource befinden.
-1. In VS Code wird eine Konfigurationsdatei angezeigt. Wenn Sie mit Ihrer Konfigurationsdatei zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+1. Klicken Sie mit der rechten Maustaste auf den Knoten **Datenspeicher**, und wählen Sie **Datenspeicher erstellen** aus.
+1. Wählen Sie den Datenspeichertyp aus.
+1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
+1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+
+Alternativ können Sie auch den Befehl `> Azure ML: Create Datastore` in der Befehlspalette verwenden.
 
 ### <a name="manage-a-datastore"></a>Verwalten eines Datenspeichers
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Arbeitsbereichsknoten.
 1. Erweitern Sie den Knoten **Datastores** (Datenspeicher) in Ihrem Arbeitsbereich.
-1. Wählen Sie den Datenspeicher aus, für den Sie folgende Aktionen ausführen möchten:
-    - *Set as default* (Als Standard festlegen). Wenn Sie Experimente ausführen, wird dieser Datenspeicher verwendet.
-    - *Inspect read-only settings* (Einstellungen für Lesezugriff überprüfen).
-    - *Modify* (Ändern). Hiermit können Sie den Authentifizierungstyp und die Anmeldeinformationen ändern. Zu den unterstützten Authentifizierungstypen zählen Kontoschlüssel und SAS-Token.
+1. Klicken Sie mit der rechten Maustaste auf den Datenspeicher, um die folgenden Optionen zu verwenden:
+    - *Unregister Datastore (Registrierung des Datenspeichers aufheben):* Entfernt den Datenspeicher aus Ihrem Arbeitsbereich.
+    - *View Datastore (Datenspeicher anzeigen):* Dient zum Anzeigen von Einstellungen für den schreibgeschützten Datenspeicher.
+
+Alternativ können Sie auch den Befehl `> Azure ML: Unregister Datastore` bzw. `> Azure ML: View Datastore` in der Befehlspalette verwenden.
 
 ## <a name="datasets"></a>Datasets
 
 Die Erweiterung unterstützt derzeit die folgenden Datasettypen:
 
-- *Tabellarisch:* Ermöglicht das Materialisieren von Daten in einen DataFrame (Pandas oder PySpark).
+- *Tabellarisch:* Ermöglicht das Materialisieren von Daten in einen Datenrahmen.
 - *Datei:* Eine Datei oder Sammlung von Dateien. Hiermit können Sie Dateien herunterladen oder in Ihrer Computeressource einbinden.
 
 Weitere Informationen finden Sie im [Artikel zu Datasets](concept-data.md#datasets).
@@ -103,48 +126,24 @@ Weitere Informationen finden Sie im [Artikel zu Datasets](concept-data.md#datase
 ### <a name="create-dataset"></a>Erstellen von Datasets
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Arbeitsbereichsknoten, unter dem Sie den Datenspeicher erstellen möchten.
-1. Klicken Sie mit der rechten Maustaste auf den Knoten **Datasets**, und wählen Sie **Create dataset** (Dataset erstellen) aus.
-1. An der Eingabeaufforderung:
-    1. Wählen Sie den Datasettyp aus.
-    1. Hiermit wird definiert, ob sich die Daten auf Ihrem PC oder im Web befinden.
-    1. Geben Sie den Speicherort Ihrer Daten an. Dabei kann es sich entweder um eine einzelne Datei oder um ein Verzeichnis handeln, die bzw. das Ihre Datendateien enthält.
-    1. Wählen Sie den Datenspeicher aus, in den Ihre Daten hochgeladen werden sollen.
-    1. Geben Sie ein Präfix an, anhand dessen Sie das Dataset im Datenspeicher identifizieren können.
+1. Erweitern Sie den Arbeitsbereichsknoten, unter dem Sie das Dataset erstellen möchten.
+1. Klicken Sie mit der rechten Maustaste auf den Knoten **Datasets**, und wählen Sie **Dataset erstellen** aus.
+1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
+1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
-### <a name="version-datasets"></a>Versionsverwaltung von Datasets
+Alternativ können Sie auch den Befehl `> Azure ML: Create Dataset` in der Befehlspalette verwenden.
 
-Wenn Sie Machine Learning-Modelle entwickeln und sich die Daten dabei ändern, empfiehlt es sich, die verschiedenen Versionen des Datasets zu verwalten. So führen Sie dies in der VS Code-Erweiterung aus:
+### <a name="manage-a-dataset"></a>Verwalten eines Datasets
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Arbeitsbereichsknoten.
 1. Erweitern Sie den Knoten **Datasets**.
-1. Klicken Sie mit der rechten Maustaste auf das Dataset, für das Sie die Versionsverwaltung einrichten möchten, und wählen Sie **Create New Version** (Neue Version erstellen) aus.
-1. An der Eingabeaufforderung:
-    1. Wählen Sie den Datasettyp aus.
-    1. Definieren Sie, ob sich die Daten auf Ihrem PC oder im Web befinden.
-    1. Geben Sie den Speicherort Ihrer Daten an. Dabei kann es sich entweder um eine einzelne Datei oder um ein Verzeichnis handeln, die bzw. das Ihre Datendateien enthält.
-    1. Wählen Sie den Datenspeicher aus, in den Ihre Daten hochgeladen werden sollen.
-    1. Geben Sie ein Präfix an, anhand dessen Sie das Dataset im Datenspeicher identifizieren können.
+1. Klicken Sie mit der rechten Maustaste auf das Dataset, um die folgenden Optionen zu verwenden:
+    - **View Dataset Properties (Dataseteigenschaften anzeigen):** Ermöglicht das Anzeigen der Metadaten, die einem bestimmten Dataset zugeordnet sind. Wenn Sie über mehrere Versionen eines Datasets verfügen, können Sie angeben, dass nur die Dataseteigenschaften einer bestimmten Version angezeigt werden sollen. Erweitern Sie hierfür den Datasetknoten, und führen Sie die in diesem Abschnitt beschriebenen Schritte für die gewünschte Version aus.
+    - **Preview dataset (Vorschau für Dataset anzeigen):** Zeigen Sie Ihr Dataset direkt im Daten-Viewer von VS Code an. Beachten Sie, dass diese Option nur für tabellarische Datasets verfügbar ist.
+    - **Registrierung des Datasets aufheben:** Entfernt ein Dataset und alle zugehörigen Versionen aus Ihrem Arbeitsbereich.
 
-### <a name="view-dataset-properties"></a>Anzeigen von Dataseteigenschaften
-
-Mit dieser Option können Sie Metadaten anzeigen, die einem bestimmten Dataset zugeordnet sind. So führen Sie dies in der VS Code-Erweiterung aus:
-
-1. Erweitern Sie den Arbeitsbereichsknoten.
-1. Erweitern Sie den Knoten **Datasets**.
-1. Klicken Sie mit der rechten Maustaste auf das Dataset, das Sie überprüfen möchten, und wählen Sie **View Dataset Properties** (Eigenschaften des Datasets anzeigen) aus. Hiermit wird eine Konfigurationsdatei mit den Eigenschaften der neuesten Datasetversion angezeigt.
-
-> [!NOTE]
-> Wenn Sie über mehrere Versionen Ihres Datasets verfügen, können Sie auswählen, dass nur die Dataseteigenschaften einer bestimmten Version angezeigt werden. Erweitern Sie dazu den Datasetknoten, und führen Sie die in diesem Abschnitt beschriebenen Schritte für die gewünschte Version aus.
-
-### <a name="unregister-datasets"></a>Aufheben der Registrierung von Datasets
-
-Wenn Sie ein Dataset und alle Versionen entfernen möchten, heben Sie die Registrierung auf. So führen Sie dies in der VS Code-Erweiterung aus:
-
-1. Erweitern Sie den Arbeitsbereichsknoten.
-1. Erweitern Sie den Knoten **Datasets**.
-1. Klicken Sie mit der rechten Maustaste auf das Dataset, dessen Registrierung Sie aufheben möchten, und wählen Sie **Unregister dataset** (Registrierung des Datasets aufheben) aus.
+Alternativ können Sie auch den Befehl `> Azure ML: View Dataset Properties` bzw. `> Azure ML: Unregister Dataset` in der Befehlspalette verwenden.
 
 ## <a name="environments"></a>Umgebungen
 
@@ -155,15 +154,10 @@ Weitere Informationen finden Sie im [Artikel zu Umgebungen](concept-environments
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Arbeitsbereichsknoten, unter dem Sie den Datenspeicher erstellen möchten.
 1. Klicken Sie mit der rechten Maustaste auf den Knoten **Environments** (Umgebungen), und wählen Sie **Create Environment** (Umgebung erstellen) aus.
-1. An der Eingabeaufforderung:
-    1. Geben Sie einen Namen für die Umgebung an.
-    1. Definieren Sie die Umgebungskonfiguration:
-        - *Zusammengestellte Umgebungen*: Dies sind vorkonfigurierte Umgebungen in Azure Machine Learning. Sie können die Umgebung weiter anpassen, indem Sie die `dependencies`-Eigenschaft in der JSON-Datei ändern. [Weitere Informationen zu zusammengestellten Umgebungen](resource-curated-environments.md).
-        - *Conda-Abhängigkeitsdatei*: In Anaconda-Umgebungen kann die Datei, die die Umgebungsdefinition enthält, bereitgestellt werden.
-        - *Pip-Anforderungsdatei*: In Pip-Umgebungen kann die Datei, die die Umgebungsdefinition enthält, bereitgestellt werden.
-        - *Vorhandene Conda-Umgebung*: Hierbei werden die Conda-Umgebungen auf dem lokalen PC gesucht, und es wird versucht, eine Umgebung aus der ausgewählten Umgebung zu erstellen.
-        - *Benutzerdefiniert*: Definieren Sie eigene Kanäle und Abhängigkeiten.
-    1. Die Konfigurationsdatei wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
+1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+
+Alternativ können Sie auch den Befehl `> Azure ML: Create Environment` in der Befehlspalette verwenden.
 
 ### <a name="view-environment-configurations"></a>Anzeigen von Umgebungskonfigurationen
 
@@ -174,74 +168,60 @@ So zeigen Sie die Abhängigkeiten und Konfigurationen für eine bestimmte Umgebu
 1. Erweitern Sie den Knoten **Environments** (Umgebungen).
 1. Klicken Sie mit der rechten Maustaste auf die Umgebung, die Sie anzeigen möchten, und wählen Sie **View Environment** (Umgebung anzeigen) aus.
 
-### <a name="edit-environment-configurations"></a>Bearbeiten von Umgebungskonfigurationen
-
-So bearbeiten Sie die Abhängigkeiten und Konfigurationen für eine bestimmte Umgebung in der Erweiterung:
-
-1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Knoten **Environments** (Umgebungen) in Ihrem Arbeitsbereich.
-1. Klicken Sie mit der rechten Maustaste auf die Umgebung, die Sie anzeigen möchten, und wählen Sie **Edit environment** (Umgebung bearbeiten) aus.
-1. Wenn Sie die Änderungen vorgenommen haben und mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+Alternativ können Sie auch den Befehl `> Azure ML: View Environment` in der Befehlspalette verwenden.
 
 ## <a name="experiments"></a>Experimente
 
 Weitere Informationen finden Sie im [Artikel zu Experimenten](concept-azure-machine-learning-architecture.md#experiments).
 
-### <a name="create-experiment"></a>Erstellen eines Experiments
+### <a name="create-job"></a>Erstellen eines Auftrags
+
+Die schnellste Möglichkeit zur Erstellung eines Auftrags ist das Klicken auf das Symbol **Auftrag erstellen** in der Aktivitätsleiste der Erweiterung.
+
+Verwenden der Ressourcenknoten in der Azure Machine Learning-Ansicht:
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Arbeitsbereichsknoten.
-1. Klicken Sie im Arbeitsbereich mit der rechten Maustaste auf den Knoten **Experiments** (Experimente), und wählen Sie **Create experiment** (Experiment erstellen) aus.
-1. Geben Sie an der Eingabeaufforderung einen Namen für das Experiment ein.
+1. Klicken Sie in Ihrem Arbeitsbereich mit der rechten Maustaste auf den Knoten **Experimente**, und wählen Sie **Auftrag erstellen** aus.
+1. Wählen Sie Ihren Auftragstyp aus.
+1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
+1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
-### <a name="run-experiment"></a>Ausführen des Experiments
+Alternativ können Sie auch den Befehl `> Azure ML: Create Job` in der Befehlspalette verwenden.
 
-1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Knoten **Experiments** (Experimente) in Ihrem Arbeitsbereich.
-1. Klicken Sie mit der rechten Maustaste auf das Experiment, das Sie ausführen möchten.
-1. Wählen Sie in der Aktivitätsleiste das Symbol **Run Experiment** (Experiment ausführen) aus.
-1. Wählen Sie aus, ob Sie Ihr Experiment lokal oder remote ausführen möchten. Weitere Informationen zum lokalen Ausführen und Debuggen von Experimenten finden Sie im [Leitfaden zum Debuggen](how-to-debug-visual-studio-code.md).
-1. Wählen Sie Ihr Abonnement aus.
-1. Wählen Sie den Azure ML-Arbeitsbereich aus, unter dem das Experiment ausgeführt werden soll.
-1. Wählen Sie das Experiment aus.
-1. Wählen Sie die Computeressource zum Ausführen des Experiments aus, oder erstellen Sie sie.
-1. Wählen Sie eine Laufzeitkonfiguration für Ihr Experiment aus, oder erstellen Sie sie.
+### <a name="view-job"></a>Auftrag anzeigen
 
-Alternativ können Sie die Schaltfläche **Run Experiment** (Experiment ausführen) oben in der Erweiterung auswählen und die Ausführung des Experiments an der Eingabeaufforderung konfigurieren.
-
-### <a name="view-experiment"></a>Anzeigen des Experiments
-
-So zeigen Sie Ihr Experiment in Azure Machine Learning Studio an:
+Zeigen Sie Ihren Auftrag wie folgt in Azure Machine Learning Studio an:
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Knoten **Experiments** (Experimente) in Ihrem Arbeitsbereich.
-1. Klicken Sie mit der rechten Maustaste auf das Experiment, das Sie anzeigen möchten, und wählen Sie **View Experiment** (Experiment anzeigen) aus. 
+1. Klicken Sie mit der rechten Maustaste auf das Experiment, das Sie anzeigen möchten, und wählen Sie **View Experiment in Studio** (Experiment in Studio anzeigen) aus.
 1. Es wird die Aufforderung angezeigt, die Experiment-URL in Azure Machine Learning Studio zu öffnen. Wählen Sie **Open**(Öffnen).
+
+Alternativ können Sie auch den Befehl `> Azure ML: View Experiment in Studio` in der Befehlspalette verwenden.
 
 ### <a name="track-run-progress"></a>Nachverfolgen des Ausführungsfortschritts
 
-Wenn Sie das Experiment ausführen, möchten Sie möglicherweise den Fortschritt sehen. So können Sie den Fortschritt einer Ausführung in Azure Machine Learning Studio aus der Erweiterung nachverfolgen:
+Beim Ausführen des Auftrags können Sie den Status bzw. Fortschritt verfolgen. So können Sie den Fortschritt einer Ausführung in Azure Machine Learning Studio aus der Erweiterung nachverfolgen:
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Knoten **Experiments** (Experimente) in Ihrem Arbeitsbereich.
-1. Erweitern Sie den Experimentknoten, für den Sie den Fortschritt nachverfolgen möchten.
-1. Klicken Sie mit der rechten Maustaste die Ausführung, und wählen Sie **View Run in Azure portal** (Ausführung im Azure-Portal anzeigen) aus.
+1. Erweitern Sie den Auftragsknoten, für den Sie den Fortschritt nachverfolgen möchten.
+1. Klicken Sie mit der rechten Maustaste auf die Ausführung, und wählen Sie **View Run in Studio** (Ausführung in Studio anzeigen) aus.
 1. Es wird die Aufforderung angezeigt, die Ausführungs-URL in Azure Machine Learning Studio zu öffnen. Wählen Sie **Open**(Öffnen).
 
 ### <a name="download-run-logs--outputs"></a>Herunterladen von Ausführungsprotokollen und Ausgaben
 
-Wenn eine Ausführung angeschlossen wurde, können Sie die Protokolle und Assets herunterladen, z. B. das Modell, das als Teil einer Experimentausführung generiert wurde.
+Nachdem eine Ausführung abgeschlossen wurde, können Sie die Protokolle und Ressourcen herunterladen. Ein Beispiel hierfür ist das Modell, das im Rahmen einer Ausführung generiert wurde.
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Knoten **Experiments** (Experimente) in Ihrem Arbeitsbereich.
-1. Erweitern Sie den Experimentknoten, für den Sie den Fortschritt nachverfolgen möchten.
+1. Erweitern Sie den Auftragsknoten, für den Sie Protokolle und Ausgaben herunterladen möchten.
 1. Klicken Sie mit der rechten Maustaste auf die Ausführung:
     - Wählen Sie **Download outputs** (Ausgaben herunterladen) aus, um die Ausgaben herunterzuladen.
     - Klicken Sie zum Herunterladen der Protokolle auf **Download logs** (Protokolle herunterladen).
 
-### <a name="view-run-metadata"></a>Anzeigen von Ausführungsmetadaten
-
-In der Erweiterung können Sie die Metadaten überprüfen, z. B. die für die Ausführung verwendete Laufzeitkonfiguration sowie Informationen zur Ausführung.
+Alternativ können Sie auch den Befehl `> Azure ML: Download Outputs` bzw. `> Azure ML: Download Logs` in der Befehlspalette verwenden.
 
 ## <a name="compute-instances"></a>Compute-Instanzen
 
@@ -250,113 +230,130 @@ Weitere Informationen finden Sie im Artikel über [Compute-Instanzen](concept-co
 ### <a name="create-compute-instance"></a>Erstellen einer Compute-Instanz
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Arbeitsbereichsknoten, unter dem Sie die Compute-Instanz erstellen möchten.
-1. Klicken Sie mit der rechten Maustaste auf den Knoten **Compute instances** (Compute-Instanzen), und klicken Sie dann auf **Create compute instance** (Compute-Instanz erstellen).
-1. An der Eingabeaufforderung:
-    1. Geben Sie einen Namen für Ihre Compute-Instanz an.
-    1. Wählen Sie in der Liste eine VM-Größe aus.
-    1. Geben Sie an, ob Sie SSH-Zugriff aktivieren möchten.
-        1. Wenn Sie SSH-Zugriff aktivieren, müssen Sie auch den öffentlichen SSH-Schlüssel angeben oder die Datei, die den Schlüssel enthält. Weitere Informationen finden Sie in der [Anleitung zum Erstellen und Verwenden von SSH-Schlüsseln in Azure](../virtual-machines/linux/mac-create-ssh-keys.md).
+1. Erweitern Sie den Arbeitsbereichsknoten.
+1. Erweitern Sie den Knoten **Compute**.
+1. Klicken Sie in Ihrem Arbeitsbereich mit der rechten Maustaste auf den Knoten **Compute-Instanzen**, und wählen Sie dann die Option **Computeressource erstellen** aus.
+1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
+1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+
+Alternativ können Sie auch den Befehl `> Azure ML: Create Compute` in der Befehlspalette verwenden.
+
+### <a name="connect-to-compute-instance"></a>Herstellen einer Verbindung mit einer Compute-Instanz
+
+Informationen zur Verwendung einer Compute-Instanz als Entwicklungsumgebung oder Jupyter-Remoteserver finden Sie unter [Herstellen einer Verbindung mit einer Compute-Instanz](how-to-set-up-vs-code-remote.md?tabs=extension).
 
 ### <a name="stop-or-restart-compute-instance"></a>Anhalten oder Neustart einer Compute-Instanz
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Knoten **Compute instance** (Compute-Instanz) in Ihrem Arbeitsbereich.
-1. Klicken Sie mit der rechten Maustaste auf die Compute-Instanz, die Sie anhalten oder neu starten möchten, und klicken Sie auf **Stop Compute instance** (Compute-Instanz anhalten) bzw. **Restart compute instance** (Compute-Instanz neu starten).
+1. Erweitern Sie den Arbeitsbereichsknoten.
+1. Erweitern Sie den Knoten **Compute-Instanzen** auf Ihrem Knoten **Compute**.
+1. Klicken Sie mit der rechten Maustaste auf die Compute-Instanz, die Sie anhalten oder neu starten möchten, und klicken Sie auf **Compute-Instanz beenden** bzw. **Restart compute instance** (Compute-Instanz neu starten).
+
+Alternativ können Sie auch den Befehl `> Azure ML: Stop Compute instance` bzw. `Restart Compute instance` in der Befehlspalette verwenden.
 
 ### <a name="view-compute-instance-configuration"></a>Anzeigen der Konfiguration für eine Compute-Instanz
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Knoten **Compute instance** (Compute-Instanz) in Ihrem Arbeitsbereich.
+1. Erweitern Sie den Arbeitsbereichsknoten.
+1. Erweitern Sie den Knoten **Compute-Instanzen** auf Ihrem Knoten **Compute**.
 1. Klicken Sie mit der rechten Maustaste auf die Compute-Instanz, die Sie untersuchen möchten, und klicken Sie dann auf **View Compute instance Properties** (Compute-Instanzeigenschaften anzeigen).
+
+Alternativ können Sie auch den Befehl `Azure ML: View Compute instance Properties` in der Befehlspalette verwenden.
 
 ### <a name="delete-compute-instance"></a>Löschen einer Compute-Instanz
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Knoten **Compute instance** (Compute-Instanz) in Ihrem Arbeitsbereich.
-1. Klicken Sie mit der rechten Maustaste auf die Compute-Instanz, die Sie löschen möchten, und klicken Sie dann auf **Delete compute instance** (Compute-Instanz löschen).
+1. Erweitern Sie den Arbeitsbereichsknoten.
+1. Erweitern Sie den Knoten **Compute-Instanzen** auf Ihrem Knoten **Compute**.
+1. Klicken Sie mit der rechten Maustaste auf die Compute-Instanz, die Sie löschen möchten, und wählen Sie die Option **Delete compute instance** (Compute-Instanz löschen) aus.
+
+Alternativ können Sie auch den Befehl `Azure ML: Delete Compute instance` in der Befehlspalette verwenden.
 
 ## <a name="compute-clusters"></a>Computecluster
 
-Diese Erweiterung unterstützt die folgenden Computetypen:
+Weitere Informationen finden Sie unter [Trainieren von Computezielen](concept-compute-target.md#train).
 
-- Azure Machine Learning-Computecluster
-- Azure Kubernetes Service
-
-Weitere Informationen finden Sie im [Artikel zu Computezielen](concept-compute-target.md#train).
-
-### <a name="create-compute"></a>Erstellen von Computeressourcen
+### <a name="create-compute-cluster"></a>Erstellen eines Computeclusters
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Arbeitsbereichsknoten, unter dem Sie den Computecluster erstellen möchten.
-1. Klicken Sie mit der rechten Maustaste auf den Knoten **Computecluster**, und wählen Sie **Create Compute** (Computeressource erstellen) aus.
-1. An der Eingabeaufforderung:
-    1. Wählen Sie einen Computetyp aus.
-    1. Wählen Sie eine VM-Größe aus. [Weitere Informationen zu VM-Größen](../virtual-machines/sizes.md).
-    1. Geben Sie einen Computnamen an.
+1. Erweitern Sie den Arbeitsbereichsknoten.
+1. Erweitern Sie den Knoten **Compute**.
+1. Klicken Sie in Ihrem Arbeitsbereich mit der rechten Maustaste auf den Knoten **Computecluster**, und wählen Sie die Option **Computeressource erstellen** aus.
+1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
+1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+
+Alternativ können Sie auch den Befehl `> Azure ML: Create Compute` in der Befehlspalette verwenden.
 
 ### <a name="view-compute-configuration"></a>Anzeigen der Computekonfiguration
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Knoten **Compute clusters** (Computecluster) in Ihrem Arbeitsbereich.
+1. Erweitern Sie den Arbeitsbereichsknoten.
+1. Erweitern Sie den Knoten **Computecluster** auf Ihrem Knoten **Compute**.
 1. Klicken Sie mit der rechten Maustaste auf die Computeressource, die Sie anzeigen möchten, und wählen Sie **View Compute Properties** (Computeeigenschaften anzeigen) aus.
 
-### <a name="edit-compute-scale-settings"></a>Bearbeiten von Compute-Skalierungseinstellungen
+Alternativ können Sie auch den Befehl `> Azure ML: View Compute Properties` in der Befehlspalette verwenden.
 
-1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Knoten **Compute clusters** (Computecluster) in Ihrem Arbeitsbereich.
-1. Klicken Sie mit der rechten Maustaste auf die Regel, die Sie bearbeiten möchten, und wählen Sie **Edit Compute** (Computeressource bearbeiten) aus.
-1. Die Compute-Konfigurationsdatei wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
-
-### <a name="delete-compute"></a>Löschen einer Computeressource
-
-1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Knoten **Compute clusters** (Computecluster) in Ihrem Arbeitsbereich.
-1. Klicken Sie mit der rechten Maustaste auf die Computeressource, die Sie löschen möchten, und wählen Sie **Delete Compute** (Computeressource löschen) aus.
-
-### <a name="create-run-configuration"></a>Erstellen einer Laufzeitkonfiguration
-
-So erstellen Sie eine Laufzeitkonfiguration in der Erweiterung:
-
-1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Knoten **Compute clusters** (Computecluster) in Ihrem Arbeitsbereich.
-1. Klicken Sie mit der rechten Maustaste auf das Computeziel, unter dem Sie die Laufzeitkonfiguration erstellen möchten, und wählen Sie **Create Run Configuration** (Laufzeitkonfiguration erstellen) aus.
-1. An der Eingabeaufforderung:
-    1. Geben Sie einen Namen für das Computeziel an.
-    1. Wählen Sie eine Umgebung aus, oder erstellen Sie sie.
-    1. Geben Sie den Namen des Skripts ein, das Sie ausführen möchten, oder drücken Sie die Eingabetaste, um das Skript auf dem lokalen Computer zu suchen.
-    1. Optional: Wählen Sie aus, ob Sie einen Datenverweis für die Trainingsausführung erstellen möchten. Dabei werden Sie aufgefordert, ein Dataset in der Laufzeitkonfiguration zu definieren.
-        1. Wählen Sie eines der registrierten Datasets aus, um eine Verknüpfung mit der Laufzeitkonfiguration zu erstellen. Eine Konfigurationsdatei für das Dataset wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
-    1. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
-
-### <a name="edit-run-configuration"></a>Bearbeiten der Laufzeitkonfiguration
-
-1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
-1. Erweitern Sie den Computeclusterknoten im Knoten **Compute clusters** (Computecluster) Ihres Arbeitsbereichs.
-1. Klicken Sie mit der rechten Maustaste auf die Laufzeitkonfiguration, die Sie bearbeiten möchten, und wählen Sie **Edit Run Configuration** (Laufzeitkonfiguration bearbeiten) aus.
-1. Die Konfigurationsdatei für die Laufzeitkonfiguration wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
-
-### <a name="delete-run-configuration"></a>Löschen der Laufzeitkonfiguration
+### <a name="delete-compute-cluster"></a>Löschen eines Computeclusters
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Arbeitsbereichsknoten.
-1. Erweitern Sie den gewünschten Computeclusterknoten im Knoten **Compute cluster** (Computecluster).
-1. Klicken Sie mit der rechten Maustaste auf die gewünschte Laufzeitkonfiguration, und wählen Sie **Delete Run Configuration** (Laufzeitkonfiguration löschen) aus.
+1. Erweitern Sie den Knoten **Computecluster** auf Ihrem Knoten **Compute**.
+1. Klicken Sie mit der rechten Maustaste auf die Computeressource, die Sie löschen möchten, und wählen Sie **Remove Compute** (Computeressource entfernen) aus.
+
+Alternativ können Sie auch den Befehl `> Azure ML: Remove Compute` in der Befehlspalette verwenden.
+
+## <a name="inference-clusters"></a>Rückschlusscluster
+
+Weitere Informationen finden Sie unter [Computeziele für Rückschlüsse](concept-compute-target.md#deploy).
+
+### <a name="manage-inference-clusters"></a>Verwalten von Rückschlussclustern
+
+1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
+1. Erweitern Sie den Arbeitsbereichsknoten.
+1. Erweitern Sie den Knoten **Inference clusters** (Rückschlusscluster) auf Ihrem Knoten **Compute**.
+1. Klicken Sie mit der rechten Maustaste auf die Computeressource, um die folgenden Optionen zu verwenden:
+    - **View Compute Properties (Compute-Eigenschaften anzeigen):** Zeigt die schreibgeschützten Konfigurationsdaten zu Ihrer angefügten Computeressource an.
+    - **Detach compute (Computeressource trennen):** Trennt die Computeressource von Ihrem Arbeitsbereich.
+
+Alternativ können Sie auch den Befehl `> Azure ML: View Compute Properties` bzw. `> Azure ML: Detach Compute` in der Befehlspalette verwenden.
+
+### <a name="delete-inference-clusters"></a>Löschen von Rückschlussclustern
+
+1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
+1. Erweitern Sie den Arbeitsbereichsknoten.
+1. Erweitern Sie den Knoten **Angefügte Computeressourcen** auf Ihrem Knoten **Compute**.
+1. Klicken Sie mit der rechten Maustaste auf die Computeressource, die Sie löschen möchten, und wählen Sie **Remove Compute** (Computeressource entfernen) aus.
+
+Alternativ können Sie auch den Befehl `> Azure ML: Remove Compute` in der Befehlspalette verwenden.
+
+## <a name="attached-compute"></a>Angefügte Computeressource
+
+Weitere Informationen finden Sie unter [Nicht verwaltete Computeressourcen](concept-compute-target.md#unmanaged-compute).
+
+### <a name="manage-attached-compute"></a>Verwalten einer angefügten Computeressource
+
+1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
+1. Erweitern Sie den Arbeitsbereichsknoten.
+1. Erweitern Sie den Knoten **Angefügte Computeressourcen** auf Ihrem Knoten **Compute**.
+1. Klicken Sie mit der rechten Maustaste auf die Computeressource, um die folgenden Optionen zu verwenden:
+    - **View Compute Properties (Compute-Eigenschaften anzeigen):** Zeigt die schreibgeschützten Konfigurationsdaten zu Ihrer angefügten Computeressource an.
+    - **Detach compute (Computeressource trennen):** Trennt die Computeressource von Ihrem Arbeitsbereich.
+
+Alternativ können Sie auch den Befehl `> Azure ML: View Compute Properties` bzw. `> Azure ML: Detach Compute` in der Befehlspalette verwenden.
 
 ## <a name="models"></a>Modelle
 
 Weitere Informationen finden Sie im [Artikel zu Modellen](concept-azure-machine-learning-architecture.md#models).
 
-### <a name="register-model"></a>Registrieren des Modells
+### <a name="create-model"></a>Erstellen eines Modells
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Arbeitsbereichsknoten.
-1. Klicken Sie mit der rechten Maustaste auf den Knoten **Models** (Modelle), und wählen Sie **Register Model** (Modell registrieren) aus.
-1. An der Eingabeaufforderung:
-    1. Geben Sie einen Namen für das Modell ein.
-    1. Wählen Sie aus, ob das Modell eine Datei oder ein Ordner ist.
-    1. Suchen Sie das Modell auf dem lokalen PC.
-    1. Die Konfigurationsdatei für das Modell wird im Editor geöffnet. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+1. Klicken Sie in Ihrem Arbeitsbereich mit der rechten Maustaste auf den Knoten **Modelle**, und wählen Sie **Modell erstellen** aus.
+1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
+1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+
+Alternativ können Sie auch den Befehl `> Azure ML: Create Model` in der Befehlspalette verwenden.
 
 ### <a name="view-model-properties"></a>Anzeigen von Modelleigenschaften
 
@@ -364,64 +361,59 @@ Weitere Informationen finden Sie im [Artikel zu Modellen](concept-azure-machine-
 1. Erweitern Sie den Knoten **Models** (Modelle) in Ihrem Arbeitsbereich.
 1. Klicken Sie mit der rechten Maustaste auf das Modell, dessen Eigenschaften Sie anzeigen möchten, und wählen Sie **View Model Properties** (Modelleigenschaften anzeigen) aus. Im Editor wird eine Datei mit den Modelleigenschaften geöffnet.
 
+Alternativ können Sie auch den Befehl `> Azure ML: View Model Properties` in der Befehlspalette verwenden.
+
 ### <a name="download-model"></a>Herunterladen des Modells
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Knoten **Models** (Modelle) in Ihrem Arbeitsbereich.
 1. Klicken Sie mit der rechten Maustaste auf das Modell, das Sie herunterladen möchten, und wählen Sie **Download Model File** (Modelldatei herunterladen) aus.
 
+Alternativ können Sie auch den Befehl `> Azure ML: Download Model File` in der Befehlspalette verwenden.
+
 ### <a name="delete-a-model"></a>Löschen eines Modells
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Knoten **Models** (Modelle) in Ihrem Arbeitsbereich.
 1. Klicken Sie mit der rechten Maustaste auf das zu löschende Modell und anschließend auf **Remove Model** (Modell entfernen).
+1. Sie werden aufgefordert, das Entfernen des Modells zu bestätigen. Klicken Sie auf **OK**.
+
+Alternativ können Sie auch den Befehl `> Azure ML: Remove Model` in der Befehlspalette verwenden.
 
 ## <a name="endpoints"></a>Endpunkte
 
-Die VS Code-Erweiterung unterstützt die folgenden Bereitstellungsziele:
+Weitere Informationen finden Sie unter [Endpunkte](concept-azure-machine-learning-architecture.md#endpoints).
 
-- Azure Container Instances
-- Azure Kubernetes Service
-
-Weitere Informationen finden Sie unter [Webdienst-Endpunkt](concept-azure-machine-learning-architecture.md#web-service-endpoint).
-
-### <a name="create-deployments"></a>Erstellen von Bereitstellungen
-
-> [!NOTE]
-> Die Erstellung von Bereitstellungen funktioniert zurzeit nur mit Conda-Umgebungen.
+### <a name="create-endpoint"></a>Endpunkt erstellen
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Arbeitsbereichsknoten.
-1. Klicken Sie mit der rechten Maustaste auf den Knoten **Endpoints** (Endpunkte), und wählen Sie **Deploy Service** (Dienst bereitstellen) aus.
-1. An der Eingabeaufforderung:
-    1. Wählen Sie aus, ob Sie ein bereits registriertes Modell oder eine lokale Modelldatei verwenden möchten.
-    1. Auswählen des Modells
-    1. Wählen Sie das Bereitstellungsziel aus, in dem Sie das Modell bereitstellen möchten.
-    1. Geben Sie einen Namen für das Modell ein.
-    1. Stellen Sie das Skript bereit, das beim Bewerten des Modells ausgeführt werden soll.
-    1. Stellen Sie eine Conda-Abhängigkeitsdatei bereit.
-    1. Im Editor wird die Konfigurationsdatei für die Bereitstellung angezeigt. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
+1. Klicken Sie in Ihrem Arbeitsbereich mit der rechten Maustaste auf den Knoten **Modelle**, und wählen Sie **Endpunkt erstellen** aus.
+1. Wählen Sie Ihren Endpunkttyp aus.
+1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
+1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
-> [!NOTE]
-> Alternativ dazu können Sie im Knoten *Models* (Modelle) mit der rechten Maustaste auf ein registriertes Modell klicken und **Deploy Service From Registered Model** (Dienst aus registriertem Modell bereitstellen) auswählen.
+Alternativ können Sie auch den Befehl `> Azure ML: Create Endpoint` in der Befehlspalette verwenden.
 
-### <a name="delete-deployments"></a>Löschen von Bereitstellungen
+### <a name="delete-endpoint"></a>Löschen eines Endpunkts
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Knoten **Endpoints** (Endpunkte) in Ihrem Arbeitsbereich.
-1. Klicken Sie mit der rechten Maustaste auf die Bereitstellung, die Sie entfernen möchten, und wählen Sie **Remove Service** (Dienst entfernen) aus.
+1. Klicken Sie mit der rechten Maustaste auf die Bereitstellung, die Sie entfernen möchten, und wählen Sie **Dienst entfernen** aus.
 1. Sie werden aufgefordert, das Löschen des Diensts zu bestätigen. Klicken Sie auf **OK**.
 
-### <a name="manage-deployments"></a>Verwalten von Bereitstellungen
+Alternativ können Sie auch den Befehl `> Azure ML: Remove Service` in der Befehlspalette verwenden.
+
+### <a name="view-service-properties"></a>Anzeigen von Diensteigenschaften
 
 Zusätzlich zum Erstellen und Löschen von Bereitstellungen können Sie auch die Einstellungen für eine Bereitstellung anzeigen.
 
 1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
 1. Erweitern Sie den Knoten **Endpoints** (Endpunkte) in Ihrem Arbeitsbereich.
 1. Klicken Sie mit der rechten Maustaste auf die zu verwaltende Bereitstellung:
-    - Wählen Sie zum Bearbeiten der Einstellungen **Edit service** (Dienst bearbeiten) aus.
-        - Im Editor wird die Konfigurationsdatei für die Bereitstellung angezeigt. Wenn Sie mit Ihrer Konfiguration zufrieden sind, wählen Sie **Save and continue** (Speichern und fortfahren) aus, oder öffnen Sie die VS Code-Befehlspalette (**View > Command Palette** (Ansicht > Befehlspalette)), und geben Sie **Azure ML: Save and Continue** (Speichern und fortfahren) ein.
-    - Wählen Sie zum Anzeigen der Konfigurationseinstellungen für die Bereitstellung **View service properties** (Diensteigenschaften anzeigen) aus.
+    - Wählen Sie zum Anzeigen der Konfigurationseinstellungen für die Bereitstellung die Option **View service properties** (Diensteigenschaften anzeigen) aus.
+
+Alternativ können Sie auch den Befehl `> Azure ML: View Service Properties` in der Befehlspalette verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

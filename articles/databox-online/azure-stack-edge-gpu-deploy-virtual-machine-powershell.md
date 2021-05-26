@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 05/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 90925f30e84ec3c06e715669ebd982c823dfaf5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 94ebfcab77b6db579b263dc11f856612bb2c630a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568323"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086318"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge-Gerät über Azure PowerShell
 
@@ -456,6 +456,13 @@ Je nachdem, ob Sie einen virtuellen Windows-Computer (Windows-VM) oder einen vir
 Wenn Sie eine Verbindung mit einem virtuellen Linux-Computer herstellen möchten, führen Sie die folgenden Schritte aus:
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
+
+  Wenn Sie während der Erstellung der VM eine öffentliche IP-Adresse verwendet haben, können Sie über diese IP-Adresse eine Verbindung mit der VM herstellen. Um die öffentliche IP-Adresse abzurufen, führen Sie den folgenden Befehl aus: 
+
+  ```powershell
+  $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
+  ```
+  Die öffentliche IP-Adresse ist in diesem Fall identisch mit der privaten IP-Adresse, die Sie beim Erstellen der virtuellen Netzwerkschnittstelle übermittelt haben.
 
 ### <a name="connect-to-a-windows-vm"></a>Herstellen einer Verbindung mit einem virtuellen Windows-Computer
 

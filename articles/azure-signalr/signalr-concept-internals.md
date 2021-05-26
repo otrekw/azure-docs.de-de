@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: afb63b76666f47217f9c19376d81aa4ed73991bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ffbe207109143956f6c5a56d8560925d93661bf
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98572560"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459068"
 ---
 # <a name="azure-signalr-service-internals"></a>Ausführliche Informationen zu Azure SignalR Service
 
@@ -57,21 +57,21 @@ Das Einrichten von permanenten Verbindungen zwischen dem Client und dem SignalR 
 
 1. Der Client sendet eine Aushandlungsanforderung an den Anwendungsserver. Mit Azure SignalR Service SDK gibt der Anwendungsserver eine Umleitungsantwort mit der URL und dem Zugriffstoken des SignalR Service zurück.
 
-- Für ASP.NET Core SignalR sieht eine typische Umleitungsantwort wie folgt aus:
-    ```
-    {
-        "url":"https://test.service.signalr.net/client/?hub=chat&...",
-        "accessToken":"<a typical JWT token>"
-    }
-    ```
-- Für ASP.NET SignalR sieht eine typische Umleitungsantwort wie folgt aus:
-    ```
-    {
-        "ProtocolVersion":"2.0",
-        "RedirectUrl":"https://test.service.signalr.net/aspnetclient",
-        "AccessToken":"<a typical JWT token>"
-    }
-    ```
+    - Für ASP.NET Core SignalR sieht eine typische Umleitungsantwort wie folgt aus:
+        ```
+        {
+            "url":"https://test.service.signalr.net/client/?hub=chat&...",
+            "accessToken":"<a typical JWT token>"
+        }
+        ```
+    - Für ASP.NET SignalR sieht eine typische Umleitungsantwort wie folgt aus:
+        ```
+        {
+            "ProtocolVersion":"2.0",
+            "RedirectUrl":"https://test.service.signalr.net/aspnetclient",
+            "AccessToken":"<a typical JWT token>"
+        }
+        ```
 
 1. Nach dem Empfang der Umleitungsantwort verwendet der Client die neue URL und das Zugriffstoken, um den normalen Prozess zum Verbinden mit SignalR Service zu starten.
 
