@@ -1,5 +1,7 @@
 - name: Dokumentation zu Azure Event Grid
   href: index.yml
+- name: Wechseln zu Event Grid in der Kubernetes-Dokumentation
+  href: kubernetes/index.yml
 - name: Wechseln zu Event Grid in der IoT Edge-Dokumentation
   href: edge/pub-sub-events-webhook-local.md
 - name: Übersicht
@@ -268,8 +270,6 @@
           href: move-custom-topics-across-regions.md
         - name: Regionsübergreifendes Verschieben von Domänen
           href: move-domains-across-regions.md
-        - name: Regionsübergreifendes Verschieben von Partnernamespaces
-          href: move-partner-namespaces-across-regions.md
     - name: Sicher
       items:
         - name: Sicheres Veröffentlichen von Ereignissen über eine private Verbindung

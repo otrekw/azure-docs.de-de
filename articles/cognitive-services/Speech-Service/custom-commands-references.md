@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 98510132b2341736664dfafa52e9567df95652be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0694e7d136b7fd339362145179939d350eb23ef
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94561096"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475963"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Konzepte und Definitionen für benutzerdefinierte Befehle
 
@@ -25,7 +25,7 @@ Dieser Artikel dient als Referenz für Konzepte und Definitionen für Anwendunge
 Befehle sind die Grundbausteine einer Anwendung für benutzerdefinierte Befehle. Ein Befehl besteht aus einer Reihe von Konfigurationen, die zur Durchführung einer bestimmten, von einem Benutzer definierten Aufgabe erforderlich sind.
 
 ### <a name="example-sentences"></a>Beispielsätze
-Beispieläußerungen sind die festgelegten Beispiele, die der Benutzer sagen kann, um einen bestimmten Befehl auszulösen. Sie müssen lediglich eine Auswahl von Äußerungen und keine umfassende Liste bereitstellen. 
+Beispieläußerungen sind die festgelegten Beispiele, die der Benutzer sagen kann, um einen bestimmten Befehl auszulösen. Sie müssen lediglich eine Auswahl von Äußerungen und keine umfassende Liste bereitstellen.
 
 ### <a name="parameters"></a>Parameter
 Parameter sind Informationen, die von den Befehlen zur Durchführung einer Aufgabe erforderlich sind. In komplexen Szenarien können Sie Parameter auch zur Definition von Bedingungen verwenden, durch die benutzerdefinierte Aktionen ausgelöst werden.
@@ -42,9 +42,6 @@ Parameter sind Informationen, die von den Befehlen zur Durchführung einer Aufga
 
 ### <a name="name"></a>Name
 Ein Parameter wird durch die Name-Eigenschaft identifiziert. Sie sollten einem Parameter immer einen beschreibenden Namen zuweisen. Auf einen Parameter kann in verschiedenen Abschnitten verwiesen werden – etwa beim Erstellen von Bedingungen, Sprachantworten oder anderen Aktionen.
- 
-### <a name="isglobal"></a>IsGlobal
-Mithilfe dieses Kontrollkästchens wird angegeben, ob der Bereich dieses Parameters von allen Befehlen in der Anwendung gemeinsam genutzt wird. Der Wert eines globalen Parameters kann potenziell über jeden beliebigen Befehlsbereich angegeben werden. Nachdem ein Wert zugewiesen wurde, kann darauf in jedem der Befehle verwiesen werden. 
 
 ### <a name="required"></a>Erforderlich
 Mithilfe dieses Kontrollkästchens wird angegeben, ob ein Wert für diesen Parameter zur Befehlserfüllung oder -vervollständigung erforderlich ist. Ist ein Parameter als erforderlich markiert, müssen Antworten konfiguriert werden, in denen der Benutzer zur Angabe eines Werts aufgefordert wird.
@@ -55,7 +52,7 @@ Wenn Sie einen **erforderlichen Parameter** so konfiguriert haben, dass er einen
 Von benutzerdefinierten Befehlen werden folgende Parametertypen unterstützt:
 
 * Datum/Uhrzeit
-* Gebiet
+* Geografie
 * Number
 * String
 
@@ -82,7 +79,7 @@ Eine Regel in benutzerdefinierten Befehlen wird durch einen Satz von *Bedingunge
 ### <a name="types"></a>Typen
 Von benutzerdefinierten Befehlen werden folgende Regelkategorien unterstützt:
 
-* **Vervollständigungsregeln**: Diese Regeln müssen bei der Befehlserfüllung ausgeführt werden. Alle in diesem Abschnitt konfigurierten Regeln, für die die Bedingungen erfüllt sind, werden ausgeführt. 
+* **Vervollständigungsregeln**: Diese Regeln müssen bei der Befehlserfüllung ausgeführt werden. Alle in diesem Abschnitt konfigurierten Regeln, für die die Bedingungen erfüllt sind, werden ausgeführt.
 * **Interaktionsregeln**: Diese Regeln können verwendet werden, um zusätzliche benutzerdefinierte Validierungen, Bestätigungen und eine einstufige Korrektur zu konfigurieren oder um eine beliebige andere benutzerdefinierte Dialoglogik zu erhalten. Interaktionsregeln werden in jeder Runde bei der Verarbeitung ausgewertet und können zum Auslösen von Vervollständigungsregeln verwendet werden.
 
 Die verschiedenen als Teil einer Regel konfigurierten Aktionen werden in der Reihenfolge ausgeführt, in der sie im Erstellungsportal angezeigt werden.

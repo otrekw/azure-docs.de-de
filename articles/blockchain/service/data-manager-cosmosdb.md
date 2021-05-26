@@ -4,16 +4,20 @@ description: Senden von Blockchaindaten an Azure Cosmos DB mithilfe von Blockcha
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b054688fb524d82e758f2ac1a9ff643293bc3b29
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91283451"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "110465746"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Tutorial: Verwenden von Blockchain Data Manager zum Senden von Daten an Azure Cosmos DB
 
-In diesem Tutorial verwenden Sie den Blockchain Data Manager for Azure Blockchain Service, um Blockchaintransaktionsdaten in Azure Cosmos DB aufzuzeichnen. Blockchain Data Manager erfasst, transformiert und stellt Blockchainledgerdaten für Azure Event Grid-Themen bereit. Von Azure Event Grid aus verwenden Sie einen Azure Logic App-Connector, um Dokumente in einer Azure Cosmos DB-Datenbank zu erstellen. Wenn Sie mit dem Tutorial fertig sind, können Sie die Blockchaintransaktionsdaten im Azure Cosmos DB-Daten-Explorer untersuchen.
+In diesem Tutorial verwenden Sie den Blockchain Data Manager for Azure Blockchain Service, um Blockchaintransaktionsdaten in Azure Cosmos DB aufzuzeichnen.
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+Blockchain Data Manager erfasst, transformiert und stellt Blockchainledgerdaten für Azure Event Grid-Themen bereit. Von Azure Event Grid aus verwenden Sie einen Azure Logic App-Connector, um Dokumente in einer Azure Cosmos DB-Datenbank zu erstellen. Wenn Sie mit dem Tutorial fertig sind, können Sie die Blockchaintransaktionsdaten im Azure Cosmos DB-Daten-Explorer untersuchen.
 
 [![Screenshot, der Details zur Blockchaintransaktion zeigt.](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
@@ -49,7 +53,7 @@ Eine Blockchain Data Manager-Instanz verbindet und überwacht einen Azure Blockc
 
     Geben Sie die folgenden Details ein:
 
-    Einstellung | Beispiel | BESCHREIBUNG
+    Einstellung | Beispiel | Beschreibung
     --------|---------|------------
     Name | mywatcher | Geben Sie einen eindeutigen Namen für einen verbundenen Blockchain Data Manager ein.
     Transaktionsknoten | myblockchainmember | Wählen Sie den Standardtransaktionsknoten des Azure Blockchain Service-Mitglieds aus, das Sie in der Voraussetzung erstellt haben.
@@ -108,7 +112,7 @@ Blockchain Data Manager erfordert, dass die Contract ABI- und Bytecodedateien be
 
     ![Erstellen eines Speicherkontocontainers](./media/data-manager-cosmosdb/create-container.png)
 
-    | Einstellung | BESCHREIBUNG |
+    | Einstellung | Beschreibung |
     |---------|-------------|
     | Name  | Geben Sie dem Container einen Namen. Beispiel: *smartcontract* |
     | Öffentliche Zugriffsebene | Wählen Sie *Privat (kein anonymer Zugriff)* aus. |
@@ -144,7 +148,7 @@ Generieren Sie für jedes Blob eine Shared Access Signature.
 
     Geben Sie den Namen der Blockchainanwendung und die Smart Contract ABI- und Bytecode-URLs ein.
 
-    Einstellung | BESCHREIBUNG
+    Einstellung | Beschreibung
     --------|------------
     Name | Geben Sie einen eindeutigen Namen zur Verfolgung der Blockchainanwendung ein.
     Vertrags-ABI | Der URL-Pfad zur Datei mit der Vertrags-ABI. Weitere Informationen finden Sie unter [Erstellen von Vertrags-ABI- und Bytecode-URLs](#create-contract-abi-and-bytecode-url).
@@ -202,7 +206,7 @@ Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein be
 
     ![Einstellungen für den Event Grid-Trigger](./media/data-manager-cosmosdb/event-grid-trigger.png)
 
-    | Einstellung | BESCHREIBUNG
+    | Einstellung | Beschreibung
     |---------|-------------|
     | Subscription | Wählen Sie das Abonnement aus, das das Event Grid-Thema enthält. |
     | Ressourcentyp | Wählen Sie **Microsoft.EventGrid.Topics** aus. |

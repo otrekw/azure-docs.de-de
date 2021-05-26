@@ -5,18 +5,18 @@ services: active-directory
 author: barclayn
 manager: daveba
 editor: ''
-ms.service: identity
+ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 04b36b9b32e78016f693e61d40246776492be0e3
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 6f124c6bb0dccb2fb1f8d808932ac9f8775f7f7e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222859"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466284"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Einführung in Nachweise für Azure Active Directory (Vorschauphase)
 
@@ -80,7 +80,7 @@ Um diese Versprechen zu erfüllen, benötigen wir eine technische Grundlage mit 
 
 **4. Microsoft Resolver** Diese API stellt die Verbindung mit unserem ION-Knoten her, um DIDs mithilfe der ```did:ion```-Methode zu suchen und aufzulösen und das DID-Dokumentobjekt (DDO) zurückzugeben. Das DDO umfasst DPKI-Metadaten, die den DID zugeordnet sind. Das sind z. B. öffentliche Schlüssel und Dienstendpunkte. 
 
-**5. Azure Active Directory Verified Credentials Service** Dies ist eine API und ein Open Source SDK zur Ausstellung und Verifizierung von [W3C-Nachweisen, die mit der ](https://www.w3.org/TR/vc-data-model/)-Methode signiert wurden. Sie ermöglichen es den Besitzern einer Identität, Zusicherungen zu generieren, vorzulegen und zu überprüfen. Dies bildet die Grundlage der Vertrauensstellung zwischen den Benutzern der Systeme.
+**5. Azure Active Directory Verified Credentials Service** Dies ist eine API und ein Open Source SDK zur Ausstellung und Verifizierung von [W3C-Nachweisen, die mit der](https://www.w3.org/TR/vc-data-model/)-Methode signiert wurden. Sie ermöglichen es den Besitzern einer Identität, Zusicherungen zu generieren, vorzulegen und zu überprüfen. Dies bildet die Grundlage der Vertrauensstellung zwischen den Benutzern der Systeme.
 
 ## <a name="a-sample-scenario"></a>Ein Beispielszenario
 

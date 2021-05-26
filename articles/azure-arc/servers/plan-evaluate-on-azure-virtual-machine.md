@@ -3,12 +3,12 @@ title: Auswerten von Servern mit Azure Arc-Unterstützung mit einem virtuellen A
 description: Erfahren Sie, wie Sie Server mit Azure Arc-Unterstützung mithilfe eines virtuellen Azure-Computers auswerten.
 ms.date: 05/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3c8318775c37c8cb3ed8171c00666bbcdd280a9c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 1e49b2d29b21f6ded72d1b22e946743f27e7d160
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486069"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109837833"
 ---
 # <a name="evaluate-arc-enabled-servers-on-an-azure-virtual-machine"></a>Auswerten von Servern mit Azure Arc-Unterstützung auf einem virtuellen Azure-Computer
 
@@ -19,8 +19,8 @@ Sie können keine Server mit Azure Arc-Unterstützung auf einem virtuellen Azure
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ihr Konto ist der Rolle [Mitwirkender von virtuellen Computern](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) zugewiesen.
-* Auf dem virtuellen Azure-Computer wird ein [Betriebssystem ausgeführt, das von Servern mit Azure Arc-Unterstützung](agent-overview.md#supported-operating-systems) unterstützt wird. Wenn Sie über keinen virtuellen Azure-Computer verfügen, können Sie eine [einfache Windows-VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json) oder eine [einfache Ubuntu Linux 18.04 LTS-VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json) bereitstellen.
-* Ihre Azure-VM verfügt über eine ausgehende Kommunikation, um das Azure Connected Machine-Agent-Paket für Windows aus dem [Microsoft Download Center](https://aka.ms/AzureConnectedMachineAgent) und für Linux aus dem Microsoft-[Paketrepository](https://packages.microsoft.com/) herunterzuladen. Wenn ausgehende Verbindungen mit dem Internet nach Ihrer IT-Sicherheitsrichtlinie eingeschränkt sind, müssen Sie das Agent-Paket manuell herunterladen und in einen Ordner auf dem virtuellen Azure-Computer kopieren. 
+* Auf dem virtuellen Azure-Computer wird ein [Betriebssystem ausgeführt, das von Servern mit Azure Arc-Unterstützung](agent-overview.md#supported-operating-systems) unterstützt wird. Wenn Sie über keinen virtuellen Azure-Computer verfügen, können Sie eine [einfache Windows-VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json) oder eine [einfache Ubuntu Linux 18.04 LTS-VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json) bereitstellen.
+* Ihre Azure-VM verfügt über eine ausgehende Kommunikation, um das Azure Connected Machine-Agent-Paket für Windows aus dem [Microsoft Download Center](https://aka.ms/AzureConnectedMachineAgent) und für Linux aus dem Microsoft-[Paketrepository](https://packages.microsoft.com/) herunterzuladen. Wenn ausgehende Verbindungen mit dem Internet nach Ihrer IT-Sicherheitsrichtlinie eingeschränkt sind, müssen Sie das Agent-Paket manuell herunterladen und in einen Ordner auf dem virtuellen Azure-Computer kopieren.
 * Ein Konto mit erhöhten Rechten (d. h. Administrator oder Root) auf dem virtuellen Computer und RDP- oder SSH-Zugriff auf den virtuellen Computer.
 * Zum Registrieren und Verwalten des virtuellen Azure-Computers mit Servern mit Azure Arc-Unterstützung sind Sie Mitglied der Rolle [Ressourcenadministrator für Azure Connected Machine](../../role-based-access-control/built-in-roles.md#azure-connected-machine-resource-administrator) oder [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) in der Ressourcengruppe.
 
@@ -34,9 +34,9 @@ Um Ihre Azure-VM als Server mit Azure Arc-Unterstützung zu verwalten, müssen S
 
 3. Erstellen Sie eine Sicherheitsregel, um den Zugriff auf Azure Instance Metadata Service (IMDS) zu verweigern. IMDS ist eine REST-API, die Anwendungen aufrufen können, um Informationen zur Darstellung des virtuellen Computers in Azure abzurufen, einschließlich Ressourcen-ID und Standort. IMDS bietet auch Zugriff auf alle verwalteten Identitäten, die dem Computer zugewiesen sind. Server mit Azure Arc-Unterstützung bieten eine eigene IMDS-Implementierung und geben Informationen über die Azure Arc-Darstellung des virtuellen Computers zurück. Um Situationen zu vermeiden, in denen beide IMDS-Endpunkte verfügbar sind und Apps zwischen den beiden Endpunkten wählen müssen, blockieren Sie den Zugriff auf die Azure-VM-IMDS, sodass nur die IMDS-Implementierung für Server mit Azure Arc-Unterstützung verfügbar ist.
 
-Nachdem Sie diese Änderungen vorgenommen haben, verhält sich Ihr virtueller Azure-Computer wie jeder andere Computer oder Server außerhalb von Azure und befindet sich am erforderlichen Startpunkt, um Server mit Azure Arc-Unterstützung zu installieren und auszuwerten. 
+Nachdem Sie diese Änderungen vorgenommen haben, verhält sich Ihr virtueller Azure-Computer wie jeder andere Computer oder Server außerhalb von Azure und befindet sich am erforderlichen Startpunkt, um Server mit Azure Arc-Unterstützung zu installieren und auszuwerten.
 
-Wenn Server mit Azure Arc-Unterstützung auf dem virtuellen Computer konfiguriert sind, werden zwei Darstellungen von ihm in Azure angezeigt. Eine ist die Azure-VM-Ressource mit einem `Microsoft.Compute/virtualMachines`-Ressourcentyp, die andere eine Azure Arc-Ressource mit einem `Microsoft.HybridCompute/machines`-Ressourcentyp. Da die Verwaltung des Gastbetriebssystems vom freigegebenen physischen Hostserver verhindert wird, ist die beste Möglichkeit, sich die beiden Ressourcen vorzustellen, dass die Azure-VM-Ressource die virtuelle Hardware für Ihren virtuellen Computer ist. Nun können Sie den Energiezustand steuern und Informationen zu seiner SKU, dem Netzwerk und den Speicherkonfigurationen anzeigen. Die Azure Arc-Ressource verwaltet das Gastbetriebssystem auf diesem virtuellen Computer und kann verwendet werden, um Erweiterungen zu installieren, Konformitätsdaten für Azure Policy anzuzeigen und alle anderen von Servern mit Azure Arc-Unterstützung unterstützten Aufgaben auszuführen.  
+Wenn Server mit Azure Arc-Unterstützung auf dem virtuellen Computer konfiguriert sind, werden zwei Darstellungen von ihm in Azure angezeigt. Eine ist die Azure-VM-Ressource mit einem `Microsoft.Compute/virtualMachines`-Ressourcentyp, die andere eine Azure Arc-Ressource mit einem `Microsoft.HybridCompute/machines`-Ressourcentyp. Da die Verwaltung des Gastbetriebssystems vom freigegebenen physischen Hostserver verhindert wird, ist die beste Möglichkeit, sich die beiden Ressourcen vorzustellen, dass die Azure-VM-Ressource die virtuelle Hardware für Ihren virtuellen Computer ist. Nun können Sie den Energiezustand steuern und Informationen zu seiner SKU, dem Netzwerk und den Speicherkonfigurationen anzeigen. Die Azure Arc-Ressource verwaltet das Gastbetriebssystem auf diesem virtuellen Computer und kann verwendet werden, um Erweiterungen zu installieren, Konformitätsdaten für Azure Policy anzuzeigen und alle anderen von Servern mit Azure Arc-Unterstützung unterstützten Aufgaben auszuführen.
 
 ## <a name="reconfigure-azure-vm"></a>Neukonfigurieren eines virtuellen Azure-Computers
 
@@ -68,10 +68,10 @@ Wenn Server mit Azure Arc-Unterstützung auf dem virtuellen Computer konfigurier
    Führen Sie bei bestehender Verbindung mit dem Server die folgenden Befehle aus, um den Zugriff auf den Azure IMDS-Endpunkt zu blockieren. Führen Sie für Windows den folgenden PowerShell-Befehl aus:
 
    ```powershell
-   New-NetFirewallRule -Name BlockAzureIMDS -DisplayName "Block access to Azure IMDS" -Enabled True -Profile Any -Direction Outbound -Action Block -RemoteAddress 169.254.169.254 
+   New-NetFirewallRule -Name BlockAzureIMDS -DisplayName "Block access to Azure IMDS" -Enabled True -Profile Any -Direction Outbound -Action Block -RemoteAddress 169.254.169.254
    ```
 
-   Für Linux lesen Sie in der Dokumentation Ihrer Distribution nach, wie Sie den ausgehenden Zugriff auf `169.254.169.254/32` über den TCP-Port 80 am besten blockieren können. Normalerweise blockieren Sie den ausgehenden Zugriff über die integrierte Firewall, aber Sie können ihn auch vorübergehend mithilfe von **iptables** oder **nftables** blockieren. 
+   Für Linux lesen Sie in der Dokumentation Ihrer Distribution nach, wie Sie den ausgehenden Zugriff auf `169.254.169.254/32` über den TCP-Port 80 am besten blockieren können. Normalerweise blockieren Sie den ausgehenden Zugriff über die integrierte Firewall, aber Sie können ihn auch vorübergehend mithilfe von **iptables** oder **nftables** blockieren.
 
    Wenn Ihre Azure-VM unter Ubuntu ausgeführt wird, führen Sie die folgenden Schritte aus, um dessen unkomplizierte Firewall (UFW) zu konfigurieren:
 
@@ -86,7 +86,7 @@ Wenn Server mit Azure Arc-Unterstützung auf dem virtuellen Computer konfigurier
    Führen Sie zum Konfigurieren einer generischen iptables-Konfiguration den folgenden Befehl aus:
 
    ```bash
-   iptables -A OUTPUT -d 169.254.169.254 -j DROP 
+   iptables -A OUTPUT -d 169.254.169.254 -j DROP
    ```
 
    > [!NOTE]
@@ -97,7 +97,7 @@ Wenn Server mit Azure Arc-Unterstützung auf dem virtuellen Computer konfigurier
    Der virtuelle Computer ist jetzt bereit, damit Sie mit der Auswertung von Servern mit Azure Arc-Unterstützung beginnen können. Informationen zum Installieren und Konfigurieren des Agents des Servers mit Azure Arc-Unterstützung finden Sie unter [Verbinden von Hybridcomputern über das Azure-Portal](onboard-portal.md). Befolgen Sie dann die Schritte zum Generieren eines Installationsskripts und Installieren mithilfe der Skriptmethode.
 
    > [!NOTE]
-   > Wenn ausgehende Verbindungen mit dem Internet von Ihrem virtuellen Azure-Computer eingeschränkt sind, müssen Sie das Agent-Paket manuell herunterladen. Kopieren Sie das Agent-Paket auf den virtuellen Azure-Computer, und ändern Sie das Installationsskript für Server mit Azure Arc-Unterstützung, um auf den Quellordner zu verweisen. 
+   > Wenn ausgehende Verbindungen mit dem Internet von Ihrem virtuellen Azure-Computer eingeschränkt sind, müssen Sie das Agent-Paket manuell herunterladen. Kopieren Sie das Agent-Paket auf den virtuellen Azure-Computer, und ändern Sie das Installationsskript für Server mit Azure Arc-Unterstützung, um auf den Quellordner zu verweisen.
 
 Wenn Sie einen der Schritte verpasst haben, erkennt das Installationsskript, dass es auf einem virtuellen Azure-Computer ausgeführt wird, und wird mit einem Fehler beendet. Vergewissern Sie sich, dass Sie die Schritte 1 bis 3 ausgeführt haben, und führen Sie dann das Skript erneut aus.
 

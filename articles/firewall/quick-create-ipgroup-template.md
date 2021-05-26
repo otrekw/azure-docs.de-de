@@ -6,14 +6,14 @@ author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/28/2020
+ms.date: 05/10/2021
 ms.author: victorh
-ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5491ec58b87d799376ade3775b3dbfc0d3a8dab
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89079131"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814710"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Schnellstart: Erstellen einer Azure Firewall-Instanz sowie von IP-Adressgruppen: ARM-Vorlage
 
@@ -23,7 +23,7 @@ In dieser Schnellstartanleitung wird mithilfe einer Azure Resource Manager-Vorl
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,7 +35,7 @@ Mit dieser Vorlage werden eine Azure Firewall-Instanz sowie IP-Adressgruppen un
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox).
 
-:::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json":::
 
 In der Vorlage sind mehrere Azure-Ressourcen definiert:
 
@@ -55,17 +55,17 @@ Stellen Sie die ARM-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Durch die Vorlage werden eine Azure Firewall-Instanz, die Netzwerkinfrastruktur und zwei virtuelle Computer erstellt.
 
-   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
+   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
 
 2. Geben Sie im Portal auf der Seite **Create an Azure Firewall with IpGroups** (Erstellen einer Azure Firewall-Instanz mit IP-Adressgruppen) die folgenden Werte ein, oder wählen Sie sie aus:
-   - Abonnement: Wählen Sie aus den vorhandenen Abonnements aus. 
+   - Abonnement: Wählen Sie aus den vorhandenen Abonnements aus.
    - Ressourcengruppe:  Wählen Sie aus den vorhandenen Ressourcengruppen aus, oder wählen Sie **Neu erstellen** und anschließend **OK** aus.
    - Standort: Standort auswählen
-   - Name des virtuellen Netzwerks: Geben Sie einen Namen für das neue virtuelle Netzwerk (VNET) ein. 
-   - Name der IP-Adressgruppe 1: Geben Sie einen Namen für die IP-Adressgruppe 1 ein. 
-   - Name der IP-Adressgruppe 2: Geben Sie einen Namen für die IP-Adressgruppe 2 ein. 
-   - Administratorbenutzername: Geben Sie den Benutzernamen für das Administratorbenutzerkonto ein. 
-   - Authentifizierung: Wählen Sie „sshPublicKey“ oder „Kennwort“ aus. 
+   - Name des virtuellen Netzwerks: Geben Sie einen Namen für das neue virtuelle Netzwerk (VNET) ein.
+   - Name der IP-Adressgruppe 1: Geben Sie einen Namen für die IP-Adressgruppe 1 ein.
+   - Name der IP-Adressgruppe 2: Geben Sie einen Namen für die IP-Adressgruppe 2 ein.
+   - Administratorbenutzername: Geben Sie den Benutzernamen für das Administratorbenutzerkonto ein.
+   - Authentifizierung: Wählen Sie „sshPublicKey“ oder „Kennwort“ aus.
    - Administratorkennwort: Geben Sie ein Administratorkennwort oder einen Administratorschlüssel ein.
 
 3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus. Die Bereitstellung kann zehn Minuten oder länger dauern.

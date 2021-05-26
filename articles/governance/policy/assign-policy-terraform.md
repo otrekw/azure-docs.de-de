@@ -3,12 +3,12 @@ title: 'Schnellstart: Neue Richtlinienzuweisung mit Terraform'
 description: In dieser Schnellstartanleitung erstellen Sie mit Terraform und HCL-Syntax eine Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen.
 ms.date: 03/31/2021
 ms.topic: quickstart
-ms.openlocfilehash: 7530ad1c4e87fb2df00e1fa81e324bb9bd0c4034
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c9e33fc8070adc2685e26272565d95716c0df8db
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763035"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094760"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe von Terraform
 
@@ -85,7 +85,7 @@ Initialisieren Sie anschließend Terraform, um die erforderlichen Anbieter herun
 
 1. Authentifizieren Sie sich mit der [Azure CLI](/cli/azure/) für Terraform. Weitere Informationen finden Sie unter [Azure-Anbieter: Authentifizieren mithilfe der Azure CLI](https://www.terraform.io/docs/providers/azurerm/guides/azure_cli.html).
 
-   ```bash
+   ```azurecli
    az login
    ```
 

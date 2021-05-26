@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 3765229fccb00f6e19fd3cf2b6b1a39919abcf05
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 2270d9569f2638cd08e81e26cff4a4605011ffbb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321805"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070136"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Tutorial: Erstellen einer verwalteten Anwendung mit benutzerdefinierten Aktionen und Ressourcen
 
@@ -41,7 +41,7 @@ Für dieses Tutorial müssen Sie mit Folgendem vertraut sein:
 
 In diesem Tutorial wird eine verwaltete Anwendung erstellt, deren verwaltete Ressourcengruppe eine Instanz eines benutzerdefinierten Anbieters, ein Speicherkonto und eine Funktion enthält. Die in diesem Beispiel verwendete Azure-Funktion implementiert eine API zur Behandlung der Vorgänge des benutzerdefinierten Anbieters für Aktionen und Ressourcen. Ein Azure Storage-Konto wird als grundlegender Speicher für die Ressourcen Ihres benutzerdefinierten Anbieters verwendet.
 
-Die Benutzeroberflächendefinition für die Erstellung einer verwalteten Anwendungsinstanz enthält die Eingabeelemente `funcname` und `storagename`. Der Name des Speicherkontos und der Funktion muss global eindeutig sein. Funktionsdateien werden standardmäßig über das [Paket mit Beispielfunktionen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip) bereitgestellt. Alternativ können Sie aber auch ein Eingabeelement für einen Paketlink in *createUiDefinition.json* hinzufügen:
+Die Benutzeroberflächendefinition für die Erstellung einer verwalteten Anwendungsinstanz enthält die Eingabeelemente `funcname` und `storagename`. Der Name des Speicherkontos und der Funktion muss global eindeutig sein. Funktionsdateien werden standardmäßig über das [Paket mit Beispielfunktionen](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.customproviders/custom-rp-with-function/artifacts/functionzip) bereitgestellt. Alternativ können Sie aber auch ein Eingabeelement für einen Paketlink in *createUiDefinition.json* hinzufügen:
 
 ```json
 {
@@ -67,7 +67,7 @@ Die Benutzeroberflächendefinition für die Erstellung einer verwalteten Anwendu
 {
   "name": "zipFileBlobUri",
   "type": "Microsoft.Common.TextBox",
-  "defaultValue": "https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip/functionpackage.zip",
+  "defaultValue": "https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.customproviders/custom-rp-with-function/artifacts/functionzip/functionpackage.zip",
   "label": "The Uri to the uploaded function zip file",
   "toolTip": "The Uri to the uploaded function zip file",
   "visible": true
@@ -185,7 +185,7 @@ Verpacken Sie die folgenden Artefakte für die verwaltete Anwendung in einem ZIP
 * mainTemplate.json
 * viewDefinition.json
 
-Alle Dateien müssen sich auf der Stammebene befinden. Das Paket mit den Artefakten kann in einem beliebigen Speicher gespeichert werden – also etwa in einem GitHub-Blob oder in einem Azure Storage-Kontoblob. Hier sehen Sie ein Skript zum Hochladen des Anwendungspakets in das Speicherkonto: 
+Alle Dateien müssen sich auf der Stammebene befinden. Das Paket mit den Artefakten kann in einem beliebigen Speicher gespeichert werden – also etwa in einem GitHub-Blob oder in einem Azure Storage-Kontoblob. Hier sehen Sie ein Skript zum Hochladen des Anwendungspakets in das Speicherkonto:
 
 ```powershell
 $resourceGroup="appResourcesGroup"
@@ -210,7 +210,7 @@ Set-AzStorageBlobContent `
   -File "path_to_your_zip_package" `
   -Container appcontainer `
   -Blob app.zip `
-  -Context $ctx 
+  -Context $ctx
 
 # Get blob absolute uri
 $blobUri=(Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $ctx).ICloudBlob.uri.AbsoluteUri
@@ -248,8 +248,8 @@ az managedapp definition create \
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Ressourcenliste **Center für verwaltete Anwendungen** ein, und wählen Sie die entsprechende Option aus.
-2. Wählen Sie im **Center für verwaltete Anwendungen** die Option **Definition einer Dienstkataloganwendung** aus, und klicken Sie anschließend auf **Hinzufügen**. 
-    
+2. Wählen Sie im **Center für verwaltete Anwendungen** die Option **Definition einer Dienstkataloganwendung** aus, und klicken Sie anschließend auf **Hinzufügen**.
+
     ![Hinzufügen des Dienstkatalogs](./media/tutorial-create-managed-app-with-custom-provider/service-catalog-managed-application.png)
 
 3. Geben Sie Werte für die Erstellung einer Dienstkatalogdefinition an:
@@ -304,7 +304,7 @@ az managedapp create \
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Ressourcenliste **Center für verwaltete Anwendungen** ein, und wählen Sie die entsprechende Option aus.
-2. Wählen Sie im **Center für verwaltete Anwendungen** die Option **Definition einer Dienstkataloganwendung** aus, und klicken Sie anschließend auf **Hinzufügen**. 
+2. Wählen Sie im **Center für verwaltete Anwendungen** die Option **Definition einer Dienstkataloganwendung** aus, und klicken Sie anschließend auf **Hinzufügen**.
 
     ![Hinzufügen der verwalteten Anwendung](./media/tutorial-create-managed-app-with-custom-provider/add-managed-application.png)
 
@@ -319,8 +319,8 @@ az managedapp create \
 
     ![Anwendungseinstellungen](./media/tutorial-create-managed-app-with-custom-provider/application-settings.png)
 
-5. Klicken Sie nach erfolgreicher Überprüfung auf **OK**, um eine Instanz einer verwalteten Anwendung bereitzustellen. 
-    
+5. Klicken Sie nach erfolgreicher Überprüfung auf **OK**, um eine Instanz einer verwalteten Anwendung bereitzustellen.
+
     ![Bereitstellen einer verwalteten Anwendung](./media/tutorial-create-managed-app-with-custom-provider/deploy-managed-application.png)
 
 ---
@@ -349,7 +349,7 @@ Sie können zu der Instanz der verwalteten Anwendung navigieren und auf der Übe
 
 ## <a name="looking-for-help"></a>Wenn Hilfe benötigt wird
 
-Wenn Sie Fragen zu Azure Managed Applications haben, können Sie diese auf [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) mit dem Tag „azure-managed-app“ oder auf [Microsoft Q&A](/answers/topics/azure-managed-applications.html) mit dem Tag „azure-managed-application“ stellen. Eine ähnliche Frage wurde möglicherweise bereits gestellt und beantwortet, weshalb Sie dies zunächst prüfen sollten, bevor Sie etwas posten. Verwenden Sie die entsprechenden Tags, um schneller eine Antwort zu erhalten. 
+Wenn Sie Fragen zu Azure Managed Applications haben, können Sie diese auf [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) mit dem Tag „azure-managed-app“ oder auf [Microsoft Q&A](/answers/topics/azure-managed-applications.html) mit dem Tag „azure-managed-application“ stellen. Eine ähnliche Frage wurde möglicherweise bereits gestellt und beantwortet, weshalb Sie dies zunächst prüfen sollten, bevor Sie etwas posten. Verwenden Sie die entsprechenden Tags, um schneller eine Antwort zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e32779e75480d365ec10e8c7f849fddd27c891c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: bec9ea1e01edc3e8289eb7212d3c5fecd673faaa
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275990"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477359"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Erste Schritte mit Azure Queue Storage mit .NET
 
@@ -60,7 +60,7 @@ Sie können die Azure Storage-Clientbibliotheken in jeder Art von .NET-Anwendung
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>Verwenden von NuGet zum Installieren der erforderlichen Pakete
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Sie müssen in Ihrem Projekt auf die folgenden vier Pakete verweisen, um dieses Tutorial abzuschließen:
 
@@ -76,7 +76,7 @@ Sie können diese Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
 1. Suchen Sie online nach `Azure.Storage.Queues`, und wählen Sie **Installieren** aus, um die Azure Storage-Clientbibliothek und die zugehörigen Abhängigkeiten zu installieren. Dadurch werden auch die Bibliotheken Azure.Storage.Common und Azure.Core installiert, die Abhängigkeiten der Warteschlangenbibliothek sind.
 1. Suchen Sie online nach `System.Configuration.ConfigurationManager`, und wählen Sie **Installieren** aus, um den Configuration Manager zu installieren.
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 Sie müssen in Ihrem Projekt auf die folgenden drei Pakete verweisen, um dieses Tutorial abzuschließen:
 
@@ -152,11 +152,11 @@ Wenn Sie den Azurite-Speicheremulator verwenden möchten, können Sie eine Verkn
 
 Fügen Sie am Anfang der Datei `Program.cs` die folgende `using`-Anweisung hinzu:
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_UsingStatements":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 using System; // Namespace for Console output
@@ -169,13 +169,13 @@ using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
 
 ### <a name="create-the-queue-storage-client"></a>Erstellen des Queue Storage-Clients
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Mit der [`QueueClient`](/dotnet/api/azure.storage.queues.queueclient)-Klasse können Sie in Queue Storage gespeicherte Warteschlangen abrufen. Hier sehen Sie eine Möglichkeit zum Erstellen des Dienstclients:
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_CreateClient":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 Mit der [`CloudQueueClient`](/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet-legacy&preserve-view=true)-Klasse können Sie in Queue Storage gespeicherte Warteschlangen abrufen. Hier sehen Sie eine Möglichkeit zum Erstellen des Dienstclients:
 
@@ -196,11 +196,11 @@ Jetzt können Sie Code schreiben, der Daten aus Queue Storage liest und Daten in
 
 In diesem Beispiel wird die Erstellung einer Warteschlange gezeigt:
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_CreateQueue":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 // Retrieve storage account from connection string
@@ -221,13 +221,13 @@ queue.CreateIfNotExists();
 
 ## <a name="insert-a-message-into-a-queue"></a>Einfügen einer Nachricht in eine Warteschlange
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Um eine Nachricht in eine vorhandene Warteschlange einzufügen, rufen Sie die [`SendMessage`](/dotnet/api/azure.storage.queues.queueclient.sendmessage)-Methode auf. Eine Nachricht kann entweder eine Zeichenfolge (im UTF-8-Format) oder ein Bytearray sein. Mit dem folgenden Code wird eine Warteschlange erstellt (falls diese nicht vorhanden ist), und es wird eine Nachricht eingefügt:
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_InsertMessage":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 Um eine Nachricht in eine vorhandene Warteschlange einzufügen, erstellen Sie zuerst ein neues [`CloudQueueMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy&preserve-view=true)-Objekt. Rufen Sie anschließend die [`AddMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy&preserve-view=true)-Methode auf. Eine `CloudQueueMessage` kann aus einer Zeichenfolge (im UTF-8-Format) oder einem Bytearray erstellt werden. Dieser Code erstellt eine Warteschlange (falls noch nicht vorhanden) und fügt die Nachricht `Hello, World` ein: Um eine Nachricht in eine vorhandene Warteschlange einzufügen, erstellen Sie zuerst ein neues [`CloudQueueMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy&preserve-view=true)-Objekt. Rufen Sie anschließend die [`AddMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy&preserve-view=true)-Methode auf. Eine `CloudQueueMessage` kann aus einer Zeichenfolge (im UTF-8-Format) oder einem Bytearray erstellt werden. Dieser Code erstellt eine Warteschlange (falls noch nicht vorhanden) und fügt die Nachricht `Hello, World` ein:
 
@@ -254,13 +254,13 @@ queue.AddMessage(message);
 
 ## <a name="peek-at-the-next-message"></a>Einsehen der nächsten Nachricht
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Sie können einen Blick auf die Nachrichten in der Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die [`PeekMessages`](/dotnet/api/azure.storage.queues.queueclient.peekmessages)-Methode aufrufen. Wenn Sie keinen Wert für den Parameter `maxMessages` übergeben, wird standardmäßig eine Nachricht angezeigt.
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_PeekMessage":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die [`PeekMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet-legacy&preserve-view=true)-Methode aufrufen.
 
@@ -288,11 +288,11 @@ Console.WriteLine(peekedMessage.AsString);
 
 Sie können den Inhalt einer Nachricht vor Ort in der Warteschlange ändern. Wenn die Nachricht eine Arbeitsaufgabe darstellt, können Sie diese Funktion verwenden, um den Status der Aufgabe zu aktualisieren. Mit dem folgenden Code wird die Warteschlangennachricht mit neuem Inhalt aktualisiert und das Sichtbarkeits-Zeitlimit um weitere 60 Sekunden verlängert. Dadurch wird der mit der Nachricht verknüpfte Arbeitsstatus gespeichert, und der Client erhält eine weitere Minute zur Bearbeitung der Nachricht. Sie können diese Technik verwenden, um Workflows mit mehreren Schritten in Warteschlangennachrichten zu verfolgen, ohne von vorn beginnen zu müssen, wenn bei einem Verarbeitungsschritt aufgrund eines Hardware- oder Softwarefehlers ein Fehler auftritt. In der Regel behalten Sie auch die Anzahl der Wiederholungen bei, und wenn die Nachricht mehr als *n* Mal wiederholt wurde, wird sie gelöscht. Dies verhindert, dass eine Nachricht bei jeder Verarbeitung einen Anwendungsfehler auslöst.
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_UpdateMessage":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -317,13 +317,13 @@ queue.UpdateMessage(message,
 
 ## <a name="dequeue-the-next-message"></a>Entfernen der nächsten Nachricht aus der Warteschlange
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Sie können eine Nachricht in zwei Schritten aus einer Warteschlange entfernen. Wenn Sie [`ReceiveMessages`](/dotnet/api/azure.storage.queues.queueclient.receivemessages) aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für `ReceiveMessages` zurückgegebene Nachricht ist für anderen Code, mit dem Nachrichten aus dieser Warteschlange gelesen werden, nicht mehr sichtbar. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Wenn Sie die Nachricht endgültig aus der Warteschlange entfernen möchten, müssen Sie auch [`DeleteMessage`](/dotnet/api/azure.storage.queues.queueclient.deletemessage) aufrufen. Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. In Ihrem Code wird `DeleteMessage` direkt nach der Verarbeitung der Nachricht aufgerufen.
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_DequeueMessage":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Wenn Sie [`GetMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet-legacy&preserve-view=true) aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für `GetMessage` zurückgegebene Nachricht ist für anderen Code, mit dem Nachrichten aus dieser Warteschlange gelesen werden, nicht mehr sichtbar. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Wenn Sie die Nachricht endgültig aus der Warteschlange entfernen möchten, müssen Sie auch [`DeleteMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet-legacy&preserve-view=true) aufrufen. Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. In Ihrem Code wird `DeleteMessage` direkt nach der Verarbeitung der Nachricht aufgerufen.
 
@@ -353,11 +353,11 @@ queue.DeleteMessage(retrievedMessage);
 
 In diesem Beispiel wird veranschaulicht, wie das Async-Await-Muster mit allgemeinen Queue Storage-APIs verwendet wird. Im Beispiel werden jeweils die asynchronen Versionen der angegebenen Methoden aufgerufen, wie am Suffix `Async` der einzelnen Methoden erkennbar. Wenn eine asynchrone Methode verwendet wird, hält das Async-Await-Muster die lokale Ausführung an, bis der Aufruf abgeschlossen ist. Durch dieses Verhalten kann der aktuelle Thread eine andere Aktion ausführen, wodurch Leistungsengpässe vermieden werden und die allgemeine Reaktionsfähigkeit der Anwendung verbessert wird. Weitere Informationen zur Verwendung des Async-Await-Musters in .NET finden Sie unter [Async und Await (C# und Visual Basic)](/previous-versions/hh191443(v=vs.140)).
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_AsyncQueue":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 // Create the queue if it doesn't already exist
@@ -392,13 +392,13 @@ Console.WriteLine("Deleted message");
 
 Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Warteschlange anpassen können. Erstens können Sie einen Nachrichtenstapel abrufen (bis zu 32). Zweitens können Sie das Unsichtbarkeits-Zeitlimit verkürzen oder verlängern, sodass der Code mehr oder weniger Zeit zur vollständigen Verarbeitung jeder Nachricht benötigt.
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Im folgenden Codebeispiel wird [`ReceiveMessages`](/dotnet/api/azure.storage.queues.queueclient.receivemessages) verwendet, um 20 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer `foreach`-Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten pro Nachricht festgelegt. Beachten Sie, dass die 5 Minuten für alle Nachrichten gleichzeitig beginnen, sodass 5 Minuten nach dem Aufruf von `ReceiveMessages` alle Nachrichten, die nicht gelöscht wurden, wieder sichtbar werden.
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_DequeueMessages":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 Im folgenden Codebeispiel wird [`GetMessages`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet-legacy&preserve-view=true) verwendet, um 20 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer `foreach`-Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten pro Nachricht festgelegt. Beachten Sie, dass die 5 Minuten für alle Nachrichten gleichzeitig beginnen, sodass 5 Minuten nach dem Aufruf von `GetMessages` alle Nachrichten, die nicht gelöscht wurden, wieder sichtbar werden.
 
@@ -424,13 +424,13 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 
 ## <a name="get-the-queue-length"></a>Abrufen der Warteschlangenlänge
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. Die Methode [`GetProperties`](/dotnet/api/azure.storage.queues.queueclient.getproperties) gibt Warteschlangeneigenschaften einschließlich der Nachrichtenanzahl zurück. Die [`ApproximateMessagesCount`](/dotnet/api/azure.storage.queues.models.queueproperties.approximatemessagescount)-Eigenschaft enthält die ungefähre Anzahl der Nachrichten in der Warteschlange. Diese Anzahl ist nicht niedriger ist als die tatsächliche Anzahl der Nachrichten in der Warteschlange, sie kann jedoch höher sein.
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_GetQueueLength":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. Die Methode [`FetchAttributes`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet-legacy&preserve-view=true) gibt Warteschlangenattribute einschließlich der Nachrichtenanzahl zurück. Mit der [`ApproximateMessageCount`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet-legacy&preserve-view=true)-Eigenschaft wird der letzte Wert zurückgegeben, der mit der `FetchAttributes`-Methode abgerufen wurde, ohne Queue Storage aufzurufen.
 
@@ -459,13 +459,13 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
 ## <a name="delete-a-queue"></a>Löschen einer Warteschlange
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die [`Delete`](/dotnet/api/azure.storage.queues.queueclient.delete)-Methode für das Warteschlangenobjekt auf.
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_DeleteQueue":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die [`Delete`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet-legacy&preserve-view=true)-Methode für das Warteschlangenobjekt auf.
 

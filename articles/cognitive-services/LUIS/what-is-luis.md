@@ -5,14 +5,14 @@ keywords: Azure, künstliche Intelligenz, KI, Verarbeitung natürlicher Sprache,
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 04/16/2021
+ms.date: 05/17/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3a7484269f16cc55fa16597e74b1d0671d16d980
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: d48d80170e3f1b9db83e12b34610a8b6736f42ca
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290594"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095822"
 ---
 # <a name="what-is-language-understanding-luis"></a>Worum handelt es sich bei Language Understanding (LUIS)?
 
@@ -49,7 +49,7 @@ Diese Dokumentation enthält die folgenden Arten von Artikeln:
 -   **Planen:** Identifizieren Sie die möglichen Verwendungsszenarien für Ihre Anwendung. Definieren Sie die Aktionen und relevanten Informationen, die berücksichtigt werden müssen.
 -   **Erstellen:** Verwenden Sie Ihre Erstellungsressource, um Ihre App zu entwickeln. Definieren Sie zunächst [Absichten](luis-concept-intent.md) und [Entitäten](luis-concept-entity-types.md). Fügen Sie dann [Trainingsäußerungen](luis-concept-utterance.md) für die einzelnen Absichten hinzu. 
 -   **Testen und Verbessern:** Testen Sie Ihr Modell mit anderen Äußerungen, um ein Gefühl für das Verhalten der App zu bekommen, und entscheiden Sie, ob Verbesserungsbedarf besteht. Bewährte Methoden zur Verbesserung Ihrer Anwendung finden Sie [hier](luis-concept-best-practices.md). 
--   **Veröffentlichen:** Stellen Sie Ihre App für Vorhersagen bereit, und fragen Sie den Endpunkt mithilfe Ihrer Vorhersageressource ab. Weitere Informationen zu Erstellungs- und Vorhersageressourcen finden Sie [hier](luis-how-to-azure-subscription.md#luis-resources). 
+-   **Veröffentlichen:** Stellen Sie Ihre App für Vorhersagen bereit, und fragen Sie den Endpunkt mithilfe Ihrer Vorhersageressource ab. Weitere Informationen zu Erstellungs- und Vorhersageressourcen finden Sie [hier](luis-how-to-azure-subscription.md). 
 -   **Verbinden:** Stellen Sie eine Verbindung mit anderen Diensten wie [Microsoft Bot Framework](/composer/tutorial/tutorial-luis), [QnA Maker](../QnAMaker/choose-natural-language-processing-service.md) und [Speech](../speech-service/get-started-intent-recognition.md) her. 
 -   **Optimieren:** [Überprüfen Sie Endpunktäußerungen](luis-concept-review-endpoint-utterances.md), um Ihre Anwendung mit Beispielen aus der Praxis zu verbessern.
 
