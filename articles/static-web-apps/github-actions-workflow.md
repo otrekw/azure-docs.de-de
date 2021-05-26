@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: b20a1670c13a272ed48088567a205d854ac99179
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f47ad3d63ca99ffbe095498d2db7646e8a4a3ae7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791245"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072476"
 ---
-# <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub Actions-Workflows für Azure Static Web Apps (Vorschau)
+# <a name="github-actions-workflows-for-azure-static-web-apps"></a>GitHub Actions-Workflows für Azure Static Web Apps
 
 Wenn Sie eine neue Azure Static Web Apps-Ressource erstellen, generiert Azure einen GitHub Actions-Workflow, um die Continuous Deployment-Vorgänge für die App zu steuern. Der Workflow basiert auf einer YAML-Datei. In diesem Artikel werden die Struktur und die Optionen der Workflowdatei ausführlich erläutert.
 
@@ -58,7 +58,7 @@ jobs:
           submodules: true
       - name: Build And Deploy
         id: builddeploy
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
@@ -76,7 +76,7 @@ jobs:
     steps:
       - name: Close Pull Request
         id: closepullrequest
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
           action: 'close'
@@ -149,7 +149,7 @@ Sie können präzise steuern, welche Befehle während einer Bereitstellung ausge
 
 Für die Bereitstellung wird vor einem benutzerdefinierten Befehl immer `npm install` aufgerufen.
 
-| Get-Help             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                |
+| Befehl             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `app_build_command` | Definiert einen benutzerdefinierten Befehl, der während der Bereitstellung der Anwendung für statischen Inhalt ausgeführt werden soll.<br><br>Wenn Sie beispielsweise einen Produktionsbuild für eine Angular-Anwendung konfigurieren möchten, erstellen Sie ein npm-Skript mit dem Namen `build-prod`, um `ng build --prod` auszuführen, und geben Sie `npm run build-prod` als benutzerdefinierten Befehl ein. Wenn Sie das Feld leer lassen, versucht der Workflow, den Befehl `npm run build` oder `npm run build:azure` auszuführen. |
 | `api_build_command` | Definiert einen benutzerdefinierten Befehl, der während der Bereitstellung der Azure Functions-API-Anwendung ausgeführt werden soll.                                                                                                                                                                                                                                                                                                  |
@@ -180,19 +180,6 @@ with:
 > [!NOTE]
 > Sie können das Erstellen nur für die Front-End-App überspringen. Wenn Ihre App über eine API verfügt, wird sie weiterhin von der GitHub-Aktion von Static Web Apps erstellt.
 
-## <a name="route-file-location"></a>Speicherort der Routendatei
-
-Sie können den Workflow so anpassen, dass in allen Ordnern Ihres Repositorys nach [routes.json](routes.md) gesucht wird. Die folgende Eigenschaft kann im Abschnitt `with` eines Auftrags definiert werden.
-
-| Eigenschaft          | BESCHREIBUNG                                                                                                                                 |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `routes_location` | Definiert den Verzeichnisspeicherort, an dem die Datei _routes.json_ zu finden ist. Dieser Speicherort ist relativ zum Stammverzeichnis des Repositorys. |
-
-Die explizite Angabe des Speicherorts Ihrer Datei _routes.json_ ist besonders wichtig, falls diese Datei während des Buildschritts Ihres Front-End-Frameworks nicht standardmäßig nach `output_location` verschoben wird.
-
-> [!IMPORTANT]
-> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet. Informationen zu _staticwebapp.config.json_ finden Sie in der [Konfigurationsdatei](./configuration.md) von Azure Static Web Apps.
-
 ## <a name="environment-variables"></a>Umgebungsvariablen
 
 Umgebungsvariablen für Ihren Build können über den Abschnitt `env` einer Auftragskonfiguration festgelegt werden.
@@ -209,7 +196,7 @@ jobs:
           submodules: true
       - name: Build And Deploy
         id: builddeploy
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}

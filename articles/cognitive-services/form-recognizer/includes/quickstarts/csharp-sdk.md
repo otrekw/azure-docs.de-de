@@ -7,16 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: b7a35046a7f170365974c50a5be99f35cb4a868f
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: " devx-track-csharp"
+ms.openlocfilehash: 1adba2b8f0be01be231721a9c838ad6961ab03a0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516435"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374180"
 ---
 <!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
 > [!IMPORTANT]
 > Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet.
 
@@ -59,7 +61,7 @@ Build succeeded.
 
 Installieren Sie im Anwendungsverzeichnis mit dem folgenden Befehl die Formularerkennungs-Clientbibliothek für .NET:
 
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.4
@@ -68,7 +70,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.4
 > [!NOTE]
 > Für das SDK von Formularerkennung 3.1.0-beta.4 wird _API-Version 2.1-preview.3 verwendet.
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
@@ -97,11 +99,11 @@ Erstellen Sie in der **Program**-Klasse der Anwendung Variablen für den Schlüs
 
 Fügen Sie in der Methode **Main** der Anwendung einen Aufruf der asynchronen Aufgaben hinzu, die in dieser Schnellstartanleitung verwendet werden. Die Implementierung erfolgt zu einem späteren Zeitpunkt.
 
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
 
@@ -131,14 +133,14 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 Sehen Sie sich die Beispiele zum [Trainieren eines Modells](#train-a-custom-model) und zum [Verwalten eines benutzerdefinierten Modells](#manage-custom-models) an.
 
 > [!NOTE]
-> Modelle können auch mithilfe einer grafischen Benutzeroberfläche trainiert werden, z. B. mit dem [Formularerkennungstool für die Bezeichnung](../../quickstarts/label-tool.md).
+> Modelle können auch mithilfe einer grafischen Benutzeroberfläche trainiert werden, z. B. mit dem [Formularerkennungstool für die Bezeichnung](../../label-tool.md).
 
 ## <a name="code-examples"></a>Codebeispiele
 
 Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formularerkennungs-Clientbibliothek für .NET ausgeführt werden:
 <!-- markdownlint-disable MD001 -->
 
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Analysieren des Layouts](#analyze-layout)
@@ -148,16 +150,16 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formu
 * [Analysieren von Ausweisdokumenten](#analyze-identity-documents)
 * [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
-* [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
+* [Verwalten benutzerdefinierter Modelle](#manage-custom-models)
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Analysieren des Layouts](#analyze-layout)
 * [Analysieren von Belegen](#analyze-receipts)
 * [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
-* [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
+* [Verwalten benutzerdefinierter Modelle](#manage-custom-models)
 
 ---
 
@@ -180,17 +182,17 @@ Wiederholen Sie die oben genannten Schritte für eine neue Methode, mit der ein 
 
 Sie müssen außerdem Verweise auf die URLs für Ihre Trainings- und Testdaten hinzufügen. Fügen Sie diese dem Stamm Ihrer **Program**-Klasse hinzu.
 
-* [!INCLUDE [get SAS URL](../sas-instructions.md)]
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS-URL-Abruf":::
 * Führen Sie anschließend erneut die obigen Schritte aus, um die SAS-URL eines einzelnen Dokuments im Blobspeichercontainer abzurufen. Speichern Sie sie ebenfalls an einem temporären Speicherort.
 * Speichern Sie abschließend die URL der Beispielbilder (unten enthalten und auch auf [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) verfügbar).
 
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
 
@@ -307,7 +309,7 @@ Total: '1203.39', with confidence '0.774'
 
 ## <a name="analyze-business-cards"></a>Analysieren von Visitenkarten
 
-####  <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten analysieren und extrahieren. Weitere Informationen zur Analyse von Visitenkarten finden Sie im [Konzeptleitfaden zu Visitenkarten](../../concept-business-cards.md).
 
@@ -322,7 +324,7 @@ Der folgende Code verarbeitet die Visitenkarte unter dem angegebenen URI und gib
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
@@ -331,7 +333,7 @@ Der folgende Code verarbeitet die Visitenkarte unter dem angegebenen URI und gib
 
 ## <a name="analyze-invoices"></a>Analysieren von Rechnungen
 
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Rechnungsfelder analysieren und extrahieren. Weitere Informationen zur Rechnungsanalyse finden Sie im [Konzeptleitfaden zu Rechnungen](../../concept-invoices.md).
 
@@ -346,7 +348,7 @@ Der folgende Code verarbeitet die Rechnung unter dem angegebenen URI und gibt di
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
@@ -355,7 +357,7 @@ Der folgende Code verarbeitet die Rechnung unter dem angegebenen URI und gibt di
 
 ## <a name="analyze-identity-documents"></a>Analysieren von Ausweisdokumenten
 
-#### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe des vordefinierten Formularerkennungs-ID-Modells wichtige Informationen aus von staatlichen Behörden ausgestellten Ausweisdokumenten (internationale Reisepässe und US-Führerscheine) analysieren und extrahieren. Weitere Informationen zur Ausweisdokumentanalyse finden Sie unter [Vordefiniertes ID-Modell der Formularerkennung für Ausweise](../../concept-identification-cards.md).
 
@@ -370,7 +372,7 @@ Der folgende Code verarbeitet das Ausweisdokument unter dem angegebenen URI und 
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs" id="snippet_id_print":::
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
@@ -382,7 +384,7 @@ Der folgende Code verarbeitet das Ausweisdokument unter dem angegebenen URI und 
 In diesem Abschnitt wird gezeigt, wie Sie ein Modell mit eigenen Daten trainieren. Ein trainiertes Modell kann strukturierte Daten ausgeben, die die Schlüssel-Wert-Beziehungen im ursprünglichen Formulardokument enthalten. Nachdem das Modell trainiert wurde, können Sie es testen, neu trainieren und schließlich verwenden, um Daten aus weiteren Formularen zuverlässig nach Ihren Bedürfnissen zu extrahieren.
 
 > [!NOTE]
-> Sie können Modelle auch mithilfe einer grafischen Benutzeroberfläche trainieren, z. B. dem [Formularerkennungstool für die Bezeichnung von Beispielen](../../quickstarts/label-tool.md).
+> Sie können Modelle auch mithilfe einer grafischen Benutzeroberfläche trainieren, z. B. dem [Formularerkennungstool für die Bezeichnung von Beispielen](../../label-tool.md).
 
 ### <a name="train-a-model-without-labels"></a>Trainieren eines Modells ohne Bezeichnungen
 
@@ -456,7 +458,7 @@ Submodel Form Type: form-0
 
 ### <a name="train-a-model-with-labels"></a>Trainieren eines Modells mit Bezeichnungen
 
-Sie können benutzerdefinierte Modelle auch trainieren, indem Sie die Trainingsdokumente manuell bezeichnen. Das Training mit Bezeichnungen führt in einigen Szenarien zu einer besseren Leistung. Zum Training mit Bezeichnungen benötigen Sie zusätzlich zu den Trainingsdokumenten spezielle Informationsdateien mit Bezeichnungen (`\<filename\>.pdf.labels.json`) in Ihrem Blobspeichercontainer. Das [Formularerkennungstool für die Bezeichnung von Beispielen](../../quickstarts/label-tool.md) bietet eine Benutzeroberfläche, auf der Sie diese Bezeichnungsdateien erstellen können. Sobald Sie darüber verfügen, können Sie die `StartTrainingAsync`-Methode mit dem auf `true` festgelegten Parameter `uselabels` aufrufen.
+Sie können benutzerdefinierte Modelle auch trainieren, indem Sie die Trainingsdokumente manuell bezeichnen. Das Training mit Bezeichnungen führt in einigen Szenarien zu einer besseren Leistung. Zum Training mit Bezeichnungen benötigen Sie zusätzlich zu den Trainingsdokumenten spezielle Informationsdateien mit Bezeichnungen (`\<filename\>.pdf.labels.json`) in Ihrem Blobspeichercontainer. Das [Formularerkennungstool für die Bezeichnung von Beispielen](../../label-tool.md) bietet eine Benutzeroberfläche, auf der Sie diese Bezeichnungsdateien erstellen können. Sobald Sie darüber verfügen, können Sie die `StartTrainingAsync`-Methode mit dem auf `true` festgelegten Parameter `uselabels` aufrufen.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_trainlabels)]
 

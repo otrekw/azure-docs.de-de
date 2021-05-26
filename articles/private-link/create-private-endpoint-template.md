@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: e80adc16e08e676ac2daabec01a11c10d537c547
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b6e5e5e097ce59fc676e75d45217269a927b2d7
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562944"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814800"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Schnellstart: Erstellen eines privaten Endpunkts mithilfe einer ARM-Vorlage
 
@@ -25,7 +25,7 @@ Diese Schnellstartanleitung steht auch für das [Azure-Portal](create-private-en
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.sql%2Fprivate-endpoint-sql%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +37,7 @@ Mit dieser Vorlage wird ein privater Endpunkt für eine Instanz von Azure SQL-Da
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/).
 
-:::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.sql/private-endpoint-sql/azuredeploy.json":::
 
 In der Vorlage sind mehrere Azure-Ressourcen definiert:
 
@@ -58,7 +58,7 @@ So stellen Sie die ARM-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Die Vorlage erstellt den privaten Endpunkt, die Instanz von SQL-Datenbank, die Netzwerkinfrastruktur und einen zu überprüfenden virtuellen Computer.
 
-   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.sql%2Fprivate-endpoint-sql%2Fazuredeploy.json)
 
 2. Wählen Sie Ihre Ressourcengruppe aus, oder erstellen Sie sie.
 3. Geben Sie den Benutzernamen des SQL-Administrators und das entsprechende Kennwort ein.

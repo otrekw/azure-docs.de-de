@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen des Formularerkennungstools für die Bezeichnung von Beispielen
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Erfahren Sie mehr über die verschiedenen Möglichkeiten, wie Sie das Formularerkennungstool für die Bezeichnung von Beispielen für überwachte Lernen bereitstellen können.
 author: laujan
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: lajanuar
-ms.openlocfilehash: 0f5f0714235ee23624b3a199eac744155d2bbdd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 66edf7dbe7bc32cffcc5c4adad6e04d81f8a21ac
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101093380"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374593"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Bereitstellen des Samplebezeichnungstools
 
@@ -28,7 +28,7 @@ Das Formularerkennungstool für die Beschriftung von Beispielen ist eine Anwendu
 
 Die schnellste Möglichkeit, um mit dem Beschriften von Daten loszulegen, ist die lokale Ausführung des Tools für die Beschriftung von Beispielen. Im folgenden Schnellstart wird gezeigt, wie Sie die Formularerkennungs-REST-API und das Tool für die Beschriftung von Beispielen verwenden, um ein benutzerdefiniertes Modell mit manuell beschrifteten Daten zu trainieren. 
 
-* [Schnellstart: Beschriften von Formularen, Trainieren eines Modells und Analysieren eines Formulars mithilfe des Tools für die Beschriftung von Beispielen](./quickstarts/label-tool.md)
+* [Schnellstart: Beschriften von Formularen, Trainieren eines Modells und Analysieren eines Formulars mithilfe des Tools für die Beschriftung von Beispielen](label-tool.md)
 
 ## <a name="deploy-with-azure-container-instances-aci"></a>Bereitstellen mit Azure Container Instances (ACI)
 
@@ -70,14 +70,14 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
 
 6. Konfigurieren Sie nun Ihren Docker-Container. Alle Felder sind erforderlich, sofern nicht anders angegeben:
 <!-- markdownlint-disable MD025 -->
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+# <a name="v21"></a>[v2.1](#tab/v2-1)
 
 * Optionen: Wählen Sie **Einzelner Container** aus.
 * Imagequelle: Wählen Sie **Private Registrierung** aus. 
 * Server-URL: Legen Sie die URL auf `https://mcr.microsoft.com` fest.
 * Benutzername (optional): Erstellen Sie einen Benutzernamen. 
 * Kennwort (optional): Erstellen Sie ein sicheres Kennwort, das Sie sich gut merken können.
-* Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview` fest.
+* Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` fest.
 * Continuous Deployment: Legen Sie diesen Wert auf **On** fest, wenn Sie automatische Aktualisierungen erhalten möchten, sobald das Entwicklungsteam Änderungen am Beschriftungstool für Stichproben vornimmt.
 * Startbefehl: Legen Sie diese Einstellung auf `./run.sh eula=accept` fest.
 
@@ -119,7 +119,7 @@ Es gibt einige Dinge, die Sie über diesen Befehl wissen sollten:
 Führen Sie in der Azure CLI den folgenden Befehl aus, um eine Web-App-Ressource für das Tool für die Beschriftung von Beispielen zu erstellen:
 
 <!-- markdownlint-disable MD024 -->
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+# <a name="v21"></a>[v2.1](#tab/v2-1)
 
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
@@ -127,7 +127,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
@@ -168,4 +168,4 @@ Das OCR Form Labeling Tool steht auch als Open-Source-Projekt auf GitHub zur Ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im Schnellstart zum [Trainieren mit Beschriftungen](./quickstarts/label-tool.md) erfahren Sie, wie Sie mit dem Tool Trainingsdaten manuell beschriften und überwachtes Lernen ausführen.
+Im Schnellstart zum [Trainieren mit Beschriftungen](label-tool.md) erfahren Sie, wie Sie mit dem Tool Trainingsdaten manuell beschriften und überwachtes Lernen ausführen.

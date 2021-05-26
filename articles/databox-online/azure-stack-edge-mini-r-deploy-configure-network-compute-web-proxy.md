@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 05/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 34a11679626653afd04b0cd17c77188cbc995308
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ae3504b1483dce5678a9d7b53556d9228e53ded0
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061722"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839131"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Mini R
 
@@ -53,82 +53,82 @@ Führen Sie diese Schritte aus, um das Netzwerk für Ihr Gerät zu konfigurieren
 
 4. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Erste Schritte**. Wählen Sie auf der Kachel **Sicherheit** die Option **Zertifikate** und anschließend **Konfigurieren** aus. 
 
-    [![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png#lightbox)
+   [![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png#lightbox)
 
-    1. Wählen Sie **+ Zertifikat hinzufügen** aus. 
+   1. Wählen Sie **+ Zertifikat hinzufügen** aus. 
     
-        [![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-1.png#lightbox)
+      [![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-1.png#lightbox)
 
-    2. Laden Sie die Signaturkette hoch, und wählen Sie **Anwenden** aus.
+   2. Laden Sie die Signaturkette hoch, und wählen Sie **Anwenden** aus.
 
-        ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-2.png)
+      ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-2.png)
 
-    3. Wiederholen Sie die Prozedur mit dem WLAN-Zertifikat. 
+   3. Wiederholen Sie die Prozedur mit dem WLAN-Zertifikat. 
 
-        ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-4.png)
+      ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-4.png)
 
-    4. Die neuen Zertifikate sollten auf der Seite **Zertifikate** angezeigt werden. 
-    
-        [![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-5.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-5.png#lightbox)
+   4. Die neuen Zertifikate sollten auf der Seite **Zertifikate** angezeigt werden. 
 
-    5. Kehren Sie zu **Erste Schritte** zurück.
+      [![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-5.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-5.png#lightbox)
 
-3. Wählen Sie auf der Kachel **Netzwerk** die Option **Konfigurieren** aus.  
-    
-    Auf Ihrem physischen Gerät stehen fünf Netzwerkschnittstellen zur Verfügung. PORT 1 und PORT 2 sind 1-Gbit/s-Netzwerkschnittstellen. PORT 3 und PORT 4 sind 10-Gbit/s-Netzwerkschnittstellen. Der fünfte Port ist der WLAN-Port. 
+   5. Kehren Sie zu **Erste Schritte** zurück.
 
-    [![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png#lightbox)    
-    
-    Wählen Sie den WLAN-Port aus, und konfigurieren Sie die Porteinstellungen. 
-    
-    > [!IMPORTANT]
-    > Es wird dringend empfohlen, eine statische IP-Adresse für den WLAN-Port zu konfigurieren.  
+5. Wählen Sie auf der Kachel **Netzwerk** die Option **Konfigurieren** aus.  
 
-    ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-2.png)
+   Auf Ihrem physischen Gerät stehen fünf Netzwerkschnittstellen zur Verfügung. PORT 1 und PORT 2 sind 1-Gbit/s-Netzwerkschnittstellen. PORT 3 und PORT 4 sind 10-Gbit/s-Netzwerkschnittstellen. Der fünfte Port ist der WLAN-Port. 
 
-    Nachdem Sie die Einstellungen für den WLAN-Port angewendet haben, wird die Seite **Netzwerk** aktualisiert.
+   [![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png#lightbox)    
 
-    ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-4.png)
-   
-4. Wählen Sie **WLAN-Profil hinzufügen** aus, und laden Sie Ihr WLAN-Profil hoch. 
+   Wählen Sie den WLAN-Port aus, und konfigurieren Sie die Porteinstellungen. 
 
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-1.png)
-    
-    Ein Funknetzwerkprofil enthält die SSID (Netzwerkname), den Kennwortschlüssel sowie Sicherheitsinformationen für die Verbindungsherstellung mit einem Funknetzwerk. Das WLAN-Profil für Ihre Umgebung erhalten Sie von Ihrem Netzwerkadministrator.
-
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-2.png)
-
-    Nach dem Hinzufügen des Profils wird die Liste mit den WLAN-Profilen aktualisiert, und das neue Profil wird angezeigt. Der **Verbindungsstatus** des Profils sollte **Getrennt** lauten. 
-
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-3.png)
+   > [!IMPORTANT]
+   > Es wird dringend empfohlen, eine statische IP-Adresse für den WLAN-Port zu konfigurieren.  
 
 
-5. Nachdem das Funknetzwerkprofil erfolgreich geladen wurde, können Sie eine Verbindung mit diesem Profil herstellen. Wählen Sie **Connect to Wi-Fi profile** (Verbindung mit WLAN-Profil herstellen) aus. 
+   ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-2.png)
 
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-4.png)
+   Nachdem Sie die Einstellungen für den WLAN-Port angewendet haben, wird die Seite **Netzwerk** aktualisiert.
 
-6. Wählen Sie das im vorherigen Schritt hinzugefügte WLAN-Profil und anschließend **Anwenden** aus. 
+   ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-4.png)
 
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 5](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-5.png)
+6. Wählen Sie **WLAN-Profil hinzufügen** aus, und laden Sie Ihr WLAN-Profil hoch. 
 
-    Der **Verbindungsstatus** sollte in **Verbunden** aktualisiert werden. Die Signalstärke wird aktualisiert, um die Qualität des Signals anzugeben. 
+   ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-1.png)
 
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 6](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-6.png)
+   Ein Funknetzwerkprofil enthält die SSID (Netzwerkname), den Kennwortschlüssel sowie Sicherheitsinformationen für die Verbindungsherstellung mit einem Funknetzwerk. Das WLAN-Profil für Ihre Umgebung erhalten Sie von Ihrem Netzwerkadministrator.
 
-    > [!NOTE]
-    > Für die Übertragung großer Datenmengen empfiehlt es sich, anstelle des Funknetzwerks eine Kabelverbindung zu verwenden. 
+   ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-2.png)
 
-6. Trennen Sie PORT 1 des Geräts vom Laptop. 
+   Nach dem Hinzufügen des Profils wird die Liste mit den WLAN-Profilen aktualisiert, und das neue Profil wird angezeigt. Der **Verbindungsstatus** des Profils sollte **Getrennt** lauten. 
 
-7. Beachten Sie Folgendes, wenn Sie Netzwerkeinstellungen konfigurieren:
+   ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-3.png)
 
-   - Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. IP-Adresse, Subnetz, Gateway und DNS werden automatisch zugewiesen.
-   - Wenn DHCP nicht aktiviert ist, können Sie bei Bedarf statische IP-Adressen zuweisen.
-   - Sie können die Netzwerkschnittstelle als IPv4 konfigurieren.
-   - Der NIC-Teamvorgang (Network Interface Card, Netzwerkadapter) oder Linkaggregation wird bei Azure Stack Edge nicht unterstützt.
-   - Die Seriennummer eines beliebigen Ports entspricht der Seriennummer des Knotens. Bei einem Gerät der K-Serie wird nur eine einzelne Seriennummer angezeigt.
+7. Nachdem das Funknetzwerkprofil erfolgreich geladen wurde, können Sie eine Verbindung mit diesem Profil herstellen. Wählen Sie **Connect to Wi-Fi profile** (Verbindung mit WLAN-Profil herstellen) aus. 
 
-     >[!NOTE] 
+   ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-4.png)
+
+8. Wählen Sie das im vorherigen Schritt hinzugefügte WLAN-Profil und anschließend **Anwenden** aus. 
+
+   ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 5](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-5.png)
+
+   Der **Verbindungsstatus** sollte in **Verbunden** aktualisiert werden. Die Signalstärke wird aktualisiert, um die Qualität des Signals anzugeben. 
+
+   ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 6](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-6.png)
+
+   > [!NOTE]
+   > Für die Übertragung großer Datenmengen empfiehlt es sich, anstelle des Funknetzwerks eine Kabelverbindung zu verwenden. 
+
+9. Trennen Sie PORT 1 des Geräts vom Laptop. 
+
+10. Beachten Sie Folgendes, wenn Sie Netzwerkeinstellungen konfigurieren:
+
+    - Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. IP-Adresse, Subnetz, Gateway und DNS werden automatisch zugewiesen.
+    - Wenn DHCP nicht aktiviert ist, können Sie bei Bedarf statische IP-Adressen zuweisen.
+    - Sie können die Netzwerkschnittstelle als IPv4 konfigurieren.
+    - Der NIC-Teamvorgang (Network Interface Card, Netzwerkadapter) oder Linkaggregation wird bei Azure Stack Edge nicht unterstützt.
+    - Die Seriennummer eines beliebigen Ports entspricht der Seriennummer des Knotens. Bei einem Gerät der K-Serie wird nur eine einzelne Seriennummer angezeigt.
+
+     > [!NOTE]
      > Wir empfehlen, die lokale IP-Adresse der Netzwerkschnittstelle nicht von statisch auf DHCP umzustellen, es sei denn, Sie haben eine andere IP-Adresse für die Verbindung zum Gerät. Wenn Sie eine Netzwerkschnittstelle verwenden und zu DHCP wechseln, gibt es keine Möglichkeit, die DHCP-Adresse zu bestimmen. Wenn Sie zu einer DHCP-Adresse wechseln möchten, warten Sie, bis sich das Gerät beim Dienst registriert hat, und ändern Sie dann. Sie können dann die IPs aller Adapter im Azure-Portal in den **Geräteeigenschaften** für Ihren Dienst anzeigen.
 
 Nachdem Sie die Netzwerkeinstellungen konfiguriert und angewendet haben, können Sie **Weiter: Compute** auswählen, um das Computenetzwerk zu konfigurieren.
@@ -140,32 +140,31 @@ Befolgen Sie diese Schritte, um Compute zu aktivieren und das Computenetzwerk zu
 
 1. Wählen Sie auf der Seite **Compute** eine Netzwerkschnittstelle aus, die Sie für Compute aktivieren möchten. 
 
-    ![Seite „Compute“ auf der lokalen Benutzeroberfläche 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-1.png)
+   ![Seite „Compute“ auf der lokalen Benutzeroberfläche 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-1.png)
 
 1. Wählen Sie im Dialogfeld **Netzwerkeinstellungen** die Option **Aktivieren** aus. Wenn Sie Compute aktivieren, wird auf Ihrem Gerät an dieser Netzwerkschnittstelle ein virtueller Switch erstellt. Der virtuelle Switch wird für die Compute-Infrastruktur auf dem Gerät verwendet. 
     
 1. Weisen Sie **IP-Adressen für Kubernetes-Knoten** zu. Diese statischen IP-Adressen gelten für die Compute-VM.  
 
-    Für ein Gerät mit *n*-Knoten wird ein zusammenhängender Bereich von mindestens *n+1* IPv4-Adressen für die Compute-VM unter Verwendung der Start- und End-IP-Adresse bereitgestellt. Da es sich bei Azure Stack Edge um ein Gerät mit einem Knoten handelt, werden mindestens zwei zusammenhängende IPv4-Adressen bereitgestellt.
+   Für ein Gerät mit *n*-Knoten wird ein zusammenhängender Bereich von mindestens *n+1* IPv4-Adressen für die Compute-VM unter Verwendung der Start- und End-IP-Adresse bereitgestellt. Da es sich bei Azure Stack Edge um ein Gerät mit einem Knoten handelt, werden mindestens zwei zusammenhängende IPv4-Adressen bereitgestellt.
 
-    > [!IMPORTANT]
-    > Kubernetes in Azure Stack Edge verwendet das Subnetz 172.27.0.0/16 für den Pod und das Subnetz 172.28.0.0/16 für den Dienst. Stellen Sie sicher, dass diese in Ihrem Netzwerk nicht verwendet werden. Werden diese Subnetze bereits in Ihrem Netzwerk verwendet, können Sie sie ändern, indem Sie das Cmdlet `Set-HcsKubeClusterNetworkInfo` über die PowerShell-Schnittstelle des Geräts ausführen. Weitere Informationen finden Sie unter [Ändern des Pod- und Dienstsubnetzes in Kubernetes](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
-
+   > [!IMPORTANT]
+   > Kubernetes in Azure Stack Edge verwendet das Subnetz 172.27.0.0/16 für den Pod und das Subnetz 172.28.0.0/16 für den Dienst. Stellen Sie sicher, dass diese in Ihrem Netzwerk nicht verwendet werden. Werden diese Subnetze bereits in Ihrem Netzwerk verwendet, können Sie sie ändern, indem Sie das Cmdlet `Set-HcsKubeClusterNetworkInfo` über die PowerShell-Schnittstelle des Geräts ausführen. Weitere Informationen finden Sie unter [Ändern des Pod- und Dienstsubnetzes in Kubernetes](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
 
 1. Weisen Sie **externe Dienst-IP-Adressen für Kubernetes** zu. Dies sind auch die IP-Adressen für den Lastenausgleich. Diese zusammenhängenden IP-Adressen sind für Dienste, die Sie außerhalb des Kubernetes-Clusters verfügbar machen möchten. Sie legen den statischen IP-Adressbereich abhängig von der Anzahl der verfügbar gemachten Dienste fest. 
     
-    > [!IMPORTANT]
-    > Es wird dringend empfohlen, mindestens eine IP-Adresse für den Azure Stack Edge Mini R-Hubdienst anzugeben, um auf Computemodule zugreifen zu können. Sie können dann optional zusätzliche IP-Adressen für andere Dienste/IoT Edge-Module (eine pro Dienst/Modul) angeben, auf die von außerhalb des Clusters zugegriffen werden muss. Die IP-Adressen des Diensts können später aktualisiert werden. 
+   > [!IMPORTANT]
+   > Es wird dringend empfohlen, mindestens eine IP-Adresse für den Azure Stack Edge Mini R-Hubdienst anzugeben, um auf Computemodule zugreifen zu können. Sie können dann optional zusätzliche IP-Adressen für andere Dienste/IoT Edge-Module (eine pro Dienst/Modul) angeben, auf die von außerhalb des Clusters zugegriffen werden muss. Die IP-Adressen des Diensts können später aktualisiert werden. 
     
 1. Wählen Sie **Übernehmen**.
 
-    ![Seite „Compute“ auf der lokalen Benutzeroberfläche 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-3.png)
+   ![Seite „Compute“ auf der lokalen Benutzeroberfläche 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-3.png)
 
 1. Es dauert einige Minuten, bis die Konfiguration übernommen wurde. Möglicherweise müssen Sie den Browser aktualisieren. Wie Sie sehen, ist der angegebene Port für Compute aktiviert. 
  
-    ![Seite „Compute“ auf der lokalen Benutzeroberfläche 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-4.png)
+   ![Seite „Compute“ auf der lokalen Benutzeroberfläche 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-4.png)
 
-    Klicken Sie auf **Weiter: Webproxy**, um den Webproxy zu konfigurieren.  
+   Klicken Sie auf **Weiter: Webproxy**, um den Webproxy zu konfigurieren.  
 
   
 ## <a name="configure-web-proxy"></a>Konfigurieren des Webproxys
@@ -173,21 +172,16 @@ Befolgen Sie diese Schritte, um Compute zu aktivieren und das Computenetzwerk zu
 Dies ist eine optionale Konfiguration.
 
 > [!IMPORTANT]
-> * Wenn Sie Compute aktivieren und ein IoT Edge-Modul auf Ihrem Azure Stack Edge Mini R-Gerät verwenden, sollten Sie für „Webproxyauthentifizierung“ die Option **Keine** festlegen. NTLM wird nicht unterstützt.
->* Dateien für die automatische Proxykonfiguration (Proxy Auto Config, PAC) werden nicht unterstützt. Eine PAC-Datei definiert, wie Webbrowser und andere Benutzer-Agents automatisch den entsprechenden Proxyserver (Zugriffsmethode) zum Abrufen einer bestimmten URL auswählen können. Proxys, die versuchen, den gesamten Datenverkehr abzufangen und zu lesen (und anschließend alles mit eigener Zertifizierung neu zu signieren), sind nicht kompatibel, da das Zertifikat des Proxys nicht vertrauenswürdig ist. In der Regel funktionieren transparente Proxys gut mit Azure Stack Edge Mini R. Nicht transparente Webproxys werden nicht unterstützt.
+> Dateien für die automatische Proxykonfiguration (Proxy Auto Config, PAC) werden nicht unterstützt. Eine PAC-Datei definiert, wie Webbrowser und andere Benutzer-Agents automatisch den entsprechenden Proxyserver (Zugriffsmethode) zum Abrufen einer bestimmten URL auswählen können. Proxys, die versuchen, den gesamten Datenverkehr abzufangen und zu lesen (und anschließend alles mit eigener Zertifizierung neu zu signieren), sind nicht kompatibel, da das Zertifikat des Proxys nicht vertrauenswürdig ist. In der Regel funktionieren transparente Proxys gut mit Azure Stack Edge Mini R. Nicht transparente Webproxys werden nicht unterstützt.
 
 
 1. Führen Sie auf der Seite **Webproxyeinstellungen** die folgenden Schritte aus:
 
-    1. Geben Sie im Feld **Webproxy-URL** die URL im folgenden Format ein: `http://host-IP address or FQDN:Port number`. HTTPS-URLs werden nicht unterstützt.
+   1. Geben Sie im Feld **Webproxy-URL** die URL im folgenden Format ein: `http://host-IP address or FQDN:Port number`. HTTPS-URLs werden nicht unterstützt.
 
-    2. Klicken Sie unter **Authentifizierung** auf **Keine** oder **NTLM**. Wenn Sie Compute aktivieren und ein IoT Edge-Modul auf Ihrem Azure Stack Edge Mini R-Gerät verwenden, sollten Sie für „Webproxyauthentifizierung“ die Option **Keine** festlegen. **NTLM** wird nicht unterstützt.
+   2. Klicken Sie auf **Anwenden**, um die konfigurierten Webproxyeinstellungen zu überprüfen und anzuwenden.
 
-    3. Falls Sie eine Authentifizierung verwenden, geben Sie einen Benutzernamen und ein Kennwort ein.
-
-    4. Klicken Sie auf **Anwenden**, um die konfigurierten Webproxyeinstellungen zu überprüfen und anzuwenden.
-    
-   ![Seite „Webproxyeinstellungen“ der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/web-proxy-1.png)
+   ![Seite „Webproxyeinstellungen“ der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/web-proxy-1.png)<!--UI text update is needed to remove NTLM from instruction text.-->
 
 2. Nachdem die Einstellungen angewendet wurden, wählen Sie **Weiter: Gerät** ein.
 

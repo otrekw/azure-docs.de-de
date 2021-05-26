@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 03917b332d6ce204cda0ec072d213a0844690b94
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8aaa1b2865b1d0f39e6cb224c3979b4f53eeee81
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787831"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066716"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Verbinden von Funktions-Apps in Azure für die Verarbeitung von Daten
 
@@ -52,7 +52,7 @@ Nachdem Ihre Funktions-App erstellt wurde, generiert Visual Studio ein Codebeisp
 
 ## <a name="write-a-function-that-has-an-event-grid-trigger"></a>Schreiben einer Funktion mit einem Event Grid-Trigger
 
-Sie können eine Funktion schreiben, indem Sie Ihrer Funktions-App ein SDK hinzufügen. Die Funktions-App interagiert mit Azure Digital Twins unter Verwendung des [Azure Digital Twins SDK für .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client). 
+Sie können eine Funktion schreiben, indem Sie Ihrer Funktions-App ein SDK hinzufügen. Die Funktions-App interagiert mit Azure Digital Twins unter Verwendung des [Azure Digital Twins SDK für .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). 
 
 Wenn Sie das SDK verwenden möchten, müssen Sie die folgenden Pakete in Ihr Projekt einbinden. Installieren Sie die Pakete mithilfe des NuGet-Paket-Managers von Visual Studio. Sie können die Pakete auch mithilfe von `dotnet` in einem Befehlszeilentool hinzufügen.
 

@@ -1,6 +1,6 @@
 ---
 title: Anzeige mathematischer Inhalte im plastischen Reader
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: In diesem Artikel wird gezeigt, wie Sie mathematische Inhalte im plastischen Reader anzeigen.
 author: nitinme
 manager: guillasi
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js
-ms.openlocfilehash: 75b748604e8faa502970ac71e3fec4fae2774c19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5dad8a27e9a3b38ce70acb01e765561456e1a1b8
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91334513"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373873"
 ---
 # <a name="how-to-display-math-in-the-immersive-reader"></a>Vorgehensweise: Anzeige mathematischer Inhalte im plastischen Reader
 

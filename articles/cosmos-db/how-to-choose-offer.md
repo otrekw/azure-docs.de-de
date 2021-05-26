@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: d8a6471d53ad4b2428504f9c53cbec6bc1967c49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cf5d2cd191b787b6981c8c54950ad341e9d3dad
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93089637"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073664"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Auswählen zwischen standardmäßig (manuell) bereitgestelltem und automatisch skaliertem Durchsatz 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -139,4 +139,4 @@ Wenn Sie die Autoskalierung verwenden, können Sie sich mit Azure Monitor die be
 * Verwenden Sie den [RU-Planer](https://cosmos.azure.com/capacitycalculator/), um den Durchsatz für Ihre Workloads zu schätzen.
 * Mit [Azure Monitor](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) können Sie Ihre vorhandenen Workloads überwachen.
 * Informieren Sie sich darüber, wie Sie [automatisch skalierten Durchsatz für eine Datenbank oder einen Container in Azure Cosmos DB bereitstellen](how-to-provision-autoscale-throughput.md).
-* Erfahren Sie mehr in den [häufig gestellten Fragen zur Autoskalierung](autoscale-faq.md).
+* Erfahren Sie mehr in den [häufig gestellten Fragen zur Autoskalierung](autoscale-faq.yml).

@@ -1,15 +1,15 @@
 ---
 title: Liste der integrierten Richtliniendefinitionen
 description: Hier finden Sie eine Liste der integrierten Richtliniendefinitionen für Azure Policy. Zu den Kategorien zählen Tags, Einhaltung gesetzlicher Bestimmungen, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr.
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: ce3b40f51fcf0b9dc79eac5c69553b394d3a349a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0aa7bce0fd603386469b04a94d18135075e944f4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761924"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110074293"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Integrierte Azure Policy-Richtliniendefinitionen
 

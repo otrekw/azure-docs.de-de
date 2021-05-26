@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 67284225299641a71050342056ad7ca91bf39740
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7abc34719cbbd03d84fc34a3691c7c84e1abda5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96353713"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067256"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Häufig gestellte Fragen zu Text-to-Speech
 
@@ -33,7 +33,7 @@ Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen fin
 
 **F: Wenn ich ein benutzerdefiniertes Stimmmodell verwenden möchte, ist die API die gleiche wie für die Standardstimmen?**
 
-**A:** Wenn ein benutzerdefiniertes Stimmmodell erstellt und bereitgestellt wird, erhalten Sie einen eindeutigen Endpunkt für Ihr Modell. Sie müssen den Endpunkt in Ihren HTTP-Anforderungen angeben, damit diese Stimme für Sprachausgaben in Ihren Apps verwendet werden kann. Die gleiche Funktionalität, die über die REST-API für den Text-to-Speech-Dienst verfügbar ist, steht auch für Ihren benutzerdefinierten Endpunkt zur Verfügung. Hier erfahren Sie, wie Sie Ihren [benutzerdefinierten Endpunkt erstellen und verwenden](./how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint).
+**A:** Wenn ein benutzerdefiniertes Stimmmodell erstellt und bereitgestellt wird, erhalten Sie einen eindeutigen Endpunkt für Ihr Modell. Sie müssen den Endpunkt in Ihren HTTP-Anforderungen angeben, damit diese Stimme für Sprachausgaben in Ihren Apps verwendet werden kann. Die gleiche Funktionalität, die über die REST-API für den Text-to-Speech-Dienst verfügbar ist, steht auch für Ihren benutzerdefinierten Endpunkt zur Verfügung. Hier erfahren Sie, wie Sie Ihren [benutzerdefinierten Endpunkt erstellen und verwenden](./how-to-custom-voice-create-voice.md#create-and-use-a-custom-neural-voice-endpoint).
 
 **F: Muss ich beim Erstellen von benutzerdefinierten Stimmmodellen die Trainingsdaten selbst vorbereiten?**
 

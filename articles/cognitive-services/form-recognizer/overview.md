@@ -1,6 +1,6 @@
 ---
-title: Was ist die Formularerkennung?
-titleSuffix: Azure Cognitive Services
+title: Was ist die Azure-Formularerkennung?
+titleSuffix: Azure Applied AI Services
 description: Der Azure-Formularerkennungsdienst ermöglicht das Erkennen und Extrahieren von Schlüssel-Wert-Paaren und Tabellendaten aus Ihren Formulardokumenten sowie das Extrahieren wichtiger Informationen aus Verkaufsbelegen und Visitenkarten.
 author: laujan
 manager: nitinme
@@ -11,91 +11,117 @@ ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatisierte Datenverarbeitung, Dokumentverarbeitung, automatisierte Dateneingabe, Formularverarbeitung
-ms.openlocfilehash: 680bb612546aaffc167970c1c48a44159ef9af6f
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: b3991d6cce5505a88250a4f470565f6b191667e2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518224"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453369"
 ---
-# <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
+# <a name="what-is-azure-form-recognizer"></a>Was ist die Azure-Formularerkennung?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Die Azure-Formularerkennung ist ein kognitiver Dienst, mit dem Sie unter Verwendung von Technologie für maschinelles Lernen Software für die automatisierte Datenverarbeitung entwickeln können. Identifizieren und extrahieren Sie Text, Schlüssel-Wert-Paare, Auswahlmarkierungen, Tabellen und die Struktur aus Ihren Dokumenten. Der Dienst gibt strukturierte Daten aus, die unter anderem die Beziehungen in der ursprünglichen Datei sowie Begrenzungsrahmen und Konfidenz enthalten. Sie können schnell präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse erzielen, ohne dass komplizierte manuelle Eingriffe oder umfangreiche Data Science-Kenntnisse erforderlich sind. Verwenden Sie die Formularerkennung, um Dateneingaben in Ihren Anwendungen zu automatisieren und Ihre Dokumentsuchfunktionen zu erweitern.
+Die Azure-Formularerkennung ist Teil der [Azure Applied AI Services](https://aka.ms/applied-ai-services-hub) und erlaubt Ihnen, unter Verwendung der Technologie für maschinelles Lernen Software für die automatisierte Datenverarbeitung zu entwickeln. Identifizieren und extrahieren Sie Text, Schlüssel-Wert-Paare, Auswahlmarkierungen, Tabellen und die Struktur aus Ihren Dokumenten. Der Dienst gibt strukturierte Daten aus, die unter anderem die Beziehungen in der ursprünglichen Datei sowie Begrenzungsrahmen und Konfidenz enthalten. Sie können schnell präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse erzielen, ohne dass komplizierte manuelle Eingriffe oder umfangreiche Data Science-Kenntnisse erforderlich sind. Verwenden Sie die Formularerkennung, um Dateneingaben in Ihren Anwendungen zu automatisieren und Ihre Dokumentsuchfunktionen zu erweitern.
 
 Die Formularerkennung setzt sich aus benutzerdefinierten Dokumentverarbeitungsmodellen, vordefinierten Modellen für Rechnungen, Belege, Ausweise und Visitenkarten und dem Layoutmodell zusammen. Sie können Formularerkennungsmodelle mithilfe einer REST-API oder über Clientbibliothek-SDKs aufrufen, um die Komplexität zu reduzieren und sie in Ihren Workflow oder Ihre Anwendung zu integrieren.
 
-Diese Dokumentation enthält die folgenden Arten von Artikeln:  
+Diese Dokumentation enthält die folgenden Arten von Artikeln:
 
-* [**Schnellstarts**](quickstarts/client-library.md) sind Anleitungen zu den ersten Schritten, die Sie durch das Senden von Anforderungen an den Dienst führen.  
-* [**Schrittanleitungen**](build-training-data-set.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.  
-* Die Artikel zu [**Konzepten**](concept-layout.md) enthalten ausführliche Erläuterungen der Dienstfunktionen und -features.  
-* [**Tutorials**](tutorial-bulk-processing.md) sind ausführlichere Leitfäden, in denen die Verwendung des Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.  
+* Die Artikel zu [**Konzepten**](concept-layout.md) enthalten ausführliche Erläuterungen der Dienstfunktionen und -features.
+* [**Schnellstarts**](quickstarts/client-library.md) sind Anleitungen zu den ersten Schritten, die Sie durch das Senden von Anforderungen an den Dienst führen.
+* [**Schrittanleitungen**](build-training-data-set.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.
+* [**Tutorials**](tutorial-ai-builder.md) sind ausführlichere Leitfäden, in denen die Verwendung des Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.
 
 ## <a name="form-recognizer-features"></a>Funktionen der Formularerkennung
 
-Mit der Formularerkennung können Sie mithilfe der folgenden Features problemlos Formulardaten extrahieren und analysieren:
+Mit der Formularerkennung können Sie mithilfe der folgenden Features problemlos Dokumentdaten extrahieren und analysieren:
 
-* **[Layout-API:](#layout-api)** Dient zum Extrahieren von Text, Auswahlmarkierungen und Tabellenstrukturen sowie der zugehörigen Begrenzungsrahmenkoordinaten aus Dokumenten.
-* **[Benutzerdefinierte Modelle:](#custom-models)** Dienen zum Extrahieren von Text, Schlüssel-Wert-Paaren, Auswahlmarkierungen und Tabellendaten aus Formularen. Diese Modelle werden mit Ihren eigenen Daten trainiert, sodass Sie auf Ihre Formulare zugeschnitten sind.
+### <a name="layout"></a>[Layout](concept-layout.md)
 
-* **[Vordefinierte Modelle:](#prebuilt-models)** Dienen zum Extrahieren eindeutiger Dokumenttypen mithilfe vordefinierter Modelle. Aktuell sind folgende vordefinierte Modelle verfügbar:
+Dient zum Extrahieren von Text, Auswahlmarkierungen und Tabellenstrukturen sowie der zugehörigen Begrenzungsrahmenkoordinaten aus Dokumenten.
 
-  * [Invoices](./concept-invoices.md)
-  * [Verkaufsbelege](./concept-receipts.md)
-  * [Visitenkarten](./concept-business-cards.md)
-  * [Ausweise](./concept-identification-cards.md)
+Die Formularerkennung kann Text, Auswahlmarkierungen und die Tabellenstruktur (die Zeilen- und Spaltennummern, die dem Text zugeordnet sind) aus Dokumenten extrahieren. Hierzu kommen eine hochauflösende optische Zeichenerkennung (Optical Character Recognition, OCR) und ein erweitertes Deep Learning-Modell zum Einsatz.
 
+:::image type="content" source="./media/tables-example.jpg" alt-text="Beispiel für Tabellen" lightbox="./media/tables-example.jpg":::
+
+### <a name="custom-models"></a>[Benutzerdefinierte Modelle](concept-custom.md)
+
+Dienen zum Extrahieren von Text, Schlüssel-Wert-Paaren, Auswahlmarkierungen und Tabellendaten aus Formularen. Diese Modelle werden mit Ihren eigenen Daten trainiert, sodass Sie auf Ihre Formulare zugeschnitten sind.
+
+Benutzerdefinierte Formularerkennungsmodelle werden mit Ihren eigenen Daten trainiert, und Sie benötigen zu Beginn nur fünf Beispieleingabeformulare. Ein trainiertes Dokumentverarbeitungsmodell kann strukturierte Daten ausgeben, die die Beziehungen in der Originaldatei enthalten. Nachdem das Modell trainiert wurde, können Sie es testen, neu trainieren und schließlich verwenden, um Daten aus weiteren Formularen zuverlässig nach Ihren Bedürfnissen zu extrahieren.
+
+Beim Trainieren von benutzerdefinierten Modellen haben Sie die folgenden Optionen: Training mit beschrifteten Daten und ohne beschriftete Daten.
+
+#### <a name="train-without-labels"></a>Trainieren ohne Beschriftungen
+
+Die Formularerkennung verwendet nicht überwachtes Lernen, um das Layout und die Beziehungen zwischen Feldern und Einträgen in Ihren Formularen nachzuvollziehen. Anhand der übermittelten Eingabeformulare gruppiert der Algorithmus die Formulare nach Typ, erkennt, welche Schlüssel und Tabellen vorhanden sind, und ordnet Schlüsseln Werte und Tabellen Einträge zu. Für das Trainieren ohne Beschriftungen ist keine manuelle Datenbeschriftung oder intensive Codierung und Wartung erforderlich, und Sie sollten diese Methode zuerst testen.
+
+Tipps zum Sammeln von Trainingsdokumenten finden Sie unter [Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell](./build-training-data-set.md).
+
+#### <a name="train-with-labels"></a>Trainieren mit Beschriftungen
+
+Wenn Sie mit beschrifteten Daten trainieren, extrahiert das Modell relevante Werte mit überwachtem Lernen, wobei die von Ihnen bereitgestellten beschrifteten Formulare verwendet werden. Beschriftete Daten führen zu Modellen mit besserer Leistung und können Modelle hervorbringen, die mit komplexen Formularen oder Formularen arbeiten, die Werte ohne Schlüssel enthalten.
+
+Die Formularerkennung verwendet die [Layout](#layout)-API, um die erwarteten Größen und Positionen von gedruckten und handschriftlichen Textelementen zu erlernen und Tabellen zu extrahieren. Anschließend werden benutzerdefinierte Beschriftungen verwendet, um die Schlüssel-Wert-Zuordnungen und Tabellen in den Dokumenten zu erlernen. Wir empfehlen, fünf manuell beschriftete Formulare gleichen Typs (gleiche Struktur) zu verwenden, um mit dem Trainieren eines neuen Modells zu beginnen, und weitere beschriftete Daten nach Bedarf hinzuzufügen, um die Modellgenauigkeit zu verbessern. Die Formularerkennung ermöglicht das Trainieren eines Modells zum Extrahieren von Schlüssel-Wert-Paaren und Tabellen mithilfe der Funktionen für beaufsichtigtes Lernen.
+
+[Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen](label-tool.md)
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
+
+
+### <a name="prebuilt-models"></a>Vordefinierte Modelle
+
+ Die Formularerkennung umfasst auch vordefinierte Modelle für die automatisierte Datenverarbeitung von Belegen, Visitenkarten, Rechnungen und Ausweisdokumenten.
+
+### <a name="receipts"></a>[Receipts](concept-receipts.md)
+
+Das vordefinierte Belegmodell wird zum Lesen englischsprachiger Verkaufsbelege aus Australien, Kanada, dem Vereinigten Königreich, Indien und den USA verwendet – des Typs, der von Restaurants, Tankstellen, Einzelhandel usw. verwendet wird. Dieses Modell extrahiert wichtige Informationen wie Zeitpunkt und Datum der Transaktion, Händlerinformationen, Steuer- und Summenbeträge, Einzelposten und mehr. Darüber hinaus wird das vorgefertigte Belegmodell dazu trainiert, den gesamten Text eines Belegs zu analysieren und zurückzugeben.
+
+:::image type="content" source="./media/overview-receipt.jpg" alt-text="Beispielbeleg" lightbox="./media/overview-receipt.jpg":::
+
+### <a name="business-cards"></a>[Visitenkarten](concept-business-cards.md)
+
+Mit dem Visitenkartenmodell können Sie Informationen wie Name, Position, Adresse, E-Mail-Adresse, Unternehmen und Telefonnummern einer Person aus englischsprachigen Visitenkarten extrahieren.
+
+:::image type="content" source="./media/overview-business-card.jpg" alt-text="Beispielvisitenkarte" lightbox="./media/overview-business-card.jpg":::
+
+### <a name="invoices"></a>[Invoices](concept-invoices.md)
+
+Das vordefinierte Rechnungsmodell extrahiert Daten aus Rechnungen in verschiedenen Formaten und gibt strukturierte Daten zurück. Dieses Modell extrahiert wichtige Informationen wie Rechnungs-ID, Kundendetails, Anbieterdetails, Lieferadresse, Rechnungsadresse, Summe, Steuer, Zwischensumme, Positionen und vieles mehr. Darüber hinaus wird das vordefinierte Rechnungsmodell darauf trainiert, den gesamten Text und sämtliche Tabellen auf der Rechnung zu analysieren und zurückzugeben.
+
+:::image type="content" source="./media/overview-invoices.jpg" alt-text="Beispielrechnung" lightbox="./media/overview-invoices.jpg":::
+
+### <a name="identity-documents"></a>[Identitätsdokumente](concept-identification-cards.md)
+
+Das Modell für Ausweisdokumente ermöglicht es Ihnen, wichtige Informationen aus internationalen Ausweisen und US-amerikanischen Führerscheinen zu extrahieren. Es extrahiert Daten wie Dokument-ID, Geburtsdatum, Ablaufdatum, Name, Land, Region, die maschinenlesbare Zone usw.
+
+:::image type="content" source="./media/id-example-drivers-license.jpg" alt-text="Beispielausweis" lightbox="./media/overview-id.jpg":::
 
 ## <a name="get-started"></a>Erste Schritte
 
 Verwenden Sie das Beispieltool für die Formularerkennung, um die vordefinierten Modelle für das Layout auszuprobieren, und trainieren Sie ein benutzerdefiniertes Modell für Ihre Dokumente: Zum Ausprobieren des Formularerkennungsdiensts benötigen Sie ein Azure-Abonnement (kann [**hier**](https://azure.microsoft.com/free/cognitive-services) kostenlos erstellt werden), einen Endpunkt für eine [**Formularerkennungsressource**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) und einen entsprechenden Schlüssel.
 
-### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+### <a name="v21"></a>[v2.1](#tab/v2-1)
 
+>
 > [!div class="nextstepaction"]
-> [Formularerkennung ausprobieren](https://fott-preview.azurewebsites.net/)
+> [Formularerkennung ausprobieren](https://aka.ms/fott-2.1-ga/)
+>
 
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
+>
 > [!div class="nextstepaction"]
 > [Formularerkennung ausprobieren](https://fott.azurewebsites.net/)
 
 ---
+
 Befolgen Sie die Anweisungen im [Schnellstart zur Clientbibliothek/REST-API ](./quickstarts/client-library.md), um mit dem Extrahieren von Daten aus Dokumenten zu beginnen. Sie sollten den kostenlosen Dienst nutzen, wenn Sie die Technologie erlernen. Bedenken Sie, dass die Anzahl der kostenlosen Seiten auf 500 pro Monat beschränkt ist.
 
-Sie können auch die REST-Beispiele (GitHub) verwenden, um die ersten Schritte auszuführen: 
+### <a name="v21"></a>[v2.1](#tab/v2-1)
 
-* Extrahieren von Text, Auswahlmarkierungen und Tabellenstruktur aus Dokumenten
-  * [Extrahieren von Layoutdaten: Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
-* Trainieren von benutzerdefinierten Modellen und Extrahieren von Formulardaten
-  * [Trainieren ohne Beschriftungen: Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
-  * [Trainieren mit Beschriftungen: Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
-* Extrahieren von Daten aus Rechnungen
-  * [Extrahieren von Rechnungsdaten: Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
-* Extrahieren von Daten aus Verkaufsbelegen
-  * [Extrahieren von Verkaufsbelegdaten: Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
-* Extrahieren von Daten aus Visitenkarten
-  * [Extrahieren von Visitenkartendaten – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
-
-### <a name="review-the-rest-apis"></a>Überprüfen der REST-APIs
-
-Verwenden Sie die folgenden APIs zum Trainieren von Modellen und Extrahieren strukturierter Daten aus Formularen.
-
-|Name |Beschreibung |
-|---|---|
-| **Analysieren des Layouts** | Analysieren Sie ein als Stream übergebenes Dokument, um Text, Auswahlmarkierungen, Tabellen und die Struktur aus dem Dokument zu extrahieren. |
-| **Trainieren eines benutzerdefinierten Modells**| Trainieren eines neuen Modells zur Analyse Ihrer Formulare mit fünf Formularen gleichen Typs. Legen Sie den Parameter _useLabelFile_ auf `true` fest, um mit manuell beschrifteten Daten zu trainieren. |
-| **Analysieren des Formulars** |Analysieren Sie ein als Stream übergebenes Formular, um Text, Schlüssel-Wert-Paare und Tabellen mit Ihrem benutzerdefinierten Modell aus dem Formular zu extrahieren.  |
-| **Analysieren von Rechnungen** | Analysieren Sie eine Rechnung, um zentrale Informationen, Tabellen und anderen Rechnungstext zu extrahieren.|
-| **Analysieren des Belegs** | Analysieren Sie ein Belegdokument, um zentrale Informationen und anderen Belegtext zu extrahieren.|
-| **Analysieren von Ausweisen** | Analysieren Sie ein Ausweisdokument, um wichtige Informationen und anderen Ausweistext zu extrahieren.|
-| **Analysieren von Visitenkarten** | Analysieren Sie eine Visitenkarte, um wichtige Informationen und Text zu extrahieren.|
-
-### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
-
-Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) an, um mehr zu erfahren. Wenn Sie mit einer früheren Version der API vertraut sind, finden Sie im Artikel [Neuerungen](./whats-new.md) weitere Informationen zu den aktuellen Änderungen.
+Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm) an, um mehr zu erfahren. Wenn Sie mit einer früheren Version der API vertraut sind, finden Sie im Artikel [Neuerungen](./whats-new.md) weitere Informationen zu den aktuellen Änderungen.
 
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
@@ -103,69 +129,9 @@ Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus.dev.cogni
 
 ---
 
-## <a name="layout-api"></a>Layout-API
-
-Die Formularerkennung kann Text, Auswahlmarkierungen und die Tabellenstruktur (die Zeilen- und Spaltennummern, die dem Text zugeordnet sind) aus Dokumenten extrahieren. Hierzu kommen eine hochauflösende optische Zeichenerkennung (Optical Character Recognition, OCR) und ein erweitertes Deep Learning-Modell zum Einsatz. Weitere Informationen finden Sie im [Konzeptleitfaden für das Layout](./concept-layout.md).
-
-:::image type="content" source="./media/tables-example.jpg" alt-text="Tabellenbeispiel" lightbox="./media/tables-example.jpg":::
-
-## <a name="custom-models"></a>Benutzerdefinierte Modelle
-
-Benutzerdefinierte Formularerkennungsmodelle werden mit Ihren eigenen Daten trainiert, und Sie benötigen zu Beginn nur fünf Beispieleingabeformulare. Ein trainiertes Dokumentverarbeitungsmodell kann strukturierte Daten ausgeben, die die Beziehungen in der Originaldatei enthalten. Nachdem das Modell trainiert wurde, können Sie es testen, neu trainieren und schließlich verwenden, um Daten aus weiteren Formularen zuverlässig nach Ihren Bedürfnissen zu extrahieren.
-
-Beim Trainieren von benutzerdefinierten Modellen haben Sie die folgenden Optionen: Training mit beschrifteten Daten und ohne beschriftete Daten.
-
-### <a name="train-without-labels"></a>Trainieren ohne Beschriftungen
-
-Die Formularerkennung verwendet nicht überwachtes Lernen, um das Layout und die Beziehungen zwischen Feldern und Einträgen in Ihren Formularen nachzuvollziehen. Anhand der übermittelten Eingabeformulare gruppiert der Algorithmus die Formulare nach Typ, erkennt, welche Schlüssel und Tabellen vorhanden sind, und ordnet Schlüsseln Werte und Tabellen Einträge zu. Für das Trainieren ohne Beschriftungen ist keine manuelle Datenbeschriftung oder intensive Codierung und Wartung erforderlich, und Sie sollten diese Methode zuerst testen.
-
-Tipps zum Sammeln von Trainingsdokumenten finden Sie unter [Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell](./build-training-data-set.md).
-
-### <a name="train-with-labels"></a>Trainieren mit Beschriftungen
-
-Wenn Sie mit beschrifteten Daten trainieren, extrahiert das Modell relevante Werte mit überwachtem Lernen, wobei die von Ihnen bereitgestellten beschrifteten Formulare verwendet werden. Beschriftete Daten führen zu Modellen mit besserer Leistung und können Modelle hervorbringen, die mit komplexen Formularen oder Formularen arbeiten, die Werte ohne Schlüssel enthalten.
-
-Die Formularerkennung verwendet die [Layout-API](#layout-api), um die erwarteten Größen und Positionen von gedruckten und handschriftlichen Textelementen zu erlernen und Tabellen zu extrahieren. Anschließend werden benutzerdefinierte Beschriftungen verwendet, um die Schlüssel-Wert-Zuordnungen und Tabellen in den Dokumenten zu erlernen. Wir empfehlen, fünf manuell beschriftete Formulare gleichen Typs (gleiche Struktur) zu verwenden, um mit dem Trainieren eines neuen Modells zu beginnen, und weitere beschriftete Daten nach Bedarf hinzuzufügen, um die Modellgenauigkeit zu verbessern. Die Formularerkennung ermöglicht das Trainieren eines Modells zum Extrahieren von Schlüssel-Wert-Paaren und Tabellen mithilfe der Funktionen für beaufsichtigtes Lernen. 
-
-[Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen](./quickstarts/label-tool.md)
-
-> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
-
-## <a name="prebuilt-models"></a>Vordefinierte Modelle
-
-Die Formularerkennung enthält außerdem vordefinierte Modelle zur automatisierten Datenverarbeitung eindeutiger Formulartypen.
-
-### <a name="prebuilt-invoice-model"></a>Vordefiniertes Rechnungsmodell
-
-Das vordefinierte Rechnungsmodell extrahiert Daten aus Rechnungen in verschiedenen Formaten und gibt strukturierte Daten zurück. Dieses Modell extrahiert wichtige Informationen wie Rechnungs-ID, Kundendetails, Anbieterdetails, Lieferadresse, Rechnungsadresse, Summe, Steuer, Zwischensumme, Positionen und vieles mehr. Darüber hinaus wird das vordefinierte Rechnungsmodell darauf trainiert, den gesamten Text und sämtliche Tabellen auf der Rechnung zu analysieren und zurückzugeben. Weitere Informationen finden Sie im [Konzeptleitfaden für Rechnungen](./concept-invoices.md).
-
-:::image type="content" source="./media/overview-invoices.jpg" alt-text="Beispielrechnung" lightbox="./media/overview-invoices.jpg":::
-
-### <a name="prebuilt-receipt-model"></a>Vordefiniertes Belegmodell
-
-Das vordefinierte Belegmodell wird zum Lesen englischsprachiger Verkaufsbelege aus Australien, Kanada, dem Vereinigten Königreich, Indien und den USA verwendet – des Typs, der von Restaurants, Tankstellen, Einzelhandel usw. verwendet wird. Dieses Modell extrahiert wichtige Informationen wie Zeitpunkt und Datum der Transaktion, Händlerinformationen, Steuer- und Summenbeträge, Einzelposten und mehr. Darüber hinaus wird das vorgefertigte Belegmodell dazu trainiert, den gesamten Text eines Belegs zu analysieren und zurückzugeben. Weitere Informationen finden Sie im Leitfaden [Konzepte zu Belegen](./concept-receipts.md).
-
-:::image type="content" source="./media/overview-receipt.jpg" alt-text="Beispielbeleg" lightbox="./media/overview-receipt.jpg":::
-
-### <a name="prebuilt-identification-id-cards-model"></a>Vordefiniertes Modell für Ausweise
-
-Das Modell für Ausweise ermöglicht es Ihnen, wichtige Informationen aus internationalen Ausweisen und US-amerikanischen Führerscheinen zu extrahieren. Es extrahiert Daten wie Dokument-ID, Geburtsdatum, Ablaufdatum, Name, Land, Region, die maschinenlesbare Zone usw. Weitere Informationen finden Sie im Konzeptleitfaden für [Ausweise](./concept-identification-cards.md).
-
-:::image type="content" source="./media/overview-id.jpg" alt-text="Beispielausweis" lightbox="./media/overview-id.jpg":::
-
-### <a name="prebuilt-business-cards-model"></a>Vordefiniertes Visitenkartenmodell
-
-Mit dem Visitenkartenmodell können Sie Informationen wie Name, Position, Adresse, E-Mail-Adresse, Unternehmen und Telefonnummern einer Person aus englischsprachigen Visitenkarten extrahieren. Weitere Informationen finden Sie im Leitfaden [Konzepte zu Visitenkarten](./concept-business-cards.md).
-
-:::image type="content" source="./media/overview-business-card.jpg" alt-text="Beispielvisitenkarte" lightbox="./media/overview-business-card.jpg":::
-
 ## <a name="input-requirements"></a>Eingabeanforderungen
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
-
-## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern
-
-[Verwenden Sie Container für die Formularerkennung (Vorschauversion)](form-recognizer-container-howto.md), um API-Features lokal bereitzustellen. Mithilfe dieses Docker-Containers können Sie den Dienst näher an Ihre Daten heranbringen, um Compliance- oder Sicherheitsanforderungen zu erfüllen oder anderen betrieblichen Anforderungen gerecht zu werden.
 
 ## <a name="service-availability-and-redundancy"></a>Dienstverfügbarkeit und Redundanz
 
@@ -179,11 +145,13 @@ Es ist keine Kundenkonfiguration erforderlich, um Zonenresilienz zu ermöglichen
 
 ## <a name="data-privacy-and-security"></a>Datenschutz und Sicherheit
 
-Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Formularerkennungsdienst nutzen, die Microsoft-Richtlinien zu Kundendaten beachten. Weitere Informationen finden Sie im Microsoft Trust Center auf der [Seite zu Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices).
+* Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Formularerkennungsdienst nutzen, die Microsoft-Richtlinien zu Kundendaten beachten. Weitere Informationen finden Sie im Microsoft Trust Center auf der [Seite zu Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices).
+
+* Die Formularerkennung speichert und verarbeitet keine Kundendaten außerhalb der Region, in der der Kunde die Dienstinstanz bereitstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Probieren Sie unser Onlinetool und den Schnellstart aus, um mehr über den Formularerkennungsdienst zu erfahren.
 
-* [**Tool für die Formularerkennung**](https://fott-preview.azurewebsites.net/)
+* [**Tool für die Formularerkennung**](https://aka.ms/fott-2.1-ga)
 * [**Schnellstart: Verwenden der Clientbibliothek oder REST-API für die Formularerkennung**](quickstarts/client-library.md)

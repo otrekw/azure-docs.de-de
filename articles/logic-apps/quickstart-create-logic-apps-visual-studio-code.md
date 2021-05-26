@@ -1,22 +1,22 @@
 ---
-title: Automatisieren von Aufgaben und Workflows mit Visual Studio Code
-description: Hier erfahren Sie, wie Sie Workflowdefinitionen für Logik-Apps mit Visual Studio Code (VS Code) erstellen oder bearbeiten.
+title: 'Schnellstart: Erstellen von Integrationsworkflows mit Azure Logic Apps in Visual Studio Code'
+description: Erstellen und Verwalten von Workflowdefinitionen mit mehrinstanzenfähigen Azure Logic Apps in Visual Studio Code.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/23/2021
-ms.openlocfilehash: 0163b58017599ceb26f52f0e47cbc87e161f6ed2
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 05/25/2021
+ms.openlocfilehash: 001a97f07655c4af78e14e07d9204045cec9502b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161236"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372548"
 ---
-# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Schnellstart: Erstellen und Verwalten von Logik-App-Workflowdefinitionen mit Visual Studio Code
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-multi-tenant-azure-logic-apps-and-visual-studio-code"></a>Schnellstart: Erstellen und Verwalten von Logik-App-Workflowdefinitionen mit mehrinstanzenfähigen Azure Logic Apps und Visual Studio Code
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und Visual Studio Code lassen sich Logik-Apps erstellen und verwalten, mit denen Sie Aufgaben, Workflows und Prozessen zum Integrieren von Apps, Daten, Systemen und Diensten in Unternehmen und Organisationen automatisieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie die zugrunde liegenden Workflowdefinitionen in JavaScript Object Notation (JSON) für Logik-Apps in einer codebasierten Umgebung erstellen und bearbeiten. Sie können auch vorhandene Logik-Apps bearbeiten, die bereits in Azure bereitgestellt wurden.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie Logik-App-Workflows erstellen und verwalten, mit denen Sie Aufgaben und Prozesse automatisieren können, die Apps, Daten, Systeme und Dienste in Organisationen und Unternehmen integrieren, indem Sie multiinstanzenfähige [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und Visual Studio Code verwenden. Sie können die zugrunde liegenden Workflowdefinitionen, die JavaScript Object Notation (JSON) verwenden, für Logik-Apps in einer codebasierten Umgebung erstellen und bearbeiten. Sie können auch vorhandene Logik-Apps bearbeiten, die bereits in Azure bereitgestellt wurden. Weitere Informationen zum Mehrinstanzenmodell im Vergleich zu einem Einzelinstanzenmodell finden Sie unter [Einzelinstanz im Vergleich zu Mehrinstanzen und Integrationsdienstumgebung](single-tenant-overview-compare.md).
 
 Obwohl Sie dieselben Aufgaben im [Azure-Portal](https://portal.azure.com) und in Visual Studio ausführen können, können Sie in Visual Studio Code schneller starten, wenn Sie bereits mit Logik-App-Definitionen vertraut sind und direkt im Code arbeiten möchten. Beispielsweise können Sie bereits erstellte Logik-Apps deaktivieren, aktivieren, löschen und aktualisieren. Sie können zudem auf jeder Entwicklungsplattform, auf der Visual Studio Code ausgeführt wird – z.B. Linux, Windows und Mach, an Logik-Apps und Integrationskonten arbeiten.
 
@@ -299,9 +299,9 @@ Wenn Sie in Visual Studio Code eine veröffentlichte Logik-App bearbeiten und di
 > [!NOTE]
 > Das Deaktivieren einer Logik-App wirkt sich wie folgt auf Workflowinstanzen aus:
 >
-> * Der Logic Apps-Dienst setzt alle aktiven und ausstehenden Ausführungen fort, bis sie abgeschlossen sind. Basierend auf der Menge oder dem Backlog kann es einige Zeit dauern, bis dieser Prozess abgeschlossen ist.
+> * Der Logic Apps-Dienst setzt alle aktiven und ausstehenden Ausführungen fort, bis sie abgeschlossen sind. Basierend auf dem Volume oder Backlog kann es einige Zeit dauern, bis dieser Prozess abgeschlossen ist.
 >
-> * Vom Logic Apps-Dienst werden keine neuen Workflowinstanzen erstellt oder ausgeführt.
+> * Der Logic Apps-Dienst erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
 >
 > * Der Trigger wird nicht ausgelöst, wenn die definierten Bedingungen beim nächsten Mal erfüllt werden. Der Triggerstatus merkt sich den Punkt, an dem die Logik-App angehalten wurde. Wenn Sie die Logik-App erneut aktivieren, wird der Trigger für alle nicht verarbeiteten Elemente seit der letzten Ausführung ausgelöst.
 >
@@ -333,9 +333,9 @@ Das Löschen einer Logik-App wirkt sich wie folgt auf Workflowinstanzen aus:
 
   Selbst bei einer großen Menge oder einem umfangreichen Backlog werden die meisten Ausführungen abgebrochen, bevor sie abgeschlossen oder gestartet werden. Es kann jedoch einige Zeit dauern, bis der Abbruchvorgang abgeschlossen ist. In der Zwischenzeit werden möglicherweise einige Ausführungen gestartet, während der Dienst den Abbruchprozess durchläuft.
 
-* Vom Logic Apps-Dienst werden keine neuen Workflowinstanzen erstellt oder ausgeführt.
+* Der Logic Apps-Dienst erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
 
-* Wenn Sie einen Workflow löschen und dann denselben Workflow neu erstellen, hat der neu erstellte Workflow nicht die gleichen Metadaten wie der gelöschte Workflow. Sie müssen jeden Workflow, der den gelöschten Workflow aufgerufen hat, neu speichern. Auf diese Weise ruft der Aufrufer die richtigen Informationen für den neu erstellten Workflow ab. Andernfalls tritt bei Aufrufen des neu erstellten Workflows der Fehler `Unauthorized` auf. Dieses Verhalten gilt auch für Workflows, die Artefakte in Integrationskonten verwenden, sowie Workflows, die Azure-Funktionen aufrufen.
+* Wenn Sie einen Workflow löschen und dann denselben Workflow neu erstellen, hat der neu erstellte Workflow nicht die gleichen Metadaten wie der gelöschte Workflow. Sie müssen jeden Workflow, der den gelöschten Workflow aufgerufen hat, neu speichern. Auf diese Weise ruft der Aufrufer die richtigen Informationen für den neu erstellten Workflow ab. Andernfalls schlagen Aufrufe des neu erstellten Workflows mit einem `Unauthorized`-Fehler fehl. Dieses Verhalten gilt auch für Workflows, die Artefakte in Integrationskonten verwenden, sowie Workflows, die Azure-Funktionen aufrufen.
 
 1. Wenn Sie sich noch nicht über Visual Studio Code bei Ihrem Azure-Konto und -Abonnement angemeldet haben, befolgen Sie die [vorherigen Schritte, um sich jetzt anzumelden](#access-azure).
 
@@ -348,4 +348,4 @@ Das Löschen einer Logik-App wirkt sich wie folgt auf Workflowinstanzen aus:
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen zustandsbehafteter oder zustandsloser Workflows in Visual Studio Code mit der Azure Logic Apps (Vorschau)-Erweiterung](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)
+> [Erstellen einzelinstanzenbasierter Logik-App-Workflows in Visual Studio Code](../logic-apps/create-single-tenant-workflows-visual-studio-code.md)

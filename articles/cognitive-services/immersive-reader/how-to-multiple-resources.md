@@ -1,6 +1,6 @@
 ---
 title: Integrieren mehrerer Ressourcen für den plastischen Reader
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: In diesem Tutorial erstellen Sie eine Node.js-Anwendung, die den plastischen Reader mit mehreren Ressourcen startet.
 author: skamal
 manager: nitinme
@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.author: skamal
 ms.custom: devx-track-js
-ms.openlocfilehash: dc6c7bd9e38aa21ab10f55fca2500b0c12194d43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b8258b5235deac0f6ebc03b1da4d28bb2439a82
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102620274"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373822"
 ---
 # <a name="integrate-multiple-immersive-reader-resources"></a>Integrieren mehrerer Ressourcen für den plastischen Reader
 
