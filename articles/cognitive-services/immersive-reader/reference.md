@@ -1,6 +1,6 @@
 ---
 title: Plastischer Reader-SDK – Referenz
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Das Plastischer Reader-SDK enthält eine JavaScript-Bibliothek, die es Ihnen ermöglicht, den Plastischen Reader in Ihre Anwendung zu integrieren.
 services: cognitive-services
 author: metanMSFT
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metang
-ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 852e3d91b9d90d79bc45b4478ee433fbbd13255b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92636526"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370786"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Referenz zum JavaScript-SDK für den Plastischen Reader (v1.1)
 
@@ -43,7 +43,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 #### <a name="launchasync-parameters"></a>launchAsync-Parameter
 
-| Name | type | BESCHREIBUNG |
+| Name | Typ | BESCHREIBUNG |
 | ---- | ---- |------------ |
 | `token` | Zeichenfolge | Das Azure AD-Authentifizierungstoken. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Ressource für den plastischen Reader](./how-to-create-immersive-reader.md). |
 | `subdomain` | Zeichenfolge | Die benutzerdefinierte Unterdomäne ihrer Plastischer Reader-Ressource in Azure. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Ressource für den plastischen Reader](./how-to-create-immersive-reader.md). |
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="renderbuttons-parameters"></a>renderButtons-Parameter
 
-| Name | type | Beschreibung |
+| Name | Typ | Beschreibung |
 | ---- | ---- |------------ |
 | `options` | [renderButtons options](#renderbuttons-options) | Optionen zum Konfigurieren bestimmter Verhaltensweisen der Funktion „renderButtons“. Optional. |
 
@@ -131,7 +131,7 @@ Optionen für das Rendering der Schaltflächen des Plastischen Readers.
 
 #### <a name="renderbuttons-options-parameters"></a>renderButtons Options-Parameter
 
-| Einstellung | type | Beschreibung |
+| Einstellung | Typ | Beschreibung |
 | ------- | ---- | ----------- |
 | Elemente | HTMLDivElement[] | Elemente, in denen die Schaltflächen des plastischen Readers gerendert werden. |
 
@@ -156,7 +156,7 @@ Enthält die Antwort aus dem Aufruf von `ImmersiveReader.launchAsync`. Beachten 
 
 #### <a name="launchresponse-parameters"></a>LaunchResponse-Parameter
 
-| Einstellung | type | BESCHREIBUNG |
+| Einstellung | Typ | BESCHREIBUNG |
 | ------- | ---- | ----------- |
 | Container | HTMLDivElement | HTML-Element, das das „iframe“ des plastischen Readers enthält. |
 | sessionID | String | Global eindeutiger Bezeichner für diese Sitzung, der zum Debuggen verwendet wird. |
@@ -174,7 +174,7 @@ Enthält Informationen zu einem Fehler.
 
 #### <a name="error-parameters"></a>Fehlerparameter
 
-| Einstellung | type | BESCHREIBUNG |
+| Einstellung | Typ | BESCHREIBUNG |
 | ------- | ---- | ----------- |
 | code | String | Einer aus einer Reihe von Fehlercodes. Weitere Informationen finden Sie unter [Fehlercodes](#error-codes). |
 | message | String | Lesbare Darstellung des Fehlers. |
@@ -205,7 +205,7 @@ Enthält den Inhalt, der im Plastischen Reader angezeigt werden soll.
 
 #### <a name="content-parameters"></a>Inhaltsparameter
 
-| Name | type | Beschreibung |
+| Name | Typ | Beschreibung |
 | ---- | ---- |------------ |
 | title | String | Titeltext, der oben auf dem plastischen Reader angezeigt wird (optional). |
 | Blöcke | [Chunk[]](#chunk) | Array von Blöcken |
@@ -240,7 +240,7 @@ Ein einzelner Datenblock, der in den Inhalt des Plastischen Readers übertragen 
 
 #### <a name="chunk-parameters"></a>Blockparameter
 
-| Name | type | Beschreibung |
+| Name | Typ | Beschreibung |
 | ---- | ---- |------------ |
 | Inhalt | String | Die Zeichenfolge, die den an den plastischen Reader gesendeten Inhalt enthält. |
 | lang | String | Sprache des Texts, der Wert ist im IETF BCP 47-Sprachtagformat angegeben, z. B. „en“, „es-ES“. Die Sprache wird automatisch erkannt, wenn sie nicht angegeben ist. Siehe [Unterstützte Sprachen](#supported-languages). |
@@ -305,7 +305,7 @@ Enthält Eigenschaften, die bestimmte Verhaltensweisen des Plastischen Readers k
 
 #### <a name="options-parameters"></a>Optionsparameter
 
-| Name | type | Beschreibung |
+| Name | Typ | Beschreibung |
 | ---- | ---- |------------ |
 | uiLang | String | Sprache der Benutzeroberfläche, der Wert ist im IETF BCP 47-Sprachtagformat angegeben, z. B. „en“, „es-ES“. Standardmäßig wird die Browsersprache verwendet, falls nicht angegeben. |
 | timeout | Nr. | Dauer (in Millisekunden) bevor bei [launchAsync](#launchasync) ein Timeoutfehler auftritt (Standard ist 15000 ms). Dieser Timeout gilt nur für den anfänglichen Start der Seite „Reader“, wobei der Erfolg beim Öffnen der Seite „Reader“ und dem Start des Drehfelds beobachtet wird. Die Anpassung des Timeouts sollte nicht erforderlich sein. |
@@ -390,7 +390,7 @@ type ReadAloudOptions = {
 
 #### <a name="readaloudoptions-parameters"></a>ReadAloudOptions-Parameter
 
-| Name | type | Beschreibung |
+| Name | Typ | Beschreibung |
 | ---- | ---- |------------ |
 | voice | String | Stimme, entweder „Weiblich“ oder „Männlich“. Beachten Sie, dass nicht alle Sprachen beide Geschlechter unterstützen. |
 | Geschwindigkeit | Nr. | Die Wiedergabegeschwindigkeit muss zwischen 0,5 und 2,5 (einschließlich) liegen. |
@@ -429,7 +429,7 @@ type TranslationOptions = {
 
 #### <a name="translationoptions-parameters"></a>TranslationOptions-Parameter
 
-| Name | type | BESCHREIBUNG |
+| Name | Typ | BESCHREIBUNG |
 | ---- | ---- |------------ |
 | language | String | Legt die Übersetzungssprache fest, der Wert ist im IETF BCP 47-Sprachtagformat angegeben, z. B. „fr-FR“, „es-MX“, „zh-Hans-CN“. Erforderlich zur automatischen Aktivierung der Wort- oder Dokumentübersetzung. |
 | autoEnableDocumentTranslation | Boolean | Übersetzen Sie automatisch das gesamte Dokument. |
@@ -457,7 +457,7 @@ type DisplayOptions = {
 
 #### <a name="displayoptions-parameters"></a>DisplayOptions-Parameter
 
-| Name | type | Beschreibung |
+| Name | Typ | Beschreibung |
 | ---- | ---- |------------ |
 | textSize | Nr. | Legt die gewählte Textgröße fest. |
 | increaseSpacing | Boolean | Legt fest, ob der Textabstand aktiviert oder deaktiviert wird. |
@@ -491,7 +491,7 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="settings-parameters"></a>Parameter für Einstellungen
 
-| Einstellung | type | Beschreibung |
+| Einstellung | Typ | Beschreibung |
 | ------- | ---- | ----------- |
 | textSize | Nr. | Legt die gewählte Textgröße fest. |
 | fontFamily | String | Legt die gewählte Schriftart fest („Calibri“, „ComicSans“ oder „Sitka“). |

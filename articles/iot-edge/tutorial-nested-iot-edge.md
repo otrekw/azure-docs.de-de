@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 79ccd1f8107eb5d287cf74084978b92715b936fa
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7362c134ce25341a9ce53659c3a1f7ff2889e7fa
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133743"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083582"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>Tutorial: Erstellen einer Hierarchie für IoT Edge-Geräte
 
@@ -66,7 +66,7 @@ Sie benötigen Folgendes, um eine Hierarchie mit IoT Edge-Geräten zu erstellen:
 
    Ersetzen Sie den Platzhaltertext im folgenden Befehl, und führen Sie ihn zweimal aus (einmal für jeden virtuellen Computer). Für jeden virtuellen Computer wird ein eindeutiges DNS-Präfix benötigt, das gleichzeitig als Name dient. Das DNS-Präfix muss die Bedingungen des folgenden regulären Ausdrucks erfüllen: `[a-z][a-z0-9-]{1,61}[a-z0-9]`.
 
-   ```bash
+   ```azurecli
    az deployment group create \
     --resource-group <REPLACE_WITH_YOUR_RESOURCE_GROUP> \
     --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0/edgeDeploy.json" \
@@ -278,7 +278,7 @@ Informationen dazu, wie Sie eine Bereitstellung dieser Art über das Azure-Porta
 
 Sie können den Status Ihrer Module mit dem folgenden Befehl anzeigen:
 
-   ```bash
+   ```azurecli
    az iot hub module-twin show --device-id <edge_device_id> --module-id '$edgeAgent' --hub-name <iot_hub_name> --query "properties.reported.[systemModules, modules]"
    ```
 

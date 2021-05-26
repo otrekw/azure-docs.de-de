@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/09/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: dc156afa2c5b5143e1543ef58203d6dea5d046c3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3f94b22d4f439769b27d38943603f7c726bfc40d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144995"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468406"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
 Sie haben Ihr Angebot im kommerziellen Microsoft-Marketplace veröffentlicht und möchten nun natürlich, dass es auf Interesse stößt. Wir bieten Ihnen vom Vertrieb über die technische Umsetzung bis hin zum Marketing Vorteile, die Ihrem Angebot schneller zum Erfolg verhelfen können.
 
-Sobald Ihr Angebot in Microsoft AppSource oder im Azure Marketplace live geschaltet ist, wechseln Sie zum [Partner Center](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace), um auf die Ihnen zustehenden Marketing- und Verkaufsvorteile sowie technischen Vorteile zuzugreifen und diese zu aktivieren. Sehen Sie sich das Marketplace Rewards-[Demovideo](https://partner.microsoft.com/asset/detail/marketplace-rewards-demo-mp4) an, um einen Überblick darüber zu erhalten, wie Sie sich für Marketplace Rewards registrieren und von den Vorteilen in Partner Center profitieren. Marketplace-Prämienvorteile werden basierend auf Ihrem Engagement im kommerziellen Marketplace und Ihrem Umsatz angesammelt. Je mehr Sie sich engagieren, desto mehr erhalten Sie zurück.
+Sobald Ihr Angebot in Microsoft AppSource oder im Azure Marketplace live geschaltet ist, wechseln Sie zum [Partner Center](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace), um auf die Ihnen zustehenden Marketing- und Verkaufsvorteile sowie technischen Vorteile zuzugreifen und diese zu aktivieren. Marketplace-Prämienvorteile werden basierend auf Ihrem Engagement im kommerziellen Marketplace und Ihrem Umsatz angesammelt. Je mehr Sie sich engagieren, desto mehr erhalten Sie zurück.
 
 ## <a name="marketplace-rewards"></a>Marketplace-Prämien
 

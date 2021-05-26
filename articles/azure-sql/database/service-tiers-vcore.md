@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 01/15/2021
-ms.openlocfilehash: 3bd617f052d52339ae35e5a088c6ee85b797fb48
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/01/2021
+ms.openlocfilehash: 29ce9430d43ed663be8d888dc2388551659c873c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779181"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468886"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Übersicht über das Modell für virtuelle Kerne – Azure SQL-Datenbank und Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -112,12 +112,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 Die DC-Serie wird nur für bereitgestellte Computeressourcen (und nicht für „Serverlos“) unterstützt. Außerdem unterstützt sie keine Zonenredundanz. Die Regionen, in denen die DC-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der DC-Serie](#dc-series-1).
 
-#### <a name="azure-offer-types-supported-by-dc-series"></a>Von der DC-Serie unterstützte Azure-Angebotstypen
-
-Für den Zugriff auf die DC-Serie muss das Abonnement ein kostenpflichtiger Angebotstyp sein und nutzungsbasierte Zahlung oder Enterprise Agreement (EA) einschließen.  Eine vollständige Liste mit den von der DC-Serie unterstützten Azure-Angebotstypen finden Sie unter [Aktuelle Angebote ohne Ausgabenlimits](https://azure.microsoft.com/support/legal/offer-details).
-
 ### <a name="compute-and-memory-specifications"></a>Spezifikationen zu Compute- und Arbeitsspeicherressourcen
-
 
 |Hardwaregeneration  |Compute  |Arbeitsspeicher  |
 |:---------|:---------|:---------|

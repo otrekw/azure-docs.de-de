@@ -7,12 +7,12 @@ author: philmea
 ms.author: philmea
 ms.date: 11/19/2020
 ms.topic: how-to
-ms.openlocfilehash: 19d8738790b5634b9de989fa94edac6a542f85f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a78b808b6c3312dea25b52901029606a8ddeb901
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94917340"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060074"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Erstellen und Ausführen von Aufträgen in Ihrer Azure IoT Central-Anwendung
 
@@ -172,4 +172,4 @@ Geben Sie einen Auftragsnamen und eine Beschreibung an, und wählen Sie dann **R
 Nachdem Sie nun erfahren haben, wie Aufträge in Ihrer Azure IoT Central-Anwendung erstellt werden, können Sie die nächsten Schritte ausführen:
 
 - [Verwalten von Geräten](howto-manage-devices.md)
-- [Verwalten der Versionen Ihrer Gerätevorlage](howto-version-device-template.md)
+- [Bearbeiten einer Gerätevorlage](howto-edit-device-template.md)

@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 05/25/2021
 ms.reviewer: sngun
-ms.openlocfilehash: b0d27cb2f941db374a144cbd5c026444730e24e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b143f3628747cc39060c999a6fee6b5950be4ee
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247487"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376811"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -217,38 +217,51 @@ Die monatliche Gesamtrechnung wird (30 Tage und 720 Stunden im Monat vorausgeset
 
 ## <a name="billing-examples-with-azure-cosmos-db-free-tier-accounts"></a><a id="azure-free-tier"></a>Abrechnungsbeispiele bei Free-Tarif-Konten für Azure Cosmos DB
 
-Beim Free-Tarif für Azure Cosmos DB erhalten Sie die ersten 400 RUs/Sek. und 5 GB Speicher in Ihrem Konto kostenlos, angewendet auf der Kontoebene. Jegliche Nutzung, die über 400 RUs/Sek. und 5 GB Speicher hinausgeht, wird zu den regulären Preisen abgerechnet, die auf der Preisseite angegeben sind. Die Rechnung enthält keine Gebühr oder Position für die kostenlosen 400 RUs/Sek. bzw. 5 GB, sondern nur für die über den Free-Tarif hinausgehende RUs/Sek. und Speichernutzung. Die 400 RUs/Sek. gelten für jeden beliebigen Typ von RUs/Sek. – bereitgestellten Durchsatz, Autoskalierung und Schreibvorgänge für mehrere Regionen.  
-
-> [!NOTE]
-> Der Free-Tarif von Azure Cosmos DB ist anders als das kostenlose Azure-Konto. Das kostenlose Azure-Konto bietet Azure-Gutschriften und -Ressourcen kostenlos für einen begrenzten Zeitraum. Wenn Sie Azure Cosmos DB im Rahmen dieses kostenlosen Kontos nutzen, erhalten Sie 25 GB Speicher und 400 RU/s von bereitgestelltem Durchsatz für 12 Monate.
+Beim Free-Tarif für Azure Cosmos DB erhalten Sie die ersten 1.000 RUs/Sek. und 25 GB Speicher in Ihrem Konto kostenlos, angewendet auf der Kontoebene. Jegliche Nutzung, die über 1.000 RUs/Sek. und 25 GB Speicher hinausgeht, wird zu den regulären Preisen abgerechnet, die auf der Preisseite angegeben sind. Die Rechnung enthält keine Gebühr oder Position für die kostenlosen 1.000 RUs/Sek. bzw. 25 GB, sondern nur für die über den Free-Tarif hinausgehende RUs/Sek. und Speichernutzung. Weitere Informationen finden Sie im Artikel [Erstellen eines Kontos im Free-Tarif](free-tier.md).
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>Abrechnungsbeispiel: Container oder Datenbank mit bereitgestelltem Durchsatz
-- Angenommen, Sie erstellen eine Datenbank oder einen Container in einem Free-Tarif-Konto mit 400 RUs/Sek. und 5 GB Speicher.
+
+- Angenommen, Sie erstellen eine Datenbank oder einen Container in einem Free-Tarif-Konto mit 1.000 RUs/Sek. und 25 GB Speicher.
 - Dann werden auf Ihrer Rechnung keine Gebühren für diese Ressource angezeigt. Ihre stündlichen und monatlichen Kosten betragen 0 US-Dollar.
-- Nehmen Sie jetzt an, in demselben Konto fügen Sie eine weitere Datenbank oder einen weiteren Container mit 1.000 RUs/Sek. und 10 GB Speicher hinzu.
-- Dann zeigt Ihre Rechnung eine Gebühr für die 1.000 RUs/Sek. und 10 GB Speicher an. 
+- Angenommen, Sie fügen im selben Konto eine weitere Datenbank oder einen weiteren Container mit 400 RUs/Sek. und 10 GB Speicher hinzu.
+- Dann zeigt Ihre Rechnung eine Gebühr für die 400 RUs/Sek. und 10 GB Speicher an.
 
 ### <a name="billing-example---container-with-autoscale-throughput"></a>Abrechnungsbeispiel: Container mit automatisch skalierendem Durchsatz
-- Angenommen, Sie erstellen in einem Konto mit Free-Tarif einen Container mit aktivierter Autoskalierung mit einem maximalen Durchsatz von 4.000 RU/Sek. Diese Ressource wird automatisch zwischen 400 RUs/Sek. und 4.000 RUs/Sek. skaliert. 
-- Angenommen, in Stunde 1 bis 10 erfolgt der Durchsatz bei der Ressource mit dem minimalen Wert 400 RUs/Sek. Während Stunde 11 wird die Ressource auf 1.000 RUs/Sek. zentral hochskaliert und anschließend innerhalb dieser Stunde wieder auf 400 RUs/Sek. herunterskaliert.
-- In den Stunden 1 bis 10 werden Ihnen 0 US-Dollar für den Durchsatz in Rechnung gestellt, da die 400 RUs/Sek. durch den Free-Tarif abgedeckt wurden. 
-- In Stunde 11 werden Ihnen effektive 1.000 RUs/Sek. – 400 RUs/Sek. = 600 RUs/Sek. in Rechnung gestellt, da dies der höchste RUs/Sek.-Wert in dieser Stunde ist. Dies sind 6 Einheiten von 100 RUs/Sek. für die Stunde. Damit belaufen sich die gesamten Durchsatzkosten für diese Stunde auf 6 Einheiten x 0,012 US-Dollar = 0,072 US-Dollar. 
-- Jeder Speicher, der über die ersten 5 GB hinausgeht, wird zu normalen Speicherraten abgerechnet. 
+
+- Angenommen, Sie erstellen in einem Konto mit Free-Tarif einen Container mit aktivierter Autoskalierung mit einem maximalen Durchsatz von 4.000 RU/Sek. Diese Ressource wird automatisch zwischen 400 RUs/Sek. und 4.000 RUs/Sek. skaliert.
+- Angenommen, die Ressource wird zwischen Stunde 1 und Stunde 10 auf 1.000 RUs/Sek. skaliert. Während Stunde 11 wird die Ressource auf 1.600 RUs/Sek. zentral hochskaliert und anschließend innerhalb dieser Stunde wieder auf 1.000 RUs/Sek. herunterskaliert.
+- In den Stunden 1 bis 10 werden Ihnen 0 US-Dollar für den Durchsatz in Rechnung gestellt, da die 1.000 RUs/Sek. durch den Free-Tarif abgedeckt wurden.
+- In Stunde 11 werden Ihnen effektive 1.600 RUs/Sek. – 1.000 RUs/Sek. = 600 RUs/Sek. in Rechnung gestellt, da dies der höchste RUs/Sek.-Wert in dieser Stunde ist. Dies sind 6 Einheiten von 100 RUs/Sek. für die Stunde. Damit belaufen sich die gesamten Durchsatzkosten für diese Stunde auf 6 Einheiten x 0,012 US-Dollar = 0,072 US-Dollar.
+- Jeder Speicher, der über die ersten 25 GB hinausgeht, wird zu normalen Speicherraten abgerechnet.
 
 ### <a name="billing-example---multi-region-single-write-region-account"></a>Abrechnungsbeispiel: Konto mit mehreren Regionen und Schreibanforderung für eine Region
+
 - Angenommen, Sie erstellen in einem Free-Tarif-Konto eine Datenbank oder einen Container mit 1200 RUs/Sek. und 10 GB Speicher. Sie replizieren das Konto in drei Regionen und haben ein Konto mit Schreibanforderung für eine Region.
 - Insgesamt (ohne den Free-Tarif) würden für 3 x 1.200 RUs/Sek. = 3.600 RUs/Sek. und 3 x 10 GB = 30 GB Speicher in Rechnung gestellt.
-- Beim Free-Tarif-Rabatt wird nach dem Entfernen von 400 RUs/Sek. und 5 GB Speicher ein effektiver bereitgestellter Durchsatz von 3.200 RUs/Sek. (32 Einheiten) zum Satz der Schreibanforderung für eine Region und für 25 GB Speicher in Rechnung gestellt.
-- Dann würden die monatlichen Kosten für RUs/Sek. betragen: 32 Einheiten × 0,008 US-Dollar x 24 Stunden × 31 Tage = 190,46 US-Dollar. Die monatlichen Kosten für Speicher würden betragen: 25 GB x 0,25/GB = 6,25 US-Dollar. Die Gesamtkosten würden betragen: 190,46 US-Dollar + 6,25 US-Dollar = 196,71 US-Dollar.
-- Hinweis: Wenn sich der Einzelpreis für RUs/Sek. oder Speicher in den Regionen unterscheidet, entsprechen die 400 RUs/Sek. und 5 GB Speicher den Tarifen der Region, in der das Konto erstellt wurde.
+- Beim Rabatt des Free-Tarifs wird nach dem Entfernen von 1.000 RUs/Sek. und 25 GB Speicher ein effektiver bereitgestellter Durchsatz von 2.600 RUs/Sek. (26 Einheiten) zur Rate für eine Schreibregion und für 5 GB Speicher in Rechnung gestellt.
+- Dann würden die monatlichen Kosten für RUs/Sek. betragen: 26 Einheiten × 0,008 US-Dollar × 24 Stunden × 31 Tage = 154,75 US-Dollar. Die monatlichen Kosten für Speicher würden betragen: 5 GB × 0,25/GB = 1,25 US-Dollar. Die Gesamtkosten würden betragen: 154,75 US-Dollar + 1,25 US-Dollar = 156 US-Dollar.
+
+> [!NOTE]
+> Wenn sich der Einzelpreis für RUs/Sek. oder Speicher in den Regionen unterscheidet, entsprechen die 1.000 RUs/Sek. und 25 GB Speicher den Tarifen der Region, in der das Konto erstellt wurde.
 
 ### <a name="billing-example---multi-region-account-with-multiple-write-regions"></a>Abrechnungsbeispiel: Konto mit mehreren Regionen und Konto mit Schreibanforderung für mehrere Regionen
 
-In diesem Beispiel werden [Preise für Schreibvorgänge für mehrere Regionen](https://azure.microsoft.com/pricing/details/cosmos-db/) für Konten verwendet, die nach dem 1. Dezember 2019 erstellt wurden. 
-- Angenommen, Sie erstellen in einem Free-Tarif-Konto eine Datenbank oder einen Container mit 1.200 RUs/Sek. und 10 GB Speicher. Sie replizieren das Konto in drei Regionen und haben ein Konto mit Schreibanforderung für mehrere Regionen. 
+In diesem Beispiel werden [Preise für Schreibvorgänge für mehrere Regionen](https://azure.microsoft.com/pricing/details/cosmos-db/) für Konten verwendet, die nach dem 1. Dezember 2019 erstellt wurden.
+
+- Angenommen, Sie erstellen in einem Free-Tarif-Konto eine Datenbank oder einen Container mit 1.200 RUs/Sek. und 10 GB Speicher. Sie replizieren das Konto in drei Regionen und haben ein Konto mit Schreibanforderung für mehrere Regionen.
 - Insgesamt (ohne den Free-Tarif) würden Ihnen für 3 x 1.200 RUs/Sek. = 3.600 RUs/Sek. und 3 x 10 GB = 30 GB Speicher in Rechnung gestellt.
-- Beim Free-Tarif-Rabatt wird nach dem Entfernen von 400 RUs/Sek. und 5 GB Speicher ein effektiver bereitgestellter Durchsatz von 3.200 RUs/Sek. (32 Einheiten) zum Satz der Schreibanforderung für mehrere Regionen und für 25 GB Speicher in Rechnung gestellt.
-- Dann würden die monatlichen Kosten für RUs/Sek. betragen: 32 Einheiten × 0,016 US-Dollar × 24 Stunden × 31 Tage = 380,93 US-Dollar. Die monatlichen Kosten für Speicher würden betragen: 25 GB x 0,25/GB = 6,25 US-Dollar. Die Gesamtkosten würden betragen: 380,93 US-Dollar + 6,25 US-Dollar = 387,18 US-Dollar.
+- Beim Rabatt des Free-Tarifs wird nach dem Entfernen von 1000 RUs/Sek. und 25 GB Speicher ein effektiver bereitgestellter Durchsatz von 2600 RUs/Sek. (26 Einheiten) zur Rate der Schreibanforderung für mehrere Regionen und für 5 GB Speicher in Rechnung gestellt.
+- Dann würden die monatlichen Kosten für RUs/Sek. betragen: 26 Einheiten × 0,016 US-Dollar × 24 Stunden × 31 Tage = 309,50 US-Dollar. Die monatlichen Kosten für Speicher würden betragen: 5 GB × 0,25/GB = 1,25 US-Dollar. Die Gesamtkosten würden betragen: 309,50 US-Dollar + 1,25 US-Dollar = 310,75 US-Dollar.
+
+### <a name="billing-example--azure-free-account"></a>Abrechnungsbeispiel für ein kostenloses Azure-Konto
+
+Angenommen, Sie verfügen über ein kostenloses Azure-Konto, das ein Azure Cosmos DB-Konto im Free-Tarif umfasst. Das Azure Cosmos DB-Konto verfügt über eine Schreibregion.
+
+- Sie haben eine Datenbank oder einen Container mit 2.000 RUs/Sek. und 55 GB Speicher erstellt.
+- In den ersten 12 Monaten werden auf Ihrer Rechnung keine Gebühren für 1.400 RU/Sek. (1.000 RUs/Sek. des Free-Tarifs von Azure Cosmos DB und 400 RUs/Sek. des kostenlosen Azure-Kontos) und 50 GB Speicher (25 GB des Free-Tarifs von Azure Cosmos DB und 25 GB des kostenlosen Azure-Kontos) aufgeführt.
+- Nachdem 1.400 RUs/Sek. und 50 GB Speicher entfernt wurden, werden effektiv 600 RUs/Sek. (6 Einheiten) bereitgestellten Durchsatzes zur Rate für eine Schreibregion und 5 GB Speicher in Rechnung gestellt.
+- Dann würden die monatlichen Kosten für RUs/Sek. betragen: 6 Einheiten × 0,008 US-Dollar × 24 Stunden × 31 Tage = 35,72 US-Dollar. Die monatlichen Kosten für Speicher würden betragen: 5 GB × 0,25/GB = 1,25 US-Dollar. Die Gesamtkosten würden betragen: 35,72 US-Dollar + 1,25 US-Dollar = 36,97 US-Dollar.
+- Nach dem Zeitraum von 12 Monaten gilt der Rabatt für das kostenlose Azure-Konto nicht mehr. Mit angewendetem Rabatt des Free-Tarifs von Azure Cosmos DB werden Ihnen effektiv 1.000 RUs/Sek. (10 Einheiten) bereitgestellten Durchsatzes zur Rate für eine Schreibregion und 30 GB Speicher in Rechnung gestellt.
 
 ## <a name="proactively-estimating-your-monthly-bill"></a>Vorausschauende Schätzung der monatlichen Rechnung  
 

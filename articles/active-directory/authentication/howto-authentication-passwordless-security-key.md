@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c164b52682d6f4aef2db70a5724f3f74db68c53f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ba71fb0dd543780ebfb8783ed937a14e2afbe417
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108746445"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467305"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln 
 
@@ -107,9 +107,6 @@ Wenn Sie Feedback geben möchten oder Probleme mit diesem Feature auftreten, tei
 
 Die Administratorbereitstellung und Bereitstellungsaufhebung von Sicherheitsschlüsseln ist nicht verfügbar.
 
-### <a name="cached-logon-on-hybrid-azure-ad-joined-devices"></a>Zwischengespeicherte Anmeldung für hybride, in Azure AD eingebundene Geräte
-
-Bei der zwischengespeicherten Anmeldung mit FIDO2-Schlüsseln kommt es für hybride, in Azure AD eingebundene Geräte unter Windows 10, Version 20H2 zu einem Fehler. Dadurch können sich Benutzer nicht anmelden, wenn keine Sichtverbindung mit dem lokalen Domänencontroller verfügbar ist. Dies wird derzeit geprüft.
 
 ### <a name="upn-changes"></a>Änderungen des Benutzerprinzipalnamens
 
