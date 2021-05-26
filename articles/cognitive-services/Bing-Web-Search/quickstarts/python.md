@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-python
-ms.openlocfilehash: 5a9eff1ef012e66f661ee99852a8d82f117a45c4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c1393b599b990cce055740c1ae55079168c36a86
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350516"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479406"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von Python zum Aufrufen der Bing-Websuche-API  
 
@@ -49,7 +49,7 @@ Dieses Beispiel wird als Jupyter-Notebook unter [MyBinder](https://mybinder.org)
 2. Deklarieren Sie den Endpunkt für die Bing-Websuche-API. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
    ```python
-   search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
+   search_url = "https://api.bing.microsoft.com/v7.0/search"
    ```
 
 3. Optional können Sie die Suchabfrage auch anpassen, indem Sie den Wert für `search_term` ersetzen.

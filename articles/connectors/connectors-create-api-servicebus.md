@@ -7,12 +7,12 @@ ms.reviewer: logicappspm, azla
 ms.topic: conceptual
 ms.date: 02/10/2021
 tags: connectors
-ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb8e97dfd929be96d51c761ff91c91cc033d5127
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100367417"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847833"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Austauschen von Nachrichten in der Cloud mit Azure Logic Apps und Azure Service Bus
 
@@ -33,11 +33,11 @@ Sie können Trigger verwenden, die Antworten von Service Bus erhalten und die Au
 
 * Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Ein Service Bus-Namespace und eine Messagingentität, z.B. eine Warteschlange. Diese Elemente und Ihre Logik-App müssen dasselbe Azure-Abonnement verwenden. Wenn Sie nicht über diese Elemente verfügen, informieren Sie sich, wie Sie [Ihren Service Bus-Namespace und eine Warteschlange erstellen](../service-bus-messaging/service-bus-create-namespace-portal.md).
+* Ein Service Bus-Namespace und eine Messagingentität, z.B. eine Warteschlange. Wenn Sie nicht über diese Elemente verfügen, informieren Sie sich, wie Sie [Ihren Service Bus-Namespace und eine Warteschlange erstellen](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Die Logik-App, in der Sie den Service Bus-Namespace und die Messagingentität verwenden. Ihre Logik-App und der Service Bus müssen dasselbe Azure-Abonnement verwenden. Wenn Sie Ihren Workflow mit einem Service Bus-Trigger beginnen möchten, [erstellen Sie eine leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Um eine Service Bus-Aktion in Ihrem Workflow zu verwenden, starten Sie Ihre Logik-App mit einem anderen Trigger, z. B. dem [Wiederholungstrigger](../connectors/connectors-native-recurrence.md).
+* Die Logik-App, in der Sie den Service Bus-Namespace und die Messagingentität verwenden. Wenn Sie Ihren Workflow mit einem Service Bus-Trigger beginnen möchten, [erstellen Sie eine leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Um eine Service Bus-Aktion in Ihrem Workflow zu verwenden, starten Sie Ihre Logik-App mit einem anderen Trigger, z. B. dem [Wiederholungstrigger](../connectors/connectors-native-recurrence.md).
 
 <a name="permissions-connection-string"></a>
 

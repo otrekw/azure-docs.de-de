@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2acf5178e7d1cfdf907146d733150a48e9696a5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d47d93c7e1456cbd589aec34c2840a4b8257c8eb
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712350"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109848157"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-Fulfillment-APIs (Version 2) im kommerziellen Marketplace
 
@@ -945,7 +945,7 @@ Der Herausgeber muss einen Webhook im SaaS-Dienst implementieren, um den Status 
   "quantity": " 20",
   "timeStamp": "2019-04-15T20:17:31.7350641Z",
   "action": "Reinstate",
-  "status": "In Progress"
+  "status": "InProgress"
 }
 ```
 
