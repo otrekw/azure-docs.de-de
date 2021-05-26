@@ -6,12 +6,12 @@ ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: cf655885e01fe6bca99a82c82d6bbbc4c1a080b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c20a8307fc61e180b378fee034e086a5f54ba03f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632430"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089846"
 ---
 # <a name="tutorial-use-azure-quickstart-templates-for-azure-resource-manager-bicep-development"></a>Tutorial: Verwenden von Schnellstartvorlagen für die Azure Resource Manager-Bicep-Entwicklung
 
@@ -39,7 +39,7 @@ Derzeit bieten die Azure-Schnellstartvorlagen nur JSON-Vorlagen. Es gibt Tools, 
 
 1. Öffnen Sie [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
 1. Geben Sie _Linux-Web-App bereitstellen_ in die **Suche** ein.
-1. Wählen Sie die Kachel mit dem Titel **Deploy a basic Linux web app** (Grundlegende Linux-Web-App bereitstellen) aus. Hier ist der [direkte Link](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/), falls Sie sie nicht finden können.
+1. Wählen Sie die Kachel mit dem Titel **Deploy a basic Linux web app** (Grundlegende Linux-Web-App bereitstellen) aus. Hier ist der [direkte Link](https://azure.microsoft.com/resources/templates/webapp-basic-linux/), falls Sie sie nicht finden können.
 1. Wählen Sie **Auf GitHub suchen** aus.
 1. Wählen Sie _azuredeploy.json_ aus. Dies ist die Vorlage, die Sie verwenden können.
 1. Wählen Sie **Raw** aus, und erstellen Sie dann eine Kopie der URL.

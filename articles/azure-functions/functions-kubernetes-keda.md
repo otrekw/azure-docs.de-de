@@ -1,16 +1,16 @@
 ---
 title: Azure Functions in Kubernetes mit KEDA
 description: Erfahren Sie, wie Sie Azure Functions in Kubernetes mithilfe von KEDA (Kubernetes-based Event Driven Autoscaling, [Kubernetes-basierte ereignisgesteuerte automatische Skalierung]) in der Cloud oder lokal ausführen.
-author: jeffhollan
+author: eamonoreilly
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.author: jehollan
-ms.openlocfilehash: 1eac5a24ae577d712a7dccc7514eb4b18ade232a
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.author: eamono
+ms.openlocfilehash: a1b7113c8d63163023baffa0abeb7d5cf7de7a6b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485259"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481431"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions in Kubernetes mit KEDA
 
