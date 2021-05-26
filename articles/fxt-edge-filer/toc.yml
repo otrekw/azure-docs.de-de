@@ -34,5 +34,9 @@
       href: fxt-specs.md
     - name: Zusätzliche Dokumentation
       href: fxt-additional-doc.md
+    - name: Unterstützte Verschlüsselungen
+      href: fxt-supported-ciphers.md
+    - name: Netzwerkports
+      href: fxt-port-list.md
     - name: Öffnen eines Supporttickets
       href: fxt-support-ticket.md

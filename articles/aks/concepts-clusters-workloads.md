@@ -4,12 +4,12 @@ description: Lernen Sie die grundlegenden Cluster- und Workloadkomponenten von K
 services: container-service
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 5e505ed44d221b20178ea5ffb1d9125fb2bddd4c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: b8a342730a6f37a5498e59e883b0f77b8bfabbb2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105934"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372428"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -72,10 +72,9 @@ Zum Ausführen Ihrer Anwendungen und der unterstützenden Dienste benötigen Sie
 
 | Komponente | BESCHREIBUNG |  
 | ----------------- | ------------- |  
-| `kubelet`                                                                                 | Der Kubernetes-Agent, der die Orchestrierungsanforderungen der Steuerungsebene und die Planung der Ausführung der angeforderten Container verarbeitet.                                                        |  
-| *kube-proxy* | Verarbeitet virtuelle Netzwerkfunktionen auf jedem Knoten. Der Proxy leitet den Netzwerkdatenverkehr weiter und verwaltet die IP-Adressen für Dienste und Pods.                                      |  
-| *Containerruntime*                                                                            | Ermöglicht containerisierten Anwendungen die Ausführung von und Interaktion mit zusätzlichen Ressourcen, z. B. dem virtuellen Netzwerk und Speicher. AKS-Cluster, die Knotenpools mit Kubernetes-Version 1.19 und höher verwenden, nutzen `containerd` als Containerruntime. AKS-Cluster, die Knotenpools mit älteren Kubernetes-Versionen als 1.19 verwenden, nutzen [Moby](https://mobyproject.org/) (Upstream-Docker) als Containerruntime.                                                                                    |  
-
+| `kubelet` | Der Kubernetes-Agent, der die Orchestrierungsanforderungen der Steuerungsebene und die Planung der Ausführung der angeforderten Container verarbeitet. |  
+| *kube-proxy* | Verarbeitet virtuelle Netzwerkfunktionen auf jedem Knoten. Der Proxy leitet den Netzwerkdatenverkehr weiter und verwaltet die IP-Adressen für Dienste und Pods. |  
+| *Containerruntime* | Ermöglicht containerisierten Anwendungen die Ausführung von und Interaktion mit zusätzlichen Ressourcen, z. B. dem virtuellen Netzwerk und Speicher. AKS-Cluster, die Kubernetes Version 1.19 und höher für Linux-Knotenpools verwenden, nutzen `containerd` als Containerruntime. Ab Kubernetes Version 1.20 für Windows-Knotenpools kann `containerd` in der Vorschauversion für die Containerruntime verwendet werden, auch wenn weiterhin Docker als Standardcontainerruntime verwendet wird. AKS-Cluster, die frühere Versionen von Kubernetes für Knotenpools verwenden, verwenden Docker als Containerruntime. |  
 
 ![Virtuelle Azure-Computer und unterstützende Ressourcen für einen Kubernetes-Knoten](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
@@ -83,7 +82,7 @@ Die Größe der Azure-VMs für Ihre Knoten definiert die CPUs, den Arbeitsspeich
 
 In AKS basiert das VM-Image für die Knoten in Ihrem Cluster auf Ubuntu Linux oder Windows Server 2019. Wenn Sie einen AKS-Cluster erstellen oder die Anzahl von Knoten aufskalieren, erstellt und konfiguriert die Azure-Plattform automatisch die angeforderte Anzahl von VMs. Agent-Knoten werden als Standard-VMs in Rechnung gestellt, sodass alle etwaigen Rabatte für VM-Größen (einschließlich [Azure-Reservierungen][reservation-discounts]) automatisch angewendet werden.
 
-Stellen Sie Ihren eigenen Kubernetes-Cluster mit [aks-engine][aks-engine] bereit, wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime verwenden oder andere benutzerdefinierte Pakete einschließen. Die `aks-engine`-Upstreamreleases bieten Funktionen und Konfigurationsoptionen vor der Unterstützung in AKS-Clustern. Wenn Sie also eine andere Containerruntime als `containerd` oder [Moby](https://mobyproject.org/) verwenden möchten, können Sie `aks-engine` ausführen, um einen Kubernetes-Cluster zu konfigurieren und bereitzustellen, der Ihre aktuellen Anforderungen erfüllt.
+Stellen Sie Ihren eigenen Kubernetes-Cluster mit [aks-engine][aks-engine] bereit, wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime verwenden oder andere benutzerdefinierte Pakete einschließen. Die `aks-engine`-Upstreamreleases bieten Funktionen und Konfigurationsoptionen vor der Unterstützung in AKS-Clustern. Wenn Sie also eine andere Containerruntime als `containerd` oder Docker verwenden möchten, können Sie `aks-engine` ausführen, um einen Kubernetes-Cluster zu konfigurieren und bereitzustellen, der Ihre aktuellen Anforderungen erfüllt.
 
 ### <a name="resource-reservations"></a>Ressourcenreservierungen
 

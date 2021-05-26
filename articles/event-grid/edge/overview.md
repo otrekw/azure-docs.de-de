@@ -2,13 +2,14 @@
 title: 'Ereignisgesteuerte Architekturen im Edgebereich: Azure Event Grid unter IoT Edge'
 description: Verwenden Sie Azure Event Grid als Modul unter IoT Edge, um Ereignisse zwischen Modulen, Edgegeräten und der Cloud weiterzuleiten.
 ms.topic: overview
-ms.date: 07/08/2020
-ms.openlocfilehash: 82a68f6ab32d8ad18c3af506c810b01d12cf794d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.subservice: iot-edge
+ms.openlocfilehash: 945c8a9c7c25242fbc155fce4ce0c2b4782a41a3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171515"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367777"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Was ist Azure Event Grid unter Azure IoT Edge?
 Mit Event Grid unter IoT Edge stehen die Leistung und Flexibilität von Azure Event Grid auch im Edgebereich zur Verfügung. Erstellen Sie Themen, veröffentlichen Sie Ereignisse, und abonnieren Sie mehrere Ziele – unabhängig davon, ob es sich um Module auf demselben Gerät, andere Edgegeräte oder Dienste in der Cloud handelt.

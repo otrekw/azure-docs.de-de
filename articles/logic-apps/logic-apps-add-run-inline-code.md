@@ -5,20 +5,20 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 05/25/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 139c8336d4f40bc12cd942f27b5726a555f58605
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98179604"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372962"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode in Azure Logic Apps
 
-Wenn Sie einen Codeausschnitt in Ihrer Logik-App ausführen möchten, können Sie die integrierte Aktion Inlinecode im Workflow Ihrer Logik-App hinzufügen. Diese Aktion ist auf die Ausführung von Code im folgenden Szenario ausgelegt:
+Wenn Sie einen Workflow in Ihrer Logik-App ausführen möchten, können Sie die integrierte Inlinecode-Aktion im Workflow Ihrer Logik-App hinzufügen. Diese Aktion ist auf die Ausführung von Code im folgenden Szenario ausgelegt:
 
-* Ausführung in JavaScript. Weitere Sprachen in Kürze verfügbar.
+* Ausführung in JavaScript. Weitere Sprachen befinden sich in der Entwicklung.
 
 * Ausführung wird in höchstens fünf Sekunden abgeschlossen.
 
@@ -26,7 +26,9 @@ Wenn Sie einen Codeausschnitt in Ihrer Logik-App ausführen möchten, können Si
 
 * Erfordert nicht die Verwendung von [**Variables**-Aktionen](../logic-apps/logic-apps-create-variables-store-values.md), die noch nicht unterstützt werden.
 
-* Verwendung von Node.js-Version 8.11.1. Weitere Informationen finden Sie unter [Integrierte Standardobjekte](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects).
+* Verwendet Node.js Version 8.11.1 für [Logik-Apps basierend auf mehreren Mandanten](logic-apps-overview.md) oder [Node.js Versionen 10.x.x, 11.x.x oder 12.x.x](https://nodejs.org/en/download/releases/) für [Logik-Apps basierend auf einem einzelnen Mandanten](single-tenant-overview-compare.md).
+
+  Weitere Informationen finden Sie unter [Integrierte Standardobjekte](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects).
 
   > [!NOTE]
   > Die `require()`-Funktion wird von der Inlinecode-Aktion zur Ausführung von JavaScript nicht unterstützt.
@@ -39,49 +41,38 @@ In diesem Artikel wird die Beispiel-Logik-App ausgelöst, wenn eine neue E-Mail 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Die Logik-App, in der der Codeausschnitt hinzugefügt werden soll, einschließlich eines Triggers. Wenn Sie über keine Logik-App verfügen, lesen Sie den Artikel [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Der Logik-App-Workflow, in welchem der Codeausschnitt hinzugefügt werden soll, einschließlich eines Triggers. Das Beispiel in diesem Thema verwendet den Office 365 Outlook-Trigger mit dem Namen **Wenn eine neue E-Mail empfangen wird**.
 
-   Das Beispiel in diesem Thema verwendet den Office 365 Outlook-Trigger mit dem Namen **Wenn eine neue E-Mail empfangen wird**.
+  Wenn Sie nicht über eine Logik-App verfügen, lesen Sie die folgende Dokumentation:
 
-* Ein mit Ihrer Logik-App verknüpftes [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
+  * Mehrere Mandanten: [Schnellstart: Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+  * Einzelmandant: [Erstellen eines Einzelmandanten auf Logik-App-Workflows](create-single-tenant-workflows-azure-portal.md)
 
-  * Achten Sie darauf, dass Sie ein Integrationskonto verwenden, das für Ihren Anwendungsfall oder Ihr Szenario geeignet ist.
+* Je nachdem, ob Ihre Logik-App auf mehreren Mandanten oder einem Einzelmandate basiert, lesen Sie die folgenden Informationen.
 
-    Beispielsweise gilt für Integrationskonten im [Free-Tarif](../logic-apps/logic-apps-pricing.md#integration-accounts), dass sie für explorative Szenarien und Workloads, nicht für Produktionsszenarien vorgesehen sind, in Nutzung und Durchsatz beschränkt sind und von einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) nicht unterstützt werden. Andere Tarife verursachen Kosten, beinhalten jedoch SLA-Unterstützung, bieten mehr Durchsatz und haben höhere Grenzwerte. Weitere Informationen finden Sie hier: Integrationskonto-[Tarife](../logic-apps/logic-apps-pricing.md#integration-accounts), -[Preise](https://azure.microsoft.com/pricing/details/logic-apps/) und -[Grenzwerte](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
+  * Version mit mehreren Mandanten: Erfordert Node.js Version 8.11.1. Außerdem benötigen Sie ein leeres [Integrationskonto,](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) das mit Ihrer Logik-App verknüpft ist. Achten Sie darauf, dass Sie ein Integrationskonto verwenden, das für Ihren Anwendungsfall oder Ihr Szenario geeignet ist.
 
-   * Wenn Sie kein Integrationskonto verwenden möchten, können Sie versuchen, [Azure Logic Apps Vorschau](logic-apps-overview-preview.md) zu verwenden, und eine Logik-App aus dem Ressourcentyp **Logik-App (Vorschau)** erstellen.
+    Beispielsweise gilt für Integrationskonten im [Free-Tarif](../logic-apps/logic-apps-pricing.md#integration-accounts), dass sie für explorative Szenarien und Workloads, nicht für Produktionsszenarien vorgesehen sind, in Nutzung und Durchsatz beschränkt sind und von einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) nicht unterstützt werden.
 
-     In Azure Logic Apps Vorschau heißt **Inlinecode** jetzt **Inlinecodevorgänge**. Die folgenden Unterschiede gelten ebenfalls:
+    Andere Integrationskonten verursachen Kosten, beinhalten jedoch SLA-Unterstützung, bieten mehr Durchsatz und haben höhere Grenzwerte. Weitere Informationen finden Sie hier: Integrationskonto-[Tarife](../logic-apps/logic-apps-pricing.md#integration-accounts), -[Preise](https://azure.microsoft.com/pricing/details/logic-apps/) und -[Grenzwerte](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-     * **JavaScript-Code ausführen** heißt jetzt **Inline-JavaScript ausführen**.
-
-     * Unter macOS oder Linux sind Aktionen von Inlinecodevorgängen derzeit nicht verfügbar, wenn Sie die Azure Logic Apps-Erweiterung (Vorschau) in Visual Studio Code verwenden.
-
-     * Die Grenzwerte für Aktionen in Inlinecodevorgängen wurden [aktualisiert](logic-apps-overview-preview.md#inline-code-limits).
-
-     Sie können mit beiden Optionen beginnen:
-
-     * Erstellen Sie die Logik-App aus dem **Ressourcentyp** Logik-App (Vorschau)[ mithilfe des Azure-Portals](create-stateful-stateless-workflows-azure-portal.md).
-
-     * Erstellen Sie ein Projekt für die Logik-App [ mithilfe von Visual Studio Code und der Erweiterung Azure Logic Apps (Vorschau)](create-stateful-stateless-workflows-visual-studio-code.md).
+  * Einzelmandant: Erfordert [Node.js Versionen 10.x.x, 11.x.x oder 12.x.x.](https://nodejs.org/en/download/releases/) Sie benötigen jedoch kein Integrationskonto, aber die Inlinecodeaktion wird in **Inlinecodevorgänge** umbenannt und weist [aktualisierte Grenzwerte auf](logic-apps-limits-and-config.md).
 
 ## <a name="add-inline-code"></a>Inlinecode hinzufügen
 
 1. Öffnen Sie, falls noch nicht geschehen, Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Designer für Logik-Apps.
 
-1. Fügen Sie im Designer die Aktion „Inlinecode“ im Workflow der Logik-App hinzu.
+1. Wählen Sie in Ihrem Workflow aus, wo die Inlinecodeaktion hinzugefügt werden soll, entweder als neuer Schritt am Ende des Workflows oder zwischen den Schritten.
 
-   * Wenn Sie die Aktion am Ende des Workflows hinzufügen möchten, wählen Sie **Neuer Schritt** aus.
+   Wenn die Aktion zwischen Schritten hinzugefügt werden soll, bewegen Sie den Mauszeiger über den Pfeil, der die betreffenden Schritte verbindet. Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) aus, und klicken Sie auf **Aktion hinzufügen**.
 
-   * Wenn die Aktion zwischen Schritten hinzugefügt werden soll, bewegen Sie den Mauszeiger über den Pfeil, der die betreffenden Schritte verbindet. Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) aus, und klicken Sie auf **Aktion hinzufügen**.
-
-   In diesem Beispiel wird die Aktion Inline Code unter dem Office 365 Outlook-Trigger hinzugefügt.
+   In diesem Beispiel wird die Aktion unter dem Office 365 Outlook-Trigger hinzugefügt.
 
    ![Hinzufügen eines neuen Schritts unter dem Trigger](./media/logic-apps-add-run-inline-code/add-new-step.png)
 
-1. Geben Sie unter **Aktion auswählen** den Text `inline code` in das Suchfeld ein. Wählen Sie in der Aktionenliste die Aktion namens **JavaScript-Code ausführen** aus.
+1. Geben Sie im Aktionssuchfeld `inline code` ein. Wählen Sie in der Aktionenliste die Aktion namens **JavaScript-Code ausführen** aus.
 
    ![Auswählen der Aktion „JavaScript-Code ausführen“](./media/logic-apps-add-run-inline-code/select-inline-code-action.png)
 
@@ -147,7 +138,7 @@ Das `workflowContext`-Objekt weist diese Struktur auf und schließt die untergeo
 
 Diese Tabelle enthält weitere Informationen zu den untergeordneten Eigenschaften:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | BESCHREIBUNG |
 |----------|------|-------|
 | `actions` | Objektsammlung | Ergebnisobjekte von Aktionen, die vor der Ausführung des Codeausschnitts ausgeführt werden. Jedes Objekt verfügt über ein *Schlüssel-Wert*-Paar, bei dem der Schlüssel den Namen einer Aktion angibt und der Wert dem Aufruf der [actions()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#actions) mit `@actions('<action-name>')` entspricht. Als Name der Aktion wird der Aktionsname verwendet, der auch in der zugrunde liegenden Workflowdefinition verwendet wird, wobei Leerzeichen (" ") im Aktionsnamen durch Unterstriche (_) ersetzt werden. Dieses Objekt bietet Zugriff auf Eigenschaftswerte der Aktion aus der aktuellen Ausführung der Workflowinstanz. |
 | `trigger` | Object | Ergebnisobjekt aus dem Trigger, das einem Aufruf der [trigger()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#trigger) entspricht. Dieses Objekt bietet Zugriff auf Eigenschaftswerte des Triggers aus der aktuellen Ausführung der Workflowinstanz. |

@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
 ms.topic: guide
-author: danimir
-ms.author: danil
+author: srdan-bozovic-msft
+ms.author: srbozovi
 ms.reviewer: sstein
-ms.date: 02/04/2019
-ms.openlocfilehash: fdcaabf98d4559ae6ec59a4ca7c1652329217032
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.date: 05/24/2021
+ms.openlocfilehash: 4c9cf08ad0a048c0c37f2c9943e455914ecc21fd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754459"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456904"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure Resource Manager-Vorlagen für Azure SQL-Datenbank und verwaltete SQL-Instanzen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -38,9 +38,9 @@ Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für Azur
 | [Überwachung mit Azure Event Hub](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-auditing-server-policy-to-eventhub) | Mit dieser Vorlage können Sie einen Server mit aktivierter Überwachung bereitstellen, um Überwachungsprotokolle in einen vorhandenen Event Hub zu schreiben. Um Überwachungsereignisse an Event Hubs zu senden, müssen Sie die Überwachungseinstellungen mit `Enabled` `State` konfigurieren und `IsAzureMonitorTargetEnabled` auf `true` festlegen. Konfigurieren Sie außerdem die Diagnoseeinstellungen mit der Protokollkategorie `SQLSecurityAuditEvents` für die `master`-Datenbank (zur Überwachung auf Serverebene). Die Überwachung verfolgt Datenbankereignisse nach und schreibt sie in ein Überwachungsprotokoll, das in Ihrem Azure-Speicherkonto, in Ihrem OMS-Arbeitsbereich oder in Event Hubs platziert werden kann.|
 | [Azure-Web-App mit SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-sql-database) | Dieses Beispiel erstellt eine kostenlose Azure-Web-App und eine Datenbank in Azure SQL-Datenbank auf der Dienstebene „Basic“.|
 | [Azure-Web-App und Redis Cache mit SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | Diese Vorlage erstellt eine Web-App, eine Redis Cache-Instanz und eine Datenbank in der gleichen Ressourcengruppe und erstellt in der Web-App zwei Verbindungszeichenfolgen für die Datenbank und die Redis Cache-Instanz.|
-| [Importieren von Daten aus Blobspeicher mithilfe von ADF V2](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/101-data-factory-v2-blob-to-sql-copy) | Diese Azure Resource Manager-Vorlage erstellt eine Instanz von Azure Data Factory V2, um Daten aus Azure Blob Storage in SQL-Datenbank zu kopieren.|
-| [HDInsight-Cluster mit einer Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Mit dieser Vorlage können Sie einen HDInsight-Cluster, eine logische SQL Server-Instanz, eine Datenbank und zwei Tabellen erstellen. Diese Vorlage wird im Artikel [Verwenden von Apache Sqoop mit Hadoop in HDInsight](../../hdinsight/hadoop/hdinsight-use-sqoop.md) verwendet. |
-| [Azure-Logik-App, die eine gespeicherte SQL-Prozedur gemäß einem Zeitplan ausführt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Mit dieser Vorlage können Sie eine Logik-App erstellen, die eine gespeicherte SQL-Prozedur gemäß einem Zeitplan ausführt. Argumente für die Prozedur können bei Bedarf im Textabschnitt der Vorlage platziert werden.|
+| [Importieren von Daten aus Blobspeicher mithilfe von ADF V2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | Diese Azure Resource Manager-Vorlage erstellt eine Instanz von Azure Data Factory V2, um Daten aus Azure Blob Storage in SQL-Datenbank zu kopieren.|
+| [HDInsight-Cluster mit einer Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-linux-with-sql-database) | Mit dieser Vorlage können Sie einen HDInsight-Cluster, eine logische SQL Server-Instanz, eine Datenbank und zwei Tabellen erstellen. Diese Vorlage wird im Artikel [Verwenden von Apache Sqoop mit Hadoop in HDInsight](../../hdinsight/hadoop/hdinsight-use-sqoop.md) verwendet. |
+| [Azure-Logik-App, die eine gespeicherte SQL-Prozedur gemäß einem Zeitplan ausführt](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/logic-app-sql-proc) | Mit dieser Vorlage können Sie eine Logik-App erstellen, die eine gespeicherte SQL-Prozedur gemäß einem Zeitplan ausführt. Argumente für die Prozedur können bei Bedarf im Textabschnitt der Vorlage platziert werden.|
 
 ## <a name="azure-sql-managed-instance"></a>[Verwaltete Azure SQL-Datenbank-Instanz](#tab/managed-instance)
 

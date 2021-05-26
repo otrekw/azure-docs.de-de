@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: 34993ad3d3d0494f89bd264a8b7194f52129ad7c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1b66fcd8f4810e55de49bbc6fd085a60a64812f
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555056"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109815016"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>Schnellstart: Erstellen eines Private Link-Diensts mithilfe einer ARM-Vorlage
 
@@ -25,7 +25,7 @@ Diese Schnellstartanleitung steht auch für das [Azure-Portal](create-private-li
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fprivatelink-service%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +37,7 @@ Diese Vorlage erstellt einen Private Link-Dienst.
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-privatelink-service/).
 
-:::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/privatelink-service/azuredeploy.json":::
 
 In der Vorlage sind mehrere Azure-Ressourcen definiert:
 
@@ -56,7 +56,7 @@ So stellen Sie die ARM-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Die Vorlage erstellt einen virtuellen Computer, einen Standardlastenausgleich, einen Private Link-Dienst, einen privaten Endpunkt, ein Netzwerk und einen virtuellen Computer zur Überprüfung.
 
-   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fprivatelink-service%2Fazuredeploy.json)
 
 2. Wählen Sie Ihre Ressourcengruppe aus, oder erstellen Sie sie.
 3. Geben Sie den Administratorbenutzernamen für den virtuellen Computer und das zugehörige Kennwort ein.
@@ -82,7 +82,7 @@ Stellen Sie wie folgt über das Internet eine Verbindung mit dem virtuellen Comp
     a. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
 
     b. Geben Sie den Benutzernamen und das Kennwort an, die Sie beim Erstellen des virtuellen Computers angegeben haben.
-    
+
     > [!NOTE]
     > Unter Umständen müssen Sie **Weitere Optionen** > **Anderes Konto verwenden** auswählen, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 04/27/2021
 ms.topic: how-to
 ms.service: azure-maps
-ms.openlocfilehash: a2434494a769fb9a4695e698b3d9215dffc18974
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 262c6cb92f9c7327f13e357298242e281358253e
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326865"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845832"
 ---
 # <a name="create-your-azure-maps-account-using-an-arm-template"></a>Erstellen eines Azure Maps-Kontos über eine ARM-Vorlage
 
@@ -21,7 +21,7 @@ Sie können mithilfe einer Azure Resource Manager-Vorlage (ARM) ein Azure Maps-K
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-maps-create%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.maps%2Fmaps-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +33,7 @@ Führen Sie für diesen Artikel die folgenden Schritte aus:
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-maps-create/).
 
-:::code language="json" source="~/quickstart-templates/101-maps-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.maps/maps-create/azuredeploy.json":::
 
 Die Azure Maps-Kontoressource ist in dieser Vorlage definiert:
 
@@ -43,7 +43,7 @@ Die Azure Maps-Kontoressource ist in dieser Vorlage definiert:
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt ein Azure Maps-Konto.
 
-    [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-maps-create%2Fazuredeploy.json)
+    [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.maps%2Fmaps-create%2Fazuredeploy.json)
 
 2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
@@ -57,7 +57,7 @@ Die Azure Maps-Kontoressource ist in dieser Vorlage definiert:
     * **Kontoname:** Geben Sie einen Namen für Ihr Azure Maps-Konto ein, der global eindeutig sein muss.
     * **Tarif:** Wählen Sie einen geeigneten Tarif aus, der Standardwert für die Vorlage ist „S0“.
 
-3. Klicken Sie auf **Überprüfen und erstellen**. 
+3. Klicken Sie auf **Überprüfen und erstellen**.
 4. Bestätigen Sie Ihre Einstellungen auf der Seite „Überprüfen“, und klicken Sie auf **Erstellen**. Nach der erfolgreichen Bereitstellung Ihres Azure Maps-Kontos erhalten Sie eine Benachrichtigung:
 
     ![ARM-Vorlage, Benachrichtigung zur Bereitstellung im Portal](./media/how-to-create-template/resource-manager-template-portal-deployment-notification.png)

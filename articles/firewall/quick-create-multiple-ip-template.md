@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 33d110f327a381241fd9dbf55996a6e3f9fd3a43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a894f8760ed3012b8bd46cc73eef1935850512e6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92057976"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094778"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>Schnellstart: Erstellen einer Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen – ARM-Vorlage
 
@@ -25,7 +25,7 @@ Weitere Informationen zu Azure Firewall mit mehreren öffentlichen IP-Adressen f
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffw-docs-qs%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +37,7 @@ Mit dieser Vorlage werden eine Azure Firewall-Instanz mit zwei öffentlichen IP
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/fw-docs-qs).
 
-:::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/fw-docs-qs/azuredeploy.json":::
 
 In der Vorlage sind mehrere Azure-Ressourcen definiert:
 
@@ -57,20 +57,20 @@ Stellen Sie die ARM-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Durch die Vorlage werden eine Azure Firewall-Instanz, die Netzwerkinfrastruktur und zwei virtuelle Computer erstellt.
 
-   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffw-docs-qs%2Fazuredeploy.json)
 
 2. Geben Sie im Portal auf der Seite **Erstellen einer Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen** die folgenden Werte ein, oder wählen Sie sie aus:
-   - Abonnement: Wählen Sie aus den vorhandenen Abonnements aus. 
+   - Abonnement: Wählen Sie aus den vorhandenen Abonnements aus.
    - Ressourcengruppe:  Wählen Sie aus den vorhandenen Ressourcengruppen aus, oder wählen Sie **Neu erstellen** und anschließend **OK** aus.
    - Standort: Standort auswählen
-   - Administratorbenutzername: Geben Sie den Benutzernamen für das Administratorbenutzerkonto ein. 
+   - Administratorbenutzername: Geben Sie den Benutzernamen für das Administratorbenutzerkonto ein.
    - Administratorkennwort: Geben Sie ein Administratorkennwort oder einen Administratorschlüssel ein.
 
 3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus. Die Bereitstellung kann zehn Minuten oder länger dauern.
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 
-Überprüfen Sie im Azure-Portal die bereitgestellten Ressourcen. Achten Sie auf die öffentlichen IP-Adressen der Firewall.  
+Überprüfen Sie im Azure-Portal die bereitgestellten Ressourcen. Achten Sie auf die öffentlichen IP-Adressen der Firewall.
 
 Verwenden Sie eine Remotedesktopverbindung, um eine Verbindung mit den öffentlichen IP-Adressen der Firewall herzustellen. Anhand von erfolgreichen Verbindungen erkennen Sie Firewall-NAT-Regeln, die die Verbindung mit den Back-End-Servern zulassen.
 

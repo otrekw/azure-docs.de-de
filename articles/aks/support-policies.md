@@ -4,12 +4,12 @@ description: Hier erhalten Sie Informationen zu AKS-Unterstützungsrichtlinien (
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: d30e2aa5ab13c5d7676ca7cb455a2372981e4a46
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 3e4f5e4411eb81ab14d844adf03433e9de0d73b2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714474"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368108"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -92,7 +92,7 @@ Microsoft und die Benutzer teilen sich die Verantwortung für die Kubernetes-Age
   * `Kube-proxy`
   * Netzwerktunnel zur Bereitstellung von Kommunikationspfaden zu Kubernetes-Masterkomponenten
   * `Kubelet`
-  * `Moby` oder `ContainerD`
+  * Docker oder `containerd`
 
 > [!NOTE]
 > Wenn ein Agentknoten nicht funktionstüchtig ist, kann AKS einzelne Komponenten oder den gesamten Agentknoten neu starten. Diese Neustartvorgänge sind automatisiert und ermöglichen eine automatische Wiederherstellung bei häufigen Problemen. Weitere Informationen zu den Mechanismen für die automatische Wiederherstellung finden Sie unter [Automatisches Reparieren von AKS-Knoten](node-auto-repair.md).

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 03/09/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 40ee196f53af040e4099fb344de5488109ce001b
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 1dc0c67a173333f2d2bcabd71d92ec88fa5a467d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812244"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071774"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Verwenden von verwalteten Identitäten in Azure API Management
 
@@ -44,7 +44,7 @@ Erstellen Sie zunächst wie gewohnt eine API Management-Instanz, und aktivieren 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In den folgenden Schritten werden Sie durch das Erstellen einer API Management-Instanz und das Zuweisen einer Identität zur App mithilfe von Azure PowerShell geleitet. 
+In den folgenden Schritten werden Sie durch das Erstellen einer API Management-Instanz und das Zuweisen einer Identität zur App mithilfe von Azure PowerShell geleitet.
 
 1. Installieren Sie bei Bedarf Azure PowerShell anhand der Anweisungen im [Azure PowerShell-Leitfaden](/powershell/azure/install-az-ps). Führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
@@ -298,7 +298,7 @@ Erstellen Sie zunächst wie gewohnt eine API Management-Instanz, und aktivieren 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In den folgenden Schritten werden Sie durch das Erstellen einer API Management-Instanz und das Zuweisen einer Identität zur App mithilfe von Azure PowerShell geleitet. 
+In den folgenden Schritten werden Sie durch das Erstellen einer API Management-Instanz und das Zuweisen einer Identität zur App mithilfe von Azure PowerShell geleitet.
 
 1. Installieren Sie bei Bedarf Azure PowerShell anhand der Anweisungen im [Azure PowerShell-Leitfaden](/powershell/azure/install-az-ps). Führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
@@ -372,7 +372,7 @@ Eine vollständige Azure Resource Manager-Vorlage kann beispielsweise wie folgt 
                 "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
              }
         },
-         "dependsOn": [       
+         "dependsOn": [
           "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
         ]
     }]
@@ -401,7 +401,7 @@ Die `principalId`-Eigenschaft ist ein eindeutiger Bezeichner für die Identität
 ## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>Unterstützte Szenarien mit benutzerseitig zugewiesener verwalteter Identität
 
 ### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault-ua"></a>Abrufen eines benutzerdefinierten TLS/SSL-Zertifikats von Azure Key Vault für die API Management-Instanz
-Sie können eine beliebige benutzerseitig zugewiesene Identität verwenden, um eine Vertrauensstellung zwischen einer API Management-Instanz und Key Vault einzurichten. Diese Vertrauensstellung kann dann verwendet werden, um benutzerdefinierte TLS/SSL-Zertifikate abzurufen, die in Azure Key Vault gespeichert sind. Anschließend können Sie diese Zertifikate den benutzerdefinierten Domänen in der API Management-Instanz zuweisen. 
+Sie können eine beliebige benutzerseitig zugewiesene Identität verwenden, um eine Vertrauensstellung zwischen einer API Management-Instanz und Key Vault einzurichten. Diese Vertrauensstellung kann dann verwendet werden, um benutzerdefinierte TLS/SSL-Zertifikate abzurufen, die in Azure Key Vault gespeichert sind. Anschließend können Sie diese Zertifikate den benutzerdefinierten Domänen in der API Management-Instanz zuweisen.
 
 Berücksichtigen Sie dabei Folgendes:
 
@@ -411,7 +411,7 @@ Berücksichtigen Sie dabei Folgendes:
 > [!Important]
 > Wenn Sie die Objektversion des Zertifikats nicht angeben, ruft API Management innerhalb von vier Stunden, nachdem sie in Key Vault hochgeladen wurde, die neuere Version des Zertifikats ab.
 
-Die vollständige Vorlage finden Sie unter [API Management mit SSL auf Key Vault-Basis und benutzerseitig zugewiesener Identität](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json).
+Die vollständige Vorlage finden Sie unter [API Management mit SSL auf Key Vault-Basis und benutzerseitig zugewiesener Identität](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.apimanagement/api-management-key-vault-create/azuredeploy.json).
 
 In dieser Vorlage stellen Sie Folgendes bereit:
 
@@ -421,7 +421,7 @@ In dieser Vorlage stellen Sie Folgendes bereit:
 
 Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-api-management-key-vault-create%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.apimanagement%2Fapi-management-key-vault-create%2Fazuredeploy.json)
 
 ### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Authentifizieren beim Back-End mithilfe einer benutzerseitig zugewiesenen Identität
 

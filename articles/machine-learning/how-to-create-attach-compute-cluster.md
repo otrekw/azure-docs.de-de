@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 116a0fd6fce399327d8ac5434a383d80e8b351e6
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b397115f6e84b414d9224134b7b6999228064407
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890040"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373243"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Erstellen eines Computeclusters für Azure Machine Learning
 
@@ -34,7 +34,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
-* Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
+* Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](how-to-setup-vs-code.md).
 
 * Wenn Sie das Python SDK verwenden, [richten Sie Ihre Entwicklungsumgebung mit einem Arbeitsbereich ein](how-to-configure-environment.md).  Sobald Ihre Umgebung eingerichtet ist, fügen Sie sie an den Arbeitsbereich in Ihrem Python-Skript an:
 

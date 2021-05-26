@@ -1,54 +1,19 @@
 ---
 title: include file
-description: include file
+description: Datei einfügen
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 11/06/2018
-ms.author: tomfitz
+ms.date: 05/12/2021
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 644669ea27938e385e11f3b1911a23ab30829a95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f9bdcb85e098d0647c66a4b0c0498f90fe56db69
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027567"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110385467"
 ---
-Dieses Feature befindet sich in der Vorschauphase. Sie müssen eine Vorschauerweiterung oder ein Vorschaumodul installieren, um es zu verwenden.
-
-### <a name="install-extension-for-azure-cli"></a>Installieren der Erweiterung für Azure CLI
-
-Für die Azure CLI benötigen Sie die [Event Grid-Erweiterung](/cli/azure/azure-cli-extensions-list).
-
-In [CloudShell](../articles/cloud-shell/quickstart.md):
-
-* Wenn Sie die Erweiterung bereits installiert haben, aktualisieren Sie sie mit `az extension update -n eventgrid`.
-* Wenn Sie die Erweiterung noch nicht installiert haben, installieren Sie sie mit `az extension add -n eventgrid`.
-
-Für eine lokale Installation:
-
-1. [Installieren Sie die Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli). Vergewissern Sie sich mit `az --version`, dass Sie über die aktuelle Version verfügen.
-1. Deinstallieren Sie frühere Versionen der Erweiterung `az extension remove -n eventgrid`.
-1. Installieren Sie die Erweiterung `eventgrid` mit `az extension add -n eventgrid`.
-
-### <a name="install-module-for-powershell"></a>Installieren des Moduls für PowerShell
-
-Für PowerShell benötigen Sie das [AzureRM.EventGrid-Modul](https://www.powershellgallery.com/packages/AzureRM.EventGrid/0.4.1-preview).
-
-In [CloudShell](../articles/cloud-shell/quickstart-powershell.md):
-
-* Installieren Sie das Modul `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
-
-Für eine lokale Installation:
-
-1. Öffnen Sie die PowerShell-Konsole als Administrator.
-1. Installieren Sie das Modul `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
-
-Wenn der `-AllowPrerelease`-Parameter nicht verfügbar ist, führen Sie die folgenden Schritte aus:
-
-1. Ausführen von `Install-Module PowerShellGet -Force`
-1. Ausführen von `Update-Module PowerShellGet`
-1. Schließen Sie die PowerShell-Konsole.
-1. Starten Sie PowerShell als Administrator neu.
-1. Installieren Sie das Modul `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
+> [!IMPORTANT]
+> Event Grid in Kubernetes mit Azure Arc befindet sich derzeit in der öffentlichen Vorschau. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

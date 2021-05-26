@@ -1,23 +1,23 @@
 ---
 title: 'Schnellstart: Herstellen einer Verbindung eines vorhandenen Kubernetes-Clusters mit Azure Arc'
 description: In diesem Schnellstart erfahren Sie, wie Sie eine Verbindung mit einem Kubernetes-Cluster mit Azure Arc-Aktivierung herstellen.
-author: mlearned
-ms.author: mlearned
+author: mgoedtel
+ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
-ms.date: 03/03/2021
+ms.date: 05/25/2021
 ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, Cluster
-ms.openlocfilehash: 040f69adf318cb224a56e7838c8abf8e03a60286
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 6221de7a9cffe5ba4d2e1ed8cc8e47c372b6b578
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783655"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373716"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Schnellstart: Herstellen einer Verbindung eines vorhandenen Kubernetes-Clusters mit Azure Arc 
 
-In diesem Schnellstart werden wir die Vorteile von Kubernetes mit Azure Arc-Aktivierung nutzen und eine Verbindung von einem vorhandenen Kubernetes-Cluster mit Azure Arc herstellen. Eine konzeptionelle Übersicht über das Herstellen einer Verbindung von Clustern mit Azure Arc finden Sie im Artikel [Architektur eines Azure Arc-fähigen Kubernetes-Agents](./conceptual-agent-architecture.md).
+In diesem Schnellstart lernen Sie die Vorteile von Kubernetes mit Azure Arc-Unterstützung kennen und erfahren, wie Sie einen vorhandenen Kubernetes-Cluster mit Azure Arc verbinden. Eine konzeptionelle Übersicht über das Verbinden von Clustern mit Azure Arc finden Sie im Artikel[Architektur eine Azure Arc-fähigen Kubernetes-Agents](./conceptual-agent-architecture.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ In diesem Schnellstart werden wir die Vorteile von Kubernetes mit Azure Arc-Akti
     * Selbst verwalteter Kubernetes-Cluster mithilfe der [Cluster-API](https://cluster-api.sigs.k8s.io/user/quick-start.html)
     * Wenn Sie einen OpenShift-Cluster mit Azure Arc verbinden möchten, müssen Sie den folgenden Befehl nur einmal in Ihrem Cluster ausführen, bevor Sie `az connectedk8s connect` ausführen:
         
-        ```console
+        ```azurecli-interactive
         oc adm policy add-scc-to-user privileged system:serviceaccount:azure-arc:azure-arc-kube-aad-proxy-sa
         ```
 
@@ -44,25 +44,18 @@ In diesem Schnellstart werden wir die Vorteile von Kubernetes mit Azure Arc-Akti
 * [Installieren oder aktualisieren Sie Azure CLI](/cli/azure/install-azure-cli) auf eine Version >= 2.16.0
 * Installieren Sie die Azure CLI-Erweiterung `connectedk8s` in einer Version >= 1.0.0:
   
-  ```azurecli
+  ```azurecli-interactive
   az extension add --name connectedk8s
   ```
-
->[!TIP]
-> Wenn die Erweiterung `connectedk8s` bereits installiert ist, können Sie sie mit dem folgenden Befehl auf die neueste Version aktualisieren: `az extension update --name connectedk8s`
-
 >[!NOTE]
->Die Liste der Regionen, die von Azure Arc-aktiviertem Kubernetes unterstützt werden, finden Sie [hier](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
-
->[!NOTE]
-> Wenn Sie benutzerdefinierte Speicherorte im Cluster verwenden möchten, verwenden Sie die Regionen „USA, Osten“ oder „Europa, Westen“, um Ihren Cluster zu verbinden, da benutzerdefinierte Speicherorte derzeit nur in diesen Regionen verfügbar sind. Alle anderen Azure Arc-aktivierten Kubernetes-Funktionen sind in allen oben aufgeführten Regionen verfügbar.
+> Verwenden Sie für [**benutzerdefinierte Standorte**](./custom-locations.md) in Ihrem Cluster die Regionen „USA, Osten“ oder „Europa, Westen“. Für alle anderen Azure Arc-fähigen Kubernetes-Features können Sie [eine beliebige Region aus dieser Liste auswählen](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
 
 ## <a name="meet-network-requirements"></a>Erfüllen von Netzwerkanforderungen
 
->[!IMPORTANT]
->Azure Arc-Agents müssen über die folgenden Protokolle/Ports/ausgehenden URLs verfügen, um zu funktionieren:
->* TCP an Port 443: `https://:443`
->* TCP an Port 9418: `git://:9418`
+> [!IMPORTANT]
+> Azure Arc-Agents müssen über beide der folgenden Protokolle/Ports/Ausgehende URLs verfügen, um funktionieren zu können:
+> * TCP an Port 443: `https://:443`
+> * TCP an Port 9418: `git://:9418`
   
 | Endpunkt (DNS) | BESCHREIBUNG |  
 | ----------------- | ------------- |  
@@ -72,44 +65,46 @@ In diesem Schnellstart werden wir die Vorteile von Kubernetes mit Azure Arc-Akti
 | `https://mcr.microsoft.com`                                                                            | Erforderlich zum Pullen von Containerimages für Azure Arc-Agents.                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  Erforderlich zum Pullen vom System zugewiesener Zertifikate für verwaltete Dienstidentitäten (MSI).                                                                  |
 
-## <a name="register-providers-for-azure-arc-enabled-kubernetes"></a>Registrieren von Anbietern für Kubernetes mit Azure Arc-Unterstützung
+## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. Registrieren von Anbietern für Kubernetes mit Azure Arc-Unterstützung
 
 1. Geben Sie die folgenden Befehle ein:
-    ```azurecli
+    ```azurecli-interactive
     az provider register --namespace Microsoft.Kubernetes
     az provider register --namespace Microsoft.KubernetesConfiguration
     az provider register --namespace Microsoft.ExtendedLocation
     ```
 2. Überwachen Sie den Registrierungsprozess. Die Registrierung kann bis zu 10 Minuten dauern.
-    ```azurecli
+    ```azurecli-interactive
     az provider show -n Microsoft.Kubernetes -o table
     az provider show -n Microsoft.KubernetesConfiguration -o table
     az provider show -n Microsoft.ExtendedLocation -o table
     ```
 
-## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+## <a name="2-create-a-resource-group"></a>2. Erstellen einer Ressourcengruppe
 
-Erstellen Sie eine Ressourcengruppe:  
+Führen Sie den folgenden Befehl aus:  
 
-```console
-az group create --name AzureArcTest -l EastUS -o table
+```azurecli-interactive
+az group create --name AzureArcTest --location EastUS --output table
 ```
 
-```output
+Ausgabe:
+<pre>
 Location    Name
 ----------  ------------
 eastus      AzureArcTest
+</pre>
+
+## <a name="3-connect-an-existing-kubernetes-cluster"></a>3. Verbinden eines vorhandenen Kubernetes-Cluster
+
+Führen Sie den folgenden Befehl aus:
+```azurecli-interactive
+az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
 ```
 
-## <a name="connect-an-existing-kubernetes-cluster"></a>Herstellen der Verbindung mit einem vorhandenen Kubernetes-Cluster
-
-1. Verbinden Sie Ihren Kubernetes-Cluster mithilfe des folgenden Befehls mit Azure Arc:
-    ```console
-    az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
-    ```
-
-    ```output
-    Helm release deployment succeeded
+Ausgabe:
+<pre>
+Helm release deployment succeeded
 
     {
       "aadProfile": {
@@ -141,7 +136,7 @@ eastus      AzureArcTest
       "totalNodeCount": null,
       "type": "Microsoft.Kubernetes/connectedClusters"
     }
-    ```
+</pre>
 
 > [!TIP]
 > Mit dem obigen Befehl ohne den angegebenen location-Parameter wird die Kubernetes-Ressource mit Azure Arc-Unterstützung am gleichen Standort wie die Ressourcengruppe erstellt. Wenn Sie die Kubernetes-Ressource mit Azure Arc-Unterstützung an einem anderen Standort erstellen möchten, geben Sie bei Ausführung des Befehls `az connectedk8s connect` entweder `--location <region>` oder `-l <region>` an.
@@ -149,24 +144,25 @@ eastus      AzureArcTest
 > [!NOTE]
 > Wenn Sie mithilfe eines Dienstprinzipals bei Azure CLI angemeldet sind, sind [zusätzliche Berechtigungen](troubleshooting.md#enable-custom-locations-using-service-principal) für den Dienstprinzipal erforderlich, um das Feature für benutzerdefinierte Speicherorte zu aktivieren, wenn der Cluster mit Azure Arc verbunden wird.
 
-## <a name="verify-cluster-connection"></a>Überprüfen der Clusterverbindung
+## <a name="4-verify-cluster-connection"></a>4. Überprüfen der Clusterverbindung
 
-Zeigen Sie mit dem folgenden Befehl eine Liste Ihrer verbundenen Cluster an:  
+Führen Sie den folgenden Befehl aus:  
 
-```console
-az connectedk8s list -g AzureArcTest -o table
+```azurecli-interactive
+az connectedk8s list -resource-group AzureArcTest -output table
 ```
 
-```output
+Ausgabe:
+<pre>
 Name           Location    ResourceGroup
 -------------  ----------  ---------------
 AzureArcTest1  eastus      AzureArcTest
-```
+</pre>
 
 > [!NOTE]
 > Nach dem Onboarding des Clusters dauert es ungefähr 5 bis 10 Minuten, bis die Clustermetadaten (Clusterversion, Agent-Version, Anzahl der Knoten usw.) auf der Übersichtsseite der Azure Arc-fähigen Kubernetes-Ressource im Azure-Portal angezeigt wird.
 
-## <a name="connect-using-an-outbound-proxy-server"></a>Herstellen einer Verbindung mit einem ausgehenden Proxyserver
+## <a name="5-connect-using-an-outbound-proxy-server"></a>5. Verbinden mit einem ausgehenden Proxyserver
 
 Wenn sich Ihr Cluster hinter einem ausgehenden Proxyserver befindet, müssen die Azure-Befehlszeilenschnittstelle und die Kubernetes-Agents mit Azure Arc-Aktivierung ihre Anforderungen über den ausgehenden Proxyserver weiterleiten. 
 
@@ -191,27 +187,29 @@ Wenn sich Ihr Cluster hinter einem ausgehenden Proxyserver befindet, müssen die
 
 2. Führen Sie den connect-Befehl mit den angegebenen Proxyparametern aus:
 
-    ```console
-    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
+    ```azurecli-interactive
+    az connectedk8s connect --name <cluster-name> --resource-group <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
     ```
 
 > [!NOTE]
 > * Geben Sie `excludedCIDR` unter `--proxy-skip-range` an, um sicherzustellen, dass die clusterinterne Kommunikation für die Agents nicht unterbrochen wird.
 > * `--proxy-http`, `--proxy-https` und `--proxy-skip-range` werden für die meisten ausgehenden Proxyumgebungen erwartet. `--proxy-cert` ist *nur* erforderlich, wenn Sie vertrauenswürdige Zertifikate, die vom Proxy erwartet werden, in den vertrauenswürdigen Zertifikatspeicher der Agent-Pods einfügen müssen.
 
-## <a name="view-azure-arc-agents-for-kubernetes"></a>Anzeigen von Azure Arc-Agents für Kubernetes
+## <a name="6-view-azure-arc-agents-for-kubernetes"></a>6. Anzeigen von Azure Arc-Agents für Kubernetes
 
 Kubernetes mit Azure Arc-Aktivierung stellt einige Operatoren im Namespace `azure-arc` bereit. 
 
 1. Zeigen Sie diese Bereitstellungen und Pods wie folgt an:
 
-    ```console
-    kubectl -n azure-arc get deployments,pods
+    ```azurecli-interactive
+    kubectl -name azure-arc get deployments,pods
     ```
 
 1. Vergewissern Sie sich, dass alle Pods den Zustand `Running` aufweisen.
 
-    ```output
+    Ausgabe:
+    <pre>
+
     NAME                                        READY      UP-TO-DATE  AVAILABLE  AGE
     deployment.apps/cluster-metadata-operator     1/1             1        1      16h
     deployment.apps/clusteridentityoperator       1/1             1        1      16h
@@ -229,13 +227,13 @@ Kubernetes mit Azure Arc-Aktivierung stellt einige Operatoren im Namespace `azur
     pod/flux-logs-agent-7c489f57f4-mwqqv            2/2     Running  0       16h
     pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
     pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
-    ```
+    </pre>
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+## <a name="7-clean-up-resources"></a>7. Bereinigen von Ressourcen
 
 Mit dem folgenden Befehl können Sie die Kubernetes-Ressource mit Azure Arc-Aktivierung, alle zugeordneten Konfigurationsressourcen *und* alle Agents, die auf dem Cluster ausgeführt werden, mit der Azure CLI löschen:
 
-```azurecli
+```azurecli-interactive
 az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 ```
 
