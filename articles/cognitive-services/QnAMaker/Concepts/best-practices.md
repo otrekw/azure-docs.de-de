@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: b09c36f1dce3c394ff24e3e601d773279a6ac510
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3f12881bd0cb7114f32cab5b7a67d80a73f4fe
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102123308"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372840"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best Practices für eine QnA Maker-Wissensdatenbank
 
@@ -119,8 +119,8 @@ Mit [Metadaten](../How-To/edit-knowledge-base.md) kann einer Clientanwendung mit
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 Für die englische Sprache werden Synonyme zwar teilweise unterstützt, aber Sie sollten Wortvarianten über die [Alterations-API](/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme werden auf QnA Maker-Dienstebene hinzugefügt und **für alle Wissensdatenbanken des Diensts gemeinsam verwendet**.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
-Für die englische Sprache werden Synonyme zwar teilweise unterstützt, aber Sie sollten Wortvarianten über die [Alterations-API](/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme in QnA Maker verwaltet (Vorschau) werden **pro Wissensdatenbank hinzugefügt**.
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+Für die englische Sprache werden Synonyme zwar teilweise unterstützt, aber Sie sollten Wortvarianten über die [Alterations-API](/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme in „Benutzerdefinierte Fragen und Antworten“ (Vorschau) werden **pro Wissensdatenbank hinzugefügt**.
 
 |Ursprüngliches Wort|Synonyme|
 |--|--|

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c27ce8087020a43076ee3c4c8a99454a554554c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96353152"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377481"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>Testen Ihrer Wissensdatenbank in QnA Maker
 
@@ -66,7 +66,7 @@ Wählen Sie **Speichern und trainieren** aus, um diese Antwort dauerhaft zu spei
 > [!NOTE]
 > Alle Änderungen an der Wissensdatenbank werden nur gespeichert, wenn Sie auf die Schaltfläche **Speichern und trainieren** klicken.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 1. Greifen Sie auf Ihre Wissensdatenbank zu, indem Sie den Namen auf der Seite **Meine Wissensdatenbanken** auswählen.
 1. Um auf den Einblendbereich Test zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung **Test** aus. 
@@ -94,6 +94,7 @@ Sie überprüfen die Details des Testergebnisses im Bereich „Überprüfen“.
 
 2.  Der Bereich „Überprüfung“ wird angezeigt. Dieser Bereich enthält die Absicht mit der höchsten Bewertung sowie alle identifizierten Entitäten. Das Ergebnis der ausgewählten Äußerung wird im Bereich angezeigt.
 3. In dem Bereich wird der Konfidenzscore der Antwortpassage zusammen mit einem Score der erkannten Antwortspanne angezeigt.
+4. Im Panel wird auch die Quelle der Wissensdatenbank für den Antwortabschnitt angezeigt.
 
 ### <a name="correct-the-top-scoring-answer"></a>Korrigieren der Antwort mit der höchsten Bewertung
 

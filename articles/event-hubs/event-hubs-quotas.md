@@ -2,19 +2,25 @@
 title: Kontingente und Grenzwerte – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Grenzwerte und Kontingente für Azure Event Hubs. Dazu gehören etwa Anzahl der Namespaces pro Abonnement und die Anzahl von Event Hubs pro Namespace.
 ms.topic: article
-ms.date: 03/31/2021
-ms.openlocfilehash: bd80cd5056ef662ba505e04e9af8f2e975b052be
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 05/11/2021
+ms.openlocfilehash: 13d09cf310dc24788e2beb9b74ac1f5dafe86992
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310783"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379079"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Kontingente und Grenzwerte in Azure Event Hubs
+In der folgenden Tabelle finden Sie die Kontingente und Grenzwerte, die für [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gelten. Informationen zu den Preisen von Event Hubs finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-In diesem Abschnitt werden die grundlegenden Kontingente und Einschränkungen in Azure Event Hubs beschrieben.
+## <a name="common-limits-for-all-tiers"></a>Allgemeine Grenzwerte für alle Ebenen
+[!INCLUDE [event-hubs-common-limits](../../includes/event-hubs-common-limits.md)]
 
-[!INCLUDE [event-hubs-limits](../../includes/event-hubs-limits.md)]
+## <a name="basic-vs-standard-vs-premium-vs-dedicated-tiers"></a>Vergleich der Ebenen „Basic“, „Standard“, „Premium“ und „Dedicated“
+[!INCLUDE [event-hubs-tier-limits](../../includes/event-hubs-tier-limits.md)]
+
+[!INCLUDE [event-hubs-tier-features](../../includes/event-hubs-tier-features.md)]
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

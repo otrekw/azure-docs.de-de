@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: 1edd5ffc2578a27a53c7e9a46a4a5f1cf61331ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3718a4255e8b58202c723bccbbfb1aa3459e1ce2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97605058"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372318"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Sprachunterstützung für QnA Maker-Ressourcen und Wissensdatenbanken
 
@@ -25,11 +25,11 @@ Die Sprache für den Dienst ist ausgewählt, wenn Sie die erste Wissensdatenbank
 
 Die Sprache bestimmt die Relevanz der Ergebnisse, die QnA Maker als Antwort auf Benutzerabfragen bereitstellt. Die QnA Maker-Ressource und alle Wissensdatenbanken innerhalb dieser Ressource unterstützen nur eine einzelne Sprache. Diese einzelne Sprache ist erforderlich, um bestmögliche Antwortergebnisse für eine Abfrage zu erzielen.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-In QnA Maker verwaltet haben Sie die Wahl, Spracheinstellungen auf Ebene der einzelnen Wissensdatenbank vorzunehmen. Diese Einstellung kann nur mit der Wissensdatenbank des Diensts aktiviert werden. Nach der Festlegung können Spracheinstellungen für den Dienst nicht mehr geändert werden. 
+In „Benutzerdefinierte Fragen und Antworten“ haben Sie die Möglichkeit, Wissensdatenbanken in verschiedenen Sprachen innerhalb desselben Diensts hinzuzufügen. Nachdem Sie die Spracheinstellung pro Wissensdatenbank aktiviert haben, können Sie diese Einstellung nicht mehr deaktivieren. Sie müssen eine Sprache für jede Wissensdatenbank auswählen, die Sie im Dienst erstellen.
 
-Wenn Sie sich für wissensdatenbankspezifische Spracheinstellungen entscheiden, dürfen Sie Wissensdatenbanken in verschiedenen Sprachen im Dienst selbst erstellen. 
+Durch diese Einstellung sind innerhalb desselben Diensts für Benutzer mehrere Wissensdatenbanken mit einer anderen Spracheinstellung pro Wissensdatenbank flexibel möglich.
 
 ---
 
@@ -45,15 +45,16 @@ Beachten Sie Folgendes:
 * Die Sprache kann für andere Wissensdatenbanken im Dienst nicht geändert werden.
 * Die Sprache wird vom Cognitive Search-Dienst (Bewerter Nr. 1) und dem QnA Maker-Dienst (Bewerter Nr. 2) verwendet, um die beste Antwort auf eine Abfrage zu generieren.
 
-# <a name="qnamaker-managed-preview"></a>[QnA Maker verwaltet (Vorschau)](#tab/v2)
-![Spracheinstellung in QnA Maker verwaltet](../media/language-support/language-setting-managed.png)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+> [!div class="mx-imgBorder"]
+> ![Auswahl einer mehrsprachigen Wissensdatenbank](../media/language-support/language-support-custom-qna.png)
 
-Wenn Sie das **Kontrollkästchen zum Aktivieren der Spracheinstellung pro Wissensdatenbank nicht aktivieren**, beachten Sie Folgendes: 
-* Ein QnA Maker-Dienst und alle seine Wissensdatenbanken unterstützen nur eine Sprache.
+Wenn Sie **das Kontrollkästchen zur Aktivierung von Wissensdatenbanken in mehreren Sprachen** nicht aktivieren, sollten Sie Folgendes beachten: 
+* Ein Textanalyse-Dienst und alle seine Wissensdatenbanken unterstützen nur eine Sprache.
 * Die Sprache wird explizit festgelegt, wenn die erste Wissensdatenbank des Diensts erstellt wird
 * Die Sprache wird durch die Dateien und URLs bestimmt, die beim Erstellen der Wissensdatenbank hinzugefügt werden
 * Die Sprache kann für andere Wissensdatenbanken im Dienst nicht geändert werden
-* Die Sprache wird vom Cognitive Search-Dienst (Bewerter Nr. 1) und dem QnA Maker-Dienst (Bewerter Nr. 2) verwendet, um die beste Antwort auf eine Abfrage zu generieren
+* Die Sprache wird vom Cognitive Search-Dienst (Bewerter 1) und „Benutzerdefinierte Fragen und Antworten“ (Bewerter 2) verwendet, um die beste Antwort auf eine Abfrage zu generieren.
 
 ---
 
@@ -62,12 +63,13 @@ Wenn Sie das **Kontrollkästchen zum Aktivieren der Spracheinstellung pro Wissen
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 Diese Funktion wird in unserer aktuellen allgemein verfügbaren (GA) stabilen Version nicht unterstützt. Probieren Sie QnA Maker verwaltet aus, um diese Funktionalität zu testen. 
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
-* Wenn Sie die erste Wissensdatenbank in Ihrem Dienst erstellen, erhalten Sie die Möglichkeit, die Spracheinstellung pro Wissensdatenbank zu aktivieren. Aktivieren Sie das Kontrollkästchen, um Wissensdatenbanken, die zu verschiedenen Sprachen gehören, in einem Dienst zu erstellen.
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+* Wenn Sie die erste Wissensdatenbank in Ihrem Dienst erstellen, haben Sie die Möglichkeit, mehrere Sprachen pro Dienst zu aktivieren. Aktivieren Sie das Kontrollkästchen, um Wissensdatenbanken, die zu verschiedenen Sprachen gehören, in einem Dienst zu erstellen.
 * Die Spracheinstellungsoption kann für den Dienst nicht mehr geändert werden, sobald die erste Wissensdatenbank erstellt wurde.
-* Wenn Sie für jede Wissensdatenbank spezifische Spracheinstellungen aktivieren, haben Sie anstelle eines Testindexes für den Dienst über einen Testindex pro Wissensdatenbank. 
+* Wenn Sie mehrere Sprachen für die Wissensdatenbank aktivieren, haben Sie statt eines Testindex für den Dienst einen Testindex pro Wissensdatenbank. 
 
-![Spracheinstellung in QnA Maker verwaltet](../media/language-support/language-setting-managed.png)
+> [!div class="mx-imgBorder"]
+> ![Einstellung für eine mehrsprachige Wissensdatenbank](../media/language-support/language-support-custom-qna-chkd.png)
 
 ---
 

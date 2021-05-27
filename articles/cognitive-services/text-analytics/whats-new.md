@@ -8,19 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 05/17/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: f1e509156beea0b3da3539306dc055291cbff0c8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 21f072747c9184fa15fd7e3477c0b4009cd885fc
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314183"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376236"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
 Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu neuen Releases und Funktionen.
+
+## <a name="may-2021"></a>Mai 2021
+
+* Der Zugriff auf [benutzerdefinierte Fragen und Antworten](../qnamaker/custom-question-answering.md) (ehemals QnA Maker) ist jetzt über eine Textanalyse-Ressource möglich. 
+
+### <a name="general-api-updates"></a>Allgemeine API-Updates
+
+* Veröffentlichung der neuen API v3.1-preview.5 mit folgenden Neuerungen: 
+  * Die asynchrone [Analyse-API](how-tos/text-analytics-how-to-call-api.md?tabs=asynchronous) unterstützt jetzt die Standpunktanalyse (SA) und Opinion Mining (OM).
+  * Ein neuer Abfrageparameter, `LoggingOptOut`, ist jetzt für Kunden verfügbar, die die Protokollierung von Eingabetext für Incidentberichte deaktivieren möchten.  Weitere Informationen zu diesem Parameter finden Sie im Artikel zum [Datenschutz](/legal/cognitive-services/text-analytics/data-privacy?context=/azure/cognitive-services/text-analytics/context/context).
+* Die Textanalyse auf Integrität und die asynchronen Analysevorgänge sind jetzt in allen Regionen verfügbar.
 
 ## <a name="march-2021"></a>März 2021
 

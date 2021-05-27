@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.author: egeaney
-ms.openlocfilehash: 19dc0f3a676d5373b28e4b7055050477c426f847
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84f95e4c1d24ee100efbd0572dfe0dc88aca22d3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100524055"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369480"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker-Verschlüsselung für ruhende Daten
 
@@ -28,9 +28,9 @@ Standardmäßig verwendet Ihr Abonnement von Microsoft verwaltete Verschlüsselu
 
 QnA Maker verwendet die CMK-Unterstützung von Azure Search. Konfigurieren Sie einen [CMK in Azure Search mithilfe von Azure Key Vault](../../search/search-security-manage-encryption-keys.md). Diese Azure-Instanz muss dem QnA Maker-Dienst zugeordnet sein, damit sie CMK-fähig ist.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-QnA Maker verwendet die [CMK-Unterstützung von Azure Search](../../search/search-security-manage-encryption-keys.md) und ordnet den bereitgestellten CMK automatisch zu, um die im Azure Search-Index gespeicherten Daten zu verschlüsseln.
+Bei benutzerdefinierten Fragen und Antworten wird die [CMK-Unterstützung von Azure Search](../../search/search-security-manage-encryption-keys.md) verwendet. Der bereitgestellte CMK wird automatisch zugeordnet, um die im Azure Search-Index gespeicherten Daten zu verschlüsseln.
 
 ---
 
@@ -59,17 +59,18 @@ Der QnA Maker-Dienst verwendet CMKs aus dem Azure Search-Dienst. Führen Sie die
 
 4. Wenn Sie fertig sind, starten Sie die Runtime neu. Ihr QnA Maker-Dienst ist nun CMK-fähig.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-1.  Wechseln Sie zur Registerkarte **Verschlüsselung** Ihres von QnA Maker verwalteten Diensts (Vorschau).
+1.  Wechseln Sie zur Registerkarte **Verschlüsselung** Ihres Textanalyse-Diensts mit aktiviertem Feature „Benutzerdefinierte Fragen und Antworten“ (Vorschau).
 2.  Wählen Sie die Option **Kundenseitig verwaltete Schlüssel** aus. Geben Sie die Details Ihrer [kundenseitig verwalteten Schlüssel](../../storage/common/customer-managed-keys-configure-key-vault.md?tabs=portal) ein, und klicken Sie auf **Speichern**.
 
-     :::image type="content" source="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png" alt-text="Von QnA Maker verwaltete (Vorschau) CMK-Einstellung" lightbox="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png":::
-
+> [!div class="mx-imgBorder"]
+> ![CMK für Fragen und Antworten](media/question-answering-cmk.png)
+   
 3.  Bei einer erfolgreichen Speicherung wird der CMK verwendet, um die im Azure Search-Index gespeicherten Daten zu verschlüsseln.
 
 > [!IMPORTANT]
-> Es wird empfohlen, Ihren CMK in einem neuen Azure Cognitive Search-Dienst festzulegen, bevor Wissensdatenbanken erstellt werden. Wenn Sie den CMK in einem QnA Maker-Dienst mit vorhandenen Wissensdatenbanken festlegen, verlieren Sie möglicherweise den Zugriff auf diese Wissensdatenbanken. Weitere Informationen finden Sie in Azure Cognitive Search unter [Arbeiten mit verschlüsselten Inhalten](../../search/search-security-manage-encryption-keys.md#work-with-encrypted-content).
+> Es wird empfohlen, Ihren CMK in einem neuen Azure Cognitive Search-Dienst festzulegen, bevor Wissensdatenbanken erstellt werden. Wenn Sie den CMK in einem Textanalyse-Dienst mit vorhandenen Wissensdatenbanken festlegen, verlieren Sie möglicherweise den Zugriff auf diese Wissensdatenbanken. Weitere Informationen finden Sie in Azure Cognitive Search unter [Arbeiten mit verschlüsselten Inhalten](../../search/search-security-manage-encryption-keys.md#work-with-encrypted-content).
 
 > [!NOTE]
 > Wenn Sie die Möglichkeit haben möchten, von Kunden verwaltete Schlüssel zu verwenden, füllen Sie das [Formular zum Anfordern von kundenseitig verwalteten Schlüsseln für Cognitive Services](https://aka.ms/cogsvc-cmk) aus, und reichen Sie es ein.

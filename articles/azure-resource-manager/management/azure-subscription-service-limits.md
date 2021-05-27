@@ -3,12 +3,12 @@ title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 8aad2f885c39d6f5ecd237a6167363b0efe8cef4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 3feb0c0ac40812ef628281d93d5848c2d60df6eb
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290384"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375842"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -70,8 +70,6 @@ Die folgenden Grenzwerte gelten bei Verwendung des Azure Resource Manager und vo
 
 ## <a name="app-service-limits"></a>App Service-Grenzwerte
 
-Die folgenden App Service-Grenzwerte umfassen Grenzwerte für Web-Apps, Mobile Apps und API-Apps.
-
 [!INCLUDE [azure-websites-limits](../../../includes/azure-websites-limits.md)]
 
 ## <a name="automation-limits"></a>Automatisierungsgrenzwerte
@@ -81,6 +79,10 @@ Die folgenden App Service-Grenzwerte umfassen Grenzwerte für Web-Apps, Mobile A
 ## <a name="azure-app-configuration"></a>Azure App Configuration
 
 [!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
+
+## <a name="azure-api-for-fhir-service-limits"></a>Grenzwerte des Azure Healthcare APIs-Diensts
+
+[!INCLUDE [functions-limits](../../../includes/azure-api-for-fhir-limits.md)]
 
 ## <a name="azure-cache-for-redis-limits"></a>Azure Cache for Redis-Grenzwerte
 
@@ -252,8 +254,7 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 [!INCLUDE [event-grid-limits](../../../includes/event-grid-limits.md)]
 
 ## <a name="event-hubs-limits"></a>Event Hubs-Grenzwerte
-
-[!INCLUDE [azure-servicebus-limits](../../../includes/event-hubs-limits.md)]
+[!INCLUDE [event-hubs-limits](../../../includes/event-hubs-limits.md)]
 
 ## <a name="iot-central-limits"></a>IoT Central-Grenzwerte
 [!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
@@ -363,6 +364,8 @@ Die aktuellen Werte für Azure Purview-Kontingente finden Sie auf der [Seite „
 ## <a name="sql-database-limits"></a>Grenzwerte für SQL-Datenbanken
 
 Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](../../azure-sql/database/resource-limits-vcore-single-databases.md), [Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden](../../azure-sql/database/resource-limits-vcore-elastic-pools.md) und [Übersicht über Ressourcenlimits für Azure SQL Managed Instance](../../azure-sql/managed-instance/resource-limits.md).
+
+Die maximale Anzahl privater Endpunkte pro logischem Azure SQL-Datenbank-Server beträgt 250.
 
 ## <a name="azure-synapse-analytics-limits"></a>Grenzwerte für Azure Synapse Analytics
 

@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 9c7b265118e395dde2b4b5f3959ba397d75ddac5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c27ff08ba3fc75b7f8e7b2053ba5e6949c808fe
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232187"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379479"
 ---
 # <a name="precise-answering"></a>Präzise Antworten
 
-Das in „QnA Maker verwaltet (Vorschau)“ eingeführte Feature „Präzise Antwort“ ermöglicht es Ihnen, für jede Benutzerabfrage eine präzise Kurzantwort von der geeigneten Antwortpassage zu erhalten, die in der Wissensdatenbank vorhanden ist. Dieses Feature verwendet ein Deep Learning-Modell für die Runtime, das die Absicht der Benutzerabfrage versteht und die präzise Kurzantwort aus der Antwortpassage erkennt, wenn eine Kurzantwort als Fakt in der Antwortpassage vorhanden ist. 
+Das in „Benutzerdefinierte Fragen und Antworten“ (Vorschau) eingeführte Feature „Präzise Antwort“ ermöglicht Ihnen, für jede Benutzerabfrage eine präzise Kurzantwort aus der geeigneten Antwortpassage zu erhalten, die in der Wissensdatenbank vorhanden ist. Dieses Feature verwendet ein Deep Learning-Modell für die Runtime, das die Absicht der Benutzerabfrage versteht und die präzise Kurzantwort aus der Antwortpassage erkennt, wenn eine Kurzantwort als Fakt in der Antwortpassage vorhanden ist. 
 
 Dieses Feature ist im Testbereich standardmäßig aktiviert, sodass Sie die für Ihr Szenario bestimmte Funktionalität testen können. Dieses Feature ist sowohl für Contententwickler als auch für Benutzer von großem Vorteil. Jetzt müssen Contententwickler nicht mehr manuell bestimmte QnA-Paare für jeden in der Wissensdatenbank vorhandenen Fakt kuratieren, und der Endbenutzer muss nicht mehr die gesamte vom Dienst zurückgegebene Antwortpassage überprüfen, um den tatsächlichen Fakt zu finden, der die Abfrage des Benutzers beantwortet. Sie können [genaue Antworten über die API zum Generieren von Antworten abrufen](How-To/metadata-generateanswer-usage.md#get-precise-answers-with-generateanswer-api).
 
@@ -28,7 +28,7 @@ Sie können die Option zum **Anzeigen der Kurzantwort** deaktivieren, wenn Sie n
 
 Der Dienst gibt auch die Zuverlässigkeitsbewertung der genauen Antwort als **Bewertung der Antwortspanne** zurück, die Sie überprüfen können, indem Sie die Option **Überprüfen** auswählen, die sich direkt unter der Abfrage im Testbereich befindet.
 
-![Bewertung der verwalteten Antwortspanne](../QnAMaker/media/conversational-context/managed-answer-span-score.png)
+![Bewertung der verwalteten Antwortspanne](../QnAMaker/media/conversational-context/inspect-precise-answer.png)
 
 ## <a name="publishing-a-qna-maker-bot"></a>Veröffentlichen eines QnA Maker-Bots
 

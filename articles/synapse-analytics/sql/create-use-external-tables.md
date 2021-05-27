@@ -1,6 +1,6 @@
 ---
-title: Erstellen und Verwenden externer Tabellen in einem serverlosen SQL-Pool
-description: In diesem Abschnitt erfahren Sie, wie Sie externe Tabellen in einem serverlosen SQL-Pool erstellen und verwenden.
+title: Erstellen und Verwenden externer Tabellen in einem Synapse SQL-Pool
+description: In diesem Abschnitt erfahren Sie, wie Sie externe Tabellen in einem Synapse SQL-Pool erstellen und verwenden.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,22 +9,28 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea98666b38628dcf0284b4fabbf7aa239bf270df
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 69b900d8695b9fa9f237411d75f0c77856f6d0eb
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751831"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378058"
 ---
-# <a name="create-and-use-external-tables-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Erstellen und Verwenden externer Tabellen mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
+# <a name="create-and-use-native-external-tables-using-sql-pools-in-azure-synapse-analytics"></a>Erstellen und Verwenden nativer externer Tabellen mithilfe von SQL-Pools in Azure Synapse Analytics
 
-In diesem Abschnitt erfahren Sie, wie Sie [externe Tabellen](develop-tables-external-tables.md) in einem serverlosen SQL-Pool erstellen und verwenden. Externe Tabellen sind nützlich, wenn Sie den Zugriff auf externe Daten in einem serverlosen SQL-Pool steuern und Tools wie Power BI in Verbindung mit einem serverlosen SQL-Pool verwenden möchten. Externe Tabellen können auf zwei Speichertypen zugreifen:
+In diesem Abschnitt erfahren Sie, wie Sie [native externe Tabellen](develop-tables-external-tables.md) in Synapse SQL-Pools erstellen und verwenden. Im Vergleich zu externen Tabellen mit `TYPE=HADOOP` in der Definition ihrer externen Datenquelle zeigen native externe Tabellen eine bessere Leistung. Dies liegt daran, dass native externe Tabellen nativen Code für den Zugriff auf externe Daten verwenden. 
+
+Externe Tabellen sind nützlich, um den Zugriff auf externe Daten in einem Synapse SQL-Pool zu steuern. Außerdem sind externe Tabellen hilfreich, wenn Sie Tools wie Power BI zusammen mit einem Synapse SQL-Pool einsetzen möchten. Externe Tabellen können auf zwei Speichertypen zugreifen:
 - Öffentlicher Speicher, in dem Benutzer auf öffentliche Speicherdateien zugreifen.
 - Geschützter Speicher, in dem Benutzer mithilfe von SAS-Anmeldeinformationen, Azure AD-Identität oder verwalteter Identität des Synapse-Arbeitsbereichs auf Speicherdateien zugreifen.
 
+> [!NOTE]
+>  In dedizierten SQL-Pools können Sie nur native externe Parquet-Tabellen verwenden. Native externe Parquet-Tabellen befinden sich in den dedizierten SQL-Pools in der eingeschränkten öffentlichen Vorschauphase, weil dieses Feature noch immer nicht in allen Regionen verfügbar ist. Wenden Sie sich an Ihren Microsoft Technical Account Manager/Cloud Solution Architect, wenn Sie der öffentlichen Vorschau beitreten und überprüfen möchten, ob Sie die native externe Parquet-Tabelle in Ihren dedizierten Pools verwenden können. Wenn Sie allgemein verfügbare Funktionen in dedizierten SQL-Pools verwenden möchten oder auf CSV- oder ORC-Dateien zugreifen müssen, nutzen Sie externe Hadoop-Tabellen. Native externe Tabellen sind in serverlosen SQL-Pools allgemein verfügbar.
+> Weitere Informationen zu den Unterschieden zwischen nativen externen Tabellen und externen Hadoop-Tabellen finden Sie unter [Verwenden externer Tabellen mit Synapse SQL](develop-tables-external-tables.md).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Im ersten Schritt erstellen Sie eine Datenbank, in der die Tabellen erstellt werden sollen. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Skript werden die folgenden Objekte erstellt, die in diesem Beispiel verwendet werden:
+Im ersten Schritt erstellen Sie eine Datenbank, in der die Tabellen erstellt werden sollen. Erstellen Sie anschließend die folgenden Objekte, die in diesem Beispiel verwendet werden:
 - DATABASE SCOPED CREDENTIAL (Datenbankweit gültige Anmeldeinformationen) `sqlondemand`, die den Zugriff auf das SAS-geschützte `https://sqlondemandstorage.blob.core.windows.net` Azure-Speicherkonto ermöglichen.
 
     ```sql
@@ -33,7 +39,7 @@ Im ersten Schritt erstellen Sie eine Datenbank, in der die Tabellen erstellt wer
     SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
     ```
 
-- EXTERNAL DATA SOURCE (Externe Datenquelle) `sqlondemanddemo`, die auf das mit dem SAS-Schlüssel geschützte Demospeicherkonto verweist, und EXTERNAL DATA SOURCE `YellowTaxi`, die auf das öffentlich verfügbare Azure-Speicherkonto am Speicherort `https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/` verweist.
+- EXTERNAL DATA SOURCE (Externe Datenquelle) `sqlondemanddemo`, die auf das mit dem SAS-Schlüssel geschützte Demospeicherkonto verweist, und EXTERNAL DATA SOURCE `nyctlc`, die auf das öffentlich verfügbare Azure-Speicherkonto am Speicherort `https://azureopendatastorage.blob.core.windows.net/nyctlc/` verweist.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
@@ -41,8 +47,11 @@ Im ersten Schritt erstellen Sie eine Datenbank, in der die Tabellen erstellt wer
         CREDENTIAL = sqlondemand
     );
     GO
-    CREATE EXTERNAL DATA SOURCE YellowTaxi
-    WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/')
+    CREATE EXTERNAL DATA SOURCE nyctlc
+    WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/')
+    GO
+    CREATE EXTERNAL DATA SOURCE DeltaLakeStorage
+    WITH ( location = 'https://sqlondemandstorage.blob.core.windows.net/delta-lake/' );
     ```
 
 - Dateiformate `QuotedCSVWithHeaderFormat` und `ParquetFormat` zur Beschreibung von CSV- und Parquet-Dateitypen.
@@ -55,11 +64,14 @@ Im ersten Schritt erstellen Sie eine Datenbank, in der die Tabellen erstellt wer
     );
     GO
     CREATE EXTERNAL FILE FORMAT ParquetFormat WITH (  FORMAT_TYPE = PARQUET );
+    GO
+    CREATE EXTERNAL FILE FORMAT DeltaLakeFormat WITH (  FORMAT_TYPE = DELTA );
+    GO
     ```
 
 Die Abfragen in diesem Artikel werden in Ihrer-Beispieldatenbank ausgeführt und verwenden diese Objekte. 
 
-## <a name="create-an-external-table-on-protected-data"></a>Erstellen einer externen Tabelle für geschützte Daten
+## <a name="external-table-on-a-file"></a>Externe Tabelle für eine Datei
 
 Sie können externe Tabellen für den Zugriff auf Daten in einem Azure-Speicherkonto erstellen, das den Zugriff auf Benutzer mit einer Azure AD-Identität oder einem SAS-Schlüssel erlaubt. Externe Tabellen können auf die gleiche Weise wie reguläre externe SQL Server-Tabellen erstellt werden. 
 
@@ -87,9 +99,11 @@ WITH (
 );
 ```
 
-## <a name="create-an-external-table-on-public-data"></a>Erstellen einer externen Tabelle für öffentliche Daten
+Native CSV-Tabellen sind derzeit nur in den serverlosen SQL-Pools verfügbar.
 
-Sie können externe Tabellen erstellen, die Daten aus den in öffentlich verfügbarem Azure-Speicher abgelegten Dateien lesen. Mit diesem [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) wird eine Definition für eine öffentliche externe Datenquelle und ein Parquet-Dateiformat erstellt, die in der folgenden Abfrage verwendet wird:
+## <a name="external-table-on-a-set-of-files"></a>Externe Tabelle für eine Gruppe von Dateien
+
+Sie können externe Tabellen erstellen, die Daten aus einer Gruppe von Dateien im Azure-Speicher lesen:
 
 ```sql
 CREATE EXTERNAL TABLE Taxi (
@@ -103,14 +117,37 @@ CREATE EXTERNAL TABLE Taxi (
      tolls_amount FLOAT,
      total_amount FLOAT
 ) WITH (
-         LOCATION = 'puYear=*/puMonth=*/*.parquet',
-         DATA_SOURCE = YellowTaxi,
+         LOCATION = 'yellow/puYear=*/puMonth=*/*.parquet',
+         DATA_SOURCE = nyctlc,
          FILE_FORMAT = ParquetFormat
 );
 ```
 
+Sie können das Muster angeben, dem die Dateien entsprechen müssen, damit die externe Tabelle auf sie verweisen kann. Das Muster ist nur für Parquet- und CSV-Tabellen erforderlich. Wenn Sie das Delta Lake-Format verwenden, müssen Sie nur einen Stammordner angeben, und die externe Tabelle findet das Muster automatisch.
+
 > [!NOTE]
-> Die Tabelle wird in der Struktur mit partitionierten Ordnern erstellt, die Partitionsentfernung kann jedoch teilweise nicht genutzt werden. Wenn Sie eine bessere Leistung erzielen möchten, indem Sie die Dateien überspringen, die einige Kriterien nicht erfüllen (in diesem Fall ein bestimmtes Jahr oder einen bestimmten Monat), verwenden Sie [Ansichten für externe Daten](create-use-views.md).
+> Die Tabelle wird in der Struktur mit partitionierten Ordnern erstellt, die Partitionsentfernung kann jedoch teilweise nicht genutzt werden. Wenn Sie eine bessere Leistung erzielen möchten, indem Sie die Dateien überspringen, die einige Kriterien nicht erfüllen (in diesem Fall ein bestimmtes Jahr oder einen bestimmten Monat), verwenden Sie [Ansichten für externe Daten](create-use-views.md#partitioned-views).
+
+## <a name="delta-lake-external-table"></a>Externe Delta Lake-Tabelle
+
+Externe Tabellen können für einen Delta Lake-Ordners erstellt werden. Der einzige Unterschied zwischen den externen Tabellen, die für eine [einzelne Datei](#external-table-on-a-file) oder eine [Dateigruppe](#external-table-on-a-set-of-files) erstellt werden, und den im Delta Lake-Format erstellten externen Tabellen besteht darin, dass in der externen Delta Lake-Tabelle auf einen Ordner verwiesen werden muss, der die Delta Lake-Struktur enthält.
+
+> [!div class="mx-imgBorder"]
+>![ECDC COVID-19 Delta Lake-Ordner](./media/shared/covid-delta-lake-studio.png)
+
+Beispiel für eine Tabellendefinition, die für einen Delta Lake-Ordner erstellt wurde:
+
+```sql
+CREATE EXTERNAL TABLE Covid (
+     date_rep date,
+     cases int,
+     geo_id varchar(6)
+) WITH (
+        LOCATION = 'covid', --> the root folder containing the Delta Lake files
+        data_source = DeltaLakeStorage,
+        FILE_FORMAT = DeltaLakeFormat
+);
+```
 
 ## <a name="use-an-external-table"></a>Verwenden einer externen Tabelle
 
@@ -134,6 +171,8 @@ ORDER BY
     [population] DESC;
 ```
 
+Die Leistung dieser Abfrage kann je nach Region variieren. Ihr Arbeitsbereich befindet sich möglicherweise nicht in derselben Region wie die in diesen Beispielen verwendeten Azure-Speicherkonten. Für Produktionsworkloads müssen Sie Ihren Synapse-Arbeitsbereich und Azure-Speicher in derselben Region platzieren.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen dazu, wie die Ergebnisse einer Abfrage im Speicher gespeichert werden, finden Sie im Artikel [Speichern von Abfrageergebnissen im Speicher mithilfe von SQL On-Demand (Vorschauversion) und Azure Synapse Analytics](../sql/create-external-table-as-select.md).
+Informationen dazu, wie die Ergebnisse einer Abfrage im Speicher abgelegt werden, finden Sie im Artikel [Speichern von Abfrageergebnissen im Speicher](../sql/create-external-table-as-select.md).

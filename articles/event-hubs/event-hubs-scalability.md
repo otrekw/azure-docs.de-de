@@ -3,12 +3,12 @@ title: Skalierbarkeit – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zum Skalieren von Azure Event Hubs mithilfe von Partitionen und Durchsatzeinheiten.
 ms.topic: article
 ms.date: 03/16/2021
-ms.openlocfilehash: f258ee2a3b4162dabf7a8e615db82b9b889d628b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acfc300ff7e6bd77c570c68bda50a731df10409c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601276"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367085"
 ---
 # <a name="scaling-with-event-hubs"></a>Skalierung mit Event Hubs
 
@@ -35,6 +35,14 @@ Das Feature **Automatische Vergrößerung** von Event Hubs wird automatisch durc
 Der Event Hubs-Dienst erhöht den Durchsatz, wenn die Last den minimalen Schwellenwert überschreitet, ohne dass Anforderungen mit ServerBusy-Fehlern auftreten. 
 
 Weitere Informationen zum Feature für die automatische Vergrößerung finden Sie unter [Automatisches Skalieren von Durchsatzeinheiten](event-hubs-auto-inflate.md).
+
+## <a name="processing-units"></a>Verarbeitungseinheiten
+
+ [Event Hubs Premium](./event-hubs-premium-overview.md) bietet eine bessere Leistung und bessere Isolation in einer verwalteten mehrinstanzenfähigen PaaS-Umgebung. Die Ressourcen in einem Premium-Tarif werden auf CPU- und Arbeitsspeicherebene isoliert, sodass jede Mandantenworkload isoliert ausgeführt wird. Dieser Ressourcencontainer wird als *Verarbeitungseinheit* (Processing Unit, PU) bezeichnet. Sie können 1, 2, 4, 8 oder 16 Verarbeitungseinheiten für jeden Event Hubs Premium-Namespace erwerben. 
+
+Welche Datenmengen Sie mit einer Verarbeitungseinheit erfassen und streamen können, hängt von verschiedenen Faktoren ab, z. B. von den Producern, den Consumern oder der Rate für die Erfassung und Verarbeitung. Eine Verarbeitungseinheit kann ungefähr eine Kernkapazität von ca. 5 bis 10 MB/s eingehend und 10 bis 20 MB/s ausgehend bieten. Dies setzt voraus, dass genügend Partitionen vorhanden sind, sodass der Speicher keinen Drosselungsfaktor darstellt.  
+
+
 
 ## <a name="partitions"></a>Partitionen
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: e0922d4b32162660e5ede7501eb4a23db519b9b2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4ebdb5d092a64213727bd35d923c335c8e82210b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377162"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479900"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Verwalten von Azure Machine Learning-Ressourcen mit der VS Code-Erweiterung (Vorschau)
 
@@ -37,7 +37,7 @@ Am schnellsten können Sie Ressourcen erstellen, indem Sie die Symbolleiste der 
 1. Wählen Sie in der Aktivitätsleiste das Pluszeichen ( **+** ) aus.
 1. Wählen Sie Ihre Ressource in der Dropdownliste aus.
 1. Konfigurieren Sie die Spezifikationsdatei. Die erforderlichen Informationen richten sich nach der Art der Ressource, die Sie erstellen möchten.
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Alternativ können Sie eine Ressource auch mit der Befehlspalette erstellen:
 
@@ -55,7 +55,7 @@ Versehen Sie eine Ressource wie folgt mit einer Version:
 
 1. Verwenden Sie die vorhandene Spezifikationsdatei, die für die Erstellung der Ressource verwendet wurde, oder befolgen Sie den Prozess zum Erstellen von Ressourcen, um eine neue Spezifikationsdatei zu erstellen.
 1. Inkrementieren Sie die Versionsnummer in der Vorlage.
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Sofern der Name der aktualisierten Ressource dem Namen der vorherigen Version entspricht, werden die Änderungen von Azure Machine Learning übernommen, und es wird eine neue Version erstellt.
 
@@ -67,7 +67,7 @@ Weitere Informationen finden Sie im [Artikel zu Arbeitsbereichen](concept-worksp
 
 1. Klicken Sie in der Azure Machine Learning-Ansicht mit der rechten Maustaste auf Ihren Abonnementknoten, und wählen Sie **Arbeitsbereich erstellen** aus.
 1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Alternativ können Sie auch den Befehl `> Azure ML: Create Workspace` in der Befehlspalette verwenden.
 
@@ -99,7 +99,7 @@ Weitere Informationen finden Sie im [Artikel zu Datenspeichern](concept-data.md#
 1. Klicken Sie mit der rechten Maustaste auf den Knoten **Datenspeicher**, und wählen Sie **Datenspeicher erstellen** aus.
 1. Wählen Sie den Datenspeichertyp aus.
 1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Alternativ können Sie auch den Befehl `> Azure ML: Create Datastore` in der Befehlspalette verwenden.
 
@@ -129,7 +129,7 @@ Weitere Informationen finden Sie im [Artikel zu Datasets](concept-data.md#datase
 1. Erweitern Sie den Arbeitsbereichsknoten, unter dem Sie das Dataset erstellen möchten.
 1. Klicken Sie mit der rechten Maustaste auf den Knoten **Datasets**, und wählen Sie **Dataset erstellen** aus.
 1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Alternativ können Sie auch den Befehl `> Azure ML: Create Dataset` in der Befehlspalette verwenden.
 
@@ -155,7 +155,7 @@ Weitere Informationen finden Sie im [Artikel zu Umgebungen](concept-environments
 1. Erweitern Sie den Arbeitsbereichsknoten, unter dem Sie den Datenspeicher erstellen möchten.
 1. Klicken Sie mit der rechten Maustaste auf den Knoten **Environments** (Umgebungen), und wählen Sie **Create Environment** (Umgebung erstellen) aus.
 1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Alternativ können Sie auch den Befehl `> Azure ML: Create Environment` in der Befehlspalette verwenden.
 
@@ -185,7 +185,7 @@ Verwenden der Ressourcenknoten in der Azure Machine Learning-Ansicht:
 1. Klicken Sie in Ihrem Arbeitsbereich mit der rechten Maustaste auf den Knoten **Experimente**, und wählen Sie **Auftrag erstellen** aus.
 1. Wählen Sie Ihren Auftragstyp aus.
 1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Alternativ können Sie auch den Befehl `> Azure ML: Create Job` in der Befehlspalette verwenden.
 
@@ -234,7 +234,7 @@ Weitere Informationen finden Sie im Artikel über [Compute-Instanzen](concept-co
 1. Erweitern Sie den Knoten **Compute**.
 1. Klicken Sie in Ihrem Arbeitsbereich mit der rechten Maustaste auf den Knoten **Compute-Instanzen**, und wählen Sie dann die Option **Computeressource erstellen** aus.
 1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Alternativ können Sie auch den Befehl `> Azure ML: Create Compute` in der Befehlspalette verwenden.
 
@@ -280,7 +280,7 @@ Weitere Informationen finden Sie unter [Trainieren von Computezielen](concept-co
 1. Erweitern Sie den Knoten **Compute**.
 1. Klicken Sie in Ihrem Arbeitsbereich mit der rechten Maustaste auf den Knoten **Computecluster**, und wählen Sie die Option **Computeressource erstellen** aus.
 1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Alternativ können Sie auch den Befehl `> Azure ML: Create Compute` in der Befehlspalette verwenden.
 
@@ -351,7 +351,7 @@ Weitere Informationen finden Sie im [Artikel zu Modellen](concept-azure-machine-
 1. Erweitern Sie den Arbeitsbereichsknoten.
 1. Klicken Sie in Ihrem Arbeitsbereich mit der rechten Maustaste auf den Knoten **Modelle**, und wählen Sie **Modell erstellen** aus.
 1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Alternativ können Sie auch den Befehl `> Azure ML: Create Model` in der Befehlspalette verwenden.
 
@@ -391,7 +391,7 @@ Weitere Informationen finden Sie unter [Endpunkte](concept-azure-machine-learnin
 1. Klicken Sie in Ihrem Arbeitsbereich mit der rechten Maustaste auf den Knoten **Modelle**, und wählen Sie **Endpunkt erstellen** aus.
 1. Wählen Sie Ihren Endpunkttyp aus.
 1. Eine Spezifikationsdatei wird angezeigt. Konfigurieren Sie die Spezifikationsdatei.
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Alternativ können Sie auch den Befehl `> Azure ML: Create Endpoint` in der Befehlspalette verwenden.
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3de7a322d90f3a6a45a0965da72a1f53d5edc3a2
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 7528d1f29b293e1efadde84fac9fa8d95f8f5076
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751849"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371305"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Erstellen und Verwenden von Ansichten mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ In diesem Abschnitt erfahren Sie, wie Sie Ansichten erstellen und zum Umschließ
 
 Im ersten Schritt erstellen Sie eine Datenbank, in der die Ansicht erstellt werden soll, und Sie initialisieren die zum Authentifizieren beim Azure-Speicher erforderlichen Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Alle Abfragen in diesem Artikel werden in Ihrer Beispieldatenbank ausgeführt.
 
-## <a name="create-a-view"></a>Erstellen einer Ansicht
+## <a name="views-over-external-data"></a>Sichten externer Daten
 
 Ansichten können auf die gleiche Weise wie reguläre SQL Server-Ansichten erstellt werden. Mit der folgenden Abfrage wird eine Ansicht erstellt, die die Datei *population.csv* liest.
 
@@ -57,7 +57,31 @@ WITH (
 
 In der Ansicht wird `EXTERNAL DATA SOURCE` mit einer Stamm-URL Ihres Speichers als `DATA_SOURCE` verwendet und den Dateien ein neuer relativer Dateipfad hinzugefügt.
 
-## <a name="create-a-partitioned-view"></a>Erstellen einer partitionierten Ansicht
+### <a name="delta-lake-views"></a>Delta Lake-Sichten
+
+Wenn Sie die Sichten für den Ordner „Delta Lake“ erstellen, müssen Sie nach der Option `BULK` anstelle des Dateipfads den Speicherort im Stammordner angeben.
+
+> [!div class="mx-imgBorder"]
+>![Delta Lake-Ordner „ECDC COVID-19“](./media/shared/covid-delta-lake-studio.png)
+
+Die `OPENROWSET`-Funktion, die Daten aus dem Delta Lake-Ordner liest, untersucht die Ordnerstruktur und bestimmt automatisch die Dateispeicherorte.
+
+```sql
+create or alter view CovidDeltaLake
+as
+select *
+from openrowset(
+           bulk 'covid',
+           data_source = 'DeltaLakeStorage',
+           format = 'delta'
+    ) with (
+           date_rep date,
+           cases int,
+           geo_id varchar(6)
+           ) as rows
+```
+
+## <a name="partitioned-views"></a>Partitionierte Sichten
 
 Wenn Sie über Dateien verfügen, die in der hierarchischen Ordnerstruktur partitioniert sind, können Sie das Partitionsmuster mithilfe der Platzhalter im Dateipfad beschreiben. Verwenden Sie die Funktion `FILEPATH`, um Teile des Ordnerpfads als Partitionierungsspalten verfügbar zu machen.
 
@@ -74,11 +98,33 @@ FROM
 
 Die partitionierten Ansichten führen die Löschung der Ordnerpartition durch, wenn Sie diese Ansicht mit den Filtern für die Partitionierungsspalten abfragen. Dadurch kann die Leistung Ihrer Abfragen verbessert werden.
 
+### <a name="delta-lake-partitioned-views"></a>Partitionierte Delta Lake-Sichten
+
+Wenn Sie die partitionierten Sichten für Delta Lake-Speicher erstellen, können Sie nur einen Delta Lake-Stammordner angeben und müssen die Spalten für die Partitionierung nicht explizit mit der Funktion `FILEPATH` verfügbar machen:
+
+```sql
+CREATE OR ALTER VIEW YellowTaxiView
+AS SELECT *
+FROM  
+    OPENROWSET(
+        BULK 'yellow',
+        DATA_SOURCE = 'DeltaLakeStorage',
+        FORMAT='DELTA'
+    ) nyc
+```
+
+Die `OPENROWSET`-Funktion untersucht die Struktur des zugrunde liegenden Delta Lake-Ordners, ermittelt automatisch die Spalten für die Partitionierung und macht sie verfügbar. Die Partitionslöschung erfolgt automatisch, wenn Sie in der `WHERE`-Klausel einer Abfrage die Partitionierungsspalte angeben.
+
+Der Ordnername in der `OPENROWSET`-Funktion (`yellow` in diesem Beispiel), der mit dem in der Datenquelle `DeltaLakeStorage` definierten URI `LOCATION` verkettet ist, muss auf den Delta Lake-Stammordner verweisen, der einen Unterordner namens `_delta_log` enthält.
+
+> [!div class="mx-imgBorder"]
+>![Delta Lake-Ordner „Yellow Taxi“](./media/shared/yellow-taxi-delta-lake.png)
+
 ## <a name="use-a-view"></a>Verwenden einer Ansicht
 
 Ansichten können in Ihren Abfragen auf die gleiche Weise verwendet werden wie in SQL Server-Abfragen.
 
-Die folgende Abfrage veranschaulicht die Verwendung der Ansicht *population_csv*, die Sie unter [Erstellen einer Ansicht](#create-a-view) erstellt haben. Sie gibt Länder-/Regionsnamen mit der entsprechenden Bevölkerung im Jahr 2019 in absteigender Reihenfolge zurück.
+Die folgende Abfrage veranschaulicht die Verwendung der Ansicht *population_csv*, die Sie unter [Erstellen einer Ansicht](#views-over-external-data) erstellt haben. Sie gibt Länder-/Regionsnamen mit der entsprechenden Bevölkerung im Jahr 2019 in absteigender Reihenfolge zurück.
 
 > [!NOTE]
 > Ändern Sie die erste Zeile in der Abfrage (d. h. [mydbname]), sodass die von Ihnen erstellte Datenbank verwendet wird.

@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie die Edge-KI-Erweiterung �
 ms.topic: tutorial
 ms.service: azure-video-analyzer
 ms.date: 05/18/2021
-ms.openlocfilehash: 449cd027396f92be0443d7cd4fe6dabc3eb449f6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e06acecfd65686d90afa4727dd611bcfa2877c51
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384107"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465711"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>Tutorial: Analysieren von Livevideos mit der Edge-KI-Erweiterung „Intel OpenVINO™ DL Streamer“ 
 
@@ -75,7 +75,7 @@ Sie können die Flexibilität der verschiedenen Pipelines für Ihren speziellen 
 In diesem Lernprogramm lernen Sie Folgendes:
 
 1. Einrichten Ihrer Entwicklungsumgebung
-1. Bereitstellen der erforderlichen Edge-Module
+1. Bereitstellen der erforderlichen Edgemodule
 1. Erstellen und Bereitstellen der Livepipeline
 1. Interpretieren der Ergebnisse
 1. Bereinigen der Ressourcen
@@ -97,7 +97,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 1. Wählen Sie **avasample-iot-edge-device** aus, wenn Sie zum Auswählen eines IoT Hub-Geräts aufgefordert werden.
 1. Aktualisieren Sie nach ungefähr 30 Sekunden unten links im Fenster den Dienst „Azure IoT Hub“. Das Edge-Gerät zeigt nun die folgenden bereitgestellten Module an:
 
-    * Das Video Analyzer-Edge-Modul mit dem Namen **avaedge**
+    * Das Video Analyzer-Edgemodul mit dem Namen **avaedge**
     * Das Modul **rtspsim**, das einen RTSP-Server simuliert und als Quelle eines Livevideofeeds fungiert 
     * Das Modul **avaextension**. Hierbei handelt es sich um das Modul „Intel OpenVINO DL Streamer“ mit Objekterkennungs- Klassifizierungs- und Verfolgungsmodell, das maschinelles Sehen auf Bilder anwendet und mehrere Klassen von Objekttypen zurückgibt.
 
@@ -114,7 +114,7 @@ Klicken Sie mit der rechten Maustaste auf das Azure Video Analyzer-Gerät, und w
 ![Starten der Überwachung](./media/quickstarts/start-monitoring-iot-hub-events.png) 
 
 ### <a name="run-the-sample-program-to-detect-vehicles-persons-or-bike"></a>Ausführen des Beispielprogramms zum Erkennen von Fahrzeugen/Personen/Fahrrädern
-Wenn Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/azure-video-analyzer/main/pipelines/live/topologies/grpcExtensionOpenVINO/topology.json) für dieses Tutorial in einem Browser öffnen, sehen Sie, dass der Wert von `grpcExtensionAddress` auf `tcp://avaExtension:5001` festgelegt wurde. Im Vergleich zum Tutorial *httpExtensionOpenVINO* sind hier keine Änderung an der URL für den gRPC-Server erforderlich. Stattdessen wird das Modul mithilfe von `extensionConfiguration` in der Vorgangsdatei angewiesen, eine bestimmte Pipeline auszuführen. Ohne Angabe wird für „person_vehicle_bike_detection“ standardmäßig „object_detection“ verwendet. Sie können jedoch auch mit anderen unterstützten Pipelines experimentieren.
+Wenn Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/grpcExtensionOpenVINO/topology.json) für dieses Tutorial in einem Browser öffnen, sehen Sie, dass der Wert von `grpcExtensionAddress` auf `tcp://avaExtension:5001` festgelegt wurde. Im Vergleich zum Tutorial *httpExtensionOpenVINO* sind hier keine Änderung an der URL für den gRPC-Server erforderlich. Stattdessen wird das Modul mithilfe von `extensionConfiguration` in der Vorgangsdatei angewiesen, eine bestimmte Pipeline auszuführen. Ohne Angabe wird für „person_vehicle_bike_detection“ standardmäßig „object_detection“ verwendet. Sie können jedoch auch mit anderen unterstützten Pipelines experimentieren.
 
 1. Bearbeiten Sie die Datei *operations.json*:
     * Ändern Sie den Link zur Livepipelinetopologie:

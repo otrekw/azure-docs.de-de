@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 90ff0a42a9d82fc0bf4f9235e235c774a2d0e75d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: be412f4dd2413cfe5562f895489aed10b9a9a80f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146561"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378682"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -70,10 +70,10 @@ Der Aufrufer muss über die Berechtigung `REFERENCES` für die Anmeldeinformatio
 ## <a name="syntax"></a>Syntax
 
 ```syntaxsql
---OPENROWSET syntax for reading Parquet files
+--OPENROWSET syntax for reading Parquet or Delta Lake (preview) files
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , [DATA_SOURCE = <data source name>, ]
-    FORMAT='PARQUET' }  
+    FORMAT= ['PARQUET' | 'DELTA'] }  
 )  
 [WITH ( {'column_name' 'column_type' }) ]
 [AS] table_alias(column_alias,...n)
@@ -107,6 +107,8 @@ Bei den Eingabedateien mit den Zieldaten für die Abfrage stehen zwei Optionen z
 - 'CSV': Eine beliebige, durch Trennzeichen getrennte Textdatei mit Zeilen-/Spaltentrennzeichen. Als Feldtrennzeichen kann ein beliebiges Zeichen verwendet werden. Für durch Tabstopp getrennte Werte wäre dies beispielsweise: FIELDTERMINATOR = tab.
 
 - 'PARQUET': Binärdatei im Parquet-Format. 
+
+- DELTA: Eine Reihe von Parquet-Dateien, die im Delta Lake-Format (Vorschauversion) organisiert sind 
 
 **'unstructured_data_path'**
 
@@ -152,9 +154,9 @@ Mit der WITH-Klausel können Sie Spalten angeben, die aus Dateien gelesen werden
     > [!TIP]
     > Die WITH-Klausel kann für CSV-Dateien auch weggelassen werden. Datentypen werden automatisch aus Dateiinhalten abgeleitet. Mit dem Argument „HEADER_ROW“ können Sie angeben, dass eine Kopfzeile vorhanden ist. In diesem Fall werden Spaltennamen aus der Kopfzeile gelesen. Ausführliche Informationen finden Sie unter [Automatische Schemaerkennung](#automatic-schema-discovery).
     
-- Geben Sie bei Parquet-Datendateien Spaltennamen an, die den Spaltennamen in den Ursprungsdatendateien entsprechen. Die Spalten werden nach Name gebunden, und es wird die Groß-/Kleinschreibung beachtet. Ohne Angabe der WITH-Klausel werden alle Spalten aus Parquet-Dateien zurückgegeben.
+- Geben Sie bei Parquet- oder Delta Lake-Dateien Spaltennamen an, die den Spaltennamen in den Ursprungsdatendateien entsprechen. Die Spalten werden nach Name gebunden, und die Groß-/Kleinschreibung ist relevant. Ohne Angabe der WITH-Klausel werden alle Spalten aus Parquet-Dateien zurückgegeben.
     > [!IMPORTANT]
-    > Bei Spaltennamen in Parquet-Dateien wird die Groß-/Kleinschreibung beachtet. Wenn Sie einen Spaltennamen angeben, dessen Groß-/Kleinschreibung sich von der Schreibweise in der Parquet-Datei unterscheidet, werden für diese Spalte NULL-Werte zurückgegeben.
+    > Bei Spaltennamen in Parquet- und Delta Lake-Dateien ist die Groß-/Kleinschreibung relevant. Wenn Sie einen Spaltennamen angeben, dessen Groß-/Kleinschreibung sich von der Schreibweise in den Dateien unterscheidet, werden für diese Spalte `NULL`-Werte zurückgegeben.
 
 
 column_name: Der Name für die Ausgabespalte. Wird der Name angegeben, überschreibt er den Spaltennamen in der Quelldatei und den Spaltennamen im JSON-Pfad, sofern vorhanden. Wird „json_path“ nicht angegeben, wird automatisch „$.column_name“ hinzugefügt. Überprüfen Sie das Argument „json_path“ auf das Verhalten.
@@ -261,7 +263,7 @@ Bei CSV-Dateien können Spaltennamen aus der Kopfzeile gelesen werden. Mithilfe 
 
 ### <a name="type-mapping-for-parquet"></a>Typzuordnung für Parquet
 
-Parquet-Dateien enthalten Typbeschreibungen für die einzelnen Spalten. In der folgenden Tabelle wird beschrieben, wie Parquet-Typen den nativen SQL-Typen zugeordnet werden.
+Parquet- und Delta Lake-Dateien enthalten Typbeschreibungen für die einzelnen Spalten. In der folgenden Tabelle wird beschrieben, wie Parquet-Typen den nativen SQL-Typen zugeordnet werden.
 
 | Parquet-Typ | Logischer Parquet-Typ (Anmerkung) | SQL-Datentyp |
 | --- | --- | --- |
@@ -340,6 +342,20 @@ FROM
     ) AS [r]
 ```
 
+### <a name="read-delta-lake-files-without-specifying-schema"></a>Lesen von Delta Lake-Dateien ohne Angabe eines Schemas
+
+Im folgenden Beispiel werden alle Spalten der ersten Zeile aus dem Erhebungsdataset im Delta Lake-Format zurückgegeben, ohne dass die Spaltennamen und Datentypen angegeben werden: 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='DELTA'
+    ) AS [r]
+```
+
 ### <a name="read-specific-columns-from-csv-file"></a>Lesen bestimmter Spalten aus einer CSV-Datei
 
 Im folgenden Beispiel werden nur zwei Spalten mit den Ordinalzahlen 1 und 4 aus den Dateien „population*.csv“ zurückgegeben. Da in den Dateien keine Kopfzeile vorhanden ist, beginnt der Lesevorgang in der ersten Zeile:
@@ -404,4 +420,5 @@ AS [r]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie `OPENROWSET` zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Machen Sie sich mit den [bewährten Methoden](./best-practices-serverless-sql-pool.md) vertraut, um eine optimale Leistung zu erzielen. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.
+Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie `OPENROWSET` zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)-, [DELTA LAKE](query-delta-lake-format.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Machen Sie sich mit den [bewährten Methoden](best-practices-sql-on-demand.md) vertraut, um eine optimale Leistung zu erzielen. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.
+

@@ -1,23 +1,23 @@
 ---
 title: Reservierungsrabatte für Azure App Service
-description: Hier erfahren Sie, wie Reservierungsrabatte auf Azure App Service-Instanzen im Premium V3-Tarif sowie auf gesonderte Stempel angewendet werden.
+description: Hier erfahren Sie, wie Reservierungsrabatte auf Azure App Service-Instanzen im Premium V3- und Premium V2-Tarif sowie auf isolierte Stempel angewendet werden.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 05/13/2021
 ms.author: banders
-ms.openlocfilehash: c599c64ce4b22bbf7bece77602b22fef6629d07c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b6230f86fc33dca290f6d61f923024c9352d8600
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369729"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378506"
 ---
-# <a name="how-reservation-discounts-apply-to-azure-app-service-premium-v3-instances-and-isolated-stamps"></a>Anwendung von Reservierungsrabatten auf Azure App Service-Instanzen im Premium V3-Tarif sowie auf gesonderte Stempel
+# <a name="how-reservation-discounts-apply-to-azure-app-service"></a>Anwenden von Reservierungsrabatten auf Azure App Service
 
-In diesem Artikel erfahren Sie, wie Reservierungsrabatte auf Azure App Service-Instanzen im Premium V3-Tarif sowie auf gesonderte Stempel angewendet werden.
+In diesem Artikel erfahren Sie, wie Rabatte auf Azure App Service-Instanzen im Premium V3- und Premium V2-Tarif sowie auf isolierte Stempel angewendet werden.
 
 ## <a name="how-reservation-discounts-apply-to-premium-v3-instances"></a>Anwendung von Reservierungsrabatten auf Premium V3-Instanzen
 
@@ -38,6 +38,20 @@ Der Rabatt für Azure-Reservierungen wird auf Stundenbasis auf ausgeführte Prem
 2.  In der ersten Stunde wird Instanz 1 für 0,75 Stunden und Instanz 2 für 0,5 Stunden ausgeführt. Die Gesamtnutzung für die erste Stunde beträgt 1,25 Stunden. Ihnen wird der Preis für die nutzungsbasierte Bezahlung für die verbleibenden 0,25 Stunden in Rechnung gestellt.
 3.  In der zweiten und dritten Stunde wurden beide Instanzen jeweils eine Stunde lang ausgeführt. Eine Instanz wird durch die Reservierung abgedeckt, die andere wird zu den Preisen für die nutzungsbasierte Zahlung in Rechnung gestellt.
 4.  In der vierten Stunde wird Instanz 1 für 0,5 Stunden und Instanz 2 für 1 Stunde ausgeführt. Instanz 1 wird vollständig durch die Reservierung abgedeckt. Außerdem sind 0,5 Stunden von Instanz 2 abgedeckt. Ihnen wird der Preis für die nutzungsbasierte Zahlung für die verbleibenden 0,5 Stunden in Rechnung gestellt.
+
+Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](understand-reserved-instance-usage-ea.md).
+
+## <a name="how-reservation-discounts-apply-to-isolated-v2-instances"></a>Anwenden von Reservierungsrabatten auf isolierte V2-Instanzen
+
+Nach dem Erwerb einer reservierten Azure App Service (isoliert)-Instanz im V2-Tarif wird der Reservierungsrabatt automatisch auf App Service-Instanzen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt die Kosten Ihrer isolierten V2-Instanzen.
+
+### <a name="how-the-discount-is-applied-to-azure-app-service"></a>Anwendung des Rabatts auf Azure App Service
+
+Nicht in Anspruch genommener Reservierungsrabatt _geht verloren_. Das heißt, wenn Sie für eine Stunde nicht über die entsprechenden Ressourcen verfügen, verlieren Sie eine Reservierungsmenge für diese Stunde. Sie können ungenutzte reservierte Stunden nicht übertragen. Wenn Sie eine Ressource beenden, wird der Reservierungsrabatt automatisch auf eine andere entsprechende Ressource im angegebenen Reservierungsumfang angewandt. Werden im angegebenen Reservierungsumfang keine entsprechenden Ressourcen gefunden, gehen die reservierten Stunden verloren.
+
+### <a name="reservation-discount-for-isolated-v2-instances"></a>Reservierungsrabatt für isolierte V2-Instanzen
+
+Der Rabatt für Azure-Reservierungen wird auf Stundenbasis auf ausgeführte isolierte  V2-Instanzen angewendet. Die erworbenen Reservierungen werden zur Anwendung des Reservierungsrabatts mit der von den ausgeführten isolierten V2-Instanzen ausgegebenen Nutzung abgeglichen. Bei isolierten V2-Instanzen, die keine volle Stunde lang ausgeführt werden, wird die Reservierung über andere Instanzen ohne Reservierung gefüllt. Dazu zählen auch gleichzeitig ausgeführte Instanzen. Am Ende der Stunde wird die Anwendung der Reservierung für Instanzen aus der Stunde gesperrt. Falls eine Instanz nicht eine ganze Stunde lang ausgeführt wird oder die Reservierungsstunde nicht durch gleichzeitige Instanzen gefüllt werden kann, ist die Reservierung für diese Stunde nicht vollständig ausgelastet.
 
 Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](understand-reserved-instance-usage-ea.md).
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 08/06/2020
+ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 7c92fb7f5de5542af08d1335bea745557a330f0d
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 431e42e422ecbaeb0e404928a505cf90180f6dd7
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107506005"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379335"
 ---
 # <a name="translator-30-translate"></a>Translator 3.0: Translate
 
@@ -35,93 +35,41 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
 
 ### <a name="required-parameters"></a>Erforderliche Parameter
 
-<table width="100%">
-  <th width="20%">Query parameter (Abfrageparameter)</th>
-  <th>BESCHREIBUNG</th>
-  <tr>
-    <td>api-version</td>
-    <td><em>Erforderlicher Parameter</em>.<br/>Die vom Client angeforderte Version der API. Der Wert muss <code>3.0</code> sein.</td>
-  </tr>
-  <tr>
-    <td>zu</td>
-    <td><em>Erforderlicher Parameter</em>.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum <code>translation</code>-Bereich hinzugefügten <a href="./v3-0-languages.md">unterstützten Sprachen</a> als Zielsprache auswählen. Verwenden Sie z.B. <code>to=de</code> für die Übersetzung ins Deutsche.<br/>Durch Wiederholen des Parameters in der Abfragezeichenfolge ist es möglich, in mehrere Sprachen gleichzeitig zu übersetzen. Verwenden Sie z.B. <code>to=de&to=it</code> für die Übersetzung ins Deutsche und Italienische.</td>
-  </tr>
-</table>
+| Query parameter (Abfrageparameter) | BESCHREIBUNG |
+| --- | --- |
+| api-version | _Erforderlicher Parameter_.  <br>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein. |
+| zu  | _Erforderlicher Parameter_.  <br>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `translation`-Bereich hinzugefügten [unterstützten Sprachen](v3-0-languages.md) als Zielsprache auswählen. Verwenden Sie z.B. `to=de` für die Übersetzung ins Deutsche.  <br>Durch Wiederholen des Parameters in der Abfragezeichenfolge ist es möglich, in mehrere Sprachen gleichzeitig zu übersetzen. Verwenden Sie z.B. `to=de&to=it` für die Übersetzung ins Deutsche und Italienische. |
 
 ### <a name="optional-parameters"></a>Optionale Parameter
 
-<table width="100%">
-  <th width="20%">Query parameter (Abfrageparameter)</th>
-  <th>BESCHREIBUNG</th>
-  <tr>
-    <td>from</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die <a href="./v3-0-languages.md">unterstützten Sprachen</a> mithilfe des<code>translation</code>-Bereichs. Wenn kein <code>from</code>-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet. <br/><br/>Sie müssen den Parameter <code>from</code> anstelle der automatischen Erkennung verwenden, wenn Sie die Funktion für ein <a href="/azure/cognitive-services/translator/dynamic-dictionary">dynamisches Wörterbuch</a> verwenden.</td>
-  </tr>  
-  <tr>
-    <td>textType</td>
-    <td><em>Optionaler Parameter</em>.<br/>Definiert, ob es sich bei dem zu übersetzenden Text um Nur-Text oder um HTML-Text handelt. Jede HTML muss ein wohlgeformtes vollständiges Element sein. Mögliche Werte: <code>plain</code> (Standard) oder <code>html</code>.</td>
-  </tr>
-  <tr>
-    <td>category</td>
-    <td><em>Optionaler Parameter</em>.<br/>Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung angibt. Dieser Parameter wird verwendet, um Übersetzungen von einem benutzerdefinierten System zu erhalten, das mit <a href="../customization.md">Custom Translator</a> erstellt wurde. Fügen Sie diesem Parameter die Kategorie-ID Ihrer „Benutzerdefinierter Translator“-<a href="/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">Projektdetails</a> hinzu, um Ihr bereitgestelltes angepasstes System zu verwenden. Der Standardwert ist <code>general</code>.</td>
-  </tr>
-  <tr>
-    <td>profanityAction</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt an, wie Obszönitäten in Übersetzungen behandelt werden. Mögliche Werte sind: <code>NoAction</code> (Standard), <code>Marked</code> oder <code>Deleted</code>. Nähere Informationen zur Handhabung von Obszönitäten finden Sie unter <a href="#handle-profanity">Behandlung von Obszönitäten</a>.</td>
-  </tr>
-  <tr>
-    <td>profanityMarker</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt an, wie Obszönitäten in Übersetzungen markiert werden. Mögliche Werte sind: <code>Asterisk</code> (Standard) oder <code>Tag</code>. Nähere Informationen zur Handhabung von Obszönitäten finden Sie unter <a href="#handle-profanity">Behandlung von Obszönitäten</a>.</td>
-  </tr>
-  <tr>
-    <td>includeAlignment</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt an, ob die Ausrichtungsprojektion des Quelltexts für den übersetzten Text verwendet wird. Mögliche Werte sind: <code>true</code> oder <code>false</code> (Standard). </td>
-  </tr>
-  <tr>
-    <td>includeSentenceLength</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt an, ob Satzgrenzen für den eingegebenen und den übersetzten Text verwendet werden. Mögliche Werte sind: <code>true</code> oder <code>false</code> (Standard).</td>
-  </tr>
-  <tr>
-    <td>suggestedFrom</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt eine Fallbacksprache an, wenn die Sprache des Eingabetexts nicht identifiziert werden kann. Die automatische Spracherkennung wird angewendet, wenn der <code>from</code> Parameter ausgelassen wird. Wenn die Erkennung fehlschlägt, wird die Sprache <code>suggestedFrom</code> angenommen.</td>
-  </tr>
-  <tr>
-    <td>fromScript</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt das Skript des Eingabetexts an.</td>
-  </tr>
-  <tr>
-    <td>toScript</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt das Skript des Eingabetexts an.</td>
-  </tr>
-  <tr>
-    <td>allowFallback</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt an, dass für den Dienst ein Fallback zu einem allgemeinen System zulässig ist, wenn kein benutzerdefiniertes System vorhanden ist. Mögliche Werte sind: <code>true</code> (Standard) oder <code>false</code>.<br/><br/><code>allowFallback=false</code> gibt an, dass für die Übersetzung nur Systeme verwendet werden sollen, die für die angegebene <code>category</code> in der Anforderung trainiert sind. Wenn eine Übersetzung von der Sprache X in die Sprache Y die Verkettung über eine Pivot- bzw. Zwischensprache E erfordert, müssen alle Systeme in der Kette (X->E und E->Y) benutzerdefiniert sein und die gleiche Kategorie aufweisen. Wird kein System mit der jeweiligen Kategorie gefunden, gibt die Anforderung den Statuscode 400 zurück. <code>allowFallback=true</code> gibt an, dass für den Dienst ein Fallback zu einem allgemeinen System zulässig ist, wenn kein benutzerdefiniertes System vorhanden ist.
-</td>
-  </tr>
-</table> 
+
+
+| Query parameter (Abfrageparameter) | BESCHREIBUNG |
+| --- | --- |
+
+
+| Query parameter (Abfrageparameter) | BESCHREIBUNG |
+| --- | --- |
+| from | _Optionaler Parameter_.  <br>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die [unterstützten Sprachen](../reference/v3-0-languages.md) mithilfe des`translation`-Bereichs. Wenn kein `from`-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet.  <br>  <br>Sie müssen den Parameter `from` anstelle der automatischen Erkennung verwenden, wenn Sie die Funktion für ein [dynamisches Wörterbuch](/azure/cognitive-services/translator/dynamic-dictionary) verwenden. |
+| textType | _Optionaler Parameter_.  <br>Definiert, ob es sich bei dem zu übersetzenden Text um Nur-Text oder um HTML-Text handelt. Jede HTML muss ein wohlgeformtes vollständiges Element sein. Mögliche Werte sind: `plain` (Standard) oder `html`. |
+| category | _Optionaler Parameter_.  <br>Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung angibt. Dieser Parameter wird verwendet, um Übersetzungen von einem benutzerdefinierten System zu erhalten, das mit [Custom Translator](../customization.md) erstellt wurde. Fügen Sie diesem Parameter die Kategorie-ID Ihrer „Benutzerdefinierter Translator“-[Projektdetails](/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details) hinzu, um Ihr bereitgestelltes angepasstes System zu verwenden. Der Standardwert ist `general`. |
+| profanityAction | _Optionaler Parameter_.  <br>Gibt an, wie Obszönitäten in Übersetzungen behandelt werden. Mögliche Werte sind: `NoAction` (Standard), `Marked` oder `Deleted`. Nähere Informationen zur Handhabung von Obszönitäten finden Sie unter [Behandlung von Obszönitäten](#handle-profanity). |
+| profanityMarker | _Optionaler Parameter_.  <br>Gibt an, wie Obszönitäten in Übersetzungen markiert werden. Mögliche Werte sind: `Asterisk` (Standard) oder `Tag`. Nähere Informationen zur Handhabung von Obszönitäten finden Sie unter [Behandlung von Obszönitäten](#handle-profanity). |
+| includeAlignment | _Optionaler Parameter_.  <br>Gibt an, ob die Ausrichtungsprojektion des Quelltexts für den übersetzten Text verwendet wird. Mögliche Werte sind: `true` oder `false` (Standard). |
+| includeSentenceLength | _Optionaler Parameter_.  <br>Gibt an, ob Satzgrenzen für den eingegebenen und den übersetzten Text verwendet werden. Mögliche Werte sind: `true` oder `false` (Standard). |
+| suggestedFrom | _Optionaler Parameter_.  <br>Gibt eine Fallbacksprache an, wenn die Sprache des Eingabetexts nicht identifiziert werden kann. Automatische Spracherkennung wird bei Weglassen des Parameters `from` angewendet. Wenn die Erkennung fehlschlägt, wird die Sprache `suggestedFrom` angenommen. |
+| fromScript | _Optionaler Parameter_.  <br>Gibt das Skript des Eingabetexts an. |
+| toScript | _Optionaler Parameter_.  <br>Gibt das Skript des Eingabetexts an. |
+| allowFallback | _Optionaler Parameter_.  <br>Gibt an, dass für den Dienst ein Fallback zu einem allgemeinen System zulässig ist, wenn kein benutzerdefiniertes System vorhanden ist. Mögliche Werte sind: `true` (Standard) oder `false`.  <br>  <br>`allowFallback=false` gibt an, dass für die Übersetzung nur Systeme verwendet werden sollen, die für die angegebene `category` in der Anforderung trainiert sind. Wenn eine Übersetzung von der Sprache X in die Sprache Y die Verkettung über eine Pivot- bzw. Zwischensprache E erfordert, müssen alle Systeme in der Kette (X->E und E->Y) benutzerdefiniert sein und die gleiche Kategorie aufweisen. Wird kein System mit der jeweiligen Kategorie gefunden, gibt die Anforderung den Statuscode 400 zurück. `allowFallback=true` gibt an, dass für den Dienst ein Fallback zu einem allgemeinen System zulässig ist, wenn kein benutzerdefiniertes System vorhanden ist. |
 
 Anforderungsheader enthalten Folgendes:
 
-<table width="100%">
-  <th width="20%">Header</th>
-  <th>BESCHREIBUNG</th>
-  <tr>
-    <td>Authentifizierungsheader</td>
-    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Gibt den Inhaltstyp der Nutzlast an.<br/> Der zulässige Wert ist <code>application/json; charset=UTF-8</code>.</td>
-  </tr>
-  <tr>
-    <td>Content-Length</td>
-    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Die Länge des Anforderungstexts.</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td><em>Optional:</em><br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Sie können diesen Header nur weglassen, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen Abfrageparameter namens <code>ClientTraceId</code> einschließen.</td>
-  </tr>
-</table> 
+| Header | BESCHREIBUNG |
+| --- | --- |
+| Authentifizierungsheader | _Erforderlicher Anforderungsheader_.  <br>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](/azure/cognitive-services/translator/reference/v3-0-reference#authentication). |
+| Content-Type | _Erforderlicher Anforderungsheader_.  <br>Gibt den Inhaltstyp der Nutzlast an.  <br>Der zulässige Wert ist `application/json; charset=UTF-8`. |
+| Content-Length | _Erforderlicher Anforderungsheader_.  <br>Die Länge des Anforderungstexts. |
+| X-ClientTraceId | _Optional:_  <br>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Sie können diesen Header nur weglassen, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen Abfrageparameter namens `ClientTraceId` einschließen. |
 
 ## <a name="request-body"></a>Anforderungstext
 
@@ -148,7 +96,7 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
       * `score`: Ein float-Wert, der die Zuverlässigkeit des Ergebnisses angibt. Die Bewertung bewegt sich zwischen 0 (null) und 1, und eine niedrige Bewertung gibt an, dass die Zuverlässigkeit zweifelhaft ist.
 
-    Die `detectedLanguage`-Eigenschaft ist nur im Ergebnisobjekt enthalten, wenn die automatische Spracherkennung angefordert wird.
+    Die `detectedLanguage`-Eigenschaft ist nur im Ergebnisobjekt enthalten, wenn automatische Spracherkennung angefordert wird.
 
   * `translations`: Ein Array von Übersetzungsergebnissen. Die Größe des Arrays entspricht der Anzahl der durch den `to`-Abfrageparameter angegebenen Zielsprachen. Jedes Element im Array enthält:
 
@@ -158,7 +106,7 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
     * `transliteration`: Ein Objekt, das den übersetzten Text in dem durch den `toScript`-Parameter angegebenen Skript enthält.
 
-      * `script`: Eine Zeichenfolge, die das Zielskript angibt.   
+      * `script`: Eine Zeichenfolge, die das Zielskript angibt.
 
       * `text`: Eine Zeichenfolge, die den übersetzten Text im Zielskript enthält.
 
@@ -180,61 +128,22 @@ Beispiele für JSON-Antworten finden Sie im Abschnitt [Beispiele](#examples).
 
 ## <a name="response-headers"></a>Antwortheader
 
-<table width="100%">
-  <th width="20%">Header</th>
-  <th>BESCHREIBUNG</th>
-    <tr>
-    <td>X-RequestId</td>
-    <td>Der Wert, der vom Dienst für die Identifizierung der Anforderung generiert wird. Er wird zu Problembehandlungszwecken verwendet.</td>
-  </tr>
-  <tr>
-    <td>X-MT-System</td>
-    <td>Gibt den Systemtyp an, der für jede zur Übersetzung angeforderte Zielsprache für die Übersetzung verwendet wurde. Bei dem Wert handelt es sich um eine durch Trennzeichen getrennte Liste von Zeichenfolgen. Jede Zeichenfolge gibt einen Typ an:<br/><ul><li>Custom: Die Anforderung enthält ein benutzerdefiniertes System, und mindestens ein benutzerdefiniertes System wurde während der Übersetzung verwendet.</li><li>Team: Alle anderen Anforderungen.</li></td>
-  </tr>
-</table> 
+| Header | BESCHREIBUNG |
+| --- | --- |
+| X-RequestId | Der Wert, der vom Dienst für die Identifizierung der Anforderung generiert wird. Er wird zu Problembehandlungszwecken verwendet. |
+| X-MT-System | Gibt den Systemtyp an, der für jede zur Übersetzung angeforderte Zielsprache für die Übersetzung verwendet wurde. Bei dem Wert handelt es sich um eine durch Trennzeichen getrennte Liste von Zeichenfolgen. Jede Zeichenfolge gibt einen Typ an:  <br><br>* Custom: Die Anforderung enthält ein benutzerdefiniertes System, und mindestens ein benutzerdefiniertes System wurde während der Übersetzung verwendet.<br>* Team: Alle anderen Anforderungen. |
 
 ## <a name="response-status-codes"></a>Antwortstatuscodes
 
-Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zurückgeben kann. 
+Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zurückgeben kann.
 
-<table width="100%">
-  <th width="20%">Statuscode</th>
-  <th>BESCHREIBUNG</th>
-  <tr>
-    <td>200</td>
-    <td>Erfolg.</td>
-  </tr>
-  <tr>
-    <td>400</td>
-    <td>Einer der Abfrageparameter fehlt oder ist ungültig. Korrigieren Sie die Anforderungsparameter, bevor Sie es erneut versuchen.</td>
-  </tr>
-  <tr>
-    <td>401</td>
-    <td>Die Anforderung konnte nicht authentifiziert werden. Überprüfen Sie, ob die Anmeldeinformationen angegeben und gültig sind.</td>
-  </tr>
-  <tr>
-    <td>403</td>
-    <td>Die Anforderung ist nicht autorisiert. Weitere Informationen finden Sie in der Fehlermeldung. Diese weist oft darauf hin, dass alle kostenlosen Übersetzungen, die mit einer Testversion bereitgestellt wurden, aufgebraucht sind.</td>
-  </tr>
-  <tr>
-    <td>408</td>
-    <td>Die Anforderung konnte nicht ausgeführt werden, weil eine Ressource nicht vorhanden ist. Weitere Informationen finden Sie in der Fehlermeldung. Bei der Verwendung einer benutzerdefinierten <code>category</code> weist dies häufig darauf hin, dass das benutzerdefinierte Übersetzungssystem noch nicht zum Verarbeiten von Anforderungen verfügbar ist. Die Anforderung sollte nach einer Wartezeit (z. B. eine Minute) wiederholt werden.</td>
-  </tr>
-  <tr>
-    <td>429</td>
-    <td>Der Server hat die Anforderung abgelehnt, da der Client die Anforderungsgrenzwerte überschritten hat.</td>
-  </tr>
-  <tr>
-    <td>500</td>
-    <td>Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader <code>X-RequestId</code> und Clientbezeichner aus dem Anforderungsheader <code>X-ClientTraceId</code>.</td>
-  </tr>
-  <tr>
-    <td>503</td>
-    <td>Der Server ist vorübergehend nicht verfügbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader <code>X-RequestId</code> und Clientbezeichner aus dem Anforderungsheader <code>X-ClientTraceId</code>.</td>
-  </tr>
-</table> 
+| ProfanityAction | Aktion |
+| --- | --- |
+| `NoAction` |NoAction ist das Standardverhalten. Die Obszönitäten werden von der Quell- in die Zielsprache übertragen.  <br>  <br>**Beispielquelle (Japanisch)**: 彼はジャッカスです。  <br>**Beispielübersetzung (Englisch):** Er ist ein Trottel. |
+| `Deleted` | Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff gestellt.  <br>  <br>**Beispielquelle (Japanisch)**: 彼はジャッカスです。  <br>**Beispielübersetzung (Deutsch)** : Er ist  |
+| `Marked` | Obszöne Wörter werden durch einen Marker in der Ausgabe ersetzt. Der Marker hängt von dem Parameter `ProfanityMarker` ab.  <br>  <br>Bei Verwendung von `ProfanityMarker=Asterisk` werden obszöne Wörter durch `***` ersetzt:  <br>**Beispielquelle (Japanisch)**: 彼はジャッカスです。  <br>**Beispielübersetzung (Deutsch)** : Er ist ein(e) \\ *\\* \\*.  <br>  <br>Bei Verwendung von `ProfanityMarker=Tag` werden obszöne Wörter von den XML-Tags &lt;profanity&gt; und &lt;/profanity&gt; umschlossen:  <br>**Beispielquelle (Japanisch)**: 彼はジャッカスです。  <br>**Beispielübersetzung (Englisch):** He is a &lt;profanity&gt;jackass&lt;/profanity&gt;. |
 
-Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes finden Sie in der [Referenz zu Version 3 von Translator](./v3-0-reference.md#errors). 
+Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes finden Sie in der [Referenz zu Version 3 von Translator](./v3-0-reference.md#errors).
 
 ## <a name="examples"></a>Beispiele
 
@@ -260,7 +169,7 @@ Der Antworttext lautet:
 
 Das `translations` Array enthält ein Element, das die Übersetzung des einzelnen Textausschnitts in der Eingabe bereitstellt.
 
-### <a name="translate-a-single-input-with-language-auto-detection"></a>Übersetzen einer einzelnen Eingabe mit automatischer Spracherkennung
+### <a name="translate-a-single-input-with-language-autodetection"></a>Übersetzen einer einzelnen Eingabe mit automatischer Spracherkennung
 
 Dieses Beispiel zeigt, wie ein einzelner Satz aus dem Englischen ins Chinesische (vereinfacht) übersetzt wird. Die Anforderung gibt keine Eingabesprache an. Es wird stattdessen die automatische Erkennung der Quellsprache verwendet.
 
@@ -280,7 +189,7 @@ Der Antworttext lautet:
     }
 ]
 ```
-Die Antwort ähnelt der Antwort aus dem vorherigen Beispiel. Da die automatische Spracherkennung angefordert wurde, enthält die Antwort auch Informationen über die erkannte Sprache für den Eingabetext. Ein längerer Eingabetext erhöht die Zuverlässigkeit der automatischen Spracherkennung.
+Die Antwort ähnelt der Antwort aus dem vorherigen Beispiel. Da automatische Spracherkennung angefordert wurde, enthält die Antwort auch Informationen zur erkannten Sprache des Eingabetexts. Ein längerer Eingabetext erhöht die Zuverlässigkeit der automatischen Spracherkennung.
 
 ### <a name="translate-with-transliteration"></a>Übersetzen mit Transliteration
 
@@ -326,7 +235,7 @@ Der Antworttext lautet:
         "translations":[
             {"text":"你好, 你叫什么名字？","to":"zh-Hans"}
         ]
-    },            
+    },
     {
         "translations":[
             {"text":"我很好，谢谢你。","to":"zh-Hans"}
@@ -362,41 +271,19 @@ In der Regel behält der Übersetzungsdienst Obszönitäten, die im Quelltext vo
 
 Wenn Sie möchten, dass die Übersetzung keine Obszönitäten enthält, auch wenn diese im Quelltext vorhanden sind, können Sie mithilfe der Obszönitäten-Filteroption die entsprechenden Textstellen überarbeiten. Sie können mit dieser Option Obszönitäten löschen, mit entsprechenden Tags markieren (und so Ihre eigene Nachbearbeitung hinzufügen) oder auch keine Maßnahme ergreifen. Akzeptierte Werte von `ProfanityAction` sind `Deleted`, `Marked` und `NoAction` (Standard).
 
-<table width="100%">
-  <th width="20%">ProfanityAction</th>
-  <th>Aktion</th>
-  <tr>
-    <td><code>NoAction</code></td>
-    <td>Dies ist das Standardverhalten. Die Obszönitäten werden von der Quell- in die Zielsprache übertragen.<br/><br/>
-    <strong>Beispielquelle (Japanisch)</strong>: 彼はジャッカスです。<br/>
-    <strong>Beispielübersetzung (Englisch):</strong> Er ist ein Trottel.
-    </td>
-  </tr>
-  <tr>
-    <td><code>Deleted</code></td>
-    <td>Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff gestellt.<br/><br/>
-    <strong>Beispielquelle (Japanisch)</strong>: 彼はジャッカスです。<br/>
-    <strong>Beispielübersetzung (Englisch):</strong> He is a. (Er ist ein.)
-    </td>
-  </tr>
-  <tr>
-    <td><code>Marked</code></td>
-    <td>Obszöne Wörter werden durch einen Marker in der Ausgabe ersetzt. Der Marker hängt von dem Parameter <code>ProfanityMarker</code> ab.<br/><br/>
-Bei Verwendung von <code>ProfanityMarker=Asterisk</code> werden obszöne Wörter durch <code>***</code> ersetzt:<br/>
-    <strong>Beispielquelle (Japanisch)</strong>: 彼はジャッカスです。<br/>
-    <strong>Beispielübersetzung (Englisch):</strong> He is a \*\*\*.<br/><br/>
-Bei Verwendung von <code>ProfanityMarker=Tag</code> werden obszöne Wörter von den XML-Tags &lt;profanity&gt; und &lt;/profanity&gt; umschlossen:<br/>
-    <strong>Beispielquelle (Japanisch)</strong>: 彼はジャッカスです。<br/>
-    <strong>Beispielübersetzung (Englisch):</strong> He is a &lt;profanity&gt;jackass&lt;/profanity&gt;.
-  </tr>
-</table> 
+
+| ProfanityAction | Aktion |
+| --- | --- |
+| `NoAction` | NoAction ist das Standardverhalten. Die Obszönitäten werden von der Quell- in die Zielsprache übertragen.  <br>  <br>**Beispielquelle (Japanisch)**: 彼はジャッカスです。  <br>**Beispielübersetzung (Englisch):** Er ist ein Trottel. |
+| `Deleted` | Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff gestellt.  <br>  <br>**Beispielquelle (Japanisch)**: 彼はジャッカスです。  <br>**Beispielübersetzung (Englisch):** He is a. (Er ist ein.) |
+| `Marked` | Obszöne Wörter werden durch einen Marker in der Ausgabe ersetzt. Der Marker hängt von dem Parameter `ProfanityMarker` ab.  <br>  <br>Bei Verwendung von `ProfanityMarker=Asterisk` werden obszöne Wörter durch `***` ersetzt:  <br>**Beispielquelle (Japanisch)**: 彼はジャッカスです。  <br>**Beispielübersetzung (Deutsch)** : Er ist ein(e) \\ *\\* \\*.  <br>  <br>Bei Verwendung von `ProfanityMarker=Tag` werden obszöne Wörter von den XML-Tags &lt;profanity&gt; und &lt;/profanity&gt; umschlossen:  <br>**Beispielquelle (Japanisch)**: 彼はジャッカスです。  <br>**Beispielübersetzung (Englisch):** He is a &lt;profanity&gt;jackass&lt;/profanity&gt;. |
 
 Beispiel:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
-Gibt Folgendes zurück:
+Diese Anforderung gibt Folgendes zurück:
 
 ```
 [
@@ -428,7 +315,7 @@ Diese letzte Anforderung gibt Folgendes zurück:
 
 ### <a name="translate-content-with-markup-and-decide-whats-translated"></a>Übersetzen von Inhalten mit Markups und Auswählen des zu übersetzenden Texts
 
-Häufig werden Inhalte übersetzt, die Markups enthalten, wie z.B. Inhalte von einer HTML-Seite oder aus einem XML-Dokument. Beziehen Sie `textType=html`-Abfrageparameter beim Übersetzen von Inhalten mit Tags ein. Manchmal ist es auch sinnvoll, bestimmten Inhalt von der Übersetzung auszuschließen. Sie können das Attribut `class=notranslate` verwenden, um Inhalt anzugeben, der in der Originalsprache übernommen werden soll. Im folgenden Beispiel wird der Inhalt im ersten `div`-Element nicht übersetzt, während der Inhalt im zweiten `div`-Element übersetzt wird.
+Häufig werden Inhalte mit Markup übersetzt, wie z. B. Inhalte einer HTML-Seite oder eines XML-Dokuments. Beziehen Sie `textType=html`-Abfrageparameter beim Übersetzen von Inhalten mit Tags ein. Manchmal ist es auch sinnvoll, bestimmten Inhalt von der Übersetzung auszuschließen. Sie können das Attribut `class=notranslate` verwenden, um Inhalt anzugeben, der in der Originalsprache übernommen werden soll. Im folgenden Beispiel wird der Inhalt im ersten `div`-Element nicht übersetzt, während der Inhalt im zweiten `div`-Element übersetzt wird.
 
 ```
 <div class="notranslate">This will not be translated.</div>
@@ -494,8 +381,8 @@ Das Abrufen der Ausrichtungsinformationen ist ein experimentelles Feature, das f
 * Die Ausrichtung wird nur für eine Teilmenge der Sprachpaare zurückgegeben:
   - Aus einer beliebigen Sprache ins Englische bzw. aus dem Englischen in eine beliebige Sprache, mit Ausnahme von Chinesisch (traditionell), Kantonesisch (traditionell) und Serbisch (Kyrillisch)
   - Aus dem Japanischen ins Koreanische und aus dem Koreanischen ins Japanische
-  - Aus dem Japanischen ins Chinesische (vereinfacht) und umgekehrt 
-  - Aus dem Chinesischen (vereinfacht) ins Chinesische (traditionell) und umgekehrt 
+  - Aus dem Japanischen ins Chinesische (vereinfacht) und umgekehrt
+  - Aus dem Chinesischen (vereinfacht) ins Chinesische (traditionell) und umgekehrt
 * Sie erhalten keine Ausrichtung, wenn es sich bei dem Satz um eine vordefinierte Übersetzung handelt. Beispiele für vordefinierte Übersetzung sind „This is a test“, „I love you“ und andere häufig verwendete Sätze.
 * Die Ausrichtung ist nicht verfügbar, wenn Sie einen der [hier beschriebenen](../prevent-translation.md) Ansätze zum Verhindern der Übersetzung anwenden.
 
@@ -529,7 +416,7 @@ Wenn Ihnen die Übersetzung eines Worts oder eines Ausdrucks bereits bekannt ist
 
 Das anzugebende Markup verwendet die folgende Syntax.
 
-``` 
+```
 <mstrans:dictionary translation="translation of phrase">phrase</mstrans:dictionary>
 ```
 

@@ -1,18 +1,18 @@
 ---
 title: Onboarding eines Kunden in Azure Lighthouse durchführen
 description: Erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Ihr eigener Mandant über die delegierte Azure-Ressourcenverwaltung auf dessen Ressourcen zugreifen und sie verwalten kann.
-ms.date: 03/29/2021
+ms.date: 05/25/2021
 ms.topic: how-to
-ms.openlocfilehash: d8ad448ac022b07ecdea6b68c4544b8c955814b1
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 7b64a189fdf6b33fada1750b667260989d2827e8
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497964"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376219"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding eines Kunden in Azure Lighthouse durchführen
 
-In diesem Artikel wird erläutert, wie Sie als Dienstanbieter das Onboarding eines Kunden in Azure Lighthouse durchführen können. Dadurch können delegierte Ressourcen (Abonnements und/oder Ressourcengruppen) im Azure Active Directory-Mandanten (Azure AD) des Kunden mithilfe der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) über Ihren eigenen Mandanten verwaltet werden.
+In diesem Artikel wird erläutert, wie Sie als Dienstanbieter das Onboarding eines Kunden in Azure Lighthouse durchführen können. Dadurch können delegierte Ressourcen (Abonnements und/oder Ressourcengruppen) im Azure Active Directory-Mandanten (Azure AD) des Kunden mithilfe der [delegierten Azure-Ressourcenverwaltung](../concepts/architecture.md) von Benutzern in Ihrem Mandanten verwaltet werden.
 
 > [!TIP]
 > In diesem Thema ist zwar von Dienstanbietern und Kunden die Rede, aber auch [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), können mithilfe desselben Verfahrens Azure Lighthouse einrichten und ihre Verwaltungsumgebung konsolidieren.
@@ -73,6 +73,9 @@ Um die Verwaltung zu vereinfachen, empfiehlt es sich, wann immer möglich Azure 
 > Um Berechtigungen für eine Azure AD-Gruppe hinzuzufügen, muss der **Gruppentyp** auf **Sicherheit** festgelegt werden. Diese Option wird bei der Erstellung der Gruppe ausgewählt. Weitere Informationen dazu finden Sie in [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Achten Sie beim Definieren der Autorisierungen darauf, das Prinzip der geringsten Rechte zu befolgen, damit Benutzer nur über die Berechtigungen verfügen, die zum Durchführen ihrer Aufgaben erforderlich sind. Informationen zu unterstützten Rollen sowie bewährte Methode finden Sie unter [Mandanten, Benutzer und Rollen in Azure Lighthouse-Szenarien](../concepts/tenants-users-roles.md).
+
+> [!TIP]
+> Sie können auch *berechtigte Autorisierungen* erstellen, mit denen Benutzer in Ihrem verwaltungsfähigen Mandanten vorübergehend ihre Rolle erhöhen können. Dieses Feature befindet sich derzeit in der Public Preview, und hierfür gelten spezifische Lizenzierungsanforderungen. Weitere Informationen finden Sie unter [Erstellen von berechtigten Autorisierungen](create-eligible-authorizations.md).
 
 Um Autorisierungen zu definieren, müssen Sie die ID-Werte für jeden Benutzer, jede Benutzergruppe oder jeden Dienstprinzipal im Dienstanbietermandanten kennen, dem bzw. der Sie Zugriff gewähren möchten. Außerdem benötigen Sie die Rollendefinitions-ID für jede integrierten Rolle, die Sie zuweisen möchten. Wenn Sie über diese nicht bereits verfügen, können Sie sie abrufen, indem Sie die folgenden Befehle aus dem Dienstanbietermandanten ausführen.
 
@@ -159,32 +162,32 @@ Das folgende Beispiel zeigt eine geänderte Datei **delegatedResourceManagement.
             "value": "Fabrikam Managed Services - Interstellar"
         },
         "managedByTenantId": {
-            "value": "df4602a3-920c-435f-98c4-49ff031b9ef6"
+            "value": "00000000-0000-0000-0000-000000000000"
         },
         "authorizations": {
             "value": [
                 {
-                    "principalId": "0019bcfb-6d35-48c1-a491-a701cf73b419",
+                    "principalId": "00000000-0000-0000-0000-000000000000",
                     "principalIdDisplayName": "Tier 1 Support",
                     "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c"
                 },
                 {
-                    "principalId": "0019bcfb-6d35-48c1-a491-a701cf73b419",
+                    "principalId": "00000000-0000-0000-0000-000000000000",
                     "principalIdDisplayName": "Tier 1 Support",
                     "roleDefinitionId": "36243c78-bf99-498c-9df9-86d9f8d28608"
                 },
                 {
-                    "principalId": "0afd8497-7bff-4873-a7ff-b19a6b7b332c",
+                    "principalId": "00000000-0000-0000-0000-000000000000",
                     "principalIdDisplayName": "Tier 2 Support",
                     "roleDefinitionId": "acdd72a7-3385-48ef-bd42-f606fba81ae7"
                 },
                 {
-                    "principalId": "9fe47fff-5655-4779-b726-2cf02b07c7c7",
+                    "principalId": "00000000-0000-0000-0000-000000000000",
                     "principalIdDisplayName": "Service Automation Account",
                     "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c"
                 },
                 {
-                    "principalId": "3kl47fff-5655-4779-b726-2cf02b05c7c4",
+                    "principalId": "00000000-0000-0000-0000-000000000000",
                     "principalIdDisplayName": "Policy Automation Account",
                     "roleDefinitionId": "18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
                     "delegatedRoleDefinitionIds": [
@@ -205,7 +208,7 @@ Die letzte Autorisierung im obigen Beispiel fügt eine **prinzipalId** mit der R
 Nachdem Sie Ihre Parameterdatei aktualisiert haben, muss ein Benutzer im Kundenmandanten die Azure Resource Manager-Vorlage im Mandanten bereitstellen. Eine gesonderte Bereitstellung ist für jedes Abonnement erforderlich, für das Sie ein Onboarding durchführen möchten (oder für jedes Abonnement, das Ressourcengruppen enthält, die Sie integrieren möchten).
 
 > [!IMPORTANT]
-> Diese Bereitstellung muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die Rolle `Microsoft.Authorization/roleAssignments/write`, z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner), für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um Benutzer aufzufinden, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription). 
+> Diese Bereitstellung muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die Rolle `Microsoft.Authorization/roleAssignments/write`, z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner), für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um Benutzer aufzufinden, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 >
 > Wenn das Abonnement über das [CSP-Programm (Cloud Solution Provider)](../concepts/cloud-solution-provider.md) erstellt wurde, kann jeder Benutzer, der die Rolle [Administrator-Agent](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) in Ihrem Dienstanbietermandanten ausübt, die Bereitstellung ausführen.
 

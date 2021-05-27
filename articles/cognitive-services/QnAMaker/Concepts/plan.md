@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e20679c3999f7ece1f6d3ed47a241cfd9dab9236
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 177c02da26ffcedd0453538bc32158cf2f014896
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102214744"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369284"
 ---
 # <a name="plan-your-qna-maker-app"></a>Planen Ihrer QnA Maker-App
 
@@ -29,23 +29,32 @@ Jede [Azure-Ressource](azure-resources.md#resource-purposes), die mit QnA Maker 
 | [App Service-Ressource und App Plan Service](azure-resources.md#app-service-and-app-service-plan)-Ressource | Abfragevorhersage-Endpunkt |
 | [Application Insights](azure-resources.md#application-insights)-Ressource | Abfragevorhersagetelemetrie |
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 | Resource | Zweck |
 |--|--|
-| [QnA Maker](azure-resources.md#qna-maker-resource)-Ressource | Verfassen, Abfragevorhersage-Endpunkt und Telemetrie|
+| [Textanalyse](azure-resources.md#qna-maker-resource)-Ressource | Verfassen, Abfragevorhersage-Endpunkt und Telemetrie|
 | [Cognitive Search](azure-resources.md#cognitive-search-resource)-Ressource | Datenspeicherung und -suche |
 
 ---
 ### <a name="resource-planning"></a>Ressourcenplanung
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
 Der Free-Tarif, `F0`, der einzelnen Ressourcen funktioniert und kann sowohl die Benutzeroberfläche für die Erstellung als auch die Abfragevorhersage bereitstellen. Sie können diesen Tarif verwenden, um die Erstellung und Abfragevorhersage zu erlernen. Wenn Sie zu einem Produktions- oder Liveszenario wechseln, sollten Sie Ihre Ressourcenauswahl neu auswerten.
 
-#### <a name="qna-maker-resource"></a>QnA Maker-Ressource
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-Eine einzelne QnA Maker-Ressource kann mehr hosten als eine Wissensdatenbank. Die Anzahl der Wissensdatenbanken wird durch die Menge der Indizes bestimmt, die der Cognitive Search-Tarif unterstützt. Erfahren Sie mehr über die [Beziehung zwischen Indizes und Wissensdatenbanken](azure-resources.md#index-usage).
+Benutzerdefinierte Fragen und Antworten (Vorschau) ist ein kostenloses Feature, und der Durchsatz ist derzeit auf 10 Transaktionen pro Sekunde sowohl für Verwaltungs-APIs als auch für Vorhersage-APIs begrenzt. Um 10 Transaktionen pro Sekunde für Ihren Dienst zu erreichen, empfehlen wir die SKU S1 (eine Instanz) von Azure Cognitive Search.
 
-#### <a name="knowledge-base-size-and-throughput"></a>Größe und Durchsatz der Wissensdatenbank
+### <a name="text-analytics-resource"></a>Textanalyseressource
+
+Eine einzelne Textanalyse-Ressource mit aktiviertem Feature „Benutzerdefinierte Fragen und Antworten“ kann mehrere Wissensdatenbanken hosten. Die Anzahl der Wissensdatenbanken wird durch die Menge der Indizes bestimmt, die der Cognitive Search-Tarif unterstützt. Erfahren Sie mehr über die [Beziehung zwischen Indizes und Wissensdatenbanken](azure-resources.md#index-usage).
+
+---
+
+### <a name="knowledge-base-size-and-throughput"></a>Größe und Durchsatz der Wissensdatenbank
 
 Wenn Sie eine echte App erstellen, planen Sie ausreichend Ressourcen für die Größe Ihrer Wissensdatenbank und die erwarteten Anforderungen an die Abfragevorhersage ein.
 
@@ -81,24 +90,34 @@ Die erste in Ihrer QnA Maker-Ressource erstellte Wissensdatenbank legt die Sprac
 
 Sie können Ihre QnA Maker-Ressourcen nach Sprache strukturieren oder [Translator](../../translator/translator-info-overview.md) verwenden, um eine Abfrage von einer anderen Sprache in die Sprache der Wissensdatenbank zu übersetzen, bevor Sie die Abfrage an den Abfragevorhersage-Endpunkt senden.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-Sie haben jetzt die Möglichkeit, Wissensdatenbanken in verschiedenen Sprachen innerhalb derselben QnA Maker-Ressource zu haben. Wenn Sie die erste Wissensdatenbank erstellen, können Sie auswählen, ob Sie die Ressource für Wissensdatenbanken in einer einzelnen Sprache oder in mehreren Sprachen verwenden möchten.
+Sie können jetzt über Wissensdatenbanken in verschiedenen Sprachen innerhalb derselben Textanalyse-Ressource verfügen, in der das Feature „Benutzerdefinierte Fragen und Antworten“ aktiviert ist. Wenn Sie die erste Wissensdatenbank erstellen, können Sie auswählen, ob Sie die Ressource für Wissensdatenbanken in einer einzelnen Sprache oder in mehreren Sprachen verwenden möchten.
 
-![QnA Maker verwaltet (Vorschau) mehrsprachige Wissensdatenbankauswahl](../media/concept-plan-your-knowledge-base/qnamaker-v2-select-multilanguage-knowledge-base.png)
+![QnA Maker verwaltet (Vorschau) mehrsprachige Wissensdatenbankauswahl](../media/qnamaker-create-publish-knowledge-base/connect-knowledgebase-custom-qna.png)
 
 > [!NOTE]
-> Wenn Sie Spracheinstellungen pro Wissensdatenbank aktivieren, können Sie nicht so viele Wissensdatenbanken in ihrer QnA Maker-Ressource erstellen. [Weitere Informationen zu Einschränkungen der Spracheinstellungen](./azure-resources.md).
+> Wenn Sie mehrere Sprachen pro Wissensdatenbank aktivieren, können Sie in Ihrer Textanalyse-Ressource nicht so viele Wissensdatenbanken erstellen. [Weitere Informationen zu Einschränkungen der Spracheinstellungen](./azure-resources.md).
 
 ---
 
 ### <a name="ingest-data-sources"></a>Erfassen von Datenquellen
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Sie können eine der folgenden erfassten [Datenquellen](../Concepts/data-sources-and-content.md) verwenden, um eine Wissensdatenbank zu erstellen:
 
 * Öffentliche URL
 * Private SharePoint-URL
 * Datei
+
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+
+Benutzerdefinierte Fragen und Antworten unterstützen auch unstrukturierte Inhalte. Sie können eine Datei mit unstrukturiertem Inhalt hochladen.
+
+Derzeit unterstützen wir keine URLs für unstrukturierten Inhalt.
+
+---
 
 Beim Erfassungsprozess werden [unterstützte Inhaltstypen](../reference-document-format-guidelines.md) in Markdown konvertiert. Die weitere Bearbeitung der *Antwort* erfolgt mit Markdown. Nachdem Sie eine Wissensdatenbank erstellt haben, können Sie [QnA-Paare](question-answer-set.md) im QnA Maker-Portal mit [Rich Text Authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer) bearbeiten.
 
@@ -179,9 +198,9 @@ Es gibt eine [zweiphasige Antwortrangfolge](query-knowledge-base.md#how-qna-make
 
 Wenden Sie die [aktuellsten Runtimeupdates](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates) an, um Dienstupdates automatisch zu verwalten.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-In QnA Maker verwaltet (Vorschau) wird die Runtime vom QnA Maker-Dienst selbst verwaltet. Somit sind Dienstupdates nicht anwendbar.
+Bei benutzerdefinierten Fragen und Antworten (Vorschau) wird die Runtime vom QnA Maker-Dienst selbst verwaltet. Somit sind Dienstupdates nicht anwendbar.
 
 ---
 
@@ -195,9 +214,9 @@ Skalierung, Durchsatz und Resilienz werden durch die [Azure-Ressourcen](../how-t
 
 Alle Abfragen Ihrer Wissensdatenbank werden in Application Insights gespeichert. Verwenden Sie unsere [wichtigsten Abfragen](../how-to/get-analytics-knowledge-base.md), um Ihre Metriken zu verstehen.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-In der verwalteten Bereitstellung wird Telemetrie über den [Azure Monitor-Dienst](../../../azure-monitor/index.yml) bereitgestellt. Verwenden Sie unsere [wichtigsten Abfragen](../how-to/get-analytics-knowledge-base.md), um Ihre Metriken zu verstehen.
+Bei benutzerdefinierten Fragen und Antworten werden Telemetriedaten über den [Azure Monitor-Dienst](../../../azure-monitor/index.yml) angeboten. Verwenden Sie unsere [wichtigsten Abfragen](../how-to/get-analytics-knowledge-base.md), um Ihre Metriken zu verstehen.
 
 
 ---

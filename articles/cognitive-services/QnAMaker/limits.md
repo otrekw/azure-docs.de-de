@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: ad498575b029f918538909a9b5b2d52c71c1389c
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: c654153340586004415b9d2fd8744fb539726960
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816366"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369405"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Grenzwerte und Grenzen für QnA Maker-Wissensdatenbanken
 
@@ -52,7 +52,7 @@ Dateinamen dürfen keines der folgenden Zeichen enthalten:
 Die maximale Anzahl von Dateien, die extrahiert werden können, und die maximale Dateigröße basieren auf den **[Grenzwerten für Ihren QnA Maker-Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** .
 
 > [!NOTE]
-> QnA Maker verwaltet (Vorschau) ist ein kostenloser Dienst ohne Begrenzung der Anzahl der Quellen, die hinzugefügt werden können. Der Durchsatz ist derzeit auf 10 Transaktionen pro Sekunde sowohl für Verwaltungs-APIs als auch für Vorhersage-APIs begrenzt.
+> „Benutzerdefinierte Fragen und Antworten“ (Vorschau) ist ein kostenloser Dienst ohne Begrenzung der Anzahl hinzufügbarer Quellen. Der Durchsatz ist derzeit auf 10 Transaktionen pro Sekunde sowohl für Verwaltungs-APIs als auch für Vorhersage-APIs begrenzt.
 
 ### <a name="maximum-number-of-deep-links-from-url"></a>Maximale Anzahl von Deep-Links für die URL
 
@@ -128,6 +128,9 @@ Diese stellen die Grenzwerte dar, wenn die vordefinierte API verwendet wird, um 
 * Anzahl der Dokumente: 5
 * Maximale Größe eines einzelnen Dokuments: 5.120 Zeichen
 * Maximal 3 Antworten pro Dokument.
+
+> [!IMPORTANT]
+> Unterstützung für unstrukturierte Dateien/Inhalte und vordefinierte APIs ist nur in „Benutzerdefinierte Fragen und Antworten“ (Vorschau) verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

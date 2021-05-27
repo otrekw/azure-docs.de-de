@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9d2100dbc2c5f24742a949778a1b7450bf303c5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0daa44f0d901dc14541785f764d5ccf8f96fc737
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232204"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376672"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api"></a>Abrufen einer Antwort mit der GenerateAnswer-API
 
@@ -42,7 +42,7 @@ So rufen Sie Endpunktdetails ab
 
     ![Screenshot der Endpunktdetails](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
-    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+    # <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
     ![Screenshot der verwalteten Endpunktdetails](../media/qnamaker-how-to-metadata-usage/view-code-managed.png)
 
@@ -180,9 +180,9 @@ Der vorherige JSON-Code forderte nur Antworten an, die 30 % oder mehr über dem 
 
 Ein Feature für präzise Antworten ist nur in der verwalteten QnA Maker-Version enthalten.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-Bei Verwendung der verwalteten QnA Maker-Ressource kann der Benutzer [präzise Antworten](../reference-precise-answering.md) aktivieren. Dafür muss der Parameter „answerSpanRequest“ aktualisiert werden.
+Der Benutzer kann [präzise Antworten](../reference-precise-answering.md) aktivieren, wenn er die Textanalyse-Ressource mit dem Feature „Benutzerdefinierte Fragen und Antworten“ verwendet. Dafür muss der Parameter „answerSpanRequest“ aktualisiert werden.
 
 ```json
 {

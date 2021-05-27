@@ -5,22 +5,32 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: eee4d23b17bf852946b31912eb81fd4f897e0f56
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 049cbc6f28e4a405b20eaf37e85e31bd1eb4dfb9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803870"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367322"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Schnellstart: Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank
 
-Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erstellen, z.B. aus FAQs oder Produkthandbüchern. Dieser Artikel enthält ein Beispiel zum Erstellen einer QnA Maker-Wissensdatenbank auf der Grundlage einer einfachen FAQ-Webseite, um Fragen zu QnA Maker zu beantworten.
+Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erstellen, z.B. aus FAQs oder Produkthandbüchern. Dieser Artikel enthält ein Beispiel zum Erstellen einer QnA Maker-Wissensdatenbank auf Grundlage einer einfachen FAQ-Webseite zum Beantworten von Fragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
 > [!div class="checklist"]
 > * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
-> * Eine im Azure-Portal erstellte QnA Maker-[Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker). Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
+> * Eine über das Azure-Portal erstellte [QnA Maker-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker). Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA Maker-Ressourcennamen, den Sie beim Erstellen der Ressource ausgewählt haben.
+
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+
+> [!div class="checklist"]
+> * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
+> * Eine [Textanalyse-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) mit aktiviertem Feature „Benutzerdefinierte Fragen und Antworten“. Merken Sie sich die Azure Active Directory-ID, das Abonnement und den Namen der Textanalyse-Ressource, den Sie beim Erstellen der Ressource ausgewählt haben.
+
+---
 
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>Erstellen Ihrer ersten QnA Maker-Wissensdatenbank
 
@@ -32,9 +42,9 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
 3. Überspringen Sie **Schritt 1** auf der Seite **Erstellen**, wenn Sie bereits über eine QnA Maker-Ressource verfügen.
 
-    Wenn Sie die Ressource noch nicht erstellt haben, wählen Sie **Create a QnA service** (QnA-Dienst erstellen) aus. Sie werden an das [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) weitergeleitet, um einen QnA Maker-Dienst in Ihrem Abonnement einzurichten. Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
+Wenn Sie den Dienst noch nicht erstellt haben, wählen Sie **Stabil** und **QnA-Dienst erstellen** aus. Sie werden an das [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) weitergeleitet, um einen QnA Maker-Dienst in Ihrem Abonnement einzurichten. Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
 
-    Wenn Sie die Ressource im Azure-Portal erstellt haben, navigieren Sie zurück zum QnA Maker-Portal, aktualisieren Sie die Browserseite, und fahren Sie mit **Schritt 2** fort.
+Wenn Sie die Ressource im Azure-Portal erstellt haben, navigieren Sie zurück zum QnA Maker-Portal, aktualisieren Sie die Browserseite, und fahren Sie mit **Schritt 2** fort.
 
 4. Wählen Sie in **Schritt 2** Ihre Active Directory-Instanz, das Abonnement, den Dienst (Ressource) und die Sprache für alle im Dienst erstellten Wissensdatenbanken aus.
 
@@ -57,23 +67,32 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
     Nachdem die Wissensdatenbank von QnA Maker erfolgreich erstellt wurde, wird die Seite **Wissensdatenbank** geöffnet. Auf dieser Seite können Sie den Inhalt der Wissensdatenbank bearbeiten.
 
-# <a name="qna-maker-managed-preview-release"></a>[Mit QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen beim Portal [QnAMaker.ai](https://QnAMaker.ai) an.
 
 2. Wählen Sie im QnA Maker-Portal die Option **Wissensdatenbank erstellen** aus.
 
-3. Überspringen Sie **Schritt 1** auf der Seite **Erstellen**, wenn Sie bereits über eine QnA Maker-Ressource verfügen.
+3. Überspringen Sie auf der Seite **Erstellen** den **Schritt 1**, wenn Sie „Benutzerdefinierte Fragen und Antworten“ bereits dem Textanalyse-Dienst hinzugefügt haben.
 
-    Wenn Sie die Ressource noch nicht erstellt haben, wählen Sie **Create a QnA service** (QnA-Dienst erstellen) aus. Sie werden an das [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) weitergeleitet, um einen QnA Maker-Dienst in Ihrem Abonnement einzurichten. Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
+    Wenn Sie den Dienst noch nicht erstellt haben, wählen Sie **Vorschau** und **QnA-Dienst erstellen** aus. 
 
-    Wenn Sie die Ressource im Azure-Portal erstellt haben, navigieren Sie zurück zum QnA Maker-Portal, aktualisieren Sie die Browserseite, und fahren Sie mit **Schritt 2** fort.
+> [!div class="mx-imgBorder"]
+> ![Erstellen eines Diensts](../media/qnamaker-create-publish-knowledge-base/create-qna-service.png) 
+    
+Sie werden zum [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) geleitet, um den Textanalyse-Dienst in Ihrem Abonnement einzurichten. Sie sollten dem Dienst bei der Erstellung das Feature „Benutzerdefinierte Fragen und Antworten“ hinzufügen. 
+    
+> [!div class="mx-imgBorder"]
+> ![Hinzufügen von QnA zu Textanalyse](../media/qnamaker-how-to-setup-service/select-qna-feature-create-flow.png)
+ 
+   Merken Sie sich die Azure Active Directory-ID, das Abonnement und den Namen der Textanalyse-Ressource, den Sie beim Erstellen der Ressource ausgewählt haben. Wenn Sie die Ressource im Azure-Portal erstellt haben, navigieren Sie zurück zum QnA Maker-Portal, aktualisieren Sie die Browserseite, und fahren Sie mit **Schritt 2** fort.
 
 4. Wählen Sie in **Schritt 2** Ihre Active Directory-Instanz, das Abonnement, den Dienst (Ressource) und die Sprache für alle im Dienst erstellten Wissensdatenbanken aus.
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/connect-your-knowledge-base.png" alt-text="Screenshot des Auswählens einer im QnA Maker-Dienst verwalteten Wissensdatenbank (Vorschau)":::
+> [!div class="mx-imgBorder"]
+> ![Erstellen einer Wissensdatenbank](../media/qnamaker-create-publish-knowledge-base/connect-knowledgebase-custom-qna.png) 
 
-5. Wenn Sie in **Schritt 2** die erste Wissensdatenbank für Ihren Dienst erstellen, haben Sie die Möglichkeit, die Spracheinstellung für jede Wissensdatenbank spezifisch festzulegen. Nachdem die Spracheinstellung für die erste Wissensdatenbank definiert wurde, können Sie die Einstellungen für den Dienst später nicht mehr ändern.
+5. Wenn Sie in **Schritt 2** die erste Wissensdatenbank für Ihren Dienst erstellen, können Sie die Eigenschaft **Wissensdatenbanken in mehreren Sprachen zu diesem Dienst hinzufügen** aktivieren, um die Möglichkeit zu schaffen, Wissensdatenbanken in verschiedenen Sprachen zum selben Dienst hinzuzufügen. Diese Einstellung können Sie später nicht mehr ändern.
 
 6. Geben Sie in  **Schritt 3** Ihrer Wissensdatenbank den Namen  **My Sample QnA KB**. 
 
@@ -90,7 +109,7 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
     Der Extraktionsvorgang nimmt einen Moment in Anspruch, um das Dokument zu lesen sowie Fragen und Antworten zu identifizieren.
 
-    Nachdem die Wissensdatenbank von QnA Maker erfolgreich erstellt wurde, wird die Seite **Wissensdatenbank** geöffnet. Auf dieser Seite können Sie den Inhalt der Wissensdatenbank bearbeiten.
+    Nachdem die Wissensdatenbank erfolgreich erstellt wurde, wird die Seite **Wissensdatenbank** geöffnet. Auf dieser Seite können Sie den Inhalt der Wissensdatenbank bearbeiten.
 
 ---
 
@@ -130,7 +149,7 @@ Wählen Sie in der oberen rechten Ecke **Speichern und trainieren** aus, um Ihre
 
 4. Wählen Sie erneut **Testen** aus, um das Panel **Testen** zu schließen.
 
-# <a name="qna-maker-managed-preview-release"></a>[Mit QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 1. Wählen Sie rechts oben im QnA Maker-Portal die Option **Testen** aus, um zu testen, ob die von Ihnen vorgenommenen Änderungen übernommen wurden.
 2. Geben Sie eine Beispielbenutzerabfrage in das Textfeld ein.

@@ -5,13 +5,13 @@ ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
-ms.date: 02/07/2021
-ms.openlocfilehash: 4f3e5a22b9692823f1e9542fb3a6d9ad42fe79cf
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 05/07/2021
+ms.openlocfilehash: 827e860c0b25945339a9e1640b94863697e04f88
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321139"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377139"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
@@ -34,27 +34,21 @@ Mit dem Datenexport im Log Analytics-Arbeitsbereich werden kontinuierlich Daten 
 ## <a name="limitations"></a>Einschränkungen
 
 - Die Konfiguration kann zurzeit mithilfe der Befehlszeilenschnittstelle oder über REST-Anforderungen vorgenommen werden. Azure-Portal oder PowerShell werden noch nicht unterstützt.
-- Die Option ```--export-all-tables``` in CLI und REST wird nicht unterstützt und entfernt. Sie müssen die Liste der Tabellen in den Exportregeln explizit angeben.
-- Unterstützte Tabellen sind zurzeit auf die im Abschnitt [Unterstützte Tabellen](#supported-tables) weiter unten beschränkt. Beispielsweise werden benutzerdefinierte Protokolltabellen derzeit nicht unterstützt.
-- Wenn die Datenexportregel eine nicht unterstützte Tabelle umfasst, wird der Vorgang erfolgreich ausgeführt, es werden jedoch für diese Tabelle keine Daten exportiert bis die Tabelle unterstützt wird. 
-- Wenn die Datenexportregel eine nicht vorhandene Tabelle enthält, verursacht sie den Fehler ```Table <tableName> does not exist in the workspace```.
-- Ihr Log Analytics-Arbeitsbereich kann sich in einer beliebigen Region mit Ausnahme der folgenden befinden:
-  - Azure Government-Regionen
-  - Japan, Westen
-  - Brasilien, Südosten
-  - Norwegen, Osten
-  - Vereinigte Arabische Emirate, Norden
-- In Ihrem Arbeitsbereich können bis zu 10 Regeln aktiviert sein. Zusätzliche Regeln über 10 können im Deaktivierungszustand erstellt werden. 
+- Die Option `--export-all-tables` in CLI und REST wird nicht unterstützt und entfernt. Sie müssen die Liste der Tabellen in den Exportregeln explizit angeben.
+- Unterstützte Tabellen sind zurzeit auf diejenigen beschränkt, die weiter unten im Abschnitt [Unterstützte Tabellen](#supported-tables) aufgeführt werden. Beispielsweise werden benutzerdefinierte Protokolltabellen derzeit nicht unterstützt.
+- Wenn die Datenexportregel eine nicht unterstützte Tabelle umfasst, wird der Vorgang erfolgreich ausgeführt. Es werden jedoch für diese Tabelle keine Daten exportiert, bis die Tabelle unterstützt wird. 
+- Wenn die Datenexportregel eine nicht vorhandene Tabelle enthält, verursacht sie den Fehler `Table <tableName> does not exist in the workspace`.
+- Der Datenexport ist demnächst in allen Regionen verfügbar, zurzeit aber noch nicht in den folgenden Regionen: Azure Government-Regionen, „Japan, Westen“, „Brasilien, Südosten“, „Norwegen, Osten“, „Norwegen, Westen“, „VAE, Norden“, „VAE, Mitte“, „Australien, Mitte 2“, „Schweiz, Norden“, „Schweiz, Westen“, „Deutschland, Westen-Mitte“, „Indien, Süden“, „Frankreich, Süden“.
+- In Ihrem Arbeitsbereich können bis zu 10 aktivierte Regeln definiert werden. Zusätzliche Regeln sind zulässig, werden jedoch deaktiviert. 
 - Ein Ziel muss für alle Exportregeln in Ihrem Arbeitsbereich eindeutig sein.
 - Das Zielspeicherkonto oder der Ziel-Event Hub muss sich in derselben Region wie der Log Analytics-Arbeitsbereich befinden.
-- Die Namen der zu exportierenden Tabellen dürfen bei einem Speicherkonto nicht länger als 60 Zeichen und bei einem Event Hub nicht länger als 47 Zeichen sein. Tabellen mit längeren Namen werden nicht exportiert.
-- Die Unterstützung zum Anfügen von Blobs für Azure Data Lake Storage ist jetzt in der [eingeschränkten Public Preview](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/) verfügbar.
+- Die Namen der zu exportierenden Tabellen dürfen bei einem Speicherkonto nicht mehr als 60 Zeichen und bei einem Event Hub nicht mehr als 47 Zeichen umfassen. Tabellen mit längeren Namen werden nicht exportiert.
 
 ## <a name="data-completeness"></a>Datenvollständigkeit
 Der Datenexport versucht bis zu 30 Minuten lang, Daten zu senden, wenn das Ziel nicht verfügbar ist. Wenn es nach 30 Minuten immer noch nicht verfügbar ist, werden die Daten verworfen, bis das Ziel wieder verfügbar ist.
 
 ## <a name="cost"></a>Cost
-Für die Datenexportfunktion fallen zurzeit keine zusätzlichen Gebühren an. Die Preise für den Datenexport werden später bekannt gegeben, und vor Abrechnungsbeginn erhalten Sie eine entsprechende Benachrichtigung. Falls Sie sich dafür entscheiden, den Datenexport über den Benachrichtigungszeitraum hinaus zu verwenden, wird dies Ihnen zum entsprechenden Tarif in Rechnung gestellt.
+Für das Datenexportfeature fallen zurzeit keine zusätzlichen Gebühren an. Die Preise für den Datenexport werden später bekanntgegeben, und vor Abrechnungsbeginn wird eine Kündigungsfrist eingeräumt. Falls Sie sich dafür entscheiden, den Datenexport über den Benachrichtigungszeitraum hinaus zu verwenden, wird dies Ihnen zum entsprechenden Tarif in Rechnung gestellt.
 
 ## <a name="export-destinations"></a>Exportziele
 
@@ -69,9 +63,6 @@ Das Speicherkonto-Datenformat ist [JSON Lines](../essentials/resource-logs-blob-
 
 Durch den Log Analytics-Datenexport können Anfügeblobs in unveränderliche Speicherkonten geschrieben werden, wenn bei zeitbasierten Aufbewahrungsrichtlinien die Einstellung *allowProtectedAppendWrites* aktiviert ist. Dadurch wird das Schreiben neuer Blöcke in ein Anfügeblob ermöglicht, wobei gleichzeitig der Unveränderlichkeitsschutz und die Konformität aufrechterhalten bleiben. Weitere Informationen finden Sie unter [Zulassen von Schreibvorgängen in geschützten Anfügeblobs](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
 
-> [!NOTE]
-> Die Unterstützung zum Anfügen von Blobs für Azure Data Lake Storage ist jetzt in der Vorschauversion in allen Azure-Regionen verfügbar. [Registrieren Sie sich für die eingeschränkte Public Preview](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pURDk2NjMzUTVEVzU5UU1XUlRXSTlHSlkxQS4u), bevor Sie eine Exportregel für Azure Data Lage Storage erstellen. Der Exportvorgang funktioniert ohne diese Registrierung nicht.
-
 ### <a name="event-hub"></a>Event Hub
 Daten werden, sobald sie Azure Monitor erreichen, nahezu in Echtzeit an Event Hub gesendet. Für jeden Datentyp, den Sie exportieren, wird ein Event Hub mit dem Namen *am-* erstellt, gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Event Hub mit dem Namen *am-SecurityEvent* gesendet. Wenn für die exportierten Daten ein bestimmter Event Hub als Ziel verwendet werden soll oder Sie eine Tabelle mit einem Namen haben, der den Grenzwert von 47 Zeichen überschreitet, können Sie den Namen Ihrer eigenen Event Hub-Instanz angeben und alle Daten für definierte Tabelle in diese exportieren.
 
@@ -79,11 +70,11 @@ Daten werden, sobald sie Azure Monitor erreichen, nahezu in Echtzeit an Event Hu
 > Die [Anzahl der unterstützten Event Hubs pro 'Basic'- und 'Standard'-Namensraumstufe beträgt 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). Wenn Sie mehr als 10 Tabellen exportieren, teilen Sie die Tabellen entweder auf mehrere Exportregeln zu verschiedenen Event-Hub-Namensräumen auf oder geben Sie den Event-Hub-Namen in der Exportregel an und exportieren alle Tabellen zu diesem Event-Hub.
 
 Überlegungen:
-1. Die "Basic" Event-Hub-Stufe unterstützt eine geringere [Ereignisgröße](../../event-hubs/event-hubs-quotas.md) und einige Protokolle in Ihrem Arbeitsbereich können diese überschreiten und verworfen werden. Es wird empfohlen, das Event Hub „Standard“ oder „Dedicated“ als Exportziel zu verwenden.
-2. Die Menge der exportierten Daten nimmt im Laufe der Zeit häufig zu, und die Event Hub-Skalierung muss erhöht werden, um größere Übertragungsraten zu bewältigen und Drosselungsszenarien und Datenlatenz zu vermeiden. Verwenden Sie die Funktion „Automatische Vergrößerung“ von Event Hubs, um die Anzahl von Durchsatzeinheiten automatisch hochzuskalieren und so den Nutzungsanforderungen gerecht zu werden. Weitere Informationen finden Sie unter [Automatisches Hochskalieren von Azure Event Hubs-Durchsatzeinheiten](../../event-hubs/event-hubs-auto-inflate.md).
+1. Die Event Hub-SKU „Basic“ unterstützt einen niedrigeren [Grenzwert](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-vs-premium-vs-dedicated-tiers) für die Ereignisgröße. Einige Protokolle in Ihrem Arbeitsbereich können diesen überschreiten und werden möglicherweise gelöscht. Es wird empfohlen, einen Event Hub der SKU „Standard“ oder „Dedicated“ als Exportziel zu verwenden.
+2. Die Menge der exportierten Daten nimmt häufig im Laufe der Zeit zu, und die Event Hub-Skalierung muss erhöht werden, um größere Übertragungsraten zu bewältigen und Drosselungsszenarien und Datenlatenz zu vermeiden. Verwenden Sie das Feature „Automatische Vergrößerung“ von Event Hubs, um die Anzahl von Durchsatzeinheiten automatisch hochzuskalieren und so den Nutzungsanforderungen gerecht zu werden. Weitere Informationen finden Sie unter [Automatisches Hochskalieren von Azure Event Hubs-Durchsatzeinheiten](../../event-hubs/event-hubs-auto-inflate.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Im Folgenden sind die Voraussetzungen aufgeführt, die vor der Konfiguration des Log Analytics-Datenexports erfüllt sein müssen.
+Vor der Konfiguration des Log Analytics-Datenexports müssen folgende Voraussetzungen erfüllt sein:
 
 - Die Ziele müssen vor der Konfiguration der Exportregel erstellt werden und sollten sich in demselben Bereich befinden wie Ihr Log Analytics-Arbeitsbereich. Wenn Sie Ihre Daten in andere Speicherkonten replizieren müssen, können Sie eine der [Azure Storage Redundanzoptionen](../../storage/common/storage-redundancy.md) verwenden.  
 - Beim Speicherkonto muss es sich um StorageV1 oder StorageV2 handeln. Klassischer Speicher wird nicht unterstützt  
@@ -118,7 +109,7 @@ Wenn Sie Ihr Speicherkonto so konfiguriert haben, dass der Zugriff von ausgewäh
 Eine Datenexportregel definiert die Tabellen, für die Daten exportiert werden, und das Ziel. Sie können 10 aktivierte Regeln in Ihrem Arbeitsbereich haben, wenn sich jede zusätzliche Regel über 10 im deaktivierten Zustand befinden muss. Ein Ziel muss für alle Exportregeln in Ihrem Arbeitsbereich eindeutig sein.
 
 > [!NOTE]
-> Der Datenexport sendet Protokolle an Ziele, deren Eigentümer Sie sind, während diese einige Einschränkungen aufweisen: die [Skalierbarkeit von Speicherkonten](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts), [Event Hub-Namespace-Kontingent](../../event-hubs/event-hubs-quotas.md). Es wird empfohlen, dass Sie Ihre Ziele auf Drosselung überwachen und Maßnahmen anwenden, wenn sie sich dem Ziel-Grenzwert nähern. Beispiel: 
+> Der Datenexport sendet Protokolle an Ziele, deren Eigentümer Sie sind, während diese einige Einschränkungen aufweisen: die [Skalierbarkeit von Speicherkonten](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts), [Event Hub-Namespace-Kontingent](../../event-hubs/event-hubs-quotas.md). Es wird empfohlen, Ihre Ziele auf Drosselung zu überwachen und Maßnahmen anzuwenden, wenn sie sich dem Grenzwert nähern. Beispiel: 
 > - Stellen Sie die automatische Vergrößerungsfunktion im Event-Hub ein, um die Anzahl der TUs (Durchsatzeinheiten) automatisch zu vergrößern und zu erhöhen. Sie können weitere TUs anfordern, wenn die automatische Erhöhung maximal ist
 > - Aufteilen von Tabellen auf mehrere Exportregeln, wobei jede auf verschiedene Ziele verteilt ist
 
@@ -626,7 +617,7 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | DnsEvents |  |
 | DnsInventory |  |
 | Dynamics365Activity |  |
-| Ereignis | Teilweise unterstützt: Einige Daten für diese Tabelle werden über das Speicherkonto erfasst. Dieser Teil fehlt derzeit im Export. |
+| Ereignis | Teilweise Unterstützung: Daten, die vom Log Analytics-Agent (MMA) oder vom Azure Monitor-Agent (AMA) eintreffen, werden beim Exportvorgang vollständig unterstützt. Daten, die über den Diagnoseerweiterungs-Agent eingehen, werden über den Speicher gesammelt. Dieser Pfad wird beim Export jedoch nicht unterstützt. |
 | ExchangeAssessmentRecommendation |  |
 | FailedIngestion |  |
 | FunctionAppLogs |  |
@@ -662,7 +653,7 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | SecurityBaseline |  |
 | SecurityBaselineSummary |  |
 | SecurityDetection |  |
-| SecurityEvent | Teilweise unterstützt: Einige Daten für diese Tabelle werden über das Speicherkonto erfasst. Dieser Teil fehlt derzeit im Export. |
+| SecurityEvent | Teilweise Unterstützung: Daten, die vom Log Analytics-Agent (MMA) oder vom Azure Monitor-Agent (AMA) eintreffen, werden beim Exportvorgang vollständig unterstützt. Daten, die über den Diagnoseerweiterungs-Agent eingehen, werden über den Speicher gesammelt. Dieser Pfad wird beim Export jedoch nicht unterstützt. |
 | SecurityIncident |  |
 | SecurityIoTRawEvent |  |
 | SecurityNestedRecommendation |  |
@@ -687,7 +678,7 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | SynapseSqlPoolRequestSteps |  |
 | SynapseSqlPoolSqlRequests |  |
 | SynapseSqlPoolWaits |  |
-| syslog | Teilweise unterstützt: Einige Daten für diese Tabelle werden über das Speicherkonto erfasst. Dieser Teil fehlt derzeit im Export. |
+| syslog | Teilweise Unterstützung: Daten, die vom Log Analytics-Agent (MMA) oder vom Azure Monitor-Agent (AMA) eintreffen, werden beim Exportvorgang vollständig unterstützt. Daten, die über den Diagnoseerweiterungs-Agent eingehen, werden über den Speicher gesammelt. Dieser Pfad wird beim Export jedoch nicht unterstützt. |
 | ThreatIntelligenceIndicator |  |
 | Aktualisieren | Teilweise unterstützt: Einige Daten werden durch interne Dienste erfasst, die für den Export nicht unterstützt werden. Dieser Teil fehlt derzeit im Export. |
 | UpdateRunProgress |  |

@@ -5,18 +5,20 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: c2fad19bd84418d41aca1b2e0770eaa3cde488b0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fa24347c8fcc0550dc6dc86c96624d1b1f6dcf25
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043358"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376321"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Empfohlene Einstellungen für die Netzwerkisolation
 
 Gehen Sie wie hier beschrieben vor, um den öffentlichen Zugriff auf QnA Maker-Ressourcen einzuschränken. Schützen Sie eine Cognitive Services-Ressource durch [Konfigurieren des virtuellen Netzwerks](../../cognitive-services-virtual-networks.md?tabs=portal) vor öffentlichem Zugriff.
 
 ## <a name="restrict-access-to-app-service-qna-runtime"></a>Einschränken des Zugriffs auf App Service (QnA-Runtime)
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Sie können der App Service-Zulassungsliste IP-Adressen hinzufügen, um den Zugriff einzuschränken, oder die App Service-Umgebung zum Hosten von QnA Maker App Service konfigurieren.
 
@@ -50,6 +52,10 @@ Die App Service-Umgebung kann verwendet werden, um QnA Maker App Service zu host
 
 4.  Erstellen Sie mit Azure Resource Manager eine Cognitive Services-Instanz für QnA Maker (Microsoft.CognitiveServices/accounts), und legen Sie den QnA Maker-Endpunkt hierfür auf den oben erstellten App Service-Endpunkt (https://mywebsite.myase.p.azurewebsite.net) fest.
     
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+
+App Service wird nicht mit „Benutzerdefinierte Fragen und Antworten“ bereitgestellt.
+
 ---
 
 ## <a name="restrict-access-to-cognitive-search-resource"></a>Einschränken des Zugriffs auf Cognitive Search-Ressourcen
@@ -62,8 +68,9 @@ Wenn QnA Maker App Service über eine App Service-Umgebung eingeschränkt ist, 
 
 Wenn eine App Service-Umgebung nicht für QnA Maker App Service verwendet wird, erstellen Sie zunächst eine neue VNet-Ressource und dann die Verbindung des privaten Endpunkts mit der Cognitive Search-Instanz. In diesem Fall muss QnA Maker App Service in [das VNet integriert werden](../../../app-service/web-sites-integrate-with-vnet.md), um eine Verbindung mit der Cognitive Search-Instanz herzustellen. 
 
-#  <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 [Erstellen Sie private Endpunkte](../reference-private-endpoint.md) für die Azure Search-Ressource.
 
 ---
+

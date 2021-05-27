@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5f149dd6db82b66b45a4c995e2004936481af786
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41477b99c6bb07ab836f6c4ef75a06b2f642f3a2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96352421"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375423"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Abrufen von Analysen zu Ihrer Wissensdatenbank
 
@@ -48,11 +48,11 @@ QnA Maker speichert alle Chatprotokolle und anderen Telemetriedaten, wenn Sie Ap
 
     [![Ausführen einer Abfrage zum Ermitteln von Fragen, Antworten und Bewertungen von Benutzern](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-QnA Maker verwaltet (Vorschau) verwendet Azure-Diagnoseprotokollierung, um die Telemetriedaten und Chatprotokolle zu speichern. Führen Sie die folgenden Schritte aus, um Beispielabfragen auszuführen, um Analysen zur Verwendung ihrer QnA Maker-Wissensdatenbank zu erhalten.
+„Benutzerdefinierte Fragen und Antworten“ (Vorschau) speichert die Telemetriedaten und Chatprotokolle mithilfe der Azure-Diagnoseprotokollierung. Führen Sie die folgenden Schritte aus, um Beispielabfragen auszuführen, um Analysen zur Verwendung ihrer QnA Maker-Wissensdatenbank zu erhalten.
 
-1. [Aktivieren Sie die Diagnoseprotokollierung](../../diagnostic-logging.md) für Ihren QnA Maker verwaltet (Vorschau)-Dienst.
+1. [Aktivieren Sie die Diagnoseprotokollierung](../../diagnostic-logging.md) für Ihren Textanalyse-Dienst mit dem Feature „Benutzerdefinierte Fragen und Antworten“ (Vorschau).
 
 2. Wählen Sie im vorherigen Schritt zusätzlich zu **Audit, RequestResponse und AllMetrics** noch **Trace** für die Protokollierung aus.
 
@@ -132,7 +132,7 @@ traces | extend id = operation_ParentId
 | order  by timestamp  desc
 ```
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 ### <a name="all-qna-chat-log"></a>Alle QnA-Chatprotokolle
 

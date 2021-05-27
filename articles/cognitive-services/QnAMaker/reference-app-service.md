@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: da46084c8c2616284c31ef155927e8dbcbd19e0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a24045d38b594e09b931a885c60851109a108e3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102209358"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372686"
 ---
 # <a name="service-configuration"></a>Dienstkonfiguration
 
@@ -38,9 +38,9 @@ Sie können eine einzelne Einstellung entweder über die Liste der Anwendungsein
 
 Sie müssen den Dienst über die Seite **Übersicht** des Azure-Portals **neu starten**, sobald Sie mit den Änderungen fertig sind.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-App Service-Anpassungen gelten nicht für QnA Maker verwaltet (Vorschau).
+App Service-Anpassungen gelten nicht für „Benutzerdefinierte Fragen und Antworten“ (Vorschau).
 
 ---
 
@@ -64,9 +64,9 @@ Erfahren Sie, [wie Sie den Text Ihrer Standardantworten ändern](How-To/change-d
 
 Anwendung Insights wird zur Überwachung der Telemetrie mit QnA Maker GA verwendet. Es gibt keine speziellen Konfigurationseinstellungen für QnA Maker.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-Erfahren Sie, [wie Sie QnA Maker verwaltet (Vorschau) Telemetriedaten hinzufügen](How-To/get-analytics-knowledge-base.md). 
+Erfahren Sie, [wie Sie Ihrem Dienst „Benutzerdefinierte Fragen und Antworten“ (Vorschau) Telemetriedaten hinzufügen](How-To/get-analytics-knowledge-base.md). 
 
 ---
 
@@ -76,9 +76,9 @@ Erfahren Sie, [wie Sie QnA Maker verwaltet (Vorschau) Telemetriedaten hinzufüge
 
 App Service-Plan verfügt über keine speziellen Konfigurationseinstellungen für QnA Maker.
 
-# <a name="qnamaker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-App Service-Plan wird nicht mit QnA Maker verwaltet (Vorschau) verwendet.
+App Service-Plan wird nicht mit „Benutzerdefinierte Fragen und Antworten“ (Vorschau) verwendet.
 
 ---
 

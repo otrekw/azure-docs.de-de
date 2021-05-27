@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 87dde7662050794a24cf976a0bae6237b91d29b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d346610ecb4e0552a52775c086eeb16e6e11680
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102213707"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373014"
 ---
 # <a name="active-learning"></a>Aktives Lernen
 
@@ -130,9 +130,9 @@ Verwenden Sie die [Trainings-API](/rest/api/cognitiveservices/qnamaker4.0/runtim
 
 Das Feature für aktives Lernen wird in der Runtimeversion 4.4.0 und höher unterstützt. Wenn Ihre Wissensdatenbank mit einer Vorgängerversion erstellt wurde, [führen Sie ein Upgrade Ihrer Runtime durch](configure-QnA-Maker-resources.md#get-the-latest-runtime-updates), um dieses Feature zu nutzen.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-Da bei QnA Maker verwaltet (Vorschau) die Runtime vom QnA Maker-Dienst selbst gehostet wird, ist es nicht erforderlich, ein Upgrade der Runtime manuell durchzuführen.
+In „Benutzerdefinierte Fragen und Antworten“ (Vorschau) ist ein manuelles Upgrade der Runtime nicht notwendig.
 
 ---
 
@@ -159,9 +159,9 @@ Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie 
 
     Nachdem Sie **Aktives Lernen** aktiviert haben, schlägt die Wissensdatenbank basierend auf den von Benutzern übermittelten Fragen in regelmäßigen Abständen neue Fragen vor. Sie können **Active Learning** deaktivieren, indem Sie die Einstellung wieder umschalten.
     
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-Das Feature für aktives Lernen ist in QnA Maker verwaltet (Vorschau) standardmäßig **aktiviert**. Verwenden Sie zum Anzeigen der vorgeschlagenen alternativen Fragen die [Anzeigeoptionen](../How-To/improve-knowledge-base.md#view-suggested-questions) auf der Seite „Bearbeiten“.
+Standardmäßig ist aktives Lernen in „Benutzerdefinierte Fragen und Antworten“ (Vorschau) **aktiviert**. Verwenden Sie zum Anzeigen der vorgeschlagenen alternativen Fragen die [Anzeigeoptionen](../How-To/improve-knowledge-base.md#view-suggested-questions) auf der Seite „Bearbeiten“.
 
 ---
 

@@ -4,13 +4,13 @@ description: In diesem Dokument werden erweiterte Konfigurationen für Ihre QnA�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 48a56500646e4bd5e24cdcf3e076f46f1de94741
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 05/04/2021
+ms.openlocfilehash: 0eaff84368327da7ebef11d53338f13ee6f8cdb4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743901"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376362"
 ---
 # <a name="configure-qna-maker-resources"></a>Konfigurieren von QnA Maker-Ressourcen
 
@@ -19,6 +19,9 @@ Benutzer können QnA Maker für die Verwendung einer anderen Cognitive Search-
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 ## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>Konfigurieren von QnA Maker zur Verwendung einer anderen Cognitive Search-Ressource
+
+> [!NOTE]
+> Wenn Sie den dem QnA Maker zugeordneten Azure Search-Dienst ändern, verlieren Sie den Zugriff auf alle bereits darin vorhandenen Wissensdatenbanken. Stellen Sie sicher, dass Sie die vorhandenen Wissensdatenbanken exportieren, bevor Sie den Azure Search-Dienst ändern.
 
 Wenn Sie einen QnA-Dienst und dessen Abhängigkeiten (z.B. Search) über das Portal erstellen, wird automatisch ein Suchdienst erstellt und mit dem QnA Maker-Dienst verknüpft. Nachdem diese Ressourcen erstellt wurden, können Sie die App Service-Einstellung aktualisieren, um einen bereits vorhandenen Suchdienst zu nutzen und den soeben erstellten Suchdienst zu entfernen.
 
@@ -47,7 +50,30 @@ Wenn Sie einen QnA-Dienst über Azure Resource Manager-Vorlagen erstellen, könn
 
 Weitere Informationen zum Konfigurieren der App Service-Anwendungseinstellungen finden Sie [hier](../../../app-service/configure-common.md#configure-app-settings).
 
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+
+### <a name="configure-text-analytics-resource-with-custom-question-answering-feature-to-use-a-different-cognitive-search-resource"></a>Konfigurieren der Textanalyse-Ressource mit dem Feature „Benutzerdefinierte Fragen und Antworten“ für die Verwendung einer anderen Cognitive Search-Ressource
+
+> [!NOTE]
+> Wenn Sie den „Textanalyse“ zugeordneten Azure Search-Dienst ändern, verlieren Sie den Zugriff auf alle bereits darin vorhandenen Wissensdatenbanken. Stellen Sie sicher, dass Sie die vorhandenen Wissensdatenbanken exportieren, bevor Sie den Azure Search-Dienst ändern.
+
+
+Wenn Sie eine Textanalyse-Ressource und deren Abhängigkeiten (z. B. Search) im Portal erstellen, wird automatisch ein Suchdienst erstellt und mit der Textanalyse-Ressource verknüpft. Nachdem diese Ressourcen erstellt wurden, können Sie die Suchressource auf der Registerkarte **Features** aktualisieren.
+
+1.  Navigieren Sie im Azure-Portal zu Ihrer Textanalyse-Ressource.
+
+2.  Wählen Sie **Features** und den Azure Cognitive Search-Dienst aus, den Sie mit Ihrer Textanalyse-Ressource verknüpfen möchten.
+
+> [!div class="mx-imgBorder"]
+> ![Hinzufügen von QnA zu Textanalyse](../media/qnamaker-how-to-upgrade-qnamaker/update-custom-qna-feature.png)
+
+3.  Klicken Sie auf **Speichern**.
+
+---
+
 ## <a name="get-the-latest-runtime-updates"></a>Abrufen der neuesten Runtime-Updates
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Die QnA Maker-Runtime ist Teil der Azure App Service-Instanz, die beim [Erstellen eines QnA Maker-Diensts](./set-up-qnamaker-service-azure.md) im Azure-Portal bereitgestellt wird. Updates für die Runtime werden in regelmäßigen Abständen bereitgestellt. Die QnA Maker App Service-Instanz befindet sich nach der Websiteerweiterung vom April 2019 (Version 5+) im automatischen Updatemodus. Dieses Update ist so konzipiert, dass es während Upgrades keine Downtime berücksichtigt.
 
@@ -67,8 +93,16 @@ Sehen Sie sich die aktuelle Version unter https://www.qnamaker.ai/UserSettings a
 1. Starten Sie App Service neu. Der Updateprozess sollte innerhalb weniger Sekunden abgeschlossen sein. Abhängige Anwendungen oder Bots, in denen dieser QnA Maker-Dienst verwendet wird, stehen während dieses Neustartzeitraums für Endbenutzer nicht zur Verfügung.
 
     ![Neustarten der QnA Maker App Service-Instanz](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+    
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+
+App Service wird nicht mit „Benutzerdefinierte Fragen und Antworten“ bereitgestellt.
+
+---
 
 ## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>Konfigurieren der App Service-Leerlaufeinstellung zur Vermeidung von Timeouts
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Die App Service-Instanz, von der die QnA Maker-Vorhersageruntime für eine veröffentlichte Wissensdatenbank bereitgestellt wird, verfügt über eine Leerlauftimeoutkonfiguration, durch die standardmäßig automatisch ein Timeout ausgelöst wird, wenn sich der Dienst im Leerlauf befindet. Dies hat für QnA Maker zur Folge, dass für die generateAnswer-API Ihrer Vorhersageruntime gelegentlich ein Timeout auftritt, wenn eine Weile kein Datenverkehr übermittelt wurde.
 
@@ -87,7 +121,15 @@ Legen Sie den Leerlauf auf „Immer aktiv“ fest, um zu gewährleisten, dass di
 
 Weitere Informationen zum Konfigurieren der allgemeinen App Service-Einstellungen finden Sie [hier](../../../app-service/configure-common.md#configure-general-settings).
 
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+
+App Service wird nicht mit „Benutzerdefinierte Fragen und Antworten“ bereitgestellt.
+
+---
+
 ## <a name="business-continuity-with-traffic-manager"></a>Geschäftskontinuität mit Traffic Manager
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Das Hauptziel des Geschäftskontinuitätsplans besteht darin, einen ausfallsicheren Wissensdatenbank-Endpunkt zu erstellen, der sicherstellen kann, dass keine Ausfallzeiten für den Bot oder die ihn verwendende Anwendung entstehen.
 
@@ -110,21 +152,8 @@ Das oben dargestellte allgemeine Konzept lautet wie folgt:
 
 1. Verwenden Sie dann den Traffic Manager-Endpunkt in Ihrem Bot oder in Ihrer App.
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
-## <a name="configure-qna-maker-managed-preview-service-to-use-different-cognitive-search-resource"></a>Konfigurieren des QnA Maker verwaltet (Vorschau)-Diensts zur Verwendung einer anderen Cognitive Search-Ressource
-
-Wenn Sie einen QnA-Dienst verwaltet (Vorschau) und dessen Abhängigkeiten (z. B. Search) über das Portal erstellen, wird automatisch ein Suchdienst für Sie erstellt und mit dem QnA Maker verwaltet (Vorschau)-Dienst verknüpft. Nachdem diese Ressourcen erstellt wurden, können Sie den Suchdienst auf der Registerkarte **Konfiguration** aktualisieren.
-
-1. Wechseln Sie zu Ihrem QnA Maker verwaltet (Vorschau)-Dienst im Azure-Portal.
-
-1. Wählen Sie **Konfiguration** aus, und wählen Sie den Azure Cognitive Search-Dienst aus, den Sie mit Ihrem QnA Maker verwaltet (Vorschau)-Dienst verknüpfen möchten.
-
-    ![Screenshot der Seite „Konfiguration“ von QnA Maker verwaltet (Vorschau)](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-configuration.png)
-
-1. Klicken Sie auf **Speichern**.
-
-> [!NOTE]
-> Wenn Sie den dem QnA Maker zugeordneten Azure Search-Dienst ändern, verlieren Sie den Zugriff auf alle bereits darin vorhandenen Wissensdatenbanken. Stellen Sie sicher, dass Sie die vorhandenen Wissensdatenbanken exportieren, bevor Sie den Azure Search-Dienst ändern.
+App Service wird nicht mit „Benutzerdefinierte Fragen und Antworten“ bereitgestellt.
 
 ---

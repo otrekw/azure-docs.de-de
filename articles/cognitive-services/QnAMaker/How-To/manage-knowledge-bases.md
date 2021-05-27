@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: c7bb79cbd67ba2fb151641ddeeb31b54e399b906
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62aab3e6941829ac8745e74b398aff559ce13953
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96938255"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376730"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Erstellen einer Wissensdatenbank und Verwalten der Einstellungen
 
@@ -18,11 +18,21 @@ ms.locfileid: "96938255"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-> [!div class="checklist"]
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
 > * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 > * Eine über das Azure-Portal erstellte [QnA Maker-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker). Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
 
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+
+> * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
+> * Die [Textanalyse-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) mit im Azure-Portal aktiviertem Feature „Benutzerdefinierte Fragen und Antworten“. Merken Sie sich die Azure Active Directory-ID, das Abonnement und den Namen der Textanalyse-Ressource, den Sie beim Erstellen der Ressource ausgewählt haben.
+
+---
+
 ## <a name="create-a-knowledge-base"></a>Erstellen einer Wissensdatenbank
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen beim Portal [QnAMaker.ai](https://QnAMaker.ai) an.
 
@@ -30,7 +40,7 @@ ms.locfileid: "96938255"
 
 1. Überspringen Sie **Schritt 1** auf der Seite **Erstellen**, wenn Sie bereits über eine QnA Maker-Ressource verfügen.
 
-    Wenn Sie die Ressource noch nicht erstellt haben, wählen Sie **Create a QnA service** (QnA-Dienst erstellen) aus. Sie werden an das [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) weitergeleitet, um einen QnA Maker-Dienst in Ihrem Abonnement einzurichten. Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
+    Wenn Sie den Dienst noch nicht erstellt haben, wählen Sie **Stabil** und **QnA-Dienst erstellen** aus. Sie werden an das [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) weitergeleitet, um einen QnA Maker-Dienst in Ihrem Abonnement einzurichten. Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
 
     Wenn Sie die Ressource im Azure-Portal erstellt haben, navigieren Sie zurück zum QnA Maker-Portal, aktualisieren Sie die Browserseite, und fahren Sie mit **Schritt 2** fort.
 
@@ -41,19 +51,62 @@ ms.locfileid: "96938255"
 1. Geben Sie Ihrer Wissensdatenbank in **Schritt 3** den Namen `My Sample QnA KB`.
 
 1. Konfigurieren Sie in **Schritt 4** die Einstellungen anhand der folgenden Tabelle:
-
+    
     |Einstellung|Wert|
     |--|--|
     |**Enable multi-turn extraction from URLs, .pdf or .docx files** (Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX-Dateien aktivieren)|Aktiviert|
     |**Default answer text** (Standardantworttext)| `Quickstart - default answer not found.`|
     |**+ URL hinzufügen**|`https://azure.microsoft.com/en-us/support/faq/`|
-    |**Smalltalk**|Wählen Sie **Professional** aus.|
+    |**Smalltalk**|Wählen Sie **Professional** aus.|  
+
 
 1. Wählen Sie in **Schritt 5** die Option **Wissensdatenbank erstellen** aus.
 
     Der Extraktionsvorgang nimmt einen Moment in Anspruch, um das Dokument zu lesen sowie Fragen und Antworten zu identifizieren.
 
     Nachdem die Wissensdatenbank von QnA Maker erfolgreich erstellt wurde, wird die Seite **Wissensdatenbank** geöffnet. Auf dieser Seite können Sie den Inhalt der Wissensdatenbank bearbeiten.
+
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+
+1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen beim Portal [QnAMaker.ai](https://QnAMaker.ai) an.
+
+2. Wählen Sie im QnA Maker-Portal die Option **Wissensdatenbank erstellen** aus.
+
+3. Überspringen Sie auf der Seite **Erstellen** den **Schritt 1**, wenn Sie „Benutzerdefinierte Fragen und Antworten“ bereits dem Textanalyse-Dienst hinzugefügt haben.
+
+    Wenn Sie den Dienst noch nicht erstellt haben, wählen Sie **Vorschau** und **QnA-Dienst erstellen** aus.
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Erstellen eines neuen QnA-Diensts](../media/qnamaker-create-publish-knowledge-base/create-qna-service.png)
+
+    Sie werden zum [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) geleitet, um den Textanalyse-Dienst in Ihrem Abonnement einzurichten. Sie sollten dem Dienst bei der Erstellung das Feature „Benutzerdefinierte Fragen und Antworten“ hinzufügen.
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Auswählen zusätzlicher Features](../media/qnamaker-how-to-setup-service/select-qna-feature-create-flow.png)
+    
+    Merken Sie sich die Azure Active Directory-ID, das Abonnement und den Namen der Textanalyse-Ressource, den Sie beim Erstellen der Ressource ausgewählt haben. Wenn Sie die Ressource im Azure-Portal erstellt haben, navigieren Sie zurück zum QnA Maker-Portal, aktualisieren Sie die Browserseite, und fahren Sie mit Schritt 2 fort.
+
+4. Wählen Sie in **Schritt 2** Ihre Active Directory-Instanz, das Abonnement, den Dienst (Ressource) und die Sprache für alle im Dienst erstellten Wissensdatenbanken aus.
+
+    ![Screenshot: Auswählen des Diensts „Benutzerdefinierte Fragen und Antworten“](../media/qnamaker-create-publish-knowledge-base/connect-knowledgebase-custom-qna.png)
+
+5. Wenn Sie in **Schritt 2** die erste Wissensdatenbank für Ihren Dienst erstellen, können Sie die Eigenschaft **Wissensdatenbanken in mehreren Sprachen zu diesem Dienst hinzufügen** aktivieren, um die Möglichkeit zu schaffen, Wissensdatenbanken in verschiedenen Sprachen zum selben Dienst hinzuzufügen. Diese Einstellung können Sie später nicht mehr ändern.
+
+6. Geben Sie in  **Schritt 3** Ihrer Wissensdatenbank den Namen  **My Sample QnA KB**. 
+
+7. Konfigurieren Sie in **Schritt 4** die Einstellungen anhand der folgenden Tabelle:
+
+    |Einstellung|Wert|
+    |--|--|
+    |**Enable multi-turn extraction from URLs, .pdf or .docx files** (Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX-Dateien aktivieren)|Aktiviert|
+    |**Default answer text** (Standardantworttext)| `Quickstart - default answer not found.`|
+     |**+ URL hinzufügen**|`https://azure.microsoft.com/support/faq/`|
+    |**+ Datei hinzufügen**|Navigieren Sie zu einer Datei zum Hochladen.|
+     |**Unstrukturierter Inhalt**|Aktivieren Sie dieses Kontrollkästchen, um anzugeben, dass die hochgeladene Datei unstrukturierten Inhalt enthält. Wenn Sie das Kontrollkästchen „Unstrukturiert“ aktivieren, wird das Dokument vollständig im Dienst erfasst. Wenn Sie diese Option deaktiviert lassen, werden QnA-Paare aus der Datei extrahiert. <br> Die folgende Abbildung zeigt, wie unstrukturierte Dateien nach dem Hochladen aussehen.
+     | |[!div class="mx-imgBorder"] ![Screenshot of unstructured file upload](../media/qnamaker-create-publish-knowledge-base/add-unstructured-file.png)|
+    |**Smalltalk**|Wählen Sie **Professional** aus.|
+
+---
 
 ## <a name="edit-knowledge-base"></a>Bearbeiten der Knowledge Base
 
@@ -67,15 +120,31 @@ ms.locfileid: "96938255"
 
 1.  Wählen Sie **Settings** aus. Die folgende Liste enthält Felder, die Sie ändern können:
 
+     # <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
        |Zielsetzung|Aktion|
        |--|--|
        |URL hinzufügen|Sie können neue URLs hinzufügen, um der Wissensdatenbank neue FAQ-Inhalte hinzuzufügen, indem Sie auf den Link **Wissensdatenbank verwalten > „+ URL hinzufügen“** klicken.|
        |URL löschen|Sie können vorhandene URLs löschen, indem Sie das Löschsymbol, d.h. den Papierkorb, auswählen.|
-       |Inhalt aktualisieren|Damit Ihre Wissensdatenbank den neuesten Inhalt vorhandener URLs durchforstet, aktivieren Sie das Kontrollkästchen **Aktualisieren**. Dadurch wird die Wissensdatenbank einmal mit den neuesten URL-Inhalten aktualisiert. Es wird kein regelmäßiger Zeitplan für Updates festgelegt.|
+       |Inhalt aktualisieren|Damit Ihre Wissensdatenbank den neuesten Inhalt vorhandener URLs durchforstet, aktivieren Sie das Kontrollkästchen **Aktualisieren**. Durch diese Aktion wird die Wissensdatenbank einmal mit den neuesten URL-Inhalten aktualisiert. Durch diese Aktion wird kein regelmäßiger Zeitplan für Updates festgelegt.|
        |Datei hinzufügen|Sie können einer Wissensdatenbank ein unterstütztes Dateidokument hinzufügen, indem Sie **Wissensdatenbank verwalten** und dann **+ Datei hinzufügen** auswählen.|
     |Importieren|Sie können auch vorhandene Wissensdatenbanken importieren, indem Sie die Schaltfläche **Wissensdatenbank importieren** auswählen. |
     |Aktualisieren|Das Aktualisieren der Wissensdatenbank hängt vom **Verwaltungstarif** ab, der beim Erstellen des QnA Maker-Diensts verwendet wird, der mit Ihrer Wissensdatenbank verknüpft ist. Sie können den Verwaltungstarif bei Bedarf auch über das Azure-Portal aktualisieren.
 
+    # <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+       |Zielsetzung|Aktion|
+       |--|--|
+       |URL hinzufügen|Sie können neue URLs hinzufügen, um der Wissensdatenbank neue FAQ-Inhalte hinzuzufügen, indem Sie auf den Link **Wissensdatenbank verwalten > „+ URL hinzufügen“** klicken.|
+       |URL löschen|Sie können vorhandene URLs löschen, indem Sie auf das durch den Papierkorb dargestellte Löschsymbol klicken.|
+       |Inhalt aktualisieren|Damit Ihre Wissensdatenbank den neuesten Inhalt vorhandener URLs durchforstet, aktivieren Sie das Kontrollkästchen **Aktualisieren**. Durch diese Aktion wird die Wissensdatenbank einmal mit den neuesten URL-Inhalten aktualisiert. Durch diese Aktion wird kein regelmäßiger Zeitplan für Updates festgelegt.|
+       |Datei hinzufügen|Sie können einer Wissensdatenbank ein unterstütztes Dateidokument hinzufügen, indem Sie **Wissensdatenbank verwalten** und dann **+ Datei hinzufügen** auswählen.|
+       |Datei löschen|Sie können eine vorhandene Datei löschen, indem Sie auf das durch den Papierkorb dargestellte Löschsymbol klicken.|
+       |Inhalt als unstrukturiert markieren|Wenn Sie den hochgeladenen Dateiinhalt als unstrukturiert markieren möchten, aktivieren Sie das Kontrollkästchen **Unstrukturierter Inhalt**.|
+       |Unstrukturierten Inhalt als strukturiert markieren|Sie können einen zuvor hochgeladenen unstrukturierten Inhalt nicht als strukturiert markieren.|
+    |Importieren|Sie können auch vorhandene Wissensdatenbanken importieren, indem Sie die Schaltfläche **Wissensdatenbank importieren** auswählen. |
+    |Aktualisieren|Das Aktualisieren der Wissensdatenbank hängt vom **Verwaltungstarif** ab, der beim Erstellen des QnA Maker-Diensts verwendet wird, der mit Ihrer Wissensdatenbank verknüpft ist. Sie können den Verwaltungstarif bei Bedarf auch über das Azure-Portal aktualisieren.
+
+
+    <br/>
   1. Wenn Sie alle Änderungen an der Wissensdatenbank vorgenommen haben, wählen Sie rechts oben auf der Seite **Speichern und trainieren** aus, um die Änderungen dauerhaft zu speichern.
 
        ![Speichern und trainieren](../media/qnamaker-how-to-edit-kb/save-and-train.png)

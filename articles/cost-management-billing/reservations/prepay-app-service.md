@@ -1,24 +1,24 @@
 ---
 title: Speichern für Azure App Service mit reservierter Kapazität
-description: Hier erfahren Sie, wie Sie Kosten für reservierte Instanzen von Azure App Service Premium V3 und für die Stempelgebühr (gesondert) sparen können.
+description: Hier erfahren Sie, wie Sie Kosten für reservierte Instanzen von Azure App Service Premium v3 und Premium v2 sowie für Stempelgebühren (isoliert) sparen können.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 05/13/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 92a315121ad8ae6fadcadbf6d531eb3e99ae69a9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f80619f1eeb7cdd970e4e3ee64491453c790149d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374540"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378524"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Sparen von Kosten mit reservierten Azure App Service-Instanzen
 
-In diesem Artikel erfahren Sie, wie Sie mit reservierten Azure App Service-Instanzen Kosten für Premium V3-Instanzen und Stempelgebühren (gesondert) sparen können.
+In diesem Artikel wird erläutert, wie Sie mit reservierten Azure App Service-Instanzen für Premium v3- und Premium v2-Instanzen sowie Stempelgebühren (isoliert) Kosten sparen können.
 
 ## <a name="save-with-premium-v3-reserved-instances"></a>Sparen mit reservierten Premium V3-Instanzen
 
@@ -42,7 +42,6 @@ Sie können Reservierungsempfehlungen verwenden, um zu ermitteln, welche Reservi
 Analysieren Sie Ihre Nutzungsinformationen, um besser ermitteln zu können, welche Reservierungen Sie erwerben sollten. Nutzungsdaten sind in der Nutzungsdatendatei und in APIs verfügbar. Verwenden Sie beides gemeinsam, um zu ermitteln, welche Reservierung Sie erwerben sollten. Prüfen Sie, ob Premium V3-Instanzen vorhanden sind, die täglich stark genutzt werden, um die Menge der zu erwerbenden Reservierungen zu ermitteln.
 
 Die Nutzungsdatei enthält Ihre Gebühren nach Abrechnungszeitraum und Daten zur täglichen Nutzung. Weitere Informationen zum Herunterladen der Nutzungsdatei finden Sie unter [Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren](../understand/download-azure-daily-usage.md). Anhand der Informationen in der Nutzungsdatei können Sie dann [die zu erwerbende Reservierung ermitteln](determine-reservation-purchase.md).
-
 
 ## <a name="buy-a-premium-v3-reserved-instance"></a>Erwerben einer reservierten Premium V3-Instanz
 
@@ -69,6 +68,32 @@ Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere 
 | Größe der reservierten Premium V3-Instanz | Die Größe der reservierten Premium V3-Instanzen. |
 | Begriff | Ein Jahr oder drei Jahre Es ist auch eine Laufzeit von fünf Jahren verfügbar (allerdings nur für reservierte HBv2-Premium V3-Instanzen). |
 | Menge | Die Anzahl von Instanzen, die innerhalb der Reservierung erworben werden. Die Menge ist die Anzahl ausgeführter reservierter Premium V3-Instanzen, auf die der Abrechnungsrabatt angewendet werden kann. Wenn Sie also beispielsweise zehn reservierte Premium V3-Instanzen vom Typ „Standard\_D2“ in der Region „USA, Osten“ ausführen, geben Sie als Menge „10“ an, um den Vorteil für alle ausgeführten reservierten Premium V3-Instanzen zu maximieren. |
+
+## <a name="buy-an-isolated-v2-reserved-instance"></a>Erwerben einer reservierten Instanz von App Service (isoliert) v2
+
+Sie können eine reservierte Instanz von App Service (isoliert) v2 im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](prepare-buy-reservation.md). Für den Erwerb einer reservierten Instanz von App Service (isoliert) v2 gelten folgende Anforderungen:
+
+- Sie müssen in einer „Besitzer“-Rolle für mindestens ein EA-Abonnement oder ein Abonnement mit einem Satz für nutzungsbasierte Bezahlung sein.
+- Bei EA-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.
+- Für das Cloud Solution Provider (CSP)-Programm können nur die Administrator- oder Vertriebs-Agents Reservierungen kaufen.
+
+So kaufen Sie ein Instanz:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
+3. Klicken Sie auf **Hinzufügen**, um eine neue Reservierung zu erwerben, und klicken Sie dann auf **Instanz**.
+4. Geben Sie die erforderlichen Felder ein. Ausgeführte reservierte Instanzen von App Service (isoliert) v2, die den ausgewählten Attributen entsprechen, sind für den Reservierungsrabatt qualifiziert. Die tatsächliche Anzahl Ihrer reservierten Instanzen von App Service (isoliert) v2, die den Rabatt erhalten, hängt vom ausgewählten Umfang und von der ausgewählten Menge ab.
+
+Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere hinzufügen** verwenden, um schnell weitere Instanzen hinzuzufügen. Die Option ist für andere Abonnementtypen nicht verfügbar.
+
+| **Feld** | **Beschreibung** |
+| --- | --- |
+| Subscription | Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Microsoft-Kundenvereinbarung“ oder ein einzelnes Abonnement mit Sätzen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Die Gebühren werden vom Guthaben in Bezug auf den Mindestverbrauch abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit Sätzen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt. |
+| `Scope` | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<UL><LI>**Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li>**Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li>**Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li> |
+| Region | Die Azure-Region, die durch die Reservierung abgedeckt wird |
+| Größe für reservierte Instanzen von App Service (isoliert) v2 | Die Größe der reservierten Instanzen von App Service (isoliert) v2. |
+| Begriff | Ein Jahr oder drei Jahre Es ist auch eine Laufzeit von fünf Jahren verfügbar (allerdings nur für reservierte Instanzen von HBv2 v2 [isoliert]). |
+| Menge | Die Anzahl von Instanzen, die innerhalb der Reservierung erworben werden. Die Menge ist die Anzahl ausgeführter reservierter Instanzen von App Service (isoliert) v2, auf die der Abrechnungsrabatt angewendet werden kann. Wenn Sie also beispielsweise zehn reservierte Instanzen von App Service (isoliert) v2 vom Typ „Standard\_D2“ in der Region „USA, Osten“ ausführen, geben Sie als Menge „10“ an, um den größtmöglichen Vorteil für alle ausgeführten reservierten Instanzen von App Service (isoliert) v2 zu erzielen. |
 
 ## <a name="save-with-isolated-stamp-fees"></a>Sparen mit Stempelgebühren (gesondert)
 
