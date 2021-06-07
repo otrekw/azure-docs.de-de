@@ -9,12 +9,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 05/27/2021
-ms.openlocfilehash: 837fdb74cbbeb976641b9ee86970d87b80134bc9
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: e7e0e89b1be822d13a577365bdc9ac277d55b4ce
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: MT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572104"
+ms.locfileid: "111562820"
 ---
 # <a name="centers-for-medicare-and-medicaid-services-cms-interoperability-and-patient-access-rule-introduction"></a>Einführung in die Interoperabilitäts- und Patientenzugriffsregel von Centers forSidere and Lapid Services (CMS)
 
@@ -23,9 +23,9 @@ In dieser Reihe von Tutorials wird eine grobe Zusammenfassung der Interoperabili
 
 ## <a name="rule-overview"></a>Regelübersicht
 
-Das CMS hat die [Interoperabilitäts- und Patientenzugriffsregel](https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index) am 1. Mai 2020 veröffentlicht. Diese Regel erfordert einen kostenlosen und sicheren Datenfluss zwischen allen Beteiligten in der Patientenversorgung (Patienten, Anbieter und Zahlende), damit Patienten bei Bedarf auf ihre Gesundheitsinformationen zugreifen können. Die Interoperabilität hat das Gesundheitswesen seit Mehreren Jahren beeinträchtigt, was zu isolierten Daten führt, die negative Gesundheitsergebnisse mit höheren und unvorhersehbaren Kosten für die Pflege verursachen. CMS verwendet ihre Autorität, um Aussteller von "Advantage" (MA), "Sideid", "Children es Health Insurance Program" (CHIP) und "Qualified Health Plan" (QHP) in den Federally Exchanges (FFEs) zu regeln, um diese Regel zu erzwingen. 
+Das CMS hat die [Interoperabilitäts- und Patientenzugriffsregel](https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index) am 1. Mai 2020 veröffentlicht. Diese Regel stellt einen kostenlosen und sicheren Datenfluss zwischen allen Beteiligten der Patientenversorgung (Patienten, Anbieter und Zahlende) sicher, damit Patienten bei Bedarf auf ihre Gesundheitsinformationen zugreifen können. Die Interoperabilität hat das Gesundheitswesen seit Mehreren Jahren beeinträchtigt, was zu isolierten Daten führt, die negative Gesundheitsergebnisse mit höheren und unvorhersehbaren Kosten für die Pflege verursachen. CMS verwendet ihre Autorität, um Aussteller von "Advantage" (MA), "Sideid", "Children es Health Insurance Program" (CHIP) und "Qualified Health Plan" (QHP) in den Federally Exchanges (FFEs) zu regeln, um diese Regel zu erzwingen. 
 
-Im August 2020 hat CMS ausführlich erläutert, wie Organisationen das Mandate erfüllen können. Um sicherzustellen, dass Daten sicher und standardisiert ausgetauscht werden können, identifiziert CMS FHIR Version 4 (R4) als grundlegenden Standard, der für den Datenaustausch erforderlich ist. 
+Im August 2020 hat CMS ausführlich erläutert, wie Organisationen das Mandate erfüllen können. Um sicherzustellen, dass Daten sicher und standardisiert ausgetauscht werden können, hat CMS FHIR Version R4 als grundlegenden Standard identifiziert, der für den Datenaustausch erforderlich ist. 
 
 Es gibt drei Hauptteile der Interoperabilität und des Patientenzugriffs:
 
@@ -37,14 +37,14 @@ Es gibt drei Hauptteile der Interoperabilität und des Patientenzugriffs:
 
 ## <a name="key-fhir-concepts"></a>Wichtige FHIR-Konzepte
 
-Wie bereits erwähnt, ist FHIR R4 erforderlich, um dieses Erfordernis zu erfüllen. Darüber hinaus wurden mehrere Implementierungsleitfäden entwickelt, die Anleitungen für die Regel bereitstellen. [Implementierungshandbücher](https://www.hl7.org/fhir/implementationguide.html) bieten zusätzlich zur FHIR-Basisspezifikation zusätzlichen Kontext. Dies umfasst das Definieren zusätzlicher Suchparameter, Profile, Erweiterungen, Vorgänge, Wertsätze und Codesysteme.
+Wie bereits erwähnt, ist FHIR Version R4 erforderlich, um dieses Erfordernis zu erfüllen. Darüber hinaus wurden mehrere Implementierungsleitfäden entwickelt, die Anleitungen für die Regel bereitstellen. [Implementierungshandbücher](https://www.hl7.org/fhir/implementationguide.html) bieten zusätzlich zur FHIR-Basisspezifikation zusätzlichen Kontext. Dies umfasst das Definieren zusätzlicher Suchparameter, Profile, Erweiterungen, Vorgänge, Wertsätze und Codesysteme.
 
 Die Azure API for FHIR verfügt über die folgenden Funktionen, mit denen Sie Ihre Datenbank für die verschiedenen Implementierungshandbücher konfigurieren können:
 
 * [Unterstützung für RESTful-Interaktionen](fhir-features-supported.md)
-* [Speichern und Überprüfen von Profilen](validation-against-profiles.md)
-* [Definieren und Indizieren von benutzerdefinierten Suchparametern](how-to-do-custom-search.md)
-* [Konvertieren von Daten](convert-data.md)
+*  [Speichern und Überprüfen von Profilen](validation-against-profiles.md)
+*  [Definieren und Indizieren von benutzerdefinierten Suchparametern](how-to-do-custom-search.md)
+*  [Konvertieren von Daten](convert-data.md)
 
 ## <a name="patient-access-api-implementation-guides"></a>Implementierungshandbücher für die Api für den Patientenzugriff
 
@@ -80,7 +80,7 @@ Dieser Implementierungsleitfaden definiert eine FHIR-Schnittstelle für die Vers
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun über ein grundlegendes Verständnis der Interoperabilitäts- und Patientenzugriffsregel, implementierungsleitfäden und des verfügbaren Testtools (Touchstone) verfügen, werden sie durch die Einrichtung der Azure API for FHIR für die CARIN IG for Blue Button geführt. 
+Nachdem Sie nun über grundlegende Kenntnisse der Interoperabilitäts- und Patientenzugriffsregel, implementierungsleitfäden und des verfügbaren Testtools (Touchstone) verfügen, werden sie durch die Einrichtung der Azure API for FHIR für die CARIN Blue Button IG geführt. 
 
 >[!div class="nextstepaction"]
->[CARIN-Implementierungshandbuch für Blue Button](carin-implementation-guide-blue-button-tutorial.md)  
+>[CARIN-Implementierungshandbuch für Blue Button](https://build.fhir.org/ig/HL7/carin-bb/index.html)  
