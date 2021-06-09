@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 04/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 14328179a297ebcc3994bf627b1690195774b2b1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: dbc03ccd235c456941e5f201b647215389fed92c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741129"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408225"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Häufig gestellte Fragen zu Azure API for FHIR
 
@@ -74,11 +74,11 @@ Wir lassen keine benutzerdefinierten FHIR-Ressourcen zu. Wenn Sie eine benutzerd
 
 ### <a name="are-extensions-supported-on-azure-api-for-fhir"></a>Werden für Azure API for FHIR [Erweiterungen](https://www.hl7.org/fhir/extensibility.html) unterstützt?
 
-Wir erlauben Ihnen, alle gültigen FHIR-JSON-Daten in den Server zu laden. Wenn Sie die Strukturdefinition, die die Erweiterung definiert, speichern möchten, können Sie diese als Strukturdefinitionsressource speichern. Derzeit ist es nicht möglich, nach Erweiterungen zu suchen.
+Wir erlauben Ihnen, alle gültigen FHIR-JSON-Daten in den Server zu laden. Wenn Sie die Strukturdefinition, die die Erweiterung definiert, speichern möchten, können Sie diese als Strukturdefinitionsressource speichern. Um nach Erweiterungen zu suchen, müssen Sie [Ihre eigenen Suchparameter definieren.](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fhealthcare-apis%2Ffhir%2Fhow-to-do-custom-search&data=04%7C01%7Cv-stevewohl%40microsoft.com%7Cc6a08c7f0c86433f248c08d925377d85%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637581742517376233%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=Ws%2FVQ2N33sMagzs393hmR67M9dNaL6WCLXyxXtor6PM%3D&reserved=0) 
 
 ### <a name="what-is-the-limit-on-_count"></a>Welcher Grenzwert gilt für _count?
 
-Der aktuelle Grenzwert für _count ist 1000. Wenn Sie _count 1000 festlegen, erhalten Sie im Paket eine Warnung, dass nur 1.000 Datensätze angezeigt werden.
+Der aktuelle Grenzwert für _count ist 1000. Wenn Sie _count auf mehr als 1000 festlegen, erhalten Sie eine Warnung im Paket, dass nur 1.000 Datensätze angezeigt werden.
 
 ### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>Gelten Einschränkungen für die Funktion „Gruppenexport“?
 
