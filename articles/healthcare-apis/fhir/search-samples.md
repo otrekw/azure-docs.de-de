@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 05/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 6e3a074c24305209047fbd3e741fdb81256374e5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5be1be72e47af10868867e0dce8b747911509381
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460101"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111810804"
 ---
 # <a name="fhir-search-examples"></a>FHIR-Suchbeispiele
 
@@ -55,18 +55,18 @@ In dieser Anforderung erhalten Sie ein Bündel von Patienten zurück, aber jede 
 
 ### <a name="not"></a>:not
 
-`:not` ermöglicht es Ihnen, Ressourcen zu finden, bei denen ein Attribut nicht true ist. Beispielsweise könnten Sie nach Patienten suchen, bei denen das Geschlecht nicht frauenspezifisch ist:
+`:not` ermöglicht es Ihnen, Ressourcen zu finden, bei denen ein Attribut nicht true ist. Sie können z. B. nach Patienten suchen, bei denen das Geschlecht nicht "female" ist:
 
 ```rest
 GET [your-fhir-server]/Patient?gender:not=female
 
 ```
 
-Als Rückgabewert erhalten Sie alle Patienteneinträge, bei denen das Geschlecht nicht frauenfrei ist, einschließlich leerer Werte (Einträge ohne Geschlecht angegeben). Dies unterscheidet sich von der Suche nach Patienten, bei denen das Geschlecht spezifisch ist, da dies die Einträge ohne ein bestimmtes Geschlecht nicht enthalten würde.
+Als Rückgabewert erhalten Sie alle Patienteneinträge, bei denen das Geschlecht nicht "female" ist, einschließlich leerer Werte (Einträge, die ohne Geschlecht angegeben sind). Dies ist anders als bei der Suche nach Patienten, bei denen das Geschlecht ein Geschlecht ist, da dies die Einträge ohne ein bestimmtes Geschlecht nicht enthalten würde.
 
 ### <a name="missing"></a>:missing
 
-`:missing` gibt alle Ressourcen zurück, die keinen Wert für das angegebene Element haben, wenn der Wert `true` ist, und gibt alle Ressourcen zurück, die das angegebene Element enthalten, wenn der Wert `false` ist. Bei einfachen Datentypelementen `:missing=true` stimmt für alle Ressourcen überein, in denen das Element mit Erweiterungen vorhanden ist, aber einen leeren Wert aufweist. Wenn Sie beispielsweise alle Ressourcen suchen möchten, für die Informationen zum Geburtsdatum fehlen, haben Sie folgende `Patient` Möglichkeiten:
+`:missing` gibt alle Ressourcen zurück, die keinen Wert für das angegebene Element haben, wenn der Wert ist, und gibt alle Ressourcen zurück, die das angegebene Element enthalten, wenn der Wert `true` `false` ist. Für einfache Datentypelemente wird für alle Ressourcen übereinstimmen, in denen das Element mit Erweiterungen vorhanden `:missing=true` ist, aber über einen leeren Wert verfügt. Wenn Sie z. B. alle Ressourcen suchen möchten, bei denen Informationen zum Geburtsdatum `Patient` fehlen, können Sie folgendes tun:
 
 ```rest
 GET [your-fhir-server]/Patient?birthdate:missing=true
@@ -74,35 +74,35 @@ GET [your-fhir-server]/Patient?birthdate:missing=true
 ```
 
 ### <a name="exact"></a>:exact
-`:exact` wird für Parameter verwendet `string` und gibt Ergebnisse zurück, die genau mit dem Parameter übereinstimmen, z. B. bei groß-/kleinschreibung und Zeichen verkettet.
+`:exact` wird für Parameter verwendet und gibt Ergebnisse zurück, die genau mit dem Parameter übereinstimmen, z. B. in der `string` Casing- und Zeichenkonkettung.
 
 ```rest
 GET [your-fhir-server]/Patient?name:exact=Jon
 
 ```
 
-Diese Anforderung gibt `Patient` Ressourcen zurück, deren Name genau mit identisch `Jon` ist. Wenn die Ressource Patienten mit Namen wie oder auflistet, `Jonathan` würde die Suche die Ressource ignorieren und `joN` überspringen, da sie nicht genau mit dem angegebenen Wert übereinstimmt.
+Diese Anforderung gibt `Patient` Ressourcen zurück, deren Name exakt mit identisch `Jon` ist. Wenn die Ressource Patienten mit Namen wie oder enthält, würde die Suche die Ressource ignorieren und überspringen, da sie nicht genau mit dem `Jonathan` `joN` angegebenen Wert übereinstimmen würde.
 
 ### <a name="contains"></a>:contains
-`:contains` wird für Parameter verwendet `string` und sucht nach Ressourcen mit teilweisen Übereinstimmungen des angegebenen Werts an einer beliebigen Stelle in der Zeichenfolge innerhalb des zu durchsuchenden Felds. `contains` die Groß-/Kleinschreibung nicht beachtet wird und die Zeichen verkettet werden kann. Beispiel:
+`:contains` wird für Parameter verwendet und sucht nach Ressourcen mit partiellen Übereinstimmungen des angegebenen Werts an einer beliebigen Stelle in der Zeichenfolge innerhalb des `string` durchsuchten Felds. `contains` berücksichtigt die Groß-/Kleinschreibung nicht und ermöglicht die Zeichenkonkettung. Beispiel:
 
 ```rest
 GET [your-fhir-server]/Patient?address:contains=Meadow
 
 ```
 
-Diese Anforderung gibt Alle `Patient` Ressourcen mit `address` Feldern zurück, die Werte enthalten, die die Zeichenfolge "Ziehzeichen" enthalten. Dies bedeutet, dass Sie Adressen, die Werte wie "Betreuer" oder "59 Uhr ST" enthalten, als Suchergebnisse zurückgegeben haben können.
+Diese Anforderung gibt alle Ressourcen mit `Patient` Feldern zurück, die Werte mit der `address` Zeichenfolge "Zeichenfolge" enthalten. Dies bedeutet, dass Adressen, die Werte wie "1000" oder "59 St" enthalten, als Suchergebnisse zurückgegeben werden können.
 
 ## <a name="chained-search"></a>Verkettete Suche 
 
-Um eine Reihe von Suchvorgängen auszuführen, die mehrere Verweisparameter abdecken, können Sie die Reihe von Verweisparametern "verketten", indem Sie sie nacheinander mithilfe eines Punkts an die Serveranforderung `.` anfügen. Wenn Sie beispielsweise alle Ressourcen mit einem Verweis auf eine Ressource anzeigen möchten, `DiagnosticReport` `subject` die eine bestimmte `Patient` `name` enthält:  
+Um eine Reihe von Suchvorgängen durchzuführen, die mehrere Verweisparameter abdecken, können Sie die Reihe von Verweisparametern "verketten", indem Sie sie mithilfe eines Zeitraums nach dem anderen an die Serveranforderung `.` anfügen. Wenn Sie beispielsweise alle Ressourcen mit einem Verweis auf eine Ressource anzeigen möchten, `DiagnosticReport` `subject` die eine bestimmte `Patient` `name` enthält:  
 
 ```rest
  GET [your-fhir-server]/DiagnosticReport?subject:Patient.name=Sarah
 
 ```
 
-Diese Anforderung würde alle Ressourcen mit dem Patientensubjekt "Sarah" zurückgeben. Der `.` Zeitraum, nach dem das `Patient` Feld die verkettete Suche für den Verweisparameter des Parameters `subject` ausführt.
+Diese Anforderung würde alle Ressourcen mit `DiagnosticReport` einem Patientensubjekt namens "Sarah" zurückgeben. Der `.` Zeitraum, nach dem das `Patient` Feld die verkettete Suche für den Verweisparameter des Parameters `subject` ausführt.
 
 Eine weitere häufige Verwendung einer regulären Suche (keine verkettete Suche) besteht in der Suche nach allen Gefundenen für einen bestimmten Patienten. `Patient`s verfügen häufig über ein oder mehrere `Encounter` s mit einem Betreff. So suchen Sie nach allen `Encounter` Ressourcen für eine mit dem `Patient` bereitgestellten `id` :
 
@@ -120,48 +120,48 @@ GET [your-fhir-server]/Encounter?subject:Patient.birthdate=1987-02-20
 
 Dies ermöglicht nicht nur die Suche nach Ressourcen für einen einzelnen Patienten, sondern für alle Patienten, die den angegebenen Wert für `Encounter` das Geburtsdatum haben. 
 
-Darüber hinaus kann die verkettete Suche mehrmals in einer Anforderung mithilfe des Symbols durchgeführt werden, mit dem Sie in einer Anforderung nach mehreren `&` Bedingungen suchen können. In solchen Fällen sucht die verkettete Suche "unabhängig" nach jedem Parameter, anstatt nach Bedingungen zu suchen, die nur alle Bedingungen gleichzeitig erfüllen. Es ist ein OR-Vorgang, kein AND-Vorgang. Wenn Sie z. B. alle Patienten mit einem Bestimmten Namen oder aus einem bestimmten Zustand erhalten möchten:
+Darüber hinaus kann die verkettete Suche mehrmals in einer Anforderung mithilfe des Symbols durchgeführt werden, mit dem Sie in einer Anforderung nach mehreren `&` Bedingungen suchen können. In solchen Fällen sucht die verkettete Suche "unabhängig" nach jedem Parameter, anstatt nach Bedingungen zu suchen, die nur alle Bedingungen gleichzeitig erfüllen:
 
 ```rest
-GET [your-fhir-server]/Patient?general-practitioner.name=Sarah&general-practitioner.address-state=WA
+GET [your-fhir-server]/Patient?general-practitioner:Practitioner.name=Sarah&general-practitioner:Practitioner.address-state=WA
 
 ```
 
-Dadurch würden alle Ressourcen mit "Sarah" als und alle Ressourcen mit der Adresse mit dem Zustand `Patient` `generalPractitioner` WA `Patient` `generalPractitioner` zurückgeben. Anders ausgedrückt: Sie können Sarah aus dem Bundesstaat NY und Bill aus dem Bundesstaat WA beide als zurückgegebene Ergebnisse haben. Die verkettete Suche erfordert nicht die Erfüllung aller Bedingungen und wird anhand des Parameters einzeln ausgewertet.
+Dies würde alle Ressourcen zurückgeben, die "Sarah" als und eine mit der Adresse mit `Patient` `generalPractitioner` dem Zustand WA `generalPractitioner` haben. Anders ausgedrückt: Wenn eine Patientin Sarah aus dem Bundesstaat NY und Bill aus dem Bundesstaat WA beide als die des Patienten bezeichnet hätte, würde `generalPractitioner` zurückgegeben.
 
 Informationen zu Szenarien, in denen die Suche ein AND-Vorgang sein muss, der alle Bedingungen als Gruppe abdeckt, finden Sie unten im Beispiel für die **zusammengesetzte** Suche.
 
 ## <a name="reverse-chain-search"></a>Umgekehrte Kettensuche
 
-Mit der Kettensuche können Sie basierend auf den Eigenschaften der Ressourcen, auf die sie verweisen, nach Ressourcen suchen. Wenn Sie die umgekehrte Kettensuche verwenden, können Sie dies umgekehrt tun. Sie können anhand der Eigenschaften von Ressourcen, die auf sie verweisen, mithilfe des Parameters nach Ressourcen `_has` suchen. Die Ressource verfügt beispielsweise über `Observation` einen Suchparameter, `patient` der auf eine Patient-Ressource verweist. So suchen Sie alle Patientenressourcen, auf die von mit einem bestimmten verwiesen `Observation` `code` wird:
+Mit der Kettensuche können Sie basierend auf den Eigenschaften der Ressourcen, auf die sie verweisen, nach Ressourcen suchen. Mithilfe der umgekehrten Kettensuche können Sie dies umgekehrt tun. Sie können anhand der Eigenschaften von Ressourcen, die auf sie verweisen, mithilfe des Parameters nach Ressourcen `_has` suchen. Beispielsweise verfügt die `Observation` Ressource über einen Suchparameter, `patient` der auf eine Patient-Ressource verweist. So suchen Sie alle Patient-Ressourcen, auf die von mit `Observation` einem bestimmten verwiesen `code` wird:
 
 ```rest
 GET [base]/Patient?_has:Observation:patient:code=527
 
 ```
 
-Diese Anforderung gibt Patientenressourcen zurück, auf die von mit dem Code verwiesen `Observation` `527` wird. 
+Diese Anforderung gibt Patient-Ressourcen zurück, auf die mit `Observation` dem Code verwiesen `527` wird. 
 
-Darüber hinaus kann die umgekehrte Kettensuche eine rekursive Struktur aufweisen. Wenn Sie beispielsweise nach allen Patienten suchen möchten, bei `Observation` denen die Beobachtung über ein Überwachungsereignis eines bestimmten Benutzers `janedoe` verfügt, können Sie Folgendes tun:
+Darüber hinaus kann die umgekehrte Kettensuche eine rekursive Struktur haben. Wenn Sie beispielsweise nach allen Patienten suchen möchten, bei denen die Beobachtung über ein Überwachungsereignis eines bestimmten Benutzers `Observation` `janedoe` verfügt, können Sie folgende Aufgaben unternehmen:
 
 ```rest
-GET [base]/Patient?_has:Observation:patient:_has:AuditEvent:entity:user=janedoe
+GET [base]/Patient?_has:Observation:patient:_has:AuditEvent:entity:agent:Practitioner.name=janedoe
 
 ``` 
 
 > [!NOTE]
-> Im Azure API for FHIR und auf dem Open-Source-FHIR-Server, der von Cosmos unterstützt wird, ist die verkettete Suche und die umgekehrte verkettete Suche eine MVP-Implementierung. Um die verkettete Suche auf Cosmos DB durchzuführen, führt die Implementierung den Suchausdruck durch und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Featureflag. Um die verkettete Suche für Cosmos DB zu verwenden, verwenden Sie den Header x-ms-enable-chained-search: true.
+> In der Azure API for FHIR und dem von Cosmos unterstützten Open-Source-FHIR-Server ist die verkettete Suche und die umgekehrte verkettete Suche eine MVP-Implementierung. Um eine verkettete Suche auf Cosmos DB zu ermöglichen, durchsucht die Implementierung den Suchausdruck und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst.
 
 ## <a name="composite-search"></a>Zusammengesetzte Suche
 
-Um nach Ressourcen zu suchen, die mehrere Bedingungen gleichzeitig erfüllen, verwenden Sie die zusammengesetzte Suche, die eine Sequenz einzelner Parameterwerte mit einem Symbol `$` verbindet. Das zurückgegebene Ergebnis wäre die Schnittmenge der Ressourcen, die mit allen Bedingungen übereinstimmen, die von den verknüpften Suchparametern angegeben werden. Solche Suchparameter werden als zusammengesetzte Suchparameter bezeichnet und definieren einen neuen Parameter, der die mehreren Parameter in einer geschachtelten Struktur kombiniert. Wenn Sie z. B. alle Ressourcen suchen möchten, die einen Wert von `DiagnosticReport` `Observation` 9,2 oder kleiner als 9,2 enthalten:
+Um nach Ressourcen zu suchen, die mehrere Bedingungen gleichzeitig erfüllen, verwenden Sie die zusammengesetzte Suche, die eine Sequenz einzelner Parameterwerte mit einem Symbol `$` verbindet. Das zurückgegebene Ergebnis wäre die Schnittmenge der Ressourcen, die mit allen Bedingungen übereinstimmen, die von den parametern für die verbundene Suche angegeben werden. Solche Suchparameter werden als zusammengesetzte Suchparameter bezeichnet und definieren einen neuen Parameter, der die mehreren Parameter in einer geschachtelten Struktur kombiniert. Wenn Sie z. B. alle Ressourcen suchen möchten, die einen wert kleiner oder `DiagnosticReport` `Observation` gleich 9,2 enthalten:
 
 ```rest
 GET [your-fhir-server]/DiagnosticReport?result.code-value-quantity=2823-3$lt9.2
 
 ``` 
 
-Diese Anforderung gibt die Komponente an, die den Code enthält. In `2823-3` diesem Fall wäre dies ein 1:0-Wert. Nach dem Symbol wird der Bereich des Werts für die Komponente angegeben, der für "kleiner als oder gleich" und für den `$` `lt` `9.2` Wertbereich "zeichenium" verwendet. 
+Diese Anforderung gibt die Komponente an, die einen Code von `2823-3` enthält, in diesem Fall wäre dies "füllium". Nach dem Symbol wird der Bereich des Werts für die Komponente angegeben, der für "kleiner als oder gleich" und für den `$` `lt` `9.2` Wertbereich "zeichenium" verwendet. 
 
 ## <a name="search-the-next-entry-set"></a>Suchen des nächsten Eintragssets
 
