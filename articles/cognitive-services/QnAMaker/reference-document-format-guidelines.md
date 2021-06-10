@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: 15ff2ec296cedc37b086a9ca2d0825fb20b4f05a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e45720543a5fc5f3293a2aae0c2740af1048384a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99549540"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465227"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Formatierungsrichtlinien für importierte Dokumente und URLs
 
@@ -42,7 +42,8 @@ Bei einem Handbuch handelt es sich in der Regel um Anleitungen, die mit einem Pr
 
 Unten sehen Sie ein Beispiel für ein Handbuch mit einer Indexseite und hierarchischen Inhalten.
 
- ![Beispiel für ein Produkthandbuch für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/product-manual.png)
+> [!div class="mx-imgBorder"]
+> ![Beispiel für ein Produkthandbuch für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/product-manual.png)
 
 > [!NOTE]
 > Das Extrahieren funktioniert am besten bei Handbüchern, die über ein Inhaltsverzeichnis und/oder eine Indexseite verfügen und eine klare Struktur mit hierarchischen Überschriften aufweisen.
@@ -53,7 +54,22 @@ Viele andere Arten von Dokumenten können ebenfalls verarbeitet werden, um QA-Pa
 
 Unten sehen Sie ein Beispiel für ein semistrukturiertes Dokument ohne Index:
 
- ![Semistrukturiertes Azure Blob Storage-Dokument](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
+> [!div class="mx-imgBorder"]
+> ![Semistrukturiertes Azure Blob Storage-Dokument](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
+
+### <a name="unstructured-document-support"></a>Unterstützung unstrukturierter Dokumente
+
+„Benutzerdefinierte Fragen und Antworten“ unterstützt nun unstrukturierte Dokumente. Ein Dokument, dessen Inhalt nicht in einer klar definierten hierarchischen Weise organisiert ist, dem eine festgelegte Struktur fehlt oder dessen Inhalt frei fließend ist, kann als unstrukturiertes Dokument betrachtet werden.
+
+Im Anschluss sehen Sie ein Beispiel für ein unstrukturiertes PDF-Dokument:
+
+> [!div class="mx-imgBorder"]
+> ![Beispiel für ein unstrukturiertes Dokument für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/unstructured-qna-pdf.png)
+
+ Diese Funktionalität ist derzeit nur über den Dokumentupload und nur für Dateien im PDF- und DOC-Format verfügbar.
+
+> [!IMPORTANT]
+> Unterstützung für unstrukturierte Dateien/Inhalte ist nur in „Benutzerdefinierte Fragen und Antworten“ (Vorschau) verfügbar.
 
 ### <a name="structured-qna-document"></a>Strukturiertes QnA-Dokument
 
@@ -71,11 +87,12 @@ Answer2
 
 Unten sehen Sie ein Beispiel für ein strukturiertes QnA-Word-Dokument:
 
- ![Beispiel für ein strukturiertes QnA-Dokument für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
+> [!div class="mx-imgBorder"]
+> ![Beispiel für ein strukturiertes QnA-Dokument für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
 
 ### <a name="structured-txt-tsv-and-xls-files"></a>Strukturierte *TXT*-, *TSV*- und *XLS*-Dateien
 
-QnAs in Form von strukturierten *TXT*-, *TSV*- oder *XLS*-Dateien können auch in QnA Maker hochgeladen werden, um eine Wissensdatenbank zu erstellen oder zu erweitern.  Dabei kann es sich um Nur-Text-Dateien oder um Dateien mit Inhalten im RTF- oder HTML-Format handeln.
+QnAs in Form von strukturierten *TXT*-, *TSV*- oder *XLS*-Dateien können auch in QnA Maker hochgeladen werden, um eine Wissensdatenbank zu erstellen oder zu erweitern.  Dabei kann es sich um Nur-Text-Dateien oder um Dateien mit Inhalten im RTF- oder HTML-Format handeln. [Frage-Antwort-Paare](/how-to/edit-knowledge-base#question-and-answer-pairs) verfügen über ein optionales Metadatenfeld, mit dem Frage-Antwort-Paare in Kategorien zusammengefasst werden können.
 
 | Frage  | Antwort  | Metadaten (1 Schlüssel: 1 Wert) |
 |-----------|---------|-------------------------|
@@ -88,21 +105,24 @@ Alle weiteren Spalten in der Quelldatei werden ignoriert.
 
 Unten sehen Sie ein Beispiel für eine strukturierte QnA-*XLS*-Datei mit HTML-Inhalten:
 
- ![Beispiel für eine strukturierte QnA-Excel-Datei für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
+> [!div class="mx-imgBorder"]
+> ![Beispiel für eine strukturierte QnA-Excel-Datei für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
 #### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Beispiel für alternative Fragen zu einer einzelnen Antwort in einer Excel-Datei
 
 Unten sehen Sie ein Beispiel für eine strukturierte QnA-*XLS*-Datei mit mehreren alternativen Fragen zu einer einzelnen Antwort:
 
- ![Beispiel für alternative Fragen zu einer einzelnen Antwort in einer Excel-Datei](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+> [!div class="mx-imgBorder"]
+> ![Beispiel für alternative Fragen zu einer einzelnen Antwort in einer Excel-Datei](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
 
 Nachdem die Datei importiert wurde, befindet sich das Frage- und Antwortpaar in der Wissensdatenbank wie nachfolgend gezeigt:
 
- ![Screenshot alternativer Fragen zu einer einzelnen Antwort, die in die Wissensdatenbank importiert wurden](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot alternativer Fragen zu einer einzelnen Antwort, die in die Wissensdatenbank importiert wurden](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
 ### <a name="structured-data-format-through-import"></a>Strukturiertes Datenformat durch Import
 
-Beim Importieren einer Wissensdatenbank wird der Inhalt der vorhandenen Wissensdatenbank ersetzt. Der Import erfordert eine strukturierte TSV-Datei, die Informationen zur Datenquelle enthält. Diese Informationen helfen QnA Maker beim Gruppieren der Frage-Antwort-Paare und dem Zuweisen zu einer bestimmten Datenquelle.
+Beim Importieren einer Wissensdatenbank wird der Inhalt der vorhandenen Wissensdatenbank ersetzt. Der Import erfordert eine strukturierte TSV-Datei, die Informationen zur Datenquelle enthält. Diese Informationen helfen QnA Maker beim Gruppieren der Frage-Antwort-Paare und dem Zuweisen zu einer bestimmten Datenquelle. [Frage-Antwort-Paare](/how-to/edit-knowledge-base#question-and-answer-pairs) verfügen über ein optionales Metadatenfeld, mit dem Frage-Antwort-Paare in Kategorien zusammengefasst werden können.
 
 | Frage  | Antwort  | `Source`| Metadaten (1 Schlüssel: 1 Wert) |
 |-----------|---------|----|---------------------|
@@ -133,7 +153,8 @@ Dies ist der am häufigsten verwendete Typ einer FAQ-Seite, bei der auf der glei
 
 Unten sehen Sie ein Beispiel für eine einfache FAQ-Seite:
 
-![Beispiel für eine einfache FAQ-Seite für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/plain-faq.png)
+> [!div class="mx-imgBorder"]
+> ![Beispiel für eine einfache FAQ-Seite für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/plain-faq.png)
 
 
 ### <a name="faq-pages-with-links"></a>FAQ-Seiten mit Links
@@ -142,7 +163,8 @@ Bei diesem FAQ-Seitentyp sind Fragen zusammengefasst und mit Antworten verknüpf
 
 Unten sehen Sie ein Beispiel für eine FAQ-Seite mit Links in Abschnitten, die sich auf derselben Seite befinden:
 
- ![Beispiel für eine FAQ-Seite mit Abschnittsverknüpfung für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
+> [!div class="mx-imgBorder"]
+> ![Beispiel für eine FAQ-Seite mit Abschnittsverknüpfung für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
 
 
 ### <a name="parent-topics-page-links-to-child-answers-pages"></a>Übergeordnete Themenseite mit Links zu untergeordneten Antwortseiten
@@ -151,7 +173,8 @@ Diese Art von FAQ verfügt über eine Themenseite, auf der jedes Thema mit einem
 
 Unten sehen Sie ein Beispiel für eine Themenseite mit Links zu FAQ-Abschnitten auf verschiedenen Seiten.
 
- ![Beispiel für eine FAQ-Seite mit Deep-Link für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/topics-faq.png)
+> [!div class="mx-imgBorder"]
+> ![Beispiel für eine FAQ-Seite mit Deep-Link für eine Wissensdatenbank](./media/qnamaker-concepts-datasources/topics-faq.png)
 
 ### <a name="support-urls"></a>Support-URLs
 
@@ -160,7 +183,8 @@ QnA Maker kann semistrukturierte Supportwebseiten verarbeiten. Hierzu zählen be
 > [!NOTE]
 > Die Extraktion für Supportartikel ist ein neues Feature und befindet sich noch in einer frühen Phase. Sie funktioniert am besten für einfache, gut strukturierte Seiten ohne komplexe Kopf- und Fußzeilen.
 
-![QnA Maker unterstützt die Extraktion von semistrukturierten Webseiten, die über eine klare Struktur mit hierarchischen Überschriften verfügen.](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+> [!div class="mx-imgBorder"]
+> ![QnA Maker unterstützt die Extraktion von semistrukturierten Webseiten, die über eine klare Struktur mit hierarchischen Überschriften verfügen.](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
 
 ## <a name="import-and-export-knowledge-base"></a>Importieren und Exportieren der Knowledge Base
 
