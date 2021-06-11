@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 5/11/2021
 ms.author: cavoeg
-ms.openlocfilehash: b245fcaecde13c4a751926e9b7bd639a43b36701
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 936728cba33a81f65a6607ca3d46aca9621145ee
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111809044"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970313"
 ---
 # <a name="configure-export-setting-and-set-up-the-storage-account"></a>Konfigurieren von Exporteinstellungen und Einrichten des Speicherkontos
 
@@ -42,7 +42,7 @@ Nachdem Sie ein Speicherkonto erstellt haben, wechseln Sie zum Access Control **
 
 Weitere Informationen zum Zuweisen von Rollen im Azure-Portal finden Sie unter [Integrierte Azure-Rollen.](../../role-based-access-control/role-assignments-portal.md)
 
-Hier fügen Sie unserem Dienstnamen die Rolle Mitwirkender an [Storage-Blobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) hinzu, und wählen Sie dann **Speichern aus.**
+Hier fügen Sie unserem Dienstnamen die Rolle Mitwirkender an [Storage-Blobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) hinzu, und wählen Sie dann **Speichern aus.**
 
 ![Seite „Rollenzuweisung hinzufügen“](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
@@ -57,7 +57,7 @@ Der letzte Schritt besteht im Zuweisen des Azure-Speicherkontos, in Azure API fo
 Nachdem Sie diesen letzten Schritt abgeschlossen haben, können Sie die Daten nun mithilfe des befehls $export exportieren.
 
 > [!Note]
-> Nur Speicherkonten im gleichen Abonnement wie für Azure API for FHIR können als Ziel für $export registriert werden.
+> Nur Speicherkonten im gleichen Abonnement wie Azure API for FHIR können als Ziel für $export registriert werden.
 
 Weitere Informationen zum Konfigurieren von Datenbankeinstellungen, Zugriffssteuerung, Aktivieren der Diagnoseprotokollierung und Verwenden benutzerdefinierter Header zum Hinzufügen von Daten zu Überwachungsprotokollen finden Sie unter:
 
