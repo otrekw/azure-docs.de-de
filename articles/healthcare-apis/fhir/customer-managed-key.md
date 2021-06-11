@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/04/2021
 ms.author: ginle
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 371b1286976a5f9dabfb82a5a706ff4a2672ceb2
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 0c32725d020043c3cd62828e4bdccfafef2f53aa
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110700482"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970172"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>Konfigurieren kundenseitig verwalteter Schlüssel im Ruhezustand
 
@@ -31,26 +31,26 @@ Informationen zu den ersten Schritte finden Sie unter den folgenden Links:
 
 ## <a name="using-azure-portal"></a>Verwenden des Azure-Portals
 
-Wenn Sie Ihr Azure API for FHIR-Konto auf Azure-Portal erstellen, wird  ihnen auf der  Registerkarte Zusätzliche Einstellungen unter den Datenbankeinstellungen die Option **Datenverschlüsselungskonfiguration** angezeigt. Standardmäßig wird die Option dienstverschlüsselte Schlüssel ausgewählt.
+Wenn Sie Ihr Azure API for FHIR-Konto auf Azure-Portal erstellen, werden Sie auf der Registerkarte **Zusätzliche Einstellungen** unter den **Datenbankeinstellungen** die Konfigurationsoption **Datenverschlüsselung** bemerken. Standardmäßig wird die Option Vom Dienst verwalteter Schlüssel ausgewählt.
 
 > [!Important]
-> Die Datenverschlüsselungsoption ist nur verfügbar, wenn die Azure API for FHIR erstellt wird und anschließend nicht mehr geändert werden kann. Sie können den Verschlüsselungsschlüssel jedoch anzeigen und aktualisieren, wenn die Option Vom Kunden **verwalteter** Schlüssel ausgewählt ist. 
+> Die Datenverschlüsselungsoption ist nur verfügbar, wenn die Azure API for FHIR erstellt wird, und kann danach nicht mehr geändert werden. Sie können den Verschlüsselungsschlüssel jedoch anzeigen und aktualisieren, wenn die Option **Vom Kunden verwalteter Schlüssel** ausgewählt ist. 
 
 
 Sie können Ihren Schlüssel in der Schlüsselauswahl auswählen:
 
 :::image type="content" source="media/bring-your-own-key/bring-your-own-key-keypicker.png" alt-text="Schlüsselauswahl":::
 
-Sie können ihren schlüsselbasierten Schlüssel Azure Key Vault, indem Sie die Option Vom Kunden **verwalteter Schlüssel** auswählen.
+Sie können hier auch Ihren Azure Key Vault Schlüssel angeben, indem Sie die Option **Kundenverwaltete Schlüssel** auswählen.
  
 Sie können den Schlüssel-URI auch hier eingeben:
 
 :::image type="content" source="media/bring-your-own-key/bring-your-own-key-create.png" alt-text="Erstellen einer Azure API for FHIR-Instanz":::
 
 > [!Important]
-> Stellen Sie sicher, dass Azure Key Vault Berechtigungen für die Berechtigungen entsprechend festgelegt sind. Weitere Informationen finden Sie unter [Hinzufügen einer Zugriffsrichtlinie zu Ihrer Azure Key Vault Instanz.](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk#add-access-policy) Stellen Sie außerdem sicher, dass das weiche Löschen in den Eigenschaften des -Key Vault. Wenn Sie diese Schritte nicht ausführen, tritt ein Bereitstellungsfehler auf. Weitere Informationen finden Sie unter Überprüfen, ob das weiche Löschen in einem Schlüsseltresor aktiviert [ist, und Aktivieren des weichen Löschens.](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete)
+> Stellen Sie sicher, dass alle Berechtigungen für Azure Key Vault entsprechend festgelegt sind. Weitere Informationen finden Sie unter [Hinzufügen einer Zugriffsrichtlinie zu Ihrer Azure Key Vault Instanz.](../../cosmos-db/how-to-setup-cmk.md#add-access-policy) Stellen Sie außerdem sicher, dass das soft delete in den Eigenschaften des Key Vault aktiviert ist. Wenn Sie diese Schritte nicht ausführen, tritt ein Bereitstellungsfehler auf. Weitere Informationen finden Sie unter Überprüfen, ob das soft delete für [einen Schlüsseltresor aktiviert ist, und Aktivieren des soft delete.](../../key-vault/general/key-vault-recovery.md?tabs=azure-portal#verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete)
 
-Für vorhandene FHIR-Konten können Sie die Schlüsselverschlüsselungsauswahl ( vom Dienst  verwalteter Schlüssel oder vom Kunden verwalteter Schlüssel **)** auf dem Blatt Datenbank anzeigen, wie unten dargestellt. Die Konfigurationsoption kann nicht mehr geändert werden, nachdem sie ausgewählt wurde. Sie können aber Ihren Schlüssel ändern und aktualisieren.
+Für vorhandene FHIR-Konten können Sie die Auswahl der Schlüsselverschlüsselung **(dienstverwaltete Schlüssel** oder **kundenverwaltete Schlüssel)** auf dem Blatt **Datenbank** anzeigen, wie unten dargestellt. Die Konfigurationsoption kann nicht mehr geändert werden, nachdem sie ausgewählt wurde. Sie können aber Ihren Schlüssel ändern und aktualisieren.
 
 :::image type="content" source="media/bring-your-own-key/bring-your-own-key-database.png" alt-text="Datenbank":::
 
@@ -146,7 +146,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie kundenverschlüsselte ruhende Schlüssel mithilfe von Azure-Portal, PowerShell, cli und der Resource Manager konfigurieren. Weitere Informationen finden Sie im abschnitt Azure Cosmos DB FAQ. 
+In diesem Artikel haben Sie erfahren, wie Sie vom Kunden verwaltete Schlüssel im Ruhezustand mithilfe der Azure-Portal, PowerShell, CLI und Resource Manager Vorlage konfigurieren. Weitere Informationen finden Sie im Abschnitt mit häufig gestellten Fragen zu Azure Cosmos DB. 
  
 >[!div class="nextstepaction"]
 >[Häufig gestellte Fragen](../../cosmos-db/how-to-setup-cmk.md#frequently-asked-questions)
