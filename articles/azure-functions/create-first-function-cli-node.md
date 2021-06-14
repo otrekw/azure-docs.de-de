@@ -1,5 +1,5 @@
 ---
-title: 'Erstellen einer Java-Funktion über die Befehlszeile: Azure Functions'
+title: 'Erstellen einer JavaScript-Funktion über die Befehlszeile: Azure Functions'
 description: Erfahren Sie, wie Sie eine JavaScript-Funktion über die Befehlszeile erstellen und anschließend das lokale Node.js-Projekt für das serverlose Hosten in Azure Functions veröffentlichen.
 ms.date: 11/03/2020
 ms.topic: quickstart
