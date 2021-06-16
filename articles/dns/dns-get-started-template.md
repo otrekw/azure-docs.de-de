@@ -5,18 +5,16 @@ description: Erfahren Sie, wie Sie eine DNS-Zone und einen DNS-Eintrag in Azure 
 services: dns
 author: duongau
 ms.author: duau
-ms.date: 09/8/2020
+ms.date: 6/2/2021
 ms.topic: quickstart
 ms.service: dns
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 3ec97385d9774b93c04ebc4b8c5885d7effbbcd0
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 4b025f9073497a718f5ab47144794e84b57b1b5b
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949450"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111568533"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines DNS-Eintrags mithilfe einer ARM-Vorlage
 
@@ -34,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-azure-dns-new-zone).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/azure-dns-new-zone).
 
 In dieser Schnellstartanleitung erstellen Sie eine eindeutige DNS-Zone mit dem Suffix `azurequickstart.org`. Ein `A`-Eintrag, der auf zwei IP-Adressen verweist, wird ebenfalls in der Zone platziert.
 

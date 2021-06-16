@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: b397115f6e84b414d9224134b7b6999228064407
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: aebadcbb37a91b1a908054738fc901c6e7e54ac1
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373243"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004473"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Erstellen eines Computeclusters für Azure Machine Learning
 
@@ -106,7 +106,7 @@ Weitere Informationen zum Erstellen eines Computeclusters im Studio finden Sie u
 
  ## <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> Senken Ihrer Computeclusterkosten
 
-Sie können sich auch dafür entscheiden, [virtuelle Computer mit niedriger Priorität](concept-plan-manage-cost.md#low-pri-vm) zu verwenden, um einige oder alle Ihre Workloads auszuführen. Diese virtuellen Computer haben keine garantierte Verfügbarkeit und können während der Verwendung vorzeitig entfernt werden. Sie müssen einen vorzeitig entfernten Auftrag neu starten. 
+Sie können sich auch dafür entscheiden, [virtuelle Computer mit niedriger Priorität](how-to-manage-optimize-cost.md#low-pri-vm) zu verwenden, um einige oder alle Ihre Workloads auszuführen. Diese virtuellen Computer haben keine garantierte Verfügbarkeit und können während der Verwendung vorzeitig entfernt werden. Sie müssen einen vorzeitig entfernten Auftrag neu starten. 
 
 Verwenden Sie eine der folgenden Methoden, um einen virtuellen Computer mit niedriger Priorität anzugeben:
     

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 09fb738a499d6016c3aead0d33436f034bc5d339
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2705364fb60e0de02ae9c119228a93be8313f5eb
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728401"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984840"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Einrichten einer regionsübergreifenden Notfallwiederherstellung für Integrationskonten in Azure Logic Apps
 
@@ -79,7 +79,7 @@ Um ein Fallback auf eine primäre Region durchzuführen, sobald sie verfügbar i
 Die Geschäftskontinuität für EDI X12-Dokumente basiert auf Kontrollnummern:
 
 > [!TIP]
-> Sie können Logik-Apps auch mithilfe der [X12-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/) erstellen. Als Voraussetzung für die Verwendung der Vorlage müssen Integrationskonten für die primäre und die sekundäre Region erstellt werden. Mit der Vorlage können zwei Logik-Apps erstellt werden, eine für empfangene Kontrollnummern und eine zweite für generierte Kontrollnummern. In den Logik-Apps werden die entsprechenden Trigger und Aktionen erstellt. Der Trigger wird mit dem Integrationskonto der primären Region und die Aktion mit dem Integrationskonto der sekundären Region verbunden.
+> Sie können Logik-Apps auch mithilfe der [X12-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/logic-app-b2b-disaster-recovery-replication/) erstellen. Als Voraussetzung für die Verwendung der Vorlage müssen Integrationskonten für die primäre und die sekundäre Region erstellt werden. Mit der Vorlage können zwei Logik-Apps erstellt werden, eine für empfangene Kontrollnummern und eine zweite für generierte Kontrollnummern. In den Logik-Apps werden die entsprechenden Trigger und Aktionen erstellt. Der Trigger wird mit dem Integrationskonto der primären Region und die Aktion mit dem Integrationskonto der sekundären Region verbunden.
 
 **Voraussetzungen**
 

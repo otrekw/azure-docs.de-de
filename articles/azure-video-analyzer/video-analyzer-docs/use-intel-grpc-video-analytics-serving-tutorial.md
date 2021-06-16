@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie die Edge-KI-Erweiterung �
 ms.topic: tutorial
 ms.service: azure-video-analyzer
 ms.date: 05/18/2021
-ms.openlocfilehash: e06acecfd65686d90afa4727dd611bcfa2877c51
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9f3a313b1dc99fd86bc2ee764a78a151e8d88f96
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465711"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440556"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>Tutorial: Analysieren von Livevideos mit der Edge-KI-Erweiterung „Intel OpenVINO™ DL Streamer“ 
 
@@ -119,7 +119,7 @@ Wenn Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-a
 1. Bearbeiten Sie die Datei *operations.json*:
     * Ändern Sie den Link zur Livepipelinetopologie:
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/grpcExtensionOpenVINO/topology.json"`
+        `"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/grpcExtensionOpenVINO/topology.json"`
 
     * Bearbeiten Sie unter `pipelineTopologySet` den Namen der Livepipelinetopologie, sodass er mit dem Wert im vorherigen Link übereinstimmt:
 

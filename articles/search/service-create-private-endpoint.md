@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: 7445ac5d750ac29d3e6ce466a48e82efd1bcde40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cad0611efe46a934560a89b9fda4d7fa57e4deb
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545529"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082269"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Erstellen eines privaten Endpunkts für sichere Verbindungen mit Azure Cognitive Search
 
@@ -129,7 +129,7 @@ In diesem Abschnitt erstellen Sie einen neuen Azure Cognitive Search-Dienst mit 
     | Size | Übernehmen Sie den Standardwert **Standard DS1 v2**. |
     | **ADMINISTRATORKONTO** |  |
     | Username | Geben Sie einen Benutzernamen Ihrer Wahl ein. |
-    | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.|
     | Kennwort bestätigen | Geben Sie das Kennwort erneut ein. |
     | **REGELN FÜR EINGEHENDE PORTS** |  |
     | Öffentliche Eingangsports | Übernehmen Sie die Standardeinstellung **Ausgewählte Ports zulassen**. |

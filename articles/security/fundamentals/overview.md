@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 413e8387e6e6e1c1386aa9477aebe37b2488c098
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047778"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950552"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in die Azure-Sicherheit
 
@@ -363,7 +363,7 @@ Microsoft verwendet mehrere Sicherheitsmaßnahmen und -technologien für seine P
 
 - [In Azure Active Directory eingebunden](../../active-directory/devices/overview.md) ermöglicht Ihnen das Erweitern von Cloudfunktionen auf Windows 10-Geräte für die zentrale Verwaltung. Dadurch erhalten Benutzer die Möglichkeit, über Azure Active Directory eine Verbindung mit der Cloud des Unternehmens oder der Organisation herzustellen. Dies vereinfacht den Zugriff auf Apps und Ressourcen.
 
-- Der [Azure Active Directory-Anwendungsproxy](../../active-directory/manage-apps/application-proxy.md) ermöglicht das einmalige Anmelden (SSO) und den sicheren Remotezugriff für lokal gehostete Webanwendungen.
+- Der [Azure Active Directory-Anwendungsproxy](../../active-directory/app-proxy/application-proxy.md) ermöglicht das einmalige Anmelden (SSO) und den sicheren Remotezugriff für lokal gehostete Webanwendungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

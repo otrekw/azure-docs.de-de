@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 03/15/2021
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ba28d003f359af12de6242c6d2444fb8adab0d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c37017269eb8989102353b079f61c104f5061749
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562754"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074924"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen einer virtuellen Windows-Maschine im Azure-Portal
 
@@ -39,7 +39,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
     ![Screenshot: Abschnitt „Instanzdetails“, in dem Sie einen Namen für den virtuellen Computer angeben und Region, Image und Größe für ihn auswählen](./media/quick-create-portal/instance-details.png)
 
-1. Geben Sie unter **Administratorkonto** einen Benutzernamen wie *azureuser* an sowie ein Kennwort. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
+1. Geben Sie unter **Administratorkonto** einen Benutzernamen wie *azureuser* an sowie ein Kennwort. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.yml#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.
 
     ![Screenshot: Abschnitt „Administratorkonto“, in dem Sie den Benutzernamen und das Kennwort des Administrators angeben](./media/quick-create-portal/administrator-account.png)
 
@@ -56,6 +56,8 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 1. Wenn Ihre Bereitstellung abgeschlossen ist, wählen Sie **Go to resource** (Zu Ressource wechseln) aus.
 
     ![Screenshot: Nächster Schritt zum Navigieren zur Ressource](./media/quick-create-portal/next-steps.png)
+
+[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 

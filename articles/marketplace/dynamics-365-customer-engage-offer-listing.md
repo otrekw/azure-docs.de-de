@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/20/2021
-ms.openlocfilehash: ced923253b1e426c0d67594deed90c7fa6d8c37e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: f6769d693eb19943ce8412d045a76382c4d98fb8
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820140"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110612659"
 ---
 # <a name="configure-dynamics-365-for-customer-engagement--power-apps-offer-listing-details"></a>Konfigurieren Sie Dynamics 365 für Customer Engagement & Power Apps Angebotsdetails
 
@@ -75,8 +75,6 @@ Geben Sie mindestens ein (und höchstens drei) zugehörige PDF-Marketingdokument
 ## <a name="marketplace-media"></a>Marketplace-Medien
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Bei unscharfen Bildern wird Ihre Übermittlung abgelehnt.
-
-[!INCLUDE [logo tips](includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.

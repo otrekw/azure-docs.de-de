@@ -1,15 +1,15 @@
 ---
 title: 'Referenz: Azure Policy-Gastkonfigurationsbaseline für Windows'
 description: Details der Windows-Baseline in Azure, die durch die Azure Policy-Gastkonfiguration implementiert wird.
-ms.date: 05/11/2021
+ms.date: 06/11/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: f4e5dd5470c2a8640501e511934ff2848d3b21bd
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f0eaf007d890751d339ec6ada6c568d54ba4d107
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789051"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032994"
 ---
 # <a name="azure-policy-guest-configuration-baseline-for-windows"></a>Azure Policy-Gastkonfigurationsbaseline für Windows
 

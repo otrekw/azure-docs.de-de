@@ -3,12 +3,12 @@ title: Ermitteln der Ursachen für Nichtkonformität
 description: Wenn eine Ressource nicht konform ist, kann das viele mögliche Ursachen haben. Erfahren Sie, wie Sie die Ursache für die Nichtkonformität ermitteln können.
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: d36ed90990d2f8ba6677281ed865625da8cd3c17
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 00871b35911d845ec1e238c37c6db7e2db055e3b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752703"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970356"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -130,7 +130,7 @@ Auf der Seite **Gastzuweisung** werden alle verfügbaren Konformitätsdetails an
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>Änderungsverlauf (Vorschau)
 
-Im Rahmen einer neuen **öffentlichen Vorschau** sind die letzten 14 Tage des Änderungsverlaufs für alle Azure-Ressourcen verfügbar, die die [Löschung im vollständigen Modus](../../../azure-resource-manager/templates/complete-mode-deletion.md) unterstützen. Der Änderungsverlauf enthält Details dazu, wann eine Änderung erkannt wurde, und eine _Visual Diff_ jeder Änderung. Eine Änderungserkennung wird ausgelöst, wenn Azure Resource Manager-Eigenschaften hinzugefügt, entfernt oder geändert werden.
+Im Rahmen einer neuen **öffentlichen Vorschau** sind die letzten 14 Tage des Änderungsverlaufs für alle Azure-Ressourcen verfügbar, die die [Löschung im vollständigen Modus](../../../azure-resource-manager/templates/deployment-complete-mode-deletion.md) unterstützen. Der Änderungsverlauf enthält Details dazu, wann eine Änderung erkannt wurde, und eine _Visual Diff_ jeder Änderung. Eine Änderungserkennung wird ausgelöst, wenn Azure Resource Manager-Eigenschaften hinzugefügt, entfernt oder geändert werden.
 
 1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie die Option **Alle Dienste** auswählen und dann nach **Policy** suchen und die entsprechende Option auswählen.
 

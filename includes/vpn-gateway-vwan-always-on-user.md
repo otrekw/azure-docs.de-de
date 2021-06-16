@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 05/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3b68fce603801c7bc1aee2af871df257b5f69197
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e80f4f8aefcac6b93c2b63f4463e679a7ceb75d2
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96027959"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579695"
 ---
 1. Installieren Sie Clientzertifikate auf dem Windows 10-Client wie in diesem Artikel zum [Point-to Site-VPN-Client](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) gezeigt. Das Zertifikat muss sich im Speicher des aktuellen Benutzers befinden.
 

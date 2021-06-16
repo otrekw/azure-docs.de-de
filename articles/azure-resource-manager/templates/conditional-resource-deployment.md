@@ -2,17 +2,17 @@
 title: Bedingte Bereitstellung mit Vorlagen
 description: Beschreibt, wie eine Ressource in einer Azure Resource Manager-Vorlage (ARM-Vorlage) bedingt bereitgestellt werden kann.
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 8be42b4e57e628e41afa5cd914f9dcf72ebe4ab7
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.date: 05/07/2021
+ms.openlocfilehash: 352ee71fea77608ae27552630a7d302b215374a1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736950"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969487"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>Bedingte Bereitstellung in ARM-Vorlagen
 
-Manchmal müssen Sie eine Ressource optional in einer Azure Resource Manager-Vorlage (ARM-Vorlage) oder Bicep-Datei bereitstellen. Verwenden Sie für JSON-Vorlagen das `condition`-Element, um anzugeben, ob die Ressource bereitgestellt wird. Verwenden Sie für Bicep das `if`-Schlüsselwort, um anzugeben, ob die Ressource bereitgestellt wird. Der Wert für die Bedingung wird in „true“ oder „false“ aufgelöst. Wenn der Wert TRUE ist, wird die Ressource erstellt. Wenn der Wert FALSE ist, wird die Ressource nicht erstellt. Der Wert kann nur auf die gesamte Ressource angewandt werden.
+Manchmal müssen Sie eine Ressource optional in einer Azure Resource Manager-Vorlage (ARM-Vorlage) bereitstellen. Verwenden Sie das `condition`-Element, um anzugeben, ob die Ressource bereitgestellt wird. Der Wert für die Bedingung wird in „true“ oder „false“ aufgelöst. Wenn der Wert TRUE ist, wird die Ressource erstellt. Wenn der Wert FALSE ist, wird die Ressource nicht erstellt. Der Wert kann nur auf die gesamte Ressource angewandt werden.
 
 > [!NOTE]
 > Die bedingte Bereitstellung wird nicht an [untergeordnete Ressourcen](child-resource-name-type.md) weitergegeben. Wenn Sie eine Ressource und ihre untergeordneten Ressourcen bedingt bereitstellen möchten, müssen Sie dieselbe Bedingung auf jeden Ressourcentyp anwenden.
@@ -20,8 +20,6 @@ Manchmal müssen Sie eine Ressource optional in einer Azure Resource Manager-Vor
 ## <a name="deploy-condition"></a>Bereitstellungsbedingung
 
 Sie können einen Parameterwert übergeben, der angibt, ob eine Ressource bereitgestellt wird. Das folgende Beispiel stellt bedingt eine DNS-Zone bereit:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -45,26 +43,11 @@ Sie können einen Parameterwert übergeben, der angibt, ob eine Ressource bereit
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param deployZone bool
-
-resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = if (deployZone) {
-  name: 'myZone'
-  location: 'global'
-}
-```
-
----
-
 Ein komplexeres Beispiel finden Sie unter [Logischer Azure SQL-Server](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-logical-server).
 
 ## <a name="new-or-existing-resource"></a>Neue oder vorhandene Ressource
 
 Sie können bedingte Bereitstellung verwenden, um eine neue Ressource zu erstellen oder eine vorhandene zu verwenden. Im folgenden Beispiel wird gezeigt, wie ein neues Speicherkonto bereitgestellt oder ein vorhandenes Speicherkonto verwendet wird.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -108,34 +91,6 @@ Sie können bedingte Bereitstellung verwenden, um eine neue Ressource zu erstell
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param storageAccountName string
-param location string = resourceGroup().location
-
-@allowed([
-  'new'
-  'existing'
-])
-param newOrExisting string = 'new'
-
-resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {
-  name: storageAccountName
-  location: location
-  sku: {
-    name: 'Standard_LRS'
-    tier: 'Standard'
-  }
-  kind: 'StorageV2'
-  properties: {
-    accessTier: 'Hot'
-  }
-}
-```
-
----
-
 Wenn der Parameter `newOrExisting` auf **new** festgelegt ist, wird die Bedingung zu „true“ ausgewertet. Das Speicherkonto wird bereitgestellt. Ist `newOrExisting` dagegen auf **existing** festgelegt, wird die Bedingung zu „false“ ausgewertet, und das Speicherkonto wird nicht bereitgestellt.
 
 Eine vollständige Beispielvorlage, die das `condition`-Element verwendet, finden Sie unter [VM mit einem neuen oder vorhandenen virtuellen Netzwerk, Speicher und einer neuen oder vorhandenen öffentlichen IP-Adresse](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-new-or-existing-conditions).
@@ -146,7 +101,7 @@ Bei Verwendung einer Funktion vom Typ [reference](template-functions-resource.md
 
 Verwenden Sie die [if](template-functions-logical.md#if)-Funktion, um sicherzustellen, dass die Funktion nur für Bedingungen ausgewertet wird, wenn die Ressource bereitgestellt wird. Eine Beispielvorlage, die `if` und `reference` mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](template-functions-logical.md#if)-Funktion.
 
-Sie legen eine [Ressource als abhängig](define-resource-dependency.md) von einer bedingten Ressource fest, wie Sie auch jede andere Ressource festlegen. Wenn eine bedingte Ressource nicht bereitgestellt wurde, entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten.
+Sie legen eine [Ressource als abhängig](./resource-dependency.md) von einer bedingten Ressource fest, wie Sie auch jede andere Ressource festlegen. Wenn eine bedingte Ressource nicht bereitgestellt wurde, entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten.
 
 ## <a name="complete-mode"></a>Vollständiger Modus
 
@@ -155,5 +110,5 @@ Wenn Sie eine Vorlage mit [vollständigem Modus](deployment-modes.md) bereitstel
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ein Microsoft Learn-Modul, das die bedingte Bereitstellung behandelt, finden Sie unter [Verwalten komplexer Cloudbereitstellungen mithilfe erweiterter ARM-Vorlagenfunktionen](/learn/modules/manage-deployments-advanced-arm-template-features/).
-* Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Bewährte Methoden für ARM-Vorlagen](template-best-practices.md).
+* Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Bewährte Methoden für ARM-Vorlagen](./best-practices.md).
 * Informationen, wie mehrere Instanzen einer Ressource erstellt werden, finden Sie unter [Ressourceniteration in ARM-Vorlagen](copy-resources.md).

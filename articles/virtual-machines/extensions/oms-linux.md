@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 02/18/2020
-ms.openlocfilehash: 3ac6937d83bd2d21fefc09878408a54aa0eb41f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d30aee396eb3e8e5c56896e048210f5f7d47ef87
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559084"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949860"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics-VM-Erweiterung für Linux
 
@@ -113,7 +113,7 @@ Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
 >[!NOTE]
->Einige Komponenten der Log Analytics-VM-Erweiterung werden auch mit der [VM-Erweiterung für Diagnosen](./diagnostics-linux.md) geliefert. Aufgrund dieser Architektur können Konflikte auftreten, wenn beide Erweiterungen in derselben ARM-Vorlage instanziiert werden. Um solche Konflikte zur Installationszeit zu vermeiden, verwenden Sie die [`dependsOn`-Anweisung](../../azure-resource-manager/templates/define-resource-dependency.md#dependson), um sicherzustellen, dass die Erweiterungen nacheinander installiert werden. Die Erweiterungen können in beliebiger Reihenfolge installiert werden.
+>Einige Komponenten der Log Analytics-VM-Erweiterung werden auch mit der [VM-Erweiterung für Diagnosen](./diagnostics-linux.md) geliefert. Aufgrund dieser Architektur können Konflikte auftreten, wenn beide Erweiterungen in derselben ARM-Vorlage instanziiert werden. Um solche Konflikte zur Installationszeit zu vermeiden, verwenden Sie die [`dependsOn`-Anweisung](../../azure-resource-manager/templates/resource-dependency.md#dependson), um sicherzustellen, dass die Erweiterungen nacheinander installiert werden. Die Erweiterungen können in beliebiger Reihenfolge installiert werden.
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie mindestens einen virtuellen Computer bereitstellen, der eine Konfiguration nach der Bereitstellung erfordert, wie z. B. Onboarding bei Azure Monitor-Protokollen. Eine Resource Manager-Beispielvorlage mit der VM-Erweiterung für den Log Analytics-Agent finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 

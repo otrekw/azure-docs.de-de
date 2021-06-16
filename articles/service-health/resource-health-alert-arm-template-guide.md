@@ -3,12 +3,13 @@ title: Vorlage zum Erstellen von Resource Health-Warnungen
 description: Erstellen Sie programmgesteuert Warnungen, die Sie informieren, wenn Ihre Azure-Ressourcen nicht mehr verfügbar sind.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 4f1cbe1e2d2c185906feb4ccba380cb31df864f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 34f8ec2eb47428f06ddcaf6b82a988f7f2b4b836
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588205"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703271"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 

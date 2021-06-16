@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
-ms.custom: rybaker, chmimckitt
-ms.openlocfilehash: bb86ba6867ad796ef0f5eeb1357a6df9e93e9f9e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: rybaker, chmimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 9a2b93a951b9aa2056ee547d8d74c90eb7d96f71
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555770"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983832"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Informationen zum Bereitstellen von Windows 10 unter Azure mit mehrinstanzenfähigen Hostingrechten 
 Für Kunden mit Windows 10 Enterprise E3/E5 pro Benutzer oder Windows Virtual Desktop Access pro Benutzer (Benutzerabonnementlizenzen oder Add-On-Benutzerabonnementlizenzen) können Sie Ihre Windows 10-Lizenzen mittels mehrinstanzenfähiger Hostingrechte für Windows 10 in der Cloud verwenden und virtuelle Windows 10-Computer in Azure ausführen, ohne eine weitere Lizenz erwerben zu müssen. Rechte für das Hosten mehrerer Mandanten sind nur für Windows 10 (Version 1703 oder höher) verfügbar.
@@ -54,7 +54,6 @@ rs4-pro                     Windows-10 MicrosoftWindowsDesktop eastus
 rs4-pron                    Windows-10 MicrosoftWindowsDesktop eastus   
 rs5-enterprise              Windows-10 MicrosoftWindowsDesktop eastus   
 rs5-enterprisen             Windows-10 MicrosoftWindowsDesktop eastus   
-rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
 rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
 ```
 
@@ -90,7 +89,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Bereitstellen mithilfe der Azure Resource Manager-Vorlagenbereitstellung** In Ihren Resource Manager-Vorlagen kann ein zusätzlicher Parameter für `licenseType` angegeben werden. Informieren Sie sich weiter über das [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md). Nachdem Sie die virtuelle Festplatte in Azure hochgeladen haben, bearbeiten Sie die Resource Manager-Vorlage, um den Lizenztyp als Teil des Computeanbieters einzuschließen, und stellen die Vorlage als normale Vorlage bereit:
+**Bereitstellen mithilfe der Azure Resource Manager-Vorlagenbereitstellung** In Ihren Resource Manager-Vorlagen kann ein zusätzlicher Parameter für `licenseType` angegeben werden. Informieren Sie sich weiter über das [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md). Nachdem Sie die virtuelle Festplatte in Azure hochgeladen haben, bearbeiten Sie die Resource Manager-Vorlage, um den Lizenztyp als Teil des Computeanbieters einzuschließen, und stellen die Vorlage als normale Vorlage bereit:
 ```json
 "properties": {
     "licenseType": "Windows_Client",

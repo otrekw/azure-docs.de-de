@@ -9,32 +9,23 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 90d09763f2c9e167d6a0a34adbbc444ebad14c46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ea4ff3b163070fef64d9edcb6e249d450058a84
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101693457"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031131"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Vorschau: Erstellen einer Windows-VM mit Azure Image Builder unter Verwendung von PowerShell
+# <a name="create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Erstellen einer Windows-VM mit Azure Image Builder unter Verwendung von PowerShell
 
 In diesem Artikel erfahren Sie, wie Sie mit dem PowerShell-Modul von Azure VM Image Builder ein benutzerdefiniertes Windows-Image erstellen können.
 
-> [!CAUTION]
-> Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt. Für Produktionsworkloads wird sie nicht empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 Falls Sie PowerShell lokal verwenden möchten, müssen Sie für diesen Artikel das Az PowerShell-Modul installieren und mit dem Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Ihrem Azure-Konto herstellen. Weitere Informationen zum Installieren des Az PowerShell-Moduls finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps).
-
-> [!IMPORTANT]
-> Solange sich die PowerShell-Module von **Az.ImageBuilder** und **Az.ManagedServiceIdentity** noch in der Vorschauphase befinden, müssen Sie sie separat mithilfe des Cmdlets `Install-Module` mit dem Parameter `AllowPrerelease` installieren. Sobald diese PowerShell-Module allgemein verfügbar sind, werden sie in künftige Releases des Az PowerShell-Moduls integriert und in Azure Cloud Shell nativ zur Verfügung gestellt.
-
-```azurepowershell-interactive
-'Az.ImageBuilder', 'Az.ManagedServiceIdentity' | ForEach-Object {Install-Module -Name $_ -AllowPrerelease}
-```
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -45,21 +36,6 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 ```
 
 ### <a name="register-features"></a>Registrieren von Funktionen
-
-Wenn Sie Azure Image Builder zum ersten Mal während der Vorschau verwenden, registrieren Sie das neue Feature **VirtualMachineTemplatePreview**.
-
-```azurepowershell-interactive
-Register-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -FeatureName VirtualMachineTemplatePreview
-```
-
-Überprüfen Sie den Status der Featureregistrierung.
-
-> [!NOTE]
-> **RegistrationState** kann einige Minuten lang den Status `Registering` aufweisen, bevor der Wechsel in `Registered` erfolgt. Warten Sie, bis der Status **Registriert** lautet, bevor Sie fortfahren.
-
-```azurepowershell-interactive
-Get-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -FeatureName VirtualMachineTemplatePreview
-```
 
 Registrieren Sie die folgenden Ressourcenanbieter für die Verwendung mit dem Azure-Abonnement, wenn diese Anbieter noch nicht registriert sind.
 

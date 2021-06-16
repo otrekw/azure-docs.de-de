@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: e2ab7a007a92bd2306a7a97781af5653f932d0b7
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 06/11/2021
+ms.openlocfilehash: a0d28be0bc9754ab678792f2dca294b4fb185bf0
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580604"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018637"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Schätzen und Verwalten der Kosten eines Azure Cognitive Search-Diensts
 
@@ -111,7 +111,7 @@ Im Hinblick auf den Dienst selbst besteht die einzige Möglichkeit zur Kostenred
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie Kosten in Ihrem Azure-Abonnement überwachen und verwalten.
+Möchten Sie Ihre Cloudausgaben optimieren und dabei sparen?
 
 > [!div class="nextstepaction"]
-> [Dokumentation zu Azure Cost Management und Abrechnung](../cost-management-billing/cost-management-billing-overview.md)
+> [Beginnen mit der Kostenanalyse mit Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

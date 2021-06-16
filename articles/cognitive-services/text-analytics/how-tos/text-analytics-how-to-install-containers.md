@@ -9,22 +9,21 @@ ms.custom: seodec18, cog-serv-seo-aug-2020, devx-track-azurecli
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 06/02/2021
 ms.author: aahi
 keywords: Lokal, Docker, Container, Stimmungsanalyse, Verarbeitung natürlicher Sprache
-ms.openlocfilehash: 09d0da5aa811f694657ae6a0b8059bf55bcbf657
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 103f6ce9c614646f96129f9579a35655756bb794
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290252"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968206"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
 > [!NOTE]
 > * Der Container für die Standpunktanalyse und Spracherkennung ist nun allgemein verfügbar. Der Container für die Schlüsselbegriffserkennung ist als nicht geschlossene öffentliche Vorschau verfügbar.
 > * Entitätsverknüpfung und NER stehen derzeit nicht als Container zur Verfügung.
-> * Für den Zugriff auf die Textanalyse für Integritätscontainer ist ein [Anfrageformular](https://aka.ms/csgate) erforderlich. Derzeit wird Ihnen die Nutzung nicht in Rechnung gestellt.
 > * Die Speicherorte für Containerimages haben sich möglicherweise vor Kurzem geändert. Lesen Sie diesen Artikel, um mehr zum aktualisierten Speicherort für diesen Container zu erfahren.
 
 Container ermöglichen es Ihnen, die Textanalyse-APIs in ihrer eigenen Umgebung auszuführen und eignen sich hervorragend für Ihre spezifischen Anforderungen bezüglich Sicherheit und Datengovernance. Container für die Textanalyse ermöglichen eine erweiterte Verarbeitung von natürlicher Sprache anhand von unformatiertem Text und bieten drei Hauptfunktionen: Standpunktanalyse, Schlüsselbegriffserkennung und Sprachenerkennung. 

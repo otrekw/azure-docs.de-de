@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: Herstellen einer Verbindung mit Azure SQL Managed Instance von einer Azure-VM aus über SQL Server Management Studio.
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: connect
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein, srbozovi, bonova
+author: zoran-rilak-msft
+ms.author: zoranrilak
+ms.reviewer: mathoma, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: a1f496d59fa626dc8750493591128f7363afa40d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8a708caf410ab53da6f9c2e77325307506ea9de
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91620255"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076022"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Schnellstart: Konfigurieren einer Azure-VM für das Herstellen einer Verbindung mit Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -85,7 +85,7 @@ Die einfachste Möglichkeit zum Erstellen eines virtuellen Clientcomputers mit a
    | **Location** | Der Standort für die Ressourcengruppe | Dieser Wert wird basierend auf der ausgewählten Ressourcengruppe ausgefüllt. |
    | **Name des virtuellen Computers**  | Ein gültiger Name | Gültige Namen finden Sie unter [Benennungskonventionen](/azure/architecture/best-practices/resource-naming).|
    |**Benutzername des Administrators**|Ein beliebiger gültiger Benutzername|Gültige Namen finden Sie unter [Benennungskonventionen](/azure/architecture/best-practices/resource-naming). Verwenden Sie nicht „serveradmin“. Hierbei handelt es sich um eine reservierte Rolle auf Serverebene.<br>Dieser Benutzername wird beim [Herstellen einer Verbindung mit dem virtuellen Computer](#connect-to-the-virtual-machine) verwendet.|
-   |**Kennwort**|Ein gültiges Kennwort|Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.<br>Dieses Kennwort wird beim [Herstellen einer Verbindung mit dem virtuellen Computer](#connect-to-the-virtual-machine) verwendet.|
+   |**Kennwort**|Ein gültiges Kennwort|Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.<br>Dieses Kennwort wird beim [Herstellen einer Verbindung mit dem virtuellen Computer](#connect-to-the-virtual-machine) verwendet.|
    | **Größe des virtuellen Computers** | Eine beliebige gültige Größe | Für diese Schnellstartanleitung ist der Standardwert der Vorlage (**Standard_B2s**) ausreichend. |
    | **Location**|[resourceGroup().location].| Ändern Sie diesen Wert nicht. |
    | **Name des virtuellen Netzwerks**|Das virtuelle Netzwerk, in dem Sie die verwaltete Instanz erstellt haben.|

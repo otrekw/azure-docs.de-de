@@ -11,14 +11,16 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec101786f33aa6f2525d685993d6b6c891ab2e9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8363240ec72e35d2dfac831a07f96f6789ab253a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "88936315"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033795"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Definieren und Verwenden von Moderationsaufträgen (.NET)
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 Ein Moderationsauftrag dient als eine Art Wrapper für die Funktionen der Inhaltsmoderation und von Workflows und Überprüfungen. Diese Anleitung enthält Informationen und Codebeispiele, die Ihnen den Einstieg in die Verwendung des [Content Moderator SDK für .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) erleichtern, um Folgendes durchzuführen:
 

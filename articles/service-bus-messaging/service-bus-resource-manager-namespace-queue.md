@@ -4,18 +4,18 @@ description: 'Schnellstart: Erstellen eines Service Bus-Namespace und einer Wart
 documentationcenter: .net
 author: spelluru
 ms.author: spelluru
-ms.date: 06/23/2020
+ms.date: 06/08/2021
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: b64dd4d26150043277152b6cb4ad5391a7af5647
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 3f9260aa8d86e8b9cc449d193fc403f74d500946
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278540"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961256"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-arm-template"></a>Schnellstart: Erstellen eines Service Bus-Namespace und einer Warteschlange anhand einer ARM-Vorlage
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/servicebus-create-queue/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json":::
 
@@ -91,7 +91,7 @@ In den folgenden Artikeln erfahren Sie, wie Sie diese Ressourcen verwalten:
 * [Verwalten von Service Bus mit PowerShell](service-bus-manage-with-ps.md)
 * [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/syntax.md
 [Service Bus namespace and queue template]: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json/
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Learn more about Service Bus queues]: service-bus-queues-topics-subscriptions.md

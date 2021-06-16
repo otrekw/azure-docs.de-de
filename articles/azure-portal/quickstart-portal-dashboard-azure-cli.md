@@ -4,12 +4,12 @@ description: 'Schnellstart: Hier erfahren Sie, wie Sie mithilfe der Azure CLI e
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: 76d4e3b9c1c906dd91a7355af2c7cb957ef6ac95
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: aa9d5f1c7ab20de9a2f815ce5b2639582d5f2bed
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891732"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081603"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Schnellstart: Erstellen eines Dashboards im Azure-Portal mithilfe der Azure CLI
 
@@ -47,7 +47,7 @@ az vm create --resource-group myResourceGroup --name SimpleWinVM --image win2016
 > Das Kennwort muss komplex sein.
 > Hierbei handelt es sich um einen neuen Benutzernamen und um ein neues Kennwort.
 > Es ist also beispielsweise nicht das Konto, mit dem Sie sich bei Azure anmelden.
-> Weitere Informationen finden Sie unter [Anforderungen an Benutzernamen](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm) und [Anforderungen an Kennwörter](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+> Weitere Informationen finden Sie unter [Anforderungen an Benutzernamen](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-) und [Anforderungen an Kennwörter](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-).
 
 Die Bereitstellung beginnt und dauert in der Regel einige Minuten.
 Fahren Sie nach Abschluss der Bereitstellung mit dem nächsten Abschnitt fort.
