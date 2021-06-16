@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: a92c6789723dc42ac8f3a9c471e494079dc19328
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5eb5d73d6820260702f9b0190cf4e190b10f2c54
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98233439"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029997"
 ---
 # <a name="network-monitoring-solutions"></a>Netzwerküberwachungslösungen 
 
@@ -106,7 +106,7 @@ Traffic Analytics bietet Ihnen Informationen, die Ihnen erleichtern, die Netzwer
 ![Geografische Karte, die Datenverkehr Regionen übergreifend darstellt 2](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 Verwandte Links:
-* [Blogbeitrag](https://aka.ms/trafficanalytics), [Dokumentation](../network-watcher/traffic-analytics.md), [FAQ](../network-watcher/traffic-analytics-faq.md)
+* [Blogbeitrag](https://aka.ms/trafficanalytics), [Dokumentation](../network-watcher/traffic-analytics.md), [FAQ](../network-watcher/traffic-analytics-faq.yml)
 
 ## <a name="dns-analytics"></a>DNS-Analyse
 Diese für DNS-Administratoren konzipierte Lösung erfasst, analysiert und korreliert DNS-Protokolle, um Sicherheit, Vorgänge und leistungsbezogene Einblicke bereitzustellen.  Einige der Funktionen sind:

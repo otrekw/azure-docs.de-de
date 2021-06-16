@@ -1,0 +1,79 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zu Azure Web Application Firewall in Application Gateway
+  description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Web Application Firewall in Application Gateway.
+  services: web-application-firewall
+  author: vhorne
+  ms.service: web-application-firewall
+  ms.topic: article
+  ms.date: 05/05/2020
+  ms.author: victorh
+  ms.openlocfilehash: d7d5d5c9ea2c0af4933a7bff50ab310d95d29741
+  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112034890"
+title: Häufig gestellte Fragen zu Azure Web Application Firewall in Application Gateway
+summary: In diesem Artikel werden gängige Fragen zu den Features und Funktionen von Azure Web Application Firewall (WAF) in Application Gateway beantwortet.
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Was ist Azure WAF?
+    answer: >
+      Azure WAF ist eine Web Application Firewall, die dazu beiträgt, Ihre Webanwendungen vor allgemeinen Bedrohungen wie Einschleusung von SQL-Befehlen, Cross-Site Scripting und anderen Web-Exploits zu schützen. Sie können eine WAF-Richtlinie mit einer Kombination aus benutzerdefinierten und verwalteten Regeln definieren, um den Zugriff auf Ihre Webanwendungen zu steuern.
+
+
+      Eine Azure WAF-Richtlinie kann auf Webanwendungen angewendet werden, die in Application Gateway oder Azure Front Door gehostet werden.
+  - question: >
+      Welche Features unterstützt die WAF-SKU?
+    answer: >
+      Die WAF-SKU unterstützt alle Features, die in der Standard-SKU verfügbar sind.
+  - question: >
+      Wie überwache ich WAF?
+    answer: >
+      Überwachen Sie WAF über die Diagnoseprotokollierung. Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokollierung und Metriken für Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
+  - question: >
+      Wird Datenverkehr durch den Erkennungsmodus blockiert?
+    answer: >
+      Nein. Der Erkennungsmodus protokolliert nur Datenverkehr, der eine WAF-Regel auslöst.
+  - question: >
+      Kann ich WAF-Regeln anpassen?
+    answer: >
+      Ja. Weitere Informationen finden Sie unter [Anpassen von Web Application Firewall-Regeln mit dem Azure-Portal](application-gateway-customize-waf-rules-portal.md).
+  - question: >
+      Welche Regeln sind derzeit für WAF verfügbar?
+    answer: "WAF unterstützt derzeit CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229), [3.0](application-gateway-crs-rulegroups-rules.md#owasp30) und [3.1](application-gateway-crs-rulegroups-rules.md#owasp31). Diese Regeln bieten grundlegende Sicherheit für die meisten der zehn wichtigsten, von Open Web Application Security Project (OWASP) identifizierten Sicherheitsrisiken. \n\n* Schutz vor Einschleusung von SQL-Befehlen\n* Schutz vor websiteübergreifendem Skripting\n* Schutz vor allgemeinen Webangriffen wie Befehlseinschleusung, HTTP Request Smuggling, HTTP Response Splitting und Remote File Inclusion.\n* Schutz vor Verletzungen des HTTP-Protokolls\n* Schutz vor HTTP-Protokollanomalien, z.B. fehlende user-agent- und accept-Header des Hosts\n* Verhindern von Bots, Crawlern und Scannern\n* Erkennung allgemeiner Fehler bei der Anwendungskonfiguration (in Bezug auf Apache, IIS usw.)\n\nWeitere Informationen finden Sie im Artikel zu den [zehn wichtigsten, von OWASP identifizierten Sicherheitsrisiken](https://owasp.org/www-project-top-ten/).\n"
+  - question: >
+      Welche Inhaltstypen werden von WAF unterstützt?
+    answer: >
+      WAF für Application Gateway unterstützt die folgenden Inhaltstypen für verwaltete Regeln:
+
+
+      * Anwendung/json
+
+      * application/xml
+
+      * application/x-www-form-urlencoded
+
+      * multipart/form-data
+
+
+      Für benutzerdefinierte Regeln:
+
+
+      * application/x-www-form-urlencoded
+
+      * multipart/form-data
+  - question: >
+      Unterstützt WAF DDoS-Schutz?
+    answer: >
+      Ja. Sie können DDoS-Schutz im virtuellen Netzwerk aktivieren, in dem das Anwendungsgateway bereitgestellt wird. Mit dieser Einstellung wird sichergestellt, dass der Azure DDoS Protection-Dienst auch die VIP-Adresse des Anwendungsgateways schützt.
+
+
+      ### <a name="does-waf-store-customer-data"></a>Speichert WAF Kundendaten?
+
+
+      Nein, WAF speichert keine Kundendaten.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n- Erfahren Sie mehr über [ Azure Web Application Firewall](../overview.md).\n- Erfahren Sie mehr zu [Azure Front Door](../../frontdoor/front-door-overview.md)."

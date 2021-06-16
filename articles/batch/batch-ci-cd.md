@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/04/2021
 ms.topic: how-to
-ms.openlocfilehash: 7170044af58a508ff5a43751cc376f8b8d498444
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8ea126637679974035d62cc415c4fd07f597d53f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435544"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961866"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
 
@@ -22,7 +22,7 @@ In diesem Artikel wird erklärt, wie Sie CI/CD-Prozesse mit [Azure Pipelines](/a
 
 Um den Schritten in diesem Artikel folgen zu können, benötigen Sie eine [Azure DevOps-Organisation](/azure/devops/organizations/accounts/create-organization). Sie müssen auch ein [Projekt in Azure DevOps erstellen](/azure/devops/organizations/projects/create-project).
 
-Ein grundlegendes Verständnis von [Quellcodeverwaltung](/azure/devops/user-guide/source-control) und [Azure Resource Manager-Vorlagesyntax](../azure-resource-manager/templates/template-syntax.md) ist hilfreich, bevor Sie beginnen.
+Ein grundlegendes Verständnis von [Quellcodeverwaltung](/azure/devops/user-guide/source-control) und [Azure Resource Manager-Vorlagesyntax](../azure-resource-manager/templates/syntax.md) ist hilfreich, bevor Sie beginnen.
 
 ## <a name="create-an-azure-pipeline"></a>Erstellen einer Azure Pipeline
 

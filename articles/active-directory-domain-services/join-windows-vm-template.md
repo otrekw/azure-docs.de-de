@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: e7245e8e468ea051ee095d97cc250ad303aa80a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcfe5fb48a6eef0b7185fe8bba5a8f1e80fb4f1f
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619435"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030537"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Informationen zum Einbinden eines virtuellen Windows Server-Computers in eine mit Azure Active Directory Domain Services verwaltete Domäne
 
@@ -81,7 +81,7 @@ Wenn Sie eine Windows Server-VM benötigen, können Sie sie mithilfe einer Resso
 
 Führen Sie die folgenden Schritte aus, um eine Windows Server-VM zu erstellen und anschließend in eine verwaltete Domäne einzubinden:
 
-1. Navigieren Sie zur [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/201-vm-domain-join/). Wählen Sie die Option **Bereitstellung in Azure** aus.
+1. Navigieren Sie zur [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/vm-domain-join/). Wählen Sie die Option **Bereitstellung in Azure** aus.
 1. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** die folgenden Informationen ein, um eine Windows Server-VM zu erstellen und in die verwaltete Domäne einzubinden:
 
     | Einstellung                   | Wert |
@@ -114,7 +114,7 @@ Wenn Sie über eine vorhandene VM oder Gruppe von VMs verfügen, die Sie in eine
 
 Führen Sie die folgenden Schritte aus, um eine vorhandene Windows Server-VM in eine verwaltete Domäne einzubinden:
 
-1. Navigieren Sie zur [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/). Wählen Sie die Option **Bereitstellung in Azure** aus.
+1. Navigieren Sie zur [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/vm-domain-join-existing/). Wählen Sie die Option **Bereitstellung in Azure** aus.
 1. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** die folgenden Informationen ein, um die VM in eine verwaltete Domäne einzubinden:
 
     | Einstellung                   | Wert |

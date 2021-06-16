@@ -3,19 +3,20 @@ title: 'Schnellstart: Erkunden der Gen2-Demoumgebung – Azure Time Series Insig
 description: Erkunden Sie wichtige Features der Azure Time Series Insights Gen2-Demoumgebung.
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: shreyasharmamsft
+ms.author: shresha
+manager: cnovak
+ms.reviewer: orspodek
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 03/01/2021
-ms.openlocfilehash: 25340af243217313ce6d3f7205c102d4bcd350b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b109d363b495712efd96e2fa8e5684ad43980964
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698109"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061126"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Schnellstart: Erkunden der Azure Time Series Insights Gen2-Demoumgebung
 
@@ -32,7 +33,7 @@ In diesem Schnellstart lernen Sie die Verwendung von Azure Time Series Insights 
 
 Der Azure Time Series Insights Gen2-Explorer zeigt Verlaufsdaten und Ursachenanalysen. Erste Schritte:
 
-1. Navigieren Sie zur Demoumgebung  [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples).  
+1. Navigieren Sie zur Demoumgebung  [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples).
 
 1. Melden Sie sich bei Aufforderung mit Ihren Azure-Anmeldeinformationen beim Azure Time Series Insights Gen2-Explorer an.
 
@@ -124,7 +125,7 @@ Mithilfe von Azure Time Series Insights Gen2 und Sensortelemetriedaten haben wir
 
     Zwei der drei Spannungssensoren arbeiten vergleichbar und innerhalb normaler Parameter. Es sieht so aus, als wäre Sensor **GridVoltagePhase3** die Ursache.
 
-1. Aufgrund der hinzugefügten stark kontextbezogenen Daten ist es noch wahrscheinlicher, dass der Rückgang in Phase 3 das Problem ist. Nun verfügen wir über einen guten Anhaltspunkt für die Ursache der Warnung. Wir können die Informationen zum Problem jetzt an unser Wartungsteam weitergeben.  
+1. Aufgrund der hinzugefügten stark kontextbezogenen Daten ist es noch wahrscheinlicher, dass der Rückgang in Phase 3 das Problem ist. Nun verfügen wir über einen guten Anhaltspunkt für die Ursache der Warnung. Wir können die Informationen zum Problem jetzt an unser Wartungsteam weitergeben.
 
     * Ändern Sie die Anzeige, um für alle Sensoren unter **Generator System** denselben Diagrammmaßstab zu verwenden.
 

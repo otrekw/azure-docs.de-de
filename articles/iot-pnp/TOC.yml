@@ -22,7 +22,7 @@
     - name: Herstellen einer Verbindung mit einem Gerät mithilfe von MQTT
       href: tutorial-use-mqtt.md
     - name: Verbinden eines MXCHIP-Geräts
-      href: /azure/iot-develop/quickstart-devkit-mxchip-az3166
+      href: ../iot-develop/quickstart-devkit-mxchip-az3166.md
     - name: Herstellen einer Verbindung mit einem Gerätemodul
       href: tutorial-migrate-device-to-module.md
     - name: 'Vorschau: Herstellen einer Verbindung und Analysieren von Daten mit Time Series Insights Gen2'

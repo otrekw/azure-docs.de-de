@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: a7a26bfd979fd58ba0519aeba274b22ae502f8a8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8795007a5a38d21985d8b31884c66342b3dda7ed
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085922"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792406"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>App-Zustimmungsberechtigungen für benutzerdefinierte Rollen in Azure Active Directory
 
@@ -65,14 +65,15 @@ Delegieren von Erstellung, Aktualisierung und Löschung von [App-Zustimmungsrich
 
 ## <a name="full-list-of-permissions"></a>Vollständige Liste der Berechtigungen
 
-Berechtigung | BESCHREIBUNG
----------- | -----------
-microsoft.directory/servicePrincipals/managePermissionGrantsForSelf.{id} | Gewährt die Möglichkeit der Zustimmung zu Apps im eigenen Namen (Benutzerzustimmung) gemäß der App-Zustimmungsrichtlinie `{id}`.
-microsoft.directory/servicePrincipals/managePermissionGrantsForAll.{id} | Gewährt die Möglichkeit der Zustimmung zu Apps in aller Namen (mandantenweite Administratorzustimmung) gemäß der App-Zustimmungsrichtlinie `{id}`.
-microsoft.directory/permissionGrantPolicies/standard/read | Gewährt die Möglichkeit zum Lesen von App-Zustimmungsrichtlinien.
-microsoft.directory/permissionGrantPolicies/basic/update | Gewährt die Möglichkeit zum Aktualisieren der Basiseigenschaften vorhandener App-Zustimmungsrichtlinien.
-microsoft.directory/permissionGrantPolicies/create | Gewährt die Möglichkeit zum Erstellen von App-Zustimmungsrichtlinien.
-microsoft.directory/permissionGrantPolicies/delete | Gewährt die Möglichkeit zum Löschen von App-Zustimmungsrichtlinien.
+> [!div class="mx-tableFixed"]
+> | Berechtigung | BESCHREIBUNG |
+> | ---------- | ----------- |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForSelf.{id} | Gewährt die Möglichkeit der Zustimmung zu Apps im eigenen Namen (Benutzerzustimmung) gemäß der App-Zustimmungsrichtlinie `{id}`. |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForAll.{id} | Gewährt die Möglichkeit der Zustimmung zu Apps in aller Namen (mandantenweite Administratorzustimmung) gemäß der App-Zustimmungsrichtlinie `{id}`. |
+> | microsoft.directory/permissionGrantPolicies/standard/read | Gewährt die Möglichkeit zum Lesen von App-Zustimmungsrichtlinien. |
+> | microsoft.directory/permissionGrantPolicies/basic/update | Gewährt die Möglichkeit zum Aktualisieren der Basiseigenschaften vorhandener App-Zustimmungsrichtlinien. |
+> | microsoft.directory/permissionGrantPolicies/create | Gewährt die Möglichkeit zum Erstellen von App-Zustimmungsrichtlinien. |
+> | microsoft.directory/permissionGrantPolicies/delete | Gewährt die Möglichkeit zum Löschen von App-Zustimmungsrichtlinien. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

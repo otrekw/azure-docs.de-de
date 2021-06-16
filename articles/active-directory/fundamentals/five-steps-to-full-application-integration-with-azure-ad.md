@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: a7b18fe6584781db2ec4e81e8bf0cb85e23f0566
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: daf339a1ba79212f82a853a209068c97c13b29f8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175800"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965999"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Fünf Schritte zum Integrieren Ihrer gesamten Apps in Azure AD
 
@@ -86,7 +86,7 @@ Sie können auch Apps, für die ein anderer Anbieter eines cloudbasierten Identi
 
 ## <a name="4-integrate-on-premises-applications"></a>4. Integrieren lokaler Anwendungen
 
-In der Vergangenheit wurde für die Sicherheit von Anwendungen gesorgt, indem der Zugriff nur zugelassen wurde, während eine Verbindung mit dem Unternehmensnetzwerk bestanden hat. In einer zunehmend vernetzten Welt soll aber der Zugriff auf Apps für Kunden, Partner und Mitarbeiter unabhängig von ihrem Standort ermöglicht werden. Der [Azure AD-Anwendungsproxy](../manage-apps/what-is-application-proxy.md) (AppProxy) ist ein Feature von Azure AD, mit dem Ihre vorhandenen lokalen Apps mit Azure AD verbunden werden und bei dem es nicht erforderlich ist, dass Sie zu diesem Zweck Edgeserver oder andere zusätzliche Infrastruktur betreiben.
+In der Vergangenheit wurde für die Sicherheit von Anwendungen gesorgt, indem der Zugriff nur zugelassen wurde, während eine Verbindung mit dem Unternehmensnetzwerk bestanden hat. In einer zunehmend vernetzten Welt soll aber der Zugriff auf Apps für Kunden, Partner und Mitarbeiter unabhängig von ihrem Standort ermöglicht werden. Der [Azure AD-Anwendungsproxy](../app-proxy/what-is-application-proxy.md) (AppProxy) ist ein Feature von Azure AD, mit dem Ihre vorhandenen lokalen Apps mit Azure AD verbunden werden und bei dem es nicht erforderlich ist, dass Sie zu diesem Zweck Edgeserver oder andere zusätzliche Infrastruktur betreiben.
 
 ![Der Anwendungsproxydienst ist im Diagramm in Aktion dargestellt. Ein Benutzer greift auf „https://sales.contoso.com“ zu, und seine Anforderung wird über „https://sales-contoso.msappproxy.net“ in Azure Active Directory an die lokale Adresse „http://sales“ umgeleitet.](./media/five-steps-to-full-application-integration-with-azure-ad\app-proxy.png)
 

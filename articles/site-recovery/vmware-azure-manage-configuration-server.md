@@ -1,18 +1,18 @@
 ---
 title: Verwalten des Konfigurationsservers für die Notfallwiederherstellung mit Azure Site Recovery
 description: Erfahren Sie mehr über die allgemeinen Aufgaben zur Verwaltung eines lokalen Konfigurationsservers für die Notfallwiederherstellung von VMware VMs und physischen Servern in Azure mit Azure Site Recovery.
-author: Rajeswari-Mamilla
-ms.author: ramamill
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 67f25c97e0b4433ed09cb8c6337afe671424ba0b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: e260b9fa7b24a3cb91e107bac6b01537879857c0
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048543"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576894"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern
 

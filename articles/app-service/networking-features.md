@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7410793a429395b7f1b1e826c66cb2647eb77cd2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 33cfd226df9f7620bafe2e404cc43050f176de13
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367708"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892056"
 ---
 # <a name="app-service-networking-features"></a>App Service-Netzwerkfunktionen
 
@@ -298,7 +298,7 @@ Branchenanwendungen (Line-of-Business, LOB) sind interne Anwendungen, die in der
 
 Wenn nichts davon zutrifft, ist es besser, private Endpunkte zu verwenden. Wenn private Endpunkte in App Service verfügbar sind, können Sie Ihre Apps über private Adressen in Ihrem virtuellen Netzwerk verfügbar machen. Der private Endpunkt, den Sie in Ihrem virtuellen Netzwerk platzieren, kann über ExpressRoute- und VPN-Verbindungen erreicht werden. 
 
-Das Konfigurieren privater Endpunkte macht Ihre Apps über eine private Adresse verfügbar, aber Sie müssen das DNS so konfigurieren, dass diese Adresse von lokalen Standorten aus erreichbar ist. Damit diese Konfiguration funktioniert, müssen Sie die private Azure DNS-Zone, die Ihre privaten Endpunkten enthält, an Ihre lokalen DNS-Server weiterleiten. Private Azure DNS-Zonen unterstützen keine Zonenweiterleitung, aber Sie können Zonenweiterleitung unterstützen, indem Sie einen DNS-Server zu diesem Zweck verwenden. Die Vorlage [DNS-Weiterleitung](https://azure.microsoft.com/resources/templates/301-dns-forwarder/) vereinfacht das Weiterleiten Ihrer privaten Azure DNS-Zone an Ihre lokalen DNS-Server.
+Das Konfigurieren privater Endpunkte macht Ihre Apps über eine private Adresse verfügbar, aber Sie müssen das DNS so konfigurieren, dass diese Adresse von lokalen Standorten aus erreichbar ist. Damit diese Konfiguration funktioniert, müssen Sie die private Azure DNS-Zone, die Ihre privaten Endpunkten enthält, an Ihre lokalen DNS-Server weiterleiten. Private Azure DNS-Zonen unterstützen keine Zonenweiterleitung, aber Sie können Zonenweiterleitung unterstützen, indem Sie einen DNS-Server zu diesem Zweck verwenden. Die Vorlage [DNS-Weiterleitung](https://azure.microsoft.com/resources/templates/dns-forwarder/) vereinfacht das Weiterleiten Ihrer privaten Azure DNS-Zone an Ihre lokalen DNS-Server.
 
 ## <a name="app-service-ports"></a>App Service-Ports
 
