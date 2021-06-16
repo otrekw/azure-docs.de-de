@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: extensions
 ms.date: 05/06/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 381573ae40f6c31a1c7dbf18bc60be5944fff39e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: f74fe9ff7173cfcc86794e66244b70db03d80f9a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762891"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673940"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Verwenden der Application Health-Erweiterung mit VM-Skalierungsgruppen
 Überwachung der Integrität Ihrer Anwendung ist ein wichtiges Signal für das Verwalten und Aktualisieren Ihrer Bereitstellung. Azure-VM-Skalierungsgruppen bieten Unterstützung für [parallele Upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) einschließlich [automatischer Betriebssystemimage-Upgrades](virtual-machine-scale-sets-automatic-upgrade.md), die von der Überwachung der Integrität der einzelnen Instanzen beim Upgrade Ihrer Bereitstellung abhängig sind. Sie können die Integritätserweiterung auch verwenden, um die Anwendungsintegrität jeder Instanz in Ihrer Skalierungsgruppe zu überwachen und Instanzreparaturen mit [automatischen Instanzreparaturen](virtual-machine-scale-sets-automatic-instance-repairs.md) durchzuführen.

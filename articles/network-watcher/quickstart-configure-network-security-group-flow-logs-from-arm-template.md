@@ -7,15 +7,13 @@ ms.author: damendo
 ms.date: 01/07/2021
 ms.topic: quickstart
 ms.service: network-watcher
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 36a70cf01130e4156c21b01013cddcb706b32276
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 9d541294ff20047f9041b58b3ce971c76adb6737
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277712"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982680"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Schnellstart: Konfigurieren von Datenflussprotokollen von Netzwerksicherheitsgruppen mithilfe einer ARM-Vorlage
 
@@ -35,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/networkwatcher-flowlogs-create).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/networkwatcher-flowLogs-create/azuredeploy.json":::
 
@@ -83,7 +81,7 @@ Eine umfassende Übersicht über die Eigenschaften des NSG-Flussprotokollobjekts
 
 Wenn Sie ARM-Vorlagen zum ersten Mal verwenden, lesen Sie die folgenden Artikel, um mehr über ARM-Vorlagen zu erfahren:
 
-- [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
+- [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
 - [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 Das folgende Beispiel ist eine vollständige Vorlage. Es ist auch die einfachste Version der Vorlage. Das Beispiel enthält die Mindestparameter, die zur Einrichtung von NSG-Datenflussprotokollen übergeben werden. Weitere Beispiele finden Sie im Übersichtsartikel [Konfigurieren von NSG-Flussprotokollen aus einer Azure Resource Manager-Vorlage](network-watcher-nsg-flow-logging-azure-resource-manager.md).

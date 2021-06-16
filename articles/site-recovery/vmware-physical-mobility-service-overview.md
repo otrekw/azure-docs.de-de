@@ -1,18 +1,18 @@
 ---
 title: Informationen zum Mobilitätsdienst für die Notfallwiederherstellung von VMware-VMs und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
 description: Erfahren Sie mehr über den Mobilitätsdienst-Agent, um mit dem Azure Site Recovery-Dienst eine Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure auszuführen.
-author: Rajeswari-Mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: how-to
-ms.date: 04/10/2020
-ms.author: ramamill
-ms.openlocfilehash: 8c90427e2dd4ecf23cb803c4f75dbee34c38f992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 708f87e8d4ff93fd6c60bb923a422469ef66a3e6
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98898578"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580162"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informationen zum Mobilitätsdienst auf virtuellen VMware-Computern und physischen Servern
 

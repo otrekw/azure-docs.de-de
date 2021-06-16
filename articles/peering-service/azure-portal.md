@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 04/07/2021
 ms.author: gatharej
-ms.openlocfilehash: 0b351b1fe4ad9492c414dd31789b8dd0029f9638
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: b75c0ec5be4ac26189a0e847a58cbe81461c5ff2
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202719"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952453"
 ---
 # <a name="create-peering-service-connection-using-the-azure-portal"></a>Erstellen einer Azure Peering Service-Verbindung über das Azure-Portal
 
@@ -37,7 +37,7 @@ Sie müssen über ein gültiges und aktives Microsoft Azure-Konto verfügen. Di
 
 ### <a name="connectivity-provider"></a>Konnektivitätsanbieter
 
-Sie können mit einem beliebigen [Azure Peering Service-Anbieter](https://docs.microsoft.com/azure/peering-service/location-partners) zusammenarbeiten, um Peering Service zu erhalten und eine optimale Verbindung zwischen Ihrem Netzwerk und dem Microsoft-Netzwerk herzustellen.
+Sie können mit einem beliebigen [Azure Peering Service-Anbieter](./location-partners.md) zusammenarbeiten, um Peering Service zu erhalten und eine optimale Verbindung zwischen Ihrem Netzwerk und dem Microsoft-Netzwerk herzustellen.
 
 
 

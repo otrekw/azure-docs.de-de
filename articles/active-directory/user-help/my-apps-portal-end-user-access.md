@@ -12,12 +12,12 @@ ms.date: 03/26/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: e72667ab562a9e12d233f45dc50efc9b70d2141b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d65daffab7522c1ececb3383d1cf5184f906d8f9
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642117"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893010"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses
 
@@ -75,7 +75,7 @@ Mit der **Erweiterung zur sicheren Anmeldung bei „Meine Apps“** haben Sie fo
 - Direktes Anmelden bei Apps über die Anmeldeseite
 - Starten von Apps mithilfe der Funktion **Schnellsuche**
 - Anzeigen der zuletzt verwendeten Apps im Abschnitt **Zuletzt verwendet**
-- Verwenden interner Unternehmens-URLs über den Remotezugriff mithilfe von [Anwendungsproxy](../manage-apps/application-proxy.md)
+- Verwenden interner Unternehmens-URLs über den Remotezugriff mithilfe von [Anwendungsproxy](../app-proxy/application-proxy.md)
 
 ### <a name="to-download-and-install-the-extension"></a>So wird die Erweiterung heruntergeladen und installiert
 

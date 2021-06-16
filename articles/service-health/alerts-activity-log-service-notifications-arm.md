@@ -3,15 +3,13 @@ title: Empfangen von Aktivitätsprotokollwarnungen zu Azure-Dienstbenachrichtigu
 description: Lassen Sie sich per SMS, E-Mail oder Webhook benachrichtigen, wenn Ereignisse beim Azure-Dienst eintreten.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 730c023de61275d95fe594642149770af42b34b9
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 2c28f25ddaf10f5a443b0e3eed1495ea9429f50f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535754"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703237"
 ---
 # <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>Schnellstart: Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen mit einer ARM-Vorlage
 

@@ -1,19 +1,19 @@
 ---
 title: 'Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“'
 description: In diesem Artikel erhalten Sie Informationen zu den Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Azure Blob Storage. Außerdem erhalten Sie Informationen zu Speicherkonten, die Ebenen unterstützen.
-author: twooley
-ms.author: twooley
+author: tamram
+ms.author: tamram
 ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 957973cc4f53dba10ed9d635c8e3f69fd66ee33b
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 810a62dee277453d4cc2f41c72d0868549d711cf
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278421"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653218"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“
 

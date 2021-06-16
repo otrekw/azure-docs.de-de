@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0a77faba971f328c6ae1c5a03f8faf7ccfcf60d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aba090378ee459f6dd2747621321aa30bb9103b0
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351485"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615213"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von C#
 
@@ -62,8 +62,8 @@ Die Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful-W
     {
         class Program
         {
-            static string host = "https://api.cognitive.microsoft.com";
-            static string path = "/bing/v7.0/entities";
+            static string host = "https://api.bing.microsoft.com";
+            static string path = "/v7.0/search";
     
             static string market = "en-US";
     

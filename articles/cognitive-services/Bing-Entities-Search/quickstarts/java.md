@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 82001a07aea6a76936986d076f689f97cf19d57d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0ebc348ba7838338b08d135d44059e756ec8be43
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351451"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615055"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von Java
 
@@ -63,8 +63,8 @@ Die Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful
 
       static String subscriptionKey = "ENTER KEY HERE";
     
-        static String host = "https://api.cognitive.microsoft.com";
-        static String path = "/bing/v7.0/entities";
+        static String host = "https://api.bing.microsoft.com";
+        static String path = "/v7.0/search";
     
         static String mkt = "en-US";
         static String query = "italian restaurant near me";

@@ -2,18 +2,18 @@
 title: Einrichten eines VMware-Failbacks/physischen Failbacks für Prozessserver in Azure Site Recovery
 description: In diesem Artikel wird beschrieben, wie in Azure ein Prozessserver für ein Failback von Azure-VMs zu VMware eingerichtet wird.
 services: site-recovery
-author: Rajeswari-Mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
-ms.topic: article
-ms.date: 10/21/2019
-ms.author: ramamill
-ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: conceptual
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: bb9fc0fa2297506cdec034bcd35c5edf8f3092f9
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008476"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576688"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Einrichten eines Prozessservers für das Failback in Azure
 

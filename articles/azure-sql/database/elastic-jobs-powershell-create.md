@@ -3,20 +3,20 @@ title: Erstellen eines Agents für elastische Aufträge über PowerShell (Vorsch
 description: Hier erfahren Sie, wie Sie mithilfe von PowerShell einen Agent für elastische Aufträge erstellen.
 services: sql-database
 ms.service: sql-database
-ms.subservice: scale-out
+ms.subservice: elastic-jobs
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
-author: johnpaulkee
-ms.author: joke
-ms.reviwer: sstein
+author: srinia
+ms.author: srinia
+ms.reviewer: mathoma
 ms.date: 10/21/2020
-ms.openlocfilehash: 95e9ef340328bb4c1835e966cc9c3019bca88c09
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6512dbddf5e63af7676e5f877111fbc0f623d35
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368828"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706205"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Erstellen eines Agents für elastische Aufträge über PowerShell (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

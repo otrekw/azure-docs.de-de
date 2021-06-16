@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d9c849ce7454e2875c4f00e73cc3b3edc37ad7e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730370"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971571"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
 Verwenden Sie diesen Typ, wenn Sie über ein Angebot auf Azure Marketplace oder AppSource verfügen, eine Testversion jedoch nur mit Azure-Ressourcen erstellen möchten. Eine ARM-Vorlage (Azure Resource Manager) ist ein codierter Container mit Azure-Ressourcen, den Sie so entwerfen, dass Ihre Lösung optimal präsentiert wird. Die Testversion übernimmt die bereitgestellte ARM-Vorlage und stellt alle erforderlichen Ressourcen in einer Ressourcengruppe bereit. Dies ist die einzige Testversionsoption für VM- und Azure-App-Angebote.
 
-Wenn Sie mit ARM-Vorlagen nicht vertraut sind, lesen Sie [Was ist Azure Resource Manager?](../azure-resource-manager/management/overview.md) und [Verstehen der Struktur und Syntax von ARM-Vorlagen](../azure-resource-manager/templates/template-syntax.md), um zu erfahren, wie Sie Ihre eigenen Vorlagen erstellen und testen können.
+Wenn Sie mit ARM-Vorlagen nicht vertraut sind, lesen Sie [Was ist Azure Resource Manager?](../azure-resource-manager/management/overview.md) und [Verstehen der Struktur und Syntax von ARM-Vorlagen](../azure-resource-manager/templates/syntax.md), um zu erfahren, wie Sie Ihre eigenen Vorlagen erstellen und testen können.
 
 Informationen zu einer **gehosteten** oder **Logik-App**-Testversion finden Sie unter [Was ist eine Testversion?](what-is-test-drive.md)
 

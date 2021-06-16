@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 67ba835237dac96a28aae124781bbb71b59323f2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a5bcc536a51da13934fb98f383fb1812d92a0073
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369378"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964346"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-Ressourcen
 
@@ -177,7 +177,7 @@ Sie können derzeit kein direktes Upgrade der Azure Search-SKU ausführen. Aller
 
 1. Stellen Sie die Indizes aus Ihrer ursprünglichen Azure Search-Ressource in der neuen wieder her. Sehen Sie dazu den [Beispielcode für die Wiederherstellung aus einer Sicherung](https://github.com/pchoudhari/QnAMakerBackupRestore).
 
-1. Verknüpfen Sie die neue Azure Search-Ressource mit dem Feature „Benutzerdefinierte Fragen und Antworten“ auf der [Registerkarte mit Features der Textanalyse Ressource](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/configure-qna-maker-resources?tabs=v2#configure-qna-maker-managed-preview-service-to-use-different-cognitive-search-resource).
+1. Verknüpfen Sie die neue Azure Search-Ressource mit dem Feature „Benutzerdefinierte Fragen und Antworten“ auf der [Registerkarte mit Features der Textanalyse Ressource](./configure-qna-maker-resources.md?tabs=v2#configure-text-analytics-resource-with-custom-question-answering-feature-to-use-a-different-cognitive-search-resource).
 
 ### <a name="inactivity-policy-for-free-search-resources"></a>Richtlinie zur Inaktivität für kostenlose Search-Ressourcen
 

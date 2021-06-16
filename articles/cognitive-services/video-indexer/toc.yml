@@ -2,36 +2,36 @@
 - name: Übersicht
   items:
     - name: Was ist Video Indexer?
-      href: ../../media-services/video-indexer/video-indexer-overview.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md
     - name: Konzepte
-      href: ../../media-services/video-indexer/video-indexer-overview.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md
 - name: Schnellstarts
   expanded: true
   items:
     - name: Erste Schritte
-      href: ../../media-services/video-indexer/video-indexer-get-started.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-get-started.md
 - name: Anleitungen
   items:
     - name: Migrieren von v1 zu v2
-      href: ../../media-services/video-indexer/video-indexer-overview.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md
     - name: Herstellen einer Verbindung mit Azure
-      href: ../../media-services/video-indexer/connect-to-azure.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/connect-to-azure.md
     - name: Verwalten eines mit Azure verbundenen Kontos
-      href: ../../media-services/video-indexer/manage-account-connected-to-azure.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/manage-account-connected-to-azure.md
     - name: Verwenden der Video Indexer-API
-      href: ../../media-services/video-indexer/video-indexer-use-apis.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-use-apis.md
     - name: Hochladen und Indizieren von Videos mithilfe der API
-      href: ../../media-services/video-indexer/upload-index-videos.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/upload-index-videos.md
     - name: Überprüfen der Video Indexer-Ausgabe
-      href: ../../media-services/video-indexer/video-indexer-output-json-v2.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-output-json-v2.md
     - name: Suchen bestimmter Momente in Videos
-      href: ../../media-services/video-indexer/video-indexer-search.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-search.md
     - name: Anzeigen und Bearbeiten von Video Indexer-Auswertungen
-      href: ../../media-services/video-indexer/video-indexer-view-edit.md
+      href: ../../app-service/quickstart-dotnetcore.md?tabs=netframework48
     - name: Erstellen von Videoauswertungen aus vorhandenen Videos
-      href: ../../media-services/video-indexer/use-editor-create-project.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/use-editor-create-project.md
     - name: Einbetten von Widgets in Ihre Anwendung
-      href: ../../media-services/video-indexer/video-indexer-embed-widgets.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-embed-widgets.md
 - name: Verweis
   items:
     - name: Video Indexer-API

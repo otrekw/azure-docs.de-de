@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/17/2021
-ms.openlocfilehash: 15235ddd1ae6bfe3166b523004bc8fe80a5b5be9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5d4b5f5264ad38ca3610840e6fd9a72c6bc5e0aa
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061460"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950967"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit dem LUIS-Dienst stoßen.
@@ -295,7 +295,7 @@ Das Modell gibt den normalisierten Wert für die Entität zurück, wenn eines de
 
 ## <a name="test"></a>Test
 
-Das [Testen](luis-concept-test.md) einer LUIS-App bedeutet die Anzeige von Modellvorhersagen.
+Das [Testen](./luis-interactive-test.md) einer LUIS-App bedeutet die Anzeige von Modellvorhersagen.
 
 ## <a name="timezone-offset"></a>Zeitzonenunterschied
 

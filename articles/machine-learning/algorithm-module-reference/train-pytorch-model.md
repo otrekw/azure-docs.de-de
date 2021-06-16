@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/19/2021
-ms.openlocfilehash: 7524b0fd496a87a281e5b9cd9f8ffcc8b54d6388
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: cfc866a7b7a63982377f8a2498b9538bd870e381
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108000918"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969109"
 ---
 # <a name="train-pytorch-model"></a>Trainieren Sie das PyTorch Modell
 
@@ -81,7 +81,7 @@ Klicken Sie auf die Registerkarte „Metriken" dieses Moduls, und sehen Sie Trai
 
 ### <a name="how-to-enable-distributed-training"></a>Wie Sie verteiltes Training ermöglichen
 
-Um verteiltes Training für das **Train PyTorch Model**-Modul zu aktivieren, können Sie im rechten Bereich des Moduls unter **Einstellungen ausführen** festlegen. Nur der **[AML Compute-Cluster](https://docs.microsoft.com/azure/machine-learning/how-to-create-attach-compute-cluster?tabs=python)** wird für verteiltes Training unterstützt.
+Um verteiltes Training für das **Train PyTorch Model**-Modul zu aktivieren, können Sie im rechten Bereich des Moduls unter **Einstellungen ausführen** festlegen. Nur der **[AML Compute-Cluster](../how-to-create-attach-compute-cluster.md?tabs=python)** wird für verteiltes Training unterstützt.
 
 > [!NOTE]
 > **Mehrere GPUs** sind erforderlich, um verteiltes Training zu aktivieren, weil das NCCL-Backend, welches das PyTorch-Modellmodul verwendet, cuda benötigt.
@@ -102,7 +102,7 @@ Um verteiltes Training für das **Train PyTorch Model**-Modul zu aktivieren, kö
 
     [![Screenshot, das zeigt, wie man den Rechencluster überprüft](./media/module/compute-cluster-node.png)](./media/module/compute-cluster-node.png#lightbox)
 
-Mehr über verteiltes Training in Azure Machine Learning erfahren Sie [hier](https://docs.microsoft.com/azure/machine-learning/concept-distributed-training).
+Mehr über verteiltes Training in Azure Machine Learning erfahren Sie [hier](../concept-distributed-training.md).
 
 ### <a name="troubleshooting-for-distributed-training"></a>Fehlerbehebung für das verteilte Training
 
@@ -125,7 +125,7 @@ Nachdem die Pipeline-Ausführung abgeschlossen ist und um das Modell für die Be
 ## <a name="technical-notes"></a>Technische Hinweise
 ###  <a name="expected-inputs"></a>Erwartete Eingaben  
 
-| Name               | type                    | BESCHREIBUNG                              |
+| Name               | Typ                    | BESCHREIBUNG                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Untrainiertes Modell    | UntrainedModelDirectory | Untrainiertes Modell, PyTorch erforderlich         |
 | Trainingsdataset   | ImageDirectory          | Trainingsdataset                         |
@@ -145,13 +145,10 @@ Nachdem die Pipeline-Ausführung abgeschlossen ist und um das Modell für die Be
 
 ###  <a name="outputs"></a>Ausgaben  
 
-| Name          | type           | BESCHREIBUNG   |
+| Name          | Typ           | BESCHREIBUNG   |
 | ------------- | -------------- | ------------- |
 | Trainiertes Modell | ModelDirectory | Trainiertes Modell |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
-
-
-
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

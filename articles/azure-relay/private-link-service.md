@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Azure Relay in den Azure Private Link-
 ms.date: 09/24/2020
 ms.topic: article
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 162b4a36e1da974a9a4c40ed67a3d6ce74ff6404
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 42f05784143031e303affa2a17cccfdaf22ce4ca
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292898"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688351"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link"></a>Integrieren von Azure Relay in Azure Private Link 
 Mit **Azure Private Link** können Sie über einen privaten Endpunkt in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-link/private-link-overview.md).
@@ -102,7 +102,7 @@ $namespaceName = "<NAMESPACE NAME>"
 $peConnectionName = "<PRIVATE ENDPOINT CONNECTION NAME>"
 
 # create resource group
-az group create -l $vnetLocation -n $rgName
+New-AzResourceGroup -Name $rgName -Location $vnetLocation 
 
 # create virtual network
 $virtualNetwork = New-AzVirtualNetwork `

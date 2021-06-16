@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 8779381425d4180cc7320f251de9c2cfdd1f0510
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f264097ac340e5810c3f69e199a28b06d2a22972
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99223422"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678361"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe von PowerShell
 
@@ -58,7 +59,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressource
 $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 ```
 
-### <a name="step-2"></a>Schritt 2
+### <a name="step-2"></a>Schritt 2
 
 Das folgende Beispiel ruft die benötigten Erweiterungsinformationen zum Ausführen des Cmdlets `Set-AzVMExtension` ab. Mit diesem Cmdlet wird der Paketerfassungs-Agent auf dem virtuellen Gastcomputer installiert.
 
@@ -131,7 +132,7 @@ Der nächste Schritt besteht im Abrufen der Network Watcher-Instanz. Diese Varia
 $networkWatcher = Get-AzNetworkWatcher  | Where {$_.Location -eq "westcentralus" }
 ```
 
-### <a name="step-2"></a>Schritt 2
+### <a name="step-2"></a>Schritt 2
 
 Erstellen Sie ein Speicherkonto. Dieses Speicherkonto wird verwendet, um die Paketerfassungsdatei zu speichern.
 
@@ -151,7 +152,7 @@ $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 > [!NOTE]
 > Für eine Paketerfassung können mehrere Filter definiert werden.
 
-### <a name="step-4"></a>Schritt 4
+### <a name="step-4"></a>Schritt 4
 
 Führen Sie das Cmdlet `New-AzNetworkWatcherPacketCapture` zum Starten der Paketerfassung aus, und übergeben Sie dabei die erforderlichen Werte, die Sie in den vorherigen Schritten abgerufen haben.
 ```powershell

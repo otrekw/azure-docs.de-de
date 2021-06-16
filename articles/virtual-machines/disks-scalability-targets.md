@@ -3,16 +3,16 @@ title: Skalierbarkeits- und Leistungsziele für VM-Datenträger
 description: Hier finden Sie Informationen zu Skalierbarkeits- und Leistungszielen für VM-Datenträger, die virtuellen Computern angefügt sind.
 author: roygara
 ms.author: rogarana
-ms.date: 01/15/2021
+ms.date: 06/02/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: eec11ce53177ce7ecd10d1ce06cc60217293cb8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2145ec105eabf681d9d89baab3361916f25bd039
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98574268"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028557"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks"></a>Skalierbarkeits- und Leistungsziele für VM-Datenträger
 
@@ -22,7 +22,7 @@ Weitere Informationen finden Sie unter [VM-Größen](sizes.md).
 
 ## <a name="managed-virtual-machine-disks"></a>Verwaltete VM-Datenträger
 
-Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschau. In unseren [häufig gestellten Fragen](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) erfahren Sie, in welchen Regionen sie verfügbar sind.
+Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschau. In unseren [häufig gestellten Fragen](/azure/virtual-machines/faq-for-disks#new-disk-sizes-managed-and-unmanaged) erfahren Sie, in welchen Regionen sie verfügbar sind.
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../includes/azure-storage-limits-vm-disks-managed.md)]
 

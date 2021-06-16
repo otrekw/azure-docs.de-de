@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 04/15/2021
 ms.author: jaysoni
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2291bc88a90a703239764a2d5fda9b2889a7af7
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 83ad2e7a8f138451063eef1746555563970e125e
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319663"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681810"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Behandeln von App Service-Problemen in Application Gateway
 
@@ -92,7 +92,7 @@ Die App Service-Custom Domain von App Service ist eine weitere Lösung, um den D
 
 Sie können die angegebenen Methoden sowohl für die Probleme mit Redirection als auch ARRAffinity-Cookiedomänenkonflikten befolgen. Für diese Methode benötigen Sie Zugriff auf die DNS-Zone Ihrer benutzerdefinierten Domäne.
 
-**Schritt 1**: Legen Sie eine Custom Domain in App Service fest und überprüfen Sie den Domänenbesitz, indem Sie die [DNS-Einträge CNAME & TXT](../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) hinzufügen.
+**Schritt 1**: Legen Sie eine Custom Domain in App Service fest und überprüfen Sie den Domänenbesitz, indem Sie die [DNS-Einträge CNAME & TXT](../app-service/app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id) hinzufügen.
 Die Datensätze würden in etwa wie die folgenden aussehen
 -  `www.contoso.com` IN CNAME `contoso.azurewebsite.net`
 -  `asuid.www.contoso.com` IN TXT „`<verification id string>`“

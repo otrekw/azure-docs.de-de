@@ -6,15 +6,15 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
+author: cawrites
+ms.author: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: 6eab839912769ad15723083185c7942f31e3df11
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3126877833774f0f2e874e2a2dfd6cf5cb6181d8
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136551"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796046"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Migrationsleitfaden: SAP ASE zu Azure SQL-Datenbank
 
@@ -102,7 +102,7 @@ Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
 1. **Führen Sie die Validierungstests aus**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 
-1. **Führen Sie Leistungstests aus**: Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
+1. **Ausführen von Leistungstests:** Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
 
 
 ### <a name="optimize"></a>Optimieren

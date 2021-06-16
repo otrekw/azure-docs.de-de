@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd95f89510cbb591f05338e2bd076967982d8761
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 52166e8cf615c831f37b9122393af4039063f2b4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734035"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964634"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planen einer Azure Active Directory-Bereitstellung für Berichterstellung und Überwachung
 
@@ -174,7 +174,7 @@ In diesem Abschnitt finden Sie die Dokumentationen zu den unterschiedlichen Bere
 
 [Analysieren von Azure AD-Aktivitätsprotokollen mit Azure Monitor-Protokollen](./howto-analyze-activity-logs-log-analytics.md)
 
-* [Interpret audit logs schema in Azure Monitor](./reference-azure-monitor-audit-log-schema.md) (Interpretieren des Überwachungsprotokollschemas in Azure Monitor)
+* [Interpret audit logs schema in Azure Monitor](./overview-reports.md) (Interpretieren des Überwachungsprotokollschemas in Azure Monitor)
 
 * [Interpretieren des Azure AD-Anmeldeprotokollschemas in Azure Monitor](./reference-azure-monitor-sign-ins-log-schema.md)
 

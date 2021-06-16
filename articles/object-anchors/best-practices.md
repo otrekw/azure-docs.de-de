@@ -6,18 +6,18 @@ ms.author: crtreasu
 ms.date: 03/12/2021
 ms.topic: best-practice
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6b9546843d88a5a7329120cca86d685d8abf3460
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0a092b45b341af37e4251951b06d1211fa6c600a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061926"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983796"
 ---
 # <a name="best-practices"></a>Bewährte Methoden
 
 Wir empfehlen Ihnen, einige dieser Schritte auszuprobieren, um die besten Ergebnisse zu erzielen.
 
-## <a name="ingestion"></a>Erfassung
+## <a name="conversion"></a>Konvertierung
 
 - Überprüfen Sie die Dimensionen Ihrer physischen Objekte. Azure Object Anchors funktionieren am besten für Objekte, deren kleinste Dimension im Bereich der empfohlenen 1-10 m liegt.
 - Untersuchen Sie Ihr 3D-Modell in Software wie [**MeshLab**](https://www.meshlab.net/) auf die folgenden Details.

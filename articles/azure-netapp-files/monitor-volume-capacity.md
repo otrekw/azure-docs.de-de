@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: 43605f8dfdcac8fe545e5464c13d9a50ae8ed82c
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 14bbd15fec0015073eefbe2421d03a73fac45d75
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108294134"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968385"
 ---
 # <a name="monitor-the-capacity-of-a-volume"></a>Überwachen der Kapazität eines Volumes  
 
@@ -56,7 +56,7 @@ Die folgende Momentaufnahme zeigt den Volumekapazitätsbericht in Linux:
 Der mit dem Befehl `df` angezeigte *verfügbare Speicherplatz* ist genau. Der *verbrauchte/belegte Speicherplatz* ist jedoch eine Schätzung, wenn Momentaufnahmen auf dem Volume generiert werden. Die [verbrauchte Momentaufnahmekapazität](azure-netapp-files-cost-model.md#capacity-consumption-of-snapshots)  wird auf den insgesamt verbrauchten Speicherplatz auf dem Volume angerechnet. Zum Abrufen des absoluten Volumeverbrauchs, einschließlich der von Momentaufnahmen verwendeten Kapazität, verwenden Sie die [Azure NetApp-Metriken](azure-netapp-files-metrics.md#volumes) im Azure-Portal. 
 
 ## <a name="using-azure-portal"></a>Verwenden des Azure-Portals
-Azure NetApp Files nutzt die standardmäßige [Azure Monitor](/azure/azure-monitor/overview)-Funktionalität. Sie können Azure Monitor somit zum Überwachen von Azure NetApp Files-Volumes verwenden.  
+Azure NetApp Files nutzt die standardmäßige [Azure Monitor](../azure-monitor/overview.md)-Funktionalität. Sie können Azure Monitor somit zum Überwachen von Azure NetApp Files-Volumes verwenden.  
 
 ## <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle  
 

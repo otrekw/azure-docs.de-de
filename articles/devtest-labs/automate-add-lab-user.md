@@ -3,12 +3,13 @@ title: Automatisieren des Hinzufügens eines Lab-Benutzers in Azure DevTest Labs
 description: In diesem Artikel erfahren Sie, wie Sie das Hinzufügen eines Benutzers zu einem Lab in Azure DevTest Labs mithilfe von Azure Resource Manager-Vorlagen, PowerShell und Befehlszeilenschnittstelle automatisieren.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1168e00960c35e2ac1e4a660efba63d30c63a575
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 70f8e2740a53c7bb855d3796efa438e9c9ff0ffa
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727704"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965224"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatisieren des Hinzufügens eines Lab-Benutzers zu einem Lab in Azure DevTest Labs
 Mit Azure DevTest Labs können Sie über das Azure-Portal schnell Self-Service-DevTest-Umgebungen erstellen. Wenn Sie jedoch über mehrere Teams und mehrere DevTest Labs-Instanzen verfügen, kann die Automatisierung des Erstellungsprozesses Zeit sparen. [Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-devtestlab/tree/master/Environments) ermöglichen Ihnen das Erstellen von Labs, Lab-VMs, benutzerdefinierten Images, Formeln sowie das Hinzufügen von Benutzern auf automatisierte Weise. Dieser Artikel befasst sich insbesondere mit dem Hinzufügen von Benutzern zu einer DevTest Labs-Instanz.
@@ -76,7 +77,7 @@ Die folgende Resource Manager-Beispielvorlage gibt an, dass ein Benutzer der Rol
 
 ```
 
-Wenn Sie die Rolle in der gleichen Vorlage zuweisen, in der auch das Lab erstellt wird, denken Sie daran, eine Abhängigkeit zwischen der Ressourcenzuordnung der Rolle und dem Lab hinzuzufügen. Weitere Informationen finden Sie im Artikel [Definieren von Abhängigkeiten in Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/define-resource-dependency.md).
+Wenn Sie die Rolle in der gleichen Vorlage zuweisen, in der auch das Lab erstellt wird, denken Sie daran, eine Abhängigkeit zwischen der Ressourcenzuordnung der Rolle und dem Lab hinzuzufügen. Weitere Informationen finden Sie im Artikel [Definieren von Abhängigkeiten in Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/resource-dependency.md).
 
 ### <a name="role-assignment-resource-information"></a>Informationen der Rollenzuweisungsressource
 Die Rollenzuweisungsressource muss den Typ und den Namen angeben.
@@ -195,4 +196,3 @@ Weitere Informationen finden Sie in folgenden Artikeln:
 - [Erstellen und Verwalten virtueller Computer in DevTest Labs mit der Azure CLI](devtest-lab-vmcli.md)
 - [Erstellen einer VM in DevTest Labs mithilfe von Azure PowerShell](devtest-lab-vm-powershell.md)
 - [Starten und Beenden von virtuellen Computern in Azure DevTest Labs mit Befehlszeilentools](use-command-line-start-stop-virtual-machines.md)
-

@@ -4,12 +4,12 @@ description: Hier wird die Verwendung der Bereichseigenschaft beim Bereitstellen
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0f24c37c69394358e87407245f5db41ce8b6de80
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 534011658502829df8fa23e44264c8ff2992d3cf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752047"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960013"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>Festlegen des Bereichs für Erweiterungsressourcen in Resource Manager-Vorlagen
 
@@ -86,6 +86,6 @@ Im folgenden Beispiel wird ein Speicherkonto erstellt und eine Rolle darauf ange
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).
 * Tipps zum Beheben gängiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](common-deployment-errors.md).
 * Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token erfordert, finden Sie unter [Bereitstellen einer privaten ARM-Vorlage mit SAS-Token](secure-template-with-sas-token.md).

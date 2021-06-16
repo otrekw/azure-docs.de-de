@@ -5,15 +5,15 @@ services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 8b6e5e5e097ce59fc676e75d45217269a927b2d7
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 1c562c52eb7df92ba2297b066560866d04074f2f
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814800"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982213"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Schnellstart: Erstellen eines privaten Endpunkts mithilfe einer ARM-Vorlage
 
@@ -35,7 +35,7 @@ Sie benötigen ein Azure-Konto mit einem aktiven Abonnement. Sie können [kosten
 
 Mit dieser Vorlage wird ein privater Endpunkt für eine Instanz von Azure SQL-Datenbank erstellt.
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/private-endpoint-sql/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.sql/private-endpoint-sql/azuredeploy.json":::
 

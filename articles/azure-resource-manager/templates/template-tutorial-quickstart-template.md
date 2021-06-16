@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 46b32ae7aeb971c9391a69e3ca3d01f669774248
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16c89a37ad232f356c4d7857bfb3c35f8c644acd
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97106902"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565912"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Tutorial: Verwenden von Azure-Schnellstartvorlagen
 
@@ -35,7 +35,7 @@ Diese Vorlage funktioniert für die Bereitstellung von Speicherkonten und App Se
 
 1. Öffnen Sie [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
 1. Geben Sie _Linux-Web-App bereitstellen_ in die **Suche** ein.
-1. Wählen Sie die Kachel mit dem Titel **Deploy a basic Linux web app** (Grundlegende Linux-Web-App bereitstellen) aus. Hier ist der [direkte Link](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/), falls Sie sie nicht finden können.
+1. Wählen Sie die Kachel mit dem Titel **Deploy a basic Linux web app** (Grundlegende Linux-Web-App bereitstellen) aus. Hier ist der [direkte Link](https://azure.microsoft.com/en-us/resources/templates/webapp-basic-linux/), falls Sie sie nicht finden können.
 1. Wählen Sie **Auf GitHub suchen** aus.
 1. Wählen Sie _azuredeploy.json_ aus.
 1. Überprüfen Sie die Vorlage. Suchen Sie insbesondere nach der Ressource `Microsoft.Web/sites`.

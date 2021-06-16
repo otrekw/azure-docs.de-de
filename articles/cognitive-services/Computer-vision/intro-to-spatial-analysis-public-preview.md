@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 03/29/2021
-ms.openlocfilehash: fc0d0b0a589ff5b8354a56a2f8c95062f4d2d9a9
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: d19a080ef596975dd3377207b84bade6ef0d3b12
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076147"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537589"
 ---
 # <a name="what-is-spatial-analysis"></a>Was ist räumliche Analyse?
 
@@ -42,12 +42,6 @@ Heute basieren die grundlegenden Vorgänge der räumlichen Analyse auf einer Pip
 | **Event** | Ein Ereigniss stellen die primäre Ausgabe der räumlichen Analyse dar. Jeder Vorgang gibt ein bestimmtes Ereignis entweder regelmäßig (z. b. einmal pro Minute) oder bei jedem Auftreten eines bestimmten Auslösers aus. Das Ereignis umfasst Informationen darüber, was im Eingabevideo passiert ist, enthält aber keine Bilder oder Videos. Beispielsweise kann der PeopleCount-Vorgang jedes Mal, wenn sich die Anzahl der Personen ändert (Trigger) oder einmal pro Minute (regelmäßig) ein Ereignis ausgeben, das die aktuelle Anzahl enthält. |
 
 ## <a name="get-started"></a>Erste Schritte
-
-### <a name="public-preview-gating"></a>Öffentliches Vorschau-Gating
-
-Damit die räumliche Analyse nur in Szenarios verwendet wird, für die sie entwickelt wurde, stellen wir unseren Kunden diese Technologie nur auf Antrag zur Verfügung. Wenn Sie Zugriff auf die räumliche Analyse erhalten möchten, füllen Sie zunächst unser Onlineeingabeformular aus. [Über diesen Link gelangen Sie zum Antrag.](https://aka.ms/csgate)
-
-Der Zugriff auf die öffentliche Vorschauversion der räumlichen Analyse unterliegt dem alleinigen Ermessen von Microsoft basierend auf den Kriterien für die Qualifikation, dem Überprüfungsprozess und der Verfügbarkeit, um eine begrenzte Anzahl von Kunden während dieser eingeschränkten Vorschau zu unterstützen. Für die öffentliche Vorschauversion suchen wir Kunden, die bereits mit Microsoft zusammenarbeiten, Interesse an einer Zusammenarbeit im Rahmen der empfohlenen Anwendungsfälle und weiterer Szenarios haben, die im Einklang mit unserer Verpflichtung zur verantwortungsvollen Verwendung von KI stehen.
 
 ### <a name="follow-a-quickstart"></a>Gehen Sie wie unter Schnellstart vor
 

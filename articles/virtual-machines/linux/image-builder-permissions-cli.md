@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: eb4fe102407bf519c9253ac7da39178ad8cacb0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 996242ba7d1ce82d2db1c8e72b96af305b9c2a4a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607533"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028521"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst mithilfe der Azure CLI
 
@@ -23,19 +23,8 @@ Damit Azure VM Image Builder Images an die verwalteten Images oder an eine Share
 
 Vor dem Erstellen eines Images müssen Berechtigungen und Rechte eingerichtet werden. In den folgenden Abschnitten erfahren Sie, wie mögliche Szenarios mithilfe der Azure CLI konfiguriert werden.
 
-> [!IMPORTANT]
-> Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
-
-## <a name="register-the-features"></a>Registrieren des Features
-
-Sie müssen sich zunächst für den Azure VM Image Builder-Dienst registrieren. Die Registrierung gewährt Ihnen die Dienstberechtigungen zum Erstellen, Verwalten und Löschen einer Ressourcengruppe für das Staging. Der Dienst verfügt auch über die Berechtigung, der Gruppe Ressourcen hinzuzufügen, die für das Erstellen des Images erforderlich sind.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
 
 ## <a name="create-an-azure-user-assigned-managed-identity"></a>Erstellen einer in Azure benutzerseitig zugewiesenen verwalteten Identität
 
@@ -131,7 +120,7 @@ Zur Vereinfachung der Ersetzung der Werte im Beispiel legen Sie die folgenden Va
 ```azurecli-interactive
 # Subscription ID - You can get this using `az account show | grep id` or from the Azure portal.
 subscriptionID=<Subscription ID>
-# Resource group - For Preview, image builder will only support creating custom images in the same Resource Group as the source managed image.
+# Resource group - image builder will only support creating custom images in the same Resource Group as the source managed image.
 imageResourceGroup=<Resource group>
 identityName="aibIdentity"
 
@@ -220,7 +209,7 @@ In der Azure VM Image Builder-Vorlage müssen Sie die benutzerseitig zugewiesene
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
-    "apiVersion": "2019-05-01-preview",
+    "apiVersion": "2020-02-14",
     "location": "<Region>",
     ..
     "identity": {

@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: ed612ae6c021a2f2be7e07c48da2412c6d35670c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 95c9880eb8c61b5a057cf2573aad7871c3c37bb3
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770693"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613610"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Was ist mit der Azure Machine Learning Workbench geschehen?
 
@@ -99,8 +99,8 @@ Eine Übersicht über den Dienst finden Sie unter [Was ist Azure Machine Learnin
 
 Beginnen Sie mit [Schnellstart: Erste Schritte mit Azure Machine Learning](quickstart-create-resources.md).  Verwenden Sie dann diese Ressourcen, um Ihr erstes Experiment mit Ihrer bevorzugten Methode zu erstellen:
 
-  + [Ausführen eines „Hallo Welt“-Python-Skripts (Teil 1 von 3)](tutorial-1st-experiment-hello-world.md)
+  + [Ausführen eines „Hallo Welt“-Python-Skripts (Teil 1 von 3)](tutorial-1st-experiment-hello-world.md)
   + [Verwenden eines Jupyter Notebooks zum Trainieren von Bildklassifizierungsmodellen](tutorial-train-models-with-aml.md)
   + [Verwenden von automatisiertem maschinellen Lernen](tutorial-designer-automobile-price-train-score.md) 
   + [Verwenden der Drag & Drop-Funktionen des Designers](tutorial-first-experiment-automated-ml.md) 
-  + [Verwenden der ML-Erweiterung für die CLI](tutorial-train-deploy-model-cli.md)
+  + [Verwenden der ML-Erweiterung für die CLI](how-to-train-cli.md)
