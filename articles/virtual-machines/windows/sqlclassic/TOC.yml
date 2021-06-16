@@ -5,7 +5,7 @@
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/virtual-machines/windows/'
     - name: Häufig gestellte Fragen
-      href: ../../../azure-sql/virtual-machines/windows/frequently-asked-questions-faq.md?toc=/azure/virtual-machines/windows/sqlclassic/toc.json
+      href: /azure/azure-sql/virtual-machines/windows/frequently-asked-questions-faq?toc=/azure/virtual-machines/windows/sqlclassic/toc.json
 - name: Erste Schritte
   items:
     - name: Bereitstellen eines virtuellen Computers über das Azure-Portal

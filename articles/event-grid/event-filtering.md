@@ -3,12 +3,12 @@ title: Ereignisfilter für Azure Event Grid
 description: Hier erfahren Sie, wie Sie Ereignisse beim Erstellen eines Azure Event Grid-Abonnements filtern können.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: b5439b77b86d42d062cf9da66ce678f04f46f813
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 986e31c1213dc05862c95d87a0bc7733f7a2f9c1
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256088"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372141"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -57,13 +57,13 @@ Um nach Werten in den Datenfeldern zu filtern und den Vergleichsoperator anzugeb
 * Schlüssel – Feld in den Ereignisdaten, die Sie für die Filterung verwenden. Dabei kann es sich um eine Zahl, einen booleschen Wert, eine Zeichenfolge oder ein Array handeln.
 * Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
 
-## <a name="key"></a>Schlüssel
+## <a name="key"></a>Key
 Das Feld „key“ in den Ereignisdaten wird für die Filterung verwendet. Mögliche Typen:
 
 - Number
 - Boolean
 - String
-- Array. Legen Sie die Eigenschaft `enableAdvancedFilteringOnArrays` auf „true“ fest, wenn Sie dieses Feature verwenden möchten. Die Aktivierung dieses Features wird aktuell vom Azure-Portal nicht unterstützt. 
+- Array. Legen Sie die Eigenschaft `enableAdvancedFilteringOnArrays` auf „true“ fest, wenn Sie dieses Feature verwenden möchten. 
 
     ```json
     "filter":

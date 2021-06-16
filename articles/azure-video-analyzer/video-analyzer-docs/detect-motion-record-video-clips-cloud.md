@@ -3,12 +3,12 @@ title: Erkennen von Bewegung, Aufzeichnen von Video in Azure Video Analyzer
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Edgemodul von Azure Video Analyzer verwenden, um Bewegungen in einem Livevideostream zu erkennen und Videos im Video Analyzer-Konto aufzuzeichnen.
 ms.topic: quickstart
 ms.date: 04/03/2021
-ms.openlocfilehash: 851310ff3b03730a1fc9adb4eaa7c0c3f9cf84f2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9643ed3a7bbcc23757110033be1dbc3780ddafb5
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385857"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565930"
 ---
 # <a name="quickstart-detect-motion-record-video-to-video-analyzer"></a>Schnellstart: Erkennen von Bewegung, Aufzeichnen von Video in Video Analyzer
 
@@ -986,6 +986,23 @@ Innerhalb weniger Sekunden sollte die folgende Antwort im Ausgabefenster angezei
 ```
 
 Der Statuscode „200“ gibt an, dass die Pipelinetopologie erfolgreich deaktiviert wurde.
+
+## <a name="playing-back-the-recording"></a>Wiedergeben der Aufzeichnung
+
+Sie können die von der Livepipeline erstellte Video Analyzer-Videoressource untersuchen, indem Sie sich beim Azure-Portal anmelden und das Video anzeigen.
+1. Öffnen Sie Ihren Webbrowser, und navigieren Sie zum [Azure-Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinformationen ein, um sich beim Portal anzumelden. Die Standardansicht ist Ihr Dienstdashboard.
+1. Suchen Sie unter den Ressourcen Ihres Abonnements nach Ihrem Video Analyzer-Konto, und öffnen Sie den Kontobereich.
+1. Wählen Sie in der Liste **Video Analyzer** die Option **Videos** aus.
+1. Ein Video mit dem Namen `sample-motion-video-camera001` ist aufgeführt. Dies ist der Name, den Sie in Ihrer Datei mit der Pipelinetopologie ausgewählt haben.
+1. Wählen Sie das Video aus.
+1. Die Seite mit den Videodetails wird geöffnet, und die Wiedergabe sollte automatisch gestartet werden.
+
+    <!--TODO: add image -- ![Video playback]() TODO: new screenshot is needed here -->
+
+
+> [!NOTE]
+> Da es sich bei der Quelle des Videos um einen Container zum Simulieren eines Kamerafeeds handelt, beziehen sich die Zeitstempel im Video auf den Zeitpunkt, zu dem Sie die Livepipeline aktiviert bzw. deaktiviert haben.
+    
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 12/05/2016
-ms.openlocfilehash: df1ae43b2c6a74448a6782a43fb86f8f4939b13a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d461be7d760e1e4fc99fe23a9fe2d5529237ebb3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560003"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949834"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportieren von Ressourcengruppen, die VM-Erweiterungen enthalten
 
@@ -131,7 +131,7 @@ Die endgültige Erweiterungsressource sieht ähnlich wie das folgende JSON-Beisp
 }
 ```
 
-Wenn Sie Vorlagenparameter zum Angeben von Eigenschaftswerten verwenden, müssen diese erstellt werden. Achten Sie beim Erstellen von Vorlagenparameter für geschützte Einstellungswerte darauf, den Parametertyp `SecureString` zu verwenden, damit vertrauliche Werte geschützt sind. Weitere Informationen zum Verwenden von Parametern finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
+Wenn Sie Vorlagenparameter zum Angeben von Eigenschaftswerten verwenden, müssen diese erstellt werden. Achten Sie beim Erstellen von Vorlagenparameter für geschützte Einstellungswerte darauf, den Parametertyp `SecureString` zu verwenden, damit vertrauliche Werte geschützt sind. Weitere Informationen zum Verwenden von Parametern finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md).
 
 Im Beispiel der `IaasDiagnostic`-Erweiterung würden im Parameterabschnitt der Resource Manager-Vorlage die folgenden Parameter erstellt.
 

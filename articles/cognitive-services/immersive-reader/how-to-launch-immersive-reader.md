@@ -4,19 +4,19 @@ titleSuffix: Azure Applied AI Services
 description: Hier erfahren Sie, wie Sie den plastischen Reader mit JavaScript, Python, Android oder iOS starten. Der plastische Reader verwendet bewährte Verfahren zum Verbessern des Leseverständnisses von Sprachenlernenden, Leseanfängern und Schülern mit Lernschwierigkeiten.
 author: metanMSFT
 manager: guillasi
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: metang
 ms.custom: devx-track-js
 zone_pivot_groups: immersive-reader-how-to-guides
-ms.openlocfilehash: 2d65ec4bd9683b7217cb8efbda7beef4371fc9dc
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9c6ddc3ce750f7fac9b8b6516a78defd5998b567
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373908"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893320"
 ---
 # <a name="how-to-launch-the-immersive-reader"></a>Starten des plastischen Readers
 

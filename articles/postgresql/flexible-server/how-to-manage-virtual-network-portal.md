@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/22/2021
-ms.openlocfilehash: af1ef22c55502ac6ae4279810a527b407555dd5c
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 18d556a11ff55c1967252491d26bea62729498c5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987798"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952420"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for PostgreSQL Flexible Server über das Azure-Portal
 
@@ -41,7 +41,7 @@ Sie benötigen Folgendes, um eine Flexible Server-Instanz in einem virtuellen Ne
      4. Wählen Sie auf dem Pulloutbildschirm unter **Dienstendpunkt** in der Dropdownliste `Microsoft.storage` aus.
      5. Speichern Sie die Änderungen.
 
-- Wenn Sie Ihre eigene private DNS-Zone für die Verwendung mit dem flexiblen Server einrichten möchten, finden Sie weitere Einzelheiten in der Dokumentation zur [Übersicht über private DNS](https://docs.microsoft.com/azure/dns/private-dns-overview). 
+- Wenn Sie Ihre eigene private DNS-Zone für die Verwendung mit dem flexiblen Server einrichten möchten, finden Sie weitere Einzelheiten in der Dokumentation zur [Übersicht über private DNS](../../dns/private-dns-overview.md). 
   
 ## <a name="create-azure-database-for-postgresql---flexible-server-in-an-already-existing-virtual-network"></a>Erstellen von Azure Database for PostgreSQL Flexible Server-Instanzen in einem bereits vorhandenen virtuellen Netzwerk
 
@@ -60,7 +60,7 @@ Sie benötigen Folgendes, um eine Flexible Server-Instanz in einem virtuellen Ne
 > Nachdem der flexible Server in einem virtuellen Netzwerk und Subnetz bereitgestellt wurde, können Sie ihn nicht mehr in „Öffentlicher Zugriff (zugelassene IP-Adressen)“ verschieben.
 
 >[!Note]
-> Wenn Sie von einem Client, der in einem anderen VNET bereitgestellt wird, eine Verbindung zum flexiblen Server herstellen möchten, müssen Sie die private DNS-Zone mit dem VNET verknüpfen. Eine Anleitung dazu finden Sie in dieser Dokumentation zum [Verknüpfen des virtuellen Netzwerks](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network).
+> Wenn Sie von einem Client, der in einem anderen VNET bereitgestellt wird, eine Verbindung zum flexiblen Server herstellen möchten, müssen Sie die private DNS-Zone mit dem VNET verknüpfen. Eine Anleitung dazu finden Sie in dieser Dokumentation zum [Verknüpfen des virtuellen Netzwerks](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for PostgreSQL Flexible Server mithilfe der Azure CLI](./how-to-manage-virtual-network-cli.md)

@@ -3,16 +3,16 @@ title: Erstellen einer DMS-Instanz (Azure Resource Manager-Vorlage)
 description: Hier wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Database Migration Service-Instanz erstellen.
 author: MashaMSFT
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 8b448f04811ad254358990f6f37c4a02f1909d65
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: fad7f93e4ccaa31f17df79f4d512647607427f1c
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952726"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006795"
 ---
 # <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>Schnellstart: Erstellen einer Azure Database Migration Service-Instanz mithilfe einer ARM-Vorlage
 
@@ -33,7 +33,7 @@ Für die ARM-Vorlage für die Azure Database Migration Service-Instanz benötige
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-azure-database-migration-simple-deploy/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/azure-database-migration-simple-deploy/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.datamigration/azure-database-migration-simple-deploy/azuredeploy.json":::
 

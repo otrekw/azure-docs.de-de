@@ -11,14 +11,16 @@ ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e67a9b35291615b87edf918b4146ab8d77a0ae7f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f4bf378db5d9091cb48f2b0c813a92823bc72589
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065142"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031743"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Tutorial: Moderieren von E-Commerce-Produktbildern mit Azure Content Moderator
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Cognitive Services und Content Moderator verwenden, um Produktbilder für ein E-Commerce-Szenario zu klassifizieren und zu moderieren. Sie verwenden maschinelles Sehen und Custom Vision, um Bilder mit Tags (Bezeichnungen) zu versehen. Anschließend erstellen Sie eine Teamüberprüfung, um die Machine Learning-basierten Technologien von Content Moderator mit menschlichen Prüfungsteams zu kombinieren und so ein intelligentes Moderationssystem zu erhalten.
 

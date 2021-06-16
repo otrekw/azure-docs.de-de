@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: ef1ed584a609b2e4baa27111e47343df99146f5a
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 46cd1b2d695592b97f2fe27451fe48e6e2c7be19
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257499"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410709"
 ---
 # <a name="soft-delete-for-blobs"></a>Vorläufiges Löschen für Blobs
 
@@ -113,7 +113,7 @@ In der folgenden Tabelle wird das erwartete Verhalten für Lösch- und Schreibvo
 | [Delete Storage Account](/rest/api/storagerp/storageaccounts/delete) | Keine Änderung. Container und Blobs im gelöschten Konto können nicht wiederhergestellt werden. | Keine Änderung. Container und Blobs im gelöschten Konto können nicht wiederhergestellt werden. |
 | [Delete Container](/rest/api/storageservices/delete-container) | Keine Änderung. Blobs im gelöschten Container können nicht wiederhergestellt werden. | Keine Änderung. Blobs im gelöschten Container können nicht wiederhergestellt werden. |
 | [Delete Blob](/rest/api/storageservices/delete-blob) | Wenn der Aufruf zum Löschen eines Blobs erfolgt, wird dieses Blob als „vorläufig gelöscht“ markiert. <br /><br /> Bei Verwendung zum Löschen einer Blobmomentaufnahme wird die Momentaufnahme als vorläufig gelöscht markiert. | Bei Verwendung zum Löschen eines Blobs wird die aktuelle Version zu einer früheren Version, und die aktuelle Version wird gelöscht. Es werden keine neue Version und auch keine vorläufig gelöschten Momentaufnahmen erstellt.<br /><br /> Bei Verwendung zum Löschen einer Blobversion wird die Version als vorläufig gelöscht markiert. |
-| [Wiederherstellen von Blobs](/rest/api/storageservices/delete-blob) | Stellt ein Blob und alle Momentaufnahmen wieder her, die innerhalb des Aufbewahrungszeitraums gelöscht wurden. | Stellt ein Blob und alle Versionen wieder her, die innerhalb des Aufbewahrungszeitraums gelöscht wurden. |
+| [Wiederherstellen von Blobs](/rest/api/storageservices/undelete-blob) | Stellt ein Blob und alle Momentaufnahmen wieder her, die innerhalb des Aufbewahrungszeitraums gelöscht wurden. | Stellt ein Blob und alle Versionen wieder her, die innerhalb des Aufbewahrungszeitraums gelöscht wurden. |
 | [Put Blob](/rest/api/storageservices/put-blob)<br />[Put Block List](/rest/api/storageservices/put-block-list)<br />[Copy Blob](/rest/api/storageservices/copy-blob)<br />[Copy Blob from URL](/rest/api/storageservices/copy-blob) | Bei Aufruf für ein aktives Blob wird automatisch eine Momentaufnahme des Blobzustands vor dem Vorgang generiert. <br /><br /> Bei Aufruf für ein vorläufig gelöschtes Blob wird nur dann eine Momentaufnahme des vorherigen Blobzustands generiert, wenn eine Ersetzung durch ein Blob desselben Typs durchgeführt wird. Wenn es sich um ein Blob eines anderen Typs handelt, werden alle vorhandenen vorläufig gelöschten Daten dauerhaft gelöscht. | Es wird automatisch eine neue Version generiert, die den Zustand des Blobs vor dem Vorgang erfasst. |
 | [Put Block](/rest/api/storageservices/put-block) | Bei Verwendung zum Commit eines Blocks in ein aktives Blob erfolgt keine Änderung.<br /><br />Bei Verwendung zum Commit eines Blocks in ein vorläufig gelöschtes Blob wird ein neues Blob erstellt, und es wird automatisch eine Momentaufnahme generiert, um den Zustand des vorläufig gelöschten Blobs zu erfassen. | Keine Änderung. |
 | [Put Page](/rest/api/storageservices/put-page)<br />[Put Page from URL](/rest/api/storageservices/put-page-from-url) | Keine Änderung. Seitenblobdaten, die mit diesem Vorgang überschrieben oder gelöscht werden, werden nicht gespeichert und können nicht wiederhergestellt werden. | Keine Änderung. Seitenblobdaten, die mit diesem Vorgang überschrieben oder gelöscht werden, werden nicht gespeichert und können nicht wiederhergestellt werden. |

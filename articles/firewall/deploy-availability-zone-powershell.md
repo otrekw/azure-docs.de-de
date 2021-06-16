@@ -7,12 +7,13 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 46ecc4754a064e26e61365ed6ca167606bef9d81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0179c8aebc9410d75b9c0702aeaf37451c89cc3d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94656104"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693699"
 ---
 # <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>Bereitstellen einer Azure Firewall mit Verfügbarkeitszonen mithilfe von Azure PowerShell
 

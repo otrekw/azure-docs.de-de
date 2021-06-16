@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: stegag
-ms.openlocfilehash: 8b240b31d7b3fc90ad9dc62eaf49aed6af6dd93d
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: cc4165a2636169c34b14795a8c2298a0f9917916
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229070"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652133"
 ---
 # <a name="troubleshoot-azure-vpn-gateway-using-diagnostic-logs"></a>Problembehandlung bei Azure VPN Gateway mithilfe von Diagnoseprotokollen
 
@@ -100,7 +100,7 @@ Erst nachdem Sie den Zeitstempel einer Trennung identifiziert haben, können Sie
 
 
 Einige Tipps zur Problembehandlung:
-- Wenn bei einer Gatewayinstanz ein Trennungsereignis und nach einigen Sekunden bei der **anderen** Gatewayinstanz ein Verbindungsereignis auftritt, liegt ein Gatewayfailover vor. Dieses Verhalten ist normalerweise bei der Wartung einer Gatewayinstanz zu erwarten. Weitere Informationen zu diesem Verhalten finden Sie unter [Informationen zur Redundanz von Azure-VPN-Gateways](./vpn-gateway-highlyavailable.md#about-azure-vpn-gateway-redundancy).
+- Wenn bei einer Gatewayinstanz ein Trennungsereignis und nach einigen Sekunden bei der **anderen** Gatewayinstanz ein Verbindungsereignis auftritt, liegt ein Gatewayfailover vor. Dieses Verhalten ist normalerweise bei der Wartung einer Gatewayinstanz zu erwarten. Weitere Informationen zu diesem Verhalten finden Sie unter [Informationen zur Redundanz von Azure-VPN-Gateways](./vpn-gateway-highlyavailable.md#activestandby).
 - Das gleiche Verhalten lässt sich beobachten, wenn Sie absichtlich eine Gatewayzurücksetzung auf Azure-Seite ausführen, wodurch die aktive Gatewayinstanz neu gestartet wird. Weitere Informationen zu diesem Verhalten finden Sie unter [Zurücksetzen eines VPN-Gateways](./reset-gateway.md).
 - Wenn bei einer Gatewayinstanz ein Trennungsereignis und nach einigen Sekunden bei **derselben** Gatewayinstanz ein Verbindungsereignis auftritt, liegt möglicherweise eine Netzwerkstörung vor, die ein DPD-Timeout verursacht, oder eine vom lokalen Gerät fälschlicherweise gesendete Trennung.
 

@@ -7,12 +7,13 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 32b73be3faf6eedb92220725b292a3e69cf7f965
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 28262d66794d573d40e4e202d8b047e1d1fbefc7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555991"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953804"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuelle Computer in einer Azure Resource Manager-Vorlage
 
@@ -163,7 +164,7 @@ Verwenden Sie diese Optionen zum Abrufen der aktuellen API-Versionen:
 
 ## <a name="parameters-and-variables"></a>Parameter und Variablen
 
-[Parameter](../../azure-resource-manager/templates/template-syntax.md) erleichtern Ihnen das Angeben von Werten für die Vorlage, wenn Sie sie ausführen. Dieser Parameterabschnitt wird im Beispiel verwendet:
+[Parameter](../../azure-resource-manager/templates/syntax.md) erleichtern Ihnen das Angeben von Werten für die Vorlage, wenn Sie sie ausführen. Dieser Parameterabschnitt wird im Beispiel verwendet:
 
 ```json
 "parameters": {
@@ -175,7 +176,7 @@ Verwenden Sie diese Optionen zum Abrufen der aktuellen API-Versionen:
 
 Beim Bereitstellen der Beispielvorlage geben Sie Werte für den Namen und das Kennwort des Administratorkontos auf jeder VM und die Anzahl von zu erstellenden VMs an. Sie haben die Möglichkeit, Parameterwerte in einer separaten Datei anzugeben, die mit der Vorlage verwaltet wird, oder Werte nach Aufforderung anzugeben.
 
-[Variablen](../../azure-resource-manager/templates/template-syntax.md) erleichtern Ihnen das Einrichten von Werten in der Vorlage, die darin wiederholt verwendet werden oder die sich im Laufe der Zeit ändern können. Dieser Variablenabschnitt wird im Beispiel verwendet:
+[Variablen](../../azure-resource-manager/templates/syntax.md) erleichtern Ihnen das Einrichten von Werten in der Vorlage, die darin wiederholt verwendet werden oder die sich im Laufe der Zeit ändern können. Dieser Variablenabschnitt wird im Beispiel verwendet:
 
 ```json
 "variables": { 
@@ -208,7 +209,7 @@ Beim Bereitstellen der Beispielvorlage geben Sie Werte für den Namen und das Ke
 }, 
 ```
 
-Beim Bereitstellen der Beispielvorlage werden für den Namen und Bezeichner des zuvor erstellten Speicherkontos Variablenwerte verwendet. Variablen werden auch genutzt, um die Einstellungen für die Diagnoseerweiterung anzugeben. Verwenden Sie die [bewährten Methoden zum Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-best-practices.md), um besser entscheiden zu können, wie Sie die Parameter und Variablen in Ihrer Vorlage strukturieren möchten.
+Beim Bereitstellen der Beispielvorlage werden für den Namen und Bezeichner des zuvor erstellten Speicherkontos Variablenwerte verwendet. Variablen werden auch genutzt, um die Einstellungen für die Diagnoseerweiterung anzugeben. Verwenden Sie die [bewährten Methoden zum Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/best-practices.md), um besser entscheiden zu können, wie Sie die Parameter und Variablen in Ihrer Vorlage strukturieren möchten.
 
 ## <a name="resource-loops"></a>Ressourcenschleifen
 
@@ -247,7 +248,7 @@ Beachten Sie, dass die Erstellung einer Schleife für eine Ressource in der Vorl
 
 ## <a name="dependencies"></a>Abhängigkeiten
 
-Um richtig funktionieren zu können, sind die meisten Ressourcen von anderen Ressourcen abhängig. Virtuelle Computer müssen einem virtuellen Netzwerk zugeordnet werden, und hierfür wird eine Netzwerkschnittstelle benötigt. Mit dem [dependsOn](../../azure-resource-manager/templates/define-resource-dependency.md)-Element wird sichergestellt, dass die Netzwerkschnittstelle für die Verwendung bereit ist, bevor die VMs erstellt werden:
+Um richtig funktionieren zu können, sind die meisten Ressourcen von anderen Ressourcen abhängig. Virtuelle Computer müssen einem virtuellen Netzwerk zugeordnet werden, und hierfür wird eine Netzwerkschnittstelle benötigt. Mit dem [dependsOn](../../azure-resource-manager/templates/resource-dependency.md)-Element wird sichergestellt, dass die Netzwerkschnittstelle für die Verwendung bereit ist, bevor die VMs erstellt werden:
 
 ```json
 "dependsOn": [
@@ -451,7 +452,7 @@ Es ist kein Problem, dieselbe Vorlage zum Erstellen von Ressourcen oder Aktualis
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erstellen Sie Ihre eigene Vorlage: [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
+- Erstellen Sie Ihre eigene Vorlage: [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md).
 - Stellen Sie die Vorlagen bereit, die Sie erstellt haben: [Erstellen Sie einen virtuellen Windows-Computer mit einer Resource Manager-Vorlage](ps-template.md).
 - Erfahren Sie, wie Sie die erstellten virtuellen Computer verwalten, indem Sie [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](tutorial-manage-vm.md) durcharbeiten.
 - Informationen zur JSON-Syntax und zu den Eigenschaften von Ressourcentypen in Vorlagen finden Sie in der [Azure Resource Manager-Vorlagenreferenz](/azure/templates/).

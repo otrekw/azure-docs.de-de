@@ -43,6 +43,8 @@
       items:
         - name: Firmwaresicherheit
           href: firmware.md
+        - name: Codeintegrität
+          href: code-integrity.md
         - name: Sicherer Start
           href: secure-boot.md
         - name: Gemessener Start- und Hostnachweis

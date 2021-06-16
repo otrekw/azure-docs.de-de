@@ -3,12 +3,13 @@ title: Verwenden der Patch Orchestration-Anwendung
 description: Automatisieren Sie das Patchen von Betriebssystemen auf nicht in Azure gehosteten Service Fabric Clustern mithilfe der Patch Orchestration Application-Anwendung.
 ms.topic: how-to
 ms.date: 2/01/2019
-ms.openlocfilehash: 9c3f1eb767f0dac0e5be3d9fd2b344d538b95ee0
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3d51cfeaa13bd2556e1d32ffc39232b514f8a7b4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738696"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663685"
 ---
 # <a name="use-patch-orchestration-application"></a>Verwenden der Patch Orchestration-Anwendung
 
@@ -139,7 +140,7 @@ Um das Anwendungspaket herunterzuladen, wechseln Sie zur [Releaseseite von Patch
 
 Sie können das POA-Verhalten entsprechend Ihren Anforderungen konfigurieren. Überschreiben Sie die Standardwerte, indem Sie während der Erstellung oder Aktualisierung einer Anwendung den Anwendungsparameter übergeben. Sie können Anwendungsparameter durch Angeben von `ApplicationParameter` in den Cmdlets `Start-ServiceFabricApplicationUpgrade` oder `New-ServiceFabricApplication` festlegen.
 
-| Parameter        | type                          | Details |
+| Parameter        | Typ                          | Details |
 |:-|-|-|
 |MaxResultsToCache    |Long                              | Die maximale Anzahl von Windows Update-Ergebnissen, die zwischengespeichert werden sollen. <br><br>Der Standardwert ist 3.000, wobei Folgendes angenommen wird: <br> &nbsp;&nbsp;- Es sind 20 Knoten vorhanden. <br> &nbsp;&nbsp;- Jeden Monat können 5 Updates für einen Knoten durchgeführt werden. <br> &nbsp;&nbsp;- Pro Vorgang können 10 Ergebnisse vorliegen. <br> &nbsp;&nbsp;- Es sollen die Ergebnisse für die letzten drei Monate gespeichert werden. |
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Windows-Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br><br>Zulässige Werte sind: <br>*NodeWise:* Windows-Updates werden immer nur auf jeweils einem Knoten installiert. <br> *UpgradeDomainWise:* Windows-Updates werden immer nur in jeweils einer Updatedomäne installiert. (Allenfalls kann ein Windows-Update für alle Knoten in einer Updatedomäne verwendet werden.)<br><br> Informationen dazu, welche Richtlinie für Ihren Cluster am besten geeignet ist, finden Sie im Abschnitt [Häufig gestellte Fragen](#frequently-asked-questions).

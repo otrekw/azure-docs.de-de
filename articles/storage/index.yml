@@ -103,7 +103,7 @@ additionalContent:
               text: "Verwenden eines vollständig verwalteten Dateicachediensts (Azure HPC\_Cache)"
             - url: ../avere-vfxt/avere-vfxt-overview.md
               text: Zwischenspeichern eines lokalen NAS in Azure (Avere vFXT for Azure)
-            - url: ../fxt-edge-filer/fxt-overview.md
+            - url: ../fxt-edge-filer/overview.md
               text: Bereitstellen einer lokalen Caching-Appliance (Azure FXT Edge Filer)
     - title: Datenvorgänge
       items:

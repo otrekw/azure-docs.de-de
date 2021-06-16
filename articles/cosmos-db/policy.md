@@ -6,12 +6,13 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3f1fffb10bf47cab28d31bd3c180b12cd2adadde
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93080650"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110680762"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Verwenden von Azure Policy zum Implementieren von Governance und Kontrollen für Azure Cosmos DB-Ressourcen
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

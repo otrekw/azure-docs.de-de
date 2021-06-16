@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 06/19/2019
-ms.openlocfilehash: 68fa089713c3dd89b4699011ded7d667bca6f73f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 83fe28a063c455de17e178320f0ff2cc057f3f01
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178071"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706363"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Tutorial: Hinzufügen einer Azure SQL-Datenbank-Instanz zu einer Autofailovergruppe
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -197,9 +197,9 @@ In diesem Teil des Tutorials werden die folgenden Azure CLI-Cmdlets verwendet:
 
 | Get-Help | Notizen |
 |---|---|
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Erstellt einen Server, der Datenbanken und Pools für elastische Datenbanken hostet. |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | Erstellt einen Server, der Datenbanken und Pools für elastische Datenbanken hostet. |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | Erstellt die Firewallregeln eines Servers. |
-| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) | Erstellt eine Failovergruppe. |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az_sql_failover_group_create) | Erstellt eine Failovergruppe. |
 
 ---
 
@@ -322,8 +322,8 @@ In diesem Teil des Tutorials werden die folgenden Azure CLI-Cmdlets verwendet:
 
 | Get-Help | Notizen |
 |---|---|
-| [az sql failover-group list](/cli/azure/sql/failover-group#az-sql-failover-group-list) | Listet die Failovergruppen eines Servers auf. |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Legt die primäre Failovergruppe fest, indem für alle Datenbanken auf dem aktuellen primären Server ein Failover ausgeführt wird. |
+| [az sql failover-group list](/cli/azure/sql/failover-group#az_sql_failover_group_list) | Listet die Failovergruppen eines Servers auf. |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | Legt die primäre Failovergruppe fest, indem für alle Datenbanken auf dem aktuellen primären Server ein Failover ausgeführt wird. |
 
 ---
 
@@ -373,7 +373,7 @@ In diesem Teil des Tutorials werden die folgenden Azure CLI-Cmdlets verwendet:
 
 | Get-Help | Notizen |
 |---|---|
-| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [az group delete](/cli/azure/vm/extension#az_vm_extension_set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ---
 
@@ -409,15 +409,15 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [az account set](/cli/azure/account#az-account-set) | Legt ein Abonnement als aktuelles aktives Abonnement fest. |
-| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Dieses Cmdlet erstellt einen Server, der Singletons und Pools für elastische Datenbanken in Azure SQL-Datenbank hostet. |
+| [az account set](/cli/azure/account#az_account_set) | Legt ein Abonnement als aktuelles aktives Abonnement fest. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | Dieses Cmdlet erstellt einen Server, der Singletons und Pools für elastische Datenbanken in Azure SQL-Datenbank hostet. |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | Dieses Cmdlet erstellt IP-Firewallregeln auf Serverebene in Azure SQL-Datenbank. |
 | [az sql db create](/cli/azure/sql/db) | Dieses Cmdlet erstellt eine Datenbank in Azure SQL-Datenbank. |
-| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) | Dieses Cmdlet erstellt eine Failovergruppe in Azure SQL-Datenbank. |
-| [az sql failover-group list](/cli/azure/sql/failover-group#az-sql-failover-group-list) | Dieses Cmdlet listet die Failovergruppen eines Servers in Azure SQL-Datenbank auf. |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Legt die primäre Failovergruppe fest, indem für alle Datenbanken auf dem aktuellen primären Server ein Failover ausgeführt wird. |
-| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az_sql_failover_group_create) | Dieses Cmdlet erstellt eine Failovergruppe in Azure SQL-Datenbank. |
+| [az sql failover-group list](/cli/azure/sql/failover-group#az_sql_failover_group_list) | Dieses Cmdlet listet die Failovergruppen eines Servers in Azure SQL-Datenbank auf. |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | Legt die primäre Failovergruppe fest, indem für alle Datenbanken auf dem aktuellen primären Server ein Failover ausgeführt wird. |
+| [az group delete](/cli/azure/vm/extension#az_vm_extension_set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 # <a name="the-portal"></a>[Portal](#tab/azure-portal)
 

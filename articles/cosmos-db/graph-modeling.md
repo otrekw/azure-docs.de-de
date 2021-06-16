@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: chrande
-ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f2be9103d61897eb24d1653f63cbec86ffb407c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93357044"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957338"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modellieren von Graphdaten für die Gremlin-API von Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -38,7 +38,7 @@ Eine Graphdatenbanklösung kann optimal angewendet werden, wenn die Entitäten u
 
 Sind die obigen Kriterien erfüllt, hat ein Ansatz mit einer Graphdatenbank voraussichtlich Vorteile für die **Abfragekomplexität**, die **Skalierbarkeit des Datenmodells** und die **Abfrageleistung**.
 
-Im nächsten Schritt muss bestimmt werden, ob der Graph für Analysen oder für Transaktionen verwendet wird. Wenn der Graph für Workloads mit hohen Rechen- und Datenverarbeitungsanforderungen vorgesehen ist, sollten Sie sich mit dem [Cosmos DB Spark-Connector](./spark-connector.md) sowie mit der Verwendung der [GraphX-Bibliothek](https://spark.apache.org/graphx/) vertraut machen. 
+Im nächsten Schritt muss bestimmt werden, ob der Graph für Analysen oder für Transaktionen verwendet wird. Wenn der Graph für Workloads mit hohen Rechen- und Datenverarbeitungsanforderungen vorgesehen ist, sollten Sie sich mit dem [Cosmos DB Spark-Connector](./create-sql-api-spark.md) sowie mit der Verwendung der [GraphX-Bibliothek](https://spark.apache.org/graphx/) vertraut machen. 
 
 ## <a name="how-to-use-graph-objects"></a>Verwenden von Graphobjekten
 
@@ -46,7 +46,7 @@ Im [Eigenschaftsgraph-Standard von Apache Tinkerpop](https://tinkerpop.apache.o
 
 Im Anschluss finden Sie die bewährten Methoden für die Eigenschaften in den Graphobjekten:
 
-| Object | Eigenschaft | type | Notizen |
+| Object | Eigenschaft | Typ | Notizen |
 | --- | --- | --- |  --- |
 | Scheitelpunkt | id | String | Individuell pro Partition erzwungen. Ist beim Einfügen kein Wert angegeben, wird ein automatisch generierter GUID gespeichert. |
 | Scheitelpunkt | label | String | Diese Eigenschaft dient zum Definieren der Art von Entität, die der Scheitelpunkt darstellt. Ist kein Wert angegeben, wird der Standardwert „vertex“ verwendet. |

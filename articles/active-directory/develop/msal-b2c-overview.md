@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 383c9651d6552a327bc9e986d18fbc7832fc94f8
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: e11ed0d284e89a9e5f406aade2147b52d139f0ad
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072187"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953543"
 ---
 # <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Verwenden der Microsoft Authentication Library für JavaScript für die Zusammenarbeit mit Azure AD B2C
 
@@ -28,12 +28,12 @@ Wenn Sie Azure AD B2C als Identitätsverwaltungsdienst verwenden, können Sie 
 
 ## <a name="supported-app-types-and-scenarios"></a>Unterstützte App-Typen und Szenarien
 
-MSAL.js ermöglicht [Single-Page-Webanwendungen](https://docs.microsoft.com/azure/active-directory-b2c/application-types#single-page-applications) die Anmeldung von Benutzern mit Azure AD B2C unter Verwendung des [Autorisierungscodeflows mit PKCE](https://docs.microsoft.com/azure/active-directory-b2c/authorization-code-flow). Mit MSAL.js und Azure AD B2C:
+MSAL.js ermöglicht [Single-Page-Webanwendungen](../../active-directory-b2c/application-types.md#single-page-applications) die Anmeldung von Benutzern mit Azure AD B2C unter Verwendung des [Autorisierungscodeflows mit PKCE](../../active-directory-b2c/authorization-code-flow.md). Mit MSAL.js und Azure AD B2C:
 
 - Benutzer **können** sich mit ihren Social Media- und ihren lokalen Identitäten authentifizieren.
 - Benutzer **können** für den Zugriff auf durch Azure AD B2C geschützte Ressourcen autorisiert werden (aber nicht für durch Azure AD geschützte Ressourcen).
-- Benutzern **ist es nicht möglich**, mithilfe von [delegierten Berechtigungen](https://review.docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent?branch=master#permission-types) Token für Microsoft-APIs (z. B. für die MS Graph-API) abzurufen.
-- Benutzer mit Administratorberechtigungen **können** mithilfe von [delegierten Berechtigungen](https://review.docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent?branch=master#permission-types) Token für Microsoft-APIs (z. B. für die MS Graph-API) abrufen.
+- Benutzern **ist es nicht möglich**, mithilfe von [delegierten Berechtigungen](/azure/active-directory/develop/v2-permissions-and-consent#permission-types) Token für Microsoft-APIs (z. B. für die MS Graph-API) abzurufen.
+- Benutzer mit Administratorberechtigungen **können** mithilfe von [delegierten Berechtigungen](/azure/active-directory/develop/v2-permissions-and-consent#permission-types) Token für Microsoft-APIs (z. B. für die MS Graph-API) abrufen.
 
 Weitere Informationen finden Sie unter [Arbeiten mit Azure AD B2C](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/working-with-b2c.md).
 
