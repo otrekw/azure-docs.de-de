@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50ba13a49d8e08b70ebf8a8bb12dfe92d8a35bb7
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e02755f748cffcf7c523ce3b9c6fc651d2b1b02f
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206582"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438916"
 ---
 # <a name="govern-on-premises-service-accounts"></a>Steuern lokaler Dienstkonten
 
@@ -59,7 +59,7 @@ Wenden Sie für Benutzerkonten, die als Dienstkonten verwendet werden, die folge
 
 *  **LogonWorkstations**: Schränken Sie die Anmeldemöglichkeiten für das Dienstkonto ein. Wenn es lokal auf einem Computer ausgeführt wird und nur auf Ressourcen auf diesem Computer zugreift, unterbinden Sie anderweitige Anmeldungen.
 
-* [**Keine Kennwortänderung**](/powershell/module/addsadministration/set-aduser): Verhindern Sie, dass das Dienstkonto sein eigenes Kennwort ändert, indem Sie den Parameter auf „False“ festlegen.
+* [**Keine Kennwortänderung**](/powershell/module/activedirectory/set-aduser): Verhindern Sie, dass das Dienstkonto sein eigenes Kennwort ändert, indem Sie den Parameter auf „False“ festlegen.
  
 ## <a name="build-a-lifecycle-management-process"></a>Erstellen eines Lebenszyklusverwaltungsprozesses
 

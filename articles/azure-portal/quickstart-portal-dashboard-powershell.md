@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mithilfe von Azure PowerShell ein Dashbo
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 03/25/2021
-ms.openlocfilehash: cd001a8259c54f1d86aab5983da1413c8163008c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7828dd6ba43cebeef158e897dd8f2a5fb54d8d83
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557444"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077734"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>Schnellstart: Erstellen eines Dashboards im Azure-Portal mit PowerShell
 
@@ -77,7 +77,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 Das Dashboard, das Sie im nächsten Teil dieses Schnellstarts erstellen, erfordert eine vorhandene VM. Führen Sie diese Schritte durch, um eine VM zu erstellen.
 
-Speichern Sie die Anmeldeinformationen für die VM in einer Variablen. Das Kennwort muss komplex sein. Dabei handelt es sich um einen neuen Benutzernamen und ein neues Kennwort, also beispielsweise nicht das Konto, mit dem Sie sich bei Azure anmelden. Weitere Informationen finden Sie unter [Anforderungen an Benutzernamen](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm) und [Anforderungen an Kennwörter](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+Speichern Sie die Anmeldeinformationen für die VM in einer Variablen. Das Kennwort muss komplex sein. Dabei handelt es sich um einen neuen Benutzernamen und ein neues Kennwort, also beispielsweise nicht das Konto, mit dem Sie sich bei Azure anmelden. Weitere Informationen finden Sie unter [Anforderungen an Benutzernamen](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-) und [Anforderungen an Kennwörter](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-).
 
 ```azurepowershell-interactive
 $Cred = Get-Credential

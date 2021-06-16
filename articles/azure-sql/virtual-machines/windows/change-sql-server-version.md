@@ -15,12 +15,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5dbd5725c666afe04d57d4432f0a4798fcb34c03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb8d0150bafe795f2b23fa18581adc60d091aaf2
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358842"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078831"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Direktes Ändern der SQL Server-Version auf Azure-VMs
 
@@ -122,6 +122,6 @@ Nachdem Sie die Version von SQL Server geändert haben, registrieren Sie Ihre S
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Übersicht über SQL Server auf einem virtuellen Windows-Computer](sql-server-on-azure-vm-iaas-what-is-overview.md)
-- [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.md)
+- [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.yml)
 - [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
 - [SQL Server auf Windows-VMs – Versionshinweise](doc-changes-updates-release-notes.md)

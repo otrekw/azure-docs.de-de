@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 5a8b722b7bef393422eec395f16de0f38e806152
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dfc7be7619360e15f3233c469aba92832e5f6278
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141755"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080937"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure KI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -287,7 +287,7 @@ Hier wird die folgende Frage gestellt: „Welche Restnutzungsdauer hat das Gerä
 
 Abbildung 4. Bezeichnungen für die Regression
 
-Für die Regression erfolgt die Bezeichnung per Verweis auf einen Fehlerpunkt. Die Berechnung ist nicht möglich ohne Informationen dazu, wie lange eine Ressource vor einem Fehler fehlerfrei betrieben wurde. Im Gegensatz zur binären Klassifizierung können Ressourcen ohne jegliche Fehler in den Daten nicht für die Modellierung verwendet werden. Dieses Problem lässt sich am besten mit einem anderen statistischen Verfahren lösen, das als [Ereigniszeitanalyse](https://en.wikipedia.org/wiki/Survival_analysis) bezeichnet wird. Es kann aber zu potenziellen Komplikationen kommen, wenn dieses Verfahren auf PdM-Anwendungsfälle angewendet wird, die zeitbezogene Daten mit häufigen Intervallen umfassen. Weitere Informationen zur Ereigniszeitanalyse finden Sie auf [dieser Seite](https://www.cscu.cornell.edu/news/news.php/stnews78.pdf).
+Für die Regression erfolgt die Bezeichnung per Verweis auf einen Fehlerpunkt. Die Berechnung ist nicht möglich ohne Informationen dazu, wie lange eine Ressource vor einem Fehler fehlerfrei betrieben wurde. Im Gegensatz zur binären Klassifizierung können Ressourcen ohne jegliche Fehler in den Daten nicht für die Modellierung verwendet werden. Dieses Problem lässt sich am besten mit einem anderen statistischen Verfahren lösen, das als [Ereigniszeitanalyse](https://en.wikipedia.org/wiki/Survival_analysis) bezeichnet wird. Es kann aber zu potenziellen Komplikationen kommen, wenn dieses Verfahren auf PdM-Anwendungsfälle angewendet wird, die zeitbezogene Daten mit häufigen Intervallen umfassen. Weitere Informationen zur Ereigniszeitanalyse finden Sie auf [dieser Seite](https://cscu.cornell.edu/wp-content/uploads/78_surv.pdf).
 
 ### <a name="multi-class-classification-for-predictive-maintenance"></a>Klassifizierung mit mehreren Klassen für vorbeugende Wartung
 Verfahren mit der Klassifizierung mit mehreren Klassen können in PdM-Lösungen für zwei Szenarien verwendet werden:

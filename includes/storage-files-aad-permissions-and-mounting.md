@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: storage
 author: roygara
@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 200bf290543747cf9abab6113b8013e2eec852a8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: include file, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: afd94ba7a91d18ef1bc1321c6fbbb9688bc21255
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107513184"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110721781"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Zuweisen von Zugriffsberechtigungen zu einer Identität
 

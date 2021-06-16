@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bce54bb845e3085d654e3980123ef5c8a856fd98
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 70cc20b51587a70e8a124b6f3b5d047ff827db83
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530197"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034587"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -74,7 +74,7 @@ Organisationen können festlegen, dass ein versuchter Zugriff auf die ausgewähl
 
 Um dieses Gewährungssteuerelement zu nutzen, muss für den bedingten Zugriff das Gerät in Azure Active Directory registriert sein. Dafür ist eine Broker-App erforderlich. Die Broker-App kann entweder Microsoft Authenticator für iOS, Microsoft Authenticator oder das Microsoft-Unternehmensportal für Android-Geräte sein. Wenn der Benutzer versucht, sich zu authentifizieren, und auf dem Gerät keine Broker-App installiert ist, wird er zum entsprechenden App Store umgeleitet, um die erforderliche Broker-App zu installieren.
 
-Diese Einstellung gilt für die folgenden iOS- und Android-Apps:
+Für die folgenden Client-Apps wurde bestätigt, dass diese Einstellung unterstützt wird:
 
 - Microsoft Azure Information Protection
 - Microsoft Bookings
@@ -86,6 +86,7 @@ Diese Einstellung gilt für die folgenden iOS- und Android-Apps:
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
+- Microsoft-Listen
 - Microsoft Office
 - Microsoft OneDrive
 - Microsoft OneNote

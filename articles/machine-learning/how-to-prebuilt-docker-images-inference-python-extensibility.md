@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 688c0fd03573737ee97084025251c9082a8cb915
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8af27f876f1c325cf99214e36f680e012e86c98d
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382861"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536324"
 ---
 # <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>Erweiterbarkeit von Python-Paketen für vordefinierte Docker-Images (Vorschau)
 
@@ -155,7 +155,7 @@ Hier sind einige Gründe angegeben, die zu diesem Problem führen können:
     | Lösung  | Erstellen Sie die Datei `requirements.txt`, mit der die angegebenen Pakete installiert werden, wenn der Container gestartet wird. | Erstellen Sie eine lokale Python-Umgebung mit allen Abhängigkeiten. Binden Sie dieses Verzeichnis zur Laufzeit in den Container ein. |
     | Paketinstallation           | Keine zusätzliche Installation (vorausgesetzt, pip ist bereits installiert)                                                                                                          | Installation einer virtuellen Umgebung oder Conda-Umgebung.                                                                                   |
     | Einrichtung der virtuellen Umgebung              | Es ist keine zusätzliche Einrichtung der virtuellen Umgebung erforderlich, da Benutzer die aktuelle lokale Benutzerumgebung bei Bedarf mit „pip freeze“ pullen können, um die Datei `requirements.txt` zu erstellen. | Sie müssen eine bereinigte virtuelle Umgebung einrichten. Je nach aktueller lokaler Benutzerumgebung müssen ggf. noch weitere Schritte ausgeführt werden.                        |
-    | Debuggen                  | Die Einrichtung und das Debuggen des Servers sind einfach, da die Abhängigkeiten eindeutig aufgelistet sind. | Eine nicht bereinigte virtuelle Umgebung kann zu Problemen beim Debuggen des Servers führen. Beispielsweise ist es unter Umständen nicht eindeutig, ob Fehler aus der Umgebung oder aus dem Benutzercode stammen. |
+    | [Debuggen](how-to-inference-server-http.md)                 | Die Einrichtung und das Debuggen des Servers sind einfach, da die Abhängigkeiten eindeutig aufgelistet sind. | Eine nicht bereinigte virtuelle Umgebung kann zu Problemen beim Debuggen des Servers führen. Beispielsweise ist es unter Umständen nicht eindeutig, ob Fehler aus der Umgebung oder aus dem Benutzercode stammen. |
     | Konsistenz beim Aufskalieren | Hierbei besteht keine Konsistenz, da eine Abhängigkeit von externen PyPi-Paketen und dem Anheften der Abhängigkeiten durch Benutzer besteht. Es kann sein, dass diese externen Downloads unzuverlässig sind.                                 | Basiert ausschließlich auf der Benutzerumgebung, sodass keine Konsistenzprobleme bestehen.                                                                             |
 
 * Warum befinden sich meine Datei `requirements.txt` und das Verzeichnis mit den eingebundenen Abhängigkeiten nicht im Container?

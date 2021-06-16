@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: a77c2bc69418b821933c0b62674500f7a32e40a5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 048afc8997f4e2b3f1d9a9cf6aea67be63c659ee
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565205"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027141"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Bereitstellen und Erstellen von Linux-Images in Azure
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die Entscheidungspunkte und Anforderungen für Images s
 ## <a name="difference-between-managed-disks-and-images"></a>Unterschied zwischen verwalteten Datenträgern und Images
 
 
-Azure ermöglicht Ihnen das Bereitstellen einer virtuellen Festplatte (Virtual Hard Disk, VHD) auf der Plattform, die Sie als [verwalteten Datenträger](../faq-for-disks.md#managed-disks) oder als Quelle für ein Image verwenden können. 
+Azure ermöglicht Ihnen das Bereitstellen einer virtuellen Festplatte (Virtual Hard Disk, VHD) auf der Plattform, die Sie als [verwalteten Datenträger](/azure/virtual-machines/faq-for-disks#managed-disks) oder als Quelle für ein Image verwenden können. 
 
 Verwaltete Azure-Datenträger sind einzelne VHDs. Sie können entweder anhand einer vorhandenen VHD einen verwalteten Datenträger erstellen oder einen leeren verwalteten Datenträger von Grund auf erstellen. Sie können VMs von verwalteten Datenträgern erstellen, indem Sie den Datenträger an den virtuellen Computer anfügen, aber Sie können nur eine VHD mit einem virtuellen Computer verwenden. Sie können keine Betriebssystemeigenschaften ändern. Azure versucht lediglich, den virtuellen Computer zu aktivieren und mit diesem Datenträger zu starten. 
 

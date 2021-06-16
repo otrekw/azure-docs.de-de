@@ -4,12 +4,12 @@ description: Bereitstellen von Ressourcen in Azure mithilfe einer Azure Resource
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 1c3dd78d8c9c0819c69b12ccb9199acd7a4a626e
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: d8a173c719c239d72c57febbe54688f079a601bb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752029"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959971"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>Bereitstellen einer privaten ARM-Vorlage mit SAS-Token
 
@@ -147,4 +147,4 @@ Ein Beispiel der Verwendung eines SAS-Tokens mit verknüpften Vorlagen finden Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Einführung in die Bereitstellung von Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
-* Informationen zum Definieren von Parametern in der Vorlage finden Sie unter [Erstellen von Vorlagen](template-syntax.md#parameters).
+* Informationen zum Definieren von Parametern in der Vorlage finden Sie unter [Erstellen von Vorlagen](./syntax.md#parameters).

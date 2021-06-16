@@ -3,12 +3,12 @@ title: Erstellen und Bereitstellen von Ressourcengruppenprojekten in Visual Stud
 description: Verwenden Sie Visual Studio, um ein Azure-Ressourcengruppenprojekt zu erstellen und die Ressourcen in Azure bereitzustellen.
 ms.topic: conceptual
 ms.date: 04/12/2021
-ms.openlocfilehash: 4c0e19042506e0cf1772398b0a02b81f0245b1c7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 71474578853523245b4859680b739254702afde6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306975"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958122"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
 
@@ -51,7 +51,7 @@ In diesem Abschnitt erstellen Sie ein Azure-Ressourcengruppenprojekt mit der Vor
 
 ## <a name="customize-resource-manager-template"></a>Anpassen der Resource Manager-Vorlage
 
-Sie können ein Bereitstellungsprojekt anpassen, indem Sie die Resource Manager-Vorlage bearbeiten, in der die bereitzustellenden Ressourcen beschrieben werden. Weitere Informationen über die Elemente von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](template-syntax.md).
+Sie können ein Bereitstellungsprojekt anpassen, indem Sie die Resource Manager-Vorlage bearbeiten, in der die bereitzustellenden Ressourcen beschrieben werden. Weitere Informationen über die Elemente von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](./syntax.md).
 
 1. Öffnen Sie **WebSite.json**, um die Vorlage zu bearbeiten.
 

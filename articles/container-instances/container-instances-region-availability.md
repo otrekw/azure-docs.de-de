@@ -4,12 +4,12 @@ description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2bf5735c1e50ae31f70b68d7b926e82badeb3933
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 26d1bf74656c63f4957df1129746a3f8fd33c554
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015985"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959107"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -34,23 +34,26 @@ Die folgenden Regionen und maximalen Ressourcen sind für Containergruppen mit L
 | Australien (Osten) | 4 | 16 | 4 | 16 | 50 | – |
 | Brasilien, Süden | 4 | 16 | 2 | 8 | 50 | – |
 | Kanada, Mitte | 4 | 16 | 4 | 16 | 50 | – |
+| Kanada, Osten | 4 | 16 | 4 | 16 | 50 | – |
 | Indien, Mitte | 4 | 16 | 4 | 4 | 50 | V100 |
 | USA, Mitte | 4 | 16 | 4 | 16 | 50 | – |
 | Asien, Osten | 4 | 16 | 4 | 16 | 50 | – |
 | East US | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 | USA (Ost) 2 | 4 | 16 | 4 | 16 | 50 | – |
 | Frankreich, Mitte | 4 | 16 | 4 | 16 | 50 | – |
-| Deutschland, Westen-Mitte | 3 | 16 | – | – | 50 | – |
+| Deutschland, Westen-Mitte | 4 | 16 | – | – | 50 | – |
 | Japan, Osten | 2 | 8 | 4 | 16 | 50 | – |
+| Japan, Westen | 4 | 16 | – | – | 50 | – |
 | Korea, Mitte | 4 | 16 | – | – | 50 | – |
 | USA Nord Mitte | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
 | Europa, Norden | 4 | 16 | 4 | 16 | 50 | K80 |
 | USA Süd Mitte | 4 | 16 | 4 | 16 | 50 | V100 |
 | Asien, Südosten | 4 | 16 | 4 | 16 | 50 | P100, V100 |
 | Indien (Süden) | 4 | 16 | – | – | 50 | K80 |
-| Schweiz, Norden | 3 | 16 | – | – | 50 | – |
+| Schweiz, Norden | 4 | 16 | – | – | 50 | – |
 | UK, Süden | 4 | 16 | 4 | 16 | 50 | – |
-| Vereinigte Arabische Emirate, Norden | 3 | 16 | – | – | 50 | – |
+| UK, Westen | 4 | 16 | 4 | 16 | 50 | – |
+| Vereinigte Arabische Emirate, Norden | 4 | 16 | – | – | 50 | – |
 | USA, Westen-Mitte| 4 | 16 | 4 | 16 | 50 | – |
 | Europa, Westen | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 | USA, Westen | 4 | 16 | 4 | 16 | 50 | – |

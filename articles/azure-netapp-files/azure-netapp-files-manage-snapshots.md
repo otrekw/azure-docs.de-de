@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/20/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: a18c53d972fbb38dc0b0e557d14b2fbffbff15fa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b0cc4deebac60fcf0ac4df20b112b8f69da05414
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174358"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072107"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
 
@@ -49,26 +49,6 @@ Sie können bei Bedarf Volumemomentaufnahmen erstellen.
 ## <a name="manage-snapshot-policies"></a>Verwalten von Momentaufnahmenrichtlinien
 
 Mithilfe von Momentaufnahmenrichtlinien können Sie planen, dass automatisch Volumemomentaufnahmen erstellt werden. Sie können eine Momentaufnahmenrichtlinie nach Bedarf auch ändern oder sogar löschen, wenn Sie sie nicht mehr benötigen.  
-
-### <a name="register-the-feature"></a>Registrieren der Funktion
-
-Die Funktion **Momentaufnahmenrichtlinie** steht derzeit als Vorschau zur Verfügung. Wenn Sie diese Funktion zum ersten Mal verwenden, müssen Sie sie zuerst registrieren. 
-
-1. Registrieren Sie die Funktion: 
-
-    ```azurepowershell-interactive
-    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
-    ```
-
-2. Überprüfen Sie den Status der Funktionsregistrierung: 
-
-    > [!NOTE]
-    > Der **RegistrationState** kann für bis zu 60 Minuten den Status `Registering` aufweisen, bevor der Wechsel in `Registered` erfolgt. Warten Sie, bis der Status **Registriert** lautet, bevor Sie fortfahren.
-
-    ```azurepowershell-interactive
-    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
-    ```
-Sie können auch die [Azure CLI-Befehle](/cli/azure/feature) `az feature register` und `az feature show` verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen. 
 
 ### <a name="create-a-snapshot-policy"></a>Erstellen einer Momentaufnahmenrichtlinie 
 

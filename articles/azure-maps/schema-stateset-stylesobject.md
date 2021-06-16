@@ -8,20 +8,16 @@ ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 08379e66c97d34eea53410190475e90e156a58e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f213976d0e61706b2d8a9c8465be1ff0a4065b2e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96903342"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031887"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>StylesObject-Schemareferenzhandbuch für dynamische Karten
 
-> [!IMPORTANT]
-> Azure Maps Creator-Dienste befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
- Das `StylesObject` ist ein `StyleObject`-Array, das Zustandsset-Formatvorlagen darstellt. Verwenden Sie den [Featurezustandsdienst](/rest/api/maps/featurestate) von Azure Maps Creator (Vorschau), um Ihre Zustandsset-Formatvorlagen auf die Features von Gebäudeplandaten anzuwenden. Nachdem Sie Ihre Zustandsset-Formatvorlagen erstellt und den Features von Gebäudeplänen zugeordnet haben, können Sie sie zum Erstellen dynamischer Gebäudepläne verwenden. Weitere Informationen zum Erstellen dynamischer Gebäudepläne finden Sie unter [Implementieren dynamischer Formatvorlagen für Gebäudepläne von Creator](indoor-map-dynamic-styling.md).
+ Das `StylesObject` ist ein `StyleObject`-Array, das Zustandsset-Formatvorlagen darstellt. Verwenden Sie den [Featurezustandsdienst](/rest/api/maps/v2/feature-state) von Azure Maps-Ersteller, um Ihre Zustandsset-Formatvorlagen auf die Features von Gebäudeplandaten anzuwenden. Nachdem Sie Ihre Zustandsset-Formatvorlagen erstellt und den Features von Gebäudeplänen zugeordnet haben, können Sie sie zum Erstellen dynamischer Gebäudepläne verwenden. Weitere Informationen zum Erstellen dynamischer Gebäudepläne finden Sie unter [Implementieren dynamischer Formatvorlagen für Gebäudepläne von Creator](indoor-map-dynamic-styling.md).
 
 ## <a name="styleobject"></a>StyleObject
 
@@ -86,7 +82,7 @@ Der folgende JSON-Code zeigt ein Beispiel für die Verwendung aller drei Formatv
 
  Eine `NumericTypeStyleRule` ist ein [`StyleObject`](#styleobject) und besteht aus folgenden Eigenschaften:
 
-| Eigenschaft | type | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Typ | BESCHREIBUNG | Erforderlich |
 |-----------|----------|-------------|-------------|
 | `keyName` | Zeichenfolge | Der *Zustand* oder der dynamische Eigenschaftsname. Ein `keyName` sollte im `StyleObject`-Array eindeutig sein.| Ja |
 | `type` | Zeichenfolge | Der Wert ist „numerisch“. | Ja |
@@ -123,7 +119,7 @@ Im folgenden JSON-Beispiel sind beide Bereiche „true“, wenn der Wert von *Zu
 ]
 ```
 
-| Eigenschaft | type | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Typ | BESCHREIBUNG | Erforderlich |
 |-----------|----------|-------------|-------------|
 | `range` | [RangeObject](#rangeobject) | Das [RangeObject](#rangeobject) definiert einen Satz logischer Bereichsbedingungen, die, wenn sie `true` sind, die Anzeigefarbe von *Zustand* in die in der Eigenschaft `color` angegebene Farbe ändern. Wenn `range` nicht angegeben ist, wird immer die in der Eigenschaft `color` definierte Farbe verwendet.   | Nein |
 | `color` | Zeichenfolge | Die zu verwendende Farbe, wenn der Wert von „Zustand“ in den Bereich fällt. Die `color`-Eigenschaft ist eine JSON-Zeichenfolge in einem der folgenden Formate: <ul><li> Hexadezimalwerte im HTML-Format </li><li> RGB ("#ff0", "#ffff00", "rgb(255, 255, 0)")</li><li> RGBA ("rgba(255, 255, 0, 1)")</li><li> HSL("hsl(100, 50%, 50%)")</li><li> HSLA("hsla(100, 50%, 50%, 1)")</li><li> Vordefinierte HTML-Farbnamen wie Gelb oder Blau.</li></ul> | Ja |
@@ -132,7 +128,7 @@ Im folgenden JSON-Beispiel sind beide Bereiche „true“, wenn der Wert von *Zu
 
 Das `RangeObject` definiert einen numerischen Bereichswert eines [`NumberRuleObject`](#numberruleobject). Damit der Wert von *Zustand* in den Bereich fällt, müssen alle definierten Bedingungen „true“ sein.
 
-| Eigenschaft | type | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Typ | BESCHREIBUNG | Erforderlich |
 |-----------|----------|-------------|-------------|
 | `minimum` | double | Alle Zahlen x, die x ≥ `minimum`.| Nein |
 | `maximum` | double | Alle Zahlen x, die x ≤  `maximum`. | Nein |
@@ -170,7 +166,7 @@ Der folgende JSON-Code veranschaulicht einen `NumericTypeStyleRule` *Zustand* na
 
 Eine `StringTypeStyleRule` ist ein [`StyleObject`](#styleobject) und besteht aus folgenden Eigenschaften:
 
-| Eigenschaft | type | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Typ | BESCHREIBUNG | Erforderlich |
 |-----------|----------|-------------|-------------|
 | `keyName` | Zeichenfolge |  Der *Zustand* oder der dynamische Eigenschaftsname.  Ein `keyName` sollte im `StyleObject`-Array eindeutig sein.| Ja |
 | `type` | Zeichenfolge |Der Wert lautet „string“. | Ja |
@@ -182,7 +178,7 @@ Ein `StringRuleObject` besteht aus bis zu N Zustandswerten („state“), die d
 
 Beim Vergleich von Zeichenfolgenwerten wird die Groß-/Kleinschreibung beachtet.
 
-| Eigenschaft | type | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Typ | BESCHREIBUNG | Erforderlich |
 |-----------|----------|-------------|-------------|
 | `stateValue1` | Zeichenfolge | Die Farbe, wenn die Zeichenfolge im Wert „stateValue1“ lautet. | Nein |
 | `stateValue2` | Zeichenfolge | Die Farbe, wenn die Zeichenfolge im Wert „stateValue2“ lautet. | Nein |
@@ -212,7 +208,7 @@ Der folgende JSON-Code veranschaulicht eine `StringTypeStyleRule`, die die besti
 
 Eine `BooleanTypeStyleRule` ist ein [`StyleObject`](#styleobject) und besteht aus folgenden Eigenschaften:
 
-| Eigenschaft | type | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Typ | BESCHREIBUNG | Erforderlich |
 |-----------|----------|-------------|-------------|
 | `keyName` | Zeichenfolge |  Der *Zustand* oder der dynamische Eigenschaftsname.  Ein `keyName` sollte im `StyleObject`-Array eindeutig sein.| Ja |
 | `type` | Zeichenfolge |Der Wert ist „boolesch“. | Ja |
@@ -222,7 +218,7 @@ Eine `BooleanTypeStyleRule` ist ein [`StyleObject`](#styleobject) und besteht au
 
 Ein `BooleanRuleObject` definiert Farben für `true`- und `false`-Werte.
 
-| Eigenschaft | type | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Typ | BESCHREIBUNG | Erforderlich |
 |-----------|----------|-------------|-------------|
 | `true` | Zeichenfolge | Die zu verwendende Farbe, wenn der Wert von *Zustand* `true` ist. Die `color`-Eigenschaft ist eine JSON-Zeichenfolge in einem der folgenden Formate: <ul><li> Hexadezimalwerte im HTML-Format </li><li> RGB ("#ff0", "#ffff00", "rgb(255, 255, 0)")</li><li> RGBA ("rgba(255, 255, 0, 1)")</li><li> HSL("hsl(100, 50%, 50%)")</li><li> HSLA("hsla(100, 50%, 50%, 1)")</li><li> Vordefinierte HTML-Farbnamen wie Gelb oder Blau.</li></ul>| Ja |
 | `false` | Zeichenfolge | Die zu verwendende Farbe, wenn der Wert von *Zustand* `false` ist. | Ja |

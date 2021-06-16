@@ -2,21 +2,21 @@
 title: 'PowerShell-Beispiel: Exportieren von Geheimnissen und Zertifikaten für App-Registrierungen im Azure Active Directory-Mandanten'
 description: PowerShell-Beispiel, das alle Geheimnisse und Zertifikate für die angegebenen App-Registrierungen im Azure Active Directory-Mandanten exportiert
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: mifarca
-ms.openlocfilehash: b5cbb6b3843e81d9265405dcea24a092e57bf65e
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: e358d4315a9f5095785e87f702ecad0c8448e1fd
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377041"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076850"
 ---
 # <a name="export-secrets-and-certificates-for-app-registrations"></a>Exportieren von Geheimnissen und Zertifikaten für App-Registrierungen
 

@@ -1,14 +1,14 @@
 ---
 title: Unterstützungsmatrix für den MARS-Agent
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
-ms.date: 04/09/2021
+ms.date: 06/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 20bca0e9ca9dfd735501e68bd0e5a6d69d2ef68e
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 068a5391130f569a2d56fa9bd605356036e7737f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576498"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952998"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -50,77 +50,7 @@ Andere Speicherorte | Sie können den Cachespeicherort ändern, indem Sie die Si
 
 ## <a name="networking-and-access-support"></a>Netzwerk und Zugriffsunterstützung
 
-### <a name="url-and-ip-access"></a>Zugriff auf URLs und IP-Adressen
-
-Der MARS-Agent benötigt Zugriff auf diese URLs:
-
-- `http://www.msftncsi.com/ncsi.txt`
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.MicrosoftOnline.com
-- *.Windows.net
-- `www.msftconnecttest.com`
-
-Und auf diese IP-Adressen:
-
-- 20.190.128.0/18
-- 40.126.0.0/18
-
-Beim Zugriff auf alle oben aufgeführten URLs und IP-Adressen wird das HTTPS-Protokoll auf Port 443 verwendet.
-
-Beim Sichern von Dateien und Ordnern von Azure-VMs mit dem MARS-Agent muss das virtuelle Azure-Netzwerk ebenfalls so konfiguriert werden, dass es Zugriff zulässt. Wenn Sie Netzwerksicherheitsgruppen (NSG) verwenden, können Sie den ausgehenden Zugriff auf Azure Backup mithilfe des Diensttags *AzureBackup* zulassen. Zusätzlich zum Tag „Azure Backup“ müssen Sie auch Konnektivität für Authentifizierung und Datenübertragung zulassen, indem Sie ähnliche [NSG-Regeln](../virtual-network/network-security-groups-overview.md#service-tags) für Azure AD (*AzureActiveDirectory*) und Azure Storage (*Storage*) erstellen. Die folgenden Schritte beschreiben das Vorgehen zum Erstellen einer Regel für das Azure Backup-Tag:
-
-1. Navigieren Sie unter **Alle Dienste** zu **Netzwerksicherheitsgruppen**, und wählen Sie die Netzwerksicherheitsgruppe aus.
-2. Wählen Sie unter **Einstellungen** die Option **Ausgangssicherheitsregeln** aus.
-3. Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](../virtual-network/manage-network-security-group.md#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf *Diensttag* und **Zieldiensttag** auf *AzureBackup* festgelegt wurde.
-4. Wählen Sie **Hinzufügen** aus, um die neu erstellte Ausgangssicherheitsregel zu speichern.
-
-Auf ähnliche Weise können Sie ausgehende NSG-Sicherheitsregeln für Azure Storage und Azure AD erstellen. Weitere Informationen zu Diensttags finden Sie in [diesem Artikel](../virtual-network/service-tags-overview.md).
-
-### <a name="azure-expressroute-support"></a>Azure ExpressRoute-Unterstützung
-
-Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verfügbar für alte Verbindungen) und Microsoft-Peering sichern. Die Sicherung über privates Peering wird nicht unterstützt.
-
-Bei öffentlichem Peering: Stellen Sie den Zugriff auf die folgenden Domänen/Adressen sicher:
-
-* URLs
-  * `www.msftncsi.com`
-  * `*.Microsoft.com`
-  * `*.WindowsAzure.com`
-  * `*.microsoftonline.com`
-  * `*.windows.net`
-  * `www.msftconnecttest.com`
-* IP-Adressen
-  * 20.190.128.0/18
-  * 40.126.0.0/18
-
-Mit Microsoft-Peering: Wählen Sie die folgenden Dienste, Regionen und relevanten Communitywerte aus:
-
-- Azure Backup (entsprechend dem Standort Ihres Recovery Services-Tresors)
-- Azure Active Directory (12076:5060)
-- Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)
-
-Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](../expressroute/expressroute-routing.md#bgp).
-
->[!NOTE]
->Öffentliches Peering gilt für neue Leitungen als veraltet.
-
-### <a name="private-endpoint-support"></a>Unterstützung für den privaten Endpunkt
-
-Sie können nun private Endpunkte verwenden, um Ihre Daten von Servern sicher in Ihrem Recovery Services-Tresor zu sichern. Da Azure Active Directory derzeit keine privaten Endpunkte unterstützt, muss für die IPs und FQDNs, die für Azure Active Directory erforderlich sind, ausgehender Zugriff separat zugelassen werden.
-
-Wenn Sie den MARS-Agent zur Sicherung Ihrer lokalen Ressourcen verwenden, stellen Sie sicher, dass Ihr lokales Netzwerk (das die zu sichernden Ressourcen enthält) ein Peering mit dem virtuellen Azure-Netzwerk aufweist, das einen privaten Endpunkt für den Tresor enthält. Sie können dann mit der Installation des MARS-Agents fortfahren und die Sicherung konfigurieren. Sie müssen jedoch sicherstellen, dass die gesamte Kommunikation für die Sicherung ausschließlich über das Peeringnetzwerk erfolgt.
-
-Wenn Sie private Endpunkte für den Tresor entfernen, nachdem ein MARS-Agent bei ihm registriert wurde, müssen Sie den Container erneut beim Tresor registrieren. Sie müssen den Schutz für sie nicht aufheben.
-
-Weitere Informationen zu privaten Endpunkten für Azure Backup finden Sie [hier](private-endpoints.md).
-
-### <a name="throttling-support"></a>Unterstützung für Drosselung
-
-**Feature** | **Details**
---- | ---
-Bandbreitensteuerung | Unterstützt. Verwenden Sie im MARS-Agent **Eigenschaften ändern**, um die Bandbreite anzupassen.
-Netzwerkdrosselung | Nicht verfügbar für gesicherte Computer, auf denen Windows Server 2008 R2, Windows Server 2008 SP2 oder Windows 7 ausgeführt wird.
+[!INCLUDE [Configuring network connectivity](../../includes/backup-network-connectivity.md)]
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 435d74e771a9d887c87c9d10e6b525ac77cf97e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd96a8c2002bc22a0e4ef2c5a19fa06bf10b5565
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91278327"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071891"
 ---
 # <a name="storage-hierarchy-of-azure-netapp-files"></a>Speicherhierarchie von Azure NetApp Files
 
@@ -63,9 +63,6 @@ Der QoS-Typ (Quality of Service, Servicequalität) ist ein Attribut eines Kapazi
     Der maximale Durchsatz, der einem Volume zugewiesen ist, richtet sich nach dem Servicelevel des Kapazitätspools und dem Größenkontingent des Volumes. Unter [Dienstebenen für Azure NetApp Files](azure-netapp-files-service-levels.md) finden Sie ein Beispiel für eine Berechnung.
 
 - <a name="manual_qos_type"></a>QoS-Typ *Manuell*  
-
-     > [!IMPORTANT] 
-     > Bei Verwendung des QoS-Typs „Manuell“ für einen Kapazitätspool ist eine Registrierung erforderlich.  Informationen hierzu finden Sie unter [Verwalten eines manuellen QoS-Kapazitätspools](manage-manual-qos-capacity-pool.md).  
 
     Sie haben die Möglichkeit, für einen Kapazitätspool den QoS-Typ „Manuell“ zu verwenden.
 

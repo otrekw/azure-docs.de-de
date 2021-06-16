@@ -9,12 +9,12 @@ ms.date: 5/10/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 3abbe547b8788d468c2273f037d52c9d61e3f9ce
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: f1c37751e8f633c6d7dfab88b9dbe524626483a8
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752948"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079173"
 ---
 # <a name="create-a-virtual-machine-in-an-availability-zone-using-the-azure-portal"></a>Erstellen einer VM in einer Verfügbarkeitszone über das Azure-Portal
 
@@ -28,7 +28,7 @@ Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in
 
 1. Klicken Sie auf **Ressource erstellen** > **Compute** > **Virtueller Computer**. 
 
-3. Geben Sie die Informationen zum virtuellen Computer ein. Der Benutzername und das Kennwort werden zum Anmelden auf der VM verwendet. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen. 
+3. Geben Sie die Informationen zum virtuellen Computer ein. Der Benutzername und das Kennwort werden zum Anmelden auf der VM verwendet. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.yml#what-are-the-password-requirements-when-creating-a-vm-) erfüllen. 
 
 4. Wählen Sie eine Region wie z. B. „USA, Osten 2“ aus, die Verfügbarkeitszonen unterstützt. 
 

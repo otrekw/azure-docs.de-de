@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ebfeee2828b3a36f9cf47891f8aea6d889db85bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 025ab1ddd9a7b14ac75df762c54fe48e4f665e29
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763575"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970135"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>Hinzufügen eines Updates zu Device Update for IoT Hub
 Hier erfahren Sie, wie Sie in Device Update for IoT Hub ein neues Update hinzufügen.
@@ -122,7 +122,7 @@ Beispiel:
 ## <a name="import-an-update"></a>Importieren eines Updates
 
 > [!NOTE]
-> Die folgenden Anweisungen zeigen, wie Sie ein Update über die Benutzeroberfläche des Azure-Portals importieren. Sie können auch das [Geräteupdate für IoT Hub-APIs](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) verwenden, um ein Update zu importieren. 
+> Die folgenden Anweisungen zeigen, wie Sie ein Update über die Benutzeroberfläche des Azure-Portals importieren. Sie können auch das [Geräteupdate für IoT Hub-APIs](/rest/api/deviceupdate/updates) verwenden, um ein Update zu importieren. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer IoT Hub-Instanz mit Device Update.
 

@@ -1,18 +1,19 @@
 ---
-title: Planen und Verwalten der Kosten für Azure SQL-Datenbank
+title: Planen und Verwalten von Kosten
 description: Erfahren Sie, wie Sie die Kosten für Azure SQL-Datenbank mithilfe der Kostenanalyse im Azure-Portal planen und verwalten.
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.custom: subject-cost-optimization
 ms.service: sql-database
+ms.subservice: service-overview
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 56cf30d89460df8ac50d258bd8b29cf4e7236690
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e43d9b85bc50772ad75e974e11d0e7332e271b29
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734629"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408909"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>Planen und Verwalten der Kosten für Azure SQL-Datenbank
 
@@ -38,7 +39,7 @@ Azure SQL-Datenbank unterstützt zwei Kaufmodelle: vCore- und DTU-basiert. Die A
 
 ### <a name="provisioned-or-serverless"></a>Bereitgestellt oder serverlos
 
-Beim vCore-basierten Kaufmodell unterstützt Azure SQL-Datenbank ebenfalls zwei Arten von Computeebenen: bereitgestellten Durchsatz und serverlos. Die Abrechnung variiert je nach Computeebene. Es ist daher beim Planen und Abwägen der Kosten wichtig, zu verstehen, welche am besten für Ihre Workload geeignet ist. Weitere Informationen finden Sie unter [Übersicht über das Modell für virtuelle Kerne – Computetarife](service-tiers-vcore.md#compute-tiers).
+Beim vCore-basierten Kaufmodell unterstützt Azure SQL-Datenbank ebenfalls zwei Arten von Computeebenen: bereitgestellten Durchsatz und serverlos. Die Abrechnung variiert je nach Computeebene. Es ist daher beim Planen und Abwägen der Kosten wichtig, zu verstehen, welche am besten für Ihre Workload geeignet ist. Weitere Informationen finden Sie unter [Übersicht über das Modell für virtuelle Kerne – Computetarife](service-tiers-sql-database-vcore.md#compute-tiers).
 
 Bei der bereitgestellten Computeebene des vCore-basierten Kaufmodells können Sie Ihre vorhandenen Lizenzen gegen Rabattpreise tauschen. Einzelheiten finden Sie unter [Azure-Hybridvorteil](../azure-hybrid-benefit.md).
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04a86b0e8ebae2349d8c53470cca043ea5f87a87
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018070"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967979"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrieren Hunderter Terabytes von Daten zu Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ Bevor Sie die gesamte Workload zu Azure Cosmos DB migrieren, können Sie eine Te
 
 ## <a name="tools-for-data-migration"></a>Tools für die Datenmigration 
 
-Azure Cosmos DB-Migrationsstrategien unterscheiden sich zurzeit je nach API-Auswahl und Größe der Daten. Um kleinere Datensätze zu migrieren (zum Überprüfen der Datenmodellierung, Abfrageleistung, Partitionsschlüsselauswahl usw.) können Sie das [Datenmigrationstool](import-data.md) oder den [Azure Cosmos DB-Connector von Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) auswählen. Wenn Sie mit Spark vertraut sind, können Sie auch den [Azure Cosmos DB Spark-Connector](spark-connector.md) zum Migrieren von Daten verwenden.
+Azure Cosmos DB-Migrationsstrategien unterscheiden sich zurzeit je nach API-Auswahl und Größe der Daten. Um kleinere Datensätze zu migrieren (zum Überprüfen der Datenmodellierung, Abfrageleistung, Partitionsschlüsselauswahl usw.) können Sie das [Datenmigrationstool](import-data.md) oder den [Azure Cosmos DB-Connector von Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) auswählen. Wenn Sie mit Spark vertraut sind, können Sie auch den [Azure Cosmos DB Spark-Connector](./create-sql-api-spark.md) zum Migrieren von Daten verwenden.
 
 ## <a name="challenges-for-large-scale-migrations"></a>Herausforderungen bei umfangreichen Migrationen 
 
@@ -146,5 +146,5 @@ Nachdem die Migration abgeschlossen ist, können Sie überprüfen, ob die Anzahl
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr darüber, indem Sie die Beispielanwendungen ausprobieren, die die BulkExecutor-Bibliothek in [.NET](bulk-executor-dot-net.md) und [Java](bulk-executor-java.md) nutzen. 
-* Die BulkExecutor-Bibliothek ist in den Cosmos DB Spark-Connector integriert. Weitere Informationen finden Sie im Artikel [Spark-Connector für Azure Cosmos DB](spark-connector.md).  
+* Die BulkExecutor-Bibliothek ist in den Cosmos DB Spark-Connector integriert. Weitere Informationen finden Sie im Artikel [Spark-Connector für Azure Cosmos DB](./create-sql-api-spark.md).  
 * Wenden Sie sich an das Azure Cosmos DB-Team, indem Sie unter dem Problemtyp „General Advisory“ (Allgemeine Ratschläge) und dem Problemuntertyp „Large (TB+) migrations“ (Umfangreiche Migrationen (TB+)) ein Supportticket erstellen, um weitere Hilfe zu größeren Migrationen zu erhalten.

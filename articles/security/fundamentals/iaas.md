@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 6f073777930b4d026d826d2c3586e0886f906206
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3099ff7525e07a2361a63382eea0d3dc6e689ee7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102503078"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956840"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -43,7 +43,7 @@ Der erste Schritt zum Schutz Ihrer virtuellen Computer ist, sicherzustellen, das
 Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. [Azure-Verwaltungsgruppen](../../governance/management-groups/overview.md) stellen einen abonnementübergreifenden Bereich bereit. Sie organisieren Abonnements in Verwaltungsgruppen (Containern) und wenden Ihre Governancebedingungen auf diese Gruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Gruppe angewendeten Bedingungen. Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonnements – die unternehmenstaugliche Verwaltung in großem Umfang.
 
 **Bewährte Methode**: Verringern Sie die Variabilität in Ihrer Installation und Bereitstellung von virtuellen Computern.   
-**Detail**: Verwenden Sie [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md)-Vorlagen, um Ihre Bereitstellungsoptionen zu verdeutlichen und das Verstehen und Inventarisieren der virtuellen Computer in Ihrer Umgebung zu vereinfachen.
+**Detail**: Verwenden Sie [Azure Resource Manager](../../azure-resource-manager/templates/syntax.md)-Vorlagen, um Ihre Bereitstellungsoptionen zu verdeutlichen und das Verstehen und Inventarisieren der virtuellen Computer in Ihrer Umgebung zu vereinfachen.
 
 **Bewährte Methode**: Schützen des privilegierten Zugriffs.   
 **Detail**: Verwenden Sie den [Ansatz der geringsten Rechte](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) und integrierte Azure-Rollen, um Benutzern den Zugriff auf virtuelle Computer und deren Einrichtung zu ermöglichen:
@@ -99,7 +99,7 @@ Wenn Sie Windows Update verwenden, lassen Sie die Einstellung für automatische 
 **Detail**: Suchen Sie bei jeder Bereitstellung zuerst alle Windows-Updates, und installieren Sie diese. Dies ist besonders wichtig, wenn Sie Images bereitstellen, die von Ihnen selbst oder aus Ihrer eigenen Bibliothek stammen. Obwohl Images aus dem Azure Marketplace standardmäßig automatisch aktualisiert werden, kann nach einem öffentlichen Release eine Verzögerung (bis zu ein paar Wochen) eintreten.
 
 **Bewährte Methode**: Stellen Sie in regelmäßigen Abständen Ihre virtuellen Computer erneut bereit, um eine neue Version des Betriebssystems zu erzwingen.   
-**Detail**: Definieren Sie Ihren virtuellen Computer mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md), sodass Sie sie problemlos erneut bereitstellen können. Mithilfe einer Vorlage erhalten Sie bei Bedarf eine gepatchte und sichere VM.
+**Detail**: Definieren Sie Ihren virtuellen Computer mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/syntax.md), sodass Sie sie problemlos erneut bereitstellen können. Mithilfe einer Vorlage erhalten Sie bei Bedarf eine gepatchte und sichere VM.
 
 **Bewährte Methode**: Wenden Sie Sicherheitsupdates zügig auf virtuelle Computer an.   
 **Detail**: Aktivieren Sie Azure Security Center (Free-Tarif oder Standard-Tarif), um [fehlende Sicherheitsupdates zu erkennen und anzuwenden](../../security-center/asset-inventory.md).

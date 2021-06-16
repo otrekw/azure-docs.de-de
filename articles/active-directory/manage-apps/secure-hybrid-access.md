@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 2/16/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b93fdcc125075786c237ab1eb7bfac8cf2e551f6
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: ad3946dcd850a4a3d05f4d28882d08408e39b707
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108179166"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964704"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>Sicherer Hybridzugriff: Schützen von Legacy-Anwendungen mit Azure Active Directory
 
@@ -32,13 +32,13 @@ Mit Azure AD-Funktionen wie [Bedingter Zugriff](../conditional-access/overview.
 
 ## <a name="secure-hybrid-access-sha-through-azure-ad-application-proxy"></a>Sicherer Hybridzugriff über Azure AD-Anwendungsproxy
   
-Mit dem [Anwendungsproxy](../app-proxy/what-is-application-proxy.md) können Sie einen [sicheren Remotezugriff](../app-proxy/application-proxy.md) auf Ihre lokalen Webanwendungen bereitstellen. Ihre Benutzer müssen kein VPN verwenden. Benutzer profitieren nach dem [einmaligen Anmelden](add-application-portal-setup-sso.md) von einer einfachen Verbindung mit ihren Anwendungen von jedem Gerät aus. Der Anwendungsproxy stellt den Remotezugriff als Dienst bereit und ermöglicht die [einfache Veröffentlichung Ihrer lokalen Anwendungen](../app-proxy/application-proxy-add-on-premises-application.md) für Benutzer außerhalb des Unternehmensnetzwerks. Unterstützung bietet er auch bei der Skalierung Ihrer Cloudzugriffsverwaltung, ohne dass Sie Ihre lokalen Anwendungen ändern müssen. [Planen Sie die Bereitstellung eines Azure AD-Anwendungsproxys](application-proxy-deployment-plan.md) als nächsten Schritt.
+Mit dem [Anwendungsproxy](../app-proxy/what-is-application-proxy.md) können Sie einen [sicheren Remotezugriff](../app-proxy/application-proxy.md) auf Ihre lokalen Webanwendungen bereitstellen. Ihre Benutzer müssen kein VPN verwenden. Benutzer profitieren nach dem [einmaligen Anmelden](add-application-portal-setup-sso.md) von einer einfachen Verbindung mit ihren Anwendungen von jedem Gerät aus. Der Anwendungsproxy stellt den Remotezugriff als Dienst bereit und ermöglicht die [einfache Veröffentlichung Ihrer lokalen Anwendungen](../app-proxy/application-proxy-add-on-premises-application.md) für Benutzer außerhalb des Unternehmensnetzwerks. Unterstützung bietet er auch bei der Skalierung Ihrer Cloudzugriffsverwaltung, ohne dass Sie Ihre lokalen Anwendungen ändern müssen. [Planen Sie die Bereitstellung eines Azure AD-Anwendungsproxys](../app-proxy/application-proxy-deployment-plan.md) als nächsten Schritt.
 
 ## <a name="azure-ad-partner-integrations"></a>Azure AD-Partnerintegrationen
 
 ### <a name="sha-through-networking-and-delivery-controllers"></a>Sicherer Hybridzugriff über Netzwerke und Bereitstellungscontroller
 
-Zusätzlich zum [Azure AD-Anwendungsproxy](./what-is-application-proxy.md) können Sie das [Zero Trust-Framework](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/) (Microsoft-Partner mit Drittanbietern) verwenden. Mithilfe Ihres vorhandenen Netzwerks und den Bereitstellungscontrollern können Sie auf einfache Weise Legacy-Anwendungen schützen, die für Ihre Geschäftsprozesse wichtig sind, bisher aber nicht mit Azure AD geschützt werden konnten. Wahrscheinlich erfüllen Sie bereits alle Voraussetzungen, um sofort mit dem Schützen dieser Anwendungen zu beginnen.
+Zusätzlich zum [Azure AD-Anwendungsproxy](../app-proxy/what-is-application-proxy.md) können Sie das [Zero Trust-Framework](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/) (Microsoft-Partner mit Drittanbietern) verwenden. Mithilfe Ihres vorhandenen Netzwerks und den Bereitstellungscontrollern können Sie auf einfache Weise Legacy-Anwendungen schützen, die für Ihre Geschäftsprozesse wichtig sind, bisher aber nicht mit Azure AD geschützt werden konnten. Wahrscheinlich erfüllen Sie bereits alle Voraussetzungen, um sofort mit dem Schützen dieser Anwendungen zu beginnen.
 
 ![Die Abbildung zeigt den sicheren Hybridzugriff mit Netzwerkpartnern und Anwendungsproxy](./media/secure-hybrid-access/secure-hybrid-access.png)
 

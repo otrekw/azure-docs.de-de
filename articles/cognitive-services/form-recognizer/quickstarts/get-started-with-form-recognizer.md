@@ -4,19 +4,19 @@ titleSuffix: Azure Applied AI Services
 description: In dieser Schnellstartanleitung verwenden Sie das Formularerkennungstool für die Beschriftung von Beispielen, um Formulardokumente manuell zu beschriften. Danach trainieren Sie ein benutzerdefiniertes Modell für die Dokumentverarbeitung mit den beschrifteten Dokumenten und verwenden das Modell, um Schlüssel-Wert-Paare zu extrahieren.
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/14/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-may-2021
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: af803b92945be059f604a3890a90d3aa36e5781e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b30dbd58e0a9c440f51386052529850d9ce9adc4
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475151"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894072"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -148,11 +148,11 @@ Konfigurieren Sie die Projekteinstellungen, und füllen Sie die Felder mit den f
 * **Sicherheitstoken**: Einige Projekteinstellungen können vertrauliche Werte wie z. B. API-Schlüssel oder andere gemeinsam genutzte Geheimnisse enthalten. Jedes Projekt generiert ein Sicherheitstoken, das zum Verschlüsseln und Entschlüsseln von vertraulichen Projekteinstellungen verwendet werden kann. Sie finden die Sicherheitstoken in den Anwendungseinstellungen, indem Sie unten auf der linken Navigationsleiste das Zahnradsymbol auswählen.
 
 * **Quellverbindung**: Das Tool für die Beschriftung von Beispielen stellt eine Verbindung mit einer Quelle (Ihre hochgeladenen Originalformulare) und einem Ziel (erstellte Beschriftungen und Ausgabedaten) her. Verbindungen können projektübergreifend eingerichtet und freigegeben werden. Dabei wird ein erweiterbares Anbietermodell verwendet, sodass Sie ganz einfach neue Anbieter von Quellen und Zielen hinzufügen können. Erstellen Sie eine neue Verbindung, und klicken Sie auf die Schaltfläche **Verbindung hinzufügen**. Geben Sie die folgenden Werte in die Felder ein:
-   * **Anzeigename**: der Anzeigename der Verbindung.
-   * **Beschreibung**: die Beschreibung Ihres Projekts.
-   * **SAS-URL**: die Shared Access Signature-URL (SAS) Ihres Azure Blob Storage-Containers.
+  * **Anzeigename**: der Anzeigename der Verbindung.
+  * **Beschreibung**: die Beschreibung Ihres Projekts.
+  * **SAS-URL**: die Shared Access Signature-URL (SAS) Ihres Azure Blob Storage-Containers.
 
-   [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
+  * [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
 
    :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="SAS-Speicherort":::
 
@@ -217,13 +217,15 @@ Wählen Sie im linken Bereich das Symbol „Trainieren“ aus, um die Seite „T
 * **Durchschnittliche Genauigkeit**: Die durchschnittliche Genauigkeit des Modells. Sie können die Modellgenauigkeit verbessern, indem Sie weitere Formulare beschriften und erneut ein Training ausführen, um ein neues Modell zu erstellen. Es wird empfohlen, zunächst fünf Formulare zu beschriften sowie die Ergebnisse zu analysieren und zu testen, um dann bei Bedarf weitere Formulare hinzuzufügen.
 * Die Liste der Beschriftungen und die geschätzte Genauigkeit für jede Beschriftung.
 
-    :::image type="content" source="../media/label-tool/custom-2.jpg" alt-text="Trainingsansicht":::
+    :::image type="content" source="../media/label-tool/custom-3.jpg" alt-text="Tool für die Trainingsansicht":::
+
+    
 
 #### <a name="analyze-a-custom-form"></a>Analysieren eines benutzerdefinierten Formulars
 
 Wählen Sie links das Symbol für die Analyse (Glühbirne) aus, um Ihr Modell zu testen. Wählen Sie die Quelle „Lokale Datei“ aus. Suchen Sie nach einer Datei, und wählen Sie eine Datei aus dem Beispieldataset aus, das Sie im Testordner entzippt haben. Wählen Sie dann die Schaltfläche **Analyse ausführen** aus, um Schlüssel-Wert-Paare, Text- und Tabellenvorhersagen für das Formular abzurufen. Das Tool wendet Beschriftungen in Begrenzungsrahmen an und meldet die Konfidenz jeder Beschriftung.
 
-:::image type="content" source="../media/label-tool/custom-3.jpg" alt-text="Tool für die Trainingsansicht":::
+   :::image type="content" source="../media/label-tool/custom-2.jpg" alt-text="Trainingsansicht":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

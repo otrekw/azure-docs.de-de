@@ -1,0 +1,157 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen – Azure Disk Encryption für Linux-VMs
+  description: Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Microsoft Azure Disk Encryption für virtuelle Linux-IaaS-Computer.
+  author: msmbaldwin
+  ms.service: virtual-machines
+  ms.collection: linux
+  ms.subservice: disks
+  ms.topic: conceptual
+  ms.author: mbaldwin
+  ms.date: 06/05/2019
+  ms.custom: seodec18
+  ms.openlocfilehash: 2c16b3b0f75a00d045edbfebdeaf12216074b92f
+  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/14/2021
+  ms.locfileid: "112063618"
+title: Häufig gestellte Fragen zu Azure Disk Encryption für Linux-VMs
+summary: >
+  Dieser Artikel bietet Antworten auf häufig gestellte Fragen (FAQ) zu Azure Disk Encryption für virtuelle Linux-Computer (VMs). Weitere Informationen zu diesem Dienst finden Sie unter [Azure Disk Encryption-Übersicht](disk-encryption-overview.md).
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Was ist Azure Disk Encryption für Linux-VMs?
+    answer: "Azure Disk Encryption für Linux-VMs bietet mithilfe des DM-Crypt-Features von Linux eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers* und der Datenträger für Daten. Darüber hinaus wird bei Verwendung des [EncryptFormatAll-Features](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms) Verschlüsselung des temporären Datenträgers bereitstellt. Der Inhalt wird verschlüsselt von der VM zum Speicher-Back-End übertragen. Auf diese Weise wird eine End-to-End-Verschlüsselung mit einem vom Kunden verwalteten Schlüssel erreicht.\n \nWeitere Informationen finden Sie unter [Unterstützte VMs und Betriebssysteme](disk-encryption-overview.md#supported-vms-and-operating-systems).\n"
+  - question: >
+      Wo ist Azure Disk Encryption allgemein verfügbar?
+    answer: >
+      Azure Disk Encryption für Linux-VMs ist generell in allen öffentlichen Regionen von Azure verfügbar.
+  - question: >
+      Welche Benutzeroberflächen sind für Azure Disk Encryption verfügbar?
+    answer: >
+      Azure Disk Encryption mit allgemeiner Verfügbarkeit unterstützt Azure Resource Manager-Vorlagen, Azure PowerShell und die Azure CLI. Dank der unterschiedlichen Benutzeroberflächen können Sie flexibel vorgehen. Ihnen stehen drei Optionen zum Aktivieren der Datenträgerverschlüsselung für Ihre VMs zur Verfügung. Weitere Informationen zum Benutzererlebnis und eine Schritt-für-Schritt-Anleitung in Azure Disk Encryption finden Sie unter [Azure Disk Encryption – Bereitstellungsszenarien und -umgebungen für Linux](disk-encryption-linux.md).
+  - question: >
+      Was kostet Azure Disk Encryption?
+    answer: >
+      Es fallen keine Gebühren für die Verschlüsselung von VM-Datenträgern mit Azure Disk Encryption an, es werden jedoch Gebühren für die Verwendung von Azure Key Vault berechnet. Weitere Informationen zu den Azure Key Vault-Kosten finden Sie auf der Seite [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/).
+  - question: >
+      Wie sehen die ersten Schritte mit Azure Disk Encryption aus?
+    answer: >
+      Informationen zu den ersten Schritten finden Sie unter [Azure Disk Encryption Overview](disk-encryption-overview.md) (Azure Disk Encryption – Übersicht).
+  - question: >
+      Welche VM-Größen und Betriebssysteme unterstützen Azure Disk Encryption?
+    answer: >
+      Im Artikel [Azure Disk Encryption – Voraussetzungen](disk-encryption-overview.md) werden die [VM-Größen](disk-encryption-overview.md#supported-vms) und [VM-Betriebssysteme](disk-encryption-overview.md#supported-operating-systems) aufgelistet, die Azure Disk Encryption unterstützen.
+  - question: >
+      Kann ich sowohl Start- als auch Datenvolumes mit Azure Disk Encryption verschlüsseln?
+    answer: "Ja, Sie können sowohl Start- als auch Datenvolumes verschlüsseln; oder, Sie können das Datenvolume verschlüsseln, ohne vorher das Betriebssystemvolume verschlüsseln zu müssen. \n\nNach der Verschlüsselung des Betriebssystemvolumes wird die Deaktivierung des Betriebssystemvolumes nicht mehr unterstützt. Bei virtuellen Linux-Computern in einem Skalierungsgruppe kann nur das Datenvolumen verschlüsselt werden.\n"
+  - question: >
+      Kann ich ein nicht bereitgestelltes Volume mit Azure Disk Encryption verschlüsseln?
+    answer: >
+      Nein, Azure Disk Encryption verschlüsselt nur bereitgestellte Volumes.
+  - question: >
+      Was ist serverseitige Speicherverschlüsselung?
+    answer: "Bei der serverseitigen Speicherverschlüsselung werden verwaltete Azure-Datenträger in Azure Storage verschlüsselt. Verwaltete Datenträger werden standardmäßig mit serverseitiger Verschlüsselung mit einem von der Plattform verwalteten Schlüssel verschlüsselt (Stand: 10. Juni 2017). Sie können die Verschlüsselung verwalteter Datenträger mit Ihren eigenen Schlüsseln verwalten, indem Sie einen kundenseitig verwalteten Schlüssel angeben. Weitere Informationen finden Sie unter: [Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](../disk-encryption.md).\n \n"
+  - question: >
+      Wie unterscheidet sich Azure Disk Encryption von der serverseitigen Speicherverschlüsselung mit einem vom Kunden verwalteten Schlüssel, und wann sollte ich die beiden Lösungen verwenden?
+    answer: "Azure Disk Encryption bietet End-to-End-Verschlüsselung für den Betriebssystemdatenträger, Datenträger für Daten und den temporären Datenträger mit einem vom Kunden verwalteten Schlüssel.\n- Wenn Ihre Anforderungen das Verschlüsseln der genannten Datenträger sowie End-to-End-Verschlüsselung einschließen, verwenden Sie Azure Disk Encryption. \n- Wenn Ihre Anforderungen das Verschlüsseln von ruhenden Daten mit einem vom Kunden verwalteten Schlüssel einschließen, verwenden Sie die [serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln](../disk-encryption.md). Sie können einen Datenträger nicht sowohl mit Azure Disk Encryption als auch mit der serverseitigen Speicherverschlüsselung mit vom Kunden verwalteten Schlüsseln verschlüsseln. \n- Wenn Ihre Linux-Distribution nicht unter den [unterstützten Betriebssystemen für Azure Disk Encryption](disk-encryption-overview.md#supported-operating-systems) aufgeführt ist oder Ihr Szenario in den [nicht unterstützten Szenarien für Windows](disk-encryption-linux.md#unsupported-scenarios) aufgeführt ist, sollten Sie die [serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln](../disk-encryption.md) in Betracht ziehen.\n- Wenn es nach den Richtlinien Ihrer Organisation zulässig ist, ruhende Inhalte mit einem von Azure verwalteten Schlüssel zu verschlüsseln, ist keine Aktion erforderlich: Der Inhalt wird standardmäßig verschlüsselt. Bei verwalteten Datenträgern wird der Inhalt im Speicher standardmäßig mit serverseitiger Verschlüsselung mit einem von der Plattform verwalteten Schlüssel verschlüsselt. Der Schlüssel wird vom Azure Storage-Dienst verwaltet. \n"
+  - question: >
+      Wie rotiere ich geheime oder Verschlüsselungsschlüssel?
+    answer: "Zum Rotieren geheimer Schlüssel rufen Sie einfach den gleichen Befehl auf, den Sie ursprünglich zur Aktivierung der Datenträgerverschlüsselung verwendet haben, und geben Sie einen anderen Key Vault an. Zum Rotieren des Schlüssels für die Verschlüsselung anderer Schlüssel (Key Encryption Key, KEK) rufen Sie den gleichen Befehl auf, den Sie ursprünglich zum Aktivieren der Datenträgerverschlüsselung verwendet haben, und geben die neue Schlüsselverschlüsselung an. \n\n>[!WARNING]\n> - Wenn Sie zuvor [Azure Disk Encryption mit Azure AD-App](disk-encryption-linux-aad.md) durch Angabe von Azure AD-Anmeldeinformationen zum Verschlüsseln dieses virtuellen Computers verwendet haben, müssen Sie diese Verschlüsselungsoption auch weiterhin für Ihren virtuellen Computer verwenden. Sie können Azure Disk Encryption auf diesem verschlüsselten VM nicht verwenden, da dies kein unterstütztes Szenario ist und das Verlassen der AAD-Anwendung für diese verschlüsselte VM somit noch nicht unterstützt wird.\n"
+  - question: >
+      Wie füge ich einen Schlüssels für die Verschlüsselung anderer Schlüssel (Key Encryption Key, KEK) hinzu oder entferne ihn, wenn ich ursprünglich keinen verwendet habe?
+    answer: >
+      Um einen KEK hinzuzufügen, rufen Sie den Aktivierungsbefehl erneut auf, und übergeben den KEK-Parameter. Um einen KEK zu entfernen, rufen Sie den Aktivierungsbefehl erneut ohne den KEK-Parameter auf.
+  - question: >
+      Ermöglicht Azure Disk Encryption die Verwendung von BYOK (Bring Your Own Key)?
+    answer: >
+      Ja. Sie können Ihre eigenen Schlüssel für die Verschlüsselung anderer Schlüssel (Key Encryption Keys, KEKs) angeben. Diese Schlüssel werden in Azure Key Vault, dem Schlüsselspeicher für Azure Disk Encryption, aufbewahrt. Weitere Informationen zu den einzelnen KEK-Szenarien finden Sie in unter [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](disk-encryption-key-vault.md).
+  - question: >
+      Kann ich einen von Azure erstellten KEK verwenden?
+    answer: >
+      Ja. Sie können Azure Key Vault verwenden, um einen KEK für Azure Disk Encryption zu erstellen. Diese Schlüssel werden in Azure Key Vault, dem Schlüsselspeicher für Azure Disk Encryption, aufbewahrt. Weitere Informationen über den Verschlüsselungsschlüssel finden Sie unter [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](disk-encryption-key-vault.md).
+  - question: >
+      Kann ich den lokalen Schlüsselverwaltungsdienst oder HSM verwenden, um die Verschlüsselungsschlüssel zu schützen?
+    answer: >
+      Sie können den lokalen Schlüsselverwaltungsdienst oder HSM nicht verwenden, um die Verschlüsselungsschlüssel mit Azure Disk Encryption zu schützen. Sie können hierzu nur den Azure Key Vault-Dienst verwenden. Weitere Informationen zu den einzelnen KEK-Szenarien finden Sie in unter [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](disk-encryption-key-vault.md).
+  - question: >
+      Was sind die Voraussetzungen für die Konfiguration von Azure Disk Encryption?
+    answer: >
+      Für Azure Disk Encryption müssen einige Voraussetzungen erfüllt werden. Lesen Sie den Artikel [Azure Disk Encryption – Voraussetzungen](disk-encryption-key-vault.md), um einen neuen Schlüsseltresor zu erstellen oder einen vorhandenen Schlüsseltresor für den verschlüsselten Datenträgerzugriff einzurichten, um die Verschlüsselung zu aktivieren und Geheimnisse und Schlüssel zu schützen. Weitere Informationen zu den einzelnen KEK-Szenarien finden Sie in unter [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](disk-encryption-key-vault.md).
+  - question: >
+      Welche Voraussetzungen müssen für die Konfiguration von Azure Disk Encryption mit einer Azure AD-App (Vorgängerversion) erfüllt sein?
+    answer: >
+      Für Azure Disk Encryption müssen einige Voraussetzungen erfüllt werden. Lesen Sie den Artikel [Azure Disk Encryption mit Azure AD](disk-encryption-linux-aad.md), um eine Azure Active Directory-App zu erstellen, einen neuen Schlüsseltresor zu erstellen oder einen vorhandenen Schlüsseltresor für den verschlüsselten Datenträgerzugriff einzurichten. So können Sie die Verschlüsselung aktivieren sowie Geheimnisse und Schlüssel schützen. Weitere Informationen zu den einzelnen KEK-Szenarien finden Sie in unter [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption mit Azure AD](disk-encryption-key-vault-aad.md).
+  - question: >
+      Wird Azure Disk Encryption mit einer Azure AD-App (Vorgängerversion) weiterhin unterstützt?
+    answer: "Ja. Die Datenträgerverschlüsselung mit einer Azure AD-App wird weiterhin unterstützt. Für die Verschlüsselung neuer virtueller Computer empfiehlt sich jedoch die Verwendung der neuen Methode, anstatt eine Azure AD-App für die Verschlüsselung verwenden. \n"
+  - question: >
+      Kann ich virtuelle Computer, die mit einer Azure AD-App verschlüsselt wurden, zur Verschlüsselung ohne Azure AD-App migrieren?
+    answer: Derzeit gibt es für Computer, die mit einer Azure AD-App verschlüsselt wurden, keinen direkten Migrationspfad zur Verschlüsselung ohne Azure AD-App. Es gibt außerdem keinen direkten Pfad von der Verschlüsselung ohne Azure AD-App zur Verschlüsselung mit AD-App.
+  - question: >
+      Welche Version von Azure PowerShell wird von Azure Disk Encryption unterstützt?
+    answer: >
+      Verwenden Sie die neueste Version des Azure PowerShell SDK, um Azure Disk Encryption zu konfigurieren. Laden Sie die neueste Version von [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) herunter. Azure Disk Encryption wird *nicht* vom Azure SDK Version 1.1.0 unterstützt.
+
+
+      > [!NOTE]
+
+      > Die Erweiterung der Vorschauversion für Azure Disk Encryption unter Linux (Microsoft.OSTCExtension.AzureDiskEncryptionForLinux) ist veraltet. Diese Erweiterung wurde für das Release der Vorschauversion von Azure Disk Encryption veröffentlicht. Sie sollten die Erweiterung der Vorschauversion nicht für die Test- oder Produktionsbereitstellung verwenden.
+
+
+      > Für Bereitstellungsszenarios wie Azure Resource Manager (ARM), in denen Sie die Azure Disk Encryption-Erweiterung für virtuelle Linux-Computer zum Aktivieren der Verschlüsselung auf Ihrem virtuellen Linux-IaaS-Computer bereitstellen müssen, müssen Sie die von Azure Disk Encryption unterstützte Erweiterung „Microsoft.Azure.Security.AzureDiskEncryptionForLinux“ verwenden.
+  - question: >
+      Kann ich Azure Disk Encryption auf mein benutzerdefiniertes Linux-Image anwenden?
+    answer: >
+      Sie können Azure Disk Encryption nicht auf Ihr benutzerdefiniertes Linux-Image anwenden. Nur die Linux-Images im Katalog für die zuvor genannten unterstützten Distributionen werden unterstützt. Benutzerdefinierte Linux-Images werden derzeit nicht unterstützt.
+  - question: >
+      Kann ich eine Linux Red Hat-VM mit dem „yum“-Update aktualisieren?
+    answer: >
+      Ja. Sie können auf eine Linux Red Hat-VM ein „yum“-Update anwenden.  Weitere Informationen finden Sie unter [Azure Disk Encryption in einem isolierten Netzwerk](disk-encryption-isolated-network.md).
+  - question: >
+      Welcher Azure Disk Encryption-Workflow wird für Linux empfohlen?
+    answer: >
+      Der folgende Workflow wird empfohlen, um unter Linux die besten Ergebnisse zu erzielen:
+
+      * Beginnen Sie mit dem unveränderten Katalogimage für die gewünschte Distribution und Version des Betriebssystems.
+
+      * Sichern Sie alle eingebundenen Laufwerke, die verschlüsselt werden.  Diese Sicherung ermöglicht die Wiederherstellung bei einem Ausfall – etwa, wenn der virtuelle Computer vor Abschluss der Verschlüsselung neu gestartet wird.
+
+      * Führen Sie die Verschlüsselung durch (dies kann je nach VM-Merkmalen und der Größe etwaiger angefügten Datenträger mehrere Stunden oder sogar Tage dauern).
+
+      * Passen Sie das Image an, und fügen Sie bei Bedarf Software hinzu.
+
+
+      Ist dieser Workflow nicht möglich, stellt die [Storage Service Encryption](../../storage/common/storage-service-encryption.md) (SSE, Speicherdienstverschlüsselung) auf der Ebene des Plattformspeicherkontos möglicherweise eine Alternative zur vollständigen Datenträgerverschlüsselung mit „dm-crypt“ dar.
+  - question: >
+      Um was handelt es sich beim Datenträger „Bek Volume“ bzw. „/mnt/azure_bek_disk“?
+    answer: >
+      „Bek volume“ für Windows ist ein lokales Datenvolume, auf dem die Verschlüsselungsschlüssel für verschlüsselte Azure-VMs sicher gespeichert werden.
+
+      > [!NOTE]
+
+      > Löschen oder bearbeiten Sie keine Inhalte auf diesem Datenträger. Die Bereitstellung des Datenträgers kann nicht aufgehoben werden, da für Verschlüsselungsvorgänge auf der IaaS-VM der Verschlüsselungsschlüssel vorhanden sein muss.
+  - question: >
+      Welche Verschlüsselungsmethode verwendet Azure Disk Encryption?
+    answer: >
+      Azure Disk Encryption nutzt die standardmäßige Entschlüsselung aes-xts-plain64 mit einem 256-Bit-Volumehauptschlüssel.
+  - question: >
+      Werden die Daten auf den bereits verschlüsselten Datenlaufwerken gelöscht, wenn ich EncryptFormatAll verwende und alle Volumetypen angebe?
+    answer: "Nein, Daten werden nicht von Datenträgern für Daten gelöscht, die bereits mit Azure Disk Encryption verschlüsselt wurden. Ebenso wie EncryptFormatAll das Betriebssystemlaufwerk nicht erneut verschlüsselte, werden auch bereits verschlüsselte Laufwerke für Daten nicht erneut verschlüsselt. Weitere Informationen finden Sie unter den [Kriterien für EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).        \n"
+  - question: >
+      Wird das XFS-Dateisystem unterstützt?
+    answer: >
+      Die Verschlüsselung von XFS-Betriebssystemdatenträgern wird unterstützt.
+
+
+      Die Verschlüsselung von XFS-Datenträgern für Daten wird nur bei Verwendung des Parameters EncryptFormatAll unterstützt. Das Volume wird hierbei neu formatiert, und alle zuvor vorhandenen Daten werden gelöscht. Weitere Informationen finden Sie unter den [Kriterien für EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).
+  - question: "Kann ich einen verschlüsselten virtuellen Computer sichern und wiederherstellen? \n"
+    answer: "Azure Backup bietet einen Mechanismus zum Sichern und Wiederherstellen verschlüsselter virtueller Computer innerhalb desselben Abonnements und derselben Region.  Anleitungen finden Sie unter [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup](../../backup/backup-azure-vms-encryption.md).  Das Wiederherstellen eines verschlüsselten virtuellen Computers in einer anderen Region wird derzeit nicht unterstützt.  \n"
+  - question: >
+      Wo kann ich Fragen stellen oder Feedback geben?
+    answer: >
+      Sie können auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Disk Encryption](/answers/topics/azure-disk-encryption.html) Fragen stellen und Feedback geben.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nIn diesem Artikel haben Sie Antworten auf die am häufigsten gestellten Fragen im Zusammenhang mit Azure Disk Encryption erhalten. Weitere Informationen zu diesem Dienst finden Sie in den folgenden Artikeln:\n\n- [Übersicht über Azure Disk Encryption](disk-encryption-overview.md)\n- [Anwenden der Datenträgerverschlüsselung in Azure Security Center](../../security-center/asset-inventory.md)\n- [Datenverschlüsselung ruhender Azure-Daten](../../security/fundamentals/encryption-atrest.md)"

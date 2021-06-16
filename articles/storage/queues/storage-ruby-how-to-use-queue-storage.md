@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie den Azure Queue Storage zum Erstellen und Lö
 author: twooley
 ms.author: twooley
 ms.reviewer: dineshm
-ms.date: 12/08/2016
+ms.date: 06/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 257b435f0136884e8568f4201794a7ce5cf0c209
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7850e7fef034fd618c86400e17ddaa319c45005a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275854"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080991"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Verwenden von Queue Storage mit Ruby
 
@@ -42,7 +42,7 @@ Um den Azure Storage zu verwenden, müssen Sie das Ruby-Azure-Paket, das eine Re
 ### <a name="use-rubygems-to-obtain-the-package"></a>Verwenden von RubyGems zum Abrufen des Pakets
 
 1. Verwenden Sie eine Befehlszeilenschnittstelle wie PowerShell (Windows), Terminal (Mac) oder Bash (Unix).
-2. Geben Sie im Befehlsfenster `gem install Azure` ein, um das Gem und Abhängigkeiten zu installieren.
+2. Geben Sie im Befehlsfenster `gem install azure` ein, um das Gem und Abhängigkeiten zu installieren.
 
 ### <a name="import-the-package"></a>Importieren des Pakets
 

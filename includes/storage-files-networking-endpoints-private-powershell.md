@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: storage
 author: roygara
@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 5/11/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: 1c8ccc1e1ee8c8c1b1a1e27443d27b2140a91649
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurepowershell
+ms.openlocfilehash: ec397a9c5f705dbb3f1ea7b899716d24be4e0818
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84465012"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110719843"
 ---
 Für die Erstellung eines privaten Endpunkts für Ihr Speicherkonto müssen Sie zuerst einen Verweis auf Ihr Speicherkonto und das Subnetz des virtuellen Netzwerks einrichten, dem Sie den privaten Endpunkt hinzufügen möchten. Ersetzen Sie unten `<storage-account-resource-group-name>`, `<storage-account-name>`, `<vnet-resource-group-name>`, `<vnet-name>` und `<vnet-subnet-name>` entsprechend:
 

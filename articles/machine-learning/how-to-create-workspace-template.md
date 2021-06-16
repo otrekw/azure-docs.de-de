@@ -10,12 +10,12 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/21/2021
-ms.openlocfilehash: 5a31531a0d98a1dae4122f661001aa5eca887e6b
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: afb0d487d43b2a04aa298d9ec4249a6855d06544
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279872"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967751"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning
 
@@ -74,7 +74,7 @@ Die Beispielvorlage verfügt über zwei **erforderliche** Parameter:
 
 Weitere Informationen zu Vorlagen finden Sie in den folgenden Artikeln:
 
-* [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
+* [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/templates/syntax.md)
 * [Bereitstellen einer Anwendung mit Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/deploy-powershell.md)
 * [Microsoft.MachineLearningServices-Ressourcentypen](/azure/templates/microsoft.machinelearningservices/allversions)
 

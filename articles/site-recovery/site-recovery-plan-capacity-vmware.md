@@ -1,18 +1,18 @@
 ---
 title: Planen der Kapazität für die VMware-Notfallwiederherstellung mit Azure Site Recovery
 description: Dieser Artikel kann Ihnen helfen, die Kapazität und Skalierung zu planen, wenn Sie die Notfallwiederherstellung von VMware-VMs für Azure mithilfe von Azure Site Recovery einrichten.
-author: nsoneji
-manager: garavd
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
-ms.date: 4/9/2019
 ms.topic: conceptual
-ms.author: ramamill
-ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 9a8706ee361ea7cb34b1e843b3bdd29ce381d48e
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92368025"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577359"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planen der Kapazität und Skalierung der VMware-Notfallwiederherstellung für Azure
 

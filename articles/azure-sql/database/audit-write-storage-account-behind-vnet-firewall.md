@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 908c9f1d05c83eaa58f77b79a32d956898c35076
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e0bb7949e6f528925eb66c1148662720b144e06
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93348252"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060352"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Schreiben von Überwachungsprotokollen in ein Speicherkonto hinter einem VNET oder einer Firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -154,7 +154,7 @@ Sie können die Überwachung so konfigurieren, dass Datenbankereignisse in ein S
 > [!IMPORTANT]
 > Um ein Speicherkonto hinter einem virtuellen Netzwerk und einer Firewall zu verwenden, müssen Sie den Parameter **isStorageBehindVnet** auf TRUE festlegen.
 
-- [Bereitstellen einer Azure SQL Server-Instanz mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Blob Storage](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+- [Bereitstellen einer Azure SQL Server-Instanz mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Blob Storage](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-blob-storage/)
 
 > [!NOTE]
 > Das verknüpften Beispiel befindet sich in einem externen öffentlichen Repository, wird wie besehen ohne Gewähr zur Verfügung gestellt und wird von keinem Microsoft-Supportprogramm/-dienst unterstützt.

@@ -4,18 +4,18 @@ titleSuffix: Azure Applied AI Services
 description: In diesem Artikel wird erklärt, wie Sie den Azure-Formularerkennungscontainer verwenden, um Formular- und Tabellendaten zu analysieren.
 author: aahill
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 059d780b9d9e31d01b1d1999971af77d982e3b92
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b97a7783c7e114d62bef8753db8164fc33ecb4c3
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374576"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890749"
 ---
 # <a name="install-and-run-form-recognizer-containers-retiring"></a>Installieren und Ausführen eines Containers für die Formularerkennung (Außerbetriebnahme)
 

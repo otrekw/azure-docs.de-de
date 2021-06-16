@@ -1,18 +1,18 @@
 ---
 title: Einrichten eines Prozessservers mit horizontaler Skalierung während der Notfallwiederherstellung von VMware-VMs und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie einen Prozessserver mit horizontaler Skalierung während der Notfallwiederherstellung von VMware-VMs und physischen Servern einrichten.
-author: Rajeswari-Mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/23/2019
-ms.author: ramamill
-ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 9f98b37bf45593d55f9fe90c97dfc8b924f657cd
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019135"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576722"
 ---
 # <a name="scale-with-additional-process-servers"></a>Skalieren mit zusätzlichen Prozessservern
 

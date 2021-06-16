@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 9f72d54fda8f66c2fce35f0520b51406aa276bb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c84f48d7a41a43b1425663b2ceed9ba74276f3f9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92892752"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955617"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Volumenabrechnung für SaaS mit dem Messungsdienst für den kommerziellen Marketplace
 
@@ -26,7 +26,7 @@ Damit die getaktete Abrechnung auf ein SaaS-Angebot angewendet werden kann, müs
 - Es muss in die [SaaS-Fulfillment-APIs](./pc-saas-fulfillment-api-v2.md) integriert werden, damit Kunden Ihr Angebot bereitstellen und eine Verbindung damit herstellen können.  
 - Es muss ein **Pauschalgebührenmodell** konfiguriert werden, um Kunden Ihren Dienst in Rechnung stellen zu können.  Dimensionen sind eine optionale Erweiterung des Pauschalpreismodells. 
 
-Anschließend kann das SaaS-Angebot in die [APIs für den Messungsdienst für den kommerziellen Marketplace](./marketplace-metering-service-apis.md) integriert werden, um Microsoft über abrechenbare Ereignisse zu informieren.
+Anschließend kann das SaaS-Angebot in die [APIs für den Messungsdienst für den kommerziellen Marketplace](../marketplace-metering-service-apis.md) integriert werden, um Microsoft über abrechenbare Ereignisse zu informieren.
 
 >[!Note]
 >Der Marketplace-Messungsdienst ist nur für das pauschale Abrechnungsmodell verfügbar und gilt nicht für das Abrechnungsmodell pro Benutzer.
@@ -41,7 +41,7 @@ Bei der Definition des Angebots und seiner Preismodelle ist es wichtig, die Ange
 - In jedem Plan, der für ein pauschales Abrechnungsmodell konfiguriert wird, ist mindestens eine wiederkehrende Gebühr enthalten (die allerdings 0 EUR betragen kann):
     - Wiederkehrende **monatliche** Gebühr: Pauschale monatliche Gebühr, die monatlich im Voraus bezahlt wird, wenn der Benutzer den Tarif erwirbt
     - Wiederkehrende **Jahresgebühr**: Pauschale Jahresgebühr, die jährlich im Voraus bezahlt wird, wenn der Benutzer den Tarif erwirbt
-- Zusätzlich zu den wiederkehrenden Gebühren kann der Pauschaltarif auch optionale, benutzerdefinierte Dimensionen enthalten, mit denen dem Kunden die zusätzliche, nicht in der Pauschale enthaltene Nutzung berechnet wird.  Jede Dimension stellt eine abrechenbare Einheit dar, die Ihr Dienst über die [API für den Messungsdienst für den kommerziellen Marketplace](./marketplace-metering-service-apis.md) an Microsoft übermittelt.
+- Zusätzlich zu den wiederkehrenden Gebühren kann der Pauschaltarif auch optionale, benutzerdefinierte Dimensionen enthalten, mit denen dem Kunden die zusätzliche, nicht in der Pauschale enthaltene Nutzung berechnet wird.  Jede Dimension stellt eine abrechenbare Einheit dar, die Ihr Dienst über die [API für den Messungsdienst für den kommerziellen Marketplace](../marketplace-metering-service-apis.md) an Microsoft übermittelt.
 
 ## <a name="sample-offer"></a>Beispielangebot
 
@@ -67,7 +67,7 @@ In diesem Beispiel ist Contoso ein Herausgeber mit einem SaaS-Dienst namens Cont
 
     [![Preise für den Enterprise-Tarif](./media/saas-enterprise-pricing.png "Für vergrößerte Ansicht klicken")](./media/saas-enterprise-pricing.png)
 
-Je nach ausgewähltem Tarif kann ein Azure-Kunde, der ein Abonnement für ein CNS-SaaS-Angebot abschließt, während der Abonnementlaufzeit (Monat oder Jahr, in den Abonnementdetails unter „StartDate“ und „EndDate“ aufgeführt) die enthaltene Menge an SMS und E-Mails senden.  Contoso erfasst die Nutzung bis zum enthaltenen Kontingent, ohne dass Nutzungsereignisse an Microsoft gesendet werden. Wenn Kunden mehr als die enthaltene Menge beanspruchen, müssen sie nicht zu einem anderen Plan wechseln oder ihr Verhalten ändern.  Contoso misst die Nutzung, die über das enthaltene Kontingent hinausgeht, und beginnt damit, über die [API für den Messungsdienst für den kommerziellen Marketplace](./marketplace-metering-service-apis.md) Nutzungsereignisse an Microsoft zu senden, um die zusätzliche Nutzung abzurechnen.  Microsoft berechnet dem Kunden wiederum die über das Pauschalkontingent hinausgehende Nutzung gemäß der Angabe des Herausgebers in den benutzerdefinierten Dimensionen. Die Abrechnung für die über das Pauschalkontingent hinausgehende Nutzung erfolgt im nächsten Abrechnungszeitraum (monatlich, bei einigen Kunden u. U. jedoch vierteljährlich oder jährlich).  Bei einem monatlichen Pauschaltarif wird die zusätzliche Nutzung jeweils für den Monat abgerechnet, in dem das Pauschalkontingent überschritten wurde.  Bei einem jährlichen Pauschaltarif wird die gesamte zusätzliche Nutzung, die vom benutzerdefinierten Messungsdienst übertragen wird, nachdem das im Tarif enthaltene Grundkontingent aufgebraucht ist, bis zum Ende des Jahresabonnements im jeweiligen Abrechnungszeitraum (monatlich) als Überschreitung abgerechnet.
+Je nach ausgewähltem Tarif kann ein Azure-Kunde, der ein Abonnement für ein CNS-SaaS-Angebot abschließt, während der Abonnementlaufzeit (Monat oder Jahr, in den Abonnementdetails unter „StartDate“ und „EndDate“ aufgeführt) die enthaltene Menge an SMS und E-Mails senden.  Contoso erfasst die Nutzung bis zum enthaltenen Kontingent, ohne dass Nutzungsereignisse an Microsoft gesendet werden. Wenn Kunden mehr als die enthaltene Menge beanspruchen, müssen sie nicht zu einem anderen Plan wechseln oder ihr Verhalten ändern.  Contoso misst die Nutzung, die über das enthaltene Kontingent hinausgeht, und beginnt damit, über die [API für den Messungsdienst für den kommerziellen Marketplace](../marketplace-metering-service-apis.md) Nutzungsereignisse an Microsoft zu senden, um die zusätzliche Nutzung abzurechnen.  Microsoft berechnet dem Kunden wiederum die über das Pauschalkontingent hinausgehende Nutzung gemäß der Angabe des Herausgebers in den benutzerdefinierten Dimensionen. Die Abrechnung für die über das Pauschalkontingent hinausgehende Nutzung erfolgt im nächsten Abrechnungszeitraum (monatlich, bei einigen Kunden u. U. jedoch vierteljährlich oder jährlich).  Bei einem monatlichen Pauschaltarif wird die zusätzliche Nutzung jeweils für den Monat abgerechnet, in dem das Pauschalkontingent überschritten wurde.  Bei einem jährlichen Pauschaltarif wird die gesamte zusätzliche Nutzung, die vom benutzerdefinierten Messungsdienst übertragen wird, nachdem das im Tarif enthaltene Grundkontingent aufgebraucht ist, bis zum Ende des Jahresabonnements im jeweiligen Abrechnungszeitraum (monatlich) als Überschreitung abgerechnet.
 
 ## <a name="billing-dimensions"></a>Abrechnungsdimensionen
 
@@ -157,4 +157,4 @@ Um die Supportoptionen für Herausgeber zu verstehen und ein Supportticket für 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Marketplace-Messungsdienst-APIs](./marketplace-metering-service-apis.md)
+- [Marketplace-Messungsdienst-APIs](../marketplace-metering-service-apis.md)
