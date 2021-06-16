@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: 2a2e9d429d494c35c49a5b0a3e10b291fd8f24a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 229abeb71a580444525a314f648ee09452585336
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100633936"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971919"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Verwaltete Azure-Anwendungen mit Benachrichtigungen
 
@@ -61,7 +61,7 @@ Informationen zu den ersten Schritten finden Sie unter [Veröffentlichen einer D
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>Hinzufügen von Benachrichtigungen zu verwalteten Azure Marketplace-Anwendungen
-Informationen hierzu finden Sie unter [Erstellen eines Azure-Anwendungsangebots](../../marketplace/create-new-azure-apps-offer.md).
+Informationen hierzu finden Sie unter [Erstellen eines Azure-Anwendungsangebots](../../marketplace/azure-app-offer-setup.md).
 
 ![Benachrichtigungen zu verwalteten Azure Marketplace-Anwendungen im Azure-Portal](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Ereignistrigger
