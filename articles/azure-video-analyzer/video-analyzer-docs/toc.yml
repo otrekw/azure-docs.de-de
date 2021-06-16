@@ -14,8 +14,12 @@
           href: release-notes.md
 - name: Schnellstarts
   items:
-    - name: 'Erste Schritte: Azure Video Analyzer'
-      href: get-started-detect-motion-emit-events.md
+    - name: Erste Schritte mit Azure Video Analyzer
+      items:
+        - name: Per ARM-Vorlage
+          href: get-started-detect-motion-emit-events.md
+        - name: Verwenden des Portals
+          href: get-started-detect-motion-emit-events-portal.md
     - name: Visual Studio Code-Erweiterung für Azure Video Analyzer
       href: create-pipeline-vs-code-extension.md
     - name: Erkennen von Bewegung und Ausgeben von Ereignissen
@@ -69,12 +73,12 @@
   items:
     - name: Pipeline
       href: pipeline.md
+    - name: Pipeline-Erweiterung
+      href: pipeline-extension.md
     - name: Videoaufzeichnung
       href: video-recording.md
     - name: Szenarien
       items:
-        - name: Pipelineerweiterung
-          href: pipeline-extension.md
         - name: Ereignisbasierte Videoaufzeichnung
           href: event-based-video-recording-concept.md
         - name: Fortlaufende Videoaufzeichnung

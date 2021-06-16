@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2cf201c17b97464386ce52f4d689c2c1006d0970
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e4463659077943507651ddd2ad30ee2a1af9cf7a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377414"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785211"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions-Hostingoptionen
 
@@ -103,7 +103,7 @@ In der folgenden Tabelle wird das Skalierungsverhalten der verschiedenen Hosting
 | --- | --- |
 | **[Verbrauchsplan](consumption-plan.md)** | Sie bezahlen nur für die Zeit, in der Ihre Funktionen ausgeführt werden. Die Abrechnung erfolgt auf der Grundlage der Anzahl von Ausführungen, der Ausführungszeit und des verwendeten Arbeitsspeichers. |
 | **[Premium-Plan](functions-premium-plan.md)** | Die Abrechnung für den Premium-Plan basiert auf der Anzahl von Kernsekunden und dem für benötigte und vorab aufgewärmte Instanzen verwendeten Arbeitsspeicher. Pro Plan muss immer mindestens eine Instanz aufgewärmt sein. Dieser Plan bietet die am besten vorhersagbaren Preise. |
-| * *[Dedizierter Plan](dedicated-plan.md)* | Sie zahlen für Funktions-Apps in einem App Service-Plan das gleiche wie für andere App Service-Ressourcen, etwa Web-Apps.|
+| **[Dedizierter Plan](dedicated-plan.md)** | Sie zahlen für Funktions-Apps in einem App Service-Plan das gleiche wie für andere App Service-Ressourcen, etwa Web-Apps.|
 | **[App Service-Umgebung (ASE)](dedicated-plan.md)** | Es gibt eine monatliche Pauschalgebühr für eine ASE, mit der die Infrastruktur abgedeckt ist und die sich nicht mit der Größe der ASE ändert. Darüber hinaus fallen Kosten pro vCPU im App Service-Plan an. Alle in einer ASE gehosteten Apps befinden sich in der isolierten Preis-SKU. |
 | **[Kubernetes](functions-kubernetes-keda.md)**| Sie zahlen nur die Kosten für Ihren Kubernetes-Cluster, keine zusätzlichen Gebühren für Functions. Ihre Funktions-App wird als Anwendungsworkload in Ihrem Cluster ausgeführt, genau wie eine ganz normale App. |
 

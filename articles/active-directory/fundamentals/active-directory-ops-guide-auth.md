@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 26b5331aa9242978f0f097c8e90bc807fc65f745
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: b7aefa537c9b822572f38501920afdaa45bc01c3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531946"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955062"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
@@ -153,7 +153,7 @@ Weitere Informationen zur kennwortlosen Authentifizierung finden Sie unter [Eine
 
 ### <a name="single-sign-on-for-apps"></a>Einmaliges Anmelden für Apps
 
-Ein standardisiertes Verfahren für das einmalige Anmelden im gesamten Unternehmen ist nicht nur für eine optimale Benutzererfahrung wichtig, sondern auch für das Verringern von Risiken, das Erstellen von Berichten und die Governance. Wenn Sie Anwendungen verwenden, die SSO mit Azure AD unterstützen, die derzeit jedoch zur Verwendung lokaler Konten konfiguriert sind, sollten Sie diese Anwendungen neu konfigurieren, damit diese SSO mit Azure AD verwenden. Ebenso sollten Sie diese Anwendungen zur Verwendung von SSO mit Azure AD neu konfigurieren, wenn Sie Anwendungen verwenden, die SSO mit Azure AD unterstützen, die jedoch einen anderen Identitätsanbieter nutzen. Für Anwendungen, die keine Verbundprotokolle unterstützen, sondern nur die formularbasierte Authentifizierung, empfehlen wir Ihnen, die Anwendung für die Verwendung von [Kennworttresoren](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) mit Azure Active Directory-Anwendungsproxys zu konfigurieren.
+Ein standardisiertes Verfahren für das einmalige Anmelden im gesamten Unternehmen ist nicht nur für eine optimale Benutzererfahrung wichtig, sondern auch für das Verringern von Risiken, das Erstellen von Berichten und die Governance. Wenn Sie Anwendungen verwenden, die SSO mit Azure AD unterstützen, die derzeit jedoch zur Verwendung lokaler Konten konfiguriert sind, sollten Sie diese Anwendungen neu konfigurieren, damit diese SSO mit Azure AD verwenden. Ebenso sollten Sie diese Anwendungen zur Verwendung von SSO mit Azure AD neu konfigurieren, wenn Sie Anwendungen verwenden, die SSO mit Azure AD unterstützen, die jedoch einen anderen Identitätsanbieter nutzen. Für Anwendungen, die keine Verbundprotokolle unterstützen, sondern nur die formularbasierte Authentifizierung, empfehlen wir Ihnen, die Anwendung für die Verwendung von [Kennworttresoren](../app-proxy/application-proxy-configure-single-sign-on-password-vaulting.md) mit Azure Active Directory-Anwendungsproxys zu konfigurieren.
 
 ![Kennwortbasierte Anmeldung mit Anwendungsproxy](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
@@ -196,10 +196,10 @@ Wenn Sie jedoch Anwendungen finden, die individuellen Benutzern zugewiesen sind,
 
 ### <a name="named-locations"></a>Benannte Orte
 
-Mit [benannten Standorten](../reports-monitoring/quickstart-configure-named-locations.md) in Azure AD können Sie in Ihrer Organisation vertrauenswürdige IP-Adressbereiche bezeichnen. Azure AD verwendet benannte Orte zum:
+Mit [benannten Standorten](../conditional-access/location-condition.md) in Azure AD können Sie in Ihrer Organisation vertrauenswürdige IP-Adressbereiche bezeichnen. Azure AD verwendet benannte Orte zum:
 
 - Vermeiden von False Positives bei Risikoereignissen Die Anmeldung über einen vertrauenswürdigen Netzwerkstandort mindert das Anmelderisiko eines Benutzers.
-- Konfigurieren des [standortbasierten bedingten Zugriffs](../reports-monitoring/quickstart-configure-named-locations.md).
+- Konfigurieren des [standortbasierten bedingten Zugriffs](../conditional-access/location-condition.md).
 
 ![Benannter Ort](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 

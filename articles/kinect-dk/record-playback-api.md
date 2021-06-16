@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect-Wiedergabe-API
 description: Erfahren Sie, wie Sie das Sensor-SDK für Azure Kinect verwenden, um eine Aufzeichnungsdatei mithilfe der Wiedergabe-API zu öffnen.
-author: xthexder
-ms.author: jawirth
+author: martinekuan
+ms.author: martinek
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, Sensor, SDK, Tiefe, RGB, Aufzeichnung, Wiedergabe, Matroska, MKV
-ms.openlocfilehash: fe403f314c1df415537d090433f34627eb1249e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61d7f850554207effeff14f890efe1dd59ab109b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "85276659"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747003"
 ---
 # <a name="the-azure-kinect-playback-api"></a>Die Azure Kinect-Wiedergabe-API
 

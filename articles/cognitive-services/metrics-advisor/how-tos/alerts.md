@@ -5,17 +5,17 @@ description: Es wird beschrieben, wie Sie Ihre Metrics Advisor-Warnungen konfigu
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 30d8fdf99da7a4854db0985bed6256ecd6f7a366
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db5fbbc192e6c3b4f50af20e05cbd164dbe10032
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93420919"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892542"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Gewusst wie: Konfigurieren von Warnungen und Erhalten von Benachrichtigungen per Hook
 
@@ -34,7 +34,7 @@ Für die Erstellung eines E-Mail-Hooks sind die folgenden Parameter verfügbar:
 
 Ein E-Mail-Hook ist der Kanal, über den Anomaliewarnungen an E-Mail-Adressen gesendet werden, die im Abschnitt **Email to** (E-Mail an) angegeben sind. Es werden zwei Arten von Benachrichtigungs-E-Mails gesendet: Warnungen vom Typ *Datenfeed nicht verfügbar* und *Incidentberichte* mit einer oder mehreren Anomalien. 
 
-|Parameter |BESCHREIBUNG  |
+|Parameter |Beschreibung  |
 |---------|---------|
 | name | Name des E-Mail-Hooks |
 | Email to (E-Mail an)| E-Mail-Adressen, an die eine Warnung gesendet wird|
@@ -73,7 +73,7 @@ Metrics Advisor unterstützt auch die automatische Erstellung eines Arbeitseleme
 
 Zum Erstellen eines Azure DevOps-Hooks müssen Sie die unten angegebenen Informationen hinzufügen.
 
-|Parameter |BESCHREIBUNG  |
+|Parameter |Beschreibung  |
 |---------|---------|
 | name | Ein Name für den Hook. |
 | Organisation | Die Organisation, zu der Ihre DevOps-Instanz gehört. |

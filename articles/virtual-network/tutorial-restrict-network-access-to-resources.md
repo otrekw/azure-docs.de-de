@@ -15,12 +15,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/11/2020
 ms.author: kumud
-ms.openlocfilehash: 22494d292077f4b6018a4512b45b5fe2caa9c8ee
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 789816e37c3aaf9678fd9cb87ff6362442709498
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057200"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082206"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Tutorial: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit VNET-Dienstendpunkten mithilfe des Azure-Portals
 
@@ -50,7 +50,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
    |Einstellung|Wert|
    |----|----|
-   |Abonnement| Wählen Sie Ihr Abonnement aus.|
+   |Subscription| Wählen Sie Ihr Abonnement aus.|
    |Resource group | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
    |Name| Geben Sie *myVirtualNetwork* ein. |
    |Region| Wählen Sie **USA, Osten** aus. |
@@ -111,7 +111,7 @@ Standardmäßig können alle Instanzen von virtuellen Computern in einem Subnetz
 
     |Einstellung|Wert|
     |----|----|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe | Wählen Sie *myResourceGroup* in der Liste aus.|
     |Name| Geben Sie **myNsgPrivate** ein. |
     |Standort| Wählen Sie **USA, Osten** aus. |
@@ -129,8 +129,8 @@ Standardmäßig können alle Instanzen von virtuellen Computern in einem Subnetz
     |Destination | Wählen Sie **Diensttag** aus.|
     |Zieldiensttag | Wählen Sie **Storage** aus.|
     |Zielportbereiche| Lassen Sie den Standardwert *8080* unverändert. |
-    |Protocol|Any|
-    |Aktion|Zulassen|
+    |Protocol|Beliebig|
+    |Aktion|Allow|
     |Priorität|100|
     |Name|Benennen Sie es in **Allow-Storage-All** um.|
 
@@ -143,7 +143,7 @@ Standardmäßig können alle Instanzen von virtuellen Computern in einem Subnetz
     |Destination | Wählen Sie **Diensttag** aus.|
     |Zieldiensttag| Wählen Sie **Internet** aus.|
     |Zielportbereiche| * |
-    |Protocol|Any|
+    |Protocol|Beliebig|
     |Aktion|**Ändern Sie den Standardwert in *Ablehnen*.** |
     |Priority|110|
     |Name|Ändern Sie den Wert in *Deny-Internet-All*.|
@@ -154,12 +154,12 @@ Standardmäßig können alle Instanzen von virtuellen Computern in einem Subnetz
 
     |Einstellung|Wert|
     |----|----|
-    |`Source`| Any |
+    |`Source`| Beliebig |
     |Source port ranges| * |
     |Destination | Wählen Sie **VirtualNetwork** aus.|
     |Zielportbereiche| Ändern Sie den Wert in *3389*. |
-    |Protocol|Any|
-    |Aktion|Zulassen|
+    |Protocol|Beliebig|
+    |Aktion|Allow|
     |Priority|120|
     |Name|Ändern Sie den Wert in *Allow-RDP-All*.|
 
@@ -184,7 +184,7 @@ Die Schritte, die erforderlich sind, um den Netzwerkzugriff auf Ressourcen einzu
 
     |Einstellung|Wert|
     |----|----|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Wählen Sie *myResourceGroup* aus.|
     |Speicherkontoname| Geben Sie einen Namen ein, der an allen Azure-Standorten eindeutig, zwischen 3 und 24 Zeichen lang ist und nur aus Ziffern und Kleinbuchstaben besteht.|
     |Standort| Wählen Sie **USA, Osten** aus. |
@@ -225,7 +225,7 @@ Standardmäßig akzeptieren Speicherkonten Netzwerkverbindungen von Clients in a
 
     |Einstellung|Wert|
     |----|----|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Virtuelle Netzwerke| **myVirtualNetwork**|
     |Subnetze| **Privat**|
 
@@ -250,7 +250,7 @@ Zum Testen des Netzwerkzugriffs auf ein Speicherkonto stellen Sie einen virtuell
 
    |Einstellung|Wert|
    |----|----|
-   |Abonnement| Wählen Sie Ihr Abonnement aus.|
+   |Subscription| Wählen Sie Ihr Abonnement aus.|
    |Ressourcengruppe| Wählen Sie **myResourceGroup aus, die zuvor erstellt wurde.|
    |Name des virtuellen Computers| Geben Sie *myVmPublic* ein.|
    |Region | (USA) USA, Osten
@@ -259,7 +259,7 @@ Zum Testen des Netzwerkzugriffs auf ein Speicherkonto stellen Sie einen virtuell
    |Image | Windows Server 2019 Datacenter – Gen 1 |
    |Size | Wählen Sie die Größe der VM-Instanz aus, die Sie verwenden möchten. |
    |Username|Geben Sie den gewünschten Benutzernamen ein.|
-   |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+   |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.|
    |Öffentliche Eingangsports | Ausgewählte Ports zulassen |
    |Eingangsports auswählen | Belassen Sie die Standardeinstellung *RDP (3389)* . |
 

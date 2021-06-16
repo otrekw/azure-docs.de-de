@@ -3,40 +3,40 @@
 - name: Übersicht
   items:
     - name: Was ist Azure FXT Edge Filer?
-      href: fxt-overview.md
+      href: overview.md
 - name: Tutorials
   items:
     - name: 1. Installieren der Hardware
-      href: fxt-install.md
+      href: install.md
     - name: 2. Verkabeln der Netzwerkports und Stromversorgung
-      href: fxt-network-power.md
+      href: network-power.md
     - name: 3. Festlegen von Hardwarekennwörtern
-      href: fxt-node-password.md
+      href: node-password.md
     - name: 4. Erstellen eines Clusters
-      href: fxt-cluster-create.md
+      href: cluster-create.md
     - name: 5. Hinzufügen von Clusterknoten
-      href: fxt-add-nodes.md
+      href: add-nodes.md
     - name: 6. Hinzufügen von Back-End-Speicher und Konfigurieren des virtuellen Namespace
-      href: fxt-add-storage.md
+      href: add-storage.md
     - name: 7. Konfigurieren der Netzwerkeinstellungen des Clusters
-      href: fxt-configure-network.md
+      href: configure-network.md
     - name: 8. Einbinden von Clients
-      href: fxt-mount-clients.md
+      href: mount-clients.md
 - name: Anleitungen
   items:
     - name: Überwachen der Azure FXT Edge Filer-Hardware
-      href: fxt-monitor.md
+      href: monitor.md
     - name: Sicheres Ausschalten eines Hardwareknotens
-      href: fxt-power-off.md
+      href: power-off.md
 - name: Ressourcen
   items:
     - name: Hardwarespezifikationen
-      href: fxt-specs.md
+      href: specs.md
     - name: Zusätzliche Dokumentation
-      href: fxt-additional-doc.md
+      href: additional-doc.md
     - name: Unterstützte Verschlüsselungen
-      href: fxt-supported-ciphers.md
+      href: supported-ciphers.md
     - name: Netzwerkports
-      href: fxt-port-list.md
+      href: port-list.md
     - name: Öffnen eines Supporttickets
-      href: fxt-support-ticket.md
+      href: support-ticket.md

@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: 2eb5675701842192ff348048f8235718af2eea90
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a958e42f3afab3dccd2a989c9d824a37ed9d9a6c
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386173"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536809"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-preview---overview"></a>Event Grid auf Kubernetes mit Azure Arc (Vorschau) - Übersicht
 Dieser Artikel vermittelt einen Überblick über Event Grid auf Kubernetes, Anwendungsfälle für dessen Einsatz, verfügbare Funktionen und wie es sich von Azure Event Grid unterscheidet.
@@ -29,7 +29,7 @@ Unabhängig davon, welche Version des Event Grid Sie verwenden, ist ein **Ereign
 
 
 ## <a name="event-grid-on-kubernetes-with-azure-arc"></a>Event Grid in Kubernetes mit Azure Arc
-Bei Event Grid in Kubernetes mit Azure Arc handelt es sich um ein Angebot, mit dem Sie Event Grid in Ihrem eigenen Kubernetes-Cluster ausführen können. Diese Funktion wird durch die Verwendung von [Azure Arc-fähigen Kubernetes](../../azure-arc/kubernetes/overview.md) aktiviert. Ein [unterstützter Kubernetes-Cluster](install-k8s-extension.md#supported-kubernetes-distributions) wird über Azure Arc-fähige Kubernetes mit Azure verbunden. Sobald die Verbindung besteht, können Sie [Event Grid installieren](install-k8s-extension.md#install-event-grid-on-kubernetes-extension). 
+Bei Event Grid in Kubernetes mit Azure Arc handelt es sich um ein Angebot, mit dem Sie Event Grid in Ihrem eigenen Kubernetes-Cluster ausführen können. Diese Funktion wird durch die Verwendung von [Azure Arc-fähigen Kubernetes](../../azure-arc/kubernetes/overview.md) aktiviert. Ein [unterstützter Kubernetes-Cluster](install-k8s-extension.md#supported-kubernetes-distributions) wird über Azure Arc-fähige Kubernetes mit Azure verbunden. Sobald die Verbindung besteht, können Sie [Event Grid installieren](install-k8s-extension.md). 
 
 ### <a name="use-case"></a>Anwendungsfall
 Event Grid in Kubernetes unterstützt verschiedene Ereignis-gesteuerte Integrationsszenarien. Das wichtigste übergreifende Szenario, das unterstützt und als User Story ausgedrückt wird, ist jedoch:

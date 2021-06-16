@@ -3,20 +3,20 @@ title: 'Azure Resource Manager-Vorlagen: Azure SQL-Datenbank und SQL Managed Ins
 description: Verwenden Sie Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren von Azure SQL-Datenbank und verwalteten Azure SQL-Instanzen.
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: deployment-configuration
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
 ms.topic: guide
-author: danimir
-ms.author: danil
-ms.reviewer: sstein
-ms.date: 02/04/2019
-ms.openlocfilehash: e3442338ab388da36ad1f8f8f8bbef4952b06d3c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+author: srdan-bozovic-msft
+ms.author: srbozovi
+ms.reviewer: mathoma
+ms.date: 05/24/2021
+ms.openlocfilehash: 84a489222ed8d68c8c49d240cc22bd35f443227a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096184"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705717"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure Resource Manager-Vorlagen für Azure SQL-Datenbank und verwaltete SQL-Instanzen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

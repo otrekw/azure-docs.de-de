@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: 7a68185313049cf6716517d5694477f697ef56f5
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: bca37a0e30240732443bcc08ca76dc9b875af37d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802124"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955022"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Vergleich zwischen Active Directory und Azure Active Directory
 
@@ -36,7 +36,7 @@ Die meisten IT-Administratoren sind mit den Konzepten von Active Directory Domai
 | Verwaltung von Anmeldeinformationen| Die Anmeldeinformationen in Active Directory basieren auf Kennwörtern, Zertifikatauthentifizierung und Smartcard-Authentifizierung. Kennwörter werden mithilfe von Kennwortrichtlinien verwaltet, die auf der Länge, auf dem Ablauf und auf der Komplexität der Kennwörter basieren.|Azure AD verwendet sowohl in der Cloud als auch lokal einen intelligenten [Kennwortschutz](../authentication/concept-password-ban-bad.md). Dieser Schutz umfasst einen intelligenten Sperrmechanismus sowie das Sperren gängiger und benutzerdefinierter Passphrases und Ersetzungen. </br>Bei Azure AD wird die Sicherheit [durch eine mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md) und [kennwortlose](../authentication/concept-authentication-passwordless.md) Technologien wie FIDO2 erheblich verbessert. </br>Mit Azure AD werden durch die Bereitstellung eines Systems für die [Self-Service-Kennwortzurücksetzung](../authentication/concept-sspr-howitworks.md) zudem die Supportkosten erheblich gesenkt. |
 | **Apps**|||
 | Infrastruktur-Apps|Active Directory stellt die Grundlage vieler lokaler Infrastrukturkomponenten dar (z.B. DNS, DHCP, IPSec, WLAN, NPS und VPN-Zugriff).|In der cloudbasierten Welt von heute stellt Azure AD die neue Kontroll- und Steuerungsebene für den Zugriff auf Apps dar, sodass Organisationen sich nicht länger nur auf Netzwerksteuerelemente verlassen müssen. Bei der Benutzerauthentifizierung steuert der [bedingte Zugriff](../conditional-access/overview.md), welche Benutzer unter den erforderlichen Bedingungen Zugriff auf welche Apps erhalten.|
-| Traditionelle Apps und Legacy-Apps| Die meisten lokalen Apps verwenden die LDAP-Authentifizierung, die integrierte Windows-Authentifizierung (NTLM und Kerberos) oder die headerbasierte Authentifizierung, um den Zugriff auf Benutzer zu steuern.| Bei Azure AD kann der Zugriff auf diese Art von lokalen Apps über [Azure AD-Anwendungsproxy-Agents](../manage-apps/application-proxy.md) gewährt werden, die lokal ausgeführt werden. Auf diese Weise kann Azure AD Active Directory-Benutzer lokal mithilfe von Kerberos authentifizieren, während Sie eine Migration durchführen oder wenn beide Arten gleichzeitig verwendet werden müssen. |
+| Traditionelle Apps und Legacy-Apps| Die meisten lokalen Apps verwenden die LDAP-Authentifizierung, die integrierte Windows-Authentifizierung (NTLM und Kerberos) oder die headerbasierte Authentifizierung, um den Zugriff auf Benutzer zu steuern.| Bei Azure AD kann der Zugriff auf diese Art von lokalen Apps über [Azure AD-Anwendungsproxy-Agents](../app-proxy/application-proxy.md) gewährt werden, die lokal ausgeführt werden. Auf diese Weise kann Azure AD Active Directory-Benutzer lokal mithilfe von Kerberos authentifizieren, während Sie eine Migration durchführen oder wenn beide Arten gleichzeitig verwendet werden müssen. |
 | SaaS-Apps|Active Directory bietet keine native Unterstützung für SaaS-Apps, und es wird ein Verbundsystem wie AD FS benötigt.|Um Azure AD für die Authentifizierung zu nutzen, können SaaS-Apps mit Unterstützung für die OAuth2-, SAML- und WS-\*Authentifizierung integriert werden. |
 | Branchenspezifische Apps mit moderner Authentifizierung|Organisationen können AD FS mit Active Directory verwenden, um branchenspezifische Apps zu unterstützen, die eine moderne Authentifizierung erfordern.| Branchenspezifische Apps, die eine moderne Authentifizierung erfordern, lassen sich so konfigurieren, dass sie Azure AD für die Authentifizierung verwenden. |
 | Mid-Tier-Dienste/Daemon-Dienste|Dienste, die in lokalen Umgebungen ausgeführt werden, verwenden für die Ausführung üblicherweise AD-Dienstkonten oder gruppenverwaltete Dienstkonten. In diesem Fall erben diese Apps die Berechtigungen des Dienstkontos.| Für die Ausführung anderer Workloads in der Cloud bietet Azure AD [verwaltete Identitäten](../managed-identities-azure-resources/index.yml). Der Lebenszyklus dieser Identitäten wird von Azure AD verwaltet und ist an den Ressourcenanbieter gebunden. Sie können nicht für andere Zwecke genutzt werden, beispielsweise um Hintertürzugriff zu erhalten.|
@@ -50,5 +50,5 @@ Die meisten IT-Administratoren sind mit den Konzepten von Active Directory Domai
 
 - [Was ist Azure Active Directory?](./active-directory-whatis.md)
 - [Vergleichen von selbstverwalteten Active Directory Domain Services, Azure Active Directory und verwalteten Azure Active Directory Domain Services](../../active-directory-domain-services/compare-identity-solutions.md)
-- [Häufig gestellte Fragen zu Azure Active Directory](./active-directory-faq.md)
+- [Häufig gestellte Fragen zu Azure Active Directory](./active-directory-faq.yml)
 - [Neuerungen in Azure Active Directory](./whats-new.md)

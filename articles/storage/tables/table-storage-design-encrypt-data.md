@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/11/2018
 ms.subservice: tables
-ms.openlocfilehash: b921be718bfeb5eb95d4a802fb4d2a8cdd0946c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b874bfb9f3c261f395f8358151ae555cdaed8e8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88236776"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756885"
 ---
 # <a name="encrypt-table-data"></a>Verschlüsseln von Tabellendaten
 Die .NET-Clientbibliothek für Azure Storage unterstützt die Verschlüsselung der Eigenschaften von Zeichenfolgenentitäten für Einfüge- und Ersetzungsvorgänge. Die verschlüsselten Zeichenfolgen werden als binäre Eigenschaften für den Dienst gespeichert, und sie werden nach der Entschlüsselung wieder in Zeichenfolgen konvertiert.    
@@ -29,6 +29,5 @@ Informationen zum Verschlüsseln von Tabellendaten finden Sie unter [Clientseiti
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Entwurfsmuster für die Tabelle](table-storage-design-patterns.md)
-- [Modellieren von Beziehungen](table-storage-design-modeling.md)
 - [Modellieren von Beziehungen](table-storage-design-modeling.md)
 - [Entwurf für die Datenänderung](table-storage-design-for-modification.md)

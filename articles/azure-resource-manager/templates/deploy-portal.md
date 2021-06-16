@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen mit dem Azure-Portal
 description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Bereitstellen Ihrer Ressourcen in einer Ressourcengruppe in Ihrem Abonnement.
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: 6370b628a8dc2d880168dd3c4ea8a7d10a1cd36c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 718d8be4e51bf41467bea398440b24f98ac1f6e9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737115"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957897"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und dem Azure-Portal
 
@@ -75,7 +75,7 @@ Obwohl dies nicht angezeigt wurde, wurden die ausgewählten Ressourcen im Portal
 
 ## <a name="deploy-resources-from-custom-template"></a>Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage
 
-Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Marketplace zu nutzen, können Sie eine angepasste Vorlage erstellen, mit der die Infrastruktur für Ihre Lösung definiert wird. Informationen zum Erstellen von Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Marketplace zu nutzen, können Sie eine angepasste Vorlage erstellen, mit der die Infrastruktur für Ihre Lösung definiert wird. Informationen zum Erstellen von Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).
 
 > [!NOTE]
 > Für die Portalschnittstelle wird das Verweisen auf ein [Geheimnis aus einem Key Vault](key-vault-parameter.md) nicht unterstützt. Verwenden Sie stattdessen [PowerShell](deploy-powershell.md) oder [Azure CLI](deploy-cli.md), um Ihre Vorlage lokal oder über einen externen URI bereitzustellen.

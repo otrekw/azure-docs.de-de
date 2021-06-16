@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 061bd06c0fa54497d8f00db0e5d4a808e949c2d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ba89bc21a4dac234cee48ca0fbdd93014b90d8b0
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98679197"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679531"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-table-for-azure-cosmos-db---table-api"></a>Durchsatzvorgänge (RU/s) mit PowerShell für eine Tabelle für Azure Cosmos DB: Tabellen-API
 [!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]

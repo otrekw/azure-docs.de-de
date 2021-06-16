@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1c7c31f38d6a59f4ded17e1e1fd7e985ce59922a
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9b9ff0a4f432a8fbf9eaee84bc0215af736b6bbd
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751416"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110667014"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Zuweisen einer Key Vault-Zugriffsrichtlinie mit Azure PowerShell
 
@@ -78,6 +79,5 @@ Sie müssen `-PermissionsToSecrets`, `-PermissionsToKeys` und `-PermissionsToCer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Key Vault – Sicherheit: Identitäts- und Zugriffsverwaltung](security-overview.md#identity-management)
-- [Sicherer Zugriff auf einen Schlüsseltresor](security-overview.md)
+- [Azure Key Vault – Sicherheit: Identitäts- und Zugriffsverwaltung](security-features.md#identity-management)
 - [Entwicklerhandbuch zu Azure Key Vault](developers-guide.md)

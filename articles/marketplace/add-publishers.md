@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: d7e5890201afeae5b88e3edff8d0ed2af278f308
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: f28e9f2da86a810ca8737505938e3115540232c9
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107919"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007065"
 ---
 # <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“
 
@@ -29,7 +29,7 @@ Eine Organisation kann über mehrere Herausgeber verfügen, die einem Konto für
 
 ## <a name="add-new-publishers"></a>Hinzufügen neuer Herausgeber
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) an.
 1. Wählen Sie oben rechts **Einstellungen** > **Kontoeinstellungen** aus.
 1. Wählen Sie unter **Organisationsprofil** die Option **Bezeichner** aus.
 1. Wählen Sie im Abschnitt **Herausgeber** die Option **Herausgeber hinzufügen** aus.

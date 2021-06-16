@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: b4a3f7f613f75f2f285437b7ae6f816adf56d999
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.custom: seohack1, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: b364e74df7e6069407b0bcc3a6cfccd2ead09eae
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580101"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690862"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Behandeln von Problemen bei Azure RBAC
 
@@ -138,7 +138,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Wenn Sie diese Rollenzuweisung mit der Azure CLI anzeigen, ist `principalName` möglicherweise leer. Beispiel: [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) gibt eine Rollenzuweisung zurück, die der folgenden Ausgabe ähnelt:
+Wenn Sie diese Rollenzuweisung mit der Azure CLI anzeigen, ist `principalName` möglicherweise leer. Beispiel: [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list) gibt eine Rollenzuweisung zurück, die der folgenden Ausgabe ähnelt:
 
 ```
 {

@@ -3,12 +3,12 @@ title: Leitfaden und bewährte Methoden
 description: Bewährte Methoden und Anleitungen zum Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 14476533cf896434182e1d63f89c6a1279b36362
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 7b507fec6c3f9cd53dd5b775dff2ca43c4dcfd1f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519062"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965473"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 
@@ -178,7 +178,7 @@ Azure Backup erfordert das Verschieben von Daten Ihrer Workload in den Recovery 
 
 * *SAP HANA-Datenbanken auf einem virtuellen Azure-Computer, SQL Server-Datenbanken auf einem virtuellen Azure-Computer*: Benötigen eine Verbindung zum Azure Backup-Dienst, zu Azure Storage und zu Azure Active Directory. Dies kann durch die Verwendung privater Endpunkte oder durch die Gewährung des Zugriffs auf die erforderlichen öffentlichen IP-Adressen oder FQDNs erreicht werden. Wenn keine ordnungsgemäße Verbindung zu den erforderlichen Azure-Diensten zugelassen wird, kann dies zu Fehlern bei Operationen wie der Datenbankermittlung, der Konfiguration von Sicherungen, der Durchführung von Sicherungen und der Wiederherstellung von Daten führen. Eine vollständige Anleitung bei Verwendung von NSG-Tags, Azure-Firewall und HTTP-Proxy im Netzwerk finden Sie in diesen Artikeln: [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) und [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity).
 
-* *Hybrid*: der MARS-Agent (Microsoft Azure Recovery Services) benötigt Netzwerkzugriff für alle wichtigen Vorgänge wie Installation, Konfiguration, Sicherung und Wiederherstellung. Der MARS-Agent kann eine Verbindung zum Azure Backup-Dienst über [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) herstellen, indem er öffentliches Peering (verfügbar für alte Leitungen) und Microsoft-Peering, über [private Endpunkte](install-mars-agent.md#private-endpoints) bzw. über [Proxy/Firewall mit entsprechenden Zugriffssteuerungen](install-mars-agent.md#verify-internet-access) nutzt.
+* *Hybrid*: der MARS-Agent (Microsoft Azure Recovery Services) benötigt Netzwerkzugriff für alle wichtigen Vorgänge wie Installation, Konfiguration, Sicherung und Wiederherstellung. Der MARS-Agent kann eine Verbindung zum Azure Backup-Dienst über [Azure ExpressRoute](install-mars-agent.md#azure-expressroute-support) herstellen, indem er öffentliches Peering (verfügbar für alte Leitungen) und Microsoft-Peering, über [private Endpunkte](install-mars-agent.md#private-endpoint-support) bzw. über [Proxy/Firewall mit entsprechenden Zugriffssteuerungen](install-mars-agent.md#verify-internet-access) nutzt.
 
 ### <a name="private-endpoints-for-azure-backup"></a>Private Endpunkte für Azure Backup
 

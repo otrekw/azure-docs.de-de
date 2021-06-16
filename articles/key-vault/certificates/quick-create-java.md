@@ -2,18 +2,18 @@
 title: 'Schnellstart für die Azure Key Vault-Zertifikatclientbibliothek: Java'
 description: In den Schritten in dieser Schnellstartanleitung erfahren Sie mehr über die Azure Key Vault-Zertifikatclientbibliothek für Java.
 author: msmbaldwin
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java, devx-track-azurecli, devx-track-azurepowershell
 ms.author: mbaldwin
 ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 7173dea0d6261d7d71e148677fde80511e5ef8a5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 653b88387e51b3e0ccd039db9b08b9c298fbb3e8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288272"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676316"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>Schnellstart: Azure Key Vault-Zertifikatclientbibliothek für Java (Zertifikate)
 Hier finden Sie Informationen zu den ersten Schritten mit der Azure Key Vault-Zertifikatclientbibliothek für Java. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.

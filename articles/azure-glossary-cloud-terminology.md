@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: e4240e7ad53725494a2b9b04d827fef0395c1bd2
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a97726498adc89a8453d88bef9a61aa343da2c5e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483171"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956434"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -104,7 +104,7 @@ Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Mana
 
 ## <a name="resource-manager-template"></a><a name="arm-template"></a>Resource Manager-Vorlage
 Eine JSON-Datei, die deklarativ eine oder mehrere Azure-Ressourcen definiert, und die Abhängigkeiten zwischen den bereitgestellten Ressourcen definiert. Die Vorlage kann zum konsistenten und wiederholten Bereitstellen der Ressourcen verwendet werden.  
-Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](./azure-resource-manager/templates/template-syntax.md).
+Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](./azure-resource-manager/templates/syntax.md).
 
 ## <a name="resource-provider"></a>Ressourcenanbieter
 Ein Dienst, über den Sie die Ressourcen beziehen, die Sie über Resource Manager bereitstellen und verwalten können. Jeder Ressourcenanbieter bietet Vorgänge zum Arbeiten mit den bereitgestellten Ressourcen. Auf Ressourcenanbieter kann über das Azure-Portal, Azure PowerShell und verschiedene SDKs für die Programmierung zugegriffen werden.  

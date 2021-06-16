@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/05/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0aa26cc0d78d6ca20dccb97b3936bad840c989b7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b7e505bfbb27aca479569ff6cddfa2686674ae94
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382545"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954109"
 ---
 # <a name="prebuilt-question-answering"></a>Vordefinierte Fragen und Antworten
 
@@ -99,7 +99,7 @@ Wir sehen, dass mehrere Antworten als Teil der API-Antwort empfangen werden. Jed
 
 ## <a name="prebuilt-api-limits"></a>Grenzwerte für die vordefinierte API 
 
-Konsultieren Sie die Dokumentation zu [Grenzwerten der vordefinierten API](https://docs.microsoft.com/azure/cognitive-services/qnamaker/limits?#prebuilt-question-answering-limits). 
+Konsultieren Sie die Dokumentation zu [Grenzwerten der vordefinierten API](../limits.md#prebuilt-question-answering-limits). 
 
 ## <a name="prebuilt-api-reference"></a>Referenz zur vordefinierten API
-Ziehen Sie die [Referenz zur vordefinierten API](https://docs.microsoft.com/rest/api/cognitiveservices-qnamaker/qnamaker5.0preview2/prebuilt/generateanswer) zu Rate, um die für das Aufrufen der API erforderlichen Ein- und Ausgabeparameter zu verstehen.
+Ziehen Sie die [Referenz zur vordefinierten API](/rest/api/cognitiveservices-qnamaker/qnamaker5.0preview2/prebuilt/generateanswer) zu Rate, um die für das Aufrufen der API erforderlichen Ein- und Ausgabeparameter zu verstehen.

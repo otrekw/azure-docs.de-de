@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, azla
 ms.topic: conceptual
 ms.date: 05/25/2021
-ms.openlocfilehash: 1dd4a75cbebeb0244ffd3e0c1f8e2cfcd1968440
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0c09d013e3e9e3934702eb512334a33a60044b9d
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379730"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441238"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung für Azure Logic Apps
 
@@ -95,7 +95,7 @@ Zum Erstellen einer Logik-App in der von Ihnen gewünschten Umgebung stehen Ihne
 | Azure-Portal | Ressourcentyp **Logik-App (Verbrauch)** | [Schnellstart: Erstellen von Integrationsworkflows in Azure Logic Apps-Instanzen mit mehreren Mandanten – Azure-Portal](quickstart-create-first-logic-app-workflow.md) |
 | Visual Studio Code | [Erweiterung **Azure Logic Apps (Verbrauch)**](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) | [Schnellstart: Erstellen von Integrationsworkflows in Azure Logic Apps-Instanzen mit mehreren Mandanten – Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)
 | Azure CLI | [Erweiterung **Logic Apps Azure CLI**](https://github.com/Azure/azure-cli-extensions/tree/master/src/logic) | - [Schnellstart: Erstellen und Verwalten von Integrationsworkflows in Azure Logic Apps-Instanzen mit mehreren Mandanten – Azure CLI](quickstart-logic-apps-azure-cli.md) <p><p>- [az logic](/cli/azure/logic) |
-| Azure Resource Manager | [ARM-Vorlage (Azure Resource Manager) **Erstellen einer Logik-App**](https://azure.microsoft.com/resources/templates/101-logic-app-create/) | [Schnellstart: Erstellen und Bereitstellen von Integrationsworkflows in Azure Logic Apps-Instanzen mit mehreren Mandanten – ARM-Vorlage](quickstart-create-deploy-azure-resource-manager-template.md) |
+| Azure Resource Manager | [ARM-Vorlage (Azure Resource Manager) **Erstellen einer Logik-App**](https://azure.microsoft.com/resources/templates/logic-app-create/) | [Schnellstart: Erstellen und Bereitstellen von Integrationsworkflows in Azure Logic Apps-Instanzen mit mehreren Mandanten – ARM-Vorlage](quickstart-create-deploy-azure-resource-manager-template.md) |
 | Azure PowerShell | [Modul „Az.LogicApp“](/powershell/module/az.logicapp) | [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps) |
 | Azure-REST-API | [Azure Logic Apps-REST-API](/rest/api/logic) | [Erste Schritte mit der Azure-REST-API-Referenz](/rest/api/azure) |
 ||||

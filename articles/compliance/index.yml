@@ -378,7 +378,7 @@ additionalContent:
             - text: Vergleichstest für die Azure-Sicherheit
               url: ../governance/blueprints/samples/azure-security-benchmark.md
             - text: Canada Federal PBMM
-              url: ../governance/blueprints/samples/canada-federal-pbmm/index.md
+              url: ../governance/blueprints/samples/canada-federal-pbmm.md
             - text: CIS-Benchmarks
               url: ../governance/blueprints/samples/cis-azure-1-1-0.md
             - text: FedRAMP Moderate
@@ -388,7 +388,7 @@ additionalContent:
             - text: HIPAA HITRUST
               url: ../governance/blueprints/samples/hipaa-hitrust-9-2.md
             - text: IRS 1075
-              url: ../governance/blueprints/samples/irs-1075/index.md
+              url: ../governance/blueprints/samples/irs-1075-sept2016.md
             - text: ISO 27001
               url: ../governance/blueprints/samples/iso-27001-2013.md
             - text: NIST SP 800-53 R4
@@ -398,7 +398,7 @@ additionalContent:
             - text: SWIFT CSP-CSCF v2020
               url: ../governance/blueprints/samples/swift-2020/index.md
             - text: UK NHS und UK OFFICIAL (G-Cloud)
-              url: ../governance/blueprints/samples/ukofficial/index.md
+              url: ../governance/blueprints/samples/ukofficial-uknhs.md
         - title: Länder-/Regionsspezifische Leitfäden für Datenschutz und Compliance
           links:
             - text: Sicherheits- und Datenschutzanforderungen in Australien

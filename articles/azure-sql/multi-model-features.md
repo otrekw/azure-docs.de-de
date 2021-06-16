@@ -3,20 +3,20 @@ title: Funktionen für mehrere Modelle
 description: Mit Microsoft Azure SQL können Sie mit mehreren Datenmodellen in derselben Datenbank arbeiten.
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: ''
+ms.reviewer: mathoma
 ms.date: 12/17/2018
-ms.openlocfilehash: b16a2fc9f107a8420fb7d05667807a869fa3e00a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5eebf03d5ea3757f7dc003a1dbd114190feb72f9
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172756"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688841"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Funktionen für mehrere Modelle in Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]

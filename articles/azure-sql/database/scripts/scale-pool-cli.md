@@ -7,16 +7,16 @@ ms.subservice: elastic-pools
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: arvindshmicrosoft
+ms.author: arvindsh
+ms.reviewer: mathoma
 ms.date: 06/25/2019
-ms.openlocfilehash: 30d462dec8c65252afbde0c4d2eee171891a64ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bcd94c5557de5ddcd26f251639b63908af7ae78b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92747313"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707858"
 ---
 # <a name="use-the-azure-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Verwenden der Azure CLI zum Skalieren eines Pools für elastische Datenbanken in Azure SQL-Datenbank
 
@@ -48,7 +48,7 @@ az group delete --name $resource
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Get-Help | BESCHREIBUNG |
+| Get-Help | Beschreibung |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Serverbefehle |
 | [az sql db](/cli/azure/sql/db) | Datenbankbefehle |

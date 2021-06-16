@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: Hier erfahren Sie, wie Sie den Container für die Formularerkennung konfigurieren, um Formular- und Tabellendaten zu analysieren.
 author: aahill
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: 444e59aa969950eadb8532849ae10b97412555ab
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b40b9996a1cb8f66e5befa3b6e2d18addf6433f2
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374559"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894252"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurieren des Containers für die Formularerkennung
 
@@ -47,7 +47,7 @@ Die Einstellung `Billing` gibt den Endpunkt-URI der Ressource für die _Formular
 
 Sie finden diese Einstellung im Azure-Portal in **Form Recognizer Overview** (Übersicht über die Formularerkennung) unter **Endpunkt**.
 
-|Erforderlich| Name | Datentyp | BESCHREIBUNG |
+|Erforderlich| Name | Datentyp | Beschreibung |
 |--|------|-----------|-------------|
 |Ja| `Billing` | String | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](form-recognizer-container-howto.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
@@ -76,7 +76,7 @@ Der Container für die Formularerkennung erfordert eine Ein- und Ausgabeeinbindu
 
 Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist der Zugriff auf den Einbindungspunkt des [Hostcomputers](form-recognizer-container-howto.md#the-host-computer) möglicherweise aufgrund eines Konflikts zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Einbindungspunkt auf dem Host verwendeten Berechtigungen nicht möglich.
 
-|Optional| Name | Datentyp | BESCHREIBUNG |
+|Optional| Name | Datentyp | Beschreibung |
 |-------|------|-----------|-------------|
 |Erforderlich| `Input` | String | Das Ziel der Eingabeeinbindung. Standardwert: `/input`.    <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Erforderlich| `Output` | String | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`.  <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|

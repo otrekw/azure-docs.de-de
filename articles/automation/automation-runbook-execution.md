@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a0c734d7717f157ba062b1c9369be5dd95be03af
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 5fcef44fed77b01e069129a160299f547340c346
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278468"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964556"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -53,7 +53,7 @@ In der folgenden Tabelle sind einige Runbook-Ausführungsaufgaben mit der jeweil
 |Zeitintensives Skript ausführen|Hybrid Runbook Worker|Für Azure-Sandboxes gelten [Ressourcenlimits](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).|
 |Interagieren mit lokalen Diensten|Hybrid Runbook Worker|Ermöglicht den direkten Zugriff auf den Hostcomputer oder die Ressourcen in anderen Cloudumgebungen oder der lokalen Umgebung. |
 |Software und ausführbare Dateien von Drittanbietern erforderlich.|Hybrid Runbook Worker|Sie verwalten das Betriebssystem und können Software installieren.|
-|Datei oder Ordner mit einem Runbook überwachen|Hybrid Runbook Worker|Wenden Sie einen [Watcher-Task](automation-watchers-tutorial.md) auf einen Hybrid Runbook Worker an.|
+|Datei oder Ordner mit einem Runbook überwachen|Hybrid Runbook Worker|Wenden Sie einen [Watcher-Task](./automation-scenario-using-watcher-task.md) auf einen Hybrid Runbook Worker an.|
 |Ressourcenintensives Skript ausführen|Hybrid Runbook Worker| Für Azure-Sandboxes gelten [Ressourcenlimits](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).|
 |Module mit spezifischen Anforderungen verwenden| Hybrid Runbook Worker|Beispiele:</br> WinSCP: Abhängigkeit von „winscp.exe“ </br> IIS-Verwaltung: Abhängigkeit zum Aktivieren oder Verwalten von IIS|
 |Modul mit einem Installationsprogramm installieren|Hybrid Runbook Worker|Module für Sandbox müssen Kopieren unterstützen.|

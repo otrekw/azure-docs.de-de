@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: In diesem Tutorial erfahren Sie, wie Sie die Transaktionsreplikation zwischen einem Verleger/Verteiler einer Azure SQL Managed Instance und einem Abonnenten der SQL Managed Instance konfigurieren.
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: data-movement
+ms.subservice: replication
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
+author: ferno-ms
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 47ea5ea73c581313f90791ca6d7892ebad3f666b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1169e3df6cc2c6d1d9850bbbcca3784ea80bec93
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690684"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691483"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Tutorial: Konfigurieren der Replikation zwischen zwei verwalteten Instanzen
 
@@ -25,7 +25,7 @@ ms.locfileid: "101690684"
 
 Mithilfe der Transaktionsreplikation können Sie Daten von einer Datenbank auf eine andere replizieren, die auf SQL Server oder [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) gehostet wird. SQL Managed Instance kann in der Replikationstopologie ein Verleger, Verteiler oder Abonnent sein. Unter [Konfigurationen für die Transaktionsreplikation](replication-transactional-overview.md#common-configurations) finden Sie die verfügbaren Konfigurationen. 
 
-Die Transaktionsreplikation befindet sich zurzeit in der öffentlichen Vorschau für SQL Managed Instance. 
+Die Transaktionsreplikation ist zurzeit als öffentliche Vorschau für SQL Managed Instance verfügbar. 
 
 In diesem Tutorial lernen Sie Folgendes:
 

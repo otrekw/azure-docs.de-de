@@ -3,18 +3,18 @@ title: Konfigurieren von Wartungsfenstern (Vorschau)
 description: Erfahren Sie, wie Sie die Zeit festlegen, zu der eine geplante Wartung für Ihre Azure SQL-Datenbanken, Pools für elastische Datenbanken und Datenbanken für verwaltete Instanzen ausgeführt werden soll.
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: deployment-configuration
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scott-kim-sql
+ms.author: scottkim
+ms.reviewer: mathoma
 ms.date: 03/23/2021
-ms.openlocfilehash: 9771c68dda6f457586f27ea45fbc52aa118e8006
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: f2f12238d5c75b2d36d09efa2fddd76bf6b1ec1d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874781"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694380"
 ---
 # <a name="configure-maintenance-window-preview"></a>Konfigurieren von Wartungsfenstern (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d5a8fe4192c3778e259ed18239a4198398d8807b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74410025e148eb60438a020164837dac486d2ad3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94836834"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955003"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Allgemeiner Betriebsleitfaden für Azure Active Directory – Referenz
 
@@ -70,7 +70,7 @@ Sofern dies nicht bereits geschehen ist, sollten Sie einen Prozess für das Upgr
 #### <a name="hybrid-management-recommended-reading"></a>Empfohlene Artikel zur Hybridverwaltung
 
 - [Azure AD Connect: Automatisches Upgrade](../hybrid/how-to-connect-install-automatic-upgrade.md)
-- [Grundlegendes zu Azure AD-Anwendungsproxyconnectors | Automatische Updates](../manage-apps/application-proxy-connectors.md#automatic-updates)
+- [Grundlegendes zu Azure AD-Anwendungsproxyconnectors | Automatische Updates](../app-proxy/application-proxy-connectors.md#automatic-updates)
 
 ### <a name="azure-ad-connect-health-alert-baseline"></a>Azure AD Connect Health: Baseline zu Warnungen
 
@@ -90,9 +90,9 @@ Einige Identitäts- und Zugriffsverwaltungsdienste erfordern lokale Agents, um H
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>Empfohlene Artikel für lokale Agent-Protokolle
 
-- [Problembehandlung von Anwendungsproxys](../manage-apps/application-proxy-troubleshoot.md)
+- [Problembehandlung von Anwendungsproxys](../app-proxy/application-proxy-troubleshoot.md)
 - [Problembehandlung bei der Self-Service-Kennwortzurücksetzung – Azure Active Directory](../authentication/troubleshoot-sspr.md)
-- [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](../manage-apps/application-proxy-connectors.md)
+- [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](../app-proxy/application-proxy-connectors.md)
 - [Azure AD Connect: Behandeln von Passthrough-Authentifizierungsproblemen](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
 - [Fehlercodes zur Problembehandlung für die Azure AD MFA NPS-Erweiterung](../authentication/howto-mfa-nps-extension-errors.md)
 
@@ -106,7 +106,7 @@ Die Einführung von bewährten Methoden kann den optimalen Einsatz von lokalen A
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>Empfohlene Artikel für die Verwaltung lokaler Agents
 
-- [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](../manage-apps/application-proxy-connectors.md)
+- [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](../app-proxy/application-proxy-connectors.md)
 - [Agent für die Azure AD-Passthrough-Authentifizierung: Schnellstart](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>Bedarfsorientierte Verwaltung
