@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 268cb05b7399c6fc812310f451797df60e283557
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2fde10090312956e6f9e5332d5827ac0de07be87
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376304"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792270"
 ---
 # <a name="filter-responses-with-metadata"></a>Filtern von Antworten mit Metadaten
 
@@ -53,12 +53,6 @@ Da nur Ergebnisse für das Restaurant „Paradise“ erforderlich sind, können 
 ```
 
 ## <a name="filter-by-source"></a>Nach Quelle filtern
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
-In der allgemein verfügbaren Version von QnA Maker können Sie Ergebnisse nicht nach einer Inhaltsquelle filtern.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 Wenn Ihre Wissensdatenbank mehrere Inhaltsquellen enthält und Sie die Ergebnisse auf eine bestimmte Gruppe von Quellen beschränken möchten, verwenden Sie dazu das reservierte Schlüsselwort `source_name_metadata`, wie unten gezeigt.
 

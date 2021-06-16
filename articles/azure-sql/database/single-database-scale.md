@@ -4,19 +4,19 @@ description: In diesem Artikel wird beschrieben, wie die für eine Einzeldatenba
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
-ms.custom: sqldbrb=1, references_regions
+ms.custom: sqldbrb=1, references_regions, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 04/09/2021
-ms.openlocfilehash: 47686f457e2579ca8a643de6671c886effefa6f1
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 215936e1a3d9b4552747a67ed8d0de9edcc1e969
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313520"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110667136"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
@@ -27,7 +27,7 @@ Nach dem Auswählen der Anzahl von virtuellen Kernen und DTUs können Sie eine e
 * [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
 * [Azure portal](single-database-manage.md#the-azure-portal)
 * [PowerShell](/powershell/module/az.sql/set-azsqldatabase)
-* [Azure-Befehlszeilenschnittstelle](/cli/azure/sql/db#az-sql-db-update)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/sql/db#az_sql_db_update)
 * [REST-API](/rest/api/sql/databases/update)
 
 
@@ -62,7 +62,7 @@ Beim Ändern der Dienstebene, beim Skalieren der Computegröße einer Einzeldate
 |**Einzeldatenbank des Tarifs „Basic“,</br> Standard (S0-S1)**|&bull; &nbsp;Konstante Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als fünf Minuten|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|
 |**Pool für elastische Datenbanken des Tarifs „Basic“, </br>Standard (S2–S12), </br>Einzeldatenbank oder Pool für elastische Datenbanken des Tarifs „Universell“**|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Bei Einzeldatenbanken konstante Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als fünf Minuten bei Einzeldatenbanken</br>&bull; &nbsp;Bei Pools für elastische Datenbanken proportional zur Anzahl der Datenbanken|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|
 |**Einzeldatenbank oder Pool für elastische Datenbanken der Tarife „Premium“ oder „Unternehmenskritisch“**|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|
-|**Hyperscale**|N/V|–|N/V|&bull; &nbsp;Konstante Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als zwei Minuten|
+|**Hyperscale**|N/V|Nicht zutreffend|N/V|&bull; &nbsp;Konstante Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als zwei Minuten|
 
 > [!NOTE]
 > Darüber hinaus ist bei Datenbanken vom Typ „Standard (S2-S12)“ und „Universell“ die Wartezeit beim Verschieben einer Datenbank in einen/aus einem Pool für elastische Datenbanken oder zwischen Pools für elastische Datenbanken proportional zur Datenbankgröße, wenn für die Datenbank [PFS](../../storage/files/storage-files-introduction.md)-Speicher (Premium File Share, Premium-Dateifreigabe) verwendet wird.
@@ -133,7 +133,7 @@ Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank die höchste in d
 ### <a name="vcore-based-purchasing-model"></a>vCore-basiertes Kaufmodell
 
 - Speicher kann in Inkrementen von 1 GB bis zur maximalen Datenspeichergröße bereitgestellt werden. Die konfigurierbare Mindestdatenspeichergröße ist 1 GB. Informationen zur maximalen Größe der Datenspeicherung in den einzelnen Dienstzielen finden Sie auf den Dokumentationsseiten zu Ressourcenlimits unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md) sowie unter [Ressourcengrenzwerte für Einzeldatenbanken, die das DTU-Kaufmodell verwenden: Azure SQL-Datenbank](resource-limits-dtu-single-databases.md).
-- Datenspeicher für eine Einzeldatenbank kann durch Erhöhen oder Verringern der maximalen Größe über das [Azure-Portal](https://portal.azure.com), [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), die [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder die [REST-API](/rest/api/sql/databases/update) bereitgestellt werden. Wenn der Wert für die maximale Größe in Bytes angegeben wird, muss er ein Vielfaches von 1 GB (1073741824 Bytes) sein.
+- Datenspeicher für eine Einzeldatenbank kann durch Erhöhen oder Verringern der maximalen Größe über das [Azure-Portal](https://portal.azure.com), [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), die [Azure CLI](/cli/azure/sql/db#az_sql_db_update) oder die [REST-API](/rest/api/sql/databases/update) bereitgestellt werden. Wenn der Wert für die maximale Größe in Bytes angegeben wird, muss er ein Vielfaches von 1 GB (1073741824 Bytes) sein.
 - Die Menge der Daten, die in den Datendateien einer Datenbank gespeichert werden kann, ist durch die konfigurierte maximale Größe des Datenspeichers begrenzt. Zusätzlich zu diesem Speicher teilt Azure SQL-Datenbank automatisch 30 Prozent mehr Speicher für das Transaktionsprotokoll zu.
 - Azure SQL-Datenbank ordnet für die `tempdb`-Datenbank automatisch 32 GB pro virtuellem Kern zu. `tempdb` befindet sich in allen Dienstebenen auf einem lokalen SSD-Datenträger.
 - Der Preis für Speicher für eine Einzeldatenbank oder einen Pool für elastische Datenbanken errechnet sich aus der Summe des Datenspeichers und des Transaktionsprotokollspeichers multipliziert mit dem Speichereinheitenpreis für die Dienstebene. Die Kosten für die `tempdb`-Datenbank sind im Preis enthalten. Ausführliche Informationen zu den Speicherpreisen finden Sie unter [Preise für Azure SQL-Datenbank ](https://azure.microsoft.com/pricing/details/sql-database/).
@@ -144,7 +144,7 @@ Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank die höchste in d
 ### <a name="dtu-based-purchasing-model"></a>DTU-basiertes Kaufmodell
 
 - Der DTU-Preis für eine einzelne Datenbank enthält eine bestimmte Menge Speicher ohne zusätzliche Kosten. Zusätzlicher Speicher über die inbegriffene Speichermenge hinaus kann gegen zusätzliche Gebühren bis zur Obergrenze in Inkrementen von 250 GB bis zu 1 TB und dann in Inkrementen von 256 GB über 1 TB hinaus bereitgestellt werden. Informationen zu enthaltenen Speichermengen und Maximalgrößen finden Sie unter [Einzeldatenbank: Speicher- und Computegrößen](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes).
-- Zusätzlicher Speicher für eine Einzeldatenbank kann durch Erhöhen der maximalen Größe über das Azure-Portal, [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), die [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder die [REST-API](/rest/api/sql/databases/update) bereitgestellt werden.
+- Zusätzlicher Speicher für eine Einzeldatenbank kann durch Erhöhen der maximalen Größe über das Azure-Portal, [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), die [Azure CLI](/cli/azure/sql/db#az_sql_db_update) oder die [REST-API](/rest/api/sql/databases/update) bereitgestellt werden.
 - Der Preis für zusätzlichen Speicher für eine Einzeldatenbank errechnet sich aus der Menge an zusätzlich bereitgestelltem Speicher multipliziert mit dem Einheitenpreis für zusätzlichen Speicher für die Dienstebene. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz finden Sie unter [Preise für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]

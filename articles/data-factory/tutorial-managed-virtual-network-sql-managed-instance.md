@@ -6,12 +6,12 @@ ms.author: lle
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: 8d0abcef8ac5f139ce120443475a67217455b0a8
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 5c9396cdfe8296b4869f6713ff0022bc896dc733
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109657350"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957237"
 ---
 # <a name="tutorial-how-to-access-sql-managed-instance-from-data-factory-managed-vnet-using-private-endpoint"></a>Tutorial: Zugreifen auf SQL Managed Instance über ein verwaltetes Data Factory-VNet mithilfe eines privaten Endpunkts
 
@@ -22,9 +22,9 @@ In diesem Tutorial werden die Schritte für die Verwendung des Azure-Portals zum
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* **Virtuelles Netzwerk**. Wenn Sie kein virtuelles Netzwerk besitzen, erstellen Sie eins anhand der Anweisungen unter [Schnellstart: Erstellen eines virtuellen Netzwerks im Azure-Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal).
-* **Virtuelles Netzwerk zu lokalem Netzwerk:** Erstellen Sie über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager?toc=/azure/virtual-network/toc.json) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/tutorial-site-to-site-portal?toc=/azure/virtual-network/toc.json) eine Verbindung zwischen dem virtuellen Netzwerk und dem lokalen Netzwerk.
-* **Data Factory mit aktiviertem verwalteten VNet:** Wenn Sie keine Data Factory-Instanz besitzen oder das verwaltete VNet nicht aktiviert ist, erstellen Sie anhand der Anweisungen unter [Sicheres Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von privaten Endpunkten](https://docs.microsoft.com/azure/data-factory/tutorial-copy-data-portal-private) eine entsprechende Instanz.
+* **Virtuelles Netzwerk**. Wenn Sie kein virtuelles Netzwerk besitzen, erstellen Sie eins anhand der Anweisungen unter [Schnellstart: Erstellen eines virtuellen Netzwerks im Azure-Portal](../virtual-network/quick-create-portal.md).
+* **Virtuelles Netzwerk zu lokalem Netzwerk:** Erstellen Sie über [ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [VPN](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eine Verbindung zwischen dem virtuellen Netzwerk und dem lokalen Netzwerk.
+* **Data Factory mit aktiviertem verwalteten VNet:** Wenn Sie keine Data Factory-Instanz besitzen oder das verwaltete VNet nicht aktiviert ist, erstellen Sie anhand der Anweisungen unter [Sicheres Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von privaten Endpunkten](./tutorial-copy-data-portal-private.md) eine entsprechende Instanz.
 
 ## <a name="create-subnets-for-resources"></a>Erstellen von Subnetzen für Ressourcen
 
@@ -34,7 +34,7 @@ In diesem Tutorial werden die Schritte für die Verwendung des Azure-Portals zum
 |:--- |:--- |
 |be-subnet |Subnetz für Back-End-Server|
 |fe-subnet |Subnetz für einen internen Standard-Lastenausgleich|
-|pls-subnet|Subnetz für den Private Link-Dienst|
+|pls-subnet|Subnetz für den Private Link-Dienst|
 
 :::image type="content" source="./media/tutorial-managed-virtual-network/subnets.png" alt-text="Screenshot: Subnetze" lightbox="./media/tutorial-managed-virtual-network/subnets-expanded.png":::
 
@@ -42,7 +42,7 @@ In diesem Tutorial werden die Schritte für die Verwendung des Azure-Portals zum
 
 Erstellen Sie über das Portal einen internen Lastenausgleich im Tarif „Standard“.
 
-1. Wählen Sie links oben auf dem Bildschirm die Optionen **Ressource erstellen > Netzwerk > Lastenausgleich** aus.
+1. Wählen Sie links oben auf dem Bildschirm die Optionen **Ressource erstellen > Netzwerk > Lastenausgleich** aus.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus:
 
     | Einstellung | Wert |
@@ -161,7 +161,7 @@ In diesem Abschnitt erstellen Sie einen Private Link-Dienst hinter einem Standa
 
 ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
-1. Navigieren Sie links oben im Portal zu **Ressource erstellen > Compute > Virtueller Computer**.
+1. Navigieren Sie links oben im Portal zu **Ressource erstellen > Compute > Virtueller Computer**.
 2. Geben Sie unter **Virtuellen Computer erstellen** auf der Registerkarte **Grundlagen** die folgenden Werte ein, oder wählen Sie sie aus:
 
     |Einstellung |Wert|
@@ -174,7 +174,7 @@ In diesem Abschnitt erstellen Sie einen Private Link-Dienst hinter einem Standa
     |Region  |Wählen Sie **USA, Osten** aus.|
     |Verfügbarkeitsoptionen  |Wählen Sie **Verfügbarkeitszonen** aus.|
     |Verfügbarkeitszone  |Wählen Sie **1**.| 
-    |Image  |Wählen Sie **Ubuntu Server 18.04 LTS – Gen1** aus.| 
+    |Image  |Wählen Sie **Ubuntu Server 18.04 LTS – Gen1** aus.| 
     |Azure Spot-Instanz  |Wählen Sie **Nein** aus.| 
     |Size   |Wählen Sie eine VM-Größe aus, oder übernehmen Sie die Standardeinstellung.| 
     |**Administratorkonto**||
@@ -203,9 +203,9 @@ In diesem Abschnitt erstellen Sie einen Private Link-Dienst hinter einem Standa
 
 5. Klicken Sie auf **Überprüfen + erstellen**.
 6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
-7. Sie können die Schritte 1 bis 6 wiederholen, um mehr als eine Back-End-Server-VM für Hochverfügbarkeit zu erhalten.
+7. Sie können die Schritte 1 bis 6 wiederholen, um mehr als eine Back-End-Server-VM für Hochverfügbarkeit zu erhalten.
 
-## <a name="creating-forwarding-rule-to-endpoint"></a>Erstellen einer Weiterleitungsregel für einen Endpunkt
+## <a name="creating-forwarding-rule-to-endpoint"></a>Erstellen einer Weiterleitungsregel an einen Endpunkt
 
 1. Melden Sie sich an, und kopieren Sie das Skript [ip_fwd.sh](https://github.com/sajitsasi/az-ip-fwd/blob/main/ip_fwd.sh) auf Ihre Back-End-Server-VMs. 
 2. Führen Sie das Skript mit den folgenden Optionen aus:<br/>

@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: bc3db3de91c9fbf059c56fb1f2770381265d82de
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 46d1a0029607767ac3d7c0abbfe3a318b04aebda
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090639"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790798"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Berechtigungen für Unternehmensanwendungen für benutzerdefinierte Rollen in Azure Active Directory
 
@@ -119,52 +119,53 @@ Dient zum Delegieren der Möglichkeit zum Autorisieren des Anwendungszugriffs f�
 
 ## <a name="full-list-of-permissions"></a>Vollständige Liste der Berechtigungen
 
-Berechtigung | BESCHREIBUNG
----------- | -----------
-microsoft.directory/applicationPolicies/allProperties/read | Lesen aller Eigenschaften für Anwendungsrichtlinien
-microsoft.directory/applicationPolicies/allProperties/update | Aktualisieren aller Eigenschaften für Anwendungsrichtlinien
-microsoft.directory/applicationPolicies/basic/update | Aktualisieren der Standardeigenschaften von Anwendungsrichtlinien
-microsoft.directory/applicationPolicies/create | Erstellen von Anwendungsrichtlinien
-microsoft.directory/applicationPolicies/createAsOwner | Erstellen von Anwendungsrichtlinien. Der Ersteller wird als erster Besitzer hinzugefügt.
-microsoft.directory/applicationPolicies/delete | Löschen von Anwendungsrichtlinien
-microsoft.directory/applicationPolicies/owners/read | Lesen von Besitzern für Anwendungsrichtlinien
-microsoft.directory/applicationPolicies/owners/update | Aktualisieren der Besitzereigenschaft von Anwendungsrichtlinien
-microsoft.directory/applicationPolicies/policyAppliedTo/read | Lesen der Liste der Anwendungsrichtlinien, die auf Objekte angewendet wurden
-microsoft.directory/applicationPolicies/standard/read | Lesen der Standardeigenschaften von Anwendungsrichtlinien
-microsoft.directory/servicePrincipals/allProperties/allTasks | Erstellen und Löschen von servicePrincipals und Lesen und Aktualisieren aller Eigenschaften in Azure Active Directory
-microsoft.directory/servicePrincipals/allProperties/read | Lesen aller Eigenschaften für Dienstprinzipale
-microsoft.directory/servicePrincipals/allProperties/update | Aktualisieren aller Eigenschaften für Dienstprinzipale
-microsoft.directory/servicePrincipals/appRoleAssignedTo/read | Lesen von Rollenzuweisungen für Dienstprinzipale
-microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Aktualisieren von Rollenzuweisungen für Dienstprinzipale
-microsoft.directory/servicePrincipals/appRoleAssignments/read | Lesen von Rollenzuweisungen, die Dienstprinzipalen zugewiesen sind
-microsoft.directory/servicePrincipals/audience/update | Aktualisieren von Zielgruppeneigenschaften für Dienstprinzipale
-microsoft.directory/servicePrincipals/authentication/update | Aktualisieren von Authentifizierungseigenschaften für Dienstprinzipale
-microsoft.directory/servicePrincipals/basic/update | Aktualisieren grundlegender Eigenschaften für Dienstprinzipale
-microsoft.directory/servicePrincipals/create | Erstellen von Dienstprinzipalen
-microsoft.directory/servicePrincipals/createAsOwner | Erstellen von Dienstprinzipalen. Der Ersteller wird als erster Besitzer hinzugefügt.
-microsoft.directory/servicePrincipals/credentials/update | Aktualisieren von Anmeldeinformationseigenschaften für Dienstprinzipale
-microsoft.directory/servicePrincipals/delete | Löschen von Dienstprinzipalen
-microsoft.directory/servicePrincipals/disable | Deaktivieren von Dienstprinzipalen
-microsoft.directory/servicePrincipals/enable | Aktivieren von Dienstprinzipalen
-microsoft.directory/servicePrincipals/getPasswordSingleSignOnCredentials | Lesen des Kennworts von SSO-Anmeldeinformationen für Dienstprinzipale
-microsoft.directory/servicePrincipals/managePasswordSingleSignOnCredentials | Verwalten des Kennworts von SSO-Anmeldeinformationen für Dienstprinzipale
-microsoft.directory/servicePrincipals/oAuth2PermissionGrants/read | Lesen delegierter Berechtigungsgewährungen für Dienstprinzipale
-microsoft.directory/servicePrincipals/owners/read | Lesen von Besitzern für Dienstprinzipale
-microsoft.directory/servicePrincipals/owners/update | Aktualisieren von Besitzern für Dienstprinzipale
-microsoft.directory/servicePrincipals/permissions/update |  
-microsoft.directory/servicePrincipals/policies/read | Lesen von Richtlinien für Dienstprinzipale
-microsoft.directory/servicePrincipals/policies/update | Aktualisieren von Richtlinien für Dienstprinzipale
-microsoft.directory/servicePrincipals/standard/read | Lesen der Standardeigenschaften von Dienstprinzipalen
-microsoft.directory/servicePrincipals/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die Ihrem Dienstprinzipal zugeordnet sind
-microsoft.directory/servicePrincipals/tag/update | Aktualisieren der Tageigenschaft für Dienstprinzipale
-microsoft.directory/applicationTemplates/instantiate | Instanziieren von Kataloganwendungen über Anwendungsvorlagen
-microsoft.directory/auditLogs/allProperties/read | Lesen von Überwachungsprotokollen
-microsoft.directory/signInReports/allProperties/read | Lesen von Anmeldeberichten
-microsoft.directory/applications/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die dem Anwendungsobjekt zugeordnet sind
-microsoft.directory/servicePrincipals/synchronizationJobs/manage | Verwalten sämtlicher Aspekte der Auftragssynchronisierung für Dienstprinzipalressourcen
-microsoft.directory/servicePrincipals/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die Dienstprinzipalen zugeordnet sind
-microsoft.directory/servicePrincipals/synchronizationSchema/manage | Verwalten sämtlicher Aspekte der Schemasynchronisierung für Dienstprinzipalressourcen
-microsoft.directory/provisioningLogs/allProperties/read | Lesen aller Eigenschaften von Bereitstellungsprotokollen
+> [!div class="mx-tableFixed"]
+> | Berechtigung | BESCHREIBUNG |
+> | ---------- | ----------- |
+> | microsoft.directory/applicationPolicies/allProperties/read | Lesen aller Eigenschaften für Anwendungsrichtlinien |
+> | microsoft.directory/applicationPolicies/allProperties/update | Aktualisieren aller Eigenschaften für Anwendungsrichtlinien |
+> | microsoft.directory/applicationPolicies/basic/update | Aktualisieren der Standardeigenschaften von Anwendungsrichtlinien |
+> | microsoft.directory/applicationPolicies/create | Erstellen von Anwendungsrichtlinien |
+> | microsoft.directory/applicationPolicies/createAsOwner | Erstellen von Anwendungsrichtlinien. Der Ersteller wird als erster Besitzer hinzugefügt. |
+> | microsoft.directory/applicationPolicies/delete | Löschen von Anwendungsrichtlinien |
+> | microsoft.directory/applicationPolicies/owners/read | Lesen von Besitzern für Anwendungsrichtlinien |
+> | microsoft.directory/applicationPolicies/owners/update | Aktualisieren der Besitzereigenschaft von Anwendungsrichtlinien |
+> | microsoft.directory/applicationPolicies/policyAppliedTo/read | Lesen der Liste der Anwendungsrichtlinien, die auf Objekte angewendet wurden |
+> | microsoft.directory/applicationPolicies/standard/read | Lesen der Standardeigenschaften von Anwendungsrichtlinien |
+> | microsoft.directory/servicePrincipals/allProperties/allTasks | Erstellen und Löschen von servicePrincipals und Lesen und Aktualisieren aller Eigenschaften in Azure Active Directory |
+> | microsoft.directory/servicePrincipals/allProperties/read | Lesen aller Eigenschaften für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/allProperties/update | Aktualisieren aller Eigenschaften für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/appRoleAssignedTo/read | Lesen von Rollenzuweisungen für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Aktualisieren von Rollenzuweisungen für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/appRoleAssignments/read | Lesen von Rollenzuweisungen, die Dienstprinzipalen zugewiesen sind |
+> | microsoft.directory/servicePrincipals/audience/update | Aktualisieren von Zielgruppeneigenschaften für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/authentication/update | Aktualisieren von Authentifizierungseigenschaften für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/basic/update | Aktualisieren grundlegender Eigenschaften für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/create | Erstellen von Dienstprinzipalen |
+> | microsoft.directory/servicePrincipals/createAsOwner | Erstellen von Dienstprinzipalen. Der Ersteller wird als erster Besitzer hinzugefügt. |
+> | microsoft.directory/servicePrincipals/credentials/update | Aktualisieren von Anmeldeinformationseigenschaften für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/delete | Löschen von Dienstprinzipalen |
+> | microsoft.directory/servicePrincipals/disable | Deaktivieren von Dienstprinzipalen |
+> | microsoft.directory/servicePrincipals/enable | Aktivieren von Dienstprinzipalen |
+> | microsoft.directory/servicePrincipals/getPasswordSingleSignOnCredentials | Lesen des Kennworts von SSO-Anmeldeinformationen für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/managePasswordSingleSignOnCredentials | Verwalten des Kennworts von SSO-Anmeldeinformationen für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/oAuth2PermissionGrants/read | Lesen delegierter Berechtigungsgewährungen für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/owners/read | Lesen von Besitzern für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/owners/update | Aktualisieren von Besitzern für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/permissions/update |  |
+> | microsoft.directory/servicePrincipals/policies/read | Lesen von Richtlinien für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/policies/update | Aktualisieren von Richtlinien für Dienstprinzipale |
+> | microsoft.directory/servicePrincipals/standard/read | Lesen der Standardeigenschaften von Dienstprinzipalen |
+> | microsoft.directory/servicePrincipals/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die Ihrem Dienstprinzipal zugeordnet sind |
+> | microsoft.directory/servicePrincipals/tag/update | Aktualisieren der Tageigenschaft für Dienstprinzipale |
+> | microsoft.directory/applicationTemplates/instantiate | Instanziieren von Kataloganwendungen über Anwendungsvorlagen |
+> | microsoft.directory/auditLogs/allProperties/read | Lesen von Überwachungsprotokollen |
+> | microsoft.directory/signInReports/allProperties/read | Lesen von Anmeldeberichten |
+> | microsoft.directory/applications/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die dem Anwendungsobjekt zugeordnet sind |
+> | microsoft.directory/servicePrincipals/synchronizationJobs/manage | Verwalten sämtlicher Aspekte der Auftragssynchronisierung für Dienstprinzipalressourcen |
+> | microsoft.directory/servicePrincipals/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die Dienstprinzipalen zugeordnet sind |
+> | microsoft.directory/servicePrincipals/synchronizationSchema/manage | Verwalten sämtlicher Aspekte der Schemasynchronisierung für Dienstprinzipalressourcen |
+> | microsoft.directory/provisioningLogs/allProperties/read | Lesen aller Eigenschaften von Bereitstellungsprotokollen |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

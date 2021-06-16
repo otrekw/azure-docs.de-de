@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 13ba043582efe4a9e8d52f96f279b02ad8dab963
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 2b624f43a892c3b3fc07a7128a18dc9cc66736f8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141359"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668109"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Tutorial: Überwachen von Änderungen und Aktualisieren eines virtuellen Windows-Computers in Azure
 
@@ -109,7 +109,7 @@ Planen Sie zum Installieren von Updates eine Bereitstellung, die Ihrem Releaseze
 
 Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicken Sie am oberen Rand des Fensters **Updateverwaltung** auf **Updatebereitstellung planen**. Geben Sie im Fenster **Neue Updatebereitstellung** die folgenden Informationen an:
 
-| Option | BESCHREIBUNG |
+| Option | Beschreibung |
 | --- | --- |
 | **Name** |Geben Sie einen eindeutigen Namen zur Identifizierung der Updatebereitstellung ein. |
 |**Betriebssystem**| Wählen Sie **Linux** oder **Windows** aus.|

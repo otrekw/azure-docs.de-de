@@ -11,7 +11,7 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.custom: custom-portals-hub
-  ms.date: 05/05/2021
+  ms.date: 06/11/2021
 highlightedContent:
   items:
     - title: Was ist Azure Applied AI Services?
@@ -25,30 +25,30 @@ highlightedContent:
       url: ./applied-ai-services-customer-spotlight-use-cases.md
 productDirectory:
   items:
+    - title: Azure Bot Service
+      imageSrc: ./media/bot-services.svg
+      summary: Erstellen von Bots und kanalübergreifendes Verbinden der Bots
+      url: /composer/
     - title: Azure-Formularerkennung
       imageSrc: ./media/form-recognizer.svg
       summary: Verwandeln Sie Dokumente in verwertbare Daten zu einem Bruchteil der Zeit und Kosten
       url: ../cognitive-services/form-recognizer/index.yml
-    - title: Plastischer Reader in Azure
-      imageSrc: ./media/immersive-reader.svg
-      summary: Unterstützen von Benutzern beim Lesen und Verstehen von Text
-      url: ../cognitive-services/immersive-reader/index.yml
-    - title: Azure Metrics Advisor
-      imageSrc: ./media/metrics-advisor.svg
-      summary: Proaktives Überwachen von Metriken und Diagnostizieren von Problemen
-      url: ../cognitive-services/metrics-advisor/index.yml
     - title: Azure Cognitive Search
       imageSrc: ./media/cognitive-search.svg
       summary: Verwenden der KI-gestützten Cloudsuche für Ihre mobilen Apps und Web-Apps
       url: ../search/index.yml
+    - title: Azure Metrics Advisor
+      imageSrc: ./media/metrics-advisor.svg
+      summary: Proaktives Überwachen von Metriken und Diagnostizieren von Problemen
+      url: ../cognitive-services/metrics-advisor/index.yml
     - title: Azure Video Analyzer
       imageSrc: ./media/video-analytics.svg
       summary: Extrahieren verwertbarer Erkenntnisse aus Ihren Videos
-      url: 'https://aka.ms/video-analyzer-hub'
-    - title: Azure Bot Service
-      imageSrc: ./media/bot-services.svg
-      summary: Erstellen von Bots und kanalübergreifendes Verbinden der Bots
-      url: 'https://docs.microsoft.com/composer/'
+      url: ../azure-video-analyzer/index.yml
+    - title: Plastischer Reader in Azure
+      imageSrc: ./media/immersive-reader.svg
+      summary: Unterstützen von Benutzern beim Lesen und Verstehen von Text
+      url: ../cognitive-services/immersive-reader/index.yml
 additionalContent:
   sections:
     - title: Zusätzliche Ressourcen
@@ -58,7 +58,7 @@ additionalContent:
             - text: Übermitteln von Feedback über UserVoice
               url: 'https://aka.ms/AppliedAIUserVoice'
             - text: Stellen von Fragen in Microsoft Q&A
-              url: 'https://aka.ms/AppliedAIMSFTQandA'
+              url: /answers/topics/azure-applied-ai-services.html
             - text: Problembehandlung bei StackOverflow
               url: 'https://aka.ms/AppliedAIStackOverflow'
         - title: Schnellstartanleitungen zum Programmieren
@@ -72,14 +72,14 @@ additionalContent:
             - text: Azure Cognitive Search
               url: ../search/search-get-started-portal.md
             - text: Azure Video Analyzer
-              url: 'https://aka.ms/video-analytics-qs'
+              url: ../azure-video-analyzer/video-analyzer-docs/detect-motion-emit-events-quickstart.md
             - text: Azure Bot Service
-              url: 'https://docs.microsoft.com/composer/quickstart-create-bot'
+              url: /composer/quickstart-create-bot
             - text: Kostenloser Start
               url: 'https://azure.microsoft.com/free/ai'
         - title: Erkunden anderer Azure-KI-Dienste
           links:
             - text: Azure Cognitive Services
-              url: 'https://docs.microsoft.com/en-us/azure/cognitive-services/'
+              url: ../cognitive-services/index.yml
             - text: Azure Machine Learning
-              url: 'https://docs.microsoft.com/en-us/azure/machine-learning/'
+              url: ../machine-learning/index.yml

@@ -60,10 +60,6 @@
       href: concepts/anomaly-detection-best-practices.md
     - name: Predictive Maintenance-Architektur (Multivariat)
       href: concepts/multivariate-architecture.md
-    - name: SR- und CNN-Anomalieerkennung (Spectral Residual und Convolutional Neural Net)
-      href: 'https://arxiv.org/abs/1906.03821'
-    - name: Multivariate Zeitreihen-Anomalieerkennung über ein Graph-Aufmerksamkeitsnetzwerk
-      href: 'https://arxiv.org/abs/2009.02040'
 - name: Tutorials
   items:
     - name: Visualisieren von Anomalien als Batch mithilfe von Power BI
@@ -110,3 +106,7 @@
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
         - name: Übersicht über den SR-CNN-Algorithmus
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
+        - name: SR- und CNN-Anomalieerkennung (Spectral Residual und Convolutional Neural Net)
+          href: 'https://arxiv.org/abs/1906.03821'
+        - name: Multivariate Zeitreihen-Anomalieerkennung über ein Graph-Aufmerksamkeitsnetzwerk
+          href: 'https://arxiv.org/abs/2009.02040'

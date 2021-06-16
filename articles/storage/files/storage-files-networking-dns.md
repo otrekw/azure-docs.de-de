@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8dc6ac712110210414f66446827569f51f396c1f
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94630191"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669805"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Konfigurieren der DNS-Weiterleitung für Azure Files
 Mit Azure Files können Sie private Endpunkte für die Speicherkonten erstellen, die Ihre Dateifreigaben enthalten. Private Endpunkte können für viele unterschiedliche Anwendungsarten genutzt werden. Sie sind aber besonders nützlich, um aus Ihrem lokalen Netzwerk eine Verbindung mit Ihren Azure-Dateifreigaben herzustellen, indem eine VPN- oder ExpressRoute-Verbindung mit privatem Peering verwendet wird. 

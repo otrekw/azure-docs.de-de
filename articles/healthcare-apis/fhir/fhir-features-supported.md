@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: de99d6b5480a8e8262aba9d40826f69862630961
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 7248ae47d1ced0013559f14f5e5185f25b7d8083
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592984"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077855"
 ---
 # <a name="features"></a>Features
 
@@ -56,7 +56,7 @@ Derzeit ebenfalls unterstützte vorherige Versionen: `3.0.2`
  **Hinweis 2**
 * Fügt MVP-Unterstützung für verkettete und umgekehrt verkettete FHIR-Suche in CosmosDB hinzu. 
 
-  In der Azure API for FHIR und dem von Cosmos unterstützten Open-Source-FHIR-Server ist die verkettete Suche und die umgekehrte verkettete Suche eine MVP-Implementierung. Um eine verkettete Suche auf Cosmos DB zu ermöglichen, durchsucht die Implementierung den Suchausdruck und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Featureflag. Verwenden Sie den Header , um die verkettete Suche Cosmos DB zu `x-ms-enable-chained-search: true` verwenden. Weitere Informationen finden Sie unter [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
+  Im Azure API for FHIR und auf dem Open-Source-FHIR-Server, der von Cosmos unterstützt wird, ist die verkettete Suche und umgekehrte verkettete Suche eine MVP-Implementierung. Um die verkettete Suche auf Cosmos DB durchzuführen, führt die Implementierung den Suchausdruck durch und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Featureflag. Verwenden Sie den Header , um die verkettete Suche für Cosmos DB zu `x-ms-enable-chained-search: true` verwenden. Weitere Informationen finden Sie unter [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
 
 ## <a name="extended-operations"></a>Erweiterte Vorgänge
 
@@ -69,7 +69,7 @@ Alle unterstützten Vorgänge zur Erweiterung der RESTful-API.
 | Gruppe/$export          | Ja       | Ja       | Ja       |         |
 | $convert-data          | Ja       | Ja       | Ja       |         |
 | $validate              | Ja       | Ja       | Ja       |         |
-| $member-match          | Ja       | Ja       | Ja       |         |
+| $member-Match          | Ja       | Ja       | Ja       |         |
 | $patient alles    | Nein        | Nein        | Ja       |         |
 
 ## <a name="persistence"></a>Persistenz
@@ -88,7 +88,7 @@ Derzeit werden die zulässigen Aktionen für eine bestimmte Rolle *global* auf d
 
 ## <a name="service-limits"></a>Diensteinschränkungen
 
-* [**Anforderungseinheiten (Request Units, RUs):**](../../cosmos-db/concepts-limits.md) Sie können bis zu 10.000 RUs im Portal für Azure API for FHIR konfigurieren. Sie benötigen mindestens 400 RUs oder 40 RUs/GB, je nach Größe. Wenn Sie mehr als 10.000 RUs benötigen, können Sie über ein Supportticket eine Erhöhung des Werts anfordern. Maximal sind 1.000.000 RUs verfügbar.
+* [**Anforderungseinheiten (Request Units, RUs):**](../../cosmos-db/concepts-limits.md) Sie können bis zu 10.000 RUs im Portal für Azure API for FHIR konfigurieren. Sie benötigen mindestens 400 RUs oder 40 RUs/GB, je nachdem, welcher Wert größer ist. Wenn Sie mehr als 10.000 RUs benötigen, können Sie über ein Supportticket eine Erhöhung des Werts anfordern. Maximal sind 1.000.000 RUs verfügbar.
 
 * **Paketgröße:** Jedes Paket ist auf 500 Elemente beschränkt.
 
@@ -96,20 +96,7 @@ Derzeit werden die zulässigen Aktionen für eine bestimmte Rolle *global* auf d
 
 * **Abonnementlimit:** Standardmäßig ist jedes Abonnement auf maximal 10 FHIR-Serverinstanzen beschränkt. Wenn Sie mehr Instanzen pro Abonnement benötigen, öffnen Sie ein Supportticket, und geben Sie Details zu Ihren Anforderungen an.
 
-* **Gleichzeitige Verbindungen und** Instanzen: Standardmäßig verfügen Sie über 15 gleichzeitige Verbindungen auf zwei Instanzen im Cluster (für insgesamt 30 gleichzeitige Anforderungen). Wenn Sie mehr gleichzeitige Anforderungen benötigen, öffnen Sie ein Supportticket, und geben Sie Details zu Ihren Anforderungen an.
-
-## <a name="performance-expectations"></a>Erwartung an die Leistung
-
-Die Leistung des Systems hängt von der Anzahl von RUs, gleichzeitigen Verbindungen und der Art der ausgeführten Vorgänge (Put, Post usw.) ab. Im Folgenden finden Sie einige allgemeine Bereiche, die auf der Grundlage der konfigurierten RUs zu erwarten sind. Im Allgemeinen wird die Leistung linear mit einer Erhöhung der RUs skaliert:
-
-| Anzahl der RUs | Ressourcen/s |    Max. Speicher (GB)*    |
-|----------|---------------|--------|                 
-| 400      | 5-10          |     10   |
-| 1\.000    | 100–150       |      25  |
-| 10.000   | 225–400       |      250  |
-| 100.000  | 2\.500–4.000   |      2\.500  |
-
-Hinweis: Cosmos DB Anforderung ist ein Mindestdurchsatz von 40 RU/s pro GB Speicher erforderlich. 
+* **Gleichzeitige Verbindungen und Instanzen:** Standardmäßig verfügen Sie über 15 gleichzeitige Verbindungen auf zwei Instanzen im Cluster (für insgesamt 30 gleichzeitige Anforderungen). Wenn Sie weitere gleichzeitige Anforderungen benötigen, öffnen Sie ein Supportticket, und geben Sie Details zu Ihren Anforderungen an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

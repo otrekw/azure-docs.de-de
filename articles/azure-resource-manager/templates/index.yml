@@ -12,12 +12,12 @@ metadata:
   author: mumian
   ms.author: jgao
   ms.date: 03/03/2021
-  ms.openlocfilehash: 01f89fa12654a949c701d728e23f7ae79e0c69e7
-  ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+  ms.openlocfilehash: b3a8448145a101367a2000e5b16d0ff61b93a0d7
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/26/2021
-  ms.locfileid: "105611955"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111963208"
 landingContent:
 - title: Über ARM-Vorlagen
   linkLists:
@@ -25,12 +25,10 @@ landingContent:
     links:
     - text: Was sind Vorlagen?
       url: overview.md
-    - text: Was ist Bicep?
-      url: bicep-overview.md
   - linkListType: concept
     links:
     - text: Bewährte Methoden
-      url: template-best-practices.md
+      url: ./best-practices.md
     - text: Häufig gestellte Fragen
       url: frequently-asked-questions.md
     - text: Vorlagenspezifikationen
@@ -49,8 +47,6 @@ landingContent:
     links:
     - text: 'Erstellen von JSON-Vorlagen: VS Code'
       url: quickstart-create-templates-use-visual-studio-code.md
-    - text: 'Erstellen von Bicep-Vorlagen: VS Code'
-      url: quickstart-create-bicep-use-visual-studio-code.md
     - text: 'Erstellen von JSON-Vorlagen: Portal'
       url: quickstart-create-templates-use-the-portal.md
     - text: Erstellen und Bereitstellen von Vorlagenspezifikationen
@@ -59,8 +55,6 @@ landingContent:
     links:
     - text: Vorlagentutorials für Anfänger
       url: template-tutorial-create-first-template.md
-    - text: Bicep-Tutorials für Anfänger
-      url: bicep-tutorial-create-first-bicep.md
   - linkListType: learn
     links:
     - text: Bereitstellen mit ARM-Vorlagen
@@ -78,17 +72,17 @@ landingContent:
     - text: Verwenden von Funktionen
       url: template-functions.md
     - text: Definieren von Parametern
-      url: template-parameters.md
+      url: ./parameters.md
     - text: Definieren von Variablen
-      url: template-variables.md
+      url: ./variables.md
     - text: Definieren von Ressourcen
-      url: template-syntax.md#resources
+      url: ./syntax.md#resources
     - text: Definieren der Ausgaben
-      url: template-outputs.md
+      url: ./outputs.md
   - linkListType: reference
     links:
     - text: Vorlagendateisyntax
-      url: template-syntax.md
+      url: ./syntax.md
     - text: Azure-Schnellstartvorlagen
       url: https://azure.microsoft.com/resources/templates/
 - title: Bereitstellen von Vorlagen
@@ -112,7 +106,7 @@ landingContent:
     - text: Cloud Shell
       url: deploy-cloud-shell.md
     - text: Was-wäre-wenn-Bereitstellung
-      url: template-deploy-what-if.md
+      url: ./deploy-what-if.md
 - title: Bereichsbezogene Bereitstellungen
   linkLists:
   - linkListType: how-to-guide

@@ -3,12 +3,12 @@ title: 'Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Video Analyzer verwenden, um eine ereignisbasierte Videoaufzeichnung in der Cloud durchzuführen und sie aus der Cloud wiederzugeben.
 ms.topic: tutorial
 ms.date: 04/13/2021
-ms.openlocfilehash: 05c28fbc3b410f792d10adf7e59e43f070d7d57a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6ecbaf794530e80837c2d2a5f9f3fca11e3c93ae
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384059"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565660"
 ---
 # <a name="tutorial-event-based-video-recording-and-playback"></a>Tutorial: Ereignisbasierte Videoaufzeichnung und -wiedergabe
 
@@ -45,7 +45,7 @@ Dies sind die Voraussetzungen für dieses Tutorial:
 
 ## <a name="set-up-azure-resources"></a>Einrichten von Azure-Ressourcen
 
-[![Bereitstellen in Azure](https://aka.ms/deploytoazurebutton)](https://aka.ms/ava-click-to-deploy)
+[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://aka.ms/ava-click-to-deploy)
 [!INCLUDE [resources](./includes/common-includes/azure-resources.md)]
 
 ## <a name="overview"></a>Überblick
@@ -152,7 +152,7 @@ Aktualisieren Sie nach ungefähr 30 Sekunden Azure IoT Hub im unteren linken Be
 
 ## <a name="run-the-program"></a>Ausführen des Programms
 
-1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG + UMSCHALT + X), und suchen Sie nach Azure IoT Hub.
+1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG+UMSCHALT+X), und suchen Sie nach Azure IoT Hub.
 1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
 
     > [!div class="mx-imgBorder"]
@@ -170,7 +170,7 @@ Aktualisieren Sie nach ungefähr 30 Sekunden Azure IoT Hub im unteren linken Be
 1. Vergewissern Sie sich anschließend unter den Knoten **livePipelineSet** und **pipelineTopologyDelete**, dass der Wert von **topologyName** dem Wert der Eigenschaft **name** in der obigen Pipelinetopologie entspricht:
 
     `"pipelineTopologyName" : "EVRtoVideosOnObjDetect"`
-1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-videos/topology.json) in einem Browser, und sehen Sie die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-evr-video` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera über eine Videoressource mit einem eindeutigen Namen erfolgt.
+1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-videos/topology.json) in einem Browser, und sehen Sie sich die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-evr-video` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera auf einer Videoressource mit einem eindeutigen Namen erfolgt.
 1. Starten Sie eine Debugsitzung, indem Sie F5 drücken. Daraufhin werden im **Terminalfenster** einige Nachrichten ausgegeben.
 1. Die Datei „operations.json“ beginnt mit Aufrufen von „pipelineTopologyList“ und „livePipelineList“. Falls Sie nach Abschluss vorheriger Schnellstartanleitungen oder Tutorials eine Ressourcenbereinigung durchgeführt haben, gibt diese Aktion leere Listen zurück, und die Ausführung wird angehalten, bis Sie die **EINGABETASTE** drücken, wie hier zu sehen:
     ```
@@ -334,7 +334,7 @@ Durch dieses Ereignis wird angegeben, dass genügend Daten auf die Videoressourc
 
 ### <a name="recordingstopped-event"></a>Ereignis „RecordingStopped“
 
-Wenn Sie die Livepipeline deaktivieren, beendet der Videosenke-Knoten die Aufzeichnung von Medien. Ein Ereignis vom Typ **Microsoft.VideoAnalyzers.Pipeline.Operational.RecordingStopped** wird ausgegeben:
+Wenn Sie die Livepipeline deaktivieren, beendet der Videosenke-Knoten die Aufzeichnung von Medien. Das folgende Ereignis vom Typ **Microsoft.VideoAnalyzers.Pipeline.Operational.RecordingStopped** wird ausgegeben:
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [avasample-iot-edge-device/avaedge]:
@@ -355,17 +355,15 @@ Wenn Sie die Livepipeline deaktivieren, beendet der Videosenke-Knoten die Aufzei
 
 Durch dieses Ereignis wird angegeben, dass die Aufzeichnung beendet wurde. Der Abschnitt „subject“ in „applicationProperties“ verweist auf den Videosenke-Knoten in der Livepipeline, von dem diese Nachricht generiert wurde. Der Textabschnitt enthält Informationen über den Ausgabespeicherort. In diesem Fall ist dies der Name der Video Analyzer-Ressource, auf der Videodaten aufgezeichnet werden.
 
-## <a name="video-analyzer-video-resource"></a>Videoressource des Video Analyzers
+## <a name="playing-back-the-recording"></a>Wiedergeben der Aufzeichnung
 
-Sie können von der Livepipeline erstellte Video Analyzer-Ressource für Videodaten untersuchen, indem Sie sich beim Azure-Portal anmelden und das Video anzeigen.
+Sie können die von der Livepipeline erstellte Video Analyzer-Videoressource untersuchen, indem Sie sich beim Azure-Portal anmelden und das Video anzeigen.
 1. Öffnen Sie Ihren Webbrowser, und navigieren Sie zum [Azure-Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinformationen ein, um sich beim Portal anzumelden. Die Standardansicht ist Ihr Dienstdashboard.
 1. Suchen Sie unter den Ressourcen Ihres Abonnements nach Ihrem Video Analyzer-Konto, und öffnen Sie den Kontobereich.
 1. Wählen Sie in der Liste **Video Analyzer** die Option **Videos** aus.
-
-    <!--TODO: add image -- ![Video Analyzers videos]() ./media/event-based-video-recording-tutorial/videos.png -->
 1. Ein Video mit dem Namen `sample-evr-video` ist aufgeführt. Dies ist der Name, den Sie in Ihrer Datei mit der Pipelinetopologie ausgewählt haben.
 1. Wählen Sie das Video aus.
-1. Wählen Sie auf der Seite mit den Videodetails die Option für die Wiedergabe aus. <!-- TODO: fix this-->
+1. Die Seite mit den Videodetails wird geöffnet, und die Wiedergabe sollte automatisch gestartet werden.
 
     <!--TODO: add image -- ![Video playback]() TODO: new screenshot is needed here -->
 

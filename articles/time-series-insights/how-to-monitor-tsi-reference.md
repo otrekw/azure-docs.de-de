@@ -1,21 +1,21 @@
 ---
 title: Referenz zur Überwachung von Azure Time Series Insights-Daten | Microsoft-Dokumentation
 description: Referenzdokumentation zur Überwachung von Azure Time Series Insights.
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: esung22
+ms.author: elsung
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
-ms.custom: lyrana
-ms.openlocfilehash: 20d376ee501edf16711617847c685dfd531f2c80
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 52f2ea8b88bb7f83a3a897d101030d134749fc1a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504582"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792047"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Referenz zur Überwachung von Azure Time Series Insights-Daten
 
@@ -25,7 +25,6 @@ Erfahren Sie mehr über die Daten und Ressourcen, die von Azure Monitor aus Ihre
 
 In diesem Abschnitt werden alle automatisch erfassten Plattformmetriken aufgeführt, die für Azure Time Series Insights gesammelt werden. Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azure Time Series Insights) finden Sie unter [Unterstützte Metriken von Azure Monitor](../azure-monitor/essentials/metrics-supported.md).
 Die Ressourcenanbieter für diese Metriken sind [Microsoft.TimeSeriesInsights/environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) und [Microsoft.TimeSeriesInsights/environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
-
 
 ### <a name="ingress"></a>Eingehende Daten
 
@@ -55,6 +54,7 @@ In diesem Abschnitt werden die Arten von Ressourcenprotokollen aufgeführt, die 
 | Eingehende Daten | TSIIngress | In der Kategorie „Eingehende Daten“ werden Fehler nachverfolgt, die in der Eingangspipeline auftreten. Diese Kategorie umfasst Fehler beim Empfangen von Ereignissen (z. B. Fehler beim Herstellen einer Verbindung mit einer Ereignisquelle) sowie beim Verarbeiten von Ereignissen (z. B. Fehler beim Analysieren von Ereignisnutzdaten). |
 
 ## <a name="schemas"></a>Schemas
+
 Die folgenden Schemas werden von Azure Time Series Insights verwendet.
 
 ### <a name="tsiingress-table"></a>TSIIngress-Tabelle

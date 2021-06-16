@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: f2dffe98f401acad927cc3404ffd2c48378e9026
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 59d24ebd16d25658d75cb36509183233d2f2e500
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372230"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412149"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Tutorial: Erstellen eines FAQ-Bots mit Azure Bot Service
 Erstellen Sie mit QnA Maker und Azure [Bot Service](https://azure.microsoft.com/services/bot-service/) einen FAQ-Bot ohne Code.
@@ -88,12 +88,6 @@ Wenn Sie Änderungen an der Wissensdatenbank vornehmen und sie erneut veröffent
 
 
 1. Heben Sie den Bot in zusätzlichen [unterstützten Kanälen](/azure/bot-service/bot-service-manage-channels) hervor.
-
-
-    - Klicken Sie in der Ressource „Bot Service“ auf „Kanäle“.
-
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot: Verbinden eines Bots mit einem Kanal](../media/qnamaker-tutorial-updates/connect-with-teams.png)
     
 ## <a name="integrate-the-bot-with-channels"></a>Integrieren des Bots in Kanäle
 

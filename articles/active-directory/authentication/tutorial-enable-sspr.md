@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 04/21/2021
+ms.date: 06/01/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c18dd231a708030e3a454ab8708e3f0f11dbecf
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e000a712e72498c21366b30b0c85e62f957c28c4
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107861821"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784813"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Tutorial: Ermöglichen der Kontoentsperrung oder Kennwortzurücksetzung für Benutzer mit der Self-Service-Kennwortzurücksetzung von Azure Active Directory
 
@@ -51,7 +51,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 Azure AD ermöglicht die Aktivierung von SSPR für *keine*, *ausgewählte* oder *alle* Benutzer. Dank dieser differenzierten Auswahloptionen können Sie eine Teilmenge von Benutzern zum Testen des SSPR-Registrierungsprozesses und -Workflows auswählen. Wenn Sie mit dem Prozess vertraut sind und der Zeitpunkt gekommen ist, die Anforderungen einer größeren Gruppe von Benutzern mitzuteilen, können Sie eine Benutzergruppe für die Aktivierung von SSPR auswählen. Alternativ können Sie SSPR für alle Benutzer im Azure AD-Mandanten aktivieren.
 
 > [!NOTE]
-> Derzeit können Sie mithilfe des Azure-Portals nur eine Azure AD-Gruppe für SSPR aktivieren. Im Rahmen einer umfassenderen Bereitstellung von SSPR unterstützt Azure AD geschachtelte Gruppen. Stellen Sie sicher, dass den Benutzern in den von Ihnen ausgewählten Gruppen die entsprechenden Lizenzen zugewiesen sind. Derzeit gibt es keinen Überprüfungsprozess für diese Lizenzierungsanforderungen.
+> Derzeit können Sie mithilfe des Azure-Portals nur eine Azure AD-Gruppe für SSPR aktivieren. Im Rahmen einer umfassenderen Bereitstellung von SSPR unterstützt Azure AD geschachtelte Gruppen. 
 
 In diesem Tutorial richten Sie SSPR für eine Gruppe von Benutzern in einer Testgruppe ein. Verwenden Sie *SSPR-Test-Group*, und geben Sie bei Bedarf Ihre eigene Azure AD-Gruppe an:
 

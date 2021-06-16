@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9bd0516889733a666bf15668cffd124dcc468f3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4be7bc555578c4abeaa65c6433da3e285b9235b2
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100388956"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786560"
 ---
 # <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>Tutorial: Migrieren von Bing Karten zu Azure Maps
 
@@ -53,7 +53,7 @@ Die folgende Tabelle enthält eine allgemeine Liste der Bing Karten-Features und
 | Vorschlagssuche                           | ✓                  |
 | Wegbeschreibungen (einschließlich LKW)          | ✓                  |
 | Entfernungsmatrix                       | ✓                  |
-| Höhenangaben                            | ✓ (Vorschau)        |
+| Höhenangaben                            | ✓      |
 | Bilder – statische Karte                  | ✓                  |
 | Bild-Metadaten                      | ✓                  |
 | Isochrone                            | ✓                  |

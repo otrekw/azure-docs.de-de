@@ -22,7 +22,7 @@
     - name: Azure Data Catalog-Einführung
       href: data-catalog-adopting-data-catalog.md
     - name: Häufig gestellte Fragen
-      href: data-catalog-frequently-asked-questions.md
+      href: data-catalog-frequently-asked-questions.yml
 - name: Anleitungen
   items:
     - name: Registrieren von Datenquellen

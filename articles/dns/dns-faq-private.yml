@@ -1,0 +1,100 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zu privatem Azure-DNS
+  description: In diesem Artikel finden Sie häufig gestellte Fragen zum privaten Azure-DNS.
+  services: dns
+  author: rohinkoul
+  ms.service: dns
+  ms.topic: article
+  ms.date: 01/15/2021
+  ms.author: rohink
+  ms.openlocfilehash: 7a700fad0c7f8a15d183e1ff27dcb7f7738cda25
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "111907222"
+title: Häufig gestellte Fragen zu privatem Azure-DNS
+summary: Im Folgenden finden Sie häufig gestellte Fragen zum privaten Azure-DNS.
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Unterstützt Azure DNS „private“ Domänen?
+    answer: >
+      Private Domänen werden mithilfe der Funktion „Private Azure DNS-Zonen“ unterstützt. Private DNS-Zonen lassen sich nur innerhalb der angegebenen virtuellen Netzwerke auflösen. Weitere Informationen finden Sie in der [Übersicht](private-dns-overview.md).
+
+
+      Informationen zu anderen internen DNS-Optionen in Azure finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+  - question: >
+      Funktionieren private Azure DNS-Zonen übergreifend in allen Azure-Regionen?
+    answer: >
+      Ja. Private Zonen werden für die DNS-Auflösung zwischen virtuellen Netzwerken übergreifend für Azure-Regionen unterstützt. Private Zonen funktionieren auch ohne explizites Peering der virtuellen Netzwerke. Alle virtuellen Netzwerk müssen mit der privaten DNS-Zone verknüpft sein.
+  - question: >
+      Ist für private Zonen eine Verbindung mit dem Internet aus virtuellen Netzwerken erforderlich?
+    answer: >
+      Nein. Private Zonen funktionieren mit virtuellen Netzwerken. Sie verwenden diese, um Domänen für virtuelle Computer oder andere Ressourcen in virtuellen Netzwerken (auch übergreifend) zu verwalten. Für die Namensauflösung ist keine Internetverbindung erforderlich.
+  - question: >
+      Kann die gleiche private Zone für mehrere virtuelle Netzwerke zur Auflösung verwendet werden?
+    answer: >
+      Ja. Sie können eine private DNS-Zone mit Tausenden virtueller Netzwerke verknüpfen. Weitere Informationen finden Sie unter [Azure DNS-Limits](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits).
+  - question: >
+      Kann ein virtuelles Netzwerk, das zu einem anderen Abonnement gehört, mit einer privaten Zone verknüpft werden?
+    answer: >
+      Ja. Sie müssen über eine Schreibvorgangsberechtigung für die virtuellen Netzwerke und die private DNS-Zone verfügen. Die Schreibberechtigung kann mehreren Azure-Rollen gewährt werden. Beispielsweise weist die Azure-Rolle „Mitwirkender von klassischem Netzwerk“ Schreibberechtigungen für virtuelle Netzwerke auf, und die Rolle „Mitwirkender von privaten DNS-Zonen“ umfasst Schreibberechtigungen für die privaten DNS-Zonen. Weitere Informationen zu Azure-Rollen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md).
+  - question: >
+      Werden die automatisch registrierten DNS-Einträge virtueller Computer in einer privaten Zone automatisch gelöscht, wenn Sie den virtuellen Computer löschen?
+    answer: >
+      Ja. Wenn Sie einen virtuellen Computer in einem verknüpften virtuellen Netzwerk mit aktivierter automatischer Registrierung löschen, werden die registrierten Einträge automatisch gelöscht.
+  - question: >
+      Ich habe das Betriebssystem in meinem virtuellen Computer so umkonfiguriert, dass es einen neuen Hostnamen oder eine neue statische IP-Adresse aufweist. Warum sehe ich diese Änderung nicht auch in der privaten Zone?
+    answer: >
+      Die Datensätze der privaten Zone werden vom Azure-DHCP-Dienst aufgefüllt. Registrierungsnachrichten von Clients werden ignoriert. Wenn Sie die DHCP-Clientunterstützung in der VM durch Konfigurieren einer statischen IP-Adresse deaktiviert haben, werden Änderungen des Hostnamens oder der statischen IP-Adresse in der VM nicht in der Zone widergespiegelt.
+  - question: >
+      Ich habe auf meinem virtuellen Windows-Computer ein bevorzugtes DNS-Suffix konfiguriert. Warum sind meine Datensätze immer noch in der mit dem virtuellen Netzwerk verbundenen Zone registriert?
+    answer: >
+      Der Azure DHCP-Dienst ignoriert jedes DNS-Suffix, wenn er die private DNS-Zone registriert. Wenn Ihr virtueller Computer z. B. für `contoso.com` als primäres DNS-Suffix konfiguriert ist, das virtuelle Netzwerk jedoch mit der privaten DNS-Zone `fabrikam.com` verbunden ist, wird die Registrierung des virtuellen Computers in der privaten DNS-Zone `fabrikam.com` angezeigt.
+  - question: >
+      Kann ein automatisch registrierter Eintrag für einen virtuellen Computer in einer privaten Zone aus einem verknüpften virtuellen Netzwerk manuell gelöscht werden?
+    answer: >
+      Ja. Sie können die automatisch registrierten DNS-Einträge aber durch einen manuell erstellten DNS-Eintrag in der Zone überschreiben. Dies wird in den folgenden Frage/Antwort-Informationen beschrieben.
+  - question: >
+      Was geschieht bei dem Versuch, einen neuen DNS-Eintrag manuell in einer privaten Zone zu erstellen, die den gleichen Hostnamen wie eine automatisch registrierte vorhandene VM in einem verknüpften virtuellen Netzwerk aufweist?
+    answer: >
+      Sie versuchen, einen neuen DNS-Eintrag manuell in einer privaten Zone zu erstellen, die den gleichen Hostnamen wie eine automatisch registrierte vorhandene VM in einem verknüpften virtuellen Netzwerk aufweist. Wenn Sie dies tun, überschreibt der neue DNS-Eintrag den automatisch registrierten Eintrag für die VM. Wenn Sie versuchen, diesen manuell erstellten DNS-Eintrag wieder aus der Zone zu löschen, ist der Löschvorgang erfolgreich. Die automatische Registrierung wird so lange durchgeführt, wie der virtuelle Computer noch vorhanden ist und über eine zugeordnete private IP-Adresse verfügt. Der DNS-Eintrag wird in der Zone automatisch neu erstellt.
+  - question: >
+      Was geschieht, wenn ich die Verknüpfung eines verknüpften virtuellen Netzwerks mit einer privaten Zone aufhebe? Werden auch die automatisch registrierten Einträge virtueller Computer des virtuellen Netzwerks aus der Zone entfernt?
+    answer: >
+      Ja. Um die Verknüpfung eines verknüpften virtuellen Netzwerks mit einer privaten Zone aufzuheben, aktualisieren Sie die DNS-Zone, um die zugeordnete Verbindung des virtuellen Netzwerks zu entfernen. Bei diesem Prozess werden die Einträge virtueller Computer, die automatisch registriert wurden, aus der Zone entfernt.
+  - question: >
+      Was geschieht, wenn ich ein verknüpftes virtuelles Netzwerk lösche, das mit einer privaten Zone verknüpft ist? Muss ich die private Zone manuell aktualisieren, um die Verknüpfung des virtuellen Netzwerks mit der Zone als verknüpftes virtuelles Netzwerk aufzuheben?
+    answer: >
+      Nein. Wenn Sie ein verknüpftes virtuelles Netzwerk löschen, ohne dafür zuerst die Verknüpfung mit einer privaten Zone zu löschen, ist Ihr Löschvorgang erfolgreich, und die Verknüpfungen mit der DNS-Zone werden automatisch gelöscht.
+  - question: >
+      Funktioniert die DNS-Auflösung mithilfe des Standard-FQDN (internal.cloudapp.net) auch, wenn eine private Zone (z.B. „private.contoso.com“) mit einem virtuellen Netzwerk verknüpft ist?
+    answer: >
+      Ja. Private Zonen ersetzen nicht die standardmäßig von Azure bereitgestellte Zone„internal.cloudapp.net“. Verwenden Sie den FQDN der Zone, für die Sie die Auflösung durchführen möchten, unabhängig davon, ob Sie die von Azure bereitgestellte Zone „internal.cloudapp.net“ oder Ihre eigene private Zone nutzen.
+  - question: >
+      Wird das DNS-Suffix auf virtuellen Computern in einem verknüpften virtuellen Netzwerk in das Suffix der privaten Zone geändert?
+    answer: >
+      Nein. Es wird weiterhin das von Azure bereitgestellte Standardsuffix (*.internal.cloudapp.net) als DNS-Suffix auf den virtuellen Computern in Ihrem verknüpften virtuellen Netzwerk verwendet. Sie können dieses DNS-Suffix auf Ihren virtuellen Computern manuell in das der privaten Zone ändern.
+
+      Eine Anleitung, wie Sie dieses Suffix ändern, finden Sie unter [Verwenden von dynamischem DNS zum Registrieren von Hostnamen in Ihrem eigenen DNS-Server](../virtual-network/virtual-networks-name-resolution-ddns.md#windows-clients).
+  - question: >
+      Welche Nutzungsgrenzwerte gelten für private Azure DNS-Zonen?
+    answer: >
+      Ausführliche Informationen zu den Nutzungsgrenzwerten für private Azure DNS-Zonen finden Sie unter [Azure DNS-Limits](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits).
+  - question: >
+      Warum werden meine vorhandenen privaten DNS-Zonen nicht in der neuen Portaloberfläche angezeigt?
+    answer: >
+      Wenn Ihre vorhandene private DNS-Zone mit der Vorschau-API erstellt wurde, müssen Sie diese Zonen zu einem neuen Ressourcenmodell migrieren. Mit der Preview-API erstellte private DNS-Zonen werden nicht in der neuen Portaloberfläche angezeigt. Nachfolgend finden Sie Anweisungen dazu, wie Sie zum neuen Ressourcenmodell migrieren können.
+  - question: >
+      Wie kann ich meine vorhandenen privaten DNS-Zonen zum neuen Modell migrieren?
+    answer: >
+      Es wird dringend empfohlen, so bald wie möglich zum neuen Ressourcenmodell zu migrieren. Das Legacyressourcenmodell wird zwar unterstützt, weitere Features werden für dieses Modell jedoch nicht mehr entwickelt. In Zukunft möchten wir es zugunsten des neuen Ressourcenmodells als veraltet kennzeichnen. Anleitungen zum Migrieren von vorhandenen privaten DNS-Zonen zum neuen Ressourcenmodell finden Sie unter[Migrationsleitfaden für private Azure DNS-Zonen](private-dns-migration-guide.md).
+
+
+      ### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Speichert Azure DNS Kundeninhalte in privaten Zonen?
+
+      Nein, Azure DNS speichert keine Kundeninhalte in privaten Zonen.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n  - [Weitere Informationen zur privatem Azure-DNS](private-dns-overview.md)"

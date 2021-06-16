@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.date: 05/08/2019
-ms.openlocfilehash: b9f7cce39e4f51aea7fc4db5ca37ee054f42c5cb
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d6e75efac274a456c3759edae2d5c62ae26467c8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078642"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675173"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 
@@ -108,7 +109,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 
 #### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft                     | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft                     | Beschreibung                              | Erforderlich |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand** fest. | Ja      |
 | clusterSize                  | Anzahl der Worker-/Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten sowie der Anzahl der Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben die Größe Standard_D3, die vier Kerne aufweist. Ein Cluster mit vier Workerknoten nutzt also 24 Kerne (4 \* 4 = 16 für die Workerknoten + 2 \* 4 = 8 für die Hauptknoten). Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) | Ja      |
@@ -156,7 +157,7 @@ Der verknüpfte, bedarfsgesteuerte HDInsight-Dienst erfordert eine Dienstprinzip
 
 Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eigenschaften angeben:
 
-| Eigenschaft                | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft                | Beschreibung                              | Erforderlich |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Geben Sie die Client-ID der Anwendung an.     | Ja      |
 | **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an.           | Ja      |
@@ -166,7 +167,7 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 
 Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters können Sie die folgenden Eigenschaften festlegen.
 
-| Eigenschaft               | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft               | Beschreibung                              | Erforderlich |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Gibt die wichtigsten Konfigurationsparameter (wie in "core-site.xml") für den HDInsight-Cluster an, der erstellt werden soll. | Nein       |
 | hBaseConfiguration     | Gibt die HBase-Konfigurationsparameter (hbase-site.xml) für den HDInsight-Cluster an. | Nein       |
@@ -234,7 +235,7 @@ Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters kö
 #### <a name="node-sizes"></a>Knotengrößen
 Sie können die Größe der Head-, Daten- und Zookeeper-Knoten mit den folgenden Eigenschaften angeben: 
 
-| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft          | Beschreibung                              | Erforderlich |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | Gibt die Größe des Hauptknotens an. Der Standardwert lautet: Standard_D3. Weitere Details finden Sie im Abschnitt **Knotengrößen angeben**. | Nein       |
 | dataNodeSize      | Gibt die Größe des Datenknotens an. Der Standardwert lautet: Standard_D3. | Nein       |
@@ -293,7 +294,7 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft          | Beschreibung                                                  | Erforderlich |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | Legen Sie die Typeigenschaft auf **HDInsight** fest.            | Ja      |
 | clusterUri        | Der URI des HDInsight-Clusters.                            | Ja      |
@@ -356,7 +357,7 @@ Lesen Sie die folgenden Artikel, wenn Sie noch nicht mit dem Azure Batch-Dienst 
 
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft          | Beschreibung                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Legen Sie die Typeigenschaft auf **AzureBatch** fest. | Ja      |
 | .<Name der Region       | Der Name des Azure Batch-Kontos.         | Ja      |
@@ -392,7 +393,7 @@ Sie können einen mit Azure Machine Learning Studio (Classic) verknüpften Diens
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft               | BESCHREIBUNG                              | Erforderlich                                 |
+| Eigenschaft               | Beschreibung                              | Erforderlich                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                   | Legen Sie die type-Eigenschaft auf **AzureML** fest. | Ja                                      |
 | mlEndpoint             | Die Batchbewertungs-URL.                   | Ja                                      |
@@ -437,7 +438,7 @@ Sie können einen mit Azure Machine Learning verknüpften Dienst erstellen, um e
 
 ### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft               | BESCHREIBUNG                              | Erforderlich                                 |
+| Eigenschaft               | Beschreibung                              | Erforderlich                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                   | Legen Sie die type-Eigenschaft auf **AzureMLService**. | Ja                                      |
 | subscriptionId         | Azure-Abonnement-ID              | Ja                                      |
@@ -480,7 +481,7 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 ### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
+| Eigenschaft             | Beschreibung                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. | Ja                                      |
 | .<Name der Region          | Name des Azure Data Lake Analytics-Kontos.  | Ja                                      |
@@ -542,7 +543,7 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 
 ### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
+| Eigenschaft             | Beschreibung                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | Name des verknüpften Diensts               | Ja   |
 | type                 | Legen Sie die type-Eigenschaft auf **Azure Databricks**: | Ja                                      |

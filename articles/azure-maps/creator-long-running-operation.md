@@ -9,18 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f5fb7c8059c8b98e8ec514a4159e96f48db7b1ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 956c1969afa4f25fa4f431cca31caa410607777f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96906198"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787144"
 ---
-# <a name="creator-preview-long-running-operation-api"></a>Creator-API für zeitintensive Vorgänge (Vorschau)
-
-> [!IMPORTANT]
-> Azure Maps Creator-Dienste befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="creator-long-running-operation-api"></a>Creator-API für zeitintensive Vorgänge
 
 Einige APIs in Azure Maps verwenden ein [asynchrones Anforderung-Antwort-Muster](/azure/architecture/patterns/async-request-reply). Dieses Muster ermöglicht Azure Maps die Bereitstellung hochverfügbarer und reaktionsfähiger Dienste. In diesem Artikel wird die für Azure Maps spezifische Implementierung der zeitintensiven asynchronen Hintergrundverarbeitung erläutert.
 

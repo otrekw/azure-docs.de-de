@@ -7,39 +7,38 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 05/27/2021
 ms.author: pdecarlo
-ms.openlocfilehash: 7fb44b13456598abc7181ba5258ba73ed0512820
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5600702d43d0583324dc9e3b6942318ab52c5cbd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110058544"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110702869"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ausführen von virtuellen Computern vom Typ „Azure IoT Edge unter Ubuntu“
 
-[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Die Azure IoT Edge-Runtime verwandelt ein Gerät in ein IoT Edge-Gerät. Die Runtime kann auf verschiedensten Geräten bereitgestellt werden – vom kleinen Raspberry Pi bis hin zum großen industriellen Server. Wenn ein Gerät mit der IoT Edge-Runtime konfiguriert wurde, können Sie darauf Geschäftslogik aus der Cloud bereitstellen.
 
 Weitere Informationen zur Funktionsweise und zu den Komponenten der IoT Edge-Runtime finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
 
-In diesem Artikel werden die Schritte zum Bereitstellen eines virtuellen Ubuntu 18.04 LTS-Computers mit installierter Azure IoT Edge-Runtime beschrieben, die mithilfe einer vorab bereitgestellten Geräte-Verbindungszeichenfolge installiert und konfiguriert wurde. Die Bereitstellung erfolgt mithilfe einer [cloud-init](../virtual-machines/linux/using-cloud-init.md
-)-basierten [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md), die im Projektrepository [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) verwaltet wird.
+In diesem Artikel werden die Schritte zum Bereitstellen eines virtuellen Ubuntu 18.04 LTS-Computers mit installierter Azure IoT Edge-Runtime beschrieben, die mithilfe einer vorab bereitgestellten Geräte-Verbindungszeichenfolge installiert und konfiguriert wurde. Die Bereitstellung erfolgt mithilfe einer [cloud-init](../virtual-machines/linux/using-cloud-init.md)-basierten [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md), die im Projektrepository [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) verwaltet wird.
 
 Beim ersten Start wird vom virtuellen Ubuntu 18.04 LTS-Computer [die neueste Version der Azure IoT Edge-Runtime über „cloud-init“ installiert](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt). Außerdem wird von ihm vor dem Start der Laufzeit eine angegebene Verbindungszeichenfolge festgelegt, sodass Sie das IoT Edge-Gerät problemlos konfigurieren und verbinden können, ohne eine SSH- oder Remotedesktop-Sitzung starten zu müssen.
-
->[!NOTE]
->Die Vorlage, die für diesen Artikel verwendet wird, installiert IoT Edge Version 1.1.
 
 ## <a name="deploy-using-deploy-to-azure-button"></a>Bereitstellen mithilfe der Schaltfläche „In Azure bereitstellen“
 
 Die Schaltfläche [In Azure bereitstellen](../azure-resource-manager/templates/deploy-to-azure-button.md) ermöglicht eine optimierte Bereitstellung von [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md), die auf GitHub verwaltet verwenden.  In diesem Abschnitt wird die Verwendung der Schaltfläche „In Azure bereitstellen“ im Repository [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) gezeigt.  
 
-
 1. Sie stellen mithilfe der Azure Resource Manager-Vorlage „iotedge-vm-deploy“ eine Azure IoT Edge-fähige Linux-VM bereit.  Klicken Sie zuerst auf die Schaltfläche unten:
-
-    [![Schaltfläche „In Azure bereitstellen“ für „iotedge-vm-deploy“](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+   :::moniker range="iotedge-2018-06"
+   [![Schaltfläche „In Azure bereitstellen“ für „iotedge-vm-deploy“](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+   :::moniker-end
+   :::moniker range="iotedge-2020-11"
+   [![Schaltfläche „In Azure bereitstellen“ für „iotedge-vm-deploy“](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2F1.2.0%2FedgeDeploy.json)
+   :::moniker-end
 
 1. Füllen Sie im neu gestarteten Fenster die verfügbaren Formularfelder aus:
 
@@ -113,8 +112,8 @@ Die Schaltfläche [In Azure bereitstellen](../azure-resource-manager/templates/d
    ```
 
 1. Erstellen Sie einen neuen virtuellen Computer:
-
-    Wenn Sie einen **authenticationType** von `password` verwenden möchten, sehen Sie sich das folgende Beispiel an:
+   :::moniker range="iotedge-2018-06"
+   Wenn Sie einen **authenticationType** von `password` verwenden möchten, sehen Sie sich das folgende Beispiel an:
 
    ```azurecli-interactive
    az deployment group create \
@@ -127,22 +126,54 @@ Die Schaltfläche [In Azure bereitstellen](../azure-resource-manager/templates/d
    --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
    ```
 
-    Wenn Sie sich mit einem SSH-Schlüssel authentifizieren möchten, geben Sie dazu einen **authenticationType** von `sshPublicKey` und dann den Wert des SSH-Schlüssels im Parameter **adminPasswordOrKey** an.  Ein entsprechendes Beispiel ist nachfolgend dargestellt.
+   Wenn Sie sich mit einem SSH-Schlüssel authentifizieren möchten, geben Sie dazu einen **authenticationType** von `sshPublicKey` und dann den Wert des SSH-Schlüssels im Parameter **adminPasswordOrKey** an.  Ein entsprechendes Beispiel ist nachfolgend dargestellt.
 
-    ```azurecli-interactive
-    #Generate the SSH Key
-    ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
+   ```azurecli-interactive
+   #Generate the SSH Key
+   ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
+    
+   #Create a VM using the iotedge-vm-deploy script
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://aka.ms/iotedge-vm-deploy" \
+   --parameters dnsLabelPrefix='my-edge-vm1' \
+   --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+   --parameters authenticationType='sshPublicKey' \
+   --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
+   ```
+   :::moniker-end
+   :::moniker range="iotedge-2020-11"
+   Wenn Sie einen **authenticationType** von `password` verwenden möchten, sehen Sie sich das folgende Beispiel an:
 
-    #Create a VM using the iotedge-vm-deploy script
-    az deployment group create \
-    --resource-group IoTEdgeResources \
-    --template-uri "https://aka.ms/iotedge-vm-deploy" \
-    --parameters dnsLabelPrefix='my-edge-vm1' \
-    --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
-    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
-    --parameters authenticationType='sshPublicKey' \
-    --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
-    ```
+   ```azurecli-interactive
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0/edgeDeploy.json" \
+   --parameters dnsLabelPrefix='my-edge-vm1' \
+   --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
+   ```
+
+   Wenn Sie sich mit einem SSH-Schlüssel authentifizieren möchten, geben Sie dazu einen **authenticationType** von `sshPublicKey` und dann den Wert des SSH-Schlüssels im Parameter **adminPasswordOrKey** an.  Ein entsprechendes Beispiel ist nachfolgend dargestellt.
+
+   ```azurecli-interactive
+   #Generate the SSH Key
+   ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
+    
+   #Create a VM using the iotedge-vm-deploy script
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0/edgeDeploy.json" \
+   --parameters dnsLabelPrefix='my-edge-vm1' \
+   --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+   --parameters authenticationType='sshPublicKey' \
+   --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
+   ```
+   :::moniker-end
 
 1. Überprüfen Sie, ob die Bereitstellung erfolgreich abgeschlossen wurde.  Eine virtuelle Computerressource sollte in der ausgewählten Ressourcengruppe bereitgestellt worden sein.  Notieren Sie sich den Computernamen, der das Format `vm-0000000000000` haben sollte. Notieren Sie sich außerdem den zugeordneten **DNS-Namen**, der das Format „`<dnsLabelPrefix>`.`<location>`cloudapp.azure.com“ haben sollte.
 

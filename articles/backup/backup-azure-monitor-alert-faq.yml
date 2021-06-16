@@ -1,0 +1,76 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zu Überwachungswarnungen und Berichten
+  description: In diesem Artikel finden Sie Antworten auf häufige Fragen zu den Berichten von Azure Backup-Überwachungswarnungen und Azure Backup.
+  ms.reviewer: srinathv
+  ms.topic: conceptual
+  ms.date: 07/08/2019
+  ms.openlocfilehash: 3117220c9202a458e2fdf377abf11cf068e53201
+  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 04/15/2021
+  ms.locfileid: "111907161"
+title: Azure Backup-Überwachungswarnungen – häufig gestellte Fragen
+summary: In diesem Artikel werden häufig gestellte Fragen zur Azure Backup-Überwachung und zur Berichterstellung beantwortet.
+sections:
+- name: Konfigurieren von Azure Backup-Berichten
+  questions:
+  - question: >
+      Wie überprüfe ich, ob bereits Berichtsdaten an einen Log Analytics-Arbeitsbereich (LA) übermittelt werden?
+    answer: >
+      Navigieren Sie zu dem LA-Arbeitsbereich, den Sie konfiguriert haben. Navigieren Sie zum Menüelement **Protokolle**, und führen Sie die Abfrage `CoreAzureBackup | take 1` aus. Wenn ein Datensatz zurückgegeben wird, bedeutet dies, dass Daten an den Arbeitsbereich übertragen wurden. Der erste Datenpush kann bis zu 24 Stunden dauern.
+  - question: >
+      Wie oft erfolgt ein Datenpush an einen LA-Arbeitsbereich?
+    answer: >
+      Die Diagnosedaten aus dem Tresor werden mit einer gewissen Verzögerung in den Log Analytics-Arbeitsbereich übertragen. Jedes Ereignis erreicht den Log Analytics-Arbeitsbereich 20 bis 30 Minuten nach dem Push aus dem Recovery Services-Tresor. Hier finden Sie weitere Details zu dieser Verzögerung:
+
+
+      * Lösungsübergreifend werden die im Sicherungsdienst integrierten Warnungen sofort nach ihrer Erstellung gepusht. Daher werden sie normalerweise nach 20 bis 30 Minuten im Log Analytics-Arbeitsbereich angezeigt.
+
+      * Lösungsübergreifend werden bedarfsgesteuerte Sicherungs- und Wiederherstellungsaufträge gepusht, sobald sie abgeschlossen sind.
+
+      * Die geplanten Sicherungsaufträge aus allen Lösungen (außer SQL-Sicherung) werden gepusht, sobald sie abgeschlossen sind.
+
+      * Da Protokollsicherungen alle 15 Minuten auftreten können, werden für SQL-Sicherungen Informationen für alle abgeschlossenen geplanten Sicherungsaufträge (einschließlich Protokolle) als Batch gesammelt und alle 6 Stunden gepusht.
+
+      * Alle anderen Informationen wie Sicherungselemente, Richtlinien, Wiederherstellungspunkte, Speicher usw. werden lösungsübergreifend mindestens einmal täglich gepusht.
+
+      * Eine Änderung der Sicherungskonfiguration (wie einer Änderung der Richtlinie oder Bearbeitungsrichtlinie) löst einen Push aller zugehörigen Sicherungsinformationen aus.
+  - question: >
+      Wie lange kann ich Berichtsdaten aufbewahren?
+    answer: >
+      Nachdem Sie einen LA-Arbeitsbereich erstellt haben, können Sie die Daten für maximal 2 Jahre aufbewahren. Standardmäßig werden die Daten in einem LA-Arbeitsbereich 31 Tage aufbewahrt.
+  - question: >
+      Werden nach dem Konfigurieren des LA-Arbeitsbereichs alle meine Daten in Berichten angezeigt?
+    answer: Alle Daten, die nach der Konfiguration der Diagnoseeinstellungen generiert werden, werden an den LA-Arbeitsbereich gepusht und stehen in den Berichten zur Verfügung. Aufträge, die sich in Bearbeitung befinden, werden nicht mithilfe von Push für die Berichterstellung übertragen. Wenn ein Auftrag abgeschlossen wird oder fehlschlägt, wird er an die Berichte gesendet.
+  - question: >
+      Kann ich Berichte für verschiedene Tresore und Abonnements anzeigen?
+    answer: >
+      Ja, Sie können Berichte über Tresore, Abonnements und Regionen hinweg anzeigen. Ihre Daten können sich in einem einzelnen LA-Arbeitsbereich oder in einer Gruppe von LA-Arbeitsbereichen befinden.
+  - question: >
+      Kann ich Berichte mandantenübergreifend anzeigen?
+    answer: >
+      Wenn Sie ein [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/)-Benutzer mit delegiertem Zugriff auf die Abonnements oder LA-Arbeitsbereiche Ihrer Kunden sind, können Sie in den Berichten von Backup Daten zu allen Ihren Mandanten anzeigen.
+- name: Recovery Services-Tresor
+  questions:
+  - question: >
+      Wie lange dauert es, bis der Auftragsstatus des Azure Backup-Agents im Portal angezeigt wird?
+    answer: >
+      Es kann bis zu 15 Minuten dauern, bis der Auftragsstatus des Azure Backup-Agents im Azure-Portal angezeigt wird.
+  - question: >
+      Wie lange dauert es, bis eine Warnung ausgelöst wird, wenn ein Sicherungsauftrag nicht erfolgreich ist?
+    answer: >
+      Innerhalb von 20 Minuten nach dem Azure Backup-Fehler wird eine Warnung ausgelöst.
+  - question: >
+      Kann es vorkommen, dass eine E-Mail nicht gesendet wird, wenn Benachrichtigungen konfiguriert sind?
+    answer: >
+      Ja. In den folgenden Situationen werden keine Benachrichtigungen gesendet:
+
+
+      * Stündliche Benachrichtigungen wurden konfiguriert, und eine Warnung wird ausgelöst und innerhalb dieser Stunde gelöst.
+
+      * Ein Auftrag wurde abgebrochen.
+
+      * Bei einem zweiten Sicherungsauftrag tritt ein Fehler auf, weil der ursprüngliche Sicherungsauftrag noch ausgeführt wird.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nLesen Sie die anderen häufig gestellten Fragen:\n\n* [Gängige Fragen](backup-azure-vm-backup-faq.yml) zu Azure VM-Sicherungen\n* [Gängige Fragen](backup-azure-file-folder-backup-faq.yml) zum Azure Backup-Agent"

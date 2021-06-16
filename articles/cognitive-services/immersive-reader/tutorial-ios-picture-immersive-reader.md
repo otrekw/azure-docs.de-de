@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: In diesem Tutorial erstellen Sie eine iOS-App ohne Vorlage und fügen ihr die Funktion „Bild im plastischen Reader“ hinzu.
 services: cognitive-services
 author: metanMSFT
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: 096f28f2940fdac8463106928207f28549c405a0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b1be190fd496b1ded4ae15bdd5d45dbc7a37beb6
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370820"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887940"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Tutorial: Erstellen einer iOS-App, die den plastischen Reader mit Inhalt aus einem Foto startet (Swift)
 

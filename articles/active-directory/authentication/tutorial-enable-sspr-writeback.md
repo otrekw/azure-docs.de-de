@@ -11,16 +11,16 @@ author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 1572b0a9822f340887c512c5cc20448fe0729109
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e6d89bdfca268a02c1f58bdceb4e4485dc3851a6
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461722"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438376"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Tutorial: Aktivieren des Rückschreibens von Azure Active Directory-Self-Service-Kennzurücksetzungen in eine lokale Umgebung
 
-Mit der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) in Azure Active Directory (Azure AD) können Benutzer über einen Webbrowser ihre Kennwörter aktualisieren oder ihre Konten entsperren. In einer Hybridumgebung, in der Azure AD mit einer lokalen Active Directory Domain Services-Umgebung (AD DS) verbunden ist, kann dieses Szenario dazu führen, dass sich Kennwörter zwischen den beiden Verzeichnissen unterscheiden.
+Mit der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) in Azure Active Directory (Azure AD) können Benutzer über einen Webbrowser ihre Kennwörter aktualisieren oder ihre Konten entsperren. Wir empfehlen Ihnen dieses Video zum [Aktivieren und Konfigurieren von SSPR in Azure AD](https://www.youtube.com/watch?v=rA8TvhNcCvQ). In einer Hybridumgebung, in der Azure AD mit einer lokalen Active Directory Domain Services-Umgebung (AD DS) verbunden ist, kann dieses Szenario dazu führen, dass sich Kennwörter zwischen den beiden Verzeichnissen unterscheiden.
 
 Das Kennwortrückschreiben kann genutzt werden, um Kennwortänderungen in Azure AD mit Ihrer lokalen AD DS-Umgebung zu synchronisieren. Azure AD Connect bietet einen sicheren Mechanismus zum Zurücksenden dieser Kennwortänderungen in ein vorhandenes lokales Verzeichnis aus Azure AD.
 

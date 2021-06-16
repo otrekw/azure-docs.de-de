@@ -3,12 +3,13 @@ title: Aktivieren von Disk Encryption für Linux-Cluster
 description: Dieser Artikel beschreibt das Aktivieren der Datenträgerverschlüsselung für Azure Service Fabric-Clusterknoten unter Linux mit Azure Resource Manager und Azure Key Vault.
 ms.topic: article
 ms.date: 03/22/2019
-ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 826ca54718625fb236f64587b63080cf16aafae4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "78252812"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663565"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Aktivieren der Datenträgerverschlüsselung für Azure Service Fabric-Clusterknoten unter Linux 
 > [!div class="op_single_selector"]

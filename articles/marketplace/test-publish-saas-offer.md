@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 03/25/2021
-ms.openlocfilehash: aeab671c9283d64f9c1ca37cf184b80b1eca8f35
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7fed85abe42b0366ff2429ba923fc9a3cdf6190a
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045245"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536426"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>Testen und Veröffentlichen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -53,13 +53,13 @@ Gehen Sie wie folgt vor, um Ihr Angebot in der Vorschau anzuzeigen.
 
 1. Um den gesamten Ablauf vom Kauf bis zur Einrichtung zu überprüfen, erwerben Sie die Pläne in Ihrem Angebot, während es sich in der Vorschau befindet. Benachrichtigen Sie zunächst Microsoft mit einem [Supportticket](https://aka.ms/marketplacesupport), um sicherzustellen, dass wir keine Gebühren erheben.
 
-1. Wenn Ihr SaaS-Angebot die [getaktete Abrechnung mit dem Messungsdienst des kommerziellen Marketplace](./partner-center-portal/saas-metered-billing.md) unterstützt, lesen und befolgen Sie die bewährten Testmethoden, die unter [APIs für getaktete Abrechnung im Marketplace](./partner-center-portal/marketplace-metering-service-apis.md#development-and-testing-best-practices) beschrieben sind.
+1. Wenn Ihr SaaS-Angebot die [getaktete Abrechnung mit dem Messungsdienst des kommerziellen Marketplace](./partner-center-portal/saas-metered-billing.md) unterstützt, lesen und befolgen Sie die bewährten Testmethoden, die unter [APIs für getaktete Abrechnung im Marketplace](marketplace-metering-service-apis.md#development-and-testing-best-practices) beschrieben sind.
 
 1. Lesen und befolgen Sie die Testanweisungen unter [SaaS-Fulfillment-APIs (Version 2) im kommerziellen Microsoft-Marketplace](./partner-center-portal/pc-saas-fulfillment-api-v2.md#development-and-testing), um sicherzustellen, dass Ihr Angebot erfolgreich in die APIs integriert wird, bevor Sie Ihr Angebot live veröffentlichen.
 
 1. Wenn der Schritt zur Angebotsvalidierung zu Warnungen geführt hat, wird auf der Seite **Angebotsübersicht** der Link **Prüfbericht anzeigen** angezeigt. Überprüfen Sie den Bericht, und beheben Sie die Probleme, bevor Sie die Schaltfläche **Live schalten** auswählen. Andernfalls riskieren Sie eine fehlerhafte Zertifizierung, die zu einer Verzögerung bei der Aktivierung Ihres Angebots führt.
 
-1. Wenn Sie nach der Vorschau und den Tests Änderungen am Angebot vornehmen möchten, können Sie es bearbeiten und erneut übermitteln, um eine neue Vorschau zu veröffentlichen. Weitere Informationen finden Sie unter [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](./partner-center-portal/update-existing-offer.md).
+1. Wenn Sie nach der Vorschau und den Tests Änderungen am Angebot vornehmen möchten, können Sie es bearbeiten und erneut übermitteln, um eine neue Vorschau zu veröffentlichen. Weitere Informationen finden Sie unter [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](update-existing-offer.md).
 
 ## <a name="publish-your-offer-live"></a>Veröffentlichen Ihres Angebots im Livemodus
 
@@ -74,4 +74,4 @@ Nachdem die Validierungsprüfungen abgeschlossen wurden, wird Ihr Angebot im Mar
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](./partner-center-portal/analytics.md)
+- [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](analytics.md)

@@ -3,19 +3,19 @@ title: Abrufen des Typs und des SKU-Namens eines Speicherkontos mit .NET
 titleSuffix: Azure Storage
 description: Hier erfahren Sie, wie Sie den Typ und den SKU-Namen eines Azure Storage-Kontos mit der .NET-Clientbibliothek abrufen.
 services: storage
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 11/12/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96c77291a1c540e2ff95fb911b2321e78f20e604
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 94e8a76d48b8ff45d089a9ee375b3dc4a5e5de94
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478842"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653099"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>Abrufen des Typs und des SKU-Namens eines Speicherkontos mit .NET
 

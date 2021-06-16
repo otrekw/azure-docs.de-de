@@ -3,19 +3,20 @@ title: 'Azure CLI: Sichern einer Datenbank in Azure SQL-Datenbank'
 description: Azure CLI-Beispielskript zum Sichern einer Azure SQL-Einzeldatenbank in einem Azure-Speichercontainer
 services: sql-database
 ms.service: sql-database
+ms.subservice: backup-restore
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: mashamsft
-ms.author: mathoma
-ms.reviewer: carlrab
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma
 ms.date: 03/27/2019
-ms.openlocfilehash: 33ac44f4910c858dd4d5cfc9d4288ce4970f7f4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0485600654fd7a041b62f07c38dfa200845cdae8
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87501983"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703160"
 ---
 # <a name="use-cli-to-backup-an-azure-sql-single-database-to-an-azure-storage-container"></a>Verwenden der CLI zum Sichern einer Azure SQL-Einzeldatenbank in einem Azure-Speichercontainer
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ad70aff7e1673681541a1b6b37a0bd50d822fed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc0acadadc728f714e84418a438c451aea255ccc
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97954401"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408027"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
@@ -157,7 +157,7 @@ Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ defin
 |  <ul><li>DefaultClassification<li>Typ: String<li>Standardeinstellung: "" | Die Klassifizierung, die als Standardklassifizierung einer Gruppe verwendet werden soll, falls keine angegeben wurde.<br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Typ: String<li>Standardeinstellung: "" | Zeichenfolge mit einer maximalen Länge von 64 Zeichen, mit der die für Microsoft 365-Gruppen konfigurierte Namenskonvention definiert wird. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Microsoft 365-Gruppen](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Typ: String<li>Standardeinstellung: "" | Eine durch Trennzeichen getrennte Zeichenfolge mit Ausdrücken, deren Verwendung in Gruppennamen oder -aliasen nicht gestattet ist. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Microsoft 365-Gruppen](groups-naming-policy.md). |
-| <ul><li>EnableMSStandardBlockedWords<li>Typ: Boolean<li>Standardwert: „False“ | Nicht verwenden
+| <ul><li>EnableMSStandardBlockedWords<li>Typ: Boolean<li>Standardwert: „False“ | Veraltet. Nicht verwenden.
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Typ: Boolean<li>Standardwert: False | Boolescher Wert, der angibt, ob ein Gastbenutzer Besitzer von Gruppen sein kann. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Typ: Boolean<li>Standardwert: True | Boolescher Wert, der angibt, ob ein Gastbenutzer Zugriff auf die Inhalte von Microsoft 365-Gruppen hat.  Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Typ: String<li>Standardeinstellung: "" | Die URL eines Links zu den Leitlinien für die Nutzung des Gastzugriffs. |
