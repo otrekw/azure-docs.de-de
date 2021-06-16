@@ -3,14 +3,14 @@ title: Überwachen und Verwalten von Hadoop mit der Ambari-REST-API – Azure HD
 description: Erfahren Sie, wie Sie Ambari zum Überwachen und Verwalten von Hadoop-Clustern in Azure HDInsight verwenden. In diesem Dokument erfahren Sie, wie Sie die in HDInsight-Clustern enthaltene Ambari-REST-API verwenden.
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurepowershell
 ms.date: 04/29/2020
-ms.openlocfilehash: 1d4e6f0d6a0242cda919364965a61e4314927d87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 249355b4d5e80625511d8448c587d079c77dd92b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98945586"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701536"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API
 

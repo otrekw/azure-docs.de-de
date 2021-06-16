@@ -1,18 +1,18 @@
 ---
 title: Beheben von Problemen mit dem Konfigurationsserver bei der Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure mit Azure Site Recovery | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zur Problembehandlung für die Bereitstellung des Konfigurationsserver bei der Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure mit Azure Site Recovery.
-author: Rajeswari-Mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/13/2019
-ms.author: ramamill
-ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: b943013de867016478a6e126d244974a8505a7cd
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92371952"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576569"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
 

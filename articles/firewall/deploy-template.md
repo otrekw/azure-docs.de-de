@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 05/10/2021
 ms.author: victorh
-ms.openlocfilehash: d2c3a1501c2489b5d747ac5a64bcaef0c725bad0
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: d0aa88ef44f1d63593a22c657b781720622465d6
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752713"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033561"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Schnellstart: Bereitstellen von Azure Firewall mit Verfügbarkeitszonen – ARM-Vorlage
 
@@ -41,7 +41,7 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 
 Mit dieser Vorlage werden eine Azure Firewall-Instanz mit Verfügbarkeitszonen und die erforderlichen unterstützenden Ressourcen für die Azure Firewall-Instanz erstellt.
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/azurefirewall-with-zones-sandbox).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/azurefirewall-with-zones-sandbox/azuredeploy.json":::
 

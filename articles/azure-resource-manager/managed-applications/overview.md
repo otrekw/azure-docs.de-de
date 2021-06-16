@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 65b8c21251f092311150a50480f5abecb1ad7c17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c64cbbc1ac1260151ae14701ac3577036f19fa5f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96434565"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969634"
 ---
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
@@ -49,7 +49,7 @@ Informationen zum Veröffentlichen einer verwalteten Dienstkataloganwendung find
 
 Anbieter, die ihre Dienste kostenpflichtig anbieten möchten, können eine verwaltete Anwendung über den Azure Marketplace verfügbar machen. Die veröffentlichte Anwendung ist für Benutzer außerhalb der Organisation verfügbar. So können Anbieter verwalteter Dienste (Managed Service Providers, MSPs), unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Systemintegratoren (SIs) ihre Lösung allen Azure-Kunden anbieten.
 
-Informationen zum Veröffentlichen einer verwalteten Anwendung im Marketplace finden Sie unter [Erstellen einer Marketplace-Anwendung](../../marketplace/create-new-azure-apps-offer.md).
+Informationen zum Veröffentlichen einer verwalteten Anwendung im Marketplace finden Sie unter [Erstellen einer Marketplace-Anwendung](../../marketplace/azure-app-offer-setup.md).
 
 ## <a name="resource-groups-for-managed-applications"></a>Ressourcengruppen für verwaltete Anwendungen
 
@@ -71,7 +71,7 @@ Der Verbraucher hat uneingeschränkten Zugriff auf die Ressourcengruppe und verw
 
 Diese Ressourcengruppe enthält alle Ressourcen, die von der verwalteten Anwendung benötigt werden. Hierzu zählen beispielsweise die virtuellen Computer, Speicherkonten und virtuellen Netzwerke für die Lösung. Der Verbraucher hat eingeschränkten Zugriff auf diese Ressourcengruppe, da er nicht die einzelnen Ressourcen für die verwaltete Anwendung verwaltet. Der Zugriff des Herausgebers auf diese Ressourcengruppe entspricht der Rolle, die in der Definition der verwalteten Anwendung angegeben ist. Der Herausgeber kann für diese Ressourcengruppe beispielsweise die Rolle „Besitzer“ oder „Mitwirkender" anfordern. Der Zugriff gilt entweder permanent oder ist auf einen bestimmten Zeitraum beschränkt.
 
-Beim Veröffentlichen der [verwalteten Anwendung im Marketplace](../../marketplace/create-new-azure-apps-offer.md) kann der Herausgeber den Verbrauchern die Möglichkeit gewähren, bestimmte Aktionen an Ressourcen in der verwalteten Ressourcengruppe vorzunehmen. Beispielsweise kann der Herausgeber angeben, dass Verbraucher virtuelle Computer neu starten können. Alle anderen Aktionen, die über Leseaktionen hinausgehen, werden weiterhin verweigert. Für Änderungen an Ressourcen in einer verwalteten Ressourcengruppe, die von einem Consumer mit zulässigen Aktionen vorgenommen werden, gelten die [Azure Policy](../../governance/policy/overview.md)-Zuweisungen innerhalb des Consumermandanten, der die verwaltete Ressourcengruppe einbezieht.
+Beim Veröffentlichen der [verwalteten Anwendung im Marketplace](../../marketplace/azure-app-offer-setup.md) kann der Herausgeber den Verbrauchern die Möglichkeit gewähren, bestimmte Aktionen an Ressourcen in der verwalteten Ressourcengruppe vorzunehmen. Beispielsweise kann der Herausgeber angeben, dass Verbraucher virtuelle Computer neu starten können. Alle anderen Aktionen, die über Leseaktionen hinausgehen, werden weiterhin verweigert. Für Änderungen an Ressourcen in einer verwalteten Ressourcengruppe, die von einem Consumer mit zulässigen Aktionen vorgenommen werden, gelten die [Azure Policy](../../governance/policy/overview.md)-Zuweisungen innerhalb des Consumermandanten, der die verwaltete Ressourcengruppe einbezieht.
 
 Wenn der Verbraucher die verwaltete Anwendung löscht, wird auch die verwaltete Ressourcengruppe gelöscht.
 

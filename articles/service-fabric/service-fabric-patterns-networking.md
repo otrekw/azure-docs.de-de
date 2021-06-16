@@ -3,12 +3,13 @@ title: Netzwerkmuster für Azure Service Fabric
 description: In diesem Thema werden häufige Netzwerkmuster für Service Fabric sowie die Vorgehensweise zum Erstellen eines Clusters mithilfe der Netzwerkfeatures von Azure beschrieben.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c95ded10463d1b5ab6f28373883db641283cdac1
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87421466"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663668"
 ---
 # <a name="service-fabric-networking-patterns"></a>Netzwerkmuster für Service Fabric
 Sie können Ihre Azure Service Fabric-Cluster in andere Azure-Netzwerkfeatures integrieren. In diesem Artikel erfahren Sie, wie Sie Cluster erstellen, die folgende Features nutzen:

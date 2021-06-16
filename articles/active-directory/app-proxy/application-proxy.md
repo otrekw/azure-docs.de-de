@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 1b2887dd82d9c01cc5403f35dffa230feff385d7
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: f45dcde6368cefe0d8eb869bd042e36f364589cf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186205"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963871"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Remotezugriff auf lokale Anwendungen über den Azure AD-Anwendungsproxy
 
@@ -35,10 +35,10 @@ Der Anwendungsproxy ist ein Feature von Azure AD, mit dem Benutzer von einem Rem
 
 Der Anwendungsproxy funktioniert mit:
 
-* Webanwendungen, für die zur Authentifizierung die [integrierte Windows-Authentifizierung](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) verwendet wird
-* Webanwendungen mit formularbasiertem oder [headerbasiertem](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md) Zugriff
+* Webanwendungen, für die zur Authentifizierung die [integrierte Windows-Authentifizierung](./application-proxy-configure-single-sign-on-with-kcd.md) verwendet wird
+* Webanwendungen mit formularbasiertem oder [headerbasiertem](./application-proxy-configure-single-sign-on-with-headers.md) Zugriff
 * Web-APIs, die Sie für umfassende Anwendungen auf unterschiedlichen Geräten verfügbar machen möchten
-* Hinter einem [Remotedesktopgateway](../manage-apps/application-proxy-integrate-with-remote-desktop-services.md) gehostete Anwendungen
+* Hinter einem [Remotedesktopgateway](./application-proxy-integrate-with-remote-desktop-services.md) gehostete Anwendungen
 * Rich Client-Apps, die in die Microsoft Authentication Library (MSAL) integriert sind
 
 Der Anwendungsproxy unterstützt das einmalige Anmelden. Weitere Informationen zu unterstützten Methoden finden Sie unter [Auswählen einer Methode für einmaliges Anmelden](../manage-apps/sso-options.md#choosing-a-single-sign-on-method).

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b795e4b0df35d731181934bdec6966fc1af0b94c
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91856669"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026739"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von AS2-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -115,7 +115,7 @@ In diesem Artikel wird gezeigt, wie Sie die AS2-Aktionen für die Codierung und 
 
 ## <a name="sample"></a>Beispiel
 
-Wenn Sie eine uneingeschränkt funktionsfähige Logik-App und ein AS2-Beispielszenario bereitstellen möchten, sehen Sie sich [Azure Logic Apps - AS2 Send Receive](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/) (Azure Logic Apps – AS2: Senden/Empfangen) an.
+Wenn Sie eine uneingeschränkt funktionsfähige Logik-App und ein AS2-Beispielszenario bereitstellen möchten, sehen Sie sich [Azure Logic Apps - AS2 Send Receive](https://azure.microsoft.com/resources/templates/logic-app-as2-send-receive) (Azure Logic Apps – AS2: Senden/Empfangen) an.
 
 ## <a name="connector-reference"></a>Connector-Referenz
 

@@ -2,7 +2,7 @@
 title: 'Anwendungsverwaltung: Bewährte Methoden und Empfehlungen | Microsoft-Dokumentation'
 description: Hier finden Sie bewährte Methoden und Empfehlungen für das Verwalten von Anwendungen in Azure Active Directory. Erfahren Sie mehr über die automatische Bereitstellung und Veröffentlichung von lokalen Apps mit dem Anwendungsproxy.
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2019
 ms.subservice: app-mgmt
-ms.author: iangithinji
+ms.author: mtillman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f77ff371bfb53cff08d860be6cc0160debe491
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 526c3ead0509b6e69eab23a7f2b3771ffe40bd29
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765987"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077390"
 ---
 # <a name="application-management-best-practices"></a>Bewährte Methoden für die Anwendungsverwaltung
 

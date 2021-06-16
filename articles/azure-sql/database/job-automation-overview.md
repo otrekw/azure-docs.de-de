@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 295889cf64d27761021dd09549a3366ea142516e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 8d754d03811bf532d6be6b4695281e82ab8fb002
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752028"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440446"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>Automatisieren von Verwaltungsaufgaben mithilfe elastischer Aufträge (Vorschau)
 
@@ -54,9 +54,9 @@ Im Anschluss finden Sie Auftragsplanungstechnologien für verschiedene Plattform
 
 Elastische Aufträge können für [Azure SQL-Datenbank-Instanzen](sql-database-paas-overview.md), für [Pools für elastische Datenbanken in Azure SQL-Datenbank](elastic-pool-overview.md) sowie für Azure SQL-Datenbank-Instanzen in [Shardzuordnungen](elastic-scale-shard-map-management.md) verwendet werden.
 
-Bei der T-SQL-skriptbasierten Auftragsautomatisierung in SQL Server und Azure SQL Managed Instance kann ein [SQL-Agent](job-automation-managed-instances.md) verwendet werden. 
+- Bei der T-SQL-skriptbasierten Auftragsautomatisierung in SQL Server und Azure SQL Managed Instance kann ein [SQL-Agent](../managed-instance/job-automation-managed-instance.md) verwendet werden. 
 
-Bei der T-SQL-skriptbasierten Auftragsautomatisierung in Azure Synapse Analytics können Sie [Pipelines mit sich wiederholenden Triggern](../../synapse-analytics/data-integration/concepts-data-factory-differences.md) verwenden, die [auf Azure Data Factory basieren](../../synapse-analytics/data-integration/concepts-data-factory-differences.md).
+- Bei der T-SQL-skriptbasierten Auftragsautomatisierung in Azure Synapse Analytics können Sie [Pipelines mit sich wiederholenden Triggern](../../synapse-analytics/data-integration/concepts-data-factory-differences.md) verwenden, die [auf Azure Data Factory basieren](../../synapse-analytics/data-integration/concepts-data-factory-differences.md).
 
 Beachten Sie die Unterschiede zwischen dem (in SQL Server und als Teil von SQL Managed Instance verfügbaren) SQL-Agent und dem Datenbank-Agent für elastische Aufträge (der T-SQL für Azure SQL-Datenbank-Instanzen oder für Datenbanken in SQL Server und Azure SQL Managed Instance sowie in Azure Synapse Analytics ausführen kann).
 
@@ -159,7 +159,7 @@ Das Ergebnis der Auftragsschritte wird für jede Zieldatenbank detailliert erfas
 
 #### <a name="job-history"></a>Auftragsverlauf
 
-Der Ausführungsverlauf eines elastischen Auftrags in der *Auftragsdatenbank* kann durch [Abfragen der Tabelle „jobs.job_executions“](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status) angezeigt werden. Daten des Ausführungsverlaufs, die älter als 45 Tage sind, werden durch einen Systembereinigungsauftrag bereinigt. Wenn Sie Verlaufsdaten löschen möchten, die noch keine 45 Tage alt sind, rufen Sie die gespeicherte Prozedur **sp_purge_jobhistory** in der *Auftragsdatenbank* auf.
+Der Ausführungsverlauf eines elastischen Auftrags in der *Auftragsdatenbank* kann durch [Abfragen der Tabelle „jobs.job_executions“](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status) angezeigt werden. Daten des Ausführungsverlaufs, die älter als 45 Tage sind, werden durch einen Systembereinigungsauftrag bereinigt. Wenn Sie Verlaufsdaten löschen möchten, die noch keine 45 Tage alt sind, rufen Sie die gespeicherte Prozedur `sp_purge_jobhistory` in der *Auftragsdatenbank* auf.
 
 #### <a name="job-status"></a>Auftragsstatus
 

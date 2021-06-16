@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: c2c09e1a30c9cef4d65b2d5443481c84ab779af8
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: ba266c5a4ec5ffb84ee02e9c1904423f01d333e5
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833830"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670909"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und TLS/SSL-Zertifikaten in Azure App Service
 
@@ -109,7 +109,7 @@ Der benutzerdefinierten Domäne, die Sie konfiguriert haben, fehlt ein CNAME- od
 
 **Lösung für Ursache 1**
 
-- Wenn Sie einen A-Eintrag hinzugefügt haben, stellen Sie sicher, dass auch ein TXT-Eintrag hinzugefügt wird. Weitere Informationen finden Sie unter [Erstellen des A-Eintrags](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
+- Wenn Sie einen A-Eintrag hinzugefügt haben, stellen Sie sicher, dass auch ein TXT-Eintrag hinzugefügt wird. Weitere Informationen finden Sie unter [Erstellen des A-Eintrags](./app-service-web-tutorial-custom-domain.md#4-create-the-dns-records).
 - Wenn Sie die Stammdomäne für Ihre App nicht verwenden müssen, empfiehlt es sich, dass Sie anstelle eines A-Eintrags einen CNAME-Eintrag verwenden.
 - Verwenden Sie nicht gleichzeitig einen CNAME-Eintrag und einen A-Eintrag für dieselbe Domäne. Dieses Problem kann einen Konflikt verursachen und verhindern, dass die Domäne aufgelöst wird. 
 

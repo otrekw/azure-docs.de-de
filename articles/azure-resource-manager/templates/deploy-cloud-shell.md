@@ -3,12 +3,12 @@ title: Bereitstellen von Vorlagen mit Cloud Shell
 description: Verwenden Sie Azure Resource Manager und Cloud Shell, um Ressourcen in Azure bereitzustellen. Die Ressourcen sind in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 7697eb0a6786a07546bb0de679df69d64da30b1b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bd597c2cb29120e680493a99aac33f146940bc19
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742343"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957887"
 ---
 # <a name="deploy-arm-templates-from-azure-cloud-shell"></a>Bereitstellen von ARM-Vorlagen mit Azure Cloud Shell
 
@@ -118,4 +118,4 @@ Zum Bereitstellen einer lokalen Vorlage müssen Sie zunächst die Vorlage in das
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu Bereitstellungsbefehlen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI](deploy-cli.md) und [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
-- Informationen zum Anzeigen einer Änderungsvorschau vor der Bereitstellung einer Vorlage finden Sie unter [Was-wäre-wenn-Vorgang bei der Bereitstellung von ARM-Vorlagen](template-deploy-what-if.md).
+- Informationen zum Anzeigen einer Änderungsvorschau vor der Bereitstellung einer Vorlage finden Sie unter [Was-wäre-wenn-Vorgang bei der Bereitstellung von ARM-Vorlagen](./deploy-what-if.md).

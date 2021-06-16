@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: c3a821156074727d02ab36cf88f3e998756b8cc4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b815914d4a34d50e2bb566097620ee29e15f957
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389449"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677524"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen
 
@@ -215,6 +215,6 @@ Weitere Informationen zu verwandten Diensten und Azure-Features, die Sie verwend
 
 - [Vermeiden verwaister DNS-Einträge](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [Abrufen der Verifizierungs-ID für eine Domäne](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
+- [Abrufen der Verifizierungs-ID für eine Domäne](../../app-service/app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id)
 
 - [Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mit Azure PowerShell](../../governance/resource-graph/first-query-powershell.md)

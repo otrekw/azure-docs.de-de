@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs
+ms.custom: mvc, subject-armqs, devx-track-azurepowershell
 ms.date: 04/01/2021
-ms.openlocfilehash: 01fe3121173eb730584dadd1266b3217af2b5017
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: e141a33be0433e8d40af41c4624b4921321a6aae
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279548"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971598"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Schnellstart: Erstellen und Bereitstellen eines Logik-App-Workflows mithilfe einer ARM-Vorlage
 
@@ -30,7 +30,7 @@ Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Az
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-In dieser Schnellstartanleitung wird die Vorlage [**Logik-App erstellen**](https://azure.microsoft.com/resources/templates/101-logic-app-create/) verwendet, die Sie im [Azure-Schnellstartvorlagen-Katalog](https://azure.microsoft.com/resources/templates) finden können, die aber zu lang ist, um sie hier wiederzugeben. Stattdessen können Sie die Datei [„azuredeploy.json“](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json) der Schnellstartvorlage im Vorlagenkatalog überprüfen.
+In dieser Schnellstartanleitung wird die Vorlage [**Logik-App erstellen**](https://azure.microsoft.com/resources/templates/logic-app-create/) verwendet, die Sie im [Azure-Schnellstartvorlagen-Katalog](https://azure.microsoft.com/resources/templates) finden können, die aber zu lang ist, um sie hier wiederzugeben. Stattdessen können Sie die Datei [„azuredeploy.json“](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json) der Schnellstartvorlage im Vorlagenkatalog überprüfen.
 
 Mit der Schnellstartvorlage wird ein Logik-App-Workflow erstellt, der den Wiederholungstrigger (Recurrence) verwendet, der auf die stündliche Ausführung festgelegt ist, sowie eine [*integrierte* HTTP-Aktion](../connectors/built-in.md), die eine URL aufruft, die den Status für Azure zurückgibt. Eine integrierte Aktion ist für die Azure Logic Apps-Plattform nativ.
 
@@ -167,7 +167,7 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
    Weitere Informationen finden Sie unter [REST-API füpr die Ressourcenverwaltung: Bereitstellungen: Erstellen oder Aktualisieren](/rest/api/resources/deployments/createorupdate).
 
-1. Um die für die Bereitstellung zu verwendenden Werte anzugeben, z. B. die Azure-Region und Links zur Schnellstartvorlage und der [Parameterdatei](../azure-resource-manager/templates/template-parameters.md), die die Werte enthält, die die Schnellstartvorlage bei der Bereitstellung verwenden soll, befolgen Sie diese Syntax für den Anforderungstext, den Sie an die REST-API für die Ressourcenverwaltung senden:
+1. Um die für die Bereitstellung zu verwendenden Werte anzugeben, z. B. die Azure-Region und Links zur Schnellstartvorlage und der [Parameterdatei](../azure-resource-manager/templates/parameters.md), die die Werte enthält, die die Schnellstartvorlage bei der Bereitstellung verwenden soll, befolgen Sie diese Syntax für den Anforderungstext, den Sie an die REST-API für die Ressourcenverwaltung senden:
 
    ```json
    {

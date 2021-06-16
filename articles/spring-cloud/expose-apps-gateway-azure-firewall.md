@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 7def685cb9e17ff253ade10714ece2259b432db1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5183fe6560e0276efb3f9db85628a814abfe9e45
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129007"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791722"
 ---
 # <a name="expose-applications-to-the-internet-using-application-gateway-and-azure-firewall"></a>Verfügbarmachen von Anwendungen im Internet mithilfe von Application Gateway und Azure Firewall
 
@@ -70,6 +70,10 @@ Erstellen Sie ein Anwendungsgateway mit `az network application-gateway create`,
 
 ```
 APPLICATION_GATEWAY_NAME='my-app-gw'
+APPLICATION_GATEWAY_PROBE_NAME='my-probe'
+APPLICATION_GATEWAY_REWRITE_SET_NAME='my-rewrite-set'
+APPLICATION_GATEWAY_REWRITE_RULE_NAME='remove-request-header'
+APPLICATION_GATEWAY_RULE_NAME='rule1'
 az network application-gateway create \
     --name ${APPLICATION_GATEWAY_NAME} \
     --resource-group ${RESOURCE_GROUP} \
@@ -83,11 +87,34 @@ az network application-gateway create \
     --vnet-name ${VIRTUAL_NETWORK_NAME} \
     --subnet ${APPLICATION_GATEWAY_SUBNET_NAME} \
     --servers ${SPRING_APP_PRIVATE_FQDN}
+az network application-gateway probe create \
+    --gateway-name ${APPLICATION_GATEWAY_NAME} \
+    --resource-group ${RESOURCE_GROUP} \
+    --name ${APPLICATION_GATEWAY_PROBE_NAME} \
+    --protocol https \
+    --host-name-from-http-settings true \
+    --path /
 az network application-gateway http-settings update \
     --gateway-name ${APPLICATION_GATEWAY_NAME} \
     --resource-group ${RESOURCE_GROUP} \
     --name appGatewayBackendHttpSettings \
-    --host-name-from-backend-pool true
+    --host-name-from-backend-pool true \
+    --probe ${APPLICATION_GATEWAY_PROBE_NAME}
+az network application-gateway rewrite-rule set create \
+    --gateway-name ${APPLICATION_GATEWAY_NAME} \
+    --resource-group ${RESOURCE_GROUP} \
+    --name ${APPLICATION_GATEWAY_REWRITE_SET_NAME}
+az network application-gateway rewrite-rule create \
+    --gateway-name ${APPLICATION_GATEWAY_NAME} \
+    --resource-group ${RESOURCE_GROUP} \
+    --rule-set-name ${APPLICATION_GATEWAY_REWRITE_SET_NAME} \
+    --name ${APPLICATION_GATEWAY_REWRITE_RULE_NAME} \
+    --request-headers X-Forwarded-Proto="https"
+az network application-gateway rule update \
+    --gateway-name ${APPLICATION_GATEWAY_NAME} \
+    --resource-group ${RESOURCE_GROUP} \
+    --name ${APPLICATION_GATEWAY_RULE_NAME} \
+    --rewrite-rule-set ${APPLICATION_GATEWAY_REWRITE_SET_NAME}
 ```
 
 Die Erstellung des Anwendungsgateways in Azure kann bis zu 30 Minuten in Anspruch nehmen. Nachdem es erstellt wurde, überprüfen Sie die Integrität des Back-Ends mithilfe von `az network application-gateway show-backend-health`.  Hiermit wird überprüft, ob das Anwendungsgateway Ihre Anwendung über seinen privaten FQDN erreicht.

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e99d94fbd4ab91c2ba51ca7922873b8338f7da85
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664517"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033300"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Auswählen der richtigen MariaDB Server-Option in Azure
 
@@ -41,7 +41,7 @@ Die Hauptunterschiede zwischen diesen Optionen werden in der folgenden Tabelle a
 | Hybridszenario | Mithilfe der [Datenreplikation](concepts-data-in-replication.md) können Sie Daten von einem externen MariaDB-Server mit dem Azure Database for MariaDB-Dienst synchronisieren. Der externe Server kann lokal, in virtuellen Computern oder in einem Datenbankdienst vorhanden sein, der von anderen Cloudanbietern gehostet wird.<br/><br/> Mit dem Feature für [Lesereplikate](concepts-read-replicas.md) können Sie Daten von einem Azure Database for MariaDB-Quellserver auf bis zu fünf schreibgeschützte Replikatserver replizieren. Die Replikate befinden sich entweder innerhalb derselben Azure-Region oder sind regionsübergreifend. Schreibgeschützte Replikate werden mithilfe der binlog-Replikationstechnologie asynchron aktualisiert.<br/><br/>Die regionsübergreifende Lesereplikation befindet sich derzeit in der öffentlichen Vorschauphase (Public Preview).| Von Kunden verwaltet
 | Sichern und Wiederherstellen | [Serversicherungen](concepts-backup.md#backups) werden automatisch erstellt und in einem vom Benutzer konfigurierten Speicher, der entweder lokal redundant oder georedundant ist, gespeichert. Dieser Dienst erstellt vollständige, differenzielle und Transaktionsprotokollsicherungen. | Von Kunden verwaltet |
 | Überwachen von Datenbankvorgängen | Ermöglicht Kunden das [Festlegen von Warnungen](concepts-monitoring.md) für den Datenbankvorgang und das Reagieren beim Erreichen von Schwellenwerten. | Von Kunden verwaltet |
-| Erweiterter Schutz vor Bedrohungen | Bietet [Advanced Threat Protection](howto-database-threat-protection-portal.md). Bei diesem Schutz werden anomale Aktivitäten erkannt, die auf ungewöhnliche und potenziell schädliche Versuche hindeuten, auf Datenbanken zuzugreifen oder sie missbräuchlich zu nutzen.<br/><br/>Advanced Threat Protection befindet sich derzeit in der Public Preview.| Kunden müssen diesen Schutz selbst erstellen.
+| Erweiterter Schutz vor Bedrohungen | Bietet Advanced Threat Protection. Bei diesem Schutz werden anomale Aktivitäten erkannt, die auf ungewöhnliche und potenziell schädliche Versuche hindeuten, auf Datenbanken zuzugreifen oder sie missbräuchlich zu nutzen.<br/><br/>Advanced Threat Protection befindet sich derzeit in der Public Preview.| Kunden müssen diesen Schutz selbst erstellen.
 | Notfallwiederherstellung | Speichert automatisierte Sicherungen in einem vom Benutzer konfigurierten [lokal redundanten oder georedundanten Speicher](howto-restore-server-portal.md). Mithilfe von Sicherungen kann auch der Zustand eines Servers zu einem bestimmten Zeitpunkt wiederhergestellt werden. Der Aufbewahrungszeitraum liegt zwischen 7 und 35 Tagen. Die Wiederherstellung erfolgt über das Azure-Portal. | Vollständig von Kunden verwaltet. Die Zuständigkeiten umfassen (sind aber nicht beschränkt auf) Planung, Testen, Archivierung, Speicherung und Aufbewahrung. Eine weitere Option ist die Verwendung eines Azure Recovery Services-Tresors zur Sicherung von Azure-VMs und Datenbanken auf VMs. Diese Option befindet sich in der Vorschauphase. |
 | Empfehlungen zur Leistung | Bietet Kunden [Leistungsempfehlungen](https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110) basierend auf vom System generierten Nutzungsprotokolldateien. Die Empfehlungen helfen bei der Optimierung von Workloads.<br/><br/>Leistungsempfehlungen befinden sich derzeit in der Public Preview. | Von Kunden verwaltet |
 

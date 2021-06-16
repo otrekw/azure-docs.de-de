@@ -4,12 +4,12 @@ description: Informieren Sie sich, wie Sie den Reverseproxydienst für eine Azur
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d8f290bf1cad13597376d1d7c27cfaa695f9511
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86256345"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956637"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Einrichten und Konfigurieren des Reverseproxys in Service Fabric
 Der Reverseproxy ist ein optionaler Azure Service Fabric-Dienst, mit dessen Hilfe in einem Service Fabric-Cluster ausgeführte Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren können. Weitere Informationen finden Sie unter [Reverseproxy in Azure Service Fabric](service-fabric-reverseproxy.md). In diesem Artikel wird das Einrichten und Konfigurieren eines Reverseproxys in Ihrem Cluster veranschaulicht. 
@@ -41,7 +41,7 @@ Für einen vorhandenen Cluster können Sie die Resource Manager-Vorlage für die
 
 Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reverseproxy mit den folgenden Schritten:
 
-1. Definieren Sie im Abschnitt [parameters](../azure-resource-manager/templates/template-syntax.md) der Vorlage einen Port für den Reverseproxy.
+1. Definieren Sie im Abschnitt [parameters](../azure-resource-manager/templates/syntax.md) der Vorlage einen Port für den Reverseproxy.
 
     ```json
     "SFReverseProxyPort": {
@@ -52,7 +52,7 @@ Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reve
         }
     },
     ```
-2. Geben Sie den Port für jedes der nodetype-Objekte in [**Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) im Abschnitt [Ressourcentypen](../azure-resource-manager/templates/template-syntax.md) an.
+2. Geben Sie den Port für jedes der nodetype-Objekte in [**Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) im Abschnitt [Ressourcentypen](../azure-resource-manager/templates/syntax.md) an.
 
     Der Port wird anhand des Parameternamens reverseProxyEndpointPort identifiziert.
 
@@ -74,7 +74,7 @@ Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reve
         ...
     }
     ```
-3. Fügen Sie das Zertifikat der **reverseProxyCertificate**-Eigenschaft in *Microsoft.ServiceFabric/clusters* im * [Ressourcentypenabschnitt](../azure-resource-manager/templates/template-syntax.md) hinzu, um TLS-/SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren.
+3. Fügen Sie das Zertifikat der **reverseProxyCertificate**-Eigenschaft in *Microsoft.ServiceFabric/clusters* im * [Ressourcentypenabschnitt](../azure-resource-manager/templates/syntax.md) hinzu, um TLS-/SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren.
 
     ```json
     {
@@ -98,7 +98,7 @@ Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reve
     ```
 
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>Unterstützung für Reverseproxyzertifikate, die sich vom Clusterzertifkat unterscheiden
- Wenn das Reverseproxyzertifikat sich von dem Zertifikat unterscheidet, das den Cluster schützt, sollte das zuvor angegebene Zertifikat auf dem virtuellen Computer installiert und der Zugriffssteuerungsliste (Access Control List, ACL) hinzugefügt worden sein, damit Service Fabric darauf zugreifen kann. Dies kann in [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets) im Abschnitt [Ressourcentypen](../azure-resource-manager/templates/template-syntax.md) erfolgen. Fügen Sie das Zertifikat für die Installation dem osProfile hinzu. Der Erweiterungsabschnitt der Vorlage kann das Zertifikat in der ACL aktualisieren.
+ Wenn das Reverseproxyzertifikat sich von dem Zertifikat unterscheidet, das den Cluster schützt, sollte das zuvor angegebene Zertifikat auf dem virtuellen Computer installiert und der Zugriffssteuerungsliste (Access Control List, ACL) hinzugefügt worden sein, damit Service Fabric darauf zugreifen kann. Dies kann in [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets) im Abschnitt [Ressourcentypen](../azure-resource-manager/templates/syntax.md) erfolgen. Fügen Sie das Zertifikat für die Installation dem osProfile hinzu. Der Erweiterungsabschnitt der Vorlage kann das Zertifikat in der ACL aktualisieren.
 
   ```json
   {
@@ -252,7 +252,7 @@ Wenn Sie den Reverseproxy für einen eigenständigen Cluster öffentlich verfüg
 
 ### <a name="expose-the-reverse-proxy-via-resource-manager-templates"></a>Verfügbarmachen des Reverseproxys über Azure Resource Manager-Vorlagen
 
-Die folgende JSON-Code verweist auf die gleiche Vorlage, die in [Aktivieren des Reverseproxys über Azure Resource Manager-Vorlagen](#enable-reverse-proxy-via-azure-resource-manager-templates) verwendet wird. In diesem Abschnitt des Dokuments finden Sie Informationen zum Erstellen einer Resource Manager-Vorlage oder Exportieren einer Vorlage für einen vorhandenen Cluster.  Die Änderungen werden in [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers) im Abschnitt [Ressourcentypen](../azure-resource-manager/templates/template-syntax.md) vorgenommen.
+Die folgende JSON-Code verweist auf die gleiche Vorlage, die in [Aktivieren des Reverseproxys über Azure Resource Manager-Vorlagen](#enable-reverse-proxy-via-azure-resource-manager-templates) verwendet wird. In diesem Abschnitt des Dokuments finden Sie Informationen zum Erstellen einer Resource Manager-Vorlage oder Exportieren einer Vorlage für einen vorhandenen Cluster.  Die Änderungen werden in [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers) im Abschnitt [Ressourcentypen](../azure-resource-manager/templates/syntax.md) vorgenommen.
 
 ```json
 {

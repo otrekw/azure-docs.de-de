@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: e45720543a5fc5f3293a2aae0c2740af1048384a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 53baa580d2f2c68fa32f38bddb07b5d9e362d190
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465227"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787747"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Formatierungsrichtlinien für importierte Dokumente und URLs
 
@@ -92,7 +92,7 @@ Unten sehen Sie ein Beispiel für ein strukturiertes QnA-Word-Dokument:
 
 ### <a name="structured-txt-tsv-and-xls-files"></a>Strukturierte *TXT*-, *TSV*- und *XLS*-Dateien
 
-QnAs in Form von strukturierten *TXT*-, *TSV*- oder *XLS*-Dateien können auch in QnA Maker hochgeladen werden, um eine Wissensdatenbank zu erstellen oder zu erweitern.  Dabei kann es sich um Nur-Text-Dateien oder um Dateien mit Inhalten im RTF- oder HTML-Format handeln. [Frage-Antwort-Paare](/how-to/edit-knowledge-base#question-and-answer-pairs) verfügen über ein optionales Metadatenfeld, mit dem Frage-Antwort-Paare in Kategorien zusammengefasst werden können.
+QnAs in Form von strukturierten *TXT*-, *TSV*- oder *XLS*-Dateien können auch in QnA Maker hochgeladen werden, um eine Wissensdatenbank zu erstellen oder zu erweitern.  Dabei kann es sich um Nur-Text-Dateien oder um Dateien mit Inhalten im RTF- oder HTML-Format handeln. [Frage-Antwort-Paare](./How-To/edit-knowledge-base.md#question-and-answer-pairs) verfügen über ein optionales Metadatenfeld, mit dem Frage-Antwort-Paare in Kategorien zusammengefasst werden können.
 
 | Frage  | Antwort  | Metadaten (1 Schlüssel: 1 Wert) |
 |-----------|---------|-------------------------|
@@ -122,7 +122,7 @@ Nachdem die Datei importiert wurde, befindet sich das Frage- und Antwortpaar in 
 
 ### <a name="structured-data-format-through-import"></a>Strukturiertes Datenformat durch Import
 
-Beim Importieren einer Wissensdatenbank wird der Inhalt der vorhandenen Wissensdatenbank ersetzt. Der Import erfordert eine strukturierte TSV-Datei, die Informationen zur Datenquelle enthält. Diese Informationen helfen QnA Maker beim Gruppieren der Frage-Antwort-Paare und dem Zuweisen zu einer bestimmten Datenquelle. [Frage-Antwort-Paare](/how-to/edit-knowledge-base#question-and-answer-pairs) verfügen über ein optionales Metadatenfeld, mit dem Frage-Antwort-Paare in Kategorien zusammengefasst werden können.
+Beim Importieren einer Wissensdatenbank wird der Inhalt der vorhandenen Wissensdatenbank ersetzt. Der Import erfordert eine strukturierte TSV-Datei, die Informationen zur Datenquelle enthält. Diese Informationen helfen QnA Maker beim Gruppieren der Frage-Antwort-Paare und dem Zuweisen zu einer bestimmten Datenquelle. [Frage-Antwort-Paare](./How-To/edit-knowledge-base.md#question-and-answer-pairs) verfügen über ein optionales Metadatenfeld, mit dem Frage-Antwort-Paare in Kategorien zusammengefasst werden können.
 
 | Frage  | Antwort  | `Source`| Metadaten (1 Schlüssel: 1 Wert) |
 |-----------|---------|----|---------------------|

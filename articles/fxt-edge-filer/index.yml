@@ -8,53 +8,53 @@ metadata:
   ms.topic: landing-page
   author: ekpgh
   ms.author: v-erkel
-  ms.date: 03/20/2020
-  ms.openlocfilehash: ea13d3cbe49a5f1f0a043178822a50f6c37bf472
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.date: 05/26/2021
+  ms.openlocfilehash: fab9463980b1a4d020ee11c916964f27654cbdd8
+  ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110455812"
+  ms.lasthandoff: 06/04/2021
+  ms.locfileid: "111411033"
 landingContent:
 - title: Informationen zu Azure FXT Edge Filer
   linkLists:
   - linkListType: overview
     links:
     - text: Was ist Azure FXT Edge Filer?
-      url: fxt-overview.md
+      url: overview.md
 - title: Erste Schritte
   linkLists:
   - linkListType: tutorial
     links:
     - text: 1. Installieren der Hardware
-      url: fxt-install.md
+      url: install.md
     - text: 2. Anschließen der Kabel
-      url: fxt-network-power.md
+      url: network-power.md
     - text: 3. Festlegen von Hardwarekennwörtern
-      url: fxt-node-password.md
+      url: node-password.md
     - text: 4. Erstellen eines Clusters
-      url: fxt-cluster-create.md
+      url: cluster-create.md
     - text: 5. Hinzufügen von Clusterknoten
-      url: fxt-add-nodes.md
+      url: add-nodes.md
     - text: 6. Hinzufügen von Back-End-Speicher und Konfigurieren des virtuellen Namespace
-      url: fxt-add-storage.md
+      url: add-storage.md
     - text: 7. Konfigurieren der Netzwerkeinstellungen des Clusters
-      url: fxt-configure-network.md
+      url: configure-network.md
     - text: 8. Einbinden von Clients auf dem Cluster
-      url: fxt-mount-clients.md
+      url: mount-clients.md
 - title: Verwalten
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Hardwarestatus überwachen
-      url: fxt-monitor.md
+      url: monitor.md
     - text: Sicheres Ausschalten der Hardware
-      url: fxt-power-off.md
+      url: power-off.md
 - title: Ressourcen
   linkLists:
   - linkListType: reference
     links:
     - text: Hardwarespezifikationen
-      url: fxt-specs.md
+      url: specs.md
     - text: Zusätzliche Dokumentation
-      url: fxt-additional-doc.md
+      url: additional-doc.md

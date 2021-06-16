@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 55cbc5db534dd1b05f91a24e0104b1f2dc110547
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c97294833ea04e4af559008cf55d3aef7230ef81
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90532945"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072233"
 ---
-# <a name="preview-maintenance-control-for-azure-virtual-machine-scale-sets"></a>Vorschau: Wartungssteuerung für Azure-VM-Skalierungsgruppen 
+# <a name="maintenance-control-for-azure-virtual-machine-scale-sets"></a>Wartungssteuerung für Azure-VM-Skalierungsgruppen 
 
 Verwalten Sie [automatische Betriebssystemimage-Upgrades](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) für Ihre VM-Skalierungsgruppen per Wartungssteuerung.
 
@@ -26,11 +26,6 @@ Der gesamte Workflow besteht aus den folgenden Schritten:
 - Erstellen einer Wartungskonfiguration
 - Zuordnen einer VM-Skalierungsgruppe zu einer Wartungskonfiguration
 - Aktivieren von automatischen Betriebssystemupgrades
-
-> [!IMPORTANT]
-> Die Wartungssteuerung für Betriebssystemimage-Upgrades in Azure-VM-Skalierungsgruppen befindet sich derzeit in der öffentlichen Vorschauphase (Public Preview).
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 ## <a name="limitations"></a>Einschränkungen
@@ -46,11 +41,11 @@ Der gesamte Workflow besteht aus den folgenden Schritten:
 Wartungskonfigurationen können mithilfe einer der folgenden Optionen erstellt und verwaltet werden:
 
 - [Azure PowerShell](virtual-machine-scale-sets-maintenance-control-powershell.md)
+- [Azure-Befehlszeilenschnittstelle](virtual-machine-scale-sets-maintenance-control-cli.md)
+- [Azure portal](virtual-machine-scale-sets-maintenance-control-portal.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Informieren Sie sich darüber, wie Sie per Wartungssteuerung und PowerShell steuern, wann die Wartung auf Ihre virtuellen Azure-VM-Skalierungsgruppen angewendet wird.
 
 > [!div class="nextstepaction"]
 > [Steuerung der Wartung von VM-Skalierungsgruppen mit PowerShell](virtual-machine-scale-sets-maintenance-control-powershell.md)

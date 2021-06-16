@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
-ms.custom: references_regions
-ms.openlocfilehash: fab2adb932d9c74b30b1775d8fa7ab257a4f00b0
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 6588ee515d46f3f300bf3c486f0d528c6f31df98
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887916"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032085"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -197,7 +197,7 @@ Wenn Ihr Konto nicht einer der integrierten Rollen zugewiesen ist, müssen Sie e
 - „Microsoft.Network/virtualNetworks/read“
 - "Microsoft.Network/expressRouteCircuits/read"
 
-Informationen zum Überprüfen von Benutzerzugriffsberechtigungen finden Sie unter [Häufig gestellte Fragen zu Datenverkehrsanalysen](traffic-analytics-faq.md).
+Informationen zum Überprüfen von Benutzerzugriffsberechtigungen finden Sie unter [Häufig gestellte Fragen zu Datenverkehrsanalysen](traffic-analytics-faq.yml).
 
 ### <a name="enable-network-watcher"></a>Aktivieren von Network Watcher
 
@@ -435,7 +435,7 @@ Tritt in Ihrer Umgebung bösartiger Datenverkehr auf? Wo stammt dieser her? Wohi
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-Antworten auf häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen zu Traffic Analytics](traffic-analytics-faq.md).
+Antworten auf häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen zu Traffic Analytics](traffic-analytics-faq.yml).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,15 +7,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 03/17/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e320795d5e8623dea9b97ac6371a0ffc6e6117f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 502bf926d7dd4f353a94ddb91c851bc274910fe0
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608544"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671546"
 ---
 # <a name="store-a-multi-line-secret-in-azure-key-vault"></a>Speichern eines mehrzeiligen Geheimnisses in Azure Key Vault
 

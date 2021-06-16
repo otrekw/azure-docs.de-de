@@ -1,21 +1,22 @@
 ---
 title: 'Durchsatzeinschränkungen bei der Erfassung von Datenströmen: Azure Time Series Insights Gen2 | Microsoft-Dokumentation'
 description: Erfahren Sie mehr über Grenzwerte beim Eingangsdurchsatz in Azure Time Series Insights Gen2.
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: d86cc6af34036f5bd638b4fc78abdb54d71e6859
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 70952f39b5e088220646eeabf6c1ac009eeb022c
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306516"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060721"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Durchsatzlimits für Datenstromerfassung
 

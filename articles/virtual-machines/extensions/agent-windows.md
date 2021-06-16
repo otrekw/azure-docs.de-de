@@ -8,12 +8,13 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 07/20/2019
-ms.openlocfilehash: bd845c5ef5a06e3a0bca1cebe54ded2e49355617
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6de81e9df2b66a27a15ff9578646aa8c6fb09c45
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309814"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663223"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Übersicht über den Agent für virtuelle Azure-Computer
 Der Agent für virtuelle Microsoft Azure-Computer (VM-Agent) ist ein sicherer, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent spielt eine primäre Rolle bei der Aktivierung und Ausführung von Azure-VM-Erweiterungen. VM-Erweiterungen ermöglichen es, VMs nach der Bereitstellung zu konfigurieren (beispielsweise, um Software zu installieren und zu konfigurieren). Außerdem ermöglichen VM-Erweiterungen den Einsatz von Wiederherstellungsfeatures wie das Zurücksetzen des Administratorkennworts einer VM. Ohne den Azure-VM-Agent können keine VM-Erweiterungen ausgeführt werden.

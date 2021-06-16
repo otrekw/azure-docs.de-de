@@ -6,16 +6,16 @@ ms.custom: devx-track-dotnet
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 08/06/2020
-ms.openlocfilehash: 4e287d600e596539aec2763157036d2bb71b141c
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 90baa5490283697cf021215d55a628182c43a124
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383320"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965530"
 ---
 # <a name="resource-manager-template-samples-for-creating-azure-app-services-web-apps-with-application-insights-monitoring"></a>Resource Manager-Vorlagenbeispiele zum Erstellen von Azure App Service-Web-Apps mit Application Insights-Überwachung
 
-Dieser Artikel enthält exemplarische [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) zum Bereitstellen und Konfigurieren [klassischer Application Insights-Ressourcen](../app/create-new-resource.md) in Verbindung mit einer Azure App Service-Web-App. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
+Dieser Artikel enthält exemplarische [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md) zum Bereitstellen und Konfigurieren [klassischer Application Insights-Ressourcen](../app/create-new-resource.md) in Verbindung mit einer Azure App Service-Web-App. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
