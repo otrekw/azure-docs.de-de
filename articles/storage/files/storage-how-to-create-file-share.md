@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 9caabb8dc7f09e4ef3852d9269d178c086744779
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurecli, references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 0100bd0e0eb0ee6dbd802ad1cf5df002a706c12c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789805"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676161"
 ---
 # <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Um eine Azure-Dateifreigabe zu erstellen, müssen Sie drei Fragen zur Verwendung beantworten:

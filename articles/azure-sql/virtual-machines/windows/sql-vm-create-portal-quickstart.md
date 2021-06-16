@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 335a63faa440e057c282f992b67b301289a7a4bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1186d6c138b555144d59414d7b1d9293474390d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97356955"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079623"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen von SQL Server 2017 auf einem virtuellen Windows-Computer im Azure-Portal
 
@@ -34,7 +34,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie im Azure-Portal einen 
 
   > [!TIP]
   > - Sie erfahren, wie Sie schnell einen virtuellen SQL-Computer bereitstellen und eine Verbindung damit herstellen. Weitere Informationen zu anderen Bereitstellungsoptionen für virtuelle SQL-Computer finden Sie im [Bereitstellungshandbuch für SQL Server auf einem virtuellen Windows-Computer im Azure-Portal](create-sql-vm-portal.md).
-  > - Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.md) weitere Informationen.
+  > - Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.yml) weitere Informationen.
 
 ## <a name="get-an-azure-subscription"></a><a id="subscription"></a> Einrichten eines Azure-Abonnements
 
@@ -71,7 +71,7 @@ Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Information
 
    ![Instanzendetails](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
 
-1. Geben Sie unter **Administratorkonto** einen Benutzernamen wie _azureuser_ sowie ein Kennwort an. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
+1. Geben Sie unter **Administratorkonto** einen Benutzernamen wie _azureuser_ sowie ein Kennwort an. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.
 
    ![Administratorkonto](./media/sql-vm-create-portal-quickstart/basics-administrator-account.png)
 

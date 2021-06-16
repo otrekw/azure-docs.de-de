@@ -4,12 +4,12 @@ description: Hier werden die Ressourcenanbieter beschrieben, die Azure Resource 
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d5936e1e4c80869495d5b71023e26264dc9a2cde
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d33debc8a7cfd72e919f7e93e1af50a653fa651e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319195"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968267"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-Ressourcenanbieter und -typen
 
@@ -315,7 +315,7 @@ West US
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Erstellen von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../templates/template-syntax.md). 
+* Weitere Informationen zum Erstellen von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../templates/syntax.md). 
 * Informationen zum Anzeigen der Vorlagenschemata für Ressourcenanbieter finden Sie unter [Vorlagenreferenz](/azure/templates/).
 * Eine Liste, die Ressourcenanbieter zu Azure-Diensten zuordnet, finden Sie unter [Ressourcenanbieter für Azure-Dienste](azure-services-resource-providers.md).
 * Informationen zum Anzeigen der Vorgänge für einen Ressourcenanbieter finden Sie unter [Azure-REST-API](/rest/api/).

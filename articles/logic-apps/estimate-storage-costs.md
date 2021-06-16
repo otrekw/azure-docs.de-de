@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: how-to
 ms.date: 05/13/2021
-ms.openlocfilehash: 093dd29a4e9eda9157a49c6cc44144b5e8a4bbec
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 860e84bf8e2378d4a9c433df81c5adfb6741169e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369147"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953835"
 ---
 # <a name="estimate-storage-costs-for-workflows-in-single-tenant-azure-logic-apps"></a>Abschätzen der Speicherkosten für Workflows in Azure Logic Apps für nur einen Mandanten
 
-Azure Logic Apps verwendet [Azure Storage](/azure/storage/) für alle Speichervorgänge. In herkömmlichen Azure Logic Apps für *Multi-Mandanten* werden alle Speichernutzung und -kosten an die Azure Logic App gebunden. Jetzt können Sie in Azure Logic Apps mit *nur einem Mandanten* Ihr eigenes Speicherkonto verwenden. Diese Speicherkosten werden separat in Ihrer Azure-Abrechnung. Diese Funktionalität bietet Ihnen mehr Flexibilität und Kontrolle über Ihre Logik-App-Daten.
+Azure Logic Apps verwendet [Azure Storage](../storage/index.yml) für alle Speichervorgänge. In herkömmlichen Azure Logic Apps für *Multi-Mandanten* werden alle Speichernutzung und -kosten an die Azure Logic App gebunden. Jetzt können Sie in Azure Logic Apps mit *nur einem Mandanten* Ihr eigenes Speicherkonto verwenden. Diese Speicherkosten werden separat in Ihrer Azure-Abrechnung. Diese Funktionalität bietet Ihnen mehr Flexibilität und Kontrolle über Ihre Logik-App-Daten.
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Workflows in der Umgebung von Azure Logic Apps mit nur einem Mandanten. Diese Workflows existieren in derselben Logik-App und in einem einzigen Mandanten, die sich denselben Speicherplatz teilen. Weitere Informationen finden Sie unter [Einzelmandant im Vergleich zu Multi-Mandanten und Integrationsserviceumgebung](single-tenant-overview-compare.md).

@@ -3,12 +3,12 @@ title: Schaltfläche zum Bereitstellen in Azure
 description: Verwenden Sie diese Schaltfläche, um Azure Resource Manager-Vorlagen aus einem GitHub-Repository bereitzustellen.
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: 77d23852941177aca35a582f64b21bfac02d7942
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5074d21867e931560367a6ab62c46e5753f1b00e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736899"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957805"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Verwenden einer Bereitstellungsschaltfläche zum Bereitstellen von Vorlagen aus einem GitHub-Repository
 
@@ -122,4 +122,4 @@ Das Portal zeigt einen Bereich an, indem Sie ganz einfach Parameterwerte angeben
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+- Weitere Informationen zu Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).

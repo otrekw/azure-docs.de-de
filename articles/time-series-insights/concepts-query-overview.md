@@ -3,19 +3,20 @@ title: Abfragen von Daten – Azure Time Series Insights Gen2 | Microsoft-Dokume
 description: Konzepte für die Datenabfrage und Übersicht über die REST-API in Azure Time Series Insights Gen2.
 author: shreyasharmamsft
 ms.author: shresha
-manager: dpalled
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: b1b055fa7f083bd8bccda16498e2894d5d67eace
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cecba9b63f201b220916baa9e534f5607156a35
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374132"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613748"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Abfragen von Daten in Azure Time Series Insights Gen2
 
@@ -54,7 +55,7 @@ Die meisten dieser APIs unterstützen die Batchausführung, um Batch-CRUD-Vorgä
 
 ## <a name="time-series-query-tsq-apis"></a>Zeitreihenabfrage (TSQ)-APIs
 
-Diese APIs sind in beiden Speichern (warm und kalt) unserer mehrschichtigen Speicherlösung verfügbar. 
+Diese APIs sind in beiden Speichern (warm und kalt) unserer mehrschichtigen Speicherlösung verfügbar.
 
 * [„Ereignisse abrufen“-API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents): Ermöglicht das Abfragen und Abrufen von unformatierten Ereignissen und den zugehörigen Zeitstempeln, wie sie in Azure Time Series Insights Gen2 vom Quellanbieter aufgezeichnet werden. Diese API ermöglicht das Abrufen von Rohereignissen für eine bestimmte Zeitreihen-ID und Suchzeitspanne. Diese API unterstützt die Paginierung, um das vollständige Antwortdataset für die ausgewählte Eingabe abzurufen.
 
@@ -64,7 +65,7 @@ Diese APIs sind in beiden Speichern (warm und kalt) unserer mehrschichtigen Spei
 * [„Reihe abrufen“-API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries): Ermöglicht das Abfragen und Abrufen berechneter Werte und der zugehörigen Ereigniszeitstempel durch Anwenden von Berechnungen, die durch Variablen in unformatierten Ereignissen definiert werden. Diese Variablen können im Zeitreihenmodell definiert oder in der Abfrage bereitgestellt werden. Diese API unterstützt die Paginierung, um das vollständige Antwortdataset für die ausgewählte Eingabe abzurufen.
 
 * [„Reihe aggregieren“-API](/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries): Ermöglicht das Abfragen und Abrufen aggregierter Werte und der zugehörigen Intervallzeitstempel durch Anwenden von Berechnungen, die durch Variablen in unformatierten Ereignissen definiert werden. Diese Variablen können im Zeitreihenmodell definiert oder in der Abfrage bereitgestellt werden. Diese API unterstützt die Paginierung, um das vollständige Antwortdataset für die ausgewählte Eingabe abzurufen.
-  
+
   Diese API gibt für eine angegebene Suchzeitspanne und ein angegebenes Intervall eine aggregierte Antwort pro Intervall pro Variable für eine Zeitreihen-ID zurück. Die Anzahl der Intervalle im Antwortdataset wird durch Zählen der Epochenticks (Anzahl der Millisekunden seit Beginn der Unix-Epoche am 1. Januar 1970) und die Division der Ticks durch die in der Abfrage angegebene Intervallzeitspanne berechnet.
 
   Die im Antwortdataset zurückgegebenen Zeitstempel stellen die linken Intervallgrenzen dar, nicht die Stichprobenereignisse im Intervall.
@@ -72,11 +73,11 @@ Diese APIs sind in beiden Speichern (warm und kalt) unserer mehrschichtigen Spei
 
 ### <a name="selecting-store-type"></a>Auswählen des Speichertyps
 
-Die obigen APIs können nur für einen der beiden Speichertypen („kalt“ oder „warm“) in einem einzelnen Aufruf ausgeführt werden. Parameter zum Abfragen der URL werden verwendet, um den [Speichertyp](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) anzugeben, für den die Abfrage ausgeführt werden soll. 
+Die obigen APIs können nur für einen der beiden Speichertypen („kalt“ oder „warm“) in einem einzelnen Aufruf ausgeführt werden. Parameter zum Abfragen der URL werden verwendet, um den [Speichertyp](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) anzugeben, für den die Abfrage ausgeführt werden soll.
 
-Wenn kein Parameter angegeben wird, wird die Abfrage standardmäßig im kalten Speicher ausgeführt. Wenn eine Abfrage einen Zeitraum beansprucht, in dem sowohl kalter als auch warmer Speicher genutzt wird, empfiehlt es sich, für eine optimale Erfahrung die Abfrage an den kalten Speicher weiterzuleiten, weil der warme Speicher nur teilweise Daten enthalten wird. 
+Wenn kein Parameter angegeben wird, wird die Abfrage standardmäßig im kalten Speicher ausgeführt. Wenn eine Abfrage einen Zeitraum beansprucht, in dem sowohl kalter als auch warmer Speicher genutzt wird, empfiehlt es sich, für eine optimale Erfahrung die Abfrage an den kalten Speicher weiterzuleiten, weil der warme Speicher nur teilweise Daten enthalten wird.
 
-[Azure Time Series Insights-Explorer](./concepts-ux-panels.md) und der [Power BI- Connector](./how-to-connect-power-bi.md) führen Aufrufe an die obigen APIs aus und wählen automatisch den richtigen „storeType“-Parameter aus, wenn dies relevant ist. 
+[Azure Time Series Insights-Explorer](./concepts-ux-panels.md) und der [Power BI- Connector](./how-to-connect-power-bi.md) führen Aufrufe an die obigen APIs aus und wählen automatisch den richtigen „storeType“-Parameter aus, wenn dies relevant ist.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

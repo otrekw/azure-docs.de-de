@@ -3,12 +3,12 @@ title: Ermitteln von Ressourceneigenschaften
 description: Beschreibt, wie Sie nach Ressourceneigenschaften suchen.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: aaa7bb13f49c1c742e44a255d4bbdbd2b1730939
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7f0267e4a5afaec0853b82624f4c2486fd8a70e0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736683"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959438"
 ---
 # <a name="discover-resource-properties"></a>Ermitteln von Ressourceneigenschaften
 
@@ -116,4 +116,4 @@ Um zu veranschaulichen, wie Sie Schemainformationen mithilfe dieses Tools abrufe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Vorlagenschemainformationen finden. Weitere Informationen zum Erstellen von Resource Manager-Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./template-syntax.md).
+In diesem Artikel haben Sie erfahren, wie Sie Vorlagenschemainformationen finden. Weitere Informationen zum Erstellen von Resource Manager-Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).

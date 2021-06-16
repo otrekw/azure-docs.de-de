@@ -3,13 +3,13 @@ title: Konfigurieren privater Endpunkte für Azure Event Grid-Themen oder -Domä
 description: In diesem Artikel wird beschrieben, wie private Endpunkte für Azure Event Grid-Themen oder -Domänen konfiguriert werden.
 ms.topic: how-to
 ms.date: 11/18/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 85546e99a8c431dc75b1af3d5044e06a18cf226d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: df0c855a50bdb8f617513e635a021032a1ebf7da
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770505"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706059"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Konfigurieren privater Endpunkte für Azure Event Grid-Themen oder -Domänen
 Sie können [private Endpunkte](../private-link/private-endpoint-overview.md) verwenden, um den Eingang von Ereignissen direkt aus Ihrem virtuellen Netzwerk in Ihre Themen und Domänen sicher über einen [privaten Link](../private-link/private-link-overview.md) zu ermöglichen, ohne das öffentliche Internet zu durchlaufen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihr Thema oder Ihre Domäne. Weitere konzeptionelle Informationen finden Sie unter [Netzwerksicherheit](network-security.md).

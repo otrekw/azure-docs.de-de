@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3613b8417c78d0a01582defb7396cc65521e2f4c
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 19bcd34dd8de094656993e79306f6ae369e99acd
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449480"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079047"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Übersicht über SQL Server auf virtuellen Azure-Computern (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -90,4 +90,4 @@ Führen Sie erste Schritte mit SQL Server auf virtuellen Linux-Computern durch:
 
 Antworten auf häufig gestellte Fragen zu SQL Server-VMs unter Linux:
 
-* [SQL Server auf virtuellen Azure-Computern – FAQ](frequently-asked-questions-faq.md)
+* [SQL Server auf virtuellen Azure-Computern – FAQ](frequently-asked-questions-faq.yml)

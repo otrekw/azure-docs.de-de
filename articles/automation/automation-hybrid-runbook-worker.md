@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 01/22/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2bb178302d399805eb84b233060d5717e2dba8b3
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 8716b8ddb267aa76dec7950026027442bf438e65
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830554"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853548"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Übersicht über Hybrid Runbook Worker
 
@@ -90,7 +90,7 @@ Azure Automation Hybrid Runbook Worker kann in Azure Government verwendet werden
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Updateverwaltung-Adressen für Hybrid Runbook Worker
 
-Zusätzlich zu den Standardadressen und -ports, die für Hybrid Runbook Worker erforderlich sind, verfügt Updateverwaltung über weitere Anforderungen an die Netzwerkkonfiguration, die im Abschnitt [Netzwerkplanung](./update-management/overview.md#ports) beschrieben werden.
+Zusätzlich zu den Standardadressen und -ports, die für Hybrid Runbook Worker erforderlich sind, verfügt Updateverwaltung über weitere Anforderungen an die Netzwerkkonfiguration, die im Abschnitt [Netzwerkplanung](./update-management/plan-deployment.md#ports) beschrieben werden.
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Azure Automation State Configuration auf einem Hybrid Runbook Worker
 

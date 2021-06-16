@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 04/07/2021
-ms.openlocfilehash: 8edac35fd83ef5dbf122e7f0959564fa072fbadd
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fa09a03a9ffda04e09bbd5708e97334304013078
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144923"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006579"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
 
@@ -21,13 +21,13 @@ ms.locfileid: "108144923"
 - Besitzer
 - Manager
 
-Nachdem Sie [ein Partner Center-Konto erstellt](./create-account.md) haben, können Sie das [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) verwenden, um Ihr Konto und Ihre Angebote zu verwalten.
+Nachdem Sie [ein Partner Center-Konto erstellt](./create-account.md) haben, können Sie das [Dashboard des kommerziellen Marketplace](https://go.microsoft.com/fwlink/?linkid=2165290) verwenden, um Ihr Konto und Ihre Angebote zu verwalten.
 
 ## <a name="access-your-account-settings"></a>Zugreifen auf Ihre Kontoeinstellungen
 
-Wenn nicht bereits geschehen, sollten Sie (oder der Administrator Ihrer Organisation) auf die [Kontoeinstellungen](https://partner.microsoft.com/dashboard/account/management) Ihres Partner Center-Kontos zugreifen.
+Wenn nicht bereits geschehen, sollten Sie (oder der Administrator Ihrer Organisation) auf die [Kontoeinstellungen](https://go.microsoft.com/fwlink/?linkid=2165291) Ihres Partner Center-Kontos zugreifen.
 
-1. Melden Sie sich beim [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace) in Partner Center mit dem Konto an, auf das Sie zugreifen möchten. Wenn Sie mehreren Konten angehören und sich mit einem anderen Konto angemeldet haben, können Sie die [Konten wechseln](switch-accounts.md).
+1. Melden Sie sich beim [Dashboard des kommerziellen Marketplace](https://go.microsoft.com/fwlink/?linkid=2165290) in Partner Center mit dem Konto an, auf das Sie zugreifen möchten. Wenn Sie mehreren Konten angehören und sich mit einem anderen Konto angemeldet haben, können Sie die [Konten wechseln](switch-accounts.md).
 1. Wählen Sie oben rechts **Einstellungen** (Zahnradsymbol) und dann **Kontoeinstellungen** aus.
 
     [ ![Screenshot des Menüs „Kontoeinstellungen“ in Partner Center](./media/manage-accounts/settings-account.png) ](./media/manage-accounts/settings-account.png#lightbox)
@@ -110,7 +110,7 @@ Auf der Seite **Vereinbarungen** können Sie eine Liste der von Ihnen autorisier
 
 Um auf die Seite „Vereinbarungen“ zuzugreifen, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) an.
 1. Wählen Sie oben rechts **Einstellungen** > **Kontoeinstellungen** aus.
 1. Wählen Sie unter **Kontoeinstellungen** die Option **Vereinbarungen** aus.
 
@@ -179,7 +179,7 @@ Die Einstellungen für die Geräteverwaltung gelten nur für die Veröffentlichu
 
 ## <a name="create-a-billing-profile"></a>Erstellen eines Abrechnungsprofils
 
-Wenn Sie ein Angebot für [Dynamics 365 for Customer Engagement und Power Apps](dynamics-365-customer-engage-offer-setup.md) oder [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) veröffentlichen, müssen Sie ein *Abrechnungsprofil* ausfüllen.
+Wenn Sie ein Angebot für [Dynamics 365 for Customer Engagement und Power Apps](dynamics-365-customer-engage-offer-setup.md) oder [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) veröffentlichen, müssen Sie ein *Abrechnungsprofil* ausfüllen.
 
 Die Abrechnungsadresse ist von Ihrer juristischen Entität bereits ausgefüllt. Sie können diese Adresse später aktualisieren. Die Felder „Steuer“ und „USt-IdNr.“ sind für einige Länder erforderlich und für andere optional. Der Name des Landes/der Region und der Firmenname können nicht bearbeitet werden.
 
