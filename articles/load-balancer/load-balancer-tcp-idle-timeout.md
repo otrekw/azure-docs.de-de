@@ -5,7 +5,7 @@ description: In diesem Artikel erfahren Sie, wie die TCP-Zurücksetzung und das 
 services: load-balancer
 documentationcenter: na
 author: asudbring
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurepowershell
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2020
 ms.author: allensu
-ms.openlocfilehash: 8a6be588544883b77c3ff115c9dba5e6ecd5fbd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a360f5972e4a0b35be20af18d365a88db779c85
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92747203"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695560"
 ---
 # <a name="configure-tcp-reset-and-idle-timeout-for-azure-load-balancer"></a>Konfigurieren der TCP-Zurücksetzung und des Leerlauftimeouts für Azure Load Balancer
 

@@ -12,19 +12,19 @@ ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: afb3b3d6a2828e17abbca54ab8bd716f06cb01f8
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 834afe8d0f0c5c53c2cb300d666dbcccbee46ec0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632743"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962413"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Verwalten von Azure AD B2C mit Microsoft Graph
 
 Mit Microsoft Graph können Sie Ressourcen in Ihrem Azure AD B2C-Verzeichnis verwalten. In der Microsoft Graph-API werden die folgenden Vorgänge für die Verwaltung von Azure AD B2C-Ressourcen unterstützt (einschließlich Benutzern, Identitätsanbietern, Benutzerflows, benutzerdefinierten Richtlinien und Richtlinienschlüsseln). Jeder Link in den folgenden Abschnitten bezieht sich auf die entsprechende Seite in der Referenz zur Microsoft Graph-API für diesen Vorgang. 
 
 > [!NOTE]
-> Sie können auch programmgesteuert ein Azure AD B2C-Verzeichnis selbst erstellen, zusammen mit der entsprechenden Azure-Ressource, die mit einem Azure-Abonnement verknüpft ist. Diese Funktionalität wird nicht über die Microsoft Graph-API bereitgestellt, sondern über die Azure-REST-API. Weitere Informationen finden Sie unter [B2C-Mandanten: Erstellen](https://docs.microsoft.com/rest/api/activedirectory/b2ctenants/create).
+> Sie können auch programmgesteuert ein Azure AD B2C-Verzeichnis selbst erstellen, zusammen mit der entsprechenden Azure-Ressource, die mit einem Azure-Abonnement verknüpft ist. Diese Funktionalität wird nicht über die Microsoft Graph-API bereitgestellt, sondern über die Azure-REST-API. Weitere Informationen finden Sie unter [B2C-Mandanten: Erstellen](/rest/api/activedirectory/b2ctenants/create).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

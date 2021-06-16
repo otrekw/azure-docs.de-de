@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d548f4d792d8980e2aa5040b09530eaf7868c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cee69fbd2cb829a7ec90179e94098e307e5a094
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609905"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968527"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Schützen von Microsoft 365 vor lokalen Angriffen
 
@@ -187,7 +187,7 @@ Verwenden Sie Azure AD-Funktionen für die sichere Geräteverwaltung.
 
 * **Legacyanwendungen** 
 
-   * Sie können für ältere Anwendungen, die keine moderne Authentifizierung unterstützen, Authentifizierung, Autorisierung und Remotezugriff aktivieren. Verwenden Sie den [Azure AD-Anwendungsproxy](../manage-apps/application-proxy.md). Sie können auch über eine Controllerlösung für das Netzwerk oder die Anwendungsbereitstellung mithilfe von [sicheren Hybridzugriffspartner-Integrationen](../manage-apps/secure-hybrid-access.md) aktiviert werden.   
+   * Sie können für ältere Anwendungen, die keine moderne Authentifizierung unterstützen, Authentifizierung, Autorisierung und Remotezugriff aktivieren. Verwenden Sie den [Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md). Sie können auch über eine Controllerlösung für das Netzwerk oder die Anwendungsbereitstellung mithilfe von [sicheren Hybridzugriffspartner-Integrationen](../manage-apps/secure-hybrid-access.md) aktiviert werden.   
 
    * Wählen Sie einen VPN-Anbieter aus, der die moderne Authentifizierung unterstützt. Integrieren Sie die kennwortlose Authentifizierung mit Azure AD. Bei einer lokalen Gefährdung können Sie Azure AD verwenden, um den Zugriff durch Deaktivierung des VPN zu deaktivieren oder zu sperren.
 
@@ -222,7 +222,7 @@ Nachdem Sie Ihre Umgebung so konfiguriert haben, dass Ihr Microsoft 365 vor lok
 
     Überwachen Sie alle [Azure AD-Risikoereignisse](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) auf verdächtige Aktivitäten. [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) ist nativ in das Azure Security Center integriert.
 
-    Definieren Sie die [benannten Standorte](../reports-monitoring/quickstart-configure-named-locations.md) im Netzwerk, um die aufwändige Erkennung anhand von standortbasierten Signalen zu vermeiden. 
+    Definieren Sie die [benannten Standorte](../conditional-access/location-condition.md) im Netzwerk, um die aufwändige Erkennung anhand von standortbasierten Signalen zu vermeiden. 
 *  **UEBA-Warnungen (User and Entity Behavior Analytics)** 
 
     Verwenden Sie UEBA, um Erkenntnisse aus der Anomalieerkennung zu gewinnen.

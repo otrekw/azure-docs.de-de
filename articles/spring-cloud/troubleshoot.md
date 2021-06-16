@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f08b9db58ee0e4ec7711afb95085ef27fa5db13c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 13f61378b16f41d80b5622a41a55c103247b381b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132537"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968993"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Behandlung von allgemeinen Problemen mit Azure Spring Cloud
 
@@ -115,7 +115,7 @@ Wenn Sie jedoch versuchen, die Dienstinstanz von Azure Spring Cloud mithilfe der
 * Die Ressourcengruppe für die Instanz wurde bereits erstellt.
 * Der Ressourcenname entspricht der Benennungsregel. die Instanz nur Kleinbuchstaben, Zahlen und Bindestriche enthält. Das erste Zeichen muss ein Buchstabe sein. Das letzte Zeichen muss ein Buchstabe oder eine Zahl sein. Der Wert muss zwischen 2 und 32 Zeichen lang sein.
 
-Wenn Sie die Azure Spring Cloud-Dienstinstanz mithilfe der Vorlage „Resource Manager“ einrichten möchten, lesen Sie zunächst den Artikel [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
+Wenn Sie die Azure Spring Cloud-Dienstinstanz mithilfe der Vorlage „Resource Manager“ einrichten möchten, lesen Sie zunächst den Artikel [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md).
 
 Der Name der Azure Spring Cloud-Dienstinstanz wird verwendet, um den Namen der Unterdomäne unter `azureapps.io` anzufordern. Die Bereitstellung ist nicht erfolgreich, wenn für den Namen ein Konflikt mit einem bereits vorhandenen Namen besteht. Sie werden möglicherweise weitere Informationen in den Aktivitätsprotokollen finden.
 

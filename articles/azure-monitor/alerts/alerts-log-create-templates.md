@@ -5,18 +5,18 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 560f26b712818327294791feb787b5fe7c9d7b82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f31371c3d33354c4d8e6c849c9739eb9001c7641
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036468"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961775"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Erstellen einer Protokollwarnung anhand einer Resource Manager-Vorlage
 
 Mithilfe von Protokollwarnungen können Benutzer eine [Log Analytics](../logs/log-analytics-tutorial.md)-Abfrage verwenden, um Ressourcenprotokolle mit einer bestimmten Häufigkeit auszuwerten und basierend auf den Ergebnissen eine Warnung auszulösen. Durch Regeln können über [Aktionsgruppen](./action-groups.md) einzelne oder mehrere Aktionen ausgelöst werden. Weitere Informationen zu Funktionen und zur Terminologie von Protokollwarnungen finden Sie [hier](./alerts-unified-log.md).
 
-In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) [Protokollwarnungen](./alerts-unified-log.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Protokollwarnungen werden im Ressourcenanbieter `Microsoft.Insights/scheduledQueryRules` erstellt. Weitere Informationen finden Sie in der API-Referenz für die [API für Regeln für geplante Abfragen](/rest/api/monitor/scheduledqueryrules/).
+In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md) [Protokollwarnungen](./alerts-unified-log.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Protokollwarnungen werden im Ressourcenanbieter `Microsoft.Insights/scheduledQueryRules` erstellt. Weitere Informationen finden Sie in der API-Referenz für die [API für Regeln für geplante Abfragen](/rest/api/monitor/scheduledqueryrules/).
 
 Die grundlegenden Schritte lauten wie folgt:
 

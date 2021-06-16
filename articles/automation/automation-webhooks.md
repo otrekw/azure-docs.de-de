@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 03/18/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd3d903aead4877fac9e5472f1ac9d579da979d2
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 6a80897fcd6676d0030417091f593c9967394314
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209569"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887364"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Starten eines Runbooks über einen Webhook
 
@@ -28,7 +28,7 @@ Informationen zu den Clientanforderungen für TLS 1.2 mit Webhooks finden Sie u
 
 Die folgende Tabelle beschreibt die Eigenschaften, die Sie für einen Webhook konfigurieren müssen.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | Name |Name des Webhooks. Sie können einen beliebigen Namen vergeben, da er nicht für den Client verfügbar gemacht wird. Sie benötigen den Namen nur zur Identifizierung des Runbooks in Azure Automation. Es empfiehlt sich, den Webhook entsprechend dem Client zu benennen, der ihn verwenden wird. |
 | URL |URL des Webhooks. Dies ist die eindeutige Adresse, die ein Client mit einer HTTP POST-Anforderung aufruft, um das mit dem Webhook verknüpfte Runbook zu starten. Sie wird beim Erstellen des Webhooks automatisch generiert. Sie können keine benutzerdefinierte URL angeben. <br> <br> Die URL enthält ein Sicherheitstoken, das es einem Drittanbietersystem ermöglicht, das Runbook ohne weitere Authentifizierung aufzurufen. Behandeln Sie die URL daher wie ein Kennwort. Aus Sicherheitsgründen können Sie die URL im Azure-Portal nur zu dem Zeitpunkt anzeigen, zu dem der Webhook erstellt wird. Sie sollten die URL zur späteren Verwendung an einem sicheren Ort speichern. |
@@ -45,7 +45,7 @@ Um Daten vom Client zu empfangen, unterstützt das Runbook einen einzelnen Param
 
 Der `WebhookData`-Parameter hat folgende Eigenschaften:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | `WebhookName` | Name des Webhooks |
 | `RequestHeader` | Die Hashtabelle mit den Headern der eingehenden POST-Anforderung |
@@ -121,7 +121,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Der Client empfängt einen der folgenden Rückgabecodes als Antwort auf die `POST`-Anforderung.
 
-| Code | Text | BESCHREIBUNG |
+| Code | Text | Beschreibung |
 |:--- |:--- |:--- |
 | 202 |Zulässig |Die Anforderung wurde akzeptiert, und das Runbook wurde erfolgreich in die Warteschlange gestellt. |
 | 400 |Ungültige Anforderung |Die Anforderung wurde aus einem der folgenden Gründe nicht akzeptiert: <ul> <li>Der Webhook ist abgelaufen.</li> <li>Der Webhook ist deaktiviert.</li> <li>Das Token in der URL ist ungültig.</li>  </ul> |
@@ -175,7 +175,7 @@ Diese Beispielvorlage erstellt eine Testumgebung und gibt den URI für den erste
             }
         },
         "_artifactsLocation": {
-            "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation/",
+            "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/",
             "type": "String",
             "metadata": {
                 "description": "URI to artifacts location"

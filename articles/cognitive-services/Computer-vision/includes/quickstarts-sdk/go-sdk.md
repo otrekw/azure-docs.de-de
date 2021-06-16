@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 615a3911c81a9111a3e7834bb3a80b74cfe51427
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4fe4dc0dda9c14ed9309422eb0b96c779fd44ee3
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110486534"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112084099"
 ---
 <a name="HOLTop"></a>
 
@@ -136,7 +136,7 @@ Fügen Sie der Funktion `main` den Beispielbildverweis und den Funktionsaufruf h
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_readinmain)]
 
 > [!TIP]
-> Sie können auch Text aus einem lokalen Bild extrahieren. Sehen Sie sich die [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient)-Methoden an, etwa **BatchReadFileInStream**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go#L1084) Szenarien zu lokalen Bildern.
+> Sie können auch Text aus einem lokalen Bild extrahieren. Sehen Sie sich die [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient)-Methoden an, etwa **BatchReadFileInStream**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) Szenarien zu lokalen Bildern.
 
 ### <a name="call-the-read-api"></a>Aufrufen der Lese-API
 

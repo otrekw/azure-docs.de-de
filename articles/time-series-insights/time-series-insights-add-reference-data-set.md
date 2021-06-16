@@ -3,20 +3,20 @@ title: Hinzufügen eines Referenzdatasets zu Ihrer Umgebung – Azure Time Serie
 description: In diesem Artikel wird beschrieben, wie Sie Ihrer Azure Time Series Insights-Umgebung ein Verweisdataset zum Ergänzen der Daten hinzufügen.
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
-ms.reviewer: jasonh, kfile
+author: esung22
+ms.author: elsung
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: d80d97a609aa3a464b9b114439fe7f4058e287c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73d3067d22c90919a1f592e8822fbcb66d96b086
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001829"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791173"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Erstellen eines Referenzdatasets für Ihre Azure Time Series Insights Gen1-Umgebung über das Azure-Portal
 
@@ -41,7 +41,7 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
 
 1. Suchen Sie die vorhandene Azure Time Series Insights-Umgebung. Wählen Sie im Azure-Portal im Menü auf der linken Seite **Alle Ressourcen** aus. Wählen Sie Ihre Azure Time Series Insights-Umgebung aus.
 
-1. Klicken Sie auf die Seite **Übersicht**. Erweitern Sie den Abschnitt **Essentials** am oberen Rand der Seite, suchen Sie die **URL des Time Series Insights-Explorers**, und öffnen Sie den Link.  
+1. Klicken Sie auf die Seite **Übersicht**. Erweitern Sie den Abschnitt **Essentials** am oberen Rand der Seite, suchen Sie die **URL des Time Series Insights-Explorers**, und öffnen Sie den Link.
 
    [![Abschnitt „Essentials“ erweitern](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 

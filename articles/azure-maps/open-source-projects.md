@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8be747d2027291203272a960efe6b26368471a50
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b00561875d7c8c08061c9fcbe46a88815ef2f32c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735045"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784641"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps-Community: Open-Source-Projekte
 
@@ -79,7 +79,7 @@ Im Folgenden finden Sie eine Liste von Open-Source-Projekten, mit denen die Funk
 | Projektname | BESCHREIBUNG |
 |-|-|
 | [Azure Maps Docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Quelle für die gesamte Dokumentation zu Azure Location Based Services |
-| [Azure Maps Creator-Tools (Vorschau)](https://github.com/Azure-Samples/AzureMapsCreator) | Python-Tools für Azure Maps Creator-Tools (Vorschau) |
+| [Azure Maps Creator-Tools](https://github.com/Azure-Samples/AzureMapsCreator) | Python-Tools für Azure Maps Creator. |
 
 [Hier](https://github.com/microsoft/Maps/blob/master/AzureMaps.md) finden Sie noch mehr Beispiele für von der Community erstellte Open-Source-Projekte für Azure Maps.
 

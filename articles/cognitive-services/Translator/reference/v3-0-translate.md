@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 431e42e422ecbaeb0e404928a505cf90180f6dd7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 090e00bbf9ca86115f286b8f24955f33c7230bf3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379335"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969407"
 ---
 # <a name="translator-30-translate"></a>Translator 3.0: Translate
 
@@ -50,9 +50,9 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
 
 | Query parameter (Abfrageparameter) | BESCHREIBUNG |
 | --- | --- |
-| from | _Optionaler Parameter_.  <br>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die [unterstützten Sprachen](../reference/v3-0-languages.md) mithilfe des`translation`-Bereichs. Wenn kein `from`-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet.  <br>  <br>Sie müssen den Parameter `from` anstelle der automatischen Erkennung verwenden, wenn Sie die Funktion für ein [dynamisches Wörterbuch](/azure/cognitive-services/translator/dynamic-dictionary) verwenden. |
+| from | _Optionaler Parameter_.  <br>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die [unterstützten Sprachen](../reference/v3-0-languages.md) mithilfe des`translation`-Bereichs. Wenn kein `from`-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet.  <br>  <br>Sie müssen den Parameter `from` anstelle der automatischen Erkennung verwenden, wenn Sie die Funktion für ein [dynamisches Wörterbuch](../dynamic-dictionary.md) verwenden. |
 | textType | _Optionaler Parameter_.  <br>Definiert, ob es sich bei dem zu übersetzenden Text um Nur-Text oder um HTML-Text handelt. Jede HTML muss ein wohlgeformtes vollständiges Element sein. Mögliche Werte sind: `plain` (Standard) oder `html`. |
-| category | _Optionaler Parameter_.  <br>Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung angibt. Dieser Parameter wird verwendet, um Übersetzungen von einem benutzerdefinierten System zu erhalten, das mit [Custom Translator](../customization.md) erstellt wurde. Fügen Sie diesem Parameter die Kategorie-ID Ihrer „Benutzerdefinierter Translator“-[Projektdetails](/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details) hinzu, um Ihr bereitgestelltes angepasstes System zu verwenden. Der Standardwert ist `general`. |
+| category | _Optionaler Parameter_.  <br>Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung angibt. Dieser Parameter wird verwendet, um Übersetzungen von einem benutzerdefinierten System zu erhalten, das mit [Custom Translator](../customization.md) erstellt wurde. Fügen Sie diesem Parameter die Kategorie-ID Ihrer „Benutzerdefinierter Translator“-[Projektdetails](../custom-translator/how-to-create-project.md#view-project-details) hinzu, um Ihr bereitgestelltes angepasstes System zu verwenden. Der Standardwert ist `general`. |
 | profanityAction | _Optionaler Parameter_.  <br>Gibt an, wie Obszönitäten in Übersetzungen behandelt werden. Mögliche Werte sind: `NoAction` (Standard), `Marked` oder `Deleted`. Nähere Informationen zur Handhabung von Obszönitäten finden Sie unter [Behandlung von Obszönitäten](#handle-profanity). |
 | profanityMarker | _Optionaler Parameter_.  <br>Gibt an, wie Obszönitäten in Übersetzungen markiert werden. Mögliche Werte sind: `Asterisk` (Standard) oder `Tag`. Nähere Informationen zur Handhabung von Obszönitäten finden Sie unter [Behandlung von Obszönitäten](#handle-profanity). |
 | includeAlignment | _Optionaler Parameter_.  <br>Gibt an, ob die Ausrichtungsprojektion des Quelltexts für den übersetzten Text verwendet wird. Mögliche Werte sind: `true` oder `false` (Standard). |
@@ -66,7 +66,7 @@ Anforderungsheader enthalten Folgendes:
 
 | Header | BESCHREIBUNG |
 | --- | --- |
-| Authentifizierungsheader | _Erforderlicher Anforderungsheader_.  <br>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](/azure/cognitive-services/translator/reference/v3-0-reference#authentication). |
+| Authentifizierungsheader | _Erforderlicher Anforderungsheader_.  <br>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication). |
 | Content-Type | _Erforderlicher Anforderungsheader_.  <br>Gibt den Inhaltstyp der Nutzlast an.  <br>Der zulässige Wert ist `application/json; charset=UTF-8`. |
 | Content-Length | _Erforderlicher Anforderungsheader_.  <br>Die Länge des Anforderungstexts. |
 | X-ClientTraceId | _Optional:_  <br>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Sie können diesen Header nur weglassen, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen Abfrageparameter namens `ClientTraceId` einschließen. |

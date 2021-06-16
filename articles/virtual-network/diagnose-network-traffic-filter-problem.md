@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: d6835d06015923a70301c95370c76efbd0c2163e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d3180ba6e8c19714759563eb79a8488929efe940
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776733"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675853"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers
 
@@ -170,13 +171,13 @@ Unabhängig davon, ob Sie das im [Szenario](#scenario) dieses Artikels dargestel
 
 | Eigenschaft                | Wert                                                                              |
 |---------                |---------                                                                           |
-| `Source`                  | Any                                                                                |
+| `Source`                  | Beliebig                                                                                |
 | Source port ranges      | Any                                                                                |
 | Destination             | Die IP-Adresse der VM, ein Bereich von IP-Adressen oder alle Adressen im Subnetz. |
 | Zielportbereiche | 80                                                                                 |
-| Protocol                | TCP                                                                                |
+| Protokoll                | TCP                                                                                |
 | Aktion                  | Allow                                                                              |
-| Priority                | 100                                                                                |
+| Priorität                | 100                                                                                |
 | Name                    | Allow-HTTP-All                                                                     |
 
 Nachdem Sie die Regel erstellt haben, wird Port 80 eingehender Datenverkehr aus dem Internet erlaubt, da die Priorität der Regel höher ist als die Standardsicherheitsregel mit dem Namen *DenyAllInBound*, die den Datenverkehr ablehnt. Weitere Informationen finden Sie unter [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule). Wenn verschiedene NSGs sowohl der Netzwerkschnittstelle als auch dem Subnetz zugeordnet sind, müssen Sie die gleiche Regel in beiden NSGs erstellen.

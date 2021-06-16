@@ -3,13 +3,13 @@ title: Erstellen eines Service Fabric-Clusters unter Windows in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von PowerShell einen Service Fabric-Windows-Cluster in einem virtuellen Azure-Netzwerk und einer Netzwerksicherheitsgruppe bereitstellen.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 2c719569fc97121a935c3dcbd4945e50863ecf80
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86245040"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082017"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Tutorial: Bereitstellen eines Service Fabric-Clusters mit Windows in einem virtuellen Azure-Netzwerk
 
@@ -145,8 +145,8 @@ In der Parameterdatei [azuredeploy.parameters][parameters] werden viele Werte de
 
 **Parameter** | **Beispielwert** | **Hinweise** 
 |---|---|---|
-|adminUserName|vmadmin| Administratorbenutzername für die Cluster-VMs [Benutzernamenanforderungen für virtuelle Computer](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm). |
-|adminPassword|Password#1234| Administratorkennwort für die Cluster-VMs [Kennwortanforderungen für virtuelle Computer](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
+|adminUserName|vmadmin| Administratorbenutzername für die Cluster-VMs [Benutzernamenanforderungen für virtuelle Computer](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-). |
+|adminPassword|Password#1234| Administratorkennwort für die Cluster-VMs [Kennwortanforderungen für virtuelle Computer](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-).|
 |clusterName|mysfcluster123| Name des Clusters Darf nur Buchstaben und Zahlen enthalten. Kann 3 bis 23 Zeichen enthalten.|
 |location|southcentralus| Standort des Clusters |
 |certificateThumbprint|| <p>Der Wert sollte leer sein, wenn ein selbstsigniertes Zertifikat erstellt oder eine Zertifikatsdatei bereitgestellt wird.</p><p>Um ein vorhandenes, zuvor in einen Schlüsseltresor hochgeladenes Zertifikat zu verwenden, geben Sie den Wert für den SHA-1-Zertifikatfingerabdruck ein. Beispiel: „6190390162C988701DB5676EB81083EA608DCCF3“.</p> |

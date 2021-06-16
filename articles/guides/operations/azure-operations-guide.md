@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 1eb0bf2c0e214c3e076895903176d15ee792c70c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f362bc76a3361b511b08a3822c01730c200d37b1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093044"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957027"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
@@ -280,7 +280,7 @@ Die folgenden Mechanismen sind für die Automatisierung der Bereitstellung verf�
 
 - **Vorlagenlinks:** In einer Resource Manager-Vorlage können Sie einen Link zu einer anderen Vorlage einrichten. Auf diese Weise können Sie die Bereitstellung in eine Gruppe von zielgerichteten, zweckgebundenen Vorlagen unterteilen.
 
-Sie können Resource Manager-Vorlagen in jedem beliebigen Text-Editor erstellen. Das Azure SDK für Visual Studio enthält aber Tools, die hierfür hilfreich sind. Mit Visual Studio können Sie der Vorlage Ressourcen über einen Assistenten hinzufügen und die Vorlage dann direkt aus Visual Studio bereitstellen und debuggen. Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
+Sie können Resource Manager-Vorlagen in jedem beliebigen Text-Editor erstellen. Das Azure SDK für Visual Studio enthält aber Tools, die hierfür hilfreich sind. Mit Visual Studio können Sie der Vorlage Ressourcen über einen Assistenten hinzufügen und die Vorlage dann direkt aus Visual Studio bereitstellen und debuggen. Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md).
 
 Zu guter Letzt können Sie vorhandene Ressourcengruppen über das Azure-Portal in eine wiederverwendbare Vorlage konvertieren. Dies kann hilfreich sein, wenn Sie aus einer vorhandenen Ressourcengruppe eine Vorlage erstellen möchten, die bereitgestellt werden kann, oder auch wenn Sie nur den zugrunde liegenden JSON-Code untersuchen möchten. Wählen Sie zum Exportieren einer Ressourcengruppe in den Einstellungen der Ressourcengruppe die Schaltfläche **Automatisierungsskript** aus.
 

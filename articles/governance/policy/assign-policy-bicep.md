@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung erstellen Sie mit einer Bicep (Vors
 ms.date: 05/20/2021
 ms.topic: quickstart
 ms.custom: subject-bicepqs
-ms.openlocfilehash: 6ce9eb5ab021e5d6d5d57b9c81f5d0f4d0360f01
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0f48804fd73b073479617aa3359e6d338056fb39
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475480"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007173"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-bicep-file"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen mit einer Bicep-Datei
 
@@ -20,12 +20,12 @@ Diese Schnellstartanleitung führt Sie schrittweise durch die Erstellung einer R
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Schaltfläche zum Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Schaltfläche zum Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.authorization%2Fazurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- Eine BICEP-Version `0.3` oder höher ist installiert. Weitere Informationen für den Fall, dass Sie noch nicht über die BICEP-CLI verfügen oder ein Update vornehmen müssen, finden Sie unter [Installieren von BICEP (Vorschau)](../../azure-resource-manager/templates/bicep-install.md).
+- Eine BICEP-Version `0.3` oder höher ist installiert. Weitere Informationen für den Fall, dass Sie noch nicht über die BICEP-CLI verfügen oder ein Update vornehmen müssen, finden Sie unter [Installieren von BICEP (Vorschau)](../../azure-resource-manager/bicep/install.md).
 
 ## <a name="review-the-bicep-file"></a>Überprüfen der Bicep-Datei
 

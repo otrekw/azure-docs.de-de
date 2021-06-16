@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 05/31/2017
-ms.openlocfilehash: 7759257f51cb00cd106af7e72e14c6660450cae9
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 50693e25b01d175c24931c5e2b298a00339fff33
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754351"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962485"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen
 Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf einem Windows-basierten virtuellen Azure-Computer bereit. Sie können diese Funktionen auf dem virtuellen Computer nutzen, indem Sie die Erweiterung in die Azure Resource Manager-Vorlage einbinden. Weitere Informationen zum Einbinden von Erweiterungen in eine Vorlage für virtuelle Computer finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen mit VM-Erweiterungen](../windows/template-description.md#extensions) . Dieser Artikel beschreibt das Hinzufügen der Azure-Diagnoseerweiterung zu einer Vorlage für virtuelle Windows-Computer.
@@ -172,4 +172,4 @@ Jede WADMetrics-Tabelle enthält die folgenden Spalten:
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine vollständige Beispielvorlage für einen virtuellen Windows-Computer mit Diagnoseerweiterung finden Sie unter [vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-monitoring-diagnostics-extension).
 * Stellen Sie die Azure Resource Manager-Vorlage über [Azure PowerShell](../windows/ps-template.md) oder die [Azure-Befehlszeile](../linux/create-ssh-secured-vm-from-template.md) bereit.
-* Weitere Informationen zum [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md)
+* Weitere Informationen zum [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md)

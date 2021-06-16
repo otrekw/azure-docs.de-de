@@ -3,18 +3,18 @@ title: Funktionen von Azure-Ressourcen-Manager-Vorlagen
 description: Es werden die Funktionen beschrieben, die in einer ARM-Vorlage (Azure Resource Manager) zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a9ea21a57404f7de832fb307bdabeb47f8cf3f58
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 012e570a769e8ea969d0c527a71053f55ecdf5a9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220180"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959405"
 ---
 # <a name="arm-template-functions"></a>ARM-Vorlagenfunktionen
 
 In diesem Artikel werden alle Funktionen beschrieben, die Sie in einer ARM-Vorlage (Azure Resource Manager) verwenden können. Informationen zur Verwendung von Funktionen in Ihrer Vorlage finden Sie unter [Vorlagensyntax](template-expressions.md).
 
-Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerdefinierte Funktionen](template-syntax.md#functions).
+Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerdefinierte Funktionen](./syntax.md#functions).
 
 Die meisten Funktionen funktionieren auf die gleiche Weise, wenn sie in einer Ressourcengruppe, einem Abonnement, einer Verwaltungsgruppe oder einem Mandanten bereitgestellt werden. Einige Funktionen können nicht in allen Bereichen verwendet werden. Diese sind in den folgenden Listen aufgeführt.
 
@@ -36,7 +36,7 @@ Die meisten Funktionen funktionieren auf die gleiche Weise, wenn sie in einer Re
 
 ## <a name="any-function"></a>Beliebige Funktion
 
-Die [any-Funktion](template-functions-any.md) wird in Bicep zur Unterstützung bei der Lösung von Problemen in Zusammenhang mit Datentypwarnungen bereitgestellt.
+Die [any-Funktion](../bicep/bicep-functions-any.md) wird in Bicep zur Unterstützung bei der Lösung von Problemen in Zusammenhang mit Datentypwarnungen bereitgestellt.
 
 ## <a name="array-functions"></a>Arrayfunktionen
 
@@ -253,7 +253,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](./syntax.md).
 * Weitere Informationen zum Mergen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen](linked-templates.md).
 * Wenn Sie beim Erstellen eines Ressourcentyps eine angegebene Anzahl von Wiederholungen durchlaufen möchten, finden Sie weitere Informationen unter [Ressourceniteration in ARM-Vorlagen](copy-resources.md).
 * Informationen zum Bereitstellen der von Ihnen erstellten Vorlage finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).

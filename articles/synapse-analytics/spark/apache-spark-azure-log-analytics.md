@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: d32d822d0ca85c25401f17411a8d34b4fb2e1eaf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e9c1299c0847aa30e1e3e198d2165e2674164458
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125396"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960838"
 ---
 # <a name="tutorial-use-azure-log-analytics-to-collect-and-visualize-metrics-and-logs-preview"></a>Tutorial: Erfassen und Visualisieren von Metriken und Protokollen mithilfe von Azure Log Analytics (Vorschau)
 
@@ -214,7 +214,7 @@ Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Pr
 
 ## <a name="limitation"></a>Einschränkung
 
-Azure Synapse Analytics-Arbeitsbereiche mit aktiviertem [verwaltetem virtuellem Netzwerk](/azure/synapse-analytics/security/synapse-workspace-managed-vnet) werden nicht unterstützt.
+Azure Synapse Analytics-Arbeitsbereiche mit aktiviertem [verwaltetem virtuellem Netzwerk](../security/synapse-workspace-managed-vnet.md) werden nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

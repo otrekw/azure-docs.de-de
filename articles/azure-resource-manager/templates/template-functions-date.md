@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Datumsangaben
 description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Arbeiten mit Datumsangaben verwendet werden können.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: abff5b86ad1e10042596b11f613cdb594e307209
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: c6bf3adca5dde4947e2c22dd8468f1b045f77120
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889925"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959712"
 ---
 # <a name="date-functions-for-arm-templates"></a>Datumsfunktionen für ARM-Vorlagen
 
@@ -16,8 +16,6 @@ Resource Manager stellt die folgenden Funktionen für das Arbeiten mit Datumsang
 
 * [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
-
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="datetimeadd"></a>dateTimeAdd
 
@@ -40,8 +38,6 @@ Der datetime-Wert, der durch Hinzufügen der Dauer zum Basiswert erhalten wird.
 ### <a name="examples"></a>Beispiele
 
 In der folgenden Beispielvorlage werden verschiedene Möglichkeiten zum Hinzufügen von time-Werten veranschaulicht.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -76,22 +72,6 @@ In der folgenden Beispielvorlage werden verschiedene Möglichkeiten zum Hinzufü
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param baseTime string = utcNow('u')
-
-var add3Years = dateTimeAdd(baseTime, 'P3Y')
-var subtract9Days = dateTimeAdd(baseTime, '-P9D')
-var add1Hour = dateTimeAdd(baseTime, 'PT1H')
-
-output add3YearsOutput string = add3Years
-output subtract9DaysOutput string = subtract9Days
-output add1HourOutput string = add1Hour
-```
-
----
-
 Wenn die obige Vorlage mit dem time-Basiswert `2020-04-07 14:53:14Z` bereitgestellt wird, erhalten wir folgende Ausgabe:
 
 | Name | Typ | Wert |
@@ -101,8 +81,6 @@ Wenn die obige Vorlage mit dem time-Basiswert `2020-04-07 14:53:14Z` bereitgeste
 | add1HourOutput | String | 07.04.2020 15:53:14 |
 
 Mit der nächsten Beispielvorlage wird veranschaulicht, wie die Startzeit für einen Automation-Zeitplan festgelegt wird.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -154,30 +132,6 @@ Mit der nächsten Beispielvorlage wird veranschaulicht, wie die Startzeit für e
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param omsAutomationAccountName string = 'demoAutomation'
-param scheduleName string = 'demSchedule1'
-param baseTime string = utcNow('u')
-
-var startTime = dateTimeAdd(baseTime, 'PT1H')
-
-...
-
-resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31' = {
-  name: concat(omsAutomationAccountName, '/', scheduleName)
-  properties: {
-    description: 'Demo Scheduler'
-    startTime: startTime
-    interval: 1
-    frequency: 'Hour'
-  }
-}
-```
-
----
-
 ## <a name="utcnow"></a>utcNow
 
 `utcNow(format)`
@@ -205,8 +159,6 @@ Der aktuelle UTC-datetime-Wert
 ### <a name="examples"></a>Beispiele
 
 In der folgenden Beispielvorlage werden verschiedene Formate für den datetime-Wert veranschaulicht.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -245,20 +197,6 @@ In der folgenden Beispielvorlage werden verschiedene Formate für den datetime-W
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param utcValue string = utcNow()
-param utcShortValue string = utcNow('d')
-param utcCustomValue string = utcNow('M d')
-
-output utcOutput string = utcValue
-output utcShortOutput string = utcShortValue
-output utcCustomOutput string = utcCustomValue
-```
-
----
-
 Die Ausgabe des vorherigen Beispiels variiert bei jeder Bereitstellung. Sie sollte jedoch folgender ähneln:
 
 | Name | Typ | Wert |
@@ -268,8 +206,6 @@ Die Ausgabe des vorherigen Beispiels variiert bei jeder Bereitstellung. Sie soll
 | utcCustomOutput | Zeichenfolge | 3 5 |
 
 Im folgenden Beispiel wird gezeigt, wie ein Wert der Funktion beim Festlegen eines Tagwerts verwendet wird.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -305,25 +241,6 @@ Im folgenden Beispiel wird gezeigt, wie ein Wert der Funktion beim Festlegen ein
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param utcShort string = utcNow('d')
-param rgName string
-
-resource myRg 'Microsoft.Resources/resourceGroups@2020-10-01' = {
-  name: rgName
-  location: 'westeurope'
-  tags: {
-    createdDate: utcShort
-  }
-}
-
-output utcShortOutput string = utcShort
-```
-
----
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](./syntax.md).

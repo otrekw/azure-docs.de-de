@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie den Speicherort von Ressourcen in einer ARM-V
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b2eba8e48a9b5ccc1ddb731690e99dcbbaa8f6fb
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 686975b73ee2ad0e487fad278f872e7d31753041
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321625"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960043"
 ---
 # <a name="set-resource-location-in-arm-template"></a>Festlegen der Ressourceniteration in ARM-Vorlagen
 
@@ -97,4 +97,4 @@ Das folgende Beispiel zeigt ein Speicherkonto, das an einem als Parameter angege
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine vollständige Liste der Funktionen in einer Vorlage finden Sie unter [Funktionen von ARM-Vorlagen](template-functions.md).
-* Weitere Informationen zu Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Weitere Informationen zu Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).

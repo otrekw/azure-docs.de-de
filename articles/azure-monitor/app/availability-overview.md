@@ -3,12 +3,12 @@ title: Übersicht über die Verfügbarkeit von Application Insights
 description: Richten Sie wiederkehrende Webtests ein, um die Verfügbarkeit und Reaktionsfähigkeit Ihrer App oder Website zu überwachen.
 ms.topic: conceptual
 ms.date: 05/04/2021
-ms.openlocfilehash: 4e0cbcec2773186feb38f26720d40c03e5817b7f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 94fe55a5bce0e915a092fd32ad5acf6936d59e61
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742605"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967015"
 ---
 # <a name="availability-tests-overview"></a>Übersicht über Verfügbarkeitstests
 
@@ -39,4 +39,4 @@ Es gibt drei Arten von Verfügbarkeitstests:
 * [Multi-step web tests (Mehrstufige Webtests)](availability-multistep.md)
 * [URL-Tests](monitor-web-app-availability.md)
 * [Erstellen und Ausführen von benutzerdefinierten Verfügbarkeitstests mit Azure Functions.](availability-azure-functions.md)
-* [Webtests: Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/templates/microsoft.insights/webtests?tabs=json)
+* [Webtests: Azure Resource Manager-Vorlage](/azure/templates/microsoft.insights/webtests?tabs=json)

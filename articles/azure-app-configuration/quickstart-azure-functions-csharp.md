@@ -6,14 +6,14 @@ author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.date: 09/28/2020
+ms.date: 06/02/2021
 ms.author: alkemper
-ms.openlocfilehash: 9d378b21132e6646329c459401255ef9a3ed9426
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf76cdc52ba7b4ebcf99e0b32d9b56e59a9bf837
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724237"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411663"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer Azure Functions-App mit Azure App Configuration
 
@@ -112,7 +112,8 @@ In diesem Projekt wird die [Abhängigkeitsinjektion in Azure Functions (.NET)](.
     }
     ```
 
-   Die `Function1`-Klasse und die `Run`-Methode sollten nicht statisch sein. Entfernen Sie den Modifizierer `static`, falls er automatisch generiert wurde.
+    > [!NOTE]
+    > Die `Function1`-Klasse und die `Run`-Methode sollten nicht statisch sein. Entfernen Sie den Modifizierer `static`, falls er automatisch generiert wurde.
 
 ## <a name="test-the-function-locally"></a>Lokales Testen der Funktion
 

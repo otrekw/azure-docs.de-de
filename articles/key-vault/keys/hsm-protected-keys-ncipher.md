@@ -10,12 +10,13 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: f2faabd92a1ebdf9734119d12aea49042b03497a
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fc2db49b11f0a209c013527afde56c0830ac990c
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162435"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539251"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Importieren von HSM-geschützten Schlüsseln für Key Vault (nCipher)
 
@@ -452,7 +453,7 @@ Gehen Sie wie folgt vor, wenn Sie diesen Befehl ausführen:
 
 * Der Parameter *protect* muss wie gezeigt auf den Wert **module** festgelegt werden. So wird ein modulgeschützter Schlüssel erstellt. Das BYOK-Toolset unterstützt OCS-geschützte Schlüssel nicht.
 * Ersetzen Sie den Wert von *contosokey* für **ident** und **plainname** durch einen beliebigen Zeichenfolgenwert. Um den Verwaltungsaufwand zu minimieren und das Fehlerrisiko zu senken, empfehlen wir, jeweils den gleichen Wert zu verwenden. Der Wert **Ident** darf nur Zahlen, Bindestriche und Kleinbuchstaben enthalten.
-* „pubexp“ wird in diesem Beispiel leer gelassen (Standard), aber Sie können bestimmte Werte angeben. Weitere Informationen finden Sie in der [nCipher-Dokumentation](https://www.entrust.com/-/media/documentation/brochures/entrust-nshield-general-purpose-hsms-br-a4.pdf).
+* „pubexp“ wird in diesem Beispiel leer gelassen (Standard), aber Sie können bestimmte Werte angeben. Weitere Informationen finden Sie in der [nCipher-Dokumentation](https://go.ncipher.com/rs/104-QOX-775/images/nShield-family-br-A4.pdf).
 
 Mit diesem Befehl wird im Ordner „%NFAST_KMDATA%\local“ eine Tokenschlüsseldatei erstellt, deren Name mit **key_simple_** beginnt. Danach folgt der Wert von **ident**, der im Befehl angegeben wurde. Beispiel: **key_simple_contosokey**. Diese Datei enthält einen verschlüsselten Schlüssel.
 

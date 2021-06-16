@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: b1551b4d9c28a693adb74436b6490ce7af62a977
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: ac2746c963c00ffd12a272b0c41322b0f9b9b24e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279850"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961631"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -30,9 +30,9 @@ In der Beispiel-Logik-App in diesem Thema wird ein [Office 365 Outlook-Trigger](
 
 Weitere Informationen zu Resource Manager-Vorlagen finden Sie in den folgenden Themen:
 
-* [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
-* [Bewährte Methoden für Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-best-practices.md)
-* [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](../azure-resource-manager/templates/templates-cloud-consistency.md)
+* [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md)
+* [Bewährte Methoden für Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/best-practices.md)
+* [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](../azure-resource-manager/templates/template-cloud-consistency.md)
 
 Vorlagenressourceninformationen, die speziell für Logik-Apps, Integrationskonten, Integrationskontoartefakte und Integrationsdienstumgebungen gelten, finden Sie unter [Microsoft.Logic-Ressourcentypen](/azure/templates/microsoft.logic/allversions).
 
@@ -47,7 +47,7 @@ Beginnen Sie für die Logic Apps-REST-API mit der [Übersicht über die Azure Lo
 
 ## <a name="template-structure"></a>Vorlagenstruktur
 
-Auf der obersten Ebene hat eine Resource Manager-Vorlage diese Struktur, die vollständig im Thema [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md) beschrieben ist:
+Auf der obersten Ebene hat eine Resource Manager-Vorlage diese Struktur, die vollständig im Thema [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md) beschrieben ist:
 
 ```json
 {
@@ -65,8 +65,8 @@ In einer Logik-App-Vorlage arbeiten Sie hauptsächlich mit diesen Vorlagenobjekt
 
 | attribute | BESCHREIBUNG |
 |-----------|-------------|
-| `parameters` | Deklariert die [Vorlagenparameter](../azure-resource-manager/templates/template-syntax.md#parameters) zum Akzeptieren der Werte, die verwendet werden sollen, wenn Ressourcen zur Bereitstellung in Azure erstellt und angepasst werden. Diese Parameter akzeptieren z. B. die Werte für den Namen und den Speicherort Ihrer Logik-App, Verbindungen und weitere Ressourcen, die für die Bereitstellung erforderlich sind. Sie können diese Parameterwerte in einer [Parameterdatei](#template-parameter-files) speichern, die weiter unten in diesem Thema beschrieben ist. Allgemeine Informationen finden Sie unter [Parameter – Struktur und Syntax einer Resource Manager-Vorlage](../azure-resource-manager/templates/template-syntax.md#parameters). |
-| `resources` | Definiert die [Ressourcen](../azure-resource-manager/templates/template-syntax.md#resources), die erstellt oder aktualisiert und in einer Azure-Ressourcengruppe bereitgestellt werden sollen, wozu Ihre Logik-App, Verbindungen, Azure-Speicherkonten usw. gehören. Allgemeine Informationen finden Sie unter [Ressourcen – Struktur und Syntax einer Resource Manager-Vorlage](../azure-resource-manager/templates/template-syntax.md#resources). |
+| `parameters` | Deklariert die [Vorlagenparameter](../azure-resource-manager/templates/syntax.md#parameters) zum Akzeptieren der Werte, die verwendet werden sollen, wenn Ressourcen zur Bereitstellung in Azure erstellt und angepasst werden. Diese Parameter akzeptieren z. B. die Werte für den Namen und den Speicherort Ihrer Logik-App, Verbindungen und weitere Ressourcen, die für die Bereitstellung erforderlich sind. Sie können diese Parameterwerte in einer [Parameterdatei](#template-parameter-files) speichern, die weiter unten in diesem Thema beschrieben ist. Allgemeine Informationen finden Sie unter [Parameter – Struktur und Syntax einer Resource Manager-Vorlage](../azure-resource-manager/templates/syntax.md#parameters). |
+| `resources` | Definiert die [Ressourcen](../azure-resource-manager/templates/syntax.md#resources), die erstellt oder aktualisiert und in einer Azure-Ressourcengruppe bereitgestellt werden sollen, wozu Ihre Logik-App, Verbindungen, Azure-Speicherkonten usw. gehören. Allgemeine Informationen finden Sie unter [Ressourcen – Struktur und Syntax einer Resource Manager-Vorlage](../azure-resource-manager/templates/syntax.md#resources). |
 |||
 
 Für eine Logik-App-Vorlage wird das folgende Dateinamenformat verwendet:
@@ -80,7 +80,7 @@ Für eine Logik-App-Vorlage wird das folgende Dateinamenformat verwendet:
 
 ## <a name="template-parameters"></a>Vorlagenparameter
 
-Eine Logik-App-Vorlage hat mehrere `parameters`-Objekte, die auf unterschiedlichen Ebenen vorhanden sind und unterschiedliche Funktionen erfüllen. Beispielsweise können Sie auf der obersten Ebene [Vorlagenparameter](../azure-resource-manager/templates/template-syntax.md#parameters) für die Werte deklarieren, die zur Bereitstellung akzeptiert und verwendet werden sollen, wenn Sie Ressourcen in Azure erstellen und bereitstellen. Dazu gehören zum Beispiel:
+Eine Logik-App-Vorlage hat mehrere `parameters`-Objekte, die auf unterschiedlichen Ebenen vorhanden sind und unterschiedliche Funktionen erfüllen. Beispielsweise können Sie auf der obersten Ebene [Vorlagenparameter](../azure-resource-manager/templates/syntax.md#parameters) für die Werte deklarieren, die zur Bereitstellung akzeptiert und verwendet werden sollen, wenn Sie Ressourcen in Azure erstellen und bereitstellen. Dazu gehören zum Beispiel:
 
 * Ihre Logik-App
 * Verbindungen, die in ihrer Logik verwendet werden, um über [verwaltete Connectors](../connectors/apis-list.md) auf andere Dienste und Systeme zuzugreifen
@@ -88,7 +88,7 @@ Eine Logik-App-Vorlage hat mehrere `parameters`-Objekte, die auf unterschiedlich
 
   Wird in Ihrer Logik-App beispielsweise ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) für B2B-Szenarien (Business-to-Business) verwendet, wird im `parameters`-Objekt auf oberster Ebene der Vorlage der Parameter deklariert, der die Ressourcen-ID für dieses Integrationskonto akzeptiert.
 
-Nachstehend sind die allgemeine Struktur und Syntax für eine Parameterdefinition angegeben, die vollständig unter [Parameter – Struktur und Syntax einer Resource Manager-Vorlage](../azure-resource-manager/templates/template-syntax.md#parameters) beschrieben ist:
+Nachstehend sind die allgemeine Struktur und Syntax für eine Parameterdefinition angegeben, die vollständig unter [Parameter – Struktur und Syntax einer Resource Manager-Vorlage](../azure-resource-manager/templates/syntax.md#parameters) beschrieben ist:
 
 ```json
 "<parameter-name>": {
@@ -149,7 +149,7 @@ Jeder dieser Parameter hat, sofern er kein Parameter ist, in dem ein sensibler o
 
 Weitere Informationen zum Sichern von Vorlagenparametern finden Sie in diesen Themen:
 
-* [Sicherheitsempfehlungen für Vorlagenparameter](../azure-resource-manager/templates/template-best-practices.md#parameters)
+* [Sicherheitsempfehlungen für Vorlagenparameter](../azure-resource-manager/templates/best-practices.md#parameters)
 * [Verbessern der Sicherheit für Vorlagenparameter](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [Übergeben von geschützten Parameterwerten mit Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -171,7 +171,7 @@ Nachstehend sind einige bewährte Methoden zum Definieren von Parametern beschri
 
 * Fügen Sie das `defaultValue`-Attribut, das leere Werte angeben kann, für alle Parameter ein, die keine sensiblen oder zu schützenden Daten enthalten. Verwenden Sie für Benutzernamen, Kennwörter und Geheimnisse immer geschützte Parameter. Um sensible Parameterwerte auszublenden oder zu schützen, befolgen Sie die Anweisungen in den folgenden Themen:
 
-  * [Sicherheitsempfehlungen für Vorlagenparameter](../azure-resource-manager/templates/template-best-practices.md#parameters)
+  * [Sicherheitsempfehlungen für Vorlagenparameter](../azure-resource-manager/templates/best-practices.md#parameters)
 
   * [Verbessern der Sicherheit für Vorlagenparameter](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
@@ -179,7 +179,7 @@ Nachstehend sind einige bewährte Methoden zum Definieren von Parametern beschri
 
 * Um Vorlagenparameternamen von Workflowdefinitionsparameternamen zu unterscheiden, können Sie beschreibende Vorlagenparameternamen verwenden, etwa: `TemplateFabrikamPassword`
 
-Weitere bewährte Methoden für Vorlagen finden Sie unter [Bewährte Methoden für Vorlagenparameter](../azure-resource-manager/templates/template-best-practices.md#parameters).
+Weitere bewährte Methoden für Vorlagen finden Sie unter [Bewährte Methoden für Vorlagenparameter](../azure-resource-manager/templates/best-practices.md#parameters).
 
 <a name="template-parameter-files"></a>
 
@@ -275,8 +275,8 @@ Zum Überprüfen der Ressourcendefinitionen für alle Ressourcen [laden Sie die 
 
 Allgemeine Informationen zu Vorlagenressourcen und deren Attributen finden Sie in den folgenden Themen:
 
-* [Ressourcen – Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md#resources)
-* [Bewährte Methoden für Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-best-practices.md#resources)
+* [Ressourcen – Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md#resources)
+* [Bewährte Methoden für Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/best-practices.md#resources)
 
 <a name="logic-app-resource-definition"></a>
 
@@ -328,7 +328,7 @@ Die [Workflowressourcendefinition Ihrer Logik-App in einer Vorlage](/azure/templ
 
 Die folgenden Attribute gehören speziell zur Ressourcendefinition Ihrer Logik-App:
 
-| attribute | Erforderlich | type | BESCHREIBUNG |
+| attribute | Erforderlich | Typ | Beschreibung |
 |-----------|----------|------|-------------|
 | `state` | Ja | String | Der Zustand Ihrer Logik-App bei der Bereitstellung, wobei `Enabled` bedeutet, dass Ihre Logik-App aktiv ist, und `Disabled` bedeutet, dass Ihre Logik-App inaktiv ist. Die Option `Disabled` können Sie beispielsweise verwenden, wenn Ihre Logik-App noch nicht aktiviert, aber bereits als Entwurfsversion bereitgestellt werden soll. |
 | `integrationAccount` | Nein | Object | Wird in Ihrer Logik-App ein Integrationskonto verwendet, das Artefakte für B2B-Szenarien (Business-to-Business) speichert, enthält dieses Objekt das `id`-Attribut, das die ID für das Integrationskonto angibt. |

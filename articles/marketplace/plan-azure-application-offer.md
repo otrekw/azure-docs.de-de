@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: c6dbab1b7fa1599add9fb48814a1138bf176c81d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8120bcb030f5a1ff6948757d8f65e3a21d31898f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127459"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955400"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Planen eines Azure-Anwendungsangebots für den kommerziellen Marketplace
 
@@ -33,7 +33,7 @@ Das Entwerfen, Erstellen und Testen dieser Azure-Anwendungsangebote erfordert te
 
 Nutzen Sie die folgenden Ressourcen, um Ihr Azure-Anwendungsangebot für den kommerziellen Marketplace zu planen.
 
-- [Verstehen von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
+- [Verstehen von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md)
 - Schnellstartanleitungen:
     - [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/)
     - [Leitfaden zu bewährten Methoden für Azure-Vorlagen](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
@@ -195,9 +195,9 @@ Sie legen Ihre Vorschauzielgruppe mithilfe von Azure-Abonnement-IDs fest, beglei
 
 ## <a name="technical-configuration"></a>Technische Konfiguration
 
-Für verwaltete Anwendungen, die Messungsereignisse mithilfe der [Marketplace-Messungsdienst-APIs](partner-center-portal/marketplace-metering-service-apis.md) ausgeben, müssen Sie die Identität angeben, die Ihr Dienst für das Ausgeben von Messungsereignissen verwendet.
+Für verwaltete Anwendungen, die Messungsereignisse mithilfe der [Marketplace-Messungsdienst-APIs](marketplace-metering-service-apis.md) ausgeben, müssen Sie die Identität angeben, die Ihr Dienst für das Ausgeben von Messungsereignissen verwendet.
 
-Diese Konfiguration ist erforderlich, wenn Sie das [Batchnutzungsereignis](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event) verwenden möchten. Wenn Sie [Nutzungsereignisse](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event) übermitteln möchten, können Sie [Instance Metadata Service](../active-directory/managed-identities-azure-resources/overview.md) verwenden, um das [JWT-Bearertoken (JSON Web Token)](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token) abzurufen.
+Diese Konfiguration ist erforderlich, wenn Sie das [Batchnutzungsereignis](marketplace-metering-service-apis.md#metered-billing-batch-usage-event) verwenden möchten. Wenn Sie [Nutzungsereignisse](marketplace-metering-service-apis.md#metered-billing-single-usage-event) übermitteln möchten, können Sie [Instance Metadata Service](../active-directory/managed-identities-azure-resources/overview.md) verwenden, um das [JWT-Bearertoken (JSON Web Token)](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token) abzurufen.
 
 - **Azure Active Directory-Mandanten-ID** (erforderlich): Im Azure-Portal müssen Sie eine [Azure AD-App (Active Directory) erstellen](../active-directory/develop/howto-create-service-principal-portal.md), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Um die [Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) für Ihre Azure Active Directory-App (Azure AD) zu ermitteln, navigieren Sie in Azure Active Directory zum Blatt [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade). Wählen Sie in der Spalte **Anzeigename** die App aus. Suchen Sie nach **Eigenschaften** und nach der **Verzeichnis-ID (Mandant)** (z. B. `50c464d3-4930-494c-963c-1e951d15360e`).
 - **Azure Active Directory-Anwendungs-ID** (erforderlich): Sie benötigen auch die [Anwendungs-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) und einen Authentifizierungsschlüssel. Um die Anwendungs-ID zu ermitteln, wechseln Sie in Azure Active Directory zum Blatt [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade). Wählen Sie in der Spalte **Anzeigename** die App aus, und suchen Sie dann nach der **Anwendungs-ID (Client)** (z. B. `50c464d3-4930-494c-963c-1e951d15360e`). Um den Authentifizierungsschlüssel zu suchen, wechseln Sie zu **Einstellungen**, und wählen Sie **Schlüssel** aus. Sie müssen eine Beschreibung und eine Dauer angeben und erhalten dann einen Zahlenwert.

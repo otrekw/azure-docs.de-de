@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b4d1041b9d330227fadf31f6afc1804174ea2ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea87a6729e6f8339ad92bc9d57e7152199349ac5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96340848"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965925"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>So stellt Azure AD die über die Cloud gesteuerte Verwaltung für lokale Workloads bereit
 
@@ -59,7 +59,7 @@ Azure AD verbessert die Verwaltung der in Active Directory integrierten Anwendu
 
 * **Sicherer Remotezugriff und bedingter Zugriff für lokale Anwendungen**
 
-Für viele Unternehmen ist der erste Schritt bei der Verwaltung des Zugriffs aus der Cloud für lokale AD-integrierte Web- und remotedesktopbasierte Anwendungen die Bereitstellung des [Anwendungsproxys](../manage-apps/application-proxy.md) vor diesen Anwendungen, um einen sicheren Remotezugriff zu ermöglichen.
+Für viele Unternehmen ist der erste Schritt bei der Verwaltung des Zugriffs aus der Cloud für lokale AD-integrierte Web- und remotedesktopbasierte Anwendungen die Bereitstellung des [Anwendungsproxys](../app-proxy/application-proxy.md) vor diesen Anwendungen, um einen sicheren Remotezugriff zu ermöglichen.
 
 Nach dem einmaligen Anmelden in Azure AD können Benutzer über eine externe URL oder ein internes Anwendungsportal auf Cloudanwendungen und lokale Anwendungen zugreifen. Der Anwendungsproxy bietet z. B. Remotezugriff und einmaliges Anmelden beim Remotedesktop, SharePoint sowie Apps wie Tableau und Qlik als auch Branchenanwendungen (LOB). Darüber hinaus können Richtlinien für bedingten Zugriff beinhalten, dass die [Nutzungsbedingungen](../conditional-access/terms-of-use.md) angezeigt werden, und dass [sichergestellt wird, dass der Benutzer diesen zugestimmt hat](../conditional-access/require-tou.md), bevor er auf eine Anwendung zugreifen kann.
 

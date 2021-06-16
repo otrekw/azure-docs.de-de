@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: lajanuar
-ms.openlocfilehash: fb31388647fc6022a2e6670baf7b3e73f345c36a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca2fab82dd08ea999186a430b78b6329c64ae816
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98898069"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409593"
 ---
 # <a name="unsupported-language-deployments"></a>Bereitstellungen in nicht unterstützten Sprachen
 
@@ -28,7 +28,7 @@ Wir verfügen jetzt über einen Prozess, der es Ihnen ermöglicht, Ihre nicht un
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Damit sich Ihre Modelle für die Bereitstellung eignen, müssen sie die folgenden Kriterien erfüllen:
-* Das Projekt, das das Modell enthält, muss mit dem Migrationstool vom Hub in den benutzerdefinierten Translator migriert worden sein.  Informationen zum Migrieren von Projekten und Arbeitsbereichen finden Sie [hier](how-to-migrate.md).
+* Das Projekt, das das Modell enthält, muss mit dem Migrationstool vom Hub in den benutzerdefinierten Translator migriert worden sein.  
 * Das Modell muss sich zum Zeitpunkt der Migration im Zustand „bereitgestellt“ befinden.  
 * Das Sprachenpaar des Modells muss ein nicht unterstütztes Sprachenpaar im benutzerdefinierten Translator sein.  Sprachenpaare, bei denen eine Sprache für die Übersetzung in oder von Englisch unterstützt wird, das Paar selbst aber kein Englisch umfasst, sind Kandidaten für Bereitstellungen in nicht unterstützten Sprachen.  So wird z. B. ein Hubmodell für ein Sprachenpaar Französisch-Deutsch als nicht unterstütztes Sprachenpaar betrachtet, obwohl Französisch-Englisch und Englisch-Deutsch als unterstützte Sprachenpaare gelten.
 

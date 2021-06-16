@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: branim
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 712e6422060619e5567a74d6335320eff9ed8e66
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: b20ab4720f9f172ef9248d3314b25922896eb8bd
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741231"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796928"
 ---
 # <a name="introduction-to-dynamic-node-tags"></a>Einführung in dynamische Knotentags
 Mit Knotentags können Sie dynamisch Tags für Knoten hinzufügen und entfernen, um die Platzierung von Diensten zu beeinflussen. Knotentagging ist äußerst flexibel und ermöglicht Änderungen an der Dienstplatzierung ohne Anwendungs- oder Clusterupgrades. Tags können jederzeit für Knoten hinzugefügt oder entfernt werden, und bei der Erstellung von Diensten können Anforderungen für bestimmte Tags angegeben werden. Die Taganforderungen eines Diensts können auch dynamisch während der Dienstausführung aktualisiert werden.
@@ -54,7 +54,7 @@ Damit dieses Feature funktioniert, müssen Sie die Konfiguration „NodeTaggingE
     "name": "PlacementAndLoadBalancing",
     "parameters": [
       {
-          "name": " NodeTaggingEnabled ",
+          "name": "NodeTaggingEnabled",
           "value": "true"
       }
     ]

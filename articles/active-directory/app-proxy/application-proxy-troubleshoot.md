@@ -11,16 +11,16 @@ ms.topic: troubleshooting
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 3c5dce26a8c1274e68bb1d6cbc497852b86a3821
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 1e46bb0fad37e1a6da3676578f6cd92af912cb3f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186229"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963899"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen
 
-Bei der Behandlung von Problemen mit dem Anwendungsproxy sollten Sie sich zunächst mit dem Ablauf der Fehlerbehebung vertraut machen, [Debuggen von Problemen mit Anwendungsproxyconnectors](../manage-apps/application-proxy-debug-connectors.md), um zu ermitteln, ob die Anwendungsproxyconnectors richtig konfiguriert wurden. Falls Sie immer noch Probleme mit dem Herstellen der Verbindung mit der Anwendung haben, helfen Ihnen die Problembehandlungsschritte unter [Debuggen von Problemen mit Anwendungsproxyanwendungen](../manage-apps/application-proxy-debug-apps.md) weiter.
+Bei der Behandlung von Problemen mit dem Anwendungsproxy sollten Sie sich zunächst mit dem Ablauf der Fehlerbehebung vertraut machen, [Debuggen von Problemen mit Anwendungsproxyconnectors](./application-proxy-debug-connectors.md), um zu ermitteln, ob die Anwendungsproxyconnectors richtig konfiguriert wurden. Falls Sie immer noch Probleme mit dem Herstellen der Verbindung mit der Anwendung haben, helfen Ihnen die Problembehandlungsschritte unter [Debuggen von Problemen mit Anwendungsproxyanwendungen](./application-proxy-debug-apps.md) weiter.
 
 Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen von Anwendungen Fehler auftreten, überprüfen Sie die folgenden Optionen, um zu ermitteln, ob der Microsoft Azure AD-Anwendungsproxy ordnungsgemäß funktioniert:
 
@@ -78,7 +78,7 @@ Diese Liste enthält Fehler, die bei Ihren Endbenutzern möglicherweise auftrete
 | Auf diese Unternehmens-App kann nicht zugegriffen werden. Sie haben keine Befugnis, auf diese Anwendung zuzugreifen. Fehler bei der Autorisierung. Stellen Sie sicher, dass Sie dem Benutzer Zugriff auf diese Anwendung zuweisen. | Unter Umständen erhalten Benutzer diesen Fehler, wenn sie versuchen, auf die von Ihnen veröffentlichte App zuzugreifen, wenn sie für die Anmeldung Microsoft-Konten anstelle ihrer Unternehmenskonten verwenden. Gastbenutzer erhalten diese Fehlermeldung möglicherweise auch. Microsoft-Kontobenutzer und Gäste können nicht auf IWA-Anwendungen zugreifen. Vergewissern Sie sich, dass Benutzer sich mithilfe ihres Unternehmenskontos anmelden, das der Domäne der veröffentlichten Anwendung entspricht.<br><br>Möglicherweise haben Sie den Benutzer nicht der Anwendung zugewiesen. Wechseln Sie zur Registerkarte **Anwendung**, und weisen Sie unter **Benutzer und Gruppen** diesen Benutzer oder die Benutzergruppe dieser Anwendung zu. |
 | Auf diese Unternehmens-App kann momentan nicht zugegriffen werden. Versuchen Sie es später erneut. Der Connector hat das Zeitlimit überschritten. | Die Benutzer erhalten beim Versuch, auf die von Ihnen veröffentlichte App zuzugreifen, unter Umständen diese Fehlermeldung, wenn sie für diese Anwendung auf der lokalen Seite nicht ordnungsgemäß definiert sind. Stellen Sie sicher, dass die Benutzer über die entsprechenden Berechtigungen verfügen, wie für diese Back-End-Anwendung auf dem lokalen Computer definiert. |
 | Auf diese Unternehmens-App kann nicht zugegriffen werden. Sie haben keine Befugnis, auf diese Anwendung zuzugreifen. Fehler bei der Autorisierung. Stellen Sie sicher, dass der Benutzer über eine Lizenz für Azure Active Directory Premium verfügt. | Möglicherweise erhält der Benutzer diese Fehlermeldung beim Zugriff auf die von Ihnen veröffentlichte App, wenn ihm nicht explizit eine Premium-Lizenz vom Administrator des Abonnenten zugewiesen wurde. Wechseln Sie zur Active Directory-Registerkarte **Lizenzen** des Abonnenten, und stellen Sie sicher, dass diesem Benutzer oder dieser Benutzergruppe eine Premium-Lizenz zugewiesen ist. |
-| Ein Server mit dem angegebenen Hostnamen konnte nicht gefunden werden. | Der Benutzer erhält unter Umständen beim Versuch, auf die von Ihnen veröffentlichte App zuzugreifen, diese Fehlermeldung, wenn die benutzerdefinierte Domäne der Anwendung nicht ordnungsgemäß konfiguriert wurde. Stellen Sie sicher, dass Sie ein Zertifikat für die Domäne hochgeladen und den DNS-Eintrag ordnungsgemäß konfiguriert haben, indem Sie die Schritte unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](../manage-apps/application-proxy-configure-custom-domain.md) ausführen. |
+| Ein Server mit dem angegebenen Hostnamen konnte nicht gefunden werden. | Der Benutzer erhält unter Umständen beim Versuch, auf die von Ihnen veröffentlichte App zuzugreifen, diese Fehlermeldung, wenn die benutzerdefinierte Domäne der Anwendung nicht ordnungsgemäß konfiguriert wurde. Stellen Sie sicher, dass Sie ein Zertifikat für die Domäne hochgeladen und den DNS-Eintrag ordnungsgemäß konfiguriert haben, indem Sie die Schritte unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](./application-proxy-configure-custom-domain.md) ausführen. |
 |Verboten: Auf diese Unternehmens-App kann nicht zugegriffen werden, ODER der Benutzer konnte nicht autorisiert werden. Stellen Sie sicher, dass der Benutzer in Ihrem lokalen AD definiert ist und dass er Zugriff auf die App in Ihrem lokalen AD hat. | Hier kann ein Problem beim Zugriff auf Autorisierungsinformationen vorliegen. Weitere Informationen finden Sie unter [Einige Anwendungen und APIs benötigen Zugriff auf Autorisierungsinformationen für Kontoobjekte]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information). Kurz gesagt: Fügen Sie das Computerkonto des App-Proxyconnectors zur Gruppe „Windows-Autorisierungszugriffsgruppe“ hinzu, um das Problem zu beheben. |
 
 ## <a name="my-error-wasnt-listed-here"></a>Mein Fehler wurde hier nicht aufgelistet
@@ -89,7 +89,7 @@ Wenn ein Fehler oder ein Problem mit dem Azure AD-Anwendungsproxy auftritt, der 
 * [Aktivieren des Azure AD-Anwendungsproxys](application-proxy-add-on-premises-application.md)
 * [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](application-proxy-add-on-premises-application.md)
 * [Einmaliges Anmelden aktivieren](application-proxy-configure-single-sign-on-with-kcd.md)
-* [Aktivieren des bedingten Zugriffs](../manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+* [Aktivieren des bedingten Zugriffs](./application-proxy-integrate-with-sharepoint-server.md)
 
 
 <!--Image references-->

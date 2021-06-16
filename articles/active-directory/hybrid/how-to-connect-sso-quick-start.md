@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba3bdc3f58395f17911042c699a0aca3cbae92a2
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 06c42fef2abddc5f04a2d74f30df5fcf54e1b1b3
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290630"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854412"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -202,7 +202,7 @@ Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateWhitelist](https://w
 
 #### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome (macOS und andere Nicht-Windows-Plattformen)
 
-Informationen dazu, wie Sie in Google Chrome unter macOS und anderen Nicht-Windows-Plattformen die Zulassungsliste für die Azure AD-URL für die integrierte Authentifizierung kontrollieren können, finden Sie unter [The Chromium Project Policy List](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) (Richtlinienliste von The Chromium Project).
+Informationen dazu, wie Sie in Google Chrome unter macOS und anderen Nicht-Windows-Plattformen die Zulassungsliste für die Azure AD-URL für die integrierte Authentifizierung kontrollieren können, finden Sie unter [The Chromium Project Policy List](https://chromeenterprise.google/policies/) (Richtlinienliste von The Chromium Project).
 
 Das Rollout der Azure AD-URL für Firefox und Google Chrome unter Mac mithilfe von Active Directory-Gruppenrichtlinienerweiterungen von Drittanbietern kann in diesem Artikel nicht behandelt werden.
 

@@ -6,12 +6,12 @@ manager: gwallace
 ms.topic: article
 ms.date: 02/03/2021
 ms.author: stevelas
-ms.openlocfilehash: 399bb001432759556cd0ba8bf15f7738dd4edb7c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dbd64d939f823e8dc7b0cd6d76233b07fce462d9
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781485"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537400"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Pushen und Pullen eines OCI-Artefakts unter Verwendung einer Azure-Containerregistrierung
 
@@ -183,7 +183,7 @@ az acr build --registry myregistry --image builds/hello-world:v1 \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich ausführlicher über die [ORAS-Bibliothek](https://github.com/deislabs/oras/tree/master/docs), und erfahren Sie unter anderem, wie Sie ein Manifest für ein Artefakt konfigurieren.
+* Informieren Sie sich ausführlicher über die [ORAS-Bibliothek](https://github.com/deislabs/oras), und erfahren Sie unter anderem, wie Sie ein Manifest für ein Artefakt konfigurieren.
 * Besuchen Sie das Repository [OCI Artifacts](https://github.com/opencontainers/artifacts) (OCI-Artefakte), und machen Sie sich mit Referenzinformationen zu neuen Artefakttypen vertraut.
 
 

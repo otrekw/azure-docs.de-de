@@ -3,12 +3,12 @@ title: Fehler „Auftragsgröße überschritten“
 description: Informationen dazu, wie Sie Fehler beheben, wenn die Auftragsgröße oder die Vorlage zu groß ist.
 ms.topic: troubleshooting
 ms.date: 03/23/2021
-ms.openlocfilehash: b39a0bba15e73bab1a85cbd9e36efebf82d6cf42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d7333e8faf44b5c2c872448960eff34ff61daf2
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889364"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963261"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Beheben von Fehlern des Typs „Auftragsgröße überschritten“
 
@@ -56,4 +56,4 @@ Sie können andere Ressourcen als abhängig von der verknüpften Vorlage festleg
 
 ## <a name="solution-2---reduce-name-size"></a>Lösung 2: Reduzieren der Größe des Namens
 
-Versuchen Sie, die Länge der Namen zu kürzen, die Sie für [Parameter](template-parameters.md), [Variablen](template-variables.md) und [Ausgaben](template-outputs.md) verwenden. Wenn diese Werte durch Kopierschleifen wiederholt werden, wird ein großer Name mehrmals vervielfacht.
+Versuchen Sie, die Länge der Namen zu kürzen, die Sie für [Parameter](./parameters.md), [Variablen](./variables.md) und [Ausgaben](./outputs.md) verwenden. Wenn diese Werte durch Kopierschleifen wiederholt werden, wird ein großer Name mehrmals vervielfacht.

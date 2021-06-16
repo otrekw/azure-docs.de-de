@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9d9ba7e3e898da8d5b7d1bb4fbc69554ee205147
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 56a2eff6a39f879de4e9d968eb470243014cb430
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028331"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982032"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für einen mehrinstanzenfähigen Azure Active Directory-Identitätsanbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -149,7 +149,7 @@ Sie können Azure AD als Anspruchsanbieter definieren, indem Sie Azure AD in der
     ```
 
 1. Ändern Sie unter dem Element **ClaimsProvider** den Wert für **Domain** in einen eindeutigen Wert, der eine Unterscheidung von anderen Identitätsanbietern ermöglicht.
-1. Aktualisieren Sie unter dem Element **TechnicalProfile** den Wert für **DisplayName**, z. B. `Contoso Employee`. Dieser Wert wird auf die Anmeldeschaltfläche auf der Anmeldeseite angezeigt.
+1. Aktualisieren Sie unter dem Element **TechnicalProfile** den Wert für **DisplayName**, z. B. `Multi-Tenant AAD`. Dieser Wert wird auf die Anmeldeschaltfläche auf der Anmeldeseite angezeigt.
 1. Legen Sie **client_id** auf die Anwendungs-ID der mehrinstanzenfähigen Azure AD-Anwendung fest, die Sie zuvor registriert haben.
 1. Aktualisieren Sie unter **CryptographicKeys** den Wert von **StorageReferenceId** auf den Namen des zuvor erstellten Richtlinienschlüssels. Beispiel: `B2C_1A_AADAppSecret`.
 

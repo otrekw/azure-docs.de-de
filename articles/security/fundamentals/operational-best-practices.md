@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 6634a536828b3c19d771d135fdb3a1224d3dfdf3
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e6bfa172624ba65c161abcba6dfd97b557fb8d91
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717421"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950463"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.
@@ -144,9 +144,9 @@ Im Folgenden sind bewährte Methoden für die Netzwerküberwachung und verfügba
 Mit den folgenden bewährten DevOps-Methoden können Sie sicherstellen, dass Ihr Unternehmen und Team produktiv und effizient arbeiten.
 
 **Bewährte Methode**: Automatisieren der Erstellung und Bereitstellung von Diensten.  
-**Detail**: [Infrastruktur als Code](/azure/devops/learn/what-is-infrastructure-as-code) sind Techniken und Methoden, die für IT-Experten die tägliche Erstellung und Verwaltung einer modularen Infrastruktur vereinfachen. IT-Experten können damit ihre moderne Serverumgebung so erstellen und verwalten, wie Softwareentwickler Anwendungscode erstellen und verwalten.
+**Detail**: [Infrastruktur als Code](/devops/deliver/what-is-infrastructure-as-code) sind Techniken und Methoden, die für IT-Experten die tägliche Erstellung und Verwaltung einer modularen Infrastruktur vereinfachen. IT-Experten können damit ihre moderne Serverumgebung so erstellen und verwalten, wie Softwareentwickler Anwendungscode erstellen und verwalten.
 
-Mit dem [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) können Sie Ihre Anwendungen mit einer deklarativen Vorlage bereitstellen. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung in jeder Phase des Anwendungslebenszyklus wiederholt bereitzustellen.
+Mit dem [Azure Resource Manager](../../azure-resource-manager/templates/syntax.md) können Sie Ihre Anwendungen mit einer deklarativen Vorlage bereitstellen. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung in jeder Phase des Anwendungslebenszyklus wiederholt bereitzustellen.
 
 **Bewährte Methode**: Automatisches Erstellen und Bereitstellen von Azure-Web-Apps oder -Clouddiensten.  
 **Detail**: Sie können Azure DevOps Projects für [automatisches Erstellen und Bereitstellen](/azure/devops/pipelines/index) in Azure-Web-Apps oder -Clouddiensten konfigurieren. Azure DevOps stellt die Binärdateien nach der Durchführung eines Builds in Azure nach jedem Einchecken von Code automatisch bereit. Der Prozess der Paketerstellung entspricht dem Befehl „Packen“ in Visual Studio, und die Veröffentlichungsschritte entsprechen dem Befehl „Veröffentlichen“ in Visual Studio.

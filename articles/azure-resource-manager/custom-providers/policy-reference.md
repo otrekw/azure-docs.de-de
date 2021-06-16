@@ -1,17 +1,17 @@
 ---
 title: Integrierte Richtliniendefinitionen für benutzerdefinierte Azure-Ressourcenanbieter
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für benutzerdefinierte Azure-Ressourcenanbieter. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.topic: reference
 author: jjbfour
 ms.author: jobreen
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5d13570d821f6c13c29397be012cf053fc66ad9d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0c5cacff57df7d3250748e9759bfcdb055d48e19
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073112"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020131"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-custom-resource-providers"></a>Integrierte Azure Policy-Definitionen für benutzerdefinierte Azure-Ressourcenanbieter
 

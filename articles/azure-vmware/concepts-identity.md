@@ -3,12 +3,12 @@ title: Konzepte – Identität und Zugriff
 description: Informationen zu den Identitäts- und Zugriffskonzepten von Azure VMware Solution
 ms.topic: conceptual
 ms.date: 05/13/2021
-ms.openlocfilehash: d5d4b7f09df86315553e4716ef38cdbb67a883f4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 832e2906656ef4da6cc9ad054927f17611fbbaf4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089576"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953158"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Identitätskonzepte von Azure VMware Solution
 
@@ -113,7 +113,7 @@ Nachdem Sie sich mit den Zugriffs- und Identitätskonzepten von Azure VMware Sol
 
 - [So aktivieren Sie die Azure VMware Solution-Ressource](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
 - [Details der einzelnen Berechtigungen](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
-- [Wie die Azure VMware Solution private Clouds überwacht und repariert](/azure/azure-vmware/concepts-private-clouds-clusters#host-monitoring-and-remediation)
+- [Wie die Azure VMware Solution private Clouds überwacht und repariert](./concepts-private-clouds-clusters.md#host-monitoring-and-remediation)
 
 
 

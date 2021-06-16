@@ -3,12 +3,13 @@ title: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen
 description: In diesem Artikel erfahren Sie, wie Sie eine Vorlagenspezifikation mit verknüpften Vorlagen erstellen.
 ms.topic: conceptual
 ms.date: 05/04/2021
-ms.openlocfilehash: 0a4d34016ce270c8921615868ef7019c33281905
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c4bcefadab5e9fcf19c06e3469ad077764355dad
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754053"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696347"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates"></a>Tutorial: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen
 
@@ -212,7 +213,7 @@ az ts show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
 
 ---
 
-## <a name="deploy-template-spec"></a>Bereitstellen von Vorlagenspezifikationen
+## <a name="deploy-template-spec"></a>Bereitstellen der Vorlagenspezifikationen
 
 Jetzt können Sie die Vorlagenspezifikation bereitstellen. Das Bereitstellen der Vorlagenspezifikation gestaltet sich genauso wie die Bereitstellung der enthaltenen Vorlage, mit der Ausnahme, dass Sie die Ressourcen-ID der Vorlagenspezifikation übergeben. Sie verwenden dieselben Bereitstellungsbefehle und übergeben bei Bedarf Parameterwerte für die Vorlagenspezifikation.
 

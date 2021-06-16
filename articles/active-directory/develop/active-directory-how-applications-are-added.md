@@ -13,12 +13,12 @@ ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: ac02638dfdef4867e93e277175df82be18be66a7
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 1abd8f23f54826e283f4e45aac8b4fb35dc0b144
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530096"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953642"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
 
@@ -74,7 +74,7 @@ Der Dienstprinzipal kann Folgendes enthalten:
   * Wenn Sie Microsoft 365 abonnieren oder ein Testabonnement starten, werden im Verzeichnis ein oder mehrere Dienstprinzipale erstellt, die die verschiedenen Dienste darstellen, mit denen die Funktionen von Microsoft 365 bereitgestellt werden.
   * Manche Microsoft 365-Dienste wie beispielsweise SharePoint erstellen fortlaufend neue Dienstprinzipale, um eine sichere Kommunikation zwischen den Komponenten (einschließlich Workflows) zu ermöglichen.
 * Hinzufügen einer Anwendung aus dem App-Katalog durch einen Administrator (dadurch wird ebenfalls ein zugrunde liegendes Anwendungsobjekt erstellt)
-* Hinzufügen einer Anwendung zur Verwendung des [Azure AD-Anwendungsproxys](../manage-apps/application-proxy.md)
+* Hinzufügen einer Anwendung zur Verwendung des [Azure AD-Anwendungsproxys](../app-proxy/application-proxy.md)
 * Verbinden einer Anwendung für einmaliges Anmelden über SAML oder einmaliges Anmelden (SSO) per Kennwort
 * Programmgesteuert über die Microsoft Graph-API oder über PowerShell
 

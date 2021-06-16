@@ -3,12 +3,13 @@ title: Aktivieren Sie Dead Lettering für Azure Service Bus-Warteschlangen und -
 description: In diesem Artikel wird erklärt, wie Sie Dead Lettering für Warteschlangen und Abonnements mithilfe von Azure-Portal, PowerShell, CLI und Programmiersprachen (C#, Java, Python und JavaScript) aktivieren
 ms.topic: how-to
 ms.date: 04/20/2021
-ms.openlocfilehash: 789f9221c224a70225849d05b736276b95ebfc11
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 13082574510a0668076b7191b6b973e5a1a7cd77
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989268"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671476"
 ---
 # <a name="enable-dead-lettering-on-message-expiration-for-azure-service-bus-queues-and-subscriptions"></a>Aktivieren Sie Dead Lettering beim Ablauf von Nachrichten für Azure Service Bus-Warteschlangen und -Abonnements
 Die Azure Service Bus-Warteschlangen und Themenabonnements bieten eine sekundäre Sub-Warteschlange, die sogenannte Dead-Letter-Queue (DLQ). Die Warteschlange für unzustellbare Nachrichten muss nicht explizit erstellt werden, und kann nicht gelöscht oder unabhängig von der Hauptentität verwaltet werden. Die Warteschlange für unzustellbare Nachrichten dient zum Speichern von Nachrichten, die an keinen Empfänger übermittelt oder nicht verarbeitet werden können. Weitere Informationen finden Sie unter [Übersicht über Service Bus-Warteschlangen für unzustellbare Nachrichten](service-bus-dead-letter-queues.md). In diesem Artikel werden verschiedene Möglichkeiten zum Aktivieren von Dead Lettering für Service Bus-Warteschlangen und -Abonnements beschrieben. 

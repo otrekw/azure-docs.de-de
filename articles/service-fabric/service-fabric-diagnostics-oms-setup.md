@@ -3,12 +3,13 @@ title: Einrichten der Überwachung mit Azure Monitor-Protokollen
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle für die Visualisierung und Analyse von Ereignissen einrichten, um Ihre Azure Service Fabric-Cluster zu überwachen.
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.openlocfilehash: 79dbc38f9d177bc3decf11673a68ce434f9a83bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: efc10740a37032eb00a69b6e2cefa502d601350a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625958"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677403"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Einrichten von Azure Monitor-Protokollen für einen Cluster
 

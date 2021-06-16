@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b7fcf7f60b18d0d44ded67cb5b22bcdcdcd56a77
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8a0dd8b20331d2f296767bc5628e901600f835e0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059325"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078148"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Tutorial: Herstellen einer Verbindung zwischen virtuellen Netzwerken mittels Peering über das Azure-Portal
 
@@ -105,7 +105,7 @@ Erstellen Sie eine VM in jedem virtuellen Netzwerk, damit in einem späteren Sch
     |Name|myVm1|
     |Standort| Wählen Sie **USA, Osten** aus.|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
-    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.|
    
 4. Wählen Sie eine VM-Größe für die Option **Größe** aus.
 5. Wählen Sie unter **Netzwerk** die folgenden Werte aus:
@@ -129,6 +129,8 @@ Führen Sie die Schritte 1 bis 6 mit den folgenden Änderungen erneut aus:
 |Virtuelles Netzwerk | myVirtualNetwork2|
 
 Die Erstellung der VMs kann einige Minuten dauern. Fahren Sie mit den restlichen Schritten erst fort, nachdem beide VMs erstellt wurden.
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="communicate-between-vms"></a>Kommunikation zwischen VMs
 

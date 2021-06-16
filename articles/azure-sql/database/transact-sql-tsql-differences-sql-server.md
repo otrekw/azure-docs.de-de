@@ -3,20 +3,20 @@ title: 'Auflösen von T-SQL-Unterschieden: Migration'
 description: Transact-SQL-Anweisungen, die in Azure SQL-Datenbank nicht vollständig unterstützt werden
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: migration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: reference
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: mokabiru
+ms.author: mokabiru
+ms.reviewer: mathoma
 ms.date: 12/03/2018
-ms.openlocfilehash: 1e286b2329cb98d580bbf64071ff8767db304a00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69e4e5ecd031026b9f1dfeec0ce34e6b2796cf2f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96461884"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707496"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank
 

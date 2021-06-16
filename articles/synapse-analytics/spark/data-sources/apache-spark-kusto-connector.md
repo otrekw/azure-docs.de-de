@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/19/2020
 ms.reviewer: ManojRaheja
 author: midesa
-ms.openlocfilehash: 9d2ddb263ac5c8459b2d15665da8243aed52e94a
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 5b7707354d7bf63671e21d1adbaebc2ef8d71d0e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795425"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952249"
 ---
 # <a name="azure-data-explorer-kusto-connector-for-apache-spark"></a>Azure Data Explorer-Connector (Kusto) für Apache Spark
 Der Azure Data Explorer-Connector (Kusto) für Apache Spark ist für die effiziente Übertragung von Daten zwischen Kusto-Clustern und Spark konzipiert. Dieser Connector ist in Python, Java und .NET verfügbar. Er ist in die Apache Spark 2.4-Runtime von Azure Synapse integriert.
@@ -78,7 +78,7 @@ df.write \
     .mode("Append") \
     .save()
 ```
-Darüber hinaus können Sie auch Batchschreibvorgänge mit Daten ausführen, indem Sie zusätzliche Erfassungseigenschaften bereitstellen. Weitere Informationen zu den unterstützten Erfassungseigenschaften finden Sie im [Referenzmaterial zu Kusto-Erfassungseigenschaften](https://docs.microsoft.com/azure/data-explorer/ingestion-properties).
+Darüber hinaus können Sie auch Batchschreibvorgänge mit Daten ausführen, indem Sie zusätzliche Erfassungseigenschaften bereitstellen. Weitere Informationen zu den unterstützten Erfassungseigenschaften finden Sie im [Referenzmaterial zu Kusto-Erfassungseigenschaften](/azure/data-explorer/ingestion-properties).
 
 
  ```python

@@ -3,20 +3,20 @@ title: Was ist die Hyperscale-Dienstebene?
 description: In diesem Artikel wird die Hyperscale-Dienstebene im vCore-basierten Kaufmodell in Azure SQL-Datenbank beschrieben. Zudem werden die Unterschiede zu den Dienstebenen „Universell“ und „Unternehmenskritisch“ erläutert.
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma
 ms.date: 3/31/2021
-ms.openlocfilehash: a32c839479b71f09663cc80f5b1a1b2af260ba0a
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a3a3ca1e4a6161f12b5695ac96a3d9e562a13947
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124759"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693336"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 

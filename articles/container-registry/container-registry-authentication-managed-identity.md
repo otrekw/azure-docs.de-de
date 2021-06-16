@@ -3,16 +3,16 @@ title: Authentifizieren mit einer verwalteten Identität
 description: Ermöglichen Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie eine benutzerseitig oder systemseitig zugewiesene verwaltete Azure-Identität verwenden.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 2ab27e8548882b5bd296dc45e4bb74d3d6ba357b
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 88952a032b9c4439620de05f181402f29639a5b2
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285483"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440662"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung 
 
-Verwenden Sie eine [verwaltete Identität für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md), um sich von einer anderen Azure-Ressource aus bei einer Azure Container Registry-Instanz zu authentifizieren, ohne Registrierungsanmeldeinformationen angeben oder verwalten zu müssen. Richten Sie beispielsweise eine benutzerseitig oder systemseitig zugewiesene verwaltete Identität für eine Linux-VM ein, um ebenso einfach wie bei Verwendung einer öffentlichen Registrierung auf Containerimages aus Ihrer Containerregistrierung zuzugreifen. Oder richten Sie einen Azure Kubernetes Service-Cluster ein, um seine [verwaltete Identität](../aks/use-managed-identity.md) zu verwenden, um Container-Images aus der Azure Container Registry für Pod-Bereitstellungen zu ziehen.
+Verwenden Sie eine [verwaltete Identität für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md), um sich von einer anderen Azure-Ressource aus bei einer Azure Container Registry-Instanz zu authentifizieren, ohne Registrierungsanmeldeinformationen angeben oder verwalten zu müssen. Richten Sie beispielsweise eine benutzerseitig oder systemseitig zugewiesene verwaltete Identität für eine Linux-VM ein, um ebenso einfach wie bei Verwendung einer öffentlichen Registrierung auf Containerimages aus Ihrer Containerregistrierung zuzugreifen. Oder richten Sie einen Azure Kubernetes Service-Cluster ein, um seine [verwaltete Identität](../aks/cluster-container-registry-integration.md) zu verwenden, um Container-Images aus der Azure Container Registry für Pod-Bereitstellungen zu ziehen.
 
 In diesem Artikel erfahren Sie mehr über verwaltete Identitäten und lernen Folgendes:
 
@@ -242,13 +242,13 @@ In diesem Artikel haben Sie mehr über die Verwendung verwalteter Identitäten m
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - Internal -->
-[az-login]: /cli/azure/reference-index#az-login
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-vm-create]: /cli/azure/vm#az-vm-create
-[az-vm-show]: /cli/azure/vm#az-vm-show
-[az-vm-identity-assign]: /cli/azure/vm/identity#az-vm-identity-assign
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-identity-show]: /cli/azure/identity#az-identity-show
+[az-login]: /cli/azure/reference-index#az_login
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-vm-create]: /cli/azure/vm#az_vm_create
+[az-vm-show]: /cli/azure/vm#az_vm_show
+[az-vm-identity-assign]: /cli/azure/vm/identity#az_vm_identity_assign
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-identity-show]: /cli/azure/identity#az_identity_show
 [azure-cli]: /cli/azure/install-azure-cli

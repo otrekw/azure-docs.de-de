@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f48d521ae7e90257ec5ae8e136e9d2a8c9013599
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1b81aa06ec60e16f1c8c93ae0bea370afddc0f1c
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110074505"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019465"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Logic Apps-Integrationsdienstumgebung muss mit kundenseitig verwalteten Schlüsseln verschlüsselt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1fafeaf6-7927-4059-a50a-8eb2a7a6f2b5) |Führen Sie eine Bereitstellung in einer Integrationsdienstumgebung durch, um die Verschlüsselung ruhender Logic Apps-Daten mithilfe kundenseitig verwalteter Schlüssel zu verwalten. Standardmäßig werden Kundendaten mit dienstseitig verwalteten Schlüsseln verschlüsselt. Kundenseitig verwaltete Schlüssel sind jedoch häufig zur Einhaltung gesetzlicher Bestimmungen erforderlich. Mit kundenseitig verwalteten Schlüsseln können die Daten mit einem Azure Key Vault-Schlüssel verschlüsselt werden, der von Ihnen erstellt wird und sich in Ihrem Besitz befindet. Sie verfügen über die volle Kontrolle über und Verantwortung für den Schlüssellebenszyklus, einschließlich Rotation und Verwaltung. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Logic%20Apps/LogicApps_ISEWithCustomerManagedKey_AuditDeny.json) |
 |[Logic Apps muss in Integrationsdienstumgebung bereitgestellt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdc595cb1-1cde-45f6-8faf-f88874e1c0e1) |Durch das Bereitstellen von Logic Apps in einer Integrationsdienstumgebung in einem virtuellen Netzwerk werden erweiterte Logic Apps-Netzwerkfeatures und -Sicherheitsfeatures freigeschaltet, und Sie erhalten mehr Kontrolle über Ihre Netzwerkkonfiguration. Weitere Informationen finden Sie unter [https://aka.ms/integration-service-environment](https://aka.ms/integration-service-environment). Durch die Bereitstellung in einer Integrationsdienstumgebung ist es außerdem möglich, eine Verschlüsselung mit kundenseitig verwalteten Schlüsseln durchzuführen. Diese Option bietet erweiterten Datenschutz, weil Sie Ihre Verschlüsselungsschlüssel selbst verwalten können. Dies ist häufig erforderlich, um die Konformitätsanforderungen zu erfüllen. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Logic%20Apps/LogicApps_LogicAppsInISE_AuditDeny.json) |

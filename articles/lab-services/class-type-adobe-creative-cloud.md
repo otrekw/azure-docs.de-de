@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 04/21/2021
 ms.author: nicolela
-ms.openlocfilehash: ef4245a3c17f95cf7e04b866939d4e92e39411c8
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 210fa647f12a786e357902bef3bbb3b20cca8077
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108281061"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962654"
 ---
 # <a name="set-up-a-lab-for-adobe-creative-cloud"></a>Einrichten eines Labs für Adobe Creative Cloud
 Bei [Adobe Creative Cloud](https://www.adobe.com/creativecloud.html) handelt es sich um eine Sammlung von Desktopanwendungen und Webdiensten, die für Fotografie, Design, Videos, Web, Benutzererfahrungen und Ähnliches verwendet werden.  Universitäten und weiterführende Schulen nutzen Creative Cloud in Kursen für digitale Kunst und Medien.  Einige der Medienprozesse von Creative Cloud erfordern möglicherweise mehr Rechen- und Visualisierungsleistung (GPU) als bei einem typischen Tablet oder Laptop bzw. bei einer typischen Arbeitsstation zur Verfügung steht.  Mit Azure Lab Services können Sie flexibel zwischen verschiedenen VM-Größen (und auch GPU-Größen) wählen.
@@ -33,7 +33,7 @@ Aktivieren Sie die Einstellungen für das Lab-Konto, die in der nachfolgenden Ta
 
 ### <a name="lab-settings"></a>Lab-Einstellungen
 
-Die erforderliche VM-Größe für Ihr Lab hängt davon ab, welche Arten von Projekten Ihre Kursteilnehmer erstellen.  Die meisten [Creative Cloud-Apps](https://helpx.adobe.com/creative-cloud/system-requirements.html) unterstützen GPU-basierte Beschleunigung und erfordern eine GPU, damit Features ordnungsgemäß funktionieren.  Es empfiehlt sich, die Projekte zu testen, die von Ihren Kursteilnehmern erstellt werden, um eine angemessene Leistung sicherzustellen und die Wahl der passenden VM-Größe zu gewährleisten.  Die folgende Tabelle gibt Aufschluss über die empfohlene [VM-Größe](https://docs.microsoft.com/azure/lab-services/administrator-guide#vm-sizing) für die Verwendung mit Creative Cloud:  
+Die erforderliche VM-Größe für Ihr Lab hängt davon ab, welche Arten von Projekten Ihre Kursteilnehmer erstellen.  Die meisten [Creative Cloud-Apps](https://helpx.adobe.com/creative-cloud/system-requirements.html) unterstützen GPU-basierte Beschleunigung und erfordern eine GPU, damit Features ordnungsgemäß funktionieren.  Es empfiehlt sich, die Projekte zu testen, die von Ihren Kursteilnehmern erstellt werden, um eine angemessene Leistung sicherzustellen und die Wahl der passenden VM-Größe zu gewährleisten.  Die folgende Tabelle gibt Aufschluss über die empfohlene [VM-Größe](./administrator-guide.md#vm-sizing) für die Verwendung mit Creative Cloud:  
 
 | Lab-Einstellungen | Wert/Anweisungen |
 | ------------ | ------------------ |

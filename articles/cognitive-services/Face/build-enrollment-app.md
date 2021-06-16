@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 2bc2b12127af175d051f433f15ad4a9ffdee0467
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: ad79bbd166e12c24339e13f38b4e10ca9ea2b549
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627778"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966622"
 ---
 # <a name="build-a-react-app-to-add-users-to-a-face-service"></a>Erstellen einer React-App zum Hinzufügen von Benutzern zu einem Gesichtserkennungs-Dienst
 
@@ -88,7 +88,7 @@ Um die Funktionalität der App so zu erweitern, dass Sie die gesamte Erfahrung a
 
 #### <a name="android"></a>[Android](#tab/android)
 
-Stellen Sie zunächst sicher, dass Ihre App für die Produktionsbereitstellung bereit ist: Entfernen Sie alle Schlüssel oder Geheimnisse aus dem App-Code, und stellen Sie sicher, dass Sie die [bewährten Sicherheitsmethoden](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) befolgt haben.
+Stellen Sie zunächst sicher, dass Ihre App für die Produktionsbereitstellung bereit ist: Entfernen Sie alle Schlüssel oder Geheimnisse aus dem App-Code, und stellen Sie sicher, dass Sie die [bewährten Sicherheitsmethoden](../cognitive-services-security.md?tabs=command-line%2ccsharp) befolgt haben.
 
 Wenn Sie bereit sind, Ihre App für die Produktion freizugeben, generieren Sie eine releasebereite APK-Datei, bei der es sich um das Paketdateiformat für Android-Apps handelt. Diese APK-Datei muss mit einem privaten Schlüssel signiert werden. Mit diesem Releasebuild können Sie beginnen, die App direkt an Ihre Geräte zu verteilen. 
 
@@ -98,7 +98,7 @@ Wenn Sie ein signiertes APK-Paket erstellt haben, finden Sie weitere Information
 
 #### <a name="ios"></a>[iOS](#tab/ios)
 
-Stellen Sie zunächst sicher, dass Ihre App für die Produktionsbereitstellung bereit ist: Entfernen Sie alle Schlüssel oder Geheimnisse aus dem App-Code, und stellen Sie sicher, dass Sie die [bewährten Sicherheitsmethoden](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) befolgt haben. Sie müssen zur Vorbereitung der Veröffentlichung ein App-Symbol und einen Startbildschirm erstellen und Einstellungen für die Bereitstellungsinformationen konfigurieren. Befolgen Sie die [Dokumentation von Xcode](https://developer.apple.com/documentation/Xcode/preparing_your_app_for_distribution), um Ihre App für die Veröffentlichung vorzubereiten. 
+Stellen Sie zunächst sicher, dass Ihre App für die Produktionsbereitstellung bereit ist: Entfernen Sie alle Schlüssel oder Geheimnisse aus dem App-Code, und stellen Sie sicher, dass Sie die [bewährten Sicherheitsmethoden](../cognitive-services-security.md?tabs=command-line%2ccsharp) befolgt haben. Sie müssen zur Vorbereitung der Veröffentlichung ein App-Symbol und einen Startbildschirm erstellen und Einstellungen für die Bereitstellungsinformationen konfigurieren. Befolgen Sie die [Dokumentation von Xcode](https://developer.apple.com/documentation/Xcode/preparing_your_app_for_distribution), um Ihre App für die Veröffentlichung vorzubereiten. 
 
 Wenn Sie bereit sind, Ihre App für die Produktion freizugeben, erstellen Sie ein Archiv Ihrer App. Befolgen Sie die [Xcode-Dokumentation](https://developer.apple.com/documentation/Xcode/distributing_your_app_for_beta_testing_and_releases) zum Erstellen eines Archivbuilds und die Optionen zum Verteilen Ihrer App.  
 

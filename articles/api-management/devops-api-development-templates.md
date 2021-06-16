@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49dc71dac6d246907de3498ed0a39541a3caf522
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183157"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888426"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>CI/CD für API Management mit Azure Resource Manager-Vorlagen
 
@@ -41,7 +41,7 @@ In diesem Beispiel werden zwei Bereitstellungsumgebungen verwendet: eine für di
 * API-Entwickler haben Zugriff auf die Instanz „Entwicklung“ und können sie zum Entwickeln und Testen ihrer APIs verwenden. 
 * Ein zugeordnetes Team mit dem Namen *API publishers* (API-Herausgeber) verwaltet die Instanz „Produktion“.
 
-Der entscheidende Punkt bei diesem vorgeschlagenen Ansatz ist, alle API Management-Konfigurationen in [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md) aufzubewahren. Die Organisation sollte diese Vorlagen in einem System für die Quellcodeverwaltung (etwa Git) vorhalten. Wie in der Abbildung dargestellt, enthält das Repository „Publisher“ (Herausgeber) alle Konfigurationen der API Management-Instanz „Produktion“ als Vorlagensammlung:
+Der entscheidende Punkt bei diesem vorgeschlagenen Ansatz ist, alle API Management-Konfigurationen in [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md) aufzubewahren. Die Organisation sollte diese Vorlagen in einem System für die Quellcodeverwaltung (etwa Git) vorhalten. Wie in der Abbildung dargestellt, enthält das Repository „Publisher“ (Herausgeber) alle Konfigurationen der API Management-Instanz „Produktion“ als Vorlagensammlung:
 
 |Vorlage  |BESCHREIBUNG  |
 |---------|---------|

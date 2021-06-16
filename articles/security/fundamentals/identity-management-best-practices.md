@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: f69fe97c33a17ade39f67078d5b035dac4d0bfaf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 227b8d9c797a8fec81d8792a48f456bcda6a838c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034165"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958508"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -113,7 +113,7 @@ In einer primär auf Mobil- und Cloudtechnologie ausgelegten Welt möchten Sie e
 Indem Sie für alle Ihre Apps und Ressourcen die gleiche Identitätslösung verwenden, können Sie SSO erreichen. Ihre Benutzer können die gleiche Gruppe von Anmeldeinformationen zum Anmelden und Zugreifen auf die benötigten Ressourcen nutzen. Dabei spielt es keine Rolle, ob eine Ressource lokal ist oder sich in der Cloud befindet.
 
 **Bewährte Methode**: Aktivieren Sie einmaliges Anmelden.  
-**Detail**: Azure AD [erweitert das lokale Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md) auf die Cloud. Benutzer können ihr primäres Geschäfts-, Schul- oder Unikonto für ihre in die Domäne eingebundenen Geräte und Unternehmensressourcen sowie alle Web-und SaaS-Anwendungen verwenden, die sie benötigen, um ihre Arbeit zu erledigen. Benutzer müssen sich keine Vielzahl von Benutzernamen und Kennwörtern mehr merken, und ihr Anwendungszugriff kann basierend auf ihrer Gruppenmitgliedschaft in der Organisation sowie ihrem Mitarbeiterstatus automatisch bereitgestellt (oder deaktiviert) werden. Und Sie können diesen Zugriff für Katalog-Apps oder für Ihre eigenen lokalen Apps steuern, die Sie über den [Azure AD-Anwendungsproxy](../../active-directory/manage-apps/application-proxy.md) entwickelt und veröffentlicht haben.
+**Detail**: Azure AD [erweitert das lokale Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md) auf die Cloud. Benutzer können ihr primäres Geschäfts-, Schul- oder Unikonto für ihre in die Domäne eingebundenen Geräte und Unternehmensressourcen sowie alle Web-und SaaS-Anwendungen verwenden, die sie benötigen, um ihre Arbeit zu erledigen. Benutzer müssen sich keine Vielzahl von Benutzernamen und Kennwörtern mehr merken, und ihr Anwendungszugriff kann basierend auf ihrer Gruppenmitgliedschaft in der Organisation sowie ihrem Mitarbeiterstatus automatisch bereitgestellt (oder deaktiviert) werden. Und Sie können diesen Zugriff für Katalog-Apps oder für Ihre eigenen lokalen Apps steuern, die Sie über den [Azure AD-Anwendungsproxy](../../active-directory/app-proxy/application-proxy.md) entwickelt und veröffentlicht haben.
 
 Verwenden Sie SSO, um Benutzern zu ermöglichen, basierend auf ihrem Geschäfts-, Schul- oder Unikonto in Azure AD auf ihre [SaaS-Anwendungen](../../active-directory/manage-apps/what-is-single-sign-on.md) zuzugreifen. Dies gilt nicht nur für Microsoft SaaS-Apps, sondern auch für andere Apps, z.B. [Google-Apps](../../active-directory/saas-apps/google-apps-tutorial.md) und [Salesforce](../../active-directory/saas-apps/salesforce-tutorial.md). Sie können Ihre Anwendung so konfigurieren, dass Azure AD als [SAML-Identitätsanbieter](../../active-directory/fundamentals/active-directory-whatis.md) verwendet wird. Als Sicherheitsmaßnahme stellt Azure AD nur dann ein Token aus, das Benutzern die Anmeldung bei der Anwendung erlaubt, wenn ihnen zuvor mit Azure AD Zugriff gewährt wurde. Sie können den Zugriff direkt oder über eine Gruppe gewähren, deren Mitglied die Benutzer sind.
 

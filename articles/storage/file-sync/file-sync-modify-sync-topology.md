@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 4/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4977b56265f542f8f8ff13693abb468bc695a384
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: 12bab4b8099b074f79d0e5307780ec34178f13b8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992729"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968461"
 ---
 # <a name="modify-your-azure-file-sync-topology"></a>Ändern der Topologie für die Azure-Dateisynchronisierung
 
@@ -44,7 +44,7 @@ Wiederholen Sie diese Schritte für alle Synchronisierungsgruppen im Speichersyn
 
 Dies wird derzeit nicht unterstützt. 
 
-Wenn Sie derzeit Laufwerk D verwenden und eine Migration zur Cloud planen, finden Sie weitere Informationen unter [Verwenden des Laufwerks „D:“ einer VM als Datenlaufwerk](https://docs.microsoft.com/azure/virtual-machines/windows/change-drive-letter).
+Wenn Sie derzeit Laufwerk D verwenden und eine Migration zur Cloud planen, finden Sie weitere Informationen unter [Verwenden des Laufwerks „D:“ einer VM als Datenlaufwerk](../../virtual-machines/windows/change-drive-letter.md).
 
 ## <a name="deprovision-all-server-endpoints-associated-with-a-registered-server"></a>Aufheben der Bereitstellung aller Serverendpunkte, die einem registrierten Server zugeordnet sind
 
@@ -54,6 +54,3 @@ Navigieren Sie zur Ressource Ihres Speichersynchronisierungsdiensts und dann zur
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Aufheben der Bereitstellung Ihres Serverendpunkts für die Azure-Dateisynchronisierung](./file-sync-deprovision-server-endpoint.md)
-
-
-
