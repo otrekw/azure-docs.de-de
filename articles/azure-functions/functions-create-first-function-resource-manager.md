@@ -5,12 +5,12 @@ ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: 708e66cdf41dbe144ac1178ebf54279b32870910
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: b46f03dca8b01b1f880fcbfe186f8c58f43e3dc1
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277935"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892146"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Schnellstart: Erstellen und Bereitstellen von Azure Functions-Ressourcen aus einer ARM-Vorlage
 
@@ -68,7 +68,7 @@ Nachdem Sie Ihr Projekt lokal erstellt haben, erstellen Sie die Ressourcen, die 
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-function-app-create-dynamic/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/function-app-create-dynamic/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/function-app-create-dynamic/azuredeploy.json":::
 

@@ -1,0 +1,72 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zum Feature Zeitpunktwiederherstellung von Azure Cosmos DB
+  description: Dieser Artikel enthält häufig gestellte Fragen zum Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB, das über den Modus „Fortlaufende Sicherung“ genutzt werden kann.
+  author: kanshiG
+  ms.service: cosmos-db
+  ms.topic: conceptual
+  ms.date: 02/01/2021
+  ms.author: govindk
+  ms.reviewer: sngun
+  ms.openlocfilehash: af2598161c1fe6b2c28541877a40709948cbb913
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "111907227"
+title: Häufig gestellte Fragen zum Feature Zeitpunktwiederherstellung von Azure Cosmos DB (Vorschau)
+summary: >
+  [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
+
+
+  > [!IMPORTANT]
+
+  > Das Feature der Zeitpunktwiederherstellung (fortlaufender Sicherungsmodus) für Azure Cosmos DB befindet sich zurzeit in der öffentlichen Vorschauphase.
+
+  > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+
+  > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+  Dieser Artikel enthält häufig gestellte Fragen zum Feature Zeitpunktwiederherstellung (Vorschauversion) von Azure Cosmos DB, das über den Modus „Fortlaufende Sicherung“ genutzt werden kann.
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Wie lange dauert eine Wiederherstellung?
+    answer: >
+      Die Dauer der Wiederherstellung hängt von der Größe Ihrer Daten ab.
+  - question: >
+      Kann ich die Wiederherstellungszeit in meiner Ortszeit übermitteln?
+    answer: >
+      Die Wiederherstellung kann möglicherweise nicht durchgeführt werden, wenn die Schlüsselressourcen wie Datenbanken oder Container zu diesem Zeitpunkt nicht vorhanden waren. Sie können dies überprüfen, indem Sie die Zeit eingeben und sich die ausgewählte Datenbank oder Container zu diesem Zeitpunkt ansehen. Wenn keine Ressourcen für die Wiederherstellung vorhanden sind, funktioniert der Wiederherstellungsvorgang nicht.
+  - question: >
+      Wie kann ich nachverfolgen, ob ein Konto wiederhergestellt wird?
+    answer: "Nachdem Sie den Wiederherstellungsbefehl übermittelt haben, können Sie auf der Seite verbleiben. Nach Abschluss des Vorgangs wird auf der Statusleiste eine Meldung über das erfolgreich wiederhergestellte Konto angezeigt. Sie können auch nach dem wiederhergestellten Konto suchen und den [Status des wiederhergestellten Kontos](continuous-backup-restore-portal.md#track-restore-status) nachverfolgen. Während die Wiederherstellung ausgeführt wird, lautet der Status des Kontos *Wird erstellt*. Nach Abschluss des Wiederherstellungsvorgangs wird der Kontostatus in *Online* geändert.\n\nSie können mit PowerShell und der Befehlszeilenschnittstelle auf ähnliche Weise den Fortschritt des Wiederherstellungsvorgangs nachverfolgen, indem Sie den Befehl `az cosmosdb show` wie folgt ausführen:\n\n```azurecli-interactive\naz cosmosdb show --name \"accountName\" --resource-group \"resourceGroup\"\n```\n\nDer Wert von provisioningState lautet *Succeeded* (Erfolgreich), wenn das Konto online ist.\n\n```json\n{\n\"virtualNetworkRules\": [],\n\"writeLocations\" : [\n{\n    \"documentEndpoint\": \"https://<accountname>.documents.azure.com:443/\", \n    \"failoverpriority\": 0,\n    \"id\": \"accountName\" ,\n    \"isZoneRedundant\" : false, \n    \"locationName\": \"West US 2\", \n    \"provisioningState\": \"Succeeded\"\n}\n]\n}\n```\n"
+  - question: >
+      Wie kann ich herausfinden, ob ein Konto aus einem anderen Konto wiederhergestellt wurde?
+    answer: >
+      Führen Sie den Befehl `az cosmosdb show` aus, und überprüfen Sie in der Ausgabe den Wert der `createMode`-Eigenschaft. Wenn der Wert **Restore** (Wiederherstellung) lautet, wurde das Konto aus einem anderen Konto wiederhergestellt. Die `restoreParameters`-Eigenschaft enthält weitere Details, z. B. `restoreSource` mit der ID des Quellkontos. Die letzte GUID im `restoreSource`-Parameter ist die instanceId des Quellkontos.
+
+
+      In der folgenden Ausgabe lautet die Instanz-ID des Quellkontos z. B. *7b4bb-f6a0-430e-ade1-638d781830cc*.
+
+
+      ```json
+
+      "restoreParameters": {
+         "databasesToRestore" : [],
+         "restoreMode": "PointInTime",
+         "restoreSource": "/subscriptions/2a5b-f6a0-430e-ade1-638d781830dd/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/7b4bb-f6a0-430e-ade1-638d781830cc",
+         "restoreTimestampInUtc": "2020-06-11T22:05:09Z"
+      }
+
+      ```
+  - question: >
+      Was geschieht, wenn ich eine Datenbank mit gemeinsam genutztem Durchsatz oder einen Container in einer Datenbank mit gemeinsam genutztem Durchsatz wiederherstelle?
+    answer: >
+      Die gesamte Datenbank mit gemeinsam genutztem Durchsatz wird wiederhergestellt. Es ist nicht möglich, eine Teilmenge der Container in einer Datenbank mit gemeinsam genutztem Durchsatz für die Wiederherstellung auszuwählen.
+  - question: >
+      Wozu dient die Instanz-ID in der Kontodefinition?
+    answer: "Die `accountName`-Eigenschaft des Azure Cosmos DB-Kontos ist zu jedem Zeitpunkt, zu dem das Konto aktiv ist, global eindeutig. Nachdem das Konto gelöscht wurde, kann jedoch ein anderes Konto mit diesem Namen erstellt werden. Daher reicht accountName nicht mehr aus, um eine Instanz eines Kontos zu identifizieren. \n\nDie ID (`instanceId`) ist eine Eigenschaft einer Instanz eines Kontos, die bei der Wiederherstellung zur Unterscheidung zwischen mehreren Konten (aktiv und gelöscht) verwendet wird, wenn diese denselben Namen haben. Die Instanz-ID können Sie durch Ausführen der Befehle `Get-AzCosmosDBRestorableDatabaseAccount` oder `az cosmosdb restorable-database-account` abrufen. Der Wert des name-Attributs ist die instanceId.\n"
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n* Was ist der Modus für die [fortlaufende Sicherung](continuous-backup-restore-introduction.md)?\n* Konfigurieren und verwalten Sie die fortlaufende Sicherung über das [Azure-Portal](continuous-backup-restore-portal.md) oder aber mithilfe von [PowerShell](continuous-backup-restore-powershell.md), [CLI](continuous-backup-restore-command-line.md) oder [Azure Resource Manager](continuous-backup-restore-template.md).\n* [Verwalten Sie Berechtigungen](continuous-backup-restore-permissions.md), die zum Wiederherstellen von Daten mit dem fortlaufenden Sicherungsmodus erforderlich sind.\n* [Ressourcenmodell des fortlaufenden Sicherungsmodus](continuous-backup-restore-resource-model.md)"

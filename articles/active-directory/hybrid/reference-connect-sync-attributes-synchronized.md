@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14aa69df2d2cceea7f0b1a33b8399e37b26e9700
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94413189"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854178"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
@@ -55,7 +55,6 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
-| assistant |X |X | | |
 | altRecipient |X | | |Erfordert Azure AD Connect Build 1.1.552.0 oder höher |
 | authOrig |X |X |X | |
 | c |X |X | | |

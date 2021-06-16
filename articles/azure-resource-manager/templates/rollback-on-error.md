@@ -4,12 +4,12 @@ description: Geben Sie an, dass für eine fehlerhafte Bereitstellung ein Rollbac
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7a0c4deef5956804aa74ad24f072bc46e5c2a8cd
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d66df9cafdb64c216896a66b3283277930a63ed0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321499"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960063"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Rollback bei Fehler zu erfolgreicher Bereitstellung
 
@@ -126,4 +126,4 @@ Die angegebene Bereitstellung muss erfolgreich ausgeführt worden sein.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum vollständigen und inkrementellen Modus finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](deployment-modes.md).
-- Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](template-syntax.md).
+- Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](./syntax.md).

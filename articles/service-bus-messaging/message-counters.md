@@ -3,12 +3,13 @@ title: 'Azure Service Bus: Nachrichtenanzahl'
 description: Rufen Sie die Anzahl der Nachrichten, die in Warteschlangen und Abonnements gespeichert sind, mit Azure Resource Manager und den NamespaceManager-APIs von Service Bus ab.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 3ef2e50521b57fc45846acecf9e776e3ff24c5d4
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cb559f6dbd492d1c35a15f9f30cbc0ad02620a01
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987324"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670686"
 ---
 # <a name="get-message-counters"></a>Abrufen von Nachrichtenzählern
 In diesem Artikel werden verschiedene Möglichkeiten zum Abrufen der folgenden Nachrichtenanzahlen für eine Warteschlange oder ein Abonnement erläutert. Die Anzahl aktiver Nachrichten zu kennen ist nützlich, um festzustellen, ob eine Warteschlange einen Rückstand aufbaut, der mehr Ressourcen für die Verarbeitung benötigt als diejenigen, die derzeit bereitgestellt sind. 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 01/14/2021
-ms.openlocfilehash: 467cc4a62cd044cb4ad264ec8643728e6db0b10c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8ce06a1279a71840dea90e199f5b9c3ee60bd3d3
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479813"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541085"
 ---
 # <a name="introduction-to-listing-options"></a>Einführung in Auflistungsoptionen
 
@@ -112,7 +112,7 @@ Sie können für diese Angebotstypen eine Pauschale berechnen:
 
 Die folgenden Angebotstypen unterstützen nutzungsbasierte Preise:
 
-- Der Angebotstyp „Azure-Anwendung (verwaltete App)“ bietet Unterstützung für eine getaktete Abrechnung. Weitere Informationen finden Sie in der [Getaktete Abrechnung für verwaltete Anwendungen](partner-center-portal/azure-app-metered-billing.md).
+- Der Angebotstyp „Azure-Anwendung (verwaltete App)“ bietet Unterstützung für eine getaktete Abrechnung. Weitere Informationen finden Sie in der [Getaktete Abrechnung für verwaltete Anwendungen](marketplace-metering-service-apis.md).
 - SaaS-Angebote unterstützen die Preise für eine getaktete Abrechnung und pro Benutzer (pro Arbeitsplatz). Weitere Informationen zur Volumenabrechnung finden Sie unter [Volumenabrechnung für SaaS mit dem Messungsdienst für den kommerziellen Marketplace](partner-center-portal/saas-metered-billing.md).
 - Der Angebotstyp „Virtuelle Azure-Computer“ bietet Unterstützung **pro Kern**, **pro Kerngröße** sowie **pro Markt und Kerngröße**. Diese Optionen werden pro Stunde erhoben und monatlich abgerechnet.
 

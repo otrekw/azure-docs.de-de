@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d976cd924644828f5861e4c54460a8b4e4f81444
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5fe6c04cf29a4c45436948eaea6fc8d0276ec16f
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643863"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895782"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Beheben von Fehlern während der Synchronisierung
 Fehler können auftreten, wenn Identitätsdaten aus Windows Server Active Directory (AD DS) mit Azure Active Directory (Azure AD) synchronisiert werden. Dieser Artikel bietet einen Überblick über verschiedene Fehlertypen, die während der Synchronisierung auftreten können, einige der möglichen Szenarios, die solche Fehler verursachen, und Möglichkeiten, diese Fehler zu beheben. In diesem Artikel werden die häufigsten Fehlertypen behandelt, daher sind eventuell nicht alle möglichen Fehler enthalten.
@@ -180,28 +180,6 @@ a. Stellen Sie sicher, dass das Attribut „UserPrincipalName“ nur unterstütz
 
 #### <a name="related-articles"></a>Verwandte Artikel
 * [Vorbereiten von Benutzern auf die Bereitstellung in Microsoft 365 über die Verzeichnissynchronisierung](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
-
-### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>BESCHREIBUNG
-In diesem Fall tritt der Synchronisierungsfehler **FederatedDomainChangeError** auf, wenn das Suffix des Attributs „UserPrincipalName“ eines Benutzers von einer Verbunddomäne in eine andere Verbunddomäne geändert wird.
-
-#### <a name="scenarios"></a>Szenarien
-Bei einem synchronisierten Benutzer wurde das Suffix des „UserPrincipalName“ von einer Verbunddomäne zu einer anderen lokalen Verbunddomäne geändert. Beispiel: *UserPrincipalName = bob\@contoso.com* wurde in *UserPrincipalName = bob\@fabrikam.com* geändert.
-
-#### <a name="example"></a>Beispiel
-1. Bob Smith, ein Konto für Contoso.com, wird mit „UserPrincipalName“ bob@contoso.com als neuer Benutzer in Active Directory hinzugefügt.
-2. Bob wechselt zu einem anderen Bereich von Contoso.com mit dem Namen Fabrikam.com. Sein Attribut „UserPrincipalName“ wird in bob@fabrikam.com geändert.
-3. Die Domänen „contoso.com“ und „fabrikam.com“ sind Verbunddomänen mit Azure Active Directory.
-4. Bobs „userPrincipalName“ wird nicht aktualisiert und verursacht den Synchronisierungsfehler „FederatedDomainChangeError“.
-
-#### <a name="how-to-fix"></a>So behebt man den Fehler
-Wenn das UserPrincipalName-Suffix eines Benutzers von bob@**contoso.com** in bob\@**fabrikam.com** geändert wurde und es sich sowohl bei **contoso.com** als auch bei **fabrikam.com** um **Verbunddomänen** handelt, führen Sie die folgenden Schritte aus, um den Synchronisierungsfehler zu beheben.
-
-1. Ändern Sie den UserPrincipalName des Benutzers in Azure AD von bob@contoso.com in bob@contoso.onmicrosoft.com. Sie können die folgenden PowerShell-Befehl mit dem Azure AD PowerShell-Modul verwenden: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
-2. Lassen Sie im nächsten Synchronisierungszyklus die Synchronisierung zu. Diesmal ist die Synchronisierung erfolgreich, und aktualisiert wie erwartet Bobs „UserPrincipalName“ in bob@fabrikam.com.
-
-#### <a name="related-articles"></a>Verwandte Artikel
-* [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird.](./howto-troubleshoot-upn-changes.md)
 
 ## <a name="largeobject"></a>LargeObject (Großes Objekt)
 ### <a name="description"></a>BESCHREIBUNG

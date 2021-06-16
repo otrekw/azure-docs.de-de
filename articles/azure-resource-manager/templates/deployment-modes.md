@@ -3,12 +3,12 @@ title: Bereitstellungsmodi
 description: Beschreibt das Festlegen, ob für Azure Resource Manager eine vollständige oder inkrementelle Bereitstellung verwendet wird.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 3f1f74c0495e0d43671712281a35a7e74fd7d821
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7566a24297a31c3138228528be050be6c7cf11c8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104888837"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963286"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager-Bereitstellungsmodi
 
@@ -23,7 +23,7 @@ Der Standardmodus ist inkrementell.
 Im vollständigen-Modus **löscht** Resource Manager Ressourcen, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind.
 
 > [!NOTE]
-> Verwenden Sie immer den [Was-wäre-wenn-Vorgang](template-deploy-what-if.md), bevor Sie eine Vorlage im vollständigen Modus bereitstellen. Anhand von Was-wäre-wenn-Vorgänge können Sie sehen, welche Ressourcen erstellt, gelöscht oder geändert werden. Verwenden Sie Was-wäre-wenn-Vorgänge, um ein unbeabsichtigtes Löschen von Ressourcen zu vermeiden.
+> Verwenden Sie immer den [Was-wäre-wenn-Vorgang](./deploy-what-if.md), bevor Sie eine Vorlage im vollständigen Modus bereitstellen. Anhand von Was-wäre-wenn-Vorgänge können Sie sehen, welche Ressourcen erstellt, gelöscht oder geändert werden. Verwenden Sie Was-wäre-wenn-Vorgänge, um ein unbeabsichtigtes Löschen von Ressourcen zu vermeiden.
 
 Wenn Ihre Vorlage eine Ressource enthält, die nicht bereitgestellt ist, weil die [Bedingung](conditional-resource-deployment.md) nicht erfüllt wird, hängt das Ergebnis davon ab, welche Rest-API-Version Sie zum Bereitstellen der Vorlage verwenden. Wenn Sie eine frühere Version als 2019-05-10 verwenden, wird die Ressource **nicht gelöscht**. Bei Version 2019-05-10 oder höher wird die Ressource **gelöscht**. Die neuesten Versionen von Azure PowerShell und Azure CLI löschen die Ressource.
 
@@ -35,7 +35,7 @@ Bei der Verarbeitung von Löschungen im vollständigen Modus gibt es zwischen Re
 
 Beispiel: Wenn Ihre Ressourcengruppe eine DNS-Zone (Ressourcentyp `Microsoft.Network/dnsZones`) und einen CNAME-Eintrag (Ressourcentyp `Microsoft.Network/dnsZones/CNAME`) enthält, ist die DNS-Zone die übergeordnete Ressource des CNAME-Eintrags. Wenn Sie im vollständigen Modus bereitstellen und die DNS-Zone nicht in Ihre Vorlage aufnehmen, werden sowohl die DNS-Zone als auch der CNAME-Eintrag gelöscht. Wenn Sie die DNS-Zone in Ihre Vorlage aufnehmen, den CNAME-Eintrag jedoch nicht, wird der CNAME-Eintrag nicht gelöscht.
 
-Eine Liste der Verarbeitung von Löschungen durch Ressourcentypen finden Sie unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](complete-mode-deletion.md).
+Eine Liste der Verarbeitung von Löschungen durch Ressourcentypen finden Sie unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](./deployment-complete-mode-deletion.md).
 
 Wenn die Ressourcengruppe [gesperrt](../management/lock-resources.md) ist, werden die Ressourcen im vollständigen Modus nicht gelöscht.
 
@@ -126,6 +126,6 @@ Im folgenden Beispiel ist eine verknüpfte Vorlage mit festgelegtem inkrementell
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Erstellen von Resource Manager-Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Weitere Informationen zum Erstellen von Resource Manager-Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).
 * Informationen zum Bereitstellen von Ressourcen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
 * Informationen zum Anzeigen der Vorgänge für einen Ressourcenanbieter finden Sie unter [Azure-REST-API](/rest/api/).

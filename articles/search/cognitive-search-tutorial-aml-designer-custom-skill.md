@@ -8,25 +8,25 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: 7d73bfa4b184cb2a3d1cad9a4b6f7fb918c9f953
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: f6e26d697c97b70770ec0445be8d72bda7269f4f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989480"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961438"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning-designer"></a>Beispiel: Erstellen und Bereitstellen einer benutzerdefinierten Fertigkeit mit Azure Machine Learning Designer
 
-[Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) ist ein benutzerfreundliches interaktives Zeichenbereich zum Erstellen von Machine Learning-Modellen für Aufgaben wie Regression und Klassifizierung. Das Aufrufen des vom Designer erstellten Modells in einer Cognitive Search-Anreicherungspipeline erfordert ein paar zusätzliche Schritte. In diesem Beispiel erstellen Sie ein einfaches Regressionsmodell zur Vorhersage des Preises eines Automobils und rufen den Inferenzendpunkt als AML-Skill auf. 
+[Azure Machine Learning Designer](../machine-learning/concept-designer.md) ist ein benutzerfreundliches interaktives Zeichenbereich zum Erstellen von Machine Learning-Modellen für Aufgaben wie Regression und Klassifizierung. Das Aufrufen des vom Designer erstellten Modells in einer Cognitive Search-Anreicherungspipeline erfordert ein paar zusätzliche Schritte. In diesem Beispiel erstellen Sie ein einfaches Regressionsmodell zur Vorhersage des Preises eines Automobils und rufen den Inferenzendpunkt als AML-Skill auf. 
 
-Folgen Sie dem Tutorial [Regression - Automobile Price Prediction (Advanced) ](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md)auf der Dokumentationsseite [Beispiele Pipelines & Datensätze,](https://docs.microsoft.com/azure/machine-learning/samples-designer) um ein Modell zu erstellen, das den Preis eines Automobils anhand der verschiedenen Merkmale vorhersagt.
+Folgen Sie dem Tutorial [Regression - Automobile Price Prediction (Advanced) ](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md)auf der Dokumentationsseite [Beispiele Pipelines & Datensätze,](../machine-learning/concept-designer.md) um ein Modell zu erstellen, das den Preis eines Automobils anhand der verschiedenen Merkmale vorhersagt.
 
 > [!IMPORTANT] 
 > Das Bereitstellen des Modells nach dem Echtzeit-Inferencing-Prozess führt zu einem gültigen Endpunkt, aber nicht zu einem, den Sie mit der AML-Fähigkeit in Cognitive Search verwenden können. 
 
 ## <a name="register-model-and-download-assets"></a>Modell registrieren und Assets herunterladen
 
-Nachdem Sie ein Modell trainiert haben, registrieren Sie [das trainierte Modell,](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-model-designer) und führen Sie die Schritte aus, um alle Dateien im Ordner herunterzuladen `trained_model_outputs` oder nur die Dateien `score.py`und`conda_env.yml` von der Seite mit den Modellartefakten herunterzuladen. Sie bearbeiten das Scoring-Skript, bevor das Modell als Echtzeit-Inferencing-Endpunkt eingesetzt wird.
+Nachdem Sie ein Modell trainiert haben, registrieren Sie [das trainierte Modell,](../machine-learning/how-to-deploy-model-designer.md) und führen Sie die Schritte aus, um alle Dateien im Ordner herunterzuladen `trained_model_outputs` oder nur die Dateien `score.py`und`conda_env.yml` von der Seite mit den Modellartefakten herunterzuladen. Sie bearbeiten das Scoring-Skript, bevor das Modell als Echtzeit-Inferencing-Endpunkt eingesetzt wird.
 
 
 ## <a name="edit-the-scoring-script-for-use-with-cognitive-search"></a>Bearbeiten Sie das Scoring-Skript für die Verwendung mit Cognitive Search 
@@ -211,7 +211,7 @@ Wählen Sie das Modell aus, und wählen Sie die `Deploy` Aktion aus. Der Bereits
 
 So integrieren Sie den neu erstellten Endpunkt mit Cognitive Search
 1. Hinzufügen einer JSON-Datei, die einen einzelnen Automobil-Datensatz enthält, zu einem Blob-Container
-2. Konfigurieren Sie eine AI-Anreicherungspipeline mithilfe des [Datenimport-Workflows](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob). Wählen Sie`JSON` als `parsing mode`
+2. Konfigurieren Sie eine AI-Anreicherungspipeline mithilfe des [Datenimport-Workflows](cognitive-search-quickstart-blob.md). Wählen Sie`JSON` als `parsing mode`
 3. Wählen Sie auf der  `Add Enrichments`-Registerkarte einen einzelnen Skill`Extract people names` als Platzhalter aus.
 4. Fügen Sie dem Index ein neues Feld mit dem Namen `predicted_price` Type `Edm.Double` hinzu, setzen Sie die Eigenschaft Retrievable auf true.
 5. Schließen Sie den Datenimport ab

@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 05/25/2021
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 84d3fd31f3da047b263a3e3a46761dfc4538e499
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 014084862f5dab95ee859315c52983cbcd96e678
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279543"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793421"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services
 
@@ -52,7 +52,7 @@ Für ein erfolgreiches Abschließen Ihres Inhaltsschutzsystems muss Ihnen der Um
 
 ### <a name="media-services-code"></a>Media Services-Code
   
-Das [DRM-Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) zeigt Ihnen die Implementierung eines Multi-DRM-Systems mit Media Services v3 über .NET. Zudem zeigt es die Verwendung des Media Services-Diensts zur Lizenz-/Schlüsselbereitstellung.
+Das [DRM-Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs) zeigt Ihnen die Implementierung eines Multi-DRM-Systems mit Media Services v3 über .NET. Zudem zeigt es die Verwendung des Media Services-Diensts zur Lizenz-/Schlüsselbereitstellung.
   
 Sie können jedes Medienobjekt mit mehreren Verschlüsselungstypen (AES-128, PlayReady, Widevine, FairPlay) verschlüsseln. Informationen zu sinnvollen Kombinationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption-types).
 
@@ -191,7 +191,7 @@ Bei der Konfiguration der Richtlinie mit Tokeneinschränkung müssen die Paramet
 
 ### <a name="token-replay-prevention"></a>Verhindern der Tokenwiedergabe
 
-Mit dem Feature zum *Verhindern der Tokenwiedergabe* können Media Services-Kunden einen Grenzwert festlegen, der bestimmt, wie oft ein Token zum Anfordern eines Schlüssels oder einer Lizenz verwendet werden kann. Der Kunde kann einen Anspruch vom Typ `urn:microsoft:azure:mediaservices:maxuses` im Token hinzufügen, wobei der Wert die Häufigkeit ist, mit der das Token für den Erwerb einer Lizenz oder eines Schlüssels verwendet werden kann. Bei allen nachfolgenden Anforderungen mit demselben Token für die Schlüsselbereitstellung wird eine nicht autorisierte Antwort zurückgegeben. Informationen zum Hinzufügen des Anspruchs finden Sie im [DRM-Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601).
+Mit dem Feature zum *Verhindern der Tokenwiedergabe* können Media Services-Kunden einen Grenzwert festlegen, der bestimmt, wie oft ein Token zum Anfordern eines Schlüssels oder einer Lizenz verwendet werden kann. Der Kunde kann einen Anspruch vom Typ `urn:microsoft:azure:mediaservices:maxuses` im Token hinzufügen, wobei der Wert die Häufigkeit ist, mit der das Token für den Erwerb einer Lizenz oder eines Schlüssels verwendet werden kann. Bei allen nachfolgenden Anforderungen mit demselben Token für die Schlüsselbereitstellung wird eine nicht autorisierte Antwort zurückgegeben. Informationen zum Hinzufügen des Anspruchs finden Sie im [DRM-Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L591).
  
 #### <a name="considerations"></a>Überlegungen
 

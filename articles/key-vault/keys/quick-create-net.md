@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: 5c1e4d64ba3359a07dddbbf89774e31815935230
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: dd2dfb5af2fffd4c9821e29502102ae08573da67
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818420"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950500"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Schnellstart: Azure Key Vault-Schlüsselclientbibliothek für .NET (SDK v4)
 
@@ -34,26 +34,21 @@ Weitere Informationen zu Key Vault und Schlüsseln finden Sie unter folgenden Li
 * [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
 * Eine Key Vault-Instanz. Diese kann über das [Azure-Portal](../general/quick-create-portal.md), die [Azure CLI](../general/quick-create-cli.md) oder mithilfe von [Azure PowerShell](../general/quick-create-powershell.md) erstellt werden.
 
+In dieser Schnellstartanleitung werden `dotnet` und die Azure CLI verwendet.
+
 ## <a name="setup"></a>Einrichten
 
-In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek verwendet, um den Benutzer bei Azure-Diensten zu authentifizieren. Entwickler können auch Visual Studio oder Visual Studio Code verwenden, um ihre Aufrufe zu authentifizieren. Weitere Informationen finden Sie unter [Authentifizieren des Clients mit der Azure Identity-Clientbibliothek](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
+In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek mit der Azure CLI verwendet, um den Benutzer bei Azure-Diensten zu authentifizieren. Entwickler können auch Visual Studio oder Visual Studio Code verwenden, um ihre Aufrufe zu authentifizieren. Weitere Informationen finden Sie unter [Authentifizieren des Clients mit der Azure Identity-Clientbibliothek](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 1. Führen Sie den Befehl `login` aus.
 
-    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
     ```azurecli-interactive
     az login
     ```
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
-    
-    ```azurepowershell-interactive
-    Connect-AzAccount
-    ```
-    ---
 
-    Die Azure CLI oder Azure PowerShell öffnet Ihren Standardbrowser, sofern sie oder der Dienst dazu in der Lage ist, und lädt eine Azure-Anmeldeseite.
+    Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Azure-Anmeldeseite.
 
     Öffnen Sie andernfalls die Browserseite [https://aka.ms/devicelogin](https://aka.ms/devicelogin), und geben Sie den in Ihrem Terminal angezeigten Autorisierungscode ein.
 
@@ -63,16 +58,9 @@ In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek verwendet, u
 
 Erstellen Sie eine Zugriffsrichtlinie für Ihren Schlüsseltresor, die Ihrem Benutzerkonto Schlüsselberechtigungen erteilt:
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-```azurecli-interactive
+```console
 az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
-
-```azurepowershell-interactive
-Set-AzKeyVaultAccessPolicy -VaultName <your-key-vault-name> -UserPrincipalName user@domain.com -PermissionsToSecrets delete,get,list,set,purge
-```
----
 
 ### <a name="create-new-net-console-app"></a>Erstellen einer neuen .NET-Konsolen-App
 
@@ -119,7 +107,7 @@ Windows
 set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
-```azurepowershell
+```powershell
 $Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
@@ -146,9 +134,9 @@ using Azure.Security.KeyVault.Keys;
 
 ### <a name="authenticate-and-create-a-client"></a>Authentifizieren und Erstellen eines Clients
 
-In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren beim Schlüsseltresor verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren beim Schlüsseltresor verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](/azure/active-directory/managed-identities-azure-resources/overview).
 
-Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential) aus der [Azure Identity-Bibliothek](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme) verwendet, wodurch der gleiche Code in verschiedenen Umgebungen mit verschiedenen Optionen für die Identitätsbereitstellung verwendet werden kann. Weitere Informationen zur Authentifizierung beim Schlüsseltresor finden Sie im [Entwicklerhandbuch](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
+Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential) aus der [Azure Identity-Bibliothek](/dotnet/api/overview/azure/identity-readme) verwendet, wodurch der gleiche Code in verschiedenen Umgebungen mit verschiedenen Optionen für die Identitätsbereitstellung verwendet werden kann. Weitere Informationen zur Authentifizierung beim Schlüsseltresor finden Sie im [Entwicklerhandbuch](/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
 
 ```csharp
 var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -159,7 +147,7 @@ var client = new KeyClient(new Uri(kvUri), new DefaultAzureCredential());
 
 ### <a name="save-a-key"></a>Speichern eines Schlüssels
 
-Verwenden Sie hierfür die [CreateKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.createkeyasync)-Methode. Die Parameter der Methode akzeptieren einen Schlüsselnamen und den [Schlüsseltyp](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.keys.keytype).
+Verwenden Sie hierfür die [CreateKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.createkeyasync)-Methode. Die Parameter der Methode akzeptieren einen Schlüsselnamen und den [Schlüsseltyp](/dotnet/api/azure.security.keyvault.keys.keytype).
 
 ```csharp
 var key = await client.CreateKeyAsync("myKey", KeyType.Rsa);

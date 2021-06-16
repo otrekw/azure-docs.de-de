@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Managed Instance
 description: In diesem Artikel wird beschrieben, wie Sie ein virtuelles Netzwerk erstellen, das für die Bereitstellung von Azure SQL Managed Instance konfiguriert ist.
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 09/12/2019
-ms.openlocfilehash: 2a23fc0b769727cab5a28d3d313a7791bcfa6eee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bcb1d9a81cfbb606abd1b594524c0a2ff932fb19
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91617705"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892560"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>Erstellen eines virtuellen Netzwerks für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -47,7 +47,7 @@ Die einfachste Möglichkeit zum Erstellen und Konfigurieren eines virtuellen Net
 
 2. Wählen Sie die Schaltfläche **Deploy to Azure** (In Azure bereitstellen):
 
-   [![Abbildung einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json)
+   [![Abbildung einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.sql%2Fsql-managed-instance-azure-environment%2Fazuredeploy.json)
 
    Mit dieser Schaltfläche wird ein Formular zum Konfigurieren der Netzwerkumgebung geöffnet, in der Sie SQL Managed Instance bereitstellen können.
 

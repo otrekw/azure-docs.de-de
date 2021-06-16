@@ -1,7 +1,6 @@
 ---
 title: Planen im Hinblick auf Intel SGX-Enclaves und Azure Attestation in Azure SQL-Datenbank
 description: Planen der Bereitstellung von Always Encrypted mit Secure Enclaves in Azure SQL-Datenbank.
-keywords: Verschlüsseln von Daten, SQL-Verschlüsselung, Datenbankverschlüsselung, vertrauliche Daten, Always Encrypted, Secure Enclaves, SGX, Nachweis
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,12 +10,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 4448ce051b0c9e73865e8057cc4f224c9cbeb571
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccf4d00aa48edfc5cbe8df894d7d1a28387ecff2
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732743"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411562"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>Planen im Hinblick auf Intel SGX-Enclaves und Azure Attestation in Azure SQL-Datenbank
 
@@ -29,13 +28,13 @@ ms.locfileid: "98732743"
 
 ## <a name="plan-for-intel-sgx-in-azure-sql-database"></a>Planen im Hinblick auf Intel SGX in Azure SQL-Datenbank
 
-Intel SGX ist eine hardwarebasierte TEE-Technologie (Trusted Execution Environment, vertrauenswürdige Ausführungsumgebung). Intel SGX ist für Datenbanken verfügbar, die das [vCore-basierte Kaufmodell](service-tiers-vcore.md) und die Hardwaregeneration der [DC-Serie](service-tiers-vcore.md?#dc-series) verwenden. Um sicherzustellen, dass Sie Always Encrypted mit Secure Enclaves in der Datenbank verwenden können, müssen Sie beim Erstellen der Datenbank die Hardwaregeneration der DC-Serie auswählen, oder Sie können eine vorhandene Datenbank aktualisieren, sodass sie die Hardwaregeneration der DC-Serie verwendet.
+Intel SGX ist eine hardwarebasierte TEE-Technologie (Trusted Execution Environment, vertrauenswürdige Ausführungsumgebung). Intel SGX ist für Datenbanken verfügbar, die das [vCore-basierte Kaufmodell](service-tiers-sql-database-vcore.md) und die Hardwaregeneration der [DC-Serie](service-tiers-sql-database-vcore.md?#dc-series) verwenden. Um sicherzustellen, dass Sie Always Encrypted mit Secure Enclaves in der Datenbank verwenden können, müssen Sie beim Erstellen der Datenbank die Hardwaregeneration der DC-Serie auswählen, oder Sie können eine vorhandene Datenbank aktualisieren, sodass sie die Hardwaregeneration der DC-Serie verwendet.
 
 > [!NOTE]
 > Intel SGX ist für andere Hardwaregenerationen als die DC-Serie nicht verfügbar. So ist Intel SGX beispielsweise nicht für Gen5-Hardware oder für Datenbanken verfügbar, die das [DTU-Modell](service-tiers-dtu.md) verwenden.
 
 > [!IMPORTANT]
-> Bevor Sie die Hardwaregeneration der DC-Serie für Ihre Datenbank konfigurieren, überprüfen Sie die regionale Verfügbarkeit der DC-Serie, und stellen Sie sicher, dass die Leistungseinschränkungen kein Problem darstellen. Einzelheiten dazu finden Sie unter [DC-Serie](service-tiers-vcore.md#dc-series).
+> Bevor Sie die Hardwaregeneration der DC-Serie für Ihre Datenbank konfigurieren, überprüfen Sie die regionale Verfügbarkeit der DC-Serie, und stellen Sie sicher, dass die Leistungseinschränkungen kein Problem darstellen. Einzelheiten dazu finden Sie unter [DC-Serie](service-tiers-sql-database-vcore.md#dc-series).
 
 ## <a name="plan-for-attestation-in-azure-sql-database"></a>Planen im Hinblick auf Attestation in Azure SQL-Datenbank
 

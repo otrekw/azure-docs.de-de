@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: f7f11ef097d3abee2b4c18c32a1cb215d9fe8ce8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06a5bd2366f2a24e263e8ffa1c905a5cbd6afc9b
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98939897"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440338"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD für Custom Speech
 
 Implementieren Sie die automatisierte Trainings-, Test- und Releaseverwaltung, um eine kontinuierliche Verbesserung der Custom Speech-Modelle zu ermöglichen, während Sie Aktualisierungen auf Trainings- und Testdaten anwenden. Durch die effektive Implementierung von CI/CD-Workflows können Sie sicherstellen, dass der Endpunkt für das leistungsfähigste Custom Speech-Modell immer verfügbar ist.
 
-[Continuous Integration](/azure/devops/learn/what-is-continuous-integration) (CI) ist das Entwicklungsverfahren, bei dem Aktualisierungen in einem freigegebenen Repository regelmäßig committet werden und daraufhin ein automatisierter Build erfolgt. CI-Workflows für Custom Speech trainieren ein neues Modell aus seinen Datenquellen und führen automatisierte Tests an dem neuen Modell durch, um sicherzustellen, dass es bessere Leistungen als das vorherige Modell erbringt.
+[Continuous Integration](/devops/develop/what-is-continuous-integration) (CI) ist das Entwicklungsverfahren, bei dem Aktualisierungen in einem freigegebenen Repository regelmäßig committet werden und daraufhin ein automatisierter Build erfolgt. CI-Workflows für Custom Speech trainieren ein neues Modell aus seinen Datenquellen und führen automatisierte Tests an dem neuen Modell durch, um sicherzustellen, dass es bessere Leistungen als das vorherige Modell erbringt.
 
-[Continuous Delivery](/azure/devops/learn/what-is-continuous-delivery) (CD) übernimmt Modelle aus dem CI-Prozess und erstellt einen Endpunkt für jedes verbesserte Custom Speech-Modell. CD macht Endpunkte leicht verfügbar, die in Lösungen integriert werden können.
+[Continuous Delivery](/devops/deliver/what-is-continuous-delivery) (CD) übernimmt Modelle aus dem CI-Prozess und erstellt einen Endpunkt für jedes verbesserte Custom Speech-Modell. CD macht Endpunkte leicht verfügbar, die in Lösungen integriert werden können.
 
 Benutzerdefinierte CI/CD-Lösungen sind möglich, aber für eine robuste, vordefinierte Lösung verwenden Sie das [Speech DevOps-Vorlagenrepository](https://github.com/Azure-Samples/Speech-Service-DevOps-Template), das CI/CD-Workflows mit GitHub Actions ausführt.
 

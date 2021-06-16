@@ -3,12 +3,12 @@ title: Konfigurieren und Verwenden einer verwalteten Anwendungsidentität auf du
 description: Erfahren Sie, wie Sie eine verwaltete Identität einer Anwendung in einer ARM-Vorlage konfigurieren und verwenden, die in durch Azure Service Fabric verwalteten Cluster bereitgestellt wird.
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: f3c76ae6418ddf2ca9da0ed620941c10b7061603
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 4e488f9ebb78208617ca59fdb88dbec454de10e1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109689224"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958274"
 ---
 # <a name="deploy-a-service-fabric-application-with-managed-identity"></a>Bereitstellen einer Service Fabric-Anwendung mit Managed Identity
 
@@ -42,7 +42,7 @@ Die Anwendungsressource unterstützt die Zuweisung von SystemAssigned oder UserA
 }
 
 ```
-[Vollständige JSON-Referenz](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2021-05-01/managedclusters/applications?tabs=json)
+[Vollständige JSON-Referenz](/azure/templates/microsoft.servicefabric/2021-05-01/managedclusters/applications?tabs=json)
 
 ## <a name="user-assigned-identity"></a>Vom Benutzer zugewiesene Identität
 

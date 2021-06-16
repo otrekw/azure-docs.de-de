@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 06c58b7081ed68724a3c907f8fe76dcf5f7b8057
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c921637fc0c50125f6cc657dc9329e2107e8e774
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046804"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894666"
 ---
 # <a name="how-to-create-alerts-from-vm-insights"></a>Erstellen von Warnungen über VM Insights
 [Warnungen in Azure Monitor](../alerts/alerts-overview.md) informieren Sie proaktiv über interessante Daten und Muster in Ihren Überwachungsdaten. VM Insights enthält keine vorkonfigurierten Warnungsregeln, aber Sie können eigene Regeln basierend auf den gesammelten Daten erstellen. Dieser Artikel enthält Anleitungen zum Erstellen von Warnungsregeln sowie eine Reihe von Beispielabfragen.
@@ -100,7 +100,7 @@ InsightsMetrics
 | where Origin == "vm.azm.ms" 
 | where Namespace == "LogicalDisk" and Name == "TransfersPerSecond"
 | extend Disk=tostring(todynamic(Tags)["vm.azm.ms/mountId"])
-| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m) ), Computer, _ResourceId, Disk
+| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk
 ```
 
 ### <a name="logical-disk-data-rate"></a>Datenrate des logischen Datenträgers
@@ -110,7 +110,7 @@ InsightsMetrics
 | where Origin == "vm.azm.ms" 
 | where Namespace == "LogicalDisk" and Name == "BytesPerSecond"
 | extend Disk=tostring(todynamic(Tags)["vm.azm.ms/mountId"])
-| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m) , Computer, _ResourceId, Disk
+| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk
 ```
 
 ### <a name="network-interfaces-bytes-received---all-interfaces"></a>An Netzwerkschnittstellen empfangene Bytes – alle Schnittstellen

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2021
 ms.author: bagol
-ms.openlocfilehash: 6d41c33cfb05808a2b6b83c01b59ce0edbe5b628
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: de7126b7a095868680ff08fab6691782379bb742
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140135"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952332"
 ---
 # <a name="connect-windows-virtual-desktop-data-to-azure-sentinel"></a>Verbinden von Windows Virtual Desktop-Daten mit Azure Sentinel
 
@@ -34,9 +34,9 @@ Windows Virtual Desktop-Daten in Azure Sentinel umfassen die folgenden Typen:
 
 |Daten  |BESCHREIBUNG  |
 |---------|---------|
-|**Windows-Ereignisprotokolle**     |  Windows-Ereignisprotokolle aus der WVD-Umgebung werden auf die gleiche Weise in einen Azure Sentinel-fähigen Log Analytics-Arbeitsbereich gestreamt wie Windows-Ereignisprotokolle von anderen Windows-Computern außerhalb der WVD-Umgebung. <br><br>Installieren Sie den Log Analytics-Agent auf Ihrem Windows-Computern, und konfigurieren Sie die Windows-Ereignisprotokolle so, dass sie an den Log Analytics-Arbeitsbereich gesendet werden.<br><br>Weitere Informationen finden Sie unter<br>- [Installieren des Log Analytics-Agents auf Windows-Computern](/azure/azure-monitor/agents/agent-windows)<br>- [Datenquellen für das Sammeln von Windows-Ereignisprotokolldaten mit dem Log Analytics-Agent](/azure/azure-monitor/agents/data-sources-windows-events)<br>- [Herstellen einer Verbindung mit Windows-Sicherheitsereignissen](connect-windows-security-events.md)       |
+|**Windows-Ereignisprotokolle**     |  Windows-Ereignisprotokolle aus der WVD-Umgebung werden auf die gleiche Weise in einen Azure Sentinel-fähigen Log Analytics-Arbeitsbereich gestreamt wie Windows-Ereignisprotokolle von anderen Windows-Computern außerhalb der WVD-Umgebung. <br><br>Installieren Sie den Log Analytics-Agent auf Ihrem Windows-Computern, und konfigurieren Sie die Windows-Ereignisprotokolle so, dass sie an den Log Analytics-Arbeitsbereich gesendet werden.<br><br>Weitere Informationen finden Sie unter<br>- [Installieren des Log Analytics-Agents auf Windows-Computern](../azure-monitor/agents/agent-windows.md)<br>- [Datenquellen für das Sammeln von Windows-Ereignisprotokolldaten mit dem Log Analytics-Agent](../azure-monitor/agents/data-sources-windows-events.md)<br>- [Herstellen einer Verbindung mit Windows-Sicherheitsereignissen](connect-windows-security-events.md)       |
 |**Microsoft Defender für Endpunkt-Warnungen**     |  Um Defender für Endpunkt für Windows Virtual Desktop zu konfigurieren, verwenden Sie das gleiche Verfahren wie für jeden anderen Windows-Endpunkt. <br><br>Weitere Informationen finden Sie unter <br>- [Einrichten der Bereitstellung von Microsoft Defender für Endpunkt](/windows/security/threat-protection/microsoft-defender-atp/production-deployment)<br>- [Verknüpfen von Daten aus Microsoft 365 Defender mit Azure Sentinel](connect-microsoft-365-defender.md)       |
-|**Windows Virtual Desktop-Diagnose**     | Windows Virtual Desktop-Diagnose ist ein Feature des PaaS-Diensts von Windows Virtual Desktop, das Informationen protokolliert, sobald jemand, dem die Windows Virtual Desktop-Rolle zugewiesen ist, den Dienst verwendet. <br><br>Neben Mandanten- und Benutzerinformationen enthält jedes Protokoll Informationen darüber, welche Windows Virtual Desktop-Rolle an der Aktivität beteiligt war und welche Fehlermeldungen ggf. während der Sitzung angezeigt wurden. <br><br>Die Diagnosefunktion erstellt Aktivitätsprotokolle für Benutzer- und Administratoraktionen. <br><br>Weitere Informationen finden Sie unter [Verwenden von Log Analytics für das Diagnosefeature in Windows Virtual Desktop](/azure/virtual-desktop/virtual-desktop-fall-2019/diagnostics-log-analytics-2019).        |
+|**Windows Virtual Desktop-Diagnose**     | Windows Virtual Desktop-Diagnose ist ein Feature des PaaS-Diensts von Windows Virtual Desktop, das Informationen protokolliert, sobald jemand, dem die Windows Virtual Desktop-Rolle zugewiesen ist, den Dienst verwendet. <br><br>Neben Mandanten- und Benutzerinformationen enthält jedes Protokoll Informationen darüber, welche Windows Virtual Desktop-Rolle an der Aktivität beteiligt war und welche Fehlermeldungen ggf. während der Sitzung angezeigt wurden. <br><br>Die Diagnosefunktion erstellt Aktivitätsprotokolle für Benutzer- und Administratoraktionen. <br><br>Weitere Informationen finden Sie unter [Verwenden von Log Analytics für das Diagnosefeature in Windows Virtual Desktop](../virtual-desktop/virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md).        |
 |     |         |
 
 ## <a name="connect-windows-virtual-desktop-data"></a>Verbinden von Windows Virtual Desktop-Daten

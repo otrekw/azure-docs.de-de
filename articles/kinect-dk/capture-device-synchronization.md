@@ -1,18 +1,18 @@
 ---
 title: Erfassen der Azure Kinect-Gerätesynchronisierung
 description: Erfahren Sie, wie Sie Azure Kinect-Aufnahmegeräte mit dem Sensor-SDK für Azure Kinect synchronisieren.
-author: xthexder
-ms.author: jawirth
+author: martinekuan
+ms.author: martinek
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, Sensor, SDK, Tiefe, RGB, intern, extern, Synchronisierung, Verkettung, Phasendifferenz
-ms.openlocfilehash: ce0c72d3d708d5696a9775b3885f278f0c23cac1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2dc7408751fa7a7c721bf50ca1c0f6103b691e5a
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102034307"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747093"
 ---
 # <a name="capture-azure-kinect-device-synchronization"></a>Erfassen der Azure Kinect-Gerätesynchronisierung
 

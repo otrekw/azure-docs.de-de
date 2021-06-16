@@ -2,19 +2,19 @@
 title: Verwalten von Eigenschaften und Metadaten für ein Blob mit .NET – Azure Storage
 description: Hier erfahren Sie, wie Sie mithilfe der .NET-Clientbibliothek Systemeigenschaften festlegen und abrufen sowie benutzerdefinierte Metadaten für Blobs in Ihrem Azure Storage-Konto speichern.
 services: storage
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 09/25/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae18548c8344e5fe874d3c4c1d99742d7f8a8b43
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5f003273d05a1e0c317c37afe3d03e49cf3a0e7c
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451716"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655083"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>Verwalten von Blobeigenschaften und Metadaten mit .NET
 

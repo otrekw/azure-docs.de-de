@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/26/2021
-ms.openlocfilehash: 0cfbf6fa6a329e2038120703e6fe29fca23bfa06
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 544bf2ff63b81842b942b645dc74a9f5ac838461
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018030"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966268"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>Wiederherstellen eines gelöschten Azure Database for PostgreSQL-Servers
 
@@ -37,7 +37,7 @@ Zum Wiederherstellen eines gelöschten Azure Database for PostgreSQL-Servers ben
 3. Wählen Sie das Ereignis für **PostgreSQL-Server löschen** und anschließend die Registerkarte **JSON** aus. Kopieren Sie die Attribute `resourceId` und `submissionTimestamp` in der JSON-Ausgabe. Die Ressourcen-ID (resourceId) hat das folgende Format: `/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/deletedserver`.
 
 
- 1. Navigieren Sie zur [PostgreSQL-Seite der REST-API für die Servererstellung](https://docs.microsoft.com/rest/api/postgresql/singleserver/servers/create), und wählen Sie die grün hervorgehobene Option **Jetzt testen** aus. Melden Sie sich mit Ihrem Azure-Konto an.
+ 1. Navigieren Sie zur [PostgreSQL-Seite der REST-API für die Servererstellung](/rest/api/postgresql/singleserver/servers/create), und wählen Sie die grün hervorgehobene Option **Jetzt testen** aus. Melden Sie sich mit Ihrem Azure-Konto an.
 
  2. Geben Sie Werte für die Eigenschaften **resourceGroupName**, **serverName** (Name des gelöschten Servers) und **subscriptionId** an (basierend auf dem JSON-Wert für das Attribut „resourceId“, das Sie zuvor in Schritt 3 erfasst haben). Die Eigenschaft „api-version“ wurde vorab aufgefüllt und kann unverändert bleiben, wie in der folgenden Abbildung zu sehen:
 

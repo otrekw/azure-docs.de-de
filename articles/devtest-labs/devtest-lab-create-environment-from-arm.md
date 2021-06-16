@@ -3,16 +3,16 @@ title: Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Resso
 description: Hier erfahren Sie, wie Sie in Azure DevTest Labs auf der Grundlage einer Azure Resource Manager-Vorlage Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen erstellen.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: f285acffe642a85fa27792ee51ea67a57f6d35a5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 839953bcf5f48dc856da0d01133e81ed69fd08cd
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790111"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954136"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 
-Azure DevTest Labs-Umgebungen ermöglichen Benutzern, komplexe Infrastrukturen problemlos auf konsistente Weise innerhalb der Grenzen des Labs bereitzustellen. Sie können [Azure Resource Manager Vorlagen](../azure-resource-manager/templates/template-syntax.md) verwenden, um Umgebungen mit Ressourcensätzen in DevTest Labs zu erstellen. Diese Umgebungen können alle Azure-Ressourcen enthalten, die von Resource Manager-Vorlagen erstellt werden können.
+Azure DevTest Labs-Umgebungen ermöglichen Benutzern, komplexe Infrastrukturen problemlos auf konsistente Weise innerhalb der Grenzen des Labs bereitzustellen. Sie können [Azure Resource Manager Vorlagen](../azure-resource-manager/templates/syntax.md) verwenden, um Umgebungen mit Ressourcensätzen in DevTest Labs zu erstellen. Diese Umgebungen können alle Azure-Ressourcen enthalten, die von Resource Manager-Vorlagen erstellt werden können.
 
 Sie können einem Lab problemlos [jeweils einen virtuellen Computer (VM) hinzufügen](devtest-lab-add-vm.md), indem Sie das [Azure-Portal](https://portal.azure.com) verwenden. Szenarios wie Apps mit mehreren Ebenen oder eine SharePoint-Farm benötigen jedoch einen Mechanismus zum Erstellen mehrerer virtueller Computer in einem einzigen Schritt. Mit Azure Resource Manager-Vorlagen können Sie die Infrastruktur und Konfiguration Ihrer Azure-Lösung definieren und wiederholt mehrere virtuelle Computer in einem konsistenten Zustand bereitstellen.
 

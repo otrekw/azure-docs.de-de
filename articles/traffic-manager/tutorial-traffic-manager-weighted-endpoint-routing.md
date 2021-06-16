@@ -7,12 +7,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/19/2020
 ms.author: duau
-ms.openlocfilehash: 20864d46ac93d5fcefec20028dd2a78ded142ba3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3abd5af39b3b66f3480c377d63f9bf269342fb0a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067179"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081333"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Tutorial: Steuern des Routings von Datenverkehr mit gewichteten Endpunkten unter Verwendung von Traffic Manager
 
@@ -59,7 +59,7 @@ In diesem Abschnitt erstellen Sie die beiden virtuellen Computer *myIISVMEastUS*
    - **Instanzendetails** > **Name des virtuellen Computers**: Geben Sie *myIISVMEastUS* ein.
    - **Instanzendetails** > **Region**:  Wählen Sie **USA, Osten** aus.
    - **Administratorkonto** > **Benutzername**:  Geben Sie den gewünschten Benutzernamen ein.
-   - **Administratorkonto** > **Kennwort**:  Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
+   - **Administratorkonto** > **Kennwort**:  Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.
    - **Regeln für eingehende Ports** > **Öffentliche Eingangsports**: Wählen Sie **Ausgewählte Ports zulassen** aus.
    - **Regeln für eingehende Ports** > **Eingangsports auswählen**: Wählen Sie im Dropdownfeld **RDP** und **HTTP** aus.
 
@@ -119,7 +119,7 @@ In diesem Abschnitt erstellen Sie je einen virtuellen Computer (*myVMEastUS* und
    - **Instanzendetails** > **Name des virtuellen Computers**: Geben Sie *myVMEastUS* ein.
    - **Instanzendetails** > **Region**:  Wählen Sie **USA, Osten** aus.
    - **Administratorkonto** > **Benutzername**:  Geben Sie den gewünschten Benutzernamen ein.
-   - **Administratorkonto** > **Kennwort**:  Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
+   - **Administratorkonto** > **Kennwort**:  Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.
    - **Regeln für eingehende Ports** > **Öffentliche Eingangsports**: Wählen Sie **Ausgewählte Ports zulassen** aus.
    - **Regeln für eingehende Ports** > **Eingangsports auswählen**: Wählen Sie im Dropdownfeld **RDP** aus.
 

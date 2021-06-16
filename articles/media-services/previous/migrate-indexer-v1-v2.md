@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 2b1960aa2d08a189e04aea8906c10e761dc1c57a
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 3d580f68b46c01a7ccec594f5818832f498b1196
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962644"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956979"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrieren von Media Indexer und Media Indexer 2 zu Video Indexer
 
@@ -27,12 +27,12 @@ ms.locfileid: "105962644"
 > [!IMPORTANT]
 > Es wird empfohlen, dass Kunden von Indexer v1 und Indexer v2 auf den [Media Services v3 AudioAnalyzerPreset Basic-Modus](../latest/analyze-video-audio-files-concept.md) umsteigen. Die Medienprozessoren [Azure Media Indexer](media-services-index-content.md) und [Azure Media Indexer 2 Preview](./legacy-components.md) werden außer Betrieb genommen. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md).
 
-Azure Media Services Video Indexer baut auf Azure Media Analytics, Azure Cognitive Search, Cognitive Services (beispielsweise Gesichtserkennungs-API, Microsoft Translator, Maschinelles Sehen-API und benutzerdefinierter Spracherkennungsdienst) auf. Sie ermöglicht Ihnen, mithilfe der Video- und Audiomodelle von Video Indexer Erkenntnisse aus Ihren Videos zu gewinnen. Informationen zu den Szenarien, in denen Video Indexer verwendet werden kann, zu den gebotenen Funktionen und zum Einstieg finden Sie unter [Video- und Audiomodelle von Video Indexer](../video-indexer/video-indexer-overview.md). 
+Azure Media Services Video Indexer baut auf Azure Media Analytics, Azure Cognitive Search, Cognitive Services (beispielsweise Gesichtserkennungs-API, Microsoft Translator, Maschinelles Sehen-API und benutzerdefinierter Spracherkennungsdienst) auf. Sie ermöglicht Ihnen, mithilfe der Video- und Audiomodelle von Video Indexer Erkenntnisse aus Ihren Videos zu gewinnen. Informationen zu den Szenarien, in denen Video Indexer verwendet werden kann, zu den gebotenen Funktionen und zum Einstieg finden Sie unter [Video- und Audiomodelle von Video Indexer](../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md). 
 
 Sie können Erkenntnisse aus Ihren Video- und Audiodateien ziehen, indem Sie die [Azure Media Services v3-Analyse-Einstellungen](../latest/analyze-video-audio-files-concept.md) oder direkt die [Video Indexer-APIs](https://api-portal.videoindexer.ai/) verwenden. Derzeit gibt es eine Überschneidung bei den Features der APIs von Video Indexer und der APIs von Media Services v3.
 
 > [!NOTE]
-> Informationen zu den Unterschieden zwischen Video Indexer im Vergleich mit den Voreinstellungen des Media Services-Analysetools finden Sie im [Vergleichsdokument](../video-indexer/compare-video-indexer-with-media-services-presets.md).
+> Informationen zu den Unterschieden zwischen Video Indexer im Vergleich mit den Voreinstellungen des Media Services-Analysetools finden Sie im [Vergleichsdokument](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md).
 
 In diesem Artikel werden die Schritte zum Migrieren von Azure Media Indexer und Azure Media Indexer 2 zu Azure Media Services Video Indexer erläutert.  
 
@@ -45,7 +45,7 @@ In diesem Artikel werden die Schritte zum Migrieren von Azure Media Indexer und 
 
 ## <a name="getting-started-with-video-indexer"></a>Erste Schritte mit Video Indexer
 
-Der folgende Abschnitt enthält Links zum Thema: [Wie kann ich mich mit Video Indexer vertraut machen?](../video-indexer/video-indexer-overview.md#how-can-i-get-started-with-video-indexer) 
+Der folgende Abschnitt enthält Links zum Thema: [Wie kann ich mich mit Video Indexer vertraut machen?](../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md#how-can-i-get-started-with-video-analyzer-for-media) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Erste Schritte mit Media Services v3-APIs
 

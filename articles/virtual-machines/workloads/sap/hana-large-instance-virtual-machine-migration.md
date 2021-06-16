@@ -7,18 +7,19 @@ author: bentrin
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd1cfb0cc8e1868e78b4d284d1b1f4e7e85aa318
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1da52290703a8d28438c21ac802b72a099d71699
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677045"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580130"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA in Azure (große Instanzen) – Migration zu Azure Virtual Machines
 In diesem Artikel werden mögliche Szenarien für die Bereitstellung von Azure (große Instanzen) beschrieben, und es werden Planungs- und Migrationskonzepte mit minimierten Ausfallzeiten beim Übergang angeboten.

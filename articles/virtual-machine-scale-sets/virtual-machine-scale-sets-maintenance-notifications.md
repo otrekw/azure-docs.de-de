@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: maintenance-control
 ms.date: 04/26/2021
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 076c007bd0a2fb2e70ad84dfd6a825030a22b15a
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: e23630fb0d102c10194d85d3beff1ce626fbf898
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015229"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673896"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
 
@@ -81,7 +81,7 @@ Nachdem eine geplante Wartungsaktion geplant wurde, können Sie über das Azure-
 
 Die Spalte **Self-Service-Wartung** wird nun in der Liste der VM-Skalierungsgruppen angezeigt. Jede VM-Skalierungsgruppe kann einen der folgenden Werte für die Spalte „Self-Service-Wartung“ aufweisen:
 
-| Wert | BESCHREIBUNG |
+| Wert | Beschreibung |
 |-------|-------------|
 | Ja | Mindestens ein virtueller Computer in Ihrer VM-Skalierungsgruppe befindet sich in einem Self-Service-Wartungsfenster. Sie können die Wartung jederzeit in diesem Self-Service-Zeitfenster starten. | 
 | Nein | Es gibt keine virtuellen Computer in einem Self-Service-Fenster in der betroffenen VM-Skalierungsgruppe. | 

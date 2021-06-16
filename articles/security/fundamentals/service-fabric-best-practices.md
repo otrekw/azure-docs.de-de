@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: a7d87e2496158fec8ff33ab8586c845a6207f810
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: d89f2de555b17ddb5e77a85831f03be16a8a3f57
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816060"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950473"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Bewährte Methoden für die Azure Service Fabric-Sicherheit
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Bevor Sie Ihre Cloudanwendung für die Produktion bereitstellen, überprüfen Sie unsere Liste grundlegender und empfohlener bewährter Methoden zum Implementieren sicherer Cluster in der Anwendung.
@@ -144,7 +144,7 @@ Das HTTP-Protokoll ist unsicher und anfällig für Lauschangriffe. Daten, die ü
 Weitere Informationen zur Verwendung von SSL-/TLS-Zertifikaten finden Sie unter [Konfigurieren von TLS für eine Anwendung in Azure](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Verwenden von Netzwerkisolation und -sicherheit mit Azure Service Fabric
-Richten Sie als Beispiel einen sicheren Cluster mit 3 Knoten mithilfe der [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md) ein. Sie steuern den ein- und ausgehenden Netzwerkdatenverkehr mithilfe der Vorlage und von Netzwerksicherheitsgruppen.
+Richten Sie als Beispiel einen sicheren Cluster mit 3 Knoten mithilfe der [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/syntax.md) ein. Sie steuern den ein- und ausgehenden Netzwerkdatenverkehr mithilfe der Vorlage und von Netzwerksicherheitsgruppen.
 
 Die Vorlage weist eine Netzwerksicherheitsgruppe für jede VM-Skalierungsgruppe auf und dient der Steuerung des Datenverkehrs in der Gruppe und aus dieser heraus. Standardmäßig werden die Regeln so konfiguriert, dass der gesamte von den Systemdiensten benötigte Datenverkehr und die in der Vorlage angegebenen Anwendungsports zugelassen werden. Überprüfen Sie diese Regeln, und ändern Sie sie nach Ihren Bedürfnissen, indem Sie z.B. neue Regeln für Ihre Anwendungen hinzufügen.
 

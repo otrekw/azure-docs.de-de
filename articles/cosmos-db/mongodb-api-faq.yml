@@ -1,0 +1,44 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zur Azure Cosmos DB-API für MongoDB
+  description: Hier finden Sie Antworten auf häufig gestellte Fragen zur Azure Cosmos DB-API für MongoDB.
+  author: SnehaGunda
+  ms.service: cosmos-db
+  ms.subservice: cosmosdb-mongo
+  ms.topic: conceptual
+  ms.date: 04/28/2020
+  ms.author: sngun
+  ms.openlocfilehash: 9faa129fcfe2d8a1af705b98311ffe19c0934dad
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "111907251"
+title: Häufig gestellte Fragen zur Azure Cosmos DB-API für MongoDB
+summary: >
+  [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
+
+
+  Die Azure Cosmos DB-API für MongoDB ist eine Wire Protocol-Kompatibilitätsebene, mit der Anwendungen auf einfache und transparente Weise über vorhandene, von der Community unterstützte SDKs und Treiber für MongoDB mit der nativen Azure Cosmos-Datenbank-Engine kommunizieren können. Entwickler können jetzt vorhandene MongoDB-Toolketten und -Fähigkeiten verwenden, um Anwendungen zu erstellen, die Azure Cosmos DB nutzen. Entwickler profitieren von den einzigartigen Funktionen von Azure Cosmos DB, z. B. globale Verteilung mit Schreibvorgängen für mehrere Regionen, automatische Indizierung, Sicherungsverwaltung, finanziell abgesicherte Vereinbarungen zum Servicelevel (SLAs) usw.
+sections:
+- name: Allgemein
+  questions:
+  - question: >
+      Wie stelle ich eine Verbindung mit meiner Datenbank her?
+    answer: >
+      Die schnellste Möglichkeit zum Herstellen einer Verbindung mit einer Cosmos-Datenbank mit der API für MongoDB von Azure Cosmos DB besteht darin, dass Sie zum [Azure-Portal](https://portal.azure.com) wechseln. Navigieren Sie zu Ihrem Konto, und klicken Sie dann im Navigationsmenü auf der linken Seite auf **Schnellstart**. Der Schnellstart ist die beste Möglichkeit, um Codeausschnitte für das Herstellen einer Verbindung mit Ihrer Datenbank abzurufen.
+
+
+      Azure Cosmos DB erzwingt strenge Sicherheitsanforderungen und -standards. Azure Cosmos DB-Konten erfordern eine Authentifizierung und eine sichere Kommunikation über TLS. Verwenden Sie daher unbedingt TLSv1.2.
+
+
+      Weitere Informationen finden Sie unter [Verbinden einer MongoDB-Anwendung mit Azure Cosmos DB](connect-mongodb-account.md).
+  - question: >
+      Welche Fehlercodes können bei Verwenden der Azure Cosmos DB-API für MongoDB angezeigt werden?
+    answer: >
+      Neben den allgemeinen MongoDB-Fehlercodes verfügt die Azure Cosmos DB-API für MongoDB über eigene, spezifische Fehlercodes. Diese finden Sie im [Leitfaden zur Problembehandlung](mongodb-troubleshoot.md).
+  - question: >
+      Wird die Verwendung des Simba-Treibers für MongoDB mit der Azure Cosmos DB-API für MongoDB unterstützt?
+    answer: >
+      Ja, Sie können den Mongo-ODBC-Treiber von Simba mit der Azure Cosmos DB-API für MongoDB verwenden.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n* [Erstellen einer .NET-Web-App mit der API für MongoDB von Azure Cosmos DB](create-mongodb-dotnet.md)\n* [Erstellen einer Konsolen-App mit Java und der MongoDB-API in Azure Cosmos DB](create-mongodb-java.md)\n"

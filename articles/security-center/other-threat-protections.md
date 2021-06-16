@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 04/29/2021
 ms.author: memildin
-ms.openlocfilehash: cd9c2d5547c3b5e9468432539c2b07d18f6fd3ab
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8549734a643c97771681f2e90a1dad2e2c7ed7a3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459908"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749145"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Zusätzliche Bedrohungsschutzmaßnahmen in Azure Security Center
 Ebenso wie die integrierten [Azure Defender-Schutzmaßnahmen](azure-defender.md) bietet Azure Security Center auch die folgenden Funktionen zum Schutz vor Bedrohungen.
@@ -35,7 +35,7 @@ Eine Liste der Warnungen der Azure-Netzwerkebene finden Sie in der [Referenztabe
 >
 > 1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
 > 1. Wählen Sie das Abonnement aus, das Sie ändern möchten.
-> 1. Wählen Sie **Bedrohungserkennung** aus.
+> 1. Wählen Sie **Integrationen** aus.
 > 1. Deaktivieren Sie **Microsoft Cloud App Security Zugriff auf meine Daten erteilen**, und wählen Sie anschließend **Speichern** aus.
 
 

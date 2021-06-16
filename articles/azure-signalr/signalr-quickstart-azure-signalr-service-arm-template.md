@@ -6,15 +6,13 @@ ms.author: zhshang
 ms.date: 10/02/2020
 ms.topic: quickstart
 ms.service: signalr
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: dedc265a6f7dec38d2f46b641631276ad25a8d72
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 624240a6bb1846606fbdbf0b3a635935df9bdd5b
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813306"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891822"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Schnellstart: Verwenden einer ARM-Vorlage zum Bereitstellen von Azure SignalR Service
 
@@ -48,7 +46,7 @@ Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Kon
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-signalr/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/signalr/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.signalrservice/signalr/azuredeploy.json":::
 

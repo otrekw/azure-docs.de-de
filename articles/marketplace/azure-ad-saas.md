@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 674f267d3d99dd22c1ae06b6d32587761d5983ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4638139b6cc57e18b11382341b291a13b6c558c0
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93124916"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540068"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace
 
@@ -68,7 +68,7 @@ In dieser Tabelle werden die Schritte für die Abonnementverwaltung ausführlich
 | Schritt | Aktion des Herausgebers | Für Herausgeber empfohlen oder erforderlich |
 | ------------ | ------------- | ------------- |
 | 5. Der Herausgeber verwaltet das Abonnement für die SaaS-Anwendung über die SaaS-Fulfillment-API. | Führen Sie Abonnementänderungen und andere Verwaltungsaufgaben über die [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-api-v2.md) durch.<br><br>Dieser Schritt erfordert ein Zugriffstoken, wie in Schritt 3 beschrieben. | Erforderlich |
-| 6. Bei Verwendung eines getakteten Preismodells gibt der Herausgeber Nutzungsereignisse für die Messungsdienst-API aus. | Wenn für Ihre SaaS-App die nutzungsbasierte Abrechnung verwendet wird, generieren Sie Nutzungsbenachrichtigungen über die [Marketplace-Messungsdienst-APIs](./partner-center-portal/marketplace-metering-service-apis.md).<br><br>Dieser Schritt erfordert ein Zugriffstoken, wie in Schritt 3 beschrieben. | Für Messung erforderlich |
+| 6. Bei Verwendung eines getakteten Preismodells gibt der Herausgeber Nutzungsereignisse für die Messungsdienst-API aus. | Wenn für Ihre SaaS-App die nutzungsbasierte Abrechnung verwendet wird, generieren Sie Nutzungsbenachrichtigungen über die [Marketplace-Messungsdienst-APIs](marketplace-metering-service-apis.md).<br><br>Dieser Schritt erfordert ein Zugriffstoken, wie in Schritt 3 beschrieben. | Für Messung erforderlich |
 ||||
 
 ## <a name="process-steps-for-user-management"></a>Schritte für die Benutzerverwaltung

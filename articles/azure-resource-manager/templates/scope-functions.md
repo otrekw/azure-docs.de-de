@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Vorlagenfunktionen in berei
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c4a2caaa7b66e516a69cdb9d6c26baf7fd605e89
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: db2099c6c2405928a33f33bbba579c2280ad4877
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314605"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959985"
 ---
 # <a name="arm-template-functions-in-deployment-scopes"></a>Azure Resource Manager-Vorlagenfunktionen in Bereitstellungsbereichen
 
@@ -139,6 +139,6 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).
 * Tipps zum Beheben gängiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](common-deployment-errors.md).
 * Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token erfordert, finden Sie unter [Bereitstellen einer privaten ARM-Vorlage mit SAS-Token](secure-template-with-sas-token.md).

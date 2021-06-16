@@ -3,12 +3,12 @@ title: Definieren mehrerer Instanzen einer Variablen
 description: Verwenden des copy-Vorgangs in einer Azure Resource Manager-Vorlage (ARM), um sie beim Erstellen einer Variable mehrere Male zu durchlaufen.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: e1f6dfeb7b701b09ad1a9505d5dbcfddf2cd6b0b
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5f6459335fa3f059a76128edde4ee7096790fe13
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385705"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957957"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Variableniteration in ARM-Vorlagen
 
@@ -314,7 +314,7 @@ Im nächsten Beispiel werden die verschiedenen Möglichkeiten gezeigt, mit denen
 
 Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer Werte für eine Variable.
 
-|Vorlage  |BESCHREIBUNG  |
+|Vorlage  |Beschreibung  |
 |---------|---------|
 |[Variablen kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Veranschaulicht die verschiedenen Methoden zum Durchlaufen von Variablen |
 |[Mehrere Sicherheitsregeln](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Stellt mehrere Sicherheitsregeln in einer Netzwerksicherheitsgruppe bereit. Die Sicherheitsregeln werden aus einem Parameter generiert. Informationen zum Parameter finden Sie im Artikel zur [Datei mit mehreren NSG-Parametern](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
@@ -326,5 +326,5 @@ Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer 
   - [Ressourceniteration in ARM-Vorlagen](copy-resources.md)
   - [Eigenschafteniteration in ARM-Vorlagen](copy-properties.md)
   - [Ausgabeiteration in ARM-Vorlagen](copy-outputs.md)
-- Weitere Informationen zu den Abschnitten in einer Vorlage finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+- Weitere Informationen zu den Abschnitten in einer Vorlage finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).
 - Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).

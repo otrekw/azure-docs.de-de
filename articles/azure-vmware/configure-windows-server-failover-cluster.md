@@ -3,12 +3,12 @@ title: Konfigurieren von Windows Server Failover Cluster in Azure VMware Solutio
 description: Hier erfahren Sie, wie Sie Windows Server Failover Cluster (WSFC) in Azure VMware Solution vSAN mit nativen freigegebenen Datenträgern einrichten.
 ms.topic: how-to
 ms.date: 05/04/2021
-ms.openlocfilehash: d74ae5d699f965c4899c6e21c78cd2dec720de4e
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: f2fc9e712d3f56aeddc6e66c12837794dceb9abe
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632311"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954497"
 ---
 # <a name="configure-windows-server-failover-cluster-on-azure-vmware-solution-vsan"></a>Konfigurieren von Windows Server Failover Cluster in Azure VMware Solution vSAN
 
@@ -165,5 +165,5 @@ Nachdem Sie sich mit dem Einrichten von WSFC in Azure VMware Solution vertraut g
 
 - Einrichten der neuen WSFC-Instanz durch Hinzufügen weiterer Anwendungen, die WSFC-Funktionen erfordern, z. B. SQL Server und SAP ASCS
 - Einrichten einer Sicherungslösung:
-  - [Einrichten von Azure Backup Server für Azure VMware Solution](/azure/backup/backup-azure-microsoft-azure-backup?context=/azure/azure-vmware/context/context)
-  - [Sicherungslösungen für virtuelle Azure VMware Solution-Computer](/azure/backup/backup-azure-backup-server-vmware?context=/azure/azure-vmware/context/context)
+  - [Einrichten von Azure Backup Server für Azure VMware Solution](../backup/backup-azure-microsoft-azure-backup.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext)
+  - [Sicherungslösungen für virtuelle Azure VMware Solution-Computer](../backup/backup-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext)

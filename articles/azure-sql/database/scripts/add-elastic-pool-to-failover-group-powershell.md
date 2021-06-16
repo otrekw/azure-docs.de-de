@@ -4,19 +4,19 @@ description: Hier finden Sie ein Azure PowerShell-Beispielskript, mit dem Sie ei
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 07/16/2019
-ms.openlocfilehash: a8326249b48e98eccecb5f0c4953add26e167560
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 720a04262875fc3e7374477021623a8dbb788b6b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94594105"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689027"
 ---
 # <a name="use-powershell-to-add-an-elastic-pool-to-a-failover-group"></a>Verwenden von PowerShell, um einen Pool für elastische Datenbanken einer Failovergruppe hinzuzufügen
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]

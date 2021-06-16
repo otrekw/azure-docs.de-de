@@ -142,7 +142,7 @@
               href: traffic-analytics.md
               items:
                 - name: Häufig gestellte Fragen
-                  href: traffic-analytics-faq.md
+                  href: traffic-analytics-faq.yml
                 - name: Schema- und Datenaggregation
                   href: traffic-analytics-schema.md
                 - name: "Schemaaktualisierung (August\_2019)"
@@ -210,7 +210,7 @@
 - name: Ressourcen
   items:
     - name: 'Network Watcher: häufig gestellte Fragen'
-      href: frequently-asked-questions.md
+      href: frequently-asked-questions.yml
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"

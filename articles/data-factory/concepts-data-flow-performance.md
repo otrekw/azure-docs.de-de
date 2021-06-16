@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 04/10/2021
-ms.openlocfilehash: cee7993116e746c7b827faaf94724033501f1318
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/07/2021
+ms.openlocfilehash: ac9d0aaf4114e48fb128a5093c59781724e8fd9c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309049"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749055"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -141,9 +141,6 @@ Wenn die meisten Ihrer Datenflüsse jedoch parallel ausgeführt werden, wird nic
 > [!NOTE]
 > Die Gültigkeitsdauer ist nicht verfügbar, wenn Sie die Integration Runtime mit automatischer Auflösung verwenden.
  
-> [!NOTE]
-> Die schnelle Wiederverwendung vorhandener Cluster ist ein Feature in Azure Integration Runtime, die derzeit in der öffentlichen Vorschau verfügbar ist.
-
 ## <a name="optimizing-sources"></a>Optimieren von Quellen
 
 Für jede Quelle – mit Ausnahme von Azure SQL-Datenbank – lautet die Empfehlung, die Option **Aktuelle Partitionierung verwenden** ausgewählt zu lassen. Beim Lesen von allen anderen Quellsystemen werden Daten von Datenflüssen je nach Größe automatisch gleichmäßig partitioniert. Für ca. 128 MB an Daten wird jeweils eine neue Partition erstellt. Wenn die Datengröße zunimmt, steigt die Anzahl von Partitionen.
@@ -308,9 +305,6 @@ Bei paralleler Ausführung Ihrer Datenflüsse wird empfohlen, die Eigenschaft f�
 ### <a name="execute-data-flows-sequentially"></a>Sequenzielles Ausführen von Datenflüssen
 
 Wenn Sie Ihre Datenflussaktivitäten nacheinander ausführen, empfiehlt es sich, in der Azure IR-Konfiguration eine Gültigkeitsdauer festzulegen. Die Computeressourcen werden von ADF wiederverwendet, was zu einer schnelleren Startzeit des Clusters führt. Jede Aktivität wird weiterhin isoliert und erhält einen neuen Spark-Kontext für jede Ausführung. Aktivieren Sie das Kontrollkästchen „Schnelle Wiederverwendung“ auf der Azure Integration Runtime-Instanz, um ADF anzuweisen, den vorhandenen Cluster erneut zu verwenden. So können Sie die Dauer zwischen sequenziellen Aktivitäten noch mehr reduzieren.
-
-> [!NOTE]
-> Die schnelle Wiederverwendung vorhandener Cluster ist ein Feature in Azure Integration Runtime, die derzeit in der öffentlichen Vorschau verfügbar ist.
 
 ### <a name="overloading-a-single-data-flow"></a>Überladen eines einzelnen Datenflusses
 
