@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 10791fac984a5df4a7fba95217f00ef6a2114b86
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 956e84e8eb7281541fbb787a6ce7557a1f5fee03
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109689254"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586490"
 ---
 # <a name="create-an-iot-central-application"></a>Erstellen einer IoT Central-Anwendung
 
@@ -39,7 +39,7 @@ Mit dem *kostenlosen* Tarif können Sie eine IoT Central-Anwendung erstellen, di
 
 - Erfordern ein Azure-Abonnement. Sie sollten in Ihrem Azure-Abonnement mindestens über Zugriff als **Mitwirkender** verfügen. Wenn Sie das Abonnement selbst erstellt haben, sind Sie automatisch Administrator mit ausreichendem Zugriff. Weitere Informationen finden Sie in folgendem Artikel: [Was ist die rollenbasierte Zugriffssteuerung in Azure?](../../role-based-access-control/overview.md).
 - Ermöglicht die Erstellung und Verwaltung von IoT Central-Anwendungen über eine der verfügbaren Methoden.
-- Ermöglicht den Anschluss von beliebig vielen Geräten. Die Abrechnung erfolgt pro Gerät. Weitere Informationen finden Sie unter [Azure IoT Central – Preise](/pricing/details/iot-central/).
+- Ermöglicht den Anschluss von beliebig vielen Geräten. Die Abrechnung erfolgt pro Gerät. Weitere Informationen finden Sie unter [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/).
 - Kann nicht auf einen kostenlosen Tarif herabgestuft werden, aber ein Upgrade oder Downgrade auf andere Standardtarife ist möglich.
 
 In der folgenden Tabelle werden die Unterschiede zwischen den drei Standardtarifen erläutert:

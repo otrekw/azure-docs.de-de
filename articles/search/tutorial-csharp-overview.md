@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/23/2021
 ms.custom: devx-track-csharp
 ms.devlang: dotnet
-ms.openlocfilehash: 8a73ab04ea782c248a8fab61fb375c01a2339d1c
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 49919a5a0efbdae46f2ef82a7129fee8aa686e8e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107981952"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964042"
 ---
 # <a name="1---overview-of-adding-search-to-a-website-with-net"></a>1: Übersicht über das Hinzufügen von Suchfunktionen zu einer Website mit .NET
 
@@ -58,7 +58,7 @@ Installieren Sie Folgendes für die lokale Entwicklungsumgebung:
     - [Azure Cognitive Search 0.2.0 oder höher](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
     - [Statische Azure-Web-App](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps) 
 - Optional:
-    - In diesem Tutorial wird die Azure Functions-API nicht lokal ausgeführt. Wenn Sie sie jedoch lokal ausführen möchten, müssen Sie [azure-functions-core-tools](/azure/azure-functions/functions-run-local?tabs=linux%2Ccsharp%2Cbash#install-the-azure-functions-core-tools) installieren.
+    - In diesem Tutorial wird die Azure Functions-API nicht lokal ausgeführt. Wenn Sie sie jedoch lokal ausführen möchten, müssen Sie [azure-functions-core-tools](../azure-functions/functions-run-local.md?tabs=linux%2ccsharp%2cbash#install-the-azure-functions-core-tools) installieren.
 
 ## <a name="fork-and-clone-the-search-sample-with-git"></a>Forken und Klonen des Suchbeispiels mit Git
 

@@ -105,17 +105,7 @@
             - name: Übersicht
               href: ingest-data.md
             - name: Verschieben in und aus Blobspeicher
-              items:
-                - name: Übersicht
-                  href: move-azure-blob.md
-                - name: Verwenden des Storage-Explorers
-                  href: move-data-to-azure-blob-using-azure-storage-explorer.md
-                - name: Verwenden von AzCopy
-                  href: ../../storage/common/storage-use-azcopy-v10.md
-                - name: Verwenden von Python
-                  href: ../../storage/blobs/storage-quickstart-blobs-python.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
-                - name: Verwenden von SSIS
-                  href: move-data-to-azure-blob-using-ssis.md
+              href: move-azure-blob.md
             - name: Verschieben in SQL auf einem virtuellen Computer
               href: move-sql-server-virtual-machine.md
             - name: Verschieben in Azure SQL-Datenbank

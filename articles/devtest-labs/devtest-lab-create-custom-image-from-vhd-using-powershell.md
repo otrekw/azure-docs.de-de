@@ -3,12 +3,13 @@ title: Erstellen eines benutzerdefinierten Images aus einer VHD-Datei mit Azure 
 description: Automatisieren Sie das Erstellen von benutzerdefinierten Azure DevTest Labs-Images aus VHD-Dateien mithilfe von PowerShell.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4b0712fdbec1ce23ad9e09d972e425cb7941107b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6f4dc044710ca74a72e7ffddd5ff82a003b88828
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87288983"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695206"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Erstellen eines benutzerdefinierten Images aus einer VHD-Datei mithilfe von PowerShell
 

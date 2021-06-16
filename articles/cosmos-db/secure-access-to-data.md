@@ -6,14 +6,14 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 05/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7a3d7a3892e5d90e4ee8cc4e5b80df768fc138d7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 696d8c1a775f67271a7c7b4fa81789e7b0775bb1
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378803"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110654262"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Sicherer Zugriff auf Daten in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,7 +25,7 @@ Azure Cosmos DB bietet drei Möglichkeiten, den Zugriff auf Ihre Daten zu steue
 | Zugriffssteuerungstyp | Merkmale |
 |---|---|
 | [Primärschlüssel](#primary-keys) | Gemeinsamer geheimer Schlüssel, der jeden Verwaltungs- oder Datenvorgang zulässt. Dieser ist sowohl als Variante für Lese-/Schreibvorgänge als auch schreibgeschützte Variante verfügbar. |
-| [Rollenbasierte Zugriffssteuerung](#rbac) (Vorschau) | Differenziertes, rollenbasiertes Berechtigungsmodell, bei dem AAD-Identitäten (Azure Active Directory) für die Authentifizierung verwendet werden. |
+| [Rollenbasierte Zugriffssteuerung](#rbac) | Differenziertes, rollenbasiertes Berechtigungsmodell, bei dem AAD-Identitäten (Azure Active Directory) für die Authentifizierung verwendet werden. |
 | [Ressourcentoken](#resource-tokens)| Differenziertes Berechtigungsmodell, das auf nativen Azure Cosmos DB-Benutzern und -Berechtigungen basiert. |
 
 ## <a name="primary-keys"></a><a id="primary-keys"></a> Primärschlüssel

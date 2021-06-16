@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/10/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 68953a2848594cac673f133b2a8fbd4de1ae63f0
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ace2c9819802150f1131da9e542c6c8feb589c3a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760137"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954928"
 ---
 # <a name="tutorial-create-a-function-to-integrate-with-azure-logic-apps"></a>Tutorial: Erstellen einer Funktion für die Integration in Azure Logic Apps
 
@@ -226,7 +226,7 @@ Stellen Sie eine Verbindung mit Twitter her, damit Ihre App neue Tweets abrufen 
     | Einstellung | Wert |
     | ------- | ----- |
     | Suchtext | **#my-twitter-tutorial** |
-    | Wie oft möchten Sie auf Elemente prüfen? | **1** im Textfeld und <br> **Stunde** in der Dropdownliste. Sie können verschiedene Werte eingeben. Überprüfen Sie jedoch unbedingt die aktuellen [Einschränkungen](https://docs.microsoft.com/connectors/twitterconnector/#limits) des Twitter-Connectors.  |
+    | Wie oft möchten Sie auf Elemente prüfen? | **1** im Textfeld und <br> **Stunde** in der Dropdownliste. Sie können verschiedene Werte eingeben. Überprüfen Sie jedoch unbedingt die aktuellen [Einschränkungen](/connectors/twitterconnector/#limits) des Twitter-Connectors.  |
 
 1. Wählen Sie auf der Symbolleiste die Schaltfläche **Speichern** aus, um Ihren Fortschritt zu speichern.
 

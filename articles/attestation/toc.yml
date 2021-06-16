@@ -51,7 +51,7 @@
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
     - name: Häufig gestellte Fragen
-      href: faq.md
+      href: faq.yml
     - name: REST
       href: /rest/api/attestation/
     - name: Azure PowerShell
@@ -66,6 +66,6 @@
       href: troubleshoot-guide.md
     - name: TPM- und VBS-Nachweisprotokoll
       href: virtualization-based-security-protocol.md
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

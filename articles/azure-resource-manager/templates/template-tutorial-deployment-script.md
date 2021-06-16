@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7ecd31f6f788331071abbbe67d5460494d54de8d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 65c94346725123913cc2ea53be9b95a7c1bb0fda
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753981"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889578"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Tutorial: Verwenden von Bereitstellungsskripts zum Erstellen eines selbstsignierten Zertifikats
 
@@ -60,7 +60,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 Anstatt eine Vorlage von Grund auf neu zu erstellen, können Sie auch eine Vorlage aus [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) öffnen. Azure-Schnellstartvorlagen ist ein Repository für ARM-Vorlagen.
 
-Die in dieser Schnellstartanleitung verwendete Vorlage ist [Erstellen eines Azure-Schlüsseltresors und eines Geheimnisses](https://azure.microsoft.com/resources/templates/101-key-vault-create/). Mit der Vorlage wird ein Schlüsseltresor erstellt, und anschließend wird dafür ein Geheimnis hinzugefügt.
+Die in dieser Schnellstartanleitung verwendete Vorlage ist [Erstellen eines Azure-Schlüsseltresors und eines Geheimnisses](https://azure.microsoft.com/resources/templates/key-vault-create/). Mit der Vorlage wird ein Schlüsseltresor erstellt, und anschließend wird dafür ein Geheimnis hinzugefügt.
 
 1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
 2. Fügen Sie in **Dateiname** die folgende URL ein:

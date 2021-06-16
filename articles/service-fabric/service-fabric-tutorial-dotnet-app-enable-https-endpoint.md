@@ -3,13 +3,13 @@ title: Hinzufügen eines HTTPS-Endpunkts mit Kestrel
 description: In diesem Tutorial erfahren Sie, wie Sie einem ASP.NET Core-Front-End-Webdienst mit Kestrel einen HTTPS-Endpunkt hinzufügen und die Anwendung in einem Cluster bereitstellen.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: 64af2b45ffc47d24eb99994bdba6f09d163d45c8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91326234"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664998"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API mithilfe von Kestrel
 

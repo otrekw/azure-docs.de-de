@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/19/2021
+ms.date: 06/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0eb008cdf85e6891f7d6e1159314ceccf46b794
-ms.sourcegitcommit: 2ab484c6c8aeef8c6b7a1eb56d28ba13010d912c
+ms.openlocfilehash: 9e760cbca23aba21ad2d8c85e21a8014590419e9
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2021
-ms.locfileid: "110208645"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438322"
 ---
 # <a name="conditional-access-filters-for-devices-preview"></a>Bedingter Zugriff: Filter für Geräte (Vorschau)
 
@@ -46,7 +46,7 @@ Es gibt mehrere Szenarien, bei denen Organisationen jetzt die Bedingung „Filte
 Die Bedingung „Filter für Geräte“ ist eine Option, wenn Sie eine Richtlinie für bedingten Zugriff im Azure-Portal oder mit der Microsoft Graph-API erstellen.
 
 > [!IMPORTANT]
-> „Gerätestatus“ und „Filter für Geräte“ können in der Richtlinie für bedingten Zugriff nicht zusammen verwendet werden. „Filter für Geräte“ bietet eine präzisere Zielgruppenadressierung sowie Unterstützung für das Ansteuern von Gerätestatusinformationen über die Eigenschaften `trustType` und `isCompliant`.
+> „Gerätestatus“ und „Filter für Geräte“ können in der Richtlinie für bedingten Zugriff nicht zusammen verwendet werden.
 
 Mit den folgenden Schritten können Sie zwei Richtlinien für bedingten Zugriff erstellen, um das erste unter [Häufige Szenarien](#common-scenarios) beschriebene Szenario zu unterstützen. 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: ec35917ca18064d58279d8ed2b3fb1f0e83a88fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 429215dbd35368c7a2c8681e480b5256813171a1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736933"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753627"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit InVision
 
@@ -154,7 +154,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     e. Öffnen Sie die heruntergeladene **Zertifikatdatei (Base64)** im Editor, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld „**SAML Certificate“ (SAML-Zertifikat)** ein.
 
-    f. Verwenden Sie `Unspecified` im Textfeld **Name ID Format** **(Format der Namens-ID)** .
+    f. Verwenden Sie `urn:oasis:names:tc:SAML:1.1:nameid-format:Unspecified` im Textfeld **Name ID Format** **(Format der Namens-ID)** .
 
     g. Wählen Sie im Dropdownmenü **HASH Algorithm** (Hashalgorithmus) die Option **SHA-256** aus.
 

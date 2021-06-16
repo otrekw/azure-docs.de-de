@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 875b2a9f35562dd8f0d5df3c631e5ade1e3fbf75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69184abac12e9146d29ec5e7f14a536756ae0139
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91714530"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613576"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell
 
@@ -38,7 +38,7 @@ Zum Erstellen einer SAS für die Benutzerdelegierung mithilfe von PowerShell ins
 1. Vergewissern Sie sich, dass die aktuelle Version von PowerShellGet installiert ist. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie den folgenden Befehl aus, um die neueste Version zu installieren:
 
     ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
+    Install-Module PowerShellGet -Repository PSGallery -Force
     ```
 
 1. Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster, und öffnen Sie es dann erneut.
@@ -46,7 +46,7 @@ Zum Erstellen einer SAS für die Benutzerdelegierung mithilfe von PowerShell ins
 1. Installieren Sie die neueste Version von Azure PowerShell:
 
     ```powershell
-    Install-Module Az –Repository PSGallery –AllowClobber
+    Install-Module Az -Repository PSGallery -AllowClobber
     ```
 
 1. Vergewissern Sie sich, dass mindestens Version 3.2.0 von Azure PowerShell installiert ist. Führen Sie den folgenden Befehl aus, um die neueste Version des Azure Storage-PowerShell-Moduls zu installieren:

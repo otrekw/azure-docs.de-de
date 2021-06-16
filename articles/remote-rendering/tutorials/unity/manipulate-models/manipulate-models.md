@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 301d6eb0867604a6e780eb1d059eef0c153f246f
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: c8e22a1e81792145c468aeecd347f38426f73613
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574508"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412095"
 ---
 # <a name="tutorial-manipulating-models"></a>Tutorial: Bearbeiten von Modellen
 
@@ -316,7 +316,7 @@ Wenn ein Raycast im **RemoteRayCastPointerHandler**-Element erfolgreich abgeschl
     }
     ```
 
-2. Fügen Sie im zuvor erstellten GameObject-Element **TestModel** sowohl die Komponente **RemoteRayCastPointerHandler** als auch die Komponente **RemoteEntityHelper** hinzu.
+1. Fügen Sie im zuvor erstellten GameObject-Element **TestModel** sowohl die Komponente **RemoteRayCastPointerHandler** als auch die Komponente **RemoteEntityHelper** hinzu.
 1. Weisen Sie die Methode `EntityToDebugLog` dem Ereignis `OnRemoteEntityClicked` zu. Wenn der Ausgabetyp des Ereignisses und der Eingabetyp der Methode stimmen, können wir die dynamische Ereigniseinbindung von Unity verwenden, die den Ereigniswert automatisch an die Methode übergibt.
     1. Erstellen Sie ein neues Rückruffeld: ![Rückruf hinzufügen](./media/add-callback-remote-entity-clicked.png)
     1. Ziehen Sie die Komponente **Remote Entity Helper** (Remoteentität-Hilfsprogramm) in das Objektfeld, um auf das übergeordnete GameObject-Element zu verweisen: ![Objekt zuweisen](./media/assign-object.png)

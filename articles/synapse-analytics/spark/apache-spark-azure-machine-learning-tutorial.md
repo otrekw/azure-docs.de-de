@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: 89309cfe427183d594a5cc2f76332ae150d4f803
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f85c693f038143543a3a90cc2774f3e6efea3c9b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102498675"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952268"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>Tutorial: Trainieren eines Modells in Python mit automatisiertem maschinellem Lernen
 
@@ -31,7 +31,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 - Erstellen Sie anhand der Schnellstartanleitung zum [Erstellen eines serverlosen Apache Spark-Pools](../quickstart-create-apache-spark-pool-studio.md) einen serverlosen Apache Spark-Pool.
-- Absolvieren Sie das [Tutorial für die Einrichtung des Azure Machine Learning-Arbeitsbereichs](../../machine-learning/tutorial-1st-experiment-sdk-setup.md), falls Sie noch nicht über einen vorhandenen Azure Machine Learning-Arbeitsbereich verfügen. 
+- Absolvieren Sie das [Tutorial für die Einrichtung des Azure Machine Learning-Arbeitsbereichs](../../machine-learning/quickstart-create-resources.md), falls Sie noch nicht über einen vorhandenen Azure Machine Learning-Arbeitsbereich verfügen. 
 
 ## <a name="understand-regression-models"></a>Grundlegendes zu logistischen Regressionsmodellen
 

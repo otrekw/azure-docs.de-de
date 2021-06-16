@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration mit
 ms.topic: tutorial
 ms.date: 08/27/2018
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 4e29104f0586a8e18afb7a640903c57ce988b692
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a969db374a5645f5920a5871c26619d36ae3f194
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91531971"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413103"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Tutorial: Konfigurieren einer Jenkins-Umgebung zum Aktivieren von CI/CD für eine Java-Anwendung unter Service Fabric
 
@@ -40,12 +40,12 @@ In dieser Tutorialserie lernen Sie Folgendes:
 
 Sie können Jenkins innerhalb oder außerhalb eines Service Fabric-Clusters einrichten. In der folgenden Anleitung wird gezeigt, wie Sie die Lösung mithilfe eines bereitgestellten Docker-Images außerhalb eines Clusters einrichten. Sie können aber auch eine vorkonfigurierte Jenkins-Buildumgebung verwenden. Das folgende Containerimage wird zusammen mit dem Service Fabric-Plug-In installiert und kann sofort mit Service Fabric verwendet werden.
 
-1. Rufen Sie das Service Fabric-Jenkins-Containerimage per Pullvorgang ab: ``docker pull rapatchi/jenkins:v10``. Dieses Image ist beim Service Fabric-Jenkins-Plug-In vorinstalliert.
+1. Rufen Sie das Service Fabric-Jenkins-Containerimage per Pullvorgang ab: `docker pull mcr.microsoft.com/azuredocs/jenkins:v10`. Dieses Image ist beim Service Fabric-Jenkins-Plug-In vorinstalliert.
 
 1. Führen Sie das Containerimage mit dem Speicherort aus, an dem Ihre Azure-Zertifikate auf dem bereitgestellten lokalen Computer gespeichert sind.
 
     ```bash
-    docker run -itd -p 8080:8080 -v /service-fabric-java-quickstart/AzureCluster rapatchi/jenkins:v10
+    docker run -itd -p 8080:8080 -v /service-fabric-java-quickstart/AzureCluster mcr.microsoft.com/azuredocs/jenkins:v10
     ```
 
 1. Rufen Sie die ID der Containerimageinstanz ab. Mit dem Befehl ``docker ps –a`` können Sie eine Liste mit allen Docker-Containern anzeigen.

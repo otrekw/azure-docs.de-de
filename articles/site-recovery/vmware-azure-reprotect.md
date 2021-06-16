@@ -1,18 +1,18 @@
 ---
 title: Erneutes Schützen von virtuellen VMware-Computern an einem lokalen Standort mit Azure Site Recovery
 description: Erfahren Sie, wie Sie virtuelle VMware-Computer nach einem Failover zu Azure mit Azure Site Recovery erneut schützen.
-author: mayurigupta13
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: mayg
-ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 21b34b33438a2f8b46fa618eb85fdc779fb8b870
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89441492"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576654"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Erneutes Schützen von Azure zu lokal
 

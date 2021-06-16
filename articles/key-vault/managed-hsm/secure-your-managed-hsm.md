@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 5a3fcc10f318f2a8065550a48eb2bfb4bbdd4915
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 07602bfefbbd38538973c799e2306d21b7a840f1
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218399"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411987"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Schützen des Zugriffs auf Ihre verwalteten HSMs
 
@@ -120,12 +120,12 @@ az keyvault role assignment create  --hsm-name ContosoMHSM --assignee $(az ad gr
 # However it cannot permanently delete (purge) keys
 az keyvault role assignment create  --hsm-name ContosoMHSM --assignee $(az vm identity show --name "vmname" --resource-group "ContosoAppRG" --query objectId -o tsv) --scope / --role "Managed HSM Crypto Auditor"
 
-# Assign "Managed HSM Crypto Service Encryption" role to the Storage account ID
+# Assign "Managed HSM Crypto Service Encryption User" role to the Storage account ID
 storage_account_principal=$(az storage account show --id $storageresource --query identity.principalId -o tsv)
 # (if no identity exists), then assign a new one
 [ "$storage_account_principal" ] || storage_account_principal=$(az storage account update --assign-identity --id $storageresource)
 
-az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Service Encryption" --assignee $storage_account_principal
+az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Service Encryption User" --assignee $storage_account_principal
 ```
 
 In diesem Tutorial werden hauptsächlich Aktionen gezeigt, die für die Zugriffssteuerung relevant sind. Weitere Aktionen und Vorgänge im Zusammenhang mit der Bereitstellung von Anwendungen auf Ihrem virtuellen Computer, der Aktivierung der Verschlüsselung mit kundenseitig verwaltetem Schlüssel für ein Speicherkonto und der Erstellung verwalteter HSMs werden hier nicht gezeigt, da bei diesem Beispiel die Zugriffssteuerung und Rollenverwaltung im Mittelpunkt steht.

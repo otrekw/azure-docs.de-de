@@ -2,21 +2,21 @@
 title: 'PowerShell-Beispiel: Exportieren von Apps mit Geheimnissen und Zertifikaten, die nach dem erforderlichen Datum im Azure Active Directory-Mandanten ablaufen'
 description: PowerShell-Beispiel, das alle Apps im Azure Active Directory-Mandanten mit Geheimnissen und Zertifikaten exportiert, die nach dem erforderlichen Datum für die angegebenen Apps ablaufen
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: mifarca
-ms.openlocfilehash: 692ab2cfd480fd15760c13c63922fe76d23058ea
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 83d1bd108aada981921bdbe64b32da22b6397f90
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375388"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076670"
 ---
 # <a name="export-apps-with-secrets-and-certificates-expiring-beyond-the-required-date"></a>Exportieren von Apps mit Geheimnissen und Zertifikaten, die nach dem erforderlichen Datum ablaufen
 

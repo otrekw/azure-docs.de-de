@@ -3,20 +3,20 @@ title: Dienstebenen – DTU-basiertes Kaufmodell
 description: Erfahren Sie mehr über die Dienstebenen im DTU-basierten Kaufmodell für Azure SQL-Datenbank, um verschiedene Compute- und Speichergrößen bereitzustellen.
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma
 ms.date: 5/4/2021
-ms.reviewer: ''
-ms.openlocfilehash: a800e30f73c73659ecf31da3f63f4ae78bfb8278
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c5413918923ebb4e613ecb48e86dbccfcc60889b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742371"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693278"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
