@@ -8,12 +8,13 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 02/05/2021
-ms.openlocfilehash: 6457134e733265fa7e59f32dd522bfcddfadb9f7
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: aae7cc0d9289e4121f0cb58b719ff791e4880bb4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322147"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950018"
 ---
 # <a name="use-the-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Verwenden der Linux Diagnostic Extension 4.0 zum Überwachen von Metriken und Protokollen
 
@@ -44,7 +45,7 @@ Sie können diese Erweiterung für Ihre VM und den Skalierungssatz für virtuell
 >[!NOTE]
 >Einige Komponenten der Linux Diagnostic-VM-Erweiterung werden auch mit der [VM-Erweiterung für Protokollanalysen](./oms-linux.md) geliefert. Wegen dieser Architektur können Konflikte auftreten, wenn beide Erweiterungen in derselben ARM-Vorlage instanziiert werden.
 >
->Um Konflikte zur Installationszeit zu vermeiden, verwenden Sie die [`dependsOn`-Anweisung](../../azure-resource-manager/templates/define-resource-dependency.md#dependson), um sicherzustellen, dass die Erweiterungen nacheinander installiert werden. Die Erweiterungen können in beliebiger Reihenfolge installiert werden.
+>Um Konflikte zur Installationszeit zu vermeiden, verwenden Sie die [`dependsOn`-Anweisung](../../azure-resource-manager/templates/resource-dependency.md#dependson), um sicherzustellen, dass die Erweiterungen nacheinander installiert werden. Die Erweiterungen können in beliebiger Reihenfolge installiert werden.
 
 Verwenden Sie diese Installationsanweisungen, um LAD 4.0 mithilfe einer [herunterladbaren Beispielkonfiguration](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) für Folgendes zu konfigurieren:
 

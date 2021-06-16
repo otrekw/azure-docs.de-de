@@ -7,16 +7,16 @@ ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: eddb0c8339069025f0742e9bcbc371efbef094ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7fb97bbab252b5a11a1e66e89c717108781b0e2
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92793329"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699083"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Bereitstellen und Katalogisieren neuer Mandanten in einer SaaS-Anwendung unter Verwendung einer mehrinstanzenfähigen Azure SQL-Datenbank-Instanz mit Sharding
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -11,18 +11,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 70951dc1c1934bcbb2721512175e7d314168ce91
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 67d29dcf0ea4e68354f7b0fad2be7e57e85f8fe7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175458"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962208"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Bereitstellen des Azure AD-Anwendungsproxys für sicheren Zugriff auf interne Anwendungen in einer verwalteten Azure Active Directory Domain Services-Domäne
 
 Mit Azure AD Domain Services (Azure AD DS) können Sie lokal ausgeführte Legacyanwendungen per Lift & Shift zu Azure migrieren. Mithilfe des Azure Active Directory-Anwendungsproxy können Sie dann Remotebenutzer unterstützen, indem Sie diese internen Anwendungen, die Teil einer über Azure AD DS verwalteten Domäne sind, sicher veröffentlichen, sodass über das Internet darauf zugegriffen werden kann.
 
-Wenn Sie noch nicht mit dem Azure AD-Anwendungsproxy vertraut sind und mehr darüber erfahren möchten, lesen Sie den Artikel [Remotezugriff auf lokale Anwendungen über den Azure Active Directory-Anwendungsproxy](../active-directory/manage-apps/application-proxy.md).
+Wenn Sie noch nicht mit dem Azure AD-Anwendungsproxy vertraut sind und mehr darüber erfahren möchten, lesen Sie den Artikel [Remotezugriff auf lokale Anwendungen über den Azure Active Directory-Anwendungsproxy](../active-directory/app-proxy/application-proxy.md).
 
 In diesem Artikel wird beschrieben, wie Sie einen Azure AD-Anwendungsproxyconnector erstellen und konfigurieren, um sicheren Zugriff auf Anwendungen in einer verwalteten Domäne zu ermöglichen.
 
@@ -75,7 +75,7 @@ Nachdem Sie über eine VM verfügen, die als Azure AD-Anwendungsproxyconnector v
         > Wenn die Azure AD-Domäne beispielsweise *contoso.com* lautet, muss sich der globale Administrator als `admin@contoso.com` oder mit einem anderen gültigen Aliasnamen in dieser Domäne anmelden.
 
    * Falls auf der VM, auf der Sie den Connector installieren, die Option „Verstärkte Sicherheitskonfiguration für Internet Explorer“ aktiviert ist, ist der Registrierungsbildschirm möglicherweise blockiert. Zum Zulassen des Zugriffs befolgen Sie die Anweisungen in der Fehlermeldung, um „Verstärkte Sicherheitskonfiguration für Internet Explorer“ während des Installationsvorgangs zu deaktivieren.
-   * Falls bei der Connectorregistrierung ein Fehler auftritt, helfen Ihnen die Informationen unter [Problembehandlung von Anwendungsproxys](../active-directory/manage-apps/application-proxy-troubleshoot.md) weiter.
+   * Falls bei der Connectorregistrierung ein Fehler auftritt, helfen Ihnen die Informationen unter [Problembehandlung von Anwendungsproxys](/azure/active-directory/app-proxy/application-proxy-troubleshoot) weiter.
 1. Am Ende des Setupprozesses wird ein Hinweis zu Umgebungen mit einem ausgehenden Proxy angezeigt. Um den Azure AD-Anwendungsproxyconnector so zu konfigurieren, dass er mit dem ausgehenden Proxy funktioniert, führen Sie das bereitgestellte Skript aus, z. B. `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`.
 1. Auf der Azure-Portalseite mit Anwendungsproxys wird der neue Connector mit dem Status *Aktiv* aufgeführt, wie im folgenden Beispiel gezeigt:
 

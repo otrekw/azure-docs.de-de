@@ -3,12 +3,13 @@ title: Aktivieren der Partitionierung in Azure Service Bus-Warteschlangen und -T
 description: In diesem Artikel wird erläutert, wie Sie die Partitionierung in Azure Service Bus-Warteschlangen und -Themen mithilfe von Azure-Portal, PowerShell, CLI und Programmiersprachen (C#, Java, Python und JavaScript) aktivieren
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: ac77dfc2e72d1d83c4424c05da40c5adba1e8e9d
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 786a78cfa86c67ba32675fcee2b03c4e3817fbf6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076687"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671390"
 ---
 # <a name="enable-partitioning-for-an-azure-service-bus-queue-or-a-topic"></a>Aktivieren der Partitionierung für eine Azure Service Bus-Warteschlange oder ein -Thema
 Service Bus-Partitionen ermöglichen das Partitionieren von Warteschlangen und Themen oder Nachrichtenentitäten über mehrere Nachrichtenbroker und -speicher. Eine Partitionierung bedeutet, dass der Gesamtdurchsatz einer partitionierten Entität nicht mehr durch die Leistung eines einzelnen Nachrichtenbrokers oder Nachrichtenspeichers beschränkt wird. Außerdem führt ein vorübergehender Ausfall eines Nachrichtenspeichers nicht dazu, dass eine partitionierte Warteschlange oder ein Thema nicht verfügbar ist. Partitionierte Warteschlangen und Themen können alle erweiterten Service Bus-Features enthalten, z. B. die Unterstützung von Transaktionen und Sitzungen. Weitere Informationen finden Sie unter [partitionierte Warteschlangen und Themen](service-bus-partitioning.md). In diesem Artikel werden verschiedene Möglichkeiten zum Aktivieren der Erkennung doppelter Nachrichten für eine Service Bus-Warteschlange oder ein Thema beschrieben. 

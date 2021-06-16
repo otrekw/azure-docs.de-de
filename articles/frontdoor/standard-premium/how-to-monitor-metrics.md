@@ -2,18 +2,18 @@
 title: Überwachungsmetriken für Azure Front Door Standard/Premium
 description: In diesem Artikel werden die Überwachungsmetriken für Azure Front Door Standard/Premium beschrieben.
 services: frontdoor
-author: duau
+author: duongau
 manager: KumudD
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: 72388eb8006ff1b9628db5066dc63e6a0811f3d5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a22e3825764f8b727802a1d78f2e02011cf7660a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557325"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793523"
 ---
 # <a name="real-time-monitoring-in-azure-front-door-standardpremium"></a>Echtzeitüberwachung in Azure Front Door Standard/Premium
 
@@ -39,7 +39,7 @@ Sie können Warnungen für jede Metrik konfigurieren, z. B. einen Schwellenwert 
 | ------------- | ------------- | ------------- |
 | Bytetrefferquote | Der Prozentsatz der ausgehenden Daten aus dem AFD-Cache, berechnet im Vergleich zu den ausgehenden Gesamtdaten </br> **Bytetrefferquote** = (vom Edge ausgehende Daten – vom Ursprung ausgehende Daten)/vom Edge ausgehende Daten </br> **Von der Berechnung der Bytetrefferquote ausgeschlossene Szenarien**:</br> 1. Sie konfigurieren entweder über die Regel-Engine oder das Verhalten beim Zwischenspeichern von Abfragezeichenfolgen explizit keinen Cache. </br> 2. Sie konfigurieren die Cache-Control-Direktive explizit mit „no-store“ oder „private cache“. </br>3. Die Bytetrefferquote kann niedrig sein, wenn der größte Teil des Datenverkehrs an den Ursprung weitergeleitet wird, anstatt über die Zwischenspeicherung basierend auf Ihren Konfigurationen oder Szenarien bereitgestellt zu werden. | Endpunkt |
 | RequestCount | Die Anzahl der in CDN bereitgestellten Clientanforderungen | Endpunkt, Land des Clients, Region des Clients, HTTP-Status, HTTP-Statusgruppe |
-| ResponseSize | Die Anzahl der in AFD bereitgestellten Clientanforderungen |Endpunkt, Land des Clients, Region des Clients, HTTP-Status, HTTP-Statusgruppe |
+| ResponseSize | Die Anzahl der von Front Door Service als Antworten an Clients gesendeten Bytes. |Endpunkt, Land des Clients, Region des Clients, HTTP-Status, HTTP-Statusgruppe |
 | TotalLatency | Die Gesamtzeit zwischen dem Empfang der Clientanforderung in CDN **und dem letzten von CDN an den Client gesendeten Antwortbyte** |Endpunkt, Land des Clients, Region des Clients, HTTP-Status, HTTP-Statusgruppe |
 | RequestSize | Die Anzahl der von Clients als Anforderungen an AFD gesendeten Bytes. | Endpunkt, Land des Clients, Region des Clients, HTTP-Status, HTTP-Statusgruppe |
 | 4XX % ErrorRate | Der Prozentsatz aller Clientanforderungen, deren Antwortstatuscode 4XX lautet | Endpunkt, Land des Clients, Region des Clients |

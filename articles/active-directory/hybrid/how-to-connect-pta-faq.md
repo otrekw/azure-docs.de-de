@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f797c40a276323cea9983c5340d2d854160c83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ebf9f490bd746115d4cdf095538063a2ab8e018
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368476"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958256"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -50,7 +50,7 @@ Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover a
 
 Wenn Sie Azure AD Connect verwenden, um die Anmeldemethode von Kennworthashsynchronisierung in Passthrough-Authentifizierung zu ändern, wird die Passthrough-Authentifizierung die primäre Anmeldemethode für Ihre Benutzer in verwalteten Domänen. Beachten Sie, dass die Kennworthashes aller Benutzer, die zuvor per Kennworthashsynchronisierung synchronisiert wurden, in Azure AD gespeichert bleiben.
 
-## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../manage-apps/application-proxy.md)-Connector und einen Passthrough-Authentifizierungs-Agent auf demselben Server installieren?
+## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md)-Connector und einen Passthrough-Authentifizierungs-Agent auf demselben Server installieren?
 
 Ja. Die umbenannten Versionen des Passthrough-Authentifizierungs-Agents (Versionen 1.5.193.0 oder höher) unterstützen diese Konfiguration.
 

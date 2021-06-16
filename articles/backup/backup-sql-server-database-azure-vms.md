@@ -2,13 +2,13 @@
 title: Sichern mehrerer SQL Server-VMs über den Tresor
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf virtuellen Azure-Maschinen mit Azure Backup aus dem Recovery Services Tresor sichern können
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: c03b833be6c5e4c352125f31ad8c5ed072674b49
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.date: 05/28/2021
+ms.openlocfilehash: 3a6792fe5146df9babc906edec1fc12aa4b3e1cb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258468"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672311"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Sichern mehrerer SQL Server-VMs aus dem Recovery Services-Depot
 
@@ -87,7 +87,7 @@ Sie können auch die folgenden FQDNs verwenden, um den Zugriff auf die erforderl
 | Dienst    | Domänennamen, auf die zugegriffen werden soll                             | Ports
 | -------------- | ------------------------------------------------------------ | ---
 | Azure Backup  | `*.backup.windowsazure.com`                             | 443
-| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` | 443
+| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` <br><br> `*.blob.storage.azure.net` | 443
 | Azure AD      | Gewähren des Zugriffs auf FQDNs gemäß Abschnitt 56 und 59, wie in [diesem Artikel](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) beschrieben | Wie anwendbar
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Verwenden eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr

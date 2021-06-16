@@ -10,12 +10,13 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9032bfca30ead56c91d7904e18b76753cf3b6dfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 795bed84103170a695e9105c978b110ceb6475cb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582169"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673259"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault-VM-Erweiterung für Linux
 

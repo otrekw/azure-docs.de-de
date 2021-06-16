@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 4/23/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 1b068fd00402fc281001e8572f9e03662c8ffd55
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 07376647edac05384c2efc1240c2242fd5eb664b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951790"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949807"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -92,7 +92,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **DataFactory**  | Azure Data Factory | Beide | Nein | Nein |
 | **DataFactoryManagement** | Verwaltungsdatenverkehr für Azure Data Factory | Ausgehend | Nein | Nein |
 | **Dynamics365ForMarketingEmail** | Die Adressbereiche für den Marketing-E-Mail-Dienst von Dynamics 365. | Ausgehend | Ja | Nein |
-| **EOPExternalPublishedIPs** | Dieses Tag stellt die IP-Adressen dar, die für Security & Compliance Center PowerShell verwendet werden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Security & Compliance Center-PowerShell mithilfe des Moduls EXO V2](https://docs.microsoft.com/powershell/exchange/connect-to-scc-powershell). <br/><br/> *Hinweis: Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.* | Beide | Nein | Ja |
+| **EOPExternalPublishedIPs** | Dieses Tag stellt die IP-Adressen dar, die für Security & Compliance Center PowerShell verwendet werden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Security & Compliance Center-PowerShell mithilfe des Moduls EXO V2](/powershell/exchange/connect-to-scc-powershell). <br/><br/> *Hinweis: Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.* | Beide | Nein | Ja |
 | **EventHub** | Azure Event Hubs. | Ausgehend | Ja | Ja |
 | **GatewayManager** | Verwaltungsdatenverkehr für dedizierte Azure VPN Gateway- und Application Gateway-Bereitstellungen. | Eingehend | Nein | Nein |
 | **GuestAndHybridManagement** | Azure Automation und Gastkonfiguration | Ausgehend | Nein | Ja |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 765a2728c5de49787a64fff723625e53e100e450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bc493197b6ae4e6bd969a837bb873cae38c0790
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98017781"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032013"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema und Datenaggregation in Traffic Analytics
 
@@ -177,4 +177,4 @@ Im Folgenden werden die Felder im Schema und ihre Bedeutung aufgeführt.
 1. An einige Feldnamen wird „\_s“ oder „\_d“ angefügt. Diese markieren NICHT die Quelle und das Ziel, sondern zeigen die Datentypen „String“ (Zeichenfolge) bzw. „decimal“ (dezimal) an.
 
 ### <a name="next-steps"></a>Nächste Schritte
-Antworten auf häufig gestellte Fragen finden Sie in den [FAQ zu Traffic Analytics](traffic-analytics-faq.md). Weitere Informationen zur Funktionalität finden Sie in der [Dokumentation zu Traffic Analytics](traffic-analytics.md).
+Antworten auf häufig gestellte Fragen finden Sie in den [FAQ zu Traffic Analytics](traffic-analytics-faq.yml). Weitere Informationen zur Funktionalität finden Sie in der [Dokumentation zu Traffic Analytics](traffic-analytics.md).

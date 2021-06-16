@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.collection: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: db914a73845e0bdb36cd5a58156880c2ac2c2358
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: mimckitt, subject-armqs, devx-track-azurepowershell
+ms.openlocfilehash: 42d3c95f722746044df620448a8d74ae75e25838
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740373"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901779"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-arm-template"></a>Schnellstart: Erstellen einer Windows-VM-Skalierungsgruppe mit einer ARM-Vorlage
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/201-vmss-windows-webapp-dsc-autoscale/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/vmss-windows-webapp-dsc-autoscale/).
 
 :::code language="json" source="~/quickstart-templates/demos/vmss-windows-webapp-dsc-autoscale/azuredeploy.json":::
 

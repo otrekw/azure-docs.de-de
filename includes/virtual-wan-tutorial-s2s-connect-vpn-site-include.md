@@ -1,23 +1,23 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 05/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 614a13a140453e3c7ed55a7fc0f9173626ad2f2f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cefa6fab5bbd140f8540ebb78f66706beeffd530
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99627701"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578256"
 ---
 1. Wählen Sie **VPN-Standorte verbinden** aus, um die Seite **Standorte verbinden** zu öffnen.
 
-    ![Screenshot: Bereich „Standorte verbinden“ für einen virtuellen Hub, bereit für die Eingabe eines vorinstallierten Schlüssels und zugehöriger Einstellungen](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "Verbinden")
+   :::image type="content" source="./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png" alt-text="Screenshot: Bereich „Standorte verbinden“ für einen virtuellen Hub, bereit für die Eingabe eines vorinstallierten Schlüssels und zugehöriger Einstellungen" border="false":::
 
    Füllen Sie die folgenden Felder aus:
 
@@ -28,7 +28,7 @@ ms.locfileid: "99627701"
 2. Wählen Sie **Verbinden**.
 3. Nach wenigen Minuten werden für die Site die Verbindung und der Konnektivitätsstatus angezeigt.
 
-   ![Screenshot: Site-to-Site-Verbindung und Konnektivitätsstatus](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   :::image type="content" source="./media/virtual-wan-tutorial-connect-vpn-site-include/status.png" alt-text="Screenshot: Site-to-Site-Verbindung und Konnektivitätsstatus" lightbox="./media/virtual-wan-tutorial-connect-vpn-site-include/status.png"border="false":::
 
    **Verbindungsstatus:** Dies ist der Status der Azure-Ressource für die Verbindung, mit der der VPN-Standort mit dem VPN-Gateway des Azure-Hubs verbunden wird. Nachdem dieser Vorgang auf der Steuerungsebene erfolgreich abgeschlossen wurde, wird mit dem Herstellen der Konnektivität für das Azure-VPN-Gateway und das lokale VPN-Gerät fortgefahren.
 

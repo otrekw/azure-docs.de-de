@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: f59c8b4e4f4ddc32cb0ec14e264e4dbb5b093971
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 02690da936190b7d868f54c987939c06b91b1a35
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762855"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854016"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>Schützen von Kubernetes-Clustern mit Azure Arc-Unterstützung, die in lokalen und Multicloud-Umgebungen ausgeführt werden
 
@@ -141,7 +141,7 @@ Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, b
 
     Hierbei gilt:
 
-    | Name            | Geben Sie in   | Erforderlich | type   | BESCHREIBUNG                                  |
+    | Name            | Geben Sie in   | Erforderlich | Typ   | BESCHREIBUNG                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | Abonnement-ID | path | True     | Zeichenfolge | Abonnement-ID Ihrer Kubernetes-Ressource mit Azure Arc-Unterstützung |
     | Ressourcengruppe  | path | True     | Zeichenfolge | Name der Ressourcengruppe, in der Ihre Kubernetes-Ressource mit Azure Arc-Unterstützung enthalten ist |
@@ -168,7 +168,7 @@ Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, b
 
     Im Folgenden werden die Eigenschaften beschrieben:
 
-    | Eigenschaft | BESCHREIBUNG | 
+    | Eigenschaft | Beschreibung | 
     | -------- | ----------- |
     | logAnalytics.workspaceId | Arbeitsbereichs-ID der Log Analytics-Ressource |
     | logAnalytics.key         | Schlüssel der Log Analytics-Ressource | 
@@ -255,7 +255,7 @@ Gehen Sie folgendermaßen vor, um eine erfolgreiche Bereitstellung zu bestätige
 
 ## <a name="simulate-security-alerts-from-azure-defender-for-kubernetes"></a>Simulieren von Sicherheitswarnungen von Azure Defender für Kubernetes
 
-Eine vollständige Liste unterstützter Warnungen finden Sie in der [Verweistabelle aller Sicherheitswarnungen in Azure Security Center](alerts-reference.md#alerts-akscluster).
+Eine vollständige Liste unterstützter Warnungen finden Sie in der [Verweistabelle aller Sicherheitswarnungen in Azure Security Center](alerts-reference.md#alerts-k8scluster).
 
 1. Führen Sie den folgenden Befehl aus, um eine Azure Defender-Warnung zu simulieren:
 
@@ -324,7 +324,7 @@ Um die Erweiterung mit der REST-API zu entfernen, führen Sie den folgenden DELE
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| Name            | Geben Sie in   | Erforderlich | type   | BESCHREIBUNG                                           |
+| Name            | Geben Sie in   | Erforderlich | Typ   | BESCHREIBUNG                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | Abonnement-ID | path | True     | Zeichenfolge | Abonnement-ID Ihres Kubernetes-Clusters mit Arc-Unterstützung |
 | Ressourcengruppe  | path | True     | Zeichenfolge | Ressourcengruppe Ihres Kubernetes-Clusters mit Arc-Unterstützung  |

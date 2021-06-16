@@ -299,7 +299,7 @@
       items:
         - name: Anzeigen von Clustermetriken
           href: view-metrics.md
-        - name: Azure Monitor für Container
+        - name: Container Insights
           href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
         - name: Anzeigen der Komponentenprotokolle auf Steuerungsebene

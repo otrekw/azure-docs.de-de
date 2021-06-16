@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
-ms.reviewer: mathoma
+ms.reviewer: chadam
 ms.date: 11/06/2020
-ms.openlocfilehash: 152ea453e63164f2e784c573170c001ced63df85
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f330fb4886a04a1bc861b63e5dd70e3ba1286351
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769793"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794889"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Migrationsübersicht: SQL Server zu SQL Server auf Azure-VMs
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -73,7 +73,7 @@ In der folgenden Tabelle werden die Unterschiede zwischen den beiden Migrationss
 In der folgenden Tabelle wird die verfügbare Methode für die **Lift & Shift**-Migrationsstrategie zum Migrieren Ihrer SQL Server-Datenbank zu SQL Server auf Azure-VMs beschrieben:
 <br />
 
-|**Methode** | **Minimale Quellversion** | **Minimale Zielversion** | **Größenbeschränkung für Quellsicherung** |  **Hinweise** |
+|**Methode** | **Minimale Quellversion** | **Minimale Zielversion** | **Größenbeschränkung für Quellsicherung** |  **Notizen** |
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM-Speichergrenze](../../../index.yml) |  Vorhandene SQL Server-Instanz, die unverändert in eine Instanz von SQL Server auf einer Azure-VM verschoben werden soll. Kann Migrationsworkloads von bis zu 35.000 VMs skalieren. <br /><br /> Quellserver bleiben online und bearbeiten Anforderungen während der Synchronisierung der Serverdaten, wodurch die Downtime minimiert wird. <br /><br /> **Automatisierung und Skripterstellung**: [Azure Site Recovery-Skripts](../../../migrate/how-to-migrate-at-scale.md) und [Beispiel für skalierte Migration und Planung für Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
@@ -89,7 +89,7 @@ Bei der Migration von SQL Server-Datenbanken zu einer Instanz von SQL Server auf
 In der folgenden Tabelle sind alle verfügbaren Methoden zur Migration Ihrer SQL Server-Datenbank zu SQL Server auf Azure-VMs aufgeführt:
 <br />
 
-|**Methode** | **Minimale Quellversion** | **Minimale Zielversion** | **Größenbeschränkung für Quellsicherung** | **Hinweise** |
+|**Methode** | **Minimale Quellversion** | **Minimale Zielversion** | **Größenbeschränkung für Quellsicherung** | **Notizen** |
 | --- | --- | --- | --- | --- |
 | **[Sicherung in einer Datei](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM-Speichergrenze](../../../index.yml) |  Dies ist eine einfache und ausführlich getestete Methode zum Verschieben von Datenbanken auf verschiedene Computer. Verwenden Sie die Komprimierung, um die Größe der Sicherung für die Übertragung zu minimieren. <br /><br /> **Automatisierung und Skripterstellung**: [Transact-SQL (T-SQL)](/sql/t-sql/statements/backup-transact-sql) und [AzCopy in Blobspeicher](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[Erstellen von Sicherungen über URLs](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| 12,8 TB für SQL Server 2016, andernfalls 1 TB | Eine alternative Möglichkeit, die Sicherungsdatei mithilfe von Azure-Speicher auf die VM zu verschieben. Verwenden Sie die Komprimierung, um die Größe der Sicherung für die Übertragung zu minimieren. <br /><br /> **Automatisierung und Skripterstellung**:  [T-SQL oder Wartungsplan](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |

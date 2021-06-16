@@ -9,16 +9,16 @@ ms.subservice: security
 ms.custom: sqldbrb=3
 ms.devlang: ''
 ms.topic: conceptual
-author: VanMSFT
-ms.author: vanto
-ms.reviewer: sstein
+author: AndreasWolter
+ms.author: anwolter
+ms.reviewer: vanto, mathoma
 ms.date: 03/23/2020
-ms.openlocfilehash: a0e9cc9967509eba05bd26f3bad86eefeeb6ca3e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c8cbb041c366bd530ac63d622a40e31a931e1fd7
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639473"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706213"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorisieren des Datenbankzugriffs für Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

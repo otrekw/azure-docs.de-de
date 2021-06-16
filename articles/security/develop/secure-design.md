@@ -10,12 +10,12 @@ ms.service: security
 ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
-ms.openlocfilehash: 9e5246edd2d6490e823bacbdfff0f60ef553878b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ee4e8f3abad2a4da924e42f81004c86691a1bc8a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729132"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792509"
 ---
 # <a name="design-secure-applications-on-azure"></a>Entwerfen von sicheren Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwerfen. Es werden Trainingsressourcen zusammen mit Sicherheitsfragen und -konzepten behandelt, die Sie in der Anforderungen- und in der Entwurfsphase von Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -223,7 +223,7 @@ Achten Sie darauf, dass in Ihrer Anwendung in allen Zugriffsmustern das [Prinzip
 
 #### <a name="implement-just-in-time-access"></a>Implementieren von Just-In-Time-Zugriff
 
-Implementieren Sie *Just-In-Time-Zugriff* (JIT-Zugriff), um die Zeit, in der Rechte verfügbar gemacht werden, weiter zu verkürzen. Verwenden Sie [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md#stage-3-take-control-of-admin-activity), um wie folgt vorzugehen:
+Implementieren Sie *Just-In-Time-Zugriff* (JIT-Zugriff), um die Zeit, in der Rechte verfügbar gemacht werden, weiter zu verkürzen. Verwenden Sie [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md#stage-3-take-control-of-administrator-activity), um wie folgt vorzugehen:
 
 - Erteilen der Berechtigungen, die Benutzer benötigen, nur Just-In-Time.
 - Zuweisen von Rollen für eine verkürzte Dauer mit der Gewissheit, dass die Berechtigungen automatisch widerrufen werden.

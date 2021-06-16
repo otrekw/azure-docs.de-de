@@ -3,14 +3,15 @@ title: Leitfaden für isolierte .NET-Prozesse für .NET 5.0 in Azure Functions
 description: Hier erfahren Sie, wie Sie einen isolierten .NET-Prozess verwenden, um C#-Funktionen für .NET 5.0 prozessextern in Azure auszuführen.
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 06/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: 53f3c79886d26b20a584d747759176ea842741cf
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+recommendations: false
+ms.openlocfilehash: 34a4a37d351f144d00d926de0544c8ae56e9a314
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739276"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901444"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Leitfaden: Ausführen von .NET 5.0-Funktionen in Azure
 
@@ -36,9 +37,7 @@ Bei der prozessexternen Ausführung bestehen die folgenden Vorteile für Ihre .N
 + Vollständige Kontrolle über den Prozess: Sie steuern den Start der App, die verwendeten Konfigurationen und die Middleware.
 + Dependency Injection: Da Sie die vollständige Kontrolle über den Prozess haben, können Sie aktuelle .NET-Verhaltensweisen für die Dependency Injection und die Einbindung von Middleware in Ihre Funktions-App nutzen. 
 
-## <a name="supported-versions"></a>Unterstützte Versionen
-
-Derzeit wird lediglich .NET 5.0 für die prozessexterne Ausführung unterstützt.
+[!INCLUDE [functions-dotnet-supported-versions](../../includes/functions-dotnet-supported-versions.md)]
 
 ## <a name="net-isolated-project"></a>Isoliertes .NET-Projekt
 

@@ -3,12 +3,12 @@ title: Fehler bei übergeordneten Ressourcen
 description: Hier wird beschrieben, wie bei der Arbeit mit einer übergeordneten Ressource in einer Azure Resource Manager-Vorlage Fehler behoben werden können.
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.openlocfilehash: 474cb85d16382136e24e5502b87ba8a1a65488ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 885bd319d322128784b53f781b2ceb5a42d292f5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84673659"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951094"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Beheben von Fehlern bei übergeordneten Ressourcen
 
@@ -78,4 +78,4 @@ Legen Sie keine Abhängigkeit fest, um diesen Fehler zu beheben, wenn die überg
 }
 ```
 
-Weitere Informationen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in Azure Resource Manager-Vorlagen](define-resource-dependency.md).
+Weitere Informationen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in Azure Resource Manager-Vorlagen](./resource-dependency.md).

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: cb128f9269895f04d1e0dad8e0c8d06c481e86c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a93db3a2ee147267432d84ea7a7c87ee77eb50e4
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576165"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786271"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netzwerkdurchsatz virtueller Computer
 
@@ -63,8 +63,6 @@ Nachdem dieser Grenzwert erreicht wurde, werden weitere Verbindungen getrennt. D
 In [Azure Monitor](../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) stehen Metriken zum Nachverfolgen der Anzahl von Netzwerkflows und der Rate der Erstellung von Flows auf Ihren virtuellen Computern oder VMSS-Instanzen zur Verfügung.
 
 ![Screenshot: Seite „Metriken“ von Azure Monitor mit einem Liniendiagramm und Summen für eingehende und ausgehende Flows](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
-
-Die Raten für die Verbindungsherstellung und -beendigung können sich ebenfalls auf die Netzwerkleistung auswirken, da für die Verbindungsherstellung und -beendigung CPU-Ressourcen mit der Paketverarbeitung geteilt werden. Es wird empfohlen, Benchmarktests für Ihre Workloads mit den zu erwartenden Datenverkehrsmustern durchzuführen und die Workloads entsprechend den Leistungsanforderungen aufzuskalieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

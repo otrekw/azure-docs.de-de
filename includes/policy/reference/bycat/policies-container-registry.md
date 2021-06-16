@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cd1bf929ac4d085e01f0559026fff0cd71b68bf1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 18f321d40672868e74d9c6fc4d6622d96b92e9d2
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110074422"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019436"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Containerregistrierungen zum Deaktivieren des Zugriffs über öffentliche Netzwerke konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa3701552-92ea-433e-9d17-33b7f1208fc9) |Deaktivieren Sie den Zugriff über öffentliche Netzwerke für Ihre Container Registry-Ressource, sodass sie nicht über das öffentliche Internet zugänglich ist. Dies kann das Risiko von Datenlecks verringern. Weitere Informationen finden Sie unter [https://aka.ms/acr/portal/public-network](https://aka.ms/acr/portal/public-network) und [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link). |Modify, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PublicNetworkAccess_Modify.json) |
 |[Containerregistrierungen für die Verwendung privater DNS-Zonen konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9585a95-5b8c-4d03-b193-dc7eb5ac4c32) |Verwenden Sie private DNS-Zonen, um die DNS-Auflösung für einen privaten Endpunkt außer Kraft zu setzen. Eine private DNS-Zone wird mit Ihrem virtuellen Netzwerk verknüpft, um Ihre Container Registry-Instanz aufzulösen. Weitere Informationen finden Sie unter [https://aka.ms/privatednszone](https://aka.ms/privatednszone) und [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link). |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PrivateDNSZone_DeployIfNotExists.json) |

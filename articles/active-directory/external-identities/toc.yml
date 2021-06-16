@@ -88,6 +88,8 @@
               href: customize-invitation-api.md
         - name: Identitätsanbieter
           items:
+            - name: Azure Active Directory
+              href: azure-ad-account.md
             - name: Microsoft-Konto (Vorschau)
               href: microsoft-account.md
             - name: Verbund mit Google
@@ -141,7 +143,7 @@
     - name: Ressourcen
       items:
         - name: Häufig gestellte Fragen
-          href: faq.md
+          href: ./faq.yml
         - name: Anfordern von Support
           href: ../fundamentals/active-directory-troubleshooting-support-howto.md
         - name: Azure-Feedbackforum

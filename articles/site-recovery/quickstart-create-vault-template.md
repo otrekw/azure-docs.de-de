@@ -3,15 +3,13 @@ title: Schnellstartanleitung zum Erstellen eines Azure Recovery Services-Tresors
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen Azure Recovery Services-Tresor erstellen.
 ms.date: 04/28/2021
 ms.topic: quickstart
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 453c1a14a54011d8124588911da1cde64fe2ea28
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 8d7d62c05586032bc73c41ef671862a4aa211334
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277298"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903168"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Schnellstart: Erstellen eines Recovery Services-Tresors mithilfe einer ARM-Vorlage
 
@@ -29,7 +27,7 @@ Falls Sie kein aktives Azure-Abonnement besitzen, können Sie ein [kostenloses K
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/recovery-services-vault-create/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.recoveryservices/recovery-services-vault-create/azuredeploy.json":::
 

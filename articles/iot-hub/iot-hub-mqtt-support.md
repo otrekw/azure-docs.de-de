@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: d03a221a38bc7a6f929ebcec45526aaab17dc654
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: c003b172322892e18fdc7a0e618f00eb526a10a8
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483279"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892974"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -263,7 +263,7 @@ client.tls_insecure_set(False)
 
 client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
-client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
+client.publish("devices/" + device_id + "/messages/events/", '{"id":123}', qos=1)
 client.loop_forever()
 ```
 
@@ -357,7 +357,7 @@ Der Text der Antwort enthält den Abschnitt mit den Eigenschaften des Gerätezwi
 
 Die möglichen Statuscodes lauten:
 
-|Status | BESCHREIBUNG |
+|Status | Beschreibung |
 | ----- | ----------- |
 | 200 | Erfolg |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung](iot-hub-devguide-quotas-throttling.md) |
@@ -388,7 +388,7 @@ Der Nachrichtentext der Anforderung enthält ein JSON-Dokument mit neuen Werten 
 
 Die möglichen Statuscodes lauten:
 
-|Status | BESCHREIBUNG |
+|Status | Beschreibung |
 | ----- | ----------- |
 | 204 | Erfolg (kein Inhalt) |
 | 400 | Ungültige Anforderung; falsch formatierter JSON-Code |

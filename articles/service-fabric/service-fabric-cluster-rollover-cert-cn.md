@@ -3,12 +3,13 @@ title: Rollover für ein Azure Service Fabric-Clusterzertifikat
 description: Erfahren Sie, wie Sie ein Rollover für ein Service Fabric-Clusterzertifikat ausführen, das anhand seines allgemeinen Zertifikatsnamens identifiziert wird.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 65ea4f463073c472ac6a31e62dcfdfd11cb28cc5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 46bcf0a9b5b8477487b224074ccce714bba57dde
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88853354"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677489"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Manuelles Rollover für ein Service Fabric-Clusterzertifikat
 Wenn ein Service Fabric-Clusterzertifikat in Kürze abläuft, müssen Sie das Zertifikat aktualisieren.  Ein Zertifikatrollover ist einfach, wenn der Cluster [für die Verwendung von Zertifikaten auf Basis des allgemeinen Namens konfiguriert wurde](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (anstelle eines Fingerabdrucks).  Fordern Sie ein neues Zertifikat von einer Zertifizierungsstelle mit einem neuen Ablaufdatum an.  Selbstsignierte Zertifikate werden für Service Fabric-Produktionscluster nicht unterstützt, damit Zertifikate berücksichtigt werden, die während des Clustererstellungsworkflows im Azure-Portal generiert werden. Das neue Zertifikat muss den gleichen allgemeinen Name wie das ältere Zertifikat haben. 

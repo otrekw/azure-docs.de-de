@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie Azure
 ms.topic: quickstart
 ms.date: 03/17/2021
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 478e446f87ee8e1fc05ec00aca98125f348ed528
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f0f36f1dc08d7e5c9100814456ab5d21a37123fc
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385874"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957718"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Schnellstart: Erkennen von Bewegung und Ausgeben von Ereignissen
 
@@ -127,4 +127,4 @@ Falls Sie auch die anderen Schnellstartanleitungen durcharbeiten möchten, sollt
 - Zusätzliches für fortgeschrittene Benutzer:
 
   - Verwenden Sie eine [IP-Kamera](https://en.wikipedia.org/wiki/IP_camera) mit RTSP-Unterstützung anstelle des RTSP-Simulators. IP-Kameras, die RTSP unterstützen, finden Sie auf der [Seite mit den ONVIF-konformen Produkten](https://www.onvif.org/conformant-products/). Suchen Sie nach Geräten, die mit den Profilen G, S oder T konform sind.
-  - Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle einer Linux-VM in Azure. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Befolgen Sie die Anleitung unter [Installieren der Azure IoT Edge-Runtime unter Linux](/azure/iot-edge/how-to-install-iot-edge?view=iotedge-2020-11&preserve-view=true). Befolgen Sie anschließend die Anleitung unter [Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](/azure/iot-edge/quickstart-linux?view=iotedge-2020-11&preserve-view=true), um das Gerät für Azure IoT Hub zu registrieren.
+  - Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle einer Linux-VM in Azure. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Befolgen Sie die Anleitung unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-install-iot-edge.md?preserve-view=true&view=iotedge-2020-11). Befolgen Sie anschließend die Anleitung unter [Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](../../iot-edge/quickstart-linux.md?preserve-view=true&view=iotedge-2020-11), um das Gerät für Azure IoT Hub zu registrieren.

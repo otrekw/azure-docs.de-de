@@ -43,4 +43,4 @@
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
-      href: faq.md
+      href: faq.yml

@@ -2,13 +2,13 @@
 title: Bereitstellen mehrerer Instanzen von Ressourcen
 description: Verwenden des copy-Vorgangs und von Arrays in einer Azure Resource Manager-Vorlage (ARM), um einen Ressourcentyp mehrere Male bereitzustellen.
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: 3af676cce544c125e441857f06556b9ff7eee697
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.date: 05/07/2021
+ms.openlocfilehash: 305a05f10683c879e9f002f02aa6d00edbb43d0a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385706"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954655"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Ressourceniteration in ARM-Vorlagen
 
@@ -19,8 +19,6 @@ Die copy-Schleife kann auch mit [Eigenschaften](copy-properties.md), [Variablen]
 Wenn Sie angeben müssen, ob eine Ressource überhaupt bereitgestellt wird, finden Sie die erforderlichen Informationen unter [Element „condition“](conditional-resource-deployment.md).
 
 ## <a name="syntax"></a>Syntax
-
-# <a name="json"></a>[JSON](#tab/json)
 
 Fügen Sie das `copy`-Element dem Ressourcenabschnitt ihrer Vorlage hinzu, um mehrere Instanzen der Ressource bereitzustellen. Das `copy`-Element hat das folgende allgemeine Format:
 
@@ -36,39 +34,6 @@ Fügen Sie das `copy`-Element dem Ressourcenabschnitt ihrer Vorlage hinzu, um me
 Die Eigenschaft `name` ist ein beliebiger Wert, der die Schleife identifiziert. Die Eigenschaft `count` gibt die für den Ressourcentyp gewünschte Anzahl von Iterationen an.
 
 Verwenden Sie die Eigenschaften `mode` und `batchSize`, um anzugeben, ob die Ressourcen parallel oder nacheinander bereitgestellt werden. Diese Eigenschaften werden unter [Seriell oder parallel](#serial-or-parallel) beschrieben.
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-Mit Schleifen können mehrere Ressourcen deklariert werden durch:
-
-- Durchlaufen eines Arrays:
-
-  ```bicep
-  @batchSize(<number>)
-  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <item> in <collection>: {
-    <resource-properties>
-  }
-  ```
-
-- Durchlaufen der Elemente eines Arrays
-
-  ```bicep
-  @batchSize(<number>)
-  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for (<item>, <index>) in <collection>: {
-    <resource-properties>
-  }
-  ```
-
-- Verwenden des Schleifenindexes
-
-  ```bicep
-  @batchSize(<number>)
-  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <index> in range(<start>, <stop>): {
-    <resource-properties>
-  }
-  ```
-
----
 
 ## <a name="copy-limits"></a>Einschränkungen für „copy“
 
@@ -88,8 +53,6 @@ Wenden Sie die [Bereitstellung im vollständigen Modus](deployment-modes.md) mit
 ## <a name="resource-iteration"></a>Ressourceniteration
 
 Im folgenden Beispiel wird die Anzahl von Speicherkonten erstellt, die im Parameter `storageCount` angegeben ist.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -147,29 +110,7 @@ Namen:
 
 Der „copy“-Vorgang ist besonders bei Verwendung von Arrays hilfreich, weil Sie jedes Element im Array durchlaufen können. Verwenden Sie die Funktion `length` für das Array, um die Anzahl von Iterationen anzugeben, und `copyIndex`, um den aktuellen Index im Array abzurufen.
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param storageCount int = 2
-
-resource storage_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for i in range(0, storageCount): {
-  name: '${i}storage${uniqueString(resourceGroup().id)}'
-  location: resourceGroup().location
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'Storage'
-  properties: {}
-}]
-```
-
-Beachten Sie, dass der Index `i` zum Erstellen des Ressourcennamens für das Speicherkonto verwendet wird.
-
----
-
 Im folgenden Beispiel wird ein Speicherkonto für jeden im Parameter angegebenen Namen erstellt.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -206,28 +147,6 @@ Im folgenden Beispiel wird ein Speicherkonto für jeden im Parameter angegebenen
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param storageNames array = [
-  'contoso'
-  'fabrikam'
-  'coho'
-]
-
-resource storageNames_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for name in storageNames: {
-  name: concat(name, uniqueString(resourceGroup().id))
-  location: resourceGroup().location
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'Storage'
-  properties: {}
-}]
-```
-
----
-
 Wenn Sie Werte von den bereitgestellten Ressourcen zurückgeben möchten, können Sie [„copy“ im Ausgabenabschnitt](copy-outputs.md) verwenden.
 
 ## <a name="serial-or-parallel"></a>Seriell oder parallel
@@ -235,10 +154,6 @@ Wenn Sie Werte von den bereitgestellten Ressourcen zurückgeben möchten, könne
 Resource Manager erstellt die Ressourcen standardmäßig gleichzeitig. Es gilt keine Beschränkung für die Anzahl der parallel bereitgestellten Ressourcen, mit Ausnahme der Begrenzung der Gesamtanzahl auf 800 Ressourcen in der Vorlage. Die Reihenfolge, in der sie erstellt werden, ist nicht garantiert.
 
 Es ist aber möglicherweise sinnvoll, anzugeben, dass die Ressource sequenziell bereitgestellt werden. Wenn Sie z.B. eine Produktionsumgebung aktualisieren, möchten Sie die Updates möglicherweise staffeln, sodass nur eine bestimmte Anzahl von Ressourcen gleichzeitig aktualisiert wird.
-
-Zum seriellen Bereitstellen von zwei Speicherkonten gleichzeitig verwenden Sie beispielsweise:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 Legen Sie zum seriellen Bereitstellen mehrerer Instanzen einer Ressource `mode` auf **serial** und `batchSize` auf die Anzahl der Instanzen fest, die zu einem Zeitpunkt bereitgestellt werden sollen. Im seriellen Modus erstellt Resource Manager eine Abhängigkeit von früheren Instanzen in der Schleife, sodass ein Batch erst dann gestartet wird, wenn der vorherige Batch abgeschlossen wurde.
 
@@ -273,25 +188,6 @@ Der Wert für `batchSize` kann den Wert für `count` im copy-Element nicht über
 
 Die `mode`-Eigenschaft akzeptiert auch **parallel**, wobei es sich um den Standardwert handelt.
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-Legen Sie zum seriellen Bereitstellen mehrerer Instanzen einer Ressource den [Decorator](./bicep-file.md#resource-and-module-decorators) `batchSize` auf die Anzahl der Instanzen fest, die zu einem Zeitpunkt bereitgestellt werden sollen. Im seriellen Modus erstellt Resource Manager eine Abhängigkeit von früheren Instanzen in der Schleife, sodass ein Batch erst dann gestartet wird, wenn der vorherige Batch abgeschlossen wurde.
-
-```bicep
-@batchSize(2)
-resource storage_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for i in range(0, 4): {
-  name: '${i}storage${uniqueString(resourceGroup().id)}'
-  location: resourceGroup().location
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'Storage'
-  properties: {}
-}]
-```
-
----
-
 ## <a name="iteration-for-a-child-resource"></a>Iteration für eine untergeordnete Ressource
 
 Für eine untergeordnete Ressource kann keine Kopierschleife verwendet werden. Um mehrere Instanzen einer Ressource zu erstellen, die Sie in der Regel als innerhalb einer anderen Ressource geschachtelt definieren, müssen Sie diese Ressource stattdessen als Ressource oberster Ebene erstellen. Sie definieren die Beziehung zur übergeordneten Ressource mithilfe der Eigenschaften „type“ und „name“.
@@ -320,9 +216,7 @@ Um mehrere Datasets zu erstellen, verschieben Sie sie außerhalb der Data Factor
 
 Um eine Über-/Unterordnungsbeziehung mit einer Instanz der Data Factory herzustellen, geben Sie einen Namen für das Dataset an, das den Namen der übergeordneten Ressource enthält. Verwenden Sie das folgende Format: `{parent-resource-name}/{child-resource-name}`.
 
-Das folgende Beispiel zeigt die Implementierung:
-
-# <a name="json"></a>[JSON](#tab/json)
+Das folgende Beispiel zeigt die Implementierung.
 
 ```json
 "resources": [
@@ -345,22 +239,6 @@ Das folgende Beispiel zeigt die Implementierung:
 }]
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' = {
-  name: "exampleDataFactory"
-  ...
-}
-
-resource dataFactoryName_ArmtemplateTestDatasetIn 'Microsoft.DataFactory/factories/datasets@2018-06-01' = [for i in range(0, 3): {
-  name: 'exampleDataFactory/exampleDataset${i}'
-  ...
-}
-```
-
----
-
 ## <a name="example-templates"></a>Beispielvorlagen
 
 Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer Ressourcen oder Eigenschaften.
@@ -373,7 +251,7 @@ Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen](define-resource-dependency.md) finden Sie weitere Informationen zum Festlegen von Abhängigkeiten für Ressourcen, die in einer Kopierschleife erstellt werden.
+- Unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen](./resource-dependency.md) finden Sie weitere Informationen zum Festlegen von Abhängigkeiten für Ressourcen, die in einer Kopierschleife erstellt werden.
 - Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit ARM-Vorlagen](template-tutorial-create-multiple-instances.md).
 - Ein Microsoft Learn-Modul, das eine Ressourcenkopie behandelt, finden Sie unter [Verwalten komplexer Cloudbereitstellungen mithilfe erweiterter Funktionen von ARM-Vorlagen](/learn/modules/manage-deployments-advanced-arm-template-features/).
 - Informationen zu anderen Verwendungsmöglichkeiten der copy-Schleife finden Sie unter:

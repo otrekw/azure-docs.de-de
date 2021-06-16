@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 4b1bdd1addec93647eaa631a89e6d419f7ecf477
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 2feee9beb6232320cc5265227754b0803d248bae
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789135"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028233"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer mithilfe einer ARM-Vorlage
 
@@ -41,9 +41,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/load-balancer-standard-create/).
 
-Die Lastenausgleichs-SKU und die SKU für öffentliche IP-Adressen müssen übereinstimmen. Wenn Sie einen Lastenausgleich im Tarif „Standard“ erstellen, müssen Sie auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End für diesen Standard-Lastenausgleich konfiguriert ist. Wenn Sie einen Lastenausgleich im Tarif „Basic“ erstellen möchten, verwenden Sie [diese Vorlage](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). Microsoft empfiehlt für Produktionsworkloads die Verwendung der Standard-SKU.
+Die Lastenausgleichs-SKU und die SKU für öffentliche IP-Adressen müssen übereinstimmen. Wenn Sie einen Lastenausgleich im Tarif „Standard“ erstellen, müssen Sie auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End für diesen Standard-Lastenausgleich konfiguriert ist. Wenn Sie einen Lastenausgleich im Tarif „Basic“ erstellen möchten, verwenden Sie [diese Vorlage](https://azure.microsoft.com/resources/templates/2-vms-loadbalancer-natrules/). Microsoft empfiehlt für Produktionsworkloads die Verwendung der Standard-SKU.
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/load-balancer-standard-create/azuredeploy.json":::
 

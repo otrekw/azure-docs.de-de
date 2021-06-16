@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b17041f25fdd26bd0f8328a206267ef1c4984672
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f68b940dfdb8c166102f1b4c8957f5233aa83ea4
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144743"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007767"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
@@ -51,7 +51,7 @@ Die Veröffentlichungsoption „Transaktion“ wird derzeit für die folgenden A
 
 ### <a name="metered-billing"></a>Getaktete Abrechnung
 
-Dank des _Marketplace-Messungsdiensts_ können Sie zusätzlich zu den im Vertrag (Berechtigung) enthaltenen Monats- oder Jahresgebühren auch Gebühren für die nutzungsbasierte Bezahlung (verbrauchsbasiert) angeben. Nutzungskosten können für von Ihnen angegebene Dimensionen des Marketplace-Messungsdiensts berechnet werden. Beispiele wären etwa Bandbreite, Tickets oder verarbeitete E-Mails. Weitere Informationen zur getakteten Abrechnung für SaaS-Angebote finden Sie unter [Volumenabrechnung für SaaS mit dem Messungsdienst für den kommerziellen Marketplace](./partner-center-portal/saas-metered-billing.md). Weitere Informationen zur getakteten Abrechnung für Azure-Anwendungsangebote finden Sie unter [Getaktete Abrechnung für verwaltete Anwendungen](./partner-center-portal/azure-app-metered-billing.md).
+Dank des _Marketplace-Messungsdiensts_ können Sie zusätzlich zu den im Vertrag (Berechtigung) enthaltenen Monats- oder Jahresgebühren auch Gebühren für die nutzungsbasierte Bezahlung (verbrauchsbasiert) angeben. Nutzungskosten können für von Ihnen angegebene Dimensionen des Marketplace-Messungsdiensts berechnet werden. Beispiele wären etwa Bandbreite, Tickets oder verarbeitete E-Mails. Weitere Informationen zur getakteten Abrechnung für SaaS-Angebote finden Sie unter [Volumenabrechnung für SaaS mit dem Messungsdienst für den kommerziellen Marketplace](./partner-center-portal/saas-metered-billing.md). Weitere Informationen zur getakteten Abrechnung für Azure-Anwendungsangebote finden Sie unter [Getaktete Abrechnung für verwaltete Anwendungen](marketplace-metering-service-apis.md).
 
 ### <a name="billing-infrastructure-costs"></a>Abrechnung von Infrastrukturkosten
 
@@ -67,13 +67,13 @@ Je nach verwendeter Transaktionsoption fallen folgende Abonnementgebühren an:
 - **Bring Your Own License** (BYOL, Verwendung Ihrer eigenen Lizenz): Wenn ein Angebot im kommerziellen Marketplace gelistet ist, werden alle anfallenden Gebühren für Softwarelizenzen direkt zwischen Herausgeber und Kunde geregelt. Von Microsoft werden nur die für die Azure-Infrastruktur anfallenden Nutzungsgebühren über das Azure-Abonnementkonto des Kunden abgerechnet.
 - **Abonnementpreise**: Softwarelizenzgebühren werden als laufende Abonnementgebühr ausgewiesen, die monatlich oder jährlich fällig ist und als Pauschale oder pro Arbeitsplatz berechnet wird. Bei Kündigungen durch den Kunden in der Mitte der Laufzeit bzw. bei nicht genutzten Diensten erfolgt keine anteilsmäßige Erstattung von laufenden Abonnementgebühren. Laufende Abonnementgebühren können angerechnet werden, wenn der Kunde das Abonnement in der Mitte der Abonnementlaufzeit aktualisiert oder herabstuft.
 - **Nutzungsbasierte Preisgestaltung**: Bei Angeboten für virtuelle Azure-Computer werden dem Kunden nutzungsabhängige Gebühren für das Angebot berechnet. Bei VM-Images wird dem Kunden ein Azure Marketplace-Stundensatz in Rechnung gestellt, der vom Herausgeber festgelegt und für die Nutzung der virtuellen Computer erhoben wird, die auf der Grundlage der VM-Images bereitgestellt wurden. Die Stundengebühr kann einheitlich sein oder je nach VM-Größe variieren. Angefangene Stunden werden pro Minute abgerechnet. Pläne werden monatlich abgerechnet.
-- **Getaktetes Preismodell**: Bei Azure-Anwendungsangeboten und SaaS-Angeboten können Herausgeber den [Marketplace-Messungsdienst](./partner-center-portal/marketplace-metering-service-apis.md) verwenden, um die Nutzung auf der Grundlage der von ihnen konfigurierten benutzerdefinierten Verbrauchseinheitsdimensionen zu berechnen. Diese Gebühren fallen zusätzlich zu den im Vertrag (Berechtigung) enthaltenen Monats- oder Jahresgebühren an. Beispiele für benutzerdefinierte Verbrauchseinheitsdimensionen wären etwa Bandbreite, Tickets oder verarbeitete E-Mails. Herausgeber können für jeden Plan eine oder mehrere getaktete Dimensionen definieren. Pro Angebot sind jedoch maximal 30 Dimensionen möglich. Herausgeber sind dafür verantwortlich, die Nutzung der einzelnen Kunden mit jeder im Angebot definierten Verbrauchseinheit nachzuverfolgen. Ereignisse sollten innerhalb einer Stunde an Microsoft gemeldet werden. Microsoft erstellt die Kundenrechnungen auf Basis der von den Herausgebern für den jeweiligen Abrechnungszeitraum gemeldeten Nutzungsinformationen.
+- **Getaktetes Preismodell**: Bei Azure-Anwendungsangeboten und SaaS-Angeboten können Herausgeber den [Marketplace-Messungsdienst](marketplace-metering-service-apis.md) verwenden, um die Nutzung auf der Grundlage der von ihnen konfigurierten benutzerdefinierten Verbrauchseinheitsdimensionen zu berechnen. Diese Gebühren fallen zusätzlich zu den im Vertrag (Berechtigung) enthaltenen Monats- oder Jahresgebühren an. Beispiele für benutzerdefinierte Verbrauchseinheitsdimensionen wären etwa Bandbreite, Tickets oder verarbeitete E-Mails. Herausgeber können für jeden Plan eine oder mehrere getaktete Dimensionen definieren. Pro Angebot sind jedoch maximal 30 Dimensionen möglich. Herausgeber sind dafür verantwortlich, die Nutzung der einzelnen Kunden mit jeder im Angebot definierten Verbrauchseinheit nachzuverfolgen. Ereignisse sollten innerhalb einer Stunde an Microsoft gemeldet werden. Microsoft erstellt die Kundenrechnungen auf Basis der von den Herausgebern für den jeweiligen Abrechnungszeitraum gemeldeten Nutzungsinformationen.
 - **Kostenlose Testversion**: Für Softwarelizenzen, die zwischen 30 Tagen und sechs Monaten gültig sind, werden je nach Angebotstyp keine Kosten berechnet. Wenn Herausgeber eine kostenlose Testversion für mehrere Pläne innerhalb des gleichen Angebots bereitstellen, kann der Kunde zwar zu einer kostenlosen Testversion eines anderen Plans wechseln, der Testzeitraum wird jedoch nicht neu gestartet. Bei Angeboten für virtuelle Computer werden dem Kunden die Azure-Infrastrukturkosten für die Nutzung des Angebots während eines Testzeitraums in Rechnung gestellt. Nach Ablauf des Testzeitraums wird dem Kunden automatisch der Standardtarif für den Plan in Rechnung gestellt, für den er zuletzt die Testversion verwendet hat, sofern er nicht vor dem Ende des Testzeitraums gekündigt hat.
 
 > [!NOTE]
 > Angebote, die nach Verbrauch abgerechnet werden, sind nach Verwendung der Lösung nicht erstattungsfähig.
 
-Wenn ein Herausgeber die einem Angebot zugeordneten Nutzungsgebühren ändern möchte, sollte er zunächst das Angebot (oder den jeweiligen Plan innerhalb des Angebots) aus dem kommerziellen Marketplace entfernen. Das Entfernen sollte in Übereinstimmung mit den Anforderungen der [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement) erfolgen. Anschließend kann der Herausgeber ein neues Angebot (oder einen Plan innerhalb des Angebots) mit den neuen Nutzungsgebühren veröffentlichen. Weitere Informationen zum Entfernen eines Angebots oder Plans finden Sie unter [Einstellen des Verkaufs eines Angebots oder Plans](./partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan).
+Wenn ein Herausgeber die einem Angebot zugeordneten Nutzungsgebühren ändern möchte, sollte er zunächst das Angebot (oder den jeweiligen Plan innerhalb des Angebots) aus dem kommerziellen Marketplace entfernen. Das Entfernen sollte in Übereinstimmung mit den Anforderungen der [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement) erfolgen. Anschließend kann der Herausgeber ein neues Angebot (oder einen Plan innerhalb des Angebots) mit den neuen Nutzungsgebühren veröffentlichen. Weitere Informationen zum Entfernen eines Angebots oder Plans finden Sie unter [Einstellen des Verkaufs eines Angebots oder Plans](./update-existing-offer.md#stop-selling-an-offer-or-plan).
 
 ### <a name="free-contact-me-and-bring-your-own-license-byol-pricing"></a>Preisgestaltung für die Optionen „Kostenlos“, „Kontaktaufnahme“ und „BYOL“ (Bring-Your-Own-License)
 
@@ -178,7 +178,7 @@ Kunden kaufen in der Regel im Rahmen eines Enterprise Agreement oder eines Vertr
 
 #### <a name="billing-questions-and-support"></a>Fragen zu Abrechnung und Support
 
-Weitere Informationen und gesetzliche Richtlinien finden Sie in der [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement). Hilfe bei Abrechnungsfragen erhalten Sie vom [Support für Herausgeber im kommerziellen Marketplace](https://aka.ms/marketplacepublishersupport).
+Weitere Informationen und gesetzliche Richtlinien finden Sie in der [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement). Hilfe bei Abrechnungsfragen erhalten Sie vom [Support für Herausgeber im kommerziellen Marketplace](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 ## <a name="transact-requirements"></a>Anforderungen für die Veröffentlichungsoption „Transaktion“
 

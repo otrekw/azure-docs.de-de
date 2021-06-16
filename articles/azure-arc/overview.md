@@ -3,12 +3,12 @@ title: Übersicht über Azure Arc
 description: Hier erfahren Sie, was Azure Arc ist und wie es Kunden bei der Verwaltung und Governance ihrer Hybridressourcen mit anderen Azure-Diensten und -Features unterstützt.
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: 57b483fd64004680d2feffa1e0a6c2843b819c19
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b9e3cac865a92023d0079a5face9fbc8a3734c6e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369078"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967075"
 ---
 # <a name="azure-arc-overview"></a>Übersicht über Azure Arc
 
@@ -47,7 +47,7 @@ Zu den wichtigsten Features von Azure Arc zählen folgende:
 
 * Die Ausführung von [Azure Data Services](../azure-arc/kubernetes/custom-locations.md) in einer beliebigen Kubernetes-Umgebung ist wie die Ausführung in Azure möglich (insbesondere Azure SQL Managed Instance und Azure Database for PostgreSQL Hyperscale mit Vorteilen wie Upgrades/Updates, Sicherheit und Überwachung). Nutzen Sie die elastische Skalierung, und wenden Sie Updates ganz ohne Anwendungsdowntime an, sogar ohne kontinuierliche Verbindung mit Azure.
 
-* Erstellen Sie [benutzerdefinierter Standorte](./kubernetes/custom-locations.md) auf Grundlage Ihrer [Azure Arc-fähigen Kubernetes-Cluster](./kubernetes/overview.md), wobei diese als Zielstandorte für die Bereitstellung von Azure-Dienstinstanzen verwendet werden Sie können Ihre Azure-Dienstclustererweiterungen für [Azure Arc-fähige Data Services-Instanzen](./data/deploy-data-controller-direct-mode.md), [App Services auf Azure Arc](../app-service/overview-arc-integration.md) (einschließlich Web- Funktions- und Logik-Apps) und für [Event Grid in Kubernetes](/azure/event-grid/kubernetes/overview) bereitstellen.
+* Erstellen Sie [benutzerdefinierter Standorte](./kubernetes/custom-locations.md) auf Grundlage Ihrer [Azure Arc-fähigen Kubernetes-Cluster](./kubernetes/overview.md), wobei diese als Zielstandorte für die Bereitstellung von Azure-Dienstinstanzen verwendet werden Sie können Ihre Azure-Dienstclustererweiterungen für [Azure Arc-fähige Data Services-Instanzen](./data/deploy-data-controller-direct-mode.md), [App Services auf Azure Arc](../app-service/overview-arc-integration.md) (einschließlich Web- Funktions- und Logik-Apps) und für [Event Grid in Kubernetes](../event-grid/kubernetes/overview.md) bereitstellen.
 
 * Einheitliche Betrachtung Ihrer Azure Arc-fähigen Ressourcen bei Verwendung von Azure-Portal, Azure CLI, Azure PowerShell oder Azure-REST-API
 

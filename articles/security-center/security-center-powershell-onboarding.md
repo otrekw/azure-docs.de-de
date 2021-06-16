@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: f9ab258f59279112d0b90c5d460e6761ac911a2d
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 3d6e9fe8ad21ab47e3062a63f45f096b8ba60bc5
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713352"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887256"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatisieren der Integration von Azure Security Center mithilfe von PowerShell
 
@@ -43,33 +43,51 @@ Diese Schritte sollten vor der Ausführung der Security Center-Cmdlets ausgefüh
 
 1. Führen Sie die folgenden Befehle in PowerShell aus:
       
-    ```Set-ExecutionPolicy -ExecutionPolicy AllSigned```
+    ```powershell
+    Set-ExecutionPolicy -ExecutionPolicy AllSigned
+    ```
 
-    ```Install-Module -Name Az.Security -Force```
+    ```powershell
+    Install-Module -Name Az.Security -Force
+    ```
 
 ## <a name="onboard-security-center-using-powershell"></a>Integrieren von Security Center mithilfe von PowerShell
 
 1. Registrieren Sie Ihre Abonnements beim Security Center-Ressourcenanbieter:
 
-    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
+    ```powershell
+    Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```
 
-    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'
+    ```
 
 1. Optional: Legen Sie die Abdeckungsebene (Azure Defender ein/aus) der Abonnements fest. Wenn keine definiert, ist Defender deaktiviert:
 
-    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
+    ```powershell
+    Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```
 
-    ```Set-AzSecurityPricing -Name "default" -PricingTier "Standard"```
+    ```powershell
+    Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
+    ```
 
 1. Konfigurieren Sie einen Log Analytics-Arbeitsbereich, an den die Agents Daten melden. Sie benötigen einen bereits erstellten Log Analytics-Arbeitsbereich, an den die virtuellen Computer im Abonnement Daten melden können. Sie können mehrere Abonnements festlegen, die an den gleichen Arbeitsbereich Daten melden. Wird keine Angabe gemacht, wird der Standardarbeitsbereich verwendet.
 
-    ```Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"```
+    ```powershell
+    Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
+    ```
 
 1. Installation mit automatischer Bereitstellung des Log Analytics-Agents auf Ihren virtuellen Azure-Computern:
     
-    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
+    ```powershell
+    Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```
     
-    ```Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision```
+    ```powershell
+    Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+    ```
 
     > [!NOTE]
     > Sie sollten die automatische Bereitstellung aktivieren, um sicherzustellen, dass Ihre virtuellen Azure-Computer automatisch mit Azure Security Center geschützt werden.
@@ -77,13 +95,19 @@ Diese Schritte sollten vor der Ausführung der Security Center-Cmdlets ausgefüh
 
 1. Optional: Es wird dringend empfohlen, die [Sicherheitskontaktinformationen](security-center-provide-security-contact-details.md) für die zu integrierenden Abonnements anzugeben. Die Sicherheitskontakte erhalten die von Security Center generierten Warnungen und Benachrichtigungen:
 
-    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -AlertAdmin -NotifyOnAlert```
+    ```powershell
+    Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -AlertAdmin -NotifyOnAlert
+    ```
 
 1. Weisen Sie die Security Center-Standardrichtlinieninitiative zu:
 
-    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'```
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
+    ```
 
-    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Azure Security Benchmark'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
+    ```powershell
+    $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Azure Security Benchmark'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
+    ```
 
 Sie haben Azure Security Center mithilfe von PowerShell erfolgreich integriert.
 

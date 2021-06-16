@@ -10,16 +10,17 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: ba1df23b40de82a8ef901541884ef29ea0b504a1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5f0368c3d2ee0132816852bfdf170700939bee46
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771873"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949237"
 ---
 # <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Zuweisen von Azure-Rollen mithilfe von Azure Resource Manager-Vorlagen
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Neben der Verwendung von Azure PowerShell oder der Azure-Befehlszeilenschnittstelle können Sie Rollen auch mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md) zuweisen. Vorlagen können hilfreich sein, wenn Sie Ressourcen konsistent und wiederholt bereitstellen müssen. In diesem Artikel wird das Zuweisen von Rollen mithilfe von Vorlagen beschrieben.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Neben der Verwendung von Azure PowerShell oder der Azure-Befehlszeilenschnittstelle können Sie Rollen auch mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md) zuweisen. Vorlagen können hilfreich sein, wenn Sie Ressourcen konsistent und wiederholt bereitstellen müssen. In diesem Artikel wird das Zuweisen von Rollen mithilfe von Vorlagen beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -377,6 +378,6 @@ Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Mitwirkender“
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Schnellstart: Erstellen und Bereitstellen von ARM-Vorlagen über das Azure-Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
-- [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
+- [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](../azure-resource-manager/templates/syntax.md)
 - [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?term=rbac)

@@ -3,13 +3,13 @@ title: Skalieren eines Service Fabric-Clusters in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie einen Service Fabric-Cluster in Azure erweitern und horizontal herunterskalieren und übrig gebliebene Ressourcen bereinigen.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 3072caa1bacf31b1c02ab7ca8720d190736ad3ff
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: a885c062bab8c334ee7bfee1c78e0b64154b0775
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287264"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664902"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 

@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Event Hubs
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ff141fc1bb681e2356a4471dfdc808d622fd76b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12e129686bdde9b03e1c284e0f54cb31e32469c3
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98986494"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903003"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures (SAS)
 Die Shared Access Signature (SAS) ermöglicht Ihnen die präzise Steuerung des Zugriffstyps, den Sie den Clients mit der Shared Access Signature gewähren. Folgende Kontrollen können Sie beispielsweise in einer SAS festlegen: 
@@ -59,11 +59,11 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 Das Token enthält die Werte ohne Hash, sodass der Empfänger den Hash mit den gleichen Parametern neu berechnen und überprüfen kann, ob der Aussteller im Besitz eines gültigen Signaturschlüssels ist.
 
-Der Ressourcen-URI ist der vollständige URI der Service Bus-Ressource, auf die der Zugriff beansprucht wird. Beispiel: http://<namespace>.servicebus.windows.net/<entityPath> oder `sb://<namespace>.servicebus.windows.net/<entityPath>;`, d. h. `http://contoso.servicebus.windows.net/eventhubs/eh1`.
+Der Ressourcen-URI ist der vollständige URI der Service Bus-Ressource, auf die der Zugriff beansprucht wird. Beispiel: http://<namespace>.servicebus.windows.net/<entityPath> oder `sb://<namespace>.servicebus.windows.net/<entityPath>;`, d. h. `http://contoso.servicebus.windows.net/eh1`.
 
 Der URI muss als Prozentwert codiert sein.
 
-Die zum Signieren verwendete SAS-Autorisierungsregel muss für die durch diesen URI angegebene Entität oder eines seiner hierarchisch übergeordneten Elemente konfiguriert werden. Beispiel: `http://contoso.servicebus.windows.net/eventhubs/eh1` oder `http://contoso.servicebus.windows.net` im vorherigen Beispiel.
+Die zum Signieren verwendete SAS-Autorisierungsregel muss für die durch diesen URI angegebene Entität oder eines seiner hierarchisch übergeordneten Elemente konfiguriert werden. Beispiel: `http://contoso.servicebus.windows.net/eh1` oder `http://contoso.servicebus.windows.net` im vorherigen Beispiel.
 
 Ein SAS-Token ist für alle Ressourcen mit dem Präfix <resourceURI> in der Signaturzeichenfolge gültig.
 

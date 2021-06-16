@@ -24,6 +24,8 @@
       items:
         - name: Erstellen eines privaten ARO-Clusters
           href: howto-create-private-cluster-4x.md
+        - name: Konfigurieren von benutzerdefiniertem DNS
+          href: howto-custom-dns.md
         - name: Konfigurieren der DNS-Weiterleitung
           href: dns-forwarding.md
         - name: Einschränken von ausgehendem Datenverkehr

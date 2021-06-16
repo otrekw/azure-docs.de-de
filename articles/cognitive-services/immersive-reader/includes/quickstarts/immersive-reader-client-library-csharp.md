@@ -5,18 +5,18 @@ description: In dieser Schnellstartanleitung erstellen Sie eine Web-App von Grun
 services: cognitive-services
 author: nitinme
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ded1c8529d50c718f1d61f0397b997f0c7c8a316
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1865a8b4dd4ac6c263ad80d726c331060bda0e54
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376530"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893641"
 ---
 [Plastischer Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden, wie z. B. Dyslexie, zu verbessern. Sie können den plastischen Reader in Ihren Anwendungen verwenden, um Text zu isolieren, den Fokus zu verbessern, Bilder für häufig verwendete Wörter anzuzeigen, Wortarten hervorzuheben, markierten Text laut vorzulesen, Wörter und Ausdrücke in Echtzeit zu übersetzen und vieles mehr.
 

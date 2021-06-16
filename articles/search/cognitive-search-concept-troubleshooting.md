@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 5882cc949d88e8c2a4102362cf5d2a3613e1d714
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d372c4bff4977ed310d2e84aa255679a9c5ed928
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99475487"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756453"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
@@ -30,8 +30,7 @@ Führen Sie Ihre Dokumentenzusammenstellung durch die End-to-End-Pipeline und pr
 
 ## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>Tipp 2: Vergewissern Sie sich, dass Ihre Anmeldeinformationen für die Datenquelle korrekt sind.
 Die Datenquellenverbindung wird erst überprüft, wenn Sie einen Indexer definieren, der sie verwendet. Wenn Fehler angezeigt werden, die darauf hinweisen, dass der Indexer nicht auf die Daten zugreifen kann, stellen Sie Folgendes sicher:
-- Die Verbindungszeichenfolge ist korrekt. Insbesondere beim Erstellen von SAS-Token müssen Sie das in der kognitiven Azure-Suche erwartete Format verwenden. Weitere Informationen zu den verschiedenen unterstützten Formaten finden Sie im Abschnitt [Angeben von Anmeldeinformationen](
-https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials).
+- Die Verbindungszeichenfolge ist korrekt. Insbesondere beim Erstellen von SAS-Token müssen Sie das in der kognitiven Azure-Suche erwartete Format verwenden. Weitere Informationen zu den verschiedenen unterstützten Formaten finden Sie im Abschnitt [Angeben von Anmeldeinformationen](search-howto-indexing-azure-blob-storage.md#credentials).
 - Der Containername im Indexer ist korrekt.
 
 ## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>Tipp 3: Achten Sie darauf, was funktioniert, auch wenn Fehler auftreten.

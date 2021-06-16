@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 8dbff6b53133bace6643b21c8faa706ef817f1de
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 215c8e2d2f758044898fa184bc10721996d84b5f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286274"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964737"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Hochverfügbarkeit und Lastenausgleich von Anwendungsproxy-Connectors und -Anwendungen
 
@@ -91,6 +91,6 @@ Informationen zu den Anforderungen für den Lastenausgleich der Back-End-Anwendu
 
 - [Aktivieren des Anwendungsproxys](application-proxy-add-on-premises-application.md)
 - [Aktivieren der einmaligen Anmeldung](application-proxy-configure-single-sign-on-with-kcd.md)
-- [Aktivieren des bedingten Zugriffs](../manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+- [Aktivieren des bedingten Zugriffs](./application-proxy-integrate-with-sharepoint-server.md)
 - [Problembehandlung von Anwendungsproxys](application-proxy-troubleshoot.md)
 - [Erfahren Sie, wie die Azure AD-Architektur Hochverfügbarkeit unterstützt](../fundamentals/active-directory-architecture.md).

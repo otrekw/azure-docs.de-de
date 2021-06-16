@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9ae0ca07d0aad72a38ee4eccbefbdb826da9627b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0759a3fce2d056bbe5d9234e25b45525874faf4e
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373031"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670562"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service
 
@@ -100,9 +100,9 @@ Sie müssen eventuell zwei Änderungen vornehmen:
 
 - Standardmäßig verwendet Ihre App eine freigegebene öffentliche IP-Adresse. Wenn Sie ein Zertifikat mit IP-SSL binden, erstellt App Service eine neue, dedizierte IP-Adresse für Ihre App. Wenn Sie Ihrer App einen A-Eintrag zugeordnet haben, aktualisieren Sie Ihre Domänenregistrierung mit dieser neuen, dedizierten IP-Adresse.
 
-    Die Seite **Benutzerdefinierte Domäne** Ihrer App wird mit der neuen, dedizierten IP-Adresse aktualisiert. [Kopieren Sie diese IP-Adresse](app-service-web-tutorial-custom-domain.md#info) und [ordnen Sie dieser neuen IP-Adresse dann den A-Eintrag neu zu](app-service-web-tutorial-custom-domain.md#map-an-a-record).
+    Die Seite **Benutzerdefinierte Domäne** Ihrer App wird mit der neuen, dedizierten IP-Adresse aktualisiert. [Kopieren Sie diese IP-Adresse](app-service-web-tutorial-custom-domain.md#info) und [ordnen Sie dieser neuen IP-Adresse dann den A-Eintrag neu zu](app-service-web-tutorial-custom-domain.md#4-create-the-dns-records).
 
-- Wenn eine SNI SSL-Bindung an `<app-name>.azurewebsites.net` besteht, [ordnen Sie alle CNAME-Zuordnungen](app-service-web-tutorial-custom-domain.md#map-a-cname-record) neu zu, um stattdessen auf `sni.<app-name>.azurewebsites.net` zu verweisen. (Fügen Sie das Präfix `sni` hinzu.)
+- Wenn eine SNI SSL-Bindung an `<app-name>.azurewebsites.net` besteht, [ordnen Sie alle CNAME-Zuordnungen](app-service-web-tutorial-custom-domain.md#4-create-the-dns-records) neu zu, um stattdessen auf `sni.<app-name>.azurewebsites.net` zu verweisen. (Fügen Sie das Präfix `sni` hinzu.)
 
 ## <a name="test-https"></a>Testen von HTTPS
 

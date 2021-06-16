@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 3debd58aadb98ab1e78692411e8d0bb66635f0da
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 9bf6e9a09cfd271fb701b930eaee7b0e8bdee61f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279296"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961605"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen, um die Bereitstellung für Azure Logic Apps zu automatisieren
 
@@ -24,9 +24,9 @@ Azure Logic Apps bietet eine [vordefinierte Azure Resource Manager-Vorlage für 
 
 Weitere Informationen zu Azure Resource Manager-Vorlagen finden Sie in den folgenden Themen:
 
-* [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
-* [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
-* [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](../azure-resource-manager/templates/templates-cloud-consistency.md)
+* [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md)
+* [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/templates/syntax.md)
+* [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](../azure-resource-manager/templates/template-cloud-consistency.md)
 
 <a name="visual-studio"></a>
 
