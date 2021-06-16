@@ -6,16 +6,16 @@ author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: synapse-link
-ms.date: 03/02/2021
+ms.date: 06/02/2021
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: cdc9f344e108fc58399f9bcb2a9f02a4659ecfe1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f3cd12c6c2e03dbf68a70cac13a75cde0847a593
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627675"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019033"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Von Azure Synapse Link unterstützte Features für Azure Cosmos DB
 
@@ -26,9 +26,6 @@ In diesem Artikel werden die Funktionen beschrieben, die derzeit in Azure Synaps
 In Azure Cosmos DB gibt es zwei Arten von Containern:
 * HTAP-Container: ein Container mit Synapse Link-Aktivierung. Dieser Container verfügt sowohl über Transaktionsspeicher als auch über Analysespeicher. 
 * OLTP-Container: Ein Container mit nicht aktiviertem Synaspe Link. Dieser Container verfügt nur über Transaktionsspeicher und nicht über Analysespeicher.
-
-> [!IMPORTANT]
-> Azure Synapse Link für Azure Cosmos DB wird derzeit für Synapse-Arbeitsbereiche unterstützt, in denen kein verwaltetes virtuelles Netzwerk aktiviert ist. 
 
 Sie können keine Verbindung mit einem Azure Cosmos DB-Container herstellen, ohne Synapse Link zu aktivieren. In diesem Szenario können Sie nur den Transaktionsspeicher lesen bzw. darin schreiben. Nachfolgend sehen Sie eine Liste der derzeit unterstützten Features in Synapse Link für Azure Cosmos DB. 
 
