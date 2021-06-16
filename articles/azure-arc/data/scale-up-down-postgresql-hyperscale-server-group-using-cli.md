@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: efad54e9e6d69f4b1b9c8cef0d93e0286c6c8203
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 490eaaef7e4e8569e4422b2ef2659ced583f7ff2
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286803"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407397"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Zentrales Hoch- und Herunterskalieren einer Azure Database for PostgreSQL Hyperscale-Servergruppe mithilfe der CLI (azdata oder kubectl)
 
@@ -202,6 +202,6 @@ azdata arc postgres server edit -n postgres01 --cores-request coordinator='',wor
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Skalieren Ihrer Azure Database for PostgreSQL Hyperscale-Servergruppe](scale-out-postgresql-hyperscale-server-group.md)
+- [Skalieren Ihrer Azure Database for PostgreSQL Hyperscale-Servergruppe](scale-out-in-postgresql-hyperscale-server-group.md)
 - [Speicherkonfiguration und Kubernetes-Speicherkonzepte](storage-configuration.md)
 - [Kubernetes-Ressourcenmodell](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

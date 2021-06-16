@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: d338c5f34d49663345582198ff53ba50a2919d7e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c310003bb7c9120211e3cf74e240e51d4a10b20c
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829420"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891768"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Aktivieren von Azure Automation State Configuration
 
@@ -47,7 +47,7 @@ So aktivieren Sie einen virtuellen Azure-Computer über das [Azure-Portal](https
 
 ### <a name="enable-a-vm-using-azure-resource-manager-templates"></a>Aktivieren eines virtuellen Computers mithilfe von Azure Resource Manager-Vorlagen
 
-Sie können einen virtuellen Computer mit Azure Resource Manager-Vorlagen für State Configuration installieren und aktivieren. Unter [Vom DSC-Dienst verwalteter Server](https://azure.microsoft.com/resources/templates/101-automation-configuration/) finden Sie eine Beispielvorlage zum Aktivieren eines vorhandenen virtuellen Computers für State Configuration. Wenn Sie eine VM-Skalierungsgruppe verwalten, finden Sie Informationen in der Beispielvorlage [Von Azure Automation verwaltete VM-Skalierungsgruppenkonfiguration](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/).
+Sie können einen virtuellen Computer mit Azure Resource Manager-Vorlagen für State Configuration installieren und aktivieren. Unter [Vom DSC-Dienst verwalteter Server](https://azure.microsoft.com/resources/templates/automation-configuration/) finden Sie eine Beispielvorlage zum Aktivieren eines vorhandenen virtuellen Computers für State Configuration. Wenn Sie eine VM-Skalierungsgruppe verwalten, finden Sie Informationen in der Beispielvorlage [Von Azure Automation verwaltete VM-Skalierungsgruppenkonfiguration](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/).
 
 ### <a name="enable-machines-using-powershell"></a>Aktivieren von Computern mit PowerShell
 

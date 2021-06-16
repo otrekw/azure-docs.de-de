@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e28b66844eaa0b73c2654175dea2e31d3cd75f5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fd6848d7ea43b08d6c19263e230b4284d3d81160
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172095"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951349"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Verwalten von Azure Resource Manager-Gruppen mithilfe der Azure CLI
 
@@ -221,6 +221,6 @@ Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffss
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](overview.md).
-- Informationen zur Resource Manager-Vorlagensyntax finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../templates/template-syntax.md).
+- Informationen zur Resource Manager-Vorlagensyntax finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../templates/syntax.md).
 - Informationen zum Entwickeln von Vorlagen finden Sie in den [Schritt-für-Schritt-Tutorials](../index.yml).
 - Informationen zum Anzeigen der Vorlagenschemas für Azure Resource Manager finden Sie in der [Referenz zu Vorlagen](/azure/templates/).

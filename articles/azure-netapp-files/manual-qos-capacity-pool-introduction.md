@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 13acee8b21adf946192544afcea17b4a8d9b9ec9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49cc885976e022e8b7c4c44c3546febc217e2d7c
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581124"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071819"
 ---
 # <a name="manual-qos-capacity-pool"></a>Manueller QoS-Kapazitätspool
 
@@ -44,8 +44,6 @@ Wenn Sie einen manuellen QoS-Kapazitätspool mit z. B. einem SAP HANA-System, e
 Wenn Sie [einen Kapazitätspool erstellen](azure-netapp-files-set-up-capacity-pool.md), können Sie angeben, dass für den Kapazitätspool der manuelle QoS-Typ verwendet werden soll.  Sie können auch [einen vorhandenen Kapazitätspool ändern](manage-manual-qos-capacity-pool.md#change-to-qos), sodass der manuelle QoS-Typ verwendet wird. 
 
 Beim Festlegen des QoS-Kapazitätstyps auf „Manuell“ handelt es sich um eine permanente Änderung. Das bedeutet, dass ein QoS-Kapazitätspool vom Typ „Manuell“ nicht auf den QoS-Kapazitätspooltyp „Automatisch“ umgestellt werden kann. 
-
-Wenn Sie den manuellen QoS-Typ verwenden, müssen Sie [die Funktion registrieren](manage-manual-qos-capacity-pool.md#register-the-feature).  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: azure-communication-services
 author: bertong
@@ -10,20 +10,19 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: 8fe8b853fe07af40603950a61c0dd2a1df74d14e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b618a2d33b812d964d48618b42421bdce109f28d
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644365"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111429772"
 ---
 Steigen Sie ein in Azure Communication Services, indem Sie das JavaScript-SDK für SMS von Communication Services nutzen, um SMS-Nachrichten zu senden.
 
 Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
-<!--**TODO: update all these reference links as the resources go live**
-
-[API reference documentation](../../../references/overview.md) | [Library source code](https://github.com/Azure/azure-sdk-for-js-pr/tree/feature/communication/sdk/communication/communication-sms) | [Package (NPM)](https://www.npmjs.com/package/@azure/communication-sms) | [Samples](#todo-samples)-->
+> [!NOTE]
+> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/send-sms).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

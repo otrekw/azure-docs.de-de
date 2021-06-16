@@ -1,11 +1,14 @@
 ---
-ms.openlocfilehash: ce29158c2a44f01fa06649e4b4497bf5c5076866
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 1425d359febe877564280123716270860790d8ff
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107513322"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430530"
 ---
+> [!NOTE]
+> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/use-managed-Identity).
+
 ## <a name="setting-up"></a>Einrichten
 
 ### <a name="create-a-new-nodejs-application"></a>Erstellen einer neuen Node.js-Anwendung

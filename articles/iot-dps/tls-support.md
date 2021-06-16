@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: wesmc
-ms.openlocfilehash: 3a8910cf0e81bd041d74ef95f45220f1c1e0b34c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 512ad8b6239afd2ce86ae0ef249e91e23fe114f3
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91761293"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854448"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>TLS-Unterstützung in Azure IoT Hub Device Provisioning Service (DPS)
 
@@ -20,8 +20,6 @@ DPS verwendet [Transport Layer Security (TLS)](http://wikipedia.org/wiki/Transpo
 
 Diese aktuellen TLS-Protokollversionen werden von DPS unterstützt: 
 * TLS 1.2
-
-TLS 1.0 und 1.1 werden als Legacy betrachtet und in Kürze eingestellt. Weitere Informationen finden Sie unter [Deprecating TLS 1.0 and 1.1 for IoT Hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md) (Einstellung von TLS 1.0 and 1.1 für IoT Hub). 
 
 ## <a name="restrict-connections-to-tls-12"></a>Beschränken von Verbindungen auf TLS 1.2
 

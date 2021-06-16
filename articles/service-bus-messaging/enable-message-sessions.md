@@ -3,12 +3,13 @@ title: Aktivierung von Azure Service Bus-Nachrichtensitzungen | Microsoft-Dokume
 description: In diesem Artikel wird erläutert, wie Sie Nachrichtensitzungen mit Azure-Portal, PowerShell, CLI und Programmiersprachen (C#, Java, Python und JavaScript) aktivieren
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 53791bb7dc1dec9bdf6c2c4aa8dda14728c2c465
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0a39e601d675225feb7e82e1de81eee9d3887aeb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989142"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671425"
 ---
 # <a name="enable-message-sessions-for-an-azure-service-bus-queue-or-a-subscription"></a>Aktivieren von Nachrichtensitzungen für eine Azure Service Bus-Warteschlange oder ein Abonnement
 Azure Service Bus-Sitzungen ermöglichen die gemeinsame und geordnete Verarbeitung unbegrenzter Sequenzen verwandter Nachrichten. Sitzungen können mit **FIFO**-Mustern (First in, First Out) und **Anforderung/Antwort**-Mustern verwendet werden. Weitere Informationen finden Sie unter [Nachrichtensitzungen](message-sessions.md). In diesem Artikel werden verschiedene Möglichkeiten zum Aktivieren von Sitzungen für eine Service Bus-Warteschlange oder ein Abonnement beschrieben. 

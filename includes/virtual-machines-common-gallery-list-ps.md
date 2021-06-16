@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-machines
 author: cynthn
@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/28/2020
 ms.author: cynthn
-ms.custom: include file
-ms.openlocfilehash: fc60d1266f4aad4c337611f0fa32fe8293744559
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurepowershell
+ms.openlocfilehash: 9010be3aaea5e43c2f932309d0e49d2976f08eac
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82792274"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110720702"
 ---
 ## <a name="list-information"></a>Auflisten von Informationen
 

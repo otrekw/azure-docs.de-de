@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 0559d02ec603d12578fa46d9790d0711fde5e38b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 555fd1d3132ae44ed9abb158dee76af3f5761146
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670893"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082152"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Konfigurieren der Routingpräferenz für einen virtuellen Computer mithilfe des Azure-Portals
 
@@ -39,7 +39,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
     |---|---|
     |Name|myVM|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
-    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Resource group| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
     |Standort| Wählen Sie **USA, Osten** aus.|

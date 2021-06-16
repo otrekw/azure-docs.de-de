@@ -3,20 +3,20 @@ title: Grundlegendes zur Datenaufbewahrung in Ihrer Umgebung – Azure Time Seri
 description: In diesem Artikel werden zwei Einstellungen beschrieben, mit denen die Datenaufbewahrung in Ihrer Azure Time Series Insights-Umgebung gesteuert wird.
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
-ms.reviewer: jasonh, kfile
+author: esung22
+ms.author: elsung
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 26363031aea37c53cce098e2b6cbc2b4d93b918f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: af70f0f68a01cb7324e73e751d6843a4750b73b4
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307077"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791005"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Grundlagen der Datenaufbewahrung in Azure Time Series Insights Gen1
 
@@ -35,7 +35,7 @@ Jede Ihrer Azure Time Series-Umgebungen besitzt eine Einstellung, die **Datenauf
 
 Darüber hinaus gibt es in Ihrer Azure Time Series Insights-Umgebung die Einstellung **Verhalten bei Überschreitung des Speicherlimits**. Sie steuert das Verhalten bei Eingang und Bereinigung, wenn in einer Umgebung die maximale Kapazität erreicht ist. Es stehen zwei Verhalten zur Auswahl bei der Konfiguration:
 
-- **Alte Daten bereinigen** (Standard)  
+- **Alte Daten bereinigen** (Standard)
 - **Eingang anhalten**
 
 > [!NOTE]
@@ -47,7 +47,7 @@ Beide Datenaufbewahrungsrichtlinien werden weiter unten ausführlicher beschrieb
 
 ## <a name="purge-old-data"></a>Purge old data (Alte Daten bereinigen)
 
-- **Alte Daten bereinigen** ist die Standardeinstellung für Azure Time Series Insights-Umgebungen.  
+- **Alte Daten bereinigen** ist die Standardeinstellung für Azure Time Series Insights-Umgebungen.
 - **Alte Daten bereinigen** ist zu bevorzugen, wenn Benutzer in ihrer Azure Time Series Insights-Umgebung immer die *aktuellsten Daten* angezeigt bekommen möchten.
 - Durch die Einstellung **Alte Daten bereinigen** werden Daten *bereinigt*, wenn die Grenzwerte der Umgebung erreicht sind (Aufbewahrungsdauer, Größe oder Anzahl, je nachdem, was zuerst eintritt). Die Aufbewahrungsdauer ist standardmäßig auf 30 Tage festgelegt.
 - Die ältesten erfassten Daten werden zuerst bereinigt (FIFO-Ansatz, First In First Out).
@@ -58,17 +58,17 @@ Wir sehen uns nun eine Beispielumgebung an, für die das Aufbewahrungsverhalten 
 
 Die **Datenaufbewahrungszeit** ist auf 400 Tage festgelegt. Die **Kapazität** ist auf die S1-Einheit festgelegt. Dies entspricht einer Gesamtkapazität von 30 GB. Angenommen, jeden Tag fallen durchschnittlich 500 MB an eingehenden Daten an. In dieser Umgebung können bei dieser Eingangsrate nur Daten für 60 Tage aufbewahrt werden, da nach 60 Tagen die maximale Kapazität erreicht ist. Für die Akkumulation der eingehenden Daten gilt Folgendes: 500 MB pro Tag x 60 Tage = 30 GB.
 
-Am 61. Tag werden in der Umgebung die aktuellsten Daten angezeigt; Daten, die älter als 60 Tage sind, werden bereinigt. Durch die Bereinigung wird Platz für die neu eintreffenden Daten geschaffen, damit weiter neue Daten untersucht werden können. Falls Benutzer die Daten länger aufbewahren möchten, können sie die Größe der Umgebung erhöhen, indem sie zusätzliche Einheiten hinzufügen oder weniger Daten per Pushvorgang übertragen.  
+Am 61. Tag werden in der Umgebung die aktuellsten Daten angezeigt; Daten, die älter als 60 Tage sind, werden bereinigt. Durch die Bereinigung wird Platz für die neu eintreffenden Daten geschaffen, damit weiter neue Daten untersucht werden können. Falls Benutzer die Daten länger aufbewahren möchten, können sie die Größe der Umgebung erhöhen, indem sie zusätzliche Einheiten hinzufügen oder weniger Daten per Pushvorgang übertragen.
 
 ### <a name="example-two"></a>Beispiel zwei
 
-Wir sehen uns nun eine Umgebung an, für die wiederum das Aufbewahrungsverhalten **Continue ingress and purge old data** (Eingang fortsetzen und alte Daten bereinigen) festgelegt ist. In diesem Beispiel ist die **Datenaufbewahrungszeit** aber auf einen niedrigeren Wert von 180 Tagen festgelegt. Die **Kapazität** ist auf die S1-Einheit festgelegt. Dies entspricht einer Gesamtkapazität von 30 GB. Um Daten für die gesamten 180 Tage speichern zu können, darf die Menge an eingehenden Daten 0,166 GB (166 MB) pro Tag nicht überschreiten.  
+Wir sehen uns nun eine Umgebung an, für die wiederum das Aufbewahrungsverhalten **Continue ingress and purge old data** (Eingang fortsetzen und alte Daten bereinigen) festgelegt ist. In diesem Beispiel ist die **Datenaufbewahrungszeit** aber auf einen niedrigeren Wert von 180 Tagen festgelegt. Die **Kapazität** ist auf die S1-Einheit festgelegt. Dies entspricht einer Gesamtkapazität von 30 GB. Um Daten für die gesamten 180 Tage speichern zu können, darf die Menge an eingehenden Daten 0,166 GB (166 MB) pro Tag nicht überschreiten.
 
 Immer wenn die tägliche Eingangsrate für diese Umgebung über den Wert von 0,166 GB pro Tag steigt, können Daten nicht 180 Tage lang aufbewahrt werden, da einige Daten bereinigt werden. Stellen Sie sich diese Umgebung nun für Zeiten mit hoher Auslastung vor. Angenommen, die Eingangsrate der Umgebung steigt auf durchschnittlich 0,189 GB pro Tag an. Während dieser Zeit mit hoher Auslastung werden Daten etwa 158 Tage lange aufbewahrt (30GB/0,189 = 158,73 Aufbewahrungstage). Dieser Zeitraum ist kürzer als der gewünschte Zeitrahmen für die Datenaufbewahrung.
 
 ## <a name="pause-ingress"></a>Pause ingress (Eingang anhalten)
 
-- Mit der Einstellung **Pause ingress** soll sichergestellt werden, dass Daten nicht bereinigt werden, wenn die Grenzwerte für die Größe und Anzahl vor dem Ende des Aufbewahrungszeitraums erreicht werden.  
+- Mit der Einstellung **Pause ingress** soll sichergestellt werden, dass Daten nicht bereinigt werden, wenn die Grenzwerte für die Größe und Anzahl vor dem Ende des Aufbewahrungszeitraums erreicht werden.
 - Durch **Pause ingress** erhalten Benutzer zusätzliche Zeit, um die Kapazität ihrer Umgebung zu erhöhen, bevor Daten bereinigt werden, weil die Regeln für den Aufbewahrungszeitraum verletzt wurden.
 - Dadurch werden Sie vor einem Datenverlust geschützt. Es kann aber auch geschehen, dass Ihre aktuellsten Daten verloren gehen, wenn der Dateneingang über den Aufbewahrungszeitraum Ihrer Ereignisquelle hinaus angehalten wird.
 - Nachdem aber die maximale Kapazität einer Umgebung erreicht wurde, wird der Dateneingang von der Umgebung so lange angehalten, bis folgende zusätzliche Aktionen durchgeführt wurden:

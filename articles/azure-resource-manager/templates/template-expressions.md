@@ -4,12 +4,12 @@ description: Beschreibt die deklarative JSON-Syntax für Azure Resource Manager-
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0c010d71217dcae23348098355bf1752ffc43337
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 1232e7774a88bec089254397d0582cc52f450fdb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314893"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959810"
 ---
 # <a name="syntax-and-expressions-in-arm-templates"></a>Syntax und Ausdrücke in ARM-Vorlagen
 
@@ -134,4 +134,4 @@ Zur Festlegung einer Eigenschaft auf NULL, können Sie `null` oder `[json('null'
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine vollständige Liste der Funktionen in einer Vorlage finden Sie unter [Funktionen von ARM-Vorlagen](template-functions.md).
-* Weitere Informationen zu Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Weitere Informationen zu Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).

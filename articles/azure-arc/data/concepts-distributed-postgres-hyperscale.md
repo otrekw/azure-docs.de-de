@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: c01da4aed9e27296ea7b570420bb190b16749848
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4698826a78afe816029288f2d5eda14834124904
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90931548"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407805"
 ---
 # <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>Konzepte für die Verteilung von Daten mit einer Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 
@@ -70,7 +70,7 @@ Weitere Informationen finden Sie unter [Tabellen Zusammenstellung](../../postgre
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Informationen zum Erstellen von Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen](create-postgresql-hyperscale-server-group.md)
-- [Erfahren Sie mehr über das Aufskalieren von Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen, die in Ihrem Arc-Datencontroller erstellt wurden](scale-out-postgresql-hyperscale-server-group.md).
+- [Erfahren Sie mehr über das Aufskalieren von Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen, die in Ihrem Arc-Datencontroller erstellt wurden](scale-out-in-postgresql-hyperscale-server-group.md).
 - [Weitere Informationen zu Azure Arc-fähigen Data Services](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
 - [Weitere Informationen zu Azure Arc](https://aka.ms/azurearc)
 
