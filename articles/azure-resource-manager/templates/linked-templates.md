@@ -4,12 +4,12 @@ description: Beschreibt, wie verknüpfte Vorlagen in einer Azure Resource Manage
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 80fabe5f720182e51e731e0d4d833ed0e7ab9137
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 3ae1bcc6cc1c99bc89e2f8fbd2c8debf95418850
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751543"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951139"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -611,7 +611,7 @@ Das folgende Beispiel zeigt, wie Sie eine Basis-URL verwenden können, um zwei U
 
 ```json
 "variables": {
-  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
+  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/postgre/postgresql-on-ubuntu/",
   "sharedTemplateUrl": "[uri(variables('templateBaseUrl'), 'shared-resources.json')]",
   "vmTemplateUrl": "[uri(variables('templateBaseUrl'), 'database-2disk-resources.json')]"
 }
@@ -894,6 +894,6 @@ Die folgenden Beispiele zeigen gängige Nutzungsszenarien für verknüpften Vorl
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ein entsprechendes Tutorial finden Sie unter [Tutorial: Bereitstellen einer verknüpften Vorlage](./deployment-tutorial-linked-template.md).
-* Weitere Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen](define-resource-dependency.md).
+* Weitere Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen](./resource-dependency.md).
 * Weitere Informationen dazu, wie Sie eine Ressource definieren, aber viele Instanzen davon erstellen, finden Sie unter [Ressourceniteration in ARM-Vorlagen](copy-resources.md).
 * Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md) oder [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure-Befehlszeilenschnittstelle](deploy-cli.md).

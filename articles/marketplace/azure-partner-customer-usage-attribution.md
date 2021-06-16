@@ -5,17 +5,17 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/12/2021
-ms.custom: devx-track-terraform
-ms.openlocfilehash: aadf1f4c9ab8fa20933256749bd8ce37a1258063
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: devx-track-terraform, devx-track-azurepowershell
+ms.openlocfilehash: b1f40ff5175de88e101bfe8f22f9593502e7d6d0
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738804"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005877"
 ---
 # <a name="azure-customer-usage-attribution"></a>Zuordnung der Azure-Nutzung durch Kunden
 
-Bei der Zuordnung der Nutzung durch Kunden wird die Nutzung von Azure-Ressourcen in Kundenabonnements Ihnen als Partner zugeordnet, die bei der Bereitstellung Ihres geistigen Eigentums erstellt wurden. Die Bildung dieser Zuordnungen in internen Microsoft-Systemen sorgt für mehr Transparenz des Azure-Speicherbedarfs Ihrer Software. Bei [Angeboten für Azure-Anwendungen im kommerziellen Marketplace](#commercial-marketplace-azure-apps) hilft diese Nachverfolgungsfunktion Ihnen dabei, sich an Microsoft-Vertriebsteams zu orientieren und Gutschriften für Microsoft-Partnerprogramme zu erhalten. Die Zuordnung der Nutzung durch Kunden gilt nicht für [Azure-VM-Angebote im kommerziellen Marketplace](./azure-vm-create.md). Ein Marketplace-Herausgeber muss keinerlei Schritte für VM-Angebote ausführen, um sicherzustellen, dass der Azure-Verbrauch in Endkundenabonnements nachverfolgt wird.
+Bei der Zuordnung der Nutzung durch Kunden wird die Nutzung von Azure-Ressourcen in Kundenabonnements Ihnen als Partner zugeordnet, die bei der Bereitstellung Ihres geistigen Eigentums erstellt wurden. Die Bildung dieser Zuordnungen in internen Microsoft-Systemen sorgt für mehr Transparenz des Azure-Speicherbedarfs Ihrer Software. Bei [Angeboten für Azure-Anwendungen im kommerziellen Marketplace](#commercial-marketplace-azure-apps) hilft diese Nachverfolgungsfunktion Ihnen dabei, sich an Microsoft-Vertriebsteams zu orientieren und Gutschriften für Microsoft-Partnerprogramme zu erhalten. Die Zuordnung der Nutzung durch Kunden gilt nicht für [Azure-VM-Angebote im kommerziellen Marketplace](marketplace-virtual-machines.md). Ein Marketplace-Herausgeber muss keinerlei Schritte für VM-Angebote ausführen, um sicherzustellen, dass der Azure-Verbrauch in Endkundenabonnements nachverfolgt wird.
 
 Die Zuordnung der Nutzung durch Kunden unterstützt drei Bereitstellungsmethoden:
 
@@ -32,7 +32,7 @@ Außerhalb des kommerziellen Marketplace gibt es sekundäre Anwendungsfälle fü
 
 ## <a name="commercial-marketplace-azure-apps"></a>Azure-Apps aus dem kommerziellen Marketplace
 
-Die Nachverfolgung der Azure-Nutzung von Azure-Apps, die im kommerziellen Marketplace veröffentlicht wurden, erfolgt größtenteils automatisch. Wenn Sie eine Resource Manager-Vorlage im Rahmen der [technischen Konfiguration des Marketplace-Plans Ihrer Azure-App](./create-new-azure-apps-offer-solution.md#define-the-technical-configuration) hochladen, fügt Partner Center eine Nachverfolgungs-ID hinzu, die von Azure Resource Manager gelesen werden kann.
+Die Nachverfolgung der Azure-Nutzung von Azure-Apps, die im kommerziellen Marketplace veröffentlicht wurden, erfolgt größtenteils automatisch. Wenn Sie eine Resource Manager-Vorlage im Rahmen der [technischen Konfiguration des Marketplace-Plans Ihrer Azure-App](./azure-app-solution.md#define-the-technical-configuration) hochladen, fügt Partner Center eine Nachverfolgungs-ID hinzu, die von Azure Resource Manager gelesen werden kann.
 
 Wenn Sie Azure Resource Manager-APIs verwenden, müssen Sie Ihre Nachverfolgungs-ID gemäß der [Anweisungen unten](#use-resource-manager-apis) hinzufügen, um sie an Azure Resource Manager zu übergeben, während der Code Ihre Ressourcen bereitstellt. Diese ID wird in Partner Center auf der Seite „Technische Konfiguration“ Ihres Plans angezeigt. 
 
@@ -41,7 +41,7 @@ Wenn Sie Azure Resource Manager-APIs verwenden, müssen Sie Ihre Nachverfolgungs
 >
 >Wenn Sie Ihre Angebote aktualisieren, müssen Sie den Ressourcentyp **Microsoft. Resources/Deployments** nicht mehr in ihrer Hauptvorlagen-Datei hinzufügen.
 
-## <a name="other-use-cases"></a>Weitere Anwendungsfälle 
+## <a name="other-use-cases"></a>Weitere Anwendungsfälle
 
 Sie können die Zuordnung der Nutzung durch Kunden zum Nachverfolgen der Azure-Nutzung von Lösungen verwenden, die nicht im kommerziellen Marketplace verfügbar sind. Diese Lösungen befinden sich normalerweise im Schnellstartrepository, in privaten GitHub-Repositorys oder stammen aus 1:1-Kundeninteraktionen, bei denen dauerhaftes geistiges Eigentum erstellt wird (z. B. eine bereitstellbare und skalierbare App).
 
@@ -65,9 +65,9 @@ Sie sollten eine eindeutige GUID für jedes Produkt und jeden Verteilungskanal e
 
 Die GUIDs müssen als Nächstes in Partner Center registriert werden, damit Sie Ihnen als Partner zugeordnet werden können:
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) an.
 
-1. Registrieren Sie sich als [kommerzieller Marketplace-Herausgeber](https://aka.ms/JoinMarketplace).
+1. Registrieren Sie sich als [kommerzieller Marketplace-Herausgeber](https://go.microsoft.com/fwlink/?linkid=2165614).
 
 1. Klicken Sie in der oberen rechten Ecke auf **Einstellungen** (Zahnradsymbol), und wählen Sie dann **Kontoeinstellungen** aus.
 
@@ -253,7 +253,7 @@ Informationen zu den Supportoptionen im kommerziellen Marketplace finden Sie unt
 1. Geben Sie einen Titel und eine ausführliche Beschreibung Ihres Problems ein.
 1. Klicken Sie auf **Senden**.
 
-Eine ausführliche Anleitung mit Screenshots finden Sie unter [Verwenden von technischen Presales- und Bereitstellungsdiensten](https://aka.ms/TechConsultInstructions).
+Eine ausführliche Anleitung mit Screenshots finden Sie unter [Verwenden von technischen Presales- und Bereitstellungsdiensten](/partner-center/technical-benefits).
 
 Im Anschluss werden Sie von einem technischen Berater eines Microsoft-Partners kontaktiert, der mit Ihnen einen passenden Termin für einen Anruf festlegt.
 

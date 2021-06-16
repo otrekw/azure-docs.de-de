@@ -3,12 +3,13 @@ title: Verwenden von PowerShell zum Verwalten von Azure Service Bus-Ressourcen |
 description: In diesem Artikel wird beschrieben, wie das Azure PowerShell-Modul verwendet wird, um Service Bus-Entitäten (Namespaces, Warteschlangen, Themen, Abonnements) zu erstellen und zu verwalten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5b5bb551584b0bb3d0cc84f408f1935e727ee50a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88065742"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663823"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Verwenden von PowerShell zum Verwalten von Service Bus-Ressourcen
 

@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 21546286d8ca9f8b455b84801d2f706466912165
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9877f50fe7bb06cb33a38f8ee89fa09ad12c0693
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137597"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672476"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -74,7 +74,7 @@ Der `TriggerMetadata`-Parameter wird verwendet, um zusätzliche Informationen zu
 $TriggerMetadata.sys
 ```
 
-| Eigenschaft   | Beschreibung                                     | type     |
+| Eigenschaft   | BESCHREIBUNG                                     | type     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | Zeitpunkt der Auslösung der Funktion in UTC        | Datetime |
 | MethodName | Der Name der Funktion, die ausgelöst wurde     | Zeichenfolge   |
@@ -295,7 +295,7 @@ HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Respon
 
 Das Anforderungsobjekt, das an das Skript übergeben wird, ist vom Typ `HttpRequestContext`, der über die folgenden Eigenschaften verfügt:
 
-| Eigenschaft  | Beschreibung                                                    | type                      |
+| Eigenschaft  | BESCHREIBUNG                                                    | type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Ein Objekt, das den Hauptteil der Anforderung enthält. `Body` wird basierend auf den Daten in den am besten geeigneten Typ serialisiert. Bei JSON-Daten wird z. B. eine Hashtabelle übergeben. Wenn es sich bei den Daten um eine Zeichenfolge handelt, erfolgt die Übergabe auch als Zeichenfolge. | Objekt (object) |
 | **`Headers`** | Ein Wörterbuch mit den Headern der Anforderung.                | Dictionary<string,string><sup>*</sup> |
@@ -310,7 +310,7 @@ Das Anforderungsobjekt, das an das Skript übergeben wird, ist vom Typ `HttpRequ
 
 Das Antwortobjekt, das Sie zurücksenden sollten, weist den Typ `HttpResponseContext` auf, der über die folgenden Eigenschaften verfügt:
 
-| Eigenschaft      | Beschreibung                                                 | type                      |
+| Eigenschaft      | BESCHREIBUNG                                                 | type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Ein Objekt, das den Hauptteil der Antwort enthält.           | Objekt (object)                    |
 | **`ContentType`** | Einstellungsmöglichkeit für den Inhaltstyp der Antwort | Zeichenfolge                    |
@@ -468,7 +468,7 @@ Möglicherweise möchten Sie eine bestimmte Version eines Moduls in Ihrer Datei 
 
 ```powershell
 @{
-    Az.Accounts = '1.9.5'
+    'Az.Accounts' = '1.9.5'
 }
 ```
 

@@ -3,12 +3,13 @@ title: Erstellen einer Azure Load Balancer-Regel für einen Cluster
 description: Konfigurieren Sie eine Azure Load Balancer-Instanz zum Öffnen von Ports für Ihren Azure Service Fabric-Cluster.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 7e09c7b0b3e2bfa5a5ff834e243f5098cbbd947b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0e3d3d065d27268085721d3080c4fc21c407261a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92319902"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671338"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Öffnen von Port für einen Service Fabric-Cluster
 

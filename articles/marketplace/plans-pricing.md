@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 09/02/2020
-ms.openlocfilehash: e97171e61814b832e78f7bd815d8d6f341a90840
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21f8109fa1db49af8f2e84833466ed204d2f59fa
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91858171"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536526"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Pläne und Preise für Angebote im kommerziellen Marketplace
 
@@ -100,7 +100,7 @@ Wenn Sie bereits Preise in US-Dollar für Ihren Plan festgelegt haben und einen 
 > [!IMPORTANT]
 > Nach der Veröffentlichung des Angebots kann das Preismodell nicht mehr geändert werden.
 
-SaaS-Angebote und Angebote für verwaltete Anwendungen mit Pauschalpreisen unterstützen die getaktete Abrechnung über den Marketplace-Messungsdienst. Hierbei handelt es sich um ein nutzungsbasiertes Abrechnungsmodell, mit dem Sie nicht standardmäßige Einheiten (z. B. Bandbreite oder E-Mail-Nachrichten) definieren können, für die Ihre Kunden auf Nutzungsbasis bezahlen. Weitere Informationen zur getakteten Abrechnung für [verwaltete Anwendungen](./partner-center-portal/azure-app-metered-billing.md) und [Saas-Apps](./partner-center-portal/saas-metered-billing.md) finden Sie in der jeweiligen Dokumentation.
+SaaS-Angebote und Angebote für verwaltete Anwendungen mit Pauschalpreisen unterstützen die getaktete Abrechnung über den Marketplace-Messungsdienst. Hierbei handelt es sich um ein nutzungsbasiertes Abrechnungsmodell, mit dem Sie nicht standardmäßige Einheiten (z. B. Bandbreite oder E-Mail-Nachrichten) definieren können, für die Ihre Kunden auf Nutzungsbasis bezahlen. Weitere Informationen zur getakteten Abrechnung für [verwaltete Anwendungen](marketplace-metering-service-apis.md) und [Saas-Apps](./partner-center-portal/saas-metered-billing.md) finden Sie in der jeweiligen Dokumentation.
 
 ## <a name="custom-prices"></a>Benutzerdefinierte Preise
 
@@ -166,5 +166,5 @@ Wenn Sie Informationen zu Kundenabonnements abrufen möchten, die derzeit an ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Hinzufügen oder Aktualisieren von Plänen für ein vorhandenes Angebot finden Sie unter [Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace](./partner-center-portal/update-existing-offer.md).
+- Weitere Informationen zum Hinzufügen oder Aktualisieren von Plänen für ein vorhandenes Angebot finden Sie unter [Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace](./update-existing-offer.md).
 - Weitere Informationen zu Transaktionsoptionen und zugehörigen Preismodellen finden Sie unter [Transaktionsfunktionen im kommerziellen Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md).

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 6c72f62db310155c9b2fa1d09476ab9406f2d330
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 4a7bd76a6b7536a6bbc117d52fb2c0770145ab9d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813198"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078706"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Schnellstart: Erstellen eines virtuellen Ubuntu Linux-Computers mithilfe einer ARM-Vorlage
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/vm-simple-linux/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-linux/azuredeploy.json":::
 
@@ -61,7 +61,7 @@ In der Vorlage sind mehrere Ressourcen definiert:
     - **Administratorbenutzername**: Geben Sie einen Benutzernamen an, z. B. *azureuser*.
     - **Authentifizierungstyp:** Sie können zwischen der Verwendung eines SSH-Schlüssels und eines Kennworts wählen.
     - **Administratorkennwort oder Schlüssel**: Dies richtet sich danach, was Sie als Authentifizierungstyp ausgewählt haben:
-        - Bei Auswahl von **Kennwort** muss das Kennwort mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
+        - Bei Auswahl von **Kennwort** muss das Kennwort mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.yml#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.
         - Fügen Sie bei Auswahl von **sshPublicKey** den Inhalt Ihres öffentlichen Schlüssels ein.
     - **Präfix der DNS-Bezeichnung**: Geben Sie einen eindeutigen Bezeichner ein, der als Teil der DNS-Bezeichnung verwendet wird.
     - **Ubuntu-Betriebssystemversion**: Wählen Sie aus, welche Version von Ubuntu auf der VM ausgeführt werden soll.

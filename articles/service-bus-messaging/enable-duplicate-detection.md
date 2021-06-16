@@ -3,12 +3,13 @@ title: Aktivieren der Erkennung doppelter Nachrichten – Azure Service Bus
 description: In diesem Artikel wird erläutert, wie Sie die Erkennung doppelter Nachrichten mit Azure-Portal, PowerShell, CLI und Programmiersprachen (C#, Java, Python und JavaScript) aktivieren
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 1e299b86991a7785cc89f2e72227e7a8ced883d7
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 654d53bb324584d8b17d1e36efe20e5f25d54e39
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989124"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671442"
 ---
 # <a name="enable-duplicate-message-detection-for-an-azure-service-bus-queue-or-a-topic"></a>Aktivieren der Erkennung doppelter Nachrichten für eine Azure Service Bus-Warteschlange oder ein Thema
 Wenn Sie die Duplikaterkennung für eine Warteschlange oder ein Thema aktivieren, speichert Azure Service Bus einen Verlauf aller Nachrichten, die an die Warteschlange oder das Thema gesendet werden, für einen konfigurierten Zeitraum. In diesem Intervall werden in der Warteschlange oder dem Thema keine doppelten Nachrichten gespeichert. Wenn Sie diese Eigenschaft aktivieren, wird die Übermittlung genau einmal über einen benutzerdefinierten Zeitraum garantiert. Weitere Informationen finden Sie unter [Duplikaterkennung](duplicate-detection.md). In diesem Artikel werden verschiedene Möglichkeiten zum Aktivieren der Erkennung doppelter Nachrichten für eine Service Bus-Warteschlange oder ein Thema beschrieben. 

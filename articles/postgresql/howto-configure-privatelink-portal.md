@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 75defcf88128e1b100e403d74f76577525f0bdeb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7561a836f593515cc4d05706ff7834591e19aaf9
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642132"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081297"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Erstellen und Verwalten von Private Link for Azure Database for PostgreSQL – Einzelserver im Portal
 
@@ -66,7 +66,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
     | Size | Übernehmen Sie den Standardwert **Standard DS1 v2**. |
     | **ADMINISTRATORKONTO** |  |
     | Username | Geben Sie einen Benutzernamen Ihrer Wahl ein. |
-    | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.|
     | Kennwort bestätigen | Geben Sie das Kennwort erneut ein. |
     | **REGELN FÜR EINGEHENDE PORTS** |  |
     | Öffentliche Eingangsports | Übernehmen Sie den Standardwert **Keine**. |

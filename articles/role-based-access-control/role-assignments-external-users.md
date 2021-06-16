@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: it-pro
-ms.openlocfilehash: d834f4ccd8dba26c895e0578f161813fc49332ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 469995a3211083dd592fa4b3f4ab8b145c7193a8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556299"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949291"
 ---
 # <a name="assign-azure-roles-to-external-guest-users-using-the-azure-portal"></a>Zuweisen von Azure-Rollen zu externen Gastbenutzern über das Azure-Portal
 
@@ -181,7 +181,7 @@ Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Gastbenutzer k�
 
 ![Gastbenutzer können Benutzer in einem Verzeichnis nicht durchsuchen.](./media/role-assignments-external-users/directory-no-users.png)
 
-Wenn ein Gastbenutzer zusätzliche Berechtigungen im Verzeichnis benötigt, können Sie dem Gastbenutzer eine Verzeichnisrolle zuweisen. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-guest-to-role.md).
+Wenn ein Gastbenutzer zusätzliche Berechtigungen im Verzeichnis benötigt, können Sie dem Gastbenutzer eine Verzeichnisrolle zuweisen. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-users-administrator.md).
 
 ![Zuweisen der Rolle „Verzeichnisleseberechtigte“](./media/role-assignments-external-users/directory-roles.png)
 
@@ -191,11 +191,11 @@ Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Selbst wenn ein
 
 ![Gastbenutzer können keine Sicherheitsprinzipale durchsuchen, um Rollen zuzuweisen.](./media/role-assignments-external-users/directory-no-browse.png)
 
-Wenn der Gastbenutzer den genauen Anmeldenamen einer Person im Verzeichnis kennt, kann er Zugriff gewähren. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-guest-to-role.md).
+Wenn der Gastbenutzer den genauen Anmeldenamen einer Person im Verzeichnis kennt, kann er Zugriff gewähren. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-users-administrator.md).
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>Gastbenutzer können keine Anwendungen registrieren oder Dienstprinzipale erstellen.
 
-Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Wenn ein Gastbenutzer Anwendungen registrieren oder Dienstprinzipale erstellen können muss, können Sie den Gastbenutzer der Rolle [Anwendungsentwickler](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-guest-to-role.md).
+Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Wenn ein Gastbenutzer Anwendungen registrieren oder Dienstprinzipale erstellen können muss, können Sie den Gastbenutzer der Rolle [Anwendungsentwickler](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-users-administrator.md).
 
 ![Gastbenutzer können keine Anwendungen registrieren.](./media/role-assignments-external-users/directory-access-denied.png)
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 769b42133fb894c916ecaa3c42dd7de85206c765
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 651d644070f13933fadf4a2616e770a27c014c92
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556246"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074879"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Schnellstart: Erstellen einer Windows-VM mit der Azure CLI
 
@@ -40,7 +40,7 @@ az group create --name myResourceGroup --location eastus
 
 Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* erstellt: Dieses Beispiel verwendet *azureuser* als Administratorbenutzernamen. 
 
-Sie müssen ein Kennwort angeben, das die [Kennwortanforderungen für Azure-VMs](./faq.md#what-are-the-password-requirements-when-creating-a-vm
+Sie müssen ein Kennwort angeben, das die [Kennwortanforderungen für Azure-VMs](./faq.yml#what-are-the-password-requirements-when-creating-a-vm-
 ) erfüllt. Beim folgenden Beispiel werden Sie zur Eingabe eines Kennworts in der Befehlszeile aufgefordert. Sie können auch den Parameter `--admin-password` mit einem Wert für Ihr Kennwort hinzufügen. Benutzername und Kennwort werden später verwendet, wenn Sie eine Verbindung mit dem virtuellen Computer herstellen.
 
 ```azurecli-interactive
@@ -67,6 +67,8 @@ Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauer
 ```
 
 Beachten Sie Ihre eigene `publicIpAddress` in der Ausgabe Ihres virtuellen Computers. Diese Adresse wird in den nächsten Schritten verwendet, um auf den virtuellen Computer zuzugreifen.
+
+[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="open-port-80-for-web-traffic"></a>Öffnen von Port 80 für Webdatenverkehr
 

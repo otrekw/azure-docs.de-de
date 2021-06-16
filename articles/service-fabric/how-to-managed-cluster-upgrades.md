@@ -3,12 +3,12 @@ title: Upgrade von verwalteten Azure Service Fabric-Clustern
 description: Erfahren Sie mehr über die Optionen zum Aktualisieren Ihres verwalteten Azure Service Fabric-Clusters.
 ms.topic: how-to
 ms.date: 05/10/2021
-ms.openlocfilehash: c7096191e72d5645149bc1b1e28254a0c57a94b0
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 478b39a6222906c793d826ab69edeeaddbb096bf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785275"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960997"
 ---
 # <a name="manage-service-fabric-managed-cluster-upgrades"></a>Verwalten von Service Fabric-Clusterupgrades
 
@@ -63,7 +63,7 @@ Wenn Sie den Clusterupgrademodus mithilfe einer Resource Manager-Vorlage ändern
 
 Nach erfolgreicher Bereitstellung der Vorlage werden Änderungen am Clusterupgrademodus angewendet. Wenn sich der Cluster im manuellen Modus befindet, wird das Clusterupgrade automatisch gestartet.
 
-Bei dem Upgrade werden die [Clusterintegritätsrichtlinien](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction#health-policies) (eine Kombination aus Knotenintegrität und Integrität aller im Cluster ausgeführten Anwendungen) berücksichtigt. Wenn die Clusterintegritätsrichtlinien nicht erfüllt sind, wird das Upgrade zurückgesetzt.
+Bei dem Upgrade werden die [Clusterintegritätsrichtlinien](./service-fabric-health-introduction.md#health-policies) (eine Kombination aus Knotenintegrität und Integrität aller im Cluster ausgeführten Anwendungen) berücksichtigt. Wenn die Clusterintegritätsrichtlinien nicht erfüllt sind, wird das Upgrade zurückgesetzt.
 
 Beheben Sie die Probleme, die zu dem Rollback geführt haben, und initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte ausführen wie zuvor.
 

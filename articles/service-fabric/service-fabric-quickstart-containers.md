@@ -4,13 +4,13 @@ description: In diesem Schnellstart erstellen Sie Ihre erste Windows-Containeran
 ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 34144cf26c92dc8401f7e12526faa838784f119a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87089616"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677350"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Schnellstart: Bereitstellen von Windows-Containern in Service Fabric
 
@@ -132,7 +132,7 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MyFirstContainer**, und wählen Sie **Veröffentlichen** aus. Das Dialogfeld „Veröffentlichen“ wird angezeigt.
 
-Kopieren Sie den Inhalt, der nach Ausführung des Befehls `Import-PfxCertificate` im PowerShell-Fenster nach **CN=** angegeben war, und fügen Sie ihm den Port `19000` hinzu. Beispiel: `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Kopieren Sie ihn in das Feld **Verbindungsendpunkt**. Speichern Sie diesen Wert. Er wird in einem späteren Schritt benötigt.
+Kopieren Sie den Inhalt, der nach Ausführung des Befehls `Import-PfxCertificate` im PowerShell-Fenster nach **CN=** angegeben war, und fügen Sie ihm den Port `19000` hinzu. Beispielsweise `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Kopieren Sie ihn in das Feld **Verbindungsendpunkt**. Speichern Sie diesen Wert. Er wird in einem späteren Schritt benötigt.
 
 Klicken Sie auf **Erweiterte Verbindungsparameter**, und überprüfen Sie die Informationen zu den Verbindungsparametern.  Die Werte *FindValue* und *ServerCertThumbprint* müssen dem Fingerabdruck des Zertifikats entsprechen, das Sie im vorherigen Schritt durch Ausführen von `Import-PfxCertificate` installiert haben.
 
@@ -146,7 +146,7 @@ Navigieren Sie in einem Browser zu der Adresse, die Sie im vorherigen Schritt im
 
  Die IIS-Standardwebseite sollte angezeigt werden: ![IIS-Standardwebseite][iis-default]
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Während der Ausführung des Clusters fallen weiterhin Gebühren an. Daher empfiehlt es sich ggf,. den Cluster zu [löschen](./service-fabric-tutorial-delete-cluster.md).
 

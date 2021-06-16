@@ -5,18 +5,18 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 072aa17783382c7d46298b2757b3bda9390e5e29
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 91b4cfad8bb8e3d03838939edc8142e7abee8642
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368749"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061666"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
 Sie können mithilfe einer Azure Resource Manager-Vorlage eine Funktions-App bereitstellen. In diesem Artikel werden die erforderlichen Ressourcen und die Parameter hierfür beschrieben. Abhängig von den [Triggern und Bindungen](functions-triggers-bindings.md) in Ihrer Funktions-App müssen Sie möglicherweise weitere Ressourcen bereitstellen.
 
-Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
+Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md).
 
 Beispielvorlagen finden Sie unter:
 - [Funktions-App im Verbrauchsplan]
@@ -800,4 +800,4 @@ Machen Sie sich näher mit dem Entwickeln und Konfigurieren von Azure Functions 
 <!-- LINKS -->
 
 [Funktions-App im Verbrauchsplan]: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.web/function-app-create-dynamic/azuredeploy.json
-[Funktions-App im Azure App Service-Plan]: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.web/azuredeploy.json
+[Funktions-App im Azure App Service-Plan]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json

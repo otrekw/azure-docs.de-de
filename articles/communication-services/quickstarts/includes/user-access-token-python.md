@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 services: azure-communication-services
 author: tomaschladek
 manager: nmurav
@@ -10,13 +10,16 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: a2c14340dc1810b8bc1fd4bb2b3276120609f33a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 524770186c9bb391b9beb63620b13c99bf6dc4d0
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108791393"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111431042"
 ---
+> [!NOTE]
+> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/access-tokens-quickstart).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).

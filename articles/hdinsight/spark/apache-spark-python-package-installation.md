@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: c3f912b4f4c2e78c44425f489927cee185b3d312
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0c3db80edf771b0ad34aa9260da80b43ba8c355e
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868714"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652581"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Sicheres Verwalten der Python-Umgebung in Azure HDInsight mithilfe einer Skriptaktion
 
@@ -58,7 +58,7 @@ Der HDInsight-Cluster hängt von der integrierten Python-Umgebung (Python 2.7 od
     -   `anaconda` legt package_spec als Anaconda fest, um Anaconda-Pakete in der virtuellen Umgebung zu installieren.
     
     ```bash
-    sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes
+    sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda=4.3 --yes
     ```
 
 2. Installieren Sie bei Bedarf in der erstellten virtuellen Umgebung externe Python-Pakete. Führen Sie Skriptaktionen für alle Knoten in Ihrem Cluster mit dem folgenden Skript aus, um externe Python-Pakete zu installieren. Sie müssen über sudo-Berechtigungen verfügen, um Dateien in den Ordner der virtuellen Umgebung zu schreiben.

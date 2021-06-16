@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/22/2021
+ms.date: 06/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3898de5bf01ea03a5ad7f951a97da82a6a8c4b14
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 2e0af2e682799d4286a0d00daa2ce7e3805cf4ac
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896223"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565246"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens in Azure Active Directory B2C
 
@@ -243,16 +243,18 @@ Wenn Sie den Benutzer bei der Anwendung abmelden möchten, reicht es nicht aus, 
 
 Auf die Abmeldeanforderung reagiert Azure AD B2C wie folgt:
 
-1. Die cookiebasierte Azure AD B2C-Sitzung wird für ungültig erklärt.
 ::: zone pivot="b2c-user-flow"
-2. Azure AD B2C versucht, den Benutzer vom Verbundidentitätsanbieter abzumelden
+1. Die cookiebasierte Azure AD B2C-Sitzung wird für ungültig erklärt.
+1. Azure AD B2C versucht, den Benutzer vom Verbundidentitätsanbieter abzumelden
 ::: zone-end
+
 ::: zone pivot="b2c-custom-policy"
-3. Azure AD B2C versucht, den Benutzer vom Verbundidentitätsanbieter abzumelden:
+1. Die cookiebasierte Azure AD B2C-Sitzung wird für ungültig erklärt.
+1. Azure AD B2C versucht, den Benutzer vom Verbundidentitätsanbieter abzumelden:
    - OpenId Connect, wenn der bekannte Konfigurationsendpunkt des Identitätsanbieters eine `end_session_endpoint`-Adresse angibt. Die Abmeldeanforderung übergibt den `id_token_hint`-Parameter nicht. Wenn der Verbundidentitätsanbieter diesen Parameter erfordert, tritt bei der Abmeldeanforderung ein Fehler auf.
    - OAuth2, wenn die [Metadaten des Identitätsanbieters](oauth2-technical-profile.md#metadata) die `end_session_endpoint`-Adresse enthalten.
    - SAML, wenn die [Metadaten des Identitätsanbieters](identity-provider-generic-saml.md) die `SingleLogoutService`-Adresse enthalten.
-4. Optional nimmt Azure AD B2C die Abmeldung bei anderen Anwendungen vor. Weitere Informationen finden Sie im Abschnitt [Einmaliges Abmelden](#single-sign-out).
+1. Optional nimmt Azure AD B2C die Abmeldung bei anderen Anwendungen vor. Weitere Informationen finden Sie im Abschnitt [Einmaliges Abmelden](#single-sign-out).
 
 > [!NOTE]
 > Sie können das Abmelden vom Verbundidentitätsanbieter deaktivieren, indem Sie die Metadaten `SingleLogoutEnabled` im technischen Profil des Identitätsanbieters auf `false` festlegen.

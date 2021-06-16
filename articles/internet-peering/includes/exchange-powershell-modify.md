@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 titleSuffix: Azure
 description: include file
 services: internet-peering
@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 12d169697a35af446392843eb57e6ec3a5508e45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e1d5b85e722e8ec5624e4d6d9f546cbe401b4ea8
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81678650"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110721674"
 ---
 Die folgenden Änderungsvorgänge werden für Exchange-Peeringverbindungen unterstützt:
 * Hinzufügen von Exchange-Peeringverbindungen

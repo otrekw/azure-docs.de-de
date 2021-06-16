@@ -7,18 +7,18 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a75aca174fd2fda6ccb4c12346a617e24814caf4
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 7c0fa91b62696729cba1895f69ee1f36eb661f17
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318367"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111972017"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md)[neuere Metrikwarnungen](./alerts-metric-near-real-time.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Neuere metrische Warnungen sind derzeit für [diese Gruppe von Ressourcentypen](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported) verfügbar.
+In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md)[neuere Metrikwarnungen](./alerts-metric-near-real-time.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Neuere metrische Warnungen sind derzeit für [diese Gruppe von Ressourcentypen](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported) verfügbar.
 
 > [!IMPORTANT]
 > Bei der Ressourcenvorlage zum Erstellen von Metrikwarnungen für den Ressourcentyp für Azure Log Analytics-Arbeitsbereiche (`Microsoft.OperationalInsights/workspaces`) sind zusätzliche Schritte erforderlich. Weitere Informationen finden Sie im Artikel [Erstellen von Metrikwarnungen für Protokolle in Azure Monitor](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).

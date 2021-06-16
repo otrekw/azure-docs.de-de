@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/02/2021
+ms.date: 06/02/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 190d88e62069a34b61017a0079f75696d67f6c82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 27fe9f4c7d63a5e0674bde6db3f387f813bed749
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979911"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409395"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Dienstlimits und -einschränkungen für Azure Active Directory B2C
 
@@ -55,16 +55,3 @@ In der folgenden Tabelle sind die Grenzwerte für die Verwaltungskonfiguration i
 
 - Erfahren Sie mehr über [Richtlinien für die Microsoft Graph-Drosselung](/graph/throttling). 
 - Erfahren Sie mehr über die [Unterschiede bei der Validierung für Azure AD B2C-Anwendungen](../active-directory/develop/supported-accounts-validation.md).
-
-
-
-
-
-
-
-
-
-
-
-
-

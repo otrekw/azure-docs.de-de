@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: dc8f8f7ced1c5915c2ea54390685806cfcdd257f
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: faf34a71289f81d3e08110e7cda46dc861faed14
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280308"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797492"
 ---
 <!-- NOTE this file is temporary and a placeholder until the FAQ file update is completed. -->
 
@@ -113,7 +113,7 @@ Weitere Informationen finden Sie unter [Inhaltsschutz mit der dynamischen Versch
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Wie und wo kann ich JWT-Token abrufen, um damit dann eine Lizenz oder einen Schlüssel anzufordern?
 
-Für die Produktion benötigen Sie einen Sicherheitstokendienst (Webdienst), der bei einer HTTPS-Anforderung ein JWT-Token ausgibt. Zum Testen können Sie den in der `GetTokenAsync`-Methode angegebenen Code verwenden, der in [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) definiert ist.
+Für die Produktion benötigen Sie einen Sicherheitstokendienst (Webdienst), der bei einer HTTPS-Anforderung ein JWT-Token ausgibt. Zum Testen können Sie den in der `GetTokenAsync`-Methode angegebenen Code verwenden, der in [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs) definiert ist.
 
 Der Player fordert nach der Authentifizierung eines Benutzers beim STS ein solches Token an und weist dieses als Wert des Tokens zu. Sie können die [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) verwenden.
 
@@ -123,7 +123,7 @@ Ein Beispiel für die Ausführung des STS mit einem symmetrischen oder einem asy
 
 Der richtige Ansatz ist die Nutzung von eines Sicherheitstokendiensts. Fügen Sie im STS je nach Benutzerprofil unterschiedliche Ansprüche hinzu (z. B. „Premium-Benutzer“, „Basic-Benutzer“, „Benutzer der kostenlosen Testversion“). Bei unterschiedlichen Ansprüchen in einem JWT kann der Benutzer unterschiedliche Inhalte sehen. Für andere Inhalte oder Medienobjekte weist `ContentKeyPolicyRestriction` den entsprechenden Wert für `RequiredClaims` auf.
 
-Verwenden Sie die Azure Media Services-APIs für die Konfiguration von Lizenzen/Schlüsselbereitstellungen und die Verschlüsselung Ihrer Objekte (siehe [dieses Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
+Verwenden Sie die Azure Media Services-APIs für die Konfiguration von Lizenzen/Schlüsselbereitstellungen und die Verschlüsselung Ihrer Objekte (siehe [dieses Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithAES/Program.cs)).
 
 Weitere Informationen finden Sie unter
 

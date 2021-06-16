@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
 ms.date: 09/04/2020
-ms.openlocfilehash: 09badebab86da8e4fd8d35307aa6648a26e91821
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 73c8daf49ccdfeee1903a3c0ad823cdd3e52c141
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232255"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537858"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Leitfaden für die Veröffentlichung von verwalteten Azure-Anwendungen
 
@@ -51,4 +51,4 @@ Informieren Sie sich (falls noch nicht geschehen), wie Sie [Ihr Cloudgeschäft m
 So registrieren Sie sich in Partner Center und beginnen mit der Arbeit
 
 - [Melden Sie sich bei Partner Center an](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership), um Ihr Angebot zu erstellen oder abzuschließen.
-- Weitere Informationen finden Sie unter [Erstellen eines Azure-Anwendungsangebots](./create-new-azure-apps-offer.md).
+- Weitere Informationen finden Sie unter [Erstellen eines Azure-Anwendungsangebots](azure-app-offer-setup.md).

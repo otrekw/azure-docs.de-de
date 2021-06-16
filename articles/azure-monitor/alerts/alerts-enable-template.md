@@ -5,12 +5,12 @@ author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 02/14/2021
-ms.openlocfilehash: c4e444ebe217b6202d8ea140bd1edf3ccf5708d0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15be0be2fc6d00f5a1fde9e716cf00f306537521
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031343"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956410"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -18,7 +18,7 @@ ms.locfileid: "102031343"
 > In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](./monitoring-classic-retirement.md), sind jedoch bis zum **31. Mai 2021** weiterhin beschränkt im Einsatz. Klassische Warnungen für Azure Government Cloud und Azure China 21ViaNet werden am **29. Februar 2024** eingestellt.
 >
 
-In diesem Artikel erfahren Sie, wie Sie mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md) klassische Metrikwarnungen in Azure konfigurieren. So können Sie Warnungen für Ihre Ressourcen gleich bei der Erstellung automatisch einrichten, um sicherzustellen, dass alle Ressourcen ordnungsgemäß überwacht werden.
+In diesem Artikel erfahren Sie, wie Sie mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/syntax.md) klassische Metrikwarnungen in Azure konfigurieren. So können Sie Warnungen für Ihre Ressourcen gleich bei der Erstellung automatisch einrichten, um sicherzustellen, dass alle Ressourcen ordnungsgemäß überwacht werden.
 
 Die grundlegenden Schritte lauten wie folgt:
 

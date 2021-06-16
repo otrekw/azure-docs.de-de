@@ -2,13 +2,13 @@
 title: Definieren mehrerer Instanzen einer Eigenschaft
 description: Erfahren Sie, wie Sie den copy-Vorgang in einer Azure Resource Manager-Vorlage (ARM) verwenden, um sie beim Erstellen einer Eigenschaft für eine Ressource mehrmals zu durchlaufen.
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: 3f6eeac8b32e0fb34b973e82557cc48bab532ffd
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.date: 05/07/2021
+ms.openlocfilehash: 1f5a93b8c0759a9baccb8c5d5bc7dab25b181791
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736932"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954692"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Eigenschafteniteration in ARM-Vorlagen
 
@@ -19,8 +19,6 @@ Sie können die copy-Schleife nur mit Ressourcen der obersten Ebene verwenden, a
 Die copy-Schleife kann auch mit [Ressourcen](copy-resources.md), [Variablen](copy-variables.md) und [Ausgaben](copy-outputs.md) verwendet werden.
 
 ## <a name="syntax"></a>Syntax
-
-# <a name="json"></a>[JSON](#tab/json)
 
 Fügen Sie das `copy`-Element im Ressourcenabschnitt Ihrer Vorlage ein, um die Anzahl der Elemente für eine Eigenschaft festzulegen. Das copy-Element hat das folgende allgemeine Format:
 
@@ -40,36 +38,6 @@ Die Eigenschaft `count` gibt die gewünschte Anzahl von Iterationen für die Eig
 
 Die Eigenschaft `input` gibt die Eigenschaften an, die Sie wiederholen möchten. Erstellen Sie ein Array von Elementen, das aus dem Wert in der `input`-Eigenschaft erstellt wird.
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-Mit Schleifen können mehrere Eigenschaften deklariert werden durch:
-
-- Durchlaufen eines Arrays:
-
-  ```bicep
-  <property-name>: [for <item> in <collection>: {
-    <properties>
-  }]
-  ```
-
-- Durchlaufen der Elemente eines Arrays
-
-  ```bicep
-  <property-name>: [for (<item>, <index>) in <collection>: {
-    <properties>
-  }]
-  ```
-
-- Verwenden des Schleifenindexes
-
-  ```bicep
-  <property-name>: [for <index> in range(<start>, <stop>): {
-    <properties>
-  }]
-  ```
-
----
-
 ## <a name="copy-limits"></a>Einschränkungen für „copy“
 
 Der Wert von „count“ darf 800 nicht überschreiten.
@@ -86,8 +54,6 @@ Frühere Versionen von PowerShell, CLI und der REST-API unterstützen den Wert �
 ## <a name="property-iteration"></a>Iteration von Eigenschaften
 
 Im folgenden Beispiel wird veranschaulicht, wie die copy-Schleife auf die `dataDisks`-Eigenschaft auf einer VM angewandt wird:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -251,30 +217,6 @@ Das `copy`-Element ist ein Array, sodass Sie mehrere Eigenschaften für die Ress
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-@minValue(0)
-@maxValue(16)
-@description('The number of dataDisks to be returned in the output array.')
-param numberOfDataDisks int = 16
-
-resource vmName 'Microsoft.Compute/virtualMachines@2020-06-01' = {
-  ...
-  properties: {
-    storageProfile: {
-      ...
-      dataDisks: [for i in range(0, numberOfDataDisks): {
-        lun: i
-        createOption: 'Empty'
-        diskSizeGB: 1023
-      }]
-    }
-    ...
-  }
-}
-```
-
 Die bereitgestellte Vorlage sieht wie folgt aus:
 
 ```json
@@ -304,11 +246,7 @@ Die bereitgestellte Vorlage sieht wie folgt aus:
       ...
 ```
 
----
-
 Sie können die Ressourcen- und die Eigenschaften-Iteration zusammen verwenden. Verweisen Sie anhand des Namens auf die Eigenschaften-Iteration.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -342,30 +280,6 @@ Sie können die Ressourcen- und die Eigenschaften-Iteration zusammen verwenden. 
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for i in range(0, 2): {
-  name: concat(vnetname, i)
-  location: resourceGroup().location
-  properties: {
-    addressSpace: {
-      addressPrefixes: [
-        addressPrefix
-      ]
-    }
-    subnets: [for j in range(0, 2): {
-      name: 'subnet-${j}'
-      properties: {
-        addressPrefix: subnetAddressPrefix[j]
-      }
-    }]
-  }
-}]
-```
-
----
-
 ## <a name="example-templates"></a>Beispielvorlagen
 
 Das folgende Beispiel zeigt ein gängiges Szenario für die Erstellung mehrerer Werte für eine Eigenschaft:
@@ -381,5 +295,5 @@ Das folgende Beispiel zeigt ein gängiges Szenario für die Erstellung mehrerer 
   - [Ressourceniteration in ARM-Vorlagen](copy-resources.md)
   - [Variableniteration in ARM-Vorlagen](copy-variables.md)
   - [Ausgabeiteration in ARM-Vorlagen](copy-outputs.md)
-- Weitere Informationen zu den Abschnitten in einer Vorlage finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+- Weitere Informationen zu den Abschnitten in einer Vorlage finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).
 - Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).

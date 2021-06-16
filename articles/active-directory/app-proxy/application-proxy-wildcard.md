@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a950e2c282eb3f06d32f87b0d81724aca31710e5
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: da2ea074a717189c038705f95f77e538d1bd9680
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186211"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962157"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy
 
@@ -53,7 +53,7 @@ Stellen Sie zunächst sicher, dass Sie diese Anforderungen erfüllen.
 
 ### <a name="custom-domains"></a>Benutzerdefinierte Domänen
 
-Während [benutzerdefinierte Domänen](../manage-apps/application-proxy-configure-custom-domain.md) für alle anderen Anwendungen optional sind, stellen Sie eine Voraussetzung für Platzhalteranwendungen dar. Zum Erstellen benutzerdefinierter Domänen müssen Sie die folgenden Schritte ausführen:
+Während [benutzerdefinierte Domänen](./application-proxy-configure-custom-domain.md) für alle anderen Anwendungen optional sind, stellen Sie eine Voraussetzung für Platzhalteranwendungen dar. Zum Erstellen benutzerdefinierter Domänen müssen Sie die folgenden Schritte ausführen:
 
 1. Erstellen Sie eine überprüfte Domäne in Azure.
 1. Laden Sie ein TLS/SSL-Zertifikat im PFX-Format in Ihren Anwendungsproxy hoch.
@@ -122,7 +122,7 @@ Die Platzhalteranwendung wird im [MyApps-Panel](https://myapps.microsoft.com) mi
 
 ### <a name="kerberos-constrained-delegation"></a>Eingeschränkte Kerberos-Delegierung
 
-Für Anwendungen mit [eingeschränkter Kerberos-Delegierung (KCD) wie der SSO-Methode](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) wird für den Dienstprinzipalnamen (SPN), der für die SSO-Methode aufgeführt ist, möglicherweise auch ein Platzhalter benötigt. Der SPN kann z.B. wie folgt aussehen: `HTTP/*.adventure-works.com`. Zudem müssen die einzelnen SPNs auf Ihren Back-End-Servern konfiguriert sein (z.B. `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
+Für Anwendungen mit [eingeschränkter Kerberos-Delegierung (KCD) wie der SSO-Methode](./application-proxy-configure-single-sign-on-with-kcd.md) wird für den Dienstprinzipalnamen (SPN), der für die SSO-Methode aufgeführt ist, möglicherweise auch ein Platzhalter benötigt. Der SPN kann z.B. wie folgt aussehen: `HTTP/*.adventure-works.com`. Zudem müssen die einzelnen SPNs auf Ihren Back-End-Servern konfiguriert sein (z.B. `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
 
 ## <a name="scenario-1-general-wildcard-application"></a>Szenario 1: Allgemeine Platzhalteranwendung
 
@@ -199,5 +199,5 @@ Wenn Sie für die Finanzabteilung mehrere Anwendungen veröffentlicht haben und 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu **benutzerdefinierten Domänen** finden Sie unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](../manage-apps/application-proxy-configure-custom-domain.md).
+- Weitere Informationen zu **benutzerdefinierten Domänen** finden Sie unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](./application-proxy-configure-custom-domain.md).
 - Weitere Informationen zum **Veröffentlichen von Anwendungen** finden Sie unter [Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md).

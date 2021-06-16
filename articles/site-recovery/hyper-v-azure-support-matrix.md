@@ -4,12 +4,12 @@ description: Dieser Artikel fasst die unterstützten Komponenten und Anforderung
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
-ms.openlocfilehash: 936950ef5dd2c1c7343e30536ab8836fcd198bd0
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: b36711e9249764df5d170fa955b8d72d1a2656f1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580824"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960851"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -188,7 +188,7 @@ Damit Ihre Bereitstellung mit den Einstellungen in diesem Artikel kompatibel ist
 
 **Name** | **Beschreibung** | **Details**
 --- | --- | --- 
-Azure Site Recovery-Anbieter | Koordiniert die Kommunikation zwischen lokalen Servern und Azure <br/><br/> Hyper-V mit Virtual Machine Manager: Installiert auf Virtual Machine Manager-Servern<br/><br/> Hyper-V ohne Virtual Machine Manager: Installiert auf Hyper-V-Hosts| Aktuelle Version: 5.1.2700.1 (über das Azure-Portal verfügbar)<br/><br/> [Neueste Features und Fixes](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
+Azure Site Recovery-Anbieter | Koordiniert die Kommunikation zwischen lokalen Servern und Azure <br/><br/> Hyper-V mit Virtual Machine Manager: Installiert auf Virtual Machine Manager-Servern<br/><br/> Hyper-V ohne Virtual Machine Manager: Installiert auf Hyper-V-Hosts| [Neueste Features und Fixes](./site-recovery-whats-new.md)
 Microsoft Azure Recovery Services-Agent | Koordiniert die Replikation zwischen Hyper-V-VMs und Azure<br/><br/> Installation auf lokalen Hyper-V-Servern (mit oder ohne Virtual Machine Manager) | Aktueller Agent über das Portal verfügbar
 
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rohithah, rarayudu, azla
 ms.topic: reference
 ms.date: 05/25/2021
-ms.openlocfilehash: 49f9a04351d243f4011b35370b99e30327446f5d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 36f7f036552a747cf4f59e8ba7412d89bfb22228
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378179"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439402"
 ---
 # <a name="limits-and-configuration-reference-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsreferenz für Azure Logic Apps
 
@@ -281,7 +281,7 @@ In den folgenden Tabellen sind die Werte für einen einzelnen eingehenden oder a
 
 ### <a name="timeout-duration"></a>Timeoutdauer
 
-Standardmäßig folgen die HTTP-Aktion und die APIConnection-Aktionen dem standardmäßigen [asynchronen Vorgangsmuster](/architecture/patterns/async-request-reply), während die Response-Aktion (Antwort) dem *synchronen Vorgangsmuster* folgt. Einige verwaltete Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webhookanforderungen, sodass das Timeout für diese Vorgänge länger sein kann, als die folgenden Grenzwerte angeben. Weitere Informationen finden Sie auf [der technischen Referenzseite jedes Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors) sowie in der Dokumentation zu [Workflowtriggern und -aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
+Standardmäßig folgen die HTTP-Aktion und die APIConnection-Aktionen dem standardmäßigen [asynchronen Vorgangsmuster](/azure/architecture/patterns/async-request-reply), während die Response-Aktion (Antwort) dem *synchronen Vorgangsmuster* folgt. Einige verwaltete Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webhookanforderungen, sodass das Timeout für diese Vorgänge länger sein kann, als die folgenden Grenzwerte angeben. Weitere Informationen finden Sie auf [der technischen Referenzseite jedes Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors) sowie in der Dokumentation zu [Workflowtriggern und -aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
 > [!NOTE]
 > Für den Ressourcentyp **Logik-App (Standard)** im Einzelmandantenmodell können zustandslose Workflows nur *synchron* ausgeführt werden.

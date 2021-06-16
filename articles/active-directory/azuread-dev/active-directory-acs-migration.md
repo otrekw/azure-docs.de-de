@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: bf50db4c463f5161adcc88d69eb2ae8970526103
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d513c19eed36d4a1cc5c620bff9dd2e8deb533e0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515616"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949548"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
 
@@ -129,7 +129,7 @@ Alle Microsoft-Clouddienste, die von Access Control ausgestellte Token akzeptier
 
 | Dienst | Anleitungen |
 | ------- | -------- |
-| Azure-Servicebus | [Migrieren zu Shared Access Signatures](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
+| Azure-Servicebus | [Migrieren zu Shared Access Signatures](../../service-bus-messaging/service-bus-sas.md) |
 | Azure Service Bus Relay | [Migrieren zu Shared Access Signatures](../../azure-relay/relay-migrate-acs-sas.md) |
 | Azure Managed Cache | [Migrieren zu Azure Cache for Redis](../../azure-cache-for-redis/cache-faq.md) |
 | Azure DataMarket | [DataMarket ist jetzt veraltet](https://azure.microsoft.com/services/cognitive-services/) |

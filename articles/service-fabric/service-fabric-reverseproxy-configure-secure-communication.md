@@ -3,12 +3,12 @@ title: 'Azure Service Fabric-Reverseproxy: sichere Kommunikation'
 description: Konfigurieren eines Reverseproxys für eine sichere End-to-End-Kommunikation in einer Azure Service Fabric-Anwendung.
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b87ec5d1c43d15c36a3188678efbdfdb72509cd4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86256134"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956743"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Herstellen einer Verbindung mit einem sicheren Dienst mit dem Reverseproxy
 
@@ -20,7 +20,7 @@ In diesem Artikel wird erläutert, wie eine sichere Verbindung zwischen dem Reve
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Herstellung einer sicheren Verbindung zwischen dem Reverseproxy und Diensten 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Reverseproxy authentifiziert sich bei Diensten:
-Der Reverseproxy identifiziert sich bei Diensten selbst über sein Zertifikat. Für Azure-Cluster wird das Zertifikat mit der Eigenschaft ***reverseProxyCertificate** _ im [Ressourcentypenabschnitt](../azure-resource-manager/templates/template-syntax.md) [_ *Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) der Resource Manager-Vorlage angegeben. Für eigenständige Cluster wird das Zertifikat entweder mit der Eigenschaft **_ReverseProxyCertificate_ *_ oder _* _ReverseProxyCertificateCommonNames_ *_ im Abschnitt _* Security** (Sicherheit) der Datei „ClusterConfig.json“ angegeben. Weitere Informationen finden Sie unter [Aktivieren des Reverseproxys auf eigenständigen Clustern](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+Der Reverseproxy identifiziert sich bei Diensten selbst über sein Zertifikat. Für Azure-Cluster wird das Zertifikat mit der Eigenschaft ***reverseProxyCertificate** _ im [Ressourcentypenabschnitt](../azure-resource-manager/templates/syntax.md) [_ *Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) der Resource Manager-Vorlage angegeben. Für eigenständige Cluster wird das Zertifikat entweder mit der Eigenschaft **_ReverseProxyCertificate_ *_ oder _* _ReverseProxyCertificateCommonNames_ *_ im Abschnitt _* Security** (Sicherheit) der Datei „ClusterConfig.json“ angegeben. Weitere Informationen finden Sie unter [Aktivieren des Reverseproxys auf eigenständigen Clustern](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
 Die Dienste können die Logik implementieren, um das vom Reverseproxy bereitgestellte Zertifikat zu überprüfen. Die Dienste können die Details des akzeptierten Clientzertifikats als Konfigurationseinstellungen im Konfigurationspaket angeben. Dieses kann zur Laufzeit gelesen und zum Überprüfen des vom Reverseproxy bereitgestellten Zertifikats verwendet werden. Informationen zum Hinzufügen der Konfigurationseinstellungen finden Sie unter [Verwalten von Anwendungsparametern](service-fabric-manage-multiple-environment-app-configuration.md). 
 

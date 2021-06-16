@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 066fd6f91b19da211a73ac12fb6dca94085399ac
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 04aa6f6a7f99eed32c12cf5459c7a7e49089ce6c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256632"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962310"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Tutorial: Konfigurieren von Ping Identity mit Azure Active Directory B2C für sicheren Hybridzugriff
 
@@ -160,7 +160,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer Websitzung aus:
 
 7. Geben Sie in das Feld **Client Secret** (Clientgeheimnis) den **Schlüssel** ein, den Sie in Azure AD für die Anwendung generiert haben.
 
-8. Optional: Sie können mithilfe der Microsoft Graph-API benutzerdefinierte Ansprüche erstellen und verwenden. Wenn Sie dies möchten, wählen Sie **Advanced** (Erweitert) aus, und deaktivieren Sie die Optionen **Request Profile** (Profil anfordern) und **Refresh User Attributes** (Benutzerattribute aktualisieren). Weitere Informationen zu benutzerdefinierten Ansprüchen finden Sie unter [Verwenden eines benutzerdefinierten Anspruchs](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers.md).
+8. Optional: Sie können mithilfe der Microsoft Graph-API benutzerdefinierte Ansprüche erstellen und verwenden. Wenn Sie dies möchten, wählen Sie **Advanced** (Erweitert) aus, und deaktivieren Sie die Optionen **Request Profile** (Profil anfordern) und **Refresh User Attributes** (Benutzerattribute aktualisieren). Weitere Informationen zu benutzerdefinierten Ansprüchen finden Sie unter [Verwenden eines benutzerdefinierten Anspruchs](../active-directory/app-proxy/application-proxy-configure-single-sign-on-with-headers.md).
 
 9. Wählen Sie **Speichern** aus.
 

@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: de7d23689ae984ea0abece5edb03cf8a0c3a9be1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3477c8f1dbffb9f2c42c72c1b0bfc03c662ed24c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104670340"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412293"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Abrufen von Verbindungsendpunkten und Erstellen von Verbindungszeichenfolgen für eine Arc-fähige PostgreSQL Hyperscale-Servergruppe
 
@@ -85,13 +85,8 @@ postgres=#
 > _Basic realm="Login_ credentials required", Bearer error="invalid_token", error_description="The token is expired"'})_ (Fehlermeldung 401, dass das Token abgelaufen ist) Wenn dies passiert, müssen Sie wie weiter oben erläutert erneut eine Verbindung mit azdata herstellen.
 
 ## <a name="from-cli-with-kubectl"></a>Über die CLI mit kubectl
-- Wenn die Servergruppe Version 12 (Standard) von Postgres verwendet, führen Sie den folgenden Befehl aus:
 ```console
-kubectl get postgresql-12/<server group name> -n <namespace name>
-```
-- Wenn die Servergruppe Version 11 von Postgres verwendet, führen Sie den folgenden Befehl aus:
-```console
-kubectl get postgresql-11/<server group name> -n <namespace name>
+kubectl get postgresqls/<server group name> -n <namespace name>
 ```
 
 Mit diesen Befehlen wird eine Ausgabe ähnlich der folgenden erzeugt. Diese Informationen können Sie verwenden, um Ihre Verbindungszeichenfolgen zu erstellen:
@@ -153,7 +148,7 @@ host=192.168.1.121; dbname=postgres user=postgres password={your_password_here} 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über das [Aufskalieren](scale-out-postgresql-hyperscale-server-group.md) der Servergruppe (Hinzufügen von Workerknoten).
+- Erfahren Sie mehr über das [Aufskalieren](scale-out-in-postgresql-hyperscale-server-group.md) der Servergruppe (Hinzufügen von Workerknoten).
 - Erfahren Sie mehr über das [zentrale Hoch- oder Herunterskalieren](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) der Servergruppe (Vergrößern/Verkleinern von Arbeitsspeicher/virtuellen Kernen).
 
 

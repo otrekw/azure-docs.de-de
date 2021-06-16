@@ -4,12 +4,12 @@ description: In diesem Thema wird erläutert, wie Sie ein Konto für Azure Video
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 05/01/2021
-ms.openlocfilehash: 9bcf60efd07fd2e0b68181989d8f26d3f39817b0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c1c9b7a01fa23b3c5b450fdfa5d5024169b4453e
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385913"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007498"
 ---
 # <a name="create-a-video-analyzer-account"></a>Erstellen eines Video Analyzer-Kontos
 
@@ -31,10 +31,10 @@ Um Azure Video Analyzer verwenden zu können, müssen Sie ein Video Analyzer-Kon
 1. Klicken Sie auf **Hinzufügen**.
 1. Geben Sie im Abschnitt zum **Erstellen eines Video Analyzer-Kontos** die erforderlichen Werte ein.
 
-    | Name | Beschreibung |
+    | Name | BESCHREIBUNG |
     | ---|---|
     |**Abonnement**|Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus der Liste der Azure-Abonnements aus, auf die Sie Zugriff haben.|
-    |**Ressourcengruppe**|Wählen Sie eine vorhandene Ressource aus, oder erstellen Sie eine neue. Eine Ressourcengruppe ist eine Sammlung von Ressourcen mit gleichem Lebenszyklus, gleichen Berechtigungen und gleichen Richtlinien. [Hier](/azure/azure-resource-manager/management/overview.md#resource-groups)erhalten Sie weitere Informationen.|
+    |**Ressourcengruppe**|Wählen Sie eine vorhandene Ressource aus, oder erstellen Sie eine neue. Eine Ressourcengruppe ist eine Sammlung von Ressourcen mit gleichem Lebenszyklus, gleichen Berechtigungen und gleichen Richtlinien. [Hier](../../azure-resource-manager/management/overview.md#resource-groups)erhalten Sie weitere Informationen.|
     |**Name des Video Analyzer-Kontos**|Geben Sie den Namen des neuen Video Analyzer-Kontos ein. Der Name eines Video Analyzer-Kontos darf nur Kleinbuchstaben oder Ziffern ohne Leerzeichen enthalten und muss aus 3 bis 24 Zeichen bestehen.|
     |**Location**|Wählen Sie die geografische Region aus, in der die Video- und Metadatendatensätze für das Video Analyzer-Konto gespeichert werden sollen. Im Dropdownlistenfeld werden nur die verfügbaren Video Analyzer-Regionen angezeigt. |
     |**Speicherkonto**|Wählen Sie ein Speicherkonto aus, das als Blobspeicher für die Videoinhalte Ihres Video Analyzer-Konto dienen soll. Sie können ein vorhandenes Speicherkonto in derselben geografischen Region wie Ihr Video Analyzer-Konto auswählen oder ein neues Speicherkonto erstellen. Ein neues Speicherkonto wird in derselben Region erstellt. Für Namen von Speicherkonten gelten die gleichen Regeln wie für Namen von Video Analyzer-Konten.<br/>|
@@ -50,13 +50,13 @@ Um Azure Video Analyzer verwenden zu können, müssen Sie ein Video Analyzer-Kon
 
 Die folgenden Ressourcen sind in der Vorlage definiert:
 
-- [**Microsoft.Media/videoAnalyzers**](https://docs.microsoft.com/azure/templates/Microsoft.Media/videoAnalyzers): die Kontoressource für Video Analyzer.
-- [**Microsoft.Storage/storageAccounts**](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts): das Speicherkonto, das von Video Analyzer zum Speichern von Videos und Metadaten verwendet wird.
-- [**Microsoft.ManagedIdentity/userAssignedIdentities**](https://docs.microsoft.com/azure/templates/Microsoft.ManagedIdentity/userAssignedIdentities): die benutzerseitig zugewiesene verwaltete Identität, die Video Analyzer für den Zugriff auf den Speicher verwendet.
-- [**Microsoft.Storage/storageAccounts/providers/roleAssignments**](https://docs.microsoft.com/azure/templates/microsoft.authorization/roleassignments): die Rollenzuweisungen, die Video Analyzer den Zugriff auf das Speicherkonto ermöglichen.
+- [**Microsoft.Media/videoAnalyzers**](/azure/templates/Microsoft.Media/videoAnalyzers): die Kontoressource für Video Analyzer.
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts): das Speicherkonto, das von Video Analyzer zum Speichern von Videos und Metadaten verwendet wird.
+- [**Microsoft.ManagedIdentity/userAssignedIdentities**](/azure/templates/Microsoft.ManagedIdentity/userAssignedIdentities): die benutzerseitig zugewiesene verwaltete Identität, die Video Analyzer für den Zugriff auf den Speicher verwendet.
+- [**Microsoft.Storage/storageAccounts/providers/roleAssignments**](/azure/templates/microsoft.authorization/roleassignments): die Rollenzuweisungen, die Video Analyzer den Zugriff auf das Speicherkonto ermöglichen.
 
 <!-- TODO replace with a reference like this:
-:::code language="json" source="~/quickstart-templates/101-vm-simple-linux/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-linux/azuredeploy.json":::
 -->
 
 ```json
@@ -240,10 +240,10 @@ Löschen Sie die Ressourcengruppe, wenn Sie die Ressourcen nicht mehr benötigen
 Erfahren Sie, wie Sie [Video Analyzer auf einem IoT Edge-Gerät bereitstellen][docs-deploy-on-edge].
 
 <!-- links -->
-[docs-uami]: /azure/active-directory/managed-identities-azure-resources/overview
-[docs-storage-access]: /azure/role-based-access-control/built-in-roles#storage-blob-data-contributor
-[docs-role-reader]: /azure/role-based-access-control/built-in-roles#reader
-[docs-arm-template]: /azure/azure-resource-manager/templates/overview
+[docs-uami]: ../../active-directory/managed-identities-azure-resources/overview.md
+[docs-storage-access]: ../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor
+[docs-role-reader]: ../../role-based-access-control/built-in-roles.md#reader
+[docs-arm-template]: ../../azure-resource-manager/templates/overview.md
 [docs-deploy-on-edge]: deploy-iot-edge-device.md
 [click-to-deploy]: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgist.githubusercontent.com%2Fbennage%2F58523b2e6a4d3bf213f16893d894dcaf%2Fraw%2Fazuredeploy.json
 <!-- TODO update the link above! -->

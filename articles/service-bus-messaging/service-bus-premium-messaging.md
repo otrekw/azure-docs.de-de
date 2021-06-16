@@ -3,12 +3,12 @@ title: Azure Service Bus-Tarife Premium und Standard
 description: Dieser Artikel beschreibt die Tarife Standard und Premium von Azure Service Bus. Er vergleicht diese Tarife und erläutert technische Unterschiede.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: e0149f0ad1ee608179cc7dbdfaa61b498dd60ca0
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: f0cc6b6d7b9026d9be23e36a587b7ce667ba1652
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190745"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111811260"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
 
@@ -91,7 +91,8 @@ Die ersten Schritte mit Premium-Messaging sind einfach, und der Prozess ähnelt 
 
 ![create-premium-namespace][create-premium-namespace]
 
-Sie können auch [Premium-Namespaces mit Azure Resource Manager-Vorlagen erstellen](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/).
+Sie können auch [Premium-Namespaces mit Azure Resource Manager-Vorlagen erstellen](https://azure.microsoft.com/resources/templates/servicebus-pn-ar/).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

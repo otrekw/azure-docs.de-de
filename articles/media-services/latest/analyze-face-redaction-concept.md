@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2f9eca1600ffe9270ac2f02db38c815e92498afe
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 977dcbed29f74e97de3e61842b1b559a05ad8fdb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110086210"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955459"
 ---
 # <a name="find-and-redact-blur-faces-with-the-face-detector-preset"></a>Suchen und bearbeiten (verwischen) Sie Gesichter mit der Gesichtserkennungs-Voreinstellung
 
@@ -31,7 +31,7 @@ Dieser Artikel enthält Details zum zur **Gesichtserkennungsvoreinstellung** und
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, Datenschutz und Sicherheit
 
-Eine wichtige Erinnerung: Sie müssen bei der Verwendung von Analysen in Azure Media Services alle geltenden Gesetze einhalten. Sie dürfen Azure Media Services oder einen anderen Azure-Dienst nicht in einer Weise nutzen, welche die Rechte anderer verletzt. Bevor Sie Videos, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in den Azure Media Services-Dienst hochladen, müssen Sie über alle erforderlichen Rechte, einschließlich aller entsprechenden Zustimmungen der Personen im Video, verfügen. IUm mehr über Compliance, Datenschutz und Sicherheit in Azure Media Services zu erfahren, lesen Sie die rechtlichen Begriffe zum [Azure Erkennungsdienst](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Bestimmungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Bestimmungen für Onlinedienste und [hier](../video-indexer/faq.md). Durch die Nutzung von Azure Media Services erklären Sie sich mit den Bedingungen für Cognitive Services, den OST, DPA und der Datenschutzerklärung einverstanden
+Eine wichtige Erinnerung: Sie müssen bei der Verwendung von Analysen in Azure Media Services alle geltenden Gesetze einhalten. Sie dürfen Azure Media Services oder einen anderen Azure-Dienst nicht in einer Weise nutzen, welche die Rechte anderer verletzt. Bevor Sie Videos, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in den Azure Media Services-Dienst hochladen, müssen Sie über alle erforderlichen Rechte, einschließlich aller entsprechenden Zustimmungen der Personen im Video, verfügen. IUm mehr über Compliance, Datenschutz und Sicherheit in Azure Media Services zu erfahren, lesen Sie die rechtlichen Begriffe zum [Azure Erkennungsdienst](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Bestimmungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Bestimmungen für Onlinedienste und [hier](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md). Durch die Nutzung von Azure Media Services erklären Sie sich mit den Bedingungen für Cognitive Services, den OST, DPA und der Datenschutzerklärung einverstanden
 
 ## <a name="face-redaction-modes"></a>Modi der Gesichtsbearbeitung
 

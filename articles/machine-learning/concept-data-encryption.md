@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 04/21/2021
-ms.openlocfilehash: 9274bb2b28613c4b61ca139995ba54df0f402edd
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: ab71dc6f02c87997a680722e3553f2739c378dc4
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228224"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371286"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Datenverschlüsselung mit Azure Machine Learning
 
@@ -36,8 +36,6 @@ Das Flag `hbi_workspace` steuert die Menge der [von Microsoft zu Diagnosezwecken
 * Startet die Verschlüsselung des lokalen Scratch-Datenträgers in Ihrem Azure Machine Learning-Computecluster, sofern Sie in diesem Abonnement keine vorherigen Cluster erstellt haben. Andernfalls müssen Sie ein Supportticket erstellen, um die Verschlüsselung des Scratch-Datenträgers Ihrer Computecluster zu aktivieren. 
 * Bereinigt Ihren lokalen Scratch-Datenträger zwischen den Ausführungen.
 * Führt unter Verwendung Ihres Schlüsseltresors die sichere Übergabe der Anmeldeinformationen für Speicherkonto, Containerregistrierung und SSH-Konto von der Ausführungsebene zu Ihren Computeclustern durch.
-* Aktiviert IP-Filterung, um sicherzustellen, dass die zugrunde liegenden Batch-Pools nicht von anderen externen Diensten als AzureMachineLearningService aufgerufen werden können.
-* Compute-Instanzen im HBI-Arbeitsbereich werden unterstützt.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 

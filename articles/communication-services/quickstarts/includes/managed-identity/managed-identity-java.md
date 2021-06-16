@@ -1,15 +1,18 @@
 ---
-ms.openlocfilehash: b5516af5f33292e79cfb9dc7502dfffcd2e7767f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a72147e84383a461c86339483d7e621c97fb5680
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313504"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430914"
 ---
 ## <a name="additional-prerequisites-for-java"></a>Zusätzliche Voraussetzungen für Java
 Für Java benötigen Sie außerdem:
 - [Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-install), Version 8 oder höher.
 - [Apache Maven](https://maven.apache.org/download.cgi).
+
+> [!NOTE]
+> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/use-managed-Identity).
 
 ## <a name="setting-up"></a>Einrichten
 

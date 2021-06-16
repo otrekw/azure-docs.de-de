@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: bfdfad8af2d730caf0ac9e22ee815a6d59a6b6a3
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: f0412b6e67ff62247feb3f8643553c5a6101ad73
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074725"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892668"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Schnellstart: Erstellen einer App Service-App mit einer ARM-Vorlage
 
@@ -41,7 +41,7 @@ Führen Sie erste Schritte mit [Azure App Service](overview.md) aus, indem Sie e
 ## <a name="2-review-the-template"></a>2. Überprüfen der Vorlage
 
 ::: zone pivot="platform-windows"
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows). Sie stellt einen App Service-Plan und eine App Service-App unter Windows bereit.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/app-service-docs-windows). Sie stellt einen App Service-Plan und eine App Service-App unter Windows bereit.
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-windows/azuredeploy.json":::
 
@@ -69,7 +69,7 @@ In der folgenden Tabelle sind die Standardparameter und ihre Beschreibungen aufg
 </details>
 ::: zone-end
 ::: zone pivot="platform-linux"
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux). Sie stellt einen App Service-Plan und eine App Service-App unter Windows bereit.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/app-service-docs-linux). Sie stellt einen App Service-Plan und eine App Service-App unter Windows bereit.
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-linux/azuredeploy.json":::
 
