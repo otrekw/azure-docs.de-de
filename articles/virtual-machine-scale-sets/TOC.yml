@@ -447,8 +447,8 @@
     - name: Häufig gestellte Fragen
       items:
         - name: Linux
-          href: ../virtual-machines/linux/faq.md
+          href: ../virtual-machines/linux/faq.yml
         - name: Windows
-          href: ../virtual-machines/windows/faq.md
+          href: ../virtual-machines/windows/faq.yml
 - name: Support und Problembehandlung
   href: vmss-support-help.md

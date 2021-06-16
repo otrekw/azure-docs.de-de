@@ -1,10 +1,10 @@
 ### YamlMime:Landing
 title: Dokumentation zu Translator
-summary: Translator ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Der Dienst verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung von Translator und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit Translator oder mit Microsoft Speech Services übersetzt werden.
+summary: Translator ist ein cloudbasierter Dienst für die maschinelle Übersetzung, mit dem Sie über einen einfachen REST-API-Aufruf Text übersetzen können. Der Dienst verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung von Translator und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit Translator oder mit Microsoft Speech Services übersetzt werden.
 metadata:
   title: 'Dokumentation zu Translator: Schnellstarts, Tutorials, API-Referenz'
   titleSuffix: Azure Cognitive Services
-  description: Translator ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Der Dienst verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung von Translator und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit Translator oder mit Microsoft Speech Services übersetzt werden.
+  description: Translator ist ein cloudbasierter Dienst für die maschinelle Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text übersetzen können. Der Dienst verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Benutzerdefinierter Translator ist eine Erweiterung von Translator und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit Translator oder mit Microsoft Speech Services übersetzt werden.
   services: cognitive-services
   author: erhopf
   manager: nitinme
@@ -14,19 +14,21 @@ metadata:
   ms.date: 10/14/2019
   ms.author: erhopf
   ms.custom: contperf-fy21q2
-  ms.openlocfilehash: c8e74f83085054d7fc4e0892d371d644a06b060a
-  ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+  ms.openlocfilehash: 6517e29ebc025d94a8b85b754b60584aebd4c057
+  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104656276"
+  ms.lasthandoff: 05/26/2021
+  ms.locfileid: "110476900"
 landingContent:
 - title: Übersetzer
   linkLists:
   - linkListType: overview
     links:
-    - text: Übersetzer
+    - text: Worum handelt es sich bei Translator?
       url: translator-info-overview.md
+    - text: Sprachunterstützung
+      url: language-support.md
     - text: Dokumentübersetzung
       url: document-translation/overview.md
     - text: Benutzerdefinierter Translator
@@ -39,27 +41,43 @@ landingContent:
       url: ./translator-how-to-signup.md
     - text: Häufig gestellte Fragen
       url: https://www.microsoft.com/translator/faq.aspx
-- title: Erste Schritte
+- title: Textübersetzung
   linkLists:
   - linkListType: quickstart
     links:
     - text: Schnellstart
       url: quickstart-translator.md
-  - linkListType: tutorial
+  - linkListType: how-to-guide
     links:
-    - text: Erstellen einer WPF-Übersetzungs-App, C#
-      url: tutorial-wpf-translation-csharp.md
-    - text: Erstellen einer Flask-Übersetzungs-App, REST
-      url: tutorial-build-flask-app-translation-synthesis.md
+    - text: Erstellen einer Ressource
+      url: translator-how-to-signup.md
+    - text: Verhindern der Übersetzung von Inhalten
+      url: prevent-translation.md
+    - text: Verwenden des dynamischen Wörterbuchs
+      url: dynamic-dictionary.md
   - linkListType: reference
     links:
     - text: Referenz zu Translator (v3)
       url: reference/v3-0-reference.md
     - text: Anforderungsgrenzwerte
       url: request-limits.md
-    - text: Sprachunterstützung
-      url: language-support.md
-- title: Benutzerdefinierte Übersetzung
+- title: Dokumentübersetzung
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Dokumentübersetzung?
+      url: document-translation/overview.md
+  - linkListType: quickstart
+    links:
+    - text: Schnellstart
+      url: document-translation/get-started-with-document-translation.md
+  - linkListType: reference
+    links:
+    - text: Referenz zur Dokumentübersetzung
+      url: document-translation/reference/get-supported-document-formats.md
+    - text: Starten der Übersetzung
+      url: document-translation/reference/start-translation.md
+- title: Benutzerdefinierter Translator
   linkLists:
   - linkListType: quickstart
     links:
@@ -97,6 +115,8 @@ landingContent:
     links:
     - text: Beispiele bei GitHub
       url: https://aka.ms/TranslatorGitHub
+    - text: Konformität und Zertifizierung
+      url: https://www.microsoft.com/translator/business/notrace/
     - text: Stack Overflow
       url: https://stackoverflow.com/questions/tagged/microsoft-translator
 - title: Hilfe und Feedback

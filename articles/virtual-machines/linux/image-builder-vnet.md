@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure Image Builder für Linux-VMs mit Zugriff auf ein vorhandenes Azure-VNET (Vorschau)
+title: Verwenden von Azure Image Builder für Linux-VMs mit Zugriff auf ein vorhandenes Azure-VNET
 description: Erstellen Sie Linux-VM-Images mit Azure Image Builder, um den Zugriff auf ein vorhandenes Azure-VNET zu ermöglichen.
 author: danielsollondon
 ms.author: danis
@@ -9,30 +9,18 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: 500ddec9b84f9d73db45ddb4b7f5a8486a48d3e5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: acc351eb7557ecade4ee746a4564c90c0078755b
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565307"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027279"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Verwenden von Azure Image Builder für Linux-VMs mit Zugriff auf ein vorhandenes Azure-VNET
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Image Builder ein grundlegendes, angepasstes Linux-Image erstellen, das Zugriff auf vorhandene Ressourcen in einem VNET hat. Die von Ihnen erstellte Build-VM wird für ein neues oder vorhandenes VNET bereitgestellt, das Sie in Ihrem Abonnement angeben. Wenn Sie ein vorhandenes Azure-VNET verwenden, ist für den Azure VM Image Builder-Dienst keine Verbindung mit einem öffentlichen Netzwerk erforderlich.
 
-> [!IMPORTANT]
-> Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
-
-## <a name="register-the-features"></a>Registrieren des Features
-
-Sie müssen sich zunächst für den Azure VM Image Builder-Dienst registrieren. Die Registrierung gewährt Ihnen die Dienstberechtigungen zum Erstellen, Verwalten und Löschen einer Ressourcengruppe für das Staging. Der Dienst verfügt auch über die Berechtigung, der Gruppe Ressourcen hinzuzufügen, die für das Erstellen des Images erforderlich sind.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
 
 ## <a name="set-variables-and-permissions"></a>Festlegen von Variablen und Berechtigungen 
 

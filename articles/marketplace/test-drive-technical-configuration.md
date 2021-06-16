@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4d5ccaead616fa53cc10733ad82f0f20b7e1cab
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462898"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007389"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische Konfiguration der Testversion
 
@@ -97,10 +97,8 @@ Wenn Sie Ihre Testversion derzeit im Partner Center erstellen, wählen Sie **Ent
 
 Eine Schrittanleitung zum Auflisten und Konfigurieren der gehosteten Testversion finden Sie auf der Seite [Ausführliche Konfiguration für gehostete Testversionen](./test-drive-hosted-detailed-config.md).
 
-## <a name="additional-resources"></a>Weitere Ressourcen
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Bewährte Methoden für Testversionen](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Übersicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF-Datei; stellen Sie sicher, dass Ihr Popupblocker deaktiviert ist.)
-- [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](partner-center-portal/update-existing-offer.md)
+- [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](update-existing-offer.md)

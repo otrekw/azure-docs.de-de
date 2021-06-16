@@ -3,12 +3,13 @@ title: Horizontales Herunter- oder Hochskalieren eines Service Fabric-Clusters
 description: Skalieren Sie ein Service Fabric-Cluster bedarfsgesteuert horizontal herunter oder hoch, indem Sie die Regeln für das automatische Skalierung für jeden Knotentyp bzw. jede VM-Skalierungsgruppe festlegen. Hinzufügen oder Entfernen von Knoten für einen Service Fabric-Cluster
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: e7f11aa5fee2b339ea8466dac93e8629419847f0
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bb7e668a5b50e73d5aee8aa3bcbb2ea6b1d4bac7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018545"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677420"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontales Herunter- oder Hochskalieren eines Clusters
 

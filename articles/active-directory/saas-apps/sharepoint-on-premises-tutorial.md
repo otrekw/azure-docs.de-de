@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: be61dad30d7c8670442612faf928d5aa82e64d56
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 142b16d58fae508614324746345bc8d33f41cab4
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065744"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890049"
 ---
 # <a name="tutorial-implement-federated-authentication-between-azure-active-directory-and-sharepoint-on-premises"></a>Tutorial: Implementieren der Verbundauthentifizierung zwischen Azure Active Directory und SharePoint lokal
 
@@ -196,7 +196,7 @@ Die grundlegende Konfiguration der Vertrauensstellung zwischen SharePoint und Az
 
 ## <a name="sign-in-as-a-member-user"></a>Melden Sie sich als Mitgliedsbenutzer an.
 
-Azure Active Directory verfügt über [zwei Benutzertypen](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-user-properties): Gastbenutzer und Mitgliedsbenutzer. Beginnen wir mit einem Mitgliedsbenutzer, bei dem es sich lediglich um einen Benutzer handelt, der sich in Ihrer Organisation befindet.
+Azure Active Directory verfügt über [zwei Benutzertypen](../external-identities/user-properties.md): Gastbenutzer und Mitgliedsbenutzer. Beginnen wir mit einem Mitgliedsbenutzer, bei dem es sich lediglich um einen Benutzer handelt, der sich in Ihrer Organisation befindet.
 
 ### <a name="create-a-member-user-in-azure-active-directory"></a>Erstellen Sie einen Mitgliedsbenutzer in Azure Active Directory.
 

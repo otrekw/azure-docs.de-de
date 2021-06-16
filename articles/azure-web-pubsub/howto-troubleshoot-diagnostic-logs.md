@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 03/22/2021
-ms.openlocfilehash: 58017425eda0461a648b81472933aaeb911b24f1
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 119591c4a337cf622b95fa4ed70a7508d8acb99e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166912"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963090"
 ---
 # <a name="how-to-troubleshoot-with-diagnostic-logs"></a>Problembehandlung mit Diagnoseprotokollen
 
@@ -77,7 +77,7 @@ Sobald der Azure Web PubSub-Dienst allgemein verfügbar ist, unterstützt das Li
 
 ## <a name="capture-diagnostic-logs-with-azure-monitor"></a>Erfassen von Diagnoseprotokollen mit Azure Monitor
 
-Die Integration in [Azure Monitor](https://azure.microsoft.com/services/monitor/), [Azure Storage](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs#send-to-azure-storage) und [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs#send-to-log-analytics-workspace) zum Erfassen der Diagnoseprotokolle wird für die Public Preview nicht unterstützt.
+Die Integration in [Azure Monitor](https://azure.microsoft.com/services/monitor/), [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) und [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) zum Erfassen der Diagnoseprotokolle wird für die Public Preview nicht unterstützt.
 
 ## <a name="troubleshoot-with-the-diagnostic-logs"></a>Problembehandlung mit den Diagnoseprotokollen
 
@@ -110,4 +110,3 @@ Wenn Sie bei Clientanforderungen die Rückgabe „401 – Nicht autorisiert“ 
 ### <a name="throttling"></a>Drosselung
 
 Wenn Sie feststellen, dass Sie keine Clientverbindungen mit dem Azure Web PubSub-Dienst herstellen können, überprüfen Sie Ihre Diagnoseprotokolle. Wenn im Diagnoseprotokoll `Connection count reaches limit` vorkommt, stellen Sie zu viele Verbindungen mit dem Azure Web PubSub-Dienst her, die das Limit für die Verbindungsanzahl erreichen. Erwägen Sie die Hochskalierung Ihrer Azure Web PubSub-Dienstinstanz. Wenn im Diagnoseprotokoll `Message count reaches limit` vorkommt, bedeutet dies, dass Sie den kostenlosen Tarif (Free) verwenden und im Begriff sind, das Kontingent für Nachrichten aufzubrauchen. Wenn Sie weitere Nachrichten senden möchten, sollten Sie für die Azure Web PubSub-Dienstinstanz einen Wechsel in den Standardtarif erwägen, um zusätzliche Nachrichten zu senden. Weitere Informationen finden Sie unter [Azure Web PubSub-Dienst – Preise](https://azure.microsoft.com/pricing/details/web-pubsub/).
-

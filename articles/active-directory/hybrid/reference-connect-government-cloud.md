@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fec955815a4d65a406179a311af7d3e74c0a188
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97504354"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965848"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Überlegungen zur Hybrididentität für die Azure Government-Cloud
 
@@ -36,7 +36,7 @@ Die folgenden Informationen beschreiben die Implementierung von Pass-Through-Aut
 Überprüfen Sie vor dem Bereitstellen des Pass-Through-Authentifizierungs-Agents, ob zwischen den Servern und Azure AD eine Firewall vorhanden ist. Wenn Ihre Firewall oder Ihr Proxy durch DNS (Domain Name System) blockierte oder sichere Programme zulässt, fügen Sie die folgenden Verbindungen hinzu.
 
 > [!NOTE]
-> Die folgende Anleitung gilt auch für die Installation des [Azure AD-Anwendungsproxyconnectors](../manage-apps/what-is-application-proxy.md) für Azure Government-Umgebungen.
+> Die folgende Anleitung gilt auch für die Installation des [Azure AD-Anwendungsproxyconnectors](../app-proxy/what-is-application-proxy.md) für Azure Government-Umgebungen.
 
 |URL |Wie diese verwendet wird|
 |-----|-----|

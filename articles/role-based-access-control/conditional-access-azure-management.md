@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 79c7171db1ac80126dcf1174f8b303b5b99da615
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: f26ba1d6a7c399024d77f9953c82893af6002c5c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751579"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961499"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff
 
@@ -46,7 +46,7 @@ Die von Ihnen erstellte Richtlinie gilt für alle Azure-Verwaltungsendpunkte, ei
 - Azure Data Factory-Portal
 - Azure Event Hubs
 - Azure Service Bus
-- [Azure SQL-Datenbank](https://docs.microsoft.com/azure/azure-sql/database/conditional-access-configure)
+- [Azure SQL-Datenbank](../azure-sql/database/conditional-access-configure.md)
 - Verwaltete SQL-Instanz
 - Azure Synapse
 

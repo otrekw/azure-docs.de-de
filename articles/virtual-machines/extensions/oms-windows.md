@@ -8,12 +8,13 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 06/26/2020
-ms.openlocfilehash: 7757bd765bcb02782b6199f71c4a6e460b7b8143
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: aae7366c2dc056285876d9e1b3ae3e6820d788fb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559017"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669579"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics-VM-Erweiterung für Windows
 

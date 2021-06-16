@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: ac3e07c67ca82c2960de1c4341a714b33751bfc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77159a099dcc28739457a10afef374502d117b5a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092398"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971145"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Anomalieerkennungsdienst für getaktete Abrechnung
 
-Mit dem [Messdienst in Marketplace](marketplace-metering-service-apis-faq.md) können Sie Angebote im Rahmen des kommerziellen Marketplace-Programms erstellen, die nicht gemäß Standardeinheiten abgerechnet werden. Bei der getakteten Abrechnung werden Nutzungsereignisse Ihrer Kunden an Microsoft gesendet, woraufhin wir die Abrechnung auf Grundlage dieser Nutzung vornehmen.
+Mit dem [Messdienst in Marketplace](../marketplace-metering-service-apis-faq.md) können Sie Angebote im Rahmen des kommerziellen Marketplace-Programms erstellen, die nicht gemäß Standardeinheiten abgerechnet werden. Bei der getakteten Abrechnung werden Nutzungsereignisse Ihrer Kunden an Microsoft gesendet, woraufhin wir die Abrechnung auf Grundlage dieser Nutzung vornehmen.
 
 Falsch gemeldete Nutzungsdaten können verschiedene Ursachen haben, wie z. B. Programmfehler, falsche Konfigurationen in Ihrer Nutzungserfassung oder Betrug. Falsch gemeldete Nutzungsdaten können zu falschen Kundenabrechnungen und Abrechnungsstreitigkeiten führen.
 
@@ -82,5 +82,5 @@ Weitere Supportoptionen für Herausgeber finden Sie unter [Support für das Prog
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr zur [Messdienst-API in Marketplace](marketplace-metering-service-apis.md).
+- Erfahren Sie mehr zur [Messdienst-API in Marketplace](../marketplace-metering-service-apis.md).
 - [Verwalten von Anomalien bei der getakteten Abrechnung in Partner Center](../anomaly-detection.md)

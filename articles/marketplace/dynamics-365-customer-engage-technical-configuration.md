@@ -8,12 +8,12 @@ ms.custom: references_regions
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/29/2021
-ms.openlocfilehash: 06b08ec2a28af36299f583bc9f8aa5604c347593
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 51ef78575a6987c3ac1537f1bb9d35e98e294ab6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319051"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971414"
 ---
 # <a name="set-up-dynamics-365-for-customer-engagement--power-apps-offer-technical-configuration"></a>Einrichten der technischen Konfiguration eines Angebots für Dynamics 365 for Customer Engagement und PowerApps
 
@@ -47,7 +47,7 @@ Wählen Sie **+ Region hinzufügen** aus, um die geografischen Regionen anzugebe
 
 Standardmäßig wird die zuvor eingegebene **Anwendungskonfigurations-URL** für jede Region verwendet. Wenn Sie möchten, können Sie eine separate Anwendungskonfigurations-URL für eine oder mehrere bestimmte Regionen eingeben.
 
-Wählen Sie **Entwurf speichern**, und fahren Sie dann mit der nächsten Registerkarte im linken Navigationsmenü fort, **Co-Sell mit Microsoft**. Informationen zum Einrichten von Co-Selling mit Microsoft (optional) finden Sie unter [Co-Selling mit Microsoft-Vertriebsteams und -Partnern: Übersicht](marketplace-co-sell.md). Wenn Sie kein Co-Sell einrichten oder fertig sind, fahren Sie mit **Weitere Schritte** unten fort.
+Wählen Sie **Entwurf speichern**, und fahren Sie dann mit der nächsten Registerkarte im linken Navigationsmenü fort, **Co-Sell mit Microsoft**. Informationen zum Einrichten von Co-Selling mit Microsoft (optional) finden Sie unter [Co-Selling mit Microsoft-Vertriebsteams und -Partnern: Übersicht](./co-sell-overview.md). Wenn Sie kein Co-Sell einrichten oder fertig sind, fahren Sie mit **Weitere Schritte** unten fort.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

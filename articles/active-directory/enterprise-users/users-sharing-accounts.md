@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb088d56879ebdf5d439c913ac47a701db5c4a60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6993357241e646e1e8b70c65a9aa45ba0e20f477
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96576246"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963599"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 
@@ -61,7 +61,7 @@ Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende F
 * Apps mit benutzerdefinierten Kennwörtern
 * [Dashboard für Anwendungsnutzung/Berichte](../authentication/howto-sspr-reporting.md)
 * Zugriffsportale für Endbenutzer
-* [Anwendungsproxy](../manage-apps/application-proxy.md)
+* [Anwendungsproxy](../app-proxy/application-proxy.md)
 * [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
 
 ## <a name="sharing-an-account"></a>Gemeinsames Nutzen eines Kontos

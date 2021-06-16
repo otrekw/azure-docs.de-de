@@ -3,12 +3,13 @@ title: Aktualisieren eines Clusters, um den allgemeinen Namen des Zertifikats zu
 description: Hier erfahren Sie, wie Sie ein Azure Service Fabric-Clusterzertifikat so konvertieren, dass keine fingerabdruckbasierten Deklarationen, sondern allgemeine Namen verwendet werden.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: daf8d55e156f30b1f9e9ec5c50d60714e6f17884
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 88a2dc070dd1443e7d91f9d7e3f641c8e74f5a82
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308012"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671081"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Konvertieren von Clusterzertifikaten von der Verwendung fingerabdruckbasierter Deklarationen zur Verwendung allgemeiner Namen
 

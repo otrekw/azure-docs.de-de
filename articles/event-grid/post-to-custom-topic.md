@@ -3,12 +3,13 @@ title: Posten eines Ereignisses in einem benutzerdefinierten Azure Event Grid-Th
 description: In diesem Artikel wird beschrieben, wie Sie ein Ereignis in einem benutzerdefinierten Thema posten. Es wird außerdem das Format von Postings und Ereignisdaten gezeigt.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: ed126487938e524264c94544903460854ffc4d41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b662cd2034fc1035a5da64c19d9aba87b180af8f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98681599"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701154"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Posten eines Ereignisses in einem benutzerdefinierten Azure Event Grid-Thema
 

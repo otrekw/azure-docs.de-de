@@ -6,12 +6,12 @@ ms.date: 03/26/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1a24a969a6f90533252340e0702c6be8861a9eb5
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: d394b74bb2021d77f9d68cd101e0ee98e091f0ac
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838499"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892992"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Tutorial: Bereitstellen von VM-Erweiterungen mit ARM-Vorlagen
 
@@ -52,7 +52,7 @@ Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, aktualis
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
-„Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
+„Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
 
 1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
 1. Fügen Sie im Feld **Dateiname** die folgende URL ein:

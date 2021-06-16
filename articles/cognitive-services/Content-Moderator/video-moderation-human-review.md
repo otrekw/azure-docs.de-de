@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 05ece4d8ea24fb9da106ec3daa2cc1a63706dab9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 909cdc6ca8e0a33fdc969f867c084f1f3d20423e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96853497"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031671"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>Videomoderation mit dem Überprüfungstool
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 Nutzen Sie die computergestützte [Videomoderation](video-moderation-api.md) von Content Moderator und [Überprüfungstools](Review-Tool-User-Guide/human-in-the-loop.md) zum Moderieren von Videos und Transkripts auf anstößige und zweideutige Inhalte, um optimale Ergebnisse für Ihr Unternehmen zu erhalten.
 

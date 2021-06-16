@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 407d41c403e0a2d0ad3708f879838e53b5c3d315
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 32eaad8bbc47783ced54d494d49a4cec41fe842d
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351996"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615001"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-ruby"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von Ruby
 
@@ -47,8 +47,8 @@ Diese Anwendung ist zwar in Ruby geschrieben, an sich ist die API aber ein RESTf
 2. Erstellen Sie Variablen für Ihren API-Endpunkt, die News-Suche-URL, Ihren Abonnementschlüssel und die Suchabfrage. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
     
     ```ruby
-    host = 'https://api.cognitive.microsoft.com'
-    path = '/bing/v7.0/entities'
+    host = 'https://api.bing.microsoft.com'
+    path = '/v7.0/search'
     
     mkt = 'en-US'
     query = 'italian restaurants near me'

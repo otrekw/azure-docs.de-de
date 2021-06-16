@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 7b5718b9a3cee3840b7b06c30fd7a07d08e526d5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 7f796a7dc5e9999cf4535eb41e8d6ef1e02d0c2b
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110074481"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112039964"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[\[Vorschau:\] Azure IoT Hub muss einen kundenseitig verwalteten Schlüssel zum Verschlüsseln ruhender Daten verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Durch die Verschlüsselung ruhender IoT Hub-Daten mithilfe eines kundenseitig verwalteten Schlüssels wird zusätzlich zur Standardverschlüsselung mit dienstseitig verwalteten Schlüsseln eine weitere Verschlüsselungsebene bereitgestellt. Der Kunde erhält die Kontrolle über die Schlüssel, kann benutzerdefinierte Richtlinien für die Rotation festlegen und durch eine Schlüsselzugriffskontrolle den Zugriff auf die Daten steuern. Kundenseitig verwaltete Schlüssel müssen während der Erstellung des IoT-Hubs konfiguriert werden. Weitere Informationen zum Konfigurieren kundenseitig verwalteter Schlüssel finden Sie unter [https://aka.ms/iotcmk](https://aka.ms/iotcmk). |Audit, Deny, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
 |[IoT Hub Device Provisioning-Instanzen für die Verwendung privater DNS-Zonen konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faaa64d2d-2fa3-45e5-b332-0b031b9b30e8) |Verwenden Sie private DNS-Zonen, um die DNS-Auflösung für einen privaten Endpunkt außer Kraft zu setzen. Eine private DNS-Zone wird mit Ihrem virtuellen Netzwerk verknüpft, um eine IoT Hub Device Provisioning Service-Instanz aufzulösen. Weitere Informationen finden Sie unter [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet). |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DeployPrivateDnsZoneForPrivateEndpoint_Deploy.json) |

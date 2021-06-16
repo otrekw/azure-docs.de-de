@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/13/2021
+ms.date: 06/07/2021
 ms.author: aahi
 keywords: lokal, Docker, Container, Kubernetes
-ms.openlocfilehash: e047a96dc154ecc57226b7ecf4f673e86547fbd3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9a0dbba69b6317ab5a3df0b87e5f288d5a95872c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465055"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752655"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-Container
 
@@ -53,7 +53,7 @@ Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containe
 | [Textanalyse][ta-containers-keyphrase] | **Schlüsselbegriffserkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extrahiert die Schlüsselbegriffe, um die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück. | Vorschau |
 | [Textanalyse][ta-containers-language] |  **Textsprachenerkennung** ([Image](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Erkennt die Sprache von Eingabetexten für bis zu 120 Sprachen und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. | Allgemein verfügbar |
 | [Textanalyse][ta-containers-sentiment] | **Standpunktanalyse v3** ([Image](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analysiert unformatierten Text auf Hinweise auf positive oder negative Stimmungen. Von dieser Version der Standpunktanalyse werden für jedes Dokument und jeden darin enthaltenen Satz Stimmungsbezeichnungen (beispielsweise *Positiv* oder *Negativ*) zurückgegeben. |  Allgemein verfügbar |
-| [Textanalyse][ta-containers-health] |  **Text Analytics for Health** | Extraktion und Bezeichnung medizinischer Informationen aus unstrukturiertem klinischem Text. | Beschränkte Vorschauversion. [Zugriff anfordern][request-access]. |
+| [Textanalyse][ta-containers-health] |  **Text Analytics for Health** | Extraktion und Bezeichnung medizinischer Informationen aus unstrukturiertem klinischem Text. | Vorschau |
 | [Translator][tr-containers] | **Translator** | Übersetzt Text in verschiedene Sprachen und Dialekte. | Beschränkte Vorschauversion. [Zugriff anfordern][request-access]. | 
 
 ### <a name="speech-containers"></a>Speech-Container

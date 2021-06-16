@@ -5,16 +5,16 @@ ms.topic: sample
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 08/06/2020
-ms.openlocfilehash: 783ab811c91ae52b51a8be516ad2ddd9f73d4410
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5c08ee5a1418165300987e288dc61edcb783bf98
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383337"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964304"
 ---
 # <a name="resource-manager-template-sample-for-creating-azure-function-apps-with-application-insights-monitoring"></a>Resource Manager-Vorlagenbeispiel zum Erstellen von Azure-Funktions-Apps mit Application Insights-Überwachung
 
-Dieser Artikel enthält exemplarische [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) zum Bereitstellen und Konfigurieren [klassischer Application Insights-Ressourcen](../app/create-new-resource.md) in Verbindung mit einer Azure-Funktions-App. Das Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
+Dieser Artikel enthält exemplarische [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md) zum Bereitstellen und Konfigurieren [klassischer Application Insights-Ressourcen](../app/create-new-resource.md) in Verbindung mit einer Azure-Funktions-App. Das Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

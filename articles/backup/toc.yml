@@ -212,7 +212,7 @@
               href: backup-azure-system-state.md
         - name: Restore
           items:
-            - name: Übersicht
+            - name: Überblick
               href: about-restore-microsoft-azure-recovery-services.md
             - name: Wiederherstellen von Dateien aus Azure für Windows Server
               href: backup-azure-restore-windows-server.md
@@ -424,6 +424,8 @@
               href: backup-azure-sql-automation.md
             - name: Azure PowerShell-Beispiele
               href: powershell-backup-samples.md
+        - name: Mithilfe der Azure-Befehlszeilenschnittstelle
+          href: create-manage-azure-services-using-azure-command-line-interface.md
         - name: Verwenden der Azure Backup-REST-API
           items:
             - name: Erstellen eines Recovery Services-Tresors
@@ -438,6 +440,8 @@
               href: backup-azure-arm-userestapi-restoreazurevms.md
             - name: Verwalten von Azure Backup-Aufträgen
               href: backup-azure-arm-userestapi-managejobs.md
+        - name: Abfragen von Sicherungsinformationen mithilfe von ARG
+          href: query-backups-using-azure-resource-graph.md
         - name: Resource Manager-Vorlagen
           href: backup-rm-template-samples.md
     - name: Sicherheit
@@ -522,7 +526,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Compliance
+    - name: Kompatibilität
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

@@ -8,18 +8,18 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5af10bc30a7a3bd8ca211c3fd74364c74ee36fb5
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: e2311f3cf2a9418ba3ffef25fc1a8f3b22a3faa5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278504"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961157"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Erstellen von Service Bus-Ressourcen mithilfe von Azure Resource Manager-Vorlagen
 
 Dieser Artikel erläutert das Erstellen und Bereitstellen von Service Bus-Ressourcen mithilfe von Azure Resource Manager-Vorlagen, PowerShell und dem Service Bus-Ressourcenanbieter.
 
-Azure Resource Manager-Vorlagen helfen Ihnen dabei, die für eine Lösung bereitzustellenden Ressourcen zu definieren und die Parameter und Variablen anzugeben, die Sie zur Eingabe von Werten für verschiedene Umgebungen benötigen. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Detaillierte Informationen zum Erstellen von Azure Resource Manager-Vorlagen sowie eine Beschreibung des Vorlagenformats finden Sie unter [Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
+Azure Resource Manager-Vorlagen helfen Ihnen dabei, die für eine Lösung bereitzustellenden Ressourcen zu definieren und die Parameter und Variablen anzugeben, die Sie zur Eingabe von Werten für verschiedene Umgebungen benötigen. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Detaillierte Informationen zum Erstellen von Azure Resource Manager-Vorlagen sowie eine Beschreibung des Vorlagenformats finden Sie unter [Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md).
 
 > [!NOTE]
 > Die Beispiele in diesem Artikel zeigen, wie Sie Azure Resource Manager verwenden, um einen Service Bus-Namespace und eine Messagingentität (Warteschlange) zu erstellen. Um Beispiele für andere Vorlagen zu finden, rufen Sie den [Katalog mit Azure-Schnellstartvorlagen][Azure Quickstart Templates gallery] auf und suchen dort nach **Service Bus**.
@@ -251,7 +251,7 @@ Sie haben nun den grundlegenden Workflow und die grundlegenden Befehle für die 
 
 * [Übersicht über den Azure Resource Manager][Azure Resource Manager overview]
 * [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell][Deploy resources with Azure Resource Manager templates]
-* [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
+* [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/templates/syntax.md)
 * [Microsoft.ServiceBus-Ressourcentypen](/azure/templates/microsoft.servicebus/allversions)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/management/overview.md

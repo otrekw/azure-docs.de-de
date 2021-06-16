@@ -7,12 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 91228b7f3243299f47c101e59d0c652749ff963d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 426965d469fbe08ecc0b0b6bf295d9919e698836
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779731"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665723"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -41,7 +42,7 @@ Die grobe Struktur einer Pipelinedefinition lautet wie folgt:
 
 In der folgenden Tabelle werden die Eigenschaften in der Pipeline-JSON-Definition beschrieben:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich
+| Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
 | name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, für deren Durchführung die Aktivität oder die Pipeline konfiguriert ist.<br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“.</li></ul> |Ja |
 | description |Beschreibung des Verwendungszwecks der Aktivität oder der Pipeline | Nein |
@@ -79,7 +80,7 @@ Die allgemeine Struktur für eine Aktivität in einer Pipelinedefinition (activi
 
 In der folgenden Tabelle werden die Eigenschaften in der JSON-Definition für die Aktivität beschrieben:
 
-| Tag | BESCHREIBUNG | Erforderlich |
+| Tag | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | name |Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, für deren Durchführung die Aktivität konfiguriert ist.<br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“.</li></ul> |Ja |
 | description |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein |
@@ -239,7 +240,7 @@ Die grobe Struktur der Definition eines verknüpften Diensts lautet wie folgt:
 
 In der folgenden Tabelle werden die Eigenschaften in der JSON-Definition für die Aktivität beschrieben:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
 | name | Name des verknüpften Diensts. | Ja |
 | Eigenschaften – Typ | Typ des verknüpften Diensts. Beispiel: Azure Storage, Azure SQL-Datenbank. |
@@ -278,7 +279,7 @@ Ein Dataset in Azure Data Factory wird wie folgt definiert:
 
 In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschrieben:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
+| Eigenschaft | Beschreibung | Erforderlich | Standard |
 | --- | --- | --- | --- |
 | name | Name des Datasets. Unter [Azure Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie die Benennungsregeln. |Ja |Nicht verfügbar |
 | type | Typ des Datasets. Geben Sie einen der von Azure Data Factory unterstützten Typen an (z.B. AzureBlob, AzureSqlTable). Der Abschnitt [DATENSPEICHER](#data-stores) enthält alle Datenspeicher und Datasettypen, die von Data Factory unterstützt werden. |
@@ -290,7 +291,7 @@ In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschriebe
 
 Jede Spalte im Abschnitt **structure** enthält die folgenden Eigenschaften:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | name |Name der Spalte. |Ja |
 | type |Datentyp der Spalte.  |Nein |
@@ -310,7 +311,7 @@ structure:
 
 In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschnitt **availability** verwenden können:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
+| Eigenschaft | Beschreibung | Erforderlich | Standard |
 | --- | --- | --- | --- |
 | frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |Nicht verfügbar |
 | interval |Gibt einen Multiplikator für die Häufigkeit an<br/><br/>„Frequency x interval“ bestimmt, wie oft der Slice erzeugt wird.<br/><br/>Wenn Sie das Dataset auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>Frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/><b>Hinweis</b>: Wenn Sie „Frequency“ auf „Minute“ festlegen, sollten Sie „interval“ mindestens auf „15“ festlegen. |Ja |Nicht verfügbar |
@@ -350,7 +351,7 @@ Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder d
 
 Falls von Azure Data Factory kein Dataset erzeugt wird, sollte es als **extern** markiert werden. Diese Einstellung gilt im Allgemeinen für die Eingaben der ersten Aktivität in einer Pipeline, wenn nicht die Aktivität oder Pipeline-Verkettung genutzt wird.
 
-| Name | BESCHREIBUNG | Erforderlich | Standardwert |
+| Name | Beschreibung | Erforderlich | Standardwert |
 | --- | --- | --- | --- |
 | dataDelay |Zeit, um die die Prüfung der Verfügbarkeit der externen Daten für den angegebenen Slice verzögert wird. Wenn die Daten beispielsweise stündlich verfügbar sind, kann die Überprüfung, ob die externen Daten verfügbar sind und der entsprechende Slice bereit ist, mithilfe von dataDelay verzögert werden.<br/><br/>Dies gilt nur für die aktuelle Zeit.  Beispiel: Wenn es gerade 13:00 Uhr ist und dieser Wert 10 Minuten beträgt, beginnt die Überprüfung um 13:10 Uhr.<br/><br/>Diese Einstellung wirkt sich nicht auf Slices in der Vergangenheit aus (Slices, für die gilt: Sliceendzeit + dataDelay < jetzt), sie werden ohne Verzögerung verarbeitet.<br/><br/>Zeiträume, die größer als 23:59 Stunden sind, müssen im Format `day.hours:minutes:seconds` angegeben werden. Um beispielsweise 24 Stunden anzugeben, verwenden Sie nicht 24:00:00, sondern stattdessen 1.00:00:00. Wenn Sie 24:00:00 verwenden, wird dies als 24 Tage (24.00:00:00) gewertet. Für 1 Tag und 4 Stunden geben Sie „1:04:00:00“ an. |Nein |0 |
 | retryInterval |Die Wartezeit zwischen einem Fehler und dem nächsten Wiederholungsversuch. Wenn ein Versuch nicht erfolgreich ist, wird der nächste Versuch nach dem unter „retryInterval“ festgelegten Zeitraum durchgeführt. <br/><br/>Wenn es gerade 13:00 Uhr ist, beginnt der erste Versuch. Wenn die Ausführung der ersten Überprüfung eine Minute gedauert hat und ein Fehler aufgetreten ist, findet die nächste Wiederholung um 13:00 + 1 Min. (Dauer) + 1 Min. (Wiederholungsintervall) = 13:02 Uhr statt. <br/><br/>Für Slices in der Vergangenheit gibt es keine Verzögerung. Der erneute Versuch erfolgt sofort. |Nein |00:01:00 (1 Minute) |
@@ -407,7 +408,7 @@ Es gibt zwei Arten von verknüpften Diensten: verknüpfter Azure Storage-Dienst 
 #### <a name="azure-storage-linked-service"></a>Mit Azure-Speicher verknüpfter Dienst
 Erstellen Sie einen verknüpften Azure Storage-Dienst, um Ihr Azure Storage-Konto per **Kontoschlüssel** mit einer Data Factory zu verknüpfen. Legen Sie den **Typ** des verknüpften Diensts auf **AzureStorage** fest, um einen verknüpften Azure Storage-Dienst zu definieren. Anschließend können Sie im Abschnitt **typeProperties** die folgenden Eigenschaften angeben:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | connectionString |Geben Sie Informationen, die zur Verbindung mit dem Azure-Speicher erforderlich sind, für die connectionString-Eigenschaft ein. |Ja |
 
@@ -428,7 +429,7 @@ Erstellen Sie einen verknüpften Azure Storage-Dienst, um Ihr Azure Storage-Kont
 #### <a name="azure-storage-sas-linked-service"></a>Verknüpfter Azure Storage SAS-Dienst
 Sie können einen mit Azure Storage SAS verknüpften Dienst verwenden, um ein Azure-Speicherkonto mithilfe eines Shared Access Signature (SAS) mit einer Azure Data Factory zu verknüpfen. Dies ermöglicht der Data Factory eingeschränkten/zeitgebundenen Zugriff auf alle bzw. bestimmte Ressourcen (Blob/Container) im Speicher. Erstellen Sie einen verknüpften Azure Storage SAS-Dienst, um Ihr Azure Storage-Konto per Shared Access Signature mit einer Data Factory zu verknüpfen. Legen Sie den **Typ** des verknüpften Diensts auf **AzureStorageSas** fest, um einen verknüpften Azure Storage SAS-Dienst zu definieren. Anschließend können Sie im Abschnitt **typeProperties** die folgenden Eigenschaften angeben:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | sasUri |Geben Sie den Shared Access Signature-URI für Azure-Speicher-Ressourcen wie BLOB, Container oder Tabelle an. |Ja |
 
@@ -451,7 +452,7 @@ Weitere Informationen zu diesen verknüpften Diensten finden Sie im Artikel [Azu
 ### <a name="dataset"></a>Dataset
 Legen Sie den **Typ** des Datasets auf **AzureBlob** fest, um ein Azure Blob-Dataset zu definieren. Geben Sie im Abschnitt **typeProperties** anschließend die folgenden Azure Blob-spezifischen Eigenschaften ein:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | folderPath |Der Pfad zum Container und Ordner im Blobspeicher. Beispiel: myblobcontainer\myblobfolder\ |Ja |
 | fileName |Der Name des Blobs. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss.<br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für das jeweilige Blob.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Blobs in folderPath für das Eingabedataset kopiert.<br/><br/>Wenn „fileName“ für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei folgendes Format: `Data.<Guid>.txt` (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
@@ -584,7 +585,7 @@ Weitere Informationen finden Sie im Artikel zum [Azure Blob-Connector](data-fact
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Azure Data Lake Store-Diensts den Typ des verknüpften Diensts auf **AzureDataLakeStore** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureDataLakeStore**. | Ja |
 | dataLakeStoreUri | Geben Sie Informationen zum Azure Data Lake-Speicherkonto an. Es wird das folgende Format verwendet: `https://[accountname].azuredatalakestore.net/webhdfs/v1` oder `adl://[accountname].azuredatalakestore.net/`. | Ja |
@@ -634,7 +635,7 @@ Weitere Informationen finden Sie im Artikel zum [Azure Data Lake Store-Connector
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Azure Data Lake Store-Datasets den **Typ** des Datasets auf **AzureDataLakeStore** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | folderPath |Der Pfad zum Container und Ordner im Azure Data Lake-Speicher. |Ja |
 | fileName |Der Name der Datei im Azure Data Lake-Speicher. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss. <br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für die jeweilige Datei.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Dateien in „folderPath“ für das Eingabedataset kopiert.<br/><br/>Wenn „fileName“ für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei folgendes Format: `Data.<Guid>.txt` (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
@@ -930,7 +931,7 @@ Weitere Informationen finden Sie im Artikel zum [Azure Cosmos DB-Connector](data
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Azure SQL-Datenbank-Diensts den **Typ** des verknüpften Diensts auf **AzureSqlDatabase** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | connectionString |Geben Sie Informationen, die zur Verbindung mit der Azure SQL-Datenbankinstanz erforderlich sind, für die Eigenschaft „connectionString“ ein. |Ja |
 
@@ -952,7 +953,7 @@ Weitere Informationen finden Sie im Artikel zum [Azure SQL-Connector](data-facto
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Azure SQL-Datenbank-Datasets den **Typ** des Datasets auf **AzureSqlTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle oder Sicht in der Azure SQL-Datenbankinstanz, auf die der verknüpfte Dienst verweist. |Ja |
 
@@ -1101,7 +1102,7 @@ Weitere Informationen finden Sie im Artikel zum [Azure SQL-Connector](data-facto
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Azure Synapse Analytics-Diensts den **Typ** des verknüpften Diensts auf **AzureSqlDW** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | connectionString |Geben Sie Informationen, die zum Herstellen einer Verbindung mit der Azure Synapse Analytics-Instanz erforderlich sind, für die Eigenschaft „connectionString“ an. |Ja |
 
@@ -1126,7 +1127,7 @@ Weitere Informationen finden Sie im Artikel [Azure Synapse Analytics-Connector](
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Azure Synapse Analytics-Datasets den **Typ** des Datasets auf **AzureSqlDWTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Der Name der Tabelle oder Sicht in der Azure Synapse Analytics-Datenbank, auf die der verknüpfte Dienst verweist. |Ja |
 
@@ -1280,7 +1281,7 @@ Weitere Informationen finden Sie im Artikel [Azure Synapse Analytics-Connector](
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Azure Cognitive Search-Diensts den **Typ** des verknüpften Diensts auf **AzureSearch** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
 | url | URL für den Suchdienst | Ja |
 | Schlüssel | Administratorschlüssel für den Suchdienst | Ja |
@@ -1305,7 +1306,7 @@ Weitere Informationen finden Sie im Artikel zum [Azure Cognitive Search-Connecto
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Azure Cognitive Search-Datasets den **Typ** des Datasets auf **AzureSearchIndex** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
 | type | Die Typeigenschaft muss auf **AzureSearchIndex** eingestellt sein.| Ja |
 | indexName | Name des Suchindex. Data Factory erstellt den Index nicht. Der Index muss in Azure Cognitive Search vorhanden sein. | Ja |
@@ -1392,7 +1393,7 @@ Es gibt zwei Arten von verknüpften Diensten: verknüpfter Azure Storage-Dienst 
 #### <a name="azure-storage-linked-service"></a>Mit Azure-Speicher verknüpfter Dienst
 Erstellen Sie einen verknüpften Azure Storage-Dienst, um Ihr Azure Storage-Konto per **Kontoschlüssel** mit einer Data Factory zu verknüpfen. Legen Sie den **Typ** des verknüpften Diensts auf **AzureStorage** fest, um einen verknüpften Azure Storage-Dienst zu definieren. Anschließend können Sie im Abschnitt **typeProperties** die folgenden Eigenschaften angeben:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureStorage** |Ja |
 | connectionString |Geben Sie Informationen, die zur Verbindung mit dem Azure-Speicher erforderlich sind, für die connectionString-Eigenschaft ein. |Ja |
@@ -1414,7 +1415,7 @@ Erstellen Sie einen verknüpften Azure Storage-Dienst, um Ihr Azure Storage-Kont
 #### <a name="azure-storage-sas-linked-service"></a>Verknüpfter Azure Storage SAS-Dienst
 Sie können einen mit Azure Storage SAS verknüpften Dienst verwenden, um ein Azure-Speicherkonto mithilfe eines Shared Access Signature (SAS) mit einer Azure Data Factory zu verknüpfen. Dies ermöglicht der Data Factory eingeschränkten/zeitgebundenen Zugriff auf alle bzw. bestimmte Ressourcen (Blob/Container) im Speicher. Erstellen Sie einen verknüpften Azure Storage SAS-Dienst, um Ihr Azure Storage-Konto per Shared Access Signature mit einer Data Factory zu verknüpfen. Legen Sie den **Typ** des verknüpften Diensts auf **AzureStorageSas** fest, um einen verknüpften Azure Storage SAS-Dienst zu definieren. Anschließend können Sie im Abschnitt **typeProperties** die folgenden Eigenschaften angeben:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureStorageSas**. |Ja |
 | sasUri |Geben Sie den Shared Access Signature-URI für Azure-Speicher-Ressourcen wie BLOB, Container oder Tabelle an. |Ja |
@@ -1438,7 +1439,7 @@ Weitere Informationen zu diesen verknüpften Diensten finden Sie im Artikel zum 
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Azure Table-Datasets den **Typ** des Datasets auf **AzureTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der Azure-Tabellendatenbankinstanz, auf die der verknüpfte Dienst verweist. |Ja. Wenn ein Tabellenname ohne „AzureTableSourceQuery“ angegeben wird, werden alle Datensätze aus der Tabelle an das Ziel kopiert. Bei Angabe von „AzureTableSourceQuery“ werden nur Datensätze, die der Abfrage entsprechen, aus der Tabelle an das Ziel kopiert. |
 
@@ -1586,7 +1587,7 @@ Weitere Informationen zu diesen verknüpften Diensten finden Sie im Artikel zum 
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Amazon Redshift-Diensts den **Typ** des verknüpften Diensts auf **AmazonRedshift** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | server |IP-Adresse oder Hostname des Amazon Redshift-Servers. |Ja |
 | port |Die Nummer des TCP-Ports, den der Amazon Redshift-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein, Standardwert: 5439 |
@@ -1617,7 +1618,7 @@ Weitere Informationen finden Sie im Artikel über den Amazon Redshift-Connector.
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Amazon Redshift-Datasets den **Typ** des Datasets auf **RelationalTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der Amazon Redshift-Datenbank, auf die der verknüpfte Dienst verweist. |Nein (wenn **query** von **RelationalSource** angegeben ist) |
 
@@ -1698,7 +1699,7 @@ Weitere Informationen finden Sie im Artikel über den Amazon Redshift-Connector.
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften IBM DB2-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesDB2** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | server |Name des DB2-Servers. |Ja |
 | database |Name der DB2-Datenbank. |Ja |
@@ -1731,7 +1732,7 @@ Weitere Informationen finden Sie im Artikel über den IBM DB2-Connector.
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines DB2-Datasets den **Typ** des Datasets auf **RelationalTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der DB2-Datenbankinstanz, auf die der verknüpfte Dienst verweist. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. |Nein (wenn **query** von **RelationalSource** angegeben ist)
 
@@ -1814,7 +1815,7 @@ Weitere Informationen finden Sie im Artikel über den IBM DB2-Connector.
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften MySQL-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesMySql** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | server |Name des MySQL-Servers. |Ja |
 | database |Name der MySQL-Datenbank. |Ja |
@@ -1849,7 +1850,7 @@ Weitere Informationen finden Sie im Artikel zum [MySQL-Connector](data-factory-o
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines MySQL-Datasets den **Typ** des Datasets auf **RelationalTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der MySQL-Datenbankinstanz, auf die der verknüpfte Dienst verweist. |Nein (wenn **query** von **RelationalSource** angegeben ist) |
 
@@ -1936,7 +1937,7 @@ Weitere Informationen finden Sie im Artikel zum [MySQL-Connector](data-factory-o
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Oracle-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesOracle** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus/in Oracle Database verwendet wird. Zulässige Werte sind **Microsoft** oder **ODP** (Standard). Details zu den Treibern finden Sie unter „Unterstützte Version und Installation“. | Nein |
 | connectionString | Geben Sie Informationen, die zur Verbindung mit der Oracle Databaseinstanz erforderlich sind, für die Eigenschaft "connectionString" an. | Ja |
@@ -1962,7 +1963,7 @@ Weitere Informationen finden Sie im Artikel zum [Oracle-Connector](data-factory-
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Oracle-Datasets den **Typ** des Datasets auf **OracleTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der Oracle Database, auf die der verknüpfte Dienst verweist. |Nein (wenn **oracleReaderQuery** von **OracleSource** angegeben ist) |
 
@@ -2105,7 +2106,7 @@ Weitere Informationen finden Sie im Artikel zum [Oracle-Connector](data-factory-
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften PostgreSQL-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesPostgreSql** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | server |Name des PostgreSQL-Servers. |Ja |
 | database |Name der PostgreSQL-Datenbank. |Ja |
@@ -2139,7 +2140,7 @@ Weitere Informationen finden Sie im Artikel zum [PostgreSQL-Connector](data-fact
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines PostgreSQL-Datasets den **Typ** des Datasets auf **RelationalTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der PostgreSQL-Datenbankinstanz, auf die der verknüpfte Dienst verweist. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. |Nein (wenn **query** von **RelationalSource** angegeben ist) |
 
@@ -2446,7 +2447,7 @@ Sie erstellen einen verknüpften Dienst des Typs **OnPremisesSqlServer**, um ein
 
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit SQL Server verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die type-Eigenschaft auf **OnPremisesSqlServer** fest. |Ja |
 | connectionString |Geben Sie „connectionString“-Informationen an, die zum Herstellen einer Verbindung mit der SQL Server-Datenbank mithilfe der SQL- oder Windows-Authentifizierung benötigt werden. |Ja |
@@ -2499,7 +2500,7 @@ Weitere Informationen finden Sie im Artikel zum [SQL Server-Connector](data-fact
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines SQL Server-Datasets den **Typ** des Datasets auf **SqlServerTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle oder Ansicht in der SQL Server-Datenbankinstanz, auf die der verknüpfte Dienst verweist. |Ja |
 
@@ -2663,7 +2664,7 @@ Weitere Informationen finden Sie im Artikel zum [SQL Server-Connector](data-fact
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Sybase-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesSybase** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | server |Name des Sybase-Servers. |Ja |
 | database |Name der Sybase-Datenbank. |Ja |
@@ -2697,7 +2698,7 @@ Weitere Informationen finden Sie im Artikel zum [Sybase-Connector](data-factory-
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Sybase-Datasets den **Typ** des Datasets auf **RelationalTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der Sybase-Datenbankinstanz, auf die der verknüpfte Dienst verweist. |Nein (wenn **query** von **RelationalSource** angegeben ist) |
 
@@ -2783,7 +2784,7 @@ Weitere Informationen finden Sie im Artikel zum [Sybase-Connector](data-factory-
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Teradata-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesTeradata** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | server |Name des Teradata-Servers. |Ja |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der Teradata-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
@@ -2897,7 +2898,7 @@ Weitere Informationen finden Sie im Artikel zum [Teradata-Connector](data-factor
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Cassandra-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesCassandra** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
 | port |Der TCP-Port, den der Cassandra-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein, Standardwert: 9042 |
@@ -2931,7 +2932,7 @@ Weitere Informationen finden Sie im Artikel zum [Cassandra-Connector](data-facto
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Cassandra-Datasets den **Typ** des Datasets auf **CassandraTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | keyspace |Name des Keyspace oder Schemas in der Cassandra-Datenbank. |Ja (wenn **query** für **CassandraSource** nicht definiert ist). |
 | tableName |Name der Tabelle in der Cassandra-Datenbank. |Ja (wenn **query** für **CassandraSource** nicht definiert ist). |
@@ -3024,7 +3025,7 @@ Weitere Informationen finden Sie im Artikel zum [Cassandra-Connector](data-facto
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften MongoDB-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesMongoDB** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | server |IP-Adresse oder Hostname des MongoDB-Servers |Ja |
 | port |Der TCP-Port, den der MongoDB-Server verwendet, um auf Clientverbindungen zu lauschen |Optional, Standardwert: 27.017 |
@@ -3062,7 +3063,7 @@ Weitere Informationen finden Sie im Artikel zum [MongoDB-Connector](data-factory
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines MongoDB-Datasets den **Typ** des Datasets auf **MongoDbCollection** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | collectionName |Der Name der Sammlung in der MongoDB-Datenbank |Ja |
 
@@ -3309,7 +3310,7 @@ Weitere Informationen finden Sie im Artikel zum [Amazon S3-Connector](data-facto
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Sie können ein lokales Dateisystem mithilfe eines verknüpften Diensts vom Typ **Lokaler Dateiserver** mit einer Azure Data Factory verknüpfen. Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den verknüpften Dienst vom Typ „Lokaler Dateiserver“ spezifisch sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Stellen Sie sicher, dass die Eigenschaft „type“ auf **OnPremisesFileServer** festgelegt ist. |Ja |
 | host |Gibt den Stammpfad des Ordners an, den Sie kopieren möchten. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\“. Beispiele finden Sie unter „Beispieldefinitionen für verknüpfte Dienste und Datasets“. |Ja |
@@ -3364,7 +3365,7 @@ Weitere Informationen finden Sie im Artikel zum [Dateisystem-Connector](data-fac
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Dateisystem-Datasets den **Typ** des Datasets auf **FileShare** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | folderPath |Gibt den Unterpfad zum Ordner an. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\“. Beispiele finden Sie unter „Beispieldefinitionen für verknüpfte Dienste und Datasets“.<br/><br/>Sie können diese Eigenschaft mit **partitionBy** kombinieren, um Ordnerpfade auf der Grundlage von Datum und Uhrzeit für Start und Ende des Slices zu erhalten. |Ja |
 | fileName |Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn der Dateiname für ein Ausgabedataset nicht angegeben ist, weist der Name der generierten Datei das folgenden Format auf: <br/><br/>`Data.<Guid>.txt` (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
@@ -3544,7 +3545,7 @@ Weitere Informationen finden Sie im Artikel zum [Dateisystem-Connector](data-fac
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften FTP-Diensts den **Typ** des verknüpften Diensts auf **FtpServer** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
+| Eigenschaft | Beschreibung | Erforderlich | Standard |
 | --- | --- | --- | --- |
 | host |Name oder IP-Adresse des FTP-Servers |Ja |&nbsp; |
 | authenticationType |Angeben des Authentifizierungstyps |Ja |Standard, Anonym |
@@ -3630,7 +3631,7 @@ Weitere Informationen finden Sie im Artikel zum [FTP-Connector](data-factory-ftp
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines FTP-Datasets den **Typ** des Datasets auf **FileShare** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | folderPath |Unterpfad zum Ordner. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\“. Beispiele finden Sie unter „Beispieldefinitionen für verknüpfte Dienste und Datasets“.<br/><br/>Sie können diese Eigenschaft mit **partitionBy** kombinieren, um Ordnerpfade auf der Grundlage von Datum und Uhrzeit für Start und Ende des Slices zu erhalten. |Ja
 | fileName |Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn „fileName“ für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei folgendes Format: <br/><br/>`Data.<Guid>.txt` (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
@@ -3722,7 +3723,7 @@ Weitere Informationen finden Sie im Artikel zum [FTP-Connector](data-factory-ftp
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften HDFS-Diensts den **Typ** des verknüpften Diensts auf **Hdfs** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Hdfs**. |Ja |
 | url |Die URL für das HDFS. |Ja |
@@ -3772,7 +3773,7 @@ Weitere Informationen finden Sie im Artikel über den HDFS-Connector.
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines HDFS-Datasets den **Typ** des Datasets auf **FileShare** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | folderPath |Pfad zum Ordner. Beispiel: `myfolder`<br/><br/>Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\“. Geben Sie beispielsweise für „Ordner\Unterordner“ die Zeichenfolge „Ordner\\\\Unterordner“ und für „d:\Beispielordner“ die Zeichenfolge „d:\\\\Beispielordner“ an.<br/><br/>Sie können diese Eigenschaft mit **partitionBy** kombinieren, um Ordnerpfade auf der Grundlage von Datum und Uhrzeit für Start und Ende des Slices zu erhalten. |Ja |
 | fileName |Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn „fileName“ für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei folgendes Format: <br/><br/>`Data.<Guid>.txt` (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
@@ -3858,7 +3859,7 @@ Weitere Informationen finden Sie im Artikel über den HDFS-Connector.
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften SFTP-Diensts den **Typ** des verknüpften Diensts auf **Sftp** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | host | Name oder IP-Adresse des SFTP-Servers. |Ja |
 | port |Port, an dem der SFTP-Server lauscht. Der Standardwert lautet: 21 |Nein |
@@ -3872,7 +3873,7 @@ Legen Sie zum Definieren eines verknüpften SFTP-Diensts den **Typ** des verknü
 
 Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `Basic` fest, und geben Sie über die im letzten Abschnitt beschriebenen allgemeinen Eigenschaften des SFTP-Connectors hinaus die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | username | Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | password | Kennwort für den Benutzer (username) | Ja |
@@ -3921,7 +3922,7 @@ Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `
 
 Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `SshPublicKey` fest, und geben Sie über die im letzten Abschnitt beschriebenen allgemeinen Eigenschaften des SFTP-Connectors hinaus die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | username |Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | privateKeyPath | Geben Sie den absoluten Pfad der privaten Schlüsseldatei ein, auf die das Gateway zugreifen kann. | Geben Sie entweder `privateKeyPath` oder `privateKeyContent` an. <br><br> Betrifft nur das Kopieren von Daten von einem lokalen SFTP-Server. |
@@ -3972,7 +3973,7 @@ Weitere Informationen finden Sie im Artikel zum [SFTP-Connector](data-factory-sf
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines SFTP-Datasets den **Typ** des Datasets auf **FileShare** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | folderPath |Unterpfad zum Ordner. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\“. Beispiele finden Sie unter „Beispieldefinitionen für verknüpfte Dienste und Datasets“.<br/><br/>Sie können diese Eigenschaft mit **partitionBy** kombinieren, um Ordnerpfade auf der Grundlage von Datum und Uhrzeit für Start und Ende des Slices zu erhalten. |Ja |
 | fileName |Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn „fileName“ für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei folgendes Format: <br/><br/>`Data.<Guid>.txt` (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
@@ -4065,7 +4066,7 @@ Weitere Informationen finden Sie im Artikel zum [SFTP-Connector](data-factory-sf
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften HTTP-Diensts den **Typ** des verknüpften Diensts auf **Http** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | url | Basis-URL zum Webserver | Ja |
 | authenticationType | Gibt den Authentifizierungstyp an. Zulässige Werte sind: **Anonymous**, **Basic**, **Digest**, **Windows**, **ClientCertificate**. <br><br> Weitere Eigenschaften und JSON-Beispiele für diese Authentifizierungstypen finden Sie in den Abschnitten nach dieser Tabelle. | Ja |
@@ -4076,7 +4077,7 @@ Legen Sie zum Definieren eines verknüpften HTTP-Diensts den **Typ** des verknü
 #### <a name="example-using-basic-digest-or-windows-authentication"></a>Beispiel: Verwenden der Authentifizierung des Typs „Basic“, „Digest“ oder „Windows“
 Legen Sie für `authenticationType` die Option `Basic`, `Digest` oder `Windows` fest, und geben Sie zusätzlich zu den oben vorgestellten allgemeinen HTTP-Connectoreigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | username | Benutzername zum Zugreifen auf den HTTP-Endpunkt | Ja |
 | password | Kennwort für den Benutzer (username) | Ja |
@@ -4100,7 +4101,7 @@ Legen Sie für `authenticationType` die Option `Basic`, `Digest` oder `Windows` 
 
 Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `ClientCertificate` fest, und geben Sie zusätzlich zu den oben beschriebenen allgemeinen Eigenschaften des HTTP-Connectors die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | embeddedCertData | Der Base64-codierte Inhalt der Binärdaten der Personal Information Exchange-Datei (PFX) | Geben Sie entweder `embeddedCertData` oder `certThumbprint` an. |
 | certThumbprint | Der Fingerabdruck des Zertifikats, das im Zertifikatspeicher des Gatewaycomputers installiert wurde. Betrifft nur das Kopieren von Daten von einer lokalen HTTP-Quelle. | Geben Sie entweder `embeddedCertData` oder `certThumbprint` an. |
@@ -4153,7 +4154,7 @@ Weitere Informationen finden Sie im Artikel zum [HTTP-Connector](data-factory-ht
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines HTTP-Datasets den **Typ** des Datasets auf **Http** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. <br><br> Zum Erstellen von dynamischen URLs können Sie [Data Factory-Funktionen und -Systemvariablen](data-factory-functions-variables.md) verwenden. Beispiel: `"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`. | Nein |
 | requestMethod | HTTP-Methode. Zulässige Werte: **GET** oder **POST** | Nein. Der Standardwert ist `GET`. |
@@ -4209,7 +4210,7 @@ Weitere Informationen finden Sie im Artikel zum [HTTP-Connector](data-factory-ht
 ### <a name="http-source-in-copy-activity"></a>HTTP-Quelle in der Kopieraktivität
 Legen Sie beim Kopieren von Daten aus einer HTTP-Quelle den **Quelltyp** der Kopieraktivität auf **HttpSource** fest, und geben Sie im Abschnitt **source** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | Das Timeout (TimeSpan) für die HTTP-Anforderung, um eine Antwort zu empfangen. Dabei handelt es sich um das Timeout zum Empfangen einer Antwort, nicht das Timeout zum Lesen von Antwortdaten. | Nein. Standardwert: 00:01:40 |
 
@@ -4263,7 +4264,7 @@ Weitere Informationen finden Sie im Artikel zum [HTTP-Connector](data-factory-ht
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften OData-Diensts den **Typ** des verknüpften Diensts auf **OData** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | url |Die URL des OData-Diensts. |Ja |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der OData-Quelle. <br/><br/> Mögliche Werte für den cloudbasierten OData-Dienst sind „Anonymous“, „Basic“ und „OAuth“ (beachten Sie, dass Azure Data Factory derzeit nur Azure Active Directory-basiertes OAuth unterstützt). <br/><br/> Mögliche Werte für lokales OData sind „Anonymous“, „Basic“ und „Windows“. |Ja |
@@ -4343,7 +4344,7 @@ Weitere Informationen finden Sie im Artikel zum [OData-Connector](data-factory-o
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines OData-Datasets den **Typ** des Datasets auf **ODataResource** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | path |Pfad zu der OData-Ressource |Nein |
 
@@ -4378,7 +4379,7 @@ Weitere Informationen finden Sie im Artikel zum [OData-Connector](data-factory-o
 ### <a name="relational-source-in-copy-activity"></a>Relationale Quelle in der Kopieraktivität
 Legen Sie beim Kopieren von Daten von einer OData-Quelle den **Quelltyp** der Kopieraktivität auf **RelationalSource** fest, und geben Sie im Abschnitt **source** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Beispiel | Erforderlich |
+| Eigenschaft | Beschreibung | Beispiel | Erforderlich |
 | --- | --- | --- | --- |
 | Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |"?$select=Name, Beschreibung&$top=5" |Nein |
 
@@ -4433,7 +4434,7 @@ Weitere Informationen finden Sie im Artikel zum [OData-Connector](data-factory-o
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften ODBC-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesOdbc** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | connectionString |Der nicht für den Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge sowie optional verschlüsselte Anmeldeinformationen. Siehe Beispiele in den folgenden Abschnitten. |Ja |
 | Anmeldeinformationen (credential) |Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format in Eigenschaft und Wert angegeben. Beispiel: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |Nein |
@@ -4498,7 +4499,7 @@ Weitere Informationen finden Sie im Artikel zum [ODBC-Connector](data-factory-od
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines ODBC-Datasets den **Typ** des Datasets auf **RelationalTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Der Name der Tabelle im ODBC-Datenspeicher. |Ja |
 
@@ -4587,7 +4588,7 @@ Weitere Informationen finden Sie im Artikel zum [ODBC-Connector](data-factory-od
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Salesforce-Diensts den **Typ** des verknüpften Diensts auf **Salesforce** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br><br> – Die Standard-URL lautet „https:\///login.salesforce.com“. <br> – Um Daten aus einer Sandbox zu kopieren, geben Sie „https://test.salesforce.com“ an. <br> - Geben Sie zum Kopieren von Daten aus der benutzerdefinierten Domäne z.B. „https://[Domäne].my.salesforce.com“ an. |Nein |
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
@@ -4615,7 +4616,7 @@ Weitere Informationen finden Sie im Artikel zum [Salesforce-Connector](data-fact
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Salesforce-Datasets den **Typ** des Datasets auf **RelationalTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in Salesforce. |Nein (wenn eine **Abfrage** von **RelationalSource** angegeben ist) |
 
@@ -4710,7 +4711,7 @@ Weitere Informationen finden Sie im Artikel zum [Salesforce-Connector](data-fact
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Webdiensts den **Typ** des verknüpften Diensts auf **Web** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | url |URL der Webquelle |Ja |
 | authenticationType |Anonym |Ja |
@@ -4737,7 +4738,7 @@ Weitere Informationen finden Sie im Artikel zum [Webtabellen-Connector](data-fac
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Webdatasets den **Typ** des Datasets auf **WebTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type |Die Art des Datasets. Muss auf **WebTable** festgelegt sein. |Ja |
 | path |Eine relative URL zu der Ressource, die die Tabelle enthält. |Nein. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. |
@@ -4830,7 +4831,7 @@ Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen b
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der Azure-JSON-Definition eines bedarfsgesteuerten verknüpften HDInsight-Diensts verwendet werden.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die Typeigenschaft auf **HDInsightOnDemand** fest. |Ja |
 | clusterSize |Anzahl der Worker-/Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten sowie der Anzahl der Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben die Größe Standard_D3, die vier Kerne aufweist. Ein Cluster mit vier Workerknoten nutzt also 24 Kerne (4 \* 4 = 16 für die Workerknoten + 2 \* 4 = 8 für die Hauptknoten). Ausführliche Informationen zum Standard_D3-Tarif finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). |Ja |
@@ -4868,7 +4869,7 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der Azure-JSON-Definition eines verknüpften Azure HDInsight-Diensts verwendet werden.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die Typeigenschaft auf **HDInsight** fest. |Ja |
 | clusterUri |Der URI des HDInsight-Clusters. |Ja |
@@ -4901,7 +4902,7 @@ Sie können einen verknüpften Azure Batch-Dienst erstellen, um einen Batch-Pool
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der Azure-JSON-Definition eines verknüpften Azure Batch-Diensts verwendet werden.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die Typeigenschaft auf **AzureBatch** fest. |Ja |
 | .<Name der Region |Der Name des Azure Batch-Kontos. |Ja |
@@ -4933,7 +4934,7 @@ Sie können einen mit Azure Machine Learning Studio (klassisch) verknüpften Die
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der Azure-JSON-Definition eines verknüpften Diensts für Studio (klassisch) verwendet werden.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die type-Eigenschaft auf **AzureML** fest. |Ja |
 | mlEndpoint |Die Batchbewertungs-URL. |Ja |
@@ -4961,7 +4962,7 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der JSON-Definition eines verknüpften Azure Data Lake Analytics-Diensts verwendet werden.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. |Ja |
 | .<Name der Region |Name des Azure Data Lake Analytics-Kontos. |Ja |
@@ -5001,7 +5002,7 @@ Sie erstellen einen verknüpften Dienst des Typs **OnPremisesSqlServer**, um ein
 
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit SQL Server verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die type-Eigenschaft auf **OnPremisesSqlServer** fest. |Ja |
 | connectionString |Geben Sie „connectionString“-Informationen an, die zum Herstellen einer Verbindung mit der SQL Server-Datenbank mithilfe der SQL- oder Windows-Authentifizierung benötigt werden. |Ja |
@@ -5070,7 +5071,7 @@ Aktivität | BESCHREIBUNG
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive-Aktivität
 Sie können in der JSON-Definition einer Hive-Aktivität die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **HDInsightHive**. Es ist erforderlich, zuerst einen verknüpften HDInsight-Dienst zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf HDInsightHive festlegen:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | script |Angabe des Hive-Skripts inline |Nein |
 | script path |Speichern Sie das Hive-Skript in Azure Blob Storage, und geben Sie den Pfad zur Datei an. Verwenden Sie die Eigenschaft "script" oder "scriptPath". Beide können nicht zusammen verwendet werden. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. |Nein |
@@ -5116,7 +5117,7 @@ Weitere Informationen finden Sie im Artikel zur [Hive-Aktivität](data-factory-h
 ## <a name="hdinsight-pig-activity"></a>HDInsight Pig-Aktivität
 Sie können in der JSON-Definition einer Pig-Aktivität die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **HDInsightPig**. Es ist erforderlich, zuerst einen verknüpften HDInsight-Dienst zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf HDInsightPig festlegen:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | script |Angabe des Pig-Skripts inline |Nein |
 | script path |Speichern Sie das Pig-Skript in Azure Blob Storage, und geben Sie den Pfad zur Datei an. Verwenden Sie die Eigenschaft "script" oder "scriptPath". Beide können nicht zusammen verwendet werden. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. |Nein |
@@ -5168,7 +5169,7 @@ Weitere Informationen finden Sie im Artikel über die Pig-Aktivität.
 ## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce-Aktivität
 Sie können in der JSON-Definition einer MapReduce-Aktivität die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **HDInsightMapReduce**. Es ist erforderlich, zuerst einen verknüpften HDInsight-Dienst zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf HDInsightMapReduce festlegen:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | jarLinkedService | Name des verknüpften Diensts für die Azure Storage-Instanz, in der die JAR-Datei enthalten ist. | Ja |
 | jarFilePath | Pfad zur JAR-Datei in der Azure Storage-Instanz. | Ja |
@@ -5290,7 +5291,7 @@ Weitere Informationen finden Sie im Artikel zur [Hadoop-Streamingaktivität](dat
 ## <a name="hdinsight-spark-activity"></a>HDInsight Spark-Aktivität
 Sie können in der JSON-Definition einer Spark-Aktivität die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **HDInsightSpark**. Es ist erforderlich, zuerst einen verknüpften HDInsight-Dienst zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf HDInsightSpark festlegen:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
 | rootPath | Der Azure-Blobcontainer und -ordner mit der Spark-Datei. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. | Ja |
 | entryFilePath | Der relative Pfad zum Stammordner des Spark-Codes bzw. -Pakets. | Ja |
@@ -5345,7 +5346,7 @@ Weitere Informationen zur Aktivität finden Sie im Artikel zur [Spark-Aktivität
 ## <a name="azure-machine-learning-studio-classic-batch-execution-activity"></a>Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)
 In der JSON-Definition einer Batchausführungsaktivität für Azure Machine Learning Studio (klassisch) können Sie die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **AzureMLBatchExecution**. Es ist erforderlich, zuerst einen verknüpften Dienst für Studio (klassisch) zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf AzureMLBatchExecution festlegen:
 
-Eigenschaft | BESCHREIBUNG | Erforderlich
+Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
 webServiceInput | Das Dataset, das als Eingabe für den Webdienst für Studio (klassisch) übergeben wird. Dieses Dataset muss auch in die Eingaben für die Aktivität eingebunden werden. |Verwenden Sie entweder webServiceInput oder webServiceInputs. |
 webServiceInputs | Geben Sie Datasets an, die als Eingabe für den Webdienst für Studio (klassisch) übergeben werden. Wenn der Webdienst mehrere Eingaben akzeptiert, verwenden Sie anstelle der webServiceInput-Eigenschaft die webServiceInputs-Eigenschaft. Datasets, auf die **webServiceInputs** verweist, müssen auch in der Aktivität **inputs** enthalten sein. | Verwenden Sie entweder webServiceInput oder webServiceInputs. |
@@ -5401,7 +5402,7 @@ Im JSON-Beispiel verwendet der bereitgestellte Webdienst für Studio (klassisch)
 ## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)
 In der JSON-Definition einer Ressourcenaktualisierungsaktivität für Azure Machine Learning (klassisch) können Sie die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **AzureMLUpdateResource**. Es ist erforderlich, zuerst einen verknüpften Dienst für Studio (klassisch) zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf AzureMLUpdateResource festlegen:
 
-Eigenschaft | BESCHREIBUNG | Erforderlich
+Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
 trainedModelName | Name des erneut trainierten Modells. | Ja |
 trainedModelDatasetName | Dataset, das auf die iLearner-Datei verweist, die vom Vorgang für das erneute Trainieren zurückgegeben wird. | Ja |
@@ -5468,7 +5469,7 @@ Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureML
 ## <a name="data-lake-analytics-u-sql-activity"></a>U-SQL-Aktivität für Data Lake Analytics
 Sie können in der JSON-Definition einer U-SQL-Aktivität die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **DataLakeAnalyticsU-SQL**. Es ist erforderlich, einen verknüpften Azure Data Lake Analytics-Dienst zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf DataLakeAnalyticsU-SQL festlegen:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | scriptPath |Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. |Nein (wenn script verwendet wird) |
 | scriptLinkedService |Verknüpfter Dienst, der den Speicher, der das Skript enthält, mit der Data Factory verknüpft. |Nein (wenn script verwendet wird) |
@@ -5541,7 +5542,7 @@ Sie können in der JSON-Definition einer Aktivität vom Typ „Gespeicherte Proz
 
 Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf SqlServerStoredProcedure festlegen:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz an, die durch den verknüpften Dienst dargestellt wird, der von der Ausgabetabelle verwendet wird. |Ja |
 | storedProcedureParameters |Geben Sie Werte für Parameter der gespeicherten Prozedur an. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: "param1": null (nur Kleinbuchstaben). Das folgende Beispiel veranschaulicht die Verwendung dieser Eigenschaft. |Nein |
@@ -5581,7 +5582,7 @@ Weitere Informationen finden Sie unter [Aktivität „Gespeicherte Prozedur“](
 ## <a name="net-custom-activity"></a>Benutzerdefinierte .NET-Aktivität
 Sie können in der JSON-Definition einer benutzerdefinierten .NET-Aktivität die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **DotNetActivity**. Es ist erforderlich, einen verknüpften Azure HDInsight-Dienst oder einen verknüpften Azure Batch-Dienst zu erstellen und den Namen des verknüpften Diensts als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf DotNetActivity festlegen:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | AssemblyName | Der Name der Assembly. In diesem Beispiel ist dies: **MyDotnetActivity.dll**. | Ja |
 | EntryPoint |Der Name der Klasse, die die IDotNetActivity-Schnittstelle implementiert. In diesem Beispiel ist dies: **MyDotNetActivityNS.MyDotNetActivity**, wobei MyDotNetActivityNS der Namespace und MyDotNetActivity die Klasse ist.  | Ja |

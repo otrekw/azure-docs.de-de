@@ -8,12 +8,13 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 7573f33082e1915bdf75ffe015afedfedbfda469
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1fe78687b8cd200bce6eb0ce75f54fb603aa13ae
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205285"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671855"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke
 

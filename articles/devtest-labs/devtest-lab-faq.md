@@ -3,12 +3,13 @@ title: Häufig gestellte Fragen zu Azure DevTest Labs | Microsoft Docs
 description: Dieser Artikel enthält Antworten auf einige häufig gestellte Fragen zu Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 6abc2b0b950521d5ce7d4974c3535c5fbd64fba1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 31106eb69e118e6f68fbb1a0eecfe4301839ee88
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139001"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004239"
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
@@ -134,7 +135,7 @@ Letztendlich muss für die gesamte Organisation der gleiche Einschränkungstyp g
 ## <a name="lab-configuration"></a>Labkonfiguration
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Wie erstelle ich ein Lab anhand einer Resource Manager-Vorlage?
-Wir stellen ein [GitHub-Repository von Azure Resource Manager-Labvorlagen](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) zur Verfügung, die Sie in vorliegender oder geänderter Form zum Erstellen benutzerdefinierter Vorlagen für Ihre Labs bereitstellen können. Jede Vorlage enthält einen Link, um das Lab in Ihrem eigenen Azure-Abonnement bereitzustellen. Alternativ können Sie die Vorlage auch anpassen und [mithilfe von PowerShell oder der Azure CLI bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
+Wir stellen ein [GitHub-Repository von Azure Resource Manager-Labvorlagen](https://azure.microsoft.com/resources/templates/dtl-create-lab) zur Verfügung, die Sie in vorliegender oder geänderter Form zum Erstellen benutzerdefinierter Vorlagen für Ihre Labs bereitstellen können. Jede Vorlage enthält einen Link, um das Lab in Ihrem eigenen Azure-Abonnement bereitzustellen. Alternativ können Sie die Vorlage auch anpassen und [mithilfe von PowerShell oder der Azure CLI bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
 
 
 ### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Kann ich sämtliche VMs n einer gemeinsamen Ressourcengruppe erstellen lassen, anstatt für jede VM eine eigene Ressourcengruppe zu verwenden?

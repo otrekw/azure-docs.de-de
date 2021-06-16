@@ -16,12 +16,12 @@ ms.date: 04/16/2021
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17fe0c0ca5f1399c78def37ea7640ba8dfa395e
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: db1878c2760cfcaa157d0ef233bb1931a5f310b3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988224"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970896"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfungen
 
@@ -336,7 +336,7 @@ Gehen Sie zu [Azure AD-Zugriffsüberprüfungen verwenden, um Benutzer zu verwalt
 
 ### <a name="review-guest-users-group-memberships"></a>Überprüfen Sie die Gruppenmitgliedschaften von Gastbenutzern
 
-Gehen Sie zu [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews), um zu erfahren, wie Sie den Zugriff von Gastbenutzern auf Gruppenmitgliedschaften überprüfen.
+Gehen Sie zu [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](./manage-guest-access-with-access-reviews.md), um zu erfahren, wie Sie den Zugriff von Gastbenutzern auf Gruppenmitgliedschaften überprüfen.
 
 ### <a name="review-access-to-on-premises-groups"></a>Überprüfen des Zugriffs auf lokale Gruppen
 

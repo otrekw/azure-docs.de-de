@@ -5,13 +5,13 @@ author: mumian
 ms.date: 03/01/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: seodec18
-ms.openlocfilehash: 3bd0a0f70aa3ff983f87677219513aa56e051d89
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: e2136e70f45fa909a306e1af2c25cb6e5c6a85d0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838445"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081909"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Tutorial: Integrieren von Azure Key Vault in Ihre Bereitstellung einer ARM-Vorlage
 
@@ -46,7 +46,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     openssl rand -base64 32
     ```
 
-    Vergewissern Sie sich, dass das generierte Kennwort die Kennwortanforderungen für den virtuellen Computer erfüllt. Jeder Azure-Dienst hat bestimmte Kennwortanforderungen. Informationen zu den Kennwortanforderungen für virtuelle Computer finden Sie unter [Welche Anforderungen an das Kennwort gelten beim Erstellen eines virtuellen Computers?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+    Vergewissern Sie sich, dass das generierte Kennwort die Kennwortanforderungen für den virtuellen Computer erfüllt. Jeder Azure-Dienst hat bestimmte Kennwortanforderungen. Informationen zu den Kennwortanforderungen für virtuelle Computer finden Sie unter [Welche Anforderungen an das Kennwort gelten beim Erstellen eines virtuellen Computers?](../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-).
 
 ## <a name="prepare-a-key-vault"></a>Vorbereiten eines Schlüsseltresors
 
@@ -107,7 +107,7 @@ Damit haben Sie einen Schlüsseltresor und ein Geheimnis vorbereitet. In den fol
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
-„Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
+„Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
 
 1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
 

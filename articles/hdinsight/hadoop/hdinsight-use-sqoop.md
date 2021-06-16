@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure PowerShell auf einer Arbeitsstation ver
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 165660a0141c50cf1c6dc24e3ba8df0299f885f2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 62ac9d5243c719af73cfd30b3a5190a2e7344668
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069002"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559284"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Verwenden von Apache Sqoop mit Hadoop in HDInsight
 
@@ -59,7 +59,7 @@ In diesem Artikel verwenden Sie diese beiden Datasets zum Testen des Sqoop-Impor
 
 ## <a name="set-up-test-environment"></a><a name="create-cluster-and-sql-database"></a>Einrichten der Testumgebung
 
-Der Cluster, die SQL-Datenbank und andere Objekte werden über das Azure-Portal mithilfe einer Azure Resource Manager-Vorlage erstellt. Die Vorlage finden Sie in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Die Resource Manager-Vorlage ruft ein BACPAC-Paket auf, um die Tabellenschemas in einer SQL-Datenbank bereitzustellen.  Das BACPAC-Paket befindet sich in einem öffentlichen Blobcontainer, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Wenn Sie einen privaten Container für die bacpac-Dateien verwenden möchten, verwenden Sie die folgenden Werte in der Vorlage:
+Der Cluster, die SQL-Datenbank und andere Objekte werden über das Azure-Portal mithilfe einer Azure Resource Manager-Vorlage erstellt. Die Vorlage finden Sie in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/hdinsight-linux-with-sql-database/). Die Resource Manager-Vorlage ruft ein BACPAC-Paket auf, um die Tabellenschemas in einer SQL-Datenbank bereitzustellen.  Das BACPAC-Paket befindet sich in einem öffentlichen Blobcontainer, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Wenn Sie einen privaten Container für die bacpac-Dateien verwenden möchten, verwenden Sie die folgenden Werte in der Vorlage:
 
 ```json
 "storageKeyType": "Primary",

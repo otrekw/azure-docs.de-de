@@ -4,16 +4,18 @@ description: Verwenden von Azure SQL über einen GitHub Actions-Workflow
 author: juliakm
 services: sql-database
 ms.service: sql-database
+ms.subservice: connect
 ms.topic: quickstart
 ms.author: jukullam
 ms.date: 05/05/2021
 ms.custom: github-actions-azure
-ms.openlocfilehash: 483763c9d29cc736608dac7907b8f3fa0aa84bac
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.reviewer: mathoma
+ms.openlocfilehash: 5a46b5c5f8d8d4d39f93f6a91210e70fa41ea20d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753801"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694648"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>Herstellen einer Verbindung mit Azure SQL-Datenbank mithilfe von GitHub Actions
 

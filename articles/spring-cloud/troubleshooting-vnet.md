@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6a8be63c134c25373f85a146ed3df7316e1eb7dc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 82ee9b368ecb98d4bb1833ab9a4fc1dc22182e99
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132403"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968878"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>Problembehandlung für Azure Spring Cloud in virtuellen Netzwerken
 
@@ -31,7 +31,7 @@ Wenn Sie das Azure-Portal zum Einrichten der Azure Spring Cloud-Dienstinstanz ve
 - Die Ressourcengruppe für die Instanz wurde bereits erstellt.
 - Der Ressourcenname entspricht der Benennungsregel. die Instanz nur Kleinbuchstaben, Zahlen und Bindestriche enthält. Das erste Zeichen muss ein Buchstabe sein. Das letzte Zeichen muss ein Buchstabe oder eine Zahl sein. Der Wert muss zwischen 2 und 32 Zeichen lang sein.
 
-Wenn Sie die Azure Spring Cloud-Dienstinstanz mithilfe der Resource Manager-Vorlage einrichten möchten, lesen Sie zunächst den Artikel [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
+Wenn Sie die Azure Spring Cloud-Dienstinstanz mithilfe der Resource Manager-Vorlage einrichten möchten, lesen Sie zunächst den Artikel [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md).
 
 ### <a name="common-creation-issues"></a>Häufig auftretende Probleme bei der Erstellung
 

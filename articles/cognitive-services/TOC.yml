@@ -28,6 +28,8 @@
       href: plan-manage-costs.md
     - name: Diagnoseprotokollierung
       href: diagnostic-logging.md
+    - name: Ressourcen verwalten
+      href: manage-resources.md
     - name: Bereitstellen
       items:
         - name: Container
@@ -127,6 +129,8 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Azure-Updates
       href: 'https://azure.microsoft.com/updates/?query=cognitive%20services'
+    - name: Verantwortungsvolle Verwendung von KI
+      href: responsible-use-of-ai-overview.md
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Kompatibilität

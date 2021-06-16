@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 924c21037a464770fac13c9b45ddcf261ff5a058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62a6cd9e6302e66277b67ca7d37dd1ef33f96f1a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96905151"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031689"
 ---
 # <a name="define-and-use-moderation-jobs-api-console"></a>Definieren und Verwenden von Moderationsaufträgen (API-Konsole)
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 Ein Moderationsauftrag dient als eine Art Wrapper für die Funktionen der Inhaltsmoderation und von Workflows und Überprüfungen. In dieser Anleitung wird erläutert, wie Sie mithilfe der REST-APIs für Aufträge Inhaltsmoderationsaufträge initiieren und überprüfen können. Nachdem Sie sich mit der Struktur der APIs vertraut gemacht haben, können Sie diese Aufrufe bequem zu jeder REST-kompatiblen Plattform portieren.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: aa44a27fa5bf6b7b4ea649e1a9b9a69ef8cd78d3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 99cfe23cab5e9a61f548e78c914cafb1f6f63f7c
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049320"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985866"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Übersicht über den Datenimport – kognitive Azure-Suche
 
@@ -82,7 +82,7 @@ Beim Pull-Modell wird eine unterstützte Datenquelle durchsucht, und die Daten w
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL-Datenbank, SQL Managed Instance und SQL Server auf virtuellen Azure-Computern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [SharePoint Online (Vorschauversion)](search-howto-index-sharepoint-online.md)
-+ [Azure Data Lake Storage Gen2 (Vorschauversion)](search-howto-index-azure-data-lake-storage.md)
++ [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)
 
 Mit Indexern wird für einen Index eine Verbindung mit einer Datenquelle (normalerweise eine Tabelle, Sicht oder ähnliche Struktur) hergestellt, und Quellfelder werden gleichwertigen Feldern im Index zugeordnet. Während der Ausführung wird das Rowset automatisch in JSON transformiert und in den angegebenen Index geladen. Alle Indexer unterstützen die Verwendung von Zeitplänen, sodass Sie angeben können, wie häufig die Daten aktualisiert werden sollen. Die meisten Indexer verfügen über eine Änderungsnachverfolgung, wenn dies von der Datenquelle unterstützt wird. Da Änderungen und Löschvorgänge in vorhandenen Dokumenten nachverfolgt und neue Dokumente erkannt werden, ist es mithilfe von Indexern nicht mehr erforderlich, die Daten in Ihrem Index aktiv zu verwalten.
 

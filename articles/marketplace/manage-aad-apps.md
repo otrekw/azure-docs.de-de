@@ -8,12 +8,12 @@ ms.date: 04/06/2021
 author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 77f6b2ec71df63da1fe5ff52f948ded9502c5edb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bbc4df71d9aa04b362b7de9b179b335e4e12fd8c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076274"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971203"
 ---
 # <a name="add-and-manage-azure-ad-applications"></a>Hinzufügen und Verwalten von Azure AD-Anwendungen
 
@@ -41,7 +41,7 @@ Wenn Sie einem neuen Azure AD-Anwendungskonto Partner Center-Zugriff gewähren m
 1. Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen**) die Option **Azure AD-Anwendungen hinzufügen** aus.
 1. Wählen Sie auf der nächsten Seite **Neue Azure AD-Anwendung** aus.
 1. Geben Sie die **Antwort-URL** für die neue Azure AD-Anwendung ein. Dies ist die URL, über die sich die Benutzer anmelden und Ihre Azure AD-Anwendung verwenden können (auch bekannt als App-URL oder Anmelde-URL). Die *Antwort-URL* darf nicht länger als 256 Zeichen sein und muss in Ihrem Verzeichnis eindeutig sein.
-1. Geben Sie den **App-ID-URI** für die neue Azure AD-Anwendung ein. Dies ist ein logischer Bezeichner für die Azure AD-Anwendung, der angezeigt wird, wenn eine Anforderung für einmaliges Anmelden an Azure AD gesendet wird. Der *App-ID-URI* muss für jede Azure AD-Anwendung in Ihrem Verzeichnis eindeutig sein. Diese ID darf nicht länger als 256 Zeichen sein. Weitere Informationen zum App-ID-URI finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](/azure/active-directory/develop/howto-modify-supported-accounts#change-the-application-registration-to-support-different-accounts).
+1. Geben Sie den **App-ID-URI** für die neue Azure AD-Anwendung ein. Dies ist ein logischer Bezeichner für die Azure AD-Anwendung, der angezeigt wird, wenn eine Anforderung für einmaliges Anmelden an Azure AD gesendet wird. Der *App-ID-URI* muss für jede Azure AD-Anwendung in Ihrem Verzeichnis eindeutig sein. Diese ID darf nicht länger als 256 Zeichen sein. Weitere Informationen zum App-ID-URI finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/howto-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts).
 1. Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für die Azure AD-Anwendung an.
 1. Wählen Sie **Speichern** aus.
 

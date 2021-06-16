@@ -2,14 +2,14 @@
 title: Worum handelt es sich bei der Bare-Metal-Infrastruktur für Oracle?
 description: Hier finden Sie Informationen zu den Features der Bare-Metal-Infrastruktur für Oracle-Workloads.
 ms.topic: conceptual
-ms.subservice: workloads
+ms.subservice: baremetal-oracle
 ms.date: 04/14/2021
-ms.openlocfilehash: efb7506a0fa98ca93390bfe7d3cb1401cdbb77e2
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f3ecb1fbcad04455515408e4aadadfb2cef3cf9a
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107558738"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578583"
 ---
 # <a name="what-is-baremetal-infrastructure-for-oracle"></a>Worum handelt es sich bei der Bare-Metal-Infrastruktur für Oracle?
 

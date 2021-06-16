@@ -10,12 +10,12 @@ ms.service: azure-resource-manager
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 044c5abe7b44ebc4b9d0cd172f14a8cd1a648b2a
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: ee6aa5080745d7bcc6f77156b964fc2eccdc139b
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951574"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004599"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Schnellstart: Erstellen einer georeplizierten Containerregistrierung mithilfe einer ARM-Vorlage
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/). Die Vorlage richtet eine Registrierung und ein zusätzliches regionales Replikat ein.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/container-registry-geo-replication/). Die Vorlage richtet eine Registrierung und ein zusätzliches regionales Replikat ein.
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.containerregistry/container-registry-geo-replication/azuredeploy.json":::
 

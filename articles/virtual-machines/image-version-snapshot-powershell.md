@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 70ef194ab7f7403f31ad431eba25db5f71dfb580
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2e0f0dfbd834e5ca8e339057a002259d35eefc1e
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556902"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669339"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>Erstellen eines Images aus einem verwalteten Datenträger oder einer Momentaufnahme in einer Shared Image Gallery-Instanz mithilfe von PowerShell
 

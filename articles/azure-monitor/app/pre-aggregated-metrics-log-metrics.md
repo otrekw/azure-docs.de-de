@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: acbe535d740eb527d165be1675f31e759851a987
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ce337c97aa7eca601e72122568c3205ca21457f
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101717824"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372382"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Protokollbasierte und vorab aggregierte Metriken in Azure Application Insights
 
@@ -47,7 +47,7 @@ Es ist erwähnenswert, dass der Sammlungsendpunkt Ereignisse vor der Erfassungs-
 |------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
 | .NET Core und .NET Framework | Unterstützt (V2.13.1+)| Unterstützt über [TrackMetric](api-custom-events-metrics.md#trackmetric)| Unterstützt (V2.7.2+) über [GetMetric](get-metric.md) |
 | Java                         | Nicht unterstützt       | Unterstützt über [TrackMetric](api-custom-events-metrics.md#trackmetric)| Nicht unterstützt                           |
-| Node.js                      | Nicht unterstützt       | Unterstützt über [TrackMetric](api-custom-events-metrics.md#trackmetric)| Nicht unterstützt                           |
+| Node.js                      | Unterstützt (V2.0.0+) | Unterstützt über [TrackMetric](api-custom-events-metrics.md#trackmetric)| Nicht unterstützt                           |
 | Python                       | Nicht unterstützt       | Unterstützt                                 | Teilweise unterstützt über [OpenCensus.stats](opencensus-python.md#metrics) |  
 
 > [!NOTE]

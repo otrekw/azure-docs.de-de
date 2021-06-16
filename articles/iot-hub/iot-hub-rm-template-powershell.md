@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 1fedadfa7e5b4ec3d7de30d0ad3ef1b1bfa0e0ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ac3a75b2e00e0e769f758cf82eec7cfc6e5ec4c2
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92144393"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031473"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (PowerShell)
 
@@ -25,9 +26,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
-Die in dieser Schnellstartanleitung verwendete Resource Manager-Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/). Hier ist eine Kopie der Vorlage angegeben:
+Die in dieser Schnellstartanleitung verwendete Resource Manager-Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/iothub-with-consumergroup-create/). Hier ist eine Kopie der Vorlage angegeben:
 
-[!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
+[!code-json[iothub-creation](~/quickstart-templates/quickstarts/microsoft.devices/iothub-with-consumergroup-create/azuredeploy.json)]
 
 Mit der Vorlage wird eine Azure IoT Hub-Instanz mit drei Endpunkten („eventhub“, „cloud-to-device“ und „messaging“) sowie eine Consumergruppe erstellt. Weitere Beispiele für Vorlagen finden Sie unter [Azure Schnellstart-Vorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular). Das IoT Hub-Vorlagenschema finden Sie [hier](/azure/templates/microsoft.devices/iothub-allversions).
 
@@ -43,7 +44,7 @@ $iotHubName = Read-Host -Prompt "Enter the IoT Hub name"
 New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-iothub-with-consumergroup-create/azuredeploy.json" `
+    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.devices/iothub-with-consumergroup-create/azuredeploy.json" `
     -iotHubName $iotHubName
 ```
 

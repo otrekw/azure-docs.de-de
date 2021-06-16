@@ -42,32 +42,39 @@
               href: class-types.md
             - name: Adobe Creative Cloud
               href: class-type-adobe-creative-cloud.md
-            - name: Autodesk
-              href: class-type-autodesk.md
-            - name: Deep Learning mit Verarbeitung natürlicher Sprache
-              href: class-type-deep-learning-natural-language-processing.md
-            - name: Shellskripts unter Linux
-              href: class-type-shell-scripting-linux.md
-            - name: „Ethisches“ Hacken
-              href: class-type-ethical-hacking.md
-            - name: Netzwerk mit GNS3
-              href: class-type-networking-gns3.md
-            - name: Datenbankverwaltung
-              href: class-type-database-management.md
-            - name: Verwaltung und Entwicklung von SQL-Datenbanken
-              href: class-type-sql-server.md
-            - name: "Python und Jupyter\_Notebook-Instanzen"
-              href: class-type-jupyter-notebook.md
-            - name: Big Data-Analyse
-              href: class-type-big-data-analytics.md
-            - name: MATLAB
-              href: class-type-matlab.md
-            - name: 'SolidWorks: CAD (Computer-Aided Design)'
-              href: class-type-solidworks.md
             - name: ArcGIS
               href: class-type-arcgis.md
+            - name: Autodesk
+              href: class-type-autodesk.md
+            - name: Big Data-Analyse
+              href: class-type-big-data-analytics.md
+            - name: Datenbankverwaltung
+              href: class-type-database-management.md
+            - name: Deep Learning mit Verarbeitung natürlicher Sprache
+              href: class-type-deep-learning-natural-language-processing.md
+            - name: „Ethisches“ Hacken
+              href: class-type-ethical-hacking.md
+            - name: MATLAB
+              href: class-type-matlab.md
+            - name: Netzwerk mit GNS3
+              href: class-type-networking-gns3.md
             - name: Project Lead the Way
               href: class-type-pltw.md
+            - name: "Python und Jupyter\_Notebook-Instanzen"
+              href: class-type-jupyter-notebook.md
+            - name: React-Webentwicklung
+              items:
+                - name: React (Linux)
+                  href: class-type-react-linux.md
+                - name: React (Windows)
+                  href: class-type-react-windows.md
+            - name: Shellskripts unter Linux
+              href: class-type-shell-scripting-linux.md
+            - name: 'SolidWorks: CAD (Computer-Aided Design)'
+              displayName: SolidWorks CAD
+              href: class-type-solidworks.md
+            - name: Verwaltung und Entwicklung von SQL-Datenbanken
+              href: class-type-sql-server.md
         - name: "Verwenden von Azure Lab\_Services in Teams"
           items:
             - name: Übersicht
@@ -97,8 +104,12 @@
           href: how-to-connect-peer-virtual-network.md
         - name: Erstellen eines Labs mit einer freigegebenen Ressource
           href: how-to-create-a-lab-with-shared-resource.md
-        - name: Anfügen oder Trennen eines Katalogs mit freigegebenen Images
-          href: how-to-attach-detach-shared-image-gallery.md
+        - name: Verwenden von Shared Image Gallery
+          items:
+            - name: Anfügen oder Trennen eines Katalogs mit freigegebenen Images
+              href: how-to-attach-detach-shared-image-gallery.md
+            - name: Hochladen eines benutzerdefinierten Windows-Images in Shared Image Gallery
+              href: upload-custom-image-shared-image-gallery.md
         - name: Hinzufügen zusätzlicher Besitzer zu einem Classroom-Lab
           href: how-to-add-user-lab-owner.md
         - name: Konfigurieren der Firewalleinstellungen
@@ -107,8 +118,6 @@
           href: specify-marketplace-images.md
         - name: Angeben von Supportinformationen (Labkontobesitzer)
           href: lab-account-owner-support-information.md
-        - name: Hochladen eines benutzerdefiniertes Image in Shared Image Gallery
-          href: upload-custom-image-shared-image-gallery.md
     - name: Erstellen und Konfigurieren von Labs (Lehrkraft)
       items:
         - name: Erstellen und Verwalten von Labs
