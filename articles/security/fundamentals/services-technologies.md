@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 5914d5a54606f49f6fbd809a17e2b47375b58dcd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d2c8f16e340b0b8eca30dd8a67010020b6362df
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641968"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950427"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Bei Azure verfügbare Sicherheitsdienste und -technologien
 
@@ -89,7 +89,7 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 | [Azure-Lastenausgleich](../../load-balancer/load-balancer-overview.md)|Ein TCP/UDP-Anwendungslastenausgleich für das Netzwerk |
 | [Azure ExpressRoute](../../expressroute/expressroute-introduction.md)| Ein dedizierter WAN-Link zwischen einem lokalen Netzwerk und Azure Virtual Networks |
 | [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)| Ein globaler DNS-Lastenausgleich|
-| [Azure Anwendungsproxy](../../active-directory/manage-apps/application-proxy.md)| Ein Authentifizierungs-Front-End für den sicheren Remotezugriff auf lokal gehostete Webanwendungen |
+| [Azure Anwendungsproxy](../../active-directory/app-proxy/application-proxy.md)| Ein Authentifizierungs-Front-End für den sicheren Remotezugriff auf lokal gehostete Webanwendungen |
 |[Azure Firewall](../../firewall/overview.md)|Ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt.|
 |[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)|Schützt in Kombination mit bewährten Anwendungsentwurfsmethoden vor DDoS-Angriffen.|
 |[Virtual Network-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md)|Erweitern den privaten Adressraum Ihres virtuellen Netzwerks und die Identität Ihres VNET über eine direkte Verbindung auf die Azure-Dienste.|

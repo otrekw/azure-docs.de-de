@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/04/2021
-ms.openlocfilehash: 198702f619e490e8000e4430aab23a7f6bfb6d85
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 06/13/2021
+ms.openlocfilehash: 9aad86bc08d7190ae9fca9faab9dbfcfba93f206
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102107126"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062314"
 ---
 # <a name="create-rich-interactive-reports-of-security-center-data"></a>Erstellen umfassender, interaktiver Berichte zu Security Center-Daten
 
@@ -28,7 +28,7 @@ Im Azure Security Center können Sie die Sicherheitslage Ihres Unternehmens anha
 
 | Aspekt                          | Details                                                                                                                                      |
 |---------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
-| Status des Release:                  | Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                       |
+| Status des Release:                  | Allgemeine Verfügbarkeit (General Availability, GA)                                                                                                                    |
 | Preise:                        | Kostenlos                                                                                                                                         |
 | Erforderliche Rollen und Berechtigungen: | Um Arbeitsmappen zu speichern, müssen Sie mindestens die Berechtigung „Arbeitsmappenmitwirkender“ für die Zielressourcengruppe haben                                      |
 | Clouds:                         | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov) |

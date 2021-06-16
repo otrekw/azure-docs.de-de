@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/20/2021
 ms.author: mathapli
-ms.openlocfilehash: afbdd490a429c86f1842b83fb62c3ce6a023a0ed
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 71d585d16f4026ac605e7a61e64af89df806fed8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750943"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950034"
 ---
 # <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set"></a>Azure-Hybridvorteil für eine Linux-VM-Skalierungsgruppe
 
-**Der Azure-Hybridvorteil für eine Linux-VM-Skalierungsgruppe ist nun allgemein verfügbar.** Der Azure-Hybridvorteil kann Ihnen helfen, die Kosten für die Ausführung ihrer RHEL-und SLES-VM- [Skalierungs Gruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)zu reduzieren.
+**Der Azure-Hybridvorteil für eine Linux-VM-Skalierungsgruppe ist nun allgemein verfügbar.** Der Azure-Hybridvorteil kann Ihnen helfen, die Kosten für die Ausführung ihrer RHEL-und SLES-VM- [Skalierungs Gruppen](./overview.md)zu reduzieren.
 
 Mit diesem Vorteil zahlen Sie nur die Infrastrukturkosten für Ihr Skalierungsgruppe. Der Vorteil ist für alle RHEL- und SLES-Images im Marketplace mit nutzungsbasierter Bezahlung verfügbar.
 

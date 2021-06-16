@@ -16,12 +16,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d980b92bc4effc58ef84ef6ec70c3908f575e484
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 05883b3016ac3c8a8d26bfc02fea38e3adb2675a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102615600"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079749"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Preisinformationen für Azure-VMs mit SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -100,7 +100,7 @@ Informationen zum Erstellen einer Azure-VM mit SQL Server 2017 mit einem dieser
 Das Konzept der **Verwendung eigener SQL-Lizenzen über die „Lizenzmobilität“** , auch als **BYOL** bezeichnet, bedeutet, dass Sie eine vorhandene SQL Server-Volumenlizenz mit Software Assurance auf einem virtuellen Azure-Computer nutzen. Bei einem virtuellen SQL Server-Computer mit BYOL-Modell werden nur die Kosten für die Ausführung des Computers berechnet, nicht für die SQL Server-Lizenzierung. Dies setzt voraus, dass Sie bereits Lizenzen und Software Assurance über ein Volumenlizenzprogramm oder Cloud Solution Partner erworben haben.
 
 > [!NOTE]
-> BYOL-Images sind zurzeit nur für virtuelle Windows-Computer verfügbar. Sie können SQL Server jedoch manuell auf einem virtuellen Nur-Linux-Computer installieren. Weitere Informationen finden Sie in den Richtlinien zu [Häufig gestellte Fragen zu SQL Server auf einer Linux-VM](../linux/frequently-asked-questions-faq.md).
+> BYOL-Images sind zurzeit nur für virtuelle Windows-Computer verfügbar. Sie können SQL Server jedoch manuell auf einem virtuellen Nur-Linux-Computer installieren. Weitere Informationen finden Sie in den Richtlinien zu [Häufig gestellte Fragen zu SQL Server auf einer Linux-VM](../linux/frequently-asked-questions-faq.yml).
 
 Die Verwendung eigener SQL Server-Lizenzen über die „Lizenzmobilität“ empfiehlt sich in folgenden Fällen:
 

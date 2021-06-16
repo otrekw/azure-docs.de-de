@@ -14,12 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ebf835cad79f8c011be2fec91f6f4644ecd0941f
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c350d91e04ea284ed91c3afb6912d76ed1e39ab0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284123"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079695"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Registrieren mehrerer SQL Server-VMs mit der SQL-IaaS-Agent-Erweiterung in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -243,6 +244,6 @@ Kopieren Sie das vollständige Skript und speichern Sie es als `RegisterSqLVMs.p
 Weitere Informationen finden Sie in den folgenden Artikeln: 
 
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.md)
+* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.yml)
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
 * [SQL Server auf Windows-VMs – Versionshinweise](../../database/doc-changes-updates-release-notes.md)

@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4185ffd644d54c419f42c78326ca10bf100443c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c521752558e58f19b408b5e85e84863cb4cad2f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99051429"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966183"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-Bereitstellungspläne
 Sie suchen nach umfassenden Anleitungen für die Bereitstellung von Azure Active Directory-Funktionen (Azure AD)? In Azure AD-Bereitstellungsplänen werden der Geschäftswert, Planungsüberlegungen und Betriebsverfahren erläutert, die Sie zur erfolgreichen Bereitstellung gängiger Azure AD-Funktionen benötigen.
@@ -49,7 +49,7 @@ Verwenden Sie auf einer der Planseiten die Funktion Ihres Browsers zum Drucken a
 | -| -|
 | [Verteiltes Azure-Dateisystem (ADFS) für Kennworthashsynchronisierung](../hybrid/plan-migrate-adfs-password-hash-sync.md)| Mit der Kennworthashsynchronisierung werden Hashes von Benutzerkennwörtern aus dem lokalen Active Directory mit Azure AD synchronisiert, sodass Azure AD Benutzer ohne Interaktion mit dem lokalen Active Directory authentifizieren kann. |
 | [Verteiltes Azure-Dateisystem (ADFS) für Passthrough-Authentifizierung](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Mit der Azure AD-Pass-Through-Authentifizierung können sich Benutzer mit denselben Kennwörtern sowohl bei lokalen als auch bei cloudbasierten Anwendungen anmelden. Diese Funktion stellt den Benutzern eine benutzerfreundlichere Oberfläche zur Verfügung, da ein Kennwort wegfällt, und sie reduziert die Kosten des IT-Helpdesks, da Benutzer seltener vergessen, wie sie sich anmelden. Wenn Benutzer sich mithilfe von Azure AD anmelden, überprüft dieses Feature die Benutzerkennwörter direkt anhand Ihres lokalen Active Directory. |
-| [Azure AD-Anwendungsproxy](../manage-apps/application-proxy-deployment-plan.md) |Heutzutage möchten Mitarbeiter an jedem Ort, zu jeder Zeit und mit jedem Gerät produktiv arbeiten können. Sie müssen auf SaaS-Apps in der Cloud und lokal auf Unternehmensanwendungen zugreifen. Der Azure AD-Anwendungsproxy ermöglicht diesen stabilen Zugriff ohne kostspielige und komplexe virtuelle private Netzwerke (VPNs) oder demilitarisierte Zonen (DMZs). |
+| [Azure AD-Anwendungsproxy](../app-proxy/application-proxy-deployment-plan.md) |Heutzutage möchten Mitarbeiter an jedem Ort, zu jeder Zeit und mit jedem Gerät produktiv arbeiten können. Sie müssen auf SaaS-Apps in der Cloud und lokal auf Unternehmensanwendungen zugreifen. Der Azure AD-Anwendungsproxy ermöglicht diesen stabilen Zugriff ohne kostspielige und komplexe virtuelle private Netzwerke (VPNs) oder demilitarisierte Zonen (DMZs). |
 | [Nahtloses einmaliges Anmelden](../hybrid/how-to-connect-sso-quick-start.md)| Die nahtlose einmalige Anmeldung mit Azure Active Directory (nahtlose SSO mit Azure AD) meldet Benutzer automatisch auf ihren Unternehmensgeräten an, die mit dem Unternehmensnetzwerk verbunden sind. Mit diesem Feature müssen Benutzer zur Anmeldung bei Azure AD kein Kennwort und in der Regel nicht einmal einen Benutzernamen eingeben. Dieses Feature ermöglicht autorisierten Benutzern einen einfachen Zugriff auf Ihre cloudbasierten Anwendungen, ohne dass zusätzliche lokale Komponenten erforderlich sind. |
 
 ## <a name="deploy-user-provisioning"></a>Bereitstellen der Benutzerbereitstellung

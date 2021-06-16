@@ -1,0 +1,207 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen – Azure DNS
+  description: In diesem Artikel finden Sie häufig gestellte Fragen zu Azure DNS.
+  services: dns
+  author: rohinkoul
+  ms.service: dns
+  ms.topic: article
+  ms.date: 01/11/2021
+  ms.author: rohink
+  ms.openlocfilehash: c596fadd972503311859f2561365cd4e56dff98f
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "111907219"
+title: Häufig gestellte Fragen zu Azure DNS
+summary: ''
+sections:
+- name: Informationen zu Azure DNS
+  questions:
+  - question: >
+      Was ist Azure DNS?
+    answer: >
+      Das Domain Name System (DNS) führt die Übersetzung bzw. Auflösung einer Website oder eines Dienstnamens in die zugehörige IP-Adresse durch. Azure DNS ist ein Hostingdienst für DNS-Domänen. Er ermöglicht eine Namensauflösung mithilfe der Microsoft Azure-Infrastruktur. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten.
+
+
+      DNS-Domänen in Azure DNS werden im globalen Azure-Netzwerk von DNS-Servern gehostet. Bei diesem System werden Anycast-Netzwerke verwendet, sodass jede DNS-Abfrage vom nächsten verfügbaren DNS-Server beantwortet wird. Azure DNS sorgt für Ihre Domäne für eine schnelle Leistung und Hochverfügbarkeit.
+
+
+      Azure DNS basiert auf Azure Resource Manager. Azure DNS profitiert von Resource Manager-Funktionen, z. B. rollenbasierter Zugriffskontrolle von Azure, Überwachungsprotokollen und Ressourcensperren. Sie können Domänen und Einträge über das Azure-Portal, Azure PowerShell-Cmdlets und die plattformübergreifende Azure-Befehlszeilenschnittstelle verwalten. Anwendungen, für die eine automatische DNS-Verwaltung erforderlich ist, können über die REST-API und SDKs mit dem Dienst zusammenarbeiten.
+  - question: >
+      Wie viel kostet Azure DNS?
+    answer: >
+      Das Abrechnungsmodell von Azure DNS basiert auf der Anzahl von DNS-Zonen, die in Azure DNS gehostet werden. Außerdem basiert es auf der Anzahl von empfangenen DNS-Abfragen. Rabatte werden basierend auf der Nutzung angeboten.
+
+
+      Weitere Informationen finden Sie auf der [Seite mit den Preisen von Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
+  - question: >
+      Wie lautet die Vereinbarung zum Servicelevel (SLA) für Azure DNS?
+    answer: >
+      Azure garantiert für gültige DNS-Anforderungen, dass in 100 % der Fälle eine Antwort von mindestens einem Azure DNS-Namenserver empfangen wird.
+
+
+      Weitere Informationen finden Sie auf der [Seite mit der SLA für Azure DNS](https://azure.microsoft.com/support/legal/sla/dns).
+  - question: "Was ist eine DNS-Zone? Ist das dasselbe wie eine DNS-Domäne? \n"
+    answer: >
+      Eine Domäne ist ein eindeutiger Name im Domain Name System. Ein Beispiel wäre etwa „contoso.com“.
+
+
+      Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Beispielsweise kann die Domäne „contoso.com“ mehrere DNS-Einträge enthalten. Die Einträge können „mail.contoso.com“ für einen Mailserver und „www\.contoso.com“ für eine Website enthalten. Diese Einträge werden in der DNS-Zone „contoso.com“ gehostet.
+
+
+      Ein Domänenname ist *nur ein Name*. Eine DNS-Zone ist eine Datenressource, die die DNS-Einträge für einen Domänennamen enthält. Azure DNS ermöglicht es Ihnen, eine DNS-Zone zu hosten und die DNS-Einträge für eine Domäne in Azure zu verwalten. Darüber hinaus stellt der Dienst DNS-Namenserver bereit, um DNS-Abfragen aus dem Internet zu beantworten.
+  - question: "Muss ich einen DNS-Domänennamen erwerben, um Azure DNS nutzen zu können? \n"
+    answer: >
+      Nicht unbedingt.
+
+
+      Sie müssen keine Domäne erwerben, um eine DNS-Zone in Azure DNS zu hosten. Sie können jederzeit eine DNS-Zone erstellen, ohne einen Domänennamen zu besitzen. DNS-Abfragen für diese Zone werden nur aufgelöst, wenn sie an die Azure DNS-Namenserver weitergeleitet werden, die der Zone zugewiesen sind.
+
+
+      Wenn Sie Ihre DNS-Zone mit der globalen DNS-Hierarchie verknüpfen möchten, müssen Sie den Domänennamen erwerben. DNS-Abfragen aus aller Welt können dann Ihre DNS-Zone finden und Antworten mit Ihren DNS-Einträgen erhalten.
+- name: Azure DNS-Features
+  questions:
+  - question: >
+      Gibt es Einschränkungen beim Verwenden von Aliaseinträgen für einen Domänennamen-Apex mit Traffic Manager?
+    answer: "Ja. Sie müssen für Azure Traffic Manager statische öffentliche IP-Adressen verwenden. Konfigurieren Sie den **externen Endpunkt** als Ziel, indem Sie eine statische IP-Adresse verwenden. \n"
+  - question: >
+      Unterstützt Azure DNS die Weiterleitung von Datenverkehr oder Endpunktfailover auf Basis von DNS?
+    answer: >
+      Die Weiterleitung von Datenverkehr und Endpunktfailover auf Basis von DNS werden von Traffic Manager bereitgestellt. Traffic Manager ist ein separater Azure-Dienst, der mit Azure DNS verwendet werden kann. Weitere Informationen finden Sie in der [Traffic Manager-Übersicht](../traffic-manager/traffic-manager-overview.md).
+
+
+      Azure DNS unterstützt nur das Hosten von statischen DNS-Domänen, in denen jede DNS-Abfrage für einen bestimmten DNS-Eintrag immer die gleiche DNS-Antwort erhält.
+  - question: >
+      Unterstützt Azure DNS die Registrierung von Domänennamen?
+    answer: >
+      Nein. Für Azure DNS wird die Option zum Erwerben von Domänennamen derzeit nicht unterstützt. Zum Erwerben von Domänen müssen Sie eine Drittanbieter-Registrierungsstelle für Domänennamen verwenden. Die Registrierungsstelle erhebt in der Regel eine geringe jährliche Gebühr. Die Domänen können dann in Azure DNS für die Verwaltung von DNS-Einträgen gehostet werden. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
+
+
+      Das Feature zum Erwerben von Domänennamen wird im Azure-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
+  - question: >
+      Unterstützt Azure DNS DNSSEC?
+    answer: >
+      Nein. Azure DNS unterstützt derzeit keine Domain Name System-Sicherheitserweiterungen (Domain Name System Security Extensions, DNSSEC).
+
+
+      Das Feature DNSSEC wird im Azure DNS-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support).
+  - question: >
+      Unterstützt Azure DNS Zonenübertragungen (AXFR/IXFR)?
+    answer: >
+      Nein. Azure DNS unterstützt derzeit keine Zonenübertragungen. DNS-Zonen können [mithilfe der Azure CLI in Azure DNS importiert werden](dns-import-export.md). DNS-Einträge werden über das [Azure DNS-Verwaltungsportal](dns-operations-recordsets-portal.md), die [REST-API](/powershell/module/az.dns), das [SDK](dns-sdk.md), [PowerShell-Cmdlets](dns-operations-recordsets.md) oder das [CLI-Tool](dns-operations-recordsets-cli.md) verwaltet.
+
+
+      Das Feature für Zonenübertragungen wird im Azure DNS-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
+  - question: >
+      Unterstützt Azure DNS URL-Umleitungen?
+    answer: >
+      Nein. URL-Umleitungsdienste sind kein DNS-Dienst. Sie sind nicht auf der DNS-Ebene aktiv, sondern auf der HTTP-Ebene. Bei einigen DNS-Anbietern gehört ein Dienst für URL-Umleitungen zum Gesamtangebot. Dieser Dienst wird von Azure DNS derzeit nicht unterstützt.
+
+
+      Das Feature für die URL-Umleitung wird im Azure DNS-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
+  - question: >
+      Unterstützt Azure DNS den erweiterten ASCII-Codierungssatz (8 Bit) für TXT-Eintragssätze?
+    answer: "Ja. Azure DNS unterstützt den erweiterten ASCII-Codierungssatz für TXT-Eintragssätze. Sie müssen aber die aktuelle Version der Azure-REST-APIs und SDKs und von PowerShell und der CLI verwenden. Versionen, die ein älteres Datum als 1. Oktober 2017 haben, oder das SDK 2.1 unterstützen den erweiterten ASCII-Satz nicht. \n\nBeispielsweise können Sie eine Zeichenfolge als Wert für einen TXT-Eintrag angeben, der das erweiterte ASCII-Zeichen \\128 enthält. Ein Beispiel hierfür ist „abcd\\128efgh“. Azure DNS nutzt den Bytewert dieses Zeichens (128) für die interne Darstellung. Zum Zeitpunkt der DNS-Auflösung wird dieser Bytewert in der Antwort zurückgegeben. Beachten Sie auch, dass „abc“ und „\\097\\098\\099“, was die Auflösung betrifft, austauschbar sind. \n\nWir befolgen für TXT-Einträge die Escaperegeln für das Zonendatei-Masterformat in [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Zum Beispiel fungiert `\\` jetzt tatsächlich laut RFC als Escapezeichen für alles. Wenn Sie `A\\B` als TXT-Eintragswert angeben, wird dieser nur als `AB` dargestellt und aufgelöst. Wenn Sie wirklich möchten, dass der TXT-Eintrag in `A\\B` aufgelöst wird, müssen Sie `\\` wieder mit dem Escapezeichen versehen. Geben Sie beispielsweise `A\\\\B` an.\n\nDiese Unterstützung ist derzeit nicht für TXT-Einträge verfügbar, die im Azure-Portal erstellt wurden.\n"
+- name: Aliaseinträge
+  questions:
+  - question: >
+      In welchen Szenarien sind Aliaseinträge nützlich?
+    answer: >
+      Informationen hierzu finden Sie unter [Azure DNS-Aliaseinträge – Übersicht](dns-alias.md) im Abschnitt mit den Szenarien.
+  - question: >
+      Welche Eintragstypen werden für Aliaseintragssätze unterstützt?
+    answer: "Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Zone unterstützt:\n \n- Ein \n- AAAA\n- CNAME \n"
+  - question: >
+      Welche Ressourcen werden als Ziele für Aliaseintragssätze unterstützt?
+    answer: >
+      - **Verweisen auf eine öffentliche IP-Ressource aus einem DNS-A/AAAA-Eintragssatz:** Sie können einen A/AAAA-Eintragssatz erstellen und zu einem Aliaseintragssatz machen, um auf eine öffentliche IP-Ressource zu verweisen.
+
+      - **Verweisen auf ein Traffic Manager-Profil aus einem DNS-A/AAAA/CNAME-Eintragssatz:** Sie können über einen DNS-Eintragssatz vom Typ CNAME auf den CNAME eines Traffic Manager-Profils verweisen. Ein Beispiel hierfür ist „contoso.trafficmanager.net“. Außerdem können Sie nun auch auf ein Traffic Manager-Profil verweisen, das über externe Endpunkte eines A- oder AAAA-Eintragssatzes in Ihrer DNS-Zone verfügt.
+
+      - **Verweisen auf einen Endpunkt eines Azure Content Delivery Network (CDN)** Dies ist nützlich, wenn Sie statische Websites mit Azure Storage und Azure CDN erstellen.
+
+      - **Verweisen auf einen anderen DNS-Ressourceneintragssatz innerhalb derselben Zone:** Aliaseinträge können auf andere Eintragssätze desselben Typs verweisen. So kann beispielsweise ein DNS-CNAME-Eintragssatz ein Alias für einen anderen CNAME-Eintragsatz desselben Typs sein. Dies ist nützlich, wenn Sie möchten, dass einige Eintragssätze Aliase und andere keine Aliase sind.
+  - question: >
+      Kann ich Aliaseinträge im Azure-Portal erstellen und aktualisieren?
+    answer: >
+      Ja. Sie können Aliaseinträge im Azure-Portal mit den Azure-REST-APIs, PowerShell, der CLI und den SDKs erstellen oder verwalten.
+  - question: >
+      Wird mit Aliaseinträgen sichergestellt, dass mein DNS-Eintragssatz gelöscht wird, wenn die zugrunde liegende öffentliche IP-Adresse gelöscht wird?
+    answer: >
+      Ja. Dieses Feature ist eine der Kernfunktionen von Aliaseinträgen. Es unterstützt Sie dabei, potenzielle Ausfälle für die Benutzer Ihrer Anwendung zu vermeiden.
+  - question: >
+      Kann mit Aliaseinträgen sichergestellt werden, dass mein DNS-Eintragssatz mit den richtigen IP-Adressen aktualisiert wird, wenn sich die zugrunde liegende öffentliche IP-Adresse ändert?
+    answer: >
+      Ja. Dieses Feature ist eine der Kernfunktionen von Aliaseinträgen. Sie können mit dessen Hilfe potenzielle Ausfälle oder Sicherheitsrisiken für Ihre Anwendung vermeiden.
+  - question: >
+      Gelten Einschränkungen für die Verwendung von Aliaseintragssätzen für A- oder AAAA-Einträge zum Verweisen auf Traffic Manager?
+    answer: >
+      Ja. Um in Form eines Alias für einen A- oder AAAA-Eintragssatz auf ein Traffic Manager-Profil zu verweisen, müssen für das Traffic Manager-Profil ausschließlich externe Endpunkte verwendet werden. Geben Sie beim Erstellen der externen Endpunkte in Traffic Manager die tatsächlichen IP-Adressen der Endpunkte an.
+  - question: >
+      Fallen zusätzliche Gebühren für die Verwendung von Aliaseinträgen an?
+    answer: >
+      Aliaseinträge stellen eine Qualifikation für einen gültigen DNS-Ressourceneintragssatz dar. Für Aliaseinträge fällt keine weitere Abrechnung an.
+- name: Verwenden von Azure DNS
+  questions:
+  - question: >
+      Kann ich eine Domäne mit Azure DNS und einem anderen DNS-Anbieter gemeinsam hosten?
+    answer: >
+      Ja. Azure DNS unterstützt das gemeinsame Hosten von Domänen mit anderen DNS-Diensten.
+
+
+      Ändern Sie zum Einrichten des gemeinsamen Hostens die NS-Einträge für die Domäne, damit sie auf die Namenserver beider Anbieter verweisen. Mit den NS-Einträgen (Namenserver) wird gesteuert, welche Anbieter DNS-Abfragen für die Domäne empfangen. Sie können diese NS-Einträge in Azure DNS, beim anderen Anbieter und in der übergeordneten Zone ändern. Die übergeordnete Zone wird normalerweise über die Domänennamen-Registrierungsstelle konfiguriert. Weitere Informationen zur DNS-Delegierung finden Sie unter [Delegieren von Domänen](dns-domain-delegation.md).
+
+
+      Stellen Sie auch sicher, dass die DNS-Einträge für die Domäne zwischen beiden DNS-Anbietern synchron sind. Azure DNS unterstützt derzeit keine DNS-Zonenübertragungen. DNS-Einträge müssen über das [Azure DNS-Verwaltungsportal](dns-operations-recordsets-portal.md), die [REST-API](/rest/api/dns/), das [SDK](dns-sdk.md), [PowerShell-Cmdlets](dns-operations-recordsets.md) oder das [CLI-Tool](dns-operations-recordsets-cli.md) synchronisiert werden.
+  - question: >
+      Muss ich meine Domäne an alle vier Azure DNS-Namenserver delegieren?
+    answer: >
+      Ja. Azure DNS weist jeder DNS-Zone vier Namenserver zu. Diese Anordnung dient der Fehlereingrenzung und Verbesserung der Resilienz. Delegieren Sie Ihre Domäne an alle vier Namenserver, um die Qualifikation für die Azure DNS-SLA zu ermöglichen.
+  - question: >
+      Welche Nutzungsgrenzwerte gelten für Azure DNS?
+    answer: >
+      Bei Verwendung von Azure DNS gelten folgende Standardgrenzwerte.
+
+
+      [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
+  - question: >
+      Kann ich eine Azure DNS-Zone zwischen Ressourcengruppen oder Abonnements verschieben?
+    answer: >
+      Ja. DNS-Zonen können zwischen Ressourcengruppen oder Abonnements verschoben werden.
+
+
+      Es ergeben sich keine Auswirkungen auf DNS-Abfragen, wenn Sie eine DNS-Zone verschieben. Die Namenserver, die der Zone zugewiesen sind, bleiben gleich. DNS-Abfragen werden als normaler Durchsatz verarbeitet.
+
+
+      Weitere Informationen und Anweisungen zum Verschieben von DNS-Zonen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+  - question: >
+      Wie lange dauert es, bis DNS-Änderungen wirksam werden?
+    answer: >
+      Neue DNS-Zonen und DNS-Einträge werden normalerweise schnell auf den Azure DNS-Namenservern angezeigt. Dies dauert nur einige Sekunden.
+
+
+      Änderungen an vorhandenen DNS-Einträgen können etwas länger dauern. Sie werden normalerweise innerhalb von 60 Sekunden auf den Azure DNS-Namenservern angezeigt. Die DNS-Zwischenspeicherung durch DNS-Clients und rekursive DNS-Resolver außerhalb von Azure DNS kann sich auch auf die Dauer auswirken. Verwenden Sie zum Steuern dieser Zwischenspeicherungsdauer die Eigenschaft für die Gültigkeitsdauer (Time To Live, TTL) der einzelnen Ressourceneintragssätze.
+  - question: >
+      Wie kann ich meine DNS-Zonen vor versehentlichem Löschen schützen?
+    answer: >
+      Azure DNS wird mit Azure Resource Manager verwaltet. Azure DNS profitiert von den Features für die Zugriffssteuerung, die von Azure Resource Manager bereitgestellt werden. Mit der rollenbasierten Zugriffssteuerung von Azure kann gesteuert werden, welche Benutzer über Lese- oder Schreibzugriff auf DNS-Zonen und Ressourceneintragssätze verfügen. Mit Ressourcensperren wird die versehentliche Änderung oder Löschung von DNS-Zonen und -Ressourceneintragssätzen verhindert.
+
+
+      Weitere Informationen finden Sie unter [Schützen von DNS-Zonen und -Einträgen](dns-protect-zones-recordsets.md).
+  - question: >
+      Wie richte ich SPF-Datensätze in Azure DNS ein?
+    answer: >
+      [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
+  - question: "Wird bei Azure DNS-Namenservern über IPv6 aufgelöst? \n"
+    answer: >
+      Ja. Azure DNS-Namenserver verfügen über einen dualen Stapel. Dies bedeutet, dass hierfür IPv4- und IPv6-Adressen verwendet werden. Zum Ermitteln der IPv6-Adresse für die Azure DNS-Namenserver, die Ihrer DNS-Zone zugewiesen sind, verwenden Sie ein Tool wie „nslookup“. z. B. `nslookup -q=aaaa <Azure DNS Nameserver>`.
+  - question: >
+      Wie richte ich einen IDN in Azure DNS ein?
+    answer: >
+      Bei internationalen Domänennamen (IDNs) wird jeder DNS-Name mit [Punycode](https://en.wikipedia.org/wiki/Punycode) codiert. DNS-Abfragen werden mit diesen per Punycode codierten Namen durchgeführt.
+
+
+      Konvertieren Sie den Zonennamen oder den Namen des Ressourceneintragssatzes in Punycode, um IDNs in Azure DNS zu konfigurieren. Azure DNS unterstützt die integrierte Konvertierung in bzw. aus Punycode gegenwärtig nicht.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n- [Weitere Informationen zu Azure DNS](dns-overview.md)\n        \n- [Weitere Informationen zur Verwendung von Azure DNS für private Domänen](private-dns-overview.md)\n        \n- [Weitere Informationen zu DNS-Zonen und -Einträgen](dns-zones-records.md)\n        \n- [Erste Schritte mit Azure DNS](dns-getstarted-portal.md)"

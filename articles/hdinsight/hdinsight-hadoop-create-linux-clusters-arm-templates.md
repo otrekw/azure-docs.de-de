@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/07/2020
-ms.openlocfilehash: 9d35e5730d35309b7881723df5a682f6c9990a59
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7d39163fa2890eb16a455d505baa0a6bbeddd42e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072619"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950617"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Erstellen von Apache Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen
 
@@ -33,7 +33,7 @@ Sie finden Beispiele für HDInsight-Vorlagen unter [Azure-Schnellstartvorlagen](
 
 Weitere Informationen über Resource Manager-Vorlagen finden Sie in den folgenden Artikeln und Beispielen:
 
-* [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
+* [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/templates/syntax.md)
 * [Bereitstellen einer Anwendung mit Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/deploy-powershell.md)
 * [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions)-Vorlagenreferenz
 * [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
@@ -76,5 +76,5 @@ In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-C
 * Ein Beispiel für die Bereitstellung von Ressourcen über die .NET-Clientbibliothek finden Sie unter [Bereitstellen von Ressourcen mithilfe von .NET-Bibliotheken und einer Vorlage](/previous-versions/azure/virtual-machines/windows/csharp-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Ein ausführliches Beispiel für die Bereitstellung einer Anwendung finden Sie unter [Vorhersagbares Bereitstellen von Microservices in Azure](../app-service/deploy-complex-application-predictably.md).
 * Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](../devtest-labs/devtest-lab-overview.md).
-* Informationen zu den Abschnitten der Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Vorlagen](../azure-resource-manager/templates/template-syntax.md).
+* Informationen zu den Abschnitten der Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Vorlagen](../azure-resource-manager/templates/syntax.md).
 * Unter [Vorlagenfunktionen](../azure-resource-manager/templates/template-functions.md)finden Sie eine Liste der Funktionen, die Sie in einer Azure Resource Manager-Vorlage verwenden können.
