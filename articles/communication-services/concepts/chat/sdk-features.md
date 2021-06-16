@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 561855704d157f9ad826b5db83600a79d9437fc6
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9fd77ec4f72555e2d326a07831abe2648a68fbaf
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500684"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592050"
 ---
 # <a name="chat-sdk-overview"></a>Übersicht über das Chat SDK 
 
@@ -40,7 +40,7 @@ Die folgende Liste enthält die Features, die aktuell in den Chat SDKs von Comm
 |                   | Aktualisieren des Inhalts der gesendeten Nachricht                                                                               | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
 |                   | Löschen einer zuvor von Ihnen gesendeten Nachricht                                                                                                      | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
 |                   | Lesebestätigungen für Nachrichten, die von anderen Teilnehmern in einem Chat gelesen wurden                                        | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
-|                   | Erhalten einer Benachrichtigung, wenn Teilnehmer aktiv eine Nachricht in einem Chatthread eingeben                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
+|                   | Erhalten einer Benachrichtigung, wenn Teilnehmer aktiv eine Nachricht in einem Chatthread eingeben                                         | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
 |                   | Abrufen aller Nachrichten in einem Chatthread                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | Senden von Unicode-Emojis im Nachrichteninhalt                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
 |Echtzeitbenachrichtigungen (durch proprietäres Signalisierungspaket**)|  Chatclients können Echtzeitaktualisierungen für eingehende Nachrichten und andere Vorgänge abonnieren, die in einem Chatthread stattfinden. Eine Liste der unterstützten Aktualisierungen für Echtzeitbenachrichtigungen finden Sie unter [Chatkonzepte](concepts.md#real-time-notifications).                                     | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
