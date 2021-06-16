@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 177215775c9e83286aa98872eed0ab211a8f36ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0d838f5b6f37d9ebac01318cfe5df0b225270cc8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94948747"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665305"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatisieren der NSG-Überwachung mit der Azure Network Watcher-Sicherheitsgruppenansicht
 
@@ -28,7 +29,7 @@ Wenn Sie mit Netzwerksicherheitsgruppen nicht vertraut sind, informieren Sie sic
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Vorbereitung
 
 In diesem Szenario vergleichen Sie eine bekannte gute Grundlage mit den für einen virtuellen Computer zurückgegebenen Ergebnissen der Sicherheitsgruppenansicht.
 

@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Managed Instance
 description: Stellen Sie mithilfe von SQL Server Management Studio (SSMS) und einer Point-to-Site-Verbindung eine Verbindung von einem lokalen Clientcomputer zu einer verwalteten Azure SQL-Instanz her.
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 791c8a754a83762b03290e98b2e05cd2626ad672
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92788365"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694022"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer zu einer verwalteten Azure SQL-Instanz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

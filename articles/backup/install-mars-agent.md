@@ -2,13 +2,13 @@
 title: Installieren des Microsoft Azure Recovery Services-Agents (MARS)
 description: Hier erfahren Sie, wie Sie den MARS-Agent (Microsoft Azure Recovery Services) zum Sichern von Windows-Computern installieren.
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: 3ea48aaa6aad4a51463c4c028ead22f31163f810
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 06/04/2021
+ms.openlocfilehash: c52b65c06a4920020e4358c131870c0fe77b2584
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519220"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970637"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Installieren des Azure Backup-MARS-Agents
 
@@ -63,51 +63,7 @@ So ändern Sie den Speicherreplikationstyp
 
 ### <a name="verify-internet-access"></a>Überprüfen des Internetzugriffs
 
-Wenn Ihr Computer über einen eingeschränkten Internetzugriff verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxy die folgenden URLs und IP-Adressen zulassen:
-
-* URLs
-  * `www.msftncsi.com`
-  * `*.Microsoft.com`
-  * `*.WindowsAzure.com`
-  * `*.microsoftonline.com`
-  * `*.windows.net`
-  * `www.msftconnecttest.com`
-* IP-Adressen
-  * 20.190.128.0/18
-  * 40.126.0.0/18
-
-### <a name="use-azure-expressroute"></a>Verwenden von Azure ExpressRoute
-
-Sie können Ihre Daten über Azure ExpressRoute mithilfe von öffentlichem Peering (verfügbar für alte Leitungen) und Microsoft-Peering sichern. Die Sicherung über privates Peering wird nicht unterstützt.
-
-Um öffentliches Peering zu verwenden, stellen Sie zunächst sicher, dass Sie auf die folgenden Domänen und Adressen zugreifen können:
-
-* `http://www.msftncsi.com/ncsi.txt`
-* `http://www.msftconnecttest.com/connecttest.txt`
-* `microsoft.com`
-* `.WindowsAzure.com`
-* `.microsoftonline.com`
-* `.windows.net`
-* IP-Adressen
-  * 20.190.128.0/18
-  * 40.126.0.0/18
-
-Um Microsoft-Peering zu verwenden, wählen Sie die folgenden Dienste, Regionen und relevanten Communitywerte aus:
-
-* Azure Active Directory (12076:5060)
-* Azure-Region, entsprechend dem Standort Ihres Recovery Services-Tresors
-* Azure Storage, entsprechend dem Standort Ihres Recovery Services-Tresors
-
-Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](../expressroute/expressroute-routing.md).
-
-> [!NOTE]
-> Öffentliches Peering gilt für neue Leitungen als veraltet.
-
-Alle vorhergehenden URLs und IP-Adressen verwenden das HTTPS-Protokoll an Port 443.
-
-### <a name="private-endpoints"></a>Private Endpunkte
-
-[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
+[!INCLUDE [Configuring network connectivity](../../includes/backup-network-connectivity.md)]
 
 ## <a name="download-the-mars-agent"></a>Herunterladen des MARS-Agents
 

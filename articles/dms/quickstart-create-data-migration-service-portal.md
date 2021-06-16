@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/29/2021
-ms.openlocfilehash: 8a500104a0273b9e131815c4dc832bd33729cd51
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 267857df03bb85ad8455979919e3b1e267a9e127
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566590"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586062"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Schnellstart: Erstellen einer Azure Database Migration Service-Instanz über das Azure-Portal
 
@@ -90,6 +90,5 @@ Sie können alle in dieser Schnellstartanleitung erstellten Ressourcen bereinige
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Offlinemigration von SQL Server zu Azure SQL-Datenbank](tutorial-sql-server-to-azure-sql.md)
-* [Onlinemigration von SQL Server zu Azure SQL-Datenbank](./tutorial-sql-server-to-azure-sql.md)
 * [Offlinemigration von SQL Server zu Azure SQL Managed Instance](tutorial-sql-server-to-managed-instance.md)
 * [Onlinemigration von SQL Server zu Azure SQL Managed Instance](tutorial-sql-server-managed-instance-online.md)

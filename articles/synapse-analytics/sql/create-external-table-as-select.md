@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93a8a4d2e7f4f8a455f6437c69dee4c44c2e29f3
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 83c3fd114ab7ed3bf04d47ef3be2fc563b6b43d5
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751921"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586182"
 ---
 # <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Speichern von Abfrageergebnissen im Speicher mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
@@ -105,7 +105,7 @@ Nachdem Sie Ihre Ergebnisse gespeichert haben, können die Daten in der externen
 - [Angeben von Partitionen in CETAS](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/19520860-polybase-partitioned-by-functionality-when-creati)
 - [Angeben von Dateigrößen und Zählern](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/42263617-cetas-specify-number-of-parquet-files-file-size)
 
-Es werden ausschließlich die Ausgabetypen „Parquet“ und „CSV“ unterstützt. Sie können auf der [Azure-Feedbackwebsite](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions) für die anderen Typen abstimmen.
+Es werden ausschließlich die Ausgabetypen „Parquet“ und „CSV“ unterstützt. Sie können auf der [Azure-Feedbackwebsite](https://feedback.azure.com/forums/307516-azure-synapse-analytics/) für die anderen Typen abstimmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

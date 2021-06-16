@@ -30,7 +30,7 @@ Wenn Sie noch nie eine ARM-Vorlage bereitgestellt haben, ist es hilfreich, sich 
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-media-services-create/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/media-services-create/).
 
 Die Syntax für den JSON-Codebereich lautet wie folgt:
 

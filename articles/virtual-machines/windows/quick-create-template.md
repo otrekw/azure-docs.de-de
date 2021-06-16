@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: d56f565dab1b83e0cf9572e6807577be32678fe7
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: b3ba1aefb02e8cfb139b1afc07e2c57e1d80fe94
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839111"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080271"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mithilfe einer ARM-Vorlage
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/vm-simple-windows/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json":::
 
@@ -61,7 +61,7 @@ In der Vorlage sind mehrere Ressourcen definiert:
     - **Ressourcengruppe**: Wählen Sie in der Dropdownliste eine bereits vorhandene Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie anschließend auf **OK**.
     - **Standort**: Wählen Sie einen Standort aus.  Beispiel: **USA, Mitte**.
     - **Administratorbenutzername**: Geben Sie einen Benutzernamen an, z. B. *azureuser*.
-    - **Administratorkennwort**: Geben Sie ein Kennwort für das Administratorkonto an. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
+    - **Administratorkennwort**: Geben Sie ein Kennwort für das Administratorkonto an. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.yml#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.
     - **Präfix der DNS-Bezeichnung**: Geben Sie einen eindeutigen Bezeichner ein, der als Teil der DNS-Bezeichnung verwendet wird.
     - **Windows-Betriebssystemversion**: Wählen Sie aus, welche Version von Windows auf der VM ausgeführt werden soll.
     - **VM-Größe**: Wählen Sie die [Größe](../sizes.md) aus, die für die VM verwendet werden soll.
