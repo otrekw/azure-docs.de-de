@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/11/2021
+ms.date: 04/16/2021
 ms.author: aahi
-ms.openlocfilehash: a74c0cad971389168d643c9504f5bb809438a1ea
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 6c13134ded2ef276520835880f9dda331232709a
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106098038"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111761369"
 ---
 ### <a name="financial-account-identification"></a>Identifikation bei Finanzkonten
 
@@ -235,6 +235,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AUDriversLicenseNumber` hinzu. In der API-Antwort wird `AUDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -287,6 +288,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AUDriversLicense` hinzu. In der API-Antwort wird `AUDriversLicense` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -304,6 +306,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AUMedicalAccountNumber` hinzu. In der API-Antwort wird `AUMedicalAccountNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -361,6 +364,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `BENationalNumber` hinzu. In der API-Antwort wird `BENationalNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -404,6 +408,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `BRLegalEntityNumber` hinzu. In der API-Antwort wird `BRLegalEntityNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -422,6 +427,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `BRCPFNumber` hinzu. In der API-Antwort wird `BRCPFNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -439,6 +445,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `BRNationalIDRG` hinzu. In der API-Antwort wird `BRNationalIDRG` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -460,7 +467,8 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         **Details**
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CABankAccountNumber` hinzu. In der API-Antwort wird `CABankAccountNumber` zurückgegeben, falls es erkannt wird.
-      
+    
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -480,6 +488,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CADriversLicenseNumber` hinzu. In der API-Antwort wird `CADriversLicenseNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
 
     :::column span="":::
@@ -500,6 +509,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CAHealthServiceNumber` hinzu. In der API-Antwort wird `CAHealthServiceNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
 
     :::column span="":::
@@ -534,6 +544,8 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
     :::column span="2":::
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CAPersonalHealthIdentification` hinzu. In der API-Antwort wird `CAPersonalHealthIdentification` zurückgegeben, falls es erkannt wird.
+
+        Wird auch mit `domain=phi`zurückgegeben
       
     :::column-end:::
     :::column span="":::
@@ -552,6 +564,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CASocialInsuranceNumber` hinzu. In der API-Antwort wird `CASocialInsuranceNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -574,6 +587,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CLIdentityCardNumber` hinzu. In der API-Antwort wird `CLIdentityCardNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -597,6 +611,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CNResidentIdentityCardNumber` hinzu. In der API-Antwort wird `CNResidentIdentityCardNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -621,6 +636,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `EUDebitCardNumber` hinzu. In der API-Antwort wird `EUDebitCardNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -639,6 +655,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `EUDriversLicenseNumber` hinzu. In der API-Antwort wird `EUDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -673,6 +690,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `EUNationalIdentificationNumber` hinzu. In der API-Antwort wird `EUNationalIdentificationNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -707,6 +725,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `EUSocialSecurityNumber` hinzu. In der API-Antwort wird `EUSocialSecurityNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -746,6 +765,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `FRDriversLicenseNumber` hinzu. In der API-Antwort wird `FRDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -781,6 +801,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `FRNationalID` hinzu. In der API-Antwort wird `FRNationalID` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -815,6 +836,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `FRSocialSecurityNumber` hinzu. In der API-Antwort wird `FRSocialSecurityNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -871,6 +893,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `DEDriversLicenseNumber` hinzu. In der API-Antwort wird `DEDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -889,6 +912,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `DEIdentityCardNumber` hinzu. In der API-Antwort wird `DEIdentityCardNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -963,6 +987,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `HKIdentityCardNumber` hinzu. In der API-Antwort wird `HKIdentityCardNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1043,6 +1068,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `INPermanentAccount` hinzu. In der API-Antwort wird `INPermanentAccount` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1062,6 +1088,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `INUniqueIdentificationNumber` hinzu. In der API-Antwort wird `INUniqueIdentificationNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1086,6 +1113,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `IDIdentityCardNumber` hinzu. In der API-Antwort wird `IDIdentityCardNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1109,6 +1137,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `IEPersonalPublicServiceNumber` hinzu. In der API-Antwort wird `IEPersonalPublicServiceNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1167,7 +1196,8 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
     :::column span="2":::
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ILBankAccountNumber` hinzu. In der API-Antwort wird `ILBankAccountNumber` zurückgegeben, falls es erkannt wird.
-      
+    
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1190,6 +1220,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ITDriversLicenseNumber` hinzu. In der API-Antwort wird `ITDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1248,6 +1279,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `JPBankAccountNumber` hinzu. In der API-Antwort wird `JPBankAccountNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1266,6 +1298,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `JPDriversLicenseNumber` hinzu. In der API-Antwort wird `JPDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1317,6 +1350,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ITValueAddedTaxNumber` hinzu. In der API-Antwort wird `ITValueAddedTaxNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1334,6 +1368,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `JPResidenceCardNumber` hinzu. In der API-Antwort wird `JPResidenceCardNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1351,6 +1386,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `JPSocialInsuranceNumber` hinzu. In der API-Antwort wird `JPSocialInsuranceNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1523,6 +1559,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `NZMinistryOfHealthNumber` hinzu. In der API-Antwort wird `NZMinistryOfHealthNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1563,6 +1600,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `PHUnifiedMultiPurposeIDNumber` hinzu. In der API-Antwort wird `PHUnifiedMultiPurposeIDNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1585,7 +1623,8 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         **Details**
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `PTCitizenCardNumber` hinzu. In der API-Antwort wird `PTCitizenCardNumber` zurückgegeben, falls es erkannt wird.
-      
+          
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1604,6 +1643,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `PTTaxIdentificationNumber` hinzu. In der API-Antwort wird `PTTaxIdentificationNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1650,6 +1690,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ZAIdentificationNumber` hinzu. In der API-Antwort wird `ZAIdentificationNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1674,6 +1715,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `KRResidentRegistrationNumber` hinzu. In der API-Antwort wird `KRResidentRegistrationNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1715,6 +1757,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ESSocialSecurityNumber` hinzu. In der API-Antwort wird `ESSocialSecurityNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1778,6 +1821,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `TWNationalID` hinzu. In der API-Antwort wird `TWNationalID` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1796,6 +1840,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `TWResidentCertificate` hinzu. In der API-Antwort wird `TWResidentCertificate` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1835,6 +1880,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `UKDriversLicenseNumber` hinzu. In der API-Antwort wird `UKDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1854,6 +1900,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `UKNationalInsuranceNumber` hinzu. In der API-Antwort wird `UKNationalInsuranceNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1871,6 +1918,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `UKNationalHealthNumber` hinzu. In der API-Antwort wird `UKNationalHealthNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1888,6 +1936,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `UKNationalInsuranceNumber` hinzu. In der API-Antwort wird `UKNationalInsuranceNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -1945,6 +1994,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `USSocialSecurityNumber` hinzu. In der API-Antwort wird `USSocialSecurityNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
       **Unterstützte Dokumentsprachen**
@@ -1963,6 +2013,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `USDriversLicenseNumber` hinzu. In der API-Antwort wird `USDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -2014,6 +2065,7 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `DrugEnforcementAgencyNumber` hinzu. In der API-Antwort wird `DrugEnforcementAgencyNumber` zurückgegeben, falls es erkannt wird.
       
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 
@@ -2030,7 +2082,8 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
     :::column span="2":::
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `USBankAccountNumber` hinzu. In der API-Antwort wird `USBankAccountNumber` zurückgegeben, falls es erkannt wird.
-      
+        
+        Wird auch mit `domain=phi`zurückgegeben
     :::column-end:::
     :::column span="":::
 

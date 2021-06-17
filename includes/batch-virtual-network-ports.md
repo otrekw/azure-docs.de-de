@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: batch
 documentationcenter: ''
@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 04/23/2021
+ms.date: 06/09/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 3100e84255f95b2154f7e8d0ce47024546383da4
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 694bf49db5a77e09d421b94797166bae2fe16685
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107990442"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903081"
 ---
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
@@ -61,7 +61,7 @@ Das Subnetz muss eingehende Kommunikation des Batch-Diensts zulassen, um Aufgabe
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Netzwerksicherheitsgruppen: Angeben von Regeln auf Subnetzebene
 
-Sie müssen keine NSGs auf der Subnetzebene virtueller Netzwerke angeben, da Batch eigene NSGs konfiguriert (siehe oben). Wenn eine Ihrer NSGs dem Subnetz zugeordnet ist, in dem Batch-Computeknoten bereitgestellt sind, oder wenn Sie benutzerdefinierte NSG-Regeln anwenden möchten, um die angewendeten Standardeinstellungen außer Kraft zu setzen, müssen Sie diese NSG mindestens mit den in den folgenden Tabellen gezeigten Eingangs- und Ausgangssicherheitsregeln konfigurieren.
+Wenn eine Ihrer NSGs dem Subnetz zugeordnet ist, in dem Batch-Computeknoten bereitgestellt sind, oder wenn Sie benutzerdefinierte NSG-Regeln anwenden möchten, um die angewendeten Standardeinstellungen außer Kraft zu setzen, müssen Sie diese NSG mindestens mit den in den folgenden Tabellen gezeigten Eingangs- und Ausgangssicherheitsregeln konfigurieren.
 
 Konfigurieren Sie eingehenden Datenverkehr am Port 3389 (Windows) bzw. am Port 22 (Linux) nur, wenn Sie Remotezugriff auf die Computeknoten von externen Quellen aus zulassen müssen. Möglicherweise müssen Sie Regeln für Port 22 unter Linux aktivieren, wenn Sie Unterstützung für Tasks mit mehreren Instanzen mit bestimmten MPI-Runtimes benötigen. Das Zulassen von Datenverkehr an diesen Ports ist für die Verwendung der Poolcomputeknoten nicht zwingend erforderlich.
 

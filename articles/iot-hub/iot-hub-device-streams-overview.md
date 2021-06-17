@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 9487fc562fa099d2650aabc8d15fc1449c7fcb5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37dfd5adcfa00377980933e67c8881aaef6d8dd8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97825172"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746103"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub-Gerätestreams (Vorschau)
 
@@ -153,64 +153,6 @@ Zwei Seiten jedes Streams (auf der Geräte- und der Dienstseite) verwenden das I
 * Die C und C# SDKs unterstützen Gerätestreams auf der Geräteseite.
 
 * Die NodeJS und C# SDKs unterstützen Gerätestreams auf der Dienstseite.
-
-## <a name="iot-hub-device-stream-samples"></a>Beispiele für IoT Hub-Gerätstreams
-
-Die IoT Hub-Seite enthält zwei [Schnellstartbeispiele](./index.yml). Diese Beispiele veranschaulichen die Verwendung von Gerätestreams durch Anwendungen.
-
-* Das Beispiel *Echo* verdeutlicht die programmgesteuerte Verwendung von Gerätestreams (durch direktes Aufrufen der SDK-APIs).
-
-* Im Beispiel mit dem *lokalen Proxy* wird das Tunneln von gängigem Client/Server-Anwendungsdatenverkehr (z.B. SSH, RDP oder Web) über Gerätestreams veranschaulicht.
-
-Diese Beispiele werden weiter unten ausführlicher behandelt.
-
-### <a name="echo-sample"></a>Echobeispiel
-
-Das Echobeispiel veranschaulicht die programmgesteuerte Verwendung von Gerätestreams zum Senden und Empfangen von Bytes zwischen Dienst- und Geräteanwendungen. Beachten Sie, dass Sie Dienst- und Geräteanwendungen in verschiedenen Sprachen verwenden können. Beispielsweise können Sie das C-Geräteprogramm mit dem C#-Dienstprogramm verwenden.
-
-Hier sind die Echobeispiele:
-
-* [Schnellstart: Kommunizieren mit einer Geräteanwendung in C# über IoT Hub-Gerätestreams (Vorschauversion)](quickstart-device-streams-echo-csharp.md)
-
-* [Schnellstart: Kommunizieren mit einer Geräteanwendung in Node.js über IoT Hub-Gerätestreams (Vorschauversion)](quickstart-device-streams-echo-nodejs.md)
-
-* [Schnellstart: Kommunizieren mit einer Geräteanwendung in C über IoT Hub-Gerätestreams (Vorschauversion)](quickstart-device-streams-echo-c.md)
-
-### <a name="local-proxy-sample-for-ssh-or-rdp"></a>Beispiel mit lokalem Proxy (für SSH oder RDP)
-
-Das Beispiel mit lokalem Proxy zeigt eine Möglichkeit zum Aktivieren eines Tunnels für den Datenverkehr einer vorhandenen Anwendung, der die Kommunikation zwischen einem Client- und einem Serverprogramm umfasst. Dieses Setup funktioniert für Client-/Serverprotokolle wie SSH und RDP, in denen die Dienstseite als Client fungiert (und SSH- oder RDP-Clientprogramme ausführt) und die Geräteseite als Server fungiert (und SSH-Daemon- oder RDP-Serverprogramme ausführt).
-
-Dieser Abschnitt beschreibt die Verwendung von Gerätestreams, um für Benutzer das Herstellen einer SSH-Verbindung mit einem Gerät über Gerätestreams zu ermöglichen. (Die Situation ist für RDP oder andere Client-/Server-Anwendungen ähnlich, da dort der entsprechende Port des Protokolls verwendet wird.)
-
-Das Setup nutzt zwei Programme für *lokale Proxys*, die in der folgenden Abbildung dargestellt sind: *Lokaler Geräteproxy* und *Lokaler Dienstproxy*. Die lokalen Proxyprogramme sind für die Durchführung des [Handshakes zur Gerätestreaminitiierung](#device-stream-creation-flow) mit IoT Hub sowie für die Interaktion mit dem SSH-Client und dem SSH-Daemon über reguläre Client-/Server-Sockets zuständig.
-
-![„Gerätestream-Proxysetup für SSH/RDP“](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
-
-1. Der Benutzer führt den lokalen Dienstproxy aus, um einen Gerätestream an das Gerät zu initiieren.
-
-2. Der lokale Proxy des Geräts akzeptiert die Anforderung zur Streaminitiierung, und der Tunnel wird mit dem Streamingendpunkt des IoT Hub hergestellt (wie oben beschrieben).
-
-3. Der lokale Geräteproxy stellt eine Verbindung mit dem SSH-Daemonendpunkt her, der an Port 22 auf dem Gerät lauscht.
-
-4. Der lokale Proxy des Diensts lauscht über einen angegebenen Port und wartet auf neue SSH-Verbindungen vom Benutzer (im Beispiel ist dies Port 2222, aber hierfür kann auch jeder andere verfügbare Port konfiguriert werden). Der Benutzer verweist den SSH-Client an den Port des lokalen Dienstproxys auf „localhost“.
-
-### <a name="notes"></a>Notizen
-
-* Durch die oben genannten Schritte wird ein End-to-End-Tunnel zwischen dem SSH-Client (auf der rechten Seite) und dem SSH-Daemon (auf der linken Seite) eingerichtet. Ein Teil dieser End-to-End-Konnektivität ist das Senden von Datenverkehr per Gerätestream an IoT Hub.
-
-* Die Pfeile in der Abbildung zeigen die Richtung, in der Verbindungen zwischen Endpunkten hergestellt werden. Beachten Sie insbesondere, dass keine Verbindungen beim Gerät eingehen. (Dies wird häufig durch eine Firewall blockiert.)
-
-* Die Auswahl von Port 2222 auf dem lokalen Proxy des Diensts ist eine willkürliche Auswahl. Der Proxy kann so konfiguriert werden, dass ein beliebiger anderer verfügbarer Port verwendet wird.
-
-* Die Auswahl von Port 22 ist protokollabhängig und in diesem Fall spezifisch für SSH. Für RDP muss Port 3389 verwendet werden. Dies kann in den bereitgestellten Beispielprogrammen konfiguriert werden.
-
-Verwenden Sie die folgenden Links, um Anweisungen zum Ausführen der lokalen Proxyprogramme in der Sprache Ihrer Wahl zu erhalten. Wie im [Echobeispiel](#echo-sample) können Sie Programme für den lokalen Geräteproxy und den lokalen Dienstproxy in verschiedenen Sprachen ausführen, da sie vollständig kompatibel sind.
-
-* [Schnellstart: Kommunizieren mit einer Geräteanwendung in C# über IoT Hub-Gerätestreams (Vorschauversion)](quickstart-device-streams-proxy-csharp.md)
-
-* [Schnellstart: Kommunizieren mit einer Geräteanwendung in Node.js über IoT Hub-Gerätestreams (Vorschauversion)](quickstart-device-streams-proxy-nodejs.md)
-
-* [Schnellstart: Kommunizieren mit einer Geräteanwendung in C über IoT Hub-Gerätestreams (Vorschauversion)](quickstart-device-streams-proxy-c.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

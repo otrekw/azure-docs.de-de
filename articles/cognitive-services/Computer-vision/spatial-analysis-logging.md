@@ -3,19 +3,19 @@ title: Telemetrie und Protokollierung für Container für räumliche Analysen
 titleSuffix: Azure Cognitive Services
 description: Die räumliche Analyse stellt für die einzelnen Container ein allgemeines Konfigurationsframework mit Einstellungen für Erkenntnisse, Protokollierung und Sicherheit bereit.
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: 901e857a346b0955726c5755e23595efefbc2ca1
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: 08afa72507bb5689dbd1a003cb776958d6e63f1d
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589498"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746445"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie und Problembehandlung
 
@@ -301,14 +301,6 @@ Die Attribute in der Antwort auf die Abfrage sind in der folgenden Tabelle aufge
 Überprüfen Sie die Zeilen, Zeiten und Größen des Abrufprotokolls. Wenn diese Einstellungen ordnungsgemäß aussehen, ersetzen Sie ***DoPost*** durch `true`, um die Protokolle mit denselben Filtern an die Ziele zu pushen. 
 
 Sie können Protokolle bei der Problembehandlung aus Azure Blob Storage exportieren. 
-
-## <a name="common-issues"></a>Häufige Probleme
-
-Wenn die folgende Meldung in den Modulprotokollen angezeigt wird, bedeutet dies möglicherweise, dass Ihr Azure-Abonnement genehmigt werden muss: 
-
-„Container weist keinen gültigen Zustand auf. Bei der Abonnementüberprüfung ist ein Fehler mit dem Status 'Konflikt' aufgetreten. Der API-Schlüssel ist nicht für den angegebenen Containertyp vorgesehen.“
-
-Weitere Informationen finden Sie unter [Anfordern der Genehmigung für die Containerausführung](spatial-analysis-container.md#request-approval-to-run-the-container).
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Problembehandlung beim Azure Stack Edge-Gerät
 

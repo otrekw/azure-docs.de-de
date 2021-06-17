@@ -12,39 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 1c20190ba1a997ef85f4023a54ecea3c2a77ae53
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 18333b7c9fded73d330cacd6322b0869bf65f9d9
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183827"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071081"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>Verwalten eines manuellen QoS-Kapazitätspools
 
 In diesem Artikel wird beschrieben, wie ein Kapazitätspool verwendet wird, für den der QoS-Typ „Manuell“ verwendet wird.  
 
 Informationen zu den Überlegungen zu den QoS-Typen finden Sie unter [Speicherhierarchie von Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md) und [Überlegungen zur Leistung für Azure NetApp Files](azure-netapp-files-performance-considerations.md).  
-
-## <a name="register-the-feature"></a>Registrieren der Funktion
-Die Funktion „QoS-Typ ‚Manuell‘“ befindet sich derzeit in der Vorschauphase. Wenn Sie diese Funktion zum ersten Mal verwenden, müssen Sie sie zuerst registrieren.
-  
-1.  Registrieren Sie die Funktion:
-
-    ```azurepowershell-interactive
-    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
-    ```
-
-2. Überprüfen Sie den Status der Funktionsregistrierung: 
-
-    > [!NOTE]
-    > Der **RegistrationState** kann für bis zu 60 Minuten den Status `Registering` aufweisen, bevor der Wechsel in `Registered` erfolgt. Warten Sie, bis der Status **Registriert** lautet, bevor Sie fortfahren.
-
-    ```azurepowershell-interactive
-    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
-    ```
-Sie können auch die [Azure CLI-Befehle](/cli/azure/feature) `az feature register` und `az feature show` verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen. 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>Einrichten eines neuen manuellen QoS-Kapazitätspools 
 

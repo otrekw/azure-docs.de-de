@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23598a3901e23290b860b9b0ab280710aab9b9b6
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 72651ac47ebf3f67a8ee3aae9f71a533ded53a83
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175836"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954967"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Headerbasierte Authentifizierung mit Azure Active Directory
 
@@ -50,6 +50,6 @@ Remotebenutzer müssen sich per SSO sicher bei lokalen Anwendungen anmelden, die
 
 * [Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure AD](../app-proxy/application-proxy-add-on-premises-application.md)  
 
-* [Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md) 
+* [Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md) 
 
 * [Schützen von Legacy-Apps mit App-Bereitstellungscontrollern und -netzwerken](../manage-apps/secure-hybrid-access.md)
