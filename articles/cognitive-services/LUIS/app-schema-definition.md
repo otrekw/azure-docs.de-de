@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 08/22/2020
-ms.openlocfilehash: db4fd52dad82542f20e58ebb3b8526c5be7f2f88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 023e86b5ecc7d0b5871ba2207d09c762a3c424b1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91327322"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950956"
 ---
 # <a name="app-schema-definition"></a>App-Schemadefinition
 
@@ -68,7 +68,7 @@ Wählen Sie beim Importieren und Exportieren der App entweder `.json` oder `.lu`
 | element                  | Comment                              |
 |--------------------------|--------------------------------------|
 | "hierarchicals": [],     | Veraltet, [Machine Learning-Entitäten](luis-concept-entity-types.md) verwenden.   |
-| "composites": [],        | Veraltet, [Machine Learning-Entitäten](luis-concept-entity-types.md) verwenden. Verweis auf [Entität vom Typ „Composite“](reference-entity-composite.md). |
+| "composites": [],        | Veraltet, [Machine Learning-Entitäten](luis-concept-entity-types.md) verwenden. Verweis auf [Entität vom Typ „Composite“](./reference-entity-machine-learned-entity.md). |
 | "closedLists": [],       | Verweis auf [Listenentitäten](reference-entity-list.md), wird hauptsächlich von Funktionen auf Entitäten verwendet.    |
 | "versionId": "0.1",      | Version einer LUIS-App.|
 | "name": "example-app",   | Name der LUIS-App. |

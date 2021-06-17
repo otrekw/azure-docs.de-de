@@ -3,12 +3,13 @@ title: Aktivieren der automatischen Weiterleitung für Azure Service Bus-Wartesc
 description: In diesem Artikel wird erläutert, wie Sie die automatische Weiterleitung für Warteschlangen und Abonnements mithilfe von Azure-Portal, PowerShell, Befehlszeilenschnittstelle und Programmiersprachen (C#, Java, Python und JavaScript) aktivieren.
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 0271ac825c192fcfe9db4a4b6378a47c62dc9903
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: da5af50941263c54a08de27df43fc85b5bd75b4a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988116"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671493"
 ---
 # <a name="enable-auto-forwarding-for-azure-service-bus-queues-and-subscriptions"></a>Aktivieren der automatischen Weiterleitung für Azure Service Bus-Warteschlangen und -Abonnements
 Mit dem Service Bus-Feature für die automatische Weiterleitung können Sie eine Warteschlange oder ein Abonnement mit einer weiteren Warteschlange oder einem Thema aus demselben Namespace verketten. Wenn die automatische Weiterleitung aktiviert ist, entfernt Service Bus die Nachrichten automatisch, die in der ersten Warteschlange oder dem Abonnement (Quelle) platziert wurden, und fügt sie in die zweite Warteschlange oder das Thema (Ziel) ein. Es ist weiterhin möglich, eine Nachricht direkt an die Zielentität zu senden. Weitere Informationen finden Sie unter [Verketten von Service Bus-Entitäten mit automatischer Weiterleitung](service-bus-auto-forwarding.md). In diesem Artikel werden verschiedene Möglichkeiten zum Aktivieren der automatischen Weiterleitung für Service Bus-Warteschlangen und -Abonnements beschrieben. 

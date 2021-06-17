@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: duau
-ms.custom: seodec18
-ms.openlocfilehash: 366f27a0e2a22e9aa10dda20e105bf644255bdd4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: cb4843319e08eff33ce6ce1869f64fccd9e17c6c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89393138"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950657"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurieren eines Site-to-Site-VPN über ExpressRoute-/Microsoft-Peering
 
@@ -130,7 +130,7 @@ Das folgende Diagramm zeigt den abstrahierten Überblick über das Beispielnetzw
 
 ### <a name="about-the-azure-resource-manager-template-examples"></a>Informationen zu den Beispielen von Azure Resource Manager-Vorlagen
 
-In den Beispielen werden das VPN-Gateway und die IPsec-Tunnelabschlüsse mithilfe einer Azure Resource Manager-Vorlage konfiguriert. Wenn Sie mit der Verwendung von Resource Manager-Vorlagen noch nicht vertraut oder sich mit den Grundlagen von Resource Manager-Vorlagen vertraut machen möchten, siehe [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md). Die Vorlage in diesem Abschnitt erstellt eine neue Azure-Umgebung (VNet). Wenn Sie bereits über ein VNet verfügen, können Sie in der Vorlage darauf verweisen. Wenn Sie mit den VPN-Gateway-IPsec/IKE-Site-to-Site Konfigurationen nicht vertraut sind, lesen Sie [Erstellen einer Site-to-Site-Verbindung](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
+In den Beispielen werden das VPN-Gateway und die IPsec-Tunnelabschlüsse mithilfe einer Azure Resource Manager-Vorlage konfiguriert. Wenn Sie mit der Verwendung von Resource Manager-Vorlagen noch nicht vertraut oder sich mit den Grundlagen von Resource Manager-Vorlagen vertraut machen möchten, siehe [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md). Die Vorlage in diesem Abschnitt erstellt eine neue Azure-Umgebung (VNet). Wenn Sie bereits über ein VNet verfügen, können Sie in der Vorlage darauf verweisen. Wenn Sie mit den VPN-Gateway-IPsec/IKE-Site-to-Site Konfigurationen nicht vertraut sind, lesen Sie [Erstellen einer Site-to-Site-Verbindung](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
 
 >[!NOTE]
 >Sie müssen keine Azure Resource Manager-Vorlagen verwenden, um diese Konfiguration zu erstellen. Sie können diese Konfiguration über das Azure-Portal oder PowerShell erstellen.

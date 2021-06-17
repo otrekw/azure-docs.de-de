@@ -2,13 +2,13 @@
 title: Definieren mehrerer Instanzen eines Ausgabewerts
 description: Verwenden des copy-Vorgangs in einer Azure Resource Manager-Vorlage (ARM), um das Zurückgeben eines Werts aus einer Bereitstellung mehrere Male zu durchlaufen.
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: 49050f4c0a494bbfb470b64704a09d8738a727f7
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.date: 05/07/2021
+ms.openlocfilehash: 880ed42afdbb2082821c216a50da438ec45bd680
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385733"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954672"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Ausgabeiteration in ARM-Vorlagen
 
@@ -17,8 +17,6 @@ In diesem Artikel wird gezeigt, wie Sie mehr als einen Wert für eine Ausgabe in
 Sie können die copy-Schleife auch mit [Ressourcen](copy-resources.md), [Eigenschaften in einer Ressource](copy-properties.md) und [Variablen](copy-variables.md) verwenden.
 
 ## <a name="syntax"></a>Syntax
-
-# <a name="json"></a>[JSON](#tab/json)
 
 Fügen Sie das `copy`-Element in den Ausgabeabschnitt Ihrer Vorlage ein, um eine Anzahl von Elementen zurückzugeben. Das copy-Element hat das folgende allgemeine Format:
 
@@ -32,37 +30,6 @@ Fügen Sie das `copy`-Element in den Ausgabeabschnitt Ihrer Vorlage ein, um eine
 Die `count`-Eigenschaft gibt die gewünschte Anzahl von Iterationen für den Ausgabewert an.
 
 Die Eigenschaft `input` gibt die Eigenschaften an, die Sie wiederholen möchten. Erstellen Sie ein Array von Elementen, das aus dem Wert in der `input`-Eigenschaft erstellt wird. Es kann sich um eine einzelne Eigenschaft handeln (z. B. eine Zeichenfolge) oder um ein Objekt mit mehreren Eigenschaften.
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-Mit Schleifen kann eine Reihe von Elementen während der Bereitstellung zurückgegeben werden:
-
-- Durchlaufen eines Arrays:
-
-  ```bicep
-  output <output-name> array = [for <item> in <collection>: {
-    <properties>
-  }]
-
-  ```
-
-- Durchlaufen der Elemente eines Arrays
-
-  ```bicep
-  output <output-name> array = [for <item>, <index> in <collection>: {
-    <properties>
-  }]
-  ```
-
-- Verwenden des Schleifenindexes
-
-  ```bicep
-  output <output-name> array = [for <index> in range(<start>, <stop>): {
-    <properties>
-  }]
-  ```
-
----
 
 ## <a name="copy-limits"></a>Einschränkungen für „copy“
 
@@ -80,8 +47,6 @@ Frühere Versionen von PowerShell, CLI und der REST-API unterstützen den Wert �
 ## <a name="outputs-iteration"></a>Ausgabeniteration
 
 Im folgenden Beispiel wird eine Variable Anzahl von Speicherkonten erstellt und für jedes Speicherkonto ein Endpunkt zurückgegeben:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -125,28 +90,6 @@ Im folgenden Beispiel wird eine Variable Anzahl von Speicherkonten erstellt und 
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param storageCount int = 2
-
-var baseName_var = 'storage${uniqueString(resourceGroup().id)}'
-
-resource baseName 'Microsoft.Storage/storageAccounts@2019-04-01' = [for i in range(0, storageCount): {
-  name: '${i}${baseName_var}'
-  location: resourceGroup().location
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'Storage'
-  properties: {}
-}]
-
-output storageEndpoints array = [for i in range(0, storageCount): reference(${i}${baseName_var}).primaryEndpoints.blob]
-```
-
----
-
 Die vorangehende Vorlage gibt ein Array mit den folgenden Werten zurück:
 
 ```json
@@ -157,8 +100,6 @@ Die vorangehende Vorlage gibt ein Array mit den folgenden Werten zurück:
 ```
 
 Im nächsten Beispiel werden drei Eigenschaften aus den neuen Speicherkonten zurückgegeben.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -206,32 +147,6 @@ Im nächsten Beispiel werden drei Eigenschaften aus den neuen Speicherkonten zur
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param storageCount int = 2
-
-var baseName_var = 'storage${uniqueString(resourceGroup().id)}'
-
-resource baseName 'Microsoft.Storage/storageAccounts@2019-04-01' = [for i in range(0, storageCount): {
-  name: '${i}${baseName_var}'
-  location: resourceGroup().location
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'Storage'
-  properties: {}
-}]
-
-output storageInfo array = [for i in range(0, storageCount): {
-  id: reference(concat(i, baseName_var), '2019-04-01', 'Full').resourceId
-  blobEndpoint: reference(concat(i, baseName_var)).primaryEndpoints.blob
-  status: reference(concat(i, baseName_var)).statusOfPrimary
-}]
-```
-
----
-
 Das vorangehende Beispiel gibt ein Array mit den folgenden Werten zurück:
 
 ```json
@@ -256,5 +171,5 @@ Das vorangehende Beispiel gibt ein Array mit den folgenden Werten zurück:
   - [Ressourceniteration in ARM-Vorlagen](copy-resources.md)
   - [Eigenschafteniteration in ARM-Vorlagen](copy-properties.md)
   - [Variableniteration in ARM-Vorlagen](copy-variables.md)
-- Weitere Informationen zu den Abschnitten in einer Vorlage finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+- Weitere Informationen zu den Abschnitten in einer Vorlage finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).
 - Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).

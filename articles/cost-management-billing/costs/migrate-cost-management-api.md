@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 46ad81f6723d160bf1d675b68a8459dd8df32c80
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 9e7d1d08a3d69337cc205bdaf4bf3afc8941dd77
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078348"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750297"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrieren von Enterprise Agreement-APIs zu APIs der Microsoft-Kundenvereinbarung
 
@@ -78,7 +78,7 @@ Wenn Sie vorhandene EA-APIs verwenden, müssen Sie diese für die Unterstützung
 
 | Zweck | Altes Angebot | Neues Angebot |
 | --- | --- | --- |
-| Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
+| Cloudyn | Cloudyn | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
 | Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights)-Inhaltspaket und -Connector |  [Azure Consumption Insights-Connector](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>APIs zum Abrufen von Saldo und Guthaben
@@ -519,7 +519,7 @@ Zum Abrufen von Reservierungszusammenfassungen mit der API für Reservierungszus
 
 ## <a name="move-from-cloudyn-to-cost-management"></a>Wechsel von Cloudyn zu Cost Management
 
-Organisationen, die [Cloudyn](https://cloudyn.com) verwenden, sollten mit der Verwendung von [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) für alle Kostenmanagementanforderungen beginnen. Cost Management steht im Azure-Portal ohne Onboarding und mit einer Wartezeit von acht Stunden zur Verfügung. Weitere Informationen finden Sie in der [Dokumentation zur Kostenverwaltung](../index.yml).
+Organisationen, die Cloudyn verwenden, sollten mit der Verwendung von [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) für alle Kostenmanagementanforderungen beginnen. Cost Management steht im Azure-Portal ohne Onboarding und mit einer Wartezeit von acht Stunden zur Verfügung. Weitere Informationen finden Sie in der [Dokumentation zur Kostenverwaltung](../index.yml).
 
 Azure Cost Management bietet Ihnen folgende Möglichkeiten:
 

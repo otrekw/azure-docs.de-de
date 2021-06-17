@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Managed Instance
 description: In diesem Artikel erfahren Sie, wie Sie die Größe des Subnetzes berechnen, in dem Azure SQL Managed Instance bereitgestellt wird.
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
-ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18592f282cb2f06b5a305f2186aa6285bc50fcf3
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012448"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689348"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Bestimmen von Subnetzgröße und -bereich für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

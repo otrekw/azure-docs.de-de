@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 760e7210d054e44dfec6d6a6e480baecd04d6807
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 06debcfbf4404497e17f1446779189b124b0079e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044123"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952645"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>Häufig gestellte Fragen zu SaaS-Fulfillment-APIs
 
@@ -88,4 +88,4 @@ Die folgende Sequenz zeigt den Ablauf, wenn der Azure-Benutzer das Abonnement im
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Marketplace-Messungsdienst-APIs](./marketplace-metering-service-apis.md)
+[Marketplace-Messungsdienst-APIs](../marketplace-metering-service-apis.md)
