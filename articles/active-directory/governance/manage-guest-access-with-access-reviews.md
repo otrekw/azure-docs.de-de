@@ -16,12 +16,12 @@ ms.date: 4/16/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02d7e5fd6fdbb17b91d151875a48b7763d6b93c8
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: d07e287214e911f278450f645a6873ffe638f32b
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988278"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652598"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen
 
@@ -57,7 +57,7 @@ Sie können Folgendes überprüfen:
 
 Beim Überprüfen des Gastbenutzerzugriffs auf Microsoft 365-Gruppen können Sie entweder eine Überprüfung für jede Gruppe einzeln erstellen oder automatische, wiederkehrende Zugriffsüberprüfungen für Gastbenutzer in allen Microsoft 365-Gruppen aktivieren. Im folgenden Video erhalten Sie weitere Informationen zu wiederkehrenden Zugriffsüberprüfungen für Gastbenutzer: 
 
-> [!VIDEO https://www.youtube.com/watch?v=3D2_YW2DwQ8]
+> [!VIDEO https://www.youtube.com/embed/3D2_YW2DwQ8]
 
 Sie können dann entscheiden, ob Sie jeden Gast bitten, seinen eigenen Zugriff zu überprüfen, oder ob Sie einen oder mehrere Benutzer bitten, den Zugriff von jedem Gast zu überprüfen.
 

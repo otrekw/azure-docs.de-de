@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e9fc80ea47aafb107c8497e304354c58fe7db96
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023226"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903831"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Datenübertragung kleiner Datasets mit geringer bis mittlerer Netzwerkbandbreite
  
@@ -49,7 +49,7 @@ Die folgenden Optionen werden in diesem Szenario empfohlen:
 
 In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusammengefasst.
 
-| Funktion | Azure Storage-Explorer | Azure-Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST-APIs oder SDKs |
+| Feature | Azure Storage-Explorer | Azure-Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST-APIs oder SDKs |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Verfügbarkeit | Herunterladen und Installieren <br>Eigenständiges Tool | Webbasierte Tools zu Durchsuchen im Azure-Portal | Befehlszeilentool |Programmierbare Schnittstellen in .NET, Java, Python, JavaScript, C++, Go, Ruby und PHP |
 | Grafische Benutzeroberfläche | Ja | Ja | Nein | Nein |
@@ -63,5 +63,5 @@ In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusamm
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum [Übertragen von Daten mit Azure Storage-Explorer](../../machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer.md).
+- Informationen zum [Übertragen von Daten mit Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 - [Übertragen von Daten mit AzCopy](./storage-use-azcopy-v10.md)

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8edceb31a0cdde36c987076e91350116a4f81255
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf76427df2c1802ed49dc5ff848059d88ba9658e
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782400"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558546"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
 
@@ -36,7 +36,7 @@ Angenommen, Ihre Anwendung wird auf Arten verwendet, für die sie nicht beabsich
 
 ### <a name="perform-code-reviews"></a>Ausführen von Code Reviews
 
-Führen Sie vor dem Einchecken von Code [Code Reviews](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) durch, um die Gesamtqualität des Codes zu erhöhen und das Risiko für die Erzeugung von Fehlern zu verringern. Sie können [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) verwenden, um den Code Review-Prozess zu verwalten.
+Führen Sie vor dem Einchecken von Code Code Reviews durch, um die Gesamtqualität des Codes zu erhöhen und das Risiko für die Erzeugung von Fehlern zu verringern. Sie können [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) verwenden, um den Code Review-Prozess zu verwalten.
 
 ### <a name="perform-static-code-analysis"></a>Ausführen statischer Codeanalysen
 

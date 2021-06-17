@@ -1,0 +1,170 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zu Azure AD Domain Services | Microsoft-Dokumentation
+  description: Lesen und verstehen Sie einige der häufig gestellten Fragen zur Konfiguration, Verwaltung und Verfügbarkeit für Azure Active Directory Domain Services.
+  services: active-directory-ds
+  author: justinha
+  manager: daveba
+  ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
+  ms.service: active-directory
+  ms.subservice: domain-services
+  ms.workload: identity
+  ms.topic: how-to
+  ms.date: 02/09/2021
+  ms.author: justinha
+  ms.openlocfilehash: a431fff476cd79d25c4db0e60ad0bcff361a4a2a
+  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 04/30/2021
+  ms.locfileid: "111907189"
+title: Häufig gestellte Fragen (FAQs) zu den Azure Active Directory (AD) Domain Services
+summary: Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory Domain Services beantwortet.
+sections:
+- name: Konfiguration
+  questions:
+  - question: >
+      Kann ich mehrere verwaltete Domänen für ein einzelnes Azure AD-Verzeichnis erstellen?
+    answer: >
+      Nein. Sie können nur eine einzelne durch Azure AD Domain Services verwaltete Domäne für ein einzelnes Azure AD-Verzeichnis erstellen.
+  - question: >
+      Kann ich Azure AD Domain Services in einem klassischen virtuellen Netzwerk aktivieren?
+    answer: >
+      Klassische virtuelle Netzwerke werden für neue Bereitstellungen nicht unterstützt. Vorhandene verwaltete Domänen, die in klassischen virtuellen Netzwerken bereitgestellt wurden, werden bis zu ihrer Einstellung am 1. März 2023 weiterhin unterstützt. Für bestehende Bereitstellungen können Sie [Azure AD Domain Services auch vom klassischen VNET-Modell zu Resource Manager migrieren](migrate-from-classic-vnet.md).
+
+
+      Weitere Informationen finden Sie im [offiziellen Hinweis zur Einstellung](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/).
+  - question: >
+      Kann ich Azure AD-Domänendienste in einem virtuellen Azure Resource Manager-Netzwerk aktivieren?
+    answer: >
+      Ja. Azure AD Domain Services können in einem virtuellen Azure Resource Manager-Netzwerk aktiviert werden. Klassische virtuelle Azure-Netzwerke stehen für das Erstellen von verwalteten Domänen nicht mehr zur Verfügung.
+  - question: >
+      Kann ich meine vorhandene verwaltete Domäne aus einem klassischen virtuellen Netzwerk zu einem virtuellen Resource Manager-Netzwerk migrieren?
+    answer: >
+      Ja. Weitere Informationen finden Sie unter [Migrieren von Azure AD Domain Services vom klassischen VNET-Modell zu Resource Manager](migrate-from-classic-vnet.md).
+  - question: >
+      Kann ich Azure AD Domain Services in einem Azure CSP-Abonnement (Cloud Solution Provider) aktivieren?
+    answer: >
+      Ja. Weitere Informationen finden Sie unter [Aktivieren von Azure AD Domain Services in Azure CSP-Abonnements](csp.md).
+  - question: >
+      Kann ich Azure AD Domain Services in einem Azure AD-Verbundverzeichnis aktivieren? Ich synchronisiere keine Kennworthashes mit Azure AD. Kann ich Azure AD Domain Services für dieses Verzeichnis aktivieren?
+    answer: >
+      Nein. Für Azure AD Domain Services ist der Zugriff auf die Kennworthashes von Benutzerkonten erforderlich, um Benutzer über NTLM oder Kerberos zu authentifizieren. In einem Verbundverzeichnis werden Kennworthashes nicht im Azure AD-Verzeichnis gespeichert. Daher kann Azure AD Domain Services mit diesen Azure AD-Verzeichnissen nicht verwendet werden.
+
+
+      Wenn Sie jedoch Azure AD Connect für die Synchronisierung der Kennworthashes verwenden, können Sie Azure AD Domain Services nutzen, weil die Kennworthashwerte in Azure AD gespeichert werden.
+  - question: >
+      Kann ich Azure AD Domain Services in mehreren virtuellen Netzwerken in meinem Abonnement zur Verfügung stellen?
+    answer: >
+      Der Dienst selbst bietet keine direkte Unterstützung für dieses Szenario. Ihre verwaltete Domäne ist jeweils in nur einem virtuellen Netzwerk verfügbar. Sie können jedoch die Konnektivität zwischen mehreren virtuellen Netzwerken zum Bereitstellen von Azure AD Domain Services mit anderen virtuellen Netzwerken konfigurieren. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen virtuellen Netzwerken in Azure mithilfe von VPN-Gateways](../vpn-gateway/vpn-gateway-howto-vnet-vnet-portal-classic.md) oder [Peering virtueller Netzwerke](../virtual-network/virtual-network-peering-overview.md).
+  - question: >
+      Kann ich die Azure AD Domain Services mithilfe von PowerShell aktivieren?
+    answer: >
+      Ja. Weitere Informationen finden Sie unter [Aktivieren von Azure AD Domain Services mithilfe von PowerShell](powershell-create-instance.md).
+  - question: >
+      Kann ich Azure AD Domain Services mithilfe einer Resource Manager-Vorlage aktivieren?
+    answer: >
+      Ja, Sie können eine durch Azure AD Domain Services verwaltete Domäne mithilfe einer Resource Manager-Vorlage erstellen. Vor dem Bereitstellen der Vorlage müssen mithilfe des Azure-Portals oder mithilfe von Azure PowerShell ein Dienstprinzipal und eine Azure AD-Gruppe für die Verwaltung erstellt werden. Weitere Informationen finden Sie unter [Erstellen einer verwalteten Azure AD DS-Domäne mithilfe einer Resource Manager-Vorlage](template-create-instance.md). Wenn Sie eine durch Azure AD Domain Services verwaltete Domäne im Azure-Portal erstellen, steht dort auch eine Option zum Exportieren der Vorlage für die Verwendung mit zusätzlichen Bereitstellungen zur Verfügung.
+  - question: >
+      Kann ich Domänencontroller zu einer verwalteten Domäne der Azure AD Domain Services hinzufügen?
+    answer: >
+      Nein. Die von den Azure AD Domain Services bereitgestellte Domäne ist eine verwaltete Domäne. Sie müssen für diese Domäne keine Domänencontroller bereitstellen, konfigurieren oder anderweitig verwalten. Diese Verwaltungsaktivitäten werden von Microsoft als Dienst bereitgestellt. Daher können Sie keine zusätzlichen Domänencontroller (weder mit Lese-/Schreibzugriff noch mit reinem Lesezugriff) für die verwaltete Domäne hinzufügen.
+  - question: >
+      Können in mein Verzeichnis eingeladene Gastbenutzer Azure AD Domain Services verwenden?
+    answer: >
+      Nein. Gastbenutzer, die mit dem [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md)-Einladungsprozess in Ihr Azure AD-Verzeichnis eingeladen wurden, werden in Ihrer verwalteten Azure AD Domain Services-Domäne synchronisiert. Kennwörter für diese Benutzer werden jedoch nicht in Ihrem Azure AD-Verzeichnis gespeichert. Daher gibt es in Azure AD Domain Services keine Möglichkeit zum Synchronisieren von NTLM- und Kerberos-Hashes für diese Benutzer in Ihrer verwalteten Domäne. Diese Benutzer können sich nicht anmelden und auch keine Computer in die verwaltete Domäne einbinden.
+  - question: >
+      Kann ich eine vorhandene verwaltete Azure AD Domain Services-Domäne in ein anderes Abonnement, eine andere Ressourcengruppe, eine andere Region oder ein anderes virtuelles Netzwerk verschieben?
+    answer: >
+      Nein. Nach dem Erstellen einer verwalteten Azure AD Domain Services-Domäne können Sie diese nicht in eine andere Ressourcengruppe, ein anderes virtuelles Netzwerk, ein anderes Abonnement usw. verschieben. Wählen Sie beim Bereitstellen der verwalteten Domäne das am besten geeignete Abonnement, die am besten geeignete Ressourcengruppe und Region und das am besten geeignete virtuelle Netzwerk aus.
+  - question: >
+      Kann ich einen vorhandenen Azure AD Domain Services Domänennamen umbenennen?
+    answer: >
+      Nein. Nachdem Sie eine verwaltete Azure AD Domain Services-Domäne erstellt haben, können Sie den DNS-Domänennamen nicht mehr ändern. Wählen Sie den DNS-Domänennamen sorgfältig aus, wenn Sie die verwaltete Domäne erstellen. Überlegungen zur Auswahl des DNS-Domänennamens finden Sie im Tutorial zum Erstellen und Konfigurieren einer verwalteten [Azure AD Domain Services](tutorial-create-instance.md#create-a-managed-domain)Domäne.
+  - question: >
+      Enthält Azure AD Domain Services Hochverfügbarkeitsoptionen?
+    answer: >
+      Ja. Jede verwaltete Azure AD Domain Services-Domäne enthält zwei Domänencontroller. Sie verwalten diese Domänencontroller nicht und stellen auch keine Verbindung zu ihnen her. Die Controller sind Bestandteil des verwalteten Diensts. Wenn Sie Azure AD Domain Services in einer Region bereitstellen, die Verfügbarkeitszonen unterstützt, werden die Domänencontroller auf die Zonen verteilt. In Regionen, die keine Verfügbarkeitszonen unterstützen, werden die Domänencontroller auf Verfügbarkeitsgruppen verteilt. Sie haben keine Möglichkeit, diese Verteilung zu konfigurieren oder deren Verwaltung zu steuern. Weitere Informationen finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](../virtual-machines/availability.md).
+- name: Verwaltung und Betrieb
+  questions:
+  - question: >
+      Kann ich über Remotedesktop eine Verbindung zum Domänencontroller für meine verwaltete Domäne herstellen?
+    answer: >
+      Nein. Sie besitzen keine Berechtigungen, um über Remotedesktop eine Verbindung mit Domänencontrollern in der verwalteten Domäne herzustellen. Mitglieder der *Administratorengruppe für Azure AD-Domänencontroller* können die verwaltete Domäne mithilfe von AD-Verwaltungstools wie dem Active Directory-Verwaltungscenter (Active Directory-Administration Center, ADAC) oder AD-PowerShell verwalten. Diese Tools werden mithilfe der *Remoteserver-Verwaltungstools* auf einem Windows-Server installiert, der der verwalteten Domäne beigetreten ist. Weitere Informationen finden Sie unter [Erstellen einer Verwaltungs-VM zum Konfigurieren und Verwalten einer verwalteten Azure AD Domain Services-Domäne](tutorial-create-management-vm.md).
+  - question: >
+      Ich habe Azure AD Domain Services aktiviert. Welches Benutzerkonto verwende ich für den Domänenbeitritt von Computern zu dieser Domäne?
+    answer: >
+      Jedes Benutzerkonto, das Teil der verwalteten Domäne ist, kann einem virtuellen Computer beitreten. Mitglieder der Gruppe *AAD DC-Administratoren* erhalten Remotedesktopzugriff auf Computer, die der verwalteten Domäne beigetreten sind.
+  - question: >
+      Verfüge ich über Domänenadministratorrechte für die über Azure AD Domain Services bereitgestellte verwaltete Domäne?
+    answer: >
+      Nein. Ihnen werden keine Administratorrechte für die verwaltete Domäne gewährt. Die Berechtigungen für *Domänenadministrator* und *Unternehmensadministrator* stehen innerhalb der Domäne nicht zur Verfügung. Mitglieder von Domänenadministrator- oder Unternehmensadministratorengruppen in Ihrem Active Directory-Verzeichnis erhalten ebenfalls keine Domänen-/Unternehmensadministratorberechtigungen in der verwalteten Domäne.
+  - question: >
+      Kann ich mithilfe von LDAP oder anderen AD-Verwaltungstools Gruppenmitgliedschaften in verwalteten Domänen ändern?
+    answer: "Benutzer und Gruppen, die von Azure Active Directory mit Azure AD Domain Services synchronisiert werden, können nicht geändert werden, da sie ihren Ursprung in Azure Active Directory haben. Dies umfasst das Verschieben von Benutzern oder Gruppen aus der verwalteten Organisationseinheit „AADDC-Benutzer“ in eine benutzerdefinierte Organisationseinheit. Alle Benutzer oder Gruppen, die ihren Ursprung in der verwalteten Domäne haben, können geändert werden.  \n"
+  - question: >
+      Wie lange dauert es, bis Änderungen an meinem Azure AD-Verzeichnis in meiner verwalteten Domäne angezeigt werden?
+    answer: >
+      Sowohl über die Benutzeroberfläche von Azure AD als auch über PowerShell vorgenommene Änderungen an Ihrem Azure AD-Verzeichnis werden automatisch mit Ihrer verwalteten Domäne synchronisiert. Diese Synchronisation erfolgt im Hintergrund. Es gibt keinen definierten Zeitraum für die Synchronisierung, um alle Objektänderungen abzuschließen.
+  - question: >
+      Kann ich das Schema der über Azure AD Domain Services bereitgestellten verwalteten Domäne erweitern?
+    answer: >
+      Nein. Das Schema für die verwaltete Domäne wird von Microsoft verwaltet. Schemaerweiterungen werden von Azure AD Domain Services nicht unterstützt.
+  - question: >
+      Kann ich DNS-Einträge in meiner verwalteten Domäne ändern oder hinzufügen?
+    answer: >
+      Ja. Mitgliedern der Gruppe *AAD DC-Administratoren* werden *DNS-Administratorrechte* gewährt, damit sie DNS-Einträge in der verwalteten Domäne ändern können. Diese Benutzer können die DNS-Manager-Konsole auf einem der verwalteten Domäne beigetretenen Windows Server-Computer verwenden, um DNS zu verwalten. Um die DNS-Manager-Konsole zu verwenden, installieren Sie die *DNS-Servertools*, die zum optionalen Feature der *Remoteserver-Verwaltungstools* auf dem Server gehören. Weitere Informationen finden Sie unter [Verwalten von DNS in einer durch Azure AD Domain Services verwalteten Domäne](manage-dns.md).
+  - question: >
+      Was ist die Richtlinie für die Kennwortgültigkeitsdauer in einer verwalteten Domäne?
+    answer: >
+      Die Standardlebensdauer von Kennwörtern in einer verwalteten Azure AD Domain Services-Domäne beträgt 90 Tage. Diese Kennwortgültigkeitsdauer wird nicht mit der in Azure AD konfigurierten Kennwortgültigkeitsdauer synchronisiert. Daher können Kennwörter von Benutzern in Ihrer verwalteten Domäne ablaufen, während sie in Azure AD weiterhin gültig sind. In solchen Szenarien müssen Benutzer ihr Kennwort in Azure AD ändern, und das neue Kennwort wird mit Ihrer verwalteten Domäne synchronisiert. Wenn Sie die standardmäßige Kennwortgültigkeitsdauer in einer verwalteten Domäne ändern möchten, können Sie [benutzerdefinierte Kennwortrichtlinien erstellen und konfigurieren](password-policy.md).
+
+
+      Außerdem wird die Azure AD-Kennwortrichtlinie für *DisablePasswordExpiration* mit einer verwalteten Domäne synchronisiert. Wenn Sie in Azure AD *DisablePasswordExpiration* für einen Benutzer anwenden, wird *DONT_EXPIRE_PASSWORD* auf den Wert *UserAccountControl* für den synchronisierten Benutzer in der verwalteten Domäne angewendet.
+
+
+      Wenn der Benutzer sein Kennwort in Azure AD zurücksetzt, wird das Attribut *forceChangePasswordNextSignIn=True* angewendet. Eine verwaltete Domäne synchronisiert dieses Attribut von Azure AD. Wenn die verwaltete Domäne erkennt, dass *forceChangePasswordNextSignIn=True* für einen synchronisierten Benutzer von Azure AD festgelegt wurde, wird das Attribut *pwdLastSet* in der verwalteten Domäne auf *0* gesetzt, wodurch das aktuell festgelegte Kennwort ungültig wird.
+  - question: >
+      Bietet Azure AD Domain Services Schutz durch Sperrung von AD-Konten?
+    answer: >
+      Ja. Wenn innerhalb von 2 Minuten fünf erfolglose Kennworteingaben in der verwalteten Domäne vorgenommen werden, wird das Benutzerkonto für 30 Minuten gesperrt. Nach 30 Minuten wird das Benutzerkonto automatisch entsperrt. Ungültige Kennworteingaben in der verwalteten Domäne sperren das Benutzerkonto in Azure AD nicht. Das Benutzerkonto wird nur in Ihrer verwalteten Azure AD Domain Services-Domäne gesperrt. Weitere Informationen finden Sie unter [Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen](password-policy.md).
+  - question: >
+      Kann ich in Azure AD Domain Services ein verteiltes Dateisystem (Distributed File System, DFS) und Replikation konfigurieren?
+    answer: >
+      Nein. Ein verteiltes Dateisystem (DFS) und die Replikation sind bei Verwendung von Azure AD Domain Services nicht verfügbar.
+  - question: >
+      Wie wird Windows Update in Azure AD Domain Services angewandt?
+    answer: >
+      Die erforderlichen Windows-Updates werden von Domänencontrollern in einer verwalteten Domäne automatisch angewandt. Sie müssen keine Konfigurations- oder Verwaltungsaufgaben ausführen. Achten Sie darauf, keine Regeln für Netzwerksicherheitsgruppen zu erstellen, die ausgehenden Datenverkehr an Windows Update blockieren. Bei eigenen virtuellen Computern, die in die verwaltete Domäne eingebunden wurden, sind Sie für das Konfigurieren und Anwenden aller erforderlichen Betriebssystem- und Anwendungsupdates verantwortlich.
+- name: Abrechnung und Verfügbarkeit
+  questions:
+  - question: >
+      Was sind die Azure AD Domain Services?
+    answer: >
+      Ja. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/active-directory-ds/).
+  - question: >
+      Gibt es eine kostenlose Testversion des Diensts?
+    answer: >
+      Azure AD Domain Services ist in der kostenlosen Testversion von Azure enthalten. Sie können sich für eine [kostenlose einmonatige Testversion von Azure](https://azure.microsoft.com/pricing/free-trial/)registrieren.
+  - question: >
+      Kann ich eine durch Azure AD Domain Services verwaltete Domäne aussetzen?
+    answer: >
+      Nein. Sobald Sie eine durch Azure AD Domain Services verwaltete Domäne aktiviert haben, ist der Dienst in dem ausgewählten virtuellen Netzwerk verfügbar, bis Sie die verwaltete Domäne löschen. Es gibt keine Möglichkeit, den Dienst anzuhalten. Die Abrechnung erfolgt weiterhin auf Stundenbasis, bis Sie die verwaltete Domäne löschen.
+  - question: >
+      Kann ich für die Notfallwiederherstellung ein Failover von Azure AD Domain Services in eine andere Region durchführen?
+    answer: >
+      Ja, um geografische Resilienz für eine verwaltete Domäne zu gewährleisten, können Sie in einem verknüpften virtuellen Netzwerk in einer beliebigen Azure-Region, die Azure AD DS unterstützt, eine zusätzliche [Replikatgruppe](tutorial-create-replica-set.md) erstellen. Replikatgruppen verwenden denselben Namespace und dieselbe Konfiguration wie die verwaltete Domäne.
+  - question: >
+      Kann ich die Azure AD Domain Services als Teil der Enterprise Mobility Suite (EMS) erwerben? Benötige ich Azure AD Premium, um Azure AD-Domänendienste zu verwenden?
+    answer: >
+      Nein. Azure AD Domain Services ist ein Azure-Dienst mit nutzungsbasierter Bezahlung und nicht Teil von EMS. Azure AD Domain Services kann mit allen Editionen von Azure AD (Free und Premium) verwendet werden. Die Abrechnung erfolgt auf Stundenbasis nach Verbrauch.
+  - question: >
+      In welchen Azure-Regionen ist der Dienst verfügbar?
+    answer: >
+      Eine Liste der Azure-Regionen, in denen Azure AD-Domänendienste verfügbar ist, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/) .
+
+
+      ## <a name="troubleshooting"></a>Problembehandlung
+
+      Im [Leitfaden zur Problembehandlung](troubleshoot.md) finden Sie Lösungen für häufig auftretende Probleme beim Konfigurieren oder Verwalten der Azure AD Domain Services.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\nWeitere Informationen zu Azure AD Domain Services finden Sie unter [Was ist Azure Active Directory Domain Services?](overview.md).\n        \nInformationen für den Einstieg finden Sie unter [Erstellen und Konfigurieren einer verwaltete Azure Active Directory Domain Services-Domäne](tutorial-create-instance.md).\n        \n"

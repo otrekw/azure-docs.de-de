@@ -4,12 +4,12 @@ description: Erstellen eines Azure Event Hubs-Namespace mit einem Event Hub und 
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 54dbe55448e905bab1893aac6c71baace0205be0
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 6cd99ffd987eb630d33bce1d5700593020691ffd
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736683"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005895"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Erstellen eines Namespace mit Event Hub und Aktivieren von Capture mithilfe einer Vorlage
 
@@ -39,7 +39,7 @@ Mit dieser Vorlage können Sie einen Event Hubs-Namespace mit einem Event Hub be
 
 Klicken Sie auf die folgende Schaltfläche, um Event Hubs Capture mit Azure Data Lake Store als Ziel zu aktivieren:
 
-[![In Azure bereitstellen](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
+[![In Azure bereitstellen](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.eventhub%2Feventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parameter
 
@@ -396,7 +396,7 @@ New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -Templa
 Stellen Sie Ihre Vorlage bereit, um Event Hubs Capture mit Azure Data Lake Store als Ziel zu aktivieren:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json
+New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/quickstarts/microsoft.eventhub/eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -410,7 +410,7 @@ az deployment group create \<my-resource-group\> \<my-deployment-name\> --templa
 Azure Data Lake Store als Ziel:
 
 ```azurecli
-az deployment group create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
+az deployment group create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/quickstarts/microsoft.eventhub/eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -423,7 +423,7 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 * [Erstellen eines Event Hubs](event-hubs-create.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.yml)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Azure Resources naming conventions]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Event hub and enable Capture to Storage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventhub/eventhubs-create-namespace-and-enable-capture

@@ -14,12 +14,12 @@ ms.custom:
 - mvc
 - devx-track-azurecli
 - mode-arm
-ms.openlocfilehash: 33c262c61d50b45663a627e40ea186f1f0dcde41
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 5934c20c2c7749b75b05bdb80b6d9dee85d6d3c1
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532967"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007011"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines verwalteten Key Vault-Hardwaresicherheitsmoduls (HSM) mithilfe einer Azure Resource Manager-Vorlage
 
@@ -51,7 +51,7 @@ Weitere Informationen zu den Anmeldeoptionen für die Befehlszeilenschnittstelle
 
 ## <a name="create-a-manage-hsm"></a>Erstellen eines verwalteten HSM
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-managed-hsm-create/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/managed-hsm-create/).
 
 In der Vorlage definierte Azure-Ressource:
 
@@ -73,7 +73,7 @@ Möglicherweise benötigen Sie auch die Mandanten-ID. Ermitteln Sie sie mithilfe
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt einen Schlüsseltresor und ein Geheimnis.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-managed-hsm-create%2Fazuredeploy.json"><img src="../media/deploy-to-azure.svg" alt="deploy to azure"/></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2F%2Fmaster%2Fquickstarts%2Fmicrosoft.keyvault%2Fmanaged-hsm-create%2Fazuredeploy.json"><img src="../media/deploy-to-azure.svg" alt="deploy to azure"/></a>
 
 2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
