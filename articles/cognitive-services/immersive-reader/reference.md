@@ -5,17 +5,17 @@ description: Das Plastischer Reader-SDK enthält eine JavaScript-Bibliothek, die
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metang
-ms.openlocfilehash: 852e3d91b9d90d79bc45b4478ee433fbbd13255b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2ed5ac3717b992d41c3326037837e86e26f243f3
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370786"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887922"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Referenz zum JavaScript-SDK für den Plastischen Reader (v1.1)
 

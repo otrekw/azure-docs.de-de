@@ -2,14 +2,14 @@
 title: End-to-End-Ausführung von Aufträgen mithilfe von Vorlagen
 description: Allein mit CLI-Befehlen können Sie einen Pool erstellen, Eingabedaten hochladen, Aufträge und zugehörige Aufgaben erstellen und die resultierenden Ausgabedaten herunterladen.
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 06/14/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad7882276c53f6bee8fa32592ad474f47697c27a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91848720"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078364"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung
 
@@ -18,7 +18,7 @@ Indem Sie eine Batch-Erweiterung für die Azure CLI verwenden, können Sie Batch
 Erstellen und verwenden Sie die JSON-Vorlagendateien mit der Azure CLI zum Erstellen von Batch-Pools, -Aufträgen und -Aufgaben. Verwenden Sie die Befehle der CLI-Erweiterung, um problemlos Auftragseingabedateien in das Speicherkonto hochzuladen, das dem Batch-Konto zugeordnet ist, und Auftragsausgabedateien herunterzuladen.
 
 > [!NOTE]
-> JSON-Dateien unterstützen nicht die gleiche Funktionalität wie [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md). Sie sind so formatiert wie der unformatierte REST-Anforderungstext. Die CLI-Erweiterung ändert keine vorhandenen Befehle, verfügt aber über eine ähnliche Vorlagenoption, die eine teilweise Azure Resource Manager-Vorlagen-Funktionalität hinzufügt. Weitere Informationen finden Sie unter [Azure Batch CLI Extensions for Windows, Mac and Linux](https://github.com/Azure/azure-batch-cli-extensions) (Azure Batch-CLI-Erweiterungen für Windows, Mac und Linux).
+> JSON-Dateien unterstützen nicht die gleiche Funktionalität wie [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md). Sie sind so formatiert wie der unformatierte REST-Anforderungstext. Die CLI-Erweiterung ändert keine vorhandenen Befehle, verfügt aber über eine ähnliche Vorlagenoption, die eine teilweise Azure Resource Manager-Vorlagen-Funktionalität hinzufügt. Weitere Informationen finden Sie unter [Azure Batch CLI Extensions for Windows, Mac and Linux](https://github.com/Azure/azure-batch-cli-extensions) (Azure Batch-CLI-Erweiterungen für Windows, Mac und Linux).
 
 ## <a name="overview"></a>Übersicht
 
@@ -121,7 +121,7 @@ Nachfolgend sehen Sie ein Beispiel für eine Vorlage, die einen Pool mit virtuel
             "vmSize": "STANDARD_D3_V2",
             "targetDedicatedNodes": "[parameters('nodeCount')]",
             "enableAutoScale": false,
-            "taskSlotsPerNode": 1,
+            "maxTasksPerNode": 1,
             "packageReferences": [
                 {
                     "type": "aptPackage",

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: e128e9f7515e572fc0be4b92ef03d8d98529ac66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 472747a1b6fdd6feb8ec285102530dbc59186b9a
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104674902"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111542068"
 ---
 # <a name="what-is-azure-data-catalog"></a>Was ist Azure Data Catalog?
 [!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
@@ -67,7 +67,7 @@ Weitere Informationen zu den Funktionen von Data Catalog finden Sie unter:
 * [Arbeiten mit großen Datenquellen in Azure Data Catalog](data-catalog-how-to-big-data.md)
 * [Verwalten von Datenassets](data-catalog-how-to-manage.md)
 * [Einrichten des Unternehmensglossars](data-catalog-how-to-business-glossary.md)
-* [Häufig gestellte Fragen](data-catalog-frequently-asked-questions.md)
+* [Häufig gestellte Fragen](data-catalog-frequently-asked-questions.yml)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

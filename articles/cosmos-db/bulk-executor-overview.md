@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 211fc85f97069fcf3251048a074d625e777f8e7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 159b44c4002c838a22656e8a8ddc5f5f6efd69b7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93100472"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971951"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,5 +54,5 @@ Die BulkExecutor-Bibliothek stellt sicher, dass der Durchsatz, der einer Sammlun
   
 * Erfahren Sie mehr darüber, indem Sie die Beispielanwendungen ausprobieren, die die BulkExecutor-Bibliothek in [.NET](bulk-executor-dot-net.md) und [Java](bulk-executor-java.md) nutzen.  
 * Sehen Sie sich die Informationen und Versionsanmerkungen zum BulkExecutor SDK in [.NET](sql-api-sdk-bulk-executor-dot-net.md) und [Java](sql-api-sdk-bulk-executor-java.md) an.
-* Die BulkExecutor-Bibliothek ist in den Cosmos DB Spark-Connector integriert. Weitere Informationen finden Sie im Artikel [Spark-Connector für Azure Cosmos DB](spark-connector.md).  
+* Die BulkExecutor-Bibliothek ist in den Cosmos DB Spark-Connector integriert. Weitere Informationen finden Sie im Artikel [Spark-Connector für Azure Cosmos DB](./create-sql-api-spark.md).  
 * Die BulkExecutor-Bibliothek ist auch in eine neue Version des [Azure Cosmos DB-Connectors](../data-factory/connector-azure-cosmos-db.md) integriert, damit Azure Data Factory Daten kopieren kann.
