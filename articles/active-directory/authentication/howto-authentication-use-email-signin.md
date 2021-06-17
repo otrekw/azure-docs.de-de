@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 222197249f9fa8c4a30a0361633229c1d6cc473a
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: ed77dcad9e9e6568cc38fd3510d9b5a9a0624c11
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517584"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963651"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>Anmeldung bei Azure AD mit einer E-Mail-Adresse als alternative Anmelde-ID (Vorschau)
 
@@ -40,7 +40,7 @@ Sie müssen Folgendes über die Verwendung von E-Mail-Adressen als alternative A
 
 * Das Feature ist in Azure AD Free und höher verfügbar.
 * Das Feature ermöglicht die Anmeldung mit dem *ProxyAddresses*-Attribut verifizierter Domänen für cloudauthentifizierte Azure AD-Benutzer.
-* Wenn ein Benutzer sich mit einer E-Mail-Adresse anmeldet, die nicht als UPN registriert ist, weisen die Ansprüche `unique_name` und `preferred_username` (sofern vorhanden) im [ID-Token](https://docs.microsoft.com/azure/active-directory/develop/id-tokens) den Wert der E-Mail-Adresse auf, die nicht als UPN registriert ist.
+* Wenn ein Benutzer sich mit einer E-Mail-Adresse anmeldet, die nicht als UPN registriert ist, weisen die Ansprüche `unique_name` und `preferred_username` (sofern vorhanden) im [ID-Token](../develop/id-tokens.md) den Wert der E-Mail-Adresse auf, die nicht als UPN registriert ist.
 * Es gibt zwei Optionen zum Konfigurieren des Features:
     * [HRD-Richtlinie (Home Realm Discovery, Startbereichsermittlung):](#enable-user-sign-in-with-an-email-address) Verwenden Sie diese Option, um das Feature für den gesamten Mandanten zu aktivieren. Hierzu sind globaler Administratorberechtigungen erforderlich.
     * [Richtlinie für gestaffelten Rollout:](#enable-staged-rollout-to-test-user-sign-in-with-an-email-address) Verwenden Sie diese Option, um das Feature mit spezifischen Azure AD-Gruppen zu testen. Hierzu sind globaler Administratorberechtigungen erforderlich.
@@ -93,8 +93,8 @@ Ein anderer Ansatz besteht darin, die UPNs für Azure AD und die lokalen UPNs zu
 
 | Option | BESCHREIBUNG |
 |---|---|
-| [Alternative Anmelde-ID für AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) | Aktivieren Sie die Anmeldung mit einem alternativen Attribut (z. B. E-Mail-Adressen) für AD FS-Benutzer. |
-| [Alternative Anmelde-ID in Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-userprincipalname#alternate-login-id) | Synchronisieren Sie ein alternatives Attribut (z. B. E-Mail-Adressen) als Azure AD-UPN. |
+| [Alternative Anmelde-ID für AD FS](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) | Aktivieren Sie die Anmeldung mit einem alternativen Attribut (z. B. E-Mail-Adressen) für AD FS-Benutzer. |
+| [Alternative Anmelde-ID in Azure AD Connect](../hybrid/plan-connect-userprincipalname.md#alternate-login-id) | Synchronisieren Sie ein alternatives Attribut (z. B. E-Mail-Adressen) als Azure AD-UPN. |
 | E-Mail-Adresse als alternative Anmelde-ID | Aktivieren Sie die Anmeldung mit *ProxyAddresses*-Attributen einer verifizierten Domäne für Azure AD-Benutzer. |
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>Synchronisieren von Anmelde-E-Mail-Adressen mit Azure AD
@@ -227,7 +227,7 @@ Nachdem die Richtlinie angewendet wurde, kann es bis zu einer Stunde dauern, bis
 ## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>Aktivieren von gestaffelten Rollouts zum Testen der Benutzeranmeldung mit einer E-Mail-Adresse  
 
 > [!NOTE]
->Diese Konfigurationsoption verwendet die Richtlinie für gestaffelte Rollouts. Weitere Informationen finden Sie unter [featureRolloutPolicy-Ressourcentyp](https://docs.microsoft.com/graph/api/resources/featurerolloutpolicy?view=graph-rest-1.0&preserve-view=true).
+>Diese Konfigurationsoption verwendet die Richtlinie für gestaffelte Rollouts. Weitere Informationen finden Sie unter [featureRolloutPolicy-Ressourcentyp](/graph/api/resources/featurerolloutpolicy?preserve-view=true&view=graph-rest-1.0).
 
 Die Richtlinie für gestaffelte Rollouts ermöglicht es Mandantenadministratoren, Features für spezifische Azure AD-Gruppen zu aktivieren. Es wird empfohlen, dass Mandantenadministratoren einen gestaffelten Rollout verwenden, um die Benutzeranmeldung mit einer E-Mail-Adresse zu testen. Wenn Administratoren bereit sind, dieses Feature für ihren gesamten Mandanten bereitzustellen, sollten sie die [HRD-Richtlinie](#enable-user-sign-in-with-an-email-address) verwenden.  
 
