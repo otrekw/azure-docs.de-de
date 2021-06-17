@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: f1b52b7a7312e2ec41c45c8681f6d0a8e1896eec
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 1214cfaa0d534edc47cdcadd98ab0a3ead4d2f46
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814134"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985632"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-arm-template"></a>Schnellstart: Erstellen einer automatischen Reaktion auf eine bestimmte Sicherheitswarnung mithilfe einer ARM-Vorlage
 
@@ -33,7 +33,7 @@ Eine Liste der Rollen und Berechtigungen, die für die Arbeit mit dem Azure Secu
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-securitycenter-create-automation-for-alertnamecontains/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/securitycenter-create-automation-for-alertnamecontains/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.security/securitycenter-create-automation-for-alertnamecontains/azuredeploy.json":::
 

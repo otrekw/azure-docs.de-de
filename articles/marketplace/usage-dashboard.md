@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/28/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: ef0e3745d6a45353ef286101bcb5fef1923ce12b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: fca763f307c8ae1437009b282e460fc249c40b60
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206743"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540967"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace
 
@@ -194,10 +194,10 @@ Wenn Sie über mehrere Angebote verfügen, bei denen benutzerdefinierte Verbrauc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die im kommerziellen Marketplace verfügbaren Analyseberichte finden Sie unter [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](./partner-center-portal/analytics.md).
+- Eine Übersicht über die im kommerziellen Marketplace verfügbaren Analyseberichte finden Sie unter [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](analytics.md).
 - Informationen zu Diagrammen, Trends und Werten von aggregierten Daten, mit deren Hilfe Marketplace-Aktivitäten für Ihr Angebot zusammengefasst werden, finden Sie unter [Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace](./summary-dashboard.md).
 - Informationen zu Ihren Aufträgen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace](./orders-dashboard.md).
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](usage-dashboard.md).
-- Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./partner-center-portal/downloads-dashboard.md).
-- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in Microsoft AppSource finden Sie unter [Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center](./partner-center-portal/ratings-reviews.md).
+- Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](downloads-dashboard.md).
+- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in Microsoft AppSource finden Sie unter [Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center](ratings-reviews.md).
 - Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Terminologie und häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace](./analytics-faq.md).

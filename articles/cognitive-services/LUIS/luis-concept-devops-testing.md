@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6f146fac4e2989e03382ef4879b305410fab6d8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98788450"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969385"
 ---
 # <a name="testing-for-luis-devops"></a>Testen für LUIS DevOps
 
@@ -25,7 +25,7 @@ Tests sind ein kritischer Bestandteil von [CI/CD-Workflows](luis-concept-devops-
 Es gibt zwei verschiedene Arten von Tests für eine LUIS-App, die Sie in Continuous Integration Workflows ausführen müssen:
 
 - **Komponententests**: Relativ einfache Tests, mit denen die Hauptfunktionen ihrer Luis-APP überprüft werden. Ein Komponententest ist bestanden, wenn für eine bestimmte Testäußerung die erwartete Absicht und die erwarteten Entitäten zurückgegeben werden. Damit der Test erfolgreich bestanden ist, müssen alle Komponententests bestanden werden.  
-Diese Art Test ähnelt den [interaktiven Tests](./luis-concept-test.md), die Sie im [LUIS-Portal](https://www.luis.ai/) ausführen können.
+Diese Art Test ähnelt den [interaktiven Tests](./luis-interactive-test.md), die Sie im [LUIS-Portal](https://www.luis.ai/) ausführen können.
 
 - **Batchtests**: Das Testen in Batches stellt umfassende Tests Ihres aktuellen trainierten Modells dar, um seine Leistung zu messen. Im Gegensatz zu Komponententests liegt Batchtests nicht die Unterscheidung „bestanden|nicht bestanden“ zugrunde. Die Erwartung beim Testen in Batches richtet sich nicht darauf, dass jeder Test die erwartete Absicht und die erwarteten Entitäten zurückgibt. Stattdessen hilft Ihnen das Testen in Batches, die Genauigkeit jeder Absicht und jeder Entität in Ihrer App darzustellen und im zeitlichen Verlauf zu vergleichen, wenn Sie Verbesserungen vornehmen.  
 Diese Tests sind von der gleichen Art wie das [Testen in Batches](./luis-how-to-batch-test.md), das Sie interaktiv im LUIS-Portal ausführen können.
@@ -91,7 +91,7 @@ Das Testen in Batches sollte eine große Anzahl von Testfällen umfassen, die da
 
 Das LUIS-Portal bietet Funktionen zur Unterstützung von interaktiven Tests:
 
-* [**Interaktive Tests**](./luis-concept-test.md) ermöglichen es Ihnen, eine Beispieläußerung zu senden und die von LUIS erkannten Absichten und Entitäten in der Antwort zu erhalten. Der Erfolg des Tests wird durch visuelle Untersuchung überprüft.
+* [**Interaktive Tests**](./luis-interactive-test.md) ermöglichen es Ihnen, eine Beispieläußerung zu senden und die von LUIS erkannten Absichten und Entitäten in der Antwort zu erhalten. Der Erfolg des Tests wird durch visuelle Untersuchung überprüft.
 
 * Beim [**Testen in Batches**](./luis-how-to-batch-test.md) wird eine Batchtestdatei als Eingabe verwendet, um Ihre aktive trainierte Version zu überprüfen, um ihre Vorhersagegenauigkeit zu messen. Ein Batchtest zeigt die Ergebnisse in einem Diagramm an, sodass Sie einen besseren Einblick in die Genauigkeit der einzelnen Absichten und Entitäten in Ihrer aktuellen Version erhalten.
 
@@ -136,4 +136,4 @@ Wenn Sie das nicht deterministische Training für die von Ihnen erstellten LUIS-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum [Implementieren von CI/CD-Workflows](luis-concept-devops-automation.md)
-* Erfahren Sie, wie Sie [DevOps für LUIS mit GitHub implementieren](luis-how-to-devops-with-github.md)
+* Erfahren Sie, wie Sie [DevOps für LUIS mit GitHub implementieren](./luis-concept-devops-automation.md)

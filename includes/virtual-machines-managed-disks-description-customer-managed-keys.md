@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-machines
 author: roygara
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 52b9bee1d43c0f136889a6a54277d4bb45dd4a45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76ee3371134c66d6dcc5b4b07436e5c30a15f144
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101750721"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111449878"
 ---
 Sie können die Verschlüsselung auf der Ebene verwalteter Datenträger mit eigenen Schlüsseln verwalten. Die serverseitige Verschlüsselung für verwaltete Datenträger mit vom Kunden verwalteten Schlüsseln bietet eine integrierte Benutzerfunktionalität mit Azure Key Vault. Sie können entweder [ihre RSA-Schlüssel](../articles/key-vault/keys/hsm-protected-keys.md) in den Schlüsseltresor importieren oder neue RSA-Schlüssel in Azure Key Vault generieren. 
 
@@ -23,9 +23,7 @@ Die Verschlüsselung und Entschlüsselung von verwalteten Azure-Datenträgern er
 
 Sie müssen den Zugriff auf verwaltete Datenträger in Ihrer Key Vault-Instanz gewähren, damit Sie Ihre Schlüssel zum Verschlüsseln und Entschlüsseln des DEK verwenden können. Dies ermöglicht eine umfassende Kontrolle über Ihre Daten und Schlüssel. Sie können Ihre Schlüssel jederzeit deaktivieren oder den Zugriff auf verwaltete Datenträger widerrufen. Sie können auch die Verwendung von Verschlüsselungsschlüsseln mithilfe der Azure Key Vault-Überwachung überwachen, um sicherzustellen, dass nur verwaltete Datenträger oder andere vertrauenswürdige Azure-Dienste auf Ihre Schlüssel zugreifen.
 
-Für SSD Premium, SSD Standard und HDD Standard gilt Folgendes: Wenn Sie Ihren Schlüssel deaktivieren oder löschen, werden alle virtuellen Computer mit Datenträgern, die diesen Schlüssel verwenden, automatisch heruntergefahren. Danach können die virtuellen Computer nur verwendet werden, wenn der Schlüssel erneut aktiviert wird oder wenn Sie einen neuen Schlüssel zuweisen.    
-
-Wenn Sie bei Ultra Disks einen Schlüssel deaktivieren oder löschen, werden VMs mit Ultra Disks, die den Schlüssel verwenden, nicht automatisch heruntergefahren. Nachdem die Zuordnung der virtuellen Computer aufgehoben wurde und die virtuellen Computer neu gestartet wurden, wird der Schlüssel nicht mehr von den Datenträgern verwendet, und die virtuellen Computer werden nicht wieder online geschaltet. Um die virtuellen Computer wieder online zu schalten, müssen Sie einen neuen Schlüssel zuweisen oder den vorhandenen Schlüssel aktivieren.    
+Wenn Sie Ihren Schlüssel deaktivieren oder löschen, werden alle virtuellen Computer mit Datenträgern, die diesen Schlüssel verwenden, automatisch heruntergefahren. Danach können die virtuellen Computer nur verwendet werden, wenn der Schlüssel erneut aktiviert wird oder wenn Sie einen neuen Schlüssel zuweisen.    
 
 Das folgende Diagramm zeigt, wie verwaltete Datenträger Azure Active Directory und Azure Key Vault verwenden, um Anforderungen mit dem vom Kunden verwalteten Schlüssel zu senden:
 

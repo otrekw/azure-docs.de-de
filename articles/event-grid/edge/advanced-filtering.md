@@ -1,19 +1,17 @@
 ---
 title: Erweiterte Filterung – Azure Event Grid IoT Edge | Microsoft-Dokumentation
 description: Erweiterte Filterung in Event Grid in IoT Edge.
-author: HiteshMadan
 manager: rajarv
-ms.author: himad
 ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: e42bb29a00486a16d697b68d7bcf337017da7998
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d0f146f66e2779a9ee8187f3ac06c72d884e9d8a
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368923"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755625"
 ---
 # <a name="advanced-filtering"></a>Erweiterte Filterung
 In Event Grid können Filter für eine beliebige Eigenschaft in der JSON-Nutzlast angegeben werden. Diese Filter werden als Gruppe von `AND`-Bedingungen erstellt, wobei jede äußere Bedingung über optionale innere `OR`-Bedingungen verfügt. Für jede `AND`-Bedingung geben Sie die folgenden Werte an:

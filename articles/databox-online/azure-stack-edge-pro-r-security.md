@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/09/2021
+ms.date: 06/03/2021
 ms.author: alkohli
-ms.openlocfilehash: f4f7e5f69e6b496395b74dbdcd58b3ada0a7f349
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: a68394b5db25565b44db0347a685d6cd67540170
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285196"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985704"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Sicherheit und Schutz von Daten für Azure Stack Edge Pro R und Azure Stack Edge Mini R
 
@@ -51,7 +51,7 @@ Hierbei handelt es sich um ein lokales Gerät, das Sie bei der Datentransformati
     - Für die Gerätesoftware werden Firewall-Standardprotokolle für den ein- und ausgehenden Datenverkehr des Geräts erfasst. Diese Protokolle sind im Supportpaket zusammengefasst.
     - Für die Gerätehardware werden alle Ereignisse für das Gerätegehäuse, z. B. Öffnen und Schließen, für das Gerät protokolliert.
 
-    Weitere Informationen zu den spezifischen Protokollen, die die Informationen zu den erfolgten Hardware- und Softwareeingriffen enthalten, und zum Abrufen der Protokolle finden Sie unter [Sammeln erweiterter Sicherheitsprotokolle](azure-stack-edge-gpu-troubleshoot.md).
+    Weitere Informationen zu den spezifischen Protokollen, die die Informationen zu den erfolgten Hardware- und Softwareeingriffen enthalten, und zum Abrufen der Protokolle finden Sie unter [Sammeln erweiterter Sicherheitsprotokolle](azure-stack-edge-gpu-troubleshoot.md#gather-advanced-security-logs).
 
 
 ### <a name="protect-the-device-via-activation-key"></a>Schützen des Geräts mittels Aktivierungsschlüssel

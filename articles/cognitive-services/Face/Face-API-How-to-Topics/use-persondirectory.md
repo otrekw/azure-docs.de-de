@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7db7accec4b87f7bc8c3e38b409902fd4439851f
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 8d7238aea62b3532461cd40404b683e18227386f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018707"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950977"
 ---
 # <a name="use-the-persondirectory-structure"></a>Verwenden der PersonDirectory-Struktur
 
@@ -353,7 +353,7 @@ HttpResponseMessage response;
 // Request body
 var body = new Dictionary<string, object>();
 body.Add("faceIds", new List<string>{"{guid1}", "{guid2}", …});
-body.Add("personIds", "['*']");
+body.Add("personIds", new List<string>{"{guid1}", "{guid2}", …});
 byte[] byteData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(body));
 
 using (var content = new ByteArrayContent(byteData))
@@ -398,4 +398,4 @@ Die Antwort enthält einen booleschen Wert, der angibt, ob der Dienst das neue G
 
 In diesem Leitfaden haben Sie erfahren, wie Sie die **PersonDirectory**-Struktur verwenden, um Gesichts- und Personendaten für Ihre Gesichtserkennungs-App zu speichern. Als Nächstes lernen Sie die bewährten Methoden zum Hinzufügen der Gesichtsdaten Ihrer Benutzer kennen.
 
-* [Best Practices für das Hinzufügen von Benutzern](https://docs.microsoft.com/azure/cognitive-services/face/enrollment-overview)
+* [Best Practices für das Hinzufügen von Benutzern](../enrollment-overview.md)

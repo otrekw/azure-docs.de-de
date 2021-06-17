@@ -9,12 +9,12 @@ ms.custom:
 - subject-armqs
 - devx-track-js
 - mode-arm
-ms.openlocfilehash: 2f57e86421f7522467a3f4adf4a4e9a21456ba4c
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 2af957f6b69f2ef8c20672e62acaed5066a0d4d4
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107878738"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006154"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Schnellstart: Bereitstellen einer Containerinstanz in Azure mithilfe einer ARM-Vorlage
 
@@ -24,7 +24,7 @@ Führen Sie mithilfe von Azure Container Instances serverlose Docker-Container s
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.containerinstance%2Faci-linuxcontainer-public-ip%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/aci-linuxcontainer-public-ip/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.containerinstance/aci-linuxcontainer-public-ip/azuredeploy.json":::
 
@@ -46,7 +46,7 @@ Weitere Azure Container Instances-Vorlagenbeispiele finden Sie im [Schnellstartv
 
  1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt eine Registrierung und ein Replikat an einem anderen Standort.
 
-    [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
+    [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.containerinstance%2Faci-linuxcontainer-public-ip%2Fazuredeploy.json)
 
  2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 

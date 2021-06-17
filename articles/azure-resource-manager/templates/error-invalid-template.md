@@ -3,12 +3,12 @@ title: Fehler wegen ungültiger Vorlage
 description: Hier wird beschrieben, wie Fehler aufgrund ungültiger Vorlagen beim Bereitstellen von Azure Resource Manager-Vorlagen behoben werden.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: ba19d3c4e72a765e2aaff7393915b77a80daf2ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 155adc03dfe7a25996b2004bff3aaac48dd6205c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96185792"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957598"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Beheben von Fehlern aufgrund ungültiger Vorlagen
 
@@ -124,7 +124,7 @@ for the template parameter {parameter name} is not valid. The parameter value is
 part of the allowed values
 ```
 
-Überprüfen Sie die zulässigen Werte in der Vorlage, und geben Sie während der Bereitstellung einen gültigen Wert an. Weitere Informationen zu zulässigen Parameterwerten finden Sie im [Abschnitt „Parameters“ von Azure Resource Manager-Vorlagen](template-syntax.md#parameters).
+Überprüfen Sie die zulässigen Werte in der Vorlage, und geben Sie während der Bereitstellung einen gültigen Wert an. Weitere Informationen zu zulässigen Parameterwerten finden Sie im [Abschnitt „Parameters“ von Azure Resource Manager-Vorlagen](./syntax.md#parameters).
 
 <a id="too-many-resource-groups"></a>
 

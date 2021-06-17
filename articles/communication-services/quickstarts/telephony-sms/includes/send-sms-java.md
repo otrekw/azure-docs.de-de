@@ -1,8 +1,8 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: azure-communication-services
-author: paolamvhz
+author: pvicencio
 manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
@@ -10,16 +10,19 @@ ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: b11be98718db282e219f3d1d151ceab235efe5e2
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 68d815faa79e0b018bd3d2125ea88cd4a33dea51
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109805256"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430964"
 ---
 Steigen Sie in Azure Communication Services ein, indem Sie das Java SMS-SDK von Communication Services nutzen, um SMS-Nachrichten zu senden.
 
 Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
+
+> [!NOTE]
+> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/send-sms-quickstart).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -54,19 +57,11 @@ Durch das Ziel „generate“ wird ein Verzeichnis erstellt, das den gleichen Na
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
 ### <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
-
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-core</artifactId>
-    <version>1.16.0</version> <!-- {x-version-update;com.azure:azure-core;dependency} -->
-</dependency>
-```
 
 Öffnen Sie **/src/main/java/com/communication/quickstart/App.java** in einem Text-Editor, fügen Sie Importanweisungen hinzu, und entfernen Sie die Anweisung `System.out.println("Hello world!");`:
 
@@ -120,7 +115,7 @@ SmsClient smsClient = new SmsClientBuilder()
 Anstelle des Endpunkts und des Zugriffsschlüssels können Sie mithilfe der ConnectionString()-Funktion auch die gesamte Verbindungszeichenfolge bereitstellen.
 ```java
 // You can find your connection string from your resource in the Azure portal
-String connectionString = "https://<resource-name>.communication.azure.com/;<access-key>";
+String connectionString = "endpoint=https://<resource-name>.communication.azure.com/;accesskey=<access-key>";
 
 SmsClient smsClient = new SmsClientBuilder()
             .connectionString(connectionString)

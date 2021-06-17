@@ -2,13 +2,13 @@
 title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken mit dem Azure Backup-Dienst auf virtuellen Azure-Computern sichern können.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: ab4b192c63697b398314f78518eaf8f90f17c452
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.date: 05/28/2021
+ms.openlocfilehash: 9267a3a27823249116e74c6aba9321cfdfd0e338
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277586"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681346"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -84,7 +84,7 @@ Sie können auch die folgenden FQDNs verwenden, um den Zugriff auf die erforderl
 | Dienst    | Domänennamen, auf die zugegriffen werden soll                             |
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
-| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
+| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` <br><br> `*.blob.storage.azure.net` |
 | Azure AD      | Gewähren des Zugriffs auf FQDNs gemäß Abschnitt 56 und 59, wie in [diesem Artikel](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) beschrieben |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Verwenden eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr

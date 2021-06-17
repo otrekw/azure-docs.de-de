@@ -5,14 +5,14 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 02/11/2021
-ms.openlocfilehash: 33e074da8c9e028916552e45be0dfb9634a1d173
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 40e48cade82f8ffc808303dd43cb0d5f9ff5fe86
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277820"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984426"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden einer ARM-Vorlage zum Erstellen eines Azure Database for PostgreSQL-Einzelservers
 
@@ -46,7 +46,7 @@ Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Kon
 
 Sie erstellen einen Azure Database for PostgreSQL-Server mit einer konfigurierten Gruppe von Compute- und Speicherressourcen. Weitere Informationen finden Sie unter [Tarife in Azure Database for PostgreSQL – Einzelserver](concepts-pricing-tiers.md) Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) erstellt.
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-managed-postgresql-with-vnet/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/managed-postgresql-with-vnet/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.dbforpostgresql/managed-postgresql-with-vnet/azuredeploy.json":::
 
