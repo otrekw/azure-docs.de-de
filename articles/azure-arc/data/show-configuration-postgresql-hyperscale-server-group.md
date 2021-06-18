@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12631adea948c6a59f935ba409dcc925268c6319
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93279400"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412257"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>Anzeigen der Konfiguration einer Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 
@@ -362,7 +362,7 @@ Gibt die folgende Ausgabe in einem Format und mit Inhalt zurück, der der von ku
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Informationen zu den Konzepten von Azure Arc-fähigem PostgreSQL Hyperscale](concepts-distributed-postgres-hyperscale.md)
-- [Informationen zum horizontalen Hochskalieren einer Servergruppe (Hinzufügen von Workerknoten)](scale-out-postgresql-hyperscale-server-group.md)
+- [Informationen zum horizontalen Hochskalieren einer Servergruppe (Hinzufügen von Workerknoten)](scale-out-in-postgresql-hyperscale-server-group.md)
 - [Informationen zum zentralen Hoch- oder Herunterskalieren einer Servergruppe (Erhöhen oder Verringern des Arbeitsspeichers und/oder der virtuellen Kerne)](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
 - [Informationen zur Speicherkonfiguration](storage-configuration.md)
 - [Informationen zum Überwachen einer Datenbankinstanz](monitor-grafana-kibana.md)

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2021
-ms.openlocfilehash: 0b9b96c4cbc2484597e51463a6b7a4ecfaf9e950
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 16bac156af04394552c280271d13ecbe41a1982b
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107892354"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615178"
 ---
 # <a name="configure-azure-container-offer-listing-details"></a>Konfigurieren Sie die Azure Container-Angebotsdetails
 
@@ -29,7 +29,7 @@ Der hier von Ihnen angegebene **Name** wird den Kunden als Titel des Angebots an
 - Darf höchstens 50 Zeichen umfassen.
 - Darf keine Emojis enthalten.
 
-Geben Sie eine kurze Beschreibung Ihres Angebots für die **Zusammenfassung der Suchergebnisse** (bis zu 100 Zeichen). Diese Beschreibung kann in Marketplace-Suchergebnissen verwendet werden.
+Geben Sie eine kurze Beschreibung Ihres Angebots für die **Zusammenfassung der Suchergebnisse** (bis zu 100 Zeichen) an. Diese Beschreibung kann in Marketplace-Suchergebnissen verwendet werden.
 
 Geben Sie eine **kurze Beschreibung** Ihres Angebots an (bis zu 256 Zeichen) an. Diese wird in den Suchergebnissen und auf der Detailseite Ihres Angebots angezeigt.
 
@@ -57,8 +57,6 @@ Geben Sie im Abschnitt **Supportkontakt** die **Supportwebsite** an, auf der Kun
 ## <a name="marketplace-media"></a>Marketplace-Medien
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Bei unscharfen Bildern wird Ihre Übermittlung abgelehnt.
-
-[!INCLUDE [logo tips](includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.

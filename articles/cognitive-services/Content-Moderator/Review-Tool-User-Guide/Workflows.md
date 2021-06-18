@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 6eb2a2d2762b60a12bb9a24b92e2edae4b846cd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87d643e7658477fb13f857b8b123889d82c5dfff
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96904141"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033831"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Definieren und Verwenden von Moderationsworkflows
+
+[!INCLUDE [deprecation notice](../includes/tool-deprecation.md)]
 
 In diesem Artikel wird erläutert, wie Sie [Workflows](../review-api.md#workflows) auf der Website des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com) einrichten und verwenden. Workflows sind cloudbasierte benutzerdefinierte Filter, mit denen Sie Inhalte effizienter verwalten können. Workflows lassen sich mit einer Vielzahl von Diensten verbinden, sodass Inhalte auf unterschiedliche Weise gefiltert und dann entsprechende Aktionen ausgeführt werden können. In diesem Artikel wird erläutert, wie Sie mithilfe des Content Moderator-Konnektors (standardmäßig enthalten) in einem typischen Moderationsszenario Inhalte filtern und Überprüfungen durch Personen einrichten können.
 

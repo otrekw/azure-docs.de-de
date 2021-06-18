@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: e4f905b7a08564eadb20d65d651c137ef3741376
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4f48ccaab8ba084a3944ba2d5fdd7188efa56555
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100320"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556836"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap für Azure Security Center-Bereitschaft
 Dieses Dokument enthält eine Roadmap für die Bereitschaft, die Ihnen als Hilfe bei den ersten Schritten mit Azure Security Center dient.
@@ -102,7 +102,7 @@ Artikel
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Seite mit der Security Center-Dokumentation](./index.yml)
 * [Seite mit der Dokumentation zur Security Center-REST-API](/previous-versions/azure/reference/mt704034(v=azure.100))
-* [Azure Security Center – Häufig gestellte Fragen](./faq-general.md)
+* [Azure Security Center – Häufig gestellte Fragen](./faq-general.yml)
 * [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/)
 * [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](../security/fundamentals/identity-management-best-practices.md)
 * [Bewährte Methoden für die Netzwerksicherheit](../security/fundamentals/network-best-practices.md)

@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 services: azure-communication-services
 author: tomaschladek
 manager: nmurav
@@ -10,13 +10,16 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 34ce87c1370a7c184eb96c5f2a295be34f73520d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1d846a282eba516a69460e020cd22c80f845e2f5
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110487434"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111429524"
 ---
+> [!NOTE]
+> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/AccessTokensQuickstart).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).

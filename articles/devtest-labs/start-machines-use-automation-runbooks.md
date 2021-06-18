@@ -3,12 +3,13 @@ title: Starten von Computern mit Automation-Runbooks in Azure DevTest Labs
 description: Es wird beschrieben, wie Sie virtuelle Computer in einem Lab in Azure DevTest Labs starten, indem Sie Azure Automation-Runbooks verwenden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 231e79d594aab7c59fa21f9ee512abaa9ac67043
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 84e784c0c5b9845c03cc28591a9ed8d4240fdc6b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87282261"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110702910"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Starten von virtuellen Computern in einem Lab nach einer bestimmten Reihenfolge mit Azure Automation-Runbooks
 Mit dem Feature [Autostart](devtest-lab-set-lab-policy.md#set-autostart) von DevTest Labs können Sie virtuelle Computer so konfigurieren, dass sie zu einem bestimmten Zeitpunkt automatisch gestartet werden. Bei diesem Feature wird das Starten von Computern in einer bestimmten Reihenfolge aber nicht unterstützt. Es gibt mehrere Szenarien, in denen diese Art von Automatisierung sinnvoll ist.  Ein Beispiel ist das Szenario, in dem eine Jumpbox-VM in einem Lab vor den anderen VMs zuerst gestartet werden muss, da die Jumpbox als Zugriffspunkt für die anderen VMs verwendet wird.  In diesem Artikel wird veranschaulicht, wie Sie ein Azure Automation-Konto mit einem PowerShell-Runbook einrichten, über das ein Skript ausgeführt wird. Im Skript werden Tags auf VMs im Lab genutzt, damit Sie die Startreihenfolge steuern können, ohne das Skript ändern zu müssen.

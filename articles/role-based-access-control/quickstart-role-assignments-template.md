@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 04/28/2021
 ms.author: rolyon
-ms.openlocfilehash: d040b4b49ddb394639633cb40887a116ff1e613b
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 48be24436e032f044e8f23238059e16b55d9cf5c
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279332"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111886896"
 ---
 # <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>Schnellstart: Zuweisen einer Azure-Rolle mithilfe einer ARM-Vorlage
 
@@ -37,7 +37,7 @@ Sie benötigen Folgendes, um Azure-Rollen zuzuweisen und Rollenzuweisungen zu en
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). Die Vorlage hat drei Parameter und einen Ressourcenabschnitt. Beachten Sie im Abschnitt „Ressourcen“, dass er die drei Elemente einer Rollenzuweisung enthält: Sicherheitsprinzipal, Rollendefinition und Bereich.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/rbac-builtinrole-resourcegroup/). Die Vorlage hat drei Parameter und einen Ressourcenabschnitt. Beachten Sie im Abschnitt „Ressourcen“, dass er die drei Elemente einer Rollenzuweisung enthält: Sicherheitsprinzipal, Rollendefinition und Bereich.
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.authorization/rbac-builtinrole-resourcegroup/azuredeploy.json":::
 
