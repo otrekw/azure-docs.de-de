@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.custom: seodec18
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: a3c10d95a57ea81f269af8f8f1cad49fc1c1b845
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: af1318ac30a0d72947dec5f7b6d61f2019ce03b2
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131257"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756075"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Tutorial: Zuweisen des Zugriffs auf Cloudyn-Daten
 
@@ -23,7 +23,7 @@ Der Zugriff auf Cloudyn-Daten wird über die Benutzer- oder Entitätsverwaltung 
 
 Entitäten geben die hierarchische Struktur Ihrer Geschäftsorganisation wieder. Sie stehen für Abteilungen, Geschäftsbereiche und Teams in Ihrer Organisation in Cloudyn. Die Entitätshierarchie hilft Ihnen dabei, die Ausgaben nach Entitäten genau nachzuverfolgen.
 
-Bei der Registrierung Ihrer Azure-Vereinbarung oder Ihres Azure-Kontos wurde ein Konto mit Administratorberechtigung in Cloudyn erstellt, sodass Sie alle Schritte in diesem Tutorial ausführen können. Dieses Tutorial behandelt den Zugriff auf Cloudyn-Daten, einschließlich Benutzerverwaltung und Entitätsverwaltung. Folgendes wird vermittelt:
+Bei der Registrierung Ihrer Azure-Vereinbarung oder Ihres Azure-Kontos wurde ein Konto mit Administratorberechtigung in Cloudyn erstellt, sodass Sie alle Schritte in diesem Tutorial ausführen können. Dieses Tutorial behandelt den Zugriff auf Cloudyn-Daten, einschließlich Benutzerverwaltung und Entitätsverwaltung. Sie lernen Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines Benutzers mit Administratorzugriff
@@ -78,7 +78,7 @@ Sie können sich nicht selbst als Benutzer löschen.
 
 ## <a name="delete-or-export-personal-data"></a>Löschen oder Exportieren von personenbezogenen Daten
 
-Wenn Sie personenbezogene Daten für Cloudyn löschen oder exportieren möchten, müssen Sie ein Supportticket erstellen. Ein erstelltes Supportticket dient als formeller Antrag: ein so genannter Antrag einer betroffenen Person. Microsoft unternimmt dann unmittelbar die Schritte zum Entfernen des Kontos und Löschen von Kundendaten bzw. personenbezogenen Daten. Informationen dazu, wie Sie das Löschen bzw. Exportieren Ihrer Daten anfordern können, finden Sie unter [Data Subject Requests of Cloudyn Data](https://www.cloudyn.com/cloudyn-gdpr-requests) (Anträge betroffener Personen für Cloudyn-Daten).
+Wenn Sie personenbezogene Daten für Cloudyn löschen oder exportieren möchten, müssen Sie ein Supportticket erstellen. Ein erstelltes Supportticket dient als formeller Antrag: ein so genannter Antrag einer betroffenen Person. Microsoft unternimmt dann unmittelbar die Schritte zum Entfernen des Kontos und Löschen von Kundendaten bzw. personenbezogenen Daten.
 
 ## <a name="create-and-manage-entities"></a>Erstellen und Verwalten von Entitäten
 

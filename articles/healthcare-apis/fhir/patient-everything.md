@@ -1,6 +1,6 @@
 ---
 title: Verwenden von patient-everything in Azure API for FHIR
-description: In diesem Artikel wird erläutert, wie Sie den Patient-Everything-Vorgang in der Azure API for FHIR
+description: In diesem Artikel wird erläutert, wie Der Patient-Everything-Vorgang in der Azure API for FHIR
 services: healthcare-apis
 author: caitlinv39
 ms.service: healthcare-apis
@@ -8,43 +8,43 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 06/04/2021
 ms.author: cavoeg
-ms.openlocfilehash: b02a2b582130c439298653d7c2a0512edbb8a23b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 480a909b5349d973f2d9803e1440827d94923ee6
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756363"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112322780"
 ---
 # <a name="patient-everything-in-fhir"></a>Patient-everything in FHIR
 
-Der [$patient-everything-Vorgang](https://www.hl7.org/fhir/patient-operation-everything.html) wurde erstellt, um einem Patienten Zugriff auf den gesamten Datensatz zu ermöglichen oder einem Anbieter oder einem anderen Benutzer einen Massendownload von Daten zu ermöglichen. Dieser Vorgang wird verwendet, um alle Informationen im Zusammenhang mit einem oder mehr Patienten zurück, die in der Ressource oder im Kontext beschrieben werden, in der dieser Vorgang aufgerufen wird.  
+Der [Vorgang $patient alles](https://www.hl7.org/fhir/patient-operation-everything.html) wird verwendet, um einem Patienten Zugriff auf den gesamten Datensatz zu gewähren oder um einem Anbieter oder anderen Benutzer einen Massendownload von Daten zu ermöglichen. Dieser Vorgang wird verwendet, um alle Informationen im Zusammenhang mit einem oder mehreren Patienten zurückzugeben, die in der Ressource oder dem Kontext beschrieben sind, für die dieser Vorgang aufgerufen wird.  
 
-## <a name="use-patient-everything"></a>Verwenden von patient-everything
-Verwenden Sie zum Aufrufen von patient-everything den folgenden Befehl:
+## <a name="use-patient-everything"></a>Verwenden von "patient-everything"
+Um patient-everything aufzurufen, verwenden Sie den folgenden Befehl:
 
 ```json
 GET {FHIRURL}/Patient/{ID}/$everything
 ```
-Der Azure API for FHIR überprüft, ob der Patient mit der angegebenen Patienten-ID übereinstimmen kann. Wenn ein Ergebnis gefunden wird, ist die Antwort ein Paket vom Typ "searchset" mit den folgenden Informationen: 
-* [Patient-Ressource](https://www.hl7.org/fhir/patient.html) 
-*  Ressourcen, auf die direkt von der Patient-Ressource verwiesen wird (außer Link) 
-*  Ressourcen im [Patientendepartment](https://www.hl7.org/fhir/compartmentdefinition-patient.html)
-*  [Geräteressourcen,](https://www.hl7.org/fhir/device.html) die auf die Patient-Ressource verweisen. Beachten Sie, dass dies auf 100 Geräte beschränkt ist. Wenn der Patient mehr als 100 Geräte mit ihnen verknüpft hat, werden nur 100 zurückgegeben. 
+Der Azure API for FHIR überprüft, ob der Patient gefunden werden kann, der mit der angegebenen Patienten-ID übereinstimmt. Wenn ein Ergebnis gefunden wird, ist die Antwort ein Bündel vom Typ "searchset" mit den folgenden Informationen: 
+* [Patientenressource](https://www.hl7.org/fhir/patient.html) 
+*  Ressourcen, auf die direkt von der Patient-Ressource verwiesen wird (mit Ausnahme des Links) 
+*  Ressourcen im [Patientende depot](https://www.hl7.org/fhir/compartmentdefinition-patient.html)
+*  [Geräteressourcen,](https://www.hl7.org/fhir/device.html) die auf die Patient-Ressource verweisen. Dies ist auf 100 Geräte beschränkt. Wenn der Patient mehr als 100 Geräte mit ihnen verknüpft hat, werden nur 100 zurückgegeben. 
 
  
 > [!Note]
-> $patient alles ist jetzt auf dem open source-FHIR-Server verfügbar, der von Cosmos DB unterstützt wird, und Azure API for FHIR 1. Juli verfügbar. Die Capability-Anweisung für den FHIR-Server fehlt die Unterstützung für $patient-everything, die hier nachverfolgt wird: Issue [1989](https://github.com/microsoft/fhir-server/issues/1989). 
+> Der Funktions-Anweisung für den FHIR-Server fehlt die Unterstützung für $patient-everything, die hier nachverfolgt wird: Issue [1989](https://github.com/microsoft/fhir-server/issues/1989). 
 
 
-## <a name="patient-everything-parameters"></a>Patient-everything-Parameter
+## <a name="patient-everything-parameters"></a>Parameter für "Patient-everything"
 Die Azure API for FHIR unterstützt die folgenden Abfrageparameter, die alle optional sind:
 
 |Query parameter (Abfrageparameter)        |  BESCHREIBUNG|
 |-----------------------|------------|
-| \_type | Hier können Sie angeben, welche Ressourcentypen in die Antwort eingeschlossen werden. \_Type=Encounter würde beispielsweise nur Ressourcen zurückgeben, die dem Patienten zugeordnet `Encounter` sind. |
-| \_since | Gibt nur Ressourcen zurück, die seit der angegebenen Zeit geändert wurden. |
-| start | Wenn Sie das Startdatum angeben, werden Ressourcen mit dem Angegebenen Startdatum eingezogen. Wenn kein Startdatum angegeben wird, befinden sich alle Datensätze vor dem Enddatum im Gültigkeitsbereich. |
-| end | Wenn Sie das Enddatum angeben, werden Ressourcen eingezogen, bei denen das datum der Studie vor dem angegebenen Enddatum liegt. Wenn kein Enddatum angegeben wird, befinden sich alle Datensätze nach dem Startdatum im Gültigkeitsbereich. |
+| \_type | Ermöglicht es Ihnen, anzugeben, welche Ressourcentypen in die Antwort einbezogen werden sollen. Beispielsweise \_ würde type=Encounter nur Ressourcen zurückgeben, `Encounter` die dem Patienten zugeordnet sind. |
+| \_since | Gibt nur Ressourcen zurück, die seit dem angegebenen Zeitpunkt geändert wurden. |
+| start | Wenn Sie das Startdatum angeben, werden Ressourcen abgerufen, deren klinisches Datum nach dem angegebenen Startdatum liegt. Wenn kein Startdatum angegeben wird, befinden sich alle Datensätze vor dem Enddatum im Gültigkeitsbereich. |
+| end | Wenn Sie das Enddatum angeben, werden Ressourcen abgerufen, deren klinisches Datum vor dem angegebenen Enddatum liegt. Wenn kein Enddatum angegeben wird, befinden sich alle Datensätze nach dem Startdatum im Gültigkeitsbereich. |
 
 > [!Note]
 > Sie müssen eine ID für einen bestimmten Patienten angeben. Wenn Sie alle Daten für alle Patienten benötigen, lesen Sie [$export](export-data.md). 
@@ -52,29 +52,29 @@ Die Azure API for FHIR unterstützt die folgenden Abfrageparameter, die alle opt
 
 ## <a name="examples-of-patient-everything"></a>Beispiele für $patient alles 
 
-Im Folgenden finden Sie einige zusätzliche Beispiele für die Verwendung $patient -alles-Vorgangs. 
+Im Folgenden finden Sie einige Beispiele für die Verwendung des vorgangs $patient-everything. 
 
-Verwenden Sie $patient Aufruf, um "alles" eines Patienten zwischen 2010 und 2020 mithilfe von "alles" abfragen zu können: 
+Verwenden Sie den folgenden Aufruf, um $patient-everything zum Abfragen des "alles" eines Patienten zwischen 2010 und 2020 zu verwenden: 
 
 ```json
 GET {FHIRURL}/Patient/{ID}/$everything?start=2010&end=2020
 ``` 
 
-Verwenden Sie $patient Aufruf, um die Beobachtung und die Beobachtung eines Patienten mithilfe von "alles" abfragen zu können: 
+Verwenden Sie den folgenden Aufruf, um $patient-everything zum Abfragen der Beobachtung und Der Begegnung eines Patienten zu verwenden: 
 ```json
 GET {FHIRURL}/Patient/{ID}/$everything_type=Observation,Encounter 
 ```
 
-Um "$patient-everything" zum Abfragen des "Alles" eines Patienten seit 2021-05-27T05:00:00Z zu verwenden, verwenden Sie den folgenden Aufruf: 
+Verwenden Sie den folgenden Aufruf, um $patient-everything zum Abfragen des "alles" eines Patienten seit 2021-05-27T05:00:00Z zu verwenden: 
 
 ```json
 GET {FHIRURL}/Patient/{ID}/$everything?_since=2021-05-27T05:00:00Z 
 ```
 
-Wenn für jeden dieser Aufrufe ein Patient gefunden wird, erhalten Sie eine 200-Antwort mit einem Bündel der entsprechenden Ressourcen zurück.
+Wenn für jeden dieser Aufrufe ein Patient gefunden wird, erhalten Sie eine 200-Antwort mit einem Bündel der entsprechenden Ressourcen.
 
 ## <a name="next-step"></a>Nächster Schritt
-Nachdem Sie nun wissen, wie Der Patient-Everything-Vorgang verwendet wird, können Sie sich über weitere Suchoptionen in der Übersicht über den Suchleitfaden informieren.
+Nachdem Sie nun wissen, wie Sie den Vorgang patient-everything verwenden, können Sie sich in der Übersicht über den Suchleitfaden über weitere Suchoptionen informieren.
 
 >[!div class="nextstepaction"]
 >[Übersicht über die FHIR-Suche](overview-of-search.md)

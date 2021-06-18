@@ -56,7 +56,7 @@ Identity Protection identifiziert Risiken in folgenden Klassifizierungen:
 | Kompromittierte Anmeldeinformationen | Gibt an, dass die gültigen Anmeldeinformationen des Benutzers kompromittiert wurden. |
 | Kennwortspray | Gibt an, dass für mehrere Benutzernamen unter Verwendung allgemeiner Kennwörtern koordinierte Brute-Force-Angriffe ausgeführt werden. |
 | Azure AD Threat Intelligence | Auf der Grundlage der internen und externen Quellen für Bedrohungsdaten von Microsoft wurde ein bekanntes Angriffsmuster identifiziert |
-| Neues Land/neue Region | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) erkannt. |
+| Neues Land/neue Region/neue Region | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) erkannt. |
 | Aktivität über anonyme IP-Adresse | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) erkannt. |
 | Verdächtige Weiterleitung des Posteingangs | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) erkannt. |
 

@@ -104,7 +104,7 @@ Für die Communication Services Calling SDKs gelten folgende Timeouts:
 
 Die folgende Tabelle enthält die unterstützten Browser, die derzeit verfügbar sind. Sofern nichts anderes angegeben ist, unterstützen wir die letzten drei Versionen des Browsers.
 
-| Plattform                         | Chrome | Safari*  | Microsoft Edge (Chromium) |
+| Plattform                         | Chrome | Safari*  | Microsoft Microsoft Edge (Chromium) |
 | -------------------------------- | -------| ------  | --------------  |
 | Android                          |  ✔️    | ❌     | ❌             |
 | iOS                              |  ❌    | ✔️**** | ❌             |
