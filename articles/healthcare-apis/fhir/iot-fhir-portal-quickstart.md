@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 04/05/2021
-ms.author: punagpal
-ms.openlocfilehash: 0a382ad948e7fd2efc6ab59eb94da3d6cbb210d7
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: rabhaiya
+ms.openlocfilehash: 978009c31cfcaba96e9601b672d182dc7a322278
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443769"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112286775"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Schnellstart: Bereitstellen von Azure IoT-Konnektor für FHIR (Vorschauversion) mithilfe des Azure-Portals
 
@@ -170,23 +170,23 @@ Stellen Sie die [Anwendungsvorlage für die ständige Überwachung von Patienten
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>Verbinden Ihrer IoT-Daten mit Azure IoT-Konnektor für FHIR (Vorschauversion)
 
-Nach der Bereitstellung Ihrer IoT Central-Anwendung beginnen Ihre beiden vordefinierten simulierten Geräte mit dem Generieren von Telemetriedaten. In diesem Tutorial erfassen Sie die Telemetriedaten vom Simulator *Smart Vitals Patch* in FHIR über Azure IoT-Konnektor für FHIR. Wenn Sie Ihre IoT-Daten in Azure IoT-Konnektor für FHIR exportieren möchten, sollten Sie einen [fortlaufenden Datenexport in IoT Central einrichten](../../iot-central/core/howto-export-data.md). Wir müssen zuerst eine Verbindung mit dem Ziel herstellen und dann einen Datenexport Auftrag erstellen, der fortlaufend ausgeführt wird: 
+Nach der Bereitstellung Ihrer IoT Central-Anwendung beginnen Ihre beiden vordefinierten simulierten Geräte mit dem Generieren von Telemetriedaten. In diesem Tutorial erfassen Sie die Telemetriedaten vom Simulator *Smart Vitals Patch* in FHIR über Azure IoT-Konnektor für FHIR. Wenn Sie Ihre IoT-Daten in Azure IoT-Konnektor für FHIR exportieren möchten, sollten Sie einen [fortlaufenden Datenexport in IoT Central einrichten](../../iot-central/core/howto-export-data.md). Zuerst müssen wir eine Verbindung mit dem Ziel herstellen, und dann erstellen wir einen Datenexportauftrag, um kontinuierlich ausgeführt zu werden: 
 
 > [!NOTE]
-> Wählen Sie in den IOT Central App-Einstellungen für diesen Abschnitt **Datenexport** im Vergleich zu **Datenexport (Legacy)** aus.
+> Wählen Sie in den IoT Central App-Einstellungen für diesen Abschnitt **Datenexport** im Vergleich zu **Datenexport (Legacy)** aus.
 
-[![IOT Central Daten Export Einstellungen](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
+[![IoT Central-Datenexporteinstellungen](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
 
 Erstellen Sie ein neues Ziel:
-- Wechseln Sie zur Registerkarte **Ziele** , und erstellen Sie ein neues Ziel.
-- Beginnen Sie, indem Sie Ihrem Ziel einen eindeutigen Namen geben.
+- Wechseln Sie zur Registerkarte **Ziele,** und erstellen Sie ein neues Ziel.
+- Geben Sie zunächst ihrem Ziel einen eindeutigen Namen.
 - Wählen Sie *Azure Event Hubs* als Zieltyp aus.
-- Geben Sie für das Feld **Verbindungs Zeichenfolge** den Azure IOT-Connector für die in einem vorherigen Schritt abzuruf Verbindungs Zeichenfolge an.
+- Geben Sie Azure IoT Verbindungszeichenfolge des Connectors für FHIR an, die Sie in einem vorherigen Schritt für das Feld **Verbindungszeichenfolge** abgerufen haben.
 
 Erstellen Sie einen neuen Datenexport:
-- Nachdem Sie Ihr Ziel erstellt haben, navigieren Sie zur Registerkarte **Exporte** , und erstellen Sie einen neuen Datenexport. 
-- Beginnen Sie, indem Sie Ihr den Datenexport einen eindeutigen Namen geben.
-- Wählen Sie unter **Daten** die Option *Telemetrie* als *Typ der zu exportierenden Daten* aus.
+- Nachdem Sie Ihr Ziel erstellt haben, wechseln Sie zur Registerkarte **Exporte,** und erstellen Sie einen neuen Datenexport. 
+- Geben Sie zunächst dem Datenexport einen eindeutigen Namen.
+- Wählen Sie unter **Daten** die Option *Telemetrie* als *Typ der zu exportierende Daten* aus.
 - Wählen Sie unter **Ziel** den Zielnamen aus, den Sie im vorherigen Namen erstellt haben.
 
 ## <a name="view-device-data-in-azure-api-for-fhir"></a>Anzeigen von Gerätedaten in Azure API for FHIR

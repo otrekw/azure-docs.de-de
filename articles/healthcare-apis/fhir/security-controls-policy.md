@@ -4,16 +4,16 @@ description: Listet Azure Policy Kontrollen zur Einhaltung gesetzlicher Bestimmu
 ms.date: 06/11/2021
 ms.topic: sample
 author: matjazl
-ms.author: matjazl
+ms.author: chrupa
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 3a84576dd5bb640987bfaf1f7aa9334d5260ad62
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 83a92ec2962152461a7b9d606bfac23a1d9b6349
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026277"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299013"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-api-for-fhir"></a>Azure Policy Kontrollen zur Einhaltung gesetzlicher Bestimmungen für Azure API for FHIR
 
