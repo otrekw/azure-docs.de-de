@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 04/05/2021
-ms.author: punagpal
-ms.openlocfilehash: e43b5068544927ba4d04c86b16d3a15510c32bed
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: rabhaiya
+ms.openlocfilehash: 9b5fa3533aa521053a321a3f0ffdfad3505abb73
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448471"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112286667"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Zuordnungsvorlagen von Azure IoT-Konnektor für FHIR (Vorschauversion)
 In diesem Artikel erfahren Sie, wie Sie Azure IoT-Konnektor für Fast Healthcare Interoperability Resources (FHIR&#174;)* mithilfe von Zuordnungsvorlagen konfigurieren.
@@ -65,7 +65,7 @@ Die drei aktuell unterstützten Vorlagentypen für Geräteinhalte benötigen ein
 #### <a name="jsonpathcontenttemplate"></a>JsonPathContentTemplate
 Mit JsonPathContentTemplate können Werte mithilfe des JSON-Pfads abgeglichen und aus einer Event Hubs-Nachricht extrahiert werden.
 
-| Eigenschaft | BESCHREIBUNG |<div style="width:150px">Beispiel</div>
+| Eigenschaft | Beschreibung |<div style="width:150px">Beispiel</div>
 | --- | --- | --- 
 |**TypeName**|Der den Messungen zugewiesene Typ, die mit der Vorlage übereinstimmen|`heartrate`
 |**TypeMatchExpression**|Der JSON-Pfadausdruck, der gegen die Event Hubs-Nutzlast ausgewertet wird. Wird ein entsprechendes JToken gefunden, gilt die Vorlage als Übereinstimmung. Alle nachfolgenden Ausdrücke werden für das extrahierte JToken ausgewertet, das hier abgeglichen wurde.|`$..[?(@heartRate)]`

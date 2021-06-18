@@ -3,12 +3,13 @@ title: 'Azure Service Bus: Anhalten von Messagingentitäten'
 description: In diesem Artikel wird erläutert, wie Sie Azure Service Bus-Messagingentitäten (Warteschlangen, Themen und Abonnements) vorübergehend anhalten und reaktivieren.
 ms.topic: article
 ms.date: 09/29/2020
-ms.openlocfilehash: ea1acab3d0a86b0064f8b3eef7bfd1496bd17041
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: abdf5f36fd47ab50f784ee494e7ce4891a6a5747
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94543050"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671458"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Anhalten und Reaktivieren von Messagingentitäten (deaktiviert)
 

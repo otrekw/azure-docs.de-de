@@ -1,19 +1,15 @@
 ---
-title: include file
-description: include file
-services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
 ms.date: 09/30/2020
 ms.author: glenga
-ms.custom: include file
-ms.openlocfilehash: 5b537b88052ce4042e346732f3dc63aaec6621cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9cbab70d37c689967c7129b3205a9194e9de9ade
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100529722"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350603"
 ---
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus. Wählen Sie unter **Ziel** die Option **Azure** und anschließend **Weiter** aus.
 

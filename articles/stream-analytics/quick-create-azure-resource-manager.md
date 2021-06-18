@@ -7,14 +7,14 @@ author: sidramadoss
 ms.author: sidram
 ms.workload: big-data
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs
+ms.custom: mvc, subject-armqs, devx-track-azurepowershell
 ms.date: 05/28/2020
-ms.openlocfilehash: f1ec5257195c73a046e9b0c450e50923ad36ddb2
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 9d0e26f8ef5507c408567fc318efe5be565d7e6b
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814584"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111904047"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe einer ARM-Vorlage
 
@@ -34,7 +34,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/streamanalytics-create/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.streamanalytics/streamanalytics-create/azuredeploy.json":::
 

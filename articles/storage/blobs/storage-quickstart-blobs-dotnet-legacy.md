@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 631b01dadacf81d66c3f42dc1401d2cf492316b8
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cb3f0c0995679425be63e4b6b00713b456e6be42
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869237"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964957"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v11 für .NET
 
@@ -36,7 +36,7 @@ Zusätzliche Ressourcen:
 * [API-Referenzdokumentation](/dotnet/api/overview/azure/storage)
 * [Quellcode der Bibliothek](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
-* [Beispiele](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+* [Beispiele](/samples/browse/?products=azure-blob-storage)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

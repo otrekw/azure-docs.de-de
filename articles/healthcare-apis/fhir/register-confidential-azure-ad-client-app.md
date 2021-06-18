@@ -7,21 +7,21 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.author: matjazl
-ms.openlocfilehash: c10b27d375e2bfb8c64130eceb416a633241cf68
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.author: cavoeg
+ms.openlocfilehash: 20d2e86786c3586cd4f45e98d670d4a937a77992
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284431"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299193"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Registrieren einer vertraulichen Clientanwendung in Azure Active Directory
 
-In diesem Tutorial erfahren Sie, wie Sie eine vertrauliche Client Anwendung in Azure Active Directory registrieren (Azure AD).  
+In diesem Tutorial erfahren Sie, wie Sie eine vertrauliche Clientanwendung in Azure Active Directory (Azure AD.  
 
-Eine Client Anwendungs Registrierung ist eine Azure AD Darstellung einer Anwendung, die verwendet werden kann, um im Namen eines Benutzers zu authentifizieren und Zugriff auf [Ressourcen Anwendungen](register-resource-azure-ad-client-app.md)anzufordern. Eine vertrauliche Clientanwendung ist eine Anwendung, die sich beim Speichern eines Geheimnisses und dem Anzeigen dieses Geheimnisses beim Anfordern von Zugriffstoken als vertrauenswürdig erweist. Beispiele für vertrauliche Anwendungen sind serverseitige Anwendungen. 
+Eine Clientanwendungsregistrierung ist Azure AD Darstellung einer Anwendung, die verwendet werden kann, um sich im Namen eines Benutzers zu authentifizieren und Zugriff auf [Ressourcenanwendungen an fordern zu können.](register-resource-azure-ad-client-app.md) Eine vertrauliche Clientanwendung ist eine Anwendung, die sich beim Speichern eines Geheimnisses und dem Anzeigen dieses Geheimnisses beim Anfordern von Zugriffstoken als vertrauenswürdig erweist. Beispiele für vertrauliche Anwendungen sind serverseitige Anwendungen. 
 
-Weitere Informationen zum Registrieren einer neuen vertraulichen Client Anwendung finden Sie in den folgenden Schritten. 
+Informationen zum Registrieren einer neuen vertraulichen Clientanwendung finden Sie in den folgenden Schritten. 
 
 ## <a name="register-a-new-application"></a>Registrieren einer neuen Anwendung
 
@@ -29,15 +29,15 @@ Weitere Informationen zum Registrieren einer neuen vertraulichen Client Anwendun
 
 1. Wählen Sie **App-Registrierungen** aus. 
 
-    :::image type="content" source="media/how-to-aad/portal-aad-new-app-registration.png" alt-text="Azure-Portal. Neue APP-Registrierung.":::
+    :::image type="content" source="media/how-to-aad/portal-aad-new-app-registration.png" alt-text="Azure-Portal. Neue App-Registrierung.":::
 
 1. Wählen Sie **Neue Registrierung** aus.
 
-1. Weisen Sie der Anwendung einen Benutzer seitigen anzeigen Amen zu.
+1. Geben Sie der Anwendung einen anzeigebasierten Namen.
 
-1. Wählen Sie für **unterstützte Konto Typen** aus, wer die Anwendung verwenden oder auf die API zugreifen kann.
+1. Wählen **Sie unter Unterstützte Kontotypen** aus, wer die Anwendung verwenden oder auf die API zugreifen kann.
 
-1. Optionale Gibt einen **Umleitungs-URI** an. Diese Details können später geändert werden, aber wenn Sie die Antwort-URL Ihrer Anwendung kennen, geben Sie sie jetzt ein.
+1. (Optional) Geben Sie einen **Umleitungs-URI an.** Diese Details können später geändert werden, aber wenn Sie die Antwort-URL Ihrer Anwendung kennen, geben Sie sie jetzt ein.
 
     :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png" alt-text="Registrierung einer neuen vertraulichen Client-App.":::
 
@@ -53,15 +53,15 @@ Nachdem Sie Ihre Anwendung registriert haben, müssen Sie auswählen, welche API
 
 1. Wählen Sie **Berechtigung hinzufügen** aus.
 
-    Wenn Sie die Azure-API für fhir verwenden, fügen Sie den Azure-Healthcare-APIs eine Berechtigung hinzu, indem Sie in den von **meiner Organisation verwendeten APIs** nach **Azure Healthcare-API** suchen. Das Suchergebnis für die Azure-Healthcare-API gibt nur zurück, wenn Sie [die Azure-API für den Einsatz von](fhir-paas-powershell-quickstart.md)Azure bereits bereitgestellt haben.
+    Wenn Sie die Azure API for FHIR verwenden, fügen Sie den Azure Healthcare-APIs eine Berechtigung hinzu, indem Sie unter **APIs,** die meine Organisation verwendet, nach **der Azure Healthcare-API** suchen. Das Suchergebnis für die Azure Healthcare-API wird nur dann angezeigt, wenn Sie den Dienst [bereits Azure API for FHIR.](fhir-paas-powershell-quickstart.md)
 
-    Wenn Sie auf eine andere Ressourcen Anwendung verweisen, wählen Sie Ihre [fhir-API-Ressourcen Anwendungs Registrierung](register-resource-azure-ad-client-app.md) aus, die Sie zuvor unter **meine APIs** erstellt haben.
+    Wenn Sie auf eine andere Ressourcenanwendung verweisen, wählen Sie Ihre [FHIR-API-Ressourcenanwendungsregistrierung](register-resource-azure-ad-client-app.md) aus, die Sie zuvor unter **Meine APIs erstellt haben.**
 
 
     :::image type="content" source="media/conf-client-app/confidential-client-org-api.png" alt-text="Vertraulicher Client. Meine Organisations-APIs" lightbox="media/conf-client-app/confidential-app-org-api-expanded.png":::
     
 
-1. Wählen Sie Bereiche (Berechtigungen) aus, die von der vertraulichen Client Anwendung im Auftrag eines Benutzers angefordert werden. Wählen Sie **user_impersonation** aus, und wählen Sie dann **Berechtigungen hinzufügen** aus.
+1. Wählen Sie Bereiche (Berechtigungen) aus, die die vertrauliche Clientanwendung im Auftrag eines Benutzers anfragt. Wählen Sie **user_impersonation** aus, und wählen Sie dann **Berechtigungen hinzufügen** aus.
 
     :::image type="content" source="media/conf-client-app/confidential-client-add-permission.png" alt-text="Vertraulicher Client. Delegierte Berechtigungen":::
 
@@ -70,22 +70,22 @@ Nachdem Sie Ihre Anwendung registriert haben, müssen Sie auswählen, welche API
 
 1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus. 
 
-    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png" alt-text="Vertraulicher Client. Geheimer Anwendungs Schlüssel.":::
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png" alt-text="Vertraulicher Client. Anwendungsgeheimnis.":::
 
-1. Geben Sie unter **Beschreibung** eine Beschreibung für Ihren geheimen Clientschlüssel ein. Wählen Sie das Dropdown Menü **ablaufen** aus, um einen Ablaufzeit Rahmen auszuwählen, und klicken Sie dann auf **Hinzufügen**.
+1. Geben Sie unter **Beschreibung** eine Beschreibung für Ihren geheimen Clientschlüssel ein. Wählen Sie **das Dropdownmenü Läuft ab** aus, um einen Ablaufzeitrahmen auszuwählen, und klicken Sie dann auf **Hinzufügen.**
 
-   :::image type="content" source="media/how-to-aad/add-a-client-secret.png" alt-text="Fügen Sie einen geheimen Client Schlüssel hinzu.":::
+   :::image type="content" source="media/how-to-aad/add-a-client-secret.png" alt-text="Fügen Sie einen geheimen Clientgeheimnis hinzu.":::
 
-1. Kopieren Sie nach der Erstellung der geheimen Client Schlüssel Zeichenfolge den **Wert** und die **ID**, und speichern Sie Sie an einem sicheren Ort Ihrer Wahl.
+1. Kopieren Sie nach dem Erstellen  der geheimen Clientzeichenfolge den Wert und die **ID,** und speichern Sie sie an einem sicheren Ort Ihrer Wahl.
 
-   :::image type="content" source="media/how-to-aad/client-secret-string-password.png" alt-text="Geheime Client Schlüssel Zeichenfolge."::: 
+   :::image type="content" source="media/how-to-aad/client-secret-string-password.png" alt-text="Geheime Clientzeichenfolge."::: 
 
 > [!NOTE]
->Die geheime Client Schlüssel Zeichenfolge ist im Azure-Portal nur einmal sichtbar. Wenn Sie von der Webseite mit den Zertifikaten & Geheimnissen navigieren und dann zurückkehren, wird die Wert Zeichenfolge maskiert. Es ist wichtig, dass Sie die Zeichenfolge des geheimen Client Schlüssels direkt nach der Generierung kopieren. Wenn Sie nicht über eine Sicherungskopie Ihres geheimen Client Schlüssels verfügen, müssen Sie die oben genannten Schritte wiederholen, um Sie neu zu generieren.
+>Die geheime Clientzeichenfolge ist nur einmal in der Azure-Portal. Wenn Sie von der Webseite Zertifikate & Geheimnisse weg navigieren und dann zurück zur Seite zurückkehren, wird die Wertzeichenfolge maskiert. Es ist wichtig, die geheime Clientzeichenfolge sofort nach der Generung zu kopieren. Wenn Sie keine Sicherungskopie Ihres geheimen Clientgeheimnis haben, müssen Sie die oben genannten Schritte wiederholen, um sie erneut zu generieren.
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurden die Schritte zum Registrieren einer vertraulichen Client Anwendung im Azure AD erläutert. Außerdem wurden Sie durch die Schritte zum Hinzufügen von API-Berechtigungen zur Azure-Healthcare-API geführt. Schließlich haben Sie erfahren, wie Sie einen geheimen Anwendungs Schlüssel erstellen. Darüber hinaus erfahren Sie, wie Sie mithilfe von Postman auf Ihren fhir-Server zugreifen können.
+In diesem Artikel haben Sie die Schritte zum Registrieren einer vertraulichen Clientanwendung im Azure AD. Außerdem wurden Sie durch die Schritte zum Hinzufügen von API-Berechtigungen zur Azure Healthcare-API geführt. Schließlich haben Sie erfahren, wie Sie ein Anwendungsgeheimnis erstellen. Darüber hinaus erfahren Sie, wie Sie mithilfe von Postman auf Ihren FHIR-Server zugreifen.
  
 >[!div class="nextstepaction"]
 >[Zugreifen auf Azure API for FHIR mit Postman](access-fhir-postman-tutorial.md)
