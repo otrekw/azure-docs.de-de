@@ -5,12 +5,12 @@ author: amenarde
 ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: anmenard
-ms.openlocfilehash: 735f0b375d26d00dce43fd9d64131fa194958a73
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1c920631d671ad2af9fa2e723fc98bf96462b007
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131077"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950102"
 ---
 # <a name="central-secret-service-in-azure-service-fabric"></a>Central Secret Service in Azure Service Fabric 
 Central Secret Service (CSS), auch als Central Secret Store bezeichnet, ist ein Service Fabric-Systemdienst zum Schutz von Geheimnissen in einem Cluster. CSS vereinfacht die Verwaltung von Geheimnissen für Service Fabric-Anwendungen, sodass keine verschlüsselten Parameter erforderlich sind.
@@ -67,7 +67,7 @@ Zur Formalisierung des Modells sind nachfolgend die Regeln aufgeführt, die in d
 - Das Löschen einer Geheimnisressource führt zur Löschung aller zugehörigen Versionen.  
 - Der Wert einer Geheimnisversion ist unveränderlich.
     
-Den vollständigen Satz an REST-Verwaltungs-APIs für Geheimnisressourcen finden Sie [hier](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-meshsecrets), den für Geheimnisversionen [hier](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-meshsecretvalues).
+Den vollständigen Satz an REST-Verwaltungs-APIs für Geheimnisressourcen finden Sie [hier](/rest/api/servicefabric/sfclient-index-meshsecrets), den für Geheimnisversionen [hier](/rest/api/servicefabric/sfclient-index-meshsecretvalues).
 
 ### <a name="declare-a-secret-resource"></a>Deklarieren der Geheimnisressource
 Sie können eine Geheimnisressource erstellen, indem Sie die REST-API verwenden.

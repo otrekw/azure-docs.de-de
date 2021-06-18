@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eabb6e657db7ea39bf0fb746bb596f496bc5efaf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94412373"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958311"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
 
@@ -65,7 +65,7 @@ Weitere Informationen finden Sie im Whitepaper [Migrating Your Applications to A
 
 ### <a name="enable-secure-remote-access-to-apps"></a>Ermöglichen des sicheren Remotezugriffs auf Apps
 
-Der [Azure AD-Anwendungsproxy](../manage-apps/what-is-application-proxy.md) bietet eine einfache Lösung, mit der Organisationen lokale Apps für Remotebenutzer, die Zugriff auf interne Apps benötigen, auf sichere Weise in der Cloud veröffentlichen können. Nach dem einmaligen Anmelden in Azure AD können Benutzer über eine externe URL oder ein internes Anwendungsportal auf Cloudanwendungen und lokale Anwendungen zugreifen.
+Der [Azure AD-Anwendungsproxy](../app-proxy/what-is-application-proxy.md) bietet eine einfache Lösung, mit der Organisationen lokale Apps für Remotebenutzer, die Zugriff auf interne Apps benötigen, auf sichere Weise in der Cloud veröffentlichen können. Nach dem einmaligen Anmelden in Azure AD können Benutzer über eine externe URL oder ein internes Anwendungsportal auf Cloudanwendungen und lokale Anwendungen zugreifen.
 
 Der Azure AD-Anwendungsproxy bietet die folgenden Vorteile:
 

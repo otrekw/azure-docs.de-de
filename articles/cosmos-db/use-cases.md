@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 4aed956fc7052f844080b830aa4cc3b2a07235a1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e48296b696d26bcf30424280f1cbd3fc6aaa9640
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799393"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958985"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Häufige Anwendungsfälle für Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ Azure Cosmos DB wird häufig für die Ereignisherkunftsermittlung zur Unterstüt
 
 :::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Referenzarchitektur für eine Azure Cosmos DB-Bestellpipeline" border="false":::
 
-Darüber hinaus können Daten in Azure Cosmos DB für Big Data-Analysen über Apache Spark-Aufträge in HDInsight integriert werden. Ausführliche Informationen zum Spark-Connector für Azure Cosmos DB finden Sie unter [Beschleunigen der Big Data-Echtzeitanalyse mit dem Spark-Connector für Azure Cosmos DB](spark-connector.md).
+Darüber hinaus können Daten in Azure Cosmos DB für Big Data-Analysen über Apache Spark-Aufträge in HDInsight integriert werden. Ausführliche Informationen zum Spark-Connector für Azure Cosmos DB finden Sie unter [Beschleunigen der Big Data-Echtzeitanalyse mit dem Spark-Connector für Azure Cosmos DB](./create-sql-api-spark.md).
 
 ## <a name="gaming"></a>Spiele
 Die Datenbankebene ist eine wesentliche Komponente von Gaming-Anwendungen. Moderne Spiele führen Grafikberechnungen auf Clients (mobile Endgeräte/Konsolen) durch, verlassen sich aber auf die Cloud, die benutzerdefinierten und personalisierten Inhalte wie In-Game Statistiken, Integration von sozialen Medien sowie Highscore-Listen zur Verfügung stellt. Spiele erfordern häufig Wartezeiten von einzelnen Millisekunden für Lese- und Schreibvorgänge, um ein ansprechendes Spielerlebnis bereitzustellen. Eine Spieldatenbank muss schnell sein und enorme Spitzen bei Anforderungsraten während der Einführung neuer Spiele und Featureupdates verarbeiten können.

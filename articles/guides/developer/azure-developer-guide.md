@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 2110bd812827ab4ff47f170a74a71f90df061833
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8a67cb97487e1082aed976712ded5383008531b1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129655"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957128"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -274,7 +274,7 @@ Sie entwickeln diese Bereitstellungen, indem Sie eine Azure Resource Manager-Vor
 
 > **Einsatzgebiete**: Verwenden Sie Resource Manager-Vorlagen, wenn Sie eine vorlagenbasierte Bereitstellung für Ihre App wünschen, die Sie programmgesteuert verwalten können, indem Sie REST APIs, die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwenden.
 >
-> **Erste Schritte**: Erste Schritte zum Verwenden von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
+> **Erste Schritte**: Erste Schritte zum Verwenden von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md).
 
 ## <a name="understanding-accounts-subscriptions-and-billing"></a>Grundlegendes zu Konten, Abonnements und Abrechnung
 

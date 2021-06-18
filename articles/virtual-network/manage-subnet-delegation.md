@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 401124ed4b2794d891ca224ba3dc1c78edcae8d5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5ae401e0593eedfedfde1c657da66d9b423d810f
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783411"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060559"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Hinzufügen oder Entfernen einer Subnetzdelegierung
 
@@ -59,16 +60,14 @@ Die integrierte Rolle [Netzwerkmitwirkender](../role-based-access-control/built-
 In diesem Abschnitt delegieren Sie das Subnetz, das Sie im vorhergehenden Abschnitt erstellt haben, an einen Azure-Dienst.
 
 1. Geben Sie in der Suchleiste des Portals *myVirtualNetwork* ein. Wenn **myVirtualNetwork** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
-2. Wählen Sie in den Suchergebnissen *myVirtualNetwork* aus.
-3. Wählen Sie unter **EINSTELLUNGEN** **Subnetze** und dann **mySubnet** aus.
-4. Treffen Sie auf der Seite *mySubnet* für die LIste **Subnetzdelegierung** eine Auswahl unter den Diensten, die unter **Subnetz an einen Dienst delegieren** aufgelistet sind (beispielsweise **Microsoft.DBforPostgreSQL/serversv2**).  
+2. Wählen Sie unter **EINSTELLUNGEN** **Subnetze** und dann **mySubnet** aus.
+3. Treffen Sie auf der Seite *mySubnet* für die LIste **Subnetzdelegierung** eine Auswahl unter den Diensten, die unter **Subnetz an einen Dienst delegieren** aufgelistet sind (beispielsweise **Microsoft.DBforPostgreSQL/serversv2**).  
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Entfernen einer Subnetzdelegierung aus einem Azure-Dienst
 
 1. Geben Sie in der Suchleiste des Portals *myVirtualNetwork* ein. Wenn **myVirtualNetwork** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
-2. Wählen Sie in den Suchergebnissen *myVirtualNetwork* aus.
-3. Wählen Sie unter **EINSTELLUNGEN** **Subnetze** und dann **mySubnet** aus.
-4. Wählen Sie auf der Seite *mySubnet* für die Liste **Subnetzdelegierung** unter den Diensten, die unter **Subnetz an einen Dienst delegieren** **Keins** aus. 
+2. Wählen Sie unter **EINSTELLUNGEN** **Subnetze** und dann **mySubnet** aus.
+3. Wählen Sie auf der Seite *mySubnet* für die Liste **Subnetzdelegierung** unter den Diensten, die unter **Subnetz an einen Dienst delegieren** **Keins** aus. 
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
