@@ -3,20 +3,20 @@ title: 'Azure Resource Manager: Erstellen einer verwalteten Azure SQL-Instanz'
 description: Erfahren Sie, wie Sie mit einer Azure Resource Manager-Vorlage eine verwaltete Azure SQL-Instanz erstellen.
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: subject-armqs
+ms.subservice: deployment-configuration
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: srdan-bozovic-msft
+ms.author: srbozovi
+ms.reviewer: mathoma
 ms.date: 06/22/2020
-ms.openlocfilehash: 96518f82b44af5e4cfa629c0e81387abaffdb383
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: b4b19be4215f8a5bfa0b1f4eb42607c51bfe1d16
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803798"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889029"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure SQL Managed Instance mit einer ARM-Vorlage
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erst
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/sqlmi-new-vnet/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.sql/sqlmi-new-vnet/azuredeploy.json":::
 

@@ -3,19 +3,19 @@ title: 'Installieren und Ausführen des Containers für räumliche Analyse: Masc
 titleSuffix: Azure Cognitive Services
 description: Mit dem Container für räumliche Analyse können Sie Personen und Entfernungen erkennen.
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: d257a77940b460bf8be64e3f8376353a859365f7
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: 15ef67fb452b4302cc848b88b3dab89d46fb8793
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284718"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746463"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installieren und Ausführen des Containers für räumliche Analyse (Vorschau)
 
@@ -26,7 +26,6 @@ Mit dem Container für räumliche Analyse können Sie in Echtzeit gestreamte Vid
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services)
 * Wenn Sie über Ihr Azure-Abonnement verfügen, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank">erstellen Sie im Azure-Portal eine Ressource für maschinelles Sehen </a> für den Tarif Standard S1, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und den Endpunkt der Ressource, die Sie erstellen, um den Container für räumliche Analyse auszuführen. Sie benötigen Ihren Schlüssel und den Endpunkt zu einem späteren Zeitpunkt des Prozesses.
-
 
 ### <a name="spatial-analysis-container-requirements"></a>Anforderungen an einen Container für räumliche Analyse
 
@@ -70,21 +69,6 @@ In diesem Beispiel wird eine [VM der NC-Serie](../../virtual-machines/nc-series.
 |--|--|
 | Kamera | Der Container für räumliche Analyse ist nicht an eine bestimmte Kameramarke gebunden. Für das Kameragerät müssen die folgenden Bedingungen erfüllt sein: Unterstützung des Real-Time Streaming-Protokolls (RTSP) und der H.264-Codierung, Zugriff auf den Hostcomputer und Streaming mit einer Auflösung von 15 Bilder/Sek. und 1080p. |
 | Linux-Betriebssystem | [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) muss auf dem Hostcomupter installiert sein.  |
-
-
-## <a name="request-approval-to-run-the-container"></a>Anfordern der Genehmigung für die Containerausführung
-
-Füllen Sie das [Anforderungsformular](https://aka.ms/csgate) aus, und übermitteln Sie es, um die Genehmigung für die Containerausführung anzufordern.
-
-Im Formular müssen Sie Informationen über Sie selbst, Ihr Unternehmen und das Benutzerszenario eintragen, für das Sie den Container verwenden möchten. Das Azure Cognitive Services-Team überprüft das Formular nach der Übermittlung und sendet Ihnen eine E-Mail mit der Entscheidung.
-
-> [!IMPORTANT]
-> * Im Formular müssen Sie eine E-Mail-Adresse angeben, die einer Azure-Abonnement-ID zugeordnet ist.
-> * Die Maschinelles Sehen-Ressource, die Sie zum Ausführen des Containers verwenden, muss mit der genehmigten Azure-Abonnement-ID erstellt worden sein.
-
-Nach der Genehmigung können Sie den Container ausführen, nachdem Sie ihn aus Microsoft Container Registry (MCR) heruntergeladen haben (weiter unten in diesem Artikel beschrieben).
-
-Sie können den Container nicht ausführen, wenn Ihr Azure-Abonnement nicht genehmigt wurde.
 
 ## <a name="set-up-the-host-computer"></a>Einrichten des Hostcomputers
 

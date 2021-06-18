@@ -8,15 +8,13 @@ manager: kumud
 ms.date: 10/12/2020
 ms.topic: quickstart
 ms.service: expressroute
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 6c31f55d5b208437170f9a69ff7bbe1d6b836201
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 36520a7c8661cce71eb8b210c279a27c0766a7a7
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277442"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005391"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Schnellstart: Erstellen einer ExpressRoute-Leitung mit privatem Peering mithilfe einer ARM-Vorlage
 
@@ -34,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-expressroute-private-peering-vnet).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/expressroute-private-peering-vnet).
 
 In dieser Schnellstartanleitung erstellen Sie mit *Equinix* als Dienstanbieter eine ExpressRoute-Leitung. Die Leitung nutzt eine *Premium-SKU* mit einer Bandbreite von *50 MBit/s* und dem Peeringstandort *Washington DC*. Privates Peering wird mit dem primären Subnetz *192.168.10.16/30* und dem sekundären Subnetz *192.168.10.20/30* aktiviert. Außerdem wird ein virtuelles Netzwerk zusammen mit einem *HighPerformance-ExpressRoute-Gateway* erstellt.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
-ms.openlocfilehash: bfec9273d1d363c3bd39887e83597d22262265f1
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: d635d0c87cb6f759c15461abe9efc9dd42297ddb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186495"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964910"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-active-directory-application-proxy"></a>Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps mithilfe eines Azure Active Directory-Anwendungsproxys
 
@@ -175,5 +175,5 @@ Erstellen Sie die URL der Startseite, und aktualisieren Sie die App mit diesem W
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aktivieren des Remotezugriffs auf SharePoint per Azure AD-Anwendungsproxy](../manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+- [Aktivieren des Remotezugriffs auf SharePoint per Azure AD-Anwendungsproxy](./application-proxy-integrate-with-sharepoint-server.md)
 - [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md)

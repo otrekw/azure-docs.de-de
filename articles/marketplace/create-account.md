@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/06/2021
-ms.openlocfilehash: 2b3516d5f573f13655963b678a2f164c460fd140
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fcef5fee62c9937538a2aba6cba8629a8a04b043
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133149"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004905"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
@@ -45,7 +45,7 @@ Verwenden Sie diese Methode, wenn Sie mit Partner Center noch nicht vertraut sin
 
 #### <a name="register-on-the-partner-center-enrollment-page"></a>Registrieren auf der Partner Center-Registrierungsseite
 
-Lesen Sie die Informationen auf der Registrierungsseite [Willkommen bei Microsoft Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership), und registrieren Sie sich dann für ein Konto.
+Lesen Sie die Informationen auf der Registrierungsseite [Willkommen bei Microsoft Partner Center](https://go.microsoft.com/fwlink/?linkid=2165529), und registrieren Sie sich dann für ein Konto.
 
 #### <a name="sign-in-with-a-work-account"></a>Anmelden mit einem Geschäftskonto
 
@@ -80,7 +80,7 @@ Anschließend können Sie Ihren Benutzern die entsprechenden Benutzerrollen und 
 
 **Registrieren beim kommerziellen Marketplace**
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/) mit Ihrem Microsoft Partner Network-Konto an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) mit Ihrem Microsoft Partner Network-Konto an.
 
     >[!NOTE]
     > Sie müssen über die Rolle eines **Kontoadministrators** oder **globalen Administrators** verfügen, um sich bei Microsoft Partner Network anzumelden.
@@ -115,7 +115,7 @@ Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center e
 
 Wenn Sie sich für den kommerziellen Marketplace mit dem gleichen Konto registrieren wie für Ihr Entwicklerprogramm, werden im linken Bereich von Partner Center alle Ihre vorhandenen Programmregistrierungen angezeigt.
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/) mit Ihren vorhandenen Anmeldeinformationen an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) mit Ihren vorhandenen Anmeldeinformationen an.
 1. Wählen Sie oben rechts **Einstellungen** > **Kontoeinstellungen** > **Programme** aus.
 1. Wählen Sie unter **Kommerzieller Marketplace** die Option **Los geht's** aus, und geben Sie Ihre geschäftliche E-Mail-Adresse ein.
 1. Geben Sie auf der Seite **Herausgeberprofil** die erforderlichen Details an.
@@ -134,7 +134,7 @@ Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center e
 
 Wenn Sie über ein Konto im Cloud-Partnerportal verfügen, haben wir es in Partner Center verschoben. Sie müssen kein neues Partner Center-Konto erstellen. Nachdem Sie sich bei Ihrem vorhandenen Cloud-Partnerportal-Konto angemeldet haben, sollten Sie per E-Mail und in einer Bannerbenachrichtigung einen benutzerdefinierten Link zu Ihrem neuen Partner Center-Konto erhalten.
 
-Nachdem Sie den benutzerdefinierten Link ausgewählt und Ihr neues Partner Center-Konto aktiviert haben, können Sie zu Ihrem Konto zurückkehren, indem Sie in Partner Center zum [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) navigieren.
+Nachdem Sie den benutzerdefinierten Link ausgewählt und Ihr neues Partner Center-Konto aktiviert haben, können Sie zu Ihrem Konto zurückkehren, indem Sie in Partner Center zum [Dashboard „Kommerzieller Marketplace“](https://go.microsoft.com/fwlink/?linkid=2165290) navigieren.
 
 Die Herausgebervereinbarung und die Unternehmensprofilinformationen gehen zusammen mit zuvor eingerichteten Informationen zum Auszahlungsprofil des Kontos, Benutzerkonten und -berechtigungen und den Ihrem Konto im Cloud-Partnerportal zugeordneten aktiven Angeboten in Ihr neues Partner Center-Konto über.
 
