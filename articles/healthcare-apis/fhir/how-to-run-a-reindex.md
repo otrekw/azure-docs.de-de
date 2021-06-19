@@ -1,22 +1,22 @@
 ---
-title: Ausführen eines Neuindizierungsauftrags in Azure API for FHIR
-description: In diesem Artikel wird beschrieben, wie Sie einen Neuindizierungsauftrag ausführen, um Such- oder Sortierparameter zu indizieren, die noch nicht in Ihrer Datenbank indiziert wurden.
+title: Ausführen eines Auftrags zum erneuten Indizieren in Azure API for FHIR
+description: In diesem Artikel wird beschrieben, wie Sie einen Auftrag zum Erneuten Indizieren ausführen, um Such- oder Sortierparameter zu indizieren, die noch nicht in Ihrer Datenbank indiziert wurden.
 author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/23/2021
 ms.author: cavoeg
-ms.openlocfilehash: 905d9381ac93e38575e9d0ff5c6f5571122b2990
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b4ede817b3babfb9221ac8fa982acc0322c9d7b2
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476645"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112379670"
 ---
-# <a name="running-a-reindex-job"></a>Ausführen eines Neuindizierungsauftrags
+# <a name="running-a-reindex-job"></a>Ausführen eines Auftrags zum erneuten Indizieren
 
-Es gibt Szenarien, in denen Sie möglicherweise Such- oder Sortierparameter in der Azure API for FHIR haben, die noch nicht indiziert wurden. Dies ist besonders relevant, wenn Sie Eigene Suchparameter definieren. Bis der Suchparameter indiziert ist, kann er nicht in der Suche verwendet werden. Dieser Artikel enthält eine Übersicht über das Ausführen eines Neuindizierungsauftrags zum Indizieren von Such- oder Sortierparametern, die noch nicht in Ihrer Datenbank indiziert wurden.
+Es gibt Szenarien, in denen Such- oder Sortierparameter in der Azure API for FHIR, die noch nicht indiziert wurden. Dies ist besonders relevant, wenn Sie Ihre eigenen Suchparameter definieren. Bis der Suchparameter indiziert ist, kann er nicht in der Suche verwendet werden. Dieser Artikel enthält eine Übersicht darüber, wie Sie einen Auftrag zum Erneuten Indizieren ausführen, um Such- oder Sortierparameter zu indizieren, die noch nicht in Ihrer Datenbank indiziert wurden.
 
 > [!Warning]
 > Es ist wichtig, dass Sie diesen gesamten Artikel lesen, bevor Sie beginnen. Ein Neuindizierungsauftrag kann sehr leistungsintensiv sein. Dieser Artikel enthält Optionen zum Drosseln und Steuern des Neuindizierungsauftrags.
@@ -37,7 +37,7 @@ POST {{FHIR URL}}/$reindex
 }
  ```
 
-Wenn die Anforderung erfolgreich ist, wird der Status **201 Erstellt** zurückgegeben. Das Ergebnis dieser Meldung sieht wie folgt aus:
+Wenn die Anforderung erfolgreich ist, wird der Status **201 Erstellt** zurückgegeben. Das Ergebnis dieser Meldung sieht wie die folgenden aus:
 
 ```json
 HTTP/1.1 201 Created 
@@ -91,15 +91,15 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
 ```
 
 > [!NOTE]
-> Um den Status eines Neuindizierungsauftrags zu überprüfen oder abzubrechen, benötigen Sie die Neuindizierungs-ID. Dies ist die ID der resultierenden Parameters-Ressource. Im obigen Beispiel wäre die ID für den Neuindizierungsauftrag `560c7c61-2c70-4c54-b86d-c53a9d29495e` .
+> Um den Status von zu überprüfen oder einen Neuindizierungsauftrag abzubricht, benötigen Sie die ID für die Neuindizierung. Dies ist die ID der resultierenden Parameters-Ressource. Im obigen Beispiel wäre die ID für den Auftrag für die Neuindizierung `560c7c61-2c70-4c54-b86d-c53a9d29495e` .
 
- ## <a name="how-to-check-the-status-of-a-reindex-job"></a>Überprüfen des Status eines Neuindizierungsauftrags
+ ## <a name="how-to-check-the-status-of-a-reindex-job"></a>Überprüfen des Status eines Auftrags zum erneuten Indizieren
 
-Nachdem Sie einen Neuindizierungsauftrag gestartet haben, können Sie den Status des Auftrags wie folgt überprüfen:
+Nachdem Sie einen Auftrag zum erneuten Indizieren gestartet haben, können Sie den Status des Auftrags wie folgt überprüfen:
 
 `GET {{FHIR URL}}/_operations/reindex/{{reindexJobId}`
 
-Der Status des Auftragsergebnisses für die Neuindizierung ist unten dargestellt:
+Der Status des Auftragsergebnis für die Neuindizierung wird unten dargestellt:
 
 ```json
 {
@@ -161,7 +161,7 @@ Der Status des Auftragsergebnisses für die Neuindizierung ist unten dargestellt
     {
 ```
 
-Die folgenden Informationen werden im Ergebnis des Neuindizierungsauftrags angezeigt:
+Die folgenden Informationen werden im Ergebnis des Auftrags zum erneuten Indizieren angezeigt:
 
 * **totalResourcesToReindex:** Enthält die Gesamtzahl der Ressourcen, die im Rahmen des Auftrags neu indiziert werden.
 
@@ -191,11 +191,11 @@ Im Folgenden finden Sie eine Tabelle mit den verfügbaren Parametern, Standardwe
 | **Parameter**                     | **Beschreibung**              | **Standard**        | **Empfohlener Bereich**           |
 | --------------------------------- | ---------------------------- | ------------------ | ------------------------------- |
 | QueryDelayIntervalInMilliseconds  | Dies ist die Verzögerung zwischen jedem Batch von Ressourcen, der während des Neuindizierungsauftrags startet. | 500 MS (,5 Sekunden) | 50 bis 5000: 50 beschleunigt den Neuindizierungsauftrag, und 5000 verlangsamt ihn vom Standardwert. |
-| MaximumResourcesPerQuery  | Dies ist die maximale Anzahl von Ressourcen, die im Batch der Ressourcen enthalten sind, die neu indiziert werden sollen.  | 100 | 1-500 |
-| MaximumConcurreny  | Dies ist die Anzahl von Batches, die gleichzeitig ausgeführt werden.  | 1 | 1–5 |
-| targetDataStoreUsagePercentrage | Dadurch können Sie angeben, welcher Prozentsatz Ihres Datenspeichers für den Neuindizierungsauftrag verwendet werden soll. Beispielsweise können Sie 50 % angeben, und dies würde sicherstellen, dass der Neuindizierungsauftrag höchstens 50 % der verfügbaren RUs auf Cosmos DB verwendet.  | Kein vorhanden, was bedeutet, dass bis zu 100 % verwendet werden können. | 1-100 |
+| MaximumResourcesPerQuery  | Dies ist die maximale Anzahl von Ressourcen, die im Batch der neu zu indizierten Ressourcen enthalten sind.  | 100 | 1-500 |
+| MaximumConcurrency  | Dies ist die Anzahl von Batches, die gleichzeitig ausgeführt werden.  | 1 | 1–5 |
+| targetDataStoreUsagePercentage | Auf diese Weise können Sie angeben, welcher Prozentprozent ihres Datenspeichers für den Neuindizierungsauftrag verwendet werden soll. Beispielsweise könnten Sie 50 % angeben, und dies würde sicherstellen, dass der Auftrag für die Neuindizierung mindestens 50 % der verfügbaren RUs auf dem Cosmos DB.  | Nicht vorhanden, was bedeutet, dass bis zu 100 % verwendet werden können. | 1-100 |
 
-Wenn Sie einen der oben genannten Parameter verwenden möchten, können Sie diese beim Starten des Auftrags für die Neuindizierung an die Ressource Parameter übergeben.
+Wenn Sie einen der oben genannten Parameter verwenden möchten, können Sie sie an die Parameters-Ressource übergeben, wenn Sie den Auftrag für die Neuindizierung starten.
 
 ```json
 {
@@ -223,7 +223,7 @@ Wenn Sie einen der oben genannten Parameter verwenden möchten, können Sie dies
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie einen Neuindizierungsauftrag starten. Informationen zum Definieren neuer Suchparameter, die den Auftrag für die Neuindizierung erfordern, finden Sie unter 
+In diesem Artikel haben Sie gelernt, wie Sie einen Neuindizierungsauftrag starten. Informationen zum Definieren neuer Suchparameter, für die der Auftrag neu indiziert werden muss, finden Sie unter 
 
 >[!div class="nextstepaction"]
 >[Definieren von benutzerdefinierten Suchparametern](how-to-do-custom-search.md)
