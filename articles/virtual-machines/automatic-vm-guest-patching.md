@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: manayar
-ms.openlocfilehash: 1a6a67fe43d4e0a6086154d71e61fe51680dbcd0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f59d43dfa4d952b29dbe16b6679a527c4fc0d50c
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762585"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565390"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>Vorschau: Automatische VM-Gastpatches für Azure-VMs
 
@@ -185,14 +186,14 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 Verwenden Sie [az feature register](/cli/azure/feature#az_feature_register), um die Vorschauversion für Ihr Abonnement zu aktivieren.
 
 ```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview `
+az feature register --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview
 az feature register --namespace Microsoft.Compute --name InGuestPatchVMPreview
 ```
 
 Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
 
 ```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview `
+az feature show --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview
 az feature show --namespace Microsoft.Compute --name InGuestPatchVMPreview
 ```
 

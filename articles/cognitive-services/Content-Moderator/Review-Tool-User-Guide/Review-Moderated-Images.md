@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 77d7b8a0bf4d7fe9a94a61ea3f2f4279246ffb69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 155bf999823625e1a91752c9cf064bc804d28335
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96903886"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031779"
 ---
 # <a name="create-human-reviews"></a>Erstellen von Überprüfungen durch Personen
+
+[!INCLUDE [deprecation notice](../includes/tool-deprecation.md)]
 
 In diesem Artikel wird erläutert, wie Sie [Überprüfungen](../review-api.md#reviews) auf der Website des Prüfungstools einrichten. In Überprüfungen werden Inhalte gespeichert und angezeigt, damit Moderatoren auf sie zugreifen können. Moderatoren können die angewandten Markierungen ändern und nach Bedarf eigene benutzerdefinierte Markierungen anwenden. Wenn ein Benutzer eine Überprüfung abgeschlossen hat, werden die Ergebnisse an einen angegebenen Rückrufendpunkt gesendet und die Inhalte auf der Website entfernt.
 

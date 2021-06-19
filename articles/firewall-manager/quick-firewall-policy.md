@@ -7,15 +7,13 @@ ms.author: victorh
 ms.date: 02/17/2021
 ms.topic: quickstart
 ms.service: firewall-manager
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 65a1e966fcc6082d4034cd9fe4ee45c057496825
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 9ce29e4ae856ce73b046fe4b4138fe85d48b0a03
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786193"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004995"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-a-firewall-policy---arm-template"></a>Schnellstart: Erstellen einer Azure Firewall-Instanz und einer Firewallrichtlinie: ARM-Vorlage
 
@@ -33,7 +31,7 @@ Informationen zu IP-Adressgruppen finden Sie unter [IP-Adressgruppen in Azure Fi
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,7 +41,7 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 
 Mithilfe dieser Vorlage erstellen Sie ein virtuelles Hubnetzwerk sowie die erforderlichen Ressourcen zur Unterstützung des Szenarios.
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/azurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/azurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups/azuredeploy.json":::
 
@@ -62,7 +60,7 @@ Stellen Sie die ARM-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Mit der Vorlage werden eine Azure Firewall-Instanz, ein virtuelles WAN und ein virtueller Hub, die Netzwerkinfrastruktur sowie zwei virtuelle Computer erstellt.
 
-   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups%2Fazuredeploy.json)
+   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups%2Fazuredeploy.json)
 
 2. Geben Sie im Portal auf der Seite **Create a Firewall and FirewallPolicy with Rules and Ipgroups** (Erstellen einer Firewall und einer Firewallrichtlinie mit Regeln und IP-Adressgruppen) die folgenden Werte ein, oder wählen Sie sie aus:
    - Abonnement: Wählen Sie aus den vorhandenen Abonnements aus.

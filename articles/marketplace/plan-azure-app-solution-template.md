@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: aab856b1e1d2d991cc4964d061a990dbedbeddb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25feef60e6b417d835f06be9641207ce56aa53a6
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98876510"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536436"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Planen einer Lösungsvorlage für ein Azure-Anwendungsangebot
 
@@ -23,7 +23,7 @@ Für den Plantyp „Lösungsvorlage“ ist eine [Azure Resource Manager-Vorlage 
 
 ## <a name="solution-template-requirements"></a>Anforderungen für Lösungsvorlagen
 
-| Anforderungen | Details |
+| Requirements (Anforderungen) | Details |
 | ------------ | ------------- |
 | Abrechnung und Messung | Pläne für Lösungsvorlagen sind keine Transaktionsangebote. Sie können jedoch zum Bereitstellen bezahlter VM-Angebote verwendet werden, die über den kommerziellen Microsoft-Marketplace abgerechnet werden. Die über die ARM-Vorlage der Lösung bereitgestellten Ressourcen werden im Azure-Abonnement des Kunden eingerichtet. Bei virtuellen Computern mit nutzungsbasierter Bezahlung erfolgt die Transaktion mit dem Kunden über Microsoft, und die Abrechnung wird über das Azure-Abonnement des Kunden abgewickelt. <br><br> Bei der Abrechnung nach dem Modell „Bring Your Own License“ (BYOL) rechnet Microsoft die angefallenen Infrastrukturkosten im Kundenabonnement ab, während Sie Ihre Softwarelizenzgebühren direkt mit dem Kunden abrechnen. |
 | Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. Weitere Informationen finden Sie unter<ul><li>[Erstellen einer technischen Azure-VM-Ressource](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (für Windows-VHDs)</li><li>[Von Azure unterstützte Distributionen von Linux](../virtual-machines/linux/endorsed-distros.md) (für Linux-VHDs)</li></ul> |
@@ -76,4 +76,4 @@ Weitere Informationen finden Sie unter [Private Angebote im kommerziellen Micros
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines Azure-Anwendungsangebots im kommerziellen Marketplace](create-new-azure-apps-offer.md)
+- [Erstellen eines Azure-Anwendungsangebots](azure-app-offer-setup.md)

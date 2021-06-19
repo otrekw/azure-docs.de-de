@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit einer Azure Resource Manager-Vorlage ein 
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/15/2021
-ms.openlocfilehash: 3cb6069b13246e561de85c7a392283a5c243f1a4
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 0a1da860c4263f25e04e68253d0eed96254bed3a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517782"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077716"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Schnellstart: Erstellen eines Dashboards im Azure-Portal mithilfe einer ARM-Vorlage
 
@@ -55,13 +55,13 @@ Das Dashboard, das Sie im nächsten Teil dieses Schnellstarts erstellen, erforde
         -Location "East US" 
     ```
 
-1. Geben Sie einen Benutzernamen und ein Kennwort für den virtuellen Computer ein. Dabei handelt es sich um einen neuen Benutzernamen und ein neues Kennwort, also beispielsweise nicht das Konto, mit dem Sie sich bei Azure anmelden. Weitere Informationen finden Sie unter [Anforderungen an Benutzernamen](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm) und [Anforderungen an Kennwörter](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+1. Geben Sie einen Benutzernamen und ein Kennwort für den virtuellen Computer ein. Dabei handelt es sich um einen neuen Benutzernamen und ein neues Kennwort, also beispielsweise nicht das Konto, mit dem Sie sich bei Azure anmelden. Weitere Informationen finden Sie unter [Anforderungen an Benutzernamen](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-) und [Anforderungen an Kennwörter](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-).
 
     Die Bereitstellung des virtuellen Computers wird jetzt gestartet und dauert in der Regel ein paar Minuten. Fahren Sie nach Abschluss der Bereitstellung mit dem nächsten Abschnitt fort.
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-azure-portal-dashboard/). Die Vorlage für diesen Artikel ist zu lang und kann hier nicht angezeigt werden. Die Vorlage können Sie sich in [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.portal/azure-portal-dashboard/azuredeploy.json) ansehen. In der Vorlage ist eine Azure-Ressource definiert, [Microsoft.Portal/dashboards](/azure/templates/microsoft.portal/dashboards) – Erstellen eines Dashboards im Azure-Portal.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/azure-portal-dashboard/). Die Vorlage für diesen Artikel ist zu lang und kann hier nicht angezeigt werden. Die Vorlage können Sie sich in [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.portal/azure-portal-dashboard/azuredeploy.json) ansehen. In der Vorlage ist eine Azure-Ressource definiert, [Microsoft.Portal/dashboards](/azure/templates/microsoft.portal/dashboards) – Erstellen eines Dashboards im Azure-Portal.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 

@@ -6,15 +6,13 @@ ms.author: pariks
 ms.date: 05/14/2020
 ms.topic: quickstart
 ms.service: mariadb
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: a125f1aeacda48fdf8acfeb443527d6e2bf70e5c
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: b068df529dfad3cfa4d07eb57560028b0b70afb0
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277784"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556350"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Schnellstart: Erstellen eines Azure Database for MariaDB-Servers mithilfe einer ARM-Vorlage
 
@@ -48,7 +46,7 @@ Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Kon
 
 Sie erstellen einen Azure Database for MariaDB-Server mit einer definierten Gruppe von Compute- und Speicherressourcen. Weitere Informationen finden Sie unter [Azure Database for MariaDB – Tarife](concepts-pricing-tiers.md). Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) erstellt.
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/managed-mariadb-with-vnet/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.dbformariadb/managed-mariadb-with-vnet/azuredeploy.json":::
 
