@@ -24,9 +24,9 @@
       href: tutorial-create-tenant.md
     - name: 2. Registrieren einer Anwendung
       href: tutorial-register-applications.md
-    - name: 3. Erstellen von Benutzerflows
+    - name: 3. Erstellen von Benutzerflows und benutzerdefinierten Richtlinien
       href: tutorial-create-user-flows.md
-    - name: 4. Authentifizieren von Benutzern
+    - name: Authentifizieren von Benutzern
       items:
         - name: ASP.NET
           href: tutorial-web-app-dotnet.md
@@ -37,7 +37,7 @@
         - name: Python
           href: tutorial-web-app-python.md
           displayName: flask
-    - name: 5. Gewähren von API-Zugriff
+    - name: Gewähren des API-Zugriffs
       items:
         - name: ASP.NET
           href: tutorial-web-api-dotnet.md
@@ -45,7 +45,7 @@
           href: tutorial-desktop-app-webapi.md
         - name: Einseitig
           href: tutorial-single-page-app-webapi.md
-    - name: 6. Bereinigen und Löschen des Mandanten
+    - name: Bereinigen und Löschen des Mandanten
       href: tutorial-delete-tenant.md
 - name: Beispiele
   href: code-samples.md
@@ -105,8 +105,28 @@
       href: tenant-management.md
     - name: App-Integration
       items:
-        - name: Registrieren einer Webanwendung
-          href: tutorial-register-applications.md
+        - name: ASP.NET Core-Webapp
+          items:
+            - name: Konfigurieren einer Beispiel-Web-App
+              href: configure-authentication-sample-web-app.md
+            - name: Aktivieren der Authentifizierung in Ihrer App
+              href: enable-authentication-web-application.md
+            - name: Authentifizierungsoptionen
+              href: enable-authentication-web-application-options.md
+        - name: "ASP.NET\_Core-Web-App, die die API aufruft"
+          items:
+            - name: 'Konfigurieren einer Beispiel-Web-App, die die API aufruft'
+              href: configure-authentication-sample-web-app-with-api.md
+            - name: Aktivieren der Authentifizierung in Ihrer App
+              href: enable-authentication-web-app-with-api.md
+            - name: Authentifizierungsoptionen
+              href: enable-authentication-web-app-with-api-options.md
+        - name: Single-Page-Webanwendung (SPA)
+          items:
+            - name: Konfigurieren einer Beispiel-SPA-App
+              href: configure-authentication-sample-spa-app.md
+            - name: Authentifizierungsoptionen
+              href: enable-authentication-spa-app-options.md
         - name: Registrieren einer Single-Page-Webanwendung (SPA)
           href: tutorial-register-spa.md
         - name: SAML-Anwendung
@@ -158,7 +178,7 @@
       items:
         - name: Identitätsanbieter „Lokales Konto“
           href: identity-provider-local.md
-          displayName: 'Username, Email, Phone authorization, Phone sing-in'
+          displayName: 'Username, Email, Phone authorization, Phone sign-in'
         - name: Hinzufügen eines Identitätsanbieters
           href: add-identity-provider.md
         - name: AD FS
@@ -475,14 +495,16 @@
                   href: id-token-hint.md
                 - name: JWT-Tokenaussteller
                   href: jwt-issuer-technical-profile.md
-                - name: OAuth1
+                - name: OAuth1-Identitätsanbieter
                   href: oauth1-technical-profile.md
-                - name: OAuth2
+                - name: OAuth2-Identitätsanbieter
                   href: oauth2-technical-profile.md
+                - name: Benutzerdefinierter OAuth2-Fehler
+                  href: oauth2-error-technical-profile.md
                 - name: Einmalkennwort
                   href: one-time-password-technical-profile.md
                   displayName: otp
-                - name: OpenID Connect
+                - name: "OpenID\_Connect-Identitätsanbieter"
                   href: openid-connect-technical-profile.md
                 - name: Telefonfaktor
                   href: phone-factor-technical-profile.md
@@ -551,7 +573,7 @@
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Häufig gestellte Fragen
-      href: faq.md
+      href: ./faq.yml
     - name: Hilfe
       href: ../active-directory/develop/developer-support-help-options.md
     - name: Preise

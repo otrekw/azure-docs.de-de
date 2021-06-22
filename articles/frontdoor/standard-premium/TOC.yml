@@ -85,14 +85,20 @@
       items:
         - name: Routingprobleme
           href: troubleshoot-route-issues.md
-        - name: Zulässige Zertifizierungsstellen
-          href: troubleshoot-allowed-certificate-authority.md
         - name: Komprimierung
           href: troubleshoot-compression.md
         - name: Cross-Origin Resource Sharing
           href: troubleshoot-cross-origin-resources.md
+        - name: Zulässige Zertifizierungsstellen
+          href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: Verweis
   items:
+    - name: Azure Front Door-Edgestandorte
+      items:
+        - name: Edgestandorte nach Region
+          href: edge-locations.md
+        - name: Edgestandorte nach Abkürzung
+          href: edge-locations-by-abbreviation.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.cdn
     - name: REST-API

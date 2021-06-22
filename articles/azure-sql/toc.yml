@@ -102,6 +102,8 @@
                   href: database/authentication-aad-service-principal.md
                 - name: Rolle „Verzeichnisleseberechtigte“
                   href: database/authentication-aad-directory-readers-role.md
+                - name: "Reine Azure\_AD-Authentifizierung"
+                  href: database/authentication-azure-ad-only-authentication.md
             - name: TDE (Transparent Data Encryption)
               items:
                 - name: Übersicht
@@ -156,7 +158,7 @@
         - name: Auftragsautomatisierung mit elastischen Aufträgen
           href: database/job-automation-overview.md
         - name: Auftragsautomatisierung mit SQL-Agent
-          href: database/job-automation-managed-instances.md
+          href: managed-instance/job-automation-managed-instance.md
         - name: Verbinden und Abfragen über Apps
           items:
             - name: .NET mit Visual Studio
@@ -189,6 +191,8 @@
                   href: database/authentication-aad-guest-users.md
                 - name: Zuweisen der Rolle „Verzeichnisleseberechtigte“ zu Gruppen
                   href: database/authentication-aad-directory-readers-role-tutorial.md
+                - name: "Aktivieren der reinen Azure\_AD-Authentifizierung"
+                  href: database/authentication-azure-ad-only-authentication-tutorial.md
             - name: Konfigurieren von TDE mit BYOK
               href: database/transparent-data-encryption-byok-configure.md
             - name: Always Encrypted
@@ -287,6 +291,8 @@
               href: database/service-tier-hyperscale.md
             - name: Häufig gestellte Fragen zu Hyperscale
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.yml
+            - name: Virtueller Kern
+              href: database/service-tiers-sql-database-vcore.md
         - name: Planen und Verwalten von Kosten
           href: database/cost-management.md
     - name: Schnellstarts
@@ -742,7 +748,7 @@
           href: managed-instance/instance-pools-overview.md
         - name: Häufig gestellte Fragen
           displayName: faq
-          href: managed-instance/frequently-asked-questions-faq.md
+          href: managed-instance/frequently-asked-questions-faq.yml
     - name: Schnellstarts
       href: managed-instance/quickstart-content-reference-guide.md
       items:
@@ -811,6 +817,8 @@
       items:
         - name: Ressourceneinschränkungen
           href: managed-instance/resource-limits.md
+        - name: Computehardware
+          href: managed-instance/service-tiers-managed-instance-vcore.md
         - name: Verbindungsarchitektur
           href: managed-instance/connectivity-architecture-overview.md
         - name: T-SQL-Unterschiede
@@ -1013,46 +1021,56 @@
               href: managed-instance/server-trust-group-overview.md
     - name: Anleitung
       items:
-        - name: Übersicht
+        - name: Dokumentation mit Anleitung
           href: managed-instance/how-to-content-reference-guide.md
-        - name: Migrieren zu SQL Managed Instance
-          href: managed-instance/migrate-to-instance-from-sql-server.md
-        - name: Anpassen der Zeitzone
-          href: managed-instance/timezones-overview.md
-        - name: Konfigurieren von Verbindungstypen
-          href: managed-instance/connection-types-overview.md
-        - name: Migrieren eines TDE-Zertifikats
-          href: managed-instance/tde-certificate-migrate.md
-        - name: Wiederherstellen eines bestimmten Zeitpunkts
-          href: managed-instance/point-in-time-restore.md
-        - name: Bestimmen der Größe des Subnetzes für verwaltete Instanzen
-          href: managed-instance/vnet-subnet-determine-size.md
-        - name: Erstellen eines neuen VNET und Subnetzes für die verwaltete Instanz
-          href: managed-instance/virtual-network-subnet-create-arm-template.md
-        - name: Konfigurieren eines vorhandenen VNET und Subnetzes für die verwaltete Instanz
-          href: managed-instance/vnet-existing-add-subnet.md
-        - name: Löschen eines Subnetzes nach dem Löschen der verwalteten Instanz
-          href: managed-instance/virtual-cluster-delete.md
-        - name: Konfigurieren von benutzerdefiniertem DNS
-          href: managed-instance/custom-dns-configure.md
-        - name: Synchronisieren der DNS-Konfiguration
-          href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
-        - name: Synchronisieren der Netzwerkkonfiguration
-          href: managed-instance/azure-app-sync-network-configuration.md
-        - name: Ermitteln der IP-Adresse des Verwaltungsendpunkts
-          href: managed-instance/management-endpoint-find-ip-address.md
-        - name: Überprüfen des integrierten Firewallschutzes
-          href: managed-instance/management-endpoint-verify-built-in-firewall.md
-        - name: Konfigurieren der Bedrohungserkennung
-          href: managed-instance/threat-detection-configure.md
         - name: Herstellen einer Verbindung mit Anwendungen
           href: managed-instance/connect-application-instance.md
-        - name: Erstellen von Warnungen für eine verwaltete Instanz
-          href: managed-instance/alerts-create.md
-        - name: Manuelles Initiieren eines Failovers für eine verwaltete Instanz
-          href: managed-instance/user-initiated-failover.md
-        - name: Migrieren einer Datenbank mithilfe des Protokollwiedergabediensts
-          href: managed-instance/log-replay-service-migrate.md
+        - name: Konfigurieren von Einstellungen
+          items:
+            - name: Anpassen der Zeitzone
+              href: managed-instance/timezones-overview.md
+            - name: Konfigurieren von Verbindungstypen
+              href: managed-instance/connection-types-overview.md
+            - name: Erstellen von Warnungen für eine verwaltete Instanz
+              href: managed-instance/alerts-create.md
+            - name: Konfigurieren der Bedrohungserkennung
+              href: managed-instance/threat-detection-configure.md
+        - name: Konfigurieren der Netzwerkeinstellungen
+          items:
+            - name: Bestimmen der Größe des Subnetzes für verwaltete Instanzen
+              href: managed-instance/vnet-subnet-determine-size.md
+            - name: Erstellen eines neuen VNET und Subnetzes für die verwaltete Instanz
+              href: managed-instance/virtual-network-subnet-create-arm-template.md
+            - name: Konfigurieren eines vorhandenen VNET und Subnetzes für die verwaltete Instanz
+              href: managed-instance/vnet-existing-add-subnet.md
+            - name: Löschen eines Subnetzes nach dem Löschen der verwalteten Instanz
+              href: managed-instance/virtual-cluster-delete.md
+            - name: Konfigurieren von benutzerdefiniertem DNS
+              href: managed-instance/custom-dns-configure.md
+            - name: Synchronisieren der DNS-Konfiguration
+              href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
+            - name: Synchronisieren der Netzwerkkonfiguration
+              href: managed-instance/azure-app-sync-network-configuration.md
+            - name: Ermitteln der IP-Adresse des Verwaltungsendpunkts
+              href: managed-instance/management-endpoint-find-ip-address.md
+            - name: Überprüfen des integrierten Firewallschutzes
+              href: managed-instance/management-endpoint-verify-built-in-firewall.md
+        - name: Migrieren
+          items:
+            - name: Migrieren zu SQL Managed Instance
+              href: managed-instance/migrate-to-instance-from-sql-server.md
+            - name: Migrieren einer Datenbank mithilfe des Protokollwiedergabediensts
+              href: managed-instance/log-replay-service-migrate.md
+            - name: Migrieren eines TDE-Zertifikats
+              href: managed-instance/tde-certificate-migrate.md
+        - name: Konfigurieren der Geschäftskontinuität
+          items:
+            - name: Wiederherstellen eines bestimmten Zeitpunkts
+              href: managed-instance/point-in-time-restore.md
+            - name: Überwachen der Sicherung
+              href: managed-instance/backup-activity-monitor.md
+            - name: Manuelles Initiieren eines Failovers für eine verwaltete Instanz
+              href: managed-instance/user-initiated-failover.md
     - name: Beispiele
       items:
         - name: Azure CLI
@@ -1090,6 +1108,7 @@
               items:
                 - name: Übersicht
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
                 - name: Sichern und Wiederherstellen
                   href: virtual-machines/windows/backup-restore.md
                 - name: Azure Storage für Sicherung
@@ -1098,24 +1117,26 @@
                   href: virtual-machines/windows/availability-group-overview.md
                 - name: Failoverclusterinstanz (FCI)
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
+                - name: Windows Server-Failovercluster
+                  href: virtual-machines/windows/hadr-windows-server-failover-cluster-overview.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
             - name: Bewährte Methoden
               items:
+                - name: Kurze Checkliste
+                  href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
+                - name: Größe des virtuellen Computers
+                  href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
+                - name: Storage
+                  href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
                 - name: Sicherheit
                   href: virtual-machines/windows/security-considerations-best-practices.md
-                - name: Clusterkonfiguration
+                - name: HADR-Konfiguration
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
+                - name: Baseline auswählen
+                  href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
                 - name: Anwendungsmuster
                   href: virtual-machines/windows/application-patterns-development-strategies.md
-                - name: Leistung
-                  items:
-                    - name: Kurze Checkliste
-                      href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
-                    - name: Größe des virtuellen Computers
-                      href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
-                    - name: Storage
-                      href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
-                    - name: Baseline auswählen
-                      href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: Verwaltung
               items:
                 - name: Erweiterung für den SQL-IaaS-Agent
@@ -1154,8 +1175,8 @@
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Migrieren von Speicher zu Azure
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: SQL-Sicherheitsrisikobewertung aktivieren
-                  href: virtual-machines/windows/sql-vulnerability-assessment-enable.md
+                - name: Aktivieren von SQL-Sicherheitsrisikobewertungen
+                  href: ../security-center/defender-for-sql-on-machines-vulnerability-assessment.md
                 - name: Installieren der Erweiterung für den SQL-IaaS-Agent
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
@@ -1173,6 +1194,8 @@
                   href: virtual-machines/windows/move-sql-vm-different-region.md
             - name: Geschäftskontinuität
               items:
+                - name: Konfigurieren des Clusterquorums
+                  href: virtual-machines/windows/hadr-cluster-quorum-configure-how-to.md
                 - name: Sichern und Wiederherstellen
                   items:
                     - name: "Automatisierte Sicherung (ab SQL\_2016)"
@@ -1251,7 +1274,7 @@
         - name: Ressourcen
           items:
             - name: Häufig gestellte Fragen
-              href: virtual-machines/windows/frequently-asked-questions-faq.md
+              href: virtual-machines/windows/frequently-asked-questions-faq.yml
             - name: Preise
               href: virtual-machines/windows/pricing-guidance.md
             - name: Archivierte klassische RM-Dokumentation
@@ -1289,7 +1312,7 @@
         - name: Ressourcen
           items:
             - name: Häufig gestellte Fragen
-              href: virtual-machines/linux/frequently-asked-questions-faq.md
+              href: virtual-machines/linux/frequently-asked-questions-faq.yml
             - name: SQL Server unter Linux – Dokumentation
               href: /sql/linux/sql-server-linux-overview
             - name: SQL Server Data Tools (SSDT)
@@ -1395,6 +1418,8 @@
           href: database/troubleshoot-common-connectivity-issues.md
         - name: Keine Reaktion des Import/Export-Diensts
           href: database/database-import-export-hang.md
+        - name: Transaktionsprotokollfehler
+          href: database/troubleshoot-transaction-log-errors-issues.md
     - name: Dienstupdates
       items:
         - name: SSL-Stammzertifikat läuft ab.

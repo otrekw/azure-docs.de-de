@@ -4,6 +4,8 @@
   items:
     - name: Willkommen bei Azure Cosmos DB
       href: introduction.md
+    - name: Auswählen einer API
+      href: choose-api.md
     - name: NoSQL und relationale Datenbanken
       href: relational-nosql.md
 - name: Konzepte
@@ -139,7 +141,6 @@
       expanded: true
       items:
         - name: Erstellen von Cosmos DB-Ressourcen
-          expanded: true
           items:
             - name: Azure-Portal
               href: create-cosmosdb-resources-portal.md
@@ -834,8 +835,6 @@
               href: visualize-qlik-sense.md
         - name: Integrierte Analysen mit Apache Spark
           items:
-            - name: "Spark\_2-OLTP-Connector von Azure Databricks"
-              href: spark-connector.md
             - name: Streaming mit Apache Kafka und Cosmos DB
               href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Migrieren von Daten zu Cosmos DB
@@ -931,7 +930,7 @@
         - name: REST (Datenebene)
           href: /rest/api/cosmos-db/
         - name: REST (Verwaltungsebene)
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/sqlresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager-Vorlage
@@ -1049,7 +1048,7 @@
     - name: Verweis
       items:
         - name: REST-Ressourcenanbieter
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/cassandraresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/cassandraresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager-Vorlage
@@ -1183,7 +1182,7 @@
     - name: Verweis
       items:
         - name: REST-Ressourcenanbieter
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/mongodbresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/mongodbresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager-Vorlage
@@ -1267,7 +1266,7 @@
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: REST-Ressourcenanbieter
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/gremlinresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/gremlinresources
         - name: Resource Manager-Vorlage
           href: /azure/templates/microsoft.documentdb/allversions
         - name: Azure CLI
@@ -1479,6 +1478,8 @@
           items:
             - name: Überwachen mit Diagnoseprotokollen
               href: cosmosdb-monitor-resource-logs.md
+            - name: Behandeln von Problemen mithilfe einfacher Abfragen
+              href: cosmosdb-monitor-logs-basic-queries.md
             - name: Überprüfung von Protokollen der Steuerungsebene
               href: audit-control-plane-logs.md
         - name: Konfigurieren von Warnungen

@@ -230,6 +230,8 @@
               href: azure-stack-edge-gpu-virtual-machine-overview.md
             - name: Anzeigen unterstützter virtueller Computer
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
+            - name: Anzeigen unterstützter API-Profile
+              href: azure-stack-edge-profiles-azure-resource-manager-versions.md
             - name: Erstellen des VM-Image
               items:
                 - name: Benutzerdefiniertes Image von einem virtuellen Azure-Computer
@@ -239,7 +241,9 @@
                 - name: Generalisiertes Image von ISO
                   href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
                 - name: Verwenden eines spezialisierten Images
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+                  href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
+                - name: "Verwenden eines Azure\_Marketplace-Images"
+                  href: azure-stack-edge-gpu-create-virtual-machine-marketplace-image.md
             - name: Bereitstellen von virtuellen Computern
               items:
                 - name: Verwenden des Azure-Portals
@@ -268,6 +272,8 @@
                   href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
                 - name: Installieren benutzerdefinierter Skripterweiterung
                   href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
+                - name: Installieren der GPU-Erweiterung
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md
                 - name: Sichern von VM-Datenträgern
                   href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
                 - name: Problembehandlung
@@ -275,7 +281,11 @@
                     - name: Verbinden mit der VM-Konsole
                       href: azure-stack-edge-gpu-connect-virtual-machine-console.md
                     - name: VM-Imageupload
-                      href: azure-stack-edge-troubleshoot-virtual-machine-image-upload.md
+                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md
+                    - name: VM-Bereitstellung
+                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md
+                    - name: Probleme mit einer GPU-Erweiterung
+                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md
         - name: Verwalten von Zertifikaten
           items:
             - name: Anforderungen
@@ -334,12 +344,18 @@
               href: azure-stack-edge-gpu-enable-azure-monitor.md
         - name: Problembehandlung
           items:
-            - name: Geräteprobleme
-              href: azure-stack-edge-gpu-troubleshoot.md
             - name: Probleme bei der Bestellung
               href: azure-stack-edge-troubleshoot-ordering.md
             - name: Aktivierungsprobleme
               href: azure-stack-edge-gpu-troubleshoot-activation.md
+            - name: Geräteprotokolle und -diagnose
+              href: azure-stack-edge-gpu-troubleshoot.md
+            - name: Azure Resource Manager-Probleme
+              href: azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md
+            - name: Blobprobleme
+              href: azure-stack-edge-gpu-troubleshoot-blob-storage.md
+            - name: "IoT\_Edge-Probleme"
+              href: azure-stack-edge-gpu-troubleshoot-iot-edge.md
             - name: Microsoft-Support kontaktieren
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Freigegebene Versionshinweise
@@ -426,6 +442,8 @@
                   href: azure-stack-edge-troubleshoot.md
                 - name: Probleme bei der Bestellung
                   href: azure-stack-edge-troubleshoot-ordering.md
+                - name: IoT Edge
+                  href: azure-stack-edge-troubleshoot-iot-edge.md
                 - name: Microsoft-Support kontaktieren
                   href: azure-stack-edge-contact-microsoft-support.md
         - name: Überwachen

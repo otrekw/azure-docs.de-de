@@ -1,44 +1,44 @@
 ### YamlMime:Landing
-title: Dokumentation zur Formularerkennung
-summary: Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Felddaten zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensives Programmieren. Sie können auch überwachtes Lernen mit manuell gekennzeichneten Daten ausführen. Modelle, die mit gekennzeichneten Daten trainiert werden, weisen eine bessere Leistung auf und können kompliziertere Dokumente verarbeiten.
+title: Dokumentation zur Azure-Formularerkennung
+summary: Die Azure-Formularerkennung ist Teil von Azure Applied AI Services und identifiziert und extrahiert mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Felddaten zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensives Programmieren. Sie können auch überwachtes Lernen mit manuell gekennzeichneten Daten ausführen. Modelle, die mit gekennzeichneten Daten trainiert werden, weisen eine bessere Leistung auf und können auch kompliziertere Dokumente verarbeiten.
 metadata:
-  title: 'Dokumentation zur Formularerkennung: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
-  description: Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Felddaten zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensives Programmieren. Sie können auch überwachtes Lernen mit manuell gekennzeichneten Daten ausführen. Modelle, die mit gekennzeichneten Daten trainiert werden, weisen eine bessere Leistung auf und können kompliziertere Dokumente verarbeiten.
+  title: 'Dokumentation zur Formularerkennung: Schnellstarts, Tutorials, API-Referenz – Azure Applied AI Services | Microsoft-Dokumentation'
+  description: Die Azure-Formularerkennung ist Teil von Azure Applied AI Services und identifiziert und extrahiert mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Felddaten zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensives Programmieren. Sie können auch überwachtes Lernen mit manuell gekennzeichneten Daten ausführen. Modelle, die mit gekennzeichneten Daten trainiert werden, weisen eine bessere Leistung auf und können kompliziertere Dokumente verarbeiten.
   services: cognitive-services
-  ms.service: cognitive-services
+  ms.service: applied-ai-services
   ms.subservice: forms-recognizer
   ms.topic: landing-page
   author: laujan
   ms.author: lajanuar
   ms.date: 09/05/2019
-  ms.openlocfilehash: 2d38f9dd270bb3c3ffb304206edbefe6ab4db165
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 89a45403d198be46a7ce10f92a92f7b207488eee
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110374473"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111962830"
 landingContent:
-- title: Informationen zur Formularerkennung
+- title: Informationen zur Azure-Formularerkennung
   linkLists:
   - linkListType: overview
     links:
-    - text: Was ist die Formularerkennung?
+    - text: Was ist die Azure-Formularerkennung?
       url: overview.md
     - text: Was sind die Azure Applied AI Services?
-      url: https://aka.ms/applied-ai-services-hub
+      url: ../../applied-ai-services/index.yml
   - linkListType: whats-new
     links:
-    - text: Neuerungen in der Formularerkennung
+    - text: Neuerungen bei der Azure-Formularerkennung
       url: whats-new.md
   - linkListType: video
     links:
-    - text: Extrahieren von Daten aus Dokumenten und Formularen
+    - text: Extrahieren von Daten aus Dokumenten und Formularen mit OCR und Formularerkennung
       url: https://channel9.msdn.com/Shows/AI-Show/Extracting-Data-From-Documents-and-Forms-with-OCR-and-Form-Recognizer
     - text: RKI-gesteuerte Prozessautomatisierung
       url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
     - text: Neueste Funktionen und Aktualisierungen
       url: https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Form-Recognizer
-- title: Extrahieren von Daten aus dem Formularlayout
+- title: Extrahieren von Layout und Struktur aus Dokumenten
   linkLists:
   - linkListType: concept
     links:
@@ -56,9 +56,9 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-layout
     - text: Mithilfe der REST-API (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-layout
-  - linkListType: deploy
+  - linkListType: get-started
     links:
-    - text: Formularerkennung ausprobieren
+    - text: Ausprobieren der Formularerkennung (Layout)
       url: https://fott-2-1.azurewebsites.net/layout-analyze
 - title: Extrahieren von Daten aus Belegen
   linkLists:
@@ -78,6 +78,10 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-receipts
     - text: Mithilfe der REST-API (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-receipts
+  - linkListType: get-started
+    links:
+    - text: Ausprobieren der Formularerkennung (Analysieren von Belegen)
+      url: https://fott-2-1.azurewebsites.net/prebuilts-analyze
 - title: Extrahieren von Daten aus Visitenkarten
   linkLists:
   - linkListType: concept
@@ -96,6 +100,10 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-business-cards
     - text: Mithilfe der REST-API (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-business-cards
+  - linkListType: get-started
+    links:
+    - text: Ausprobieren der Formularerkennung (Analysieren von Visitenkarten)
+      url: https://fott-2-1.azurewebsites.net/prebuilts-analyze
 - title: Extrahieren von Daten aus Rechnungen
   linkLists:
   - linkListType: concept
@@ -114,16 +122,16 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-invoices
     - text: Mithilfe der REST-API (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-invoices
-  - linkListType: deploy
+  - linkListType: get-started
     links:
-    - text: Formularerkennung ausprobieren
+    - text: Ausprobieren der Formularerkennung (Analysieren von Rechnungen)
       url: https://fott-2-1.azurewebsites.net/prebuilts-analyze
 - title: Extrahieren von Daten aus Identitätsdokumenten
   linkLists:
   - linkListType: concept
     links:
     - text: Identitätsdokumente
-      url: concept-invoices.md
+      url: concept-identification-cards.md
   - linkListType: quickstart
     links:
     - text: Verwenden des .NET SDK
@@ -136,6 +144,10 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-identity-documents
     - text: Mithilfe der REST-API (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-identity-documents
+  - linkListType: get-started
+    links:
+    - text: Ausprobieren der Formularerkennung (Analysieren von Identitätsdokumenten)
+      url: https://fott-2-1.azurewebsites.net/prebuilts-analyze
 - title: Microsoft Tech-Gemeinschaft
   linkLists:
   - linkListType: reference
@@ -168,13 +180,9 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#train-a-custom-model
     - text: Mithilfe der REST-API (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#train-a-custom-model
-  - linkListType: tutorial
+  - linkListType: get-started
     links:
-    - text: Extrahieren von Formulardaten im Massenvorgang
-      url: tutorial-bulk-processing.md
-  - linkListType: deploy
-    links:
-    - text: Formularerkennung ausprobieren
+    - text: Ausprobieren der Formularerkennung (Trainieren eines Modells)
       url: https://fott-2-1.azurewebsites.net/
 - title: Analysieren Sie Formulare mit Ihrem benutzerdefiniertem Modell
   linkLists:
@@ -190,17 +198,21 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
     - text: Mithilfe der REST-API (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+  - linkListType: get-started
+    links:
+    - text: Ausprobieren der Formularerkennung (Analysieren eines benutzerdefinierten Formulars)
+      url: https://fott-2-1.azurewebsites.net/
 - title: Erste Schritte mit dem Etikettier-Tool
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Verwenden des Etikettier-Tools
       url: label-tool.md
-- title: API und Clientbibliotheken
+- title: REST-API und Clientbibliotheken
   linkLists:
   - linkListType: reference
     links:
-    - text: Formularerkennung-API Version 2.1
+    - text: Azure-Formularerkennung-API Version 2.1
       url: https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm
     - text: .NET SDK
       url: /dotnet/api/overview/azure/ai.formrecognizer-readme

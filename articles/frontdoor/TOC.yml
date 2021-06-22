@@ -95,9 +95,15 @@
         - name: Problembehandlung für Routingfehler
           href: front-door-troubleshoot-routing.md
         - name: Zulässige Zertifizierungsstellen
-          href: front-door-troubleshoot-allowed-ca.md
+          href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: Verweis
   items:
+    - name: Azure Front Door-Edgestandorte
+      items:
+        - name: Edgestandorte nach Region
+          href: edge-locations-by-region.md
+        - name: Edgestandorte nach Abkürzung
+          href: edge-locations-abbreviation.md
     - name: Azure CLI
       href: /cli/azure/afd/
     - name: Azure PowerShell

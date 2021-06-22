@@ -104,6 +104,8 @@
           href: import-soap-api.md
         - name: Importieren einer SOAP-API und Konvertieren dieser in REST
           href: restify-soap-api.md
+        - name: Importieren einer WebSocket-API
+          href: websocket-api.md
         - name: Importieren einer Web-App
           href: import-app-service-as-api.md
         - name: Importieren einer Funktionen-App
@@ -165,7 +167,7 @@
           href: api-management-using-with-vnet.md
         - name: Herstellen einer Verbindung mit einem internen virtuellen Netzwerk
           href: api-management-using-with-internal-vnet.md
-        - name: Integration von Application Gateway in ein internes VNET
+        - name: Integrieren von Application Gateway in ein internes virtuelles Netzwerk
           href: api-management-howto-integrate-internal-vnet-appgateway.md
         - name: Gegenseitige Zertifikatauthentifizierung
           href: api-management-howto-mutual-certificates.md
@@ -339,18 +341,20 @@
       href: api-management-faq.md
     - name: Preise
       href: 'https://aka.ms/apimpricing'
+    - name: Produktupdates
+      href: 'https://aka.ms/apimupdates'
+    - name: Versionshinweise
+      href: 'https://aka.ms/apim/releases'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Roadmap
-      href: 'https://aka.ms/apimroadmap'
-    - name: Funktionsanfragen
-      href: 'https://aka.ms/apimwish'
     - name: Videos
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
+      href: 'https://azure.microsoft.com/documentation/videos/index/?service=api-management'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
       href: /answers/topics/azure-api-management.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
+    - name: Zusätzliche Ressourcen
+      href: 'https://aka.ms/apimlove'
     - name: Leitfaden zum API-Design
       href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API-Implementierungsleitfaden

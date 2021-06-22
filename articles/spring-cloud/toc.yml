@@ -23,6 +23,12 @@
           href: quickstart-deploy-apps.md
         - name: 'Verwenden von Protokollen, Metriken und Ablaufverfolgung'
           href: quickstart-logs-metrics-tracing.md
+        - name: Integrieren mit Azure Database for MySQL
+          href: quickstart-integrate-azure-database-mysql.md
+        - name: Bereitstellung
+          items:
+            - name: Bereitstellen mithilfe einer ARM-Vorlage
+              href: quickstart-deploy-infrastructure-vnet.md
 - name: Tutorials
   items:
     - name: Warnungen und Aktionsgruppen
@@ -119,6 +125,8 @@
           href: how-to-circuit-breaker-metrics.md
         - name: Strukturiertes Anwendungsprotokoll
           href: structured-app-log.md
+        - name: "Prozessinterner New\_Relic-Java-Agent"
+          href: how-to-new-relic-monitor.md
     - name: Netzwerk
       items:
         - name: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
