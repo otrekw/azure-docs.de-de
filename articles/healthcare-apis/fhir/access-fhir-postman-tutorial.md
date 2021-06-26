@@ -9,16 +9,16 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: matjazl
 ms.date: 03/26/2021
-ms.openlocfilehash: 72e5711ca813378e291d48bdaaa5803693d91482
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 764a33d7dbdcde005e8ab62824ab6c7c87e1fcb2
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112284021"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112969670"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Zugreifen auf Azure API for FHIR mit Postman
 
-Eine Clientanwendung kann auf die Azure API for FHIR über eine [REST-API](https://www.hl7.org/fhir/http.html) zugreifen. Um Anforderungen zu senden, Antworten anzuzeigen und Ihre Anwendung während der Erstellung zu debuggen, verwenden Sie ein API-Testtool Ihrer Wahl. In diesem Tutorial werden die Schritte zum Zugreifen auf den FHIR-Server mit [Postman](https://www.getpostman.com/)beschrieben. 
+Eine Clientanwendung kann auf die Azure API for FHIR über eine [REST-API](https://www.hl7.org/fhir/http.html) zugreifen. Um Anforderungen zu senden, Antworten anzuzeigen und Ihre Anwendung während der Erstellung zu debuggen, verwenden Sie ein API-Testtool Ihrer Wahl. In diesem Tutorial werden die Schritte zum Zugreifen auf den FHIR-Server mit [postman](https://www.getpostman.com/)beschrieben. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,7 +27,7 @@ Eine Clientanwendung kann auf die Azure API for FHIR über eine [REST-API](https
   Zum Bereitstellen der Azure API for FHIR (ein verwalteter Dienst) können Sie die [Azure-Portal](fhir-paas-portal-quickstart.md), [PowerShell](fhir-paas-powershell-quickstart.md)oder [Azure CLI](fhir-paas-cli-quickstart.md)verwenden.
 
 - Eine registrierte [vertrauliche Clientanwendung](register-confidential-azure-ad-client-app.md) für den Zugriff auf den FHIR-Dienst.
-- Sie haben der vertraulichen Clientanwendung Berechtigungen erteilt, z.B. "FHIR-Datenmitwirkender", um auf den FHIR-Dienst zuzugreifen. Weitere Informationen finden Sie unter [Konfigurieren von Azure RBAC für FHIR.](./configure-azure-rbac.md)
+- Sie haben der vertraulichen Clientanwendung und Ihrem Benutzerkonto ,z.B. "FHIR-Datenmitwirkender" Berechtigungen für den Zugriff auf den FHIR-Dienst erteilt. Weitere Informationen finden Sie unter [Konfigurieren von Azure RBAC für FHIR.](./configure-azure-rbac.md)
 - Postman ist installiert. 
     
   Weitere Informationen zu Postman finden Sie unter [Los geht's mit Postman.](https://www.getpostman.com)
@@ -85,7 +85,7 @@ Geben Sie im Dialogfeld **Neues Zugriffstoken abrufen** die folgenden Details ei
 | Client-ID             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                           | Anwendungs-ID             |
 | Geheimer Clientschlüssel         | `XXXXXXXX`                                                                                                      | Geheimer Clientschlüssel          |
 | Bereich | `<Leave Blank>` | Der Bereich wird nicht verwendet. daher kann sie leer gelassen werden.  
-| Zustand                 | `1234`     | [Der Zustand](https://learning.postman.com/docs/sending-requests/authorization/) ist ein nicht transparenter Wert, um websiteübergreifende Anforderungsfälschungen zu verhindern. Sie ist optional und kann einen beliebigen Wert wie "1234" annehmen.                           |
+| State                 | `1234`     | [Der Zustand](https://learning.postman.com/docs/sending-requests/authorization/) ist ein nicht transparenter Wert, um websiteübergreifende Anforderungsfälschungen zu verhindern. Sie ist optional und kann einen beliebigen Wert wie "1234" annehmen.                           |
 | Clientauthentifizierung | Clientanmeldeinformationen im Text senden                                                                                 |                 
 
 Wählen Sie **Anforderungstoken** aus, um den Azure Active Directory Authentifizierungsablauf zu durchlaufen, und ein Token wird an Postman zurückgegeben. Wenn ein Authentifizierungsfehler auftritt, finden Sie weitere Informationen in der Postman-Konsole. **Hinweis:** Wählen Sie im Menüband **Ansicht** und dann **Postman-Konsole anzeigen** aus. Die Tastenkombination zur Postman-Konsole lautet **ALT+STRG+C.**
@@ -124,7 +124,7 @@ Sie können das Zugriffstoken mit einem Tool wie [jwt.ms](https://jwt.ms)überpr
 
 Bei der Problembehandlung empfiehlt es sich, zuerst zu überprüfen, ob Sie die richtige Zielgruppe (`aud`-Anspruch) haben. Wenn Ihr Token vom richtigen Aussteller `iss` (Anspruch) stammt und über die richtige Zielgruppe `aud` (Anspruch) verfügt, Sie aber weiterhin nicht auf die FHIR-API zugreifen können, hat der Benutzer oder Dienstprinzipal `oid` (Anspruch) wahrscheinlich keinen Zugriff auf die FHIR-Datenebene. Es wird empfohlen, die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](configure-azure-rbac.md) zu verwenden, um Benutzern Rollen auf Datenebene zuzuweisen. Wenn Sie einen externen, sekundären Azure Active Directory-Mandanten für Ihre Datenebene verwenden, müssen Sie [lokale RBAC für FHIR-Zuweisungen konfigurieren.](configure-local-rbac.md)
 
-Es ist auch möglich, [mithilfe](get-healthcare-apis-access-token-cli.md)des Azure CLI ein Token für die Azure API for FHIR abzurufen. Wenn Sie ein Token verwenden, das mit dem Azure CLI abgerufen wurde, sollten Sie den Autorisierungstyp *Bearertoken* verwenden. Fügen Sie das Token direkt ein.
+Es ist auch möglich, [mithilfe](get-healthcare-apis-access-token-cli.md)des Azure CLI ein Token für die Azure API for FHIR abzurufen. Wenn Sie ein Token verwenden, das mit dem Azure CLI abgerufen wurde, sollten Sie den Autorisierungstyp *Bearertoken* verwenden. Fügen Sie das Token direkt in ein.
 
 ## <a name="inserting-a-patient"></a>Einfügen eines Patienten
 
