@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 3b350de81e07f30f4f0f105c4e833a3b4450e558
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: efdf932a26e783ff4e7fc22820e061fb9b2e26ba
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019414"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992151"
 ---
 # <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Exportieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschau) über die Diagnoseeinstellungen
 
@@ -58,6 +58,6 @@ Zugriff auf Metrikprotokolle zu haben, ist für die Überwachung und Problembeha
 Lesen Sie häufig gestellte Fragen zu Azure IoT-Konnektor für FHIR.
 
 >[!div class="nextstepaction"]
->[Azure IoT-Konnektor für FHIR – Häufig gestellte Fragen](fhir-faq.md)
+>[Azure IoT-Konnektor für FHIR – Häufig gestellte Fragen](fhir-faq.yml)
 
 *Im Azure-Portal wird Azure IoT-Konnektor für FHIR als „IoT-Konnektor (Vorschau)“ bezeichnet. FHIR ist eine eingetragene Marke von HL7 und wird mit Genehmigung von HL7 verwendet.

@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 831c6df3f50bfff9b411660d9efc4cd78ee5e8d9
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 08d572970cc96eeb28b831293b82ab6ab3257cce
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019384"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991215"
 ---
 # <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Anzeigen und Konfigurieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschau) 
 
@@ -76,6 +76,6 @@ Der Zugriff auf Metriken der Datenebene ist für die Überwachung und Problembeh
 Lesen Sie die Antworten auf häufig gestellte Fragen zu Azure IoT-Konnektor für FHIR.
 
 >[!div class="nextstepaction"]
->[Azure IoT-Konnektor für FHIR: häufig gestellte Fragen](fhir-faq.md)
+>[Azure IoT-Konnektor für FHIR: häufig gestellte Fragen](fhir-faq.yml)
 
 *Im Azure-Portal wird Azure IoT-Konnektor für FHIR als „IoT-Konnektor (Vorschau)“ bezeichnet. FHIR ist eine eingetragene Marke von HL7 und wird mit Genehmigung von HL7 verwendet. 
