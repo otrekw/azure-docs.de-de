@@ -220,7 +220,7 @@
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
             - name: Programmgesteuertes Erstellen von MPA-Abonnements
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: 'Programmgesteuertes Erstellen von Abonnements: Vorschau-APIs'
+            - name: 'Programmgesteuertes Erstellen von Abonnements: Legacy-APIs'
               href: manage/programmatically-create-subscription-preview.md
         - name: Verwalten von Enterprise Agreement-Abonnements
           items:
