@@ -33,8 +33,14 @@
           href: performance-impact-kerberos.md
         - name: Leistung von Oracle-Datenbanken auf einzelnen Azure NetApp Files-Volumes
           href: performance-oracle-single-volumes.md
-        - name: Häufig gestellte Fragen zur SMB-Leistung
-          href: azure-netapp-files-smb-performance.md
+        - name: Leistungsreferenz für Azure NetApp Files
+          items:
+            - name: Best Practices für NFS-Einbindungsoptionen unter Linux
+              href: performance-linux-mount-options.md
+            - name: Best Practices für die Linux-Parallelität
+              href: performance-linux-concurrency-session-slots.md
+            - name: Best Practices für die SMB-Leistung
+              href: azure-netapp-files-smb-performance.md
     - name: Kostenmodell für Azure NetApp Files
       href: azure-netapp-files-cost-model.md
     - name: Grundlegendes zum Volumekontingent
@@ -69,6 +75,8 @@
       href: azure-netapp-files-faqs.md
     - name: Worum handelt es sich beim Tool für konsistente Momentaufnahmen in Azure-Anwendungen?
       href: azacsnap-introduction.md
+    - name: Speicherdienst-Add-Ons
+      href: storage-service-add-ons.md
     - name: Bedeutung der Umstellung auf harte Kontingentgrenzen für Volumes
       href: volume-hard-quota-guidelines.md
 - name: Anleitungen
