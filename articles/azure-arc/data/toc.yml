@@ -140,8 +140,8 @@
               items:
                 - name: Anzeigen der Konfiguration
                   href: show-configuration-postgresql-hyperscale-server-group.md
-                - name: 'Aufskalieren: Hinzufügen von Workerknoten'
-                  href: scale-out-postgresql-hyperscale-server-group.md
+                - name: Auf-/Abskalieren von Workerknoten
+                  href: scale-out-in-postgresql-hyperscale-server-group.md
                 - name: Hoch-/Herunterskalieren von Arbeitsspeicher und virtuellen Kernen
                   href: scale-up-down-postgresql-hyperscale-server-group-using-cli.md
                 - name: Konfigurieren von Serverparametern
