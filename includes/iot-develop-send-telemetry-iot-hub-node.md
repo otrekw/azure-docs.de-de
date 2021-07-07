@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 author: timlt
 ms.service: iot-develop
@@ -7,20 +7,20 @@ ms.topic: include
 ms.date: 05/05/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 9544e662fde8f39303ea8bbafd7556d9e3b5af07
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 501b1383bbc4fb3e20a675b3dca7186d0fe4548e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109518276"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112041013"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 - [Git](https://git-scm.com/downloads).
 - [Node.js](https://nodejs.org)-Version 10 oder höher. Führen Sie zum Überprüfen der Node-Version `node --version` aus.
 - Azure-Befehlszeilenschnittstelle. In dieser Schnellstartanleitung gibt es zwei Möglichkeiten zum Ausführen von Azure CLI-Befehlen:
-    - Verwenden Sie Azure Cloud Shell. Dabei handelt es sich um eine interaktive Shell, mit der CLI-Befehle im Browser ausgeführt werden. Diese Option wird empfohlen, da Sie nichts installieren müssen. Wenn Sie Cloud Shell zum ersten Mal verwenden, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Führen Sie in der [Cloud Shell-Schnellstartanleitung](/azure/cloud-shell/quickstart) die Schritte zum **Starten von Cloud Shell** und **Auswählen der Bash-Umgebung** aus.
-    - Führen Sie optional die Azure CLI auf dem lokalen Computer aus. Für den Schnellstart ist mindestens Version 2.0.76 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu prüfen. Führen Sie die Schritte unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli) aus, um die Azure CLI zu installieren oder zu aktualisieren, führen Sie sie aus, und melden Sie sich an. Installieren Sie die Azure CLI-Erweiterungen bei der ersten Verwendung, wenn Sie dazu aufgefordert werden.
+    - Verwenden Sie Azure Cloud Shell. Dabei handelt es sich um eine interaktive Shell, mit der CLI-Befehle im Browser ausgeführt werden. Diese Option wird empfohlen, da Sie nichts installieren müssen. Wenn Sie Cloud Shell zum ersten Mal verwenden, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Führen Sie in der [Cloud Shell-Schnellstartanleitung](../articles/cloud-shell/quickstart.md) die Schritte zum **Starten von Cloud Shell** und **Auswählen der Bash-Umgebung** aus.
+    - Führen Sie optional die Azure CLI auf dem lokalen Computer aus. Wenn Azure CLI bereits installiert ist, führen Sie `az upgrade` aus, um die CLI und Erweiterungen auf die aktuelle Version zu aktualisieren. Informationen zur Installation der Azure CLI finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [iot-hub-include-create-hub-cli](iot-hub-include-create-hub-cli.md)]
 

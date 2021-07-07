@@ -1,5 +1,5 @@
 ---
-title: Registrieren einer Oracle-Quelle und Einrichten von Überprüfungen (Vorschauversion) in Azure Purview
+title: Registrieren einer Oracle-Quelle und Einrichten von Überprüfungen in Azure Purview
 description: In diesem Artikel erfahren Sie, wie Sie eine Oracle-Quelle in Azure Purview registrieren und eine Überprüfung einrichten.
 author: chandrakavya
 ms.author: kchandra
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 40c5e0ff2c2301607f5a548ff05c742c5c5a948d
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: dadf457c2fc3f617e2473a853e802fe863709ac5
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517061"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072287"
 ---
-# <a name="register-and-scan-oracle-source-preview"></a>Oracle-Quelle registrieren und überprüfen (Vorschau)
+# <a name="register-and-scan-oracle-source"></a>Oracle-Quelle registrieren und überprüfen
 
 In diesem Artikel erfahren Sie, wie Sie eine Oracle-Datenbank in Purview registrieren und eine Überprüfung einrichten.
 
@@ -132,8 +132,13 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
     Die Verwendung von „NOT“ oder Sonderzeichen ist nicht zulässig.
 
 6.  **Treiberspeicherort**: Geben Sie den Pfad zum Speicherort des JDBC-Treibers auf dem virtuellen Computer an, auf dem die selbstgehostete Integration Runtime ausgeführt wird. Dabei sollte es sich um den Pfad zu einem gültigen Speicherort eines JAR-Ordners handeln.
+    > [!Note]
+    > Der Treiber muss für alle Konten des virtuellen Computers zugänglich sein. Installieren Sie ihn nicht in einem Benutzerkonto.
 
 7.  **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden SAP S/4HANA-Quelle.
+
+    > [!Note] 
+    > Faustregel: 1 GB Arbeitsspeicher pro 1000 Tabellen.
 
     :::image type="content" source="media/register-scan-oracle-source/scan.png" alt-text="Oracle überprüfen" border="true":::
 

@@ -1,34 +1,42 @@
 ---
-title: 'Schnellstart: Erstellen Ihrer ersten Funktion in Azure mit Visual Studio'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Visual Studio eine Azure-Funktion mit HTTP-Trigger erstellen und veröffentlichen.
+title: 'Schnellstart: Erstellen Ihrer ersten C#-Funktion in Azure mithilfe von Visual Studio'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Visual Studio verwenden, um eine durch C#-HTTP ausgelöste Funktion für Azure Functions zu erstellen und zu veröffentlichen, die unter .NET Core 3.1 ausgeführt wird.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 09/30/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
+ms.date: 05/18/2021
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f, contperf-fy21q3-portal
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-ms.openlocfilehash: d691ee60f624f75c89e44e905e5343bf9c71fd4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b76d9cf86a1bb00ea73c396ce1e563374a834f89
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101701394"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459458"
 ---
-# <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Schnellstart: Erstellen Ihrer ersten Funktion in Azure mit Visual Studio
+# <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>Schnellstart: Erstellen Ihrer ersten C#-Funktion in Azure mithilfe von Visual Studio
 
-In diesem Artikel wird mithilfe von Visual Studio eine auf der C#-Klassenbibliothek basierende Funktion erstellt, die auf HTTP-Anforderungen reagiert. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt.  
+Mit Azure Functions können Sie Ihren C#-Code in einer serverlosen Umgebung in Azure ausführen. 
 
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
+
+> [!div class="checklist"]
+> * Verwenden Sie Visual Studio, um ein C#-Klassenbibliotheksprojekt (.NET Core 3.1) zu erstellen.
+> * Erstellen Sie eine Funktion, die auf HTTP-Anforderungen reagiert. 
+> * Führen Sie Ihren Code lokal aus, um das Funktionsverhalten zu überprüfen.
+> * Stellen Sie Ihr Codeprojekt für Azure Functions bereit. 
+ 
 Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
+ 
+Das von Ihnen erstellte Projekt wird unter .NET Core 3.1 ausgeführt. Wenn Sie stattdessen ein Projekt erstellen möchten, das unter .NET 5.0 ausgeführt wird, finden Sie weitere Informationen unter [Entwickeln und Veröffentlichen von .NET 5-Funktionen mit Azure Functions](dotnet-isolated-process-developer-howtos.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Installieren Sie für dieses Tutorial zunächst [Visual Studio 2019](https://azure.microsoft.com/downloads/). Wählen Sie bei der Installation die Workload **Azure-Entwicklung** aus. Falls Sie stattdessen ein Azure Functions-Projekt mit Visual Studio 2017 erstellen möchten, müssen Sie zuerst die [aktuellen Azure Functions-Tools](functions-develop-vs.md#check-your-tools-version) installieren.
++ [Visual Studio 2019](https://azure.microsoft.com/downloads/). Wählen Sie bei der Installation unbedingt die Workload **Azure-Entwicklung** aus. 
 
-![Installieren von Visual Studio mit der Workload „Azure-Entwicklung“](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
-
-Wenn Sie kein [Azure-Abonnement](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/dotnet/), bevor Sie beginnen.
++ [Azure-Abonnement](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing). Wenn Sie noch nicht über ein Konto verfügen, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/dotnet/), bevor Sie beginnen.
 
 ## <a name="create-a-function-app-project"></a>Erstellen eines Funktionen-App-Projekts
 
@@ -42,10 +50,14 @@ Das Methodenattribut `FunctionName` dient zum Festlegen des Namens der Funktion,
 
 1. Klicken Sie im **Datei-Explorer** mit der rechten Maustaste auf die Datei „Function1.cs“, und benennen Sie sie in `HttpExample.cs` um.
 
-1. Benennen Sie die Klasse „Function1“ im Code in ‚HttpExample‘ um.
+1. Benennen Sie die Klasse „Function1“ im Code in `HttpExample` um.
 
 1. Benennen Sie in der `HttpTrigger`-Methode namens `Run` das Methodenattribut `FunctionName` in `HttpExample` um.
 
+Die Definition der Funktion sollte nun wie folgt aussehen:
+
+:::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs" range="13-18"::: 
+ 
 Nachdem Sie die Funktion nun umbenannt haben, können Sie sie auf Ihrem lokalen Computer testen.
 
 ## <a name="run-the-function-locally"></a>Lokales Ausführen der Funktion

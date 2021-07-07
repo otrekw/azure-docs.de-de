@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: bcb37c624f53d961020de022569a621ca1dfaba1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8ec795e7ad54d2101573d857fa52b5aaad0ed71d
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788979"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032391"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>Schnellstart: Einrichten von IoT Hub Device Provisioning Service (DPS) mithilfe einer ARM-Vorlage
 
@@ -25,7 +25,7 @@ In dieser Schnellstartanleitung werden das [Azure-Portal](../azure-resource-mana
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie bereits mit der Verwendung von ARM-Vorlagen vertraut sind, können Sie die Vorlage durch Auswählen der Schaltfläche **In Azure bereitstellen** für die Bereitstellung im Azure-Portal öffnen.
 
-[![Bereitstellen in Azure: Übersicht](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-iothub-device-provisioning%2fazuredeploy.json)
+[![Bereitstellen in Azure: Übersicht](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2Fquickstarts%2Fmicrosoft.devices%2Fiothub-device-provisioning%2fazuredeploy.json)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,12 +34,12 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie bereits mit der Verwendu
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-iothub-device-provisioning/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/iothub-device-provisioning/).
 
 > [!NOTE]
 > Derzeit ist keine Unterstützung für ARM-Vorlagen zum Erstellen von Registrierungen mit neuen DPS-Ressourcen vorhanden. Dies wird häufig angefragt und ist uns bewusst. Eine entsprechende Implementierung wird derzeit erwogen.
 
-:::code language="json" source="~/quickstart-templates/101-iothub-device-provisioning/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.devices/iothub-device-provisioning/azuredeploy.json":::
 
 In der obigen Vorlage sind zwei Azure-Ressourcen definiert:
 
@@ -53,7 +53,7 @@ In der obigen Vorlage sind zwei Azure-Ressourcen definiert:
 
 1. Wählen Sie das folgende Abbildung aus, um sich bei Azure anzumelden und die Vorlage für die Bereitstellung zu öffnen. Durch die Vorlage werden ein neuer IoT-Hub und eine neue DPS-Ressource erstellt. Der Hub wird in der DPS-Ressource verknüpft.
 
-    [![Bereitstellen in Azure: Schritte im Portal](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-iothub-device-provisioning%2fazuredeploy.json)
+    [![Bereitstellen in Azure: Schritte im Portal](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2Fquickstarts%2Fmicrosoft.devices%2Fiothub-device-provisioning%2fazuredeploy.json)
 
 2. Wählen Sie die folgenden Werte aus, oder geben Sie sie ein, und klicken Sie anschließend auf **Überprüfen + erstellen**.
 
@@ -61,7 +61,7 @@ In der obigen Vorlage sind zwei Azure-Ressourcen definiert:
 
     Sofern nichts anderes angegeben ist, verwenden Sie jeweils den Standardwert, um den IoT-Hub und die DPS-Ressource zu erstellen.
 
-    | Feld | Beschreibung |
+    | Feld | BESCHREIBUNG |
     | :---- | :---------- |
     | **Abonnement** | Wählen Sie Ihr Azure-Abonnement. |
     | **Ressourcengruppe** | Klicken Sie auf **Neu erstellen**, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie anschließend auf **OK**. |
@@ -114,7 +114,7 @@ Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
     ```azurecli-interactive
     read -p "Enter a project name that is used for generating resource names:" projectName &&
     read -p "Enter the location (i.e. centralus):" location &&
-    templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-iothub-device-provisioning/azuredeploy.json" &&
+    templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.devices/iothub-device-provisioning/azuredeploy.json" &&
     resourceGroupName="${projectName}rg" &&
     az group create --name $resourceGroupName --location "$location" &&
     az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&
@@ -167,7 +167,7 @@ Sie können auch Ressourcengruppen und einzelne Ressourcen löschen, indem Sie d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie einen IoT-Hub und einen Gerätebereitstellungsdienst bereitgestellt und die beiden Ressourcen verknüpft. In der Schnellstartanleitung zur Geräteerstellung erfahren Sie, wie Sie diese Einrichtung zum Bereitstellen eines Geräts verwenden.
+In diesem Schnellstart haben Sie einen IoT-Hub und eine Instanz von Azure IoT Hub Device Provisioning Service bereitgestellt und die beiden Ressourcen verknüpft. In der Schnellstartanleitung zur Geräteerstellung erfahren Sie, wie Sie diese Einrichtung zum Bereitstellen eines Geräts verwenden.
 
 > [!div class="nextstepaction"]
 > [Schnellstart: Bereitstellen eines Geräts mit symmetrischen Schlüsseln](./quick-create-simulated-device-symm-key.md)

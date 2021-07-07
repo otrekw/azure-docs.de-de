@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 9bf523fcc7699096b273b79d703770cbe71dcb35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b95d23498c4f28cd1cdacb9ae8b709739e150312
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92448570"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556332"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-glint-inc"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Glint Inc
 
@@ -39,7 +39,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Glint Inc unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 
-## <a name="adding-glint-inc-from-the-gallery"></a>Hinzufügen von Glint Inc aus dem Katalog
+## <a name="add-glint-inc-from-the-gallery"></a>Hinzufügen von Glint Inc aus dem Katalog
 
 Zum Konfigurieren der Integration von Glint Inc in Azure AD müssen Sie Glint Inc aus dem Katalog zu Ihrer Liste der verwalteten SaaS-Apps hinzufügen.
 
@@ -50,12 +50,11 @@ Zum Konfigurieren der Integration von Glint Inc in Azure AD müssen Sie Glint 
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Glint Inc** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Glint Inc** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-glint-inc"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Glint Inc
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Glint Inc mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Glint Inc eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Glint Inc die folgenden Schritte aus:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Glint Inc die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
@@ -70,11 +69,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Glint Inc** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://api.<REGION>.glintinc.com/api/client/<CUSTOMER_NAME>/token/saml2/consume/includeDeskLink`
 
@@ -94,6 +93,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Kopieren Sie im Abschnitt **Glint Inc einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
@@ -140,8 +140,8 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Glint Inc-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Zugriffsbereich verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie im Zugriffsbereich auf die Kachel „Glint Inc“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Glint Inc-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie im Bereich „Meine Apps“ auf die Kachel „Glint Inc“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Glint Inc-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Glint Inc können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Glint Inc können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

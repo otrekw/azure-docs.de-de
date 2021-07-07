@@ -3,18 +3,18 @@ title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Features von Azure Cost Management verwenden und den Zugriff auf Cost Management für ihre Kunden aktivieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/27/2021
+ms.date: 06/01/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 40c683d98a13bf4810ec4575af3fba5ae64961f0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 7278211ee47ec4a291a7934fee4b56fae0d8dfc4
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946990"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790369"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -110,7 +110,13 @@ Partner können den Bereich verwenden, um Rechnungen abzustimmen. Außerdem verw
 
 Partner verwenden den Bereich, um Kosten zu verwalten, die in die Microsoft-Kundenvereinbarung eingebundenen Kunden zugeordnet sind. Mit dem Bereich können Partner die Kosten vor Steuern eines bestimmten Kunden in einer Abrechnungswährung anzeigen. Sie können auch die Kosten vor Steuern für ein bestimmtes Abonnement, eine Ressourcengruppe oder Ressource filtern.
 
-Der Kundenbereich umfasst keine Kunden, die dem aktuellen CSP-Angebot unterliegen. Der Bereich umfasst nur Kunden, die über eine Microsoft-Kundenvereinbarung verfügen. Berechtigungskosten, nicht die Azure-Nutzung, für Kunden im Rahmen des aktuellen CSP-Angebots sind im Abrechnungskonto- und Abrechnungsprofilbereich verfügbar, wenn Sie den Kundenfilter anwenden. In diesem Bereich erfolgt die Festlegung von Budgets in der Abrechnungswährung.
+Der Kundenbereich umfasst keine Kunden, die dem aktuellen CSP-Angebot unterliegen. Der Bereich umfasst nur Kunden, die über eine Microsoft-Kundenvereinbarung verfügen.
+
+Berechtigungskosten, nicht die Azure-Nutzung, für Kunden im Rahmen des aktuellen CSP-Angebots sind im Abrechnungskonto- und Abrechnungsprofilbereich verfügbar, wenn Sie den Kundenfilter anwenden. In diesem Bereich erfolgt die Festlegung von Budgets in der Abrechnungswährung.
+
+Zum Anzeigen der Kosten im Kundenbereich navigieren Sie im Partnermandanten zu „Kostenanalyse“, öffnen Sie die Bereichsauswahl, und wählen Sie dann den jeweiligen Kunden in der Liste der Bereiche aus. Es folgt ein Beispiel für den Kunden *Contoso Services*.
+
+:::image type="content" source="./media/get-started-partners/customer-scope.png" alt-text="Screenshot: Auswählen eines Kundenbereichs" lightbox="./media/get-started-partners/customer-scope.png" :::
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Partnerzugriff auf Abrechnungsbereiche in Cost Management
 
@@ -147,7 +153,7 @@ Wenn die Kostensichtbarkeits-Richtlinie aktiviert ist, werden für alle Dienste 
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>Anzeigen der Abonnementkosten auf dem Kundenmandanten
 
-Öffnen Sie zum Anzeigen der Kosten für ein Abonnement auf dem Azure-Mandanten des Kunden die Option **Kostenverwaltung + Abrechnung**. Wählen Sie die Option **Kostenanalyse** für das erforderliche Abonnement aus, um mit der Überprüfung der Kosten zu beginnen. Sie können die Verbrauchskosten für jedes Abonnement einzeln auf dem Kundenmandanten anzeigen.
+Öffnen Sie zum Anzeigen der Kosten für ein Abonnement auf dem Azure-Mandanten des Kunden die Option **Kostenverwaltung + Abrechnung**. Wählen Sie **Kostenanalyse** und dann das erforderliche Abonnement aus, um mit der Überprüfung der Kosten zu beginnen. Sie können die Verbrauchskosten für jedes Abonnement einzeln auf dem Kundenmandanten anzeigen.
 
 [![Anzeigen der Kostenanalyse als Kunde](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 

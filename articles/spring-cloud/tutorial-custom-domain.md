@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 583124e9e3ca657ee13e4726eda981ae26022856
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6c9d2e82e048a8693175974d6ef664d67e9deac8
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138515"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652650"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Tutorial: Zuordnen einer vorhandenen benutzerdefinierten Domäne zu Azure Spring Cloud
 
@@ -89,7 +89,7 @@ So laden Sie Ihr Zertifikat in den Schlüsseltresor hoch:
 1. Klicken Sie im oberen Menü auf **Generieren/importieren**.
 1. Wählen Sie im Dialogfeld **Zertifikat erstellen** unter **Methode der Zertifikaterstellung** die Option `Import` aus.
 1. Navigieren Sie unter **Zertifikatdatei hochladen** zum Speicherort des Zertifikats, und wählen Sie die Datei aus.
-1. Geben Sie unter **Kennwort** den privaten Schlüssel für Ihr Zertifikat ein.
+1. **Kennwort**: Wenn Sie eine kennwortgeschützte Zertifikatsdatei hochladen, geben Sie das Kennwort hier an. Lassen Sie dieses Feld andernfalls leer. Nachdem die Zertifikatsdatei erfolgreich importiert wurde, entfernt Key Vault das Kennwort.
 1. Klicken Sie auf **Erstellen**.
 
     ![Importieren des Zertifikats 1](./media/custom-dns-tutorial/import-certificate-a.png)

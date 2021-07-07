@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7528d1f29b293e1efadde84fac9fa8d95f8f5076
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: da026012c4084783d30f548cbdffc8951d74bcd6
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371305"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751215"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Erstellen und Verwenden von Ansichten mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -119,6 +119,8 @@ Der Ordnername in der `OPENROWSET`-Funktion (`yellow` in diesem Beispiel), der m
 
 > [!div class="mx-imgBorder"]
 >![Delta Lake-Ordner „Yellow Taxi“](./media/shared/yellow-taxi-delta-lake.png)
+
+Verwenden Sie die `WITH`-Klausel nicht in der Funktion `OPENROWSET`, wenn Sie partitionierte Delta Lake-Daten abfragen. Aufgrund eines bekannten Problems in der Vorschauversion werden von der `WITH`-Klausel die Werte aus den zugrunde liegenden Partitionierungsspalten nicht richtig zurückgegeben. Die Partitionsentfernung funktioniert problemlos, wenn Sie die Funktion `OPENROWSET` direkt mit der `WITH`-Klausel (ohne Sichten) verwenden.  
 
 ## <a name="use-a-view"></a>Verwenden einer Ansicht
 

@@ -1,5 +1,5 @@
 ---
-title: Registrieren einer SAP S/4HANA-Quelle und Einrichten von Überprüfungen (Vorschauversion) in Azure Purview
+title: Registrieren einer SAP S/4HANA-Quelle und Einrichten von Überprüfungen in Azure Purview
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP S/4HANA-Quelle in Azure Purview registrieren und eine Überprüfung einrichten.
 author: chandrakavya
 ms.author: kchandra
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: e7030d1b692777b7497ffe464a70d3a80cab9647
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: a061f3afbfb3a114ec22bcfba123aa326b6ac3fd
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992357"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067094"
 ---
-# <a name="register-and-scan-a-sap-s4hana-source-preview"></a>Registrieren und Überprüfen einer SAP S/4HANA-Quelle (Vorschau)
+# <a name="register-and-scan-a-sap-s4hana-source"></a>Registrieren und Überprüfen einer SAP S/4HANA-Quelle
 
 In diesem Artikel erfahren Sie, wie Sie eine SAP S/4HANA-Quelle in Purview registrieren und eine Überprüfung einrichten.
 

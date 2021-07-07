@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 04f793f78cef938c31e7a30aad5569a54eb461a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dae51f8c343fa5adcf724cd3ef6db1c8a4058cf7
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104613106"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900717"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Schnellstart: Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle
 
@@ -70,7 +70,7 @@ az storage account create \
 
 Blobs werden immer in einen Container hochgeladen. Gruppen von Blobs können in Containern strukturiert werden (ähnlich wie Dateien in Ordnern auf Ihrem Computer). Erstellen Sie mit dem Befehl [az storage container create](/cli/azure/storage/container) einen Container zum Speichern von Blobs.
 
-Im folgenden Beispiel wird Ihr Azure AD-Konto genutzt, um den Vorgang zur Erstellung des Containers zu autorisieren. Weisen Sie sich vor der Erstellung des Containers selbst die Rolle [Mitwirkender an Storage-Blobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) zu. Selbst wenn Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle zum Zuweisen einer RBAC-Rolle für den Zugriff auf Blob- und Warteschlangendaten](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json).  
+Im folgenden Beispiel wird Ihr Azure AD-Konto genutzt, um den Vorgang zur Erstellung des Containers zu autorisieren. Weisen Sie sich vor der Erstellung des Containers selbst die Rolle [Mitwirkender an Storage-Blobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) zu. Selbst wenn Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Zuweisen einer RBAC-Rolle für den Zugriff auf Blobdaten](assign-azure-role-data-access.md).  
 
 Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 

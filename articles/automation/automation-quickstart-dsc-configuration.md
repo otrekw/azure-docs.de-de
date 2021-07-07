@@ -7,12 +7,12 @@ keywords: DSC, Konfiguration, Automatisierung
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93760823363b7582133727a7e5b0dc0f2a97a6d0
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86186077"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992169"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Konfigurieren eines virtuellen Computers mit Desired State Configuration
 
@@ -62,7 +62,7 @@ In dieser Schnellstartanleitung wird eine DSC-Konfiguration verwendet, mit der A
 Geben Sie in einem Texteditor Folgendes ein, und speichern Sie die Datei lokal als **AMPServer.ps1**.
 
 ```powershell-interactive
-configuration LAMPServer {
+configuration 'LAMPServer' {
    Import-DSCResource -module "nx"
 
    Node localhost {

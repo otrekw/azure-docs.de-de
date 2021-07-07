@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 3/22/2021
+ms.date: 06/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 1ecfd58e961e70182bfc2e0cc8eaf77f5053eb77
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: ce14ff28c69b514e0d10ef5eabff83828026bb19
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104879646"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111593734"
 ---
 [Referenzdokumentation](/dotnet/api/overview/azure/cognitiveservices/management) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/) | [Beispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
@@ -21,6 +21,7 @@ ms.locfileid: "104879646"
 
 * Ein gültiges Azure-Abonnement: [Erstellen Sie ein kostenloses Abonnement](https://azure.microsoft.com/free/).
 * Aktuelle Version von [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* [!INCLUDE [terms-azure-portal](./terms-azure-portal.md)]
 
 [!INCLUDE [Create a service principal](./create-service-principal.md)]
 
@@ -111,6 +112,8 @@ Verwenden Sie die folgende Methode, um alle Ressourcen in Ihrem Azure-Konto (in 
 Die folgende Methode löscht die angegebene Ressource aus der jeweiligen Ressourcengruppe.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_delete)]
+
+Wenn Sie eine gelöschte Ressource wiederherstellen müssen, finden Sie weitere Informationen unter [Wiederherstellen gelöschter Cognitive Services-Ressourcen](../../manage-resources.md).
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 

@@ -8,16 +8,16 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 1c4d04e25bf8f7d981c998baafb468f04b66eaf1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b197d91893cc419913ace60fe30beca88484bfd2
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879897"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590952"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Einführung in Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 setzt auf [Azure Blob Storage](storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für die Big Data-Analyse. 
+‎Azure Data Lake Storage Gen2 setzt auf [Azure Blob Storage](storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für die Big Data-Analyse. 
 
 Data Lake Storage Gen2 vereint die Funktionen von [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) und Azure Blob Storage. Beispielsweise bietet Data Lake Storage Gen2 Dateisystemsemantik, Sicherheit auf Dateiebene und Skalierung. Da diese Funktionen auf Blob Storage basieren, profitieren Sie gleichzeitig von kostengünstigem, mehrstufigem Speicher mit Hochverfügbarkeit und Notfallwiederherstellungsfunktionen.
 
@@ -35,7 +35,7 @@ Data Lake Storage Gen2 baut auf Blobspeicher auf und verbessert wie folgt die Le
 
 -   Die **Sicherheit** ist durchsetzbar, da Sie POSIX-Berechtigungen für Verzeichnisse oder einzelne Dateien definieren können.
 
-Data Lake Storage Gen2 ist darüber hinaus sehr kostengünstig, da diese SKU auf dem kostengünstigen [Azure Blob-Speicher](storage-blobs-introduction.md) aufbaut. Durch diese zusätzlichen Features werden die Gesamtbetriebskosten für Big Data-Analysen in Azure weiter gesenkt.
+Data Lake Storage Gen2 ist darüber hinaus sehr kostengünstig, da diese SKU auf dem kostengünstigen [Azure Blob Storage](storage-blobs-introduction.md) aufbaut. Durch diese zusätzlichen Features werden die Gesamtbetriebskosten für Big Data-Analysen in Azure weiter gesenkt.
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Besondere Features von Data Lake Storage Gen2
 
