@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: ec5d63c18e8fb3a353de334ae571c730f9b0d3d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 464521cee3242859294de42d2086e1bea33bb4c4
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869802"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290904"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Interactive Query in Azure HDInsight
 
 Interactive Query (auch Apache Hive LLAP oder [Low Latency Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP) genannt) ist ein Azure HDInsight-[Clustertyp](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type). Interactive Query unterstützt speicherinternes Zwischenspeichern, wodurch Apache Hive-Abfragen schneller und viel interaktiver werden. Kunden verwenden Interactive Query, um Daten, die in Azure Storage und Azure Data Lake Storage gespeichert sind, äußerst schnell abzufragen. Interactive Query erleichtert Entwicklern und Data Scientists die Arbeit mit Big Data mit den BI-Tools, die sie am meisten lieben. HDInsight Interactive Query unterstützt verschiedene Tools für den mühelosen Zugriff auf Big Data.
 
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
+[!INCLUDE [hdinsight-price-change](../includes/hdinsight-enhancements.md)]
 
 Ein Interactive Query-Cluster unterscheidet sich von einem Apache Hadoop-Cluster. Er enthält nur den Hive-Dienst.
 

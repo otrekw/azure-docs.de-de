@@ -6,15 +6,15 @@ author: nmurav
 manager: jken
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 3/23/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c7ec360d961c0960dc941c48626c3aeb3f7367ec
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 377d6783fb73c2d03f7e4dde7b352abe1eaef993
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289010"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110797"
 ---
 # <a name="ensure-high-quality-media-in-azure-communication-services"></a>Sicherstellen von hoher Qualität für Medien in Azure Communication Services
 
@@ -47,7 +47,7 @@ Hier sind die Bandbreitenanforderungen für die JavaScript-SDKs angegeben:
 |500 KBit/s|Video-Gruppenanrufe mit 360p bei 30 Bildern pro Sekunde|
 |1,2 MBit/s|Video-Gruppenanrufe in HD-Qualität mit einer Auflösung von HD 720p bei 30 Bildern pro Sekunde| 
 
-Hier sind die Bandbreitenanforderungen für die nativen Android- und iOS-SDKs angegeben:
+Es folgen die Bandbreitenanforderungen für die nativen SDKs für Windows, Android und iOS:
 
 |Bandbreite|Szenarien|
 |:--|:--|
@@ -63,7 +63,7 @@ Hier sind die Bandbreitenanforderungen für die nativen Android- und iOS-SDKs an
 
 Für Azure Communication Services-Verbindungen wird eine Internetkonnektivität mit bestimmten Ports und IP-Adressen benötigt, um eine Multimediaumgebung mit hoher Qualität bereitstellen zu können. Auch wenn kein Zugriff auf diese Ports und IP-Adressen besteht, kann Azure Communication Services funktionieren. Die optimale Leistung wird aber nur erzielt, wenn die empfohlenen Ports und IP-Adressbereiche verfügbar sind.
 
-| Category | IP-Adressbereiche oder FQDN | Ports | 
+| Kategorie | IP-Adressbereiche oder FQDN | Ports | 
 | :-- | :-- | :-- |
 | Mediendatenverkehr | [IP-Adressbereiche für öffentliche Azure-Cloud](https://www.microsoft.com/download/confirmation.aspx?id=56519) | UDP 3478 bis 3481, TCP-Port 443 |
 | Signalisierung, Telemetrie, Registrierung| *.skype.com, *.microsoft.com, *.azure.net, *.azureedge.net, *.office.com, *.trouter.io | TCP-Ports 443 und 80 |

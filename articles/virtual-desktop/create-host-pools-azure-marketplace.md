@@ -1,27 +1,27 @@
 ---
-title: 'Windows Virtual Desktop-Hostpool im Azure-Portal: Azure'
-description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool im Azure-Portal erstellen.
+title: 'Azure Virtual Desktop-Hostpool im Azure-Portal: Azure'
+description: Hier erfahren Sie, wie Sie einen Azure Virtual Desktop-Hostpool im Azure-Portal erstellen.
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
 ms.date: 03/10/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1003ab20f839469235d6bd7949ec3b2df4dd4f25
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 96e5fbf825c0550001ae9b0a38517e753b3a8d0f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447980"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756255"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md). Objekte, die Sie mit Windows Virtual Desktop (klassisch) erstellen, können nicht mit dem Azure-Portal verwaltet werden.
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md). Objekte, die Sie mit Azure Virtual Desktop (klassisch) erstellen, können nicht mit dem Azure-Portal verwaltet werden.
 
-Ein Hostpool ist eine Sammlung identischer VMs innerhalb von Windows Virtual Desktop-Umgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
+Ein Hostpool ist eine Sammlung identischer VMs innerhalb von Azure Virtual Desktop-Umgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
 
-In diesem Artikel wird der Einrichtungsprozess zum Erstellen eines Hostpools für eine Windows Virtual Desktop-Umgebung über das Azure-Portal detailliert beschrieben. Bei dieser Methode verwenden Sie eine browserbasierte Benutzeroberfläche, um einen Hostpool in Windows Virtual Desktop zu erstellen, eine Ressourcengruppe mit VMs unter einem Azure-Abonnement zu erstellen und diese VMs dann in die Azure Active Directory-Domäne (AD) einzubinden und bei Windows Virtual Desktop zu registrieren.
+In diesem Artikel wird der Einrichtungsprozess zum Erstellen eines Hostpools für eine Azure Virtual Desktop-Umgebung über das Azure-Portal detailliert beschrieben. Bei dieser Methode verwenden Sie eine browserbasierte Benutzeroberfläche, um einen Hostpool in Azure Virtual Desktop zu erstellen, eine Ressourcengruppe mit VMs unter einem Azure-Abonnement zu erstellen und diese VMs dann in die Azure Active Directory-Domäne (AD) einzubinden und bei Azure Virtual Desktop zu registrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,7 +30,7 @@ Zum Erstellen eines Hostpools müssen Sie die folgenden Parameter eingeben:
 - Name des VM-Images
 - Konfiguration des virtuellen Computers
 - Domänen- und Netzwerkeigenschaften
-- Eigenschaften des Windows Virtual Desktop-Hostpools
+- Eigenschaften des Azure Virtual Desktop-Hostpools
 
 Außerdem müssen Sie Folgendes wissen:
 
@@ -39,7 +39,7 @@ Außerdem müssen Sie Folgendes wissen:
 
 Stellen Sie außerdem sicher, dass Sie den Ressourcenanbieter „Microsoft.DesktopVirtualization“ registriert haben. Gehen Sie wie folgt vor, falls Sie dies noch nicht getan haben: Navigieren Sie zu **Abonnements**, und wählen Sie den Namen Ihres Abonnements und dann **Ressourcenanbieter** aus. Suchen Sie nach DesktopVirtualization, und wählen Sie „Microsoft.DesktopVirtualization“ und dann „Registrieren“ aus.
 
-Beim Erstellen eines Windows Virtual Desktop-Hostpools mit der Azure Resource Manager-Vorlage können Sie einen virtuellen Computer über den Azure-Katalog, ein verwaltetes Image oder ein nicht verwaltetes Image erstellen. Weitere Informationen zur Erstellung von VM-Images finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) bzw. unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).
+Beim Erstellen eines Azure Virtual Desktop-Hostpools mit der Azure Resource Manager-Vorlage können Sie einen virtuellen Computer über den Azure-Katalog, ein verwaltetes Image oder ein nicht verwaltetes Image erstellen. Weitere Informationen zur Erstellung von VM-Images finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) bzw. unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).
 
 Wenn Sie noch kein Azure-Abonnement haben, müssen Sie [ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie diese Anweisungen ausführen.
 
@@ -52,9 +52,9 @@ Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte a
    >[!NOTE]
    > Wenn Sie sich beim US Gov-Portal anmelden, wechseln Sie stattdessen zu [https://portal.azure.us/](https://portal.azure.us/).
 
-2. Geben Sie **Windows Virtual Desktop** in die Suchleiste ein, und wählen Sie dann unter „Dienste“ den Eintrag **Windows Virtual Desktop** aus.
+2. Geben Sie **Azure Virtual Desktop** in die Suchleiste ein, und wählen Sie dann unter „Dienste“ den Eintrag **Azure Virtual Desktop** aus.
 
-3. Wählen Sie auf der Übersichtsseite für **Windows Virtual Desktop** die Option **Hostpool erstellen** aus.
+3. Wählen Sie auf der Übersichtsseite für **Azure Virtual Desktop** die Option **Hostpool erstellen** aus.
 
 4. Wählen Sie auf der Registerkarte **Grundlagen** unter „Projektdetails“ das richtige Abonnement aus.
 
@@ -208,7 +208,7 @@ Wenn Sie lieber einen automatisierten Prozess verwenden möchten, [laden Sie uns
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihren Hostpool erstellt haben, können Sie ihn nun mit RemoteApp-Programmen auffüllen. Weitere Informationen zum Verwalten von Apps in Windows Virtual Desktop finden Sie in unserem nächsten Tutorial:
+Nachdem Sie Ihren Hostpool erstellt haben, können Sie ihn nun mit RemoteApp-Programmen auffüllen. Weitere Informationen zum Verwalten von Apps in Azure Virtual Desktop finden Sie in unserem nächsten Tutorial:
 
 > [!div class="nextstepaction"]
 > [Manage app groups for Windows Virtual Desktop Preview](./manage-app-groups.md) (Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion))

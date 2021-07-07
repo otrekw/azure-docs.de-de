@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 7cb52dba88d94ed52baa8272c7f20fed4bcde0fd
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 90e1b951cd3990df3615cdcf33a4d659f693b5ee
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787543"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064880"
 ---
 # <a name="iot-central-device-development-guide"></a>Entwicklungshandbuch für IoT Central-Geräte
 
@@ -77,6 +77,8 @@ Kommunikationsprotokolle, über die ein Gerät eine Verbindung mit IoT Central h
 ## <a name="implement-the-device"></a>Implementieren des Geräts
 
 Eine IoT Central-Gerätevorlage enthält ein _Modell_, mit dem die Verhaltensweisen angegeben werden, die von einem Gerät des entsprechenden Typs implementiert werden sollen. Diese Verhaltensweisen betreffen die Bereiche Telemetrie, Eigenschaften und Befehle.
+
+Weitere Informationen zu bewährten Methoden zum Bearbeiten eines Modells finden Sie unter [Bearbeiten einer vorhandenen Gerätevorlage](howto-edit-device-template.md).
 
 > [!TIP]
 > Sie können das Modell als JSON-Datei im Format [Digital Twins Definition Language (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl) aus IoT Central exportieren.

@@ -29,9 +29,13 @@
       href: ./validated-partners/data-management/migration-tools-comparison.md
     - name: Leitfaden zu den ersten Schritten mit DobiMigrate
       href: ./validated-partners/data-management/dobimigrate-quick-start-guide.md
+    - name: Leitfaden zu den ersten Schritten mit Komprise
+      href: ./validated-partners/data-management/komprise-quick-start-guide.md
   expanded: false
 - name: Partner für primären und sekundären Speicher
   items:
     - name: Übersicht über geprüfte Partner
       href: .\validated-partners\primary-secondary-storage\partner-overview.md
+    - name: ISV-Dateidienste
+      href: .\validated-partners\primary-secondary-storage\isv-file-services.md
   expanded: false

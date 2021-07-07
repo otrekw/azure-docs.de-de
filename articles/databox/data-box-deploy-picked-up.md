@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 05/07/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 267094ea6a7295a65b93fb7700c97e4280da341d
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 86609d42a7c8f0e78df6b3a0019d97c951b5d378
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539110"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736150"
 ---
 ::: zone target="docs"
 
@@ -344,14 +344,14 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ::: zone target="docs"
 
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload.md)]
 
 ::: zone-end
 -->
 
 ## <a name="self-managed"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged)
 
-Gehen Sie wie folgt vor, wenn Sie Data Box in den Regionen „US Government“, „Japan“, „Singapur“, „Südkorea“, „Indien“, „Südafrika“, „Vereinigtes Königreich“, „Europa, Westen“ oder „Australien“ verwenden und bei der Auftragserstellung die Option für selbst verwalteten Versand ausgewählt haben.
+Gehen Sie wie folgt vor, wenn Sie Data Box in den Regionen „US Government“, „Japan“, „Singapur“, „Südkorea“, „Indien“, „Südafrika“, „Vereinigtes Königreich“, „Europa, Westen“, „Australien“ oder „Brasilien“ verwenden und bei der Auftragserstellung die Option für selbst verwalteten Versand ausgewählt haben.
 
 1. Notieren Sie sich den Autorisierungscode, der auf der Seite **Versandvorbereitung** der lokalen Webbenutzeroberfläche von Data Box angezeigt wird, nachdem dieser Schritt erfolgreich abgeschlossen wurde.
 2. Schalten Sie das Gerät aus, und entfernen Sie die Kabel. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
@@ -363,8 +363,12 @@ Gehen Sie wie folgt vor, wenn Sie Data Box in den Regionen „US Government“, 
     Body:
         1. Order name  
         2. Authorization code available after Prepare to Ship has completed [Yes/No]  
-        3. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+        3. Contact name of the person dropping off. You will need to display a government-approved ID during the drop off.
     ```
+
+   > [!NOTE]
+   > - Die für eine Retoure erforderlichen Informationen können je nach Region variieren. 
+   > - Ausführliche Anweisungen für eine Data Box-Retoure in Brasilien finden Sie unter [Verwenden des selbst verwalteten Versands für Azure Data Box](data-box-portal-customer-managed-shipping.md). 
 
 ::: zone target="chromeless"
 
@@ -387,4 +391,3 @@ Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten au
 [!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
-

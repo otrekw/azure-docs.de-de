@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/31/2021
+ms.date: 05/20/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: bd5533f4bc8420ee6d8900e8a17dfe7099d7945f
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d339f058e94f27c26b4d5ae9bfcce4c66f279554
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107196"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463635"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen
 
@@ -44,13 +44,13 @@ Kontoadministrator, Dienstadministrator und Co-Administrator sind die drei Rolle
 
 | Administrator für klassisches Abonnement | Begrenzung | Berechtigungen | Notizen |
 | --- | --- | --- | --- |
-| Kontoadministrator | 1 pro Azure-Konto | <ul><li>Verwalten der Abrechnung im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)</li><li>Verwalten aller Abonnements in einem Konto</li><li>Erstellen neuer Abonnements</li><li>Kündigen von Abonnements</li><li>Ändern der Abrechnung für ein Abonnement</li><li>Ändern des Dienstadministrators</li></ul> | Vom Konzept her der für die Abrechnung zuständige Besitzer des Abonnements. |
+| Kontoadministrator | 1 pro Azure-Konto | <ul><li>Zugriff auf das [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) und Verwaltung der Abrechnung</li><li>Verwalten der Abrechnung für alle Abonnements im Konto</li><li>Erstellen neuer Abonnements</li><li>Kündigen von Abonnements</li><li>Ändern der Abrechnung für ein Abonnement</li><li>Ändern des Dienstadministrators</li><li>Abonnements können nur gekündigt werden, wenn sie die Rolle „Dienstadministrator“ oder „Abonnementbesitzer“ haben</li></ul> | Vom Konzept her der für die Abrechnung zuständige Besitzer des Abonnements. |
 | Dienstadministrator | 1 pro Azure-Abonnement | <ul><li>Verwalten von Diensten im [Azure-Portal](https://portal.azure.com)</li><li>Kündigen des Abonnements</li><li>Zuweisen von Benutzern zur Rolle „CO-Administrator“</li></ul> | Standardmäßig ist der Kontoadministrator für ein neues Abonnement gleichzeitig auch der Dienstadministrator.<br>Der Dienstadministrator verfügt über gleichwertigen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist.<br>Der Dienstadministrator hat Vollzugriff auf das Azure-Portal. |
 | Co-Administrator | 200 pro Abonnement | <ul><li>Gleiche Zugriffsrechte wie der Dienstadministrator, aber kann die Zuordnung von Abonnements zu Azure-Verzeichnissen nicht ändern</li><li>Zuweisen von Benutzern zur Rolle „Co-Administrator“, aber kann den Dienstadministrator nicht ändern</li></ul> | Der Co-Administrator verfügt über gleichwertigen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist. |
 
 Im Azure-Portal können Sie auf der Registerkarte **Klassische Administratoren** Co-Administratoren verwalten oder den Dienstadministrator anzeigen.
 
-![Klassische Azure-Abonnementadministratoren im Azure-Portal](./media/rbac-and-directory-admin-roles/subscription-view-classic-administrators.png)
+![Klassische Azure-Abonnementadministratoren im Azure-Portal](./media/shared/classic-administrators.png)
 
 Im Azure-Portal können Sie auf dem Eigenschaftenblatt Ihres Abonnements den Dienstadministrator anzeigen/ändern oder den Kontoadministrator anzeigen.
 
@@ -85,11 +85,11 @@ Nur das Azure-Portal und die Azure Resource Manager-APIs unterstützen Azure RBA
 
 Im Azure-Portal werden Rollenzuweisungen, für die Azure RBAC genutzt wird, auf dem Blatt **Zugriffssteuerung (IAM)** angezeigt. Dieses Blatt ist im gesamten Portal zu finden, z. B. unter Verwaltungsgruppen, Abonnements, Ressourcengruppen und verschiedenen Ressourcen.
 
-![Blatt „Zugriffssteuerung (IAM)“ im Azure-Portal](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
+![Blatt „Zugriffssteuerung (IAM)“ im Azure-Portal](./media/shared/sub-role-assignments.png)
 
 Wenn Sie auf die Registerkarte **Rollen** klicken, wird die Liste mit den integrierten und benutzerdefinierten Rollen angezeigt.
 
-![Integrierte Rollen im Azure-Portal](./media/rbac-and-directory-admin-roles/roles-list.png)
+![Integrierte Rollen im Azure-Portal](./media/shared/roles-list.png)
 
 Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](role-assignments-portal.md).
 

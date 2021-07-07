@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 036db7999ce6d5fd84ad6210aa50206e2b031b2f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6c6dd03956329fd85862b7e211c24966f7eec64f
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369353"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495209"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Schnellstart: Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals
 
@@ -36,7 +36,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie das Azure-Portal verwenden
 
         Bei Verwendung des Azure-Portals können Sie aktuell TTML- und WebVTT-Untertiteldateien generieren. Dateien in diesen Formaten können verwendet werden, um Hörgeschädigten Audio- und Videodateien zugänglich zu machen. Darüber hinaus können Sie Schlüsselwörter aus Ihrem Inhalt extrahieren.
 
-        Für umfassende Funktionen zur Extrahierung von Erkenntnissen aus Video- und Audiodateien können Sie Media Services v3-Voreinstellungen verwenden, wie unter [Tutorial: Analysieren von Videos mit Media Services v3](analyze-videos-tutorial.md) beschrieben. <br/>Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie Video Indexer direkt.    
+        Für umfassende Funktionen zur Extrahierung von Erkenntnissen aus Video- und Audiodateien können Sie Media Services v3-Voreinstellungen verwenden, wie unter [Tutorial: Analysieren von Videos mit Media Services v3](analyze-videos-tutorial.md) beschrieben. <br/>Wenn Sie ausführlichere Erkenntnisse benötigen, verwenden Sie [Video Analyzer für Medien](../../azure-video-analyzer/video-analyzer-for-media-docs/index.yml) direkt.    
 * Nach der Verarbeitung Ihrer Inhalte können Sie Medieninhalte für Clientplayer bereitstellen. Wenn Sie Videos im Ausgabemedienobjekt für die Clientwiedergabe verfügbar machen möchten, müssen Sie einen **Streaminglocator** erstellen. Bei der Erstellung eines **Streaminglocators** muss eine **Streamingrichtlinie** angegeben werden. Mithilfe von **Streamingrichtlinien** können Sie Streamingprotokolle und ggf. Verschlüsselungsoptionen für Ihre **Streaminglocators** definieren.
     
     Überprüfung:

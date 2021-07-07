@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: iot-central
 author: dominicbetts
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 26aefab9b4637c3f3f6b0f0d1195068e2cd770ab
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 76f8c8819bf67405023980a6fd0e48f997926938
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001813"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111896781"
 ---
 <!-- All needs updating -->
 Als Operator in Ihrer Azure IoT Central-Anwendung haben Sie folgende Möglichkeiten:
@@ -58,7 +58,7 @@ So passen Sie die Darstellung der schreibbaren Eigenschaften für die **Zieltemp
 
 1. Wählen Sie **Speichern** aus.
 
-Die Thermostatkomponenten im Modell **Thermostat** enthalten die schreibbare Eigenschaft **Target Temperature** (Zieltemperatur), und die Gerätevorlage enthält die Cloudeigenschaft **Customer Name** (Kundenname). Erstellen Sie eine Ansicht, die von einem Operator zum Bearbeiten dieser Eigenschaften verwendet werden kann:
+Die Thermostatkomponenten im Modell **Thermostat** enthalten die beschreibbare Eigenschaft **Target Temperature** (Zieltemperatur), und die Gerätevorlage enthält die Cloudeigenschaft **Customer Name** (Kundenname). Erstellen Sie eine Ansicht, die von einem Operator zum Bearbeiten dieser Eigenschaften verwendet werden kann:
 
 1. Wählen Sie **Ansichten** und anschließend die Kachel **Geräte- und Clouddaten bearbeiten** aus.
 
@@ -78,7 +78,7 @@ Wählen Sie in der Gerätevorlage **Thermostat** die Option **Veröffentlichen**
 
 Ein Operator kann nun die Ansicht **Eigenschaften** verwenden, um die Eigenschaftswerte zu aktualisieren, und auf der Seite mit Gerätebefehlen Befehle namens **Get thermostat1 status report** (Statusbericht für "thermostat1" abrufen) und **Get thermostat2 status report** (Statusbericht für "thermostat2" abrufen) aufrufen:
 
-* Aktualisieren schreibbarer Eigenschaftswerte auf der Seite **Properties** (Eigenschaften):
+* Aktualisieren beschreibbarer Eigenschaftswerte auf der Seite **Properties** (Eigenschaften):
 
     :::image type="content" source="media/iot-central-monitor-thermostat/update-properties.png" alt-text="Aktualisieren der Geräteeigenschaften":::
 

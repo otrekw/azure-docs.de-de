@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 3/22/2021
+ms.date: 06/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 41f6c8e260968eacd04249b3f887d4865907df0d
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 2fd0ce34d79ac168acc87ae5b425527c256816de
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104879648"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111594239"
 ---
 [Referenzdokumentation](/javascript/api/@azure/arm-cognitiveservices/) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [Paket (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [Beispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -21,6 +21,7 @@ ms.locfileid: "104879648"
 
 * Ein gültiges Azure-Abonnement: [Erstellen Sie ein kostenloses Abonnement](https://azure.microsoft.com/free/).
 * Die aktuelle Version von [Node.js](https://nodejs.org/)
+* [!INCLUDE [terms-azure-portal](./terms-azure-portal.md)]
 
 [!INCLUDE [Create a service principal](./create-service-principal.md)]
 
@@ -102,6 +103,8 @@ Die folgende Funktion löscht die angegebene Ressource aus der jeweiligen Ressou
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/azure_management_service/create_delete_resource.js?name=snippet_delete)]
 
+Wenn Sie eine gelöschte Ressource wiederherstellen müssen, finden Sie weitere Informationen unter [Wiederherstellen gelöschter Cognitive Services-Ressourcen](../../manage-resources.md).
+
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
 Fügen Sie am Ende Ihres Skripts den folgenden Code hinzu, um die `quickstart`-Hauptfunktion mit Fehlerbehandlung aufzurufen.
@@ -120,5 +123,5 @@ node index.js
 * Eine Liste der verschiedenen Kategorien in Cognitive Services finden Sie unter **[Was ist Azure Cognitive Services?](../../what-are-cognitive-services.md)** .
 * Eine Liste der natürlichen Sprachen, die von Cognitive Services unterstützt werden, finden Sie unter **[Unterstützung für natürliche Sprachen in Azure Cognitive Services](../../language-support.md)** .
 * Informationen zur lokalen Verwendung von Cognitive Services finden Sie unter **[Azure Cognitive Services-Container](../../cognitive-services-container-support.md)** .
-* Siehe **[ Kosten für Cognitive Services planen und verwalten,](../../plan-manage-costs.md)** um die Kosten für die Verwendung von Cognitive Services abzuschätzen
+* Informationen zum Schätzen der Kosten für die Verwendung von Cognitive Services finden Sie unter **[Planen und Verwalten von Kosten für Azure Cognitive Services](../../plan-manage-costs.md)** .
 * Weitere Informationen zum Management SDK finden Sie in der **[Azure-Verwaltungs-SDK-Referenz Dokumentation](/javascript/api/@azure/arm-cognitiveservices/)** .

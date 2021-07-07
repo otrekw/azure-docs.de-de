@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cf6553cd7c59febd19f9654e31188f127b8eb065
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 3fd6aa705a2220483534761c185ca7cac01e148e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276755"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110093608"
 ---
 # <a name="teams-interoperability"></a>Teams-Interoperabilität
 
@@ -22,6 +22,12 @@ ms.locfileid: "106276755"
 
 > [!IMPORTANT]
 > Um die [Interoperabilität von Teams-Mandanten](../concepts/teams-interop.md) zu aktivieren/deaktivieren, füllen Sie [dieses Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u) aus.
+
+> [!NOTE]
+> Die Interoperabilität zwischen Azure Communication Services und Microsoft Teams ermöglicht Ihren Anwendungen und Benutzern, an Teams-Anrufen, -Besprechungen und -Chats teilzunehmen. Sie sind dafür verantwortlich, dass die Benutzer Ihrer Anwendung benachrichtigt werden, wenn die Aufzeichnung oder Transkription in einem Teams-Anruf oder einer Teams-Besprechung aktiviert ist. Microsoft gibt Ihnen über die Azure Communication Services-API einen Hinweis, dass die Aufzeichnung oder Transkription begonnen hat. Sie müssen dies Ihren Benutzern auf der Benutzeroberfläche Ihrer Anwendung in Echtzeit mitteilen. Sie erklären sich damit einverstanden, Microsoft für alle Kosten und Schäden freizustellen, die aufgrund der Nichteinhaltung dieser Verpflichtung durch Sie entstehen.
+
+> [!NOTE]
+> Die VoIP- und Chat-Nutzung wird nur dann über Ihre Azure-Ressource abgerechnet, wenn Sie Azure-APIs und -SDKs verwenden. Teams-Clients, die mit Azure Communication Services-Anwendungen interagieren, sind kostenlos.
 
 Azure Communication Services kann dazu verwendet werden, benutzerdefinierte Besprechungsumgebungen zu erstellen, die mit Microsoft Teams interagieren. Benutzer Ihrer Communication Services-Lösung(en) können mit den Teams-Teilnehmern über Sprache, Video, Chat und Bildschirmfreigabe interagieren.
 
@@ -52,3 +58,8 @@ Azure Communication Services-Interoperabilität ist derzeit nicht mit Teams-Be
 
 > [!div class="nextstepaction"]
 > [Beitreten mit einer Telefonie-App zu einer Teams-Besprechung](../quickstarts/voice-video-calling/get-started-teams-interop.md)
+
+Weitere Informationen finden Sie in den folgenden Artikeln:
+
+- Informationen zur [UI-Bibliothek](./ui-library/ui-library-overview.md)
+- Erfahren Sie mehr über [die Möglichkeiten der UI-Bibliothek](./ui-library/ui-library-use-cases.md)

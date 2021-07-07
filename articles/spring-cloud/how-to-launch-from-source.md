@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 8497e095d4caf6213bbb838b2033845ee65e3834
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 85df46ef761b51c1aac298b3e4616dede051a2a4
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134913"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119799"
 ---
 # <a name="how-to-launch-your-spring-cloud-application-from-source-code"></a>Starten Ihrer Spring Cloud-Anwendung aus dem Quellcode
 
@@ -78,8 +78,8 @@ Die Bereitstellung der Dienstinstanz dauert ungefähr fünf Minuten.
 Legen Sie den Standardnamen für die Ressourcengruppe und für die Azure Spring Cloud-Instanz mithilfe der folgenden Befehle fest:
 
 ```azurecli
-az configure --defaults group=<service group name>
-az configure --defaults spring-cloud=<service instance name>
+az config set defaults.group=<service group name>
+az config set defaults.spring-cloud=<service instance name>
 ```
 
 ## <a name="create-the-azure-spring-cloud-application"></a>Erstellen der Azure Spring Cloud-Anwendung

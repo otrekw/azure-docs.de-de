@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 3873a15c6a56d6ee4944cc596f447c966c275950
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a44cbbf110ac2789b03b411f074f068451c70e2c
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313554"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109858027"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Schnellstart: Clientbibliothek zur Gesichtserkennung für JavaScript
 
@@ -213,10 +213,10 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Gesichtserkennungs-Clientbibliothek für JavaScript für einfache Gesichtserkennungsaufgaben verwenden. In der Referenzdokumentation finden Sie weitere Informationen zur Bibliothek.
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Gesichtserkennungs-Clientbibliothek für JavaScript für einfache Gesichtserkennungsaufgaben verwenden. Als Nächstes erfahren Sie mehr über die verschiedenen Gesichtserkennungsmodelle und darüber, wie Sie das richtige Modell für Ihren Anwendungsfall angeben.
 
 > [!div class="nextstepaction"]
-> [Referenz zur Gesichtserkennungs-API (JavaScript)](/javascript/api/@azure/cognitiveservices-face/)
+> [Angeben einer Gesichtserkennungsmodellversion](../../Face-API-How-to-Topics/specify-detection-model.md)
 
 * [Was ist der Gesichtserkennungsdienst?](../../overview.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/Face/sdk_quickstart.js).

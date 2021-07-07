@@ -1,7 +1,7 @@
 ---
-title: Livestreaming mit Media Services per .NET Core
+title: Livestreaming mit Media Services unter Verwendung von .NET 5.0
 titleSuffix: Azure Media Services
-description: Es wird beschrieben, wie Sie Liveereignisse mit .NET Core streamen.
+description: Hier finden Sie eine Anleitung zum Livestreaming mit .NET 5.0.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -15,18 +15,18 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 06/13/2019
 ms.author: inhenkel
-ms.openlocfilehash: 504378dac7d868dd8c3fcdb5be778aa25c9766bf
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: d471431da7cc738f9ef908897ccab34343cc4c4b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713196"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470427"
 ---
-# <a name="tutorial-stream-live-with-media-services-by-using-net-core"></a>Tutorial: Livestreaming mit Media Services per .NET Core
+# <a name="tutorial-stream-live-with-media-services-by-using-net-50"></a>Tutorial: Livestreaming mit Media Services unter Verwendung von .NET 5.0
 
 In Azure Media Services sind [Liveereignisse](/rest/api/media/liveevents) für die Verarbeitung von Livestreaminginhalten zuständig. Bei einem Liveereignis wird ein Eingabeendpunkt (Erfassungs-URL) bereitgestellt, den Sie dann für einen Liveencoder bereitstellen. Das Liveereignis empfängt Eingabestreams aus dem Liveencoder und stellt diese zum Streamen über einen oder mehrere [Streamingendpunkte](/rest/api/media/streamingendpoints) zur Verfügung. Zudem stellen Liveereignisse einen Vorschauendpunkt (Vorschau-URL) bereit, mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie diesen weiter verarbeiten und übermitteln. 
 
-In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von .NET Core ein Liveereignis vom Typ *Pass-Through* erstellen. In diesem Lernprogramm lernen Sie Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von .NET 5.0 ein Liveereignis vom Typ *Passthrough* erstellen. In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Herunterladen einer Beispiel-App
@@ -43,7 +43,8 @@ In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von .NET Core ein Live
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Installieren Sie Visual Studio Code oder Visual Studio.
+- Installieren Sie [Visual Studio Code für Windows/macOS/Linux](https://code.visualstudio.com/) oder [Visual Studio 2019 für Windows oder Mac](https://visualstudio.microsoft.com/).
+- Installieren Sie das [.NET 5.0 SDK](https://dotnet.microsoft.com/download).
 - [Erstellen Sie ein Media Services-Konto.](./account-create-how-to.md) Wichtig: Kopieren Sie die Details für den **API-Zugriff** im JSON-Format, oder speichern Sie die Werte, die zum Herstellen einer Verbindung mit dem Media Services-Konto benötigt werden, im *ENV*-Dateiformat (wie in diesem Beispiel).
 - Führen Sie die Schritte unter [Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie müssen die Anmeldeinformationen für den Zugriff auf die API in diesem Beispiel verwenden oder im *ENV*-Dateiformat eingeben. 
 
@@ -80,16 +81,25 @@ Die *GITIGNORE*-Datei ist bereits so konfiguriert, dass sie nicht in Ihrem gefor
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>Untersuchen des Codes für Livestreaming
 
-In diesem Abschnitt werden die Funktionen untersucht, die in der Datei [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) des *LiveEventWithDVR*-Projekts definiert werden.
+In diesem Abschnitt werden Funktionen untersucht, die in den Dateien [Authentication.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Common_Utils/Authentication.cs) und [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) des Projekts *LiveEventWithDVR* definiert werden.
 
 Das Beispiel erstellt für jede Ressource ein eindeutiges Suffix, damit keine Namenskonflikte auftreten, wenn Sie das Beispiel ohne Bereinigung der Ressourcen mehrmals ausführen.
 
 
 ### <a name="start-using-media-services-apis-with-the-net-sdk"></a>Beginnen mit der Verwendung von Media Services-APIs mit dem .NET SDK
 
-Um mit der Verwendung von Media Services-APIs in .NET zu beginnen, müssen Sie ein `AzureMediaServicesClient`-Objekt erstellen. Zum Erstellen des Objekts müssen Sie Anmeldeinformationen für den Client bereitstellen, damit dieser per Azure Active Directory eine Verbindung mit Azure herstellen kann. Im Code, den Sie am Anfang des Artikels geklont haben, wird mit der Funktion `GetCredentialsAsync` das Objekt `ServiceClientCredentials` erstellt. Dies erfolgt basierend auf den Anmeldeinformationen in der lokalen Konfigurationsdatei (*appsettings.json*) oder über die Datei *.env* mit den Umgebungsvariablen im Stammverzeichnis des Repositorys.
+Um mit der Verwendung von Media Services-APIs in .NET zu beginnen, müssen Sie ein `AzureMediaServicesClient`-Objekt erstellen. Zum Erstellen des Objekts müssen Sie Anmeldeinformationen für den Client bereitstellen, damit dieser per Azure Active Directory eine Verbindung mit Azure herstellen kann. Eine weitere Option ist die Verwendung der interaktiven Authentifizierung. Diese wird in `GetCredentialsInteractiveAuthAsync` implementiert.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateMediaServicesClient)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#CreateMediaServicesClientAsync)]
+
+Im Code, den Sie am Anfang des Artikels geklont haben, wird mit der Funktion `GetCredentialsAsync` das Objekt `ServiceClientCredentials` erstellt. Dies erfolgt basierend auf den Anmeldeinformationen in der lokalen Konfigurationsdatei (*appsettings.json*) oder über die Datei *.env* mit den Umgebungsvariablen im Stammverzeichnis des Repositorys.
+
+[!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#GetCredentialsAsync)]
+
+Bei der interaktiven Authentifizierung wird durch die Funktion `GetCredentialsInteractiveAuthAsync` das Objekt `ServiceClientCredentials` erstellt – basierend auf einer interaktiven Authentifizierung und den Verbindungsparametern, die in der lokalen Konfigurationsdatei (*appsettings.json*) oder über die Umgebungsvariablendatei (ENV-Datei) im Stammverzeichnis des Repositorys angegeben sind. In diesem Fall sind „AADCLIENTID“ und „AADSECRET“ in der Konfigurations- oder Umgebungsvariablendatei nicht erforderlich.
+
+[!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#GetCredentialsInteractiveAuthAsync)]
+
 
 ### <a name="create-a-live-event"></a>Erstellen eines Liveereignisses
 
