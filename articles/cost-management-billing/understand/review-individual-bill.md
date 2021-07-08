@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 10/26/2020
+ms.date: 05/17/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ef04c964f0037fcf36fe376084df75ffa0034957
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 013a59c703d5275278e905314357f32acc211f93
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027559"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067760"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>Tutorial: Überprüfen Ihrer individuellen Rechnung für das Azure-Abonnement
 
@@ -122,13 +122,13 @@ Die in der Kostenanalyse angezeigten Kosten müssen exakt den *Nutzungsgebühren
 
 ![Nutzungsgebühren (Rechnung)](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external-marketplace-services-are-billed-separately"></a>Separate Abrechnung der externen Marketplace-Dienste
+## <a name="external-marketplace-services"></a>Externe Marketplace-Dienste
 
 <a name="external"></a>
 
 Externe Dienste oder Marketplace-Gebühren gelten für Ressourcen, die von Drittanbietern erstellt wurden. Diese Ressourcen können über den Azure Marketplace genutzt werden. Barracuda Firewall ist beispielsweise eine von einem Drittanbieter angebotene Azure Marketplace-Ressource. Alle Gebühren für die Firewall und die entsprechenden Verbrauchseinheiten werden als Gebühren für externe Dienste angezeigt.
 
-Gebühren für externe Dienste werden separat in Rechnung gestellt. Die Gebühren werden nicht in Ihrer Azure-Rechnung aufgeführt.
+Gebühren für externe Dienste sind in einer separaten Rechnung angegeben.
 
 ### <a name="resources-are-billed-by-usage-meters"></a>Abrechnung von Ressourcen nach Nutzungsverbrauchseinheiten
 

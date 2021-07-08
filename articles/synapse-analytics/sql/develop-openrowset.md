@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: be412f4dd2413cfe5562f895489aed10b9a9a80f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1a39b963fa88866e02e9813c68d1b6504d3e98c7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378682"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956525"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -90,7 +90,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 <bulk_options> ::=  
 [ , FIELDTERMINATOR = 'char' ]    
 [ , ROWTERMINATOR = 'char' ] 
-[ , ESCAPE_CHAR = 'char' ] 
+[ , ESCAPECHAR = 'char' ] 
 [ , FIRSTROW = 'first_row' ]     
 [ , FIELDQUOTE = 'quote_characters' ]
 [ , DATA_COMPRESSION = 'data_compression_method' ]
@@ -189,11 +189,11 @@ ROWTERMINATOR ='row_terminator'`
 
 Dient zum Angeben des zu verwendenden Zeilenabschlusszeichens. Wenn kein Zeilenabschlusszeichen angegeben wird, wird eines der Standardabschlusszeichen verwendet. Standardabschlusszeichen für „PARSER_VERSION = '1.0'“ sind „\r\n“, „\n“ und „\r“. Standardabschlusszeichen für „PARSER_VERSION = '2.0'“ sind „\r\n“ und „\n“.
 
-ESCAPE_CHAR = 'char'
+ESCAPECHAR = 'char'
 
 Dient zum Angeben des Zeichens in der Datei, das als Escapezeichen für sich selbst und für alle Trennzeichenwerte in der Datei fungiert. Wenn auf das Escapezeichen ein Wert folgt, bei dem es sich nicht um das Escapezeichen selbst oder um einen der Trennzeichenwerte handelt, wird das Escapezeichen beim Lesen des Werts gelöscht. 
 
-Der ESCAPE_CHAR-Parameter wird unabhängig davon angewendet, ob FIELDQUOTE aktiviert ist. Er fungiert nicht als Escapezeichen für das Zitierzeichen. Das Anführungszeichen muss mit einem weiteren Anführungszeichen als Escapezeichen versehen werden. Anführungszeichen können nur in Spaltenwerten enthalten sein, wenn der Wert mit Anführungszeichen gekapselt ist.
+Der Parameter ESCAPECHAR wird unabhängig davon angewendet, ob FIELDQUOTE aktiviert ist. Er fungiert nicht als Escapezeichen für das Zitierzeichen. Das Anführungszeichen muss mit einem weiteren Anführungszeichen als Escapezeichen versehen werden. Anführungszeichen können nur in Spaltenwerten enthalten sein, wenn der Wert mit Anführungszeichen gekapselt ist.
 
 FIRSTROW = 'first_row' 
 
@@ -420,5 +420,4 @@ AS [r]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie `OPENROWSET` zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)-, [DELTA LAKE](query-delta-lake-format.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Machen Sie sich mit den [bewährten Methoden](best-practices-sql-on-demand.md) vertraut, um eine optimale Leistung zu erzielen. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.
-
+Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie `OPENROWSET` zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)-, [DELTA LAKE](query-delta-lake-format.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Machen Sie sich mit den [bewährten Methoden](./best-practices-serverless-sql-pool.md) vertraut, um eine optimale Leistung zu erzielen. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.

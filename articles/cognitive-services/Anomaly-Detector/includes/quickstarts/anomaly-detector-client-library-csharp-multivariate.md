@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 632352e707927cccfb9ccc541ed4b9bd38e2c9c6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 8f8b51607d9b7b97560393b904195646552dbeb6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108333553"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110164314"
 ---
-Hier finden Sie Informationen zu den ersten Schritten mit der multivariaten Clientbibliothek für die Anomalieerkennung für .NET. Führen Sie die hier angegebenen Schritte aus, um das Paket zu installieren und mit der Verwendung der bereitgestellten Algorithmen zu beginnen. Die neuen APIs für die multivariate Anomalieerkennung ermöglichen Entwicklern die einfache Integration fortschrittlicher KI zur Erkennung von Anomalien in Metrikgruppen ganz ohne Machine Learning-Kenntnisse oder gekennzeichnete Daten. Abhängigkeiten und Interkorrelationen zwischen verschiedenen Signalen werden automatisch als Schlüsselfaktoren gewertet. Dadurch können Sie Ihre komplexen Systeme leichter proaktiv vor Fehlern schützen.
+Hier finden Sie Informationen zu den ersten Schritten mit der multivariaten Clientbibliothek für die Anomalieerkennung für C#. Führen Sie die hier angegebenen Schritte aus, um das Paket zu installieren und mit der Verwendung der bereitgestellten Algorithmen zu beginnen. Die neuen APIs für die multivariate Anomalieerkennung ermöglichen Entwicklern die einfache Integration fortschrittlicher KI zur Erkennung von Anomalien in Metrikgruppen ganz ohne Machine Learning-Kenntnisse oder gekennzeichnete Daten. Abhängigkeiten und Interkorrelationen zwischen verschiedenen Signalen werden automatisch als Schlüsselfaktoren gewertet. Dadurch können Sie Ihre komplexen Systeme leichter proaktiv vor Fehlern schützen.
 
-Die Clientbibliothek für die multivariate Anomalieerkennung für .NET kann für Folgendes verwendet werden:
+Die multivariate Clientbibliothek für die Anomalieerkennung für C# kann für Folgendes verwendet werden:
 
 * Erkennen von Anomalien auf Systemebene in einer Gruppe von Zeitreihen
 * Betrachten sämtlicher Signale, um ein Problem zu erkennen, wenn die Betrachtung einzelner Zeitreihen nicht ausreicht
@@ -88,6 +88,9 @@ using NUnit.Framework;
 
 Erstellen Sie in der Methode `main()` der Anwendung Variablen für den Azure-Endpunkt Ihrer Ressource sowie für Ihren API-Schlüssel und für eine benutzerdefinierte Datenquelle.
 
+> [!NOTE]
+> Sie haben stets die Möglichkeit, einen von zwei Schlüsseln zu verwenden. Dies ermöglicht eine sichere Schlüsselrotation. Verwenden Sie für diesen Schnellstart den ersten Schlüssel. 
+
 ```csharp
 string endpoint = "YOUR_API_KEY";
 string apiKey =  "YOUR_ENDPOINT";
@@ -96,7 +99,7 @@ string datasource = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS
 
 Wenn Sie die multivariaten APIs für die Anomalieerkennung verwenden möchten, müssen Sie zunächst Ihre eigenen Modelle trainieren. Bei den Trainingsdaten handelt es sich um mehrere Zeitreihen, die die folgenden Anforderungen erfüllen:
 
-Bei den Zeitreihen muss es sich jeweils um eine CSV-Datei mit genau zwei Spalten in der Headerzeile handeln: „timestamp“ und „value“ (in Kleinbuchstaben). Die timestamp-Werte müssen ISO 8601 entsprechen. Für „value“ können ganze Zahlen oder Dezimalzahlen mit einer beliebigen Anzahl von Dezimalstellen verwendet werden. Beispiel:
+Bei den Zeitreihen muss es sich jeweils um eine CSV-Datei mit genau zwei Spalten in der Headerzeile handeln: „timestamp“ und „value“ (in Kleinbuchstaben). Die „timestamp“-Werte müssen ISO 8601 entsprechen. Für „value“ können ganze Zahlen oder Dezimalzahlen mit einer beliebigen Anzahl von Dezimalstellen verwendet werden. Beispiel:
 
 |timestamp | value|
 |-------|-------|
@@ -229,6 +232,9 @@ private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, st
 
 ## <a name="export-model"></a>Exportieren des Modells
 
+> [!NOTE]
+> Der Exportbefehl dient dazu, multivariate Modelle der Anomalieerkennung in einer containerisierten Umgebung ausführen zu können. Dies wird derzeit nicht für multivariate Modelle unterstützt, aber in Zukunft unterstützt werden.
+
 Erstellen Sie zum Exportieren des zuvor trainierten Modells eine private asynchrone Aufgabe (`private async Task`) namens `exportAysnc`. Sie verwenden `ExportModelAsync` und übergeben die Modell-ID des Modells, das Sie exportieren möchten.
 
 ```csharp
@@ -348,7 +354,14 @@ Führen Sie die Anwendung mit dem Befehl `dotnet run` aus dem Anwendungsverzeich
 ```dotnetcli
 dotnet run
 ```
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
+
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure-Befehlszeilenschnittstelle](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Bewährte Methoden für die multivariate Anomalieerkennung mit Zeitreihen](../../concepts/best-practices-multivariate.md)
+* [Was ist die Anomalieerkennungs-API?](../../overview-multivariate.md)
+* [Bewährte Methoden bei der Verwendung der Anomalieerkennungs-API](../../concepts/best-practices-multivariate.md) 

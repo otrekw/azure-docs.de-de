@@ -5,18 +5,18 @@ services: container-service
 ms.topic: quickstart
 ms.date: 03/15/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2b61c791390200beac4a18422a4de58dd94fa711
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f96ecd00b72f1853fe25b497283ea48ebdf55d7
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492896"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747795"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters mit PowerShell
 
 Azure Kubernetes Service (AKS) ist ein verwalteter Kubernetes-Dienst, mit dem Sie schnell Cluster bereitstellen und verwalten können. In diesem Schnellstart führen Sie folgende Schritte aus:
-* Bereitstellen eines AKS-Clusters mithilfe von PowerShell 
-* Ausführen einer Anwendung mit mehreren Containern im Cluster, die ein Web-Front-End und eine Redis-Instanz enthält 
+* Bereitstellen eines AKS-Clusters mithilfe von PowerShell
+* Ausführen einer Anwendung mit mehreren Containern im Cluster, die ein Web-Front-End und eine Redis-Instanz enthält
 * Überwachen der Integrität des Clusters und der Pods, in denen Ihre Anwendung ausgeführt wird
 
 Weitere Informationen zum Erstellen eines Windows Server-Knotenpools finden Sie unter [Erstellen eines AKS-Clusters, der Windows Server-Container unterstützt][windows-container-powershell].
@@ -41,9 +41,9 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. Wenn Sie eine Ressourcengruppe erstellen, werden Sie zur Angabe eines Speicherorts aufgefordert. Bei diesem Speicherort handelt es sich um Folgendes: 
+Eine [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. Wenn Sie eine Ressourcengruppe erstellen, werden Sie zur Angabe eines Speicherorts aufgefordert. Bei diesem Speicherort handelt es sich um Folgendes:
 * Speicherort der Metadaten der Ressourcengruppe
-* Ausführungsort für Ihre Ressourcen in Azure, sofern Sie im Rahmen der Ressourcenerstellung keine andere Region angeben 
+* Ausführungsort für Ihre Ressourcen in Azure, sofern Sie im Rahmen der Ressourcenerstellung keine andere Region angeben
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen **myResourceGroup** in der Region **eastus** erstellt.
 
@@ -65,12 +65,12 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-aks-cluster"></a>Erstellen eines ACS-Clusters
 
-1. Verwenden Sie das Befehlszeilenprogramm `ssh-keygen`, um ein SSH-Schlüsselpaar zu generieren. 
+1. Verwenden Sie das Befehlszeilenprogramm `ssh-keygen`, um ein SSH-Schlüsselpaar zu generieren.
     * Weitere Informationen finden Sie unter [Kurzanleitung: Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../virtual-machines/linux/mac-create-ssh-keys.md).
 
-1. Verwenden Sie das Cmdlet [New-AzAks][new-azaks], um einen AKS-Cluster zu erstellen. Azure Monitor für Container ist standardmäßig aktiviert.
+1. Verwenden Sie das Cmdlet [New-AzAksCluster][new-azakscluster], um einen AKS-Cluster zu erstellen. Azure Monitor für Container ist standardmäßig aktiviert.
 
-    Im folgenden Beispiel wird ein Cluster mit dem Namen **myAKSCluster** mit einem Knoten erstellt. 
+    Im folgenden Beispiel wird ein Cluster mit dem Namen **myAKSCluster** mit einem Knoten erstellt.
 
     ```azurepowershell-interactive
     New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
@@ -83,7 +83,7 @@ Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werde
 
 ## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
-Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeilenclient [kubectl][kubectl]. `kubectl` ist bei Verwendung von Azure Cloud Shell bereits installiert. 
+Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeilenclient [kubectl][kubectl]. `kubectl` ist bei Verwendung von Azure Cloud Shell bereits installiert.
 
 1. Installieren Sie `kubectl` mithilfe des Cmdlets `Install-AzAksKubectl` lokal:
 
@@ -112,11 +112,11 @@ Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeil
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Eine [Kubernetes-Manifestdatei][kubernetes-deployment] definiert den gewünschten Zustand (Desired State) eines Clusters – also beispielsweise, welche Containerimages ausgeführt werden sollen. 
+Eine [Kubernetes-Manifestdatei][kubernetes-deployment] definiert den gewünschten Zustand (Desired State) eines Clusters – also beispielsweise, welche Containerimages ausgeführt werden sollen.
 
 In dieser Schnellstartanleitung verwenden Sie ein Manifest, um alle Objekte zu erstellen, die zum Ausführen der [Azure Vote-Anwendung][azure-vote-app] benötigt werden. Dieses Manifest umfasst zwei [Kubernetes-Bereitstellungen][kubernetes-deployment]:
 * Die Azure Vote-Python-Beispielanwendungen
-* Eine Redis-Instanz 
+* Eine Redis-Instanz
 
 Darüber hinaus werden zwei [Kubernetes-Dienste][kubernetes-service] erstellt:
 * Ein interner Dienst für die Redis-Instanz
@@ -256,7 +256,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ![In Azure Kubernetes Service bereitgestellte Abstimmungs-App](./media/kubernetes-walkthrough-powershell/voting-app-deployed-in-azure-kubernetes-service.png)
 
-Zeigen Sie die von Azure Monitor für Container erfassten Integritätsmetriken der Clusterknoten und Pods im Azure-Portal an. 
+Zeigen Sie die von Azure Monitor für Container erfassten Integritätsmetriken der Clusterknoten und Pods im Azure-Portal an.
 
 ## <a name="delete-the-cluster"></a>Löschen des Clusters
 
@@ -268,7 +268,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 > [!NOTE]
 > Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Schritte zum Entfernen des Dienstprinzipals finden Sie unter den [Überlegungen zum AKS-Dienstprinzipal und dessen Löschung][sp-delete].
-> 
+>
 > Wenn Sie eine verwaltete Identität verwendet haben, wird die Identität von der Plattform verwaltet und muss nicht entfernt werden.
 
 ## <a name="get-the-code"></a>Abrufen des Codes
@@ -296,7 +296,7 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [install-azure-powershell]: /powershell/azure/install-az-ps
 [new-azresourcegroup]: /powershell/module/az.resources/new-azresourcegroup
-[new-azaks]: /powershell/module/az.aks/new-azaks
+[new-azakscluster]: /powershell/module/az.aks/new-azakscluster
 [import-azakscredential]: /powershell/module/az.aks/import-azakscredential
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services

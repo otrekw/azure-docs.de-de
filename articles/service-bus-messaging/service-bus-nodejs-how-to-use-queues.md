@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: d2c861757b72f630f88d62ba50723ed1b6fc25ed
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fb84dd12dd8e7a5b60d77e7a4895ae5b5d67cde6
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462350"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652270"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Senden und Empfangen von Nachrichten für Azure Service Bus-Warteschlangen (JavaScript)
 In diesem Tutorial erfahren Sie, wie Sie das Paket [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) in einem JavaScript-Programm verwenden, um Nachrichten an eine Service Bus-Warteschlange zu senden und daraus zu empfangen.
@@ -37,7 +37,7 @@ npm install @azure/service-bus
 Im folgenden Beispielcode wird das Senden einer Nachricht an eine Warteschlange veranschaulicht.
 
 1. Öffnen Sie Ihren bevorzugten Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/).
-2. Erstellen Sie eine Datei namens `send.js`, und fügen Sie den folgenden Code ein. Mit diesem Code wird eine Nachricht an Ihre Warteschlange gesendet. Die Nachricht setzt sich aus einer Bezeichnung (Scientist) und Text (Einstein) zusammen.
+2. Erstellen Sie eine Datei namens `send.js`, und fügen Sie den folgenden Code ein. Mit diesem Code werden die Namen von Wissenschaftlern als Nachricht an Ihre Warteschlange gesendet.
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus");
@@ -208,6 +208,6 @@ Wählen Sie auf der Seite **Übersicht** die Warteschlange aus, um zur Seite **S
 Weitere Informationen finden Sie in der folgenden Dokumentation bzw. unter den folgenden Beispielen: 
 
 - [Azure Service Bus-Clientbibliothek für JavaScript](https://www.npmjs.com/package/@azure/service-bus)
-- [JavaScript samples](/samples/azure/azure-sdk-for-js/service-bus-javascript/) (JavaScript-Beispiele)
-- [TypeScript-Beispiele](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [JavaScript samples](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/v7/javascript) (JavaScript-Beispiele)
+- [TypeScript-Beispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/v7/typescript)
 - [API-Referenzdokumentation](/javascript/api/overview/azure/service-bus)

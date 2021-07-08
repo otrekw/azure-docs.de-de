@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 47b4f36aec9a906317a9704a7d73bf66385d9e88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a095cee6b2af93358b0e76c39cfc0c04ad454fa
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552115"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408045"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Tutorial: Anmelden von Benutzern und Aufrufen einer geschützten API über eine Blazor WebAssembly-App
 
@@ -40,7 +40,7 @@ Es gibt auch ein [Tutorial für Blazor Server](tutorial-blazor-server.md).
 Alle Apps, die Azure Active Directory (Azure AD) für die Authentifizierung verwenden, müssen bei Azure AD registriert werden. Folgen Sie den Anweisungen unter [Registrieren einer Anwendung](quickstart-register-app.md) mit den folgenden Spezifikationen:
 
 - Wählen Sie für **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
-- Übernehmen Sie in der Dropdownliste **Umleitungs-URI** den Eintrag **Web**, und geben Sie `https://localhost:5001/authentication/login-callback` ein. Der Standardport für eine App, die auf Kestrel ausgeführt wird, ist 5001. Wenn die App an einem anderen Port verfügbar ist, geben Sie anstelle von `5001` die entsprechende Portnummer an.
+- Legen Sie im Dropdownmenü **Umleitungs-URI** die Auswahl auf **Single-Page-Anwendung (SPA)** fest, und geben Sie `https://localhost:5001/authentication/login-callback` ein. Der Standardport für eine App, die auf Kestrel ausgeführt wird, ist 5001. Wenn die App an einem anderen Port verfügbar ist, geben Sie anstelle von `5001` die entsprechende Portnummer an.
 
 Wählen Sie nach der Registrierung unter **Verwalten** die Optionen **Authentifizierung** > **Implizite Genehmigung und Hybridflows** aus. Wählen Sie **Zugriffstoken** und **ID-Token** und dann **Speichern** aus.
 

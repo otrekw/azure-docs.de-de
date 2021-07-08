@@ -5,12 +5,12 @@ ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 9371ebfbb89e30b53183ad364514b5bba904c56b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0f999b5c3a1efcf151876e3f2c1e285260edb8a3
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761559"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535062"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Schnellstart: Definieren und Zuweisen einer Blaupause im Portal
 
@@ -63,11 +63,11 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
    1. Ändern Sie **Typ** in **Integriert**. Geben Sie unter **Suche** den Suchbegriff **tag** ein.
 
-   1. Ändern Sie unter **Suche** den Fokus, damit die Filterung ausgeführt wird. Wählen Sie **Tag und dessen Standardwert an Ressourcengruppen anfügen** aus.
+   1. Ändern Sie unter **Suche** den Fokus, damit die Filterung ausgeführt wird. Wählen Sie **Tag und zugehörigen Wert an Ressourcengruppen anfügen** aus.
 
    1. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
-1. Wählen Sie die Zeile der Richtlinienzuweisung **Tag und dessen Standardwert an Ressourcengruppen anfügen** aus.
+1. Wählen Sie die Zeile der Richtlinienzuweisung **Tag und zugehörigen Wert an Ressourcengruppen anfügen** aus.
 
 1. Das Fenster zum Bereitstellen von Parametern für das Artefakt als Teil der Blaupausendefinition wird geöffnet und ermöglicht das Festlegen der Parameter für alle Zuweisungen (statische Parameter) basierend auf dieser Blaupause (anstatt während der Zuweisung (dynamische Parameter)). In diesem Beispiel werden bei der Blaupausenzuweisung dynamische Parameter verwendet. Behalten Sie daher die Standardwerte bei, und wählen Sie **Abbrechen**.
 

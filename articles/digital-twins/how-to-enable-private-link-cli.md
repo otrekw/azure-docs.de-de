@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 47299467c51d128a228e4120eb8e0d0ff4deebc4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0a9b92eb4d49274c23d89674e6f97f906dc28b43
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456460"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616136"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>Aktivieren des privaten Zugriffs mit Private Link (Vorschau): Azure CLI
 
@@ -28,7 +28,7 @@ Die folgenden Schritte werden in diesem Artikel behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie einen privaten Endpunkt einrichten können, benötigen Sie eine [Azure Virtual Network-Instanz (virtuelles Netzwerk)](../virtual-network/virtual-networks-overview.md) , in dem der Endpunkt bereitgestellt werden kann. Wenn Sie noch nicht über ein virtuelles Netzwerk verfügen, können Sie einen [Schnellstart](../virtual-network/quick-create-portal.md) für Azure Virtual Network durchlaufen, um eines einzurichten.
+Bevor Sie einen privaten Endpunkt einrichten können, benötigen Sie eine [Azure Virtual Network-Instanz (virtuelles Netzwerk)](../virtual-network/virtual-networks-overview.md) , in dem der Endpunkt bereitgestellt werden kann. Wenn Sie noch nicht über ein virtuelles Netzwerk verfügen, können Sie einen [Schnellstart für Azure Virtual Network](../virtual-network/quick-create-portal.md) durchlaufen, um eines einzurichten.
 
 ## <a name="manage-private-endpoints-for-an-azure-digital-twins-instance"></a>Verwalten von privaten Endpunkten für eine Azure Digital Twins-Instanz 
 

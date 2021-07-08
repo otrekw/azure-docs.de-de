@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Routen zu gemeinsamen Diensten mithilfe einer ARM-Vorlage'
 titleSuffix: Azure Virtual WAN
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe einer ARM-Vorlage (Azure Resource Manager) Routen für den Zugriff auf ein VNet für gemeinsame Dienste mit einer Workload einrichten, auf die alle VNETs und Branches zugreifen können.
+description: Erfahren Sie, wie Sie mithilfe einer ARM-Vorlage (Azure Resource Manager) Routen für den Zugriff auf ein VNet für gemeinsame Dienste mit einer Workload einrichten, auf die alle VNets und Branches zugreifen können.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: c954db5c75f1cf32833ec5ecb270ef3c4b57c10b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ff23bf626fe252547d3449cfe318c073e9cc9b6c
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110093176"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026307"
 ---
 # <a name="quickstart-route-to-shared-services-vnets-using-an-arm-template"></a>Schnellstart: Routen zu VNets für gemeinsame Dienste mithilfe einer ARM-Vorlage
 
@@ -33,7 +33,7 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 
 ## <a name="review-the-template"></a><a name="review"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templatesvirtual-wan-with-route-tables). Die Vorlage für diesen Artikel ist zu lang und kann hier nicht angezeigt werden. Die Vorlage können Sie sich in [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/virtual-wan-with-route-tables/azuredeploy.json) ansehen.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/virtual-wan-with-route-tables). Die Vorlage für diesen Artikel ist zu lang und kann hier nicht angezeigt werden. Die Vorlage können Sie sich in [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/virtual-wan-with-route-tables/azuredeploy.json) ansehen.
 
 In dieser Schnellstartanleitung erstellen Sie eine Azure Virtual WAN-Bereitstellung mit mehreren Hubs, die alle Gateways und VNET-Verbindungen umfasst. Die Liste mit den Eingabeparametern wurde absichtlich so kurz wie möglich gehalten. Das Schema für die IP-Adressierung kann geändert werden, indem die Variablen in der Vorlage modifiziert werden. Das Szenario wird im Artikel [Szenario: Routen zu VNets für gemeinsame Dienste](scenario-shared-services-vnet.md) ausführlicher erläutert.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Anmelden von Benutzern und Aufrufen von Microsoft Graph in einer Desktop-App für Universelle Windows-Plattform | Azure'
+title: 'Schnellstart: Anmelden von Benutzern und Aufrufen von Microsoft Graph in einer Windows Desktop-App | Azure'
 description: In dieser Schnellstartanleitung erfahren Sie, wie eine Windows Desktop .NET-Anwendung (XAML-Anwendung) ein Zugriffstoken abrufen und eine API aufrufen kann, die durch Microsoft Identity Platform geschützt ist.
 services: active-directory
 author: jmprieur
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: eb5bf0bc6e211d83d2de2eb8d327ee6b2d577721
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 29ec031fe462e44c1f00d383d667c45b0b16f60b
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075014"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536548"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus
 

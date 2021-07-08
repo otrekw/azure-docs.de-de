@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/19/2021
+ms.date: 06/04/2021
 ms.author: jeedes
-ms.openlocfilehash: b1b3f265d0e1fcad2953292c5227c2630c6df229
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 099ca4681dcbcc31962a56c08f5599a96c00bcb6
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649895"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112008055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>Tutorial: Azure Active Directory-Integration mit Blackboard Learn – Shibboleth
 
@@ -37,7 +37,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Blackboard Learn – Shibboleth unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Blackboard Learn – Shibboleth unterstützt **SP**-initiiertes einmaliges Anmelden.
 
 ## <a name="add-blackboard-learn---shibboleth-from-the-gallery"></a>Hinzufügen von Blackboard Learn – Shibboleth aus dem Katalog
 
@@ -63,7 +63,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines Testbenutzers für Blackboard Learn – Shibboleth](#create-blackboard-learn---shibboleth-test-user)** , um eine Entsprechung von B. Simon in Blackboard Learn – Shibboleth zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
@@ -121,15 +121,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="configure-blackboard-learn---shibboleth-sso"></a>Konfigurieren des einmaligen Anmeldens für Blackboard Learn – Shibboleth
+## <a name="configure-blackboard-learn---shibboleth-sso"></a>Konfigurieren des einmaligen Anmeldens für Blackboard Learn – Shibboleth
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Blackboard Learn – Shibboleth** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Blackboard Learn – Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Informationen zum Konfigurieren des einmaligen Anmeldens für Blackboard Learn – Shibboleth finden Sie in [diesem Dokument](https://help.blackboard.com/Learn/Administrator/SaaS/Authentication/Implement_Authentication/SAML_Authentication_Provider_Type).
 
 ### <a name="create-blackboard-learn---shibboleth-test-user"></a>Erstellen eines Testbenutzers für Blackboard Learn – Shibboleth
 
 In diesem Abschnitt erstellen Sie in Blackboard Learn – Shibboleth einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam von Blackboard Learn – Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx), um auf der Plattform von Blackboard Learn – Shibboleth Benutzer hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 

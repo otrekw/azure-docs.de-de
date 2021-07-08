@@ -1,24 +1,24 @@
 ---
-title: Programmgesteuertes Erstellen von Azure-Abonnements mit Vorschau-APIs
-description: Hier erfahren Sie, wie Sie mithilfe von Vorschauversionen der REST-API, der Azure CLI und von Azure PowerShell programmgesteuert zusätzliche Azure-Abonnements erstellen.
+title: Programmgesteuertes Erstellen von Azure-Abonnements mit Legacy-APIs
+description: Hier erfahren Sie, wie Sie mithilfe von Legacyversionen der REST-API, der Azure CLI und von Azure PowerShell programmgesteuert zusätzliche Azure-Abonnements erstellen.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 06/09/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: d3247a86795b9661196c3264c60b06e7c61d6e23
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: edf57ec72d056f58eaca624b4c91b27a82ad9daf
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877899"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902049"
 ---
-# <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Programmgesteuertes Erstellen von Azure-Abonnements mit Vorschau-APIs
+# <a name="programmatically-create-azure-subscriptions-with-legacy-apis"></a>Programmgesteuertes Erstellen von Azure-Abonnements mit Legacy-APIs
 
-In diesem Artikel wird erläutert, wie Sie mithilfe der älteren Vorschau-API programmgesteuert Azure-Abonnements erstellen. Dieser Artikel enthält Informationen zum programmgesteuerten Erstellen von Abonnements mithilfe von Azure Resource Manager.
+In diesem Artikel wird erläutert, wie Sie mithilfe unserer Legacy-Vorschau-API programmgesteuert Azure-Abonnements erstellen. Dieser Artikel enthält Informationen zum programmgesteuerten Erstellen von Abonnements mithilfe von Azure Resource Manager.
 
 Es gibt neue Artikel für die aktuelle API-Version zur Verwendung mit verschiedenen Abonnementtypen für Azure-Vereinbarungen:
 
@@ -165,7 +165,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| Elementname  | Erforderlich | Typ   | Beschreibung                                                                                               |
+| Elementname  | Erforderlich | Typ   | BESCHREIBUNG                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Nein      | String | Der Anzeigename des Abonnements. Wenn kein Anzeigename angegeben wird, wird er auf den Namen des Angebots festgelegt, z.B. auf „Microsoft Azure Enterprise“.                                 |
 | `offerType`   | Ja      | String | Das Angebot des Abonnements. Die beiden Optionen für EA sind [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (Verwendung in der Produktion) und [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (Dev/Test, muss [mit dem EA-Portal aktiviert werden](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
@@ -183,7 +183,7 @@ Führen Sie den folgenden [New-AzSubscription](/powershell/module/az.subscriptio
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| Elementname  | Erforderlich | Typ   | Beschreibung |
+| Elementname  | Erforderlich | Typ   | BESCHREIBUNG |
 |---------------|----------|--------|----|
 | `Name` | Nein      | String | Der Anzeigename des Abonnements. Wenn kein Anzeigename angegeben wird, wird er auf den Namen des Angebots festgelegt, z. B. auf *Microsoft Azure Enterprise*. |
 | `OfferType`   | Ja      | String | Das Abonnementangebot. Die beiden Optionen für EA sind [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (Verwendung in der Produktion) und [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (Dev/Test, muss [mit dem EA-Portal aktiviert werden](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
@@ -204,7 +204,7 @@ Führen Sie den folgenden [az account create](/cli/azure/account#-ext-subscripti
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| Elementname  | Erforderlich | Typ   | Beschreibung |
+| Elementname  | Erforderlich | Typ   | BESCHREIBUNG |
 |---------------|----------|--------|------------|
 | `display-name` | Nein      | String | Der Anzeigename des Abonnements. Wenn kein Anzeigename angegeben wird, wird er auf den Namen des Angebots festgelegt, z. B. auf *Microsoft Azure Enterprise*.|
 | `offer-type`   | Ja      | String | Das Angebot des Abonnements. Die beiden Optionen für EA sind [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (Verwendung in der Produktion) und [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (Dev/Test, muss [mit dem EA-Portal aktiviert werden](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
@@ -358,7 +358,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| Elementname  | Erforderlich | Typ   | Beschreibung                                                                                               |
+| Elementname  | Erforderlich | Typ   | BESCHREIBUNG                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Ja      | String | Der Anzeigename des Abonnements.|
 | `billingProfileId`   | Ja      | String | Die ID des Abrechnungsprofils, dem die Gebühren für das Abonnement berechnet werden  |
@@ -527,7 +527,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| Elementname  | Erforderlich | Typ   | Beschreibung                                                                                               |
+| Elementname  | Erforderlich | Typ   | BESCHREIBUNG                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Ja      | String | Der Anzeigename des Abonnements.|
 | `skuId` | Ja      | String | Die SKU-ID des Azure-Plans. Verwenden Sie für Abonnements vom Typ „Microsoft Azure-Plan“ die ID *0001*. |

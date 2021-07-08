@@ -1,23 +1,23 @@
 ---
-title: Neuheiten in Windows Virtual Desktop - Azure
-description: Neue Features und Produktupdates für Windows Virtual Desktop.
+title: Neues in Azure Virtual Desktop - Azure
+description: Neue Features und Produktupdates für Azure Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 05/03/2021
+ms.date: 06/02/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: b2ab740134ab41a76bd0170eabfda2167efb678c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bd8af603e8e9d9b7a6c59004092ba2a8c59bc4e2
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740283"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753825"
 ---
-# <a name="whats-new-in-windows-virtual-desktop"></a>Neuheiten in Windows Virtual Desktop
+# <a name="whats-new-in-azure-virtual-desktop"></a>Neues in Azure Virtual Desktop
 
-Windows Virtual Desktop wird regelmäßig aktualisiert. In diesem Artikel werden Sie über Folgendes informiert:
+Azure Virtual Desktop wird regelmäßig aktualisiert. In diesem Artikel werden Sie über Folgendes informiert:
 
 - Die neuesten Updates
 - Neue Funktionen
@@ -28,7 +28,7 @@ Dieser Artikel wird monatlich aktualisiert. Kehren Sie hier oft zurück, um mit 
 
 ## <a name="client-updates"></a>Clientupdates
 
-Lesen Sie die folgenden Artikel, um sich über die Updates für unsere Clients für Windows Virtual Desktop und Remotedesktopdienste zu informieren:
+Lesen Sie die folgenden Artikel, um sich über die Updates für unsere Clients für Azure Virtual Desktop und Remotedesktopdienste zu informieren:
 
 - [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
 - [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
@@ -36,11 +36,11 @@ Lesen Sie die folgenden Artikel, um sich über die Updates für unsere Clients f
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
 
-## <a name="windows-virtual-desktop-agent-updates"></a>Updates für Windows Virtual Desktop-Agents
+## <a name="azure-virtual-desktop-agent-updates"></a>Updates für Azure Virtual Desktop-Agent
 
-Der Windows Virtual Desktop-Agent wird mindestens einmal pro Monat aktualisiert.
+Der Azure Virtual Desktop-Agent wird mindestens einmal pro Monat aktualisiert.
 
-Nachfolgend sind die Änderungen im Windows Virtual Desktop-Agent aufgeführt:
+Hier sind die Änderungen für Azure Virtual Desktop-Agent angegeben:
 
 - Version 1.0.2944.1400 für die Produktion und Version 1.0.2990.800 für alle Überprüfungshostpools: Dieses Update wurde am 27. April 2021 veröffentlicht.
 - Version 1.0.2990.800: Dieses Update wurde am 13. April 2021 veröffentlicht und umfasst die folgenden Änderungen:
@@ -48,7 +48,7 @@ Nachfolgend sind die Änderungen im Windows Virtual Desktop-Agent aufgeführt:
     - Ausnahme hinzugefügt, die verhindert, dass Sie Nicht-Windows 7-Agents auf virtuellen Windows 7-Computern installieren
     - Heartbeatdienstlogik aktualisiert
 - Version 1.0.2944.1400: Dieses Update wurde am 7. April 2021 veröffentlicht und enthält die folgenden Änderungen:
-    - Links zum Leitfaden zur Problembehandlung für Windows Virtual Desktop-Agent in den Protokollen der Ereignisanzeige für Agent-Fehler platziert
+    - Links zum Leitfaden zur Problembehandlung für Azure Virtual Desktop-Agent in den Protokollen der Ereignisanzeige für Agent-Fehler platziert
     - Zusätzliche Ausnahme hinzugefügt, um eine bessere Fehlerbehandlung zu ermöglichen
     - WVDAgentUrlTool.exe hinzugefügt. Damit können Kunden überprüfen, auf welche erforderlichen URLs sie zugreifen können.
 - Version 1.0.2866.1500: Dieses Update wurde am 26. März 2021 veröffentlicht. Damit wird ein Problem mit der Integritätsprüfung des Stapels behoben.
@@ -61,6 +61,65 @@ Nachfolgend sind die Änderungen im Windows Virtual Desktop-Agent aufgeführt:
 
 Sie sind neugierig auf die neuesten Updates für FSLogix? Informieren Sie sich über die [Neuerungen für FSLogix](/fslogix/whats-new).
 
+## <a name="may-2021"></a>Mai 2021
+
+Neuerungen im Mai 2021:
+
+### <a name="smart-card-authentication"></a>Authentifizierung mit Smartcards
+
+Die RDP-Eigenschaften (Remotedesktopprotokoll) des Schlüsselverteilungscenter-Proxys (Key Distribution Center, KDC) wurden jetzt offiziell veröffentlicht. Diese Eigenschaften ermöglichen die Kerberos-Authentifizierung für den RDP-Teil einer Azure Virtual Desktop-Sitzung. Dies umfasst auch die Authentifizierung auf Netzwerkebene ohne Kennwort. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/new-feature-smart-card-authentication-for-windows-virtual/m-p/2323226).
+
+### <a name="the-web-client-now-supports-file-transfer"></a>Webclient unterstützt jetzt die Dateiübertragung
+
+Ab der öffentlichen Vorschauversion des Webclients (Version 1.0.24.7) können Benutzer Dateien jetzt zwischen ihrer Remotesitzung und dem lokalen Computer übertragen. Wählen Sie zum Hochladen von Dateien in die Remotesitzung das Uploadsymbol aus, das sich im Menü oben auf der Webclientseite befindet. Suchen Sie zum Herunterladen von Dateien im Startmenü Ihrer Remotesitzung nach dem **Remote Desktop Virtual Drive** (Virtuelles Laufwerk des Remotedesktops). Nachdem Sie Ihr virtuelles Laufwerk geöffnet haben, können Sie Ihre Dateien einfach per Drag & Drop in den Ordner „Downloads“ ziehen. Der Browser beginnt dann mit dem Herunterladen der Dateien auf Ihren lokalen Computer.
+
+### <a name="start-vm-on-connect-support-updates"></a>Starten von virtuellen Computern bei der Verbindungsherstellung: Supportupdates
+
+Für das Starten von virtuellen Computern bei der Verbindungsherstellung (Vorschau) werden jetzt gepoolte Hostpools und die Azure Government Cloud unterstützt. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/leverage-start-vm-on-connect-for-pooled-host-pools-and-azure-gov/m-p/2349866).
+
+### <a name="latency-improvements-for-the-united-arab-emirates-region"></a>Verringerte Latenz für die Region „Vereinigte Arabische Emirate“
+
+Da wir nun auch über eine Azure-Steuerungsebene in den Vereinigten Arabischen Emiraten (VAE) verfügen, können Kunden in dieser Region mit einer Verringerung der Latenz rechnen. Weitere Informationen finden Sie in unserer [Roadmap für Azure Virtual Desktop](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop&searchterms=64545).
+
+### <a name="ending-internet-explorer-11-support"></a>Supportende für Internet Explorer 11
+
+Ab dem 30. September 2021 wird Internet Explorer 11 vom Azure Virtual Desktop-Webclient nicht mehr unterstützt. Wir empfehlen Ihnen daher, schon jetzt mit der Verwendung des [Microsoft Edge](https://www.microsoft.com/edge?form=MY01R2&OCID=MY01R2&r=1)-Browsers für Ihre Webclient- und Remotesitzungen zu beginnen. Weitere Informationen finden Sie unter der Ankündigung in [diesem Blogbeitrag](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/windows-virtual-desktop-web-client-to-end-support-for-internet/m-p/2369007).
+
+### <a name="microsoft-endpoint-manager-public-preview"></a>Öffentliche Vorschauversion von Microsoft Endpoint Manager
+
+Wir haben die öffentliche Vorschauversion für die Unterstützung von Microsoft Endpoint Manager unter Windows 10 Enterprise (mehrere Sitzungen) gestartet. Mit diesem neuen Feature können Sie Ihre Windows 10-VMs mit denselben Tools verwalten, die Sie auch für Ihre lokalen Geräte nutzen. Weitere Informationen finden Sie in unserer [Microsoft Endpoint Manager-Dokumentation](/mem/intune/fundamentals/windows-virtual-desktop-multi-session).
+
+### <a name="fslogix-agent-public-preview"></a>Öffentliche Vorschauversion des FSLogix-Agents
+
+Wir haben eine öffentliche Vorschauversion der neuesten Version des FSLogix-Agents veröffentlicht. Lesen Sie unseren [Blogbeitrag](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/public-preview-fslogix-release-2105-is-now-available-in-public/m-p/2380996/thread-id/7105), um weitere Informationen zu erhalten, und übermitteln Sie das Formular, das Sie für den Zugriff auf die Vorschauversion benötigen.
+
+### <a name="may-2021-updates-for-teams-for-azure-virtual-desktop"></a>Updates vom Mai 2021 für Teams für Azure Virtual Desktop
+
+Für diesen Updatevorgang haben wir ein Problem behoben, bei dem der Bildschirm während der Videofreigabe schwarz geblieben ist. Darüber hinaus haben wir einen Konflikt bei der Videoauflösung zwischen dem Sitzungsclient und dem Teams-Server behoben. Für Teams unter Azure Virtual Desktop sollten die Auflösung und die Bitraten nun basierend auf der Eingabe des Teams-Servers geändert werden.
+
+### <a name="azure-portal-deployment-updates"></a>Updates für die Bereitstellung im Azure-Portal
+
+Wir haben am Bereitstellungsprozess im Azure-Portal die folgenden Updates vorgenommen:
+
+- Neue Images (einschließlich GEN2) dem Dropdown-Listenfeld von „Image“ hinzugefügt, das beim Erstellen einer neuen Azure Virtual Desktop-Sitzungshost-VM angezeigt wird.
+- Sie können beim Erstellen eines Hostpools jetzt die Startdiagnose für virtuelle Computer konfigurieren.
+- Auf der Registerkarte mit den RDP-Eigenschaften des erweiterten Hostpools wurde dem RDP-Proxy eine QuickInfo hinzugefügt.
+- Informationssprechblase für den Symbolpfad hinzugefügt, die angezeigt wird, wenn eine Anwendung aus einem MSIX-Paket hinzugefügt wird.
+- Es ist nicht mehr möglich, eine verwaltete Startdiagnose mit einem nicht verwalteten Datenträger durchzuführen.
+- Vorlage für die Erstellung eines Hostpools in Azure Resource Manager aktualisiert, damit im Azure-Portal jetzt die Erstellung von Hostpools mit Marketplace-Images von Drittanbietern unterstützt werden kann.
+
+### <a name="single-sign-on-using-active-directory-federation-services-public-preview"></a>Einmaliges Anmelden mit Active Directory-Verbunddienste (AD FS): Öffentliche Vorschauversion
+
+Wir haben eine öffentliche Vorschauversion der Unterstützung des einmaligen Anmeldens (Single Sign-On, SSO) pro Hostpool für Active Directory-Verbunddienste (AD FS) gestartet. Weitere Informationen finden Sie unter [Konfigurieren des einmaligen Anmeldens für AD FS für Azure Virtual Desktop](configure-adfs-sso.md). 
+
+### <a name="enterprise-scale-support"></a>Unterstützung auf Unternehmensebene
+
+Wir haben einen aktualisierten Abschnitt des Cloud Adoption Framework veröffentlicht, um die Unterstützung auf Unternehmensebene für Azure Virtual Desktop zu ermöglichen. Weitere Informationen finden Sie unter [Unterstützung auf Unternehmensebene für den Azure Virtual Desktop-Bausatz](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone).
+
+### <a name="customer-adoption-kit"></a>Kit für Einführung beim Kunden
+
+Vor Kurzem haben wir ein Kit für die Einführung von Azure Virtual Desktop beim Kunden veröffentlicht, das Kunden und Partnern beim Einrichten von Azure Virtual Desktop für deren Kunden als Hilfe dient. Sie können das Kit [hier](https://www.microsoft.com/azure/partners/resources/customer-adoption-kit-windows-virtual-desktop) herunterladen.
+
 ## <a name="april-2021"></a>April 2021
 
 Neuerungen im April:
@@ -71,20 +130,20 @@ Sie können jetzt das Feature „VM bei Verbindung starten“ (Vorschau) im Azur
 
 ### <a name="required-url-check-tool"></a>Erforderliches URL-Überprüfungstool 
 
-Version 1.0.2944.400 des Windows Virtual Desktop-Agents enthält ein Tool, mit dem URLs überprüft werden und angezeigt wird, ob der virtuelle Computer auf die benötigten URLs zugreifen kann. Wenn der Zugriff auf erforderliche URLs möglich ist, werden diese vom Tool aufgelistet, damit Sie bei Bedarf dafür die Blockierung aufheben können. Weitere Informationen finden Sie in der [Liste mit den sicheren URLs](safe-url-list.md#required-url-check-tool).
+Version 1.0.2944.400 des Azure Virtual Desktop-Agents enthält ein Tool, mit dem URLs überprüft werden und angezeigt wird, ob der virtuelle Computer auf die benötigten URLs zugreifen kann. Wenn der Zugriff auf erforderliche URLs möglich ist, werden diese vom Tool aufgelistet, damit Sie bei Bedarf dafür die Blockierung aufheben können. Weitere Informationen finden Sie in der [Liste mit den sicheren URLs](safe-url-list.md#required-url-check-tool).
 
-### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>Updates der Azure-Portal-Benutzeroberfläche für Windows Virtual Desktop
+### <a name="updates-to-the-azure-portal-ui-for-azure-virtual-desktop"></a>Updates der Azure-Portal-Benutzeroberfläche für Azure Virtual Desktop
 
-Folgendes hat sich mit dem letzten Update der Azure-Portal-Benutzeroberfläche für Windows Virtual Desktop geändert:
+Folgendes hat sich mit dem letzten Update der Azure-Portal-Benutzeroberfläche für Azure Virtual Desktop geändert:
 
 - Es wurde ein Problem behoben, das zu einem Fehler beim Abrufen des Sitzungshosts bei aktiviertem Ausgleichsmodus geführt hat.
 - Für das Portal-SDK wurde das Upgrade auf Version 7.161.0 durchgeführt.
 - Es wurde ein Problem behoben, bei dem auf der Registerkarte „Benutzersitzungen“ eine Fehlermeldung zu einer fehlenden Ressourcen-ID angezeigt wurde.
 - Im Azure-Portal werden jetzt detaillierte Meldungen zum Unterstatus für Sitzungshosts angezeigt.
 
-### <a name="april-2021-updates-for-teams-on-windows-virtual-desktop"></a>Updates für Teams unter Windows Virtual Desktop vom April 2021
+### <a name="april-2021-updates-for-teams-on-azure-virtual-desktop"></a>Updates für Teams unter Azure Virtual Desktop vom April 2021
 
-Neuerungen für Teams unter Windows Virtual Desktop:
+Neuerungen für Teams unter Azure Virtual Desktop:
 
 - Hardwarebeschleunigung für die Videoverarbeitung von ausgehenden Videodatenströmen für Windows 10-basierte Clients wurde hinzugefügt.
 - Beim Beitritt zu einer Besprechung mit einer nach vorn gerichteten Kamera und einer nach hinten gerichteten oder externen Kamera wird standardmäßig die vordere Kamera ausgewählt.
@@ -94,19 +153,19 @@ Neuerungen für Teams unter Windows Virtual Desktop:
 
 ### <a name="msix-app-attach-is-now-generally-available"></a>MSIX-App-Anfügung ist jetzt allgemein verfügbar
 
-Für die MSIX-App-Anfügung für Windows Virtual Desktop wurde die öffentliche Vorschauphase abgeschlossen und die allgemeine Verfügbarkeit für alle Benutzer erreicht. Weitere Informationen zur MSIX-App-Anfügung finden Sie in [unserer Tech Community-Ankündigung](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-is-now-generally-available/m-p/2270468).
+Für die MSIX-App-Anfügung für Azure Virtual Desktop wurde die öffentliche Vorschauphase abgeschlossen und die allgemeine Verfügbarkeit für alle Benutzer erreicht. Weitere Informationen zur MSIX-App-Anfügung finden Sie in [unserer Tech Community-Ankündigung](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-is-now-generally-available/m-p/2270468).
 
 ### <a name="the-macos-client-now-supports-apple-silicon-and-big-sur"></a>Für den macOS-Client werden jetzt Apple Silicon und Big Sur unterstützt
 
-Für den Windows Virtual Desktop-Client unter macOS werden jetzt Apple Silicon und Big Sur unterstützt. Die Liste mit allen Updates finden Sie unter [Neues beim macOS-Client](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew).
+Für den Azure Virtual Desktop-Client unter macOS werden jetzt Apple Silicon und Big Sur unterstützt. Die Liste mit allen Updates finden Sie unter [Neues beim macOS-Client](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew).
 
 ## <a name="march-2021"></a>März 2021
 
 Hier sind die Informationen zu den Änderungen angegeben, die im März 2021 vorgenommen wurden.
 
-### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>Updates der Azure-Portal-Benutzeroberfläche für Windows Virtual Desktop
+### <a name="updates-to-the-azure-portal-ui-for-azure-virtual-desktop"></a>Updates der Azure-Portal-Benutzeroberfläche für Azure Virtual Desktop
 
-Für das Azure-Portal für Windows Virtual Desktop haben wir die folgenden Updates vorgenommen:
+Für das Azure-Portal haben wir für Azure Virtual Desktop die folgenden Updates vorgenommen:
 
 - Wir haben neue Verfügbarkeitsoptionen (Verfügbarkeitsgruppe und -zonen) für die Workflows aktiviert, um Hostpools zu erstellen und VMs hinzuzufügen.
 - Wir haben ein Problem behoben, bei dem ein Host mit dem Status „Needs assistance“ (Unterstützung erforderlich) als nicht verfügbar angezeigt wurde. Neben dem Host wird nun ein Warnsymbol angezeigt.
@@ -118,19 +177,19 @@ Für das Azure-Portal für Windows Virtual Desktop haben wir die folgenden Updat
 
 ### <a name="generation-2-images-and-trusted-launch"></a>Images der 2. Generation und vertrauenswürdiger Start
 
-Auf dem Azure Marketplace sind jetzt Images der 2. Generation für Windows 10 Enterprise und Windows 10 Enterprise (mehrere Sitzungen) verfügbar. Mit diesen Images können Sie VMs mit dem Feature „Vertrauenswürdiger Start“ verwenden. Weitere Informationen zu VMs der 2. Generation finden Sie auf der [Seite mit der Entscheidungshilfe zur Erstellung einer VM der 1. oder 2. Generation](../virtual-machines/generation-2.md). Informationen zum Bereitstellen von Windows Virtual Desktop-VMs mit „Vertrauenswürdiger Start“ finden Sie in [diesem Tech Community-Beitrag](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/windows-virtual-desktop-support-for-trusted-launch/m-p/2206170).
+Auf dem Azure Marketplace sind jetzt Images der 2. Generation für Windows 10 Enterprise und Windows 10 Enterprise (mehrere Sitzungen) verfügbar. Mit diesen Images können Sie VMs mit dem Feature „Vertrauenswürdiger Start“ verwenden. Weitere Informationen zu VMs der 2. Generation finden Sie auf der [Seite mit der Entscheidungshilfe zur Erstellung einer VM der 1. oder 2. Generation](../virtual-machines/generation-2.md). Informationen zum Bereitstellen von Azure Virtual Desktop-VMs mit „Vertrauenswürdiger Start“ finden Sie in [diesem Tech Community-Beitrag](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/windows-virtual-desktop-support-for-trusted-launch/m-p/2206170).
 
 ### <a name="fslogix-is-now-preinstalled-on-windows-10-enterprise-multi-session-images"></a>FSLogix ist jetzt auf Images für Windows 10 Enterprise (mehrere Sitzungen) vorinstalliert
 
-Basierend auf dem erhaltenen Kundenfeedback haben wir eine neue Version des Images für Windows 10 Enterprise (mehrere Sitzungen) eingerichtet, auf dem bereits eine nicht konfigurierte Version von FSLogix installiert ist. Wir hoffen, dass Ihnen dies die Bereitstellung Ihrer Windows Virtual Desktop-Instanz erleichtert.
+Basierend auf dem erhaltenen Kundenfeedback haben wir eine neue Version des Images für Windows 10 Enterprise (mehrere Sitzungen) eingerichtet, auf dem bereits eine nicht konfigurierte Version von FSLogix installiert ist. Wir hoffen, dass diese Maßnahme Ihnen die Bereitstellung Ihrer Azure Virtual Desktop-Instanz erleichtert.
 
-### <a name="azure-monitor-for-windows-virtual-desktop-is-now-in-general-availability"></a>Azure Monitor für Windows Virtual Desktop ist jetzt allgemein verfügbar
+### <a name="azure-monitor-for-azure-virtual-desktop-is-now-in-general-availability"></a>Azure Monitor für Azure Virtual Desktop ist jetzt allgemein verfügbar
 
-Azure Monitor für Windows Virtual Desktop ist jetzt für die Öffentlichkeit allgemein verfügbar. Bei diesem Feature handelt es sich um einen automatisierten Dienst, der Ihre Bereitstellungen überwacht und Ihnen das Anzeigen von Ereignissen, Integritätsinformationen und Vorschlägen zur Problembehandlung an einem zentralen Ort ermöglicht. Weitere Informationen finden Sie in [unserer Dokumentation](azure-monitor.md) und [diesem Tech Community-Beitrag](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-is-generally-available/m-p/2242861).
+Azure Monitor für Azure Virtual Desktop ist jetzt für die Öffentlichkeit allgemein verfügbar. Bei diesem Feature handelt es sich um einen automatisierten Dienst, der Ihre Bereitstellungen überwacht und Ihnen das Anzeigen von Ereignissen, Integritätsinformationen und Vorschlägen zur Problembehandlung an einem zentralen Ort ermöglicht. Weitere Informationen finden Sie in [unserer Dokumentation](azure-monitor.md) und [diesem Tech Community-Beitrag](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-is-generally-available/m-p/2242861).
 
-### <a name="march-2021-updates-for-teams-on-windows-virtual-desktop"></a>Updates für Teams unter Windows Virtual Desktop vom März 2021
+### <a name="march-2021-updates-for-teams-on-azure-virtual-desktop"></a>Updates für Teams unter Azure Virtual Desktop vom März 2021
 
-Wir haben die folgenden Updates für Teams unter Windows Virtual Desktop vorgenommen:
+Wir haben die folgenden Updates für Teams unter Azure Virtual Desktop vorgenommen:
 
 - Wir haben die Leistung der Videoqualität für Anrufe und den 2x2-Modus verbessert.
 - Wir konnten die CPU-Auslastung um 5 bis 10 % (je nach CPU-Generation) reduzieren, indem für die Videoverarbeitung die Hardwareauslagerung (XVP) genutzt wird.
@@ -143,9 +202,9 @@ Wir haben die folgenden Updates für Teams unter Windows Virtual Desktop vorgeno
 
 Die neue Hostpooleinstellung „VM bei Verbindung starten“ befindet sich jetzt in der öffentlichen Vorschauphase und ist entsprechend verfügbar. Mit dieser Einstellung können Sie Ihre VMs bei Bedarf aktivieren. Falls Sie Kosten sparen möchten, müssen Sie die Zuordnung Ihrer VMs aufheben, indem Sie Ihre Azure Compute-Einstellungen konfigurieren. Weitere Informationen finden Sie in [diesem Blogbeitrag](https://aka.ms/wvdstartvmonconnect) und [unserer Dokumentation](start-virtual-machine-connect.md).
 
-### <a name="windows-virtual-desktop-specialty-certification"></a>Windows Virtual Desktop Specialty-Zertifizierung
+### <a name="azure-virtual-desktop-specialty-certification"></a>Azure Virtual Desktop Specialty-Zertifizierung
 
-Wir haben eine Betaversion der Prüfung AZ-140 veröffentlicht, mit der Sie Ihre Windows Virtual Desktop-Kenntnisse in Azure nachweisen können. Weitere Informationen finden Sie in [unserem Tech Community-Beitrag](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/beta-exam-prove-your-expertise-in-windows-virtual-desktop-on/ba-p/2147107).
+Wir haben eine Betaversion der Prüfung AZ-140 veröffentlicht, mit der Sie Ihre Azure Virtual Desktop-Kenntnisse in Azure nachweisen können. Weitere Informationen finden Sie in [unserem Tech Community-Beitrag](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/beta-exam-prove-your-expertise-in-windows-virtual-desktop-on/ba-p/2147107).
 
 ## <a name="february-2021"></a>Februar 2021
 
@@ -161,19 +220,19 @@ Wir haben die Benutzeroberfläche des Azure-Portals wie folgt verbessert:
 
 ### <a name="eu-metadata-storage-now-in-public-preview"></a>EU-Metadatenspeicher befindet sich jetzt in der öffentlichen Vorschauphase
 
-Wir hosten jetzt eine öffentliche Vorschauversion für Europa (EU) als Speicheroption für Dienstmetadaten in Windows Virtual Desktop. Kunden können beim Erstellen ihrer Dienstobjekte zwischen „Europa, Westen“ und „Europa, Norden“ wählen. Die Dienstobjekte und Metadaten für die Hostpools werden jeweils in der Azure-Geografie gespeichert, die den einzelnen Regionen zugeordnet ist. Weitere Informationen finden Sie in [unserem Blogbeitrag zur Ankündigung der öffentlichen Vorschauversion](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939).
+Wir hosten jetzt eine öffentliche Vorschauversion für Europa (EU) als Speicheroption für Dienstmetadaten in Azure Virtual Desktop. Kunden können beim Erstellen ihrer Dienstobjekte zwischen „Europa, Westen“ und „Europa, Norden“ wählen. Die Dienstobjekte und Metadaten für die Hostpools werden jeweils in der Azure-Geografie gespeichert, die den einzelnen Regionen zugeordnet ist. Weitere Informationen finden Sie in [unserem Blogbeitrag zur Ankündigung der öffentlichen Vorschauversion](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939).
 
-### <a name="teams-on-windows-virtual-desktop-plugin-updates"></a>Updates des Plug-Ins für Teams in Windows Virtual Desktop
+### <a name="teams-on-azure-virtual-desktop-plugin-updates"></a>Updates des Plug-Ins für Teams in Azure Virtual Desktop
 
-Wie haben die Qualität von Videoanrufen für das Windows Virtual Desktop-Plug-In verbessert, indem wir die am häufigsten gemeldeten Probleme behoben haben. Beispiele hierfür sind die Fälle, in denen der Bildschirm plötzlich dunkel wurde oder das Video und der Ton nicht mehr synchron waren. Aufgrund dieser Verbesserungen sollte bei der Einzelanzeige von Videos mit Wechsel zum jeweils aktiven Sprecher eine höhere Leistung erzielt werden. Wir haben auch ein Problem behoben, bei dem Hardwaregeräte mit Sonderzeichen in Teams nicht verfügbar waren.
+Wir haben die Qualität von Videoanrufen für das Azure Virtual Desktop-Plug-In verbessert, indem wir die am häufigsten gemeldeten Probleme behoben haben. Beispiele hierfür sind die Fälle, in denen der Bildschirm plötzlich dunkel wurde oder das Video und der Ton nicht mehr synchron waren. Aufgrund dieser Verbesserungen sollte bei der Einzelanzeige von Videos mit Wechsel zum jeweils aktiven Sprecher eine höhere Leistung erzielt werden. Wir haben auch ein Problem behoben, bei dem Hardwaregeräte mit Sonderzeichen in Teams nicht verfügbar waren.
 
 ## <a name="january-2021"></a>Januar 2021
 
 Änderungen im Januar 2021:
 
-### <a name="new-windows-virtual-desktop-offer"></a>Neues Windows Virtual Desktop-Angebot
+### <a name="new-azure-virtual-desktop-offer"></a>Neues Azure Virtual Desktop-Angebot
 
-Neue Kunden sparen bis zu 90 Tage lang 30 Prozent bei den Windows Virtual Desktop-Computingkosten für VMs der D- und Bs-Serie, wenn sie die native Microsoft-Lösung nutzen. Sie können dieses Angebot im Azure-Portal bis zum 31. März 2021 einlösen. Weitere Informationen finden Sie auf unserer [Windows Virtual Desktop-Angebotsseite](https://azure.microsoft.com/services/virtual-desktop/offer/).
+Neue Kunden sparen bis zu 90 Tage lang 30 Prozent bei den Azure Virtual Desktop-Computingkosten für VMs der D- und Bs-Serie, wenn sie die native Microsoft-Lösung nutzen. Sie können dieses Angebot im Azure-Portal bis zum 31. März 2021 einlösen. Weitere Informationen finden Sie auf unserer [Angebotsseite für Azure Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/offer/).
 
 ### <a name="networksecuritygrouprules-value-change"></a>Änderung bei Wert für „networkSecurityGroupRules“ 
 
@@ -191,38 +250,38 @@ Wir haben die folgenden Verbesserungen am Azure-Portal vorgenommen:
 
 - Sie können jetzt direkt Anmeldeinformationen für Administratoren lokaler VMs hinzufügen, anstatt ein lokales Konto hinzuzufügen, das mit den Kontoanmeldeinformationen für den Active Directory-Domänenbeitritt erstellt wurde.
 - Benutzer können jetzt sowohl einzelne als auch Gruppenzuweisungen auf separaten Registerkarten für bestimmte Benutzer und Gruppen auflisten.
-- Die Versionsnummer des Windows Virtual Desktop-Agents wird jetzt in der VM-Übersicht für Hostpools angezeigt.
+- Die Versionsnummer des Azure Virtual Desktop-Agents wird jetzt in der VM-Übersicht für Hostpools angezeigt.
 - Die Funktion zum Massenlöschen für Hostpools und Anwendungsgruppen wurde hinzugefügt.
 - Sie können jetzt den Ausgleichsmodus für mehrere Sitzungshosts in einem Hostpool aktivieren oder deaktivieren.
 - Das Feld für die öffentliche IP-Adresse wurde von der Seite mit den VM-Details entfernt.
 
-### <a name="windows-virtual-desktop-agent-troubleshooting"></a>Problembehandlung für den Windows Virtual Desktop-Agent
+### <a name="azure-virtual-desktop-agent-troubleshooting"></a>Problembehandlung für Azure Virtual Desktop-Agent
 
-Wir haben vor Kurzem den [Leitfaden zur Problembehandlung für den Windows Virtual Desktop-Agent](troubleshoot-agent.md) veröffentlicht, der als Hilfe für Kunden dienen soll, bei denen häufige Probleme auftreten.
+Wir haben vor Kurzem den [Leitfaden zur Problembehandlung für den Azure Virtual Desktop-Agent](troubleshoot-agent.md) veröffentlicht, der als Hilfe für Kunden dienen soll, bei denen häufige Probleme auftreten.
 
 ### <a name="microsoft-defender-for-endpoint-integration"></a>Integration in Microsoft Defender für Endpunkt
 
-Integration in Microsoft Defender für Endpunkt ist jetzt allgemein verfügbar. Mit diesem Feature erhalten Ihre Windows Virtual Desktop-VMs die gleiche Untersuchungsoberfläche wie ein lokaler Windows 10-Computer. Bei Verwendung von Windows 10 Enterprise (mehrere Sitzungen) unterstützt Microsoft Defender für Endpunkt bis zu 50 gleichzeitige Benutzerverbindungen. Sie profitieren von den Kosteneinsparungen, die mit Windows 10 Enterprise (mehrere Sitzungen) möglich sind, und von der Zuverlässigkeit von Microsoft Defender für Endpunkt. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/windows-virtual-desktop-support-is-now-generally-available/ba-p/2103712).
+Integration in Microsoft Defender für Endpunkt ist jetzt allgemein verfügbar. Mit diesem Feature erhalten Ihre Azure Virtual Desktop-VMs die gleiche Untersuchungsoberfläche wie ein lokaler Windows 10-Computer. Bei Verwendung von Windows 10 Enterprise (mehrere Sitzungen) unterstützt Microsoft Defender für Endpunkt bis zu 50 gleichzeitige Benutzerverbindungen. Sie profitieren von den Kosteneinsparungen, die mit Windows 10 Enterprise (mehrere Sitzungen) möglich sind, und von der Zuverlässigkeit von Microsoft Defender für Endpunkt. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/windows-virtual-desktop-support-is-now-generally-available/ba-p/2103712).
 
-### <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Azure-Sicherheitsbaseline für Windows Virtual Desktop
+### <a name="azure-security-baseline-for-azure-virtual-desktop"></a>Azure-Sicherheitsbaseline für Azure Virtual Desktop
 
-Wir haben vor Kurzem einen [Artikel zur Azure-Sicherheitsbaseline](security-baseline.md) für Windows Virtual Desktop veröffentlicht, auf den wir Sie aufmerksam machen möchten. Er enthält Informationen dazu, wie Sie Version 2.0 des Vergleichstests für die Azure-Sicherheit auf Windows Virtual Desktop anwenden. Mit dem Vergleichstest für die Azure-Sicherheit werden die Einstellungen und Methoden beschrieben, deren Nutzung wir Ihnen empfehlen, um Ihre Cloudlösungen in Azure zu schützen.
+Wir haben vor Kurzem einen [Artikel zur Azure-Sicherheitsbaseline](security-baseline.md) für Azure Virtual Desktop veröffentlicht, auf den wir Sie aufmerksam machen möchten. Er enthält Informationen dazu, wie Sie Version 2.0 des Vergleichstests für die Azure-Sicherheit auf Azure Virtual Desktop anwenden. Mit dem Vergleichstest für die Azure-Sicherheit werden die Einstellungen und Methoden beschrieben, deren Nutzung wir Ihnen empfehlen, um Ihre Cloudlösungen in Azure zu schützen.
 
 ## <a name="december-2020"></a>Dezember 2020
 
 Änderungen im Dezember 2020: 
 
-### <a name="azure-monitor-for-windows-virtual-desktop"></a>Azure Monitor für Windows Virtual Desktop
+### <a name="azure-monitor-for-azure-virtual-desktop"></a>Azure Monitor für Azure Virtual Desktop
 
-Die öffentliche Vorschauversion für Azure Monitor für Windows Virtual Desktop ist jetzt verfügbar. Dieses neue Feature umfasst ein stabiles Dashboard, das auf Azure Monitor-Arbeitsmappen basiert, damit IT-Experten ihre Windows Virtual Desktop-Umgebungen besser verstehen. Weitere Informationen finden Sie in der [Ankündigung in unserem Blog](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587). 
+Die öffentliche Vorschauversion für Azure Monitor für Azure Virtual Desktop ist jetzt verfügbar. Dieses neue Feature umfasst ein stabiles Dashboard, das auf Azure Monitor-Arbeitsmappen basiert, damit IT-Experten ihre Azure Virtual Desktop-Umgebungen besser verstehen. Weitere Informationen finden Sie in der [Ankündigung in unserem Blog](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587). 
 
 ### <a name="azure-resource-manager-template-change"></a>Änderung der Azure Resource Manager-Vorlage 
 
-Beim letzten Update haben wir alle Parameter für öffentliche IP-Adressen aus der Azure Resource Manager-Vorlage zum Erstellen und Bereitstellen von Hostpools entfernt. Wir empfehlen Ihnen dringend, keine öffentlichen IP-Adressen für Windows Virtual Desktop zu verwenden, damit für die Sicherheit Ihrer Bereitstellung gesorgt ist. Wenn Ihre Bereitstellung auf öffentlichen IP-Adressen basiert, müssen Sie die Konfiguration so ändern, dass stattdessen private IP-Adressen verwendet werden. Andernfalls funktioniert Ihre Bereitstellung nicht richtig.
+Beim letzten Update haben wir alle Parameter für öffentliche IP-Adressen aus der Azure Resource Manager-Vorlage zum Erstellen und Bereitstellen von Hostpools entfernt. Wir empfehlen Ihnen dringend, keine öffentlichen IP-Adressen für Azure Virtual Desktop zu verwenden, damit für die Sicherheit Ihrer Bereitstellung gesorgt ist. Wenn Ihre Bereitstellung auf öffentlichen IP-Adressen basiert, müssen Sie die Konfiguration so ändern, dass stattdessen private IP-Adressen verwendet werden. Andernfalls funktioniert Ihre Bereitstellung nicht richtig.
 
 ### <a name="msix-app-attach-public-preview"></a>MSIX-Feature zum Anfügen von Apps: Öffentliche Vorschauversion 
 
-Das MSIX-Feature zum Anfügen von Apps ist ein weiterer Dienst, für den in diesem Monat die öffentliche Vorschauphase begonnen hat. Beim MSIX-Feature zum Anfügen von Apps handelt es sich um einen Dienst, mit dem MSIX-Anwendungen für die Host-VMs Ihrer Windows Virtual Desktop-Sitzung dynamisch bereitgestellt werden. Weitere Informationen finden Sie in der [Ankündigung in unserem Blog](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231). 
+Das MSIX-Feature zum Anfügen von Apps ist ein weiterer Dienst, für den in diesem Monat die öffentliche Vorschauphase begonnen hat. Beim MSIX-Feature zum Anfügen von Apps handelt es sich um einen Dienst, mit dem MSIX-Anwendungen für die Host-VMs Ihrer Azure Virtual Desktop-Sitzung dynamisch bereitgestellt werden. Weitere Informationen finden Sie in der [Ankündigung in unserem Blog](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231). 
 
 ### <a name="screen-capture-protection"></a>Schutz von Bildschirmaufnahmen 
 
@@ -230,7 +289,7 @@ In diesem Monat hat auch die öffentliche Vorschauphase für den Schutz von Bild
 
 ### <a name="built-in-roles"></a>Integrierte Rollen
 
-Wir haben neue integrierte Rollen für Windows Virtual Desktop in Bezug auf Administratorberechtigungen hinzugefügt. Weitere Informationen finden Sie unter [Integrierte Rollen für Windows Virtual Desktop](rbac.md). 
+Wir haben neue integrierte Rollen für Azure Virtual Desktop in Bezug auf Administratorberechtigungen hinzugefügt. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure Virtual Desktop](rbac.md). 
 
 ### <a name="application-group-limit-increase"></a>Erhöhung des Grenzwerts für Anwendungsgruppen
 
@@ -261,15 +320,15 @@ Wir haben eine neue Version des FSLogix-Clients mit vielen Fixes und Verbesserun
 
 ### <a name="rdp-shortpath-public-preview"></a>RDP Shortpath (Public Preview)
 
-RDP Shortpath führt direkte Konnektivität mit Ihrem Windows Virtual Desktop-Sitzungshost unter Verwendung von Point-to-Site-/Site-to-Site-VPNs und ExpressRoute ein. Außerdem wird das URCP-Transportprotokoll eingeführt. RDP Shortpath ist auf die Reduzierung von Wartezeit und Netzwerkhops ausgelegt, um die Benutzerfreundlichkeit zu verbessern. Weitere Informationen finden Sie unter [Windows Virtual Desktop – RDP Shortpath (Vorschau)](shortpath.md).
+Mit RDP Shortpath wird die direkte Konnektivität mit Ihrem Azure Virtual Desktop-Sitzungshost eingeführt, indem Point-to-Site-/Site-to-Site-VPNs und ExpressRoute verwendet werden. Außerdem wird das URCP-Transportprotokoll eingeführt. RDP Shortpath ist auf die Reduzierung von Wartezeit und Netzwerkhops ausgelegt, um die Benutzerfreundlichkeit zu verbessern. Weitere Informationen finden Sie unter [Azure Virtual Desktop – RDP Shortpath (Vorschau)](shortpath.md).
 
 ### <a name="azdesktopvirtualization-version-201"></a>Az.DesktopVirtualization, Version 2.0.1
 
-Wir haben die Version 2.0.1 der Windows Virtual Desktop-Cmdlets veröffentlicht. Dieses Update enthält Cmdlets für die Verwaltung des MSIX-Features zum Anfügen von Apps. Sie können die neue Version aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.0.1) herunterladen.
+Wir haben Version 2.0.1 der Azure Virtual Desktop-Cmdlets veröffentlicht. Dieses Update enthält Cmdlets für die Verwaltung des MSIX-Features zum Anfügen von Apps. Sie können die neue Version aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.0.1) herunterladen.
 
 ### <a name="azure-advisor-updates"></a>Azure Advisor-Updates
 
-Azure Advisor verfügt nun über eine neue Empfehlung für die Näherungsplatzierung in Windows Virtual Desktop sowie eine neue Empfehlung für die Leistungsoptimierung in Hostpools mit tiefenorientiertem Lastenausgleich. Weitere Informationen finden Sie auf der [Azure-Website](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/).
+Azure Advisor verfügt nun über eine neue Empfehlung für die Näherungsplatzierung in Azure Virtual Desktop sowie eine neue Empfehlung für die Leistungsoptimierung in Hostpools mit tiefenorientiertem Lastenausgleich. Weitere Informationen finden Sie auf der [Azure-Website](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/).
 
 ## <a name="october-2020"></a>Oktober 2020
 
@@ -287,9 +346,9 @@ Sie können nun den [Qualitätsschätzer](https://azure.microsoft.com/services/v
 
 Die Azure Government-Cloud ist jetzt allgemein verfügbar. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-generally-available-in-the-azure-government-cloud/).
 
-### <a name="windows-virtual-desktop-azure-portal-updates"></a>Aktualisierungen im Azure-Portal für Windows Virtual Desktop
+### <a name="azure-virtual-desktop-azure-portal-updates"></a>Aktualisierungen im Azure-Portal für Azure Virtual Desktop
 
-Wir haben einige Aktualisierungen im Azure-Portal für Windows Virtual Desktop vorgenommen:
+Wir haben einige Aktualisierungen im Azure-Portal für Azure Virtual Desktop vorgenommen:
 
 - Es wurde ein resourceID-Fehler behoben, der dazu führte, dass Benutzer die Registerkarte „Sitzungen“ nicht öffnen konnten.
 - Die Benutzeroberfläche auf der Registerkarte „Sitzungshosts“ wurde optimiert.
@@ -323,7 +382,7 @@ Weitere Informationen zu den anderen Clients finden Sie unter [Clientupdates](#c
 
 Sie können nun den [Qualitätsschätzer](https://azure.microsoft.com/services/virtual-desktop/assessment/) verwenden, um die Qualität der Benutzererfahrung in diesen Bereichen zu schätzen.
 
-- Wir haben Version 1.2.1364 des Windows-Desktopclients für Windows Virtual Desktop veröffentlicht. In diesem Update haben wir die folgenden Änderungen vorgenommen:
+- Wir haben Version 1.2.1364 des Windows-Desktopclients für Azure Virtual Desktop veröffentlicht. In diesem Update haben wir die folgenden Änderungen vorgenommen:
     - Es wurde ein Problem behoben, bei dem Einmaliges Anmelden (Single Sign-On, SSO) unter Windows 7 nicht funktionierte.
     - Es wurde ein Problem behoben, das dazu geführt hat, dass der Client die Verbindung trennt, wenn ein Benutzer, der die Medienoptimierung für Teams aktiviert hat, versucht, einer Teams-Besprechung beizutreten bzw. diese anzurufen, während eine andere App einen Audiostream im exklusiven Modus geöffnet hat.
     - Es wurde ein Problem behoben, bei dem Teams keine Audio- oder Videogeräte aufgezählt haben, wenn die Medienoptimierung für Teams aktiviert war.
@@ -349,25 +408,25 @@ Sie können nun den [Qualitätsschätzer](https://azure.microsoft.com/services/v
 
    Sie können den [Qualitätsschätzer](https://azure.microsoft.com/services/virtual-desktop/assessment/) verwenden, um eine allgemeine Vorstellung davon zu bekommen, wie sich diese Änderungen auf Ihre Benutzer auswirken.
 
-- Der Microsoft Store-Remotedesktopclient (v10.2.1522+) ist jetzt allgemein verfügbar. Diese Version des Microsoft Store-Remotedesktopclients ist mit Windows Virtual Desktop kompatibel. Darüber hinaus wurden aktualisierte Benutzeroberflächenflows eingeführt, um die Benutzerfreundlichkeit zu verbessern. Dieses Update beinhaltet ein flüssiges Design, einen hellen und einen dunklen Modus sowie viele weitere interessante Änderungen. Der Client wurde außerdem umgeschrieben und verwendet nun die gleiche zugrunde liegende RDP-Engine (Remotedesktopprotokoll) wie die iOS-, macOS- und Android-Clients. Dadurch können neue Features schneller auf allen Plattformen bereitgestellt werden. [Laden Sie den Client herunter](https://www.microsoft.com/p/microsoft-remote-desktop/9wzdncrfj3ps?rtc=1&activetab=pivot:overviewtab), und probieren Sie ihn aus.
+- Der Microsoft Store-Remotedesktopclient (v10.2.1522+) ist jetzt allgemein verfügbar. Diese Version des Microsoft Store-Remotedesktopclients ist mit Azure Virtual Desktop kompatibel. Darüber hinaus wurden aktualisierte Benutzeroberflächenflows eingeführt, um die Benutzerfreundlichkeit zu verbessern. Dieses Update beinhaltet ein flüssiges Design, einen hellen und einen dunklen Modus sowie viele weitere interessante Änderungen. Der Client wurde außerdem umgeschrieben und verwendet nun die gleiche zugrunde liegende RDP-Engine (Remotedesktopprotokoll) wie die iOS-, macOS- und Android-Clients. Dadurch können neue Features schneller auf allen Plattformen bereitgestellt werden. [Laden Sie den Client herunter](https://www.microsoft.com/p/microsoft-remote-desktop/9wzdncrfj3ps?rtc=1&activetab=pivot:overviewtab), und probieren Sie ihn aus.
 
 - Ein Problem im Teams-Desktopclient (Version 1.3.00.21759) wurde behoben, bei dem der Client im Chat, in Kanälen und im Kalender nur die UTC-Zeitzone angezeigt hat. Im aktualisierten Client wird nun stattdessen die Zeitzone der Remotesitzung angezeigt.
 
-- Azure Advisor ist jetzt Teil von Windows Virtual Desktop. Wenn Sie über das Azure-Portal auf Windows Virtual Desktop zugreifen, können Sie Empfehlungen zur Optimierung der Windows Virtual Desktop-Umgebung anzeigen. Weitere Informationen zu [Azure Advisor](azure-advisor.md)
+- Azure Advisor ist jetzt Teil von Azure Virtual Desktop. Wenn Sie über das Azure-Portal auf Azure Virtual Desktop zugreifen, können Sie Empfehlungen zur Optimierung der Azure Virtual Desktop-Umgebung anzeigen. Weitere Informationen zu [Azure Advisor](azure-advisor.md)
 
-- Die Azure CLI unterstützt jetzt Windows Virtual Desktop (`az desktopvirtualization`), um Sie bei der Automatisierung der Windows Virtual Desktop-Bereitstellungen zu unterstützen. Eine Liste der Erweiterungsbefehle finden Sie unter [desktopvirtualization](/cli/azure/desktopvirtualization).
+- Die Azure CLI unterstützt jetzt Azure Virtual Desktop (`az desktopvirtualization`), um Ihnen die Automatisierung der Azure Virtual Desktop-Bereitstellungen zu erleichtern. Eine Liste der Erweiterungsbefehle finden Sie unter [desktopvirtualization](/cli/azure/desktopvirtualization).
 
-- Wir haben die Bereitstellungsvorlagen aktualisiert, damit sie vollständig mit den Azure Resource Manager-Schnittstellen von Windows Virtual Desktop kompatibel sind. Die Vorlagen finden Sie auf [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates).
+- Wir haben die Bereitstellungsvorlagen aktualisiert, damit sie vollständig mit den Azure Resource Manager-Schnittstellen von Azure Virtual Desktop kompatibel sind. Die Vorlagen finden Sie auf [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates).
 
-- Das US Gov-Portal von Windows Virtual Desktop ist jetzt als öffentliche Vorschau verfügbar. Weitere Informationen finden Sie in [unserer Ankündigung](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-available-in-the-azure-government-cloud-in-preview/).
+- Das US Gov-Portal von Azure Virtual Desktop ist jetzt als öffentliche Vorschauversion verfügbar. Weitere Informationen finden Sie in [unserer Ankündigung](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-available-in-the-azure-government-cloud-in-preview/).
 
 ## <a name="july-2020"></a>Juli 2020  
 
-Ab Juli ist Windows Virtual Desktop mit Azure Resource Manager-Integration allgemein verfügbar.
+Ab Juli ist Azure Virtual Desktop mit Azure Resource Manager-Integration allgemein verfügbar.
 
 Hier ist aufgeführt, was sich mit diesem neuen Release geändert hat: 
 
-- Das „Release vom Herbst 2019“ wird jetzt als „Windows Virtual Desktop (klassisch)“ bezeichnet, und das „Release vom Frühjahr 2020“ einfach als „Windows Virtual Desktop“. Weitere Informationen finden Sie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/new-windows-virtual-desktop-capabilities-now-generally-available/). 
+- Das „Release vom Herbst 2019“ wird jetzt als „Azure Virtual Desktop (klassisch)“ bezeichnet, und das „Release vom Frühjahr 2020“ einfach als „Azure Virtual Desktop“. Weitere Informationen finden Sie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/new-windows-virtual-desktop-capabilities-now-generally-available/). 
 
 Weitere Informationen zu neuen Features finden Sie in [diesem Blogbeitrag](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245). 
 
@@ -377,40 +436,40 @@ Die aktuelle Version des Tools für die automatische Skalierung, die sich in der
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Sie können im Azure-Portal in Windows Virtual Desktop nun Folgendes durchführen: 
+Sie können im Azure-Portal in Azure Virtual Desktop nun Folgendes durchführen: 
 
 - Direktes Zuweisen von Benutzern zu Sitzungshosts von persönlichen Desktops  
 - Ändern der Einstellung für die Überprüfungsumgebung für Hostpools 
 
 ### <a name="diagnostics"></a>Diagnose
 
-Wir haben einige neue vordefinierte Abfragen für den Log Analytics-Arbeitsbereich veröffentlicht. Navigieren Sie für den Zugriff auf die Abfragen zu **Protokolle**, und wählen Sie unter **Kategorie** die Option **Windows Virtual Desktop** aus. Weitere Informationen finden Sie unter [Verwenden von Log Analytics für die Diagnosefunktion](diagnostics-log-analytics.md).
+Wir haben einige neue vordefinierte Abfragen für den Log Analytics-Arbeitsbereich veröffentlicht. Navigieren Sie für den Zugriff auf die Abfragen zu **Protokolle**, und wählen Sie unter **Kategorie** die Option **Azure Virtual Desktop** aus. Weitere Informationen finden Sie unter [Verwenden von Log Analytics für die Diagnosefunktion](diagnostics-log-analytics.md).
 
 ### <a name="update-for-remote-desktop-client-for-android"></a>Update für Remotedesktopclient für Android
 
-Der [Remotedesktopclient für Android](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) unterstützt jetzt Windows Virtual Desktop-Verbindungen. Ab Version 10.0.7 verfügt der Android-Client über eine neue Benutzeroberfläche, um die Benutzerfreundlichkeit zu erhöhen. Der Client ist auch in Microsoft Authenticator auf Android-Geräten integriert, um beim Abonnieren von Windows Virtual Desktop-Arbeitsbereichen den bedingten Zugriff zu ermöglichen.  
+Der [Remotedesktopclient für Android](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) unterstützt jetzt Azure Virtual Desktop-Verbindungen. Ab Version 10.0.7 verfügt der Android-Client über eine neue Benutzeroberfläche, um die Benutzerfreundlichkeit zu erhöhen. Der Client ist auch in Microsoft Authenticator auf Android-Geräten integriert, um beim Abonnieren von Azure Virtual Desktop-Arbeitsbereichen den bedingten Zugriff zu ermöglichen.  
 
 Die vorherige Version des Remotedesktopclients wird jetzt als „Remotedesktop 8“ bezeichnet. Alle vorhandenen Verbindungen, über die Sie in der früheren Version des Clients verfügen, werden für den neuen Client nahtlos übernommen. Der neue Client wurde für die gleiche zugrunde liegende RDP-Haupt-Engine wie für die iOS- und macOS-Clients umgeschrieben. Dies ermöglicht eine schnellere übergreifende Veröffentlichung neuer Features auf allen Plattformen. 
 
 ### <a name="teams-update"></a>Teams-Update
 
-Wir haben an Microsoft Teams für Windows Virtual Desktop Verbesserungen vorgenommen. Was am wichtigsten ist: Windows Virtual Desktop unterstützt jetzt die Audio- und Videooptimierung für den Windows Desktop-Client. Die Umleitung verbessert die Latenz, indem direkte Pfade zwischen Benutzern erstellt werden, wenn sie Audio- oder Videofunktionen für Anrufe und Besprechungen nutzen. Eine geringere Entfernung bedeutet weniger Hops, wodurch Optik und Klang verbessert werden. Weitere Informationen finden Sie unter [Verwenden von Microsoft Teams in Windows Virtual Desktop](teams-on-wvd.md).
+Wir haben an Microsoft Teams für Azure Virtual Desktop Verbesserungen vorgenommen. Was am wichtigsten ist: Azure Virtual Desktop unterstützt jetzt die Audio- und Videooptimierung für den Windows Desktop-Client. Die Umleitung verbessert die Latenz, indem direkte Pfade zwischen Benutzern erstellt werden, wenn sie Audio- oder Videofunktionen für Anrufe und Besprechungen nutzen. Eine geringere Entfernung bedeutet weniger Hops, wodurch Optik und Klang verbessert werden. Weitere Informationen finden Sie unter [Verwenden von Microsoft Teams in Azure Virtual Desktop](teams-on-wvd.md).
 
 ## <a name="june-2020"></a>Juni 2020
 
-Im letzten Monat haben wir Windows Virtual Desktop mit Azure Resource Manager-Integration als Vorschauversion eingeführt. Dieses Update enthält viele interessante neue Features, über die wir Sie gerne informieren möchten. Hier sind die Neuerungen für diese Version von Windows Virtual Desktop beschrieben.
+Im letzten Monat haben wir Azure Virtual Desktop mit Azure Resource Manager-Integration als Vorschauversion eingeführt. Dieses Update enthält viele interessante neue Features, über die wir Sie gerne informieren möchten. Hier sind die Neuerungen für diese Version von Azure Virtual Desktop beschrieben.
 
-### <a name="windows-virtual-desktop-is-now-integrated-with-azure-resource-manager"></a>Windows Virtual Desktop ist jetzt in Azure Resource Manager integriert.
+### <a name="azure-virtual-desktop-is-now-integrated-with-azure-resource-manager"></a>Azure Virtual Desktop ist jetzt in Azure Resource Manager integriert
 
-Windows Virtual Desktop ist jetzt in Azure Resource Manager integriert. Im neuesten Update sind jetzt alle Windows Virtual Desktop-Objekte in Azure Resource Manager-Ressourcen enthalten. Dieses Update ist auch in Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) integriert. Lesen Sie [Was ist Azure Resource Manager?](../azure-resource-manager/management/overview.md), um mehr zu erfahren.
+Azure Virtual Desktop ist jetzt in Azure Resource Manager integriert. Im neuesten Update handelt es sich bei allen Azure Virtual Desktop-Objekten jetzt um Azure Resource Manager-Ressourcen. Dieses Update ist auch in Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) integriert. Lesen Sie [Was ist Azure Resource Manager?](../azure-resource-manager/management/overview.md), um mehr zu erfahren.
 
 Diese Änderung umfasst Folgendes:
 
-- Windows Virtual Desktop ist jetzt in das Azure-Portal integriert. Dies bedeutet, dass Sie alles direkt im Portal verwalten können, ohne dass PowerShell, Web-Apps oder Drittanbietertools erforderlich sind. Informationen zu den ersten Schritten finden Sie in unserem Tutorial unter [Erstellen eines Hostpools mit dem Azure-Portal](create-host-pools-azure-marketplace.md).
+- Azure Virtual Desktop ist jetzt in das Azure-Portal integriert. Dies bedeutet, dass Sie alles direkt im Portal verwalten können, ohne dass PowerShell, Web-Apps oder Drittanbietertools erforderlich sind. Informationen zu den ersten Schritten finden Sie in unserem Tutorial unter [Erstellen eines Hostpools mit dem Azure-Portal](create-host-pools-azure-marketplace.md).
 
 - Vor diesem Update konnten Sie RemoteApps und Desktops nur für einzelne Benutzer veröffentlichen. Mit Azure Resource Manager können Sie jetzt Ressourcen in Azure Active Directory-Gruppen veröffentlichen.
 
-- Bei der früheren Version von Windows Virtual Desktop gab es vier integrierte Administratorrollen, die Sie einem Mandanten oder Hostpool zuweisen konnten. Diese Rollen sind jetzt in [Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung)](../role-based-access-control/overview.md) enthalten. Sie können diese Rollen auf jedes Azure Resource Manager-Objekt von Windows Virtual Desktop anwenden, mit dem Sie ein vollständiges, umfangreiches Delegierungsmodell haben können.
+- Bei der früheren Version von Azure Virtual Desktop hat es vier integrierte Administratorrollen gegeben, die Sie einem Mandanten oder Hostpool zuweisen konnten. Diese Rollen sind jetzt in [Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung)](../role-based-access-control/overview.md) enthalten. Sie können diese Rollen auf jedes Azure Resource Manager-Objekt von Azure Virtual Desktop anwenden, um ein vollständiges, umfangreiches Delegierungsmodell zu erhalten.
 
 - Bei diesem Update müssen Sie Azure Marketplace oder die GitHub-Vorlage nicht mehr wiederholt ausführen, um einen Hostpool zu erweitern. Zum Erweitern eines Hostpools müssen Sie lediglich im Azure-Portal zu Ihrem Hostpool wechseln und **+ Hinzufügen** auswählen, um weitere Sitzungshosts bereitzustellen.
 
@@ -418,13 +477,13 @@ Diese Änderung umfasst Folgendes:
 
 - Überwachungsfunktionen, die über PowerShell oder die Diagnostics Service-Webapp erledigt wurden, wurden jetzt im Azure-Portal in Log Analytics verschoben. Außerdem stehen Ihnen jetzt zwei Optionen zum Visualisieren Ihrer Berichte zur Verfügung. Sie können Kusto-Abfragen ausführen und Arbeitsmappen zum Erstellen virtueller Berichte verwenden.
 
-- Sie müssen nicht mehr die Einwilligung für Azure Active Directory (Azure AD) ausfüllen, um Windows Virtual Desktop verwenden zu können. Bei diesem Update authentifiziert der Azure AD-Mandant in Ihrem Azure-Abonnement Ihre Benutzer und stellt Azure RBAC-Steuerelemente für Ihre Administratoren bereit.
+- Sie müssen nicht mehr den Einwilligungsvorgang für Azure Active Directory (Azure AD) durchführen, um Azure Virtual Desktop verwenden zu können. Bei diesem Update authentifiziert der Azure AD-Mandant in Ihrem Azure-Abonnement Ihre Benutzer und stellt Azure RBAC-Steuerelemente für Ihre Administratoren bereit.
 
 ### <a name="powershell-support"></a>PowerShell-Unterstützung
 
 Wir haben dem Az-Modul von Azure PowerShell im Rahmen dieses Updates neue AzWvd-Cmdlets hinzugefügt. Dieses neue Modul wird in PowerShell Core unterstützt, das unter .NET Core ausgeführt wird.
 
-Folgen Sie zum Installieren des Modells den Anleitungen in [Einrichten des PowerShell-Moduls für Windows Virtual Desktop](powershell-module.md).
+Befolgen Sie zum Installieren des Modells die Anleitungen unter [Einrichten des PowerShell-Moduls für Azure Virtual Desktop](powershell-module.md).
 
 Eine Liste der verfügbaren Befehle finden Sie auch in der [AzWvd PowerShell-Referenz](/powershell/module/az.desktopvirtualization/#desktopvirtualization).
 
@@ -434,12 +493,12 @@ Weitere Informationen zu den neuen Features finden Sie in [unserem Blogbeitrag](
 
 Wir haben in Südafrika einen neuen Gatewaycluster hinzugefügt, um die Verbindungslatenz zu reduzieren.
 
-### <a name="microsoft-teams-on-windows-virtual-desktop-preview"></a>Microsoft Teams in Windows Virtual Desktop (Vorschau)
+### <a name="microsoft-teams-on-azure-virtual-desktop-preview"></a>Microsoft Teams in Azure Virtual Desktop (Vorschau)
 
-Wir haben an Microsoft Teams für Windows Virtual Desktop einige Verbesserungen vorgenommen. Am wichtigsten: Windows Virtual Desktop unterstützt jetzt bei Anrufen die akustische und visuelle Umleitung. Die Umleitung verbessert die Latenz, indem direkte Pfade zwischen Benutzern erstellt werden, wenn sie Audio- oder Videoanrufe durchführen. Eine geringere Entfernung bedeutet weniger Hops, wodurch Optik und Klang verbessert werden.
+Wir haben an Microsoft Teams für Azure Virtual Desktop einige Verbesserungen vorgenommen. Die wichtigste Änderung besteht darin, dass Azure Virtual Desktop bei Anrufen jetzt die akustische und visuelle Umleitung unterstützt. Die Umleitung verbessert die Latenz, indem direkte Pfade zwischen Benutzern erstellt werden, wenn sie Audio- oder Videoanrufe durchführen. Eine geringere Entfernung bedeutet weniger Hops, wodurch Optik und Klang verbessert werden.
 
 Weitere Informationen finden Sie in [unserem Blogbeitrag](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu zukünftigen Plänen finden Sie auf der [Roadmap für Microsoft 365 Windows Virtual Desktop](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
+Weitere Informationen zu zukünftigen Plänen finden Sie in der [Microsoft 365-Roadmap für Azure Virtual Desktop](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).

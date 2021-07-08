@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 82c5cbc2b938ef8cd27a17da394b467a7f5ba8aa
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 030aadf55f692b19109582fb85320023159005a3
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755601"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569420"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ In diesem Artikel werden Funktionsunterschiede beschrieben, wenn Sie mit Failove
 
 ## <a name="overview"></a>Übersicht
 
-SQL Server in Azure Virtual Machines nutzt die Funktion Windows Server-Failoverclustering (WSFC), um lokale Hochverfügbarkeit durch Redundanz auf Serverinstanzebene zu bieten: eine Failoverclusterinstanz. Eine FCI ist eine einzelne Instanz von SQL Server, die über WSFC-Knoten (oder einfach den Cluster) und möglicherweise über mehrere Subnetze hinweg installiert ist. Im Netzwerk scheint eine FCI eine Instanz von SQL Server zu sein, die auf einem einzelnen Computer ausgeführt wird. Die FCI bietet jedoch Failover von einem WSFC-Knoten auf einen anderen Knoten, wenn der aktuelle Knoten nicht mehr verfügbar ist.
+SQL Server in Azure Virtual Machines nutzt die Funktion [Windows Server-Failoverclustering (WSFC)](hadr-windows-server-failover-cluster-overview.md), um lokale Hochverfügbarkeit durch Redundanz auf Serverinstanzebene zu bieten: eine Failoverclusterinstanz. Eine FCI ist eine einzelne Instanz von SQL Server, die über WSFC-Knoten (oder einfach den Cluster) und möglicherweise über mehrere Subnetze hinweg installiert ist. Im Netzwerk scheint eine FCI eine einzelne Instanz von SQL Server zu sein, die auf einem einzelnen Computer ausgeführt wird. Die FCI bietet jedoch Failover von einem WSFC-Knoten auf einen anderen Knoten, wenn der aktuelle Knoten nicht mehr verfügbar ist.
 
 Der restliche Artikel konzentriert sich auf die Unterschiede bei Failoverclusterinstanzen, wenn diese mit SQL Server auf Azure-VMs verwendet werden. Weitere Informationen zur Failoverclusteringtechnologie finden Sie unter: 
 
@@ -148,9 +148,11 @@ Für gemeinsame Speichernutzungs- und Datenreplikationslösungen von Microsoft-P
 
 ## <a name="connectivity"></a>Konnektivität
 
-Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines verwenden einen [verteilten Netzwerknamen (Distributed Network Name, DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) oder einen [virtuellen Netzwerknamen (VNN) mit Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md), um Datenverkehr an die SQL Server-Instanz unabhängig davon weiterzuleiten, welcher Knoten derzeit Besitzer der Clusterressourcen ist. Es gibt weitere Überlegungen, wenn bestimmte Features und der DNN mit einer SQL Server-FCI verwendet werden. Weitere Informationen finden Sie unter [DNN-Interoperabilität mit der SQL Server-FCI](failover-cluster-instance-dnn-interoperability.md). 
+Sie können einen VNet-Namen oder einen Namen für ein verteiltes Netzwerk für eine Failoverclusterinstanz konfigurieren. Machen Sie sich mit den [Unterschieden zwischen den beiden Optionen](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn) vertraut, und stellen Sie dann entweder einen [Namen eines verteilten Netzwerks](failover-cluster-instance-distributed-network-name-dnn-configure.md) oder einen [Namen eines virtuellen Netzwerks](failover-cluster-instance-vnn-azure-load-balancer-configure.md) für Ihre Failoverclusterinstanz bereit.
 
-Weitere Informationen zu den Optionen für Clusterkonnektivität finden Sie unter [Weiterleiten von HADR-Verbindungen an SQL Server auf Azure-VMs](hadr-cluster-best-practices.md#connectivity). 
+Verwenden Sie nach Möglichkeit den Namen eines verteilten Netzwerks, da das Failover schneller ist und der Mehraufwand und die Kosten für die Verwaltung des Lastenausgleichs wegfallen. 
+
+Bei Verwendung des DNN funktionieren die meisten SQL Server-Features transparent mit FCIs. Es gibt jedoch bestimmte Features, die ggf. besondere Aufmerksamkeit erfordern. Weitere Informationen finden Sie unter [Featureinteroperabilität mit SQL Server-FCI und DNN](failover-cluster-instance-dnn-interoperability.md). 
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -176,7 +178,9 @@ In Azure Virtual Machines wird MSDTC unter Windows Server 2016 und früheren Ve
 
 Lesen Sie [bewährte Methoden für Clusterkonfigurationen](hadr-cluster-best-practices.md). Anschließend können Sie [die SQL Server-VM für FCI](failover-cluster-instance-prepare-vm.md) vorbereiten. 
 
-Weitere Informationen finden Sie unter 
 
-- [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+Weitere Informationen finden Sie unter:
+
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn-Failoverclusterinstanzen (SQL Server)](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+

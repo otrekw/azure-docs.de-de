@@ -11,12 +11,12 @@ ms.subservice: redhat
 ms.custom:
 - mode-api
 ms.collection: linux
-ms.openlocfilehash: bad9331a6d9a0c0936b1458e3aa4a84559e4a107
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 7c80634e78a8c37551a57fc8597831898646ef8e
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533552"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900933"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>Schnellstart: WildFly in CentOS 8
 
@@ -73,7 +73,7 @@ Sie können die Vorlage auf die folgenden drei Arten bereitstellen:
     ```
 
     ```
-    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/wildfly/wildfly-standalone-centos8/azuredeploy.json
     ```
     
 - Azure CLI verwenden – Stellen Sie die Vorlage mithilfe der folgenden Befehle bereit: (Informationen zur Installation und Konfiguration der plattformübergreifenden Azure-Befehlszeilenschnittstelle finden Sie unter [Plattformübergreifende Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)).
@@ -83,14 +83,14 @@ Sie können die Vorlage auf die folgenden drei Arten bereitstellen:
     ```
 
     ```
-    az deployment group create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    az deployment group create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/wildfly/wildfly-standalone-centos8/azuredeploy.json
     ```
 
-- Azure-Portal verwenden – Stellen Sie die Vorlage bereit, indem Sie <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">hier</a> klicken, und melden Sie sich bei Ihrem Azure-Portal an.
+- Azure-Portal verwenden – Stellen Sie die Vorlage bereit, indem Sie <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fwildfly%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">hier</a> klicken, und melden Sie sich bei Ihrem Azure-Portal an.
 
 ## <a name="arm-template"></a>ARM-Vorlage
 
-<a href="https://github.com/Azure/azure-quickstart-templates/tree/master/wildfly-standalone-centos8" target="_blank"> WildFly 18 in CentOS 8 (eigenständige VM)</a> – Dies ist eine Schnellstartvorlage, die einen eigenständigen Knoten von WildFly 18.0.1.Final auf einer CentOS 8-VM in Ihrer Ressourcengruppe (RG) erstellt, die eine private IP-Adresse für die VM, das virtuelle Netzwerk und das Diagnosespeicherkonto enthält. Sie stellt auch eine Java-Beispielanwendung namens „JBoss-EAP on Azure“ in WildFly bereit.
+<a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/wildfly/wildfly-standalone-centos8" target="_blank"> WildFly 18 in CentOS 8 (eigenständige VM)</a> – Dies ist eine Schnellstartvorlage, die einen eigenständigen Knoten von WildFly 18.0.1.Final auf einer CentOS 8-VM in Ihrer Ressourcengruppe (RG) erstellt, die eine private IP-Adresse für die VM, das virtuelle Netzwerk und das Diagnosespeicherkonto enthält. Sie stellt auch eine Java-Beispielanwendung namens „JBoss-EAP on Azure“ in WildFly bereit.
 
 ## <a name="resource-links"></a>Ressourcenlinks
 

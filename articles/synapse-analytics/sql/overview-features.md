@@ -1,5 +1,5 @@
 ---
-title: T-SQL-Funktionsunterschiede in Synapse SQL
+title: T-SQL-Feature im Synapse SQL-Pool
 description: Liste der Transact-SQL-Funktionen, die in Synapse SQL verfügbar sind.
 services: synapse analytics
 author: jovanpop-msft
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 407c677eb6ae851c2c7d05602ca0ce1458ca80e1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 100da2e8b259c31daa6b0e72c8d2c4c2b0cb1d51
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144563"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569708"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>In Azure Synapse SQL unterstützte Transact-SQL-Funktionen
 
@@ -73,7 +73,7 @@ Die unterstützten Funktionen der in Synapse SQL verwendeten Abfragesprachen k�
 
 ## <a name="security"></a>Sicherheit
 
-Synapse SQL ermöglicht die Verwendung integrierter Sicherheitsfeatures, um Ihre Daten zu schützen und den Zugriff zu steuern. In der folgenden Tabelle werden allgemeine Unterschiede zwischen den Synapse-SQL-Verbrauchsmodellen gegenübergestellt:
+Synapse SQL-Pools ermöglichen die Verwendung integrierter Sicherheitsfeatures, um Ihre Daten zu schützen und den Zugriff zu steuern. In der folgenden Tabelle werden allgemeine Unterschiede zwischen den Synapse-SQL-Verbrauchsmodellen gegenübergestellt:
 
 |   | Dediziert | Serverlos |
 | --- | --- | --- |
@@ -87,15 +87,16 @@ Synapse SQL ermöglicht die Verwendung integrierter Sicherheitsfeatures, um Ihre
 | **Authentifizierung per Speicherzugriffsschlüssel** | Ja, unter Verwendung von [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) in [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true). | Nein |
 | **Authentifizierung für den Speicher mittels [verwalteter Identität](../security/synapse-workspace-managed-identity.md)** | Ja, unter Verwendung von [Anmeldeinformationen für eine verwaltete Dienstidentität](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&preserve-view=true&toc=%2fazure%2fsynapse-analytics%2ftoc.json&view=azure-sqldw-latest&preserve-view=true). | Ja, unter Verwendung von Anmeldeinformationen vom Typ `Managed Identity`. |
 | **Authentifizierung für den Speicher mittels Anwendungsidentität** | [Ja](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Nein |
-| **Berechtigungen – Objektebene** | Ja, einschließlich der Möglichkeit zum Gewähren (GRANT), Verweigern (DENY) und Widerrufen (REVOKE) von Berechtigungen für Benutzer. | Ja, einschließlich der Möglichkeit zum Gewähren (GRANT), Verweigern (DENY) und Widerrufen (REVOKE) von Berechtigungen für Benutzer/Anmeldungen für die unterstützten Systemobjekte. |
-| **Berechtigungen – Schemaebene** | Ja, einschließlich der Möglichkeit zum Gewähren (GRANT), Verweigern (DENY) und Widerrufen (REVOKE) von Berechtigungen für Benutzer/Anmeldungen für das Schema. | Ja, einschließlich der Möglichkeit zum Gewähren (GRANT), Verweigern (DENY) und Widerrufen (REVOKE) von Berechtigungen für Benutzer/Anmeldungen für das Schema. |
-| **Berechtigungen – [Datenbankebene](/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)** | Ja | Ja |
-| **Berechtigungen – [Serverebene](/sql/relational-databases/security/authentication-access/server-level-roles)** | Nein | Ja. Systemadministrator und andere Serverrollen werden unterstützt. |
-| **Berechtigungen – [Sicherheit auf Spaltenebene](../sql-data-warehouse/column-level-security.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)** | Ja | Ja |
-| **Rollen/Gruppen** | Ja, auf Datenbankebene. | Ja, auf Server- und Datenbankebene. |
-| **Sicherheit&amp; Identitätsfunktionen** | Einige Transact-SQL-Sicherheitsfunktionen und -operatoren: `CURRENT_USER`, `HAS_DBACCESS`, `IS_MEMBER`, `IS_ROLEMEMBER`, `SESSION_USER`, `SUSER_NAME`, `SUSER_SNAME`, `SYSTEM_USER`, `USER`, `USER_NAME`, `EXECUTE AS`, `OPEN/CLOSE MASTER KEY` | Einige Transact-SQL-Sicherheitsfunktionen und -operatoren: `CURRENT_USER`, `HAS_DBACCESS`, `HAS_PERMS_BY_NAME`, `IS_MEMBER', 'IS_ROLEMEMBER`, `IS_SRVROLEMEMBER`, `SESSION_USER`, `SESSION_CONTEXT`, `SUSER_NAME`, `SUSER_SNAME`, `SYSTEM_USER`, `USER`, `USER_NAME`, `EXECUTE AS` und `REVERT`. Sicherheitsfunktionen können nicht zum Abfragen externer Daten verwendet werden. (Speichern Sie das Ergebnis in einer Variablen, die in der Abfrage verwendet werden kann.)  |
-| **DATABASE SCOPED CREDENTIAL** | Ja | Ja |
+| **Rollen auf Serverebene** | Nein | Ja. Systemadministrator, öffentliche und andere Serverrollen werden unterstützt. |
 | **SERVER SCOPED CREDENTIAL** | Nein | Ja |
+| **Berechtigungen – [Serverebene](/sql/relational-databases/security/authentication-access/server-level-roles)** | Nein | Ja |
+| **Datenbankweite Rollen** | Ja | Ja |
+| **DATABASE SCOPED CREDENTIAL** | Ja | Ja |
+| **Berechtigungen – [Datenbankebene](/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)** | Ja | Ja |
+| **Berechtigungen – Schemaebene** | Ja, einschließlich der Möglichkeit zum Gewähren (GRANT), Verweigern (DENY) und Widerrufen (REVOKE) von Berechtigungen für Benutzer/Anmeldungen für das Schema. | Ja, einschließlich der Möglichkeit zum Gewähren (GRANT), Verweigern (DENY) und Widerrufen (REVOKE) von Berechtigungen für Benutzer/Anmeldungen für das Schema. |
+| **Berechtigungen – Objektebene** | Ja, einschließlich der Möglichkeit zum Gewähren (GRANT), Verweigern (DENY) und Widerrufen (REVOKE) von Berechtigungen für Benutzer. | Ja, einschließlich der Möglichkeit zum Gewähren (GRANT), Verweigern (DENY) und Widerrufen (REVOKE) von Berechtigungen für Benutzer/Anmeldungen für die unterstützten Systemobjekte. |
+| **Berechtigungen – [Sicherheit auf Spaltenebene](../sql-data-warehouse/column-level-security.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)** | Ja | Ja |
+| **Sicherheit&amp; Identitätsfunktionen** | Einige Transact-SQL-Sicherheitsfunktionen und -operatoren: `CURRENT_USER`, `HAS_DBACCESS`, `IS_MEMBER`, `IS_ROLEMEMBER`, `SESSION_USER`, `SUSER_NAME`, `SUSER_SNAME`, `SYSTEM_USER`, `USER`, `USER_NAME`, `EXECUTE AS`, `OPEN/CLOSE MASTER KEY` | Einige Transact-SQL-Sicherheitsfunktionen und -operatoren: `CURRENT_USER`, `HAS_DBACCESS`, `HAS_PERMS_BY_NAME`, `IS_MEMBER', 'IS_ROLEMEMBER`, `IS_SRVROLEMEMBER`, `SESSION_USER`, `SESSION_CONTEXT`, `SUSER_NAME`, `SUSER_SNAME`, `SYSTEM_USER`, `USER`, `USER_NAME`, `EXECUTE AS` und `REVERT`. Sicherheitsfunktionen können nicht zum Abfragen externer Daten verwendet werden. (Speichern Sie das Ergebnis in einer Variablen, die in der Abfrage verwendet werden kann.)  |
 | **Sicherheit auf Zeilenebene** | [Ja](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Nein |
 | **Transparente Datenverschlüsselung (TDE)** | [Ja](../../azure-sql/database/transparent-data-encryption-tde-overview.md) | Nein | 
 | **Datenermittlung und -klassifizierung** | [Ja](../../azure-sql/database/data-discovery-and-classification-overview.md) | Nein |
@@ -135,7 +136,7 @@ Die zu analysierenden Daten können in verschiedenen Arten von Speicher gespeich
 | **Azure Blob Storage** | Ja | Ja |
 | **Azure SQL (Remote)** | Nein  | Nein  |
 | **Transaktionaler Azure CosmosDB-Speicher** | Nein  | Nein  |
-| **Analytischer Speicher für Azure CosmosDB** | Nein | Ja, mithilfe von [Synapse Link (Vorschau)](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) ([Public Preview](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json#limitations)) |
+| **Analytischer Speicher für Azure CosmosDB** | Nein | Ja, unter Verwendung von [Synapse Link](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) |
 | **Apache Spark-Tabellen (im Arbeitsbereich)** | Nein  | PARQUET-Tabellen, die nur [Metadatensynchronisierung](develop-storage-files-spark-tables.md) verwenden |
 | **Apache Spark-Tabellen (Remote)** | Nein  | Nein  |
 | **Databricks-Tabellen (Remote)** | Nein | Nein |
@@ -153,7 +154,7 @@ Zu analysierende Daten können in verschiedenen Speicherformaten gespeichert sei
 | **Hive RC** | [Ja](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Nein |
 | **JSON** | Ja | [Ja](query-json-files.md) |
 | **Avro** | Nein | Nein |
-| **[Delta-Lake](https://delta.io/)** | Nein | Nein |
+| **[Delta-Lake](https://delta.io/)** | Nein | [Ja](query-delta-lake-format.md) |
 | **[CDM](/common-data-model/)** | Nein | Nein |
 
 ## <a name="next-steps"></a>Nächste Schritte

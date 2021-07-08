@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial zur Bildklassifizierung: Trainieren von Modellen'
+title: 'Tutorial: Trainieren einer Jupyter Notebook-Beispielinstanz'
 titleSuffix: Azure Machine Learning
-description: Verwenden Sie Azure Machine Learning, um ein Bildklassifizierungsmodell mit scikit-learn in einer Python Jupyter Notebook-Instanz zu trainieren. Dieses Tutorial ist das erste einer zweiteiligen Reihe.
+description: Hier erfahren Sie, wie Sie Azure Machine Learning verwenden, um ein Bildklassifizierungsmodell mit scikit-learn in einer cloudbasierten Python Jupyter Notebook-Instanz zu trainieren. Dieses Tutorial ist das erste einer zweiteiligen Reihe.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,15 +9,15 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 04/26/2021
-ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 41f7870bdab36de69251bb1274472ec16d05d0a5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: seodec18, devx-track-python, contperf-fy21q4
+ms.openlocfilehash: 544b3ac4702f8ecaa66735f8e0b836cc6f004f42
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773861"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028251"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Tutorial: Trainieren von Bildklassifizierungsmodellen mit MNIST-Daten und scikit-learn 
+# <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>Tutorial: Trainieren eines Bildklassifizierungsmodells mit einer Jupyter Notebook-Beispielinstanz 
 
 In diesem Tutorial wird ein Modell für maschinelles Lernen auf Remotecomputeressourcen trainiert. Hierbei wird der Trainings- und Bereitstellungsworkflow für Azure Machine Learning in einer Python Jupyter Notebook-Instanz verwendet.  Anschließend können Sie das Notebook als Vorlage verwenden, um Ihr eigenes Machine Learning-Modell mit Ihren eigenen Daten zu trainieren. Dieses Tutorial ist der **erste Teil einer zweiteiligen Reihe**.  
 
@@ -77,7 +77,7 @@ Sie führen die folgenden Schritte zum Einrichten und Ausführen des Experiments
 
 ### <a name="open-the-cloned-notebook"></a><a name="open"></a> Öffnen des geklonten Notebooks
 
-1. Öffnen Sie den Ordner **Tutorials**, den Sie im Abschnitt **Benutzerdateien** geschlossen haben.
+1. Öffnen Sie den Ordner **tutorials**, den Sie im Abschnitt **Benutzerdateien** geklont haben.
 
     > [!IMPORTANT]
     > Im Ordner **Beispiele** können Notebooks angezeigt, aber nicht ausgeführt werden. Öffnen Sie zum Ausführen eines Notebooks die geklonte Version des Notebooks unbedingt im Abschnitt **Benutzerdateien**.
@@ -124,7 +124,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>Stellen Sie eine Verbindung mit einem Arbeitsbereich her.
 
-Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. `Workspace.from_config()` liest die Datei **config.JSON** und lädt die Details in ein Objekt namens `ws`:
+Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. `Workspace.from_config()` liest die Datei **config.JSON** und lädt die Details in ein Objekt namens `ws`.  Die Compute-Instanz verfügt über eine im Stammverzeichnis gespeicherte Kopie dieser Datei.  Wenn Sie den Code anderswo ausführen möchten, müssen Sie [die Datei erstellen](how-to-configure-environment.md#workspace).
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
