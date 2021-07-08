@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/04/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: b1cff29834f60e11818324a94624e0e6dd0ee43e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 70fc2edbf9ae342f91913f0345db3bb1ac0332a3
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100365"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592631"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an Azure IoT Hub
 
@@ -85,9 +85,9 @@ So löschen Sie eine Ressourcengruppe anhand des Namens:
 
 In dieser Schnellstartanleitung haben Sie einen grundlegenden Workflow für Azure IoT-Anwendungen zum sicheren Verbinden eines Geräts mit der Cloud und zum Senden von Telemetriedaten vom Gerät zur Cloud kennengelernt. Sie haben die Azure CLI verwendet, um einen Azure IoT-Hub und eine Geräteinstanz zu erstellen. Anschließend haben Sie mit dem Azure IoT-Geräte-SDK ein simuliertes Gerät erstellt, eine Verbindung mit dem Hub hergestellt und Telemetriedaten gesendet. Sie haben zudem das Azure-Portal verwendet, um Telemetriedaten zu überwachen.
 
-Sehen Sie sich anschließend die folgenden Artikel an, um mehr über das Erstellen von Gerätelösungen mit Azure IoT zu erfahren: 
+Fahren Sie nun mit der folgenden Schnellstartreihe fort, um mehr über das Erstellen von Gerätelösungen mit Azure IoT zu erfahren.
 
 > [!div class="nextstepaction"]
 > [Senden von Telemetriedaten an IoT Central](quickstart-send-telemetry-central.md)
 > [!div class="nextstepaction"]
-> [Erste Schritte bei der eingebetteten Entwicklung](quickstart-device-development.md)
+> [Schnellstart: Verbinden eines MXCHIP AZ3166-DevKit mit IoT Central](quickstart-devkit-mxchip-az3166.md)

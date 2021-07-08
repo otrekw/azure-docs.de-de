@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 06/04/2021
 ms.author: alkohli
-ms.openlocfilehash: a415dba4bb4fd5b95e98ae7c104cae92db27f34c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 406e31320e8f7d0d95bfef44f620505989b3ae9f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060158"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746697"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Tutorial: Installieren von Azure Stack Edge Pro mit GPU
 
@@ -163,7 +163,7 @@ Bevor Sie mit der Verkabelung Ihres Geräts beginnen, benötigen Sie Folgendes:
 - Das physische Azure Stack Edge Pro-Gerät (ausgepackt und im Rack montiert).
 - Zwei Netzkabel
 - Mindestens ein Netzwerkkabel (1 GbE, RJ45) zum Anschließen an die Verwaltungsschnittstelle. Das Gerät verfügt über zwei 1-GbE-Netzwerkschnittstellen: eine für die Verwaltung und eine für Daten.
-- Ein SFP+-Kupferkabel (25 GbE) für jede zu konfigurierende Datennetzwerkschnittstelle. Mindestens eine Datennetzwerkschnittstelle („PORT 2“, „PORT 3“, „PORT 4“, „PORT 5“ oder PORT 6“) muss mit dem Internet verbunden sein und über Azure-Konnektivität verfügen.  
+- Ein SFP+-Kupferkabel (25/10 GbE) für jede zu konfigurierende Datennetzwerkschnittstelle. Mindestens eine Datennetzwerkschnittstelle („PORT 2“, „PORT 3“, „PORT 4“, „PORT 5“ oder PORT 6“) muss mit dem Internet verbunden sein und über Azure-Konnektivität verfügen.  
 - Zugang zu zwei PDUs (Power Distribution Units) (empfohlen)
 - Mindestens ein 1-GbE-Netzwerkswitch zum Verbinden einer 1-GbE-Netzwerkschnittstelle mit dem Internet für Daten. Es besteht kein Zugriff auf die lokale Webbenutzeroberfläche, wenn nicht mindestens ein 1-GbE-Switch angeschlossen ist. Wenn Sie eine 25/10-GbE-Schnittstelle für Daten verwenden, benötigen Sie einen 25-GbE- oder 10-GbE-Switch.
 
@@ -190,10 +190,10 @@ Auf dem Azure Stack Edge Pro-Gerät:
     - **Benutzerdefinierter Microsoft `Qlogic` Cavium 25G NDC-Adapter**: Port 1 bis Port 4.
     - **Mellanox Dual Port 25G ConnectX-4-Kanal-Netzwerkadapter**: Port 5 und Port 6.
 
-Eine vollständige Liste der unterstützten Kabel, Switches und Transceiver für diese Netzwerkkarten finden Sie unter:
+Eine vollständige Liste der unterstützten Kabel, Switches und Transceiver für diese Netzwerkadapterkarten finden Sie hier:
 
 - [Interoperabilitätsmatrix für `Qlogic` Cavium 25G NDC-Adapter](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
-- [Mit Mellanox Dual Port 25G ConnectX-4-Kanal-Netzwerkadapter kompatible Produkte](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).  
+- Kabel und Module (25 GbE und 10 GbE) in [mit Mellanox Dual Port 25G ConnectX-4-Kanal-Netzwerkadapter kompatiblen Produkten](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).  
 
  
 Gehen Sie wie folgt vor, um Ihr Gerät an die Stromversorgung und an das Netzwerk anzuschließen:

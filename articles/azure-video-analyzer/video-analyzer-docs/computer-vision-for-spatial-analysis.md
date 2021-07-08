@@ -6,12 +6,12 @@ ms.author: juliako
 ms.service: azure-video-analyzer
 ms.topic: tutorial
 ms.date: 04/01/2021
-ms.openlocfilehash: d54983e25abc769a75923e59c483a4cf9495770f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 82edf5b282f7b68a7d4d1d7909cfe653a65c175b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384038"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746559"
 ---
 # <a name="tutorial-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Tutorial: Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse (Vorschau)
 
@@ -145,16 +145,7 @@ Sie benötigen diesen Schlüssel und den Endpunkt-URI in Ihren Bereitstellungsma
 1. Klonen Sie das folgende Repository: [https://github.com/Azure-Samples/azure-video-analyzer-iot-edge-csharp](https://github.com/Azure-Samples/azure-video-analyzer-iot-edge-csharp).
 1. Öffnen Sie in Visual Studio Code den Ordner, in den das Repository heruntergeladen wurde.
 1. Navigieren Sie in Visual Studio Code zum Ordner src/cloud-to-device-console-app. Erstellen Sie darin eine Datei, und geben Sie ihr den Namen *appsettings.json*. Diese Datei enthält die Einstellungen, die zum Ausführen des Programms erforderlich sind.
-1. Rufen Sie die IoT Hub-Verbindungszeichenfolge (`IotHubConnectionString`) vom Edgegerät ab:
-
-   - Wechseln Sie zu IoT Hub im Azure-Portal, und klicken Sie im linken Navigationsbereich auf `Shared access policies`.
-   - Klicken Sie auf `iothubowner`, um die Schlüssel für gemeinsamen Zugriff abzurufen.
-   - Kopieren Sie den Primärschlüssel der Verbindungszeichenfolge (`Connection String – primary key`), und fügen Sie ihn in Visual Studio Code in das Eingabefeld ein.
-
-     Die Verbindungszeichenfolge lautet: <br/>`HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=xxx`
-
-1. Kopieren Sie den folgenden Inhalt in die Datei. Ersetzen Sie die Variablen.
-
+1. Kopieren Sie den Inhalt der Datei „appsettings.json“ aus dem Azure-Portal. Der Text sollte wie der folgende Code aussehen.
    ```json
    {
      "IoThubConnectionString": "HostName=<IoTHubName>.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=<SharedAccessKey>",
@@ -164,7 +155,7 @@ Sie benötigen diesen Schlüssel und den Endpunkt-URI in Ihren Bereitstellungsma
    ```
 
 1. Navigieren Sie zum Ordner src/edge, und erstellen Sie eine Datei mit dem Namen .env.
-1. Kopieren Sie den Inhalt der ENV-Datei aus dem Azure-Portal. Der Text sollte wie der folgende Code aussehen.
+1. Kopieren Sie den Inhalt der Datei „env.txt“ aus dem Azure-Portal. Der Text sollte wie der folgende Code aussehen.
 
    ```env
    SUBSCRIPTION_ID="<Subscription ID>"
@@ -198,7 +189,7 @@ Bei der Bereitstellungsvorlagendatei sind einige Aspekte zu beachten:
 1. Die Erstellungsoptionen (createOptions) von `IpcMode` in den Modulen `avaedge` und `spatialanalysis` müssen identisch und auf **host** festgelegt sein.
 1. Damit der RTSP-Simulator funktioniert, müssen bei Verwendung eines Azure Stack Edge-Geräts Volumegrenzen eingerichtet worden sein.
 
-   1. [Stellen Sie eine Verbindung mit der SMB-Freigabe her](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share), und kopieren Sie die [Beispielvideodatei „stairwell“](https://lvamedia.blob.core.windows.net/public/2018-03-05.10-27-03.10-30-01.admin.G329.mp4) in die lokale Freigabe.
+   1. [Stellen Sie eine Verbindung mit der SMB-Freigabe her](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share), und kopieren Sie die [Beispielvideodatei „stairwell“](https://lvamedia.blob.core.windows.net/public/2018-03-05.10-27-03.10-30-01.admin.G329.mkv) in die lokale Freigabe.
 
       > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWDRJd]
 
@@ -295,7 +286,7 @@ In „operations.json“:
   {
       "opName": "pipelineTopologySet",
       "opParams": {
-          "topologyUrl": "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-count-operation-topology.json"
+          "pipelineTopologyUrl": "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-count-operation-topology.json"
       }
   },
   ```
@@ -313,7 +304,7 @@ In „operations.json“:
               "parameters": [
                   {
                       "name": "rtspUrl",
-                      "value": " rtsp://rtspsim:554/media/stairwell.mkv"
+                      "value": " rtsp://rtspsim:554/media/2018-03-05.10-27-03.10-30-01.admin.G329.mkv"
                   },
                   {
                       "name": "rtspUserName",
@@ -381,7 +372,7 @@ In „operations.json“:
       ],
   ```
 
-Führen Sie eine Debugsitzung aus, und befolgen Sie die Anweisungen im **TERMINAL**, um die Pipelinetopologie festzulegen, die Livepipeline festzulegen, die Livepipeline zu aktivieren und schließlich die Ressourcen zu löschen.
+Drücken Sie F5, um eine Debugsitzung zu starten, und befolgen Sie die Anweisungen im **TERMINAL**, um die Pipelinetopologie festzulegen, die Livepipeline festzulegen, die Livepipeline zu aktivieren und schließlich die Ressourcen zu löschen.
 
 ## <a name="interpret-results"></a>Interpretieren von Ergebnissen
 
@@ -725,12 +716,26 @@ Beispielausgabe für „personZoneEvent“ (aus dem Vorgang `SpatialAnalysisPers
 
 </details>
 
-## <a name="video-player"></a>Videoplayer
+## <a name="playing-back-the-recording"></a>Wiedergeben der Aufzeichnung
 
-Sie können einen Videoplayer verwenden, um sich das generierte Video einschließlich der Rückschlüsse (umgebende Rechtecke) anzusehen:
+Sie können die von der Livepipeline erstellte Video Analyzer-Videoressource untersuchen, indem Sie sich beim Azure-Portal anmelden und das Video anzeigen.
 
-> [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis/inference.png" alt-text="Umgebende Rechtecke":::
+1. Öffnen Sie Ihren Webbrowser, und navigieren Sie zum [Azure-Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinformationen ein, um sich beim Portal anzumelden. Die Standardansicht ist Ihr Dienstdashboard.
+1. Suchen Sie unter den Ressourcen Ihres Abonnements nach Ihrem Video Analyzer-Konto, und öffnen Sie den Kontobereich.
+1. Wählen Sie in der Liste **Video Analyzers** die Option **Videos** aus.
+1. Ein Video mit dem Namen `personcount` ist aufgeführt. Dies ist der Name, den Sie in Ihrer Datei mit der Pipelinetopologie ausgewählt haben.
+1. Wählen Sie das Video aus.
+1. Klicken Sie auf der Seite mit den Videodetails auf das **Wiedergabesymbol**.
+
+   > [!div class="mx-imgBorder"]
+   > :::image type="content" source="./media/spatial-analysis/sa-video-playback.png" alt-text="Screenshot: Videowiedergabe":::
+   
+1. Klicken Sie auf das **Begrenzungsrahmensymbol**, um die Rückschlussmetadaten als Begrenzungsrahmen im Video anzuzeigen.
+   > [!div class="mx-imgBorder"]
+   > :::image type="content" source="./media/record-stream-inference-data-with-video/bounding-box.png" alt-text="Begrenzungsrahmensymbol":::
+
+> [!NOTE]
+> Da es sich bei der Quelle des Videos um einen Container zum Simulieren eines Kamerafeeds handelt, beziehen sich die Zeitstempel im Video auf den Zeitpunkt, zu dem Sie die Livepipeline aktiviert bzw. deaktiviert haben.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

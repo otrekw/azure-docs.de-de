@@ -6,19 +6,19 @@ ms.author: sidram
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/22/2020
-ms.openlocfilehash: 9939130782594c03a497d98ce6cd9b33b28eadec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/20/2021
+ms.openlocfilehash: 1741c48d98e18053bbb87f46f0223a3fd12d6091
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718402"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476593"
 ---
 # <a name="create-and-delete-managed-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Erstellen und Löschen verwalteter privater Endpunkte in einem Azure Stream Analytics-Cluster
 
 Sie können Ihre Azure Stream Analytics-Aufträge in einem Cluster mit Eingabe- und Ausgaberessourcen hinter einer Firewall oder einer Azure Virtual Network-Instanz (VNET) verbinden. Erstellen Sie zunächst einen verwalteten privaten Endpunkt für eine Ressource (z. B. Azure Event Hub oder Azure SQL-Datenbank) in Ihrem Stream Analytics-Cluster. Genehmigen Sie dann die Verbindung mit einem privaten Endpunkt von Ihrer Eingabe- oder Ausgaberessource.
 
-Nachdem Sie die Verbindung genehmigt haben, kann jeder Auftrag, der in Ihrem Stream Analytics-Cluster ausgeführt wird, über den privaten Endpunkt auf die Ressource zugreifen. In diesem Artikel wird gezeigt, wie private Endpunkte in einem Stream Analytics-Cluster erstellt und gelöscht werden. Sie können private Endpunkte für Azure SQL-Datenbank, Azure Storage, Azure Data Lake Storage Gen2, Azure Event Hub und Azure Service Bus erstellen. Private Endpunkte für andere Dienste werden in Kürze hinzugefügt. 
+Nachdem Sie die Verbindung genehmigt haben, kann jeder Auftrag, der in Ihrem Stream Analytics-Cluster ausgeführt wird, über den privaten Endpunkt auf die Ressource zugreifen. In diesem Artikel wird gezeigt, wie private Endpunkte in einem Stream Analytics-Cluster erstellt und gelöscht werden. Sie können private Endpunkte für Azure SQL Database, Azure Synapse SQL Database, Azure Cosmos DB, Azure Storage, Azure Data Lake Storage Gen2, Azure Event Hub, Azure IoT Hubs und Azure Service Bus erstellen.
 
 ## <a name="create-managed-private-endpoint-in-stream-analytics-cluster"></a>Erstellen eines verwalteten privaten Endpunkts in einem Stream Analytics-Cluster
 

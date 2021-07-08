@@ -7,12 +7,12 @@ ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 94c7a800fc551faf6650b8e30fe7c2188f7d2dbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e32c5f02191e4bd60ad4334884df34ce0bc0537
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100008382"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537451"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Verbinden Ihrer GCP-Konten mit Azure Security Center
 
@@ -134,7 +134,7 @@ Zum Anzeigen aller aktiven Empfehlungen für Ihre Ressourcen nach Ressourcentyp 
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Ressourcentypfilter der Seite für den Ressourcenbestand mit den GCP-Optionen"::: 
 
 
-## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>Häufig gestellte Fragen zum Verbinden von GCP-Konten mit Azure Security Center
+## <a name="faq---connecting-gcp-accounts-to-azure-security-center"></a>Häufig gestellte Fragen: Verbinden von GCP-Konten mit Azure Security Center
 
 ### <a name="can-i-connect-multiple-gcp-organizations-to-security-center"></a>Kann ich mehrere GCP-Organisationen mit Security Center verbinden?
 Ja. Über den GCP-Connector von Security Center werden Ihre Google Cloud-Ressourcen auf *Organisationsebene* verbunden. 

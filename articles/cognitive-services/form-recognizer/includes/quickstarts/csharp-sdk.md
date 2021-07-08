@@ -4,23 +4,27 @@ description: Verwenden Sie die Clientbibliothek der Formularerkennung für .NET,
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/12/2021
+ms.date: 05/25/2021
 ms.author: lajanuar
 ms.custom: " devx-track-csharp"
-ms.openlocfilehash: 1adba2b8f0be01be231721a9c838ad6961ab03a0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 000c8a1bf59597dd8786874eff3b5edcbc8e364a
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374180"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894349"
 ---
 <!-- markdownlint-disable MD024 -->
+
 <!-- markdownlint-disable MD033 -->
 > [!IMPORTANT]
-> Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet.
+>
+> * In dieser Schnellstartanleitung wird die SDK-Version **3.1.0** mit der API-Version **2.1** als Ziel verwendet.
+>
+>* Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet.
 
 [Referenzdokumentation](/dotnet/api/overview/azure/ai.formrecognizer-readme) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [Beispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
@@ -61,28 +65,9 @@ Build succeeded.
 
 Installieren Sie im Anwendungsverzeichnis mit dem folgenden Befehl die Formularerkennungs-Clientbibliothek für .NET:
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
 ```console
-dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.4
+dotnet add package Azure.AI.FormRecognizer --version 3.1.0
 ```
-
-> [!NOTE]
-> Für das SDK von Formularerkennung 3.1.0-beta.4 wird _API-Version 2.1-preview.3 verwendet.
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```console
-dotnet add package Azure.AI.FormRecognizer --version 3.0.0
-```
-
-> [!NOTE]
-> Für das SDK von Formularerkennung 3.0.0 wird API-Version 2.0 verwendet.
-
----
-
-> [!TIP]
-> Möchten Sie sich sofort die gesamte Codedatei für die Schnellstartanleitung ansehen? Die Datei steht [auf GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) zur Verfügung. Dort finden Sie die Codebeispiele aus dieser Schnellstartanleitung.
 
 Öffnen Sie aus dem Projektverzeichnis die Datei *Program.cs* in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. Fügen Sie die folgenden `using`-Anweisungen hinzu:
 
@@ -93,21 +78,13 @@ Erstellen Sie in der **Program**-Klasse der Anwendung Variablen für den Schlüs
 > [!IMPORTANT]
 > Öffnen Sie das Azure-Portal. Wenn die im Abschnitt **Voraussetzungen** erstellte Formularerkennungsressource erfolgreich bereitgestellt wurde, klicken Sie unter **Nächste Schritte** auf die Schaltfläche **Zu Ressource wechseln**. Schlüssel und Endpunkt finden Sie auf der Seite mit dem **Schlüssel und dem Endpunkt** der Ressource unter **Ressourcenverwaltung**.
 >
-> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../../../cognitive-services-security.md).
+> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. Verwenden Sie in der Produktionsumgebung sichere Methoden, um Ihre Anmeldeinformationen zu speichern und darauf zuzugreifen. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../../../cognitive-services-security.md).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_creds)]
 
-Fügen Sie in der Methode **Main** der Anwendung einen Aufruf der asynchronen Aufgaben hinzu, die in dieser Schnellstartanleitung verwendet werden. Die Implementierung erfolgt zu einem späteren Zeitpunkt.
-
-#### <a name="v21"></a>[v2.1](#tab/2-1)
+Fügen Sie in der Methode **Main** der Anwendung einen Aufruf der asynchronen Aufgaben hinzu, die in dieser Schnellstartanleitung verwendet werden. Die Implementierung erfolgt zu einem späteren Zeitpunkt:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
-
----
 
 ## <a name="object-model"></a>Objektmodell
 
@@ -135,34 +112,6 @@ Sehen Sie sich die Beispiele zum [Trainieren eines Modells](#train-a-custom-mode
 > [!NOTE]
 > Modelle können auch mithilfe einer grafischen Benutzeroberfläche trainiert werden, z. B. mit dem [Formularerkennungstool für die Bezeichnung](../../label-tool.md).
 
-## <a name="code-examples"></a>Codebeispiele
-
-Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formularerkennungs-Clientbibliothek für .NET ausgeführt werden:
-<!-- markdownlint-disable MD001 -->
-
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
-* [Authentifizieren des Clients](#authenticate-the-client)
-* [Analysieren des Layouts](#analyze-layout)
-* [Analysieren von Belegen](#analyze-receipts)
-* [Analysieren von Visitenkarten](#analyze-business-cards)
-* [Analysieren von Rechnungen](#analyze-invoices)
-* [Analysieren von Ausweisdokumenten](#analyze-identity-documents)
-* [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
-* [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
-* [Verwalten benutzerdefinierter Modelle](#manage-custom-models)
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-* [Authentifizieren des Clients](#authenticate-the-client)
-* [Analysieren des Layouts](#analyze-layout)
-* [Analysieren von Belegen](#analyze-receipts)
-* [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
-* [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
-* [Verwalten benutzerdefinierter Modelle](#manage-custom-models)
-
----
-
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
 Erstellen Sie unterhalb von **Main** eine neue Methode mit dem Namen `AuthenticateClient`. Sie verwenden diese in anderen Aufgaben, um Ihre Anforderungen beim Formularerkennungsdienst zu authentifizieren. Diese Methode verwendet das `AzureKeyCredential`-Objekt, damit Sie bei Bedarf den API-Schlüssel aktualisieren können, ohne neue Clientobjekte zu erstellen.
@@ -170,7 +119,7 @@ Erstellen Sie unterhalb von **Main** eine neue Methode mit dem Namen `Authentica
 > [!IMPORTANT]
 > Rufen Sie Ihren Schlüssel und Endpunkt im Azure-Portal ab. Wenn die im Abschnitt **Voraussetzungen** erstellte Formularerkennungsressource erfolgreich bereitgestellt wurde, klicken Sie unter **Nächste Schritte** auf die Schaltfläche **Zu Ressource wechseln**. Schlüssel und Endpunkt finden Sie auf der Seite mit dem **Schlüssel und dem Endpunkt** der Ressource unter **Ressourcenverwaltung**.
 >
-> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Beispielsweise [Azure Key Vault](../../../../key-vault/general/overview.md).
+> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. Verwenden Sie in der Produktionsumgebung sichere Methoden, um Ihre Anmeldeinformationen zu speichern und darauf zuzugreifen. Beispielsweise [Azure Key Vault](../../../../key-vault/general/overview.md).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_auth)]
 
@@ -188,15 +137,7 @@ Sie müssen außerdem Verweise auf die URLs für Ihre Trainings- und Testdaten h
 * Führen Sie anschließend erneut die obigen Schritte aus, um die SAS-URL eines einzelnen Dokuments im Blobspeichercontainer abzurufen. Speichern Sie sie ebenfalls an einem temporären Speicherort.
 * Speichern Sie abschließend die URL der Beispielbilder (unten enthalten und auch auf [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) verfügbar).
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
-
----
 
 ## <a name="analyze-layout"></a>Analysieren des Layouts
 
@@ -309,8 +250,6 @@ Total: '1203.39', with confidence '0.774'
 
 ## <a name="analyze-business-cards"></a>Analysieren von Visitenkarten
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten analysieren und extrahieren. Weitere Informationen zur Analyse von Visitenkarten finden Sie im [Konzeptleitfaden zu Visitenkarten](../../concept-business-cards.md).
 
 Verwenden Sie die Methode `StartRecognizeBusinessCardsFromUriAsync`, um Visitenkarten unter einer URL zu analysieren.
@@ -324,16 +263,7 @@ Der folgende Code verarbeitet die Visitenkarte unter dem angegebenen URI und gib
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
-
----
-
 ## <a name="analyze-invoices"></a>Analysieren von Rechnungen
-
-#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Rechnungsfelder analysieren und extrahieren. Weitere Informationen zur Rechnungsanalyse finden Sie im [Konzeptleitfaden zu Rechnungen](../../concept-invoices.md).
 
@@ -348,36 +278,20 @@ Der folgende Code verarbeitet die Rechnung unter dem angegebenen URI und gibt di
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
-
----
-
 ## <a name="analyze-identity-documents"></a>Analysieren von Ausweisdokumenten
-
-#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe des vordefinierten Formularerkennungs-ID-Modells wichtige Informationen aus von staatlichen Behörden ausgestellten Ausweisdokumenten (internationale Reisepässe und US-Führerscheine) analysieren und extrahieren. Weitere Informationen zur Ausweisdokumentanalyse finden Sie unter [Vordefiniertes ID-Modell der Formularerkennung für Ausweise](../../concept-identification-cards.md).
 
-Verwenden Sie die Methode `StartRecognizeIdDocumentsFromUriAsync`, um Ausweisdokumente unter einem URI zu analysieren.
+Verwenden Sie die Methode `StartRecognizeIdentityDocumentsFromUriAsync`, um Ausweisdokumente unter einem URI zu analysieren.
 
-:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs" id="snippet_id_call":::
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_id_call)]
 
 > [!TIP]
-> Auch lokale Ausweisdokumentbilder können analysiert werden. Sehen Sie sich dazu die Methoden vom Typ [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) an (beispielsweise **StartRecognizeIdDocumentsAsync**). Sie finden auch im Beispielcode auf [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) Szenarien zu lokalen Bildern.
+> Auch lokale Ausweisdokumentbilder können analysiert werden. Sehen Sie sich dazu die Methoden vom Typ [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) an (beispielsweise **StartRecognizeIdentityDocumentsAsync**). Sie finden auch im Beispielcode auf [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) Szenarien zu lokalen Bildern.
 
 Der folgende Code verarbeitet das Ausweisdokument unter dem angegebenen URI und gibt die wichtigsten Felder und Werte in der Konsole aus:
 
-:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs" id="snippet_id_print":::
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
-
----
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_id_print)]
 
 ## <a name="train-a-custom-model"></a>Trainieren eines benutzerdefinierten Modells
 
@@ -709,14 +623,26 @@ catch (RequestFailedException e)
 
 Sie werden feststellen, dass zusätzliche Informationen protokolliert werden, wie etwa die Clientanforderungs-ID des Vorgangs.
 
-``
+```console
 
-Meldung: Azure.RequestFailedException: Fehler bei Service Request.
-Status: 400 (Ungültige Anforderung)
+Message:
+    Azure.RequestFailedException: Service request failed.
+    Status: 400 (Bad Request)
 
-Inhalt: {"error":{"code":"FailedToDownloadImage","innerError": {"requestId":"8ca04feb-86db-4552-857c-fde903251518"}, "message":"Failed to download image from input URL."}}
+Content:
+    {"error":{"code":"FailedToDownloadImage","innerError":
+    {"requestId":"8ca04feb-86db-4552-857c-fde903251518"},
+    "message":"Failed to download image from input URL."}}
 
-Header: Transfer-Encoding: chunked x-envoy-upstream-service-time: REDACTED apim-request-id: REDACTED Strict-Transport-Security: REDACTED X-Content-Type-Options: REDACTED Date: Mon, 20 Apr 2020 22:48:35 GMT Content-Type: application/json; charset=utf-8 ``
+Headers:
+    Transfer-Encoding: chunked
+    x-envoy-upstream-service-time: REDACTED
+    apim-request-id: REDACTED
+    Strict-Transport-Security: REDACTED
+    X-Content-Type-Options: REDACTED
+    Date: Mon, 20 Apr 2020 22:48:35 GMT
+    Content-Type: application/json; charset=utf-8
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

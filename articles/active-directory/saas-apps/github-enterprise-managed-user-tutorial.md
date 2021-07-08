@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2021
 ms.author: jeedes
-ms.openlocfilehash: a5a6833e07e6743eed4013739f9acda6b5bd1fa4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ffdd6c30e279cc5df7f97e5ab5bb77a87c18dd8b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145919"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480497"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-managed-user"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit GitHub Enterprise Managed User
 
-In diesem Tutorial erfahren Sie, wie Sie GitHub Enterprise Managed User in Azure Active Directory (Azure AD) integrieren. Die Integration von GitHub Enterprise Managed User mit Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie GitHub Enterprise Managed User (EMU) in Azure Active Directory (Azure AD) integrieren. Die Integration von GitHub Enterprise Managed User mit Azure AD ermöglicht Folgendes:
 
 * Sie können in Azure AD steuern, wer Zugriff auf GitHub Enterprise Managed User haben soll.
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei GitHub Enterprise Managed User anzumelden.
@@ -38,8 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * GitHub Enterprise Managed User unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
-* GitHub Enterprise Managed User unterstützt die **Just-In-Time**-Benutzerbereitstellung.
-* GitHub Enterprise Managed User unterstützt die [**automatisierte** Benutzerbereitstellung](./github-enterprise-managed-user-provisioning-tutorial.md).
+* Für GitHub Enterprise Managed User ist die [**automatische** Benutzerbereitstellung](./github-enterprise-managed-user-provisioning-tutorial.md) erforderlich.
 
 ## <a name="adding-github-enterprise-managed-user-from-the-gallery"></a>Hinzufügen von GitHub Enterprise Managed User aus dem Katalog
 
@@ -55,16 +54,10 @@ Zum Konfigurieren der Integration von GitHub Enterprise Managed User in Azure A
 
 ## <a name="configure-and-test-azure-ad-sso-for-github-enterprise-managed-user"></a>Konfigurieren und Testen des einmaligen Anmeldens für GitHub Enterprise Managed User
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit GitHub Enterprise Managed User mithilfe eines Testbenutzers namens **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in GitHub Enterprise Managed User eingerichtet werden.
-
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit GitHub Enterprise Managed User die folgenden Schritte aus:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für GitHub Enterprise Managed User](#configure-github-enterprise-managed-user-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-    1. **[Erstellen eines Testbenutzers für GitHub Enterprise Managed User](#create-github-enterprise-managed-user-test-user)** , um in GitHub Enterprise Managed User eine Entsprechung von B.Simon zu erhalten, die mit der Benutzerdarstellung in Azure AD verknüpft ist.
-1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um in Ihrem AAD-Mandanten das einmalige Anmelden für SAML (SAML-SSO) zu aktivieren.
+1. **[Konfigurieren des einmaligen Anmeldens für GitHub Enterprise Managed User](#configure-github-enterprise-managed-user-sso)** , um die Einstellungen für einmaliges Anmelden in Ihrer GitHub Enterprise-Instanz zu konfigurieren.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
@@ -76,77 +69,66 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+1. Stellen Sie sicher, dass Sie die URL Ihrer Enterprise-Instanz kennen, bevor Sie beginnen. Das unten genannte Feld „ENTITÄT“ enthält den Unternehmensnamen Ihrer EMU-fähigen Enterprise-URL, beispielsweise https://github.com/enterprises/contoso  - **contoso** als ENTITÄT. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://github.com/enterprise-managed/<ENTITY>`
-
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://github.com/enterprises/<ENTITY>`
+    
+    > [!NOTE]
+    > Beachten Sie, dass sich das Bezeichnerformat von dem von der Anwendung vorgeschlagenen Format unterscheidet. Sie müssen jedoch das oben genannte Format verwenden. Stellen Sie außerdem sicher, dass der **Bezeichner keinen nachstehenden Schrägstrich enthält.
+    
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://github.com/enterprises/<ENTITY>/saml/consume`
+    
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://github.com/enterprises/<ENTITY>/sso`
 
-    > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom [Supportteam für den GitHub Enterprise Managed User-Client](mailto:support@github.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
-
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+    ![Downloadlink für das Zertifikat](common/certificate-base64-download.png)
 
-1. Kopieren Sie im Abschnitt **GitHub Enterprise Managed User einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **Einrichten von GitHub Enterprise Managed User** die unten angegebenen URLs, und speichern Sie sie für die spätere Konfiguration von GitHub.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
-
-1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
-1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
-   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie dem Benutzer Zugriff auf GitHub Enterprise Managed User gewähren.
+In diesem Abschnitt weisen Sie GitHub Enterprise Managed User Ihr Konto zu, um das Einrichten des einmaligen Anmeldens abzuschließen.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste die Option **GitHub Enterprise Managed User** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ Ihr Konto aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wählen Sie im Dialogfeld **Rolle auswählen** die Rolle **Unternehmensbesitzer** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**. Ihr Konto wird Ihrer GitHub-Instanz als Unternehmensbesitzer zugewiesen, wenn Sie im nächsten Tutorial Ihr Konto bereitstellen. 
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-github-enterprise-managed-user-sso"></a>Konfigurieren des einmaligen Anmeldens für GitHub Enterprise Managed User
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **GitHub Enterprise Managed User** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von GitHub Enterprise Managed User](mailto:support@github.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens für **GitHub Enterprise Managed User** benötigen Sie Folgendes:
 
-### <a name="create-github-enterprise-managed-user-test-user"></a>Erstellen eines Testbenutzers für GitHub Enterprise Managed User
+1. Die oben genannten URLs aus Ihrer AAD Enterprise Managed User-Anwendung: Anmelde-URL; Azure AD-Bezeichner und Abmelde-URL
+1. Kontoname und Kennwort für den ersten Administratorbenutzer Ihrer GitHub Enterprise-Instanz. Die Anmeldeinformationen werden über eine E-Mail für die Kennwortzurücksetzung von Ihrem GitHub Solutions Engineering-Kontakt bereitgestellt. 
 
-In diesem Abschnitt wird in GitHub Enterprise Managed User ein Benutzer namens B.Simon erstellt. GitHub Enterprise Managed User unterstützt die Just-In-Time-Bereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Falls ein Benutzer nicht bereits in GitHub Enterprise Managed User vorhanden ist, wird beim Versuch, auf GitHub Enterprise Managed User zuzugreifen, ein neuer Benutzer erstellt.
+### <a name="enable-github-enterprise-managed-user-saml-sso"></a>Konfigurieren von SAML-SSO für GitHub Enterprise Managed User
 
-Außerdem unterstützt GitHub Enterprise Managed User die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./github-enterprise-managed-user-provisioning-tutorial.md).
+In diesem Abschnitt verwenden Sie die oben von AAD bereitgestellten Informationen und geben sie in Ihre Enterprise-Einstellungen ein, um die SSO-Unterstützung zu aktivieren.
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
-
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
-
-#### <a name="sp-initiated"></a>SP-initiiert:
-
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für GitHub Enterprise Managed User weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
-
-* Rufen Sie direkt die GitHub Enterprise Managed User-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
-
-#### <a name="idp-initiated"></a>IDP-initiiert:
-
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der GitHub Enterprise Managed User-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
-
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „GitHub Enterprise Managed User“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der GitHub Enterprise Managed User-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
-
+1. Besuchen Sie https://github.com.
+1. Klicken Sie in der oberen rechten Ecke auf „Anmelden“.
+1. Geben Sie die Anmeldeinformationen für das erste Administratorbenutzerkonto ein. Das Anmeldehandle sollte folgendes Format haben: `<your enterprise short code>_admin`
+1. Navigieren Sie zu https://github.com/enterprises/ `<your enterprise name>`. Diese Informationen sollten von Ihrem Solution Engineering-Kontakt bereitgestellt werden.
+1. Wählen Sie im Navigationsmenü auf der linken Seite **Einstellungen** und dann **Sicherheit** aus.
+1. Aktivieren Sie das Kontrollkästchen **SAML-Authentifizierung aktivieren**.
+1. Geben Sie die Anmelde-URL ein. Diese URL ist die Anmelde-URL, die Sie oben aus AAD kopiert haben.
+1. Geben Sie den Zertifikataussteller ein. Diese URL ist der Azure AD-Bezeichner, den Sie oben aus AAD kopiert haben.
+1. Geben Sie das öffentliche Zertifikat ein. Öffnen Sie das zuvor heruntergeladene base64-Zertifikat, und fügen Sie den Textinhalt dieser Datei in dieses Dialogfeld ein.
+1. Klicken Sie auf **SAML-Konfiguration testen**. Dadurch wird ein Dialogfeld geöffnet, in dem Sie sich mit Ihren Azure AD-Anmeldeinformationen anmelden können, um zu überprüfen, ob SAML-SSO ordnungsgemäß konfiguriert ist. Melden Sie sich mit Ihren AAD-Anmeldeinformationen an. Sie erhalten die Meldung **Erfolgreich: Ihre SAML-SSO-Identität nach erfolgreicher Überprüfung erfolgreich authentifiziert**.
+1. Klicken Sie auf **Speichern**, um diese Einstellungen zu speichern.
+1. Sie sollten die Wiederherstellungscodes an einem sicheren Ort speichern (herunterladen, drucken oder kopieren).
+1. Klicken Sie auf **SAML-Authentifizierung aktivieren**.
+1. An diesem Punkt können sich nur Konten mit SSO bei Ihrem Unternehmen anmelden. Befolgen Sie die Anweisungen zur Bereitstellung im folgenden Dokument, um Konten mit SSO-Unterstützung bereitzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von GitHub Enterprise Managed User können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+GitHub Enterprise Managed User **setzt die Bereitstellung aller Konten über die automatisierte Benutzerbereitstellung voraus**. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./github-enterprise-managed-user-provisioning-tutorial.md).

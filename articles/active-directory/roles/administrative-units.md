@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f2c290c69fcadd594d6cbd5879e7d9f5304a42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7071d180efe9f7da088f30106c879fd10ed9051
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558014"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087110"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Verwaltungseinheiten in Azure Active Directory
 
@@ -40,7 +40,7 @@ Ein zentraler Administrator könnte folgende Aktionen ausführen:
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 
-Wenn Sie Verwaltungseinheiten verwenden möchten, ist für jeden Administrator einer Verwaltungseinheit eine Azure Active Directory Premium-Lizenz erforderlich, und alle Mitglieder der Verwaltungseinheit benötigen Azure Active Directory Free-Lizenzen. Weitere Informationen finden Sie unter [Erste Schritte mit Azure AD Premium](../fundamentals/active-directory-get-started-premium.md).
+Bei der Verwendung von Verwaltungseinheiten ist für jeden Administrator einer Verwaltungseinheit eine Azure AD Premium P1-Lizenz erforderlich, und alle Mitglieder der Verwaltungseinheit benötigen Azure AD Free-Lizenzen. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich der allgemein verfügbaren Features der Editionen Free und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="manage-administrative-units"></a>Verwalten von Verwaltungseinheiten
 
@@ -64,7 +64,7 @@ Sie können davon ausgehen, dass die Erstellung von Verwaltungseinheiten in der 
 
 ## <a name="currently-supported-scenarios"></a>Derzeit unterstützte Szenarien
 
-Globale Administratoren und Administratoren für privilegierte Rollen können auf das Azure AD-Portal zugreifen und folgende Aufgaben ausführen:
+Globale Administratoren und Administratoren für privilegierte Rollen können auf das Azure-Portal zugreifen und folgende Aufgaben ausführen:
 
 - Erstellen von Verwaltungseinheiten
 - Hinzufügen von Benutzern und Gruppenmitgliedern für Verwaltungseinheiten
@@ -79,7 +79,7 @@ In den folgenden Abschnitten wird die aktuelle Unterstützung von Szenarien mit 
 
 ### <a name="administrative-unit-management"></a>Verwalten von Verwaltungseinheiten
 
-| Berechtigungen |   Graph/PowerShell   | Azure AD-Portal | Microsoft 365 Admin Center |
+| Berechtigungen |   Graph/PowerShell   | Azure-Portal | Microsoft 365 Admin Center |
 | --- | --- | --- | --- |
 | Erstellen und Löschen von Verwaltungseinheiten   |    Unterstützt    |   Unterstützt   |    Nicht unterstützt |
 | Hinzufügen und Entfernen einzelner Mitglieder zu Verwaltungseinheiten    |   Unterstützt    |   Unterstützt   |    Nicht unterstützt |
@@ -89,7 +89,7 @@ In den folgenden Abschnitten wird die aktuelle Unterstützung von Szenarien mit 
 
 ### <a name="user-management"></a>Benutzerverwaltung
 
-| Berechtigungen |   Graph/PowerShell   | Azure AD-Portal | Microsoft 365 Admin Center |
+| Berechtigungen |   Graph/PowerShell   | Azure-Portal | Microsoft 365 Admin Center |
 | --- | --- | --- | --- |
 | Auf die Verwaltungseinheit ausgerichtete Verwaltung von Benutzereigenschaften, Kennwörtern und Lizenzen   |    Unterstützt     |  Unterstützt   |   Unterstützt |
 | Auf die Verwaltungseinheit ausgerichtete Blockierung von Benutzeranmeldungen sowie Aufhebung der Blockierung    |   Unterstützt   |    Unterstützt   |    Unterstützt |
@@ -97,12 +97,12 @@ In den folgenden Abschnitten wird die aktuelle Unterstützung von Szenarien mit 
 
 ### <a name="group-management"></a>Gruppenverwaltung
 
-| Berechtigungen |   Graph/PowerShell   | Azure AD-Portal | Microsoft 365 Admin Center |
+| Berechtigungen |   Graph/PowerShell   | Azure-Portal | Microsoft 365 Admin Center |
 | --- | --- | --- | --- |
 | Auf die Verwaltungseinheit ausgerichtete Verwaltung von Gruppeneigenschaften und Gruppenmitgliedern     |  Unterstützt   |    Unterstützt    |  Nicht unterstützt |
 | Auf die Verwaltungseinheit ausgerichtete Verwaltung der Gruppenlizenzierung   |    Unterstützt  |    Unterstützt   |   Nicht unterstützt |
 
-Der mithilfe von Verwaltungseinheiten angewendete Bereich gilt nur für Verwaltungsberechtigungen. Verwaltungseinheiten verhindern nicht, dass Mitglieder oder Administratoren ihre [Standardbenutzerberechtigungen](../fundamentals/users-default-permissions.md) verwenden, um zu anderen Benutzern, Gruppen oder Ressourcen außerhalb der Verwaltungseinheit zu navigieren. Im Microsoft 365 Admin Center werden Benutzer außerhalb der Verwaltungseinheiten eines bereichsbezogenen Administrators herausgefiltert. Sie können aber zu anderen Benutzern im Azure AD-Portal, in PowerShell und in anderen Microsoft-Diensten navigieren.
+Der mithilfe von Verwaltungseinheiten angewendete Bereich gilt nur für Verwaltungsberechtigungen. Verwaltungseinheiten verhindern nicht, dass Mitglieder oder Administratoren ihre [Standardbenutzerberechtigungen](../fundamentals/users-default-permissions.md) verwenden, um zu anderen Benutzern, Gruppen oder Ressourcen außerhalb der Verwaltungseinheit zu navigieren. Im Microsoft 365 Admin Center werden Benutzer außerhalb der Verwaltungseinheiten eines bereichsbezogenen Administrators herausgefiltert. Sie können aber zu anderen Benutzern im Azure-Portal, in PowerShell und in anderen Microsoft-Diensten navigieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 540631db87807312f96c96ddd5b8144d4e22ff91
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a63390073f92625788dfbf43fc1183cc1812024a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095570"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460325"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Weiterleiten von Ereignissen innerhalb und außerhalb von Azure Digital Twins
 
@@ -32,7 +32,7 @@ Ereignisrouten ermöglichen Ihnen das Senden von Ereignisdaten von digitalen Zwi
 
 Das folgende Diagramm veranschaulicht den Fluss von Ereignisdaten durch eine größere IoT-Lösung mit einem Azure Digital Twins-Aspekt:
 
-:::image type="content" source="media/concepts-route-events/routing-workflow.png" alt-text="Weiterleitung von Daten aus Azure Digital Twins über Endpunkte an mehrere Downstreamdienste" border="false":::
+:::image type="content" source="media/concepts-route-events/routing-workflow.png" alt-text="Diagramm der Weiterleitung von Daten aus Azure Digital Twins über Endpunkte an mehrere Downstreamdienste." border="false":::
 
 Typische Downstreamziele für Ereignisrouten sind Ressourcen wie TSI und Azure Maps sowie Speicher- und Analyselösungen.
 
@@ -95,7 +95,7 @@ Wenn ein Endpunkt innerhalb eines bestimmten Zeitraums oder nach einer bestimmte
 
 Wenn eine der Bedingungen erfüllt ist, wird das Ereignis gelöscht oder als unzustellbare Nachricht gespeichert. Endpunkte aktivieren unzustellbare Nachrichten standardmäßig **nicht**. Wenn Sie das Feature aktivieren möchten, müssen Sie bei der Erstellung des Endpunkts ein Speicherkonto zum Speichern nicht übermittelter Ereignisse angeben. Ereignisse werden dann aus diesem Speicherkonto gepullt, um Übermittlungsprobleme zu beheben.
 
-Wenn Sie den Speicherort für unzustellbare Nachrichten festlegen möchten, benötigen Sie ein Speicherkonto mit einem Container. Sie geben die URL für diesen Container an, wenn Sie den Endpunkt erstellen. Die unzustellbaren Nachrichten werden als Container-URL mit einem SAS-Token bereitgestellt. Dieses Token benötigt nur die `write`-Berechtigung für den Zielcontainer innerhalb des Speicherkontos. Die vollständig formatierte URL weist das folgende Format auf: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+Wenn Sie den Speicherort für unzustellbare Nachrichten festlegen möchten, benötigen Sie ein Speicherkonto mit einem Container. Sie geben die URL für diesen Container an, wenn Sie den Endpunkt erstellen. Die unzustellbaren Nachrichten werden als Container-URL mit einem SAS-Token bereitgestellt. Dieses Token benötigt nur die `write`-Berechtigung für den Zielcontainer innerhalb des Speicherkontos. Die vollständig formatierte URL weist das folgende Format auf: `https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>`
 
 Weitere Informationen zu SAS-Token finden Sie hier: [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../storage/common/storage-sas-overview.md)
 

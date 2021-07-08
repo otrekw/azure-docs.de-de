@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: Enthält Informationen zur Dauer der Verwaltungsvorgänge für Azure SQL Managed Instance und zu den bewährten Methoden.
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: overview
 author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
-ms.date: 07/10/2020
-ms.openlocfilehash: bd66c10bb1d6316bbe90e7ba4092d79c6a43a75d
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.date: 06/08/2021
+ms.openlocfilehash: 9a4df35d102b3304a65ad7c9a5c750bd70d3d64c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285277"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745851"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Übersicht über die Verwaltungsvorgänge für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -125,7 +125,7 @@ Verwaltungsvorgänge bestehen aus mehreren Schritten. Mit der [Einführung der V
 |Bereinigung der alte SQL-Instanz |Der alte SQL-Prozess wird aus dem virtuellen Cluster entfernt. |
 
 > [!NOTE]
-> Infolge der Skalierung von Instanzen durchläuft der zugrunde liegende virtuelle Cluster den Prozess der Freigabe nicht genutzter Kapazität und ggf. eine Kapazitätsdefragmentierung. Dies kann sich auf Instanzen auswirken, die nicht an den Erstellungs-/Skalierungsvorgängen beteiligt waren. 
+> Sobald die Skalierung der Instanzen abgeschlossen ist, durchläuft der zugrunde liegende virtuelle Cluster den Prozess der Freigabe ungenutzter Kapazität und der möglichen Defragmentierung der Kapazität, was sich auf Instanzen aus demselben Subnetz auswirken kann, die nicht an der Skalierung teilgenommen haben, was zu deren Failover führt. 
 
 
 ## <a name="management-operations-cross-impact"></a>Wechselseitige Auswirkungen von Verwaltungsvorgängen
