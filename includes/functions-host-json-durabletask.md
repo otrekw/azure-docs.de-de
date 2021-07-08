@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 author: ggailey777
 ms.service: azure-functions
@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d1b2cbefe64add5048d4e3c7946277b1461a5434
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e0605b5a882dcfa09b2435476a37d116f8c47286
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607087"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350681"
 ---
 Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md).
 
@@ -103,7 +103,7 @@ Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buch
 |---------|---------|----------|
 |hubName|DurableFunctionsHub|Alternative Namen für [Aufgabenhubs](../articles/azure-functions/durable/durable-functions-task-hubs.md) können zum Isolieren von mehreren Durable Functions-Anwendungen verwendet werden, auch wenn sie dasselbe Speicher-Back-End verwenden.|
 |controlQueueBatchSize|32|Die Anzahl der aus der Steuerelement-Warteschlange jeweils abzurufenden Nachrichten.|
-|controlQueueBufferThreshold| **Verbrauchsplan:** 32 <br> **Dedicated-/Premium-Plan:** 256 |Die Anzahl der Steuerelement-Warteschlangen Nachrichten, die gleichzeitig im Arbeitsspeicher gepuffert werden können. Zu diesem Zeitpunkt wartet der Verteiler, bevor zusätzliche Nachrichten aus der Warteschlange entfernt werden.|
+|controlQueueBufferThreshold| **Verbrauchstarif für Python**: 32 <br> **Verbrauchstarif für JavaScript und C#** : 128 <br> **Dedicated-/Premium-Plan:** 256 |Die Anzahl der Steuerelement-Warteschlangen Nachrichten, die gleichzeitig im Arbeitsspeicher gepuffert werden können. Zu diesem Zeitpunkt wartet der Verteiler, bevor zusätzliche Nachrichten aus der Warteschlange entfernt werden.|
 |partitionCount |4|Die Anzahl der Partitionen für die Steuerelement-Warteschlange. Kann ein positiver Integerwert zwischen 1 und 16 sein.|
 |controlQueueVisibilityTimeout |5 Minuten|Das Sichtbarkeitstimeout von aus der Steuerelement-Warteschlange entfernten Nachrichten.|
 |workItemQueueVisibilityTimeout |5 Minuten|Das Sichtbarkeitstimeout von aus der Warteschlange für Arbeitselemente (work item queue) entfernten Nachrichten.|

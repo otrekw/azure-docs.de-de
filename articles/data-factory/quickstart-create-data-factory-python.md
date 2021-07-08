@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 04/12/2021
+ms.date: 05/27/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 665944688533b4efa6e0e14077ae7df22d352d50
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dbc82773128aec58202821827be16bdf5d80260a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123625"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665174"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Schnellstart: Erstellen einer Data Factory und Pipeline mithilfe von Python
 
@@ -40,7 +40,7 @@ Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (optional)
 
-* [Eine Anwendung in Azure Active Directory.](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) Erstellen Sie die Anwendung, indem Sie die Schritte unter diesem Link ausführen, und weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen. Notieren Sie sich die folgenden Werte aus dem Artikel zur späteren Verwendung: **Anwendungs-ID (Dienstprinzipal-ID unten), Authentifizierungsschlüssel (geheimer Clientschlüssel unten) und Mandanten-ID**.
+* [Eine Anwendung in Azure Active Directory.](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) Erstellen Sie die Anwendung, indem Sie die Schritte unter diesem Link ausführen. Verwenden Sie dabei Authentifizierungsoption 2 (Anwendungsgeheimnis), und weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen. Notieren Sie sich die folgenden Werte aus dem Artikel zur späteren Verwendung: **Anwendungs-ID (Client), Wert des geheimen Clientschlüssels und Mandanten-ID**.
 
 ## <a name="create-and-upload-an-input-file"></a>Erstellen und Hochladen einer Eingabedatei
 
@@ -139,7 +139,7 @@ Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines
         df_name = '<factory name>'
 
         # Specify your Active Directory client ID, client secret, and tenant ID
-        credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
+        credentials = ClientSecretCredential(client_id='<Application (client) ID>', client_secret='<client secret value>', tenant_id='<tenant ID>') 
         
         # Specify following for Soverign Clouds, import right cloud constant and then use it to connect.
         # from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD as CLOUD

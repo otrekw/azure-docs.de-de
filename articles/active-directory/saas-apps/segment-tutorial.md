@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/18/2020
+ms.date: 05/28/2021
 ms.author: jeedes
-ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab3afec6b849288a87ba8aa194d5b180a49dc184
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021553"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111557658"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Segment
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie Segment in Azure Active Directory (Azur
 * Steuern Sie in Azure AD, wer Zugriff auf Segment hat.
 * Ermöglichen Sie Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Segment anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,24 +37,21 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Segment unterstützt **SP- und IdP**-initiiertes einmaliges Anmelden
-* Segment unterstützt die **Just-in-Time**-Benutzerbereitstellung
+* Segment unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
+* Segment unterstützt **Just-in-Time**-Benutzerbereitstellung.
 
-* Nach dem Konfigurieren von Segment können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
-
-## <a name="adding-segment-from-the-gallery"></a>Hinzufügen von Segment aus dem Katalog
+## <a name="add-segment-from-the-gallery"></a>Hinzufügen von Segment aus dem Katalog
 
 Zum Konfigurieren der Integration von Segment in Azure AD müssen Sie Segment aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Segment** im Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Segment** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on-for-segment"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Segment
+## <a name="configure-and-test-azure-ad-sso-for-segment"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Segment
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Segment mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Segment eingerichtet werden.
 
@@ -73,13 +68,13 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Segment** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Segment** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `urn:auth0:segment-prod:samlp-<CUSTOMER_VALUE>`
 
@@ -119,15 +114,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Segment** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-segment-sso"></a>Konfigurieren des einmaligen Anmeldens von Segment
@@ -136,19 +125,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie auf das Symbol **Einstellungen**, scrollen Sie nach unten zu **Authentifizierung**, und klicken Sie auf **Verbindungen**.
 
-    ![Screenshot des ausgewählten Symbols „Einstellungen“ und der im Menü „Authentifizierung“ ausgewählten Option „Verbindungen“](./media/segment-tutorial/segment1.PNG)
+    ![Screenshot des ausgewählten Symbols „Einstellungen“ und der im Menü „Authentifizierung“ ausgewählten Option „Verbindungen“](./media/segment-tutorial/connections.PNG)
 
 1. Klicken Sie auf **Neue Verbindung hinzufügen**.
 
-    ![Screenshot des Abschnitts „Verbindungen“ mit ausgewählter Schaltfläche „Neue Verbindung hinzufügen“](./media/segment-tutorial/segment2.PNG)
+    ![Screenshot des Abschnitts „Verbindungen“ mit ausgewählter Schaltfläche „Neue Verbindung hinzufügen“](./media/segment-tutorial/new-connections.PNG)
 
 1. Wählen Sie **SAML 2.0** als zu konfigurierende Verbindung aus, und klicken Sie auf die Schaltfläche **Verbindung auswählen**.
 
-    ![Screenshot des Abschnitts „Verbindung auswählen“ mit ausgewählter Option „SAML 2.0“ und ausgewählter Schaltfläche „Verbindung auswählen“](./media/segment-tutorial/segment3.PNG)
+    ![Screenshot des Abschnitts „Verbindung auswählen“ mit ausgewählter Option „SAML 2.0“ und ausgewählter Schaltfläche „Verbindung auswählen“](./media/segment-tutorial/select-connections.PNG)
 
 1. Führen Sie auf der folgenden Seite die folgenden Schritte aus:
 
-    ![Screenshot der Seite „Identitätsanbieter konfigurieren“ mit hervorgehobenen Textfeldern „URL für einmaliges Anmelden“ und „Zielgruppen-URL“ sowie ausgewählter Schaltfläche „Weiter“](./media/segment-tutorial/segment4.PNG)
+    ![Screenshot der Seite „Identitätsanbieter konfigurieren“ mit hervorgehobenen Textfeldern „URL für einmaliges Anmelden“ und „Zielgruppen-URL“ sowie ausgewählter Schaltfläche „Weiter“](./media/segment-tutorial/configure.PNG)
 
     a. Kopieren Sie den Wert für **URL für einmaliges Anmelden**, und fügen Sie ihn im Azure-Portal im Dialogfeld **Grundlegende SAML-Konfiguration** im Feld **Antwort-URL** ein.
 
@@ -156,7 +145,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     c. Klicken Sie auf **Weiter**.
 
-    ![Segment-Konfiguration](./media/segment-tutorial/segment5.PNG)
+    ![Segment-Konfiguration](./media/segment-tutorial/certificate.PNG)
 
 1. Fügen Sie im Feld **SAML 2.0 Endpoint URL** (SAML 2.0-Endpunkt-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
@@ -170,20 +159,20 @@ In diesem Abschnitt wird in Segment ein Benutzer namens B. Simon erstellt. Segm
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Segment“ klicken, sollten Sie automatisch bei der Segment-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Segment weitergeleitet. Dort können Sie den Anmeldeflow initiieren.  
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Navigieren Sie direkt zur Segment-Anmelde-URL, und initiieren Sie dort den Anmeldeflow.
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP-initiiert:
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Segment-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-- [Testen von Segment mit Azure AD](https://aad.portal.azure.com/)
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie in „Meine Apps“ auf die Kachel „Segment“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Segment-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)
+Nach dem Konfigurieren von Segment können Sie Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

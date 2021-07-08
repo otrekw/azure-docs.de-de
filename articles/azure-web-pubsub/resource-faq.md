@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
 ms.date: 04/26/2021
-ms.openlocfilehash: e53823539194fe1082621f458e8b5b3d493c191d
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: b16c69d4a51026d3eafcb6449dd3042703269118
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166884"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371616"
 ---
 # <a name="azure-web-pubsub-service-faq"></a>Häufig gestellte Fragen zum Azure Web PubSub-Dienst
 
@@ -19,7 +19,23 @@ Hier finden Sie häufig gestellte Fragen zum Azure Web PubSub-Dienst.
 
 ## <a name="is-azure-web-pubsub-service-ready-for-production-use"></a>Ist Azure Web PubSub bereit für den Einsatz in der Produktion?
 
-Der Azure Web PubSub-Dienst befindet sich in der öffentlichen Vorschau und erfüllt nicht die verbindliche SLA. 
+Der Azure Web PubSub-Dienst befindet sich in der öffentlichen Vorschau und weist keine verbindliche SLA auf. 
+
+## <a name="how-do-i-choose-between-azure-signalr-service-and-azure-web-pubsub-service"></a>Nach welchen Kriterien wähle ich zwischen Azure SignalR Service und dem Azure Web PubSub-Dienst?
+
+Sowohl [Azure SignalR Service](https://azure.microsoft.com/services/signalr-service) als auch der [Azure Web PubSub-Dienst](https://azure.microsoft.com/services/web-pubsub) helfen Kunden beim einfachen Erstellen von Echtzeitwebanwendungen mit hoher Skalierbarkeit und Verfügbarkeit, und ermöglichen es Kunden, sich auf ihre Geschäftslogik zu konzentrieren, anstatt die Messaginginfrastruktur zu verwalten. Im Allgemeinen können Sie Azure SignalR Service wählen, wenn Sie bereits die SignalR-Bibliothek zum Erstellen von Echtzeitanwendungen verwenden. Wenn Sie stattdessen nach einer generischen Lösung suchen, um Echtzeitanwendungen basierend auf WebSocket und dem Veröffentlichen-Abonnieren-Muster zu erstellen, können Sie den Azure Web PubSub-Dienst wählen. Der Azure Web PubSub-Dienst ist **kein** Ersatz für Azure SignalR Service. Sie sind für verschiedene Szenarios vorgesehen.
+
+Azure SignalR Service ist in folgenden Fällen besser geeignet:  
+
+- Sie verwenden bereits ASP.NET oder ASP.NET Core SignalR, nutzen hauptsächlich .NET oder müssen eine Integration mit dem .NET-Ökosystem (z. B. Blazor) vornehmen.
+- Für Ihre Plattform ist ein SignalR-Client verfügbar. 
+- Sie benötigen ein eingerichtetes Protokoll, das eine Vielzahl von Aufrufmustern (RPC und Streaming), Transporte (WebSocket, vom Server gesendete Ereignisse und lange Abrufintervalle) und einen Client unterstützt, der die Verbindungslebensdauer in Ihrem Namen verwaltet. 
+
+Der Azure Web PubSub-Dienst ist in folgenden Situationen besser geeignet:  
+
+- Sie müssen Echtzeitanwendungen basierend auf der WebSocket-Technologie erstellen oder über WebSocket veröffentlichen und abonnieren.
+- Sie möchten Ihr eigenes Unterprotokoll erstellen oder vorhandene erweiterte Protokolle über WebSocket verwenden (z. B. MQTT, AMQP über WebSocket). 
+- Sie suchen einen einfachen Server, der z. B. Nachrichten an den Client sendet, ohne das konfigurierte Back-End zu durchlaufen.  
 
 ##  <a name="where-does-my-data-reside"></a>Wo befinden sich meine Daten?
 

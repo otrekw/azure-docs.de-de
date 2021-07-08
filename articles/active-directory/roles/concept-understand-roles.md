@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71291458eec0aec13542d3e0dfaf04a96f391a23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19d15ea184603587eb3477216bb5a93d6d07f905
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466115"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440518"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Grundlegendes zu Rollen in Azure Active Directory
 
@@ -44,7 +44,7 @@ Ein separates rollenbasiertes Zugriffssteuerungssystem bedeutet, dass Rollendefi
 
 ## <a name="why-some-azure-ad-roles-are-for-other-services"></a>Warum gibt es einige Azure AD-Rollen für andere Dienste?
 
-Microsoft 365 verfügt über eine Reihe rollenbasierter Zugriffssteuerungssysteme, die im Laufe der Zeit unabhängig voneinander entwickelt wurden und jeweils über ein eigenes Dienstportal verfügen. Um die Identitätsverwaltung innerhalb von Microsoft 365 über das Azure AD-Portal zu vereinfachen, haben wir einige dienstspezifische integrierte Rollen hinzugefügt, die jeweils Administratorzugriff auf einen Microsoft 365-Dienst gewähren. Ein Beispiel hierfür ist die Rolle „Exchange-Administrator“ in Azure AD. Diese Rolle entspricht der [Rollengruppe „Organisationsverwaltung“](/exchange/organization-management-exchange-2013-help) im rollenbasierten Zugriffssteuerungssystem von Exchange und kann alle Aspekte von Exchange verwalten. Analog dazu haben wir die Rollen „Intune-Administrator“, „Teams-Administrator“, „SharePoint-Administrator“ usw. hinzugefügt. Dienstspezifische Rollen stellen im folgenden Abschnitt eine Kategorie der integrierten Azure AD-Rollen dar.
+Microsoft 365 verfügt über eine Reihe rollenbasierter Zugriffssteuerungssysteme, die im Laufe der Zeit unabhängig voneinander entwickelt wurden und jeweils über ein eigenes Dienstportal verfügen. Um die Identitätsverwaltung innerhalb von Microsoft 365 über das Azure-Portal zu vereinfachen, haben wir einige dienstspezifische integrierte Rollen hinzugefügt, die jeweils Administratorzugriff auf einen Microsoft 365-Dienst gewähren. Ein Beispiel hierfür ist die Rolle „Exchange-Administrator“ in Azure AD. Diese Rolle entspricht der [Rollengruppe „Organisationsverwaltung“](/exchange/organization-management-exchange-2013-help) im rollenbasierten Zugriffssteuerungssystem von Exchange und kann alle Aspekte von Exchange verwalten. Analog dazu haben wir die Rollen „Intune-Administrator“, „Teams-Administrator“, „SharePoint-Administrator“ usw. hinzugefügt. Dienstspezifische Rollen stellen im folgenden Abschnitt eine Kategorie der integrierten Azure AD-Rollen dar.
 
 ## <a name="categories-of-azure-ad-roles"></a>Kategorien von Azure AD-Rollen
 
@@ -56,13 +56,13 @@ Integrierte Azure AD-Rollen unterscheiden sich hinsichtlich ihres Verwendungsor
 
 ![Die drei Kategorien der integrierten Azure AD-Rollen](./media/concept-understand-roles/role-overlap-diagram.png)
 
-Die folgende Tabelle dient zum besseren Verständnis dieser Rollenkategorien. Die Kategorienamen wurden willkürlich gewählt und sollen keine Funktionen implizieren, die über die [dokumentierten Rollenberechtigungen](permissions-reference.md) hinausgehen.
+Die folgende Tabelle dient zum besseren Verständnis dieser Rollenkategorien. Die Kategorienamen wurden willkürlich gewählt und sollen keine Funktionen implizieren, die über die [dokumentierten Azure AD-Rollenberechtigungen](permissions-reference.md) hinausgehen.
 
 Kategorie | Role
 ---- | ----
-Azure AD-spezifische Rollen | Anwendungsadministrator<br>Anwendungsentwickler<br>Authentifizierungsadministrator<br>B2C-IEF-Schlüsselsatzadministrator<br>B2C-IEF-Richtlinienadministrator<br>Cloudanwendungsadministrator<br>Cloudgeräteadministrator<br>Administrator für den bedingten Zugriff<br>Geräteadministratoren<br>Rolle „Verzeichnis lesen“<br>Konten zur Verzeichnissynchronisierung<br>Verzeichnis schreiben<br>Administrator für Benutzerflows mit externer ID<br>Administrator für Benutzerflowattribute mit externer ID<br>Externer Identitätsanbieteradministrator<br>Gruppenadministrator<br>Gasteinladender<br>Helpdeskadministrator<br>Hybrididentitätsadministrator<br>Lizenzadministrator<br>Partnersupport der Ebene 1<br>Partnersupport der Ebene 2<br>Kennwortadministrator<br>Privilegierter Authentifizierungsadministrator<br>Administrator für privilegierte Rollen<br>Meldet Reader<br>Benutzerkontoadministrator
+Azure AD-spezifische Rollen | Anwendungsadministrator<br>Anwendungsentwickler<br>Authentifizierungsadministrator<br>B2C-IEF-Schlüsselsatzadministrator<br>B2C-IEF-Richtlinienadministrator<br>Cloudanwendungsadministrator<br>Cloudgeräteadministrator<br>Administrator für den bedingten Zugriff<br>Geräteadministratoren<br>Rolle „Verzeichnis lesen“<br>Konten zur Verzeichnissynchronisierung<br>Verzeichnis schreiben<br>Administrator für Benutzerflows mit externer ID<br>Administrator für Benutzerflowattribute mit externer ID<br>Externer Identitätsanbieteradministrator<br>Gruppenadministrator<br>Gasteinladender<br>Helpdeskadministrator<br>Hybrididentitätsadministrator<br>Lizenzadministrator<br>Partnersupport der Ebene 1<br>Partnersupport der Ebene 2<br>Kennwortadministrator<br>Privilegierter Authentifizierungsadministrator<br>Administrator für privilegierte Rollen<br>Meldet Reader<br>Benutzeradministrator
 Dienstübergreifende Rollen | Globaler Administrator<br>Complianceadministrator<br>Administrator für Konformitätsdaten<br>Globaler Leser<br>Sicherheitsadministrator<br>Sicherheitsoperator<br>Sicherheitsleseberechtigter<br>Dienstunterstützungsadministrator
-Dienstspezifische Rollen | Azure DevOps-Administrator<br>Azure Information Protection-Administrator<br>Abrechnungsadministrator<br>CRM-Dienstadministrator<br>Genehmigende Person für den LockBox-Kundenzugriff<br>Desktop Analytics-Administrator<br>Exchange-Dienstadministrator<br>Insights Administrator<br>Insights Business Leader<br>Intune-Dienstadministrator<br>Kaizala-Administrator<br>Lync-Dienstadministrator<br>Nachrichtencenter-Datenschutzleseberechtigter<br>Nachrichtencenter-Leser<br>Modern Commerce User<br>Netzwerkadministrator<br>Office-Apps-Administrator<br>Power BI-Dienstadministrator<br>Power Platform-Administrator<br>Druckeradministrator<br>Druckertechniker<br>Suchadministrator<br>Such-Editor<br>SharePoint-Dienstadministrator<br>Teams-Kommunikationsadministrator<br>Teams-Kommunikationssupporttechniker<br>Teams-Kommunikationssupportspezialist<br>Teams-Geräteadministrator<br>Teams-Dienstadministrator
+Dienstspezifische Rollen | Azure DevOps-Administrator<br>Azure Information Protection-Administrator<br>Abrechnungsadministrator<br>CRM-Dienstadministrator<br>Genehmigende Person für den LockBox-Kundenzugriff<br>Desktop Analytics-Administrator<br>Exchange-Dienstadministrator<br>Insights Administrator<br>Insights Business Leader<br>Intune-Dienstadministrator<br>Kaizala-Administrator<br>Lync-Dienstadministrator<br>Nachrichtencenter-Datenschutzleseberechtigter<br>Nachrichtencenter-Leser<br>Modern Commerce User<br>Netzwerkadministrator<br>Office-Apps-Administrator<br>Power BI-Dienstadministrator<br>Power Platform-Administrator<br>Druckeradministrator<br>Druckertechniker<br>Suchadministrator<br>Such-Editor<br>SharePoint-Dienstadministrator<br>Teams-Kommunikationsadministrator<br>Teams-Kommunikationssupporttechniker<br>Teams-Kommunikationssupportspezialist<br>Teams-Geräteadministrator<br>Teams-Administrator
 
 ## <a name="next-steps"></a>Nächste Schritte
 

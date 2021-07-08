@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 5700447e170bebf40224366970b00814b1be3052
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 7dc6827f7ebd7b034ffc00906629bafe04036fbd
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296419"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789567"
 ---
 # <a name="azure-digital-twins-query-language-reference-join-clause"></a>Referenz zur Azure Digital Twins-Abfragesprache: JOIN-Klausel
 
@@ -53,7 +53,7 @@ Die folgende Abfrage basiert auf Räumen (Rooms) mit Beleuchtungselementen (Ligh
 
 ## <a name="limitations"></a>Einschränkungen
 
-Für Abfragen mit `JOIN` gelten die folgenden Grenzwerte.
+Die folgenden Grenzwerte gelten für Abfragen mit `JOIN`.
 * [Tiefenlimit von 5](#depth-limit-of-five)
 * [Keine OUTER JOIN-Semantik (äußere Verknüpfung)](#no-outer-join-semantics)
 * [Quellzwilling erforderlich](#twins-required)
@@ -80,7 +80,7 @@ Mit der folgenden Abfrage wird das Durchlaufen eines Gebäudes veranschaulicht.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="NoOuterJoinExample":::
 
-Falls `Building1` keine Etagen hat, wird bei dieser Abfrage ein leeres Resultset zurückgegeben (anstelle einer Zeile mit einem Wert für „Building“ und mit `undefined` für „Floor“ (Etage)).
+Falls „Building1“ keine Etagen hat, wird bei dieser Abfrage ein leeres Resultset zurückgegeben (anstelle einer Zeile mit einem Wert für „Building“ und mit `undefined` für „Floor“ (Etage)).
 
 ### <a name="twins-required"></a>Zwillinge erforderlich
 

@@ -5,17 +5,17 @@ services: static-web-apps
 author: aaronpowell
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 05/08/2020
+ms.date: 05/10/2021
 ms.author: aapowell
 ms.custom: devx-track-js
-ms.openlocfilehash: 4430ed34858077b13b4fec69756c1c7e9f3ef7ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c6a68b8db40aa07c251cabab28217143105aab1
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652357"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814512"
 ---
-# <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Tutorial: Veröffentlichen einer Gatsby-Website in Azure Static Web Apps (Vorschauversion)
+# <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps"></a>Tutorial: Veröffentlichen einer Gatsby-Website in Azure Static Web Apps
 
 In diesem Artikel wird gezeigt, wie Sie eine [Gatsby](https://gatsbyjs.org)-Webanwendung erstellen und in [Azure Static Web Apps](overview.md) bereitstellen. Das Ergebnis ist eine neue Static Web Apps-Website (mit der zugehörigen GitHub Actions-Instanz), mit der Sie steuern können, wie die App erstellt und veröffentlicht wird.
 
@@ -85,54 +85,38 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 ### <a name="create-the-application"></a>Erstellen der Anwendung
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Klicken Sie auf **Ressource erstellen**.
+1. Wählen Sie **Ressource erstellen** aus.
 1. Suchen Sie nach **Static Web Apps**.
-1. Klicken Sie auf **Static Web Apps (Vorschau)** .
+1. Wählen Sie **Statische Web-Apps** aus.
 1. Klicken Sie auf **Erstellen**
+1. Geben Sie auf der Registerkarte _Grundlagen_ die folgenden Werte ein.
 
-   :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="Erstellen einer statischen Web-App (Vorschau) im Portal":::
+    | Eigenschaft | Wert |
+    | --- | --- |
+    | _Abonnement_ | Den Namen Ihres Azure-Abonnements |
+    | _Ressourcengruppe_ | **my-gatsby-group**  |
+    | _Name_ | **my-gatsby-app** |
+    | _Plantyp_ | **Free** |
+    | _Region für Azure Functions-API und Stagingumgebungen_ | Wählen Sie eine Region aus, die in Ihrer Nähe liegt. |
+    | _Quelle_ | **GitHub** |
 
-1. Akzeptieren Sie unter _Abonnement_ das angegebene Abonnement, oder wählen Sie in der Dropdownliste ein neues Abonnement aus.
+1. Wählen Sie **Mit GitHub anmelden** aus, und führen Sie die Authentifizierung mit GitHub durch.
 
-1. Wählen Sie unter _Ressourcengruppe_ die Option **Neu** aus. Geben Sie unter _Name für neue Ressourcengruppe_ den Namen **gatsby-static-web-app** ein, und wählen Sie **OK** aus.
+1. Geben Sie die folgenden GitHub-Werte ein.
 
-1. Geben Sie anschließend einen Namen für Ihre App im Feld **Name** ein. Gültige Zeichen sind `a-z`, `A-Z`, `0-9` und `-`.
+    | Eigenschaft | Wert |
+    | --- | --- |
+    | _Organisation_ | Wählen Sie die gewünschte GitHub-Organisation aus. |
+    | _Repository_ | Wählen Sie **gatsby-static-web-app** aus. |
+    | _Branch_ | Wählen Sie **main** aus. |
 
-1. Wählen Sie unter _Region_ eine verfügbare Region in Ihrer Nähe aus.
-
-1. Wählen Sie unter _SKU_ die Option **Free** aus.
-
-   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="Eingegebene Details":::
-
-1. Klicken Sie auf die Schaltfläche **Mit GitHub anmelden**.
-
-1. Wählen Sie die **Organisation** aus, unter der Sie das Repository erstellt haben.
-
-1. Wählen Sie unter _Repository_ die Option **gatsby-static-web-app** aus.
-
-1. Wählen Sie unter _Branch_ die Option **main** aus.
-
-   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Eingegebene GitHub-Informationen":::
-
-### <a name="build"></a>Entwickeln
-
-Fügen Sie als Nächstes Konfigurationseinstellungen hinzu, die beim Buildprozess zum Erstellen der App verwendet werden.
-
-1. Klicken Sie auf die Schaltfläche **Weiter: Erstellen >** , um die Buildkonfiguration zu bearbeiten
-
-1. Legen Sie zum Konfigurieren der Einstellungen des Schritts in GitHub Actions die Option _App-Speicherort_ auf **/** fest.
-
-1. Legen Sie _Speicherort für App-Artefakte_ auf **Öffentlich** fest.
-
-   Ein Wert für _API-Speicherort_ ist nicht erforderlich, da Sie hier keine API bereitstellen.
-
-   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Buildeinstellungen":::
+1. Wählen Sie im Abschnitt _Builddetails_ in der Dropdownliste _Buildvoreinstellungen_ die Option **Gatsby** aus, und übernehmen Sie die Standardwerte.
 
 ### <a name="review-and-create"></a>Überprüfen und Erstellen
 
-1. Klicken Sie auf die Schaltfläche **Bewerten + erstellen**, um sicherzustellen, dass alle Details stimmen.
+1. Klicken Sie auf die Schaltfläche **Überprüfen + Erstellen**, um sicherzustellen, dass alle Details stimmen.
 
-1. Klicken Sie auf **Erstellen**, um mit der Erstellung der statischen App Service-Web-App zu beginnen und einen GitHub Actions-Vorgang für die Bereitstellung anzugeben.
+1. Wählen Sie **Erstellen** aus, um mit der Erstellung der statischen App Service-Web-App zu beginnen und eine GitHub-Aktion für die Bereitstellung anzugeben.
 
 1. Wenn die Bereitstellung abgeschlossen ist, klicken Sie auf **Zu Ressource wechseln**.
 

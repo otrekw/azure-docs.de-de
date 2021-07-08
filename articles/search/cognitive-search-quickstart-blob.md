@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 03/21/2021
-ms.openlocfilehash: d3e1b73789d6bd4df3dfe9a0e05048f9bbbb25bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a0ce57af076644072545356c0b225c4d639b9d5
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104770970"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559212"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Schnellstart: Erstellen eines kognitiven Skillsets für Azure Cognitive Search über das Azure-Portal
 
@@ -165,7 +165,7 @@ Bei Abfragezeichenfolgen wird die Groß-/Kleinschreibung beachtet. Wenn Sie also
 
 Sie haben nun Ihr erstes Skillset erstellt und sich mit wichtigen Konzepten vertraut gemacht, die für die Erstellung von Prototypen für eine angereicherte Suchlösung mit Ihren eigenen Daten hilfreich sind.
 
-Einige wichtige Konzepte, von denen wir hoffen, dass Sie sie verinnerlicht haben, schließen die Abhängigkeit von Azure-Datenquellen ein. Ein Skillset ist an einen Indexer gebunden, und Indexer sind Azure- und quellenspezifisch. Dieser Schnellstart verwendet Azure Blob Storage, jedoch sind auch andere Azure-Datenquellen möglich. Weitere Informationen finden Sie unter [Indexer in Azure Cognitive Search](search-indexer-overview.md). 
+Einige wichtige Konzepte, von denen wir hoffen, dass Sie sie verinnerlicht haben, schließen die Abhängigkeit von Azure-Datenquellen ein. Ein Skillset ist an einen Indexer gebunden, und Indexer sind Azure- und quellenspezifisch. In dieser Schnellstartanleitung wird Azure Blob Storage verwendet. Es können aber auch andere Azure-Datenquellen verwendet werden. Weitere Informationen finden Sie unter [Indexer in Azure Cognitive Search](search-indexer-overview.md). 
 
 Ein weiteres wichtiges Konzept ist, dass Skills mit Inhaltstypen arbeiten und bei der Arbeit mit heterogenen Inhalten einige Eingaben übersprungen werden. Außerdem können große Dateien oder Felder die Indexergrenzwerte ihrer Dienstebene überschreiten. Es ist normal, dass Warnungen angezeigt werden, wenn diese Ereignisse auftreten. 
 
@@ -175,7 +175,7 @@ Außerdem haben Sie gelernt, dass Sie Inhalte durch Abfragen des Index überprü
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Für weiterhin aktive Ressourcen können Kosten anfallen. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 

@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4419c9d64eac6eb468c5eb4414a3c9b844d7d8a7
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a93e63207bbbe9a2ac65823b3c22773f6cd97cf8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181722"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676853"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -102,18 +103,19 @@ Sie können die folgenden Kombinationen aus Autorisierungstypen und Azure Storag
 
 \* SAS-Token und Azure AD-Identität können für den Zugriff auf Speicher verwendet werden, der nicht durch eine Firewall geschützt ist.
 
+## <a name="firewall-protected-storage"></a>Per Firewall geschützter Speicher
 
-### <a name="querying-firewall-protected-storage"></a>Abfragen von Speicher, der durch eine Firewall geschützt ist
-
+Sie können Speicherkonten so konfigurieren, dass der Zugriff auf bestimmte serverlose SQL-Pools zulässig ist, indem Sie eine [Ressourceninstanzregel](../../storage/common/storage-network-security.md?tabs=azure-portal#grant-access-from-azure-resource-instances-preview) erstellen.
 Beim Zugriff auf Speicher, der mit der Firewall geschützt ist, kann die **Benutzeridentität** oder die **verwaltete Identität** verwendet werden.
 
 > [!NOTE]
 > Das Firewallfeature für Storage befindet sich in der Public Preview-Phase und ist in allen öffentlichen Cloudregionen verfügbar. 
 
-#### <a name="user-identity"></a>Benutzeridentität
+
+### <a name="user-identity"></a>[Benutzeridentität](#tab/user-identity)
 
 Für den Zugriff auf den mit der Firewall geschützten Speicher über die Benutzeridentität können Sie die Benutzeroberfläche des Azure-Portals oder das PowerShell-Modul „Az.Storage“ verwenden.
-#### <a name="configuration-via-azure-portal"></a>Konfiguration über das Azure-Portal
+### <a name="configuration-via-azure-portal"></a>Konfiguration über das Azure-Portal
 
 1. Suchen Sie Ihr neues Speicherkonto im Azure-Portal.
 1. Wechseln Sie zu im Abschnitt „Einstellungen“ zu „Netzwerk“.
@@ -122,7 +124,7 @@ Für den Zugriff auf den mit der Firewall geschützten Speicher über die Benutz
 1. Wählen Sie den Namen des Arbeitsbereichs als Instanznamen aus.
 1. Klicken Sie auf Speichern.
 
-#### <a name="configuration-via-powershell"></a>Konfiguration per PowerShell
+### <a name="configuration-via-powershell"></a>Konfiguration per PowerShell
 
 Führen Sie diese Schritte aus, um die Speicherkontofirewall zu konfigurieren und eine Ausnahme für den Synapse-Arbeitsbereich hinzuzufügen.
 
@@ -189,8 +191,19 @@ Führen Sie diese Schritte aus, um die Speicherkontofirewall zu konfigurieren un
         }
     ```
 
-#### <a name="managed-identity"></a>Verwaltete Identität
+### <a name="shared-access-signature"></a>[Shared Access Signature (SAS)](#tab/shared-access-signature)
+
+Shared Access Signatures können nicht für den Zugriff auf Speicher verwendet werden, der per Firewall geschützt ist.
+
+### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
+
 Sie müssen [vertrauenswürdige Microsoft-Dienste zulassen](../../storage/common/storage-network-security.md#trusted-microsoft-services) und der [systemseitig zugewiesenen Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine Azure-Rolle zuweisen](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist.
+
+### <a name="anonymous-access"></a>[Anonymer Zugriff](#tab/public-access)
+
+Für Sie ist es nicht möglich, anonym auf Speicher zuzugreifen, der per Firewall geschützt ist.
+
+---
 
 ## <a name="credentials"></a>Anmeldeinformationen
 

@@ -8,14 +8,14 @@ ms.author: delegenz
 ms.devlang: javascript
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/02/2021
+ms.date: 06/11/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 7d31201f9d1a4519538aba3ac57ddfd340d936d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3ca078bd712d711f4c8883360eb121287662a16
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99509400"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018349"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search mit dem JavaScript-SDK
 > [!div class="op_single_selector"]
@@ -599,7 +599,7 @@ Führen Sie das Programm mit `node index.js` aus. Jetzt werden zusätzlich zu de
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Für weiterhin aktive Ressourcen können Kosten anfallen. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 
@@ -607,9 +607,8 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser JavaScript-Schnellstartanleitung haben Sie eine Reihe von Aufgaben ausgeführt, um einen Index zu erstellen, Dokumente in den Index zu laden und Abfragen auszuführen. 
+In dieser JavaScript-Schnellstartanleitung haben Sie eine Reihe von Aufgaben ausgeführt, um einen Index zu erstellen, Dokumente in den Index zu laden und Abfragen auszuführen. Nutzen Sie für die weiteren Lernschritte das folgende Tutorial und Beispiel als Ausgangspunkt für das Ausprobieren von Vorschlagsfunktionen (Vorschlagssuche- oder AutoVervollständigen-Abfragen), Filtern und Facettennavigation. 
 
-Wenn Sie bereits über Erfahrungen mit Azure Cognitive Search verfügen, können Sie dieses Beispiel als Ausgangspunkt für das Testen von Vorschlägen (Typ-ahead- oder AutoVervollständigen-Abfragen), Filtern und Facettennavigation verwenden. Wenn Sie mit Azure Cognitive Search noch nicht vertraut sind, empfiehlt es sich, weitere Tutorials zu bearbeiten, um ein Verständnis dafür zu entwickeln, was Sie erstellen können. Besuchen Sie unsere [Dokumentationsseite](https://azure.microsoft.com/documentation/services/search/) , um weitere Ressourcen zu finden. 
++ [Tutorial: Hinzufügen von Suchfunktionen zu Web-Apps](tutorial-csharp-overview.md)
 
-> [!div class="nextstepaction"]
-> [Erstellen eines React-Front-End für Azure Cognitive Search](https://github.com/dereklegenzoff/azure-search-react-template)
++ [Beispiel: Erstellen eines React-Front-End für Azure Cognitive Search](https://github.com/dereklegenzoff/azure-search-react-template)

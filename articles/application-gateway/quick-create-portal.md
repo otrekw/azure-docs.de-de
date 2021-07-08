@@ -5,24 +5,26 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Azure-Por
 services: application-gateway
 author: vhorne
 ms.author: victorh
-ms.date: 01/19/2021
+ms.date: 06/14/2021
 ms.topic: quickstart
 ms.service: application-gateway
 ms.custom:
 - mvc
 - mode-portal
-ms.openlocfilehash: 92e966f5a9c4a21a6a55862ad582f0238802720f
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a1c826470a7fb9daf3b311c6e7fff02a21fc5b25
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538581"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072269"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal
 
 In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um ein Anwendungsgateway zu erstellen. Anschließend testen Sie es, um sicherzustellen, dass es ordnungsgemäß funktioniert. 
 
 Das Anwendungsgateway leitet den Webdatenverkehr Ihrer Anwendungen an bestimmte Ressourcen in einem Back-End-Pool weiter. Sie weisen den Ports Listener zu, erstellen Regeln und fügen Ressourcen zu einem Back-End-Pool hinzu. Der Einfachheit halber wird in diesem Artikel ein einfaches Setup mit einer öffentlichen Front-End-IP-Adresse, einem grundlegenden Listener zum Hosten einer einzelnen Website auf diesem Anwendungsgateway, einer Routingregel für grundlegende Anforderungen und zwei virtuellen Computern im Back-End-Pool verwendet.
+
+:::image type="content" source="media/quick-create-portal/application-gateway-qs-resources.png" alt-text="Application Gateway-Ressourcen":::
 
 Diese Schnellstartanleitung steht auch für [Azure PowerShell](quick-create-powershell.md) und für die [Azure-Befehlszeilenschnittstelle](quick-create-cli.md) zur Verfügung.
 

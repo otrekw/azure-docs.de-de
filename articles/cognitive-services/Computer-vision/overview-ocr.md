@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9eb35c892db113807d3c401306485a836a1d970b
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: df34d0ad7aa2c8249f013d430cedd72dd86eb6a2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947427"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451995"
 ---
 # <a name="what-is-optical-character-recognition"></a>Was ist Optische Zeichenerkennung?
 
@@ -42,7 +42,7 @@ Der Aufruf **Read** nimmt Bilder und Dokumente als Eingabe entgegen. Es bestehen
 
 * Unterstützte Dateiformate: JPEG, PNG, BMP, PDF und TIFF
 * Für PDF- und TIFF-Dateien werden bis zu 2000 Seiten (nur die ersten beiden Seiten für den Free-Tarif) verarbeitet.
-* Die Dateigröße muss weniger als 50 MB (4 MB für den Free-Tarif) betragen und eine Größe von mindestens 50 x 50 Pixel und höchstens 10000 × 10000 Pixel aufweisen. 
+* Die Dateigröße muss weniger als 50 MB (6 MB beim Free-Tarif) betragen und eine Größe von mindestens 50 x 50 Pixel und höchstens 10.000 × 10.000 Pixel aufweisen. 
 
 ## <a name="supported-languages"></a>Unterstützte Sprachen
 Die Lese-API unterstützt insgesamt 73 Sprachen für gedruckten Text. Eine vollständige Liste finden Sie unter [Sprachunterstützung für maschinelles Sehen](./language-support.md#optical-character-recognition-ocr). OCR für handgeschriebenen Text wird ausschließlich für Englisch unterstützt.
@@ -67,10 +67,6 @@ Die Lese-API umfasst die folgenden Funktionen:
 Die Read 3.x-Cloud-APIs sind die bevorzugte Option der meisten Kunden, da sie sich einfach integrieren und schnell vorgefertigt produktiv einsetzen lassen. Azure und der Dienst für maschinelles Sehen verarbeiten Skalierungs-, Leistungs-, Datensicherheits- und Complianceanforderungen, während Sie sich auf die Erfüllung der Anforderungen Ihrer Kunden konzentrieren.
 
 Für die lokale Bereitstellung ermöglicht der [Read-Docker-Container (Vorschau)](./computer-vision-how-to-install-containers.md) Ihnen die Bereitstellung der neuen OCR-Funktionen in Ihrer eigenen lokalen Umgebung. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen.
-
-## <a name="ocr-api"></a>OCR-API
-
-Die legacy-[OCR-API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f20d) verwendet ein älteres Erkennungsmodell, unterstützt nur Bilder und wird synchron ausgeführt, sodass der erkannte Text direkt zurückgegeben wird. Eine Liste der unterstützten Sprachen finden Sie in der Spalte OCR der [unterstützten Sprachen](./language-support.md#optical-character-recognition-ocr) .
 
 > [!WARNING]
 > Die Operationen von Computer Vision 2.0 RecognizeText werden derzeit zugunsten der neuen [Lese-API](#read-api), die in diesem Artikel behandelt wird, veraltet. Bestehende Kunden sollten dazu [übergehen, Lesevorgänge zu nutzen](upgrade-api-versions.md).

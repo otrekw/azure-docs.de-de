@@ -29,6 +29,8 @@
       href: hsm-protected-keys-byok.md
     - name: Sichern und Wiederherstellen
       href: backup-restore.md
+    - name: Wiederherstellungsverwaltung mit Schutz durch vorläufiges Löschen und Bereinigungsschutz
+      href: recovery.md
 - name: Konzepte
   items:
     - name: Sicherheitsdomäne
@@ -39,6 +41,8 @@
       href: access-control.md
     - name: Lokale integrierte RBAC-Rollen
       href: built-in-roles.md
+    - name: Vorläufiges Löschen von verwaltetem HSM
+      href: soft-delete-overview.md
 - name: Verweis
   items:
     - name: Azure PowerShell

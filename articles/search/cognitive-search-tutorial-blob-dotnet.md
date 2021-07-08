@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cbfa01788f1897264b4197798aa5879cf724db3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93b5d7059c1d19b3e5130a8e6d360655fa210aba
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104770953"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555950"
 ---
 # <a name="tutorial-use-net-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Tutorial: Verwenden von .NET und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs
 
@@ -297,7 +297,7 @@ In diesem Abschnitt definieren Sie eine Reihe von Anreicherungsschritten, die Si
 
 * Mit der [Textaufteilung](cognitive-search-skill-textsplit.md) werden große Inhalte vor dem Aufrufen der Qualifikationen zur Schlüsselbegriffserkennung und Entitätserkennung in kleinere Teile aufgeteilt. Für die Schlüsselbegriffserkennung und Entitätserkennung werden Eingaben von maximal 50.000 Zeichen akzeptiert. Für einige der Beispieldateien ist eine Aufteilung erforderlich, um diesen Grenzwert zu erfüllen.
 
-* [Entitätserkennung](cognitive-search-skill-entity-recognition.md), um die Namen von Organisationen aus Inhalten im Blobcontainer zu extrahieren.
+* [Entitätserkennung](cognitive-search-skill-entity-recognition-v3.md), um die Namen von Organisationen aus Inhalten im Blobcontainer zu extrahieren.
 
 * [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), um die wichtigsten Schlüsselbegriffe herauszuziehen.
 

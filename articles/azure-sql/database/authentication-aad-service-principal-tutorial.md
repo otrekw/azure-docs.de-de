@@ -1,29 +1,26 @@
 ---
 title: Erstellen von Azure AD-Benutzern mithilfe von Dienstprinzipalen
-description: Dieses Tutorial führt Sie durch das Erstellen eines Azure AD-Benutzers mit einer Azure AD-Anwendung (Dienstprinzipale) in Azure SQL-Datenbank und Azure Synapse Analytics.
+description: Dieses Tutorial führt Sie durch die Erstellung eines Azure AD-Benutzers mit einer Azure AD-Anwendung (Dienstprinzipale) in Azure SQL-Datenbank.
 ms.service: sql-database
 ms.subservice: security
-ms.custom: azure-synapse
 ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 02/11/2021
-ms.openlocfilehash: 13e049d3e7e0c87bd0a214a92491e10d652a3619
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c1c0754175283dd9087429586e61739c8c779e49
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380609"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662434"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen
 
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-> [!NOTE]
-> Dieser Artikel ist eine **öffentliche Vorschauversion**. Weitere Informationen finden Sie unter [Azure Active Directory-Dienstprinzipal mit Azure SQL](authentication-aad-service-principal.md). In diesem Artikel wird Azure SQL-Datenbank verwendet, um die erforderlichen Tutorialschritte zu veranschaulichen. Sie können jedoch auch auf [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) angewendet werden.
-
-Dieser Artikel führt Sie durch den Vorgang des Erstellens von Azure AD-Benutzern in Azure SQL-Datenbank unter Verwendung von Azure-Dienstprinzipalen (Azure AD-Anwendungen). Diese Funktionalität ist bereits in Azure SQL Managed Instance vorhanden, sie wird jetzt aber auch in Azure SQL-Datenbank und Azure Synapse Analytics eingeführt. Um dieses Szenario zu unterstützen, muss eine Azure AD-Identität generiert und dem logischen Azure SQL-Server zugewiesen werden.
+Dieser Artikel führt Sie durch den Vorgang des Erstellens von Azure AD-Benutzern in Azure SQL-Datenbank unter Verwendung von Azure-Dienstprinzipalen (Azure AD-Anwendungen). Diese Funktion ist bereits in Azure SQL Managed Instance vorhanden und wird jetzt auch in Azure SQL-Datenbank eingeführt. Um dieses Szenario zu unterstützen, muss eine Azure AD-Identität generiert und dem logischen Azure SQL-Server zugewiesen werden.
 
 Weitere Informationen zur Azure AD-Authentifizierung für Azure SQL finden Sie unter [Verwenden von Azure Active Directory-Authentifizierung](authentication-aad-overview.md).
 
@@ -38,7 +35,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Eine vorhandene Bereitstellung von [Azure SQL-Datenbank](single-database-create-quickstart.md) oder [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Wir gehen davon aus, dass Sie für dieses Tutorial über eine funktionierende SQL-Datenbank verfügen.
+- Eine bereits vorhandene Bereitstellung von [Azure SQL-Datenbank](single-database-create-quickstart.md). Wir gehen davon aus, dass Sie für dieses Tutorial über eine funktionierende SQL-Datenbank verfügen.
 - Zugriff auf ein bereits vorhandenes Azure Active Directory.
 - Das [Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0)-Modul oder höher ist erforderlich, wenn Sie PowerShell verwenden, um eine einzelne Azure AD Anwendung als Azure AD-Administrator für Azure SQL einzurichten. Stellen Sie sicher, dass Sie ein Upgrade auf das neueste Modul ausgeführt haben.
 
@@ -159,13 +156,7 @@ Eine ähnliche Vorgehensweise zum Festlegen der Berechtigung **Verzeichnisleser*
 
 ## <a name="create-a-service-principal-an-azure-ad-application-in-azure-ad"></a>Erstellen eines Dienstprinzipals (einer Azure AD-Anwendung) in Azure AD
 
-1. Befolgen Sie hier die Anweisungen, um [Ihre App zu registrieren und Berechtigungen festzulegen](active-directory-interactive-connect-azure-sql-db.md#register-your-app-and-set-permissions).
-
-    Stellen Sie sicher, dass Sie die **Anwendungsberechtigungen** und die **delegierten Berechtigungen** hinzufügen.
-
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="Screenshot mit der „App-Registrierungen“-Seite für Azure Active Directory. Eine App mit dem Anzeigenamen „AppSP“ ist hervorgehoben.":::
-
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="api-permissions":::
+1. Registrieren Sie Ihre App, wie [hier](active-directory-interactive-connect-azure-sql-db.md#register-your-app-and-set-permissions) beschrieben.
 
 2. Außerdem müssen Sie einen geheimen Clientschlüssel für die Anmeldung erstellen. Befolgen Sie hier die Anweisungen, um ein [Zertifikat hochzuladen oder ein Geheimnis für die Anmeldung zu erstellen](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options).
 
@@ -176,17 +167,6 @@ Eine ähnliche Vorgehensweise zum Festlegen der Berechtigung **Verzeichnisleser*
 In diesem Tutorial verwenden wir *AppSP* als Hauptdienstprinzipal und *myapp* als zweiten Dienstprinzipalbenutzer, der in Azure SQL durch *AppSP* erstellt wird. Sie müssen zwei Anwendungen erstellen: *AppSP* und *myapp*.
 
 Weitere Informationen zum Erstellen einer Azure AD-Anwendung finden Sie unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
-
-### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Erforderliche Berechtigungen zum Festlegen oder zum Aufheben der Festlegung des Azure AD-Administrators
-
-Damit der Dienstprinzipal einen Azure AD-Administrator für Azure SQL festlegen oder dessen Festlegung aufheben kann, ist eine zusätzliche API-Berechtigung erforderlich. Die [Directory.Read.All](/graph/permissions-reference#application-permissions-18)-Berechtigung der Anwendungs-API muss zu Ihrer Anwendung in Azure AD hinzugefügt werden.
-
-:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Directory.Reader.All-Berechtigungen in Azure AD":::
-
-Der Dienstprinzipal benötigt auch die Rolle [**Mitwirkender von SQL Server**](../../role-based-access-control/built-in-roles.md#sql-server-contributor) für SQL-Datenbank oder die Rolle [**Mitwirkender für verwaltete SQL-Instanzen**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) für SQL Managed Instance.
-
-> [!NOTE]
-> Obwohl die Azure AD Graph-API veraltet ist, gilt für dieses Tutorial immer noch die Berechtigung **Directory.Reader.All**. Die Microsoft Graph-API gilt nicht für dieses Tutorial.
 
 ## <a name="create-the-service-principal-user-in-azure-sql-database"></a>Erstellen des Dienstprinzipalbenutzers in Azure SQL-Datenbank
 
@@ -270,7 +250,7 @@ Nachdem ein Dienstprinzipal in Azure AD erstellt wurde, erstellen Sie den Benut
     $conn.Close()
     ``` 
 
-    Alternativ können Sie das Codebeispiel im Blog [Azure AD Service Principal authentication to SQL DB - Code Sample](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467) (Azure AD-Dienstprinzipalauthentifizierung bei SQL DB: Codebeispiel) verwenden. Ändern Sie das Skript, um eine DDL-Anweisung `CREATE USER [myapp] FROM EXTERNAL PROVIDER` auszuführen. Das gleiche Skript kann verwendet werden, um einen regulären Azure AD-Benutzer einer Gruppe in SQL-Datenbank zu erstellen.
+    Alternativ können Sie das Codebeispiel im Blog [Azure AD Service Principal authentication to SQL DB - Code Sample](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467) (Azure AD-Dienstprinzipalauthentifizierung bei SQL DB: Codebeispiel) verwenden. Ändern Sie das Skript, um eine DDL-Anweisung `CREATE USER [myapp] FROM EXTERNAL PROVIDER` auszuführen. Das gleiche Skript kann verwendet werden, um einen regulären Azure AD-Benutzer oder eine Gruppe in SQL-Datenbank zu erstellen.
 
     
 2. Überprüfen Sie, ob der Benutzer *myapp* in der Datenbank vorhanden ist, indem Sie den folgenden Befehl ausführen:

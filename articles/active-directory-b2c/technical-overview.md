@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 04/27/2021
+ms.date: 06/07/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa6bf4b59b8cc478115cfb69fea532b076141b38
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 29fc4028308d2d1fd9a23aa37d635f6b9fb0e68c
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071278"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111570649"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technische und Funktionsübersicht für Azure Active Directory B2C
 
-Als Ergänzung zu [Was ist Azure Active Directory B2C?](overview.md) bietet Ihnen dieser Artikel eine ausführlichere Einführung in den Dienst. Erläutert werden die wichtigsten Ressourcen, mit denen Sie bei diesem Dienst arbeiten, die zugehörigen Funktionen und die Möglichkeiten, die diese bieten, um eine vollständige benutzerdefinierte Identitätsverwaltung für Kunden in Ihren Anwendungen zu ermöglichen.
+Als Ergänzung zu [Was ist Azure Active Directory B2C?](overview.md) bietet Ihnen dieser Artikel eine ausführlichere Einführung in den Dienst. Hier werden die wichtigsten Ressourcen, mit denen Sie unter diesem Dienst arbeiten, sowie die zugehörigen Features beschrieben. Es wird beschrieben, wie Sie mit diesen Features in Ihren Anwendungen eine vollständig benutzerdefinierte Identitätsfunktion für Ihre Kunden bereitstellen können.
 
 ## <a name="azure-ad-b2c-tenant"></a>Azure AD B2C-Mandant
 
@@ -38,7 +38,10 @@ Die wichtigsten Ressourcen, mit denen Sie in einem Azure AD B2C Mandanten arbeit
   * *Lokale* Konten, die es Benutzern ermöglichen, sich mit einem Benutzernamen (oder einer E-Mail-Adresse oder sonstigen ID) und einem Kennwort zu registrieren und anzumelden.
 * **Schlüssel**: Hinzufügen und Verwalten von Verschlüsselungsschlüsseln zum Signieren und Überprüfen von Token, geheimen Clientschlüsseln, Zertifikaten und Kennwörtern.
 
-Ein Azure AD B2C-Mandant ist die erste Ressource, die Sie erstellen müssen, um Azure AD B2C zu verwenden. Weitere Informationen finden Sie im [Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten](tutorial-create-tenant.md) ausführen.
+Ein Azure AD B2C-Mandant ist die erste Ressource, die Sie erstellen müssen, um Azure AD B2C zu verwenden. In diesem Artikel werden folgende Themen erläutert:
+
+* [Erstellen eines Azure Active Directory B2C-Mandanten](tutorial-create-tenant.md)
+* [Verwalten Ihres Azure AD B2C-Mandanten](tenant-management.md)
 
 ## <a name="accounts-in-azure-ad-b2c"></a>Konten in Azure AD B2C
 
@@ -63,13 +66,26 @@ Ein Benutzer mit einem Consumerkonto kann sich mit mehreren Identitäten anmelde
 
 ![Identitäten von Consumerkonten](media/technical-overview/identities.png)<br/>*Abbildung: Ein einzelnes Consumerkonto mit mehreren Identitäten in Azure AD B2C*
 
-Mit Azure AD B2C können Sie allgemeine Attribute von Consumerkontoprofilen verwalten, etwa Anzeigename, Nachname, Vorname, Stadt usw. Sie können auch das Azure AD-Schema erweitern, um zusätzliche Informationen zu Ihren Benutzern zu speichern. Beispiele: Land/Region oder Wohnsitz, bevorzugte Sprache und Voreinstellungen, z. B. ob Sie einen Newsletter abonnieren oder die mehrstufige Authentifizierung aktivieren möchten.
-
 Weitere Informationen finden Sie unter [Übersicht über Benutzerkonten in Azure Active Directory B2C](user-overview.md).
 
-## <a name="external-identity-providers"></a>Externe Identitätsanbieter
+## <a name="local-account-sign-in-options"></a>Anmeldeoptionen für lokales Konto
 
-Sie können Azure AD B2C so konfigurieren, dass Benutzer sich bei Ihrer Anwendung mit Anmeldeinformationen von externen Identitätsanbietern (Identity Provider, IdP) für soziale Netzwerke oder Unternehmen anmelden können. Azure AD B2C unterstützt externe Identitätsanbieter wie Facebook, Microsoft-Konto, Google, Twitter und alle Identitätsanbieter, die OAuth 1.0, OAuth 2.0, OpenID Connect und SAML-Protokolle unterstützen.
+Azure AD B2C bietet verschiedene Möglichkeiten, wie Benutzer einen Benutzer authentifizieren können. Benutzer können sich bei einem lokalen Konto anmelden, indem sie den Benutzernamen und das Kennwort oder die Telefonüberprüfung (auch als kennwortlose Authentifizierung bezeichnet) verwenden. In den Einstellungen des Identitätsanbieters „Lokales Konto“ ist standardmäßig die Registrierung mit E-Mail-Adresse aktiviert.
+
+Weitere Informationen finden Sie unter [Einrichten des Identitätsanbieters „Lokales Konto“](identity-provider-local.md).
+
+## <a name="user-profile-attributes"></a>Benutzerprofilattribute
+
+Mit Azure AD B2C können Sie allgemeine Attribute von Consumerkontoprofilen verwalten, etwa Anzeigename, Nachname, Vorname, Stadt usw.
+
+Sie können auch das Azure AD-Schema erweitern, um zusätzliche Informationen zu Ihren Benutzern zu speichern. Beispiele: Land/Region oder Wohnsitz, bevorzugte Sprache und Voreinstellungen, z. B. ob Sie einen Newsletter abonnieren oder die mehrstufige Authentifizierung aktivieren möchten. Weitere Informationen finden Sie unter
+
+* [Benutzerprofilattribute](user-profile-attributes.md)
+* [Hinzufügen von Benutzerattributen und Anpassen der Benutzereingabe](configure-user-input.md)
+
+## <a name="sign-in-with-external-identity-providers"></a>Anmelden mit externen Identitätsanbietern
+
+Sie können Azure AD B2C so konfigurieren, dass Benutzer sich bei Ihrer Anwendung mit Anmeldeinformationen von Identitätsanbietern für soziale Netzwerke und Unternehmen anmelden können. Für Azure AD B2C kann ein Verbund mit Identitätsanbietern erstellt werden, die die Protokolle OAuth 1.0, OAuth 2.0, OpenID Connect und SAML unterstützen. Beispiele hierfür sind Facebook, Microsoft-Konto, Google, Twitter und AD FS.
 
 ![Externe Identitätsanbieter](media/technical-overview/external-idps.png)
 
@@ -83,83 +99,40 @@ Weitere Informationen zum Hinzufügen von Identitätsanbietern in Azure AD B2C f
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>Identitätsverwaltung: Benutzerflows oder benutzerdefinierte Richtlinien
 
-Das erweiterbare Richtlinienframework ist der größte Vorteil von Azure AD B2C. Richtlinien beschreiben Benutzerfunktionen im Zusammenhang mit der Identität, z. B. Registrierung, Anmeldung oder Profilbearbeitung.
+In Azure AD B2C können Sie die Geschäftslogik definieren, der Benutzer folgen müssen, um Zugriff auf Ihre Anwendung zu erhalten. Beispielsweise können Sie die Abfolge der Schritte bestimmen, die Benutzer ausführen müssen, wenn sie sich anmelden oder registrieren, ein Profil bearbeiten oder ein Kennwort zurücksetzen möchten. Am Ende der Abfolge erhält der Benutzer ein Token und damit Zugriff auf Ihre Anwendung.
 
-In Azure AD B2C gibt es zwei primäre Pfade, mit denen Sie diese Identitätsfunktionen bereitstellen können: Benutzerflows und benutzerdefinierte Richtlinien.
+In Azure AD B2C gibt es zwei Möglichkeiten, Benutzeridentitäten bereitzustellen:
 
 * **Benutzerflows** sind vordefinierte, integrierte und konfigurierbare Richtlinien, die zur Verfügung gestellt werden, damit Sie in wenigen Minuten Umgebungen zur Registrierung, Anmeldung und Profilbearbeitung erstellen können.
 
 * **Benutzerdefinierte Richtlinien** ermöglichen es Ihnen, eigene User Journeys für komplexe Identitätsszenarios zu erstellen.
 
-Sowohl Benutzerflows als auch benutzerdefinierte Richtlinien basieren auf dem *Identity Experience Framework*, der Orchestrierungs-Engine für Richtlinien in Azure AD B2C.
+Der folgende Screenshot zeigt die Benutzeroberfläche für Benutzerfloweinstellungen im Vergleich zu benutzerdefinierten Richtlinienkonfigurationsdateien.
 
-### <a name="user-flow"></a>Benutzerflow
+![Der Screenshot zeigt die Benutzeroberfläche für Benutzerfloweinstellungen im Vergleich zu benutzerdefinierten Richtlinienkonfigurationsdateien.](media/technical-overview/user-flow-vs-custom-policy.png)
 
-Um Ihnen die schnelle Einrichtung der gängigsten Identitätsaufgaben zu erleichtern, enthält das Azure-Portal verschiedene vordefinierte und konfigurierbare Richtlinien, die als *Benutzerflows* bezeichnet werden.
+Lesen Sie den Artikel [Übersicht über Benutzerflows und benutzerdefinierte Richtlinien](user-flow-overview.md). Er enthält eine Übersicht über Benutzerflows und benutzerdefinierte Richtlinien. Diese Informationen sollen Ihnen bei der Entscheidung, welche Methode für Ihre Geschäftsanforderungen am besten geeignet ist, als Hilfe dienen.
 
-Sie können Benutzerfloweinstellungen wie die folgenden konfigurieren, um das Verhalten von Identitäten in Ihren Anwendungen zu steuern:
-
-* Kontotypen für die Anmeldung, z. B. Konten für soziale Netzwerke wie Facebook oder lokale Konten, die eine E-Mail-Adresse und ein Kennwort für die Anmeldung verwenden
-* Attribute, die vom Consumer abgefragt werden, z. B. Vorname, Postleitzahl oder Land/Region des Wohnsitzes
-* Azure AD Multi-Factor Authentication (MFA)
-* Anpassung der Benutzeroberfläche
-* Eine Reihe von Ansprüchen in einem Token, die Ihre Anwendung empfängt, nachdem der Benutzer den Benutzerflow abgeschlossen hat
-* Sitzungsverwaltung
-* ... und vieles mehr.
-
-Die meisten gängigen Identitätsszenarien für Apps können mit Benutzerflows effektiv definiert und implementiert werden. Es wird empfohlen, die integrierten Benutzerflows zu verwenden, es sei denn, Sie benötigen für komplexe User Journey-Szenarien die hohe Flexibilität von benutzerdefinierten Richtlinien.
-
-Weitere Informationen über Benutzerflows finden Sie unter [Benutzerflows in Azure Active Directory B2C](user-flow-overview.md).
-
-### <a name="custom-policy"></a>Benutzerdefinierte Richtlinie
-
-Eine benutzerdefinierte Richtlinie ist vollständig konfigurierbar und richtliniengesteuert. Sie orchestriert die Vertrauensstellung zwischen Entitäten in Standardprotokollen, zum Beispiel OpenID Connect, OAuth, SAML und einige wenige nicht standardmäßige Protokolle wie der Austausch von Systemansprüchen auf REST-API-Basis. Das Framework erstellt benutzerfreundliche Umgebungen mit Positivlisten.
-
-Mit einer benutzerdefinierten Richtlinie haben Sie die Möglichkeit, User Journeys mit einer beliebigen Schrittkombination zu erstellen. Beispiel:
-
-* Verbund mit anderen Identitätsanbietern
-* Abfragen für Erst- und Drittanbieterlösungen für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)
-* Beliebige Benutzereingaben erfassen
-* Integration in externe Systeme mithilfe der REST-API-Kommunikation
-
-Jede dieser User Journeys wird durch eine Richtlinie definiert, und Sie können so viele oder wenige Richtlinien erstellen, wie Sie benötigen, um die optimale Benutzererfahrung für Ihre Organisation zu ermöglichen.
-
-![Diagramm mit einem Beispiel für eine durch IEF ermöglichte komplexe User Journey](media/technical-overview/custom-policy.png)
-
-Weitere Informationen über benutzerdefinierte Richtlinien finden Sie unter [Benutzerdefinierte Richtlinien in Azure Active Directory B2C](custom-policy-overview.md).
-
-## <a name="protocols-and-tokens"></a>Protokolle und Token
-
-- Für Anwendungen unterstützt Azure AD B2C die Protokolle [OAuth 2.0](protocols-overview.md), [OpenID Connect](openid-connect.md) und [SAML](saml-service-provider.md) für User Journeys. Ihre Anwendung startet die User Journey, indem sie Authentifizierungsanforderungen an Azure AD B2C stellt. Das Ergebnis einer an Azure AD B2C gerichteten Anforderung ist ein Sicherheitstoken (z. B. ein [ID-Token, Zugriffstoken](tokens-overview.md) oder SAML-Token). Dieses Sicherheitstoken definiert die Identität des Benutzers in der Anwendung.
-
-- Bei externen Identitäten unterstützt Azure AD B2C den Verbund mit allen OAuth 1.0-, OAuth 2.0-, OpenID Connect- und SAML-Identitätsanbietern.
-
-Das folgende Diagramm zeigt, wie Azure AD B2C mithilfe verschiedener Protokolle innerhalb desselben Authentifizierungsablaufs kommunizieren kann:
-
-![Diagramm der OIDC-basierten Client-App im Verbund mit einem SAML-basierten IdP](media/technical-overview/protocols.png)
-
-1. Die anspruchsbasierte Anwendung initiiert eine Autorisierungsanforderung an Azure AD B2C mithilfe von OpenID Connect.
-1. Wenn sich ein Benutzer der Anwendung mit einem externen Identitätsanbieter anmeldet, der das SAML-Protokoll verwendet, ruft Azure AD B2C das SAML-Protokoll für die Kommunikation mit dem Identitätsanbieter auf.
-1. Nachdem der Benutzer den Anmeldevorgang mit dem externen Identitätsanbieter abgeschlossen hat, gibt Azure AD B2C das Token mithilfe von OpenID Connect an die anspruchsbasierte Anwendung zurück.
-
-## <a name="application-integration"></a>Anwendungsintegration
-
-Wenn sich ein Benutzer bei Ihrer Anwendung anmelden möchte, initiiert die Anwendung eine Autorisierungsanforderung an einen Benutzerflow-Endpunkt oder einen von der benutzerdefinierten Richtlinie bereitgestellten Endpunkt. Der Benutzerflow oder die benutzerdefinierte Richtlinie definiert und steuert die Funktionalität für die Benutzer. Wenn Sie einen Benutzerflow ausführen, z. B. den Flow für *Registrierung oder Anmeldung*, generiert Azure AD B2C ein Token und leitet den Benutzer dann wieder zurück zur Anwendung um.
-
-![Mobile App mit Pfeilen, die den Flow zur Azure AD B2C-Anmeldeseite darstellen](media/technical-overview/app-integration.png)
-
-Mehrere Anwendungen können den gleichen Benutzerflow oder die gleiche benutzerdefinierte Richtlinie verwenden. Jede Anwendung kann mehrere Benutzerflows oder benutzerdefinierte Richtlinien verwenden.
-
-Beispielsweise kann die Anwendung den Benutzerflow *Registrieren oder anmelden* für die Anmeldung bei einer Anwendung verwenden. Wenn sich der Benutzer angemeldet hat und nun sein Profil bearbeiten möchte, initiiert die Anwendung eine weitere Autorisierungsanforderung, dieses Mal unter Verwendung des Benutzerflows *Profilbearbeitung*.
-
-## <a name="user-experiences"></a>Benutzerumgebung
+## <a name="user-interface"></a>Benutzeroberfläche
 
 In Azure AD B2C können Sie die Identitätsfunktionen für Benutzer so gestalten, dass sich die angezeigten Seiten nahtlos in das Design Ihrer Marke einfügen. Sie hab die fast vollständige Kontrolle über HTML- und CSS-Inhalte, die Ihren Benutzern beim Durchlaufen der Identitäts-User Journeys in Ihrer Anwendung angezeigt werden. Dank dieser Flexibilität können Sie die Konsistenz von Marken und visuellen Elementen zwischen Ihrer Anwendung und Azure AD B2C sicherstellen.
 
 ![Screenshots einer an die Marke angepassten Registrierungs-/Anmeldeseite](media/technical-overview/seamless-ux.png)
 
-Weitere Informationen über die Anpassung der Benutzeroberfläche finden Sie unter [Informationen zur Anpassung der Benutzeroberfläche (UI) in Azure Active Directory B2C](customize-ui-with-html.md).
+Weitere Informationen zur Anpassung der Benutzeroberfläche:
 
+* [Anpassen der Benutzeroberfläche](customize-ui.md)
+* [Anpassen der Benutzeroberfläche mit HTML-Vorlagen](customize-ui-with-html.md)
+* [Aktivieren von JavaScript und Auswählen einer Seitenlayoutversion](javascript-and-page-layout.md)
+
+## <a name="custom-domain"></a>Benutzerdefinierte Domäne
+
+Sie können Ihre Azure AD B2C-Domäne in den Umleitungs-URLs für Azure AD B2C anpassen. Über die benutzerdefinierte Domäne können Sie eine nahtlose Benutzererfahrung erstellen, damit die angezeigten Seiten nahtlos an den Domänennamen Ihrer Anwendung angepasst sind.
+
+![Screenshots: Benutzerdefinierte Azure AD B2C-Domäne](media/technical-overview/custom-domain.png)
+
+Aus Sicht des Benutzers bleibt er während des Anmeldevorgangs in Ihrer Domäne und wird nicht an die Azure AD B2C-Standarddomäne „.b2clogin.com“ umgeleitet. Weitere Informationen finden Sie unter [Aktivieren von benutzerdefinierten Domänen für Azure Active Directory B2C](custom-domain.md).
+ 
 ## <a name="localization"></a>Lokalisierung
 
 Die Sprachanpassung in Azure AD B2C ermöglicht es Ihnen, verschiedene Sprachen zu unterstützen, um auf die Anforderungen Ihrer Kunden einzugehen. Microsoft stellt Übersetzungen für 36 Sprachen bereit. Sie können aber auch eigene Übersetzungen für beliebige Sprachen bereitstellen. Auch wenn Ihre Benutzeroberfläche nur für eine einzelne Sprache bestimmt ist, können Sie beliebigen Text auf den Seiten anpassen.
@@ -167,6 +140,17 @@ Die Sprachanpassung in Azure AD B2C ermöglicht es Ihnen, verschiedene Sprachen 
 ![Drei Anmeldeseiten für die Registrierung mit Benutzeroberflächentext in verschiedenen Sprachen](media/technical-overview/localization.png)
 
 Weitere Informationen zur Funktionsweise der Lokalisierung finden Sie unter [Sprachanpassung in Azure Active Directory B2C](language-customization.md).
+
+## <a name="email-verification"></a>Überprüfung per E-Mail
+
+Azure AD B2C stellt sicher, dass gültige E-Mail-Adressen verwendet werden, indem Kunden diese während der Registrierung und bei Kennwortzurücksetzungsflows verifizieren müssen. Außerdem wird verhindert, dass böswillige Akteure mit automatisierten Prozessen betrügerische Konten in Ihren Anwendungen generieren.
+
+![Screenshots: E-Mail-Überprüfung von Azure AD B2C](media/technical-overview/email-verification.png)
+
+Sie können die E-Mail an Benutzer anpassen, die sich für die Verwendung Ihrer Anwendungen registrieren. Bei Verwendung des E-Mail-Drittanbieters können Sie Ihre eigenen E-Mail-Vorlagen sowie Absenderadressen und Betreffzeilentexte verwenden. Darüber hinaus werden die Lokalisierung und benutzerdefinierte Einstellungen für Einmalkennwörter (One-Time Password, OTP) unterstützt. Weitere Informationen finden Sie unter
+
+* [Benutzerdefinierte E-Mail-Überprüfung mit Mailjet](custom-email-mailjet.md)
+* [Benutzerdefinierte E-Mail-Überprüfung mit SendGrid](custom-email-sendgrid.md)
 
 ## <a name="add-your-own-business-logic"></a>Hinzufügen Ihrer eigenen Geschäftslogik
 
@@ -193,7 +177,69 @@ Sie können einen Rest-API-Aufruf in jedem Schritt der User Journey hinzufügen,
 
 Informationen zum Verwenden benutzerdefinierter Richtlinien für die RESTful-API-Integration in Azure AD B2C finden Sie unter [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie](api-connectors-overview.md).
 
-## <a name="protect-customer-identities"></a>Schützen von Kundenidentitäten
+## <a name="protocols-and-tokens"></a>Protokolle und Token
+
+- Für Anwendungen unterstützt Azure AD B2C die Protokolle [OAuth 2.0](protocols-overview.md), [OpenID Connect](openid-connect.md) und [SAML](saml-service-provider.md) für User Journeys. Ihre Anwendung startet die User Journey, indem sie Authentifizierungsanforderungen an Azure AD B2C stellt. Das Ergebnis einer an Azure AD B2C gerichteten Anforderung ist ein Sicherheitstoken (z. B. ein [ID-Token, Zugriffstoken](tokens-overview.md) oder SAML-Token). Dieses Sicherheitstoken definiert die Identität des Benutzers in der Anwendung.
+
+- Bei externen Identitäten unterstützt Azure AD B2C den Verbund mit allen OAuth 1.0-, OAuth 2.0-, OpenID Connect- und SAML-Identitätsanbietern.
+
+Das folgende Diagramm zeigt, wie Azure AD B2C mithilfe verschiedener Protokolle innerhalb desselben Authentifizierungsablaufs kommunizieren kann:
+
+![Diagramm der OIDC-basierten Client-App im Verbund mit einem SAML-basierten IdP](media/technical-overview/protocols.png)
+
+1. Die anspruchsbasierte Anwendung initiiert eine Autorisierungsanforderung an Azure AD B2C mithilfe von OpenID Connect.
+1. Wenn sich ein Benutzer der Anwendung mit einem externen Identitätsanbieter anmeldet, der das SAML-Protokoll verwendet, ruft Azure AD B2C das SAML-Protokoll für die Kommunikation mit dem Identitätsanbieter auf.
+1. Nachdem der Benutzer den Anmeldevorgang mit dem externen Identitätsanbieter abgeschlossen hat, gibt Azure AD B2C das Token mithilfe von OpenID Connect an die anspruchsbasierte Anwendung zurück.
+
+## <a name="application-integration"></a>Anwendungsintegration
+
+Wenn sich ein Benutzer bei Ihrer Anwendung anmelden möchte, initiiert die Anwendung eine Autorisierungsanforderung an einen Benutzerflow-Endpunkt oder einen von der benutzerdefinierten Richtlinie bereitgestellten Endpunkt. Der Benutzerflow oder die benutzerdefinierte Richtlinie definiert und steuert die Funktionalität für die Benutzer. Wenn Sie einen Benutzerflow ausführen, z. B. den Flow für *Registrierung oder Anmeldung*, generiert Azure AD B2C ein Token und leitet den Benutzer dann wieder zurück zur Anwendung um.
+
+![Mobile App mit Pfeilen, die den Flow zur Azure AD B2C-Anmeldeseite darstellen](media/technical-overview/app-integration.png)
+
+Mehrere Anwendungen können den gleichen Benutzerflow oder die gleiche benutzerdefinierte Richtlinie verwenden. Jede Anwendung kann mehrere Benutzerflows oder benutzerdefinierte Richtlinien verwenden.
+
+Beispielsweise kann die Anwendung den Benutzerflow *Registrieren oder anmelden* für die Anmeldung bei einer Anwendung verwenden. Wenn sich der Benutzer angemeldet hat und nun sein Profil bearbeiten möchte, initiiert die Anwendung eine weitere Autorisierungsanforderung, dieses Mal unter Verwendung des Benutzerflows *Profilbearbeitung*.
+
+## <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
+
+Azure AD B2C Multi-Factor Authentication (MFA) trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und ist dabei für Ihre Benutzer einfach zu verwenden. Aufgrund der obligatorischen zweiten Form der Authentifizierung sorgt das Verfahren für zusätzliche Sicherheit. Es wird eine zuverlässige Authentifizierung ermöglicht, indem mehrere benutzerfreundliche Authentifizierungsmethoden angeboten werden. 
+
+Sie als Administrator können über die Konfiguration festlegen, ob Ihre Benutzer aufgefordert werden, die MFA zu verwenden.
+
+Weitere Informationen zum Aktivieren der MFA in Benutzerflows finden Sie unter [Aktivieren der Multi-Factor Authentication in Azure Active Directory B2C](multi-factor-authentication.md).
+
+## <a name="conditional-access"></a>Bedingter Zugriff
+
+Die Features von Azure AD Identity Protection zur Erkennung von Risiken, z. B. Risikobenutzer und Risikoanmeldungen, werden automatisch erkannt und in Ihrem Azure AD B2C-Mandanten angezeigt. Sie können Richtlinien für bedingten Zugriff erstellen, die diese Risikoerkennungen nutzen, um Aktionen zur Problembehebung zu bestimmen und Organisationsrichtlinien zu erzwingen. 
+
+![Flow für bedingten Zugriff](media/technical-overview/conditional-access-flow.png)
+
+In Azure AD B2C wird jedes Anmeldungsereignis ausgewertet und sichergestellt, dass alle Richtlinienanforderungen erfüllt sind, bevor dem Benutzer der Zugriff gewährt wird. Risikobenutzer oder -anmeldungen können blockiert werden, oder es kann eine Aufforderung zur Durchführung einer bestimmten Sicherheitsmaßnahme angezeigt werden, z. B. der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA). Weitere Informationen finden Sie unter [Identity Protection und bedingter Zugriff](conditional-access-identity-protection-overview.md).
+
+## <a name="password-complexity"></a>Kennwortkomplexität
+
+Bei der Registrierung oder dem Zurücksetzen des Kennworts müssen Ihre Benutzer ein Kennwort angeben, das die Regeln für die Komplexität erfüllt. Standardmäßig erzwingt Azure AD B2C eine Richtlinie für sichere Kennwörter. Azure AD B2C bietet auch Konfigurationsoptionen zum Angeben der Komplexitätsanforderungen an Kennwörter, die von ihren Kunden verwendet werden.
+
+![Screenshot: Benutzeroberfläche für Kennwortkomplexität](media/technical-overview/password-complexity.png)
+
+Weitere Informationen finden Sie unter [Konfigurieren der Komplexitätsanforderungen für Kennwörter in Azure Active Directory B2C](password-complexity.md).
+
+## <a name="force-password-reset"></a>Kennwortzurücksetzung erzwingen
+
+Als Administrator des Azure AD B2C-Mandanten können Sie [das Kennwort für einen Benutzer zurücksetzen](manage-users-portal.md#reset-a-users-password), wenn der Benutzer sein Kennwort vergessen hat. Es kann auch sein, dass Sie die regelmäßige Kennwortzurücksetzung erzwingen möchten. Weitere Informationen finden Sie unter [Einrichten eines Flows zum Erzwingen der Kennwortzurücksetzung in Azure Active Directory B2C](force-password-reset.md).
+
+![Flow zum Erzwingen der Kennwortzurücksetzung](media/technical-overview/force-password-reset-flow.png)
+
+## <a name="smart-account-lockout"></a>Intelligente Kontosperrung
+
+Um Brute-Force-Versuche zum Erraten von Kennwörtern zu verhindern, verwendet Azure AD B2C eine ausgereifte Strategie zum Sperren von Konten auf der Grundlage der IP-Adresse der Anforderung, der eingegebenen Kennwörter und verschiedener anderer Faktoren. Die Dauer der Sperre wird basierend auf dem Risiko und der Anzahl der Versuche automatisch ausgedehnt.
+
+![Benutzerdefinierte intelligente Sperre](media/technical-overview/smart-lockout1.png)
+
+Weitere Informationen zur Verwaltung der Einstellungen für den Kennwortschutz finden Sie unter [Verwalten von Bedrohungen für Ressourcen in Azure Active Directory B2C](threat-management.md).
+
+## <a name="protect-resources-and-customer-identities"></a>Schützen von Ressourcen und Kundenidentitäten
 
 In Azure AD B2C werden die im [Microsoft Azure Trust Center](https://www.microsoft.com/trustcenter/cloudservices/azure) beschriebenen Sicherheits-, Datenschutz- und sonstigen Anforderungen erfüllt.
 
@@ -215,31 +261,9 @@ Sie können Rollen zuweisen, um zu steuern, wer bestimmte administrative Aktione
 
 Weitere Informationen zu Azure AD-Rollen, einschließlich Unterstützung für Azure AD B2C-Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
-### <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
-
-Azure AD B2C Multi-Factor Authentication (MFA) trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und ist dabei für Ihre Benutzer einfach zu verwenden. Indem eine zweite Form der Authentifizierung verlangt wird, bietet das Verfahren zusätzliche Sicherheit und eine zuverlässige Authentifizierung, indem verschiedene benutzerfreundliche Authentifizierungsmethoden zur Verfügung gestellt werden. 
-
-Sie als Administrator können über die Konfiguration festlegen, ob Ihre Benutzer aufgefordert werden, die MFA zu verwenden.
-
-Weitere Informationen zum Aktivieren der MFA in Benutzerflows finden Sie unter [Aktivieren der Multi-Factor Authentication in Azure Active Directory B2C](multi-factor-authentication.md).
-
-### <a name="smart-account-lockout"></a>Intelligente Kontosperrung
-
-Um Brute-Force-Versuche zum Erraten von Kennwörtern zu verhindern, verwendet Azure AD B2C eine ausgereifte Strategie zum Sperren von Konten auf der Grundlage der IP-Adresse der Anforderung, der eingegebenen Kennwörter und verschiedener anderer Faktoren. Die Dauer der Sperre wird basierend auf dem Risiko und der Anzahl der Versuche automatisch ausgedehnt.
-
-![Benutzerdefinierte intelligente Sperre](media/technical-overview/smart-lockout1.png)
-
-Informationen zur Verwaltung von Kennwortschutzeinstellungen finden Sie unter [Verwalten von Bedrohungen für Ressourcen und Daten in Azure Active Directory B2C](threat-management.md).
-
-### <a name="password-complexity"></a>Kennwortkomplexität
-
-Bei der Registrierung oder dem Zurücksetzen des Kennworts müssen Ihre Benutzer ein Kennwort angeben, das die Regeln für die Komplexität erfüllt. Standardmäßig erzwingt Azure AD B2C eine Richtlinie für sichere Kennwörter. Azure AD B2C bietet auch Konfigurationsoptionen zum Angeben der Komplexitätsanforderungen an Kennwörter, die von ihren Kunden verwendet werden.
-
-Sie können die Anforderungen an die Kennwortkomplexität sowohl in [Benutzerflows](password-complexity.md) als auch in [benutzerdefinierten Richtlinien](password-complexity.md) konfigurieren.
-
 ## <a name="auditing-and-logs"></a>Überwachung und Protokollierung
 
-Azure AD B2C gibt Überwachungsprotokolle aus, die Aktivitätsinformationen über Ressourcen, ausgestellte Token und Administratorzugriff enthalten. Sie können diese Überwachungsprotokolle verwenden, um Plattformaktivitäten zu verfolgen und Probleme zu diagnostizieren. Überwachungsprotokolleinträge sind kurz nach Eintreten der Aktivität verfügbar, die das Ereignis generiert hat.
+Azure AD B2C gibt Überwachungsprotokolle aus, die Aktivitätsinformationen über Ressourcen, ausgestellte Token und Administratorzugriff enthalten. Sie können die Überwachungsprotokolle verwenden, um Plattformaktivitäten zu verfolgen und Probleme zu diagnostizieren. Überwachungsprotokolleinträge sind kurz nach Eintreten der Aktivität verfügbar, die das Ereignis generiert hat.
 
 In einem Überwachungsprotokoll, das für Ihren Azure AD B2C-Mandanten oder für einen bestimmten Benutzer verfügbar ist, finden Sie Informationen wie die folgenden:
 
@@ -254,7 +278,7 @@ In einem Überwachungsprotokoll, das für Ihren Azure AD B2C-Mandanten oder für
 
 Weitere Informationen zu Überwachungsprotokollen finden Sie unter [Zugriff auf Active Directory B2C-Überwachungsprotokolle](view-audit-logs.md).
 
-### <a name="usage-insights"></a>Nutzungsinformationen
+## <a name="usage-analytics"></a>Nutzungsanalyse
 
 Über Azure AD B2C können Sie ermitteln, wann Benutzer sich bei Ihrer App registrieren oder anmelden, wo sie sich befinden und welche Browser und Betriebssysteme sie verwenden. 
 

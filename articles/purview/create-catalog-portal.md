@@ -9,12 +9,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 158eed6d287fa384023defbb20a7a1c39ea3d838
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7c75e550c1987302559fb07e3785686244d128a0
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728588"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060982"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal
 
@@ -87,7 +87,7 @@ In dieser Schnellstartanleitung wird ein Azure Purview-Konto erstellt.
 
     1. [Erstellen Sie eine Richtlinienzuweisung](../governance/policy/assign-policy-portal.md) mit der erstellten benutzerdefinierten Richtlinie.
 
-        [ ![Screenshot: Erstellen der Richtlinienzuweisung](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
+       :::image type="content" source="./media/create-catalog-portal/policy-assignment.png" alt-text="Screenshot: Erstellen der Richtlinienzuweisung" lightbox="./media/create-catalog-portal/policy-assignment.png":::
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -125,8 +125,12 @@ Führen Sie bei Bedarf die folgenden Schritte aus, um Ihr Abonnement so zu konfi
     1. Wählen Sie eine **Ressourcengruppe** aus.
     1. Geben Sie einen **Purview-Kontonamen** für Ihren Katalog ein. Leerzeichen und Symbole sind nicht zulässig.
     1. Wählen Sie einen **Standort** und anschließend **Weiter: Konfiguration** aus.
-1. Wählen Sie auf der Registerkarte **Konfiguration** die gewünschte **Plattformgröße** aus. Zulässig sind vier Kapazitätseinheiten (Capacity Units, CUs) und 16 CUs. Klicken Sie auf **Weiter: Tags**.
-1. Auf der Registerkarte **Tags** können Sie optional Tags hinzufügen. Diese Tags sind nur für die Verwendung im Azure-Portal vorgesehen, nicht in Azure Purview. 
+1. Wählen Sie auf der Registerkarte **Konfiguration** die gewünschte **Plattformgröße** aus. Zulässig sind vier Kapazitätseinheiten (Capacity Units, CUs) und 16 CUs. Geben Sie optional einen anderen Namen für die verwaltete Azure Purview-Ressourcengruppe an. Klicken Sie auf **Weiter: Tags**.
+
+    > [!Note] 
+    > Die [verwaltete Ressourcengruppe](create-catalog-portal.md#azure-purview-managed-resources) enthält ein verwaltetes Speicherkonto und einen dedizierten EventHub-Namespace, der vom Azure Purview-Konto verwendet wird.
+
+3. Auf der Registerkarte **Tags** können Sie optional Tags hinzufügen. Diese Tags sind nur für die Verwendung im Azure-Portal vorgesehen, nicht in Azure Purview. 
 
     > [!Note] 
     > Wenn Sie über **Azure Policy** verfügen und wie in den **Voraussetzungen** erwähnt eine Ausnahme hinzufügen müssen, müssen Sie das richtige Tag hinzufügen. Sie können beispielsweise das Tag `resourceBypass` hinzufügen: :::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="Hinzufügen eines Tags zum Purview-Konto":::
@@ -167,6 +171,13 @@ Sollten nach dem Klicken auf „Hinzufügen“ zwei Optionen angezeigt werden, d
 1. Geben Sie unter **Auswählen** den Namen des zuzuweisenden Benutzers, der zuzuweisenden Azure Active Directory-Gruppe oder des zuzuweisenden Dienstprinzipals ein, und klicken Sie anschließend im Ergebnisbereich auf den entsprechenden Namen.
 
 1. Klicken Sie auf **Speichern**.
+
+## <a name="azure-purview-managed-resources"></a>Verwaltete Azure Purview-Ressourcen
+Während der Bereitstellung eines Azure Purview-Kontos werden auch eine neue verwaltete Ressourcengruppe mit einem neuen Azure Storage-Konto und ein neuer EventHub-Namespace zusammen mit dem Azure Purview-Konto in Ihrem Azure-Abonnement bereitgestellt. Sie können während der Bereitstellung optional eine andere Namenskonvention für die verwaltete Ressourcengruppe auswählen.
+
+Diese Ressourcen sind für den Betrieb des Azure Purview-Kontos von entscheidender Bedeutung und werden verwendet, um temporäre Daten aufzunehmen, bis die Informationen in Azure Purview Data Catalog erfasst werden. 
+
+Der verwalteten Ressourcengruppe wird automatisch eine Ablehnungszuweisung für alle Prinzipale hinzugefügt, wobei die verwaltete Azure Purview-Identität als einziger Ausschluss verwendet wird, damit Azure Purview die Ressourcen (Speicherkonto, Event Hub-Namespace) innerhalb der Ressourcengruppe verwalten kann. Daher können Sie die verwaltete Ressourcengruppe, die verwalteten Ressourcen oder deren Inhalt nicht auf der Datenebene entfernen oder ändern. Die verwaltete Ressourcengruppe und deren Inhalt werden jedoch automatisch gelöscht, wenn das Purview-Konto gelöscht wird. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

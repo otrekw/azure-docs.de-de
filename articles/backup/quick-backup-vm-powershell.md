@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 81005a3032355f566aef2a6794cf2ec5038b0dd8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9ff33fa1600043aaae8b8ffc6c1f9dc5252bd65
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737115"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111420804"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Sichern eines virtuellen Computers in Azure mit PowerShell
 
@@ -149,6 +149,10 @@ Führen Sie eine bedarfsgesteuerte Sicherung wie folgt aus:
     ```
 
 2. Wenn der Auftragsstatus **Completed** lautet, ist der virtuelle Computer geschützt, und es wurde ein vollständiger Wiederherstellungspunkt gespeichert.
+
+## <a name="manage-vm-backups"></a>Verwalten von VM-Sicherungen
+
+Informationen zu weiteren Aktionen, z. B. Ändern oder Bearbeiten der Richtlinie usw., finden Sie im Abschnitt [Verwalten von VM-Sicherungen](backup-azure-vms-automation.md#manage-azure-vm-backups).
 
 ## <a name="clean-up-the-deployment"></a>Bereinigen der Bereitstellung
 

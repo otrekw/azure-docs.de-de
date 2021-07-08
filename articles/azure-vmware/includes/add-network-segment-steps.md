@@ -3,12 +3,12 @@ title: Hinzufügen eines NSX-T-Netzwerksegments
 description: Schritte zum Hinzufügen eines NSX-T-Netzwerksegments für Azure VMware Solution
 ms.topic: include
 ms.date: 03/13/2021
-ms.openlocfilehash: 477533887629a88f72426a33ed38278636e72fef
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 10b04c8000b8ef440a2a729be671630b4382f3a8
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064455"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794948"
 ---
 <!-- Used in configure-dhcp-azure-vmware-solution.md and tutorial-nsx-t-network-segment.md -->
 

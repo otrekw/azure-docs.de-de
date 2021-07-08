@@ -8,16 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/04/2021
+ms.date: 06/14/2021
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
-ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 48d214dfc256a1ed8b770df2ff54646de17b80fe
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 546e7bafe34352ff8968ce1df7cd3386f60eae59
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748743"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075491"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -31,6 +30,10 @@ IAM-Aktionen (Identity & Access Management) werden von Microsoft Identity Platf
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Das Azure-Konto muss über die Berechtigung zum Verwalten von Anwendungen in Azure Active Directory (Azure AD) verfügen. Die folgenden Azure AD-Rollen verfügen über die erforderlichen Berechtigungen:
+  - [Anwendungsadministrator](../roles/permissions-reference.md#application-administrator)
+  - [Anwendungsentwickler](../roles/permissions-reference.md#application-developer)
+  - [Cloudanwendungsadministrator](../roles/permissions-reference.md#cloud-application-administrator)
 - Abschluss der [Schnellstartanleitung zum Einrichten eines Mandanten](quickstart-create-new-tenant.md).
 
 ## <a name="register-an-application"></a>Registrieren einer Anwendung
@@ -113,7 +116,7 @@ Sie können Ihrer vertraulichen Client-App-Registrierung sowohl Zertifikate als 
 
 ### <a name="add-a-certificate"></a>Hinzufügen eines Zertifikats
 
-Ein Zertifikat wird manchmal auch als _öffentlicher Schlüssel_ bezeichnet und ist der empfohlene Anmeldeinformationstyp. Es bietet eine höhere Sicherheit als ein geheimer Clientschlüssel. Weitere Informationen zur Verwendung von Zertifikaten als Authentifizierungsmethode in Ihrer Anwendung finden Sie unter [Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung](active-directory-certificate-credentials.md).
+Für die Anmeldung wird die Verwendung eines Zertifikats (gelegentlich auch als _öffentlicher Schlüssel_ bezeichnet) empfohlen, da ein Zertifikat im Vergleich zu einem Clientschlüssel als sicherer gilt. Weitere Informationen zur Verwendung von Zertifikaten als Authentifizierungsmethode in Ihrer Anwendung finden Sie unter [Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung](active-directory-certificate-credentials.md).
 
 1. Wählen Sie im Azure-Portal unter **App-Registrierungen** Ihre Anwendung aus.
 1. Wählen Sie **Zertifikate & Geheimnisse** > **Zertifikat hochladen** aus.
@@ -122,18 +125,20 @@ Ein Zertifikat wird manchmal auch als _öffentlicher Schlüssel_ bezeichnet und 
 
 ### <a name="add-a-client-secret"></a>Geheimen Clientschlüssel hinzufügen
 
-Der geheime Clientschlüssel wird auch als _Anwendungskennwort_ bezeichnet. Dieser Zeichenfolgenwert kann von Ihrer App anstelle eines Zertifikats für die Identifizierung verwendet werden. Der geheime Clientschlüssel ist einfacher zu verwenden. Er kommt häufig bei der Entwicklung zum Einsatz, gilt aber als unsicherer als ein Zertifikat. In Anwendungen, die in der Produktion eingesetzt werden, sollten Zertifikate verwendet werden.
+Bei einem geheimen Clientschlüssel (gelegentlich auch als _Anwendungskennwort_ bezeichnet) handelt es sich um einen Zeichenfolgenwert, der anstelle eines Zertifikats von Ihrer App für die Identifizierung verwendet werden kann.
 
-Weitere Informationen zu Empfehlungen im Zusammenhang mit der Anwendungssicherheit finden Sie unter [Bewährte Methoden und Empfehlungen für Microsoft Identity Platform](identity-platform-integration-checklist.md#security).
+Geheime Clientschlüssel gelten im Vergleich zu Zertifikatanmeldeinformationen als weniger sicher. Anwendungsentwickler verwenden bei der Entwicklung lokaler Apps aufgrund der Benutzerfreundlichkeit gelegentlich geheime Clientschlüssel. Für Anwendungen, die in der Produktion ausgeführt werden, sollten Sie jedoch Zertifikatanmeldeinformationen verwenden.
 
 1. Wählen Sie im Azure-Portal unter **App-Registrierungen** Ihre Anwendung aus.
 1. Wählen Sie **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel** aus.
 1. Fügen Sie eine Beschreibung für Ihren geheimen Clientschlüssel hinzu.
-1. Wählen Sie eine Dauer aus.
+1. Wählen Sie für das Geheimnis eine Ablauffrist aus, oder geben Sie eine benutzerdefinierte Lebensdauer an.
+    - Die Lebensdauer eines geheimen Clientschlüssels ist auf maximal zwei Jahre (24 Monate) begrenzt. Das bedeutet, dass keine benutzerdefinierte Lebensdauer angegeben werden kann, die über die 24 Monate hinausgeht.
+    - Microsoft empfiehlt, den Wert für die Ablauffrist auf maximal 12 Monate festzulegen.
 1. Wählen Sie **Hinzufügen**.
 1. _Notieren Sie sich den Wert des Geheimnisses_, das in Ihrem Clientanwendungscode verwendet werden soll. Dieser Geheimniswert kann nach Verlassen dieser Seite _nicht erneut angezeigt werden_.
 
-Aus Sicherheitsgründen beschränkt Microsoft derzeit die Erstellung von Clientschlüsseln, die länger als 24 Monate gelten, und empfiehlt, dass Sie dies auf einen Wert von weniger als 12 Monaten festlegen.
+Empfehlungen zur Anwendungssicherheit finden Sie unter [Bewährte Methoden und Empfehlungen für Microsoft Identity Platform](identity-platform-integration-checklist.md#security).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

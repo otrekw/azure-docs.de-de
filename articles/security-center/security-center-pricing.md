@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/23/2021
-ms.openlocfilehash: aa65989953f761ff915383fcb59da7f36ea98dab
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.date: 06/10/2021
+ms.openlocfilehash: 13f5bb8245ecc57c01d4236dfea7c9e4a2f7ae75
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600481"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111986316"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center Free und Azure Defender-Aktivierung
 Azure Defender ist in den ersten 30 Tagen kostenlos. Nach Ablauf der 30 Tage wird Ihnen die Nutzung automatisch in Rechnung gestellt, sofern Sie sich dafür entscheiden, den Dienst weiterhin zu nutzen.
@@ -70,7 +70,7 @@ Für Security Center gibt es zwei Angebote:
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Wie kann ich Azure Defender für mein Abonnement aktivieren? 
 Sie können die folgenden Methoden verwenden, um Azure Defender für Ihr Abonnement zu aktivieren: 
 
-| Methode                                          | Instructions                                                                                                                                       |
+| Methode                                          | Anweisungen                                                                                                                                       |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Security Center-Seiten im Azure-Portal | [Aktivieren von Azure Defender](enable-azure-defender.md)                                                                                                  |
 | REST-API                                        | [Pricings-API](/rest/api/securitycenter/pricings)                                                                                                  |
@@ -87,7 +87,9 @@ Eine Alternative besteht darin, Azure Defender für Server auf der Ebene des Log
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Kann ich für Azure Defender einen Rabatt erhalten, wenn ich bereits über eine Lizenz für Microsoft Defender für Endpunkt verfüge?
 Wenn Sie bereits eine Lizenz für Microsoft Defender für Endpunkt besitzen, müssen Sie für diesen Teil Ihrer Azure Defender-Lizenz nicht bezahlen.
 
-Wenden Sie sich an das Security Center-Supportteam, um den Rabatt zu bestätigen, und geben Sie für jede relevante Lizenz die entsprechende Arbeitsbereichs-ID, die Region und die Lizenzinformationen an.
+Fordern Sie Ihren Rabatt beim Supportteam von Security Center an, und geben Sie die entsprechende Arbeitsbereichs-ID, die Region und die Anzahl der Microsoft Defender for Endpoint-Lizenzen an, die für Computer im angegebenen Arbeitsbereich angewendet wurden.
+
+Der Rabatt gilt ab dem Genehmigungsdatum und wird nicht rückwirkend wirksam.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Für mein Abonnement ist Azure Defender für Server aktiviert. Muss ich für Server bezahlen, die nicht ausgeführt werden? 
 Nein. Wenn Sie für ein Abonnement [Azure Defender für Server](defender-for-servers-introduction.md) aktivieren, fallen für Computer im Zustand „Zuordnung aufgehoben“ keine Gebühren an, solange sie sich in diesem Zustand befinden. Computer werden gemäß ihrem Energiezustand abgerechnet, wie in der folgenden Tabelle zu sehen:
@@ -110,7 +112,7 @@ Ja. Wenn Sie für ein Abonnement [Azure Defender für Server](defender-for-serve
 Ja. Wenn Sie Ihren Log Analytics-Agent so konfiguriert haben, dass Daten an zwei oder mehr unterschiedliche Log Analytics-Arbeitsbereiche gesendet werden (Multi-Homing), werden Ihnen für jeden Arbeitsbereich Kosten in Rechnung gestellt, für den Lösungen vom Typ „Sicherheit“ oder „Antischadsoftware“ installiert sind. 
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Wenn ein Log Analytics-Agent Daten an mehrere Arbeitsbereiche meldet, sind die kostenlosen 500 MB für die Datenerfassung dann für alle Arbeitsbereiche verfügbar?
-Ja. Wenn Sie Ihren Log Analytics-Agent so konfiguriert haben, dass Daten an zwei oder mehr unterschiedliche Log Analytics-Arbeitsbereiche (Multi-Homing) gesendet werden, können Sie 500 MB für die Datenerfassung kostenlos nutzen. Dieser Wert wird pro Knoten, pro Meldungsarbeitsbereich und pro Tag berechnet und ist für jeden Arbeitsbereich verfügbar, für den Lösungen vom Typ „Sicherheit“ oder „Antischadsoftware“ installiert sind. Ihnen werden Kosten für alle Daten berechnet, die über die 500 MB hinaus erfasst werden.
+Ja. Wenn Sie Ihren Log Analytics-Agent so konfiguriert haben, dass Daten an zwei oder mehr unterschiedliche Log Analytics-Arbeitsbereiche (Multi-Homing) gesendet werden, können Sie 500 MB für die Datenerfassung kostenlos nutzen. Dieser Wert wird pro Knoten, pro Meldungsarbeitsbereich und pro Tag berechnet und ist für jeden Arbeitsbereich verfügbar, für den Lösungen vom Typ „Sicherheit“ oder „Antischadsoftware“ installiert sind. Ihnen werden Kosten für alle Daten berechnet, die über die maximal 500 MB hinaus erfasst werden.
 
 ### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>Wird die kostenlose Datenerfassung von 500 MB für einen gesamten Arbeitsbereich oder ausschließlich pro Computer berechnet?
 Für jeden Computer, der mit dem Arbeitsbereich verbunden ist, stehen Ihnen pro Tag 500 MB für die Datenerfassung kostenlos zur Verfügung. Dies gilt speziell für Sicherheitsdatentypen, die direkt von Azure Security Center erfasst werden.
@@ -120,7 +122,6 @@ Bei diesen Daten handelt es sich um eine tägliche Durchschnittsrate für alle K
 ### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>Welche Datentypen sind im täglichen Datenkontingent von 500 MB enthalten?
 
 Die Security Center-Abrechnung ist eng mit der Log Analytics-Abrechnung verbunden. Security Center bietet ein Kontingent von 500 MB pro Knoten und Tag für die folgende Teilmenge von [Sicherheitsdatentypen](/azure/azure-monitor/reference/tables/tables-category#security):
-- WindowsEvent
 - SecurityAlert
 - SecurityBaseline
 - SecurityBaselineSummary
@@ -128,7 +129,6 @@ Die Security Center-Abrechnung ist eng mit der Log Analytics-Abrechnung verbun
 - SecurityEvent
 - WindowsFirewall
 - MaliciousIPCommunication
-- LinuxAuditLog
 - SysmonEvent
 - ProtectionStatus
 - Datentypen „Update“ und „UpdateSummary“, wenn im Arbeitsbereich die Lösung für die Updateverwaltung nicht ausgeführt wird oder die Zielgruppenadressierung aktiviert ist

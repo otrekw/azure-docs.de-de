@@ -6,14 +6,14 @@ author: amitbapat
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 06/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 01e96922d9c0c47eaf4d430e92eafcd9d0964e13
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9594157349754c7178f3c73cfe9529ad478de4a
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557223"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411015"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Integrierte Rollen der lokalen RBAC für verwaltete HSMs
 
@@ -28,7 +28,7 @@ Die lokale RBAC für verwaltete HSMs beinhaltet mehrere integrierte Rollen. Dies
 |Managed HSM Crypto User (Kryptografiebenutzer für verwaltete HSMs)|Erteilt Berechtigungen zum Ausführen aller Schlüsselverwaltungsvorgänge mit Ausnahme von Lösch-, Wiederherstellungs- und Exportvorgängen für Schlüssel.|21dbd100-6940-42c2-9190-5d6cb909625b|
 |Managed HSM Policy Administrator (Richtlinienadministrator für verwaltete HSMs)| Erteilt die Berechtigung zum Erstellen und Löschen von Rollenzuweisungen.|4bd23610-cdcf-4971-bdee-bdc562cc28e4|
 |Managed HSM Crypto Auditor (Kryptografieprüfer für verwaltete HSMs)|Erteilt Leseberechtigungen zum Lesen (aber nicht Verwenden) von Schlüsselattributen.|2c18b078-7c48-4d3a-af88-5a3a1b3f82b3|
-|Managed HSM Crypto Service Encryption (Kryptografiedienstverschlüsselung für verwaltete HSMs)| Erteilt die Berechtigung zum Verwenden eines Schlüssels für die Dienstverschlüsselung. |33413926-3206-4cdd-b39a-83574fe37a17|
+|Managed HSM Crypto Service Encryption User (Benutzer der Kryptografiedienstverschlüsselung für verwaltete HSMs)| Erteilt die Berechtigung zum Verwenden eines Schlüssels für die Dienstverschlüsselung. |33413926-3206-4cdd-b39a-83574fe37a17|
 |Managed HSM Backup (Sicherung verwalteter HSMs)| Erteilt die Berechtigung zum Ausführen einer HSM-Sicherung für einen einzelnen Schlüssel oder einer vollständigen HSM-Sicherung.|7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
 
 ## <a name="permitted-operations"></a>Erlaubte Vorgänge
