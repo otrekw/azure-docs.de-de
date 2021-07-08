@@ -8,18 +8,18 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 52adba94650c09f731cfb6142852b28a0e3f3906
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: f279ea2011b37c01b1ef9ec67a2b5642f7e640b8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288639"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078092"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
 Dieser Artikel bietet Abfragebeispiele und Anleitungen zur Verwendung der **Azure Digital Twins-Abfragesprache** zum Abfragen von Informationen aus Ihrem [Zwillingsgraphen](concepts-twins-graph.md). (Eine Einführung in die Abfragesprache finden Sie unter [Konzepte: Abfragesprache](concepts-query-language.md).)
 
-Dieser Artikel enthält Beispielabfragen, die die Struktur der Abfragesprache sowie gängige Abfragevorgänge für digitale Zwillinge veranschaulichen. Außerdem wird beschrieben, wie Sie die von Ihnen geschriebenen Abfragen mithilfe der [Abfrage-API](/rest/api/digital-twins/dataplane/query) von Azure Digital Twins oder mit einem [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) ausführen.
+Dieser Artikel enthält Beispielabfragen, die die Struktur der Abfragesprache sowie gängige Abfragevorgänge für digitale Zwillinge veranschaulichen. Außerdem wird beschrieben, wie Sie die von Ihnen geschriebenen Abfragen mithilfe der [Abfrage-API](/rest/api/digital-twins/dataplane/query) von Azure Digital Twins oder mit einem [SDK](concepts-apis-sdks.md#overview-data-plane-apis) ausführen.
 
 > [!NOTE]
 > Wenn Sie die Beispielabfragen unten mit einem API- oder SDK-Aufruf ausführen, müssen Sie den Abfragetext in eine einzelne Zeile zusammenfassen.
@@ -116,11 +116,11 @@ Hier ist ein Beispiel für eine beziehungsbasierte Abfrage. Mit diesem Codeaussc
 
 Sie können die Beziehungsabfragestruktur verwenden, um einen digitalen Zwilling zu identifizieren, der die Quelle oder das Ziel einer Beziehung ist.
 
-Sie können z. B. mit einem Quellzwilling beginnen und seinen Beziehungen folgen, um die Zielzwillinge der Beziehungen zu ermitteln. Hier ist ein Beispiel für eine Abfrage, die die Zielzwillinge der *feeds*-Beziehungen ermittelt, die vom Zwilling *source-twin* stammen.
+Sie können z. B. mit einem Quellzwilling beginnen und seinen Beziehungen folgen, um die Zielzwillinge der Beziehungen zu ermitteln. Hier ist ein Beispiel für eine Abfrage, die die Zielzwillinge der *feeds*-Beziehungen ermittelt, die vom Zwilling „source-twin“ stammen.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationshipSource":::
 
-Sie können auch mit dem Ziel der Beziehung beginnen und die Beziehung zurückverfolgen, um den Quellzwilling zu ermitteln. Hier ist ein Beispiel für eine Abfrage, die den Quellzwilling einer *feeds*-Beziehung zum Zwilling *target-twin* ermittelt.
+Sie können auch mit dem Ziel der Beziehung beginnen und die Beziehung zurückverfolgen, um den Quellzwilling zu ermitteln. Hier ist ein Beispiel für eine Abfrage, die den Quellzwilling einer *feeds*-Beziehung zum Zwilling „target-twin“ ermittelt.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationshipTarget":::
 
@@ -167,20 +167,17 @@ Mithilfe der `Select TOP`-Klausel können Sie die verschiedenen obersten Element
 
 ## <a name="filter-results-specify-return-set-with-projections"></a>Filterergebnisse: Angeben eines Rückgabesatzes mit Projektionen
 
-Wenn Sie Projektionen in der `SELECT`-Anweisung verwenden, können Sie auswählen, welche Spalten von einer Abfrage zurückgegeben werden.
+Wenn Sie Projektionen in der `SELECT`-Anweisung verwenden, können Sie auswählen, welche Spalten von einer Abfrage zurückgegeben werden. Projektion wird jetzt sowohl für primitive als auch für komplexe Eigenschaften unterstützt. Weitere Informationen zu Projektionen mit Azure Digital Twins finden Sie in der [Referenzdokumentation zur SELECT-Klausel](reference-query-clause-select.md#select-columns-with-projections).
 
->[!NOTE]
->Zurzeit werden komplexe Eigenschaften nicht unterstützt. Um sicherzustellen, dass die Projektionseigenschaften gültig sind, kombinieren Sie die Projektionen mit einer `IS_PRIMITIVE`-Überprüfung.
-
-Im Folgenden finden Sie ein Beispiel für eine Abfrage, die eine Projektion verwendet, um Zwillinge und Beziehungen zurückzugeben. Die folgende Abfrage projiziert die Angaben *Consumer*, *Factory* und *Edge* aus einem Szenario, in dem eine *Factory* mit einer ID von *ABC* mit dem *Consumer* durch eine Beziehung von *Factory.customer* verbunden ist und diese Beziehung als *Edge* dargestellt wird.
+Im Folgenden finden Sie ein Beispiel für eine Abfrage, die eine Projektion verwendet, um Zwillinge und Beziehungen zurückzugeben. Die folgende Abfrage projiziert die Angaben Consumer, Factory und Edge aus einem Szenario, in dem eine Factory mit einer ID von *ABC* mit dem Consumer durch eine Beziehung von *Factory.customer* verbunden ist und diese Beziehung als *Edge* dargestellt wird.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections1":::
 
-Sie können Projektion auch verwenden, um eine Eigenschaft eines Zwillings zurückzugeben. Die folgende Abfrage projiziert die Eigenschaft *Name* der *Consumers*, die mit der *Factory* mit einer ID von *ABC* durch eine Beziehung von *Factory.customer* verbunden sind.
+Sie können Projektion auch verwenden, um eine Eigenschaft eines Zwillings zurückzugeben. Die folgende Abfrage projiziert die Eigenschaft *Name* der Consumers, die mit der Factory mit einer ID von *ABC* durch eine Beziehung von *Factory.customer* verbunden sind.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections2":::
 
-Sie können Projektion auch verwenden, um eine Eigenschaft einer Beziehung zurückzugeben. Wie im vorhergehenden Beispiel projiziert die folgende Abfrage die Eigenschaft *Name* der *Consumers*, die mit der *Factory* mit einer ID von *ABC* über eine Beziehung von *Factory.customer* verbunden sind. Jetzt gibt sie aber auch zwei Eigenschaften dieser Beziehung zurück: *prop1* und *prop2*. Dies geschieht durch Benennen der Beziehung *Edge* und Erfassen der zugehörigen Eigenschaften.  
+Sie können Projektion auch verwenden, um eine Eigenschaft einer Beziehung zurückzugeben. Wie im vorhergehenden Beispiel projiziert die folgende Abfrage die Eigenschaft *Name* der Consumers, die mit der Factory mit einer ID von *ABC* über eine Beziehung von *Factory.customer* verbunden sind. Jetzt gibt sie aber auch zwei Eigenschaften dieser Beziehung zurück: *prop1* und *prop2*. Dies geschieht durch Benennen der Beziehung *Edge* und Erfassen der zugehörigen Eigenschaften.  
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections3":::
 
@@ -190,7 +187,7 @@ Mit der folgenden Abfrage werden dieselben Vorgänge wie im vorherigen Beispiel 
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections4":::
 
-Dies ist eine ähnliche Abfrage, die die gleiche Menge wie oben festgelegt abfragt, aber nur die Eigenschaft *Consumer.name* als `consumerName` und die vollständige *Factory* als Zwilling projiziert.
+Dies ist eine ähnliche Abfrage, die die gleiche Menge wie oben festgelegt abfragt, aber nur die Eigenschaft *Consumer.name* als `consumerName` und die vollständige Factory als Zwilling projiziert.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections5":::
 
@@ -198,13 +195,13 @@ Dies ist eine ähnliche Abfrage, die die gleiche Menge wie oben festgelegt abfra
 
 Sie können die Anzahl der erforderlichen Abfragen deutlich verringern, indem Sie ein Array aus Zwillingen erstellen und die Abfrage mit dem `IN`-Operator durchführen. 
 
-Stellen Sie sich beispielsweise ein Szenario vor, in dem *Gebäude* aus *Etagen* und *Etagen* aus *Räumen* bestehen. Um in einem Gebäude nach heißen Räumen zu suchen, besteht eine Möglichkeit darin, diese Schritte durchzuführen.
+Stellen Sie sich beispielsweise ein Szenario vor, in dem Gebäude aus Etagen und Etagen aus Räumen bestehen. Um in einem Gebäude nach heißen Räumen zu suchen, besteht eine Möglichkeit darin, diese Schritte durchzuführen.
 
 1. Etagen im Gebäude basierend auf der `contains`-Beziehung suchen.
 
     :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="INOperatorWithout":::
 
-2. Wenn Sie Räume suchen möchten, können Sie eine Abfrage mit einer Sammlung der Etagen im Gebäude (in der nachstehenden Abfrage als *Floor* bezeichnet) ausführen, anstatt die Etagen einzeln zu überprüfen und jeweils eine `JOIN`-Abfrage zum Auffinden der Räume auszuführen.
+2. Wenn Sie Räume suchen möchten, können Sie eine Abfrage mit einer Sammlung der Etagen im Gebäude (in der nachstehenden Abfrage als Floor bezeichnet) ausführen, anstatt die Etagen einzeln zu überprüfen und jeweils eine `JOIN`-Abfrage zum Auffinden der Räume auszuführen.
 
     In der Client-App:
     
@@ -220,24 +217,24 @@ Stellen Sie sich beispielsweise ein Szenario vor, in dem *Gebäude* aus *Etagen*
 
 Mithilfe von Kombinationsoperatoren können Sie jeden der oben genannten Abfragetypen **kombinieren**, um mehr Details in eine einzelne Abfrage einzubeziehen. Hier folgen einige zusätzliche Beispiele für zusammengesetzte Abfragen, die mehr als einen Typ von Zwillingsdeskriptor gleichzeitig abfragen.
 
-* Von den Geräten, über die *Room 123* verfügt, geben Sie die MxChip-Geräte zurück, die die Rolle des Operators übernehmen
+* Von den Geräten, über die Room 123 verfügt, geben Sie die MxChip-Geräte zurück, die die Rolle des Operators übernehmen
     :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="OtherExamples1":::
 * Rufen Sie Zwillinge ab, die eine Beziehung namens *Enthält* mit einem anderen Zwilling aufweisen, der die ID *id1* besitzt
     :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="OtherExamples2":::
-* Rufen Sie alle Räume dieses Raummodells ab, die in *floor11* enthalten sind
+* Rufen Sie alle Räume dieses Raummodells ab, die in floor11 enthalten sind
     :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="OtherExamples3":::
 
 ## <a name="run-queries-with-the-api"></a>Ausführen von Abfragen mit der API
 
 Nachdem Sie sich für eine Abfragezeichenfolge entschieden haben, führen Sie sie durch Aufrufen der [Abfrage-API](/rest/api/digital-twins/dataplane/query) aus.
 
-Sie können die API direkt aufrufen oder eins der [SDKs](how-to-use-apis-sdks.md#overview-data-plane-apis) verwenden, die für Azure Digital Twins verfügbar sind.
+Sie können die API direkt aufrufen oder eins der [SDKs](concepts-apis-sdks.md#overview-data-plane-apis) verwenden, die für Azure Digital Twins verfügbar sind.
 
-Der folgende Codeausschnitt veranschaulicht den [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)-Aufruf aus einer Client-App:
+Der folgende Codeausschnitt veranschaulicht den [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-Aufruf aus einer Client-App:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-Durch die in diesem Aufruf verwendete Abfrage wird eine Liste mit digitalen Zwillingen zurückgegeben (im obigen Beispiel durch Objekte vom Typ [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin) dargestellt). Der Rückgabetyp Ihrer Daten für die jeweilige Abfrage hängt von den Begriffen ab, die Sie mit der Anweisung `SELECT` angeben:
+Durch die in diesem Aufruf verwendete Abfrage wird eine Liste mit digitalen Zwillingen zurückgegeben (im obigen Beispiel durch Objekte vom Typ [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) dargestellt). Der Rückgabetyp Ihrer Daten für die jeweilige Abfrage hängt von den Begriffen ab, die Sie mit der Anweisung `SELECT` angeben:
 * Bei Abfragen, die mit `SELECT * FROM ...` beginnen, wird eine Liste mit digitalen Zwillingen zurückgegeben. (Diese können als Objekte vom Typ `BasicDigitalTwin` oder als andere benutzerdefinierte Typen für digitale Zwillinge serialisiert werden, die Sie ggf. erstellt haben.)
 * Bei Abfragen, die im Format `SELECT <A>, <B>, <C> FROM ...` beginnen, wird ein Wörterbuch mit den Schlüsseln `<A>`, `<B>` und `<C>` zurückgegeben.
 * Andere Formate von `SELECT`-Anweisungen können für die Rückgabe benutzerdefinierter Daten erstellt werden. Die Erstellung eigener Klassen kann sinnvoll sein, um stark angepasste Resultsets zu behandeln. 
@@ -250,4 +247,4 @@ Abfrageaufrufe unterstützen Paging. Im Folgenden finden Sie ein vollständiges 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die [Azure Digital Twins-APIs und SDKs](how-to-use-apis-sdks.md), einschließlich der Abfrage-API, die zum Ausführen der Abfragen in diesem Artikel verwendet wird.
+Erfahren Sie mehr über die [Azure Digital Twins-APIs und SDKs](concepts-apis-sdks.md), einschließlich der Abfrage-API, die zum Ausführen der Abfragen in diesem Artikel verwendet wird.
