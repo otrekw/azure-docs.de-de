@@ -8,12 +8,13 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 4e8be77851d0d7102d7c0cef85d9fbfefd8dc2a2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8a0294e205dd8a22f9847140511cbce634322c4a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137164"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285227"
 ---
 # <a name="backend-pool-management"></a>Back-End-Pool-Verwaltung
 Der Back-End-Pool ist eine kritische Komponente des Lastenausgleichs. Der Back-End-Pool definiert die Gruppe der Ressourcen, die den Datenverkehr für eine bestimmte Lastenausgleichsregel verarbeiten.
@@ -22,7 +23,7 @@ Es gibt zwei Möglichkeiten, einen Back-End-Pool zu konfigurieren:
 * Netzwerkschnittstellenkarte (NIC)
 * Kombination aus IP-Adresse und VNET-Ressourcen-ID (Virtuelles Netzwerk)
 
-Konfigurieren Sie Ihren Back-End-Pool anhand der NIC, wenn Sie vorhandene virtuelle Computer und VM-Skalierungsgruppen verwenden. Diese Methode erstellt die direkteste Verknüpfung zwischen ihrer Ressource und dem Back-End-Pool. 
+Konfigurieren Sie Ihren Back-End-Pool anhand der NIC, wenn Sie vorhandene virtuelle Computer und VM-Skalierungsgruppen verwenden. Diese Methode erstellt die direkteste Verknüpfung zwischen ihrer Ressource und dem Back-End-Pool.
 
 Wenn Sie Ihrem Back-End-Pool vorab einen IP-Adressbereich zuweisen, in dem Sie später virtuelle Computer und VM-Skalierungsgruppen erstellen möchten, konfigurieren Sie den Back-End-Pool anhand der Kombination aus IP-Adresse und VNET-ID.
 
@@ -33,7 +34,7 @@ Die Konfigurationsabschnitte dieses Artikels konzentrieren sich auf Folgendes:
 * Azure PowerShell
 * Azure CLI
 * REST-API
-* Azure-Ressourcen-Manager-Vorlagen 
+* Azure-Ressourcen-Manager-Vorlagen
 
 In diesen Abschnitten erhalten Sie Einblicke in die Strukturierung der Back-End-Pools für die einzelnen Konfigurationsoptionen.
 
@@ -42,7 +43,7 @@ Der Back-End-Pool wird als Teil des Lastenausgleichsvorgangs erstellt. Die IP-Ko
 
 Die folgenden Beispiele konzentrieren sich auf die Vorgänge des Erstellens und Auffüllens für den Back-End-Pool, um diesen Workflow und die Beziehung hervorzuheben.
 
-  >[!NOTE] 
+  >[!NOTE]
   >Es ist wichtig, zu beachten, dass anhand der Netzwerkschnittstelle konfigurierte Back-End-Pools nicht als Teil eines Vorgangs im Back-End-Pool aktualisiert werden können. Jegliches Hinzufügen oder Löschen von Back-End-Ressourcen muss an der Netzwerkschnittstelle der Ressource erfolgen.
 
 ### <a name="powershell"></a>PowerShell
@@ -53,7 +54,7 @@ $resourceGroup = "myResourceGroup"
 $loadBalancerName = "myLoadBalancer"
 $backendPoolName = "myBackendPool"
 
-$backendPool = 
+$backendPool =
 New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
@@ -67,10 +68,10 @@ $nicname = "myNic"
 $location = "eastus"
 $vnetname = <your-vnet-name>
 
-$vnet = 
+$vnet =
 Get-AzVirtualNetwork -Name $vnetname -ResourceGroupName $resourceGroup
 
-$nic = 
+$nic =
 New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicname -LoadBalancerBackendAddressPool $backendPoolName -Subnet $vnet.Subnets[0]
 ```
 
@@ -105,9 +106,9 @@ $location = "eastus"
 $nic =
 Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
 
-$vmConfig = 
+$vmConfig =
 New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
- 
+
 # Create a virtual machine using the configuration
 $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
@@ -119,7 +120,7 @@ Erstellen Sie den Back-End-Pool:
 az network lb address-pool create \
 --resource-group myResourceGroup \
 --lb-name myLB \
---name myBackendPool 
+--name myBackendPool
 ```
 
 Erstellen Sie eine neue Netzwerkschnittstelle, und fügen Sie sie dem Back-End-Pool hinzu:
@@ -158,9 +159,9 @@ az vm create \
 
 ### <a name="resource-manager-template"></a>Resource Manager-Vorlage
 
-Befolgen Sie diese [Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/), um einen Lastenausgleich und virtuelle Computer bereitzustellen und die virtuellen Computer über die Netzwerkschnittstelle zum Back-End-Pool hinzuzufügen.
+Befolgen Sie diese [Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-standard-create/), um einen Lastenausgleich und virtuelle Computer bereitzustellen und die virtuellen Computer über die Netzwerkschnittstelle zum Back-End-Pool hinzuzufügen.
 
-Befolgen Sie diese [Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-ip-configured-backend-pool), um einen Lastenausgleich und virtuelle Computer bereitzustellen und die virtuellen Computer über die IP-Adresse zum Back-End-Pool hinzuzufügen.
+Befolgen Sie diese [Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-ip-configured-backend-pool), um einen Lastenausgleich und virtuelle Computer bereitzustellen und die virtuellen Computer über die IP-Adresse zum Back-End-Pool hinzuzufügen.
 
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>Konfigurieren des Back-End-Pools anhand von IP-Adresse und virtuellem Netzwerk
@@ -203,7 +204,7 @@ Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBala
 Erstellen Sie eine Netzwerkschnittstelle, und fügen Sie sie dem Back-End-Pool hinzu. Legen Sie die IP-Adresse auf eine der Back-End-Adressen fest:
 
 ```azurepowershell-interactive
-$nic = 
+$nic =
 New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicName -PrivateIpAddress 10.0.0.4 -Subnet $virtualNetwork.Subnets[0]
 ```
 
@@ -225,7 +226,7 @@ $location = "eastus"
 $nic =
 Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
 
-$vmConfig = 
+$vmConfig =
 New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 
 # Create a virtual machine using the configuration
@@ -233,7 +234,7 @@ $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -V
 ```
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
-Mithilfe der CLI können Sie den Back-End-Pool entweder über Befehlszeilenparameter oder mit einer JSON-Konfigurationsdatei auffüllen. 
+Mithilfe der CLI können Sie den Back-End-Pool entweder über Befehlszeilenparameter oder mit einer JSON-Konfigurationsdatei auffüllen.
 
 Erstellen Sie den Back-End-Pool über Befehlszeilenparametern, und füllen Sie ihn auf:
 
@@ -307,17 +308,19 @@ az vm create \
   --admin-username azureuser \
   --generate-ssh-keys
 ```
- 
+
 ### <a name="limitations"></a>Einschränkungen
 Für einen per IP-Adresse konfigurierten Back-End-Pool gelten folgende Einschränkungen:
   * Der Back-End-Pool kann nur für Load Balancer Standard-Instanzen verwendet werden.
   * Limit von 100 IP-Adressen im Back-End-Pool
   * Die Back-End-Ressourcen müssen sich im selben virtuellen Netzwerk wie der Lastenausgleich befinden.
   * Ein Lastenausgleich mit IP-basiertem Back-End-Pool kann nicht als Private Link-Dienst fungieren.
-  * Diese Funktion wird im Azure-Portal derzeit nicht unterstützt.
   * Derzeit werden keine ACI-Container von dieser Funktion unterstützt.
   * Lastenausgleichsmodule oder Dienste wie Application Gateway können nicht im Back-End-Pool des Lastenausgleichsmoduls platziert werden.
   * NAT-Regel für eingehenden Datenverkehr können nicht per IP-Adresse angegeben werden.
+
+>[!Important]
+> Wenn ein Back-End-Pool über eine IP-Adresse konfiguriert wird, verhält er sich wie ein Load Balancer im Tarif „Basic“ mit aktivierter Standardeinstellung für ausgehenden Datenverkehr. Konfigurieren Sie den Back-End-Pool nach NIC, um standardmäßig eine sichere Konfiguration zu gewährleisten und Anwendungen mit hohen Anforderungen für ausgehenden Datenverkehr nutzen zu können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie die Back-End-Pool-Verwaltung von Azure Load Balancer kennen gelernt und wie Sie einen Back-End-Pool anhand von IP-Adresse und virtuellem Netzwerk konfigurieren.
