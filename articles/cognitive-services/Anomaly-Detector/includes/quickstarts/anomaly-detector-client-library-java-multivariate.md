@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 871c93251f76313f66b10bdfabd0e97f6acff433
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 43ad5918f882a9496cfb9ee7ded13314cfdd87c1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108333472"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110166104"
 ---
 Hier finden Sie Informationen zu den ersten Schritten mit der multivariaten Clientbibliothek für die Anomalieerkennung für Java. Führen Sie diese Schritte aus, um das Paket zu installieren und mit der Verwendung der vom Dienst zur Verfügung gestellten Algorithmen zu beginnen. Die neuen APIs für die multivariate Anomalieerkennung ermöglichen Entwicklern die einfache Integration fortschrittlicher KI zur Erkennung von Anomalien in Metrikgruppen ganz ohne Machine Learning-Kenntnisse oder gekennzeichnete Daten. Abhängigkeiten und Interkorrelationen zwischen verschiedenen Signalen werden automatisch als Schlüsselfaktoren gewertet. Dadurch können Sie Ihre komplexen Systeme leichter proaktiv vor Fehlern schützen.
 
@@ -104,6 +104,9 @@ import java.util.stream.Collectors;
 ```
 
 Erstellen Sie Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource. Erstellen Sie eine weitere Variable für die Beispieldatendatei.
+
+> [!NOTE]
+> Sie haben stets die Möglichkeit, einen von zwei Schlüsseln zu verwenden. Dies ermöglicht eine sichere Schlüsselrotation. Verwenden Sie für diesen Schnellstart den ersten Schlüssel. 
 
 ```java
 String key = "YOUR_API_KEY";
@@ -241,6 +244,9 @@ while (true) {
 
 ## <a name="export-model"></a>Exportieren des Modells
 
+> [!NOTE]
+> Der Exportbefehl dient dazu, multivariate Modelle der Anomalieerkennung in einer containerisierten Umgebung ausführen zu können. Dies wird derzeit nicht für multivariate Modelle unterstützt, aber in Zukunft unterstützt werden.
+
 Verwenden Sie `exportModelWithResponse`, um Ihr trainiertes Modell zu exportieren.
 
 ```java
@@ -275,6 +281,14 @@ Führen Sie die Anwendung mit dem Ziel `run` aus:
 gradle run
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
+
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure-Befehlszeilenschnittstelle](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Bewährte Methoden für die multivariate Anomalieerkennung mit Zeitreihen](../../concepts/best-practices-multivariate.md)
+* [Was ist die Anomalieerkennungs-API?](../../overview-multivariate.md)
+* [Bewährte Methoden bei der Verwendung der Anomalieerkennungs-API](../../concepts/best-practices-multivariate.md) 

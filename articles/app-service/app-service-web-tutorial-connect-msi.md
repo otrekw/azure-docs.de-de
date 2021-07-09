@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: fb13e5015a589efc575d5a7bbb8b662fc23b72be
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 465e5c3c1f95004ec8fc3e46bd24274f18330e2a
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076399"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576483"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels einer verwalteten Identität
 
@@ -138,6 +138,9 @@ Drücken Sie `Ctrl+F5`, um die App erneut auszuführen. Die gleiche CRUD-App in 
 
 ### <a name="modify-aspnet-core"></a>Ändern des ASP.NET Core-Projekts
 
+> [!NOTE]
+> Die Verwendung von **Microsoft.Azure.Services.AppAuthentication** wird für das neue Azure SDK nicht mehr empfohlen. Sie wird durch die neue **Azure-Identitätsclientbibliothek** ersetzt, die für .NET, Java, TypeScript und Python verfügbar ist und für alle Neuentwicklungen verwendet werden sollte. Informationen zur Migration zu `Azure Identity` finden Sie im [Leitfaden für die Migration von AppAuthentication zu Azure.Identity](/dotnet/api/overview/azure/app-auth-migration).
+
 Öffnen Sie in Visual Studio die Paket-Manager-Konsole, und fügen Sie das NuGet-Paket [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) hinzu:
 
 ```powershell
@@ -182,6 +185,9 @@ Verwenden Sie den Befehl [az webapp identity assign](/cli/azure/webapp/identity#
 az webapp identity assign --resource-group myResourceGroup --name <app-name>
 ```
 
+> [!NOTE]
+> Wenn Sie eine verwaltete Identität für einen [Bereitstellungsslot](deploy-staging-slots.md) aktivieren möchten, fügen Sie `--slot <slot-name>` hinzu, und verwenden Sie in *\<slot-name>* den Namen des Slots.
+
 Beispiel für die Ausgabe:
 
 <pre>
@@ -222,7 +228,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* ist der Name der verwalteten Identität in Azure AD. Wird die Identität vom System zugewiesen, ist der Name immer mit dem Namen Ihrer App Service-App identisch. Wenn Sie Berechtigungen für eine Azure AD-Gruppe erteilen möchten, verwenden Sie stattdessen den Anzeigenamen der Gruppe (etwa *myAzureSQLDBAccessGroup*).
+*\<identity-name>* ist der Name der verwalteten Identität in Azure AD. Bei einer systemseitig zugewiesenen Identität wird immer der Namen Ihrer App Service-App verwendet. Bei einem [Bereitstellungsslot](deploy-staging-slots.md) lautet der Name der systemseitig zugewiesenen Identität *\<app-name>/slots/\<slot-name>* . Wenn Sie Berechtigungen für eine Azure AD-Gruppe erteilen möchten, verwenden Sie stattdessen den Anzeigenamen der Gruppe (etwa *myAzureSQLDBAccessGroup*).
 
 Geben Sie `EXIT` ein, um zur Cloud Shell-Eingabeaufforderung zurückzukehren.
 
