@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f108062c04292c322d07980155fea9c8808beb0a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 07fbe0cff104c25eca6db2750c2db692429ada65
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326739"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786512"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>Tutorial: Migrieren von Webdiensten aus Bing Karten
 
@@ -44,7 +44,7 @@ In der folgenden Tabelle finden Sie die Azure Maps-Dienst-APIs, die ähnliche Fu
 | Spatial Data Services (SDS)           | [Suche](/rest/api/maps/search) + [Route](/rest/api/maps/route) + weitere Azure-Dienste |
 | Zeitzone                             | [Zeitzone](/rest/api/maps/timezone)  |
 | Verkehrsmeldungen                     | [Verkehrsinfodetails](/rest/api/maps/traffic/gettrafficincidentdetail)                     |
-| Elevation                             | [Höhe (Vorschauversion)](/rest/api/maps/elevation)
+| Elevation                             | [Erhöhung](/rest/api/maps/elevation)
 
 Die folgenden Dienst-APIs sind derzeit noch nicht in Azure Maps verfügbar:
 
@@ -53,7 +53,7 @@ Die folgenden Dienst-APIs sind derzeit noch nicht in Azure Maps verfügbar:
 
 Azure Maps verfügt über mehrere zusätzliche REST-Webdienste, die möglicherweise von Interesse sind:
 
--   [Azure Maps Creator (Vorschau)](./creator-indoor-maps.md): Erstellen Sie einen benutzerdefinierten privaten digitalen Zwilling von Gebäuden und Räumen.
+-   [Azure Maps Creator](./creator-indoor-maps.md): Erstellen Sie einen benutzerdefinierten privaten digitalen Zwilling von Gebäuden und Räumen.
 -   [Räumliche Operationen](/rest/api/maps/spatial): Lagern Sie komplexe räumliche Berechnungen und Operationen wie etwa Geofencing an einen Dienst aus.
 -   [Kartenkacheln](/rest/api/maps/render/getmaptile): Greifen Sie auf Straßen- und Bildkacheln aus Azure Maps als Raster- und Vektorkacheln zu.
 -   [Batchrouting](/rest/api/maps/route/postroutedirectionsbatchpreview): Ermöglicht die Ausführung von bis zu 1.000 Routenanforderungen in einem einzelnen Batch über einen bestimmten Zeitraum. Die Routen werden zwecks schnellerer Verarbeitung parallel auf dem Server berechnet.
@@ -281,8 +281,8 @@ In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichb
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints`: Übergibt diese Punkte an den Text der Post-Anforderung.  |
 | `interpolate`              | –                                                                 |
-| `includeSpeedLimit`        | –                                                                 |
-| `includeTruckSpeedLimit`   | –                                                                 |
+| `includeSpeedLimit`        | Nicht zutreffend                                                                 |
+| `includeTruckSpeedLimit`   | Nicht zutreffend                                                                 |
 | `speedUnit`                | –                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key`: Weitere Informationen finden Sie auch in der Dokumentation zur [Authentifizierung mit Azure Maps](./azure-maps-authentication.md). |
@@ -343,7 +343,7 @@ In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichb
 | `mapLayer` (`ml`)        | –                                            |
 | `mapSize` (`ms`)         | `width` und `height`: Es sind Größen bis 8.192 × 8.192 möglich. |
 | `declutterPins` (`dcl`)  | –                                            |
-| `dpi`                    | –                                            |
+| `dpi`                    | Nicht zutreffend                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | –                                            |
 | `pitch`                  | N/V: Straßenansicht wird nicht unterstützt.                |

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: b0f8c5806ba22708db6dc537d391c1f1b1a183ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9752b97e2f9bcff2f08dd2a280014e2c3d4a06c6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92543813"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470268"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL Single Server
 
@@ -59,9 +59,9 @@ Der Single Server-Dienst ist in drei SKU-Tarifen verfügbar: „Basic“, „All
 
 ## <a name="enterprise-grade-security-compliance-and-governance"></a>Sicherheit, Compliance und Governance auf Unternehmensniveau
 
-Der Single Server-Dienst nutzt das FIPS 140-2-zertifizierte Kryptografiemodul für die Speicherverschlüsselung ruhender Daten. Daten einschließlich Sicherungen und während der Ausführung von Abfragen erstellte temporäre Daten werden auf dem Datenträger verschlüsselt. Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, und die Schlüssel können vom System (Standard) oder vom [Kunden](concepts-data-encryption-mysql.md) verwaltet werden. Der Dienst verschlüsselt Daten während der Übertragung mit der Transport Layer Security (SSL/TLS), was standardmäßig erzwungen wird. Der Dienst unterstützt die TLS-Versionen 1.2, 1.1 und 1.0 mit der Möglichkeit, die [mindestens erforderliche TLS-Version](concepts-ssl-connection-security.md) zu erzwingen. 
+Der Single Server-Dienst nutzt das FIPS 140-2-zertifizierte Kryptografiemodul für die Speicherverschlüsselung ruhender Daten. Daten einschließlich Sicherungen und während der Ausführung von Abfragen erstellte temporäre Daten werden auf dem Datenträger verschlüsselt. Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, und die Schlüssel können vom System (Standard) oder vom [Kunden](concepts-data-encryption-mysql.md) verwaltet werden. Der Dienst verschlüsselt Daten während der Übertragung mit der Transport Layer Security (SSL/TLS), was standardmäßig erzwungen wird. Der Dienst unterstützt die TLS-Versionen 1.2, 1.1 und 1.0 mit der Möglichkeit, die [mindestens erforderliche TLS-Version](concepts-ssl-connection-security.md) zu erzwingen. 
 
-Der Dienst ermöglicht den privaten Zugriff auf die Server über [Private Link](concepts-data-access-security-private-link.md) und bietet [Advanced Threat Protection](concepts-data-access-and-security-threat-protection.md). Advanced Threat Protection erkennt auffällige Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu missbrauchen.
+Der Dienst ermöglicht über eine [private Verbindung](concepts-data-access-security-private-link.md) den privaten Zugriff auf die Server und bietet über den optionalen Plan [Azure Defender für relationale Open-Source-Datenbanken](../security-center/defender-for-databases-introduction.md) Schutz gegen Bedrohungen. Azure Defender erkennt anomale Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese missbräuchlich zu nutzen.
 
 Neben der nativen Authentifizierung unterstützt der Single Server-Dienst zudem die Authentifizierung mit [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md). Bei der Authentifizierung mit Azure AD wird eine Verbindung mit den MySQL-Servern mithilfe von Identitäten hergestellt, die in Azure AD definiert und verwaltet werden. Mit der Azure AD-Authentifizierung können Sie Datenbankbenutzeridentitäten und andere Azure-Dienste an einem zentralen Ort verwalten, wodurch die Zugriffssteuerung vereinfacht und zentralisiert wird.
 

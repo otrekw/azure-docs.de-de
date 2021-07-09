@@ -7,16 +7,16 @@ ms.service: cache
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: 04b582b5ef31e61039c5513ea2a4aa60f1c638e7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5303289cd0629fea1c78e4ae746427e875f80520
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121336"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891632"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Go
 
-In diesem Artikel wird beschrieben, wie Sie eine REST-API in Go erstellen, mit der Benutzerinformationen basierend auf einer [HASH](https://redis.io/topics/data-types-intro#redis-hashes)-Datenstruktur in [Azure Cache for Redis](./cache-overview.md) gespeichert und abgerufen werden. 
+In diesem Artikel wird beschrieben, wie Sie eine REST-API in Go erstellen, mit der Benutzerinformationen basierend auf einer [HASH](https://redis.io/topics/data-types-intro#redis-hashes)-Datenstruktur in [Azure Cache for Redis](./cache-overview.md) gespeichert und abgerufen werden.
 
 ## <a name="skip-to-the-code-on-github"></a>Überspringen und mit dem Code auf GitHub fortfahren
 
@@ -30,6 +30,7 @@ Wenn Sie direkt mit dem Code fortfahren möchten, finden Sie im [Go-Schnellstart
 - HTTP-Client, z. B. [curl](https://curl.se/)
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>Erstellen einer Azure Cache for Redis-Instanz
+
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
@@ -49,7 +50,7 @@ func main() {
 ...
 ```
 
-Anschließend stellen wir eine Verbindung mit Azure Cache for Redis her. Beachten Sie, dass [tls.Config](https://golang.org/pkg/crypto/tls/#Config) verwendet wird. Von Azure Cache for Redis werden nur sichere Verbindungen mit [TLS 1.2 als mindestens erforderliche Version](cache-remove-tls-10-11.md) akzeptiert.
+Anschließend stellen wir eine Verbindung mit Azure Cache for Redis her. Wir verwenden [tls.Config](https://golang.org/pkg/crypto/tls/#Config). Von Azure Cache for Redis werden nur sichere Verbindungen mit [TLS 1.2 als mindestens erforderliche Version](cache-remove-tls-10-11.md) akzeptiert.
 
 ```go
 ...
@@ -64,9 +65,9 @@ if err != nil {
 ...
 ```
 
-Wenn die Verbindungsherstellung erfolgreich ist, werden [HTTP-Handler](https://golang.org/pkg/net/http/#HandleFunc) für die Verarbeitung der `POST`- und `GET`-Vorgänge konfiguriert, und der HTTP-Server wird gestartet. 
+Wenn die Verbindungsherstellung erfolgreich ist, werden [HTTP-Handler](https://golang.org/pkg/net/http/#HandleFunc) für die Verarbeitung der `POST`- und `GET`-Vorgänge konfiguriert, und der HTTP-Server wird gestartet.
 
-> [!NOTE] 
+> [!NOTE]
 > Die [gorilla mux-Bibliothek](https://github.com/gorilla/mux) wird für das Routing verwendet (auch wenn dies nicht unbedingt erforderlich ist und für diese Beispielanwendung auch die Standardbibliothek ausreichen würde).
 >
 
@@ -80,7 +81,7 @@ router.HandleFunc("/users/{userid}", uh.getUser).Methods(http.MethodGet)
 log.Fatal(http.ListenAndServe(":8080", router))
 ```
 
-Mit der `userHandler`-Struktur wird ein [redis.Client](https://pkg.go.dev/github.com/go-redis/redis/v8#Client) gekapselt, der von den Methoden `createUser` und `getUser` genutzt wird. Der Code für diese Methoden ist hier nicht angegeben, um den Artikel kurz zu halten. 
+Mit der `userHandler`-Struktur wird ein [redis.Client](https://pkg.go.dev/github.com/go-redis/redis/v8#Client) gekapselt, der von den Methoden `createUser` und `getUser` genutzt wird. Der Code für diese Methoden ist hier nicht angegeben, um den Artikel kurz zu halten.
 
 - `createUser`: Akzeptiert eine JSON-Nutzlast (mit Benutzerinformationen) und speichert sie als `HASH` in Azure Cache for Redis.
 - `getUser`: Ruft Benutzerinformationen aus `HASH` ab oder gibt die HTTP-Antwort `404` zurück, falls nichts gefunden wird.
@@ -111,7 +112,7 @@ Beginnen Sie mit dem Klonen der Anwendung über GitHub.
     md "C:\git-samples"
     ```
 
-1. Öffnen Sie ein Git-Terminalfenster, z.B. git bash. Verwenden Sie den Befehl `cd`, um in den neuen Ordner zu wechseln, in dem Sie die Beispiel-App klonen.
+1. Öffnen Sie ein Git-Terminalfenster, z.B. git bash. Verwenden Sie den Befehl `cd`, um in den neuen Ordner zu wechseln, in dem Sie die Beispiel-App klonen möchten.
 
     ```bash
     cd "C:\git-samples"
@@ -125,7 +126,7 @@ Beginnen Sie mit dem Klonen der Anwendung über GitHub.
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Die Anwendung akzeptiert Konnektivitäts- und Anmeldeinformationen in Form von Umgebungsvariablen. 
+Die Anwendung akzeptiert Konnektivitäts- und Anmeldeinformationen in Form von Umgebungsvariablen.
 
 1. Rufen Sie den **Hostnamen** und die **Zugriffsschlüssel** (über Zugriffsschlüssel verfügbar) für die Azure Cache for Redis-Instanz im [Azure-Portal](https://portal.azure.com/) ab.
 
@@ -167,7 +168,7 @@ Der HTTP-Server beginnt an Port `8080`.
     ```
 
     Die JSON-Antwort sollte in etwa wie folgt lauten:
-    
+
     ```json
     {
         "email": "foo1@bar",
@@ -176,7 +177,7 @@ Der HTTP-Server beginnt an Port `8080`.
     }
     ```
 
-1. Wenn Sie versuchen, einen Benutzer abzurufen, der nicht vorhanden ist, erhalten Sie die HTTP-Antwort `404`. Beispiel:
+1. Wenn Sie versuchen, einen nicht vorhandenen Benutzer abzurufen, erhalten Sie ein „HTTP `404`“. Beispiel:
 
     ```bash
     curl -i localhost:8080/users/100
@@ -193,15 +194,15 @@ Der HTTP-Server beginnt an Port `8080`.
 Wenn Sie die Azure-Ressourcengruppe und die Ressourcen, die Sie in diesem Schnellstart erstellt haben, nicht mehr benötigen, löschen Sie sie, um weitere Kosten zu vermeiden.
 
 > [!IMPORTANT]
-> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Wenn Sie Ihre Azure Cache for Redis-Instanz in einer vorhandenen Ressourcengruppe erstellt haben, die Sie beibehalten möchten, können Sie einfach den Cache löschen, indem Sie auf der Seite **Übersicht** des Caches **Löschen** auswählen. 
+> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Wenn Sie Ihre Azure Cache for Redis-Instanz in einer vorhandenen Ressourcengruppe erstellt haben, die Sie beibehalten möchten, können Sie einfach den Cache löschen, indem Sie auf der Seite **Übersicht** des Caches **Löschen** auswählen.
 
 So löschen Sie die Ressourcengruppe und die Azure Cache for Redis-Instanz
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen**, und wählen Sie die Option aus.
-1. Geben Sie im Textfeld **Nach Name filtern** den Namen der Ressourcengruppe mit Ihrer Cache-Instanz ein, und wählen Sie sie dann in den Suchergebnissen aus. 
+1. Geben Sie im Textfeld **Nach Name filtern** den Namen der Ressourcengruppe mit Ihrer Cache-Instanz ein, und wählen Sie sie dann in den Suchergebnissen aus.
 1. Wählen Sie auf der Seite für die Ressourcengruppe die Option **Ressourcengruppe löschen** aus.
 1. Geben Sie den Ressourcengruppennamen ein, und wählen Sie dann **Löschen** aus.
-   
+
    ![Löschen der Ressourcengruppe für Azure Cache for Redis](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,18 +1,17 @@
 ---
 title: Neuerungen in Azure Automation
 description: Wichtige Aktualisierungen für die Azure Automation-Dokumentation (monatlich aktualisiert).
+services: automation
 ms.subservice: ''
 ms.topic: overview
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/09/2021
+ms.date: 06/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: f8b4d6965a8a1f046fd2459ce9fe5cce8ea45443
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 6eae4a65412ad922724d4c35b7628b15698ba841
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531082"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982932"
 ---
 # <a name="whats-new-in-azure-automation"></a>Neuerungen in Azure Automation
 
@@ -23,6 +22,36 @@ Azure Automation wird kontinuierlich verbessert. Damit Sie bezüglich der neuest
 - Behebung von Programmfehlern
 
 Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert.
+
+## <a name="june-2021"></a>Juni 2021
+
+### <a name="support-for-automation-and-state-configuration-available-in-west-us-3"></a>Unterstützung von Automatisierung und State Configuration in „USA, Westen 3“ verfügbar
+
+**Typ:** Neues Feature
+
+Weitere Informationen finden Sie unter [Datenresidenz in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/); wählen Sie Ihre Geografie aus der Dropdownliste aus.
+
+## <a name="may-2021"></a>Mai 2021
+
+### <a name="startstop-vms-during-off-hours-v1"></a>VMs außerhalb der Geschäftszeiten starten/beenden (v1)
+
+**Typ:** Plan für Änderung
+
+„VMs außerhalb der Geschäftszeiten starten/beenden (v1)“ ist am 21. Mai 2022 veraltet. Kunden sollten „VMs starten/beenden v2 (Vorschau)“ auswerten und die Migration planen. Weitere Informationen finden Sie unter [VMs starten/beenden v2 (Vorschau): Übersicht](../azure-functions/start-stop-vms/overview.md).
+
+## <a name="april-2021"></a>April 2021
+
+### <a name="support-for-update-management-and-change-tracking"></a>Unterstützung von Updateverwaltung und Änderungsnachverfolgung
+
+**Typ:** Neues Feature
+
+Die Regionszuordnung wurde aktualisiert, um Updateverwaltung und Änderungsnachverfolgung in „Norwegen, Osten“, „VAE, Norden“, „USA, Norden-Mitte“, „Brasilien, Süden“ und „Südkorea, Mitte“ zu unterstützen. Weitere Informationen finden Sie unter [Unterstützte Zuordnungen](./how-to/region-mappings.md#supported-mappings).
+
+### <a name="support-for-system-assigned-managed-identities"></a>Unterstützung von vom System zugewiesene verwaltete Identitäten
+
+**Typ:** Neues Feature
+
+Azure Automation unterstützt jetzt [vom System zugewiesene verwaltete Identitäten](./automation-security-overview.md#managed-identities-preview) für Cloud- und Hybridaufträge in öffentlichen Azure- und Azure Government-Regionen. Weitere Informationen finden Sie in der [Ankündigung](https://azure.microsoft.com/updates/azure-automation-system-assigned-managed-identities/).
 
 ## <a name="march-2021"></a>März 2021
 
@@ -58,7 +87,7 @@ Verwenden Sie Funktionen für die Prozessautomatisierung und Zustandskonfigurati
 
 Verwenden Sie Funktionen für die Prozessautomatisierung und Zustandskonfiguration in der Region „VAE, Mitte“. Weitere Informationen finden Sie in der [Ankündigung](https://azure.microsoft.com/updates/azure-automation-in-uae-central-region/).
 
-### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2--norway-west-and-france-south"></a>Unterstützung von Automation und State Configuration in den Regionen „Australien, Mitte 2“, „Norwegen, Westen“ und „Frankreich, Süden“ verfügbar
+### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2-norway-west-and-france-south"></a>Unterstützung von Automation und State Configuration in den Regionen „Australien, Mitte 2“, „Norwegen, Westen“ und „Frankreich, Süden“ verfügbar
 
 **Typ:** Neues Feature
 
@@ -80,7 +109,7 @@ Weitere Informationen finden Sie unter [Verwenden eines Webhooks mit einer ARM-V
 
 **Typ:** Neues Feature
 
-Weitere Informationen finden Sie in der [vollständigen Liste](./update-management/overview.md#supported-operating-systems) der unterstützten Linux-Betriebssysteme.
+Weitere Informationen finden Sie in der [vollständigen Liste](./update-management/operating-system-requirements.md) der unterstützten Linux-Betriebssysteme.
 
 ### <a name="in-region-data-residency-support-for-brazil-south-and-south-east-asia"></a>Unterstützung regionsinterner Datenresidenz für „Brasilien, Süden“ und „Asien, Südosten“ 
 
@@ -180,7 +209,7 @@ Verwalten Sie Computer unter Oracle Linux 6 und 7 mit Automation State Configu
 
 **Typ:** Neues Feature
 
-Von Azure Automation wird nun die Ausführung von Python 3-Cloudrunbooks und -Hybridrunbooks in der Public Preview-Phase in allen Regionen der globalen Azure-Cloud unterstützt. Ausführlichere Informationen finden Sie in der [Ankündigung]((https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/).
+Von Azure Automation wird nun die Ausführung von Python 3-Cloudrunbooks und -Hybridrunbooks in der Public Preview-Phase in allen Regionen der globalen Azure-Cloud unterstützt. Weitere Informationen finden Sie in der Ankündigung (https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/) ).
 
 ## <a name="november-2020"></a>November 2020
 
@@ -244,7 +273,7 @@ Automation Hybrid Runbook Worker unterstützt das Betriebssystem Windows Server�
 
 **Typ:** Neues Feature
 
-Die Updateverwaltung unterstützt das Bewerten und Patchen des Betriebssystems Windows Server 2008 R2. Unter [Unterstützte Betriebssysteme](update-management/overview.md#clients) finden Sie entsprechende Dokumentationsaktualisierungen.
+Die Updateverwaltung unterstützt das Bewerten und Patchen des Betriebssystems Windows Server 2008 R2. Unter [Unterstützte Betriebssysteme](update-management/operating-system-requirements.md) finden Sie entsprechende Dokumentationsaktualisierungen.
 
 ### <a name="automation-diagnostic-logs-schema-update"></a>Schemaaktualisierung für Automation-Diagnoseprotokolle
 

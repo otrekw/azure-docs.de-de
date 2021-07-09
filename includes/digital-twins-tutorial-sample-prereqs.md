@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/20/2021
 ms.author: baanders
-ms.openlocfilehash: 5da84a797c4d04ff917832445a54846809790027
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 3a3e32a0ef85ba870cfe7af9639794632549f614
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787675"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350596"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -25,9 +25,9 @@ Für dieses Tutorial müssen Sie auf Ihrem Entwicklungscomputer **mindestens Ver
 >[!NOTE]
 > Stellen Sie sicher, dass die Installation von Visual Studio 2019 die [Workload „Azure-Entwicklung“](/dotnet/azure/configure-visual-studio) umfasst. Diese Workload ermöglicht einer Anwendung die Veröffentlichung von Azure-Funktionen und die Ausführung anderer Azure-Entwicklungsaufgaben.
 
-Grundlage des Tutorials ist ein in C# geschriebenes Beispielprojekt. Das Beispiel finden Sie hier: [End-to-End-Beispiele für Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples). **Laden Sie das Beispielprojekt auf Ihren Computer herunter**, indem Sie zum Beispiellink navigieren und unter dem Titel die Schaltfläche *Code durchsuchen* auswählen. Dadurch gelangen Sie zum GitHub-Repository für die Beispiele, die Sie als ZIP-Datei herunterladen können. Wählen Sie hierzu die Schaltfläche *Code* und anschließend *ZIP herunterladen* aus.
+Grundlage des Tutorials ist ein [in C# geschriebenes Beispielprojekt End-to-End-Beispielprojekt für Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples). **Laden Sie das Beispielprojekt auf Ihren Computer herunter**, indem Sie zum Beispiellink navigieren und unter dem Titel die Schaltfläche *Code durchsuchen* auswählen. Dadurch gelangen Sie zum GitHub-Repository für die Beispiele, die Sie als ZIP-Datei herunterladen können. Wählen Sie hierzu die Schaltfläche *Code* und anschließend *ZIP herunterladen* aus.
 
-:::image type="content" source="../articles/digital-twins/media/includes/download-repo-zip.png" alt-text="Screenshot: GitHub-Repository „digital-twins-samples“. Die Schaltfläche „Code“ wurde ausgewählt, und ein kleines Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="../articles/digital-twins/media/includes/download-repo-zip.png":::
+:::image type="content" source="../articles/digital-twins/media/includes/download-repo-zip.png" alt-text="Screenshot des Repositorys „digital-twins-samples“ auf GitHub, in dem die Schritte zum Herunterladen als ZIP-Datei hervorgehoben sind." lightbox="../articles/digital-twins/media/includes/download-repo-zip.png":::
 
 Dadurch wird ein ZIP-Ordner (**digital-twins-samples-master.zip**) auf Ihren Computer heruntergeladen. Entpacken Sie den Ordner, und extrahieren Sie die Dateien.
 

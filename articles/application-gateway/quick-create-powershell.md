@@ -5,22 +5,25 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure PowerSh
 services: application-gateway
 author: vhorne
 ms.author: victorh
-ms.date: 01/19/2021
+ms.date: 06/14/2021
 ms.topic: quickstart
 ms.service: application-gateway
 ms.custom: devx-track-azurepowershell - mvc - mode-api
-ms.openlocfilehash: a50c264829ce08b409b52b321ca9c31b3688aed9
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 66c28c68dccad7874d65c7c4c1c9c78cc2ea13da
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320617"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072251"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway mithilfe von Azure PowerShell
 
 In dieser Schnellstartanleitung verwenden Sie Azure PowerShell, um ein Anwendungsgateway zu erstellen. Anschließend testen Sie es, um sicherzustellen, dass es ordnungsgemäß funktioniert. 
 
 Das Anwendungsgateway leitet den Webdatenverkehr Ihrer Anwendungen an bestimmte Ressourcen in einem Back-End-Pool weiter. Sie weisen den Ports Listener zu, erstellen Regeln und fügen Ressourcen zu einem Back-End-Pool hinzu. Der Einfachheit halber wird in diesem Artikel ein einfaches Setup mit einer öffentlichen Front-End-IP-Adresse, einem grundlegenden Listener zum Hosten einer einzelnen Website auf dem Anwendungsgateway, einer Routingregel für grundlegende Anforderungen und zwei virtuellen Computern im Back-End-Pool verwendet.
+
+:::image type="content" source="media/quick-create-portal/application-gateway-qs-resources.png" alt-text="Application Gateway-Ressourcen":::
+
 
 Für diese Schnellstartanleitung kann auch die [Azure-Befehlszeilenschnittstelle](quick-create-cli.md) oder das [Azure-Portal](quick-create-portal.md) verwendet werden.
 
@@ -59,15 +62,15 @@ Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myAGSubnet `
-  -AddressPrefix 10.0.1.0/24
+  -AddressPrefix 10.21.0.0/24
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myBackendSubnet `
-  -AddressPrefix 10.0.2.0/24
+  -AddressPrefix 10.21.1.0/24
 New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myVNet `
-  -AddressPrefix 10.0.0.0/16 `
+  -AddressPrefix 10.21.0.0/16 `
   -Subnet $agSubnetConfig, $backendSubnetConfig
 New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `

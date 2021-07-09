@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/28/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: aba837ab590ae941e161e10e88782dcce944c085
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b38b5303f21cb31115a2279648c8d631e31aa8bf
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760461"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459312"
 ---
 # <a name="tutorial-create-logical-data-warehouse-with-serverless-sql-pool"></a>Tutorial: Erstellen eines logischen Data Warehouse mit serverlosem SQL-Pool
 
@@ -88,8 +88,10 @@ Externe Dateiformate dienen zum Definieren der Struktur der Dateien, die in eine
 ```sql
 CREATE EXTERNAL FILE FORMAT ParquetFormat WITH (  FORMAT_TYPE = PARQUET );
 GO
-CREATE EXTERNAL FILE FORMAT CsvFormat WITH (  FORMAT_TYPE = CSV );
+CREATE EXTERNAL FILE FORMAT CsvFormat WITH (  FORMAT_TYPE = DELIMITEDTEXT );
 ```
+
+Weitere Informationen finden Sie in [diesem Artikel](develop-tables-external-tables.md?tabs=native#syntax-for-create-external-file-format).
 
 ## <a name="explore-your-data"></a>Untersuchen Ihrer Daten
 
@@ -98,11 +100,11 @@ Nachdem Sie Ihre Datenquellen eingerichtet haben, können Sie Ihre Daten mithilf
 ```sql
 select top 10  *
 from openrowset(bulk 'latest/ecdc_cases.parquet',
-                data_source = 'ecdc_cases'
+                data_source = 'ecdc_cases',
                 format='parquet') as a
 ```
 
-Mit der Funktion `OPENROWSET` erhalten Sie Informationen zur Spalte in den externen Dateien oder Containern und können ein Schema ihrer externen Tabellen und Sichten definieren.
+Mit der Funktion `OPENROWSET` erhalten Sie Informationen zu den Spalten in den externen Dateien oder Containern und können ein Schema Ihrer externen Tabellen und Sichten definieren.
 
 ## <a name="create-external-tables-on-azure-storage"></a>Erstellen externer Tabellen für Azure-Speicher
 
@@ -177,11 +179,23 @@ Zur Optimierung der Leistung empfiehlt es sich, in der Schemadefinition `WITH` d
 ## <a name="access-and-permissions"></a>Zugriff und Berechtigungen
 
 Zum Schluss sollten Sie noch Datenbankbenutzer erstellen, die auf Ihr LDW zugreifen können, und ihnen Berechtigungen zum Auswählen von Daten aus den externen Tabellen und Sichten erteilen.
-Im folgenden Skript sehen Sie, wie Sie einen neuen Benutzer hinzufügen und Berechtigungen zum Lesen von Daten gewähren:
+Im folgenden Skript erfahren Sie, wie Sie einen neuen Benutzer hinzufügen, der mithilfe einer Azure AD-Identität authentifiziert wird:
 
 ```sql
 CREATE USER [jovan@contoso.com] FROM EXTERNAL PROVIDER;
 GO
+```
+
+Anstelle von Azure AD-Prinzipalen können Sie SQL-Prinzipale erstellen, die sich mit dem Anmeldenamen und Kennwort authentifizieren.
+
+```sql
+CREATE LOGIN [jovan] WITH PASSWORD = 'My Very strong Password ! 1234';
+CREATE USER [jovan] FROM LOGIN [jovan];
+```
+
+In beiden Fällen können Sie den Benutzern Berechtigungen zuweisen.
+
+```sql
 DENY ADMINISTER DATABASE BULK OPERATIONS TO [jovan@contoso.com]
 GO
 GRANT SELECT ON SCHEMA::ecdc_adls TO [jovan@contoso.com]
@@ -202,6 +216,31 @@ Dieser Benutzer verfügt über die Mindestberechtigungen, die zum Abfragen exter
 ```sql
 GRANT CONTROL TO [jovan@contoso.com]
 ```
+
+### <a name="role-based-security"></a>Rollenbasierte Sicherheit
+
+Anstatt den einzelnen Benutzern Berechtigungen zu erteilen, ist es eine bewährte Methode, die Benutzer in Rollen zu organisieren und Berechtigungen auf Rollenebene zu verwalten.
+Das folgende Codebeispiel erstellt eine neue Rolle, die die Personen darstellt, die COVID-19-Fälle analysieren können, und fügt dieser Rolle drei Benutzer hinzu:
+
+```sql
+CREATE ROLE CovidAnalyst;
+
+ALTER ROLE CovidAnalyst ADD MEMBER [jovan@contoso.com];
+ALTER ROLE CovidAnalyst ADD MEMBER [milan@contoso.com];
+ALTER ROLE CovidAnalyst ADD MEMBER [petar@contoso.com];
+```
+
+Sie können die Berechtigungen allen Benutzern zuweisen, die zur Gruppe gehören:
+
+```sql
+GRANT SELECT ON SCHEMA::ecdc_cosmosdb TO [CovidAnalyst];
+GO
+DENY SELECT ON SCHEMA::ecdc_adls TO [CovidAnalyst];
+GO
+DENY ADMINISTER DATABASE BULK OPERATIONS TO [CovidAnalyst];
+```
+
+Diese rollenbasierte Sicherheitszugriffssteuerung kann die Verwaltung Ihrer Sicherheitsregeln vereinfachen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,20 +1,20 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: backup
 author: v-amallick
 manager: carmonm
 ms.service: backup
 ms.topic: include
-ms.date: 10/18/2018
+ms.date: 06/01/2021
 ms.author: v-amallick
 ms.custom: include file
-ms.openlocfilehash: c126c349897016a00753b402b696c60fdd7b1b2e
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: 7d354ce3e69f075d2f523a75ba96f9a6efb7d797
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106294092"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783575"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -24,23 +24,21 @@ Führen Sie die folgenden Schritte aus, um einen Recovery Services-Tresor zu er
 
 1. Melden Sie sich bei Ihrem Abonnement im [Azure-Portal](https://portal.azure.com/) an.
 
-1. Wählen Sie im Menü links **Alle Dienste** aus.
+1. Suchen Sie im Azure-Portal nach **Backup Center**, und navigieren Sie zum Dashboard **Backup Center**.
 
-    ![Auswählen von „Alle Dienste“](./media/backup-create-rs-vault/click-all-services.png)
+    ![Auswählen von „Backup Center“](../includes/media/backup-create-rs-vault/backup-center-search-backup-center.png)
 
-1. Geben Sie im Dialogfeld **Alle Dienste** *Recovery Services* ein. Die Liste der Ressourcen wird Ihrer Eingabe entsprechend gefiltert. Wählen Sie in der Liste der Ressourcen **Recovery Services-Tresore** aus.
+1. Wählen Sie auf der Registerkarte **Übersicht** die Option **+Tresor** aus.
 
-    ![Eingeben und Auswählen von „Recovery Services-Tresore“](./media/backup-create-rs-vault/all-services.png)
+    ![Erstellen eines Tresors](./media/backup-create-rs-vault/backup-center-create-vault.png) 
 
-    Die Liste mit den Recovery Services-Tresoren im Abonnement wird angezeigt.
+1. Wählen Sie **Recovery Services-Tresor** aus, und klicken Sie auf **Weiter**.
 
-1. Wählen Sie auf dem Dashboard **Recovery Services-Tresore** die Option **Hinzufügen** aus.
+    ![Auswählen des Recovery Services-Tresors](./media/backup-create-rs-vault/backup-center-select-recovery-services-vault.png) 
 
-    ![Hinzufügen eines Recovery Services-Tresors](./media/backup-create-rs-vault/add-button-create-vault.png)
+1. Das Dialogfeld **Recovery Services-Tresor** wird geöffnet. Legen Sie Werte für **Name**, **Abonnement**, **Ressourcengruppe** und **Speicherort** fest.
 
-    Das Dialogfeld **Recovery Services-Tresor** wird geöffnet. Legen Sie Werte für **Name**, **Abonnement**, **Ressourcengruppe** und **Speicherort** fest.
-
-    ![Konfigurieren des Recovery Services-Tresors](./media/backup-create-rs-vault/create-new-vault-dialog.png)
+    ![Konfigurieren des Recovery Services-Tresors](./media/backup-create-rs-vault/backup-center-add-vault-details.png)
 
    - **Name**: Geben Sie einen Anzeigenamen ein, über den der Tresor identifiziert wird. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
    - **Abonnement**: Wählen Sie das zu verwendende Abonnement aus. Wenn Sie nur in einem Abonnement Mitglied sind, wird dessen Name angezeigt. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist.

@@ -10,12 +10,12 @@ author: BlackMist
 ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 086c1f6ebd1b9e448a8f5e229bc6706493729422
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 89d839a9b507530eb0b3fc763b2fbba36208f79c
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762891"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081891"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -44,8 +44,6 @@ Azure Machine Learning verfügt über alle Tools, die Entwickler und Data Scient
 
 + Jupyter-Notebooks: Verwenden Sie unsere [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks), oder erstellen Sie Ihre eigenen Notebooks, um unsere <a href="/python/api/overview/azure/ml/intro" target="_blank">SDK für Python</a>-Beispiele für Ihre Machine Learning-Zwecke zu nutzen. 
 
-+ R-Skripts oder Notebooks, in denen Sie das <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK für R</a> zum Schreiben Ihres eigenen Codes verwenden (oder die R-Module im Designer).
-
 + Der [Many Models Solution Accelerator](https://aka.ms/many-models) (Preview) (Projektmappenbeschleuniger für viele Modelle (Vorschau)) baut auf Azure Machine Learning auf und ermöglicht Ihnen Training, Betrieb und Verwaltung von hunderten oder sogar tausenden von Machine Learning-Modellen.
 
 + [Die Machine Learning-Erweiterung für Visual Studio Code (Vorschauversion)](how-to-set-up-vs-code-remote.md) bietet Ihnen eine Entwicklungsumgebung mit vollem Funktionsumfang zum Erstellen und Verwalten Ihrer Machine Learning-Projekte.
@@ -58,9 +56,9 @@ Azure Machine Learning verfügt über alle Tools, die Entwickler und Data Scient
 
 Sie können sogar [MLflow zum Nachverfolgen von Metriken und Bereitstellen von Modellen](how-to-use-mlflow.md) oder Kubeflow zum [Erstellen von End-to-End-Workflowpipelines](https://www.kubeflow.org/docs/azure/) verwenden.
 
-## <a name="build-ml-models-in-python-or-r"></a>Erstellen von ML-Modellen in Python oder R
+## <a name="build-ml-models-in-with-the-python-sdk"></a>Erstellen von ML-Modellen mit dem Python SDK
 
-Beginnen Sie auf Ihrem lokalen Computer mit dem Azure Machine Learning <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a> oder dem <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a> mit dem Training. Anschließend können Sie in die Cloud aufskalieren. 
+Beginnen Sie auf Ihrem lokalen Computer mit dem Azure Machine Learning <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a> mit dem Training. Anschließend können Sie in die Cloud aufskalieren. 
 
 Dank zahlreicher verfügbarer [Compute-Ziele](how-to-create-attach-compute-studio.md) wie Azure Machine Learning Compute und [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) sowie [Diensten für die erweiterte Hyperparameteroptimierung](how-to-tune-hyperparameters.md) können Sie mithilfe der Cloud schneller bessere Modelle erstellen.
 
@@ -128,13 +126,13 @@ Das Azure Storage-Konto, die Computeziele und andere Ressourcen können innerhal
 
 Beginnen Sie mit [Schnellstart: Erste Schritte mit Azure Machine Learning](quickstart-create-resources.md).  Verwenden Sie dann diese Ressourcen, um Ihr erstes Experiment mit Ihrer bevorzugten Methode zu erstellen:
 
-  + [Ausführen eines „Hallo Welt“-Python-Skripts (Teil 1 von 3)](tutorial-1st-experiment-hello-world.md)
+  + [Ausführen eines „Hallo Welt“-Python-Skripts (Teil 1 von 3)](tutorial-1st-experiment-hello-world.md)
   + [Tutorial: Trainieren von Bildklassifizierungsmodellen mit MNIST-Daten und scikit-learn](tutorial-train-models-with-aml.md)
   + [Verwenden von automatisiertem Machine Learning zum Trainieren und Bereitstellen von ML-Modellen](tutorial-first-experiment-automated-ml.md) 
   + [Verwalten von Ressourcen in Visual Studio Code](how-to-manage-resources-vscode.md)
   + [Verwenden von Visual Studio Code zum Trainieren und Bereitstellen eines Bildklassifizierungsmodells](tutorial-train-deploy-image-classification-model-vscode.md)
   + [Verwenden der Drag & Drop-Funktionen des Designers zum Trainieren und Bereitstellen](tutorial-designer-automobile-price-train-score.md) 
-  + [Verwenden der Machine Learning-CLI zum Trainieren und Bereitstellen eines Modells](tutorial-train-deploy-model-cli.md)
+  + [Verwenden der Machine Learning-CLI zum Trainieren eines Modells](how-to-train-cli.md)
 
 - Erfahren Sie mehr über [Machine Learning-Pipelines](concept-ml-pipelines.md) zum Erstellen, Optimieren und Verwalten Ihrer Machine Learning-Szenarien.
 

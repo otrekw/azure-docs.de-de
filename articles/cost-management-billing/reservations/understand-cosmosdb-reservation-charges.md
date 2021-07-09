@@ -6,13 +6,13 @@ ms.author: banders
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: ca4c1810912771f56661ca5b682b6991735f526e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 06/10/2021
+ms.openlocfilehash: 476e2bfb6883307fa243cfdc7af3d54d7fde6921
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023141"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006093"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Cosmos DB
 
@@ -62,7 +62,7 @@ Reservierungsrabatte werden auf Stundenbasis auf die Azure Cosmos DB-Durchsatzko
 |Azure Cosmos DB – 100 RU/s pro Stunde – Japan, Westen|     Japan, Westen    |   1,125       |
 |Azure Cosmos DB – 100 RU/s pro Stunde – Indien, Westen|     Indien, Westen    |    1,1375     |
 |Azure Cosmos DB – 100 RU/s pro Stunde – Indien, Mitte|    Indien, Mitte     |  1,1375       |
-|Azure Cosmos DB – 100 RU/s pro Stunde – Australien, Osten|     Australien, Osten    |   1,15       |
+|Azure Cosmos DB – 100 RU/s pro Stunde – Australien, Osten|     Australien, Osten    |   1.15       |
 |Azure Cosmos DB – 100 RU/s pro Stunde – Kanada, Mitte|  Kanada, Mitte       |   1.2       |
 |Azure Cosmos DB – 100 RU/s pro Stunde – Frankreich, Mitte|   Frankreich, Mitte      |    1,25      |
 |Azure Cosmos DB – 100 RU/s pro Stunde – Brasilien, Süden|  Brasilien, Süden       |   1.5      |
@@ -83,7 +83,7 @@ In diesem Fall werden Ihnen On-Demand-Gebühren für 500 Einheiten zu 100 RU/s V
 
 Beispiel: Sie benötigen Azure Cosmos DB-Bereitstellungen in den Regionen „USA, Norden-Mitte“ und „USA, Westen“. Jede Region verbraucht einen Durchsatz von 50.000 RU/s. Ein Reservierungserwerb von 100.000 RU/s würde Ihre On-Demand-Gebühren vollständig ausgleichen.
 
-Der durch eine Reservierung abgedeckte Rabatt wird wie folgt berechnet: verbrauchter Durchsatz * Reservierungsrabattsatz_für_diese_Region. Für die Regionen „USA, Norden-Mitte“ und „USA, Westen“ beträgt der Reservierungsrabattsatz „1“. Somit wird für insgesamt 100.000 RU/s ein Rabatt gewährt. Dieser Wert wird wie folgt berechnet: 50.000 × 1 + 50.000 × 1 = 100.000 RU/s. Sie müssen keine zusätzlichen Gebühren zu den üblichen Tarifen der nutzungsbasierten Bezahlung zahlen.
+Der durch eine Reservierung abgedeckte Rabatt wird wie folgt berechnet: verbrauchter Durchsatz * Reservierungsrabattsatz_für_diese_Region. Für die Regionen „USA, Norden-Mitte“ und „USA, Westen“ beträgt der Reservierungsrabattsatz „1“. Somit wird für insgesamt 100.000 RU/s ein Rabatt gewährt. Dieser Wert berechnet sich wie folgt: 50.000 * 1 + 50.000 * 1 = 100,000 RU/s. Sie müssen keine zusätzlichen Gebühren zu den üblichen Tarifen der nutzungsbasierten Bezahlung zahlen.
 
 |Beschreibung der Verbrauchseinheit | Region |Verbrauchter Durchsatz (RU/s) |Anwendung des Reservierungsrabatts auf Anforderungseinheiten pro Sekunde |
 |---------|---------|---------|---------|
@@ -99,9 +99,15 @@ Beispiel: Sie benötigen Azure Cosmos DB-Bereitstellungen in den Regionen „Aus
 |Azure Cosmos DB – 100 RU/s pro Stunde – Australien, Mitte 2  |  Australien, Mitte 2   |  50.000  |  50.000   |
 |Azure Cosmos DB – 100 RU/s pro Stunde – Frankreich, Süden  |  Frankreich, Süden   |  50.000 |  15.384  |
 
-50.000 Verbrauchseinheiten in der Region „Australien, Mitte 2“ entsprechen 75.000 RU/s abrechenbarem Verbrauch (oder normalisertem Verbrauch). Dieser Wert wird wie folgt berechnet: verbrauchter Durchsatz * Reservierungsrabattsatz_für_diese_Region. Die Berechnung entspricht 75.000 RU/s abrechenbarer bzw. normalisierter Nutzung. Dieser Wert wird wie folgt berechnet: 50.000 × 1,5 = 75.000 RU/s.
+*  50.000 Verbrauchseinheiten in der Region „Australien, Mitte 2“ entsprechen 75.000 RU/s abrechenbarer Reservierungsnutzung (oder normalisierter Nutzung). Dieser Wert wird wie folgt berechnet: verbrauchter Durchsatz * Reservierungsrabattsatz_für_diese_Region. Die Berechnung entspricht 75.000 RU/s abrechenbarer bzw. normalisierter Nutzung. Dieser Wert berechnet sich wie folgt: 50.000 * 1,5 = 75.000 RU/s.
 
-Ein Reservierungserwerb von 100.000 RU/s würde die 75.000 RU/s in der Region „Australien, Mitte 2“ ausgleichen. 25.000 RU/s blieben für die Region „Frankreich, Süden“ übrig. Mit den restlichen 25.000 RU/s wird ein Reservierungsrabatt von 15.384 RU/s auf die Region „Frankreich, Süden“ angewendet. Dieser Rabattwert wird wie folgt berechnet: 25.000 / 1,625 = 15.384 RU/s. Die restlichen 34.616 RU/s in der Region „Frankreich, Süden“ werden mit den üblichen Tarifen der nutzungsbasierten Bezahlung berechnet.
+* 50.000 Verbrauchseinheiten in der Region „Frankreich, Süden“ entsprechen einer erforderlichen Reservierung von 50.000 * 1,625 = 81.250 RU/s.
+
+* Der Reservierungserwerb liegt bei insgesamt 100.000. Da die Region „Australien, Mitte 2“ 75.000 RU/s verwendet, verbleiben 25.000 RU/s für die andere Region.
+
+* Für die Region „Frankreich, Süden“ werden 25.000 RU/s vom Reservierungserwerb verwendet, und es verbleiben 56.250 RU/s der Reservierung (81.250 – 25.000 = 56.250 Ru/s).
+
+* Bei Verwendung einer Reservierung sind 56.250 RU/s erforderlich. Um die regulären Preise für diese RU/s zu bezahlen, müssen Sie sie in reguläre RU/s umwandeln. Dazu werden sie durch das Reservierungsverhältnis dividiert: 56.250 / 1,625 = 34.616 RU/s. Reguläre RU/s werden zu den üblichen Tarifen der nutzungsbasierten Bezahlung berechnet.
 
 Vom Azure-Abrechnungssystem wird der Abrechnungsvorteil für Reservierungen der Instanz zugewiesen, die als erste verarbeitet wird und der Reservierungskonfiguration entspricht, in diesem Fall beispielsweise der Region „Australien, Mitte 2“.
 

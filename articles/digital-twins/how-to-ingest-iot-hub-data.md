@@ -2,17 +2,17 @@
 title: Erfassen von Telemetriedaten aus IoT Hub
 titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie Gerätetelemetrienachrichten aus IoT Hub erfassen.
-author: alexkarcher-msft
-ms.author: alkarche
+author: baanders
+ms.author: baanders
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b69ba164a7bd0edecf427866cd3e872a65e41355
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8160a2fdb35062c678fc1a9f2e629cca7885224d
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208741"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438977"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Erfassen von IoT Hub Telemetriedaten in Azure Digital Twins
 
@@ -25,8 +25,10 @@ In dieser Schrittanleitung wird erläutert, wie Sie eine Funktion schreiben, die
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie mit diesem Beispiel fortfahren können, müssen Sie die folgenden Ressourcen als Voraussetzungen einrichten:
-* **Einen IoT-Hub**. Anweisungen finden Sie im Abschnitt *Erstellen eines IoT-Hubs* in [diesem IoT Hub-Schnellstart](../iot-hub/quickstart-send-telemetry-cli.md).
+* **Einen IoT-Hub**. Anweisungen finden Sie im Abschnitt *Erstellen eines IoT-Hubs* in diesem [IoT Hub-Schnellstart](../iot-hub/quickstart-send-telemetry-cli.md).
 * **Eine Azure Digital Twins-Instanz** zum Empfangen Ihrer Gerätetelemetrie. Anweisungen dazu finden Sie unter [Gewusst wie: Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung](./how-to-set-up-instance-portal.md).
+
+In diesem Artikel wird auch **Visual Studio** verwendet. Sie können die neueste Version unter [Visual Studio-Downloads](https://visualstudio.microsoft.com/downloads/) herunterladen.
 
 ### <a name="example-telemetry-scenario"></a>Beispieltelemetrieszenario
 
@@ -39,7 +41,7 @@ In dieser Schrittanleitung wird erläutert, wie Sie Nachrichten von IoT Hub mith
 
 Immer wenn ein Temperaturtelemetrieereignis vom Thermostat gesendet wird, verarbeitet eine Funktion die Telemetriedaten, und die Eigenschaft *temperature* des digitalen Zwillings sollte aktualisiert werden. Dieses Szenario ist nachstehend in einem Diagramm dargestellt:
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Diagramm eines IoT Hub-Geräts, das Temperaturtelemetriedaten über IoT Hub an eine Funktion in Azure sendet, welche eine Temperatureigenschaft in einem Zwilling in Azure Digital Twins aktualisiert." border="false":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Diagramm eines IoT Hub-Geräts, das Temperaturtelemetriedaten an eine Funktion in Azure sendet, welche eine Temperatureigenschaft in einem Zwilling in Azure Digital Twins aktualisiert." border="false":::
 
 ## <a name="add-a-model-and-twin"></a>Hinzufügen eines Modells und eines Zwillings
 
@@ -49,19 +51,11 @@ Wenn Sie den Zwilling des Thermostattyps erstellen möchten, müssen Sie zunäch
 
 [!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 
-Anschließend müssen Sie **einen einzigen Zwilling mit diesem Modell erstellen**. Verwenden Sie den folgenden Befehl zum Erstellen eines Thermostatzwillings mit dem Namen **thermostat67** und zum Festlegen von „0,0“ als anfänglichen Temperaturwert.
+Anschließend müssen Sie **einen einzigen Zwilling mit diesem Modell erstellen**. Verwenden Sie den folgenden Befehl zum Erstellen eines Thermostatzwillings mit dem Namen thermostat67 und zum Festlegen von „0,0“ als anfänglichen Temperaturwert.
 
 ```azurecli-interactive
-az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
+az dt twin create  --dt-name <instance-name> --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}'
 ```
-
-> [!Note]
-> Wenn Sie Cloud Shell in der PowerShell-Umgebung verwenden, müssen die Anführungszeichen ggf. in den Inline-JSON-Feldern mit Escapezeichen versehen werden, damit die Werte ordnungsgemäß analysiert werden. Hier ist der Befehl zum Erstellen des Zwillings mit dieser Änderung aufgeführt:
->
-> Erstellen des Zwillings:
-> ```azurecli-interactive
-> az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{\"Temperature\": 0.0,}' --dt-name {digital_twins_instance_name}
-> ```
 
 Wenn der Zwilling erfolgreich erstellt wurde, sollte die CLI-Ausgabe des Befehls in etwa wie folgt aussehen:
 ```json
@@ -97,7 +91,7 @@ Fügen Sie Ihrem Projekt dann die folgenden Pakete hinzu:
 * [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/)
 * [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/)
 
-Benennen Sie die Beispielfunktion *Function1.cs* in *IoTHubtoTwins.cs* um, die von Visual Studio mit dem neuen Projekt generiert wurde. Ersetzen Sie den Code in der Datei durch den folgenden Code:
+Benennen Sie die Beispielfunktion *Function1.cs*, die von Visual Studio generiert wurde, in *IoTHubtoTwins.cs* um. Ersetzen Sie den Code in der Datei durch den folgenden Code:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
 
@@ -129,7 +123,7 @@ Füllen Sie auf der Seite **Ereignisabonnement erstellen** die Felder wie folgt 
   1. Wählen Sie für **Endpunkttyp** die Option _Azure-Funktion_ aus.
   1. Verwenden Sie für **Endpunkt** den Link _Endpunkt auswählen_, um auszuwählen, welche Azure-Funktion für den Endpunkt verwendet werden soll.
     
-:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Screenshot des Azure-Portals zum Erstellen der Details zum Ereignisabonnement":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Screenshot des Azure-Portals zum Erstellen der Details zum Ereignisabonnement.":::
 
 Überprüfen Sie auf der daraufhin geöffneten Seite _Azure-Funktion auswählen_ die folgenden Details oder ergänzen Sie sie:
  1. **Abonnement**: Ihr Azure-Abonnement.
@@ -146,7 +140,7 @@ Wählen Sie die Schaltfläche _Erstellen_ aus, um ein Ereignisabonnement zu erst
 
 ## <a name="send-simulated-iot-data"></a>Senden von simulierten IoT-Daten
 
-Verwenden Sie zum Testen Ihrer neuen Eingangsfunktion den Gerätesimulator aus [Tutorial: Erstellen einer End-to-End-Lösung](./tutorial-end-to-end.md). Grundlage dieses Tutorials ist ein in C# geschriebenes Beispielprojekt. Den Beispielcode finden Sie hier: [End-to-End-Beispiele für Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples) Sie verwenden in diesem Repository das Projekt **DeviceSimulator**.
+Verwenden Sie zum Testen Ihrer neuen Eingangsfunktion den Gerätesimulator aus [Tutorial: Erstellen einer End-to-End-Lösung](./tutorial-end-to-end.md). Grundlage dieses Tutorials ist ein [in C# geschriebenes End-to-End-Beispielprojekt für Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples). Sie verwenden in diesem Repository das Projekt **DeviceSimulator**.
 
 Führen Sie im End-to-End-Tutorial die folgenden Schritte aus:
 1. [Registrieren des simulierten Geräts für IoT Hub](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
@@ -157,7 +151,7 @@ Führen Sie im End-to-End-Tutorial die folgenden Schritte aus:
 Während der Ausführung des vorstehenden Gerätesimulators ändert sich der Temperaturwert Ihres digitalen Zwillings. Führen Sie in der Azure CLI den folgenden Befehl zum Anzeigen des Temperaturwerts aus.
 
 ```azurecli-interactive
-az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
+az dt twin query --query-command "select * from digitaltwins" --dt-name <Digital-Twins-instance-name>
 ```
 
 Die Ausgabe sollte einen Temperaturwert wie diesen enthalten:
@@ -167,18 +161,14 @@ Die Ausgabe sollte einen Temperaturwert wie diesen enthalten:
   "result": [
     {
       "$dtId": "thermostat67",
-      "$etag": "W/\"0000000-1e83-4f7f-b448-524371f64691\"",
+      "$etag": "W/\"dbf2fea8-d3f7-42d0-8037-83730dc2afc5\"",
       "$metadata": {
         "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
         "Temperature": {
-          "ackCode": 200,
-          "ackDescription": "Auto-Sync",
-          "ackVersion": 1,
-          "desiredValue": 69.75806974934324,
-          "desiredVersion": 1
+          "lastUpdateTime": "2021-06-03T17:05:52.0062638Z"
         }
       },
-      "Temperature": 69.75806974934324
+      "Temperature": 70.20518558807913
     }
   ]
 }
@@ -189,4 +179,4 @@ Führen Sie zum Anzeigen der Wertänderung den vorstehenden Abfragebefehl wieder
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über eingehende und ausgehende Daten mit Azure Digital Twins:
-* [Konzepte: Integration in andere Dienste](concepts-integration.md)
+* [Konzepte: Dateneingang und -ausgang](concepts-data-ingress-egress.md)

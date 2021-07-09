@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: networking
 author: anavinahar
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 2262290486047c225cec8e8f6bb73242df7258fa
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: d31e52763ed69303ee6ea9bf44fd85403c810179
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106271527"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111993729"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
@@ -46,13 +46,14 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azu
 | Benutzerdefinierte Routingtabellen |200 |
 | Benutzerdefinierte Routen pro Routingtabelle |400 |
 | Punkt-zu-Standort-Stammzertifikate pro Azure VPN Gateway |20 |
+| Widerrufene Point-to-Site-Clientzertifikate pro Azure VPN Gateway |300 |
 | TAPs für virtuelle Netzwerke |100 |
 | Netzwerkschnittstellen-TAP-Konfigurationen pro virtuellem Netzwerk-TAP |100 |
 
 #### <a name="public-ip-address-limits"></a><a name="publicip-address"></a>Grenzwerte für öffentliche IP-Adressen
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Öffentliche IP-Adressen<sup>1</sup> | 10 für Basic. | Wenden Sie sich an den Support. |
+| Öffentliche IP-Adressen<sup>1,2</sup> | 10 für Basic. | Wenden Sie sich an den Support. |
 | Statische öffentliche IP-Adressen<sup>1</sup> | 10 für Basic. | Wenden Sie sich an den Support. |
 | Öffentliche Standard-IP-Adressen<sup>1</sup> | 10 | Wenden Sie sich an den Support. |
 | [Öffentliche IP-Adressen pro Ressourcengruppe](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | Wenden Sie sich an den Support. | 
@@ -60,6 +61,8 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azu
 | Präfixlänge für öffentliche IP-Adressen | /28 | Wenden Sie sich an den Support. |
 
 <sup>1</sup>Die Standardgrenzwerte für öffentliche IP-Adressen unterscheiden sich je nach Typ der Angebotskategorie, z. B. kostenlose Testversion, nutzungsbasierte Bezahlung, CSP. Beispielsweise ist der Standardwert für Enterprise Agreement-Abonnements 1000.
+
+<sup>2</sup>Der Grenzwert für öffentliche IP-Adressen bezieht sich auf die Gesamtmenge öffentlicher IP-Adressen, einschließlich Basic und Standard. 
 
 #### <a name="load-balancer-limits"></a><a name="load-balancer"></a>Load Balancer-Grenzwerte
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).

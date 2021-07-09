@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dca888bf9e3dc75e80764949a11d95efe3514635
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba78cc0ff3104dd0827b0fe5108ad981183c413a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861815"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953510"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory
 
@@ -156,7 +156,7 @@ In diesem Abschnitt werden häufige AD FS-Anpassungen beschrieben.
 
 Der Anspruch **InsideCorporateNetwork** wird von AD FS ausgegeben, wenn sich der Benutzer, der die Authentifizierung durchführt, innerhalb des Unternehmensnetzwerks befindet. Dieser Anspruch kann dann an Azure AD übergeben werden. Der Anspruch wird verwendet, um die mehrstufige Authentifizierung basierend auf der Netzwerkadresse des Benutzers zu umgehen. Informationen zur Ermittlung, ob diese Funktionalität in AD FS derzeit aktiviert ist, finden Sie unter [Vertrauenswürdige IPs für Partnerbenutzer](../authentication/howto-mfa-adfs.md).
 
-Der Anspruch **InsideCorporateNetwork** ist nicht mehr verfügbar, sobald Sie für Ihre Domänen die Konvertierung in die Kennworthashsynchronisierung durchgeführt haben. Sie können [benannte Orte in Azure AD](../reports-monitoring/quickstart-configure-named-locations.md) verwenden, um diese Funktionalität zu ersetzen.
+Der Anspruch **InsideCorporateNetwork** ist nicht mehr verfügbar, sobald Sie für Ihre Domänen die Konvertierung in die Kennworthashsynchronisierung durchgeführt haben. Sie können [benannte Orte in Azure AD](../conditional-access/location-condition.md) verwenden, um diese Funktionalität zu ersetzen.
 
 Nach dem Konfigurieren der benannten Orte müssen Sie alle Richtlinien für bedingten Zugriff aktualisieren, die konfiguriert wurden. Schließen Sie die Werte **Alle vertrauenswürdigen Standorte** oder **Für MFA vertrauenswürdige IPs** für das Netzwerk ein oder aus, um die neu benannten Orte widerzuspiegeln.
 

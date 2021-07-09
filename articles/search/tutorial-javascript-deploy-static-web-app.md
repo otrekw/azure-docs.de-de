@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: c3f4d883dcc9b79ddab77bb8779e52e629226631
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 021f7aeda86f5ff9f11eb2991a74c6ad37a203e6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950342"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469781"
 ---
 # <a name="3---deploy-the-search-enabled-website"></a>3\. Bereitstellen der Website mit Suchunterstützung
 
@@ -26,6 +26,15 @@ Die statische Web-App pullt Informationen und Dateien für die Bereitstellung un
 ## <a name="create-a-static-web-app-in-visual-studio-code"></a>Erstellen einer statischen Web-App in Visual Studio Code
 
 1. Wählen Sie über die Aktivitätsleiste die Option **Azure** und anschließend über die Seitenleiste die Option **Static Web Apps** aus. 
+
+1. Wenn in VS Code ein Popupfenster angezeigt wird, in dem Sie gefragt werden, über welche Verzweigung Sie bereitstellen möchten, wählen Sie die Standardverzweigung aus, in der Regel **master** oder **main**. 
+
+    Diese Einstellung bedeutet, dass nur Änderungen, die Sie für diese Verzweigung committen, in Ihrer statischen Web-App bereitgestellt werden. 
+
+1. Wenn ein Popupfenster angezeigt wird, in dem Sie aufgefordert werden, Ihre Änderungen zu committen, tun Sie dies nicht. Für die Geheimnisse aus dem Massenimportschritt darf kein Commit für das Repository ausgeführt werden. 
+
+    Um die Änderungen zurückzusetzen, wählen Sie in VS Code in der Aktivitätsleiste das Symbol für Quellcodeverwaltung aus. Wählen Sie dann jede geänderte Datei in der Liste „Änderungen“ aus, und wählen Sie das Symbol für **Änderungen verwerfen** aus.
+
 1. Klicken Sie mit der rechten Maustaste auf den Abonnementnamen, und wählen Sie anschließend **Create Static Web App (Advanced)** (Statische Web-App erstellen (erweitert)) aus.    
 
     :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-create-static-web-app-resource-advanced.png" alt-text="Klicken Sie mit der rechten Maustaste auf den Abonnementnamen, und wählen Sie anschließend **Create Static Web App (Advanced)** (Statische Web-App erstellen (erweitert)) aus.":::
@@ -34,16 +43,13 @@ Die statische Web-App pullt Informationen und Dateien für die Bereitstellung un
 
     |Prompt|EINGABETASTE|
     |--|--|
-    |„How do you want to create a Static Web App?“ (Wie möchten Sie eine statische Web-App erstellen?)|Vorhandenes GitHub-Repository verwenden|
-    |Organisation auswählen|Wählen Sie Ihren _eigenen_ GitHub-Alias als Organisation aus.|
-    |Repository auswählen|Wählen Sie in der Liste die Option **azure-search-javascript-samples** aus. |
-    |„Choose branch of repository“ (Repository-Branch auswählen)|Wählen Sie in der Liste die Option **master** aus. |
     |„Enter the name for the new Static Web App.“ (Geben Sie den Namen für die neue statische Web-App ein.)|Erstellen Sie einen eindeutigen Namen für Ihre Ressource. Dazu können Sie etwa dem Repositorynamen Ihren eigenen Namen voranstellen (Beispiel: `joansmith-azure-search-javascript-samples`). |
     |„Select a resource group for new resources.“ (Wählen Sie eine Ressourcengruppe für neue Ressourcen aus.)|Verwenden Sie die Ressourcengruppe, die Sie für dieses Tutorial erstellt haben.|
+    |SKU auswählen| Wählen Sie die kostenlose SKU für dieses Tutorial aus.|
     |„Choose build preset to configure default project structure.“ (Wählen Sie eine Buildvoreinstellung aus, um die Standardprojektstruktur zu konfigurieren.)|Wählen Sie **Benutzerdefiniert** aus.|
-    |„Select the location of your application code“ (Wählen Sie den Speicherort Ihres Anwendungscodes aus.)|`search-website`|
-    |Wählen Sie den Speicherort Ihres Azure-Funktionscodes aus.|`search-website/api`|
-    |„Enter the path of your build output...“ (Geben Sie den Pfad Ihrer Buildausgabe ein...)|build|
+    |„Select the location of your application code“ (Wählen Sie den Speicherort Ihres Anwendungscodes aus.)|`search-website`<br><br>Dies ist der Pfad vom Stamm des Repositorys zu Ihrer Azure Static-Web-App. |
+    |Wählen Sie den Speicherort Ihres Azure-Funktionscodes aus.|`search-website/api`<br><br>Dies ist der Pfad vom Stamm des Repositorys zu Ihrer Azure Function-App. |
+    |„Enter the path of your build output...“ (Geben Sie den Pfad Ihrer Buildausgabe ein...)|`build`<br><br>Dies ist der Pfad von Ihrer Azure Static-Web-App zu Ihren generierten Dateien.|
     |„Select a location for new resources.“ (Wählen Sie einen Standort für neue Ressourcen aus.)|Wählen Sie eine Region in Ihrer Nähe aus.|
 
 1. Die Ressource wird erstellt. Wählen Sie in den Benachrichtigungen die Option **Open Actions in GitHub** (Aktionen in GitHub öffnen) aus. Dadurch wird ein Browserfenster mit Ihrem geforkten Repository geöffnet. 

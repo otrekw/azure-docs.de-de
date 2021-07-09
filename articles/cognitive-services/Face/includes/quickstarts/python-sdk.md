@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 0939216e1d96e898d7c45b9e7a3ec72453b263d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: adcabf8427f515a1814dd740bc5c70b8b0e7b9b7
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958076"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109858009"
 ---
 Erste Schritte mit Gesichtserkennung unter Verwendung der Gesichtserkennungs-Clientbibliothek für Python. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -235,10 +235,10 @@ Falls Sie in dieser Schnellstartanleitung ein **PersonGroup**-Objekt erstellt ha
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Gesichtserkennungs-Clientbibliothek für Python für einfache Gesichtserkennungsaufgaben verwenden. In der Referenzdokumentation finden Sie weitere Informationen zur Bibliothek.
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Gesichtserkennungs-Clientbibliothek für Python für einfache Gesichtserkennungsaufgaben verwenden. Als Nächstes erfahren Sie mehr über die verschiedenen Gesichtserkennungsmodelle und zum Angeben des richtigen Modells für Ihren Anwendungsfall.
 
 > [!div class="nextstepaction"]
-> [Referenz zur Gesichtserkennungs-API (Python)](/python/api/azure-cognitiveservices-vision-face/)
+> [Angeben einer Gesichtserkennungsmodellversion](../../Face-API-How-to-Topics/specify-detection-model.md)
 
 * [Was ist der Gesichtserkennungsdienst?](../../overview.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py).

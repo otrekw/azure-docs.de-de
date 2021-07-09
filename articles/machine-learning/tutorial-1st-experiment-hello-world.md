@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Ausführen von „Hello World!“ Python-Skript'
+title: 'Tutorial: Erste Schritte mit einem Python-Skript'
 titleSuffix: Azure Machine Learning
-description: Teil 1 der Azure Machine Learning-Einstiegsreihe zeigt, wie Sie ein triviales Python-Skript „Hello World!“ in die Cloud übermitteln.
+description: Erste Schritte mit Ihrem ersten Python-Skript in Azure Machine Learning. Dies ist Teil 1 einer dreiteiligen Reihe mit ersten Schritten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
-ms.custom: devx-track-python
-ms.openlocfilehash: d50105b88c7c719aa1d89aaa3f29fad43abc0a28
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: ccc28c5a20fd31d3200f6473210150587fd5b4ad
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740759"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028629"
 ---
-# <a name="tutorial-run-a-hello-world-python-script-part-1-of-3"></a>Tutorial: Ausführen eines Python-Skripts „Hello World!“ Python-Skript (Teil 1 von 3)
+# <a name="tutorial-get-started-with-a-python-script-in-azure-machine-learning-part-1-of-3"></a>Tutorial: Erste Schritte mit einem Python-Skript in Azure Machine Learning (Teil 1 von 3)
 
-In diesem Tutorial erfahren Sie, wie das Azure Machine Learning SDK für Python verwendet wird, um ein Python-Skript „Hello World“ zu übermitteln und auszuführen.
+In diesem Tutorial führen Sie Ihr erstes Python-Skript in der Cloud mit Azure Machine Learning aus. Dieses Tutorial ist der *erste Teil einer dreiteiligen Reihe*.
 
-Dieses Tutorial ist *Teil 1 einer dreiteiligen Tutorialreihe*, in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure durchführen. 
+In diesem Tutorial wird die Komplexität des Trainings eines Machine Learning-Modells vermieden. Sie führen das Python-Skript „Hallo Welt“ in der Cloud aus. Sie erfahren, wie ein Steuerskript verwendet wird, um eine Ausführung in Azure Machine Learning zu konfigurieren und zu erstellen.
 
 In diesem Tutorial wird Folgendes vermittelt:
 
@@ -129,7 +129,7 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) umschließt Ihren `hello.py`-Code und übergibt ihn an Ihren Arbeitsbereich. Wie der Name schon nahelegt, können Sie diese Klasse verwenden, um die _Ausführung_ Ihres _Skripts_ in Azure Machine Learning zu _konfigurieren_. Außerdem wird angegeben, auf welchem Computeziel das Skript ausgeführt wird. In diesem Code ist das Ziel der Computecluster, den Sie im [Setup-Tutorial](tutorial-1st-experiment-sdk-setup-local.md) erstellt haben.
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) umschließt Ihren `hello.py`-Code und übergibt ihn an Ihren Arbeitsbereich. Wie der Name schon nahelegt, können Sie diese Klasse verwenden, um die _Ausführung_ Ihres _Skripts_ in Azure Machine Learning zu _konfigurieren_. Außerdem wird angegeben, auf welchem Computeziel das Skript ausgeführt wird. In diesem Code ist das Ziel der Computecluster, den Sie im [Setup-Tutorial](./quickstart-create-resources.md) erstellt haben.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -157,6 +157,9 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
 Wählen Sie **Speichern und Ausführen des Skripts im Terminal** aus, um Ihr Steuerungsskript auszuführen, das seinerseits `hello.py` auf dem Computecluster ausführt, den Sie im [Setup-Tutorial](quickstart-create-resources.md) erstellt haben.
 
 Im Terminal werden Sie möglicherweise aufgefordert, sich anzumelden, um sich zu authentifizieren.  Kopieren Sie den Code, und folgen Sie dem Link, um diesen Schritt abzuschließen.
+
+> [!TIP]
+> Wenn Sie gerade die Erstellung des Computeclusters abgeschlossen haben, sehen Sie möglicherweise die Fehlermeldung „UserError: Erforderliches Docker-Image nicht gefunden...“ Warten Sie etwa 5 Minuten, und versuchen Sie es dann erneut.  Der Computecluster benötigt möglicherweise mehr Zeit, bevor er zum Einrichten von Knoten bereit ist.
 
 > [!div class="nextstepaction"]
 > [Ich habe Code in der Cloud übermittelt.](?success=submit-to-cloud#monitor) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)

@@ -5,22 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 05/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f15fd789264922865acb792bdb766b9624665d91
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 072278ab70484eb427bafafc3e644e39e47eb8a8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109654758"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960494"
 ---
 # <a name="investigate-risk-with-identity-protection-in-azure-ad-b2c"></a>Untersuchen eines Risikos mit Identity Protection in Azure AD B2C
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 Identity Protection bietet eine kontinuierliche Risikoerkennung für Ihren Azure AD B2C-Mandanten. Damit können Organisationen identitätsbasierte Risiken entdecken, untersuchen und beheben. Identity Protection enthält Risikoberichte, die zur Untersuchung von Identitätsrisiken in Azure AD B2C-Mandanten verwendet werden können. In diesem Artikel erfahren Sie, wie Sie Risiken untersuchen und mindern.
 
@@ -83,7 +81,7 @@ Administratoren können dann Aktionen für diese Ereignisse ausführen. Administ
 - Anmeldung eines Benutzers blockieren
 - Mit Azure ATP weitere Untersuchungen ausführen
 
-Ein Administrator kann auswählen, ob das Risiko eines Benutzers im Azure-Portal oder programmgesteuert über die Microsoft Graph-API unter [Benutzerrisiko ignorieren](https://docs.microsoft.com/graph/api/riskyusers-dismiss?view=graph-rest-beta&preserve-view=true) verworfen werden soll. Es werden Administratorrechte benötigt, um das Risiko für einen Benutzer zu verwerfen. Die Bereinigung eines Risikos kann vom Risikobenutzer selbst oder von einem Administrator im Namen des Benutzers durchgeführt werden, z. B. per Kennwortzurücksetzung.
+Ein Administrator kann auswählen, ob das Risiko eines Benutzers im Azure-Portal oder programmgesteuert über die Microsoft Graph-API unter [Benutzerrisiko ignorieren](/graph/api/riskyusers-dismiss?preserve-view=true&view=graph-rest-beta) verworfen werden soll. Es werden Administratorrechte benötigt, um das Risiko für einen Benutzer zu verwerfen. Die Bereinigung eines Risikos kann vom Risikobenutzer selbst oder von einem Administrator im Namen des Benutzers durchgeführt werden, z. B. per Kennwortzurücksetzung.
 
 ### <a name="navigating-the-risky-users-report"></a>Navigieren im Bericht „Risikobenutzer“
 
@@ -93,7 +91,7 @@ Ein Administrator kann auswählen, ob das Risiko eines Benutzers im Azure-Portal
 
 1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus. Oder verwenden Sie das Suchfeld, um nach **Azure AD B2C** zu suchen und diese Option auszuwählen.
 
-1. Wählen Sie unter **Sicherheit** die Option **Riskante Benutzer (Vorschau)** aus.
+1. Wählen Sie unter **Sicherheit** die Option **Risikobenutzer** aus.
 
    ![Riskante Benutzer](media/identity-protection-investigate-risk/risky-users.png)
 
@@ -117,7 +115,7 @@ Administratoren können dann zum Risiko- oder Anmeldebericht des Benutzers zurü
 ### <a name="navigating-the-risk-detections-report"></a>Navigieren im Bericht „Risikoerkennungen“
 
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
-1. Wählen Sie unter **Sicherheit** die Option **Risikoerkennung (Vorschau)** aus.
+1. Wählen Sie unter **Sicherheit** die Option **Risikoerkennung** aus.
 
    ![Risikoerkennungen](media/identity-protection-investigate-risk/risk-detections.png)
 

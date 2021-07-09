@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 5ed5ac90f446f74c54488f6d0cf23adbd63a3e1e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2b93496244ed36ce2ca08dfd48b7bb176d6cdd40
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606877"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949460"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
 
@@ -33,7 +33,7 @@ Eine typische Bereitstellungsarchitektur mit Hochverfügbarkeit und mehreren Reg
 
 ![Bereitstellung mit mehreren Regionen](media/tutorial-deploy-hsm-powershell/high-availability.png)
 
-Dieses Tutorial konzentriert sich auf die Integration eines HSM-Paars und des erforderlichen ExpressRoute-Gateways („Subnet 1“ in der obigen Abbildung) in ein vorhandenes virtuelles Netzwerk („VNET 1“ in der obigen Abbildung).  Alle anderen Ressourcen sind Azure-Standardressourcen. Der gleiche Integrationsprozess kann auch für HSMs in „Subnet 4“ für „VNET 3“ (ebenfalls in der obigen Abbildung) verwendet werden.
+Dieses Tutorial konzentriert sich auf die Integration eines HSM-Paars und des erforderlichen [ExpressRoute-Gateways](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) („Subnet 1“ in der obigen Abbildung) in ein vorhandenes virtuelles Netzwerk („VNET 1“ in der obigen Abbildung).  Alle anderen Ressourcen sind Azure-Standardressourcen. Der gleiche Integrationsprozess kann auch für HSMs in „Subnet 4“ für „VNET 3“ (ebenfalls in der obigen Abbildung) verwendet werden.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -52,7 +52,7 @@ Bei allen weiteren Schritten wird davon ausgegangen, dass Sie bereits zum Azure-
 
 ## <a name="provisioning-a-dedicated-hsm"></a>Bereitstellen eines dedizierten HSM
 
-Die Bereitstellung der HSMs und die Integration in ein vorhandenes virtuelles Netzwerk mittels ExpressRoute-Gateway wird mithilfe des ssh-Befehlszeilentools überprüft, um sicherzustellen, dass das HSM-Gerät für weitere Konfigurationsaktivitäten erreichbar und grundsätzlich verfügbar ist. In den folgenden Befehlen werden unter Verwendung einer Resource Manager-Vorlage HSM-Ressourcen und entsprechende Netzwerkressourcen erstellt.
+Die Bereitstellung der HSMs und die Integration in ein vorhandenes virtuelles Netzwerk mittels [ExpressRoute-Gateway](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) wird mithilfe des ssh-Befehlszeilentools überprüft, um sicherzustellen, dass das HSM-Gerät für weitere Konfigurationsaktivitäten erreichbar und grundsätzlich verfügbar ist. In den folgenden Befehlen werden unter Verwendung einer Resource Manager-Vorlage HSM-Ressourcen und entsprechende Netzwerkressourcen erstellt.
 
 ### <a name="validating-feature-registration"></a>Überprüfen der Featureregistrierung
 
@@ -68,7 +68,7 @@ Fahren Sie erst mit den weiteren Schritten fort, wenn beim Befehl der Status „
 
 ### <a name="creating-hsm-resources"></a>Erstellen von HSM-Ressourcen
 
-Ein HSM-Gerät wird im virtuellen Netzwerk eines Kunden bereitgestellt. Dies impliziert den Bedarf für ein Subnetz. Um die Kommunikation zwischen dem virtuellen Netzwerk und dem physischen Gerät zu ermöglichen, benötigt das HSM ein ExpressRoute-Gateway. Und schließlich wird noch ein virtueller Computer benötigt, um unter Verwendung der Thales-Clientsoftware auf das HSM-Gerät zugreifen zu können. Diese Ressourcen wurden zur Vereinfachung in einer Vorlagendatei mit entsprechender Parameterdatei zusammengefasst. Die Dateien können Sie direkt bei Microsoft anfordern: HSMrequest@Microsoft.com.
+Ein HSM-Gerät wird im virtuellen Netzwerk eines Kunden bereitgestellt. Dies impliziert den Bedarf für ein Subnetz. Um die Kommunikation zwischen dem virtuellen Netzwerk und dem physischen Gerät zu ermöglichen, benötigt das HSM ein [ExpressRoute-Gateway](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md). Und schließlich wird noch ein virtueller Computer benötigt, um unter Verwendung der Thales-Clientsoftware auf das HSM-Gerät zugreifen zu können. Diese Ressourcen wurden zur Vereinfachung in einer Vorlagendatei mit entsprechender Parameterdatei zusammengefasst. Die Dateien können Sie direkt bei Microsoft anfordern: HSMrequest@Microsoft.com.
 
 Wenn Sie über die Dateien verfügen, müssen Sie die Parameterdatei bearbeiten, um Ihre bevorzugten Ressourcennamen einzufügen. Dazu müssen Zeilen bearbeitet werden, die Folgendes enthalten: "value":""
 

@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: azure-monitor
 author: rboucher
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: ee7ccb126eb04e168ccc213f0429d41a76a8bc2f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 704697a88a723182c2dbbcb2f25eb18df7be34c1
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103021422"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430384"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 
@@ -37,7 +37,7 @@ ms.locfileid: "103021422"
 
 | Category | Begrenzung | Kommentare |
 |:---|:---|:---|
-| Maximale Anzahl von Datensätzen, die von einer Protokollabfrage zurückgegebenen werden | 10.000 | Reduziert die Ergebnisse durch die Verwendung eines Abfragebereichs, eines Zeitbereichs und von Filtern in der Abfrage. |
+| Maximale Anzahl von Datensätzen, die von einer Protokollabfrage zurückgegebenen werden | 30.000 | Reduziert die Ergebnisse durch die Verwendung eines Abfragebereichs, eines Zeitbereichs und von Filtern in der Abfrage. |
 
 
 **Datensammler-API**
@@ -52,7 +52,7 @@ ms.locfileid: "103021422"
 | Category | Begrenzung | Kommentare |
 |:---|:---|:---|
 | Maximale Anzahl von Datensätzen, die bei einer einzelnen Abfrage zurückgegeben werden | 500.000 | |
-| Maximale Größe der zurückgegebenen Daten | 64.000.000 Byte (~61 MiB)| |
+| Maximale Größe der zurückgegebenen Daten | ~104 MB (~100 MiB)| |
 | Maximale Ausführungszeit der Abfrage | 10 Minuten | Weitere Informationen finden Sie unter [Timeouts (Zeitlimit)](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts).  |
 | Maximale Anforderungsrate | 200 Anforderungen pro 30 Sekunden und Azure AD-Benutzer oder Client-IP-Adresse | Weitere Informationen finden Sie unter [Rate limits (Ratenlimits)](https://dev.loganalytics.io/documentation/Using-the-API/Limits). |
 
@@ -61,6 +61,7 @@ ms.locfileid: "103021422"
 | Category | Begrenzung | Kommentare |
 |:---|:---|:---|
 | Maximale Anzahl von Datensätzen | 500.000 | |
+| Maximale Größe der zurückgegebenen Daten | ~104 MB (~100 MiB) | |
 | Maximales Abfragetimeout | 110 Sekunden | |
 | Diagramme | | Die Visualisierung auf der Seite „Protokolle“ und der Connector nutzen unterschiedliche Diagrammbibliotheken, und einige Funktionen sind derzeit im Connector nicht verfügbar. |
 

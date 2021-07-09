@@ -9,46 +9,42 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/24/2020
+ms.date: 05/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 1fbc42864761360d252ed62cea1aef6f2937b599
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3fbab143fd330e017e9e51c74a403d9bfb687ff
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92516068"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110455638"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SignalFx
 
 In diesem Tutorial erfahren Sie, wie Sie SignalFx in Azure Active Directory (Azure AD) integrieren. Die Integration von SignalFx in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf SignalFx haben soll.
-* Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei SignalFx anzumelden.
+* Sie können in Azure AD steuern, wer Zugriff auf SignalFx besitzen soll.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei SignalFx anzumelden.
 * Sie können Ihre Konten zentral über das Azure-Portal verwalten.
-
-Weitere Informationen zur Integration von SaaS-Anwendungen in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie beginnen, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement
-    * Sollten Sie über kein Abonnement verfügen, erhalten Sie [hier](https://azure.microsoft.com/free/) ein kostenloses Testkonto.
-* SSO-fähiges SignalFx-Abonnement
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* SignalFx-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * SignalFx unterstützt **IDP**-initiiertes einmaliges Anmelden.
-* SignalFx unterstützt die **Just-in-Time**-Benutzerbereitstellung.
-* Nach dem Konfigurieren von SignalFx können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* SignalFx unterstützt **Just-in-Time**-Benutzerbereitstellung.
 
 ## <a name="step-1-add-the-signalfx-application-in-azure"></a>Schritt 1: Hinzufügen der SignalFx-Anwendung in Azure
 
 Gehen Sie wie folgt vor, um die SignalFx-Anwendung Ihrer Liste mit den verwalteten SaaS-Apps hinzuzufügen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich im Azure-Portal an.
 1. Wählen Sie im Navigationsfenster auf der linken Seite die Option **Azure Active Directory** aus.
 1. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 1. Wählen Sie **Neue Anwendung** aus.
@@ -76,13 +72,13 @@ Gehen Sie wie folgt vor, um mit dem Konfigurationsprozess für das einmalige Anm
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren:
 
-1. Kehren Sie zum [Azure-Portal](https://portal.azure.com/) zurück, navigieren Sie auf der Anwendungsintegrationsseite für **SignalFx** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Kehren Sie zum Azure-Portal zurück, navigieren Sie auf der Anwendungsintegrationsseite für **SignalFx** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Füllen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die folgenden Felder aus: 
+1. Führen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die folgenden Schritte aus: 
 
     a. Geben Sie unter **Bezeichner** die URL `https://api.<realm>.signalfx.com/v1/saml/metadata` ein, und ersetzen Sie dabei `<realm>` durch Ihren SignalFx-Bereich. 
 
@@ -110,33 +106,27 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal
 
 ## <a name="step-4-create-an-azure-ad-test-user"></a>Schritt 4: Erstellen eines Azure AD-Testbenutzers
 
-Gehen Sie wie folgt vor, um im Azure-Portal einen Testbenutzer namens **B.Simon** zu erstellen:
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-1. Wählen Sie im Azure-Portal im Navigationsfenster auf der linken Seite **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
-1. Wählen Sie im oberen Bereich der Seite die Option **Neuer Benutzer** aus.
-1. Gehen Sie in den **Benutzereigenschaften** wie folgt vor:
-   1. Geben Sie unter **Benutzername** einen Benutzernamen im Format `username@companydomain.extension` ein (beispielsweise `b.simon@contoso.com`).
-   1. Geben Sie unter **Name**`B.Simon` ein.
-   1. Aktivieren Sie **Kennwort anzeigen**, und kopieren Sie den unter **Kennwort** angezeigten Wert. Er wird in einem späteren Schritt benötigt, um die Integration zu testen. 
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
 ## <a name="step-5-assign-the-azure-ad-test-user"></a>Schritt 5: Zuweisen des Azure AD-Testbenutzers
 
-Gehen Sie wie folgt vor, um dem Testbenutzer die Verwendung des einmaligen Anmeldens von Azure für SignalFx zu ermöglichen:
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf SignalFx gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste den Eintrag **SignalFx** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Benutzer **B.Simon** aus, und klicken Sie anschließend unten auf der Seite auf **Auswählen**.
-1. Wenn Sie einen Rollenwert in der SAML-Assertion erwarten, wählen Sie in der Liste des Dialogfelds **Rolle auswählen** die entsprechende Rolle für den Benutzer aus, und klicken Sie anschließend unten auf der Seite auf **Auswählen**.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="step-6-complete-the-signalfx-sso-configuration"></a>Schritt 6: Abschließen der Konfiguration des einmaligen Anmeldens für SignalFx 
 
@@ -154,11 +144,11 @@ Machen Sie sich mit der folgenden Anleitung zum Testen des einmaligen Anmeldens 
 
 * Zum Testen der Anmeldung sollten Sie ein privates Fenster bzw. ein Inkognito-Fenster verwenden. Sie können sich aber auch beim Azure-Portal abmelden. Andernfalls wird die erfolgreiche Anmeldung des Testbenutzers durch Cookies für den Benutzer, der die Anwendung konfiguriert hat, gestört und verhindert.
 
-* Bei der ersten Anmeldung eines neuen Testbenutzers wird von Azure eine Kennwortänderung erzwungen. Dadurch wird der SSO-Anmeldevorgang nicht abgeschlossen, und der Testbenutzer wird zum Azure-Portal weitergeleitet. In diesem Fall muss der Testbenutzer sein Kennwort ändern, zur Anmeldeseite von SignalFx oder zum Zugriffsbereich navigieren und es noch mal versuchen.
-    * Wenn Sie im Zugriffsbereich auf die Kachel „SignalFx“ klicken, sollten Sie automatisch bei der SignalFx-Instanz angemeldet werden. 
-        * Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Bei der ersten Anmeldung eines neuen Testbenutzers wird von Azure eine Kennwortänderung erzwungen. Dadurch wird der SSO-Anmeldevorgang nicht abgeschlossen, und der Testbenutzer wird zum Azure-Portal weitergeleitet. In diesem Fall muss der Testbenutzer sein Kennwort ändern, zur Anmeldeseite von SignalFx oder zu „Meine Apps“ navigieren und es noch mal versuchen.
+    * Wenn Sie unter „Meine Apps“ auf die Kachel „SignalFx“ klicken, sollten Sie automatisch bei der SignalFx-Instanz angemeldet werden. 
+        * Weitere Informationen zu „Meine Apps“ finden in der [Einführung zu „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
 
-* Auf die SignalFx-Anwendung kann über den Zugriffsbereich oder über eine benutzerdefinierte, der Organisation zugewiesene Anmeldeseite zugegriffen werden. Der Testbenutzer sollte die Integration von einem dieser Orte aus testen.
+* Auf die SignalFx-Anwendung kann über „Meine Apps“ oder über eine benutzerdefinierte, der Organisation zugewiesene Anmeldeseite zugegriffen werden. Der Testbenutzer sollte die Integration von einem dieser Orte aus testen.
     * Dabei kann der Testbenutzer die Anmeldeinformationen verwenden, die zuvor in diesem Prozess für **b.simon\@contoso.com** erstellt wurden.
 
 ### <a name="first-time-logins"></a>Erstmalige Anmeldungen
@@ -167,14 +157,6 @@ Machen Sie sich mit der folgenden Anleitung zum Testen des einmaligen Anmeldens 
 
 * SignalFx unterstützt die **Just-In-Time**-Benutzererstellung. Das bedeutet: Wenn ein Benutzer in SignalFx nicht vorhanden ist, wird das Konto des Benutzers beim ersten Anmeldeversuch erstellt.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
-
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [SignalFx mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+Nach dem Konfigurieren von SignalFx können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
