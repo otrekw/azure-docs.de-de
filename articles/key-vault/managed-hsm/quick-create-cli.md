@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: quickstart
-ms.date: 09/15/2020
+ms.date: 06/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b29a292dae570d368f54f65773ce72a54de2e2d
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91756814"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413985"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Schnellstart: Bereitstellen und Aktivieren eines verwalteten HSM mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -63,11 +63,11 @@ Für die Erstellung einer Ressource vom Typ „Verwaltetes HSM“ sind folgende 
 - Azure-Standort.
 - Eine Liste mit den anfänglichen Administratoren.
 
-Im nachfolgenden Beispiel wird ein HSM mit dem Namen **ContosoMHSM** in der Ressourcengruppe **ContosoResourceGroup** am Standort **USA, Osten 2** erstellt. Hierbei ist **der derzeit angemeldete Benutzer** der einzige Administrator.
+Im Beispiel unten wird ein HSM mit dem Namen **ContosoMHSM** in der Ressourcengruppe **ContosoResourceGroup** am Standort **USA, Osten 2** erstellt. Hierbei ist **der derzeit angemeldete Benutzer** der einzige Administrator, und für das vorläufige Löschen gilt ein **Aufbewahrungszeitraum von 28 Tagen**. Weitere Informationen über das vorläufige Löschen für verwaltete HSMs finden Sie [hier](soft-delete-overview.md).
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
-az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid
+az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid --retention-days 28
 ```
 
 > [!NOTE]

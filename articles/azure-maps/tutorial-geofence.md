@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 759adea3cf34b79c76b6facec3bd4626ca54107e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b9833035aa83f739b2edad7cfea9fd6cd959a69
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625031"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032337"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Tutorial: Einrichten eines Geofence mit Azure Maps
 
@@ -25,7 +25,7 @@ In diesem Tutorial werden Schritt für Schritt die Grundlagen der Erstellung und
 Azure Maps verfügt über eine Reihe von Diensten, die die Nachverfolgung des Ein- und Ausgangs von Geräten unterstützen. In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
-> * Sie laden [GeoJSON-Geofencingdaten](geofence-geojson.md) hoch, mit denen die zu überwachenden Baustellenbereiche definiert werden. Sie verwenden die [Datenupload-API](/rest/api/maps/data/uploadpreview), um Geofences als Polygonkoordinaten in Ihr Azure Maps-Konto hochzuladen.
+> * Sie laden [GeoJSON-Geofencingdaten](geofence-geojson.md) hoch, mit denen die zu überwachenden Baustellenbereiche definiert werden. Sie verwenden die [Datenupload-API](/rest/api/maps/data-v2/upload-preview), um Geofences als Polygonkoordinaten in Ihr Azure Maps-Konto hochzuladen.
 > * Sie richten zwei [Logik-Apps](../event-grid/handler-webhooks.md#logic-apps) ein, die ausgelöst werden können, um E-Mail-Benachrichtigungen an den Baustellenleiter zu senden, wenn Geräte in den Geofencebereich gebracht werden oder diesen verlassen.
 > * Sie verwenden [Azure Event Grid](../event-grid/overview.md), um Eingangs- und Ausgangsereignisse für Ihren Azure Maps-Geofence zu abonnieren. Sie richten zwei Webhook-Ereignisabonnements ein, von denen die in Ihren beiden Logik-Apps definierten HTTP-Endpunkte aufgerufen werden. Von den Logik-Apps werden dann die entsprechenden E-Mail-Benachrichtigungen für Geräte gesendet, die in den Geofencebereich gebracht werden oder diesen verlassen.
 > * Verwenden Sie die [GET-API für die Geofencesuche](/rest/api/maps/spatial/getgeofence), um Benachrichtigungen zu erhalten, wenn ein Gerät in die Geofencebereiche gebracht oder daraus entfernt wird.
@@ -42,7 +42,7 @@ In diesem Tutorial wird die Anwendung [Postman](https://www.postman.com/) verwen
 In diesem Tutorial laden Sie GeoJSON-Geofencingdaten hoch, die eine Merkmalsauswahl (`FeatureCollection`) enthalten. Die Merkmalsauswahl (`FeatureCollection`) enthält zwei Geofences, durch die polygonale Bereiche innerhalb der Baustelle definiert werden. Für den ersten Geofence sind keine Ablaufzeit und keine Einschränkungen festgelegt. Der zweite kann nur während der Geschäftszeiten (9:00 bis 17:00 Uhr Pacific Time) abgefragt werden und ist nach dem 1. Januar 2022 nicht mehr gültig. Weitere Informationen zum GeoJSON-Format finden Sie unter [Geofencing von GeoJSON-Daten](geofence-geojson.md).
 
 >[!TIP]
->Sie können Ihre Geofencingdaten jederzeit aktualisieren. Weitere Informationen finden Sie unter [Datenupload-API](/rest/api/maps/data/uploadpreview).
+>Sie können Ihre Geofencingdaten jederzeit aktualisieren. Weitere Informationen finden Sie unter [Datenupload-API](/rest/api/maps/data-v2/upload-preview).
 
 1. Öffnen Sie die Postman-App. Wählen Sie oben die Option **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus. Geben Sie der Sammlung einen Namen, und wählen Sie **Create** (Erstellen) aus.
 
@@ -51,7 +51,7 @@ In diesem Tutorial laden Sie GeoJSON-Geofencingdaten hoch, die eine Merkmalsausw
 3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein, um die Geofencingdaten in Azure Maps hochzuladen. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
     ```HTTP
-    https://atlas.microsoft.com/mapData/upload?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&dataFormat=geojson
+    https://us.atlas.microsoft.com/mapData?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
     Der Parameter `geojson` im URL-Pfad steht für das Format der Daten, die hochgeladen werden.
@@ -144,42 +144,37 @@ In diesem Tutorial laden Sie GeoJSON-Geofencingdaten hoch, die eine Merkmalsausw
    }
    ```
 
-5. Wählen Sie die Option **Send** (Senden) aus, und warten Sie auf die Verarbeitung der Anforderung. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort. Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`).
+5. Wählen Sie die Option **Send** (Senden) aus, und warten Sie auf die Verarbeitung der Anforderung. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`).
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0
+    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
     ```
 
 6. Erstellen Sie zum Überprüfen des Status des API-Aufrufs eine **GET**-HTTP-Anforderung für `status URL`. An die URL muss zur Authentifizierung der primäre Abonnementschlüssel angefügt werden. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={Subscription-key}
+   https://us.atlas.microsoft.com/mapData/<operationId>?api-version=2.0&subscription-key={Subscription-key}
    ```
 
-7. Wenn die **GET**-HTTP-Anforderung erfolgreich abgeschlossen wurde, wird `resourceLocation` zurückgegeben. Der `resourceLocation` enthält die eindeutige `udid` für den hochgeladenen Inhalt. Speichern Sie diese `udid`. Sie wird im letzten Abschnitt dieses Tutorials zum Abfragen der API „GET Geofence“ benötigt. Optional können Sie im nächsten Schritt mithilfe der `resourceLocation`-URL Metadaten aus dieser Ressource abzurufen.
+7. Wenn die Anforderung erfolgreich abgeschlossen wurde, wählen Sie im Antwortfenster die Registerkarte **Header** aus. Kopieren Sie den Wert des Schlüssels **Resource Location** (Ressourcenspeicherort). Hierbei handelt es sich um die URL des Ressourcenspeicherorts (`resource location URL`).  Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`udid`) der hochgeladenen Daten. Speichern Sie die `udid`, die zum Abfragen der Get Geofence-API im letzten Abschnitt dieses Tutorials benötigt wird. Optional können Sie im nächsten Schritt mithilfe von `resource location URL` Metadaten aus dieser Ressource abzurufen.
 
-      ```json
-      {
-          "status": "Succeeded",
-          "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
-      }
-      ```
+    :::image type="content" source="./media/tutorial-geofence/resource-location-url.png" alt-text="Kopieren Sie die URL des Ressourcenspeicherorts.":::
 
-8. Erstellen Sie zum Abrufen von Inhaltsmetadaten eine **GET**-HTTP-Anforderung für die `resourceLocation`-URL, die Sie in Schritt 7 kopiert haben. Stellen Sie sicher, dass Sie für die Authentifizierung den primären Abonnementschlüssel an die URL anfügen. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
+8. Erstellen Sie zum Abrufen von Inhaltsmetadaten eine **GET**-HTTP-Anforderung für `resource location URL`, die Sie in Schritt 7 kopiert haben. Stellen Sie sicher, dass Sie für die Authentifizierung den primären Abonnementschlüssel an die URL anfügen. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
 
     ```http
-   https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-9. Nachdem die **GET**-HTTP-Anforderung erfolgreich abgeschlossen wurde, enthält der Antworttext die `udid`, die in Schritt 7 für `resourceLocation` angegeben wurde. Darüber hinaus enthält er den Speicherort für den zukünftigen Zugriff und Download des Inhalts sowie andere Metadaten zum Inhalt. Im Anschluss sehen Sie ein Beispiel für eine vollständige Antwort:
+9. Wenn die Anforderung erfolgreich abgeschlossen wurde, wählen Sie im Antwortfenster die Registerkarte **Header** aus. Die Metadaten sollten wie das folgende JSON-Fragment aussehen:
 
     ```json
     {
         "udid": "{udid}",
-        "location": "https://atlas.microsoft.com/mapData/{udid}?api-version=1.0",
-        "created": "7/15/2020 6:11:43 PM +00:00",
-        "updated": "7/15/2020 6:11:45 PM +00:00",
-        "sizeInBytes": 1962,
+        "location": "https://us.atlas.microsoft.com/mapData/6ebf1ae1-2a66-760b-e28c-b9381fcff335?api-version=2.0",
+        "created": "5/18/2021 8:10:32 PM +00:00",
+        "updated": "5/18/2021 8:10:37 PM +00:00",
+        "sizeInBytes": 946901,
         "uploadStatus": "Completed"
     }
     ```

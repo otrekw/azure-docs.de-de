@@ -6,16 +6,16 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-azcli-net-ps
-ms.openlocfilehash: aa5d24229bae0e459471dc40ca375d42ccc1405c
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b24fbcafa917e4577dc0b13b83e83cf105174332
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293234"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113113186"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource
 
@@ -23,7 +23,7 @@ Führen Sie erste Schritte mit Azure Communication Services aus, indem Sie Ihre 
 
 
 > [!WARNING]
-> Beachten Sie Folgendes: Obwohl Communication Services in mehreren geografischen Regionen verfügbar sind, muss für die Ressource ein Datenspeicherort auf „US“ festgelegt sein, um eine Telefonnummer zu erhalten. Beachten Sie zudem, dass während der öffentlichen Vorschauphase keine Kommunikationsressourcen in ein anderes Abonnement übertragen werden können.
+> Beachten Sie Folgendes: Obwohl Communication Services in mehreren geografischen Regionen verfügbar sind, muss für die Ressource ein Datenspeicherort auf „US“ festgelegt sein, um eine Telefonnummer zu erhalten. Beachten Sie ferner, dass es nicht möglich ist, eine Ressourcengruppe zugleich mit einer Ressource für Azure Communication Services zu erstellen. Beim Erstellen einer Ressource muss eine bereits erstellte Ressourcengruppe verwendet werden.
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]
@@ -118,9 +118,12 @@ Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `sour
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind.
+Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. 
 
-Wenn bei der Ressourcenlöschung der Ressource Telefonnummern zugewiesen waren, werden die Telefonnummern automatisch zum gleichen Zeitpunkt aus der Ressource freigegeben.
+Wenn bei der Ressourcenlöschung der Ressource Telefonnummern zugewiesen waren, werden die Telefonnummern automatisch zum gleichen Zeitpunkt aus der Ressource freigegeben. 
+
+> [!Note]
+> Das Löschen von Ressourcen ist **endgültig**, und nach dem Löschen können keine Daten wiederhergestellt werden, auch nicht Event Grid-Filter, Telefonnummern oder andere Daten, die an Ihre Ressource gebunden sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

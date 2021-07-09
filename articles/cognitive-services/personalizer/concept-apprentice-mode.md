@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 531917d9c48915f71354b4cd35747ecd9d33a6f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ef7137460c997b3685e75d5a37b7949fee86255
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100385029"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895746"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>Verwenden des Ausbildungsmodus zum Trainieren der Personalisierung, ohne Ihre bestehende Anwendung zu beeinträchtigen
 
@@ -71,6 +71,23 @@ Hinweis zur Effektivität des Ausbildungsmodus:
 
 * Die Effektivität der Personalisierung im Ausbildungsmodus erreicht selten annähernd 100 % der Baseline der Anwendung und überschreitet diese nie.
 * Die bewährten Methoden bestünden darin, nicht zu versuchen, 100 % zu erreichen. Je nach Anwendungsfall sollte jedoch ein Bereich von 60 bis 80 % angestrebt werden.
+
+## <a name="limitations-of-apprentice-mode"></a>Einschränkungen des Ausbildungsmodus
+Der Ausbildungsmodus versucht, das Personalisierungsmodell zu trainieren, indem er versucht, Ihren bestehenden Algorithmus für die Auswahl von Basisobjekten zu imitieren, und zwar mithilfe der in Ihrem Kontext vorhandenen Features und der in Rangfolgeaufrufen verwendeten Aktionen sowie des Feedbacks von Relevanzaufrufen. Die folgenden Faktoren wirken sich darauf aus, ob oder wann der Ausbildungsmodus der Personalisierung genügend übereinstimmende Relevanzen erlernt.
+
+### <a name="scenarios-where-apprentice-mode-may-not-be-appropriate"></a>Szenarien, in denen der Ausbildungsmodus möglicherweise nicht geeignet ist:
+
+* **Redaktionell gewählter Inhalt**: In einigen Szenarien wie Nachrichten oder Unterhaltung könnte das Baselineelement manuell von einem Redaktionsteam zugewiesen werden. Dies bedeutet, dass Menschen ihr breitgefächertes Wissen und ihr Verständnis dafür, was ansprechende Inhalte sein könnten, verwenden, um bestimmte Artikel oder Medien aus einem Pool auszuwählen und diese als „bevorzugte“ oder „Helden“-Artikel zu kennzeichnen. Da es sich bei diesen Redakteuren nicht um einen Algorithmus handelt und die vom Redaktionsteam berücksichtigten Faktoren differenzierter sein können und nicht als Features des Kontexts und der Aktionen enthalten sind, ist es unwahrscheinlich, dass der Ausbildungsmodus in der Lage ist, die nächste Baselineaktion vorherzusagen. In diesen Situationen: ** Testen der Personalisierung im Onlinemodus: Dass der Ausbildungsmodus keine Baselines vorhersagt, bedeutet nicht, dass die Personalisierung keine gleichwertigen oder sogar besseren Ergebnisse erzielen kann. Ziehen Sie in Erwägung, die Personalisierung für eine gewisse Zeit in den Onlinemodus zu versetzen oder einen A/B-Test durchzuführen, wenn Sie über die entsprechende Infrastruktur verfügen, und führen Sie dann eine Offlineauswertung durch, um den Unterschied zu bewerten.
+** Fügen Sie redaktionelle Überlegungen und Empfehlungen als Features hinzu: Fragen Sie Ihre Redakteure, welche Faktoren ihre Entscheidungen beeinflussen, und schauen Sie, ob Sie diese als Features in Ihren Kontext und Ihre Aktion aufnehmen können. Beispielsweise können Redakteure in einem Medienunternehmen Inhalte hervorheben, während ein bestimmter Prominenter in den Nachrichten ist: Dieses Wissen könnte als Kontextfeature hinzugefügt werden.
+
+### <a name="factors-that-will-improve-and-accelerate-apprentice-mode"></a>Faktoren, die den Ausbildungsmodus verbessern und beschleunigen werden
+Wenn der Ausbildungsmodus lernt und übereinstimmende Relevanzen über Null erreicht, aber langsam zu wachsen scheint (gelangt nicht auf 60 %..80 % übereinstimmende Relevanzen innerhalb von zwei Wochen), ist es möglich, dass die Herausforderung zu wenig Daten aufweist. Die folgenden Schritte können das Lernen beschleunigen. 
+
+1. Hinzufügen weiterer Ereignisse mit positiven Relevanzen im Laufe der Zeit: Der Ausbildungsmodus wird in Anwendungsfällen besser funktionieren, in denen Ihre Anwendung mehr als 100 positive Relevanzen pro Tag erhält. Wenn z. B. eine Website, die einen Klick belohnt, eine Durchklickrate von 2 % aufweist, sollte sie mindestens über 5.000 Besuche pro Tag verfügen, um spürbare Lerneffekte zu erzielen. Sie können auch mit einer Relevanz experimentieren, die einfacher ist und häufiger vorkommt. Beispiel: Der Wechsel von „Haben Benutzer den Artikel zu Ende gelesen?“ zu „Haben Benutzer mit dem Lesen des Artikels begonnen?“.
+2. Hinzufügen von differenzierenden Features: Sie können eine visuelle Überprüfung der Aktionen in einem Rangaufruf und in ihren Features durchführen. Verfügt die Baselineaktion über Features, die sich von anderen Aktionen unterscheiden? Wenn sie weitgehend gleich aussehen, fügen Sie weitere Features hinzu, die sie weniger ähnlich machen.
+3. Reduzieren von Aktionen pro Ereignis: Die Personalisierung verwendet die Einstellung „Explore %“ (Erkunden in Prozent), um Vorlieben und Trends zu erkennen. Wenn ein Rangfolgeaufruf über mehr Aktionen verfügt, ist die Wahrscheinlichkeit geringer, dass eine Aktion für die Untersuchung gewählt wird. Reduzieren Sie die Anzahl der Aktionen, die in jedem Rangfolgeaufruf gesendet werden, auf eine kleinere Anzahl (auf weniger als 10). Dies kann eine vorübergehende Anpassung sein, um zu zeigen, dass der Ausbildungsmodus die richtigen Daten für die Relevanzen aufweist.
+
+
 
 ## <a name="using-apprentice-mode-to-train-with-historical-data"></a>Verwenden des Ausbildungsmodus zum Trainieren mit Verlaufsdaten
 

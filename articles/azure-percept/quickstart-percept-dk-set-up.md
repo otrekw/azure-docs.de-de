@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 94c1bc1b5dc61ac30d2adfb1bc42e13128de054d
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 3bc89555f3526048f2e4876724503d0137f21fbf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105558"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964375"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Einrichten Ihres Azure Percept DK und Bereitstellen Ihres ersten KI-Modells
 
@@ -170,7 +170,7 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
 
 1. Klicken Sie auf **View your device stream** (Gerätedatenstrom anzeigen). Falls Sie den Videostream Ihres Geräts zum ersten Mal anzeigen, werden Sie rechts oben in einer Benachrichtigung darauf hingewiesen, dass ein neues Modell bereitgestellt wird. Dies kann einige Minuten dauern.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/view-stream.png" alt-text="Anzeigen Ihres Videostreams.":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-03-1-start-video-stream.png" alt-text="Anzeigen Ihres Videostreams.":::
 
     Nach Abschluss der Modellbereitstellung erhalten Sie eine weitere Benachrichtigung mit dem Link **Stream anzeigen**. Klicken Sie auf den Link, um den Videostream Ihrer Azure Percept Vision-Kamera in einem neuen Browserfenster anzuzeigen. Das Development Kit verfügt über ein im Voraus geladenes KI-Modell zur automatischen Erkennung zahlreicher gängiger Objekte.
 
@@ -178,7 +178,7 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
 
 1. Azure Percept Studio verfügt auch über eine Reihe von KI-Beispielmodellen. Kehren Sie zum Bereitstellen eines Beispielmodells für das Development Kit zur Seite Ihres Geräts zurück, und klicken Sie auf **Beispielmodell bereitstellen**.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/deploy-sample-model.png" alt-text="Erkunden vorgefertigter Modelle.":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-04-explore-prebuilt.png" alt-text="Erkunden vorgefertigter Modelle.":::
 
 1. Wählen Sie in der Bibliothek ein Beispielmodell aus, und klicken Sie auf **Auf Gerät bereitstellen**.
 

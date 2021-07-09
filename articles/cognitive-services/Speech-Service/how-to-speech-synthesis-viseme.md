@@ -1,7 +1,7 @@
 ---
 title: Abrufen von Gesichtsausdrucksereignissen für die Lippensynchronisierung
 titleSuffix: Azure Cognitive Services
-description: Das Speech SDK unterstützt Visem-Ereignisse während der Sprachsynthese. Diese stellen wichtige Gesichtsausdrücke beim Sprechen dar, z. B. die Position der Lippen, des Kiefers und der Zunge beim Erzeugen eines bestimmten Phonems.
+description: Das Speech SDK unterstützt Visemereignisse während der Sprachsynthese. Diese stellen wichtige Gesichtsausdrücke beim Sprechen dar, z. B. die Position der Lippen, des Kiefers und der Zunge beim Erzeugen eines bestimmten Phonems.
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -12,17 +12,17 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: a7808b3b5db9d01d6a1a2cd352a912d44a4e7908
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 7ef3e07eb1585aaa87986fd682b4db00c53e66f3
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904494"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810676"
 ---
 # <a name="get-facial-pose-events"></a>Abrufen von Gesichtsausdrucksereignissen
 
 > [!NOTE]
-> Visem-Ereignisse sind derzeit nur für die Stimme `en-US-AriaNeural` verfügbar.
+> Visemereignisse sind vorerst nur für [neuronale Stimmen](language-support.md#text-to-speech) in `en-US` Englisch (USA) verfügbar.
 
 Ein _Visem_ ist die visuelle Beschreibung eines Phonems in der gesprochenen Sprache.
 Es beschreibt die Position des Gesichts und Munds beim Sprechen eines Worts.
@@ -35,7 +35,10 @@ Mit Visemen können Sie natürlicher wirkende und intelligentere Nachrichtenspre
 
 ## <a name="get-viseme-events-with-the-speech-sdk"></a>Abrufen von Visemereignissen mit dem Speech SDK
 
-Zum Erstellen von Visemereignissen konvertieren wir den Eingabetext in einen Satz von Phonemsequenzen und den entsprechenden Visemsequenzen. Wir schätzen die Startzeit jedes Visems in der Sprachausgabe. Visemereignisse enthalten eine Sequenz von Visem-IDs mit jeweils einem Offset zu der Sprachausgabe, in der das Visem vorhanden ist. Diese Ereignisse können Mundanimationen steuern, die eine Person simulieren, die den Eingabetext spricht.
+Zum Erstellen von Visemereignissen konvertiert der TTS-Dienst den Eingabetext in einen Satz von Phonemsequenzen und den entsprechenden Visemsequenzen.
+Dann wird die Startzeit jedes Visems in den Audiodaten der Sprachausgabe geschätzt.
+Visemereignisse enthalten eine Sequenz von Visem-IDs mit jeweils einem Offset zu der Sprachausgabe, in der das Visem vorhanden ist.
+Diese Ereignisse können Mundanimationen steuern, die eine Person simulieren, die den Eingabetext spricht.
 
 | Parameter | BESCHREIBUNG |
 |-----------|-------------|

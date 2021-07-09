@@ -8,21 +8,33 @@ ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
 ms.date: 11/09/2020
-ms.openlocfilehash: fa497b69b067d5556f11effdb52505895ecc3bdd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eca47e26f497b1e8bb54e99cf49fcf326f9e5255
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94386519"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110486852"
 ---
 In diesem Schnellstart auf Postman-Basis wird Schritt für Schritt erläutert, wie Sie eine Antwort aus einer Wissensdatenbank abrufen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Neueste Version von [**Postman**](https://www.getpostman.com/).
 * Sie benötigen Folgendes:
-    * Einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md).
-    * Eine trainierte und veröffentlichte [Wissensdatenbank mit Fragen und Antworten](../Quickstarts/add-question-metadata-portal.md), die auf der Grundlage der Schnellstartanleitung erstellt wurde und mit Metadaten und Smalltalk konfiguriert ist.
+    * Neueste Version von [**Postman**](https://www.getpostman.com/).
+    * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
+> * Eine über das Azure-Portal erstellte [QnA Maker-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker). Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
+
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+
+> * Die [Textanalyse-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) mit im Azure-Portal aktiviertem Feature „Benutzerdefinierte Fragen und Antworten“. Merken Sie sich Azure Active Directory-ID, Abonnement und Name der Textanalyse-Ressource, den Sie beim Erstellen der Ressource ausgewählt haben.
+
+---
+
+   * Eine trainierte und veröffentlichte Wissensdatenbank mit Fragen und Antworten, die in der [vorherigen Schnellstartanleitung](../Quickstarts/add-question-metadata-portal.md) erstellt und mit Metadaten und Smalltalk konfiguriert wurde.
+
 
 > [!NOTE]
 > Wenn Sie bereit sind, eine Antwort auf eine Frage aus Ihrer Wissensdatenbank zu generieren, müssen Sie Ihre Wissensdatenbank [trainieren](../Quickstarts/create-publish-knowledge-base.md#save-and-train) und [veröffentlichen](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base). Wenn Ihre Wissensdatenbank veröffentlicht wird, werden auf der Seite **Veröffentlichen** die HTTP-Anforderungseinstellungen zum Generieren einer Antwort angezeigt. Auf der Registerkarte **Postman** werden die erforderlichen Einstellungen zum Generieren einer Antwort angezeigt.
@@ -47,7 +59,7 @@ Verwenden Sie diese Vorgehensweise, um Postman zu konfigurieren, und lesen Sie a
 
 1. Öffnen Sie Postman, und erstellen Sie eine neue einfache **POST**-Anforderung mit den Einstellungen Ihrer veröffentlichten Wissensdatenbank. Ändern Sie in den folgenden Abschnitten den JSON-Code im POST-Text, um die Abfrage für Ihre Wissensdatenbank zu ändern.
 
-# <a name="qna-maker-managed-preview-release"></a>[Mit QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 In dieser Schnellstartanleitung werden die gleichen Einstellungen für die Postman-Anforderung **POST** verwendet. Anschließend wird der an den Dienst gesendete JSON-Code des POST-Texts basierend auf der gewünschten Abfrage konfiguriert.
 
@@ -425,3 +437,53 @@ Sie können einen Mindestschwellenwert für die Antwort anfordern. Sollte der Sc
         "activeLearningEnabled": true
     }
     ```
+## <a name="use-unstructured-data-sources"></a>Verwenden Sie unstrukturierte Datenquellen.
+    
+Wir unterstützen jetzt die Möglichkeit, nicht verschlüsselte Dokumente hinzuzufügen, die nicht zum Extrahieren von Fragen und Antworten (QnAs) verwendet werden können. Der Benutzer kann festlegen, ob unstrukturierte Datensätze in der GenerateAnswer-API beim Abrufen einer Antwort auf die Abfrage ein- oder ausgeschlossen werden sollen.
+     
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+Unstrukturierte Datensätze werden im allgemein verfügbaren Dienst nicht unterstützt.
+
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+
+1. Legen Sie den Parameter *includeUnstructuredResources* auf TRUE fest, wenn Sie unstrukturierte Datenquellen bei der Auswertung der Antwort für die API zum Generieren von Antworten berücksichtigen möchten und umgekehrt.
+   ```json
+    {
+       "question": "what is Surface Headphones 2+ priced at?",
+       "includeUnstructuredSources":true,
+       "top": 2
+    }
+    ```
+2. Die Antwort enthält die Quelle der Antwort. 
+    ```json
+       {
+     "answers": [
+       {
+         "questions": [],
+         "answer": "Surface Headphones 2+ is priced at $299.99 USD. Business and education customers in select markets can place orders today through microsoft.com\n\nor their local authorized reseller.\n\nMicrosoft Modern USB and Wireless Headsets:\n\nCertified for Microsoft Teams, these Microsoft Modern headsets enable greater focus and call privacy, especially in shared workspaces.",
+         "score": 82.11,
+         "id": 0,
+         "source": "blogs-introducing-surface-laptop-4-and-new-access.pdf",
+         "isDocumentText": false,
+         "metadata": [],
+         "answerSpan": {
+           "text": "$299.99 USD",
+           "score": 0.0,
+           "startIndex": 34,
+           "endIndex": 45
+         }
+       },
+       {
+         "questions": [],
+         "answer": "Now certified for Microsoft Teams with the included dongle, Surface Headphones 2+ provides an even more robust meeting experience with on‐ear Teams controls and improved remote calling. Surface Headphones 2+ is priced at $299.99 USD. Business and education customers in select markets can place orders today through microsoft.com\n\nor their local authorized reseller.",
+         "score": 81.95,
+         "id": 0,
+         "source": "blogs-introducing-surface-laptop-4-and-new-access.pdf",
+         "isDocumentText": false,
+         "metadata": []
+       }
+     ],
+     "activeLearningEnabled": true
+   }
+    ```
+---

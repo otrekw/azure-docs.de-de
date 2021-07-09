@@ -3,23 +3,21 @@ title: 'Azure Defender für SQL: Vorteile und Features'
 description: Enthält eine Beschreibung der Vorteile und Features von Azure Defender für SQL.
 author: memildin
 ms.author: memildin
-ms.date: 12/13/2020
+ms.date: 05/27/2021
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 532c46c50d0b422946af649801e43904b4b6ed7d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 90129acd53bf077c325660c0c4d3091ba1ee084d
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096869"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572124"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Einführung in Azure Defender für SQL
 
-Azure Defender for SQL verfügt über zwei Azure Defender-Pläne als Erweiterung des [Datensicherheitspakets](../azure-sql/database/azure-defender-for-sql.md) von Azure Security Center, um Ihre Datenbanken und die zugehörigen Daten unabhängig vom Speicherort zu schützen. 
-
-> [!VIDEO https://www.youtube.com/embed/V7RdB6RSVpc]
+Azure Defender for SQL verfügt über zwei Azure Defender-Pläne als Erweiterung des [Datensicherheitspakets](../azure-sql/database/azure-defender-for-sql.md) von Azure Security Center, um Ihre Datenbanken und die zugehörigen Daten unabhängig vom Speicherort zu schützen. Azure Defender für SQL umfasst Funktionen zur Ermittlung und Verringerung potenzieller Datenbankschwachstellen und Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können.
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -49,13 +47,31 @@ Azure Defender for SQL verfügt über zwei Azure Defender-Pläne als Erweiterung
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>Welche Vorteile hat die Nutzung von Azure Defender für SQL?
 
-Diese beiden Pläne verfügen über Funktionen zur Ermittlung und Verringerung potenzieller Datenbankschwachstellen und Erkennung ungewöhnlicher Aktivitäten, die Bedrohungen für Ihre Datenbanken darstellen können:
+Diese beiden Pläne verfügen über Funktionen zur Ermittlung und Verringerung potenzieller Datenbankschwachstellen und Erkennung ungewöhnlicher Aktivitäten, die Bedrohungen für Ihre Datenbanken darstellen können.
 
-- [Sicherheitsrisikobewertung](../azure-sql/database/sql-vulnerability-assessment.md): der Scandienst, mit dem potenzielle Schwachstellen in der Datenbank ermittelt, nachverfolgt und behoben werden. Bewertungsscans bieten einen Überblick über den Sicherheitszustand Ihrer SQL-Computer und Einzelheiten zu allen Sicherheitsergebnissen.
+Ein Dienst zur Sicherheitsrisikobewertung ermittelt, verfolgt und unterstützt Sie beim Beheben potenzieller Sicherheitsrisiken für Ihre Datenbanken. Bewertungsscans bieten einen Überblick über den Sicherheitszustand Ihrer SQL-Computer und Einzelheiten zu allen Sicherheitsergebnissen.
 
-- [Advanced Threat Protection](../azure-sql/database/threat-detection-overview.md): Der Erkennungsdienst, der Ihre SQL Server-Instanzen kontinuierlich auf Bedrohungen wie die Einschleusung von SQL-Befehlen, Brute-Force-Angriffe und Berechtigungsmissbrauch überwacht. Dieser Dienst bietet aktionsorientierte Sicherheitswarnungen in Azure Security Center mit Details zur verdächtigen Aktivität, Anleitungen zum Minimieren der Bedrohungen und Optionen für die Fortsetzung ihrer Untersuchungen mit Azure Sentinel. 
-    > [!TIP]
-    > Zeigen Sie die Liste mit den Sicherheitswarnungen für SQL-Server [auf der Referenzseite für Warnungen](alerts-reference.md#alerts-sql-db-and-warehouse) an.
+- Erfahren Sie mehr über die [Sicherheitsrisikobewertung für Azure SQL-Datenbank](../azure-sql/database/sql-vulnerability-assessment.md).
+- Erfahren Sie mehr über die [Sicherheitsrisikobewertung für Azure SQL-Server auf Computern](defender-for-sql-on-machines-vulnerability-assessment.md).
+
+Ein Advanced Threat Protection-Dienst überwacht Ihre SQL Server-Instanzen kontinuierlich auf Bedrohungen wie die Einschleusung von SQL-Befehlen, Brute-Force-Angriffe und Berechtigungsmissbrauch. Dieser Dienst bietet aktionsorientierte Sicherheitswarnungen in Azure Security Center mit Details zur verdächtigen Aktivität, Anleitungen zum Minimieren der Bedrohungen und Optionen für die Fortsetzung ihrer Untersuchungen mit Azure Sentinel. Erfahren Sie mehr über [Advanced Threat Protection](../azure-sql/database/threat-detection-overview.md).
+
+ > [!TIP]
+ > Zeigen Sie die Liste mit den Sicherheitswarnungen für SQL-Server [auf der Referenzseite für Warnungen](alerts-reference.md#alerts-sql-db-and-warehouse) an.
+
+
+## <a name="is-there-a-performance-impact-from-deploying-azure-defender-for-sql-on-machines"></a>Wirkt sich die Bereitstellung von Azure Defender für SQL auf Computern auf die Leistung aus?
+
+Der Schwerpunkt von **Azure Defender für SQL auf Computern** liegt natürlich auf der Sicherheit. Aber wir kümmern uns auch um Ihr Geschäft und haben daher die Leistung priorisiert, um zu gewährleisten, dass die Auswirkungen auf Ihre SQL-Server minimal sind. 
+
+Der Dienst verfügt über eine zweigeteilte Architektur, um ein ausgewogenes Verhältnis zwischen Datenupload und Geschwindigkeit zu erreichen: 
+
+- Einige unserer Erkennungsmodule werden auf dem Computer ausgeführt, um Geschwindigkeitsvorteile in Echtzeit zu erreichen.
+- Andere werden in der Cloud ausgeführt, um den Computer vor hohen Rechenlasten zu schützen.
+
+Labortests unserer Lösung, bei denen sie mit Benchmarklasten verglichen wurde, ergaben eine CPU-Auslastung von durchschnittlich 3 % für Spitzen-Slices. Eine Analyse der Telemetriedaten für unsere aktuellen Benutzer zeigt eine vernachlässigbare Auswirkung auf die CPU- und Arbeitsspeicherauslastung.
+
+Natürlich kann die Leistung verschiedener Umgebungen, Computer und Lasten immer variieren. Die obigen Aussagen und Zahlen dienen als allgemeine Richtlinie, nicht als Garantie für einzelne Bereitstellungen.
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>Über welche Art von Warnungen verfügt Azure Defender für SQL?
@@ -75,3 +91,4 @@ Warnungen enthalten Details zum Incident, durch den sie ausgelöst wurden, sowie
 In diesem Artikel haben Sie mehr über Azure Defender für SQL erfahren. Gehen Sie wie folgt vor, um die beschriebenen Dienste zu nutzen:
 
 - Verwenden Sie Azure Defender für SQL-Server auf Computern, um Ihre [SQL Server-Instanzen auf Sicherheitsrisiken zu überprüfen](defender-for-sql-usage.md).
+- Eine Präsentation von Azure Defender für SQL finden Sie unter [So kann Azure Defender für SQL-Server überall schützen](https://www.youtube.com/watch?v=V7RdB6RSVpc).

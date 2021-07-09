@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/18/2020
-ms.openlocfilehash: 2dd06a7b4c8e6296cda747d17fd3d5be5db0af6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.openlocfilehash: 31316a5d0688c7cee0bc15f6e7cebdea23d0f29d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95018887"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097088"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Erstellen einer LUIS-App im LUIS-Portal
 Es gibt zwei Verfahren zum Erstellen einer LUIS-App. Sie können eine LUIS-App im LUIS-Portal oder mithilfe der LUIS-Erstellungs-[APIs](developer-reference-resource.md) erstellen.
@@ -44,13 +44,12 @@ Sie können eine neue App mit den Erstellungs-APIs auf zwei Arten erstellen:
 ## <a name="create-new-app-in-luis"></a>Erstellen einer neuen App in LUIS
 
 1. Wählen Sie auf der Seite **Meine Apps** Ihr **Abonnement** und die **Erstellungsressource** aus, und klicken Sie dann auf **+ Erstellen**. 
-
-> [!div class="mx-imgBorder"]
-> ![Liste der LUIS-Apps](./media/create-app-in-portal.png)
+    
+    :::image type="content" source="media/create-app-in-portal.png" alt-text="Liste der LUIS-Apps" lightbox="media/create-app-in-portal.png":::
 
 1. Geben Sie im Dialogfeld den Namen Ihrer Anwendung ein, z. B. `Pizza Tutorial`.
 
-    ![Dialogfeld „Neue App erstellen“](./media/create-pizza-tutorial-app-in-portal.png)
+    :::image type="content" source="media/create-pizza-tutorial-app-in-portal.png" alt-text="Dialogfeld „Neue App erstellen“" lightbox="media/create-pizza-tutorial-app-in-portal.png":::
 
 1. Wählen Sie Ihre Anwendungskultur und dann **Fertig** aus. Die Beschreibungs- und Vorhersageressource sind an dieser Stelle optional. Die Festlegung kann dann jederzeit im Bereich **Verwalten** des Portals erfolgen.
 
@@ -59,8 +58,7 @@ Sie können eine neue App mit den Erstellungs-APIs auf zwei Arten erstellen:
 
     Nachdem die App erstellt wurde, zeigt das LUIS-Portal die Liste **Absichten** mit der bereits für Sie erstellten Absicht `None` an. Sie verfügen jetzt über eine leere App.
 
-    > [!div class="mx-imgBorder"]
-    > ![Liste „Absichten“ mit erstellter Absicht „Keine“ ohne Beispieläußerungen.](media/pizza-tutorial-new-app-empty-intent-list.png)
+    :::image type="content" source="media/pizza-tutorial-new-app-empty-intent-list.png" alt-text="Liste der Absichten mit einer „Keine“-Absicht und ohne Beispieläußerungen" lightbox="media/pizza-tutorial-new-app-empty-intent-list.png":::
 
 ## <a name="other-actions-available-on-my-apps-page"></a>Weitere verfügbare Aktionen auf der Seite „Meine Apps“
 

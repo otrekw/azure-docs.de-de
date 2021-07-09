@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/2/2021
 ms.author: heikora
-ms.openlocfilehash: b82a732533c3d069b519b07c3209d4b96c472900
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 701a16779a7a485f33e5af44ec30d48801b7c1fd
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385024"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440806"
 ---
 # <a name="model-and-endpoint-lifecycle"></a>Lebenszyklus von Modell und Endpunkt
 
@@ -102,7 +102,7 @@ Was geschieht, wenn ein Modell abläuft und wie es aktualisiert wird, hängt dav
 ### <a name="batch-transcription"></a>Batch-Transkription
 Wenn ein Modell abläuft, das mit [Batch-Transkriptions](batch-transcription.md) Transkriptionsanforderungen verwendet wird, tritt ein 4xx-Fehler auf. Um dies zu verhindern, aktualisieren Sie den `model`-Parameter im JSON-Code, der im Anforderungstext **Transkription erstellen** gesendet wurde, um entweder auf ein aktuelleres Basismodell oder auf ein neueres benutzerdefiniertes Modell zu zeigen. Sie können auch den `model`-Eintrag aus dem JSON-Code entfernen, um immer das neueste Basismodell zu verwenden.
 ### <a name="custom-speech-endpoint"></a>Custom Speech-Endpunkt
-Wenn ein Modell abläuft, das von einem [benutzerdefinierten Speech-Endpunkt](how-to-custom-speech-train-model.md)verwendet wird, wird der Dienst automatisch auf das neueste Basismodell für die verwendete Sprache zurückgreifen. Verwenden Sie die Option **Bereitstellung** im Menü **Custom Speech** oben auf der Seite, und klicken Sie dann auf den Namen des Endpunkts, um seine Details anzuzeigen. Am oberen Rand der Detailseite wird die Schaltfläche **Modell aktualisieren** angezeigt, mit der Sie das von diesem Endpunkt verwendete Modell ohne Ausfallzeiten nahtlos aktualisieren können. Sie können diese Änderung auch vom Programm gesteuert vornehmen, mithilfe der Rest-API [**Modell aktualisieren**](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UpdateModel).
+Wenn ein Modell abläuft, das von einem [benutzerdefinierten Speech-Endpunkt](how-to-custom-speech-train-model.md)verwendet wird, wird der Dienst automatisch auf das neueste Basismodell für die verwendete Sprache zurückgreifen. Verwenden Sie zum Aktualisieren eines von Ihnen verwendeten Modells die Option **Bereitstellung** im Menü **Custom Speech** oben auf der Seite, und klicken Sie dann auf den Namen des Endpunkts, um seine Details anzuzeigen. Am oberen Rand der Detailseite wird die Schaltfläche **Modell aktualisieren** angezeigt, mit der Sie das von diesem Endpunkt verwendete Modell ohne Ausfallzeiten nahtlos aktualisieren können. Sie können diese Änderung auch vom Programm gesteuert vornehmen, mithilfe der Rest-API [**Modell aktualisieren**](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UpdateModel).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

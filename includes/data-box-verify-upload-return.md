@@ -3,20 +3,33 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 09/30/2019
+ms.date: 05/07/2021
 ms.author: alkohli
-ms.openlocfilehash: ca7b83d24f2416b224963559361faf5a7775cd0d
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: a46552639b9cdea135216e544ec4c51f4d9dda3d
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631534"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736167"
 ---
 Nachdem das Gerät bei Microsoft eingegangen ist und gescannt wurde, wird der Status der Bestellung in **Empfangen** geändert. Das Gerät wird dann physisch auf Schäden oder Anzeichen einer Manipulation überprüft.
 
 Nach der Überprüfung wird die Data Box mit dem Netzwerk im Azure-Datencenter verbunden. Das Kopieren der Daten wird automatisch gestartet. Je nach Datengröße kann der Kopiervorgang einige Stunden oder auch einige Tage dauern. Sie können den Status des Kopiervorgangs im Portal verfolgen.
 
-Nachdem der Kopiervorgang abgeschlossen ist, wird der Auftragsstatus in **Completed** (Abgeschlossen) geändert.
+### <a name="review-copy-errors-from-upload"></a>Überprüfen von Kopierfehlern beim Hochladen
+
+Wenn Dateien aufgrund eines nicht wiederholbaren Fehlers nicht hochgeladen werden können, werden Sie benachrichtigt, um die Fehler zu überprüfen, bevor Sie fortfahren. Die Fehler werden im Datenkopierprotokoll aufgeführt.
+
+Sie können diese Fehler nicht beheben. Der Upload wurde mit Fehlern abgeschlossen. Die Benachrichtigung informiert Sie über alle Konfigurationsprobleme, die Sie beheben müssen, bevor Sie einen weiteren Upload über eine Netzwerkübertragung oder einen neuen Importauftrag versuchen. Eine Leitfaden finden Sie unter [Überprüfen von Kopierfehlern bei Uploads von Azure Data Box und Azure Data Box Heavy Geräten](../articles/databox/data-box-troubleshoot-data-upload.md).
+
+Wenn Sie bestätigen, dass Sie die Fehler überprüft haben und bereit zum Fortfahren sind, werden die Daten sicher vom Gerät gelöscht. Der Auftrag wird nach 14 Tagen automatisch abgeschlossen. Wenn Sie auf die Benachrichtigung reagieren, können Sie den Vorgang beschleunigen.
+
+[!INCLUDE [data-box-review-nonretryable-errors](data-box-review-nonretryable-errors.md)]
+
+
+### <a name="verify-data-in-completed-upload"></a>Überprüfen der Daten beim abgeschlossenen Upload
+
+Nachdem der Datenupload abgeschlossen ist, wird der Auftragsstatus in **Abgeschlossen** geändert.
 
 Stellen Sie sicher, dass Ihre Daten in Azure hochgeladen wurden, bevor Sie sie aus der Quelle löschen. Ihre Daten können sich an folgenden Orten befinden:
 
@@ -37,7 +50,7 @@ Stellen Sie sicher, dass Ihre Daten in Azure hochgeladen wurden, bevor Sie sie a
 
         ![An Ressourcengruppen angefügter verwalteter Datenträger](media/data-box-verify-upload-return/managed-disks-resource-group.png)
 
-    - Wenn Sie eine VHDX oder eine dynamische bzw. differenzierende VHD kopiert haben, wird die VHDX bzw. VHD als Seitenblob in das Stagingspeicherkonto hochgeladen, die VHD kann jedoch nicht in einen verwalteten Datenträger konvertiert werden. Wechseln Sie zu Ihrem **Stagingspeicherkonto > Blobs** , und wählen Sie den geeigneten Container aus: SSD Standard, HDD Standard oder SSD Premium. Die VHDs werden als Seitenblobs in Ihr Stagingspeicherkonto hochgeladen, wobei Gebühren anfallen.
+    - Wenn Sie eine VHDX oder eine dynamische bzw. differenzierende VHD kopiert haben, wird die VHDX bzw. VHD als Seitenblob in das Stagingspeicherkonto hochgeladen, die VHD kann jedoch nicht in einen verwalteten Datenträger konvertiert werden. Wechseln Sie zu Ihrem **Stagingspeicherkonto > Blobs**, und wählen Sie den geeigneten Container aus: SSD Standard, HDD Standard oder SSD Premium. Die VHDs werden als Seitenblobs in Ihr Stagingspeicherkonto hochgeladen, wobei Gebühren anfallen.
 
 
 ## <a name="erasure-of-data-from-data-box"></a>Löschen von Daten von der Data Box

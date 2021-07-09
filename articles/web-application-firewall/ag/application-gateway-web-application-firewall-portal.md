@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 05/19/2021
 ms.author: victorh
-ms.openlocfilehash: 35bede052f06c0fcffe46460a376d10690fd4417
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f72706d4bb1d9470518fb3b14ee756a1fe1551db
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559626"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480544"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Tutorial: Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Azure-Portal
 
@@ -66,7 +66,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
     - **Subnetzname** (Subnetz für Back-End-Server): Geben Sie in der zweiten Zeile des Rasters **Subnetze** in der Spalte *Subnetzname* den Namen **myBackendSubnet** ein.
 
-    - **Adressbereich** (Subnetz für Back-End-Server): Geben Sie in der zweiten Zeile des Rasters **Subnetze** einen Adressbereich ein, der sich nicht mit dem Adressbereich des Subnetzes *myAGSubnet* überschneidet. Wenn der Adressbereich von *myAGSubnet* beispielsweise 10.0.0.0/24 lautet, geben Sie *10.0.1.0/24* als Adressbereich für *myBackendSubnet* ein.
+    - **Adressbereich** (Subnetz für Back-End-Server): Geben Sie in der zweiten Zeile des Rasters **Subnetze** einen Adressbereich ein, der sich nicht mit dem Adressbereich des Subnetzes *myAGSubnet* überschneidet. Wenn der Adressbereich von *myAGSubnet* beispielsweise 10.21.0.0/24 lautet, geben Sie *10.21.1.0/24* als Adressbereich für *myBackendSubnet* ein.
 
     Wählen Sie **OK** aus, um das Fenster **Virtuelles Netzwerk erstellen** zu schließen und die Einstellungen für das virtuelle Netzwerk zu speichern.
 
@@ -151,19 +151,22 @@ Gehen Sie dazu wie folgt vor:
 ### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**. Das Fenster **Neu** wird angezeigt.
-2. Wählen Sie dann in der Liste **Beliebt** die Option **Windows Server 2016 Datacenter** aus. Die Seite **Virtuellen Computer erstellen** wird angezeigt.<br>Application Gateway kann Datenverkehr an jeden beliebigen virtuellen Computer weiterleiten, der im Back-End-Pool verwendet wird. In diesem Beispiel verwenden Sie Windows Server 2016 Datacenter.
+2. Wählen Sie in der Liste **Beliebt** die Option **Windows Server 2019 Datacenter** aus. Die Seite **Virtuellen Computer erstellen** wird angezeigt.<br>Application Gateway kann Datenverkehr an jeden beliebigen virtuellen Computer weiterleiten, der im Back-End-Pool verwendet wird. In diesem Beispiel verwenden Sie Windows Server 2019 Datacenter.
 3. Geben Sie auf der Registerkarte **Grundlagen** die folgenden Werte für die VM-Einstellungen ein:
 
     - **Ressourcengruppe**: Wählen Sie **myResourceGroupAG** als Namen der Ressourcengruppe aus.
     - **Name des virtuellen Computers**: Geben Sie *myVM* als Namen der VM ein.
     - **Benutzername**: Geben Sie einen Benutzernamen für den Administrator ein.
     - **Kennwort**: Geben Sie ein Administratorkennwort ein.
+    - **Öffentliche Eingangsports**: Wählen Sie **Keine** aus.
 4. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Datenträger**.  
 5. Übernehmen Sie auf der Registerkarte **Datenträger** die Standardwerte, und klicken Sie auf **Weiter: Netzwerk**.
-6. Vergewissern Sie sich auf der Registerkarte **Netzwerk**, dass **myVNet** für **Virtuelles Netzwerk** ausgewählt und **Subnetz** auf **myBackendSubnet** festgelegt ist. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Verwaltung** aus.<br>Application Gateway kann mit Instanzen außerhalb des eigenen virtuellen Netzwerks kommunizieren, es muss jedoch sichergestellt werden, dass eine IP-Verbindung besteht.
-7. Legen Sie auf der Registerkarte **Verwaltung** die Option **Startdiagnose** auf **Deaktivieren** fest. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Bewerten + erstellen**.
-8. Überprüfen Sie auf der Registerkarte **Bewerten + erstellen** die Einstellungen, beheben Sie alle Validierungsfehler, und wählen Sie dann **Erstellen** aus.
-9. Warten Sie, bis die Erstellung des virtuellen Computers abgeschlossen ist, bevor Sie fortfahren.
+6. Vergewissern Sie sich auf der Registerkarte **Netzwerk**, dass **myVNet** für **Virtuelles Netzwerk** ausgewählt und **Subnetz** auf **myBackendSubnet** festgelegt ist.
+1. Wählen Sie unter **Öffentliche IP** die Option **Keine** aus.
+1. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Verwaltung** aus.
+1. Legen Sie auf der Registerkarte **Verwaltung** die Option **Startdiagnose** auf **Deaktivieren** fest. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Bewerten + erstellen**.
+1. Überprüfen Sie auf der Registerkarte **Bewerten + erstellen** die Einstellungen, beheben Sie alle Validierungsfehler, und wählen Sie dann **Erstellen** aus.
+1. Warten Sie, bis die Erstellung des virtuellen Computers abgeschlossen ist, bevor Sie fortfahren.
 
 ### <a name="install-iis-for-testing"></a>Installieren von IIS für Testzwecke
 
@@ -225,21 +228,17 @@ Erstellen Sie mithilfe des verwalteten Standardregelsatzes (Default Rule Set, DR
    |Subscription     |Wählen Sie Ihren Abonnementnamen aus.|
    |Resource group     |Wählen Sie **myResourceGroupAG** aus.|
    |Richtlinienname     |Geben Sie einen eindeutigen Namen für Ihre WAF-Richtlinie ein.|
-1. Wählen Sie **Weiter: Richtlinieneinstellungen** aus.
-1. Übernehmen Sie die Standardeinstellungen, und wählen Sie **Weiter: Verwaltete Regeln** aus.
+1. Wählen Sie **Weiter: Verwaltete Regeln** aus.
+1. Übernehmen Sie die Standardeinstellungen, und wählen Sie **Weiter: Richtlinieneinstellungen** aus.
 1. Übernehmen Sie die Standardeinstellungen, und wählen Sie **Weiter: Benutzerdefinierte Regeln** aus.
 1. Wählen Sie **Weiter: Zuordnung** aus.
 1. Wählen Sie **Zuordnung hinzufügen** und dann **Application Gateway** aus.
 1. Aktivieren Sie das Kontrollkästchen **Web Application Firewall-Richtlinienkonfiguration auch dann anwenden, wenn sie von der aktuellen Konfiguration abweicht**.
 1. Wählen Sie **Hinzufügen**.
-1. Wählen Sie auf der Registerkarte **Zuordnung** die Option **Zuordnung hinzufügen** und dann **Application Gateway** aus.
 
    > [!NOTE]
    > Wenn Sie Ihrer Application Gateway-Instanz (oder Ihrem Listener) eine Richtlinie zuweisen, jedoch gilt dafür bereits eine Richtlinie, wird die ursprüngliche Richtlinie überschrieben und durch die neue Richtlinie ersetzt.
 4. Klicken Sie auf **Überprüfen + erstellen** und dann auf **Erstellen**.
-1. Klicken Sie auf **Weiter: Tags**.
-1. Klicken Sie auf **Überprüfen + erstellen**.
-1. Klicken Sie auf **Erstellen**.
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 

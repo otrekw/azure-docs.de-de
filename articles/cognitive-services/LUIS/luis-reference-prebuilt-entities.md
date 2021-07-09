@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 04/13/2021
-ms.openlocfilehash: 7155a829655645e13e0485ed7d51305ec50e5b0a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 05/05/2021
+ms.openlocfilehash: afd985af692390e51ef7008ecdb369ded3885080
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502758"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486033"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitäten nach Kultur in Ihrem LUIS-Modell
 
@@ -57,16 +57,16 @@ Die folgenden Entitäten werden unterstützt:
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    V2 und V3   |
 [E-Mail](luis-reference-prebuilt-email.md)   |    V2 und V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
 [Number](luis-reference-prebuilt-number.md)   |    V2 und V3   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2 und V3   |
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2 und V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2 und V3   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2 und V3   |
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2 und V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2 und V3   |
+<!---[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |-->
+<!---[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |-->
+<!---[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |-->
 
 ## <a name="dutch-entity-support"></a>Unterstützung niederländischer Entitäten
 
@@ -76,19 +76,19 @@ Die folgenden Entitäten werden unterstützt:
 | --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2 und V3   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2 und V3   |
-[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    V2 und V3   |
 [E-Mail](luis-reference-prebuilt-email.md)   |    V2 und V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2 und V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2 und V3   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2 und V3   |
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2 und V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2 und V3   |
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2 und V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2 und V3   |
+<!---[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |-->
+<!---[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |-->
+<!---[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |-->
+<!---[PersonName](luis-reference-prebuilt-person.md)   |    -   |-->
 
 ## <a name="english-american-entity-support"></a>Unterstützung englischer (Amerika) Entitäten
 
@@ -127,12 +127,12 @@ Die folgenden Entitäten werden unterstützt:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2 und V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2 und V3   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2 und V3   |
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2 und V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |   -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2 und V3   |
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2 und V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2 und V3   |
+<!---[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |-->
+<!---[PersonName](luis-reference-prebuilt-person.md)   |   -   |-->
 
 ## <a name="french-canadian-entity-support"></a>Unterstützung französischer (Kanada) Entitäten
 
@@ -145,16 +145,16 @@ Die folgenden Entitäten werden unterstützt:
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    V2 und V3   |
 [E-Mail](luis-reference-prebuilt-email.md)   |    V2 und V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2 und V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2 und V3   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2 und V3   |
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2 und V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2 und V3   |
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2 und V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2 und V3   |
+<!---[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |-->
+<!---[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |-->
+<!---[PersonName](luis-reference-prebuilt-person.md)   |    -   |-->
 
 ## <a name="german-entity-support"></a>Unterstützung deutscher Entitäten
 
@@ -167,16 +167,16 @@ Die folgenden Entitäten werden unterstützt:
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    V2 und V3   |
 [E-Mail](luis-reference-prebuilt-email.md)   |    V2 und V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2 und V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2 und V3   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2 und V3   |
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2 und V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2 und V3   |
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2 und V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2 und V3   |
+<!---[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |-->
+<!---[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |-->
+<!---[PersonName](luis-reference-prebuilt-person.md)   |    -   |-->
 
 ## <a name="italian-entity-support"></a>Unterstützung italienischer Entitäten
 
@@ -188,19 +188,19 @@ Die folgenden Entitäten werden unterstützt:
 | --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2 und V3   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2 und V3   |
-[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    V2 und V3   |
 [E-Mail](luis-reference-prebuilt-email.md)   |    V2 und V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2 und V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2 und V3   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2 und V3   |
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2 und V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2 und V3   |
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2 und V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2 und V3   |
+<!---[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |-->
+<!---[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |-->
+<!---[PersonName](luis-reference-prebuilt-person.md)   |    -   |-->
 
 ## <a name="japanese-entity-support"></a>Unterstützung japanischer Entitäten
 
@@ -210,19 +210,19 @@ Die folgenden Entitäten werden unterstützt:
 | -------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2, -   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2, -   |
-[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    V2, -   |
 [E-Mail](luis-reference-prebuilt-email.md)   |    V2 und V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2 und V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2, -   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2, -   |
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, -   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2 und V3   |
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2, -   |
 [URL](luis-reference-prebuilt-url.md)   |    V2 und V3   |
+<!---[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |-->
+<!---[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |-->
+<!---[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |-->
+<!---[PersonName](luis-reference-prebuilt-person.md)   |    -   |-->
 
 ## <a name="korean-entity-support"></a>Unterstützung koreanischer Entitäten
 
@@ -230,21 +230,21 @@ Die folgenden Entitäten werden unterstützt:
 
 | Vordefinierte Entität | ko-KR |
 | --------------- | :---: |
-[Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
-[Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    -   |
-[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    -   |
 [E-Mail](luis-reference-prebuilt-email.md)   |    V2 und V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2 und V3   |
-[Number](luis-reference-prebuilt-number.md)   |    -   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2 und V3   |
-[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
 [URL](luis-reference-prebuilt-url.md)   |    V2 und V3   |
+<!---[Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |-->
+<!---[Currency (money)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    -   |-->
+<!---[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |-->
+<!---[Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    -   |-->
+<!---[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |-->
+<!---[Number](luis-reference-prebuilt-number.md)   |    -   |-->
+<!---[Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |-->
+<!---[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |-->
+<!---[Percentage](luis-reference-prebuilt-percentage.md)   |    -   |-->
+<!---[PersonName](luis-reference-prebuilt-person.md)   |    -   |-->
+<!---[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |-->
 
 ## <a name="portuguese-brazil-entity-support"></a>Unterstützung portugiesischer (Brasilien) Entitäten
 
@@ -257,16 +257,16 @@ Die folgenden Entitäten werden unterstützt:
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    V2 und V3   |
 [E-Mail](luis-reference-prebuilt-email.md)   |    V2 und V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2 und V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2 und V3   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2 und V3   |
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2 und V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2 und V3   |
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2 und V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2 und V3   |
+<!---[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |-->
+<!---[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |-->
+<!---[PersonName](luis-reference-prebuilt-person.md)   |    -   |-->
 
 Die keyPhrase-Entität ist nicht für alle Unterkulturen von Portugiesisch (Brasilien) verfügbar (```pt-BR```).
 
@@ -281,16 +281,16 @@ Die folgenden Entitäten werden unterstützt:
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    V2 und V3   |
 [E-Mail](luis-reference-prebuilt-email.md)   |    V2 und V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2 und V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2 und V3   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2 und V3   |
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2 und V3   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2 und V3   |
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2 und V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2 und V3   |
+<!---[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |-->
+<!---[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |-->
+<!---[PersonName](luis-reference-prebuilt-person.md)   |    -   |-->
 
 ## <a name="spanish-mexico-entity-support"></a>Unterstützung spanischer (Mexiko) Entitäten
 
@@ -303,18 +303,18 @@ Die folgenden Entitäten werden unterstützt:
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    -   |
 [E-Mail](luis-reference-prebuilt-email.md)   |    V2 und V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2 und V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2 und V3   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2 und V3   |
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
 [URL](luis-reference-prebuilt-url.md)   |    V2 und V3   |
+<!---[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |-->
+<!---[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |-->
+<!---[PersonName](luis-reference-prebuilt-person.md)   |    -   |-->
 
-Beachten Sie auch die Hinweise in [Veraltete Entitäten](luis-reference-prebuilt-deprecated.md).
+<!--- See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.md)-->
 
 ## <a name="turkish-entity-support"></a>Unterstützung türkischer Entitäten
 
@@ -325,18 +325,15 @@ Beachten Sie auch die Hinweise in [Veraltete Entitäten](luis-reference-prebuilt
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>Volume<br>area<br>weight<br>information (Beispiel: bit/byte)<br>length (Beispiel: meter)<br>speed (Beispiel: mile per hour)  |    -   |
 [E-Mail](luis-reference-prebuilt-email.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
 [Number](luis-reference-prebuilt-number.md)   |    -   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
-[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    -   |
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
 [URL](luis-reference-prebuilt-url.md)   |    -   |
+<!---[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2 und V3   |-->
+<!---Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    -   |-->
 
-<!---
-See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.md)
-KeyPhrase is not available.
--->
+<!--- See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.md). -->
 
 ## <a name="contribute-to-prebuilt-entity-cultures"></a>Beitragen zu vordefinierten Entitäten in verschiedenen Kulturen
 Die vordefinierten Entitäten werden im Open Source-Projekt „Recognizers-Text“ entwickelt. Zum Projekt [beitragen](https://github.com/Microsoft/Recognizers-Text). Dieses Projekt enthält Beispiele zur Entität „currency“ (Währung) in den verschiedenen Kulturen.

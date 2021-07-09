@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/24/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4ca6989a6c446c543c35d8e35e5e27aefef118c2
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ced6f28bb7174bc3510de9025569646210e87782
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205681"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475704"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokollierung
 
@@ -32,7 +32,7 @@ Aktivieren Sie Diagnoseeinstellungen, um mit dem Erfassen von Protokollen in Ihr
 
 2. Wählen Sie im Menü die Option **Diagnoseeinstellungen** und dann **Diagnoseeinstellung hinzufügen** aus.
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Screenshot der Seite „Diagnoseeinstellungen“ und der Schaltfläche zum Hinzufügen" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Screenshot der Seite „Diagnoseeinstellungen“ im Azure-Portal und der Schaltfläche zum Hinzufügen." lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. Geben Sie auf der daraufhin geöffneten Seite die folgenden Werte ein:
      * **Name der Diagnoseeinstellung:** Benennen Sie die Diagnoseeinstellungen.
@@ -53,7 +53,7 @@ Aktivieren Sie Diagnoseeinstellungen, um mit dem Erfassen von Protokollen in Ihr
     
 4. Speichern Sie die neuen Einstellungen. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Screenshot der Seite mit den Diagnoseeinstellungen, auf der der Benutzer einen Namen für eine Diagnoseeinstellung eingegeben und einige Kontrollkästchen für Kategorie- und Zieldetails aktiviert hat. Die Schaltfläche „Speichern“ ist hervorgehoben." lightbox="media/troubleshoot-diagnostics/diagnostic-settings-details.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Screenshot der Seite „Diagnoseeinstellung“ im Azure-Portal, auf der der Benutzer Informationen zu einer Diagnoseeinstellung eingetragen hat." lightbox="media/troubleshoot-diagnostics/diagnostic-settings-details.png":::
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Anschließend werden die Protokolle im konfigurierten Ziel auf der Seite **Diagnoseeinstellungen** für Ihre Instanz angezeigt. 
 
@@ -351,14 +351,14 @@ Nachfolgend wird beschrieben, wie Sie die Protokolle für Ihre Instanz abfragen.
 
 2. Wählen Sie im Menü die Option **Protokolle** aus, um die Seite für Protokollabfragen zu öffnen. Die Seite wird mit einem Fenster mit dem Namen *Abfragen* geöffnet.
 
-    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Screenshot der Seite „Protokolle“ für eine Azure Digital Twins-Instanz. Sie wird von einem Fenster „Abfragen“ überlagert, das vorgefertigte Abfragen enthält, die nach verschiedenen Protokolloptionen benannt sind, z. B. der DigitalTwin-API-Latenz und Modell-API-Latenz." lightbox="media/troubleshoot-diagnostics/logs.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Screenshot der Seite „Protokolle“ für eine Azure Digital Twins-Instanz im Azure-Portal mit überlagertem Fenster „Abfragen“, in dem vordefinierten Abfragen angezeigt werden." lightbox="media/troubleshoot-diagnostics/logs.png":::
 
     Dies sind vorgefertigte Beispielabfragen, die für verschiedene Protokolle geschrieben wurden. Sie können eine der Abfragen auswählen, um sie in den Abfrage-Editor zu laden, und die Abfrage ausführen, um diese Protokolle für Ihre Instanz anzuzeigen.
 
     Sie können das Fenster *Abfragen* auch ohne Ausführen einer Abfrage schließen, um direkt zur Seite mit dem Abfrage-Editor zu gelangen, auf der Sie benutzerdefinierten Abfragecode schreiben oder bearbeiten können.
 
 3. Nachdem Sie das Fenster *Abfragen* verlassen haben, wird die Hauptseite des Abfrage-Editors angezeigt. Hier können Sie den Text der Beispielabfragen anzeigen und bearbeiten oder eigene Abfragen von Grund auf neu schreiben.
-    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Screenshot der Seite „Protokolle“ für eine Azure Digital Twins-Instanz. Das Fenster „Abfragen“ wird nicht mehr angezeigt. Stattdessen sind eine Liste mit verschiedenen Protokollen, ein Bearbeitungsbereich mit bearbeitbarem Abfragecode und ein Bereich mit dem Abfrageverlauf zu sehen." lightbox="media/troubleshoot-diagnostics/logs-query.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Screenshot der Seite „Protokolle“ für eine Azure Digital Twins-Instanz im Azure-Portal. Sie enthält eine Liste mit Protokollen, Abfragecode und Abfrageverlauf." lightbox="media/troubleshoot-diagnostics/logs-query.png":::
 
     Linker Bereich: 
     - Die Registerkarte *Tabellen* zeigt die verschiedenen [Protokollkategorien](#log-categories) von Azure Digital Twins, die Sie in Ihren Abfragen verwenden können. 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: ea22e6a3afe8ee90cb7b59d1aca0a37fc4fa03d6
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 0185a4b18ed56899de9c235bbd0438ef1dedf7c4
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864917"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412725"
 ---
 # <a name="get-supported-glossary-formats"></a>Abrufen unterstützter Glossarformate
 
@@ -25,7 +25,7 @@ Die Methode Unterstützte Glossarformate Abrufen gibt eine Liste der unterstütz
 
 Sendet eine `GET`-Anforderung an:
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/glossaries/formats
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/glossaries/formats
 ```
 
 Erfahren Sie, wie Sie Ihren [benutzerdefinierten Domänennamen](../get-started-with-document-translation.md#find-your-custom-domain-name)finden.
@@ -62,21 +62,25 @@ Basistyp für die Listenrückgabe in der API Unterstützte Glossarformate abrufe
 
 Basistyp für die Listenrückgabe in der API Unterstützte Glossarformate abrufen.
 
-|Statuscode|BESCHREIBUNG|
-|--- |--- |
-|200|OK. Gibt die Liste der unterstützten Glossarformate der Datei zurück.|
-|500|Interner Serverfehler.|
-|Andere Statuscodes|Zu viele requestsServer zur Zeit nicht verfügbar.|
+|Name|Typ|BESCHREIBUNG|
+|--- |--- |--- |
+|value|FileFormat []|File Format [] enthält die unten aufgeführten Details.|
+|value.contentTypes|string []|Unterstützte Inhaltstypen für dieses Format.|
+|value.defaultVersion|Zeichenfolge|Standardversion, wenn keine angegeben ist|
+|value.fileExtensions|string []| Unterstützte Dateierweiterung für dieses Format.|
+|value.format|Zeichenfolge|Der Name des Formats.|
+|value.versions|string []| Unterstützte Version.|
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|type|Beschreibung|
+|Name|Typ|BESCHREIBUNG|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
-|innerError|InnerErrorV2|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
+|innerError|InnerTranslationError|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
 |innerError.code|Zeichenfolge|Ruft Code der Fehlerzeichenfolge ab.|
 |innerError.message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
+|innerError.target|Zeichenfolge|Ruft die Ursache des Fehlers ab. Dies wäre z. B. „Dokumente“ oder „Dokument-ID“ im Falle eines ungültigen Dokuments.|
 
 ## <a name="examples"></a>Beispiele
 
@@ -95,6 +99,7 @@ Das ist ein Beispiel für eine erfolgreiche Antwort.
             "contentTypes": [
                 "application/xliff+xml"
             ],
+            "defaultVersion": "1.2",
             "versions": [
                 "1.0",
                 "1.1",
@@ -109,11 +114,20 @@ Das ist ein Beispiel für eine erfolgreiche Antwort.
             ],
             "contentTypes": [
                 "text/tab-separated-values"
+            ]
+        },
+        {
+            "format": "CSV",
+            "fileExtensions": [
+                ".csv"
             ],
-            "versions": []
+            "contentTypes": [
+                "text/csv"
+            ]
         }
     ]
 }
+
 ```
 
 ### <a name="example-error-response"></a>Beispiel für Fehlerantwort

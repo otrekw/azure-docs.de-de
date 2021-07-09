@@ -10,13 +10,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 01/21/2021
-ms.openlocfilehash: 5ca13784fe2f9a6a5b448bc838bf508f01b0a9fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: 044c690688bfc83ce1b4ebc13008ad9a2f37034a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101095197"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026883"
 ---
 # <a name="add-contributors-to-your-app"></a>Hinzufügen von Mitwirkenden zu Ihrer App
 
@@ -26,18 +26,7 @@ Ein App-Besitzer kann Mitwirkende zu Apps hinzufügen. Diese Mitwirkenden könne
 
 Sie haben migriert, wenn Ihre LUIS-Erstellungsumgebung im LUIS-Portal auf der Seite **Verwalten -> Azure-Ressourcen** an eine Erstellungsressource gebunden ist.
 
-1. Suchen Sie im Azure-Portal nach der Language Understanding-Erstellungsressource (LUIS-Ressource). Sie hat den Typ `LUIS.Authoring`.
-1. Wählen Sie auf der **Zugriffssteuerung (IAM)**-Seite der Ressource die Option **+Hinzufügen** aus, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
-
-    ![Im Azure-Portal eine Rollenzuweisung für die Erstellungsressource hinzufügen.](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
-
-1. Wählen Sie im Fenster **Rollenzuweisung hinzufügen** für **Rolle** die Option „Mitwirkender“ aus. Wählen Sie für die Option **Zugriff zuweisen zu** den Eintrag **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus. Geben Sie für die Option **Auswählen** die E-Mail-Adresse des Benutzers ein. Ist bekannt, dass der Benutzer mehrere E-Mail-Adressen für dieselbe Domäne hat, müssen Sie das _primäre_ E-Mail-Konto eingeben.
-
-    ![E-Mail-Adresse des Benutzers zur Rolle „Mitwirkender“ für Azure AD hinzufügen](./media/luis-how-to-collaborate/add-role-assignment-for-contributor.png)
-
-    Wenn Sie die E-Mail-Adresse des Benutzers gefunden haben, wählen Sie das Konto aus, und wählen Sie **Speichern** aus.
-
-    Wenn Sie Probleme mit dieser Rollenzuweisung haben, lesen Sie [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md) und [Probleme bei RBAC-Rollenzuweisungen](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments).
+Suchen Sie im Azure-Portal nach Ihrer Language Understanding-Erstellungsressource (LUIS-Ressource). Sie hat den Typ `LUIS.Authoring`. Fügen Sie auf der Seite **Zugriffssteuerung (IAM)** der Ressource die Rolle **Mitwirkender** für den Benutzer hinzu, den Sie beitragen möchten. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## <a name="view-the-app-as-a-contributor"></a>Anzeigen der App als Mitwirkender
 
@@ -80,6 +69,6 @@ Weitere Informationen zu Azure Active Directory-Benutzern und Einwilligung:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, [wie Sie Versionen verwenden](luis-how-to-manage-versions.md), um den Lebenszyklus ihrer App zu steuern.
-* Informieren Sie sich über die Konzepte, einschließlich der [Erstellungsressource](luis-how-to-azure-subscription.md#authoring-key) und der [Mitwirkenden](luis-how-to-azure-subscription.md#contributions-from-other-authors) für diese Ressource.
+* Informieren Sie sich über das [Erstellen von Ressourcen](luis-how-to-azure-subscription.md) und das [Hinzufügen von Mitwirkenden](luis-how-to-collaborate.md) zu dieser Ressource.
 * Erfahren Sie, wie Sie Erstellungs- und Laufzeitressourcen [erstellen](luis-how-to-azure-subscription.md).
 * Migrieren Sie zu der neuen [Erstellungsressource](luis-migration-authoring.md).

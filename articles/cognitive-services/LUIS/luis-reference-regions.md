@@ -6,18 +6,19 @@ ms.subservice: language-understanding
 author: aahill
 ms.author: aahi
 ms.topic: reference
-ms.date: 04/07/2021
+ms.date: 05/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: fd02bf5c3291569b71416392b651967e0da701d9
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 160a12139054f5ee887a540a4d838d124dd34840
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226666"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617328"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Erstellungs- und Veröffentlichungsregionen und die dazugehörigen Schlüssel
 
 LUIS-Erstellungsregionen werden vom LUIS-Portal unterstützt. Zum Veröffentlichen einer LUIS-App in mehreren Regionen benötigen Sie mindestens einen Schlüssel pro Region.
+
 
 <a name="luis-website"></a>
 
@@ -25,9 +26,15 @@ LUIS-Erstellungsregionen werden vom LUIS-Portal unterstützt. Zum Veröffentlich
 
 [!INCLUDE [portal consolidation](includes/portal-consolidation.md)]
 
-LUIS verfügt über ein Portal, das Sie unabhängig von der Region verwenden können: [www.luis.ai](https://www.luis.ai). Sie müssen die Erstellung und Veröffentlichung aber noch immer in derselben Region durchführen.
+LUIS verfügt über die folgenden Erstellungsregionen:
+    
+* Australien, Osten
+* Europa, Westen
+* USA (Westen)
+* Schweiz, Norden
 
-Erstellungsbereiche verfügen über [gekoppelte Failoverregionen](../../best-practices-availability-paired-regions.md).
+
+LUIS verfügt über ein Portal, das Sie unabhängig von der Region verwenden können: [www.luis.ai](https://www.luis.ai). Sie müssen die Erstellung und Veröffentlichung aber noch immer in derselben Region durchführen. Erstellungsbereiche verfügen über [gekoppelte Failoverregionen](../../best-practices-availability-paired-regions.md).
 
 <a name="regions-and-azure-resources"></a>
 

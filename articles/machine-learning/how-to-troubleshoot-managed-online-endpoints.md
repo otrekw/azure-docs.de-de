@@ -10,12 +10,12 @@ ms.author: petrodeg
 ms.reviewer: laobri
 ms.date: 05/13/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: d0c2884b9c080c214cbebd666cbf4df62a8efcf2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f493cfc21ff3f5e2aa122bbbc08f24e1a759558e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382849"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480943"
 ---
 # <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)
 
@@ -50,6 +50,8 @@ Im Rahmen der lokalen Bereitstellung werden die folgenden Schritte ausgeführt:
 
 - Docker erstellt entweder ein neues Containerimage oder pullt ein vorhandenes Image aus dem lokalen Docker-Cache. Ein vorhandenes Image wird verwendet, falls für ein Image eine Übereinstimmung mit dem Umgebungsteil der Spezifikationsdatei besteht.
 - Docker startet einen neuen Container mit bereitgestellten lokalen Artefakten, z. B. Modell- und Codedateien.
+
+Weitere Informationen finden Sie unter „Lokales Bereitstellen“ in [Bereitstellen und Bewerten eines Machine Learning-Modells mit einem verwalteten Onlineendpunkt (Vorschau)](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-using-local-endpoints).
 
 ## <a name="get-container-logs"></a>Abrufen von Containerprotokollen
 
@@ -164,7 +166,10 @@ az ml endpoint get-logs
 
 Um die bei der Bereitstellung angegebene Datei `score.py` auszuführen, wird von Azure ein Container mit allen Ressourcen erstellt, die für `score.py` benötigt werden, und das Bewertungsskript für den Container ausgeführt.  Der Fehler besteht bei diesem Szenario darin, dass dieser Container bei der Ausführung abstürzt. Dies bedeutet, dass der Bewertungsvorgang nicht durchgeführt werden konnte. Dieser Fehler tritt in folgenden Fällen auf:
 
-- `score.py` enthält einen Fehler.
+- `score.py` enthält einen Fehler. Verwenden Sie `get--logs`, um häufige Probleme zu diagnostizieren:
+    - Ein Paket, das importiert wurde, sich aber nicht in der Conda-Umgebung befindet.
+    - Ein Syntaxfehler.
+    - Ein Fehler in der `init()`-Methode.
 - Bereitschafts- oder Livetests sind nicht richtig eingerichtet.
 - Die Einrichtung der Umgebung für den Container enthält einen Fehler, z. B. eine fehlende Abhängigkeit.
 

@@ -5,17 +5,17 @@ description: Lernen Sie die Konzepte im Zusammenhang mit Rechnungsanalyse mit de
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: effe9a1f4959748ee04fadff2bd733c52c14a790
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fc00e651cf8ec61a884864c57c0cafd2551f1a38
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374866"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890688"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Vordefiniertes Rechnungsmodell für die Formularerkennung
 
@@ -78,6 +78,8 @@ Die JSON-Ausgabe besteht aus drei Teilen:
 
 Der Rechnungsdienst extrahiert den Text, die Tabellen und 26 Rechnungsfelder. Im Folgenden werden die aus einer Rechnung extrahierten Felder in der JSON-Ausgabeantwort aufgeführt (die folgende Ausgabe basiert auf dieser [Beispielrechnung](media/sample-invoice.jpg)).
 
+### <a name="key-value-pairs"></a>Schlüssel-Wert-Paare 
+
 |Name| Typ | BESCHREIBUNG | Text | Wert (standardisierte Ausgabe) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | Zeichenfolge | Kunde, dem die Rechnung gestellt wird | Microsoft Corp. |  |
@@ -107,6 +109,8 @@ Der Rechnungsdienst extrahiert den Text, die Tabellen und 26 Rechnungsfelder. I
 | ServiceEndDate | date | Enddatum für den Dienstzeitraum (z B. ein Dienstzeitraum für Hilfsprogrammrechnungen) | 14.11.2019 | 2019-11-14 |
 | PreviousUnpaidBalance | Anzahl | Zuvor explizit ausstehende Zahlung | $ 500,00 | 500 |
 
+### <a name="line-items"></a>Rechnungspositionen
+
 Im Folgenden finden Sie die aus einer Rechnung extrahierten Rechnungspositionen in der JSON-Ausgabeantwort (die folgende Ausgabe verwendet diese [Beispielrechnung](./media/sample-invoice.jpg)).
 
 |Name| Typ | BESCHREIBUNG | Text (Rechnungsposition 1) | Wert (standardisierte Ausgabe) |
@@ -121,6 +125,7 @@ Im Folgenden finden Sie die aus einer Rechnung extrahierten Rechnungspositionen 
 | Datum | Datum| Hierbei handelt es sich um das Datum für jede entsprechende Rechnungsposition. In den meisten Fällen handelt es sich dabei um das Datum, an dem eine Rechnungsposition versandt wurde. | 3/4/2021| 2021-03-04 |
 | Tax (Steuern) | number | Hierbei handelt es sich um die Steuern für jede Rechnungsposition. Zu den möglichen Werten gehören der Steuerbetrag, die Steuer in Prozent und „tax Y/N“ (Steuer Ja/Nein). | 10 % | |
 
+Die extrahierten Schlüssel-Wert-Paare der Rechnung und die Rechnungspositionen befinden sich im Abschnitt „documentResults“ der JSON-Ausgabe. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

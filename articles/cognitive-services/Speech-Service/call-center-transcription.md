@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f83948fe0805229c0f01accb9e2b51112da599aa
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95021965"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838175"
 ---
 # <a name="speech-service-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 
@@ -103,7 +103,7 @@ Die oben genannten Technologien werden von uns intern zur Unterstützung von Mic
 
 Einige Unternehmen müssen Gespräche in Echtzeit transkribieren. Die Echtzeittranskription kann verwendet werden, um Schlüsselwörter zu identifizieren und die Suche nach gesprächsrelevanten Inhalten und Ressourcen auszulösen, um die Stimmung zu überwachen, die Barrierefreiheit zu verbessern oder Übersetzungen für Kunden und Mitarbeiter bereitzustellen, die keine Muttersprachler sind.
 
-Für Szenarien, die eine Echtzeittranskription erfordern, wird die Verwendung des [Speech SDK](speech-sdk.md) empfohlen. Derzeit ist die Spracherkennung in [mehr als 20 Sprachen](language-support.md) verfügbar. Das SDK steht in C++, C#, Java, Python, Node.js, Objective-C und JavaScript bereit. Beispiele in den einzelnen Sprachen können Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) finden. Aktuelle Neuigkeiten und Updates finden Sie unter [Versionshinweise](releasenotes.md).
+Für Szenarien, die eine Echtzeittranskription erfordern, wird die Verwendung des [Speech SDK](speech-sdk.md) empfohlen. Derzeit ist die Spracherkennung in [mehr als 20 Sprachen](language-support.md) verfügbar. Das SDK steht in C++, C#, Java, Python, JavaScript, Objective-C und Go bereit. Beispiele in den einzelnen Sprachen können Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) finden. Aktuelle Neuigkeiten und Updates finden Sie unter [Versionshinweise](releasenotes.md).
 
 Die oben genannten Technologien werden von uns intern zur Echtzeitanalyse von Microsoft-Kundenanrufen während des Gesprächs verwendet, wie in der folgenden Abbildung dargestellt.
 

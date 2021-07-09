@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4840fc27133b1d92cb8aaad80921f9d21901569d
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 282777a692b7b0fe54415ef09c2cf1879868dd3b
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010691"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854430"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Einführung in Azure Defender für Containerregistrierungen
 
@@ -28,7 +28,7 @@ Security Center identifiziert auf Azure Resource Manager basierende ACR-Registri
 
 **Azure Defender für Containerregistrierungen** verfügt über eine Option für die Überprüfung auf Sicherheitsrisiken, mit der die Images in Ihren Azure Resource Manager-basierten Azure Container Registry-Registrierungen gescannt und die Sicherheitsrisiken Ihrer Images eingehender untersucht werden können. Der integrierte Scanner wird von Qualys bereitgestellt. Hierbei handelt es sich um einen branchenführenden Anbieter von Tools zur Überprüfung auf Sicherheitsrisiken.
 
-Werden Probleme gefunden – von Qualys oder Security Center –, werden Sie auf dem Security Center-Dashboard benachrichtigt. Für jedes Sicherheitsrisiko bietet Security Center Handlungsempfehlungen sowie eine Klassifizierung des Schweregrads und Anleitungen für die Behebung des Problems. Ausführliche Informationen zu Security Center-Empfehlungen für Container finden Sie in der [Referenzliste der Empfehlungen](recommendations-reference.md#recs-compute).
+Werden Probleme gefunden – von Qualys oder Security Center –, werden Sie auf dem Security Center-Dashboard benachrichtigt. Für jedes Sicherheitsrisiko bietet Security Center Handlungsempfehlungen sowie eine Klassifizierung des Schweregrads und Anleitungen für die Behebung des Problems. Ausführliche Informationen zu Security Center-Empfehlungen für Container finden Sie in der [Referenzliste der Empfehlungen](recommendations-reference.md#recs-container).
 
 Security Center filtert und klassifiziert die Ergebnisse des Scanners. Wenn ein Image fehlerfrei ist, markiert Security Center es entsprechend. Security Center generiert Sicherheitsempfehlungen nur für Images, bei denen Probleme behoben werden müssen. Security Center liefert Details zu den einzelnen gemeldeten Sicherheitsrisiken und verfügt über eine Klassifizierung des Schweregrads. Außerdem erhalten Sie Anleitungen zur Behebung der spezifischen Sicherheitsrisiken, die für jedes Image gefunden wurden.
 
@@ -65,7 +65,7 @@ Unten ist ein allgemeines Diagramm zu den Komponenten und Vorteilen angegeben, m
 
 
 
-## <a name="faq-for-azure-container-registry-image-scanning"></a>Häufig gestellte Fragen zum Überprüfen von Azure Container Registry-Images
+## <a name="faq---azure-container-registry-image-scanning"></a>Häufig gestellte Fragen zur Überprüfung von Azure Container Registry-Images
 
 ### <a name="how-does-security-center-scan-an-image"></a>Wie überprüft Security Center ein Image?
 Security Center pullt das Image aus der Registrierung und führt es in einer isolierten Sandbox mit dem Qualys-Scanner aus. Der Scanner extrahiert eine Liste bekannter Sicherheitsrisiken.
@@ -88,6 +88,8 @@ Ja. Wenn in Ihrer Organisation eine Suche ignoriert werden muss, anstatt sie zu 
 ### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>Warum macht mich Security Center auf Sicherheitsrisiken bei einem Image aufmerksam, das sich nicht in meiner Registrierung befindet?
 Security Center bietet Sicherheitsrisikobewertungen für jedes Image, das in einer Registrierung per Push oder Pull übertragen wird. Einige Images können Tags aus einem bereits überprüften Image wiederverwenden. Sie können z. B. jedes Mal, wenn Sie einem Digest ein Image hinzufügen, das Tag „Neueste Version“ wieder zuweisen. In solchen Fällen ist das „alte“ Image weiterhin in der Registrierung vorhanden und kann per Pull durch seinen Digest abgerufen werden. Wenn das Image Sicherheitsergebnisse aufweist und gepullt wird, entstehen Sicherheitsrisiken.
 
+### <a name="what-should-i-do-if-the-scan-results-for-my-image-arent-shown"></a>Was kann ich tun, wenn die Überprüfungsergebnisse für mein Image nicht angezeigt werden?
+Sollten die Ergebnisse auch nach einigen Minuten nicht angezeigt werden, pushen Sie das Image erneut, um eine neue Überprüfung auszulösen. Falls sie immer noch nicht angezeigt werden, wenden Sie sich an unser Supportteam. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

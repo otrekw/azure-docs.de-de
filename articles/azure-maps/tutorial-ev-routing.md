@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: ce6cb60754ed0afae27c5b5d316a7158961b55a3
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 5c301b42c4467a10063da329e885185de2815242
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323373"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032355"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Tutorial: Routenplanung für Elektrofahrzeuge mit Azure Notebooks (Python)
 
@@ -168,9 +168,9 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service-preview"></a>Hochladen des erreichbaren Bereichs und der Ladestationen in den Azure Maps-Datendienst (Vorschau)
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Hochladen des erreichbaren Bereichs und der Ladestationen in den Azure Maps-Datendienst
 
-Auf einer Karte empfiehlt es sich, die Ladestationen und die Grenze für den maximal erreichbaren Bereich des Elektrofahrzeugs zu visualisieren. Laden Sie hierzu die Daten zur Grenze und zu den Ladestationen als GeoJSON-Objekte in den Azure Maps-Datendienst (Vorschau) hoch. Verwenden Sie hierzu die [Datenupload-API](/rest/api/maps/data/uploadpreview). 
+Auf einer Karte empfiehlt es sich, die Ladestationen und die Grenze für den maximal erreichbaren Bereich des Elektrofahrzeugs zu visualisieren. Laden Sie hierzu die Daten zur Grenze und zu den Ladestationen als GeoJSON-Objekte in den Azure Maps-Datendienst hoch. Verwenden Sie hierzu die [Datenupload-API](/rest/api/maps/data-v2/upload-preview). 
 
 Führen Sie die beiden folgenden Zellen aus, um die Daten zur Grenze und zu den Ladestationen in den Azure Maps-Datendienst hochzuladen:
 
@@ -191,8 +191,8 @@ rangeData = {
   ]
 }
 
-# Upload the range data to Azure Maps Data service (Preview).
-uploadRangeResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
+# Upload the range data to Azure Maps Data service.
+uploadRangeResponse = await session.post("https://us.atlas.microsoft.com/mapData?subscription-key={}&api-version=2.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
 
 rangeUdidRequest = uploadRangeResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
 
@@ -220,8 +220,8 @@ poiData = {
   ]
 }
 
-# Upload the electric vehicle charging station data to Azure Maps Data service (Preview).
-uploadPOIsResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
+# Upload the electric vehicle charging station data to Azure Maps Data service.
+uploadPOIsResponse = await session.post("https://us.atlas.microsoft.com/mapData?subscription-key={}&api-version=2.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
 
 poiUdidRequest = uploadPOIsResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
 
@@ -333,13 +333,13 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>Visualisieren der Route
 
-Zum Visualisieren der Route laden Sie zunächst die Routendaten als GeoJSON-Objekt in den Azure Maps-Datendienst (Vorschau) hoch. Verwenden Sie dazu die [Datenupload-API](/rest/api/maps/data/uploadpreview) von Azure Maps. Rufen Sie anschließend den Renderingdienst ([API zum Abrufen des Kartenbilds](/rest/api/maps/render/getmapimage)) auf, um die Route auf der Karte zu rendern und zu visualisieren.
+Zum Visualisieren der Route laden Sie zunächst die Routendaten als GeoJSON-Objekt in den Azure Maps-Datendienst hoch. Verwenden Sie dazu die [Datenupload-API](/rest/api/maps/data-v2/upload-preview) von Azure Maps. Rufen Sie anschließend den Renderingdienst ([API zum Abrufen des Kartenbilds](/rest/api/maps/render/getmapimage)) auf, um die Route auf der Karte zu rendern und zu visualisieren.
 
 Führen Sie das folgende Skript aus, um ein Bild mit der gerenderten Route auf der Karte abzurufen:
 
 ```python
-# Upload the route data to Azure Maps Data service (Preview).
-routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
+# Upload the route data to Azure Maps Data service .
+routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData?subscription-key={}&api-version=2.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
 
 udidRequestURI = routeUploadRequest.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
 
@@ -390,7 +390,7 @@ Informationen zu den in diesem Tutorial verwendeten Azure Maps-APIs finden Sie u
 
 * [Abrufen des Routenbereichs](/rest/api/maps/route/getrouterange)
 * [Veröffentlichen einer Suche innerhalb der Geometrie](/rest/api/maps/search/postsearchinsidegeometry)
-* [Datenupload](/rest/api/maps/data/uploadpreview)
+* [Datenupload](/rest/api/maps/data-v2/upload-preview)
 * [Rendern: Abrufen des Kartenbilds](/rest/api/maps/render/getmapimage)
 * [Veröffentlichen der Routenmatrix](/rest/api/maps/route/postroutematrix)
 * [Abrufen von Wegbeschreibungen](/rest/api/maps/route/getroutedirections)

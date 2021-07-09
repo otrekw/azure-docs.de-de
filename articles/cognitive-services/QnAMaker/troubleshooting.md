@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: e7b4bbafd5630c2c116e002ee6ebafaa5444ce2d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d9050b0b414ef6ca49f9376e20498b14a8952480
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369318"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072575"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problembehandlung für QnA Maker
 
@@ -279,7 +279,14 @@ Wenn Sie über Inhalte in verschiedenen Sprachen verfügen, stellen Sie sicher, 
 <details>
 <summary><b>Ich habe den Index `testkb` in meinem Suchdienst gelöscht. Wie kann ich dieses Problem beheben?</b></summary>
 
-**Antwort:** Ihre alten Daten können nicht wiederhergestellt werden. Erstellen Sie eine neue QnA Maker-Ressource, und erstellen Sie Ihre Wissensdatenbank erneut.
+**Antwort**: Falls Sie den `testkb`-Index in Ihrem Suchdienst gelöscht haben, können Sie die Daten aus der zuletzt veröffentlichten Wissensdatenbank wiederherstellen. Verwenden Sie das Wiederherstellungstool [RestoreTestKBIndex](https://github.com/pchoudhari/QnAMakerBackupRestore/tree/master/RestoreTestKBFromProd), das auf GitHub verfügbar ist. 
+
+</details>
+
+<details>
+<summary><b>Ich erhalte den folgenden Fehler: Please check if QnA Maker App service's CORS settings allow or if there are any organization specific network restrictions. (Überprüfen Sie, ob die CORS-Einstellungen des QnA Maker-App-Diensts https://www.qnamaker.ai zulassen oder ob organisationsspezifische Netzwerkeinschränkungen vorliegen.) Wie kann ich dies beheben?</b></summary>
+
+**Antwort**: Aktualisieren Sie im API-Abschnitt des Blatts „App Service“ die CORS-Einstellung auf * oder „https://www.qnamaker.ai“. Lässt sich das Problem dadurch nicht beheben, überprüfen Sie, ob organisationsspezifische Einschränkungen gelten.
 
 </details>
 
@@ -360,9 +367,9 @@ Wenn Sie über Inhalte in verschiedenen Sprachen verfügen, stellen Sie sicher, 
 </details>
 
 <details>
-<summary><b>Ich habe den Index `testkb` in meinem Suchdienst gelöscht. Wie kann ich dieses Problem beheben?</b></summary>
+<summary><b>Ich habe den Index `testkbv2` in meinem Suchdienst gelöscht. Wie kann ich dieses Problem beheben?</b></summary>
 
-**Antwort:** Ihre alten Daten können nicht wiederhergestellt werden. Erstellen Sie eine neue QnA Maker-Ressource, und erstellen Sie Ihre Wissensdatenbank erneut.
+**Antwort**: Falls Sie den `testkbv2`-Index in Ihrem Suchdienst gelöscht haben, können Sie die Daten aus der zuletzt veröffentlichten Wissensdatenbank wiederherstellen. Verwenden Sie das Wiederherstellungstool [RestoreTestKBIndex](https://github.com/pchoudhari/QnAMakerBackupRestore/tree/master/RestoreTestKBFromProd), das auf GitHub verfügbar ist. 
 
 </details>
 

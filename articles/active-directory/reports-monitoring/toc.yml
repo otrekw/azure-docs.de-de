@@ -11,10 +11,12 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Herunterladen eines Anmeldeberichts
-      href: quickstart-download-sign-in-report.md
-    - name: Herunterladen eines Überwachungsberichts
-      href: quickstart-download-audit-report.md
+    - name: Filtern des Überwachungsprotokolls
+      href: quickstart-filter-audit-log.md
+    - name: Analysieren von Anmeldungen
+      href: quickstart-analyze-sign-in.md
+    - name: Zugreifen auf Protokolle mit der Graph-API
+      href: quickstart-access-log-with-graph-api.md
     - name: Senden von Protokollen an ein Speicherkonto
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
 - name: Tutorials

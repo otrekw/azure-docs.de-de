@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/25/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 68c76c92f37ae424bd7e8bc85557e6c204ba742e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6243fce7ad7f83b747e678a25eb20aaea7a4cf76
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108734199"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616204"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-portal"></a>Aktivieren des privaten Zugriffs mit Private Link (Vorschau): Azure-Portal
 
@@ -28,7 +28,7 @@ Die folgenden Schritte werden in diesem Artikel behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie einen privaten Endpunkt einrichten können, benötigen Sie eine [Azure Virtual Network-Instanz (virtuelles Netzwerk)](../virtual-network/virtual-networks-overview.md) , in dem der Endpunkt bereitgestellt werden kann. Wenn Sie noch nicht über ein virtuelles Netzwerk verfügen, können Sie einen [Schnellstart](../virtual-network/quick-create-portal.md) für Azure Virtual Network durchlaufen, um eines einzurichten.
+Bevor Sie einen privaten Endpunkt einrichten können, benötigen Sie eine [Azure Virtual Network-Instanz (virtuelles Netzwerk)](../virtual-network/virtual-networks-overview.md) , in dem der Endpunkt bereitgestellt werden kann. Wenn Sie noch nicht über ein virtuelles Netzwerk verfügen, können Sie einen [Schnellstart für Azure Virtual Network](../virtual-network/quick-create-portal.md) durchlaufen, um eines einzurichten.
 
 ## <a name="add-a-private-endpoint-for-an-azure-digital-twins-instance"></a>Hinzufügen eines privaten Endpunkts für eine Azure Digital Twins-Instanz 
 
@@ -51,7 +51,7 @@ Auf dieser Registerkarte können Sie private Endpunkte aktivieren, indem Sie die
 
 Dadurch wird ein Abschnitt namens **Private Endpunktverbindungen** hinzugefügt, in dem Sie die Details Ihres privaten Endpunkts konfigurieren können. Klicken Sie auf **+ Hinzufügen**, um fortzufahren.
 
-:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-1.png" alt-text="Screenshot: Azure-Portal mit der Registerkarte „Netzwerk“ des Dialogfelds „Ressource erstellen“ für Azure Digital Twins, der Registerkartenname, die Option „Privater Endpunkt“ unter Verbindungsmethode und die Schaltfläche „+ Hinzufügen“ zum Erstellen einer neuen privaten Endpunktverbindung sind hervorgehoben" lightbox="media/how-to-enable-private-link/create-instance-networking-1.png":::
+:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-1.png" alt-text="Screenshot des Azure-Portals mit der Registerkarte „Netzwerk“ einer neuen Azure Digital Twins-Instanz, wo hervorgehoben wird, wie ein privater Endpunkt erstellt wird. Die Schaltfläche „Hinzufügen“ ist hervorgehoben." lightbox="media/how-to-enable-private-link/create-instance-networking-1.png":::
 
 Daraufhin wird eine Seite geöffnet, auf der Sie die Details des neuen privaten Endpunkts eingeben können.
 
@@ -65,9 +65,9 @@ Daraufhin wird eine Seite geöffnet, auf der Sie die Details des neuen privaten 
 
 Nachdem Sie die Konfigurationsoptionen ausgefüllt haben, wählen Sie **OK** aus, um den Vorgang abzuschließen.
 
-Dadurch kehren Sie zur Registerkarte **Netzwerk** des Setups der Azure Digital Twins-Instanz zurück, auf der Ihr neuer Endpunkt unter „Private Endpunktverbindungen“ angezeigt werden sollte.
+Dadurch kehren Sie zur Registerkarte **Netzwerk** des Setups der Azure Digital Twins-Instanz zurück, auf der Ihr neuer Endpunkt unter **Private Endpunktverbindungen** angezeigt werden sollte.
 
-:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-2.png" alt-text="Screenshot: Azure-Portal mit der Registerkarte „Netzwerk“ des Dialogfelds „Ressource erstellen“ für Azure Digital Twins, die neue private Endpunktverbindung und die Navigationsschaltflächen (Überprüfen und erstellen, Zurück, Weiter: Erweitert) sind hervorgehoben" lightbox="media/how-to-enable-private-link/create-instance-networking-2.png":::
+:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-2.png" alt-text="Screenshot des Azure-Portals mit der Registerkarte „Netzwerk“ eines Azure Digital Twins mit einem neu erstellten privaten Endpunkt." lightbox="media/how-to-enable-private-link/create-instance-networking-2.png":::
 
 Anschließend können Sie die Navigationsschaltflächen unten verwenden, um mit der Einrichtung der Instanz fortzufahren.
 
@@ -83,7 +83,7 @@ In diesem Abschnitt aktivieren Sie Private Link mit einem privaten Endpunkt für
 
 1. Klicken Sie auf **+ Privater Endpunkt**, um das Dialogfeld **Privaten Endpunkt erstellen** zu öffnen.
 
-    :::image type="content" source="media/how-to-enable-private-link/add-endpoint-digital-twins.png" alt-text="Screenshot: Azure-Portal mit der Seite „Netzwerk (Vorschau)“ für eine Azure Digital Twins-Instanz mit hervorgehobener Registerkarte „Private Endpunktverbindungen“ und hervorgehobener Schaltfläche „+ Privater Endpunkt“" lightbox="media/how-to-enable-private-link/add-endpoint-digital-twins.png":::
+    :::image type="content" source="media/how-to-enable-private-link/add-endpoint-digital-twins.png" alt-text="Screenshot des Azure-Portals mit der Seite „Netzwerk“ für eine vorhandene Azure Digital Twins-Instanz, der hervorhebt, wie private Endpunkte erstellt werden." lightbox="media/how-to-enable-private-link/add-endpoint-digital-twins.png":::
 
 1. Geben Sie auf der Registerkarte  **Grundlagen** das **Abonnement** und die **Ressourcengruppe** Ihres Projekts sowie einen **Namen** und eine **Region** für Ihren Endpunkt an. Die Region muss mit der Region des verwendeten virtuellen Netzwerks übereinstimmen.
 
@@ -137,7 +137,7 @@ Zum Deaktivieren oder Aktivieren des öffentlichen Netzwerkzugriffs über das [A
 
     :::row:::
         :::column:::
-            :::image type="content" source="media/how-to-enable-private-link/network-flag-portal.png" alt-text="Screenshot: Azure-Portal mit der Seite „Netzwerk (Vorschau)“ für eine Azure Digital Twins-Instanz mit hervorgehobener Registerkarte „Öffentlicher Zugriff“ und er Option zum Zulassen des öffentlichen Netzwerkzugriffs" lightbox="media/how-to-enable-private-link/network-flag-portal.png":::
+            :::image type="content" source="media/how-to-enable-private-link/network-flag-portal.png" alt-text="Screenshot des Azure-Portals mit der Seite „Netzwerk“ für eine Azure Digital Twins-Instanz, der hervorhebt, wie der öffentliche Zugriff umgeschaltet wird." lightbox="media/how-to-enable-private-link/network-flag-portal.png":::
         :::column-end:::
         :::column:::
         :::column-end:::

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: e3b7da30f54b9d9468b46a2cd0972a3397e5cdce
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 46348fe35f425811e2ff03208feeae6ab7a112bd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865105"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453578"
 ---
 # <a name="cancel-translation"></a>Abbrechen der Übersetzung
 
@@ -26,7 +26,7 @@ Brechen Sie den derzeit ausgeführten oder einen in die Warteschlange eingereiht
 Sendet eine `DELETE`-Anforderung an:
 
 ```DELETE HTTP
-https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}
+https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches/{id}
 ```
 
 Erfahren Sie, wie Sie Ihren [benutzerdefinierten Domänennamen](../get-started-with-document-translation.md#find-your-custom-domain-name)finden.
@@ -70,7 +70,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 
-|Name|type|BESCHREIBUNG|
+|Name|Typ|BESCHREIBUNG|
 |--- |--- |--- |
 |id|Zeichenfolge|ID des Vorgangs.|
 |createdDateTimeUtc|Zeichenfolge|Das Datum und die Uhrzeit des Vorgangs.|
@@ -87,14 +87,15 @@ Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|type|Beschreibung|
+|Name|Typ|Beschreibung|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
 |target|Zeichenfolge|Ruft die Ursache des Fehlers ab. Dies wäre z. B. „Dokumente“ oder „Dokument-ID“ im Falle eines ungültigen Dokuments.|
-|innerError|InnerErrorV2|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
+|innerError|InnerTranslationError|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
 |innerError.code|Zeichenfolge|Ruft Code der Fehlerzeichenfolge ab.|
-|Inneres. Eroor. Message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
+|innerError.message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
+|innerError.target|Zeichenfolge|Ruft die Ursache des Fehlers ab. Dies wäre z. B. „Dokumente“ oder „Dokument-ID“, falls ein ungültiges Dokument vorliegt.|
 
 ## <a name="examples"></a>Beispiele
 

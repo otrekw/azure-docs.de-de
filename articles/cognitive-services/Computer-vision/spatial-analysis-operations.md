@@ -3,19 +3,19 @@ title: Vorgänge der räumlichen Analyse
 titleSuffix: Azure Cognitive Services
 description: Enthält eine Beschreibung der Vorgänge der räumlichen Analyse.
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: 37ac7573a1794c97c81fe5364204f85ff14d9fa6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: 08d2e50df2365c327d16d3232fd3edc0544e3ffd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538084"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745797"
 ---
 # <a name="spatial-analysis-operations"></a>Vorgänge der räumlichen Analyse
 
@@ -70,6 +70,8 @@ Folgende Parameter werden von jedem dieser Vorgänge der räumlichen Analyse ben
 | VIDEO_DECODE_GPU_INDEX| Gibt an, welche GPU zum Decodieren des Videoframes verwendet werden soll. Standardmäßig ist „0“ angegeben. Diese Angabe sollte dem `gpu_index` in einer anderen Knotenkonfiguration entsprechen, z. B. `VICA_NODE_CONFIG`, `DETECTOR_NODE_CONFIG`.|
 | INPUT_VIDEO_WIDTH | Dies ist die Framebreite des eingegangenen Videos oder Streams (z. B. 1920). Hierbei handelt es sich um ein optionales Feld. Ist es angegeben, wird der Frame unter Beibehaltung des Seitenverhältnisses auf diese Dimension skaliert.|
 | DETECTOR_NODE_CONFIG | JSON-Code, mit dem angegeben wird, auf welcher GPU der Erkennungsknoten ausgeführt werden soll. Die ID sollte das folgende Format aufweisen: `"{ \"gpu_index\": 0 }",`.|
+| CAMERA_CONFIG | JSON-Code, mit dem die kalibrierten Kameraparameter für mehrere Kameras angegeben werden. Wenn der verwendete Skill eine Kalibrierung erfordert und Sie bereits über den Kameraparameter verfügen, können Sie diese Konfiguration verwenden, um sie direkt bereitzustellen. Sollte das folgende Format aufweisen: `"{ \"cameras\": [{\"source_id\": \"endcomputer.0.persondistancegraph.detector+end_computer1\", \"camera_height\": 13.105561256408691, \"camera_focal_length\": 297.60003662109375, \"camera_tiltup_angle\": 0.9738943576812744}] }"`, `source_id` wird verwendet, um die einzelnen Kameras zu identifizieren. Es kann aus der `source_info` des von uns veröffentlichten Ereignisses abgerufen werden. Es wird nur wirksam, wenn `do_calibration=false` in `DETECTOR_NODE_CONFIG` enthalten ist.|
+| TRACKER_NODE_CONFIG | JSON-Code, der angibt, ob die Geschwindigkeit im Knoten für die Nachverfolgung berechnet werden soll. Die ID sollte das folgende Format aufweisen: `"{ \"enable_speed\": false }",`.|
 | SPACEANALYTICS_CONFIG | JSON-Konfiguration für Zone und Linie wie unten beschrieben.|
 | ENABLE_FACE_MASK_CLASSIFIER | Mit `True` wird das Erkennen von Personen mit Gesichtsmasken im Videostream aktiviert, mit `False` wird diese Option deaktiviert. Diese Einstellung ist standardmäßig deaktiviert. Die Gesichtsmaskenerkennung erfordert, dass der width-Parameter für das Eingangsvideo 1920 ist (`"INPUT_VIDEO_WIDTH": 1920`). Das Gesichtsmaskenattribut wird nicht zurückgegeben, wenn erkannte Personen nicht in die Kamera sehen oder zu weit davon entfernt sind. Weitere Informationen finden Sie im [Leitfaden zur Kameraplatzierung](spatial-analysis-camera-placement.md). |
 
@@ -88,7 +90,7 @@ Hier sehen Sie ein Beispiel für die DETECTOR_NODE_CONFIG-Parameter für alle Vo
 }
 ```
 
-| Name | type| Beschreibung|
+| Name | Typ| Beschreibung|
 |---------|---------|---------|
 | `gpu_index` | Zeichenfolge| Der GPU-Index, auf dem die Ausführung dieses Vorgangs basiert.|
 | `do_calibration` | Zeichenfolge | Gibt an, dass die Kalibrierung aktiviert ist. `do_calibration` muss auf „true“ festgelegt sein, damit **cognitiveservices.vision.spatialanalysis-persondistance** richtig funktioniert. Die Zeichenfolge „do_calibration“ ist standardmäßig auf TRUE festgelegt. |
@@ -98,6 +100,20 @@ Hier sehen Sie ein Beispiel für die DETECTOR_NODE_CONFIG-Parameter für alle Vo
 | `calibration_quality_check_one_round_sample_collect_num` | INT | Dies ist die minimale Anzahl der pro Stichprobenerfassungsrunde zu erfassenden neuen Datenstichproben. Der Standardwert ist `10`. Nur verwendet, wenn `enable_recalibration=True`.|
 | `calibration_quality_check_queue_max_size` | INT | Dies ist die maximale Anzahl der zu speichernden Datenstichproben, wenn das Kameramodell kalibriert wird. Der Standardwert ist `1000`. Nur verwendet, wenn `enable_recalibration=True`.|
 | `enable_breakpad`| bool | Hiermit kann angegeben werden, ob Sie Breakpad aktivieren möchten, womit Speicherabbilder für die Debugverwendung generiert werden. Die Standardeinstellung ist `false`. Wenn Sie diese Einstellung auf `true` festlegen, müssen Sie im `HostConfig`-Teil des `createOptions`-Containers auch `"CapAdd": ["SYS_PTRACE"]` hinzufügen. Das Speicherabbild wird standardmäßig in die AppCenter-App [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) hochgeladen. Wenn Sie möchten, dass die Speicherabbilder in Ihre eigene AppCenter-App hochgeladen werden, können Sie die Umgebungsvariable `RTPT_APPCENTER_APP_SECRET` mit dem App-Geheimnis Ihrer App außer Kraft setzen.
+| `enable_orientation` | bool | Gibt an, ob Sie die Ausrichtung für die erkannten Personen berechnen möchten. `enable_orientation` ist standardmäßig auf „False“ festgelegt. |
+
+
+### <a name="speed-parameter-settings"></a>Einstellungen für Geschwindigkeitsparameter
+Sie können die Geschwindigkeitsberechnung über die Parametereinstellungen des Knotens für die Nachverfolgung konfigurieren.
+```
+{
+"enable_speed": true,
+}
+```
+| Name | Typ| Beschreibung|
+|---------|---------|---------|
+| `enable_speed` | bool | Gibt an, ob Sie die Geschwindigkeit für die erkannten Personen berechnen möchten. `enable_speed` ist standardmäßig auf „False“ festgelegt. Es wird dringend empfohlen, sowohl Geschwindigkeit als auch Ausrichtung zu aktivieren, um die besten Schätzwerte zu erhalten. |
+
 
 ## <a name="spatial-analysis-operations-configuration-and-output"></a>Konfiguration und Ausgabe von Vorgängen der räumlichen Analyse
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>Zonenkonfiguration für cognitiveservices.vision.spatialanalysis-personcount
@@ -120,7 +136,7 @@ Hier sehen Sie ein Beispiel für die DETECTOR_NODE_CONFIG-Parameter für alle Vo
 }
 ```
 
-| Name | type| BESCHREIBUNG|
+| Name | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `zones` | list| Die Liste mit den Zonen. |
 | `name` | Zeichenfolge| Der Anzeigename für diese Zone.|
@@ -165,7 +181,7 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 }
 ```
 
-| Name | type| BESCHREIBUNG|
+| Name | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `lines` | list| Die Liste mit den Linien.|
 | `name` | Zeichenfolge| Der Anzeigename für diese Linie.|
@@ -211,11 +227,12 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 }
 ```
 
-| Name | type| BESCHREIBUNG|
+| Name | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `zones` | list| Die Liste mit den Zonen. |
 | `name` | Zeichenfolge| Der Anzeigename für diese Zone.|
 | `polygon` | list| Jedes Wertpaar stellt den x/y-Wert für Scheitelpunkte eines Polygons dar. Mit dem Polygon werden die Bereiche dargestellt, in denen Personen nachverfolgt oder gezählt werden. Die Gleitkommawerte stellen die Position des Scheitelpunkts relativ zur oberen linken Ecke dar. Zum Berechnen der absoluten x/y-Werte multiplizieren Sie diese Werte mit der Framegröße. 
+| `target_side` | INT| Gibt eine Seite der Zone an, die durch `polygon` definiert wird, um zu messen, wie lange Personen auf diese Seite schauen, während sie sich in der Zone befinden. Diese geschätzte Zeit wird von „dwellTimeForTargetSide“ ausgegeben. Jede Seite ist eine nummerierte Kante zwischen den beiden Eckpunkten des Polygons, das Ihre Zone darstellt. Beispiel: Die Kante zwischen den ersten beiden Eckpunkten des Polygons stellt die erste Seite dar, 'side'=1. Der Wert von `target_side` liegt zwischen `[0,N-1]`, wobei `N` die Anzahl der Seiten von `polygon` ist. Dies ist ein optionales Feld.  |
 | `threshold` | float| Ereignisse werden ausgegeben, wenn der Personenwert größer als diese Anzahl von Pixeln innerhalb der Zone ist. Der Standardwert ist 48, wenn der Typ „zonecrossing“ und 16, wenn die Zeit DwellTime ist. Dies sind die empfohlenen Werte, um eine maximale Genauigkeit zu erzielen.  |
 | `type` | Zeichenfolge| Für **cognitiveservices.vision.spatialanalysis-personcrossingpolygon** sollte dies `zonecrossing` oder `zonedwelltime` lauten.|
 | `trigger`|Zeichenfolge|Der Typ des Triggers für das Senden eines Ereignisses.<br>Unterstützte Werte: „event“ (Ereignis). Wird ausgelöst, wenn eine Person die Zone betritt oder verlässt.|
@@ -246,7 +263,7 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 }
 ```
 
-| Name | type| BESCHREIBUNG|
+| Name | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `zones` | list| Die Liste mit den Zonen. |
 | `name` | Zeichenfolge| Der Anzeigename für diese Zone.|
@@ -536,6 +553,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
 | `properties` | collection| Sammlung mit Werten|
 | `trackinId` | Zeichenfolge| Eindeutiger Bezeichner der erkannten Person|
 | `status` | Zeichenfolge| Die Richtung von Linienüberquerungen (entweder „CrossLeft“ oder „CrossRight“). Die Richtungsangabe basiert auf der Vorstellung, am Beginn der Linie zu stehen und in Richtung des Linienendes zu blicken. Bei „CrossRight“ erfolgt die Überquerung von links nach rechts. Bei „CrossLeft“ erfolgt die Überquerung von rechts nach links.|
+| `orientationDirection` | Zeichenfolge| Die Ausrichtung der erkannten Person nach der Überquerung der Linie. Der Wert kann „Left“, „Right“ oder „Straight“ sein. Dieser Wert wird ausgegeben, wenn `enable_orientation` in `DETECTOR_NODE_CONFIG` auf `True` festgelegt ist. |
 | `zone` | Zeichenfolge | Feld „Name“ der überschrittenen Linie|
 
 | Name des Erkennungsfelds | Typ| Beschreibung|
@@ -545,6 +563,9 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
 | `region` | collection| Sammlung mit Werten|
 | `type` | Zeichenfolge| Typ der Region|
 | `points` | collection| Oberer linker und unterer rechter Punkt, wenn der Regionstyp RECTANGLE (RECHTECK) lautet. |
+| `groundOrientationAngle` | float| Der Winkel im Bogenmaß und Uhrzeigersinn der Ausrichtung der Person auf der abgeleiteten Bodenfläche. |
+| `mappedImageOrientation` | float| Der projizierte Winkel im Bogenmaß und Uhrzeigersinn der Ausrichtung der Person im 2D-Bildraum. |
+| `speed` | float| Die geschätzte Geschwindigkeit der erkannten Person. Die Einheit ist `foot per second (ft/s)`.|
 | `confidence` | float| Algorithmusvertrauen|
 | `face_mask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person eine Gesichtsmaske trägt. |
 | `face_nomask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person **keine** Gesichtsmaske trägt. |
@@ -635,7 +656,8 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang mit dem `zonedwelltime`-T
                 "trackingId": "afcc2e2a32a6480288e24381f9c5d00e",
                 "status": "Exit",
                 "side": "1",
-              "durationMs": 7132.0
+                      "dwellTime": 7132.0,
+                      "dwellFrames": 20            
             },
             "zone": "queuecamera"
         }
@@ -666,7 +688,12 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang mit dem `zonedwelltime`-T
                 ]
             },
             "confidence": 0.6267998814582825,
-            "metadataType": ""
+            "metadataType": "",
+             "metadata": { 
+                     "groundOrientationAngle": 1.2,
+                     "mappedImageOrientation": 0.3,
+                     "speed": 1.2
+               },
         }
     ],
     "schemaVersion": "1.0"
@@ -682,7 +709,11 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang mit dem `zonedwelltime`-T
 | `trackinId` | Zeichenfolge| Eindeutiger Bezeichner der erkannten Person|
 | `status` | Zeichenfolge| Richtung von Polygondurchquerungen, entweder „Enter“ oder „Exit“|
 | `side` | INT| Dies ist die Nummer der Polygonseite, die von der Person überschritten wurde. Jede Seite ist eine nummerierte Kante zwischen den beiden Eckpunkten des Polygons, das Ihre Zone darstellt. Die Kante zwischen den ersten beiden Eckpunkten des Polygons stellt die erste Seite dar. „side“ ist leer, wenn das Ereignis aufgrund von Verdeckung keiner bestimmten Seite zugeordnet ist. Beispiele: Ein Exit-Ereignis ist aufgetreten, wenn eine Person verschwindet, für sie aber keine Überquerung einer Seite der Zone registriert wurde, oder ein Enter-Ereignis ist aufgetreten, wenn eine Person in der Zone auftaucht, ohne dass die Überquerung einer Seite registriert wurde.|
-| `durationMs` | float | Dies ist die Zeit in Millisekunden, die die Person in der Zone verbracht hat. Dieses Feld wird bereitgestellt, wenn der Ereignistyp _personZoneDwellTimeEvent_ ist.|
+| `dwellTime` | float | Dies ist die Zeit in Millisekunden, die die Person in der Zone verbracht hat. Dieses Feld wird bereitgestellt, wenn der Ereignistyp personZoneDwellTimeEvent ist.|
+| `dwellFrames` | INT | Die Anzahl der Frames, die die Person in der Zone verbracht hat. Dieses Feld wird bereitgestellt, wenn der Ereignistyp personZoneDwellTimeEvent ist.|
+| `dwellTimeForTargetSide` | float | Dies ist die Zeit in Millisekunden, die die Person in der Zone und der `target_side` zugerichtet verbracht hat. Dieses Feld wird bereitgestellt, wenn `enable_orientation` in `DETECTOR_NODE_CONFIG ` `True` entspricht und der Wert von `target_side` in `SPACEANALYTICS_CONFIG` festgelegt ist.|
+| `avgSpeed` | float| Die durchschnittliche Geschwindigkeit der Person in der Zone. Die Einheit ist `foot per second (ft/s)`.|
+| `minSpeed` | float| Die minimale Geschwindigkeit der Person in der Zone. Die Einheit ist `foot per second (ft/s)`.|
 | `zone` | Zeichenfolge | „Name“ des Polygonfelds, das für die durchquerte Zone steht|
 
 | Name des Erkennungsfelds | Typ| Beschreibung|
@@ -692,6 +723,9 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang mit dem `zonedwelltime`-T
 | `region` | collection| Sammlung mit Werten|
 | `type` | Zeichenfolge| Typ der Region|
 | `points` | collection| Oberer linker und unterer rechter Punkt, wenn der Regionstyp RECTANGLE (RECHTECK) lautet. |
+| `groundOrientationAngle` | float| Der Winkel im Bogenmaß und Uhrzeigersinn der Ausrichtung der Person auf der abgeleiteten Bodenfläche. |
+| `mappedImageOrientation` | float| Der projizierte Winkel im Bogenmaß und Uhrzeigersinn der Ausrichtung der Person im 2D-Bildraum. |
+| `speed` | float| Die geschätzte Geschwindigkeit der erkannten Person. Die Einheit ist `foot per second (ft/s)`.|
 | `confidence` | float| Algorithmusvertrauen|
 | `face_mask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person eine Gesichtsmaske trägt. |
 | `face_nomask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person **keine** Gesichtsmaske trägt. |
@@ -1034,7 +1068,7 @@ Um eine optimale Leistung und Auslastung der GPUs zu erzielen, können Sie belie
       }
   }
   ```
-| Name | type| Beschreibung|
+| Name | Typ| Beschreibung|
 |---------|---------|---------|
 | `batch_size` | INT | Wenn alle Kameras die gleiche Auflösung haben, legen Sie `batch_size` auf die Anzahl der Kameras fest, die in diesem Vorgang verwendet werden. Andernfalls legen Sie `batch_size` auf 1 fest oder belassen es beim Standardwert (1), was bedeutet, dass kein Batch unterstützt wird. |
 

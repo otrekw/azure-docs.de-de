@@ -12,16 +12,16 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: db902019b4fb1237c8403c719862d8fca4ba4f28
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 183679eb9c4eb2480736dfb4cec8a343c67d0ed7
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772521"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854484"
 ---
-# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Verwenden von per Codec komprimierter Audioeingabe mit dem Speech SDK
+# <a name="use-codec-compressed-audio-input"></a>Verwenden der per Codec komprimierten Audioeingabe
 
-Das Speech Service SDK kann komprimierte Audioformate akzeptieren. Die Audiodaten werden dekomprimiert, bevor sie als unformatiertes PCM an den Speech-Dienst gesendet werden.
+Das Speech SDK und die Speech CLI können komprimierte Audioformate mithilfe von GStreamer akzeptieren. Die Audiodaten werden von GStreamer dekomprimiert, bevor sie als unformatiertes PCM an den Speech-Dienst gesendet werden.
 
 Plattform | Sprachen | Unterstützte GStreamer-Version
 | :--- | ---: | :---:

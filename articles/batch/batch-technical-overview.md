@@ -2,13 +2,13 @@
 title: Ausführen von großen parallelen Aufträge in der Cloud mit Azure Batch
 description: Hier erhalten Sie Informationen über den Azure Batch-Dienst für umfangreiche parallele Workloads und HPC-Workloads.
 ms.topic: overview
-ms.date: 07/30/2020
-ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: 9061da0b479f77353554ef1c9eb311f22220f02d
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743099"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007119"
 ---
 # <a name="what-is-azure-batch"></a>Was ist Azure Batch?
 
@@ -22,7 +22,7 @@ Einen Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden 
 
 ## <a name="run-parallel-workloads"></a>Ausführen von parallelen Workloads
 
-Batch funktioniert gut mit intrinsisch parallelen Workloads (auch als „hochgradig parallel“ bezeichnet). Intrinsisch parallele Workloads enthalten Anwendungen, die unabhängig voneinander ausgeführt werden, und bei denen jede Instanz einen Teil der Arbeit erledigt. Wenn die Anwendungen ausgeführt werden, greifen sie ggf. auf einige gemeinsame Daten zu, aber sie kommunizieren nicht mit anderen Instanzen der Anwendung. Intrinsisch parallele Workloads können daher in großem Umfang ausgeführt werden. Dies richtet sich nach der Menge von Computeressourcen, die für die gleichzeitige Ausführung von Anwendungen verfügbar sind.
+Batch funktioniert gut mit intrinsisch parallelen Workloads (auch als „hochgradig parallel“ bezeichnet). Diese Workloads enthalten Anwendungen, die unabhängig voneinander ausgeführt werden und bei denen jede Instanz einen Teil der Arbeit erledigt. Wenn die Anwendungen ausgeführt werden, greifen sie ggf. auf einige gemeinsame Daten zu, aber sie kommunizieren nicht mit anderen Instanzen der Anwendung. Intrinsisch parallele Workloads können daher in großem Umfang ausgeführt werden. Dies richtet sich nach der Menge von Computeressourcen, die für die gleichzeitige Ausführung von Anwendungen verfügbar sind.
 
 Hier sind einige Beispiele für intrinsisch parallele Workloads angegeben, die Sie in Batch einbinden können:
 
@@ -43,14 +43,11 @@ Hier sind einige Beispiele für eng gekoppelte Workloads angegeben:
 - Strömungssimulation
 - KI-Training mit mehreren Knoten
 
-Viele eng gekoppelte Aufträge können mit Batch parallel ausgeführt werden. Führen Sie beispielsweise mehrere Simulationen für einen Fall durch, in dem eine Flüssigkeit durch ein Rohr mit wechselnden Durchmessern fließt.
+Viele eng gekoppelte Aufträge können mit Batch parallel ausgeführt werden. Sie können beispielsweise mehrere Simulationen für einen Fall durchführen, in dem eine Flüssigkeit durch ein Rohr mit wechselnden Durchmessern fließt.
 
 ## <a name="additional-batch-capabilities"></a>Zusätzliche Batch-Funktionen
 
-Für Azure Batch sind auch allgemeinere workloadspezifische Funktionen verfügbar:
-
-- Batch unterstützt größere Mengen von [Renderingworkloads](batch-rendering-service.md) mit Renderingtools wie beispielsweise Autodesk Maya, 3ds Max, Arnold und V-Ray. 
-- R-Benutzer können das [R-Paket „doAzureParallel“](https://github.com/Azure/doAzureParallel) installieren, um für die Ausführung von R-Algorithmen in Batch-Pools auf einfache Weise das Aufskalieren durchzuführen.
+Batch unterstützt größere Mengen von [Renderingworkloads](batch-rendering-service.md) mit Renderingtools wie beispielsweise Autodesk Maya, 3ds Max, Arnold und V-Ray. 
 
 Sie können Batch-Aufträge auch im Rahmen eines größeren Azure-Workflows zum Transformieren von Daten ausführen, der mit Tools wie [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) verwaltet wird.
 
@@ -76,12 +73,15 @@ Beachten Sie, dass der oben beschriebene Workflow nur eine Möglichkeit zur Verw
 Eine Übersicht über Features wie Pools, Knoten, Aufträge und Tasks finden Sie unter [Workflow des Batch-Diensts und Ressourcen](batch-service-workflow-features.md). Siehe auch die aktuellen [Batchdienstupdates](https://azure.microsoft.com/updates/?product=batch).
 
 ## <a name="in-region-data-residency"></a>Data Residency in der Region
+
 Azure Batch speichert Kundendaten in der Region, in der sie bereitgestellt werden, und verschiebt sie nicht aus dieser Region. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Steigen Sie mit einer der folgenden Schnellstartanleitungen in Azure Batch ein:
+
 - [Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI](quick-create-cli.md)
 - [Ausführen Ihres ersten Batch-Auftrags mit dem Azure-Portal](quick-create-portal.md)
 - [Ausführen Ihres ersten Batch-Auftrags mit der .NET-API](quick-run-dotnet.md)
 - [Ausführen Ihres ersten Batch-Auftrags mit der Python-API](quick-run-python.md)
+- [Erstellen eines Batch-Kontos mithilfe von ARM-Vorlagen](quick-create-template.md)
