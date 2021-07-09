@@ -2,7 +2,7 @@
 title: Was sind Azure Applied AI Services?
 titleSuffix: Azure Applied AI Services
 description: Beschreibung der Azure Applied AI Services.
-keywords: Angewendete KI-Dienste, künstliche Intelligenz, angewendete KI, KI-Dienste, kognitive Suche, angewendete KI-Features
+keywords: angewendete KI-Dienste, künstliche Intelligenz, angewendete KI, KI-Dienste, kognitive Suche, angewendete KI-Features
 author: jeffme
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 05/04/2021
 ms.author: jeffme
-ms.openlocfilehash: 10c6dc0643a8b2e84985697212912bc5854c0613
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b4c22f8b6825b2955ba7c50e2ef1ff5f3ee00464
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386010"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958179"
 ---
 # <a name="what-are-azure-applied-ai-services"></a>Was sind Azure Applied AI Services?
 
@@ -23,7 +23,7 @@ Azure Applied AI Services sind High-Level-Services, die Entwickler in die Lage v
 
 ## <a name="azure-form-recognizer"></a>Azure-Formularerkennung
 
-Unternehmen in allen Branchen können Informationen nutzen, die in Dokumenten verborgen sind, um die Produktivität zu steigern, Geschäftsprozesse zu automatisieren und Wissen und Erkenntnisse zu generieren.  Die Azure-Formularerkennung ist ein Dienst, mit dem Sie unter Verwendung von Technologie für maschinelles Lernen Software für die automatisierte Datenverarbeitung entwickeln können. Identifizieren und extrahieren Sie Text, Schlüssel-Wert-Paare, Auswahlmarkierungen, Tabellen und Struktur aus Ihren Dokumenten. Der Dienst gibt strukturierte Daten aus, die die Beziehungen in der Originaldatei, Begrenzungsrahmen, Sicherheit und mehr enthalten. Sie können schnell präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse erzielen, ohne dass komplizierte manuelle Eingriffe oder umfangreiche Data Science-Kenntnisse erforderlich sind. Verwenden Sie die Formularerkennung, um Dateneingaben in Ihren Anwendungen zu automatisieren und Ihre Dokumentsuchfunktionen zu erweitern.  Azure-Formularerkennung wird mit OCR, Textanalyse und benutzerdefiniertem Text von Azure Cognitive Services erstellt.
+Branchenübergreifend nutzen Unternehmen Informationen, die in Dokumenten verborgen sind, um ihre Produktivität zu steigern, Geschäftsprozesse zu automatisieren und Wissen und Erkenntnisse zu generieren.  Die Azure-Formularerkennung ist ein Dienst, mit dem Sie unter Verwendung von Technologie für maschinelles Lernen Software für die automatisierte Datenverarbeitung entwickeln können. Identifizieren und extrahieren Sie Text, Schlüssel-Wert-Paare, Auswahlmarkierungen, Tabellen und Struktur aus Ihren Dokumenten. Der Dienst gibt strukturierte Daten aus, die die Beziehungen in der Originaldatei, Begrenzungsrahmen, Sicherheit und mehr enthalten. Sie können schnell präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse erzielen, ohne dass komplizierte manuelle Eingriffe oder umfangreiche Data Science-Kenntnisse erforderlich sind. Verwenden Sie die Formularerkennung, um Dateneingaben in Ihren Anwendungen zu automatisieren und Ihre Dokumentsuchfunktionen zu erweitern.  Azure-Formularerkennung wird mit OCR, Textanalyse und benutzerdefiniertem Text von Azure Cognitive Services erstellt.
 
 Die Formularerkennung setzt sich aus benutzerdefinierten Dokumentverarbeitungsmodellen, vordefinierten Modellen für Rechnungen, Belege, Ausweise und Visitenkarten und dem Layoutmodell zusammen. 
 
@@ -31,7 +31,7 @@ Weitere Informationen zur [Azure-Formularerkennung](../cognitive-services/form-r
 
 ## <a name="azure-metrics-advisor"></a>Azure Metrics Advisor
 
-Schutz des Unternehmenswachstums durch die Möglichkeit, basierend auf Informationen aus Metriken von Unternehmen, Diensten und physischen Ressourcen, die richtige Entscheidung zu treffen.  Azure Metrics Advisor verwendet KI, um Datenüberwachung und Anomalieerkennung in Zeitreihendaten durchzuführen. Der Dienst automatisiert die Anwendung von Modellen auf Ihre Daten und bietet eine Reihe von APIs sowie einen webbasierten Arbeitsbereich für die Datenerfassung, Anomalieerkennung und Diagnose, die ganz ohne Maschinen-Lernkenntnisse verwendet werden können. Entwickler können AIOps, vorausschauende Wartung und Business-Monitoring-Anwendungen auf dem Dienst aufbauen.  Azure Metrics Advisor wird mithilfe von Anomalieerkennung aus Azure Cognitive Services erstellt.
+Schutz des Unternehmenswachstums durch die Möglichkeit, basierend auf Informationen aus Metriken von Unternehmen, Diensten und physischen Ressourcen, die richtige Entscheidung zu treffen.  Azure Metrics Advisor verwendet KI, um Datenüberwachung und Anomalieerkennung in Zeitreihendaten durchzuführen. Der Dienst automatisiert die Anwendung von Modellen auf Ihre Daten und bietet eine Reihe von APIs sowie einen webbasierten Arbeitsbereich für die Datenerfassung, Anomalieerkennung und Diagnose, die ganz ohne Maschinen-Lernkenntnisse verwendet werden können. Basierend auf diesem Dienst können Entwickler AIOps, Predictive Maintenance und Anwendungen zur Geschäftsüberwachung erstellen.  Azure Metrics Advisor wird mithilfe von Anomalieerkennung aus Azure Cognitive Services erstellt.
 
 [Weitere Informationen zu Azure Metrics Advisor](../cognitive-services/metrics-advisor/index.yml)
 
@@ -51,17 +51,17 @@ Weitere Informationen zu [Azure Plastischer Reader](../cognitive-services/immers
 
 Ermöglichen Sie die schnelle Erstellung anpassbarer, anspruchsvoller Konversationserfahrungen mit vorgefertigten Konversationskomponenten, sodass der Geschäftswert sofort einsatzbereit ist.  Azure Bot Service Composer ist eine visuelle Open-Source-Dokumenterstellung, mit dem Entwickler und multidisziplinäre Teams Bots erstellen können. Composer integriert Sprache Versehen-Dienste wie LUIS und QnA Maker und ermöglicht eine durchdachte Zusammenstellung von Botantworten mithilfe von Language Generation. Azure Bot Service wird mit Speech/Telefonie, LUIS und QnA Maker aus Azure Cognitive Services erstellt.
 
-Weitere Informationen zu [Azure Bot Service](https://docs.microsoft.com/composer/)
+Weitere Informationen zu [Azure Bot Service](/composer/)
 
 ## <a name="azure-video-analyzer"></a>Azure Video Analyzer 
 
 Unternehmen können automatisierte Apps erstellen, die von Videointelligenz unterstützt werden, ohne ein Video- oder KI-Experte zu sein.  Azure Video Analyzer ist ein Dienst zum Erstellen KI-basierter Videolösungen und -anwendungen. Sie können Geschäftseinblicke in Echtzeit aus Videostreams generieren, Daten in der Nähe der Quelle verarbeiten und die KI Ihrer Wahl anwenden. Zeichnen Sie Videos von Interesse am Edge oder in der Cloud auf und kombinieren Sie sie mit anderen Daten, um Ihre Geschäftsentscheidungen zu voranzutreiben.  Azure Video Analyzer wird mithilfe der räumlichen Analyse aus Azure Cognitive Services erstellt.  Azure Video Analyzer for Media wird mit Gesicht, Speech, Übersetzung, Textanalyse, Custom Vision und Moderation von Textinhalten aus Azure Cognitive Services erstellt.  
 
-[Weitere Informationen zu Azure Video Analytics](https://aka.ms/video-analyzer-hub)
+[Weitere Informationen zu Azure Video Analytics](../azure-video-analyzer/index.yml)
 
 ## <a name="certifications-and-compliance"></a>Zertifizierungen und Compliance
 
-Applied AI Services hat Zertifizierungen wie die CSA STAR-Zertifizierung, FedRAMP Moderate und HIPAA BAA erhalten. Sie können Zertifizierungen für eigene Überwachungen und Sicherheitsüberprüfungen [herunterladen](https://aka.ms/applied-ai-download-certifications "Download verfügbar ist").
+Applied AI Services hat Zertifizierungen wie die CSA STAR-Zertifizierung, FedRAMP Moderate und HIPAA BAA erhalten. Sie können Zertifizierungen für eigene Überwachungen und Sicherheitsüberprüfungen [herunterladen](/samples/browse/?redirectedfrom=TechNet-Gallery "Download verfügbar ist").
 
 Informationen zum Datenschutz und zur Datenverwaltung finden Sie im [Trust Center](https://servicetrust.microsoft.com/ "Trust Center").
 
@@ -70,5 +70,5 @@ Informationen zum Datenschutz und zur Datenverwaltung finden Sie im [Trust Cente
 Applied AI Services stellt verschiedene Supportoptionen zur Verfügung, die Sie bei der Entwicklung intelligenter Anwendungen unterstützen. Applied AI Services verfügt außerdem über eine starke Gemeinschaft von Entwicklern, die Ihnen bei der Beantwortung Ihrer spezifischen Fragen helfen können. Eine vollständige Liste der Ihnen zur Verfügung stehenden Optionen finden Sie unter:
 
 - [Übermitteln von Feedback über UserVoice](https://aka.ms/AppliedAIUserVoice)
-- [Fragen in Microsoft Q&A stellen](https://aka.ms/AppliedAIMSFTQandA)
+- [Fragen in Microsoft Q&A stellen](/answers/topics/azure-applied-ai-services.html)
 - [Problembehandlung bei StackOverflow](https://aka.ms/AppliedAIStackOverflow)

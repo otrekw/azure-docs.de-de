@@ -3,17 +3,17 @@ title: Einrichten der AWS-Integration mit Azure Cost Management
 description: Dieser Artikel erläutert das Einrichten und Konfigurieren der Integration von AWS-Kosten- und Nutzungsberichten in Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/10/2021
+ms.date: 06/08/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: e1d332ba3ff2da50db9f59ce844844ac4c87cc0b
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 098766674e3bd665bb533fbf4d78fe1b0b1aebda
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738444"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756039"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Einrichten und Konfigurieren der Integration von AWS-Kosten- und Nutzungsberichten
 
@@ -27,7 +27,7 @@ Das Video zum [Einrichten von Connectors für AWS in Cost Management](https://ww
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>Erstellen eines Kosten- und Nutzungsberichts in AWS
 
-AWS empfiehlt zur Erfassung und Verarbeitung von AWS-Kosten die Verwendung eines Kosten- und Nutzungsberichts. Weitere Informationen finden Sie in der Dokumentation zum [AWS Cost and Usage Report](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html) (AWS-Kosten- und Nutzungsbericht).
+AWS empfiehlt zur Erfassung und Verarbeitung von AWS-Kosten die Verwendung eines Kosten- und Nutzungsberichts. Der cloudübergreifende Cost Management-Connector unterstützt Kosten- und Nutzungsberichte, die auf der Verwaltungskontoebene (konsolidiert) konfiguriert werden. Weitere Informationen finden Sie in der Dokumentation zum [AWS Cost and Usage Report](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html) (AWS-Kosten- und Nutzungsbericht).
 
 Verwenden Sie die Seite **Cost & Usage Reports** (Kosten- und Nutzungsberichte) der Billing and Cost Management Console in AWS, um mit den folgenden Schritten einen Kosten- und Nutzungsbericht zu erstellen:
 
@@ -53,6 +53,9 @@ Wenn Sie kein Präfix angeben, ist das Standardpräfix der Name, den Sie für de
     Notieren Sie sich den Berichtsnamen. Sie werden ihn später benötigen.
 
 Es kann bis zu 24 Stunden dauern, bis AWS mit der Übermittlung von Berichten an Ihren Amazon S3-Bucket beginnt. Nach dem Start der Übermittlung aktualisiert AWS mindestens einmal täglich die Dateien für den AWS-Kosten- und Nutzungsbericht. Sie können Ihre AWS-Umgebung weiter konfigurieren, ohne auf den Start der Übermittlung zu warten.
+
+> [!NOTE]
+> Kosten- und Nutzungsberichte, die auf Mitgliedskontoebene (mit Verknüpfung) konfiguriert werden, werden derzeit nicht unterstützt.
 
 ## <a name="create-a-role-and-policy-in-aws"></a>Erstellen einer Rolle und Richtlinie in AWS
 

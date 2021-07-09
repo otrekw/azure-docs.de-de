@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6370e8646c561ae88e27acf4355bfa2e4bf66f98
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d44e73b7d4c2988fb26c947100faac2ebcbe8f8f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078405"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474592"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (CLI)
 
@@ -51,7 +51,7 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> --resource-g
 
 Wenn die Instanz erfolgreich erstellt wurde, sieht das Ergebnis in Cloud Shell in etwa wie folgt aus und gibt Informationen über die von Ihnen erstellte Ressource aus:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="Befehlsfenster mit erfolgreicher Erstellung der Ressourcengruppe und der Azure Digital Twins-Instanz":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="Screenshot: Fenster „Cloud Shell“ mit erfolgreicher Erstellung einer Ressourcengruppe und Azure Digital Twins-Instanz im Azure-Portal.":::
 
 Beachten Sie die Angaben für **hostName**, **name** und **resourceGroup** der Azure Digital Twins-Instanz in der Ausgabe. Dies sind alles wichtige Werte, die Sie möglicherweise benötigen, wenn Sie mit Ihrer Azure Digital Twins-Instanz weiterarbeiten, um die Authentifizierung und die zugehörigen Azure-Ressourcen einzurichten. Wenn andere Benutzer in der Instanz programmieren, sollten Sie ihnen diese Werte mitteilen.
 
@@ -87,7 +87,7 @@ Die Ausgabe dieses Befehls enthält Informationen zur erstellten Rollenzuweisung
 >
 > Verwenden Sie die [Azure-Portalseite mit den Azure Active Directory-Benutzern](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers), um das Benutzerkonto auszuwählen und die zugehörigen Details zu öffnen. Kopieren Sie die *Objekt-ID* des Benutzers:
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="Ansicht der Benutzerseite im Azure-Portal mit Hervorhebung der GUID im Feld „Objekt-ID“" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="Screenshot: Benutzerseite im Azure-Portal mit Hervorhebung der GUID im Feld „Objekt-ID“." lightbox="media/includes/user-id.png":::
 >
 > Wiederholen Sie dann den list-Befehl für die Rollenzuweisung mit der *Objekt-ID* des Benutzers für den oben genannten Parameter `assignee`.
 

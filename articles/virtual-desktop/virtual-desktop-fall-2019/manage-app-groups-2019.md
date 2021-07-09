@@ -1,24 +1,24 @@
 ---
-title: 'Verwalten von App-Gruppen für Windows Virtual Desktop (klassisch): Azure'
-description: Hier erfahren Sie, wie Sie in Azure Active Directory (AD) Mandanten für Windows Virtual Desktop (klassisch) einrichten.
+title: Verwalten von App-Gruppen für Azure Virtual Desktop (klassisch) – Azure
+description: Hier erfahren Sie, wie Sie in Azure Active Directory (AD) Mandanten für Azure Virtual Desktop (klassisch) einrichten.
 author: Heidilohr
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0b95c87ad447b92532bc6c456c06eb85162c7247
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b4c0f4733ec1d80db4b2181ed292f702926e0e75
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444410"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754005"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>Tutorial: Verwalten von App-Gruppen für Windows Virtual Desktop (klassisch)
+# <a name="tutorial-manage-app-groups-for-azure-virtual-desktop-classic"></a>Tutorial: Verwalten von App-Gruppen für Azure Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../manage-app-groups.md) weiter.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../manage-app-groups.md) weiter.
 
-Die Standard-App-Gruppe, die für einen neuen Windows Virtual Desktop-Hostpool erstellt wird, veröffentlicht auch den vollständigen Desktop. Zusätzlich können Sie RemoteApp-Anwendungsgruppen für den Hostpool erstellen. In diesem Tutorial erfahren Sie, wie Sie eine RemoteApp-Gruppe erstellen und individuelle **Startmenü**-Apps veröffentlichen.
+Die Standard-App-Gruppe, die für einen neuen Azure Virtual Desktop-Hostpool erstellt wird, veröffentlicht auch den vollständigen Desktop. Zusätzlich können Sie RemoteApp-Anwendungsgruppen für den Hostpool erstellen. In diesem Tutorial erfahren Sie, wie Sie eine RemoteApp-Gruppe erstellen und individuelle **Startmenü**-Apps veröffentlichen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -26,7 +26,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen einer RemoteApp-Gruppe
 > * Gewähren von Zugriff auf RemoteApp-Programme
 
-Zur Vorbereitung müssen Sie ggf. zunächst das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](/powershell/windows-virtual-desktop/overview/), um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
+Zur Vorbereitung müssen Sie ggf. zunächst das [Azure Virtual Desktop-PowerShell-Modul herunterladen und importieren](/powershell/windows-virtual-desktop/overview/), um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

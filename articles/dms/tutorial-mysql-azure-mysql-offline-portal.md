@@ -12,24 +12,24 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2021
-ms.openlocfilehash: d1a8cc9a615474685222d0339ec948401fb8cdff
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 45d9104c5669b3b0adef2c32757076097656ae87
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128008"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967900"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-offline-using-dms"></a>Tutorial: Durchführen einer Offlinemigration von MySQL zu Azure Database for MySQL mithilfe von DMS
 
 Sie können Azure Database Migration Service verwenden, um per Hochgeschwindigkeits-Datenmigrationsfunktion eine einmalige vollständige Datenbankmigration einer lokalen MySQL-Instanz zu [Azure Database for MySQL](../mysql/index.yml) durchzuführen. In diesem Tutorial wird eine Beispieldatenbank unter Verwendung der Offlinemigrationsaktivität in Azure Database Migration Service von einer lokalen Instanz von MySQL 5.7 zu Azure Database for MySQL (v5.7) migriert. In dem Artikel wird zwar davon ausgegangen, dass die Quelle eine MySQL-Datenbankinstanz ist und es sich beim Ziel um Azure Database for MySQL handelt, er kann jedoch auch für die Migration zwischen Azure Database for MySQL-Instanzen verwendet werden. Hierzu müssen lediglich der Name und die Anmeldeinformationen des Quellservers geändert werden. Darüber hinaus wird auch die Migration von MySQL-Servern mit niedrigerer Version (ab v5.6) zu höheren Versionen unterstützt.
 
 > [!IMPORTANT]
-> Für Onlinemigrationen können Sie Open-Source-Tools wie [MyDumper/MyLoader](https://centminmod.com/mydumper.html) mit [Datenreplikation](/azure/mysql/concepts-data-in-replication) verwenden. 
+> Für Onlinemigrationen können Sie Open-Source-Tools wie [MyDumper/MyLoader](https://centminmod.com/mydumper.html) mit [Datenreplikation](../mysql/concepts-data-in-replication.md) verwenden. 
 
 [!INCLUDE [preview features callout](../../includes/dms-boilerplate-preview.md)]
 
 > [!NOTE]
-> Eine PowerShell-basierte skriptfähige Version dieser Migration finden Sie unter [Durchführen einer Offlinemigration von MySQL zu Azure Database for MySQL mit PowerShell und Azure Database Migration Service](https://docs.microsoft.com/azure/dms/migrate-mysql-to-azure-mysql-powershell).
+> Eine PowerShell-basierte skriptfähige Version dieser Migration finden Sie unter [Durchführen einer Offlinemigration von MySQL zu Azure Database for MySQL mit PowerShell und Azure Database Migration Service](./migrate-mysql-to-azure-mysql-powershell.md).
 
 > [!NOTE]
 > Amazon Relational Database Service (RDS) für MySQL und Amazon Aurora (MySQL-basiert) werden ebenfalls als Quellen für die Migration unterstützt.
@@ -50,6 +50,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Sie benötigen ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free).
 * Eine lokale MySQL-Datenbank mit der Version 5.7. Laden Sie bei Bedarf die Version 5.7 von [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) herunter, und installieren Sie sie.
+* Die MySQL-Offlinemigration wird nur für die Premium-SKU von DMS unterstützt.
 * [Erstellen einer Instanz in Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md) Im Artikel [Azure-Datenbank für MySQL: Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten](../mysql/connect-workbench.md) finden Sie ausführliche Informationen zur Verbindungsherstellung sowie zum Erstellen einer Datenbank mithilfe der Workbench-Anwendung. Die Version von Azure Database for MySQL muss mindestens der lokalen MySQL-Version entsprechen. MySQL 5.7 kann beispielsweise zu Azure Database for MySQL 5.7 migriert oder auf die Version 8 aktualisiert werden. 
 * Erstellen Sie ein Microsoft Azure Virtual Network für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das Site-to-Site-Konnektivität für Ihre lokalen Quellserver entweder über [ExpressRoute](../expressroute/expressroute-introduction.md) oder über [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) bereitstellt. Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Virtual Network](../virtual-network/index.yml) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
 
@@ -157,7 +158,7 @@ Die Registrierung des Ressourcenanbieters muss für jedes Azure-Abonnement ledig
   
 3. Geben Sie auf dem Bildschirm **Migrationsdienst erstellen** einen Namen für den Dienst, das Abonnement und eine neue oder vorhandene Ressourcengruppe an.
 
-4. Wählen Sie einen Tarif aus, und wechseln Sie zum Bildschirm „Netzwerk“. Die Offlinemigrationsfunktion steht sowohl im Standard- als auch im Premium-Tarif zur Verfügung.
+4. Wählen Sie einen Tarif aus, und wechseln Sie zum Bildschirm „Netzwerk“. Die Offlinemigrationsfunktion ist nur im Premium-Tarif verfügbar.
 
     Weitere Informationen zu Kosten und Tarifen finden Sie in der [Preisübersicht](https://aka.ms/dms-pricing).
 

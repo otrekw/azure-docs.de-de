@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2021
-ms.openlocfilehash: c73701ae5ada23ed20aaaaa7554a6c714f5dab26
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: df434c54bed103bd17d1a0009478e624da762ecc
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457009"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112235669"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Cosmos-Kontos, einer Datenbank, eines Containers sowie von Elementen mit dem Azure-Portal
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,12 +36,12 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mithilfe des Azure
 Azure-Abonnement oder kostenloses Azure Cosmos DB-Testkonto
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
-- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
+- [!INCLUDE [cosmos-db-emulator-docdb-api](includes/cosmos-db-emulator-docdb-api.md)]  
 
 <a id="create-account"></a>
 ## <a name="create-an-azure-cosmos-db-account"></a>Erstellen eines Azure Cosmos DB-Kontos
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](includes/cosmos-db-create-dbaccount.md)]
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>Hinzufügen einer Datenbank und eines Containers 
@@ -56,7 +56,7 @@ Sie können mit dem Daten-Explorer im Azure-Portal eine Datenbank und einen Cont
 
 1. Geben Sie im Bereich **Container hinzufügen** die Einstellungen für den neuen Container ein.
 
-    |Einstellung|Vorgeschlagener Wert|Beschreibung
+    |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG
     |---|---|---|
     |**Datenbank-ID**|ToDoList|Geben Sie *ToDoList* als Namen für die neue Datenbank ein. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder `/, \\, #, ?` noch nachgestellte Leerzeichen enthalten. Aktivieren Sie die Option **Durchsatz über Container hinweg teilen**. Diese Option ermöglicht es Ihnen, den für die Datenbank bereitgestellten Durchsatz auf alle Container in der Datenbank zu verteilen. Darüber hinaus hilft sie Ihnen dabei, Kosten zu sparen. |
     | **Datenbank-Durchsatz**| Sie können **automatische Skalierung** oder **manuellen** Durchsatz bereitstellen. Mit dem manuellen Durchsatz können Sie RU/s selbst skalieren, während der durch autoskalierungsbasierte Durchsatz dem System ermöglicht, RU/s basierend auf der Nutzung zu skalieren. Wählen Sie für dieses Beispiel **Manuell** aus. <br><br> Belassen Sie den Durchsatz bei 400 Anforderungseinheiten pro Sekunde (RU/s). Wenn Sie die Latenz reduzieren möchten, können Sie den Durchsatz später hochskalieren, indem Sie die erforderlichen RU/s mit dem [Kapazitätsrechner](estimate-ru-with-capacity-planner.md) schätzen.<br><br>**Hinweis**: Diese Einstellung ist nicht verfügbar, wenn ein neuer Container in einem serverlosen Konto erstellt wird. |
@@ -95,11 +95,11 @@ Verwenden Sie den Daten-Explorer, um Ihrer neuen Datenbank Daten hinzuzufügen.
 
 ## <a name="query-your-data"></a>Abfragen Ihrer Daten
 
-[!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)] 
+[!INCLUDE [cosmos-db-create-sql-api-query-data](includes/cosmos-db-create-sql-api-query-data.md)] 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+[!INCLUDE [cosmosdb-delete-resource-group](includes/cosmos-db-delete-resource-group.md)]
 
 Wenn Sie nur die Datenbank löschen und in Zukunft das Azure Cosmos-Konto verwenden möchten, können Sie zum Löschen der Datenbank die folgenden Schritte ausführen:
 

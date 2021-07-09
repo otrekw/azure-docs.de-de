@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: ab3fdd24446448e9c21a1e4867c26c960f814c7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 57c152546bfdbcdfbeba45536990c6c204106e7a
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958126"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109858178"
 ---
 Erste Schritte mit Gesichtserkennung unter Verwendung der Gesichtserkennungs-Clientbibliothek für Go. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -22,7 +22,7 @@ Die Gesichtserkennungsdienst-Clientbibliothek für Go kann für Folgendes verwen
 
 * [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
-* [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-persongroup)
+* [Erstellen und Trainieren einer PersonGroup](#create-and-train-a-persongroup)
 * [Identifizieren eines Gesichts](#identify-a-face)
 
 [Referenzdokumentation](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK-Download](https://github.com/Azure/azure-sdk-for-go)
@@ -106,7 +106,7 @@ In den folgenden Codebeispielen werden einfache Aufgaben mithilfe der Gesichtser
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
-* [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-persongroup)
+* [Erstellen und Trainieren einer PersonGroup](#create-and-train-a-persongroup)
 * [Identifizieren eines Gesichts](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
@@ -202,7 +202,7 @@ Nach dem Zuweisen von Gesichtern muss die Personengruppe (**PersonGroup**) train
 Der Identifizierungsvorgang verwendet ein Bild einer Person (oder mehrerer Personen) und sucht im Bild nach der Identität der einzelnen Gesichter (Gesichtserkennungssuche). Er vergleicht jedes erkannte Gesicht mit einem **PersonGroup**-Objekt, einer Datenbank mit verschiedenen **Person**-Objekten,deren Gesichtsmerkmale bekannt sind.
 
 > [!IMPORTANT]
-> Damit Sie dieses Beispiel ausführen können, müssen Sie zunächst den Code unter [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-persongroup) ausführen.
+> Damit Sie dieses Beispiel ausführen können, müssen Sie zunächst den Code unter [Erstellen und Trainieren einer PersonGroup](#create-and-train-a-persongroup) ausführen.
 
 ### <a name="get-a-test-image"></a>Abrufen eines Testbilds
 
@@ -272,10 +272,10 @@ Falls Sie in dieser Schnellstartanleitung ein Objekt vom Typ **PersonGroup** ers
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Gesichtserkennungs-Clientbibliothek für Go für einfache Gesichtserkennungsaufgaben verwenden. In der Referenzdokumentation finden Sie weitere Informationen zur Bibliothek.
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Gesichtserkennungs-Clientbibliothek für Go für einfache Gesichtserkennungsaufgaben verwenden. Als Nächstes erfahren Sie mehr über die verschiedenen Gesichtserkennungsmodelle und zum Angeben des richtigen Modells für Ihren Anwendungsfall.
 
 > [!div class="nextstepaction"]
-> [Referenz zur Gesichtserkennungs-API (Go)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)
+> [Angeben einer Gesichtserkennungsmodellversion](../../Face-API-How-to-Topics/specify-detection-model.md)
 
 * [Was ist der Gesichtserkennungsdienst?](../../overview.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/Face/FaceQuickstart.go).
