@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 9494bcc9941491bbb82c6a948dce720cb9e51424
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 693a102c988d87dc4ed6ac9f0f4cb2176ec78ca5
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502282"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059992"
 ---
 # <a name="configure-azure-static-web-apps"></a>Konfigurieren von Azure Static Web Apps
 
@@ -26,6 +26,9 @@ Die Konfiguration für Azure Static Web Apps erfolgt in der Datei _staticwebapp.
 - Globale HTTP-Headerdefinitionen
 - Benutzerdefinierte MIME-Typen
 
+> [!NOTE]
+> Die Datei [_routes.json_](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated)), die bisher für die Konfiguration des Routings genutzt wurde, wurde als veraltet eingestuft. Verwenden Sie _staticwebapp.config.json_ gemäß der Beschreibung in diesem Artikel, um das Routing und andere Einstellungen für Ihre statische Web-App zu konfigurieren.
+
 ## <a name="file-location"></a>Dateispeicherort
 
 Der für die Datei _staticwebapp.config.json_ empfohlene Speicherort ist der Ordner, der in der [Workflowdatei](./github-actions-workflow.md) als `app_location` festgelegt wurde. Die Datei kann jedoch an einem beliebigen Ort im Quellcodeordner Ihrer Anwendung abgelegt werden.
@@ -33,7 +36,7 @@ Der für die Datei _staticwebapp.config.json_ empfohlene Speicherort ist der Ord
 Details finden Sie unter [Beispielkonfigurationsdatei](#example-configuration-file).
 
 > [!IMPORTANT]
-> Die Datei [_routes.json_](./routes.md) wird ignoriert, wenn die Datei _staticwebapp.config.json_ vorhanden ist.
+> Die veraltete Datei [_routes.json_](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated)) wird ignoriert, wenn die Datei _staticwebapp.config.json_ vorhanden ist.
 
 ## <a name="routes"></a>Routen
 

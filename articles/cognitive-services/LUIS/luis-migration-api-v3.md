@@ -7,17 +7,17 @@ ms.manager: nitinme
 ms.author: aahi
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 04/21/2021
-ms.openlocfilehash: 957da9d5d26e5e7eaf27433807f700f4d3243765
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.date: 05/28/2021
+ms.openlocfilehash: 6eb5e54f2c1d8a4e7d05204fcfa111ddcb9f951a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897683"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692673"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Änderungen an Vorhersageendpunkten in V3
 
-Die Abfragevorhersage-Endpunkt-APIs wurden in V3 geändert. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren.
+Die Abfragevorhersage-Endpunkt-APIs wurden in V3 geändert. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren. Es gibt derzeit kein Datum, bis zu dem die Migration abgeschlossen werden muss.
 
 **Status der allgemeinen Verfügbarkeit**: Diese V3-APIs enthalten erhebliche Änderungen an JSON-Anforderungen und -Antworten gegenüber der V2-API.
 

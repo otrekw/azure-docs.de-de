@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 87a7295c785c08fcf3faffc20d34ceef45144848
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 995ee04e913ad4e363045e0aacc295aaec25f3e6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104787288"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677924"
 ---
 # <a name="tutorial-deploy-the-azure-industrial-iot-platform"></a>Tutorial: Bereitstellen der Azure Industrial IoT-Plattform
 
@@ -56,25 +56,27 @@ In diesem Tutorial lernen Sie Folgendes:
 
 2. Starten Sie die geführte Bereitstellung. Daraufhin werden durch das Skript die erforderlichen Informationen wie Azure-Konto, Abonnement, Zielressource sowie Gruppen- und Anwendungsname erfasst.
 
-Unter Windows:
-    ```
-    .\deploy
-    ```
+    Unter Windows:
+        ```
+        .\deploy -version <version>
+        ```
 
-Unter Linux oder auf einem Mac:
-    ```
-    ./deploy.sh
-    ```
+    Unter Linux oder auf einem Mac:
+        ```
+        ./deploy.sh -version <version>
+        ```
+
+    Ersetzen Sie \<version> durch die Version, die Sie bereitstellen möchten.
 
 3. Die Microservices und die Benutzeroberfläche sind Webanwendungen, die eine Authentifizierung erfordern. Hierzu sind drei App-Registrierungen in AAD erforderlich. Sollten die erforderlichen Rechte fehlen, gibt es zwei Möglichkeiten:
 
-- Bitten Sie den AAD-Administrator, der Anwendung eine mandantenweite Administratoreinwilligung zu erteilen.
-- Ein AAD-Administrator kann die AAD-Anwendungen erstellen. Der Ordner „deploy/scripts“ enthält das Skript „aad-register.ps1“, mit dem die AAD-Registrierung getrennt von der Bereitstellung durchgeführt werden kann. Durch das Skript wird eine Datei mit den relevanten Informationen für die Bereitstellung ausgegeben, die unter Verwendung des Arguments „-aadConfig“ an das Skript „deploy.ps1“ im gleichen Ordner übergeben werden muss.
-    ```bash
-    cd deploy/scripts
-    ./aad-register.ps1 -Name <application-name> -Output aad.json
-    ./deploy.ps1 -aadConfig aad.json
-    ```
+    - Bitten Sie den AAD-Administrator, der Anwendung eine mandantenweite Administratoreinwilligung zu erteilen.
+    - Ein AAD-Administrator kann die AAD-Anwendungen erstellen. Der Ordner „deploy/scripts“ enthält das Skript „aad-register.ps1“, mit dem die AAD-Registrierung getrennt von der Bereitstellung durchgeführt werden kann. Durch das Skript wird eine Datei mit den relevanten Informationen für die Bereitstellung ausgegeben, die unter Verwendung des Arguments „-aadConfig“ an das Skript „deploy.ps1“ im gleichen Ordner übergeben werden muss.
+        ```bash
+        cd deploy/scripts
+        ./aad-register.ps1 -Name <application-name> -Output aad.json
+        ./deploy.ps1 -aadConfig aad.json
+        ```
 
 Bei Produktionsbereitstellungen, die Staging, Rollback, Skalierung und Resilienz erfordern, kann die Plattform in [Azure Kubernetes Service (AKS)](https://github.com/Azure/Industrial-IoT/blob/master/docs/deploy/howto-deploy-aks.md) bereitgestellt werden.
 

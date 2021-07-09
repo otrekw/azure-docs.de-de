@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/13/2021
+ms.date: 05/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 650df4d85d01b9617e094faf4cf7952da1f8eb9f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ac95a6eecba6311f81b4dc871775c99698be2244
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134508"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467199"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cerby"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cerby
 
@@ -96,13 +96,14 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den Cerby-Client](mailto:help@cerby.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
+1. Ihre Cerby-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Der Standardwert von **Name** lautet **user.userprincipalname**. Cerby erwartet jedoch, dass dieser Wert dem Vornamen des Benutzers zugeordnet ist. Hierfür können Sie das **user.givenname**-Attribut aus der Liste oder den entsprechenden Attributwert gemäß der Konfiguration in Ihrer Organisation verwenden.
 
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+    ![image](common/default-attributes.png)
 
-1. Kopieren Sie im Abschnitt **Cerby einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
@@ -129,7 +130,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-cerby-sso"></a>Konfigurieren des einmaligen Anmeldens für Cerby
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Cerby** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Cerby](mailto:help@cerby.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von Cerby müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von Cerby](mailto:help@cerby.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-cerby-test-user"></a>Erstellen eines Cerby-Testbenutzers
 

@@ -13,12 +13,12 @@ ms.date: 02/15/2021
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: cb4995c0c71d0bcebb3cdd8ec471a92b7820cb9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ef84b1ac1a1d7f1b1c9c629c4e6eb2606f2441c
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100535160"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854844"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Schnellstart: Einrichten eines Mandanten
 
@@ -69,7 +69,7 @@ Falls Sie noch nicht über einen Azure AD-Mandanten verfügen oder einen neuen 
 Für die Erstellung Ihres neuen Mandanten sind folgende Angaben erforderlich:
 
 - **Name der Organisation**
-- **Anfangsdomäne**: Diese Domäne ist Teil von „*.onmicrosoft.com“. Sie können die Domäne später noch anpassen.
+- **Anfangsdomäne**: Die Anfangsdomäne `<domainname>.onmicrosoft.com` kann nicht bearbeitet oder gelöscht werden. Sie können später einen benutzerdefinierten Domänennamen hinzufügen.
 - **Land oder Region**
 
 > [!NOTE]

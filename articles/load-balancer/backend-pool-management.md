@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8a0294e205dd8a22f9847140511cbce634322c4a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3c9d1b7152133bf03b8bcdba9a7b97e5bef4a648
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112285227"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028287"
 ---
 # <a name="backend-pool-management"></a>Back-End-Pool-Verwaltung
 Der Back-End-Pool ist eine kritische Komponente des Lastenausgleichs. Der Back-End-Pool definiert die Gruppe der Ressourcen, die den Datenverkehr für eine bestimmte Lastenausgleichsregel verarbeiten.
@@ -161,7 +161,7 @@ az vm create \
 
 Befolgen Sie diese [Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-standard-create/), um einen Lastenausgleich und virtuelle Computer bereitzustellen und die virtuellen Computer über die Netzwerkschnittstelle zum Back-End-Pool hinzuzufügen.
 
-Befolgen Sie diese [Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-ip-configured-backend-pool), um einen Lastenausgleich und virtuelle Computer bereitzustellen und die virtuellen Computer über die IP-Adresse zum Back-End-Pool hinzuzufügen.
+Befolgen Sie diese [Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-ip-configured-backend-pool), um einen Lastenausgleich und virtuelle Computer bereitzustellen und die virtuellen Computer über die IP-Adresse zum Back-End-Pool hinzuzufügen.
 
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>Konfigurieren des Back-End-Pools anhand von IP-Adresse und virtuellem Netzwerk

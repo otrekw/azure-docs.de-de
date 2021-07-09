@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: baanders
-ms.openlocfilehash: f36eaaee9c2366a851b3fbc8007d73e4c233c5b8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 463661af3f576b6382aacee9abefaa6f3caa7957
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772895"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615927"
 ---
 Anweisungen hierzu finden Sie im Abschnitt [Veröffentlichen der Funktions-App in Azure](../articles/digital-twins/how-to-create-azure-function.md#publish-the-function-app-to-azure) des Artikels *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
 

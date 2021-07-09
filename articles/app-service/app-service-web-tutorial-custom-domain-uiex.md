@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1fcf8c681f4fad65209c27663045d4974be633f7
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: bfd3429531f1473e099e3296ebfebd50c6d4d864
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833243"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787907"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -314,7 +314,7 @@ Navigieren Sie zu den DNS-Namen, die Sie zuvor konfiguriert haben.
 <details>
 <summary>Bei mir tritt ein Fehler vom Typ „HTTP 404 (Nicht gefunden)“ auf.</summary>
 <ul>
-<li>Der konfigurierten benutzerdefinierten Domäne fehlt ein A-Eintrag oder ein CNAME-Eintrag.</li>
+<li>Der konfigurierten benutzerdefinierten Domäne fehlt ein A-Eintrag oder ein CNAME-Eintrag.  Überprüfen Sie mithilfe eines <a href="https://www.nslookup.io/">DNS-Onlinesuchtools</a>, ob die DNS-Einträge verfügbar gemacht werden.</li>
 <li>Im Browserclient ist die alte IP-Adresse Ihrer Domäne zwischengespeichert. Leeren Sie den Cache, und testen Sie die DNS-Auflösung erneut. Auf einem Windows-Computer können Sie den Cache mithilfe von <code>ipconfig /flushdns</code> leeren.</li>
 </ul>
 </details>

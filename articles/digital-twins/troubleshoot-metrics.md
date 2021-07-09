@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ffae474f6de5de7715585f0606a9630b136a2c37
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ae3c214cb1e1d58098dddd29a31d6403aa2e42c6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092132"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475619"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problembehandlung von Azure Digital Twins: Metriken
 
@@ -28,18 +28,18 @@ Metriken sind standardmäßig aktiviert. Azure Digital Twins-Metriken können ü
 
     Wählen Sie im Menü der Instanz **Metriken** aus.
    
-    :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="Screenshot der Seite „Metriken“ für Azure Digital Twins":::
+    :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="Screenshot der Seite „Metriken“ für Azure Digital Twins im Azure-Portal.":::
 
     Auf dieser Seite werden die Metriken für Ihre Azure Digital Twins-Instanz angezeigt. Sie können auch benutzerdefinierte Ansichten Ihrer Metriken erstellen, indem Sie die gewünschten Metriken in der Liste auswählen.
     
 3. Sie können Ihre Metrikdaten an einen Event Hubs-Endpunkt oder ein Azure Storage-Konto senden, indem Sie im Menü **Diagnoseeinstellungen** und dann **Diagnoseeinstellung hinzufügen** auswählen.
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Screenshot: Seite „Diagnoseeinstellungen“und Schaltfläche zum Hinzufügen":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Screenshot der Seite „Diagnoseeinstellungen“ und der Schaltfläche zum Hinzufügen im Azure-Portal.":::
 
     Weitere Informationen zu diesem Vorgang finden Sie unter [Problembehandlung: Einrichten der Diagnose](troubleshoot-diagnostics.md).
 
 4. Sie können Warnungen für Ihre Metrikdaten einrichten, indem Sie im Menü **Warnungen** und dann **+ Neue Warnungsregel** auswählen.
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Screenshot mit der Seite „Warnungen“ und der Schaltfläche zum Hinzufügen":::
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Screenshot der Seite „Warnungen“ und der Schaltfläche zum Hinzufügen im Azure-Portal.":::
 
     Weitere Informationen zu diesem Vorgang finden Sie unter [Problembehandlung: Einrichten von Warnungen](troubleshoot-alerts.md).
 

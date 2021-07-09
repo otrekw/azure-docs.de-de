@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: 5ffae530bcd8a7274b4b75c447591cf619012661
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 2eaf5a6a01b8ed0cb2a82f13c2d4d33ce88d5938
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387059"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100413"
 ---
 # <a name="what-is-custom-speech"></a>Was ist Custom Speech?
 
-Bei [Custom Speech](https://aka.ms/customspeech) handelt es sich um eine Reihe von UI-basierten Tools, mit denen Sie die Genauigkeit der Spracherkennung von Microsoft für Ihre Anwendungen und Produkte bewerten und verbessern können. Für den Einstieg benötigen Sie lediglich eine Handvoll Audiotestdateien. Nutzen Sie die in diesem Artikel angegebenen Links, um mit der Erstellung einer benutzerdefinierten Spracherkennung zu beginnen.
+Custom Speech ermöglicht Ihnen das Bewerten und Verbessern der Genauigkeit der Spracherkennung von Microsoft für Ihre Anwendungen und Produkte. Nutzen Sie die in diesem Artikel angegebenen Links, um mit der Erstellung einer benutzerdefinierten Spracherkennung zu beginnen.
 
 ## <a name="whats-in-custom-speech"></a>Was ist in Custom Speech enthalten?
 

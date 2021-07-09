@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services quickstart
 description: In diesem Dokument erfahren Sie, wie Sie mithilfe der Teams-Einbettung der UI-Bibliothek von Azure Communication Services sofort einsatzbereite Telefonieumgebungen erstellen.
 author: tophpalmer
 ms.author: chpalm
-ms.date: 06/30/2021
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c342d839cf794c490903a880bc7578d6cdbe50b1
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 9f56fc5138ce4a632d203976c9255e83e94d3fe0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113112543"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110104160"
 ---
 # <a name="teams-embed"></a>Teams-Einbettung
 

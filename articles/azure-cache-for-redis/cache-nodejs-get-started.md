@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: e4c58d67668a67eee38a73d46a2a40ca29c1dfd8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 311b6a603d0c68699155510797f1dd75e3cf915a
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121251"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655382"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Node.js
 
@@ -26,26 +26,31 @@ Wenn Sie direkt mit dem Code fortfahren möchten, finden Sie im [Node.js-Schnell
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-- [node_redis](https://github.com/mranney/node_redis), das Sie mit dem Befehl `npm install redis` installieren können. 
+- [node_redis](https://github.com/mranney/node_redis), das Sie mit dem Befehl `npm install redis` installieren können.
 
 Beispiele für die Verwendung anderer Node.js-Clients finden Sie in der entsprechenden Dokumentation für die [hier](https://redis.io/clients#nodejs)aufgeführten Node.js-Clients.
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
+
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
+Fügen Sie Umgebungsvariablen für Ihren **HOSTNAMEN** und Ihren **primären** Zugriffsschlüssel hinzu. Verwenden Sie diese Variablen aus Ihrem Code, damit solche vertraulichen Informationen nicht direkt in den Code eingefügt werden müssen.
 
-Fügen Sie Umgebungsvariablen für Ihren **HOSTNAMEN** und Ihren **primären** Zugriffsschlüssel hinzu. Diese Variablen werden verwendet, damit solche vertraulichen Informationen nicht direkt in den Code eingefügt werden müssen.
-
+```powershell
+set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
+set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
+
+```powershell
 set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 ## <a name="connect-to-the-cache"></a>Herstellen einer Verbindung mit dem Cache
 
-Die neuesten Builds von [node_redis](https://github.com/mranney/node_redis) unterstützen das Herstellen einer TLS-Verbindung mit Azure Cache for Redis. Das folgende Beispiel veranschaulicht das Herstellen einer Verbindung mit Azure Cache for Redis unter Verwendung des TLS-Endpunkts 6380. 
+Die neuesten Builds von [node_redis](https://github.com/mranney/node_redis) unterstützen das Herstellen einer TLS-Verbindung mit Azure Cache for Redis. Das folgende Beispiel veranschaulicht das Herstellen einer Verbindung mit Azure Cache for Redis unter Verwendung des TLS-Endpunkts 6380.
 
 ```js
 var redis = require("redis");
@@ -55,7 +60,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
     {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
 ```
 
-Erstellen Sie in Ihrem Code nicht für jeden Vorgang eine neue Verbindung. Verwenden Sie Verbindungen stattdessen möglichst häufig wieder. 
+Erstellen Sie in Ihrem Code nicht für jeden Vorgang eine neue Verbindung. Verwenden Sie Verbindungen stattdessen möglichst häufig wieder.
 
 ## <a name="create-a-new-nodejs-app"></a>Erstellen einer neuen Node.js-App
 
@@ -105,7 +110,7 @@ testCache();
 
 Führen Sie das Skript mit Node.js aus.
 
-```
+```powershell
 node redistest.js
 ```
 
@@ -115,9 +120,9 @@ Im folgenden Beispiel können Sie sehen, dass der `Message`-Schlüssel zuvor ein
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die in dieser Schnellstartanleitung erstellten Ressourcen beibehalten und wiederverwenden.
+Wenn Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die in dieser Schnellstartanleitung erstellten Ressourcen beibehalten und wiederverwenden.
 
-Wenn Sie die Schnellstart-Beispielanwendung nicht mehr benötigen, können Sie die in dieser Schnellstartanleitung erstellten Azure-Ressourcen löschen, um das Anfallen von Kosten zu vermeiden. 
+Wenn Sie die Schnellstart-Beispielanwendung nicht mehr benötigen, können Sie die hier erstellten Azure-Ressourcen löschen, um das Anfallen von Kosten zu vermeiden.
 
 > [!IMPORTANT]
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen, statt die Ressourcengruppe zu löschen.

@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: data-factory
 author: chez-charlie
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 5efc74ec150dcd18181404d93dc2142552a2c792
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 6c991188c266d2e169a7a1d50f4c2ea61f3a51f3
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108807483"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350554"
 ---
 Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardgrenzwerten, die sicherstellen sollen, dass Kundenabonnements vor anderen Workloads geschützt sind. Wenden Sie sich an den Support, um die Grenzwerte bis zum Höchstwert für Ihr Abonnement zu erhöhen.
 
@@ -21,11 +21,10 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 
 | Resource | Standardlimit | Maximales Limit |
 | -------- | ------------- | ------------- |
-| Data Factorys pro Ressourcengruppe | 800 | 800 |
 | Gesamtanzahl von Entitäten (z. B. Pipelines, Datasets, Trigger, verknüpfte Dienste, private Endpunkte und Integration Runtimes) in einer Data Factory | 5\.000 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gesamtanzahl CPU-Kerne für Azure-SSIS Integration Runtimes unter einem Abonnement | 256 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gleichzeitige Pipelineausführungen pro Data Factory (von allen Pipelines der Factory gemeinsam genutzt) | 10.000  | 10.000 |
-| Gleichzeitige externe Aktivitätsausführungen pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)<br><small>Externe Aktivitäten werden in der Integration Runtime verwaltet, aber in verknüpften Diensten ausgeführt. Hierzu gehören unter anderem Databricks, gespeicherte Prozeduren, HDInsights und Web. Die Beschränkung gilt nicht für die selbstgehostete IR.</small> | 3,000 | 3,000 |
+| Gleichzeitige externe Aktivitätsausführungen pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)<br><small>Externe Aktivitäten werden in der Integration Runtime verwaltet, aber in verknüpften Diensten ausgeführt. Hierzu gehören unter anderem Databricks, gespeicherte Prozeduren und Web. Die Beschränkung gilt nicht für die selbstgehostete IR.</small> | 3,000 | 3,000 |
 | Gleichzeitige Pipelineaktivitätsausführungen pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location) <br><small>Pipelineaktivitäten werden in der Integration Runtime ausgeführt. Hierzu zählen unter anderem „Lookup“, „GetMetadata“ und „Delete“. Die Beschränkung gilt nicht für die selbstgehostete IR.</small> | 1\.000 | 1\.000                                                        |
 | Gleichzeitige Erstellungsvorgänge pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)<br><small>Einschließlich Verbindung testen, Ordnerliste und Tabellenliste durchsuchen und Datenvorschau anzeigen. Die Beschränkung gilt nicht für die selbstgehostete IR.</small> | 200 | 200                                                          |
 | Gleichzeitige Nutzung von Datenintegrationseinheiten<sup>1</sup> pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| Regionsgruppe 1<sup>2</sup>: 6.000<br>Regionsgruppe 2<sup>2</sup>: 3,000<br>Regionsgruppe 3<sup>2</sup>: 1.500 | Regionsgruppe 1<sup>2</sup>: 6.000<br/>Regionsgruppe 2<sup>2</sup>: 3,000<br/>Regionsgruppe 3<sup>2</sup>: 1.500 |

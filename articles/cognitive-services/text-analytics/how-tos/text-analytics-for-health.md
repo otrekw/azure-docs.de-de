@@ -8,20 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/11/2021
+ms.date: 06/07/2021
 ms.author: aahi
-ms.custom: references_regions
-ms.openlocfilehash: 80a943d235783852f57832363b5af8048f010575
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37dd6eddc302062d756df79a03bd13cfc8c881e1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599430"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757173"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Gewusst wie: Verwenden von Text Analytics for Health (Vorschauversion)
 
 > [!IMPORTANT] 
-> Text Analytics for Health ist eine Vorschaufunktion, die „WIE BESEHEN“ und „MIT ALLEN MÄNGELN“ zur Verfügung gestellt wird. Daher sollte **Text Analytics for Health (Vorschau) nicht in einer Produktionsumgebung implementiert oder bereitgestellt werden.** Text Analytics for Health ist nicht für die Verwendung als medizinisches Hilfsmittel, zur klinischen Unterstützung, als Diagnosetool oder als sonstige Technologie für den Einsatz in Diagnose, Therapie, Entschärfung, Behandlung oder Prävention von Krankheiten oder medizinischen Fällen vorgesehen oder verfügbar, und Microsoft erteilt keine Lizenzen oder Rechte zur Nutzung dieser Funktion für die beschriebenen Zwecke. Diese Funktion ist nicht als Ersatz für professionelle medizinische Beratung oder medizinische Gutachten, Diagnosen, Behandlungen oder das klinische Urteilsvermögen einer medizinischen Fachkraft konzipiert oder vorgesehen und sollte nicht als solcher eingesetzt werden. Jede Verwendung von Text Analytics for Health liegt in der alleinigen Verantwortung des Kunden. Microsoft garantiert nicht, dass Text Analytics for Health oder die in Verbindung mit dieser Funktion bereitgestellten Materialien für medizinische Zwecke ausreichen oder anderweitig die gesundheitlichen oder medizinischen Anforderungen von Personen erfüllen. 
+> Text Analytics for Health ist eine Vorschaufunktion, die „WIE BESEHEN“ und „MIT ALLEN MÄNGELN“ zur Verfügung gestellt wird. Daher sollte Text Analytics for Health (Vorschau) nicht in einer Produktionsumgebung implementiert oder bereitgestellt werden. Text Analytics for Health ist nicht für die Verwendung als medizinisches Hilfsmittel, zur klinischen Unterstützung, als Diagnosetool oder als sonstige Technologie für den Einsatz in Diagnose, Therapie, Entschärfung, Behandlung oder Prävention von Krankheiten oder medizinischen Fällen vorgesehen oder verfügbar, und Microsoft erteilt keine Lizenzen oder Rechte zur Nutzung dieser Funktion für die beschriebenen Zwecke. Diese Funktion ist nicht als Ersatz für professionelle medizinische Beratung oder medizinische Gutachten, Diagnosen, Behandlungen oder das klinische Urteilsvermögen einer medizinischen Fachkraft konzipiert oder vorgesehen und sollte nicht als solcher eingesetzt werden. Jede Verwendung von Text Analytics for Health liegt in der alleinigen Verantwortung des Kunden. Der Kunde muss separat alle Quellvokabulare lizenzieren, die er gemäß den Bedingungen verwenden möchte, die für den [Anhang des UMLS-Metathesaurus-Lizenzvertrags](https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus/release/license_agreement_appendix.html) oder einen zukünftigen entsprechenden Link festgelegt sind. Der Kunde ist für die Einhaltung dieser Lizenzbedingungen verantwortlich, einschließlich aller geografischen oder anderen anwendbaren Einschränkungen.
 
 
 Text Analytics for Health ist ein Feature des Textanalyse-API-Diensts, der relevante medizinische Informationen aus unstrukturierten Texten wie Arztbriefen, Entlassungszusammenfassungen, klinischen Dokumenten und elektronischen Gesundheitsakten extrahiert und bezeichnet.  Es gibt zwei Möglichkeiten zur Nutzung dieses Diensts: 
@@ -74,22 +73,9 @@ Die Bedeutung medizinischer Inhalte wird in hohem Maße durch Modifizierer beein
 
 Die vollständige Liste der unterstützten Entitäten finden Sie in den von Text Analytics for Health zurückgegeben [Entitätskategorien](../named-entity-types.md?tabs=health). Informationen zu Zuverlässigkeitsbewertungen finden Sie unter dem [Hinweis zur Transparenz der Textanalyse](/legal/cognitive-services/text-analytics/transparency-note#general-guidelines-to-understand-and-improve-performance?context=/azure/cognitive-services/text-analytics/context/context). 
 
-### <a name="supported-languages-and-regions"></a>Unterstützte Sprachen und Regionen
+### <a name="supported-languages"></a>Unterstützte Sprachen
 
 Text Analytics for Health unterstützt nur Dokumente in englischer Sprache. 
-
-Die gehostete Web-API für Text Analytics for Health steht zurzeit nur in diesen Regionen zur Verfügung: USA, Westen 2; USA, Osten 2; USA, Mitte; Europa, Norden; Europa, Westen.
-
-## <a name="request-access-to-the-public-preview"></a>Anfordern des Zugriffs auf die öffentliche Vorschau
-
-Füllen Sie das [Formular zum Anfordern von Cognitive Services](https://aka.ms/csgate) aus, und senden Sie es, um Zugriff auf Text Analytics for Health (öffentliche Vorschau) anzufordern. Für die Verwendung von Text Analytics for Health fallen keine Gebühren an. 
-
-Im Formular müssen Sie Informationen über Sie selbst, Ihr Unternehmen und das Benutzerszenario eintragen, für das Sie den Container verwenden möchten. Das Azure Cognitive Services-Team überprüft das Formular nach der Übermittlung und sendet Ihnen eine E-Mail mit der Entscheidung.
-
-> [!IMPORTANT]
-> * Im Formular müssen Sie eine E-Mail-Adresse angeben, die einer Azure-Abonnement-ID zugeordnet ist.
-> * Die von Ihnen verwendete Azure-Ressource muss mit der genehmigten Azure-Abonnement-ID erstellt worden sein. 
-> * Überprüfen Sie Ihre E-Mail-Adresse (Posteingang und Junk-Ordner) auf Updates zum Status Ihrer Anwendung von Microsoft.
 
 ## <a name="using-the-docker-container"></a>Verwenden des Docker-Containers 
 
@@ -116,12 +102,9 @@ Ein Dokument darf maximal 5.120 Zeichen enthalten. Die maximal zulässige Anzahl
 
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>Strukturieren der API-Anforderung für die gehostete asynchrone Web-API
 
-Sowohl für den Container als auch die gehostete Web-API müssen Sie eine POST-Anforderung erstellen. Sie können mithilfe von [Postman](text-analytics-how-to-call-api.md), einem cURL-Befehl oder der **API-Testkonsole** in der [Referenz zur gehosteten API für Text Analytics for Health](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) schnell eine POST-Anforderung erstellen und an die gehostete Web-API in Ihrer gewünschten Region senden. 
+Sowohl für den Container als auch die gehostete Web-API müssen Sie eine POST-Anforderung erstellen. Sie können mithilfe von [Postman](text-analytics-how-to-call-api.md), einem cURL-Befehl oder der **API-Testkonsole** in der [Referenz zur gehosteten API für Text Analytics for Health](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/Health) schnell eine POST-Anforderung erstellen und an die gehostete Web-API in Ihrer gewünschten Region senden. Im API-Endpunkt (v3.1-preview.5) kann der boolesche Abfrageparameter `loggingOptOut` verwendet werden, um die Protokollierung zu Problembehandlungszwecken zu aktivieren.  Der Standardwert ist TRUE, wenn er in der Anforderungsabfrage nicht angegeben ist.
 
-> [!NOTE]
-> Die asynchronen Endpunkte `/analyze` und `/health` sind nur in den folgenden Regionen verfügbar: USA, Westen 2; USA, Osten 2; USA, Mitte; Europa, Norden; Europa, Westen.  Um erfolgreiche Anforderungen an diese Endpunkte zu stellen, stellen Sie sicher, dass Ihre Ressource in einer dieser Regionen erstellt wurde.
-
-Nachstehend finden Sie ein Beispiel für eine JSON-Datei, die an den POST-Text der Text Analytics for Health-API-Anforderung angefügt ist:
+Senden Sie die POST-Anforderung an `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs`. Nachstehend finden Sie ein Beispiel für eine JSON-Datei, die an den POST-Text der „Textanalyse für Gesundheit“-API-Anforderung angefügt ist:
 
 ```json
 example.json
@@ -141,11 +124,11 @@ example.json
 
 Da mithilfe dieser POST-Anforderung ein Auftrag für den asynchronen Vorgang übermittelt wird, enthält das Antwortobjekt keinen Text.  Sie benötigen jedoch den Wert des „operation-location“-Schlüssels in den Antwortheadern, um eine GET-Anforderung zum Überprüfen des Auftragsstatus und der Ausgabe zu erstellen.  Nachstehend finden Sie ein Beispiel für den Wert des „operation-location“-Schlüssels im Antwortheader der POST-Anforderung:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/health/jobs/<jobID>`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs/<jobID>`
 
 Wenn Sie den Auftragsstatus überprüfen möchten, senden Sie eine GET-Anforderung an die URL im Wert für den „operation-location“-Schlüsselheader der POST-Antwort.  Mithilfe der folgenden Status können Sie den Status eines Auftrag anzeigen: `NotStarted`, `running`, `succeeded`, `failed`, `rejected`, `cancelling` und `cancelled`.  
 
-Sie können einen Auftrag mit dem Status `NotStarted` oder `running` mit einem HTTP-Aufruf „DELETE“ in derselben URL abbrechen wie die GET-Anforderung.  Weitere Informationen zum DELETE-Aufruf finden Sie in der [Referenz zur gehosteten API für Text Analytics for Health](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/CancelHealthJob).
+Sie können einen Auftrag mit dem Status `NotStarted` oder `running` mit einem HTTP-Aufruf „DELETE“ in derselben URL abbrechen wie die GET-Anforderung.  Weitere Informationen zum DELETE-Aufruf finden Sie in der [Referenz zur gehosteten API für Text Analytics for Health](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/CancelHealthJob).
 
 Das nachstehende Beispiel zeigt die Antwort auf eine GET-Anforderung.  Die Ausgabe steht zum Abrufen zur Verfügung, bis `expirationDateTime` (24 Stunden ab der Uhrzeit, zu der der Auftrag erstellt wurde) nach Bereinigung der Ausgabe verstrichen ist.
 
@@ -302,7 +285,7 @@ Das nachstehende Beispiel zeigt die Antwort auf eine GET-Anforderung.  Die Ausga
 Sie können [mithilfe von Postman](text-analytics-how-to-call-api.md) oder der unten aufgeführten cURL-Beispielanforderung eine Abfrage an den von Ihnen bereitgestellten Container senden und darin die Variable `serverURL` durch den geeigneten Wert ersetzen.  Beachten Sie, dass die Version der API in der URL für den Container anders als diejenige der gehosteten API ist.
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1-preview.5/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
@@ -522,6 +505,18 @@ Text Analytics for Health erkennt die Beziehungen zwischen unterschiedlichen Kon
 
 **ABBREVIATION**
 
+**BODY_SITE_OF_CONDITION**
+
+**BODY_SITE_OF_TREATMENT**
+
+**COURSE_OF_CONDITION**
+
+**COURSE_OF_EXAMINATION**
+
+**COURSE_OF_MEDICATION**
+
+**COURSE_OF_TREATMENT**
+
 **DIRECTION_OF_BODY_STRUCTURE**
 
 **DIRECTION_OF_CONDITION**
@@ -532,17 +527,31 @@ Text Analytics for Health erkennt die Beziehungen zwischen unterschiedlichen Kon
 
 **DOSAGE_OF_MEDICATION**
 
+**EXAMINATION_FINDS_CONDITION**
+
+**EXPRESSION_OF_GENE**
+
+**EXPRESSION_OF_VARIANT**
+
 **FORM_OF_MEDICATION**
+
+**FREQUENCY_OF_CONDITION**
 
 **FREQUENCY_OF_MEDICATION**
 
 **FREQUENCY_OF_TREATMENT**
+
+**MUTATION_TYPE_OF_GENE**
+
+**MUTATION_TYPE_OF_VARIANT**
 
 **QUALIFIER_OF_CONDITION**
 
 **RELATION_OF_EXAMINATION**
 
 **ROUTE_OF_MEDICATION** 
+
+**SCALE_OF_CONDITION**
 
 **TIME_OF_CONDITION**
 
@@ -561,6 +570,8 @@ Text Analytics for Health erkennt die Beziehungen zwischen unterschiedlichen Kon
 **VALUE_OF_CONDITION**  
 
 **VALUE_OF_EXAMINATION**
+
+**VARIANT_OF_GENE**
 
 > [!NOTE]
 > * Beziehungen, die auf „CONDITION“ verweisen, verweisen auf den Entitätstyp „DIAGNOSIS“ oder den Entitätstyp „SYMPTOM_OR_SIGN“.

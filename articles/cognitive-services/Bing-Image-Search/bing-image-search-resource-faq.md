@@ -10,21 +10,21 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: e8502b1d01e0f3fbf5d42e924511cc978690bce4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e62aa434efade2cb1fa3d82265eb44d523dd869
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96342191"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773357"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Häufig gestellte Fragen (FAQ) zur Bing-Bildersuche-API
 
 > [!WARNING]
 > Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
-> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-In diesem Artikel finden Sie Antworten zu häufig gestellten Fragen zu Konzepten, Code und Szenarios der Bing-Bildersuche-API für Microsoft Cognitive Services in Azure.
+In diesem Artikel finden Sie Antworten zu häufig gestellten Fragen zu Konzepten, Code und Szenarios der Bing-Bildersuche-API für Azure Cognitive Services in Azure.
 
 ## <a name="response-headers-in-javascript"></a>Antwortheader in JavaScript
 
@@ -69,7 +69,7 @@ Dieser Ansatz schützt auch Ihren API-Schlüssel vor der Offenlegung, da dieser 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? Sie können gerne auf der [UserVoice-Website](https://cognitive.uservoice.com/forums/555907-bing-search) eine entsprechende Anforderung erstellen oder dafür abstimmen.
+Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? Erwägen Sie, sie mit dem [Feedbacktool](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749) anzufordern oder dafür zu stimmen.
 
 ## <a name="see-also"></a>Weitere Informationen
 
