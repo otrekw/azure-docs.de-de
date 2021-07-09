@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: c1322eac7fd5ec1ead09a7b0197db931f96f8d48
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 2e3f7a747d69bcc28fc34ba439d8e8523c750230
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073677"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112083996"
 ---
 <a name="HOLTop"></a>
 
@@ -54,7 +54,7 @@ Wenn Sie zur Auswahl einer **DSL** aufgefordert werden, wählen Sie **Kotlin** a
 
 In dieser Schnellstartanleitung wird der Gradle-Abhängigkeits-Manager verwendet. Die Clientbibliothek und Informationen zu anderen Abhängigkeits-Managern finden Sie im [zentralen Maven-Repository](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision).
 
-Navigieren Sie zur Datei *build.gradle.kts*, und öffnen Sie sie in Ihrer bevorzugten IDE bzw. Ihrem bevorzugten Text-Editor. Kopieren Sie anschließend die folgende Buildkonfiguration. Diese Konfiguration definiert das Projekt als Java-Anwendung, deren Einstiegspunkt die Klasse **ComputerVisionQuickstarts** ist. Die Bibliothek der Maschinelles Sehen-API wird importiert.
+Navigieren Sie zur Datei *build.gradle.kts*, und öffnen Sie sie in Ihrer bevorzugten IDE bzw. Ihrem bevorzugten Text-Editor. Kopieren Sie anschließend die folgende Buildkonfiguration. Diese Konfiguration definiert das Projekt als Java-Anwendung, deren Einstiegspunkt die Klasse **ComputerVisionQuickstart** ist. Die Bibliothek der Maschinelles Sehen-API wird importiert.
 
 ```kotlin
 plugins {
@@ -62,13 +62,13 @@ plugins {
     application
 }
 application { 
-    mainClassName = "ComputerVisionQuickstarts"
+    mainClassName = "ComputerVisionQuickstart"
 }
 repositories {
     mavenCentral()
 }
 dependencies {
-    compile(group = "com.microsoft.azure.cognitiveservices", name = "azure-cognitiveservices-computervision", version = "1.0.4-beta")
+    compile(group = "com.microsoft.azure.cognitiveservices", name = "azure-cognitiveservices-computervision", version = "1.0.6-beta")
 }
 ```
 
@@ -83,13 +83,13 @@ mkdir -p src/main/java
 > [!TIP]
 > Möchten Sie sich sofort die gesamte Codedatei für die Schnellstartanleitung ansehen? Die Datei steht [auf GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) zur Verfügung. Dort finden Sie die Codebeispiele aus dieser Schnellstartanleitung.
 
-Navigieren Sie zu dem neuen Ordner, und erstellen Sie eine Datei namens *ComputerVisionQuickstarts.java*. Öffnen Sie sie in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE.
+Navigieren Sie zu dem neuen Ordner, und erstellen Sie eine Datei namens *ComputerVisionQuickstart.java*. Öffnen Sie sie in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE.
 
 ### <a name="find-the-subscription-key-and-endpoint"></a>Ermitteln des Abonnementschlüssels und Endpunkts
 
 Öffnen Sie das Azure-Portal. Wenn die im Abschnitt **Voraussetzungen** erstellte Ressource für maschinelles Sehen erfolgreich bereitgestellt wurde, klicken Sie unter **Nächste Schritte** auf die Schaltfläche **Zu Ressource wechseln**. Ihren Abonnementschlüssel und den Endpunkt finden Sie auf der Seite mit dem **Schlüssel und dem Endpunkt** der Ressource unter **Ressourcenverwaltung**. 
 
-Definieren Sie die Klasse **ComputerVisionQuickstarts**. Erstellen Sie Variablen für den Schlüssel und Endpunkt Ihres Maschinelles Sehen-Abonnements. Fügen Sie Ihren Abonnementschlüssel und -endpunkt an der angegeben Stelle in den folgenden Code ein. Der Maschinelles Sehen-Endpunkt hat das Format `https://<your_computer_vision_resource_name>.cognitiveservices.azure.com/`.
+Definieren Sie die Klasse **ComputerVisionQuickstart**. Erstellen Sie Variablen für den Schlüssel und Endpunkt Ihres Maschinelles Sehen-Abonnements. Fügen Sie Ihren Abonnementschlüssel und -endpunkt an der angegeben Stelle in den folgenden Code ein. Der Maschinelles Sehen-Endpunkt hat das Format `https://<your_computer_vision_resource_name>.cognitiveservices.azure.com/`.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imports_and_vars)]
 
@@ -98,15 +98,11 @@ Definieren Sie die Klasse **ComputerVisionQuickstarts**. Erstellen Sie Variablen
 
 Fügen Sie in der **main**-Methode der Anwendung Aufrufe für die Methoden hinzu, die in dieser Schnellstartanleitung verwendet werden. Diese werden später definiert.
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_beginmain)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_main)]
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_authinmain)]
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_readinmain)]
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_endmain)]
 > [!div class="nextstepaction"]
-> [Ich habe den Client eingerichtet.](?success=set-up-client#object-model) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=set-up-client)
+> [Ich habe den Client eingerichtet.](?success=set-up-client#object-model) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=set-up-client&product=computer-vision&page=java-sdk)
 
 ## <a name="object-model"></a>Objektmodell
 
@@ -130,7 +126,7 @@ Instanziieren Sie in einer neuen Methode ein [ComputerVisionClient](/java/api/co
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_auth)]
 
 > [!div class="nextstepaction"]
-> [Ich habe den Client authentifiziert.](?success=authenticate-client#read-printed-and-handwritten-text) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=authenticate-client)
+> [Ich habe den Client authentifiziert.](?success=authenticate-client#read-printed-and-handwritten-text) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=authenticate-client&product=computer-vision&page=java-sdk)
 
 
 
@@ -145,7 +141,7 @@ Der OCR-Dienst kann sichtbaren Text in einem Bild lesen und in eine Zeichenfolge
 
 Erstellen Sie den Ordner **resources/** im Ordner **src/main/** Ihres Projekts, und fügen Sie ein zu Bild hinzu, aus dem Text gelesen werden soll. Sie können hier ein [Beispielbild](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg) zur Verwendung herunterladen.
 
-Fügen Sie dann die folgende Methodendefinition zu Ihrer **ComputerVisionQuickstarts**-Klasse hinzu. Ändern Sie den Wert von `localFilePath` so, dass er Ihrer Bilddatei entspricht. 
+Fügen Sie der Klasse **ComputerVisionQuickstart** anschließend die folgende Methodendefinition hinzu. Ändern Sie den Wert von `localFilePath` so, dass er Ihrer Bilddatei entspricht. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_setup)]
 
@@ -178,7 +174,7 @@ Fügen Sie abschließend die andere oben verwendete Hilfsmethode hinzu, die die 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_opid_extract)]
 
 > [!div class="nextstepaction"]
-> [Ich habe Text gelesen.](?success=read-printed-handwritten-text#run-the-application) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=read-printed-handwritten-text)
+> [Ich habe Text gelesen.](?success=read-printed-handwritten-text#run-the-application) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=read-printed-handwritten-text&product=computer-vision&page=java-sdk)
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
@@ -195,7 +191,7 @@ gradle run
 ```
 
 > [!div class="nextstepaction"]
-> [Ich habe die Anwendung ausgeführt.](?success=run-the-application#clean-up-resources) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=run-the-application)
+> [Ich habe die Anwendung ausgeführt.](?success=run-the-application#clean-up-resources) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=run-the-application&product=computer-vision&page=java-sdk)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -205,7 +201,7 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 * [Azure-Befehlszeilenschnittstelle](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]
-> [Ich habe die Ressourcen bereinigt.](?success=clean-up-resources#next-steps) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=clean-up-resources)
+> [Ich habe die Ressourcen bereinigt.](?success=clean-up-resources#next-steps) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=clean-up-resources&product=computer-vision&page=java-sdk)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

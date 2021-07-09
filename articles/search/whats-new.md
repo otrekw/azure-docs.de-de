@@ -6,18 +6,28 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/07/2021
+ms.date: 05/28/2021
 ms.custom: references_regions
-ms.openlocfilehash: f636089ff37bd87802ac0335b65d20dc446290d3
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 57776654087e6e07b8515d76c955cb82ce1e07bf
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517926"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787764"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
 Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben. In der [Liste der Previewfunktionen](search-api-preview.md) finden Sie eine umfassende Liste der Features, die noch nicht allgemein verfügbar sind.
+
+## <a name="may-2021"></a>Mai 2021
+
+|Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  BESCHREIBUNG | Verfügbarkeit  |
+|------------------------------------|--------------|---------------|
+| [Power Query-Connectorunterstützung (Vorschau)](search-how-to-index-power-query-data-sources.md) | Indexer können jetzt von anderen Cloudplattformen aus indizieren. Wenn Sie einen Indexer verwenden, um externe Datenquellen zur Indizierung zu crawlen, können Sie jetzt Power Query-Connectors verwenden, um eine Verbindung zu Amazon Redshift, Elasticsearch, PostgreSQL, Salesforce Objects, Salesforce Reports, Smartsheet und Snowflake herzustellen. </br></br>[Ankündigung (Techcommunity-Blog)](https://techcommunity.microsoft.com/t5/azure-ai/azure-cognitive-search-indexers-allow-you-to-ingest-data-from/ba-p/2381988)  | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/azure-cognitive-search/indexer-preview)), unter Verwendung von REST api-version=2020-06-30-Preview und dem Azure-Portal. |
+|[Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) | Die ADLS Gen2-Datenquelle, die von Indexern verwendet wird, ist jetzt allgemein verfügbar. | Allgemein verfügbar, unter Verwendung von REST api-version=2020-06-30-Preview und dem Azure-Portal. |
+|[MySQL-Unterstützung (Vorschau)](search-howto-index-mysql.md) | Für indexerbasierte Indizierung, mit Ankündigung einer Vorschau der Datenquellenunterstützung für Azure MySQL. | Öffentliche Vorschau, REST api-version=2020-06-30-Preview, [.NET SDK 11.2.1](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype.mysql) und Azure-Portal. |
+| [Weitere queryLanguage-Elemente für Rechtschreibprüfung und semantische Ergebnisse](/rest/api/searchservice/preview-api/search-documents#queryLanguage) | Für Abfrageanforderungen, die die Rechtschreibprüfung oder „queryType=semantic“ aufrufen, können Sie „queryLanguage“ jetzt auf eine nicht englische Sprache ([38 Sprachen](/rest/api/searchservice/preview-api/search-documents#queryLanguage)) festlegen. </br></br>[Ankündigung (Techcommunity-Blog)](https://techcommunity.microsoft.com/t5/azure-ai/introducing-multilingual-support-for-semantic-search-on-azure/ba-p/2385110) | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Verwenden Sie [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview, [Azure.Search.Documents 11.3.0-beta.2](https://www.nuget.org/packages/Azure.Search.Documents/11.3.0-beta.2) oder den [Suchexplorer](search-explorer.md) im Azure-Portal. </br></br>Es gelten [Regions- und Tarifeinschränkungen](semantic-search-overview.md#availability-and-pricing). |
+| [Verfügbarkeit doppelter Verschlüsselung](search-security-manage-encryption-keys.md#double-encryption) | Für Suchindizes und mit vom Kunden verwalteten Schlüsseln verschlüsselte Objekte wird nun die doppelte Verschlüsselung (Verschlüsselung von statischen und temporären Datenträgern) in allen unterstützten Regionen implementiert. | In allen Regionen, abhängig vom [Erstellungsdatum des Diensts](search-security-manage-encryption-keys.md#double-encryption). |
 
 ## <a name="april-2021"></a>April 2021
 

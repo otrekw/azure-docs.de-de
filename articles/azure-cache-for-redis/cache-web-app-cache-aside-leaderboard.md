@@ -7,20 +7,21 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: 90e60044e227ea1a18ea032d302b29abda1ea2e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 689a9f38199184d56c9442aabae01ba7c60e4842
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92536843"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951811"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Tutorial: Erstellen eines cachefremden Leaderboards in ASP.NET
 
-In diesem Tutorial aktualisieren Sie die in [ASP.NET quickstart for Azure Cache for Redis](cache-web-app-howto.md) (ASP.NET-Schnellstart für Azure Cache for Redis) erstellte ASP.NET-Web-App *ContosoTeamStats*, indem Sie ein Leaderboard hinzufügen, das das [cachefremde Muster](/azure/architecture/patterns/cache-aside) mit Azure Cache for Redis verwendet. Die Beispielanwendung zeigt eine Liste von Teamstatistiken aus einer Datenbank und veranschaulicht verschiedene Möglichkeiten, wie Azure Cache for Redis zum Speichern und Abrufen von Daten aus dem Cache verwendet werden kann, um die Leistung zu verbessern. Nach Abschluss des Tutorials verfügen Sie über eine funktionsfähige Web-App, die Lese- und Schreibvorgänge in einer Datenbank durchführt, mit Azure Cache for Redis optimiert ist und in Azure gehostet wird.
+In diesem Tutorial aktualisieren Sie die in [ASP.NET quickstart for Azure Cache for Redis](cache-web-app-howto.md) (ASP.NET-Schnellstart für Azure Cache for Redis) erstellte ASP.NET-Web-App *ContosoTeamStats*, indem Sie ein Leaderboard hinzufügen, das das [cachefremde Muster](/azure/architecture/patterns/cache-aside) mit Azure Cache for Redis verwendet. Die Beispielanwendung zeigt eine Liste der Teamstatistiken aus einer Datenbank an. Außerdem werden verschiedene Möglichkeiten veranschaulicht, Azure Cache for Redis zum Speichern und Abrufen von Daten aus dem Cache zu verwenden, um die Leistung zu verbessern. Nach Abschluss des Tutorials verfügen Sie über eine funktionsfähige Web-App, die Lese- und Schreibvorgänge in einer Datenbank durchführt, mit Azure Cache for Redis optimiert ist und in Azure gehostet wird.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Optimieren des Datendurchsatzes und Verringern der Datenbanklast durch Speichern und Abrufen von Daten mithilfe von Azure Cache for Redis
 > * Abrufen der fünf besten Teams mithilfe eines sortierten Redis-Satzes
 > * Bereitstellen der Azure-Ressourcen für die Anwendung mithilfe einer Resource Manager-Vorlage
@@ -34,9 +35,9 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Dieses Tutorial wird an der Stelle fortgesetzt, an der Sie in [ASP.NET quickstart for Azure Cache for Redis](cache-web-app-howto.md) (ASP.NET-Schnellstart für Azure Cache for Redis) aufgehört haben. Sollten Sie den Schnellstart noch nicht absolviert haben, holen Sie dies jetzt nach.
 * Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
-    * ASP.NET und Webentwicklung
-    * Azure-Entwicklung
-    * .NET Desktopentwicklung mit SQL Server Express LocalDB oder [SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express)
+  * ASP.NET und Webentwicklung
+  * Azure-Entwicklung
+  * .NET Desktopentwicklung mit SQL Server Express LocalDB oder [SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express)
 
 ## <a name="add-a-leaderboard-to-the-project"></a>Hinzufügen einer Bestenliste zum Projekt
 
@@ -45,7 +46,7 @@ In diesem Abschnitt des Tutorials konfigurieren Sie das Projekt *ContosoTeamStat
 ### <a name="add-the-entity-framework-to-the-project"></a>Hinzufügen von Entity Framework zum Projekt
 
 1. Öffnen Sie in Visual Studio die Projektmappe *ContosoTeamStats*, die Sie in [ASP.NET quickstart for Azure Cache for Redis](cache-web-app-howto.md) (ASP.NET-Schnellstart für Azure Cache for Redis) erstellt haben.
-2. Klicken Sie auf **Extras > NuGet-Paket-Manager > Paket-Manager-Konsole**.
+2. Wählen Sie **Extras > NuGet-Paket-Manager > Paket-Manager-Konsole** aus.
 3. Führen Sie den folgenden Befehl im Fenster **Paket-Manager-Konsole** aus, um Entity Framework zu installieren:
 
     ```powershell
@@ -58,7 +59,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Modelle**, und wählen Sie **Hinzufügen** > **Klasse** aus.
 
-1. Geben Sie als Klassenname die Zeichenfolge `Team` ein, und klicken Sie anschließend auf **Hinzufügen**.
+1. Geben Sie als Klassenname die Zeichenfolge `Team` ein, und wählen Sie anschließend **Hinzufügen** aus.
 
     ![Modellklasse hinzufügen](./media/cache-web-app-cache-aside-leaderboard/cache-model-add-class-dialog.png)
 
@@ -148,7 +149,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
 
 1. Fügen Sie den folgenden `connectionStrings`-Abschnitt im `configuration`-Abschnitt hinzu. Der Name der Verbindungszeichenfolge muss dem Namen der Entity Framework-Datenbank-Kontextklasse (`TeamContext`) entsprechen.
 
-    Diese Verbindungszeichenfolge setzt voraus, dass Sie die [Voraussetzungen](#prerequisites) erfüllt und SQL Server Express LocalDB installiert haben, das Teil des mit Visual Studio 2019 installierten Workloads *.NET-Desktopentwicklung* ist.
+    Diese Verbindungszeichenfolge setzt voraus, dass Sie die [Voraussetzungen](#prerequisites) erfüllt und SQL Server Express LocalDB installiert haben, das Teil des mit Visual Studio 2019 installierten Workloads *.NET-Desktopentwicklung* ist.
 
     ```xml
     <connectionStrings>
@@ -171,15 +172,15 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
 
 ### <a name="add-the-teamscontroller-and-views"></a>Hinzufügen von „TeamsController“ und Ansichten
 
-1. Erstellen Sie in Visual Studio das Projekt. 
+1. Erstellen Sie in Visual Studio das Projekt.
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie anschließend **Hinzufügen** > **Controller** aus.
 
-1. Wählen Sie **MVC 5-Controller mit Ansichten per Entity Framework** aus, und klicken Sie auf **Hinzufügen**. Sollte nach dem Klicken auf **Hinzufügen** eine Fehlermeldung angezeigt werden, vergewissern Sie sich, dass das Projekt erstellt wurde.
+1. Wählen Sie **MVC 5-Controller mit Ansichten per Entity Framework** und anschließend **Hinzufügen** aus. Sollte nach der Auswahl von **Hinzufügen** eine Fehlermeldung angezeigt werden, vergewissern Sie sich, dass das Projekt erstellt wurde.
 
     ![Controllerklasse hinzufügen](./media/cache-web-app-cache-aside-leaderboard/cache-add-controller-class.png)
 
-1. Wählen Sie in der Dropdownliste **Modellklasse** die Option **Team (ContosoTeamStats.Models)** aus. Wählen Sie in der Dropdownliste **Datenkontextklasse** die Option **TeamContext (ContosoTeamStats.Models)** aus. Geben Sie im Textfeld **Controllername** die Zeichenfolge `TeamsController` ein (sofern sie nicht automatisch eingefügt wird). Klicken Sie auf **Hinzufügen** , um die Controllerklasse zu erstellen und die Standardansichten hinzuzufügen.
+1. Wählen Sie in der Dropdownliste **Modellklasse** die Option **Team (ContosoTeamStats.Models)** aus. Wählen Sie in der Dropdownliste **Datenkontextklasse** die Option **TeamContext (ContosoTeamStats.Models)** aus. Geben Sie im Textfeld **Controllername** die Zeichenfolge `TeamsController` ein (sofern sie nicht automatisch eingefügt wird). Wählen Sie **Hinzufügen** aus, um die Controllerklasse zu erstellen und die Standardansichten hinzuzufügen.
 
     ![Controller konfigurieren](./media/cache-web-app-cache-aside-leaderboard/cache-configure-controller.png)
 
@@ -216,7 +217,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
 
 ### <a name="configure-the-layout-view"></a>Konfigurieren der Layoutansicht
 
-1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, erweitern Sie den Ordner **Freigegeben**, und doppelklicken Sie auf **_Layout.cshtml**. 
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, erweitern Sie den Ordner **Freigegeben**, und doppelklicken Sie auf **_Layout.cshtml**.
 
     ![_Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -234,7 +235,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
 
     ![Änderungen am Code](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. Drücken Sie **STRG+F5** , um die Anwendung zu erstellen und auszuführen. Diese Version der Anwendung liest die Ergebnisse direkt aus der Datenbank. Die Aktionen **Neu erstellen**, **Bearbeiten**, **Details** und **Löschen** wurden der Anwendung aufgrund des Gerüsts **MVC 5-Controller mit Ansichten per Entity Framework** automatisch hinzugefügt. Im nächsten Abschnitt des Tutorials fügen Sie Azure Cache for Redis hinzu, um den Datenzugriff zu optimieren und zusätzliche Features für die Anwendung bereitzustellen.
+1. Drücken Sie **STRG+F5** , um die Anwendung zu erstellen und auszuführen. Diese Version der Anwendung liest die Ergebnisse direkt aus der Datenbank. Die Aktionen **Neu erstellen**, **Bearbeiten**, **Details** und **Löschen** wurden der Anwendung aufgrund des Gerüsts **MVC 5-Controller mit Ansichten per Entity Framework** automatisch hinzugefügt. Im nächsten Abschnitt des Tutorials fügen Sie Azure Cache for Redis hinzu, um den Datenzugriff zu optimieren und weitere Features für die Anwendung bereitzustellen.
 
     ![Starter-Anwendung](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
@@ -396,6 +397,7 @@ Die Teamstatistiken müssen zur Verwendung von Azure Cache for Redis nicht in me
 1. Fügen Sie der `TeamsController` -Klasse die vier folgenden Methoden hinzu, um die verschiedenen Methoden zum Abrufen der Teamstatistik aus dem Cache und der Datenbank zu implementieren. Jede dieser Methoden gibt ein Element des Typs `List<Team>` zurück, das dann in der Ansicht gezeigt wird.
 
     Die `GetFromDB` -Methode liest die Teamstatistik aus der Datenbank.
+
     ```csharp
     List<Team> GetFromDB()
     {
@@ -585,10 +587,10 @@ Der im Rahmen dieses Beispiels generierte Gerüstcode enthält Methoden zum Hinz
     Dieser Link erstellt ein neues Team. Ersetzen Sie das Absatzelement durch die folgende Tabelle. Die Tabelle enthält Aktionslinks zum Erstellen eines neuen Teams, zum Spielen einer neuen Saison, zum Löschen des Cache, zum Abrufen der Teams aus dem Cache in unterschiedlichen Formaten, zum Abrufen der Teams aus der Datenbank sowie zum Neuerstellen der Datenbank mit frischen Beispieldaten.
 
     ```html
-    <table class="table">
+    <table class="table&quot;>
         <tr>
             <td>
-                @Html.ActionLink("Create New", "Create")
+                @Html.ActionLink(&quot;Create New&quot;, &quot;Create")
             </td>
             <td>
                 @Html.ActionLink("Play Season", "Index", new { actionType = "playGames" })
@@ -620,7 +622,8 @@ Der im Rahmen dieses Beispiels generierte Gerüstcode enthält Methoden zum Hinz
     ```html
     <tr><td colspan="5">@ViewBag.Msg</td></tr>
     ```
-    In dieser Zeile wird der Wert `ViewBag.Msg` angezeigt, der einen Statusbericht zum aktuellen Vorgang enthält. `ViewBag.Msg` wird festgelegt, wenn Sie auf einen der Aktionslinks aus dem vorherigen Schritt klicken.
+
+    In dieser Zeile wird der Wert `ViewBag.Msg` angezeigt, der einen Statusbericht zum aktuellen Vorgang enthält. `ViewBag.Msg` wird festgelegt, wenn Sie einen der Aktionslinks aus dem vorherigen Schritt auswählen.
 
     ![Statusmeldung](./media/cache-web-app-cache-aside-leaderboard/cache-status-message.png)
 
@@ -630,7 +633,9 @@ Der im Rahmen dieses Beispiels generierte Gerüstcode enthält Methoden zum Hinz
 
 Führen Sie die Anwendung lokal auf Ihrem Computer aus, um die Funktionalität zu überprüfen, die zur Unterstützung der Teams hinzugefügt wurde.
 
-In diesem Test werden Anwendung und Datenbank lokal ausgeführt. Azure Cache for Redis wird jedoch remote in Azure gehostet. Daher bleibt die Leistung des Caches geringfügig hinter der der Datenbank zurück. Die beste Leistung wird erzielt, wenn sich die Clientanwendung und die Azure Cache for Redis-Instanz am gleichen Ort befinden. Im nächsten Abschnitt stellen Sie alle Ressourcen in Azure bereit, um zu prüfen, wie sich die Leistung mithilfe des Caches verbessert.
+In diesem Test werden Anwendung und Datenbank lokal ausgeführt. Azure Cache for Redis ist nicht lokal. Es wird remote in Azure gehostet. Daher bleibt die Leistung des Caches geringfügig hinter der der Datenbank zurück. Die beste Leistung wird erzielt, wenn sich die Clientanwendung und die Azure Cache for Redis-Instanz am gleichen Ort befinden. 
+
+Im nächsten Abschnitt stellen Sie alle Ressourcen in Azure bereit, um zu prüfen, wie sich die Leistung mithilfe des Caches verbessert.
 
 So führen Sie die App lokal aus
 
@@ -646,9 +651,9 @@ So führen Sie die App lokal aus
 
 In diesem Abschnitt stellen Sie eine neue Datenbank in SQL-Datenbank für die App bereit, die in Azure gehostet wird.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) links oben auf **Ressource erstellen**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) links oben **Ressource erstellen** aus.
 
-1. Klicken Sie auf der Seite **Neu** auf **Datenbanken** > **SQL-Datenbank**.
+1. Wählen Sie auf der Seite **Neu** die Optionen **Datenbanken** > **SQL-Datenbank** aus.
 
 1. Verwenden Sie die folgenden Einstellungen für die neue SQL-Datenbank:
 
@@ -656,10 +661,10 @@ In diesem Abschnitt stellen Sie eine neue Datenbank in SQL-Datenbank für die Ap
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Datenbankname** | *ContosoTeamsDatabase* | Gültige Datenbanknamen finden Sie unter [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). |
    | **Abonnement** | *Ihr Abonnement*  | Wählen Sie das gleiche Abonnement, mit dem Sie den Cache erstellt und den App Service gehostet haben. |
-   | **Ressourcengruppe**  | *TestResourceGroup* | Klicken Sie auf **Vorhandene verwenden**, und verwenden Sie die gleichen Ressourcengruppe, der Sie Ihren Cache und App Service hinzugefügt haben. |
+   | **Ressourcengruppe**  | *TestResourceGroup* | Wählen Sie **Vorhandene verwenden** aus, und verwenden Sie die gleichen Ressourcengruppe, der Sie Ihren Cache und App Service hinzugefügt haben. |
    | **Quelle auswählen** | **Leere Datenbank** | Beginnen Sie mit einer leeren Datenbank. |
 
-1. Klicken Sie unter **Server** auf **Erforderliche Einstellungen konfigurieren** > **Neuen Server erstellen**, und geben Sie die folgenden Informationen ein. Klicken Sie dann auf die Schaltfläche **Auswählen**:
+1. Wählen Sie unter **Server** die Option **Erforderliche Einstellungen konfigurieren** > **Neuen Server erstellen** aus, und geben Sie die folgenden Informationen ein. Verwenden Sie dann die Schaltfläche **Auswählen**:
 
    | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG |
    | ------------ | ------------------ | ------------------------------------------------- |
@@ -668,15 +673,15 @@ In diesem Abschnitt stellen Sie eine neue Datenbank in SQL-Datenbank für die Ap
    | **Kennwort** | Ein gültiges Kennwort | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
    | **Location** | *USA, Osten* | Wählen Sie die gleiche Region, in der Sie den Cache und App Service erstellt haben. |
 
-1. Klicken Sie auf **An Dashboard anheften** und dann auf **Erstellen**, um die neue Datenbank und den Server zu erstellen.
+1. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus, um die neue Datenbank und den Server zu erstellen.
 
-1. Klicken Sie nach Erstellen der neuen Datenbank auf **Datenbank-Verbindungszeichenfolgen anzeigen**, und kopieren Sie die Verbindungszeichenfolge **ADO.NET**.
+1. Wählen Sie nach Erstellen der neuen Datenbank **Datenbank-Verbindungszeichenfolgen anzeigen** aus, und kopieren Sie die Verbindungszeichenfolge **ADO.NET**.
 
     ![Verbindungszeichenfolgen anzeigen](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
-1. Navigieren Sie im Azure-Portal zu Ihrem App Service, und klicken Sie unter den Abschnitt „Verbindungszeichenfolgen“ erst auf **Anwendungseinstellungen** und dann auf **Neue Verbindungszeichenfolge hinzufügen**.
+1. Navigieren Sie im Azure-Portal zu Ihrem App Service, und wählen Sie unter dem Abschnitt „Verbindungszeichenfolgen“ erst **Anwendungseinstellungen** und dann **Neue Verbindungszeichenfolge hinzufügen** aus.
 
-1. Fügen Sie eine neue Verbindungszeichenfolge namens *TeamContext* hinzu, die der Entity Framework-Datenbank-Kontextklasse entspricht. Fügen Sie die Verbindungszeichenfolge für die neue Datenbank als Wert ein. Ersetzen Sie unbedingt die folgenden Platzhalter in der Verbindungszeichenfolge, und klicken Sie auf **Speichern**:
+1. Fügen Sie eine neue Verbindungszeichenfolge namens *TeamContext* hinzu, die der Entity Framework-Datenbank-Kontextklasse entspricht. Fügen Sie die Verbindungszeichenfolge für die neue Datenbank als Wert ein. Ersetzen Sie unbedingt die folgenden Platzhalter in der Verbindungszeichenfolge, und wählen Sie **Speichern** aus:
 
     | Platzhalter | Vorgeschlagener Wert |
     | --- | --- |
@@ -689,11 +694,11 @@ In diesem Abschnitt stellen Sie eine neue Datenbank in SQL-Datenbank für die Ap
 
 In diesem Schritt des Tutorials veröffentlichen Sie die Anwendungsaktualisierungen in Azure für die Ausführung in der Cloud.
 
-1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **ContosoTeamStats**, und wählen Sie **Veröffentlichen**.
+1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **ContosoTeamStats**, und wählen Sie **Veröffentlichen** aus.
 
     ![Veröffentlichen](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
-2. Klicken Sie auf **Veröffentlichen**, um das gleiche Veröffentlichungsprofil zu verwenden, das Sie im Schnellstart erstellt haben.
+2. Wählen Sie **Veröffentlichen** aus, um das gleiche Veröffentlichungsprofil zu verwenden, das Sie im Schnellstart erstellt haben.
 
 3. Nach der Veröffentlichung startet Visual Studio die App in Ihrem standardmäßigen Webbrowser.
 
@@ -713,11 +718,11 @@ In diesem Schritt des Tutorials veröffentlichen Sie die Anwendungsaktualisierun
     | Rebuild DB |Erstellt die Datenbank neu und lädt sie mit Beispielteamdaten. |
     | Edit/Details/Delete |Dient zum Bearbeiten eines Teams, zum Anzeigen von Teamdetails bzw. zum Löschen eines Teams. |
 
-Klicken Sie auf einige der Aktionen, und experimentieren Sie mit dem Abrufen der Daten aus unterschiedlichen Quellen. Beachten Sie die jeweils unterschiedliche Vorgangsdauer bei den verschiedenen Methoden zum Abrufen von Daten aus der Datenbank und dem Cache.
+Wählen Sie einige der Aktionen aus, und experimentieren Sie mit dem Abrufen der Daten aus unterschiedlichen Quellen. Beachten Sie die jeweils unterschiedliche Vorgangsdauer bei den verschiedenen Methoden zum Abrufen von Daten aus der Datenbank und dem Cache.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Beispielanwendung des Tutorials nicht mehr benötigen, können Sie die Azure-Ressourcen löschen, um Kosten und Ressourcen zu sparen. Alle Ihre Ressourcen müssen sich in der gleichen Ressourcengruppe befinden, sodass Sie sie durch Löschen der Ressourcengruppe alle in einem Vorgang löschen können. In den Anweisungen zu diesem Thema wurde eine Ressourcengruppe namens *TestResources* verwendet.
+Wenn Sie die Beispielanwendung des Tutorials nicht mehr benötigen, können Sie die Azure-Ressourcen löschen, um Kosten und Ressourcen zu sparen. Alle Ihre Ressourcen sollten in derselben Ressourcengruppe enthalten sein. Sie können sie zusammen in einem Vorgang löschen, indem Sie die Ressourcengruppe löschen. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *TestResources* verwendet.
 
 > [!IMPORTANT]
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen.
@@ -725,11 +730,11 @@ Wenn Sie die Beispielanwendung des Tutorials nicht mehr benötigen, können Sie 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 2. Geben Sie im Textfeld **Filterelemente...** den Namen Ihrer Ressourcengruppe ein.
-3. Klicken Sie rechts neben Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
+3. Wählen Sie rechts neben Ihrer Ressourcengruppe **...** und dann **Ressourcengruppe löschen** aus.
 
     ![Löschen](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
-4. Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie den Namen der entsprechenden Ressourcengruppe ein, und klicken Sie auf **Löschen**.
+4. Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung den Namen Ihrer Ressourcengruppe ein, und klicken Sie auf **Löschen**.
 
     Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 

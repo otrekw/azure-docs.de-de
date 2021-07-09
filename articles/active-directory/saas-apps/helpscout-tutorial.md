@@ -9,26 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 05/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 7c5e8210bc8b805d72149fd2ef3335c1d637a58f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0db3825a3e835010ee3c7b8e6203191653e6507f
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92445221"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572294"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Tutorial: Azure Active Directory-Integration mit Help Scout
 
-In diesem Tutorial erfahren Sie, wie Sie Help Scout in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Help Scout in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Help Scout in Azure Active Directory (Azure AD) integrieren. Die Integration von Help Scout in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Help Scout hat.
-* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Help Scout anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* In Azure AD steuern, wer Zugriff auf Help Scout hat.
+* Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Help Scout anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,52 +40,41 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Help Scout unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 * Help Scout unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
-## <a name="adding-help-scout-from-the-gallery"></a>Hinzufügen von Help Scout aus dem Katalog
+## <a name="add-help-scout-from-the-gallery"></a>Hinzufügen von Help Scout aus dem Katalog
 
 Zum Konfigurieren der Integration von Help Scout in Azure AD müssen Sie Help Scout über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Help Scout** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Help Scout** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-help-scout"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Help Scout
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Help Scout mithilfe eines Testbenutzers namens **B.Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Help Scout eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Help Scout mithilfe einer Testbenutzerin mit dem Namen **B. Simon**. Damit das einmalige Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Help Scout eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Help Scout müssen die folgenden Schritte ausgeführt werden:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Help Scout die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Help Scout](#configure-help-scout-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    * **[Erstellen eines Help Scout-Testbenutzers](#create-help-scout-test-user)** , um eine Entsprechung von B. Simon in Help Scout zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+    1. **[Erstellen eines Help Scout-Testbenutzers](#create-help-scout-test-user)** , um eine Entsprechung von B. Simon in Help Scout zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Help Scout die folgenden Schritte aus:
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Help Scout** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Help Scout** die Option **Einmaliges Anmelden**.
-
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
-
-1. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
-
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
-
-    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Der **Bezeichner** ist der **Benutzergruppen-URI (ID der Dienstanbieterentität)** aus Help Scout und beginnt mit `urn:`.
 
@@ -100,9 +85,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Help S
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
-
-    Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://secure.helpscout.net/members/login/`.
+    Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://secure.helpscout.net/members/login/`
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -112,62 +95,29 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Help S
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    a. Anmelde-URL
-
-    b. Azure AD-Bezeichner
-
-    c. Abmelde-URL
-
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-In diesem Abschnitt wird ein Testbenutzer namens B. Simon im Azure-Portal erstellt.
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    a. Geben Sie **B.Simon** in das Feld **Name** ein.
-  
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **B.Simon\@ihreunternehmensdomäne.erweiterung**.  
-    Zum Beispiel, B.Simon@contoso.com
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
-
-    d. Klicken Sie auf **Erstellen**.
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Help Scout gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Help Scout** aus.
-
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
-2. Wählen Sie in der Anwendungsliste **Help Scout** aus.
-
-    ![Help Scout-Link in der Anwendungsliste](common/all-applications.png)
-
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
-
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
-
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Help Scout** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-help-scout-sso"></a>Konfigurieren des einmaligen Anmeldens für Help Scout
 
@@ -183,15 +133,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie im oberen Menü auf **Verwalten**, und wählen Sie anschließend im Dropdownmenü die Option **Unternehmen** aus.
 
-    ![Screenshot: Menü „Verwalten“ mit ausgewählter Option „Unternehmen“](./media/helpscout-tutorial/settings1.png)
+    ![Screenshot: Menü „Verwalten“ mit ausgewählter Option „Unternehmen“](./media/helpscout-tutorial/settings.png)
 
 1. Wählen Sie im linken Navigationsbereich **Authentication** (Authentifizierung) aus.
 
-    ![Screenshot: Navigationsbereich „Authentication“ (Authentifizierung) ausgewählt](./media/helpscout-tutorial/settings2.png)
+    ![Screenshot: Navigationsbereich „Authentication“ (Authentifizierung) ausgewählt](./media/helpscout-tutorial/authentication.png)
 
 1. Dadurch gelangen Sie zum Abschnitt mit den SAML-Einstellungen. Führen Sie dort die folgenden Schritte aus:
 
-    ![Screenshot: Registerkarte „Einmaliges Anmelden“, auf der Sie die angegebenen Informationen eingeben](./media/helpscout-tutorial/settings3.png)
+    ![Screenshot: Registerkarte „Einmaliges Anmelden“, auf der Sie die angegebenen Informationen eingeben](./media/helpscout-tutorial/configuration.png)
 
     a. Kopieren Sie den Wert für **Post-back URL (Assertion Consumer Service URL)** (Postback-URL (Assertionsverbraucherdienst-URL)), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Feld **Antwort-URL** ein.
 
@@ -199,7 +149,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Aktivieren Sie **SAML aktivieren**, und führen Sie die folgenden Schritte aus:
 
-    ![Screenshot: Registerkarte „Einmaliges Anmelden“, auf der Sie SAML aktivieren und andere Informationen hinzufügen](./media/helpscout-tutorial/settings4.png)
+    ![Screenshot: Registerkarte „Einmaliges Anmelden“, auf der Sie SAML aktivieren und andere Informationen hinzufügen](./media/helpscout-tutorial/information.png)
 
     a. Fügen Sie in das Textfeld **Einfacher Anmeldungs-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -215,18 +165,22 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 In diesem Abschnitt wird in Help Scout ein Benutzer namens B. Simon erstellt. Help Scout unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Help Scout vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Help Scout“ klicken, sollten Sie automatisch bei der Help Scout-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Help Scout weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Rufen Sie Anmelde-URL für Help Scout direkt auf, und initiieren Sie den Anmeldeflow.
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP-initiiert:
 
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Help Scout-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-- [Help Scout mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Help Scout“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Help Scout-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von Help Scout können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Ex- und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

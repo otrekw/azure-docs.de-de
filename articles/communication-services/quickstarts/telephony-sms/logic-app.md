@@ -6,15 +6,15 @@ author: tophpalmer
 manager: anvalent
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: cabf4ba9ea17c1ad2d8af9fd17e7d6f09838e745
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 9f25e7ce9580ab967d1625a6ab1550bd3f535225
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293150"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113109011"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>Schnellstart: Senden von SMS-Nachrichten in Azure Logic Apps mithilfe von Azure Communication Services
 

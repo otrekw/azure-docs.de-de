@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: In diesem Leitfaden erfahren Sie, wie Sie eine Azure-Funktion verwenden, um die Verarbeitung von Dokumenten auszulösen, die in einen Azure Blob Storage-Container hochgeladen werden.
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: 6a8f3cf5b98361f96df26da923ff6bff7a604d23
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c458740f3b8b321631b4c9e8fec5d30e8286eb6e
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373996"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893478"
 ---
 # <a name="tutorial-use-an-azure-function-to-process-stored-documents"></a>Tutorial: Verarbeiten gespeicherter Dokumente mithilfe einer Azure-Funktion
 
@@ -166,7 +166,7 @@ Durch den folgenden Codeblock wird die Formularerkennungs-API zum [Analysieren d
 > [!IMPORTANT]
 > Öffnen Sie das Azure-Portal. Wenn die im Abschnitt **Voraussetzungen** erstellte Formularerkennungsressource erfolgreich bereitgestellt wurde, klicken Sie unter **Nächste Schritte** auf die Schaltfläche **Zu Ressource wechseln**. Schlüssel und Endpunkt finden Sie auf der Seite mit dem **Schlüssel und dem Endpunkt** der Ressource unter **Ressourcenverwaltung**. 
 >
-> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im [Artikel zur Sicherheit von Cognitive Services](../cognitive-services-security.md).
+> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. Verwenden Sie in der Produktionsumgebung sichere Methoden, um Ihre Anmeldeinformationen zu speichern und darauf zuzugreifen. Weitere Informationen finden Sie im [Artikel zur Sicherheit von Cognitive Services](../cognitive-services-security.md).
 
 Fügen Sie als Nächstes Code hinzu, um den Dienst abzufragen und die zurückgegebenen Daten abzurufen. 
 

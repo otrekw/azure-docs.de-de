@@ -2,14 +2,14 @@
 title: 'Schnellstart: Ausführen Ihres ersten Azure Batch-Auftrags mit der .NET-API'
 description: In dieser Schnellstartanleitung führen Sie einen Azure Batch-Beispielauftrag und Aufgaben von einer C#-Anwendung aus mit der .NET-Clientbibliothek von Batch aus.
 ms.topic: quickstart
-ms.date: 08/17/2020
+ms.date: 05/25/2021
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 1c2328db520042ceff1861b740313befbed0e20d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 3f6bca64e3241c5ee3aa5940a7556bc545932e87
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876722"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467724"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Schnellstart: Ausführen Ihres ersten Azure Batch-Auftrags mit der .NET-API
 
@@ -25,7 +25,7 @@ Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzept
 
 - Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md).
 
-- [Visual Studio 2017 oder höher](https://www.visualstudio.com/vs) bzw. [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1) für Linux, macOS oder Windows 
+- [Visual Studio 2017 oder höher](https://www.visualstudio.com/vs) bzw. [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1) für Linux, macOS oder Windows
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -145,7 +145,7 @@ using (BatchClient batchClient = BatchClient.Open(cred))
 
 Zum Erstellen eines Batch-Pools verwendet die App die [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool)-Methode, um die Anzahl von Knoten, die VM-Größe und eine Poolkonfiguration festzulegen. Hier gibt ein [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration)-Objekt einen [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference)-Verweis auf ein Windows Server-Image an, das im Azure Marketplace veröffentlicht wurde. Batch unterstützt viele verschiedene Linux- und Windows Server-Images im Azure Marketplace und außerdem benutzerdefinierte VM-Images.
 
-Die Anzahl von Knoten (`PoolNodeCount`) und die VM-Größe (`PoolVMSize`) sind definierte Konstanten. Im Beispiel wird standardmäßig ein Pool mit zwei Knoten der Größe *Standard_A1_v2* erstellt. Die vorgeschlagene Größe bietet für dieses kurze Beispiel eine gute Balance zwischen Leistung und Kosten.
+Die Anzahl von Knoten (`PoolNodeCount`) und die VM-Größe (`PoolVMSize`) sind definierte Konstanten. Im Beispiel wird standardmäßig ein Pool mit zwei *Standard_A1_v2*-Knoten erstellt. Die vorgeschlagene Größe bietet für dieses kurze Beispiel eine gute Balance zwischen Leistung und Kosten.
 
 Mit der [Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit)-Methode wird der Pool an den Batch-Dienst übermittelt.
 
@@ -239,13 +239,13 @@ foreach (CloudTask task in completedtasks)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Von der App wird der erstellte Speichercontainer automatisch gelöscht, und Sie erhalten die Möglichkeit, den Batch-Pool und -Auftrag zu löschen. Ihnen werden während der Ausführung der Knoten auch dann Gebühren für den Pool berechnet, wenn keine Aufträge geplant sind. Es ist ratsam, den Pool zu löschen, wenn Sie ihn nicht mehr benötigen. Beim Löschen des Pools werden alle Aufgabenausgaben auf den Knoten gelöscht.
+Von der App wird der erstellte Speichercontainer automatisch gelöscht, und Sie erhalten die Möglichkeit, den Batch-Pool und -Auftrag zu löschen. Ihnen werden während der Ausführung der Knoten auch dann Gebühren für den Pool berechnet, wenn keine Aufträge geplant sind. Es ist ratsam, den Pool zu löschen, wenn Sie ihn nicht mehr benötigen. Nach dem Löschen des Pools werden alle Aufgabenausgaben auf den Knoten gelöscht.
 
 Löschen Sie die Ressourcengruppe, das Batch-Konto und das Speicherkonto, wenn diese Elemente nicht mehr benötigt werden. Wählen Sie hierzu im Azure-Portal die Ressourcengruppe für das Batch-Konto aus, und klicken Sie auf **Ressourcengruppe löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine kleine App ausgeführt, indem Sie die Batch .NET-API verwendet haben, um einen Batch-Pool und einen Batch-Auftrag zu erstellen. Im Auftrag wurden Beispielaufgaben ausgeführt, und es wurde die auf den Knoten erstellte Ausgabe heruntergeladen. Da Sie sich jetzt mit den wichtigsten Konzepten des Batch-Diensts vertraut gemacht haben, können Sie Batch mit realistischeren Workloads und in größerem Umfang ausprobieren. Fahren Sie mit dem Batch .NET-Tutorial fort, um weitere Informationen zu Azure Batch und eine Schritt-für-Schritt-Anleitung zu einer parallelen Workload mit einer Anwendung aus der Praxis zu erhalten.
+In dieser Schnellstartanleitung haben Sie eine kleine App ausgeführt, indem Sie die Batch .NET-API verwendet haben, um einen Batch-Pool und einen Batch-Auftrag zu erstellen. Im Auftrag wurden Beispielaufgaben ausgeführt, und es wurde die auf den Knoten erstellte Ausgabe heruntergeladen. Da Sie jetzt mit den wichtigsten Konzepten des Batch-Diensts vertraut sind, können Sie Batch mit realistischeren Workloads und in größerem Umfang ausprobieren. Fahren Sie mit dem Batch .NET-Tutorial fort, um weitere Informationen zu Azure Batch und eine Schritt-für-Schritt-Anleitung zu einer parallelen Workload mit einer Anwendung aus der Praxis zu erhalten.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Run a parallel workload with Azure Batch using the .NET API](tutorial-parallel-dotnet.md) (Tutorial: Ausführen einer parallelen Workload mit Azure Batch per .NET-API)

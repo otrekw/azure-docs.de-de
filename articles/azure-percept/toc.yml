@@ -40,6 +40,10 @@
           href: tutorial-no-code-speech.md
 - name: Konzepte
   items:
+    - name: "Azure Percept\_DK"
+      items:
+        - name: Herstellen einer Mobilfunkverbindung
+          href: connect-over-cellular.md
     - name: "Azure\_Percept-Audio"
       items:
         - name: LED- und Tastenverhalten
@@ -78,6 +82,8 @@
           href: how-to-update-via-usb.md
     - name: "Herstellen einer Verbindung mit Ihrem Azure\_Percept\_DK-Gerät"
       items:
+        - name: Herstellen einer Ethernet-Verbindung
+          href: how-to-connect-over-ethernet.md
         - name: Herstellen einer SSH-Verbindung
           href: how-to-ssh-into-percept-dk.md
         - name: Herstellen einer seriellen Verbindung
